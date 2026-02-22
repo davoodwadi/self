@@ -13,8 +13,8 @@ The design direction for the "Applications of AI in Business" course website emb
 
 ### Pagination
 
-Implement a "pagination/page-turn" or full-section scrolling effect for each page where each chunk of info feels like a distinct physical/digital page.
-Since the project uses GSAP and emphasizes high-fidelity animations, GSAP + ScrollTrigger but with mobile first philosophy. 
+Implement full-sections for each page where each chunk of info feels like a distinct physical/digital page.
+Since the design is mobile-first, do not use snapping on small screens.
 
 ### Color Palette
 
