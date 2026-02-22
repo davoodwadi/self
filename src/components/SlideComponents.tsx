@@ -49,9 +49,24 @@ export function ContentCard({ title, description, number, className = "" }: { ti
 // A highlighted card for discussion/strategy
 export function DiscussionCard({ title = "Discussion Prompt", prompt, className = "" }: { title?: string; prompt: React.ReactNode; className?: string }) {
   return (
-    <div className={`gsap-reveal p-8 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-[0_0_30px_rgba(79,70,229,0.1)] ${className}`}>
-      <h3 className="text-indigo-400 font-semibold mb-4 tracking-wider uppercase text-sm">{title}</h3>
-      <div className="text-xl md:text-2xl font-medium leading-snug">{prompt}</div>
+    <div className={`gsap-reveal group relative p-8 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-[0_0_30px_rgba(79,70,229,0.1)] overflow-hidden cursor-pointer transition-all duration-500 hover:bg-white/[0.05] hover:border-indigo-500/30 hover:shadow-[0_0_40px_rgba(79,70,229,0.2)] ${className}`}>
+      
+      {/* Default State Content (Overlay) */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 opacity-100 group-hover:opacity-0 group-hover:scale-95 z-10 bg-neutral-900/80 backdrop-blur-md">
+        <div className="w-12 h-12 rounded-full border border-indigo-500/30 flex items-center justify-center mb-4 text-indigo-400 animate-pulse">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
+          </svg>
+        </div>
+        <h3 className="text-indigo-400 font-semibold tracking-widest uppercase text-lg mb-2">{title}</h3>
+        {/* <span className="text-neutral-500 text-sm tracking-wide">Hover to Reveal</span> */}
+      </div>
+
+      {/* Hover Reveal Content (Maintains Height) */}
+      <div className="opacity-0 scale-95 filter blur-md transition-all duration-700 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:blur-none">
+        <h3 className="text-indigo-400 font-semibold mb-4 tracking-wider uppercase text-sm">{title}</h3>
+        <div className="text-xl md:text-2xl font-medium leading-snug">{prompt}</div>
+      </div>
     </div>
   );
 }
