@@ -170,7 +170,7 @@ export default function Home() {
   return (
     <div
       ref={containerRef}
-      className="relative h-screen text-[var(--charcoal-light)] overflow-y-scroll overflow-x-hidden snap-y snap-proximity md:snap-mandatory scroll-smooth hide-scrollbar"
+      className="relative h-screen text-[var(--charcoal-light)] overflow-y-scroll overflow-x-hidden md:snap-y md:snap-mandatory hide-scrollbar overscroll-none"
     >
       {/* 3D Background */}
       <canvas
@@ -182,7 +182,7 @@ export default function Home() {
       <div className="fixed inset-0 bg-gradient-to-b from-[var(--background)]/60 via-[var(--background)]/80 to-[var(--background)] z-0 pointer-events-none"></div>
 
       {/* Page 1: Hero Content */}
-      <section className="relative z-10 w-full min-h-[100dvh] snap-start flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 py-16 md:py-0">
+      <section className="relative z-10 w-full min-h-[100dvh] md:snap-start flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 py-16 md:py-0">
         {/* Hero Section */}
         <header className="max-w-4xl text-center">
           <h1 className="hero-text text-4xl sm:text-5xl md:text-7xl font-black tracking-tight mb-6 md:mb-8 leading-tight">
@@ -226,7 +226,7 @@ export default function Home() {
       </section>
 
       {/* Page 2: Course Modules Grid */}
-      <section className="relative z-10 w-full min-h-[100dvh] snap-start flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 py-24 md:py-16 bg-[var(--background)]/30 backdrop-blur-sm">
+      <section className="relative z-10 w-full min-h-[100dvh] md:snap-start flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 py-24 md:py-16 bg-[var(--background)]/80 md:bg-[var(--background)]/30 backdrop-blur-sm">
         <main className="w-full max-w-6xl">
           <div className="flex items-center gap-4 mb-8 hero-text">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--charcoal)]">
