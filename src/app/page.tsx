@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
 
 export default function Home() {
@@ -10,8 +11,12 @@ export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    // Register GSAP Plugin
+    gsap.registerPlugin(ScrollTrigger);
+
     // 1. Cinematic Animations Setup
     let ctx = gsap.context(() => {
+      // Entrance animations
       gsap.fromTo(
         ".hero-text",
         {
@@ -46,6 +51,29 @@ export default function Home() {
           stagger: 0.15,
         },
       );
+
+      // Smooth custom snapping via GSAP ScrollTrigger
+      const sections = gsap.utils.toArray("section");
+
+      // Apply smooth snap on desktop sizes to preserve native mobile feel,
+      // but override CSS scroll snap which is too rigid.
+      let mm = gsap.matchMedia();
+
+      mm.add("(min-width: 768px)", () => {
+        // By assigning the trigger to the container, we ensure GSAP knows
+        // exactly what scroll area to measure for the snap.
+        ScrollTrigger.create({
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          snap: {
+            snapTo: 1 / (sections.length - 1),
+            duration: { min: 0.8, max: 1.5 },
+            delay: 0.1,
+            ease: "power3.inOut",
+          },
+        });
+      });
     }, containerRef);
 
     // 2. Three.js Cinematic Background
@@ -170,7 +198,7 @@ export default function Home() {
   return (
     <div
       ref={containerRef}
-      className="relative h-screen text-[var(--charcoal-light)] overflow-y-scroll overflow-x-hidden md:snap-y md:snap-mandatory hide-scrollbar overscroll-none"
+      className="relative text-[var(--charcoal-light)] overflow-x-hidden"
     >
       {/* 3D Background */}
       <canvas
@@ -182,7 +210,7 @@ export default function Home() {
       <div className="fixed inset-0 bg-gradient-to-b from-[var(--background)]/60 via-[var(--background)]/80 to-[var(--background)] z-0 pointer-events-none"></div>
 
       {/* Page 1: Hero Content */}
-      <section className="relative z-10 w-full min-h-[100dvh] md:snap-start flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 py-16 md:py-0">
+      <section className="relative z-10 w-full min-h-[100dvh] flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 py-16 md:py-0">
         {/* Hero Section */}
         <header className="max-w-4xl text-center">
           <h1 className="hero-text text-4xl sm:text-5xl md:text-7xl font-black tracking-tight mb-6 md:mb-8 leading-tight">
@@ -197,7 +225,7 @@ export default function Home() {
             executive value.
           </p>
 
-          <div className="hero-text flex flex-col sm:flex-row items-center justify-between mt-8 md:mt-16 max-w-3xl mx-auto border-t border-b border-[var(--charcoal)]/10 py-6">
+          <div className="hero-text flex flex-col gap-4 items-center justify-between mt-8 md:mt-16 max-w-3xl mx-auto border-t border-b border-[var(--charcoal)]/10 py-6">
             <div className="text-center sm:text-left mb-4 sm:mb-0">
               <p className="text-[var(--crimson)] font-black text-lg sm:text-xl tracking-wider uppercase font-serif">
                 BUSI 654
@@ -205,28 +233,20 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-4">
               <div className="text-center sm:text-right">
-                <p className="text-sm font-semibold text-[var(--charcoal)] tracking-widest uppercase mb-1">
+                <p className="text-sm font-semibold text-center text-[var(--charcoal)] tracking-widest uppercase mb-1">
                   Dr. Davood Wadi
                 </p>
-                <p className="text-xs text-[var(--charcoal-light)] font-medium tracking-widest uppercase">
-                  Lead Lecturer
+                <p className="text-xs text-[var(--charcoal-light)] text-center font-medium tracking-widest uppercase">
+                  Lecturer
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 animate-pulse">
-            <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-[var(--charcoal-light)]">
-              Scroll
-            </span>
-            <div className="w-px h-8 md:h-12 bg-gradient-to-b from-[var(--charcoal-light)] to-transparent"></div>
           </div>
         </header>
       </section>
 
       {/* Page 2: Course Modules Grid */}
-      <section className="relative z-10 w-full min-h-[100dvh] md:snap-start flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 py-24 md:py-16 bg-[var(--background)]/80 md:bg-[var(--background)]/30 backdrop-blur-sm">
+      <section className="relative z-10 w-full min-h-[100dvh] flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 py-24 md:py-16 bg-[var(--background)]/80 md:bg-[var(--background)]/30 backdrop-blur-sm">
         <main className="w-full max-w-6xl">
           <div className="flex items-center gap-4 mb-8 hero-text">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--charcoal)]">

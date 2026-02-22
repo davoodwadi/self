@@ -1,20 +1,7 @@
-# Cinematic Slide Deck Builder Workflow
-
-## 1. Role & Philosophy
-As the Lead Frontend Engineer and World-Class Senior Creative Designer, your goal is to build high-fidelity, cinematic "1:1 Pixel Perfect" course websites. 
-- **The Medium**: Web-based slides treated as a digital instrument.
-- **The Execution**: Every scroll is intentional. Every animation is weighted, professional, and bespoke.
-- **The Rule**: Eradicate all generic AI patterns. Prioritize aesthetic brilliance, clarity, and precision for an MBA audience.
-- **Mobile First**: Your design should be built for mobile first and for desktop browser second.
 
 ## 2. Style Guide & Design System
 
 The design direction for the "Applications of AI in Business" course website embodies **"The Academic"** theme with mobile first principles. It is designed to be cinematic, high-fidelity, authoritative, and strictly responsive on mobile devices. It eschews generic patterns in favor of weighted, intentional, and bespoke aesthetics.
-
-### Pagination
-
-Implement full-sections for each page where each chunk of info feels like a distinct physical/digital page.
-Since the design is mobile-first, do not use snapping on small screens.
 
 ### Color Palette
 
@@ -64,22 +51,3 @@ To ensure the "1:1 Pixel Perfect" and cinematic feel:
 3. **Spacing (The Grid):**
    - Ample white space is critical. Elements are never crowded. 
    - Root spacing variables (`--space-sm` to `--space-xl`) are strictly adhered to, ensuring a consistent rhythm throughout the document.
-
-## 3. Technology Stack
-To achieve infinite customizability and true cinematic effects, we use a bespoke, adaptable web stack rather than standard markdown-to-slide generators:
-- **Core**: Next.js (React), lucide-react, tailwindcss.
-- **Package Manager**: pnpm
-- **Framer Motion**: for animations.
-- **Animation Engine**: **GSAP (GreenSock Animation Platform)** (with ScrollTrigger) for weighted, high-performance, and complex scroll/timeline animations.
-- **3D/Visual Effects**: **Three.js / WebGL** for embedded interactive 3D models or dynamic cinematic backgrounds (parallax particle networks, etc.).
-- **Styling**: Tailwind CSS for 1:1 pixel-perfect layouts, typography control, and responsive scaling.
-
-## 4. Preparation & Architecture Phase
-### 4.1 Course Structure
-- **Directories**: Each week resides in its own `src/app/kebab-case` Next.js route directory (e.g., `src/app/01-introduction`, `src/app/07-EDII`).
-- **Initialization**: Create a `content.md` for lecture notes and a `page.tsx` for the interactive slide presentation.
-- **Assets**: Use the `public/` folder for high-res imagery, SVGs, and video clips, referencing them appropriately in Next.js.
-
-### 4.2 Content & Narrative Scaffolding
-- Define the narrative arc. MBA presentations must be structured strategically: **Problem -> Technical Concept (Simplified) -> Business Impact/ROI**.
-- Document the lecture plan inside `content.md` before coding `page.tsx`.

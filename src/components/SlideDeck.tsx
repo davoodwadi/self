@@ -10,40 +10,58 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export function SlideDeck({ children, background }: { children: React.ReactNode, background?: React.ReactNode }) {
+export function SlideDeck({
+  children,
+  background,
+}: {
+  children: React.ReactNode;
+  background?: React.ReactNode;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
       // General staggered animation for all slides using .gsap-reveal
-      const sections = gsap.utils.toArray<HTMLElement>('.slide-section');
+      const sections = gsap.utils.toArray<HTMLElement>(".slide-section");
       sections.forEach((section) => {
-        const elements = section.querySelectorAll('.gsap-reveal');
+        const elements = section.querySelectorAll(".gsap-reveal");
         if (elements.length > 0) {
-          gsap.fromTo(elements, 
+          gsap.fromTo(
+            elements,
             { y: 60, opacity: 0, filter: "blur(10px)" },
             {
-              y: 0, opacity: 1, filter: "blur(0px)",
-              duration: 1.2, stagger: 0.15, ease: "power3.out",
+              y: 0,
+              opacity: 1,
+              filter: "blur(0px)",
+              duration: 1.2,
+              stagger: 0.15,
+              ease: "power3.out",
               scrollTrigger: {
                 trigger: section,
                 start: "top 75%",
-                toggleActions: "play none none reverse"
-              }
-            }
+                toggleActions: "play none none reverse",
+              },
+            },
           );
         }
       });
     }, containerRef);
-    
+
     return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={containerRef} className="relative bg-neutral-950 text-neutral-50 font-sans tracking-wide overflow-hidden min-h-screen selection:bg-indigo-500 selection:text-white">
+    <div
+      ref={containerRef}
+      className="relative bg-[var(--background)] text-[var(--charcoal-light)] font-sans tracking-wide overflow-hidden min-h-screen selection:bg-[var(--crimson)] selection:text-[var(--surface)]"
+    >
       {/* Navigation */}
-      <Link href="/" className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-transparent border border-white/10 backdrop-blur-sm text-neutral-400 hover:text-white hover:bg-white/5 hover:border-white/20 transition-all group shadow-lg" aria-label="Back to Course Hub">
-        <ArrowLeft className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" />
+      <Link
+        href="/"
+        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--charcoal-light)] hover:text-[var(--crimson)] hover:border-[var(--crimson)] hover:bg-[var(--crimson)]/5 transition-colors duration-300 group shadow-sm"
+        aria-label="Back to Course Hub"
+      >
+        <ArrowLeft className="w-5 h-5" />
       </Link>
 
       {background}
@@ -55,9 +73,19 @@ export function SlideDeck({ children, background }: { children: React.ReactNode,
   );
 }
 
-export function Slide({ children, className = "", border = true }: { children: React.ReactNode, className?: string, border?: boolean }) {
+export function Slide({
+  children,
+  className = "",
+  border = true,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  border?: boolean;
+}) {
   return (
-    <section className={`slide-section min-h-screen flex flex-col justify-center py-20 ${border ? 'border-t border-white/5' : ''} ${className}`}>
+    <section
+      className={`slide-section min-h-screen flex flex-col justify-center py-20 ${border ? "border-t border-[var(--charcoal)]/10" : ""} ${className}`}
+    >
       {children}
     </section>
   );
