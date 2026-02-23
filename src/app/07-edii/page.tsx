@@ -17,6 +17,7 @@ import {
   AnimatedList,
   ListItem,
   Callout,
+  MediaBlock,
 } from "@/components/SlideComponents";
 import { BackgroundManager } from "@/components/Backgrounds";
 
@@ -38,15 +39,26 @@ export default function Presentation() {
         <Heading>
           AI as a Mirror of <Highlight>Society</Highlight>
         </Heading>
-        <ContentText layout="prose">
-          Artificial Intelligence does not exist in a vacuum; it learns from
-          historical data.
-        </ContentText>
-        <Callout variant="secondary">
-          When that data contains societal biases, prejudices, and systemic
-          inequalities, AI systems not only replicate but often amplify these
-          flaws at scale.
-        </Callout>
+        <Grid gap="large" items="center">
+          <Column spanRatio="1/2">
+            <ContentText layout="prose">
+              Artificial Intelligence does not exist in a vacuum; it learns from
+              historical data.
+            </ContentText>
+            <Callout variant="secondary">
+              When that data contains societal biases, prejudices, and systemic
+              inequalities, AI systems not only replicate but often amplify
+              these flaws at scale.
+            </Callout>
+          </Column>
+          <Column spanRatio="1/2">
+            <MediaBlock
+              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200"
+              alt="Digital representation of human society and AI"
+              caption="AI reflects the data it is fed, acting as a mirror to society."
+            />
+          </Column>
+        </Grid>
       </Slide>
 
       {/* Slide 3 */}
@@ -233,17 +245,28 @@ export default function Presentation() {
         <Heading>
           Indigeneity & Data <Highlight>Sovereignty</Highlight>
         </Heading>
-        <ContentText layout="prose">
-          A critical, often overlooked pillar of EDII is Indigeneity,
-          particularly concerning data rights.
-        </ContentText>
-        <Card>
-          <ContentTitle>Data Colonialism</ContentTitle>
-          <ContentDescription>
-            The extraction of data from Indigenous communities without consent
-            or benefit to those communities.
-          </ContentDescription>
-        </Card>
+        <Grid gap="large" items="center">
+          <Column spanRatio="1/2">
+            <ContentText layout="prose">
+              A critical, often overlooked pillar of EDII is Indigeneity,
+              particularly concerning data rights.
+            </ContentText>
+            <Card>
+              <ContentTitle>Data Colonialism</ContentTitle>
+              <ContentDescription>
+                The extraction of data from Indigenous communities without
+                consent or benefit to those communities.
+              </ContentDescription>
+            </Card>
+          </Column>
+          <Column spanRatio="1/2">
+            <MediaBlock
+              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200"
+              alt="Global network representing data connectivity"
+              caption="Data rights are fundamentally human rights."
+            />
+          </Column>
+        </Grid>
       </Slide>
 
       {/* Slide 14 */}

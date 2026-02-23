@@ -502,7 +502,7 @@ export function Callout({
 
   return (
     <div
-      className={`gsap-reveal p-8 border-l-4 ${borderClass} ${bgClass} ${className}`}
+      className={`gsap-reveal p-8 my-4 border-l-4 ${borderClass} ${bgClass} ${className}`}
     >
       <h4
         className={`text-sm md:text-base font-bold tracking-[0.2em] uppercase mb-4 ${titleColor}`}
