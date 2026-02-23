@@ -187,3 +187,24 @@ h6 {
     @apply bg-background text-foreground;
   }
 }
+
+.mermaid-container svg text {
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  font-family: Arial, sans-serif !important;
+}
+/* Force Mermaid's text containers to stop clipping the last letter */
+.mermaid-container foreignObject {
+  overflow: visible !important;
+}
+
+/* If you are using Tailwind CSS, add this to stop it from squishing the text */
+.mermaid-container foreignObject div {
+  width: max-content !important;
+  line-height: normal !important;
+}
+.mermaid-container svg {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}

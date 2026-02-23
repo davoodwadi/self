@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, CircleSmall } from "lucide-react";
 
 // Slides
 export function SlideDeck({
@@ -55,7 +55,7 @@ export function SlideDeck({
       {/* Navigation */}
       <Link
         href="/"
-        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--charcoal-light)] hover:text-[var(--crimson)] hover:border-[var(--crimson)] hover:bg-[var(--crimson)]/5 transition-colors duration-300 group shadow-sm"
+        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--charcoal-light)] hover:text-[var(--crimson)] hover:border-[var(--crimson)] hover:bg-[var(--crimson)]/5 transition-colors duration-300 group "
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
@@ -157,12 +157,19 @@ export function Column({
   }[align];
 
   // Support both old spanRatio and new span
-  const widthClass = `basis-${spanRatio}`;
-
+  // const widthClass = `basis-${spanRatio}`;
+  // const widthClass = `md:w-${spanRatio}`;
+  const widthClass =
+    {
+      "1/2": "w-full md:w-1/2",
+      "1/3": "w-full md:w-1/3",
+      "2/3": "w-full md:w-2/3",
+      "1/4": "w-full md:w-1/4",
+      "3/4": "w-full md:w-3/4",
+      full: "w-full",
+    }[spanRatio] || "w-full md:w-1/2"; // fallback
   return (
-    <div
-      className={`flex flex-col ${widthClass} ${justifyClass} ${alignClass} ${className}`}
-    >
+    <div className={`${widthClass} ${justifyClass} ${alignClass} ${className}`}>
       {children}
     </div>
   );
@@ -237,7 +244,7 @@ export function Subtitle({
   const variantClass =
     variant === "hero"
       ? "gsap-reveal text-xl md:text-3xl"
-      : "text-xl md:text-2xl -mt-4 mb-12";
+      : "text-xl md:text-2xl -mt-4 mb-12 border-b-2";
 
   return (
     <p className={`${baseClass} ${variantClass} ${className}`}>{children}</p>
@@ -296,7 +303,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`p-8 my-4 shadow-sm border-t-2 border-t-[var(--crimson)] ${className}`}
+      className={`p-8 my-8 shadow-sm border-t-2 border-t-[var(--crimson)] ${className}`}
     >
       {title ? (
         <h4 className="font-bold text-[var(--crimson)] mb-2 uppercase tracking-wider text-sm">
@@ -347,7 +354,7 @@ export function DiscussionCard({
   return (
     <div
       onClick={() => setIsRevealed(!isRevealed)}
-      className={`gsap-reveal relative p-8 min-h-[500px] flex flex-col justify-center border shadow-[0_10px_30px_rgba(0,0,0,0.05)] overflow-hidden cursor-pointer transition-colors duration-500 hover:border-[var(--gold)] hover:bg-[var(--gold)]/5 ${isRevealed ? "border-[var(--gold)]/50" : "border-[var(--charcoal)]/10"} ${className}`}
+      className={`gsap-reveal relative p-8 min-h-[500px] flex flex-col justify-center shadow-[0_10px_30px_rgba(0,0,0,0.05)] overflow-hidden cursor-pointer transition-colors duration-500 hover:border-[var(--gold)] hover:bg-[var(--gold)]/5 ${isRevealed ? "border-[var(--gold)]/50" : "border-[var(--charcoal)]/10"} ${className}`}
     >
       {/* Default State Content (Overlay) */}
       <div
@@ -527,7 +534,7 @@ export function AnimatedList({
 }) {
   return (
     <ul
-      className={`text-left w-full space-y-6 p-4 border-l-2 border-l-[var(--crimson)]  bg-[var(--charcoal-light)]/2 ${className}`}
+      className={`text-left w-full space-y-6 p-4 border-l-2 border-l-[var(--crimson)] ${className}`}
     >
       {children}
     </ul>
@@ -545,20 +552,8 @@ export function ListItem({
     <li
       className={`gsap-reveal flex items-start text-xl md:text-2xl text-[var(--charcoal-light)] font-light leading-relaxed ${className}`}
     >
-      <span className="text-[var(--crimson)] mr-4 mt-1.5 flex-shrink-0">
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
+      <span className="text-[var(--crimson)] mr-4 mt-2.5 flex-shrink-0">
+        <CircleSmall />
       </span>
       <div>{children}</div>
     </li>

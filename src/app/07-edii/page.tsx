@@ -20,6 +20,7 @@ import {
   MediaBlock,
 } from "@/components/SlideComponents";
 import { BackgroundManager } from "@/components/Backgrounds";
+import Mermaid from "@/components/MermaidDiagram";
 
 export default function Presentation() {
   return (
@@ -61,6 +62,35 @@ export default function Presentation() {
         </Grid>
       </Slide>
 
+      {/* Slide 3 (NEW) */}
+      <Slide>
+        <Tag>Conceptual Flow</Tag>
+        <Heading>
+          The <Highlight>Reflection</Highlight> Process
+        </Heading>
+        <Grid gap="large" items="center">
+          <Column spanRatio="1/3">
+            <ContentText layout="base">
+              AI doesn't create bias out of nowhere; it absorbs and scales
+              existing human patterns from historical records.
+            </ContentText>
+          </Column>
+          <Column spanRatio="2/3">
+            <Mermaid
+              chart={`flowchart LR
+    S[Societal Prejudices<br>& Inequalities] -->|Digitized into| D(Historical Data)
+    D -->|Used to Train| M[AI Models]
+    M -->|Automates & Scales| R((Amplified Flaws))
+    
+    style S fill:#fbeaea,stroke:#8B0000,stroke-width:2px
+    style D fill:#fff,stroke:#1A1A1D,stroke-width:2px
+    style M fill:#fff,stroke:#1A1A1D,stroke-width:2px
+    style R fill:#fef7e0,stroke:#8B0000,stroke-width:4px`}
+            />
+          </Column>
+        </Grid>
+      </Slide>
+
       {/* Slide 3 */}
       <Slide>
         <Tag>The Problem</Tag>
@@ -73,9 +103,7 @@ export default function Presentation() {
             </ContentText>
           </Column>
           <Column spanRatio="1/2">
-            <Quote author="Business Reality" role="The Market">
-              It is a massive operational and reputational risk.
-            </Quote>
+            <Quote>It is a massive operational and reputational risk.</Quote>
           </Column>
         </Grid>
       </Slide>
@@ -155,7 +183,39 @@ export default function Presentation() {
         </Grid>
       </Slide>
 
-      {/* Slide 8 */}
+      {/* Slide 8 (NEW) */}
+      <Slide>
+        <Tag>Conceptual Flow</Tag>
+        <Heading>
+          The <Highlight>Bias</Highlight> Feedback Loop
+        </Heading>
+        <Grid gap="large" items="center">
+          <Column spanRatio="1/2">
+            <ContentText layout="base">
+              The three vectors interact dynamically. Biased training data feeds
+              the algorithm, which produces skewed decisions. These decisions
+              generate new data, reinforcing the original bias in a continuous
+              feedback loop.
+            </ContentText>
+          </Column>
+          <Column spanRatio="1/2">
+            <Mermaid
+              chart={`flowchart TD
+    A[Historical Data Skew] -->|Vector 1| B(Algorithmic Optimization)
+    B -->|Vector 2| C[Biased Predictions & Decisions]
+    C -->|Real-world Actions| D((New Skewed Data))
+    D -.->|Vector 3: Feedback Loop| A
+    
+    style A fill:#fbeaea,stroke:#8B0000,stroke-width:2px
+    style B fill:#fff,stroke:#1A1A1D,stroke-width:2px
+    style C fill:#fbeaea,stroke:#8B0000,stroke-width:2px
+    style D fill:#fef7e0,stroke:#D4AF37,stroke-width:2px`}
+            />
+          </Column>
+        </Grid>
+      </Slide>
+
+      {/* Slide 9 */}
       <Slide>
         <Tag>Technical Concept</Tag>
         <Heading>
@@ -177,7 +237,46 @@ export default function Presentation() {
         </AnimatedList>
       </Slide>
 
-      {/* Slide 9 */}
+      {/* Slide 10 (NEW) */}
+      <Slide>
+        <Tag>Metric Comparison</Tag>
+        <Heading>
+          Parity vs. <Highlight>Opportunity</Highlight>
+        </Heading>
+        <Grid gap="large" items="center">
+          <Column spanRatio="1/3">
+            <ContentText layout="base">
+              Demographic Parity focuses on equal outcomes regardless of
+              qualifications. Equal Opportunity ensures equal outcomes for
+              equally qualified candidates.
+            </ContentText>
+          </Column>
+          <Column spanRatio="2/3">
+            <Mermaid
+              chart={`flowchart TD
+    A[Applicant Pool] --> DP(Demographic Parity)
+    A --> EO(Equal Opportunity)
+    
+    DP -->|Selection rate| DP1[50% Group A Selected]
+    DP -->|Selection rate| DP2[50% Group B Selected]
+    
+    EO -->|Qualified applicants| Q[Qualified Pool]
+    Q -->|Selection rate| EO1[80% Qualified Group A Selected]
+    Q -->|Selection rate| EO2[80% Qualified Group B Selected]
+    
+    style DP fill:#fef7e0,stroke:#D4AF37,stroke-width:2px
+    style EO fill:#fef7e0,stroke:#D4AF37,stroke-width:2px
+    style DP1 fill:#fff,stroke:#1A1A1D,stroke-width:1px
+    style DP2 fill:#fff,stroke:#1A1A1D,stroke-width:1px
+    style EO1 fill:#fff,stroke:#1A1A1D,stroke-width:1px
+    style EO2 fill:#fff,stroke:#1A1A1D,stroke-width:1px
+    style Q fill:#fbeaea,stroke:#8B0000,stroke-width:1px`}
+            />
+          </Column>
+        </Grid>
+      </Slide>
+
+      {/* Slide 10 */}
       <Slide>
         <Tag>Discussion</Tag>
         <Heading>
@@ -190,7 +289,7 @@ export default function Presentation() {
         </DiscussionCard>
       </Slide>
 
-      {/* Slide 10 */}
+      {/* Slide 11 */}
       <Slide>
         <Tag>Business Impact</Tag>
         <Heading>
@@ -202,7 +301,7 @@ export default function Presentation() {
         <Callout variant="primary">It is a competitive advantage.</Callout>
       </Slide>
 
-      {/* Slide 11 */}
+      {/* Slide 12 */}
       <Slide>
         <Tag>Business Impact</Tag>
         <Heading>
@@ -226,7 +325,48 @@ export default function Presentation() {
         </Grid>
       </Slide>
 
-      {/* Slide 12 */}
+      {/* Slide 13 (NEW) */}
+      <Slide>
+        <Tag>Decision Path</Tag>
+        <Heading>
+          The <Highlight>Diverging</Highlight> Paths
+        </Heading>
+        <Grid gap="large" items="center">
+          <Column spanRatio="1/3">
+            <ContentText layout="base">
+              A business faces two distinct paths: allowing unchecked bias or
+              intentionally building for inclusion.
+            </ContentText>
+          </Column>
+          <Column spanRatio="2/3">
+            <Mermaid
+              chart={`flowchart LR
+    Start{AI Strategy} -->|Unchecked Bias| B[Discriminatory Outcomes]
+    Start -->|EDII Integration| I[Inclusive Products]
+    
+    B --> C1(Regulatory Fines)
+    B --> C2(Loss of Trust)
+    B --> C3(PR Disasters)
+    
+    I --> R1(Robust Global Products)
+    I --> R2(New Markets)
+    I --> R3(Reliable Performance)
+    
+    style Start fill:#1A1A1D,stroke:#333,stroke-width:2px,color:#fff
+    style B fill:#fbeaea,stroke:#8B0000,stroke-width:2px
+    style I fill:#fef7e0,stroke:#D4AF37,stroke-width:2px
+    style C1 fill:#fff,stroke:#8B0000,stroke-width:1px
+    style C2 fill:#fff,stroke:#8B0000,stroke-width:1px
+    style C3 fill:#fff,stroke:#8B0000,stroke-width:1px
+    style R1 fill:#fff,stroke:#D4AF37,stroke-width:1px
+    style R2 fill:#fff,stroke:#D4AF37,stroke-width:1px
+    style R3 fill:#fff,stroke:#D4AF37,stroke-width:1px`}
+            />
+          </Column>
+        </Grid>
+      </Slide>
+
+      {/* Slide 13 */}
       <Slide>
         <Tag>Discussion</Tag>
         <Heading>
@@ -239,7 +379,7 @@ export default function Presentation() {
         </DiscussionCard>
       </Slide>
 
-      {/* Slide 13 */}
+      {/* Slide 14 */}
       <Slide>
         <Tag>Indigeneity</Tag>
         <Heading>
@@ -269,7 +409,7 @@ export default function Presentation() {
         </Grid>
       </Slide>
 
-      {/* Slide 14 */}
+      {/* Slide 15 */}
       <Slide>
         <Tag>Indigeneity</Tag>
         <Heading>
@@ -299,7 +439,44 @@ export default function Presentation() {
         </AnimatedList>
       </Slide>
 
-      {/* Slide 15 */}
+      {/* Slide 16 (NEW) */}
+      <Slide>
+        <Tag>Conceptual Framework</Tag>
+        <Heading>
+          OCAP <Highlight>Architecture</Highlight>
+        </Heading>
+        <Grid gap="large" items="center">
+          <Column spanRatio="1/3">
+            <ContentText layout="base">
+              The OCAP principles form a unified structural framework ensuring
+              communities remain at the center of their data lifecycle.
+            </ContentText>
+          </Column>
+          <Column spanRatio="2/3">
+            <Mermaid
+              chart={`flowchart TD
+    OCAP{OCAP Principles}
+    OCAP --> O[Ownership]
+    OCAP --> C[Control]
+    OCAP --> A[Access]
+    OCAP --> P[Possession]
+    
+    O --> O1(Collective relationship<br>to cultural knowledge)
+    C --> C1(Right to govern<br>how data is used)
+    A --> A1(Community availability<br>to their own data)
+    P --> P1(Physical jurisdiction<br>and stewardship)
+    
+    style OCAP fill:#1A1A1D,stroke:#333,stroke-width:2px,color:#fff
+    style O fill:#fef7e0,stroke:#D4AF37,stroke-width:2px
+    style C fill:#fef7e0,stroke:#D4AF37,stroke-width:2px
+    style A fill:#fef7e0,stroke:#D4AF37,stroke-width:2px
+    style P fill:#fef7e0,stroke:#D4AF37,stroke-width:2px`}
+            />
+          </Column>
+        </Grid>
+      </Slide>
+
+      {/* Slide 17 */}
       <Slide>
         <Tag>Indigeneity</Tag>
         <Heading>
@@ -311,7 +488,7 @@ export default function Presentation() {
         </Callout>
       </Slide>
 
-      {/* Slide 16 */}
+      {/* Slide 18 */}
       <Slide>
         <Tag>Discussion</Tag>
         <Heading>
@@ -324,7 +501,7 @@ export default function Presentation() {
         </DiscussionCard>
       </Slide>
 
-      {/* Slide 17 */}
+      {/* Slide 19 */}
       <Slide>
         <Tag>Leadership</Tag>
         <Heading>
@@ -353,7 +530,39 @@ export default function Presentation() {
         </AnimatedList>
       </Slide>
 
-      {/* Slide 18 */}
+      {/* Slide 20 (NEW) */}
+      <Slide>
+        <Tag>Process Workflow</Tag>
+        <Heading>
+          Equitable AI <Highlight>Lifecycle</Highlight>
+        </Heading>
+        <Subtitle variant="section">
+          Integrating mitigation strategies into the development pipeline.
+        </Subtitle>
+        <Mermaid
+          chart={`flowchart LR
+    A[Data Collection] --> B[Model Training]
+    B --> C[Deployment]
+    C --> D[Operations]
+    D -.->|Continuous Monitoring| A
+    
+    A1([Mandate Diverse Teams]) --> A
+    B1([Implement AI Audits]) --> B
+    C1([Human-in-the-Loop]) --> C
+    D1([Transparent Governance]) --> D
+    
+    style A fill:#fff,stroke:#1A1A1D,stroke-width:2px
+    style B fill:#fff,stroke:#1A1A1D,stroke-width:2px
+    style C fill:#fff,stroke:#1A1A1D,stroke-width:2px
+    style D fill:#fff,stroke:#1A1A1D,stroke-width:2px
+    style A1 fill:#fbeaea,stroke:#8B0000,stroke-width:1px
+    style B1 fill:#fbeaea,stroke:#8B0000,stroke-width:1px
+    style C1 fill:#fbeaea,stroke:#8B0000,stroke-width:1px
+    style D1 fill:#fbeaea,stroke:#8B0000,stroke-width:1px`}
+        />
+      </Slide>
+
+      {/* Slide 21 */}
       <Slide>
         <Tag>Discussion</Tag>
         <Heading>

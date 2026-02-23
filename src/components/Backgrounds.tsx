@@ -64,9 +64,9 @@ function EDIITreeBackground() {
     });
 
     // 1. Center Triangle Pivot (Fulcrum)
-    const fulcrumGeometry = new THREE.ConeGeometry(3, 6, 3);
+    const fulcrumGeometry = new THREE.ConeGeometry(3, 3, 3);
     const fulcrum = new THREE.Mesh(fulcrumGeometry, scaleMaterial);
-    fulcrum.position.y = -3;
+    fulcrum.position.y = -1.5;
     // Rotate so a flat face is parallel to the beam. For a 3-sided cone,
     // the vertices are at 0, 120, 240 degrees. To have a flat face facing front,
     // we need to rotate it by -Math.PI / 2 (or Math.PI / 2 depending on the look).

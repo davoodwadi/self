@@ -112,6 +112,15 @@ Components automatically hook into GSAP entrance animations.
 
 ## 5. Media & Data Displays
 
+### 5.1. Mermaid Diagrams
+
+You are encouraged to use `Mermaid` diagrams from the `components/MermaidDiagram.tsx` file. This will help students be more engaged. 
+```tsx
+<Mermaid chart={'pie title Pets \n "Dogs" : 386 \n "Cats" : 85'} />
+```
+
+### 5.2. Other Media and Data
+
 *   **`MediaBlock`**: A shadow-boxed image container with an optional italicized `caption`.
 *   **`Quote`**: A stylized blockquote requiring an `author` and optionally a `role`.
 *   **`Metric`**: Displays a large stat with a label (e.g., `value="45%"` and `label="Increase in ROI"`).
