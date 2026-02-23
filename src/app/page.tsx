@@ -275,6 +275,27 @@ export default function Home() {
               </div>
             </Link>
 
+            {/* Week 6 */}
+            <Link
+              href="/06-introduction-to-deep-learning"
+              className="course-card block group"
+            >
+              <div className="relative bg-[var(--background)] border-t-[4px] border-t-[var(--gold)] p-8 h-full transition-all duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] overflow-hidden">
+                <span className="text-[var(--gold)] font-bold tracking-widest uppercase text-xs mb-3 block">
+                  Week 06
+                </span>
+                <h3 className="text-2xl font-black text-[var(--charcoal)] mb-4">
+                  Introduction to Deep Learning
+                </h3>
+                <p className="text-[var(--charcoal-light)] font-light text-sm leading-relaxed mb-8">
+                  A gentle introduction to deep learning
+                </p>
+                <div className="inline-block px-8 py-3 bg-[var(--gold)] text-[var(--charcoal)] font-semibold text-sm tracking-wide uppercase border border-[var(--gold)] transition-all duration-300 group-hover:bg-[var(--charcoal)] group-hover:text-[var(--surface)] group-hover:border-[var(--charcoal)] group-hover:-translate-y-0.5 group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.1)]">
+                  View Deck
+                </div>
+              </div>
+            </Link>
+
             {/* Week 7 */}
             <Link href="/07-edii" className="course-card block group">
               <div className="relative bg-[var(--background)] border-t-[4px] border-t-[var(--gold)] p-8 h-full transition-all duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] overflow-hidden">
