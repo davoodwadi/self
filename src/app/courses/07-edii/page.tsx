@@ -7,7 +7,7 @@ import {
   Highlight,
   Tag,
   ContentText,
-  Grid,
+  Row,
   Column,
   Card,
   ContentTitle,
@@ -18,9 +18,9 @@ import {
   ListItem,
   Callout,
   MediaBlock,
-} from "@/components/SlideComponents";
-import { BackgroundManager } from "@/components/Backgrounds";
-import Mermaid from "@/components/MermaidDiagram";
+} from "@/components/courses/SlideComponents";
+import { BackgroundManager } from "@/components/courses/Backgrounds";
+import Mermaid from "@/components/courses/MermaidDiagram";
 
 export default function Presentation() {
   return (
@@ -40,7 +40,7 @@ export default function Presentation() {
         <Heading>
           AI as a Mirror of <Highlight>Society</Highlight>
         </Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/2">
             <ContentText layout="prose">
               Artificial Intelligence does not exist in a vacuum; it learns from
@@ -59,7 +59,7 @@ export default function Presentation() {
               caption="AI reflects the data it is fed, acting as a mirror to society."
             />
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 3 (NEW) */}
@@ -68,7 +68,7 @@ export default function Presentation() {
         <Heading>
           The <Highlight>Reflection</Highlight> Process
         </Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/3">
             <ContentText layout="base">
               AI doesn't create bias out of nowhere; it absorbs and scales
@@ -88,14 +88,14 @@ export default function Presentation() {
     style R fill:#fef7e0,stroke:#8B0000,stroke-width:4px`}
             />
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 3 */}
       <Slide>
         <Tag>The Problem</Tag>
         <Heading>The Operational Risk</Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/2">
             <ContentText layout="base">
               For business leaders, deploying biased AI isn't just an ethical
@@ -105,7 +105,7 @@ export default function Presentation() {
           <Column spanRatio="1/2">
             <Quote>It is a massive operational and reputational risk.</Quote>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 4 */}
@@ -141,7 +141,7 @@ export default function Presentation() {
         <Heading>
           Vector 1: <Highlight>Training Data Bias</Highlight>
         </Heading>
-        <Grid gap="large">
+        <Row gap="large">
           <Column>
             <Card>
               <ContentTitle>Historical Skew</ContentTitle>
@@ -152,14 +152,14 @@ export default function Presentation() {
               </ContentDescription>
             </Card>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 7 */}
       <Slide>
         <Tag>Technical Concept</Tag>
         <Heading>Vectors 2 & 3</Heading>
-        <Grid gap="medium">
+        <Row gap="medium">
           <Column spanRatio="1/2">
             <Card>
               <ContentTitle>Algorithmic Bias</ContentTitle>
@@ -180,7 +180,7 @@ export default function Presentation() {
               </ContentDescription>
             </Card>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 8 (NEW) */}
@@ -189,7 +189,7 @@ export default function Presentation() {
         <Heading>
           The <Highlight>Bias</Highlight> Feedback Loop
         </Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/2">
             <ContentText layout="base">
               The three vectors interact dynamically. Biased training data feeds
@@ -212,7 +212,7 @@ export default function Presentation() {
     style D fill:#fef7e0,stroke:#D4AF37,stroke-width:2px`}
             />
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 9 */}
@@ -243,7 +243,7 @@ export default function Presentation() {
         <Heading>
           Parity vs. <Highlight>Opportunity</Highlight>
         </Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/3">
             <ContentText layout="base">
               Demographic Parity focuses on equal outcomes regardless of
@@ -273,7 +273,7 @@ export default function Presentation() {
     style Q fill:#fbeaea,stroke:#8B0000,stroke-width:1px`}
             />
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 10 */}
@@ -307,7 +307,7 @@ export default function Presentation() {
         <Heading>
           Cost vs. <Highlight>Inclusion</Highlight>
         </Heading>
-        <Grid gap="medium">
+        <Row gap="medium">
           <Column spanRatio="1/2">
             <Card title="The Cost of Bias" subtitle="Liability">
               Fines from regulators (like the EU AI Act), lawsuits, loss of
@@ -322,7 +322,7 @@ export default function Presentation() {
               algorithms perform more reliably.
             </Card>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 13 (NEW) */}
@@ -331,7 +331,7 @@ export default function Presentation() {
         <Heading>
           The <Highlight>Diverging</Highlight> Paths
         </Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/3">
             <ContentText layout="base">
               A business faces two distinct paths: allowing unchecked bias or
@@ -363,7 +363,7 @@ export default function Presentation() {
     style R3 fill:#fff,stroke:#D4AF37,stroke-width:1px`}
             />
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 13 */}
@@ -385,7 +385,7 @@ export default function Presentation() {
         <Heading>
           Indigeneity & Data <Highlight>Sovereignty</Highlight>
         </Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/2">
             <ContentText layout="prose">
               A critical, often overlooked pillar of EDII is Indigeneity,
@@ -406,7 +406,7 @@ export default function Presentation() {
               caption="Data rights are fundamentally human rights."
             />
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 15 */}
@@ -445,7 +445,7 @@ export default function Presentation() {
         <Heading>
           OCAP <Highlight>Architecture</Highlight>
         </Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/3">
             <ContentText layout="base">
               The OCAP principles form a unified structural framework ensuring
@@ -473,7 +473,7 @@ export default function Presentation() {
     style P fill:#fef7e0,stroke:#D4AF37,stroke-width:2px`}
             />
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 17 */}

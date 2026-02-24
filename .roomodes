@@ -1,1 +1,12 @@
-customModes: []
+customModes:
+  - slug: content-creator
+    name: content-creator
+    description: content creator
+    roleDefinition: Create content for the course
+    whenToUse: Use when the user asks you to generate content or create the slides for the content
+    groups:
+      - read
+      - edit
+      - command
+      - mcp
+    source: project

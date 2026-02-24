@@ -7,7 +7,7 @@ import {
   Heading,
   Highlight,
   Tag,
-  Grid,
+  Row,
   Column,
   Card,
   ContentTitle,
@@ -17,8 +17,8 @@ import {
   AnimatedList,
   ListItem,
   Callout,
-} from "@/components/SlideComponents";
-import { BackgroundManager } from "@/components/Backgrounds";
+} from "@/components/courses/SlideComponents";
+import { BackgroundManager } from "@/components/courses/Backgrounds";
 
 export default function AgenticAIPresentation() { 
   return (
@@ -31,7 +31,7 @@ export default function AgenticAIPresentation() {
         <Subtitle variant="hero">
           The new paradigm in software development (2025-2026).
         </Subtitle>
-        <Grid gap="large" className="mt-12">
+        <Row gap="large" className="mt-12">
           <Column spanRatio="1/2">
             <Card>
               <ContentTitle>The Shift</ContentTitle>
@@ -45,14 +45,14 @@ export default function AgenticAIPresentation() {
               How has your own interaction with technology and software creation changed since the introduction of advanced AI?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 2: Defining Agentic AI */}
       <Slide>
         <Tag>Definitions</Tag>
         <Heading>Defining <Highlight>Agentic AI</Highlight></Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/2">
             <ContentText layout="base">
               Systems designed to act autonomously, pursue defined goals, and execute decisions with minimal human intervention.
@@ -67,7 +67,7 @@ export default function AgenticAIPresentation() {
               Think of a complex, multi-step task in your daily job. How would an autonomous "agent" handle it differently than an assistant "copilot"?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 3: The Microservices Moment for AI */}
@@ -75,7 +75,7 @@ export default function AgenticAIPresentation() {
         <Tag>Architecture</Tag>
         <Heading>The <Highlight>Microservices</Highlight> Moment</Heading>
         <Subtitle variant="section">Multi-agent orchestration over monolithic LLMs</Subtitle>
-        <Grid gap="large">
+        <Row gap="large">
           <Column spanRatio="1/2">
             <Card>
               <ContentTitle>Orchestrator Agent</ContentTitle>
@@ -89,14 +89,14 @@ export default function AgenticAIPresentation() {
               If you had to build a team of specialized AI agents for your current project, what specific roles and responsibilities would you assign to them?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 4: Extended Autonomous Execution */}
       <Slide>
         <Tag>Capabilities</Tag>
         <Heading>Extended Autonomous Execution</Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/2">
             <Callout title="Continuous Work" variant="primary">
               By 2026, agents can work continuously for days, navigating legacy codebases and building entire applications autonomously.
@@ -110,7 +110,7 @@ export default function AgenticAIPresentation() {
               What are the potential risks of giving AI continuous, autonomous execution capabilities without continuous human monitoring?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 5: Governance-First Design */}
@@ -118,7 +118,7 @@ export default function AgenticAIPresentation() {
         <Tag>Security</Tag>
         <Heading>Governance-First Design</Heading>
         <Subtitle variant="section">Establishing boundaries and logs</Subtitle>
-        <Grid gap="large">
+        <Row gap="large">
           <Column spanRatio="1/2">
             <AnimatedList>
               <ListItem>Security and governance cannot be an afterthought.</ListItem>
@@ -131,14 +131,14 @@ export default function AgenticAIPresentation() {
               In an automated software development lifecycle, where are the most critical points to place a mandatory "human-in-the-loop" checkpoint?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 6: The "Vibe Coding" Phenomenon */}
       <Slide>
         <Tag>Culture</Tag>
         <Heading>The <Highlight>Vibe Coding</Highlight> Phenomenon</Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/2">
             <Card>
               <ContentTitle>Chatbot-Based Development</ContentTitle>
@@ -152,7 +152,7 @@ export default function AgenticAIPresentation() {
               Do you feel that writing software based on "vibes" makes technology more accessible, or does it inherently reduce the quality of the final product?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 7: The "Code First, Refine Later" Philosophy */}
@@ -160,7 +160,7 @@ export default function AgenticAIPresentation() {
         <Tag>Methodology</Tag>
         <Heading>Code First, Refine Later</Heading>
         <Subtitle variant="section">Prioritizing momentum over structural planning</Subtitle>
-        <Grid gap="large">
+        <Row gap="large">
           <Column spanRatio="1/2">
             <ContentText layout="base">
               Creators use natural language prompts in tools like Cursor, accepting code without reviewing internal logic.
@@ -174,14 +174,14 @@ export default function AgenticAIPresentation() {
               In what specific business scenarios is rapid, flawed prototyping more valuable than perfectly structured, maintainable code?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 8: The Democratization of Software Creation */}
       <Slide>
         <Tag>Impact</Tag>
         <Heading>Democratization of Software</Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/2">
             <AnimatedList>
               <ListItem>Non-technical workers (marketing, legal, sales) building functional digital products.</ListItem>
@@ -194,7 +194,7 @@ export default function AgenticAIPresentation() {
               If anyone in any department can create software, how does the role of the traditional enterprise IT department need to adapt?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 9: Vibe Coding vs. Professional Engineering */}
@@ -202,7 +202,7 @@ export default function AgenticAIPresentation() {
         <Tag>Comparison</Tag>
         <Heading>Vibes vs. <Highlight>Engineering</Highlight></Heading>
         <Subtitle variant="section">A strict line emerges</Subtitle>
-        <Grid gap="large">
+        <Row gap="large">
           <Column spanRatio="1/2">
             <Card>
               <ContentTitle>The Divide</ContentTitle>
@@ -216,14 +216,14 @@ export default function AgenticAIPresentation() {
               How can a company safely encourage the creative experimentation of vibe coding without risking the stability of their production environments?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 10: Spec-Driven Development */}
       <Slide>
         <Tag>Professional</Tag>
         <Heading>Spec-Driven Development</Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/2">
             <ContentText layout="prose">
               In professional environments, AI generates code, writes tests, and performs security reviews based on deep architectural planning.
@@ -237,7 +237,7 @@ export default function AgenticAIPresentation() {
               What are the essential components of a "rigorous technical spec" when you are delegating tasks to an AI rather than a human developer?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 11: Accelerated Technical Debt */}
@@ -245,7 +245,7 @@ export default function AgenticAIPresentation() {
         <Tag>Risks</Tag>
         <Heading>Accelerated <Highlight>Technical Debt</Highlight></Heading>
         <Subtitle variant="section">Writing bad code faster</Subtitle>
-        <Grid gap="large">
+        <Row gap="large">
           <Column spanRatio="1/2">
             <AnimatedList>
               <ListItem>AI tools can write flawed or poorly integrated code at lightning speed.</ListItem>
@@ -258,14 +258,14 @@ export default function AgenticAIPresentation() {
               How should engineering teams measure and manage technical debt when code is being generated at ten times the traditional speed?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 12: The "Maintenance Cliff" */}
       <Slide>
         <Tag>Failure Modes</Tag>
         <Heading>The "Maintenance Cliff"</Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/2">
             <Card>
               <ContentTitle>The Breaking Point</ContentTitle>
@@ -279,7 +279,7 @@ export default function AgenticAIPresentation() {
               Have you ever built or relied on a system you didn't fully understand? How did you handle the situation when it eventually broke?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 13: Security Vulnerabilities and AI */}
@@ -287,7 +287,7 @@ export default function AgenticAIPresentation() {
         <Tag>Security</Tag>
         <Heading>Security Vulnerabilities</Heading>
         <Subtitle variant="section">Blindly accepting AI-generated code</Subtitle>
-        <Grid gap="large">
+        <Row gap="large">
           <Column spanRatio="1/2">
             <ContentText layout="base">
               Professional teams pivot agentic AI to act as automated, adversarial security reviewers to analyze outputs for vulnerabilities.
@@ -298,14 +298,14 @@ export default function AgenticAIPresentation() {
               Should we trust AI to audit its own code for security flaws, or does security review fundamentally require a human perspective?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 14: The Illusion of Competence */}
       <Slide>
         <Tag>Skills Gap</Tag>
         <Heading>The Illusion of Competence</Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/2">
             <AnimatedList>
               <ListItem>Writing reliable software requires specifying edge cases, designing UX, and planning for scale.</ListItem>
@@ -318,7 +318,7 @@ export default function AgenticAIPresentation() {
               How do we train the next generation of technologists to spot edge cases when the AI does the heavy lifting for them?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 15: The Shift: Instruction vs. Orchestration */}
@@ -326,7 +326,7 @@ export default function AgenticAIPresentation() {
         <Tag>Evolution</Tag>
         <Heading>Instruction vs. <Highlight>Orchestration</Highlight></Heading>
         <Subtitle variant="section">A historical shift in human-computer interaction</Subtitle>
-        <Grid gap="large">
+        <Row gap="large">
           <Column spanRatio="1/2">
             <Card>
               <ContentTitle>From 'How' to 'What'</ContentTitle>
@@ -340,14 +340,14 @@ export default function AgenticAIPresentation() {
               As we fully transition to an orchestration mindset, what traditional tech skills will become obsolete, and what new skills will become the most valuable?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
       {/* Slide 16: Building a Maintainable Future */}
       <Slide>
         <Tag>Conclusion</Tag>
         <Heading>Building a Maintainable Future</Heading>
-        <Grid gap="large" items="center">
+        <Row gap="large" items="center">
           <Column spanRatio="1/2">
             <ContentText layout="prose">
               The future relies on combining the creative freedom of "vibes" with the strict guardrails of traditional software engineering.
@@ -361,7 +361,7 @@ export default function AgenticAIPresentation() {
               What is one practical step or policy your team can implement tomorrow to begin adapting to the Agentic AI and vibe coding era?
             </DiscussionCard>
           </Column>
-        </Grid>
+        </Row>
       </Slide>
 
     </SlideDeck>

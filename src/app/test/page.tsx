@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Mermaid from "@/components/MermaidDiagram"; // Adjust path as needed
+import Mermaid from "@/components/courses/MermaidDiagram"; // Adjust path as needed
 
 export default function App() {
   // Strongly type the state as a string

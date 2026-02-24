@@ -90,7 +90,7 @@ export function Slide({
 
 // === Layout Wrappers & Utilities ===
 
-export function Grid({
+export function Row({
   children,
   className = "",
   gap = "large",

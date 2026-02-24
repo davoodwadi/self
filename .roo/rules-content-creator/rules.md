@@ -1,6 +1,6 @@
-## 4. Preparation & Architecture Phase
-### 4.1 Course Structure
-- **Directories**: Each week resides in its own `src/app/kebab-case` Next.js route directory (e.g., `src/app/01-introduction`, `src/app/07-EDII`).
+## Preparation & Architecture Phase
+### Course Structure
+- **Directories**: Each week resides in its own `kebab-case` Next.js route directory (e.g., `01-introduction`, `07-EDII`).
 - **Initialization**: Create a `content.md` for lecture notes and a `page.tsx` for the interactive slide presentation.
 - **Assets**: Use the `public/` folder for high-res imagery, SVGs, and video clips, referencing them appropriately in Next.js.
 
