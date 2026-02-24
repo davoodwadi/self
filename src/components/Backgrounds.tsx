@@ -12,6 +12,7 @@ if (typeof window !== "undefined") {
 // Map background strings from frontmatter to actual React components
 const backgrounds: Record<string, React.FC> = {
   edii: EDIITreeBackground,
+  agentic: AgenticAITreeBackground,
   // More backgrounds can be added here
 };
 
@@ -155,6 +156,168 @@ function EDIITreeBackground() {
       beamGeometry.dispose();
       weightGeometry.dispose();
       scaleMaterial.dispose();
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+    />
+  );
+}
+
+function AgenticAITreeBackground() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000,
+    );
+    camera.position.z = 40;
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvasRef.current,
+      alpha: true,
+      antialias: true,
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const particlesGroup = new THREE.Group();
+    
+    // Create an interconnected node network to represent Agentic AI
+    const particleCount = 150;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+    
+    // Crimson and Charcoal color mix
+    const color1 = new THREE.Color(0x8B0000); // Crimson
+    const color2 = new THREE.Color(0x2D2D32); // Charcoal Light
+
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 60;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 60;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 60;
+
+      const mixRatio = Math.random();
+      const mixedColor = color1.clone().lerp(color2, mixRatio);
+      colors[i * 3] = mixedColor.r;
+      colors[i * 3 + 1] = mixedColor.g;
+      colors[i * 3 + 2] = mixedColor.b;
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+    const material = new THREE.PointsMaterial({
+      size: 0.6,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.8,
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    particlesGroup.add(particles);
+
+    // Create lines connecting nearby nodes
+    const lineMaterial = new THREE.LineBasicMaterial({
+      color: 0x8B0000,
+      transparent: true,
+      opacity: 0.15,
+    });
+
+    const lineGeometry = new THREE.BufferGeometry();
+    const linePositions = [];
+
+    // Simple brute-force connection for a low number of particles
+    for (let i = 0; i < particleCount; i++) {
+      for (let j = i + 1; j < particleCount; j++) {
+        const dx = positions[i * 3] - positions[j * 3];
+        const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+        const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+        const distSq = dx * dx + dy * dy + dz * dz;
+
+        if (distSq < 150) {
+          linePositions.push(
+            positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
+            positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]
+          );
+        }
+      }
+    }
+
+    lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+    const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+    particlesGroup.add(lines);
+
+    scene.add(particlesGroup);
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    const windowHalfX = window.innerWidth / 2;
+    const windowHalfY = window.innerHeight / 2;
+
+    const onDocumentMouseMove = (event: MouseEvent) => {
+      mouseX = (event.clientX - windowHalfX) * 0.05;
+      mouseY = (event.clientY - windowHalfY) * 0.05;
+    };
+
+    document.addEventListener("mousemove", onDocumentMouseMove);
+
+    const animate = () => {
+      requestAnimationFrame(animate);
+      targetX = mouseX * 0.5;
+      targetY = mouseY * 0.5;
+
+      const time = Date.now() * 0.0002;
+      particlesGroup.rotation.y = time;
+      particlesGroup.rotation.x = time * 0.5;
+
+      camera.position.x += (targetX - camera.position.x) * 0.05;
+      camera.position.y += (-targetY - camera.position.y) * 0.05;
+      camera.lookAt(scene.position);
+
+      renderer.render(scene, camera);
+    };
+    animate();
+
+    ScrollTrigger.create({
+      start: "top top",
+      end: "bottom bottom",
+      onUpdate: (self) => {
+        gsap.to(particlesGroup.rotation, {
+          y: self.progress * Math.PI * 2,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      },
+    });
+
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("mousemove", onDocumentMouseMove);
+      renderer.dispose();
+      geometry.dispose();
+      material.dispose();
+      lineGeometry.dispose();
+      lineMaterial.dispose();
     };
   }, []);
 
