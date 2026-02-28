@@ -106,7 +106,10 @@ export default function DavoodWadiPortfolio() {
         </section>
 
         {/* 2. About Section */}
-        <section id="about" className="py-24 px-6 md:py-32 relative">
+        <section
+          id="about"
+          className="min-h-screen flex items-center justify-center py-24 px-6 md:py-32 relative"
+        >
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <div className="w-full md:w-1/3 fade-up">
@@ -151,9 +154,9 @@ export default function DavoodWadiPortfolio() {
         {/* 3. Domains of Expertise */}
         <section
           id="expertise"
-          className="py-24 px-6 bg-dark-800/30 border-y border-white/5 relative"
+          className="min-h-screen flex items-center justify-center py-24 px-6 bg-dark-800/30 border-y border-white/5 relative"
         >
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto w-full">
             <div className="text-center mb-16 fade-up">
               <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">
                 Domains of Expertise
@@ -313,8 +316,8 @@ export default function DavoodWadiPortfolio() {
         </section>
 
         {/* 4. Selected Publications & Service */}
-        <section id="publications" className="py-24 px-6 relative">
-          <div className="max-w-6xl mx-auto space-y-20">
+        <section id="publications" className="min-h-screen flex items-center justify-center py-24 px-6 relative">
+          <div className="max-w-6xl mx-auto w-full space-y-20">
             {/* Publications Sub-section */}
             <div>
               <div className="flex flex-col md:flex-row justify-between items-end mb-12 fade-up">
@@ -495,9 +498,9 @@ export default function DavoodWadiPortfolio() {
         {/* 5. Contact Section */}
         <section
           id="contact"
-          className="py-24 px-6 md:py-32 bg-dark-800/50 border-y border-white/5 relative"
+          className="min-h-screen flex items-center justify-center py-24 px-6 md:py-32 bg-dark-800/50 border-y border-white/5 relative"
         >
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-16">
+          <div className="max-w-4xl mx-auto w-full flex flex-col md:flex-row gap-16">
             <div className="w-full md:w-1/2 fade-up">
               <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">
                 Let's Connect
