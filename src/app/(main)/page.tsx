@@ -38,32 +38,20 @@ export default function DavoodWadiPortfolio() {
           className="min-h-screen flex items-center justify-center relative px-6 pt-20"
         >
           <div className="max-w-5xl mx-auto text-center z-10">
-            <div
-              className="inline-block mb-4 px-3 py-1 rounded-full border border-accent-500/30 bg-accent-500/10 text-accent-400 text-xs font-semibold tracking-widest uppercase fade-up"
-              style={{ transitionDelay: "100ms" }}
-            >
+            <div className="inline-block mb-4 px-3 py-1 rounded-full border border-accent-500/30 bg-accent-500/10 text-accent-400 text-xs font-semibold tracking-widest uppercase fade-up">
               Academic & Technologist
             </div>
-            <h1
-              className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 tracking-tight gradient-text fade-up"
-              style={{ transitionDelay: "200ms" }}
-            >
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 tracking-tight gradient-text fade-up">
               Davood Wadi
             </h1>
-            <p
-              className="text-lg md:text-2xl text-gray-400 font-light mb-10 max-w-3xl mx-auto leading-relaxed fade-up"
-              style={{ transitionDelay: "300ms" }}
-            >
+            <p className="text-lg md:text-2xl text-gray-400 font-light mb-10 max-w-3xl mx-auto leading-relaxed fade-up">
               Bridging{" "}
               <span className="text-white font-medium">Academic Rigor</span>,{" "}
               <span className="text-accent-400 font-medium">AI Innovation</span>
               , and{" "}
               <span className="text-white font-medium">Market Strategy</span>.
             </p>
-            <div
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 fade-up"
-              style={{ transitionDelay: "400ms" }}
-            >
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 fade-up">
               <a
                 href="#expertise"
                 className="px-8 py-4 bg-white text-dark-900 font-medium rounded-full hover:bg-gray-200 transition-all transform hover:scale-105"
@@ -80,10 +68,7 @@ export default function DavoodWadiPortfolio() {
           </div>
 
           {/* Scroll Indicator */}
-          <div
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce fade-up"
-            style={{ transitionDelay: "800ms" }}
-          >
+          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce fade-up">
             <a
               href="#about"
               className="text-gray-500 hover:text-white transition-colors"
@@ -122,10 +107,7 @@ export default function DavoodWadiPortfolio() {
                   />
                 </div>
               </div>
-              <div
-                className="w-full md:w-2/3 fade-up"
-                style={{ transitionDelay: "200ms" }}
-              >
+              <div className="w-full md:w-2/3 fade-up">
                 <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6 border-b border-gray-800 pb-4">
                   The Intersection of{" "}
                   <span className="gradient-text-accent">
@@ -169,10 +151,7 @@ export default function DavoodWadiPortfolio() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Academic */}
-              <div
-                className="glass-card rounded-2xl p-8 fade-up"
-                style={{ transitionDelay: "100ms" }}
-              >
+              <div className="glass-card rounded-2xl p-8">
                 <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-accent-400"
@@ -219,10 +198,7 @@ export default function DavoodWadiPortfolio() {
               </div>
 
               {/* AI Science */}
-              <div
-                className="glass-card rounded-2xl p-8 fade-up"
-                style={{ transitionDelay: "200ms" }}
-              >
+              <div className="glass-card rounded-2xl p-8">
                 <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-accent-400"
@@ -263,10 +239,7 @@ export default function DavoodWadiPortfolio() {
               </div>
 
               {/* Marketing */}
-              <div
-                className="glass-card rounded-2xl p-8 fade-up"
-                style={{ transitionDelay: "300ms" }}
-              >
+              <div className="glass-card rounded-2xl p-8">
                 <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-accent-400"
@@ -316,7 +289,10 @@ export default function DavoodWadiPortfolio() {
         </section>
 
         {/* 4. Selected Publications & Service */}
-        <section id="publications" className="min-h-screen flex items-center justify-center py-24 px-6 relative">
+        <section
+          id="publications"
+          className="min-h-screen flex items-center justify-center py-24 px-6 relative"
+        >
           <div className="max-w-6xl mx-auto w-full space-y-20">
             {/* Publications Sub-section */}
             <div>
@@ -332,10 +308,7 @@ export default function DavoodWadiPortfolio() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div
-                  className="glass-card p-6 rounded-xl flex flex-col justify-between group fade-up"
-                  style={{ transitionDelay: "100ms" }}
-                >
+                <div className="glass-card p-6 rounded-xl flex flex-col justify-between group fade-up">
                   <div className="relative">
                     <div className="flex items-center gap-3 mb-4">
                       <span className="px-2 py-1 bg-white/10 rounded text-xs font-medium text-gray-300">
@@ -368,10 +341,7 @@ export default function DavoodWadiPortfolio() {
                   </p>
                 </div>
 
-                <div
-                  className="glass-card p-6 rounded-xl flex flex-col justify-between group fade-up"
-                  style={{ transitionDelay: "200ms" }}
-                >
+                <div className="glass-card p-6 rounded-xl flex flex-col justify-between group fade-up">
                   <div className="relative">
                     <div className="flex items-center gap-3 mb-4">
                       <span className="px-2 py-1 bg-white/10 rounded text-xs font-medium text-gray-300">
@@ -443,7 +413,7 @@ export default function DavoodWadiPortfolio() {
                 </div>
               </div>
 
-              <div className="fade-up" style={{ transitionDelay: "200ms" }}>
+              <div className="fade-up">
                 <h2 className="text-2xl md:text-3xl font-serif font-bold mb-8">
                   Academic Service
                 </h2>
@@ -570,10 +540,7 @@ export default function DavoodWadiPortfolio() {
               </div>
             </div>
 
-            <div
-              className="w-full md:w-1/2 fade-up"
-              style={{ transitionDelay: "200ms" }}
-            >
+            <div className="w-full md:w-1/2 fade-up">
               <form className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
