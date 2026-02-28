@@ -20,3 +20,7 @@ Prefer `replace_string_in_file` to using terminal `cat` to append to files.
 # Debugging nextjs
 
 Use the init tool to set up Next.js DevTools context
+
+# Rules for writing
+
+- Do not use M-dash or N-dash.

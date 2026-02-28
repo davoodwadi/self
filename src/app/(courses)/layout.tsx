@@ -15,8 +15,8 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Davood Wadi, Ph.D.",
-  description: "Davood Wadi, Ph.D.",
+  title: "Courses - Davood Wadi, Ph.D.",
+  description: "Courses - Davood Wadi, Ph.D.",
 };
 
 export default function RootLayout({

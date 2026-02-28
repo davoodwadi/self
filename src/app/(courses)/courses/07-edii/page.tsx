@@ -18,9 +18,9 @@ import {
   ListItem,
   Callout,
   MediaBlock,
-} from "@/components/courses/SlideComponents";
-import { BackgroundManager } from "@/components/courses/Backgrounds";
-import Mermaid from "@/components/courses/MermaidDiagram";
+} from "@/app/(courses)/_components/SlideComponents";
+import { BackgroundManager } from "@/app/(courses)/_components/Backgrounds";
+import Mermaid from "@/app/(courses)/_components/MermaidDiagram";
 
 export default function Presentation() {
   return (
