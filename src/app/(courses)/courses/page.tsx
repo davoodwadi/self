@@ -257,7 +257,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {/* Week 1 */}
-            <Link href="/01-introduction" className="course-card block group">
+            <Link href="/courses/01-introduction" className="course-card block group">
               <div className="relative bg-[var(--background)] border-t-[4px] border-t-[var(--crimson)] p-8 h-full transition-all duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] overflow-hidden">
                 <span className="text-[var(--crimson)] font-bold tracking-widest uppercase text-xs mb-3 block">
                   Week 01
@@ -277,7 +277,7 @@ export default function Home() {
 
             {/* Week 6 */}
             <Link
-              href="/06-introduction-to-deep-learning"
+              href="/courses/06-introduction-to-deep-learning"
               className="course-card block group"
             >
               <div className="relative bg-[var(--background)] border-t-[4px] border-t-[var(--gold)] p-8 h-full transition-all duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] overflow-hidden">
@@ -297,7 +297,7 @@ export default function Home() {
             </Link>
 
             {/* Week 7 */}
-            <Link href="/07-edii" className="course-card block group">
+            <Link href="/courses/07-edii" className="course-card block group">
               <div className="relative bg-[var(--background)] border-t-[4px] border-t-[var(--gold)] p-8 h-full transition-all duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] overflow-hidden">
                 <span className="text-[var(--gold)] font-bold tracking-widest uppercase text-xs mb-3 block">
                   Week 07
@@ -316,7 +316,7 @@ export default function Home() {
             </Link>
 
             {/* Agentic AI */}
-            <Link href="/agentic-ai" className="course-card block group">
+            <Link href="/courses/agentic-ai" className="course-card block group">
               <div className="relative bg-[var(--background)] border-t-[4px] border-t-[var(--gold)] p-8 h-full transition-all duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] overflow-hidden">
                 <span className="text-[var(--gold)] font-bold tracking-widest uppercase text-xs mb-3 block">
                   New Paradigm
@@ -325,7 +325,8 @@ export default function Home() {
                   Agentic AI and Vibe Coding
                 </h3>
                 <p className="text-[var(--charcoal-light)] font-light text-sm leading-relaxed mb-8">
-                  Moving away from manual syntax to autonomous agents and orchestration.
+                  Moving away from manual syntax to autonomous agents and
+                  orchestration.
                 </p>
                 <div className="inline-block px-8 py-3 bg-[var(--gold)] text-[var(--charcoal)] font-semibold text-sm tracking-wide uppercase border border-[var(--gold)] transition-all duration-300 group-hover:bg-[var(--charcoal)] group-hover:text-[var(--surface)] group-hover:border-[var(--charcoal)] group-hover:-translate-y-0.5 group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.1)]">
                   View Deck
