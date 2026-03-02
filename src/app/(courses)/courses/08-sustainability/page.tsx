@@ -34,6 +34,8 @@ import {
   compressionFlow,
   hardwareLifecycleFlow,
   redGreenFlow,
+  weatherPredictionFlow,
+  neuromorphicFlow,
 } from "./flowcharts";
 
 import FlowRenderer from "../../_components/FlowRenderer";
@@ -407,22 +409,21 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
+              <div className="w-full h-[280px] sm:h-[300px] md:h-[320px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mb-6">
+                <FlowRenderer {...weatherPredictionFlow} />
+              </div>
               <Row gap="small">
                 <Metric value="10 Days" label="Advance Forecasting" />
                 <Metric value="0.25°" label="High Resolution" />
               </Row>
-              <AnimatedList className="mt-8">
+              <AnimatedList className="mt-6">
                 <ListItem>
-                  AI outperforms traditional Numerical Weather Prediction (NWP)
-                  in speed and efficiency.
+                  GraphCast predicts weather 10 days in advance using Graph
+                  Neural Networks <Citation ids={[19]} />.
                 </ListItem>
                 <ListItem>
-                  GraphCast: Predicts weather 10 days in advance with high
-                  accuracy <Citation ids={[19]} />.
-                </ListItem>
-                <ListItem>
-                  Operates at 0.25-degree resolution using Graph Neural Networks{" "}
-                  <Citation ids={[19]} />.
+                  Outperforms traditional Numerical Weather Prediction (NWP) in
+                  speed and energy efficiency.
                 </ListItem>
               </AnimatedList>
             </Column>
@@ -661,6 +662,9 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
+              <div className="w-full h-[280px] sm:h-[300px] md:h-[320px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mb-6">
+                <FlowRenderer {...neuromorphicFlow} />
+              </div>
               <AnimatedList>
                 <ListItem>
                   Hardware inspired by the human brain's architecture.

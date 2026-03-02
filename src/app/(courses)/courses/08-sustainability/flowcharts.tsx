@@ -1,18 +1,26 @@
 import {
   Binary,
   Brain,
+  BrainCircuit,
+  CloudLightning,
   Cog,
+  Cpu,
+  Database,
   Factory,
   Flame,
   FlaskConical,
+  Globe,
   Laptop,
   Leaf,
+  Network,
   Pickaxe,
   Recycle,
   Ruler,
   Scissors,
   ShoppingCart,
   Target,
+  Thermometer,
+  Timer,
   Trash2,
 } from "lucide-react";
 
@@ -108,6 +116,228 @@ export const hardwareLifecycleFlow = {
         strokeWidth: 1.5,
         opacity: 0.6,
       },
+    },
+  ],
+};
+
+// Weather Prediction Architecture - Split Lane Comparison
+export const weatherPredictionFlow = {
+  aiGeneratedNodes: [
+    // Top Lane: Traditional NWP
+    {
+      id: "N1",
+      position: { x: 0, y: 0 },
+      data: {
+        label: "Traditional NWP",
+        sublabel: "Physics Models",
+        icon: <Thermometer size={20} strokeWidth={1.5} />,
+        color: PRIMARY,
+      },
+    },
+    {
+      id: "N2",
+      position: { x: 320, y: 0 },
+      data: {
+        label: "Supercomputing",
+        sublabel: "Massive Compute",
+        icon: <Database size={20} strokeWidth={1.5} />,
+        color: PRIMARY,
+      },
+    },
+    {
+      id: "N3",
+      position: { x: 640, y: 0 },
+      data: {
+        label: "Slow Output",
+        sublabel: "Hours to Run",
+        icon: <Timer size={20} strokeWidth={1.5} />,
+        color: PRIMARY,
+      },
+    },
+
+    // Bottom Lane: GraphCast / AI
+    {
+      id: "A1",
+      position: { x: 0, y: 160 },
+      data: {
+        label: "AI Architecture",
+        sublabel: "Graph Neural Nets",
+        icon: <Network size={20} strokeWidth={1.5} />,
+        color: SUSTAINABLE,
+      },
+    },
+    {
+      id: "A2",
+      position: { x: 320, y: 160 },
+      data: {
+        label: "Edge Inference",
+        sublabel: "Single GPU",
+        icon: <Cpu size={20} strokeWidth={1.5} />,
+        color: SUSTAINABLE,
+      },
+    },
+    {
+      id: "A3",
+      position: { x: 640, y: 160 },
+      data: {
+        label: "Instant Output",
+        sublabel: "10-Day Forecast",
+        icon: <CloudLightning size={20} strokeWidth={1.5} />,
+        color: SUSTAINABLE,
+      },
+    },
+  ],
+  aiGeneratedEdges: [
+    {
+      id: "eN1-N2",
+      source: "N1",
+      target: "N2",
+      sourceHandle: "right-source",
+      targetHandle: "left",
+      type: "smoothstep",
+      animated: true,
+      style: { stroke: PRIMARY, strokeWidth: 1.5, opacity: 0.6 },
+    },
+    {
+      id: "eN2-N3",
+      source: "N2",
+      target: "N3",
+      sourceHandle: "right-source",
+      targetHandle: "left",
+      type: "smoothstep",
+      animated: true,
+      style: { stroke: PRIMARY, strokeWidth: 1.5, opacity: 0.6 },
+    },
+    {
+      id: "eA1-A2",
+      source: "A1",
+      target: "A2",
+      sourceHandle: "right-source",
+      targetHandle: "left",
+      type: "smoothstep",
+      animated: true,
+      style: { stroke: SUSTAINABLE, strokeWidth: 1.5, opacity: 0.6 },
+    },
+    {
+      id: "eA2-A3",
+      source: "A2",
+      target: "A3",
+      sourceHandle: "right-source",
+      targetHandle: "left",
+      type: "smoothstep",
+      animated: true,
+      style: { stroke: SUSTAINABLE, strokeWidth: 1.5, opacity: 0.6 },
+    },
+  ],
+};
+
+// Neuromorphic Computing Architecture - Comparison
+export const neuromorphicFlow = {
+  aiGeneratedNodes: [
+    // Top Row: von Neumann (Red/Primary)
+    {
+      id: "V1",
+      position: { x: 0, y: 0 },
+      data: {
+        label: "von Neumann",
+        sublabel: "Standard GPU",
+        icon: <Cpu size={20} strokeWidth={1.5} />,
+        color: PRIMARY,
+      },
+    },
+    {
+      id: "V2",
+      position: { x: 320, y: 0 },
+      data: {
+        label: "Memory Transfer",
+        sublabel: "High Energy Cost",
+        icon: <Database size={20} strokeWidth={1.5} />,
+        color: PRIMARY,
+      },
+    },
+    {
+      id: "V3",
+      position: { x: 640, y: 0 },
+      data: {
+        label: "Static Power",
+        sublabel: "Always Active",
+        icon: <Flame size={20} strokeWidth={1.5} />,
+        color: PRIMARY,
+      },
+    },
+
+    // Bottom Row: Neuromorphic (Green/Sustainable)
+    {
+      id: "M1",
+      position: { x: 0, y: 160 },
+      data: {
+        label: "Neuromorphic",
+        sublabel: "Spiking Networks",
+        icon: <BrainCircuit size={20} strokeWidth={1.5} />,
+        color: SUSTAINABLE,
+      },
+    },
+    {
+      id: "M2",
+      position: { x: 320, y: 160 },
+      data: {
+        label: "Collocated Memory",
+        sublabel: "Zero Data Movement",
+        icon: <Globe size={20} strokeWidth={1.5} />,
+        color: SUSTAINABLE,
+      },
+    },
+    {
+      id: "M3",
+      position: { x: 640, y: 160 },
+      data: {
+        label: "Event Driven",
+        sublabel: "Active Only Needed",
+        icon: <Leaf size={20} strokeWidth={1.5} />,
+        color: SUSTAINABLE,
+      },
+    },
+  ],
+  aiGeneratedEdges: [
+    {
+      id: "eV1-V2",
+      source: "V1",
+      target: "V2",
+      sourceHandle: "right-source",
+      targetHandle: "left",
+      type: "smoothstep",
+      animated: true,
+      style: { stroke: PRIMARY, strokeWidth: 1.5, opacity: 0.6 },
+    },
+    {
+      id: "eV2-V3",
+      source: "V2",
+      target: "V3",
+      sourceHandle: "right-source",
+      targetHandle: "left",
+      type: "smoothstep",
+      animated: true,
+      style: { stroke: PRIMARY, strokeWidth: 1.5, opacity: 0.6 },
+    },
+    {
+      id: "eM1-M2",
+      source: "M1",
+      target: "M2",
+      sourceHandle: "right-source",
+      targetHandle: "left",
+      type: "smoothstep",
+      animated: true,
+      style: { stroke: SUSTAINABLE, strokeWidth: 1.5, opacity: 0.6 },
+    },
+    {
+      id: "eM2-M3",
+      source: "M2",
+      target: "M3",
+      sourceHandle: "right-source",
+      targetHandle: "left",
+      type: "smoothstep",
+      animated: true,
+      style: { stroke: SUSTAINABLE, strokeWidth: 1.5, opacity: 0.6 },
     },
   ],
 };
