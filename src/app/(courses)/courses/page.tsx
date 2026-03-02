@@ -282,7 +282,7 @@ export default function Home() {
               label="Week 07"
               title="EDII in AI"
               description="Equity, Diversity, Inclusion, and Indigeneity. The ethical and operational risks of algorithmic bias."
-              variant="gold"
+              variant="crimson"
             />
 
             <CourseCard
@@ -294,11 +294,19 @@ export default function Home() {
             />
 
             <CourseCard
+              href="/courses/09-product-development"
+              label="Week 09"
+              title="AI in Product Development"
+              description="Latest agentic AI tools for product development."
+              variant="gold"
+            />
+
+            <CourseCard
               href="/courses/agentic-ai"
               label="New Paradigm"
               title="Agentic AI and Vibe Coding"
               description="Moving away from manual syntax to autonomous agents and orchestration."
-              variant="gold"
+              variant="crimson"
             />
           </div>
         </main>

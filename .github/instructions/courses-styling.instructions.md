@@ -23,6 +23,30 @@ The design is authoritative, academic, and tailored for an MBA and executive aud
 - **Charcoal Light:** `#2D2D32` (Body text).
 - **Subtle Gold:** `#D4AF37` (Fine details, dividers, premium accents).
 
+### Palette Enforcement And Safe Expansion
+
+Use the course palette as the base system for all new UI and diagrams in `(courses)`.
+
+1. Always anchor designs to these core tokens:
+	- `--surface` (`#FFFFFF`)
+	- `--crimson` (`#8B0000`)
+	- `--crimson-light` (`#A52A2A`)
+	- `--charcoal` (`#1A1A1D`)
+	- `--charcoal-light` (`#2D2D32`)
+	- `--gold` (`#D4AF37`)
+2. New colors are allowed only as controlled accents that follow the same pattern:
+	- deep, muted, academic tones
+	- avoid neon, pastel, or highly saturated hues
+	- keep contrast strong against cream and white surfaces
+3. For diagrams, use this semantic structure by default:
+	- primary path: crimson family
+	- supporting or neutral stages: charcoal family
+	- premium highlight or key edge labels: gold family
+4. If a slide requires an additional hue (for explicit semantic contrast such as sustainable outcome), use one restrained complementary family and keep it dark and muted.
+5. Do not introduce more than 4 hue families in one diagram, including core palette hues.
+6. Prefer CSS variables and tokenized colors when possible. If a raw hex value is needed in flowchart config, ensure it visually matches the academic palette style.
+7. Document non-core accent meaning with a short code comment above each diagram constant.
+
 ### Typography
 
 - **Headings (Merriweather):** High-end institutional feel. Use `'Merriweather', serif`.

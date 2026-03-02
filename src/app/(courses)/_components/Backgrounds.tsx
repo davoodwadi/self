@@ -347,7 +347,7 @@ function AgenticAITreeBackground() {
     const particlesGroup = new THREE.Group();
 
     // Create an interconnected node network to represent Agentic AI
-    const particleCount = 150;
+    const particleCount = 100;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
@@ -375,7 +375,7 @@ function AgenticAITreeBackground() {
       size: 0.6,
       vertexColors: true,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.02,
     });
 
     const particles = new THREE.Points(geometry, material);
@@ -385,7 +385,7 @@ function AgenticAITreeBackground() {
     const lineMaterial = new THREE.LineBasicMaterial({
       color: 0x8b0000,
       transparent: true,
-      opacity: 0.15,
+      opacity: 0.05,
     });
 
     const lineGeometry = new THREE.BufferGeometry();
@@ -437,15 +437,15 @@ function AgenticAITreeBackground() {
 
     const animate = () => {
       requestAnimationFrame(animate);
-      targetX = mouseX * 0.5;
-      targetY = mouseY * 0.5;
+      targetX = mouseX * 0.005;
+      targetY = mouseY * 0.005;
 
-      const time = Date.now() * 0.0002;
+      const time = Date.now() * 0.00002;
       particlesGroup.rotation.y = time;
-      particlesGroup.rotation.x = time * 0.5;
+      particlesGroup.rotation.x = time * 0.2;
 
-      camera.position.x += (targetX - camera.position.x) * 0.05;
-      camera.position.y += (-targetY - camera.position.y) * 0.05;
+      camera.position.x += (targetX - camera.position.x) * 0.0005;
+      camera.position.y += (-targetY - camera.position.y) * 0.0005;
       camera.lookAt(scene.position);
 
       renderer.render(scene, camera);

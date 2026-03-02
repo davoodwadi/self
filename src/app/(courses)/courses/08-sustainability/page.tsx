@@ -21,7 +21,6 @@ import {
   Metric,
   Callout,
   Quote,
-  FlowChart,
   PieChart,
 } from "@/app/(courses)/_components/SlideComponents";
 import { BackgroundManager } from "@/app/(courses)/_components/Backgrounds";
@@ -31,13 +30,13 @@ import {
   getCitationUrls,
 } from "./deepResearchCitations";
 import {
-  Cpu,
-  Factory,
-  Pickaxe,
-  Recycle,
-  ShoppingCart,
-  Trash2,
-} from "lucide-react";
+  circularEconomyFlow,
+  compressionFlow,
+  hardwareLifecycleFlow,
+  redGreenFlow,
+} from "./flowcharts";
+
+import FlowRenderer from "../../_components/FlowRenderer";
 
 export default function CourseName() {
   return (
@@ -294,33 +293,9 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <FlowChart
-                nodes={[
-                  {
-                    id: "extract",
-                    label: "Extraction",
-                    icon: <Pickaxe strokeWidth={1.8} />,
-                  },
-                  {
-                    id: "mfg",
-                    label: "Manufacturing",
-                    icon: <Factory strokeWidth={1.8} />,
-                  },
-                  { id: "use", label: "Use", icon: <Cpu strokeWidth={1.8} /> },
-                  {
-                    id: "dispose",
-                    label: "Disposal",
-                    icon: <Recycle strokeWidth={1.8} />,
-                  },
-                ]}
-                edges={[
-                  { from: "extract", to: "mfg" },
-                  { from: "mfg", to: "use" },
-                  { from: "use", to: "dispose" },
-                ]}
-                layout="elk-horizontal"
-                caption="The full lifecycle of AI hardware"
-              />
+              <div className="w-full h-[280px] sm:h-[320px] md:h-[360px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80">
+                <FlowRenderer {...hardwareLifecycleFlow} />
+              </div>
               <AnimatedList className="mt-8">
                 <ListItem>
                   "Embodied footprint" includes extraction, manufacturing, and
@@ -577,24 +552,12 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <FlowChart
-                nodes={[
-                  { id: "R1", label: "Maximize Accuracy", group: "Red AI" },
-                  { id: "R2", label: "Massive Models", group: "Red AI" },
-                  { id: "R3", label: "High Carbon Cost", group: "Red AI" },
-                  { id: "G1", label: "Efficiency Metric", group: "Green AI" },
-                  { id: "G2", label: "Optimized Models", group: "Green AI" },
-                  { id: "G3", label: "Sustainable Scale", group: "Green AI" },
-                ]}
-                edges={[
-                  { from: "R1", to: "R2" },
-                  { from: "R2", to: "R3" },
-                  { from: "G1", to: "G2" },
-                  { from: "G2", to: "G3" },
-                ]}
-                layout="elk"
-                caption="Contrasting development philosophies"
-              />
+              <div className="w-full h-[320px] sm:h-[360px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80">
+                <FlowRenderer {...redGreenFlow} />
+              </div>
+              <p className="mt-4 text-center text-sm text-[var(--charcoal-light)]/70 italic">
+                Contrasting development philosophies
+              </p>
               <AnimatedList className="mt-8">
                 <ListItem>
                   Red AI: Buying performance with massive computational cost{" "}
@@ -626,25 +589,12 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <FlowChart
-                nodes={[
-                  { id: "Input", label: "Large Model" },
-                  { id: "Q", label: "Quantization" },
-                  { id: "P", label: "Pruning" },
-                  { id: "D", label: "Distillation" },
-                  { id: "Output", label: "Efficient Model" },
-                ]}
-                edges={[
-                  { from: "Input", to: "Q" },
-                  { from: "Input", to: "P" },
-                  { from: "Input", to: "D" },
-                  { from: "Q", to: "Output" },
-                  { from: "P", to: "Output" },
-                  { from: "D", to: "Output" },
-                ]}
-                layout="elk"
-                caption="Techniques to reduce model size and energy consumption"
-              />
+              <div className="w-full h-[340px] sm:h-[380px] md:h-[420px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80">
+                <FlowRenderer {...compressionFlow} />
+              </div>
+              <p className="mt-4 text-center text-sm text-[var(--charcoal-light)]/70 italic">
+                Techniques to reduce model size and energy consumption
+              </p>
               <AnimatedList className="mt-8">
                 <ListItem>
                   Quantization: Reducing precision (e.g., 32-bit to 4-bit) to
@@ -787,34 +737,12 @@ export default function CourseName() {
           <Heading>
             AI and the <Highlight>Circular</Highlight> Economy
           </Heading>
-          <FlowChart
-            nodes={[
-              {
-                id: "P",
-                label: "Production",
-                icon: <Factory strokeWidth={1.8} />,
-              },
-              {
-                id: "C",
-                label: "Consumption",
-                icon: <ShoppingCart strokeWidth={1.8} />,
-              },
-              { id: "W", label: "Waste", icon: <Trash2 strokeWidth={1.8} /> },
-              {
-                id: "R",
-                label: "Recycling",
-                icon: <Recycle strokeWidth={1.8} />,
-              },
-            ]}
-            edges={[
-              { from: "P", to: "C" },
-              { from: "C", to: "W" },
-              { from: "W", to: "R", label: "AI Sorting" },
-              { from: "R", to: "P", label: "Materials" },
-            ]}
-            layout="circular"
-            caption="Closing the loop with AI"
-          />
+          <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80">
+            <FlowRenderer {...circularEconomyFlow} />
+          </div>
+          <p className="mt-4 text-center text-sm text-[var(--charcoal-light)]/70 italic">
+            Closing the loop with AI
+          </p>
           <Row gap="large" className="mt-8">
             <Column spanRatio="2/3">
               <AnimatedList>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import mermaid from "mermaid";
 
 mermaid.initialize({
@@ -18,87 +18,111 @@ mermaid.initialize({
     clusterBorder: "#A52A2A",
     defaultLinkColor: "#A52A2A",
     edgeLabelBackground: "#ffffff00",
-    // noteBkgColor: "#8B0000",
-    // background: "#8B0000",
-    // fontFamily: "'Open Sans', sans-serif",
-    // fontSize: "16px",
+    fontFamily: "'Open Sans', sans-serif",
+    fontSize: "18px",
   },
   securityLevel: "loose",
-  // fontFamily: "'Open Sans', sans-serif",
+  fontFamily: "'Open Sans', sans-serif",
   flowchart: {
-    htmlLabels: false, // Forces SVG text instead of HTML wrapped text
+    htmlLabels: true,
+    useMaxWidth: true,
+    curve: "basis",
+    padding: 20,
+    nodeSpacing: 60,
+    rankSpacing: 70,
+    wrappingWidth: 200,
   },
 });
 
-/**
- * Renders Mermaid diagrams with Academic theme styling (Crimson #8B0000, Charcoal #1A1A1D).
- *
- * @example
- * // Flowchart
- * <Mermaid chart={`flowchart TD
- *   A[Research] --> B[Analysis]
- *   B --> C[Strategy]`}
- * />
- *
- * @example
- * // Decision flow
- * <Mermaid chart={`flowchart LR
- *   A[Start] --> B{Quality Check}
- *   B -->|Pass| C[Deploy]
- *   B -->|Fail| D[Fix]`}
- * />
- *
- * Best practices:
- * - Keep diagrams simple (5-7 nodes max)
- * - Use descriptive labels (2-4 words)
- */
 interface MermaidProps {
-  /** Mermaid diagram syntax. Supports flowcharts, sequence diagrams, state diagrams, ERDs, Gantt charts, mindmaps. */
+  /** Mermaid diagram syntax. Supports flowcharts, sequence, state, ER, Gantt, mindmap, etc. */
   chart: string;
-  /** Optional caption to display below the diagram */
+  /** Optional caption below the diagram */
   caption?: string;
+  /** Additional CSS classes for the outer container */
+  className?: string;
 }
 
-const Mermaid: React.FC<MermaidProps> = ({ chart, caption }) => {
-  // Strongly type the ref as an HTMLDivElement
+const Mermaid: React.FC<MermaidProps> = ({
+  chart,
+  caption,
+  className = "",
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
+
     const renderChart = async () => {
       if (!containerRef.current || !chart) return;
 
-      // 1. Wait for all web fonts to load before Mermaid calculates widths
       await document.fonts.ready;
 
       try {
-        containerRef.current.innerHTML = "";
+        setError(null);
         const id = `mermaid-${Math.random().toString(36).substring(2, 9)}`;
 
-        // 2. Use a tiny delay to ensure React has fully committed the DOM layout
-        setTimeout(async () => {
-          if (!containerRef.current) return;
+        // Use rAF to ensure React has committed DOM layout before rendering
+        requestAnimationFrame(async () => {
+          if (cancelled || !containerRef.current) return;
 
-          const { svg, bindFunctions } = await mermaid.render(id, chart);
-          containerRef.current.innerHTML = svg;
+          try {
+            const { svg, bindFunctions } = await mermaid.render(id, chart);
+            if (cancelled || !containerRef.current) return;
+            containerRef.current.innerHTML = svg;
 
-          if (bindFunctions) bindFunctions(containerRef.current);
-        }, 10); // 10ms is enough for the browser to catch up
-      } catch (error) {
-        console.error("Failed to render Mermaid diagram:", error);
+            // Force the SVG to fill the container width.
+            // Mermaid sets inline style="max-width: Npx" which constrains it.
+            const svgEl = containerRef.current.querySelector("svg");
+            if (svgEl) {
+              svgEl.removeAttribute("width");
+              svgEl.removeAttribute("height");
+              svgEl.style.width = "100%";
+              svgEl.style.maxWidth = "100%";
+              svgEl.style.height = "auto";
+            }
+
+            if (bindFunctions) bindFunctions(containerRef.current);
+          } catch (renderError) {
+            if (!cancelled) {
+              setError("Diagram could not be rendered.");
+              console.error("Mermaid render error:", renderError);
+            }
+          }
+        });
+      } catch (err) {
+        if (!cancelled) {
+          setError("Diagram could not be rendered.");
+          console.error("Mermaid setup error:", err);
+        }
       }
     };
 
     renderChart();
+    return () => {
+      cancelled = true;
+    };
   }, [chart]);
 
   return (
-    <div className="w-full flex flex-col items-center overflow-hidden">
-      <div
-        ref={containerRef}
-        className="mermaid-container w-full [&>svg]:!w-full [&>svg]:!max-w-full [&>svg]:h-auto"
-      />
+    <div
+      className={`gsap-reveal w-full flex flex-col items-center overflow-hidden ${className}`}
+    >
+      {error ? (
+        <div className="w-full rounded-lg border border-[var(--crimson)]/20 bg-[var(--surface)]/60 px-6 py-4 text-center">
+          <p className="text-sm text-[var(--charcoal-light)]/70 italic font-sans">
+            {error}
+          </p>
+        </div>
+      ) : (
+        <div
+          ref={containerRef}
+          className="mermaid-container w-full [&>svg]:!w-full [&>svg]:!max-w-full [&>svg]:h-auto"
+        />
+      )}
       {caption && (
-        <p className="mt-4 text-sm italic text-gray-400 text-center max-w-2xl">
+        <p className="mt-4 text-sm text-[var(--charcoal-light)]/70 italic text-center max-w-2xl font-serif">
           {caption}
         </p>
       )}
