@@ -21,15 +21,23 @@ import {
   Metric,
   Callout,
   Quote,
-  HardwareLifecycle,
+  FlowChart,
+  PieChart,
 } from "@/app/(courses)/_components/SlideComponents";
 import { BackgroundManager } from "@/app/(courses)/_components/Backgrounds";
-import Mermaid from "@/app/(courses)/_components/MermaidDiagram";
 import {
   getCitation,
   getCitations,
   getCitationUrls,
 } from "./deepResearchCitations";
+import {
+  Cpu,
+  Factory,
+  Pickaxe,
+  Recycle,
+  ShoppingCart,
+  Trash2,
+} from "lucide-react";
 
 export default function CourseName() {
   return (
@@ -145,10 +153,12 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <Mermaid
-                chart={`pie title AI Lifecycle Emissions
-                  "Inference" : 80
-                  "Training" : 20`}
+              <PieChart
+                title="AI Lifecycle Emissions"
+                data={[
+                  { label: "Inference", value: 80 },
+                  { label: "Training", value: 20 },
+                ]}
                 caption="Inference dominates the lifecycle emissions of deployed models"
               />
               <AnimatedList className="mt-8">
@@ -284,7 +294,33 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <HardwareLifecycle caption="The full lifecycle of AI hardware" />
+              <FlowChart
+                nodes={[
+                  {
+                    id: "extract",
+                    label: "Extraction",
+                    icon: <Pickaxe strokeWidth={1.8} />,
+                  },
+                  {
+                    id: "mfg",
+                    label: "Manufacturing",
+                    icon: <Factory strokeWidth={1.8} />,
+                  },
+                  { id: "use", label: "Use", icon: <Cpu strokeWidth={1.8} /> },
+                  {
+                    id: "dispose",
+                    label: "Disposal",
+                    icon: <Recycle strokeWidth={1.8} />,
+                  },
+                ]}
+                edges={[
+                  { from: "extract", to: "mfg" },
+                  { from: "mfg", to: "use" },
+                  { from: "use", to: "dispose" },
+                ]}
+                layout="elk-horizontal"
+                caption="The full lifecycle of AI hardware"
+              />
               <AnimatedList className="mt-8">
                 <ListItem>
                   "Embodied footprint" includes extraction, manufacturing, and
@@ -541,16 +577,22 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <Mermaid
-                chart={`graph TD
-                  subgraph Red["Red AI"]
-                    R1[Maximize Accuracy] --> R2[Massive Models]
-                    R2 --> R3[High Carbon Cost]
-                  end
-                  subgraph Green["Green AI"]
-                    G1[Efficiency Metric] --> G2[Optimized Models]
-                    G2 --> G3[Sustainable Scale]
-                  end`}
+              <FlowChart
+                nodes={[
+                  { id: "R1", label: "Maximize Accuracy", group: "Red AI" },
+                  { id: "R2", label: "Massive Models", group: "Red AI" },
+                  { id: "R3", label: "High Carbon Cost", group: "Red AI" },
+                  { id: "G1", label: "Efficiency Metric", group: "Green AI" },
+                  { id: "G2", label: "Optimized Models", group: "Green AI" },
+                  { id: "G3", label: "Sustainable Scale", group: "Green AI" },
+                ]}
+                edges={[
+                  { from: "R1", to: "R2" },
+                  { from: "R2", to: "R3" },
+                  { from: "G1", to: "G2" },
+                  { from: "G2", to: "G3" },
+                ]}
+                layout="elk"
                 caption="Contrasting development philosophies"
               />
               <AnimatedList className="mt-8">
@@ -584,14 +626,23 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <Mermaid
-                chart={`graph LR
-                  Input[Large Model] --> Q[Quantization]
-                  Input --> P[Pruning]
-                  Input --> D[Distillation]
-                  Q --> Output[Efficient Model]
-                  P --> Output
-                  D --> Output`}
+              <FlowChart
+                nodes={[
+                  { id: "Input", label: "Large Model" },
+                  { id: "Q", label: "Quantization" },
+                  { id: "P", label: "Pruning" },
+                  { id: "D", label: "Distillation" },
+                  { id: "Output", label: "Efficient Model" },
+                ]}
+                edges={[
+                  { from: "Input", to: "Q" },
+                  { from: "Input", to: "P" },
+                  { from: "Input", to: "D" },
+                  { from: "Q", to: "Output" },
+                  { from: "P", to: "Output" },
+                  { from: "D", to: "Output" },
+                ]}
+                layout="elk"
                 caption="Techniques to reduce model size and energy consumption"
               />
               <AnimatedList className="mt-8">
@@ -736,12 +787,32 @@ export default function CourseName() {
           <Heading>
             AI and the <Highlight>Circular</Highlight> Economy
           </Heading>
-          <Mermaid
-            chart={`graph LR
-                  P[Production] --> C[Consumption]
-                  C --> W[Waste]
-                  W -->|AI Sorting| R[Recycling]
-                  R -->|Materials| P`}
+          <FlowChart
+            nodes={[
+              {
+                id: "P",
+                label: "Production",
+                icon: <Factory strokeWidth={1.8} />,
+              },
+              {
+                id: "C",
+                label: "Consumption",
+                icon: <ShoppingCart strokeWidth={1.8} />,
+              },
+              { id: "W", label: "Waste", icon: <Trash2 strokeWidth={1.8} /> },
+              {
+                id: "R",
+                label: "Recycling",
+                icon: <Recycle strokeWidth={1.8} />,
+              },
+            ]}
+            edges={[
+              { from: "P", to: "C" },
+              { from: "C", to: "W" },
+              { from: "W", to: "R", label: "AI Sorting" },
+              { from: "R", to: "P", label: "Materials" },
+            ]}
+            layout="circular"
             caption="Closing the loop with AI"
           />
           <Row gap="large" className="mt-8">
