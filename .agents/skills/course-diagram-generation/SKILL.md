@@ -1,35 +1,22 @@
 ---
 name: course-diagram-generation
-description: "Generate and wire diagrams for existing `(courses)` slide decks by reading `page.tsx`, selecting diagram-worthy slides, creating `flowcharts.tsx` configs, and rendering them with `FlowRenderer`. Use when a course already has slides and only diagram creation or diagram refactoring is needed."
-argument-hint: "Course path with existing page.tsx to diagramize"
+description: Generate and wire diagrams for existing `(courses)` slide decks by reading `page.tsx`, selecting diagram-worthy slides, creating `flowcharts.tsx` configs, and rendering them with `FlowRenderer`. Use when a course already has slides and only diagram creation or diagram refactoring is needed.
 ---
 
-# Course Diagram Generation
-
-## Overview
+# course-diagram-generation
 
 This skill is for one job only: add or improve diagrams in an existing course `page.tsx` under `src/app/(courses)/courses/*`.
 
 Use this skill when slide content already exists and the task is to convert process-heavy slides into clear visual diagrams.
 
-## Inputs
+## Usage
 
-- Course folder with an existing `page.tsx`
-- Existing slide structure in `<SlideDeck>`
-- Optional existing `flowcharts.tsx`
-
-## Outputs
-
-- New or updated `flowcharts.tsx` in the same course folder
-- Updated `page.tsx` imports and diagram render blocks
-- Zero TypeScript errors from diagram-related changes
-
-## When To Use
+### When to use:
 
 - "Add diagrams to this existing course page"
 - "Improve readability of process slides with `FlowRenderer`"
 
-## Procedure
+## Steps
 
 ### 1. Inspect Existing Slides
 
@@ -79,7 +66,7 @@ Use this skill when slide content already exists and the task is to convert proc
    - `type: "smoothstep"`
    - `animated`
    - optional `style`
-6. Use `lucide-react` icons in node `icon` fields with `size={20}` and `strokeWidth={2}`.
+6. Use `lucide-react` icons in node `icon` fields with a delicate `size={20}` and `strokeWidth={1.5}`.
 7. Do not set `markerEnd` in diagram configs. `FlowRenderer` injects arrow markers automatically.
 
 ### 4b. Diagram Quality Standards (Mandatory)
@@ -89,25 +76,27 @@ These rules are strict and must be followed for every generated diagram.
 #### Layout And Spacing
 
 1. Use a rectilinear grid. Align nodes to cardinal directions only.
-2. Use `320px` horizontal spacing for sequence rows.
-3. Use `160px` or `280px` vertical spacing for layered rows.
-4. Do not use ad-hoc spacing values such as `250px`, `500px`, or `550px`.
-5. Only use circular placement when the slide explicitly describes a loop and add a short comment documenting why.
-6. Keep diagram spans within these bounds:
+2. Use `320px` horizontal spacing for sequence steps.
+3. Use `160px` or `280px` vertical spacing for layered rows or cascading steps.
+4. Prefer cascading diagonal step layouts (e.g., dropping 160px vertically for every 320px horizontal move) over flat straight-line layouts for a more cinematic and elegant visual flow.
+5. Do not use ad-hoc spacing values such as `250px`, `500px`, or `550px`.
+6. Only use circular placement when the slide explicitly describes a loop and add a short comment documenting why.
+7. Keep diagram spans within these bounds:
    - x-span `<= 960px`
    - y-span `<= 550px`
-7. Preserve minimum visual clearance between node cards so edges remain visible:
+8. Preserve minimum visual clearance between node cards so edges remain visible:
    - minimum horizontal card-to-card gap: `>= 100px`
    - minimum vertical card-to-card gap: `>= 70px`
-8. Do not place nodes so their rendered cards overlap or touch at any breakpoint.
+9. Do not place nodes so their rendered cards overlap or touch at any breakpoint.
 
 #### Color Semantics
 
 1. Group semantically related nodes with the same color.
-2. Use the `(courses)` palette as the baseline:
-   - crimson family for primary flow and risk path (`#8B0000`, `#A52A2A`)
-   - charcoal family for neutral processing (`#1A1A1D`, `#2D2D32`)
-   - gold (`#D4AF37`) for premium emphasis only
+2. Use the `(courses)` palette as the baseline, preferring deeper, richer tones for a cinematic academic look:
+   - Deep crimson for primary flow and risk path (e.g., `#7f1d1d`)
+   - Deep slate/charcoal for neutral processing steps (e.g., `#1e293b`)
+   - Deep green for sustainability/eco focus (e.g., `#14532d`)
+   - Deep gold (`#D4AF37` or deeper) for premium emphasis only
 3. Use at most 3 semantic color groups per diagram, plus optional neutral gray.
 4. New accent hues are allowed only when needed for explicit semantic contrast.
 5. Any new accent hue must follow the same academic pattern:
@@ -120,22 +109,22 @@ These rules are strict and must be followed for every generated diagram.
 
 #### Edge Routing And Direction
 
-1. Horizontal edges must use `sourceHandle: "right-source"` and `targetHandle: "left"`.
-2. Vertical down edges must use `sourceHandle: "bottom-source"` and `targetHandle: "top"`.
+1. Purely horizontal edges must use `sourceHandle: "right-source"` and `targetHandle: "left"`.
+2. Vertical down edges (including cascading steps) must use `sourceHandle: "bottom-source"` and `targetHandle: "top"`.
 3. Vertical up edges must use `sourceHandle: "top-source"` and `targetHandle: "bottom"`.
 4. Forward-flow edges must use `type: "smoothstep"` and `animated: true`.
 5. Feedback or optional edges must use `type: "smoothstep"`, `animated: false`, and dashed stroke (`strokeDasharray: "5,5"`).
-6. Edge style must be consistent:
-   - `strokeWidth: 2`
-   - `opacity: 0.55` for main flow
-   - `opacity: 0.6` for labeled emphasis edges
+6. Edge style must be consistent and delicate for a cinematic look:
+   - `strokeWidth: 1.5`
+   - `opacity: 0.5` to `0.6` for main flow
+   - `opacity: 0.7` for labeled emphasis edges
 7. Edge stroke colors must match the semantic group of the source flow stage.
 8. Avoid edge crossings. If unavoidable, adjust node positions before adding more edges.
 
 #### Node Content And Density
 
-1. Each node must include an icon.
-2. Label length must be concise:
+1. Each node must include an icon. Use a finer, cinematic line weight for icons (`size={20}`, `strokeWidth={1.5}`).
+2. Label length must be concise and use formal academic terminology (e.g., "Use Phase" instead of "Use", "End of Life" instead of "Disposal"):
    - label: up to 3 words
    - sublabel: up to 4 words
 3. Prefer noun phrases over long sentence labels.
@@ -218,21 +207,3 @@ These rules are strict and must be followed for every generated diagram.
 - [ ] `page.tsx` updated with clean imports and render blocks
 - [ ] Visual hierarchy preserved in each slide
 - [ ] No diagram-related lint or TypeScript errors
-
-## Ambiguities To Confirm With User
-
-- Target density: add diagrams to all eligible slides or only top 3 to 5 highest-value slides
-- Visual style: conservative academic or more expressive cinematic layouts
-- Naming convention: strict `<topic>Flow` constants or flexible names
-
-## Example Prompts
-
-- "Run `course-diagram-generation` on `src/app/(courses)/courses/09-product-development/page.tsx` and add diagrams to the best slides."
-- "Use `course-diagram-generation` to move inline node and edge arrays into `flowcharts.tsx` and keep slide JSX clean."
-- "Apply `course-diagram-generation` and focus only on lifecycle and pipeline slides."
-
-## Related Files
-
-- `src/app/(courses)/_components/FlowRenderer.tsx`
-- `src/app/(courses)/_components/SlideComponents.tsx`
-- `.github/instructions/courses-styling.instructions.md`
