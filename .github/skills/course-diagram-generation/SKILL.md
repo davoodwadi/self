@@ -95,6 +95,10 @@ These rules are strict and must be followed for every generated diagram.
 6. Keep diagram spans within these bounds:
    - x-span `<= 960px`
    - y-span `<= 550px`
+7. Preserve minimum visual clearance between node cards so edges remain visible:
+   - minimum horizontal card-to-card gap: `>= 100px`
+   - minimum vertical card-to-card gap: `>= 70px`
+8. Do not place nodes so their rendered cards overlap or touch at any breakpoint.
 
 #### Color Semantics
 
@@ -145,6 +149,7 @@ These rules are strict and must be followed for every generated diagram.
 1. `OmniNode` has `min-w-[220px]`, so leave adequate horizontal room between columns.
 2. `FlowRenderer` applies `fitView` with padding, so keep layouts compact and balanced.
 3. Do not rely on custom marker configuration because markers are auto-injected.
+4. Always tune node spacing after placement to maintain visible edge lanes between adjacent cards.
 
 #### Pre-Commit Self Audit
 
@@ -153,6 +158,7 @@ These rules are strict and must be followed for every generated diagram.
 3. Forward flow, feedback flow, and optional flow are visually distinguishable.
 4. No obvious line crossing remains.
 5. Diagram remains readable at mobile, tablet, and desktop container heights.
+6. No node cards overlap, and edge paths remain visible between all adjacent nodes.
 
 ### 5. Wire Diagrams Into `page.tsx`
 
@@ -192,6 +198,7 @@ These rules are strict and must be followed for every generated diagram.
 9. Manually setting `markerEnd` in flowchart definitions.
 10. Using bright neon or pastel colors that break the academic palette pattern.
 11. Adding multiple non-core accent hues in a single diagram.
+12. Packing nodes tightly so edges are hidden, clipped, or visually merged with node cards.
 
 ## Completion Checklist
 
@@ -206,6 +213,7 @@ These rules are strict and must be followed for every generated diagram.
 - [ ] Every node has an icon with consistent size and stroke
 - [ ] Node count is within limits (3 to 7, ideal 4 to 5)
 - [ ] Diagram span remains within responsive bounds (`x <= 960`, `y <= 550`)
+- [ ] Node cards have ample spacing (no overlap; edge lanes remain visible)
 - [ ] `page.tsx` updated with clean imports and render blocks
 - [ ] Visual hierarchy preserved in each slide
 - [ ] No diagram-related lint or TypeScript errors

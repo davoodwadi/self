@@ -295,7 +295,7 @@ export const digitalTwinFlow = {
     },
     {
       id: "reasoning",
-      position: { x: 640, y: 80 },
+      position: { x: 320, y: 360 },
       data: {
         label: "AI Reasoning",
         sublabel: "Predictive Logic",
@@ -305,7 +305,7 @@ export const digitalTwinFlow = {
     },
     {
       id: "action",
-      position: { x: 960, y: 80 },
+      position: { x: 0, y: 360 },
       data: {
         label: "Auto Action",
         sublabel: "Maintenance",
@@ -330,8 +330,8 @@ export const digitalTwinFlow = {
       id: "e2",
       source: "digital",
       target: "reasoning",
-      sourceHandle: "right-source",
-      targetHandle: "left",
+      sourceHandle: "bottom-source",
+      targetHandle: "top",
       type: "smoothstep",
       animated: true,
       style: { stroke: "#8B0000", strokeWidth: 2, opacity: 0.55 },
@@ -340,8 +340,8 @@ export const digitalTwinFlow = {
       id: "e3",
       source: "reasoning",
       target: "action",
-      sourceHandle: "right-source",
-      targetHandle: "left",
+      sourceHandle: "left-source",
+      targetHandle: "right",
       label: "Decision",
       type: "smoothstep",
       animated: true,
@@ -352,8 +352,8 @@ export const digitalTwinFlow = {
       id: "e4",
       source: "action",
       target: "physical",
-      sourceHandle: "left-source",
-      targetHandle: "right",
+      sourceHandle: "top-source",
+      targetHandle: "bottom",
       label: "Optimize",
       type: "smoothstep",
       animated: false,
@@ -392,7 +392,7 @@ export const generativeLoopFlow = {
     },
     {
       id: "constraints",
-      position: { x: 320, y: 240 },
+      position: { x: 640, y: 80 },
       data: {
         label: "Constraint Check",
         sublabel: "Manufacturability",
@@ -402,7 +402,7 @@ export const generativeLoopFlow = {
     },
     {
       id: "factory",
-      position: { x: 640, y: 240 },
+      position: { x: 960, y: 80 },
       data: {
         label: "Smart Factory",
         sublabel: "Approved Build",
@@ -427,8 +427,8 @@ export const generativeLoopFlow = {
       id: "e2",
       source: "gen-ai",
       target: "constraints",
-      sourceHandle: "bottom-source",
-      targetHandle: "top",
+      sourceHandle: "right-source",
+      targetHandle: "left",
       type: "smoothstep",
       animated: true,
       style: { stroke: "#8B0000", strokeWidth: 2, opacity: 0.55 },
@@ -439,7 +439,7 @@ export const generativeLoopFlow = {
       source: "constraints",
       target: "gen-ai",
       sourceHandle: "top-source",
-      targetHandle: "bottom",
+      targetHandle: "top",
       type: "smoothstep",
       label: "Retry",
       animated: false,
