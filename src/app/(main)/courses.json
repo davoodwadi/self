@@ -1,0 +1,23 @@
+{
+  "heading": "Projects & Courses",
+  "items": [
+    {
+      "label": "Featured Course",
+      "title": "Applications of AI in Business",
+      "description": "A comprehensive curriculum designed to bridge the gap between technical AI implementation and strategic business value. Covering generative models, predictive analytics, and ethical deployment strategies.",
+      "link": {
+        "href": "/courses",
+        "label": "View Curriculum"
+      }
+    },
+    {
+      "label": "Course",
+      "title": "Digital Transformation",
+      "description": "Navigate the digital landscape and drive organizational change through emerging technologies. Explore transformation strategies, change management, and building digital-native capabilities.",
+      "link": {
+        "href": "#",
+        "label": ""
+      }
+    }
+  ]
+}

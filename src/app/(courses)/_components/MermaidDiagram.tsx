@@ -31,7 +31,31 @@ mermaid.initialize({
     htmlLabels: false, // Forces SVG text instead of HTML wrapped text
   },
 });
+
+/**
+ * Renders Mermaid diagrams with Academic theme styling (Crimson #8B0000, Charcoal #1A1A1D).
+ *
+ * @example
+ * // Flowchart
+ * <Mermaid chart={`flowchart TD
+ *   A[Research] --> B[Analysis]
+ *   B --> C[Strategy]`}
+ * />
+ *
+ * @example
+ * // Decision flow
+ * <Mermaid chart={`flowchart LR
+ *   A[Start] --> B{Quality Check}
+ *   B -->|Pass| C[Deploy]
+ *   B -->|Fail| D[Fix]`}
+ * />
+ *
+ * Best practices:
+ * - Keep diagrams simple (5-7 nodes max)
+ * - Use descriptive labels (2-4 words)
+ */
 interface MermaidProps {
+  /** Mermaid diagram syntax. Supports flowcharts, sequence diagrams, state diagrams, ERDs, Gantt charts, mindmaps. */
   chart: string;
 }
 

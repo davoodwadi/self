@@ -13,6 +13,7 @@ if (typeof window !== "undefined") {
 const backgrounds: Record<string, React.FC> = {
   edii: EDIITreeBackground,
   agentic: AgenticAITreeBackground,
+  sustainability: SustainabilityBackground,
   // More backgrounds can be added here
 };
 
@@ -27,6 +28,159 @@ export function BackgroundManager({ type }: { type?: string }) {
 }
 
 // === Specific Background Implementations below === //
+
+function SustainabilityBackground() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000,
+    );
+    camera.position.z = 40;
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvasRef.current,
+      alpha: true,
+      antialias: true,
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const particlesGroup = new THREE.Group();
+
+    // Create organic, slow-moving mesh structures with emerald and gold particles
+    const particleCount = 150;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+
+    // Emerald and Gold color mix
+    const color1 = new THREE.Color(0x50c878); // Emerald Green
+    const color2 = new THREE.Color(0xd4af37); // Gold
+
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 80;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 80;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 80;
+
+      const mixRatio = Math.random();
+      const mixedColor = color1.clone().lerp(color2, mixRatio);
+      colors[i * 3] = mixedColor.r;
+      colors[i * 3 + 1] = mixedColor.g;
+      colors[i * 3 + 2] = mixedColor.b;
+    }
+
+    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+
+    const material = new THREE.PointsMaterial({
+      size: 0.6,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.9,
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    particlesGroup.add(particles);
+
+    // Create organic connections (mesh structures)
+    const lineMaterial = new THREE.LineBasicMaterial({
+      color: 0x50c878,
+      transparent: true,
+      opacity: 0.05,
+    });
+
+    const lineGeometry = new THREE.BufferGeometry();
+    const linePositions = [];
+
+    for (let i = 0; i < particleCount; i++) {
+      for (let j = i + 1; j < particleCount; j++) {
+        const dx = positions[i * 3] - positions[j * 3];
+        const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+        const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+        const distSq = dx * dx + dy * dy + dz * dz;
+
+        if (distSq < 200) {
+          linePositions.push(
+            positions[i * 3],
+            positions[i * 3 + 1],
+            positions[i * 3 + 2],
+            positions[j * 3],
+            positions[j * 3 + 1],
+            positions[j * 3 + 2],
+          );
+        }
+      }
+    }
+
+    lineGeometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(linePositions, 3),
+    );
+    const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+    particlesGroup.add(lines);
+
+    scene.add(particlesGroup);
+
+    let mouseX = 0;
+    let mouseY = 0;
+    const windowHalfX = window.innerWidth / 2;
+    const windowHalfY = window.innerHeight / 2;
+
+    const onDocumentMouseMove = (event: MouseEvent) => {
+      mouseX = (event.clientX - windowHalfX) * 0.001;
+      mouseY = (event.clientY - windowHalfY) * 0.001;
+    };
+
+    document.addEventListener("mousemove", onDocumentMouseMove);
+
+    const animate = () => {
+      requestAnimationFrame(animate);
+
+      const time = Date.now() * 0.00001;
+      particlesGroup.rotation.y = time;
+      particlesGroup.rotation.z = time * 0.5;
+
+      // Gentle movement
+      camera.position.x += (mouseX - camera.position.x) * 0.0005;
+      camera.position.y += (-mouseY - camera.position.y) * 0.0005;
+      camera.lookAt(scene.position);
+
+      renderer.render(scene, camera);
+    };
+    animate();
+
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("mousemove", onDocumentMouseMove);
+      renderer.dispose();
+      geometry.dispose();
+      material.dispose();
+      lineGeometry.dispose();
+      lineMaterial.dispose();
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-15"
+    />
+  );
+}
 
 function EDIITreeBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -191,16 +345,16 @@ function AgenticAITreeBackground() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     const particlesGroup = new THREE.Group();
-    
+
     // Create an interconnected node network to represent Agentic AI
     const particleCount = 150;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
-    
+
     // Crimson and Charcoal color mix
-    const color1 = new THREE.Color(0x8B0000); // Crimson
-    const color2 = new THREE.Color(0x2D2D32); // Charcoal Light
+    const color1 = new THREE.Color(0x8b0000); // Crimson
+    const color2 = new THREE.Color(0x2d2d32); // Charcoal Light
 
     for (let i = 0; i < particleCount; i++) {
       positions[i * 3] = (Math.random() - 0.5) * 60;
@@ -214,8 +368,8 @@ function AgenticAITreeBackground() {
       colors[i * 3 + 2] = mixedColor.b;
     }
 
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
       size: 0.6,
@@ -229,7 +383,7 @@ function AgenticAITreeBackground() {
 
     // Create lines connecting nearby nodes
     const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x8B0000,
+      color: 0x8b0000,
       transparent: true,
       opacity: 0.15,
     });
@@ -247,14 +401,21 @@ function AgenticAITreeBackground() {
 
         if (distSq < 150) {
           linePositions.push(
-            positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
-            positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]
+            positions[i * 3],
+            positions[i * 3 + 1],
+            positions[i * 3 + 2],
+            positions[j * 3],
+            positions[j * 3 + 1],
+            positions[j * 3 + 2],
           );
         }
       }
     }
 
-    lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+    lineGeometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(linePositions, 3),
+    );
     const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
     particlesGroup.add(lines);
 

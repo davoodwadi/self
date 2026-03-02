@@ -1,9 +1,7 @@
 ---
-description: "Use when creating or updating UI components for the portfolio website. Enforces the Dark Particles theme (dark backgrounds, neon blue accents, Playfair Display/Inter fonts, glassmorphism)."
-applyTo: "**/*.{tsx,css}"
+description: "Use when creating or updating UI components for the main portfolio website. Enforces the Dark Particles theme (dark backgrounds, neon blue accents, Playfair Display/Inter fonts, glassmorphism)."
+applyTo: ["src/app/(main)/**/*.{tsx,css}", "src/components/**/*.{tsx,css}"]
 ---
-
-**Ignore the /src/app/(courses) directory completely!**
 
 # Portfolio Styling Guidelines
 

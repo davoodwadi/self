@@ -1,0 +1,18 @@
+[
+  {
+    "venue": "EMNLP",
+    "year": "2025",
+    "title": "A Monte-Carlo Sampling Framework For Reliable Evaluation of Large Language Models Using Behavioral Analysis",
+    "description": "Findings of the Association for Computational Linguistics. We introduce a robust statistical approach for estimating LLM consistency when generating complex behavioral outputs, shifting from point-estimate evaluations to dynamic sampling landscapes.",
+    "authors": "Wadi, D., Fredette, M.",
+    "href": "https://aclanthology.org/2025.findings-emnlp.500/"
+  },
+  {
+    "venue": "JECR",
+    "year": "2026",
+    "title": "The interplay of altruism and financial incentives: Maximizing online reviews through effective messaging",
+    "description": "Journal of Electronic Commerce Research, Volume 27, Issue 2. Investigating consumer motivations in digital ecosystems by pitting inherent psychological drivers against monetary incentives, optimizing conversion strategies.",
+    "authors": "Wadi, D., Legoux, R., Fredette, M., Senecal, S.",
+    "href": "http://www.jecr.org/sites/default/files/2026vol27no2_Paper1.pdf"
+  }
+]

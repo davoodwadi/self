@@ -1,12 +1,74 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { createContext, useContext, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { ArrowLeft, CircleSmall } from "lucide-react";
 
-// Slides
+export interface CourseCitation {
+  id: number;
+  title: string;
+  url: string;
+}
+
+export interface CitationResolver {
+  getCitation?: (id: number) => CourseCitation | undefined;
+  getCitations?: (ids: number[]) => CourseCitation[];
+  getCitationUrls?: (ids: number[]) => string[];
+}
+
+const CitationContext = createContext<CitationResolver | null>(null);
+let hasWarnedMissingCitationProvider = false;
+
+export function CitationProvider({
+  children,
+  value,
+}: {
+  children: React.ReactNode;
+  value: CitationResolver;
+}) {
+  return (
+    <CitationContext.Provider value={value}>
+      {children}
+    </CitationContext.Provider>
+  );
+}
+
+// ============================================================================
+// SLIDE STRUCTURE COMPONENTS
+// ============================================================================
+// These components form the backbone of the slide deck layout and animations
+
+/**
+ * SlideDeck - Root container for cinematic slide presentations
+ *
+ * PURPOSE:
+ * - Wraps entire slide presentation and applies global animations
+ * - Manages GSAP animations for all child slides and reveal elements
+ * - Provides navigation back to course hub
+ * - Applies consistent styling and dark theme
+ *
+ * WHEN TO USE:
+ * - Required as the outermost wrapper for every course page
+ * - Use once per page.tsx
+ * - Wraps all Slide components
+ *
+ * ANIMATION BEHAVIOR:
+ * - Automatically animates elements with .gsap-reveal class
+ * - Staggered fade-in on scroll (y: 60 to 0, opacity 0 to 1, blur offset)
+ * - Triggers when section comes into view (75% of viewport)
+ *
+ * PROPS:
+ * @param children - All Slide components
+ * @param background - Optional: Custom background component (e.g., Backgrounds.tsx)
+ *
+ * EXAMPLE:
+ * <SlideDeck background={<Backgrounds.ParticleEffect />}>
+ *   <Slide><Title>Welcome</Title></Slide>
+ *   <Slide><Heading>Section Title</Heading></Slide>
+ * </SlideDeck>
+ */
 export function SlideDeck({
   children,
   background,
@@ -70,17 +132,45 @@ export function SlideDeck({
   );
 }
 
+/**
+ * Slide - Individual full-height slide section
+ *
+ * PURPOSE:
+ * - Container for a single slide/section in the presentation
+ * - Enforces consistent spacing and vertical centering
+ * - Optional: Add decorative top border between sections
+ *
+ * WHEN TO USE:
+ * - Wrap each major section/topic in its own Slide
+ * - Use for: title slides, concept introductions, discussion prompts, conclusions
+ * - One Slide per main content unit
+ *
+ * PROPS:
+ * @param children - Content for the slide (Title, Heading, text, cards, etc.)
+ * @param className - Additional Tailwind classes
+ * @param border - Boolean: Add subtle top border (useful for visual separation)
+ * @param id - Optional: Anchor link ID for navigation (e.g., id="methods")
+ *
+ * EXAMPLE:
+ * <Slide border id="methodology">
+ *   <Heading>Research Methodology</Heading>
+ *   <Subtitle>How we conducted this study</Subtitle>
+ * </Slide>
+ */
 export function Slide({
   children,
   className = "",
   border = false,
+  id,
 }: {
   children: React.ReactNode;
   className?: string;
   border?: boolean;
+  id?: string;
 }) {
   return (
     <section
+      id={id}
       className={`slide-section relative min-h-screen flex flex-col items-center text-center justify-center py-20 ${border ? "border-t border-[var(--charcoal)]/10" : ""} ${className}`}
     >
       {children}
@@ -88,8 +178,42 @@ export function Slide({
   );
 }
 
-// === Layout Wrappers & Utilities ===
+// ============================================================================
+// LAYOUT & COMPOSITION COMPONENTS
+// ============================================================================
+// Use these to structure content within slides
 
+/**
+ * Row - Horizontal flex layout container
+ *
+ * PURPOSE:
+ * - Create responsive side-by-side layouts for text, images, or cards
+ * - Stacks vertically on mobile, horizontally on tablet/desktop
+ * - Control alignment and spacing
+ *
+ * WHEN TO USE:
+ * - Side-by-side content (two-column layouts)
+ * - Image + text combinations
+ * - Multiple cards in a row
+ * - Do NOT use for vertical lists (use Column or AnimatedList instead)
+ *
+ * PROPS:
+ * @param children - Column components or content blocks
+ * @param gap - Spacing between items: "small" (gap-4) | "medium" (gap-8) | "large" (gap-12) | "xlarge" (gap-16)
+ * @param items - Vertical alignment: "start" | "center" | "end" | "stretch"
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <Row gap="large" items="center">
+ *   <Column spanRatio="1/2">
+ *     <MediaBlock src="/image.jpg" alt="Chart" />
+ *   </Column>
+ *   <Column spanRatio="1/2">
+ *     <Heading>Key Finding</Heading>
+ *     <ContentText>Description...</ContentText>
+ *   </Column>
+ * </Row>
+ */
 export function Row({
   children,
   className = "",
@@ -129,6 +253,37 @@ export function Row({
   );
 }
 
+/**
+ * Column - Vertical flex container with width control
+ *
+ * PURPOSE:
+ * - Define width and layout within Row containers
+ * - Control horizontal/vertical alignment of child elements
+ * - Responsive width handling (full mobile, constrained on desktop)
+ *
+ * WHEN TO USE:
+ * - As children of Row component
+ * - To define column widths in multi-column layouts
+ * - When you need specific width ratios (1/3, 2/3, 1/4, etc.)
+ *
+ * PROPS:
+ * @param children - Content
+ * @param spanRatio - Width on desktop: "1/2" | "1/3" | "2/3" | "1/4" | "3/4" | "full"
+ *                    (always full width on mobile, these apply to md+ breakpoints)
+ * @param justify - Vertical alignment: "start" | "center" | "end" | "between"
+ * @param align - Horizontal alignment: "start" | "center" | "end" | "stretch"
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <Row>
+ *   <Column spanRatio="1/3" align="center">
+ *     <Metric value="72%" label="Improvement" />
+ *   </Column>
+ *   <Column spanRatio="2/3">
+ *     <ContentText>Details about the metric...</ContentText>
+ *   </Column>
+ * </Row>
+ */
 export function Column({
   children,
   className = "",
@@ -175,8 +330,40 @@ export function Column({
   );
 }
 
-// === Typography Elements ===
+// ============================================================================
+// TYPOGRAPHY & TEXT COMPONENTS
+// ============================================================================
+// Semantic text styling for different content hierarchies
 
+/**
+ * Title - Large hero title for slide opening
+ *
+ * PURPOSE:
+ * - Eye-catching main heading for title slides or major section breaks
+ * - Maximum visual hierarchy and impact
+ * - Animated on scroll with GSAP
+ *
+ * WHEN TO USE:
+ * - First slide of course or major sections
+ * - Standalone emphasis statements
+ * - Title slides only (not for section headings - use Heading instead)
+ *
+ * STYLING:
+ * - Large serif font (8xl on lg screens)
+ * - Black weight, tight tracking
+ * - Charcoal color
+ * - Animated entry with .gsap-reveal
+ *
+ * PROPS:
+ * @param children - Title text
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <Slide>
+ *   <Title>The Future of AI</Title>
+ *   <Subtitle variant="hero">An evidence-based perspective</Subtitle>
+ * </Slide>
+ */
 export function Title({
   children,
   className = "",
@@ -193,6 +380,141 @@ export function Title({
   );
 }
 
+/**
+ * Citation - Superscript reference link for academic citations
+ *
+ * PURPOSE:
+ * - Add academic citations to content
+ * - Link directly to source URLs
+ * - Show attribution for claims/quotes
+ *
+ * WHEN TO USE:
+ * - After factual claims in ContentText or quotes
+ * - In sentences where you cite research
+ * - Multiple citations on same sentence allowed
+ *
+ * PROPS:
+ * @param ids - Array of citation ID numbers to look up in course citations mapping, e.g., [1, 2, 5]
+ *              Creates linked superscript like: [1] [2] [5]
+ *              Resolved from CitationProvider when available
+ * @param urls - Alternative: Array of URLs to link to directly, e.g., ["https://example.com", "https://paper.org"]
+ * @param getCitationUrls - Optional explicit function to map IDs to URLs (override)
+ *
+ * EXAMPLE (with provider-based ID lookup):
+ * <CitationProvider value={{ getCitation, getCitations, getCitationUrls }}>
+ *   <ContentText>
+ *     AI systems show 72% improvement in accuracy.
+ *     <Citation ids={[1, 2]} />
+ *   </ContentText>
+ * </CitationProvider>
+ *
+ * EXAMPLE (with explicit override):
+ * <ContentText>
+ *   AI systems show 72% improvement in accuracy.
+ *   <Citation ids={[1, 2]} getCitationUrls={getCitationUrls} />
+ * </ContentText>
+ *
+ * EXAMPLE (with direct URLs):
+ * <ContentText>
+ *   AI systems show 72% improvement in accuracy.
+ *   <Citation urls={["https://arxiv.org/paper1", "https://arxiv.org/paper2"]} />
+ * </ContentText>
+ */
+export function Citation({
+  ids,
+  urls,
+  getCitationUrls,
+}: {
+  ids?: number[];
+  urls?: string[];
+  getCitationUrls?: (ids: number[]) => string[];
+}) {
+  const citationResolver = useContext(CitationContext);
+
+  // Explicit props take precedence, then provider-backed ID resolution.
+  const resolvedCitations =
+    ids && citationResolver
+      ? citationResolver.getCitations?.(ids) ||
+        ids
+          .map((id) => citationResolver.getCitation?.(id))
+          .filter((citation): citation is CourseCitation => !!citation)
+      : [];
+
+  const citationUrls =
+    urls ||
+    (ids
+      ? getCitationUrls?.(ids) ||
+        citationResolver?.getCitationUrls?.(ids) ||
+        resolvedCitations.map((citation) => citation.url)
+      : []);
+
+  if (
+    ids &&
+    !urls &&
+    citationUrls.length === 0 &&
+    process.env.NODE_ENV !== "production" &&
+    !hasWarnedMissingCitationProvider
+  ) {
+    hasWarnedMissingCitationProvider = true;
+    console.warn(
+      "Citation lookup failed. Wrap your course page with CitationProvider and pass local citation helpers.",
+    );
+  }
+
+  return (
+    <>
+      {citationUrls.map((url, index) => {
+        const citationId =
+          resolvedCitations[index]?.id || ids?.[index] || index + 1;
+        return (
+          <sup
+            key={index}
+            className="text-[var(--crimson)] font-bold ml-0.5 opacity-80 hover:opacity-100 transition-opacity"
+          >
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+              title={resolvedCitations[index]?.title}
+              aria-label={resolvedCitations[index]?.title}
+            >
+              [{citationId}]
+            </a>
+          </sup>
+        );
+      })}
+    </>
+  );
+}
+
+/**
+ * Heading - Section heading for content within slides
+ *
+ * PURPOSE:
+ * - Secondary-level heading for sections, topics, or concepts
+ * - Animated entry with scroll trigger
+ * - Semantic h2 element for accessibility
+ *
+ * WHEN TO USE:
+ * - Major topics within a Slide
+ * - Before content sections
+ * - Second-level information hierarchy (use Title for level 1)
+ *
+ * STYLING:
+ * - Large serif font (6xl on md+)
+ * - Bold weight
+ * - Charcoal color
+ * - Animated with GSAP
+ *
+ * PROPS:
+ * @param children - Heading text
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <Heading>Key Findings from Research</Heading>
+ * <ContentText>The study revealed...</ContentText>
+ */
 export function Heading({
   children,
   className = "",
@@ -209,6 +531,38 @@ export function Heading({
   );
 }
 
+/**
+ * Highlight - Emphasize key words or phrases with color
+ *
+ * PURPOSE:
+ * - Draw attention to critical terms or concepts
+ * - Inline or block-level emphasis with crimson color/gradient
+ * - Improve content readability and focus
+ *
+ * WHEN TO USE:
+ * - Within Title, Heading, or ContentText components
+ * - For key terminology, important findings, or concepts
+ * - Use sparingly to maintain impact
+ * - In prose text for emphasis
+ *
+ * STYLING:
+ * - Inline: Gradient background (crimson to crimson-light) with text-clip
+ * - Block: Solid crimson text color
+ *
+ * PROPS:
+ * @param children - Text to highlight
+ * @param block - If true: solid crimson text (block-level), if false: gradient fill with text-clip
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <Title>The Future of <Highlight>Artificial Intelligence</Highlight></Title>
+ *
+ * <ContentText>
+ *   This research shows <Highlight>72% improvement</Highlight> in accuracy.
+ * </ContentText>
+ *
+ * <Highlight block>Key Point:</Highlight> Understanding this concept is critical.
+ */
 export function Highlight({
   children,
   className = "",
@@ -230,6 +584,35 @@ export function Highlight({
   );
 }
 
+/**
+ * Subtitle - Secondary descriptive text
+ *
+ * PURPOSE:
+ * - Provide context, subtitle, or tagline below titles
+ * - Two variants: hero (for title slides) and section (for content sections)
+ * - Italic styling for emphasis through typography
+ *
+ * WHEN TO USE:
+ * - Directly after Title (use variant="hero")
+ * - Below Heading to add context (use variant="section")
+ * - Maximum width constraint (max-w-4xl) maintains readability
+ *
+ * PROPS:
+ * @param children - Subtitle text
+ * @param variant - "hero" (animated, 3xl text) | "section" (2xl with border)
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <Slide>
+ *   <Title>The Future of AI</Title>
+ *   <Subtitle variant="hero">An evidence-based perspective</Subtitle>
+ * </Slide>
+ *
+ * <Slide>
+ *   <Heading>Historical Context</Heading>
+ *   <Subtitle variant="section">The evolution of machine learning</Subtitle>
+ * </Slide>
+ */
 export function Subtitle({
   children,
   className = "",
@@ -251,6 +634,51 @@ export function Subtitle({
   );
 }
 
+/**
+ * ContentText - Main body text with semantic markdown styling
+ *
+ * PURPOSE:
+ * - Display article/course content with rich text formatting
+ * - Two layouts: prose (standard content) or base (highlighted/bordered)
+ * - Auto-styling for bold, lists, etc. via Tailwind prose modifiers
+ * - Supports markdown structure: paragraphs, lists, strong text
+ *
+ * WHEN TO USE:
+ * - For all body text content in slides
+ * - When content includes multiple paragraphs, lists, or emphasis
+ * - Left-aligned, readable typography
+ * - For text-heavy content blocks
+ *
+ * LAYOUT VARIANTS:
+ * - "prose": Standard readable body text (default)
+ *   * Bold text automatically crimson colored
+ *   * Bullet points with crimson dots
+ *   * Space between paragraphs
+ *
+ * - "base": Highlighted callout style
+ *   * Left border in crimson
+ *   * Indented with padding
+ *   * Good for important statements
+ *
+ * PROPS:
+ * @param children - HTML or text content (typically JSX with <p>, <strong>, <ul>, <li>)
+ * @param layout - "prose" (default) | "base"
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <ContentText>
+ *   <p>Artificial intelligence is transforming industries across the globe.</p>
+ *   <p>Key applications include:</p>
+ *   <ul>
+ *     <li><strong>Healthcare</strong>: diagnostic imaging and drug discovery</li>
+ *     <li><strong>Finance</strong>: fraud detection and risk analysis</li>
+ *   </ul>
+ * </ContentText>
+ *
+ * <ContentText layout="base">
+ *   <strong>Critical Finding:</strong> The results represent a 72% improvement over previous methods.
+ * </ContentText>
+ */
 export function ContentText({
   children,
   className = "",
@@ -272,6 +700,36 @@ export function ContentText({
   );
 }
 
+/**
+ * Tag - Small label positioned absolutely at top of slide
+ *
+ * PURPOSE:
+ * - Add context label for slides (e.g., "CHAPTER 3", "DISCUSSION PROMPT")
+ * - Small uppercase text centered above slide content
+ * - Animated entry with GSAP
+ *
+ * WHEN TO USE:
+ * - Optional: For section headers that need a category label
+ * - Positioned above Title or Heading
+ * - Use for slide taxonomy/organization
+ * - Not required for every slide
+ *
+ * STYLING:
+ * - Uppercase, bold, tracking-widest
+ * - Positioned absolutely at top center
+ * - Animated with GSAP
+ * - Light charcoal color
+ *
+ * PROPS:
+ * @param children - Label text (e.g., "SECTION 2", "CASE STUDY")
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <Slide>
+ *   <Tag>Chapter 3</Tag>
+ *   <Title>Advanced Concepts</Title>
+ * </Slide>
+ */
 export function Tag({
   children,
   className = "",
@@ -288,8 +746,48 @@ export function Tag({
   );
 }
 
-// === Interactive / Card Elements ===
+// ============================================================================
+// CARDS & INTERACTIVE COMPONENTS
+// ============================================================================
+// Structured content containers with specific purposes
 
+/**
+ * Card - General-purpose content card with optional title
+ *
+ * PURPOSE:
+ * - Frame related content as a distinct block
+ * - Add crisp visual structure with border and shadow
+ * - Optional title bar (small-capped, crimson)
+ * - For grouping related information
+ *
+ * WHEN TO USE:
+ * - When you want to visually separate content
+ * - Multi-card layouts (often in Row/Column)
+ * - Statistics, findings, or concept explanation
+ * - NOT for discussion prompts (use DiscussionCard instead)
+ * - NOT for callouts (use Callout instead)
+ *
+ * STYLING:
+ * - Top border in crimson
+ * - Subtle shadow
+ * - White background (surface color)
+ * - Padding on all sides
+ *
+ * PROPS:
+ * @param title - Optional: Small-capped title at top
+ * @param subtitle - Optional: Secondary text below title
+ * @param children - Card content
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <Row gap="large">
+ *   <Column spanRatio="1/3">
+ *     <Card title="Finding 1">
+ *       72% improvement in accuracy compared to baseline methods.
+ *     </Card>
+ *   </Column>
+ * </Row>
+ */
 export function Card({
   title,
   subtitle,
@@ -321,6 +819,33 @@ export function Card({
   );
 }
 
+/**
+ * ContentTitle - Secondary title (h3) for content sections
+ *
+ * PURPOSE:
+ * - Smaller heading for subsections or content blocks
+ * - Semantic h3 element
+ * - Used within Card or content blocks
+ *
+ * WHEN TO USE:
+ * - Inside Card or MediaBlock for nested titles
+ * - For sub-headings within larger content
+ * - Lower in hierarchy than Heading (h2)
+ *
+ * STYLING:
+ * - Medium size (2xl)
+ * - Bold, charcoal color
+ * - Tight spacing
+ *
+ * PROPS:
+ * @param children - Title text
+ *
+ * EXAMPLE:
+ * <Card>
+ *   <ContentTitle>Research Methodology</ContentTitle>
+ *   <ContentDescription>Our approach to conducting this study...</ContentDescription>
+ * </Card>
+ */
 export function ContentTitle({ children }: { children: React.ReactNode }) {
   return (
     <h3 className="text-2xl font-bold mb-3 text-[var(--charcoal)]">
@@ -328,6 +853,38 @@ export function ContentTitle({ children }: { children: React.ReactNode }) {
     </h3>
   );
 }
+
+/**
+ * ContentDescription - Body text for content blocks
+ *
+ * PURPOSE:
+ * - Descriptive text within cards or grouped content
+ * - Less prominent than ContentText but more structured
+ * - Light font weight for readability
+ *
+ * WHEN TO USE:
+ * - Inside Card with ContentTitle
+ * - Supporting text for concepts
+ * - Paired with ContentTitle for structured content
+ * - When you need lighter text than ContentText
+ *
+ * STYLING:
+ * - Light font weight
+ * - Charcoal-light color
+ * - Relax line height
+ *
+ * PROPS:
+ * @param children - Description text or JSX
+ *
+ * EXAMPLE:
+ * <Card>
+ *   <ContentTitle>Case Study</ContentTitle>
+ *   <ContentDescription>
+ *     This organization implemented AI-driven analytics
+ *     and saw immediate improvements in efficiency.
+ *   </ContentDescription>
+ * </Card>
+ */
 export function ContentDescription({
   children,
 }: {
@@ -340,6 +897,51 @@ export function ContentDescription({
   );
 }
 
+/**
+ * DiscussionCard - Interactive reveal card for discussion prompts
+ *
+ * PURPOSE:
+ * - Engage learners with reflective questions
+ * - Click-to-reveal interaction hides answer until engaged
+ * - Visual distinction with gold-colored border and icon
+ * - Maintains slide height while transitioning between states
+ *
+ * BEHAVIOR:
+ * - Default state: Shows prompt with discussion icon and title
+ * - Click state: Reveals full content with smooth transition
+ * - Hover effects: Border and background color change
+ * - Animated with Tailwind transitions (smooth reveal/blur)
+ *
+ * WHEN TO USE:
+ * - REQUIRED: On every course slide (per course-content-generation skill)
+ * - At end of major topics for reflection
+ * - For formative assessment and engagement
+ * - To encourage critical thinking
+ *
+ * STYLING:
+ * - Gold color scheme (distinct from crimson)
+ * - Large clickable area (min-h-500px)
+ * - Subtle shadow
+ * - Pulse animation on icon
+ * - Smooth transitions and blur effects
+ *
+ * PROPS:
+ * @param title - Optional: Label shown in overlay (default: "Discussion Prompt")
+ * @param children - The discussion question/prompt text
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <DiscussionCard title="Reflection">
+ *   How would you apply these principles to your own work?
+ *   Consider both technical and ethical implications.
+ * </DiscussionCard>
+ *
+ * IMPORTANT NOTES:
+ * - One DiscussionCard per slide is recommended
+ * - Content should be a thoughtful question, not a long essay
+ * - Use in Slide but not repeated excessively
+ * - Provides engagement metric point for learners
+ */
 export function DiscussionCard({
   title = "Discussion Prompt",
   children,
@@ -396,8 +998,44 @@ export function DiscussionCard({
   );
 }
 
-// === Media & Data Display ===
+// ============================================================================
+// MEDIA & DATA VISUALIZATION COMPONENTS
+// ============================================================================
+// Display images, charts, quotes, metrics, and other data
 
+/**
+ * MediaBlock - Responsive image container with optional caption
+ *
+ * PURPOSE:
+ * - Display images, diagrams, charts, or visual content
+ * - Maintains aspect ratio and responsive behavior
+ * - Optional caption text below image
+ * - Consistent styling with borders and shadows
+ *
+ * WHEN TO USE:
+ * - For course diagrams, charts, or illustrative images
+ * - When image needs a caption or attribution
+ * - Inside Column or Row for side-by-side layouts
+ * - For visual examples or explanations
+ *
+ * BEHAVIOR:
+ * - Lazy loaded for performance
+ * - Aspect ratio maintained (video aspect 16:9)
+ * - Animated entry with GSAP reveal
+ *
+ * PROPS:
+ * @param src - Image path or URL
+ * @param alt - Alt text for accessibility (required)
+ * @param caption - Optional: Caption text displayed below
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <MediaBlock
+ *   src="/charts/market-analysis.png"
+ *   alt="Market analysis chart showing growth trends"
+ *   caption="Figure 1: Global AI market growth 2020-2026"
+ * />
+ */
 export function MediaBlock({
   src,
   alt,
@@ -430,6 +1068,44 @@ export function MediaBlock({
   );
 }
 
+/**
+ * Quote - Formatted blockquote with attribution
+ *
+ * PURPOSE:
+ * - Display testimonials, expert quotes, or key statements
+ * - Large, prominent styling for emphasis
+ * - Attribution footer with optional role/title
+ * - Animated entry with GSAP
+ *
+ * WHEN TO USE:
+ * - Expert opinions or research findings
+ * - Testimonials from practitioners
+ * - Key statements that deserve emphasis
+ * - Starting evidence for arguments
+ * - Sparingly for maximum impact
+ *
+ * STYLING:
+ * - Left crimson border
+ * - Italic serif text
+ * - Large size (3xl base, 5xl on lg)
+ * - Author attribution in smaller text below
+ * - Animated reveal
+ *
+ * PROPS:
+ * @param children - Quote text (no quotes needed, automatically formatted)
+ * @param author - Optional: Name of speaker/author
+ * @param role - Optional: Title or role of author
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <Quote
+ *   author="Dr. Jane Smith"
+ *   role="AI Research Director, Tech Corp"
+ * >
+ *   The future of AI is not about replacing humans,
+ *   but about augmenting human capability.
+ * </Quote>
+ */
 export function Quote({
   children,
   author,
@@ -462,6 +1138,47 @@ export function Quote({
   );
 }
 
+/**
+ * Metric - Large statistics or data point display
+ *
+ * PURPOSE:
+ * - Showcase key metrics, numbers, or statistics
+ * - Maximum visual emphasis on numerical findings
+ * - Used in multi-metric layouts or highlighted findings
+ * - Animated entry with GSAP
+ *
+ * WHEN TO USE:
+ * - Research findings: "72% improvement"
+ * - Statistics: "3.2B users affected"
+ * - Key percentages or counts
+ * - Usually displayed in Row with multiple Columns
+ * - For impact statements that are data-driven
+ *
+ * STYLING:
+ * - Huge serif number (8xl on md+)
+ * - Crimson color for the metric
+ * - Gold border and subtle background
+ * - Uppercase label below
+ * - Animated reveal
+ *
+ * PROPS:
+ * @param value - The metric number/value to display (e.g., "72%")
+ * @param label - Human-readable label for the metric (e.g., "Improvement")
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <Row gap="large">
+ *   <Column spanRatio="1/3">
+ *     <Metric value="72%" label="Accuracy Improvement" />
+ *   </Column>
+ *   <Column spanRatio="1/3">
+ *     <Metric value="3.2B" label="Total Users" />
+ *   </Column>
+ *   <Column spanRatio="1/3">
+ *     <Metric value="12x" label="Faster Processing" />
+ *   </Column>
+ * </Row>
+ */
 export function Metric({
   value,
   label,
@@ -485,6 +1202,45 @@ export function Metric({
   );
 }
 
+/**
+ * Callout - Highlighted box for key takeaways and important notes
+ *
+ * PURPOSE:
+ * - Emphasize critical information, warnings, or key points
+ * - Two variants: primary (crimson) and secondary (charcoal)
+ * - Left border design for visual hierarchy
+ * - Animated entry with GSAP
+ *
+ * WHEN TO USE:
+ * - For critical information that needs emphasis
+ * - Summary boxes with "Key Takeaway" or similar
+ * - Important methodology notes
+ * - Limitations or important caveats
+ * - Use primary for most cases, secondary for warnings/alternate notes
+ *
+ * STYLING:
+ * - Primary: Crimson border + light crimson background
+ * - Secondary: Charcoal border + light charcoal background
+ * - Left-aligned border accent
+ * - Padding and spacing for readability
+ *
+ * PROPS:
+ * @param title - Label for callout (default: "Key Takeaway")
+ * @param children - Callout content
+ * @param variant - "primary" (crimson) | "secondary" (charcoal)
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <Callout title="Important Finding" variant="primary">
+ *   The research shows that early intervention
+ *   is critical for optimal outcomes.
+ * </Callout>
+ *
+ * <Callout title="Methodology Note" variant="secondary">
+ *   This study was limited to participants aged 18-65
+ *   and may not generalize to other populations.
+ * </Callout>
+ */
 export function Callout({
   title = "Key Takeaway",
   children,
@@ -523,8 +1279,43 @@ export function Callout({
   );
 }
 
-// === Lists ===
+// ============================================================================
+// LIST & ENUMERATION COMPONENTS
+// ============================================================================
+// Structured lists with animation and styling
 
+/**
+ * AnimatedList - Container for animated list items
+ *
+ * PURPOSE:
+ * - Display bulleted lists with staggered animations
+ * - Left border accent in crimson
+ * - Paired with ListItem children for proper styling
+ *
+ * WHEN TO USE:
+ * - For enumerated content (key points, steps, features)
+ * - Always use with ListItem children
+ * - When you want animated stagger on scroll
+ * - For readability of grouped information
+ * - NOT for inline lists (use ContentText with <ul> instead)
+ *
+ * STYLING:
+ * - Left crimson border
+ * - Space between items (space-y-6)
+ * - Left-aligned
+ * - Children are ListItem components
+ *
+ * PROPS:
+ * @param children - Must be ListItem components
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <AnimatedList>
+ *   <ListItem>First key point about the topic</ListItem>
+ *   <ListItem>Second important consideration</ListItem>
+ *   <ListItem>Third related concept</ListItem>
+ * </AnimatedList>
+ */
 export function AnimatedList({
   children,
   className = "",
@@ -541,6 +1332,47 @@ export function AnimatedList({
   );
 }
 
+/**
+ * ListItem - Individual list item with animated bullet
+ *
+ * PURPOSE:
+ * - Child component of AnimatedList
+ * - Renders with crimson bullet point
+ * - Animated entry with GSAP stagger
+ * - Semantic <li> element
+ *
+ * BEHAVIOR:
+ * - Bullet animates in with staggered timing
+ * - Parent AnimatedList stagger controls animation speed
+ * - Bullet is small circle (CircleSmall icon)
+ * - Content flows beside bullet point
+ *
+ * WHEN TO USE:
+ * - ONLY as children of AnimatedList
+ * - One ListItem per bullet point
+ * - For key points, steps, or enumerated content
+ *
+ * STYLING:
+ * - Crimson bullet (CircleSmall icon) on left
+ * - Light charcoal text
+ * - Flex layout for bullet + content alignment
+ * - Animated reveal
+ *
+ * PROPS:
+ * @param children - Content of the list item (text or JSX)
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <AnimatedList>
+ *   <ListItem>
+ *     <strong>Model Training:</strong> Process of teaching the system
+ *   </ListItem>
+ *   <ListItem>Validation against test datasets</ListItem>
+ *   <ListItem>Deployment and monitoring</ListItem>
+ * </AnimatedList>
+ *
+ * NOTE: ListItem can contain <strong> or other inline elements
+ */
 export function ListItem({
   children,
   className = "",

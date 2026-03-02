@@ -1,6 +1,9 @@
-# Course Repository Instructions
+---
+description: "Repository-wide core instructions and coding conventions."
+applyTo: "**/*"
+---
 
-**Ignore the /src/app/(courses) directory completely!**
+# Core Repository Instructions
 
 ## Project Overview
 
@@ -16,10 +19,6 @@ IMPORTANT: We use `pnpm` as our package manager.
 - Prefer `cn` and `cva` to make components composable.
 - Prefer reusing components where possible
 - Prefer creating new components for complex tailwindcss styles
-
-# Modifying files
-
-Prefer `replace_string_in_file` to using terminal `cat` to append to files.
 
 # Debugging nextjs
 

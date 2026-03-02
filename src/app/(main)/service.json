@@ -1,0 +1,37 @@
+{
+  "heading": "Academic Service",
+  "items": [
+    {
+      "title": "Peer Reviewer",
+      "bordered": true,
+      "listItems": [
+        {
+          "label": "ICML 2025",
+          "description": "Gradient Descent Optimization"
+        },
+        { "label": "AISTATS 2025", "description": null },
+        {
+          "label": "NeurIPS 2024 & 2022",
+          "description": "GD, LLMs, Vector Symbolic Architecture"
+        }
+      ]
+    },
+    {
+      "title": "Ethics Board Member",
+      "content": "Member of REB ethics board, overseeing research compliance and data integrity protocols.",
+      "bordered": true
+    }
+  ],
+  "curricula": [
+    {
+      "title": "Curriculum Designer",
+      "description": "Master of Financial Technology.",
+      "bordered": true
+    },
+    {
+      "title": "Curriculum Designer",
+      "description": "Bachelor of Information Technology.",
+      "bordered": false
+    }
+  ]
+}

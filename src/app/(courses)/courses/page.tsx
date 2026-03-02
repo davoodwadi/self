@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
+import { CourseCard } from "../_components/CourseCard";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -37,12 +38,10 @@ export default function Home() {
       gsap.fromTo(
         ".course-card",
         {
-          y: 60,
           opacity: 0,
           filter: "blur(10px)",
         },
         {
-          y: 0,
           opacity: 1,
           filter: "blur(0px)",
           duration: 1.2,
@@ -221,8 +220,8 @@ export default function Home() {
             in Business
           </h1>
           <p className="hero-text text-[var(--charcoal-light)] text-lg sm:text-xl lg:text-3xl font-light mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed">
-            Bridging the gap between technical capability and strategic
-            executive value.
+            A hands-on course on the use-cases of the latest AI technology in
+            business landscape.
           </p>
 
           <div className="hero-text flex flex-col gap-4 items-center justify-between mt-8 md:mt-16 max-w-3xl mx-auto border-t border-b border-[var(--charcoal)]/10 py-6">
@@ -256,101 +255,51 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {/* Week 1 */}
-            <Link href="/courses/01-introduction" className="course-card block group">
-              <div className="relative bg-[var(--background)] border-t-[4px] border-t-[var(--crimson)] p-8 h-full transition-all duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] overflow-hidden">
-                <span className="text-[var(--crimson)] font-bold tracking-widest uppercase text-xs mb-3 block">
-                  Week 01
-                </span>
-                <h3 className="text-2xl font-black text-[var(--charcoal)] mb-4">
-                  Introduction
-                </h3>
-                <p className="text-[var(--charcoal-light)] font-light text-sm leading-relaxed mb-8">
-                  Navigating the Business Landscape of Artificial Intelligence.
-                  From problem definitions to strategic ROI.
-                </p>
-                <div className="inline-block px-8 py-3 bg-[var(--crimson)] text-[var(--surface)] font-semibold text-sm tracking-wide uppercase border border-[var(--crimson)] transition-all duration-300 group-hover:bg-[var(--charcoal)] group-hover:border-[var(--charcoal)] group-hover:-translate-y-0.5 group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.1)]">
-                  View Deck
-                </div>
-              </div>
-            </Link>
+            <CourseCard
+              href="/courses/01-introduction"
+              label="Week 01"
+              title="Introduction"
+              description="A recap of fundamentals of AI"
+            />
 
-            {/* Week 6 */}
-            <Link
+            <CourseCard
+              label="Week 02"
+              title="AI Strategy & Architecture"
+              description="Building the foundation for enterprise AI adoption."
+              isLocked
+            />
+
+            <CourseCard
               href="/courses/06-introduction-to-deep-learning"
-              className="course-card block group"
-            >
-              <div className="relative bg-[var(--background)] border-t-[4px] border-t-[var(--gold)] p-8 h-full transition-all duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] overflow-hidden">
-                <span className="text-[var(--gold)] font-bold tracking-widest uppercase text-xs mb-3 block">
-                  Week 06
-                </span>
-                <h3 className="text-2xl font-black text-[var(--charcoal)] mb-4">
-                  Introduction to Deep Learning
-                </h3>
-                <p className="text-[var(--charcoal-light)] font-light text-sm leading-relaxed mb-8">
-                  A gentle introduction to deep learning
-                </p>
-                <div className="inline-block px-8 py-3 bg-[var(--gold)] text-[var(--charcoal)] font-semibold text-sm tracking-wide uppercase border border-[var(--gold)] transition-all duration-300 group-hover:bg-[var(--charcoal)] group-hover:text-[var(--surface)] group-hover:border-[var(--charcoal)] group-hover:-translate-y-0.5 group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.1)]">
-                  View Deck
-                </div>
-              </div>
-            </Link>
+              label="Week 06"
+              title="Introduction to Deep Learning"
+              description="A gentle introduction to deep learning"
+              variant="gold"
+            />
 
-            {/* Week 7 */}
-            <Link href="/courses/07-edii" className="course-card block group">
-              <div className="relative bg-[var(--background)] border-t-[4px] border-t-[var(--gold)] p-8 h-full transition-all duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] overflow-hidden">
-                <span className="text-[var(--gold)] font-bold tracking-widest uppercase text-xs mb-3 block">
-                  Week 07
-                </span>
-                <h3 className="text-2xl font-black text-[var(--charcoal)] mb-4">
-                  EDII in AI
-                </h3>
-                <p className="text-[var(--charcoal-light)] font-light text-sm leading-relaxed mb-8">
-                  Equity, Diversity, Inclusion, and Indigeneity. Navigating the
-                  ethical and operational risks of algorithmic bias.
-                </p>
-                <div className="inline-block px-8 py-3 bg-[var(--gold)] text-[var(--charcoal)] font-semibold text-sm tracking-wide uppercase border border-[var(--gold)] transition-all duration-300 group-hover:bg-[var(--charcoal)] group-hover:text-[var(--surface)] group-hover:border-[var(--charcoal)] group-hover:-translate-y-0.5 group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.1)]">
-                  View Deck
-                </div>
-              </div>
-            </Link>
+            <CourseCard
+              href="/courses/07-edii"
+              label="Week 07"
+              title="EDII in AI"
+              description="Equity, Diversity, Inclusion, and Indigeneity. The ethical and operational risks of algorithmic bias."
+              variant="gold"
+            />
 
-            {/* Agentic AI */}
-            <Link href="/courses/agentic-ai" className="course-card block group">
-              <div className="relative bg-[var(--background)] border-t-[4px] border-t-[var(--gold)] p-8 h-full transition-all duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] overflow-hidden">
-                <span className="text-[var(--gold)] font-bold tracking-widest uppercase text-xs mb-3 block">
-                  New Paradigm
-                </span>
-                <h3 className="text-2xl font-black text-[var(--charcoal)] mb-4">
-                  Agentic AI and Vibe Coding
-                </h3>
-                <p className="text-[var(--charcoal-light)] font-light text-sm leading-relaxed mb-8">
-                  Moving away from manual syntax to autonomous agents and
-                  orchestration.
-                </p>
-                <div className="inline-block px-8 py-3 bg-[var(--gold)] text-[var(--charcoal)] font-semibold text-sm tracking-wide uppercase border border-[var(--gold)] transition-all duration-300 group-hover:bg-[var(--charcoal)] group-hover:text-[var(--surface)] group-hover:border-[var(--charcoal)] group-hover:-translate-y-0.5 group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.1)]">
-                  View Deck
-                </div>
-              </div>
-            </Link>
+            <CourseCard
+              href="/courses/08-sustainability"
+              label="Week 08"
+              title="Sustainability in AI"
+              description="How to create sustainable AI models. How to use AI to create a sustainable future."
+              variant="gold"
+            />
 
-            {/* Locked Module Placeholder */}
-            <div className="course-card block opacity-50">
-              <div className="relative bg-[var(--background)] border-t-[4px] border-t-[var(--charcoal-light)] p-8 h-full grayscale">
-                <span className="text-[var(--charcoal-light)] font-bold tracking-widest uppercase text-xs mb-3 block">
-                  Week 02
-                </span>
-                <h3 className="text-xl font-black text-[var(--charcoal-light)] mb-4">
-                  AI Strategy & Architecture
-                </h3>
-                <p className="text-[var(--charcoal-light)] font-light text-sm leading-relaxed mb-8">
-                  Building the foundation for enterprise AI adoption.
-                </p>
-                <div className="inline-block px-8 py-3 bg-transparent text-[var(--charcoal-light)] font-semibold text-sm tracking-wide uppercase border border-[var(--charcoal-light)]">
-                  Locked
-                </div>
-              </div>
-            </div>
+            <CourseCard
+              href="/courses/agentic-ai"
+              label="New Paradigm"
+              title="Agentic AI and Vibe Coding"
+              description="Moving away from manual syntax to autonomous agents and orchestration."
+              variant="gold"
+            />
           </div>
         </main>
       </section>

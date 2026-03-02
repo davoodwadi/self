@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "node .github/hooks/ensure-course-citation-session-start.js",
+        "timeout": 8
+      }
+    ]
+  }
+}
