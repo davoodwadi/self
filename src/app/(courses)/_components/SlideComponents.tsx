@@ -218,7 +218,7 @@ export function Row({
   children,
   className = "",
   gap = "large",
-  items = "start",
+  items = "stretch",
 }: {
   children: React.ReactNode;
   className?: string;
@@ -523,7 +523,7 @@ export function Heading({
   className?: string;
 }) {
   return (
-    <div className={`gsap-reveal mb-8 ${className}`}>
+    <div className={`gsap-reveal mb-8 md:mb-16 ${className}`}>
       <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-[var(--charcoal)] font-serif">
         {children}
       </h2>
@@ -1192,7 +1192,7 @@ export function Metric({
     <div
       className={`gsap-reveal flex flex-col items-center justify-center p-8 border border-[var(--gold)]/20 bg-[var(--gold)]/5 ${className}`}
     >
-      <div className="text-6xl md:text-8xl font-black font-serif text-[var(--crimson)] mb-4 tracking-tighter">
+      <div className="text-4xl md:text-6xl font-black font-serif text-[var(--crimson)] mb-4 tracking-tighter">
         {value}
       </div>
       <div className="text-xl md:text-2xl font-medium tracking-wide text-[var(--charcoal)] text-center uppercase">
@@ -1389,5 +1389,129 @@ export function ListItem({
       </span>
       <div>{children}</div>
     </li>
+  );
+}
+
+/**
+ * HardwareLifecycle - Cinematic hardware lifecycle flow diagram
+ *
+ * PURPOSE:
+ * - Visualize the full lifecycle of AI hardware with weighted animations
+ * - Replace Mermaid diagrams with bespoke cinematic component
+ * - Interactive hover states and smooth animations
+ *
+ * WHEN TO USE:
+ * - When showing linear flow/process diagrams
+ * - For lifecycle, pipeline, or sequential process visualization
+ * - Alternative to Mermaid for simpler linear flows
+ *
+ * STYLING:
+ * - Responsive: Vertical on mobile, horizontal on desktop
+ * - Glassmorphic cards with hover effects
+ * - Animated arrows with pulse effect
+ * - Crimson accent colors on hover
+ *
+ * PROPS:
+ * @param caption - Optional caption displayed below the diagram
+ * @param className - Additional Tailwind classes
+ *
+ * EXAMPLE:
+ * <HardwareLifecycle caption="The full lifecycle of AI hardware" />
+ */
+export function HardwareLifecycle({
+  caption,
+  className = "",
+}: {
+  caption?: string;
+  className?: string;
+}) {
+  const stages = [
+    { label: "Extraction", icon: "⛏️" },
+    { label: "Manufacturing", icon: "🏭" },
+    { label: "Use", icon: "💻" },
+    { label: "Disposal", icon: "♻️" },
+  ];
+
+  return (
+    <div className={`w-full ${className}`}>
+      {/* Lifecycle Flow */}
+      <div className="gsap-reveal flex flex-col md:flex-row items-center justify-center gap-0 md:gap-4 py-8">
+        {stages.map((stage, index) => (
+          <React.Fragment key={stage.label}>
+            {/* Stage Box */}
+            <div
+              className="gsap-reveal group relative"
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              {/* Connecting Line (Mobile - Vertical) */}
+              {index > 0 && (
+                <div className="md:hidden absolute left-1/2 -top-8 w-0.5 h-8 bg-gradient-to-b from-[var(--crimson)]/40 to-[var(--crimson)]" />
+              )}
+
+              <div className="relative flex flex-col items-center justify-center min-w-[140px] h-[140px] bg-[var(--surface)] border-2 border-[var(--charcoal)]/10 rounded-lg shadow-lg transition-all duration-500 hover:border-[var(--crimson)] hover:shadow-[0_0_30px_rgba(139,0,0,0.15)] hover:-translate-y-1">
+                {/* Icon */}
+                <div className="text-4xl mb-2 transition-transform duration-500 group-hover:scale-110">
+                  {stage.icon}
+                </div>
+
+                {/* Label */}
+                <div className="text-base font-serif font-semibold text-[var(--charcoal)] text-center px-2">
+                  {stage.label}
+                </div>
+
+                {/* Subtle noise overlay */}
+                <div
+                  className="absolute inset-0 rounded-lg opacity-[0.02] pointer-events-none"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Arrow (Desktop - Horizontal) */}
+            {index < stages.length - 1 && (
+              <div
+                className="hidden md:block gsap-reveal"
+                style={{ animationDelay: `${index * 0.2 + 0.1}s` }}
+              >
+                <svg
+                  width="60"
+                  height="24"
+                  viewBox="0 0 60 24"
+                  fill="none"
+                  className="transition-all duration-500"
+                >
+                  {/* Arrow Line */}
+                  <line
+                    x1="0"
+                    y1="12"
+                    x2="45"
+                    y2="12"
+                    stroke="var(--crimson)"
+                    strokeWidth="2"
+                    strokeDasharray="4 2"
+                    className="animate-pulse"
+                  />
+                  {/* Arrow Head */}
+                  <polygon
+                    points="45,6 45,18 60,12"
+                    fill="var(--crimson)"
+                    className="transition-transform duration-500 hover:translate-x-1"
+                  />
+                </svg>
+              </div>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
+
+      {/* Caption */}
+      {caption && (
+        <p className="gsap-reveal text-sm text-[var(--charcoal-light)]/70 italic text-center mt-6 font-serif">
+          {caption}
+        </p>
+      )}
+    </div>
   );
 }

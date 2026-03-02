@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import mermaid from "mermaid";
-import { useId } from "react";
-import { div } from "three/tsl";
 
 mermaid.initialize({
   startOnLoad: false,
@@ -57,9 +55,11 @@ mermaid.initialize({
 interface MermaidProps {
   /** Mermaid diagram syntax. Supports flowcharts, sequence diagrams, state diagrams, ERDs, Gantt charts, mindmaps. */
   chart: string;
+  /** Optional caption to display below the diagram */
+  caption?: string;
 }
 
-const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
+const Mermaid: React.FC<MermaidProps> = ({ chart, caption }) => {
   // Strongly type the ref as an HTMLDivElement
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -92,11 +92,16 @@ const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
   }, [chart]);
 
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col items-center overflow-hidden">
       <div
         ref={containerRef}
-        className="mermaid-container [&>svg]:w-full [&>svg]:max-w-full [&>svg]:h-auto"
+        className="mermaid-container w-full [&>svg]:!w-full [&>svg]:!max-w-full [&>svg]:h-auto"
       />
+      {caption && (
+        <p className="mt-4 text-sm italic text-gray-400 text-center max-w-2xl">
+          {caption}
+        </p>
+      )}
     </div>
   );
 };

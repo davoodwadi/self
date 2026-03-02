@@ -21,6 +21,7 @@ import {
   Metric,
   Callout,
   Quote,
+  HardwareLifecycle,
 } from "@/app/(courses)/_components/SlideComponents";
 import { BackgroundManager } from "@/app/(courses)/_components/Backgrounds";
 import Mermaid from "@/app/(courses)/_components/MermaidDiagram";
@@ -109,7 +110,11 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <AnimatedList>
+              <Row gap="small">
+                <Metric value="550+" label="Tons CO2e (GPT-3)" />
+                <Metric value=">50%" label="Operational Carbon" />
+              </Row>
+              <AnimatedList className="mt-8">
                 <ListItem>
                   Operational carbon splits into training and inference
                   emissions.
@@ -140,7 +145,13 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <AnimatedList>
+              <Mermaid
+                chart={`pie title AI Lifecycle Emissions
+                  "Inference" : 80
+                  "Training" : 20`}
+                caption="Inference dominates the lifecycle emissions of deployed models"
+              />
+              <AnimatedList className="mt-8">
                 <ListItem>
                   Inference constitutes the majority of lifecycle emissions for
                   deployed models <Citation ids={[1, 2]} />.
@@ -172,6 +183,10 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <Metric value="0.24 Wh" label="Energy / Prompt" />
+                <Metric value="0.03 g" label="CO2e / Prompt" />
+              </div>
               <AnimatedList>
                 <ListItem>
                   Median Gemini App text prompt consumes 0.24 Wh of energy{" "}
@@ -203,7 +218,11 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <AnimatedList>
+              <Row gap="small">
+                <Metric value="700k L" label="Freshwater (GPT-3 Training)" />
+                <Metric value="6.6B m³" label="Global Demand (2027)" />
+              </Row>
+              <AnimatedList className="mt-8">
                 <ListItem>
                   Data centers require massive cooling systems to maintain
                   operation.
@@ -265,7 +284,8 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <AnimatedList>
+              <HardwareLifecycle caption="The full lifecycle of AI hardware" />
+              <AnimatedList className="mt-8">
                 <ListItem>
                   "Embodied footprint" includes extraction, manufacturing, and
                   disposal.
@@ -296,6 +316,9 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
+              <div className="mb-8">
+                <Metric value="62M" label="Tonnes Global E-Waste (2022)" />
+              </div>
               <AnimatedList>
                 <ListItem>
                   AI hardware becomes obsolete faster than general-purpose
@@ -373,7 +396,11 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <AnimatedList>
+              <Row gap="small">
+                <Metric value="10 Days" label="Advance Forecasting" />
+                <Metric value="0.25°" label="High Resolution" />
+              </Row>
+              <AnimatedList className="mt-8">
                 <ListItem>
                   AI outperforms traditional Numerical Weather Prediction (NWP)
                   in speed and efficiency.
@@ -514,7 +541,19 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <AnimatedList>
+              <Mermaid
+                chart={`graph TD
+                  subgraph Red["Red AI"]
+                    R1[Maximize Accuracy] --> R2[Massive Models]
+                    R2 --> R3[High Carbon Cost]
+                  end
+                  subgraph Green["Green AI"]
+                    G1[Efficiency Metric] --> G2[Optimized Models]
+                    G2 --> G3[Sustainable Scale]
+                  end`}
+                caption="Contrasting development philosophies"
+              />
+              <AnimatedList className="mt-8">
                 <ListItem>
                   Red AI: Buying performance with massive computational cost{" "}
                   <Citation ids={[29, 30]} />.
@@ -545,7 +584,17 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
-              <AnimatedList>
+              <Mermaid
+                chart={`graph LR
+                  Input[Large Model] --> Q[Quantization]
+                  Input --> P[Pruning]
+                  Input --> D[Distillation]
+                  Q --> Output[Efficient Model]
+                  P --> Output
+                  D --> Output`}
+                caption="Techniques to reduce model size and energy consumption"
+              />
+              <AnimatedList className="mt-8">
                 <ListItem>
                   Quantization: Reducing precision (e.g., 32-bit to 4-bit) to
                   save energy.
@@ -576,6 +625,9 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
+              <div className="mb-8">
+                <Metric value="28%" label="Global AI Energy Savings (2025)" />
+              </div>
               <AnimatedList>
                 <ListItem>
                   The "Small is Sufficient" trend: Using task-specific models{" "}
@@ -639,6 +691,9 @@ export default function CourseName() {
           </Heading>
           <Row gap="large">
             <Column spanRatio="2/3">
+              <div className="mb-8">
+                <Metric value="1000x" label="Potential Efficiency Gain" />
+              </div>
               <AnimatedList>
                 <ListItem>
                   Intel Loihi 2 and BrainChip Akida showing commercial viability{" "}
@@ -681,7 +736,15 @@ export default function CourseName() {
           <Heading>
             AI and the <Highlight>Circular</Highlight> Economy
           </Heading>
-          <Row gap="large">
+          <Mermaid
+            chart={`graph LR
+                  P[Production] --> C[Consumption]
+                  C --> W[Waste]
+                  W -->|AI Sorting| R[Recycling]
+                  R -->|Materials| P`}
+            caption="Closing the loop with AI"
+          />
+          <Row gap="large" className="mt-8">
             <Column spanRatio="2/3">
               <AnimatedList>
                 <ListItem>
