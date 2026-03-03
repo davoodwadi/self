@@ -14,6 +14,7 @@ const backgrounds: Record<string, React.FC> = {
   edii: EDIITreeBackground,
   agentic: AgenticAITreeBackground,
   sustainability: SustainabilityBackground,
+  "product-development": ProductDevelopmentBackground,
   // More backgrounds can be added here
 };
 
@@ -52,6 +53,12 @@ function SustainabilityBackground({ onReady }: { onReady?: () => void }) {
 
     const loadVanta = async () => {
       try {
+        // Ensure THREE is globally available for Vanta
+        if (typeof window !== "undefined") {
+          // @ts-ignore
+          window.THREE = THREE;
+        }
+
         // @ts-ignore
         const FOG =
           (await import("vanta/dist/vanta.fog.min")).default ||
@@ -65,11 +72,11 @@ function SustainabilityBackground({ onReady }: { onReady?: () => void }) {
           gyroControls: false,
           minHeight: 200.0,
           minWidth: 200.0,
-          highlightColor: 0x50c878, // Emerald Green
-          midtoneColor: 0xd4af37, // Gold
-          lowlightColor: 0x050c08, // Dark base
-          baseColor: 0x050c08, // Very dark background
-          blurFactor: 0.3,
+          highlightColor: 0x22c55e, // Brighter Emerald Green
+          midtoneColor: 0x16a34a, // Rich Green midtone to avoid gray blending
+          lowlightColor: 0x0d9488, // Teal/dark green
+          baseColor: 0x050c08, // Very dark green/black background
+          blurFactor: 0.9, // Higher blur to make fog smoother
           zoom: 1.0,
           speed: 1,
         });
@@ -237,6 +244,71 @@ function EDIITreeBackground({ onReady }: { onReady?: () => void }) {
   return (
     <canvas
       ref={canvasRef}
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+    />
+  );
+}
+
+function ProductDevelopmentBackground({ onReady }: { onReady?: () => void }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [vantaEffect, setVantaEffect] = React.useState<any>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    let currentEffect: any = null;
+
+    const loadVanta = async () => {
+      try {
+        // Ensure THREE is globally available for Vanta
+        if (typeof window !== "undefined") {
+          // @ts-ignore
+          window.THREE = THREE;
+        }
+
+        // We use DOTS for Product Development to symbolize technical precision, grid-systems, and structure
+        // @ts-ignore
+        const DOTS =
+          (await import("vanta/dist/vanta.dots.min")).default ||
+          (await import("vanta/dist/vanta.dots.min"));
+
+        currentEffect = DOTS({
+          el: containerRef.current,
+          THREE: THREE,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          color: 0x0d9488,
+          color2: 0xfffce1,
+          backgroundColor: 0xfffce1,
+          size: 3.5,
+          spacing: 35.0,
+          showLines: true,
+        });
+        setVantaEffect(currentEffect);
+        if (onReady) onReady();
+      } catch (error) {
+        console.error("Error initializing Vanta DOTS:", error);
+        if (onReady) onReady();
+      }
+    };
+
+    loadVanta();
+
+    return () => {
+      if (currentEffect && currentEffect.destroy) {
+        currentEffect.destroy();
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
     />
   );
