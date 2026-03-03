@@ -2,6 +2,7 @@ import { AboutSection } from "./_sections/AboutSection";
 import { ContactSection } from "./_sections/ContactSection";
 import { HeroSection } from "./_sections/HeroSection";
 import { PublicationsSection } from "./_sections/PublicationsSection";
+import { GrantsSection } from "./_sections/GrantsSection";
 import { ServicesSection } from "./_sections/ServicesSection";
 import { TeachingSection } from "./_sections/TeachingSection";
 import { CurriculumSection } from "./_sections/CurriculumSection";
@@ -15,6 +16,7 @@ export default function DavoodWadiPortfolio() {
           <TeachingSection />
           <PublicationsSection />
           <ServicesSection />
+          <GrantsSection />
           <CurriculumSection />
           <ContactSection />
         </>
