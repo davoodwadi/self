@@ -285,7 +285,7 @@ function ProductDevelopmentBackground({ onReady }: { onReady?: () => void }) {
           color: 0x0d9488,
           color2: 0xfffce1,
           backgroundColor: 0xfffce1,
-          size: 3.5,
+          size: 2.5,
           spacing: 35.0,
           showLines: true,
         });
