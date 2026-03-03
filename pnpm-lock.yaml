@@ -56,6 +56,9 @@ importers:
       three:
         specifier: ^0.183.1
         version: 0.183.1
+      vanta:
+        specifier: ^0.5.24
+        version: 0.5.24
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4
@@ -4515,6 +4518,9 @@ packages:
   validate-npm-package-name@7.0.2:
     resolution: {integrity: sha512-hVDIBwsRruT73PbK7uP5ebUt+ezEtCmzZz3F59BSr2F6OVFnJ/6h8liuvdLrQ88Xmnk6/+xGGuq+pG9WwTuy3A==}
     engines: {node: ^20.17.0 || >=22.9.0}
+
+  vanta@0.5.24:
+    resolution: {integrity: sha512-fvieEbHy1ZS23zrcX+topzqAgA4Uct1enngOEWLFBgs9TtOf6RDFOYatH7KSVdrABzQDMCQ5myQy+nTSZZwLzg==}
 
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
@@ -9810,6 +9816,8 @@ snapshots:
   uuid@11.1.0: {}
 
   validate-npm-package-name@7.0.2: {}
+
+  vanta@0.5.24: {}
 
   vary@1.1.2: {}
 

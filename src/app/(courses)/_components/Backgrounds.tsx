@@ -17,172 +17,88 @@ const backgrounds: Record<string, React.FC> = {
   // More backgrounds can be added here
 };
 
-export function BackgroundManager({ type }: { type?: string }) {
-  if (!type) return null;
+export function BackgroundManager({
+  type,
+  onReady,
+}: {
+  type?: string;
+  onReady?: () => void;
+}) {
+  if (!type) {
+    if (onReady) onReady();
+    return null;
+  }
   const BgComponent = backgrounds[type];
   if (!BgComponent) {
     console.warn(`Background type "${type}" not found.`);
+    if (onReady) onReady();
     return null;
   }
-  return <BgComponent />;
+  // @ts-ignore
+  return <BgComponent onReady={onReady} />;
 }
 
 // === Specific Background Implementations below === //
 
-function SustainabilityBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+function SustainabilityBackground({ onReady }: { onReady?: () => void }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [vantaEffect, setVantaEffect] = React.useState<any>(null);
 
   useEffect(() => {
-    if (!canvasRef.current) return;
+    if (!containerRef.current) return;
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000,
-    );
-    camera.position.z = 40;
+    // Dynamically import FOG to avoid SSR and module resolution issues
+    let currentEffect: any = null;
 
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvasRef.current,
-      alpha: true,
-      antialias: true,
-    });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const loadVanta = async () => {
+      try {
+        // @ts-ignore
+        const FOG =
+          (await import("vanta/dist/vanta.fog.min")).default ||
+          (await import("vanta/dist/vanta.fog.min"));
 
-    const particlesGroup = new THREE.Group();
-
-    // Create organic, slow-moving mesh structures with emerald and gold particles
-    const particleCount = 150;
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    const colors = new Float32Array(particleCount * 3);
-
-    // Emerald and Gold color mix
-    const color1 = new THREE.Color(0x50c878); // Emerald Green
-    const color2 = new THREE.Color(0xd4af37); // Gold
-
-    for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 80;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 80;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 80;
-
-      const mixRatio = Math.random();
-      const mixedColor = color1.clone().lerp(color2, mixRatio);
-      colors[i * 3] = mixedColor.r;
-      colors[i * 3 + 1] = mixedColor.g;
-      colors[i * 3 + 2] = mixedColor.b;
-    }
-
-    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
-
-    const material = new THREE.PointsMaterial({
-      size: 0.6,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.9,
-    });
-
-    const particles = new THREE.Points(geometry, material);
-    particlesGroup.add(particles);
-
-    // Create organic connections (mesh structures)
-    const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x50c878,
-      transparent: true,
-      opacity: 0.05,
-    });
-
-    const lineGeometry = new THREE.BufferGeometry();
-    const linePositions = [];
-
-    for (let i = 0; i < particleCount; i++) {
-      for (let j = i + 1; j < particleCount; j++) {
-        const dx = positions[i * 3] - positions[j * 3];
-        const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
-        const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
-        const distSq = dx * dx + dy * dy + dz * dz;
-
-        if (distSq < 200) {
-          linePositions.push(
-            positions[i * 3],
-            positions[i * 3 + 1],
-            positions[i * 3 + 2],
-            positions[j * 3],
-            positions[j * 3 + 1],
-            positions[j * 3 + 2],
-          );
-        }
+        currentEffect = FOG({
+          el: containerRef.current,
+          THREE: THREE,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          highlightColor: 0x50c878, // Emerald Green
+          midtoneColor: 0xd4af37, // Gold
+          lowlightColor: 0x050c08, // Dark base
+          baseColor: 0x050c08, // Very dark background
+          blurFactor: 0.3,
+          zoom: 1.0,
+          speed: 1,
+        });
+        setVantaEffect(currentEffect);
+        if (onReady) onReady();
+      } catch (error) {
+        console.error("Error initializing Vanta FOG:", error);
+        if (onReady) onReady();
       }
-    }
-
-    lineGeometry.setAttribute(
-      "position",
-      new THREE.Float32BufferAttribute(linePositions, 3),
-    );
-    const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
-    particlesGroup.add(lines);
-
-    scene.add(particlesGroup);
-
-    let mouseX = 0;
-    let mouseY = 0;
-    const windowHalfX = window.innerWidth / 2;
-    const windowHalfY = window.innerHeight / 2;
-
-    const onDocumentMouseMove = (event: MouseEvent) => {
-      mouseX = (event.clientX - windowHalfX) * 0.001;
-      mouseY = (event.clientY - windowHalfY) * 0.001;
     };
 
-    document.addEventListener("mousemove", onDocumentMouseMove);
-
-    const animate = () => {
-      requestAnimationFrame(animate);
-
-      const time = Date.now() * 0.00001;
-      particlesGroup.rotation.y = time;
-      particlesGroup.rotation.z = time * 0.5;
-
-      // Gentle movement
-      camera.position.x += (mouseX - camera.position.x) * 0.0005;
-      camera.position.y += (-mouseY - camera.position.y) * 0.0005;
-      camera.lookAt(scene.position);
-
-      renderer.render(scene, camera);
-    };
-    animate();
-
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
-    window.addEventListener("resize", handleResize);
+    loadVanta();
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-      document.removeEventListener("mousemove", onDocumentMouseMove);
-      renderer.dispose();
-      geometry.dispose();
-      material.dispose();
-      lineGeometry.dispose();
-      lineMaterial.dispose();
+      if (currentEffect && currentEffect.destroy) {
+        currentEffect.destroy();
+      }
     };
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-15"
+    <div
+      ref={containerRef}
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40"
     />
   );
 }
 
-function EDIITreeBackground() {
+function EDIITreeBackground({ onReady }: { onReady?: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -302,6 +218,11 @@ function EDIITreeBackground() {
     };
     window.addEventListener("resize", handleResize);
 
+    // Give it a tiny delay to ensure the canvas is painted
+    setTimeout(() => {
+      if (onReady) onReady();
+    }, 50);
+
     return () => {
       window.removeEventListener("resize", handleResize);
       document.removeEventListener("mousemove", onDocumentMouseMove);
@@ -321,7 +242,7 @@ function EDIITreeBackground() {
   );
 }
 
-function AgenticAITreeBackground() {
+function AgenticAITreeBackground({ onReady }: { onReady?: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -470,6 +391,10 @@ function AgenticAITreeBackground() {
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
     window.addEventListener("resize", handleResize);
+
+    setTimeout(() => {
+      if (onReady) onReady();
+    }, 50);
 
     return () => {
       window.removeEventListener("resize", handleResize);

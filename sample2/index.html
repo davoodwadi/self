@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Hidden Cost of Compute</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="canvas-container">
+      <canvas id="particle-canvas"></canvas>
+    </div>
+
+    <main class="diagram-container">
+      <header class="title-section">
+        <h1 class="glow-text">The Hidden Cost of Compute</h1>
+        <p class="subtitle">
+          Operational carbon splits into training and inference emissions
+        </p>
+      </header>
+
+      <div class="network-diagram">
+        <!-- Central Origin -->
+        <div class="node core-node">
+          <div class="node-ring"></div>
+          <div class="node-content">
+            <h2>AI Operations</h2>
+            <p>Total Emissions</p>
+          </div>
+        </div>
+
+        <div class="path-lines">
+          <svg
+            class="connection-svg"
+            viewBox="0 0 1000 600"
+            preserveAspectRatio="none"
+          >
+            <path
+              class="animated-path training-path"
+              d="M 500,100 C 500,200 250,250 250,400"
+            />
+            <path
+              class="animated-path inference-path"
+              d="M 500,100 C 500,200 750,250 750,400"
+            />
+
+            <!-- Flowing particles along paths -->
+            <circle class="flow-particle p1" cx="0" cy="0" r="4">
+              <animateMotion dur="3s" repeatCount="indefinite">
+                <mpath href=".training-path" />
+              </animateMotion>
+            </circle>
+            <circle class="flow-particle p2" cx="0" cy="0" r="4">
+              <animateMotion dur="2.5s" repeatCount="indefinite">
+                <mpath href=".inference-path" />
+              </animateMotion>
+            </circle>
+          </svg>
+        </div>
+
+        <!-- Training Branch -->
+        <div class="branch training-branch">
+          <div
+            class="node branch-node warning-node"
+            style="animation-delay: 0.2s"
+          >
+            <div class="node-content">
+              <h3>Training</h3>
+              <div class="stat-box">
+                <span class="number">550+</span>
+                <span class="unit">Metric Tons CO₂e</span>
+              </div>
+              <p class="detail">GPT-3 Training Emission [cite: 2, 3]</p>
+            </div>
+          </div>
+
+          <div
+            class="node detail-node danger-node"
+            style="animation-delay: 0.4s"
+          >
+            <div class="node-content">
+              <div class="icon-warning">⚠️</div>
+              <h4>Exponential Growth</h4>
+              <p>
+                Newer models likely exceed these figures by orders of magnitude
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="node detail-node opaque-node"
+            style="animation-delay: 0.6s"
+          >
+            <div class="node-content">
+              <div class="glitch-text">?</div>
+              <h4>Data Opacity</h4>
+              <p>
+                Why is transparency regarding training data becoming a rarity?
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inference Branch -->
+        <div class="branch inference-branch">
+          <div
+            class="node branch-node ongoing-node"
+            style="animation-delay: 0.3s"
+          >
+            <div class="node-content">
+              <h3>Inference</h3>
+              <div class="stat-box continuous">
+                <span class="text">Continuous</span>
+                <span class="unit">Operational Cost</span>
+              </div>
+              <p class="detail">Every prompt, every query, every day</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
