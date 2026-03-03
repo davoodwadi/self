@@ -1,9 +1,10 @@
 import { AboutSection } from "./_sections/AboutSection";
 import { ContactSection } from "./_sections/ContactSection";
-import { ExpertiseSection } from "./_sections/ExpertiseSection";
 import { HeroSection } from "./_sections/HeroSection";
 import { PublicationsSection } from "./_sections/PublicationsSection";
-
+import { ServicesSection } from "./_sections/ServicesSection";
+import { TeachingSection } from "./_sections/TeachingSection";
+import { CurriculumSection } from "./_sections/CurriculumSection";
 export default function DavoodWadiPortfolio() {
   return (
     <div className="min-h-screen bg-transparent selection:bg-accent-500 selection:text-white relative">
@@ -11,8 +12,10 @@ export default function DavoodWadiPortfolio() {
         <>
           <HeroSection />
           <AboutSection />
-          <ExpertiseSection />
+          <TeachingSection />
           <PublicationsSection />
+          <ServicesSection />
+          <CurriculumSection />
           <ContactSection />
         </>
       </main>

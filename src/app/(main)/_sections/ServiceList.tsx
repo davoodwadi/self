@@ -6,6 +6,12 @@ export function ServiceList() {
       <ServiceListItem title="Peer Reviewer" bordered={true}>
         <ul className="text-sm text-gray-400 font-light space-y-2">
           <li>
+            <span className="text-accent-400 font-medium">
+              Journal of Electronic Commerce Research
+            </span>{" "}
+            - E-Commerce (March 2026)
+          </li>
+          <li>
             <span className="text-accent-400 font-medium">ICML 2025</span> -
             Gradient Descent Optimization
           </li>
@@ -22,19 +28,30 @@ export function ServiceList() {
       </ServiceListItem>
 
       <ServiceListItem title="Research Ethics Board" bordered={true}>
-        Member of the institutional Research Ethics Board (REB), reviewing
-        research proposals involving human participants for ethical compliance.
-      </ServiceListItem>
-
-      <ServiceListItem title="Curriculum Designer" bordered={true}>
-        <ul className="text-sm text-gray-400 font-light space-y-2">
-          <li>Master of Financial Technology.</li>
-        </ul>
+        Member of the institutional Research Ethics Board (REB) at University
+        Canada West, reviewing research proposals involving human participants
+        for ethical compliance.
       </ServiceListItem>
 
       <ServiceListItem title="Curriculum Designer" bordered={false}>
         <ul className="text-sm text-gray-400 font-light space-y-2">
-          <li>Bachelor of Information Technology.</li>
+          <li>
+            <span className="text-accent-400 font-medium">
+              Master of Financial Technology
+            </span>
+            : Created the "Applications of AI in Finance" curriculum.
+          </li>
+          <li>
+            <span className="text-accent-400 font-medium">
+              Bachelor of Applied Information Tech
+            </span>
+            : Designed the "Responsible AI" and "Intro to AI" courses.
+          </li>
+          <li>
+            <span className="text-accent-400 font-medium">
+              Masters of Health Management
+            </span>
+          </li>
         </ul>
       </ServiceListItem>
     </div>
