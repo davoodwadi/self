@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
 import { CourseCard } from "../_components/CourseCard";
+import { Footer } from "../_components/Footer";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -311,6 +312,8 @@ export default function Home() {
           </div>
         </main>
       </section>
+
+      <Footer />
     </div>
   );
 }

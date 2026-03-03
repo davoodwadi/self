@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { FadeUp } from "@/components/portfolio/primitives/FadeUp";
+import { FadeUp } from "@/components/portfolio/FadeUp";
 
 const expertiseCardVariants = cva("glass-card rounded-2xl", {
   variants: {

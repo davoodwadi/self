@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Merriweather, Open_Sans } from "next/font/google";
 import "./globals.css";
+import { DynamicFooter } from "./_components/DynamicFooter";
 
 const merriweather = Merriweather({
   variable: "--font-merriweather",
@@ -30,6 +31,7 @@ export default function RootLayout({
         className={`${merriweather.variable} ${openSans.variable} antialiased`}
       >
         {children}
+        <DynamicFooter />
       </body>
     </html>
   );

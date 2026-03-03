@@ -1,5 +1,5 @@
-import { PillBadge } from "@/components/portfolio/primitives/PillBadge";
-import { FadeUp } from "@/components/portfolio/primitives/FadeUp";
+import { PillBadge } from "@/components/portfolio/PillBadge";
+import { FadeUp } from "@/components/portfolio/FadeUp";
 
 type PublicationCardProps = {
   venue: string;

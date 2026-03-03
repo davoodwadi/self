@@ -1,0 +1,24 @@
+import { PublicationCard } from "@/components/portfolio/PublicationCard";
+
+export function ResearchPapers() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <PublicationCard
+        venue="EMNLP"
+        year="2025"
+        title="A Monte-Carlo Sampling Framework For Reliable Evaluation of Large Language Models Using Behavioral Analysis"
+        description="Findings of the Association for Computational Linguistics. We propose a Monte-Carlo evaluation framework that provides statistical guarantees for LLM performance estimates, replacing single-sample benchmarks. We find that newer, larger LLMs are more susceptible to cognitive biases, suggesting more human-like but less rational responses."
+        authors="Wadi, D., Fredette, M."
+        href="https://aclanthology.org/2025.findings-emnlp.500/"
+      />
+      <PublicationCard
+        venue="JECR"
+        year="2026"
+        title="The interplay of altruism and financial incentives: Maximizing online reviews through effective messaging"
+        description="Journal of Electronic Commerce Research, Volume 27, Issue 2. We study what actually gets people to write online reviews: altruistic messaging, financial incentives, or both. We test different message framings in a field experiment and find that the interplay between the two matters more than either alone."
+        authors="Wadi, D., Legoux, R., Fredette, M., Senecal, S."
+        href="http://www.jecr.org/sites/default/files/2026vol27no2_Paper1.pdf"
+      />
+    </div>
+  );
+}

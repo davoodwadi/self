@@ -47,7 +47,7 @@ export default function Navigation() {
             <Link
               key={link.name}
               href={link.href}
-              className="group relative px-2 py-2 text-sm uppercase tracking-[0.25em] font-light text-gray-400 hover:text-white transition-colors"
+              className="group relative px-2 py-2 text-xs uppercase tracking-[0.25em] font-light text-gray-400 hover:text-white transition-colors"
             >
               {link.name}
               <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-accent-400 transition-all group-hover:w-full opacity-0 group-hover:opacity-100"></span>
