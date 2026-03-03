@@ -14,10 +14,8 @@ export function ContactSection() {
     >
       <div className="w-full md:w-1/2">
         <SectionHeader className="mb-8">
-          <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">
-            Let&apos;s Connect
-          </h2>
-          <p className="text-gray-400 font-light leading-relaxed">
+          <h2 className="section-title mb-6">Let's Connect</h2>
+          <p className="section-subtitle">
             If you want to discuss research collaboration, have questions about
             my courses, or are interested in consulting on AI and marketing
             topics, feel free to reach out.

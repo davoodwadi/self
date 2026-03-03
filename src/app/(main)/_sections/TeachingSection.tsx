@@ -37,10 +37,8 @@ export function TeachingSection() {
     <SectionContainer id="teaching" contentClassName="max-w-6xl">
       <SectionHeader align="center">
         <div>
-          <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">
-            Teaching
-          </h2>
-          <p className="text-gray-400 font-light">
+          <h2 className="section-title">Teaching</h2>
+          <p className="section-subtitle">
             Courses and instruction across institutions.
           </p>
         </div>
@@ -53,18 +51,11 @@ export function TeachingSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-accent-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold uppercase tracking-widest text-accent-500">
-                    {inst.role}
-                  </span>
-                  {/* <GraduationCap size={20} className="text-accent-400" /> */}
+                  <span className="card-subtitle">{inst.role}</span>
                 </div>
 
-                <h3 className="text-xl font-serif font-bold tracking-tight mb-1 text-white">
-                  {inst.institution}
-                </h3>
-                <p className="text-sm text-gray-500 font-light mb-4">
-                  {inst.period}
-                </p>
+                <h3 className="card-title mb-1">{inst.institution}</h3>
+                <p className="text-muted mb-4">{inst.period}</p>
 
                 {inst.note && (
                   <p className="text-xs text-accent-400/80 font-medium uppercase tracking-wider mb-4">
@@ -72,23 +63,21 @@ export function TeachingSection() {
                   </p>
                 )}
 
+                {inst.description && (
+                  <p className="text-body text-sm">{inst.description}</p>
+                )}
+
                 {inst.courses && (
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 mt-4">
                     {inst.courses.map((course) => (
                       <li
                         key={course}
-                        className="text-sm text-gray-400 font-light border-l-2 border-accent-500/30 pl-3"
+                        className="text-muted border-l-2 border-accent-500/30 pl-3"
                       >
                         {course}
                       </li>
                     ))}
                   </ul>
-                )}
-
-                {inst.description && (
-                  <p className="text-sm text-gray-400 font-light leading-relaxed">
-                    {inst.description}
-                  </p>
                 )}
               </div>
             </div>

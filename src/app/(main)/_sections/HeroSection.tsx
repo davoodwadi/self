@@ -15,17 +15,13 @@ export function HeroSection() {
         <PillBadge>AI Research + Marketing Science</PillBadge>
       </FadeUp>
       <FadeUp>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 tracking-tight gradient-text mt-4">
-          Davood Wadi
-        </h1>
+        <h1 className="heading-primary mb-6 gradient-text mt-4">Davood Wadi</h1>
       </FadeUp>
       <FadeUp>
-        <p className="text-lg md:text-2xl text-gray-400 font-light mb-10 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-2xl text-body mb-10 max-w-3xl mx-auto">
           Studying how{" "}
-          <span className="text-accent-400 font-medium">
-            large language models
-          </span>{" "}
-          behave, and what that means for{" "}
+          <span className="text-highlight">large language models</span> behave,
+          and what that means for{" "}
           <span className="text-white font-medium">marketing and business</span>
           .
         </p>

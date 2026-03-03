@@ -6,8 +6,8 @@ const pillBadgeVariants = cva(
   {
     variants: {
       variant: {
-        hero: "px-3 py-1 border border-accent-500/30 bg-accent-500/10 text-accent-400 tracking-widest uppercase",
-        publication: "px-2 py-1 bg-white/10 rounded text-gray-300",
+        hero: "px-3 py-1 border border-accent-500/30 bg-accent-500/10 text-highlight tracking-widest uppercase",
+        publication: "px-2 py-1 bg-white/10 rounded text-muted",
       },
     },
     defaultVariants: {

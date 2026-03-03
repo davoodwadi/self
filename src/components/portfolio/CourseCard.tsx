@@ -22,17 +22,11 @@ export function CourseCard({
       <div className="absolute inset-0 bg-gradient-to-br from-accent-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       <div className="relative z-10">
         <div className="flex items-center justify-between mb-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-accent-500 block">
-            {label}
-          </span>
+          <span className="card-subtitle block">{label}</span>
           <BookOpen size={20} className="text-accent-400" />
         </div>
-        <h3 className="text-2xl font-serif font-bold tracking-tight mb-4 text-white">
-          {title}
-        </h3>
-        <p className="text-gray-400 font-light leading-relaxed mb-6">
-          {description}
-        </p>
+        <h3 className="card-title">{title}</h3>
+        <p className="text-body mb-6">{description}</p>
         {link?.label && (
           <Link
             href={link.href}

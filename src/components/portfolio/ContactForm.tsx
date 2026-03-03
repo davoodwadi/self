@@ -8,10 +8,7 @@ type FormFieldProps = {
 function FormField({ id, label, type = "text", placeholder }: FormFieldProps) {
   return (
     <div>
-      <label
-        htmlFor={id}
-        className="block text-xs font-medium text-gray-500 mb-1"
-      >
+      <label htmlFor={id} className="block text-xs font-medium text-muted mb-1">
         {label}
       </label>
       <input
@@ -39,7 +36,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="block text-xs font-medium text-gray-500 mb-1"
+          className="block text-xs font-medium text-muted mb-1"
         >
           Message
         </label>

@@ -23,7 +23,7 @@ export function PublicationCard({
       <div className="relative">
         <div className="flex items-center gap-3 mb-4">
           <PillBadge variant="publication">{venue}</PillBadge>
-          <span className="text-xs text-gray-500">{year}</span>
+          <span className="text-muted">{year}</span>
         </div>
         <a
           href={href}
@@ -33,14 +33,14 @@ export function PublicationCard({
         >
           <span className="sr-only">Read paper</span>
         </a>
-        <h3 className="text-xl font-bold mb-2 text-white group-hover:text-accent-400 transition-colors">
+        <h3 className="card-title group-hover:text-accent-400 transition-colors">
           {title}
         </h3>
-        <p className="text-gray-400 text-sm mb-6 line-clamp-3 font-light relative z-0">
+        <p className="text-body text-sm mb-6 line-clamp-3 relative z-0">
           {description}
         </p>
       </div>
-      <p className="text-xs text-gray-500 italic mt-auto pt-4 border-t border-white/5 relative z-0">
+      <p className="text-muted italic mt-auto pt-4 divider relative z-0">
         {authors}
       </p>
     </FadeUp>

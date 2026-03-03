@@ -9,10 +9,8 @@ export function CurriculumSection() {
       <div>
         <SectionHeader align="center">
           <div>
-            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">
-              Curriculum Design
-            </h2>
-            <p className="text-gray-400 font-light">Recent courses designed.</p>
+            <h2 className="section-title">Curriculum Design</h2>
+            <p className="section-subtitle">Recent courses designed.</p>
           </div>
         </SectionHeader>
       </div>

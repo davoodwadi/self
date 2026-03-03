@@ -9,10 +9,8 @@ export function PublicationsSection() {
       <div>
         <SectionHeader align="center">
           <div>
-            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">
-              Selected Research
-            </h2>
-            <p className="text-gray-400 font-light">
+            <h2 className="section-title">Selected Research</h2>
+            <p className="section-subtitle">
               Recent papers and journal articles.
             </p>
           </div>

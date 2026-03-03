@@ -14,11 +14,9 @@ export function ServiceListItem({
   bordered = true,
 }: ServiceListItemProps) {
   return (
-    <div
-      className={cn(bordered ? "border-b border-white/10 pb-4" : "", className)}
-    >
+    <div className={cn(bordered ? "divider pb-4" : "", className)}>
       <div className="font-semibold text-white mb-1">{title}</div>
-      <div className="text-sm text-gray-400 font-light">{children}</div>
+      <div className="text-muted">{children}</div>
     </div>
   );
 }

@@ -23,7 +23,7 @@ export default function DavoodWadiPortfolio() {
       </main>
 
       <footer className="py-8 text-center px-6 relative z-10 w-full">
-        <p className="text-gray-600 text-sm font-light">
+        <p className="text-muted">
           &copy; {new Date().getFullYear()}{" "}
           <a
             href="https://davoodwadi.com"
