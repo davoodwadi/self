@@ -187,10 +187,10 @@ h2 {
     @apply text-[11px] font-medium uppercase tracking-[0.25em] text-accent-500 bg-accent-500/5 px-4 py-1.5 rounded-full border border-accent-500/10;
   }
   .text-body {
-    @apply text-gray-400 font-light leading-loose text-base md:text-lg;
+    @apply text-gray-300 font-light leading-relaxed text-base md:text-lg;
   }
   .text-muted {
-    @apply text-sm text-gray-500 font-light tracking-wide;
+    @apply text-sm text-gray-400 font-light tracking-wide;
   }
   .text-highlight {
     @apply text-accent-400 font-medium;

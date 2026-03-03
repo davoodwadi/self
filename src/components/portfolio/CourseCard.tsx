@@ -21,9 +21,8 @@ export function CourseCard({
     <div className="glass-card p-8 rounded-xl relative overflow-hidden group">
       <div className="absolute inset-0 bg-gradient-to-br from-accent-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       <div className="relative z-10">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-start mb-4">
           <span className="card-subtitle block">{label}</span>
-          <BookOpen size={20} className="text-accent-400" />
         </div>
         <h3 className="card-title">{title}</h3>
         <p className="text-body mb-6">{description}</p>

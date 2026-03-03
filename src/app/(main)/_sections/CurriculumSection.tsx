@@ -5,12 +5,21 @@ import { CourseCard } from "@/components/portfolio/CourseCard";
 
 export function CurriculumSection() {
   return (
-    <SectionContainer id="curricula" contentClassName="max-w-6xl space-y-20">
+    <SectionContainer
+      id="curricula"
+      className="section-padding bg-[#08080a]"
+      contentClassName="max-w-7xl space-y-20"
+    >
       <div>
-        <SectionHeader align="center">
-          <div>
-            <h2 className="section-title">Curriculum Design</h2>
-            <p className="section-subtitle">Recent courses designed.</p>
+        <SectionHeader align="center" className="mb-16">
+          <div className="flex flex-col items-center">
+            <h2 className="heading-secondary text-white/95 mb-4">
+              Curriculum Design
+            </h2>
+            <div className="w-16 h-px bg-accent-500/50 mb-6"></div>
+            <p className="text-body max-w-2xl text-center">
+              Recent courses designed.
+            </p>
           </div>
         </SectionHeader>
       </div>
@@ -18,7 +27,7 @@ export function CurriculumSection() {
         <FadeUp>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <CourseCard
-              label="Featured Course"
+              label="Course"
               title="Applications of AI in Business"
               description="Hands-on course covering LLMs, prompt engineering, deep learning for NLP and computer vision, and how to evaluate AI tools for real business problems. Designed for MBA and graduate students."
               link={{

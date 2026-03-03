@@ -34,11 +34,16 @@ const institutions = [
 
 export function TeachingSection() {
   return (
-    <SectionContainer id="teaching" contentClassName="max-w-6xl">
-      <SectionHeader align="center">
-        <div>
-          <h2 className="section-title">Teaching</h2>
-          <p className="section-subtitle">
+    <SectionContainer
+      id="teaching"
+      className="section-padding bg-[#08080a]"
+      contentClassName="max-w-7xl"
+    >
+      <SectionHeader align="center" className="mb-16">
+        <div className="flex flex-col items-center">
+          <h2 className="heading-secondary text-white/95 mb-4">Teaching</h2>
+          <div className="w-16 h-px bg-accent-500/50 mb-6"></div>
+          <p className="text-body max-w-2xl text-center">
             Courses and instruction across institutions.
           </p>
         </div>
@@ -64,7 +69,7 @@ export function TeachingSection() {
                 )}
 
                 {inst.description && (
-                  <p className="text-body text-sm">{inst.description}</p>
+                  <p className="text-muted text-sm">{inst.description}</p>
                 )}
 
                 {inst.courses && (

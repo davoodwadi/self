@@ -9,13 +9,17 @@ export function ContactSection() {
   return (
     <SectionContainer
       id="contact"
-      className="md:py-32"
-      contentClassName="max-w-4xl flex flex-col md:flex-row gap-16"
+      className="section-padding bg-[#030303] relative"
+      contentClassName="max-w-6xl flex flex-col md:flex-row gap-16 relative z-10"
     >
+      <div className="ambient-glow opacity-40"></div>
       <div className="w-full md:w-1/2">
-        <SectionHeader className="mb-8">
-          <h2 className="section-title mb-6">Let's Connect</h2>
-          <p className="section-subtitle">
+        <SectionHeader className="mb-12">
+          <h2 className="heading-secondary text-white/95 mb-4">
+            Let's Connect
+          </h2>
+          <div className="w-16 h-px bg-accent-500/50 mb-6"></div>
+          <p className="text-body max-w-xl">
             If you want to discuss research collaboration, have questions about
             my courses, or are interested in consulting on AI and marketing
             topics, feel free to reach out.
