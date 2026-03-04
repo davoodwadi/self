@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import NetworkBackground from "@/components/NetworkBackground";
+import { ScrollToTop } from "@/components/portfolio/ScrollToTop";
 
 const playfair = Playfair_Display({
   variable: "--font-serif",
@@ -35,6 +36,7 @@ export default function RootLayout({
         <div className="ambient-glow"></div>
         <Navigation />
         {children}
+        <ScrollToTop />
       </body>
     </html>
   );
