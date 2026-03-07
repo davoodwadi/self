@@ -72,13 +72,13 @@ function SustainabilityBackground({ onReady }: { onReady?: () => void }) {
           gyroControls: false,
           minHeight: 200.0,
           minWidth: 200.0,
-          highlightColor: 0x22c55e, // Brighter Emerald Green
-          midtoneColor: 0x16a34a, // Rich Green midtone to avoid gray blending
-          lowlightColor: 0x0d9488, // Teal/dark green
-          baseColor: 0x050c08, // Very dark green/black background
+          highlightColor: 0x10b981, // Softer Emerald Green
+          midtoneColor: 0x059669, // Softer midtone
+          lowlightColor: 0x0f766e, // Lighter Teal
+          baseColor: 0x020617, // Very dark slate (less grey/green mud)
           blurFactor: 0.9, // Higher blur to make fog smoother
           zoom: 1.0,
-          speed: 1,
+          speed: 0.8,
         });
         setVantaEffect(currentEffect);
         if (onReady) onReady();
@@ -100,7 +100,7 @@ function SustainabilityBackground({ onReady }: { onReady?: () => void }) {
   return (
     <div
       ref={containerRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40"
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-15"
     />
   );
 }
