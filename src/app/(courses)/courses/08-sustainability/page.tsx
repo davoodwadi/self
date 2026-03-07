@@ -46,7 +46,7 @@ export default function CourseName() {
   const [bgReady, setBgReady] = useState(false);
 
   return (
-    <div style={{ backgroundColor: "#050c08", minHeight: "100vh" }}>
+    <div style={{ backgroundColor: "#ffffff", minHeight: "100vh" }}>
       <CitationProvider value={{ getCitation, getCitations, getCitationUrls }}>
         <SlideDeck
           background={

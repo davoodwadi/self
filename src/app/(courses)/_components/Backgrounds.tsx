@@ -72,10 +72,10 @@ function SustainabilityBackground({ onReady }: { onReady?: () => void }) {
           gyroControls: false,
           minHeight: 200.0,
           minWidth: 200.0,
-          highlightColor: 0x10b981, // Softer Emerald Green
-          midtoneColor: 0x059669, // Softer midtone
-          lowlightColor: 0x0f766e, // Lighter Teal
-          baseColor: 0x020617, // Very dark slate (less grey/green mud)
+          highlightColor: 0x86efac, // Light green
+          midtoneColor: 0x4ade80, // Brighter green
+          lowlightColor: 0x22c55e, // Deeper green
+          baseColor: 0xffffff, // Pure white background
           blurFactor: 0.9, // Higher blur to make fog smoother
           zoom: 1.0,
           speed: 0.8,
@@ -100,7 +100,7 @@ function SustainabilityBackground({ onReady }: { onReady?: () => void }) {
   return (
     <div
       ref={containerRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-15"
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-30"
     />
   );
 }
