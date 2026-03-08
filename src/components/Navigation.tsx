@@ -124,10 +124,11 @@ export default function Navigation() {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {/* Cinematic Logo */}
           <Link href="/" className="group relative flex items-center z-[110]">
-            <span className="text-2xl font-serif font-light tracking-[0.3em] text-white transition-all group-hover:text-white group-hover:drop-shadow-[0_0_15px_rgba(96,165,250,0.5)]">
-              DW
-            </span>
-            <span className="absolute -bottom-2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent-500/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform ease-out"></span>
+            <img
+              src="/icon-transparent.svg"
+              alt="DW Logo"
+              className="w-8 h-8 "
+            />
           </Link>
 
           {/* Desktop Navigation Menu */}

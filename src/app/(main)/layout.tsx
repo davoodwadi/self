@@ -20,6 +20,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Davood Wadi, Ph.D.",
   description: "Davood Wadi, Ph.D.",
+  icons: {
+    icon: "/icon-large.svg",
+  },
 };
 
 export default function RootLayout({
