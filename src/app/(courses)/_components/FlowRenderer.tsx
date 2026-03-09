@@ -95,7 +95,7 @@ export default function FlowRenderer({
         fitView
         fitViewOptions={{ padding: 0.2 }}
       >
-        <Background color="#cbd5e1" gap={16} />
+        <Background color="transparent" gap={16} />
         <Controls />
       </ReactFlow>
     </div>

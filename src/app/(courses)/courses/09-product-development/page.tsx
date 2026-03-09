@@ -86,7 +86,7 @@ export default function ProductDevelopmentCourse() {
             <Slide>
               <Tag>Overview</Tag>
               <Heading>Three Transformative Shifts</Heading>
-              <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 my-4">
+              <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl my-4">
                 <FlowRenderer {...transformativeShiftsFlow} />
               </div>
               <AnimatedList>
@@ -136,7 +136,7 @@ export default function ProductDevelopmentCourse() {
             <Slide>
               <Tag>Part 1: Ideation</Tag>
               <Heading>Divergent vs. Convergent Thinking</Heading>
-              <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 my-4">
+              <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl my-4">
                 <FlowRenderer {...divergentConvergentFlow} />
               </div>
               <AnimatedList>
@@ -303,7 +303,7 @@ export default function ProductDevelopmentCourse() {
             <Slide>
               <Tag>Part 2: Engineering</Tag>
               <Heading>Physics-Informed Neural Networks</Heading>
-              <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 my-4">
+              <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl my-4">
                 <FlowRenderer {...pinnsFlow} />
               </div>
               <AnimatedList>
@@ -415,7 +415,7 @@ export default function ProductDevelopmentCourse() {
             <Slide>
               <Tag>Part 3: Prototyping</Tag>
               <Heading>Cognitive Digital Twins</Heading>
-              <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 my-4">
+              <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl my-4">
                 <FlowRenderer {...digitalTwinFlow} />
               </div>
               <AnimatedList>
@@ -549,7 +549,7 @@ export default function ProductDevelopmentCourse() {
             <Slide>
               <Tag>Part 5: Personalization</Tag>
               <Heading>Generative Customization</Heading>
-              <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 my-4">
+              <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl my-4">
                 <FlowRenderer {...generativeLoopFlow} />
               </div>
               <AnimatedList>
