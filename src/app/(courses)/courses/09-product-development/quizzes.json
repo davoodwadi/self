@@ -1,0 +1,777 @@
+[
+  {
+    "slide_id": "the-paradigm-shift",
+    "question_text": "In the context of modern product development, what distinguishes the current 'paradigm shift' from traditional computer-aided design approaches?",
+    "hint": "Consider whether the change affects specific, isolated steps or the entire journey of a product.",
+    "correct_answer_citation": "The slide describes a 'fundamental transformation' moving from 'isolated tasks' to a 'reshaped lifecycle' covering 'ideation to regulatory compliance.'",
+    "options": [
+      {
+        "option_text": "A focus on automating individual, isolated tasks to maximize departmental speed.",
+        "option_explanation": "The slide explicitly mentions moving away from isolated tasks toward a more holistic, reshaped lifecycle."
+      },
+      {
+        "option_text": "A move toward a reshaped lifecycle that integrates everything from initial ideation to regulatory compliance.",
+        "option_explanation": "This aligns with the slide's description of a fundamental transformation covering the 'fuzzy front end' through to final compliance."
+      },
+      {
+        "option_text": "The complete removal of human intervention in the 'fuzzy front end' of ideation.",
+        "option_explanation": "While the process is being augmented, the paradigm shift is about reshaping the lifecycle and invention process, not necessarily removing humans from ideation."
+      },
+      {
+        "option_text": "Restricting technological intervention to the manufacturing phase to protect design integrity.",
+        "option_explanation": "The paradigm shift covers the entire lifecycle, including the early stages of design (the fuzzy front end), rather than being restricted to manufacturing."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "three-transformative-shifts",
+    "question_text": "As engineering moves toward AI-driven workflows, which shift describes the transition from testing static scenarios to using dynamic, self-learning models that act as the system itself?",
+    "hint": "Think about the difference between mimicking a behavior and replicating a system's internal logic through continuous learning.",
+    "correct_answer_citation": "Slide: Three Transformative Shifts - From Simulation to Emulation: Dynamic, self-learning models.",
+    "options": [
+      {
+        "option_text": "From Manual Design to Additive Manufacturing",
+        "option_explanation": "While additive manufacturing is transformative, it refers specifically to 3D printing techniques rather than the transition to dynamic, self-learning models."
+      },
+      {
+        "option_text": "From Simulation to Emulation",
+        "option_explanation": "This shift represents the move from rule-based models that mimic behavior to dynamic, self-learning models that replicate the system's internal state."
+      },
+      {
+        "option_text": "From Human Governance to Manual Compliance",
+        "option_explanation": "The actual shift is toward Autonomous Compliance, which moves away from manual governance to automated, code-level governance."
+      },
+      {
+        "option_text": "From Generative Design to Iterative Prototyping",
+        "option_explanation": "This is actually the reverse; modern engineering is moving from iterative prototyping toward mainstream generative engineering."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "ai-driven-ideation",
+    "question_text": "In the 'divergent' phase of design, how does the role of a Large Language Model (LLM) differ from that of a standard search engine?",
+    "hint": "Consider whether the AI is simply finding existing answers or constructing something new from its training data.",
+    "correct_answer_citation": "Part 1: Ideation - LLMs as 'ideation engines' generating novel combinations rather than just retrieving information.",
+    "options": [
+      {
+        "option_text": "It acts as a filter to narrow down thousands of existing ideas into one 'correct' answer.",
+        "option_explanation": "This describes convergent thinking; the divergent phase is about expanding the range of possibilities."
+      },
+      {
+        "option_text": "It functions as an 'ideation engine' by synthesizing novel combinations of concepts.",
+        "option_explanation": "LLMs can generate new patterns and associations between disparate ideas, making them powerful tools for the divergent phase of design."
+      },
+      {
+        "option_text": "It strictly retrieves indexed documents to ensure 100% factual accuracy of ideas.",
+        "option_explanation": "Standard search engines focus on retrieval; LLMs are generative and may prioritize creative combinations over literal retrieval."
+      },
+      {
+        "option_text": "It eliminates the need for human brainstorming by providing the final design specification.",
+        "option_explanation": "AI-driven ideation is a collaborative tool for the divergent phase, not a replacement for the entire design process."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "divergent-vs-convergent-thinking",
+    "question_text": "When using Large Language Models (LLMs) for creative brainstorming, which aspect of the process are they most likely to enhance compared to a human alone?",
+    "hint": "Consider whether AI is better at radical breakthroughs or exploring a wide variety of existing directions.",
+    "correct_answer_citation": "The slide notes that LLMs excel at expanding the solution space through 'persistence' and 'flexibility' but are better at 'small ideas' than 'big ideas'.",
+    "options": [
+      {
+        "option_text": "Generating a single, revolutionary paradigm shift.",
+        "option_explanation": "LLMs often struggle with 'big ideas' or radical shifts in thinking, as they tend to predict based on existing data patterns."
+      },
+      {
+        "option_text": "Expanding the variety and volume of incremental ideas.",
+        "option_explanation": "LLMs excel at divergent thinking—specifically persistence and flexibility—making them excellent at exploring many 'small ideas' and variations."
+      },
+      {
+        "option_text": "Determining the final commercial viability of a concept.",
+        "option_explanation": "This is a convergent thinking task that typically requires human intervention and real-world context which LLMs may lack."
+      },
+      {
+        "option_text": "Eliminating the need for human intervention in ideation.",
+        "option_explanation": "The slide suggests LLMs act as 'co-creators,' meaning human designers still play a critical role in intervening and guiding the process."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "persona-simulation",
+    "question_text": "When using AI to 'stress-test' a new product concept during the ideation phase, what is the most significant advantage of simulating a 'skeptical' persona?",
+    "hint": "Think about how a 'difficult' audience helps identify weaknesses before a project is fully built.",
+    "correct_answer_citation": "Slide: Persona Simulation - Simulating diverse user personas to stress-test concepts (e.g., 'skeptical CTO').",
+    "options": [
+      {
+        "option_text": "It guarantees that no real users will have complaints during the final launch.",
+        "option_explanation": "Simulation identifies potential issues early, but it cannot predict every real-world user reaction or guarantee a perfect launch."
+      },
+      {
+        "option_text": "It allows designers to identify edge-case objections and technical hurdles without costly recruitment.",
+        "option_explanation": "Simulating diverse, critical personas like a 'skeptical CTO' helps harden a concept against high-level technical or business objections before real-world testing begins."
+      },
+      {
+        "option_text": "It automates the creation of the final UI code based on the persona's preferences.",
+        "option_explanation": "Persona simulation focuses on stress-testing and UX improvement suggestions, not the automated generation of production-ready code."
+      },
+      {
+        "option_text": "It removes the need for human designers to participate in the ideation process.",
+        "option_explanation": "AI simulation is a tool meant to assist and provide feedback to designers, not to replace the creative and strategic role of the human designer."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "predictive-market-trends",
+    "question_text": "If your company wants to stay ahead of the competition during the ideation phase, how far in advance can modern AI tools realistically signal a rising market trend before it reaches peak popularity?",
+    "hint": "Think about the difference between looking at last month's sales versus looking at emerging signals in unstructured data.",
+    "correct_answer_citation": "Tools like Glimpse track trends up to 12 months in advance.",
+    "options": [
+      {
+        "option_text": "1-2 weeks, providing a slight edge for quick social media responses.",
+        "option_explanation": "This timeframe describes real-time monitoring rather than the long-term predictive forecasting used in strategic ideation."
+      },
+      {
+        "option_text": "3-6 months, primarily by analyzing current competitor stock levels.",
+        "option_explanation": "While useful, analyzing current stock is still a reactive measure based on existing products rather than identifying new 'white space' opportunities."
+      },
+      {
+        "option_text": "Up to 12 months, by identifying 'white space' opportunities in unstructured data.",
+        "option_explanation": "Advanced AI tools can track consumer interest and signals in unstructured data to forecast trends up to a year before they hit the mainstream."
+      },
+      {
+        "option_text": "Exactly 5 years, allowing for long-term infrastructure overhauls.",
+        "option_explanation": "Predicting consumer trends five years out is generally considered unreliable due to the high number of unpredictable variables in the market."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "uncovering-latent-needs",
+    "question_text": "Why might analyzing millions of public social media conversations reveal consumer insights that a traditional focus group would likely miss?",
+    "hint": "Consider how social dynamics and the scale of data influence what people are willing to reveal.",
+    "correct_answer_citation": "Slide content notes that sentiment analysis on millions of conversations detects shifts missed by focus groups.",
+    "options": [
+      {
+        "option_text": "Focus groups are generally too small to provide statistically significant data for any product.",
+        "option_explanation": "While focus groups are small, their main limitation in this context is the bias and filtered nature of the environment, not just the sample size."
+      },
+      {
+        "option_text": "Social media data captures unfiltered, organic behavior, whereas focus groups can be prone to social desirability bias.",
+        "option_explanation": "In focus groups, participants often self-censor or conform to the group. AI-driven sentiment analysis of public conversations uncovers 'latent' needs that users express naturally."
+      },
+      {
+        "option_text": "AI sentiment analysis tools can accurately predict the exact date a consumer will change their mind.",
+        "option_explanation": "AI tools detect trends and shifts in preference, but they cannot predict individual human behavior with calendar-date precision."
+      },
+      {
+        "option_text": "Synthetic data has completely replaced the need for studying real-world consumer behavior.",
+        "option_explanation": "While the slide mentions synthetic data for validation, its validity compared to real-world behavior is still a topic of active debate and discussion."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "automated-competitor-analysis",
+    "question_text": "What is the primary bottleneck when relying on manual processes for competitive intelligence in a fast-moving market?",
+    "hint": "Think about how often modern software companies update their pricing or ship new features compared to how often a human can manually check their websites.",
+    "correct_answer_citation": "The slide introduces autonomous agents as a solution to replace manual 'battlecards' by providing real-time scraping of documentation, pricing, and release notes.",
+    "options": [
+      {
+        "option_text": "Human analysts are inherently more biased than AI when reviewing a rival's product.",
+        "option_explanation": "While bias is a factor, the slide focuses on the speed and synthesis of fragmented data rather than subjective human bias."
+      },
+      {
+        "option_text": "Manual updates are too slow to capture daily shifts in pricing, documentation, and release notes.",
+        "option_explanation": "Traditional 'battlecards' are often static; the slide suggests that autonomous agents are needed to synthesize real-time, fragmented data into actionable intelligence."
+      },
+      {
+        "option_text": "Manual research is legally restricted from scraping public pricing data.",
+        "option_explanation": "Scraping public data is generally a common practice; the issue discussed is the efficiency and real-time nature of the collection, not its legality."
+      },
+      {
+        "option_text": "Static battlecards contain too much information for sales teams to digest effectively.",
+        "option_explanation": "The problem isn't necessarily the volume of information, but that the information becomes stale and lacks the 'real-time' synthesis mentioned in the slide."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "generative-design-engineering",
+    "question_text": "In the context of modern engineering, how does AI-driven Topology Optimization (TO) fundamentally alter the traditional design workflow?",
+    "hint": "Consider the transition from tools that merely record human decisions to tools that actively propose solutions based on physics.",
+    "correct_answer_citation": "Diabatix ColdStream / Slide: Generative Design & Engineering",
+    "options": [
+      {
+        "option_text": "It serves as a passive repository for manual CAD iterations and version history.",
+        "option_explanation": "This describes traditional PLM or CAD software, which acts as a digital paper rather than an active problem solver."
+      },
+      {
+        "option_text": "It acts as an active participant that solves physics hurdles, reducing optimization time from days to minutes.",
+        "option_explanation": "Modern generative design tools like Diabatix ColdStream use AI to actively navigate physics constraints and find optimal geometries much faster than human-led iterations."
+      },
+      {
+        "option_text": "It removes the requirement for engineers to define boundary conditions or performance goals.",
+        "option_explanation": "Engineers are still required to define the 'problem space' (constraints and goals); the AI simply solves for the optimal geometry within those bounds."
+      },
+      {
+        "option_text": "It primarily focuses on automating the administrative documentation of existing designs.",
+        "option_explanation": "While AI can help with documentation, the core shift in engineering is the generation of the geometry itself through optimization."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "mainstream-manufacturability",
+    "question_text": "Historically, what has been the primary reason that generative design outputs were rarely used in mass-market traditional manufacturing?",
+    "hint": "Consider the visual appearance of most AI-optimized parts compared to a standard machined block.",
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Generative design software only supports polymer-based materials.",
+        "option_explanation": "Generative design is material-agnostic; the limitation was not the material itself, but how to shape it."
+      },
+      {
+        "option_text": "The complex, 'organic' geometries produced were often impossible to manufacture using molds or CNC tools.",
+        "option_explanation": "Traditional manufacturing (casting, machining) requires specific geometric constraints that early generative algorithms ignored, favoring additive-only shapes."
+      },
+      {
+        "option_text": "Traditional manufacturing processes are too fast for generative algorithms to keep up.",
+        "option_explanation": "The bottleneck is in the design and tooling phase, not the speed of the manufacturing cycle itself."
+      },
+      {
+        "option_text": "Generative design requires a constant internet connection to the factory floor.",
+        "option_explanation": "Generative design is a pre-production engineering phase and does not require real-time connectivity during the physical manufacturing process."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "physics-informed-neural-networks",
+    "question_text": "Traditional neural networks are often criticized in engineering for being 'black boxes.' What is the most significant risk when using a purely data-driven model to predict complex physical phenomena like fluid flow?",
+    "hint": "Consider what happens if the training data is sparse and the model has no inherent knowledge of the laws of nature.",
+    "correct_answer_citation": "The slide introduces Physics-Informed Neural Networks (PINNs) as a way to constrain AI to 'obey physics' for accurate predictions, especially with sparse data.",
+    "options": [
+      {
+        "option_text": "The model will be significantly slower than traditional Finite Element Analysis (FEA) solvers.",
+        "option_explanation": "In fact, neural networks are typically much faster than FEA solvers during inference; the issue is their reliability, not their speed."
+      },
+      {
+        "option_text": "The model may generate predictions that violate fundamental laws of physics, such as mass conservation.",
+        "option_explanation": "Purely data-driven models only identify statistical patterns. Without physical constraints, they can produce results that are mathematically plausible but physically impossible."
+      },
+      {
+        "option_text": "Neural networks are unable to process the high-dimensional data produced by engineering sensors.",
+        "option_explanation": "Neural networks are actually excellent at processing high-dimensional data; the challenge is ensuring that data follows physical constraints."
+      },
+      {
+        "option_text": "The model will automatically discover and write out the underlying Navier-Stokes equations.",
+        "option_explanation": "Standard neural networks do not derive equations; they approximate functions. PINNs are required to 'embed' these known equations into the learning process."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "synthetic-data-for-engineering",
+    "question_text": "In engineering applications such as autonomous vehicle development, what is a primary reason an engineer might prioritize synthetic data over real-world data collection?",
+    "hint": "Consider the challenges of capturing rare, high-risk events like collisions or sudden equipment failures in a live environment.",
+    "correct_answer_citation": "Synthetic data is used for generating data when real-world collection is expensive or dangerous, and for simulating edge cases.",
+    "options": [
+      {
+        "option_text": "Synthetic data is inherently more accurate than sensor-based real-world data.",
+        "option_explanation": "Real-world data is generally the 'ground truth' for accuracy; synthetic data aims to mimic this accuracy statistically but is rarely 'more' accurate."
+      },
+      {
+        "option_text": "It eliminates the need for Generative Adversarial Networks (GANs).",
+        "option_explanation": "On the contrary, GANs and VAEs are the primary tools used to create high-quality synthetic datasets."
+      },
+      {
+        "option_text": "It allows for the safe simulation of dangerous edge cases that are hard to capture.",
+        "option_explanation": "Synthetic data is superior for engineering when real-world collection is too dangerous, expensive, or relies on rare events like crashes."
+      },
+      {
+        "option_text": "Synthetic data requires significantly less computational power to process.",
+        "option_explanation": "Generating and training on complex synthetic datasets using GANs or VAEs can be very computationally intensive."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "data-privacy-and-speed",
+    "question_text": "When a global engineering team needs to train a model on sensitive user data stored in a different jurisdiction, what is the most effective way to maintain GDPR compliance while avoiding lengthy legal approvals?",
+    "hint": "Think about how we can replicate the statistical properties of data without using the actual records.",
+    "correct_answer_citation": "Synthetic data allows for the sharing of data utility without the underlying private information, bypassing many cross-border transfer restrictions.",
+    "options": [
+      {
+        "option_text": "Anonymizing the data by removing names and IDs.",
+        "option_explanation": "Traditional anonymization often fails to prevent re-identification and may still fall under strict regulatory scrutiny."
+      },
+      {
+        "option_text": "Encrypting the database and sending the keys via a secure channel.",
+        "option_explanation": "Encryption protects data in transit but doesn't solve the legal issue of 'processing' sensitive data in a new jurisdiction."
+      },
+      {
+        "option_text": "Generating synthetic datasets that mirror the original's statistical properties.",
+        "option_explanation": "Synthetic data contains no real individual information, making it compliant with regulations like GDPR for cross-border sharing while maintaining data utility."
+      },
+      {
+        "option_text": "Only allowing remote access via a Virtual Private Network (VPN).",
+        "option_explanation": "VPNs provide secure access but do not change the legal status or compliance requirements of the data being accessed across borders."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "prototyping-digital-twins",
+    "question_text": "In industrial Additive Manufacturing (3D printing), what is a primary driver of material waste that 'Digital Twins' and computer vision aim to eliminate?",
+    "hint": "Think about what happens if a print job starts to fail halfway through a 24-hour cycle without any monitoring.",
+    "correct_answer_citation": "In-process correction using computer vision is a key strategy for reducing waste and bridging the gap between digital models and physical production.",
+    "options": [
+      {
+        "option_text": "The inability to recycle support structures.",
+        "option_explanation": "While support structures contribute to waste, they are often a necessary part of the geometry rather than a process failure that AI corrects in real-time."
+      },
+      {
+        "option_text": "Inaccuracies in the initial 3D design file.",
+        "option_explanation": "Design file errors are usually caught during the 'slicing' or simulation phase, not by in-process computer vision during the build."
+      },
+      {
+        "option_text": "Real-time printing defects that go uncorrected until the job is finished.",
+        "option_explanation": "Without real-time monitoring, a small error early in the print process can lead to the entire batch being scrapped; AI-guided in-process correction identifies and fixes these errors as they happen."
+      },
+      {
+        "option_text": "The energy consumption of the cooling systems.",
+        "option_explanation": "Energy consumption is an operational cost, but it is not the primary form of 'material waste' addressed by digital twins and computer vision."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "parameter-optimization",
+    "question_text": "In the context of distributed manufacturing, what is the primary obstacle to ensuring that a 3D-printed part has the exact same structural integrity when produced on different machines?",
+    "hint": "Consider the variables involved in 'slicing' a model and how those settings are usually determined.",
+    "correct_answer_citation": "The slide highlights that analyzing historical print data to suggest optimal slicing parameters removes 'trial and error' and ensures consistent quality across distributed manufacturing.",
+    "options": [
+      {
+        "option_text": "The variation in digital file formats used by different CAD software.",
+        "option_explanation": "File formats are largely standardized (like STL or STEP) and do not account for the physical quality variations between machines."
+      },
+      {
+        "option_text": "The manual 'trial and error' process required to find optimal slicing parameters for each machine.",
+        "option_explanation": "Without data-driven optimization, each machine or environment often requires manual adjustment to achieve quality, which hinders decentralized production."
+      },
+      {
+        "option_text": "The inability to send large 3D model files over standard internet connections.",
+        "option_explanation": "Bandwidth is rarely the bottleneck for quality; rather, it is the configuration of the printing process itself."
+      },
+      {
+        "option_text": "The lack of specialized 3D printing materials in different geographic regions.",
+        "option_explanation": "While material availability is a factor, the slide focuses on how parameter optimization and data analysis solve the consistency problem."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "cognitive-digital-twins",
+    "question_text": "While traditional Digital Twins are digital mirrors of physical assets, what primary capability elevates them to the status of a 'Cognitive' Digital Twin?",
+    "hint": "Think about the difference between simply reflecting current data and actively reasoning or learning from that data over time.",
+    "correct_answer_citation": "Slide content mentions moving beyond static replicas to semantic, reasoning models that use reinforcement learning to evolve.",
+    "options": [
+      {
+        "option_text": "High-fidelity 3D visualization and VR compatibility",
+        "option_explanation": "While visual fidelity is important for many twins, it does not provide the reasoning or learning capabilities that define the 'cognitive' aspect."
+      },
+      {
+        "option_text": "Semantic reasoning and the ability to evolve through learning",
+        "option_explanation": "Cognitive Digital Twins move beyond static data to include reasoning models and reinforcement learning, allowing them to adapt and suggest autonomous actions."
+      },
+      {
+        "option_text": "Basic IoT sensor integration for real-time monitoring",
+        "option_explanation": "Real-time monitoring is a foundational feature of standard digital twins, but cognitive twins go further by interpreting and predicting based on that data."
+      },
+      {
+        "option_text": "Storing historical data in a cloud-based repository",
+        "option_explanation": "Cloud storage is a matter of infrastructure; it does not inherently give a model the reasoning or predictive abilities associated with cognitive twins."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "vr-and-ai-assisted-ux",
+    "question_text": "In the early stages of product design, how can designers most accurately predict a user's mental effort (cognitive load) before a physical prototype is even built?",
+    "hint": "Consider how modern simulation tools might 'read' a user's physiological responses without needing a physical object.",
+    "correct_answer_citation": "Part 3: Prototyping - VR and AI-Assisted UX",
+    "options": [
+      {
+        "option_text": "By using AI to analyze gaze patterns and biometric data within a VR simulation.",
+        "option_explanation": "AI-assisted VR allows designers to predict cognitive load and test ergonomic flows by simulating interactions and analyzing physiological data before physical production."
+      },
+      {
+        "option_text": "By conducting static 2D wireframe reviews with a large group of stakeholders.",
+        "option_explanation": "While useful, 2D wireframes cannot accurately simulate the 3D ergonomic challenges or the real-time cognitive load of a spatial interface."
+      },
+      {
+        "option_text": "By relying on the 'rule of thumb' heuristics established for traditional mobile apps.",
+        "option_explanation": "Traditional mobile heuristics often fail to translate to immersive or complex spatial environments where physical ergonomics play a larger role."
+      },
+      {
+        "option_text": "By building a low-fidelity cardboard mockup to test basic hand positioning.",
+        "option_explanation": "Cardboard mockups help with physical scale but do not provide the biometric data or predictive AI analysis needed to measure cognitive load."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "dfm-supply-chain-integration",
+    "question_text": "In a modern integrated supply chain, when is the most effective time to perform Design for Manufacturing (DfM) analysis to minimize production risks?",
+    "hint": "Consider whether DfM is more effective as a single 'gate' at the end of a project or as a recurring check integrated into the workflow.",
+    "correct_answer_citation": "The slide advocates for moving DfM from a final checkpoint to a continuous process, utilizing AI-automated checks and historical data.",
+    "options": [
+      {
+        "option_text": "Only during the final prototype phase to ensure the product is ready for assembly.",
+        "option_explanation": "Waiting until the final prototype often leads to expensive and time-consuming 're-works' if a fundamental design flaw is discovered late."
+      },
+      {
+        "option_text": "Continuously throughout the design phase using automated tools and historical data.",
+        "option_explanation": "Continuous DfM integration allows for real-time risk flagging and leverages historical data to prevent recurring failures before they are locked into the design."
+      },
+      {
+        "option_text": "Immediately after the product has been launched to optimize the second generation.",
+        "option_explanation": "While post-launch optimization is valuable, it fails to mitigate the risks and costs associated with the initial production run."
+      },
+      {
+        "option_text": "Solely during the vendor sourcing phase to match design to supplier capabilities.",
+        "option_explanation": "While supplier alignment is part of DfM, limiting analysis to the sourcing phase misses opportunities to optimize the design geometry and material choices earlier."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "sustainable-material-selection",
+    "question_text": "Beyond logistics, how is AI most fundamentally transforming the 'greenness' of the manufacturing supply chain at the design stage?",
+    "hint": "Think about how we find the 'ingredients' for our products before they even enter the factory.",
+    "correct_answer_citation": "The slide discusses AI discovery of new materials (e.g., Materials Nexus) and identifying rare-earth-free or carbon-negative compositions.",
+    "options": [
+      {
+        "option_text": "By discovering entirely new material compositions that bypass the need for rare-earth minerals.",
+        "option_explanation": "AI can simulate and predict the properties of millions of material combinations, finding sustainable alternatives like rare-earth-free magnets much faster than traditional trial-and-error."
+      },
+      {
+        "option_text": "By optimizing shipping routes to ensure materials are delivered via the shortest possible distance.",
+        "option_explanation": "While route optimization reduces carbon, it does not address the fundamental sustainability of the materials being used in the product itself."
+      },
+      {
+        "option_text": "By automating the physical mining process to reduce the human labor required for extraction.",
+        "option_explanation": "Automating extraction may improve efficiency, but it does not solve the environmental impact of using rare or carbon-intensive materials."
+      },
+      {
+        "option_text": "By replacing human environmental scientists with automated reporting bots.",
+        "option_explanation": "AI integrates with Life Cycle Assessment (LCA) databases to help humans make better decisions, but the primary innovation is in the discovery of the materials themselves."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "supply-chain-resilience",
+    "question_text": "What is typically the most significant challenge for organizations attempting to ensure supply chain resilience for complex electronic systems?",
+    "hint": "Consider how far down the chain a single missing capacitor or raw material can cause a production halt.",
+    "correct_answer_citation": "The slide introduces multi-tier mapping with AI to address the lack of visibility beyond immediate suppliers.",
+    "options": [
+      {
+        "option_text": "Monitoring the daily stock levels of Tier 1 suppliers",
+        "option_explanation": "While important, Tier 1 visibility is usually the most accessible part of the chain and rarely the biggest blind spot."
+      },
+      {
+        "option_text": "Gaining visibility into Tier 2 and Tier 3 sub-component suppliers",
+        "option_explanation": "Most disruptions occur deeper in the supply chain where companies lack direct relationships; AI tools are now used to map these multi-tier dependencies."
+      },
+      {
+        "option_text": "Reducing the technical performance requirements of the design",
+        "option_explanation": "This is a trade-off discussed in the slide, but the primary resilience challenge is visibility and prediction, not just lowering specs."
+      },
+      {
+        "option_text": "Managing the logistics of final product distribution",
+        "option_explanation": "Downstream logistics are critical but usually more predictable than the upstream supply of sub-components and raw materials."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "personalization-user-centricity",
+    "question_text": "What does the manufacturing concept of 'Lot Size 1' primarily aim to achieve in a modern industrial setting?",
+    "hint": "Consider the trade-off between making many identical items and making one unique item.",
+    "correct_answer_citation": "The slide introduces 'Lot Size 1' as part of autonomous configuration and mass customization at scale.",
+    "options": [
+      {
+        "option_text": "Limiting production to a single prototype to test for defects before mass assembly.",
+        "option_explanation": "While prototyping is important, 'Lot Size 1' refers to the production phase, not just the testing phase."
+      },
+      {
+        "option_text": "The ability to produce a single, customized product with the efficiency and cost of mass production.",
+        "option_explanation": "This represents the pinnacle of 'mass customization,' where automation allows for individual units to be unique without slowing down the line."
+      },
+      {
+        "option_text": "A strategy to reduce inventory costs by only manufacturing goods after an order is placed.",
+        "option_explanation": "This describes 'Just-in-Time' or 'Make-to-Order' manufacturing, which is related but doesn't necessarily imply the unit itself is unique."
+      },
+      {
+        "option_text": "Scaling back automation to allow human workers to hand-craft every individual component.",
+        "option_explanation": "Lot Size 1 actually relies on highly advanced autonomous configuration and robotics rather than a return to manual labor."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "generative-customization",
+    "question_text": "If a brand allows customers to co-design their own products, such as custom sneaker soles, what is the primary role of Generative AI in preventing production failures?",
+    "hint": "Consider the difference between a design that looks good on a screen and one that can actually be physically built.",
+    "correct_answer_citation": "AI ensuring user designs remain within manufacturable bounds.",
+    "options": [
+      {
+        "option_text": "It automatically generates thousands of random variations for the user to pick from.",
+        "option_explanation": "While AI can generate variations, the specific value in customization is acting as a bridge between user creativity and physical reality."
+      },
+      {
+        "option_text": "It acts as a 'guardrail' to ensure user-created designs are physically manufacturable.",
+        "option_explanation": "Generative AI ensures that even if a customer is not an engineer, their custom design will still meet structural and manufacturing requirements."
+      },
+      {
+        "option_text": "It replaces the need for any brand-specific design elements.",
+        "option_explanation": "Co-designing usually involves a partnership between the brand's identity and the customer's preference, rather than erasing the brand."
+      },
+      {
+        "option_text": "It predicts the resale value of the custom design before it is printed.",
+        "option_explanation": "While predictive analytics exist, the core technical function in the generative design loop is ensuring the design is viable for production."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "iot-feedback-loops-version-2-0",
+    "question_text": "In an advanced IoT ecosystem, what is the most efficient way to bridge the gap between how a product was designed and how it is actually used by customers?",
+    "hint": "Think about how data moves from the device back to the product's creators.",
+    "correct_answer_citation": "The slide introduces IoT Feedback Loops (Version 2.0), which focus on closing the loop from usage telemetry to R&D for evidence-based iteration.",
+    "options": [
+      {
+        "option_text": "Conducting quarterly manual focus groups and surveys.",
+        "option_explanation": "While useful, manual feedback is slow and often fails to capture the granular, real-time usage patterns provided by telemetry."
+      },
+      {
+        "option_text": "Implementing a 'closed-loop' system that feeds real-world telemetry back into R&D.",
+        "option_explanation": "This approach, known as IoT Feedback Loops 2.0, allows for evidence-based iteration and autonomous addressing of user friction points."
+      },
+      {
+        "option_text": "Standardizing hardware so that it cannot be used in unintended ways.",
+        "option_explanation": "This restricts personalization and ignores the valuable insights that can be gained from observing real-world usage patterns."
+      },
+      {
+        "option_text": "Relying strictly on laboratory stress tests conducted before the product is shipped.",
+        "option_explanation": "Laboratory tests cannot predict all real-world scenarios; continuous telemetry is needed to identify and fix issues post-launch."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "ethics-compliance-standards",
+    "question_text": "If an AI system is trained on historical ergonomic data to design a new workstation, what is the most significant ethical risk regarding its physical output?",
+    "hint": "Consider who was typically included—or excluded—in data collection decades ago.",
+    "correct_answer_citation": "Part 6: Ethics, Compliance & Standards",
+    "options": [
+      {
+        "option_text": "The AI will be unable to process the low resolution of older datasets.",
+        "option_explanation": "This is a technical limitation, not the primary ethical concern regarding safety and inclusivity in physical design."
+      },
+      {
+        "option_text": "The resulting designs may only accommodate the 'average' historical user, excluding diverse body types and abilities.",
+        "option_explanation": "Historical datasets often contain ergonomic bias, meaning they lack representation of diverse populations, leading to products that are unsafe or unusable for many."
+      },
+      {
+        "option_text": "Historical data is generally more reliable than modern data for safety standards.",
+        "option_explanation": "Actually, historical data often lacks the diversity required for modern inclusive safety standards."
+      },
+      {
+        "option_text": "Virtual mannequins cannot be used to validate designs based on older data.",
+        "option_explanation": "Virtual mannequins are specifically used to address these gaps by simulating a wide range of diverse human forms."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "mitigation-tools",
+    "question_text": "In the context of modern AI engineering, how is the concept of 'fairness' being repositioned within the development lifecycle?",
+    "hint": "Consider whether ethical considerations are becoming part of the technical quality checklist or remaining a separate philosophical debate.",
+    "correct_answer_citation": "The slide introduces mitigation tools from IBM and Credo AI, framing algorithmic fairness as a core quality metric and a standard engineering requirement.",
+    "options": [
+      {
+        "option_text": "As a post-launch legal compliance check performed only when issues are reported.",
+        "option_explanation": "Modern workflows emphasize proactive mitigation during the training and design phases, rather than waiting for external complaints."
+      },
+      {
+        "option_text": "As a subjective design choice that cannot be measured or standardized.",
+        "option_explanation": "The slide explicitly lists algorithmic fairness as a 'core quality metric,' suggesting it is being quantified and standardized."
+      },
+      {
+        "option_text": "As a core technical quality metric integrated into the engineering workflow using automated tools.",
+        "option_explanation": "This reflects the move toward using tools like Credo AI and IBM to identify bias and treat fairness as a standard engineering requirement."
+      },
+      {
+        "option_text": "As an optional feature specifically reserved for public-sector AI projects.",
+        "option_explanation": "The slide mentions generative design and general training datasets, indicating these tools and metrics are applicable across various AI domains."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "compliance-automation",
+    "question_text": "As global regulations like the EU AI Act introduce strict requirements for 'high-risk' AI systems, what is becoming the industry standard for maintaining transparency and accountability without stalling development?",
+    "hint": "Think about how software teams handle repetitive documentation and audit trails in other highly regulated industries.",
+    "correct_answer_citation": "Part 6: Ethics - Compliance Automation, Slide Content",
+    "options": [
+      {
+        "option_text": "Manual quarterly reviews of model weights by third-party human auditors.",
+        "option_explanation": "Manual reviews are often too slow and infrequent to keep up with the rapid iteration cycles of modern AI product development."
+      },
+      {
+        "option_text": "Implementing compliance automation for model cards, risk assessments, and lineage tracing.",
+        "option_explanation": "Automating documentation (via tools like Vanta or Monitaur) and tracing lineage are key strategies for meeting standards like ISO/IEC 42001 while maintaining speed."
+      },
+      {
+        "option_text": "Restricting all AI development to 'low-risk' categories to avoid regulatory oversight.",
+        "option_explanation": "While this avoids some regulation, it is not a viable strategy for many industries (like healthcare or finance) that inherently involve high-risk AI use cases."
+      },
+      {
+        "option_text": "Using proprietary 'black-box' models to protect intellectual property from regulators.",
+        "option_explanation": "This approach is the opposite of what regulations like the EU AI Act require, as they mandate transparency and explainability for high-risk systems."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "summary-of-findings",
+    "question_text": "As AI transitions from an experimental novelty to an industrial tool, what is the primary indicator that it has reached 'maturity' in an engineering context?",
+    "hint": "Consider the difference between a design that looks good on screen and one that can actually survive a factory floor.",
+    "correct_answer_citation": "The maturation of AI is defined by its shift from creative experimentation to industrial reliability, specifically through manufacturing awareness and integration into CAD/PLM logic.",
+    "options": [
+      {
+        "option_text": "The ability to generate more visually complex and organic shapes than humans.",
+        "option_explanation": "While generative AI is known for complex shapes, this was a feature of the experimental phase; maturity is about reliability and buildability."
+      },
+      {
+        "option_text": "The integration of manufacturing constraints and physics-based logic into the AI.",
+        "option_explanation": "True industrial maturity occurs when AI understands the 'rules' of physics and manufacturing, preventing the creation of unbuildable designs."
+      },
+      {
+        "option_text": "The complete removal of human oversight from the design and manufacturing pipeline.",
+        "option_explanation": "Industrial reliability usually involves better tools for humans, not necessarily the total removal of human expertise."
+      },
+      {
+        "option_text": "The use of AI primarily for marketing and conceptual visualization.",
+        "option_explanation": "Using AI for visualization is an early-stage application; industrial maturity moves AI into the core functional logic of production."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "speed-safety",
+    "question_text": "In traditional product development, what is the most common assumption regarding the relationship between 'speed to market' and 'safety compliance'?",
+    "hint": "Think about why highly regulated products like medical devices or aircraft often take a long time to develop.",
+    "correct_answer_citation": "Traditional engineering management often highlights a fundamental trade-off between speed and rigor/safety.",
+    "options": [
+      {
+        "option_text": "They are positively correlated; the faster you work, the safer the product.",
+        "option_explanation": "Typically, speed is associated with cutting corners, which is the opposite of this assumption."
+      },
+      {
+        "option_text": "They are a fundamental trade-off; increasing speed usually requires sacrificing safety rigor.",
+        "option_explanation": "This is the conventional view that the upcoming slide challenges through the concept of automated compliance."
+      },
+      {
+        "option_text": "Regulatory compliance has no significant impact on development timelines.",
+        "option_explanation": "Regulatory hurdles are historically one of the primary reasons for long development cycles in many industries."
+      },
+      {
+        "option_text": "Manual safety checks are inherently faster than automated simulations.",
+        "option_explanation": "Manual processes are almost always slower and more prone to human error than modern automated simulations."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "future-directions",
+    "question_text": "As AI moves toward full autonomy in complex systems, which emerging engineering paradigm focuses on building robust models from very limited or sparse failure data?",
+    "hint": "Think about how we might train an AI to recognize a disaster that has only happened once or twice.",
+    "correct_answer_citation": "Slide content mentions Small Data Engineering for sparse failure data (Citation 19).",
+    "options": [
+      {
+        "option_text": "Big Data Analytics",
+        "option_explanation": "Big Data Analytics relies on massive volumes of information, which is often unavailable for rare system failures or edge cases."
+      },
+      {
+        "option_text": "Small Data Engineering",
+        "option_explanation": "Small Data Engineering is a future direction focused on creating robust, reliable models specifically when data points (like failures) are sparse."
+      },
+      {
+        "option_text": "Standardized Data Formatting",
+        "option_explanation": "While interoperability is important, the specific challenge of sparse data is addressed by Small Data Engineering."
+      },
+      {
+        "option_text": "Manual Troubleshooting",
+        "option_explanation": "The goal of future directions like the 'Self-Healing' loop is to move away from manual intervention toward autonomous detection."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "actionable-insights",
+    "question_text": "In the context of industrial and engineering applications, what is a key 'Actionable Insight' for bridging the gap between machine learning and physical laws?",
+    "hint": "Think about how neural networks can be made to respect the laws of physics.",
+    "correct_answer_citation": "The slide highlights investing in 'Physical AI' skills and PINNs as a strategy for physical contexts.",
+    "options": [
+      {
+        "option_text": "Relying on larger datasets to eventually 'learn' physics by brute force",
+        "option_explanation": "Brute force data often fails to capture fundamental physical laws accurately in engineering applications."
+      },
+      {
+        "option_text": "Investing in 'Physical AI' skills like Physics-Informed Neural Networks (PINNs)",
+        "option_explanation": "PINNs integrate physical equations directly into the neural network structure, ensuring realistic and grounded outputs."
+      },
+      {
+        "option_text": "Excluding physical constraints to allow the AI more 'creativity'",
+        "option_explanation": "Ignoring physical laws leads to models that may propose physically impossible solutions in an engineering context."
+      },
+      {
+        "option_text": "Using manual reviews for code and avoiding AI-augmented tools",
+        "option_explanation": "The slide actually recommends adopting 'AI-Augmented' reviews to increase efficiency and accuracy."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "quiz-check-your-understanding",
+    "question_text": "Why is active self-testing, such as taking a short quiz, considered one of the most effective ways to solidify new knowledge?",
+    "hint": "Think about the difference between passive reading and actively trying to recall information from memory.",
+    "correct_answer_citation": "Retrieval practice (the testing effect) is a well-documented phenomenon in cognitive psychology that enhances long-term memory.",
+    "options": [
+      {
+        "option_text": "It reduces the amount of time needed to study the material initially.",
+        "option_explanation": "Quizzing usually takes more time than passive reading, but it is significantly more effective for long-term retention."
+      },
+      {
+        "option_text": "It forces the brain to actively retrieve information, which strengthens memory more than passive review.",
+        "option_explanation": "This is known as the testing effect; the act of retrieval strengthens the neural pathways associated with that information."
+      },
+      {
+        "option_text": "It ensures that you will never forget the information in the future.",
+        "option_explanation": "While it strengthens memory, it doesn't guarantee permanent retention without spaced repetition over time."
+      },
+      {
+        "option_text": "It primarily serves to identify which students are paying the most attention.",
+        "option_explanation": "While it can show attention levels, its primary cognitive benefit is memory consolidation for the individual learner."
+      }
+    ],
+    "correct_answer_index": 1
+  }
+]

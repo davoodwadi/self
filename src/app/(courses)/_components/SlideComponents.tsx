@@ -12,6 +12,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { ArrowLeft, CircleSmall } from "lucide-react";
 export { default as Diagram } from "./MermaidDiagram";
+import InlineQuiz from "./InlineQuiz";
 
 export interface CourseCitation {
   id: number;
@@ -169,19 +170,28 @@ export function Slide({
   className = "",
   border = false,
   id,
+  quizData,
 }: {
   children: React.ReactNode;
   className?: string;
   border?: boolean;
   id?: string;
+  quizData?: any;
 }) {
   return (
-    <section
-      id={id}
-      className={`slide-section relative min-h-screen flex flex-col items-center text-center justify-center py-20 ${border ? "border-t border-[var(--charcoal)]/10" : ""} ${className}`}
-    >
-      {children}
-    </section>
+    <div>
+      {quizData && (
+        <div className="min-h-screen w-full max-w-4xl flex items-center justify-center">
+          <InlineQuiz quizData={quizData} />
+        </div>
+      )}
+      <section
+        id={id}
+        className={`slide-section relative min-h-screen flex flex-col items-center text-center justify-center py-20 ${border ? "border-t border-[var(--charcoal)]/10" : ""} ${className}`}
+      >
+        {children}
+      </section>
+    </div>
   );
 }
 

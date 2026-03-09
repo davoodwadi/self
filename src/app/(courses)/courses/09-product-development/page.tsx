@@ -30,6 +30,7 @@ import {
 } from "./deepResearchCitations";
 
 import { useState } from "react";
+import quizzesData from "./quizzes.json";
 
 export default function ProductDevelopmentCourse() {
   const [bgReady, setBgReady] = useState(false);
@@ -60,7 +61,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Slide 2: The Paradigm Shift */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "the-paradigm-shift",
+              )}
+            >
               <Tag>Introduction</Tag>
               <Heading>The Paradigm Shift</Heading>
               <AnimatedList>
@@ -83,7 +88,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Slide 3: Three Transformative Shifts */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "three-transformative-shifts",
+              )}
+            >
               <Tag>Overview</Tag>
               <Heading>Three Transformative Shifts</Heading>
               <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl my-4">
@@ -110,7 +119,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Part 1: AI-Driven Ideation */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "ai-driven-ideation",
+              )}
+            >
               <Tag>Part 1: Ideation</Tag>
               <Heading>AI-Driven Ideation</Heading>
               <AnimatedList>
@@ -133,7 +146,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Divergent vs. Convergent Thinking */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "divergent-vs-convergent-thinking",
+              )}
+            >
               <Tag>Part 1: Ideation</Tag>
               <Heading>Divergent vs. Convergent Thinking</Heading>
               <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl my-4">
@@ -159,7 +176,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Persona Simulation */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "persona-simulation",
+              )}
+            >
               <Tag>Part 1: Ideation</Tag>
               <Heading>Persona Simulation</Heading>
               <AnimatedList>
@@ -183,7 +204,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Predictive Market Trends */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "predictive-market-trends",
+              )}
+            >
               <Tag>Part 1: Ideation</Tag>
               <Heading>Predictive Market Trends</Heading>
               <AnimatedList>
@@ -207,7 +232,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Uncovering Latent Needs */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "uncovering-latent-needs",
+              )}
+            >
               <Tag>Part 1: Ideation</Tag>
               <Heading>Uncovering Latent Needs</Heading>
               <AnimatedList>
@@ -231,7 +260,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Automated Competitor Analysis */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "automated-competitor-analysis",
+              )}
+            >
               <Tag>Part 1: Ideation</Tag>
               <Heading>Automated Competitor Analysis</Heading>
               <AnimatedList>
@@ -253,7 +286,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Part 2: Generative Design & Engineering */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "generative-design-engineering",
+              )}
+            >
               <Tag>Part 2: Engineering</Tag>
               <Heading>Generative Design & Engineering</Heading>
               <AnimatedList>
@@ -277,7 +314,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Mainstream Manufacturability */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "mainstream-manufacturability",
+              )}
+            >
               <Tag>Part 2: Engineering</Tag>
               <Heading>Mainstream Manufacturability</Heading>
               <AnimatedList>
@@ -300,7 +341,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Physics-Informed Neural Networks (PINNs) */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "physics-informed-neural-networks",
+              )}
+            >
               <Tag>Part 2: Engineering</Tag>
               <Heading>Physics-Informed Neural Networks</Heading>
               <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl my-4">
@@ -327,7 +372,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Synthetic Data for Engineering */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "synthetic-data-for-engineering",
+              )}
+            >
               <Tag>Part 2: Engineering</Tag>
               <Heading>Synthetic Data for Engineering</Heading>
               <AnimatedList>
@@ -350,7 +399,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Data Privacy and Speed */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "data-privacy-and-speed",
+              )}
+            >
               <Tag>Part 2: Engineering</Tag>
               <Heading>Data Privacy and Speed</Heading>
               <AnimatedList>
@@ -372,7 +425,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Part 3: Prototyping & Digital Twins */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "prototyping-digital-twins",
+              )}
+            >
               <Tag>Part 3: Prototyping</Tag>
               <Heading>Prototyping & Digital Twins</Heading>
               <AnimatedList>
@@ -391,7 +448,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Parameter Optimization */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "parameter-optimization",
+              )}
+            >
               <Tag>Part 3: Prototyping</Tag>
               <Heading>Parameter Optimization</Heading>
               <AnimatedList>
@@ -412,7 +473,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Cognitive Digital Twins */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "cognitive-digital-twins",
+              )}
+            >
               <Tag>Part 3: Prototyping</Tag>
               <Heading>Cognitive Digital Twins</Heading>
               <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl my-4">
@@ -437,7 +502,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* VR and AI-Assisted UX */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "vr-and-ai-assisted-ux",
+              )}
+            >
               <Tag>Part 3: Prototyping</Tag>
               <Heading>VR and AI-Assisted UX</Heading>
               <AnimatedList>
@@ -458,7 +527,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Part 4: DfM & Supply Chain Integration */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "dfm-supply-chain-integration",
+              )}
+            >
               <Tag>Part 4: Supply Chain</Tag>
               <Heading>DfM & Supply Chain Integration</Heading>
               <AnimatedList>
@@ -480,7 +553,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Sustainable Material Selection */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "sustainable-material-selection",
+              )}
+            >
               <Tag>Part 4: Supply Chain</Tag>
               <Heading>Sustainable Material Selection</Heading>
               <AnimatedList>
@@ -503,7 +580,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Supply Chain Resilience */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "supply-chain-resilience",
+              )}
+            >
               <Tag>Part 4: Supply Chain</Tag>
               <Heading>Supply Chain Resilience</Heading>
               <AnimatedList>
@@ -526,7 +607,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Part 5: Personalization & User-Centricity */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "personalization-user-centricity",
+              )}
+            >
               <Tag>Part 5: Personalization</Tag>
               <Heading>Personalization & User-Centricity</Heading>
               <AnimatedList>
@@ -546,7 +631,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Generative Customization */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "generative-customization",
+              )}
+            >
               <Tag>Part 5: Personalization</Tag>
               <Heading>Generative Customization</Heading>
               <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl my-4">
@@ -569,7 +658,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* IoT Feedback Loops (Version 2.0) */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "iot-feedback-loops-version-2-0",
+              )}
+            >
               <Tag>Part 5: Personalization</Tag>
               <Heading>IoT Feedback Loops (Version 2.0)</Heading>
               <AnimatedList>
@@ -591,7 +684,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Part 6: Ethics, Compliance & Standards */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "ethics-compliance-standards",
+              )}
+            >
               <Tag>Part 6: Ethics</Tag>
               <Heading>Ethics, Compliance & Standards</Heading>
               <AnimatedList>
@@ -613,7 +710,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Mitigation Tools */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "mitigation-tools",
+              )}
+            >
               <Tag>Part 6: Ethics</Tag>
               <Heading>Mitigation Tools</Heading>
               <AnimatedList>
@@ -634,7 +735,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Compliance Automation */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "compliance-automation",
+              )}
+            >
               <Tag>Part 6: Ethics</Tag>
               <Heading>Compliance Automation</Heading>
               <AnimatedList>
@@ -657,7 +762,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Summary of Findings */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "summary-of-findings",
+              )}
+            >
               <Tag>Summary</Tag>
               <Heading>Summary of Findings</Heading>
               <AnimatedList>
@@ -680,7 +789,9 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Speed + Safety */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find((q) => q.slide_id === "speed-safety")}
+            >
               <Tag>Summary</Tag>
               <Heading>Speed + Safety</Heading>
               <AnimatedList>
@@ -697,7 +808,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Future Directions */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "future-directions",
+              )}
+            >
               <Tag>Future</Tag>
               <Heading>Future Directions</Heading>
               <AnimatedList>
@@ -721,7 +836,11 @@ export default function ProductDevelopmentCourse() {
             </Slide>
 
             {/* Actionable Insights */}
-            <Slide>
+            <Slide
+              quizData={quizzesData.find(
+                (q) => q.slide_id === "actionable-insights",
+              )}
+            >
               <Tag>Action</Tag>
               <Heading>Actionable Insights</Heading>
               <AnimatedList>
