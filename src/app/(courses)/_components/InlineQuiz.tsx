@@ -66,13 +66,13 @@ export default function InlineQuiz({
             if (isActuallyCorrect) {
               // The right answer
               optionContainerStyle =
-                "border-green-500 bg-green-50 dark:bg-green-900/20 shadow-[0_0_15px_rgba(34,197,94,0.15)]";
-              textStyle = "text-green-800 dark:text-green-200 font-medium";
+                "border-green-900 bg-green-50/50 dark:bg-green-900/20 shadow-[0_0_15px_rgba(34,197,94,0.15)]";
+              textStyle = "text-green-900 dark:text-green-200 font-medium";
             } else if (isSelected && !isActuallyCorrect) {
               // The wrong answer chosen by user
               optionContainerStyle =
-                "border-red-600 bg-red-50 dark:bg-red-900/20 shadow-[0_0_15px_rgba(239,68,68,0.2)]";
-              textStyle = "text-red-700 dark:text-red-300 font-bold";
+                "border-red-900 bg-red-50/50 dark:bg-red-900/20 shadow-[0_0_15px_rgba(239,68,68,0.2)]";
+              textStyle = "text-red-900 dark:text-red-300 font-bold";
             } else {
               // Unchosen wrong answers
               optionContainerStyle =
@@ -101,9 +101,9 @@ export default function InlineQuiz({
                   {/* Radio Dot or Icon */}
                   <div className="flex-shrink-0 mr-4 mt-1 md:mt-0">
                     {hasSubmitted && isActuallyCorrect ? (
-                      <CheckCircle2 className="w-6 h-6 text-green-600 dark:text-green-400" />
+                      <CheckCircle2 className="w-6 h-6 text-green-900 dark:text-green-400" />
                     ) : hasSubmitted && isSelected && !isActuallyCorrect ? (
-                      <XCircle className="w-6 h-6 text-red-600 dark:text-red-500" />
+                      <XCircle className="w-6 h-6 text-red-900 dark:text-red-500" />
                     ) : (
                       <div
                         className={`w-5 h-5 rounded-full border-2 transition-all duration-300 ${dotStyle}`}
@@ -127,15 +127,15 @@ export default function InlineQuiz({
                   <div
                     className={`mt-3 ml-6 md:ml-10 p-5 text-base rounded-xl border-l-4 shadow-md ${
                       isActuallyCorrect
-                        ? "bg-green-100/80 dark:bg-green-900/40 border-green-500 text-green-900 dark:text-green-100"
-                        : "bg-red-100/80 dark:bg-red-900/40 border-red-600 text-red-950 dark:text-red-100"
+                        ? "bg-green-100/30 dark:bg-green-900/40 border-green-800/40 text-green-900 dark:text-green-100"
+                        : "bg-red-100/30 dark:bg-red-900/40 border-red-800/40 text-red-950 dark:text-red-100"
                     } animate-in fade-in slide-in-from-top-2 duration-500`}
                   >
                     <div className="flex items-center gap-2 mb-2">
                       {isActuallyCorrect ? (
-                        <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
+                        <CheckCircle2 className="w-5 h-5 text-green-900 dark:text-green-400" />
                       ) : (
-                        <XCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
+                        <XCircle className="w-5 h-5 text-red-900 dark:text-red-400" />
                       )}
                       <strong className="text-sm uppercase tracking-widest opacity-90">
                         {isActuallyCorrect
