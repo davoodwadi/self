@@ -15,3 +15,20 @@ Volume
 Issue
 2
 http://www.jecr.org/sites/default/files/2026vol27no2_Paper1.pdf
+
+Be careful what you pay for: The effect of performance contingent incentives for online product reviews
+Authors
+Davood Wadi, Marc Fredette, Sylvain Sénécal, Renaud Legoux
+Journal of Research in Interactive Marketing - Under review
+
+Working paper:
+The Bounded Algorithmic Rationality of Large Language Models as Surrogate Consumers - 
+Under review in "Agents, Interfaces, and Ecosystems, Special issue of the Journal of the Academy of Marketing Science"
+
+Working paper:
+The new marketing mix with AI agents as surrogate consumers
+"Journal of Advertising Research" For a Special Issue on "Insights on the future of search-related advertising and artificial intelligence"
+https://think.taylorandfrancis.com/special_issues/insights-on-the-future-of-search-related-advertising-and-artificial-intelligence/
+
+Under review:
+Analytical Factorial Framework for Behavioral Analysis of Large Language Models, ICML 2026

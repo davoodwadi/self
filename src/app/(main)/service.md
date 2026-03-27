@@ -1,6 +1,6 @@
 # Board Member
 
-Ethics Board Member (University Canada West) - Member of REB ethics board, overseeing research compliance.
+- Ethics Board Member (University Canada West) - 2026 - Member of REB ethics board, overseeing research compliance.
 
 # Curriculum Designer (University Canada West) -
 

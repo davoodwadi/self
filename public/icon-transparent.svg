@@ -15,8 +15,8 @@
   </defs>
 
   <!-- Inner Champagne Border (Kept for structure, background is now transparent) -->
-  <rect width="472" height="472" x="20" y="20" rx="108" fill="none" stroke="url(#champagne-gradient)" stroke-width="2" opacity="0.4" />
-  <rect width="460" height="460" x="26" y="26" rx="102" fill="none" stroke="url(#champagne-gradient)" stroke-width="1" opacity="0.15" />
+  <!-- <rect width="472" height="472" x="20" y="20" rx="108" fill="none" stroke="url(#champagne-gradient)" stroke-width="2" opacity="1.0" /> -->
+  <!-- <rect width="460" height="460" x="26" y="26" rx="102" fill="none" stroke="url(#champagne-gradient)" stroke-width="1" opacity="0.15" /> -->
 
   <!-- 'DW' Monogram Centered -->
   <text 
@@ -24,10 +24,10 @@
     y="50%" 
     font-family="'Playfair Display', Didot, Georgia, serif" 
     font-size="200" 
-    font-weight="600" 
+    font-weight="400" 
     text-anchor="middle" 
     dominant-baseline="central" 
     fill="url(#champagne-gradient)" 
-    filter="url(#glow)">DW</text>
+    >DW</text>
 
 </svg>

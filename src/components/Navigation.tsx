@@ -127,7 +127,7 @@ export default function Navigation() {
             <img
               src="/icon-transparent.svg"
               alt="DW Logo"
-              className="w-8 h-8 "
+              className="w-8 h-8 md:w-12 md:h-12"
             />
           </Link>
 
