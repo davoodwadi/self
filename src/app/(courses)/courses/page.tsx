@@ -261,6 +261,7 @@ export default function Home() {
               label="Week 01"
               title="Introduction"
               description="A recap of fundamentals of AI"
+              isLocked
             />
 
             <CourseCard
@@ -276,6 +277,7 @@ export default function Home() {
               title="Introduction to Deep Learning"
               description="A gentle introduction to deep learning"
               variant="gold"
+              isLocked
             />
 
             <CourseCard
