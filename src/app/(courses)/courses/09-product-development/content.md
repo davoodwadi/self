@@ -1,16 +1,17 @@
-# AI Innovations for Product Development
-
-# Background Shape
-A complex, evolving wireframe of a product transforming into a solid object, illuminated by data streams and neon blue accents, representing the shift from simulation to emulation.
-
-# Slide contents
+---
+topic: "AI Innovations for Product Development"
+lecturer: "Davood Wadi, PhD"
+course: "Applications of AI in Business"
+week: "09-product-development"
+backgroundShape: "A complex, evolving wireframe of a product transforming into a solid object, illuminated by data streams and neon blue accents, representing the shift from simulation to emulation."
+---
 
 ## Title Slide
 - The Evolution of Product Development
 - From Computer-Aided Design to Computer-Augmented Invention
 - Davood Wadi, PhD
 
-## The Paradigm Shift
+## The Paradigm Shift [quiz]
 - Product development is undergoing a fundamental transformation.
 - Moving from isolated tasks to a reshaped lifecycle.
 - Covers the "fuzzy front end" of ideation to regulatory compliance.
@@ -28,7 +29,7 @@ A complex, evolving wireframe of a product transforming into a solid object, ill
 - Generating novel combinations rather than just retrieving information.
 - Discussion: Can LLMs truly be creative, or are they just recombining existing concepts?
 
-## Divergent vs. Convergent Thinking
+## Divergent vs. Convergent Thinking [quiz]
 - LLMs excel at expanding the solution space ("persistence" and "flexibility") [cite: 1, 2].
 - Better at "small ideas" (incremental) than "big ideas" (paradigm shifts) [cite: 2].
 - Acting as co-creators to disrupt habitual thought patterns.

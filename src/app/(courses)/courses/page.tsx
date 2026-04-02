@@ -22,7 +22,7 @@ export default function Home() {
       gsap.fromTo(
         ".hero-text",
         {
-          y: 40,
+          y: 10,
           opacity: 0,
           filter: "blur(10px)",
         },
@@ -45,35 +45,12 @@ export default function Home() {
         {
           opacity: 1,
           filter: "blur(0px)",
-          duration: 1.2,
+          duration: 0.5,
           delay: 0.6,
           ease: "power2.out",
           stagger: 0.15,
         },
       );
-
-      // Smooth custom snapping via GSAP ScrollTrigger
-      const sections = gsap.utils.toArray("section");
-
-      // Apply smooth snap on desktop sizes to preserve native mobile feel,
-      // but override CSS scroll snap which is too rigid.
-      let mm = gsap.matchMedia();
-
-      mm.add("(min-width: 768px)", () => {
-        // By assigning the trigger to the container, we ensure GSAP knows
-        // exactly what scroll area to measure for the snap.
-        ScrollTrigger.create({
-          trigger: containerRef.current,
-          start: "top top",
-          end: "bottom bottom",
-          snap: {
-            snapTo: 1 / (sections.length - 1),
-            duration: { min: 0.8, max: 1.5 },
-            delay: 0.1,
-            ease: "power3.inOut",
-          },
-        });
-      });
     }, containerRef);
 
     // 2. Three.js Cinematic Background
@@ -98,34 +75,6 @@ export default function Home() {
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    // Abstract geometric structure for the landing page (Network of AI nodes)
-    const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 1500;
-    const posArray = new Float32Array(particlesCount * 3);
-
-    for (let i = 0; i < particlesCount * 3; i++) {
-      posArray[i] = (Math.random() - 0.5) * 100;
-    }
-
-    particlesGeometry.setAttribute(
-      "position",
-      new THREE.BufferAttribute(posArray, 3),
-    );
-
-    const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.1,
-      color: 0x8b0000, // Crimson Deep
-      transparent: true,
-      opacity: 0.2,
-      blending: THREE.NormalBlending,
-    });
-
-    const particlesMesh = new THREE.Points(
-      particlesGeometry,
-      particlesMaterial,
-    );
-    scene.add(particlesMesh);
 
     // Large wireframe sphere (The "Globe" or "AI Brain")
     const sphereGeometry = new THREE.SphereGeometry(15, 32, 32);
@@ -159,9 +108,6 @@ export default function Home() {
       targetX = mouseX * 0.5;
       targetY = mouseY * 0.5;
 
-      particlesMesh.rotation.y += 0.0005;
-      particlesMesh.rotation.x += 0.0002;
-
       sphere.rotation.x += 0.001;
       sphere.rotation.y += 0.0015;
 
@@ -188,8 +134,6 @@ export default function Home() {
       window.removeEventListener("resize", handleResize);
       document.removeEventListener("mousemove", onDocumentMouseMove);
       renderer.dispose();
-      particlesGeometry.dispose();
-      particlesMaterial.dispose();
       sphereGeometry.dispose();
       sphereMaterial.dispose();
     };
@@ -261,23 +205,55 @@ export default function Home() {
               label="Week 01"
               title="Introduction"
               description="A recap of fundamentals of AI"
-              isLocked
+              variant="crimson"
             />
 
             <CourseCard
+              href="/courses/02-ai-in-marketing"
               label="Week 02"
-              title="AI Strategy & Architecture"
+              title="Applications of AI in Marketing and Consumer Behavior"
               description="Building the foundation for enterprise AI adoption."
-              isLocked
+              variant="crimson"
             />
 
             <CourseCard
-              href="/courses/06-introduction-to-deep-learning"
-              label="Week 06"
-              title="Introduction to Deep Learning"
+              href="/courses/03-ai-in-finance"
+              label="Week 03"
+              title="Applications of AI in Finance"
               description="A gentle introduction to deep learning"
+              variant="crimson"
+            />
+
+            <CourseCard
+              href="/courses/agentic-ai"
+              label="New Paradigm"
+              title="Agentic AI and Vibe Coding"
+              description="Moving away from manual syntax to autonomous agents and orchestration."
               variant="gold"
-              isLocked
+            />
+
+            <CourseCard
+              href="/courses/04-ai-in-human-resources"
+              label="Week 04"
+              title="Applications of AI in Human Resources"
+              description="A gentle introduction to deep learning"
+              variant="crimson"
+            />
+
+            <CourseCard
+              href="/courses/05-ai-in-operations-supply-chain"
+              label="Week 05"
+              title="Applications of AI in Operations and Supply Chain"
+              description="A gentle introduction to deep learning"
+              variant="crimson"
+            />
+
+            <CourseCard
+              href="/courses/06-ai-in-business-strategy"
+              label="Week 06"
+              title="Applications of AI in Business Strategy"
+              description="A gentle introduction to deep learning"
+              variant="crimson"
             />
 
             <CourseCard
@@ -293,7 +269,7 @@ export default function Home() {
               label="Week 08"
               title="Sustainability in AI"
               description="How to create sustainable AI models. How to use AI to create a sustainable future."
-              variant="gold"
+              variant="crimson"
             />
 
             <CourseCard
@@ -301,14 +277,6 @@ export default function Home() {
               label="Week 09"
               title="AI in Product Development"
               description="Latest agentic AI tools for product development."
-              variant="gold"
-            />
-
-            <CourseCard
-              href="/courses/agentic-ai"
-              label="New Paradigm"
-              title="Agentic AI and Vibe Coding"
-              description="Moving away from manual syntax to autonomous agents and orchestration."
               variant="crimson"
             />
           </div>

@@ -1,11 +1,12 @@
-# The Dual Nature of Artificial Intelligence: Environmental Costs and Sustainable Solutions
+---
+topic: "The Dual Nature of Artificial Intelligence: Environmental Costs and Sustainable Solutions"
+lecturer: "Davood Wadi, PhD"
+course: "Applications of AI in Business"
+week: "08-sustainability"
+backgroundShape: "Organic, slow-moving mesh structures representing the intersection of nature and digital networks."
+---
 
-# Background Shape
-Organic, slow-moving mesh structures representing the intersection of nature and digital networks.
-
-# Slide contents
-
-## The Dual Nature of Artificial Intelligence
+## Title Slide
 - Exploring the complex relationship between AI and environmental sustainability
 - From carbon footprints to climate solutions
 - Strategies for a sustainable AI ecosystem
@@ -20,6 +21,7 @@ Organic, slow-moving mesh structures representing the intersection of nature and
 - Analyzing the hidden costs of computational power
 - Beyond carbon: Water, hardware, and waste
 - The shift from training to inference impact
+- Discussion: Which hidden environmental cost of AI do organizations underestimate most when they talk about sustainability?
 
 ## The Hidden Cost of Compute
 - Operational carbon splits into training and inference emissions
@@ -73,6 +75,7 @@ Organic, slow-moving mesh structures representing the intersection of nature and
 - Leveraging pattern recognition for the planet
 - Weather forecasting and disaster warning
 - Optimizing renewable energy systems
+- Discussion: Where do you see the strongest near-term business case for using AI as a climate mitigation tool?
 
 ## Revolutionizing Weather Prediction
 - AI outperforms traditional Numerical Weather Prediction (NWP) in speed and efficiency
@@ -102,6 +105,7 @@ Organic, slow-moving mesh structures representing the intersection of nature and
 - Prioritizing efficiency alongside accuracy
 - Architectural innovations and model compression
 - The rise of Small Language Models
+- Discussion: What would need to change inside most organizations for efficiency to matter as much as accuracy in AI selection?
 
 ## Red AI vs. Green AI
 - Red AI: Buying performance with massive computational cost [cite: 29, 30]
@@ -137,6 +141,7 @@ Organic, slow-moving mesh structures representing the intersection of nature and
 - Closing the loop on waste
 - Biodiversity monitoring
 - The emerging regulatory landscape
+- Discussion: Which policy or governance intervention is most likely to change organizational behavior around sustainable AI in practice?
 
 ## AI and the Circular Economy
 - Treating waste as a resource through better sorting and logistics
@@ -191,6 +196,7 @@ Organic, slow-moving mesh structures representing the intersection of nature and
 - The shift to inference dominance demands new efficiency strategies
 - Regulation and standards are transforming the industry
 - Sustainable AI is not just an option, it is a license to operate.
+- Discussion: Which sustainability trade-off in AI deployment do you think business leaders underestimate most today?
 
 ## Sources
 - 1. [arxiv.org](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFeuZld44rKJ8kIag_qEqvLxl-166OmPJM3R8fo0P2JyOba8BB6BRg4HWSIUcVNKp4hyPCtAmI5q_6DX0x-n4ByWmeyno8PuQtQ8XOdKEKiGnaOrvJ18G1yA==) - Inference emissions study
@@ -202,3 +208,4 @@ Organic, slow-moving mesh structures representing the intersection of nature and
 - 29. [researchgate.net](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFLOUGxLrQFpGlCDb-2o6CvBx8sfqan-GOsMA39ac2FTDJKiLWPMd9I537mse_c4e8-5-0UBdGM7qldu7D2QoyLhtWTnOQOkF3G9YpAS7QiLjr1Kjw603EsZsnZDjKr4wHhlHgJJwTolFzGShh1bZ9mJaELOWvWPGyG7x6Bit-2CD3rHOSjHmHQo6wNCjJ7Brclbl-S2Wx7EzTNLMOMAZZHdmExkJt4AaOpnjlnsFjm3VK8t840wRq3Ole_mL5hv5rJuk-xflwdc9dAyKkntSMnqSTRQEbC6iFNJ9X5esxfSB0vjt-gHqDbDISqKIGQxaWVSWuhPZS-BAHQ) - Red AI vs Green AI
 - 34. [aicerts.ai](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFSiDu1nOee-d1ZEtsYB_GqLpJe1mdcfzHALV41L65_GEbCxw4mR-7Co9Wsx8SAlFZTjpUOKKdlkVJccC2Yl811jie4Bv7Of1Wxq9k8Zde8OuYDNap4RH6PAuxfJYBSvIfizQxOosffhOXXSM01wLEkE_CrvyiOhYf2Vl6D1aueo7L4sw8XWG-u5m929DFr) - Small is Sufficient
 - 48. [greensoftware.foundation](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEQn7PtU2LYNmqLOEHlA-QsxN08WBvI5mL2fMSEKuaBO1v51EoG8p4e_cPusNffD_llk_NjERixzTt36xxiCUiRxUccA29ywMcoOoIoWWT9VIP_fOmU_wye-Z_nTpagiZ5VDPvve5DtqnA7zqZJ2LaUF88G2nlZNvlecyP-76fpi7cQ9XBX7fwyKBD3EmVr2K6jYD4=) - EU AI Act and Sustainability
+- Discussion: Which source or framework would you prioritize if you had to build a sustainable AI policy for your organization this quarter?

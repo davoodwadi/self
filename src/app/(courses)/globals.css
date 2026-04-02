@@ -13,6 +13,7 @@
   --color-charcoal: var(--charcoal);
   --color-charcoal-light: var(--charcoal-light);
   --color-gold: var(--gold);
+  --color-champagne: var(--champagne);
   --font-serif: var(--font-merriweather);
   --font-sans: var(--font-open-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -61,6 +62,7 @@
   --charcoal: #1a1a1d; /* Primary text color (Headings) */
   --charcoal-light: #2d2d32; /* Body text color */
   --gold: #d4af37;
+  --champagne: #8c7349;
 
   /* Spacing */
   --space-sm: 0.5rem;

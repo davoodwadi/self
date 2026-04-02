@@ -17,35 +17,36 @@ The design is authoritative, academic, and tailored for an MBA and executive aud
 
 - **Background (Cream/Off-White):** `#F9F7F5` (Primary page background, print-like foundation).
 - **Surface (White):** `#FFFFFF` (Cards, blocks, overlays).
-- **Deep Academic Crimson:** `#8B0000` (Primary brand color for highlights, accents, borders, CTAs).
-- **Crimson Light:** `#A52A2A` (Subtitles, hover states).
+- **Deep Academic Crimson:** `#8B0000` (Structural accents: slide borders, card top-borders, diagram primary paths, CTAs on slide content).
+- **Crimson Light:** `#A52A2A` (Subtitles, hover states on slide elements).
+- **Champagne Gold:** `#8c7349` (Premium interactive chrome: quiz/form accents, selected states, hover highlights, navigation affordances. Evokes foil stamping on a high-quality academic journal).
 - **Deep Charcoal:** `#1A1A1D` (Headings, footer backgrounds).
 - **Charcoal Light:** `#2D2D32` (Body text).
-- **Subtle Gold:** `#D4AF37` (Fine details, dividers, premium accents).
 
 ### Palette Enforcement And Safe Expansion
 
 Use the course palette as the base system for all new UI and diagrams in `(courses)`.
 
 1. Always anchor designs to these core tokens:
-	- `--surface` (`#FFFFFF`)
-	- `--crimson` (`#8B0000`)
-	- `--crimson-light` (`#A52A2A`)
-	- `--charcoal` (`#1A1A1D`)
-	- `--charcoal-light` (`#2D2D32`)
-	- `--gold` (`#D4AF37`)
+   - `--surface` (`#FFFFFF`)
+   - `--crimson` (`#8B0000`) -- structural, authoritative
+   - `--crimson-light` (`#A52A2A`) -- secondary text, hover
+   - `--champagne` (`#8c7349`) -- interactive chrome, premium accents
+   - `--charcoal` (`#1A1A1D`)
+   - `--charcoal-light` (`#2D2D32`)
 2. New colors are allowed only as controlled accents that follow the same pattern:
-	- deep, muted, academic tones
-	- avoid neon, pastel, or highly saturated hues
-	- keep contrast strong against cream and white surfaces
+   - deep, muted, academic tones
+   - avoid neon, pastel, or highly saturated hues
+   - keep contrast strong against cream and white surfaces
 3. For diagrams, use this semantic structure by default:
-	- primary path: crimson family
-	- supporting or neutral stages: charcoal family
-	- premium highlight or key edge labels: gold family
-4. If a slide requires an additional hue (for explicit semantic contrast such as sustainable outcome), use one restrained complementary family and keep it dark and muted.
-5. Do not introduce more than 4 hue families in one diagram, including core palette hues.
-6. Prefer CSS variables and tokenized colors when possible. If a raw hex value is needed in flowchart config, ensure it visually matches the academic palette style.
-7. Document non-core accent meaning with a short code comment above each diagram constant.
+   - primary path: crimson family
+   - supporting or neutral stages: charcoal family
+   - premium highlight or key edge labels: champagne gold family
+4. Use crimson for **structural** slide elements (card borders, section dividers, diagram flows, headings accents). Use champagne gold for **interactive/engagement** elements (quiz chrome, form controls, selected states, hover affordances, hints, navigation highlights).
+5. If a slide requires an additional hue (for explicit semantic contrast such as sustainable outcome), use one restrained complementary family and keep it dark and muted.
+6. Do not introduce more than 4 hue families in one diagram, including core palette hues.
+7. Prefer CSS variables and tokenized colors when possible. If a raw hex value is needed in flowchart config, ensure it visually matches the academic palette style.
+8. Document non-core accent meaning with a short code comment above each diagram constant.
 
 ### Typography
 

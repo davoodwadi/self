@@ -11,6 +11,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { ArrowLeft, CircleSmall } from "lucide-react";
+import type { CourseQuiz } from "@/lib/course-quiz";
 export { default as Diagram } from "./MermaidDiagram";
 import InlineQuiz from "./InlineQuiz";
 
@@ -95,12 +96,12 @@ export function SlideDeck({
         if (elements.length > 0) {
           gsap.fromTo(
             elements,
-            { y: 60, opacity: 0, filter: "blur(10px)" },
+            { y: 10, opacity: 0, filter: "blur(10px)" },
             {
               y: 0,
               opacity: 1,
               filter: "blur(0px)",
-              duration: 1.2,
+              duration: 0.7,
               stagger: 0.15,
               ease: "power3.out",
               scrollTrigger: {
@@ -176,7 +177,7 @@ export function Slide({
   className?: string;
   border?: boolean;
   id?: string;
-  quizData?: any;
+  quizData?: CourseQuiz;
 }) {
   return (
     <div>
@@ -960,7 +961,7 @@ export function ContentDescription({
  * - Provides engagement metric point for learners
  */
 export function DiscussionCard({
-  title = "Discussion Prompt",
+  title = "",
   children,
   className = "",
 }: {
@@ -1209,10 +1210,10 @@ export function Metric({
     <div
       className={`gsap-reveal flex flex-col items-center justify-center p-8 border border-[var(--gold)]/20 bg-[var(--gold)]/5 ${className}`}
     >
-      <div className="text-4xl md:text-6xl font-black font-serif text-[var(--crimson)] mb-4 tracking-tighter">
+      <div className="text-2xl md:text-4xl font-black font-serif text-[var(--crimson)] mb-4 tracking-tighter">
         {value}
       </div>
-      <div className="text-xl md:text-2xl font-medium tracking-wide text-[var(--charcoal)] text-center uppercase">
+      <div className="text-xl md:text-xl font-medium tracking-wide text-[var(--charcoal)] text-center uppercase">
         {label}
       </div>
     </div>

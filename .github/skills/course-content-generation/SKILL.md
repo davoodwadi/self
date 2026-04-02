@@ -1,6 +1,6 @@
 ---
 name: course-content-generation
-description: "Generate a structured `content.md` file for a course session by synthesizing facts and latest research from a `deepResearch.md` source. This skill ensures the content is optimized for the cinematic 'Academic' slide deck format, using a professional, authoritative tone, and incorporating discussion questions on every slide. It strictly enforces the 'No M-dash/N-dash' rule."
+description: "Generate a structured `content.md` file for a course session by synthesizing facts and latest research from a `deepResearch.md` source. This skill ensures the content is optimized for the cinematic 'Academic' slide deck format, using a professional, authoritative tone, and adding highly specific `Discussion:` prompts only when discussion is genuinely warranted. It strictly enforces the 'No M-dash/N-dash' rule."
 ---
 
 # Course Content Generation Skill
@@ -37,7 +37,8 @@ The file MUST follow this exact structure:
   - `## Strategy: [Context]`
   - `## Conclusion: [Context]`
 - **Bullet Point Constraint**: Use 2-4 bullet points per slide.
-- **Discussion Questions**: Every slide (except perhaps the title) MUST end with a thought-provoking discussion question as the final bullet point. This triggers the interactive components in the final page.
+- **Discussion Questions**: Use a final `Discussion:` bullet only on slides where a specific class discussion would materially improve understanding.
+- **Specificity Requirement**: Discussion prompts must be tightly anchored to the exact slide content, surfacing a real tradeoff, managerial decision, ethical tension, or ambiguous interpretation. Avoid generic prompts that could fit any topic.
 - **Punctuation & Style**:
   - **CRITICAL**: Use NO m-dashes (—) or n-dashes (–). Use a colon (:), a comma (,), or a standard hyphen (-) instead.
   - **Academic Tone**: Use authoritative, executive language (e.g., "Leverage", "Optimize", "Mitigate", "Imperative").
@@ -57,13 +58,13 @@ The background description should match the topic's "mood":
 - **No M-dash/N-dash**: Zero occurrences in the output.
 - **30-40 Slides**: The deck must be substantial enough for a 3-hour academic session, divided into clear modules.
 - **Research Grounding**: Every fact in `content.md` must be traceable to `deepResearch.md`.
-- **Discussion Frequency**: 100% of body slides must have a closing question.
+- **Discussion Discipline**: Discussion prompts should be sparse, deliberate, and materially better than having no prompt at all.
 
 ## Example Prompts
 
 - "Synthesize `deepResearch.md` into a `content.md` for the Sustainability module."
 - "Create a 16-slide content structure from the latest AI research, following the academic slide format."
-- "Transform this research into a slide deck blueprint. Ensure no m-dashes and add discussion questions."
+- "Transform this research into a slide deck blueprint. Ensure no m-dashes and add only high-value discussion prompts where they are genuinely warranted."
 
 ## Related Customizations
 

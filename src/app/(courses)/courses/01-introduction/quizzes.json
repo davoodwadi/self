@@ -1,0 +1,102 @@
+[
+  {
+    "slide_id": "the-strategic-case-for-ai",
+    "question_text": "From a strategic perspective, why does AI matter to a firm's executive leadership?",
+    "hint": "Consider how AI impacts decision-making and where it creates measurable business advantage.",
+    "correct_answer_citation": "Slide snippet: The Strategic Case for AI",
+    "options": [
+      {
+        "option_text": "It is primarily used to replace the need for human intuition in creative fields.",
+        "option_explanation": "The slide focuses on how AI changes decision-making, scales expertise, and redesigns workflows across the firm rather than focusing on creative intuition."
+      },
+      {
+        "option_text": "It creates value by changing decision-making, scaling expertise, and redesigning workflows.",
+        "option_explanation": "The slide states that AI matters because it changes how firms make decisions, scale expertise, and redesign workflows, leading to measurable business advantages."
+      },
+      {
+        "option_text": "It serves as a theoretical tool that does not yet provide measurable business advantages.",
+        "option_explanation": "The slide explicitly mentions that the executive focus is on where AI creates measurable business advantage, such as revenue growth and cost reduction."
+      },
+      {
+        "option_text": "It is used strictly for cost reduction and has no impact on revenue growth or learning cycles.",
+        "option_explanation": "According to the slide, AI's impact is broader, including revenue growth, risk control, and faster learning cycles in addition to cost reduction."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "what-ai-is-and-is-not",
+    "question_text": "According to the definition provided, how is the most business value derived from AI systems?",
+    "hint": "Look at the concluding point regarding the pairing of statistical systems with other elements.",
+    "correct_answer_citation": "Most business value comes from pairing statistical systems with clear process design and human judgment.",
+    "options": [
+      {
+        "option_text": "By replacing human judgment with autonomous wisdom.",
+        "option_explanation": "The slide explicitly states that AI is not autonomous wisdom."
+      },
+      {
+        "option_text": "By using AI as a substitute for managerial accountability.",
+        "option_explanation": "The slide notes that AI is not a substitute for managerial accountability."
+      },
+      {
+        "option_text": "By pairing statistical systems with clear process design and human judgment.",
+        "option_explanation": "This matches the slide's description of how business value is generated."
+      },
+      {
+        "option_text": "By treating AI as a magical solution for perception and prediction.",
+        "option_explanation": "The slide emphasizes that AI is not magic."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "three-business-tasks-ai-does-best",
+    "question_text": "Which business task involves AI assigning items to specific categories, such as sentiment or risk level?",
+    "hint": "This task is about sorting items into defined groups.",
+    "correct_answer_citation": "Three Business Tasks AI Does Best",
+    "options": [
+      {
+        "option_text": "Prediction",
+        "option_explanation": "Prediction is defined on the slide as estimating what is likely to happen next, such as churn or fraud."
+      },
+      {
+        "option_text": "Classification",
+        "option_explanation": "Classification is the task of assigning items to categories like sentiment, risk level, or document type."
+      },
+      {
+        "option_text": "Generation",
+        "option_explanation": "Generation involves creating content such as drafts, summaries, or designs."
+      },
+      {
+        "option_text": "Optimization",
+        "option_explanation": "Optimization is not listed as one of the three core tasks AI does best on this specific slide."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "an-executive-adoption-playbook",
+    "question_text": "According to the Executive Adoption Playbook, what is the recommended starting point for an AI initiative?",
+    "hint": "Consider whether the playbook suggests a broad ambition or a targeted focus.",
+    "correct_answer_citation": "An Executive Adoption Playbook: Start with a specific business problem, not with a vague ambition to 'do AI.'",
+    "options": [
+      {
+        "option_text": "Establishing a broad, high-level ambition to 'do AI' across the company.",
+        "option_explanation": "The playbook explicitly advises against starting with a vague ambition to 'do AI' and suggests focusing on a specific problem instead."
+      },
+      {
+        "option_text": "Scaling AI tools across all departments immediately to ensure rapid adoption.",
+        "option_explanation": "The playbook recommends piloting narrowly and learning quickly, scaling only after workflow adoption and governance are established."
+      },
+      {
+        "option_text": "Targeting a specific business problem with accessible data and measurable outcomes.",
+        "option_explanation": "This follows the playbook's advice to start with concrete problems, ensure data availability, and focus on results that can be measured in business terms."
+      },
+      {
+        "option_text": "Selecting experimental use cases where data accessibility is a secondary concern.",
+        "option_explanation": "The playbook states that use cases should be chosen based on accessible data, clear owners, and measurable outcomes."
+      }
+    ],
+    "correct_answer_index": 2
+  }
+]

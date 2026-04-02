@@ -60,13 +60,13 @@ async function generateAndInsertQuiz() {
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: model,
       contents: [
         {
           role: "user",
           parts: [
             {
-              text: "Generate a 5-question multiple choice quiz based strictly on the following content. Output the result in valid JSON.",
+              text: "Generate a one multiple choice question based strictly on the following content. Output the result in valid JSON.",
             },
             { text: contentStr },
           ],

@@ -24,20 +24,20 @@ Read the `content.md` file to extract:
 
 Map the Markdown elements to the corresponding React components from `src/app/(courses)/_components/SlideComponents.tsx`.
 
-| Markdown Element   | React Component      | Props/Variants                                    |
-| ------------------ | -------------------- | ------------------------------------------------- |
-| Main Title         | `<Title>`            | -                                                 |
-| Sub-Header/Context | `<Subtitle>`         | `variant="hero"` for title slide                  |
-| `## Slide Header`  | `<Heading>`          | Use `<Highlight>` for key words                   |
-| Category/Tag       | `<Tag>`              | Derived from slide context (e.g., "The Problem")  |
-| Bullet Points      | `<AnimatedList>`     | Contains `<ListItem>`                             |
-| Questions          | `<DiscussionCard>`   | `title="Group Discussion"`                        |
-| Quote/Emphasis     | `<Quote>`            | -                                                 |
-| Citation           | `<Citation>`         | `ids={[1, 2]}` linking to course citation sources |
-| Callout/Note       | `<Callout>`          | `variant="secondary"`                             |
-| Image/Visual       | `<MediaBlock>`       | `src`, `alt`, `caption`                           |
-| Percentage Breakdown | `<PieChart>`       | `data`, `title?`, `caption?`, `size?`             |
-| Split Layout       | `<Row>` & `<Column>` | `gap="large"`, `spanRatio="1/2"`                  |
+| Markdown Element     | React Component      | Props/Variants                                    |
+| -------------------- | -------------------- | ------------------------------------------------- |
+| Main Title           | `<Title>`            | -                                                 |
+| Sub-Header/Context   | `<Subtitle>`         | `variant="hero"` for title slide                  |
+| `## Slide Header`    | `<Heading>`          | Use `<Highlight>` for key words                   |
+| Category/Tag         | `<Tag>`              | Derived from slide context (e.g., "The Problem")  |
+| Bullet Points        | `<AnimatedList>`     | Contains `<ListItem>`                             |
+| Questions            | `<DiscussionCard>`   | `title="Group Discussion"`                        |
+| Quote/Emphasis       | `<Quote>`            | -                                                 |
+| Citation             | `<Citation>`         | `ids={[1, 2]}` linking to course citation sources |
+| Callout/Note         | `<Callout>`          | `variant="secondary"`                             |
+| Image/Visual         | `<MediaBlock>`       | `src`, `alt`, `caption`                           |
+| Percentage Breakdown | `<PieChart>`         | `data`, `title?`, `caption?`, `size?`             |
+| Split Layout         | `<Row>` & `<Column>` | `gap="large"`, `spanRatio="1/2"`                  |
 
 ### 3. Implementation Steps
 
@@ -69,6 +69,7 @@ Map the Markdown elements to the corresponding React components from `src/app/(c
       CitationProvider,
     } from "@/app/(courses)/_components/SlideComponents";
     import { BackgroundManager } from "@/app/(courses)/_components/Backgrounds";
+    import { createCourseQuizLookup } from "@/lib/course-quiz";
     import {
       getCitation,
       getCitations,
@@ -93,22 +94,32 @@ Map the Markdown elements to the corresponding React components from `src/app/(c
 5.  **Populate Slides**:
     - **Slide 1 (Title)**: Use `<Title>` and `<Subtitle variant="hero">`.
     - **Subsequent Slides**: Use a mixture of components available in `"@/app/(courses)/_components/SlideComponents"` to create engaging slides.
-    - **Quantitative Slides (Required Emphasis)**: For any slide that explains percentages, market share, lifecycle proportion, allocation, or category distribution, prefer `<PieChart>` as the primary visual instead of raw bullet lists.
-    - **PieChart Data Rule**: Pass a clean `data` array with meaningful labels and numeric values, and include a concise `caption` that states the core takeaway.
-    - **Citations**: Use `<Citation ids={[1, 2]} />` where numbers correspond to the numbered sources in content.md. The citation data is automatically resolved from the CitationProvider context.
-    - **Citation Example** in JSX:
-      ```tsx
-      <ListItem>
-        Training legacy models like GPT-3 emitted over 550 metric tons of CO2e{" "}
-        <Citation ids={[2, 3]} />.
-      </ListItem>
-      ```
+
+- **Creative Freedom Rule**: Be inventive with layout, hierarchy, composition, and component choice.
+- **Visible Copy Rule**: Do not introduce visible meta labels, editorial scaffolding, or pedagogical chrome.
+
+- **Quiz Wiring Rule**: If a slide is marked `[quiz]` in `content.md`, import `./quizzes.json`, build `const quizBySlideId = createCourseQuizLookup(quizzesData);`, and wire the corresponding `<Slide>` with `quizData={quizBySlideId["..."]}`.
+- **Deterministic Helper Rule**: Treat `src/lib/course-quiz.ts` as the canonical helper for quiz wiring. When you need exact emitted JSX, follow `buildQuizLookupDeclaration`, `buildQuizDataProp`, and `createQuizWiringPlan` instead of inventing an inline pattern.
+- **Selective Wiring**: Only slides marked `[quiz]` should receive `quizData` lookups. Non-quiz slides should not be wired to `quizzes.json`.
+  - **Quantitative Slides (Required Emphasis)**: For any slide that explains percentages, market share, lifecycle proportion, allocation, or category distribution, prefer `<PieChart>` as the primary visual instead of raw bullet lists.
+  - **PieChart Data Rule**: Pass a clean `data` array with meaningful labels and numeric values, and include a concise `caption` that states the core takeaway.
+  - **Citations**: Use `<Citation ids={[1, 2]} />` where numbers correspond to the numbered sources in content.md. The citation data is automatically resolved from the CitationProvider context.
+  - **Citation Example** in JSX:
+    ```tsx
+    <ListItem>
+      Training legacy models like GPT-3 emitted over 550 metric tons of CO2e{" "}
+      <Citation ids={[2, 3]} />.
+    </ListItem>
+    ```
+
 6.  **Apply Highlights**: Wrap 1-2 key words in each `<Heading>` with `<Highlight>`.
 
 ## Quality Criteria
 
 - **Cinematic Feel**: Ensure ample white space and weighted layout.
 - **Interactive**: All slides must be within a single `SlideDeck` for scroll-triggered animations to work.
+- **Quiz Integration**: Slides marked `[quiz]` in `content.md` should automatically render pre-slide quizzes from `quizzes.json` using the shared lookup helper without a separate manual wiring step.
+- **Source-Faithful Visible Copy**: Keep visible text grounded in `content.md`; creativity should come through presentation and composition, not invented meta labels or instructional chrome.
 - **PieChart Usage**: All suitable part-to-whole or percentage slides should use `<PieChart>` with clear labels, valid totals, and a takeaway caption.
 - **Code Cleanliness**: Keep `page.tsx` readable through clear sectioning, consistent component usage, and concise JSX blocks.
 

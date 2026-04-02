@@ -2,24 +2,14 @@
 
 import { useState } from "react";
 import { CheckCircle2, XCircle, Lightbulb, ExternalLink } from "lucide-react";
+import type { CourseQuiz } from "@/lib/course-quiz";
 
-type Option = {
-  option_text: string;
-  option_explanation: string | null;
-};
-
-type QuizData = {
-  question_text: string;
-  hint: string | null;
-  correct_answer_citation: string | null;
-  options: Option[];
-  correct_answer_index: number;
-};
+const optionLetters = ["A", "B", "C", "D", "E", "F"];
 
 export default function InlineQuiz({
   quizData,
 }: {
-  quizData: QuizData | undefined;
+  quizData: CourseQuiz | undefined;
 }) {
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -32,166 +22,187 @@ export default function InlineQuiz({
   };
 
   if (!quizData) {
-    return (
-      // don't show errors - return an empty tag
-      <></>
-    );
+    return <></>;
   }
 
   const isCorrect = selectedOption === quizData.correct_answer_index;
 
   return (
-    <div className="w-full max-w-4xl mx-auto my-8 p-8 md:p-10 bg-white/20 dark:bg-[#1a1a1a]/70 backdrop-blur-xl border border-[var(--charcoal)]/10 dark:border-white/10 rounded-2xl shadow-xl transition-all">
-      <div className="mb-8">
-        <h3 className="text-sm font-bold tracking-[0.2em] text-[var(--crimson)] uppercase mb-3 flex items-center gap-2">
-          <Lightbulb className="w-4 h-4" />
-          Knowledge Check
-        </h3>
-        <p className="text-2xl md:text-3xl font-serif text-[var(--charcoal)] leading-snug">
-          {quizData.question_text}
-        </p>
-      </div>
+    <div className="w-full max-w-4xl mx-auto my-8 relative">
+      {/* Champagne Gold top accent bar */}
+      <div className="h-1 bg-[var(--champagne)]" />
 
-      <div className="space-y-4 mb-8">
-        {quizData.options.map((option, index) => {
-          const isSelected = selectedOption === index;
-          const isActuallyCorrect = index === quizData.correct_answer_index;
-
-          let optionContainerStyle =
-            "border-[var(--charcoal)]/20 hover:border-[var(--crimson)]/50 hover:bg-[var(--crimson)]/5 dark:border-white/20";
-          let dotStyle = "border-[var(--charcoal)]/30 dark:border-white/30";
-          let textStyle = "text-[var(--charcoal-light)]";
-
-          if (hasSubmitted) {
-            if (isActuallyCorrect) {
-              // The right answer
-              optionContainerStyle =
-                "border-green-900 bg-green-50/50 dark:bg-green-900/20 shadow-[0_0_15px_rgba(34,197,94,0.15)]";
-              textStyle = "text-green-900 dark:text-green-200 font-medium";
-            } else if (isSelected && !isActuallyCorrect) {
-              // The wrong answer chosen by user
-              optionContainerStyle =
-                "border-red-900 bg-red-50/50 dark:bg-red-900/20 shadow-[0_0_15px_rgba(239,68,68,0.2)]";
-              textStyle = "text-red-900 dark:text-red-300 font-bold";
-            } else {
-              // Unchosen wrong answers
-              optionContainerStyle =
-                "border-[var(--charcoal)]/10 dark:border-white/5 opacity-40 grayscale";
-            }
-          } else if (isSelected) {
-            // Selected before submission
-            optionContainerStyle =
-              "border-[var(--crimson)] bg-[var(--crimson)]/5 shadow-[0_0_10px_rgba(153,0,0,0.1)]";
-            dotStyle = "border-[var(--crimson)] bg-[var(--crimson)]";
-            textStyle = "text-[var(--charcoal)] font-medium";
-          }
-
-          return (
-            <div key={index} className="relative">
-              <button
-                disabled={hasSubmitted}
-                onClick={() => setSelectedOption(index)}
-                className={`w-full text-left p-5 rounded-xl border-2 transition-all duration-300 ${optionContainerStyle} ${
-                  !hasSubmitted
-                    ? "cursor-pointer transform hover:-translate-y-0.5"
-                    : "cursor-default"
-                }`}
-              >
-                <div className="flex items-start md:items-center">
-                  {/* Radio Dot or Icon */}
-                  <div className="flex-shrink-0 mr-4 mt-1 md:mt-0">
-                    {hasSubmitted && isActuallyCorrect ? (
-                      <CheckCircle2 className="w-6 h-6 text-green-900 dark:text-green-400" />
-                    ) : hasSubmitted && isSelected && !isActuallyCorrect ? (
-                      <XCircle className="w-6 h-6 text-red-900 dark:text-red-500" />
-                    ) : (
-                      <div
-                        className={`w-5 h-5 rounded-full border-2 transition-all duration-300 ${dotStyle}`}
-                      />
-                    )}
-                  </div>
-
-                  {/* Option Text */}
-                  <span
-                    className={`text-lg transition-colors duration-300 ${textStyle}`}
-                  >
-                    {option.option_text}
-                  </span>
-                </div>
-              </button>
-
-              {/* Show explanation only after submission, specifically for the selected answer OR the correct answer */}
-              {hasSubmitted &&
-                (isSelected || isActuallyCorrect) &&
-                option.option_explanation && (
-                  <div
-                    className={`mt-3 ml-6 md:ml-10 p-5 text-base rounded-xl border-l-4 shadow-md ${
-                      isActuallyCorrect
-                        ? "bg-green-100/30 dark:bg-green-900/40 border-green-800/40 text-green-900 dark:text-green-100"
-                        : "bg-red-100/30 dark:bg-red-900/40 border-red-800/40 text-red-950 dark:text-red-100"
-                    } animate-in fade-in slide-in-from-top-2 duration-500`}
-                  >
-                    <div className="flex items-center gap-2 mb-2">
-                      {isActuallyCorrect ? (
-                        <CheckCircle2 className="w-5 h-5 text-green-900 dark:text-green-400" />
-                      ) : (
-                        <XCircle className="w-5 h-5 text-red-900 dark:text-red-400" />
-                      )}
-                      <strong className="text-sm uppercase tracking-widest opacity-90">
-                        {isActuallyCorrect
-                          ? "Correct Answer"
-                          : "Your Answer (Incorrect)"}
-                      </strong>
-                    </div>
-                    <div className="text-[1.05rem] leading-relaxed opacity-90 pl-7">
-                      {option.option_explanation}
-                    </div>
-                  </div>
-                )}
+      <div className=" shadow-[0_10px_30px_rgba(0,0,0,0.05)] px-8 py-10 md:px-12 md:py-14">
+        {/* Header */}
+        <div className="mb-10">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-8 h-8 flex items-center justify-center bg-[var(--champagne)]/10 rounded-sm">
+              <Lightbulb className="w-4 h-4 text-[var(--champagne)]" />
             </div>
-          );
-        })}
-      </div>
+            <span className="text-xs font-bold tracking-[0.25em] text-[var(--champagne)] uppercase font-sans">
+              Knowledge Check
+            </span>
+          </div>
+          <p className="text-2xl md:text-3xl font-serif text-[var(--charcoal)] leading-snug tracking-tight">
+            {quizData.question_text}
+          </p>
+          {/* Champagne gold hairline divider */}
+          <div className="mt-6 h-px w-16 bg-[var(--champagne)]" />
+        </div>
 
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-10">
-        <button
-          onClick={handleSubmit}
-          disabled={selectedOption === null || hasSubmitted}
-          className="w-full sm:w-auto px-8 py-3 bg-[var(--charcoal)] hover:bg-[var(--crimson)] text-[var(--surface)] font-bold tracking-wider uppercase text-sm rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-        >
-          {hasSubmitted ? "Answer Submitted" : "Submit Answer"}
-        </button>
+        {/* Options */}
+        <div className="space-y-3 mb-10">
+          {quizData.options.map((option, index) => {
+            const isSelected = selectedOption === index;
+            const isActuallyCorrect = index === quizData.correct_answer_index;
 
-        {quizData.hint && !hasSubmitted && (
+            let containerStyle =
+              "border-[var(--charcoal)]/10 hover:border-[var(--champagne)]/40 hover:bg-[var(--champagne)]/[0.02]";
+            let letterBg =
+              "bg-[var(--charcoal)]/5 text-[var(--charcoal-light)]";
+            let textStyle = "text-[var(--charcoal-light)]";
+
+            if (hasSubmitted) {
+              if (isActuallyCorrect) {
+                containerStyle = "border-[#2d5016]/40 bg-[#2d5016]/[0.04]";
+                letterBg = "bg-[#2d5016]/10 text-[#2d5016]";
+                textStyle = "text-[#2d5016] font-medium";
+              } else if (isSelected && !isActuallyCorrect) {
+                containerStyle =
+                  "border-[var(--crimson)]/40 bg-[var(--crimson)]/[0.04]";
+                letterBg = "bg-[var(--crimson)]/10 text-[var(--crimson)]";
+                textStyle = "text-[var(--crimson)]";
+              } else {
+                containerStyle = "border-[var(--charcoal)]/5 opacity-35";
+                letterBg =
+                  "bg-[var(--charcoal)]/3 text-[var(--charcoal-light)]/50";
+              }
+            } else if (isSelected) {
+              containerStyle =
+                "border-[var(--champagne)] bg-[var(--champagne)]/[0.03]";
+              letterBg = "bg-[var(--champagne)] text-[var(--surface)]";
+              textStyle = "text-[var(--charcoal)] font-medium";
+            }
+
+            return (
+              <div key={index}>
+                <button
+                  disabled={hasSubmitted}
+                  onClick={() => setSelectedOption(index)}
+                  className={`w-full text-left px-6 py-5 border transition-colors duration-300 ${containerStyle} ${
+                    !hasSubmitted ? "cursor-pointer" : "cursor-default"
+                  }`}
+                >
+                  <div className="flex items-start md:items-center gap-5">
+                    {/* Letter indicator or result icon */}
+                    <div className="flex-shrink-0">
+                      {hasSubmitted && isActuallyCorrect ? (
+                        <div className="w-9 h-9 flex items-center justify-center bg-[#2d5016]/10 rounded-sm">
+                          <CheckCircle2 className="w-5 h-5 text-[#2d5016]" />
+                        </div>
+                      ) : hasSubmitted && isSelected && !isActuallyCorrect ? (
+                        <div className="w-9 h-9 flex items-center justify-center bg-[var(--crimson)]/10 rounded-sm">
+                          <XCircle className="w-5 h-5 text-[var(--crimson)]" />
+                        </div>
+                      ) : (
+                        <div
+                          className={`w-9 h-9 flex items-center justify-center rounded-sm text-sm font-bold tracking-wide font-sans transition-colors duration-300 ${letterBg}`}
+                        >
+                          {optionLetters[index]}
+                        </div>
+                      )}
+                    </div>
+
+                    <span
+                      className={`text-lg leading-relaxed font-sans transition-colors duration-300 ${textStyle}`}
+                    >
+                      {option.option_text}
+                    </span>
+                  </div>
+                </button>
+
+                {/* Explanation panel */}
+                {hasSubmitted &&
+                  (isSelected || isActuallyCorrect) &&
+                  option.option_explanation && (
+                    <div
+                      className={`mx-6 mt-0 px-6 py-5 border-l-2 ${
+                        isActuallyCorrect
+                          ? "border-l-[#2d5016]/30 bg-[#2d5016]/[0.03]"
+                          : "border-l-[var(--crimson)]/30 bg-[var(--crimson)]/[0.03]"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        {isActuallyCorrect ? (
+                          <CheckCircle2 className="w-4 h-4 text-[#2d5016]" />
+                        ) : (
+                          <XCircle className="w-4 h-4 text-[var(--crimson)]" />
+                        )}
+                        <span
+                          className={`text-xs font-bold uppercase tracking-[0.2em] font-sans ${
+                            isActuallyCorrect
+                              ? "text-[#2d5016]"
+                              : "text-[var(--crimson)]"
+                          }`}
+                        >
+                          {isActuallyCorrect ? "Correct" : "Incorrect"}
+                        </span>
+                      </div>
+                      <p className="text-base leading-relaxed text-[var(--charcoal-light)] font-sans pl-6">
+                        {option.option_explanation}
+                      </p>
+                    </div>
+                  )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Actions */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[var(--charcoal)]/8">
           <button
-            onClick={() => setShowHint(!showHint)}
-            className="text-sm font-medium text-[var(--charcoal-light)] hover:text-[var(--crimson)] underline underline-offset-4 transition-colors"
+            onClick={handleSubmit}
+            disabled={selectedOption === null || hasSubmitted}
+            className="w-full sm:w-auto px-10 py-3.5 bg-[var(--charcoal)] hover:bg-[var(--champagne)] text-[var(--surface)] font-bold tracking-[0.15em] uppercase text-xs font-sans disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-300"
           >
-            {showHint ? "Hide Hint" : "Stuck? View Hint"}
+            {hasSubmitted ? "Submitted" : "Submit Answer"}
           </button>
+
+          {quizData.hint && !hasSubmitted && (
+            <button
+              onClick={() => setShowHint(!showHint)}
+              className="text-xs font-semibold font-sans text-[var(--charcoal-light)]/60 hover:text-[var(--champagne)] uppercase tracking-[0.15em] transition-colors duration-300"
+            >
+              {showHint ? "Hide Hint" : "View Hint"}
+            </button>
+          )}
+        </div>
+
+        {/* Hint */}
+        {showHint && !hasSubmitted && quizData.hint && (
+          <div className="mt-6 px-6 py-5 border-l-2 border-l-[var(--champagne)]/40 bg-[var(--champagne)]/[0.04]">
+            <span className="text-xs font-bold text-[var(--champagne)] uppercase tracking-[0.2em] font-sans block mb-2">
+              Hint
+            </span>
+            <p className="text-lg font-light italic text-[var(--charcoal-light)] font-serif leading-relaxed">
+              {quizData.hint}
+            </p>
+          </div>
+        )}
+
+        {/* Citation */}
+        {hasSubmitted && isCorrect && quizData.correct_answer_citation && (
+          <div className="mt-8 pt-5 border-t border-[var(--charcoal)]/8 flex items-start gap-3">
+            <ExternalLink className="w-4 h-4 mt-0.5 flex-shrink-0 text-[var(--charcoal-light)]/40" />
+            <span className="text-sm font-sans text-[var(--charcoal-light)]/70">
+              <strong className="text-[var(--charcoal)] font-semibold mr-1.5">
+                Source:
+              </strong>
+              {quizData.correct_answer_citation}
+            </span>
+          </div>
         )}
       </div>
-
-      {showHint && !hasSubmitted && quizData.hint && (
-        <div className="mt-6 p-5 bg-[var(--gold)]/10 border border-[var(--gold)]/30 rounded-xl text-[var(--charcoal)] animate-in fade-in slide-in-from-bottom-2">
-          <strong className="text-[var(--gold)] uppercase text-xs tracking-wider block mb-1">
-            Hint
-          </strong>
-          <span className="text-lg italic font-light">{quizData.hint}</span>
-        </div>
-      )}
-
-      {hasSubmitted && isCorrect && quizData.correct_answer_citation && (
-        <div className="mt-8 pt-5 border-t border-[var(--charcoal)]/10 flex items-start gap-2 text-sm text-[var(--charcoal-light)]/80 animate-in fade-in">
-          <ExternalLink className="w-4 h-4 mt-0.5 flex-shrink-0" />
-          <span>
-            <strong className="text-[var(--charcoal)] font-semibold mr-2">
-              Learn more:
-            </strong>
-            {quizData.correct_answer_citation}
-          </span>
-        </div>
-      )}
     </div>
   );
 }

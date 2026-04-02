@@ -1,0 +1,177 @@
+[
+  {
+    "slide_id": "why-marketing-became-a-machine-learning-domain",
+    "question_text": "What characteristics of modern marketing make it particularly suitable for machine learning applications?",
+    "hint": "Look for descriptions of the data generated and the nature of marketing allocation decisions.",
+    "correct_answer_citation": "Modern marketing generates granular data from search, commerce, media, CRM, service, and product usage. Many marketing choices are repeated allocation decisions, making them suitable for prediction, ranking, optimization, and experimentation.",
+    "options": [
+      {
+        "option_text": "The focus on one-off, non-repetitive creative decisions that require human intuition only.",
+        "option_explanation": "The slide emphasizes that marketing involves repeated allocation decisions that are suitable for prediction and optimization, rather than just one-off tasks."
+      },
+      {
+        "option_text": "The generation of granular data across various channels and the frequency of repeated allocation decisions.",
+        "option_explanation": "The slide explicitly states that granular data from multiple sources and the repetitive nature of allocation decisions make marketing a machine learning domain."
+      },
+      {
+        "option_text": "A decrease in data sources, which simplifies the application of machine-assisted algorithms.",
+        "option_explanation": "The slide notes that marketing generates granular data from many sources, including search, commerce, media, CRM, service, and product usage, suggesting an increase in data, not a decrease."
+      },
+      {
+        "option_text": "The ability of AI to independently determine marketing strategy without any budget-related constraints.",
+        "option_explanation": "The slide notes that the strategic question is determining which budget decisions should be machine-assisted, implying that AI is used to assist with these constraints rather than ignore them."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "segmentation-beyond-static-demographics",
+    "question_text": "According to the principles of AI-based segmentation, what characteristics define a 'useful' customer segment for management to act upon?",
+    "hint": "Consider the balance between the number of segments and the ability to explain and deploy them effectively.",
+    "correct_answer_citation": "Slide: Segmentation Beyond Static Demographics",
+    "options": [
+      {
+        "option_text": "Segments must be as granular as possible to capture every individual variation.",
+        "option_explanation": "The slide states that more segments are not always better, as excessive granularity can increase complexity without improving decisions."
+      },
+      {
+        "option_text": "Segments should rely exclusively on static demographics like age and income.",
+        "option_explanation": "AI-based segmentation specifically moves beyond static demographics to include factors like behavior, value, and needs."
+      },
+      {
+        "option_text": "Segments should be stable, distinct, and explainable for deployment.",
+        "option_explanation": "The slide explicitly identifies these three criteria as necessary for a segment to be actionable and useful for managers."
+      },
+      {
+        "option_text": "Segments should be highly volatile to reflect immediate changes in customer behavior.",
+        "option_explanation": "The slide mentions that useful segments must be stable enough to act on."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "recommendation-systems-in-commerce",
+    "question_text": "When implementing a recommendation system in a commercial setting, what is a key strategic decision leaders must make regarding its optimization?",
+    "hint": "Consider the different business outcomes and metrics mentioned in the slide that a system could prioritize.",
+    "correct_answer_citation": "In practice, leaders must decide whether the system should maximize immediate conversion, long-term value, basket size, or discovery.",
+    "options": [
+      {
+        "option_text": "Whether the system should prioritize outcomes like immediate conversion, long-term value, or discovery.",
+        "option_explanation": "The slide explicitly states that leaders must decide between these specific goals when determining how the system should function in practice."
+      },
+      {
+        "option_text": "How to remove business constraints like inventory and margin from the ranking process.",
+        "option_explanation": "The slide mentions that systems rank items *under* business constraints such as inventory and margin, not by removing them."
+      },
+      {
+        "option_text": "How to ensure the system exclusively promotes the most familiar items to all users.",
+        "option_explanation": "Over-promoting familiar items is listed as a potential pitfall of a poorly designed recommender, rather than a desired strategic goal."
+      },
+      {
+        "option_text": "Whether to automate the strategic assortment to eliminate the need for human leadership.",
+        "option_explanation": "The slide indicates that human leaders are necessary to make key decisions about what the system maximizes, rather than being eliminated by it."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "experimentation-and-incrementality",
+    "question_text": "What is the primary reason organizations use experiments to measure incrementality in their campaigns?",
+    "hint": "Consider the difference between causing new behavior and simply fulfilling demand that already exists.",
+    "correct_answer_citation": "Experiments remain the cleanest way to estimate whether a campaign, offer, or message caused additional behavior rather than simply capturing existing demand.",
+    "options": [
+      {
+        "option_text": "To maximize the volume of messages delivered to a target audience.",
+        "option_explanation": "The slide suggests that focusing solely on optimized delivery can lead organizations to mistake volume for genuine value creation."
+      },
+      {
+        "option_text": "To determine if a campaign caused new behavior or just captured existing demand.",
+        "option_explanation": "This is the core definition of incrementality provided; experiments help clarify if the campaign actually drove additional behavior."
+      },
+      {
+        "option_text": "To replace human decision-making with AI-driven testing protocols.",
+        "option_explanation": "The slide mentions that AI helps identify who to test and when to act, but it does not state that experiments are used to replace human decision-making."
+      },
+      {
+        "option_text": "To ensure that every customer receives the exact same marketing treatment.",
+        "option_explanation": "Experiments actually involve comparing different treatments to see which ones are most effective, rather than giving everyone the same message."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "retention-churn-and-customer-lifetime-value",
+    "question_text": "According to the principles of retention and Customer Lifetime Value (CLV), how should these metrics be primarily utilized within an organization?",
+    "hint": "Consider the difference between a metric used for reporting versus one used for decision-making and investment.",
+    "correct_answer_citation": "Retention models help identify who is at risk, who is worth saving, and which intervention is economically justified. Customer lifetime value is most useful when it informs resource allocation, not when it becomes a decorative dashboard metric.",
+    "options": [
+      {
+        "option_text": "As decorative dashboard metrics to report historical performance to stakeholders.",
+        "option_explanation": "The slide explicitly states that CLV is most useful when it informs resource allocation, rather than serving as a decorative dashboard metric."
+      },
+      {
+        "option_text": "To identify at-risk customers and determine which interventions are economically justified.",
+        "option_explanation": "This is correct. The slide notes that retention models help identify who is at risk and which saves are worth the investment."
+      },
+      {
+        "option_text": "To treat predicted customer value as destiny to avoid investing in low-value segments.",
+        "option_explanation": "The slide identifies treating predicted value as 'destiny' as a managerial danger that leads to underinvesting in customers whose potential can still be shaped."
+      },
+      {
+        "option_text": "To eliminate the need for manual intervention in customer relationship management.",
+        "option_explanation": "The slide emphasizes using models to identify which interventions are justified, rather than suggesting the elimination of interventions entirely."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "privacy-consent-and-trust-architecture",
+    "question_text": "In the design of Marketing AI systems, how should leadership approach privacy and governance?",
+    "hint": "Consider whether governance should happen at the beginning or the end of the design process.",
+    "correct_answer_citation": "Marketing AI depends on customer data, identity linkage, and behavioral inference, making governance a core design requirement rather than a legal afterthought.",
+    "options": [
+      {
+        "option_text": "As a legal afterthought once the technical model is complete.",
+        "option_explanation": "The slide explicitly states that governance is a core design requirement rather than a legal afterthought."
+      },
+      {
+        "option_text": "As a core design requirement integrated into the trust architecture.",
+        "option_explanation": "The slide highlights that because AI depends on sensitive customer data, governance must be a foundational design requirement."
+      },
+      {
+        "option_text": "As an automated process that requires no input from leadership.",
+        "option_explanation": "The slide states that leaders must make strategic decisions regarding data appropriateness, consent, and reputational risk."
+      },
+      {
+        "option_text": "As a secondary concern to maximizing data collection volumes.",
+        "option_explanation": "The slide advocates for data minimization and privacy-preserving measurement as increasingly strategic capabilities."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "marketing-operating-model-for-ai",
+    "question_text": "In the context of the Marketing Operating Model for AI, what is identified as a key design choice for high-performing firms?",
+    "hint": "Consider the balance between governance requirements and the need for speed and expertise.",
+    "correct_answer_citation": "Marketing Operating Model for AI slide",
+    "options": [
+      {
+        "option_text": "Determining where decisions should be centralized for governance versus decentralized for speed.",
+        "option_explanation": "The slide explicitly states that the key design choice involves balancing centralization for governance and decentralization for speed and domain expertise."
+      },
+      {
+        "option_text": "Focusing primarily on acquiring the most advanced AI software and tools.",
+        "option_explanation": "The slide emphasizes that AI maturity is an operating model question, not only a tooling question."
+      },
+      {
+        "option_text": "Isolating the data engineering and analytics teams from marketing to ensure technical focus.",
+        "option_explanation": "The slide notes that high-performing firms actually pair these diverse teams together around shared customer outcomes."
+      },
+      {
+        "option_text": "Decentralizing all governance decisions to individual product teams to maximize speed.",
+        "option_explanation": "The slide suggests a balance is needed, where certain decisions are centralized for governance purposes."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "question_text": "According to the presentation, what does the term \"Deep\" specifically refer to in the context of Deep Learning?",
+  "hint": "Refer to the slide titled \"The Concept: What Makes it 'Deep'?\" which explains the architecture of the neural network.",
+  "correct_answer_citation": "Slide: The Concept: What Makes it \"Deep\"?",
+  "options": [
+    {
+      "option_text": "The massive amount of computational power required for training.",
+      "option_explanation": "While the presentation mentions that training requires massive computational power, this is not the definition of the term \"Deep\"."
+    },
+    {
+      "option_text": "The number of hidden layers in the neural network.",
+      "option_explanation": "The text explicitly states that \"Deep\" simply refers to the number of hidden layers in the neural network, which allow it to learn abstract and complex features."
+    },
+    {
+      "option_text": "The depth of human cognition used to design the algorithms.",
+      "option_explanation": "Although the concept is inspired by the human brain, \"Deep\" is a structural description of the network layers, not a measure of human cognitive design."
+    },
+    {
+      "option_text": "The percentage of unstructured data being processed.",
+      "option_explanation": "The presentation notes that over 80 percent of enterprise data is unstructured, but this is a description of the problem, not the definition of \"Deep\"."
+    }
+  ],
+  "correct_answer_index": 1
+}

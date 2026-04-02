@@ -11,6 +11,8 @@ if (typeof window !== "undefined") {
 
 // Map background strings from frontmatter to actual React components
 const backgrounds: Record<string, React.FC> = {
+  introduction: IntroductionBackground,
+  marketing: IntroductionBackground,
   edii: EDIITreeBackground,
   agentic: AgenticAITreeBackground,
   sustainability: SustainabilityBackground,
@@ -40,6 +42,327 @@ export function BackgroundManager({
 }
 
 // === Specific Background Implementations below === //
+
+function createSoftParticleTexture() {
+  const canvas = document.createElement("canvas");
+  canvas.width = 160;
+  canvas.height = 160;
+
+  const context = canvas.getContext("2d");
+  if (!context) {
+    return null;
+  }
+
+  const gradient = context.createRadialGradient(80, 80, 0, 80, 80, 80);
+  gradient.addColorStop(0, "rgba(255, 255, 255, 0.92)");
+  gradient.addColorStop(0.35, "rgba(255, 255, 255, 0.44)");
+  gradient.addColorStop(0.7, "rgba(255, 255, 255, 0.08)");
+  gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+
+  return texture;
+}
+
+function IntroductionBackground({ onReady }: { onReady?: () => void }) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      58,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000,
+    );
+    camera.position.z = window.innerWidth < 900 ? 48 : 44;
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvasRef.current,
+      alpha: true,
+      antialias: true,
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+    const particleTexture = createSoftParticleTexture();
+    if (!particleTexture) {
+      if (onReady) onReady();
+      return;
+    }
+
+    const fieldGroup = new THREE.Group();
+    scene.add(fieldGroup);
+
+    const compactView = window.innerWidth < 900;
+
+    // Keep the center comparatively open so title and slide copy stay readable.
+    const clusterAnchors = [
+      new THREE.Vector3(-18, 10, -12),
+      new THREE.Vector3(0, -12, -8),
+      new THREE.Vector3(18, 7, -10),
+    ];
+
+    const pickClusterAnchor = () => {
+      const roll = Math.random();
+      if (roll < 0.34) return clusterAnchors[0];
+      if (roll < 0.67) return clusterAnchors[1];
+      return clusterAnchors[2];
+    };
+
+    const createParticleLayer = ({
+      count,
+      spreadX,
+      spreadY,
+      spreadZ,
+      color,
+      size,
+      opacity,
+    }: {
+      count: number;
+      spreadX: number;
+      spreadY: number;
+      spreadZ: number;
+      color: number;
+      size: number;
+      opacity: number;
+    }) => {
+      const geometry = new THREE.BufferGeometry();
+      const positions = new Float32Array(count * 3);
+
+      for (let index = 0; index < count; index += 1) {
+        const anchor = pickClusterAnchor();
+        const offset = index * 3;
+        positions[offset] =
+          anchor.x + (Math.random() + Math.random() - 1) * spreadX;
+        positions[offset + 1] =
+          anchor.y + (Math.random() + Math.random() - 1) * spreadY;
+        positions[offset + 2] =
+          anchor.z + (Math.random() + Math.random() - 1) * spreadZ;
+      }
+
+      geometry.setAttribute(
+        "position",
+        new THREE.BufferAttribute(positions, 3),
+      );
+
+      const material = new THREE.PointsMaterial({
+        map: particleTexture,
+        color,
+        size,
+        transparent: true,
+        opacity,
+        depthWrite: false,
+        depthTest: false,
+        sizeAttenuation: true,
+      });
+
+      const points = new THREE.Points(geometry, material);
+      fieldGroup.add(points);
+
+      return { geometry, material, points };
+    };
+
+    const particleLayers = [
+      createParticleLayer({
+        count: compactView ? 44 : 58,
+        spreadX: 16,
+        spreadY: 12,
+        spreadZ: 11,
+        color: 0xe5d7c8,
+        size: compactView ? 2.35 : 2.85,
+        opacity: 0.18,
+      }),
+      createParticleLayer({
+        count: compactView ? 52 : 72,
+        spreadX: 13,
+        spreadY: 8,
+        spreadZ: 13,
+        color: 0x8c7349,
+        size: compactView ? 1.2 : 1.45,
+        opacity: 0.12,
+      }),
+      createParticleLayer({
+        count: compactView ? 22 : 30,
+        spreadX: 9,
+        spreadY: 6,
+        spreadZ: 14,
+        color: 0x8b0000,
+        size: compactView ? 0.64 : 0.82,
+        opacity: 0.08,
+      }),
+    ];
+
+    // Large soft sprites create the paper-like atmospheric blooms.
+    const bloomDescriptors = [
+      {
+        color: 0xf0e3d6,
+        opacity: 0.22,
+        scale: compactView ? 28 : 36,
+        position: new THREE.Vector3(-21, 12, -22),
+        driftX: 1.6,
+        driftY: 0.8,
+        speed: 0.18,
+        phase: 0.2,
+      },
+      {
+        color: 0xd5c3aa,
+        opacity: 0.18,
+        scale: compactView ? 24 : 32,
+        position: new THREE.Vector3(0, -14, -24),
+        driftX: 1.2,
+        driftY: 1.0,
+        speed: 0.22,
+        phase: 1.4,
+      },
+      {
+        color: 0xcfaa86,
+        opacity: 0.13,
+        scale: compactView ? 22 : 28,
+        position: new THREE.Vector3(20, 8, -20),
+        driftX: 1.4,
+        driftY: 0.7,
+        speed: 0.16,
+        phase: 2.1,
+      },
+      {
+        color: 0x8b0000,
+        opacity: 0.06,
+        scale: compactView ? 18 : 24,
+        position: new THREE.Vector3(14, -2, -18),
+        driftX: 1.1,
+        driftY: 0.65,
+        speed: 0.12,
+        phase: 2.8,
+      },
+    ];
+
+    const blooms = bloomDescriptors.map((descriptor) => {
+      const material = new THREE.SpriteMaterial({
+        map: particleTexture,
+        color: descriptor.color,
+        transparent: true,
+        opacity: descriptor.opacity,
+        depthWrite: false,
+        depthTest: false,
+      });
+
+      const sprite = new THREE.Sprite(material);
+      sprite.position.copy(descriptor.position);
+      sprite.scale.set(descriptor.scale, descriptor.scale, 1);
+      fieldGroup.add(sprite);
+
+      return {
+        ...descriptor,
+        material,
+        sprite,
+        basePosition: descriptor.position.clone(),
+      };
+    });
+
+    const clock = new THREE.Clock();
+    const motionState = { scroll: 0 };
+    let animationFrameId = 0;
+
+    const scrollTrigger = ScrollTrigger.create({
+      start: "top top",
+      end: "bottom bottom",
+      onUpdate: (self) => {
+        gsap.to(motionState, {
+          scroll: self.progress,
+          duration: 0.8,
+          ease: "power2.out",
+          overwrite: true,
+        });
+      },
+    });
+
+    const animate = () => {
+      animationFrameId = requestAnimationFrame(animate);
+
+      const elapsed = clock.getElapsedTime();
+
+      fieldGroup.rotation.y =
+        -0.12 + Math.sin(elapsed * 0.12) * 0.03 + motionState.scroll * 0.2;
+      fieldGroup.rotation.z =
+        -0.03 + Math.cos(elapsed * 0.16) * 0.025 + motionState.scroll * 0.08;
+      fieldGroup.position.y =
+        Math.sin(elapsed * 0.22) * 1.1 - motionState.scroll * 1.8;
+
+      particleLayers[0].points.rotation.y = elapsed * 0.02;
+      particleLayers[1].points.rotation.y = -elapsed * 0.025;
+      particleLayers[2].points.rotation.y = elapsed * 0.03;
+      particleLayers[1].points.rotation.z = Math.sin(elapsed * 0.18) * 0.02;
+      particleLayers[2].points.rotation.x = Math.cos(elapsed * 0.2) * 0.015;
+
+      blooms.forEach((bloom) => {
+        bloom.sprite.position.x =
+          bloom.basePosition.x +
+          Math.sin(elapsed * bloom.speed + bloom.phase) * bloom.driftX;
+        bloom.sprite.position.y =
+          bloom.basePosition.y +
+          Math.cos(elapsed * (bloom.speed * 0.85) + bloom.phase) * bloom.driftY;
+      });
+
+      const targetCameraZ = compactView
+        ? 48 - motionState.scroll * 1.4
+        : 44 - motionState.scroll * 1.8;
+      const targetCameraX = Math.sin(elapsed * 0.18) * 1.6;
+      const targetCameraY = Math.cos(elapsed * 0.14) * 0.8;
+
+      camera.position.x += (targetCameraX - camera.position.x) * 0.03;
+      camera.position.y += (targetCameraY - camera.position.y) * 0.03;
+      camera.position.z += (targetCameraZ - camera.position.z) * 0.04;
+      camera.lookAt(scene.position);
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.position.z = window.innerWidth < 900 ? 48 : 44;
+    };
+
+    window.addEventListener("resize", handleResize);
+    const readyTimer = window.setTimeout(() => {
+      if (onReady) onReady();
+    }, 50);
+
+    return () => {
+      window.clearTimeout(readyTimer);
+      cancelAnimationFrame(animationFrameId);
+      scrollTrigger.kill();
+      window.removeEventListener("resize", handleResize);
+      renderer.dispose();
+      particleTexture.dispose();
+      particleLayers.forEach((layer) => {
+        layer.geometry.dispose();
+        layer.material.dispose();
+      });
+      blooms.forEach((bloom) => {
+        bloom.material.dispose();
+      });
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+    />
+  );
+}
 
 function SustainabilityBackground({ onReady }: { onReady?: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
