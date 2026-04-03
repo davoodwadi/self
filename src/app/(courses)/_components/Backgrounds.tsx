@@ -17,6 +17,8 @@ const backgrounds: Record<string, React.FC> = {
   agentic: AgenticAITreeBackground,
   sustainability: SustainabilityBackground,
   "product-development": ProductDevelopmentBackground,
+  operations: OperationsBackground,
+  strategy: StrategyBackground,
   // More backgrounds can be added here
 };
 
@@ -638,6 +640,10 @@ function ProductDevelopmentBackground({ onReady }: { onReady?: () => void }) {
 }
 
 function AgenticAITreeBackground({ onReady }: { onReady?: () => void }) {
+  return <EDIITreeBackground onReady={onReady} />; // Reuse tree
+}
+
+function OperationsBackground({ onReady }: { onReady?: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -645,12 +651,12 @@ function AgenticAITreeBackground({ onReady }: { onReady?: () => void }) {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      75,
+      60,
       window.innerWidth / window.innerHeight,
       0.1,
       1000,
     );
-    camera.position.z = 40;
+    camera.position.z = 50;
 
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
@@ -660,63 +666,81 @@ function AgenticAITreeBackground({ onReady }: { onReady?: () => void }) {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    const particlesGroup = new THREE.Group();
+    const particleTexture = createSoftParticleTexture();
+    if (!particleTexture) {
+      if (onReady) onReady();
+      return;
+    }
 
-    // Create an interconnected node network to represent Agentic AI
-    const particleCount = 100;
+    // Nodes (Locations)
+    const particleCount = 50;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    // Crimson and Charcoal color mix
-    const color1 = new THREE.Color(0x8b0000); // Crimson
-    const color2 = new THREE.Color(0x2d2d32); // Charcoal Light
+    const baseColor = new THREE.Color("#8c7349"); // champagne
+    const accentColor = new THREE.Color("#8B0000"); // crimson
 
     for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 60;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 60;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 60;
+      const radius = 30 + Math.random() * 20;
+      const theta = Math.random() * 2 * Math.PI;
+      const phi = Math.acos(2 * Math.random() - 1);
+
+      const x = radius * Math.sin(phi) * Math.cos(theta);
+      const y = radius * Math.sin(phi) * Math.sin(theta);
+      const z = radius * Math.cos(phi);
+
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
 
       const mixRatio = Math.random();
-      const mixedColor = color1.clone().lerp(color2, mixRatio);
-      colors[i * 3] = mixedColor.r;
-      colors[i * 3 + 1] = mixedColor.g;
-      colors[i * 3 + 2] = mixedColor.b;
+      const finalColor = baseColor
+        .clone()
+        .lerp(accentColor, mixRatio > 0.8 ? 1 : 0);
+
+      colors[i * 3] = finalColor.r;
+      colors[i * 3 + 1] = finalColor.g;
+      colors[i * 3 + 2] = finalColor.b;
     }
 
     geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
-      size: 0.6,
+      size: 1.5,
+      map: particleTexture,
       vertexColors: true,
       transparent: true,
-      opacity: 0.02,
+      opacity: 0.8,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
     });
 
     const particles = new THREE.Points(geometry, material);
-    particlesGroup.add(particles);
+    scene.add(particles);
 
-    // Create lines connecting nearby nodes
+    // Edges (Supply Routes)
     const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x8b0000,
+      color: "#a52a2a",
       transparent: true,
-      opacity: 0.05,
+      opacity: 0.01,
+      blending: THREE.AdditiveBlending,
     });
 
-    const lineGeometry = new THREE.BufferGeometry();
-    const linePositions = [];
+    const linesGeometry = new THREE.BufferGeometry();
+    const linesPositions = [];
 
-    // Simple brute-force connection for a low number of particles
+    // Connect nodes if they are close
     for (let i = 0; i < particleCount; i++) {
       for (let j = i + 1; j < particleCount; j++) {
         const dx = positions[i * 3] - positions[j * 3];
         const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
         const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
-        const distSq = dx * dx + dy * dy + dz * dz;
+        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
 
-        if (distSq < 150) {
-          linePositions.push(
+        if (dist < 15) {
+          linesPositions.push(
             positions[i * 3],
             positions[i * 3 + 1],
             positions[i * 3 + 2],
@@ -728,57 +752,46 @@ function AgenticAITreeBackground({ onReady }: { onReady?: () => void }) {
       }
     }
 
-    lineGeometry.setAttribute(
+    linesGeometry.setAttribute(
       "position",
-      new THREE.Float32BufferAttribute(linePositions, 3),
+      new THREE.Float32BufferAttribute(linesPositions, 3),
     );
-    const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
-    particlesGroup.add(lines);
+    const lines = new THREE.LineSegments(linesGeometry, lineMaterial);
+    scene.add(lines);
 
-    scene.add(particlesGroup);
+    const group = new THREE.Group();
+    group.add(particles);
+    group.add(lines);
+    scene.add(group);
 
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetX = 0;
-    let targetY = 0;
-    const windowHalfX = window.innerWidth / 2;
-    const windowHalfY = window.innerHeight / 2;
+    // Initial positioning to avoid layout shift pop
+    group.position.y = -20;
+    group.rotation.x = Math.PI / 6;
 
-    const onDocumentMouseMove = (event: MouseEvent) => {
-      mouseX = (event.clientX - windowHalfX) * 0.05;
-      mouseY = (event.clientY - windowHalfY) * 0.05;
-    };
+    let time = 0;
+    let animationFrameId: number;
 
-    document.addEventListener("mousemove", onDocumentMouseMove);
+    const render = () => {
+      time += 0.000001;
+      group.rotation.y = time * 0.0005;
 
-    const animate = () => {
-      requestAnimationFrame(animate);
-      targetX = mouseX * 0.005;
-      targetY = mouseY * 0.005;
-
-      const time = Date.now() * 0.00002;
-      particlesGroup.rotation.y = time;
-      particlesGroup.rotation.x = time * 0.2;
-
-      camera.position.x += (targetX - camera.position.x) * 0.0005;
-      camera.position.y += (-targetY - camera.position.y) * 0.0005;
-      camera.lookAt(scene.position);
+      const positionsAttr = geometry.attributes.position;
+      for (let i = 0; i < particleCount; i++) {
+        const iy = i * 3 + 1;
+        // Subtle pulsing
+        positionsAttr.array[iy] += Math.sin(time * 5 + i) * 0.002;
+      }
+      positionsAttr.needsUpdate = true;
 
       renderer.render(scene, camera);
+      animationFrameId = requestAnimationFrame(render);
     };
-    animate();
 
-    ScrollTrigger.create({
-      start: "top top",
-      end: "bottom bottom",
-      onUpdate: (self) => {
-        gsap.to(particlesGroup.rotation, {
-          y: self.progress * Math.PI * 2,
-          ease: "power2.out",
-          overwrite: "auto",
-        });
-      },
-    });
+    if (onReady) {
+      // Small delay to ensure canvas is painted before revealing
+      setTimeout(onReady, 50);
+    }
+    render();
 
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -787,25 +800,147 @@ function AgenticAITreeBackground({ onReady }: { onReady?: () => void }) {
     };
     window.addEventListener("resize", handleResize);
 
-    setTimeout(() => {
-      if (onReady) onReady();
-    }, 50);
+    // GSAP Scroll Animation
+    const scrollTrigger = ScrollTrigger.create({
+      trigger: document.body,
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 1,
+      onUpdate: (self) => {
+        // Rotate globe as user scrolls
+        gsap.to(group.rotation, {
+          y: time * 0.5 + self.progress * Math.PI,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      },
+    });
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      document.removeEventListener("mousemove", onDocumentMouseMove);
-      renderer.dispose();
+      cancelAnimationFrame(animationFrameId);
+      scrollTrigger.kill();
       geometry.dispose();
       material.dispose();
-      lineGeometry.dispose();
+      linesGeometry.dispose();
       lineMaterial.dispose();
+      renderer.dispose();
     };
-  }, []);
+  }, [onReady]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+      className="fixed inset-0 w-full h-full pointer-events-none"
+      style={{ zIndex: 0 }}
+      aria-hidden="true"
+    />
+  );
+}
+
+// --- Strategy Background ---
+function StrategyBackground({ onReady }: { onReady?: () => void }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      60,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000,
+    );
+    camera.position.z = 20;
+    camera.position.y = 10;
+    camera.lookAt(0, 0, 0);
+
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true,
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    containerRef.current.appendChild(renderer.domElement);
+
+    // Floating data particles
+    const particleGeo = new THREE.BufferGeometry();
+    const particleCount = 50;
+    const particlePos = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+      particlePos[i * 3] = (Math.random() - 0.5) * 60;
+      particlePos[i * 3 + 1] = Math.random() * 15 - 2;
+      particlePos[i * 3 + 2] = (Math.random() - 0.5) * 60;
+    }
+    particleGeo.setAttribute(
+      "position",
+      new THREE.BufferAttribute(particlePos, 3),
+    );
+    const texture = createSoftParticleTexture();
+    const particleMat = new THREE.PointsMaterial({
+      color: 0x990000,
+      size: 0.5,
+      map: texture,
+      transparent: true,
+      depthWrite: false,
+    });
+    const particles = new THREE.Points(particleGeo, particleMat);
+    scene.add(particles);
+
+    let animationFrame: number;
+    let time = 0;
+    const animate = () => {
+      time += 0.0001; // slower rotation
+      particles.rotation.y = time * 0.05;
+
+      const positions = particles.geometry.attributes.position.array;
+      for (let i = 0; i < particleCount; i++) {
+        const y = positions[i * 3 + 1];
+        if (y > 15) {
+          positions[i * 3 + 1] = -2;
+        } else {
+          positions[i * 3 + 1] += 0.005; // slower upward floating
+        }
+      }
+      particles.geometry.attributes.position.needsUpdate = true;
+
+      renderer.render(scene, camera);
+      animationFrame = requestAnimationFrame(animate);
+    };
+    animate();
+
+    if (onReady) {
+      setTimeout(onReady, 100);
+    }
+
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      cancelAnimationFrame(animationFrame);
+      if (containerRef.current) {
+        containerRef.current.removeChild(renderer.domElement);
+      }
+      renderer.dispose();
+    };
+  }, [onReady]);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: 0,
+        pointerEvents: "none",
+      }}
     />
   );
 }

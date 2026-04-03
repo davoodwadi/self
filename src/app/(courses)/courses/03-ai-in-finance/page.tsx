@@ -197,23 +197,6 @@ export default function AIInFinanceCourse() {
           How intelligent systems reshape credit, control, markets, operations,
           and governance
         </Subtitle>
-        <div className="mt-10 w-full max-w-5xl">
-          <PanelCard className="bg-[var(--crimson)]/5 shadow-none">
-            <div>Week 03 in Applications of AI in Business.</div>
-            <div className="mt-6">
-              <InfoTiles
-                items={[
-                  "Credit",
-                  "Control",
-                  "Markets",
-                  "Operations",
-                  "Governance",
-                ]}
-                columns={5}
-              />
-            </div>
-          </PanelCard>
-        </div>
       </Slide>
 
       <ListAsideSlide

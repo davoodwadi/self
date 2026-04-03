@@ -1,0 +1,177 @@
+[
+  {
+    "slide_id": "the-new-strategic-landscape",
+    "question_text": "How does the integration of AI transform organizational strategy compared to traditional approaches?",
+    "hint": "Consider the shift from 'reactive' to 'proactive' and the change in decision-making speed.",
+    "correct_answer_citation": "The New Strategic Landscape slide",
+    "options": [
+      {
+        "option_text": "It focuses on static industry analysis and slow, deliberate adaptation.",
+        "option_explanation": "This describes traditional strategy; the new landscape moves away from static analysis toward dynamic capabilities."
+      },
+      {
+        "option_text": "It shifts the focus from proactive foresight to reactive planning.",
+        "option_explanation": "Actually, the slide states organizations must transition from reactive planning TO proactive foresight."
+      },
+      {
+        "option_text": "It enables proactive foresight and significantly accelerates decision-making velocity.",
+        "option_explanation": "AI introduces dynamic, predictive capabilities that allow for proactive foresight and faster strategic decisions."
+      },
+      {
+        "option_text": "It reinforces traditional market boundaries to prevent industry disruption.",
+        "option_explanation": "The slide explicitly mentions that AI reshapes market boundaries rather than reinforcing traditional ones."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "dimensions-of-value-creation",
+    "question_text": "Which dimension of value creation is typically associated with the highest strategic return?",
+    "hint": "Consider which dimension involves enabling entirely new revenue streams rather than just optimizing existing ones.",
+    "correct_answer_citation": "Slide snippet: 'The highest strategic return often comes from business model innovation.'",
+    "options": [
+      {
+        "option_text": "Cost reduction",
+        "option_explanation": "Cost reduction through automation is a valid dimension, but it is not identified as having the highest strategic return."
+      },
+      {
+        "option_text": "Revenue growth",
+        "option_explanation": "Revenue growth through hyper-personalization is important, but it is secondary to business model innovation regarding strategic return."
+      },
+      {
+        "option_text": "Business model innovation",
+        "option_explanation": "Correct. Business model innovation enables entirely new revenue streams and is noted for offering the highest strategic return."
+      },
+      {
+        "option_text": "Process optimization",
+        "option_explanation": "Process optimization is a method used for cost reduction, not the dimension with the highest strategic return."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "the-economics-of-ai",
+    "question_text": "Which of the following best describes the economic structure of artificial intelligence development and deployment?",
+    "hint": "Think about the relationship between the initial investment in building a model versus the cost of providing that model to many users.",
+    "correct_answer_citation": "The Economics of AI: High fixed costs of model development paired with near-zero marginal costs of deployment.",
+    "options": [
+      {
+        "option_text": "High fixed costs for development paired with near-zero marginal costs for deployment.",
+        "option_explanation": "AI models require massive upfront investment to build (fixed costs), but once trained, they can be deployed to many users at a very low cost per user (marginal cost)."
+      },
+      {
+        "option_text": "Low fixed costs for development with high marginal costs for each deployment.",
+        "option_explanation": "This is the opposite of the AI economic model; AI development is expensive, while deployment is inexpensive."
+      },
+      {
+        "option_text": "Economies of scale that are neutralized by network effects in data accumulation.",
+        "option_explanation": "According to the slide, economies of scale are amplified, not neutralized, by network effects in data accumulation."
+      },
+      {
+        "option_text": "A linear relationship where data volume always provides constant returns over data quality.",
+        "option_explanation": "The slide emphasizes that there are diminishing returns for data volume compared to the importance of data quality."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "the-data-moat-fallacy",
+    "question_text": "According to the 'Data Moat Fallacy,' what is the primary source of a durable competitive advantage in data?",
+    "hint": "Think about whether the value lies in the quantity of generic information or the uniqueness and integration of the data.",
+    "correct_answer_citation": "Slide: The Data Moat Fallacy - 'True advantage stems from exclusive, domain-specific data tied to proprietary workflows.'",
+    "options": [
+      {
+        "option_text": "Accumulating the highest possible volume of generic data.",
+        "option_explanation": "This is the core of the fallacy; simply having massive volumes of generic data does not guarantee a durable advantage."
+      },
+      {
+        "option_text": "Purchasing large datasets from third-party vendors.",
+        "option_explanation": "Data that can be purchased by competitors does not provide a durable advantage as it is not exclusive."
+      },
+      {
+        "option_text": "Synthesizing similar datasets to match competitor offerings.",
+        "option_explanation": "Competitors can also synthesize similar data, meaning it does not create a unique or durable moat."
+      },
+      {
+        "option_text": "Utilizing exclusive, domain-specific data tied to proprietary workflows.",
+        "option_explanation": "True advantage is found when data is both exclusive to the domain and integrated into the specific ways a company operates."
+      }
+    ],
+    "correct_answer_index": 3
+  },
+  {
+    "slide_id": "the-build-versus-buy-dilemma",
+    "question_text": "When facing the 'Build versus Buy' dilemma in AI strategy, what is the primary benefit of choosing to build a custom model?",
+    "hint": "Consider the difference between immediate speed and long-term strategic value.",
+    "correct_answer_citation": "The Build versus Buy Dilemma: Building custom models requires significant capital and talent but secures proprietary advantage.",
+    "options": [
+      {
+        "option_text": "It offers the fastest possible speed to market for new solutions.",
+        "option_explanation": "Purchasing existing AI solutions, rather than building them, offers faster speed to market."
+      },
+      {
+        "option_text": "It secures a proprietary advantage despite requiring more capital and talent.",
+        "option_explanation": "Building custom models allows for strategic differentiation and proprietary advantages that purchased solutions cannot provide."
+      },
+      {
+        "option_text": "It minimizes the need for internal talent and specialized capital.",
+        "option_explanation": "Building custom models actually requires significant internal talent and capital investment."
+      },
+      {
+        "option_text": "It allows an organization to ignore its core competencies.",
+        "option_explanation": "Organizations must map their core competencies specifically to determine where it is most appropriate to build versus buy."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "the-ai-operating-model",
+    "question_text": "According to the AI operating model, how should organizations restructure their teams to better support AI initiatives?",
+    "hint": "Think about the movement away from siloed departments toward more collaborative, agile groups.",
+    "correct_answer_citation": "The AI Operating Model slide",
+    "options": [
+      {
+        "option_text": "Maintain siloed departments to preserve deep technical specialization.",
+        "option_explanation": "The slide notes a shift away from siloed departments toward cross-functional squads."
+      },
+      {
+        "option_text": "Transition to cross-functional, product-oriented squads.",
+        "option_explanation": "The slide explicitly mentions shifting to cross-functional squads that integrate data engineering, data science, and business strategy."
+      },
+      {
+        "option_text": "Create separate divisions for data science and business strategy to avoid overlap.",
+        "option_explanation": "The model recommends integrating these roles rather than keeping them in separate divisions."
+      },
+      {
+        "option_text": "Prioritize rigid hierarchies to minimize the frequency of iteration.",
+        "option_explanation": "The model is designed to optimize for rapid iteration and continuous learning, which is usually hindered by rigid hierarchies."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "the-execution-gap",
+    "question_text": "What is a primary factor contributing to the 'Execution Gap' when transitioning AI strategies from pilot to production?",
+    "hint": "Look for challenges related to existing technology and organizational coordination.",
+    "correct_answer_citation": "Slide snippet: 'Lack of integration with legacy systems often stalls deployment. Successful execution requires rigorous change management and stakeholder alignment.'",
+    "options": [
+      {
+        "option_text": "Integration issues with legacy systems and insufficient stakeholder alignment.",
+        "option_explanation": "The slide highlights that lack of integration with legacy systems and the need for stakeholder alignment are key barriers to successful deployment during the transition from pilot to production."
+      },
+      {
+        "option_text": "A fundamental lack of interest from executive leadership in AI technology.",
+        "option_explanation": "While leadership is important, the slide specifically identifies technical integration and change management as the primary hurdles in the execution gap."
+      },
+      {
+        "option_text": "The high cost of purchasing specialized AI hardware for pilot testing.",
+        "option_explanation": "The slide focuses on the deployment phase rather than the hardware costs of initial testing."
+      },
+      {
+        "option_text": "The unavailability of public datasets for training models.",
+        "option_explanation": "Dataset availability is not mentioned in the slide; the focus is on the structural and organizational challenges of production deployment."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]

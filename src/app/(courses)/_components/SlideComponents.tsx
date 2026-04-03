@@ -182,7 +182,7 @@ export function Slide({
   return (
     <div>
       {quizData && (
-        <div className="min-h-screen w-full max-w-4xl flex items-center justify-center">
+        <div className="min-h-screen mx-auto w-full max-w-4xl flex items-center justify-center">
           <InlineQuiz quizData={quizData} />
         </div>
       )}
@@ -1483,10 +1483,12 @@ export function PieChart({
     const centerX = size / 2;
     const centerY = size / 2;
 
-    const x1 = centerX + radius * Math.cos(startRad);
-    const y1 = centerY + radius * Math.sin(startRad);
-    const x2 = centerX + radius * Math.cos(endRad);
-    const y2 = centerY + radius * Math.sin(endRad);
+    // Use toFixed(4) to prevent React hydration errors caused by floating point precision
+    // differences between Node.js (server) and Browser engines on trigonometric functions.
+    const x1 = (centerX + radius * Math.cos(startRad)).toFixed(4);
+    const y1 = (centerY + radius * Math.sin(startRad)).toFixed(4);
+    const x2 = (centerX + radius * Math.cos(endRad)).toFixed(4);
+    const y2 = (centerY + radius * Math.sin(endRad)).toFixed(4);
 
     const largeArc = angle > 180 ? 1 : 0;
 

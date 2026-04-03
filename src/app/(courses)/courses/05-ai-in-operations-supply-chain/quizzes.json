@@ -1,0 +1,252 @@
+[
+  {
+    "slide_id": "the-complexity-of-global-operations",
+    "question_text": "According to the slide, why is traditional spreadsheet-based planning insufficient for modern global supply chain optimization?",
+    "hint": "Look for the specific limitation mentioned regarding the processing of data variables in a global context.",
+    "correct_answer_citation": "Traditional spreadsheet-based planning cannot process the volume of variables required for global optimization.",
+    "options": [
+      {
+        "option_text": "It cannot process the volume of variables required for global optimization.",
+        "option_explanation": "The slide states that the high number of variables in interconnected global networks exceeds the processing capabilities of traditional spreadsheets."
+      },
+      {
+        "option_text": "It prevents disruptions from cascading through lean inventory systems.",
+        "option_explanation": "The text states that disruptions cascade rapidly due to lean practices; it does not suggest that spreadsheets prevent this."
+      },
+      {
+        "option_text": "It is limited to a single regulatory zone.",
+        "option_explanation": "The slide mentions that modern networks span multiple zones, but the specific failure of spreadsheets is their inability to process complex variables."
+      },
+      {
+        "option_text": "It relies on machine learning models that use simplified assumptions.",
+        "option_explanation": "The slide identifies machine learning as the solution that models complexity without simplified assumptions, unlike traditional methods."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "beyond-historical-averages",
+    "question_text": "How does AI-driven demand sensing primarily differ from traditional forecasting methods?",
+    "hint": "Consider what kinds of data AI can process that traditional models might miss.",
+    "correct_answer_citation": "Beyond Historical Averages slide snippet: 'AI-driven demand sensing incorporates real-time signals like social media sentiment, weather forecasts, and economic indicators.'",
+    "options": [
+      {
+        "option_text": "It relies exclusively on historical sales data to predict future trends.",
+        "option_explanation": "Traditional forecasting relies heavily on historical data, whereas AI-driven sensing moves beyond it by using real-time signals."
+      },
+      {
+        "option_text": "It incorporates real-time signals like social media sentiment and weather forecasts.",
+        "option_explanation": "AI-driven demand sensing uses these real-time signals and neural networks to detect patterns that traditional historical data might miss."
+      },
+      {
+        "option_text": "It focuses solely on seasonal trends and year-over-year comparisons.",
+        "option_explanation": "Seasonal trends are a component of traditional forecasting, not the innovative differentiator of AI-driven demand sensing."
+      },
+      {
+        "option_text": "It ignores economic indicators to focus on internal ledger balances.",
+        "option_explanation": "The slide explicitly states that AI-driven demand sensing incorporates economic indicators rather than ignoring them."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "mitigating-the-bullwhip-effect",
+    "question_text": "In the context of supply chain management, how do AI and predictive analytics work together to mitigate the 'bullwhip effect'?",
+    "hint": "Focus on how real-time communication and data filtering prevent manufacturers from overreacting to small changes.",
+    "correct_answer_citation": "Mitigating the Bullwhip Effect slide",
+    "options": [
+      {
+        "option_text": "By increasing safety stock levels at each individual tier to buffer against upstream demand shocks.",
+        "option_explanation": "The slide suggests that AI mitigates the effect by sharing real-time signals and filtering noise, rather than simply increasing inventory buffers."
+      },
+      {
+        "option_text": "By sharing real-time demand signals across the network and distinguishing noise from structural shifts.",
+        "option_explanation": "AI allows for the simultaneous sharing of data across all tiers and uses predictive analytics to prevent manufacturers from overreacting to temporary fluctuations."
+      },
+      {
+        "option_text": "By delaying upstream orders until retail demand fluctuations have completely stabilized.",
+        "option_explanation": "Delaying orders would likely worsen the bullwhip effect; AI aims for real-time responsiveness and signal clarity."
+      },
+      {
+        "option_text": "By prioritizing historical sales data over current retail signals to ensure production consistency.",
+        "option_explanation": "The slide emphasizes real-time demand signals and using predictive analytics to separate noise from structural shifts in current data."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "solving-complex-routing-at-scale",
+    "question_text": "As delivery networks scale to thousands of stops, how do AI algorithms effectively manage the increasing complexity of routing logistics?",
+    "hint": "Consider how these systems handle changes that occur while a vehicle is already out for delivery.",
+    "correct_answer_citation": "Continuous re-optimization allows fleets to adapt to new orders or road closures while vehicles are already in transit.",
+    "options": [
+      {
+        "option_text": "By calculating a single fixed route at the start of the day to ensure consistency.",
+        "option_explanation": "The slide emphasizes continuous re-optimization rather than fixed routes to allow for adaptation during transit."
+      },
+      {
+        "option_text": "By ignoring vehicle capacities and delivery windows to simplify the mathematical model.",
+        "option_explanation": "The slide specifically states that AI processes vehicle capacities and delivery windows to generate optimal routes."
+      },
+      {
+        "option_text": "By continuously re-optimizing routes in real-time to account for new orders and road closures.",
+        "option_explanation": "This directly matches the slide's point about continuous re-optimization allowing fleets to adapt while in transit."
+      },
+      {
+        "option_text": "By limiting the number of delivery stops to prevent the problem from becoming exponentially harder.",
+        "option_explanation": "The slide discusses solving routing at scale with thousands of deliveries, not limiting the number of stops."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "predictive-maintenance-in-fleet-management",
+    "question_text": "In the context of fleet management, how does AI-driven predictive maintenance differ from traditional maintenance models?",
+    "hint": "Consider the difference between a fixed schedule and using real-time data to anticipate problems.",
+    "correct_answer_citation": "Traditional fleet maintenance relies on fixed schedules based on mileage or time. AI analyzes IoT sensor data from engines, brakes, and transmissions to predict component failures before they happen.",
+    "options": [
+      {
+        "option_text": "It focuses on manual inspections performed at fixed time intervals.",
+        "option_explanation": "This describes traditional maintenance, whereas predictive maintenance uses real-time data analysis."
+      },
+      {
+        "option_text": "It uses IoT sensor data to anticipate failures before they occur.",
+        "option_explanation": "Predictive maintenance leverages data from sensors to identify potential issues before a breakdown happens, minimizing downtime."
+      },
+      {
+        "option_text": "It eliminates the need for maintenance by using self-repairing components.",
+        "option_explanation": "The slide mentions minimizing downtime and extending lifespan, not the use of self-repairing hardware."
+      },
+      {
+        "option_text": "It relies solely on mileage to determine when a vehicle needs service.",
+        "option_explanation": "Relying on mileage is a characteristic of traditional fixed-schedule maintenance."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "proactive-supplier-risk-management",
+    "question_text": "How do modern AI-driven systems evolve the traditional approach to supplier risk management?",
+    "hint": "Compare the frequency and data sources of traditional audits versus AI-based monitoring.",
+    "correct_answer_citation": "Proactive Supplier Risk Management slide snippet",
+    "options": [
+      {
+        "option_text": "By replacing automated monitoring with more frequent manual annual audits.",
+        "option_explanation": "Traditional methods involve annual audits, whereas AI systems move toward continuous, automated monitoring."
+      },
+      {
+        "option_text": "By using NLP and continuous monitoring to identify risks from unstructured global data.",
+        "option_explanation": "The slide states that AI systems continuously monitor global events and use Natural Language Processing to extract risk indicators from unstructured data across multiple languages."
+      },
+      {
+        "option_text": "By focusing exclusively on English-language financial filings to ensure data consistency.",
+        "option_explanation": "The slide mentions that NLP extracts data from sources across multiple languages, not just English."
+      },
+      {
+        "option_text": "By limiting risk assessment to internal financial reviews to avoid external news bias.",
+        "option_explanation": "Modern AI systems proactively monitor external sources like global news and geopolitical events rather than limiting assessments to internal reviews."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "computer-vision-for-quality-control",
+    "question_text": "Why is computer vision increasingly replacing manual processes in manufacturing quality control?",
+    "hint": "Think about the limitations of human inspectors compared to the speed and precision of automated systems.",
+    "correct_answer_citation": "Manual quality inspection is slow, expensive, and prone to human fatigue. Computer vision models inspect products moving on high-speed conveyors with sub-millimeter precision.",
+    "options": [
+      {
+        "option_text": "Because manual inspection is generally more cost-effective and accurate for high-speed conveyor belts.",
+        "option_explanation": "The slide states that manual inspection is expensive and prone to human fatigue compared to automated systems."
+      },
+      {
+        "option_text": "To improve speed and precision while reducing errors caused by human fatigue.",
+        "option_explanation": "Computer vision systems can detect microscopic defects and verify compliance in milliseconds with sub-millimeter precision, addressing the limitations of manual inspection."
+      },
+      {
+        "option_text": "Because computer vision systems prioritize packaging integrity over sub-millimeter defect detection.",
+        "option_explanation": "Computer vision systems actually provide both sub-millimeter precision for defects and verification of packaging integrity simultaneously."
+      },
+      {
+        "option_text": "To allow human inspectors more time to manually verify labeling compliance on every item.",
+        "option_explanation": "The slide indicates that computer vision models verify labeling compliance automatically in milliseconds, rather than assisting a manual verification process."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "digital-twins-for-facility-layouts",
+    "question_text": "What is the primary purpose of using a 'digital twin' when planning or modifying a facility layout?",
+    "hint": "Consider how simulations help managers test new ideas without pausing current production.",
+    "correct_answer_citation": "Operations managers use these AI-driven simulations to test new layouts and processes without disrupting actual operations.",
+    "options": [
+      {
+        "option_text": "To replace all physical inventory with virtual assets to save on storage costs.",
+        "option_explanation": "Digital twins are virtual simulations of physical spaces; they do not replace the actual physical inventory or storage needs."
+      },
+      {
+        "option_text": "To create a virtual simulation for testing layouts and processes without disrupting real-world operations.",
+        "option_explanation": "Digital twins allow operations managers to use AI-driven simulations to mirror the current state and test changes safely in a virtual environment."
+      },
+      {
+        "option_text": "To provide a static, one-time map of the facility for historical record-keeping.",
+        "option_explanation": "Digital twins are dynamic and ingest real-time IoT data to accurately mirror current states and predict future bottlenecks."
+      },
+      {
+        "option_text": "To eliminate the need for IoT data collection on the factory floor.",
+        "option_explanation": "Digital twins actually require the ingestion of real-time IoT data to function accurately and predict impacts."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "ai-in-reverse-logistics-and-returns",
+    "question_text": "In what ways do computer vision and predictive models improve the efficiency of reverse logistics and product returns?",
+    "hint": "Look for the specific AI technologies mentioned that help assess item condition and forecast capacity needs.",
+    "correct_answer_citation": "Computer vision systems automatically assess the condition of returned goods... Predictive models anticipate return volumes based on product characteristics and seasonal trends, optimizing reverse network capacity.",
+    "options": [
+      {
+        "option_text": "By automating item condition assessment and forecasting return volumes to optimize capacity.",
+        "option_explanation": "According to the slide, computer vision automates the assessment of goods (restock, refurbish, or recycle) while predictive models anticipate volumes to optimize network capacity."
+      },
+      {
+        "option_text": "By replacing all physical warehouses with digital-only return processing centers.",
+        "option_explanation": "The slide mentions optimizing reverse network capacity, not replacing physical infrastructure with digital centers."
+      },
+      {
+        "option_text": "By using facial recognition to identify customers who frequently return items.",
+        "option_explanation": "The slide focuses on assessing the condition of goods and volume trends, not on identifying specific customers via facial recognition."
+      },
+      {
+        "option_text": "By increasing the amount of manual labor required to process complex returns.",
+        "option_explanation": "The slide notes that returns are currently a labor-intensive challenge, implying that AI is used to solve this issue rather than increase the labor required."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "the-black-box-problem-in-operations",
+    "question_text": "What is a primary reason supply chain planners may be reluctant to implement AI-driven inventory recommendations?",
+    "hint": "Focus on the 'Black Box' nature of deep learning models described in the slide.",
+    "correct_answer_citation": "The Black Box Problem in Operations",
+    "options": [
+      {
+        "option_text": "AI models are inherently slower than human decision-making processes.",
+        "option_explanation": "The slide focuses on the lack of transparency and rationale, not the speed of the models."
+      },
+      {
+        "option_text": "Deep learning models often lack transparency in how they arrive at their conclusions.",
+        "option_explanation": "This is the 'Black Box' problem: without understanding the underlying rationale, planners are hesitant to trust high-stakes recommendations."
+      },
+      {
+        "option_text": "The implementation costs of explainable AI are too high for most operations.",
+        "option_explanation": "While XAI is mentioned as critical, the slide does not state that costs are the reason for initial hesitation."
+      },
+      {
+        "option_text": "Planners prefer using traditional spreadsheets over any algorithmic systems.",
+        "option_explanation": "The slide identifies the lack of transparency in the AI models themselves, not a general preference for spreadsheets."
+      }
+    ],
+    "correct_answer_index": 1
+  }
+]
