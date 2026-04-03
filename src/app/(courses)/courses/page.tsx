@@ -211,7 +211,7 @@ export default function Home() {
             <CourseCard
               href="/courses/02-ai-in-marketing"
               label="Week 02"
-              title="Applications of AI in Marketing and Consumer Behavior"
+              title="AI in Marketing and Consumer Behavior"
               description="Building the foundation for enterprise AI adoption."
               variant="crimson"
             />
@@ -219,7 +219,7 @@ export default function Home() {
             <CourseCard
               href="/courses/03-ai-in-finance"
               label="Week 03"
-              title="Applications of AI in Finance"
+              title="AI in Finance"
               description="A gentle introduction to deep learning"
               variant="crimson"
             />
@@ -235,7 +235,7 @@ export default function Home() {
             <CourseCard
               href="/courses/04-ai-in-human-resources"
               label="Week 04"
-              title="Applications of AI in Human Resources"
+              title="AI in Human Resources"
               description="A gentle introduction to deep learning"
               variant="crimson"
             />
@@ -243,7 +243,7 @@ export default function Home() {
             <CourseCard
               href="/courses/05-ai-in-operations-supply-chain"
               label="Week 05"
-              title="Applications of AI in Operations and Supply Chain"
+              title="AI in Operations and Supply Chain"
               description="A gentle introduction to deep learning"
               variant="crimson"
             />
@@ -251,7 +251,7 @@ export default function Home() {
             <CourseCard
               href="/courses/06-ai-in-business-strategy"
               label="Week 06"
-              title="Applications of AI in Business Strategy"
+              title="AI in Business Strategy"
               description="A gentle introduction to deep learning"
               variant="crimson"
             />
