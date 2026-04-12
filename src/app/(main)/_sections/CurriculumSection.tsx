@@ -44,6 +44,15 @@ export function CurriculumSection() {
                 label: "",
               }}
             />
+            <CourseCard
+              label="Course"
+              title="Introduction to Marketing"
+              description="What is Marketing? How do we define a consumer? What strategies firms adopt to influence consumption decisions?"
+              link={{
+                href: "#",
+                label: "",
+              }}
+            />
           </div>
         </FadeUp>
       </div>

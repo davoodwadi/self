@@ -23,7 +23,10 @@ export async function submitContactForm(formData: FormData) {
     const country = headersList.get("x-vercel-ip-country") || "Unknown Country";
     const lat = headersList.get("x-vercel-ip-latitude") || "Unknown Latitude";
     const lon = headersList.get("x-vercel-ip-longitude") || "Unknown Longitude";
+    const timezone = headersList.get("x-vercel-ip-timezone") || "Unknown Timezone";
     const userAgent = headersList.get("user-agent") || "Unknown User Agent";
+    const referer = headersList.get("referer") || "Unknown Referer";
+    const language = headersList.get("accept-language") || "Unknown Language";
 
     const metaDataHtml = `
       <hr style="margin-top: 30px; border: none; border-top: 1px solid #eee;" />
@@ -32,11 +35,14 @@ export async function submitContactForm(formData: FormData) {
         <li><strong>IP Address:</strong> ${ip}</li>
         <li><strong>Location:</strong> ${city}, ${region}, ${country}</li>
         <li><strong>Coordinates:</strong> ${lat}, ${lon}</li>
+        <li><strong>Timezone:</strong> ${timezone}</li>
         <li><strong>User Agent:</strong> ${userAgent}</li>
+        <li><strong>Browser Language:</strong> ${language}</li>
+        <li><strong>Submitted From (Referer):</strong> ${referer}</li>
       </ul>
     `;
 
-    const metaDataText = `\n\n--- Sender Information (For Security & Anti-Spam) ---\nIP Address: ${ip}\nLocation: ${city}, ${region}, ${country}\nCoordinates: ${lat}, ${lon}\nUser Agent: ${userAgent}`;
+    const metaDataText = `\n\n--- Sender Information (For Security & Anti-Spam) ---\nIP Address: ${ip}\nLocation: ${city}, ${region}, ${country}\nCoordinates: ${lat}, ${lon}\nTimezone: ${timezone}\nUser Agent: ${userAgent}\nBrowser Language: ${language}\nSubmitted From: ${referer}`;
 
     const { error } = await resend.emails.send({
       from: "Portfolio Contact Form <davood@account.spreed.chat>",

@@ -34,7 +34,7 @@ export function HeroSection() {
           </p>
         </FadeUp>
         <FadeUp className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <PortfolioButton href="#expertise" variant="primary">
+          <PortfolioButton href="#publications" variant="primary">
             Explore Work
           </PortfolioButton>
           <PortfolioButton href="#contact" variant="secondary">
