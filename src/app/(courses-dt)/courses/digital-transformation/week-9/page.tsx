@@ -9,7 +9,8 @@ import {
   CinematicQuote,
   Conclusion
 } from "@/components/presentation"
-
+import { ArrowLeft } from "lucide-react"
+import Link from "next/link"
 import img1759 from "./1794_Morgenstern_Bauernhof_anagoria.jpg"
 import img1890 from "./One Room Schoolhouse.jpg"
 import img1932 from "./medium-sized-jpeg-27.jpg"
@@ -29,7 +30,14 @@ export default function DigitalTransformationWeek9() {
     <main className="theme-obsidian-gold relative w-full overflow-x-hidden bg-background min-h-screen font-body text-text-primary">
       <ProgressBar />
       <FloatingNav sections={SECTIONS} />
-
+ {/* Navigation */}
+      <Link
+        href="/courses/digital-transformation"
+        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--charcoal-light)] hover:text-[var(--crimson)] hover:border-[var(--crimson)] hover:bg-[var(--crimson)]/5 transition-colors duration-300 group "
+        aria-label="Back to Course Hub"
+      >
+        <ArrowLeft className="w-5 h-5" />
+      </Link>
       <Hero
         category="WEEK 09 — DIGITAL TRANSFORMATION"
         title="Industry 4.0"

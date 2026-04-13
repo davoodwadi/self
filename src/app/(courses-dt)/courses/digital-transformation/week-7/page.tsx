@@ -16,7 +16,8 @@ import smartContractImage from "./smart-contract.png"
 import amazonSupplyChainImage from "./Supply_Chain_Amazon.png"
 import realEstateImage from "./bitpanda-academy-intermediate-11-smart-contract-infographic.png"
 import financialServicesImage from "./29gGZPAEJWVqocEKPFA6GWtrOuR4Hj6tNhzPr4UoK.jpeg"
-
+import { ArrowLeft } from "lucide-react"
+import Link from "next/link"
 const SECTIONS = [
   { id: "hero", label: "Introduction" }, 
   { id: "ch1", label: "Blockchain" },
@@ -30,7 +31,14 @@ export default function DigitalTransformationWeek7() {
     <main className="theme-crimson-noir relative w-full overflow-x-hidden bg-background min-h-screen font-body text-text-primary">
       <ProgressBar />
       <FloatingNav sections={SECTIONS} />
-
+ {/* Navigation */}
+      <Link
+        href="/courses/digital-transformation"
+        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--charcoal-light)] hover:text-[var(--crimson)] hover:border-[var(--crimson)] hover:bg-[var(--crimson)]/5 transition-colors duration-300 group "
+        aria-label="Back to Course Hub"
+      >
+        <ArrowLeft className="w-5 h-5" />
+      </Link>
       <Hero
         category="WEEK 07 — DIGITAL TRANSFORMATION"
         title="Blockchain Technology"

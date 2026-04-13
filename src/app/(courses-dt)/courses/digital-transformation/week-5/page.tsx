@@ -21,6 +21,9 @@ import factoryImage from "./navvis-factory-planning2-image1.webp"
 import fogImage from "./images.jpeg"
 import Image from "next/image"
 
+import { ArrowLeft } from "lucide-react"
+import Link from "next/link"
+
 const SECTIONS = [
   { id: "hero", label: "Introduction" }, 
   { id: "ch1", label: "Cloud Computing" },
@@ -35,7 +38,14 @@ export default function DigitalTransformationWeek5() {
     <main className="theme-aurora-violet relative w-full overflow-x-hidden bg-background min-h-screen font-body text-text-primary">
       <ProgressBar />
       <FloatingNav sections={SECTIONS} />
-
+      {/* Navigation */}
+      <Link
+        href="/courses/digital-transformation"
+        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--charcoal-light)] hover:text-[var(--crimson)] hover:border-[var(--crimson)] hover:bg-[var(--crimson)]/5 transition-colors duration-300 group "
+        aria-label="Back to Course Hub"
+      >
+        <ArrowLeft className="w-5 h-5" />
+      </Link>
       <Hero
         category="WEEK 05 — DIGITAL TRANSFORMATION"
         title="Cloud, Fog, and Edge Computing"

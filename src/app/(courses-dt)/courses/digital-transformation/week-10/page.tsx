@@ -21,7 +21,7 @@ const SECTIONS = [
   { id: "ch3", label: "Ethics in AI" },
   { id: "ch4", label: "Social Issues" },
   { id: "conclusion", label: "Summary" }
-]
+] 
 
 export default function DigitalTransformationWeek10() {
   return (
