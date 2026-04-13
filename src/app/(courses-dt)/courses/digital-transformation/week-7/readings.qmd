@@ -1,0 +1,28 @@
+# Blockchain
+
+[Blockchain Fact: what is it, how it works, and how it can be used](https://www.investopedia.com/terms/b/blockchain.asp)
+[IBM - What is blockchain?](https://www.ibm.com/think/topics/blockchain)
+[McKinsey & Company - What is blockchain?](https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-is-blockchain)
+
+
+# Blockchain in Supply Chain
+[Building a Transparent Supply Chain](https://hbr.org/2020/05/building-a-transparent-supply-chain)
+
+
+# Blockchain in Finance
+[Blockchain in Financial Service](https://consensys.io/blockchain-use-cases/finance)
+[]()
+
+# Cybersecurity
+
+[Cisco - What Is Cybersecurity?](https://www.cisco.com/c/en_ca/products/security/what-is-cybersecurity.html)
+[IBM - What is cybersecurity?](https://www.ibm.com/think/topics/cybersecurity)
+[What is Cybersecurity? Types, Threats and Cyber Safety Tips](https://www.kaspersky.com/resource-center/definitions/what-is-cyber-security)
+[]()
+
+# Cybersecurity in Business
+
+[What is Cybersecurity and Its Importance to Business](https://www.nu.edu/blog/what-is-cybersecurity/)
+[Cybersecurity for Small Businesses](https://www.fcc.gov/communications-business-opportunities/cybersecurity-small-businesses)
+
+

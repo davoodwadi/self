@@ -308,23 +308,23 @@ PAGE STRUCTURE (in order):
 [2]  FLOATING NAV          ← Fixed, right side dots
 [3]  HERO SECTION          ← 100vh, full screen opener
 [4]  CHAPTER HEADER 01     ← Section divider
-[5]  SPLIT CONTENT BLOCK   ← Image + Text (alternating sides)
-[6]  CONCEPT CARDS ROW     ← 2-3 cards highlighting key ideas
+[5]  ZIGZAG CONTENT BLOCK  ← Overlapping sequence of text/images
+[6]  CONCEPT CARDS ZIGZAG  ← Zigzagging concept highlights
 [7]  CINEMATIC QUOTE       ← Full-width impactful quote
 [8]  CHAPTER HEADER 02     ← Next section divider
-[9]  SPLIT CONTENT BLOCK   ← Reversed: Text + Image
+[9]  ZIGZAG CONTENT BLOCK  ← Alternating start position
 [10] DATA/DIAGRAM BLOCK    ← Charts, stats, visual data
 [11] TIMELINE              ← Sequential information
 [12] CHAPTER HEADER 03     ← Next section divider
-[13] SPLIT CONTENT BLOCK   ← Normal orientation
-[14] CONCEPT CARDS ROW     ← Additional key points
+[13] ZIGZAG CONTENT BLOCK  ← Continuing narrative
+[14] CONCEPT CARDS ZIGZAG  ← Additional key points
 [15] CINEMATIC QUOTE       ← Second quote
 [16] CONCLUSION SECTION    ← Summary + key takeaways
 [17] REFERENCES SECTION    ← Academic bibliography
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 REPEAT PATTERN (for each chapter):
-Chapter Header → Split Content → Cards → Quote
+Chapter Header → Zigzag Content → Cards → Quote
 ```
 
 ---
@@ -460,92 +460,104 @@ SPECS:
     title fades up from bottom
 ```
 
-### Component 5: SPLIT CONTENT BLOCK ⭐ (Primary Content Unit)
+### Component 5: ZIGZAG CONTENT BLOCK ⭐ (Primary Content Unit)
 ```
 VISUAL DESCRIPTION:
-  Two-column layout. Visual media on one side.
-  Rich text content on the other. Numbered.
+  A single column layout that flows vertically but zigzags left and right.
+  Provides dynamic reading flow with varying segment types (text, image, insight).
   
-LAYOUT (Variant A - Image Left):
-┌─────────────────┬──────────────────────────────┐
-│                 │  [LABEL: KEY CONCEPT]         │
-│   [IMAGE /      │                               │
-│    DIAGRAM /    │  Section Title                │
-│    VIDEO]       │  In Heading Type              │
-│                 │                               │
-│    [●  1  ]     │  Body text paragraph that     │
-│   (number       │  explains the concept in      │
-│    badge)       │  academic detail. Written     │
-│                 │  clearly and precisely.       │
-│                 │                               │
-│                 │ ┌─────────────────────────┐  │
-│                 │ │ KEY INSIGHT              │  │
-│                 │ │ Highlighted callout box  │  │
-│                 │ │ with key information     │  │
-│                 │ └─────────────────────────┘  │
-└─────────────────┴──────────────────────────────┘
+LAYOUT (Variant A - Starts Right):
+┌────────────────────────────────────────────────┐
+│  [LABEL: KEY CONCEPT]                          │
+│  Section Title                                 │
+│                                                │
+│                                  ┌───────────┐ │
+│                                  │ TEXT      │ │
+│                                  │ BLOCK     │ │
+│                                  └───────────┘ │
+│                                                │
+│  ┌───────────┐                                 │
+│  │ IMAGE /   │                                 │
+│  │ DIAGRAM   │                                 │
+│  └───────────┘                                 │
+│                                                │
+│                                  ┌───────────┐ │
+│                                  │ TEXT      │ │
+│                                  │ BLOCK     │ │
+│                                  └───────────┘ │
+└────────────────────────────────────────────────┘
 
-LAYOUT (Variant B - Text Left): Mirror of above
+LAYOUT (Variant B - Starts Left): Mirror of above (Left, Right, Left)
 
 ALTERNATION RULE: 
-  Odd chapters: Image Left
-  Even chapters: Image Right
+  Odd chapters: Starts Right (`startRight={true}`)
+  Even chapters: Starts Left (`startRight={false}`)
   This creates visual rhythm as user scrolls
+
+ZIGZAG OVERLAP SPACING:
+  - Width: Each segment must be `w-full md:w-[55%]` (or `60%`) so they horizontally cross the center of the page.
+  - Vertical spacing: Use standard flex column gaps (e.g., `gap-12 md:gap-16`) on the container.
+  - NO negative margins: Do not use negative top margins. We want horizontal overlap (since 55%+55% > 100%) but NO vertical overlap (segments stack below each other safely without crashing).
+
+CONTENT FLOW RULES:
+  - Each 'text' segment must contain a MAXIMUM of ONE paragraph.
+  - If a concept requires multiple paragraphs, split them into consecutive 'text' segments.
+  - This ensures the text continues bouncing left-to-right down the page:
+      [Para 1]
+               [Para 2]
+      [Image ]
+               [Para 3]
+
+SEGMENT TYPES:
+  - 'text': Text block inside a `bg-card/80 backdrop-blur-md` card with deep shadow (`shadow-2xl`) and large padding (`p-12`)
+  - 'image': Visual media (Next/Image container with deep shadow)
+  - 'insight': Highlighted callout box with `bg-card/90 backdrop-blur-md` and deep shadow
 
 IMAGE CONTAINER SPECS:
   - Border-radius: 16px
   - Background: card color
   - Subtle inner shadow
   - Optional: thin border with border color
-  - Aspect ratio: 4/3 or 1/1
+  - Aspect ratio: 4/3
   - Image styling: Must use `object-contain p-4` (never `object-cover`) to ensure image is not cropped and sits within the container gracefully
-  - Number badge: 
-      Positioned bottom-right of image
-      Size: 64px circle
-      Background: accent1
-      Font: heading, large weight
-      Has glow effect using glow color variable
 
-CONTENT SIDE SPECS:
-  - Padding: generous (2-4rem)
-  - Label above title (text-label style)
-  - Title: text-h1 style
-  - Body: text-body style (2-3 paragraphs max)
-  - Key Insight Box:
-      Background: card color
-      Left border: 3px solid accent1  
-      Border-radius: 8px
-      Label: "KEY INSIGHT" or "KEY COMPONENTS" or "IMPORTANT"
-      Text: accent1 colored label, normal body text below
+INSIGHT BOX SPECS:
+  - Background: card color
+  - Left border: 3px solid accent1  
+  - Border-radius: 8px
+  - Label: "KEY INSIGHT" or "KEY COMPONENTS" or "IMPORTANT"
+  - Text: accent1 colored label, normal body text below
 
 SCROLL ANIMATION:
-  - Image side: slides in from its side (left or right)
-  - Content side: fades up with slight delay
+  - Each segment slides in from its respective side (e.g. right-aligned content slides from right)
   - Trigger: when element is 20% in viewport
 ```
 
-### Component 6: CONCEPT CARDS ROW
+### Component 6: CONCEPT CARDS ZIGZAG
 ```
 VISUAL DESCRIPTION:
-  Row of 2-4 cards. Each highlights one key concept.
-  Dark card surface. Accent-colored icon or number.
+  A sequence of highlight cards that flow in a zigzag pattern down the page,
+  similar to the Zigzag Content Block, rather than a static grid row.
   
-LAYOUT (3 cards example):
-┌─────────────────────────────────────────────────────┐
-│  ┌──────────────┐  ┌──────────────┐  ┌────────────┐ │
-│  │  [ICON/NUM]  │  │  [ICON/NUM]  │  │ [ICON/NUM] │ │
-│  │              │  │              │  │            │ │
-│  │  Card Title  │  │  Card Title  │  │ Card Title │ │
-│  │              │  │              │  │            │ │
-│  │  Short desc  │  │  Short desc  │  │ Short desc │ │
-│  │  of concept  │  │  of concept  │  │ of concept │ │
-│  │              │  │              │  │            │ │
-│  │  Learn more →│  │  Learn more →│  │ Learn more→│ │
-│  └──────────────┘  └──────────────┘  └────────────┘ │
-└─────────────────────────────────────────────────────┘
+LAYOUT:
+┌────────────────────────────────────────────────┐
+│                                                │
+│                                  ┌───────────┐ │
+│                                  │ [ICON]    │ │
+│                                  │ Card      │ │
+│                                  └───────────┘ │
+│                                                │
+│  ┌───────────┐                                 │
+│  │ [ICON]    │                                 │
+│  │ Card      │                                 │
+│  └───────────┘                                 │
+│                                                │
+└────────────────────────────────────────────────┘
 
 CARD SPECS:
-  - Background: card color
+  - Width: `w-full md:w-[55%]` (matching the Zigzag Content width)
+  - Background: `bg-card/80 backdrop-blur-md`
+  - Shadow: `shadow-2xl`
   - Border: 1px solid border color
   - Border-radius: 16px
   - Hover: border changes to accent1, 
@@ -558,9 +570,7 @@ CARD SPECS:
   - Arrow link: accent1 color, appears on hover
 
 ANIMATION:
-  - Cards animate in with stagger (0.1s delay between each)
-  - Each card fades + slides up from below
-  - Hover effects use CSS transitions (0.3s ease)
+  - Cards slide in alternately from left and right based on `isRight`
 ```
 
 ### Component 7: CINEMATIC QUOTE
@@ -886,7 +896,7 @@ CONTENT LENGTH PER COMPONENT:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   Hero subtitle:        1 sentence (15-25 words)
   Chapter description:  2 sentences (25-40 words)
-  Split content body:   2-3 paragraphs (80-150 words each)
+  Zigzag text block:    MAX 1 paragraph (split long text into multiple zigzag segments)
   Key insight box:      1-2 sentences (20-35 words)
   Card description:     2-4 lines (30-50 words)
   Quote:                1-3 sentences (20-50 words)

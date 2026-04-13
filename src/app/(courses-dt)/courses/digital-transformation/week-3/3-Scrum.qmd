@@ -1,0 +1,129 @@
+---
+title: "Scrum"
+author: "Dr. Davood Wadi"
+format: PrettyPDF-pdf
+---
+
+
+## Scrum
+
+Scrum is an Agile framework designed to facilitate collaboration, improve productivity, and deliver high-quality products through **iterative and incremental development**. It is particularly popular in *software development* but can be applied to various fields.
+
+The term "Scrum" originates from the game of rugby. In rugby, a "scrum" is a method of restarting play after a minor infraction, where players from each team pack closely together with their heads down and attempt to gain possession of the ball. This formation emphasizes teamwork, collaboration, and strategy, as players must work together to achieve a common goal.
+
+The use of the term in the context of project management and software development was popularized by Ken Schwaber and Jeff Sutherland, who developed the Scrum framework in the early 1990s. They chose the name "Scrum" to reflect the importance of teamwork and collaboration in the development process, similar to how players in a rugby scrum must work together to succeed.
+
+In their 1995 paper titled "Scrum Development Process," Schwaber and Sutherland drew parallels between the dynamics of a rugby scrum and the collaborative nature of Agile software development, highlighting the need for teams to be self-organizing and to work closely together to deliver value effectively. The name has since become synonymous with the Agile framework that emphasizes iterative development, continuous feedback, and adaptability.
+
+
+### Principles of Scrum
+
+![](18053536_A%20video%20explaining%20the%20important%20Scrum%20Principles.jpg){fig-align="center"}
+
+
+### 1. Empirical Process Control
+- **Definition**: This principle is based on the idea that knowledge comes from experience and that decisions should be made based on what is known.
+- **Application in Scrum**: Scrum relies on three key pillars: **Transparency**, **Inspection**, and **Adaptation**. 
+  - **Transparency** ensures that all aspects of the process are visible to those responsible for the outcome.
+  - **Inspection** involves regularly checking progress and performance to identify any deviations from the expected results.
+  - **Adaptation** means adjusting processes and plans based on the insights gained from inspection.
+
+### 2. Self-Organization
+- **Definition**: Teams are empowered to organize their work without being directed by outside authorities.
+- **Application in Scrum**: Scrum teams are cross-functional and self-managing, meaning they decide how to accomplish their work. This autonomy fosters creativity, accountability, and a sense of ownership among team members, leading to higher motivation and better results.
+
+### 3. Collaboration
+- **Definition**: Effective teamwork and communication are essential for success in Scrum.
+- **Application in Scrum**: Scrum promotes collaboration among team members, stakeholders, and customers. Regular ceremonies, such as Daily Scrums, Sprint Reviews, and Retrospectives, facilitate open communication and ensure that everyone is aligned on goals and progress. Collaboration helps to leverage diverse skills and perspectives, leading to better problem-solving and innovation.
+
+### 4. Value-Based Prioritization
+- **Definition**: Work should be prioritized based on the value it delivers to the customer and the business.
+- **Application in Scrum**: The Product Owner is responsible for managing the Product Backlog and prioritizing items based on their value. This ensures that the team focuses on delivering the most important features first, maximizing the return on investment and ensuring that customer needs are met.
+
+### 5. Time Boxing
+- **Definition**: Time boxing involves setting fixed time limits for activities to create a sense of urgency and focus.
+- **Application in Scrum**: Scrum events, such as Sprints, Sprint Planning, Daily Scrums, Sprint Reviews, and Sprint Retrospectives, are all time-boxed. This structure helps teams maintain a steady pace, encourages regular reflection and adaptation, and prevents scope creep by limiting the time available for work.
+
+### 6. Iterative Development
+- **Definition**: Development is carried out in small, incremental cycles, allowing for regular feedback and adjustments.
+- **Application in Scrum**: Scrum uses Sprints to deliver potentially shippable increments of the product. Each iteration allows the team to gather feedback from stakeholders, assess progress, and make necessary adjustments. This iterative approach helps to reduce risk, improve quality, and ensure that the final product aligns with customer expectations.
+
+
+
+### Scrum Methodology
+
+![](scrum-methodology.png){fig-align="center"}
+
+*Note. backlog refers to a prioritized list of work items or tasks that need to be completed for a project*
+
+#### 1. **Roles in Scrum**
+
+Scrum defines three primary roles, each with specific responsibilities:
+
+- **Product Owner**:
+  - Represents the stakeholders and the voice of the customer.
+  - Responsible for defining the product vision and managing the product backlog.
+  - Prioritizes backlog items based on business value and customer needs.
+  - Ensures that the team understands the items in the backlog.
+
+- **Scrum Master**:
+  - Acts as a facilitator and coach for the Scrum team.
+  - Helps the team adhere to Scrum practices and principles.
+  - Removes impediments that may hinder the team's progress.
+  - Shields the team from external distractions and interruptions.
+
+- **Development Team**:
+  - A cross-functional group of professionals who work collaboratively to deliver the product increment.
+  - Typically consists of 3 to 9 members with various skills (e.g., developers, testers, designers).
+  - Self-organizes to determine how to accomplish the work in the sprint.
+
+#### 2. **Events in Scrum**
+
+![](scrum-cycle-resized.png){fig-align="center"}
+
+
+Scrum includes several key events (ceremonies) that structure the workflow:
+
+- **Sprint**:
+  - A time-boxed iteration, usually lasting 1 to 4 weeks, during which a potentially shippable product increment is created.
+  - Each sprint begins with a planning session and ends with a review and retrospective.
+
+- **Sprint Planning**:
+  - A meeting held at the beginning of each sprint where the team decides what work will be done.
+  - The team selects items from the product backlog to include in the sprint backlog based on priority and team capacity.
+  - The team defines the sprint goal, which is a clear objective for the sprint.
+
+- **Daily Scrum (Stand-up)**:
+  - A short, time-boxed meeting (usually 15 minutes) held every day during the sprint.
+  - Team members answer three questions: 
+    + What did I do yesterday? 
+    + What will I do today? 
+    + What obstacles are in my way?
+
+  - The purpose is to synchronize activities and identify any impediments.
+
+- **Sprint Review**:
+  - A meeting held at the end of the sprint to demonstrate the completed work to stakeholders.
+  - The team presents the product increment and gathers feedback.
+  - The product backlog may be adjusted based on feedback received.
+
+- **Sprint Retrospective**:
+  - A meeting held after the sprint review to reflect on the sprint process.
+  - The team discusses what went well, what could be improved, and how to implement changes in the next sprint.
+  - The goal is to foster continuous improvement.
+
+#### 3. **Artifacts in Scrum**
+
+Scrum uses specific artifacts to manage work and provide transparency:
+
+- **Product Backlog**:
+  - An ordered list of all desired work on the project, including features, enhancements, bug fixes, and technical tasks.
+  - The **product owner** is responsible for maintaining and prioritizing the backlog.
+
+- **Sprint Backlog**:
+  - A subset of the product backlog items selected for the current sprint, along with a plan for delivering the product increment.
+  - The **development team** is responsible for managing the sprint backlog.
+
+- **Increment**:
+  - The sum of all completed product backlog items at the end of a sprint.
+  - The increment must meet the team's definition of "done," which includes quality criteria and acceptance criteria.

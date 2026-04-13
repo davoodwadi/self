@@ -1,0 +1,24 @@
+# TAM
+
+- [Technology Acceptance Model (TAM)](https://open.ncl.ac.uk/theories/1/technology-acceptance-model/)
+- [What is the Technology Acceptance Model?](https://www.enablersofchange.com.au/what-is-the-technology-acceptance-model/)
+
+# UTAUT
+
+- [Unified Theory of Acceptance and Use of Technology (UTAUT)](https://open.ncl.ac.uk/theories/2/unified-theory-of-acceptance-and-use-of-technology/)
+- [Understanding the Unified Theory of Acceptance and Use of Technology](https://www.enablersofchange.com.au/understanding-the-unified-theory-of-acceptance-and-use-of-technology/)
+- []()
+
+
+# IoT
+
+- []()
+- [Cloud, Fog and Edge Computing – What’s the Difference?](https://winsystems.com/cloud-fog-and-edge-computing-whats-the-difference/)
+- [Edge, Fog, and Cloud Computing: What’s the Difference?](https://blog.isa.org/edge-fog-and-cloud-computing-whats-the-difference)
+- []()
+
+Video:
+- [What is IoT (Internet of Things)? An Introduction](https://www.youtube.com/watch?v=4FxU-xpuCww)
+
+
+- [Exploring Computing Models: Edge Computing vs Fog Computing vs Cloud Computing](https://www.scalecomputing.com/resources/edge-computing-vs-fog-computing-vs-cloud-computing)

@@ -151,71 +151,81 @@ export const ChapterHeader = ({ id, number, title, description, altBg = false }:
   )
 }
 
-// 5. Split Content Block
-export const SplitContent = ({ id, label, title, children, insightBox, imageUrl, imageRight = false, altBg = false }: any) => {
+// 5. Zigzag Content Block
+export const ZigzagContent = ({ id, label, title, segments, startRight = true, altBg = false }: any) => {
   return (
     <section id={id} className={`py-[var(--section-py)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} overflow-hidden min-h-screen flex flex-col justify-center`}>
-      <div className="max-w-[var(--container)] w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        
-        {/* Content Side */}
-        <motion.div 
-          className={imageRight ? "order-1" : "order-2 md:order-2"}
-          variants={animations.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-20%" }}
-        >
+      <div className="max-w-[var(--container)] w-full mx-auto">
+        <div className="mb-16 md:mb-24 text-center">
           <p className="text-label mb-4">{label}</p>
-          <h3 className="text-h1 mb-8">{title}</h3>
-          <div className="text-body space-y-6">
-            {children}
-          </div>
-          
-          {insightBox && (
-            <div className="mt-8 p-6 bg-card rounded-lg border-l-[3px] border-accent1">
-              <p className="text-label mb-2">{insightBox.label || "KEY INSIGHT"}</p>
-              <p className="text-body m-0">{insightBox.content}</p>
-            </div>
-          )}
-        </motion.div>
+          <h3 className="text-h1">{title}</h3>
+        </div>
         
-        {/* Image Side */}
-        <motion.div 
-          className={imageRight ? "order-2" : "order-1 md:order-1"}
-          variants={imageRight ? animations.slideRight : animations.slideLeft} 
-          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-20%" }}
-        >
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-card border border-border shadow-lg">
-            {imageUrl ? (
-              <Image src={imageUrl} alt={title} fill className="object-contain p-4" />
-            ) : (
-              <div className="w-full h-full bg-card/50 flex items-center justify-center text-text-muted">Visual Content</div>
-            )}
-          </div>
-        </motion.div>
+        <div className="flex flex-col relative w-full pt-12 gap-12 md:gap-16">
+          {segments.map((seg: any, idx: number) => {
+            const isRight = startRight ? idx % 2 === 0 : idx % 2 !== 0;
+            return (
+              <motion.div 
+                key={idx}
+                variants={isRight ? animations.slideRight : animations.slideLeft} 
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-20%" }}
+                className={`w-full ${seg.type === 'image' ? 'md:w-[85%]' : 'md:w-[45%]'} flex flex-col ${isRight ? 'self-end' : 'self-start'} relative`}
+                style={{ zIndex: 10 + idx }}
+              >
+                 {seg.type === 'text' && (
+                   <div className="text-body space-y-4 bg-card/80 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-border shadow-2xl">
+                     {seg.content}
+                   </div>
+                 )}
+                 {seg.type === 'image' && (
+                   <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-card border border-border shadow-2xl">
+                     {seg.imageUrl ? (
+                       <Image src={seg.imageUrl} alt={title || "Visual content"} fill className="object-contain p-4" />
+                     ) : (
+                       <div className="w-full h-full bg-card/50 flex items-center justify-center text-text-muted">Visual Content</div>
+                     )}
+                   </div>
+                 )}
+                 {seg.type === 'insight' && (
+                   <div className="p-8 md:p-12 bg-card/90 backdrop-blur-md rounded-2xl border border-border border-l-[4px] border-l-accent1 shadow-2xl">
+                     <p className="text-label mb-4">{seg.label || "KEY INSIGHT"}</p>
+                     <div className="text-body m-0">{seg.content}</div>
+                   </div>
+                 )}
+              </motion.div>
+            )
+          })}
+        </div>
       </div>
     </section>
   )
 }
 
-// 6. Concept Cards Row
-export const ConceptCardsRow = ({ cards, id, altBg = false }: any) => {
-  const gridClass = cards.length === 1 ? 'md:grid-cols-1' : cards.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'
+// 6. Concept Cards Zigzag
+export const ConceptCardsZigzag = ({ cards, id, startRight = true, altBg = false }: any) => {
   return (
-    <section id={id} className={`py-[var(--section-py)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} min-h-screen flex flex-col justify-center`}>
+    <section id={id} className={`py-[var(--section-py)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} min-h-screen flex flex-col justify-center overflow-hidden`}>
       <div className="max-w-[var(--container)] w-full mx-auto">
-        <motion.div 
-          className={`grid grid-cols-1 ${gridClass} gap-6`}
-          variants={animations.staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-10%" }}
-        >
-          {cards.map((card: any, idx: number) => (
-            <motion.div key={idx} variants={animations.scaleFade} className="group bg-card border border-border rounded-2xl p-8 hover:border-accent1 hover:shadow-[0_0_20px_var(--glow)] transition-all duration-300">
-              <div className="w-12 h-12 rounded-full bg-accent1/15 flex items-center justify-center text-accent1 font-heading text-xl mb-6">
-                {card.number || (idx + 1)}
-              </div>
-              <h4 className="text-h2 text-xl mb-4">{card.title}</h4>
-              <p className="text-body text-sm mb-6">{card.description}</p>
-              {/* Optional learn more arrow */}
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="flex flex-col relative w-full pt-12 gap-12 md:gap-16">
+          {cards.map((card: any, idx: number) => {
+            const isRight = startRight ? idx % 2 === 0 : idx % 2 !== 0;
+            return (
+              <motion.div 
+                key={idx} 
+                variants={isRight ? animations.slideRight : animations.slideLeft}
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-20%" }}
+                className={`group bg-card/80 backdrop-blur-md border border-border rounded-2xl p-8 md:p-12 hover:border-accent1 hover:shadow-[0_0_20px_var(--glow)] transition-[border-color,box-shadow] duration-300 w-full md:w-[75%] flex flex-col ${isRight ? 'self-end' : 'self-start'} relative shadow-2xl`}
+                style={{ zIndex: 10 + idx }}
+              >
+                <div className="w-12 h-12 rounded-full bg-accent1/15 flex items-center justify-center text-accent1 font-heading text-xl mb-6">
+                  {card.number || (idx + 1)}
+                </div>
+                <h4 className="text-h2 text-xl mb-4">{card.title}</h4>
+                <p className="text-body text-sm mb-0">{card.description}</p>
+              </motion.div>
+            )
+          })}
+        </div>
       </div>
     </section>
   )
@@ -256,7 +266,6 @@ export const Conclusion = ({ title, summary, takeaways, id }: any) => {
           <ul className="space-y-4">
             {takeaways.map((item: string, idx: number) => (
               <li key={idx} className="flex items-start gap-4 text-body pl-4 border-l-2 border-accent1">
-                <span className="text-accent1 mt-1">→</span>
                 <span>{item}</span>
               </li>
             ))}

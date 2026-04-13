@@ -1,0 +1,16 @@
+# Change Management in Digital Transformation
+
+- [Change Management In Digital Transformation](https://www.forbes.com/sites/forrester/2023/06/23/change-management-in-digital-transformation/)
+- [Digital Transformation Management: An Insightful Guide](https://www.prosci.com/blog/digital-transformation-management-success)
+- [Change management for digital transformation: The three best strategies](https://www.celonis.com/blog/change-management-for-digital-transformation-the-three-best-strategies/)
+
+
+# Agile Project Management
+
+- [Agile project management](https://www.apm.org.uk/resources/find-a-resource/agile-project-management/)
+
+# Scrum
+
+- [What is scrum and how to get started](https://www.atlassian.com/agile/scrum)
+- [What is Scrum?](https://aws.amazon.com/what-is/scrum/)
+- [Scrum](https://www.agilealliance.org/glossary/scrum/)

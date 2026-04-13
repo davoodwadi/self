@@ -1,0 +1,29 @@
+# AI/ML/DL
+
+[The Difference Between AI, ML and DL](https://www.cengn.ca/information-centre/innovation/difference-between-ai-ml-and-dl/)
+[Difference Between Artificial Intelligence vs Machine Learning vs Deep Learning](https://www.geeksforgeeks.org/difference-between-artificial-intelligence-vs-machine-learning-vs-deep-learning/)
+[Machine Learning vs Deep Learning vs Artificial Intelligence (ML vs DL vs AI)](https://www.analyticsvidhya.com/articles/machine-learning-vs-artificial-intelligence-vs-deep-learning/)
+[AI vs Machine Learning vs Deep Learning: Know the Differences](https://www.simplilearn.com/tutorials/artificial-intelligence-tutorial/ai-vs-machine-learning-vs-deep-learning)
+
+
+# AI
+
+[What is artificial intelligence (AI) in business?](https://www.ibm.com/think/topics/artificial-intelligence-business)
+[Google Cloud - What is Artificial Intelligence (AI)?](https://cloud.google.com/learn/what-is-artificial-intelligence)
+[Investopedia - What Is Artificial Intelligence (AI)?](https://www.investopedia.com/terms/a/artificial-intelligence-ai.asp)
+[sas - Artificial Intelligence - What it is and why it matters](https://www.sas.com/en_us/insights/analytics/what-is-artificial-intelligence.html)
+[Coursera - What Is Artificial Intelligence? Definition, Uses, and Types](https://www.coursera.org/articles/what-is-artificial-intelligence)
+
+
+# ML
+[MIT Sloan - Machine learning, explained](https://mitsloan.mit.edu/ideas-made-to-matter/machine-learning-explained)
+[IBM - What is machine learning?](https://www.ibm.com/think/topics/machine-learning)
+[Google Developers - Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course)
+[Oracle - What Is Machine Learning?](https://www.oracle.com/ca-en/artificial-intelligence/machine-learning/what-is-machine-learning/)
+
+# DL
+[IBM - What is deep learning?](https://www.ibm.com/think/topics/deep-learning)
+[AWS - What is Deep Learning?](https://aws.amazon.com/what-is/deep-learning/)
+[Google Cloud - What is Deep Learning?](https://cloud.google.com/discover/what-is-deep-learning)
+[MathWorks - What Is Deep Learning?](https://www.mathworks.com/discovery/deep-learning.html)
+

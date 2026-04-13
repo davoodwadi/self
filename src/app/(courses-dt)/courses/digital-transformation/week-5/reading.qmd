@@ -1,0 +1,23 @@
+
+# Cloud Computing
+
+- [AWS - What is cloud computing?](https://aws.amazon.com/what-is-cloud-computing/)
+- [Microsoft Azure - What is cloud computing? - A beginner’s guide](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-cloud-computing)
+- [Google Cloud - What is Cloud Computing?](https://cloud.google.com/learn/what-is-cloud-computing)
+- [McKinsey & Company - What is Cloud Computing?](https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-is-cloud-computing)
+
+
+
+# Edge Computing
+
+- [Microsoft Azure - What is edge computing?](https://azure.microsoft.com/en-ca/resources/cloud-computing-dictionary/what-is-edge-computing)
+- [IBM - What is edge computing?](https://www.ibm.com/think/topics/edge-computing)
+- [Edge Computing](https://www.accenture.com/ca-en/insights/cloud/edge-computing-index)
+
+# Fog Computing
+
+- [Fog Computing](https://www.geeksforgeeks.org/fog-computing/)
+- [What Is Fog Computing? Components, Examples, and Best Practices](https://www.spiceworks.com/tech/edge-computing/articles/what-is-fog-computing/)
+- [Fog computing](https://www.ionos.ca/digitalguide/server/know-how/fog-computing/)
+- []()
+

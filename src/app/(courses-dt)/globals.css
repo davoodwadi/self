@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Serif+Display:ital@0;1&family=Fira+Code:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Victor+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
@@ -25,8 +26,9 @@
 }
 
 @layer base {
-  :root {
-    /* Midnight Sapphire Palette */
+  /* Default and Palette 2 */
+  :root,
+  .theme-midnight-sapphire {
     --background: #050B1F;
     --background-alt: #080F28;
     --card: #0D1838;
@@ -39,12 +41,94 @@
     --highlight: #82BFFF;
     --glow: rgba(74, 144, 217, 0.15);
     
-    --font-heading: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
-    --font-body: var(--font-inter), 'Inter', sans-serif;
-    --font-accent: var(--font-space-mono), 'Space Mono', monospace;
-    --font-mono: var(--font-fira-code), 'Fira Code', monospace;
+    --font-heading: 'Space Grotesk', var(--font-space-grotesk), sans-serif;
+    --font-body: 'Inter', var(--font-inter), sans-serif;
+    --font-accent: 'Space Mono', var(--font-space-mono), monospace;
+    --font-mono: 'Fira Code', var(--font-fira-code), monospace;
+  }
+
+  /* Palette 1 */
+  .theme-obsidian-gold {
+    --background: #0A0A0F;
+    --background-alt: #12121A;
+    --card: #1A1A28;
+    --border: #2A2A40;
+    --text-primary: #F5F0E8;
+    --text-secondary: #A09880;
+    --text-muted: #5A5040;
+    --accent1: #C9A84C;
+    --accent2: #8B6914;
+    --highlight: #E8C96A;
+    --glow: rgba(201, 168, 76, 0.15);
     
-    /* Spacing */
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Jost', sans-serif;
+    --font-accent: 'Cinzel', serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  /* Palette 3 */
+  .theme-crimson-noir {
+    --background: #0D0608;
+    --background-alt: #140A0C;
+    --card: #1E0E12;
+    --border: #32161C;
+    --text-primary: #F5EEE8;
+    --text-secondary: #e3cacf;
+    --text-muted: #775f67;
+    --accent1: #C0392B;
+    --accent2: #8B2020;
+    --highlight: #E85A4F;
+    --glow: rgba(192, 57, 43, 0.15);
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lora', serif;
+    --font-accent: 'Libre Baskerville', serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  /* Palette 4 */
+  .theme-emerald-academy {
+    --background: #060F0A;
+    --background-alt: #0A1812;
+    --card: #0F2018;
+    --border: #1A3525;
+    --text-primary: #E8F5EE;
+    --text-secondary: #c1e6cd;
+    --text-muted: #567565;
+    --accent1: #27AE60;
+    --accent2: #1A7840;
+    --highlight: #52C97A;
+    --glow: rgba(39, 174, 96, 0.15);
+    
+    --font-heading: 'DM Serif Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-accent: 'Spectral', serif;
+    --font-mono: 'Source Code Pro', monospace;
+  }
+
+  /* Palette 5 */
+  .theme-aurora-violet {
+    --background: #080818;
+    --background-alt: #0D0D25;
+    --card: #141430;
+    --border: #222248;
+    --text-primary: #F0EEF8;
+    --text-secondary: #b5aad2;
+    --text-muted: #a9a9b8;
+    --accent1: #7B5EA7;
+    --accent2: #4A3478;
+    --highlight: #A88FD4;
+    --glow: rgba(123, 94, 167, 0.15);
+    
+    --font-heading: 'Fraunces', serif;
+    --font-body: 'Outfit', sans-serif;
+    --font-accent: 'Josefin Sans', sans-serif;
+    --font-mono: 'Victor Mono', monospace;
+  }
+
+  /* Shared Spacing - Applies to all themes */
+  :root {
     --section-py: 8rem;
     --section-py-lg: 12rem;
     --container: 90rem;

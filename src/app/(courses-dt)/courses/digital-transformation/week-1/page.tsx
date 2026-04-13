@@ -4,8 +4,8 @@ import {
   FloatingNav,
   Hero,
   ChapterHeader,
-  SplitContent,
-  ConceptCardsRow,
+  ZigzagContent,
+  ConceptCardsZigzag,
   CinematicQuote,
   Conclusion,
   DataBlock
@@ -17,7 +17,7 @@ import dtPyramidImg from "./dt_pyramid.png"
 import Image from "next/image"
 
 const SECTIONS = [
-  { id: "hero", label: "Introduction" },
+  { id: "hero", label: "Introduction" }, 
   { id: "ch1", label: "Foundations" },
   { id: "ch2", label: "Evolution" },
   { id: "ch3", label: "The Pyramid" },
@@ -26,7 +26,7 @@ const SECTIONS = [
 
 export default function DigitalTransformationWeek1() {
   return (
-    <main className="theme-midnight-sapphire relative w-full overflow-x-hidden bg-background min-h-screen font-body text-text-primary">
+    <main className="theme-obsidian-gold relative w-full overflow-x-hidden bg-background min-h-screen font-body text-text-primary">
       <ProgressBar />
       <FloatingNav sections={SECTIONS} />
 
@@ -48,24 +48,44 @@ export default function DigitalTransformationWeek1() {
         altBg={true}
       />
 
-      <SplitContent
+      <ZigzagContent
         label="CORE PRINCIPLE"
         title="More Than Just Technology"
-        imageRight={false}
-        imageUrl={dtImg}
-      >
-        <p>
-          Digital transformation is the integration of digital technology into all areas of a business. It fundamentally changes how businesses operate and deliver value to customers.
-        </p>
-        <p>
-          It requires a cultural shift that challenges the status quo. Technology is a key enabler, but people and processes are equally important.
-        </p>
-        <p>
-          Data-driven decision-making is essential for successful transformation, ensuring that strategies are aligned with actual market demands and operational realities.
-        </p>
-      </SplitContent>
+        startRight={false}
+        segments={[
+          {
+            type: "text",
+            content: (
+              <p>
+                Digital transformation is the integration of digital technology into all areas of a business. It fundamentally changes how businesses operate and deliver value to customers.
+              </p>
+            )
+          },
+          {
+            type: "image",
+            imageUrl: dtImg
+          },
+          {
+            type: "text",
+            content: (
+              <p>
+                It requires a cultural shift that challenges the status quo. Technology is a key enabler, but people and processes are equally important.
+              </p>
+            )
+          },
+          {
+            type: "text",
+            content: (
+              <p>
+                Data-driven decision-making is essential for successful transformation, ensuring that strategies are aligned with actual market demands and operational realities.
+              </p>
+            )
+          }
+        ]}
+      />
 
-      <ConceptCardsRow
+      <ConceptCardsZigzag
+        startRight={false}
         cards={[
           { title: "Technology Integration", description: "Adoption of cloud computing, AI, big data analytics, IoT, and automation to streamline processes." },
           { title: "Cultural Change", description: "Encouraging a mindset of innovation, agility, and collaboration among employees at all levels." },
@@ -92,26 +112,47 @@ export default function DigitalTransformationWeek1() {
         altBg={true}
       />
 
-      <SplitContent
+      <ZigzagContent
         label="THEORY"
         title="Digitization vs. Digitalization"
-        imageRight={true}
-        imageUrl={dddImg}
-        insightBox={{
-          label: "KEY INSIGHT",
-          content: "Digital transformation goes beyond digitization by rethinking business models and processes, focusing on enhancing customer experiences and creating new value propositions."
-        }}
-      >
-        <p>
-          <strong>Digitization</strong> refers to converting analog information into digital format. It involves the use of technology to improve efficiency and accuracy.
-        </p>
-        <p>
-          <strong>Digitalization</strong> is the use of digital technologies to change a business model and provide new revenue and value-producing opportunities. It is the process of moving to a digital business.
-        </p>
-        <p>
-          Successful digital transformation requires a strategic vision and leadership commitment, connecting all digital initiatives into a cohesive strategy.
-        </p>
-      </SplitContent>
+        startRight={false}
+        altBg={true}
+        segments={[
+          {
+            type: "text",
+            content: (
+              <p>
+                <strong>Digitization</strong> refers to converting analog information into digital format. It involves the use of technology to improve efficiency and accuracy.
+              </p>
+            )
+          },
+          {
+            type: "image",
+            imageUrl: dddImg
+          },
+          {
+            type: "insight",
+            label: "KEY INSIGHT",
+            content: "Digital transformation goes beyond digitization by rethinking business models and processes, focusing on enhancing customer experiences and creating new value propositions."
+          },
+          {
+            type: "text",
+            content: (
+              <p>
+                <strong>Digitalization</strong> is the use of digital technologies to change a business model and provide new revenue and value-producing opportunities. It is the process of moving to a digital business.
+              </p>
+            )
+          },
+          {
+            type: "text",
+            content: (
+              <p>
+                Successful digital transformation requires a strategic vision and leadership commitment, connecting all digital initiatives into a cohesive strategy.
+              </p>
+            )
+          }
+        ]}
+      />
 
       <CinematicQuote
         quote="How can organizations ensure that their digitization efforts align with their overall digital transformation strategy?"
@@ -134,7 +175,8 @@ export default function DigitalTransformationWeek1() {
         </div>
       </DataBlock>
 
-      <ConceptCardsRow
+      <ConceptCardsZigzag
+        startRight={false}
         cards={[
           { number: "1", title: "Foundation Layer", description: "Essential technology infrastructure (hardware, software, networks, cybersecurity)." },
           { number: "2", title: "Data Layer", description: "Data collection, management, and analytics to drive insights and decision-making." },
