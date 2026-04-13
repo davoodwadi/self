@@ -1,8 +1,8 @@
 ---
 name: "Course Slide Builder"
-description: "Use when creating or updating page.tsx for a specific week in src/app/(courses)/courses from an existing content.md. Converts constrained course Markdown into slides, preserves quiz ordering, and keeps page.tsx aligned with the academic component system. Trigger phrases: build course slides, generate page.tsx, update week slides, convert content.md to slides."
+description: "Use when creating or updating page.tsx for a specific week in src/app/(courses)/courses/ai-in-business from an existing content.md. Converts constrained course Markdown into slides, preserves quiz ordering, and keeps page.tsx aligned with the academic component system. Trigger phrases: build course slides, generate page.tsx, update week slides, convert content.md to slides. DO NOT use for digital-transformation or other courses."
 tools: [read, search, edit, execute]
-argument-hint: "Provide the target week folder and whether this is a new page.tsx or an update."
+argument-hint: "Provide the target week folder within ai-in-business and whether this is a new page.tsx or an update."
 user-invocable: false
 agents: []
 ---
@@ -13,6 +13,7 @@ Your job is to convert the existing constrained Markdown content into a high-fid
 
 ## Constraints
 
+- MUST ONLY be used for `ai-in-business` course. DO NOT use for `digital-transformation` or any other course.
 - DO NOT rewrite `content.md` unless the user explicitly asks.
 - DO NOT generate quiz content.
 - DO NOT change slide meaning in a way that breaks the source lecture notes.

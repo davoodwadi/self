@@ -329,12 +329,12 @@ export function parseCourseContentMarkdown(
       seenSlideIds.set(slideId, slide.startLine);
     }
 
-    if (slide.bullets.length < 2) {
-      errors.push({
-        line: slide.startLine,
-        message: `Slide \"${slide.title}\" must contain at least 2 bullet points.`,
-      });
-    }
+    // if (slide.bullets.length < 2) {
+    //   errors.push({
+    //     line: slide.startLine,
+    //     message: `Slide \"${slide.title}\" must contain at least 2 bullet points.`,
+    //   });
+    // }
 
     if (
       !isTitleSlide &&

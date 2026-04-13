@@ -14,7 +14,7 @@ export function CurriculumSection() {
         <SectionHeader align="center" className="mb-16">
           <div className="flex flex-col items-center">
             <h2 className="heading-secondary text-white/95 mb-4">
-              Curriculum Design
+              Curriculum
             </h2>
             <div className="w-16 h-px bg-accent-500/50 mb-6"></div>
             <p className="text-body max-w-2xl text-center">
@@ -31,7 +31,7 @@ export function CurriculumSection() {
               title="Applications of AI in Business"
               description="Hands-on course covering LLMs, prompt engineering, deep learning for NLP and computer vision, and how to evaluate AI tools for real business problems. Designed for MBA and graduate students."
               link={{
-                href: "/courses",
+                href: "/courses/ai-in-business",
                 label: "View Curriculum",
               }}
             />

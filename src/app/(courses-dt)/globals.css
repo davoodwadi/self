@@ -1,0 +1,125 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
+  --color-foreground: var(--text-primary);
+  --color-surface: var(--card);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent1: var(--accent1);
+  --color-accent2: var(--accent2);
+  --color-highlight: var(--highlight);
+  --color-glow: var(--glow);
+  
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-accent: var(--font-accent);
+  --font-mono: var(--font-mono);
+}
+
+@layer base {
+  :root {
+    /* Midnight Sapphire Palette */
+    --background: #050B1F;
+    --background-alt: #080F28;
+    --card: #0D1838;
+    --border: #1A2850;
+    --text-primary: #E8EDF5;
+    --text-secondary: #7A90B5;
+    --text-muted: #3A4A65;
+    --accent1: #4A90D9;
+    --accent2: #1E5F9E;
+    --highlight: #82BFFF;
+    --glow: rgba(74, 144, 217, 0.15);
+    
+    --font-heading: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
+    --font-body: var(--font-inter), 'Inter', sans-serif;
+    --font-accent: var(--font-space-mono), 'Space Mono', monospace;
+    --font-mono: var(--font-fira-code), 'Fira Code', monospace;
+    
+    /* Spacing */
+    --section-py: 8rem;
+    --section-py-lg: 12rem;
+    --container: 90rem;
+    --container-narrow: 70rem;
+    --gap-cards: 1.5rem;
+    --gap-sections: 2rem;
+    --card-radius: 16px;
+    --card-padding: 2rem;
+    --border-thin: 1px;
+    --border-accent: 3px;
+    --border-glow: 0 0 20px var(--glow);
+  }
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+  }
+}
+
+/* Typography Scale */
+.text-display {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.text-h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.text-h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.text-label {
+  font-family: var(--font-accent);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent1);
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.text-quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.8rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.text-caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}

@@ -39,36 +39,6 @@ Optional front matter fields:
 
 Use `lecturer` as the preferred metadata field. The parser still accepts legacy `instructor` for backward compatibility, but new and updated files should use `lecturer`.
 
-## Legacy Structure
-
-Older files may still use heading-based metadata:
-
-```md
-# Topic
-<one or more plain text lines>
-
-# Background
-<one or more plain text lines explaining a cinematic background that is low-key, does not interfere with the text, has tons of blur and noise, potentially has a shape that matches the theme of the Topic>
-
-# Slide contents
-
-## Title Slide
-- ...
-- ...
-```
-
-Legacy-compatible alternative:
-
-```md
-# AI Innovations for Product Development
-
-# Background
-...
-
-# Slide contents
-...
-```
-
 ## Slide Rules
 
 - Each `##` heading defines exactly one slide.
@@ -135,9 +105,8 @@ Slides without either suffix default to no quiz.
 
 Discussion prompts should be used sparingly.
 
-- Add a `Discussion:` bullet only when the slide presents a meaningful tradeoff, judgment call, ethical tension, or strategic ambiguity worth debating in class.
-- Avoid generic prompts such as asking whether the topic is important or how it applies broadly.
-- Keep the discussion prompt as the final bullet when it is present.
+- Add a `Discussion:` bullet only when the slide presents a concrete scenario and asks class what they would do.
+- Avoid generic prompts.
 
 Example:
 
@@ -146,7 +115,7 @@ Example:
 - Product development is undergoing a fundamental transformation.
 - Moving from isolated tasks to a reshaped lifecycle.
 - Covers the fuzzy front end of ideation to regulatory compliance.
-- Discussion: Where does augmented invention create the greatest managerial risk in your organization, and why?
+- Discussion: Is a child who asks their parent to buy her a toy a consumer?
 ```
 
 Validation command:

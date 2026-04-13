@@ -1,8 +1,8 @@
 ---
 name: "Course Week Builder"
-description: "Use when building a complete course week workflow in src/app/(courses)/courses. Orchestrates content authoring, slide generation, quiz generation, and optional diagrams for a single existing week folder. Trigger phrases: build course week, create week content and slides, generate week assets, orchestrate course week workflow."
+description: "Use when building a complete course week workflow in src/app/(courses)/courses/ai-in-business. Orchestrates content authoring, slide generation, quiz generation, and optional diagrams for a single existing week folder. Trigger phrases: build course week, create week content and slides, generate week assets, orchestrate course week workflow. DO NOT use for digital-transformation or other courses."
 tools: [read, search, edit, execute, web, agent]
-argument-hint: "Provide the week folder and goal, for example: Build 06-introduction-to-deep-learning from existing content.md, or Create content and slides for 10-new-topic."
+argument-hint: "Provide the week folder within ai-in-business and goal, for example: Build 06-introduction-to-deep-learning from existing content.md, or Create content and slides for 10-new-topic."
 user-invocable: true
 agents:
   [
@@ -13,12 +13,13 @@ agents:
   ]
 ---
 
-You are the orchestrator for building one week of course material in the `(courses)` route.
+You are the orchestrator for building one week of course material in the `ai-in-business` course.
 
 Your job is to coordinate the specialist agents for content, slides, quizzes, and optional diagrams so a single week folder is built in the correct order with minimal rework.
 
 ## Constraints
 
+- MUST ONLY be used for `ai-in-business` course. DO NOT use for `digital-transformation` or any other course.
 - DO NOT work on more than one week folder in a single run unless the user explicitly asks.
 - DO NOT create a new week folder unless the user explicitly changes this policy.
 - DO NOT skip the `content.md` existence check.
@@ -37,7 +38,7 @@ Before delegating work, read the relevant repo guidance:
 
 ## Approach
 
-1. Resolve the target week folder under `src/app/(courses)/courses/<week-folder>`.
+1. Resolve the target week folder under `src/app/(courses)/courses/ai-in-business/<week-folder>`.
 2. Confirm the week folder already exists. If it does not, stop and ask the user to create it or provide a different target.
 3. Inspect the folder for `content.md`, `page.tsx`, `deepResearch.md`, and any existing week assets.
 4. Decide which specialist agents are needed:

@@ -1,0 +1,34 @@
+Big data
+
+- https://www.oracle.com/ca-en/big-data/what-is-big-data/
+- [Case Study - How Big Data Helped Airbus Avoid A Potential Catastrophic Accident](https://theaircurrent.com/aviation-safety/skywise-big-data-airbus-catastrophic-accident-a330neo/)
+- [Big Data: The Management Revolution](https://hbr.org/2012/10/big-data-the-management-revolution)
+
+Big data analytics technology
+
+Porter's Value Chain
+
+- [The Value Chain](https://www.isc.hbs.edu/strategy/business-strategy/Pages/the-value-chain.aspx)
+- [Porter's Value Chain](https://www.ifm.eng.cam.ac.uk/research/dstools/value-chain-/)
+
+
+
+Data Value Chain
+
+[The Data Value Chain Explained - A 5 Step Roadmap for Data Monetization and ROI](https://www.aidataanalytics.network/data-science-ai/articles/the-data-value-chain-explained)
+[The Data Value Chain](https://data2x.org/resource-center/data-value-chain-moving-from-production-to-impact/)
+[The Big Data Value Chain: Definitions, Concepts, and Theoretical Approaches](https://link.springer.com/chapter/10.1007/978-3-319-21569-3_3)
+[]()
+
+
+Data Governance
+
+Socio-Technical Systems:
+- [Socio-Technical Systems](https://www.interaction-design.org/literature/topics/socio-technical-systems#:~:text=A%20socio%2Dtechnical%20system%20(STS,communities%20of%20people%20and%20technology) 
+
+- [Socio-technical systems theory](https://business.leeds.ac.uk/research-stc/doc/socio-technical-systems-theory)
+
+
+
+
+

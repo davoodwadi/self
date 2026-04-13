@@ -1,14 +1,14 @@
 ---
 name: course-diagram-generation
-description: "Generate and wire diagrams for existing `(courses)` slide decks by reading `page.tsx`, selecting diagram-worthy slides, creating `flowcharts.tsx` configs, and rendering them with `FlowRenderer`. Use when a course already has slides and only diagram creation or diagram refactoring is needed."
-argument-hint: "Course path with existing page.tsx to diagramize"
+description: "Generate and wire diagrams for existing `ai-in-business` slide decks by reading `page.tsx`, selecting diagram-worthy slides, creating `flowcharts.tsx` configs, and rendering them with `FlowRenderer`. Use when a course already has slides and only diagram creation or diagram refactoring is needed. DO NOT use for digital-transformation or other courses."
+argument-hint: "Course path within ai-in-business with existing page.tsx to diagramize"
 ---
 
 # Course Diagram Generation
 
 ## Overview
 
-This skill is for one job only: add or improve diagrams in an existing course `page.tsx` under `src/app/(courses)/courses/*`.
+This skill is for one job only: add or improve diagrams in an existing course `page.tsx` under `src/app/(courses)/courses/ai-in-business/*`.
 
 Use this skill when slide content already exists and the task is to convert process-heavy slides into clear visual diagrams.
 

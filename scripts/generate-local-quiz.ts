@@ -174,11 +174,13 @@ async function generateLocalQuiz() {
             role: "user",
             parts: [
               {
-                text: `You are generating one pre-slide multiple choice quiz question for a course deck.
+                text: `You are generating one multiple choice quiz question.
 
-Generate exactly one question based strictly on this single slide snippet. The question must test the main concept of this specific slide only. Do not use information from other slides. Do not ask about the discussion question itself. The quiz should appear immediately before the slide, so it should prime the learner for the topic they are about to read.
+Generate exactly one question based strictly on the context. 
+The question must test the main concept of this specific context. 
+Do not ask about the discussion question itself. 
 
-Slide snippet:
+Context:
 ${section.quizSnippet}
 
 Return strict JSON with exactly 4 answer options.`,

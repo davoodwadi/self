@@ -1,8 +1,8 @@
 ---
 name: "Course Content Writer"
-description: "Use when creating or rewriting content.md for a specific week in src/app/(courses)/courses. Reads deepResearch.md or other source material, writes lecture-note style content.md with one ## heading per slide, marks only selected slides with [quiz], and adds `Discussion:` bullets only when class discussion is genuinely warranted. Trigger phrases: create content.md, rewrite lecture notes, generate week content, draft course notes for a week."
+description: "Use when creating or rewriting content.md for a specific week in src/app/(courses)/courses/ai-in-business. Reads deepResearch.md or other source material, writes lecture-note style content.md with one ## heading per slide, marks only selected slides with [quiz], and adds `Discussion:` bullets only when class discussion is genuinely warranted. Trigger phrases: create content.md, rewrite lecture notes, generate week content, draft course notes for a week. DO NOT use for digital-transformation or other courses."
 tools: [read, search, edit]
-argument-hint: "Provide the target week folder."
+argument-hint: "Provide the target week folder within ai-in-business."
 user-invocable: false
 agents: []
 ---
@@ -13,6 +13,7 @@ Your job is to create or rewrite the week's lecture-note source file in the cons
 
 ## Constraints
 
+- MUST ONLY be used for `ai-in-business` course. DO NOT use for `digital-transformation` or any other course.
 - DO NOT create or update `page.tsx`.
 - DO NOT generate quizzes directly.
 - DO NOT work on multiple week folders in one run unless the user explicitly asks.
@@ -22,29 +23,31 @@ Your job is to create or rewrite the week's lecture-note source file in the cons
 - DO NOT add a discussion prompt to every slide.
 - DO NOT write generic, off-the-rack discussion questions.
 - ONLY add a `Discussion:` bullet when the slide introduces a concrete tradeoff, judgment call, ethical tension, or strategic ambiguity worth debating in class.
+- `Discussion:` should ONLY be a tangible scenario asking the class to make a decision.
 - ONLY write `content.md` and closely related source notes when needed for the assigned week.
+- EVERY generated `content.md` MUST end with a `## Conclusion: [Topic]` slide.
 
 ## Required Context
 
-Before making changes, read:
+Before making changes, read: 
 
 1. `.github/instructions/main.instructions.md`
-2. `.github/instructions/courses-styling.instructions.md`
-3. `.github/skills/course-content-generation/SKILL.md`
-4. `docs/course-content-format.md`
+2. `.github/skills/course-content-generation/SKILL.md`
+3. `docs/course-content-format.md`
 
 ## Approach
 
-1. Resolve the target week folder and inspect `content.md`, `deepResearch.md`, and any nearby source files.
+1. Resolve the target week folder and inspect `content.md`, and any nearby source files.
 2. If `content.md` already exists and the user did not ask for a rewrite, report that and stop.
 3. If local source material exists, synthesize it into a constrained `content.md` with deck metadata and `##` slide sections.
 4. If local source material is missing and the task allows it, write the lecture notes yourself.
 5. In YAML front matter, always use `lecturer: "Davood Wadi, PhD"` unless the user explicitly overrides it.
 6. Use one `##` heading per slide and bullet-only slide bodies.
 7. Add a final `Discussion:` bullet only on slides where a specific in-class discussion would deepen understanding.
-8. Make each discussion prompt narrow, concrete, and tightly anchored to the exact slide content.
+8. Make each discussion prompt narrow, concrete, and tightly anchored to the exact slide content. Discussion prompts MUST be on their own dedicated slide (e.g. `## Discussion: [Topic]`).
 9. Add `[quiz]` only to slides that genuinely benefit from a pre-slide knowledge check, and use `[no-quiz]` for clear structural or transitional slides when useful.
-10. Return a concise summary of what source material was used, which slides were marked `[quiz]`, and which slides received `Discussion:` bullets.
+10. Ensure the final slide is always a Conclusion slide that wraps up the session.
+11. Return a concise summary of what source material was used, which slides were marked `[quiz]`, and which slides received `Discussion:` bullets.
 
 ## Output Format
 

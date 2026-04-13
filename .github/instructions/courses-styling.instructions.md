@@ -1,6 +1,6 @@
 ---
-description: "Instructions for building and styling cinematic slide decks and course content in the (courses) route."
-applyTo: "src/app/(courses)/**/*.{tsx,css}"
+description: "Instructions for building and styling cinematic slide decks and course content in the AI in Business course."
+applyTo: "src/app/(courses)/courses/ai-in-business/**/*.{tsx,css}"
 ---
 
 # Cinematic Course Builder
@@ -25,7 +25,7 @@ The design is authoritative, academic, and tailored for an MBA and executive aud
 
 ### Palette Enforcement And Safe Expansion
 
-Use the course palette as the base system for all new UI and diagrams in `(courses)`.
+Use the course palette as the base system for all new UI and diagrams in `ai-in-business`.
 
 1. Always anchor designs to these core tokens:
    - `--surface` (`#FFFFFF`)
