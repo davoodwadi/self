@@ -1,0 +1,167 @@
+---
+title: "Week 10: Cyber Security, Ethics and Social Issues of Digital Transformation"
+author: "Dr. Davood Wadi"
+format:
+    pptx:
+        reference-doc: template.pptx
+        slide-level: 2
+        incremental: true
+        slide-number: true
+---
+
+## Review of Last Week
+1. What was the First Industrial Revolution?
+2. What was the Second Industrial Revolution?
+3. What was the Third Industrial Revolution?
+4. What was the Fourth Industrial Revolution?
+5. What changes are expected in Industry 4.0?
+
+
+## Agenda
+
+- Analyze cybersecurity risks and governance frameworks in digitally transformed businesses
+- Evaluate ethical implications of emerging technologies and digital business models
+- Develop strategies to address social challenges arising from digital transformation
+- Create balanced approaches that drive innovation while managing risks responsibly
+
+## The Evolving Threat Landscape
+
+- Emergence of sophisticated cyber threats (**state-sponsored attacks**, **ransomware**, **supply chain vulnerabilities**)
+- Attack surface expansion through IoT (e.g., Device Manipulation), cloud adoption, and remote work (e.g., Multifactor Authentication)
+- Economic impact of cybersecurity breaches on business operations and reputation
+
+## Question
+
+- Research a recent cyber security breaches in North America.
+- Find out why the breach happened. 
+    - Who caused it? 
+    - What vulnerability enabled it?
+
+- How could the organization/business prevented the breach?
+
+## Note on Research
+
+- Not all internet sources are viable
+- Especially in GenAI era, there has been numerous fake/hallucinated reports (e.g., [2024 in Review: The Most Notable Data Breaches in North America](https://www.etechcomputing.com/2024-in-review-the-most-notable-data-breaches-in-north-america/) talking about data breaches that did not happen!)
+
+## Case Study: Canadian Revenue Agency (CRA) Data Leak
+
+- Canadian Revenue Agency (CRA)
+- Dating back to 2020
+- Hackers obtained confidential data used by **H&R Block Canada**, one of the country's largest tax preparation firms
+- Unauthorized access allowed imposters to change **direct deposit information**, submit false tax returns, and steal over $6 million in fraudulent refunds
+
+## Case Study: Canadian Revenue Agency (CRA) Data Leak
+
+- CRA confirmed that an internal error led to the exposure of over 30,000 Canadian taxpayers’ personal information. 
+- Resulted in Social Insurance Numbers (SIN), tax returns, and financial details being left accessible to unauthorized individuals.
+
+## Case Study: Canadian Revenue Agency (CRA) Data Leak
+
+- An investigation is ongoing
+- Office of the Privacy Commissioner of Canada (OPC) is examining whether the CRA met its obligations under the **Privacy Act**
+
+# Ethics in Digital Transformation
+
+- Privacy by design methodologies
+- Data minimization vs. data-driven business models
+    - Instead of protecting the collected data, do not collect data at all.
+- Balancing personalization and privacy rights
+    - Personalization needs personal data.
+    - Privacy needs little data collection.
+
+## Ethical AI and Algorithm Governance
+
+- Algorithmic bias and fairness considerations
+    - Social bias
+    - Racial bias
+    - Gender bias
+    - Cognitive bias
+- Transparency and explainability requirements
+    - How is the AI model making decisions?
+
+## Truth, Trust and Digital Information Integrity
+
+- Misinformation and synthetic media challenges
+    - e.g., [2024 in Review: The Most Notable Data Breaches in North America](https://www.etechcomputing.com/2024-in-review-the-most-notable-data-breaches-in-north-america/) talking about data breaches that did not happen!
+- Corporate responsibility in content moderation
+    - The balance between battling misinformation and censorship
+
+## Environmental Sustainability
+
+- Carbon footprint of digital technologies
+
+- GPT-3 (2020): Estimated training cost ranged from $2 million to $4.6 million.
+- GPT-4 (2023): Training costs were estimated between $41 million and $78.4 million. OpenAI CEO Sam Altman suggested the total cost exceeded $100 million when including staff salaries.
+- Gemini Ultra (2023): Google's advanced AI model had estimated training costs between $30 million and $191 million, not including staff salaries.
+
+## Environmental Sustainability
+
+- From 2017 to 2023, costs rose from $930 for the **Transformer model** to over $78 million for **GPT-4**.
+- Training costs for frontier AI models have grown by a factor of **2x** to **3x** per year for the past eight years.
+- If this trend continues, the largest training runs could cost more than a billion dollars by 2027.
+
+## Platform Power and Digital Monopolies
+- Network effects and winner-takes-all dynamics
+    - In 2024, if you were to host your website, you had to go through one of top five cloud companies.
+
+## Further Readings
+
+- O'Neil, C. (2016). Weapons of Math Destruction: How Big Data Increases Inequality and Threatens Democracy
+
+## Conclusion
+
+- Digital Transformation Cybersecurity Threats
+- Responsible AI and AI Ethics
+- Environmental Impacts of Artificial Intelligence
+- Centralization of Cloud Computing Power
+
+# Q&A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

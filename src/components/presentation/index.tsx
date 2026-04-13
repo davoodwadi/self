@@ -152,7 +152,7 @@ export const ChapterHeader = ({ id, number, title, description, altBg = false }:
 }
 
 // 5. Zigzag Content Block
-export const ZigzagContent = ({ id, label, title, segments, startRight = true, altBg = false }: any) => {
+export const ZigzagContent = ({ id, label, title, segments, startRight = false, altBg = false }: any) => {
   return (
     <section id={id} className={`py-[var(--section-py)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} overflow-hidden min-h-screen flex flex-col justify-center`}>
       <div className="max-w-[var(--container)] w-full mx-auto">
@@ -163,13 +163,13 @@ export const ZigzagContent = ({ id, label, title, segments, startRight = true, a
         
         <div className="flex flex-col relative w-full pt-12 gap-12 md:gap-16">
           {segments.map((seg: any, idx: number) => {
-            const isRight = startRight ? idx % 2 === 0 : idx % 2 !== 0;
+            const isRight = idx % 2 !== 0; // Force all zigzags to start from left
             return (
               <motion.div 
                 key={idx}
                 variants={isRight ? animations.slideRight : animations.slideLeft} 
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-20%" }}
-                className={`w-full ${seg.type === 'image' ? 'md:w-[85%]' : 'md:w-[45%]'} flex flex-col ${isRight ? 'self-end' : 'self-start'} relative`}
+                className={`w-full ${seg.type === 'image' ? 'md:w-[85%]' : 'md:w-[85%]'} flex flex-col ${isRight ? 'self-end' : 'self-start'} relative`}
                 style={{ zIndex: 10 + idx }}
               >
                  {seg.type === 'text' && (
@@ -193,7 +193,7 @@ export const ZigzagContent = ({ id, label, title, segments, startRight = true, a
                    </div>
                  )}
               </motion.div>
-            )
+            ) 
           })}
         </div>
       </div>
@@ -208,7 +208,7 @@ export const ConceptCardsZigzag = ({ cards, id, startRight = true, altBg = false
       <div className="max-w-[var(--container)] w-full mx-auto">
         <div className="flex flex-col relative w-full pt-12 gap-12 md:gap-16">
           {cards.map((card: any, idx: number) => {
-            const isRight = startRight ? idx % 2 === 0 : idx % 2 !== 0;
+            const isRight = idx % 2 !== 0; // Force all zigzags to start from left
             return (
               <motion.div 
                 key={idx} 

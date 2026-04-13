@@ -26,25 +26,25 @@
 }
 
 @layer base {
-  /* Default and Palette 2 */
+  /* Default and Palette 2 (Netflix-inspired) */
   :root,
-  .theme-midnight-sapphire {
-    --background: #050B1F;
-    --background-alt: #080F28;
-    --card: #0D1838;
-    --border: #1A2850;
-    --text-primary: #E8EDF5;
-    --text-secondary: #7A90B5;
-    --text-muted: #3A4A65;
-    --accent1: #4A90D9;
-    --accent2: #1E5F9E;
-    --highlight: #82BFFF;
-    --glow: rgba(74, 144, 217, 0.15);
+  .theme-crimson-noir {
+    --background: #141414; /* Classic Netflix dark background */
+    --background-alt: #181818;
+    --card: #222222;
+    --border: #333333;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B3B3B3;
+    --text-muted: #808080;
+    --accent1: #E50914; /* Netflix Red */
+    --accent2: #B20710;
+    --highlight: #FFFFFF;
+    --glow: rgba(229, 9, 20, 0.15);
     
-    --font-heading: 'Space Grotesk', var(--font-space-grotesk), sans-serif;
-    --font-body: 'Inter', var(--font-inter), sans-serif;
-    --font-accent: 'Space Mono', var(--font-space-mono), monospace;
-    --font-mono: 'Fira Code', var(--font-fira-code), monospace;
+    --font-heading: 'Playfair Display', var(--font-playfair-display), serif;
+    --font-body: 'Lora', var(--font-lora), serif;
+    --font-accent: 'Libre Baskerville', var(--font-libre-baskerville), serif;
+    --font-mono: 'IBM Plex Mono', var(--font-ibm-plex-mono), monospace;
   }
 
   /* Palette 1 */
@@ -170,7 +170,7 @@
 
 .text-h2 {
   font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.0rem, 3vw, 1.5rem);
   font-weight: 400;
   line-height: 1.2;
 }

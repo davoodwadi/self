@@ -2,7 +2,7 @@ import { FadeUp } from "@/components/portfolio/FadeUp";
 import { SectionContainer } from "@/components/portfolio/SectionContainer";
 import { SectionHeader } from "@/components/portfolio/SectionHeader";
 import { CourseCard } from "@/components/portfolio/CourseCard";
-
+import { ConceptCardsZigzag } from "@/components/portfolio/ZigZagCards";
 export function CurriculumSection() {
   return (
     <SectionContainer
@@ -22,8 +22,8 @@ export function CurriculumSection() {
             </p>
           </div>
         </SectionHeader>
-      </div>
-      <div className=" gap-12">
+      </div> 
+      {/* <div className=" gap-12">
         <FadeUp>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <CourseCard
@@ -55,6 +55,22 @@ export function CurriculumSection() {
             />
           </div>
         </FadeUp>
+      </div> */}
+      <div>
+        <ConceptCardsZigzag
+          cards={[
+            { label: "Course", title: "Applications of AI in Business", description: "Hands-on course covering LLMs, prompt engineering, deep learning for NLP and computer vision, and how to evaluate AI tools for real business problems. Designed for MBA and graduate students.", link:{
+                href: "/courses/ai-in-business",
+                label: "View Course Website",
+              } },
+            { label: "Course", title: "Digital Transformation", description: "Covers how organizations adopt new technologies, manage the transition, and measure outcomes. Topics include platform business models, data-driven decision-making, and technology adoption frameworks.", link:{
+                href: "/courses/digital-transformation",
+                label: "View Course Website",
+              }  },
+            { label: "Course", title: "Introduction to Marketing", description: "What is Marketing? How do we define a consumer? What strategies firms adopt to influence consumption decisions?" }
+          ]}
+          altBg={true}
+        />
       </div>
     </SectionContainer>
   );

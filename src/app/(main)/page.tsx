@@ -13,11 +13,11 @@ export default function DavoodWadiPortfolio() {
       <main className="relative z-10">
         <HeroSection />
         <AboutSection />
-        <TeachingSection />
+        <CurriculumSection />
         <PublicationsSection />
+        <TeachingSection />
         <ServicesSection />
         <GrantsSection />
-        <CurriculumSection />
         <ContactSection />
       </main>
 
