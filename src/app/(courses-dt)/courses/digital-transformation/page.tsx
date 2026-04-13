@@ -100,17 +100,24 @@ export default function DigitalTransformationLanding() {
         <h1 className="hero-text text-display font-heading font-light mb-8 text-[var(--highlight)]">
           Digital Transformation
         </h1>
-        <p className="hero-text text-body max-w-2xl mx-auto text-[var(--text-secondary)] text-lg md:text-xl font-light leading-relaxed">
+        <p className="hero-text text-body max-w-2xl mx-auto text-[var(--text-secondary)] text-lg md:text-xl font-light leading-relaxed mb-6">
           The intersection of business strategy, human systems, and emerging technologies. 
           A ten-week course from foundations to the future of industry.
         </p>
+        <div className="hero-text flex items-center justify-center space-x-4">
+
+          <div className="text-left">
+            <p className="text-[var(--text-primary)] text-center font-accent font-bold text-sm tracking-wider ">Davood Wadi, PhD</p>
+            <p className="text-[var(--text-muted)] text-center text-xs font-mono">Lecturer & Course Developer</p>
+          </div>
+        </div>
       </div>
 
       {/* Grid of Weeks */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {COURSE_WEEKS.map((week, idx) => (
           <Link href={week.href} key={idx} className="course-card block group h-full">
-            <div className="bg-[var(--card)] border border-[var(--border)] rounded-sm p-8 h-full flex flex-col justify-between transition-all duration-500 hover:border-[var(--accent1)] hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(229,9,20,0.15)] relative overflow-hidden">
+            <div className="bg-[var(--card)] border border-[var(--border)] rounded-sm p-8 h-full flex flex-col justify-between transition-all duration-500 hover:border-[var(--accent1)] hover:shadow-[0_10px_30px_rgba(229,9,20,0.15)] relative overflow-hidden">
               
               {/* Subtle hover glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-[var(--glow)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -119,7 +126,7 @@ export default function DigitalTransformationLanding() {
                 <span className="text-label block mb-4 text-[var(--accent1)] font-accent font-bold">
                   {week.week}
                 </span>
-                <h3 className="text-h2 font-heading mb-4 text-[var(--text-primary)] transition-colors duration-300">
+                <h3 className="text-h2 font-heading font-bold mb-4 text-[var(--text-primary)] transition-colors duration-300">
                   {week.title}
                 </h3>
                 <p className="text-body text-[var(--text-secondary)] text-sm md:text-base leading-relaxed opacity-80">
@@ -128,7 +135,7 @@ export default function DigitalTransformationLanding() {
               </div>
 
               <div className="relative z-10 mt-8 pt-6 border-t border-[var(--border)] flex items-center justify-between">
-                <span className="text-[var(--text-muted)] text-xs uppercase tracking-widest font-accent group-hover:text-[var(--text-primary)] transition-colors duration-300">
+                <span className="text-[var(--text-muted)] text-xs uppercase tracking-widest font-accent font-bold group-hover:text-[var(--text-primary)] transition-colors duration-300">
                   Explore Chapter
                 </span>
                 <svg 
