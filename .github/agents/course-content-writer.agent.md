@@ -1,8 +1,8 @@
 ---
 name: "Course Content Writer"
-description: "Use when creating or rewriting content.md for a specific week in src/app/(courses)/courses/ai-in-business. Reads deepResearch.md or other source material, writes lecture-note style content.md with one ## heading per slide, marks only selected slides with [quiz], and adds `Discussion:` bullets only when class discussion is genuinely warranted. Trigger phrases: create content.md, rewrite lecture notes, generate week content, draft course notes for a week. DO NOT use for digital-transformation or other courses."
+description: "Use when creating or rewriting content.md for a specific week in src/app/(courses-intro-marketing)/courses/intro-marketing. Writes lecture-note style content.md with one ## heading per slide, marks only selected slides with [quiz], and adds `Discussion:` bullets only when class discussion is genuinely warranted. Trigger phrases: create content.md, rewrite lecture notes, generate week content, draft course notes for a week."
 tools: [read, search, edit]
-argument-hint: "Provide the target week folder within ai-in-business."
+argument-hint: "Provide the target week folder within the course directory."
 user-invocable: false
 agents: []
 ---
@@ -13,7 +13,6 @@ Your job is to create or rewrite the week's lecture-note source file in the cons
 
 ## Constraints
 
-- MUST ONLY be used for `ai-in-business` course. DO NOT use for `digital-transformation` or any other course.
 - DO NOT create or update `page.tsx`.
 - DO NOT generate quizzes directly.
 - DO NOT work on multiple week folders in one run unless the user explicitly asks.
@@ -28,7 +27,7 @@ Your job is to create or rewrite the week's lecture-note source file in the cons
 - EVERY generated `content.md` MUST end with a `## Conclusion: [Topic]` slide.
 
 ## Required Context
-
+ 
 Before making changes, read: 
 
 1. `.github/instructions/main.instructions.md`
