@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Serif+Display:ital@0;1&family=Fira+Code:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Victor+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
+  --color-foreground: var(--text-primary);
+  --color-surface: var(--card);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent1: var(--accent1);
+  --color-accent2: var(--accent2);
+  --color-highlight: var(--highlight);
+  --color-glow: var(--glow);
+  
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-accent: var(--font-accent);
+  --font-mono: var(--font-mono);
+}
+
+@layer base {
+  /* Default dark theme fallback (retained for safety) */
+  :root {
+    --background: #000000;
+    --background-alt: #141414;
+    --card: #181818;
+    --border: #333333;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B3B3B3;
+    --text-muted: #808080;
+    --accent1: #E50914;
+    --accent2: #B20710;
+    --highlight: #FFFFFF;
+    --glow: rgba(229, 9, 20, 0.15);
+    
+    --font-heading: 'Playfair Display', var(--font-playfair-display), serif;
+    --font-body: 'Lora', var(--font-lora), serif;
+    --font-accent: 'Libre Baskerville', var(--font-libre-baskerville), serif;
+    --font-mono: 'IBM Plex Mono', var(--font-ibm-plex-mono), monospace;
+  }
+
+  /* Pastel Theme 1: Mint */
+  .theme-pastel-mint {
+    --background: #F0FBF4;
+    --background-alt: #E2F2E8;
+    --card: #FFFFFF;
+    --border: #D1E8DA;
+    --text-primary: #0F2116;
+    --text-secondary: #224030;
+    --text-muted: #486856;
+    --accent1: #2C8A58;
+    --accent2: #1A5B38;
+    --highlight: #174229;
+    --glow: rgba(44, 138, 88, 0.15);
+    
+    --font-heading: 'Playfair Display', var(--font-playfair-display), serif;
+    --font-body: 'Lora', var(--font-lora), serif;
+    --font-accent: 'Libre Baskerville', var(--font-libre-baskerville), serif;
+    --font-mono: 'IBM Plex Mono', var(--font-ibm-plex-mono), monospace;
+  }
+
+  /* Pastel Theme 2: Blush (Default for this course) */
+  .theme-pastel-blush {
+    --background: #FFF5F5;
+    --background-alt: #FFEDED;
+    --card: #FFFFFF;
+    --border: #FFE0E0;
+    --text-primary: #290D12;
+    --text-secondary: #4F262D;
+    --text-muted: #754F55;
+    --accent1: #B83E51;
+    --accent2: #822030;
+    --highlight: #5E1420;
+    --glow: rgba(184, 62, 81, 0.15);
+    
+    --font-heading: 'Playfair Display', var(--font-playfair-display), serif;
+    --font-body: 'Lora', var(--font-lora), serif;
+    --font-accent: 'Libre Baskerville', var(--font-libre-baskerville), serif;
+    --font-mono: 'IBM Plex Mono', var(--font-ibm-plex-mono), monospace;
+  }
+
+  /* Pastel Theme 3: Lavender */
+  .theme-pastel-lavender {
+    --background: #F5F3FA;
+    --background-alt: #EAE5F5;
+    --card: #FFFFFF;
+    --border: #DCD3ED;
+    --text-primary: #160E26;
+    --text-secondary: #312747;
+    --text-muted: #594E70;
+    --accent1: #6B4BAA;
+    --accent2: #452A7A;
+    --highlight: #2D1A54;
+    --glow: rgba(107, 75, 170, 0.15);
+    
+    --font-heading: 'Playfair Display', var(--font-playfair-display), serif;
+    --font-body: 'Lora', var(--font-lora), serif;
+    --font-accent: 'Libre Baskerville', var(--font-libre-baskerville), serif;
+    --font-mono: 'IBM Plex Mono', var(--font-ibm-plex-mono), monospace;
+  }
+
+  /* Pastel Theme 4: Peach */
+  .theme-pastel-peach {
+    --background: #FFF8F0;
+    --background-alt: #FFEEDE;
+    --card: #FFFFFF;
+    --border: #FFE0C4;
+    --text-primary: #241308;
+    --text-secondary: #4A2C15;
+    --text-muted: #75513A;
+    --accent1: #C46523;
+    --accent2: #944611;
+    --highlight: #6B3008;
+    --glow: rgba(196, 101, 35, 0.15);
+    
+    --font-heading: 'Playfair Display', var(--font-playfair-display), serif;
+    --font-body: 'Lora', var(--font-lora), serif;
+    --font-accent: 'Libre Baskerville', var(--font-libre-baskerville), serif;
+    --font-mono: 'IBM Plex Mono', var(--font-ibm-plex-mono), monospace;
+  }
+
+  /* Shared Spacing - Applies to all themes */
+  :root {
+    --section-py: 8rem;
+    --section-py-lg: 12rem;
+    --container: 90rem;
+    --container-narrow: 70rem;
+    --gap-cards: 1.5rem;
+    --gap-sections: 2rem;
+    --card-radius: 16px;
+    --card-padding: 2rem;
+    --border-thin: 1px;
+    --border-accent: 3px;
+    --border-glow: 0 0 20px var(--glow);
+  }
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+  }
+}
+
+/* Typography Scale */
+.text-display {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.text-h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.text-h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.0rem, 3vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.text-label {
+  font-family: var(--font-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent1);
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.text-quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.8rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.text-caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}

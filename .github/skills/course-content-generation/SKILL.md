@@ -34,6 +34,7 @@ The file MUST follow this exact structure:
 - **Discussion Questions**: Discussion prompts MUST be on their own dedicated slide. Do not append them as a final bullet on a content slide. Create a new slide header (e.g., `## Discussion: [Topic]`) and place the scenario-based question as the only bullet point.
 - **Specificity Requirement**: Discussion prompts must be tightly anchored to the exact slide content, by specifying a brief scenario that requires a judgement. Avoid generic prompts that could fit any topic.
 - **Concluding Slide Requirement**: EVERY slide deck MUST end with a final `## Conclusion: [Topic]` slide that wraps up the session, summarizes the core takeaways, and provides closure for the module.
+- **Diagram Intents**: If a slide describes a complex process, lifecycle, pipeline, or comparison, include a diagram intent tag right below the header: `[diagram: <shape> - <description>]`. Shapes can be: cascading flow, circular loop, hub-and-spoke, split-lane, etc. (e.g., `[diagram: cascading flow - steps of AI deployment]`). Do not overuse diagrams.
 - **Punctuation & Style**:
   - **CRITICAL**: Use NO m-dashes (—) or n-dashes (–). Use a colon (:), a comma (,), or a standard hyphen (-) instead.
 
@@ -43,6 +44,7 @@ The background description should match the topic's "mood". It should be lowkey,
 
 ## Quality Criteria
 
+- Use simple and easy to understand pedagogical sentences and avoid complex sentences 
 - **No M-dash/N-dash**: Zero occurrences in the output.
 - The deck must be enough for a 3-hour academic session, divided into clear modules.
 - **Discussion Discipline**: Discussion prompts should be sparse, deliberate, and materially better than having no prompt at all.

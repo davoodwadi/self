@@ -87,13 +87,21 @@ function loadExistingQuizzes(outputPath: string) {
 
 async function generateLocalQuiz() {
   const { weekFolder, validateOnly } = getCliOptions();
+  
+  let targetDir = weekFolder;
+  if (!targetDir.includes("/") && !targetDir.includes("\\")) {
+    targetDir = `src/app/(courses)/courses/${weekFolder}`;
+  }
+
   const contentPath = path.resolve(
     process.cwd(),
-    `src/app/(courses)/courses/${weekFolder}/content.md`,
+    targetDir,
+    "content.md",
   );
   const outputPath = path.resolve(
     process.cwd(),
-    `src/app/(courses)/courses/${weekFolder}/quizzes.json`,
+    targetDir,
+    "quizzes.json",
   );
 
   if (!fs.existsSync(contentPath)) {
@@ -168,7 +176,7 @@ async function generateLocalQuiz() {
 
     try {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.1-pro-preview",
         contents: [
           {
             role: "user",

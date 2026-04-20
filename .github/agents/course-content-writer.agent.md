@@ -1,6 +1,6 @@
 ---
 name: "Course Content Writer"
-description: "Use when creating or rewriting content.md for a specific week in src/app/(courses-intro-marketing)/courses/intro-marketing. Writes lecture-note style content.md with one ## heading per slide, marks only selected slides with [quiz], and adds `Discussion:` bullets only when class discussion is genuinely warranted. Trigger phrases: create content.md, rewrite lecture notes, generate week content, draft course notes for a week."
+description: "Use when creating or rewriting content.md for a specific week. Writes lecture-note style content.md with one ## heading per slide, marks only selected slides with [quiz], and adds `Discussion:` bullets only when class discussion is genuinely warranted. Trigger phrases: create content.md, rewrite lecture notes, generate week content, draft course notes for a week."
 tools: [read, search, edit]
 argument-hint: "Provide the target week folder within the course directory."
 user-invocable: false
@@ -25,6 +25,7 @@ Your job is to create or rewrite the week's lecture-note source file in the cons
 - `Discussion:` should ONLY be a tangible scenario asking the class to make a decision.
 - ONLY write `content.md` and closely related source notes when needed for the assigned week.
 - EVERY generated `content.md` MUST end with a `## Conclusion: [Topic]` slide.
+- DO NOT overuse diagram intents. Add them sparingly (e.g., 1-2 per module) only for complex processes, lifecycles, pipelines, or comparisons.
 
 ## Required Context
  
@@ -45,8 +46,9 @@ Before making changes, read:
 7. Add a final `Discussion:` bullet only on slides where a specific in-class discussion would deepen understanding.
 8. Make each discussion prompt narrow, concrete, and tightly anchored to the exact slide content. Discussion prompts MUST be on their own dedicated slide (e.g. `## Discussion: [Topic]`).
 9. Add `[quiz]` only to slides that genuinely benefit from a pre-slide knowledge check, and use `[no-quiz]` for clear structural or transitional slides when useful.
-10. Ensure the final slide is always a Conclusion slide that wraps up the session.
-11. Return a concise summary of what source material was used, which slides were marked `[quiz]`, and which slides received `Discussion:` bullets.
+10. If a slide describes a complex process, lifecycle, pipeline, or comparison, include a diagram intent tag right below the header: `[diagram: <shape> - <description>]`. Shapes can be: cascading flow, circular loop, hub-and-spoke, split-lane, etc. Do not overuse.
+11. Ensure the final slide is always a Conclusion slide that wraps up the session.
+12. Return a concise summary of what source material was used, which slides were marked `[quiz]`, which slides received `Discussion:` bullets, and which slides received diagram intents.
 
 ## Output Format
 

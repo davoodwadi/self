@@ -16,13 +16,12 @@ This skill automates the process of generating a React `page.tsx` file for a cou
 Read the `content.md` file to extract:
 
 - **Topic/Title**: Main course heading.
-- **Background Shape**: Description of the background visuals (to be mapped to a `BackgroundManager` type).
 - **Slide Sections**: Sections starting with `##` headers.
 - **Key Concepts**: Bullet points, questions, and descriptions within each slide.
 
 ### 2. Component Mapping
 
-Map the Markdown elements to the corresponding React components from `src/app/(courses)/_components/SlideComponents.tsx`.
+Map the Markdown elements to the corresponding React components from `src/components/slide-components/SlideComponents.tsx`.
 
 | Markdown Element     | React Component      | Props/Variants                                    |
 | -------------------- | -------------------- | ------------------------------------------------- |
@@ -30,14 +29,20 @@ Map the Markdown elements to the corresponding React components from `src/app/(c
 | Sub-Header/Context   | `<Subtitle>`         | `variant="hero"` for title slide                  |
 | `## Slide Header`    | `<Heading>`          | Use `<Highlight>` for key words                   |
 | Category/Tag         | `<Tag>`              | Derived from slide context (e.g., "The Problem")  |
+| Body Text/Paragraph  | `<ContentText>`      | `layout="prose"` (default) or `layout="base"`     |
+| Sub-heading in cards | `<ContentTitle>`     | -                                                 |
+| Description in cards | `<ContentDescription>` | -                                                 |
+| Structured Box       | `<Card>`             | `title`, `subtitle`                               |
 | Bullet Points        | `<AnimatedList>`     | Contains `<ListItem>`                             |
 | Questions            | `<DiscussionCard>`   | `title="Group Discussion"`                        |
-| Quote/Emphasis       | `<Quote>`            | -                                                 |
+| Quote/Emphasis       | `<Quote>`            | `author`, `role`                                  |
+| Statistics/Numbers   | `<Metric>`           | `value`, `label`                                  |
 | Citation             | `<Citation>`         | `ids={[1, 2]}` linking to course citation sources |
-| Callout/Note         | `<Callout>`          | `variant="secondary"`                             |
+| Callout/Note         | `<Callout>`          | `variant="primary"` or `variant="secondary"`      |
 | Image/Visual         | `<MediaBlock>`       | `src`, `alt`, `caption`                           |
 | Percentage Breakdown | `<PieChart>`         | `data`, `title?`, `caption?`, `size?`             |
 | Split Layout         | `<Row>` & `<Column>` | `gap="large"`, `spanRatio="1/2"`                  |
+| `[diagram: ...]`     | Placeholder `div`    | `<div data-diagram="shape - concept" className="...">` |
 
 ### 3. Implementation Steps
 
@@ -60,6 +65,7 @@ Map the Markdown elements to the corresponding React components from `src/app/(c
       ContentDescription,
       DiscussionCard,
       Quote,
+      Metric,
       AnimatedList,
       ListItem,
       Callout,
@@ -67,33 +73,22 @@ Map the Markdown elements to the corresponding React components from `src/app/(c
       PieChart,
       Citation,
       CitationProvider,
-    } from "@/app/(courses)/_components/SlideComponents";
-    import { BackgroundManager } from "@/app/(courses)/_components/Backgrounds";
+    } from "@/components/slide-components/SlideComponents";
     import { createCourseQuizLookup } from "@/lib/course-quiz";
-    import {
-      getCitation,
-      getCitations,
-      getCitationUrls,
-    } from "./deepResearchCitations";
     ```
-3.  **Construct Component**: Create the default export function and wrap the `<SlideDeck>` with `<CitationProvider>`:
+
     ```tsx
     export default function CourseName() {
       return (
-        <CitationProvider
-          value={{ getCitation, getCitations, getCitationUrls }}
-        >
-          <SlideDeck background={<BackgroundManager type="sustainability" />}>
+          <SlideDeck>
             {/* slides here */}
           </SlideDeck>
-        </CitationProvider>
       );
     }
     ```
-4.  **Determine Background**: Check the `BackgroundManager` to see if background already exists (e.g., "deep-learning", "sustainability", "edii"). If not, create a new one based on the `content.md` file.
 5.  **Populate Slides**:
     - **Slide 1 (Title)**: Use `<Title>` and `<Subtitle variant="hero">`.
-    - **Subsequent Slides**: Use a mixture of components available in `"@/app/(courses)/_components/SlideComponents"` to create engaging slides.
+    - **Subsequent Slides**: Use a mixture of components available in `"@/components/slide-components/SlideComponents"` to create engaging slides.
 
 - **Creative Freedom Rule (CRITICAL)**: You MUST be inventive with layout, hierarchy, composition, and component choice. DIVERSIFY YOUR SLIDES to avoid repetitive "Heading + Bullet points" structures. 
   - Heavily utilize `<Row>` and `<Column>` to create dynamic split layouts (e.g., text on the left, an impactful `<Quote>` or `<Card>` on the right).
@@ -102,6 +97,7 @@ Map the Markdown elements to the corresponding React components from `src/app/(c
 - **Visible Copy Rule**: Do not introduce visible meta labels, editorial scaffolding, or pedagogical chrome. You MUST use the exact text from `content.md` without paraphrasing, summarizing, or modifying it.
 - **Slide Overflow Prevention Rule**: Ensure the content of each slide fits comfortably within a single screen/viewport. To prevent vertical overflow on dense slides, distribute content horizontally using `<Row>` and `<Column>` rather than stacking all elements vertically. If a slide is excessively dense, consider using `<Card>` or smaller text layouts to organize the space efficiently.
 - **Read-Only Source Rule**: NEVER edit, update, or modify the `content.md` file itself. Treat it as strictly read-only.
+- **Diagram Intents Rule**: If you encounter a `[diagram: shape - concept]` tag in `content.md`, DO NOT attempt to generate the `flowcharts.tsx` file. Instead, render a placeholder `div` inside the slide: `<div data-diagram="shape - concept" className="w-full h-[300px] sm:h-[340px] md:h-[380px] rounded-2xl border border-[var(--crimson)]/15 bg-white/80 flex items-center justify-center text-[var(--charcoal-light)]">Diagram Placeholder: concept</div>`. The Course Diagram Builder agent will replace this later.
 
 - **Quiz Wiring Rule**: If a slide is marked `[quiz]` in `content.md`, import `./quizzes.json`, build `const quizBySlideId = createCourseQuizLookup(quizzesData);`, and wire the corresponding `<Slide>` with `quizData={quizBySlideId["..."]}`.
 - **Deterministic Helper Rule**: Treat `src/lib/course-quiz.ts` as the canonical helper for quiz wiring. When you need exact emitted JSX, follow `buildQuizLookupDeclaration`, `buildQuizDataProp`, and `createQuizWiringPlan` instead of inventing an inline pattern.
@@ -119,6 +115,93 @@ Map the Markdown elements to the corresponding React components from `src/app/(c
 
 6.  **Apply Highlights**: Wrap 1-2 key words in each `<Heading>` with `<Highlight>`.
 
+### 4. Composition & Layout Examples (Avoiding Monotony)
+
+To avoid monotony and create a highly engaging, cinematic experience, you MUST alternate slide layouts. **Never use the exact same layout for two consecutive slides.** Mix and match components to create distinct visual hierarchies and uniquely formatted slides. 
+
+Here are examples of how to combine components for distinct slide layouts:
+
+**Example 1: The "Metric & Quote Split" (Impact-focused)**
+```tsx
+<Slide>
+  <Row gap="large" items="center">
+    <Column spanRatio="1/3">
+      <Metric value="85%" label="Adoption Rate" />
+    </Column>
+    <Column spanRatio="2/3">
+      <Quote author="Industry Report">AI adoption has accelerated beyond all expectations.</Quote>
+      <ContentText>This shift requires a fundamental rethinking of business strategy...</ContentText>
+    </Column>
+  </Row>
+</Slide>
+```
+
+**Example 2: The "Visual Callout" (Combining media with important notes)**
+```tsx
+<Slide>
+  <Heading>Strategic Implementation</Heading>
+  <Row gap="large" items="start">
+    <Column spanRatio="1/2">
+      <MediaBlock src="/placeholder.jpg" alt="Implementation" caption="Phase 1 Rollout" />
+    </Column>
+    <Column spanRatio="1/2">
+      <Callout variant="primary" title="Critical Step">
+        Ensure stakeholder alignment before proceeding.
+      </Callout>
+      <AnimatedList>
+        <ListItem>Assess current capabilities</ListItem>
+        <ListItem>Define success metrics</ListItem>
+      </AnimatedList>
+    </Column>
+  </Row>
+</Slide>
+```
+
+**Example 3: The "Card Grid Breakdown" (Structured information)**
+```tsx
+<Slide>
+  <Heading>Three Pillars of Success</Heading>
+  <Subtitle variant="section">Foundational elements for AI readiness</Subtitle>
+  <Row gap="medium">
+    <Column spanRatio="1/3">
+      <Card title="Data" subtitle="Pillar 1">
+        <ContentDescription>Clean, accessible, and structured data pipelines.</ContentDescription>
+      </Card>
+    </Column>
+    <Column spanRatio="1/3">
+      <Card title="Talent" subtitle="Pillar 2">
+        <ContentDescription>Skilled professionals and continuous training.</ContentDescription>
+      </Card>
+    </Column>
+    <Column spanRatio="1/3">
+      <Card title="Culture" subtitle="Pillar 3">
+        <ContentDescription>An organizational mindset that embraces experimentation.</ContentDescription>
+      </Card>
+    </Column>
+  </Row>
+</Slide>
+```
+
+**Example 4: The "Deep Dive Discussion" (Reflection-focused)**
+```tsx
+<Slide>
+  <Tag>Reflection</Tag>
+  <Heading>Ethical Implications</Heading>
+  <Row gap="large" items="center">
+    <Column spanRatio="1/2">
+      <ContentText layout="base">
+        <strong>The challenge:</strong> Balancing innovation with responsibility.
+      </ContentText>
+    </Column>
+    <Column spanRatio="1/2">
+      <DiscussionCard title="Group Discussion">
+        How would you apply these principles to your own work? Consider both technical and ethical implications.
+      </DiscussionCard>
+    </Column>
+  </Row>
+</Slide>
+```
+
 ## Quality Criteria
 
 - **Cinematic Feel**: Ensure ample white space, weighted layouts, and high visual variety. Never generate more than two consecutive slides with the exact same layout structure. Break out of basic lists by using grids, rows, and rich typography.
@@ -131,5 +214,5 @@ Map the Markdown elements to the corresponding React components from `src/app/(c
 ## Related Customizations
 
 - `.github/instructions/courses-styling.instructions.md` (Design reference)
-- `src/app/(courses)/_components/SlideComponents.tsx` (Component reference)
+- `src/components/slide-components/SlideComponents.tsx` (Component reference)
 - `.github/skills/course-diagram-generation/SKILL.md` (Diagram-only workflow)

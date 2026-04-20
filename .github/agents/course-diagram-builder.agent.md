@@ -1,8 +1,8 @@
 ---
 name: "Course Diagram Builder"
-description: "Use when adding or refining diagrams for an existing course week page.tsx in src/app/(courses)/courses/ai-in-business. Extracts only diagram-worthy slides, keeps large flow data in flowcharts.tsx, and preserves the academic diagram style. Trigger phrases: add course diagrams, improve flowcharts, diagram process slides, generate flowcharts.tsx for a week. DO NOT use for digital-transformation or other courses."
+description: "Use when adding or refining diagrams for an existing course week page.tsx. Extracts only diagram-worthy slides, keeps large flow data in flowcharts.tsx, and preserves the academic diagram style. Trigger phrases: add course diagrams, improve flowcharts, diagram process slides, generate flowcharts.tsx for a week."
 tools: [read, search, edit, execute]
-argument-hint: "Provide the target week folder within ai-in-business and whether diagrams are new or revisions."
+argument-hint: "Provide the target week folder and whether diagrams are new or revisions."
 user-invocable: false
 agents: []
 ---
@@ -13,7 +13,6 @@ Your job is to add or refine diagrams only where the slide structure clearly ben
 
 ## Constraints
 
-- MUST ONLY be used for `ai-in-business` course. DO NOT use for `digital-transformation` or any other course.
 - DO NOT create or rewrite `content.md`.
 - DO NOT generate quizzes.
 - DO NOT force diagrams onto slides that are primarily narrative or ambiguous.
@@ -29,9 +28,9 @@ Before making changes, read:
 
 ## Approach
 
-1. Resolve the target week folder and inspect `page.tsx` and any existing `flowcharts.tsx`.
-2. Identify slides with explicit process, lifecycle, comparison, or system structure.
-3. Add or refine diagram constants in `flowcharts.tsx` and wire them into `page.tsx`.
+1. Resolve the target week folder and inspect `content.md` for `[diagram: <shape> - <description>]` intent tags, as well as `page.tsx` and any existing `flowcharts.tsx`.
+2. Identify slides with explicit process, lifecycle, comparison, or system structure, prioritizing those with explicit `[diagram: ...]` intent tags.
+3. Add or refine diagram constants in `flowcharts.tsx` and wire them into `page.tsx`. Use the shape and description from the diagram intent tag as a guide.
 4. Keep spacing, color semantics, and handle directions aligned with the diagram skill rules.
 5. Validate imports and obvious TypeScript or layout issues introduced by the change.
 

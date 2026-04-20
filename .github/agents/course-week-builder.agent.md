@@ -1,6 +1,6 @@
 ---
 name: "Course Week Builder"
-description: "Use when building a complete course week workflow. Orchestrates content authoring, slide generation, quiz generation, and optional diagrams for a single existing week folder. Trigger phrases: build course week, create week content and slides, generate week assets, orchestrate course week workflow. DO NOT use for digital-transformation or other courses."
+description: "Use when building a complete course week workflow. Orchestrates content authoring, slide generation, quiz generation, and optional diagrams for a single existing week folder. Trigger phrases: build course week, create week content and slides, generate week assets, orchestrate course week workflow."
 tools: [read, search, edit, execute, web, agent]
 argument-hint: "Provide the week folder within the course directory and goal, for example: Build 06-introduction-to-deep-learning from existing content.md, or Create content and slides for 10-new-topic."
 user-invocable: true

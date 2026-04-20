@@ -212,15 +212,15 @@ export function parseCourseContentMarkdown(
     }
 
     if (currentSlide) {
-      if (!trimmedLine.startsWith("- ")) {
+      if (!trimmedLine.startsWith("- ") && !/^\[diagram:.*\]$/i.test(trimmedLine)) {
         errors.push({
           line: lineNumber,
-          message: `Slide "${currentSlide.title}" contains unsupported content. Use bullet lines beginning with "- " only.`,
+          message: `Slide "${currentSlide.title}" contains unsupported content. Use bullet lines beginning with "- " or a [diagram: ...] tag.`,
         });
         continue;
       }
 
-      currentSlide.bullets.push(trimmedLine.slice(2).trim());
+      currentSlide.bullets.push(trimmedLine.startsWith("- ") ? trimmedLine.slice(2).trim() : trimmedLine);
       continue;
     }
 
@@ -356,11 +356,11 @@ export function parseCourseContentMarkdown(
       shouldGenerateQuiz: slide.shouldGenerateQuiz,
       snippet: [
         `## ${slide.title}`,
-        ...slide.bullets.map((bullet) => `- ${bullet}`),
+        ...slide.bullets.map((bullet) => (bullet.startsWith("[") && bullet.endsWith("]")) ? bullet : `- ${bullet}`),
       ].join("\n"),
       quizSnippet: [
         `## ${slide.title}`,
-        ...contentBullets.map((bullet) => `- ${bullet}`),
+        ...contentBullets.map((bullet) => (bullet.startsWith("[") && bullet.endsWith("]")) ? bullet : `- ${bullet}`),
       ].join("\n"),
       startLine: slide.startLine,
     };

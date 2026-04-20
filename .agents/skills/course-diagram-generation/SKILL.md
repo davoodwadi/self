@@ -50,8 +50,9 @@ Use this skill when slide content already exists and the task is to convert proc
 ### 4. Create Or Update `flowcharts.tsx`
 
 1. Keep diagram data in a sibling `flowcharts.tsx` file, not in `page.tsx`.
-2. Export one constant per diagram, for example `marketIntelligenceFlow`.
-3. Each constant must include:
+2. Define semantic color hex codes as constants at the top of the file (e.g., `const PRIMARY = "#7f1d1d"; const NEUTRAL = "#1e293b"; const SUSTAINABLE = "#14532d";`).
+3. Export one constant per diagram, for example `marketIntelligenceFlow`.
+4. Each constant must include:
    - `aiGeneratedNodes`
    - `aiGeneratedEdges`
 4. Node schema must include:
@@ -74,8 +75,8 @@ These rules are strict and must be followed for every generated diagram.
 #### Layout And Spacing
 
 1. Use a rectilinear grid. Align nodes to cardinal directions only.
-2. Use `320px` horizontal spacing for sequence steps.
-3. Use `160px` or `280px` vertical spacing for layered rows or cascading steps.
+2. Use `280px`, `300px`, or `320px` horizontal spacing for sequence steps (e.g., use `280px` or `300px` to fit 4-node sequences within width limits).
+3. Use `140px`, `160px`, `180px`, or `280px` vertical spacing for layered rows or cascading steps.
 4. Prefer cascading diagonal step layouts (e.g., dropping 160px vertically for every 320px horizontal move) over flat straight-line layouts for a more cinematic and elegant visual flow.
 5. Do not use ad-hoc spacing values such as `250px`, `500px`, or `550px`.
 6. Only use circular placement when the slide explicitly describes a loop and add a short comment documenting why.
@@ -90,7 +91,7 @@ These rules are strict and must be followed for every generated diagram.
 #### Color Semantics
 
 1. Group semantically related nodes with the same color.
-2. Use the `(courses)` palette as the baseline, preferring deeper, richer tones for a cinematic academic look:
+2. Use the `(courses)` palette as the baseline, extracting these into constants at the top of `flowcharts.tsx` (e.g., `PRIMARY`, `NEUTRAL`, `SUSTAINABLE`). Prefer deeper, richer tones for a cinematic academic look:
    - Deep crimson for primary flow and risk path (e.g., `#7f1d1d`)
    - Deep slate/charcoal for neutral processing steps (e.g., `#1e293b`)
    - Deep green for sustainability/eco focus (e.g., `#14532d`)
@@ -110,8 +111,9 @@ These rules are strict and must be followed for every generated diagram.
 1. Purely horizontal edges must use `sourceHandle: "right-source"` and `targetHandle: "left"`.
 2. Vertical down edges (including cascading steps) must use `sourceHandle: "bottom-source"` and `targetHandle: "top"`.
 3. Vertical up edges must use `sourceHandle: "top-source"` and `targetHandle: "bottom"`.
-4. Forward-flow edges must use `type: "smoothstep"` and `animated: true`.
-5. Feedback or optional edges must use `type: "smoothstep"`, `animated: false`, and dashed stroke (`strokeDasharray: "5,5"`).
+4. For fan-in/fan-out or circular layouts, target different sides of a single node (e.g., `left`, `right`, `top`) simultaneously to avoid overlapping edges.
+5. Forward-flow edges must use `type: "smoothstep"` and `animated: true`.
+6. Feedback or optional edges must use `type: "smoothstep"`, `animated: false`, and dashed stroke (`strokeDasharray: "5,5"`).
 6. Edge style must be consistent and delicate for a cinematic look:
    - `strokeWidth: 1.5`
    - `opacity: 0.5` to `0.6` for main flow
@@ -150,18 +152,18 @@ These rules are strict and must be followed for every generated diagram.
 
 ### 5. Wire Diagrams Into `page.tsx`
 
-1. Import `FlowRenderer` from `../../_components/FlowRenderer`.
+1. Import `FlowRenderer` from `@/components/flowcharts/FlowRenderer`.
 2. Import diagram constants from `./flowcharts`.
-3. Insert a responsive diagram container inside the selected slide:
+3. Insert a responsive diagram container inside the selected slide. Tune the container height classes based on the diagram's vertical span (e.g., `h-[280px]` vs `h-[300px]`):
 
 ```tsx
-<div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80">
+<div className="w-full h-[280px] sm:h-[300px] md:h-[320px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80">
   <FlowRenderer {...marketIntelligenceFlow} />
 </div>
 ```
 
 4. Place the diagram near supporting heading/text so narrative order remains clear.
-5. Keep container heights at `h-[300px] sm:h-[340px] md:h-[380px]` unless the slide has a justified exception.
+5. Adjust container heights (`h-[280px]`, `h-[300px]`, `h-[360px]`, etc.) to cleanly fit the diagram without excessive whitespace.
 6. Verify the selected diagram dimensions remain readable in this container across breakpoints.
 
 ### 6. Validate
@@ -192,8 +194,8 @@ These rules are strict and must be followed for every generated diagram.
 
 - [ ] Selected only structurally suitable slides
 - [ ] Diagram constants extracted to `flowcharts.tsx`
-- [ ] Spacing uses required grid values (`320px` horizontal, `160px` or `280px` vertical)
-- [ ] Colors are grouped by semantic role and documented by a short comment
+- [ ] Spacing uses required grid values (`280px`, `300px`, `320px` horizontal; `140px`, `160px`, `180px`, `280px` vertical)
+- [ ] Colors are grouped by semantic role using defined constants (`PRIMARY`, `NEUTRAL`, etc.) and documented by a short comment
 - [ ] Colors follow course palette baseline; any new accent is justified, muted, and limited to one extra hue family
 - [ ] Handles are directionally correct for all edges
 - [ ] Forward edges are animated `smoothstep`; feedback edges are dashed and not animated

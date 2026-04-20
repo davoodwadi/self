@@ -67,7 +67,10 @@ export function CurriculumSection() {
                 href: "/courses/digital-transformation",
                 label: "View Course Website",
               }  },
-            { label: "Course", title: "Introduction to Marketing", description: "What is Marketing? How do we define a consumer? What strategies firms adopt to influence consumption decisions?" }
+            { label: "Course", title: "Introduction to Marketing", description: "What is Marketing? How do we define a consumer? What strategies firms adopt to influence consumption decisions?", link:{
+                href: "/courses/intro-marketing",
+                label: "View Course Website",
+              } }
           ]}
           altBg={true}
         />

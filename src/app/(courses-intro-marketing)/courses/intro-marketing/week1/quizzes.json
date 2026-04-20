@@ -1,0 +1,127 @@
+[
+  {
+    "slide_id": "the-definition-of-marketing",
+    "question_text": "Based on the provided definition, what is the primary purpose of the marketing process?",
+    "hint": "Look for the mention of what is created and captured during the process.",
+    "correct_answer_citation": "The Definition of Marketing context.",
+    "options": [
+      {
+        "option_text": "To create customer value in order to capture value in return.",
+        "option_explanation": "Marketing is defined as a process of engaging customers and building relationships to create value for them and capture value back from them."
+      },
+      {
+        "option_text": "To maximize production efficiency at the expense of customer interaction.",
+        "option_explanation": "The definition emphasizes engaging customers and building relationships, not prioritizing internal efficiency over interaction."
+      },
+      {
+        "option_text": "To sell products regardless of whether they provide value to the buyer.",
+        "option_explanation": "The definition specifically states that marketing is designed to create customer value."
+      },
+      {
+        "option_text": "To focus on short-term transactions rather than long-term relationships.",
+        "option_explanation": "The definition explicitly mentions that marketing involves building strong customer relationships."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "needs-wants-and-demands",
+    "question_text": "According to the provided text, what is the relationship between marketers and consumer needs?",
+    "hint": "Look for the specific statement regarding whether marketers have the power to create a need.",
+    "correct_answer_citation": "Needs, Wants, and Demands: Marketers do not create needs, but they can influence wants.",
+    "options": [
+      {
+        "option_text": "Marketers create needs through strategic advertising campaigns.",
+        "option_explanation": "The text explicitly states that marketers do not create needs."
+      },
+      {
+        "option_text": "Marketers do not create needs, but they can influence wants.",
+        "option_explanation": "This is a direct principle stated in the text, highlighting that while needs are pre-existing, wants can be shaped by marketing."
+      },
+      {
+        "option_text": "Marketers focus only on demands and ignore the differences between needs and wants.",
+        "option_explanation": "The text states that understanding the difference between needs, wants, and demands is critical for any strategy."
+      },
+      {
+        "option_text": "Marketers create both needs and wants to establish the foundation of marketing.",
+        "option_explanation": "While these are foundations of marketing, the text clarifies that marketers specifically do not create needs."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "the-selling-concept",
+    "question_text": "Which of the following is a core characteristic of the selling concept?",
+    "hint": "Consider the focus on transactions versus relationships and the type of goods involved.",
+    "correct_answer_citation": "The Selling Concept principles",
+    "options": [
+      {
+        "option_text": "It prioritizes building long-term customer relationships over immediate sales transactions.",
+        "option_explanation": "The selling concept actually focuses on creating sales transactions rather than building long-term relationships."
+      },
+      {
+        "option_text": "It assumes consumers will not buy enough of a firm's products without a large-scale selling and promotion effort.",
+        "option_explanation": "This is the fundamental assumption of the selling concept, particularly for unsought goods."
+      },
+      {
+        "option_text": "It focuses on producing goods at the lowest possible cost to ensure market dominance.",
+        "option_explanation": "This describes the production concept, which focuses on efficiency and price."
+      },
+      {
+        "option_text": "It is primarily used for goods that consumers frequently seek out, such as food and clothing.",
+        "option_explanation": "The selling concept is typically practiced with unsought goods, like insurance or blood donations, rather than everyday sought goods."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "the-marketing-concept",
+    "question_text": "The marketing concept is a customer-centered philosophy that suggests organizational goals are achieved by:",
+    "hint": "It involves a \"sense and respond\" approach relative to competition.",
+    "correct_answer_citation": "The Marketing Concept context provided",
+    "options": [
+      {
+        "option_text": "Implementing aggressive sales and promotion tactics to drive consumer interest.",
+        "option_explanation": "This describes the selling concept, which focuses on pushing existing products rather than meeting consumer needs."
+      },
+      {
+        "option_text": "Focusing on large-scale production and distribution to minimize costs.",
+        "option_explanation": "This describes the production concept, which prioritizes efficiency over specific customer satisfaction."
+      },
+      {
+        "option_text": "Knowing the needs of target markets and delivering satisfaction more effectively than competitors.",
+        "option_explanation": "The marketing concept relies on understanding target markets and delivering superior satisfaction through a 'sense and respond' approach."
+      },
+      {
+        "option_text": "Ensuring products have the highest quality and most innovative features regardless of market demand.",
+        "option_explanation": "This describes the product concept, which assumes customers will automatically favor the best product without checking if it meets their actual needs."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "step-2-design-a-customer-value-driven-strategy",
+    "question_text": "In the process of designing a customer value-driven strategy, what are the two primary questions a marketing manager must answer?",
+    "hint": "Consider the roles of market segmentation, targeting, differentiation, and positioning.",
+    "correct_answer_citation": "Step 2: Design a Customer Value-Driven Strategy",
+    "options": [
+      {
+        "option_text": "Which customers will we serve and how can we serve them best?",
+        "option_explanation": "The text states that managers must decide which customers to serve through segmentation and targeting, and how to serve them through differentiation and positioning."
+      },
+      {
+        "option_text": "What products should we manufacture and what price will customers pay?",
+        "option_explanation": "Product and price are part of the marketing mix, but the strategy step specifically focuses on customer selection and value proposition."
+      },
+      {
+        "option_text": "How can we minimize production costs and maximize our market share?",
+        "option_explanation": "These are operational and performance goals rather than the two fundamental questions of a customer value-driven strategy."
+      },
+      {
+        "option_text": "Who are our primary competitors and how do we compare to them?",
+        "option_explanation": "Competitor analysis is a different stage of planning; Step 2 focuses on market selection and positioning relative to customer needs."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]

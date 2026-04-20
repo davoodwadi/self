@@ -1,8 +1,8 @@
 ---
 name: "Course Quiz Generator"
-description: "Use when validating course content for quiz readiness or generating quizzes.json for a specific week from slides marked [quiz] in content.md in ai-in-business. Generates one pre-slide question per marked slide only. Trigger phrases: validate quiz-ready content, generate quizzes.json, create slide quizzes, build pre-slide quizzes for a week. DO NOT use for digital-transformation or other courses."
+description: "Use when validating course content for quiz readiness or generating quizzes.json for a specific week from slides marked [quiz] in content.md. Generates one pre-slide question per marked slide only. Trigger phrases: validate quiz-ready content, generate quizzes.json, create slide quizzes, build pre-slide quizzes for a week."
 tools: [read, search, edit, execute]
-argument-hint: "Provide the target week folder within ai-in-business and whether to validate only or generate quizzes.json."
+argument-hint: "Provide the target week folder and whether to validate only or generate quizzes.json."
 user-invocable: false
 agents: []
 ---
@@ -13,7 +13,6 @@ Your job is to validate the constrained course content, identify slides marked `
 
 ## Constraints
 
-- MUST ONLY be used for `ai-in-business` course. DO NOT use for `digital-transformation` or any other course.
 - DO NOT generate quizzes for slides that are not marked `[quiz]`.
 - DO NOT modify slide content unless the user explicitly asks.
 - DO NOT create one quiz per slide by default.

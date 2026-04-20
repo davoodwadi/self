@@ -33,18 +33,20 @@ Use this skill when slide content already exists and the task is to convert proc
 
 ### 1. Inspect Existing Slides
 
-1. Read the course `page.tsx` and map all slides.
-2. Find slides that describe one of these patterns:
+1. Read `content.md` (if available) and `page.tsx` to locate diagram intents.
+2. Specifically look for slides in `page.tsx` that contain a placeholder `div` with a `data-diagram` attribute (e.g., `<div data-diagram="cascading flow - steps of AI deployment"...>`).
+3. If no placeholders exist, manually find slides that describe one of these patterns:
    - sequence or pipeline
    - lifecycle or loop
    - comparison or tradeoff
    - cause and effect chain
    - system with actors and dependencies
-3. Skip slides that are purely quote, title, or single-fact callout slides.
+4. Skip slides that are purely quote, title, or single-fact callout slides.
 
 ### 2. Select Diagram Targets
 
-1. Score each candidate slide from 1 to 3 on structural clarity:
+1. Slides with explicit `[diagram: ...]` intents or `data-diagram` placeholders are your primary targets. Treat them as score `3`.
+2. For other slides, score each candidate slide from 1 to 3 on structural clarity:
    - `3`: explicit steps/stages with clear transitions
    - `2`: structure is present but needs interpretation
    - `1`: too vague for a useful diagram
@@ -163,9 +165,9 @@ These rules are strict and must be followed for every generated diagram.
 
 ### 5. Wire Diagrams Into `page.tsx`
 
-1. Import `FlowRenderer` from `../../_components/FlowRenderer`.
+1. Import `FlowRenderer` from `@/components/flowcharts/FlowRenderer`.
 2. Import diagram constants from `./flowcharts`.
-3. Insert a responsive diagram container inside the selected slide:
+3. If a placeholder `div` exists (e.g., `<div data-diagram="...">`), **replace it** with the actual responsive diagram container. Otherwise, insert it inside the selected slide:
 
 ```tsx
 <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80">
@@ -233,6 +235,6 @@ These rules are strict and must be followed for every generated diagram.
 
 ## Related Files
 
-- `src/app/(courses)/_components/FlowRenderer.tsx`
-- `src/app/(courses)/_components/SlideComponents.tsx`
+- `@/components/flowcharts/FlowRenderer.tsx`
+- `@/components/slide-components/SlideComponents.tsx`
 - `.github/instructions/courses-styling.instructions.md`

@@ -594,7 +594,7 @@ export function Highlight({
     <>
       {block && <br />}
       <span
-        className={`${block ? "text-[var(--crimson)]" : "text-transparent bg-clip-text bg-gradient-to-r from-[var(--crimson)] to-[var(--crimson-light)]"} ${className}`}
+        className={cn("text-[var(--highlight)]", `${className}`)}
       >
         {children}
       </span>
