@@ -1,0 +1,102 @@
+[
+  {
+    "slide_id": "the-value-delivery-network",
+    "question_text": "What is the primary goal of the partners within a value delivery network?",
+    "hint": "Think about why the company, suppliers, distributors, and customers work together.",
+    "correct_answer_citation": "Everyone partners to improve the performance of the entire system.",
+    "options": [
+      {
+        "option_text": "To eliminate marketing channels.",
+        "option_explanation": "Marketing channels are part of the network, not something to be eliminated."
+      },
+      {
+        "option_text": "To improve the performance of the entire system.",
+        "option_explanation": "Everyone partners to improve the performance of the entire system."
+      },
+      {
+        "option_text": "To strictly control suppliers and distributors.",
+        "option_explanation": "The network is a partnership, not a system of strict control over suppliers and distributors."
+      },
+      {
+        "option_text": "To compete against the company's customers.",
+        "option_explanation": "Customers are part of the network and act as partners to improve the system, rather than competitors."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "indirect-marketing-channels",
+    "question_text": "What is a key consequence for a producer when an indirect marketing channel has more intermediary levels?",
+    "hint": "Consider how adding wholesalers, jobbers, and retailers affects the producer's oversight and system simplicity.",
+    "correct_answer_citation": "More levels mean less control and greater channel complexity for the producer.",
+    "options": [
+      {
+        "option_text": "Greater direct contact with the final consumer.",
+        "option_explanation": "Indirect channels actually separate the producer from the final consumer by adding intermediaries."
+      },
+      {
+        "option_text": "Less control and greater channel complexity.",
+        "option_explanation": "As more intermediary levels are added to an indirect marketing channel, the producer loses control and the channel becomes more complex."
+      },
+      {
+        "option_text": "Reduced channel complexity and simplified distribution.",
+        "option_explanation": "Adding more levels actually increases complexity rather than reducing it."
+      },
+      {
+        "option_text": "Increased control over product pricing and placement.",
+        "option_explanation": "More intermediaries typically result in less control for the producer, not more."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "channel-conflict",
+    "question_text": "Which of the following best describes horizontal channel conflict?",
+    "hint": "Consider the level at which the firms are operating within the channel.",
+    "correct_answer_citation": "Horizontal conflict occurs among firms at the same level of the channel.",
+    "options": [
+      {
+        "option_text": "Conflict that occurs between different levels of the same channel.",
+        "option_explanation": "This describes vertical channel conflict, not horizontal conflict."
+      },
+      {
+        "option_text": "Conflict that occurs among firms at the same level of the channel.",
+        "option_explanation": "This is the correct definition of horizontal channel conflict."
+      },
+      {
+        "option_text": "Conflict that happens only when members disagree over rewards.",
+        "option_explanation": "Channel conflict can occur over goals, roles, and rewards, but this does not define horizontal conflict specifically."
+      },
+      {
+        "option_text": "Conflict between a manufacturer and a retailer.",
+        "option_explanation": "A manufacturer and a retailer are at different levels, making this an example of vertical conflict."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "the-trend-of-disintermediation",
+    "question_text": "What does the trend of disintermediation involve in a business context?",
+    "hint": "Think about what happens to middlemen or traditional resellers when producers change their distribution strategy.",
+    "correct_answer_citation": "Disintermediation occurs when product and service producers cut out intermediaries. This includes going directly to final buyers or displacing traditional resellers with new types of intermediaries.",
+    "options": [
+      {
+        "option_text": "Adding multiple layers of new middlemen to the supply chain to expand market reach.",
+        "option_explanation": "This is the opposite of disintermediation, which involves removing middlemen rather than adding them."
+      },
+      {
+        "option_text": "Established firms completely halting the production of goods to focus exclusively on distribution.",
+        "option_explanation": "Firms do not stop production; rather, they change how products are distributed to buyers."
+      },
+      {
+        "option_text": "Product and service producers cutting out intermediaries to go directly to final buyers or using new types of intermediaries.",
+        "option_explanation": "This correctly defines disintermediation, where traditional middlemen are bypassed or replaced."
+      },
+      {
+        "option_text": "Traditional resellers taking over the manufacturing process from the original producers.",
+        "option_explanation": "Disintermediation refers to producers bypassing resellers, not resellers becoming producers."
+      }
+    ],
+    "correct_answer_index": 2
+  }
+]

@@ -1,0 +1,127 @@
+[
+  {
+    "slide_id": "assessing-the-global-environment",
+    "question_text": "What is a likely consequence of ignoring local customs when entering a global market?",
+    "hint": "Consider how cultural nuances affect the overall success of a product.",
+    "correct_answer_citation": "Ignoring local customs often leads to marketing failures.",
+    "options": [
+      {
+        "option_text": "It eliminates common trade barriers like tariffs and quotas.",
+        "option_explanation": "Tariffs and quotas are trade barriers, but ignoring local customs does not eliminate them."
+      },
+      {
+        "option_text": "It guarantees an increase in the target market's GDP.",
+        "option_explanation": "GDP is an economic indicator used to guide market selection, not a result of ignoring customs."
+      },
+      {
+        "option_text": "It positively influences product acceptance and messaging.",
+        "option_explanation": "Cultural nuances influence product acceptance, meaning that ignoring them would likely harm acceptance rather than help it."
+      },
+      {
+        "option_text": "It often leads to marketing failures.",
+        "option_explanation": "Ignoring local customs often leads to marketing failures."
+      }
+    ],
+    "correct_answer_index": 3
+  },
+  {
+    "slide_id": "market-entry-joint-venturing",
+    "question_text": "What is a key trade-off of using joint venturing as a market entry strategy?",
+    "hint": "Consider how joining with another company affects financial exposure and decision-making power.",
+    "correct_answer_citation": "It shares the financial risk but also reduces management control.",
+    "options": [
+      {
+        "option_text": "It shares the financial risk but reduces management control.",
+        "option_explanation": "Joint venturing involves partnering with a foreign company, which helps share the financial risk, but it also means giving up some management control."
+      },
+      {
+        "option_text": "It eliminates all financial risk associated with entering a new market.",
+        "option_explanation": "Joint venturing only shares the financial risk; it does not completely eliminate it."
+      },
+      {
+        "option_text": "It provides the entering company with complete management control.",
+        "option_explanation": "By partnering with another company, management control is reduced rather than complete."
+      },
+      {
+        "option_text": "It increases financial risk while maximizing management control.",
+        "option_explanation": "Joint venturing actually shares financial risk for the individual company, but at the cost of reduced management control."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "product-adaptation-strategies",
+    "question_text": "Which product strategy involves creating something completely new for a specific market?",
+    "hint": "This strategy goes beyond just altering an existing product and requires building from scratch for the local market.",
+    "correct_answer_citation": "Product invention consists of creating something new for a specific market.",
+    "options": [
+      {
+        "option_text": "Straight extension",
+        "option_explanation": "Straight extension involves marketing a product without any changes."
+      },
+      {
+        "option_text": "Product adaptation",
+        "option_explanation": "Product adaptation involves altering an existing product to meet local conditions."
+      },
+      {
+        "option_text": "Product invention",
+        "option_explanation": "Product invention consists of creating something new for a specific market."
+      },
+      {
+        "option_text": "Market extension",
+        "option_explanation": "Market extension is not one of the primary product adaptation strategies."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "ai-personalization-and-analytics",
+    "question_text": "What is the role of predictive analytics in marketing?",
+    "hint": "It involves using historical actions to determine what will happen next.",
+    "correct_answer_citation": "Predictive analytics forecast future buying patterns based on past behavior.",
+    "options": [
+      {
+        "option_text": "To forecast future buying patterns based on past behavior.",
+        "option_explanation": "Predictive analytics are used to forecast future buying patterns using past behavior."
+      },
+      {
+        "option_text": "To manually review data privacy and ethical concerns.",
+        "option_explanation": "While data privacy is a challenge, manual review is not the role of predictive analytics."
+      },
+      {
+        "option_text": "To eliminate the need for personalized content delivery.",
+        "option_explanation": "AI algorithms deliver hyper-personalized content, rather than eliminating the need for it."
+      },
+      {
+        "option_text": "To optimize website loading speeds in real-time.",
+        "option_explanation": "AI is used to optimize ad spend in real-time, not website loading speeds."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "the-circular-economy",
+    "question_text": "What is a primary characteristic of the circular economy?",
+    "hint": "Think about how this model handles product life cycles and waste.",
+    "correct_answer_citation": "The circular economy minimizes waste by designing products for reuse... Product life cycles are extended through repair and recycling programs.",
+    "options": [
+      {
+        "option_text": "It extends product life cycles to minimize waste through repair and reuse.",
+        "option_explanation": "The circular economy minimizes waste by designing products for reuse and extending life cycles through repair and recycling."
+      },
+      {
+        "option_text": "It promotes the traditional take-make-dispose manufacturing model.",
+        "option_explanation": "Brands are actually shifting away from the take-make-dispose model."
+      },
+      {
+        "option_text": "It reduces environmental impact by eliminating new business opportunities.",
+        "option_explanation": "This model creates new business opportunities rather than eliminating them."
+      },
+      {
+        "option_text": "It focuses entirely on creating single-use, disposable products.",
+        "option_explanation": "Incorrect. The circular economy designs products for reuse, rather than for disposal."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]

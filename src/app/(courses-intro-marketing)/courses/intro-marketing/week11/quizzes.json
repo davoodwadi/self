@@ -1,0 +1,102 @@
+[
+  {
+    "slide_id": "core-concept-what-is-digital-marketing",
+    "question_text": "What distinguishes digital marketing from traditional marketing in terms of its core capabilities?",
+    "hint": "Think about the capabilities enabled by the internet and electronic devices.",
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "It encompasses all marketing efforts using electronic devices or the internet, allowing for real-time tracking and immediate feedback.",
+        "option_explanation": "Digital marketing uniquely leverages digital channels to connect with customers while providing real-time data and rapid adjustment capabilities."
+      },
+      {
+        "option_text": "It relies primarily on physical mailers and static billboards to build brand awareness.",
+        "option_explanation": "This describes traditional marketing, not digital marketing."
+      },
+      {
+        "option_text": "It strictly limits campaigns to a single channel without allowing for adjustments.",
+        "option_explanation": "Digital marketing is known for its ability to rapidly adjust campaigns across multiple channels based on immediate feedback."
+      },
+      {
+        "option_text": "It focuses exclusively on in-person interactions rather than electronic communication.",
+        "option_explanation": "Digital marketing specifically uses electronic devices and the internet."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "the-paradigm-shift-interactive-vs-broadcast-marketing",
+    "question_text": "How does interactive digital marketing represent a paradigm shift from traditional broadcast marketing?",
+    "hint": "Consider the role of the consumer in the communication process.",
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "It invites consumers to participate in a two-way conversation, making them co-creators of brand value.",
+        "option_explanation": "Unlike traditional broadcast marketing, digital marketing empowers consumers to share, comment, and interact with campaigns."
+      },
+      {
+        "option_text": "It delivers a uniform, unchanged message to the broadest possible audience.",
+        "option_explanation": "This describes traditional broadcast marketing, not the interactive shift."
+      },
+      {
+        "option_text": "It eliminates the need for any personalization in advertising campaigns.",
+        "option_explanation": "Digital marketing campaigns are specifically designed to be highly personalized."
+      },
+      {
+        "option_text": "It ensures consumers remain passive recipients of the brand's intended message.",
+        "option_explanation": "Interactive marketing actively encourages consumer participation rather than passive reception."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "social-media-platforms-and-demographics",
+    "question_text": "Why is it important to tailor content strategies for different social media platforms?",
+    "hint": "Think about the characteristics of the audience and the content format each platform supports.",
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Because different platforms attract distinct user demographics and excel at specific content types, like visual showcasing or professional networking.",
+        "option_explanation": "A tailored approach is required because each platform caters to different audiences, such as B2B networks or short-form video for younger demographics."
+      },
+      {
+        "option_text": "Because all social media algorithms prioritize exactly the same type of long-form written content.",
+        "option_explanation": "Platforms vary significantly in what content they prioritize, such as visual, professional, or short-form video."
+      },
+      {
+        "option_text": "Because younger demographics are moving exclusively to professional networking sites.",
+        "option_explanation": "Younger demographics are actually dominated by short-form video platforms, while professional networks are used for B2B marketing."
+      },
+      {
+        "option_text": "Because a single, uniform message is proven to be the most effective strategy across all social networks.",
+        "option_explanation": "Tailored content strategies are necessary precisely because uniform messaging is less effective across varying platform demographics."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "the-challenge-measuring-roi",
+    "question_text": "What is a primary challenge when measuring the return on investment (ROI) for digital and social campaigns?",
+    "hint": "Consider how engagement relates to actual revenue and the types of metrics available.",
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Tying social engagement directly to revenue is complex and requires sophisticated analytics rather than relying on vanity metrics.",
+        "option_explanation": "Marketers face the challenge of navigating numerous metrics and ensuring they track data that aligns with true business objectives instead of superficial engagement."
+      },
+      {
+        "option_text": "Digital platforms do not provide any measurable data or tracking capabilities.",
+        "option_explanation": "Digital platforms provide a multitude of metrics, making the challenge one of complex analysis, not a lack of data."
+      },
+      {
+        "option_text": "Click-through rates always provide a perfect and direct measurement of overall company profitability.",
+        "option_explanation": "Click-through rates are just one metric and do not automatically equate to direct revenue or profitability."
+      },
+      {
+        "option_text": "Social engagement metrics naturally and easily translate into direct, immediate sales figures.",
+        "option_explanation": "Tying social engagement directly to revenue is actually very complex and requires advanced tracking models."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]

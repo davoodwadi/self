@@ -52,7 +52,6 @@ Use `lecturer` as the preferred metadata field. The parser still accepts legacy 
 
 - YAML front matter at the top of the file
 - `# Topic`
-- `# Background`
 - `# Slide contents`
 - `## <slide title>`
 - `## <slide title> [quiz]`

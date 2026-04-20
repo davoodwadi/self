@@ -1,0 +1,152 @@
+[
+  {
+    "slide_id": "the-concept-defining-a-product",
+    "question_text": "Which of the following is true about a product?",
+    "hint": "Think about the variety of things that can be offered to a market, beyond just physical items.",
+    "correct_answer_citation": "It includes physical objects, services, events, persons, places, organizations, and ideas.",
+    "options": [
+      {
+        "option_text": "It includes physical objects, services, events, persons, places, organizations, and ideas.",
+        "option_explanation": "Products encompass a wide variety of offerings, including all of these categories."
+      },
+      {
+        "option_text": "It is strictly limited to physical objects that can be acquired and consumed.",
+        "option_explanation": "This is incorrect because a product is not just a physical object, but also includes services, events, persons, places, organizations, and ideas."
+      },
+      {
+        "option_text": "It only encompasses services and events that are offered to a market.",
+        "option_explanation": "This is incorrect because products also include physical objects, persons, places, organizations, and ideas."
+      },
+      {
+        "option_text": "It excludes persons, places, and ideas from being offered to a market.",
+        "option_explanation": "This is incorrect because persons, places, and ideas are also included in the definition of a product."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "product-classifications-specialty-and-unsought-goods",
+    "question_text": "Which statement accurately describes the characteristics of specialty and unsought goods?",
+    "hint": "Think about the examples given for each category, such as luxury cars versus life insurance.",
+    "correct_answer_citation": "Specialty goods have unique characteristics or brand identification requiring special purchase effort (e.g. luxury cars). Unsought goods are products consumers do not normally think of buying (e.g. life insurance).",
+    "options": [
+      {
+        "option_text": "Specialty goods require a special purchase effort due to unique characteristics, whereas unsought goods are items consumers do not typically think about buying.",
+        "option_explanation": "This matches the definition, as specialty goods require special purchase effort and unsought goods are not normally thought of buying."
+      },
+      {
+        "option_text": "Specialty goods are products like life insurance that consumers ignore, whereas unsought goods are luxury items with strong brand identification.",
+        "option_explanation": "This incorrectly reverses the definitions and examples of specialty and unsought goods."
+      },
+      {
+        "option_text": "Both specialty and unsought goods rely on the exact same marketing and pricing strategies to be successful.",
+        "option_explanation": "Each category requires a distinct marketing and pricing strategy."
+      },
+      {
+        "option_text": "Specialty goods are everyday purchases, while unsought goods require significant brand identification and special purchase effort.",
+        "option_explanation": "This is incorrect because specialty goods are the ones that require special purchase effort and brand identification, not unsought goods."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "the-concept-the-product-life-cycle",
+    "question_text": "What does the Product Life Cycle (PLC) describe?",
+    "hint": "Think about the metrics used to measure a product's performance over its lifetime.",
+    "correct_answer_citation": "The Product Life Cycle (PLC) describes the course of a product's sales and profits over its lifetime.",
+    "options": [
+      {
+        "option_text": "The strict timeline that every successful product must follow.",
+        "option_explanation": "Not all products follow this cycle strictly."
+      },
+      {
+        "option_text": "The course of a product's sales and profits over its lifetime.",
+        "option_explanation": "The PLC provides a framework detailing how sales and profits change through different stages of a product's life."
+      },
+      {
+        "option_text": "The step-by-step manufacturing process of a product.",
+        "option_explanation": "The PLC focuses on the market performance of a product, not its physical manufacturing process."
+      },
+      {
+        "option_text": "The marketing channels used to promote a new product.",
+        "option_explanation": "While it provides a framework for strategy, the PLC specifically describes the course of sales and profits, not the specific marketing channels."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "strategy-new-product-development-process",
+    "question_text": "According to the new product development process, what does the concept development and testing phase involve?",
+    "hint": "Consider the step that requires feedback from potential buyers.",
+    "correct_answer_citation": "Concept development and testing involve testing the idea with a group of target consumers.",
+    "options": [
+      {
+        "option_text": "Testing the idea with a group of target consumers.",
+        "option_explanation": "Concept development and testing involve testing the idea with a group of target consumers."
+      },
+      {
+        "option_text": "Sourcing and filtering new concepts.",
+        "option_explanation": "This describes the idea generation and screening step."
+      },
+      {
+        "option_text": "Outlining the initial marketing strategy for the new product.",
+        "option_explanation": "This describes the marketing strategy development step."
+      },
+      {
+        "option_text": "Designing the physical packaging of the final product.",
+        "option_explanation": "This is not part of the concept development and testing phase."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "the-concept-branding-strategy",
+    "question_text": "What does 'brand equity' represent in the context of branding strategy?",
+    "hint": "It describes the specific impact that recognizing a brand name has on how customers react.",
+    "correct_answer_citation": "Brand equity is the differential effect that knowing the brand name has on customer response to the product or its marketing.",
+    "options": [
+      {
+        "option_text": "The differential effect that knowing the brand name has on customer response to the product or its marketing.",
+        "option_explanation": "This accurately matches the definition of brand equity."
+      },
+      {
+        "option_text": "A name, term, sign, symbol, or design that identifies the maker or seller of a product.",
+        "option_explanation": "This is the definition of a brand itself, not brand equity."
+      },
+      {
+        "option_text": "The total financial cost associated with designing a new logo or symbol for a product.",
+        "option_explanation": "Brand equity is not defined as a financial cost of design."
+      },
+      {
+        "option_text": "The physical features and performance capabilities of a newly manufactured product.",
+        "option_explanation": "Brand equity is about customer response to knowing the brand name, not just the physical features of the product."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "the-concept-the-nature-of-services",
+    "question_text": "Which of the following is a key characteristic of services?",
+    "hint": "Think about whether buying a service gives you a physical object to keep.",
+    "correct_answer_citation": "They are essentially intangible and do not result in the ownership of anything.",
+    "options": [
+      {
+        "option_text": "They are essentially intangible and do not result in the ownership of anything.",
+        "option_explanation": "Correct. Services are essentially intangible and do not result in the ownership of anything."
+      },
+      {
+        "option_text": "They are physical goods that can be stored for future use.",
+        "option_explanation": "Incorrect. Services are defined as activities, benefits, or satisfactions, not physical goods."
+      },
+      {
+        "option_text": "They represent a shrinking sector of modern markets.",
+        "option_explanation": "Incorrect. The service economy is growing rapidly and dominates modern markets."
+      },
+      {
+        "option_text": "They are tangible products that result in immediate ownership upon purchase.",
+        "option_explanation": "Incorrect. Services are intangible and do not result in ownership."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]

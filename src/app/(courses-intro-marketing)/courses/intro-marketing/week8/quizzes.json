@@ -1,0 +1,152 @@
+[
+  {
+    "slide_id": "the-paradigm-of-price",
+    "question_text": "What makes price uniquely different from all other elements in the marketing mix?",
+    "hint": "Think about the financial contribution of this element compared to the others.",
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "It is the only element that produces revenue.",
+        "option_explanation": "Correct. All other elements represent costs, whereas price is the only one that directly brings in revenue."
+      },
+      {
+        "option_text": "It is the least flexible element to change.",
+        "option_explanation": "Incorrect. Price is highly flexible and can be adjusted quickly compared to other commitments."
+      },
+      {
+        "option_text": "It represents the primary cost to the organization.",
+        "option_explanation": "Incorrect. Other elements of the marketing mix represent costs; price generates revenue."
+      },
+      {
+        "option_text": "It has no impact on buyer choice or market share.",
+        "option_explanation": "Incorrect. Price is a critical determinant of both buyer choice and market share."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "external-factors-the-market-and-demand",
+    "question_text": "When establishing a pricing strategy, what sets the upper limit on the price a company can charge?",
+    "hint": "Consider what ultimately decides whether a customer will accept a price.",
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "The fixed costs of production",
+        "option_explanation": "Incorrect. Costs set the lower limit, not the upper limit."
+      },
+      {
+        "option_text": "The level of monopolistic competition",
+        "option_explanation": "Incorrect. While competitive conditions matter, they do not universally set the absolute upper limit."
+      },
+      {
+        "option_text": "The market and consumer demand",
+        "option_explanation": "Correct. While costs determine the lower boundary for pricing, the market's willingness to pay sets the upper limit."
+      },
+      {
+        "option_text": "The long-term marketing objectives",
+        "option_explanation": "Incorrect. Objectives guide the strategy, but they do not dictate the maximum price the market will bear."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "customer-value-based-pricing",
+    "question_text": "Which pricing approach begins by assessing customer needs and their value perceptions before any other aspect of the marketing program is set?",
+    "hint": "This strategy is the direct reverse of a cost-based approach.",
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Competition-based pricing",
+        "option_explanation": "Incorrect. This strategy focuses on competitors' prices and market offerings."
+      },
+      {
+        "option_text": "Cost-plus pricing",
+        "option_explanation": "Incorrect. This strategy relies on calculating internal costs before setting a price."
+      },
+      {
+        "option_text": "Customer value-based pricing",
+        "option_explanation": "Correct. This approach relies on buyers' perceptions of value as the primary factor before considering costs."
+      },
+      {
+        "option_text": "Break-even pricing",
+        "option_explanation": "Incorrect. This is a cost-based pricing approach focused on covering total costs."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "competition-based-pricing",
+    "question_text": "Under a competition-based pricing strategy, what primary factor would justify setting a higher price than rival offerings?",
+    "hint": "Think about how consumers judge an offering against others in the market.",
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Experiencing lower production costs than rivals",
+        "option_explanation": "Incorrect. Lower costs do not inherently justify charging a higher price to the consumer."
+      },
+      {
+        "option_text": "Providing greater customer value compared to competitors",
+        "option_explanation": "Correct. If an offering provides superior value to the customer, a higher price can be justified."
+      },
+      {
+        "option_text": "The need to offset a rapid increase in fixed overhead expenses",
+        "option_explanation": "Incorrect. Internal expenses are part of cost-based pricing considerations, not the justification for higher competition-based pricing."
+      },
+      {
+        "option_text": "The desire to quickly penetrate a highly price-sensitive market",
+        "option_explanation": "Incorrect. Penetrating a price-sensitive market would generally require setting a lower initial price."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "market-skimming-pricing",
+    "question_text": "What condition is essential for a market-skimming pricing strategy to be successful?",
+    "hint": "Consider the relationship between the initial high price and the brand's perception.",
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Competitors must be able to easily enter the market and undercut the price.",
+        "option_explanation": "Incorrect. If competitors can easily enter and undercut the price, a skimming strategy will fail."
+      },
+      {
+        "option_text": "Production and distribution costs must decrease rapidly as sales increase.",
+        "option_explanation": "Incorrect. This is a requirement for market-penetration pricing, not market-skimming."
+      },
+      {
+        "option_text": "The market must be highly price-sensitive to attract buyers quickly.",
+        "option_explanation": "Incorrect. A price-sensitive market is unsuited for a high-price skimming strategy."
+      },
+      {
+        "option_text": "The product's quality and image must support the premium price.",
+        "option_explanation": "Correct. To successfully charge a high initial price, the product's perceived quality and image must justify it."
+      }
+    ],
+    "correct_answer_index": 3
+  },
+  {
+    "slide_id": "captive-product-pricing",
+    "question_text": "What is the core objective of utilizing a captive-product pricing strategy?",
+    "hint": "Think about business models that rely on selling an initial base unit and necessary ongoing accessories.",
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "To clear out excess inventory by combining unrelated items into a single bundle.",
+        "option_explanation": "Incorrect. This describes product bundle pricing, not captive-product pricing."
+      },
+      {
+        "option_text": "To guarantee an ongoing revenue stream by placing high markups on required secondary supplies.",
+        "option_explanation": "Correct. The main unit is often sold cheaply to secure the ongoing, high-margin sales of necessary accessories."
+      },
+      {
+        "option_text": "To establish a premium brand image by pricing all accessories significantly below market average.",
+        "option_explanation": "Incorrect. The accessories (captive supplies) usually carry high markups, not low ones."
+      },
+      {
+        "option_text": "To deter competitors by offering an all-inclusive system with zero ongoing costs.",
+        "option_explanation": "Incorrect. The strategy depends entirely on ongoing accessory costs to generate profits."
+      }
+    ],
+    "correct_answer_index": 1
+  }
+]

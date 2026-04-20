@@ -1,0 +1,177 @@
+[
+  {
+    "slide_id": "the-promotion-mix",
+      "question_text": "What does the promotion mix define?",
+    "hint": "Think about what forms the core of marketing communications.",
+    "correct_answer_citation": "Defines the specific blend of promotional tools",
+    "options": [
+      {
+        "option_text": "The specific blend of promotional tools used to engage consumers and communicate customer value persuasively.",
+            "option_explanation": "The promotion mix defines the blend of promotional tools to engage consumers and build relationships."
+      },
+      {
+        "option_text": "The logistical networks used for supply chain management and product distribution.",
+            "option_explanation": "The promotion mix is a part of marketing communications, not supply chain logistics."
+      },
+      {
+        "option_text": "The strategic pricing methods utilized to maximize short-term organizational profits.",
+            "option_explanation": "The focus is on promotional tools and communication of customer value, not pricing methods."
+      },
+      {
+        "option_text": "The detailed stages of new product development and subsequent market research.",
+        "option_explanation": "The promotion mix is described as the core of marketing communications, independent of product development stages."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "elements-of-the-promotion-mix",
+    "question_text": "Which element of the promotion mix is defined as short-term incentives to encourage the purchase of a product or service?",
+    "hint": "This element focuses on immediate, temporary boosts in sales rather than long-term relationship building.",
+    "correct_answer_citation": "Sales Promotion: Short-term incentives to encourage purchase",
+    "options": [
+      {
+        "option_text": "Advertising",
+        "option_explanation": "Advertising is the paid, non-personal presentation of ideas, not short-term incentives."
+      },
+      {
+        "option_text": "Sales Promotion",
+        "option_explanation": "Sales promotion relies on short-term incentives to encourage the immediate purchase of a product."
+      },
+      {
+        "option_text": "Public Relations",
+        "option_explanation": "Public relations is about building good relations with various publics, rather than offering short-term purchase incentives."
+      },
+      {
+        "option_text": "Personal Selling",
+        "option_explanation": "Personal selling involves personal customer interactions by the firm's sales force, not primarily short-term incentives."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "sales-promotion",
+      "question_text": "Which of the following best describes a characteristic of sales promotions?",
+    "hint": "Consider how long the effects of sales promotions typically last and their impact on brand preference.",
+    "correct_answer_citation": "Effects are often short-lived and not as effective in building long-term brand preference",
+    "options": [
+      {
+        "option_text": "They are highly effective at building long-term brand preference.",
+            "option_explanation": "Sales promotions are not as effective in building long-term brand preference."
+      },
+      {
+        "option_text": "They attract consumer attention and reward quick responses, but their effects are often short-lived.",
+            "option_explanation": "Sales promotions attract attention, reward quick response, and have short-lived effects."
+      },
+      {
+        "option_text": "They rely on avoiding coupons, discounts, and premiums to maintain a premium brand image.",
+            "option_explanation": "Sales promotions actually include coupons, contests, discounts, and premiums."
+      },
+      {
+        "option_text": "They fail to offer strong incentives to purchase.",
+            "option_explanation": "Sales promotions offer strong incentives to purchase."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "the-need-for-integrated-marketing-communications",
+      "question_text": "What is the primary role of Integrated Marketing Communications (IMC)?",
+    "hint": "Consider how IMC addresses the problem of conflicting messages and a fragmented media landscape.",
+    "correct_answer_citation": "IMC ties together all of the company's messages and images",
+    "options": [
+      {
+        "option_text": "It ties together all of the company's messages and images.",
+            "option_explanation": "IMC is needed to tie together all of the company's messages and images to overcome confusion."
+      },
+      {
+        "option_text": "It intentionally creates conflicting messages to gain attention.",
+        "option_explanation": "Conflicting messages actually result in confused company images, which is a problem IMC aims to solve."
+      },
+      {
+        "option_text": "It fragments the media landscape to reach more consumers.",
+        "option_explanation": "A fragmented media landscape is a complication that makes communication difficult, not a strategy created by IMC."
+      },
+      {
+        "option_text": "It increases the bombardment of commercial messages from broad sources.",
+        "option_explanation": "Consumers are already bombarded by messages; IMC exists to organize and unify these messages, not increase the bombardment."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "steps-in-developing-effective-communication",
+    "question_text": "What is the first step in the process of developing effective communication?",
+    "hint": "Before setting objectives or crafting a message, you must first know exactly who you are trying to reach.",
+    "correct_answer_citation": "Identify the target audience",
+    "options": [
+      {
+        "option_text": "Determine the communication objectives",
+        "option_explanation": "This is the second step, which happens only after knowing who the audience is."
+      },
+      {
+        "option_text": "Choose the media to send the message",
+        "option_explanation": "This is the fourth step, chosen after designing the message."
+      },
+      {
+        "option_text": "Identify the target audience",
+        "option_explanation": "Identifying the target audience is the very first step in the cascading flow to develop marketing communication."
+      },
+      {
+        "option_text": "Design the message",
+        "option_explanation": "This is the third step in the process, following the determination of communication objectives."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "setting-the-promotional-budget",
+    "question_text": "Which method of setting a promotional budget involves developing the budget by defining specific goals and determining the actions needed to achieve them?",
+    "hint": "This method focuses on what the company actually wants to accomplish with its promotion and the steps required to do so.",
+    "correct_answer_citation": "Objective-and-Task Method: Developing the budget by defining specific objectives and determining the tasks needed to achieve them",
+    "options": [
+      {
+        "option_text": "Objective-and-Task Method",
+        "option_explanation": "This method develops the budget by defining specific objectives and determining the tasks needed to achieve them."
+      },
+      {
+        "option_text": "Affordable Method",
+        "option_explanation": "The affordable method sets the budget at the level management thinks the company can afford, rather than based on specific goals."
+      },
+      {
+        "option_text": "Percentage-of-Sales Method",
+        "option_explanation": "This method sets the budget at a certain percentage of current or forecasted sales."
+      },
+      {
+        "option_text": "Competitive-Parity Method",
+        "option_explanation": "This method sets the budget to match competitors outlays, not specific internal goals."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "measuring-effectiveness",
+    "question_text": "Which of the following is a key method used to measure the effectiveness of promotional activities?",
+    "hint": "Think about the metrics that evaluate the financial and market impact of the campaign.",
+    "correct_answer_citation": "Analyzing changes in sales and market share resulting from the campaign",
+    "options": [
+      {
+        "option_text": "Analyzing changes in sales and market share resulting from the campaign",
+            "option_explanation": "Analyzing changes in sales and market share is a method for measuring the effectiveness of a campaign."
+      },
+      {
+        "option_text": "Evaluating the manufacturing costs of the product",
+        "option_explanation": "Evaluating manufacturing costs is an operational metric, not a measure of a promotional campaign's effectiveness."
+      },
+      {
+        "option_text": "Increasing the number of product features",
+        "option_explanation": "This is a product development strategy, not a way to measure how effective a promotional activity was."
+      },
+      {
+        "option_text": "Changing the distribution channels to reach new regions",
+        "option_explanation": "This is a placement or distribution strategy, whereas measuring effectiveness focuses on audience recall, ROI, and sales impact."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]
