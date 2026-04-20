@@ -18,6 +18,9 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: "Courses - Davood Wadi, Ph.D.",
   description: "Courses - Davood Wadi, Ph.D.",
+    icons: {
+    icon: "/icon-large.svg",
+  },
 };
 
 export default function RootLayout({

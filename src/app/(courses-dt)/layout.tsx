@@ -30,6 +30,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Digital Transformation",
   description: "Davood Wadi, Ph.D.",
+    icons: {
+    icon: "/icon-large.svg",
+  },
 };
 
 export default function RootLayout({

@@ -14,7 +14,6 @@ topic: AI Innovations for Product Development
 lecturer: "Davood Wadi, PhD"
 course: AI and Innovation
 week: 09-product-development
-background: "A complex, evolving wireframe of a product transforming into a solid object."
 ---
 
 ## Title Slide
@@ -29,7 +28,6 @@ background: "A complex, evolving wireframe of a product transforming into a soli
 Required front matter fields:
 
 - `topic`
-- `background`
 
 Optional front matter fields:
 

@@ -165,7 +165,7 @@ These rules are strict and must be followed for every generated diagram.
 
 ### 5. Wire Diagrams Into `page.tsx`
 
-1. Import `FlowRenderer` from `@/components/flowcharts/FlowRenderer`.
+1. Import default `FlowRenderer` from `@/components/flowcharts/FlowRenderer`.
 2. Import diagram constants from `./flowcharts`.
 3. If a placeholder `div` exists (e.g., `<div data-diagram="...">`), **replace it** with the actual responsive diagram container. Otherwise, insert it inside the selected slide:
 

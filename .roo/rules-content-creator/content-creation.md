@@ -6,4 +6,3 @@
 - Avoid generic questions and make them interesting.
 - Next, based on the content inside content.md create the page for the slides. 
 - Use all of the points inside the instructions to create a cinematic slide deck.
-- Create a 3D background using THREE.js based on what the content.md says.

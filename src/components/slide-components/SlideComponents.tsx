@@ -7,6 +7,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { useRouter, usePathname } from 'next/navigation'
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -118,19 +119,33 @@ export function SlideDeck({
     return () => ctx.revert();
   }, []);
 
+// Inside your component:
+const pathname = usePathname()
+const router = useRouter()
+
+// Get parent path by removing last segment
+const parentPath = pathname.split('/').slice(0, -1).join('/') || '/'
+
   return (
     <div
       ref={containerRef}
       className="relative bg-[var(--background)] text-[var(--charcoal-light)] font-sans tracking-wide overflow-hidden min-h-screen selection:bg-[var(--crimson)] selection:text-[var(--surface)]"
     >
       {/* Navigation */}
-      <Link
-        href="/courses/ai-in-business"
+      {/* <Link
+        href={courseHome || '/courses/ai-in-business'}
         className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--charcoal-light)] hover:text-[var(--crimson)] hover:border-[var(--crimson)] hover:bg-[var(--crimson)]/5 transition-colors duration-300 group "
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
-      </Link>
+      </Link> */}
+      <button
+  onClick={() => router.push(parentPath)}
+  className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--charcoal-light)] hover:text-[var(--crimson)] hover:border-[var(--crimson)] hover:bg-[var(--crimson)]/5 transition-colors duration-300 group"
+  aria-label="Back to Course Hub"
+>
+  <ArrowLeft className="w-5 h-5" />
+</button>
 
       {background}
 
@@ -342,7 +357,7 @@ export function Column({
       full: "w-full",
     }[spanRatio] || "w-full md:w-1/2"; // fallback
   return (
-    <div className={`${widthClass} ${justifyClass} ${alignClass} ${className}`}>
+    <div className={`flex flex-col ${widthClass} ${justifyClass} ${alignClass} ${className}`}>
       {children}
     </div>
   );
@@ -820,7 +835,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`p-8 my-8 shadow-sm border-t-2 border-t-[var(--crimson)] ${className}`}
+      className={`flex flex-col h-full p-8 my-8 shadow-sm border-t-2 border-t-[var(--crimson)] ${className}`}
     >
       {title ? (
         <h4 className="font-bold text-[var(--crimson)] mb-2 uppercase tracking-wider text-sm">
@@ -831,12 +846,13 @@ export function Card({
       {subtitle ? (
         <p className="text-[var(--charcoal-light)] text-sm mb-4">{subtitle}</p>
       ) : null}
-      <div className="text-xl text-[var(--charcoal)] font-medium leading-relaxed">
+      <div className="flex-1 text-xl text-[var(--charcoal)] font-medium leading-relaxed">
         {children}
       </div>
     </div>
   );
 }
+
 
 /**
  * ContentTitle - Secondary title (h3) for content sections

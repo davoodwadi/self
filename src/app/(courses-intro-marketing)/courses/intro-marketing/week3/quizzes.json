@@ -1,0 +1,152 @@
+[
+  {
+    "slide_id": "step-1-need-recognition",
+    "question_text": "What triggers a buyer to recognize a problem or need during the first step of the buying process?",
+    "hint": "Think about the types of factors that can cause a consumer to realize they have a need.",
+    "correct_answer_citation": "The buyer recognizes a problem or need triggered by internal or external stimuli.",
+    "options": [
+      {
+        "option_text": "Internal or external stimuli",
+        "option_explanation": "According to the context, the buyer recognizes a problem or need that is triggered by internal or external stimuli during the need recognition stage."
+      },
+      {
+        "option_text": "Post-purchase evaluation",
+        "option_explanation": "Post-purchase evaluation is a later stage in the buying process, not the initial trigger for need recognition."
+      },
+      {
+        "option_text": "Product distribution channels",
+        "option_explanation": "Distribution channels relate to where a product is sold, not the underlying triggers for a buyer's problem or need."
+      },
+      {
+        "option_text": "Final purchasing decisions",
+        "option_explanation": "The final purchasing decision occurs after a need has already been recognized and evaluated."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "step-2-information-search",
+    "question_text": "According to the context on Information Search, which source of information tends to be the most effective for a consumer?",
+    "hint": "This source is known to legitimize or evaluate products for the buyer.",
+    "correct_answer_citation": "The most effective sources tend to be personal, as they legitimize or evaluate products for the buyer.",
+    "options": [
+      {
+        "option_text": "Personal sources",
+        "option_explanation": "The context states that personal sources tend to be the most effective because they legitimize or evaluate products for the buyer."
+      },
+      {
+        "option_text": "Commercial sources",
+        "option_explanation": "While commercial sources are a type of information source, the context does not identify them as the most effective."
+      },
+      {
+        "option_text": "Public sources",
+        "option_explanation": "Public sources are mentioned as an information source, but they are not cited as the most effective one."
+      },
+      {
+        "option_text": "Experiential sources",
+        "option_explanation": "Experiential sources are used to search for information, but the context specifically highlights personal sources as the most effective."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "step-5-postpurchase-behavior",
+    "question_text": "In the context of postpurchase behavior, what is cognitive dissonance?",
+    "hint": "It refers to a feeling of conflict or unease that happens after a sale.",
+    "correct_answer_citation": "Cognitive dissonance, or buyer discomfort caused by postpurchase conflict, is a common occurrence.",
+    "options": [
+      {
+        "option_text": "Buyer discomfort caused by postpurchase conflict.",
+        "option_explanation": "Cognitive dissonance is specifically defined as the discomfort a buyer feels due to postpurchase conflict."
+      },
+      {
+        "option_text": "The point at which a marketer's job officially ends.",
+        "option_explanation": "The text explicitly states that the marketer's job does not end when the product is bought."
+      },
+      {
+        "option_text": "A state of complete consumer satisfaction with no regrets.",
+        "option_explanation": "Cognitive dissonance specifically refers to discomfort or conflict, not complete satisfaction."
+      },
+      {
+        "option_text": "The process of a consumer deciding which product to buy.",
+        "option_explanation": "This describes prepurchase evaluation, whereas cognitive dissonance happens during postpurchase behavior."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "psychological-factors",
+    "question_text": "What is perception in the context of psychological factors that influence buying choices?",
+    "hint": "It involves organizing and interpreting information.",
+    "correct_answer_citation": "Perception is the process by which people select, organize, and interpret information to form a meaningful picture of the world.",
+    "options": [
+      {
+        "option_text": "The process by which people select, organize, and interpret information to form a meaningful picture of the world.",
+        "option_explanation": "This exactly matches the definition of perception provided in the text."
+      },
+      {
+        "option_text": "The specific attitudes and beliefs a person holds about different products.",
+        "option_explanation": "Beliefs and attitudes are listed as separate psychological factors from perception."
+      },
+      {
+        "option_text": "The motivation that drives a person to make a buying choice.",
+        "option_explanation": "Motivation is a separate psychological factor, not the definition of perception."
+      },
+      {
+        "option_text": "The method by which people learn new behaviors over time.",
+        "option_explanation": "Learning is another psychological factor distinct from perception."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "market-structure-and-demand",
+    "question_text": "Which of the following best describes the characteristics of Business-to-Business (B2B) demand compared to Business-to-Consumer (B2C) demand?",
+    "hint": "Consider the origin of the demand as well as its stability and price sensitivity based on the context.",
+    "correct_answer_citation": "Business demand is derived demand; it ultimately derives from the demand for consumer goods. B2B demand is also more inelastic and fluctuating compared to B2C.",
+    "options": [
+      {
+        "option_text": "It is derived demand that is typically more inelastic and fluctuating.",
+        "option_explanation": "Correct. B2B demand derives from consumer demand and tends to be more inelastic and fluctuating than B2C demand."
+      },
+      {
+        "option_text": "It is independent demand that is typically more elastic and highly stable.",
+        "option_explanation": "Incorrect. B2B demand is derived, not independent, and is more inelastic and fluctuating, not elastic and stable."
+      },
+      {
+        "option_text": "It is driven by a significantly larger number of buyers who purchase in smaller quantities.",
+        "option_explanation": "Incorrect. The context states that business marketers deal with far fewer, but far larger buyers compared to consumer marketers."
+      },
+      {
+        "option_text": "It is direct demand that remains entirely immune to fluctuations in the consumer goods market.",
+        "option_explanation": "Incorrect. Business demand is derived from consumer goods, meaning fluctuations in consumer markets directly impact B2B demand."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "the-buying-center",
+    "question_text": "What does the term buying center refer to in the context of B2B purchases?",
+    "hint": "It involves multiple roles such as users, influencers, buyers, deciders, and gatekeepers.",
+    "correct_answer_citation": "The buying center consists of all the individuals and units that play a role in the purchase decision-making process.",
+    "options": [
+      {
+        "option_text": "A single individual who makes all the purchasing decisions for a company.",
+        "option_explanation": "B2B purchases are rarely made by a single individual."
+      },
+      {
+        "option_text": "All the individuals and units that play a role in the purchase decision-making process.",
+        "option_explanation": "The buying center is the collective group of people involved in the B2B purchasing decision."
+      },
+      {
+        "option_text": "The physical department or office where procurement takes place.",
+        "option_explanation": "The buying center refers to the people involved in the decision, not a physical location."
+      },
+      {
+        "option_text": "An automated system used to process and finalize B2B transactions.",
+        "option_explanation": "The buying center consists of individuals and units, not an automated software system."
+      }
+    ],
+    "correct_answer_index": 1
+  }
+]

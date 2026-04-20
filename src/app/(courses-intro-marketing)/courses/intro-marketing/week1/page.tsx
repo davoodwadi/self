@@ -34,7 +34,7 @@ export default function Week1() {
   const quizBySlideId = createCourseQuizLookup(quizzesData as CourseQuiz[]);
 
   return (
-    <SlideDeck background={<BackgroundManager type="marketing" />}>
+    <SlideDeck background={<BackgroundManager type="marketing" /> } >
       {/* Title Slide */}
       <Slide
         id="title-slide"

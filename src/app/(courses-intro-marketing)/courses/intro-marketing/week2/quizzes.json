@@ -1,0 +1,102 @@
+[
+  {
+    "slide_id": "the-microenvironment",
+    "question_text": "Which of the following groups of actors make up a company's microenvironment?",
+    "hint": "This environment includes both internal components and closely related external partners that directly affect customer service capabilities.",
+    "correct_answer_citation": "These actors include the company itself, suppliers, marketing intermediaries, customer markets, competitors, and publics.",
+    "options": [
+      {
+        "option_text": "Demographic trends, economic conditions, natural forces, and cultural forces.",
+        "option_explanation": "These elements are typically considered part of the broader macroenvironment, not the immediate microenvironment."
+      },
+      {
+        "option_text": "Only the internal departments of the company, such as finance, human resources, and operations.",
+        "option_explanation": "While internal departments are included (the company itself), the microenvironment also involves external partners like suppliers and intermediaries."
+      },
+      {
+        "option_text": "The company itself, suppliers, marketing intermediaries, customer markets, competitors, and publics.",
+        "option_explanation": "The microenvironment consists of these specific actors close to the company that affect its ability to serve customers."
+      },
+      {
+        "option_text": "Global trade agreements, national government regulations, and international laws.",
+        "option_explanation": "These represent broader legal and political forces outside the immediate microenvironment actors."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "the-macroenvironment",
+    "question_text": "Which framework is often used to analyze the broad societal forces of the macroenvironment?",
+    "hint": "This framework uses a six-letter acronym that includes Political, Economic, and Social factors.",
+    "correct_answer_citation": "We often use the PESTLE framework to analyze these broad forces.",
+    "options": [
+      {
+        "option_text": "The PESTLE framework",
+        "option_explanation": "The PESTLE framework is used to analyze the broad forces of the macroenvironment."
+      },
+      {
+        "option_text": "The SWOT analysis",
+        "option_explanation": "SWOT is a different framework, often used for internal and external analysis, but PESTLE specifically targets macroenvironmental forces."
+      },
+      {
+        "option_text": "The Microenvironment matrix",
+        "option_explanation": "The macroenvironment affects the microenvironment, but the tool used to analyze the macroenvironmental forces is the PESTLE framework."
+      },
+      {
+        "option_text": "The Hub-and-Spoke model",
+        "option_explanation": "Hub-and-spoke describes a visual diagram layout, whereas PESTLE is the actual analytical framework."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "the-pillars-of-csr",
+    "question_text": "In the context of the Pillars of Corporate Social Responsibility (CSR), which responsibility focuses on contributing resources to the community to improve the quality of life?",
+    "hint": "This responsibility is about giving back and improving society, separate from basic legal or ethical duties.",
+    "correct_answer_citation": "Philanthropic responsibility: To contribute resources to the community and improve quality of life.",
+    "options": [
+      {
+        "option_text": "Economic responsibility",
+        "option_explanation": "Economic responsibility refers to being profitable and economically viable, not specifically contributing resources to the community."
+      },
+      {
+        "option_text": "Legal responsibility",
+        "option_explanation": "Legal responsibility refers to obeying the law and playing by the rules."
+      },
+      {
+        "option_text": "Ethical responsibility",
+        "option_explanation": "Ethical responsibility involves doing what is right, just, and fair, but philanthropic responsibility specifically targets community resources and quality of life."
+      },
+      {
+        "option_text": "Philanthropic responsibility",
+        "option_explanation": "Philanthropic responsibility focuses on contributing resources to the community and improving the quality of life."
+      }
+    ],
+    "correct_answer_index": 3
+  },
+  {
+    "slide_id": "deceptive-practices",
+    "question_text": "What is a major long-term consequence for a company that engages in deceptive pricing and promotion practices?",
+    "hint": "Consider the impact these practices have on both the buyers and the overall value of the brand.",
+    "correct_answer_citation": "These practices harm consumers and ultimately destroy brand equity.",
+    "options": [
+      {
+        "option_text": "They harm consumers and destroy brand equity.",
+        "option_explanation": "Deceptive practices harm consumers and ultimately destroy brand equity."
+      },
+      {
+        "option_text": "They improve the product's features and performance.",
+        "option_explanation": "Misrepresenting features is a form of deceptive promotion, not a genuine improvement."
+      },
+      {
+        "option_text": "They establish legitimate factory pricing structures.",
+        "option_explanation": "Deceptive pricing involves falsely advertising factory prices, not establishing legitimate ones."
+      },
+      {
+        "option_text": "They increase consumer trust and long-term brand value.",
+        "option_explanation": "These practices harm consumers and destroy brand equity, rather than increasing trust."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]

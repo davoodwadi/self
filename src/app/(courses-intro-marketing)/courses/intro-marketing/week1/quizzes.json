@@ -1,7 +1,7 @@
 [
   {
     "slide_id": "the-definition-of-marketing",
-    "question_text": "Based on the provided definition, what is the primary purpose of the marketing process?",
+    "question_text": "What is the primary purpose of the marketing process?",
     "hint": "Look for the mention of what is created and captured during the process.",
     "correct_answer_citation": "The Definition of Marketing context.",
     "options": [
@@ -26,7 +26,7 @@
   },
   {
     "slide_id": "needs-wants-and-demands",
-    "question_text": "According to the provided text, what is the relationship between marketers and consumer needs?",
+    "question_text": "What is the relationship between marketers and consumer needs?",
     "hint": "Look for the specific statement regarding whether marketers have the power to create a need.",
     "correct_answer_citation": "Needs, Wants, and Demands: Marketers do not create needs, but they can influence wants.",
     "options": [

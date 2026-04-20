@@ -1,0 +1,127 @@
+[
+  {
+    "slide_id": "market-structure-and-demand",
+    "question_text": "Which of the following best describes the characteristics of demand in Business-to-Business (B2B) markets?",
+    "hint": "Consider how B2B demand relates to consumer behavior and its stability over time.",
+    "correct_answer_citation": "Market Structure and Demand section",
+    "options": [
+      {
+        "option_text": "It is derived from consumer demand, is more inelastic, and fluctuates more rapidly.",
+        "option_explanation": "B2B demand is derived from consumer demand, is more inelastic, and fluctuates more rapidly than consumer demand."
+      },
+      {
+        "option_text": "It is completely independent of consumer demand and fluctuates very little.",
+        "option_explanation": "B2B demand actually comes directly from consumer demand (derived demand) and fluctuates more rapidly, not less."
+      },
+      {
+        "option_text": "It is more elastic than consumer demand and is driven by a vast number of small buyers.",
+        "option_explanation": "B2B markets typically have fewer, larger buyers, and their demand is more inelastic, not more elastic."
+      },
+      {
+        "option_text": "It is primary demand that dictates consumer trends and features slow, stable fluctuations.",
+        "option_explanation": "B2B demand is derived from consumer demand rather than being primary, and it is known to fluctuate rapidly."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "types-of-decisions-and-the-decision-process",
+    "question_text": "Which of the following best describes the buying process and relationship between buyers and sellers in B2B markets?",
+    "hint": "Consider the level of complexity, formalization, and mutual reliance.",
+    "correct_answer_citation": "The B2B buying process is highly formalized. Buyers and sellers are highly dependent on each other in B2B markets.",
+    "options": [
+      {
+        "option_text": "The B2B buying process is highly formalized, and buyers and sellers are highly dependent on each other.",
+        "option_explanation": "The B2B purchasing process is formalized and there is high mutual dependence between buyers and sellers."
+      },
+      {
+        "option_text": "B2B buyers face simple purchasing decisions and act completely independently.",
+        "option_explanation": "B2B decisions are more complex and involve high dependence, rather than being simple and independent."
+      },
+      {
+        "option_text": "The purchasing process is highly informal to allow for faster decision-making.",
+        "option_explanation": "The B2B buying process is highly formalized, not informal."
+      },
+      {
+        "option_text": "Buyers and sellers avoid dependence on each other to maintain market flexibility.",
+        "option_explanation": "Buyers and sellers are highly dependent on each other in B2B markets."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "roles-in-the-buying-center",
+    "question_text": "In a buying center, which role has the formal authority to select the supplier and arrange the terms of the purchase?",
+    "hint": "This role is responsible for officially making the purchase arrangements.",
+    "correct_answer_citation": "Buyers have formal authority to select the supplier and arrange terms.",
+    "options": [
+      {
+        "option_text": "Users",
+        "option_explanation": "Users are the members of the organization who will actually use the product, but they do not necessarily have the authority to select suppliers."
+      },
+      {
+        "option_text": "Influencers",
+        "option_explanation": "Influencers affect the buying decision by providing information or specifications, rather than making the formal selection."
+      },
+      {
+        "option_text": "Buyers",
+        "option_explanation": "Buyers possess the formal authority to select the supplier and negotiate or arrange the purchasing terms."
+      },
+      {
+        "option_text": "Gatekeepers",
+        "option_explanation": "Gatekeepers control the flow of information to others, rather than having the authority to select suppliers."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "types-of-buying-situations",
+    "question_text": "Which type of buying situation occurs when a buyer purchases a product or service for the first time?",
+    "hint": "This situation involves no previous purchasing history for the specific item.",
+    "correct_answer_citation": "A new task is a situation where the buyer purchases a product or service for the first time.",
+    "options": [
+      {
+        "option_text": "New task",
+        "option_explanation": "A new task is a situation where the buyer purchases a product or service for the first time."
+      },
+      {
+        "option_text": "Straight rebuy",
+        "option_explanation": "A straight rebuy is a routine purchase where the buyer reorders without modifications."
+      },
+      {
+        "option_text": "Modified rebuy",
+        "option_explanation": "A modified rebuy is when the buyer wants to modify product specifications, prices, or suppliers."
+      },
+      {
+        "option_text": "Routine purchase",
+        "option_explanation": "This describes a straight rebuy rather than a first-time purchase."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "key-account-management-kam",
+    "question_text": "What is a defining characteristic of key accounts in Key Account Management (KAM)?",
+    "hint": "Think about how these specific customers impact the financial success of the company.",
+    "correct_answer_citation": "Key accounts contribute disproportionately to the company's revenue and profit.",
+    "options": [
+      {
+        "option_text": "They contribute disproportionately to the company's revenue and profit.",
+        "option_explanation": "Key accounts are the most valuable customers who bring in a highly significant share of revenue and profit."
+      },
+      {
+        "option_text": "They require standardized solutions and minimal customer service.",
+        "option_explanation": "KAM involves dedicated teams providing customized solutions and exceptional service, not standardized solutions."
+      },
+      {
+        "option_text": "They are managed primarily through short-term transactional relationships.",
+        "option_explanation": "KAM is specifically defined as the process of building long-term relationships."
+      },
+      {
+        "option_text": "They make up the majority of the company's total number of individual customers.",
+        "option_explanation": "While they contribute highly to revenue, they are the 'most valuable' customers, not necessarily the majority by sheer volume."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]

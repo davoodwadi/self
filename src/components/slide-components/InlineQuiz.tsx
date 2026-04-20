@@ -57,7 +57,7 @@ export default function InlineQuiz({
             const isActuallyCorrect = index === quizData.correct_answer_index;
 
             let containerStyle =
-              "border-[var(--charcoal)]/10 hover:border-[var(--champagne)]/40 hover:bg-[var(--champagne)]/[0.02]";
+              "border-[var(--charcoal)]/10 hover:border-[var(--highlight)]/40 hover:bg-[var(--highlight)]/10";
             let letterBg =
               "bg-[var(--charcoal)]/5 text-[var(--charcoal-light)]";
             let textStyle = "text-[var(--charcoal-light)]";
@@ -79,9 +79,9 @@ export default function InlineQuiz({
               }
             } else if (isSelected) {
               containerStyle =
-                "border-[var(--champagne)] bg-[var(--champagne)]/[0.03]";
-              letterBg = "bg-[var(--champagne)] text-[var(--surface)]";
-              textStyle = "text-[var(--charcoal)] font-medium";
+                "border-[var(--highlight)] bg-[var(--highlight)]/5";
+              letterBg = "bg-[var(--highlight)]/5 text-[var(--surface)]";
+              textStyle = "text-[var(--highlight)] font-medium";
             }
 
             return (
