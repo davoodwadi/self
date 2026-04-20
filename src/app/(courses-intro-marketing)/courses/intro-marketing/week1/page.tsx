@@ -23,6 +23,12 @@ import {
 import { BackgroundManager } from "@/components/slide-components/Backgrounds";
 import { createCourseQuizLookup, CourseQuiz } from "@/lib/course-quiz";
 import quizzesData from "./quizzes.json";
+import FlowRenderer from "@/components/flowcharts/FlowRenderer";
+import {
+  needsWantsDemandsFlow,
+  evolutionOfMarketingFlow,
+  marketingProcessFlow,
+} from "./flowcharts";
 
 export default function Week1() {
   const quizBySlideId = createCourseQuizLookup(quizzesData as CourseQuiz[]);
@@ -117,7 +123,9 @@ export default function Week1() {
       >
         <Tag>Foundation</Tag>
         <Heading>Needs, Wants, and <Highlight>Demands</Highlight></Heading>
-        <div data-diagram="split-lane - Comparison of Needs, Wants, and Demands" className="w-full h-[300px] sm:h-[340px] md:h-[380px] rounded-2xl border border-[var(--crimson)]/15 bg-white/80 flex items-center justify-center text-[var(--charcoal-light)] my-8">Diagram Placeholder: Comparison of Needs, Wants, and Demands</div>
+        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 my-8">
+          <FlowRenderer {...needsWantsDemandsFlow} />
+        </div>
         <AnimatedList className="mt-6">
           <ListItem>These three concepts are the foundation of marketing.</ListItem>
           <ListItem>Understanding the difference between them is critical for any strategy.</ListItem>
@@ -210,6 +218,9 @@ export default function Week1() {
       <Slide id="part-2-the-evolution-of-marketing" border>
         <Tag>Part 2</Tag>
         <Heading>The <Highlight>Evolution</Highlight> of Marketing</Heading>
+        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 my-8">
+          <FlowRenderer {...evolutionOfMarketingFlow} />
+        </div>
         <Row gap="large" className="mt-8">
           <Column spanRatio="1/2">
             <ContentText layout="prose">
@@ -366,7 +377,9 @@ export default function Week1() {
       <Slide id="part-3-the-marketing-process" border>
         <Tag>Part 3</Tag>
         <Heading>The Marketing <Highlight>Process</Highlight></Heading>
-        <div data-diagram="cascading flow - The Five-Step Marketing Process" className="w-full h-[300px] sm:h-[340px] md:h-[380px] rounded-2xl border border-[var(--crimson)]/15 bg-white/80 flex items-center justify-center text-[var(--charcoal-light)] my-8">Diagram Placeholder: The Five-Step Marketing Process</div>
+        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 my-8">
+          <FlowRenderer {...marketingProcessFlow} />
+        </div>
         <Row gap="large" className="mt-8">
           <Column spanRatio="1/2">
             <AnimatedList>

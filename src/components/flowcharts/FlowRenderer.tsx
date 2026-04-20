@@ -54,7 +54,7 @@ interface AIFlowRendererProps {
  * dimensions (width and height), because React Flow requires measurable space
  * to render correctly.
  */
-export default function FlowRenderer({
+export default function FlowRenderer({ 
   aiGeneratedNodes,
   aiGeneratedEdges,
 }: AIFlowRendererProps) {
@@ -93,7 +93,7 @@ export default function FlowRenderer({
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         fitView
-        fitViewOptions={{ padding: 0.2 }}
+        fitViewOptions={{ padding: 0.1 }}
       >
         <Background color="transparent" gap={16} />
         <Controls />
