@@ -3,7 +3,6 @@ topic: Business-to-Business (B2B) Marketing
 lecturer: "Davood Wadi, PhD"
 course: Introduction to Marketing
 week: week4
-background: "A deep, professional network grid consisting of subtle geometric connections and slow-moving light trails in corporate blue and silver."
 ---
 
 ## Title Slide

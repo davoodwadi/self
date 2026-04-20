@@ -3,7 +3,6 @@ topic: Marketing Research and Data Analytics
 lecturer: "Davood Wadi, PhD"
 course: Introduction to Marketing
 week: week5
-background: "A futuristic digital grid showing glowing data nodes and flowing information streams in deep blue and cyan."
 ---
 
 ## Title Slide

@@ -3,7 +3,6 @@ topic: Introduction to Marketing & The Marketing Process
 lecturer: "Davood Wadi, PhD"
 course: Introduction to Marketing
 week: week1
-background: "A soft, elegant particle simulation resembling interconnected nodes that gently pulse in shades of indigo and coral."
 ---
 
 ## Title Slide

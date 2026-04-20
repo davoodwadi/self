@@ -3,7 +3,6 @@ topic: Consumer Behavior
 lecturer: "Davood Wadi, PhD"
 course: Introduction to Marketing
 week: week3
-background: "A soft, elegant particle simulation resembling interconnected nodes that gently pulse in shades of indigo and coral."
 ---
 
 ## Title Slide

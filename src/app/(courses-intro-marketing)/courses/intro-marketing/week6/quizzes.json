@@ -1,0 +1,127 @@
+[
+  {
+    "correct_answer_citation": "Demographic variables are the most popular bases for segmenting customer groups because they are easier to measure.",
+    "correct_answer_index": 0,
+    "hint": "Consider which variables are generally simpler to quantify and track.",
+    "options": [
+      {
+        "option_explanation": "The text states that demographic variables are the most popular bases because they are easier to measure.",
+        "option_text": "They are easier to measure."
+      },
+      {
+        "option_explanation": "The text does not state they are the most expensive; rather, they are easier to measure.",
+        "option_text": "They are the most expensive to collect."
+      },
+      {
+        "option_explanation": "This refers to psychographic segmentation, not demographic.",
+        "option_text": "They focus on lifestyle and personality characteristics."
+      },
+      {
+        "option_explanation": "Geographic segmentation relies on physical location, while demographic uses age, gender, etc.",
+        "option_text": "They rely solely on physical location data."
+      }
+    ],
+    "question_text": "Why are demographic variables the most popular bases for segmenting customer groups?",
+    "slide_id": "geographic-and-demographic-segmentation"
+  },
+  {
+    "correct_answer_citation": "Variables include occasions, benefits sought, user status, usage rate, and loyalty status.",
+    "correct_answer_index": 1,
+    "hint": "Focus on factors related to how consumers interact with or respond to the product.",
+    "options": [
+      {
+        "option_explanation": "These are demographic variables.",
+        "option_text": "Age, gender, and income."
+      },
+      {
+        "option_explanation": "The context specifically lists occasions, benefits sought, user status, usage rate, and loyalty status as behavioral variables.",
+        "option_text": "Occasions, benefits sought, user status, usage rate, and loyalty status."
+      },
+      {
+        "option_explanation": "These are geographic variables.",
+        "option_text": "Nations, states, regions, and cities."
+      },
+      {
+        "option_explanation": "These are psychographic variables.",
+        "option_text": "Lifestyle and personality characteristics."
+      }
+    ],
+    "question_text": "Which of the following are variables used in behavioral segmentation?",
+    "slide_id": "behavioral-segmentation"
+  },
+  {
+    "correct_answer_citation": "In evaluating different market segments, a firm must look at three factors: segment size and growth, segment structural attractiveness, and company objectives and resources.",
+    "correct_answer_index": 0,
+    "hint": "Think about the size, the structure, and the firm's own capabilities.",
+    "options": [
+      {
+        "option_explanation": "These are the exact three factors mentioned in the text for evaluating market segments.",
+        "option_text": "Segment size and growth, segment structural attractiveness, and company objectives and resources."
+      },
+      {
+        "option_explanation": "These are targeting strategies, not the factors used to evaluate segment attractiveness.",
+        "option_text": "Undifferentiated marketing, differentiated marketing, and concentrated marketing."
+      },
+      {
+        "option_explanation": "These relate to segmentation bases, not the overall evaluation of segment attractiveness.",
+        "option_text": "Demographic trends, psychographic profiles, and behavioral variables."
+      },
+      {
+        "option_explanation": "These relate to product differentiation, not evaluating segments.",
+        "option_text": "Product quality, brand image, and customer service."
+      }
+    ],
+    "question_text": "What are the three factors a firm must look at when evaluating different market segments?",
+    "slide_id": "evaluating-market-segments"
+  },
+  {
+    "correct_answer_citation": "The differentiation and positioning task consists of three steps: identifying a set of differentiating competitive advantages, choosing the right competitive advantages, and selecting an overall positioning strategy.",
+    "correct_answer_index": 2,
+    "hint": "It involves identifying advantages, choosing the right ones, and then selecting a strategy.",
+    "options": [
+      {
+        "option_explanation": "This describes the segmentation and targeting process.",
+        "option_text": "Segmenting the market, targeting a segment, and setting the price."
+      },
+      {
+        "option_explanation": "While important, this is not the specific three-step process for differentiation and positioning.",
+        "option_text": "Conducting market research, analyzing competitors, and launching an advertising campaign."
+      },
+      {
+        "option_explanation": "The context explicitly outlines these three steps for the differentiation and positioning task.",
+        "option_text": "Identifying a set of differentiating competitive advantages, choosing the right competitive advantages, and selecting an overall positioning strategy."
+      },
+      {
+        "option_explanation": "These are the four Ps of the marketing mix.",
+        "option_text": "Developing a product, setting a price, placing it in distribution channels, and promoting it."
+      }
+    ],
+    "question_text": "What are the three steps in the differentiation and positioning task?",
+    "slide_id": "choosing-a-differentiation-and-positioning-strategy"
+  },
+  {
+    "correct_answer_citation": "It is the full mix of benefits on which a brand is differentiated and positioned.",
+    "correct_answer_index": 0,
+    "hint": "It encompasses the complete set of benefits a brand offers to stand out.",
+    "options": [
+      {
+        "option_explanation": "The text defines a value proposition as the full mix of benefits on which a brand is differentiated and positioned.",
+        "option_text": "The full mix of benefits on which a brand is differentiated and positioned."
+      },
+      {
+        "option_explanation": "A value proposition is broader than just a pricing strategy.",
+        "option_text": "A specific pricing strategy designed to undercut competitors."
+      },
+      {
+        "option_explanation": "This refers to the promotional mix, not the value proposition.",
+        "option_text": "The advertising budget allocated for a specific target market."
+      },
+      {
+        "option_explanation": "This describes geographical segmentation.",
+        "option_text": "The physical location where a brand is most heavily marketed."
+      }
+    ],
+    "question_text": "How is a brand's value proposition defined in the context of positioning?",
+    "slide_id": "developing-a-value-proposition"
+  }
+]
