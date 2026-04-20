@@ -1,0 +1,177 @@
+[
+  {
+    "slide_id": "step-1-defining-the-problem",
+    "question_text": "Why is 'Defining the Problem' often considered the most difficult step in the marketing research process?",
+    "hint": "Consider how this initial phase affects the rest of the research project.",
+    "correct_answer_citation": "The first step is to carefully define the problem and agree on research objectives. This is often the hardest step, as it guides the entire research process.",
+    "options": [
+      {
+        "option_text": "It requires defining objectives that will guide the entire research process, which can be challenging to agree upon.",
+        "option_explanation": "Defining the problem is the hardest step because it sets the direction for all subsequent research activities."
+      },
+      {
+        "option_text": "It involves collecting complex statistical data before any analysis can begin.",
+        "option_explanation": "Data collection happens in a later step; defining the problem is about identifying what needs to be researched."
+      },
+      {
+        "option_text": "It is the most expensive phase of the research project due to the need for primary data.",
+        "option_explanation": "Defining the problem does not inherently cost the most; implementation and data collection are typically more expensive."
+      },
+      {
+        "option_text": "It requires the immediate selection of the target audience without prior data.",
+        "option_explanation": "Target audiences and methodologies are determined in the research plan step, not during problem definition."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "step-2-developing-the-research-plan",
+    "question_text": "What is the primary balance that must be struck when developing a marketing research plan?",
+    "hint": "Think about the resources required versus the benefits gained from the research.",
+    "correct_answer_citation": "The plan must balance the cost of obtaining data against the value of the insights.",
+    "options": [
+      {
+        "option_text": "Balancing the cost of obtaining data against the value of the insights.",
+        "option_explanation": "A good research plan must ensure that the insights gained are worth the time and money spent to acquire them."
+      },
+      {
+        "option_text": "Balancing primary and secondary data to ensure an equal amount of both.",
+        "option_explanation": "Research plans do not require an equal split of primary and secondary data; they prioritize based on the specific problem."
+      },
+      {
+        "option_text": "Balancing the use of observational research with experimental research.",
+        "option_explanation": "The choice of research approach depends on the objective, not on balancing different methods for their own sake."
+      },
+      {
+        "option_text": "Balancing the marketing budget with the overall corporate budget.",
+        "option_explanation": "While budgeting is important, the core balance in a research plan is between the cost of data and the value of insights."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "secondary-data",
+    "question_text": "Which of the following is a key characteristic of secondary data?",
+    "hint": "Consider when and why this type of data was originally gathered.",
+    "correct_answer_citation": "Secondary data consists of information that already exists somewhere. It is usually collected for another purpose but can be relevant to the current problem.",
+    "options": [
+      {
+        "option_text": "It is usually collected for another purpose but can be relevant to the current problem.",
+        "option_explanation": "Secondary data is pre-existing information that was gathered for a different reason but can be applied to the current research need."
+      },
+      {
+        "option_text": "It consists of information collected specifically for the problem at hand.",
+        "option_explanation": "Information collected specifically for the problem at hand is the definition of primary data, not secondary data."
+      },
+      {
+        "option_text": "It is always more accurate and usable than primary data.",
+        "option_explanation": "Secondary data can sometimes be less accurate or less usable because it was not specifically designed for the current research question."
+      },
+      {
+        "option_text": "It can only be sourced from internal company databases.",
+        "option_explanation": "Secondary data can be sourced from internal databases, but also from external sources like government reports and commercial services."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "primary-data",
+    "question_text": "What is the primary trade-off when deciding to collect primary data instead of relying solely on secondary data?",
+    "hint": "Consider the resources required to gather new, specific information.",
+    "correct_answer_citation": "This data is highly relevant but takes more time and resources to gather.",
+    "options": [
+      {
+        "option_text": "It provides highly relevant information but takes more time and resources to gather.",
+        "option_explanation": "Primary data is tailored to the specific problem, but requires more time, effort, and money to collect than secondary data."
+      },
+      {
+        "option_text": "It is cheaper to collect but often less accurate than secondary data.",
+        "option_explanation": "Primary data is typically more expensive to collect, not cheaper."
+      },
+      {
+        "option_text": "It is faster to acquire but generally provides less specific insights.",
+        "option_explanation": "Primary data is slower to acquire because it requires designing and executing a new research study."
+      },
+      {
+        "option_text": "It eliminates the need for data analysis but requires complex collection methods.",
+        "option_explanation": "All data, including primary data, requires careful analysis to yield actionable insights."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "primary-research-approaches",
+    "question_text": "Which primary research approach is best suited for gathering causal information, such as testing the impact of a price change?",
+    "hint": "Think about the method that involves controlling factors to see cause-and-effect relationships.",
+    "correct_answer_citation": "Experimental research is best for gathering causal information by matching groups and controlling factors.",
+    "options": [
+      {
+        "option_text": "Survey research",
+        "option_explanation": "Survey research is best for descriptive information (knowledge and attitudes), not for establishing causal relationships."
+      },
+      {
+        "option_text": "Observational research",
+        "option_explanation": "Observational research involves watching people and actions, which is useful for exploratory data but not ideal for proving causality."
+      },
+      {
+        "option_text": "Experimental research",
+        "option_explanation": "Experimental research is designed to capture cause-and-effect relationships by controlling variables."
+      },
+      {
+        "option_text": "Focus group research",
+        "option_explanation": "Focus groups are a form of exploratory research, not typically used to establish firm causal relationships."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "slide_id": "customer-relationship-management-crm",
+    "question_text": "What is the primary goal of Customer Relationship Management (CRM) in a marketing context?",
+    "hint": "Think about the ultimate outcome of managing detailed customer information and touchpoints.",
+    "correct_answer_citation": "Marketers use CRM to carefully manage customer touchpoints to maximize loyalty.",
+    "options": [
+      {
+        "option_text": "To carefully manage customer touchpoints in order to maximize customer loyalty.",
+        "option_explanation": "CRM integrates customer information across the company to build stronger relationships and maximize long-term loyalty."
+      },
+      {
+        "option_text": "To reduce the cost of primary data collection.",
+        "option_explanation": "While CRM data is useful, the primary goal of CRM is maximizing loyalty, not just reducing research costs."
+      },
+      {
+        "option_text": "To strictly monitor employee interactions and sales performance.",
+        "option_explanation": "CRM tracks interactions to improve the customer experience, not solely as an internal employee monitoring tool."
+      },
+      {
+        "option_text": "To replace traditional marketing research methods entirely.",
+        "option_explanation": "CRM is a powerful tool, but it complements rather than replaces traditional marketing research."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "the-role-of-marketing-analytics",
+    "question_text": "What does marketing analytics primarily do with the massive amounts of data collected by companies?",
+    "hint": "Consider how raw data is transformed into something useful for decision-making.",
+    "correct_answer_citation": "These tools are used to dig out meaningful patterns in big data. Analytics helps marketers gain customer insights and gauge marketing performance.",
+    "options": [
+      {
+        "option_text": "It uses tools and technologies to dig out meaningful patterns and gain customer insights.",
+        "option_explanation": "Marketing analytics applies analysis tools to big data to find patterns that lead to actionable customer insights."
+      },
+      {
+        "option_text": "It automatically generates new advertising campaigns without human intervention.",
+        "option_explanation": "Analytics provides the insights needed to create campaigns, but it does not completely replace the human element of interpretation and creativity."
+      },
+      {
+        "option_text": "It permanently stores raw data to comply with legal regulations.",
+        "option_explanation": "Data storage is part of IT and compliance; analytics is specifically focused on analyzing the data for patterns."
+      },
+      {
+        "option_text": "It eliminates the need for qualitative research like focus groups and interviews.",
+        "option_explanation": "Analytics usually handles quantitative 'big data,' but qualitative research is still vital for deep emotional insights."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]
