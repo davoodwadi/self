@@ -19,7 +19,7 @@ export default function ConsensusSlide() {
           To remedy this, we use a multidimensional consensus measure. It penalizes spread in proportion
           to the ordinal distances between responses.
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: "3rem", alignItems: "center" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.1fr", gap: "3rem", alignItems: "center" }}>
           <div>
             <MathContent>
               {`$$\\mathrm{Cns}(\\mathbf{Y}_{\\boldsymbol{\\lambda}})=1+\\sum_{\\mathbf{y}\\in\\mathcal{Y}^K}P(\\mathbf{y})\\log_2\\!\\left(1-\\frac{\\|\\mathbf{y}-\\boldsymbol{\\mu}\\|_2}{d_{\\max}}\\right)$$`}
@@ -30,20 +30,20 @@ export default function ConsensusSlide() {
               <InlineMath>{"d_{\\max}"}</InlineMath> is the maximum diagonal distance on the Likert scale.
             </p>
             <p className="p-body" style={{ fontSize: "0.9rem" }}>
-              This demonstrates the level of internal consistency — or polarization — a model has on our ethnocentrism scale. High consensus means probability mass is tightly concentrated; high dissension means it is spread across opposing poles.
+              This demonstrates the level of internal consistency, or polarization, a model has on our ethnocentrism scale. High consensus means probability mass is tightly concentrated; high dissension means it is spread across opposing poles.
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", alignItems: "center" }}>
-             <div style={{ position: "relative", width: "100%", aspectRatio: "4/3", background: "var(--card)", border: "1px solid var(--border)", borderRadius: "10px", overflow: "hidden", padding: "1rem" }}>
+             <div style={{ position: "relative", width: "100%", aspectRatio: "4/3", background: "var(--card)", border: "1px solid var(--border)", borderRadius: "10px", overflow: "hidden", padding: "0.5rem" }}>
                <Image
                  src="/papers/every-token-counts/figures/consensus-original-issue.png"
                  alt="Consensus penalization diagram"
                  fill
-                 style={{ objectFit: "contain", padding: "1rem" }}
+                 style={{ objectFit: "contain" }}
                />
              </div>
              <p className="p-small" style={{ color: "var(--text-muted)", textAlign: "center" }}>
-               The formula penalizes spread in proportion to the ordinal distances.
+               Convolving a multi-item scale collapses polarization.
              </p>
           </div>
         </div>

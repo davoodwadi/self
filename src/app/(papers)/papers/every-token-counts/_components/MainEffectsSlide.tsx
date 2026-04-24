@@ -1,22 +1,23 @@
 import InlineMath from "@/app/(papers)/_components/InlineMath";
+import { Flag } from "./Flag";
 
 // Grand mean μ∅ = 66.25 (composite CETSCALE, range 17–119)
 // Effects are Hoeffding decomposition components — deviations from grand mean
 // SNR = E/SD (signal-to-noise ratio); dPD = directional probability of difference
 
 const MODEL_EFFECTS = [
-  { label: "Aya Expanse 32B",  flag: "🇨🇦", e: 21.19,  sd: 13.01, snr: 1.63, dpd: ">0.99", robust: true  },
-  { label: "Ministral 14B",   flag: "🇫🇷", e: 5.11,   sd: 9.59,  snr: 0.53, dpd: "0.62",  robust: false },
-  { label: "Llama 3.3 70B",   flag: "🇺🇸", e: 0.31,   sd: 12.79, snr: 0.02, dpd: "0.55",  robust: false },
-  { label: "Gemma 3 27B",     flag: "🇺🇸", e: -11.99, sd: 13.15, snr: 0.91, dpd: "0.77",  robust: false },
-  { label: "Qwen3 Next 80B",  flag: "🇨🇳", e: -14.63, sd: 12.17, snr: 1.20, dpd: "0.93",  robust: true  },
+  { label: "Aya Expanse 32B",  flag: "CA", e: 21.19,  sd: 13.01, snr: 1.63, dpd: ">0.99", robust: true  },
+  { label: "Ministral 14B",   flag: "FR", e: 5.11,   sd: 9.59,  snr: 0.53, dpd: "0.62",  robust: false },
+  { label: "Llama 3.3 70B",   flag: "US", e: 0.31,   sd: 12.79, snr: 0.02, dpd: "0.55",  robust: false },
+  { label: "Gemma 3 27B",     flag: "US", e: -11.99, sd: 13.15, snr: 0.91, dpd: "0.77",  robust: false },
+  { label: "Qwen3 Next 80B",  flag: "CN", e: -14.63, sd: 12.17, snr: 1.20, dpd: "0.93",  robust: true  },
 ];
 
 const COUNTRY_EFFECTS = [
-  { label: "Canada",  flag: "🇨🇦", e: 4.62,  sd: 5.72, snr: 0.81, dpd: "0.90", robust: true  },
-  { label: "USA",     flag: "🇺🇸", e: 2.84,  sd: 5.43, snr: 0.52, dpd: "0.55", robust: false },
-  { label: "France",  flag: "🇫🇷", e: -1.00, sd: 4.72, snr: 0.21, dpd: "0.54", robust: false },
-  { label: "China",   flag: "🇨🇳", e: -6.46, sd: 6.19, snr: 1.04, dpd: "0.95", robust: true  },
+  { label: "Canada",  flag: "CA", e: 4.62,  sd: 5.72, snr: 0.81, dpd: "0.90", robust: true  },
+  { label: "USA",     flag: "US", e: 2.84,  sd: 5.43, snr: 0.52, dpd: "0.55", robust: false },
+  { label: "France",  flag: "FR", e: -1.00, sd: 4.72, snr: 0.21, dpd: "0.54", robust: false },
+  { label: "China",   flag: "CN", e: -6.46, sd: 6.19, snr: 1.04, dpd: "0.95", robust: true  },
 ];
 
 export default function MainEffectsSlide() {
@@ -67,7 +68,9 @@ export default function MainEffectsSlide() {
                 {MODEL_EFFECTS.map(({ label, flag, e, sd, snr, dpd, robust }) => (
                   <tr key={label} style={{ borderBottom: "1px solid var(--border)" }}>
                     <td style={{ padding: "0.5rem 0.75rem", color: "var(--text-dim)", fontFamily: "var(--font-body)" }}>
-                      {flag} {label}
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: "0.375rem" }}>
+                        <Flag country={flag} /> {label}
+                      </span>
                     </td>
                     <td style={{ padding: "0.5rem 0.75rem", textAlign: "right", fontFamily: "var(--font-mono)", fontSize: "0.8125rem", color: e > 0 ? "var(--amber-light)" : "var(--cyan-light)" }}>
                       {e > 0 ? "+" : ""}{e.toFixed(2)}
@@ -113,7 +116,9 @@ export default function MainEffectsSlide() {
                 {COUNTRY_EFFECTS.map(({ label, flag, e, sd, snr, dpd, robust }) => (
                   <tr key={label} style={{ borderBottom: "1px solid var(--border)" }}>
                     <td style={{ padding: "0.5rem 0.75rem", color: "var(--text-dim)", fontFamily: "var(--font-body)" }}>
-                      {flag} {label}
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: "0.375rem" }}>
+                        <Flag country={flag} /> {label}
+                      </span>
                     </td>
                     <td style={{ padding: "0.5rem 0.75rem", textAlign: "right", fontFamily: "var(--font-mono)", fontSize: "0.8125rem", color: e > 0 ? "var(--amber-light)" : "var(--cyan-light)" }}>
                       {e > 0 ? "+" : ""}{e.toFixed(2)}

@@ -36,10 +36,10 @@
   --amber-pale:  rgba(217, 119, 6, 0.08);
 
   /* --- Text --- */
-  --text:        #F0ECFF;
-  --text-dim:    #e0daf8;
-  --text-muted:  #6B7280;
-  --text-faint:  #5f5f65;
+  --text:        #f3f1fc;
+  --text-dim:    #eae7f7;
+  --text-muted:  #808389;
+  --text-faint:  #747477;
 
   /* --- Fonts (set by layout.tsx next/font variables) --- */
   --font-display: var(--font-lora), Georgia, "Times New Roman", serif;
@@ -717,10 +717,10 @@ html[data-theme="noir"] {
   --amber-pale:  rgba(159, 18, 57, 0.08);
 
   /* --- Text --- */
-  --text:        #F5F0FF;
-  --text-dim:    #B8B0D8;
-  --text-muted:  #635E7A;
-  --text-faint:  #717074;
+  --text:        #f6f3fc;
+  --text-dim:    #e8e6ef;
+  --text-muted:  #83828b;
+  --text-faint:  #7f7e80;
 }
 
 html[data-theme="noir"] .p-nav {

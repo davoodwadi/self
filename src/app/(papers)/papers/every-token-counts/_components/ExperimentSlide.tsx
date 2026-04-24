@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { MODELS, TARGETS } from "./data";
+import { Flag } from "./Flag";
 
 export default function ExperimentSlide() {
   return (
@@ -49,8 +50,10 @@ export default function ExperimentSlide() {
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
                 {MODELS.map((m) => (
-                  <div key={m.name} className="model-badge" style={{ display: "flex", gap: "1.25rem" }}>
-                    <span style={{ minWidth: "5rem" }}>{m.flag} {m.origin}</span>
+                  <div key={m.name} className="model-badge" style={{ display: "flex", gap: "1.25rem", alignItems: "center" }}>
+                    <span style={{ minWidth: "5rem", display: "flex", alignItems: "center", gap: "0.375rem" }}>
+                      <Flag country={m.flag} /> {m.origin}
+                    </span>
                     <span style={{ color: "var(--text)" }}>{m.name}</span>
                     <span style={{ color: "var(--text-muted)" }}>{m.org}</span>
                   </div>
@@ -80,13 +83,15 @@ export default function ExperimentSlide() {
               >
                 <div className="matrix-cell matrix-cell-header" />
                 {TARGETS.map((t) => (
-                  <div key={t} className="matrix-cell matrix-cell-header">
-                    {t}
+                  <div key={t} className="matrix-cell matrix-cell-header" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.375rem" }}>
+                    <Flag country={t} /> {t}
                   </div>
                 ))}
                 {MODELS.map((m) => (
                   <Fragment key={m.name}>
-                    <div className="matrix-cell matrix-cell-header">{m.flag} {m.name}</div>
+                    <div className="matrix-cell matrix-cell-header" style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
+                      <Flag country={m.flag} /> {m.name}
+                    </div>
                     {TARGETS.map((t) => {
                       const isInGroup = t.startsWith(m.origin);
                       return (

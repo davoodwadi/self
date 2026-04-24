@@ -29,7 +29,7 @@ export default function ConstraintSlide() {
             <MathContent>
               {`$$\\text{Failure rate} = 1 - \\sum_{t\\in\\mathcal{V}_{\\mathrm{val}}}P_{\\mathrm{raw}}(t\\mid x)$$`}
             </MathContent>
-            <p className="p-body" style={{ fontSize: "0.9rem", marginBottom: "2rem" }}>
+            <p className="p-body" style={{ fontSize: "0.9rem", marginBottom: "2rem", marginTop: "1rem" }}>
               Probability mass that falls outside the valid token set. the model&apos;s rate of
               non-adherence to the numeric constraint.
             </p>

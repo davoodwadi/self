@@ -1,3 +1,5 @@
+import { Flag } from "./Flag";
+
 const HUMAN_ROWS = [
   { label: "Detroit (USA)",    mean: 68.58, sd: 25.96 },
   { label: "Carolinas (USA)",  mean: 61.28, sd: 24.41 },
@@ -8,11 +10,11 @@ const HUMAN_ROWS = [
 ];
 
 const LLM_ROWS = [
-  { label: "Aya Expanse 32B",  mean: 89.11, sd: 1.32,  flag: "🇨🇦" },
-  { label: "Llama 3.3 70B",   mean: 71.99, sd: 0.95,  flag: "🇺🇸" },
-  { label: "Ministral 14B",   mean: 70.20, sd: 5.25,  flag: "🇫🇷" },
-  { label: "Gemma 3 27B",     mean: 60.32, sd: 0.94,  flag: "🇺🇸" },
-  { label: "Qwen3 Next 80B",  mean: 53.85, sd: 1.17,  flag: "🇨🇳" },
+  { label: "Aya Expanse 32B",  mean: 89.11, sd: 1.32,  flag: "CA" },
+  { label: "Llama 3.3 70B",   mean: 71.99, sd: 0.95,  flag: "US" },
+  { label: "Ministral 14B",   mean: 70.20, sd: 5.25,  flag: "FR" },
+  { label: "Gemma 3 27B",     mean: 60.32, sd: 0.94,  flag: "US" },
+  { label: "Qwen3 Next 80B",  mean: 53.85, sd: 1.17,  flag: "CN" },
 ];
 
 // Max human mean for scale reference
@@ -88,7 +90,9 @@ export default function LLMvsHumansSlide() {
                 const exceedsHuman = mean > 68.58;
                 return (
                   <div key={label} style={{ display: "grid", gridTemplateColumns: "13rem 1fr 5rem", alignItems: "center", gap: "0.75rem" }}>
-                    <span className="p-small" style={{ color: "var(--text-dim)" }}>{flag} {label}</span>
+                    <span className="p-small" style={{ color: "var(--text-dim)", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                      <Flag country={flag} /> {label}
+                    </span>
                     <div style={{ position: "relative", height: "0.5rem", background: "var(--border)", borderRadius: "4px" }}>
                       <div style={{
                         position: "absolute", left: 0, top: 0, height: "100%",

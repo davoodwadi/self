@@ -27,7 +27,7 @@ export default function ConstructSlide() {
             <MathContent>
               {`$$P_{S_{\\boldsymbol{\\lambda}}}=P_{Y_{1,\\boldsymbol{\\lambda}}}\\circledast\\cdots\\circledast P_{Y_{K,\\boldsymbol{\\lambda}}}$$`}
             </MathContent>
-            <p className="p-body" style={{ fontSize: "0.9rem", marginBottom: "2rem" }}>
+            <p className="p-body" style={{ fontSize: "0.9rem", marginBottom: "2rem", marginTop: "1rem" }}>
               The composite construct score <InlineMath>{"S_{\\boldsymbol{\\lambda}}"}</InlineMath> is the
               sum of <InlineMath>{"K"}</InlineMath> independent item responses. Its exact PMF is derived
               by discrete convolution <InlineMath>{"\\circledast"}</InlineMath> of the individual item
@@ -36,7 +36,7 @@ export default function ConstructSlide() {
             <MathContent>
               {`$$\\mathbb{E}[S_{\\boldsymbol{\\lambda}}] = \\underbrace{\\mathbb{E}[S_0]}_{\\text{Grand Mean}} + \\sum_{c \\in \\mathcal{C}} \\underbrace{\\mathbb{E}[E_c(\\lambda_c)]}_{\\text{Main Effects}} + \\sum_{\\substack{U \\subseteq \\mathcal{C} \\ |U| \\ge 2}} \\underbrace{\\mathbb{E}[E_U(\\boldsymbol{\\lambda}_U)]}_{\\text{Interactions}}$$`}
             </MathContent>
-            <p className="p-body" style={{ fontSize: "0.9rem" }}>
+            <p className="p-body" style={{ fontSize: "0.9rem", marginTop: "2rem" }}>
               Hoeffding decomposition: the expected construct score decomposes exactly into a grand
               baseline <InlineMath>{"\\mathbb{E}[S_0]"}</InlineMath>, main effects per factor, and
               interaction effects, recovering classical ANOVA fixed-effects parameters (Theorem 1).

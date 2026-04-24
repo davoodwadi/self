@@ -65,7 +65,7 @@ export default function ConsensusIssueSlide() {
               </div>
             ))}
             <p className="p-small" style={{ color: "var(--text-muted)", marginTop: "0.5rem" }}>
-              Rows 2 and 3 have identical entropy (H = 1.00) but represent completely different behavior — entropy is blind to ordinal distance.
+              Rows 2 and 3 have identical entropy (H = 1.00) but represent completely different behavior: entropy is blind to ordinal distance.
             </p>
           </div>
         </div>
