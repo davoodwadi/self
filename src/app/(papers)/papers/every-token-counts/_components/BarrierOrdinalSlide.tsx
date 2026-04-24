@@ -94,7 +94,7 @@ export default function BarrierOrdinalSlide() {
               borderTop: "3px solid var(--amber-light)",
               borderRadius: "0 0 12px 12px",
             }}
-          >
+          > 
             <MiniBar pmf={PMF_B} color="var(--amber-light)" />
             <div style={{ marginTop: "1rem", display: "flex", flexDirection: "column", gap: "0.35rem" }}>
               <span className="p-small" style={{ color: "var(--text-muted)" }}>Mass at 1 and 7</span>

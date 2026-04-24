@@ -29,7 +29,7 @@ export default function ContextSlide() {
             className="p-heading"
             style={{ fontSize: "clamp(1.8rem, 4vw, 2.75rem)", marginBottom: "2rem" }}
           >
-            Chinese AI has gone global.{" "}<span className="grad-amber">Can we trust it?</span>
+            Chinese AI is widely adopted.{" "}<span className="grad-amber">Can we trust it?</span>
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             {[

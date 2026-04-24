@@ -3,6 +3,7 @@ import PaperNav from "./_components/PaperNav";
 import ThemeSwitcher from "./_components/ThemeSwitcher";
 import HeroSlide from "./_components/HeroSlide";
 import ContextSlide from "./_components/ContextSlide";
+import InstrumentSlide from "./_components/InstrumentSlide";
 import PriorWorkSlide from "./_components/PriorWorkSlide";
 import BarriersSlide from "./_components/BarriersSlide";
 import BarrierDesignSlide from "./_components/BarrierDesignSlide";
@@ -10,6 +11,7 @@ import BarrierOrdinalSlide from "./_components/BarrierOrdinalSlide";
 import BarrierSamplingSlide from "./_components/BarrierSamplingSlide";
 import FrameworkSlide from "./_components/FrameworkSlide";
 import ConstraintSlide from "./_components/ConstraintSlide";
+import ConsensusIssueSlide from "./_components/ConsensusIssueSlide";
 import ConsensusSlide from "./_components/ConsensusSlide";
 import ConstructSlide from "./_components/ConstructSlide";
 import ExperimentSlide from "./_components/ExperimentSlide";
@@ -31,6 +33,7 @@ export default function Page() {
       <PaperNav />
       <HeroSlide />
       <ContextSlide />
+      <InstrumentSlide />
       <PriorWorkSlide /> 
       <BarriersSlide />
       <BarrierDesignSlide />
@@ -38,6 +41,7 @@ export default function Page() {
       <BarrierSamplingSlide />
       <FrameworkSlide />
       <ConstraintSlide />
+      <ConsensusIssueSlide />
       <ConsensusSlide />
       <ConstructSlide />
       <ExperimentSlide />

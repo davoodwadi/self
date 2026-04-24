@@ -39,7 +39,7 @@
   --text:        #F0ECFF;
   --text-dim:    #e0daf8;
   --text-muted:  #6B7280;
-  --text-faint:  #3b3b52;
+  --text-faint:  #5f5f65;
 
   /* --- Fonts (set by layout.tsx next/font variables) --- */
   --font-display: var(--font-lora), Georgia, "Times New Roman", serif;
@@ -136,14 +136,14 @@ body {
 /* ---- Gradient text ---------------------------------------- */
 
 .grad-violet-cyan {
-  background: linear-gradient(135deg, var(--violet-light) 0%, var(--cyan) 100%);
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .grad-amber {
-  background: linear-gradient(135deg, var(--amber-light) 10%, var(--amber) 90%);
+  background: linear-gradient(135deg, var(--amber) 10%, var(--amber) 90%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -633,7 +633,7 @@ html[data-theme="evergreen"] {
   --text:        #F0FFF6;
   --text-dim:    #d2ebe0;
   --text-muted:  #6B8070;
-  --text-faint:  #162318;
+  --text-faint:  #565956;
 }
 
 /* Nav background override (hard-coded in .p-nav) */
@@ -720,7 +720,7 @@ html[data-theme="noir"] {
   --text:        #F5F0FF;
   --text-dim:    #B8B0D8;
   --text-muted:  #635E7A;
-  --text-faint:  #595565;
+  --text-faint:  #717074;
 }
 
 html[data-theme="noir"] .p-nav {

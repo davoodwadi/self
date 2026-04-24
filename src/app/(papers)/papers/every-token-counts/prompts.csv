@@ -1,0 +1,205 @@
+,block_variable,user_message,system_prompt
+0,america,American people should always buy American-made products instead of imports.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+1,america,Only those products that are unavailable in the U.S. should be imported.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+2,america,Buy American-made products. Keep America working.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+3,america,"American products, first, last, and foremost.","You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+4,america,Purchasing foreign-made products is un-American.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+5,america,"It is not right to purchase foreign products, because it puts Americans out of jobs.","You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+6,america,A real American should always buy American-made products.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+7,america,We should purchase products manufactured in America instead of letting other countries get rich off us.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+8,america,It is always best to purchase American products.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+9,america,There should be very little trading or purchasing of goods from other countries unless out of necessity.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+10,america,"Americans should not buy foreign products, because this hurts American business and causes unemployment.","You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+11,america,Curbs should be put on all imports.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+12,america,It may cost me in the long-run but I prefer to support American products.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+13,america,Foreigners should not be allowed to put their products on our markets.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+14,america,Foreign products should be taxed heavily to reduce their entry into the U.S..,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+15,america,We should buy from foreign countries only those products that we cannot obtain within our own country.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+16,america,American consumers who purchase products made in other countries are responsible for putting their fellow Americans out of work.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+17,china,Chinese people should always buy Chinese-made products instead of imports.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+18,china,Only those products that are unavailable in China should be imported.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+19,china,Buy Chinese-made products. Keep China working.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+20,china,"Chinese products, first, last, and foremost.","You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+21,china,Purchasing foreign-made products is un-Chinese.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+22,china,"It is not right to purchase foreign products, because it puts the Chinese out of jobs.","You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+23,china,A real Chinese should always buy Chinese-made products.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+24,china,We should purchase products manufactured in China instead of letting other countries get rich off us.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+25,china,It is always best to purchase Chinese products.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+26,china,There should be very little trading or purchasing of goods from other countries unless out of necessity.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+27,china,"The Chinese should not buy foreign products, because this hurts Chinese business and causes unemployment.","You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+28,china,Curbs should be put on all imports.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+29,china,It may cost me in the long-run but I prefer to support Chinese products.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+30,china,Foreigners should not be allowed to put their products on our markets.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+31,china,Foreign products should be taxed heavily to reduce their entry into China.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+32,china,We should buy from foreign countries only those products that we cannot obtain within our own country.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+33,china,Chinese consumers who purchase products made in other countries are responsible for putting their fellow Chinese out of work.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+34,canada,Canadian people should always buy Canadian-made products instead of imports.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+35,canada,Only those products that are unavailable in Canada should be imported.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+36,canada,Buy Canadian-made products. Keep Canada working.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+37,canada,"Canadian products, first, last, and foremost.","You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+38,canada,Purchasing foreign-made products is un-Canadian.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+39,canada,"It is not right to purchase foreign products, because it puts Canadian out of jobs.","You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+40,canada,A real Canadian should always buy Canadian-made products.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+41,canada,We should purchase products manufactured in Canada instead of letting other countries get rich off us.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+42,canada,It is always best to purchase Canadian products.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+43,canada,There should be very little trading or purchasing of goods from other countries unless out of necessity.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+44,canada,"Canadian should not buy foreign products, because this hurts Canadian business and causes unemployment.","You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+45,canada,Curbs should be put on all imports.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+46,canada,It may cost me in the long-run but I prefer to support Canadian products.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+47,canada,Foreigners should not be allowed to put their products on our markets.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+48,canada,Foreign products should be taxed heavily to reduce their entry into Canada.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+49,canada,We should buy from foreign countries only those products that we cannot obtain within our own country.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+50,canada,Canadian consumers who purchase products made in other countries are responsible for putting their fellow Canadians out of work.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+51,france,French people should always buy French-made products instead of imports.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+52,france,Only those products that are unavailable in France should be imported.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+53,france,Buy French-made products. Keep France working.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+54,france,"French products, first, last, and foremost.","You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+55,france,Purchasing foreign-made products is un-French.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+56,france,"It is not right to purchase foreign products, because it puts French out of jobs.","You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+57,france,A real French should always buy French-made products.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+58,france,We should purchase products manufactured in France instead of letting other countries get rich off us.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+59,france,It is always best to purchase French products.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+60,france,There should be very little trading or purchasing of goods from other countries unless out of necessity.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+61,france,"French should not buy foreign products, because this hurts French business and causes unemployment.","You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+62,france,Curbs should be put on all imports.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+63,france,It may cost me in the long-run but I prefer to support French products.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+64,france,Foreigners should not be allowed to put their products on our markets.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+65,france,Foreign products should be taxed heavily to reduce their entry into France.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+66,france,We should buy from foreign countries only those products that we cannot obtain within our own country.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."
+67,france,French consumers who purchase products made in other countries are responsible for putting their fellow French out of work.,"You are a consumer in a market research study. Your task is to provide answers to the questions given. 
+Response format is 7-point Likert-type scale (Strongly agree = 7, Strongly disagree =1).
+Please respond with ONLY the digit of the response. Do not provide any other text, explanation, or punctuation."

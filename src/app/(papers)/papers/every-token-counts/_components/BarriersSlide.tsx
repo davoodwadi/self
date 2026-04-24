@@ -4,13 +4,13 @@ export default function BarriersSlide() {
       n: "I",
       color: "var(--violet-light)",
       title: "Experimental Design",
-      desc: "Vignettes show that behavior exists. Factorial designs prove which factor causes it.",
+      desc: "Vignettes and benchmark datasets show that behavior exists. Factorial designs prove which factor causes it.",
     },
     {
       n: "II",
       color: "var(--cyan-light)",
       title: "Ordinal Measurement",
-      desc: "LLMs output token probabilities. Likert scales are ordinal. Standard metrics fail to bridge these.",
+      desc: "LLMs output token probabilities. Likert scales are ordinal. Standard metrics (e.g., entropy) fail to bridge these.",
     },
     {
       n: "III",

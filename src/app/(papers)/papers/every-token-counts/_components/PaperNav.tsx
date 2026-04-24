@@ -21,7 +21,6 @@ export default function PaperNav() {
             ["Barriers", "#barriers"],
             ["Framework", "#framework"],
             ["Results", "#results"],
-            ["Cite", "#cite"],
           ].map(([label, href]) => (
             <a key={label} href={href} className="p-nav-link">
               {label}

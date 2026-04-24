@@ -2,11 +2,15 @@ Given the rise of AI models from various countries, specifically China, there's 
 
 A common question LLM users ask is "can I trust Chinese models?"
 
-In this research, we explore ethnocentrism of large language models.
+In this research, we explore ethnocentrism of large language models using Likert scales.
 
 Ethnocentrism, also known as in-group bias, is a phenomenon where a particular group will favor its own country and would have a disregard for foreign countries.
 
 Although the concept was developed for consumer behavior, ethnocentrism has been extended to political science, sociology, and psychology.
+
+Show CETScale questions here (we have all of them in `prompts.csv`).
+Optionally adapted to different Target Countries (China, USA)
+Show how models will see the scale.
 
 Prior LLM bias research has documented political leanings, cultural stereotypes, and Western-centric defaults in language models. However, these studies tend to focus on surface-level outputs -- asking models to generate text and then coding the result -- rather than measuring the underlying attitudinal structure systematically. This means we know bias exists, but we have limited ability to quantify it, compare it across models, or trace its sources.
 
@@ -64,14 +68,27 @@ Traditional measures of dispersion such as entropy assume categorical values.
 They are agnostic to the distances of responses.
 To remedy this, we use a multidimensional consensus measure. Intuitively: if a model assigns most probability mass near one end of the scale and almost none at the other, that is high consensus -- a strong, clear attitude. If probability is spread across both ends, that is dissension -- the model is effectively conflicted. The formula captures this by penalizing spread in proportion to the ordinal distances between responses:
 
+--- current histograms are great here ---
+
+
+Then show 
+
+---
+NEW
+
+add consensus-original-issue.png 
+
+
 $$\mathrm{Cns}(\mathbf{Y}_{\boldsymbol{\lambda}})=1+\sum_{\mathbf{y}\in\mathcal{Y}^K}P(\mathbf{y})\log_2\!\left(1-\frac{\|\mathbf{y}-\boldsymbol{\mu}\|_2}{d_{\max}}\right)$$
 
 This demonstrates the level of internal consistency -- or polarization -- a model has on our ethnocentrism scale.
 
-Figure/table from paper showing consensus
-\ref{tab:consensus-dissension-visual}
+---
 
-{fig:consensus-original-issue}
+
+
+
+
 
 Construct Layer:
 
