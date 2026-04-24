@@ -246,7 +246,6 @@ h2 {
 .glass-card:hover {
   border-color: rgba(140, 115, 73, 0.2);
   background: rgba(18, 18, 20, 0.6);
-  transform: translateY(-4px);
   box-shadow:
     0 12px 40px rgba(0, 0, 0, 0.6),
     0 0 20px rgba(140, 115, 73, 0.05),

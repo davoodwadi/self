@@ -12,7 +12,7 @@ export function HeroSection() {
         className="min-h-screen flex items-center relative overflow-hidden bg-[#030303]"
         contentClassName="max-w-5xl text-center z-10 relative w-full"
       >
-        <div className="ambient-glow"></div>
+        {/* <div className="ambient-glow"></div> */}
 
         <FadeUp>
           <PillBadge className="border-accent-500/20 bg-accent-500/5 text-accent-500 tracking-[0.2em] text-xs">

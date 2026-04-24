@@ -22,6 +22,12 @@ Davood Wadi, Marc Fredette, Sylvain Sénécal, Renaud Legoux
 Journal of Research in Interactive Marketing - Under review
 
 Working paper:
+Every Token Counts: Isolating Latent Behavior of LLMs via Exact Likert Distributions
+Authors
+Davood Wadi
+/papers/every-token-counts
+
+Working paper:
 The Bounded Algorithmic Rationality of Large Language Models as Surrogate Consumers - 
 Under review in "Agents, Interfaces, and Ecosystems, Special issue of the Journal of the Academy of Marketing Science"
 

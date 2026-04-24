@@ -12,7 +12,7 @@ export function ContactSection() {
       className="section-padding bg-[#030303] relative"
       contentClassName="max-w-6xl flex flex-col md:flex-row gap-16 relative z-10"
     >
-      <div className="ambient-glow opacity-40"></div>
+      {/* <div className="ambient-glow opacity-40"></div> */}
       <div className="w-full md:w-1/2">
         <SectionHeader className="mb-12">
           <h2 className="heading-secondary text-white/95 mb-4">

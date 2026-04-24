@@ -9,7 +9,7 @@ import { CurriculumSection } from "./_sections/CurriculumSection";
 export default function DavoodWadiPortfolio() {
   return (
     <div className="min-h-screen bg-[#030303] selection:bg-accent-500/30 selection:text-white relative font-sans">
-      <div className="ambient-glow"></div>
+      {/* <div className="ambient-glow"></div> */}
       <main className="relative z-10">
         <HeroSection />
         <AboutSection />

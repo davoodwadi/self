@@ -10,7 +10,7 @@ export function GrantsSection() {
       className="section-padding bg-[#030303] relative"
       contentClassName="max-w-7xl relative z-10"
     >
-      <div className="ambient-glow opacity-50"></div>
+      {/* <div className="ambient-glow opacity-50"></div> */}
       <SectionHeader align="center" className="mb-16">
         <div className="flex flex-col items-center">
           <h2 className="heading-secondary text-white/95 mb-4">

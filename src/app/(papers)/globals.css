@@ -603,7 +603,7 @@ body::before {
 html[data-theme="evergreen"] {
   /* --- Surfaces --- */
   --bg:          #010302;
-  --surface:     #091210;
+  --surface:     #050a09;
   --card:        #0E1A12;
   --card-dim:    #0B1610;
 

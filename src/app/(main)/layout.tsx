@@ -35,8 +35,8 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${inter.variable} antialiased bg-dark-900 text-gray-100 selection:bg-accent-500 selection:text-white relative`}
       >
-        <NetworkBackground />
-        <div className="ambient-glow"></div>
+        {/* <NetworkBackground /> */}
+        {/* <div className="ambient-glow"></div> */}
         <Navigation />
         {children}
         <ScrollToTop />

@@ -111,7 +111,7 @@ export default function LLMvsHumansSlide() {
               })}
             </div>
             <p className="p-small" style={{ color: "var(--text-faint)", marginTop: "1.25rem" }}>
-              Vertical line marks the highest human population mean (Detroit, 68.58). Cyan bars exceed it.
+              Vertical line marks the highest human population mean (Detroit, 68.58).
             </p>
           </div>
         </div>
