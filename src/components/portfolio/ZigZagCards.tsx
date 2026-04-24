@@ -13,7 +13,7 @@ export const ConceptCardsZigzag = ({ cards, id, altBg = false }: any) => {
             return (
               <div 
                 key={idx} 
-                className={`group bg-card/80 backdrop-blur-md border border-border rounded-2xl p-8 md:p-12 hover:border-accent1 hover:shadow-[0_0_20px_var(--glow)] transition-[border-color,box-shadow] duration-300 w-full md:w-[75%] flex flex-col ${isRight ? 'self-end' : 'self-start'} relative shadow-2xl`}
+                className={`group bg-card/80 backdrop-blur-md border border-border rounded-2xl p-8 md:p-12 hover:border-accent1 hover:shadow-[0_0_20px_var(--glow)] transition-[border-color,box-shadow] duration-300 w-full md:w-[95%] flex flex-col ${isRight ? 'self-end' : 'self-start'} relative shadow-2xl`}
                 style={{ zIndex: 10 + idx }}
               >
                 <h4 className="card-title text-h2 text-xl mb-4 !tracking-wider">{card.title}</h4>

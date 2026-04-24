@@ -34,7 +34,7 @@ export default function InstrumentSlide() {
     setTimeout(() => {
       setActiveIndex((current) => (current + 1) % CET_EXAMPLES.length);
       setFadeState("in");
-    }, 300);
+    }, 50);
   };
 
   const currentQuote = CET_EXAMPLES[activeIndex];
