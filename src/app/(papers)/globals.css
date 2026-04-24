@@ -1,0 +1,581 @@
+@import "tailwindcss";
+
+/* ============================================================
+   PAPER PRESENTATIONS — Design System
+   Academic Dark theme: deep navy, violet, cyan, amber accents
+   Fonts: Lora (display) · DM Sans (body) · JetBrains Mono (code)
+   ============================================================ */
+
+:root {
+  /* --- Surfaces --- */
+  --bg:          #060611;
+  --surface:     #0C0C1E;
+  --card:        #11112A;
+  --card-dim:    #0E0E22;
+
+  /* --- Borders --- */
+  --border:      #1C1C38;
+  --border-mid:  #2B2B55;
+  --border-lit:  #3D3D70;
+
+  /* --- Accent: Violet --- */
+  --violet:       #7C3AED;
+  --violet-mid:   #6D28D9;
+  --violet-light: #A78BFA;
+  --violet-pale:  rgba(124, 58, 237, 0.08);
+  --violet-glow:  rgba(124, 58, 237, 0.18);
+
+  /* --- Accent: Cyan --- */
+  --cyan:        #06B6D4;
+  --cyan-light:  #67E8F9;
+  --cyan-pale:   rgba(6, 182, 212, 0.08);
+
+  /* --- Accent: Amber --- */
+  --amber:       #D97706;
+  --amber-light: #FCD34D;
+  --amber-pale:  rgba(217, 119, 6, 0.08);
+
+  /* --- Text --- */
+  --text:        #F0ECFF;
+  --text-dim:    #C4B5FD;
+  --text-muted:  #6B7280;
+  --text-faint:  #2D2D50;
+
+  /* --- Fonts (set by layout.tsx next/font variables) --- */
+  --font-display: var(--font-lora), Georgia, "Times New Roman", serif;
+  --font-body:    var(--font-dm-sans), system-ui, -apple-system, sans-serif;
+  --font-mono:    var(--font-jetbrains), "Fira Code", Menlo, monospace;
+}
+
+/* ---- Reset & base ----------------------------------------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg) !important;
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Scrollbar -------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--violet-mid);
+  border-radius: 99px;
+}
+
+/* ---- Selection -------------------------------------------- */
+
+::selection {
+  background-color: rgba(124, 58, 237, 0.25);
+  color: var(--text);
+}
+
+/* ---- Typography ------------------------------------------- */
+
+.p-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--text);
+}
+
+.p-display-italic {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.25;
+  color: var(--text-dim);
+}
+
+.p-heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text) !important;
+}
+
+.p-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--text-dim);
+}
+
+.p-small {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.p-mono {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Gradient text ---------------------------------------- */
+
+.grad-violet-cyan {
+  background: linear-gradient(135deg, var(--violet-light) 0%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grad-amber {
+  background: linear-gradient(135deg, var(--amber-light) 10%, var(--amber) 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- Background patterns ---------------------------------- */
+
+.dot-grid {
+  background-image: radial-gradient(circle, var(--border) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+}
+
+.line-grid {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ---- Dividers --------------------------------------------- */
+
+.rule-dim {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--border) 30%, var(--border) 70%, transparent 100%);
+}
+
+.rule-accent {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--violet) 30%, var(--cyan) 70%, transparent 100%);
+  opacity: 0.4;
+}
+
+/* ---- Tags / Badges ---------------------------------------- */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+
+.tag-violet {
+  background-color: var(--violet-pale);
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  color: var(--violet-light);
+}
+
+.tag-cyan {
+  background-color: var(--cyan-pale);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  color: var(--cyan-light);
+}
+
+.tag-amber {
+  background-color: var(--amber-pale);
+  border: 1px solid rgba(217, 119, 6, 0.3);
+  color: var(--amber-light);
+}
+
+.tag-muted {
+  background-color: rgba(107, 114, 128, 0.1);
+  border: 1px solid rgba(107, 114, 128, 0.25);
+  color: var(--text-muted);
+}
+
+/* ---- Cards ------------------------------------------------ */
+
+.p-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.p-card-hover {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.p-card-hover:hover {
+  border-color: var(--border-lit);
+  box-shadow: 0 0 24px var(--violet-glow);
+  transform: translateY(-2px);
+}
+
+/* ---- Layer cards (methodology pipeline) ------------------- */
+
+.layer-card {
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, var(--card) 0%, var(--card-dim) 100%);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+
+.layer-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.layer-card-violet::before { background: linear-gradient(90deg, var(--violet), transparent); }
+.layer-card-violet { border-top-color: var(--violet-mid); }
+.layer-card-violet:hover { border-color: var(--violet-mid); }
+
+.layer-card-cyan::before { background: linear-gradient(90deg, var(--cyan), transparent); }
+.layer-card-cyan { border-top-color: var(--cyan); }
+.layer-card-cyan:hover { border-color: var(--cyan); }
+
+.layer-card-amber::before { background: linear-gradient(90deg, var(--amber), transparent); }
+.layer-card-amber { border-top-color: var(--amber); }
+.layer-card-amber:hover { border-color: var(--amber); }
+
+/* ---- Finding callout -------------------------------------- */
+
+.finding-callout {
+  border-left: 3px solid;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.finding-violet {
+  border-color: var(--violet);
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.08) 0%, transparent 100%);
+}
+
+.finding-cyan {
+  border-color: var(--cyan);
+  background: linear-gradient(90deg, rgba(6, 182, 212, 0.08) 0%, transparent 100%);
+}
+
+.finding-amber {
+  border-color: var(--amber);
+  background: linear-gradient(90deg, rgba(217, 119, 6, 0.08) 0%, transparent 100%);
+}
+
+/* ---- Code block ------------------------------------------- */
+
+.code-block {
+  background-color: #08080F;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--violet);
+  border-radius: 8px;
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.75;
+  color: var(--cyan-light);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* ---- Navigation ------------------------------------------- */
+
+.p-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background-color: rgba(6, 6, 17, 0.88);
+  border-bottom: 1px solid var(--border);
+}
+
+.p-nav-link {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
+}
+
+.p-nav-link:hover {
+  color: var(--violet-light);
+}
+
+/* ---- Buttons --------------------------------------------- */
+
+.btn-p {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-p-primary {
+  background: linear-gradient(135deg, var(--violet) 0%, var(--violet-mid) 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 12px rgba(124, 58, 237, 0.25);
+}
+
+.btn-p-primary:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+}
+
+.btn-p-ghost {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border-mid);
+}
+
+.btn-p-ghost:hover {
+  color: var(--violet-light);
+  border-color: var(--violet-light);
+  transform: translateY(-1px);
+}
+
+/* ---- Section label ---------------------------------------- */
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.section-label::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 40px;
+  background: var(--border-mid);
+}
+
+/* ---- Matrix cell (experiment design) ---------------------- */
+
+.matrix-cell {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.matrix-cell-header {
+  background-color: var(--card-dim);
+  border: 1px solid var(--border-mid);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+.matrix-cell-active {
+  background-color: var(--violet-pale);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: var(--violet-light);
+}
+
+.matrix-cell:hover {
+  background-color: var(--violet-pale);
+  border-color: rgba(124, 58, 237, 0.3);
+  color: var(--violet-light);
+}
+
+/* ---- Model badge ------------------------------------------ */
+
+.model-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.875rem 1rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+
+.model-badge:hover {
+  border-color: var(--border-lit);
+  box-shadow: 0 0 16px var(--violet-glow);
+}
+
+/* ---- Stat callout ----------------------------------------- */
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+/* ---- Ambient glow (hero decoration) ----------------------- */
+
+.ambient-glow {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(80px);
+}
+
+/* ---- Scroll fade-up animation ----------------------------- */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-up   { animation: fadeUp  0.75s ease-out both; }
+.fade-in   { animation: fadeIn  0.75s ease-out both; }
+
+.delay-100 { animation-delay: 0.10s; }
+.delay-200 { animation-delay: 0.20s; }
+.delay-300 { animation-delay: 0.30s; }
+.delay-400 { animation-delay: 0.40s; }
+.delay-500 { animation-delay: 0.50s; }
+.delay-600 { animation-delay: 0.60s; }
+.delay-700 { animation-delay: 0.70s; }
+
+/* ---- Abstract decorative quote ---------------------------- */
+
+.abstract-drop-cap::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.25rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.85;
+  margin-right: 0.125em;
+  margin-top: 0.1em;
+  color: var(--violet-light);
+}
+
+/* ---- Contribution card ------------------------------------ */
+
+.contrib-card {
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--card) 0%, var(--card-dim) 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contrib-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+.contrib-card-method::after {
+  background: linear-gradient(90deg, var(--violet), transparent);
+}
+
+.contrib-card-empirical::after {
+  background: linear-gradient(90deg, var(--cyan), transparent);
+}
+
+/* ---- Watermark section number ----------------------------- */
+
+.watermark-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(6rem, 15vw, 12rem);
+  color: var(--text-faint);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+
+/* ---- Cross-route cascade overrides ----
+   Tailwind/other route-group CSS can bleed into this
+   route in dev mode. These rules win the cascade.     */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display) !important;
+  color: var(--text) !important;
+  font-weight: inherit;
+}
+
+body::before {
+  display: none !important;
+}
