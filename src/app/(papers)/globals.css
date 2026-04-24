@@ -8,8 +8,8 @@
 
 :root {
   /* --- Surfaces --- */
-  --bg:          #060611;
-  --surface:     #0C0C1E;
+  --bg:          #030308;
+  --surface:     #060610;
   --card:        #11112A;
   --card-dim:    #0E0E22;
 
@@ -23,7 +23,7 @@
   --violet-mid:   #6D28D9;
   --violet-light: #A78BFA;
   --violet-pale:  rgba(124, 58, 237, 0.08);
-  --violet-glow:  rgba(124, 58, 237, 0.18);
+  --violet-glow:  rgba(124, 58, 237, 0.066);
 
   /* --- Accent: Cyan --- */
   --cyan:        #06B6D4;
@@ -37,9 +37,9 @@
 
   /* --- Text --- */
   --text:        #F0ECFF;
-  --text-dim:    #C4B5FD;
+  --text-dim:    #e0daf8;
   --text-muted:  #6B7280;
-  --text-faint:  #2D2D50;
+  --text-faint:  #3b3b52;
 
   /* --- Fonts (set by layout.tsx next/font variables) --- */
   --font-display: var(--font-lora), Georgia, "Times New Roman", serif;
@@ -235,7 +235,6 @@ body {
 .p-card-hover:hover {
   border-color: var(--border-lit);
   box-shadow: 0 0 24px var(--violet-glow);
-  transform: translateY(-2px);
 }
 
 /* ---- Layer cards (methodology pipeline) ------------------- */
@@ -432,6 +431,13 @@ body {
   color: var(--violet-light);
 }
 
+.matrix-cell-ingroup {
+  background-color: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.5);
+  color: var(--cyan-light);
+  font-weight: 700;
+}
+
 .matrix-cell:hover {
   background-color: var(--violet-pale);
   border-color: rgba(124, 58, 237, 0.3);
@@ -508,6 +514,15 @@ body {
 .delay-600 { animation-delay: 0.60s; }
 .delay-700 { animation-delay: 0.70s; }
 
+/* ---- Slide section (full-screen, vertically centred) ------ */
+
+.p-slide {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /* ---- Abstract decorative quote ---------------------------- */
 
 .abstract-drop-cap::first-letter {
@@ -578,4 +593,171 @@ h1, h2, h3, h4, h5, h6 {
 
 body::before {
   display: none !important;
+}
+
+/* ============================================================
+   THEME: Evergreen Scholar
+   Deep forest green surfaces · Emerald primary · Gold secondary
+   ============================================================ */
+
+html[data-theme="evergreen"] {
+  /* --- Surfaces --- */
+  --bg:          #010302;
+  --surface:     #091210;
+  --card:        #0E1A12;
+  --card-dim:    #0B1610;
+
+  /* --- Borders --- */
+  --border:      #182B1D;
+  --border-mid:  #264535;
+  --border-lit:  #376050;
+
+  /* --- Accent: Emerald (was Violet) --- */
+  --violet:       #319e7b;
+  --violet-mid:   #248167;
+  --violet-light: #54d5a6;
+  --violet-pale:  rgba(5, 150, 105, 0.08);
+  --violet-glow:  rgba(5, 150, 104, 0.039);
+
+  /* --- Accent: Gold (was Cyan) --- */
+  --cyan:        #D97706;
+  --cyan-light:  #FCD34D;
+  --cyan-pale:   rgba(217, 119, 6, 0.08);
+
+  /* --- Accent: Rose (was Amber) --- */
+  --amber:       #DB2777;
+  --amber-light: #F9A8D4;
+  --amber-pale:  rgba(219, 39, 119, 0.08);
+
+  /* --- Text --- */
+  --text:        #F0FFF6;
+  --text-dim:    #d2ebe0;
+  --text-muted:  #6B8070;
+  --text-faint:  #162318;
+}
+
+/* Nav background override (hard-coded in .p-nav) */
+html[data-theme="evergreen"] .p-nav {
+  background-color: rgba(5, 13, 7, 0.9);
+}
+
+/* Code block background override */
+html[data-theme="evergreen"] .code-block {
+  background-color: #040C06;
+}
+
+/* Selection */
+html[data-theme="evergreen"] ::selection {
+  background-color: rgba(5, 150, 105, 0.25);
+}
+
+/* Scrollbar thumb */
+html[data-theme="evergreen"] ::-webkit-scrollbar-thumb {
+  background: var(--violet-mid);
+}
+
+/* Finding callout backgrounds (hard-coded rgba) */
+html[data-theme="evergreen"] .finding-violet {
+  background: linear-gradient(90deg, rgba(5, 150, 105, 0.08) 0%, transparent 100%);
+}
+html[data-theme="evergreen"] .finding-cyan {
+  background: linear-gradient(90deg, rgba(217, 119, 6, 0.08) 0%, transparent 100%);
+}
+html[data-theme="evergreen"] .finding-amber {
+  background: linear-gradient(90deg, rgba(219, 39, 119, 0.08) 0%, transparent 100%);
+}
+
+/* Matrix cell highlights (hard-coded rgba) */
+html[data-theme="evergreen"] .matrix-cell-active {
+  background-color: rgba(5, 150, 105, 0.1);
+  border-color: rgba(5, 150, 105, 0.3);
+}
+html[data-theme="evergreen"] .matrix-cell-ingroup {
+  background-color: rgba(217, 119, 6, 0.12);
+  border-color: rgba(217, 119, 6, 0.5);
+}
+html[data-theme="evergreen"] .matrix-cell:hover {
+  background-color: rgba(5, 150, 105, 0.1);
+  border-color: rgba(5, 150, 105, 0.3);
+}
+
+/* ============================================================
+   THEME: Noir Scholar
+   Warm charcoal surfaces · Brass/amber primary · Crimson secondary
+   Academic candlelight on aged parchment aesthetic
+   ============================================================ */
+
+html[data-theme="noir"] {
+  /* --- Surfaces --- */
+  --bg:          #08070A;
+  --surface:     #100E14;
+  --card:        #16131C;
+  --card-dim:    #120F18;
+
+  /* --- Borders --- */
+  --border:      #231F2E;
+  --border-mid:  #342E44;
+  --border-lit:  #4A4260;
+
+  /* --- Accent: Slate-Indigo (was Violet) --- */
+  --violet:       #6366F1;
+  --violet-mid:   #4F46E5;
+  --violet-light: #A5B4FC;
+  --violet-pale:  rgba(99, 102, 241, 0.08);
+  --violet-glow:  rgba(99, 101, 241, 0.069);
+
+  /* --- Accent: Warm Brass (was Cyan) --- */
+  --cyan:        #B45309;
+  --cyan-light:  #FCD34D;
+  --cyan-pale:   rgba(180, 83, 9, 0.08);
+
+  /* --- Accent: Crimson (was Amber) --- */
+  --amber:       #9F1239;
+  --amber-light: #FCA5A5;
+  --amber-pale:  rgba(159, 18, 57, 0.08);
+
+  /* --- Text --- */
+  --text:        #F5F0FF;
+  --text-dim:    #B8B0D8;
+  --text-muted:  #635E7A;
+  --text-faint:  #595565;
+}
+
+html[data-theme="noir"] .p-nav {
+  background-color: rgba(8, 7, 10, 0.92);
+}
+
+html[data-theme="noir"] .code-block {
+  background-color: #060508;
+}
+
+html[data-theme="noir"] ::selection {
+  background-color: rgba(99, 102, 241, 0.25);
+}
+
+html[data-theme="noir"] ::-webkit-scrollbar-thumb {
+  background: var(--violet-mid);
+}
+
+html[data-theme="noir"] .finding-violet {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.08) 0%, transparent 100%);
+}
+html[data-theme="noir"] .finding-cyan {
+  background: linear-gradient(90deg, rgba(180, 83, 9, 0.08) 0%, transparent 100%);
+}
+html[data-theme="noir"] .finding-amber {
+  background: linear-gradient(90deg, rgba(159, 18, 57, 0.08) 0%, transparent 100%);
+}
+
+html[data-theme="noir"] .matrix-cell-active {
+  background-color: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+html[data-theme="noir"] .matrix-cell-ingroup {
+  background-color: rgba(180, 83, 9, 0.12);
+  border-color: rgba(180, 83, 9, 0.5);
+}
+html[data-theme="noir"] .matrix-cell:hover {
+  background-color: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.3);
 }
