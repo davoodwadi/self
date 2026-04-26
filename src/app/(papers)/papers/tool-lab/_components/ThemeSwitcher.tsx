@@ -18,18 +18,27 @@ function applyTheme(theme: Theme) {
   document.documentElement.setAttribute("data-theme", theme);
 }
 
-function getInitialTheme(): Theme {
-  if (typeof window === "undefined") return "violet";
-  const saved = localStorage.getItem("paper-theme") as Theme | null;
-  return saved && themes.some((item) => item.id === saved) ? saved : "violet";
-}
-
 export default function ThemeSwitcher() {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<Theme>("violet");
 
   useEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
+    setMounted(true);
+    const saved = localStorage.getItem("paper-theme") as Theme | null;
+    if (saved && themes.some((item) => item.id === saved)) {
+      setTheme(saved);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      applyTheme(theme);
+    }
+  }, [theme, mounted]);
+
+  if (!mounted) {
+    return null;
+  }
 
   function select(nextTheme: Theme) {
     setTheme(nextTheme);

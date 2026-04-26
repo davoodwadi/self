@@ -15,8 +15,8 @@ const alternatives = [
 ];
 
 const values: Record<string, Record<string, string>> = {
-  a: { price: "$14", cents: "99c", weight: "10 oz", roast: "dark" },
-  b: { price: "$15", cents: "00c", weight: "11 oz", roast: "medium" },
+  a: { price: "$14", cents: "99c", weight: "10 oz", roast: "medium" },
+  b: { price: "$15", cents: "00c", weight: "10.1 oz", roast: "medium" },
 };
 
 export default function ToolLabInterfaceSlide() {
@@ -123,7 +123,33 @@ export default function ToolLabInterfaceSlide() {
                   <br />
                   submit_choice(option_id)
                 </p>
-                <p className="tl-caption">Cumulative tool cost: {cost}</p>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <p className="tl-caption">Cumulative tool cost: {cost}</p>
+                  {revealed.length > 0 && (
+                    <button
+                      onClick={() => setRevealed([])}
+                      type="button"
+                      style={{
+                        background: "none",
+                        border: "none",
+                        color: "var(--text-muted)",
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "0.72rem",
+                        cursor: "pointer",
+                        opacity: 0.6,
+                        padding: 0,
+                      }}
+                    >
+                      [reset]
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </div>

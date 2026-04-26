@@ -12,9 +12,7 @@ import ResourceRationalitySlide from "./_components/ResourceRationalitySlide";
 import ToolLabInterfaceSlide from "./_components/ToolLabInterfaceSlide";
 import TraceSlide from "./_components/TraceSlide";
 import MDPSlide from "./_components/MDPSlide";
-import OptimalPolicySlide from "./_components/OptimalPolicySlide";
 import ControlledTestbedSlide from "./_components/ControlledTestbedSlide";
-import StudyRoadmapSlide from "./_components/StudyRoadmapSlide";
 import PriceBiasSlide from "./_components/PriceBiasSlide";
 import PriceToolLabDesignSlide from "./_components/PriceToolLabDesignSlide";
 import PriceToolLabResultsSlide from "./_components/PriceToolLabResultsSlide";
@@ -50,9 +48,7 @@ export default function Page() {
       <ToolLabInterfaceSlide />
       <TraceSlide />
       <MDPSlide />
-      <OptimalPolicySlide />
       <ControlledTestbedSlide />
-      <StudyRoadmapSlide />
       <PriceBiasSlide />
       <PriceToolLabDesignSlide />
       <PriceToolLabResultsSlide />
