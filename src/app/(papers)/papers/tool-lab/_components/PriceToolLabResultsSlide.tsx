@@ -181,6 +181,67 @@ export default function PriceToolLabResultsSlide() {
                   </div>
                 </div>
               </div>
+              {/* Optimal Policy Panel */}
+              <div
+                className="tl-panel"
+                style={{
+                  borderLeft: "4px solid var(--cyan-light)",
+                  background: "var(--cyan-pale)/60",
+                }}
+              >
+                <div
+                  className="tl-node-label"
+                  style={{ marginBottom: "1rem", color: "var(--cyan-light)" }}
+                >
+                  Optimal Policy
+                </div>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: "1.5rem",
+                  }}
+                >
+                  <div style={{ display: "grid", gap: "0.85rem" }}>
+                    <div
+                      className="p-small"
+                      style={{
+                        opacity: 0.6,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                        fontSize: "0.7rem",
+                      }}
+                    >
+                      Optimal Choice
+                    </div>
+                    <Bar value={100} label="$0 Cost: 100%" />
+                    <Bar
+                      value={0}
+                      label="$10 Cost: 100%"
+                      color="var(--amber-light)"
+                    />
+                  </div>
+                  <div style={{ display: "grid", gap: "0.85rem" }}>
+                    <div
+                      className="p-small"
+                      style={{
+                        opacity: 0.6,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                        fontSize: "0.7rem",
+                      }}
+                    >
+                      Checked Cents
+                    </div>
+                    <Bar value={100} label="$0 Cost: 100%" />
+                    <Bar
+                      value={0}
+                      label="$10 Cost: 100%"
+                      color="var(--amber-light)"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
