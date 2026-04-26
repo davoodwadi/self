@@ -1,4 +1,4 @@
-import { FlowNode, SlideShell } from "./SlidePrimitives";
+import { FlowNode } from "./SlidePrimitives";
 
 export default function EvaluationGapSlide() {
   return (

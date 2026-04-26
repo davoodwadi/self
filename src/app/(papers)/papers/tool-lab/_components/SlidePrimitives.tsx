@@ -1,43 +1,5 @@
 import type { ReactNode } from "react";
 
-type SlideShellProps = {
-  id?: string;
-  number: string;
-  eyebrow: string;
-  title: ReactNode;
-  message?: ReactNode;
-  children: ReactNode;
-  className?: string;
-};
-
-export function SlideShell({
-  id,
-  number,
-  eyebrow,
-  title,
-  message,
-  children,
-  className,
-}: SlideShellProps) {
-  return (
-    <section id={id} className={`tl-slide ${className ?? ""}`}>
-      <div className="tl-slide-inner">
-        <div className="tl-two-col">
-          <div>
-            <div className="tl-kicker">
-              <span className="tag tag-violet">{number}</span>
-              <span className="tag tag-muted">{eyebrow}</span>
-            </div>
-            <h2 className="p-heading tl-title">{title}</h2>
-            {message ? <p className="p-body tl-message">{message}</p> : null}
-          </div>
-          <div>{children}</div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export function Bullets({ items }: { items: ReactNode[] }) {
   return (
     <ul className="tl-list">
