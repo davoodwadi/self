@@ -16,6 +16,7 @@ import ControlledTestbedSlide from "./_components/ControlledTestbedSlide";
 import PriceBiasSlide from "./_components/PriceBiasSlide";
 import PriceToolLabDesignSlide from "./_components/PriceToolLabDesignSlide";
 import PriceToolLabResultsSlide from "./_components/PriceToolLabResultsSlide";
+import LeftDigitToolLabResultsSlide from "./_components/LeftDigitToolLabResultsSlide";
 import MechanismSlide from "./_components/MechanismSlide";
 import DiscountBiasSlide from "./_components/DiscountBiasSlide";
 import DiscountToolLabResultsSlide from "./_components/DiscountToolLabResultsSlide";
@@ -50,6 +51,7 @@ export default function Page() {
       <PriceBiasSlide />
       <PriceToolLabDesignSlide />
       <PriceToolLabResultsSlide />
+      <LeftDigitToolLabResultsSlide />
       <MechanismSlide />
       <DiscountBiasSlide />
       <DiscountToolLabResultsSlide />
