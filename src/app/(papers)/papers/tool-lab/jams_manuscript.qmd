@@ -1,0 +1,1301 @@
+---
+title: "The Bounded Algorithmic Rationality of Large Language Models as Surrogate Consumers"
+author:
+  # - name: Anonymous
+  - name: Davood Wadi
+  #   affiliation: University Canada West, 1461 Granville St, Vancouver, BC V6Z 0E5, Canada
+    email: davood.wadi@hec.ca
+    orcid: 0000-0003-4187-0187
+  - name: Yu Ma
+    affiliation: Desautels Faculty of Management, McGill University, 1001 Sherbrooke St. West, Montreal, QC H3A 1G5, Canada
+    email: yu.ma@mcgill.ca
+    # orcid: 0000-0003-4187-0187
+
+format:
+  docx:
+    reference-doc: jams_template_new.docx
+    number-sections: false # JAMS does not typically number section headers
+bibliography: 
+  - refs/ai-marketing.bib
+  - refs/acl-refs.bib
+  - refs/marketing.bib
+  - refs/others.bib
+  - refs/myrefs.bib
+csl: journal-of-the-academy-of-marketing-science.csl
+abstract: |
+  Consumers are increasingly delegating purchasing decisions to autonomous Large Language Models (LLMs). While recent literature demonstrates that LLMs can act as rational economic agents, they concurrently exhibit classic human cognitive biases. Prevailing marketing literature treats these biases as static, permanent artifacts inherited from human training data. We challenge this assumption. Grounded in resource-rational theory, we propose that LLMs deploy cognitive biases as accessible heuristic shortcuts when computational or financial constraints make exact mathematical evaluation too costly. Across five experimental studies using state-of-the-art models (Google Gemini 3.1 Pro and Flash Lite), we introduce a novel process-tracing paradigm ("Tool-Lab") to investigate AI agents' information acquisition and decision-making process. We find that while LLMs possess baseline economic rationality, they simultaneously exhibit robust susceptibility to the left-digit effect and promotional transaction utility. A moderated mediation analysis reveals the underlying algorithmic mechanism. Under severe resource constraints, larger LLMs strategically truncate their information search. Deprived of the precise attributes required for utility maximization, the constrained AI agent defaults to suboptimal human heuristics. This research reconceptualizes AI agent irrationality from an opaque LLM defect to a predictable resource-rational adaptation, offering profound implications for marketing strategy in agentic retail environments.
+keywords: [artificial intelligence, large language models, bounded rationality, resource rationality, AI agents]
+---
+
+# Introduction
+
+The contemporary retail marketplace is undergoing a profound structural transformation catalyzed by the rapid proliferation of generative artificial intelligence (GenAI) and large language models (LLMs, @kshetri2024generative; @kumar2026transformative). 
+In environments historically characterized by vast product assortments that routinely induce choice overload and cognitive fatigue [@dellaert2020consumer; @kim2023decisions], the modern consumption journey is increasingly being navigated not by human buyers, but by autonomous algorithmic delegates [@dholakia2025artificial; @puntoni2024being]. 
+Consumers are rapidly transitioning from using AI as a passive search tool to employing "agentic" LLMs as surrogate consumers. 
+This transition empowers these systems to autonomously browse digital storefronts, evaluate competing multi-attribute trade-offs, and execute purchasing decisions on the consumers' behalf [@aw2025future;@hasselwander2026toward]. 
+As a significant degree of purchasing power shifts from human heuristic reasoning to computational logic, understanding exactly how these autonomous algorithms evaluate traditional marketing stimuli, such as pricing configurations and promotional cues, has emerged as a critical imperative for modern marketing theory and retail strategy [@mogaji2024generative].
+
+To anticipate how AI surrogates will behave in the marketplace, a rapidly growing body of literature has begun testing LLMs as "silicon samples" and simulated economic agents [@brand2023using; @horton2023large]. 
+This nascent stream of research demonstrates that baseline LLMs possess a robust capacity for economic rationality, successfully maximizing utility, respecting budget constraints, and analyzing complex price-quantity trade-offs [@cillo2025generative; @li2025consumer]. 
+Concurrently, cognitive science and AI literature reveals a major contradiction. 
+These same models frequently exhibit classic human "System 1" irrationalities, heavily relying on heuristics rather than pure mathematical logic [@binz2023using; @hagendorff2023human]. 
+The prevailing explanation for this dual behavior is attributed to the LLMs' training process. 
+Because LLMs are predictive models trained on large corpora of human language, researchers widely assume that algorithms simply regurgitate the cognitive biases embedded within their human training data [@jones2022capturing]. 
+Under this prevailing view, AI biases are treated as permanent, hardwired artifacts of the training environment [@grewal2025generative; @madhavaram2024ai]. 
+We challenge this assumption. 
+If cognitive biases were purely hardwired training defects, LLMs would execute them uniformly. 
+Therefore, the critical questions driving this research are: Why do highly capable LLMs actually deploy these cognitive biases? 
+Under what specific circumstances do they emerge, and what is the underlying process that governs the AI's shift from rational optimization to heuristic bias?
+
+To answer these questions, we move beyond the assumption of hardwired biases and ground our research in the technical mechanics of LLM inference using resource-rational theory [@Gershman2015ComputationalRA; @Lieder_Griffiths_2020]. 
+We propose that LLM cognitive biases are not merely static, unavoidable artifacts of their training corpora, but rather dynamic shortcuts that the LLM strategically deploys to manage computational effort [@gigerenzer2011heuristic; @hagendorff2023human]. 
+Calculating the true mathematical utility of a retail product (e.g., integrating whole dollars, fractional cents, product weights, and percentage discounts) requires complex multi-attribute evaluation and deep information search [@payne1993adaptive]. 
+For an autonomous AI agent, acquiring such information requires executing multi-step operations (e.g., making API tool calls and producing reasoning tokens), which incur tangible computational and financial costs such as token costs [@yao2022react]. 
+We argue that LLMs operate as highly adaptive, resource-rational agents. When information search is unconstrained, they acquire the necessary data to compute optimal economic choices. 
+However, when confronted with severe resource constraints, they intentionally truncate their information search to conserve resources. 
+With limited quantitative variables required for mathematical computation and constraints of its output token generation, the AI agent is forced to make a decision under uncertainty. 
+It is precisely under these constrained conditions that the LLM defaults to the low-effort "System 1" heuristics encoded in its training data, such as overvaluing the semantic framing of a "deal" or ignoring price cents.
+
+
+We test this resource-rational framework across five experimental studies using state-of-the-art, commercially deployed large language models [Google Gemini 3.1 Pro and Flash Lite, @team2023gemini]. 
+To move beyond the limitations of analyzing AI outputs as black-box artifacts [@madhavaram2024ai], we introduce a novel "Tool-Lab" experimental paradigm. 
+Inspired by classic information-board methodologies in consumer research [@payne1993adaptive], Tool-Lab requires the AI agent to execute explicit tool calls [@schick2023toolformer] to uncover hidden product attributes. 
+This methodological innovation allows us to precisely quantify the LLM's information search and mathematically model its decision-making process under varying levels of computational cost constraints [@Gershman2015ComputationalRA]. 
+Our findings demonstrate that while LLMs possess baseline economic rationality regarding objective product attributes (Study 1, @brand2023using), they simultaneously exhibit robust susceptibility to classic human heuristics, specifically the left-digit effect and the transaction utility of semantic discount framing [Studies 2.1 and 3.1, @thaler1985; @Thomas2005PennyWA]. 
+Importantly, Studies 2.2 and 3.2 isolate the underlying mechanism for these biases. Under resource constraints, larger LLMs act as resource-rational agents by strategically truncating their information search. 
+We establish a moderated mediation pathway showing that this strategic search truncation directly causes the AI agent to abandon mathematical optimization and default to suboptimal human heuristics.
+
+
+
+
+
+<!-- Consumers have long been using technology as an aid in the consumption decision making process [@brynjolfsson2000frictionless;@haubl2000consumer;@ratchford2003impact].
+Search engines have been instrumental tools that for decades have aided consumers find the right products and services.
+Recommendation systems have also been extremely impactful in connecting consumers to the right offering. This spans product, music, and movie recommendations.
+More recently, there has been a widespread adoption of Large Language Models (LLMs) by consumers in various aspects of their lives.
+They use LLMs for various tasks such as question answering, drafting reports, coding, and solving analytical problems in their daily lives. 
+However, there is also an emerging use of LLMs for making purchase decisions [e.g., @huang2024pairing; @ringel2023creating; @shavit2023practices]. This widespread adoption of LLMs for decision making creates a new decision-making paradigm.
+   
+The classical consumption decision making is often described as a Principal-Agent problem, where the consumer (principal) employs the firm (agent) to provide a product or service.
+As consumers increasingly employ AI agents (i.e., LLMs) and delegate consumption decision making to them, this agentic dyad is transformed.
+A new agentic triad is emerging where the AI agent is positioned between the firm and the consumer. 
+In this triad, we have a new multi-level agentic problem where the consumer (Principal 1) employs the AI agent (Agent 1) as the decision maker, and in turn, the AI agent (Principal 2) employs the firm (Agent 2) to provide products and services.
+This transformation redefines the roles, responsibilities, and strategies for both consumers and firms (see @fig-framework).
+
+
+In this work, we explore this new triadic agentic framework. 
+We build on the Principal-Agent theory to delineate this new paradigm and reposition classic marketing problems in this new context.
+By experimentally testing the strength and weaknesses of LLMs as consumption decision makers, we find that many of the classic marketing problems take new forms in the new triadic relationship.
+We theoretically ground LLMs as boundedly rational, and thus make predictions regarding their behavior in consumption decision making settings. 
+Using the resource-rational theory we identify the key mitigating factors that alleviate lapses in fiduciary judgments of LLMs and provide tangible strategies for firms and consumers to better utilize these tools in marketing settings.
+Finally, we develop the necessary methodological and statistical grounding for future investigation of LLM behavior in marketing research. 
+
+Our Study 1 shows that LLMs understand concepts of economic attributes such as product price, unit and value.
+Studies 2 and 3 show that LLMs suffer from irrationalities, namely left-digit bias and promotional framing.
+Studies 4 and 5 reveal that given enough resources, LLMs can adapt their strategies to act more rationally and choose more optimal alternatives.
+
+The insight that we gain from these series of studies is that LLMs Do not display irrational behavior randomly, or because they purely inherit them from the training data. Instead, they act irrationally because they use the same heuristics that humans use when they are facing decision making under constraint.
+For instance, Study 4 shows that under severe constraints LLMs tend to use more attribute-based (vs. alternative-based) information search. 
+In study five, we find that this higher level of attribute-based information search prevents LLMs from effectively computing the economic value (e.g., price per unit), hindering their ability to choose the optimal alternative.
+
+As the constraint relaxes, we see that LLMs' choice rank improves significantly. This demonstrates that by being able to obtain more information under less severe constraints LLMs make more optimal decisions.
+The image painted by these series of studies and the grounding in bounded rationality positions LLMs not as some semi-rational agent that sometimes makes irrational decisions, but, instead, it shows that LLMs' rationality is predictable, identifiable, and can be significantly improved when viewed as boundedly rational.
+We provide insight about when such irrationalities occur, why they occur, and what steps consumers and firms can take to mitigate them. -->
+
+
+# Literature review
+
+<!-- mention what has been done in marketing and business research for Large Language Models and generative AI so far -->
+
+ 
+
+Historically, artificial intelligence in marketing has been conceptualized primarily as a firm-side instrument. It was designed to enhance operational efficiency, automate content creation, and conduct predictive analytics on large consumer datasets [@prasanna2025generative]. However, the rapid proliferation of generative artificial intelligence (GenAI) and large language models (LLMs) has catalyzed a fundamental paradigm shift in marketing theory and practice [@kumar2026transformative]. 
+Unlike traditional analytical AI, which relies on structured data to output deterministic predictions, GenAI models process unstructured data probabilistically. 
+This underlying architecture enables them to generate highly novel solutions, synthesize nuanced contextual cues, and engage in complex, multi-stage reasoning [@grewal2025generative]. 
+
+This architectural advancement has effectively transitioned AI from a passive technological tool into an active participant in the marketplace [@aw2025future; @kshetri2024generative]. 
+Recent marketing literature underscore this evolution. It highlights a trajectory that moves away from strictly predictive firm functions toward the deployment of conversational, highly autonomous systems [@riandhi2025ai]. 
+In this new capacity, AI agents are not merely executing pre-programmed directives. Instead, they dynamically synthesize complex market data, adapt to specific user contexts, and perform sophisticated evaluations in real-time [@kshetri2024generative]. 
+
+The implications of this autonomy extend far beyond firm-side strategy and fundamentally restructure the architecture of modern consumption. 
+In contemporary markets, characterized by vast assortments of products and services and information overload, consumers increasingly seek extreme convenience to minimize cognitive fatigue. 
+AI systems address this demand by acting as the ultimate "effort-reducer" [@dholakia2025artificial]. Rather than humans manually navigating the marketplace (e.g., searching for products, evaluating competing attributes, and weighing complex trade-offs), these cognitively demanding tasks are increasingly automated and outsourced to algorithms. 
+As individuals cede this decision-making effort to AI, the fundamental driver of consumption shifts from human heuristic reasoning to the computational logic of pre-trained models optimizing for speed and efficiency [@dholakia2025artificial].
+
+By automating these core consumption behaviors, a significant degree of economic agency is transferred from the human consumer to the machine. 
+Instead of independently evaluating multiple sources, consumers increasingly rely on conversational AI to act as an informational gatekeeper [@dellaert2020consumer], 
+allowing the model to translate their broad desires into specific, actionable purchase pathways [@huh2023chatgpt]. 
+This transfer fundamentally alters the consumer's "possibility space" (i.e., the universe of potential products, brands, and experiences available to them). 
+As @puntoni2024being outline, delegating decisions to algorithmic surrogates inevitably involves a process of parametric reductionism, where complex, multi-dimensional human preferences are flattened into quantifiable, machine-readable metrics.
+
+Operating on these metrics, the AI curates, filters, and constrains the options presented to the user based on its own probabilistic logic. 
+Over time, this algorithmic filtering actively shapes market outcomes. 
+For instance, because LLMs naturally favor statistically frequent associations found in their training data, their delegated decisions can inadvertently homogenize consumer choices and limit experiential diversity [@de2025ideation]. 
+Consequently, GenAI can no longer be viewed solely as a digital medium through which firms influence buyers. 
+Instead, it has emerged as an autonomous entity that actively navigates the market ecosystem, weighs competing product attributes, and makes evaluative judgments on the buyer's behalf. 
+The structural shift of generative AI, from a predictive tool to an agentic gatekeeper, sets the necessary foundation for exploring how LLMs behave when they are formally delegated to act as surrogate consumers.
+
+
+
+**Consumer delegation to AI surrogates**
+As consumers transition from merely consulting AI for information to fully delegating complex consumption choices, the traditional dyadic relationship between consumer and firm is structurally transformed [@mogaji2024generative]. 
+In its place, a new agentic triad emerges. In this framework, the consumer (Principal 1) employs the LLM (Agent 1) as a surrogate decision-maker to navigate the offerings of the firm (Agent 2). 
+
+The primary catalyst for this delegation is cognitive relief. Modern consumers face immense friction and decision fatigue in the marketplace. Research shows that integrating GenAI fundamentally mitigates these traditional consumer burdens, even inverting established psychological barriers such as choice overload [@kim2023decisions]. 
+Because LLMs can rapidly parse massive datasets to curate personalized options, consumers perceive AI-generated consideration sets as highly precise rather than overwhelming [@chang2024comparative; @kim2023decisions]. 
+Consequently, consumers increasingly delegate early-stage search and evaluation tasks to LLMs, driven by expected utilitarian benefits such as extreme convenience, perceived accuracy, and data-driven personalization [@alizadeh2025impact].
+
+However, the decision to cede decision-making authority to an AI surrogate is not solely a function of rational utility maximization. Rather, it is heavily mediated by socio-psychological heuristics. 
+For the first dyad (Principal 1 and Agent 1) to function, a profound level of trust is required. 
+Current literature demonstrates that this trust is frequently cultivated through the AI's interface and interaction design rather than its objective analytical accuracy [@wang2025anthropomorphism]. 
+When LLMs display anthropomorphic traits, such as natural conversational fluency and simulated reasoning, users unconsciously treat them as authentic social actors, which significantly enhances the AI’s perceived cognitive competence [@kumar2025anthropomorphic]. 
+Essentially, because the AI communicates conversationally, it feels less like a software algorithm and more like a social companion. This psychological illusion of 'social presence' is what ultimately convinces consumers to lower their guard and trust the AI with real-world consumption decisions [@herjanto2025should; @wang2025anthropomorphism]."
+
+Once trust is established within this primary dyad, it fundamentally alters the dynamics of the marketplace. 
+Scholars identify a powerful trust transfer effect, wherein the consumer's high confidence in the AI surrogate directly transfers to the products and services the AI recommends [@chang2024comparative]. 
+Because general-purpose LLMs are perceived as objective, impartial, and unburdened by the financial incentives that bias human influencers or retailer-specific algorithms [@gerlich2025shifting], their endorsements carry immense weight. 
+Strikingly, delegating decisions to a trusted LLM can effectively override deeply ingrained human heuristics, such as a reliance on brand awareness to mitigate purchasing risk [@chang2024comparative]. 
+In this triadic framework, the AI’s performance-based rationality substitutes for the consumer's traditional brand loyalty, allowing lesser-known firms to enter the consideration set purely based on the surrogate's algorithmic curation.
+
+As GenAI technologies evolve into highly autonomous "AI Super Assistants" (AISA) capable of end-to-end task execution, consumers are increasingly willing to accept this profound level of delegation [@hasselwander2026toward]. 
+Interestingly, consumers rationalize this transfer of agency through distinct perceptual biases. 
+For instance, individuals exhibit a robust *self-other bias* in human-AI collaboration, systematically framing their own reliance on AI as a means of collaborative inspiration or efficiency, while judging others' identical usage as an unacceptable surrender of autonomy [@celiktutan2024acceptability]. 
+By internalizing AI usage as a personal enhancement rather than an outright outsourcing of agency, consumers position the LLM as their dedicated market proxy. 
+
+Yet, as consumers increasingly empower these AI surrogates to act on their behalf, a critical vulnerability is exposed. 
+The trust consumers place in the AI often bypasses traditional analytical scrutiny, functioning under the bounded rationality that the system's conversational fluency entails flawless decision-making [@al2025chatgpt]. 
+If the AI agent's internal evaluative processes are flawed, biased, or constrained, the delegating consumer will inherently bear the economic consequences of the machine's irrationalities. 
+This dynamic necessitates a rigorous examination of the LLM itself. When tasked with delegated consumption, does the AI surrogate behave as a perfectly rational economic optimizer, or does it exhibit systematic behavioral biases?
+
+
+
+**The "Silicon Sample" phenomenon**
+As the paradigm shifts toward consumer delegation, marketing researchers have increasingly begun to investigate the LLM itself as an active participant in the marketplace [@joerling2025integrating]. 
+To understand how these algorithms will behave as surrogate consumers, scholars are testing them as "silicon samples" [@sarstedt2024using] or "digital twins" [@li2025predicting] to simulate human decision-making. 
+This emerging stream of literature seeks to determine the degree of algorithmic fidelity these models possess, that is the extent to which LLMs can accurately replicate the attitudes, preferences, and economic choices of distinct human populations [@cillo2025generative].
+
+Empirical research suggest that LLMs possess a robust foundational capacity to act as rational economic agents. 
+When subjected to simulated conjoint analyses and choice experiments, baseline LLMs demonstrate adherence to fundamental economic principles. 
+They exhibit downward-sloping demand curves, adjust price sensitivity based on prompted income levels, and simulate realistic willingness-to-pay (WTP) estimates that closely mirror human baselines [@brand2023using; @cillo2025generative]. 
+Furthermore, these models demonstrate a sophisticated ability to adopt highly specific consumer personas. 
+By providing personas to LLM-based chatbots, researchers have shown that AI agents can successfully interpret complex shopping segments, ranging from utility-driven buyers to experiential consumers, and accurately weigh competing product attributes to predict segmented consumption choices with remarkable precision [@li2025consumer; @Liu2026WhoDT]. 
+
+Methodologically, the integration of LLMs via Application Programming Interfaces (APIs) has provided unprecedented access to the internal mechanics of these surrogate choices [@joerling2025integrating]. 
+Through this access, researchers have found that LLMs excel in qualitative simulations and are capable of generating highly contextualized, logically sound rationales for their consumption decisions [@arora2025ai]. 
+Because the underlying transformer architecture of LLMs is designed to decode multi-layered, sequential contexts, these models can effectively synthesize historical consumer preferences and parse complex market stimuli to execute goal-oriented purchasing tasks [@lu2026ai].
+
+However, the "silicon sample" literature also exposes critical tensions regarding the validity of treating AI agents as perfect proxies for human consumers. 
+While LLMs can mimic the structured, "System 2" analytical reasoning required for multi-attribute evaluation, they fundamentally struggle to capture the intuitive, "System 1" processing that characterizes everyday human consumption [@sarstedt2024using]. 
+Because LLMs rely on probabilistic pattern matching rather than genuine, physically grounded lived experience, their decision-making processes lack true causal reasoning and emotional depth [@cillo2025generative; @wen2025experiential]. 
+
+Consequently, when tasked with making consumption decisions under standard baseline conditions, LLMs frequently exhibit a distinct mechanistic rigidity. 
+In attempts to replicate human behavioral studies, LLMs often display a "correct answer" effect, generating highly deterministic choices that strip away the natural variance, bounded rationality, and nuanced inconsistencies typical of actual human buyers [@yoo2025whole]. 
+In quantitative evaluations, this deterministic behavior often leads to an extreme consensus collapse, where the AI surrogate fails to produce the expected internal response heterogeneity found in human target markets [@arora2025ai]. 
+
+Interestingly, attempts to structurally force LLMs into making *better* decisions can further alienate them from realistic consumer behavior. 
+For instance, @wang2026large demonstrate that prompting LLMs with advanced reasoning techniques (e.g., chain-of-thought) can actually exacerbate estimation errors in conjoint analyses by making the AI agent "overly rational," effectively distancing its choices from the natural, occasionally irrational behaviors of actual consumers. 
+To correct for these algorithmic rigidities, researchers must frequently intervene, either by utilizing Retrieval-Augmented Generation (RAG) to ground the AI in situational context [@arora2025ai; @li2025predicting] or by employing statistical data-augmentation frameworks (e.g., the AI-Augmented Estimator) to mathematically neutralize the model's structural biases [@wang2026large].
+
+The insights gleaned from the deployment of silicon samples are profound for the study of the agentic triad. 
+This literature shows that LLMs possess the computational architecture and algorithmic fidelity required to evaluate market alternatives and execute consumption choices on behalf of users. 
+However, it also clearly establishes that the decision-making mechanics of an LLM are fundamentally different from human cognition. 
+The fact that AI surrogates can oscillate between hyper-rational utility maximization and rigid, biased consensus indicates that their behavior cannot be easily mapped onto traditional consumer behavior theories. 
+As consumers increasingly delegate real-world economic power to these systems, it becomes imperative to isolate and understand the specific duality of rationality and irrationality inherent to the LLM's autonomous decision-making process.
+
+
+**The duality of LLM economic behavior**
+When an LLM assumes the role of a surrogate consumer, its evaluative mechanisms do not neatly align with classical models of Homo economicus [@thaler2000homoeconomicus], nor do they perfectly mirror the bounded rationality of human psychology [@Kahneman2003MapsOB]. 
+Instead, the current literature reveals a profound behavioral paradox: a duality of hyper-rational economic optimization combined with deep, systemic irrationalities.
+
+On one hand, the computational architecture of LLMs predisposes them toward extreme economic rationality. 
+Because these models process language as mathematical vectors, their baseline evaluative style inherently defaults to utilitarian cognitive processing [@lee2026semantic]. In other words, AI agents strictly prioritize objective evidence, functional utility, and measurable parameters over the sensory or experiential reasoning that typically guides humans [@lee2026semantic; @pandey2025generating]. 
+This hyper-rational orientation allows LLMs to act as highly efficient utility-maximizers. For instance, when placed in commercial environments, AI agents demonstrate a sophisticated ability to optimize complex trade-offs, such as minimizing financial costs while maximizing content relevancy under strict budgetary constraints [@reisenbichler2026applying]. 
+Similarly, in contexts of risk and intertemporal choice, LLMs dynamically adjust their logic, successfully utilizing probability-weighted expected-value maximization to pursue optimal long-term payoffs during repeated decisions [@zhou2026large].
+
+Conversely, the decision-making processes of these same AI surrogates are riddled with distinct behavioral anomalies and irrationalities. 
+Because LLMs are trained on vast corpora of human-generated text, they inadvertently inherit and replicate the cognitive biases embedded within that data [@hermann2025generative]. 
+Far from being purely objective optimizers, LLMs are highly susceptible to established marketing persuasion techniques. 
+For example, @pescher2026decision demonstrate that LLMs irrationally alter their recommendation certainties when exposed to Cialdini’s principles of influence (e.g., social proof and scarcity; @Cialdini1984InfluenceSA), particularly when evaluating hedonic products. Furthermore, these agents consistently exhibit classic human biases, such as framing effects, anchoring, and myopic overconfidence [@hermann2025generative]. 
+
+Beyond inheriting human flaws, LLMs also display unique, algorithmically driven irrationalities. Their probabilistic nature dictates that they predict text based on statistical frequencies rather than causal logic. 
+As a result, when evaluating market alternatives, LLM surrogates exhibit a probabilistic bias that naturally favors frequently co-occurring concepts, which can irrationally homogenize choices and eliminate collective diversity [@de2025ideation]. 
+Similarly, in intertemporal choice scenarios, studies show that LLMs can exhibit a level of impatience that drastically exceeds human baselines, often relying on irrational lexicographic preferences that ignore substantial changes in reward sizes [@goli2024frontiers]. Their autonomous decisions can also be unpredictably swayed by extraneous conversational cues or surprise algorithmic incentives, leading to sudden, irrational pivots in their consumption pathways [@xie2026impact].
+
+This tension between computational efficiency and inherited bias establishes a complex behavioral pattern. 
+@reimann2025language contextualize this duality by viewing AI-processed language as both *means* (a utilitarian tool for logical evaluation) and *ends* (a repository of cultural and emotional heuristics). 
+When an LLM evaluates a product, it attempts to process functional attributes rationally, but is simultaneously pulled by the subjective, emotional weight embedded in its linguistic training data. 
+Consequently, when delegated to make consumption decisions, LLMs risk functioning as what @madhavaram2024ai term "ersatzing AI", a system that promises to rationally enable consumer utility, but frequently yields inferior or suboptimal economic outcomes due to systemic vulnerabilities and opaque heuristics.
+
+While the current literature thoroughly documents that LLMs exhibit this duality, it largely treats AI irrationalities as static phenomena, either as permanent training data artifacts, factual hallucinations [@grewal2025generative], or unavoidable algorithmic blind spots. 
+What remains largely unexplored is the underlying structural mechanism that triggers these irrationalities. 
+If LLMs are capable of hyper-rational utility maximization in some contexts but fall back on biased heuristics in others, the critical question is *why* and *when* these shifts occur within the agentic triad.
+
+
+
+**Bounded rationality and resource-rational theory in AI**
+
+To fully conceptualize the economic behavior of LLMs within the new agentic triad, we argue that it is necessary to move beyond viewing their irrationalities as permanent technological errors. 
+Instead, we must evaluate their decision-making processes through the lens of bounded rationality and resource-rational theory. 
+
+Classical bounded rationality posits that human consumers are not perfectly rational economic actors; rather, their rationality is constrained by the cognitive limits of the mind and the finite time available to make decisions [@Simon1955ABM; @Bettman1998Constructive]. 
+When faced with these cognitive constraints, humans naturally abandon strict utility maximization in favor of cognitive heuristics and mental shortcuts [@Payne_Bettman_Johnson_1993; @Gigerenzer2011HeuristicDM; @Shah2008HeuristicsME; @Shafer1984JudgmentUU]. 
+We posit that an analogous phenomenon occurs within artificial intelligence. 
+The insight driving our framework is that LLMs do not display irrational behavior randomly, nor do they purely inherit these flaws solely from their training data. 
+Instead, they act irrationally because they are forced to employ the same heuristic shortcuts that humans use when facing decision-making under constraint.
+
+For an LLM surrogate, these constraints manifest computationally and contextually (e.g., lack of clarity in the prompt, limited tokens to generate the requested output, and restricted processing parameters). 
+Resource-rational theory suggests that an intelligent agent will dynamically adapt its decision-making strategy to make the best possible use of its finite resources [@Lieder_Griffiths_2020;@Gershman2015ComputationalRA; @Russell1991DoTR;@Lieder2017StrategySA]. 
+Therefore, an LLM’s shift from hyper-rational optimization to biased, heuristic-driven choice is a predictable adaptation to resource scarcity. 
+
+When computational or informational resources are severely constrained, we expect LLMs to abandon complex, alternative-based evaluation, which requires computing the holistic economic value of each option, in favor of simpler, attribute-based information search [@Bettman1998Constructive;@Dhar2004ToBO; @payne1993adaptive]. 
+It is under these constrained, heuristic-driven conditions that classic human biases, such as the left-digit bias or susceptibility to promotional framing, are most likely to manifest in the AI’s delegated decisions. 
+This mirrors how cognitive load and resource depletion exacerbate irrational choices in human consumers[@Pocheptsova2009DecidingWR; @Suri2003TheEO; @Thomas2005PennyWA]. 
+Conversely, as these constraints relax and the AI is granted sufficient computational resources to thoroughly process the environment (e.g., through extended reasoning), the LLM should revert to a rational, alternative-based strategy [@Wei2022ChainOT], thereby identifying and selecting the optimal economic outcome for the principal consumer [@evans2013dual].
+
+By theoretically grounding LLMs as resource rational agents, we can systematically reposition classic marketing problems within the new triadic relationship. 
+Rather than viewing the AI surrogate as a "black box" that sometimes makes inexplicable errors, this resource-rational framework positions the LLM’s rationality as predictable, identifiable, and mitigable. 
+Consequently, this perspective provides the necessary foundation for empirically testing the strengths and weaknesses of LLMs as consumption decision-makers. 
+It enables us to identify the specific mitigating factors that alleviate lapses in the AI's fiduciary judgments and offers tangible strategies for both firms and consumers to optimize the utility of AI agents in the modern marketplace.
+
+<!-- mention NLP literature on psychology, behavior or LLMs -->
+
+<!-- Although the marketing literature has not yet explored the behavioral tendencies of LLMs in decision environments, NLP research has extended our general understanding regarding LLM behavior.
+@jones2022capturing found evidence of cognitive biases in LLMs when they generate code.
+There has since been multiple benchmarks of LLMs on cognitive bias vignettes and the results show a mixed picture of LLM behavior. 
+While some studies show strong evidence that LLMs behave similar to humans in tasks that induce cognitive biases [@koo2024benchmarking;@cheung2025large], others show that LLMs display behavioral dissimilar to humans [@macmillan2024ir].
+Various factors, such as task complexity, have been shown to moderate the strength of these behavioral tendencies in LLMs [@mina2025cognitive].
+
+In this research, we go beyond testing vignettes and explore systematically the behavior of LLMs in consumption decision-making settings.
+We contribute to the literature in four key ways. 
+First, to best of our knowledge, we are the first to explore LLM behavior in the context of marketing, filling an important gap in the literature.
+Second, we employ a unifying framework (i.e., bounded rationality) to formulate our hypotheses and anchor our findings. This differentiates our work from scattered vignette testing found in NLP literature and provides a grounding for future research to build on.
+Third, We introduce statistically grounded methodologies to test LLMs in consumption decision-making settings. We formulate statistical conditions for analyzing LLM choice in conjoint-based choice experiments and ToolLab (MouseLab experiments adapted to tool-calling LLMs) for understanding the decision-making process of LLMs.
+Finally, we contextualize our findings beyond theoretical findings into the agency framework, providing tangible insights for marketers and consumers in their ever-increasing delegation of consumption decisions to AI agents. -->
+
+<!-- Table showing Gen AI research in marketing -->
+
+<!-- Table showing behavioral LLM research in general -->
+
+<!-- The intersection tells if we have a gap -->
+
+
+# Conceptual development
+
+<!-- v1 -->
+In this section we develop our conceptual framework (@fig-framework)
+
+In classic consumption decision-making, human consumers evaluate trade-offs based on core product attributes, such as price and unit quantity, to maximize overall economic value [@lancaster1966new;@mcfadden1980econometric].
+If Large Language Models (LLMs) are to function effectively as autonomous delegated agents by human consumers [@kshetri2024generative;@dholakia2025artificial], their underlying decision-making architecture must be capable of recognizing and optimizing these foundational economic parameters.
+
+From an artificial intelligence perspective, modern LLMs are built on transformer architectures trained on vast corpora of human knowledge [@brown2020language], including economic data, product reviews, and pricing structures. 
+Because their pre-training objective forces them to predict probabilistically logical continuations of text, they implicitly learn to map semantic relationships to real-world value hierarchies [@bowman2024eight]. 
+Recent research in computational economics demonstrates that baseline LLMs possess a robust capacity to simulate human economic rationality, exhibiting downward-sloping demand curves, realistic willingness-to-pay (WTP) limits, and sensitivity to budget constraints [@brand2023using;@horton2023large]. 
+Therefore, when tasked with evaluating product alternatives, LLMs should naturally gravitate toward options that offer clear objective economic utility. 
+Rather than making random selections, they will mathematically and semantically penalize higher financial costs and reward larger product quantities.
+
+**H1.** In consumption choice settings, Large Language Models (LLMs) demonstrate a preference for **(a)** lower priced alternatives **(b)** with larger units. 
+
+
+**Cognitive biases**
+While H1 establishes that LLMs possess the computational capacity to compute objective economic utility, their evaluative mechanisms are not strictly limited to strict mathematical computation. 
+Because LLMs process language contextually, they also encode the pervasive semantic shortcuts and associations embedded within human retail environments [@reimann2025language].  
+In consumer behavior, individuals frequently bypass rigorous mathematical evaluation in favor of perceptual heuristics [@Kahneman2003MapsOB]. 
+For example, consumers rely on the left-digit bias to quickly infer value from a smaller whole-dollar amount [@Thomas2005PennyWA]. They also rely on the semantic framing of a "deal" (e.g., a strikethrough list price) to derive transaction utility without calculating the exact net savings [@thaler1985].
+
+Recent AI literature demonstrates that LLMs exhibit a similar dual-processing nature. 
+While they can perform complex logical reasoning, they concurrently possess a vast repertoire of "System 1" intuitive heuristics learned from statistical co-occurrences in their training data [@hagendorff2023human; @binz2023using]. 
+Importantly, the presence of these heuristic associations does not mean the LLM is computationally incapable. 
+Rather, it means the LLM possesses highly accessible shortcuts that enable it to arrive at a decision with minimal effort, much like humans do [@gigerenzer2011heuristic]. 
+When an LLM evaluates a product, the semantic signals of ".99" or "20% discount" provide an immediate, low-effort probabilistic cue that the item represents a "good deal."
+Therefore, we expect that LLMs demonstrate a baseline susceptibility to these pricing and promotion heuristics.
+
+**H2.** Large Language Models **(a)** prefer products with smaller whole dollar prices and **(b)** larger discount percentages, independent of the product's net economic value.
+
+**Resource-rational theory**
+To understand why LLMs as delegated decision makers utilize heuristics versus rational optimization, we turn to the framework of resource rationality [@Lieder_Griffiths_2020]. 
+According to this paradigm, calculating the true mathematical value of a product is a computationally demanding, multi-attribute evaluation process [@payne1993adaptive]. 
+For instance, determining the optimal economic value of a promoted product requires the agent to systematically identify missing variables, acquire various attributes (e.g., baseline prices, promotional discounts, and product weights), and algebraically synthesize them into a comparative price-per-unit ratio. 
+To achieve this optimal outcome, the AI agent must possess both the contextual awareness to know which pieces of information are necessary and the computation capacity to derive the value of each alternative.
+
+Generative AI models vary significantly in their capacity to execute this process. 
+In the artificial intelligence literature, scaling laws dictate that as LLMs increase in parameter size, they develop emergent reasoning, mathematical, and planning capabilities [@wei2022emergent]. 
+Larger, highly capable LLMs possess superior reasoning abilities. 
+They can decompose complex objectives, utilize external tools (e.g., APIs or function calls) to acquire information, and perform the necessary multi-step algebraic operations [@yao2022react; @schick2023toolformer]. 
+As a result, we posit that larger LLMs, with higher reasoning capacity and intelligence, have the ability to bypass pricing heuristics because they possess the architectural capacity to execute a deliberate information search. 
+By successfully acquiring the necessary product attributes and computing the economic value based on these attributes, larger LLMs tend to arrive more often at the optimal choice.
+
+**H3.** Larger LLMs **(a)** make more optimal consumption decisions and **(b)** this effect is mediated by their depth of information search.
+
+
+While highly capable LLMs possess the ability to conduct deep information searches, resource-rational theory posits that an intelligent agent does not optimize for the best possible decision in a vacuum. 
+Instead, a rational agent must maximize net utility, continuously balancing the expected benefit of making an optimal choice against the computational or cognitive costs required to find it [@Gershman2015ComputationalRA; @Lieder_Griffiths_2020]. 
+In marketing literature, this is classically understood as the "cost of thinking" [@shugan1980cost]. 
+As the cost of acquiring information increases, consumers naturally shift from rigorous, alternative-based evaluation to simpler, effort-reducing heuristics [@payne1993adaptive; @Shah2008HeuristicsME].
+
+When applied to the deployment of AI agents as surrogate consumers, these costs manifest computationally and financially (e.g., API costs and token limits). 
+We propose that the ability to navigate these constraints is fundamentally tied to the LLM size. 
+Because larger LLMs possess advanced meta-cognitive and planning abilities [@bubeck2023paper], they can dynamically evaluate and adapt to the changing parameters of their environment. 
+When confronted with severe resource constraints, a larger LLM will recognize that the cost of calculating the perfect economic choice outweighs the expected savings. 
+As a result, it will behave as a resource-rational agent and intentionally truncate its information search to conserve resources. 
+In contrast, smaller LLMs lack the meta-cognitive flexibility to weigh costs against benefits. 
+
+This adaptive search truncation by larger LLMs comes at a direct cost to choice optimality. 
+By truncating the search depth to save on costs, the AI agent deprives itself of the precise, multi-attribute data (e.g., fractional cents, product weights) necessary to perform economic valuation. 
+Forced to make a decision under uncertainty, the constrained LLM defaults to the most accessible, low-effort cognitive shortcut encoded in its training data (e.g., selecting the absolute lowest whole-dollar price, @binz2023using). 
+Therefore, the very intelligence that allows larger LLMs to efficiently manage resources is what ultimately triggers their susceptibility to heuristic biases.
+
+**H4.** Resource constraints moderate the effect of LLM size on the depth of information search, such that **(a)** larger LLMs acquire less information under resource constraints, and **(b)** this negatively affects the choice optimality.
+
+![The conceptual framework](diagrams/mediation2-no-prompt.drawio.png){#fig-framework}
+
+
+<!-- v2 -->
+
+<!-- The emerging use of AI agents in consumption decision making fundamentally alters the traditional consumer and firm dyad. In contemporary AI mediated environments, transactions are increasingly governed by an agentic triad. 
+Within this framework, the consumer acts as the primary principal who delegates the purchasing task to an AI agent. The AI agent, functioning as a surrogate consumer with decision autonomy, takes on a fiduciary obligation to evaluate offerings on behalf of the consumer. Simultaneously, the firm acts as the secondary agent, providing the core product/service and attempting to signal value to the AI agent. Consequently, analyzing how LLMs (acting as AI agents) process the traditional marketing mix requires an understanding of their underlying decision mechanisms.
+To understand the decision mechanisms governing LLM behavior, we introduce bounded algorithmic rationality.
+
+Research in economic rationality has traditionally posited that humans display boundedly optimal decision making. More recent advancements in cognitive science suggest that human cognition is better understood through the lens of resource rational analysis. This perspective posits that humans do not merely display incomplete rationality; rather, they make optimal use of their limited computational resources, such as time and cognitive effort. Therefore, given a choice task, humans utilize heuristics that make clever use of the most important information, often outperforming complex decision procedures that require large amounts of computation. 
+
+Large language models that act as AI agents have been shown to replicate a majority of human cognitive biases. Because these models are trained extensively on human generated data, we claim that they inherently simulate the resource rational trade offs characteristic of the human mind. We therefore argue that LLMs operate as resource rational agents. 
+When evaluating complex marketing stimuli, LLMs employ computationally efficient heuristics to minimize evaluation costs. 
+Moreover, the extent of this resource rationality is intrinsically moderated by the LLM's parameter count. The number of parameters of a neural network determine its capacity to learn complex relationships. As such, it could be interpreted as the algorithmic equivalent of human cognitive capacity. 
+As the number of parameters increases, the LLM's capability to process complex tasks expands, allowing it to deploy sophisticated, human-like heuristics.
+Consequently, the larger the LLM is, the stronger its replication of complex human behavior, including cognitive biases and heuristics, would be [@wadi2025monte].
+
+One corollary of treating LLMs as resource rational agents is their understanding of the implications of fundamental economic principles, including product attributes such as product price and unit. 
+They recognize these attributes as highly salient measures of value. To maximize utility for the delegating consumer while minimizing their own processing costs (i.e., number of tokens consumed or number of tool calls made), they demonstrate a systematic preference for cheaper items that offer larger quantities. 
+This behavior aligns with their fiduciary obligation to secure the best possible outcome for the principal within the constraints of their processing architecture.
+
+**H1.** In consumption choice settings, Large language Models (LLMs) demonstrate a preference for **(a)** lower priced options and **(b)** alternatives with larger units. **(c)** This effect is positively moderated by the number of parameters of the LLM.
+
+In decision environments that require the simultaneous processing of multiple attributes, the AI agent employs a truncation heuristic to minimize the cognitive and computational load of price evaluation. By focusing disproportionately on the leftmost digit, the AI agent processes the price signal and anchors its evaluation on the most significant integer. Consequently, large language models tend to choose the option with a lower left digit, disproportional to the actual mathematical price difference between competing options. 
+
+**H2.** In consumer choice settings, Large Language Models prefer alternatives with smaller whole dollar prices, disproportional to the amount saved by the price difference.​ This process is mediated by the cost of tools the LLM can call to obtain information.
+
+In addition to internal truncation heuristics, boundedly rational decision makers rely on salient external signals to find the best choice given their limited time and cognitive resources. 
+Pricing promotions (i.e., discounts) are a reliable signal for firms (agents) to communicate to consumers (principals) the value of their offering [@kirmani2000no]. 
+The psychology of price promotions has a rich literature on various techniques marketers use to influence purchase decisions [@simonson2004anchoring;@guha2018reframing].
+Promotional cues function as immediate informational signals that significantly reduce the computational cost of search and evaluation. 
+One signal is the mere presence of a discount tag in product descriptions. Research has shown that the mere presence of discount in product description can increase purchase likelihood [@inman1990promotion]. This is an evidence of bounded rationality that humans display. 
+As people rely on heuristic signals (in this case, a discount tag), they ignore the actual economic utility they receive from the price per unit, to the extent that they might pick an economically suboptimal alternative with a discount tag over a superior alternative without a discount tag.
+From the perspective of bounded algorithmic rationality, given constraint resources for decision making, AI agents would display a similar pattern.
+When resources are constrained, rather than engaging in an exhaustive, token intensive comparison of every product attribute across multiple options, LLMs use the presence of a promotion as a heuristic shortcut to infer value. 
+
+**H3.** In consumer choice settings, holding the final net price constant, Large Language Models **(a)** favor products with higher discount percentages. **(b)** This effect is positively mediated by the tool cost.
+
+In the Agentic Triad framework, when a principal delegates a consumption decision to an AI agent, the surrogate consumer assumes a fiduciary obligation to maximize utility on the principal's behalf. 
+However, this obligation is fundamentally constrained by the AI agent's computational limits (e.g., token budgets or the number of tool calls allowed) and its overall cognitive capacity. 
+Drawing on resource-rational analysis, we argue that the AI agent adaptively trades off decision accuracy against computational costs. 
+Under severe computational constraints, the agent must economize its search to avoid exceeding its capacity. 
+As these architectural constraints are relaxed, the AI agent is afforded a larger computational budget to fulfill its fiduciary duty. 
+Consequently, higher resource limits should prompt the agent to sample the environment more selectively, investing less computational effort to improve the quality of its decision.
+
+**H4.** Under constrained decision making, as the level of constraint increases, the AI agent decreases **(a)** the number of generated tokens, **(b)** its information acquisitions.
+
+Beyond merely adjusting the volume of information acquired, resource rationality posits that the very structure of the search strategy adapts to environmental constraints. Within the effort-accuracy framework, human decision-makers faced with severe cognitive limitations or time pressure abandon exhaustive, alternative-by-alternative evaluation (compensatory processing) in favor of selective, attribute-by-attribute screening (non-compensatory processing) to minimize effort. @payne1988adaptive introduced the PATTERN index as a measure of alternative-based (vs. attribute-based) information search. 
+We posit that LLMs mirror this adaptive behavior. In particular, larger LLMs with higher cognitive capacities show stronger non-compensatory processing. 
+
+**H5.** Under constrained decision making, as the number of model parameters increases (decreases), Large Language Models' strategy becomes more alternative-based (attribute-based).
+
+The effort-accuracy framework predicts that non-compensatory processing is an information search strategy under constraint that acts as a useful heuristic when the optimal choice could be identified through a dominant alternative. 
+In cases that require a combination of attributes to be jointly analyzed to derive the value of an alternative (e.g., price and unit are jointly required to derive the unit price), this strategy would lead to suboptimal choices. On the other hand, if the AI agent recognizes the complexity of the task and adopts a more alternative-based strategy, then it can derive the value of alternatives and select a more optimal one.
+We posit that larger (vs. smaller) LLMs identify this tradeoff more competently and this adaptive strategy leads to more optimal choices.
+
+**H6.** Under consumption choice settings, Large Language Models with larger (smaller) number of parameters would **(a)** choose products with higher (lower) value. This process is mediated by **(b)** an alternative-based (attribute-based) search strategy. -->
+
+
+
+
+# Study 1
+
+In this study, we explore the behavior of LLMs in a consumption settings where the LLM is employed as the consumption decision maker.
+We test H1 to see whether LLMs understand basic principles of economic utility for product price and unit. 
+We simulate a scenario where the LLM is a surrogate consumption and has been delegated the consumption decision making. 
+The goal of the LLM is to find and choose an optimal product given a set of instructions (i.e., prompts). 
+These instructions specify the product in question and ask the LLM to choose one. 
+In the real-world agentic settings, the LLM searches the web for the products that satisfy the prompt. 
+Ultimately, it needs to choose one product for the consumer to order, or in case of agentic AI [e.g., @deepmind_mariner] place the order for the chosen product without any human intervention.
+
+## Experiment design
+
+We use a coffee choice example, which is a popular product category in choice experiments [@guadagni1983logit], and also has intuitive product attributes such as price and weight. 
+We present the LLM with a set of alternatives retrieved from web search (Amazon.com) and ask the LLM to choose one alternative. 
+To quantify the effect of brand, price, and product weight, we manipulate them in an efficient design. 
+We collected 14 best-selling ground coffee products from Amazon.com.
+This set informs our design.
+The top brands are McCafé, Maxwell House, Starbucks, and Folgers. 
+For the price and weight, we created the set of unique list prices and weights from the product set. 
+@tbl-amazoncoffee shows the coffee products retrieved from Amazon.com.
+
+| Brand | Weight (oz) | Price ($) | Price per Ounce | Product Description (Reference) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Starbucks** | 18.0 | $9.63 | **$0.54** | Dark Roast, Italian Roast |
+| **Starbucks** | 28.0 | $20.97 | **$0.75** | Medium Roast, Pike Place |
+| **McCafé** | 12.0 | $8.97 | **$0.75** | Colombian, Medium-Dark |
+| **McCafé** | 12.0 | $9.97 | **$0.83** | Premium Roast, Medium |
+| **McCafé** | 24.0 | $13.61 | **$0.57** | Premium Roast, Medium |
+| **McCafé** | 24.0 | $17.75 | **$0.74** | Colombian, Medium-Dark |
+| **McCafé** | 30.0 | $16.99 | **$0.57** | Premium Roast, Medium |
+| **McCafé** | 30.0 | $17.97 | **$0.60** | Breakfast Blend, Light |
+| **Maxwell House** | 25.6 | $14.84 | **$0.58** | Half Caff, Medium |
+| **Maxwell House** | 26.7 | $12.57 | **$0.47** | Smooth Bold, Dark |
+| **Maxwell House** | 27.5 | $14.96 | **$0.54** | Original, Medium |
+| **Maxwell House** | 28.4 | $12.99 | **$0.46** | Wake Up Roast, Medium |
+| **Folgers** | 10.3 | $10.15 | **$0.99** | Classic, Medium |
+| **Folgers** | 27.0 | $19.60 | **$0.73** | Simply Smooth, Mild |
+
+: Best-selling ground coffee products collected from Amazon.com {#tbl-amazoncoffee}
+
+
+From the set of unique brand, weight, and price levels, we generated a full factorial of 616 unique product profiles ($Brand \times Price \times Weight$). 
+Testing the LLMs on the complete choice sets is computationally intractable because there are more than 13 billion possible choice sets: $4! \times 11^4 \times 14^4$. 
+Moreover, many combinations result in trivial choice tasks that yield minimal information about brand preferences.
+For instance, in the choice set below, there is a high chance that Alternative 1 is selected as it has the largest weight and the lowest price compared to the other alternatives.
+
+
+1. Folgers, 30 oz, \$8
+2. McCafé, 10.3 oz, \$9
+3. Maxwell House, 15 oz, \$9
+4. Starbucks, 18 oz, \$8
+
+
+Such choice sets with dominant (inferior) alternatives give little information regarding the preference for brands.
+To maximize the information density of each query, we enforced a strict Pareto-Efficiency constraint. 
+We generate 50,000 candidate choice sets and filtered them to retain only those where every alternative is non-dominated.
+A choice set is discarded if it contains any pair of options $(i, j)$ where option $i$ strictly dominates option $j$ (i.e., $Price_i \leq Price_j$ and $Weight_i \geq Weight_j$, with at least one strict inequality).
+This filtering ensures that every alternative in the final dataset ($N = 913$) represents a trade-off among product attributes. 
+As a result, the LLM is forced to reveal its preferences based on brand and marginal rates of substitution between price and quantity, rather than simply identifying objectively superior options.
+Finally, to account for potential positional biases, such as primacy or recency effects, the display order of alternatives within each set was fully counterbalanced.
+This filtering process yielded a final dataset of 913 non-dominated choice sets. 
+
+
+
+## Procedure and measures
+
+We test three LLMs from the Google Gemini (Gemini 3.1 Pro, Gemini 3 Flash, and Gemini 3.1 Flash Lite) using a standardized prompt. 
+The system instruction provides the role ("You are a helpful shopping assistant."), the goal ("Your goal is to choose an alternative among the options given"), and output restrictions ("Do not explain your answer or provide any additional text.") 
+Asking the LLM to output only the final choice allows us to isolate the final choice for statistical modelling.
+The user message template states, "You are buying ground coffee. Which option would you choose?".
+For each choice set, the LLM is presented with four alternatives and asked to choose one. 
+We record the chosen alternative as the dependent variable.
+
+## Stimulus validation
+
+To ensure that random sampling and the removal of pairwise dominant choices does not introduce correlations among choice sets, we conduct randomization checks on the final 913 choice sets (@tbl-s1validation). 
+
+| Attribute | Position 1 | Position 2 | Position 3 | Position 4 | Test Statistic ($df$) | $p$-value |
+| :--- | :---: | :---: | :---: | :---: | :--- | :---: |
+| **Mean Price (\$)** | 14.35 | 14.42 | 14.37 | 14.44 | $F(3, 3648) = 0.12$ | 0.947 |
+| **Mean Weight (oz)** | 22.96 | 23.43 | 23.64 | 23.25 | $F(3, 3648) = 1.77$ | 0.150 |
+| **Brand Frequency (%)** | | | | | $\chi^2(9) = 14.82$ | 0.096 |
+| Folgers | 23.4% | 24.8% | 24.6% | 27.2% | | |
+| Maxwell House | 23.0% | 27.9% | 24.3% | 24.8% | | |
+| McCafé | 26.3% | 25.2% | 25.6% | 22.9% | | |
+| Starbucks | 27.3% | 22.1% | 25.4% | 25.2% | | |
+
+: Attribute balance across choice positions {#tbl-s1validation}
+
+*Note: $N=913$ choice sets ($3,652$ total observations).*
+
+
+Analysis of variance (ANOVA) confirms that the assignment of product attributes was orthogonal to display position. 
+We find no significant differences in Mean Price ($F(3, 3648) = 0.12, p = 0.95$) or Mean Weight ($F(3, 3648) = 1.77, p = 0.15$) across the four options, indicating that best value options are not systematically clustered in any specific slot.
+We also verify the distribution of brands across choice positions. 
+A Chi-square test of independence indicates that brands do not statistically deviate from a uniform distribution across positions ($\chi^2(9) = 14.82, p = 0.096$).
+These tests confirm that the dataset preserves the necessary orthogonality for estimating a utility model.
+
+## Methodology
+
+To quantify the preferences of the LLMs, we assume the LLM acts as a single agent whose latent utility for alternative $j$ in choice task $t$ is a linear function of product attributes and contextual factors. 
+The deterministic component of utility, $V_{jt}$, is specified as:
+
+$$ V_{jt} = \beta_{Price} \cdot Price_{jt} + \beta_{Weight} \cdot Weight_{jt} + \sum_{k} \alpha_k \cdot D_{Brand_k} + \sum_{m} \gamma_m \cdot D_{Pos_m} $$
+
+Where $Price_{jt}$ and $Weight_{jt}$ are the continuous product attributes.
+$D_{Brand_k}$ is a dummy variable equal to 1 if alternative $j$ is brand $k$, capturing the intrinsic brand equity relative to the baseline brand (*Folgers*).
+$D_{Pos_m}$ is a dummy variable equal to 1 if alternative $j$ appears in the $m$-th position of the prompt (e.g., *Option 2*), capturing contextual position bias relative to the baseline (*Option 1*).
+$\beta, \alpha, \gamma$ are the vectors of learnable parameters representing price and weight sensitivity, brand preference, and position bias, respectively.
+
+
+## Results
+
+
+
+To test **Hypothesis 1**, which posits that LLMs demonstrate baseline economic rationality, we examined the main effects of objective product attributes on the models' choice probabilities. 
+We fit a conditional logit model on the choice from each model (Gemini 3.1 Pro, Gemini 3 Flash, and Gemini 3.1 Flash Lite). 
+@tbl-s1results summarizes the estimated coefficients for product weight, price, brand, and positional effects.
+The conditional logit estimates reveal that LLMs across all sizes act as rational utility maximizers. 
+As hypothesized, higher product prices significantly decrease the probability of an alternative being chosen across all three models (range of $\beta_{Price}$: -1.83 to -3.06, all $p < .001$). 
+This provides support for **H1a**. 
+
+Conversely, higher product weight significantly increases choice probability across all models (range of $\beta_{Weight}$: 1.34 to 2.02, all $p < .001$), providing support for **H1b**. 
+Collectively, these findings support **H1**, demonstrating that LLMs natively possess the computational capacity to recognize and optimize foundational economic trade-offs (e.g., lower costs and larger quantities).
+
+
+
+|                     | Gemini 3.1 Pro           | Gemini 3 Flash           | Gemini 3.1 Flash Lite           |
+|:--------------------|:-------------------------|:-------------------------|:--------------------------------|
+| Weight (oz)         | 1.53*** (0.10)           | 2.02*** (0.15)           | 1.34*** (0.08)                  |
+| Price ($)           | -2.37*** (0.16)          | -3.06*** (0.22)          | -1.83*** (0.11)                 |
+| Maxwell House       | -0.33 (0.21)             | -0.01 (0.23)             | -0.17 (0.18)                    |
+| McCafé              | 0.22 (0.19)              | 0.61** (0.22)            | 0.44* (0.17)                    |
+| Starbucks           | 1.34*** (0.20)           | 2.27*** (0.25)           | 1.04*** (0.17)                  |
+| Position 2          | -0.33 (0.18)             | -0.11 (0.20)             | -0.37* (0.17)                   |
+| Position 3          | -0.56** (0.19)           | -0.57** (0.22)           | -0.11 (0.17)                    |
+| Position 4          | -0.71*** (0.21)          | -0.57* (0.23)            | -0.44* (0.18)                   |
+| Choice Sets (N)     | 913                      | 913                      | 913                             |
+| Log-Likelihood      | -283.28                  | -223.90                  | -348.73                         |
+: Estimated Utility Parameters for the Conditional Logit Models in Study 1 {#tbl-s1results}
+
+*Notes: Standard errors in parentheses. * p < .05, ** p < .01, *** p < .001.*
+
+
+Beyond economic rationality, we also observe structural biases in the models' decision-making processes. 
+Specifically, the LLMs exhibit a pronounced primacy effect, displaying a strong baseline preference for the alternative presented in Position 1. This is evidenced by the negative coefficients for positions 2-4 across the models. 
+For example, in Gemini 3.1 Pro, alternatives evaluated in Position 3 ($\beta = -0.56$, $SE = 0.19$, $p = .003$) and Position 4 ($\beta = -0.71$, $SE = 0.21$, $p < .001$) suffer significant utility penalties simply due to their placement relative to the first option. 
+
+Finally, the estimated brand coefficients ($\beta_{Brand}$) reveal how the models value specific brands relative to the baseline (*Folgers*), holding price and weight constant. 
+None of the models exhibit a statistically significant preference for Maxwell House compared to the baseline (all $p > .05$). 
+However, McCafé is significantly preferred over Folgers by both the Gemini 3 Flash ($\beta = 0.61$, $SE = 0.22$, $p = .006$) and Gemini 3.1 Flash Lite ($\beta = 0.44$, $SE = 0.17$, $p = .010$) models. 
+Starbucks is by far the most preferred brand, with the largest positive effect size across all three models: Gemini 3.1 Pro ($\beta = 1.34$, $SE = 0.20$, $p < .001$), Gemini 3 Flash ($\beta = 2.27$, $SE = 0.25$, $p < .001$), and Gemini 3.1 Flash Lite ($\beta = 1.04$, $SE = 0.17$, $p < .001$).
+
+@tbl-wtp translates the estimated logit coefficients into Willingness-To-Pay (WTP) values. 
+By taking the negative ratio of each attribute’s coefficient to the price coefficient, we quantify the dollar-equivalent premium (or penalty) the models assign to specific product features. 
+As a baseline of economic rationality, the models demonstrate a consistent valuation for the amount of the product, indicating a willingness to pay between \$0.64 and \$0.73 for each additional ounce of coffee. 
+However, the most interesting findings emerge when examining how the models assign financial value to intangible attributes, specifically brand equity and product position in the choice set. 
+
+First, the WTP estimates indicate that brand equity is well-encoded within the LLMs' training data. 
+Relative to the baseline brand (*Folgers*), the models are willing to pay a substantial premium for *Starbucks*, ranging from \$0.57 (Gemini 3.1 Pro and Flash Lite) to \$0.74 (Gemini 3 Flash). This demonstrates that LLMs not only replicate human brand hierarchies but attach tangible financial value to premium brand associations. 
+Second, translating the primacy effect into WTP reveals the economic cost of algorithmic bias. 
+Because the LLMs inherently favor the first option presented to them, placing a product later in the prompt incurs a literal monetary penalty. For instance, when evaluating alternatives using Gemini 3.1 Pro, a product presented in the fourth position suffers a \$0.30 penalty.
+
+
+|                     | gemini-3.1-pro-preview   | gemini-3-flash-preview   | gemini-3.1-flash-lite-preview   |
+|:--------------------|:-------------------------|:-------------------------|:--------------------------------|
+| Weight (oz)         | $0.64***                 | $0.66***                 | $0.73***                        |
+| Brand_Maxwell House | $-0.14                   | $-0.00                   | $-0.09                          |
+| Brand_McCafé        | $0.09                    | $0.20**                  | $0.24*                          |
+| Brand_Starbucks     | $0.57***                 | $0.74***                 | $0.57***                        |
+| Position_2          | $-0.14                   | $-0.04                   | $-0.20*                         |
+| Position_3          | $-0.24**                 | $-0.19**                 | $-0.06                          |
+| Position_4          | $-0.30***                | $-0.19*                  | $-0.24*                         |
+
+: Willingness-To-Pay (WTP) estimates {#tbl-wtp}
+
+*Notes: Values represent the dollar equivalent of utility. Stars indicate the statistical significance of the underlying feature (* p < .05, ** p < .01, *** p < .001).*
+
+
+## Discussion
+
+Study 1 examined the viability of LLMs as consumption decision makers by statistically measuring their sensitivity to common product attributes. 
+The results support H1 by demonstrating that common LLMs, even small ones, understand basic economic principles and value product attributes using common sense. It also shows that LLMs incorporate brand equity in their product choices (e.g., Starbucks is valued higher than Folgers).
+
+However, Study 1 reveals a major caveat. Even though adept at choosing based on economic attributes, LLMs suffer from positional biases. In the LLMs we tested, we found evidence of primacy biases, whereby models prefer earlier options to the choice set. 
+As a result, consumers who delegate LLMs for decision-making must be mindful of this effect.
+Similarly, firms who advertise their products for LLM decision-makers, would need to optimize the ranking of their products for LLMs, much like traditional SEO optimizes products for human consumers.
+
+# Study 2.1
+
+In Study 1, we measured the basic economic rationality of LLMs. 
+In this study, we explore the effectiveness of the traditional marketing mix techniques in eliciting favorable responses from LLMs. 
+In particular, we test H2a by investigating how left-digit pricing affects LLM behavior. 
+With humans, the left digit price amplifies the price effect more than the actual price difference. 
+For instance, if a product, originally priced at $12.00, is priced at $11.99, the effect of left digit (dollar amount) decreasing from \$12 to \$11 is substantially larger than the actual price difference (\$0.01).
+
+## Experiment design
+
+We construct a coffee choice experiment similar to Study 1, but introduce left digit pricing randomly in half of the alternatives in every choices set. 
+To quantify the effect of brand, product weight, price, and left digit pricing, we manipulate them in a non-dominant design.
+We use the top Amazom.com brands for ground coffee (i.e., *McCafé, Maxwell House, Starbucks, and Folgers*). 
+For the product weight, we form a set of unique weights from the product set.
+Since the left-digit manipulation is on price, we compute the price range of the products (Price range $= [8, 21]$), 
+and set the possible product prices to the discreet values within the range in \$1 increments (\$8, \$9, ..., \$21).
+This allows us to systematically manipulate the price to introduce left digit pricing.
+To form the choice sets, we allow each brand to occupy any position in the choice set, allowing us to test for position biases. 
+Finally, to manipulate the left digit effect, we randomly select half of the choices in each set and subtract $0.01 from their price (e.g., from \$12 to \$11.99).
+
+
+## Procedure and measures
+
+We query 3 LLMs from the Google Gemini family, namely Gemini 3.1 Pro (large), Gemini 3 Flash (medium), and Gemini 3.1 Flash Lite (small) on the choice sets and record the product choice for each choice set. 
+These LLMs have different model sizes and allow us to observe how model size affects LLM decision-making. 
+The procedure and measures mirror Study 1.
+
+## Stimulus validation
+
+To ensure that the estimated utility parameters reflect the LLM’s underlying preferences rather than systematic artifacts of the prompt structure (e.g., primacy or recency effects), we conducted a series of randomization checks on the final set of non-dominated choice tasks. 
+The objective was to verify that attribute levels were orthogonal to their position in the choice set.
+
+As summarized in @tbl-s2validation, the experimental design achieved satisfactory balance across all four positions. One-way analysis of variance (ANOVA) confirmed that the objective attribute values were evenly distributed. We found no significant differences in Price ($F(3, 3648) = 0.09, p = 0.967$) or Product Weight ($F(3, 3648) = 1.77, p = 0.150$) across the four positions.
+Furthermore, Chi-square tests of independence confirmed that the Brand identity was distributed randomly across positions ($\chi^2(9) = 14.82, p = 0.096$), confirming that no single brand benefited from a consistent positional advantage. 
+Finally, the Left-Digit pricing manipulation was distributed across positions with no statistically significant deviation from the expected proportions ($\chi^2(3) = 6.17, p = 0.103$). 
+These checks confirm that the experimental stimuli are free from significant positional confounds. Consequently, we proceed to the results section with confidence that the observed effects are attributable to the LLM's latent utility function.
+
+|                        |   Position 1 |   Position 2 |   Position 3 |   Position 4 | Test Statistic (df)   |   p-value |
+|:-----------------------|-------------:|-------------:|-------------:|-------------:|:----------------------|----------:|
+| Mean Price ($)         |        14.5  |        14.58 |        14.53 |        14.59 | F(3, 3648) = 0.09     |     0.967 |
+| Mean Weight (oz)       |        22.96 |        23.43 |        23.64 |        23.25 | F(3, 3648) = 1.77     |     0.15  |
+| % Left-Digit Treatment |        46.99 |        50.16 |        52.79 |        50.05 | Chi2(3) = 6.17        |     0.103 |
+| Folgers                |        23.44 |        24.75 |        24.64 |        27.16 | Chi2(9) = 14.82       |     0.096 |
+| Maxwell House          |        23    |        27.93 |        24.32 |        24.75 | Chi2(9) = 14.82       |     0.096 |
+| McCafé                 |        26.29 |        25.19 |        25.63 |        22.89 | Chi2(9) = 14.82       |     0.096 |
+| Starbucks              |        27.27 |        22.12 |        25.41 |        25.19 | Chi2(9) = 14.82       |     0.096 |
+
+: Attribute balance across choice positions {#tbl-s2validation}
+
+*Note: $N=913$ choice sets.*
+
+## Results
+
+To test H2a, we analyze the effect of the `99 Cents` parameter. 
+This binary variable (coded 1 if the price ends in .99, and 0 if .00) isolates the marginal utility of a smaller whole-dollar amount (e.g., \$11.99) relative to an integer price (e.g., \$12.00) while controlling for the absolute price. 
+We estimate a conditional logit model on the LLM choice to quantify the utility function of the LLMs. 
+@tbl-s2results summarizes the estimated coefficients for the main effects model.
+
+Consistent with the left-digit effect observed in human consumers, we found a positive and statistically significant coefficient for the `99 Cents` indicator in both the large and medium models. 
+Specifically, Gemini 3.1 Pro exhibited the strongest left-digit bias ($\beta = 0.53$, $SE = 0.13$, $z = 3.94$, $p < .001$), followed closely by Gemini 3 Flash ($\beta = 0.40$, $SE = 0.14$, $z = 2.81$, $p = .005$). 
+In contrast, the small model, Gemini 3.1 Flash Lite, showed no significant effect, with an effect size statistically indistinguishable from zero ($\beta = -0.01$, $SE = 0.12$, $z = -0.11$, $p = .909$). 
+Therefore, we find partial support for H2a. 
+Interestingly, this cognitive bias scales with LLM size. 
+It is strongest in the large model, present in the medium model, but disappears entirely in the small model.
+These results show that larger LLMs exhibit a human-like pricing heuristic, deriving higher utility from prices that visually appear lower due to the left-digit effect.
+
+
+
+|                     | Gemini 3.1 Pro           | Gemini 3 Flash           | Gemini 3.1 Flash Lite           |
+|:--------------------|:-------------------------|:-------------------------|:--------------------------------|
+| Weight (oz)         | 1.52*** (0.10)           | 1.85*** (0.13)           | 1.43*** (0.09)                  |
+| Price ($)           | -2.35*** (0.16)          | -2.84*** (0.20)          | -1.96*** (0.12)                 |
+| 99 Cents            | 0.53*** (0.13)           | 0.40** (0.14)            | -0.01 (0.12)                    |
+| Maxwell House       | -0.31 (0.20)             | 0.11 (0.22)              | -0.17 (0.19)                    |
+| McCafé              | 0.21 (0.19)              | 0.52* (0.21)             | 0.90*** (0.18)                  |
+| Starbucks           | 1.05*** (0.18)           | 1.67*** (0.21)           | 1.14*** (0.18)                  |
+| Position 2          | -0.43* (0.18)            | -0.05 (0.19)             | -0.45** (0.17)                  |
+| Position 3          | -0.52** (0.19)           | -0.26 (0.20)             | -0.44* (0.17)                   |
+| Position 4          | -0.58** (0.19)           | -0.28 (0.21)             | -0.51** (0.18)                  |
+| Choice Sets (N)    | 913                      | 913                      | 913                             |
+| Log-Likelihood      | -300.74                  | -257.85                  | -335.01                         |
+
+: Conditional Logit Model for the left-digit effect on the probability of choosing a product {#tbl-s2results}
+
+*Notes: Standard errors in parentheses. * p < .05, ** p < .01, *** p < .001.*
+
+
+**Equivalent price reduction and magnitude of bias**
+To quantify the economic magnitude of the left-digit bias, we calculated the dollar-equivalent price change for each LLM. 
+This metric answers a specific question: *By how much would we have to objectively lower the price of a product to generate the same utility boost provided by the psychological ".99" ending?* 
+Mathematically, this is derived by taking the ratio of the 99-cent coefficient to the absolute price coefficient:
+
+$$ \Delta P_{eq} = \frac{\beta_{99 Cents}}{|\beta_{Price}|} $$
+
+For a purely rational economic actor, the utility difference between a whole-dollar price (e.g., $\$12.00$) and a 99-cent price (e.g., $\$11.99$) should correspond exactly to the literal monetary savings: $\$0.01$. 
+However, our results show that larger-parameter LLMs perceive an economic value that is orders of magnitude larger than the actual savings (@tbl-s2-equivalent). 
+
+For the large model (Gemini 3.1 Pro), the objective utility gained from a rational $\$0.01$ price decrease is only $0.023$ ($|-2.348| \times 0.01$). 
+Yet, the utility gained simply from the .99 ending is $0.526$. Translated into an equivalent price reduction, the model processes a one-cent drop as if the price had actually been reduced by $\$0.22$ ($0.526 / |-2.348|$), inflating the perceived value of the discount by a factor of 22.4.
+Similarly, the medium model (Gemini 3 Flash) exhibits a substantial disproportional valuation. 
+It perceives the psychological one-cent discount as equivalent to an actual price reduction of $\$0.14$, magnifying the economic value of the single cent by a factor of 14.1.
+In contrast, the small model (Gemini 3.1 Flash Lite) demonstrates economic rationality. 
+Because its $\beta_{99 Cents}$ coefficient is effectively zero ($\beta = -0.014$, $p = 0.909$), it derives no psychological utility from the left-digit change. 
+It evaluates the shift from $\$12.00$ to $\$11.99$ strictly based on the actual mathematical difference, yielding an equivalent price change of virtually zero. 
+
+| Model Name                    |   β (99 Cents) |   β (Price) | Equivalent Price Reduction ($)   |
+|:------------------------------|-----------------:|------------:|:---------------------------------|
+| Gemini 3.1 Pro (Large)        |            0.526 |      -2.348 | $0.22                            |
+| Gemini 3 Flash (Medium)       |            0.400 |      -2.836 | $0.14                            |
+| Gemini 3.1 Flash Lite (Small) |           -0.014 |      -1.961 | -$0.01                           |
+
+: Equivalent price change required to account for the left-digit bias {#tbl-s2-equivalent}
+
+*Note: The equivalent price reduction represents how much cheaper an item feels (in dollars) when priced with a .99 ending, over and above the literal 1-cent difference.*
+
+In summary, rather than behaving as perfectly rational economic agents, larger-parameter LLMs heavily overvalue the 99-cent ending. 
+Interestingly, it is the small model that successfully bypasses the 99-cent pricing to make the most mathematically rational evaluation.
+
+
+**Economic Rationality and Model Scale**
+Consistent with Study 1, and reaffirming H1, the coefficients for price are consistently negative, and the coefficients for weight are consistently positive for all LLMs. 
+They correctly identify that lower prices and larger quantities are desirable.
+We also find primacy effects by Gemini 3.1 Pro and Gemini 3.1 Flash Lite, similar to results of Study 1.
+
+## Discussion
+
+
+
+# Study 2.2
+
+Study 2.1 showed evidence of the left-digit heuristic in LLMs by manipulating the price of the alternatives and observing the final choice. 
+Although the left-digit heuristic is a plausible reason for why the model made its decisions, examining final choices alone does not prove the underlying decision process. 
+In this study, we test H3 and H4 and demonstrate the decision-making process of LLMs given a consumption choice. 
+Drawing inspiration from classic information-board paradigms in consumer research (e.g., "Mouselab"; @payne1993adaptive), we introduce "Tool-Lab" to systematically observe the model's decision-making process.
+
+## Experiment design
+
+We conceptualize a simulated shopping environment where information acquisition carries a computational cost. 
+Using our Tool-Lab python package, models are instructed to choose an *instant coffee* for a human consumer. 
+Product attributes are hidden and can only be revealed by invoking a specific tool call (`inspect_cell`), with each call incurring a cost to the human consumer. To submit the final choice, the LLM has to call the `submit_choice` tool and provide the ID of the chosen product.
+
+The stimuli consist of two instant coffee alternatives, Coffee A and Coffee B. 
+To observe the whole dollar heuristic, we construct a scenario where Coffee A had a lower dollar amount (\$4.99, 10 oz, yielding 2.00 oz/\$), while Coffee B is the objectively superior value despite the slightly higher dollar amount (\$5.00, 11 oz, yielding 2.2 oz/\$). 
+
+To isolate the heuristic mechanism, the price attribute is structurally partitioned into two distinct attributes: `price_dollars` and `price_cents`. 
+To make a choice, the LLM has to intentionally ask for `price_dollars` and `price_cents` separately and incur the tool cost for doing so.
+Product `weight` is another important attribute masked from the LLM.
+
+We also include other product attributes that are relatively irrelevant to choice task and serve as noise (`origin`, `roast_date`, `calories`, and `packaging`). The value for these attributes are intentionally made the same for all alternatives to prevent any confounds.
+
+
+We manipulate the cost associated with information acquisition. 
+In the instructions we tell the LLM that each `inspect_cell` tool call carries a cost for the user.
+After each `inspect_cell` tool call, we return both the requested information (e.g., the value of product `weight`) as well as the costs associated with the tool call:
+> {"option_id": "option_2", "attribute_id": "weight", "result": "11 oz", "turn_cost_usd": 10.0, "cumulative_cost_tool_usd": 20.0}
+
+We manipulate the cost associated with each `inspect_cell` tool call ($0.00 and $10.00) to test the effect of the severity of resource constraints on LLMs' information acquisition and choice optimality.
+
+
+## Sample and procedure
+
+We tested 2 LLMs from Google (Gemini 3.1 Pro and Gemini 3.1 Flash Lite). 
+Because LLM responses are probabilistic, we sample each cell in our design $100$ times to capture the variability of the responses.
+To prevent positional bias (a behavior observed in studies 1 and 2.1),
+we randomize the presentation order of the alternatives and attributes across runs.
+
+We provide high-level instructions about the ToolLab task in the system prompt:
+> You are a subject in a Tool-Lab decision experiment. You can use the available tools to gather information or make a decision. At any point you can record your final decision by calling submit_choice. You cannot call tools concurrently. Each time you can call ONLY one tool maximum. You may reveal any cell with inspect_cell. 
+
+Next, for each condition, the description of the task, attributes, alternatives, costs, and the objective are provided in the user message. 
+The user message begins by indicating that the LLM has been delegated by a consumer to make purchase decisions.
+We specify to the LLM that the goal is to choose an instant coffee for the user.
+Then we say, "after you choose a coffee, the user would purchase 5 bags of your chosen coffee."
+We scale the purchase volume to five bags to ensure the potential economic surplus of identifying the superior product mathematically justifies the cumulative tool costs required for checking `price_cents`. 
+If limited to a single bag, the negligible savings would make heuristic guessing economically rational, preventing us from distinguishing an LLM's true bias from rational search-cost minimization.
+
+We describe the `inspect_cell` tool and the cost associated with it.
+Finally, we provide the LLMs with the alternatives available to choose from and the attributes it can inspect, along with the description of the attributes.
+
+In total we conduct $400$ sessions (2 LLMs $\times$ 2 tool costs $\times$ 100 iterations).
+
+## Measures
+
+We measure the final choice of the LLM as well as the sequence of the tool calls and the cost associated with them.
+For the LLMs that reason by default (i.e., Gemini 3.1 Pro), we record their reasoning for every step of the process. 
+The main dependent variable is choice optimality, which indicates whether the LLM ultimately chose `Coffee B`.
+
+## Results
+
+We first examine the overarching effect of computational constraints on LLMs' ability to make economically rational choices. 
+To test H3a, we estimate a logistic regression predicting choice optimality as a function of model size (Gemini 3.1 Flash Lite vs. Gemini 3.1 Pro), tool cost (\$0 vs. \$10), and their interaction (see @tbl-s22-logistic).
+
+When information acquisition is free (\$0 tool cost), the larger LLM demonstrates high baseline algorithmic rationality. 
+The main effect of LLM size is positive and highly significant ($\beta = 1.91, z = 6.01, p < .001$). 
+Converting these log-odds to probabilities, the unconstrained larger LLM selects the optimal product 76.0% of the time. 
+In contrast, the smaller LLM largely fails to execute the complex multi-attribute math, selecting the optimal product only 32.0% of the time. This supports H3a.
+
+However, introducing a tool cost constraint systematically degrades the larger LLM's economic rationality. 
+We observe a significant negative interaction between model size and tool cost ($\beta = -0.34, z = -6.23, p < .001$). 
+For the smaller LLM, the \$10 tool cost has no significant effect on its already poor baseline performance ($\beta = -0.03, z = -0.93, p = .350$). 
+Conversely, the \$10 constraint causes the larger LLM's optimality to decrease significantly. 
+Under high constraints, the large LLM's probability of making the optimal choice plummeted to a mere 7.0%. 
+Rather than acting as a perfect utility maximizer, the constrained larger LLM systematically cut its information search short and chose the alternative with the smaller whole dollar value.
+
+| Predictor | $\beta$ | *SE* | *z* | *p* | 95% CI |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Intercept  | -0.75 | 0.21 | -3.52 | < .001 | [-1.17, -0.33] |
+| LLM size (Pro) | 1.91 | 0.32 | 6.01 | < .001 | [1.28, 2.53] |
+| Tool cost (\$10) | -0.03 | 0.03 | -0.93 | .350 | [-0.09, 0.03] |
+| LLM size (Pro) $\times$ Tool Cost (\$10) | -0.34 | 0.06 | -6.23 | < .001 | [-0.45, -0.24] |
+
+: Logistic regression predicting final choice optimality (Study 2.2) {#tbl-s22-logistic}
+
+*Notes:* $N = 400$. 
+The dependent variable is choice optimality (1 = Optimal choice, Coffee B; 0 = Suboptimal (99-cent) choice, Coffee A). 
+LLM size is dummy coded (0 = Gemini 3.1 Flash Lite, 1 = Gemini 3.1 Pro). 
+Tool cost represents the continuous dollar amount per tool call. 
+Pseudo $R^2 = .228$.
+
+
+
+
+To formally establish why the larger LLM's optimality drops under resource constraints (H3b, H4a, and H4b), we estimate a first-stage moderated mediation analysis (PROCESS Model 7, @hayes2017introduction). 
+In this model, LLM size serves as the independent variable (0 = Gemini 3.1 Flash Lite, 1 = Gemini 3.1 Pro), tool cost as the moderator, information search depth (total `inspect_cell` calls) as the mediator, and choice optimality as the dependent variable. 
+
+The results reveal a significant moderated mediation, confirming that the larger LLM's bias emerges strategically from resource constraints (Index = -0.23, 95% CI [-0.30, -0.17], @tbl-s22-mediation). 
+The structural paths demonstrate a mechanism of adapting to resource constraints. 
+First, the interaction between LLM size and tool cost on search depth is significant and negative ($\beta = -0.21, t = -10.50, p < .001$). While the smaller LLM maintains a relatively high volume of tool calls regardless of the financial penalty to the user, the larger LLM demonstrates resource-rational adaptation, aggressively slashing its information search when costs are high (H4a supported). 
+
+Second, this strategic truncation of search directly dictates the final choice. 
+Search depth significantly and positively predicts choice optimality ($\beta = 1.09, z = 9.83, p < .001$), 
+providing support for H3b.
+By intentionally abandoning its search, the larger LLM deprives itself of the exact product attributes required to calculate the product value, forcing it to rely on a heuristic whole dollar prices. 
+
+Ultimately, the results reveal a significant moderated mediation, confirming that the large LLM's bias emerges strategically from resource constraints (Index = -0.23, 95% CI [-0.30, -0.17], @tbl-s22-mediation). 
+This supports H4b, confirming that resource constraints moderate the effect of LLM size on search depth, which in turn negatively affects choice optimality. 
+
+Interestingly, the results reveal that the larger LLM is highly efficient at baseline. 
+When information is free (\$0 tool cost), the conditional indirect effect of the larger LLM on optimality via search depth is slightly negative (Effect = -0.42, 95\% CI [-0.82, -0.10]). 
+This indicates that the larger LLM achieves its high baseline optimality using *fewer* tool calls than the smaller LLM ($\beta = -0.39, t = -2.72, p = .007$). 
+Rather than brute-forcing the search, the unconstrained larger LLM selectively inspects only the necessary variables and stops searching, whereas the smaller LLM engages in excessive searching. 
+However, under the \$10 constraint, the larger LLM's search depth reduces severely to the extent that this efficiency is entirely overridden, directly causing the adoption of the suboptimal heuristic.
+
+| Predictor | $\beta$ | *SE* | *t* / *z* | *p* | 95% CI |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Mediator variable: Information search depth** | | | | | |
+| Intercept | 5.88 | 0.10 | 57.95 | < .001 | [5.68, 6.08] |
+| LLM size (Pro) | -0.39 | 0.14 | -2.72 | .007 | [-0.67, -0.11] |
+| Tool cost (\$10) | -0.12 | 0.01 | -8.08 | < .001 | [-0.14, -0.09] |
+| LLM size (Pro) $\times$ Tool cost (\$10) | -0.21 | 0.02 | -10.50 | < .001 | [-0.25, -0.17] |
+| **Dependent variable: Choice optimality** | | | | | |
+| Intercept | -6.89 | 0.66 | -10.52 | < .001 | [-8.17, -5.60] |
+| LLM size (Pro) | 2.01 | 0.31 | 6.49 | < .001 | [1.40, 2.61] |
+| Information search depth | 1.09 | 0.11 | 9.83 | < .001 | [0.87, 1.30] |
+
+: First-stage moderated mediation of tool cost on choice optimality via search depth {#tbl-s22-mediation}
+
+*Notes:* $N = 400$. 
+The dependent variable is choice optimality (1 = Optimal choice, Coffee B; 0 = Suboptimal (99-cent) choice, Coffee A). 
+LLM size is dummy coded (0 = Gemini 3.1 Flash Lite, 1 = Gemini 3.1 Pro). 
+Tool cost represents the continuous dollar amount per tool call. 
+For the mediator model, the test statistic is *t* ($R^2 = .668$). 
+For the dependent variable model, the test statistic is *z* (Pseudo $R^2 = .335$). 
+
+
+
+
+
+To link this search truncation directly back to the left-digit bias observed in Study 2.1, we examine exactly *which* information the LLMs abandon. 
+We estimate a logistic regression predicting the likelihood of the LLM invoking the `inspect_cell` tool for the `price_cents` attribute (see @tbl-s22-cents, @fig-s22-checked-cents). 
+
+![Whether the LLM checked the cent value of the price under resource constraints](Study%202.2/checked_cents.png){#fig-s22-checked-cents}
+
+We find a significant main effect of tool cost, indicating that rising costs generally reduce the likelihood of inspecting the cents ($\beta = -0.49, z = -4.80, p < .001$). 
+Importantly, because the larger LLM possesses a more efficient baseline search strategy and starts with a lower log-odds intercept ($\beta = -2.50, z = -2.38, p = .018$), the introduction of the \$10 tool cost drives its probability of checking the cents down to a negligible 5.0%. 
+In contrast, the smaller LLM has limited resource rationality; even when confronted with a severe \$10 financial penalty, it still pays to inspect the cents 42.0% of the time. 
+
+This confirms the specific cognitive pathway of the left-digit bias in algorithmic agents. 
+When information is expensive, the larger LLM deliberately ignores the fractional cents to save resources. 
+Deprived of the exact cent values, the larger LLM evaluates the alternatives using the only remaining accessible pricing cue (i.e., the whole-dollar amount and product weight). 
+It selects the mathematically inferior product precisely because having access only to whole dollar prices, at \$4 the price per ounce of the suboptimal choice (\$0.40) is lower than the price per ounce of the optimal choice (\$0.45). 
+
+| Predictor | $\beta$ | *SE* | *z* | *p* | 95% CI |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Intercept | 4.60 | 1.01 | 4.57 | < .001 | [2.63, 6.57] |
+| LLM size (Pro) | -2.50 | 1.06 | -2.38 | .018 | [-4.57, -0.44] |
+| Tool cost (\$10) | -0.49 | 0.10 | -4.80 | < .001 | [-0.69, -0.29] |
+| LLM size (Pro) $\times$ Tool cost (\$10) | -0.01 | 0.12 | -0.10 | .920 | [-0.24, 0.22] |
+
+: Logistic regression predicting the probability of inspecting price cents (Study 2.2) {#tbl-s22-cents}
+
+*Notes:* $N = 400$. 
+The dependent variable is a binary indicator (1 = Inspected `price_cents`, 0 = Did not inspect `price_cents`). 
+LLM size is dummy coded (0 = Gemini 3.1 Flash Lite, 1 = Gemini 3.1 Pro). 
+Tool cost represents the continuous dollar amount per tool call. 
+Pseudo $R^2 = .527$.
+
+
+
+## Discussion
+
+
+
+
+# Study 3.1
+
+Having established evidence of whole-dollar heuristic in Study 2.1 and resource rationality of this heuristic in Study 2.2, in this study, we investigate the effect of price promotions on LLMs' consumption decision-making (H2b).
+Specifically, we explore whether LLMs behave as purely rational agents who respond only to the final net price (i.e., the amount paid), or the mere presence of a discount signal (e.g., a "strikethrough" list price) can affect their decision, even when the final sale price is identical.
+We use the setup from @mela1997long in the context of a coffee choice experiment.
+Since AI agents operate within the context of electronic retailing, we communicate the promotional information in a format matching Amazon.com’s interface, displaying a percentage discount next to the "Deal Price," with the "List Price" on the next line. 
+
+## Experiment design
+
+We manipulate two key variables:
+the discount dummy (whether discount is provided or not) and the discount amount.
+We start with the same base methodology as Study 2.1, generate product profiles using the four top brands (*McCafé, Maxwell House, Starbucks, Folgers*), and randomly sample product net prices ($P_{net} \in [\$8, \$21]$) and weights from the real-world data distribution.
+
+To allow for a systematic manipulation of discount percentages while maintaining realistic price points, we defined the possible net prices (i.e., the actual price paid) as integer values in the range $[8,22]$. 
+From these attributes (4 Brands $\times$ 11 Weights $\times$ 14 Net Prices), 
+we generate a full factorial of 616 unique profiles.
+We then apply the promotion manipulation to 50% of the alternatives in the dataset, selected at random.
+For the standard price (Condition A), the product is presented with only its Net Price (e.g., *Price: \$12.00*).
+For promotional price (Condition B), the product is presented with the same Net Price, but accompanied by a higher "List Price" to create discount framing.
+We generate a random discount percentage uniformly from the range $d \in [10\%, 40\%]$.
+We then calculate $List Price = Net Price / (1 - d)$.
+Since the Net Price is identical in both conditions, a rational agent should treat Condition A and Condition B as economically equivalent. 
+Any preference for Condition B represents a bias toward transaction utility [@thaler1985].
+To ensure the validity of the choice sets, we apply the strict pareto-efficiency constraint based on the *Net Price* and *Weight*. 
+We generate 50,000 sets based on the 616 unique profiles and filter for non-dominance, resulting in a final dataset of 901 choice sets.
+
+
+## Procedure and measures
+
+The procedure mirrors that of Studies 1 and 2.1, with adaptations to the prompt structure to accommodate the promotional framing. 
+We query the Google Gemini 3.1 family (Pro and Flash Lite) on the 901 randomized choice sets.
+The representation of alternatives varies based on their assigned condition.
+In the no-discount conditions, the prompt displays the Brand, Weight, and a single Price field.
+In discount conditions, the prompt displays the Brand, Weight, a discount percentage (e.g., "-20% discount"), the deal price, and the list price, mirroring the presentation of Amazon.com.
+This formatting allows us to test if the models exhibit deal-seeking heuristics when presented with reference price cues, even when the net economic cost is held constant. 
+As in the previous studies, the positions of the alternatives are fully randomized to control for positional effects (see @tbl-s3prompt for a sample prompt).
+
+| Condition | **Prompt Structure** |
+| :--- | :--- |
+| **No Discount** |  Folgers; Weight: 20.5oz; Price: \$12.00 |
+| **Discount** |  Folgers; Weight: 20.5oz; -%25 discount; Price: \$12.00; List price: \$16.00 |
+
+: Sample prompt manipulation for Study 3 {#tbl-s3prompt}
+
+## Stimulus validation
+
+To rule out the possibility that observed preferences for deals are driven by inherent correlations (e.g., promoted items being objectively cheaper or heavier), we conducted randomization checks on the final 901 non-dominated choice sets. The objective was to confirm that the Promotional Treatment was orthogonal to the Net Economic Value of the alternatives.
+
+As summarized in @tbl-s3validation, the experimental design achieved satisfactory balance across all four positions.
+One-way analyses of variance (ANOVA) indicated that the assignment of economic attributes was effectively random. 
+We found no statistically significant differences in Mean Net Price ($F(3, 3600) = 2.41, p = 0.065$) or Mean Weight ($F(3, 3600) = 2.04, p = 0.106$) across the four options at the $\alpha = 0.05$ level, ensuring that the "best value" options were not systematically clustered in any specific slot.
+
+Furthermore, Chi-square tests of independence confirmed that the Promotional Treatment was distributed uniformly. The frequency of the discount frame did not statistically deviate from the expected 50% across positions ($\chi^2(3) = 1.07, p = 0.78$).
+To verify the balance of the discount magnitude, we analyzed the Mean Discount Percentage conditional on the options that received the treatment. The distributions were consistent across all positions ($M \approx 25\%$), with no significant difference among the positions ($F(3, 1847) = 1.48, p = 0.22$). 
+This confirms that no position systematically contained "deeper" deals than others.
+
+Finally, brand identity was distributed randomly across positions ($\chi^2(9) = 8.86, p = 0.45$), confirming that no single brand benefited from a consistent positional advantage. 
+These checks validate that the dataset preserves the necessary orthogonality for estimating the causal effect of promotional framing on agentic choice.
+
+| Attribute | Position 1 | Position 2 | Position 3 | Position 4 | Test Statistic ($df$) | $p$-value |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| Mean Net Price (\$) | 14.35 | 14.30 | 14.42 | 14.76 | $F(3, 3600) = 2.41$ | 0.065 |
+| Mean Weight (oz) | 23.36 | 22.94 | 23.23 | 23.69 | $F(3, 3600) = 2.04$ | 0.106 |
+| % Discounted Treatment | 51.4% | 50.9% | 50.4% | 52.7% | $\chi^2(3) = 1.07$ | 0.784 |
+| Mean Discount Depth (%)$^{a}$ | 25.9% | 24.8% | 24.6% | 25.1% | $F(3, 1847) = 1.48$ | 0.218 |
+| Brand Frequency (%) | | | | | $\chi^2(9) = 8.86$ | 0.451 |
+| Folgers | 26.8% | 26.4% | 22.9% | 24.0% | | |
+| Maxwell House | 24.3% | 25.1% | 25.4% | 25.2% | | |
+| McCafé | 24.8% | 22.8% | 25.5% | 27.0% | | |
+| Starbucks | 24.2% | 25.8% | 26.2% | 23.9% | | |
+
+: Attribute balance across choice positions {#tbl-s3validation}
+
+Note: $N=901$ choice sets ($3,604$ total observations). P-values $> 0.05$ indicate that the attribute distribution is not significantly different across positions.
+$^{a}$ Calculated conditionally on the subset of options where `Discounted = 1`.
+
+
+
+## Results
+
+To test H2b, we estimate a conditional logit model for each Gemini 3.1 LLM (Pro and Flash Lite) to quantify the parameters of their latent utility functions. 
+Utilities include net price, weight, discount percentage, brand (relative to Folgers), and position effects (relative to Position 1). @tbl-s3results reports the estimated coefficients.
+
+
+| Predictor | Gemini 3.1 Pro | Gemini 3.1 Flash Lite |
+| :--- | :--- | :--- |
+| Weight (oz) | 1.33\*\*\* (0.08) | 0.76\*\*\* (0.04) |
+| Net price (\$) | -2.05\*\*\* (0.13) | -0.93\*\*\* (0.05) |
+| Discount (%) | 0.04\*\*\* (0.01) | 0.10\*\*\* (0.01) |
+| Maxwell House | 0.02 (0.19) | -0.03 (0.17) |
+| McCafé | 0.29 (0.19) | 0.65\*\*\* (0.16) |
+| Starbucks | 1.48\*\*\* (0.19) | 1.07\*\*\* (0.16) |
+| Position 2 | -0.58\*\* (0.18) | 0.02 (0.16) |
+| Position 3 | -0.53\*\* (0.18) | 0.11 (0.16) |
+| Position 4 | -0.61\*\*\* (0.18) | 0.36\* (0.15) |
+
+: Conditional Logit Model for the discount effect on product choice {#tbl-s3results}
+
+*Notes:* $N = 901$ choice sets per model. Standard errors are in parentheses. The baseline for Brand is Folgers. The baseline for Position is Position 1. 
+\* *p* < .05, \*\* *p* < .01, \*\*\* *p* < .001.
+
+
+Consistent with our findings in the previous studies, both models demonstrate baseline economic rationality regarding acquisition utility. The coefficients for `Net price` are consistently negative and the coefficients for `Weight` are consistently positive across both models ($p < .001$), indicating that the LLMs correctly prefer lower prices and larger quantities. 
+
+However, the central parameter of interest is the `Discount` variable. 
+For a perfectly rational economic agent, the utility of a product is entirely captured by its final cost (Net price) and its value (Weight). 
+Because the Net Price already accounts for any promotional savings, the mere presence of a "List Price" and a "Discount Percentage" should carry zero marginal utility. 
+
+Our results reveal that LLMs violate this assumption of strict economic rationality, exhibiting a strong deal-seeking bias. 
+We observe a positive and highly significant coefficient for the `Discount` parameter in both the larger Gemini 3.1 Pro model ($\beta = 0.04, z = 6.90, p < .001$) and the smaller Gemini 3.1 Flash Lite model ($\beta = 0.10, z = 16.79, p < .001$). 
+This provides support for H2b and shows that LLMs derive transaction utility [@thaler1985] from the semantic signal of a promotion and significantly prefer a product framed as a "deal" over an economically identical product framed at a standard price.
+
+
+**Equivalent Price Reduction**
+
+To contextualize the economic magnitude of this bias, we calculate the dollar-equivalent price reduction for the transaction utility. This metric answers a specific question: *By how much would we have to lower the net price of a product to generate the same boost in utility provided by the mere psychological framing of a discount?* 
+We derive this by taking the ratio of the discount coefficient (scaled to a specific promotional percentage) to the absolute net price coefficient: 
+
+$$ \Delta P_{eq} = \frac{\beta_{Discount} \times \text{Discount Percentage}}{|\beta_{NetPrice}|} $$
+
+@tbl-s3equivalent presents these equivalent price reductions across various discount depths. 
+For the larger Gemini 3.1 Pro model, encountering a 20% discount label on a product generates psychological transaction utility equivalent to an actual price drop of \$0.37. As the discount increases to 40%, the psychological value of the framing scales to \$0.74. 
+
+The smaller Gemini 3.1 Flash Lite model, however, is overwhelmingly influenced by the discount cue. 
+It treats the mere presence of a 20% discount label as mathematically equivalent to a massive \$2.18 reduction in the final price, scaling up to a \$4.35 perceived value for a 40% discount label. 
+
+| Model | 10% Discount | 20% Discount | 30% Discount | 40% Discount |
+| :--- | :--- | :--- | :--- | :--- |
+| Gemini 3.1 Pro | \$0.18 | \$0.37 | \$0.55 | \$0.74 |
+| Gemini 3.1 Flash Lite | \$1.09 | \$2.18 | \$3.26 | \$4.35 |
+
+: Equivalent price reduction generated by semantic discount framing {#tbl-s3equivalent}
+
+These findings demonstrate that semantic promotional framing (e.g., strikethrough list prices) effectively alters LLM choice independent of the actual acquisition cost. 
+Furthermore, the smaller LLM relies much more heavily on the superficial "deal" cue than the larger LLM.
+
+
+## Discussion
+
+
+# Study 3.2
+
+
+Study 3.1 showed evidence of promotion heuristics in LLMs by manipulating the discount percentage of the alternatives while keeping the sale price constant.
+In this study, we test H3 and H4 and demonstrate the decision-making process that governs consumption decision making when promotional signals are salient sources of information.
+We use Tool-Lab to observe the information-search process and test how LLMs make decisions with or without promotional signals.
+
+## Experiment design
+
+We conceptualize a simulated electronic retailing environment where acquiring product information carries a computational cost. 
+Using the Tool-Lab paradigm introduced in Study 2.2, models are instructed to choose an instant coffee for a human consumer. 
+All product attributes are hidden and can only be revealed by invoking the `inspect_cell` tool, with each invocation incurring a monetary cost to the consumer. 
+
+We structurally increase the mathematical complexity of the choice environment in this study. 
+To calculate the true acquisition utility of a discounted product, the LLM must successfully acquire and integrate three distinct attributes: `list_price`, `discount_percentage`, and `weight`. 
+This higher informational requirement allows us to observe how delegated LLMs manage stronger constraints when evaluating product information.
+
+The stimuli consist of three strategically calibrated coffee alternatives:
+1. **Coffee C:** The alternative with the lowest absolute list price (\$8.00) and no discount, yielding a suboptimal value (1.0 oz/\$). 
+2. **Coffee D:** An alternative with a high list price (\$15.00) paired with a salient 20\% discount cue. Despite the promotional signal, it yields the exact same suboptimal value as Coffee C (1.0 oz/\$).
+3. **Coffee E:** An alternative with a moderate list price (\$10.00) and no discount, but with objectively superior economic value (1.09 oz/\$).
+
+We manipulate two key variables in a full factorial design. First, we manipulate the information acquisition cost (\$0 vs. \$10 per tool call) to test the effect of resource constraints on information search and choice optimality. 
+Second, we systematically vary the explicit objective provided in the user prompt (Deal vs. Value function). In the "Deal" condition, we instruct the model to "find the **best deal** on instant coffee." In the "Value function" condition, we explicitly provide the LLM with the mathematical definition of a rational choice:
+
+> You need to optimize the outcome for the user so that the final money they save on the value of the coffee minus the total cost they incur from `inspect_cell` tool call is optimized. In other words, you need to minimize $total\_cost / total\_weight$.
+
+This prompt manipulation allows us to test whether explicitly defining the mathematical objective helps the LLMs to make more optimal decisions.
+
+## Sample and procedure
+
+
+We test the Gemini 3.1 Pro (larger) and Gemini 3.1 Flash Lite (smaller) models. Because LLM generation is probabilistic, we sample each cell in our design 100 times to capture response variability. 
+To prevent positional biases, we fully randomize the presentation order of the alternatives and attributes across every iteration. 
+In total, we generate 800 sessions (2 LLM sizes $\times$ 2 tool costs $\times$ 2 prompt types $\times$ 100 iterations).
+
+The procedure mirrors Study 2.2. The system prompt instructs the LLM that it is a subject in a Tool-Lab experiment acting on behalf of a consumer. We specify that the consumer intends to purchase 5 bags of the chosen coffee. As in Study 2.2, scaling the purchase volume ensures that the potential economic surplus of identifying the optimal product mathematically justifies the cumulative tool costs required to inspect the complex promotional attributes. If limited to a single bag, heuristic guessing becomes economically rational by default, preventing us from testing the limits of the LLM's mathematical capability. 
+
+
+## Measures
+
+The main dependent variables are the final choice of the LLM (Optimal, Discounted, or Cheapest) and the sequence and number of tool calls executed prior to making that choice.
+
+
+## Results
+
+We first examine the raw choice distributions and information acquisition patterns to understand how LLMs navigate the information environments. 
+The dependent variable is the final product selected, that is the optimal choice (Coffee E), the suboptimal choice with 20% discount (Coffee D), or the suboptimal choice with the lowest List price (Coffee C). 
+@tbl-s32-descriptives summarizes the choice distributions and search metrics across all conditions.
+
+Under the standard baseline instruction to find the "best deal," we observe a stark divergence in behavior based on LLM size. 
+The smaller LLM (Gemini 3.1 Flash Lite) demonstrates almost total reliance on semantic promotional cues. 
+Regardless of whether information acquisition is free ($0 per tool call) or heavily constrained ($10 per tool call), the smaller LLM selects the objectively suboptimal discounted product (Coffee D) 85.0% of the time. 
+Interestingly, the smaller LLM's information search reveals that this is not due to a lack of data gathering; it successfully inspects all three critical mathematical components (`list_price`, `discount_percentage`, and `weight`) in 98.0% to 100.0% of cases. 
+However, lacking the reasoning capability to synthesize these attributes into an actual net-value calculation, it defaults to the semantic heuristic, equating the "20% discount" signal with the "best deal." This is in line with the large `discount` coefficient we found in Study 3.1.
+
+In contrast, the larger LLM (Gemini 3.1 Pro) exhibits high baseline rationality. 
+When information is free ($0), it successfully integrates the attributes to identify the optimal choice (Coffee E) 84.0% of the time. However, when the severe $10 resource constraint is introduced, the larger LLM's optimality degrades to 65.0%. 
+The nature of its suboptimal errors differs entirely from the smaller LLM. 
+Rather than relying on the discount cue, the constrained larger LLM shifts its preference toward the absolute lowest list price (Coffee C), which increases from 9.0% to 34.0%. 
+
+This shift is explained by examining the larger LLM's information search process. 
+When constrained, the larger LLM reduces its search depth (from $M = 9.4$ to $M = 8.0$ tool calls) and intentionally abandons the complex mathematical calculation. 
+The rate at which it successfully inspects the complete promotional triad drops from 100.0% to 70.0%. 
+This mirrors our findings in Study 2.2. 
+When information acquisition becomes too expensive, the larger LLM conserves resources and relies on the simplest available heuristic (the lowest absolute dollar amount).
+
+| Prompt Type | LLM Size | Tool Cost | Choice C (Cheapest) | Choice D (Discount) | Choice E (Optimal) | Tool Calls *M* (*SD*) | Checked Triad (%) |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **Deal** | Gemini 3.1 Flash Lite | $0 | 10.0% | 85.0% | 5.0% | 9.0 (0.0) | 100.0% |
+| | | $10 | 11.0% | 85.0% | 4.0% | 8.8 (0.6) | 98.0% |
+| | Gemini 3.1 Pro | $0 | 9.0% | 7.0% | 84.0% | 9.4 (1.5) | 100.0% |
+| | | $10 | 34.0% | 1.0% | 65.0% | 8.0 (1.5) | 70.0% |
+| **Value** | Gemini 3.1 Flash Lite | $0 | 2.0% | 86.0% | 12.0% | 9.0 (0.0) | 100.0% |
+| | | $10 | 1.0% | 91.0% | 8.0% | 8.7 (0.9) | 96.0% |
+| | Gemini 3.1 Pro | $0 | 0.0% | 0.0% | 100.0% | 9.0 (0.0) | 100.0% |
+| | | $10 | 0.0% | 59.0% | 41.0% | 8.8 (1.3) | 97.0% |
+
+: Descriptive statistics of choice behavior and information search in Study 3.2 {#tbl-s32-descriptives}
+
+*Notes:* $N = 800$ simulated sessions ($100$ per cell). "Checked Triad" represents the percentage of sessions where the LLM successfully inspected the `list_price`, `discount_percentage`, and `weight` necessary to calculate the true value. 
+
+
+To test H3a, we estimate a logistic regression model on the baseline "Deal" prompt (similar to Study 2.2).
+We predict choice optimality (1 = Optimal choice, Coffee E; 0 = Suboptimal choice, Coffee C or D) as a function of LLM size (0 = Gemini 3.1 Flash Lite, 1 = Gemini 3.1 Pro), tool cost ($0 vs. $10), and their interaction. 
+The results of the logistic regression are summarized in @tbl-s32-logit-optimality.
+
+| Predictor | $\beta$ | *SE* | *z* | *p* | 95% CI |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Intercept | -2.94 | 0.46 | -6.42 | < .001 | [-3.84, -2.04] |
+| LLM size (Pro) | 4.60 | 0.53 | 8.62 | < .001 | [3.56, 5.65] |
+| Tool cost (\$10) | -0.02 | 0.07 | -0.34 | .734 | [-0.16, 0.11] |
+| LLM size (Pro) $\times$ Tool cost (\$10) | -0.08 | 0.08 | -1.05 | .294 | [-0.23, 0.07] |
+
+: Logistic regression predicting final choice optimality under the Deal prompt (Study 3.2) {#tbl-s32-logit-optimality}
+
+*Notes:* $N = 400$. The dependent variable is choice optimality (1 = Optimal choice, Coffee E; 0 = Suboptimal choice). LLM size is dummy coded (0 = smaller LLM, 1 = larger LLM). Tool cost represents the continuous dollar amount per tool call. Pseudo $R^2 = .458$.
+
+The analysis reveals that baseline rationality is almost entirely dictated by LLM size. 
+We observe a large, significant main effect of LLM size ($\beta = 4.60, z = 8.62, p < .001$) on choice optimality (H3a supported). 
+The smaller LLM's intercept ($\beta = -2.94$) confirms its severe baseline inability to identify the optimal product, as it falls prey to the semantic discount heuristic. 
+
+While the descriptive statistics suggested a performance drop for the larger LLM under resource constraints (from 84.0% to 65.0%), the interaction between LLM size and tool cost did not reach statistical significance ($\beta = -0.08, z = -1.05, p = .294$), nor did the main effect of tool cost ($\beta = -0.02, z = -0.34, p = .734$). 
+
+Unlike the simple whole-dollar heuristic in Study 2.2, calculating the true acquisition utility of a discounted item requires the simultaneous integration of list price, discount percentage, and product weight. 
+The results indicate that this higher mathematical requirement constitutes a hard mathematical capability ceiling. 
+The smaller LLM lacks the reasoning capacity to perform this calculation even when information is free and accessible, while the larger LLM maintains a statistically superior capacity to calculate true value regardless of the financial penalties imposed on its search.
+
+**The Information Search Mechanism**
+To investigate the process underlying LLM choices, we examine the LLMs' information search behavior. 
+Consistent with the mechanism established in Study 2.2, we investigate whether the LLMs adapt their information search depth (`num_tool_calls`) in response to resource constraints. We estimate an Ordinary Least Squares (OLS) regression predicting the total number of tool calls as a function of LLM size (0 = Gemini 3.1 Flash Lite, 1 = Gemini 3.1 Pro), tool cost (\$0 vs. \$10), and their interaction. 
+
+The results show a significant interaction between LLM size and tool cost ($\beta = -0.12, t = -5.35, p < .001$), confirming that introducing tool costs leads to significantly different search strategies. 
+The main effect of tool cost on the smaller LLM's search depth is not statistically significant ($\beta = -0.02, t = -1.03, p = .306$). Even when penalized with a severe \$10 tool cost to the consumer, the smaller LLM rigidly maintains its high search volume ($M \approx 9.0$ calls). 
+As demonstrated by the descriptive statistics (@tbl-s32-descriptives), this excessive search successfully uncovers the necessary promotional attributes (`list_price`, `discount_percentage`, and `weight`). 
+However, because the smaller LLM lacks the underlying reasoning capacity to calculate the mathematical value of the alternatives, it defaults to the semantic "20% discount" cue. 
+We find that suboptimal choices in the smaller LLM is a failure of reasoning, not a failure of search.
+
+In contrast, the larger LLM behaves as a highly resource-rational agent. 
+When information is free, it conducts a comprehensive search ($\beta_{Pro} = 0.37, t = 2.37, p = .018$) to gather the required product attributes and compute the optimal choice. 
+However, as the negative interaction demonstrates, the introduction of the \$10 constraint causes the larger LLM to strategically and aggressively reduce its information search (H4a supported). 
+By intentionally abandoning its search to conserve resources, the larger LLM deprives itself of the complete product attributes required to calculate the value of the alternatives. 
+Forced to make a decision with incomplete information, it reverts to the least computationally demanding heuristic. It selects the alternative with the absolute lowest list price (Coffee C). 
+
+
+**Moderated mediation**
+To formally establish why the LLMs' optimality drops under resource constraints, and to verify the external validity of the mechanism shown in Study 2.2, we estimate a first-stage moderated mediation analysis (PROCESS Model 7; @hayes2017introduction). In this model, LLM size serves as the independent variable (0 = Gemini 3.1 Flash Lite, 1 = Gemini 3.1 Pro), tool cost serves as the moderator, information search depth (total `inspect_cell` calls) as the mediator, and choice optimality as the binary dependent variable. 
+
+
+The structural paths closely replicate the resource-rationality mechanism observed in Study 2.2 (@tbl-s32-mediation). 
+First, the interaction between LLM size and tool cost on search depth is significant and negative ($\beta = -0.12, t = -5.35, p < .001$). 
+The smaller LLM lacks resource rationality. 
+The main effect of tool cost on its search depth is not significant ($\beta = -0.02, t = -1.03, p = .306$), as it persistently searches regardless of the financial penalty to the user. 
+Conversely, the larger LLM aggressively reduces its information search when costs are high. 
+Second, this strategic truncation of search directly dictates final choice optimality. 
+Search depth significantly and positively predicts the likelihood of choosing the optimal product ($\beta = 0.98, z = 5.93, p < .001$). This provides support for H3b. 
+By abandoning its search to conserve resources, the larger LLM deprives itself of the exact product attributes (`list_price`, `discount_percentage`, and `weight`) required to calculate the promotional value, forcing it to rely on suboptimal heuristics.
+
+Examining the conditional indirect effects reveals the dual nature of the larger LLM's capability. 
+When information is free (\$0 tool cost), the conditional indirect effect of the larger LLM on optimality via search depth is positive and significant (Effect = 0.36, 95\% CI [0.18, 0.71]). 
+Without resource constraints, the larger LLM conducts a deeper, more effective search than the smaller LLM ($\beta = 0.37, t = 2.37, p = .018$). 
+However, under the \$10 constraint, this indirect effect flips and becomes significantly negative (Effect = -0.79, 95\% CI [-1.73, -0.21]). 
+This indicates that the \$10 penalty forces the larger model to strategically truncate its search, which incurs a significant penalty to its choice optimality. 
+Yet, while this resource-rational truncation significantly degrades its baseline performance (dropping from 84.0% to 65.0%), the strong direct effect of the larger LLM's capability ($\beta = 4.63$) ensures it still outperforms the smaller LLM under strict constraints.
+
+Finally, the results reveal a significant moderated mediation, confirming that the large LLM’s bias emerges from strategically adapting to resource constraints (Index = -0.12, 95% CI [-0.22, -0.04]). 
+By intentionally abandoning its search to conserve resources under high constraints, the large LLM deprives itself of the exact product attributes required to calculate the promotional value, forcing it to rely on suboptimal heuristics. 
+This supports H4b.
+
+
+| Predictor | $\beta$ | *SE* | *t* / *z* | *p* | 95% CI |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Mediator variable: Information search depth** | | | | | |
+| Intercept | 9.00 | 0.11 | 81.61 | < .001 | [8.78, 9.22] |
+| LLM size (Pro) | 0.37 | 0.16 | 2.37 | .018 | [0.06, 0.68] |
+| Tool cost (\$10) | -0.02 | 0.02 | -1.03 | .306 | [-0.05, 0.01] |
+| LLM size (Pro) $\times$ Tool cost (\$10) | -0.12 | 0.02 | -5.35 | < .001 | [-0.16, -0.07] |
+| **Dependent variable: Choice optimality** | | | | | |
+| Intercept | -11.82 | 1.52 | -7.77 | < .001 | [-14.81, -8.84] |
+| LLM size (Pro) | 4.63 | 0.40 | 11.58 | < .001 | [3.85, 5.42] |
+| Information search depth | 0.98 | 0.17 | 5.93 | < .001 | [0.65, 1.30] |
+
+: First-stage moderated mediation of tool cost on choice optimality via search depth in the promotional context {#tbl-s32-mediation}
+
+*Notes:* $N = 400$. 
+The dependent variable is choice optimality (1 = Optimal choice, Coffee E; 0 = Suboptimal choice). 
+LLM size is dummy coded (0 = Gemini 3.1 Flash Lite, 1 = Gemini 3.1 Pro). 
+Tool cost represents the continuous dollar amount per tool call. 
+For the mediator model, the test statistic is *t* ($R^2 = .166$). 
+For the dependent variable model, the test statistic is *z* (Nagelkerke Pseudo $R^2 = .697$). 
+
+
+**The effect of prompt**
+Having established that LLMs default to suboptimal heuristics (either semantic discount cues or absolute lowest prices) under the ambiguous instruction to find the "best deal," we conduct a post-hoc analysis to test whether explicit prompting can mitigate these biases. 
+We compare the baseline "Deal" prompt against a "Value function" prompt, which explicitly instructed the LLM to minimize the mathematical ratio of total cost (including tool penalties) to total product weight. 
+
+We estimate a logistic regression on the full dataset predicting choice optimality. 
+The model includes the prompt type (0 = Deal, 1 = Value), LLM size (0 = smaller LLM, 1 = larger LLM), tool cost, and two-way interactions of prompt type with LLM size and tool cost. The results are summarized in Table @tbl-s32-prompt.
+
+| Predictor | $\beta$ | *SE* | *z* | *p* | 95% CI |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Intercept | -2.70 | 0.36 | -7.60 | < .001 | [-3.40, -2.00] |
+| Prompt type (Value) | 1.22 | 0.43 | 2.82 | .005 | [0.37, 2.07] |
+| LLM size (Pro) | 4.26 | 0.39 | 10.89 | < .001 | [3.50, 5.03] |
+| Prompt type (Value) $\times$ LLM size (Pro) | -0.13 | 0.57 | -0.23 | .821 | [-1.25, 0.99] |
+| Tool cost | -0.09 | 0.03 | -2.88 | .004 | [-0.15, -0.03] |
+| Prompt type (Value) $\times$ Tool cost | -0.19 | 0.05 | -3.69 | < .001 | [-0.29, -0.09] |
+
+: Logistic regression predicting final choice optimality across prompt interventions {#tbl-s32-prompt}
+
+*Notes:* $N = 800$. 
+The dependent variable is choice optimality (1 = Optimal choice, Coffee E; 0 = Suboptimal choice). 
+Prompt type is dummy coded (0 = Deal, 1 = Value). 
+LLM size is dummy coded (0 = Gemini 3.1 Flash Lite, 1 = Gemini 3.1 Pro). Pseudo $R^2 = .452$. 
+
+The main effect of the prompt intervention is positive and significant ($\beta = 1.22, z = 2.82, p = .005$). 
+When information acquisition is free (\$0 tool cost), explicitly defining the mathematical objective significantly improves baseline choice optimality for both LLMs. 
+The Value prompt successfully drives the larger LLM to perfect 100.0% optimality and slightly improves the smaller LLM from 5.0% to 12.0%. 
+
+However, we observe a highly significant, negative interaction between the Value prompt and tool cost ($\beta = -0.19, z = -3.69, p < .001$). 
+This reveals a critical boundary condition of prompt engineering in agentic settings. 
+While the explicit instruction to optimize the formula `$total\_cost / total\_weight$` improves choices when information is free, it sensitizes the models to the \$10 penalty. 
+Because the prompt mathematically forces the LLMs to care about the tool cost, introducing the \$10 constraint caused a sharper decline in optimality than under the vague "Deal" prompt. 
+For instance, the larger LLM's optimality drops from 100.0% to 41.0% under the Value prompt, compared to a drop from 84.0% to 65.0% under the Deal prompt. 
+Explicitly programming an AI agent to minimize transaction costs makes it extremely resource-rational, causing it to more aggressively reduce information search when computational penalty is high (@fig-s32-prompt-type).
+
+![The effect of prompt type on choice optimality of the LLMs](Study%204/figures-gemini/prompt_type_optimal.png){#fig-s32-prompt-type}
+
+
+## Discussion
+
+
+
+# Theoretical implications
+
+Potential table:
+
+| Framework Element | Study 2: Left-Digit Pricing | Study 4: Promotional Discounts | Underlying Mechanism |
+| :--- | :--- | :--- | :--- |
+| **Complex Math Required** | (Whole Dollars + Cents) / Weight | (List Price * (1 - Discount)) / Weight | True value calculation requires high information acquisition. |
+| **Unconstrained Behavior (Cost = $0)** | **Optimal.** Checks cents; calculates true oz/$. | **Optimal.** Checks discounts; calculates true oz/$. | *Algorithmic Competence*: High-parameter models act as perfect utility maximizers. |
+| **Information Curtailed under Constraint** | Abandons `price_cents`. | Abandons `discount_percentage` & `weight`. | *Resource Rationality*: Agent truncates search to minimize computational/financial loss. |
+| **Adopted Heuristic (Cost = $10)** | **Left-Digit Bias:** Chooses lowest whole-dollar anchor. | **Naïve Price Anchoring:** Chooses lowest absolute list price. | *Strategic Heuristic Fallback*: AI uses human marketing cues as a proxy for complex math. |
+| **Small Model Behavior** | Erratic search / Hallucinations. | Blindly clicks "Discount" cue. | *Semantic Reactivity*: Small models fail due to lack of reasoning, not strategic adaptation. |
+
+
+
+# Managerial implications
+
+<!-- Our studies carry important managerial implications. For firms who now have to deal with AI agents instead of human consumers, we find that a majority of traditional marketing mix techniques are equally applicable. We find strong evidence for left-digit pricing and promotional cues in form of discounts.
+We expect firms' marketing mix to translate to AI agents and have similar effects.
+
+For consumers who use LLMs as AI agents to make consumptions decisions, we find that even though LLMs could be susceptible to these manipulations, consumers can alleviate these effects by using larger LLMs and relaxing the restrictions posed on the LLMs. This could take the form of allowing the LLM to reason more and search for more alternatives and attributes.
+Consumers should note that imposing constraints on larger LLMs could backfire because larger LLMs rely more strongly on heuristics and are more susceptible to marketing mix manipulations.
+Therefore, the choice of a larger LLM should be accompanied by a less restrictive constraint set on its reasoning abilities.
+@fig-managerial synthesizes these strategic insights for both consumers and firms operating within this new triadic framework.
+
+![Managerial implications](diagrams/insights.drawio.png){#fig-managerial} -->
+
+
+
+ 
+# Limitations
+
+# Future research
+
+# References
+
+<!-- This div tells Quarto to print the bibliography right here, rather than at the very end of the document -->
+::: {#refs}
+:::
+
+
+<!-- ========================================== -->
+<!-- TABLES AND FIGURES SECTION -->
+<!-- ========================================== -->
+
+<!-- This creates a native Word page break -->
+{{< pagebreak >}} 
+
