@@ -8,7 +8,7 @@ import {
 
 export default function TrainingSlide() {
   return (
-    <section className="tl-slide">
+    <section id="future" className="tl-slide">
       <div className="tl-slide-inner">
         <div
           style={{

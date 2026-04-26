@@ -17,7 +17,7 @@ export default function PaperFooter() {
             color: "var(--text-faint)",
           }}
         >
-          Tool-Lab &middot; NLP Reading Group &middot; University of British Columbia
+          Tool-Lab &middot; Davood Wadi.
         </p>
       </div>
     </footer>

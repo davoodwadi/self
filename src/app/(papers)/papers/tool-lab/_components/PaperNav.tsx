@@ -2,8 +2,8 @@ export default function PaperNav() {
   const links = [
     ["Gap", "#gap"],
     ["Framework", "#mdp"],
-    ["Studies", "#roadmap"],
-    ["Metrics", "#metrics"],
+    ["Studies", "#studies"],
+    ["Future research", "#future"],
     ["Questions", "#questions"],
   ];
 

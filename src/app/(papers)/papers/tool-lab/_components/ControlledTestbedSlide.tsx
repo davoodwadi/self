@@ -7,7 +7,7 @@ const studies = [
 
 export default function ControlledTestbedSlide() {
   return (
-    <section className="tl-slide">
+    <section id="studies" className="tl-slide">
       <div className="tl-slide-inner">
         <div className="tl-two-col">
           <div>
