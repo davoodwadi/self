@@ -67,7 +67,7 @@ export default function DiscountToolLabResultsSlide() {
                 margin={{
                   top: 20,
                   right: 30,
-                  left: 0,
+                  left: 20,
                   bottom: 5,
                 }}
               >
@@ -85,6 +85,16 @@ export default function DiscountToolLabResultsSlide() {
                   tick={{ fill: "rgba(255,255,255,0.7)" }}
                   axisLine={{ stroke: "rgba(255,255,255,0.2)" }}
                   domain={[0, 100]}
+                  label={{
+                    value: "Optimal %",
+                    angle: -90,
+                    position: "insideLeft",
+                    offset: -10,
+                    style: {
+                      textAnchor: "middle",
+                      fill: "rgba(255,255,255,0.7)",
+                    },
+                  }}
                 />
                 <Tooltip
                   formatter={(value) => [`${value}%`, undefined]}

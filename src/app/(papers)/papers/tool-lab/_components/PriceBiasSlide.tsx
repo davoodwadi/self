@@ -53,7 +53,7 @@ export default function PriceBiasSlide() {
                   rows={[
                     ["Starbucks", "18 oz", "$12.00"],
                     ["McCafé", "24 oz", "$13.99"],
-                    ["Maxwell House", "28.4 oz", "$14.96"],
+                    ["Maxwell House", "28.4 oz", "$14.00"],
                     ["Folgers", "27 oz", "$12.99"],
                   ]}
                 />
