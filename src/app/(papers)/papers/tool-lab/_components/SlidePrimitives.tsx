@@ -53,21 +53,26 @@ export function ImageFigure({
   alt,
   caption,
   white = false,
+  className,
 }: {
   src: string;
   alt: string;
   caption?: ReactNode;
   white?: boolean;
+  className?: string;
 }) {
   return (
     <FigurePanel caption={caption}>
       <img
-        className={white ? "tl-image-object" : undefined}
+        className={
+          `${white ? "tl-image-object " : ""}${className || ""}`.trim() ||
+          undefined
+        }
         src={src}
         alt={alt}
         style={{
-          width: "auto",
-          height: "auto",
+          width: "100%",
+          height: "100%",
           maxWidth: "100%",
           maxHeight: "100%",
           objectFit: "contain",

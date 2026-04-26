@@ -26,7 +26,13 @@
     linear-gradient(rgba(6, 182, 212, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(124, 58, 237, 0.035) 1px, transparent 1px);
   background-size: 42px 42px;
-  mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
 }
 
 .tl-slide-inner {
@@ -42,6 +48,12 @@
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 3rem;
   align-items: center;
+}
+
+.tl-two-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 .tl-title {

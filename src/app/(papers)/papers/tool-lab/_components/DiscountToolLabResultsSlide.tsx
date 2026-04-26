@@ -1,10 +1,44 @@
-import { MiniTable } from "./SlidePrimitives";
+"use client";
+
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+
+const data = [
+  {
+    name: "Deal (Flash Lite)",
+    "$0 Cost": 5,
+    "$10 Cost": 4,
+  },
+  {
+    name: "Value (Flash Lite)",
+    "$0 Cost": 12,
+    "$10 Cost": 8,
+  },
+  {
+    name: "Deal (Pro)",
+    "$0 Cost": 84,
+    "$10 Cost": 65,
+  },
+  {
+    name: "Value (Pro)",
+    "$0 Cost": 100,
+    "$10 Cost": 41,
+  },
+];
 
 export default function DiscountToolLabResultsSlide() {
   return (
     <section className="tl-slide">
       <div className="tl-slide-inner">
-        <div className="tl-two-col">
+        <div className="tl-two-rows">
           <div>
             <div className="tl-kicker">
               <span className="tag tag-violet">{"18"}</span>
@@ -22,30 +56,61 @@ export default function DiscountToolLabResultsSlide() {
             </h2>
             <p className="p-body tl-message">
               {
-                "Tool-Lab reveals whether the model actually computes value or uses the discount cue as a shortcut."
+                "Tool-Lab reveals whether the model actually computes value or uses the discount cue as a shortcut. When tool costs are imposed, we observe a sharp drop in optimal choices, especially for the 'Pro' model under the 'Value' prompt."
               }
             </p>
           </div>
-          <div>
-            <MiniTable
-              columns={[
-                { label: "Prompt" },
-                { label: "Model" },
-                { label: "Cost", align: "right" },
-                { label: "Cheapest", align: "right" },
-                { label: "Discount", align: "right" },
-                { label: "Optimal", align: "right" },
-                { label: "Triad", align: "right" },
-              ]}
-              rows={[
-                ["Deal", "Flash Lite", "$0", "10%", "85%", "5%", "100%"],
-                ["Deal", "Flash Lite", "$10", "11%", "85%", "4%", "98%"],
-                ["Deal", "Pro", "$0", "9%", "7%", "84%", "100%"],
-                ["Deal", "Pro", "$10", "34%", "1%", "65%", "70%"],
-                ["Value", "Pro", "$0", "0%", "0%", "100%", "100%"],
-                ["Value", "Pro", "$10", "0%", "59%", "41%", "97%"],
-              ]}
-            />
+          <div style={{ height: "700px", width: "100%" }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={data}
+                margin={{
+                  top: 20,
+                  right: 30,
+                  left: 0,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke="rgba(255,255,255,0.1)"
+                />
+                <XAxis
+                  dataKey="name"
+                  tick={{ fill: "rgba(255,255,255,0.7)", fontSize: 12 }}
+                  axisLine={{ stroke: "rgba(255,255,255,0.2)" }}
+                />
+                <YAxis
+                  tickFormatter={(value) => `${value}%`}
+                  tick={{ fill: "rgba(255,255,255,0.7)" }}
+                  axisLine={{ stroke: "rgba(255,255,255,0.2)" }}
+                  domain={[0, 100]}
+                />
+                <Tooltip
+                  formatter={(value) => [`${value}%`, undefined]}
+                  contentStyle={{
+                    backgroundColor: "rgba(15, 23, 42, 0.9)",
+                    borderColor: "rgba(255,255,255,0.1)",
+                    borderRadius: "8px",
+                    color: "#fff",
+                  }}
+                  itemStyle={{ color: "#fff" }}
+                />
+                <Legend wrapperStyle={{ paddingTop: "20px" }} />
+                <Bar
+                  dataKey="$0 Cost"
+                  fill="#38bdf8"
+                  name="$0 Tool Cost"
+                  radius={[4, 4, 0, 0]}
+                />
+                <Bar
+                  dataKey="$10 Cost"
+                  fill="#c084fc"
+                  name="$10 Tool Cost"
+                  radius={[4, 4, 0, 0]}
+                />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </div>
       </div>
