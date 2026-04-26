@@ -1,0 +1,353 @@
+.tl-root {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.tl-nav-title {
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.tl-slide {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 7rem 2rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.tl-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(6, 182, 212, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+}
+
+.tl-slide-inner {
+  width: 100%;
+  max-width: 76rem;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.tl-two-col {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+.tl-title {
+  font-size: 3.25rem;
+  line-height: 1.08;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.tl-hero-title {
+  font-size: 5rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.tl-message {
+  font-size: 1.12rem;
+  max-width: 58ch;
+}
+
+.tl-kicker {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tl-panel {
+  background: linear-gradient(160deg, var(--card) 0%, var(--card-dim) 100%);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.tl-panel-tight {
+  padding: 1rem;
+}
+
+.tl-figure {
+  background: #080812;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.tl-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.tl-caption {
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+.tl-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+
+.tl-list li {
+  display: grid;
+  grid-template-columns: 0.65rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  color: var(--text-dim);
+  font-family: var(--font-body);
+  line-height: 1.65;
+}
+
+.tl-list li::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--cyan-light);
+  margin-top: 0.62rem;
+}
+
+.tl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  color: var(--text-dim);
+  font-size: 0.86rem;
+}
+
+.tl-table th,
+.tl-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tl-table th {
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tl-table td[data-align="right"],
+.tl-table th[data-align="right"] {
+  text-align: right;
+}
+
+.tl-flow {
+  display: grid;
+  gap: 1rem;
+}
+
+.tl-node {
+  border: 1px solid var(--border-mid);
+  border-radius: 8px;
+  padding: 1rem;
+  background: rgba(3, 3, 8, 0.55);
+}
+
+.tl-node-label {
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tl-node-text {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+}
+
+.tl-arrow {
+  color: var(--cyan-light);
+  font-family: var(--font-mono);
+  text-align: center;
+}
+
+.tl-hidden-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.tl-cell {
+  min-height: 4rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+.tl-cell-revealed {
+  border-color: rgba(6, 182, 212, 0.55);
+  background: rgba(6, 182, 212, 0.08);
+  color: var(--cyan-light);
+}
+
+.tl-cell-critical {
+  border-color: rgba(252, 211, 77, 0.45);
+  color: var(--amber-light);
+}
+
+.tl-trace {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.tl-trace-step {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(3, 3, 8, 0.45);
+}
+
+.tl-step-index {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--violet-pale);
+  color: var(--violet-light);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+
+.tl-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.tl-stat {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  background: var(--surface);
+}
+
+.tl-stat-value {
+  color: var(--cyan-light);
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.tl-stat-label {
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  margin-top: 0.4rem;
+}
+
+.tl-segment-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tl-segment {
+  border: 1px solid var(--border-mid);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.45rem 0.8rem;
+}
+
+.tl-segment-active {
+  border-color: var(--cyan);
+  color: var(--cyan-light);
+  background: var(--cyan-pale);
+}
+
+.tl-image-object {
+  max-height: 30rem;
+  object-fit: contain;
+  background: white;
+}
+
+@media (max-width: 860px) {
+  .tl-slide {
+    padding: 5.5rem 1rem 3rem;
+  }
+
+  .tl-two-col {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .tl-title {
+    font-size: 2.25rem;
+  }
+
+  .tl-hero-title {
+    font-size: 3.2rem;
+  }
+
+  .tl-message {
+    font-size: 1rem;
+  }
+
+  .tl-hidden-grid,
+  .tl-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tl-trace-step {
+    grid-template-columns: auto 1fr;
+  }
+
+  .tl-trace-step .tl-caption {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .tl-hidden-grid,
+  .tl-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .p-nav-link {
+    display: none;
+  }
+}
