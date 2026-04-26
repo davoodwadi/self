@@ -17,9 +17,11 @@ import PriceBiasSlide from "./_components/PriceBiasSlide";
 import PriceToolLabDesignSlide from "./_components/PriceToolLabDesignSlide";
 import PriceToolLabResultsSlide from "./_components/PriceToolLabResultsSlide";
 import LeftDigitToolLabResultsSlide from "./_components/LeftDigitToolLabResultsSlide";
+import ResourceRationalityGapSlide from "./_components/ResourceRationalityGapSlide";
 import MechanismSlide from "./_components/MechanismSlide";
 import DiscountBiasSlide from "./_components/DiscountBiasSlide";
 import DiscountToolLabResultsSlide from "./_components/DiscountToolLabResultsSlide";
+import DiscountResourceRationalityGapSlide from "./_components/DiscountResourceRationalityGapSlide";
 import FrameworkContributionSlide from "./_components/FrameworkContributionSlide";
 import TrainingSlide from "./_components/TrainingSlide";
 import GeneralizationSlide from "./_components/GeneralizationSlide";
@@ -52,9 +54,11 @@ export default function Page() {
       <PriceToolLabDesignSlide />
       <PriceToolLabResultsSlide />
       <LeftDigitToolLabResultsSlide />
+      <ResourceRationalityGapSlide />
       <MechanismSlide />
       <DiscountBiasSlide />
       <DiscountToolLabResultsSlide />
+      <DiscountResourceRationalityGapSlide />
       <FrameworkContributionSlide />
       <TrainingSlide />
       <GeneralizationSlide />
