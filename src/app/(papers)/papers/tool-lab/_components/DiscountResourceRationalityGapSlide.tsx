@@ -14,28 +14,31 @@ import {
 
 const data = [
   {
-    cost: 0,
+    cost: 0.0,
     "Flash Lite": 9.0,
     FlashLiteError: 0.0,
     Pro: 9.37,
     ProError: 0.284993,
-    "Optimal Policy": 9.0,
+    "Optimal Policy": 8.0,
   },
+  { cost: 0.0, "Optimal Policy": 9.0 },
+  { cost: 1.0, "Optimal Policy": 8.0 },
+  { cost: 2.0, "Optimal Policy": 7.0 },
+  { cost: 3.0, "Optimal Policy": 6.0 },
+  { cost: 4.0, "Optimal Policy": 7.0 },
+  { cost: 5.0, "Optimal Policy": 5.0 },
+  { cost: 6.0, "Optimal Policy": 5.0 },
+  { cost: 7.0, "Optimal Policy": 5.0 },
+  { cost: 8.0, "Optimal Policy": 4.0 },
+  { cost: 9.0, "Optimal Policy": 4.0 },
+  { cost: 10.0, "Optimal Policy": 4.0 },
   {
-    cost: 1,
-    "Optimal Policy": 4.0,
-  },
-  {
-    cost: 5,
-    "Optimal Policy": 4.0,
-  },
-  {
-    cost: 10,
+    cost: 10.0,
     "Flash Lite": 8.84,
     FlashLiteError: 0.11727,
     Pro: 8.03,
     ProError: 0.303201,
-    "Optimal Policy": 0.0,
+    "Optimal Policy": 4.0,
   },
 ];
 

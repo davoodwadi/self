@@ -3,7 +3,7 @@ import { PublicationCard } from "@/components/portfolio/PublicationCard";
 export function ResearchPapers() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <PublicationCard 
+      <PublicationCard
         venue="EMNLP"
         year="2025"
         title="A Monte-Carlo Sampling Framework For Reliable Evaluation of Large Language Models Using Behavioral Analysis"
@@ -26,6 +26,14 @@ export function ResearchPapers() {
         description="We introduce an analytically exact framework for behavioral evaluation of LLMs operating directly on token-level PMFs, eliminating sampling error. A three-layer pipeline quantifies task adherence, measures ordinal consensus, and applies a novel distributional ANOVA. Applied to consumer ethnocentrism, we find LLMs exhibit ethnocentric tendencies exceeding human baselines with systematic in-group favoritism."
         authors="Wadi, D."
         href="/papers/every-token-counts"
+      />
+      <PublicationCard
+        venue="Working Paper"
+        year="2026"
+        title="Tool-Lab: Evaluating and Training Large Language Models for Resource Rationality"
+        description="We introduce a new methodology that measures the efficiency of tool-calling and problem solving in LLMs..."
+        authors="Wadi, D."
+        href="/papers/tool-lab"
       />
     </div>
   );
