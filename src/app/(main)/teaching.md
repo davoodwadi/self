@@ -6,9 +6,10 @@ HEC Montreal MATH 60629A Machine Learning I: Large-Scale Data Analysis and Decis
 University Canada West
 MBA Program:
 
-- BUSI 654 Application of AI in Business
-- CMPT 641 Digital Transformation
+- [BUSI 654 Application of AI in Business](https://www.davoodwadi.com/courses/ai-in-business)
+- [CMPT 641 Digital Transformation](https://www.davoodwadi.com/courses/digital-transformation)
 - BUSI 653 Cloud Computing Technologies
+- [Introduction to Marketing - Curriculum](https://www.davoodwadi.com/courses/intro-marketing)
 
 # https://anchor.davoodwadi.com
 I created Anchor as a means for students to learn new concepts and assess themselves using an interactive framework based on generative AI that would take course materials or topics to learn and creates interactive quizzes for them. I utilized the tool I made to help students learn through interactive means and enhance their learning.

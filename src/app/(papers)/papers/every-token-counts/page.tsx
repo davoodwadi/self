@@ -34,7 +34,7 @@ export default function Page() {
       <HeroSlide />
       <ContextSlide />
       <InstrumentSlide />
-      <PriorWorkSlide /> 
+      <PriorWorkSlide />
       <BarriersSlide />
       <BarrierDesignSlide />
       <BarrierOrdinalSlide />

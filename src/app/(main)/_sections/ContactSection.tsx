@@ -27,16 +27,16 @@ export function ContactSection() {
         </SectionHeader>
 
         <div className="space-y-4">
-          <a
-            href="mailto:davood.wadi@hec.ca"
-            className="flex items-center gap-4 p-4 glass-card rounded-lg hover:bg-white/5 transition-all"
-          >
+          <div className="flex items-center gap-4 p-4 glass-card rounded-lg">
             <Mail className="w-6 h-6 text-accent-400" strokeWidth={1.5} />
             <div>
               <h4 className="text-white font-medium text-sm">Email</h4>
-              <p className="text-gray-500 text-xs">davood.wadi@hec.ca</p>
+              <p className="text-gray-500 text-xs">
+                davood.wadi <span className="text-gray-600 px-0.5">[at]</span>{" "}
+                hec <span className="text-gray-600 px-0.5">[dot]</span> ca
+              </p>
             </div>
-          </a>
+          </div>
 
           <div className="flex gap-4 pt-4">
             <SocialIconButton
