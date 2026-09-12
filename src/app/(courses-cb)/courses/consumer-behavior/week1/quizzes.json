@@ -1,0 +1,102 @@
+[
+  {
+    "slide_id": "the-definition-of-consumer-behavior",
+    "question_text": "Which statement best captures the scope of consumer behavior as a field?",
+    "hint": "Pay attention to how many activities and what kinds of offerings the definition covers.",
+    "correct_answer_citation": "The Definition of Consumer Behavior.",
+    "options": [
+      {
+        "option_text": "The processes involved when individuals or groups select, purchase, use, or dispose of products, services, ideas, or experiences.",
+        "option_explanation": "This is the standard definition. It spans four activities and explicitly includes intangibles such as ideas and experiences."
+      },
+      {
+        "option_text": "The study of how firms set prices and promote physical goods to maximize revenue.",
+        "option_explanation": "That describes marketing strategy from the firm's side. Consumer behavior takes the consumer as the unit of analysis."
+      },
+      {
+        "option_text": "The analysis of the single moment at which a consumer decides to buy a product.",
+        "option_explanation": "Purchase is only one stage. The definition covers processes before and long after the transaction."
+      },
+      {
+        "option_text": "The measurement of aggregate demand curves for tangible products in a market.",
+        "option_explanation": "That is economics at the market level. Consumer behavior works at the level of individuals and groups, and includes intangibles."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "the-consumption-process",
+    "question_text": "Why does the consumption process extend past the purchase itself?",
+    "hint": "Think about what determines whether a consumer buys again or tells others.",
+    "correct_answer_citation": "The Consumption Process and Purchase Is Only One Moment.",
+    "options": [
+      {
+        "option_text": "Usage and disposal shape satisfaction, repurchase, and word of mouth.",
+        "option_explanation": "How the product performs in use, what it comes to mean, and how it is eventually disposed of all feed back into future behavior."
+      },
+      {
+        "option_text": "Because payment is usually processed after the product is consumed.",
+        "option_explanation": "Payment timing is incidental. The reason is that post-purchase experience drives satisfaction and future choice."
+      },
+      {
+        "option_text": "Because marketers have no influence once a purchase is complete.",
+        "option_explanation": "The opposite is closer to the point: post-purchase is precisely where marketers can still act, which is why it is studied."
+      },
+      {
+        "option_text": "Because pre-purchase search is too difficult to observe directly.",
+        "option_explanation": "Search is in fact studied extensively. Post-purchase stages matter on their own merits, not as a substitute."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "why-study-consumer-behavior",
+    "question_text": "The course argues consumer behavior is worth studying for three distinct audiences. Which grouping is correct?",
+    "hint": "One of the three audiences is the consumer themself.",
+    "correct_answer_citation": "Why Study Consumer Behavior?",
+    "options": [
+      {
+        "option_text": "Marketers, policymakers, and consumers themselves.",
+        "option_explanation": "Marketers use it for strategy, policymakers for protection and public health, and consumers as a defense against being managed."
+      },
+      {
+        "option_text": "Marketers, shareholders, and advertising agencies.",
+        "option_explanation": "These are all firm-side audiences. The argument deliberately includes non-commercial audiences."
+      },
+      {
+        "option_text": "Economists, statisticians, and market researchers.",
+        "option_explanation": "These are methodological communities rather than the three audiences with a stake in the findings."
+      },
+      {
+        "option_text": "Retailers, wholesalers, and logistics managers.",
+        "option_explanation": "These are channel participants. The stated audiences are broader and include policymakers and consumers."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "levels-of-analysis",
+    "question_text": "What does it mean to say consumer behavior can be studied at multiple levels of analysis?",
+    "hint": "The same purchase can be explained by a mental process or by a cultural norm.",
+    "correct_answer_citation": "Levels of Analysis.",
+    "options": [
+      {
+        "option_text": "The same consumption act can be explained at the level of the individual, the decision, the group, the subculture, or the culture.",
+        "option_explanation": "The levels widen outward from cognition to culture, and a full account often draws on more than one."
+      },
+      {
+        "option_text": "Researchers must choose the individual level, because group effects cannot be measured.",
+        "option_explanation": "Group, subculture, and cultural influence are all actively studied and measurable."
+      },
+      {
+        "option_text": "Levels of analysis refer to the stages of the purchase funnel.",
+        "option_explanation": "The funnel describes stages over time. Levels of analysis describe the scale at which an explanation operates."
+      },
+      {
+        "option_text": "Only cultural explanations are considered valid in modern consumer research.",
+        "option_explanation": "No level has priority. Individual-level cognition remains central to the field."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]
