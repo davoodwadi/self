@@ -1,18 +1,11 @@
 "use client";
 
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { createContext, useContext } from "react";
 import Link from "next/link";
 import { ArrowLeft, CircleSmall } from "lucide-react";
 export { default as Diagram } from "./MermaidDiagram";
 import InlineQuiz from "./InlineQuiz";
+import type { CourseQuiz } from "@/lib/course-quiz";
 import { cn } from "@/lib/utils";
 
 export interface CourseCitation {
@@ -53,8 +46,7 @@ export function CitationProvider({
  * SlideDeck - Root container for cinematic slide presentations
  *
  * PURPOSE:
- * - Wraps entire slide presentation and applies global animations
- * - Manages GSAP animations for all child slides and reveal elements
+ * - Wraps entire slide presentation
  * - Provides navigation back to course hub
  * - Applies consistent styling and dark theme
  *
@@ -63,10 +55,8 @@ export function CitationProvider({
  * - Use once per page.tsx
  * - Wraps all Slide components
  *
- * ANIMATION BEHAVIOR:
- * - Automatically animates elements with .gsap-reveal class
- * - Staggered fade-in on scroll (y: 60 to 0, opacity 0 to 1, blur offset)
- * - Triggers when section comes into view (75% of viewport)
+ * The deck is deliberately static: slides are simply there as you scroll to
+ * them. No entrance animation, no scroll-triggered reveals.
  *
  * PROPS:
  * @param children - All Slide components
@@ -85,44 +75,8 @@ export function SlideDeck({
   children: React.ReactNode;
   background?: React.ReactNode;
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      // General staggered animation for all slides using .gsap-reveal
-      const sections = gsap.utils.toArray<HTMLElement>(".slide-section");
-      sections.forEach((section) => {
-        const elements = section.querySelectorAll(".gsap-reveal");
-        if (elements.length > 0) {
-          gsap.fromTo(
-            elements,
-            { y: 10, opacity: 0, filter: "blur(10px)" },
-            {
-              y: 0,
-              opacity: 1,
-              filter: "blur(0px)",
-              duration: 0.7,
-              stagger: 0.15,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: section,
-                start: "top 75%",
-                toggleActions: "play none none reverse",
-              },
-            },
-          );
-        }
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <div
-      ref={containerRef}
-      className="relative bg-[var(--background)] text-[var(--charcoal-light)] font-sans tracking-wide overflow-hidden min-h-screen selection:bg-[var(--crimson)] selection:text-[var(--surface)]"
-    >
+    <div className="relative bg-[var(--background)] text-[var(--charcoal-light)] font-sans tracking-wide overflow-hidden min-h-screen selection:bg-[var(--crimson)] selection:text-[var(--surface)]">
       {/* Navigation */}
       <Link
         href="/courses/ai-in-business"
@@ -172,12 +126,15 @@ export function Slide({
   border = false,
   id,
   quizData,
+  align = "center",
 }: {
   children: React.ReactNode;
   className?: string;
   border?: boolean;
   id?: string;
-  quizData?: null;
+  quizData?: CourseQuiz;
+  /** "left" gives the editorial masthead layout used by content slides. */
+  align?: "center" | "left";
 }) {
   return (
     <div>
@@ -188,7 +145,11 @@ export function Slide({
       )}
       <section
         id={id}
-        className={`slide-section relative min-h-screen flex flex-col items-center text-center justify-center py-20 ${border ? "border-t border-[var(--charcoal)]/10" : ""} ${className}`}
+        className={`slide-section relative min-h-screen flex flex-col justify-center py-10 md:py-12 ${
+          align === "left"
+            ? "items-start text-left"
+            : "items-center text-center"
+        } ${border ? "border-t border-[var(--charcoal)]/8" : ""} ${className}`}
       >
         {children}
       </section>
@@ -370,7 +331,6 @@ export function Column({
  * - Large serif font (8xl on lg screens)
  * - Black weight, tight tracking
  * - Charcoal color
- * - Animated entry with .gsap-reveal
  *
  * PROPS:
  * @param children - Title text
@@ -391,7 +351,10 @@ export function Title({
 }) {
   return (
     <h1
-      className={`gsap-reveal text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight mb-6 text-[var(--charcoal)] font-serif ${className}`}
+      className={cn(
+        "block mb-6 text-4xl md:text-6xl lg:text-[5rem] font-black tracking-[-0.03em] leading-[0.94] text-[var(--charcoal)] font-serif",
+        className,
+      )}
     >
       {children}
     </h1>
@@ -541,11 +504,14 @@ export function Heading({
   className?: string;
 }) {
   return (
-    <div className={`gsap-reveal mb-8 md:mb-16 ${className}`}>
-      <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-[var(--charcoal)] font-serif">
-        {children}
-      </h2>
-    </div>
+    <h2
+      className={cn(
+        "block text-[2rem] md:text-[2.75rem] lg:text-[3.25rem] font-bold tracking-[-0.02em] leading-[1.02] text-[var(--charcoal)] font-serif",
+        className,
+      )}
+    >
+      {children}
+    </h2>
   );
 }
 
@@ -644,7 +610,7 @@ export function Subtitle({
     "text-[var(--charcoal-light)] font-light italic leading-relaxed max-w-4xl";
   const variantClass =
     variant === "hero"
-      ? "gsap-reveal text-xl md:text-3xl"
+      ? "text-xl md:text-3xl"
       : "text-xl md:text-2xl -mt-4 mb-12 border-b-2";
 
   return (
@@ -711,7 +677,6 @@ export function ContentText({
       ? "mt-8 font-light leading-relaxed space-y-6 [&>p>strong]:text-[var(--crimson)] [&>p>strong]:font-semibold [&>ul]:list-disc [&>ul]:pl-6 [&>ul>li::marker]:text-[var(--crimson)]"
       : "text-[var(--charcoal-light)] font-light leading-relaxed mb-4 border-l-4 border-[var(--crimson)]/20 pl-6 py-2";
   const finalClass = cn(`text-left w-full ${layoutClass}`, className);
-  console.log(finalClass);
   return <div className={finalClass}>{children}</div>;
 }
 
@@ -754,7 +719,7 @@ export function Tag({
 }) {
   return (
     <div
-      className={`gsap-reveal absolute top-12 left-1/2 -translate-x-1/2 text-[var(--charcoal-light)] text-xs md:text-sm font-bold tracking-[0.2em] uppercase ${className}`}
+      className={`absolute top-12 left-1/2 -translate-x-1/2 text-[var(--charcoal-light)] text-xs md:text-sm font-bold tracking-[0.2em] uppercase ${className}`}
     >
       {children}
     </div>
@@ -969,7 +934,7 @@ export function ContentDescription({
  * - Provides engagement metric point for learners
  */
 export function DiscussionCard({
-  title = "",
+  title = "Discussion",
   children,
   className = "",
 }: {
@@ -979,48 +944,53 @@ export function DiscussionCard({
 }) {
   const [isRevealed, setIsRevealed] = React.useState(false);
 
+  // Both states occupy the same grid cell, so the card is sized by the prompt
+  // from the start and revealing it moves nothing on the page.
   return (
-    <div
+    <button
+      type="button"
       onClick={() => setIsRevealed(!isRevealed)}
-      className={`gsap-reveal relative p-8 min-h-[500px] flex flex-col justify-center shadow-[0_10px_30px_rgba(0,0,0,0.05)] overflow-hidden cursor-pointer transition-colors duration-500 hover:border-[var(--gold)] hover:bg-[var(--gold)]/5 ${isRevealed ? "border-[var(--gold)]/50" : "border-[var(--charcoal)]/10"} ${className}`}
+      aria-expanded={isRevealed}
+      className={cn(
+        "group grid w-full border-t text-left transition-colors duration-150",
+        isRevealed
+          ? "border-t-[var(--champagne)]"
+          : "border-t-[var(--charcoal)]/15 hover:border-t-[var(--champagne)]/60",
+        className,
+      )}
     >
-      {/* Default State Content (Overlay) */}
+      {/* Prompt */}
       <div
-        className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 z-10 ${isRevealed ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100"}`}
+        aria-hidden={!isRevealed}
+        className={cn(
+          "col-start-1 row-start-1 pt-6 transition-opacity duration-150 ease-out",
+          isRevealed ? "opacity-100" : "opacity-0",
+        )}
       >
-        <div className="w-12 h-12 rounded-full border border-[var(--gold)]/30 flex items-center justify-center mb-4 text-[var(--gold)] animate-pulse">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"
-            />
-          </svg>
-        </div>
-        <h3 className="text-[var(--gold)] font-semibold tracking-widest uppercase text-lg mb-2 text-center">
+        <span className="mb-4 block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--champagne)]">
           {title}
-        </h3>
-      </div>
-
-      {/* Hover Reveal Content (Maintains Height) */}
-      <div
-        className={`transition-all duration-700 ease-out ${isRevealed ? "opacity-100 scale-100 blur-none" : "opacity-0 scale-95 filter blur-md"}`}
-      >
-        <h3 className="text-[var(--gold)] font-semibold mb-4 tracking-wider uppercase text-sm">
-          {title}
-        </h3>
-        <div className="text-xl md:text-2xl font-medium leading-snug text-[var(--charcoal)]">
+        </span>
+        <div className="font-serif text-lg md:text-[1.45rem] font-light leading-[1.35] text-[var(--charcoal)]">
           {children}
         </div>
       </div>
-    </div>
+
+      {/* Closed state */}
+      <div
+        aria-hidden={isRevealed}
+        className={cn(
+          "col-start-1 row-start-1 flex flex-col justify-center pt-6 transition-opacity duration-150 ease-out",
+          isRevealed ? "pointer-events-none opacity-0" : "opacity-100",
+        )}
+      >
+        <span className="mb-4 block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--champagne)]">
+          {title}
+        </span>
+        <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-[var(--charcoal-light)]/70 transition-colors duration-150 group-hover:text-[var(--charcoal)]">
+          Reveal
+        </span>
+      </div>
+    </button>
   );
 }
 
@@ -1075,7 +1045,7 @@ export function MediaBlock({
 }) {
   return (
     <figure
-      className={`gsap-reveal w-full overflow-hidden shadow-lg border border-[var(--charcoal)]/5 bg-[var(--surface)] ${className}`}
+      className={`w-full overflow-hidden shadow-lg border border-[var(--charcoal)]/5 bg-[var(--surface)] ${className}`}
     >
       <div className="relative w-full aspect-video bg-[var(--charcoal)]/5">
         <img
@@ -1145,7 +1115,7 @@ export function Quote({
 }) {
   return (
     <blockquote
-      className={`gsap-reveal my-12 border-l-4 border-[var(--crimson)] pl-8 py-2 ${className}`}
+      className={`my-12 border-l-4 border-[var(--crimson)] pl-8 py-2 ${className}`}
     >
       <p className="text-3xl md:text-4xl lg:text-5xl font-serif text-[var(--charcoal)] leading-snug italic mb-6">
         "{children}"
@@ -1216,7 +1186,7 @@ export function Metric({
 }) {
   return (
     <div
-      className={`gsap-reveal flex flex-col items-center justify-center p-8 border border-[var(--gold)]/20 bg-[var(--gold)]/5 ${className}`}
+      className={`flex flex-col items-center justify-center p-8 border border-[var(--gold)]/20 bg-[var(--gold)]/5 ${className}`}
     >
       <div className="text-2xl md:text-4xl font-black font-serif text-[var(--crimson)] mb-4 tracking-tighter">
         {value}
@@ -1279,26 +1249,30 @@ export function Callout({
   variant?: "primary" | "secondary";
 }) {
   const isPrimary = variant === "primary";
-  const bgClass = isPrimary
-    ? "bg-[var(--crimson)]/5"
-    : "bg-[var(--charcoal)]/5";
   const borderClass = isPrimary
-    ? "border-[var(--crimson)]"
-    : "border-[var(--charcoal)]/30";
+    ? "border-l-[var(--crimson)]"
+    : "border-l-[var(--charcoal)]/25";
   const titleColor = isPrimary
     ? "text-[var(--crimson)]"
-    : "text-[var(--charcoal)]";
+    : "text-[var(--charcoal-light)]/75";
 
   return (
     <div
-      className={`gsap-reveal p-8 my-4 border-l-4 ${borderClass} ${bgClass} ${className}`}
+      className={cn(
+        "border-l py-1 pl-8 text-left md:pl-10",
+        borderClass,
+        className,
+      )}
     >
       <h4
-        className={`text-sm md:text-base font-bold tracking-[0.2em] uppercase mb-4 ${titleColor}`}
+        className={cn(
+          "mb-5 font-sans text-[10px] font-semibold uppercase tracking-[0.22em]",
+          titleColor,
+        )}
       >
         {title}
       </h4>
-      <div className="text-xl md:text-2xl font-light leading-relaxed text-[var(--charcoal-light)]">
+      <div className="text-base md:text-[1.25rem] font-light leading-[1.5] text-[var(--charcoal)]">
         {children}
       </div>
     </div>
@@ -1408,7 +1382,7 @@ export function ListItem({
 }) {
   return (
     <li
-      className={`gsap-reveal flex items-start text-xl md:text-2xl text-[var(--charcoal-light)] font-light leading-relaxed ${className}`}
+      className={`flex items-start text-xl md:text-2xl text-[var(--charcoal-light)] font-light leading-relaxed ${className}`}
     >
       <span className="text-[var(--crimson)] mr-4 mt-2.5 flex-shrink-0">
         <CircleSmall />
@@ -1515,12 +1489,12 @@ export function PieChart({
   return (
     <div className={`w-full flex flex-col items-center ${className}`}>
       {title && (
-        <h4 className="gsap-reveal text-xl font-serif font-bold text-[var(--charcoal)] mb-6">
+        <h4 className="text-xl font-serif font-bold text-[var(--charcoal)] mb-6">
           {title}
         </h4>
       )}
 
-      <div className="gsap-reveal flex flex-col md:flex-row items-center justify-center gap-8">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-8">
         {/* Pie Chart SVG */}
         <svg
           width={size}
@@ -1546,7 +1520,7 @@ export function PieChart({
           {segments.map((segment, index) => (
             <div
               key={index}
-              className="gsap-reveal flex items-center gap-3"
+              className="flex items-center gap-3"
               style={{ animationDelay: `${index * 0.1 + 0.2}s` }}
             >
               <div
@@ -1567,7 +1541,7 @@ export function PieChart({
       </div>
 
       {caption && (
-        <p className="gsap-reveal text-sm text-[var(--charcoal-light)]/70 italic text-center mt-6 font-serif">
+        <p className="text-sm text-[var(--charcoal-light)]/70 italic text-center mt-6 font-serif">
           {caption}
         </p>
       )}

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
-import NetworkBackground from "@/components/NetworkBackground";
 import { ScrollToTop } from "@/components/portfolio/ScrollToTop";
 
 const playfair = Playfair_Display({
@@ -35,8 +34,6 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${inter.variable} antialiased bg-dark-900 text-gray-100 selection:bg-accent-500 selection:text-white relative`}
       >
-        {/* <NetworkBackground /> */}
-        {/* <div className="ambient-glow"></div> */}
         <Navigation />
         {children}
         <ScrollToTop />

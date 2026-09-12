@@ -1,0 +1,227 @@
+[
+  {
+    "slide_id": "business-decisions",
+    "question_text": "What does this course identify as the primary strategic goal for business leaders working with AI?",
+    "hint": "Leaders are not being asked to build the systems themselves.",
+    "correct_answer_citation": "Week 01 — Why Business Leaders Must Understand AI",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Learning to write the raw code behind the company's models.",
+        "option_explanation": "The lecture states the opposite: leaders do not need to write raw code, but they do need to understand what AI can and cannot do well."
+      },
+      {
+        "option_text": "Knowing which business decisions can be improved with machine assistance.",
+        "option_explanation": "Correct. This is named as the primary strategic goal for leaders, because the value of AI shows up in specific decisions rather than in the technology itself."
+      },
+      {
+        "option_text": "Moving every operational process into a research laboratory setting.",
+        "option_explanation": "The lecture describes the reverse movement: artificial intelligence has moved out of research labs and into core business operations."
+      },
+      {
+        "option_text": "Reducing the volume of customer and transaction data the firm processes.",
+        "option_explanation": "Modern companies processing massive volumes of data every second is presented as the setting for AI, not as a problem leaders should shrink."
+      }
+    ]
+  },
+  {
+    "slide_id": "ai-ml-dl",
+    "question_text": "How does the lecture distinguish modern AI systems from traditional software?",
+    "hint": "Think about where the rules come from in each case.",
+    "correct_answer_citation": "Week 01 — Defining Artificial Intelligence",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Traditional software learns from data, while modern AI follows rules written by programmers.",
+        "option_explanation": "This reverses the two. Rigid rules written by human programmers describe traditional software, not modern AI."
+      },
+      {
+        "option_text": "Traditional software runs on newer hardware, while modern AI runs on older machines.",
+        "option_explanation": "The distinction drawn in the lecture is about where the system's behaviour comes from, not about the hardware it runs on."
+      },
+      {
+        "option_text": "Traditional software follows rigid rules written by programmers, while modern AI learns patterns from historical data.",
+        "option_explanation": "Correct. This is exactly the contrast used to define artificial intelligence: rules written directly by humans versus patterns learned from historical data."
+      },
+      {
+        "option_text": "Traditional software can recognize images and understand text, while modern AI cannot.",
+        "option_explanation": "Recognizing patterns and understanding text are listed as tasks that artificial intelligence performs, tasks that once required human intelligence."
+      }
+    ]
+  },
+  {
+    "slide_id": "predictive-generative",
+    "question_text": "Which statement correctly describes how artificial intelligence, machine learning, and deep learning relate to each other?",
+    "hint": "One of the three is the umbrella that contains the other two.",
+    "correct_answer_citation": "Week 01 — Artificial Intelligence, Machine Learning, and Deep Learning",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Artificial intelligence is the broad umbrella, machine learning is a subfield of it, and deep learning is a branch of machine learning.",
+        "option_explanation": "Correct. Artificial intelligence is the broad umbrella term, machine learning is a specific subfield where algorithms find patterns in data, and deep learning is a specialized branch of machine learning based on multi-layered neural networks."
+      },
+      {
+        "option_text": "Deep learning is the broad umbrella, and artificial intelligence is one narrow application inside it.",
+        "option_explanation": "This inverts the hierarchy. Deep learning is the most specialized of the three, not the umbrella."
+      },
+      {
+        "option_text": "The three terms are interchangeable names for the same technology.",
+        "option_explanation": "They sit at different levels of generality, which is why the lecture separates them: only deep learning is based on multi-layered neural networks."
+      },
+      {
+        "option_text": "Machine learning is broader than artificial intelligence and contains it as a subfield.",
+        "option_explanation": "Machine learning is described as a specific subfield of AI, so it is narrower rather than broader."
+      }
+    ]
+  },
+  {
+    "slide_id": "prediction-judgment",
+    "question_text": "Following the economic pattern described in the lecture, what does modern machine learning make cheap and abundant?",
+    "hint": "Each breakthrough in the list makes one specific input cheap.",
+    "correct_answer_citation": "Week 01 — The Cost of Prediction Drops to Zero",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Arithmetic.",
+        "option_explanation": "Arithmetic is the input that computers made cheap, in the earlier step of the same pattern."
+      },
+      {
+        "option_text": "Information distribution.",
+        "option_explanation": "Information distribution is what the internet made cheap, the step just before machine learning in the lecture."
+      },
+      {
+        "option_text": "Physical manufacturing capacity.",
+        "option_explanation": "Manufacturing capacity is not one of the inputs discussed in this sequence of technological breakthroughs."
+      },
+      {
+        "option_text": "Prediction.",
+        "option_explanation": "Correct. Modern machine learning makes prediction cheap and accessible across every industry, which is why firms start applying it to problems never treated as prediction tasks before."
+      }
+    ]
+  },
+  {
+    "slide_id": "front-office",
+    "question_text": "Why does buying an off-the-shelf AI tool fail to guarantee a lasting competitive edge?",
+    "hint": "Consider what your competitors can buy on the same day you do.",
+    "correct_answer_citation": "Week 01 — The Fallacy of Plug and Play",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Commercial models are always less accurate than models a firm builds itself.",
+        "option_explanation": "The lecture does not argue that purchased models are weaker. The issue is that they are equally available to everyone."
+      },
+      {
+        "option_text": "Off-the-shelf tools cannot be connected to business workflows at all.",
+        "option_explanation": "Connecting AI directly to unique workflows is presented as the path to advantage, so the connection is possible and in fact essential."
+      },
+      {
+        "option_text": "Anyone can purchase the same public models and subscriptions, so advantage has to come from unique workflows and proprietary data.",
+        "option_explanation": "Correct. Real business advantage comes from connecting AI directly to unique business workflows and high-quality proprietary data, not from the purchase itself."
+      },
+      {
+        "option_text": "Public models cost more than building an equivalent system in house.",
+        "option_explanation": "Price is not the argument. The argument is that a purchase available to every competitor cannot by itself create differentiation."
+      }
+    ]
+  },
+  {
+    "slide_id": "human-in-the-loop",
+    "question_text": "Which of these is described as a back-office application of machine learning?",
+    "hint": "Back-office work is internal rather than customer-facing.",
+    "correct_answer_citation": "Week 01 — Back-Office Applications: Operations and Finance",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Recommendation engines suggesting products that match individual shopper interests.",
+        "option_explanation": "Recommendation engines on e-commerce platforms are a front-office application, aimed directly at the customer."
+      },
+      {
+        "option_text": "Finance teams scoring loan applications and detecting fraudulent charges.",
+        "option_explanation": "Correct. Finance teams using machine learning to score loan applications, detect fraudulent charges, and reconcile records is given as a back-office application."
+      },
+      {
+        "option_text": "Segmenting audiences and personalizing promotional messages.",
+        "option_explanation": "Audience segmentation and personalized promotion belong to the marketing team's front-office work with customers."
+      },
+      {
+        "option_text": "Answering common customer questions and routing complex issues to human agents.",
+        "option_explanation": "This is customer service, listed under front-office applications for customer engagement."
+      }
+    ]
+  },
+  {
+    "slide_id": "data-quality",
+    "question_text": "Which of the following is an example of unstructured data?",
+    "hint": "Ask whether the data would fit neatly into rows and columns.",
+    "correct_answer_citation": "Week 01 — Data Is the Raw Material of AI",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Rows in a spreadsheet.",
+        "option_explanation": "Spreadsheet rows are given as an example of structured data held in clear tables."
+      },
+      {
+        "option_text": "Numbers and dates in a SQL database.",
+        "option_explanation": "Numbers, dates, and SQL databases are all listed as structured data."
+      },
+      {
+        "option_text": "A table of transaction amounts by month.",
+        "option_explanation": "A clear table of numbers is structured data, the category that spreadsheets and SQL databases belong to."
+      },
+      {
+        "option_text": "Customer reviews and scanned PDFs.",
+        "option_explanation": "Correct. Unstructured data includes emails, video footage, audio recordings, customer reviews, and scanned PDFs, which modern deep learning can finally turn into business insight."
+      }
+    ]
+  },
+  {
+    "slide_id": "why-projects-fail",
+    "question_text": "What keeps the data flywheel turning in a successful AI deployment?",
+    "hint": "Something the customers themselves produce keeps the cycle going.",
+    "correct_answer_citation": "Week 01 — The Feedback Loop and Data Flywheel",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Customer use generates fresh data, that data retrains the models, and better predictions attract more users.",
+        "option_explanation": "Correct. Customer actions generate fresh behavioural signals, the new data is fed back to retrain models, and better predictions attract more users, which creates a virtuous learning cycle."
+      },
+      {
+        "option_text": "A deployment that is finished on day one and then left unchanged.",
+        "option_explanation": "The lecture makes the opposite point: a successful AI deployment is never finished on day one."
+      },
+      {
+        "option_text": "Replacing customer data each quarter with purchased external datasets.",
+        "option_explanation": "The flywheel described runs on data generated by the product's own users, not on datasets bought to replace it."
+      },
+      {
+        "option_text": "Collecting less data over time so that models stay simple.",
+        "option_explanation": "Shrinking the data supply would stop the cycle, since more usage producing more data is what drives the loop."
+      }
+    ]
+  },
+  {
+    "slide_id": "hallucinations",
+    "question_text": "Which of these is given as a common reason business AI projects fail?",
+    "hint": "Think about where a failing project tends to start.",
+    "correct_answer_citation": "Week 01 — Why Business AI Projects Fail",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Executives set timelines that are too realistic.",
+        "option_explanation": "Realistic timelines are listed among the conditions essential for adoption, alongside executive sponsorship and change management."
+      },
+      {
+        "option_text": "Training data is too clean and too complete.",
+        "option_explanation": "The problem named is the reverse: poor data quality, messy databases, and disconnected systems stop models from working reliably."
+      },
+      {
+        "option_text": "Teams start with exciting technology instead of an urgent business problem.",
+        "option_explanation": "Correct. Many AI projects fail because teams start from the technology rather than from an urgent business problem."
+      },
+      {
+        "option_text": "Employees adopt the tools faster than the company can deploy them.",
+        "option_explanation": "The adoption risk runs the other way: employees often resist new tools when they do not trust the recommendations or fear losing their jobs."
+      }
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -22,6 +22,28 @@ const backgrounds: Record<string, React.FC> = {
   // More backgrounds can be added here
 };
 
+/**
+ * Every background is a Three.js scene, and `new THREE.WebGLRenderer()` throws
+ * when a WebGL context cannot be created (GPU-less/headless browsers, WebGL
+ * disabled by the user, some remote desktops). Thrown from inside an effect,
+ * that error propagates and blanks the whole slide deck. Backgrounds are purely
+ * decorative, so probe support once and skip them when it is unavailable.
+ */
+let webglSupport: boolean | null = null;
+
+function supportsWebGL() {
+  if (webglSupport !== null) return webglSupport;
+  try {
+    const canvas = document.createElement("canvas");
+    webglSupport = !!(
+      canvas.getContext("webgl2") || canvas.getContext("webgl")
+    );
+  } catch {
+    webglSupport = false;
+  }
+  return webglSupport;
+}
+
 export function BackgroundManager({
   type,
   onReady,
@@ -29,17 +51,27 @@ export function BackgroundManager({
   type?: string;
   onReady?: () => void;
 }) {
-  if (!type) {
-    if (onReady) onReady();
-    return null;
-  }
-  const BgComponent = backgrounds[type];
-  if (!BgComponent) {
-    console.warn(`Background type "${type}" not found.`);
-    if (onReady) onReady();
-    return null;
-  }
-  // @ts-ignore
+  // Rendered only after mount so the server and first client pass agree, and so
+  // the WebGL probe runs where `document` exists.
+  const [canRenderWebGL, setCanRenderWebGL] = useState(false);
+
+  const BgComponent = type ? backgrounds[type] : undefined;
+
+  useEffect(() => {
+    if (type && !BgComponent) {
+      console.warn(`Background type "${type}" not found.`);
+    }
+    if (BgComponent && supportsWebGL()) {
+      setCanRenderWebGL(true);
+      return;
+    }
+    // Nothing will render, so unblock anything waiting on the background.
+    onReady?.();
+  }, [type, BgComponent, onReady]);
+
+  if (!BgComponent || !canRenderWebGL) return null;
+
+  // @ts-ignore - background components accept an optional onReady callback
   return <BgComponent onReady={onReady} />;
 }
 

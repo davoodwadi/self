@@ -1,12 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, XCircle, Lightbulb, ExternalLink } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import type { CourseQuiz } from "@/lib/course-quiz";
 
 const optionLetters = ["A", "B", "C", "D", "E", "F"];
 
+const CORRECT = "#3d5c2a";
+
+/**
+ * InlineQuiz - Knowledge check shown between two slides.
+ *
+ * LAYOUT CONTRACT: the card must not change size when an answer is submitted.
+ * Options carry their state in colour alone, and every piece of feedback
+ * (hint, explanations, citation) is rendered into one reserved region where all
+ * variants share a single CSS grid cell. The region is therefore always as tall
+ * as its longest variant, from first paint, and revealing an answer moves
+ * nothing above or below it.
+ */
 export default function InlineQuiz({
   quizData,
 }: {
@@ -16,209 +26,203 @@ export default function InlineQuiz({
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [showHint, setShowHint] = useState(false);
 
-  const handleSubmit = () => {
-    if (selectedOption !== null) {
-      setHasSubmitted(true);
-    }
-  };
-
-  if (!quizData) {
-    return <></>;
-  }
+  if (!quizData) return <></>;
 
   const isCorrect = selectedOption === quizData.correct_answer_index;
+  const answer = quizData.options[quizData.correct_answer_index];
+
+  // Which reserved-region variant is on top right now.
+  const stage = hasSubmitted ? "verdict" : showHint && quizData.hint ? "hint" : "idle";
+
+  const layer = (visible: boolean) =>
+    `col-start-1 row-start-1 transition-opacity duration-150 ease-out ${
+      visible ? "opacity-100" : "pointer-events-none opacity-0"
+    }`;
 
   return (
-    <motion.div layout className="w-full max-w-4xl mx-auto my-8 relative">
-      {/* Champagne Gold top accent bar */}
-      <div className="h-1 bg-[var(--champagne)]" />
+    <div className="mx-auto w-full max-w-3xl text-left">
+      {/* Masthead */}
+      <div className="flex items-baseline justify-between border-b border-[var(--charcoal)]/12 pb-4">
+        <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--champagne)]">
+          Knowledge Check
+        </span>
+        <span className="font-sans text-[10px] uppercase tracking-[0.18em] text-[var(--charcoal-light)]/70">
+          {hasSubmitted ? (isCorrect ? "Correct" : "Incorrect") : "Unanswered"}
+        </span>
+      </div>
 
-      <div className=" shadow-[0_10px_30px_rgba(0,0,0,0.05)] px-8 py-10 md:px-12 md:py-14">
-        {/* Header */}
-        <div className="mb-10">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-8 h-8 flex items-center justify-center bg-[var(--champagne)]/10 rounded-sm">
-              <Lightbulb className="w-4 h-4 text-[var(--champagne)]" />
-            </div>
-            <span className="text-xs font-bold tracking-[0.25em] text-[var(--champagne)] uppercase font-sans">
-              Knowledge Check
-            </span>
-          </div>
-          <p className="text-2xl md:text-3xl font-serif text-[var(--charcoal)] leading-snug tracking-tight">
-            {quizData.question_text}
+      {/* Question */}
+      <p className="mt-5 font-serif text-[1.25rem] leading-[1.25] tracking-[-0.01em] text-[var(--charcoal)] md:text-[1.6rem]">
+        {quizData.question_text}
+      </p>
+
+      {/* Options — fixed geometry, state carried in colour only */}
+      <ul className="mt-6 border-t border-[var(--charcoal)]/10">
+        {quizData.options.map((option, index) => {
+          const isSelected = selectedOption === index;
+          const isAnswer = index === quizData.correct_answer_index;
+
+          let letter = "text-[var(--charcoal-light)]/70";
+          let body = "text-[var(--charcoal-light)]";
+          let row = "border-[var(--charcoal)]/10";
+
+          if (hasSubmitted) {
+            if (isAnswer) {
+              letter = "";
+              body = "";
+              row = "";
+            } else if (isSelected) {
+              letter = "text-[var(--crimson)]";
+              body = "text-[var(--crimson)]";
+              row = "border-[var(--crimson)]/30";
+            } else {
+              letter = "text-[var(--charcoal-light)]/70";
+              body = "text-[var(--charcoal-light)]/70";
+            }
+          } else if (isSelected) {
+            letter = "text-[var(--crimson)]";
+            body = "text-[var(--charcoal)]";
+            row = "border-[var(--crimson)]/30";
+          }
+
+          const answerColour =
+            hasSubmitted && isAnswer ? { color: CORRECT } : undefined;
+
+          return (
+            <li key={index}>
+              <button
+                type="button"
+                disabled={hasSubmitted}
+                onClick={() => setSelectedOption(index)}
+                aria-pressed={isSelected}
+                className={`flex w-full items-baseline gap-6 border-b py-3.5 text-left transition-colors duration-150 ${row} ${
+                  hasSubmitted
+                    ? "cursor-default"
+                    : "cursor-pointer hover:bg-[var(--charcoal)]/[0.02]"
+                }`}
+                style={
+                  hasSubmitted && isAnswer
+                    ? { borderColor: `${CORRECT}40` }
+                    : undefined
+                }
+              >
+                <span
+                  className={`w-4 flex-shrink-0 font-sans text-[11px] font-semibold tracking-[0.14em] transition-colors duration-150 ${letter}`}
+                  style={answerColour}
+                >
+                  {optionLetters[index]}
+                </span>
+                <span
+                  className={`text-base font-light leading-relaxed transition-colors duration-150 md:text-lg ${body}`}
+                  style={answerColour}
+                >
+                  {option.option_text}
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+
+      {/* Actions */}
+      <div className="mt-6 flex items-center gap-10">
+        <button
+          type="button"
+          onClick={() => selectedOption !== null && setHasSubmitted(true)}
+          disabled={selectedOption === null || hasSubmitted}
+          className="border-b border-[var(--charcoal)] pb-1.5 font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--charcoal)] transition-colors duration-150 hover:border-[var(--crimson)] hover:text-[var(--crimson)] disabled:cursor-not-allowed disabled:border-[var(--charcoal)]/15 disabled:text-[var(--charcoal-light)]/70"
+        >
+          {hasSubmitted ? "Submitted" : "Submit"}
+        </button>
+
+        {quizData.hint && !hasSubmitted && (
+          <button
+            type="button"
+            onClick={() => setShowHint(!showHint)}
+            className="font-sans text-[11px] uppercase tracking-[0.22em] text-[var(--charcoal-light)]/70 transition-colors duration-150 hover:text-[var(--champagne)]"
+          >
+            {showHint ? "Hide hint" : "Hint"}
+          </button>
+        )}
+      </div>
+
+      {/*
+        Reserved feedback region. Every variant lives in the same grid cell, so
+        the tallest one fixes the height before anything is clicked.
+      */}
+      <div className="mt-6 grid border-t border-[var(--charcoal)]/12 pt-5">
+        {/* idle */}
+        <div aria-hidden={stage !== "idle"} className={layer(stage === "idle")}>
+          <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-[var(--charcoal-light)]/70">
+            Choose an answer to continue
           </p>
-          {/* Champagne gold hairline divider */}
-          <div className="mt-6 h-px w-16 bg-[var(--champagne)]" />
         </div>
 
-        {/* Options */}
-        <motion.div layout className="space-y-3 mb-10">
-          {quizData.options.map((option, index) => {
-            const isSelected = selectedOption === index;
-            const isActuallyCorrect = index === quizData.correct_answer_index;
-
-            let containerStyle =
-              "border-[var(--charcoal)]/10 hover:border-[var(--champagne)]/40 hover:bg-[var(--champagne)]/[0.02]";
-            let letterBg =
-              "bg-[var(--charcoal)]/5 text-[var(--charcoal-light)]";
-            let textStyle = "text-[var(--charcoal-light)]";
-
-            if (hasSubmitted) {
-              if (isActuallyCorrect) {
-                containerStyle = "border-[#2d5016]/40 bg-[#2d5016]/[0.04]";
-                letterBg = "bg-[#2d5016]/10 text-[#2d5016]";
-                textStyle = "text-[#2d5016] font-medium";
-              } else if (isSelected && !isActuallyCorrect) {
-                containerStyle =
-                  "border-[var(--crimson)]/40 bg-[var(--crimson)]/[0.04]";
-                letterBg = "bg-[var(--crimson)]/10 text-[var(--crimson)]";
-                textStyle = "text-[var(--crimson)]";
-              } else {
-                containerStyle = "border-[var(--charcoal)]/5 opacity-35";
-                letterBg =
-                  "bg-[var(--charcoal)]/3 text-[var(--charcoal-light)]/50";
-              }
-            } else if (isSelected) {
-              containerStyle =
-                "border-[var(--champagne)] bg-[var(--champagne)]/[0.03]";
-              letterBg = "bg-[var(--champagne)] text-[var(--surface)]";
-              textStyle = "text-[var(--charcoal)] font-medium";
-            }
-
-            return (
-              <motion.div layout key={index}>
-                <button
-                  disabled={hasSubmitted}
-                  onClick={() => setSelectedOption(index)}
-                  className={`w-full text-left px-6 py-5 border transition-colors duration-300 ${containerStyle} ${
-                    !hasSubmitted ? "cursor-pointer" : "cursor-default"
-                  }`}
-                >
-                  <div className="flex items-start md:items-center gap-5">
-                    {/* Letter indicator or result icon */}
-                    <div className="flex-shrink-0">
-                      {hasSubmitted && isActuallyCorrect ? (
-                        <div className="w-9 h-9 flex items-center justify-center bg-[#2d5016]/10 rounded-sm">
-                          <CheckCircle2 className="w-5 h-5 text-[#2d5016]" />
-                        </div>
-                      ) : hasSubmitted && isSelected && !isActuallyCorrect ? (
-                        <div className="w-9 h-9 flex items-center justify-center bg-[var(--crimson)]/10 rounded-sm">
-                          <XCircle className="w-5 h-5 text-[var(--crimson)]" />
-                        </div>
-                      ) : (
-                        <div
-                          className={`w-9 h-9 flex items-center justify-center rounded-sm text-sm font-bold tracking-wide font-sans transition-colors duration-300 ${letterBg}`}
-                        >
-                          {optionLetters[index]}
-                        </div>
-                      )}
-                    </div>
-
-                    <span
-                      className={`text-lg leading-relaxed font-sans transition-colors duration-300 ${textStyle}`}
-                    >
-                      {option.option_text}
-                    </span>
-                  </div>
-                </button>
-
-                {/* Explanation panel */}
-                <AnimatePresence initial={false}>
-                  {hasSubmitted &&
-                    (isSelected || isActuallyCorrect) &&
-                    option.option_explanation && (
-                      <motion.div
-                        key="explanation"
-                        layout
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: "easeOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div
-                          className={`mx-6 mt-0 px-6 py-5 border-l-2 ${
-                            isActuallyCorrect
-                              ? "border-l-[#2d5016]/30 bg-[#2d5016]/[0.03]"
-                              : "border-l-[var(--crimson)]/30 bg-[var(--crimson)]/[0.03]"
-                          }`}
-                        >
-                          <div className="flex items-center gap-2 mb-2">
-                            {isActuallyCorrect ? (
-                              <CheckCircle2 className="w-4 h-4 text-[#2d5016]" />
-                            ) : (
-                              <XCircle className="w-4 h-4 text-[var(--crimson)]" />
-                            )}
-                            <span
-                              className={`text-xs font-bold uppercase tracking-[0.2em] font-sans ${
-                                isActuallyCorrect
-                                  ? "text-[#2d5016]"
-                                  : "text-[var(--crimson)]"
-                              }`}
-                            >
-                              {isActuallyCorrect ? "Correct" : "Incorrect"}
-                            </span>
-                          </div>
-                          <p className="text-base leading-relaxed text-[var(--charcoal-light)] font-sans pl-6">
-                            {option.option_explanation}
-                          </p>
-                        </div>
-                      </motion.div>
-                    )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
-        {/* Actions */}
-        <motion.div
-          layout
-          className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[var(--charcoal)]/8"
-        >
-          <button
-            onClick={handleSubmit}
-            disabled={selectedOption === null || hasSubmitted}
-            className="w-full sm:w-auto px-10 py-3.5 bg-[var(--charcoal)] hover:bg-[var(--champagne)] text-[var(--surface)] font-bold tracking-[0.15em] uppercase text-xs font-sans disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-300"
-          >
-            {hasSubmitted ? "Submitted" : "Submit Answer"}
-          </button>
-
-          {quizData.hint && !hasSubmitted && (
-            <button
-              onClick={() => setShowHint(!showHint)}
-              className="text-xs font-semibold font-sans text-[var(--charcoal-light)]/60 hover:text-[var(--champagne)] uppercase tracking-[0.15em] transition-colors duration-300"
-            >
-              {showHint ? "Hide Hint" : "View Hint"}
-            </button>
-          )}
-        </motion.div>
-
-        {/* Hint */}
-        {showHint && !hasSubmitted && quizData.hint && (
-          <div className="mt-6 px-6 py-5 border-l-2 border-l-[var(--champagne)]/40 bg-[var(--champagne)]/[0.04]">
-            <span className="text-xs font-bold text-[var(--champagne)] uppercase tracking-[0.2em] font-sans block mb-2">
+        {/* hint */}
+        {quizData.hint && (
+          <div aria-hidden={stage !== "hint"} className={layer(stage === "hint")}>
+            <span className="mb-3 block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--champagne)]">
               Hint
             </span>
-            <p className="text-lg font-light italic text-[var(--charcoal-light)] font-serif leading-relaxed">
+            <p className="font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)]">
               {quizData.hint}
             </p>
           </div>
         )}
 
-        {/* Citation */}
-        {hasSubmitted && isCorrect && quizData.correct_answer_citation && (
-          <div className="mt-8 pt-5 border-t border-[var(--charcoal)]/8 flex items-start gap-3">
-            <ExternalLink className="w-4 h-4 mt-0.5 flex-shrink-0 text-[var(--charcoal-light)]/40" />
-            <span className="text-sm font-sans text-[var(--charcoal-light)]/70">
-              <strong className="text-[var(--charcoal)] font-semibold mr-1.5">
-                Source:
-              </strong>
-              {quizData.correct_answer_citation}
-            </span>
-          </div>
-        )}
+        {/*
+          One verdict layer per option, all sharing the same grid cell. The
+          region is therefore as tall as the longest possible verdict from
+          first paint, whichever option the student ends up choosing.
+        */}
+        {quizData.options.map((option, index) => {
+          const isAnswer = index === quizData.correct_answer_index;
+
+          return (
+            <div
+              key={index}
+              aria-hidden={!(stage === "verdict" && selectedOption === index)}
+              className={layer(stage === "verdict" && selectedOption === index)}
+            >
+              <div className="grid gap-5 md:grid-cols-2 md:gap-8">
+              {!isAnswer && option.option_explanation && (
+                <div className="border-l border-[var(--crimson)] pl-6">
+                  <span className="mb-2.5 block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--crimson)]">
+                    Your answer
+                  </span>
+                  <p className="text-[0.875rem] font-light leading-[1.6] text-[var(--charcoal-light)]">
+                    {option.option_explanation}
+                  </p>
+                </div>
+              )}
+
+              {answer.option_explanation && (
+                <div className="border-l pl-6" style={{ borderColor: CORRECT }}>
+                  <span
+                    className="mb-2.5 block font-sans text-[10px] font-semibold uppercase tracking-[0.22em]"
+                    style={{ color: CORRECT }}
+                  >
+                    {isAnswer
+                      ? "Correct"
+                      : `Answer \u2014 ${optionLetters[quizData.correct_answer_index]}`}
+                  </span>
+                  <p className="text-[0.875rem] font-light leading-[1.6] text-[var(--charcoal-light)]">
+                    {answer.option_explanation}
+                  </p>
+                </div>
+              )}
+
+              </div>
+
+              {quizData.correct_answer_citation && (
+                <p className="mt-5 font-sans text-[11px] uppercase tracking-[0.18em] text-[var(--charcoal-light)]/70">
+                  {quizData.correct_answer_citation}
+                </p>
+              )}
+            </div>
+          );
+        })}
       </div>
-    </motion.div>
+    </div>
   );
 }
