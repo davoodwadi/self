@@ -4,7 +4,12 @@ import { Globe, Landmark, Coins, Users, Zap, Scale, Leaf } from "lucide-react";
 // The PESTLE Framework - Hub and spoke model
 // Central hub: The Macroenvironment (Charcoal - neutral)
 // Spokes: Political, Economic, Social, Technological, Legal, Environmental (Crimson - key forces)
-export const pestleFrameworkFlow: { aiGeneratedNodes: Node[], aiGeneratedEdges: Edge[] } = {
+export const pestleFrameworkFlow: {
+  aiGeneratedNodes: Node[];
+  aiGeneratedEdges: Edge[];
+  variant?: "omni" | "broadsheet";
+} = {
+  variant: "broadsheet",
   aiGeneratedNodes: [
     {
       id: "hub",
@@ -13,7 +18,7 @@ export const pestleFrameworkFlow: { aiGeneratedNodes: Node[], aiGeneratedEdges: 
         label: "Macroenvironment",
         sublabel: "Societal Forces",
         icon: <Globe size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -23,7 +28,7 @@ export const pestleFrameworkFlow: { aiGeneratedNodes: Node[], aiGeneratedEdges: 
         label: "Political",
         sublabel: "Laws & Agencies",
         icon: <Landmark size={20} strokeWidth={2} />,
-        color: "#8B0000",
+        color: "#B23A15",
       },
     },
     {
@@ -33,7 +38,7 @@ export const pestleFrameworkFlow: { aiGeneratedNodes: Node[], aiGeneratedEdges: 
         label: "Economic",
         sublabel: "Purchasing Power",
         icon: <Coins size={20} strokeWidth={2} />,
-        color: "#8B0000",
+        color: "#B23A15",
       },
     },
     {
@@ -43,7 +48,7 @@ export const pestleFrameworkFlow: { aiGeneratedNodes: Node[], aiGeneratedEdges: 
         label: "Social",
         sublabel: "Values & Trends",
         icon: <Users size={20} strokeWidth={2} />,
-        color: "#8B0000",
+        color: "#B23A15",
       },
     },
     {
@@ -53,7 +58,7 @@ export const pestleFrameworkFlow: { aiGeneratedNodes: Node[], aiGeneratedEdges: 
         label: "Technological",
         sublabel: "New Opportunities",
         icon: <Zap size={20} strokeWidth={2} />,
-        color: "#8B0000",
+        color: "#B23A15",
       },
     },
     {
@@ -63,7 +68,7 @@ export const pestleFrameworkFlow: { aiGeneratedNodes: Node[], aiGeneratedEdges: 
         label: "Legal",
         sublabel: "Regulations",
         icon: <Scale size={20} strokeWidth={2} />,
-        color: "#8B0000",
+        color: "#B23A15",
       },
     },
     {
@@ -73,7 +78,7 @@ export const pestleFrameworkFlow: { aiGeneratedNodes: Node[], aiGeneratedEdges: 
         label: "Environmental",
         sublabel: "Natural Resources",
         icon: <Leaf size={20} strokeWidth={2} />,
-        color: "#8B0000",
+        color: "#B23A15",
       },
     },
   ],

@@ -6,10 +6,11 @@ import {
 } from "lucide-react";
 
 // Semantic Colors: 
-// Charcoal (#1A1A1D) for process/inputs
-// Crimson (#8B0000) for key outcomes/decisions
+// Charcoal (#17160F) for process/inputs
+// Crimson (#B23A15) for key outcomes/decisions
 
 export const consumerDecisionFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "cd-1",
@@ -18,7 +19,7 @@ export const consumerDecisionFlow = {
         label: "Need Recognition",
         sublabel: "Triggered by stimuli",
         icon: <Target size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -28,7 +29,7 @@ export const consumerDecisionFlow = {
         label: "Information Search",
         sublabel: "Gathering data",
         icon: <Search size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -38,7 +39,7 @@ export const consumerDecisionFlow = {
         label: "Evaluate Alternatives",
         sublabel: "Comparing brands",
         icon: <Scale size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -48,7 +49,7 @@ export const consumerDecisionFlow = {
         label: "Purchase Decision",
         sublabel: "Selecting preferred",
         icon: <ShoppingCart size={20} strokeWidth={2} />,
-        color: "#8B0000",
+        color: "#B23A15",
       },
     },
     {
@@ -58,7 +59,7 @@ export const consumerDecisionFlow = {
         label: "Postpurchase",
         sublabel: "Satisfaction & dissonance",
         icon: <MessageCircle size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
   ],
@@ -71,7 +72,7 @@ export const consumerDecisionFlow = {
       targetHandle: "left",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "cd-e2",
@@ -81,7 +82,7 @@ export const consumerDecisionFlow = {
       targetHandle: "left",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "cd-e3",
@@ -91,7 +92,7 @@ export const consumerDecisionFlow = {
       targetHandle: "top",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "cd-e4",
@@ -101,12 +102,13 @@ export const consumerDecisionFlow = {
       targetHandle: "top",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#8B0000" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#B23A15" },
     },
   ]
 };
 
 export const buyingInfluencesFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "bi-1",
@@ -115,7 +117,7 @@ export const buyingInfluencesFlow = {
         label: "Cultural",
         sublabel: "Values & subcultures",
         icon: <Globe size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -125,7 +127,7 @@ export const buyingInfluencesFlow = {
         label: "Social",
         sublabel: "Networks & family",
         icon: <Users size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -135,7 +137,7 @@ export const buyingInfluencesFlow = {
         label: "Personal",
         sublabel: "Age & lifestyle",
         icon: <User size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -145,7 +147,7 @@ export const buyingInfluencesFlow = {
         label: "Psychological",
         sublabel: "Motivation & beliefs",
         icon: <Brain size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -155,7 +157,7 @@ export const buyingInfluencesFlow = {
         label: "Buying Behavior",
         sublabel: "Consumer actions",
         icon: <ShoppingCart size={20} strokeWidth={2} />,
-        color: "#8B0000",
+        color: "#B23A15",
       },
     },
   ],
@@ -168,7 +170,7 @@ export const buyingInfluencesFlow = {
       targetHandle: "top",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "bi-e2",
@@ -178,7 +180,7 @@ export const buyingInfluencesFlow = {
       targetHandle: "top",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "bi-e3",
@@ -188,7 +190,7 @@ export const buyingInfluencesFlow = {
       targetHandle: "bottom",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "bi-e4",
@@ -198,12 +200,13 @@ export const buyingInfluencesFlow = {
       targetHandle: "bottom",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
   ]
 };
 
 export const buyingCenterFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "bc-1",
@@ -212,7 +215,7 @@ export const buyingCenterFlow = {
         label: "Users",
         sublabel: "Product consumers",
         icon: <Laptop size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -222,7 +225,7 @@ export const buyingCenterFlow = {
         label: "Influencers",
         sublabel: "Define specs",
         icon: <Mic size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -232,7 +235,7 @@ export const buyingCenterFlow = {
         label: "Gatekeepers",
         sublabel: "Control information",
         icon: <Shield size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -242,7 +245,7 @@ export const buyingCenterFlow = {
         label: "Buyers",
         sublabel: "Negotiate terms",
         icon: <CreditCard size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -252,7 +255,7 @@ export const buyingCenterFlow = {
         label: "Deciders",
         sublabel: "Final approval",
         icon: <CheckCircle size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -262,7 +265,7 @@ export const buyingCenterFlow = {
         label: "Buying Center",
         sublabel: "B2B Decision Unit",
         icon: <Briefcase size={20} strokeWidth={2} />,
-        color: "#8B0000",
+        color: "#B23A15",
       },
     },
   ],
@@ -275,7 +278,7 @@ export const buyingCenterFlow = {
       targetHandle: "top",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "bc-e2",
@@ -285,7 +288,7 @@ export const buyingCenterFlow = {
       targetHandle: "top",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "bc-e3",
@@ -295,7 +298,7 @@ export const buyingCenterFlow = {
       targetHandle: "top",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "bc-e4",
@@ -305,7 +308,7 @@ export const buyingCenterFlow = {
       targetHandle: "bottom",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "bc-e5",
@@ -315,7 +318,7 @@ export const buyingCenterFlow = {
       targetHandle: "bottom",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
   ]
 };

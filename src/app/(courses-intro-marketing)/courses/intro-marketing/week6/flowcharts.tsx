@@ -5,10 +5,11 @@ import {
 } from "lucide-react";
 
 // Semantic Colors: 
-// Charcoal (#1A1A1D) for process/inputs
-// Crimson (#8B0000) for key outcomes/decisions
+// Charcoal (#17160F) for process/inputs
+// Crimson (#B23A15) for key outcomes/decisions
 
 export const stpProcessFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "stp-1",
@@ -17,7 +18,7 @@ export const stpProcessFlow = {
         label: "Segmentation",
         sublabel: "Identify groups",
         icon: <Layers size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -27,7 +28,7 @@ export const stpProcessFlow = {
         label: "Targeting",
         sublabel: "Select segments",
         icon: <Crosshair size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -37,7 +38,7 @@ export const stpProcessFlow = {
         label: "Positioning",
         sublabel: "Create value",
         icon: <Flag size={20} strokeWidth={2} />,
-        color: "#8B0000",
+        color: "#B23A15",
       },
     },
   ],
@@ -50,7 +51,7 @@ export const stpProcessFlow = {
       targetHandle: "left",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "stp-e2",
@@ -60,12 +61,13 @@ export const stpProcessFlow = {
       targetHandle: "left",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
   ]
 };
 
 export const segmentationBasesFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "sb-1",
@@ -74,7 +76,7 @@ export const segmentationBasesFlow = {
         label: "Geographic",
         sublabel: "Location, climate",
         icon: <Map size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -84,7 +86,7 @@ export const segmentationBasesFlow = {
         label: "Demographic",
         sublabel: "Age, gender, income",
         icon: <Users size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -94,7 +96,7 @@ export const segmentationBasesFlow = {
         label: "Psychographic",
         sublabel: "Lifestyle, personality",
         icon: <Brain size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -104,7 +106,7 @@ export const segmentationBasesFlow = {
         label: "Behavioral",
         sublabel: "Usage, loyalty, benefits",
         icon: <Activity size={20} strokeWidth={2} />,
-        color: "#1A1A1D",
+        color: "#17160F",
       },
     },
     {
@@ -114,7 +116,7 @@ export const segmentationBasesFlow = {
         label: "Market Segmentation",
         sublabel: "Distinct buyer groups",
         icon: <Compass size={20} strokeWidth={2} />,
-        color: "#8B0000",
+        color: "#B23A15",
       },
     },
   ],
@@ -127,7 +129,7 @@ export const segmentationBasesFlow = {
       targetHandle: "top",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "sb-e2",
@@ -137,7 +139,7 @@ export const segmentationBasesFlow = {
       targetHandle: "top",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "sb-e3",
@@ -147,7 +149,7 @@ export const segmentationBasesFlow = {
       targetHandle: "bottom",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
     {
       id: "sb-e4",
@@ -157,7 +159,7 @@ export const segmentationBasesFlow = {
       targetHandle: "bottom",
       type: "smoothstep",
       animated: true,
-      style: { strokeWidth: 2, opacity: 0.55, stroke: "#1A1A1D" },
+      style: { strokeWidth: 2, opacity: 0.55, stroke: "#17160F" },
     },
   ]
 };

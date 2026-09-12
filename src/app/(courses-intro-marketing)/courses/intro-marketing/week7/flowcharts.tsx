@@ -4,6 +4,7 @@ import { Edge, Node } from "@xyflow/react";
 // - Charcoal: Neutral or standard phases
 // - Crimson: High-growth, market-facing, or critical phases
 export const productLifeCycleFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "1",
@@ -104,6 +105,7 @@ export const productLifeCycleFlow = {
 // - Charcoal: Internal development and testing
 // - Crimson: Market entry and strategy
 export const newProductDevFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "1",
@@ -204,6 +206,7 @@ export const newProductDevFlow = {
 // - Crimson: Core concept (Service)
 // - Charcoal: Four inherent characteristics of services
 export const serviceCharacteristicsFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "hub",

@@ -13,6 +13,7 @@ import {
   DiscussionCard,
   Tag,
   Highlight,
+  Figure,
 } from "@/components/slide-components/SlideComponents";
 import { BackgroundManager } from "@/components/slide-components/Backgrounds";
 import FlowRenderer from "@/components/flowcharts/FlowRenderer";
@@ -102,9 +103,9 @@ export default function IntroMarketingWeek5() {
       {/* Secondary Data [quiz] */}
       <Slide quizData={quizBySlideId["secondary-data"]}>
         <Heading>Secondary Data</Heading>
-        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mb-6">
+        <Figure>
           <FlowRenderer {...internalExternalDataFlow} />
-        </div>
+        </Figure>
         <AnimatedList>
           <ListItem>Secondary data consists of information that already exists somewhere.</ListItem>
           <ListItem>It is usually collected for another purpose but can be relevant to the current problem.</ListItem>
@@ -164,9 +165,9 @@ export default function IntroMarketingWeek5() {
       {/* Customer Relationship Management (CRM) [quiz] */}
       <Slide quizData={quizBySlideId["customer-relationship-management-crm"]}>
         <Heading>Customer Relationship Management (CRM)</Heading>
-        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mb-6">
+        <Figure>
           <FlowRenderer {...crmCycleFlow} />
-        </div>
+        </Figure>
         <AnimatedList>
           <ListItem>CRM involves managing detailed information about individual customers.</ListItem>
           <ListItem>Marketers use CRM to carefully manage customer touchpoints to maximize loyalty.</ListItem>

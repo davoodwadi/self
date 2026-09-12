@@ -14,13 +14,14 @@ import React from 'react';
 // Color semantics:
 // Charcoal for neutral concepts, Crimson for core focus/internal, Gold for premium value
 const colors = {
-  charcoal: '#2D2D32',
-  crimson: '#8B0000',
-  gold: '#D4AF37'
+  charcoal: '#3B382E',
+  crimson: '#B23A15',
+  gold: '#22575B'
 };
 
 // 1. Internal vs External Secondary Data (Split Lane)
 export const internalExternalDataFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     // Internal Lane (Left)
     {
@@ -65,6 +66,7 @@ export const internalExternalDataFlow = {
 
 // 2. The CRM Cycle (Core Process)
 export const crmCycleFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: 'data-collection',

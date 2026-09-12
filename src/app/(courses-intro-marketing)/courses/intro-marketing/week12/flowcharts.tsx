@@ -10,13 +10,14 @@ import {
 } from "lucide-react";
 
 // Semantic Color Palette
-// Charcoal: Low/Medium Risk Modes, Neutral Processing (#1A1A1D, #2D2D32)
-// Crimson: High Risk/Control Mode, Core Concepts (#8B0000, #A52A2A)
+// Charcoal: Low/Medium Risk Modes, Neutral Processing (#17160F, #3B382E)
+// Crimson: High Risk/Control Mode, Core Concepts (#B23A15, #8A2B0E)
 
 // Diagram 1: Market entry risk and control
 // Shape: Cascading flow (step-down diagonal)
 // Charcoal for exporting and joint venturing, Crimson for direct investment to highlight the risk/control tradeoff.
 export const marketEntryFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "exporting",
@@ -25,7 +26,7 @@ export const marketEntryFlow = {
         label: "Exporting",
         sublabel: "Low Risk & Control",
         icon: <Package size={20} strokeWidth={2} />,
-        color: "#2D2D32", 
+        color: "#3B382E", 
       },
     },
     {
@@ -35,7 +36,7 @@ export const marketEntryFlow = {
         label: "Joint Venturing",
         sublabel: "Shared Risk & Control",
         icon: <Handshake size={20} strokeWidth={2} />,
-        color: "#1A1A1D", 
+        color: "#17160F", 
       },
     },
     {
@@ -45,7 +46,7 @@ export const marketEntryFlow = {
         label: "Direct Investment",
         sublabel: "High Risk & Control",
         icon: <Building2 size={20} strokeWidth={2} />,
-        color: "#8B0000", 
+        color: "#B23A15", 
       },
     },
   ],
@@ -79,6 +80,7 @@ export const marketEntryFlow = {
 // Shape: Hub-and-spoke
 // Crimson for the core AI hub, Charcoal for the application spokes.
 export const aiApplicationsFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "ai-core",
@@ -87,7 +89,7 @@ export const aiApplicationsFlow = {
         label: "AI in Marketing",
         sublabel: "Core Technology",
         icon: <Brain size={20} strokeWidth={2} />,
-        color: "#8B0000", 
+        color: "#B23A15", 
       },
     },
     {
@@ -97,7 +99,7 @@ export const aiApplicationsFlow = {
         label: "Data Analysis",
         sublabel: "Processing Info",
         icon: <LineChart size={20} strokeWidth={2} />,
-        color: "#2D2D32", 
+        color: "#3B382E", 
       },
     },
     {
@@ -107,7 +109,7 @@ export const aiApplicationsFlow = {
         label: "Consumer Insights",
         sublabel: "Understanding Users",
         icon: <Users size={20} strokeWidth={2} />,
-        color: "#2D2D32", 
+        color: "#3B382E", 
       },
     },
     {
@@ -117,7 +119,7 @@ export const aiApplicationsFlow = {
         label: "Predictive Modeling",
         sublabel: "Forecasting Behavior",
         icon: <Target size={20} strokeWidth={2} />,
-        color: "#2D2D32", 
+        color: "#3B382E", 
       },
     },
     {
@@ -127,7 +129,7 @@ export const aiApplicationsFlow = {
         label: "Customer Service",
         sublabel: "Automated Chatbots",
         icon: <MessageSquare size={20} strokeWidth={2} />,
-        color: "#2D2D32", 
+        color: "#3B382E", 
       },
     },
   ],

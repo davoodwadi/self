@@ -18,6 +18,7 @@ import {
   AnimatedList,
   ListItem,
   Callout,
+  Figure,
 } from "@/components/slide-components/SlideComponents";
 import { BackgroundManager } from "@/components/slide-components/Backgrounds";
 import FlowRenderer from "@/components/flowcharts/FlowRenderer";
@@ -106,9 +107,9 @@ export default function IntroMarketingWeek7() {
       <Slide quizData={quizBySlideId["the-concept-the-product-life-cycle"]}>
         <Tag>The Concept</Tag>
         <Heading>The <Highlight>Product Life Cycle</Highlight></Heading>
-        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80">
+        <Figure>
           <FlowRenderer {...productLifeCycleFlow} />
-        </div>
+        </Figure>
         <AnimatedList className="mt-8">
           <ListItem>The Product Life Cycle (PLC) describes the course of a product's sales and profits over its lifetime.</ListItem>
           <ListItem>It consists of five distinct stages: development, introduction, growth, maturity, and decline.</ListItem>
@@ -204,9 +205,9 @@ export default function IntroMarketingWeek7() {
       <Slide quizData={quizBySlideId["strategy-new-product-development-process"]}>
         <Tag>Strategy</Tag>
         <Heading><Highlight>New Product</Highlight> Development Process</Heading>
-        <div className="w-full h-[280px] sm:h-[320px] md:h-[360px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80">
+        <Figure height="sm">
           <FlowRenderer {...newProductDevFlow} />
-        </div>
+        </Figure>
         <Row gap="medium" className="mt-8">
           <Column spanRatio="1/2">
             <AnimatedList>
@@ -324,9 +325,9 @@ export default function IntroMarketingWeek7() {
       <Slide>
         <Tag>The Challenge</Tag>
         <Heading>Four Service <Highlight>Characteristics</Highlight></Heading>
-        <div className="w-full h-[250px] sm:h-[300px] md:h-[340px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80">
+        <Figure height="sm">
           <FlowRenderer {...serviceCharacteristicsFlow} />
-        </div>
+        </Figure>
         <Row gap="medium" className="mt-8">
           <Column spanRatio="1/2">
             <AnimatedList>

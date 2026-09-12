@@ -1,4 +1,5 @@
 export const digitalEcosystemFlow = {
+  variant: "broadsheet" as const,
   nodes: [
     {
       id: "center",

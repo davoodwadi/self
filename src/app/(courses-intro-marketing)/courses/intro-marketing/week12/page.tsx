@@ -19,6 +19,7 @@ import {
   AnimatedList,
   ListItem,
   Callout,
+  Figure,
 } from "@/components/slide-components/SlideComponents";
 import { createCourseQuizLookup } from "@/lib/course-quiz";
 import quizzesData from "./quizzes.json";
@@ -145,9 +146,9 @@ export default function Week12Page() {
           <ListItem>Each mode offers different levels of control and profit potential.</ListItem>
         </AnimatedList>
         <div className="mt-8 w-full">
-          <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80">
-            <FlowRenderer {...marketEntryFlow} />
-          </div>
+          <Figure>
+          <FlowRenderer {...marketEntryFlow} />
+        </Figure>
         </div>
       </Slide>
 
@@ -381,9 +382,9 @@ export default function Week12Page() {
           <ListItem>Chatbots and automated systems enhance customer service efficiency.</ListItem>
         </AnimatedList>
         <div className="mt-8 w-full">
-          <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80">
-            <FlowRenderer {...aiApplicationsFlow} />
-          </div>
+          <Figure>
+          <FlowRenderer {...aiApplicationsFlow} />
+        </Figure>
         </div>
       </Slide>
 

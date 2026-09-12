@@ -19,6 +19,7 @@ import {
   Highlight,
   Row,
   Column,
+  Figure,
 } from "@/components/slide-components/SlideComponents";
 import { BackgroundManager } from "@/components/slide-components/Backgrounds";
 import { createCourseQuizLookup } from "@/lib/course-quiz";
@@ -52,9 +53,9 @@ export default function IntroMarketingWeek3() {
           <ListItem>The consumer market consists of all the individuals and households that buy or acquire goods and services for personal consumption.</ListItem>
           <ListItem>Understanding this process is key to predicting how consumers will respond to marketing strategies.</ListItem>
         </AnimatedList>
-        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mt-8">
+        <Figure>
           <FlowRenderer {...consumerDecisionFlow} />
-        </div>
+        </Figure>
       </Slide>
 
       {/* Step 1: Need Recognition [quiz] */}
@@ -129,9 +130,9 @@ export default function IntroMarketingWeek3() {
           <ListItem>Marketers cannot control such factors, but they must take them into account.</ListItem>
           <ListItem>These factors help us understand why consumers act the way they do.</ListItem>
         </AnimatedList>
-        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mt-8">
+        <Figure>
           <FlowRenderer {...buyingInfluencesFlow} />
-        </div>
+        </Figure>
       </Slide>
 
       {/* Cultural Factors */}
@@ -212,9 +213,9 @@ export default function IntroMarketingWeek3() {
           <ListItem>The <Highlight>buying center</Highlight> consists of all the individuals and units that play a role in the purchase decision-making process.</ListItem>
           <ListItem>It includes users, influencers, buyers, deciders, and gatekeepers.</ListItem>
         </AnimatedList>
-        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mt-8">
+        <Figure>
           <FlowRenderer {...buyingCenterFlow} />
-        </div>
+        </Figure>
       </Slide>
 
       {/* The Nature of the Buying Unit */}

@@ -85,11 +85,21 @@ function IntroductionBackground({ onReady }: { onReady?: () => void }) {
     );
     camera.position.z = window.innerWidth < 900 ? 48 : 44;
 
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvasRef.current,
-      alpha: true,
-      antialias: true,
-    });
+    // WebGLRenderer throws when no GL context is available — hardware
+    // acceleration switched off, a locked-down lab machine, a remote desktop.
+    // Unguarded inside an effect that takes the whole deck down with it, so
+    // the decorative layer is allowed to fail and the lecture carries on.
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        canvas: canvasRef.current,
+        alpha: true,
+        antialias: true,
+      });
+    } catch {
+      if (onReady) onReady();
+      return;
+    }
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -178,7 +188,7 @@ function IntroductionBackground({ onReady }: { onReady?: () => void }) {
         spreadX: 16,
         spreadY: 12,
         spreadZ: 11,
-        color: 0xe5d7c8,
+        color: 0xe3dccb,
         size: compactView ? 2.35 : 2.85,
         opacity: 0.18,
       }),
@@ -187,7 +197,7 @@ function IntroductionBackground({ onReady }: { onReady?: () => void }) {
         spreadX: 13,
         spreadY: 8,
         spreadZ: 13,
-        color: 0x8c7349,
+        color: 0x3e6f73,
         size: compactView ? 1.2 : 1.45,
         opacity: 0.12,
       }),
@@ -196,7 +206,7 @@ function IntroductionBackground({ onReady }: { onReady?: () => void }) {
         spreadX: 9,
         spreadY: 6,
         spreadZ: 14,
-        color: 0x8b0000,
+        color: 0xb23a15,
         size: compactView ? 0.64 : 0.82,
         opacity: 0.08,
       }),
@@ -205,7 +215,7 @@ function IntroductionBackground({ onReady }: { onReady?: () => void }) {
     // Large soft sprites create the paper-like atmospheric blooms.
     const bloomDescriptors = [
       {
-        color: 0xf0e3d6,
+        color: 0xefe9dc,
         opacity: 0.22,
         scale: compactView ? 28 : 36,
         position: new THREE.Vector3(-21, 12, -22),
@@ -215,7 +225,7 @@ function IntroductionBackground({ onReady }: { onReady?: () => void }) {
         phase: 0.2,
       },
       {
-        color: 0xd5c3aa,
+        color: 0xd3c9b4,
         opacity: 0.18,
         scale: compactView ? 24 : 32,
         position: new THREE.Vector3(0, -14, -24),
@@ -225,7 +235,7 @@ function IntroductionBackground({ onReady }: { onReady?: () => void }) {
         phase: 1.4,
       },
       {
-        color: 0xcfaa86,
+        color: 0xc9a98c,
         opacity: 0.13,
         scale: compactView ? 22 : 28,
         position: new THREE.Vector3(20, 8, -20),
@@ -235,7 +245,7 @@ function IntroductionBackground({ onReady }: { onReady?: () => void }) {
         phase: 2.1,
       },
       {
-        color: 0x8b0000,
+        color: 0xb23a15,
         opacity: 0.06,
         scale: compactView ? 18 : 24,
         position: new THREE.Vector3(14, -2, -18),
@@ -446,11 +456,21 @@ function EDIITreeBackground({ onReady }: { onReady?: () => void }) {
     );
     camera.position.z = 30;
 
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvasRef.current,
-      alpha: true,
-      antialias: true,
-    });
+    // WebGLRenderer throws when no GL context is available — hardware
+    // acceleration switched off, a locked-down lab machine, a remote desktop.
+    // Unguarded inside an effect that takes the whole deck down with it, so
+    // the decorative layer is allowed to fail and the lecture carries on.
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        canvas: canvasRef.current,
+        alpha: true,
+        antialias: true,
+      });
+    } catch {
+      if (onReady) onReady();
+      return;
+    }
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
@@ -658,11 +678,21 @@ function OperationsBackground({ onReady }: { onReady?: () => void }) {
     );
     camera.position.z = 50;
 
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvasRef.current,
-      alpha: true,
-      antialias: true,
-    });
+    // WebGLRenderer throws when no GL context is available — hardware
+    // acceleration switched off, a locked-down lab machine, a remote desktop.
+    // Unguarded inside an effect that takes the whole deck down with it, so
+    // the decorative layer is allowed to fail and the lecture carries on.
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        canvas: canvasRef.current,
+        alpha: true,
+        antialias: true,
+      });
+    } catch {
+      if (onReady) onReady();
+      return;
+    }
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 

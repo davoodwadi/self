@@ -18,6 +18,7 @@ import {
   AnimatedList,
   ListItem,
   Callout,
+  Figure,
 } from "@/components/slide-components/SlideComponents";
 import FlowRenderer from "@/components/flowcharts/FlowRenderer";
 import { createCourseQuizLookup } from "@/lib/course-quiz";
@@ -59,9 +60,9 @@ export default function Week10IMC() {
 
       <Slide id="elements-of-the-promotion-mix" quizData={quizBySlideId["elements-of-the-promotion-mix"]}>
         <Heading>Elements of the <Highlight>Promotion Mix</Highlight></Heading>
-        <div className="w-full h-[300px] sm:h-[340px] md:h-[420px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mb-8">
+        <Figure height="lg">
           <FlowRenderer {...promotionMixFlow} />
-        </div>
+        </Figure>
         <Row gap="medium" items="start">
           <Column spanRatio="1/3">
             <Card title="Advertising" subtitle="Paid Format">
@@ -247,9 +248,9 @@ export default function Week10IMC() {
 
       <Slide id="steps-in-developing-effective-communication" quizData={quizBySlideId["steps-in-developing-effective-communication"]}>
         <Heading>Steps in Developing <Highlight>Effective Communication</Highlight></Heading>
-        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mb-8">
+        <Figure>
           <FlowRenderer {...communicationStepsFlow} />
-        </div>
+        </Figure>
         <AnimatedList>
           <ListItem>Identify the target audience</ListItem>
           <ListItem>Determine the communication objectives</ListItem>

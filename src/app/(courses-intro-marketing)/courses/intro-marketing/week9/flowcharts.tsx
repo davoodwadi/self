@@ -3,6 +3,7 @@ import { Factory, Network, Users, LineChart, Megaphone, Boxes, Store } from "luc
 
 // Hub-and-Spoke: Information flowing between producers, channel members, and consumers
 export const channelsAddValueFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "producers",
@@ -91,6 +92,7 @@ export const channelsAddValueFlow = {
 
 // Cascading Flow: Producer to Wholesaler to Retailer acting as a unified system
 export const vmsFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "producer",

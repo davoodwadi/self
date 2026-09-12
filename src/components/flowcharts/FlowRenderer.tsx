@@ -13,6 +13,7 @@ import {
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import OmniNode from "./OmniNode";
+import BroadsheetNode from "./BroadsheetNode";
 
 /**
  * Props consumed by {@link FlowRenderer}.
@@ -37,6 +38,14 @@ import OmniNode from "./OmniNode";
 interface AIFlowRendererProps {
   aiGeneratedNodes: Node[];
   aiGeneratedEdges: Edge[];
+  /**
+   * Node style applied to nodes that do not declare their own `type`.
+   * Defaults to `"omni"` so existing decks are unaffected; the Introduction to
+   * Marketing course passes `"broadsheet"` to match its editorial system.
+   */
+  variant?: "omni" | "broadsheet";
+  /** Hide the zoom/fit controls for diagrams meant to be read, not explored. */
+  showControls?: boolean;
 }
 
 /**
@@ -54,18 +63,25 @@ interface AIFlowRendererProps {
  * dimensions (width and height), because React Flow requires measurable space
  * to render correctly.
  */
-export default function FlowRenderer({ 
+export default function FlowRenderer({
   aiGeneratedNodes,
   aiGeneratedEdges,
+  variant = "omni",
+  // Broadsheet diagrams are read, not explored, so the zoom controls are off
+  // unless a caller asks for them.
+  showControls = variant === "omni",
 }: AIFlowRendererProps) {
-  const nodeTypes = useMemo(() => ({ omni: OmniNode }), []);
+  const nodeTypes = useMemo(
+    () => ({ omni: OmniNode, broadsheet: BroadsheetNode }),
+    [],
+  );
   const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
 
   useEffect(() => {
     const formattedNodes = aiGeneratedNodes.map((node) => ({
       ...node,
-      type: node.type ?? "omni",
+      type: node.type ?? variant,
     }));
 
     setNodes(formattedNodes);
@@ -82,7 +98,7 @@ export default function FlowRenderer({
     }));
 
     setEdges(formattedEdges);
-  }, [aiGeneratedNodes, aiGeneratedEdges, setNodes, setEdges]);
+  }, [aiGeneratedNodes, aiGeneratedEdges, variant, setNodes, setEdges]);
 
   return (
     <div style={{ width: "100%", height: "100%" }}>
@@ -96,7 +112,7 @@ export default function FlowRenderer({
         fitViewOptions={{ padding: 0.1 }}
       >
         <Background color="transparent" gap={16} />
-        <Controls />
+        {showControls && <Controls showInteractive={false} />}
       </ReactFlow>
     </div>
   );

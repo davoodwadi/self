@@ -7,96 +7,107 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const COURSE_WEEKS = [
   {
-    week: "WEEK 01",
-    title: "Introduction & The Marketing Process",
-    subtitle: "Understanding core concepts: needs, wants, and how firms create customer value.",
-    href: "/courses/intro-marketing/week1"
+    title: "What Marketing Actually Is",
+    blurb:
+      "Why the discipline is about value exchange, not persuasion — and the five-step process that follows from that.",
+    href: "/courses/intro-marketing/week1",
   },
   {
-    week: "WEEK 02",
-    title: "The Marketing Environment & Ethics",
-    subtitle: "Analyzing micro/macro environments and the role of corporate social responsibility.",
-    href: "/courses/intro-marketing/week2"
+    title: "Environment & Ethics",
+    blurb:
+      "The forces a firm can influence, the forces it can only read, and where the line between the two keeps moving.",
+    href: "/courses/intro-marketing/week2",
   },
   {
-    week: "WEEK 03",
-    title: "Consumer Behavior",
-    subtitle: "Psychological, social, and cultural influences driving consumer decision-making.",
-    href: "/courses/intro-marketing/week3"
+    title: "Consumer Behaviour",
+    blurb:
+      "How culture, reference groups and memory shape a purchase long before anyone compares prices.",
+    href: "/courses/intro-marketing/week3",
   },
   {
-    week: "WEEK 04",
-    title: "Business-to-Business (B2B) Marketing",
-    subtitle: "Organizational buying behaviors, relationship marketing, and B2B dynamics.",
-    href: "/courses/intro-marketing/week4"
+    title: "Business-to-Business Marketing",
+    blurb:
+      "Buying centres, switching costs, and why a sale with six signatories behaves nothing like a sale with one.",
+    href: "/courses/intro-marketing/week4",
   },
   {
-    week: "WEEK 05",
-    title: "Marketing Research & Analytics",
-    subtitle: "Gathering primary/secondary data and leveraging analytics for strategic insights.",
-    href: "/courses/intro-marketing/week5"
+    title: "Research & Analytics",
+    blurb:
+      "Turning a business problem into a research question, and knowing which evidence can actually answer it.",
+    href: "/courses/intro-marketing/week5",
   },
   {
-    week: "WEEK 06",
-    title: "Segmentation, Targeting, and Positioning (STP)",
-    subtitle: "Identifying profitable segments and crafting compelling value propositions.",
-    href: "/courses/intro-marketing/week6"
+    title: "Segmentation, Targeting, Positioning",
+    blurb:
+      "Choosing who not to serve, and earning a defensible sentence in the customer's head.",
+    href: "/courses/intro-marketing/week6",
   },
   {
-    week: "WEEK 07",
-    title: "Product and Service Strategies",
-    subtitle: "The Product Life Cycle, branding, and new product development.",
-    href: "/courses/intro-marketing/week7"
+    title: "Product & Brand",
+    blurb:
+      "What a customer is really buying, how brands accumulate equity, and why most new products fail.",
+    href: "/courses/intro-marketing/week7",
   },
   {
-    week: "WEEK 08",
-    title: "Pricing Strategies",
-    subtitle: "Value-based pricing, cost constraints, and strategies for new offerings.",
-    href: "/courses/intro-marketing/week8"
+    title: "Pricing",
+    blurb:
+      "The only P that brings money in. Costs set the floor, perceived value sets the ceiling, competitors set the nerves.",
+    href: "/courses/intro-marketing/week8",
   },
   {
-    week: "WEEK 09",
-    title: "Distribution Channels (Place)",
-    subtitle: "Supply chain management, retail logistics, and optimizing channel behavior.",
-    href: "/courses/intro-marketing/week9"
+    title: "Channels & Distribution",
+    blurb:
+      "Getting the offer within reach — and the conflict that follows when partners want the same margin.",
+    href: "/courses/intro-marketing/week9",
   },
   {
-    week: "WEEK 10",
-    title: "Integrated Marketing Communications",
-    subtitle: "Balancing Advertising, PR, Sales Promotion, and Personal Selling.",
-    href: "/courses/intro-marketing/week10"
+    title: "Marketing Communications",
+    blurb:
+      "Advertising, PR, promotion and sales as one message, budgeted against what each is good at.",
+    href: "/courses/intro-marketing/week10",
   },
   {
-    week: "WEEK 11",
-    title: "Digital & Social Media Marketing",
-    subtitle: "SEO, content marketing, and building digital engagement architectures.",
-    href: "/courses/intro-marketing/week11"
+    title: "Digital & Social",
+    blurb:
+      "Owned, paid and earned media; search, content and the measurement that keeps it honest.",
+    href: "/courses/intro-marketing/week11",
   },
   {
-    week: "WEEK 12",
-    title: "Global Marketing & Future Trends",
-    subtitle: "Market entry strategies, globalization, AI in marketing, and sustainability.",
-    href: "/courses/intro-marketing/week12"
-  }
+    title: "Global Markets & What's Next",
+    blurb:
+      "Entry modes, how much to adapt, and the shifts — AI, privacy, sustainability — already reshaping the job.",
+    href: "/courses/intro-marketing/week12",
+  },
 ];
 
 export default function IntroMarketingLanding() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
     gsap.registerPlugin(ScrollTrigger);
 
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       gsap.fromTo(
-        ".hero-text",
-        { y: 20, opacity: 0, filter: "blur(10px)" },
-        { y: 0, opacity: 1, filter: "blur(0px)", duration: 1.2, ease: "power3.out", stagger: 0.15 }
+        ".masthead-item",
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out", stagger: 0.1 },
       );
 
       gsap.fromTo(
-        ".course-card",
-        { y: 30, opacity: 0, filter: "blur(10px)" },
-        { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.8, stagger: 0.1, ease: "power2.out", delay: 0.4 }
+        ".index-row",
+        { y: 12, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.045,
+          ease: "power2.out",
+          delay: 0.35,
+          scrollTrigger: { trigger: ".index-list", start: "top 90%" },
+        },
       );
     }, containerRef);
 
@@ -104,62 +115,75 @@ export default function IntroMarketingLanding() {
   }, []);
 
   return (
-    <div ref={containerRef} className="min-h-screen text-[var(--text-primary)] font-body py-24 px-6 md:px-12 lg:px-24">
-      
-      {/* Hero Section */}
-      <div className="max-w-6xl mx-auto mb-20 text-center">
-        <h2 className="hero-text text-label mb-6 tracking-[0.3em] opacity-80 uppercase font-bold text-[var(--accent1)]">Course Curriculum</h2>
-        <h1 className="hero-text text-display font-heading font-light mb-8 text-[var(--highlight)] text-5xl md:text-7xl">
-          Introduction to Marketing
-        </h1>
-        <p className="hero-text text-body max-w-2xl mx-auto text-[var(--text-secondary)] text-lg md:text-xl font-light leading-relaxed mb-6">
-          Explore the strategic frameworks, consumer behaviors, and digital innovations that drive modern value creation and market success.
-        </p>
-        <div className="hero-text flex items-center justify-center space-x-4">
-          <div className="text-center">
-            <p className="text-[var(--text-primary)] font-accent font-bold text-sm tracking-wider">Davood Wadi, PhD</p>
-            <p className="text-[var(--text-muted)] text-xs font-mono mt-1">Lecturer & Course Developer</p>
+    <div ref={containerRef} className="relative min-h-screen">
+      <div className="mx-auto w-full max-w-[var(--slide-max)] px-5 md:px-10 lg:px-16">
+        {/* ---------------------------------------------------------------
+            Masthead
+            --------------------------------------------------------------- */}
+        <header className="pt-24 pb-16 md:pt-36 md:pb-24">
+          <div className="masthead-item flex items-center gap-3 mb-8">
+            <span className="h-px w-7 bg-[var(--signal)]" aria-hidden />
+            <span className="type-label">Undergraduate · 12 weeks</span>
           </div>
-        </div>
-      </div>
 
-      {/* Grid of Weeks */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {COURSE_WEEKS.map((week, idx) => (
-          <Link href={week.href} key={idx} className="course-card block group h-full">
-            <div className="bg-[var(--card)] border border-[var(--border)] rounded-sm p-8 h-full flex flex-col justify-between transition-all duration-500 hover:border-[var(--accent1)] hover:shadow-[0_10px_30px_rgba(var(--accent-rgb),0.15)] relative overflow-hidden">
-              
-              {/* Subtle hover glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[var(--glow)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          <h1 className="masthead-item type-display max-w-[14ch]">
+            Introduction to Marketing
+          </h1>
 
-              <div className="relative z-10">
-                <span className="text-label block mb-4 text-[var(--accent1)] font-accent font-bold tracking-widest text-xs">
-                  {week.week}
-                </span>
-                <h3 className="text-h2 font-heading font-bold text-xl md:text-2xl mb-4 text-[var(--text-primary)] transition-colors duration-300">
-                  {week.title}
-                </h3>
-                <p className="text-body text-[var(--text-secondary)] text-sm md:text-base leading-relaxed opacity-80">
-                  {week.subtitle}
-                </p>
-              </div>
+          <p className="masthead-item type-lead mt-8 max-w-[52ch]">
+            Marketing is the discipline of deciding who you are for, what you
+            are worth to them, and how that judgement gets made. Twelve weeks
+            on how firms create value — and how they capture it back.
+          </p>
 
-              <div className="relative z-10 mt-8 pt-6 border-t border-[var(--border)] flex items-center justify-between">
-                <span className="text-[var(--text-muted)] text-xs uppercase tracking-widest font-accent font-bold group-hover:text-[var(--text-primary)] transition-colors duration-300">
-                  Explore Chapter
-                </span>
-                <svg 
-                  className="w-5 h-5 text-[var(--accent1)] transform group-hover:translate-x-2 transition-transform duration-300" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+          <div className="masthead-item mt-12 pt-6 border-t border-[var(--rule)] flex flex-wrap gap-x-12 gap-y-4">
+            <div>
+              <div className="type-caption mb-1">Instructor</div>
+              <div className="type-body !text-[var(--ink)]">
+                Davood Wadi, PhD
               </div>
             </div>
-          </Link>
-        ))}
+            <div>
+              <div className="type-caption mb-1">Format</div>
+              <div className="type-body !text-[var(--ink)]">
+                Lecture decks with knowledge checks
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* ---------------------------------------------------------------
+            Index — a ruled contents list, not a grid of identical boxes.
+            --------------------------------------------------------------- */}
+        <nav aria-label="Course weeks" className="index-list pb-32">
+          <div className="flex items-baseline justify-between mb-6">
+            <h2 className="type-label">Contents</h2>
+            <span className="type-caption">Twelve sessions</span>
+          </div>
+
+          <ul className="border-t border-[var(--rule)]">
+            {COURSE_WEEKS.map((week, idx) => (
+              <li key={week.href} className="index-row border-b border-[var(--rule)]">
+                <Link
+                  href={week.href}
+                  className="group grid grid-cols-[2.75rem_1fr] md:grid-cols-[5rem_minmax(0,22rem)_1fr] gap-x-4 md:gap-x-8 gap-y-2 py-7 md:py-8 items-baseline transition-colors duration-200 hover:bg-[var(--paper-2)] -mx-3 px-3"
+                >
+                  <span className="type-caption tabular-nums group-hover:text-[var(--signal)] transition-colors">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+
+                  <h3 className="type-h2 col-start-2 group-hover:text-[var(--signal)] transition-colors">
+                    {week.title}
+                  </h3>
+
+                  <p className="type-body !text-[1rem] col-start-2 md:col-start-3 max-w-[58ch]">
+                    {week.blurb}
+                  </p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </div>
   );

@@ -1,36 +1,40 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Lora, Libre_Baskerville, IBM_Plex_Mono } from "next/font/google";
+import { Fraunces, Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { DynamicFooter } from "@/components/slide-components/DynamicFooter";
 
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair-display",
+// Fraunces carries the display voice: an editorial serif with enough
+// eccentricity (the WONK axis) to not read as a default pairing.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  display: "swap",
 });
 
-const lora = Lora({
-  variable: "--font-lora",
+// Body copy is set in a grotesque rather than a serif: at projection
+// distance it holds up far better than Lora did.
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
-  weight: ["400"],
+  display: "swap",
 });
 
-const libreBaskerville = Libre_Baskerville({
-  variable: "--font-libre-baskerville",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
+// Mono is reserved for meta — eyebrows, slide numbers, captions.
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Introduction to Marketing",
-  description: "Davood Wadi, Ph.D.",
-    icons: {
+  title: {
+    default: "Introduction to Marketing",
+    template: "%s · Introduction to Marketing",
+  },
+  description:
+    "A twelve-week introduction to marketing strategy, taught by Davood Wadi, PhD.",
+  icons: {
     icon: "/icon-large.svg",
   },
 };
@@ -41,14 +45,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${playfairDisplay.variable} ${lora.variable} ${libreBaskerville.variable} ${ibmPlexMono.variable} antialiased theme-pastel-peach`}
-      >
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${instrumentSans.variable} ${plexMono.variable}`}
+    >
+      <body className="antialiased">
         {children}
         <DynamicFooter />
       </body>
     </html>
   );
 }
-

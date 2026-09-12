@@ -17,6 +17,7 @@ import {
   AnimatedList,
   ListItem,
   Callout,
+  Figure,
 } from "@/components/slide-components/SlideComponents";
 import { createCourseQuizLookup } from "@/lib/course-quiz";
 import FlowRenderer from "@/components/flowcharts/FlowRenderer";
@@ -170,12 +171,12 @@ export default function Week8Page() {
             </AnimatedList>
           </Column>
           <Column spanRatio="1/2">
-            <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] rounded-2xl border border-[var(--crimson)]/15 bg-white/80 flex items-center justify-center overflow-hidden">
+            <Figure>
               <FlowRenderer
                 aiGeneratedNodes={pricingApproachesFlow.aiGeneratedNodes}
                 aiGeneratedEdges={pricingApproachesFlow.aiGeneratedEdges}
               />
-            </div>
+            </Figure>
           </Column>
         </Row>
       </Slide>
@@ -286,12 +287,12 @@ export default function Week8Page() {
             </AnimatedList>
           </Column>
           <Column spanRatio="1/2">
-            <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] rounded-2xl border border-[var(--crimson)]/15 bg-white/80 flex items-center justify-center overflow-hidden p-4">
+            <Figure>
               <FlowRenderer
                 aiGeneratedNodes={newProductPricingFlow.aiGeneratedNodes}
                 aiGeneratedEdges={newProductPricingFlow.aiGeneratedEdges}
               />
-            </div>
+            </Figure>
           </Column>
         </Row>
       </Slide>

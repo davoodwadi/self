@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CheckCircle2, XCircle, Lightbulb, ExternalLink } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import type { CourseQuiz } from "@/lib/course-quiz";
 
 const optionLetters = ["A", "B", "C", "D", "E", "F"];
@@ -28,7 +29,7 @@ export default function InlineQuiz({
   const isCorrect = selectedOption === quizData.correct_answer_index;
 
   return (
-    <div className="w-full max-w-4xl mx-auto my-8 relative">
+    <motion.div layout className="w-full max-w-4xl mx-auto my-8 relative">
       {/* Champagne Gold top accent bar */}
       <div className="h-1 bg-[var(--champagne)]" />
 
@@ -51,7 +52,7 @@ export default function InlineQuiz({
         </div>
 
         {/* Options */}
-        <div className="space-y-3 mb-10">
+        <motion.div layout className="space-y-3 mb-10">
           {quizData.options.map((option, index) => {
             const isSelected = selectedOption === index;
             const isActuallyCorrect = index === quizData.correct_answer_index;
@@ -85,7 +86,7 @@ export default function InlineQuiz({
             }
 
             return (
-              <div key={index}>
+              <motion.div layout key={index}>
                 <button
                   disabled={hasSubmitted}
                   onClick={() => setSelectedOption(index)}
@@ -122,44 +123,59 @@ export default function InlineQuiz({
                 </button>
 
                 {/* Explanation panel */}
-                {hasSubmitted &&
-                  (isSelected || isActuallyCorrect) &&
-                  option.option_explanation && (
-                    <div
-                      className={`mx-6 mt-0 px-6 py-5 border-l-2 ${
-                        isActuallyCorrect
-                          ? "border-l-[#2d5016]/30 bg-[#2d5016]/[0.03]"
-                          : "border-l-[var(--crimson)]/30 bg-[var(--crimson)]/[0.03]"
-                      }`}
-                    >
-                      <div className="flex items-center gap-2 mb-2">
-                        {isActuallyCorrect ? (
-                          <CheckCircle2 className="w-4 h-4 text-[#2d5016]" />
-                        ) : (
-                          <XCircle className="w-4 h-4 text-[var(--crimson)]" />
-                        )}
-                        <span
-                          className={`text-xs font-bold uppercase tracking-[0.2em] font-sans ${
+                <AnimatePresence initial={false}>
+                  {hasSubmitted &&
+                    (isSelected || isActuallyCorrect) &&
+                    option.option_explanation && (
+                      <motion.div
+                        key="explanation"
+                        layout
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div
+                          className={`mx-6 mt-0 px-6 py-5 border-l-2 ${
                             isActuallyCorrect
-                              ? "text-[#2d5016]"
-                              : "text-[var(--crimson)]"
+                              ? "border-l-[#2d5016]/30 bg-[#2d5016]/[0.03]"
+                              : "border-l-[var(--crimson)]/30 bg-[var(--crimson)]/[0.03]"
                           }`}
                         >
-                          {isActuallyCorrect ? "Correct" : "Incorrect"}
-                        </span>
-                      </div>
-                      <p className="text-base leading-relaxed text-[var(--charcoal-light)] font-sans pl-6">
-                        {option.option_explanation}
-                      </p>
-                    </div>
-                  )}
-              </div>
+                          <div className="flex items-center gap-2 mb-2">
+                            {isActuallyCorrect ? (
+                              <CheckCircle2 className="w-4 h-4 text-[#2d5016]" />
+                            ) : (
+                              <XCircle className="w-4 h-4 text-[var(--crimson)]" />
+                            )}
+                            <span
+                              className={`text-xs font-bold uppercase tracking-[0.2em] font-sans ${
+                                isActuallyCorrect
+                                  ? "text-[#2d5016]"
+                                  : "text-[var(--crimson)]"
+                              }`}
+                            >
+                              {isActuallyCorrect ? "Correct" : "Incorrect"}
+                            </span>
+                          </div>
+                          <p className="text-base leading-relaxed text-[var(--charcoal-light)] font-sans pl-6">
+                            {option.option_explanation}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[var(--charcoal)]/8">
+        <motion.div
+          layout
+          className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[var(--charcoal)]/8"
+        >
           <button
             onClick={handleSubmit}
             disabled={selectedOption === null || hasSubmitted}
@@ -176,7 +192,7 @@ export default function InlineQuiz({
               {showHint ? "Hide Hint" : "View Hint"}
             </button>
           )}
-        </div>
+        </motion.div>
 
         {/* Hint */}
         {showHint && !hasSubmitted && quizData.hint && (
@@ -203,6 +219,6 @@ export default function InlineQuiz({
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

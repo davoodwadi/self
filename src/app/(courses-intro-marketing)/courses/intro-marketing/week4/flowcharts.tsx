@@ -13,14 +13,15 @@ import React from 'react';
 // Color semantics:
 // Charcoal for neutral concepts, Crimson for B2B/core focus, Gold for premium value
 const colors = {
-  charcoal: '#2D2D32',
-  crimson: '#8B0000',
-  gold: '#D4AF37'
+  charcoal: '#3B382E',
+  crimson: '#B23A15',
+  gold: '#22575B'
 };
 
 // 1. Market Structure and Demand (Split Lane)
 // Compares B2C vs B2B characteristics
 export const marketStructureFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     // B2C Lane (Left)
     {
@@ -66,6 +67,7 @@ export const marketStructureFlow = {
 // 2. Roles in the Buying Center (Radiating / Hub)
 // Shows the primary roles within a buying center
 export const buyingCenterFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: 'center',
@@ -98,6 +100,7 @@ export const buyingCenterFlow = {
 // 3. Key Account Management (Cascading Process)
 // Sequence for key account management
 export const kamProcessFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: 'identify',

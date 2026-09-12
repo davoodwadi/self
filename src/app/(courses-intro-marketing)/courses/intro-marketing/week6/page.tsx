@@ -19,6 +19,7 @@ import {
   Highlight,
   Row,
   Column,
+  Figure,
 } from "@/components/slide-components/SlideComponents";
 import { BackgroundManager } from "@/components/slide-components/Backgrounds";
 import { createCourseQuizLookup } from "@/lib/course-quiz";
@@ -41,9 +42,9 @@ export default function IntroMarketingWeek6() {
           <ListItem>Today we will explore Segmentation, Targeting, and Positioning (STP).</ListItem>
           <ListItem>We will cover the bases for segmenting markets, evaluating and selecting target markets, and developing a compelling positioning strategy.</ListItem>
         </AnimatedList>
-        <div className="w-full h-[180px] sm:h-[200px] md:h-[220px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mt-8 mx-auto max-w-4xl">
+        <Figure height="sm">
           <FlowRenderer {...stpProcessFlow} />
-        </div>
+        </Figure>
       </Slide>
 
       {/* Part 1: Market Segmentation [no-quiz] */}
@@ -55,9 +56,9 @@ export default function IntroMarketingWeek6() {
           <ListItem>These distinct groups might require separate products or marketing programs.</ListItem>
           <ListItem>The goal is to identify segments that are measurable, accessible, substantial, differentiable, and actionable.</ListItem>
         </AnimatedList>
-        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mt-8">
+        <Figure>
           <FlowRenderer {...segmentationBasesFlow} />
-        </div>
+        </Figure>
       </Slide>
 
       {/* Geographic and Demographic Segmentation [quiz] */}

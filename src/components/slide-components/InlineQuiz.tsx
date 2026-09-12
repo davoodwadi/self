@@ -1,11 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, XCircle, Lightbulb, ExternalLink } from "lucide-react";
+import { Check, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import type { CourseQuiz } from "@/lib/course-quiz";
+import { cn } from "@/lib/utils";
 
 const optionLetters = ["A", "B", "C", "D", "E", "F"];
 
+/**
+ * InlineQuiz - Knowledge check placed between slides.
+ *
+ * Styled as a ruled worksheet rather than a floating card: the question sits
+ * under a signal rule, options are separated by hairlines, and feedback is
+ * carried by a margin rule plus a mark, never by colour alone.
+ */
 export default function InlineQuiz({
   quizData,
 }: {
@@ -15,194 +24,179 @@ export default function InlineQuiz({
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [showHint, setShowHint] = useState(false);
 
-  const handleSubmit = () => {
-    if (selectedOption !== null) {
-      setHasSubmitted(true);
-    }
-  };
-
-  if (!quizData) {
-    return <></>;
-  }
+  if (!quizData) return null;
 
   const isCorrect = selectedOption === quizData.correct_answer_index;
 
   return (
-    <div className="w-full max-w-4xl mx-auto my-8 relative">
-      {/* Champagne Gold top accent bar */}
-      <div className="h-1 bg-[var(--champagne)]" />
-
-      <div className=" shadow-[0_10px_30px_rgba(0,0,0,0.05)] px-8 py-10 md:px-12 md:py-14">
-        {/* Header */}
-        <div className="mb-10">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-8 h-8 flex items-center justify-center bg-[var(--champagne)]/10 rounded-sm">
-              <Lightbulb className="w-4 h-4 text-[var(--champagne)]" />
-            </div>
-            <span className="text-xs font-bold tracking-[0.25em] text-[var(--champagne)] uppercase font-sans">
-              Knowledge Check
-            </span>
-          </div>
-          <p className="text-2xl md:text-3xl font-serif text-[var(--charcoal)] leading-snug tracking-tight">
-            {quizData.question_text}
-          </p>
-          {/* Champagne gold hairline divider */}
-          <div className="mt-6 h-px w-16 bg-[var(--champagne)]" />
+    <motion.div layout className="w-full max-w-3xl">
+      {/* Header */}
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-5">
+          <span className="h-px w-7 bg-[var(--signal)]" aria-hidden />
+          <span className="type-label">Knowledge Check</span>
         </div>
-
-        {/* Options */}
-        <div className="space-y-3 mb-10">
-          {quizData.options.map((option, index) => {
-            const isSelected = selectedOption === index;
-            const isActuallyCorrect = index === quizData.correct_answer_index;
-
-            let containerStyle =
-              "border-[var(--charcoal)]/10 hover:border-[var(--highlight)]/40 hover:bg-[var(--highlight)]/10";
-            let letterBg =
-              "bg-[var(--charcoal)]/5 text-[var(--charcoal-light)]";
-            let textStyle = "text-[var(--charcoal-light)]";
-
-            if (hasSubmitted) {
-              if (isActuallyCorrect) {
-                containerStyle = "border-[#2d5016]/40 bg-[#2d5016]/[0.04]";
-                letterBg = "bg-[#2d5016]/10 text-[#2d5016]";
-                textStyle = "text-[#2d5016] font-medium";
-              } else if (isSelected && !isActuallyCorrect) {
-                containerStyle =
-                  "border-[var(--crimson)]/40 bg-[var(--crimson)]/[0.04]";
-                letterBg = "bg-[var(--crimson)]/10 text-[var(--crimson)]";
-                textStyle = "text-[var(--crimson)]";
-              } else {
-                containerStyle = "border-[var(--charcoal)]/5 opacity-35";
-                letterBg =
-                  "bg-[var(--charcoal)]/3 text-[var(--charcoal-light)]/50";
-              }
-            } else if (isSelected) {
-              containerStyle =
-                "border-[var(--highlight)] bg-[var(--highlight)]/5";
-              letterBg = "bg-[var(--highlight)]/5 text-[var(--surface)]";
-              textStyle = "text-[var(--highlight)] font-medium";
-            }
-
-            return (
-              <div key={index}>
-                <button
-                  disabled={hasSubmitted}
-                  onClick={() => setSelectedOption(index)}
-                  className={`w-full text-left px-6 py-5 border transition-colors duration-300 ${containerStyle} ${
-                    !hasSubmitted ? "cursor-pointer" : "cursor-default"
-                  }`}
-                >
-                  <div className="flex items-start md:items-center gap-5">
-                    {/* Letter indicator or result icon */}
-                    <div className="flex-shrink-0">
-                      {hasSubmitted && isActuallyCorrect ? (
-                        <div className="w-9 h-9 flex items-center justify-center bg-[#2d5016]/10 rounded-sm">
-                          <CheckCircle2 className="w-5 h-5 text-[#2d5016]" />
-                        </div>
-                      ) : hasSubmitted && isSelected && !isActuallyCorrect ? (
-                        <div className="w-9 h-9 flex items-center justify-center bg-[var(--crimson)]/10 rounded-sm">
-                          <XCircle className="w-5 h-5 text-[var(--crimson)]" />
-                        </div>
-                      ) : (
-                        <div
-                          className={`w-9 h-9 flex items-center justify-center rounded-sm text-sm font-bold tracking-wide font-sans transition-colors duration-300 ${letterBg}`}
-                        >
-                          {optionLetters[index]}
-                        </div>
-                      )}
-                    </div>
-
-                    <span
-                      className={`text-lg leading-relaxed font-sans transition-colors duration-300 ${textStyle}`}
-                    >
-                      {option.option_text}
-                    </span>
-                  </div>
-                </button>
-
-                {/* Explanation panel */}
-                {hasSubmitted &&
-                  (isSelected || isActuallyCorrect) &&
-                  option.option_explanation && (
-                    <div
-                      className={`mx-6 mt-0 px-6 py-5 border-l-2 ${
-                        isActuallyCorrect
-                          ? "border-l-[#2d5016]/30 bg-[#2d5016]/[0.03]"
-                          : "border-l-[var(--crimson)]/30 bg-[var(--crimson)]/[0.03]"
-                      }`}
-                    >
-                      <div className="flex items-center gap-2 mb-2">
-                        {isActuallyCorrect ? (
-                          <CheckCircle2 className="w-4 h-4 text-[#2d5016]" />
-                        ) : (
-                          <XCircle className="w-4 h-4 text-[var(--crimson)]" />
-                        )}
-                        <span
-                          className={`text-xs font-bold uppercase tracking-[0.2em] font-sans ${
-                            isActuallyCorrect
-                              ? "text-[#2d5016]"
-                              : "text-[var(--crimson)]"
-                          }`}
-                        >
-                          {isActuallyCorrect ? "Correct" : "Incorrect"}
-                        </span>
-                      </div>
-                      <p className="text-base leading-relaxed text-[var(--charcoal-light)] font-sans pl-6">
-                        {option.option_explanation}
-                      </p>
-                    </div>
-                  )}
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Actions */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[var(--charcoal)]/8">
-          <button
-            onClick={handleSubmit}
-            disabled={selectedOption === null || hasSubmitted}
-            className="w-full sm:w-auto px-10 py-3.5 bg-[var(--charcoal)] hover:bg-[var(--champagne)] text-[var(--surface)] font-bold tracking-[0.15em] uppercase text-xs font-sans disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-300"
-          >
-            {hasSubmitted ? "Submitted" : "Submit Answer"}
-          </button>
-
-          {quizData.hint && !hasSubmitted && (
-            <button
-              onClick={() => setShowHint(!showHint)}
-              className="text-xs font-semibold font-sans text-[var(--charcoal-light)]/60 hover:text-[var(--champagne)] uppercase tracking-[0.15em] transition-colors duration-300"
-            >
-              {showHint ? "Hide Hint" : "View Hint"}
-            </button>
-          )}
-        </div>
-
-        {/* Hint */}
-        {showHint && !hasSubmitted && quizData.hint && (
-          <div className="mt-6 px-6 py-5 border-l-2 border-l-[var(--champagne)]/40 bg-[var(--champagne)]/[0.04]">
-            <span className="text-xs font-bold text-[var(--champagne)] uppercase tracking-[0.2em] font-sans block mb-2">
-              Hint
-            </span>
-            <p className="text-lg font-light italic text-[var(--charcoal-light)] font-serif leading-relaxed">
-              {quizData.hint}
-            </p>
-          </div>
-        )}
-
-        {/* Citation */}
-        {hasSubmitted && isCorrect && quizData.correct_answer_citation && (
-          <div className="mt-8 pt-5 border-t border-[var(--charcoal)]/8 flex items-start gap-3">
-            <ExternalLink className="w-4 h-4 mt-0.5 flex-shrink-0 text-[var(--charcoal-light)]/40" />
-            <span className="text-sm font-sans text-[var(--charcoal-light)]/70">
-              <strong className="text-[var(--charcoal)] font-semibold mr-1.5">
-                Source:
-              </strong>
-              {quizData.correct_answer_citation}
-            </span>
-          </div>
-        )}
+        <p className="type-h2 !text-[1.35rem] md:!text-[1.7rem] max-w-[34ch]">
+          {quizData.question_text}
+        </p>
       </div>
-    </div>
+
+      {/* Options */}
+      <motion.ul layout className="border-t border-[var(--rule)]">
+        {quizData.options.map((option, index) => {
+          const isSelected = selectedOption === index;
+          const isAnswer = index === quizData.correct_answer_index;
+          const showAsCorrect = hasSubmitted && isAnswer;
+          const showAsWrong = hasSubmitted && isSelected && !isAnswer;
+          const isDimmed = hasSubmitted && !isAnswer && !isSelected;
+
+          return (
+            <motion.li
+              layout
+              key={index}
+              className="border-b border-[var(--rule)]"
+            >
+              <button
+                type="button"
+                disabled={hasSubmitted}
+                onClick={() => setSelectedOption(index)}
+                aria-pressed={isSelected}
+                className={cn(
+                  "w-full text-left flex items-baseline gap-4 px-4 py-5 transition-colors duration-200",
+                  !hasSubmitted && "cursor-pointer hover:bg-[var(--paper-2)]",
+                  hasSubmitted && "cursor-default",
+                  isSelected && !hasSubmitted && "bg-[var(--signal-tint)]",
+                  showAsCorrect && "bg-[var(--affirm-tint)]",
+                  showAsWrong && "bg-[var(--signal-tint)]",
+                  isDimmed && "opacity-40",
+                )}
+              >
+                <span
+                  className={cn(
+                    "flex-shrink-0 w-6 type-caption tabular-nums",
+                    showAsCorrect && "!text-[var(--affirm)]",
+                    showAsWrong && "!text-[var(--signal)]",
+                    isSelected && !hasSubmitted && "!text-[var(--signal)]",
+                  )}
+                >
+                  {showAsCorrect ? (
+                    <Check className="w-4 h-4" strokeWidth={2.5} />
+                  ) : showAsWrong ? (
+                    <X className="w-4 h-4" strokeWidth={2.5} />
+                  ) : (
+                    optionLetters[index]
+                  )}
+                </span>
+
+                <span
+                  className={cn(
+                    "type-body flex-1",
+                    showAsCorrect && "!text-[var(--ink)] font-medium",
+                  )}
+                >
+                  {option.option_text}
+                </span>
+              </button>
+
+              {/* Explanation for the answer and for whatever was chosen */}
+              <AnimatePresence initial={false}>
+                {hasSubmitted &&
+                  (isSelected || isAnswer) &&
+                  option.option_explanation && (
+                    <motion.div
+                      key="explanation"
+                      layout
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: "easeOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div
+                        className={cn(
+                          "ml-4 mb-5 pl-4 border-l-2",
+                          isAnswer
+                            ? "border-[var(--affirm)]"
+                            : "border-[var(--signal)]",
+                        )}
+                      >
+                        <span
+                          className={cn(
+                            "type-label block mb-1.5",
+                            isAnswer && "!text-[var(--affirm)]",
+                          )}
+                        >
+                          {isAnswer ? "Correct" : "Not quite"}
+                        </span>
+                        <p className="type-body !text-[1rem]">
+                          {option.option_explanation}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+              </AnimatePresence>
+            </motion.li>
+          );
+        })}
+      </motion.ul>
+
+      {/* Hint */}
+      {showHint && !hasSubmitted && quizData.hint && (
+        <p className="mt-6 pl-4 border-l-2 border-[var(--counter)] type-body italic">
+          {quizData.hint}
+        </p>
+      )}
+
+      {/* Actions */}
+      <motion.div layout className="mt-8 flex flex-wrap items-center gap-6">
+        {!hasSubmitted ? (
+          <>
+            <button
+              type="button"
+              onClick={() => selectedOption !== null && setHasSubmitted(true)}
+              disabled={selectedOption === null}
+              className={cn(
+                "type-label px-7 py-3 transition-colors duration-200",
+                selectedOption === null
+                  // Outlined rather than faded, so the disabled label stays legible.
+                  ? "!text-[var(--ink-3)] border border-[var(--rule-2)] cursor-not-allowed"
+                  : "!text-[var(--paper)] bg-[var(--ink)] border border-[var(--ink)] hover:bg-[var(--signal)] hover:border-[var(--signal)] cursor-pointer",
+              )}
+            >
+              Check answer
+            </button>
+
+            {quizData.hint && (
+              <button
+                type="button"
+                onClick={() => setShowHint((v) => !v)}
+                className="type-caption hover:text-[var(--signal)] transition-colors cursor-pointer underline underline-offset-4 decoration-[var(--rule-2)]"
+              >
+                {showHint ? "Hide hint" : "Need a hint?"}
+              </button>
+            )}
+          </>
+        ) : (
+          <button
+            type="button"
+            onClick={() => {
+              setHasSubmitted(false);
+              setSelectedOption(null);
+              setShowHint(false);
+            }}
+            className="type-caption hover:text-[var(--signal)] transition-colors cursor-pointer underline underline-offset-4 decoration-[var(--rule-2)]"
+          >
+            Try again
+          </button>
+        )}
+      </motion.div>
+
+      {/* Source note */}
+      {hasSubmitted && isCorrect && quizData.correct_answer_citation && (
+        <p className="mt-6 type-caption">
+          Source: {quizData.correct_answer_citation}
+        </p>
+      )}
+    </motion.div>
   );
 }

@@ -17,6 +17,7 @@ import {
   Highlight,
   Row,
   Column,
+  Figure,
 } from "@/components/slide-components/SlideComponents";
 import { BackgroundManager } from "@/components/slide-components/Backgrounds";
 import FlowRenderer from "@/components/flowcharts/FlowRenderer";
@@ -57,9 +58,9 @@ export default function IntroMarketingWeek4() {
       {/* Market Structure and Demand [quiz] */}
       <Slide quizData={quizBySlideId["market-structure-and-demand"]}>
         <Heading>Market Structure and Demand</Heading>
-        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mb-6">
+        <Figure>
           <FlowRenderer {...marketStructureFlow} />
-        </div>
+        </Figure>
         <AnimatedList>
           <ListItem>B2B markets typically have fewer, but much larger, buyers than B2C markets.</ListItem>
           <ListItem>Demand in B2B markets is <Highlight>derived demand</Highlight>, meaning it comes from consumer demand.</ListItem>
@@ -109,9 +110,9 @@ export default function IntroMarketingWeek4() {
       {/* Roles in the Buying Center [quiz] */}
       <Slide quizData={quizBySlideId["roles-in-the-buying-center"]}>
         <Heading>Roles in the Buying Center</Heading>
-        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mb-6">
+        <Figure>
           <FlowRenderer {...buyingCenterFlow} />
-        </div>
+        </Figure>
         <AnimatedList>
           <ListItem><Highlight>Users</Highlight> are members of the organization who will actually use the product.</ListItem>
           <ListItem><Highlight>Influencers</Highlight> affect the buying decision by providing information or specifications.</ListItem>
@@ -185,9 +186,9 @@ export default function IntroMarketingWeek4() {
       {/* Key Account Management (KAM) [quiz] */}
       <Slide quizData={quizBySlideId["key-account-management-kam"]}>
         <Heading>Key Account Management (KAM)</Heading>
-        <div className="w-full h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-2xl border border-[var(--crimson)]/15 bg-white/80 mb-6">
+        <Figure>
           <FlowRenderer {...kamProcessFlow} />
-        </div>
+        </Figure>
         <AnimatedList>
           <ListItem><Highlight>Key Account Management</Highlight> is the process of building long term relationships with the company&apos;s most valuable customers.</ListItem>
           <ListItem>Key accounts contribute disproportionately to the company&apos;s revenue and profit.</ListItem>

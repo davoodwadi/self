@@ -4,6 +4,7 @@ import { Edge, Node } from "@xyflow/react";
 // - Charcoal: Standard/cost approaches and market logic
 // - Crimson: Value and high-impact approaches
 export const pricingApproachesFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "root",
@@ -81,6 +82,7 @@ export const pricingApproachesFlow = {
 };
 
 export const newProductPricingFlow = {
+  variant: "broadsheet" as const,
   aiGeneratedNodes: [
     {
       id: "1",
