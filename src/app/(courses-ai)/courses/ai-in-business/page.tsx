@@ -203,7 +203,7 @@ export default function Home() {
               href="/courses/ai-in-business/01-introduction"
               label="Week 01"
               title="Introduction"
-              description="A recap of fundamentals of AI"
+              description="Introduction to the course"
               variant="crimson"
             />
 
@@ -219,7 +219,7 @@ export default function Home() {
               href="/courses/ai-in-business/03-ai-in-finance"
               label="Week 03"
               title="AI in Finance"
-              description="A gentle introduction to deep learning"
+              description="Applications of AI in Finance"
               variant="crimson"
             />
 
@@ -227,7 +227,7 @@ export default function Home() {
               href="/courses/ai-in-business/agentic-ai"
               label="New Paradigm"
               title="Agentic AI and Vibe Coding"
-              description="Moving away from manual syntax to autonomous agents and orchestration."
+              description="Moving away from manual coding to autonomous agents and orchestration."
               variant="gold"
             />
 
@@ -235,7 +235,7 @@ export default function Home() {
               href="/courses/ai-in-business/04-ai-in-human-resources"
               label="Week 04"
               title="AI in Human Resources"
-              description="A gentle introduction to deep learning"
+              description="Applications of AI in HR"
               variant="crimson"
             />
 
@@ -243,7 +243,7 @@ export default function Home() {
               href="/courses/ai-in-business/05-ai-in-operations-supply-chain"
               label="Week 05"
               title="AI in Operations and Supply Chain"
-              description="A gentle introduction to deep learning"
+              description="Applications of AI in Operations and Supply Chain"
               variant="crimson"
             />
 
@@ -251,7 +251,7 @@ export default function Home() {
               href="/courses/ai-in-business/06-ai-in-business-strategy"
               label="Week 06"
               title="AI in Business Strategy"
-              description="A gentle introduction to deep learning"
+              description="Applications of AI in Business Strategy"
               variant="crimson"
             />
 
@@ -281,7 +281,6 @@ export default function Home() {
           </div>
         </main>
       </section>
-
     </div>
   );
 }
