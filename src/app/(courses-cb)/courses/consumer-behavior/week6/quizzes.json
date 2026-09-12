@@ -1,0 +1,67 @@
+[
+  {
+    "slide_id": "abc-model-affect-behavior-and-cognition",
+    "question_text": "Which part of the ABC model describes a consumer's beliefs about a brand?",
+    "hint": "It concerns thoughts and knowledge.",
+    "correct_answer_index": 2,
+    "correct_answer_citation": "Cognition means beliefs and thoughts about an object.",
+    "options": [
+      { "option_text": "Affect", "option_explanation": "Affect describes feelings and emotions." },
+      { "option_text": "Behavior", "option_explanation": "Behavior describes actions or intentions." },
+      { "option_text": "Cognition", "option_explanation": "Correct. Cognition means beliefs and thoughts." },
+      { "option_text": "Attractiveness", "option_explanation": "Attractiveness is a source characteristic, not an ABC component." }
+    ]
+  },
+  {
+    "slide_id": "functions-of-consumer-attitudes",
+    "question_text": "Which attitude function helps a consumer express identity and values?",
+    "hint": "This function communicates something about the self.",
+    "correct_answer_index": 1,
+    "correct_answer_citation": "The value-expressive function communicates identity, values, and self-image.",
+    "options": [
+      { "option_text": "Utilitarian", "option_explanation": "Utilitarian attitudes help consumers gain benefits or avoid costs." },
+      { "option_text": "Value-expressive", "option_explanation": "Correct. This function expresses identity and values." },
+      { "option_text": "Ego-defensive", "option_explanation": "Ego-defensive attitudes protect self-esteem." },
+      { "option_text": "Knowledge", "option_explanation": "Knowledge attitudes organize information." }
+    ]
+  },
+  {
+    "slide_id": "attitude-formation-hierarchies",
+    "question_text": "Which hierarchy is think, feel, then act?",
+    "hint": "It is the careful pattern used for important decisions.",
+    "correct_answer_index": 0,
+    "correct_answer_citation": "The standard learning hierarchy is think, feel, then act.",
+    "options": [
+      { "option_text": "Standard learning", "option_explanation": "Correct. Standard learning follows think, feel, then act." },
+      { "option_text": "Low involvement", "option_explanation": "Low involvement follows think briefly, act, then develop a feeling." },
+      { "option_text": "Experiential", "option_explanation": "Experiential follows feel, act, then explain." },
+      { "option_text": "Postpurchase", "option_explanation": "Postpurchase is not one of the three attitude hierarchies introduced here." }
+    ]
+  },
+  {
+    "slide_id": "source-credibility-and-attractiveness",
+    "question_text": "What two qualities make up source credibility?",
+    "hint": "One concerns knowledge and the other concerns honesty.",
+    "correct_answer_index": 3,
+    "correct_answer_citation": "Source credibility comes from expertise and trustworthiness.",
+    "options": [
+      { "option_text": "Familiarity and similarity", "option_explanation": "These are parts of source attractiveness." },
+      { "option_text": "Emotion and action", "option_explanation": "These are parts of the ABC model, not source credibility." },
+      { "option_text": "Benefits and losses", "option_explanation": "These describe message framing." },
+      { "option_text": "Expertise and trustworthiness", "option_explanation": "Correct. Credibility depends on knowledge and perceived honesty." }
+    ]
+  },
+  {
+    "slide_id": "message-framing-and-attitude-change",
+    "question_text": "What does a negative frame emphasize?",
+    "hint": "It focuses on what may be lost or avoided.",
+    "correct_answer_index": 1,
+    "correct_answer_citation": "A negative frame emphasizes losses, risks, or the problem that may follow inaction.",
+    "options": [
+      { "option_text": "Only product features", "option_explanation": "A frame can emphasize consequences, not only features." },
+      { "option_text": "Losses, risks, or problems from inaction", "option_explanation": "Correct. Negative framing focuses on an unwanted outcome." },
+      { "option_text": "The source's expertise", "option_explanation": "Expertise is part of source credibility." },
+      { "option_text": "The consumer's past purchases", "option_explanation": "Past purchases are not the definition of negative framing." }
+    ]
+  }
+]

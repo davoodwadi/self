@@ -1,0 +1,136 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   CONSUMER BEHAVIOR — design system
+   --------------------------------------------------------------------------
+   Warm editorial palette suited for behavioral sciences and marketing:
+   clean paper ground, dark ink, amber-terracotta signal color, and deep slate
+   counterweight.
+   ========================================================================== */
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-signal: var(--signal);
+  --color-counter: var(--counter);
+  --color-affirm: var(--affirm);
+
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-instrument-sans);
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --font-serif: var(--font-fraunces);
+}
+
+@layer base {
+  :root {
+    /* --- Ground --------------------------------------------------------- */
+    --paper: #faf8f5; /* soft warm page ground */
+    --paper-2: #f2efe9; /* card/band fill */
+    --paper-3: #e8e3d8; /* hover/active state */
+
+    /* --- Ink ------------------------------------------------------------ */
+    --ink: #181613; /* primary dark ink */
+    --ink-2: #3c3831; /* body text */
+    --ink-3: #6d675c; /* captions, numbers, labels */
+    --rule: #dcd6c9; /* subtle hairline dividers */
+    --rule-2: #c8c0af; /* stronger dividers */
+
+    /* --- Signal (warm terracotta) --------------------------------------- */
+    --signal: #c04a26;
+    --signal-deep: #963518;
+    --signal-tint: rgba(192, 74, 38, 0.08);
+    --signal-line: rgba(192, 74, 38, 0.28);
+
+    /* --- Counter (deep slate teal) -------------------------------------- */
+    --counter: #1e4e52;
+    --counter-tint: rgba(30, 78, 82, 0.08);
+    --counter-line: rgba(30, 78, 82, 0.28);
+
+    /* --- Affirm --------------------------------------------------------- */
+    --affirm: #2a6f4e;
+    --affirm-tint: rgba(42, 111, 78, 0.08);
+    --affirm-line: rgba(42, 111, 78, 0.28);
+
+    /* --- Slide / Layout geometry ---------------------------------------- */
+    --slide-max: 76rem;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink-2);
+    font-family:
+      var(--font-instrument-sans),
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--ink);
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+}
+
+.type-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.type-lead {
+  font-size: clamp(1.125rem, 1.6vw, 1.35rem);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.type-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.type-caption {
+  font-size: 0.8125rem;
+  color: var(--ink-3);
+  letter-spacing: 0.02em;
+}
+
+.type-body {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.type-h2 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  line-height: 1.25;
+  font-weight: 500;
+  color: var(--ink);
+}

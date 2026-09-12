@@ -248,6 +248,152 @@ export default function Week10IMC() {
 
       <Slide id="steps-in-developing-effective-communication" quizData={quizBySlideId["steps-in-developing-effective-communication"]}>
         <Heading>Steps in Developing <Highlight>Effective Communication</Highlight></Heading>
+        <Figure height="lg">
+          <FlowRenderer {...communicationStepsFlow} />
+        </Figure>
+        <Row gap="medium" items="start">
+          <Column spanRatio="1/3">
+            <Card title="1. Audience" subtitle="Start Here">
+              <ContentDescription>Identify the target audience</ContentDescription>
+            </Card>
+          </Column>
+          <Column spanRatio="1/3">
+            <Card title="2. Objectives" subtitle="Set Direction">
+              <ContentDescription>Determine the communication objectives</ContentDescription>
+            </Card>
+          </Column>
+          <Column spanRatio="1/3">
+            <Card title="3. Message" subtitle="Shape Meaning">
+              <ContentDescription>Design the message</ContentDescription>
+            </Card>
+          </Column>
+        </Row>
+        <Row gap="medium" items="start">
+          <Column spanRatio="1/2">
+            <Card title="4. Media" subtitle="Choose the Channel">
+              <ContentDescription>Choose the media to send the message</ContentDescription>
+            </Card>
+          </Column>
+          <Column spanRatio="1/2">
+            <Card title="5. Feedback" subtitle="Learn and Improve">
+              <ContentDescription>Select the message source and collect feedback</ContentDescription>
+            </Card>
+          </Column>
+        </Row>
+      </Slide>
+
+      <Slide id="determining-communication-objectives">
+        <Heading>Determining Communication <Highlight>Objectives</Highlight></Heading>
+        <Row gap="large" items="center">
+          <Column spanRatio="1/2">
+            <Callout variant="primary" title="The Goal">
+              Guide the consumer toward the final purchase decision
+            </Callout>
+          </Column>
+          <Column spanRatio="1/2">
+            <AnimatedList>
+              <ListItem>Determine where the target audience stands in relation to the product</ListItem>
+              <ListItem>Move the consumer through buyer-readiness stages</ListItem>
+              <ListItem>Awareness, knowledge, liking, preference, conviction, and purchase</ListItem>
+            </AnimatedList>
+          </Column>
+        </Row>
+      </Slide>
+
+      <Slide id="designing-the-message">
+        <Heading>Designing the <Highlight>Message</Highlight></Heading>
+        <Row gap="medium" items="start">
+          <Column spanRatio="1/2">
+            <Card title="Content" subtitle="Appeal">
+              <ContentDescription>Use rational, emotional, or moral appeals to get attention, hold interest, and arouse desire.</ContentDescription>
+            </Card>
+          </Column>
+          <Column spanRatio="1/2">
+            <Card title="Structure" subtitle="Meaning">
+              <ContentDescription>Decide whether to draw a conclusion or leave it to the audience.</ContentDescription>
+            </Card>
+          </Column>
+        </Row>
+        <Callout variant="secondary" title="Format">
+          Design, layout, color, and sound shape how the message is received.
+        </Callout>
+      </Slide>
+
+      <Slide id="setting-the-promotional-budget" quizData={quizBySlideId["setting-the-promotional-budget"]}>
+        <Heading>Setting the Promotional <Highlight>Budget</Highlight></Heading>
+        <Row gap="medium" items="start">
+          <Column spanRatio="1/2">
+            <Card title="Affordable Method">
+              <ContentDescription>Set the budget at the level management thinks the company can afford.</ContentDescription>
+            </Card>
+            <Card title="Percentage-of-Sales Method">
+              <ContentDescription>Set the budget at a percentage of current or forecasted sales.</ContentDescription>
+            </Card>
+          </Column>
+          <Column spanRatio="1/2">
+            <Card title="Competitive-Parity Method">
+              <ContentDescription>Match competitors' promotional outlays.</ContentDescription>
+            </Card>
+            <Card title="Objective-and-Task Method">
+              <ContentDescription>Define objectives and determine the tasks needed to achieve them.</ContentDescription>
+            </Card>
+          </Column>
+        </Row>
+      </Slide>
+
+      <Slide id="objective-and-task-method-advantage">
+        <Heading>The Objective-and-Task <Highlight>Advantage</Highlight></Heading>
+        <Row gap="large" items="center">
+          <Column spanRatio="1/2">
+            <Metric value="01" label="Strategic Connection" />
+            <ContentText>Spending is tied directly to strategic goals.</ContentText>
+          </Column>
+          <Column spanRatio="1/2">
+            <AnimatedList>
+              <ListItem>Forces management to spell out its assumptions about spending and results</ListItem>
+              <ListItem>Often the most logical approach to budget setting</ListItem>
+              <ListItem>Can be difficult because results are hard to predict</ListItem>
+            </AnimatedList>
+          </Column>
+        </Row>
+      </Slide>
+
+      <Slide id="measuring-effectiveness" quizData={quizBySlideId["measuring-effectiveness"]}>
+        <Heading>Measuring <Highlight>Effectiveness</Highlight></Heading>
+        <Row gap="large" items="center">
+          <Column spanRatio="1/2">
+            <Callout variant="primary" title="Measure the Return">
+              Evaluate the return on investment for promotional activities.
+            </Callout>
+          </Column>
+          <Column spanRatio="1/2">
+            <AnimatedList>
+              <ListItem>Ask the target audience whether they remember the message</ListItem>
+              <ListItem>Measure how often they saw it and what they recall</ListItem>
+              <ListItem>Analyze changes in sales and market share</ListItem>
+            </AnimatedList>
+          </Column>
+        </Row>
+      </Slide>
+
+      <Slide id="discussion-budgeting-strategies">
+        <Tag>Reflection</Tag>
+        <Heading>Discussion: Budgeting Strategies</Heading>
+        <DiscussionCard title="Group Discussion">
+          If a startup uses the percentage-of-sales method during its first year when sales are low, how might this affect brand awareness? What alternative method might be more appropriate?
+        </DiscussionCard>
+      </Slide>
+
+      <Slide id="conclusion-integrated-marketing-communications">
+        <Heading>Integrated Marketing <Highlight>Communications</Highlight></Heading>
+        <Subtitle variant="section">The Fourth P</Subtitle>
+        <AnimatedList>
+          <ListItem>The promotion mix combines advertising, PR, sales promotion, personal selling, and digital marketing</ListItem>
+          <ListItem>IMC makes these tools work together with a consistent message</ListItem>
+          <ListItem>Effective communication starts with the audience and clear objectives</ListItem>
+          <ListItem>Strategic budgeting and measurement help maximize promotional impact</ListItem>
+        </AnimatedList>
+      </Slide>
         <Figure>
           <FlowRenderer {...communicationStepsFlow} />
         </Figure>

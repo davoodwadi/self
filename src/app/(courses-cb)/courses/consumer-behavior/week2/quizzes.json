@@ -1,0 +1,102 @@
+[
+  {
+    "slide_id": "three-stages-of-perception",
+    "question_text": "A shopper scrolls past dozens of social media ads without noticing them until an ad showing a steaming cup of coffee grabs their focus on a cold morning. Which stage of perception did the coffee ad successfully secure?",
+    "hint": "Think about the mental allocation of processing capacity to a specific stimulus.",
+    "correct_answer_citation": "Stage 2 is Attention: The mind allocates mental processing capacity to a specific stimulus.",
+    "options": [
+      {
+        "option_text": "Exposure stage",
+        "option_explanation": "Exposure simply means the stimulus entered the person's sensory environment, which all the scrolled ads did."
+      },
+      {
+        "option_text": "Attention stage",
+        "option_explanation": "Correct. Attention occurs when the consumer actually allocates mental processing resources to focus on the specific ad."
+      },
+      {
+        "option_text": "Interpretation stage",
+        "option_explanation": "Interpretation happens after attention, when the brain assigns meaning to the stimulus."
+      },
+      {
+        "option_text": "Adaptation stage",
+        "option_explanation": "Adaptation refers to becoming habituated and ignoring a stimulus over time."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "sensory-thresholds-limits-of-awareness",
+    "question_text": "What is the term for the smallest amount of change between two stimuli that a consumer's senses can detect?",
+    "hint": "This concept is also known as the Just Noticeable Difference (JND).",
+    "correct_answer_citation": "The differential threshold is the ability of a sensory system to detect changes or differences between two stimuli. The minimum difference between two stimuli needed for detection is called the Just Noticeable Difference, or JND.",
+    "options": [
+      {
+        "option_text": "Absolute threshold",
+        "option_explanation": "The absolute threshold is the minimum amount of stimulation required to detect a stimulus at all."
+      },
+      {
+        "option_text": "Differential threshold (JND)",
+        "option_explanation": "Correct. The differential threshold (or JND) is the minimum difference between two stimuli needed for detection."
+      },
+      {
+        "option_text": "Perceptual vigilance",
+        "option_explanation": "Perceptual vigilance refers to noticing stimuli that relate directly to current personal needs."
+      },
+      {
+        "option_text": "Subliminal perception",
+        "option_explanation": "Subliminal perception occurs below the threshold of conscious awareness."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "webers-law-when-differences-matter",
+    "question_text": "A snack manufacturer wants to quietly reduce the amount of chips in a bag by 5 grams without consumers noticing. According to Weber's Law, what should the manufacturer do?",
+    "hint": "To keep a change unnoticed, it should stay below the threshold of detection.",
+    "correct_answer_citation": "Marketers stay below the JND when shrinking package sizes or raising prices slightly.",
+    "options": [
+      {
+        "option_text": "Keep the change strictly below the Just Noticeable Difference (JND)",
+        "option_explanation": "Correct. Staying below the JND prevents buyers from noticing subtle reductions in product volume or size."
+      },
+      {
+        "option_text": "Exceed the differential threshold by as wide a margin as possible",
+        "option_explanation": "Exceeding the threshold would make the reduction immediately obvious to shoppers."
+      },
+      {
+        "option_text": "Redesign the package with completely new colors and logos",
+        "option_explanation": "A complete redesign would draw attention directly to the package change."
+      },
+      {
+        "option_text": "Apply the principle of perceptual defense to hide the bag",
+        "option_explanation": "Perceptual defense is an internal psychological filter used by consumers, not a packaging tactic."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "interpretation-and-gestalt-principles",
+    "question_text": "A famous wildlife conservation brand uses a logo showing parts of a panda where the white shapes are not fully enclosed by black lines, yet viewers immediately recognize the complete animal. Which Gestalt principle does this demonstrate?",
+    "hint": "The viewer's mind automatically fills in the missing gaps to perceive the whole picture.",
+    "correct_answer_citation": "The Closure principle means people fill in missing pieces to perceive a complete picture, such as an incomplete brand logo.",
+    "options": [
+      {
+        "option_text": "The Similarity principle",
+        "option_explanation": "Similarity refers to grouping elements that share visual traits like color or shape."
+      },
+      {
+        "option_text": "The Figure-Ground principle",
+        "option_explanation": "Figure-Ground refers to separating a focal object from its surrounding background."
+      },
+      {
+        "option_text": "The Closure principle",
+        "option_explanation": "Correct. The Closure principle occurs when human minds fill in missing visual gaps to perceive a complete, unified form."
+      },
+      {
+        "option_text": "The Adaptation principle",
+        "option_explanation": "Adaptation is a process where individuals stop responding to familiar, unchanging stimuli."
+      }
+    ],
+    "correct_answer_index": 2
+  }
+]

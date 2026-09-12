@@ -1,0 +1,102 @@
+[
+  {
+    "slide_id": "classical-conditioning-pairing-stimuli",
+    "question_text": "In classical conditioning, what role does catchy, upbeat music in a commercial play before the consumer learns to associate it with the brand?",
+    "hint": "Consider which stimulus naturally triggers a positive emotional reaction on its own.",
+    "correct_answer_citation": "In marketing, an unconditioned stimulus like upbeat music naturally triggers positive feelings.",
+    "options": [
+      {
+        "option_text": "An unconditioned stimulus",
+        "option_explanation": "Correct. Upbeat music naturally elicits an emotional response without any prior training, making it an unconditioned stimulus."
+      },
+      {
+        "option_text": "A conditioned stimulus",
+        "option_explanation": "A conditioned stimulus starts as neutral (like the brand logo) and only acquires meaning after repeated pairings."
+      },
+      {
+        "option_text": "A conditioned response",
+        "option_explanation": "A conditioned response is the learned reaction, not the music stimulus itself."
+      },
+      {
+        "option_text": "Negative reinforcement",
+        "option_explanation": "Negative reinforcement is an operant conditioning concept involving removing an unpleasant condition, not musical pairing."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "slide_id": "repetition-and-stimulus-generalization",
+    "question_text": "A store brand packages its generic shampoo in a bottle that closely resembles the color palette and font of a leading national brand. Which learning principle is being applied?",
+    "hint": "This principle occurs when people react similarly to things that look like an established stimulus.",
+    "correct_answer_citation": "Stimulus generalization happens when similar stimuli trigger the same learned response. Store brands use this principle.",
+    "options": [
+      {
+        "option_text": "Stimulus discrimination",
+        "option_explanation": "Stimulus discrimination involves teaching consumers to identify differences between brands, rather than look alike."
+      },
+      {
+        "option_text": "Stimulus generalization",
+        "option_explanation": "Correct. The store brand leverages stimulus generalization so consumers transfer positive feelings from the national brand to the similar package."
+      },
+      {
+        "option_text": "Advertising wear-out",
+        "option_explanation": "Advertising wear-out occurs when too much repetition makes consumers tune out or dislike an advertisement."
+      },
+      {
+        "option_text": "Sensory threshold decay",
+        "option_explanation": "Sensory threshold refers to the minimum intensity to perceive a stimulus, not mimicry of packaging."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "observational-learning-watching-others",
+    "question_text": "What is the key difference between observational learning and instrumental conditioning?",
+    "hint": "Think about whether the consumer has to experience the reward or punishment directly.",
+    "correct_answer_citation": "Consumers do not learn only from personal rewards. They also learn by watching other people.",
+    "options": [
+      {
+        "option_text": "Observational learning requires direct biological punishment for every action.",
+        "option_explanation": "Observational learning does not require personal punishment; consumers learn by seeing what happens to others."
+      },
+      {
+        "option_text": "Observational learning allows people to learn by modeling the behavior of others rather than experiencing direct consequences.",
+        "option_explanation": "Correct. Observational learning occurs through watching and modeling peers or influencers without needing direct personal reinforcement."
+      },
+      {
+        "option_text": "Observational learning only works if the consumer is unconscious.",
+        "option_explanation": "Observational learning requires conscious attention, retention, and active modeling."
+      },
+      {
+        "option_text": "Instrumental conditioning does not use rewards or punishments.",
+        "option_explanation": "Instrumental conditioning relies directly on reinforcement and punishment."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "slide_id": "the-memory-system-three-stores",
+    "question_text": "A consumer glances at a highway billboard for two seconds, noting the image before it disappears from sight. Which memory store first received this brief input?",
+    "hint": "This memory store holds raw sensory information for just a few seconds.",
+    "correct_answer_citation": "Sensory memory holds brief sensory inputs for a few seconds. If an ad gets attention, it moves forward.",
+    "options": [
+      {
+        "option_text": "Long-term memory",
+        "option_explanation": "Long-term memory stores information for long periods after rehearsal, not initial momentary impressions."
+      },
+      {
+        "option_text": "Short-term memory",
+        "option_explanation": "Short-term memory holds active thoughts for about twenty seconds once attention is focused."
+      },
+      {
+        "option_text": "Sensory memory",
+        "option_explanation": "Correct. Sensory memory captures immediate visual and auditory impressions for a couple seconds."
+      },
+      {
+        "option_text": "Associative memory network",
+        "option_explanation": "Associative memory refers to the network structure of long-term memory, not the initial raw sensory buffer."
+      }
+    ],
+    "correct_answer_index": 2
+  }
+]
