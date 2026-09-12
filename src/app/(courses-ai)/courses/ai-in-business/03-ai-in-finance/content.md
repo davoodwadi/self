@@ -3,7 +3,6 @@ topic: "Applications of AI in Finance"
 lecturer: "Davood Wadi, PhD"
 course: "Applications of AI in Business"
 week: "03-ai-in-finance"
-backgroundShape: "A restrained cinematic field of softly blurred market grids, balance-sheet lines, and flowing transaction signals moving across a warm academic canvas, suggesting capital in motion without competing with slide text."
 ---
 
 ## Title Slide

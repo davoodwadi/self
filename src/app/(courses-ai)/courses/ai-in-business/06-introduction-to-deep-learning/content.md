@@ -2,8 +2,6 @@
 # Topic
 Introduction to Deep Learning: Unlocking Complex Data for Business Advantage
 
-# Background Shape
-A slowly rotating 3D neural network sphere composed of glowing interconnected nodes. The nodes pulse softly to simulate data flow, utilizing the deep academic crimson (#8B0000) for active nodes and subtle gold (#D4AF37) for the connections, resting on a clean, creamy background (#F9F7F5).
 
 # Slide contents (16 slides at least)
 

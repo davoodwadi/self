@@ -3,7 +3,6 @@ topic: "AI in Operations and Supply Chain"
 lecturer: "Davood Wadi, PhD"
 course: "AI in Business"
 week: "05-ai-in-operations-supply-chain"
-background: "A vast, glowing global network map with pulsating supply chain nodes and data streams connecting continents."
 ---
 
 ## Title Slide

@@ -3,7 +3,6 @@ topic: "EDII in AI - Equity, Diversity, Inclusion, and Indigeneity"
 lecturer: "Davood Wadi, PhD"
 course: "Applications of AI in Business"
 week: "07-edii"
-backgroundShape: "Prismatic glass shards and balanced geometric lattices representing fairness, accountability, and the tension between data systems and human values."
 ---
 
 ## Title Slide

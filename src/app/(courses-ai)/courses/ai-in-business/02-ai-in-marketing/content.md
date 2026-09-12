@@ -3,7 +3,6 @@ topic: "Applications of AI in Marketing and Consumer Behavior"
 lecturer: "Davood Wadi, PhD"
 course: "Applications of AI in Business"
 week: "02-ai-in-marketing"
-backgroundShape: "A restrained cinematic field of softly blurred customer nodes, signal trails, and decision arcs crossing a warm academic canvas, suggesting an intelligent system coordinating the full customer lifecycle."
 ---
 
 ## Title Slide

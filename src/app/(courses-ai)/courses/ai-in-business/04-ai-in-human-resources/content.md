@@ -3,7 +3,6 @@ topic: "Applications of AI in Human Resources"
 lecturer: "Davood Wadi, PhD"
 course: "Applications of AI in Business"
 week: "04-ai-in-human-resources"
-backgroundShape: "A restrained cinematic field of softly blurred org-chart lines, talent flows, skill clusters, and policy signals moving across a warm academic canvas, suggesting a workforce system under intelligent coordination without competing with slide text."
 ---
 
 ## Title Slide

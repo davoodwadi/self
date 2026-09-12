@@ -3,7 +3,6 @@ topic: AI in Business Strategy
 lecturer: "Davood Wadi, PhD"
 course: AI and Innovation
 week: 06-ai-in-business-strategy
-background: "A vast, glowing strategic chessboard with shifting, predictive pathways illuminating the best moves in a charcoal and crimson void."
 ---
 
 ## Title Slide

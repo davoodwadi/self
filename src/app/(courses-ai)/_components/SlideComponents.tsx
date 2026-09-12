@@ -11,7 +11,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { ArrowLeft, CircleSmall } from "lucide-react";
-import type { CourseQuiz } from "@/lib/course-quiz";
 export { default as Diagram } from "./MermaidDiagram";
 import InlineQuiz from "./InlineQuiz";
 import { cn } from "@/lib/utils";
@@ -178,7 +177,7 @@ export function Slide({
   className?: string;
   border?: boolean;
   id?: string;
-  quizData?: CourseQuiz;
+  quizData?: null;
 }) {
   return (
     <div>
@@ -711,13 +710,9 @@ export function ContentText({
     layout === "prose"
       ? "mt-8 font-light leading-relaxed space-y-6 [&>p>strong]:text-[var(--crimson)] [&>p>strong]:font-semibold [&>ul]:list-disc [&>ul]:pl-6 [&>ul>li::marker]:text-[var(--crimson)]"
       : "text-[var(--charcoal-light)] font-light leading-relaxed mb-4 border-l-4 border-[var(--crimson)]/20 pl-6 py-2";
-  const finalClass = cn(`text-left w-full ${layoutClass}`, className)
-  console.log(finalClass)
-  return (
-    <div className={finalClass}>
-      {children}
-    </div>
-  );
+  const finalClass = cn(`text-left w-full ${layoutClass}`, className);
+  console.log(finalClass);
+  return <div className={finalClass}>{children}</div>;
 }
 
 /**
@@ -866,12 +861,20 @@ export function Card({
  *   <ContentDescription>Our approach to conducting this study...</ContentDescription>
  * </Card>
  */
-export function ContentTitle({ children ,
+export function ContentTitle({
+  children,
   className = "",
-
-}: { children: React.ReactNode, className?: string }) {
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <h3 className={cn("text-2xl font-bold mb-3 text-[var(--charcoal)]", className)}>
+    <h3
+      className={cn(
+        "text-2xl font-bold mb-3 text-[var(--charcoal)]",
+        className,
+      )}
+    >
       {children}
     </h3>
   );
