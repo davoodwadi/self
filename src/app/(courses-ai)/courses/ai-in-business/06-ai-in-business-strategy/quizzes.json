@@ -1,0 +1,177 @@
+[
+  {
+    "slide_id": "strategic-asset",
+    "question_text": "According to the lecture, what does AI introduce to the strategic landscape?",
+    "hint": "Traditional strategy was static and slow. Think about what AI adds and what it does to the edges of a market.",
+    "correct_answer_citation": "Week 06 — The New Strategic Landscape",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Static industry analysis paired with slow, careful adaptation.",
+        "option_explanation": "That describes traditional strategy, which relied on static industry analysis and slow adaptation."
+      },
+      {
+        "option_text": "A shift from proactive foresight back toward reactive planning cycles.",
+        "option_explanation": "This reverses the lecture: organizations must transition from reactive planning to proactive foresight."
+      },
+      {
+        "option_text": "Dynamic, predictive capabilities that reshape market boundaries.",
+        "option_explanation": "Correct. AI introduces dynamic, predictive capabilities that reshape market boundaries."
+      },
+      {
+        "option_text": "A slower pace of strategic decision making across the organization.",
+        "option_explanation": "The lecture says the velocity of strategic decision making accelerates significantly."
+      }
+    ]
+  },
+  {
+    "slide_id": "product-service",
+    "question_text": "According to the lecture, where does the highest strategic return often come from?",
+    "hint": "Of the three dimensions of value creation, one creates revenue that did not exist before.",
+    "correct_answer_citation": "Week 06 — Dimensions of Value Creation",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Business model innovation enabling new revenue streams.",
+        "option_explanation": "Correct. The highest strategic return often comes from business model innovation, which enables entirely new revenue streams."
+      },
+      {
+        "option_text": "Cost reduction through intelligent automation and process optimization.",
+        "option_explanation": "Cost reduction is one dimension of value creation, but the lecture says the highest strategic return often comes from business model innovation."
+      },
+      {
+        "option_text": "Revenue growth via hyper-personalization and predictive cross-selling.",
+        "option_explanation": "Revenue growth is one dimension of value creation, but the lecture says the highest strategic return often comes from business model innovation."
+      },
+      {
+        "option_text": "Process optimization alone.",
+        "option_explanation": "Process optimization is one route to cost reduction. The lecture names business model innovation as the usual source of the highest strategic return."
+      }
+    ]
+  },
+  {
+    "slide_id": "ecosystems",
+    "question_text": "How does the lecture describe the cost structure of AI?",
+    "hint": "Compare what it costs to develop a model with what it costs to deploy it once more.",
+    "correct_answer_citation": "Week 06 — The Economics of AI",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Low fixed costs of model development with high costs for each deployment.",
+        "option_explanation": "This reverses the lecture: fixed costs of model development are high and marginal costs of deployment are near zero."
+      },
+      {
+        "option_text": "Costs that rise steadily with every additional unit deployed.",
+        "option_explanation": "The lecture describes near-zero marginal costs of deployment, so each extra deployment adds almost nothing."
+      },
+      {
+        "option_text": "Economies of scale that are weakened by network effects in data accumulation.",
+        "option_explanation": "The lecture says economies of scale are amplified, not weakened, by network effects in data accumulation."
+      },
+      {
+        "option_text": "High fixed development costs with near-zero marginal deployment costs.",
+        "option_explanation": "Correct. AI pairs high fixed costs of model development with near-zero marginal costs of deployment."
+      }
+    ]
+  },
+  {
+    "slide_id": "network-effects",
+    "question_text": "According to the lecture, where does true data advantage stem from?",
+    "hint": "Think about data that competitors cannot simply buy or synthesize.",
+    "correct_answer_citation": "Week 06 — The Data Moat Fallacy",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Accumulating massive volumes of generic data before competitors do.",
+        "option_explanation": "The lecture says accumulating massive volumes of generic data does not guarantee a durable advantage."
+      },
+      {
+        "option_text": "Exclusive, domain-specific data tied to proprietary workflows.",
+        "option_explanation": "Correct. True advantage stems from exclusive, domain-specific data tied to proprietary workflows."
+      },
+      {
+        "option_text": "Purchasing or synthesizing datasets that are similar to what rivals hold.",
+        "option_explanation": "Competitors can often purchase or synthesize similar datasets, which is why such data does not give a durable advantage."
+      },
+      {
+        "option_text": "Generic data collected at scale.",
+        "option_explanation": "The lecture calls this the data moat fallacy: generic data, however much of it, does not guarantee a durable advantage."
+      }
+    ]
+  },
+  {
+    "slide_id": "open-source",
+    "question_text": "According to the lecture, what is the trade-off of purchasing AI solutions?",
+    "hint": "Buying gets you somewhere fast. Consider what it costs you in how different you can be.",
+    "correct_answer_citation": "Week 06 — The Build versus Buy Dilemma",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "They require significant capital and talent but secure proprietary advantage.",
+        "option_explanation": "That describes building custom models, not purchasing AI solutions."
+      },
+      {
+        "option_text": "They slow speed to market but make strategic differentiation easier.",
+        "option_explanation": "This reverses the lecture: purchasing offers speed to market but limits strategic differentiation."
+      },
+      {
+        "option_text": "They offer speed to market but limit strategic differentiation.",
+        "option_explanation": "Correct. Purchasing AI solutions offers speed to market but limits strategic differentiation."
+      },
+      {
+        "option_text": "They remove the need to map core competencies first.",
+        "option_explanation": "The lecture says organizations must map their core competencies to determine where to build and where to buy."
+      }
+    ]
+  },
+  {
+    "slide_id": "centralized",
+    "question_text": "What shift does the AI operating model involve, according to the lecture?",
+    "hint": "Think about how teams are organized: by department, or around a product.",
+    "correct_answer_citation": "Week 06 — The AI Operating Model",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "From siloed departments to cross-functional, product-oriented squads.",
+        "option_explanation": "Correct. The AI operating model shifts from siloed departments to cross-functional, product-oriented squads."
+      },
+      {
+        "option_text": "From cross-functional squads back to separate, specialized departments.",
+        "option_explanation": "This reverses the lecture: the shift is away from siloed departments and toward cross-functional squads."
+      },
+      {
+        "option_text": "Keeping data science apart from data engineering and business strategy roles.",
+        "option_explanation": "The lecture describes integrating data engineering, data science, and business strategy roles."
+      },
+      {
+        "option_text": "Optimizing for fewer, slower iterations with learning saved for the end.",
+        "option_explanation": "The operating model must optimize for rapid iteration and continuous learning."
+      }
+    ]
+  },
+  {
+    "slide_id": "algorithmic-risk",
+    "question_text": "According to the lecture, when do many AI strategies fail?",
+    "hint": "Think about the step between a small trial and the live system.",
+    "correct_answer_citation": "Week 06 — The Execution Gap",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Before any pilot has been built.",
+        "option_explanation": "The lecture places the failure later: during the transition from pilot to production."
+      },
+      {
+        "option_text": "After legacy systems are fully integrated into production.",
+        "option_explanation": "The lecture says a lack of integration with legacy systems often stalls deployment, so full integration is not where strategies fail."
+      },
+      {
+        "option_text": "When change management becomes too rigorous.",
+        "option_explanation": "Successful execution requires rigorous change management and stakeholder alignment."
+      },
+      {
+        "option_text": "During the transition from pilot to production.",
+        "option_explanation": "Correct. Many AI strategies fail during the transition from pilot to production."
+      }
+    ]
+  }
+]

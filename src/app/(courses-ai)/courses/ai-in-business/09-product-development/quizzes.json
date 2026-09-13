@@ -1,0 +1,52 @@
+[
+  {
+    "slide_id": "three-shifts",
+    "question_text": "According to the lecture, how is product development changing?",
+    "hint": "Think about whether the change touches single tasks or the whole lifecycle.",
+    "correct_answer_citation": "Week 09 — The Paradigm Shift",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "It is automating isolated tasks one at a time while the overall lifecycle stays the same.",
+        "option_explanation": "The lecture says product development is moving from isolated tasks to a reshaped lifecycle, so the lifecycle itself changes."
+      },
+      {
+        "option_text": "It is narrowing its focus to regulatory compliance and leaving ideation behind.",
+        "option_explanation": "The transformation covers the whole span, from the \"fuzzy front end\" of ideation to regulatory compliance."
+      },
+      {
+        "option_text": "It is moving from isolated tasks to a reshaped lifecycle.",
+        "option_explanation": "Correct. Product development is undergoing a fundamental transformation, moving from isolated tasks to a reshaped lifecycle."
+      },
+      {
+        "option_text": "It is making small refinements to existing tools rather than a fundamental change.",
+        "option_explanation": "The lecture describes a fundamental transformation, not small refinements."
+      }
+    ]
+  },
+  {
+    "slide_id": "persona-simulation",
+    "question_text": "According to the lecture, which kind of ideas are LLMs better at generating?",
+    "hint": "The lecture contrasts incremental ideas with paradigm shifts.",
+    "correct_answer_citation": "Week 09 — Divergent vs. Convergent Thinking",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Big ideas that set off paradigm shifts, more than small incremental ones.",
+        "option_explanation": "It is the reverse: LLMs are better at \"small ideas\" (incremental) than \"big ideas\" (paradigm shifts)."
+      },
+      {
+        "option_text": "Small incremental ideas, more than big paradigm shifts.",
+        "option_explanation": "Correct. LLMs are better at \"small ideas\" (incremental) than \"big ideas\" (paradigm shifts)."
+      },
+      {
+        "option_text": "Ideas retrieved directly from existing information, never novel combinations.",
+        "option_explanation": "The lecture describes LLMs as ideation engines that generate novel combinations rather than just retrieving information."
+      },
+      {
+        "option_text": "Big and small ideas equally well, because LLMs narrow the solution space.",
+        "option_explanation": "LLMs excel at expanding the solution space, and they are better at small ideas than big ones."
+      }
+    ]
+  }
+]

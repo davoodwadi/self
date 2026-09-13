@@ -1,0 +1,127 @@
+[
+  {
+    "slide_id": "learn-bias",
+    "question_text": "According to the lecture, what can AI do when its data contains societal bias, prejudice, and systemic inequality?",
+    "hint": "AI learns from historical data. Think about what happens to the patterns in that data once a system runs at scale.",
+    "correct_answer_citation": "Week 07 — The Problem: AI as a Mirror of Society",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Correct those patterns on its own, because AI operates in a vacuum.",
+        "option_explanation": "The lecture says AI learns from historical data rather than operating in a vacuum, so it does not correct the patterns in that data on its own."
+      },
+      {
+        "option_text": "Set those patterns aside, since models only learn from recent data.",
+        "option_explanation": "The lecture says AI learns from historical data, which is how bias in that data reaches the model."
+      },
+      {
+        "option_text": "Replicate and amplify those patterns at scale.",
+        "option_explanation": "Correct. When data contains societal bias, prejudice, and systemic inequality, AI can replicate and amplify those patterns at scale."
+      },
+      {
+        "option_text": "Create a purely technical issue with no ethical or regulatory risk.",
+        "option_explanation": "For business leaders, biased AI creates ethical, operational, reputational, and regulatory risk."
+      }
+    ]
+  },
+  {
+    "slide_id": "roi",
+    "question_text": "According to the lecture, when does algorithmic bias often emerge?",
+    "hint": "Think about what an optimization target rewards when most of the examples look alike.",
+    "correct_answer_citation": "Week 07 — Technical Concept: How Algorithms Learn Bias",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "When optimization favors aggregate accuracy while ignoring minority edge cases.",
+        "option_explanation": "Correct. Algorithmic bias often emerges when optimization favors aggregate accuracy while ignoring minority edge cases."
+      },
+      {
+        "option_text": "When fairness is assessed through demographic parity and equal opportunity before release.",
+        "option_explanation": "Demographic parity and equal opportunity are concepts for assessing fairness, not the source of algorithmic bias."
+      },
+      {
+        "option_text": "When optimization gives minority edge cases more weight than the model's aggregate accuracy.",
+        "option_explanation": "This reverses the lecture: algorithmic bias emerges when optimization favors aggregate accuracy and ignores minority edge cases."
+      },
+      {
+        "option_text": "Only when the training data contains no historically dominant groups at all.",
+        "option_explanation": "The lecture links historically dominant groups to training data bias, and it places algorithmic bias in what optimization favors: aggregate accuracy over minority edge cases."
+      }
+    ]
+  },
+  {
+    "slide_id": "data-sovereignty",
+    "question_text": "According to the lecture, where does the ROI of inclusion come from?",
+    "hint": "The lecture sets the cost of bias against what inclusion returns. Look for gains rather than penalties.",
+    "correct_answer_citation": "Week 07 — Business Impact: The ROI of Inclusive AI",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Regulatory fines, lawsuits, customer distrust, and long-term brand damage.",
+        "option_explanation": "Those make up the cost of bias, not the ROI of inclusion."
+      },
+      {
+        "option_text": "Treating EDII in AI as a compliance checkbox that only needs to be completed once.",
+        "option_explanation": "The lecture says EDII in AI is not just a compliance checkbox, it is a competitive advantage."
+      },
+      {
+        "option_text": "Optimizing every model for aggregate accuracy across the entire customer population.",
+        "option_explanation": "Favoring aggregate accuracy while ignoring minority edge cases is how algorithmic bias often emerges, not a source of ROI."
+      },
+      {
+        "option_text": "Stronger products, more resilient models, and access to underserved markets.",
+        "option_explanation": "Correct. The ROI of inclusion comes from stronger products, more resilient models, and access to underserved markets."
+      }
+    ]
+  },
+  {
+    "slide_id": "mitigation",
+    "question_text": "According to the lecture, what do the OCAP principles establish?",
+    "hint": "OCAP stands for Ownership, Control, Access, and Possession. Think about who those four words give authority to.",
+    "correct_answer_citation": "Week 07 — Indigeneity and Data Sovereignty",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "That community data may be extracted whenever it improves a model's accuracy.",
+        "option_explanation": "Extracting data from Indigenous communities without consent or reciprocal benefit is what the lecture calls data colonialism."
+      },
+      {
+        "option_text": "That First Nations must control how their data is collected and used.",
+        "option_explanation": "Correct. OCAP principles establish that First Nations must control how their data is collected and used."
+      },
+      {
+        "option_text": "That cultural data becomes raw fuel for models once it is publicly available.",
+        "option_explanation": "The lecture says data represents people, cultures, and sovereign rights, not just raw fuel for models."
+      },
+      {
+        "option_text": "That AI vendors hold ownership and possession of the data used for training.",
+        "option_explanation": "OCAP places Ownership, Control, Access, and Possession with First Nations, not with AI vendors."
+      }
+    ]
+  },
+  {
+    "slide_id": "close",
+    "question_text": "According to the lecture, where should business leaders keep humans in the loop?",
+    "hint": "Think about which decisions carry the most consequence for the people they affect.",
+    "correct_answer_citation": "Week 07 — Strategy: Mitigation for Business Leaders",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Only in low-stakes decisions, so that high-stakes decisions can be fully automated.",
+        "option_explanation": "This reverses the lecture: humans stay in the loop for high-stakes decisions."
+      },
+      {
+        "option_text": "Nowhere, once independent AI audits are in place.",
+        "option_explanation": "The lecture lists independent AI audits and keeping humans in the loop as separate measures; humans stay in the loop for high-stakes decisions."
+      },
+      {
+        "option_text": "In high-stakes decisions in hiring, lending, healthcare, and public services.",
+        "option_explanation": "Correct. Business leaders should keep humans in the loop for high-stakes decisions in hiring, lending, healthcare, and public services."
+      },
+      {
+        "option_text": "In vendor selection only, while a black-box tool makes the hiring decisions on its own.",
+        "option_explanation": "The lecture names hiring as one of the high-stakes decisions where humans stay in the loop."
+      }
+    ]
+  }
+]

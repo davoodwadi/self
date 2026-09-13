@@ -1,0 +1,302 @@
+[
+  {
+    "slide_id": "part-1",
+    "question_text": "According to the lecture, how does AI relate to environmental sustainability?",
+    "hint": "Advanced models optimize energy grids but consume vast resources. Think about what that means for AI's overall role.",
+    "correct_answer_citation": "Week 08 — The AI Sustainability Paradox",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "It acts only as a climate savior, since advanced models optimize energy grids.",
+        "option_explanation": "The lecture says advanced models optimize energy grids but also consume vast resources, so AI is not only a climate savior."
+      },
+      {
+        "option_text": "It acts as both a climate savior and a significant environmental burden.",
+        "option_explanation": "Correct. AI acts as both a climate savior and a significant environmental burden."
+      },
+      {
+        "option_text": "It is a neutral tool whose resource use has no bearing on the climate.",
+        "option_explanation": "Advanced models consume vast resources, which is why the lecture calls AI a significant environmental burden as well as a climate savior."
+      },
+      {
+        "option_text": "It has already moved past the pivot point between Red AI and Green AI.",
+        "option_explanation": "The lecture says the industry faces a critical pivot point between \"Red AI\" and \"Green AI\", not that it has moved past it."
+      }
+    ]
+  },
+  {
+    "slide_id": "google-report",
+    "question_text": "According to the lecture, how much of a deployed model's lifecycle emissions comes from inference?",
+    "hint": "Think about why the lecture calls inference \"the sleeping giant.\"",
+    "correct_answer_citation": "Week 08 — Inference: The Sleeping Giant",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "A small fraction, since most emissions occur during model training.",
+        "option_explanation": "The lecture says inference constitutes the majority of lifecycle emissions for deployed models, not a small fraction."
+      },
+      {
+        "option_text": "None, because only training produces operational carbon.",
+        "option_explanation": "Operational carbon splits into training and inference emissions, so inference does produce emissions."
+      },
+      {
+        "option_text": "The majority of lifecycle emissions for deployed models.",
+        "option_explanation": "Correct. Inference constitutes the majority of lifecycle emissions for deployed models."
+      },
+      {
+        "option_text": "Exactly half, split evenly with training emissions.",
+        "option_explanation": "The lecture does not describe an even split; it says inference constitutes the majority of lifecycle emissions."
+      }
+    ]
+  },
+  {
+    "slide_id": "bottles",
+    "question_text": "According to the lecture, why do data centers consume so much water?",
+    "hint": "Think about what a data center needs in order to keep running.",
+    "correct_answer_citation": "Week 08 — Water Consumption: A Critical Metric",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "They require massive cooling systems to maintain operation.",
+        "option_explanation": "Correct. Data centers require massive cooling systems to maintain operation."
+      },
+      {
+        "option_text": "Each prompt needs freshwater to generate the model's reply.",
+        "option_explanation": "The water use the lecture describes comes from the massive cooling systems data centers require to maintain operation."
+      },
+      {
+        "option_text": "Water replaces electricity as the power source for inference.",
+        "option_explanation": "Inference consumes energy, measured in Wh per prompt; the water use comes from the cooling systems data centers need."
+      },
+      {
+        "option_text": "Regulators require them to hold water reserves for nearby regions.",
+        "option_explanation": "The lecture raises water-scarce regions as an ethical question; the consumption itself comes from the cooling systems data centers require."
+      }
+    ]
+  },
+  {
+    "slide_id": "part-2",
+    "question_text": "According to the lecture, which two measures must data centers balance against each other?",
+    "hint": "Think about the two resources that a data center's cooling draws on.",
+    "correct_answer_citation": "Week 08 — Data Center Innovation",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Compute Carbon Intensity against the embodied footprint of hardware",
+        "option_explanation": "Compute Carbon Intensity and the embodied footprint came up under the hardware lifecycle; the balance named for data centers is WUE against PUE."
+      },
+      {
+        "option_text": "Direct-to-chip cooling against immersion cooling",
+        "option_explanation": "Those are the two forms of liquid cooling data centers are shifting toward, not two measures to balance."
+      },
+      {
+        "option_text": "Training emissions against inference emissions",
+        "option_explanation": "Those are the two parts operational carbon splits into, not the balance named for data centers."
+      },
+      {
+        "option_text": "Water Usage Effectiveness against Power Usage Effectiveness",
+        "option_explanation": "Correct. Data centers balance Water Usage Effectiveness (WUE) against Power Usage Effectiveness (PUE)."
+      }
+    ]
+  },
+  {
+    "slide_id": "fourcastnet",
+    "question_text": "According to the lecture, what does GraphCast do?",
+    "hint": "GraphCast is the AI model the lecture pairs with Graph Neural Networks. Think about how far ahead it forecasts.",
+    "correct_answer_citation": "Week 08 — Revolutionizing Weather Prediction",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Predicts weather one day ahead, trading accuracy for speed.",
+        "option_explanation": "GraphCast predicts weather 10 days in advance with high accuracy."
+      },
+      {
+        "option_text": "Runs Numerical Weather Prediction (NWP) faster on supercomputers.",
+        "option_explanation": "GraphCast is an AI model; the lecture says AI outperforms traditional Numerical Weather Prediction (NWP) in speed and efficiency."
+      },
+      {
+        "option_text": "Predicts weather 10 days in advance with high accuracy.",
+        "option_explanation": "Correct. GraphCast predicts weather 10 days in advance with high accuracy."
+      },
+      {
+        "option_text": "Operates at 25-degree resolution using statistical tables.",
+        "option_explanation": "GraphCast operates at 0.25-degree resolution using Graph Neural Networks."
+      }
+    ]
+  },
+  {
+    "slide_id": "agriculture",
+    "question_text": "According to the lecture, what manages Hybrid Energy Storage Systems (HESS)?",
+    "hint": "Think of an approach that learns from the results of its own decisions, such as when to store or release energy.",
+    "correct_answer_citation": "Week 08 — Optimizing Renewable Energy",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Spherical Fourier Neural Operators",
+        "option_explanation": "NVIDIA's FourCastNet v3 uses Spherical Fourier Neural Operators for weather forecasting, not for managing energy storage."
+      },
+      {
+        "option_text": "Reinforcement Learning",
+        "option_explanation": "Correct. Reinforcement Learning manages Hybrid Energy Storage Systems (HESS)."
+      },
+      {
+        "option_text": "Graph Neural Networks",
+        "option_explanation": "GraphCast uses Graph Neural Networks for weather prediction, not for managing energy storage."
+      },
+      {
+        "option_text": "Numerical Weather Prediction (NWP)",
+        "option_explanation": "Numerical Weather Prediction is the traditional forecasting approach AI outperforms, not a way of managing energy storage."
+      }
+    ]
+  },
+  {
+    "slide_id": "compression",
+    "question_text": "According to the lecture, what characterizes Green AI?",
+    "hint": "Red AI buys performance with massive computational cost. Green AI changes what a model is judged on.",
+    "correct_answer_citation": "Week 08 — Red AI vs. Green AI",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Buying performance with massive computational cost.",
+        "option_explanation": "That describes Red AI, not Green AI."
+      },
+      {
+        "option_text": "Tying AI progress even more closely to exponential resource consumption.",
+        "option_explanation": "The lecture's direction is the opposite: decoupling AI progress from exponential resource consumption."
+      },
+      {
+        "option_text": "Judging models on accuracy alone.",
+        "option_explanation": "Green AI treats carbon efficiency as a primary evaluation metric, and the lecture asks how research can value efficiency as much as accuracy."
+      },
+      {
+        "option_text": "Treating carbon efficiency as a primary evaluation metric.",
+        "option_explanation": "Correct. Green AI treats carbon efficiency as a primary evaluation metric."
+      }
+    ]
+  },
+  {
+    "slide_id": "slms",
+    "question_text": "According to the lecture, what is knowledge distillation?",
+    "hint": "The lecture describes it with a teacher and a student. Think about which one is small.",
+    "correct_answer_citation": "Week 08 — Model Compression Techniques",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Reducing precision, for example from 32-bit to 4-bit, to save energy.",
+        "option_explanation": "That is quantization."
+      },
+      {
+        "option_text": "Removing redundant weights to create sparse models.",
+        "option_explanation": "That is pruning."
+      },
+      {
+        "option_text": "Training small student models from large teachers.",
+        "option_explanation": "Correct. Knowledge distillation trains small student models from large teachers."
+      },
+      {
+        "option_text": "Training one large teacher model by combining many small student models.",
+        "option_explanation": "This reverses the lecture: small student models are trained from large teachers."
+      }
+    ]
+  },
+  {
+    "slide_id": "neuromorphic-gains",
+    "question_text": "According to the lecture, when do neurons in Spiking Neural Networks (SNNs) consume energy?",
+    "hint": "Neuromorphic hardware is inspired by the human brain's architecture. Think about what a \"spike\" is.",
+    "correct_answer_citation": "Week 08 — Neuromorphic Computing",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Continuously, at a steady rate, whether or not they are active.",
+        "option_explanation": "In Spiking Neural Networks, neurons only consume energy when active."
+      },
+      {
+        "option_text": "Only when they are active.",
+        "option_explanation": "Correct. In Spiking Neural Networks (SNNs), neurons only consume energy when active."
+      },
+      {
+        "option_text": "Only while data moves between memory and processors.",
+        "option_explanation": "Neuromorphic computing eliminates the energy cost of moving data between memory and processors."
+      },
+      {
+        "option_text": "Only during training, never while the network is running.",
+        "option_explanation": "The lecture ties SNN energy use to neuron activity: neurons only consume energy when active."
+      }
+    ]
+  },
+  {
+    "slide_id": "iso",
+    "question_text": "Under the EU AI Act, what must General-Purpose AI providers publish, according to the lecture?",
+    "hint": "Article 40 mandates transparency regarding \"AI systems resource performance.\"",
+    "correct_answer_citation": "Week 08 — The EU AI Act: Article 40",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Energy consumption data for their models.",
+        "option_explanation": "Correct. General-Purpose AI providers must publish energy consumption data."
+      },
+      {
+        "option_text": "The full training datasets behind their models.",
+        "option_explanation": "The obligation the lecture names is publishing energy consumption data."
+      },
+      {
+        "option_text": "Proof that every model stays below 10^23 FLOPs.",
+        "option_explanation": "10^23 FLOPs is the threshold above which the requirement applies, not a limit models must stay below."
+      },
+      {
+        "option_text": "A list of the chips each model was trained on.",
+        "option_explanation": "The obligation the lecture names is publishing energy consumption data."
+      }
+    ]
+  },
+  {
+    "slide_id": "developers",
+    "question_text": "According to the lecture, why may software tools like CodeCarbon underestimate true usage?",
+    "hint": "Think about the energy a data center uses beyond the computation itself.",
+    "correct_answer_citation": "Week 08 — Measurement Tools",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "They can miss overheads like cooling.",
+        "option_explanation": "Correct. Tools may underestimate true usage by missing overheads like cooling."
+      },
+      {
+        "option_text": "They count only the water a model consumes.",
+        "option_explanation": "These tools estimate emissions; the lecture says they may underestimate by missing overheads like cooling."
+      },
+      {
+        "option_text": "They measure Compute Carbon Intensity instead of emissions.",
+        "option_explanation": "Compute Carbon Intensity quantifies carbon per unit of work; the underestimate comes from missing overheads like cooling."
+      },
+      {
+        "option_text": "They are voluntary, so companies turn them off.",
+        "option_explanation": "The lecture gives a different reason: the tools may miss overheads like cooling."
+      }
+    ]
+  },
+  {
+    "slide_id": "conclusion",
+    "question_text": "According to the lecture, what does Jevons Paradox describe?",
+    "hint": "Think about what can happen to total use when each use becomes more efficient.",
+    "correct_answer_citation": "Week 08 — Future Directions",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Efficiency gains that always cut total consumption.",
+        "option_explanation": "This reverses the lecture: Jevons Paradox is efficiency leading to increased total consumption."
+      },
+      {
+        "option_text": "Water reporting that hides a data center's true water impact.",
+        "option_explanation": "That is closer to \"water washing\", which standardizing water reporting aims to prevent."
+      },
+      {
+        "option_text": "Hardware and software designed together for neuromorphic architectures.",
+        "option_explanation": "That is hardware-software co-design, a separate future direction."
+      },
+      {
+        "option_text": "Efficiency leading to increased total consumption.",
+        "option_explanation": "Correct. Jevons Paradox is efficiency leading to increased total consumption."
+      }
+    ]
+  }
+]
