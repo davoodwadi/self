@@ -1,286 +1,262 @@
-"use client";
-
+import { existsSync, readFileSync } from "node:fs";
+import path from "node:path";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import * as THREE from "three";
-import { CourseCard } from "../../_components/CourseCard";
+import { Merriweather } from "next/font/google";
+import { ArrowRight } from "lucide-react";
+import { Hero } from "./_landing/Hero";
+import { Reveal } from "./_landing/Reveal";
+import { SYLLABUS, type SyllabusEntry } from "./_landing/syllabus";
+import s from "./_landing/landing.module.css";
 
-export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+// ============================================================================
+// BUSI 654 — COURSE LANDING
+// ============================================================================
+// Two movements: a dark title sequence (Hero), then a cut to paper for the
+// Semester Roadmap.
+//
+// Deck status and module lists are read from this folder when the page is
+// built. A week links out only once its page.tsx exists, and its modules are
+// the "## Module …" or "## Part …" headings of its content.md. Titles and the
+// one-line descriptions live in _landing/syllabus.ts.
+// ============================================================================
 
-  useEffect(() => {
-    // Register GSAP Plugin
-    gsap.registerPlugin(ScrollTrigger);
+export const dynamic = "force-static";
 
-    // 1. Cinematic Animations Setup
-    let ctx = gsap.context(() => {
-      // Entrance animations
-      gsap.fromTo(
-        ".hero-text",
-        {
-          y: 10,
-          opacity: 0,
-          filter: "blur(10px)",
-        },
-        {
-          y: 0,
-          opacity: 1,
-          filter: "blur(0px)",
-          duration: 1.5,
-          ease: "power3.out",
-          stagger: 0.15,
-        },
-      );
+export const metadata: Metadata = {
+  title: "Applications of AI in Business · BUSI 654",
+  description:
+    "Course index and lecture decks for BUSI 654, Applications of AI in Business, with Davood Wadi, PhD.",
+};
 
-      gsap.fromTo(
-        ".course-card",
-        {
-          opacity: 0,
-          filter: "blur(10px)",
-        },
-        {
-          opacity: 1,
-          filter: "blur(0px)",
-          duration: 0.5,
-          delay: 0.6,
-          ease: "power2.out",
-          stagger: 0.15,
-        },
-      );
-    }, containerRef);
+// Merriweather's variable cut, for its optical-size and width axes. The
+// layout's static weights stay in use everywhere else.
+const display = Merriweather({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  axes: ["opsz", "wdth"],
+  variable: "--font-display",
+});
 
-    // 2. Three.js Cinematic Background
-    if (!canvasRef.current) return;
+const COURSE_DIR = path.join(
+  /* turbopackIgnore: true */ process.cwd(),
+  "src/app/(courses-ai)/courses/ai-in-business",
+);
 
-    const scene = new THREE.Scene();
-    // Using cream background fog
-    scene.fog = new THREE.FogExp2(0xf9f7f5, 0.0015);
+const MODULE_HEADING =
+  /^## (?:Module ([IVX]+)|Part (\d+)): (.+?)(?:\s+\[[^\]]*\])?\s*$/;
 
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000,
-    );
-    camera.position.z = 40;
+const MICRO = "font-sans text-[10px] font-semibold uppercase tracking-[0.24em]";
 
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvasRef.current,
-      alpha: true,
-      antialias: true,
-    });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+const pad = (n: number) => String(n).padStart(2, "0");
 
-    // Large wireframe sphere (The "Globe" or "AI Brain")
-    const sphereGeometry = new THREE.SphereGeometry(15, 32, 32);
-    const sphereMaterial = new THREE.MeshBasicMaterial({
-      color: 0xd4af37, // Subtle Gold
-      wireframe: true,
-      transparent: true,
-      opacity: 0.08,
-    });
-    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-    scene.add(sphere);
+type Module = { n: string; name: string };
 
-    // Animation Loop
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetX = 0;
-    let targetY = 0;
-    const windowHalfX = window.innerWidth / 2;
-    const windowHalfY = window.innerHeight / 2;
+type Row = SyllabusEntry & {
+  href: string;
+  open: boolean;
+  modules: Module[];
+  moduleNoun: "Modules" | "Parts";
+};
 
-    const onDocumentMouseMove = (event: MouseEvent) => {
-      mouseX = (event.clientX - windowHalfX) * 0.005;
-      mouseY = (event.clientY - windowHalfY) * 0.005;
-    };
+function readRow(entry: SyllabusEntry): Row {
+  const dir = path.join(COURSE_DIR, entry.slug);
+  const contentPath = path.join(dir, "content.md");
+  const modules: Module[] = [];
+  let parts = false;
 
-    document.addEventListener("mousemove", onDocumentMouseMove);
+  if (existsSync(contentPath)) {
+    for (const line of readFileSync(contentPath, "utf8").split(/\r?\n/)) {
+      const match = MODULE_HEADING.exec(line);
+      if (!match) continue;
+      if (match[2]) parts = true;
+      modules.push({ n: match[1] ?? match[2], name: match[3] });
+    }
+  }
 
-    const animate = () => {
-      requestAnimationFrame(animate);
+  return {
+    ...entry,
+    href: `/courses/ai-in-business/${entry.slug}`,
+    open: existsSync(path.join(dir, "page.tsx")),
+    modules,
+    moduleNoun: parts ? "Parts" : "Modules",
+  };
+}
 
-      targetX = mouseX * 0.5;
-      targetY = mouseY * 0.5;
-
-      sphere.rotation.x += 0.001;
-      sphere.rotation.y += 0.0015;
-
-      // Gentle floating
-      sphere.position.y = Math.sin(Date.now() * 0.001) * 2;
-
-      camera.position.x += (targetX - camera.position.x) * 0.05;
-      camera.position.y += (-targetY - camera.position.y) * 0.05;
-      camera.lookAt(scene.position);
-
-      renderer.render(scene, camera);
-    };
-    animate();
-
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      ctx.revert();
-      window.removeEventListener("resize", handleResize);
-      document.removeEventListener("mousemove", onDocumentMouseMove);
-      renderer.dispose();
-      sphereGeometry.dispose();
-      sphereMaterial.dispose();
-    };
-  }, []);
+export default function CourseLanding() {
+  const rows = SYLLABUS.map(readRow);
+  const weeks = rows.filter((row) => row.kind === "week");
+  const open = rows.filter((row) => row.open).length;
+  const latest = [...weeks].reverse().find((row) => row.open);
 
   return (
-    <div
-      ref={containerRef}
-      className="relative text-[var(--charcoal-light)] overflow-x-hidden"
-    >
-      {/* 3D Background */}
-      <canvas
-        ref={canvasRef}
-        className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+    <div className={`${display.variable} ${s.page}`}>
+      <Hero
+        weeks={weeks.length}
+        interludes={rows.length - weeks.length}
+        open={open}
+        total={rows.length}
+        nowShowing={
+          latest
+            ? { href: latest.href, label: latest.label, title: latest.title }
+            : null
+        }
       />
-
-      {/* Overlay gradient for legibility - tailored for light academic theme */}
-      <div className="fixed inset-0 bg-gradient-to-b from-[var(--background)]/60 via-[var(--background)]/80 to-[var(--background)] z-0 pointer-events-none"></div>
-
-      {/* Page 1: Hero Content */}
-      <section className="relative z-10 w-full min-h-[100dvh] flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 py-16 md:py-0">
-        {/* Hero Section */}
-        <header className="max-w-4xl text-center">
-          <h1 className="hero-text text-4xl sm:text-5xl md:text-7xl font-black tracking-tight mb-6 md:mb-8 leading-tight">
-            Applications of{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--crimson)] to-[var(--crimson-light)]">
-              AI
-            </span>{" "}
-            in Business
-          </h1>
-          <p className="hero-text text-[var(--charcoal-light)] text-lg sm:text-xl lg:text-3xl font-light mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed">
-            A hands-on course on the use-cases of the latest AI technology in
-            business landscape.
-          </p>
-
-          <div className="hero-text flex flex-col gap-4 items-center justify-between mt-8 md:mt-16 max-w-3xl mx-auto border-t border-b border-[var(--charcoal)]/10 py-6">
-            <div className="text-center sm:text-left mb-4 sm:mb-0">
-              <p className="text-[var(--crimson)] font-black text-lg sm:text-xl tracking-wider uppercase font-serif">
-                BUSI 654
-              </p>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="text-center sm:text-right">
-                <p className="text-sm font-semibold text-center text-[var(--charcoal)] tracking-widest uppercase mb-1">
-                  Dr. Davood Wadi
-                </p>
-                <p className="text-xs text-[var(--charcoal-light)] text-center font-medium tracking-widest uppercase">
-                  Lecturer
-                </p>
-              </div>
-            </div>
-          </div>
-        </header>
-      </section>
-
-      {/* Page 2: Course Modules Row */}
-      <section className="relative z-10 w-full min-h-[100dvh] flex flex-col items-center justify-center px-4 sm:px-8 lg:px-12 py-24 md:py-16 bg-[var(--background)]/80 md:bg-[var(--background)]/30 backdrop-blur-sm">
-        <main className="w-full max-w-6xl">
-          <div className="flex items-center gap-4 mb-8 hero-text">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--charcoal)]">
-              Course Modules
-            </h2>
-            <div className="h-px bg-[var(--charcoal)]/10 flex-grow"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <CourseCard
-              href="/courses/ai-in-business/01-introduction"
-              label="Week 01"
-              title="Introduction"
-              description="Introduction to the course"
-              variant="crimson"
-            />
-
-            <CourseCard
-              href="/courses/ai-in-business/02-ai-in-marketing"
-              label="Week 02"
-              title="AI in Marketing and Consumer Behavior"
-              description="Building the foundation for enterprise AI adoption."
-              variant="crimson"
-            />
-
-            <CourseCard
-              href="/courses/ai-in-business/03-ai-in-finance"
-              label="Week 03"
-              title="AI in Finance"
-              description="Applications of AI in Finance"
-              variant="crimson"
-            />
-
-            <CourseCard
-              href="/courses/ai-in-business/agentic-ai"
-              label="New Paradigm"
-              title="Agentic AI and Vibe Coding"
-              description="Moving away from manual coding to autonomous agents and orchestration."
-              variant="gold"
-            />
-
-            <CourseCard
-              href="/courses/ai-in-business/04-ai-in-human-resources"
-              label="Week 04"
-              title="AI in Human Resources"
-              description="Applications of AI in HR"
-              variant="crimson"
-            />
-
-            <CourseCard
-              href="/courses/ai-in-business/05-ai-in-operations-supply-chain"
-              label="Week 05"
-              title="AI in Operations and Supply Chain"
-              description="Applications of AI in Operations and Supply Chain"
-              variant="crimson"
-            />
-
-            <CourseCard
-              href="/courses/ai-in-business/06-ai-in-business-strategy"
-              label="Week 06"
-              title="AI in Business Strategy"
-              description="Applications of AI in Business Strategy"
-              variant="crimson"
-            />
-
-            <CourseCard
-              href="/courses/ai-in-business/07-edii"
-              label="Week 07"
-              title="EDII in AI"
-              description="Equity, Diversity, Inclusion, and Indigeneity. The ethical and operational risks of algorithmic bias."
-              variant="crimson"
-            />
-
-            <CourseCard
-              href="/courses/ai-in-business/08-sustainability"
-              label="Week 08"
-              title="Sustainability in AI"
-              description="How to create sustainable AI models. How to use AI to create a sustainable future."
-              variant="crimson"
-            />
-
-            <CourseCard
-              href="/courses/ai-in-business/09-product-development"
-              label="Week 09"
-              title="AI in Product Development"
-              description="Latest agentic AI tools for product development."
-              variant="crimson"
-            />
-          </div>
-        </main>
-      </section>
+      <Roadmap rows={rows} open={open} />
     </div>
+  );
+}
+
+/* ==========================================================================
+   SEMESTER ROADMAP — a contents page. Open decks link out; the rest are
+   listed with their modules and marked in preparation.
+   ========================================================================== */
+
+function Roadmap({ rows, open }: { rows: Row[]; open: number }) {
+  return (
+    <section
+      id="syllabus"
+      aria-labelledby="syllabus-title"
+      className="relative bg-[var(--background)] text-[var(--charcoal)]"
+    >
+      <div className="mx-auto max-w-7xl px-6 py-24 md:py-32 lg:px-12">
+        <div className="grid gap-10 border-b-2 border-[var(--charcoal)] pb-10 md:grid-cols-[1fr_auto] md:items-end">
+          <Reveal>
+            <p
+              className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
+            >
+              <span className="h-px w-10 bg-[var(--crimson)]" />
+              Syllabus · BUSI 654
+            </p>
+            <h2 id="syllabus-title" className={s.h2Paper}>
+              Semester Roadmap
+            </h2>
+            <p className={`${s.lede} mt-6 max-w-2xl`}>
+              We will explore how AI applies across each major business
+              discipline.
+            </p>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <dl className="flex gap-12">
+              <Tally label="Decks open" value={open} filled />
+              <Tally label="In preparation" value={rows.length - open} />
+            </dl>
+          </Reveal>
+        </div>
+
+        <ol>
+          {rows.map((row) => (
+            <Reveal
+              as="li"
+              key={row.slug}
+              className="border-b border-[var(--charcoal)]/12"
+            >
+              <RoadmapRow row={row} />
+            </Reveal>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+function Tally({
+  label,
+  value,
+  filled = false,
+}: {
+  label: string;
+  value: number;
+  filled?: boolean;
+}) {
+  return (
+    <div>
+      <dt
+        className={`${MICRO} flex items-center gap-2 text-[var(--charcoal-light)]/70`}
+      >
+        <Dot filled={filled} />
+        {label}
+      </dt>
+      <dd className={s.count}>{pad(value)}</dd>
+    </div>
+  );
+}
+
+function Dot({ filled }: { filled: boolean }) {
+  return (
+    <span
+      aria-hidden
+      className={
+        filled
+          ? "size-1.5 shrink-0 rounded-full bg-[var(--crimson)]"
+          : "size-1.5 shrink-0 rounded-full border border-current"
+      }
+    />
+  );
+}
+
+function RoadmapRow({ row }: { row: Row }) {
+  const body = (
+    <div
+      className={`${s.row} grid grid-cols-[3.25rem_1fr] gap-x-5 py-9 md:grid-cols-[7.5rem_1fr_11rem] md:gap-x-10 md:py-11`}
+    >
+      {row.kind === "week" ? (
+        <span aria-hidden className={s.numeral}>
+          {row.numeral}
+        </span>
+      ) : (
+        <span className={s.interlude}>Interlude</span>
+      )}
+
+      <div className="min-w-0">
+        <p className={`${MICRO} text-[var(--champagne)]`}>{row.label}</p>
+        <h3 className={s.rowTitle}>{row.title}</h3>
+        <p className={`${s.rowText} mt-3 max-w-2xl`}>{row.description}</p>
+
+        {row.modules.length > 0 && (
+          <div className="mt-6 max-w-4xl">
+            <p className={`${MICRO} text-[var(--charcoal-light)]/70`}>
+              {row.moduleNoun}
+            </p>
+            <ol className="mt-3 flex flex-wrap gap-x-6 gap-y-1.5">
+              {row.modules.map((module) => (
+                <li key={module.n} className={s.moduleName}>
+                  <span className={s.moduleNumber}>{module.n}</span>
+                  {module.name}
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+      </div>
+
+      <div className="col-start-2 mt-7 md:col-start-auto md:mt-0 md:justify-self-end md:pt-7">
+        {row.open ? (
+          <span className={s.status}>
+            <Dot filled />
+            Open deck
+            <ArrowRight aria-hidden className="size-3.5" />
+          </span>
+        ) : (
+          <span className={`${s.status} ${s.statusDraft}`}>
+            <Dot filled={false} />
+            In preparation
+          </span>
+        )}
+      </div>
+    </div>
+  );
+
+  return row.open ? (
+    <Link
+      href={row.href}
+      aria-label={`Open deck: ${row.label}, ${row.title}`}
+      className={`${s.rowLink} block`}
+    >
+      {body}
+    </Link>
+  ) : (
+    body
   );
 }

@@ -1,0 +1,177 @@
+[
+  {
+    "slide_id": "customer-lifecycle",
+    "question_text": "What does the lecture identify as the strategic question for AI in marketing?",
+    "hint": "The lecture contrasts two ways of framing the question and rejects one of them.",
+    "correct_answer_citation": "Week 02 — Why Marketing Became a Machine Learning Domain",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Where in the marketing function to \"use AI\" in isolation.",
+        "option_explanation": "This is the framing the lecture sets aside: the strategic question is not where to \"use AI\" in isolation."
+      },
+      {
+        "option_text": "Which data sources to stop collecting so models stay simple.",
+        "option_explanation": "The lecture presents granular data from search, commerce, media, CRM, service, and product usage as the reason marketing became a machine learning domain, not as something to cut back."
+      },
+      {
+        "option_text": "Which customer and budget decisions should be machine-assisted.",
+        "option_explanation": "Correct. Because many marketing choices are repeated allocation decisions, the strategic question is which customer and budget decisions should be machine-assisted."
+      },
+      {
+        "option_text": "Which single channel should receive the entire marketing budget.",
+        "option_explanation": "The lecture does not frame the question around one channel. It asks which customer and budget decisions should get machine assistance."
+      }
+    ]
+  },
+  {
+    "slide_id": "targeting",
+    "question_text": "Which description matches a useful segment, as defined in the lecture?",
+    "hint": "The lecture gives three tests a segment has to pass before managers can use it.",
+    "correct_answer_citation": "Week 02 — Segmentation Beyond Static Demographics",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "As many segments as possible, since finer groups always help more.",
+        "option_explanation": "The lecture warns that more segments are not always better; excessive granularity can raise complexity without improving decisions."
+      },
+      {
+        "option_text": "Groups defined only by age or income, since those stay fixed longer.",
+        "option_explanation": "AI-based segmentation uses behavior, value, needs, responsiveness, or risk instead of relying only on age or income."
+      },
+      {
+        "option_text": "Groups of identical size, so that the budget can be split evenly.",
+        "option_explanation": "Equal group size is not one of the criteria the lecture gives for a useful segment."
+      },
+      {
+        "option_text": "Stable to act on, distinct to prioritize, explainable to deploy.",
+        "option_explanation": "Correct. Useful segments are stable enough to act on, distinct enough to prioritize, and explainable enough for managers to deploy."
+      }
+    ]
+  },
+  {
+    "slide_id": "creative-systems",
+    "question_text": "What risk does the lecture attach to poorly designed recommendation systems?",
+    "hint": "Think about what happens to new or unfamiliar offerings.",
+    "correct_answer_citation": "Week 02 — Recommendation Systems in Commerce",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "They can only rank products, and never rank services or content.",
+        "option_explanation": "The lecture says recommendation systems rank products, services, or content by expected relevance."
+      },
+      {
+        "option_text": "They can create filter bubbles and bury strategic new offerings.",
+        "option_explanation": "Correct. Poorly designed recommenders can create filter bubbles, over-promote familiar items, and suppress strategic new offerings."
+      },
+      {
+        "option_text": "They take away the need for leaders to choose any objective at all.",
+        "option_explanation": "The lecture says the opposite: leaders must decide whether the system should maximize immediate conversion, long-term value, basket size, or discovery."
+      },
+      {
+        "option_text": "They consistently favour unfamiliar items over the familiar ones.",
+        "option_explanation": "This reverses the risk. Poorly designed recommenders over-promote familiar items."
+      }
+    ]
+  },
+  {
+    "slide_id": "causal-inference",
+    "question_text": "Why do experiments remain important in marketing, according to the lecture?",
+    "hint": "Consider the difference between creating demand and capturing demand that already exists.",
+    "correct_answer_citation": "Week 02 — Experimentation and Incrementality",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "They show if a campaign caused extra behavior or only captured demand.",
+        "option_explanation": "Correct. Experiments remain the cleanest way to estimate whether a campaign, offer, or message caused additional behavior rather than simply capturing existing demand."
+      },
+      {
+        "option_text": "They let a team skip measurement once automated delivery is fully running.",
+        "option_explanation": "The lecture warns that organizations that skip experimentation often mistake optimized delivery for genuine value creation."
+      },
+      {
+        "option_text": "They confirm that optimized delivery always equals genuine value creation.",
+        "option_explanation": "Optimized delivery and genuine value creation are exactly what the lecture says can be confused when experimentation is skipped."
+      },
+      {
+        "option_text": "They remove any need to decide which of the treatments should be compared.",
+        "option_explanation": "Deciding which treatments to compare is still part of experimentation; the lecture says AI can help identify them."
+      }
+    ]
+  },
+  {
+    "slide_id": "conversational-commerce",
+    "question_text": "What managerial danger does the lecture raise about predicted customer value?",
+    "hint": "A prediction describes a likely future, but the firm can still act on it.",
+    "correct_answer_citation": "Week 02 — Retention, Churn, and Customer Lifetime Value",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Using lifetime value to guide where the firm allocates its resources.",
+        "option_explanation": "The lecture says customer lifetime value is most useful when it informs resource allocation, so this is its intended use."
+      },
+      {
+        "option_text": "Asking which intervention is economically justified before acting on it.",
+        "option_explanation": "Identifying which intervention is economically justified is one of the things retention models are meant to help with."
+      },
+      {
+        "option_text": "Identifying which at-risk customers are actually worth trying to save.",
+        "option_explanation": "Retention models help identify who is at risk and who is worth saving; the lecture presents this as their purpose."
+      },
+      {
+        "option_text": "Treating predicted value as destiny for customers who can still change.",
+        "option_explanation": "Correct. The managerial danger is treating predicted value as destiny and underinvesting in customers whose future potential can still be shaped."
+      }
+    ]
+  },
+  {
+    "slide_id": "manipulation-bias",
+    "question_text": "How does the lecture position governance in marketing AI?",
+    "hint": "Ask when governance enters the design of the system.",
+    "correct_answer_citation": "Week 02 — Privacy, Consent, and Trust Architecture",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "As a legal review added once the model is already deployed.",
+        "option_explanation": "The lecture rejects this framing: governance is a core design requirement rather than a legal afterthought."
+      },
+      {
+        "option_text": "As a core design requirement rather than a legal afterthought.",
+        "option_explanation": "Correct. Because marketing AI depends on customer data, identity linkage, and behavioral inference, governance is a core design requirement."
+      },
+      {
+        "option_text": "As a concern only for firms that do not link customer identities.",
+        "option_explanation": "The lecture ties governance to identity linkage itself: marketing AI depends on it, which is why governance is required."
+      },
+      {
+        "option_text": "As a cost that competes with privacy-preserving measurement.",
+        "option_explanation": "Privacy-preserving measurement, data minimization, and transparent value exchange are described as increasingly strategic capabilities, not as rivals to governance."
+      }
+    ]
+  },
+  {
+    "slide_id": "build-buy-partner",
+    "question_text": "According to the lecture, what is AI maturity in marketing ultimately a question of?",
+    "hint": "Think about how high-performing firms organize their teams around customer outcomes.",
+    "correct_answer_citation": "Week 02 — Marketing Operating Model for AI",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "The size of the analytics team, rather than cross-team work.",
+        "option_explanation": "High-performing firms pair marketing, analytics, data engineering, product, legal, and service teams around shared customer outcomes."
+      },
+      {
+        "option_text": "Centralizing every decision so that governance stays tight.",
+        "option_explanation": "The key design choice is where to centralize for governance and where to decentralize for speed and domain expertise, not centralizing everything."
+      },
+      {
+        "option_text": "The operating model, and not only the tools the team uses.",
+        "option_explanation": "Correct. AI maturity in marketing is ultimately an operating model question, not only a tooling question."
+      },
+      {
+        "option_text": "The tooling alone, since platforms now handle coordination.",
+        "option_explanation": "The lecture explicitly says maturity is not only a tooling question; organizational design matters."
+      }
+    ]
+  }
+]

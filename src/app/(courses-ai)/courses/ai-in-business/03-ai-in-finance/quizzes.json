@@ -1,0 +1,202 @@
+[
+  {
+    "slide_id": "decision-architecture",
+    "question_text": "Why can small model errors scale quickly in finance, according to the lecture?",
+    "hint": "Think about what financial systems are connected to.",
+    "correct_answer_citation": "Week 03 — Why Finance Became an AI Domain",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Financial data is too sparse for models to learn any stable patterns.",
+        "option_explanation": "The lecture says the opposite: digital channels, machine-readable records, and high-frequency workflows create dense operational signals."
+      },
+      {
+        "option_text": "Each financial decision is made only once, so errors are never repeated.",
+        "option_explanation": "Finance runs on repeated decisions under uncertainty: approve, price, monitor, flag, hedge, and allocate."
+      },
+      {
+        "option_text": "Financial systems are linked to capital, compliance, and customer trust.",
+        "option_explanation": "Correct. Small model errors can scale quickly because financial systems are linked to capital, compliance, and customer trust."
+      },
+      {
+        "option_text": "Digital channels have removed most of the human review from financial firms.",
+        "option_explanation": "The lecture does not say human review has been removed. It ties the scaling of errors to the links between financial systems and capital, compliance, and customer trust."
+      }
+    ]
+  },
+  {
+    "slide_id": "human-judgment",
+    "question_text": "What role does the lecture give generative models in financial tasks?",
+    "hint": "The lecture lists what they support, then names what they should not become.",
+    "correct_answer_citation": "Week 03 — Matching Method to Financial Task",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "They support summarization, drafting, and copilots, not final authority.",
+        "option_explanation": "Correct. Generative models support summarization, drafting, extraction, scenario narration, and analyst copilots rather than final authority."
+      },
+      {
+        "option_text": "They replace supervised learning for default prediction and fraud scoring.",
+        "option_explanation": "Default prediction and fraud scoring are listed under supervised learning, not generative models."
+      },
+      {
+        "option_text": "They surface anomalies and clusters in network data when labels are weak.",
+        "option_explanation": "That describes unsupervised methods, which help surface anomalies, clusters, and unusual network behavior when labels are weak."
+      },
+      {
+        "option_text": "They act as the final authority once a scenario narration has been drafted.",
+        "option_explanation": "The lecture says generative models support scenario narration and analyst copilots rather than final authority."
+      }
+    ]
+  },
+  {
+    "slide_id": "underwriting",
+    "question_text": "According to the lecture, when is more predictive power in credit scoring useful?",
+    "hint": "Predictive power is not enough on its own. The lecture names three things the institution must be able to do with the result.",
+    "correct_answer_citation": "Week 03 — Credit Scoring Beyond Static Rules",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Always, because better rank ordering of risk outweighs every other concern.",
+        "option_explanation": "The lecture qualifies this: more predictive power is useful only if the institution can explain, govern, and operationalize the result."
+      },
+      {
+        "option_text": "Only when the model keeps to the same patterns that traditional scorecards use.",
+        "option_explanation": "Modern scoring systems are valued because they can incorporate richer behavioral, transactional, and application-level patterns than traditional scorecards alone."
+      },
+      {
+        "option_text": "Only when it removes the review option and leaves just approve or decline.",
+        "option_explanation": "The lecture describes better segmentation of approve, review, and decline decisions, so review remains one of the three."
+      },
+      {
+        "option_text": "Only if the institution can explain, govern, and operationalize the result.",
+        "option_explanation": "Correct. More predictive power is useful only if the institution can explain, govern, and operationalize the result."
+      }
+    ]
+  },
+  {
+    "slide_id": "module-3",
+    "question_text": "Who does the lecture say lending model explanations need to be meaningful to?",
+    "hint": "The lecture names three audiences, and one group that is not enough on its own.",
+    "correct_answer_citation": "Week 03 — Explainability, Fairness, and Adverse Action",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Data scientists, because they are the people who build and tune the model.",
+        "option_explanation": "Institutions need explanations that are meaningful to risk managers, regulators, and customers, not only to data scientists."
+      },
+      {
+        "option_text": "Risk managers, regulators, and customers, not only data scientists.",
+        "option_explanation": "Correct. Institutions need explanations that are meaningful to risk managers, regulators, and customers, not only to data scientists."
+      },
+      {
+        "option_text": "Regulators alone, because they are the ones who examine lending models.",
+        "option_explanation": "Regulators are one audience, but the lecture also names risk managers and customers."
+      },
+      {
+        "option_text": "Only the teams that handle the cases a model sends to manual review.",
+        "option_explanation": "Being sent to manual review is one of the outcomes that puts lending models under scrutiny. It does not define who explanations are for."
+      }
+    ]
+  },
+  {
+    "slide_id": "transaction-monitoring",
+    "question_text": "Why do static fraud rules degrade quickly, according to the lecture?",
+    "hint": "Fraud is described as adaptive. Think about what attackers learn.",
+    "correct_answer_citation": "Week 03 — Fraud Detection as an Adversarial Problem",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Case feedback and device signals overwrite the rules as time goes on.",
+        "option_explanation": "The lecture presents device signals and case feedback as inputs that effective systems combine with historical patterns, not as something that breaks rules."
+      },
+      {
+        "option_text": "Historical patterns stop being recorded once the rules are in place.",
+        "option_explanation": "Effective systems still combine historical patterns with other signals; the lecture does not say they stop being recorded."
+      },
+      {
+        "option_text": "Adversaries learn the thresholds and change their timing or channel.",
+        "option_explanation": "Correct. Fraud is adaptive, so static rules degrade quickly when adversaries learn the thresholds and change timing, identity, channel, or transaction structure."
+      },
+      {
+        "option_text": "Rules become too expensive to run as transaction volumes keep growing.",
+        "option_explanation": "Cost is not the reason given. Static rules remain useful, but they degrade quickly when adversaries learn the thresholds."
+      }
+    ]
+  },
+  {
+    "slide_id": "model-risk",
+    "question_text": "How does the lecture say portfolio recommendations should be treated?",
+    "hint": "Consider what would have to explicitly permit a different treatment.",
+    "correct_answer_citation": "Week 03 — Portfolio Construction and Decision Support",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "As automated trades by default, since the tools can rebalance exposures faster.",
+        "option_explanation": "The default is the reverse: recommendations are decision support unless governance explicitly permits automated execution."
+      },
+      {
+        "option_text": "As decision support unless governance explicitly permits automated execution.",
+        "option_explanation": "Correct. Portfolio recommendations should be treated as decision support unless governance explicitly permits automated execution."
+      },
+      {
+        "option_text": "As reliable in any market, since the tools already test scenarios under constraints.",
+        "option_explanation": "Their usefulness depends on assumptions about liquidity, turnover, transaction costs, and risk appetite, so they are not reliable regardless of conditions."
+      },
+      {
+        "option_text": "As independent of any assumptions about liquidity, turnover, or transaction costs.",
+        "option_explanation": "The lecture says their usefulness depends on assumptions about liquidity, turnover, transaction costs, and risk appetite."
+      }
+    ]
+  },
+  {
+    "slide_id": "data-governance",
+    "question_text": "When is a model inventory useful, according to the lecture?",
+    "hint": "A list of models is not enough by itself. Ask what it has to be connected to.",
+    "correct_answer_citation": "Week 03 — Model Governance Across the Lifecycle",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "When it is tied to actual decision rights and review cadence.",
+        "option_explanation": "Correct. A model inventory is useful only if it is tied to actual decision rights and review cadence."
+      },
+      {
+        "option_text": "When it lists every model, whether or not anyone ever reviews them.",
+        "option_explanation": "A list alone is not enough; the lecture says an inventory is useful only if it is tied to actual decision rights and review cadence."
+      },
+      {
+        "option_text": "When it covers development and leaves deployment to individual teams.",
+        "option_explanation": "Institutions need controls across data sourcing, development, validation, deployment, monitoring, and retirement."
+      },
+      {
+        "option_text": "When it removes the need to document how exceptions are handled.",
+        "option_explanation": "Governance must clarify how exceptions are documented; an inventory does not remove that need."
+      }
+    ]
+  },
+  {
+    "slide_id": "operating-model",
+    "question_text": "When does the lecture say generative systems are weakest in finance?",
+    "hint": "The lecture contrasts support roles with a role where nobody checks the output.",
+    "correct_answer_citation": "Week 03 — Generative AI in Finance: High-Value Uses and Red Lines",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "When used for summarization and knowledge retrieval across the firm.",
+        "option_explanation": "Summarization and knowledge retrieval are where the lecture says generative systems are strongest."
+      },
+      {
+        "option_text": "When used to support analysts with drafting and coding assistance.",
+        "option_explanation": "Drafting, coding assistance, and analyst support are listed among their strongest uses."
+      },
+      {
+        "option_text": "When red lines for autonomous use are set before experimentation spreads.",
+        "option_explanation": "Defining explicit red lines before experimentation spreads across teams is what the lecture recommends, not a weakness."
+      },
+      {
+        "option_text": "When used as unchecked authorities for regulated advice or disclosures.",
+        "option_explanation": "Correct. Generative systems are weakest when used as unchecked authorities for regulated advice, formal disclosures, or final risk approval."
+      }
+    ]
+  }
+]

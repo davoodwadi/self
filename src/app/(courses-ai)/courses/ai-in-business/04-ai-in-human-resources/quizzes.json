@@ -1,0 +1,202 @@
+[
+  {
+    "slide_id": "decision-architecture",
+    "question_text": "According to the lecture, when does AI matter in HR?",
+    "hint": "The lecture names three improvements, and two things they must not weaken.",
+    "correct_answer_citation": "Week 04 — Why HR Became an AI Domain",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "When it can replace managers across hiring, staffing, development, and retention decisions.",
+        "option_explanation": "The lecture does not frame AI as replacing managers. It says AI matters when it improves judgment quality, operating speed, or organizational consistency."
+      },
+      {
+        "option_text": "When it improves judgment, speed, or consistency without weakening fairness or trust.",
+        "option_explanation": "Correct. AI matters in HR when it improves judgment quality, operating speed, or organizational consistency without weakening fairness or trust."
+      },
+      {
+        "option_text": "When digital HR systems capture enough data to remove uncertainty from people decisions.",
+        "option_explanation": "The lecture describes HR decisions as made under uncertainty; capturing data at scale does not remove it."
+      },
+      {
+        "option_text": "When it speeds up HR processing, whatever the effect on fairness or trust.",
+        "option_explanation": "Speed alone is not the test. The lecture requires that improvements come without weakening fairness or trust."
+      }
+    ]
+  },
+  {
+    "slide_id": "human-judgment",
+    "question_text": "Where does the lecture say generative systems are strongest in HR?",
+    "hint": "The lecture lists what they are strongest in, then names what they should not be used for.",
+    "correct_answer_citation": "Week 04 — Matching AI Method to the HR Task",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "In making autonomous people decisions once outcomes have been labeled.",
+        "option_explanation": "The lecture says generative systems are strongest in support tasks rather than autonomous people decisions."
+      },
+      {
+        "option_text": "In attrition prediction and workforce demand forecasting from labeled outcomes.",
+        "option_explanation": "Those tasks are listed under supervised learning, which works when outcomes are labeled."
+      },
+      {
+        "option_text": "In summarization, drafting, retrieval, and manager support.",
+        "option_explanation": "Correct. Generative systems are strongest in summarization, drafting, retrieval, and manager support rather than autonomous people decisions."
+      },
+      {
+        "option_text": "In identifying skill clusters and emerging segments when categories are unknown.",
+        "option_explanation": "That describes unsupervised methods, which help when categories are not yet known."
+      }
+    ]
+  },
+  {
+    "slide_id": "interview-intelligence",
+    "question_text": "What role does the lecture say screening tools should play in hiring?",
+    "hint": "The lecture contrasts two roles and warns against one that is hidden.",
+    "correct_answer_citation": "Week 04 — Resume Screening and Candidate Matching",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Support prioritization and structured review.",
+        "option_explanation": "Correct. Screening tools should support prioritization and structured review rather than serving as hidden gatekeepers."
+      },
+      {
+        "option_text": "Act as gatekeepers that decide automatically which applicants move forward.",
+        "option_explanation": "The lecture warns against screening tools serving as hidden gatekeepers."
+      },
+      {
+        "option_text": "Replace current role requirements with patterns learned from past hiring.",
+        "option_explanation": "The lecture says usefulness depends on current job requirements and on the model not simply replicating historical preference."
+      },
+      {
+        "option_text": "Filter applicants out of view so hiring managers never see low scores.",
+        "option_explanation": "Removing applicants from view without review is the hidden gatekeeping the lecture cautions against."
+      }
+    ]
+  },
+  {
+    "slide_id": "module-3",
+    "question_text": "Why does the lecture say clear documentation is essential in hiring governance?",
+    "hint": "Think about who supplies the model and who carries the consequences.",
+    "correct_answer_citation": "Week 04 — Fairness, Adverse Impact, and Hiring Governance",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Because vendors carry the employment risk once they supply the model logic.",
+        "option_explanation": "The lecture says the reverse: vendors may supply the model logic, but the employer carries the employment risk."
+      },
+      {
+        "option_text": "Because documentation removes the need to test hiring models for disparate outcomes.",
+        "option_explanation": "Documentation does not replace testing. Governance should still test for disparate outcomes, unstable proxies, and outdated role-specific assumptions."
+      },
+      {
+        "option_text": "Because hiring models only influence who advances, not who gets seen at all.",
+        "option_explanation": "The lecture says hiring models influence who gets seen, who advances, and which qualifications are treated as signals of merit."
+      },
+      {
+        "option_text": "Because vendors supply the model logic but the employer carries the risk.",
+        "option_explanation": "Correct. Clear documentation is essential when vendors supply the model logic but the employer carries the employment risk."
+      }
+    ]
+  },
+  {
+    "slide_id": "scheduling-staffing",
+    "question_text": "According to the lecture, when are skills systems useful?",
+    "hint": "The lecture names three things employees and managers must trust about inferred skills.",
+    "correct_answer_citation": "Week 04 — Skills Graphs and the Internal Labor Market",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "When they replace managers' judgment in promotion and succession decisions entirely.",
+        "option_explanation": "The lecture ties usefulness to trust in the inferred skills, not to replacing managers' judgment."
+      },
+      {
+        "option_text": "When they capture every informal and relational capability in the organization.",
+        "option_explanation": "The lecture notes that many high-value capabilities remain informal, relational, or poorly documented."
+      },
+      {
+        "option_text": "When people trust inferred skills are current, relevant, and not punitive.",
+        "option_explanation": "Correct. Skills systems are only useful when employees and managers trust that inferred skills are current, relevant, and not silently punitive."
+      },
+      {
+        "option_text": "When they increase the firm's reliance on external hiring for capability gaps.",
+        "option_explanation": "The opportunity is reduced dependence on external hiring for every capability gap, not greater reliance on it."
+      }
+    ]
+  },
+  {
+    "slide_id": "productivity-analytics",
+    "question_text": "How does the lecture say AI tools change pay equity analysis?",
+    "hint": "Compare how often the analysis happens before and after, and what it is tied to.",
+    "correct_answer_citation": "Week 04 — Rewards, Promotion, and Pay Equity Analytics",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "They move it from ongoing monitoring back to a periodic episodic review.",
+        "option_explanation": "This reverses the lecture, which describes a move from episodic review to ongoing monitoring."
+      },
+      {
+        "option_text": "They move it from episodic review to ongoing monitoring tied to decisions.",
+        "option_explanation": "Correct. These tools help move equity analysis from episodic review to ongoing monitoring tied to actual decision processes."
+      },
+      {
+        "option_text": "They replace governance, since algorithms make salary decisions consistent.",
+        "option_explanation": "The lecture says governance is essential because salary, promotion, and bonus decisions are socially sensitive and legally consequential."
+      },
+      {
+        "option_text": "They limit it to aggregate pay totals rather than comparable employee groups.",
+        "option_explanation": "The lecture describes surfacing inconsistent outcomes across comparable employee groups."
+      }
+    ]
+  },
+  {
+    "slide_id": "case-triage",
+    "question_text": "Why does the lecture say leaders need careful interpretation of DEI analytics?",
+    "hint": "Finding a gap is not the same as knowing why it exists.",
+    "correct_answer_citation": "Week 04 — DEI Analytics and Representation Risk",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Structural barriers are always visible in aggregate workforce dashboards.",
+        "option_explanation": "The lecture says these analyses help identify structural barriers that may not be visible in aggregate workforce dashboards."
+      },
+      {
+        "option_text": "AI-enabled analytics cannot track promotion velocity or pay dispersion.",
+        "option_explanation": "The lecture lists promotion velocity and pay dispersion among the patterns these analytics can track."
+      },
+      {
+        "option_text": "Every representation gap points directly to one correct program to fund.",
+        "option_explanation": "The lecture says representation gaps do not automatically reveal the right intervention."
+      },
+      {
+        "option_text": "Gaps do not automatically reveal causality or the right intervention.",
+        "option_explanation": "Correct. Leaders need careful interpretation because representation gaps do not automatically reveal causality or the right intervention."
+      }
+    ]
+  },
+  {
+    "slide_id": "build-buy-partner",
+    "question_text": "When is a model inventory valuable, according to the lecture?",
+    "hint": "A list of models is not enough on its own. The lecture names three things it must be linked to.",
+    "correct_answer_citation": "Week 04 — AI Governance for HR Across the Lifecycle",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "When it is linked to decisions, review cadence, and documented accountability.",
+        "option_explanation": "Correct. A model inventory is valuable only when it is linked to decisions, review cadence, and documented accountability."
+      },
+      {
+        "option_text": "When it lists every HR model in one place, whether or not anyone reviews them.",
+        "option_explanation": "A list alone is not enough; the lecture requires links to decisions, review cadence, and documented accountability."
+      },
+      {
+        "option_text": "When it replaces lifecycle controls from problem definition through retirement.",
+        "option_explanation": "The lecture says HR AI requires controls across the lifecycle; the inventory does not replace them."
+      },
+      {
+        "option_text": "When nobody needs to be named as owner, reviewer, or authority to stop deployment.",
+        "option_explanation": "Governance should clarify who owns the use case, who reviews legal risk, who validates outcomes, and who can stop deployment."
+      }
+    ]
+  }
+]

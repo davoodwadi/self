@@ -1,0 +1,252 @@
+[
+  {
+    "slide_id": "ai-vs-traditional",
+    "question_text": "According to the lecture, why do disruptions cascade rapidly through modern supply chains?",
+    "hint": "Think about how much stock the system holds in reserve and when parts arrive.",
+    "correct_answer_citation": "Week 05 — The Complexity of Global Operations",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Spreadsheet-based planning processes too many variables at the same time.",
+        "option_explanation": "The lecture says spreadsheet-based planning cannot process the volume of variables required for global optimization. It does not give this as the reason disruptions cascade."
+      },
+      {
+        "option_text": "Supply chains now operate inside a single regulatory zone.",
+        "option_explanation": "Modern supply chains span multiple continents and regulatory zones."
+      },
+      {
+        "option_text": "Lean inventory practices and just-in-time manufacturing.",
+        "option_explanation": "Correct. Disruptions cascade rapidly through the system due to lean inventory practices and just-in-time manufacturing."
+      },
+      {
+        "option_text": "Machine learning models rely on simplified assumptions about the network.",
+        "option_explanation": "The lecture says machine learning can model this complexity without relying on simplified assumptions."
+      }
+    ]
+  },
+  {
+    "slide_id": "bullwhip",
+    "question_text": "According to the lecture, what does AI-driven demand sensing incorporate?",
+    "hint": "Traditional forecasting looks back at past sales. Demand sensing adds signals from what is happening now.",
+    "correct_answer_citation": "Week 05 — Beyond Historical Averages",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Real-time signals like social media sentiment and weather forecasts.",
+        "option_explanation": "Correct. AI-driven demand sensing incorporates real-time signals like social media sentiment, weather forecasts, and economic indicators."
+      },
+      {
+        "option_text": "Mainly historical sales data and seasonal trends from past years.",
+        "option_explanation": "That describes traditional forecasting, which relies heavily on historical sales data and seasonal trends."
+      },
+      {
+        "option_text": "Only the figures that have already been recorded in the sales ledger.",
+        "option_explanation": "Neural networks can detect a shift in demand long before it hits the sales ledger, so demand sensing does not wait for recorded sales."
+      },
+      {
+        "option_text": "Fixed seasonal averages that stay the same until the next annual review.",
+        "option_explanation": "The lecture presents demand sensing as moving beyond historical averages by adding real-time signals."
+      }
+    ]
+  },
+  {
+    "slide_id": "dynamic-inventory",
+    "question_text": "According to the lecture, what is the bullwhip effect?",
+    "hint": "Compare the size of the fluctuations at the retail end with those further upstream.",
+    "correct_answer_citation": "Week 05 — Mitigating the Bullwhip Effect",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Large swings in retail demand that shrink as they move upstream.",
+        "option_explanation": "This reverses the effect: small fluctuations in retail demand cause progressively larger fluctuations upstream."
+      },
+      {
+        "option_text": "A real-time demand signal shared across every tier at the same time.",
+        "option_explanation": "Sharing real-time demand signals across all tiers is how AI algorithms help mitigate the bullwhip effect, not the effect itself."
+      },
+      {
+        "option_text": "Manufacturers ignoring short-term spikes in favor of structural shifts.",
+        "option_explanation": "Separating noise from structural shifts is how predictive analytics prevent overreaction; it is part of the remedy."
+      },
+      {
+        "option_text": "Small retail demand fluctuations growing larger upstream.",
+        "option_explanation": "Correct. The bullwhip effect occurs when small fluctuations in retail demand cause progressively larger fluctuations upstream."
+      }
+    ]
+  },
+  {
+    "slide_id": "last-mile",
+    "question_text": "What does continuous re-optimization allow fleets to do, according to the lecture?",
+    "hint": "Think about what can change after the vehicles have already left.",
+    "correct_answer_citation": "Week 05 — Solving Complex Routing at Scale",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Plan every route once per day and keep it fixed until delivery ends.",
+        "option_explanation": "Continuous re-optimization is the opposite of a fixed daily plan; it lets fleets adapt while vehicles are in transit."
+      },
+      {
+        "option_text": "Adapt to new orders or road closures while vehicles are in transit.",
+        "option_explanation": "Correct. Continuous re-optimization allows fleets to adapt to new orders or road closures while vehicles are already in transit."
+      },
+      {
+        "option_text": "Make the Traveling Salesperson Problem easier as deliveries grow.",
+        "option_explanation": "The lecture says the Traveling Salesperson Problem becomes exponentially harder with thousands of deliveries and dynamic constraints."
+      },
+      {
+        "option_text": "Ignore traffic patterns so that routes can be generated in seconds.",
+        "option_explanation": "AI algorithms process traffic patterns, vehicle capacities, and delivery windows to generate optimal routes in seconds."
+      }
+    ]
+  },
+  {
+    "slide_id": "part-4",
+    "question_text": "How does AI-based predictive maintenance differ from traditional fleet maintenance?",
+    "hint": "One approach follows the calendar or the odometer. The other reads the vehicle itself.",
+    "correct_answer_citation": "Week 05 — Predictive Maintenance in Fleet Management",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "It services vehicles on fixed schedules based on mileage or time.",
+        "option_explanation": "Fixed schedules based on mileage or time describe traditional fleet maintenance."
+      },
+      {
+        "option_text": "It waits for components to fail and then repairs them quickly.",
+        "option_explanation": "The lecture says AI predicts component failures before they happen, which minimizes unplanned downtime."
+      },
+      {
+        "option_text": "It uses IoT sensor data to predict failures before they happen.",
+        "option_explanation": "Correct. AI analyzes IoT sensor data from engines, brakes, and transmissions to predict component failures before they happen."
+      },
+      {
+        "option_text": "It shortens asset lifespan in exchange for less unplanned downtime.",
+        "option_explanation": "The approach minimizes unplanned downtime and extends the operational lifespan of expensive capital assets."
+      }
+    ]
+  },
+  {
+    "slide_id": "nlp-contracts",
+    "question_text": "According to the lecture, what role does Natural Language Processing play in supplier risk management?",
+    "hint": "Consider what kind of data news reports and filings are, and how many languages they come in.",
+    "correct_answer_citation": "Week 05 — Proactive Supplier Risk Management",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "It extracts risk indicators from unstructured data in many languages.",
+        "option_explanation": "Correct. Natural Language Processing extracts risk indicators from unstructured data sources across multiple languages."
+      },
+      {
+        "option_text": "It replaces continuous monitoring with a thorough annual audit.",
+        "option_explanation": "Annual audits are the traditional approach; AI systems continuously monitor global news, geopolitical events, and financial filings."
+      },
+      {
+        "option_text": "It reads only structured financial reviews in the buyer's own language.",
+        "option_explanation": "NLP works on unstructured data sources across multiple languages, not only structured reviews in one language."
+      },
+      {
+        "option_text": "It confirms a supplier is safe once the yearly financial review passes.",
+        "option_explanation": "The lecture contrasts periodic reviews with AI systems that continuously flag emerging supplier risks."
+      }
+    ]
+  },
+  {
+    "slide_id": "cobots",
+    "question_text": "What limitations of manual quality inspection does the lecture identify?",
+    "hint": "The lecture names three drawbacks, one of them about the people doing the work.",
+    "correct_answer_citation": "Week 05 — Computer Vision for Quality Control",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "It is too precise, flagging defects smaller than a millimeter.",
+        "option_explanation": "Sub-millimeter precision is a strength of computer vision models, not a limitation of manual inspection."
+      },
+      {
+        "option_text": "It cannot check labeling compliance or packaging integrity at all.",
+        "option_explanation": "The lecture does not say manual inspection cannot do these checks; it describes computer vision systems doing them in milliseconds."
+      },
+      {
+        "option_text": "It only works on high-speed conveyors, not on slower production lines.",
+        "option_explanation": "High-speed conveyors are where computer vision models inspect products; the lecture does not describe them as a limit of manual inspection."
+      },
+      {
+        "option_text": "It is slow, expensive, and prone to human fatigue.",
+        "option_explanation": "Correct. Manual quality inspection is slow, expensive, and prone to human fatigue."
+      }
+    ]
+  },
+  {
+    "slide_id": "part-6",
+    "question_text": "What does the lecture say a digital twin allows operations managers to do?",
+    "hint": "Think about where a new layout gets tried out first.",
+    "correct_answer_citation": "Week 05 — Digital Twins for Facility Layouts",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Rearrange the physical warehouse floor while operations continue live.",
+        "option_explanation": "Changes are tested in the simulation so that actual operations are not disrupted."
+      },
+      {
+        "option_text": "Test new layouts and processes without disrupting actual operations.",
+        "option_explanation": "Correct. Operations managers use these AI-driven simulations to test new layouts and processes without disrupting actual operations."
+      },
+      {
+        "option_text": "Replace real-time IoT data with a fixed model of the original layout.",
+        "option_explanation": "The twin ingests real-time IoT data to accurately mirror the current state of the facility."
+      },
+      {
+        "option_text": "Remove bottlenecks automatically without needing any simulation.",
+        "option_explanation": "The twin is itself a simulation that predicts the impact of bottlenecks; the lecture does not say bottlenecks are removed automatically."
+      }
+    ]
+  },
+  {
+    "slide_id": "waste-reduction",
+    "question_text": "How are computer vision systems used in reverse logistics, according to the lecture?",
+    "hint": "A returned item can go one of three ways. Something has to decide which.",
+    "correct_answer_citation": "Week 05 — AI in Reverse Logistics and Returns",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "To forecast return volumes from product traits and seasonal trends.",
+        "option_explanation": "That is the role of predictive models, which anticipate return volumes to optimize reverse network capacity."
+      },
+      {
+        "option_text": "To send every returned item straight to recycling without inspection.",
+        "option_explanation": "Recycling is one of three outcomes; the systems first assess condition to decide between restocking, refurbishing, or recycling."
+      },
+      {
+        "option_text": "To assess condition and decide to restock, refurbish, or recycle.",
+        "option_explanation": "Correct. Computer vision systems automatically assess the condition of returned goods to determine if they should be restocked, refurbished, or recycled."
+      },
+      {
+        "option_text": "To remove the returns process entirely so no labor is needed.",
+        "option_explanation": "The lecture describes returns processing as a complex, labor-intensive challenge; it does not say AI removes the process."
+      }
+    ]
+  },
+  {
+    "slide_id": "legacy-systems",
+    "question_text": "According to the lecture, why are Explainable AI techniques critical in operations?",
+    "hint": "Planners hesitate when they cannot see the reasoning behind a recommendation.",
+    "correct_answer_citation": "Week 05 — The Black Box Problem in Operations",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "They build trust between human operators and algorithmic systems.",
+        "option_explanation": "Correct. Explainable AI techniques are critical for building trust between human operators and algorithmic systems."
+      },
+      {
+        "option_text": "They let planners execute decisions without understanding the rationale.",
+        "option_explanation": "The lecture says planners hesitate to execute multi-million dollar inventory decisions without understanding the underlying rationale."
+      },
+      {
+        "option_text": "They replace human planners in multi-million dollar inventory decisions.",
+        "option_explanation": "The lecture frames explainability as building trust between human operators and algorithmic systems, not as replacing planners."
+      },
+      {
+        "option_text": "They keep how deep learning models reach recommendations hidden.",
+        "option_explanation": "The problem is that deep learning models often lack transparency; explainability addresses that rather than hiding it."
+      }
+    ]
+  }
+]
