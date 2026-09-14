@@ -1,0 +1,152 @@
+[
+  {
+    "slide_id": "defining-a-product",
+    "question_text": "A tourism board promotes Montréal to people planning a weekend away. Using this week's definition, can Montréal be a product?",
+    "hint": "Look at the list of things a product includes.",
+    "correct_answer_citation": "Week 07 · The Concept: Defining a Product",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "No, a product must be a physical object.",
+        "option_explanation": "A product is anything that can be offered to a market. Physical objects are only one of the things it includes."
+      },
+      {
+        "option_text": "Yes, places can be offered to a market.",
+        "option_explanation": "Correct. A product includes physical objects, services, events, persons, places, organizations, and ideas, so a city can be a product."
+      },
+      {
+        "option_text": "No, only objects and services are products.",
+        "option_explanation": "The definition is wider than objects and services. It also includes events, persons, places, organizations, and ideas."
+      },
+      {
+        "option_text": "Yes, but only once a visitor buys a ticket.",
+        "option_explanation": "A product can be offered for attention, acquisition, use, or consumption. It does not have to be bought to count."
+      }
+    ]
+  },
+  {
+    "slide_id": "specialty-and-unsought-goods",
+    "question_text": "A buyer drives two hours to one dealer because only one particular brand of luxury car will do. Which kind of consumer good is this?",
+    "hint": "The buyer makes a special purchase effort for a brand they identify with.",
+    "correct_answer_citation": "Week 07 · Product Classifications: Specialty and Unsought Goods",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Convenience good",
+        "option_explanation": "Convenience goods are purchased frequently with minimal comparison, like toothpaste. Nobody drives two hours for them."
+      },
+      {
+        "option_text": "Shopping good",
+        "option_explanation": "Shopping goods involve planning and comparing quality, price, and style. This buyer has already decided on one brand."
+      },
+      {
+        "option_text": "Specialty good",
+        "option_explanation": "Correct. Specialty goods have unique characteristics or brand identification requiring special purchase effort, such as luxury cars."
+      },
+      {
+        "option_text": "Unsought good",
+        "option_explanation": "Unsought goods are products consumers do not normally think of buying. This buyer is actively seeking the car."
+      }
+    ]
+  },
+  {
+    "slide_id": "the-product-life-cycle",
+    "question_text": "Which list puts the five stages of the product life cycle in the right order?",
+    "hint": "The product has to be developed before it can be introduced.",
+    "correct_answer_citation": "Week 07 · The Concept: The Product Life Cycle",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Development, growth, introduction, maturity, decline",
+        "option_explanation": "Growth cannot come before introduction. A product is introduced first, and then it grows."
+      },
+      {
+        "option_text": "Introduction, development, growth, maturity, decline",
+        "option_explanation": "A product has to be developed before it can be introduced to the market."
+      },
+      {
+        "option_text": "Development, introduction, growth, maturity, decline",
+        "option_explanation": "Correct. The five stages are development, introduction, growth, maturity, and decline."
+      },
+      {
+        "option_text": "Development, introduction, maturity, growth, decline",
+        "option_explanation": "Maturity comes after growth, not before it."
+      }
+    ]
+  },
+  {
+    "slide_id": "new-product-development-process",
+    "question_text": "A team shows a written description of its new product idea to a group of target consumers and records their reactions. Which step is this?",
+    "hint": "The idea already exists and has passed screening. Now it is being tried out on people.",
+    "correct_answer_citation": "Week 07 · Strategy: New Product Development Process",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Idea generation",
+        "option_explanation": "Idea generation sources new concepts. Here the idea already exists and is being tested with consumers."
+      },
+      {
+        "option_text": "Concept testing",
+        "option_explanation": "Correct. Concept development and testing involve testing the idea with a group of target consumers."
+      },
+      {
+        "option_text": "Idea screening",
+        "option_explanation": "Screening filters new concepts. Showing the idea to target consumers is concept testing."
+      },
+      {
+        "option_text": "Strategy development",
+        "option_explanation": "Marketing strategy development outlines the initial marketing strategy. It does not test the idea with consumers."
+      }
+    ]
+  },
+  {
+    "slide_id": "branding-strategy",
+    "question_text": "In a blind taste test, shoppers rate two colas the same. When the labels are shown, they rate one far higher and say they would pay more for it. What does that difference show?",
+    "hint": "The drink did not change. Only knowing the name did.",
+    "correct_answer_citation": "Week 07 · The Concept: Branding Strategy",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Brand equity",
+        "option_explanation": "Correct. Brand equity is the differential effect that knowing the brand name has on customer response to the product or its marketing."
+      },
+      {
+        "option_text": "Product life cycle",
+        "option_explanation": "The product life cycle describes sales and profits over a product's lifetime. It does not explain a change caused by seeing a name."
+      },
+      {
+        "option_text": "Concept testing",
+        "option_explanation": "Concept testing tries a new idea on target consumers. These colas are existing brands."
+      },
+      {
+        "option_text": "Test marketing",
+        "option_explanation": "Test marketing introduces a new product into realistic market settings. The difference here comes from knowing the brand name."
+      }
+    ]
+  },
+  {
+    "slide_id": "the-nature-of-services",
+    "question_text": "A visitor pays for a guided walking tour of Old Québec. When the tour ends, what does the visitor own from the service itself?",
+    "hint": "Think about what services do and do not result in.",
+    "correct_answer_citation": "Week 07 · The Concept: The Nature of Services",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "The route, because paying transfers ownership",
+        "option_explanation": "Paying for a service does not transfer ownership of anything. The visitor bought an activity, not the route."
+      },
+      {
+        "option_text": "Nothing, as services give no ownership",
+        "option_explanation": "Correct. Services are essentially intangible and do not result in the ownership of anything."
+      },
+      {
+        "option_text": "A physical object, because every product is one",
+        "option_explanation": "Products are not always physical objects. Services are a form of product made of activities, benefits, or satisfactions."
+      },
+      {
+        "option_text": "The experience, as a good they can resell",
+        "option_explanation": "The tour is a service, not a good. It does not result in the ownership of anything that could be resold."
+      }
+    ]
+  }
+]
