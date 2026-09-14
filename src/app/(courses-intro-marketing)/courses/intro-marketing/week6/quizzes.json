@@ -1,0 +1,127 @@
+[
+  {
+    "slide_id": "geographic-and-demographic-segmentation",
+    "question_text": "A bank designs one account for students and a different account for retirees. Which basis for segmenting is it using, and why is that basis so common?",
+    "hint": "Is the bank dividing buyers by where they live, or by variables such as age and life-cycle stage?",
+    "correct_answer_citation": "Week 06 · Geographic and Demographic Segmentation",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Geographic, because regions and cities are easy to reach.",
+        "option_explanation": "Geographic segmentation divides the market into units such as regions or cities. Students and retirees are defined by age and life-cycle stage, not by place."
+      },
+      {
+        "option_text": "Geographic, because neighborhoods share the same needs.",
+        "option_explanation": "The bank is not dividing buyers by neighborhood. It is using age and life-cycle stage."
+      },
+      {
+        "option_text": "Demographic, because such variables are easier to measure.",
+        "option_explanation": "Correct. Age and life-cycle stage are demographic variables, which are the most popular bases because they are easier to measure."
+      },
+      {
+        "option_text": "Demographic, because it is the only basis that is accessible.",
+        "option_explanation": "Demographic variables are popular because they are easier to measure, not because they are the only accessible basis."
+      }
+    ]
+  },
+  {
+    "slide_id": "behavioral-segmentation",
+    "question_text": "A chocolate maker builds separate campaigns for Valentine's Day and for Easter. Which behavioral variable is it using?",
+    "hint": "The campaigns are organized around particular times when people buy.",
+    "correct_answer_citation": "Week 06 · Behavioral Segmentation",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Usage rate",
+        "option_explanation": "Usage rate is about how much of a product people use. These campaigns are built around times of purchase."
+      },
+      {
+        "option_text": "Occasions",
+        "option_explanation": "Correct. Valentine's Day and Easter are occasions, one of the variables in behavioral segmentation."
+      },
+      {
+        "option_text": "User status",
+        "option_explanation": "User status groups buyers by their status as users of the product. The campaigns here follow the calendar."
+      },
+      {
+        "option_text": "Lifestyle",
+        "option_explanation": "Lifestyle is a psychographic characteristic, not a behavioral variable."
+      }
+    ]
+  },
+  {
+    "slide_id": "evaluating-market-segments",
+    "question_text": "A segment is large and growing, but it is full of strong, aggressive competitors, and new rivals can enter it easily. Which factor makes it less attractive?",
+    "hint": "Size and growth look fine. Look at the other two factors.",
+    "correct_answer_citation": "Week 06 · Evaluating Market Segments",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Segment structural attractiveness",
+        "option_explanation": "Correct. A segment is less attractive if it already contains many strong and aggressive competitors or if it is easy for new entrants to come in."
+      },
+      {
+        "option_text": "Segment size and growth",
+        "option_explanation": "The segment is large and growing, so size and growth are not the problem here."
+      },
+      {
+        "option_text": "Company objectives and resources",
+        "option_explanation": "Nothing in the case is about the company's own skills or resources. The problem is competitors and easy entry."
+      },
+      {
+        "option_text": "A target market without shared needs",
+        "option_explanation": "The case says nothing about buyers' needs. It describes competitors and new entrants."
+      }
+    ]
+  },
+  {
+    "slide_id": "choosing-a-differentiation-and-positioning-strategy",
+    "question_text": "A marketing team has identified a set of differentiating competitive advantages and has chosen the right ones. What is the next step?",
+    "hint": "The task has three steps. Two are already done.",
+    "correct_answer_citation": "Week 06 · Choosing a Differentiation and Positioning Strategy",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Divide the market into distinct groups",
+        "option_explanation": "Dividing the market is segmentation, which comes before differentiation and positioning."
+      },
+      {
+        "option_text": "Evaluate each segment's attractiveness",
+        "option_explanation": "Evaluating segments is part of market targeting, not the last step of the positioning task."
+      },
+      {
+        "option_text": "Identify further differentiating advantages",
+        "option_explanation": "Identifying advantages is the first step, and the team has already done it."
+      },
+      {
+        "option_text": "Select an overall positioning strategy",
+        "option_explanation": "Correct. After identifying and choosing the right competitive advantages, the third step is selecting an overall positioning strategy."
+      }
+    ]
+  },
+  {
+    "slide_id": "developing-a-value-proposition",
+    "question_text": "A brand offers more benefits than its rivals and charges a lower price for them. Which value proposition is this?",
+    "hint": "Name the benefits first, then the price.",
+    "correct_answer_citation": "Week 06 · Developing a Value Proposition",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "More for More",
+        "option_explanation": "More for More means more benefits at a higher price. This brand charges less."
+      },
+      {
+        "option_text": "The Same for Less",
+        "option_explanation": "The Same for Less offers the same benefits at a lower price. This brand offers more benefits."
+      },
+      {
+        "option_text": "More for Less",
+        "option_explanation": "Correct. More benefits at a lower price is the More for Less value proposition."
+      },
+      {
+        "option_text": "More for the Same",
+        "option_explanation": "More for the Same offers more benefits at the same price. This brand charges less."
+      }
+    ]
+  }
+]

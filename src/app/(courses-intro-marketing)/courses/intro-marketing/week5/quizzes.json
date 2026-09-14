@@ -1,0 +1,177 @@
+[
+  {
+    "slide_id": "defining-the-problem",
+    "question_text": "A research team skips agreeing on objectives and starts collecting data right away. Why is this risky?",
+    "hint": "Think about what the first step does for every step that comes after it.",
+    "correct_answer_citation": "Week 05 · Step 1: Defining the Problem",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Research objectives are only set after data is analyzed.",
+        "option_explanation": "The first step is to define the problem and agree on research objectives, before any data is collected."
+      },
+      {
+        "option_text": "Defining the problem is the easiest step to redo later.",
+        "option_explanation": "Defining the problem is often the hardest step, not the easiest."
+      },
+      {
+        "option_text": "The first step guides the entire research process.",
+        "option_explanation": "Correct. Defining the problem is often the hardest step, as it guides the entire research process."
+      },
+      {
+        "option_text": "Objectives only matter when the research is causal.",
+        "option_explanation": "Objectives can be exploratory, descriptive, or causal. Every kind of research needs them."
+      }
+    ]
+  },
+  {
+    "slide_id": "developing-the-research-plan",
+    "question_text": "A firm plans a very expensive study, but the findings could only change a small decision. Which part of the research plan has it ignored?",
+    "hint": "What must the plan weigh against the value of what the research will reveal?",
+    "correct_answer_citation": "Week 05 · Step 2: Developing the Research Plan",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Balancing the cost of data against the value of insights.",
+        "option_explanation": "Correct. The plan must balance the cost of obtaining data against the value of the insights."
+      },
+      {
+        "option_text": "Determining the exact information the managers will need.",
+        "option_explanation": "The plan does determine the exact information needed, but the problem here is cost compared with value."
+      },
+      {
+        "option_text": "Outlining the sources of existing data that could be used.",
+        "option_explanation": "Listing sources of existing data is part of the plan, but it does not address a study that costs more than it is worth."
+      },
+      {
+        "option_text": "Choosing whether objectives are exploratory or causal.",
+        "option_explanation": "Setting objectives belongs to Step 1, defining the problem. The issue here is cost against value."
+      }
+    ]
+  },
+  {
+    "slide_id": "secondary-data",
+    "question_text": "A coffee chain looks through its own past loyalty-card sales records, gathered for billing, to understand a new drop in visits. What kind of data is this?",
+    "hint": "Does the information already exist, and where does it come from?",
+    "correct_answer_citation": "Week 05 · Secondary Data",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Secondary data from a government report.",
+        "option_explanation": "The records are the chain's own, not a government report."
+      },
+      {
+        "option_text": "Secondary data from an internal database.",
+        "option_explanation": "Correct. The records already exist, were collected for another purpose, and come from the company's internal database."
+      },
+      {
+        "option_text": "Secondary data from a commercial data service.",
+        "option_explanation": "A commercial data service is an outside source. These records come from inside the company."
+      },
+      {
+        "option_text": "Not secondary data, since it is company-owned.",
+        "option_explanation": "Secondary data includes internal databases. What matters is that the information already exists."
+      }
+    ]
+  },
+  {
+    "slide_id": "primary-data",
+    "question_text": "A snack brand needs to know how teens react to its new flavor, and no existing study covers it. If it collects primary data, what should it expect?",
+    "hint": "Primary data is collected for the specific purpose at hand. What does that give, and what does it cost?",
+    "correct_answer_citation": "Week 05 · Primary Data",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Quick, low-cost data that was collected for another purpose.",
+        "option_explanation": "That describes secondary data, which can be obtained quickly and at a lower cost."
+      },
+      {
+        "option_text": "Data that already exists in government or commercial reports.",
+        "option_explanation": "Information that already exists is secondary data. Primary data is collected for the purpose at hand."
+      },
+      {
+        "option_text": "Less relevant data that is faster to gather than secondary.",
+        "option_explanation": "Primary data is highly relevant, and it takes more time and resources to gather."
+      },
+      {
+        "option_text": "Highly relevant data that takes more time and resources.",
+        "option_explanation": "Correct. Primary data is highly relevant but takes more time and resources to gather."
+      }
+    ]
+  },
+  {
+    "slide_id": "primary-research-approaches",
+    "question_text": "A grocer wants to know whether moving a product to eye level causes higher sales, so it compares two matched stores and keeps everything else the same. Which approach is this?",
+    "hint": "The grocer wants cause and effect, and it matches groups and controls factors.",
+    "correct_answer_citation": "Week 05 · Primary Research Approaches",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Survey research, asking about knowledge and attitudes.",
+        "option_explanation": "Survey research is best for descriptive information about knowledge and attitudes, not for causal information."
+      },
+      {
+        "option_text": "Observational research, by watching what shoppers do.",
+        "option_explanation": "Observational research gathers data by observing people and actions. It does not match groups and control factors."
+      },
+      {
+        "option_text": "Experimental research, to gather causal information.",
+        "option_explanation": "Correct. Experimental research is best for gathering causal information by matching groups and controlling factors."
+      },
+      {
+        "option_text": "Secondary data, from the grocer's internal database.",
+        "option_explanation": "Secondary data already exists. This test collects new information for the specific purpose at hand."
+      }
+    ]
+  },
+  {
+    "slide_id": "customer-relationship-management",
+    "question_text": "A bank's sales, service, and marketing teams each keep separate notes on the same client and never share them. Which idea is the bank failing to apply?",
+    "hint": "Which idea brings together everything the teams know about individual customers?",
+    "correct_answer_citation": "Week 05 · Customer Relationship Management (CRM)",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Experimental research, which matches groups and controls factors.",
+        "option_explanation": "Experimental research gathers causal information. It does not combine what teams know about customers."
+      },
+      {
+        "option_text": "CRM, which integrates what those teams know about customers.",
+        "option_explanation": "Correct. CRM manages detailed information about individual customers and integrates what sales, service, and marketing teams know."
+      },
+      {
+        "option_text": "Survey research, which gathers knowledge and attitudes.",
+        "option_explanation": "Survey research gathers descriptive information. The bank's problem is unshared customer information."
+      },
+      {
+        "option_text": "Big Data, which refers to huge and complex data sets.",
+        "option_explanation": "Big Data describes huge, complex data sets. The bank needs to integrate its teams' customer knowledge."
+      }
+    ]
+  },
+  {
+    "slide_id": "role-of-marketing-analytics",
+    "question_text": "An online retailer runs software over millions of purchase records to find products that are often bought together, and to track how well its campaigns perform. What is this?",
+    "hint": "Tools and technologies dig patterns out of big data and gauge performance.",
+    "correct_answer_citation": "Week 05 · The Role of Marketing Analytics",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Customer relationship management, managing customer touchpoints.",
+        "option_explanation": "CRM manages customer touchpoints to maximize loyalty. Finding patterns in big data is marketing analytics."
+      },
+      {
+        "option_text": "Observational research, watching relevant people and actions.",
+        "option_explanation": "Observational research watches people and actions directly. Here software digs through big data."
+      },
+      {
+        "option_text": "Defining the problem, by agreeing on the research objectives.",
+        "option_explanation": "Defining the problem is the first research step. This case is about analysis tools finding patterns."
+      },
+      {
+        "option_text": "Marketing analytics, finding meaningful patterns in big data.",
+        "option_explanation": "Correct. Marketing analytics uses analysis tools, technologies, and processes to dig out meaningful patterns in big data and gauge marketing performance."
+      }
+    ]
+  }
+]
