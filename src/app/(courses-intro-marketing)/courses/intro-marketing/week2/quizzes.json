@@ -1,0 +1,102 @@
+[
+  {
+    "slide_id": "microenvironment",
+    "question_text": "A snack maker's packaging supplier suddenly shuts down, and the snack maker cannot ship to stores. Where does the supplier sit in the snack maker's marketing environment?",
+    "hint": "Check the list of actors close to the company.",
+    "correct_answer_citation": "Week 02 · The Microenvironment",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Outside it, because suppliers are not customers.",
+        "option_explanation": "The marketing environment is made up of the actors and forces outside marketing, and suppliers are one of the listed actors."
+      },
+      {
+        "option_text": "In the microenvironment, as an actor close to the company.",
+        "option_explanation": "Correct. Suppliers are one of the actors close to the company that make up the microenvironment."
+      },
+      {
+        "option_text": "Inside the company itself, since suppliers work for the firm.",
+        "option_explanation": "The company itself is a separate actor. Suppliers are external partners the company builds relationships with."
+      },
+      {
+        "option_text": "Among the publics, since a shutdown becomes public news.",
+        "option_explanation": "Publics are a separate actor. Suppliers are listed as their own actor in the microenvironment."
+      }
+    ]
+  },
+  {
+    "slide_id": "macroenvironment",
+    "question_text": "Which statement correctly describes the macroenvironment?",
+    "hint": "Compare it with the actors close to the company.",
+    "correct_answer_citation": "Week 02 · The Macroenvironment",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Actors close to the company, like suppliers and publics.",
+        "option_explanation": "Actors close to the company make up the microenvironment."
+      },
+      {
+        "option_text": "A smaller set of forces that sits inside the microenvironment.",
+        "option_explanation": "The macroenvironment is made of larger societal forces, and those forces affect the microenvironment."
+      },
+      {
+        "option_text": "Larger societal forces that affect the microenvironment.",
+        "option_explanation": "Correct. The macroenvironment consists of the larger societal forces that affect the microenvironment."
+      },
+      {
+        "option_text": "Forces that bring threats to the company but never opportunities.",
+        "option_explanation": "The macroenvironment shapes opportunities and poses threats to the company."
+      }
+    ]
+  },
+  {
+    "slide_id": "pillars-of-csr",
+    "question_text": "A clothing company pays its factory workers more than the law requires because its leaders believe that is fair. Which pillar of CSR does this reflect?",
+    "hint": "Look at the reason the leaders give.",
+    "correct_answer_citation": "Week 02 · The Pillars of CSR",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Legal responsibility, obeying the law and the rules.",
+        "option_explanation": "The company pays more than the law requires, so obeying the law does not explain the choice."
+      },
+      {
+        "option_text": "Economic responsibility, staying profitable and viable.",
+        "option_explanation": "The leaders give fairness as their reason. Profit is the economic responsibility."
+      },
+      {
+        "option_text": "Philanthropic responsibility, giving to the community.",
+        "option_explanation": "Philanthropy contributes resources to the community. Here the company is paying its own workers."
+      },
+      {
+        "option_text": "Ethical responsibility, doing what is right and fair.",
+        "option_explanation": "Correct. Ethical responsibility is to do what is right, just, and fair, which is the reason the leaders give."
+      }
+    ]
+  },
+  {
+    "slide_id": "deceptive-practices",
+    "question_text": "A furniture store tags a sofa \"Was $2,000, now $900,\" but it never sold that sofa for $2,000. What is this practice?",
+    "hint": "Ask whether the \"was\" price was ever real.",
+    "correct_answer_citation": "Week 02 · Deceptive Practices",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Deceptive pricing, from a phony high retail price.",
+        "option_explanation": "Correct. A large price reduction from a phony high retail price is deceptive pricing."
+      },
+      {
+        "option_text": "Deceptive promotion, misstating the sofa's features.",
+        "option_explanation": "The tag says nothing about the sofa's features or performance. The false part is the price."
+      },
+      {
+        "option_text": "Greenwashing, because the store exaggerates its claims.",
+        "option_explanation": "Greenwashing is about claiming to be \"green.\" This claim is about price."
+      },
+      {
+        "option_text": "Acceptable, since a store may set any price it likes.",
+        "option_explanation": "A price reduction from a phony high retail price is listed as deceptive pricing, and it harms consumers."
+      }
+    ]
+  }
+]

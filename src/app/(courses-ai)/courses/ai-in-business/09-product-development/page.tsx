@@ -76,7 +76,6 @@ const hash = (n: number) => {
 const headRight = (x: number, y: number) => `M${x - 8} ${y - 5}l8 5l-8 5`;
 const headLeft = (x: number, y: number) => `M${x + 8} ${y - 5}l-8 5l8 5`;
 const headDown = (x: number, y: number) => `M${x - 5} ${y - 8}l5 8l5-8`;
-const headUp = (x: number, y: number) => `M${x - 5} ${y + 8}l5-8l5 8`;
 
 /**
  * Reveal — the deck's single entrance. Opacity plus eight pixels of rise,
@@ -228,50 +227,6 @@ function Stat({
         {value}
       </span>
       <span className={`${MICRO} text-[var(--charcoal-light)]/65`}>{unit}</span>
-    </div>
-  );
-}
-
-/**
- * Numbered cells in a hairline grid. `cols` carries the responsive column
- * classes; `mark` turns one cell crimson.
- */
-function Steps({
-  items,
-  cols,
-  mark,
-  className = "mt-6",
-}: {
-  items: string[];
-  cols: string;
-  mark?: number;
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`${className} grid grid-cols-2 gap-px bg-[var(--charcoal)]/10 ${cols}`}
-    >
-      {items.map((item, i) => (
-        <div key={item} className="bg-[var(--background)] px-4 py-4">
-          <span
-            className={`${MICRO} ${
-              i === mark ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
-            }`}
-          >
-            {pad(i + 1)}
-          </span>
-          <span
-            className={`mt-2 block font-mono text-[11px] uppercase tracking-[0.1em] ${
-              i === mark
-                ? "text-[var(--crimson)]"
-                : "text-[var(--charcoal-light)]/70"
-            }`}
-          >
-            {item}
-          </span>
-        </div>
-      ))}
     </div>
   );
 }
@@ -1359,7 +1314,7 @@ export default function Week09ProductDevelopment() {
       <PartPlate
         id="part-2"
         numeral="2"
-        title="Generative Design &amp; Engineering"
+        title="Generative Design & Engineering"
         lines={[
           "Transitioning from passive tools to active participants in physics.",
           "AI-driven Topology Optimization (TO) solving computational hurdles.",
@@ -1778,6 +1733,1496 @@ export default function Week09ProductDevelopment() {
         <Discussion delay={520}>
           How does synthetic data mitigate privacy risks in global engineering
           teams?
+        </Discussion>
+      </Slide>
+
+      <PartPlate
+        id="part-3"
+        numeral="3"
+        title="Prototyping & Digital Twins"
+        lines={[
+          "Bridging the physical-digital gap.",
+          "AI-guided rapid prototyping in Additive Manufacturing.",
+          <>
+            In-process correction using computer vision to reduce waste
+            <Cite n={[22, 23]} />.
+          </>,
+        ]}
+        discussion="What is the economic impact of self-correcting 3D printers?"
+      />
+
+      {/* ==================================================================
+          16 · PARAMETER OPTIMIZATION — a log of past prints passed to a
+          bank of sliders set at their optimum; failed attempts struck
+          through before one clean part; one mark repeated at every site.
+      ================================================================== */}
+      <Slide id="parameter-optimization" border align="left">
+        <Head eyebrow="Part 3 · 01 / 03">Parameter Optimization</Head>
+
+        <Reveal delay={140} className="w-full">
+          <p className={`${LEAD} mt-9 max-w-4xl`}>
+            Analyzing historical print data to suggest optimal slicing
+            parameters
+            <Cite n={[24]} />.
+          </p>
+          <svg
+            aria-hidden
+            viewBox="0 0 800 150"
+            className="mt-8 w-full max-w-5xl"
+            fill="none"
+          >
+            {Array.from({ length: 9 }, (_, r) => (
+              <g key={r}>
+                <rect x="20.5" y={16.5 + r * 12} width="6" height="6" stroke="var(--charcoal)" strokeOpacity="0.4" />
+                <path
+                  d={`M36 ${19.5 + r * 12}H${(120 + 170 * hash(r + 3101)).toFixed(0)}`}
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.3"
+                  strokeWidth="2"
+                />
+              </g>
+            ))}
+            <text {...SVG_LABEL} x="20" y="142" fill="var(--charcoal)" fillOpacity="0.65">
+              HISTORICAL PRINT DATA
+            </text>
+            <path d="M330 68H396" stroke="var(--charcoal)" strokeOpacity="0.45" />
+            <path d={headRight(404, 68)} stroke="var(--charcoal)" strokeOpacity="0.6" />
+            {[520, 690, 600, 470].map((x, r) => (
+              <g key={r}>
+                <path d={`M440 ${26 + r * 28}H760`} stroke="var(--charcoal)" strokeOpacity="0.3" strokeWidth="2" />
+                <circle cx={x} cy={26 + r * 28} r="6.5" fill="var(--crimson)" />
+              </g>
+            ))}
+            <text {...SVG_LABEL} x="760" y="142" textAnchor="end" fill="var(--crimson)">
+              OPTIMAL SLICING PARAMETERS
+            </text>
+          </svg>
+        </Reveal>
+
+        <div className={PAIR}>
+          <Reveal delay={280}>
+            <p className={BODY}>
+              Removing &quot;trial and error&quot; from complex part printing.
+            </p>
+            <svg
+              aria-hidden
+              viewBox="0 0 400 96"
+              className="mt-7 w-full max-w-[25rem]"
+              fill="none"
+            >
+              {[10, 70, 130].map((x) => (
+                <rect key={x} x={x + 0.5} y="14.5" width="40" height="40" stroke="var(--charcoal)" strokeOpacity="0.4" strokeDasharray="3 3" />
+              ))}
+              <path d="M2 34.5H178" stroke="var(--crimson)" strokeWidth="2" />
+              <text {...SVG_LABEL} x="10" y="84" fill="var(--charcoal)" fillOpacity="0.6">
+                &quot;TRIAL AND ERROR&quot;
+              </text>
+              <rect x="250.5" y="14.5" width="40" height="40" stroke="var(--charcoal)" strokeOpacity="0.7" />
+              <path d="M262 35l6 6l12-12" stroke="var(--charcoal)" strokeOpacity="0.8" strokeWidth="1.5" />
+            </svg>
+          </Reveal>
+
+          <Reveal delay={400} className={COL_RULE}>
+            <p className={BODY}>
+              Ensuring consistent quality across distributed manufacturing.
+            </p>
+            <svg
+              aria-hidden
+              viewBox="0 0 400 112"
+              className="mt-7 w-full max-w-[25rem]"
+              fill="none"
+            >
+              <path d="M40 30L130 62L220 24L300 70L370 34" stroke="var(--charcoal)" strokeOpacity="0.25" strokeDasharray="3 4" />
+              {[
+                [40, 30],
+                [130, 62],
+                [220, 24],
+                [300, 70],
+                [370, 34],
+              ].map(([x, y]) => (
+                <g key={x}>
+                  <rect x={x - 11.5} y={y - 11.5} width="23" height="23" fill="var(--background)" stroke="var(--charcoal)" strokeOpacity="0.55" />
+                  <rect x={x - 4} y={y - 4} width="8" height="8" fill="var(--crimson)" />
+                </g>
+              ))}
+              <text {...SVG_LABEL} x="10" y="106" fill="var(--charcoal)" fillOpacity="0.65">
+                DISTRIBUTED MANUFACTURING
+              </text>
+            </svg>
+          </Reveal>
+        </div>
+
+        <Discussion delay={520}>
+          How does this capability enable decentralized manufacturing?
+        </Discussion>
+      </Slide>
+
+      {/* ==================================================================
+          17 · COGNITIVE DIGITAL TWINS — an object and its dashed replica,
+          then the same pair with a reasoning network inside the twin; a
+          network growing along time; a declining line caught before its
+          failure line.
+      ================================================================== */}
+      <Slide id="cognitive-twins" border align="left">
+        <Head eyebrow="Part 3 · 02 / 03">Cognitive Digital Twins</Head>
+
+        <Reveal delay={140} className="w-full">
+          <p className={`${DISPLAY} mt-9 max-w-4xl`}>
+            Beyond static virtual replicas to semantic, reasoning models
+            <Cite n={[25, 26]} />.
+          </p>
+          <svg
+            aria-hidden
+            viewBox="0 0 800 140"
+            className="mt-8 w-full max-w-5xl"
+            fill="none"
+          >
+            {[40, 500].map((x) => (
+              <g key={x}>
+                <rect x={x + 0.5} y="24.5" width="90" height="60" fill="var(--charcoal)" fillOpacity="0.1" stroke="var(--charcoal)" strokeOpacity="0.6" />
+                <path d={`M${x + 91} 54.5H${x + 129}`} stroke="var(--charcoal)" strokeOpacity="0.35" strokeDasharray="2 3" />
+              </g>
+            ))}
+            <rect x="170.5" y="24.5" width="90" height="60" stroke="var(--charcoal)" strokeOpacity="0.5" strokeDasharray="4 4" />
+            <text {...SVG_LABEL} x="40" y="120" fill="var(--charcoal)" fillOpacity="0.65">
+              STATIC VIRTUAL REPLICAS
+            </text>
+
+            <path d="M292 54.5H452" stroke="var(--charcoal)" strokeOpacity="0.45" />
+            <path d={headRight(460, 54.5)} stroke="var(--charcoal)" strokeOpacity="0.6" />
+
+            <rect x="630.5" y="24.5" width="130" height="60" stroke="var(--crimson)" strokeDasharray="4 4" />
+            <path
+              d="M656 42L698 55M684 70L698 55M712 40L698 55M738 68L698 55M656 42L684 70M712 40L738 68"
+              stroke="var(--crimson)"
+              strokeOpacity="0.5"
+            />
+            {[
+              [656, 42],
+              [684, 70],
+              [712, 40],
+              [738, 68],
+              [698, 55],
+            ].map(([x, y]) => (
+              <circle key={x} cx={x} cy={y} r="3.5" fill="var(--crimson)" />
+            ))}
+            <text {...SVG_LABEL} x="760" y="120" textAnchor="end" fill="var(--crimson)">
+              SEMANTIC, REASONING MODELS
+            </text>
+          </svg>
+        </Reveal>
+
+        <div className={PAIR}>
+          <Reveal delay={280}>
+            <p className={BODY}>
+              Using reinforcement learning to evolve over time.
+            </p>
+            <svg
+              aria-hidden
+              viewBox="0 0 400 120"
+              className="mt-7 w-full max-w-[25rem]"
+              fill="none"
+            >
+              <path d="M10 96H380" stroke="var(--charcoal)" strokeOpacity="0.3" />
+              <path d={headRight(388, 96)} stroke="var(--charcoal)" strokeOpacity="0.45" />
+              {[
+                [50, 2, 12],
+                [150, 3, 16],
+                [250, 5, 20],
+                [340, 7, 24],
+              ].map(([cx, n, radius], s) => {
+                const tone = s === 3 ? "var(--crimson)" : "var(--charcoal)";
+                const pts = Array.from({ length: n }, (_, i) => {
+                  const a = (i / n) * Math.PI * 2 + s;
+                  return [cx + radius * Math.cos(a), 50 + radius * Math.sin(a)];
+                });
+                return (
+                  <g key={cx}>
+                    <path
+                      d={pts
+                        .map(([x, y], i) => `${i === 0 ? "M" : "L"}${x.toFixed(1)} ${y.toFixed(1)}`)
+                        .join("") + (n > 2 ? "Z" : "")}
+                      stroke={tone}
+                      strokeOpacity={s === 3 ? 0.6 : 0.3}
+                    />
+                    {pts.map(([x, y], i) => (
+                      <circle key={i} cx={x.toFixed(1)} cy={y.toFixed(1)} r="3" fill={tone} fillOpacity={s === 3 ? 1 : 0.55} />
+                    ))}
+                  </g>
+                );
+              })}
+              <text {...SVG_LABEL} x="10" y="116" fill="var(--charcoal)" fillOpacity="0.65">
+                REINFORCEMENT LEARNING
+              </text>
+              <text {...SVG_LABEL} x="388" y="116" textAnchor="end" fill="var(--charcoal)" fillOpacity="0.5">
+                OVER TIME
+              </text>
+            </svg>
+          </Reveal>
+
+          <Reveal delay={400} className={COL_RULE}>
+            <p className={BODY}>
+              Predicting failure modes and autonomously suggesting maintenance
+              <Cite n={[25]} />.
+            </p>
+            <figure aria-hidden className="mt-7 w-full max-w-[25rem]">
+              <svg viewBox="0 0 400 118" className="w-full" fill="none">
+                <path d="M10 92H390" stroke="var(--charcoal)" strokeOpacity="0.35" strokeDasharray="4 4" />
+                <path d="M10 42C110 44 190 50 250 64" stroke="var(--charcoal)" strokeOpacity="0.6" strokeWidth="1.5" />
+                <path d="M250 64C300 76 340 86 368 92" stroke="var(--charcoal)" strokeOpacity="0.45" strokeWidth="1.5" strokeDasharray="5 4" />
+                <circle cx="372" cy="92" r="4" fill="var(--background)" stroke="var(--charcoal)" strokeOpacity="0.6" />
+                <circle cx="250" cy="64" r="5" fill="var(--crimson)" />
+                <text {...SVG_LABEL} x="251" y="38" textAnchor="middle" fill="var(--crimson)">
+                  MAINTENANCE
+                </text>
+                <text {...SVG_LABEL} x="390" y="112" textAnchor="end" fill="var(--charcoal)" fillOpacity="0.6">
+                  FAILURE MODES
+                </text>
+              </svg>
+              <Schematic />
+            </figure>
+          </Reveal>
+        </div>
+
+        <Discussion delay={520}>
+          At what point does a &quot;twin&quot; become an autonomous operator?
+        </Discussion>
+      </Slide>
+
+      {/* ==================================================================
+          18 · VR AND AI-ASSISTED UX — a dashed stand-in user in a marked
+          headset reaching into an interface; a gaze path beside a pulse
+          trace; testing placed on the line before physical prototyping.
+      ================================================================== */}
+      <Slide id="vr-ux" border align="left">
+        <Head eyebrow="Part 3 · 03 / 03">VR and AI-Assisted UX</Head>
+
+        <Reveal delay={140} className="w-full">
+          <p className={`${LEAD} mt-9 max-w-4xl`}>
+            Simulating user interactions in VR without human subjects.
+          </p>
+          <svg
+            aria-hidden
+            viewBox="0 0 800 144"
+            className="mt-8 w-full max-w-5xl"
+            fill="none"
+          >
+            <circle cx="160" cy="44" r="14" stroke="var(--charcoal)" strokeOpacity="0.6" strokeDasharray="3 3" />
+            <path d="M132 94A28 28 0 0 1 188 94" stroke="var(--charcoal)" strokeOpacity="0.6" strokeDasharray="3 3" />
+            <rect x="144.5" y="37.5" width="31" height="13" rx="4" fill="var(--crimson)" />
+            <text {...SVG_LABEL} letterSpacing={1} x="160" y="128" textAnchor="middle" fill="var(--crimson)">
+              VR
+            </text>
+
+            <path d="M178 44L596 88M178 44L512 52" stroke="var(--crimson)" strokeOpacity="0.55" strokeDasharray="4 4" />
+
+            <path d="M430.5 16.5L700.5 32.5V106.5L430.5 122.5Z" stroke="var(--charcoal)" strokeOpacity="0.5" />
+            <path d="M456 46L566 50M456 62L536 65" stroke="var(--charcoal)" strokeOpacity="0.3" strokeWidth="2" />
+            <path d="M596 82L672 84V98L596 99Z" fill="var(--charcoal)" fillOpacity="0.2" />
+            <text {...SVG_LABEL} x="566" y="140" textAnchor="middle" fill="var(--charcoal)" fillOpacity="0.65">
+              USER INTERACTIONS
+            </text>
+          </svg>
+        </Reveal>
+
+        <div className={PAIR}>
+          <Reveal delay={280}>
+            <p className={BODY}>
+              Analyzing gaze patterns and biometrics to predict cognitive load
+              <Cite n={[27]} />.
+            </p>
+            <svg
+              aria-hidden
+              viewBox="0 0 400 118"
+              className="mt-7 w-full max-w-[25rem]"
+              fill="none"
+            >
+              <rect x="10.5" y="10.5" width="190" height="80" stroke="var(--charcoal)" strokeOpacity="0.45" />
+              <path d="M40 34L92 28L150 48L112 70L58 64" stroke="var(--crimson)" strokeOpacity="0.55" />
+              {[
+                [40, 34, 6],
+                [92, 28, 10],
+                [150, 48, 7],
+                [112, 70, 12],
+                [58, 64, 5],
+              ].map(([x, y, r]) => (
+                <circle key={x} cx={x} cy={y} r={r} fill="var(--crimson)" fillOpacity="0.12" stroke="var(--crimson)" />
+              ))}
+              <path
+                d="M220 50H256l6-22l8 44l7-30l5 8H322l6-22l8 44l7-30l5 8H390"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.6"
+                strokeWidth="1.5"
+                strokeLinejoin="round"
+              />
+              <text {...SVG_LABEL} x="10" y="112" fill="var(--crimson)">
+                GAZE PATTERNS
+              </text>
+              <text {...SVG_LABEL} x="220" y="112" fill="var(--charcoal)" fillOpacity="0.65">
+                BIOMETRICS
+              </text>
+            </svg>
+          </Reveal>
+
+          <Reveal delay={400} className={COL_RULE}>
+            <p className={BODY}>
+              Testing ergonomics and UI flows before physical prototyping.
+            </p>
+            <svg
+              aria-hidden
+              viewBox="0 0 400 92"
+              className="mt-7 w-full max-w-[25rem]"
+              fill="none"
+            >
+              <path d="M10 50H382" stroke="var(--charcoal)" strokeOpacity="0.3" />
+              <path d={headRight(390, 50)} stroke="var(--charcoal)" strokeOpacity="0.45" />
+              <rect x="10" y="42" width="170" height="16" fill="var(--crimson)" />
+              <rect x="190" y="42" width="180" height="16" fill="var(--charcoal)" fillOpacity="0.22" />
+              <text {...SVG_LABEL} x="10" y="30" fill="var(--crimson)">
+                ERGONOMICS AND UI FLOWS
+              </text>
+              <text {...SVG_LABEL} x="190" y="80" fill="var(--charcoal)" fillOpacity="0.65">
+                PHYSICAL PROTOTYPING
+              </text>
+            </svg>
+          </Reveal>
+        </div>
+
+        <Discussion delay={520}>
+          Can VR testing completely replace physical ergonomic testing?
+        </Discussion>
+      </Slide>
+
+      <PartPlate
+        id="part-4"
+        numeral="4"
+        title="DfM & Supply Chain Integration"
+        lines={[
+          "Moving DfM from a final checkpoint to a continuous process.",
+          <>
+            AI-automated DfM checks (CoLab, DFMPro) flagging risks
+            <Cite n={[28, 29]} />.
+          </>,
+          <>
+            Learning from historical data to prevent recurring failures
+            <Cite n={[30]} />.
+          </>,
+        ]}
+        discussion='How does "continuous DfM" alter the engineering workflow?'
+      />
+
+      {/* ==================================================================
+          20 · SUSTAINABLE MATERIAL SELECTION — a field of candidate cells
+          with a few marked; emission bars with one dropping below the
+          line; an LCA store feeding a shorter footprint.
+      ================================================================== */}
+      <Slide id="sustainable-materials" border align="left">
+        <Head eyebrow="Part 4 · 01 / 02">Sustainable Material Selection</Head>
+
+        <Reveal delay={140} className="w-full">
+          <p className={`${DISPLAY} mt-9 max-w-4xl`}>
+            AI discovery of new materials (Materials Nexus)
+            <Cite n={[31, 32]} />.
+          </p>
+          <figure aria-hidden className="mt-8 w-full max-w-5xl">
+            <svg viewBox="0 0 800 144" className="w-full" fill="none">
+              {Array.from({ length: 44 * 6 }, (_, k) => {
+                const hit = hash(k + 4001) > 0.975;
+                return (
+                  <rect
+                    key={k}
+                    x={26 + (k % 44) * 17}
+                    y={10 + Math.floor(k / 44) * 17}
+                    width="12"
+                    height="12"
+                    fill={hit ? "var(--crimson)" : "var(--charcoal)"}
+                    fillOpacity={hit ? 1 : 0.1}
+                  />
+                );
+              })}
+              <text {...SVG_LABEL} x="26" y="138" fill="var(--crimson)">
+                NEW MATERIALS
+              </text>
+            </svg>
+            <Schematic />
+          </figure>
+        </Reveal>
+
+        <div className={PAIR}>
+          <Reveal delay={280}>
+            <p className={BODY}>
+              Identifying rare-earth-free or carbon-negative compositions.
+            </p>
+            <figure aria-hidden className="mt-7 w-full max-w-[25rem]">
+              <svg viewBox="0 0 400 118" className="w-full" fill="none">
+                {[
+                  [30, 40],
+                  [90, 28],
+                  [150, 50],
+                  [210, 22],
+                ].map(([x, h]) => (
+                  <rect key={x} x={x} y={64 - h} width="36" height={h} fill="var(--charcoal)" fillOpacity="0.28" />
+                ))}
+                <rect x="290" y="64" width="36" height="30" fill="var(--crimson)" />
+                <path d="M10 64H390" stroke="var(--charcoal)" strokeOpacity="0.45" />
+                <text {...SVG_LABEL} x="309" y="112" textAnchor="middle" fill="var(--crimson)">
+                  CARBON-NEGATIVE
+                </text>
+              </svg>
+              <Schematic />
+            </figure>
+          </Reveal>
+
+          <Reveal delay={400} className={COL_RULE}>
+            <p className={BODY}>
+              Integrating with LCA databases for lower carbon footprints
+              <Cite n={[33]} />.
+            </p>
+            <figure aria-hidden className="mt-7 w-full max-w-[25rem]">
+              <svg viewBox="0 0 400 118" className="w-full" fill="none">
+                <ellipse cx="50" cy="20" rx="40" ry="10" stroke="var(--charcoal)" strokeOpacity="0.6" />
+                <path d="M10 20V84A40 10 0 0 0 90 84V20" stroke="var(--charcoal)" strokeOpacity="0.6" />
+                <text x="50" y="62" textAnchor="middle" fontSize="16" fontFamily="var(--font-serif), serif" fontWeight="700" fill="var(--crimson)">
+                  LCA
+                </text>
+                <text {...SVG_LABEL} x="10" y="112" fill="var(--charcoal)" fillOpacity="0.65">
+                  LCA DATABASES
+                </text>
+                <path d="M108 54H146" stroke="var(--charcoal)" strokeOpacity="0.45" />
+                <path d={headRight(154, 54)} stroke="var(--charcoal)" strokeOpacity="0.6" />
+                <rect x="170" y="34" width="210" height="12" fill="var(--charcoal)" fillOpacity="0.3" />
+                <rect x="170" y="60" width="120" height="12" fill="var(--crimson)" />
+                <text {...SVG_LABEL} x="170" y="94" fill="var(--crimson)">
+                  LOWER CARBON FOOTPRINTS
+                </text>
+              </svg>
+              <Schematic />
+            </figure>
+          </Reveal>
+        </div>
+
+        <Discussion delay={520}>
+          How critical is AI in achieving aggressive sustainability targets?
+        </Discussion>
+      </Slide>
+
+      {/* ==================================================================
+          21 · SUPPLY CHAIN RESILIENCE — three tiers mapped back from one
+          node, a flagged supplier's path marked through to it; two
+          warnings; a price record running on into a forecast.
+      ================================================================== */}
+      <Slide id="supply-resilience" border align="left">
+        <Head eyebrow="Part 4 · 02 / 02">Supply Chain Resilience</Head>
+
+        <Reveal delay={140} className="w-full">
+          <p className={`${LEAD} mt-9 max-w-4xl`}>
+            Mapping multi-tier supply chains with AI (SCM Globe, Resilinc)
+            <Cite n={[34, 35]} />.
+          </p>
+          <svg
+            aria-hidden
+            viewBox="0 0 800 180"
+            className="mt-8 w-full max-w-5xl"
+            fill="none"
+          >
+            {(() => {
+              const root = [740, 85];
+              const t1 = [40, 85, 130].map((y) => [540, y]);
+              const t2 = Array.from({ length: 6 }, (_, k) => [340, 16 + k * 27.6]);
+              const t3 = Array.from({ length: 9 }, (_, k) => [140, 10 + k * 18]);
+              const up2 = (k: number) => Math.floor(k / 2);
+              const up3 = (k: number) => Math.floor((k * 6) / 9);
+              const flagged = 3;
+              const edges: [number[], number[], boolean][] = [
+                ...t1.map((p, k): [number[], number[], boolean] => [p, root, k === up2(up3(flagged))]),
+                ...t2.map((p, k): [number[], number[], boolean] => [p, t1[up2(k)], k === up3(flagged)]),
+                ...t3.map((p, k): [number[], number[], boolean] => [p, t2[up3(k)], k === flagged]),
+              ];
+              return (
+                <>
+                  {edges.map(([a, b, hot], i) => (
+                    <path
+                      key={i}
+                      d={`M${a[0]} ${a[1].toFixed(1)}C${a[0] + 100} ${a[1].toFixed(1)} ${b[0] - 100} ${b[1].toFixed(1)} ${b[0]} ${b[1].toFixed(1)}`}
+                      stroke={hot ? "var(--crimson)" : "var(--charcoal)"}
+                      strokeOpacity={hot ? 1 : 0.22}
+                      strokeWidth={hot ? 1.5 : 1}
+                    />
+                  ))}
+                  {[...t1, ...t2, ...t3].map(([x, y]) => (
+                    <circle key={`${x}-${y}`} cx={x} cy={y.toFixed(1)} r="5" fill="var(--background)" stroke="var(--charcoal)" strokeOpacity="0.6" />
+                  ))}
+                  <circle cx={t3[flagged][0]} cy={t3[flagged][1]} r="5" fill="var(--crimson)" />
+                  <circle cx={t3[flagged][0]} cy={t3[flagged][1]} r="11" stroke="var(--crimson)" strokeOpacity="0.5" />
+                  <circle cx={root[0]} cy={root[1]} r="8" fill="var(--charcoal)" fillOpacity="0.7" />
+                </>
+              );
+            })()}
+            {[
+              ["TIER 3", 140],
+              ["TIER 2", 340],
+              ["TIER 1", 540],
+            ].map(([label, x]) => (
+              <text key={label} {...SVG_LABEL} x={x} y="176" textAnchor="middle" fill="var(--charcoal)" fillOpacity="0.65">
+                {label}
+              </text>
+            ))}
+          </svg>
+        </Reveal>
+
+        <div className={PAIR}>
+          <Reveal delay={280}>
+            <p className={BODY}>
+              Alerting on obsolescence risks and geopolitical instability.
+            </p>
+            <svg
+              aria-hidden
+              viewBox="0 0 400 92"
+              className="mt-7 w-full max-w-[25rem]"
+              fill="none"
+            >
+              {(
+                [
+                  ["OBSOLESCENCE RISKS", 26],
+                  ["GEOPOLITICAL INSTABILITY", 70],
+                ] as const
+              ).map(([label, y]) => (
+                <g key={label}>
+                  <path d={`M20 ${y - 14}L34 ${y + 10}H6Z`} stroke="var(--crimson)" strokeWidth="1.5" strokeLinejoin="round" />
+                  <path d={`M20 ${y - 5}V${y + 2}`} stroke="var(--crimson)" strokeWidth="1.5" />
+                  <circle cx="20" cy={y + 6} r="1" fill="var(--crimson)" />
+                  <text {...SVG_LABEL} x="52" y={y + 3.5} fill="var(--charcoal)" fillOpacity="0.7">
+                    {label}
+                  </text>
+                </g>
+              ))}
+            </svg>
+          </Reveal>
+
+          <Reveal delay={400} className={COL_RULE}>
+            <p className={BODY}>
+              Predicting lead times and price fluctuations
+              <Cite n={[36]} />.
+            </p>
+            <figure aria-hidden className="mt-7 w-full max-w-[25rem]">
+              <svg viewBox="0 0 400 124" className="w-full" fill="none">
+                <path d="M220 10V64" stroke="var(--charcoal)" strokeOpacity="0.25" strokeDasharray="2 4" />
+                <path d="M10 50L40 38L70 56L100 30L130 44L160 26L190 48L220 34" stroke="var(--charcoal)" strokeOpacity="0.6" strokeWidth="1.5" strokeLinejoin="round" />
+                <path d="M220 34L250 46L280 30L310 42L340 28" stroke="var(--crimson)" strokeWidth="1.5" strokeDasharray="5 4" strokeLinejoin="round" />
+                <text {...SVG_LABEL} x="10" y="78" fill="var(--charcoal)" fillOpacity="0.65">
+                  PRICE FLUCTUATIONS
+                </text>
+                <rect x="10" y="92" width="210" height="8" fill="var(--charcoal)" fillOpacity="0.3" />
+                <path d="M220 88V104M220 96H330M330 88V104" stroke="var(--crimson)" strokeWidth="1.5" strokeDasharray="0" />
+                <text {...SVG_LABEL} x="10" y="119" fill="var(--charcoal)" fillOpacity="0.65">
+                  LEAD TIMES
+                </text>
+              </svg>
+              <Schematic />
+            </figure>
+          </Reveal>
+        </div>
+
+        <Discussion delay={520}>
+          How should design teams weigh technical performance against supply
+          chain risk?
+        </Discussion>
+      </Slide>
+
+      <PartPlate
+        id="part-5"
+        numeral="5"
+        title="Personalization & User-Centricity"
+        lines={[
+          'Achieving "mass customization" at scale.',
+          <>
+            Autonomous configuration for &quot;Lot Size 1&quot; manufacturing
+            <Cite n={[37, 38]} />.
+          </>,
+          "Adjusting tooling and assembly for individual units.",
+        ]}
+        discussion='Is "Lot Size 1" a realistic goal for all industries?'
+      />
+
+      {/* ==================================================================
+          23 · GENERATIVE CUSTOMIZATION — six soles, each with its own
+          pattern, one marked; designs held inside a dashed boundary, a
+          stray one brought back in; one person in the process, then many.
+      ================================================================== */}
+      <Slide id="generative-customization" border align="left">
+        <Head eyebrow="Part 5 · 01 / 02">Generative Customization</Head>
+
+        <Reveal delay={140} className="w-full">
+          <p className={`${LEAD} mt-9 max-w-4xl`}>
+            Co-designing products with customers (e.g., custom shoe soles)
+            <Cite n={[39]} />.
+          </p>
+          <svg
+            aria-hidden
+            viewBox="0 0 800 160"
+            className="mt-8 w-full max-w-5xl"
+            fill="none"
+          >
+            {Array.from({ length: 6 }, (_, k) => {
+              const x = 50 + k * 124;
+              const sole = `M${x + 30} 6C${x + 52} 6 ${x + 60} 28 ${x + 58} 54C${x + 56} 76 ${x + 48} 88 ${x + 50} 106C${x + 52} 124 ${x + 44} 136 ${x + 30} 136C${x + 16} 136 ${x + 8} 124 ${x + 10} 106C${x + 12} 88 ${x + 4} 76 ${x + 2} 54C${x} 28 ${x + 8} 6 ${x + 30} 6Z`;
+              const marked = k === 3;
+              const tone = marked ? "var(--crimson)" : "var(--charcoal)";
+              const ink = marked ? 0.75 : 0.3;
+              let pattern: React.ReactNode;
+              if (k % 3 === 0) {
+                const step = 8 + k;
+                pattern = Array.from({ length: Math.ceil(134 / step) }, (_, r) => (
+                  <path
+                    key={r}
+                    d={`M${x - 2} ${8 + r * step}q7.5 ${-2 - (k % 2) * 2} 15 0t15 0t15 0t15 0t15 0`}
+                    stroke={tone}
+                    strokeOpacity={ink}
+                  />
+                ));
+              } else if (k % 3 === 1) {
+                pattern = Array.from({ length: 7 * 15 }, (_, i) => (
+                  <circle
+                    key={i}
+                    cx={x + 4 + (i % 7) * 9 + (Math.floor(i / 7) % 2) * 4.5}
+                    cy={8 + Math.floor(i / 7) * 9}
+                    r={(1 + hash(i + k * 97) * 1.6).toFixed(1)}
+                    fill={tone}
+                    fillOpacity={ink}
+                  />
+                ));
+              } else {
+                pattern = Array.from({ length: 18 }, (_, r) => (
+                  <path
+                    key={r}
+                    d={`M${x - 60 + r * (6 + k)} 0l80 140`}
+                    stroke={tone}
+                    strokeOpacity={ink}
+                  />
+                ));
+              }
+              return (
+                <g key={k}>
+                  <defs>
+                    <clipPath id={`w9-sole-${k}`}>
+                      <path d={sole} />
+                    </clipPath>
+                  </defs>
+                  <g clipPath={`url(#w9-sole-${k})`}>{pattern}</g>
+                  <path d={sole} stroke={tone} strokeOpacity={marked ? 1 : 0.55} strokeWidth={marked ? 1.5 : 1} />
+                </g>
+              );
+            })}
+            <text {...SVG_LABEL} x="50" y="156" fill="var(--charcoal)" fillOpacity="0.65">
+              CUSTOM SHOE SOLES
+            </text>
+          </svg>
+        </Reveal>
+
+        <div className={PAIR}>
+          <Reveal delay={280}>
+            <p className={BODY}>
+              AI ensuring user designs remain within manufacturable bounds.
+            </p>
+            <svg
+              aria-hidden
+              viewBox="0 0 400 118"
+              className="mt-7 w-full max-w-[25rem]"
+              fill="none"
+            >
+              <rect x="60.5" y="12.5" width="250" height="76" rx="10" stroke="var(--crimson)" strokeDasharray="5 4" />
+              {Array.from({ length: 14 }, (_, k) => (
+                <circle
+                  key={k}
+                  cx={(78 + 200 * hash(k + 5101)).toFixed(1)}
+                  cy={(26 + 50 * hash(k + 5303)).toFixed(1)}
+                  r="3"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.6"
+                />
+              ))}
+              <circle cx="358" cy="38" r="3.5" stroke="var(--charcoal)" strokeOpacity="0.5" strokeDasharray="2 2" />
+              <path d="M352 43C342 50 326 52 306 52" stroke="var(--charcoal)" strokeOpacity="0.5" />
+              <path d={headLeft(298, 52)} stroke="var(--charcoal)" strokeOpacity="0.6" />
+              <text {...SVG_LABEL} x="60" y="110" fill="var(--crimson)">
+                MANUFACTURABLE BOUNDS
+              </text>
+              <text {...SVG_LABEL} x="390" y="110" textAnchor="end" fill="var(--charcoal)" fillOpacity="0.65">
+                USER DESIGNS
+              </text>
+            </svg>
+          </Reveal>
+
+          <Reveal delay={400} className={COL_RULE}>
+            <p className={BODY}>Democratizing the design process.</p>
+            <svg
+              aria-hidden
+              viewBox="0 0 400 118"
+              className="mt-7 w-full max-w-[25rem]"
+              fill="none"
+            >
+              {(
+                [
+                  [55.5, "var(--charcoal)", 0.6],
+                  ...Array.from({ length: 7 }, (_, k) => [205 + k * 27, "var(--crimson)", 1] as const),
+                ] as const
+              ).map(([x, tone, o]) => (
+                <g key={x}>
+                  <circle cx={x} cy="42" r="4.5" stroke={tone} strokeOpacity={o} />
+                  <path d={`M${x - 8} 62A8 8 0 0 1 ${x + 8} 62`} stroke={tone} strokeOpacity={o} />
+                </g>
+              ))}
+              <rect x="10.5" y="20.5" width="90" height="60" stroke="var(--charcoal)" strokeOpacity="0.45" />
+              <path d="M116 50.5H158" stroke="var(--charcoal)" strokeOpacity="0.45" />
+              <path d={headRight(166, 50.5)} stroke="var(--charcoal)" strokeOpacity="0.6" />
+              <rect x="180.5" y="20.5" width="210" height="60" stroke="var(--crimson)" />
+              <text {...SVG_LABEL} x="201" y="108" textAnchor="middle" fill="var(--charcoal)" fillOpacity="0.65">
+                DESIGN PROCESS
+              </text>
+            </svg>
+          </Reveal>
+        </div>
+
+        <Discussion delay={520}>
+          What are the brand implications of allowing customers to co-design?
+        </Discussion>
+      </Slide>
+
+      {/* ==================================================================
+          24 · IOT FEEDBACK LOOPS (VERSION 2.0) — one loop through usage
+          telemetry, R&D and Version 2.0, the telemetry-to-R&D arc marked;
+          usage patterns feeding an iteration ring; a friction snag marked
+          on an otherwise straight path.
+      ================================================================== */}
+      <Slide id="iot-loops" border align="left">
+        <Head eyebrow="Part 5 · 02 / 02">IoT Feedback Loops (Version 2.0)</Head>
+
+        <Reveal delay={140} className="w-full">
+          <p className={`${DISPLAY} mt-9 max-w-4xl`}>
+            Closing the loop from usage telemetry to R&amp;D.
+          </p>
+          <svg
+            aria-hidden
+            viewBox="0 0 800 176"
+            className="mt-8 w-full max-w-5xl"
+            fill="none"
+          >
+            <path d="M660 85A260 60 0 0 0 140 85" stroke="var(--crimson)" strokeWidth="1.5" />
+            <path d="M140 85A260 60 0 0 0 660 85" stroke="var(--charcoal)" strokeOpacity="0.4" strokeWidth="1.5" />
+            <path d={headLeft(392, 25)} stroke="var(--crimson)" strokeWidth="1.5" />
+            <path d={headRight(0, 0)} transform="translate(550 134) rotate(-9.3)" stroke="var(--charcoal)" strokeOpacity="0.6" strokeWidth="1.5" />
+            <path d={headRight(0, 0)} transform="translate(250 134) rotate(9.3)" stroke="var(--charcoal)" strokeOpacity="0.6" strokeWidth="1.5" />
+            <circle cx="660" cy="85" r="7" fill="var(--background)" stroke="var(--charcoal)" strokeOpacity="0.7" strokeWidth="1.5" />
+            <circle cx="140" cy="85" r="7" fill="var(--background)" stroke="var(--charcoal)" strokeOpacity="0.7" strokeWidth="1.5" />
+            <circle cx="400" cy="145" r="7" fill="var(--charcoal)" fillOpacity="0.7" />
+            <text {...SVG_LABEL} x="678" y="88.5" fill="var(--charcoal)" fillOpacity="0.75">
+              USAGE TELEMETRY
+            </text>
+            <text {...SVG_LABEL} letterSpacing={1.5} x="122" y="88.5" textAnchor="end" fill="var(--charcoal)" fillOpacity="0.75">
+              R&amp;D
+            </text>
+            <text {...SVG_LABEL} x="401" y="172" textAnchor="middle" fill="var(--charcoal)" fillOpacity="0.75">
+              VERSION 2.0
+            </text>
+          </svg>
+        </Reveal>
+
+        <div className={PAIR}>
+          <Reveal delay={280}>
+            <p className={BODY}>
+              Evidence-based iteration analyzing real-world patterns
+              <Cite n={[40, 41]} />.
+            </p>
+            <figure aria-hidden className="mt-7 w-full max-w-[25rem]">
+              <svg viewBox="0 0 400 112" className="w-full" fill="none">
+                {Array.from({ length: 12 }, (_, k) => {
+                  const h = 10 + 50 * hash(k + 6101);
+                  return (
+                    <rect key={k} x={10 + k * 14} y={(80 - h).toFixed(1)} width="9" height={h.toFixed(1)} fill="var(--charcoal)" fillOpacity="0.3" />
+                  );
+                })}
+                <path d="M10 80H180" stroke="var(--charcoal)" strokeOpacity="0.35" />
+                <path d="M192 50H236" stroke="var(--charcoal)" strokeOpacity="0.45" />
+                <path d={headRight(244, 50)} stroke="var(--charcoal)" strokeOpacity="0.6" />
+                <circle cx="310" cy="50" r="30" stroke="var(--crimson)" strokeWidth="1.5" />
+                <path d={headRight(0, 0)} transform="translate(314 20)" stroke="var(--crimson)" strokeWidth="1.5" />
+                <path d={headRight(0, 0)} transform="translate(306 80) rotate(180)" stroke="var(--crimson)" strokeWidth="1.5" />
+                <text {...SVG_LABEL} x="10" y="104" fill="var(--charcoal)" fillOpacity="0.65">
+                  REAL-WORLD PATTERNS
+                </text>
+                <text {...SVG_LABEL} x="311" y="104" textAnchor="middle" fill="var(--crimson)">
+                  ITERATION
+                </text>
+              </svg>
+              <Schematic />
+            </figure>
+          </Reveal>
+
+          <Reveal delay={400} className={COL_RULE}>
+            <p className={BODY}>
+              Autonomously addressing friction points in software or hardware.
+            </p>
+            <svg
+              aria-hidden
+              viewBox="0 0 400 104"
+              className="mt-7 w-full max-w-[25rem]"
+              fill="none"
+            >
+              <path d="M10 44H150M186 44H390" stroke="var(--charcoal)" strokeOpacity="0.55" strokeWidth="1.5" />
+              <path d="M150 44l6-10l8 20l8-20l8 20l6-10" stroke="var(--crimson)" strokeWidth="2" strokeLinejoin="round" />
+              {[10, 80, 260, 390].map((x) => (
+                <circle key={x} cx={x === 10 ? 14.5 : x === 390 ? 385.5 : x} cy="44" r="4.5" fill="var(--background)" stroke="var(--charcoal)" strokeOpacity="0.6" />
+              ))}
+              <text {...SVG_LABEL} x="169" y="78" textAnchor="middle" fill="var(--crimson)">
+                FRICTION POINTS
+              </text>
+              <text {...SVG_LABEL} x="10" y="100" fill="var(--charcoal)" fillOpacity="0.55">
+                SOFTWARE OR HARDWARE
+              </text>
+            </svg>
+          </Reveal>
+        </div>
+
+        <Discussion delay={520}>
+          How do we balance data-driven design with user privacy?
+        </Discussion>
+      </Slide>
+
+      <PartPlate
+        id="part-6"
+        numeral="6"
+        title="Ethics, Compliance & Standards"
+        lines={[
+          "Safety and ethics as paramount in physical AI.",
+          <>
+            Addressing ergonomic bias in historical datasets
+            <Cite n={[27, 42]} />.
+          </>,
+          "Using diverse virtual mannequins for inclusive design.",
+        ]}
+        discussion="Who is responsible when a biased dataset leads to a physical product failure?"
+      />
+
+      {/* ==================================================================
+          26 · MITIGATION TOOLS — a lens over a lopsided dataset; a level
+          balance; a checklist whose last line is algorithmic fairness.
+      ================================================================== */}
+      <Slide id="mitigation-tools" border align="left">
+        <Head eyebrow="Part 6 · 01 / 02">Mitigation Tools</Head>
+
+        <Reveal delay={140} className="w-full">
+          <p className={`${LEAD} mt-9 max-w-4xl`}>
+            Identifying bias in training datasets (Credo AI, IBM)
+            <Cite n={[43, 44]} />.
+          </p>
+          <svg
+            aria-hidden
+            viewBox="0 0 800 150"
+            className="mt-8 w-full max-w-5xl"
+            fill="none"
+          >
+            {Array.from({ length: 36 * 6 }, (_, k) => {
+              const x = 20 + (k % 36) * 14;
+              const y = 20 + Math.floor(k / 36) * 18;
+              return hash(k + 7001) > 0.1 ? (
+                <circle key={k} cx={x} cy={y} r="3.2" fill="var(--charcoal)" fillOpacity="0.35" />
+              ) : (
+                <circle key={k} cx={x} cy={y} r="2.7" stroke="var(--charcoal)" strokeOpacity="0.5" />
+              );
+            })}
+            {Array.from({ length: 9 }, (_, i) => {
+              const x = 602 + (i % 3) * 18;
+              const y = 52 + Math.floor(i / 3) * 18;
+              return i === 5 ? (
+                <circle key={i} cx={x} cy={y} r="3.6" stroke="var(--crimson)" strokeWidth="1.5" />
+              ) : (
+                <circle key={i} cx={x} cy={y} r="4" fill="var(--charcoal)" fillOpacity="0.55" />
+              );
+            })}
+            <circle cx="620" cy="70" r="40" stroke="var(--crimson)" strokeWidth="1.5" />
+            <path d="M649 99L680 130" stroke="var(--crimson)" strokeWidth="3.5" strokeLinecap="round" />
+            <text {...SVG_LABEL} x="682" y="66" fill="var(--crimson)">
+              BIAS
+            </text>
+            <text {...SVG_LABEL} x="20" y="144" fill="var(--charcoal)" fillOpacity="0.65">
+              TRAINING DATASETS
+            </text>
+          </svg>
+        </Reveal>
+
+        <div className={PAIR}>
+          <Reveal delay={280}>
+            <p className={BODY}>
+              Ensuring equitable outcomes in generative design.
+            </p>
+            <svg
+              aria-hidden
+              viewBox="0 0 400 118"
+              className="mt-7 w-full max-w-[25rem]"
+              fill="none"
+            >
+              <path d="M200 30V98M172 98H228" stroke="var(--charcoal)" strokeOpacity="0.6" />
+              <path d="M104 26L86 66M104 26L122 66M296 26L278 66M296 26L314 66" stroke="var(--charcoal)" strokeOpacity="0.4" />
+              <path d="M80 66Q104 80 128 66M272 66Q296 80 320 66" stroke="var(--charcoal)" strokeOpacity="0.6" />
+              <path d="M96 26H304" stroke="var(--crimson)" strokeWidth="2" />
+              <path d="M193 34L200 22L207 34Z" fill="var(--charcoal)" fillOpacity="0.6" />
+              <text {...SVG_LABEL} x="201" y="114" textAnchor="middle" fill="var(--charcoal)" fillOpacity="0.65">
+                EQUITABLE OUTCOMES
+              </text>
+            </svg>
+          </Reveal>
+
+          <Reveal delay={400} className={COL_RULE}>
+            <p className={BODY}>Algorithmic fairness as a core quality metric.</p>
+            <svg
+              aria-hidden
+              viewBox="0 0 400 104"
+              className="mt-7 w-full max-w-[25rem]"
+              fill="none"
+            >
+              {[150, 120, 170].map((w, r) => {
+                const y = 16 + r * 24;
+                return (
+                  <g key={r}>
+                    <rect x="10.5" y={y - 5.5} width="11" height="11" stroke="var(--charcoal)" strokeOpacity="0.5" />
+                    <path d={`M13 ${y}l3 3l6-6`} stroke="var(--charcoal)" strokeOpacity="0.6" />
+                    <path d={`M36 ${y}H${36 + w}`} stroke="var(--charcoal)" strokeOpacity="0.28" strokeWidth="2" />
+                  </g>
+                );
+              })}
+              <rect x="10.5" y="82.5" width="11" height="11" stroke="var(--crimson)" />
+              <path d="M13 88l3 3l6-6" stroke="var(--crimson)" strokeWidth="1.5" />
+              <text {...SVG_LABEL} x="36" y="91.5" fill="var(--crimson)">
+                ALGORITHMIC FAIRNESS
+              </text>
+            </svg>
+          </Reveal>
+        </div>
+
+        <Discussion delay={520}>
+          Should AI fairness be a standard engineering requirement?
+        </Discussion>
+      </Slide>
+
+      {/* ==================================================================
+          27 · COMPLIANCE AUTOMATION — the Act's scale with its high-risk end
+          marked; two documents filling themselves in; one lineage traced
+          back through a graph to ISO/IEC 42001.
+      ================================================================== */}
+      <Slide id="compliance-automation" border align="left">
+        <Head eyebrow="Part 6 · 02 / 02">Compliance Automation</Head>
+
+        <Reveal delay={140} className="w-full">
+          <p className={`${DISPLAY} mt-9 max-w-4xl`}>
+            Navigating the EU AI Act for &quot;high-risk&quot; systems.
+          </p>
+          <svg
+            aria-hidden
+            viewBox="0 0 800 72"
+            className="mt-8 w-full max-w-5xl"
+            fill="none"
+          >
+            <text {...SVG_LABEL} x="20" y="14" fill="var(--charcoal)" fillOpacity="0.6">
+              EU AI ACT
+            </text>
+            {[0.08, 0.16, 0.26].map((o, k) => (
+              <rect key={k} x={20 + k * 192} y="26" width="184" height="14" fill="var(--charcoal)" fillOpacity={o} />
+            ))}
+            <rect x="596" y="26" width="184" height="14" fill="var(--crimson)" />
+            <text {...SVG_LABEL} x="780" y="64" textAnchor="end" fill="var(--crimson)">
+              HIGH-RISK
+            </text>
+          </svg>
+        </Reveal>
+
+        <div className={PAIR}>
+          <Reveal delay={280}>
+            <Labelled label="Automating documentation:">
+              model cards, risk assessments (Vanta, Monitaur)
+              <Cite n={[45, 46]} />.
+            </Labelled>
+            <svg
+              aria-hidden
+              viewBox="0 0 400 118"
+              className="mt-7 w-full max-w-[25rem]"
+              fill="none"
+            >
+              {[10, 160].map((x0) => (
+                <g key={x0}>
+                  <path d={`M${x0 + 0.5} 8.5H${x0 + 86}L${x0 + 100.5} 23V92.5H${x0 + 0.5}Z`} stroke="var(--charcoal)" strokeOpacity="0.6" />
+                  <path d={`M${x0 + 86} 8.5V23H${x0 + 100.5}`} stroke="var(--charcoal)" strokeOpacity="0.4" />
+                  {[60, 72, 48, 66].map((w, r) => (
+                    <path key={r} d={`M${x0 + 14} ${36 + r * 12}H${x0 + 14 + w}`} stroke="var(--crimson)" strokeOpacity="0.6" strokeWidth="2" />
+                  ))}
+                </g>
+              ))}
+              <text {...SVG_LABEL} x="10" y="112" fill="var(--charcoal)" fillOpacity="0.65">
+                MODEL CARDS
+              </text>
+              <text {...SVG_LABEL} x="160" y="112" fill="var(--charcoal)" fillOpacity="0.65">
+                RISK ASSESSMENTS
+              </text>
+            </svg>
+          </Reveal>
+
+          <Reveal delay={400} className={COL_RULE}>
+            <p className={BODY}>
+              Tracing lineage for ISO/IEC 42001 compliance
+              <Cite n={[47]} />.
+            </p>
+            <svg
+              aria-hidden
+              viewBox="0 0 400 112"
+              className="mt-7 w-full max-w-[25rem]"
+              fill="none"
+            >
+              <path
+                d="M20 56L100 28L180 56L260 28L350 56M100 28L100 84M260 28L260 84M20 56L100 84M180 56L260 84"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.22"
+              />
+              <path d="M20 56L100 84L180 56L260 84L350 56" stroke="var(--crimson)" strokeWidth="1.5" />
+              {[
+                [20, 56, true],
+                [100, 28, false],
+                [100, 84, true],
+                [180, 56, true],
+                [260, 28, false],
+                [260, 84, true],
+                [350, 56, true],
+              ].map(([x, y, hot]) => (
+                <circle
+                  key={`${x}-${y}`}
+                  cx={x as number}
+                  cy={y as number}
+                  r="5"
+                  fill="var(--background)"
+                  stroke={hot ? "var(--crimson)" : "var(--charcoal)"}
+                  strokeOpacity={hot ? 1 : 0.55}
+                />
+              ))}
+              <text {...SVG_LABEL} x="10" y="108" fill="var(--charcoal)" fillOpacity="0.65">
+                LINEAGE
+              </text>
+              <text {...SVG_LABEL} x="390" y="108" textAnchor="end" fill="var(--crimson)">
+                ISO/IEC 42001
+              </text>
+            </svg>
+          </Reveal>
+        </div>
+
+        <Discussion delay={520}>
+          How will regulation impact the speed of AI adoption in product
+          development?
+        </Discussion>
+      </Slide>
+
+      {/* ==================================================================
+          28 · SUMMARY OF FINDINGS — three findings as numbered measures: a
+          scribble straightened; AI set inside CAD and PLM; a floating,
+          unbuildable piece struck from a design.
+      ================================================================== */}
+      <Slide id="summary" border align="left">
+        <Head eyebrow="Closing · 01 / 04">Summary of Findings</Head>
+
+        <ol className="mt-10 w-full max-w-5xl">
+          <Measure
+            n={1}
+            delay={140}
+            figure={
+              <svg viewBox="0 0 280 96" className="w-full" fill="none">
+                <path d="M8 46C18 18 30 70 40 40S58 20 62 48S80 70 90 36" stroke="var(--charcoal)" strokeOpacity="0.5" strokeWidth="1.5" />
+                <path d="M104 46H136" stroke="var(--charcoal)" strokeOpacity="0.45" />
+                <path d={headRight(144, 46)} stroke="var(--charcoal)" strokeOpacity="0.6" />
+                <path d="M160 46H272" stroke="var(--crimson)" strokeWidth="2" />
+                <text {...SVG_LABEL} x="0" y="80" fill="var(--charcoal)" fillOpacity="0.65">
+                  EXPERIMENTAL
+                </text>
+                <text {...SVG_LABEL} x="0" y="93" fill="var(--charcoal)" fillOpacity="0.65">
+                  CREATIVITY
+                </text>
+                <text {...SVG_LABEL} x="160" y="80" fill="var(--crimson)">
+                  INDUSTRIAL
+                </text>
+                <text {...SVG_LABEL} x="160" y="93" fill="var(--crimson)">
+                  RELIABILITY
+                </text>
+              </svg>
+            }
+          >
+            <p className={LEAD}>
+              AI maturing from experimental creativity to industrial
+              reliability.
+            </p>
+          </Measure>
+
+          <Measure
+            n={2}
+            delay={240}
+            figure={
+              <svg viewBox="0 0 280 92" className="w-full" fill="none">
+                {[
+                  [0, "CAD PHYSICS"],
+                  [160, "PLM LOGIC"],
+                ].map(([x, label]) => (
+                  <g key={label}>
+                    <rect x={(x as number) + 0.5} y="10.5" width="118" height="54" stroke="var(--charcoal)" strokeOpacity="0.55" />
+                    <rect x={(x as number) + 45.5} y="23.5" width="28" height="28" fill="var(--crimson)" />
+                    <text {...SVG_LABEL} letterSpacing={1} x={(x as number) + 60} y="40.5" textAnchor="middle" fill="var(--background)">
+                      AI
+                    </text>
+                    <text {...SVG_LABEL} x={x} y="86" fill="var(--charcoal)" fillOpacity="0.65">
+                      {label}
+                    </text>
+                  </g>
+                ))}
+              </svg>
+            }
+          >
+            <p className={LEAD}>
+              Integration embedding into CAD physics and PLM logic.
+            </p>
+          </Measure>
+
+          <Measure
+            n={3}
+            delay={340}
+            figure={
+              <svg viewBox="0 0 280 92" className="w-full" fill="none">
+                <path d="M0 78H130" stroke="var(--charcoal)" strokeOpacity="0.35" />
+                <path d="M14 78V54C14 38 34 32 50 40L70 50V78Z" fill="var(--charcoal)" fillOpacity="0.08" stroke="var(--charcoal)" strokeOpacity="0.55" />
+                <path d="M84 24C96 16 116 20 118 34C120 46 104 52 92 46Z" stroke="var(--charcoal)" strokeOpacity="0.45" strokeDasharray="3 3" />
+                <path d="M92 22l22 22m0-22l-22 22" stroke="var(--crimson)" strokeWidth="1.5" />
+                <text {...SVG_LABEL} x="150" y="34" fill="var(--crimson)">
+                  UNBUILDABLE
+                </text>
+                <text {...SVG_LABEL} x="150" y="50" fill="var(--charcoal)" fillOpacity="0.65">
+                  GENERATIVE
+                </text>
+                <text {...SVG_LABEL} x="150" y="66" fill="var(--charcoal)" fillOpacity="0.65">
+                  DESIGNS
+                </text>
+              </svg>
+            }
+          >
+            <p className={LEAD}>
+              Manufacturing awareness preventing unbuildable generative
+              designs.
+            </p>
+          </Measure>
+        </ol>
+
+        <Discussion delay={460}>
+          Which of these maturation signs is most visible in your industry?
+        </Discussion>
+      </Slide>
+
+      {/* ==================================================================
+          29 · SPEED + SAFETY — simulation and compliance converging into
+          one marked line; checks running the length of a timeline; the
+          conjunction set at display weight and marked.
+      ================================================================== */}
+      <Slide id="speed-safety" border align="left">
+        <Head eyebrow="Closing · 02 / 04">Speed + Safety</Head>
+
+        <Reveal delay={140} className="w-full">
+          <p className={`${LEAD} mt-9 max-w-4xl`}>
+            Convergence of rapid simulation and automated compliance.
+          </p>
+          <svg
+            aria-hidden
+            viewBox="0 0 800 130"
+            className="mt-8 w-full max-w-5xl"
+            fill="none"
+          >
+            <path d="M20 24C300 24 460 64 600 64M20 104C300 104 460 64 600 64" stroke="var(--charcoal)" strokeOpacity="0.55" strokeWidth="1.5" />
+            <path d="M600 64H770" stroke="var(--crimson)" strokeWidth="2.5" />
+            <path d={headRight(778, 64)} stroke="var(--crimson)" strokeWidth="2.5" />
+            <circle cx="600" cy="64" r="5" fill="var(--crimson)" />
+            <text {...SVG_LABEL} x="20" y="12" fill="var(--charcoal)" fillOpacity="0.65">
+              RAPID SIMULATION
+            </text>
+            <text {...SVG_LABEL} x="20" y="126" fill="var(--charcoal)" fillOpacity="0.65">
+              AUTOMATED COMPLIANCE
+            </text>
+            <text {...SVG_LABEL} x="770" y="48" textAnchor="end" fill="var(--crimson)">
+              SPEED + SAFETY
+            </text>
+          </svg>
+        </Reveal>
+
+        <Reveal delay={280} className="w-full">
+          <div className={`${RULED} grid items-center gap-8 md:grid-cols-[1fr_25rem] md:gap-14`}>
+            <p className={BODY}>Regulatory checks occurring in real-time.</p>
+            <svg aria-hidden viewBox="0 0 400 70" className="w-full" fill="none">
+              <path d="M10 40H382" stroke="var(--charcoal)" strokeOpacity="0.3" />
+              <path d={headRight(390, 40)} stroke="var(--charcoal)" strokeOpacity="0.45" />
+              {Array.from({ length: 9 }, (_, k) => (
+                <path key={k} d={`M${25 + k * 42} 36l4 4l8-8`} stroke="var(--crimson)" strokeWidth="1.5" />
+              ))}
+              <text {...SVG_LABEL} x="10" y="64" fill="var(--charcoal)" fillOpacity="0.65">
+                REGULATORY CHECKS
+              </text>
+              <text {...SVG_LABEL} x="390" y="64" textAnchor="end" fill="var(--crimson)">
+                REAL-TIME
+              </text>
+            </svg>
+          </div>
+        </Reveal>
+
+        <Reveal delay={420} className="w-full">
+          <div className="mt-12 w-full max-w-5xl border-y border-[var(--charcoal)]/30 py-9">
+            <p className={DISPLAY}>
+              Products developed faster{" "}
+              <span className="text-[var(--crimson)]">AND</span> safer.
+            </p>
+          </div>
+        </Reveal>
+
+        <Discussion delay={540}>
+          Can we truly have both speed and safety, or is there always a
+          trade-off?
+        </Discussion>
+      </Slide>
+
+      {/* ==================================================================
+          30 · FUTURE DIRECTIONS — three measures: a detect-and-fix loop;
+          different tools joined by one identical format; a grid with only
+          three failure cells.
+      ================================================================== */}
+      <Slide id="future" border align="left">
+        <Head eyebrow="Closing · 03 / 04">Future Directions</Head>
+
+        <ol className="mt-10 w-full max-w-5xl">
+          <Measure
+            n={1}
+            delay={140}
+            figure={
+              <svg viewBox="0 0 280 92" className="w-full" fill="none">
+                <circle cx="140" cy="46" r="30" stroke="var(--charcoal)" strokeOpacity="0.4" strokeWidth="1.5" />
+                <path d={headRight(144, 16)} stroke="var(--charcoal)" strokeOpacity="0.6" strokeWidth="1.5" />
+                <path d={headLeft(136, 76)} stroke="var(--charcoal)" strokeOpacity="0.6" strokeWidth="1.5" />
+                <circle cx="110" cy="46" r="4.5" fill="var(--charcoal)" fillOpacity="0.7" />
+                <circle cx="170" cy="46" r="4.5" fill="var(--crimson)" />
+                <text {...SVG_LABEL} x="98" y="49.5" textAnchor="end" fill="var(--charcoal)" fillOpacity="0.65">
+                  DETECTION
+                </text>
+                <text {...SVG_LABEL} x="182" y="49.5" fill="var(--crimson)">
+                  FIXING
+                </text>
+              </svg>
+            }
+          >
+            <Labelled label='The "Self-Healing" Design Loop:'>
+              Autonomous detection and fixing.
+            </Labelled>
+          </Measure>
+
+          <Measure
+            n={2}
+            delay={240}
+            figure={
+              <svg viewBox="0 0 280 92" className="w-full" fill="none">
+                {[0, 105, 210].map((x) => (
+                  <rect key={x} x={x + 0.5} y="10.5" width="69" height="40" stroke="var(--charcoal)" strokeOpacity="0.55" />
+                ))}
+                <path d="M70 30.5H105M175 30.5H210" stroke="var(--charcoal)" strokeOpacity="0.4" />
+                <rect x="82.5" y="25.5" width="10" height="10" fill="var(--crimson)" />
+                <rect x="187.5" y="25.5" width="10" height="10" fill="var(--crimson)" />
+                <text {...SVG_LABEL} x="0" y="80" fill="var(--charcoal)" fillOpacity="0.65">
+                  STANDARDIZED DATA FORMATS
+                </text>
+              </svg>
+            }
+          >
+            <Labelled label="Interoperable AI Standards:">
+              Standardized data formats
+              <Cite n={[48]} />.
+            </Labelled>
+          </Measure>
+
+          <Measure
+            n={3}
+            delay={340}
+            figure={
+              <svg viewBox="0 0 280 92" className="w-full" fill="none">
+                {Array.from({ length: 14 * 4 }, (_, k) => {
+                  const c = k % 14;
+                  const r = Math.floor(k / 14);
+                  const hit = (c === 2 && r === 1) || (c === 9 && r === 3) || (c === 12 && r === 0);
+                  return (
+                    <rect
+                      key={k}
+                      x={1 + c * 18.5}
+                      y={6 + r * 16}
+                      width="12"
+                      height="12"
+                      fill={hit ? "var(--crimson)" : "var(--charcoal)"}
+                      fillOpacity={hit ? 1 : 0.08}
+                    />
+                  );
+                })}
+                <text {...SVG_LABEL} x="0" y="88" fill="var(--charcoal)" fillOpacity="0.65">
+                  SPARSE FAILURE DATA
+                </text>
+              </svg>
+            }
+          >
+            <Labelled label="Small Data Engineering:">
+              Robust models from sparse failure data
+              <Cite n={[19]} />.
+            </Labelled>
+          </Measure>
+        </ol>
+
+        <Discussion delay={460}>
+          What are the barriers to achieving the &quot;Self-Healing&quot;
+          Design Loop?
+        </Discussion>
+      </Slide>
+
+      {/* ==================================================================
+          31 · ACTIONABLE INSIGHTS — three measures: a document marked up in
+          review; compliance placed at the start of the line; a small
+          network held inside its physics frame.
+      ================================================================== */}
+      <Slide id="insights" border align="left">
+        <Head eyebrow="Closing · 04 / 04">Actionable Insights</Head>
+
+        <ol className="mt-10 w-full max-w-5xl">
+          <Measure
+            n={1}
+            delay={140}
+            figure={
+              <svg viewBox="0 0 280 92" className="w-full" fill="none">
+                <path d="M0.5 4.5H86L100.5 19V87.5H0.5Z" stroke="var(--charcoal)" strokeOpacity="0.6" />
+                <path d="M14 30H80M14 42H72M14 54H84M14 66H60" stroke="var(--charcoal)" strokeOpacity="0.28" strokeWidth="2" />
+                <ellipse cx="46" cy="42" rx="36" ry="8" stroke="var(--crimson)" strokeWidth="1.5" />
+                <path d="M84 42H128" stroke="var(--crimson)" />
+                <text {...SVG_LABEL} x="136" y="40" fill="var(--crimson)">
+                  AI-AUGMENTED
+                </text>
+                <text {...SVG_LABEL} x="136" y="55" fill="var(--charcoal)" fillOpacity="0.65">
+                  REVIEWS
+                </text>
+              </svg>
+            }
+          >
+            <p className={LEAD}>
+              Adopt &quot;AI-Augmented&quot; Reviews (CoLab)
+              <Cite n={[28]} />.
+            </p>
+          </Measure>
+
+          <Measure
+            n={2}
+            delay={240}
+            figure={
+              <svg viewBox="0 0 280 92" className="w-full" fill="none">
+                <path d="M0 50H262" stroke="var(--charcoal)" strokeOpacity="0.3" />
+                <path d={headRight(270, 50)} stroke="var(--charcoal)" strokeOpacity="0.45" />
+                <path d="M70 46V54M130 46V54M190 46V54" stroke="var(--charcoal)" strokeOpacity="0.3" />
+                <rect x="0" y="40" width="8" height="20" fill="var(--crimson)" />
+                <rect x="240.5" y="40.5" width="8" height="19" stroke="var(--charcoal)" strokeOpacity="0.35" strokeDasharray="2 2" />
+                <text {...SVG_LABEL} x="0" y="28" fill="var(--crimson)">
+                  COMPLIANCE
+                </text>
+                <text {...SVG_LABEL} x="0" y="80" fill="var(--charcoal)" fillOpacity="0.65">
+                  EARLY
+                </text>
+              </svg>
+            }
+          >
+            <p className={LEAD}>
+              Integrate Compliance Early (Credo AI)
+              <Cite n={[47]} />.
+            </p>
+          </Measure>
+
+          <Measure
+            n={3}
+            delay={340}
+            figure={
+              <svg viewBox="0 0 280 92" className="w-full" fill="none">
+                {(() => {
+                  const at = [
+                    [30, 2],
+                    [75, 3],
+                    [120, 2],
+                  ].map(([x, n]) =>
+                    Array.from({ length: n }, (_, i) => [x, 46 + (i - (n - 1) / 2) * 22]),
+                  );
+                  return (
+                    <>
+                      {at.slice(1).map((col, l) =>
+                        col.flatMap(([x2, y2]) =>
+                          at[l].map(([x1, y1]) => (
+                            <path key={`${x1}-${y1}-${x2}-${y2}`} d={`M${x1} ${y1}L${x2} ${y2}`} stroke="var(--charcoal)" strokeOpacity="0.2" />
+                          )),
+                        ),
+                      )}
+                      {at.flat().map(([x, y]) => (
+                        <circle key={`${x}-${y}`} cx={x} cy={y} r="4.5" fill="var(--background)" stroke="var(--charcoal)" strokeOpacity="0.6" />
+                      ))}
+                    </>
+                  );
+                })()}
+                <rect x="0.5" y="6.5" width="150" height="80" rx="10" stroke="var(--crimson)" strokeWidth="1.5" />
+                <text {...SVG_LABEL} x="170" y="40" fill="var(--charcoal)" fillOpacity="0.65">
+                  PHYSICAL AI
+                </text>
+                <text {...SVG_LABEL} x="170" y="56" fill="var(--crimson)">
+                  PINNS
+                </text>
+              </svg>
+            }
+          >
+            <p className={LEAD}>
+              Invest in &quot;Physical AI&quot; Skills (PINNs context)
+              <Cite n={[15, 42]} />.
+            </p>
+          </Measure>
+        </ol>
+
+        <Discussion delay={460}>
+          Which insight will you prioritize for your organization?
+        </Discussion>
+      </Slide>
+
+      {/* ==================================================================
+          32 · REFERENCES — the forty-eight citation numbers the deck's
+          superscripts point to, set as a quiet grid.
+      ================================================================== */}
+      <Slide id="references" border align="left">
+        <Head eyebrow="Sources">References</Head>
+
+        <Reveal delay={140} className="w-full">
+          <p className={`${LEAD} mt-9 max-w-4xl`}>
+            Comprehensive list of sources.
+          </p>
+          <p className={`${BODY} mt-4 max-w-4xl text-[var(--charcoal-light)]`}>
+            Citations 1-48 as referenced in deepResearch.md.
+          </p>
+        </Reveal>
+
+        <Reveal delay={280} className="w-full">
+          <div
+            aria-hidden
+            className="mt-10 grid w-full max-w-5xl grid-cols-6 gap-px border border-[var(--charcoal)]/10 bg-[var(--charcoal)]/10 md:grid-cols-12"
+          >
+            {Array.from({ length: 48 }, (_, i) => (
+              <span
+                key={i}
+                className="bg-[var(--background)] px-3 py-3 font-mono text-[11px] tracking-[0.1em] text-[var(--champagne)]"
+              >
+                {pad(i + 1)}
+              </span>
+            ))}
+          </div>
+        </Reveal>
+
+        <Discussion delay={420}>
+          Which source or paper are you most interested in reading further?
         </Discussion>
       </Slide>
     </SlideDeck>

@@ -1,0 +1,152 @@
+[
+  {
+    "slide_id": "need-recognition",
+    "question_text": "An Instagram ad for running shoes makes Léa notice that her old pair is worn out. What has just happened?",
+    "hint": "Ask where the trigger came from: inside Léa, or outside her.",
+    "correct_answer_citation": "Week 03 · Step 1: Need Recognition",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Need recognition, set off by an internal stimulus.",
+        "option_explanation": "The trigger here is the ad, which comes from outside Léa, so it is an external stimulus rather than an internal one."
+      },
+      {
+        "option_text": "Need recognition, set off by an external stimulus.",
+        "option_explanation": "Correct. The buying process starts with need recognition, and here the need was triggered by an external stimulus, the ad."
+      },
+      {
+        "option_text": "Nothing yet, since buying begins when she enters a store.",
+        "option_explanation": "The buying process starts with need recognition, which has already happened before any store visit."
+      },
+      {
+        "option_text": "Marketers have no role, since the need came from Léa.",
+        "option_explanation": "Marketers must research what kinds of needs arise, what brought them about, and how they led the consumer to a particular product."
+      }
+    ]
+  },
+  {
+    "slide_id": "information-search",
+    "question_text": "Before buying a stroller, Sam asks two friends who own one and trusts their views more than the brand's website. What does this show?",
+    "hint": "Friends and the brand's website are two different kinds of information source.",
+    "correct_answer_citation": "Week 03 · Step 2: Information Search",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Commercial sources tend to be the most effective ones.",
+        "option_explanation": "The brand's website is a commercial source, and Sam trusted it less. The most effective sources tend to be personal."
+      },
+      {
+        "option_text": "Personal sources tend to be the most effective ones.",
+        "option_explanation": "Correct. The most effective sources tend to be personal, as they legitimize or evaluate products for the buyer."
+      },
+      {
+        "option_text": "Consumers always search for information before buying.",
+        "option_explanation": "Once a need is triggered, consumers may or may not search for more information, so searching is not guaranteed."
+      },
+      {
+        "option_text": "Public sources legitimize products better than friends.",
+        "option_explanation": "Sam's friends are personal sources, and personal sources are the ones that tend to legitimize or evaluate products most effectively."
+      }
+    ]
+  },
+  {
+    "slide_id": "postpurchase-behavior",
+    "question_text": "Right after paying for an expensive laptop, Karim keeps wondering if he should have bought the other brand. What is he experiencing?",
+    "hint": "The purchase is already made. Think about the stage that comes after it.",
+    "correct_answer_citation": "Week 03 · Step 5: Postpurchase Behavior",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Need recognition, triggered by an internal stimulus.",
+        "option_explanation": "Need recognition starts the buying process. Karim has already bought the laptop, so he is past that stage."
+      },
+      {
+        "option_text": "Evaluation of alternatives within his choice set.",
+        "option_explanation": "Evaluating alternatives happens before the purchase decision. Karim's doubts come after he has bought."
+      },
+      {
+        "option_text": "Cognitive dissonance from postpurchase conflict.",
+        "option_explanation": "Correct. Cognitive dissonance, or buyer discomfort caused by postpurchase conflict, is a common occurrence."
+      },
+      {
+        "option_text": "Situational factors blocking his purchase decision.",
+        "option_explanation": "Situational factors come between intention and decision. Karim did make the purchase, and his discomfort came afterwards."
+      }
+    ]
+  },
+  {
+    "slide_id": "psychological-factors",
+    "question_text": "Two shoppers see the same ad. One notices only the price, the other only the celebrity, and each forms a different picture of the brand. Which factor is at work?",
+    "hint": "Each shopper picked out different information and made sense of it in their own way.",
+    "correct_answer_citation": "Week 03 · Psychological Factors",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Culture, the values and wants learned from society.",
+        "option_explanation": "Culture shapes basic values and wants over time. This case is about how each shopper selected and read the same ad."
+      },
+      {
+        "option_text": "A reference group, a point of comparison for attitudes.",
+        "option_explanation": "Reference groups are other people used for comparison. No group is involved here, only two readings of one ad."
+      },
+      {
+        "option_text": "Perception, selecting and interpreting information.",
+        "option_explanation": "Correct. Perception is the process by which people select, organize, and interpret information to form a meaningful picture of the world."
+      },
+      {
+        "option_text": "A subculture, a group with a shared value system.",
+        "option_explanation": "A subculture is a group with shared values. The two shoppers differ in what they noticed, not in group membership."
+      }
+    ]
+  },
+  {
+    "slide_id": "market-structure-and-demand",
+    "question_text": "A maker of aluminum cans sees its orders drop after people start buying fewer soft drinks. Which idea explains this?",
+    "hint": "Where does the can maker's demand ultimately come from?",
+    "correct_answer_citation": "Week 03 · Market Structure and Demand",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Elastic demand, since can buyers react strongly to price.",
+        "option_explanation": "Nothing about price changed here. B2B demand is also more inelastic than B2C demand, not more elastic."
+      },
+      {
+        "option_text": "Postpurchase dissonance among soft drink buyers.",
+        "option_explanation": "Dissonance is discomfort after a purchase. The drop here comes from consumers buying fewer drinks in the first place."
+      },
+      {
+        "option_text": "Market structure, since can makers serve many small buyers.",
+        "option_explanation": "A business marketer normally deals with far fewer but far larger buyers, and buyer count does not explain this drop."
+      },
+      {
+        "option_text": "Derived demand, which comes from consumer demand.",
+        "option_explanation": "Correct. Business demand is derived demand; it ultimately derives from the demand for consumer goods, here soft drinks."
+      }
+    ]
+  },
+  {
+    "slide_id": "the-buying-center",
+    "question_text": "To buy new patient monitors, a hospital involves the nurses who will use them, an IT manager who sets the specs, and a director who approves the supplier. What do these people form together?",
+    "hint": "B2B purchases are rarely made by a single individual.",
+    "correct_answer_citation": "Week 03 · The Buying Center",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "A reference group that shapes their personal attitudes.",
+        "option_explanation": "Reference groups shape a consumer's attitudes. These people are playing roles in an organization's purchase decision."
+      },
+      {
+        "option_text": "The buying center for this purchase decision.",
+        "option_explanation": "Correct. The buying center consists of all the individuals and units that play a role in the purchase decision-making process."
+      },
+      {
+        "option_text": "A subculture based on common life experiences.",
+        "option_explanation": "A subculture shares a value system. This group is defined by the roles its members play in one purchase."
+      },
+      {
+        "option_text": "The consumer market for medical equipment.",
+        "option_explanation": "The consumer market buys for personal consumption. A hospital buying monitors is a business buyer."
+      }
+    ]
+  }
+]

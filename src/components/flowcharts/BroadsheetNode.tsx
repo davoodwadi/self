@@ -66,7 +66,7 @@ export default function BroadsheetNode({ data }: { data: any }) {
             className="text-[0.65rem] mt-1 uppercase tracking-[0.12em]"
             style={{
               color: "var(--ink-3, #6F6A5C)",
-              fontFamily: "var(--font-label, monospace)",
+              fontFamily: "var(--font-label, sans-serif)",
             }}
           >
             {data.sublabel}

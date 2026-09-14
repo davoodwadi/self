@@ -1,0 +1,127 @@
+[
+  {
+    "slide_id": "market-structure-and-demand",
+    "question_text": "A steel supplier's orders fall sharply in the year after car buyers cut back on buying new cars. Which idea explains this?",
+    "hint": "Where does the steel supplier's demand ultimately come from?",
+    "correct_answer_citation": "Week 04 · Market Structure and Demand",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "B2B markets have many more, smaller buyers than B2C.",
+        "option_explanation": "B2B markets typically have fewer, but much larger, buyers than B2C markets, and buyer count does not explain this drop."
+      },
+      {
+        "option_text": "B2B demand is more elastic than consumer demand.",
+        "option_explanation": "B2B demand is more inelastic than consumer demand. The drop here follows car buyers, not a price change."
+      },
+      {
+        "option_text": "Derived demand, since it comes from consumer demand.",
+        "option_explanation": "Correct. Demand in B2B markets is derived demand, meaning it comes from consumer demand, here for new cars."
+      },
+      {
+        "option_text": "B2B demand fluctuates more slowly than consumer demand.",
+        "option_explanation": "B2B demand fluctuates more rapidly than consumer demand, which is why the supplier's orders fall so sharply."
+      }
+    ]
+  },
+  {
+    "slide_id": "types-of-decisions-and-the-decision-process",
+    "question_text": "A hospital's MRI purchase needs sign-off from several staff, follows a written approval process, and ties the hospital to one supplier for years. Which B2B traits does this show?",
+    "hint": "Count the people, look at how formal the process is, and ask how closely buyer and seller are tied.",
+    "correct_answer_citation": "Week 04 · Types of Decisions and the Decision Process",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Fewer participants, informal buying, low dependence.",
+        "option_explanation": "A B2B purchase involves more decision participants, the process is highly formalized, and buyers and sellers are highly dependent on each other."
+      },
+      {
+        "option_text": "More participants, formalized buying, high dependence.",
+        "option_explanation": "Correct. B2B purchases involve more decision participants, the buying process is highly formalized, and buyers and sellers are highly dependent on each other."
+      },
+      {
+        "option_text": "More participants, informal buying, short-term ties only.",
+        "option_explanation": "The written approval process is formal, and B2B buyers and sellers build long term relationships rather than short-term ties."
+      },
+      {
+        "option_text": "Fewer participants, formalized buying, no ongoing contact.",
+        "option_explanation": "Several staff sign off, so there are more participants, and a years-long supplier tie is the opposite of no ongoing contact."
+      }
+    ]
+  },
+  {
+    "slide_id": "roles-in-the-buying-center",
+    "question_text": "At a bakery chain, the head baker writes the flour specifications, while the purchasing manager picks the mill and negotiates the terms. Which roles are these?",
+    "hint": "One person provides specifications. The other has authority to select the supplier.",
+    "correct_answer_citation": "Week 04 · Roles in the Buying Center",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Head baker: buyer. Purchasing manager: user.",
+        "option_explanation": "The purchasing manager selects the supplier and arranges terms, which is the buyer role, not the user role."
+      },
+      {
+        "option_text": "Head baker: user. Purchasing manager: influencer.",
+        "option_explanation": "Writing specifications is what influencers do, and selecting the supplier and arranging terms is what buyers do."
+      },
+      {
+        "option_text": "Head baker: influencer. Purchasing manager: buyer.",
+        "option_explanation": "Correct. Influencers affect the decision by providing specifications, and buyers have formal authority to select the supplier and arrange terms."
+      },
+      {
+        "option_text": "Both are users, since both work where the flour is used.",
+        "option_explanation": "Users are the people who will actually use the product. These two shape and make the purchase, so they play other roles."
+      }
+    ]
+  },
+  {
+    "slide_id": "types-of-buying-situations",
+    "question_text": "A café chain has bought cups from the same supplier for years, but now wants a compostable cup at a new price. What buying situation is this?",
+    "hint": "Is the buyer reordering as before, changing something, or buying for the first time?",
+    "correct_answer_citation": "Week 04 · Types of Buying Situations",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "A straight rebuy, since the supplier stays the same.",
+        "option_explanation": "A straight rebuy is a reorder without modifications. Here the café is changing the specifications and the price."
+      },
+      {
+        "option_text": "A modified rebuy, since specifications and price change.",
+        "option_explanation": "Correct. A modified rebuy is a situation where the buyer wants to modify product specifications, prices, or suppliers."
+      },
+      {
+        "option_text": "A new task, since the café has never bought any cups.",
+        "option_explanation": "A new task is a first-time purchase. The café has bought cups for years, so this is not new to it."
+      },
+      {
+        "option_text": "A gatekeeper decision, since information must be controlled.",
+        "option_explanation": "Gatekeepers control the flow of information, which is a role, not a type of buying situation."
+      }
+    ]
+  },
+  {
+    "slide_id": "key-account-management",
+    "question_text": "A packaging firm earns most of its profit from three large retailers, so it gives each one a dedicated team and custom solutions. What is the firm practicing?",
+    "hint": "Look for the most valuable customers, dedicated teams, and customized solutions.",
+    "correct_answer_citation": "Week 04 · Key Account Management (KAM)",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "A straight rebuy, since the retailers reorder the same packaging.",
+        "option_explanation": "A straight rebuy describes a buyer's routine reorder, not how a supplier manages its most valuable customers."
+      },
+      {
+        "option_text": "Derived demand, since retailers set the firm's prices.",
+        "option_explanation": "Derived demand is about demand coming from consumer demand. This case is about dedicated teams for top customers."
+      },
+      {
+        "option_text": "Gatekeeping, since the dedicated teams control information.",
+        "option_explanation": "Gatekeepers control the flow of information inside a buying organization, not a supplier's service to its best customers."
+      },
+      {
+        "option_text": "Key Account Management with its most valuable customers.",
+        "option_explanation": "Correct. KAM builds long term relationships with the most valuable customers, who contribute disproportionately to revenue and profit, through dedicated teams and customized solutions."
+      }
+    ]
+  }
+]

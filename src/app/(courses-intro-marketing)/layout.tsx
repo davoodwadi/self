@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Fraunces, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { DynamicFooter } from "@/components/slide-components/DynamicFooter";
 
@@ -16,14 +16,6 @@ const fraunces = Fraunces({
 const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
   subsets: ["latin"],
-  display: "swap",
-});
-
-// Mono is reserved for meta — eyebrows, slide numbers, captions.
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -47,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${instrumentSans.variable} ${plexMono.variable}`}
+      className={`${fraunces.variable} ${instrumentSans.variable}`}
     >
       <body className="antialiased">
         {children}

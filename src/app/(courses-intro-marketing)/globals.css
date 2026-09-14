@@ -33,7 +33,7 @@
 
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-instrument-sans);
-  --font-mono: var(--font-plex-mono);
+  --font-mono: var(--font-instrument-sans);
   --font-serif: var(--font-fraunces);
 }
 
@@ -70,7 +70,10 @@
     /* --- Type ------------------------------------------------------------ */
     --font-heading: var(--font-fraunces, Georgia, "Times New Roman", serif);
     --font-body:    var(--font-instrument-sans, ui-sans-serif, system-ui, sans-serif);
-    --font-label:   var(--font-plex-mono, ui-monospace, "SF Mono", monospace);
+    /* Meta (eyebrows, captions, numerals) is set in the body grotesque.
+       A monospace here read as a code editor beside Fraunces; tracked
+       caps and tabular figures carry the "meta" signal instead. */
+    --font-label:   var(--font-body);
 
     /* --- Measure & rhythm ------------------------------------------------ */
     --measure:        68ch;   /* prose line length ceiling */
@@ -199,20 +202,22 @@
 
 .type-label {
   font-family: var(--font-label);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--signal);
-  font-feature-settings: "ss01";
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .type-caption {
   font-family: var(--font-label);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 400;
-  letter-spacing: 0.03em;
+  line-height: 1.45;
+  letter-spacing: 0.005em;
   color: var(--ink-3);
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .type-quote {

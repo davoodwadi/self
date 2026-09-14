@@ -1,0 +1,277 @@
+[
+  {
+    "slide_id": "what-is-marketing",
+    "question_text": "According to the definition of marketing, what does a company seek in return for creating customer value?",
+    "hint": "Read the last words of the definition.",
+    "correct_answer_citation": "Week 01 — What is Marketing?",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Greater visibility for its advertising.",
+        "option_explanation": "Advertising is part of the visible tip. The definition ends with what the company captures from customers."
+      },
+      {
+        "option_text": "Lower production and distribution costs.",
+        "option_explanation": "The definition does not mention costs. Companies create customer value in order to capture value from customers in return."
+      },
+      {
+        "option_text": "Value captured from its customers.",
+        "option_explanation": "Correct. Marketing creates customer value in order to capture value from customers in return."
+      },
+      {
+        "option_text": "Freedom from having to keep customers.",
+        "option_explanation": "The dual goal includes keeping current customers by delivering satisfaction."
+      }
+    ]
+  },
+  {
+    "slide_id": "evolution-of-philosophies",
+    "question_text": "A manager says the firm's top priority is making its products cheaper and easier to find. Which philosophy does this reflect?",
+    "hint": "One concept is about availability and affordability; the other is about quality and features.",
+    "correct_answer_citation": "Week 01 — The Evolution of Marketing Philosophies",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "The Production Concept, about distribution efficiency.",
+        "option_explanation": "Correct. The Production Concept holds that consumers favor products that are available and highly affordable, so management improves production and distribution efficiency."
+      },
+      {
+        "option_text": "The Product Concept, focused on better product features.",
+        "option_explanation": "The Product Concept is about quality, performance, and innovative features, not availability and affordability."
+      },
+      {
+        "option_text": "Neither, as both concepts look outward at customer needs.",
+        "option_explanation": "The lecture warns that both concepts risk focusing inward on operations rather than outward on customer needs."
+      },
+      {
+        "option_text": "The Product Concept, since it favors affordable products.",
+        "option_explanation": "Affordability belongs to the Production Concept. The Product Concept focuses on continuous product improvements."
+      }
+    ]
+  },
+  {
+    "slide_id": "selling-and-marketing",
+    "question_text": "Which description matches the outside-in perspective of the Marketing Concept?",
+    "hint": "Outside-in means the starting point sits outside the firm.",
+    "correct_answer_citation": "Week 01 — The Selling and Marketing Concepts",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Start from the factory and aim for sales volume through heavy selling.",
+        "option_explanation": "This is the Selling Concept's inside-out perspective."
+      },
+      {
+        "option_text": "Start from operations and improve production and distribution efficiency.",
+        "option_explanation": "This describes the Production Concept, which the lecture warns is too inward."
+      },
+      {
+        "option_text": "Start from existing products and keep improving their features.",
+        "option_explanation": "Starting from existing products is inside-out. Continuous product improvement is the Product Concept."
+      },
+      {
+        "option_text": "Start with a well-defined market and profit through satisfaction.",
+        "option_explanation": "Correct. The Marketing Concept starts with a well-defined market, focuses on customer needs, and generates profits through customer satisfaction."
+      }
+    ]
+  },
+  {
+    "slide_id": "societal-marketing",
+    "question_text": "What does the Societal Marketing Concept add to the pure marketing concept?",
+    "hint": "It questions a possible conflict between the short run and the long run.",
+    "correct_answer_citation": "Week 01 — The Societal Marketing Concept",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Concern for sales volume won through large-scale promotion.",
+        "option_explanation": "Large-scale selling and promotion is the Selling Concept."
+      },
+      {
+        "option_text": "Concern for long-run consumer welfare and society's well-being.",
+        "option_explanation": "Correct. It asks marketers to deliver value in a way that maintains or improves both the consumer's and society's well-being."
+      },
+      {
+        "option_text": "Concern for improving production and distribution efficiency.",
+        "option_explanation": "Production and distribution efficiency is the focus of the Production Concept."
+      },
+      {
+        "option_text": "Concern for continuous improvement of product quality and features.",
+        "option_explanation": "Continuous product improvement is the focus of the Product Concept."
+      }
+    ]
+  },
+  {
+    "slide_id": "needs-wants-demands",
+    "question_text": "A student wants a new laptop but has no money to buy one. In marketing terms, what is this?",
+    "hint": "Ask what turns a want into a demand.",
+    "correct_answer_citation": "Week 01 — Needs, Wants, and Demands Defined",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "A basic need, because it is a state of felt deprivation.",
+        "option_explanation": "A laptop is a specific form shaped by culture and personality, which makes it a want. The underlying need might be knowledge or belonging."
+      },
+      {
+        "option_text": "A demand, because the student would like to buy it.",
+        "option_explanation": "Wishing to buy is not enough. Demands are wants backed by buying power."
+      },
+      {
+        "option_text": "A want, but not a demand, as it lacks buying power.",
+        "option_explanation": "Correct. Wants become demands only when they are accompanied by purchasing ability."
+      },
+      {
+        "option_text": "A demand, since wants and demands mean the same thing.",
+        "option_explanation": "They are different. Demands are human wants that are backed by buying power."
+      }
+    ]
+  },
+  {
+    "slide_id": "customer-value-satisfaction",
+    "question_text": "A hotel guest expected an ordinary stay, and the hotel performed far better than expected. How does the lecture describe this guest?",
+    "hint": "Compare perceived performance with the buyer's expectations.",
+    "correct_answer_citation": "Week 01 — Customer Value and Satisfaction",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Dissatisfied, because performance differed from expectations.",
+        "option_explanation": "Dissatisfaction happens only when performance falls short of expectations."
+      },
+      {
+        "option_text": "Delighted, because performance exceeded their expectations.",
+        "option_explanation": "Correct. If performance matches or exceeds expectations, the customer is satisfied or delighted."
+      },
+      {
+        "option_text": "Neutral, because satisfaction depends only on the price paid.",
+        "option_explanation": "Satisfaction depends on perceived performance relative to the buyer's expectations."
+      },
+      {
+        "option_text": "Unaffected, as expectations play no part in satisfaction.",
+        "option_explanation": "Expectations are central: satisfaction is performance relative to expectations."
+      }
+    ]
+  },
+  {
+    "slide_id": "five-step-process",
+    "question_text": "Which step of the marketing process captures value in return, rather than creating value for customers?",
+    "hint": "The first four steps create value.",
+    "correct_answer_citation": "Week 01 — The Five-Step Marketing Process",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Step 1: Understand the marketplace and customer needs and wants.",
+        "option_explanation": "Step 1 is one of the four steps that create value for customers."
+      },
+      {
+        "option_text": "Step 3: Construct an integrated marketing program.",
+        "option_explanation": "Step 3 delivers superior value, so it belongs to the value-creating steps."
+      },
+      {
+        "option_text": "Step 4: Engage customers and build profitable relationships.",
+        "option_explanation": "Step 4 is the last of the four steps that create value for customers."
+      },
+      {
+        "option_text": "Step 5: Capture value from customers to create profits.",
+        "option_explanation": "Correct. The final step captures value in return, as profits and customer equity."
+      }
+    ]
+  },
+  {
+    "slide_id": "customer-driven-strategy",
+    "question_text": "A coffee chain divides its market into groups, then chooses to serve only students. Which two activities has it completed?",
+    "hint": "One activity divides the market; the other selects from it.",
+    "correct_answer_citation": "Week 01 — Designing a Customer-Driven Marketing Strategy",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Market segmentation, then targeting a segment to enter",
+        "option_explanation": "Correct. Segmentation divides the market, and targeting selects which segments to enter."
+      },
+      {
+        "option_text": "Choosing a value proposition, then differentiating it",
+        "option_explanation": "The value proposition decides how to serve customers. Dividing and selecting the market is about which customers to serve."
+      },
+      {
+        "option_text": "Choosing a value proposition, then segmenting the market",
+        "option_explanation": "The chain has not yet defined the benefits it promises. It has divided the market and selected a segment."
+      },
+      {
+        "option_text": "Targeting, then dividing the market into segments",
+        "option_explanation": "The order is reversed. A firm must divide the market before it can select segments to enter."
+      }
+    ]
+  },
+  {
+    "slide_id": "crm",
+    "question_text": "Which example best fits customer-managed relationships?",
+    "hint": "Look for consumers, not the company, doing the connecting.",
+    "correct_answer_citation": "Week 01 — Building Customer Relationships (CRM)",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "A firm's sales team contacts every customer on a fixed schedule.",
+        "option_explanation": "Here the company manages the contact. Customer-managed relationships put consumers in control."
+      },
+      {
+        "option_text": "The firm cuts prices to win customers away from its competitors.",
+        "option_explanation": "Price cuts are about acquiring customers, not about consumers connecting with brands and each other."
+      },
+      {
+        "option_text": "Consumers use social media to connect with brands and each other.",
+        "option_explanation": "Correct. Customer-managed relationships empower consumers to connect with brands and each other using social and mobile technologies."
+      },
+      {
+        "option_text": "The firm alone decides which brand messages its customers receive.",
+        "option_explanation": "That is the opposite: customer engagement invites customers to help shape brand conversations."
+      }
+    ]
+  },
+  {
+    "slide_id": "capturing-value",
+    "question_text": "A shopper who has bought groceries at the same store every week for years switches to a rival. According to the lecture, what has the store lost?",
+    "hint": "Think about Customer Lifetime Value.",
+    "correct_answer_citation": "Week 01 — Capturing Value from Customers",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Only the value of that shopper's next weekly grocery purchase.",
+        "option_explanation": "Losing a customer means losing more than a single sale."
+      },
+      {
+        "option_text": "The entire future income stream that customer represented.",
+        "option_explanation": "Correct. Customer Lifetime Value is the whole stream of purchases, so losing the customer loses that future stream."
+      },
+      {
+        "option_text": "Nothing lasting, because share of customer stays the same.",
+        "option_explanation": "Share of customer is the portion of the customer's purchasing the company gets. When the shopper leaves, it falls."
+      },
+      {
+        "option_text": "A single sale, since each weekly purchase is a separate event.",
+        "option_explanation": "The lecture treats purchases as a stream over a lifetime of patronage, not as separate events."
+      }
+    ]
+  },
+  {
+    "slide_id": "customer-equity",
+    "question_text": "Sales and market share reflect the past. Why does customer equity suggest the future value of the firm?",
+    "hint": "Recall what customer equity adds together.",
+    "correct_answer_citation": "Week 01 — Customer Equity",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "It counts only the firm's most loyal and profitable customers.",
+        "option_explanation": "Customer equity includes all current and potential customers, not only the most loyal."
+      },
+      {
+        "option_text": "It measures the firm's total advertising spend on customers.",
+        "option_explanation": "Customer equity is built from customer lifetime values, not from spending."
+      },
+      {
+        "option_text": "It adds up last year's sales from every current customer.",
+        "option_explanation": "Last year's sales look backward. Customer equity sums future-looking lifetime values."
+      },
+      {
+        "option_text": "It totals lifetime values of current and potential customers.",
+        "option_explanation": "Correct. Customer equity is the total combined customer lifetime values of all current and potential customers."
+      }
+    ]
+  }
+]
