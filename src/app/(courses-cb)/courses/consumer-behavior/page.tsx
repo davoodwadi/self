@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -155,7 +156,7 @@ export default function ConsumerBehaviorLanding() {
         </header>
 
         {/* Index List */}
-        <nav aria-label="Course weeks" className="index-list pb-32">
+        <nav aria-label="Course weeks" className="index-list pb-4">
           <div className="flex items-baseline justify-between mb-6">
             <h2 className="type-label">Curriculum Index</h2>
             <span className="type-caption">Twelve sessions</span>
@@ -187,6 +188,22 @@ export default function ConsumerBehaviorLanding() {
             ))}
           </ul>
         </nav>
+
+        {/* ---------------------------------------------------------------
+            Back to the course index.
+            --------------------------------------------------------------- */}
+        <div className="pb-24 pt-10">
+          <Link
+            href="/courses"
+            className="group inline-flex items-center gap-3 type-label transition-colors hover:text-[var(--signal)]"
+          >
+            <ArrowLeft
+              aria-hidden
+              className="size-4 transition-transform duration-200 group-hover:-translate-x-1"
+            />
+            All courses
+          </Link>
+        </div>
       </div>
     </div>
   );

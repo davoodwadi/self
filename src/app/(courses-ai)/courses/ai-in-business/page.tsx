@@ -3,7 +3,7 @@ import path from "node:path";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Merriweather } from "next/font/google";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Hero } from "./_landing/Hero";
 import { Reveal } from "./_landing/Reveal";
 import { SYLLABUS, type SyllabusEntry } from "./_landing/syllabus";
@@ -156,6 +156,22 @@ function Roadmap({ rows, open }: { rows: Row[]; open: number }) {
             </Reveal>
           ))}
         </ol>
+
+        {/* Back to the course index. */}
+        <Reveal>
+          <div className="mt-16 border-t-2 border-[var(--charcoal)] pt-10">
+            <Link
+              href="/courses"
+              className={`${MICRO} group inline-flex items-center gap-3 text-[var(--charcoal-light)] transition-colors hover:text-[var(--crimson)]`}
+            >
+              <ArrowLeft
+                aria-hidden
+                className="size-3.5 transition-transform duration-200 group-hover:-translate-x-1"
+              />
+              All courses
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

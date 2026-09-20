@@ -8,7 +8,6 @@ import {
   Subtitle,
   Figure,
 } from "@/components/slide-components/SlideComponents";
-import { BackgroundManager } from "@/components/slide-components/Backgrounds";
 import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
 import { cn } from "@/lib/utils";
 import quizzesData from "./quizzes.json";
@@ -527,7 +526,6 @@ export default function Week8() {
   return (
     <SlideDeck
       label="Week 08"
-      background={<BackgroundManager type="marketing" />}
     >
       {/* ================================================================
           Title Slide

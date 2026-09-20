@@ -140,16 +140,20 @@ export function Hero({
               BUSI 654
             </Credit>
             <Credit label="Syllabus" delay={1310}>
-              {weeks} weeks · {interludes} interlude{interludes === 1 ? "" : "s"}
+              {weeks} weeks · {interludes} interlude
+              {interludes === 1 ? "" : "s"}
             </Credit>
             {nowShowing && (
               <Credit
-                label="Now showing"
+                label="Next session"
                 delay={1420}
                 stacked
                 className="md:ml-auto"
               >
-                <Link href={nowShowing.href} className={`${s.nowShowing} group`}>
+                <Link
+                  href={nowShowing.href}
+                  className={`${s.nowShowing} group`}
+                >
                   <span>
                     <span className="text-[var(--paper)]/60">
                       {nowShowing.label} ·{" "}

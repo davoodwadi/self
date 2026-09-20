@@ -151,6 +151,25 @@ export default function DigitalTransformationLanding() {
           </Link>
         ))}
       </div>
+
+      {/* Back to the course index */}
+      <div className="max-w-6xl mx-auto mt-20 pt-10 border-t border-[var(--border)] flex justify-center">
+        <Link
+          href="/courses"
+          className="group inline-flex items-center gap-3 text-[var(--text-muted)] text-xs uppercase tracking-widest font-accent font-bold transition-colors duration-300 hover:text-[var(--text-primary)]"
+        >
+          <svg
+            className="w-5 h-5 text-[var(--accent1)] transform transition-transform duration-300 group-hover:-translate-x-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          All Courses
+        </Link>
+      </div>
     </div>
   );
 }

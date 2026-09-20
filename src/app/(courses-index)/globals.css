@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   COURSES INDEX — design system
+   --------------------------------------------------------------------------
+   A junction page, not a syllabus. Deliberately neutral: each course landing
+   carries its own strong identity, so the hub stays quiet and lets the four
+   titles do the work.
+   ========================================================================== */
+
+:root {
+  --paper: #faf9f6;
+  --paper-2: #ffffff;
+  --ink: #17161a;
+  --ink-2: #3a383f;
+  --ink-3: #6f6c76;
+  --rule: #e0dcd2;
+  --signal: #8b1c1c;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-signal: var(--signal);
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}

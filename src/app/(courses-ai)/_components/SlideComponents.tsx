@@ -60,10 +60,10 @@ export function CitationProvider({
  *
  * PROPS:
  * @param children - All Slide components
- * @param background - Optional: Custom background component (e.g., Backgrounds.tsx)
+ * @param background - Optional: Custom background element rendered behind the slides
  *
  * EXAMPLE:
- * <SlideDeck background={<Backgrounds.ParticleEffect />}>
+ * <SlideDeck>
  *   <Slide><Title>Welcome</Title></Slide>
  *   <Slide><Heading>Section Title</Heading></Slide>
  * </SlideDeck>

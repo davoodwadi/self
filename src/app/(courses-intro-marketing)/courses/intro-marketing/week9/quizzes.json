@@ -1,0 +1,102 @@
+[
+  {
+    "slide_id": "the-value-delivery-network",
+    "question_text": "A grocery chain, the bakery that supplies it, the distributor that carries the bread, and the shoppers who buy it all share their forecasts so that fewer loaves are wasted. What is the larger whole they form?",
+    "hint": "Marketing channels are part of something bigger than the channel itself.",
+    "correct_answer_citation": "Week 09 · The Value Delivery Network",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "A set of independent competing firms",
+        "option_explanation": "These firms are not competing. They partner to improve the performance of the entire system."
+      },
+      {
+        "option_text": "A larger value delivery network",
+        "option_explanation": "Correct. The network includes the company, suppliers, distributors, and customers, who partner to improve the whole system."
+      },
+      {
+        "option_text": "One interdependent organization",
+        "option_explanation": "A marketing channel is a set of interdependent organizations, not a single one. Here there are four separate parties."
+      },
+      {
+        "option_text": "A gap of time, place, and possession",
+        "option_explanation": "Time, place, and possession name the gap a channel bridges. They do not name the group of partners itself."
+      }
+    ]
+  },
+  {
+    "slide_id": "indirect-marketing-channels",
+    "question_text": "Two producers sell the same snack. The first ships to shoppers from its own website. The second sells to a wholesaler, who sells to a retailer, who sells to shoppers. What is true of the second producer's channel?",
+    "hint": "Count the layers of intermediaries, then think about what each one costs the producer.",
+    "correct_answer_citation": "Week 09 · Indirect Marketing Channels",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "It has no intermediary levels, making it direct",
+        "option_explanation": "Direct marketing channels have no intermediary levels. This channel has a wholesaler and a retailer in it."
+      },
+      {
+        "option_text": "It gains more control over how the snack sells",
+        "option_explanation": "More levels mean less control, not more. Control falls as intermediary levels are added."
+      },
+      {
+        "option_text": "It has two levels, and that means less control",
+        "option_explanation": "Correct. The wholesaler and the retailer are two levels, and more levels mean less control and greater complexity."
+      },
+      {
+        "option_text": "It is shorter than the first producer's channel",
+        "option_explanation": "The number of intermediary levels indicates the length. The first producer's channel has none, so it is the shorter one."
+      }
+    ]
+  },
+  {
+    "slide_id": "channel-conflict",
+    "question_text": "Two dealerships that both sell the same carmaker's vehicles argue over which of them is allowed to advertise in the other's city. Which kind of channel conflict is this?",
+    "hint": "Ask where in the channel the two arguing firms sit.",
+    "correct_answer_citation": "Week 09 · Channel Conflict",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Vertical conflict, between two different levels",
+        "option_explanation": "Vertical conflict occurs between different levels of the same channel. Both dealerships sit at the same level."
+      },
+      {
+        "option_text": "Horizontal conflict, among firms at one level",
+        "option_explanation": "Correct. Horizontal conflict occurs among firms at the same level of the channel, as these two dealerships are."
+      },
+      {
+        "option_text": "A disagreement over the channel's total length",
+        "option_explanation": "Channel conflict occurs when members disagree over goals, roles, and rewards. Here they disagree over roles."
+      },
+      {
+        "option_text": "Conflict between a producer and a retailer",
+        "option_explanation": "A producer and a retailer sit at different levels, which would be vertical. The carmaker is not part of this argument."
+      }
+    ]
+  },
+  {
+    "slide_id": "the-trend-of-disintermediation",
+    "question_text": "A furniture maker closes the dealer accounts it has sold through for years and begins taking orders only on its own website. Which trend does this show?",
+    "hint": "Look at what happened to the firms that used to sit in the middle.",
+    "correct_answer_citation": "Week 09 · The Trend of Disintermediation",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "A multichannel distribution system being set up",
+        "option_explanation": "A multichannel system means two or more channels. This producer has gone from two channels down to one."
+      },
+      {
+        "option_text": "Disintermediation, cutting out intermediaries",
+        "option_explanation": "Correct. The producer cuts out its intermediaries and goes directly to final buyers."
+      },
+      {
+        "option_text": "A corporate vertical marketing system forming",
+        "option_explanation": "A corporate VMS integrates successive stages under single ownership. The maker closed its dealers rather than buying them."
+      },
+      {
+        "option_text": "Horizontal conflict between two of its dealers",
+        "option_explanation": "Horizontal conflict is a disagreement among firms at the same level. Nothing here says the dealers disagreed with each other."
+      }
+    ]
+  }
+]
