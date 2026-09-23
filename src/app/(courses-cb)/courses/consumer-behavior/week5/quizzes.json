@@ -1,0 +1,127 @@
+[
+  {
+    "slide_id": "the-actual-self-versus-the-ideal-self",
+    "question_text": "Maya sees herself as an out-of-shape office worker, but she pictures herself as a fit trail runner. Feeling uneasy about the difference, she buys expensive running gear before she has run a single trail. What best explains the purchase?",
+    "hint": "Think about the distance between who she is right now and who she would like to be, and what the gear is meant to do about it.",
+    "correct_answer_citation": "Week 05 · The Actual Self Versus the Ideal Self",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "High self-esteem, because she expects to succeed as a runner",
+        "option_explanation": "Self-esteem is the positivity of the self-concept. The purchase here is driven by the difference between two selves, not by how positive her view of herself is."
+      },
+      {
+        "option_text": "Her actual self, because the gear matches the qualities she has right now",
+        "option_explanation": "The actual self is her realistic appraisal of who she is now: an out-of-shape office worker. The gear belongs to the runner she would like to be."
+      },
+      {
+        "option_text": "Compensatory consumption: she buys a product to bridge the gap between her actual self and her ideal self",
+        "option_explanation": "Correct. The gap between her actual self and her ideal self creates emotional tension, and consumers buy products to bridge this gap. This is called compensatory consumption."
+      },
+      {
+        "option_text": "Her ideal self is her realistic appraisal of her current qualities",
+        "option_explanation": "The ideal self is her conception of who she would like to be. The realistic appraisal of her current qualities is the actual self."
+      }
+    ]
+  },
+  {
+    "slide_id": "the-extended-self-possessions-as-identity",
+    "question_text": "Omar keeps his grandmother's dining table even though it is worn. Every holiday the whole family eats around it, and he says it holds years of shared memories. At which level of the extended self does the table sit?",
+    "hint": "Ask whose identity the table represents: one person's, a family's, a neighborhood's, or a group's.",
+    "correct_answer_citation": "Week 05 · The Extended Self: Possessions as Identity",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Individual level, because Omar personally owns the table",
+        "option_explanation": "The individual level covers personal items like jewelry, cars, and clothing that define personal identity. The table stands for the whole family, not only for Omar."
+      },
+      {
+        "option_text": "Family level, because home furnishings represent family identity and shared memories",
+        "option_explanation": "Correct. At the family level, a consumer's home and furnishings represent family identity and shared memories."
+      },
+      {
+        "option_text": "Community level, because the table comes from his hometown",
+        "option_explanation": "The community level is about neighborhoods and hometowns shaping local identity. The table's meaning comes from the family gathered around it."
+      },
+      {
+        "option_text": "Group level, because the family eats together as a group",
+        "option_explanation": "The group level covers attachments to sports teams, subcultures, or social movements. A family's shared home furnishings belong to the family level."
+      }
+    ]
+  },
+  {
+    "slide_id": "the-big-five-personality-dimensions",
+    "question_text": "A travel brand learns that its best customers score high on one Big Five dimension: they are curious, creative, and always looking for something new. Which dimension is it?",
+    "hint": "Match curiosity, creativity, and interest in novelty to one of the five dimensions.",
+    "correct_answer_citation": "Week 05 · The Big Five Personality Dimensions",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Openness to experience",
+        "option_explanation": "Correct. Openness to experience is curiosity, creativity, and interest in novelty."
+      },
+      {
+        "option_text": "Conscientiousness",
+        "option_explanation": "Conscientiousness is organization, self-discipline, and reliability, not curiosity and novelty."
+      },
+      {
+        "option_text": "Extraversion",
+        "option_explanation": "Extraversion is sociability, energy, and talkativeness in social settings. Being curious about new things is a different dimension."
+      },
+      {
+        "option_text": "Neuroticism",
+        "option_explanation": "Neuroticism is emotional instability, a tendency to experience anxiety, and mood swings."
+      }
+    ]
+  },
+  {
+    "slide_id": "brand-personality-giving-life-to-objects",
+    "question_text": "Consumers describe a car brand as reliable, intelligent, and successful. Which brand personality dimension are they assigning to it?",
+    "hint": "Look for the dimension whose traits are reliable, intelligent, and successful. The slide gave Volvo and Google as examples.",
+    "correct_answer_citation": "Week 05 · Brand Personality: Giving Life to Objects",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Ruggedness",
+        "option_explanation": "Ruggedness is outdoorsy, tough, and durable, like Jeep or Patagonia."
+      },
+      {
+        "option_text": "Sophistication",
+        "option_explanation": "Sophistication is upper-class, elegant, and charming, like Chanel or Rolex."
+      },
+      {
+        "option_text": "Excitement",
+        "option_explanation": "Excitement is daring, spirited, imaginative, and modern, like Apple or Red Bull."
+      },
+      {
+        "option_text": "Competence",
+        "option_explanation": "Correct. Competence covers brands seen as reliable, intelligent, and successful, like Volvo or Google."
+      }
+    ]
+  },
+  {
+    "slide_id": "psychographics-and-lifestyles-measuring-aios",
+    "question_text": "A survey asks shoppers what they think about climate policy, big business, and themselves. Which part of an AIO profile is it measuring?",
+    "hint": "AIO stands for Activities, Interests, and Opinions. Which one covers oneself, social issues, politics, business, and products?",
+    "correct_answer_citation": "Week 05 · Psychographics and Lifestyles: Measuring AIOs",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Activities",
+        "option_explanation": "Activities focus on work, hobbies, social events, vacations, and entertainment: what people do, not what they think."
+      },
+      {
+        "option_text": "Interests",
+        "option_explanation": "Interests focus on family, home, job, community, food, and fashion."
+      },
+      {
+        "option_text": "Opinions",
+        "option_explanation": "Correct. Opinions focus on oneself, social issues, politics, business, and products."
+      },
+      {
+        "option_text": "Demographics",
+        "option_explanation": "Demographics tell us who buys, such as age or income. Questions about what people think are psychographics, and this one measures opinions."
+      }
+    ]
+  }
+]

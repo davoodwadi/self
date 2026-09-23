@@ -1,302 +1,104 @@
 @import "tailwindcss";
-@plugin "tailwindcss-animate";
-@import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+/* ==========================================================================
+   Personal site. Same Broadsheet palette and type as the course sites:
+   warm paper, near-black ink, persimmon for links and emphasis.
+   Structure comes from hairline rules and a two-column grid, not cards.
+   ========================================================================== */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  /* Cinematic Obsidian darks */
-  --color-dark-900: #050505;
-  --color-dark-800: #0a0a0c;
-  --color-dark-700: #121214;
-  /* Premium Slate/Gold/Champagne accents */
-  --color-accent-500: #8c7349; /* Champagne gold */
-  --color-accent-400: #a88d5e;
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-signal: var(--signal);
+  --color-signal-deep: var(--signal-deep);
 
-  --font-serif: var(--font-serif);
-  --font-sans: var(--font-sans);
-
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-instrument-sans);
 }
 
 :root {
-  --radius: 0.5rem;
-  /* Cinematic Base Theme */
-  --background: #030303;
-  --foreground: #e5e5e5;
+  --paper: #fbfaf7;
+  --paper-2: #f4f1e9;
+  --ink: #17160f;
+  --ink-2: #3b382e;
+  --ink-3: #6f6a5c;
+  --rule: #ddd7c8;
+  --signal: #b23a15;
+  --signal-deep: #8a2b0e;
+}
 
-  /* Shadcn standard vars to match cinematic tone */
-  --card: #08080a;
-  --card-foreground: #ececec;
-  --popover: #08080a;
-  --popover-foreground: #ececec;
-  --primary: #8c7349;
-  --primary-foreground: #000000;
-  --secondary: #121214;
-  --secondary-foreground: #e5e5e5;
-  --muted: #1a1a1e;
-  --muted-foreground: #8f8f96;
-  --accent: #8c7349;
-  --accent-foreground: #ffffff;
-  --destructive: #7f1d1d;
-  --border: rgba(255, 255, 255, 0.04);
-  --input: #121214;
-  --ring: #8c7349;
-
-  /* charts */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-
-  /* sidebar */
-  --sidebar: #030303;
-  --sidebar-foreground: #e5e5e5;
-  --sidebar-primary: #8c7349;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #121214;
-  --sidebar-accent-foreground: #e5e5e5;
-  --sidebar-border: rgba(255, 255, 255, 0.04);
-  --sidebar-ring: #8c7349;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), sans-serif;
-  overflow-x: hidden;
-  position: relative;
-  min-height: 100vh;
-  letter-spacing: 0.01em; /* cinematic spacing */
+  background-color: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-/* Base Headings - High End Academic */
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-serif), "Playfair Display", serif;
-  letter-spacing: -0.015em;
-}
-h1 {
-  font-weight: 600; /* Softer weight for more elegant serif */
-}
-h2 {
+h3 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  color: var(--ink);
   font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
+::selection {
+  background: rgba(178, 58, 21, 0.15);
+  color: var(--ink);
 }
 
-/* Animations */
-.fade-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition:
-    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+a:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Ambient Glow - Elegant cinematic lighting */
-.ambient-glow {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120vw;
-  height: 120vw;
-  background: radial-gradient(
-    circle,
-    rgba(140, 115, 73, 0.04) 0%,
-    /* Champagne tint */ rgba(20, 20, 25, 0.02) 30%,
-    rgba(0, 0, 0, 0) 65%
-  );
-  z-index: -2;
-  pointer-events: none;
-}
-
-/* Typography Utilities */
 @layer utilities {
-  .section-title {
-    @apply text-4xl md:text-6xl font-serif font-medium mb-6 text-white tracking-tight;
-  }
-  .section-subtitle {
-    @apply text-gray-400 font-light leading-loose max-w-2xl text-lg md:text-xl;
-  }
-  .heading-primary {
-    @apply text-6xl md:text-8xl lg:text-9xl font-serif font-semibold tracking-tighter text-white/95 drop-shadow-sm;
-  }
-  .heading-secondary {
-    @apply text-4xl md:text-5xl font-serif font-medium text-white/90;
-  }
-  .heading-tertiary {
-    @apply text-2xl font-serif font-medium tracking-tight text-white/80;
-  }
-  .card-title {
-    @apply text-2xl font-serif font-medium tracking-tight text-white/90 mb-3 leading-snug;
-  }
-  .card-subtitle {
-    @apply text-[11px] font-medium uppercase tracking-[0.25em] text-accent-500 bg-accent-500/5 px-4 py-1.5 rounded-full border border-accent-500/10;
-  }
-  .text-body {
-    @apply text-gray-300 font-light leading-relaxed text-base md:text-lg;
-  }
-  .text-muted {
-    @apply text-sm text-gray-400 font-light tracking-wide;
-  }
-  .text-highlight {
-    @apply text-accent-400 font-medium;
+  /* Tracked caps for dates, venues and section labels. */
+  .meta {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-3);
   }
 
-  /* Layout & Container Utilities */
-  .section-padding {
-    @apply py-24 md:py-40;
+  .link {
+    color: var(--signal);
+    text-decoration: underline;
+    text-decoration-color: rgba(178, 58, 21, 0.3);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 150ms;
   }
-  .container-default {
-    @apply max-w-7xl mx-auto px-6 lg:px-12 xl:px-16;
-  }
-  .container-narrow {
-    @apply max-w-3xl mx-auto px-6;
-  }
-
-  /* Grid Utilities */
-  .grid-cards {
-    @apply grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12;
-  }
-  .grid-cards-3 {
-    @apply grid grid-cols-1 md:grid-cols-3 gap-8;
-  }
-
-  /* Element Utilities */
-  .divider {
-    @apply border-b border-white/5;
-  }
-  .divider-dark {
-    @apply border-b border-[#121214];
-  }
-  .icon-wrapper {
-    @apply bg-accent-500/5 p-4 rounded-xl flex items-center justify-center border border-accent-500/10 text-accent-400 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)];
+  .link:hover {
+    color: var(--signal-deep);
+    text-decoration-color: currentColor;
   }
 }
 
-/* High-end Glassmorphism */
-.glass-card {
-  background: rgba(12, 12, 14, 0.4);
-  backdrop-filter: blur(24px) saturate(120%);
-  -webkit-backdrop-filter: blur(24px) saturate(120%);
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  box-shadow:
-    0 4px 30px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition:
-    border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    background 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+details > summary {
+  list-style: none;
+  cursor: pointer;
 }
-
-.glass-card:hover {
-  border-color: rgba(140, 115, 73, 0.2);
-  background: rgba(18, 18, 20, 0.6);
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.6),
-    0 0 20px rgba(140, 115, 73, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+details > summary::-webkit-details-marker {
+  display: none;
 }
-
-/* Custom Scrollbar - elegant and minimal */
-::-webkit-scrollbar {
-  width: 6px;
+details > summary .chev {
+  display: inline-block;
+  transition: transform 150ms;
 }
-::-webkit-scrollbar-track {
-  background: #030303;
-}
-::-webkit-scrollbar-thumb {
-  background: #1a1a1e;
-  border-radius: 8px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #2a2a32;
-}
-
-/* High-end Text Gradients */
-.gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 50%, #71717a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-text-accent {
-  background: linear-gradient(135deg, #a88d5e 0%, #8c7349 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Mermaid graph styles - keeping from original */
-.mermaid-container svg text {
-  letter-spacing: normal !important;
-  word-spacing: normal !important;
-  font-family: var(--font-sans), sans-serif !important;
-}
-.mermaid-container foreignObject {
-  overflow: visible !important;
-}
-.mermaid-container foreignObject div {
-  width: max-content !important;
-  line-height: normal !important;
-}
-.mermaid-container svg {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
+details[open] > summary .chev {
+  transform: rotate(90deg);
 }

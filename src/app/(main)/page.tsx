@@ -1,40 +1,26 @@
-import { AboutSection } from "./_sections/AboutSection";
-import { ContactSection } from "./_sections/ContactSection";
-import { HeroSection } from "./_sections/HeroSection";
-import { PublicationsSection } from "./_sections/PublicationsSection";
-import { GrantsSection } from "./_sections/GrantsSection";
-import { ServicesSection } from "./_sections/ServicesSection";
-import { TeachingSection } from "./_sections/TeachingSection";
-import { CurriculumSection } from "./_sections/CurriculumSection";
-export default function DavoodWadiPortfolio() {
-  return (
-    <div className="min-h-screen bg-[#030303] selection:bg-accent-500/30 selection:text-white relative font-sans">
-      {/* <div className="ambient-glow"></div> */}
-      <main className="relative z-10">
-        <HeroSection />
-        <AboutSection />
-        <CurriculumSection />
-        <PublicationsSection />
-        <TeachingSection />
-        <ServicesSection />
-        <GrantsSection />
-        <ContactSection />
-      </main>
+import { Masthead } from "./_sections/Masthead";
+import { Intro } from "./_sections/Intro";
+import { Research } from "./_sections/Research";
+import { Teaching } from "./_sections/Teaching";
+import { Service } from "./_sections/Service";
+import { Contact } from "./_sections/Contact";
 
-      <footer className="py-12 text-center px-6 relative z-10 w-full bg-[#030303] border-t border-white/5">
-        <p className="text-muted tracking-wide text-sm">
-          &copy; {new Date().getFullYear()}{" "}
-          <a
-            href="https://davoodwadi.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent-400 hover:text-accent-500 transition-colors duration-300"
-          >
-            Davood Wadi
-          </a>
-          .
+export default function Home() {
+  return (
+    <>
+      <Masthead />
+      <main className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
+        <Intro />
+        <Research />
+        <Teaching />
+        <Service />
+        <Contact />
+      </main>
+      <footer className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
+        <p className="meta border-t border-rule py-8">
+          &copy; {new Date().getFullYear()} Davood Wadi
         </p>
       </footer>
-    </div>
+    </>
   );
 }

@@ -28,7 +28,7 @@
 
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-instrument-sans);
-  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --font-mono: var(--font-instrument-sans);
   --font-serif: var(--font-fraunces);
 }
 
@@ -62,8 +62,29 @@
     --affirm-tint: rgba(42, 111, 78, 0.08);
     --affirm-line: rgba(42, 111, 78, 0.28);
 
+    --counter-deep: #133538;
+    
+    /* --- Type ------------------------------------------------------------ */
+    --font-heading: var(--font-fraunces, Georgia, "Times New Roman", serif);
+    --font-body: var(--font-instrument-sans, ui-sans-serif, system-ui, sans-serif);
+    /* Meta (keys, captions, numerals) stays in the body grotesque: tracked
+       caps and tabular figures carry the "meta" signal, not a monospace. */
+    --font-label: var(--font-body);
+
     /* --- Slide / Layout geometry ---------------------------------------- */
     --slide-max: 76rem;
+    --slide-pad-y: 7rem;
+    --measure: 68ch;
+    --rule-weight: 1px;
+
+    /* --- Aliases for the shared slide components (InlineQuiz etc.) ------- */
+    --crimson: var(--signal);
+    --crimson-light: var(--signal-deep);
+    --charcoal: var(--ink);
+    --charcoal-light: var(--ink-2);
+    --gold: var(--counter);
+    --surface: var(--paper);
+    --background: var(--paper);
   }
 
   body {
@@ -108,6 +129,8 @@
 }
 
 .type-label {
+  font-family: var(--font-label);
+  font-variant-numeric: lining-nums tabular-nums;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -116,6 +139,8 @@
 }
 
 .type-caption {
+  font-family: var(--font-label);
+  font-variant-numeric: lining-nums tabular-nums;
   font-size: 0.8125rem;
   color: var(--ink-3);
   letter-spacing: 0.02em;
@@ -133,4 +158,40 @@
   line-height: 1.25;
   font-weight: 500;
   color: var(--ink);
+}
+
+.type-h1 {
+  font-family: var(--font-heading);
+  font-variation-settings: "opsz" 96;
+  font-size: clamp(2.1rem, 4.6vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.type-quote {
+  font-family: var(--font-heading);
+  font-variation-settings: "opsz" 120, "SOFT" 40;
+  font-size: clamp(1.6rem, 3.1vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+}
+
+/* Figure wells: a tinted panel that belongs to the paper. */
+.figure-well {
+  background: var(--paper-2);
+  border: var(--rule-weight) solid var(--rule);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

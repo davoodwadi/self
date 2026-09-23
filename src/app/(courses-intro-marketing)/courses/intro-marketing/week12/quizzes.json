@@ -1,0 +1,127 @@
+[
+  {
+    "slide_id": "assessing-the-global-environment",
+    "question_text": "A Québec maple syrup maker studies an export market. The country charges an extra fee on every imported bottle and allows only a fixed number of bottles in each year. What are these two rules?",
+    "hint": "One raises the price at the border; the other caps the amount that can enter.",
+    "correct_answer_citation": "Week 12 · Assessing the Global Environment",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Economic indicators that guide selection",
+        "option_explanation": "Economic indicators like GDP describe a market's economy. A fee and a cap on imports are rules that block trade."
+      },
+      {
+        "option_text": "Cultural nuances that shape the message",
+        "option_explanation": "Cultural nuances affect product acceptance and messaging. Nothing here is about culture; these are limits on imports."
+      },
+      {
+        "option_text": "Tariff and quota: two trade barriers",
+        "option_explanation": "Correct. The fee on each imported bottle is a tariff and the yearly cap is a quota. Both are common trade barriers."
+      },
+      {
+        "option_text": "Local customs the company has ignored",
+        "option_explanation": "Local customs are cultural habits. A fee and a cap set by the country are trade barriers."
+      }
+    ]
+  },
+  {
+    "slide_id": "market-entry-joint-venturing",
+    "question_text": "A Montréal bagel bakery lets a company in Seoul make and sell its bagels under the Montréal brand, in return for a fee. Which entry mode is this, and what is its trade-off?",
+    "hint": "Licensing is one of the types of a particular entry mode.",
+    "correct_answer_citation": "Week 12 · Market Entry: Joint Venturing",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Joint venturing: shares the risk, reduces control",
+        "option_explanation": "Correct. Licensing is a type of joint venturing. It shares the financial risk but also reduces management control."
+      },
+      {
+        "option_text": "Direct exporting: the bakery handles all exports",
+        "option_explanation": "In direct exporting the bakery would ship its own bagels abroad. Here a foreign company makes them under licence."
+      },
+      {
+        "option_text": "Indirect exporting: an intermediary ships goods",
+        "option_explanation": "Indirect exporting uses independent intermediaries to move the company's own products. Here a foreign company makes the product."
+      },
+      {
+        "option_text": "Joint venturing: keeps control, removes all risk",
+        "option_explanation": "Joint venturing shares the financial risk; it does not remove it. It also reduces management control."
+      }
+    ]
+  },
+  {
+    "slide_id": "product-adaptation-strategies",
+    "question_text": "A Canadian soup brand sells its tomato soup in Japan. It keeps the soup but uses less salt and a smaller can to suit local conditions. Which strategy is this?",
+    "hint": "The product is still recognisable, but it has been changed for the local market.",
+    "correct_answer_citation": "Week 12 · Product Adaptation Strategies",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Straight extension",
+        "option_explanation": "A straight extension markets the product without any changes. Here the salt and the can size were changed."
+      },
+      {
+        "option_text": "Product adaptation",
+        "option_explanation": "Correct. Product adaptation alters the product to meet local conditions, as the lower salt and smaller can do."
+      },
+      {
+        "option_text": "Product invention",
+        "option_explanation": "Product invention creates something new for a market. This is the same tomato soup, altered."
+      },
+      {
+        "option_text": "Standardized mix",
+        "option_explanation": "Standardized global marketing uses the same strategy worldwide. Changing the soup for Japan is the opposite."
+      }
+    ]
+  },
+  {
+    "slide_id": "ai-personalization-and-analytics",
+    "question_text": "An online grocer sees that a shopper has bought coffee every two weeks for a year. It estimates when the next purchase is due and shows a coffee offer that day. What is the grocer mainly using?",
+    "hint": "The grocer looks backward at what happened in order to look forward.",
+    "correct_answer_citation": "Week 12 · AI Personalization and Analytics",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "A chatbot that answers service questions",
+        "option_explanation": "Chatbots improve customer service efficiency. Nothing here involves answering the shopper's questions."
+      },
+      {
+        "option_text": "A rule that protects the shopper's data",
+        "option_explanation": "Data privacy is an ethical concern about how this data is used. The grocer is using the data to forecast."
+      },
+      {
+        "option_text": "A uniform price for coffee in all markets",
+        "option_explanation": "A uniform global price is a pricing question. The grocer is forecasting when this shopper will buy."
+      },
+      {
+        "option_text": "Predictive analytics from past behavior",
+        "option_explanation": "Correct. Predictive analytics forecast future buying patterns, here the next coffee purchase, from past behavior."
+      }
+    ]
+  },
+  {
+    "slide_id": "the-circular-economy",
+    "question_text": "A furniture brand buys back its old chairs, repairs the ones it can and recycles the rest into new chairs. Which statement best describes this move?",
+    "hint": "Think about what happens to a chair at the end of its first life.",
+    "correct_answer_citation": "Week 12 · The Circular Economy",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "It follows the take-make-dispose model more closely",
+        "option_explanation": "Take-make-dispose ends with the product thrown away. Here old chairs are repaired or recycled instead."
+      },
+      {
+        "option_text": "It is greenwashing because it makes a green claim",
+        "option_explanation": "Greenwashing means false sustainability claims. The brand is actually repairing and recycling its chairs."
+      },
+      {
+        "option_text": "It extends product life through a circular model",
+        "option_explanation": "Correct. Repair and recycling programs extend product life cycles, which is how brands shift to a circular economy."
+      },
+      {
+        "option_text": "It is a straight extension into a new market",
+        "option_explanation": "A straight extension markets an unchanged product in a new market. This is about the product's end of life."
+      }
+    ]
+  }
+]

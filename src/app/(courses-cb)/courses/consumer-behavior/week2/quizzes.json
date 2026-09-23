@@ -1,0 +1,102 @@
+[
+  {
+    "slide_id": "the-three-stages-of-perception",
+    "question_text": "A shopper walks past a bright end-of-aisle display. It is right in front of her, but she is busy reading a text message and never looks at it. How far did the display get?",
+    "hint": "The display came within range of her senses. Did her mind give it any processing capacity?",
+    "correct_answer_citation": "Week 02 · The Three Stages of Perception",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Exposure, but not attention",
+        "option_explanation": "Correct. The display came within the range of her sensory receptors (exposure), but her mind gave its processing capacity to the message, not to the display."
+      },
+      {
+        "option_text": "Attention, but not exposure",
+        "option_explanation": "The stages are sequential. Attention cannot happen without exposure first, and she never looked at the display."
+      },
+      {
+        "option_text": "All the way to interpretation",
+        "option_explanation": "Interpretation means her brain assigned meaning to the display. She never paid attention to it, so it was filtered out before that stage."
+      },
+      {
+        "option_text": "No stage, since it was ignored",
+        "option_explanation": "The display was within range of her senses, so exposure did happen. It was filtered out at the attention stage."
+      }
+    ]
+  },
+  {
+    "slide_id": "sensory-thresholds-the-limits-of-awareness",
+    "question_text": "A juice brand changes the orange on its label to a very slightly darker shade. Shoppers compare the old and new bottles side by side and cannot tell them apart. What does this tell the brand?",
+    "hint": "Shoppers can see both bottles perfectly well. The question is whether they can tell the two apart.",
+    "correct_answer_citation": "Week 02 · Sensory Thresholds: The Limits of Awareness",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "The label is below the absolute threshold",
+        "option_explanation": "The absolute threshold is about detecting a stimulus at all. Shoppers can clearly see both labels; they just cannot tell them apart."
+      },
+      {
+        "option_text": "The change is above the differential threshold",
+        "option_explanation": "If the change were above the differential threshold, shoppers would detect the difference between the two bottles. They could not."
+      },
+      {
+        "option_text": "The change is smaller than the JND",
+        "option_explanation": "Correct. The Just Noticeable Difference is the minimum difference needed for detection. This change fell short of it, so nobody noticed."
+      },
+      {
+        "option_text": "The change is larger than the JND",
+        "option_explanation": "A change larger than the JND would be noticed. Shoppers could not tell the bottles apart, so it was smaller."
+      }
+    ]
+  },
+  {
+    "slide_id": "webers-law-when-differences-matter",
+    "question_text": "Four stores each raise one price by exactly one dollar. According to Weber's Law, which increase are shoppers most likely to notice?",
+    "hint": "The needed change is a proportion of the starting price, not a fixed amount.",
+    "correct_answer_citation": "Week 02 · Weber's Law: When Differences Matter",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "$1 more on a $500 phone",
+        "option_explanation": "One dollar is only 0.2 percent of $500. Like the ten cents on the laptop, it will likely go unnoticed."
+      },
+      {
+        "option_text": "$1 more on a $5 sandwich",
+        "option_explanation": "Correct. One dollar is a 20 percent jump on a $5 sandwich. The weaker the initial stimulus, the smaller the change needed to notice it."
+      },
+      {
+        "option_text": "$1 more on a $50 jacket",
+        "option_explanation": "One dollar is 2 percent of $50. That is a much smaller proportion than the same dollar on a $5 item."
+      },
+      {
+        "option_text": "Each one, since all rose by $1",
+        "option_explanation": "Weber's Law says the needed change is not a fixed amount. The same dollar is a very different proportion of each price."
+      }
+    ]
+  },
+  {
+    "slide_id": "interpretation-and-gestalt-principles",
+    "question_text": "A grocery chain puts all of its store-brand products in the same bright yellow packaging. On the shelf, shoppers see them as one family of products. Which Gestalt principle is at work?",
+    "hint": "Think about what the packages have in common.",
+    "correct_answer_citation": "Week 02 · Interpretation and Gestalt Principles",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Closure",
+        "option_explanation": "Closure is about filling in missing pieces to see a complete picture. Nothing is missing here; the packs share a colour."
+      },
+      {
+        "option_text": "Figure-Ground",
+        "option_explanation": "Figure-Ground is about separating one focal object from its background. Here many products are being grouped together."
+      },
+      {
+        "option_text": "Adaptation",
+        "option_explanation": "Adaptation is when consumers stop paying attention to familiar stimuli. The yellow packs are being grouped, not ignored."
+      },
+      {
+        "option_text": "Similarity",
+        "option_explanation": "Correct. Consumers group objects with shared visual traits like color and shape together."
+      }
+    ]
+  }
+]

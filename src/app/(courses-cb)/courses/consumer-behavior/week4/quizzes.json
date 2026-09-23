@@ -1,0 +1,152 @@
+[
+  {
+    "slide_id": "drive-theory-tension-and-reduction",
+    "question_text": "A student skips lunch. By mid-afternoon, an uncomfortable internal state pushes the student toward the vending machine. After eating a sandwich, the discomfort fades. According to drive theory, what happened after the sandwich?",
+    "hint": "Drive theory describes what happens to tension once the need behind it is met.",
+    "correct_answer_citation": "Week 04 · Drive Theory: Tension and Reduction",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "The drive grew stronger, because the sandwich tasted good",
+        "option_explanation": "A satisfied need does not strengthen the drive. The drive is the discomfort, and eating removed it."
+      },
+      {
+        "option_text": "The need was satisfied, so tension fell and the student returned to a more balanced state",
+        "option_explanation": "Correct. An unmet need created a drive. The drive pushed the student toward food, and after the need was satisfied, tension fell and the student returned to a more balanced state."
+      },
+      {
+        "option_text": "A bigger gap opened between the current state and the desired state",
+        "option_explanation": "Eating closed the gap rather than widening it. The student moved toward the desired state."
+      },
+      {
+        "option_text": "The vending machine created the student's need for food",
+        "option_explanation": "Hunger came from inside the student. Marketing can remind people of a need or show how a product reduces the drive, but the need was already there."
+      }
+    ]
+  },
+  {
+    "slide_id": "expectancy-theory-effort-performance-and-outcome",
+    "question_text": "A shopper is considering a paid language-learning app. The shopper is confident that practicing every day will lead to passing a language exam, and really wants a job abroad. But the shopper doubts that passing the exam will actually lead to getting that job. Which belief is weak?",
+    "hint": "Split the chain into effort → performance and performance → outcome. Which link does the shopper doubt?",
+    "correct_answer_citation": "Week 04 · Expectancy Theory: Effort, Performance, and Outcome",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Valence",
+        "option_explanation": "Valence is the value placed on the outcome. The shopper really wants the job abroad, so valence is strong."
+      },
+      {
+        "option_text": "Expectancy",
+        "option_explanation": "Expectancy is the belief that effort will lead to good performance. The shopper is confident that daily practice will lead to passing, so expectancy is strong."
+      },
+      {
+        "option_text": "Drive",
+        "option_explanation": "A drive is the uncomfortable state an unmet need creates. The scenario is about beliefs about what happens after acting, which is expectancy theory."
+      },
+      {
+        "option_text": "Instrumentality",
+        "option_explanation": "Correct. Instrumentality is the belief that good performance will lead to a desired outcome. The shopper doubts that passing the exam (performance) will lead to the job (outcome)."
+      }
+    ]
+  },
+  {
+    "slide_id": "needs-wants-and-demand",
+    "question_text": "A hungry teenager craves one particular brand of spicy ramen but has no money this week. For this teenager right now, what is that ramen?",
+    "hint": "Demand needs two things behind the want. Which one is missing?",
+    "correct_answer_citation": "Week 04 · Needs, Wants, and Demand",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "A need",
+        "option_explanation": "The need is hunger, a basic biological requirement. The ramen is the specific product chosen to satisfy it."
+      },
+      {
+        "option_text": "Demand",
+        "option_explanation": "Demand is a want supported by both the ability and willingness to pay. The teenager is willing but has no money, so there is no ability to pay."
+      },
+      {
+        "option_text": "A want, but not demand",
+        "option_explanation": "Correct. The ramen is the specific product chosen to satisfy hunger, which makes it a want. Without the ability to pay, it is not yet demand."
+      },
+      {
+        "option_text": "A need that the ramen brand created",
+        "option_explanation": "A marketer can shape a want but cannot create the basic human need underneath it. The hunger existed before the brand."
+      }
+    ]
+  },
+  {
+    "slide_id": "maslows-hierarchy-in-consumer-markets",
+    "question_text": "A student who is still worried about paying rent signs up for an expensive painting class to grow as an artist. A classmate says, \"That makes no sense. Maslow says you have to take care of safety first.\" Is the classmate right?",
+    "hint": "Is the hierarchy a strict order of purchases?",
+    "correct_answer_citation": "Week 04 · Maslow's Hierarchy in Consumer Markets",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "No. Consumers can pursue several levels at the same time, and the hierarchy is a guide, not a strict shopping sequence",
+        "option_explanation": "Correct. The student is pursuing safety (stability) and self-actualization (growth) at the same time. The hierarchy is a guide, not a strict shopping sequence."
+      },
+      {
+        "option_text": "Yes. Higher-order needs can only be pursued after every basic need is fully met",
+        "option_explanation": "This treats the hierarchy as a strict sequence. Consumers can pursue several levels at the same time."
+      },
+      {
+        "option_text": "No. A painting class is a safety need, so it sits on the same level as rent",
+        "option_explanation": "Growth and becoming the person one wants to be is self-actualization, not safety."
+      },
+      {
+        "option_text": "Yes. A painting class is a physiological need, like food and sleep",
+        "option_explanation": "Physiological needs include food, water, and sleep. A class for growing as an artist serves self-actualization."
+      }
+    ]
+  },
+  {
+    "slide_id": "motivational-conflicts-three-difficult-choices",
+    "question_text": "A shopper loves the idea of a rich chocolate cake for the weekend but dreads the calories that come with it. Which motivational conflict is this?",
+    "hint": "Count the options. Is there one, or two?",
+    "correct_answer_citation": "Week 04 · Motivational Conflicts: Three Difficult Choices",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Approach-approach conflict",
+        "option_explanation": "Approach-approach means choosing between two attractive options. Here there is only one option, the cake."
+      },
+      {
+        "option_text": "Avoidance-avoidance conflict",
+        "option_explanation": "Avoidance-avoidance means every available option has an unwanted consequence. The cake also has an attractive benefit."
+      },
+      {
+        "option_text": "Drive reduction",
+        "option_explanation": "Drive reduction is about lowering the tension an unmet need creates. The shopper's problem is one option pulling two ways."
+      },
+      {
+        "option_text": "Approach-avoidance conflict",
+        "option_explanation": "Correct. The same option has both an attractive benefit (the taste) and an unpleasant cost (the calories)."
+      }
+    ]
+  },
+  {
+    "slide_id": "values-guide-consumer-choices",
+    "question_text": "Two pairs of headphones cost the same. Model A has more features. Model B has fewer, but everyone in the shopper's friend group wears Model B and compliments each other on it. The shopper buys Model B. Which kind of value guided this choice?",
+    "hint": "The shopper did not choose the one with the most features. What did Model B offer instead?",
+    "correct_answer_citation": "Week 04 · Values Guide Consumer Choices",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Functional value",
+        "option_explanation": "Functional values focus on performance, convenience, and reliability. Model A had more features, so a functional choice would point the other way."
+      },
+      {
+        "option_text": "Social value",
+        "option_explanation": "Correct. Social values focus on belonging, recognition, and how others see the consumer. The shopper chose the one that fits in with the friend group."
+      },
+      {
+        "option_text": "Experiential value",
+        "option_explanation": "Experiential values focus on pleasure, excitement, comfort, or meaning. The deciding factor here was the friends, not the listening experience."
+      },
+      {
+        "option_text": "Approach-avoidance conflict",
+        "option_explanation": "That is a motivational conflict, not a value. The question asks what the shopper valued in Model B."
+      }
+    ]
+  }
+]

@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Fraunces, Instrument_Sans } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
-import { ScrollToTop } from "@/components/portfolio/ScrollToTop";
 
-const playfair = Playfair_Display({
-  variable: "--font-serif",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-sans",
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "Davood Wadi, Ph.D.",
-  description: "Davood Wadi, Ph.D.",
+  description:
+    "Davood Wadi studies how large language models behave, and what that means for marketing and business.",
   icons: {
     icon: "/icon-large.svg",
   },
@@ -30,14 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body
-        className={`${playfair.variable} ${inter.variable} antialiased bg-dark-900 text-gray-100 selection:bg-accent-500 selection:text-white relative`}
-      >
-        <Navigation />
-        {children}
-        <ScrollToTop />
-      </body>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${instrumentSans.variable}`}
+    >
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

@@ -1,0 +1,102 @@
+[
+  {
+    "slide_id": "what-is-digital-marketing",
+    "question_text": "A Montréal bakery sends a newsletter by email, posts on social media and buys a search ad. The next morning it sees which posts got responses and moves its budget. Which features of digital marketing does this show?",
+    "hint": "Digital marketing uses electronic devices or the internet, and it allows tracking and fast changes.",
+    "correct_answer_citation": "Week 11 · Core Concept: What is Digital Marketing?",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Mass broadcast through print, radio and TV",
+        "option_explanation": "Print, radio and television are the traditional broadcast channels. Email, social media and search ads are digital channels."
+      },
+      {
+        "option_text": "A uniform message sent once to everyone",
+        "option_explanation": "The bakery is not sending one fixed message. It watches responses and changes its campaign."
+      },
+      {
+        "option_text": "Digital channels, tracking and adjustment",
+        "option_explanation": "Correct. It uses digital channels to reach customers, and digital marketing allows real-time tracking, immediate feedback and rapid campaign adjustment."
+      },
+      {
+        "option_text": "Legacy operations moved into a warehouse",
+        "option_explanation": "Nothing here concerns legacy operations. The bakery is running a digital campaign and adjusting it quickly."
+      }
+    ]
+  },
+  {
+    "slide_id": "the-paradigm-shift-interactive-vs-broadcast-marketing",
+    "question_text": "A sneaker brand asks fans to design a colourway online, vote on each other's entries and share their favourites. The winning design goes on sale. What does this campaign illustrate?",
+    "hint": "Think about who is creating value in interactive marketing.",
+    "correct_answer_citation": "Week 11 · The Paradigm Shift: Interactive vs. Broadcast Marketing",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Consumers as co-creators of brand value",
+        "option_explanation": "Correct. Interactive digital marketing invites consumers into a two-way conversation, and this shift makes them co-creators of brand value."
+      },
+      {
+        "option_text": "A uniform message for a broad audience",
+        "option_explanation": "That describes traditional broadcast marketing. Here fans design, vote and share, which is two-way participation."
+      },
+      {
+        "option_text": "One-way communication sent from the brand",
+        "option_explanation": "The campaign runs in both directions: fans create and respond, and the brand acts on what they make."
+      },
+      {
+        "option_text": "Paid search bids on a single keyword",
+        "option_explanation": "No keyword bidding is involved. The campaign is built to be shared, commented on and shaped by consumers."
+      }
+    ]
+  },
+  {
+    "slide_id": "social-media-platforms-and-demographics",
+    "question_text": "An accounting-software company wants to reach finance managers at mid-sized firms and build its corporate reputation. Which kind of platform suits this goal best?",
+    "hint": "Match the goal to the platform type described for B2B marketing.",
+    "correct_answer_citation": "Week 11 · Social Media Platforms and Demographics",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "A short-form video platform for trends",
+        "option_explanation": "Short-form video platforms dominate younger demographics and trend creation, not B2B buyers and corporate branding."
+      },
+      {
+        "option_text": "A professional networking platform",
+        "option_explanation": "Correct. Professional networks are essential for B2B marketing and corporate branding."
+      },
+      {
+        "option_text": "A visual platform for lifestyle photos",
+        "option_explanation": "Visual platforms excel in lifestyle and product showcasing. The company's goal is B2B reach and corporate branding."
+      },
+      {
+        "option_text": "The same post copied to every platform",
+        "option_explanation": "Different platforms attract distinct demographics and require tailored content strategies, so one copied post is not the answer."
+      }
+    ]
+  },
+  {
+    "slide_id": "the-challenge-measuring-roi",
+    "question_text": "A café chain's post gets 40,000 likes, but its manager asks how many new loyalty-card sign-ups came from it. Why is the manager's question the better one?",
+    "hint": "Which metrics should marketers focus on when measuring ROI?",
+    "correct_answer_citation": "Week 11 · The Challenge: Measuring ROI",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Likes can always be tied directly to revenue",
+        "option_explanation": "Tying social engagement directly to revenue is hard and requires sophisticated analytics tracking."
+      },
+      {
+        "option_text": "Click-through rates are the only valid metric",
+        "option_explanation": "Marketers navigate many metrics, from click-through rates to attribution models. No single one is the only valid metric."
+      },
+      {
+        "option_text": "Measuring exact ROI on social is simple",
+        "option_explanation": "The slide says the opposite: measuring the exact return on digital and social campaigns remains complex."
+      },
+      {
+        "option_text": "Sign-ups align with business objectives",
+        "option_explanation": "Correct. The focus must stay on metrics that align with overarching business objectives rather than vanity numbers like a like count."
+      }
+    ]
+  }
+]
