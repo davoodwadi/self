@@ -1,167 +1,135 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Week } from "./weeks";
 
 type Row = Week & { href: string; available: boolean };
 
+/** Week number, title and topics: the same row whether it links or not. */
+function RowBody({ week, n }: { week: Row; n: number }) {
+  return (
+    <>
+      <span
+        className={
+          week.available
+            ? "type-caption tabular-nums pt-1 group-hover:text-[var(--signal)] transition-colors"
+            : "type-caption tabular-nums pt-1 opacity-55"
+        }
+      >
+        {String(n).padStart(2, "0")}
+      </span>
+      <div className="min-w-0">
+        <h3
+          className={
+            week.available
+              ? "type-h2 !text-[clamp(1.2rem,1.7vw,1.45rem)] group-hover:text-[var(--signal)] transition-colors"
+              : "type-h2 !text-[clamp(1.2rem,1.7vw,1.45rem)] !text-[var(--ink-3)]"
+          }
+        >
+          {week.title}
+        </h3>
+        <ul
+          className={
+            week.available
+              ? "type-body !text-[0.95rem] mt-1.5 max-w-[62ch] space-y-0.5"
+              : "type-body !text-[0.95rem] mt-1.5 max-w-[62ch] space-y-0.5 opacity-70"
+          }
+        >
+          {week.topics.map((topic) => (
+            <li key={topic}>{topic}</li>
+          ))}
+        </ul>
+        {week.available ? null : (
+          <p className="type-label mt-2.5 !text-[0.65rem] !text-[var(--ink-3)]">
+            In preparation
+          </p>
+        )}
+      </div>
+      {week.available ? (
+        <ArrowRight
+          aria-hidden
+          className="mt-1.5 size-4 text-[var(--ink-3)] transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-[var(--signal)]"
+        />
+      ) : (
+        <span aria-hidden />
+      )}
+    </>
+  );
+}
+
+const ROW =
+  "grid grid-cols-[2.25rem_minmax(0,1fr)_auto] gap-x-4 md:gap-x-6 py-5 -mx-3 px-3";
+
+function BackLink() {
+  return (
+    <Link
+      href="/courses"
+      className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 transition-colors duration-300 text-[var(--ink-2)] hover:text-[var(--signal)]"
+      aria-label="Back to all courses"
+    >
+      <ArrowLeft className="w-5 h-5" />
+    </Link>
+  );
+}
+
 export default function CourseIndex({ weeks }: { weeks: Row[] }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const reduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (reduced) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".masthead-item",
-        { y: 16, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out", stagger: 0.1 },
-      );
-
-      gsap.fromTo(
-        ".index-row",
-        { y: 12, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.045,
-          ease: "power2.out",
-          delay: 0.35,
-          scrollTrigger: { trigger: ".index-list", start: "top 90%" },
-        },
-      );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
-    <div ref={containerRef} className="relative min-h-screen">
-      <div className="mx-auto w-full max-w-[var(--slide-max)] px-5 md:px-10 lg:px-16">
-        {/* ---------------------------------------------------------------
-            Masthead
-            --------------------------------------------------------------- */}
-        <header className="pt-24 pb-16 md:pt-36 md:pb-24">
-          <div className="masthead-item flex items-center gap-3 mb-8">
+    <div className="relative min-h-screen">
+      <BackLink />
+      <div className="mx-auto grid w-full max-w-[var(--slide-max)] gap-x-16 px-5 md:px-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:px-16">
+        {/* Masthead: stays in view beside the curriculum on wide screens. */}
+        <header className="pt-20 pb-12 md:pt-28 lg:sticky lg:top-0 lg:flex lg:h-svh lg:flex-col lg:justify-center lg:py-16">
+          <div className="flex items-center gap-3 mb-7">
             <span className="h-px w-7 bg-[var(--signal)]" aria-hidden />
             <span className="type-label">Bachelor&apos;s · 12 Weeks</span>
           </div>
 
-          <h1 className="masthead-item type-display max-w-[14ch]">
+          <h1 className="type-display !text-[clamp(2.8rem,5vw,4.5rem)]">
             Introduction to Marketing
           </h1>
 
-          <p className="masthead-item type-lead mt-8 max-w-[60ch]">
+          <p className="type-lead mt-7 max-w-[46ch]">
             This course introduces the fundamental concepts, theories, and
             practices of modern marketing. Students will explore how
             organizations create, communicate, and deliver value to target
             customers while achieving business objectives.
           </p>
 
-          <div className="masthead-item mt-12 pt-6 border-t border-[var(--rule)] flex flex-wrap gap-x-12 gap-y-4">
-            <div>
-              <div className="type-caption mb-1">Instructor</div>
-              <div className="type-body !text-[var(--ink)]">
-                Davood Wadi, PhD
-              </div>
-            </div>
-          </div>
+          <p className="type-body mt-8 border-t border-[var(--rule)] pt-5 !text-[var(--ink)]">
+            Davood Wadi, PhD
+          </p>
+
         </header>
 
-        {/* ---------------------------------------------------------------
-            Index — a ruled contents list, not a grid of identical boxes.
-            Weeks whose deck is still being written are listed but inert.
-            --------------------------------------------------------------- */}
-        <nav aria-label="Course weeks" className="index-list pb-4">
-          <div className="flex items-baseline justify-between mb-6">
-            <h2 className="type-label">Contents</h2>
-            <span className="type-caption">Weekly Breakdown</span>
+        {/* Curriculum. Weeks whose deck is still being written are listed but inert. */}
+        <nav aria-label="Course weeks" className="pb-10 lg:py-20">
+          <div className="mb-4">
+            <h2 className="type-label">Curriculum</h2>
           </div>
 
-          <ul className="border-t border-[var(--rule)]">
+          <ol className="border-t border-[var(--rule)]">
             {weeks.map((week, idx) => (
-              <li
-                key={week.slug}
-                className="index-row border-b border-[var(--rule)]"
-              >
+              <li key={week.slug} className="border-b border-[var(--rule)]">
                 {week.available ? (
                   <Link
                     href={week.href}
-                    className="group grid grid-cols-[2.75rem_1fr] md:grid-cols-[5rem_minmax(0,22rem)_1fr] gap-x-4 md:gap-x-8 gap-y-2 py-7 md:py-8 items-baseline transition-colors duration-200 hover:bg-[var(--paper-2)] -mx-3 px-3"
+                    className={`group ${ROW} transition-colors duration-200 hover:bg-[var(--paper-2)]`}
                   >
-                    <span className="type-caption tabular-nums group-hover:text-[var(--signal)] transition-colors">
-                      {String(idx + 1).padStart(2, "0")}
-                    </span>
-
-                    <h3 className="type-h2 col-start-2 group-hover:text-[var(--signal)] transition-colors">
-                      {week.title}
-                    </h3>
-
-                    <ul className="type-body !text-[1rem] col-start-2 md:col-start-3 max-w-[58ch] space-y-1">
-                      {week.topics.map((topic) => (
-                        <li key={topic}>{topic}</li>
-                      ))}
-                    </ul>
+                    <RowBody week={week} n={idx + 1} />
                   </Link>
                 ) : (
-                  <div
-                    aria-disabled="true"
-                    className="grid grid-cols-[2.75rem_1fr] md:grid-cols-[5rem_minmax(0,22rem)_1fr] gap-x-4 md:gap-x-8 gap-y-2 py-7 md:py-8 items-baseline cursor-default -mx-3 px-3"
-                  >
-                    <span className="type-caption tabular-nums opacity-55">
-                      {String(idx + 1).padStart(2, "0")}
-                    </span>
-
-                    <h3 className="type-h2 col-start-2 !text-[var(--ink-3)]">
-                      {week.title}
-                    </h3>
-
-                    <div className="col-start-2 md:col-start-3 max-w-[58ch]">
-                      <ul className="type-body !text-[1rem] space-y-1 opacity-70">
-                        {week.topics.map((topic) => (
-                          <li key={topic}>{topic}</li>
-                        ))}
-                      </ul>
-                      <p className="type-label mt-3 flex items-center gap-2 !text-[var(--ink-3)]">
-                        <span
-                          aria-hidden
-                          className="size-1.5 rounded-full border border-current"
-                        />
-                        In preparation
-                      </p>
-                    </div>
+                  <div aria-disabled="true" className={`${ROW} cursor-default`}>
+                    <RowBody week={week} n={idx + 1} />
                   </div>
                 )}
               </li>
             ))}
-          </ul>
-        </nav>
+          </ol>
 
-        {/* ---------------------------------------------------------------
-            Back to the course index.
-            --------------------------------------------------------------- */}
-        <div className="pb-24 pt-10">
-          <Link
-            href="/courses"
-            className="group inline-flex items-center gap-3 type-label transition-colors hover:text-[var(--signal)]"
-          >
-            <ArrowLeft
-              aria-hidden
-              className="size-4 transition-transform duration-200 group-hover:-translate-x-1"
-            />
-            All courses
-          </Link>
-        </div>
+        </nav>
       </div>
     </div>
   );

@@ -64,7 +64,7 @@ function P({
   return (
     <p
       className={cn(
-        "gsap-reveal type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
+        "type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
         className,
       )}
     >
@@ -82,7 +82,7 @@ function Lead({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-lead max-w-[46ch]", className)}>
+    <p className={cn("type-lead max-w-[46ch]", className)}>
       {children}
     </p>
   );
@@ -97,7 +97,7 @@ function Statement({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-quote max-w-[30ch]", className)}>
+    <p className={cn("type-quote max-w-[30ch]", className)}>
       {children}
     </p>
   );
@@ -139,7 +139,7 @@ function Ruled({
   return (
     <div
       className={cn(
-        "gsap-reveal min-w-0 pt-5",
+        "min-w-0 pt-5",
         weight === "thick" ? "border-t-2" : "border-t",
         border,
         className,
@@ -159,7 +159,7 @@ function Plate({
   className?: string;
 }) {
   return (
-    <div className={cn("gsap-reveal figure-well w-full p-3 sm:p-5", className)}>
+    <div className={cn("figure-well w-full p-3 sm:p-5", className)}>
       {children}
     </div>
   );
@@ -182,7 +182,7 @@ function KickerHeading({
   className?: string;
 }) {
   return (
-    <div className={cn("gsap-reveal w-full mb-8 md:mb-12", className)}>
+    <div className={cn("w-full mb-8 md:mb-12", className)}>
       <h2 className="type-h1 max-w-[24ch]">
         <span
           className={cn(
@@ -216,7 +216,7 @@ function PartPlate({
       <div className="grid w-full gap-8 xl:grid-cols-[minmax(0,15rem)_1fr] xl:gap-16">
         <div
           aria-hidden
-          className="gsap-reveal select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[7rem] xl:text-[13rem]"
+          className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[7rem] xl:text-[13rem]"
           style={{
             ...SERIF,
             fontVariationSettings: '"opsz" 144, "WONK" 1',
@@ -225,7 +225,7 @@ function PartPlate({
           {String(n).padStart(2, "0")}
         </div>
         <div className="min-w-0">
-          <h2 className="gsap-reveal type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[18ch]">
+          <h2 className="type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[18ch]">
             <span className="type-label block mb-6 !text-[0.8rem]">
               {`Part ${n}:`}
             </span>{" "}
@@ -242,7 +242,7 @@ function PartPlate({
 /** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
 function Prompt({ children }: { children: React.ReactNode }) {
   return (
-    <div className="gsap-reveal relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
+    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
       <p className="type-quote !text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[42ch]">
         {children}
       </p>
@@ -287,7 +287,7 @@ function StageStrip({
     <ol
       aria-hidden
       className={cn(
-        "gsap-reveal grid w-full grid-cols-5",
+        "grid w-full grid-cols-5",
         large ? "gap-3 sm:gap-5" : "gap-2 sm:gap-3",
         className,
       )}
@@ -371,16 +371,16 @@ export default function Week3() {
         <Title className="mt-6 !max-w-[18ch]">
           Consumer <span className="text-[var(--signal)]">Behavior</span>
         </Title>
-        <p className="gsap-reveal type-caption mt-2">Davood Wadi, PhD</p>
+        <p className="type-caption mt-2">Davood Wadi, PhD</p>
 
-        <div className="gsap-reveal mt-14 w-full max-w-3xl space-y-5 text-center">
+        <div className="mt-14 w-full max-w-3xl space-y-5 text-center">
           <p className="type-lead !text-[var(--ink)]">
             Welcome to Week 3 of Introduction to Marketing.
           </p>
           <p className="type-lead">Today we will explore Consumer Behavior.</p>
         </div>
 
-        <p className="gsap-reveal type-body mt-14 max-w-3xl border-t border-[var(--rule)] pt-8 text-center [&_a]:whitespace-nowrap">
+        <p className="type-body mt-14 max-w-3xl border-t border-[var(--rule)] pt-8 text-center [&_a]:whitespace-nowrap">
           We will cover the{" "}
           <a href="#part-1" data-n="01" className="toc-link">
             consumer decision-making process
@@ -469,7 +469,7 @@ export default function Week3() {
           <Term tone="counter">external</Term> stimuli.
         </Lead>
         <div className="mt-14 w-full">
-          <p className="gsap-reveal type-label !text-[var(--ink-3)]">
+          <p className="type-label !text-[var(--ink-3)]">
             Marketers must research to find out
           </p>
           <ol className="mt-5 grid w-full gap-x-10 border-t-2 border-[var(--ink)] md:grid-cols-3">
@@ -481,7 +481,7 @@ export default function Week3() {
               <li
                 key={n}
                 data-n={n}
-                className="num-item gsap-reveal border-b border-[var(--rule)] py-6 type-h2 !font-normal"
+                className="num-item border-b border-[var(--rule)] py-6 type-h2 !font-normal"
               >
                 {" "}
                 {item}
@@ -507,7 +507,7 @@ export default function Week3() {
             </P>
           </Ruled>
           <Ruled tone="signal">
-            <p className="gsap-reveal type-h2 !font-normal">
+            <p className="type-h2 !font-normal">
               The most effective sources tend to be{" "}
               <span className="text-[var(--signal)]">personal</span>, as they
               legitimize or evaluate products for the buyer.
@@ -537,7 +537,7 @@ export default function Week3() {
             </P>
           </Ruled>
           <Ruled tone="signal">
-            <p className="gsap-reveal type-h2 !font-normal">
+            <p className="type-h2 !font-normal">
               Marketers should study buyers to find out how they{" "}
               <span className="text-[var(--signal)]">actually</span> evaluate
               brand alternatives.
@@ -562,7 +562,7 @@ export default function Week3() {
             </P>
           </Ruled>
           <Ruled tone="counter">
-            <p className="gsap-reveal type-h2 !font-normal">
+            <p className="type-h2 !font-normal">
               However,{" "}
               <span className="text-[var(--counter)]">attitudes of others</span>{" "}
               and{" "}
@@ -594,7 +594,7 @@ export default function Week3() {
             </P>
           </Ruled>
           <Ruled tone="signal">
-            <p className="gsap-reveal type-h2 !font-normal">
+            <p className="type-h2 !font-normal">
               <span className="text-[var(--signal)]">Cognitive dissonance</span>
               , or buyer discomfort caused by postpurchase conflict, is a
               common occurrence.
@@ -635,7 +635,7 @@ export default function Week3() {
         </Figure>
         <div className="grid gap-10 md:grid-cols-2 md:gap-12">
           <Ruled>
-            <p className="gsap-reveal type-h2 !font-normal">
+            <p className="type-h2 !font-normal">
               Marketers cannot control such factors, but they must take them
               into account.
             </p>
@@ -703,7 +703,7 @@ export default function Week3() {
             </P>
           </Ruled>
           <Ruled tone="signal">
-            <p className="gsap-reveal type-h2 !font-normal">
+            <p className="type-h2 !font-normal">
               <span className="text-[var(--counter)]">
                 Word-of-mouth influence
               </span>{" "}
@@ -727,7 +727,7 @@ export default function Week3() {
           psychological factors.
         </Lead>
         <div className="mt-12 w-full">
-          <p className="gsap-reveal type-label !text-[var(--ink-3)]">
+          <p className="type-label !text-[var(--ink-3)]">
             These are
           </p>
           <ol className="mt-5 grid w-full gap-x-10 border-t-2 border-[var(--ink)] sm:grid-cols-2 lg:grid-cols-4">
@@ -741,7 +741,7 @@ export default function Week3() {
                 key={n as string}
                 data-n={n as string}
                 className={cn(
-                  "num-item gsap-reveal border-b border-[var(--rule)] py-6 type-h2 !font-normal",
+                  "num-item border-b border-[var(--rule)] py-6 type-h2 !font-normal",
                   lit && "text-[var(--signal)]",
                 )}
               >
@@ -798,7 +798,7 @@ export default function Week3() {
             </P>
           </Ruled>
           <Ruled tone="signal">
-            <p className="gsap-reveal type-h2 !font-normal">
+            <p className="type-h2 !font-normal">
               The business market is huge and differs from the consumer market
               in several key ways.
             </p>
@@ -862,7 +862,7 @@ export default function Week3() {
             </P>
           </Ruled>
           <Ruled tone="signal">
-            <p className="gsap-reveal type-h2 !font-normal">
+            <p className="type-h2 !font-normal">
               It includes users, influencers, buyers, deciders, and
               gatekeepers.
             </p>
@@ -890,7 +890,7 @@ export default function Week3() {
             </P>
           </Ruled>
           <Ruled tone="signal">
-            <p className="gsap-reveal type-h2 !font-normal">
+            <p className="type-h2 !font-normal">
               Therefore, B2B marketers must have{" "}
               <span className="text-[var(--signal)]">
                 well-trained salespeople
@@ -940,7 +940,7 @@ export default function Week3() {
           ].map((item, i) => (
             <li
               key={i}
-              className="gsap-reveal flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
+              className="flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
             >
               <div aria-hidden className="flex items-center justify-between">
                 <span

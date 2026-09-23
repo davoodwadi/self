@@ -25,7 +25,7 @@ const SECTIONS = [
 
 export default function DigitalTransformationWeek2() {
   return (
-    <main className="theme-midnight-sapphire relative w-full overflow-x-hidden bg-background min-h-screen font-body text-text-primary">
+    <main className="relative w-full overflow-x-hidden bg-background min-h-screen font-body text-text-primary">
       <ProgressBar />
       <FloatingNav sections={SECTIONS} />
       {/* Navigation */}

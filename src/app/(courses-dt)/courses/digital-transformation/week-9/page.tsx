@@ -27,7 +27,7 @@ const SECTIONS = [
 
 export default function DigitalTransformationWeek9() {
   return (
-    <main className="theme-obsidian-gold relative w-full overflow-x-hidden bg-background min-h-screen font-body text-text-primary">
+    <main className="relative w-full overflow-x-hidden bg-background min-h-screen font-body text-text-primary">
       <ProgressBar />
       <FloatingNav sections={SECTIONS} />
  {/* Navigation */}

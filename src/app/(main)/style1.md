@@ -22,7 +22,7 @@ The glass components (`.glass-card`) have been upgraded to feel like tangible, f
 The background features an `.ambient-glow` that isn't a harsh neon spotlight, but rather a soft, expansive radial gradient tinted with the champagne gold. This acts like soft studio "fill lighting." It gently illuminates the center of the viewport and fades into deep black at the edges, naturally drawing the user's eye to the content in the middle of the screen.
 
 ### 5. Fluid, Intentional Motion
-Animations (like `.fade-up` and card hovers) have been updated to use longer durations (`1.2s`) and custom cubic-bezier timing functions (`cubic-bezier(0.16, 1, 0.3, 1)`). This results in a "slow-ease" effect where elements glide into place gracefully and settle softly, rather than snapping abruptly. It feels deliberate, calm, and highly polished.
+Hover transitions (like the cards) use longer durations (`1.2s`) and custom cubic-bezier timing functions (`cubic-bezier(0.16, 1, 0.3, 1)`). This results in a "slow-ease" effect where elements settle softly rather than snapping abruptly. It feels deliberate, calm, and highly polished.
 
 ## Summary Goal
 The overarching aspiration is to make the user feel as though they aren't just reading a standard CV or portfolio, but rather experiencing a beautifully curated, high-budget digital exhibition of academic and professional life.

@@ -10,7 +10,7 @@
    ========================================================================== */
 
 import React from "react";
-import { SK, InkLine, PencilLine, Wash, SketchText, blobPts, seeded, r2, type Pt } from "./sketch";
+import { SK, InkLine, PencilLine, Wash, Paper, SketchText, blobPts, seeded, wobble, r2, type Pt } from "./sketch";
 
 /* -- the cast (Editorial Sketch) ----------------------------------------- */
 
@@ -193,11 +193,14 @@ export function Person({
   pencil = false,
   seed = 1,
   face = true,
+  headScale = 1,
 }: {
   x: number;
   y: number;
   h?: number;
   look?: Look;
+  /** Enlarge the head about the chin: about 1.4 for a child, 1.7 for a toddler. */
+  headScale?: number;
   /** [far arm (−x side), near arm (+x side)] */
   arms?: [ArmPose, ArmPose];
   flip?: boolean;
@@ -208,6 +211,8 @@ export function Person({
   const s = h / 200;
   const f = flip ? -1 : 1;
   const P = (pts: Pt[]): Pt[] => rp(pts.map(([px, py]) => [x + f * px * s, y + py * s] as Pt));
+  /** Head, hair and face points, scaled about the chin by `headScale`. */
+  const H = (pts: Pt[]): Pt[] => P(pts.map(([px, py]) => [px * headScale, -177 + (py + 177) * headScale] as Pt));
   const {
     hair = "bob",
     hairTone = SK.brown,
@@ -304,25 +309,25 @@ export function Person({
       <Tone pencil={pencil} pts={P([[-3, -178], [3, -178], [3.5, -167], [-3.5, -167]])} seed={seed + 40} fill={skin} opacity={skinOpacity} dx={0} dy={0} />
       <Ln pencil={pencil} pts={P([[-3, -177], [-3.5, -168]])} seed={seed + 41} width={0.8} />
       <Ln pencil={pencil} pts={P([[3, -177], [3.5, -168]])} seed={seed + 42} width={0.8} />
-      <Tone pencil={pencil} pts={P(head)} seed={seed + 43} fill={skin} opacity={skinOpacity} dx={0.8} dy={0.6} />
-      <Ln pencil={pencil} pts={P(head)} seed={seed + 44} width={1.1} closed />
-      <Tone pencil={pencil} pts={P(hairPts)} seed={seed + 45} fill={hairTone} opacity={0.72} dx={0.6} dy={0} />
-      <Ln pencil={pencil} pts={P(hairPts)} seed={seed + 46} width={0.8} closed />
+      <Tone pencil={pencil} pts={H(head)} seed={seed + 43} fill={skin} opacity={skinOpacity} dx={0.8} dy={0.6} />
+      <Ln pencil={pencil} pts={H(head)} seed={seed + 44} width={1.1} closed />
+      <Tone pencil={pencil} pts={H(hairPts)} seed={seed + 45} fill={hairTone} opacity={0.72} dx={0.6} dy={0} />
+      <Ln pencil={pencil} pts={H(hairPts)} seed={seed + 46} width={0.8} closed />
       {hair === "bun" ? (
         <>
-          <Tone pencil={pencil} pts={P(blobPts(-5, -202, 4.8, 4.2, seed + 47, 9))} seed={seed + 47} fill={hairTone} opacity={0.72} dx={0.5} dy={0} />
-          <Ln pencil={pencil} pts={P(blobPts(-5, -202, 4.8, 4.2, seed + 48, 9))} seed={seed + 48} width={0.8} closed />
+          <Tone pencil={pencil} pts={H(blobPts(-5, -202, 4.8, 4.2, seed + 47, 9))} seed={seed + 47} fill={hairTone} opacity={0.72} dx={0.5} dy={0} />
+          <Ln pencil={pencil} pts={H(blobPts(-5, -202, 4.8, 4.2, seed + 48, 9))} seed={seed + 48} width={0.8} closed />
         </>
       ) : null}
       {curls.map((c, i) => (
-        <Ln key={i} pencil={pencil} pts={P(blobPts(c[0], c[1], c[2], c[2] * 0.9, seed + 50 + i, 7, 0.3))} seed={seed + 50 + i} width={0.7} closed />
+        <Ln key={i} pencil={pencil} pts={H(blobPts(c[0], c[1], c[2], c[2] * 0.9, seed + 50 + i, 7, 0.3))} seed={seed + 50 + i} width={0.7} closed />
       ))}
       {face ? (
         <g>
-          <Ln pencil={pencil} pts={P([[1, -187.5], [3.6, -188]])} seed={seed + 60} width={0.7} />
-          <Ln pencil={pencil} pts={P([[6.2, -188], [8, -187.6]])} seed={seed + 61} width={0.7} />
-          <Ln pencil={pencil} pts={P([[6, -186], [7.4, -182.2], [5.4, -181.8]])} seed={seed + 62} width={0.6} />
-          <Ln pencil={pencil} pts={P([[2.6, -178.8], [5.8, -178.6]])} seed={seed + 63} width={0.7} />
+          <Ln pencil={pencil} pts={H([[1, -187.5], [3.6, -188]])} seed={seed + 60} width={0.7} />
+          <Ln pencil={pencil} pts={H([[6.2, -188], [8, -187.6]])} seed={seed + 61} width={0.7} />
+          <Ln pencil={pencil} pts={H([[6, -186], [7.4, -182.2], [5.4, -181.8]])} seed={seed + 62} width={0.6} />
+          <Ln pencil={pencil} pts={H([[2.6, -178.8], [5.8, -178.6]])} seed={seed + 63} width={0.7} />
         </g>
       ) : null}
     </g>
@@ -506,6 +511,294 @@ export function BrandPerson(props: React.ComponentProps<typeof Person> & { badge
     <g>
       <Person {...props} />
       <BrandBadge x={r2(x + f * 7 * s)} y={r2(y - 146 * s)} r={r2(Math.max(5, 6.5 * s))} seed={seed + 90} pencil={pencil && !badgeInk} />
+    </g>
+  );
+}
+
+/* -- shared objects (first drawn for Week 1) ------------------------------ */
+
+/** Sample a quadratic curve p0 → p1 bent toward c, for arrows and paths. */
+export function curvePts(p0: Pt, c: Pt, p1: Pt, n = 12): Pt[] {
+  return rp(
+    Array.from({ length: n + 1 }, (_, i) => {
+      const t = i / n;
+      const u = 1 - t;
+      return [u * u * p0[0] + 2 * u * t * c[0] + t * t * p1[0], u * u * p0[1] + 2 * u * t * c[1] + t * t * p1[1]] as Pt;
+    }),
+  );
+}
+
+/** A hand-drawn arrow along `pts`, with an open head at the last point. */
+export function SketchArrow({
+  pts,
+  seed,
+  width = 1.3,
+  head = 9,
+  color = SK.ink,
+}: {
+  pts: Pt[];
+  seed: number;
+  width?: number;
+  head?: number;
+  color?: string;
+}) {
+  const a = pts[pts.length - 2];
+  const b = pts[pts.length - 1];
+  const len = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1;
+  const ux = (b[0] - a[0]) / len;
+  const uy = (b[1] - a[1]) / len;
+  const wing = (k: number): Pt => [b[0] - ux * head - uy * head * 0.55 * k, b[1] - uy * head + ux * head * 0.55 * k];
+  return (
+    <g>
+      <InkLine pts={rp(pts)} seed={seed} width={width} color={color} />
+      <InkLine pts={rp([wing(1), b, wing(-1)])} seed={seed + 1} width={width} amp={0.3} color={color} />
+    </g>
+  );
+}
+
+/** A five-point star; `filled` lays an ochre wash under it (a rating, a best pick). */
+export function Star({ x, y, r = 10, seed, filled = true }: { x: number; y: number; r?: number; seed: number; filled?: boolean }) {
+  const pts = rp(
+    Array.from({ length: 10 }, (_, i) => {
+      const a = -Math.PI / 2 + (i * Math.PI) / 5;
+      const rr = i % 2 === 0 ? r : r * 0.45;
+      return [x + Math.cos(a) * rr, y + Math.sin(a) * rr] as Pt;
+    }),
+  );
+  return (
+    <g>
+      {filled ? <Wash pts={pts} seed={seed} fill={SK.ochre} opacity={0.85} dx={0.8} dy={0.6} /> : null}
+      <InkLine pts={sharp(pts, true, 1)} seed={seed + 1} width={1} amp={0.35} closed />
+    </g>
+  );
+}
+
+/** A row of `of` rating stars, the first `n` filled. (x, y) is the first star. */
+export function Stars({ x, y, n, of = 5, r = 10, gap = 26, seed }: { x: number; y: number; n: number; of?: number; r?: number; gap?: number; seed: number }) {
+  return (
+    <g>
+      {Array.from({ length: of }, (_, i) => (
+        <Star key={i} x={r2(x + i * gap)} y={y} r={r} seed={seed + i * 3} filled={i < n} />
+      ))}
+    </g>
+  );
+}
+
+/** A magnifying glass centred on its lens: sky glass, leather handle. */
+export function Magnifier({ x, y, r = 16, seed }: { x: number; y: number; r?: number; seed: number }) {
+  const lens = rp(blobPts(x, y, r, r, seed, 16, 0.04));
+  const d = r * 0.72;
+  const hw = r * 0.2;
+  const handle = rp([
+    [x + d - hw * 0.7, y + d + hw * 0.7],
+    [x + d + hw * 0.7, y + d - hw * 0.7],
+    [x + d + r * 0.95 + hw * 0.7, y + d + r * 0.95 - hw * 0.7],
+    [x + d + r * 0.95 - hw * 0.7, y + d + r * 0.95 + hw * 0.7],
+  ]);
+  return (
+    <g>
+      <Wash pts={lens} seed={seed + 1} fill={SK.sky} opacity={0.7} dx={1.2} dy={0.8} />
+      <InkLine pts={lens} seed={seed + 2} width={1.6} closed />
+      <Wash pts={handle} seed={seed + 3} fill={SK.leather} opacity={0.8} dx={0.8} dy={0.6} />
+      <InkLine pts={handle} seed={seed + 4} width={1.1} closed />
+    </g>
+  );
+}
+
+/** A speech bubble centred on (x, y) with its tail pointing to (tx, ty). */
+export function SpeechBubble({
+  x,
+  y,
+  w,
+  h,
+  tx,
+  ty,
+  seed,
+}: {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  tx: number;
+  ty: number;
+  seed: number;
+}) {
+  const l = x - w / 2;
+  const r = x + w / 2;
+  const t = y - h / 2;
+  const b = y + h / 2;
+  const k = Math.min(8, h / 3);
+  const side = tx < x ? -1 : 1;
+  const b0 = x + side * w * 0.08;
+  const b1 = x + side * w * 0.3;
+  const top: Pt[] = [
+    [l + k, t],
+    [r - k, t],
+    [r, t + k],
+    [r, b - k],
+    [r - k, b],
+  ];
+  const bottom: Pt[] =
+    side > 0
+      ? [[b1, b], [tx, ty], [b0, b]]
+      : [[b0, b], [tx, ty], [b1, b]];
+  const pts = rp([...top, ...bottom, [l + k, b], [l, b - k], [l, t + k]]);
+  return (
+    <g>
+      <Paper pts={pts} seed={seed} />
+      <InkLine pts={pts} seed={seed + 1} width={1.1} closed />
+    </g>
+  );
+}
+
+/** A payment card centred on (x, y), `w` wide, tilted by `tilt` degrees. */
+export function PayCard({ x, y, w = 34, tilt = 0, seed }: { x: number; y: number; w?: number; tilt?: number; seed: number }) {
+  const h = w * 0.63;
+  const rot = (px: number, py: number): Pt => {
+    const a = (tilt * Math.PI) / 180;
+    return [x + px * Math.cos(a) - py * Math.sin(a), y + px * Math.sin(a) + py * Math.cos(a)];
+  };
+  const body = rp(sharp([rot(-w / 2, -h / 2), rot(w / 2, -h / 2), rot(w / 2, h / 2), rot(-w / 2, h / 2)], true, 2));
+  const chip = rp([rot(-w * 0.34, -h * 0.02), rot(-w * 0.14, -h * 0.02), rot(-w * 0.14, h * 0.26), rot(-w * 0.34, h * 0.26)]);
+  return (
+    <g>
+      <Wash pts={body} seed={seed} fill={SK.charcoal} opacity={0.55} dx={1} dy={0.8} />
+      <InkLine pts={body} seed={seed + 1} width={1.1} closed />
+      <InkLine pts={rp([rot(-w / 2, -h * 0.24), rot(w / 2, -h * 0.24)])} seed={seed + 2} width={2.2} amp={0.3} />
+      <Wash pts={chip} seed={seed + 3} fill={SK.ochre} opacity={0.9} dx={0.3} dy={0.3} />
+      <InkLine pts={chip} seed={seed + 4} width={0.7} amp={0.2} closed />
+    </g>
+  );
+}
+
+/** An open eye, `w` wide: someone watching closely. */
+export function Eye({ x, y, w = 30, seed }: { x: number; y: number; w?: number; seed: number }) {
+  const h = w * 0.34;
+  const lid = curvePts([x - w / 2, y], [x, y - h * 2], [x + w / 2, y], 10);
+  const low = curvePts([x + w / 2, y], [x, y + h * 1.6], [x - w / 2, y], 10);
+  const iris = rp(blobPts(x, y, h * 0.66, h * 0.66, seed, 10, 0.05));
+  const pupil = rp(blobPts(x, y, h * 0.24, h * 0.24, seed + 5, 8, 0.05));
+  return (
+    <g>
+      <Wash pts={iris} seed={seed + 1} fill={SK.brown} opacity={0.6} dx={0.4} dy={0.3} />
+      <InkLine pts={iris} seed={seed + 2} width={0.9} closed />
+      <path d={wobble(pupil, seed + 6, 0.2, 6, true)} fill={SK.ink} />
+      <InkLine pts={[...lid, ...low.slice(1)]} seed={seed + 3} width={1.3} amp={0.4} />
+      <InkLine pts={rp([[x - w * 0.3, y - h * 1.35], [x, y - h * 1.75], [x + w * 0.3, y - h * 1.4]])} seed={seed + 4} width={0.8} amp={0.3} />
+    </g>
+  );
+}
+
+/** A megaphone: mouthpiece at (x, y), the bell opening toward +x. */
+export function Megaphone({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
+  const cone = at(x, y, [[0, -8], [40, -24], [44, 0], [40, 24], [0, 8]], s);
+  const grip = at(x, y, [[-11, -8], [0, -8], [0, 8], [-11, 8]], s);
+  const handle = at(x, y, [[9, 7], [12, 24], [20, 24], [18, 10]], s);
+  return (
+    <g>
+      <Wash pts={cone} seed={seed} fill={SK.camel} opacity={0.65} />
+      <InkLine pts={cone} seed={seed + 1} closed />
+      <InkLine pts={at(x, y, [[40, -24], [36, 0], [40, 24]], s)} seed={seed + 2} width={0.9} />
+      <Wash pts={grip} seed={seed + 3} fill={SK.leather} opacity={0.8} dx={0.6} dy={0.4} />
+      <InkLine pts={grip} seed={seed + 4} width={1.1} closed />
+      <InkLine pts={handle} seed={seed + 5} width={1.1} />
+    </g>
+  );
+}
+
+/** A small clock face: time running short. */
+export function Clock({ x, y, r = 13, seed }: { x: number; y: number; r?: number; seed: number }) {
+  const face = rp(blobPts(x, y, r, r, seed, 14, 0.04));
+  return (
+    <g>
+      <Paper pts={face} seed={seed + 1} />
+      <InkLine pts={face} seed={seed + 2} width={1.3} closed />
+      <InkLine pts={rp([[x, y - r * 0.62], [x, y], [x + r * 0.45, y + r * 0.3]])} seed={seed + 3} width={1.2} amp={0.2} />
+    </g>
+  );
+}
+
+/** A shopping cart, basket centred near (x, y). */
+export function Cart({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
+  const basket = at(x, y, [[-18, -16], [24, -16], [18, 2], [-10, 2]], s);
+  const wheels = [at(x, y, [[-6, 10]], s)[0], at(x, y, [[14, 10]], s)[0]];
+  return (
+    <g>
+      <Wash pts={basket} seed={seed} fill={SK.sky} opacity={0.55} />
+      <InkLine pts={at(x, y, [[-28, -24], [-20, -24], [-10, 2], [18, 2]], s)} seed={seed + 1} width={1.4} />
+      <InkLine pts={basket} seed={seed + 2} width={1.3} closed />
+      <InkLine pts={at(x, y, [[-12, -6], [21, -6]], s)} seed={seed + 3} width={0.8} />
+      {wheels.map((p, i) => (
+        <InkLine key={i} pts={rp(blobPts(p[0], p[1], 3.4 * s, 3.4 * s, seed + 4 + i, 8, 0.05))} seed={seed + 6 + i} width={1.3} closed />
+      ))}
+    </g>
+  );
+}
+
+/** A map pin with its tip at (x, y). */
+export function MapPin({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
+  // round head from lower left, over the top, to lower right; tip below
+  const head = Array.from({ length: 13 }, (_, i) => {
+    const a = ((215 - (i / 12) * 250) * Math.PI) / 180;
+    return [Math.cos(a) * 17, -34 - Math.sin(a) * 17] as Pt;
+  });
+  const pin = at(x, y, [[0, 0], ...head], s);
+  const hole = rp(blobPts(x, y - 34 * s, 6 * s, 6 * s, seed, 10, 0.05));
+  return (
+    <g>
+      <Wash pts={pin} seed={seed + 1} fill={SK.camel} opacity={0.75} />
+      <InkLine pts={pin} seed={seed + 2} closed />
+      <Paper pts={hole} seed={seed + 3} />
+      <InkLine pts={hole} seed={seed + 4} width={1} closed />
+    </g>
+  );
+}
+
+/**
+ * A seated baby, upper body only (for a high chair, a lap, a pram). (x, y) is
+ * the seat point; the baby faces −x, reaching one chubby arm to `hand`.
+ */
+export function Baby({
+  x,
+  y,
+  hand,
+  seed,
+  wear = SK.sky,
+  skin = SK.skin,
+  hairTone = SK.tan,
+}: {
+  x: number;
+  y: number;
+  hand: Pt;
+  seed: number;
+  wear?: string;
+  skin?: string;
+  hairTone?: string;
+}) {
+  const body = rp(blobPts(x, y - 15, 12.5, 16, seed, 12, 0.06));
+  const head = rp(blobPts(x - 1, y - 42, 12.5, 12, seed + 1, 12, 0.05));
+  const sh: Pt = [x - 6, y - 24];
+  const arm = rp(limb([sh, [r2((sh[0] + hand[0]) / 2), r2((sh[1] + hand[1]) / 2 + 3)], hand], 4.2, 3.6));
+  const fist = rp(blobPts(hand[0], hand[1], 3.6, 3.6, seed + 2, 8, 0.1));
+  return (
+    <g>
+      <Wash pts={body} seed={seed + 3} fill={wear} opacity={0.75} />
+      <InkLine pts={body} seed={seed + 4} closed />
+      <Wash pts={head} seed={seed + 5} fill={skin} opacity={0.75} dx={0.8} dy={0.6} />
+      <InkLine pts={head} seed={seed + 6} width={1.1} closed />
+      {/* a tuft of hair and a curl */}
+      <Wash pts={rp([[x - 9, y - 50], [x - 2, y - 55.5], [x + 8, y - 52], [x + 10, y - 46], [x + 3, y - 50], [x - 4, y - 49]])} seed={seed + 7} fill={hairTone} opacity={0.75} dx={0.4} dy={0} />
+      <InkLine pts={rp([[x - 3, y - 54], [x - 1, y - 59], [x + 3, y - 58], [x + 2, y - 55]])} seed={seed + 8} width={0.8} />
+      {/* face, turned to −x: two dots for eyes, a round cheek, a small mouth */}
+      <path d={wobble(rp(blobPts(x - 7, y - 43, 1.2, 1.4, seed + 9, 6, 0.1)), seed + 9, 0.1, 4, true)} fill={SK.ink} />
+      <path d={wobble(rp(blobPts(x - 1, y - 43.5, 1.2, 1.4, seed + 10, 6, 0.1)), seed + 10, 0.1, 4, true)} fill={SK.ink} />
+      <InkLine pts={rp([[x - 7.5, y - 36.5], [x - 5, y - 35], [x - 2.5, y - 36.5]])} seed={seed + 11} width={0.8} amp={0.2} />
+      <Wash pts={rp(blobPts(x + 3, y - 38, 2.6, 2, seed + 12, 8, 0.1))} seed={seed + 12} fill={SK.blush} opacity={0.9} dx={0} dy={0} />
+      {/* the reaching arm */}
+      <Wash pts={arm} seed={seed + 13} fill={wear} opacity={0.75} dx={0.6} dy={0.6} />
+      <InkLine pts={arm} seed={seed + 14} width={1.1} closed />
+      <Wash pts={fist} seed={seed + 15} fill={skin} opacity={0.8} dx={0.3} dy={0.3} />
+      <InkLine pts={fist} seed={seed + 16} width={0.9} closed />
     </g>
   );
 }

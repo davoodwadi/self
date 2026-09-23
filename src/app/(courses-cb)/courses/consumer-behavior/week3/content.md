@@ -9,14 +9,14 @@ week: week3
 - Week 03
 - Brands live in the brain. How people learn, remember, and forget shapes every purchase.
 
-## What Is Consumer Learning? [no-quiz]
+## What Is Consumer Learning? [no-exercise]
 - Learning is a permanent change in behavior caused by experience.
 - The experience can be direct. You try a new snack and like the taste.
 - The experience can also be indirect. You see an ad or watch a friend buy running shoes.
 - Learning is an ongoing process. Consumers constantly update their knowledge when they see new products.
 - Marketers study learning so that brand names become automatic habits in the mind of the buyer.
 
-## Classical Conditioning: Pairing Stimuli [quiz]
+## Classical Conditioning: Pairing Stimuli [exercise]
 [figure: ConditioningFlow — pairing unconditioned and conditioned stimuli to produce a conditioned response]
 - Classical conditioning happens when a stimulus that brings a natural response pairs with a neutral stimulus.
 - Ivan Pavlov first demonstrated this with dogs, meat powder, and a bell.
@@ -24,7 +24,7 @@ week: week3
 - A brand pairs this music with its logo or product repeatedly.
 - Over time, seeing the brand alone produces the positive feeling. This is a conditioned response.
 
-## Repetition and Stimulus Generalization [quiz]
+## Repetition and Stimulus Generalization [exercise]
 [figure: GeneralizationChart — stimulus generalization and discrimination in packaging design]
 - Conditioning needs repetition. Repeated exposures prevent memory decay and strengthen the link.
 - Too much repetition causes advertising wear-out. Consumers tune out or get annoyed.
@@ -40,14 +40,14 @@ week: week3
 - Negative reinforcement shows how a product removes a negative state. Taking medicine removes a headache.
 - Punishment occurs when an unpleasant event follows an action. Late fees teach consumers not to pay bills late.
 
-## Observational Learning: Watching Others [quiz]
+## Observational Learning: Watching Others [exercise]
 - Consumers do not learn only from personal rewards. They also learn by watching other people.
 - This process is called observational learning or modeling.
 - First, the consumer directs attention to an attractive or credible model.
 - Second, the consumer remembers what the model says or does.
 - Third, the consumer converts this memory into action by purchasing the same clothing, phone, or car.
 
-## The Memory System: Three Stores [quiz]
+## The Memory System: Three Stores [exercise]
 [figure: MemoryStorageFlow — sensory memory, short-term memory, and long-term memory stages]
 - Memory is the process of acquiring information and storing it over time for later use.
 - Sensory memory holds brief sensory inputs for a few seconds. If an ad gets attention, it moves forward.

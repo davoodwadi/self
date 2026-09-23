@@ -68,7 +68,7 @@ function P({
   return (
     <p
       className={cn(
-        "gsap-reveal type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
+        "type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
         className,
       )}
     >
@@ -86,7 +86,7 @@ function Lead({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-lead max-w-[46ch]", className)}>
+    <p className={cn("type-lead max-w-[46ch]", className)}>
       {children}
     </p>
   );
@@ -101,7 +101,7 @@ function Statement({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-quote max-w-[30ch]", className)}>
+    <p className={cn("type-quote max-w-[30ch]", className)}>
       {children}
     </p>
   );
@@ -116,7 +116,7 @@ function Big({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-h2 !font-normal", className)}>
+    <p className={cn("type-h2 !font-normal", className)}>
       {children}
     </p>
   );
@@ -173,7 +173,7 @@ function Ruled({
     ink: "border-[var(--ink)]",
   }[tone];
   return (
-    <div className={cn("gsap-reveal min-w-0 border-t-2 pt-5", border, className)}>
+    <div className={cn("min-w-0 border-t-2 pt-5", border, className)}>
       {children}
     </div>
   );
@@ -188,7 +188,7 @@ function Plate({
   className?: string;
 }) {
   return (
-    <div className={cn("gsap-reveal figure-well w-full p-3 sm:p-5", className)}>
+    <div className={cn("figure-well w-full p-3 sm:p-5", className)}>
       {children}
     </div>
   );
@@ -209,7 +209,7 @@ function KickerHeading({
   tone?: "signal" | "counter";
 }) {
   return (
-    <div className="gsap-reveal w-full mb-8 md:mb-12">
+    <div className="w-full mb-8 md:mb-12">
       <h2 className="type-h1 max-w-[24ch]">
         <span
           className={cn(
@@ -243,7 +243,7 @@ function PartPlate({
       <div className="grid w-full gap-8 xl:grid-cols-[minmax(0,15rem)_1fr] xl:gap-16">
         <div
           aria-hidden
-          className="gsap-reveal select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[7rem] xl:text-[13rem]"
+          className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[7rem] xl:text-[13rem]"
           style={{
             ...SERIF,
             fontVariationSettings: '"opsz" 144, "WONK" 1',
@@ -252,7 +252,7 @@ function PartPlate({
           {String(n).padStart(2, "0")}
         </div>
         <div className="min-w-0">
-          <h2 className="gsap-reveal type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[18ch]">
+          <h2 className="type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[18ch]">
             <span className="type-label block mb-6 !text-[0.8rem]">
               {`Part ${n}:`}
             </span>{" "}
@@ -269,7 +269,7 @@ function PartPlate({
 /** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
 function Prompt({ children }: { children: React.ReactNode }) {
   return (
-    <div className="gsap-reveal relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
+    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
       <p className="type-quote !text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[42ch]">
         {children}
       </p>
@@ -299,9 +299,9 @@ export default function Week4() {
           Business-to-Business{" "}
           <span className="text-[var(--signal)]">(B2B)</span> Marketing
         </Title>
-        <p className="gsap-reveal type-caption mt-2">Davood Wadi, PhD</p>
+        <p className="type-caption mt-2">Davood Wadi, PhD</p>
 
-        <div className="gsap-reveal mt-14 w-full max-w-3xl space-y-5 text-center">
+        <div className="mt-14 w-full max-w-3xl space-y-5 text-center">
           <p className="type-lead !text-[var(--ink)]">
             Welcome to Week 4 of Introduction to Marketing.
           </p>
@@ -310,7 +310,7 @@ export default function Week4() {
           </p>
         </div>
 
-        <p className="gsap-reveal type-body mt-14 max-w-3xl border-t border-[var(--rule)] pt-8 text-center [&_a]:whitespace-nowrap">
+        <p className="type-body mt-14 max-w-3xl border-t border-[var(--rule)] pt-8 text-center [&_a]:whitespace-nowrap">
           We will cover{" "}
           <a href="#part-1" data-n="01" className="toc-link">
             B2B market characteristics
@@ -778,7 +778,7 @@ export default function Week4() {
           ].map((row, i) => (
             <li
               key={i}
-              className="gsap-reveal grid items-center gap-6 border-t-2 border-[var(--ink)] py-8 md:grid-cols-[minmax(0,27rem)_1fr] md:gap-12"
+              className="grid items-center gap-6 border-t-2 border-[var(--ink)] py-8 md:grid-cols-[minmax(0,27rem)_1fr] md:gap-12"
             >
               <Plate className="!p-2 sm:!p-3">{row.plate}</Plate>
               <p className="type-h2 !font-normal max-w-[30ch]">{row.text}</p>
@@ -823,7 +823,7 @@ export default function Week4() {
           ].map((item, i) => (
             <li
               key={i}
-              className="gsap-reveal flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
+              className="flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
             >
               <div aria-hidden className="flex items-center justify-between">
                 <span

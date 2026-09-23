@@ -1,6 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { FadeUp } from "@/components/portfolio/FadeUp";
 
 const expertiseCardVariants = cva("glass-card rounded-2xl", {
   variants: {
@@ -31,7 +30,7 @@ export function ExpertiseCard({
   className,
 }: ExpertiseCardProps) {
   return (
-    <FadeUp className={cn(expertiseCardVariants({ size }), className)}>
+    <div className={cn(expertiseCardVariants({ size }), className)}>
       <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-6">
         {icon}
       </div>
@@ -45,6 +44,6 @@ export function ExpertiseCard({
           </li>
         ))}
       </ul>
-    </FadeUp>
+    </div>
   );
 }

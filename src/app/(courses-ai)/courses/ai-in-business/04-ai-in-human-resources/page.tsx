@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import {
   Slide,
   SlideDeck,
@@ -59,60 +59,6 @@ const TAG = "font-mono text-[10px] uppercase tracking-[0.1em]";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/**
- * Reveal — the deck's single entrance. Opacity plus eight pixels of rise,
- * fired once when the element crosses into view. `delay` staggers siblings.
- */
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  as: Tag = "div",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-  as?: "div" | "li" | "p" | "span" | "figure";
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    if (typeof IntersectionObserver === "undefined") {
-      const frame = requestAnimationFrame(() => setShown(true));
-      return () => cancelAnimationFrame(frame);
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setShown(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <Tag
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      className={className}
-      style={{
-        opacity: shown ? 1 : 0,
-        transform: shown ? "none" : "translateY(8px)",
-        transition: `opacity 700ms ease-out ${delay}ms, transform 700ms ease-out ${delay}ms`,
-      }}
-    >
-      {children}
-    </Tag>
-  );
-}
-
 /** Eyebrow plus slide heading, the masthead every content slide opens with. */
 function Head({
   eyebrow,
@@ -124,7 +70,7 @@ function Head({
   signal?: boolean;
 }) {
   return (
-    <Reveal>
+    <div>
       <div
         className={`${MICRO} ${
           signal ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
@@ -135,7 +81,7 @@ function Head({
       <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
         {children}
       </h2>
-    </Reveal>
+    </div>
   );
 }
 
@@ -156,17 +102,14 @@ function ModulePlate({
   return (
     <Slide id={id} border align="left" quizData={quizData}>
       <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-        <Reveal>
+        <div>
           <div className={`${MICRO} text-[var(--champagne)]`}>Module</div>
           <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
             {numeral}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal
-          delay={140}
-          className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16"
-        >
+        <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
           <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
             {title}
           </h2>
@@ -181,7 +124,7 @@ function ModulePlate({
               {line}
             </p>
           ))}
-        </Reveal>
+        </div>
       </div>
     </Slide>
   );
@@ -190,37 +133,33 @@ function ModulePlate({
 /** Discussion prompt, set apart in the deck's one ruled frame. */
 function Discussion({
   children,
-  delay,
 }: {
   children: React.ReactNode;
-  delay: number;
 }) {
   return (
-    <Reveal delay={delay} className="w-full">
+    <div className="w-full">
       <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
         <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
         <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
           {children}
         </p>
       </aside>
-    </Reveal>
+    </div>
   );
 }
 
 /** Closing statement in display weight. */
 function Verdict({
   children,
-  delay,
 }: {
   children: React.ReactNode;
-  delay: number;
 }) {
   return (
-    <Reveal delay={delay} className="w-full">
+    <div className="w-full">
       <p className="mt-14 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
         {children}
       </p>
-    </Reveal>
+    </div>
   );
 }
 
@@ -353,23 +292,23 @@ export default function Week04HumanResources() {
           04
         </span>
 
-        <Reveal>
+        <div>
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
             <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 04 in Applications of AI in Business
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={120}>
+        <div>
           <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-black leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
             Applications of AI in{" "}
             <span className="text-[var(--crimson)]">Human Resources</span>
           </h1>
-        </Reveal>
+        </div>
 
-        <Reveal delay={240} className="w-full">
+        <div className="w-full">
           <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
           <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
             How intelligent systems reshape talent acquisition, workforce
@@ -401,9 +340,9 @@ export default function Week04HumanResources() {
               </span>
             ))}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={360} className="w-full">
+        <div className="w-full">
           <div className="mt-14 flex w-full flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               Davood Wadi, PhD
@@ -414,7 +353,7 @@ export default function Week04HumanResources() {
               BUSI 654 · Applications of AI in Business
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -426,7 +365,7 @@ export default function Week04HumanResources() {
       <Slide id="why-hr-ai" border align="left">
         <Head eyebrow="Opening">Why HR Became an AI Domain</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Human resources manages repeated decisions about hiring, staffing,
             development, performance, retention, and compliance under
@@ -444,9 +383,9 @@ export default function Week04HumanResources() {
             cols="sm:grid-cols-3 md:grid-cols-6"
             className="mt-6 max-w-5xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Digital HR systems now capture recruiting activity, learning
@@ -498,9 +437,9 @@ export default function Week04HumanResources() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div
               aria-hidden
@@ -539,7 +478,7 @@ export default function Week04HumanResources() {
               or trust.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -558,7 +497,7 @@ export default function Week04HumanResources() {
           The HR Function as a Decision Architecture
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             HR connects strategy to people decisions across recruiting,
             workforce design, development, rewards, employee relations, and
@@ -649,9 +588,9 @@ export default function Week04HumanResources() {
               );
             })}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Each subfunction converts fragmented workforce information into
@@ -726,9 +665,9 @@ export default function Week04HumanResources() {
               ))}
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Augmented reliably"
@@ -740,7 +679,7 @@ export default function Week04HumanResources() {
               of error is high.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -787,7 +726,7 @@ export default function Week04HumanResources() {
               ],
             },
           ].map((row, i) => (
-            <Reveal key={row.word} as="li" delay={140 + i * 130} className="block">
+            <li key={row.word} className="block">
               <div className="grid gap-4 border-t border-[var(--charcoal)]/12 py-8 md:grid-cols-[12rem_1fr] md:gap-12">
                 <div aria-hidden>
                   <span className={`${MICRO} block text-[var(--champagne)]`}>
@@ -808,7 +747,7 @@ export default function Week04HumanResources() {
                   <Terms items={row.terms} />
                 </div>
               </div>
-            </Reveal>
+            </li>
           ))}
         </ol>
       </Slide>
@@ -833,7 +772,7 @@ export default function Week04HumanResources() {
           HR Data, Signal Quality, and Context
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Core inputs include applicant records, job histories, skills
             inventories, learning activity, engagement data, compensation
@@ -851,9 +790,9 @@ export default function Week04HumanResources() {
             ]}
             className="mt-6 max-w-5xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Useful signals are rarely complete because HR data is fragmented
@@ -894,9 +833,9 @@ export default function Week04HumanResources() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <div
               aria-hidden
@@ -925,7 +864,7 @@ export default function Week04HumanResources() {
               outcomes evolve over time.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -968,12 +907,7 @@ export default function Week04HumanResources() {
               not: "autonomous people decisions",
             },
           ].map((row, i) => (
-            <Reveal
-              key={row.method}
-              as="li"
-              delay={140 + i * 130}
-              className="block"
-            >
+            <li key={row.method} className="block">
               <div className="grid gap-4 border-t border-[var(--charcoal)]/12 py-8 md:grid-cols-[13rem_1fr] md:gap-12">
                 <div aria-hidden>
                   <span className={`${MICRO} block text-[var(--champagne)]`}>
@@ -1004,7 +938,7 @@ export default function Week04HumanResources() {
                   </div>
                 </div>
               </div>
-            </Reveal>
+            </li>
           ))}
         </ol>
       </Slide>
@@ -1026,13 +960,13 @@ export default function Week04HumanResources() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_32rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Employment decisions affect livelihoods, legal exposure,
               managerial legitimacy, and the credibility of the HR function.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <svg
               aria-hidden
               viewBox="0 0 520 136"
@@ -1082,10 +1016,10 @@ export default function Week04HumanResources() {
                 DECISION
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <div className={`${MICRO} text-[var(--crimson)]`}>
               Human oversight
@@ -1114,9 +1048,9 @@ export default function Week04HumanResources() {
               ))}
             </ul>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div
               aria-hidden
@@ -1139,7 +1073,7 @@ export default function Week04HumanResources() {
               override rules instead of assuming automation is the objective.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1152,7 +1086,7 @@ export default function Week04HumanResources() {
           Measuring Success Beyond Efficiency
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Faster processing is useful, but HR value should also be measured
             through quality of hire, internal fill rates, retention, capability
@@ -1189,9 +1123,9 @@ export default function Week04HumanResources() {
               />
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Some apparent gains are misleading if they reduce candidate
@@ -1221,9 +1155,9 @@ export default function Week04HumanResources() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Transactional throughput"
@@ -1235,7 +1169,7 @@ export default function Week04HumanResources() {
               outcomes rather than only transactional throughput.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       <ModulePlate
@@ -1257,13 +1191,13 @@ export default function Week04HumanResources() {
         <Head eyebrow="Finding talent">Sourcing and Candidate Discovery</Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               AI can help identify likely candidates across internal databases,
               external platforms, alumni networks, and adjacent talent pools.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <svg
               aria-hidden
               viewBox="0 0 352 104"
@@ -1299,10 +1233,10 @@ export default function Week04HumanResources() {
               <path d="M300 51h36" stroke="var(--crimson)" strokeWidth="1.5" />
               <circle cx="340" cy="51" r="4" fill="var(--crimson)" />
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Better discovery expands recruiter reach and helps surface
@@ -1332,9 +1266,9 @@ export default function Week04HumanResources() {
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="More applicants"
@@ -1346,7 +1280,7 @@ export default function Week04HumanResources() {
               access to relevant talent in constrained labor markets.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1357,7 +1291,7 @@ export default function Week04HumanResources() {
       <Slide id="resume-screening" border align="left">
         <Head eyebrow="Matching">Resume Screening and Candidate Matching</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Matching systems compare applicant profiles to role requirements,
             inferred skills, prior outcomes, and hiring patterns.
@@ -1429,9 +1363,9 @@ export default function Week04HumanResources() {
               COMPARE
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl gap-8 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[18rem_1fr] md:gap-12">
             <ul aria-hidden className="border-t border-[var(--charcoal)]/15">
               {[
@@ -1463,9 +1397,9 @@ export default function Week04HumanResources() {
               </p>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Hidden gatekeepers"
@@ -1477,7 +1411,7 @@ export default function Week04HumanResources() {
               review rather than serving as hidden gatekeepers.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1495,7 +1429,7 @@ export default function Week04HumanResources() {
           Interview Intelligence and Structured Assessment
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             AI can help generate interview guides, summarize interview notes,
             and identify whether assessments cover the intended competencies
@@ -1510,9 +1444,9 @@ export default function Week04HumanResources() {
             cols="grid-cols-3"
             className="mt-6 max-w-3xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Structured evaluation is often more valuable than prediction
@@ -1570,9 +1504,9 @@ export default function Week04HumanResources() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div
               aria-hidden
@@ -1598,7 +1532,7 @@ export default function Week04HumanResources() {
               performance.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1611,7 +1545,7 @@ export default function Week04HumanResources() {
           Candidate Experience and Recruiting Operations
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Recruiting teams use AI to schedule interviews, answer routine
             candidate questions, draft communications, and track process
@@ -1627,9 +1561,9 @@ export default function Week04HumanResources() {
             cols="md:grid-cols-4"
             className="mt-6 max-w-5xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_24rem] md:gap-14">
             <p className={LEAD}>
               Operational improvements matter because candidate experience
@@ -1673,9 +1607,9 @@ export default function Week04HumanResources() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <Split
               left="Nobody is accountable"
@@ -1687,7 +1621,7 @@ export default function Week04HumanResources() {
               the sense that nobody is accountable for the process.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1700,7 +1634,7 @@ export default function Week04HumanResources() {
           Fairness, Adverse Impact, and Hiring Governance
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Hiring models require scrutiny because they influence who gets
             seen, who advances, and which qualifications are treated as signals
@@ -1741,9 +1675,9 @@ export default function Week04HumanResources() {
             ))}
             <Schematic className="pt-1" />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Governance should test for disparate outcomes, unstable proxies,
@@ -1760,9 +1694,9 @@ export default function Week04HumanResources() {
               className="mt-6 max-w-3xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="max-w-3xl space-y-4">
               <div className="grid grid-cols-[8rem_1fr] items-center gap-4 md:grid-cols-[10rem_1fr]">
@@ -1796,9 +1730,9 @@ export default function Week04HumanResources() {
               logic but the employer carries the employment risk.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Should an employer accept a materially faster recruiting process if
           the scoring logic remains only partially explainable to candidates,
           managers, and legal reviewers?
@@ -1824,7 +1758,7 @@ export default function Week04HumanResources() {
       <Slide id="workforce-forecasting" border align="left">
         <Head eyebrow="Labor demand">Workforce Demand Forecasting</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             AI can estimate hiring needs, overtime pressure, capacity gaps, and
             role demand by combining business forecasts with historical labor
@@ -1889,9 +1823,9 @@ export default function Week04HumanResources() {
               </g>
             ))}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Forecast quality improves when models reflect seasonality,
@@ -1909,9 +1843,9 @@ export default function Week04HumanResources() {
               className="mt-6 max-w-4xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <figure aria-hidden>
               <svg viewBox="0 0 800 126" className="w-full" fill="none">
@@ -1966,7 +1900,7 @@ export default function Week04HumanResources() {
               change the picture.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1979,7 +1913,7 @@ export default function Week04HumanResources() {
           Skills Graphs and the Internal Labor Market
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Skills inference systems connect roles, experiences, credentials,
             projects, and learning history into a dynamic view of
@@ -2046,9 +1980,9 @@ export default function Week04HumanResources() {
               );
             })()}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               The strategic opportunity is better internal mobility, smarter
@@ -2065,9 +1999,9 @@ export default function Week04HumanResources() {
               className="mt-6 max-w-4xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div className={`${MICRO} text-[var(--crimson)]`}>Trust that inferred skills are</div>
             <ul
@@ -2090,9 +2024,9 @@ export default function Week04HumanResources() {
               punitive.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Should firms rely on inferred skills data to shape promotion and
           mobility opportunities when many high-value capabilities are still
           informal, relational, or poorly documented?
@@ -2114,7 +2048,7 @@ export default function Week04HumanResources() {
           Scheduling, Staffing, and Frontline Allocation
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             In labor-intensive settings, AI can optimize schedules, shift
             coverage, location staffing, and contingency plans against service
@@ -2156,9 +2090,9 @@ export default function Week04HumanResources() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Operational gains come from matching labor supply to customer
@@ -2191,9 +2125,9 @@ export default function Week04HumanResources() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div
               aria-hidden
@@ -2233,7 +2167,7 @@ export default function Week04HumanResources() {
               mathematical input.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2244,7 +2178,7 @@ export default function Week04HumanResources() {
       <Slide id="attrition-risk" border align="left">
         <Head eyebrow="Before exit">Attrition Risk and Retention Intervention</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Retention models aim to identify employees or segments with
             elevated exit risk before turnover becomes visible in manager
@@ -2286,9 +2220,9 @@ export default function Week04HumanResources() {
               VISIBLE IN MANAGER REPORTING
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               High-performing systems still require care because the
@@ -2310,9 +2244,9 @@ export default function Week04HumanResources() {
               />
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <Split left="Who may leave" right="Which actions" />
             <Steps
@@ -2325,9 +2259,9 @@ export default function Week04HumanResources() {
               actions are legitimate, effective, and ethically defensible.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           When does predictive retention become a strategic advantage, and when
           does it become an intrusive practice that changes the employment
           relationship for the worse?
@@ -2344,7 +2278,7 @@ export default function Week04HumanResources() {
           Organizational Network Analysis and Collaboration Patterns
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Digital collaboration traces can reveal bottlenecks, overloaded
             connectors, isolated teams, and hidden dependencies across the
@@ -2452,9 +2386,9 @@ export default function Week04HumanResources() {
               );
             })()}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               These insights can improve succession planning, team design,
@@ -2472,9 +2406,9 @@ export default function Week04HumanResources() {
               className="mt-6 max-w-4xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Behavioral visibility"
@@ -2486,7 +2420,7 @@ export default function Week04HumanResources() {
               is weak.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       <ModulePlate
@@ -2509,7 +2443,7 @@ export default function Week04HumanResources() {
           Personalized Learning and Capability Building
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             AI can recommend learning pathways based on role requirements,
             career goals, adjacent skills, and current performance gaps.
@@ -2569,9 +2503,9 @@ export default function Week04HumanResources() {
               LEARNING PATHWAYS
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <div
               aria-hidden
@@ -2609,9 +2543,9 @@ export default function Week04HumanResources() {
               content suggestions.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div
               aria-hidden
@@ -2637,7 +2571,7 @@ export default function Week04HumanResources() {
               and business need.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2650,7 +2584,7 @@ export default function Week04HumanResources() {
           Knowledge Retrieval and Manager Copilots
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             HR and people managers increasingly need fast access to policy
             guidance, coaching templates, job architectures, and process rules.
@@ -2665,9 +2599,9 @@ export default function Week04HumanResources() {
             cols="md:grid-cols-4"
             className="mt-6 max-w-4xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Retrieval-based copilots can improve consistency and reduce
@@ -2730,9 +2664,9 @@ export default function Week04HumanResources() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div
               aria-hidden
@@ -2764,7 +2698,7 @@ export default function Week04HumanResources() {
               whether ambiguous issues are escalated to qualified HR partners.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2777,7 +2711,7 @@ export default function Week04HumanResources() {
           Performance Management and Goal Calibration
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             AI can help summarize feedback, detect inconsistency in manager
             narratives, and compare evaluation patterns across teams or job
@@ -2792,9 +2726,9 @@ export default function Week04HumanResources() {
             cols="grid-cols-3"
             className="mt-6 max-w-4xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               The benefit is stronger calibration and earlier identification of
@@ -2837,9 +2771,9 @@ export default function Week04HumanResources() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <Split
               left="Replace manager accountability"
@@ -2856,7 +2790,7 @@ export default function Week04HumanResources() {
               conversations.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2869,7 +2803,7 @@ export default function Week04HumanResources() {
           Rewards, Promotion, and Pay Equity Analytics
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             AI can surface unexplained pay variation, promotion bottlenecks, and
             inconsistent reward outcomes across comparable employee groups.
@@ -2924,9 +2858,9 @@ export default function Week04HumanResources() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               These tools help move equity analysis from episodic review to
@@ -2963,9 +2897,9 @@ export default function Week04HumanResources() {
               <path d="M220 64H780" stroke="var(--crimson)" strokeWidth="3" />
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="max-w-3xl">
               <div className="grid grid-cols-3 gap-3">
@@ -2989,9 +2923,9 @@ export default function Week04HumanResources() {
               decisions are socially sensitive and legally consequential.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Should firms use algorithmic recommendations in promotion and
           compensation cycles if doing so improves consistency but may narrow
           managerial discretion and contextual judgment?
@@ -3013,7 +2947,7 @@ export default function Week04HumanResources() {
           Productivity Analytics and Responsible Monitoring
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Organizations can combine workflow data, output data, and
             collaboration data to estimate capacity constraints, workload
@@ -3080,10 +3014,10 @@ export default function Week04HumanResources() {
               },
             )}
           </svg>
-        </Reveal>
+        </div>
 
         <div className="mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-0">
-          <Reveal delay={300} className="md:pr-12">
+          <div className="md:pr-12">
             <div className={`${MICRO} text-[var(--champagne)]`}>Used well</div>
             <p className={`${BODY} mt-4`}>
               Used well, productivity analytics can support redesign of work,
@@ -3107,11 +3041,8 @@ export default function Week04HumanResources() {
                 individual policing
               </span>
             </div>
-          </Reveal>
-          <Reveal
-            delay={440}
-            className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12"
-          >
+          </div>
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
             <div className={`${MICRO} text-[var(--crimson)]`}>Used poorly</div>
             <p className={`${BODY} mt-4`}>
               Used poorly, the same tools can create fear, gaming behavior, and
@@ -3127,10 +3058,10 @@ export default function Week04HumanResources() {
                 </span>
               ))}
             </div>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Where is the boundary between legitimate operational analytics and
           unacceptable employee surveillance in knowledge-intensive work?
         </Discussion>
@@ -3156,7 +3087,7 @@ export default function Week04HumanResources() {
           Employee Listening and Sentiment Interpretation
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             AI can summarize survey comments, open-text feedback, exit
             interviews, and service-center narratives into recurring themes and
@@ -3224,9 +3155,9 @@ export default function Week04HumanResources() {
               </g>
             ))}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               The value lies in scale and speed, especially when leaders need to
@@ -3264,9 +3195,9 @@ export default function Week04HumanResources() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div
               aria-hidden
@@ -3298,7 +3229,7 @@ export default function Week04HumanResources() {
               choose to say.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3311,7 +3242,7 @@ export default function Week04HumanResources() {
           DEI Analytics and Representation Risk
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             AI-enabled analytics can track representation patterns, funnel
             drop-off, promotion velocity, pay dispersion, and program
@@ -3328,9 +3259,9 @@ export default function Week04HumanResources() {
             cols="sm:grid-cols-3 md:grid-cols-5"
             className="mt-6 max-w-5xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               These analyses help identify structural barriers that may not be
@@ -3387,9 +3318,9 @@ export default function Week04HumanResources() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div
               aria-hidden
@@ -3418,7 +3349,7 @@ export default function Week04HumanResources() {
               intervention.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3436,7 +3367,7 @@ export default function Week04HumanResources() {
           Employee Relations, Case Triage, and Policy Guidance
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             HR teams can use AI to classify cases, summarize documents, surface
             policy precedents, and route matters to the right specialist more
@@ -3521,9 +3452,9 @@ export default function Week04HumanResources() {
               SPECIALIST
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               This can reduce administrative delay in investigations, leave
@@ -3540,9 +3471,9 @@ export default function Week04HumanResources() {
               className="mt-6 max-w-4xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="flex flex-wrap gap-3">
               {["trauma", "legal exposure", "power imbalance"].map((o) => (
@@ -3567,7 +3498,7 @@ export default function Week04HumanResources() {
               judgment.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3580,7 +3511,7 @@ export default function Week04HumanResources() {
           Privacy, Consent, and Employment Law Boundaries
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             HR data often includes health information, compensation details,
             identity attributes, grievances, and performance records that
@@ -3607,9 +3538,9 @@ export default function Week04HumanResources() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               AI programs must be designed around employment law, labor
@@ -3628,9 +3559,9 @@ export default function Week04HumanResources() {
               className="mt-6 max-w-5xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[22rem_1fr] md:gap-14">
             <div
               aria-hidden
@@ -3650,9 +3581,9 @@ export default function Week04HumanResources() {
               broader than legally or ethically acceptable analysis.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Which categories of workforce data should remain off-limits for
           predictive modeling even if they would improve forecast accuracy or
           managerial control?
@@ -3677,7 +3608,7 @@ export default function Week04HumanResources() {
       <Slide id="governance-lifecycle" border align="left">
         <Head eyebrow="Controls">AI Governance for HR Across the Lifecycle</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             HR AI requires controls for problem definition, data selection,
             validation, deployment, monitoring, incident handling, and
@@ -3696,9 +3627,9 @@ export default function Week04HumanResources() {
             cols="sm:grid-cols-4 lg:grid-cols-7"
             className="mt-6 max-w-5xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Governance should clarify who owns the use case, who reviews legal
@@ -3739,9 +3670,9 @@ export default function Week04HumanResources() {
               ))}
             </ul>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div
               aria-hidden
@@ -3798,7 +3729,7 @@ export default function Week04HumanResources() {
               review cadence, and documented accountability.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3816,7 +3747,7 @@ export default function Week04HumanResources() {
           Build, Buy, or Partner in the HR Technology Stack
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Some capabilities can be sourced from established HR vendors, while
             others require internal design because workflows, labor strategy, or
@@ -3838,9 +3769,9 @@ export default function Week04HumanResources() {
               />
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               The choice depends on integration burden, vendor transparency,
@@ -3858,9 +3789,9 @@ export default function Week04HumanResources() {
               className="mt-6 max-w-5xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="max-w-3xl space-y-4">
               <div className="grid grid-cols-[8rem_1fr] items-center gap-4 md:grid-cols-[10rem_1fr]">
@@ -3899,9 +3830,9 @@ export default function Week04HumanResources() {
               employment outcomes, fairness concerns, or regulatory exposure.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Which HR AI capabilities should be treated as strategic internal
           assets, and which are mature enough to buy as standardized
           infrastructure?
@@ -3916,7 +3847,7 @@ export default function Week04HumanResources() {
       <Slide id="change-trust" border align="left">
         <Head eyebrow="Adoption">Change Management and Workforce Trust</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Even accurate tools fail when employees, managers, works councils,
             or HR partners do not trust how the system is used.
@@ -3982,9 +3913,9 @@ export default function Week04HumanResources() {
               </g>
             ))}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Adoption improves when organizations explain use cases clearly,
@@ -4001,9 +3932,9 @@ export default function Week04HumanResources() {
               className="mt-6 max-w-4xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Claims · objective or inevitable"
@@ -4011,8 +3942,8 @@ export default function Week04HumanResources() {
               strikeLeft
             />
           </div>
-        </Reveal>
-        <Verdict delay={500}>
+        </div>
+        <Verdict>
           Trust is built through visible governance, not through claims that the
           technology is objective or inevitable.
         </Verdict>
@@ -4028,7 +3959,7 @@ export default function Week04HumanResources() {
           Talent Strategy for an AI-Enabled HR Function
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             HR teams need a mix of domain expertise, data literacy, process
             design, change leadership, and legal awareness.
@@ -4044,9 +3975,9 @@ export default function Week04HumanResources() {
             cols="sm:grid-cols-3 md:grid-cols-5"
             className="mt-6 max-w-5xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_24rem] md:gap-14">
             <div>
               <div
@@ -4123,9 +4054,9 @@ export default function Week04HumanResources() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Side project · small innovation team"
@@ -4138,7 +4069,7 @@ export default function Week04HumanResources() {
               team.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -4151,7 +4082,7 @@ export default function Week04HumanResources() {
           Strategic Operating Model for Enterprise HR AI
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             The most durable model links business priorities, HR process
             ownership, data governance, legal review, and product management.
@@ -4198,9 +4129,9 @@ export default function Week04HumanResources() {
               </g>
             ))}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Use cases should be prioritized by business value, implementation
@@ -4217,9 +4148,9 @@ export default function Week04HumanResources() {
               className="mt-6 max-w-4xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="max-w-4xl">
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
@@ -4250,7 +4181,7 @@ export default function Week04HumanResources() {
               domains.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -4274,7 +4205,7 @@ export default function Week04HumanResources() {
           Conclusion: HR as a Strategic Intelligence Function
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <ol
             aria-hidden
             className="mt-11 grid w-full max-w-3xl grid-cols-3 gap-y-5"
@@ -4295,7 +4226,7 @@ export default function Week04HumanResources() {
               ),
             )}
           </ol>
-        </Reveal>
+        </div>
 
         <ol className="mt-10 w-full max-w-4xl">
           {[
@@ -4303,7 +4234,7 @@ export default function Week04HumanResources() {
             "Competitive advantage comes from using AI to improve talent quality, workforce resilience, and managerial consistency without weakening legitimacy.",
             "The executive task is not to automate HR wholesale, but to decide where intelligent systems strengthen capability, fairness, and organizational trust.",
           ].map((line, i) => (
-            <Reveal key={line} as="li" delay={280 + i * 130} className="block">
+            <li key={line} className="block">
               <div className="grid grid-cols-[4ch_1fr] gap-6 border-t border-[var(--charcoal)]/12 py-7 md:grid-cols-[5ch_1fr] md:gap-10">
                 <span className={`${MICRO} pt-3 text-[var(--crimson)]`}>
                   {pad(i + 1)}
@@ -4312,11 +4243,11 @@ export default function Week04HumanResources() {
                   {line}
                 </p>
               </div>
-            </Reveal>
+            </li>
           ))}
         </ol>
 
-        <Reveal delay={700} className="w-full">
+        <div className="w-full">
           <div className="mt-12 flex w-full max-w-4xl flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               End of Week 04
@@ -4327,7 +4258,7 @@ export default function Week04HumanResources() {
               Davood Wadi, PhD · BUSI 654
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
     </SlideDeck>
   );

@@ -9,14 +9,14 @@ week: week2
 - Week 02
 - We do not see things as they are. We see things through our senses and personal filters.
 
-## What Is Perception? [no-quiz]
+## What Is Perception? [no-exercise]
 - Perception is the process of selecting, organizing, and interpreting sensations.
 - Raw sensory inputs reach our sensory organs every second.
 - Sights, sounds, smells, tastes, and textures flood our environment.
 - Perception creates meaning out of this chaos.
 - Two people exposed to the exact same advertisement often walk away with completely different impressions.
 
-## The Three Stages of Perception [quiz]
+## The Three Stages of Perception [exercise]
 [figure: PerceptionFunnel — the three sequential stages: Exposure, Attention, and Interpretation]
 - Perception occurs in three sequential stages.
 - Stage 1 is Exposure. Sensory stimuli come within the range of a person's sensory receptors.
@@ -33,14 +33,14 @@ week: week2
 - Touch, also called haptics, builds psychological ownership when consumers hold an item.
 - Taste drives loyalty in food and beverage markets through distinct flavor profiles.
 
-## Sensory Thresholds: The Limits of Awareness [quiz]
+## Sensory Thresholds: The Limits of Awareness [exercise]
 - Senses have physical and psychological limits.
 - The absolute threshold is the minimum amount of stimulation a person can detect on a sensory channel.
 - A billboard with tiny text placed far from a highway falls below the absolute threshold of drivers.
 - The differential threshold is the ability of a sensory system to detect changes or differences between two stimuli.
 - The minimum difference between two stimuli needed for detection is called the Just Noticeable Difference, or JND.
 
-## Weber's Law: When Differences Matter [quiz]
+## Weber's Law: When Differences Matter [exercise]
 [figure: WebersLawScale — Weber's Law demonstrating proportional change needed for detection in package updates vs price increases]
 - Weber's Law states that the stronger the initial stimulus, the greater the change must be for people to notice it.
 - The needed change is not a fixed amount. It is a constant proportion of the initial intensity.
@@ -56,7 +56,7 @@ week: week2
 - Perceptual defense means consumers screen out threatening or contradictory messages. Heavy smokers often ignore warning labels on cigarette packs.
 - Adaptation occurs when consumers no with time stop paying attention to familiar stimuli.
 
-## Interpretation and Gestalt Principles [quiz]
+## Interpretation and Gestalt Principles [exercise]
 [figure: GestaltPrinciples — Closure, Similarity, and Figure-Ground visual examples in brand design]
 - People do not interpret stimuli in isolation. They organize them into patterns.
 - Gestalt psychology explains how people construct whole meanings from individual elements.

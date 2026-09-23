@@ -4,15 +4,14 @@ import React, {
   createContext,
   useContext,
   useEffect,
-  useRef,
   useState,
 } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowLeft } from "lucide-react";
 import type { CourseQuiz } from "@/lib/course-quiz";
 import InlineQuiz from "./InlineQuiz";
+import type { CourseExercise } from "@/lib/course-exercise";
+import Exercise from "@/components/exercises/Exercise";
 import { cn } from "@/lib/utils";
 
 /* ==========================================================================
@@ -56,10 +55,6 @@ export function CitationProvider({
   );
 }
 
-const prefersReducedMotion = () =>
-  typeof window !== "undefined" &&
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
 // ============================================================================
 // DECK SHELL
 // ============================================================================
@@ -68,7 +63,7 @@ const prefersReducedMotion = () =>
  * SlideDeck - Root container for a lecture.
  *
  * Provides the reading rail (progress rule + slide index), the return control,
- * and the scroll-linked reveal animation shared by every child slide.
+ * and the slides themselves.
  *
  * Children are expected to be <Slide> elements; each is handed its position in
  * the deck so it can print its own folio number.
@@ -83,41 +78,7 @@ export function SlideDeck({
   /** Short deck label shown in the top rail, e.g. "Week 01". */
   label?: string;
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    if (prefersReducedMotion()) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      const sections = gsap.utils.toArray<HTMLElement>(".slide-section");
-      sections.forEach((section) => {
-        const elements = section.querySelectorAll(".gsap-reveal");
-        if (!elements.length) return;
-
-        gsap.fromTo(
-          elements,
-          { y: 14, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.65,
-            stagger: 0.08,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: section,
-              start: "top 78%",
-              toggleActions: "play none none reverse",
-            },
-          },
-        );
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
 
   // Reading progress for the top rail.
   useEffect(() => {
@@ -152,7 +113,6 @@ export function SlideDeck({
 
   return (
     <div
-      ref={containerRef}
       className="relative min-h-screen bg-[var(--paper)] text-[var(--ink-2)] font-[family-name:var(--font-body)]"
     >
       {/* Reading rail */}
@@ -191,6 +151,10 @@ interface SlideProps {
   border?: boolean;
   id?: string;
   quizData?: CourseQuiz;
+  /** The exercise that follows this slide, on its own screen (any type). */
+  exercise?: CourseExercise;
+  /** Drawings for the exercise's cards, keyed by card or pair id. */
+  exerciseArt?: Record<string, React.ReactNode>;
   /** Vertical centring. Title slides use "center"; content slides read better left. */
   align?: "left" | "center";
   /** Injected by SlideDeck. */
@@ -210,6 +174,8 @@ export function Slide({
   border = false,
   id,
   quizData,
+  exercise,
+  exerciseArt,
   align = "left",
   __index,
   __total,
@@ -259,6 +225,15 @@ export function Slide({
       {quizData && (
         <div className="mx-auto w-full max-w-[var(--slide-max)] px-5 md:px-10 lg:px-16 py-16 md:py-24">
           <InlineQuiz quizData={quizData} />
+        </div>
+      )}
+
+      {/* The exercise follows its slide too, on a screen of its own. It starts
+          from a fixed top rather than being centred, so the prompt stays put
+          while cards move and feedback opens below it. */}
+      {exercise && (
+        <div className="mx-auto flex min-h-svh w-full max-w-[var(--slide-max)] flex-col justify-start px-5 pt-[14svh] pb-16 md:px-10 md:pb-24 lg:px-16">
+          <Exercise data={exercise} art={exerciseArt} />
         </div>
       )}
     </>
@@ -384,7 +359,7 @@ export function Title({
   className?: string;
 }) {
   return (
-    <h1 className={cn("gsap-reveal type-display max-w-[18ch] mb-6", className)}>
+    <h1 className={cn("type-display max-w-[18ch] mb-6", className)}>
       {children}
     </h1>
   );
@@ -404,7 +379,7 @@ export function Heading({
   className?: string;
 }) {
   return (
-    <div className={cn("gsap-reveal w-full mb-8 md:mb-12", className)}>
+    <div className={cn("w-full mb-8 md:mb-12", className)}>
       <h2 className="type-h1 max-w-[22ch]">{children}</h2>
       <div className="mt-6 h-px w-full bg-[var(--rule)]" />
     </div>
@@ -456,7 +431,7 @@ export function Subtitle({
     return (
       <p
         className={cn(
-          "gsap-reveal type-label !text-[var(--ink-3)] mt-2",
+          "type-label !text-[var(--ink-3)] mt-2",
           className,
         )}
       >
@@ -468,7 +443,7 @@ export function Subtitle({
   return (
     <p
       className={cn(
-        "gsap-reveal type-lead max-w-[var(--measure)] -mt-6 mb-10",
+        "type-lead max-w-[var(--measure)] -mt-6 mb-10",
         className,
       )}
     >
@@ -526,7 +501,7 @@ export function Tag({
   className?: string;
 }) {
   return (
-    <div className={cn("gsap-reveal flex items-center gap-3 mb-5", className)}>
+    <div className={cn("flex items-center gap-3 mb-5", className)}>
       <span className="h-px w-7 bg-[var(--signal)]" aria-hidden />
       <span className="type-label">{children}</span>
     </div>
@@ -679,7 +654,7 @@ export function Callout({
   return (
     <div
       className={cn(
-        "gsap-reveal w-full p-6 md:p-7 border-l-2",
+        "w-full p-6 md:p-7 border-l-2",
         isPrimary
           ? "border-[var(--signal)] bg-[var(--signal-tint)]"
           : "border-[var(--counter)] bg-[var(--counter-tint)]",
@@ -722,7 +697,7 @@ export function DiscussionCard({
       onClick={() => setIsRevealed((v) => !v)}
       aria-expanded={isRevealed}
       className={cn(
-        "gsap-reveal group relative w-full max-w-4xl text-left",
+        "group relative w-full max-w-4xl text-left",
         "border-2 border-[var(--counter)]/35 bg-[var(--counter-tint)]",
         "p-8 md:p-12 cursor-pointer transition-colors duration-300",
         "hover:border-[var(--counter)]/70",
@@ -796,7 +771,7 @@ export function Figure({
   const isPlate = height === "auto";
 
   return (
-    <figure className={cn("gsap-reveal w-full my-10", className)}>
+    <figure className={cn("w-full my-10", className)}>
       <div
         className={cn(
           "figure-well w-full",
@@ -826,7 +801,7 @@ export function MediaBlock({
   className?: string;
 }) {
   return (
-    <figure className={cn("gsap-reveal w-full", className)}>
+    <figure className={cn("w-full", className)}>
       <div className="relative w-full aspect-video overflow-hidden figure-well">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -861,7 +836,7 @@ export function Quote({
   className?: string;
 }) {
   return (
-    <blockquote className={cn("gsap-reveal w-full my-8", className)}>
+    <blockquote className={cn("w-full my-8", className)}>
       <div className="h-px w-12 bg-[var(--signal)] mb-6" aria-hidden />
       <p className="type-quote quote-hang max-w-[24ch]">
         &ldquo;{children}&rdquo;
@@ -889,7 +864,7 @@ export function Metric({
   return (
     <div
       className={cn(
-        "gsap-reveal flex flex-col justify-center h-full p-6 md:p-7",
+        "flex flex-col justify-center h-full p-6 md:p-7",
         "border-t-2 border-t-[var(--signal)] bg-[var(--paper-2)]",
         className,
       )}
@@ -942,7 +917,7 @@ export function ListItem({
   return (
     <li
       className={cn(
-        "gsap-reveal grid grid-cols-[1.75rem_1fr] items-baseline type-body",
+        "grid grid-cols-[1.75rem_1fr] items-baseline type-body",
         className,
       )}
     >
@@ -1019,9 +994,9 @@ export function PieChart({
 
   return (
     <div className={cn("w-full", className)}>
-      {title && <h4 className="gsap-reveal type-h2 mb-6">{title}</h4>}
+      {title && <h4 className="type-h2 mb-6">{title}</h4>}
 
-      <div className="gsap-reveal flex flex-col md:flex-row items-center gap-10">
+      <div className="flex flex-col md:flex-row items-center gap-10">
         <svg
           width={size}
           height={size}
@@ -1062,7 +1037,7 @@ export function PieChart({
         </ul>
       </div>
 
-      {caption && <p className="gsap-reveal type-caption mt-6">{caption}</p>}
+      {caption && <p className="type-caption mt-6">{caption}</p>}
     </div>
   );
 }

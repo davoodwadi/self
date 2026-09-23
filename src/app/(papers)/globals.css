@@ -485,35 +485,6 @@ body {
   filter: blur(80px);
 }
 
-/* ---- Scroll fade-up animation ----------------------------- */
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.fade-up   { animation: fadeUp  0.75s ease-out both; }
-.fade-in   { animation: fadeIn  0.75s ease-out both; }
-
-.delay-100 { animation-delay: 0.10s; }
-.delay-200 { animation-delay: 0.20s; }
-.delay-300 { animation-delay: 0.30s; }
-.delay-400 { animation-delay: 0.40s; }
-.delay-500 { animation-delay: 0.50s; }
-.delay-600 { animation-delay: 0.60s; }
-.delay-700 { animation-delay: 0.70s; }
-
 /* ---- Slide section (full-screen, vertically centred) ------ */
 
 .p-slide {

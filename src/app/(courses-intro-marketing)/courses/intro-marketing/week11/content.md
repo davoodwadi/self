@@ -22,12 +22,12 @@ week: week11
 - The sheer volume of digital tools can overwhelm organizations without a clear strategy
 - Customers now expect immediate, personalized responses from brands
 
-## Core Concept: What is Digital Marketing? [quiz]
+## Core Concept: What is Digital Marketing? [exercise]
 - Digital marketing encompasses all marketing efforts that use an electronic device or the internet
 - Businesses leverage digital channels such as search engines, social media, email, and other websites to connect with current and prospective customers
 - It allows for real-time tracking, immediate feedback, and rapid campaign adjustment
 
-## The Paradigm Shift: Interactive vs. Broadcast Marketing [quiz]
+## The Paradigm Shift: Interactive vs. Broadcast Marketing [exercise]
 - Traditional broadcast marketing delivers a uniform message to a broad audience
 - Interactive digital marketing invites consumers to participate in a two-way conversation
 - Campaigns are now designed to be shared, commented on, and personalized
@@ -73,7 +73,7 @@ week: week11
 - Brands can humanize their image by interacting directly with users
 - Social platforms serve as crucial touchpoints for customer service and support
 
-## Social Media Platforms and Demographics [quiz]
+## Social Media Platforms and Demographics [exercise]
 - Different platforms attract distinct user demographics and require tailored content strategies
 - Visual platforms excel in lifestyle and product showcasing
 - Professional networks are essential for B2B marketing and corporate branding
@@ -97,7 +97,7 @@ week: week11
 - Micro-influencers often yield higher engagement rates than high-profile celebrities
 - Successful partnerships require authentic alignment between the brand and the influencer
 
-## The Challenge: Measuring ROI [quiz]
+## The Challenge: Measuring ROI [exercise]
 - Measuring the exact return on investment for digital and social campaigns remains complex
 - Marketers must navigate a multitude of metrics, from click-through rates to conversion attribution models
 - Tying social engagement directly to revenue requires sophisticated analytics tracking

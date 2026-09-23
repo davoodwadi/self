@@ -62,7 +62,7 @@ function P({
   return (
     <p
       className={cn(
-        "gsap-reveal type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
+        "type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
         className,
       )}
     >
@@ -80,7 +80,7 @@ function Lead({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-lead max-w-[46ch]", className)}>
+    <p className={cn("type-lead max-w-[46ch]", className)}>
       {children}
     </p>
   );
@@ -95,7 +95,7 @@ function Statement({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-quote max-w-[30ch]", className)}>
+    <p className={cn("type-quote max-w-[30ch]", className)}>
       {children}
     </p>
   );
@@ -144,7 +144,7 @@ function Ruled({
   return (
     <div
       className={cn(
-        "gsap-reveal pt-5",
+        "pt-5",
         weight === "thick" ? "border-t-2" : "border-t",
         border,
         className,
@@ -175,7 +175,7 @@ function KickerHeading({
   tone?: "signal" | "counter";
 }) {
   return (
-    <div className="gsap-reveal w-full mb-8 md:mb-12">
+    <div className="w-full mb-8 md:mb-12">
       <h2 className="type-h1 max-w-[22ch]">
         <span
           className={cn(
@@ -209,7 +209,7 @@ function PartPlate({
       <div className="grid w-full gap-8 xl:grid-cols-[minmax(0,15rem)_1fr] xl:gap-16">
         <div
           aria-hidden
-          className="gsap-reveal select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[7rem] xl:text-[13rem]"
+          className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[7rem] xl:text-[13rem]"
           style={{
             fontFamily: "var(--font-heading)",
             fontWeight: 600,
@@ -219,7 +219,7 @@ function PartPlate({
           {String(n).padStart(2, "0")}
         </div>
         <div className="min-w-0">
-          <h2 className="gsap-reveal type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[16ch]">
+          <h2 className="type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[16ch]">
             <span className="type-label block mb-6 !text-[0.8rem]">
               {`Part ${n}:`}
             </span>{" "}
@@ -244,7 +244,7 @@ const PHILOSOPHIES = [
 
 function PhilosophyStrip({ active }: { active: number[] }) {
   return (
-    <div aria-hidden className="gsap-reveal w-full my-8">
+    <div aria-hidden className="w-full my-8">
       <ol className="grid grid-cols-5 border-t border-[var(--rule-2)]">
         {PHILOSOPHIES.map((name, i) => {
           const on = active.includes(i);
@@ -289,7 +289,7 @@ function PhilosophyStrip({ active }: { active: number[] }) {
 /** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
 function Prompt({ children }: { children: React.ReactNode }) {
   return (
-    <div className="gsap-reveal relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
+    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
       <p className="type-quote !text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[40ch]">
         {children}
       </p>
@@ -341,7 +341,7 @@ function InfluenceTrio() {
     },
   ];
   return (
-    <div aria-hidden className="gsap-reveal mt-12 grid w-full grid-cols-3 border-t border-[var(--rule)]">
+    <div aria-hidden className="mt-12 grid w-full grid-cols-3 border-t border-[var(--rule)]">
       {items.map((it, i) => (
         <div
           key={it.term}
@@ -376,7 +376,7 @@ function Cascade({ steps }: { steps: string[] }) {
             <li
               key={i}
               className={cn(
-                "gsap-reveal relative border-l-2 pl-5 md:border-l-0 md:pl-0 md:border-t-2 md:pt-5",
+                "relative border-l-2 pl-5 md:border-l-0 md:pl-0 md:border-t-2 md:pt-5",
                 last ? "border-[var(--signal)]" : "border-[var(--counter)]",
                 ["md:mt-0", "md:mt-12", "md:mt-24", "md:mt-36", "md:mt-48"][i],
               )}
@@ -412,7 +412,7 @@ function Cascade({ steps }: { steps: string[] }) {
           );
         })}
       </ol>
-      <div aria-hidden className="gsap-reveal mt-12 hidden md:grid grid-cols-5 gap-4 lg:gap-6">
+      <div aria-hidden className="mt-12 hidden md:grid grid-cols-5 gap-4 lg:gap-6">
         <div className="col-span-4">
           <div className="h-3 border-x-2 border-b-2 border-[var(--counter)]" />
           <div className="type-label mt-3 text-center !text-[var(--counter)]">
@@ -447,7 +447,7 @@ function FourPs() {
           <li
             key={p.word}
             className={cn(
-              "gsap-reveal py-8 md:py-12 border-[var(--ink)]",
+              "py-8 md:py-12 border-[var(--ink)]",
               i < 2 ? "md:border-b" : "",
               i % 2 === 0 ? "md:border-r md:pr-36" : "md:pl-36",
               i > 0 && "border-t md:border-t-0",
@@ -469,7 +469,7 @@ function FourPs() {
       </ul>
       <div
         aria-hidden
-        className="gsap-reveal pointer-events-none absolute left-1/2 top-1/2 hidden h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[var(--signal)] bg-[var(--paper)] md:flex"
+        className="pointer-events-none absolute left-1/2 top-1/2 hidden h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[var(--signal)] bg-[var(--paper)] md:flex"
       >
         <span className="type-label text-center leading-snug">
           Target
@@ -561,9 +561,9 @@ export default function Week1() {
           <span className="text-[var(--signal)]">&amp;</span> The Marketing
           Process
         </Title>
-        <p className="gsap-reveal type-caption mt-2">Davood Wadi, PhD</p>
+        <p className="type-caption mt-2">Davood Wadi, PhD</p>
 
-        <div className="gsap-reveal mt-14 w-full max-w-3xl space-y-5 text-center">
+        <div className="mt-14 w-full max-w-3xl space-y-5 text-center">
           <p className="type-lead !text-[var(--ink)]">
             Welcome to Week 1 of Introduction to Marketing.
           </p>
@@ -572,7 +572,7 @@ export default function Week1() {
           </p>
         </div>
 
-        <p className="gsap-reveal type-body mt-14 max-w-3xl border-t border-[var(--rule)] pt-8 text-center [&_a]:whitespace-nowrap">
+        <p className="type-body mt-14 max-w-3xl border-t border-[var(--rule)] pt-8 text-center [&_a]:whitespace-nowrap">
           We will cover{" "}
           <a href="#part-1" data-n="01" className="toc-link">
             the definition and evolution of marketing
@@ -666,7 +666,7 @@ export default function Week1() {
               superior value and <Term>keep current customers</Term> by
               delivering satisfaction.
             </P>
-            <div className="gsap-reveal mt-8 w-full">
+            <div className="mt-8 w-full">
               <AttractKeep />
             </div>
           </Column>
@@ -712,7 +712,7 @@ export default function Week1() {
           </Ruled>
         </div>
         <div className="mt-16 grid w-full items-center gap-6 xl:grid-cols-[minmax(0,21.75rem)_1fr] xl:gap-12">
-          <p className="gsap-reveal type-h2 !font-normal">
+          <p className="type-h2 !font-normal">
             Both orientations carry the danger of focusing too{" "}
             <span className="text-[var(--signal)]">inward</span> on operations
             rather than{" "}
@@ -796,7 +796,7 @@ export default function Week1() {
               </P>
             </Ruled>
             <Ruled>
-              <p className="gsap-reveal type-h2 !font-normal">
+              <p className="type-h2 !font-normal">
                 Companies adopting this philosophy build shared value for both
                 shareholders and society.
               </p>
@@ -919,7 +919,7 @@ export default function Week1() {
             </P>
           </Ruled>
         </div>
-        <p className="gsap-reveal type-h2 !font-normal mt-14 max-w-[44ch]">
+        <p className="type-h2 !font-normal mt-14 max-w-[44ch]">
           Marketers conduct extensive research to identify unmet needs and
           formulate products that translate wants into actual demand.
         </p>
@@ -1108,7 +1108,7 @@ export default function Week1() {
             </P>
           </Ruled>
           <Ruled tone="counter">
-            <p className="gsap-reveal type-h2 !font-normal">
+            <p className="type-h2 !font-normal">
               A strong value proposition differentiates the brand and gives
               customers a compelling reason to choose it over competitors.
             </p>
@@ -1130,7 +1130,7 @@ export default function Week1() {
           </Ruled>
           <div
             aria-hidden
-            className="gsap-reveal hidden md:flex items-center text-[var(--signal)]"
+            className="hidden md:flex items-center text-[var(--signal)]"
           >
             <svg width="56" height="20" viewBox="0 0 56 20">
               <line x1="0" y1="10" x2="52" y2="10" stroke="currentColor" strokeWidth="1.5" />
@@ -1306,7 +1306,7 @@ export default function Week1() {
           ].map((item, i) => (
             <li
               key={i}
-              className="gsap-reveal grid grid-cols-[4.5rem_1fr] gap-6 border-t-2 border-[var(--ink)] pt-6"
+              className="grid grid-cols-[4.5rem_1fr] gap-6 border-t-2 border-[var(--ink)] pt-6"
             >
               <div aria-hidden className="flex flex-col gap-4">
                 <span

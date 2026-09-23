@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import {
   Slide,
   SlideDeck,
@@ -37,60 +37,6 @@ const SVG_LABEL = {
   fontWeight: 600,
 } as const;
 
-/**
- * Reveal — the deck's single entrance. Opacity plus eight pixels of rise,
- * fired once when the element crosses into view. `delay` staggers siblings.
- */
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  as: Tag = "div",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-  as?: "div" | "li" | "p" | "span" | "figure";
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    if (typeof IntersectionObserver === "undefined") {
-      const frame = requestAnimationFrame(() => setShown(true));
-      return () => cancelAnimationFrame(frame);
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setShown(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <Tag
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      className={className}
-      style={{
-        opacity: shown ? 1 : 0,
-        transform: shown ? "none" : "translateY(8px)",
-        transition: `opacity 700ms ease-out ${delay}ms, transform 700ms ease-out ${delay}ms`,
-      }}
-    >
-      {children}
-    </Tag>
-  );
-}
-
 /** Eyebrow plus slide heading, the masthead every content slide opens with. */
 function Head({
   eyebrow,
@@ -102,7 +48,7 @@ function Head({
   signal?: boolean;
 }) {
   return (
-    <Reveal>
+    <div>
       <div
         className={`${MICRO} ${
           signal ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
@@ -113,7 +59,7 @@ function Head({
       <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
         {children}
       </h2>
-    </Reveal>
+    </div>
   );
 }
 
@@ -132,17 +78,14 @@ function ModulePlate({
   return (
     <Slide id={id} border align="left">
       <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-        <Reveal>
+        <div>
           <div className={`${MICRO} text-[var(--champagne)]`}>Module</div>
           <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
             {numeral}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal
-          delay={140}
-          className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16"
-        >
+        <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
           <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
             {title}
           </h2>
@@ -157,7 +100,7 @@ function ModulePlate({
               {line}
             </p>
           ))}
-        </Reveal>
+        </div>
       </div>
     </Slide>
   );
@@ -166,37 +109,33 @@ function ModulePlate({
 /** Discussion prompt, set apart in the deck's one ruled frame. */
 function Discussion({
   children,
-  delay,
 }: {
   children: React.ReactNode;
-  delay: number;
 }) {
   return (
-    <Reveal delay={delay} className="w-full">
+    <div className="w-full">
       <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
         <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
         <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
           {children}
         </p>
       </aside>
-    </Reveal>
+    </div>
   );
 }
 
 /** Closing statement in display weight. */
 function Verdict({
   children,
-  delay,
 }: {
   children: React.ReactNode;
-  delay: number;
 }) {
   return (
-    <Reveal delay={delay} className="w-full">
+    <div className="w-full">
       <p className="mt-14 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
         {children}
       </p>
-    </Reveal>
+    </div>
   );
 }
 
@@ -221,23 +160,23 @@ export default function Week02Marketing() {
           02
         </span>
 
-        <Reveal>
+        <div>
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
             <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 02 in Applications of AI in Business
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={120}>
+        <div>
           <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-black leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
             Applications of AI in Marketing and{" "}
             <span className="text-[var(--crimson)]">Consumer Behavior</span>
           </h1>
-        </Reveal>
+        </div>
 
-        <Reveal delay={240} className="w-full">
+        <div className="w-full">
           <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
           <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
             Framing marketing as a coordinated system of sensing, deciding,
@@ -255,9 +194,9 @@ export default function Week02Marketing() {
             ))}
             <span className="text-[var(--crimson)]">↺</span>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={360} className="w-full">
+        <div className="w-full">
           <div className="mt-14 flex w-full flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               Davood Wadi, PhD
@@ -268,7 +207,7 @@ export default function Week02Marketing() {
               BUSI 654 · Applications of AI in Business
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -281,7 +220,7 @@ export default function Week02Marketing() {
           Why Marketing Became a Machine Learning Domain
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <div className="mt-11 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_minmax(0,18rem)] md:gap-14">
             <p className={BODY}>
               Modern marketing generates granular data from search, commerce,
@@ -325,9 +264,9 @@ export default function Week02Marketing() {
               <circle cx="276" cy="66" r="3" fill="var(--crimson)" />
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <p className={`${BODY} max-w-3xl`}>
               Many marketing choices are repeated allocation decisions, making
@@ -350,9 +289,9 @@ export default function Week02Marketing() {
               )}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <figure className="mt-14 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
             <div className={`${MICRO} text-[var(--champagne)]`}>
               The strategic question
@@ -363,7 +302,7 @@ export default function Week02Marketing() {
               machine-assisted.
             </blockquote>
           </figure>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -381,12 +320,12 @@ export default function Week02Marketing() {
           The Customer Lifecycle as a Decision Chain
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-3xl`}>
             Marketing spans awareness, consideration, conversion, retention,
             expansion, and advocacy.
           </p>
-        </Reveal>
+        </div>
 
         <ol
           aria-hidden
@@ -400,7 +339,7 @@ export default function Week02Marketing() {
             "Expansion",
             "Advocacy",
           ].map((stage, i) => (
-            <Reveal key={stage} as="li" delay={220 + i * 70} className="block">
+            <li key={stage} className="block">
               <div className="relative border-t border-[var(--charcoal)]/20 pr-3 pt-4">
                 <span className="absolute -top-[4px] left-0 h-[7px] w-[7px] rounded-full bg-[var(--crimson)]" />
                 <span className={`${MICRO} block text-[var(--champagne)]`}>
@@ -410,11 +349,11 @@ export default function Week02Marketing() {
                   {stage}
                 </span>
               </div>
-            </Reveal>
+            </li>
           ))}
         </ol>
 
-        <Reveal delay={700} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <p className={`${BODY} max-w-3xl`}>
               AI can support each stage only when firms define the decision, the
@@ -439,9 +378,9 @@ export default function Week02Marketing() {
               )}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Verdict delay={820}>
+        <Verdict>
           This lifecycle view prevents leaders from reducing AI to content
           generation alone.
         </Verdict>
@@ -467,15 +406,15 @@ export default function Week02Marketing() {
           Consumer Insight from Unstructured Signals
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Firms now learn from reviews, search queries, clickstreams, call
             transcripts, chat logs, and social conversation rather than only
             from surveys.
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={260} className="w-full">
+        <div className="w-full">
           <div
             aria-hidden
             className="mt-8 grid w-full max-w-5xl gap-8 md:grid-cols-[10rem_1fr] md:gap-12"
@@ -521,9 +460,9 @@ export default function Week02Marketing() {
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <p className={`${BODY} max-w-3xl`}>
               AI helps convert noisy text, image, and behavioral data into
@@ -573,9 +512,9 @@ export default function Week02Marketing() {
               )}
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 border-l border-[var(--charcoal)]/25 pl-6 md:grid-cols-[1fr_14rem] md:gap-12">
             <p className="font-serif text-lg leading-[1.6] text-[var(--charcoal-light)] md:text-[1.25rem]">
               Insight quality still depends on sampling logic, data provenance,
@@ -595,7 +534,7 @@ export default function Week02Marketing() {
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -608,12 +547,12 @@ export default function Week02Marketing() {
           Segmentation Beyond Static Demographics
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             AI-based segmentation groups customers using behavior, value, needs,
             responsiveness, or risk instead of relying only on age or income.
           </p>
-        </Reveal>
+        </div>
 
         <div
           aria-hidden
@@ -633,7 +572,7 @@ export default function Week02Marketing() {
               pad: "md:border-l md:border-[var(--charcoal)]/12 md:pl-12",
             },
           ].map((panel, p) => (
-            <Reveal key={panel.key} delay={240 + p * 140} className={panel.pad}>
+            <div key={panel.key} className={panel.pad}>
               <div className={`${MICRO} ${panel.tone}`}>{panel.label}</div>
               <svg viewBox="0 0 320 160" className="mt-5 w-full" fill="none">
                 {p === 0 ? (
@@ -668,11 +607,11 @@ export default function Week02Marketing() {
                   />
                 ))}
               </svg>
-            </Reveal>
+            </div>
           ))}
         </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <div
               aria-hidden
@@ -694,9 +633,9 @@ export default function Week02Marketing() {
               prioritize, and explainable enough for managers to deploy.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={680} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_20rem] md:gap-12">
             <p className="font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
               More segments are not always better; excessive granularity can
@@ -716,7 +655,7 @@ export default function Week02Marketing() {
               </figcaption>
             </figure>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -734,12 +673,12 @@ export default function Week02Marketing() {
           Targeting and Next-Best-Audience Decisions
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Targeting systems estimate which audience is most likely to respond
             under a given objective such as reach, conversion, or retention.
           </p>
-        </Reveal>
+        </div>
 
         <div
           aria-hidden
@@ -750,13 +689,9 @@ export default function Week02Marketing() {
             { objective: "Conversion", ranks: [["C", 86], ["A", 60], ["D", 42], ["B", 24]] },
             { objective: "Retention", ranks: [["D", 80], ["C", 58], ["B", 38], ["A", 20]] },
           ].map((col, i) => (
-            <Reveal
-              key={col.objective}
-              delay={240 + i * 120}
-              className={
+            <div key={col.objective} className={
                 i === 0 ? "md:pr-10" : "md:border-l md:border-[var(--charcoal)]/12 md:px-10"
-              }
-            >
+              }>
               <div className={`${MICRO} text-[var(--champagne)]`}>
                 {col.objective}
               </div>
@@ -775,16 +710,16 @@ export default function Week02Marketing() {
                   </div>
                 ))}
               </div>
-            </Reveal>
+            </div>
           ))}
         </div>
-        <Reveal delay={600}>
+        <div>
           <div className={`${MICRO} mt-4 text-[var(--charcoal-light)]/40`}>
             Schematic
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={660} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <p className={`${BODY} max-w-3xl`}>
               The practical output is often a next-best-audience rule that
@@ -812,9 +747,9 @@ export default function Week02Marketing() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={780} className="w-full">
+        <div className="w-full">
           <div className="mt-12 max-w-4xl border border-[var(--crimson)]/45 p-7 md:p-9">
             <div className={`${MICRO} text-[var(--crimson)]`}>Test it</div>
             <p className="mt-4 font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
@@ -823,7 +758,7 @@ export default function Week02Marketing() {
               customers.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -837,13 +772,13 @@ export default function Week02Marketing() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-start gap-10 md:grid-cols-[1fr_1fr] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               AI can surface which claims, benefits, or proof points resonate
               across segments, channels, and contexts.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <figure aria-hidden>
               <div className={`${MICRO} mb-3 pl-[7.5rem] text-[var(--charcoal-light)]/45`}>
                 Segments · channels · contexts
@@ -870,10 +805,10 @@ export default function Week02Marketing() {
                 Schematic
               </figcaption>
             </figure>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <p className={`${BODY} max-w-3xl`}>
               This supports faster refinement of value propositions, creative
@@ -890,9 +825,9 @@ export default function Week02Marketing() {
               <span>channel-specific narratives</span>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <div aria-hidden className="grid grid-cols-2 border-b border-[var(--charcoal)]/15 pb-3">
               <span className={`${MICRO} text-[var(--charcoal-light)]/50`}>
@@ -908,7 +843,7 @@ export default function Week02Marketing() {
               for.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       <ModulePlate
@@ -931,15 +866,15 @@ export default function Week02Marketing() {
           Personalization as a Managed Policy
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Personalization is not just inserting a name into a message; it is
             choosing which offer, content, timing, and channel best fit a
             customer state.
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={260} className="w-full">
+        <div className="w-full">
           <div
             aria-hidden
             className="mt-9 grid w-full max-w-5xl items-end gap-8 md:grid-cols-[12rem_1fr] md:gap-12"
@@ -972,10 +907,10 @@ export default function Week02Marketing() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
         <div className="mt-12 grid w-full max-w-5xl gap-12 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-0">
-          <Reveal delay={400} className="md:pr-12">
+          <div className="md:pr-12">
             <div className={`${MICRO} text-[var(--crimson)]`}>
               When not to personalize
             </div>
@@ -997,12 +932,9 @@ export default function Week02Marketing() {
                 </li>
               ))}
             </ul>
-          </Reveal>
+          </div>
 
-          <Reveal
-            delay={520}
-            className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12"
-          >
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
             <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
               Over-personalization
             </div>
@@ -1032,10 +964,10 @@ export default function Week02Marketing() {
                 Schematic
               </figcaption>
             </figure>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={660}>
+        <Discussion>
           Where should a firm draw the line between helpful relevance and
           surveillance-like personalization in its category?
         </Discussion>
@@ -1052,14 +984,14 @@ export default function Week02Marketing() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-start gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Recommendation systems rank products, services, or content by
               expected relevance under business constraints such as inventory,
               margin, or strategic assortment.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <ol aria-hidden className="border-t border-[var(--charcoal)]/15">
               {[
                 { item: "product", rel: 94, tag: "inventory", blocked: true },
@@ -1096,10 +1028,10 @@ export default function Week02Marketing() {
                 </li>
               ))}
             </ol>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <p className={`${BODY} max-w-3xl`}>
               In practice, leaders must decide whether the system should
@@ -1120,9 +1052,9 @@ export default function Week02Marketing() {
               )}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
             <div
               aria-hidden
@@ -1137,7 +1069,7 @@ export default function Week02Marketing() {
               over-promote familiar items, and suppress strategic new offerings.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1156,13 +1088,13 @@ export default function Week02Marketing() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_16rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Generative tools can accelerate variant creation, copy testing,
               image adaptation, and localization across campaigns.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <div aria-hidden className="flex items-center gap-4">
               <span className="block h-20 w-16 shrink-0 border-[1.5px] border-[var(--crimson)]" />
               <span className="h-px w-6 bg-[var(--charcoal)]/25" />
@@ -1176,10 +1108,10 @@ export default function Week02Marketing() {
                 ))}
               </div>
             </div>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <svg aria-hidden viewBox="0 0 800 164" className="w-full" fill="none">
               <circle cx="100" cy="72" r="8" stroke="var(--charcoal)" strokeOpacity="0.4" />
@@ -1214,9 +1146,9 @@ export default function Week02Marketing() {
               an isolated production tool.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <figure className="mt-14 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
             <div className={`${MICRO} text-[var(--champagne)]`}>
               Marketing leadership owns
@@ -1226,7 +1158,7 @@ export default function Week02Marketing() {
               the decision about which ideas deserve distribution.
             </blockquote>
           </figure>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1240,14 +1172,14 @@ export default function Week02Marketing() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_18rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               AI can support pricing by forecasting demand, detecting
               responsiveness, and estimating tradeoffs across volume, margin,
               and channel behavior.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <svg aria-hidden viewBox="0 0 320 200" className="w-full max-w-[18rem]" fill="none">
               <path d="M160 26L30 172H290Z" stroke="var(--charcoal)" strokeOpacity="0.25" />
               <path d="M160 26L148 118M30 172L148 118M290 172L148 118" stroke="var(--crimson)" strokeOpacity="0.3" />
@@ -1256,10 +1188,10 @@ export default function Week02Marketing() {
               <text {...SVG_LABEL} x="14" y="192" fill="var(--charcoal)" fillOpacity="0.6">MARGIN</text>
               <text {...SVG_LABEL} x="306" y="192" textAnchor="end" fill="var(--charcoal)" fillOpacity="0.6">CHANNEL BEHAVIOR</text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <p className={`${BODY} max-w-3xl`}>
               Promotional systems help decide discount depth, offer sequencing,
@@ -1283,9 +1215,9 @@ export default function Week02Marketing() {
               )}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="space-y-4">
               {[
@@ -1309,7 +1241,7 @@ export default function Week02Marketing() {
               short-term lift, long-term willingness to pay, and brand effects.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1322,7 +1254,7 @@ export default function Week02Marketing() {
           Revenue Lift, Brand Risk, and Dynamic Pricing
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Dynamic pricing changes offers in response to demand conditions,
             customer context, capacity, or competitive moves.
@@ -1353,9 +1285,9 @@ export default function Week02Marketing() {
               Schematic
             </figcaption>
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <div aria-hidden className="grid grid-cols-2">
               <span className={`${MICRO} text-[var(--charcoal-light)]/55`}>
@@ -1370,9 +1302,9 @@ export default function Week02Marketing() {
               frequent price variation as unfair or opportunistic.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 max-w-4xl border border-[var(--crimson)]/45 p-7 md:p-9">
             <div className={`${MICRO} text-[var(--crimson)]`}>
               The managerial challenge
@@ -1383,9 +1315,9 @@ export default function Week02Marketing() {
               scrutiny.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           In which categories does dynamic pricing strengthen value capture, and
           in which categories does it undermine customer relationships?
         </Discussion>
@@ -1411,7 +1343,7 @@ export default function Week02Marketing() {
           Campaign Optimization Across Channels
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             AI can coordinate campaign timing, sequencing, audience exposure,
             and creative rotation across email, search, social, retail media,
@@ -1447,9 +1379,9 @@ export default function Week02Marketing() {
               );
             })}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_15rem] md:gap-12">
             <p className={BODY}>
               Optimization works best when channel objectives are aligned;
@@ -1467,9 +1399,9 @@ export default function Week02Marketing() {
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
             <div
               aria-hidden
@@ -1486,7 +1418,7 @@ export default function Week02Marketing() {
               exclusions, and diminishing returns.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1498,7 +1430,7 @@ export default function Week02Marketing() {
         <Head eyebrow="Spend decisions">Budget Allocation, Bidding, and Pacing</Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_20rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Media systems continuously decide how much to spend, where to
               spend it, and how quickly to deploy budget over time.
@@ -1513,8 +1445,8 @@ export default function Week02Marketing() {
               <span>·</span>
               <span>how quickly</span>
             </div>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <figure aria-hidden>
               <svg viewBox="0 0 320 150" className="w-full" fill="none">
                 <path d="M30 20H290" stroke="var(--charcoal)" strokeOpacity="0.2" strokeDasharray="3 4" />
@@ -1532,11 +1464,11 @@ export default function Week02Marketing() {
                 Schematic
               </figcaption>
             </figure>
-          </Reveal>
+          </div>
         </div>
 
         <div className="mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[14rem_1fr] md:gap-12">
-          <Reveal delay={400}>
+          <div>
             <div aria-hidden className="grid grid-cols-2 gap-4">
               <div>
                 <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>Manual rules</div>
@@ -1551,16 +1483,16 @@ export default function Week02Marketing() {
                 <div className="mt-3 h-[52px] bg-[var(--charcoal)]" />
               </div>
             </div>
-          </Reveal>
-          <Reveal delay={520}>
+          </div>
+          <div>
             <p className={BODY}>
               Automated bidding can outperform manual rules in volatile
               environments, but it also makes logic less visible to managers.
             </p>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={640} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="grid grid-cols-3 gap-4 md:max-w-2xl">
               {["Market speed", "Data quality", "Cost of overspending"].map((f, i) => (
@@ -1579,7 +1511,7 @@ export default function Week02Marketing() {
               the cost of overspending on weak signals.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1592,14 +1524,14 @@ export default function Week02Marketing() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_20rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Experiments remain the cleanest way to estimate whether a
               campaign, offer, or message caused additional behavior rather than
               simply capturing existing demand.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <figure aria-hidden>
               <svg viewBox="0 0 340 200" className="w-full" fill="none">
                 <path d="M20 172H250" stroke="var(--charcoal)" strokeOpacity="0.3" />
@@ -1619,10 +1551,10 @@ export default function Week02Marketing() {
                 Schematic
               </figcaption>
             </figure>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <div aria-hidden className="grid grid-cols-3 gap-4 md:max-w-xl">
               {["Who to test", "Which treatments", "When to act"].map((q, i) => (
@@ -1641,14 +1573,14 @@ export default function Week02Marketing() {
               when results are strong enough to act on.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Verdict delay={540}>
+        <Verdict>
           Organizations that skip experimentation often mistake optimized
           delivery for genuine value creation.
         </Verdict>
 
-        <Discussion delay={660}>
+        <Discussion>
           When should a marketing team slow down automation in order to preserve
           a credible learning agenda?
         </Discussion>
@@ -1669,7 +1601,7 @@ export default function Week02Marketing() {
           Causal Inference Without Clean Randomization
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Many important questions cannot be answered with perfect experiments
             because of cost, channel constraints, or operational disruption.
@@ -1684,9 +1616,9 @@ export default function Week02Marketing() {
               </span>
             ))}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <p className={`${BODY} max-w-3xl`}>
               In those cases, teams use quasi-experimental logic, holdout
@@ -1718,9 +1650,9 @@ export default function Week02Marketing() {
               </figcaption>
             </figure>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <figure className="mt-12 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
             <div className={`${MICRO} text-[var(--champagne)]`}>
               What managers need to ask
@@ -1730,7 +1662,7 @@ export default function Week02Marketing() {
               ask what assumptions make the estimated lift believable.
             </blockquote>
           </figure>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1743,19 +1675,19 @@ export default function Week02Marketing() {
           Attribution, Marketing Mix Models, and Their Limits
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Attribution assigns credit for observed outcomes across touchpoints,
             while marketing mix models estimate broader channel effects from
             aggregate variation over time.
           </p>
-        </Reveal>
+        </div>
 
         <div
           aria-hidden
           className="mt-9 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-0"
         >
-          <Reveal delay={260} className="md:pr-12">
+          <div className="md:pr-12">
             <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>Attribution</div>
             <svg viewBox="0 0 340 110" className="mt-4 w-full" fill="none">
               <path d="M20 40H300" stroke="var(--charcoal)" strokeOpacity="0.25" />
@@ -1774,11 +1706,8 @@ export default function Week02Marketing() {
               <text {...SVG_LABEL} x="20" y="16" fill="var(--charcoal)" fillOpacity="0.45">TOUCHPOINTS</text>
               <text {...SVG_LABEL} x="334" y="16" textAnchor="end" fill="var(--crimson)">OUTCOME</text>
             </svg>
-          </Reveal>
-          <Reveal
-            delay={380}
-            className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12"
-          >
+          </div>
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
             <div className={`${MICRO} text-[var(--crimson)]`}>Marketing mix models</div>
             <svg viewBox="0 0 340 110" className="mt-4 w-full" fill="none">
               {[46, 52, 40, 62, 70, 58, 76, 84, 66, 90, 96, 80, 72, 88].map((h, i) => (
@@ -1787,13 +1716,13 @@ export default function Week02Marketing() {
               <path d="M4 100H336" stroke="var(--charcoal)" strokeOpacity="0.3" />
               <text {...SVG_LABEL} x="336" y="12" textAnchor="end" fill="var(--charcoal)" fillOpacity="0.45">OVER TIME →</text>
             </svg>
-          </Reveal>
+          </div>
         </div>
-        <Reveal delay={440}>
+        <div>
           <div className={`${MICRO} mt-3 text-[var(--charcoal-light)]/40`}>Schematic</div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={500} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <p className={`${BODY} max-w-3xl`}>
               Each method answers a different question and carries different
@@ -1812,9 +1741,9 @@ export default function Week02Marketing() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={620} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[10rem_1fr] md:gap-12">
             <svg aria-hidden viewBox="0 0 160 110" className="w-full max-w-[10rem]" fill="none">
               <circle cx="58" cy="44" r="36" stroke="var(--charcoal)" strokeOpacity="0.35" />
@@ -1826,9 +1755,9 @@ export default function Week02Marketing() {
               rather than insisting that one model resolve every disagreement.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={740}>
+        <Discussion>
           If attribution and marketing mix models point to different budget
           decisions, which one should leadership trust and why?
         </Discussion>
@@ -1853,13 +1782,13 @@ export default function Week02Marketing() {
         <Head eyebrow="Across the journey">CRM Orchestration Across the Journey</Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_1fr] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               CRM systems increasingly use AI to determine next best action,
               next best offer, message timing, and suppression rules.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <div aria-hidden className="grid grid-cols-2 gap-px bg-[var(--charcoal)]/10">
               {["next best action", "next best offer", "message timing", "suppression rules"].map(
                 (d, i) => (
@@ -1874,10 +1803,10 @@ export default function Week02Marketing() {
                 ),
               )}
             </div>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <svg aria-hidden viewBox="0 0 800 130" className="w-full" fill="none">
               <text {...SVG_LABEL} x="0" y="14" fill="var(--charcoal)" fillOpacity="0.45">
@@ -1905,9 +1834,9 @@ export default function Week02Marketing() {
               campaigns.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="md:max-w-2xl">
               <div className="h-[3px] w-full bg-[var(--crimson)]" />
@@ -1929,7 +1858,7 @@ export default function Week02Marketing() {
               cross-sell, or service recovery.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1944,13 +1873,13 @@ export default function Week02Marketing() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_17rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Retention models help identify who is at risk, who is worth
               saving, and which intervention is economically justified.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <figure aria-hidden>
               <svg viewBox="0 0 260 220" className="w-full max-w-[17rem]" fill="none">
                 <rect x="140" y="10" width="110" height="90" fill="var(--crimson)" fillOpacity="0.08" stroke="var(--crimson)" />
@@ -1976,11 +1905,11 @@ export default function Week02Marketing() {
                 Schematic
               </figcaption>
             </figure>
-          </Reveal>
+          </div>
         </div>
 
         <div className="mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[14rem_1fr] md:gap-12">
-          <Reveal delay={400}>
+          <div>
             <div aria-hidden className="flex items-center gap-4">
               <span className="border border-[var(--charcoal)]/15 px-3 py-4 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/35 [text-decoration-line:line-through]">
                 CLV
@@ -1992,16 +1921,16 @@ export default function Week02Marketing() {
                 ))}
               </div>
             </div>
-          </Reveal>
-          <Reveal delay={520}>
+          </div>
+          <div>
             <p className={BODY}>
               Customer lifetime value is most useful when it informs resource
               allocation, not when it becomes a decorative dashboard metric.
             </p>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={640} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_20rem] md:gap-12">
             <div className="border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
               <div className={`${MICRO} text-[var(--crimson)]`}>The managerial danger</div>
@@ -2026,7 +1955,7 @@ export default function Week02Marketing() {
               </figcaption>
             </figure>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2046,7 +1975,7 @@ export default function Week02Marketing() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_17rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Conversational systems now support discovery, service triage,
               order updates, and guided selling across chat, voice, and
@@ -2062,8 +1991,8 @@ export default function Week02Marketing() {
               <span>·</span>
               <span>messaging</span>
             </div>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <div aria-hidden className="space-y-2.5">
               {["discovery", "service triage", "order updates", "guided selling"].map(
                 (job, i) => (
@@ -2081,10 +2010,10 @@ export default function Week02Marketing() {
                 ),
               )}
             </div>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <svg aria-hidden viewBox="0 0 800 70" className="w-full" fill="none">
               <circle cx="40" cy="36" r="7" fill="var(--charcoal)" fillOpacity="0.55" />
@@ -2100,9 +2029,9 @@ export default function Week02Marketing() {
               coherent brand voice and reliable escalation path.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="grid max-w-2xl grid-cols-2 gap-6">
               {[
@@ -2127,9 +2056,9 @@ export default function Week02Marketing() {
               judgment.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={660}>
+        <Discussion>
           Which customer moments in your organization should remain human-led
           even if conversational AI becomes fast and accurate?
         </Discussion>
@@ -2145,15 +2074,15 @@ export default function Week02Marketing() {
           Privacy, Consent, and Trust Architecture
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Marketing AI depends on customer data, identity linkage, and
             behavioral inference, making governance a core design requirement
             rather than a legal afterthought.
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={260} className="w-full">
+        <div className="w-full">
           <div aria-hidden className="mt-8 w-full max-w-3xl">
             <div className="grid grid-cols-3 gap-3">
               {["customer data", "identity linkage", "behavioral inference"].map((b) => (
@@ -2169,9 +2098,9 @@ export default function Week02Marketing() {
               Governance · core design requirement
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <p className={`${BODY} max-w-4xl`}>
               Leaders must decide what data is appropriate to collect, how
@@ -2194,9 +2123,9 @@ export default function Week02Marketing() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="grid gap-6 md:grid-cols-3">
               {["Privacy-preserving measurement", "Data minimization", "Transparent value exchange"].map(
@@ -2215,7 +2144,7 @@ export default function Week02Marketing() {
               value exchange are increasingly strategic capabilities.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2233,7 +2162,7 @@ export default function Week02Marketing() {
           Manipulation, Bias, and Consumer Welfare
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             AI systems can unintentionally reinforce exclusion, price
             discrimination, dark patterns, or exploitative targeting of
@@ -2251,9 +2180,9 @@ export default function Week02Marketing() {
               ),
             )}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <svg aria-hidden viewBox="0 0 800 92" className="w-full" fill="none">
               <path d="M80 44H700" stroke="var(--charcoal)" strokeOpacity="0.25" />
@@ -2297,9 +2226,9 @@ export default function Week02Marketing() {
               regard for downstream harm.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="grid grid-cols-2 border-y-2 border-[var(--crimson)] md:grid-cols-4">
               {["objectives", "audience exclusions", "escalation", "review"].map((g, i) => (
@@ -2318,9 +2247,9 @@ export default function Week02Marketing() {
               audience exclusions, escalation, and review.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Should a model be considered successful if it increases conversion by
           exploiting behavioral vulnerability that a human marketer would judge
           inappropriate?
@@ -2348,13 +2277,13 @@ export default function Week02Marketing() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_24rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               High-performing firms pair marketing, analytics, data engineering,
               product, legal, and service teams around shared customer outcomes.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <svg aria-hidden viewBox="0 0 460 260" className="w-full" fill="none">
               {[
                 { a: -90, label: "MARKETING", lx: 230, ly: 20, anchor: "middle" as const },
@@ -2384,10 +2313,10 @@ export default function Week02Marketing() {
               <text {...SVG_LABEL} x="230" y="128" textAnchor="middle" fill="var(--crimson)">SHARED CUSTOMER</text>
               <text {...SVG_LABEL} x="230" y="141" textAnchor="middle" fill="var(--crimson)">OUTCOMES</text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <div aria-hidden className="max-w-3xl">
               <div className="flex justify-between">
@@ -2417,9 +2346,9 @@ export default function Week02Marketing() {
               domain expertise.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Verdict delay={540}>
+        <Verdict>
           AI maturity in marketing is ultimately an operating model question,
           not only a tooling question.
         </Verdict>
@@ -2442,14 +2371,14 @@ export default function Week02Marketing() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Some capabilities should be purchased as platforms, some
               configured as workflows, and a smaller set may justify internal
               development.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <div aria-hidden className="flex flex-col items-center gap-1.5">
               {[
                 { tier: "Internal development", w: "40%", tone: "bg-[var(--crimson)] text-[var(--surface)]" },
@@ -2465,10 +2394,10 @@ export default function Week02Marketing() {
                 </div>
               ))}
             </div>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
             <p className={`${BODY} max-w-4xl`}>
               The decision depends on strategic differentiation, data uniqueness,
@@ -2493,9 +2422,9 @@ export default function Week02Marketing() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="grid max-w-3xl grid-cols-[1fr_2fr] border-b border-[var(--charcoal)]/15 pb-3">
               <span className={`${MICRO} text-[var(--charcoal-light)]/60`}>
@@ -2510,9 +2439,9 @@ export default function Week02Marketing() {
               transparency, portability, and bargaining power.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={660}>
+        <Discussion>
           Which marketing AI capabilities should remain proprietary in your
           firm, and which are better treated as infrastructure?
         </Discussion>
@@ -2533,7 +2462,7 @@ export default function Week02Marketing() {
 
         <Head eyebrow="What to carry forward">Synthesis and Managerial Action</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <ol
             aria-hidden
             className="mt-11 grid w-full max-w-5xl grid-cols-2 gap-y-5 sm:grid-cols-3 md:grid-cols-6"
@@ -2556,7 +2485,7 @@ export default function Week02Marketing() {
               </li>
             ))}
           </ol>
-        </Reveal>
+        </div>
 
         <ol className="mt-10 w-full max-w-4xl">
           {[
@@ -2564,7 +2493,7 @@ export default function Week02Marketing() {
             "Start with a narrow set of high-value decisions, define success in business terms, and build the data and accountability needed to learn.",
             "The managerial task is not to automate every interaction, but to decide where intelligence, judgment, and trust create durable advantage.",
           ].map((line, i) => (
-            <Reveal key={line} as="li" delay={280 + i * 130} className="block">
+            <li key={line} className="block">
               <div className="grid grid-cols-[4ch_1fr] gap-6 border-t border-[var(--charcoal)]/12 py-7 md:grid-cols-[5ch_1fr] md:gap-10">
                 <span className={`${MICRO} pt-3 text-[var(--crimson)]`}>
                   {String(i + 1).padStart(2, "0")}
@@ -2573,11 +2502,11 @@ export default function Week02Marketing() {
                   {line}
                 </p>
               </div>
-            </Reveal>
+            </li>
           ))}
         </ol>
 
-        <Reveal delay={700} className="w-full">
+        <div className="w-full">
           <div className="mt-12 flex w-full max-w-4xl flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               End of Week 02
@@ -2586,7 +2515,7 @@ export default function Week02Marketing() {
               Davood Wadi, PhD · BUSI 654
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
     </SlideDeck>
   );

@@ -16,8 +16,7 @@ import { cn } from "@/lib/utils";
 //    changes opacity. No height animations anywhere in this file.
 //
 // 2. MOTION IS OPACITY AND A FEW PIXELS. No blur, no scale, no spring, no
-//    bounce. Transitions are 400-700ms and ease-out. The deck's entrances are
-//    handled once by SlideDeck's masked-type reveal.
+//    bounce. Transitions are 400-700ms and ease-out.
 //
 // 3. THE PALETTE IS MOSTLY INK ON CREAM. Hairlines rather than boxes, crimson
 //    reserved for the single active thing on screen, champagne for small caps

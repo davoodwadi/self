@@ -33,25 +33,24 @@ export default function HeroSlide() {
         }}
       />
       <div style={{ maxWidth: "76rem", margin: "0 auto", width: "100%", position: "relative" }}>
-        <div className="fade-up" style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "2rem" }}>
+        <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "2rem" }}>
           <span className="tag tag-violet">Research Manuscript</span>
           {/* <span className="tag tag-amber">EMNLP 2026</span> */}
           <span className="tag tag-muted">NLP · LLM Evaluation · Psychometrics</span>
         </div>
         <h1
-          className="p-display fade-up delay-100"
+          className="p-display"
           style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)", marginBottom: "1rem" }}
         >
           Every{" "}<span className="grad-violet-cyan">Token</span>{" "}Counts
         </h1>
         <p
-          className="p-display-italic fade-up delay-200"
+          className="p-display-italic"
           style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.65rem)", maxWidth: "52rem", marginBottom: "2.5rem" }}
         >
           Isolating Latent Behavior of LLMs via Exact Likert Distributions
         </p>
         <div
-          className="fade-up delay-300"
           style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.75rem", marginBottom: "2.5rem" }}
         >
           <span style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "var(--text-dim)" }}>
@@ -61,7 +60,6 @@ export default function HeroSlide() {
           <span className="p-small">HEC Montréal · 2026</span>
         </div>
         <blockquote
-          className="fade-up delay-400"
           style={{
             borderLeft: "2px solid var(--violet)",
             paddingLeft: "1.5rem",
@@ -81,7 +79,7 @@ export default function HeroSlide() {
             "Can I trust Chinese AI models?"
           </p>
         </blockquote>
-        {/* <div className="fade-up delay-500" style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap" }}>
+        {/* <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap" }}>
           <a href="#question" className="btn-p btn-p-primary">Explore</a>
           <a href="#cite" className="btn-p btn-p-ghost">Cite Paper</a>
         </div> */}

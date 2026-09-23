@@ -1,76 +1,129 @@
 [
   {
+    "type": "sort",
     "slide_id": "the-three-stages-of-consumption",
-    "question_text": "A coffee-machine brand tracks how many buyers send their machine back and how many come back to buy coffee pods. Which stage of consumption is the marketer watching?",
-    "hint": "Returns and repeat purchases happen once the consumer is using the product.",
-    "correct_answer_citation": "Week 01 · The Three Stages of Consumption",
-    "correct_answer_index": 2,
-    "options": [
+    "prompt": "Each moment below belongs to one stage of consumption. Sort them into Prepurchase, Purchase and Postpurchase.",
+    "bins": [
+      { "id": "pre", "label": "Prepurchase" },
+      { "id": "purchase", "label": "Purchase" },
+      { "id": "post", "label": "Postpurchase" }
+    ],
+    "cards": [
       {
-        "option_text": "Prepurchase, when attitudes form",
-        "option_explanation": "In prepurchase the marketer studies how consumer attitudes form. Returns and repeat purchases come later."
+        "id": "worn-shoes",
+        "text": "A runner notices her shoes are worn out and reads reviews of new ones.",
+        "bin": "pre",
+        "explanation": "In prepurchase the consumer identifies a need and searches for information."
       },
       {
-        "option_text": "Purchase, at the store checkout",
-        "option_explanation": "At the purchase stage the marketer focuses on packaging, convenience and store atmosphere, not on returns."
+        "id": "logo-test",
+        "text": "A juice brand asks shoppers how they feel about its new bottle before launch.",
+        "bin": "pre",
+        "explanation": "In prepurchase the marketer studies how consumer attitudes form."
       },
       {
-        "option_text": "Postpurchase, after it is used",
-        "option_explanation": "Correct. In postpurchase the marketer monitors satisfaction, returns, and repeat purchases."
+        "id": "checkout",
+        "text": "A shopper gives up because the website's checkout page keeps crashing.",
+        "bin": "purchase",
+        "explanation": "In the purchase stage the consumer experiences the store, website, and checkout."
       },
       {
-        "option_text": "Before any need is identified",
-        "option_explanation": "Consumption starts when the consumer identifies a need. Returns only happen after the product has been bought and used."
+        "id": "music",
+        "text": "A bookstore changes its lighting and music to make browsing feel calmer.",
+        "bin": "purchase",
+        "explanation": "In the purchase stage the marketer focuses on packaging, convenience, and store atmosphere."
+      },
+      {
+        "id": "headphones",
+        "text": "After a week of use, a buyer decides his new headphones feel cheap.",
+        "bin": "post",
+        "explanation": "In postpurchase the consumer uses the product and judges its quality."
+      },
+      {
+        "id": "returns",
+        "text": "A coffee-machine brand counts how many machines come back and how many buyers reorder pods.",
+        "bin": "post",
+        "explanation": "In postpurchase the marketer monitors satisfaction, returns, and repeat purchases."
       }
     ]
   },
   {
+    "type": "sort",
     "slide_id": "why-consumers-are-not-calculators",
-    "question_text": "A shopper grabs the same brand of toothpaste every time without looking at the other options on the shelf. What does this tell a marketer?",
-    "hint": "Think about what real people have in limited supply.",
-    "correct_answer_citation": "Week 01 · Why Consumers Are Not Calculators",
-    "correct_answer_index": 1,
-    "options": [
+    "prompt": "Which of these shoppers fits the old economic model, and which behaves like a real person? Sort them into the two groups.",
+    "bins": [
+      { "id": "calculator", "label": "The old model: perfectly rational" },
+      { "id": "real", "label": "Real people" }
+    ],
+    "cards": [
       {
-        "option_text": "The shopper compared every choice and its cost",
-        "option_explanation": "That is the old economic model. The shopper did not look at the other options at all."
+        "id": "compare-all",
+        "text": "Reads the label of every cereal on the shelf before choosing one.",
+        "bin": "calculator",
+        "explanation": "The old model assumed buyers compare all choices."
       },
       {
-        "option_text": "Habits and shortcuts are driving the decision",
-        "option_explanation": "Correct. Real people have limited time and energy, so they use mental shortcuts, and decisions depend on habits and brand loyalty."
+        "id": "spreadsheet",
+        "text": "Works out the full cost of every phone plan, then picks the cheapest overall.",
+        "bin": "calculator",
+        "explanation": "The old model assumed buyers calculate costs and pick the best option."
       },
       {
-        "option_text": "Toothpaste buyers are perfectly rational",
-        "option_explanation": "Perfect rationality is what old economics assumed. A buyer who never looks at the alternatives is not comparing all choices."
+        "id": "same-brand",
+        "text": "Grabs the same toothpaste as always without looking at the others.",
+        "bin": "real",
+        "explanation": "Habits and brand loyalty act as a mental shortcut."
       },
       {
-        "option_text": "The other brands must all cost much more",
-        "option_explanation": "Nothing says the shopper checked prices. Picking the same brand without looking is a mental shortcut."
+        "id": "bad-day",
+        "text": "Buys a cake after a bad day at work.",
+        "bin": "real",
+        "explanation": "Real decisions depend on mood."
+      },
+      {
+        "id": "friends",
+        "text": "Buys the sneakers everyone in her friend group is wearing.",
+        "bin": "real",
+        "explanation": "Real decisions depend on social pressure."
+      },
+      {
+        "id": "tired",
+        "text": "Tired after a long shift, takes the first familiar pasta sauce he sees.",
+        "bin": "real",
+        "explanation": "Real people have limited time and energy, so they use mental shortcuts instead."
       }
     ]
   },
   {
+    "type": "match",
     "slide_id": "market-segmentation-who-are-we-talking-to",
-    "question_text": "A ski shop sends one offer to customers in snowy cities and a different offer to customers in warm, coastal cities. Which kind of segmentation is it using?",
-    "hint": "The offer changes with where people live and the weather there.",
-    "correct_answer_citation": "Week 01 · Market Segmentation: Who Are We Talking To?",
-    "correct_answer_index": 0,
-    "options": [
+    "prompt": "Match each segmentation base with the company that is using it.",
+    "term_label": "Segmentation base",
+    "match_label": "What the company does",
+    "pairs": [
       {
-        "option_text": "Geographic segmentation",
-        "option_explanation": "Correct. Geographics group people by location, city size, and climate."
+        "id": "demographics",
+        "term": "Demographics",
+        "match": "A bank designs an account for students under 25.",
+        "explanation": "Demographics group people by age, gender, income, and education."
       },
       {
-        "option_text": "Demographic segmentation",
-        "option_explanation": "Demographics group people by age, gender, income, and education. The shop is splitting customers by where they live."
+        "id": "geographics",
+        "term": "Geographics",
+        "match": "A ski shop sends one offer to snowy cities and another to warm coastal cities.",
+        "explanation": "Geographics group people by location, city size, and climate."
       },
       {
-        "option_text": "Behavioral segmentation",
-        "option_explanation": "Behavioral segments group people by how often they buy and how they use the item. Climate is a geographic trait."
+        "id": "psychographics",
+        "term": "Psychographics",
+        "match": "A clothing brand targets people who value an outdoor, eco-friendly lifestyle.",
+        "explanation": "Psychographics group people by lifestyle, values, and personality."
       },
       {
-        "option_text": "Psychographic segmentation",
-        "option_explanation": "Psychographics group people by lifestyle, values, and personality. Snowy versus warm cities is about location and climate."
+        "id": "behavioral",
+        "term": "Behavioral",
+        "match": "A café rewards the customers who come in every single day.",
+        "explanation": "Behavioral segments group people by how often they buy and how they use the item."
       }
     ]
   }

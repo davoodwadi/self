@@ -64,7 +64,7 @@ function P({
   return (
     <p
       className={cn(
-        "gsap-reveal type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
+        "type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
         className,
       )}
     >
@@ -82,7 +82,7 @@ function Lead({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-lead max-w-[46ch]", className)}>
+    <p className={cn("type-lead max-w-[46ch]", className)}>
       {children}
     </p>
   );
@@ -97,7 +97,7 @@ function Statement({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-quote max-w-[30ch]", className)}>
+    <p className={cn("type-quote max-w-[30ch]", className)}>
       {children}
     </p>
   );
@@ -147,7 +147,7 @@ function Ruled({
   return (
     <div
       className={cn(
-        "gsap-reveal pt-5",
+        "pt-5",
         weight === "thick" ? "border-t-2" : "border-t",
         border,
         className,
@@ -178,7 +178,7 @@ function KickerHeading({
   tone?: "signal" | "counter";
 }) {
   return (
-    <div className="gsap-reveal w-full mb-8 md:mb-12">
+    <div className="w-full mb-8 md:mb-12">
       <h2 className="type-h1 max-w-[22ch]">
         <span
           className={cn(
@@ -212,7 +212,7 @@ function PartPlate({
       <div className="grid w-full gap-8 xl:grid-cols-[minmax(0,15rem)_1fr] xl:gap-16">
         <div
           aria-hidden
-          className="gsap-reveal select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[7rem] xl:text-[13rem]"
+          className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[7rem] xl:text-[13rem]"
           style={{
             ...SERIF,
             fontVariationSettings: '"opsz" 144, "WONK" 1',
@@ -221,7 +221,7 @@ function PartPlate({
           {String(n).padStart(2, "0")}
         </div>
         <div className="min-w-0">
-          <h2 className="gsap-reveal type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[16ch]">
+          <h2 className="type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[16ch]">
             <span className="type-label block mb-6 !text-[0.8rem]">
               {`Part ${n}:`}
             </span>{" "}
@@ -238,7 +238,7 @@ function PartPlate({
 /** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
 function Prompt({ children }: { children: React.ReactNode }) {
   return (
-    <div className="gsap-reveal relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
+    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
       <p className="type-quote !text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[40ch]">
         {children}
       </p>
@@ -263,7 +263,7 @@ function Plate({
   className?: string;
 }) {
   return (
-    <div className={cn("gsap-reveal figure-well w-full p-3 sm:p-5", className)}>
+    <div className={cn("figure-well w-full p-3 sm:p-5", className)}>
       {children}
     </div>
   );
@@ -285,7 +285,7 @@ const FORCES = [
 /** The six letters as a strip; the pair on this slide is lit. */
 function PestleStrip({ active }: { active: number[] }) {
   return (
-    <div aria-hidden className="gsap-reveal w-full mb-12">
+    <div aria-hidden className="w-full mb-12">
       <ol className="grid grid-cols-6 border-t border-[var(--rule-2)]">
         {FORCES.map((name, i) => {
           const on = active.includes(i);
@@ -387,7 +387,7 @@ function CsrTemple() {
     // The side padding is room for the base steps, which widen past the
     // shafts; without it they poke out of the slide on a phone.
     <div className="w-full px-6">
-      <div aria-hidden className="gsap-reveal relative">
+      <div aria-hidden className="relative">
         <svg
           viewBox="0 0 1000 110"
           preserveAspectRatio="none"
@@ -405,12 +405,12 @@ function CsrTemple() {
           CSR
         </span>
       </div>
-      <div aria-hidden className="gsap-reveal h-2.5 bg-[var(--ink)]" />
+      <div aria-hidden className="h-2.5 bg-[var(--ink)]" />
       <ol className="grid gap-y-6 px-3 py-6 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8 lg:px-6">
         {pillars.map((p, i) => (
           <li
             key={p.name}
-            className="gsap-reveal flex flex-col border-x-2 border-[var(--ink)] bg-[var(--paper)]"
+            className="flex flex-col border-x-2 border-[var(--ink)] bg-[var(--paper)]"
           >
             <div aria-hidden className="-mx-[6px] h-2 bg-[var(--ink)]" />
             <p className="type-body flex-1 px-4 pb-8 pt-6 text-[var(--ink-2)] md:px-5">
@@ -437,7 +437,7 @@ function CsrTemple() {
           </li>
         ))}
       </ol>
-      <div aria-hidden className="gsap-reveal">
+      <div aria-hidden>
         <div className="h-2.5 bg-[var(--ink)]" />
         <div className="mx-[-0.75rem] mt-1.5 h-px bg-[var(--ink)]" />
         <div className="mx-[-1.5rem] mt-1.5 h-px bg-[var(--rule-2)]" />
@@ -527,7 +527,7 @@ function BusinessCase() {
       {rows.map((r) => (
         <li
           key={r.key}
-          className="gsap-reveal grid gap-5 border-t-2 border-[var(--ink)] py-8 md:grid-cols-[9rem_1fr] lg:grid-cols-[9rem_1fr_15rem] lg:gap-10"
+          className="grid gap-5 border-t-2 border-[var(--ink)] py-8 md:grid-cols-[9rem_1fr] lg:grid-cols-[9rem_1fr_15rem] lg:gap-10"
         >
           <div aria-hidden className="flex items-center gap-3 text-[var(--ink)] md:flex-col md:items-start">
             <svg width="48" height="48" viewBox="0 0 48 48">
@@ -589,7 +589,7 @@ function StrategyGlyph({ kind }: { kind: "break" | "styles" | "delay" }) {
 /** The five philosophies from Week 01, reduced to the step this slide names. */
 function ConceptStep() {
   return (
-    <div aria-hidden className="gsap-reveal grid w-full grid-cols-[1fr_auto_1fr] items-stretch gap-4 md:gap-6">
+    <div aria-hidden className="grid w-full grid-cols-[1fr_auto_1fr] items-stretch gap-4 md:gap-6">
       <div className="border-t-2 border-[var(--rule-2)] pt-4">
         <span className="type-caption block tabular-nums !text-[var(--ink-3)]/70">04</span>
         <span className="mt-1 block text-[1.15rem] leading-tight text-[var(--ink-3)] md:text-[1.45rem]" style={SERIF}>
@@ -674,9 +674,9 @@ export default function Week2() {
           The Marketing Environment{" "}
           <span className="text-[var(--signal)]">and</span> Ethics
         </Title>
-        <p className="gsap-reveal type-caption mt-2">Davood Wadi, PhD</p>
+        <p className="type-caption mt-2">Davood Wadi, PhD</p>
 
-        <div className="gsap-reveal mt-14 w-full max-w-3xl space-y-5 text-center">
+        <div className="mt-14 w-full max-w-3xl space-y-5 text-center">
           <p className="type-lead !text-[var(--ink)]">
             Welcome to Week 2 of Introduction to Marketing.
           </p>
@@ -686,7 +686,7 @@ export default function Week2() {
           </p>
         </div>
 
-        <p className="gsap-reveal type-body mt-14 max-w-3xl border-t border-[var(--rule)] pt-8 text-center [&_a]:whitespace-nowrap">
+        <p className="type-body mt-14 max-w-3xl border-t border-[var(--rule)] pt-8 text-center [&_a]:whitespace-nowrap">
           We will cover{" "}
           <a href="#part-1" data-n="01" className="toc-link">
             micro and macro-environmental factors
@@ -755,7 +755,7 @@ export default function Week2() {
             </P>
           </Ruled>
           <Ruled tone="signal" weight="thick">
-            <p className="gsap-reveal type-h2 !font-normal">
+            <p className="type-h2 !font-normal">
               Marketers must be environmental trend trackers and opportunity
               seekers.
             </p>
@@ -914,7 +914,7 @@ export default function Week2() {
         </Prompt>
         <ol
           aria-hidden
-          className="gsap-reveal mt-10 grid w-full max-w-5xl grid-cols-3 border-l border-t border-[var(--counter-line)] md:grid-cols-6"
+          className="mt-10 grid w-full max-w-5xl grid-cols-3 border-l border-t border-[var(--counter-line)] md:grid-cols-6"
         >
           {FORCES.map((name) => (
             <li
@@ -994,7 +994,7 @@ export default function Week2() {
             </P>
           </Ruled>
           <Ruled tone="counter" weight="thick">
-            <p className="gsap-reveal type-h2 !font-normal">
+            <p className="type-h2 !font-normal">
               Transparency and authentic action are the only cures for
               greenwashing.
             </p>
@@ -1029,7 +1029,7 @@ export default function Week2() {
           <Term tone="ink">everyone in the organization</Term> must follow.
         </Lead>
         <div className="mt-14">
-          <p className="gsap-reveal type-label !text-[var(--ink-3)]">
+          <p className="type-label !text-[var(--ink-3)]">
             These policies cover
           </p>
           <ol className="mt-5 grid w-full gap-x-10 border-t-2 border-[var(--ink)] sm:grid-cols-2 lg:grid-cols-3">
@@ -1044,7 +1044,7 @@ export default function Week2() {
               <li
                 key={n}
                 data-n={n}
-                className="num-item gsap-reveal border-b border-[var(--rule)] py-6 type-h2 !font-normal"
+                className="num-item border-b border-[var(--rule)] py-6 type-h2 !font-normal"
               >
                 {" "}
                 {item}
@@ -1063,7 +1063,7 @@ export default function Week2() {
         <Heading>Deceptive Practices</Heading>
         <div className="grid w-full gap-14 lg:grid-cols-2">
           <div className="flex min-w-0 flex-col">
-            <div aria-hidden className="gsap-reveal type-label mb-5 border-t-2 border-[var(--signal)] pt-4">
+            <div aria-hidden className="type-label mb-5 border-t-2 border-[var(--signal)] pt-4">
               Deceptive pricing
             </div>
             <Plate>
@@ -1076,7 +1076,7 @@ export default function Week2() {
             </P>
           </div>
           <div className="flex min-w-0 flex-col">
-            <div aria-hidden className="gsap-reveal type-label mb-5 border-t-2 border-[var(--signal)] pt-4">
+            <div aria-hidden className="type-label mb-5 border-t-2 border-[var(--signal)] pt-4">
               Deceptive promotion
             </div>
             <Plate>
@@ -1113,7 +1113,7 @@ export default function Week2() {
         <Figure height="auto">
           <PressureOverTime />
         </Figure>
-        <p className="gsap-reveal type-h2 !font-normal max-w-[48ch]">
+        <p className="type-h2 !font-normal max-w-[48ch]">
           High-pressure selling yields{" "}
           <span className="text-[var(--signal)]">short-term gains</span> but
           damages{" "}
@@ -1135,7 +1135,7 @@ export default function Week2() {
           <ObsolescenceLifespans />
         </Figure>
         <div className="w-full">
-          <p className="gsap-reveal type-label !text-[var(--ink-3)]">
+          <p className="type-label !text-[var(--ink-3)]">
             Strategies include
           </p>
           <ol className="mt-5 grid w-full gap-x-10 border-t-2 border-[var(--ink)] md:grid-cols-3">
@@ -1148,7 +1148,7 @@ export default function Week2() {
             ).map(([kind, item]) => (
               <li
                 key={kind}
-                className="gsap-reveal border-b border-[var(--rule)] py-6 type-h2 !font-normal md:border-b-0"
+                className="border-b border-[var(--rule)] py-6 type-h2 !font-normal md:border-b-0"
               >
                 {" "}
                 <StrategyGlyph kind={kind} />
@@ -1183,7 +1183,7 @@ export default function Week2() {
           <GenerationsBand />
         </Figure>
         <div className="mt-4 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,22rem)_1fr] lg:gap-14">
-          <p className="gsap-reveal type-h2 !font-normal">
+          <p className="type-h2 !font-normal">
             It goes beyond the marketing concept to adopt a{" "}
             <span className="text-[var(--signal)]">
               societal marketing concept
@@ -1216,7 +1216,7 @@ export default function Week2() {
           ].map((item, i) => (
             <li
               key={i}
-              className="gsap-reveal flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
+              className="flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
             >
               <div aria-hidden className="flex items-center justify-between">
                 <span

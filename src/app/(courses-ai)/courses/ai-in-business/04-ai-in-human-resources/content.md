@@ -25,7 +25,7 @@ week: "04-ai-in-human-resources"
 - Cost gains often come from automation in screening, scheduling, document handling, policy support, and case triage.
 - Risk reduction comes from earlier detection of compliance gaps, pay inequities, burnout signals, and inconsistent manager behavior.
 
-## Module I: Foundations [no-quiz]
+## Module I: Foundations [no-exercise]
 - This module frames HR as a domain of classification, prediction, optimization, summarization, and governed judgment.
 - The aim is to separate genuinely high-value applications from uses that create administrative speed but strategic harm.
 
@@ -49,7 +49,7 @@ week: "04-ai-in-human-resources"
 - Some apparent gains are misleading if they reduce candidate quality, intensify bias, or create compliance rework later.
 - Executives need metrics that connect HR automation to enterprise outcomes rather than only transactional throughput.
 
-## Module II: Recruiting and Talent Access [no-quiz]
+## Module II: Recruiting and Talent Access [no-exercise]
 - This module examines how AI changes sourcing, screening, interviews, and recruiting operations.
 - The central challenge is improving speed and fit while preserving fairness, transparency, and labor-market credibility.
 
@@ -79,7 +79,7 @@ week: "04-ai-in-human-resources"
 - Clear documentation is essential when vendors supply the model logic but the employer carries the employment risk.
 - Discussion: Should an employer accept a materially faster recruiting process if the scoring logic remains only partially explainable to candidates, managers, and legal reviewers?
 
-## Module III: Workforce Planning and Organizational Design [no-quiz]
+## Module III: Workforce Planning and Organizational Design [no-exercise]
 - This module focuses on how AI supports workforce forecasting, staffing, skills visibility, and retention planning.
 - The managerial objective is to align labor supply, capability needs, and organizational resilience under changing business conditions.
 
@@ -110,7 +110,7 @@ week: "04-ai-in-human-resources"
 - These insights can improve succession planning, team design, integration after restructuring, and leadership visibility into how work actually flows.
 - Network analytics must be handled carefully because behavioral visibility can quickly be perceived as surveillance if governance is weak.
 
-## Module IV: Learning, Development, and Performance [no-quiz]
+## Module IV: Learning, Development, and Performance [no-exercise]
 - This module examines how AI supports capability building, managerial coaching, performance review quality, and reward decisions.
 - The strategic theme is moving from generic HR programs to more targeted workforce development without reducing people to narrow metrics.
 
@@ -141,7 +141,7 @@ week: "04-ai-in-human-resources"
 - Used poorly, the same tools can create fear, gaming behavior, and degraded trust across the workforce.
 - Discussion: Where is the boundary between legitimate operational analytics and unacceptable employee surveillance in knowledge-intensive work?
 
-## Module V: Employee Listening, DEI, and Compliance [no-quiz]
+## Module V: Employee Listening, DEI, and Compliance [no-exercise]
 - This module addresses employee sentiment, inclusion analytics, case management, and legal boundaries.
 - The challenge is interpreting workforce signals responsibly without overclaiming what the data actually means.
 
@@ -166,7 +166,7 @@ week: "04-ai-in-human-resources"
 - Leaders should assume that technically possible analysis is often broader than legally or ethically acceptable analysis.
 - Discussion: Which categories of workforce data should remain off-limits for predictive modeling even if they would improve forecast accuracy or managerial control?
 
-## Module VI: Governance and the Strategic Operating Model [no-quiz]
+## Module VI: Governance and the Strategic Operating Model [no-exercise]
 - This final module focuses on how organizations scale HR AI responsibly across policy, technology, operating model, and trust.
 - The strategic differentiator is disciplined governance and adoption, not isolated pilots with impressive demonstrations.
 

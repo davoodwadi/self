@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import {
   Slide,
   SlideDeck,
@@ -64,60 +64,6 @@ const hash = (n: number) => {
   return v - Math.floor(v);
 };
 
-/**
- * Reveal — the deck's single entrance. Opacity plus eight pixels of rise,
- * fired once when the element crosses into view. `delay` staggers siblings.
- */
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  as: Tag = "div",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-  as?: "div" | "li" | "p" | "span" | "figure";
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    if (typeof IntersectionObserver === "undefined") {
-      const frame = requestAnimationFrame(() => setShown(true));
-      return () => cancelAnimationFrame(frame);
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setShown(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <Tag
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      className={className}
-      style={{
-        opacity: shown ? 1 : 0,
-        transform: shown ? "none" : "translateY(8px)",
-        transition: `opacity 700ms ease-out ${delay}ms, transform 700ms ease-out ${delay}ms`,
-      }}
-    >
-      {children}
-    </Tag>
-  );
-}
-
 /** Eyebrow plus slide heading, the masthead every content slide opens with. */
 function Head({
   eyebrow,
@@ -129,7 +75,7 @@ function Head({
   signal?: boolean;
 }) {
   return (
-    <Reveal>
+    <div>
       <div
         className={`${MICRO} ${
           signal ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
@@ -140,7 +86,7 @@ function Head({
       <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
         {children}
       </h2>
-    </Reveal>
+    </div>
   );
 }
 
@@ -166,19 +112,16 @@ function PartPlate({
   return (
     <Slide id={id} border align="left" quizData={quizData}>
       <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-        <Reveal>
+        <div>
           <div aria-hidden>
             <div className={`${MICRO} text-[var(--champagne)]`}>Part</div>
             <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
               {numeral}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal
-          delay={140}
-          className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16"
-        >
+        <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
           <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
             <span className="sr-only">{`Part ${numeral}: `}</span>
             {title}
@@ -194,7 +137,7 @@ function PartPlate({
               {line}
             </p>
           ))}
-        </Reveal>
+        </div>
       </div>
     </Slide>
   );
@@ -204,20 +147,18 @@ function PartPlate({
 /** Discussion prompt, set apart in the deck's one ruled frame. */
 function Discussion({
   children,
-  delay,
 }: {
   children: React.ReactNode;
-  delay: number;
 }) {
   return (
-    <Reveal delay={delay} className="w-full">
+    <div className="w-full">
       <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
         <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
         <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
           {children}
         </p>
       </aside>
-    </Reveal>
+    </div>
   );
 }
 
@@ -350,23 +291,23 @@ export default function Week05OperationsSupplyChain() {
           05
         </span>
 
-        <Reveal>
+        <div>
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
             <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 05
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={120}>
+        <div>
           <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-black leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
             AI in Operations and{" "}
             <span className="text-[var(--crimson)]">Supply Chain</span>
           </h1>
-        </Reveal>
+        </div>
 
-        <Reveal delay={240} className="w-full">
+        <div className="w-full">
           <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
           <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
             Moving from reactive logistics to predictive network optimization.
@@ -378,9 +319,9 @@ export default function Week05OperationsSupplyChain() {
               strikeLeft
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={360} className="w-full">
+        <div className="w-full">
           <p className="mt-10 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
             Building resilient, efficient, and autonomous supply networks.
           </p>
@@ -404,9 +345,9 @@ export default function Week05OperationsSupplyChain() {
               </span>
             ))}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={480} className="w-full">
+        <div className="w-full">
           <div className="mt-14 flex w-full flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               Davood Wadi, PhD
@@ -417,7 +358,7 @@ export default function Week05OperationsSupplyChain() {
               BUSI 654 · Applications of AI in Business
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       <PartPlate
@@ -440,7 +381,7 @@ export default function Week05OperationsSupplyChain() {
       <Slide id="global-complexity" border align="left">
         <Head eyebrow="Opening">The Complexity of Global Operations</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Modern supply chains are highly interconnected networks spanning
             multiple continents and regulatory zones.
@@ -515,9 +456,9 @@ export default function Week05OperationsSupplyChain() {
               );
             })()}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-14">
             <div>
               <p className={BODY}>
@@ -654,9 +595,9 @@ export default function Week05OperationsSupplyChain() {
               />
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Simplified assumptions"
@@ -668,7 +609,7 @@ export default function Week05OperationsSupplyChain() {
               without relying on simplified assumptions.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -688,7 +629,7 @@ export default function Week05OperationsSupplyChain() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <div className={`${MICRO} text-[var(--champagne)]`}>
               Traditional operations research
             </div>
@@ -723,9 +664,9 @@ export default function Week05OperationsSupplyChain() {
                 strokeOpacity="0.15"
               />
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={260}>
+          <div>
             <div className={`${MICRO} text-[var(--crimson)]`}>AI systems</div>
             <p className={`${BODY} mt-4`}>
               AI systems continuously learn from new data, dynamically adjusting
@@ -769,10 +710,10 @@ export default function Week05OperationsSupplyChain() {
                 NEW DATA
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_30rem] md:gap-14">
             <p className={LEAD}>
               Deep learning handles non-linear relationships that traditional
@@ -839,7 +780,7 @@ export default function Week05OperationsSupplyChain() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -853,23 +794,23 @@ export default function Week05OperationsSupplyChain() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <div className={`${MICRO} text-[var(--champagne)]`}>Reactive</div>
             <p className={`${BODY} mt-4`}>
               Historical supply chains focused on reacting quickly to
               disruptions after they occurred.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <div className={`${MICRO} text-[var(--crimson)]`}>Predictive</div>
             <p className={`${BODY} mt-4`}>
               Predictive models analyze leading indicators to forecast
               disruptions weeks before they impact operations.
             </p>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <figure aria-hidden className="mt-10 w-full max-w-5xl">
             <svg viewBox="0 0 800 160" className="w-full" fill="none">
               <path
@@ -971,9 +912,9 @@ export default function Week05OperationsSupplyChain() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <Split
               left="Crisis management"
@@ -985,7 +926,7 @@ export default function Week05OperationsSupplyChain() {
               strategic scenario planning.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -997,14 +938,14 @@ export default function Week05OperationsSupplyChain() {
           Data: The Core of Operations AI
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Machine learning models require vast amounts of high-quality data
             to optimize supply chains effectively.
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Sources include IoT sensors, ERP systems, supplier portals, and
@@ -1069,9 +1010,9 @@ export default function Week05OperationsSupplyChain() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="grid max-w-4xl grid-cols-4">
               {[0, 1, 2, 3].map((d) => (
@@ -1102,9 +1043,9 @@ export default function Week05OperationsSupplyChain() {
               barrier to successful AI implementation.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           When supply chain partners refuse to share their operational data, how
           can a lead firm build accurate predictive models?
         </Discussion>
@@ -1130,7 +1071,7 @@ export default function Week05OperationsSupplyChain() {
         <Head eyebrow="Demand sensing">Beyond Historical Averages</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <div className={`${MICRO} text-[var(--champagne)]`}>
               Traditional forecasting
             </div>
@@ -1139,8 +1080,8 @@ export default function Week05OperationsSupplyChain() {
               and seasonal trends.
             </p>
             <Terms items={["historical sales data", "seasonal trends"]} />
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <div className={`${MICRO} text-[var(--crimson)]`}>
               AI-driven demand sensing
             </div>
@@ -1156,10 +1097,10 @@ export default function Week05OperationsSupplyChain() {
                 "economic indicators",
               ]}
             />
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${LEAD} max-w-4xl`}>
               Neural networks can detect subtle patterns in consumer behavior
@@ -1262,7 +1203,7 @@ export default function Week05OperationsSupplyChain() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1281,7 +1222,7 @@ export default function Week05OperationsSupplyChain() {
           Mitigating the Bullwhip Effect
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             The bullwhip effect occurs when small fluctuations in retail demand
             cause progressively larger fluctuations upstream.
@@ -1345,9 +1286,9 @@ export default function Week05OperationsSupplyChain() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               AI algorithms can share real-time demand signals across all tiers
@@ -1398,9 +1339,9 @@ export default function Week05OperationsSupplyChain() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <figure aria-hidden className="w-full">
               <svg viewBox="0 0 800 100" className="w-full" fill="none">
@@ -1449,9 +1390,9 @@ export default function Week05OperationsSupplyChain() {
               short-term spikes by separating noise from structural shifts.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           How does algorithmic demand visibility reshape the balance of power
           between mega-retailers and tier-two suppliers?
         </Discussion>
@@ -1472,7 +1413,7 @@ export default function Week05OperationsSupplyChain() {
         <Head eyebrow="Stock that moves">Dynamic Inventory Optimization</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <div className={`${MICRO} text-[var(--champagne)]`}>Static</div>
             <p className={`${BODY} mt-4`}>
               Maintaining static safety stock levels leads to either excess
@@ -1551,9 +1492,9 @@ export default function Week05OperationsSupplyChain() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
 
-          <Reveal delay={260}>
+          <div>
             <div className={`${MICRO} text-[var(--crimson)]`}>Dynamic</div>
             <p className={`${BODY} mt-4`}>
               AI dynamically adjusts optimal inventory targets based on
@@ -1610,10 +1551,10 @@ export default function Week05OperationsSupplyChain() {
             <Terms
               items={["real-time demand probabilities", "supplier lead times"]}
             />
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <svg
               aria-hidden
@@ -1689,7 +1630,7 @@ export default function Week05OperationsSupplyChain() {
               across the entire distribution network simultaneously.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1700,7 +1641,7 @@ export default function Week05OperationsSupplyChain() {
       <Slide id="time-series" border align="left">
         <Head eyebrow="Under the hood">Deep Learning for Time-Series Data</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Recurrent Neural Networks and Transformer architectures excel at
             predicting sequential time-series data.
@@ -1754,9 +1695,9 @@ export default function Week05OperationsSupplyChain() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               These models can forecast multiple related SKUs simultaneously,
@@ -1820,9 +1761,9 @@ export default function Week05OperationsSupplyChain() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <figure aria-hidden className="w-full">
               <svg viewBox="0 0 800 120" className="w-full" fill="none">
@@ -1869,7 +1810,7 @@ export default function Week05OperationsSupplyChain() {
               structural market breaks occur.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       <PartPlate
@@ -1892,7 +1833,7 @@ export default function Week05OperationsSupplyChain() {
       <Slide id="routing-at-scale" border align="left">
         <Head eyebrow="Routing">Solving Complex Routing at Scale</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             The Traveling Salesperson Problem becomes exponentially harder with
             thousands of deliveries and dynamic constraints.
@@ -1989,9 +1930,9 @@ export default function Week05OperationsSupplyChain() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               AI algorithms process traffic patterns, vehicle capacities, and
@@ -2009,9 +1950,9 @@ export default function Week05OperationsSupplyChain() {
               className="mt-6 max-w-4xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <svg
               aria-hidden
@@ -2094,7 +2035,7 @@ export default function Week05OperationsSupplyChain() {
               road closures while vehicles are already in transit.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2112,7 +2053,7 @@ export default function Week05OperationsSupplyChain() {
           Autonomous Vehicles and Last-Mile Delivery
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             The &quot;last mile&quot; represents the most expensive and
             inefficient segment of the supply chain.
@@ -2168,9 +2109,9 @@ export default function Week05OperationsSupplyChain() {
               LAST MILE
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Computer vision and reinforcement learning are enabling autonomous
@@ -2202,9 +2143,9 @@ export default function Week05OperationsSupplyChain() {
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
             <div>
               <Steps
@@ -2276,7 +2217,7 @@ export default function Week05OperationsSupplyChain() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2289,7 +2230,7 @@ export default function Week05OperationsSupplyChain() {
           Predictive Maintenance in Fleet Management
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Traditional fleet maintenance relies on fixed schedules based on
             mileage or time.
@@ -2332,9 +2273,9 @@ export default function Week05OperationsSupplyChain() {
               MILEAGE OR TIME
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               AI analyzes IoT sensor data from engines, brakes, and transmissions
@@ -2406,9 +2347,9 @@ export default function Week05OperationsSupplyChain() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <Split
               left="Unplanned downtime"
@@ -2420,7 +2361,7 @@ export default function Week05OperationsSupplyChain() {
               operational lifespan of expensive capital assets.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       <PartPlate
@@ -2446,7 +2387,7 @@ export default function Week05OperationsSupplyChain() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <div className={`${MICRO} text-[var(--champagne)]`}>
               Traditionally
             </div>
@@ -2454,8 +2395,8 @@ export default function Week05OperationsSupplyChain() {
               Procurement teams traditionally assess supplier risk through
               annual audits and financial reviews.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <div className={`${MICRO} text-[var(--crimson)]`}>
               Continuously
             </div>
@@ -2466,10 +2407,10 @@ export default function Week05OperationsSupplyChain() {
             <Terms
               items={["global news", "geopolitical events", "financial filings"]}
             />
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <svg
             aria-hidden
             viewBox="0 0 800 120"
@@ -2525,9 +2466,9 @@ export default function Week05OperationsSupplyChain() {
               );
             })}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <div
               aria-hidden
@@ -2577,7 +2518,7 @@ export default function Week05OperationsSupplyChain() {
               unstructured data sources across multiple languages.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2596,7 +2537,7 @@ export default function Week05OperationsSupplyChain() {
           NLP for Contract and Spend Analysis
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Large organizations often have thousands of unstandardized supplier
             contracts spread across different regions.
@@ -2627,9 +2568,9 @@ export default function Week05OperationsSupplyChain() {
               );
             })}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               AI extracts key terms, compliance clauses, and pricing structures
@@ -2711,9 +2652,9 @@ export default function Week05OperationsSupplyChain() {
               ))}
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <svg
               aria-hidden
@@ -2807,9 +2748,9 @@ export default function Week05OperationsSupplyChain() {
               maverick spend and consolidation opportunities.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           If an AI flags a critical supplier as high risk based on unverified
           news sentiment, should procurement immediately halt orders?
         </Discussion>
@@ -2825,7 +2766,7 @@ export default function Week05OperationsSupplyChain() {
           Multi-Tier Supply Chain Visibility
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Most companies only have visibility into their direct tier-one
             suppliers.
@@ -2968,9 +2909,9 @@ export default function Week05OperationsSupplyChain() {
               );
             })()}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               AI maps complex sub-tier supplier networks by analyzing shipping
@@ -2980,14 +2921,14 @@ export default function Week05OperationsSupplyChain() {
               items={["shipping manifests", "public records", "payment flows"]}
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-12 max-w-4xl`}>
             Graph neural networks identify hidden choke points where multiple
             tier-one suppliers rely on the same tier-three component factory.
           </p>
-        </Reveal>
+        </div>
       </Slide>
 
       <PartPlate
@@ -3011,7 +2952,7 @@ export default function Week05OperationsSupplyChain() {
           The AI-Powered Distribution Center
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Modern warehouses use AI to orchestrate the movement of goods,
             robots, and human workers simultaneously.
@@ -3080,9 +3021,9 @@ export default function Week05OperationsSupplyChain() {
               SIMULTANEOUSLY
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Algorithms optimize slotting by predicting which products will be
@@ -3109,9 +3050,9 @@ export default function Week05OperationsSupplyChain() {
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
             <p className={DISPLAY}>
               Reinforcement learning models continuously refine warehouse layout
@@ -3176,7 +3117,7 @@ export default function Week05OperationsSupplyChain() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3189,7 +3130,7 @@ export default function Week05OperationsSupplyChain() {
           Computer Vision for Quality Control
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Manual quality inspection is slow, expensive, and prone to human
             fatigue.
@@ -3204,9 +3145,9 @@ export default function Week05OperationsSupplyChain() {
               </span>
             ))}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Computer vision models inspect products moving on high-speed
@@ -3297,9 +3238,9 @@ export default function Week05OperationsSupplyChain() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <Steps
               items={[
@@ -3317,7 +3258,7 @@ export default function Week05OperationsSupplyChain() {
               compliance, and ensure packaging integrity in milliseconds.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3330,7 +3271,7 @@ export default function Week05OperationsSupplyChain() {
           Collaborative Robotics and Human Synergy
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <div className="mt-10 w-full max-w-5xl">
             <Split
               left="Replacing them entirely"
@@ -3342,9 +3283,9 @@ export default function Week05OperationsSupplyChain() {
               associates rather than replacing them entirely.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               AI coordinates the hand-off between autonomous mobile robots and
@@ -3416,9 +3357,9 @@ export default function Week05OperationsSupplyChain() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div
               aria-hidden
@@ -3451,9 +3392,9 @@ export default function Week05OperationsSupplyChain() {
               items={["wearable devices", "algorithmic task assignment"]}
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Does algorithmic task assignment turn human warehouse workers into
           mechanical extensions of the AI, and what are the ethical
           implications?
@@ -3470,7 +3411,7 @@ export default function Week05OperationsSupplyChain() {
           Digital Twins for Facility Layouts
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             A digital twin is a virtual simulation of a physical warehouse or
             factory.
@@ -3579,9 +3520,9 @@ export default function Week05OperationsSupplyChain() {
               REAL-TIME IOT DATA
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <Split
               left="Disrupting actual operations"
@@ -3593,14 +3534,14 @@ export default function Week05OperationsSupplyChain() {
               layouts and processes without disrupting actual operations.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-12 max-w-4xl`}>
             The twin ingests real-time IoT data to accurately mirror the current
             state and predict the impact of bottlenecks.
           </p>
-        </Reveal>
+        </div>
       </Slide>
 
       <PartPlate
@@ -3623,7 +3564,7 @@ export default function Week05OperationsSupplyChain() {
       <Slide id="carbon-footprint" border align="left">
         <Head eyebrow="Emissions">Optimizing the Carbon Footprint</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Supply chains account for the vast majority of a modern
             corporation&apos;s total carbon emissions.
@@ -3642,9 +3583,9 @@ export default function Week05OperationsSupplyChain() {
             </div>
             <Schematic className="mt-2" />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Route optimization algorithms explicitly minimize fuel consumption
@@ -3654,9 +3595,9 @@ export default function Week05OperationsSupplyChain() {
               <Split left="Just delivery time" right="Fuel consumption" />
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <figure aria-hidden className="max-w-4xl">
               <div className="grid grid-cols-[8rem_1fr] items-end gap-4 border-b border-[var(--charcoal)]/15 pb-2">
@@ -3707,7 +3648,7 @@ export default function Week05OperationsSupplyChain() {
               different sourcing scenarios before making purchasing decisions.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3720,14 +3661,14 @@ export default function Week05OperationsSupplyChain() {
           AI in Reverse Logistics and Returns
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Processing product returns is a highly complex, labor-intensive
             operational challenge.
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Computer vision systems automatically assess the condition of
@@ -3825,9 +3766,9 @@ export default function Week05OperationsSupplyChain() {
               ))}
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <figure aria-hidden className="w-full">
               <svg viewBox="0 0 800 130" className="w-full" fill="none">
@@ -3888,7 +3829,7 @@ export default function Week05OperationsSupplyChain() {
               capacity.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3913,17 +3854,15 @@ export default function Week05OperationsSupplyChain() {
               excess: "38%",
               excessLabel: "Overproduction",
               terms: ["material waste", "energy consumption"],
-              delay: 140,
             },
             {
               line: "Precision demand forecasting directly reduces the amount of unsold inventory that ends up in landfills.",
               excess: "8%",
               excessLabel: "Unsold inventory",
               terms: ["landfills"],
-              delay: 280,
             },
           ].map((panel, p) => (
-            <Reveal key={panel.excessLabel} delay={panel.delay}>
+            <div key={panel.excessLabel}>
               <p className={BODY}>{panel.line}</p>
               <figure aria-hidden className="mt-6">
                 {p === 1 && (
@@ -3966,11 +3905,11 @@ export default function Week05OperationsSupplyChain() {
                 <Schematic className="mt-1" />
               </figure>
               <Terms items={panel.terms} />
-            </Reveal>
+            </div>
           ))}
         </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Spoilage"
@@ -3982,7 +3921,7 @@ export default function Week05OperationsSupplyChain() {
               spoilage by optimizing the flow of perishable goods.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       <PartPlate
@@ -4006,7 +3945,7 @@ export default function Week05OperationsSupplyChain() {
           The Black Box Problem in Operations
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Deep learning models often lack transparency in how they arrive at
             specific operational recommendations.
@@ -4069,9 +4008,9 @@ export default function Week05OperationsSupplyChain() {
               RECOMMENDATIONS
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${LEAD} max-w-4xl`}>
               Supply chain planners hesitate to execute multi-million dollar
@@ -4079,9 +4018,9 @@ export default function Week05OperationsSupplyChain() {
               rationale.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <svg
               aria-hidden
@@ -4141,7 +4080,7 @@ export default function Week05OperationsSupplyChain() {
               human operators and algorithmic systems.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -4159,7 +4098,7 @@ export default function Week05OperationsSupplyChain() {
           Overcoming Data Silos and Legacy Systems
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Many organizations rely on decades-old ERP systems that cannot
             integrate easily with modern AI platforms.
@@ -4218,9 +4157,9 @@ export default function Week05OperationsSupplyChain() {
               strokeWidth="2"
             />
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Master data management is a prerequisite for AI, requiring massive
@@ -4274,9 +4213,9 @@ export default function Week05OperationsSupplyChain() {
               </span>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <svg
               aria-hidden
@@ -4341,7 +4280,7 @@ export default function Week05OperationsSupplyChain() {
               bridge the gap between legacy databases and cloud-based AI.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -4354,7 +4293,7 @@ export default function Week05OperationsSupplyChain() {
           Cybersecurity in Connected Networks
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_24rem] md:gap-14">
             <p className={BODY}>
               As supply chains become more interconnected and automated, their
@@ -4400,9 +4339,9 @@ export default function Week05OperationsSupplyChain() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               AI systems are used to detect anomalous network traffic and
@@ -4446,9 +4385,9 @@ export default function Week05OperationsSupplyChain() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <svg
               aria-hidden
@@ -4515,9 +4454,9 @@ export default function Week05OperationsSupplyChain() {
               attacks designed to manipulate forecasting or routing data.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Who is liable when a third-party AI optimization tool is breached,
           causing a systemic shutdown of your logistics network?
         </Discussion>
@@ -4530,7 +4469,7 @@ export default function Week05OperationsSupplyChain() {
       <Slide id="human-ai-transition" border align="left">
         <Head eyebrow="People">The Human-AI Transition in Operations</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <div className="mt-10 w-full max-w-5xl">
             <Split
               left="Manual planner"
@@ -4542,9 +4481,9 @@ export default function Week05OperationsSupplyChain() {
               planner to algorithm manager.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Organizations must invest heavily in upskilling their workforce to
@@ -4560,9 +4499,9 @@ export default function Week05OperationsSupplyChain() {
               className="mt-6 max-w-4xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <div
               aria-hidden
@@ -4583,7 +4522,7 @@ export default function Week05OperationsSupplyChain() {
               underlying technology itself.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -4608,7 +4547,7 @@ export default function Week05OperationsSupplyChain() {
           Conclusion: The Autonomous Supply Chain
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <ol
             aria-hidden
             className="mt-11 grid w-full max-w-3xl grid-cols-2 gap-y-5 sm:grid-cols-4"
@@ -4629,7 +4568,7 @@ export default function Week05OperationsSupplyChain() {
               ),
             )}
           </ol>
-        </Reveal>
+        </div>
 
         <ol className="mt-10 w-full max-w-4xl">
           {[
@@ -4637,7 +4576,7 @@ export default function Week05OperationsSupplyChain() {
             "While fully autonomous operations are years away, targeted AI deployments are already creating massive competitive advantages.",
             "Operations management is fundamentally transitioning from an execution discipline to a data science discipline.",
           ].map((line, i) => (
-            <Reveal key={line} as="li" delay={280 + i * 130} className="block">
+            <li key={line} className="block">
               <div className="grid grid-cols-[4ch_1fr] gap-6 border-t border-[var(--charcoal)]/12 py-7 md:grid-cols-[5ch_1fr] md:gap-10">
                 <span className={`${MICRO} pt-3 text-[var(--crimson)]`}>
                   {pad(i + 1)}
@@ -4646,11 +4585,11 @@ export default function Week05OperationsSupplyChain() {
                   {line}
                 </p>
               </div>
-            </Reveal>
+            </li>
           ))}
         </ol>
 
-        <Reveal delay={700} className="w-full">
+        <div className="w-full">
           <div className="mt-12 flex w-full max-w-4xl flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               End of Week 05
@@ -4661,7 +4600,7 @@ export default function Week05OperationsSupplyChain() {
               Davood Wadi, PhD · BUSI 654
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
     </SlideDeck>
   );

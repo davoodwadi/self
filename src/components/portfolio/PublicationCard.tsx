@@ -1,5 +1,4 @@
 import { PillBadge } from "@/components/portfolio/PillBadge";
-import { FadeUp } from "@/components/portfolio/FadeUp";
 
 type PublicationCardProps = {
   venue: string;
@@ -19,7 +18,7 @@ export function PublicationCard({
   href,
 }: PublicationCardProps) {
   return (
-    <FadeUp className="glass-card p-6 rounded-xl flex flex-col justify-between group">
+    <div className="glass-card p-6 rounded-xl flex flex-col justify-between group">
       <div className="relative">
         <div className="flex items-center gap-3 mb-4">
           <PillBadge variant="publication">{venue}</PillBadge>
@@ -43,6 +42,6 @@ export function PublicationCard({
       <p className="text-muted italic mt-auto pt-4 divider relative z-0">
         {authors}
       </p>
-    </FadeUp>
+    </div>
   );
 }

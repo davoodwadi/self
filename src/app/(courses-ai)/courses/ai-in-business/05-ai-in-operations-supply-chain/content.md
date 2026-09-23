@@ -10,12 +10,12 @@ week: "05-ai-in-operations-supply-chain"
 - Moving from reactive logistics to predictive network optimization.
 - Building resilient, efficient, and autonomous supply networks.
 
-## Part 1: The Modern Supply Chain Context [no-quiz]
+## Part 1: The Modern Supply Chain Context [no-exercise]
 - Exploring the foundations of global operational complexity.
 - Identifying the limitations of traditional planning systems.
 - Defining the role of artificial intelligence in physical logistics.
 
-## The Complexity of Global Operations [quiz]
+## The Complexity of Global Operations [exercise]
 - Modern supply chains are highly interconnected networks spanning multiple continents and regulatory zones.
 - Traditional spreadsheet-based planning cannot process the volume of variables required for global optimization.
 - Disruptions cascade rapidly through the system due to lean inventory practices and just-in-time manufacturing.
@@ -37,17 +37,17 @@ week: "05-ai-in-operations-supply-chain"
 - Data silos between different departments remain the primary barrier to successful AI implementation.
 - Discussion: When supply chain partners refuse to share their operational data, how can a lead firm build accurate predictive models?
 
-## Part 2: Demand Sensing and Forecasting [no-quiz]
+## Part 2: Demand Sensing and Forecasting [no-exercise]
 - Moving beyond historical sales averages.
 - Incorporating external variables into demand models.
 - Addressing systemic supply chain phenomena using algorithms.
 
-## Beyond Historical Averages [quiz]
+## Beyond Historical Averages [exercise]
 - Traditional forecasting relies heavily on historical sales data and seasonal trends.
 - AI-driven demand sensing incorporates real-time signals like social media sentiment, weather forecasts, and economic indicators.
 - Neural networks can detect subtle patterns in consumer behavior that indicate a shift in demand long before it hits the sales ledger.
 
-## Mitigating the Bullwhip Effect [quiz]
+## Mitigating the Bullwhip Effect [exercise]
 - The bullwhip effect occurs when small fluctuations in retail demand cause progressively larger fluctuations upstream.
 - AI algorithms can share real-time demand signals across all tiers of the supply network simultaneously.
 - Predictive analytics prevent manufacturers from overreacting to short-term spikes by separating noise from structural shifts.
@@ -63,12 +63,12 @@ week: "05-ai-in-operations-supply-chain"
 - These models can forecast multiple related SKUs simultaneously, capturing cannibalization and halo effects between products.
 - Advanced models automatically adjust their parameters when structural market breaks occur.
 
-## Part 3: Logistics and Network Optimization [no-quiz]
+## Part 3: Logistics and Network Optimization [no-exercise]
 - Solving complex routing challenges at a massive scale.
 - Utilizing real-time data for dynamic transport adaptability.
 - The impact of predictive maintenance on fleet operations.
 
-## Solving Complex Routing at Scale [quiz]
+## Solving Complex Routing at Scale [exercise]
 - The Traveling Salesperson Problem becomes exponentially harder with thousands of deliveries and dynamic constraints.
 - AI algorithms process traffic patterns, vehicle capacities, and delivery windows to generate optimal routes in seconds.
 - Continuous re-optimization allows fleets to adapt to new orders or road closures while vehicles are already in transit.
@@ -78,17 +78,17 @@ week: "05-ai-in-operations-supply-chain"
 - Computer vision and reinforcement learning are enabling autonomous delivery drones and sidewalk robots.
 - These technologies promise to reduce labor costs and enable hyper-local, continuous delivery networks.
 
-## Predictive Maintenance in Fleet Management [quiz]
+## Predictive Maintenance in Fleet Management [exercise]
 - Traditional fleet maintenance relies on fixed schedules based on mileage or time.
 - AI analyzes IoT sensor data from engines, brakes, and transmissions to predict component failures before they happen.
 - This approach minimizes unplanned downtime and extends the operational lifespan of expensive capital assets.
 
-## Part 4: Intelligent Procurement [no-quiz]
+## Part 4: Intelligent Procurement [no-exercise]
 - Automating supplier evaluation and spend analysis.
 - Enhancing visibility deep into the supplier network.
 - Proactively managing global supply risks.
 
-## Proactive Supplier Risk Management [quiz]
+## Proactive Supplier Risk Management [exercise]
 - Procurement teams traditionally assess supplier risk through annual audits and financial reviews.
 - AI systems continuously monitor global news, geopolitical events, and financial filings to flag emerging supplier risks.
 - Natural Language Processing extracts risk indicators from unstructured data sources across multiple languages.
@@ -104,7 +104,7 @@ week: "05-ai-in-operations-supply-chain"
 - AI maps complex sub-tier supplier networks by analyzing shipping manifests, public records, and payment flows.
 - Graph neural networks identify hidden choke points where multiple tier-one suppliers rely on the same tier-three component factory.
 
-## Part 5: Warehouse Automation and Vision [no-quiz]
+## Part 5: Warehouse Automation and Vision [no-exercise]
 - The transition to AI-powered distribution centers.
 - Implementing computer vision for automated quality control.
 - The synergy between human workers and collaborative robotics.
@@ -114,7 +114,7 @@ week: "05-ai-in-operations-supply-chain"
 - Algorithms optimize slotting by predicting which products will be ordered together and placing them in proximity.
 - Reinforcement learning models continuously refine warehouse layout rules based on evolving order profiles.
 
-## Computer Vision for Quality Control [quiz]
+## Computer Vision for Quality Control [exercise]
 - Manual quality inspection is slow, expensive, and prone to human fatigue.
 - Computer vision models inspect products moving on high-speed conveyors with sub-millimeter precision.
 - These systems detect microscopic defects, verify labeling compliance, and ensure packaging integrity in milliseconds.
@@ -125,12 +125,12 @@ week: "05-ai-in-operations-supply-chain"
 - Wearable devices and algorithmic task assignment reduce physical strain on workers while improving efficiency.
 - Discussion: Does algorithmic task assignment turn human warehouse workers into mechanical extensions of the AI, and what are the ethical implications?
 
-## Digital Twins for Facility Layouts [quiz]
+## Digital Twins for Facility Layouts [exercise]
 - A digital twin is a virtual simulation of a physical warehouse or factory.
 - Operations managers use these AI-driven simulations to test new layouts and processes without disrupting actual operations.
 - The twin ingests real-time IoT data to accurately mirror the current state and predict the impact of bottlenecks.
 
-## Part 6: Sustainability and Circularity [no-quiz]
+## Part 6: Sustainability and Circularity [no-exercise]
 - Leveraging algorithms to reduce the environmental impact of operations.
 - Managing the complexities of reverse logistics.
 - Driving the transition toward a circular economy.
@@ -140,7 +140,7 @@ week: "05-ai-in-operations-supply-chain"
 - Route optimization algorithms explicitly minimize fuel consumption rather than just delivery time.
 - AI models help procurement teams evaluate the carbon impact of different sourcing scenarios before making purchasing decisions.
 
-## AI in Reverse Logistics and Returns [quiz]
+## AI in Reverse Logistics and Returns [exercise]
 - Processing product returns is a highly complex, labor-intensive operational challenge.
 - Computer vision systems automatically assess the condition of returned goods to determine if they should be restocked, refurbished, or recycled.
 - Predictive models anticipate return volumes based on product characteristics and seasonal trends, optimizing reverse network capacity.
@@ -150,12 +150,12 @@ week: "05-ai-in-operations-supply-chain"
 - Precision demand forecasting directly reduces the amount of unsold inventory that ends up in landfills.
 - In the food and beverage industry, AI tracking algorithms minimize spoilage by optimizing the flow of perishable goods.
 
-## Part 7: Risks and Implementation Strategies [no-quiz]
+## Part 7: Risks and Implementation Strategies [no-exercise]
 - Addressing the operational challenges of AI adoption.
 - Overcoming data silos and legacy infrastructure.
 - Navigating the cybersecurity landscape of connected networks.
 
-## The Black Box Problem in Operations [quiz]
+## The Black Box Problem in Operations [exercise]
 - Deep learning models often lack transparency in how they arrive at specific operational recommendations.
 - Supply chain planners hesitate to execute multi-million dollar inventory decisions without understanding the underlying rationale.
 - Explainable AI techniques are critical for building trust between human operators and algorithmic systems.

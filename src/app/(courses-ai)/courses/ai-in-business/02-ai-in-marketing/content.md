@@ -10,7 +10,7 @@ week: "02-ai-in-marketing"
 - Week 02 in Applications of AI in Business
 - Framing marketing as a coordinated system of sensing, deciding, acting, and learning
 
-## Why Marketing Became a Machine Learning Domain [quiz]
+## Why Marketing Became a Machine Learning Domain [exercise]
 - Modern marketing generates granular data from search, commerce, media, CRM, service, and product usage.
 - Many marketing choices are repeated allocation decisions, making them suitable for prediction, ranking, optimization, and experimentation.
 - The strategic question is not where to "use AI" in isolation, but which customer and budget decisions should be machine-assisted.
@@ -20,7 +20,7 @@ week: "02-ai-in-marketing"
 - AI can support each stage only when firms define the decision, the data, the action, and the success metric.
 - This lifecycle view prevents leaders from reducing AI to content generation alone.
 
-## Module I: Sensing Demand and Consumers [no-quiz]
+## Module I: Sensing Demand and Consumers [no-exercise]
 - This section focuses on how firms infer needs, patterns, and heterogeneous customer value.
 - The core managerial issue is signal quality: which data should guide segmentation, targeting, and positioning decisions.
 
@@ -29,7 +29,7 @@ week: "02-ai-in-marketing"
 - AI helps convert noisy text, image, and behavioral data into themes, sentiment patterns, emerging needs, and friction points.
 - Insight quality still depends on sampling logic, data provenance, and the difference between what consumers say and what they actually do.
 
-## Segmentation Beyond Static Demographics [quiz]
+## Segmentation Beyond Static Demographics [exercise]
 - AI-based segmentation groups customers using behavior, value, needs, responsiveness, or risk instead of relying only on age or income.
 - Useful segments are stable enough to act on, distinct enough to prioritize, and explainable enough for managers to deploy.
 - More segments are not always better; excessive granularity can raise complexity without improving decisions.
@@ -44,7 +44,7 @@ week: "02-ai-in-marketing"
 - This supports faster refinement of value propositions, creative briefs, and channel-specific narratives.
 - Positioning remains a strategic choice; models can detect patterns, but leadership must decide what the brand should stand for.
 
-## Module II: Personalization and Commercial Engines [no-quiz]
+## Module II: Personalization and Commercial Engines [no-exercise]
 - This section moves from insight generation to individual-level treatment decisions in commerce and promotion.
 - The central issue is balancing relevance, revenue, and brand coherence across millions of interactions.
 
@@ -54,7 +54,7 @@ week: "02-ai-in-marketing"
 - Over-personalization can feel intrusive, narrow exploration, and erode trust if consumers perceive manipulation.
 - Discussion: Where should a firm draw the line between helpful relevance and surveillance-like personalization in its category?
 
-## Recommendation Systems in Commerce [quiz]
+## Recommendation Systems in Commerce [exercise]
 - Recommendation systems rank products, services, or content by expected relevance under business constraints such as inventory, margin, or strategic assortment.
 - In practice, leaders must decide whether the system should maximize immediate conversion, long-term value, basket size, or discovery.
 - Poorly designed recommenders can create filter bubbles, over-promote familiar items, and suppress strategic new offerings.
@@ -75,7 +75,7 @@ week: "02-ai-in-marketing"
 - The managerial challenge is to separate economically rational price adaptation from practices that damage trust or invite regulatory scrutiny.
 - Discussion: In which categories does dynamic pricing strengthen value capture, and in which categories does it undermine customer relationships?
 
-## Module III: Measurement and Learning [no-quiz]
+## Module III: Measurement and Learning [no-exercise]
 - This section addresses how firms learn which actions actually caused performance changes.
 - The executive problem is not data scarcity, but false certainty from dashboards that confuse correlation with causal lift.
 
@@ -89,7 +89,7 @@ week: "02-ai-in-marketing"
 - Automated bidding can outperform manual rules in volatile environments, but it also makes logic less visible to managers.
 - The right control model depends on market speed, data quality, and the cost of overspending on weak signals.
 
-## Experimentation and Incrementality [quiz]
+## Experimentation and Incrementality [exercise]
 - Experiments remain the cleanest way to estimate whether a campaign, offer, or message caused additional behavior rather than simply capturing existing demand.
 - AI can help identify who to test, which treatments to compare, and when results are strong enough to act on.
 - Organizations that skip experimentation often mistake optimized delivery for genuine value creation.
@@ -106,7 +106,7 @@ week: "02-ai-in-marketing"
 - Mature organizations use measurement as a portfolio of lenses rather than insisting that one model resolve every disagreement.
 - Discussion: If attribution and marketing mix models point to different budget decisions, which one should leadership trust and why?
 
-## Module IV: Relationship Systems and Governance [no-quiz]
+## Module IV: Relationship Systems and Governance [no-exercise]
 - This section shifts from acquisition to customer relationship management, service, and institutional safeguards.
 - The main question is how to automate relationship decisions without weakening trust or accountability.
 
@@ -115,7 +115,7 @@ week: "02-ai-in-marketing"
 - The goal is to coordinate journeys across channels so that customers experience continuity rather than disconnected campaigns.
 - Orchestration quality depends on clean event data, identity resolution, and explicit business priorities such as retention, cross-sell, or service recovery.
 
-## Retention, Churn, and Customer Lifetime Value [quiz]
+## Retention, Churn, and Customer Lifetime Value [exercise]
 - Retention models help identify who is at risk, who is worth saving, and which intervention is economically justified.
 - Customer lifetime value is most useful when it informs resource allocation, not when it becomes a decorative dashboard metric.
 - The managerial danger is treating predicted value as destiny and underinvesting in customers whose future potential can still be shaped.
@@ -126,7 +126,7 @@ week: "02-ai-in-marketing"
 - Full automation is rarely the objective; the better design question is which intents can be resolved safely and which require human judgment.
 - Discussion: Which customer moments in your organization should remain human-led even if conversational AI becomes fast and accurate?
 
-## Privacy, Consent, and Trust Architecture [quiz]
+## Privacy, Consent, and Trust Architecture [exercise]
 - Marketing AI depends on customer data, identity linkage, and behavioral inference, making governance a core design requirement rather than a legal afterthought.
 - Leaders must decide what data is appropriate to collect, how consent is expressed, how models are audited, and when data use becomes reputationally unacceptable.
 - Privacy-preserving measurement, data minimization, and transparent value exchange are increasingly strategic capabilities.
@@ -137,11 +137,11 @@ week: "02-ai-in-marketing"
 - Responsible marketing requires explicit guardrails on objectives, audience exclusions, escalation, and review.
 - Discussion: Should a model be considered successful if it increases conversion by exploiting behavioral vulnerability that a human marketer would judge inappropriate?
 
-## Module V: Organizational Implications [no-quiz]
+## Module V: Organizational Implications [no-exercise]
 - The final section considers the operating model required to deploy AI across marketing responsibly.
 - Technology decisions matter, but organizational design usually determines whether promised value is realized.
 
-## Marketing Operating Model for AI [quiz]
+## Marketing Operating Model for AI [exercise]
 - High-performing firms pair marketing, analytics, data engineering, product, legal, and service teams around shared customer outcomes.
 - The key design choice is where decisions should be centralized for governance and where they should be decentralized for speed and domain expertise.
 - AI maturity in marketing is ultimately an operating model question, not only a tooling question.

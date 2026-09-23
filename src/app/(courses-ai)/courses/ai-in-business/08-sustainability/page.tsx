@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import {
   Slide,
   SlideDeck,
@@ -82,60 +82,6 @@ const headDown = (x: number, y: number) => `M${x - 5} ${y - 8}l5 8l5-8`;
 const headUp = (x: number, y: number) => `M${x - 5} ${y + 8}l5-8l5 8`;
 
 /**
- * Reveal — the deck's single entrance. Opacity plus eight pixels of rise,
- * fired once when the element crosses into view. `delay` staggers siblings.
- */
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  as: Tag = "div",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-  as?: "div" | "li" | "p" | "span" | "figure";
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    if (typeof IntersectionObserver === "undefined") {
-      const frame = requestAnimationFrame(() => setShown(true));
-      return () => cancelAnimationFrame(frame);
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setShown(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <Tag
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      className={className}
-      style={{
-        opacity: shown ? 1 : 0,
-        transform: shown ? "none" : "translateY(8px)",
-        transition: `opacity 700ms ease-out ${delay}ms, transform 700ms ease-out ${delay}ms`,
-      }}
-    >
-      {children}
-    </Tag>
-  );
-}
-
-/**
  * Eyebrow plus slide heading. When a heading opens with a "Label:" prefix, the
  * prefix is set as a crimson italic kicker on its own line, inside the same h2
  * so the heading still reads as one sentence.
@@ -150,7 +96,7 @@ function Head({
   children: React.ReactNode;
 }) {
   return (
-    <Reveal>
+    <div>
       <div className={`${MICRO} text-[var(--champagne)]`}>{eyebrow}</div>
       <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
         {kicker && (
@@ -162,47 +108,43 @@ function Head({
         )}
         {children}
       </h2>
-    </Reveal>
+    </div>
   );
 }
 
 /** Discussion prompt, set apart in the deck's one ruled frame. */
 function Discussion({
   children,
-  delay,
 }: {
   children: React.ReactNode;
-  delay: number;
 }) {
   return (
-    <Reveal delay={delay} className="w-full">
+    <div className="w-full">
       <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
         <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
         <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
           {children}
         </p>
       </aside>
-    </Reveal>
+    </div>
   );
 }
 
 /** The question each topic closes on: an open hairline, lighter than a frame. */
 function Question({
   children,
-  delay,
 }: {
   children: React.ReactNode;
-  delay: number;
 }) {
   return (
-    <Reveal delay={delay} className="w-full">
+    <div className="w-full">
       <div className="mt-14 grid w-full max-w-4xl gap-3 border-t border-[var(--charcoal)]/20 pt-6 md:grid-cols-[7rem_1fr] md:gap-8">
         <div className={`${MICRO} pt-2 text-[var(--champagne)]`}>Question</div>
         <p className="font-serif text-lg italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
           {children}
         </p>
       </div>
-    </Reveal>
+    </div>
   );
 }
 
@@ -377,17 +319,15 @@ function Schematic({ className = "mt-1" }: { className?: string }) {
 /** One numbered measure: numeral, its sentence, and its own small figure. */
 function Measure({
   n,
-  delay,
   figure,
   children,
 }: {
   n: number;
-  delay: number;
   figure: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
-    <Reveal as="li" delay={delay} className="block">
+    <li className="block">
       <div className="grid gap-5 border-t border-[var(--charcoal)]/12 py-8 md:grid-cols-[4ch_1fr_17rem] md:items-center md:gap-10">
         <span className={`${MICRO} text-[var(--crimson)] md:self-start md:pt-2`}>
           {pad(n)}
@@ -397,7 +337,7 @@ function Measure({
           {figure}
         </div>
       </div>
-    </Reveal>
+    </li>
   );
 }
 
@@ -424,19 +364,16 @@ function PartPlate({
   return (
     <Slide id={id} border align="left" quizData={quizData}>
       <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-        <Reveal>
+        <div>
           <div aria-hidden>
             <div className={`${MICRO} text-[var(--champagne)]`}>Part</div>
             <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
               {numeral}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal
-          delay={140}
-          className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16"
-        >
+        <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
           <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
             <span className="sr-only">{`Part ${numeral}: `}</span>
             {title}
@@ -452,11 +389,11 @@ function PartPlate({
               {line}
             </p>
           ))}
-        </Reveal>
+        </div>
       </div>
 
       <div className="w-full md:pl-[14rem]">
-        <Discussion delay={280}>{discussion}</Discussion>
+        <Discussion>{discussion}</Discussion>
       </div>
     </Slide>
   );
@@ -596,33 +533,33 @@ export default function Week08Sustainability() {
       <Slide id="title" align="left" className="relative overflow-hidden">
         <Mesh />
 
-        <Reveal className="relative">
+        <div className="relative">
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
             <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 08
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={120} className="relative">
+        <div className="relative">
           <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.25rem,6.2vw,4.75rem)] font-black leading-[0.95] tracking-[-0.035em] text-[var(--charcoal)]">
             The Dual Nature of Artificial Intelligence:{" "}
             <span className="mt-5 block text-[0.6em] font-normal italic leading-[1.1] tracking-[-0.02em] text-[var(--crimson)]">
               Environmental Costs and Sustainable Solutions
             </span>
           </h1>
-        </Reveal>
+        </div>
 
-        <Reveal delay={240} className="relative w-full">
+        <div className="relative w-full">
           <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
           <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
             Exploring the complex relationship between AI and environmental
             sustainability
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={360} className="relative w-full">
+        <div className="relative w-full">
           <div className="mt-10 grid max-w-4xl gap-8 md:grid-cols-2 md:gap-12">
             <div>
               <p className="font-serif text-lg leading-relaxed text-[var(--charcoal)] md:text-xl">
@@ -645,9 +582,9 @@ export default function Week08Sustainability() {
               </p>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={480} className="relative w-full">
+        <div className="relative w-full">
           <div className="mt-14 flex w-full flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               Davood Wadi, PhD
@@ -658,7 +595,7 @@ export default function Week08Sustainability() {
               BUSI 654 · Applications of AI in Business
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -669,7 +606,7 @@ export default function Week08Sustainability() {
       <Slide id="paradox" border align="left">
         <Head eyebrow="Opening">The AI Sustainability Paradox</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             AI acts as both a climate savior and a significant environmental
             burden
@@ -695,9 +632,9 @@ export default function Week08Sustainability() {
               ENVIRONMENTAL BURDEN
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Advanced models optimize energy grids but consume vast resources
@@ -710,9 +647,9 @@ export default function Week08Sustainability() {
               />
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               The industry faces a critical pivot point between &quot;Red
@@ -745,9 +682,9 @@ export default function Week08Sustainability() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={560}>
+        <Question>
           How can we reconcile these opposing forces in the era of Generative
           AI?
         </Question>
@@ -774,7 +711,7 @@ export default function Week08Sustainability() {
       <Slide id="hidden-cost" border align="left">
         <Head eyebrow="Part 1 · 01 / 08">The Hidden Cost of Compute</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Operational carbon splits into training and inference emissions
           </p>
@@ -799,18 +736,18 @@ export default function Week08Sustainability() {
               INFERENCE EMISSIONS
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <Stat value="550" unit="metric tons of CO2e" />
             <p className={`${BODY} mt-6`}>
               Training a model like GPT-3 emitted over 550 metric tons of CO2e
               <Cite n={[2, 3]} />
             </p>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <figure aria-hidden className="w-full">
               <svg viewBox="0 0 400 120" className="w-full" fill="none">
                 <rect x="20" y="88" width="8" height="8" fill="var(--charcoal)" fillOpacity="0.7" />
@@ -835,10 +772,10 @@ export default function Week08Sustainability() {
             <p className={`${BODY} mt-5`}>
               Newer models likely exceed these figures by orders of magnitude
             </p>
-          </Reveal>
+          </div>
         </div>
 
-        <Question delay={520}>
+        <Question>
           Why is transparency regarding training data becoming a rarity?
         </Question>
       </Slide>
@@ -853,7 +790,7 @@ export default function Week08Sustainability() {
           The Sleeping Giant
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Inference constitutes the majority of lifecycle emissions for
             deployed models
@@ -872,9 +809,9 @@ export default function Week08Sustainability() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <div className="grid gap-8 md:grid-cols-2 md:gap-14">
               <p className={BODY}>
@@ -909,9 +846,9 @@ export default function Week08Sustainability() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={420}>
+        <Question>
           How does the aggregate impact of billions of daily queries change our
           sustainability strategy?
         </Question>
@@ -933,29 +870,23 @@ export default function Week08Sustainability() {
         </Head>
 
         <div className="mt-11 grid w-full max-w-5xl gap-10 md:grid-cols-3 md:gap-0">
-          <Reveal delay={140} className="md:pr-10">
+          <div className="md:pr-10">
             <Stat value="0.24" unit="Wh" size="md" />
             <p className={`${BODY} mt-6`}>
               Median Gemini App text prompt consumes 0.24 Wh of energy
               <Cite n={[4, 5]} />
             </p>
-          </Reveal>
+          </div>
 
-          <Reveal
-            delay={260}
-            className="md:border-l md:border-[var(--charcoal)]/10 md:px-10"
-          >
+          <div className="md:border-l md:border-[var(--charcoal)]/10 md:px-10">
             <Stat value="0.03" unit="grams of CO2e" size="md" />
             <p className={`${BODY} mt-6`}>
               Emissions per prompt are roughly 0.03 grams of CO2e
               <Cite n={[4, 5]} />
             </p>
-          </Reveal>
+          </div>
 
-          <Reveal
-            delay={380}
-            className="md:border-l md:border-[var(--charcoal)]/10 md:pl-10"
-          >
+          <div className="md:border-l md:border-[var(--charcoal)]/10 md:pl-10">
             <svg
               aria-hidden
               viewBox="0 0 280 132"
@@ -995,10 +926,10 @@ export default function Week08Sustainability() {
             <p className={`${BODY} mt-6`}>
               Comparable to running a 60W light bulb for about 14 seconds
             </p>
-          </Reveal>
+          </div>
         </div>
 
-        <Question delay={500}>
+        <Question>
           Is per-query efficiency enough to offset the explosive growth in
           total usage?
         </Question>
@@ -1013,7 +944,7 @@ export default function Week08Sustainability() {
           A Critical Metric
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <div className="mt-10 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_16rem] md:gap-14">
             <p className={LEAD}>
               Data centers require massive cooling systems to maintain
@@ -1043,29 +974,29 @@ export default function Week08Sustainability() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <Stat value="~700,000" unit="liters" size="md" />
             <p className={`${BODY} mt-6`}>
               Early estimates: GPT-3 training consumed ~700,000 liters of
               freshwater
               <Cite n={[1, 6]} />
             </p>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <Stat value="6.6 billion" unit="cubic meters" size="md" mark />
             <p className={`${BODY} mt-6`}>
               Global AI water demand could reach 6.6 billion cubic meters by
               2027
               <Cite n={[1, 6]} />
             </p>
-          </Reveal>
+          </div>
         </div>
 
-        <Question delay={520}>
+        <Question>
           What are the ethical implications of data centers in water-scarce
           regions?
         </Question>
@@ -1082,7 +1013,7 @@ export default function Week08Sustainability() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <svg
               aria-hidden
               viewBox="0 0 400 150"
@@ -1103,9 +1034,9 @@ export default function Week08Sustainability() {
               conversation&quot;
               <Cite n={[7, 8]} />
             </p>
-          </Reveal>
+          </div>
 
-          <Reveal delay={260} className={COL_RULE}>
+          <div className={COL_RULE}>
             <svg
               aria-hidden
               viewBox="0 0 400 150"
@@ -1128,10 +1059,10 @@ export default function Week08Sustainability() {
               efficiency
               <Cite n={[4, 5]} />
             </p>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <svg
               aria-hidden
@@ -1155,9 +1086,9 @@ export default function Week08Sustainability() {
               Efficiency gains fight against the sheer scale of deployment
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={540}>
+        <Question>
           How do we effectively communicate water impact to end-users?
         </Question>
       </Slide>
@@ -1172,7 +1103,7 @@ export default function Week08Sustainability() {
           Hardware Lifecycle and Embodied Carbon
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             &quot;Embodied footprint&quot; includes extraction, manufacturing,
             and disposal
@@ -1203,9 +1134,9 @@ export default function Week08Sustainability() {
               DISPOSAL
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Manufacturing AI accelerators is chemically intensive and
@@ -1214,9 +1145,9 @@ export default function Week08Sustainability() {
             </p>
             <Terms items={["chemically intensive", "energy-demanding"]} />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               2025 LCA shows efficiency gains can improve Compute Carbon
@@ -1250,9 +1181,9 @@ export default function Week08Sustainability() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={560}>
+        <Question>
           Should hardware longevity be prioritized over peak performance?
         </Question>
       </Slide>
@@ -1265,7 +1196,7 @@ export default function Week08Sustainability() {
       <Slide id="e-waste" border align="left">
         <Head eyebrow="Part 1 · 07 / 08">The E-Waste Challenge</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             AI hardware becomes obsolete faster than general-purpose servers
             <Cite n={[13, 15]} />
@@ -1292,18 +1223,18 @@ export default function Week08Sustainability() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <Stat value="62 million" unit="tonnes" size="md" />
             <p className={`${BODY} mt-6`}>
               Global e-waste reached 62 million tonnes in 2022
               <Cite n={[16]} />
             </p>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <svg
               aria-hidden
               viewBox="0 0 400 104"
@@ -1333,10 +1264,10 @@ export default function Week08Sustainability() {
               elements
               <Cite n={[16, 17]} />
             </p>
-          </Reveal>
+          </div>
         </div>
 
-        <Question delay={520}>
+        <Question>
           What policy mechanisms could enforce better recycling rates for AI
           hardware?
         </Question>
@@ -1350,7 +1281,7 @@ export default function Week08Sustainability() {
       <Slide id="data-center" border align="left">
         <Head eyebrow="Part 1 · 08 / 08">Data Center Innovation</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Shift toward liquid cooling: Direct-to-chip or immersion cooling
             <Cite n={[5]} />
@@ -1383,9 +1314,9 @@ export default function Week08Sustainability() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               DeepMind-style optimization reduces cooling energy by up to 40%
@@ -1408,9 +1339,9 @@ export default function Week08Sustainability() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Balancing Water Usage Effectiveness (WUE) against Power Usage
@@ -1454,9 +1385,9 @@ export default function Week08Sustainability() {
               ))}
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={560}>
+        <Question>
           Can data centers ever become truly &quot;net-positive&quot; for their
           local environments?
         </Question>
@@ -1483,7 +1414,7 @@ export default function Week08Sustainability() {
       <Slide id="weather" border align="left">
         <Head eyebrow="Part 2 · 01 / 04">Revolutionizing Weather Prediction</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             AI outperforms traditional Numerical Weather Prediction (NWP) in
             speed and efficiency
@@ -1492,10 +1423,10 @@ export default function Week08Sustainability() {
             <Split left="Numerical Weather Prediction (NWP)" right="AI" />
           </div>
           <Terms items={["speed", "efficiency"]} />
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               GraphCast: Predicts weather 10 days in advance with high accuracy
               <Cite n={[19]} />
@@ -1520,9 +1451,9 @@ export default function Week08Sustainability() {
                 10 DAYS IN ADVANCE
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Operates at 0.25-degree resolution using Graph Neural Networks
               <Cite n={[19]} />
@@ -1575,10 +1506,10 @@ export default function Week08Sustainability() {
                 GRAPH NEURAL NETWORKS
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Question delay={520}>
+        <Question>
           How does faster disaster prediction translate to tangible lives
           saved?
         </Question>
@@ -1597,7 +1528,7 @@ export default function Week08Sustainability() {
       >
         <Head eyebrow="Part 2 · 02 / 04">FourCastNet and Geometric ML</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <div className="mt-10 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_12rem] md:gap-14">
             <p className={LEAD}>
               NVIDIA&apos;s FourCastNet v3 uses Spherical Fourier Neural
@@ -1638,9 +1569,9 @@ export default function Week08Sustainability() {
               <circle cx="96" cy="75" r="66" stroke="var(--charcoal)" strokeOpacity="0.55" />
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Enables rapid ensemble forecasting to predict extreme weather
@@ -1675,9 +1606,9 @@ export default function Week08Sustainability() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <div aria-hidden className="max-w-3xl">
               <Split left="Supercomputers" right="A few GPUs" strikeLeft />
@@ -1688,9 +1619,9 @@ export default function Week08Sustainability() {
               <Cite n={[22]} />
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={560}>
+        <Question>
           What new applications emerge when weather forecasting becomes
           accessible to smaller organizations?
         </Question>
@@ -1704,7 +1635,7 @@ export default function Week08Sustainability() {
       <Slide id="renewable" border align="left">
         <Head eyebrow="Part 2 · 03 / 04">Optimizing Renewable Energy</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Integrating variable sources like wind and solar into the grid
           </p>
@@ -1744,10 +1675,10 @@ export default function Week08Sustainability() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               AI predicts solar irradiance and wind speeds with high precision
               <Cite n={[23]} />
@@ -1779,9 +1710,9 @@ export default function Week08Sustainability() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Reinforcement Learning manages Hybrid Energy Storage Systems
               (HESS)
@@ -1810,10 +1741,10 @@ export default function Week08Sustainability() {
                 HESS
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Question delay={520}>
+        <Question>
           Can AI be the key factor that allows grids to run on 100% renewable
           energy?
         </Question>
@@ -1833,7 +1764,7 @@ export default function Week08Sustainability() {
       >
         <Head eyebrow="Part 2 · 04 / 04">Precision Agriculture</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Maximizing yield while minimizing chemical inputs and water usage
           </p>
@@ -1873,10 +1804,10 @@ export default function Week08Sustainability() {
               </div>
             ))}
           </div>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Analysis of satellite imagery and soil sensors for Variable Rate
               Technology
@@ -1911,9 +1842,9 @@ export default function Week08Sustainability() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Smart irrigation systems optimize water delivery in real-time
               <Cite n={[27]} />
@@ -1942,10 +1873,10 @@ export default function Week08Sustainability() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
         </div>
 
-        <Question delay={520}>
+        <Question>
           How can we ensure smallholder farmers have access to these advanced
           tools?
         </Question>
@@ -1972,7 +1903,7 @@ export default function Week08Sustainability() {
         <Head eyebrow="Part 3 · 01 / 05">Red AI vs. Green AI</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Red AI: Buying performance with massive computational cost
               <Cite n={[29, 30]} />
@@ -2009,9 +1940,9 @@ export default function Week08Sustainability() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
 
-          <Reveal delay={260} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Green AI: Treating carbon efficiency as a primary evaluation
               metric
@@ -2040,10 +1971,10 @@ export default function Week08Sustainability() {
               <path d="M358 134l6 6l12-13" stroke="var(--crimson)" strokeWidth="2" />
               <path d="M0 162H400" stroke="var(--charcoal)" strokeOpacity="0.12" />
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <svg
               aria-hidden
@@ -2071,9 +2002,9 @@ export default function Week08Sustainability() {
               Decoupling AI progress from exponential resource consumption
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={540}>
+        <Question>
           What cultural shifts in research are needed to value efficiency as
           much as accuracy?
         </Question>
@@ -2096,7 +2027,6 @@ export default function Week08Sustainability() {
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
             n={1}
-            delay={140}
             figure={
               <svg viewBox="0 0 280 84" className="w-full" fill="none">
                 <text {...SVG_LABEL} x="0" y="10" fill="var(--charcoal)" fillOpacity="0.6">
@@ -2122,7 +2052,6 @@ export default function Week08Sustainability() {
 
           <Measure
             n={2}
-            delay={240}
             figure={
               <svg viewBox="0 0 280 118" className="w-full" fill="none">
                 {(() => {
@@ -2171,7 +2100,6 @@ export default function Week08Sustainability() {
 
           <Measure
             n={3}
-            delay={340}
             figure={
               <svg viewBox="0 0 280 110" className="w-full" fill="none">
                 <rect x="0.5" y="8.5" width="100" height="76" stroke="var(--charcoal)" strokeOpacity="0.55" />
@@ -2199,7 +2127,7 @@ export default function Week08Sustainability() {
           </Measure>
         </ol>
 
-        <Question delay={460}>
+        <Question>
           Is there a &quot;minimum viable precision&quot; for most business
           applications?
         </Question>
@@ -2214,15 +2142,15 @@ export default function Week08Sustainability() {
       <Slide id="slms" border align="left" quizData={quiz["slms"]}>
         <Head eyebrow="Part 3 · 03 / 05">Small Language Models (SLMs)</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             The &quot;Small is Sufficient&quot; trend: Using task-specific
             models
             <Cite n={[34]} />
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Adoption could save roughly 28% of global AI electricity by 2025
@@ -2245,9 +2173,9 @@ export default function Week08Sustainability() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Avoiding the use of massive generalist models for simple queries
@@ -2276,9 +2204,9 @@ export default function Week08Sustainability() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={560}>
+        <Question>
           Why do organizations still default to the largest available models?
         </Question>
       </Slide>
@@ -2291,7 +2219,7 @@ export default function Week08Sustainability() {
       <Slide id="neuromorphic" border align="left">
         <Head eyebrow="Part 3 · 04 / 05">Neuromorphic Computing</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Hardware inspired by the human brain&apos;s architecture
           </p>
@@ -2303,9 +2231,9 @@ export default function Week08Sustainability() {
             <span className="-ml-4 size-2 rotate-45 border-r border-t border-[var(--crimson)]" />
             <span className={`${MICRO} text-[var(--crimson)]`}>Hardware</span>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Spiking Neural Networks (SNNs): Neurons only consume energy when
@@ -2337,9 +2265,9 @@ export default function Week08Sustainability() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Eliminates the energy cost of moving data between memory and
@@ -2366,9 +2294,9 @@ export default function Week08Sustainability() {
               <path d="M386 42l28 28M414 42l-28 28" stroke="var(--crimson)" strokeWidth="2" />
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={560}>
+        <Question>
           How close are we to seeing neuromorphic chips in consumer devices?
         </Question>
       </Slide>
@@ -2386,7 +2314,7 @@ export default function Week08Sustainability() {
       >
         <Head eyebrow="Part 3 · 05 / 05">Neuromorphic Efficiency Gains</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <div
             aria-hidden
             className="mt-10 grid max-w-3xl grid-cols-2 gap-px bg-[var(--charcoal)]/10"
@@ -2406,9 +2334,9 @@ export default function Week08Sustainability() {
             Intel Loihi 2 and BrainChip Akida showing commercial viability
             <Cite n={[36, 37]} />
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Potential for 100x to 1000x efficiency gains in specific tasks
@@ -2450,18 +2378,18 @@ export default function Week08Sustainability() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Ideal for edge AI and sensory processing applications
             </p>
             <Terms items={["edge AI", "sensory processing applications"]} />
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={560}>
+        <Question>
           Will neuromorphic computing replace or augment traditional GPU
           architectures?
         </Question>
@@ -2487,7 +2415,7 @@ export default function Week08Sustainability() {
       <Slide id="circular" border align="left">
         <Head eyebrow="Part 4 · 01 / 08">AI and the Circular Economy</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <div className="mt-10 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_18rem] md:gap-14">
             <p className={LEAD}>
               Treating waste as a resource through better sorting and logistics
@@ -2544,9 +2472,9 @@ export default function Week08Sustainability() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               AI robotics sort waste streams with high speed and accuracy
@@ -2597,9 +2525,9 @@ export default function Week08Sustainability() {
               })()}
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_18rem] md:gap-14">
             <p className={BODY}>
               Digital Waste Passports track recovery of valuable materials
@@ -2627,9 +2555,9 @@ export default function Week08Sustainability() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={560}>
+        <Question>
           How can AI incentivize consumers to participate more effectively in
           recycling?
         </Question>
@@ -2644,7 +2572,7 @@ export default function Week08Sustainability() {
         <Head eyebrow="Part 4 · 02 / 08">Biodiversity Monitoring</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Passive Acoustic Monitoring (PAM) tracks species via soundscapes
               <Cite n={[44, 45]} />
@@ -2673,9 +2601,9 @@ export default function Week08Sustainability() {
                 SOUNDSCAPES
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={260} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Computer vision identifies species in real-time via camera traps
               <Cite n={[44, 46]} />
@@ -2712,19 +2640,19 @@ export default function Week08Sustainability() {
                 REAL-TIME
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Non-invasive methods for tracking elusive or endangered species
             </p>
             <Terms items={["non-invasive", "elusive", "endangered species"]} />
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={540}>
+        <Question>
           Can global biodiversity data be standardized to drive international
           policy?
         </Question>
@@ -2740,15 +2668,15 @@ export default function Week08Sustainability() {
           Article 40
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Mandates transparency regarding &quot;AI systems resource
             performance&quot;
             <Cite n={[48, 49]} />
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_11rem] md:gap-14">
             <p className={BODY}>
               General-Purpose AI providers must publish energy consumption data
@@ -2770,9 +2698,9 @@ export default function Week08Sustainability() {
               ))}
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Applies to models trained with more than 10^23 FLOPs
@@ -2813,9 +2741,9 @@ export default function Week08Sustainability() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={560}>
+        <Question>
           Will the EU&apos;s regulations become the de facto global standard for
           AI sustainability?
         </Question>
@@ -2830,7 +2758,7 @@ export default function Week08Sustainability() {
         <Head eyebrow="Part 4 · 04 / 08">ISO Standards and Frameworks</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <div aria-hidden className="border-t-2 border-[var(--charcoal)] pt-4">
               <div className={`${MICRO} text-[var(--champagne)]`}>ISO/IEC</div>
               <div
@@ -2845,9 +2773,9 @@ export default function Week08Sustainability() {
               sustainability
               <Cite n={[53]} />
             </p>
-          </Reveal>
+          </div>
 
-          <Reveal delay={260} className={COL_RULE}>
+          <div className={COL_RULE}>
             <div aria-hidden className="border-t-2 border-[var(--crimson)] pt-4">
               <div className={`${MICRO} text-[var(--champagne)]`}>
                 ISO/IEC TR
@@ -2864,10 +2792,10 @@ export default function Week08Sustainability() {
               <Cite n={[54, 55]} />
             </p>
             <Steps items={["energy", "water", "e-waste"]} cols="md:grid-cols-3" />
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left='Voluntary "greenwashing"'
@@ -2879,9 +2807,9 @@ export default function Week08Sustainability() {
               compliance
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={540}>
+        <Question>
           How can organizations prepare for these upcoming reporting
           requirements?
         </Question>
@@ -2895,7 +2823,7 @@ export default function Week08Sustainability() {
       <Slide id="measurement" border align="left">
         <Head eyebrow="Part 4 · 05 / 08">Measurement Tools</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <div
             aria-hidden
             className="mt-10 grid max-w-3xl grid-cols-2 gap-px bg-[var(--charcoal)]/10"
@@ -2916,10 +2844,10 @@ export default function Week08Sustainability() {
             emissions
             <Cite n={[3, 56]} />
           </p>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Compute Carbon Intensity (CCI) quantifies carbon per unit of work
               <Cite n={[11]} />
@@ -2944,9 +2872,9 @@ export default function Week08Sustainability() {
                 CCI
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Tools may underestimate true usage by missing overheads like
               cooling
@@ -2969,10 +2897,10 @@ export default function Week08Sustainability() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
         </div>
 
-        <Question delay={520}>
+        <Question>
           What is the margin of error we should accept in carbon accounting
           tools?
         </Question>
@@ -2997,7 +2925,6 @@ export default function Week08Sustainability() {
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
             n={1}
-            delay={140}
             figure={
               <svg viewBox="0 0 280 88" className="w-full" fill="none">
                 {[0, 72, 144].map((x) => (
@@ -3024,7 +2951,6 @@ export default function Week08Sustainability() {
 
           <Measure
             n={2}
-            delay={240}
             figure={
               <svg viewBox="0 0 280 92" className="w-full" fill="none">
                 <circle cx="70" cy="44" r="34" stroke="var(--charcoal)" strokeOpacity="0.35" strokeDasharray="3 4" />
@@ -3044,7 +2970,6 @@ export default function Week08Sustainability() {
 
           <Measure
             n={3}
-            delay={340}
             figure={
               <svg viewBox="0 0 280 112" className="w-full" fill="none">
                 <text {...SVG_LABEL} x="0" y="12" fill="var(--charcoal)" fillOpacity="0.6">
@@ -3073,7 +2998,7 @@ export default function Week08Sustainability() {
           </Measure>
         </ol>
 
-        <Question delay={460}>
+        <Question>
           How can individual developers influence organizational choice of
           models?
         </Question>
@@ -3092,7 +3017,6 @@ export default function Week08Sustainability() {
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
             n={1}
-            delay={140}
             figure={
               <svg viewBox="0 0 280 92" className="w-full" fill="none">
                 <text {...SVG_LABEL} x="0" y="50" fill="var(--charcoal)" fillOpacity="0.65">
@@ -3114,7 +3038,6 @@ export default function Week08Sustainability() {
 
           <Measure
             n={2}
-            delay={240}
             figure={
               <svg viewBox="0 0 280 92" className="w-full" fill="none">
                 <defs>
@@ -3156,7 +3079,6 @@ export default function Week08Sustainability() {
 
           <Measure
             n={3}
-            delay={340}
             figure={
               <svg viewBox="0 0 280 96" className="w-full" fill="none">
                 {[
@@ -3181,7 +3103,7 @@ export default function Week08Sustainability() {
           </Measure>
         </ol>
 
-        <Question delay={460}>
+        <Question>
           What are the risks of ignoring the environmental component of ESG
           goals?
         </Question>
@@ -3196,7 +3118,7 @@ export default function Week08Sustainability() {
         <Head eyebrow="Part 4 · 08 / 08">Future Directions</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Standardizing water reporting to prevent &quot;water washing&quot;
             </p>
@@ -3207,9 +3129,9 @@ export default function Week08Sustainability() {
                 strikeLeft
               />
             </div>
-          </Reveal>
+          </div>
 
-          <Reveal delay={260} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Hardware-software co-design for neuromorphic architectures
             </p>
@@ -3230,10 +3152,10 @@ export default function Week08Sustainability() {
                 SOFTWARE
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${DISPLAY} max-w-4xl`}>
               Mitigating Jevons Paradox: Efficiency leading to increased total
@@ -3254,9 +3176,9 @@ export default function Week08Sustainability() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
 
-        <Question delay={540}>
+        <Question>
           Can we innovate fast enough to outpace the environmental damage of
           scaling?
         </Question>
@@ -3280,16 +3202,16 @@ export default function Week08Sustainability() {
             "The shift to inference dominance demands new efficiency strategies",
             "Regulation and standards are transforming the industry",
           ].map((line, i) => (
-            <Reveal key={line} as="li" delay={140 + i * 110} className="block">
+            <li key={line} className="block">
               <div className="grid grid-cols-[4ch_1fr] items-baseline gap-6 border-t border-[var(--charcoal)]/12 py-6">
                 <span className={`${MICRO} text-[var(--champagne)]`}>
                   {pad(i + 1)}
                 </span>
                 <p className={LEAD}>{line}</p>
               </div>
-            </Reveal>
+            </li>
           ))}
-          <Reveal as="li" delay={480} className="block">
+          <li className="block">
             <div className="grid grid-cols-[4ch_1fr] items-baseline gap-6 border-y border-[var(--charcoal)]/30 py-9">
               <span className={`${MICRO} text-[var(--crimson)]`}>04</span>
               <p className={DISPLAY}>
@@ -3299,10 +3221,10 @@ export default function Week08Sustainability() {
                 </span>
               </p>
             </div>
-          </Reveal>
+          </li>
         </ol>
 
-        <Discussion delay={600}>
+        <Discussion>
           Which sustainability trade-off in AI deployment do you think business
           leaders underestimate most today?
         </Discussion>
@@ -3315,7 +3237,7 @@ export default function Week08Sustainability() {
       <Slide id="sources" border align="left">
         <Head eyebrow="References">Sources</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <ol className="mt-10 w-full max-w-5xl border-t border-[var(--charcoal)]/15">
             {SOURCES.map((s) => (
               <li
@@ -3341,9 +3263,9 @@ export default function Week08Sustainability() {
               </li>
             ))}
           </ol>
-        </Reveal>
+        </div>
 
-        <Discussion delay={280}>
+        <Discussion>
           Which source or framework would you prioritize if you had to build a
           sustainable AI policy for your organization this quarter?
         </Discussion>

@@ -123,7 +123,7 @@ function P({
   return (
     <p
       className={cn(
-        "gsap-reveal type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
+        "type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
         className,
       )}
     >
@@ -141,7 +141,7 @@ function Lead({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-lead max-w-[46ch]", className)}>
+    <p className={cn("type-lead max-w-[46ch]", className)}>
       {children}
     </p>
   );
@@ -156,7 +156,7 @@ function Statement({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-quote max-w-[30ch]", className)}>
+    <p className={cn("type-quote max-w-[30ch]", className)}>
       {children}
     </p>
   );
@@ -171,7 +171,7 @@ function Big({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-h2 !font-normal", className)}>
+    <p className={cn("type-h2 !font-normal", className)}>
       {children}
     </p>
   );
@@ -223,7 +223,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div className={cn("gsap-reveal min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
+    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -238,7 +238,7 @@ function Plate({
   className?: string;
 }) {
   return (
-    <div className={cn("gsap-reveal figure-well w-full p-3 sm:p-5", className)}>
+    <div className={cn("figure-well w-full p-3 sm:p-5", className)}>
       {children}
     </div>
   );
@@ -259,7 +259,7 @@ function Heading({
   tone?: "signal" | "counter";
 }) {
   return (
-    <div className="gsap-reveal w-full mb-8 md:mb-12">
+    <div className="w-full mb-8 md:mb-12">
       <h2 className="type-h1 max-w-[24ch]">
         {kicker ? (
           <>
@@ -283,7 +283,7 @@ function Heading({
 /** Discussion prompt. */
 function Prompt({ children }: { children: React.ReactNode }) {
   return (
-    <div className="gsap-reveal relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
+    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
       <p className="type-quote !text-[clamp(1.35rem,2.5vw,2.1rem)] max-w-[46ch]">
         {children}
       </p>
@@ -375,7 +375,7 @@ function SectionStrip({
   return (
     <ol
       aria-hidden
-      className={cn("gsap-reveal grid w-full grid-cols-4 gap-2 sm:gap-4", className)}
+      className={cn("grid w-full grid-cols-4 gap-2 sm:gap-4", className)}
     >
       {SECTIONS.map((name, i) => {
         const on = i === active;
@@ -430,7 +430,7 @@ const MODE_BORDER = [
 /** The three entry modes as glyphs; the one this slide covers is lit. */
 function ModeStrip({ active }: { active: number }) {
   return (
-    <ol aria-hidden className="gsap-reveal mb-10 grid w-full grid-cols-3 gap-3 sm:gap-5">
+    <ol aria-hidden className="mb-10 grid w-full grid-cols-3 gap-3 sm:gap-5">
       {MODES.map((m, i) => {
         const on = i === active;
         return (
@@ -460,7 +460,7 @@ function ModeStrip({ active }: { active: number }) {
 /** The four Ps, in the order the week adapts them; the current one is lit. */
 function MixStrip({ active }: { active: number }) {
   return (
-    <ol aria-hidden className="gsap-reveal mb-10 grid w-full grid-cols-4 gap-2 sm:gap-4">
+    <ol aria-hidden className="mb-10 grid w-full grid-cols-4 gap-2 sm:gap-4">
       {["Product", "Promotion", "Price", "Place"].map((p, i) => (
         <li
           key={p}
@@ -484,7 +484,7 @@ function WeekStrip() {
   return (
     <ol
       aria-hidden
-      className="gsap-reveal mx-auto mt-8 grid w-full max-w-2xl grid-cols-12 gap-1.5 sm:gap-2"
+      className="mx-auto mt-8 grid w-full max-w-2xl grid-cols-12 gap-1.5 sm:gap-2"
     >
       {Array.from({ length: 12 }, (_, i) => (
         <li
@@ -605,9 +605,9 @@ export default function Week12() {
           Global Marketing and{" "}
           <span className="text-[var(--signal)]">the Future of Marketing</span>
         </Title>
-        <p className="gsap-reveal type-caption mt-2">Davood Wadi, PhD</p>
+        <p className="type-caption mt-2">Davood Wadi, PhD</p>
 
-        <div className="gsap-reveal mt-14 w-full max-w-3xl space-y-4 text-center">
+        <div className="mt-14 w-full max-w-3xl space-y-4 text-center">
           <p className="type-lead !text-[var(--ink)]">
             Welcome to Week 12 of Introduction to Marketing.
           </p>
@@ -622,7 +622,7 @@ export default function Week12() {
           </p>
         </div>
 
-        <div className="gsap-reveal mt-12 w-full max-w-3xl border-t border-[var(--rule)] pt-8">
+        <div className="mt-12 w-full max-w-3xl border-t border-[var(--rule)] pt-8">
           <WeekStrip />
         </div>
       </Slide>
@@ -1504,7 +1504,7 @@ export default function Week12() {
           ].map((item, i) => (
             <li
               key={i}
-              className="gsap-reveal flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
+              className="flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
             >
               <div aria-hidden className="flex items-center justify-between">
                 <span

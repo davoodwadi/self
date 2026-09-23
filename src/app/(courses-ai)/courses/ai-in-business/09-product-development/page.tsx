@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import {
   Slide,
   SlideDeck,
@@ -77,60 +77,6 @@ const headRight = (x: number, y: number) => `M${x - 8} ${y - 5}l8 5l-8 5`;
 const headLeft = (x: number, y: number) => `M${x + 8} ${y - 5}l-8 5l8 5`;
 const headDown = (x: number, y: number) => `M${x - 5} ${y - 8}l5 8l5-8`;
 
-/**
- * Reveal — the deck's single entrance. Opacity plus eight pixels of rise,
- * fired once when the element crosses into view. `delay` staggers siblings.
- */
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  as: Tag = "div",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-  as?: "div" | "li" | "p" | "span" | "figure";
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    if (typeof IntersectionObserver === "undefined") {
-      const frame = requestAnimationFrame(() => setShown(true));
-      return () => cancelAnimationFrame(frame);
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setShown(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <Tag
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      className={className}
-      style={{
-        opacity: shown ? 1 : 0,
-        transform: shown ? "none" : "translateY(8px)",
-        transition: `opacity 700ms ease-out ${delay}ms, transform 700ms ease-out ${delay}ms`,
-      }}
-    >
-      {children}
-    </Tag>
-  );
-}
-
 /** Eyebrow plus slide heading. */
 function Head({
   eyebrow,
@@ -140,32 +86,30 @@ function Head({
   children: React.ReactNode;
 }) {
   return (
-    <Reveal>
+    <div>
       <div className={`${MICRO} text-[var(--champagne)]`}>{eyebrow}</div>
       <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
         {children}
       </h2>
-    </Reveal>
+    </div>
   );
 }
 
 /** Discussion prompt, set apart in the deck's one ruled frame. */
 function Discussion({
   children,
-  delay,
 }: {
   children: React.ReactNode;
-  delay: number;
 }) {
   return (
-    <Reveal delay={delay} className="w-full">
+    <div className="w-full">
       <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
         <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
         <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
           {children}
         </p>
       </aside>
-    </Reveal>
+    </div>
   );
 }
 
@@ -276,17 +220,15 @@ function Schematic({ className = "mt-1" }: { className?: string }) {
 /** One numbered measure: numeral, its sentence, and its own small figure. */
 function Measure({
   n,
-  delay,
   figure,
   children,
 }: {
   n: number;
-  delay: number;
   figure: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
-    <Reveal as="li" delay={delay} className="block">
+    <li className="block">
       <div className="grid gap-5 border-t border-[var(--charcoal)]/12 py-8 md:grid-cols-[4ch_1fr_17rem] md:items-center md:gap-10">
         <span className={`${MICRO} text-[var(--crimson)] md:self-start md:pt-2`}>
           {pad(n)}
@@ -296,7 +238,7 @@ function Measure({
           {figure}
         </div>
       </div>
-    </Reveal>
+    </li>
   );
 }
 
@@ -323,19 +265,16 @@ function PartPlate({
   return (
     <Slide id={id} border align="left" quizData={quizData}>
       <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-        <Reveal>
+        <div>
           <div aria-hidden>
             <div className={`${MICRO} text-[var(--champagne)]`}>Part</div>
             <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
               {numeral}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal
-          delay={140}
-          className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16"
-        >
+        <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
           <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
             <span className="sr-only">{`Part ${numeral}: `}</span>
             {title}
@@ -351,11 +290,11 @@ function PartPlate({
               {line}
             </p>
           ))}
-        </Reveal>
+        </div>
       </div>
 
       <div className="w-full md:pl-[14rem]">
-        <Discussion delay={280}>{discussion}</Discussion>
+        <Discussion>{discussion}</Discussion>
       </div>
     </Slide>
   );
@@ -476,22 +415,22 @@ export default function Week09ProductDevelopment() {
       <Slide id="title" align="left" className="relative overflow-hidden">
         <Wireframe />
 
-        <Reveal className="relative">
+        <div className="relative">
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
             <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 09
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={120} className="relative">
+        <div className="relative">
           <h1 className="mt-10 max-w-4xl font-serif text-[clamp(2.25rem,6.2vw,4.75rem)] font-black leading-[0.95] tracking-[-0.035em] text-[var(--charcoal)]">
             The Evolution of Product Development
           </h1>
-        </Reveal>
+        </div>
 
-        <Reveal delay={240} className="relative w-full">
+        <div className="relative w-full">
           <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
           <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
             From Computer-Aided Design to{" "}
@@ -499,9 +438,9 @@ export default function Week09ProductDevelopment() {
               Computer-Augmented Invention
             </span>
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={360} className="relative w-full">
+        <div className="relative w-full">
           <div className="mt-16 flex w-full flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               Davood Wadi, PhD
@@ -512,7 +451,7 @@ export default function Week09ProductDevelopment() {
               BUSI 654 · Applications of AI in Business
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -523,14 +462,14 @@ export default function Week09ProductDevelopment() {
       <Slide id="paradigm-shift" border align="left">
         <Head eyebrow="Opening">The Paradigm Shift</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Product development is undergoing a fundamental transformation.
           </p>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={260}>
+          <div>
             <p className={BODY}>
               Moving from isolated tasks to a reshaped lifecycle.
             </p>
@@ -587,9 +526,9 @@ export default function Week09ProductDevelopment() {
                 RESHAPED LIFECYCLE
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={380} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Covers the &quot;fuzzy front end&quot; of ideation to regulatory
               compliance.
@@ -622,10 +561,10 @@ export default function Week09ProductDevelopment() {
                 REGULATORY COMPLIANCE
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={500}>
+        <Discussion>
           How does &quot;augmented invention&quot; differ from traditional
           &quot;aided design&quot; in your view?
         </Discussion>
@@ -645,7 +584,7 @@ export default function Week09ProductDevelopment() {
         <Head eyebrow="Opening">Three Transformative Shifts</Head>
 
         <ol className="mt-11 grid w-full max-w-5xl gap-12 md:grid-cols-3 md:gap-0">
-          <Reveal as="li" delay={140} className="block md:pr-8">
+          <li className="block md:pr-8">
             <span className={`${MICRO} text-[var(--crimson)]`}>01</span>
             <svg
               aria-hidden
@@ -678,13 +617,9 @@ export default function Week09ProductDevelopment() {
             >
               Dynamic, self-learning models.
             </Labelled>
-          </Reveal>
+          </li>
 
-          <Reveal
-            as="li"
-            delay={260}
-            className="block md:border-l md:border-[var(--charcoal)]/10 md:px-8"
-          >
+          <li className="block md:border-l md:border-[var(--charcoal)]/10 md:px-8">
             <span className={`${MICRO} text-[var(--crimson)]`}>02</span>
             <figure aria-hidden className="mt-5 w-full max-w-[17.5rem]">
               <svg viewBox="0 0 280 116" className="w-full" fill="none">
@@ -709,13 +644,9 @@ export default function Week09ProductDevelopment() {
             >
               Beyond 3D printing.
             </Labelled>
-          </Reveal>
+          </li>
 
-          <Reveal
-            as="li"
-            delay={380}
-            className="block md:border-l md:border-[var(--charcoal)]/10 md:pl-8"
-          >
+          <li className="block md:border-l md:border-[var(--charcoal)]/10 md:pl-8">
             <span className={`${MICRO} text-[var(--crimson)]`}>03</span>
             <svg
               aria-hidden
@@ -745,10 +676,10 @@ export default function Week09ProductDevelopment() {
             >
               Automated, code-level governance.
             </Labelled>
-          </Reveal>
+          </li>
         </ol>
 
-        <Discussion delay={500}>
+        <Discussion>
           Which of these three shifts poses the greatest challenge to legacy
           organizations?
         </Discussion>
@@ -775,7 +706,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="divergent-convergent" border align="left">
         <Head eyebrow="Part 1 · 01 / 05">Divergent vs. Convergent Thinking</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             LLMs excel at expanding the solution space (&quot;persistence&quot;
             and &quot;flexibility&quot;)
@@ -807,10 +738,10 @@ export default function Week09ProductDevelopment() {
               SOLUTION SPACE
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Better at &quot;small ideas&quot; (incremental) than &quot;big
               ideas&quot; (paradigm shifts)
@@ -839,9 +770,9 @@ export default function Week09ProductDevelopment() {
                 BIG IDEAS
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Acting as co-creators to disrupt habitual thought patterns.
             </p>
@@ -867,10 +798,10 @@ export default function Week09ProductDevelopment() {
                 HABITUAL THOUGHT PATTERNS
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           Where should human designers intervene in the LLM ideation process?
         </Discussion>
       </Slide>
@@ -889,7 +820,7 @@ export default function Week09ProductDevelopment() {
       >
         <Head eyebrow="Part 1 · 02 / 05">Persona Simulation</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Simulating diverse user personas to stress-test concepts (e.g.,
             &quot;skeptical CTO&quot;).
@@ -941,10 +872,10 @@ export default function Week09ProductDevelopment() {
               DIVERSE USER PERSONAS
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Tools like Figr parse live web apps to build context-aware memory
               <Cite n={[3, 4]} />.
@@ -979,9 +910,9 @@ export default function Week09ProductDevelopment() {
                 CONTEXT-AWARE MEMORY
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Suggesting UX improvements grounded in specific design systems.
             </p>
@@ -1003,10 +934,10 @@ export default function Week09ProductDevelopment() {
                 DESIGN SYSTEMS
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           What are the risks of relying on simulated personas instead of real
           users?
         </Discussion>
@@ -1020,7 +951,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="market-trends" border align="left">
         <Head eyebrow="Part 1 · 03 / 05">Predictive Market Trends</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Moving from reactive analytics to predictive forecasting.
           </p>
@@ -1041,10 +972,10 @@ export default function Week09ProductDevelopment() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Identifying &quot;white space&quot; opportunities through
               unstructured data analysis.
@@ -1075,9 +1006,9 @@ export default function Week09ProductDevelopment() {
                 WHITE SPACE
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <Stat value="12" unit="months in advance" mark />
             <svg
               aria-hidden
@@ -1099,10 +1030,10 @@ export default function Week09ProductDevelopment() {
               Tools like Glimpse track trends up to 12 months in advance
               <Cite n={[5]} />.
             </p>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           How can companies distinguish between a temporary fad and a
           sustainable trend using AI?
         </Discussion>
@@ -1116,7 +1047,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="latent-needs" border align="left">
         <Head eyebrow="Part 1 · 04 / 05">Uncovering Latent Needs</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Sentiment analysis on millions of conversations (Brandwatch,
             Sprinklr)
@@ -1156,10 +1087,10 @@ export default function Week09ProductDevelopment() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Detecting shifts in consumer preference missed by focus groups.
             </p>
@@ -1196,9 +1127,9 @@ export default function Week09ProductDevelopment() {
                 FOCUS GROUPS
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Validating &quot;product-market fit&quot; using synthetic data
               <Cite n={[7]} />.
@@ -1223,10 +1154,10 @@ export default function Week09ProductDevelopment() {
                 PRODUCT-MARKET FIT
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           Is synthetic data a valid substitute for real-world consumer
           behavior?
         </Discussion>
@@ -1240,7 +1171,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="competitor-analysis" border align="left">
         <Head eyebrow="Part 1 · 05 / 05">Automated Competitor Analysis</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Autonomous agents replacing manual &quot;battlecards&quot;.
           </p>
@@ -1251,9 +1182,9 @@ export default function Week09ProductDevelopment() {
               strikeLeft
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <div className="grid gap-8 md:grid-cols-2 md:gap-14">
               <p className={BODY}>
@@ -1303,9 +1234,9 @@ export default function Week09ProductDevelopment() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={420}>
+        <Discussion>
           How does real-time competitive intelligence change strategic planning
           cycles?
         </Discussion>
@@ -1335,14 +1266,14 @@ export default function Week09ProductDevelopment() {
       <Slide id="manufacturability" border align="left">
         <Head eyebrow="Part 2 · 01 / 04">Mainstream Manufacturability</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Shifting from &quot;design for additive&quot; to &quot;design for
             all&quot;.
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Optimizing for traditional processes: casting, molding, machining
@@ -1381,17 +1312,17 @@ export default function Week09ProductDevelopment() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${LEAD} max-w-4xl`}>
               Platforms like InfinitForm ensuring physical producibility.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={540}>
+        <Discussion>
           Why has generative design historically been limited to 3D printing?
         </Discussion>
       </Slide>
@@ -1406,7 +1337,7 @@ export default function Week09ProductDevelopment() {
           Physics-Informed Neural Networks (PINNs)
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Embedding physical laws (Navier-Stokes) into neural networks
             <Cite n={[15, 16]} />.
@@ -1467,10 +1398,10 @@ export default function Week09ProductDevelopment() {
               NEURAL NETWORKS
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Constraining AI to &quot;obey physics&quot; for accurate
               predictions with sparse data
@@ -1497,9 +1428,9 @@ export default function Week09ProductDevelopment() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Enabling &quot;real-time simulation&quot; without waiting for FEA
               solvers
@@ -1521,10 +1452,10 @@ export default function Week09ProductDevelopment() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           How do PINNs bridge the gap between data science and mechanical
           engineering?
         </Discussion>
@@ -1538,7 +1469,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="synthetic-engineering" border align="left">
         <Head eyebrow="Part 2 · 03 / 04">Synthetic Data for Engineering</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Generating data when real-world collection is expensive or
             dangerous.
@@ -1546,7 +1477,7 @@ export default function Week09ProductDevelopment() {
           <div aria-hidden className="mt-7 max-w-3xl">
             <Split left="Real-world collection" right="Generating data" />
           </div>
-        </Reveal>
+        </div>
 
         {(() => {
           const curve = (x: number) => 110 - 90 * Math.exp(-(((x - 200) / 62) ** 2) / 2);
@@ -1563,7 +1494,7 @@ export default function Week09ProductDevelopment() {
             `L${to} 110Z`;
           return (
             <div className={PAIR}>
-              <Reveal delay={280}>
+              <div>
                 <p className={BODY}>
                   Using GANs and VAEs for statistically accurate datasets
                   <Cite n={[19, 20]} />.
@@ -1593,9 +1524,9 @@ export default function Week09ProductDevelopment() {
                   </svg>
                   <Schematic />
                 </figure>
-              </Reveal>
+              </div>
 
-              <Reveal delay={400} className={COL_RULE}>
+              <div className={COL_RULE}>
                 <p className={BODY}>
                   Training computer vision and simulating edge cases.
                 </p>
@@ -1614,12 +1545,12 @@ export default function Week09ProductDevelopment() {
                   </svg>
                   <Schematic />
                 </figure>
-              </Reveal>
+              </div>
             </div>
           );
         })()}
 
-        <Discussion delay={520}>
+        <Discussion>
           In what scenarios is synthetic data superior to real-world data?
         </Discussion>
       </Slide>
@@ -1632,7 +1563,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="privacy-speed" border align="left">
         <Head eyebrow="Part 2 · 04 / 04">Data Privacy and Speed</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Sharing datasets across borders without exposing IP.
           </p>
@@ -1673,10 +1604,10 @@ export default function Week09ProductDevelopment() {
             <path d="M236 70H564" stroke="var(--crimson)" strokeWidth="1.5" />
             <path d={headRight(572, 70)} stroke="var(--crimson)" strokeWidth="1.5" />
           </svg>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Compliant with privacy regulations like GDPR
               <Cite n={[21]} />.
@@ -1696,9 +1627,9 @@ export default function Week09ProductDevelopment() {
                 PRIVACY REGULATIONS
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Accelerating development cycles through easier data access.
             </p>
@@ -1727,10 +1658,10 @@ export default function Week09ProductDevelopment() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           How does synthetic data mitigate privacy risks in global engineering
           teams?
         </Discussion>
@@ -1759,7 +1690,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="parameter-optimization" border align="left">
         <Head eyebrow="Part 3 · 01 / 03">Parameter Optimization</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Analyzing historical print data to suggest optimal slicing
             parameters
@@ -1797,10 +1728,10 @@ export default function Week09ProductDevelopment() {
               OPTIMAL SLICING PARAMETERS
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Removing &quot;trial and error&quot; from complex part printing.
             </p>
@@ -1820,9 +1751,9 @@ export default function Week09ProductDevelopment() {
               <rect x="250.5" y="14.5" width="40" height="40" stroke="var(--charcoal)" strokeOpacity="0.7" />
               <path d="M262 35l6 6l12-12" stroke="var(--charcoal)" strokeOpacity="0.8" strokeWidth="1.5" />
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Ensuring consistent quality across distributed manufacturing.
             </p>
@@ -1849,10 +1780,10 @@ export default function Week09ProductDevelopment() {
                 DISTRIBUTED MANUFACTURING
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           How does this capability enable decentralized manufacturing?
         </Discussion>
       </Slide>
@@ -1866,7 +1797,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="cognitive-twins" border align="left">
         <Head eyebrow="Part 3 · 02 / 03">Cognitive Digital Twins</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Beyond static virtual replicas to semantic, reasoning models
             <Cite n={[25, 26]} />.
@@ -1910,10 +1841,10 @@ export default function Week09ProductDevelopment() {
               SEMANTIC, REASONING MODELS
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Using reinforcement learning to evolve over time.
             </p>
@@ -1958,9 +1889,9 @@ export default function Week09ProductDevelopment() {
                 OVER TIME
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Predicting failure modes and autonomously suggesting maintenance
               <Cite n={[25]} />.
@@ -1981,10 +1912,10 @@ export default function Week09ProductDevelopment() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           At what point does a &quot;twin&quot; become an autonomous operator?
         </Discussion>
       </Slide>
@@ -1997,7 +1928,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="vr-ux" border align="left">
         <Head eyebrow="Part 3 · 03 / 03">VR and AI-Assisted UX</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Simulating user interactions in VR without human subjects.
           </p>
@@ -2023,10 +1954,10 @@ export default function Week09ProductDevelopment() {
               USER INTERACTIONS
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Analyzing gaze patterns and biometrics to predict cognitive load
               <Cite n={[27]} />.
@@ -2062,9 +1993,9 @@ export default function Week09ProductDevelopment() {
                 BIOMETRICS
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Testing ergonomics and UI flows before physical prototyping.
             </p>
@@ -2085,10 +2016,10 @@ export default function Week09ProductDevelopment() {
                 PHYSICAL PROTOTYPING
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           Can VR testing completely replace physical ergonomic testing?
         </Discussion>
       </Slide>
@@ -2119,7 +2050,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="sustainable-materials" border align="left">
         <Head eyebrow="Part 4 · 01 / 02">Sustainable Material Selection</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             AI discovery of new materials (Materials Nexus)
             <Cite n={[31, 32]} />.
@@ -2146,10 +2077,10 @@ export default function Week09ProductDevelopment() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Identifying rare-earth-free or carbon-negative compositions.
             </p>
@@ -2171,9 +2102,9 @@ export default function Week09ProductDevelopment() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Integrating with LCA databases for lower carbon footprints
               <Cite n={[33]} />.
@@ -2198,10 +2129,10 @@ export default function Week09ProductDevelopment() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           How critical is AI in achieving aggressive sustainability targets?
         </Discussion>
       </Slide>
@@ -2214,7 +2145,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="supply-resilience" border align="left">
         <Head eyebrow="Part 4 · 02 / 02">Supply Chain Resilience</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Mapping multi-tier supply chains with AI (SCM Globe, Resilinc)
             <Cite n={[34, 35]} />.
@@ -2268,10 +2199,10 @@ export default function Week09ProductDevelopment() {
               </text>
             ))}
           </svg>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Alerting on obsolescence risks and geopolitical instability.
             </p>
@@ -2297,9 +2228,9 @@ export default function Week09ProductDevelopment() {
                 </g>
               ))}
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Predicting lead times and price fluctuations
               <Cite n={[36]} />.
@@ -2320,10 +2251,10 @@ export default function Week09ProductDevelopment() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           How should design teams weigh technical performance against supply
           chain risk?
         </Discussion>
@@ -2352,7 +2283,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="generative-customization" border align="left">
         <Head eyebrow="Part 5 · 01 / 02">Generative Customization</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Co-designing products with customers (e.g., custom shoe soles)
             <Cite n={[39]} />.
@@ -2417,10 +2348,10 @@ export default function Week09ProductDevelopment() {
               CUSTOM SHOE SOLES
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               AI ensuring user designs remain within manufacturable bounds.
             </p>
@@ -2451,9 +2382,9 @@ export default function Week09ProductDevelopment() {
                 USER DESIGNS
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>Democratizing the design process.</p>
             <svg
               aria-hidden
@@ -2480,10 +2411,10 @@ export default function Week09ProductDevelopment() {
                 DESIGN PROCESS
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           What are the brand implications of allowing customers to co-design?
         </Discussion>
       </Slide>
@@ -2497,7 +2428,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="iot-loops" border align="left">
         <Head eyebrow="Part 5 · 02 / 02">IoT Feedback Loops (Version 2.0)</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Closing the loop from usage telemetry to R&amp;D.
           </p>
@@ -2525,10 +2456,10 @@ export default function Week09ProductDevelopment() {
               VERSION 2.0
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Evidence-based iteration analyzing real-world patterns
               <Cite n={[40, 41]} />.
@@ -2556,9 +2487,9 @@ export default function Week09ProductDevelopment() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Autonomously addressing friction points in software or hardware.
             </p>
@@ -2580,10 +2511,10 @@ export default function Week09ProductDevelopment() {
                 SOFTWARE OR HARDWARE
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           How do we balance data-driven design with user privacy?
         </Discussion>
       </Slide>
@@ -2610,7 +2541,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="mitigation-tools" border align="left">
         <Head eyebrow="Part 6 · 01 / 02">Mitigation Tools</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Identifying bias in training datasets (Credo AI, IBM)
             <Cite n={[43, 44]} />.
@@ -2648,10 +2579,10 @@ export default function Week09ProductDevelopment() {
               TRAINING DATASETS
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <p className={BODY}>
               Ensuring equitable outcomes in generative design.
             </p>
@@ -2670,9 +2601,9 @@ export default function Week09ProductDevelopment() {
                 EQUITABLE OUTCOMES
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>Algorithmic fairness as a core quality metric.</p>
             <svg
               aria-hidden
@@ -2696,10 +2627,10 @@ export default function Week09ProductDevelopment() {
                 ALGORITHMIC FAIRNESS
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           Should AI fairness be a standard engineering requirement?
         </Discussion>
       </Slide>
@@ -2712,7 +2643,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="compliance-automation" border align="left">
         <Head eyebrow="Part 6 · 02 / 02">Compliance Automation</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Navigating the EU AI Act for &quot;high-risk&quot; systems.
           </p>
@@ -2733,10 +2664,10 @@ export default function Week09ProductDevelopment() {
               HIGH-RISK
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className={PAIR}>
-          <Reveal delay={280}>
+          <div>
             <Labelled label="Automating documentation:">
               model cards, risk assessments (Vanta, Monitaur)
               <Cite n={[45, 46]} />.
@@ -2763,9 +2694,9 @@ export default function Week09ProductDevelopment() {
                 RISK ASSESSMENTS
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={400} className={COL_RULE}>
+          <div className={COL_RULE}>
             <p className={BODY}>
               Tracing lineage for ISO/IEC 42001 compliance
               <Cite n={[47]} />.
@@ -2808,10 +2739,10 @@ export default function Week09ProductDevelopment() {
                 ISO/IEC 42001
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Discussion delay={520}>
+        <Discussion>
           How will regulation impact the speed of AI adoption in product
           development?
         </Discussion>
@@ -2828,7 +2759,6 @@ export default function Week09ProductDevelopment() {
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
             n={1}
-            delay={140}
             figure={
               <svg viewBox="0 0 280 96" className="w-full" fill="none">
                 <path d="M8 46C18 18 30 70 40 40S58 20 62 48S80 70 90 36" stroke="var(--charcoal)" strokeOpacity="0.5" strokeWidth="1.5" />
@@ -2858,7 +2788,6 @@ export default function Week09ProductDevelopment() {
 
           <Measure
             n={2}
-            delay={240}
             figure={
               <svg viewBox="0 0 280 92" className="w-full" fill="none">
                 {[
@@ -2886,7 +2815,6 @@ export default function Week09ProductDevelopment() {
 
           <Measure
             n={3}
-            delay={340}
             figure={
               <svg viewBox="0 0 280 92" className="w-full" fill="none">
                 <path d="M0 78H130" stroke="var(--charcoal)" strokeOpacity="0.35" />
@@ -2912,7 +2840,7 @@ export default function Week09ProductDevelopment() {
           </Measure>
         </ol>
 
-        <Discussion delay={460}>
+        <Discussion>
           Which of these maturation signs is most visible in your industry?
         </Discussion>
       </Slide>
@@ -2925,7 +2853,7 @@ export default function Week09ProductDevelopment() {
       <Slide id="speed-safety" border align="left">
         <Head eyebrow="Closing · 02 / 04">Speed + Safety</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Convergence of rapid simulation and automated compliance.
           </p>
@@ -2949,9 +2877,9 @@ export default function Week09ProductDevelopment() {
               SPEED + SAFETY
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={`${RULED} grid items-center gap-8 md:grid-cols-[1fr_25rem] md:gap-14`}>
             <p className={BODY}>Regulatory checks occurring in real-time.</p>
             <svg aria-hidden viewBox="0 0 400 70" className="w-full" fill="none">
@@ -2968,18 +2896,18 @@ export default function Week09ProductDevelopment() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl border-y border-[var(--charcoal)]/30 py-9">
             <p className={DISPLAY}>
               Products developed faster{" "}
               <span className="text-[var(--crimson)]">AND</span> safer.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={540}>
+        <Discussion>
           Can we truly have both speed and safety, or is there always a
           trade-off?
         </Discussion>
@@ -2996,7 +2924,6 @@ export default function Week09ProductDevelopment() {
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
             n={1}
-            delay={140}
             figure={
               <svg viewBox="0 0 280 92" className="w-full" fill="none">
                 <circle cx="140" cy="46" r="30" stroke="var(--charcoal)" strokeOpacity="0.4" strokeWidth="1.5" />
@@ -3020,7 +2947,6 @@ export default function Week09ProductDevelopment() {
 
           <Measure
             n={2}
-            delay={240}
             figure={
               <svg viewBox="0 0 280 92" className="w-full" fill="none">
                 {[0, 105, 210].map((x) => (
@@ -3043,7 +2969,6 @@ export default function Week09ProductDevelopment() {
 
           <Measure
             n={3}
-            delay={340}
             figure={
               <svg viewBox="0 0 280 92" className="w-full" fill="none">
                 {Array.from({ length: 14 * 4 }, (_, k) => {
@@ -3075,7 +3000,7 @@ export default function Week09ProductDevelopment() {
           </Measure>
         </ol>
 
-        <Discussion delay={460}>
+        <Discussion>
           What are the barriers to achieving the &quot;Self-Healing&quot;
           Design Loop?
         </Discussion>
@@ -3092,7 +3017,6 @@ export default function Week09ProductDevelopment() {
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
             n={1}
-            delay={140}
             figure={
               <svg viewBox="0 0 280 92" className="w-full" fill="none">
                 <path d="M0.5 4.5H86L100.5 19V87.5H0.5Z" stroke="var(--charcoal)" strokeOpacity="0.6" />
@@ -3116,7 +3040,6 @@ export default function Week09ProductDevelopment() {
 
           <Measure
             n={2}
-            delay={240}
             figure={
               <svg viewBox="0 0 280 92" className="w-full" fill="none">
                 <path d="M0 50H262" stroke="var(--charcoal)" strokeOpacity="0.3" />
@@ -3141,7 +3064,6 @@ export default function Week09ProductDevelopment() {
 
           <Measure
             n={3}
-            delay={340}
             figure={
               <svg viewBox="0 0 280 92" className="w-full" fill="none">
                 {(() => {
@@ -3184,7 +3106,7 @@ export default function Week09ProductDevelopment() {
           </Measure>
         </ol>
 
-        <Discussion delay={460}>
+        <Discussion>
           Which insight will you prioritize for your organization?
         </Discussion>
       </Slide>
@@ -3196,16 +3118,16 @@ export default function Week09ProductDevelopment() {
       <Slide id="references" border align="left">
         <Head eyebrow="Sources">References</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Comprehensive list of sources.
           </p>
           <p className={`${BODY} mt-4 max-w-4xl text-[var(--charcoal-light)]`}>
             Citations 1-48 as referenced in deepResearch.md.
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div
             aria-hidden
             className="mt-10 grid w-full max-w-5xl grid-cols-6 gap-px border border-[var(--charcoal)]/10 bg-[var(--charcoal)]/10 md:grid-cols-12"
@@ -3219,9 +3141,9 @@ export default function Week09ProductDevelopment() {
               </span>
             ))}
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={420}>
+        <Discussion>
           Which source or paper are you most interested in reading further?
         </Discussion>
       </Slide>

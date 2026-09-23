@@ -21,7 +21,7 @@ Supply Chain and Distribution Channels (The Third P)
 - These organizations help make a product available for use or consumption.
 - They bridge the gap between producers and users in terms of time, place, and possession.
 
-## The Value Delivery Network [quiz]
+## The Value Delivery Network [exercise]
 - Marketing channels are part of a larger value delivery network.
 - This network includes the company, suppliers, distributors, and customers.
 - Everyone partners to improve the performance of the entire system.
@@ -47,7 +47,7 @@ Supply Chain and Distribution Channels (The Third P)
 - The number of intermediary levels indicates the length of a channel.
 - Direct marketing channels have no intermediary levels.
 
-## Indirect Marketing Channels [quiz]
+## Indirect Marketing Channels [exercise]
 - Indirect marketing channels contain one or more intermediary levels.
 - Common levels include wholesalers, jobbers, and retailers.
 - More levels mean less control and greater channel complexity for the producer.
@@ -60,7 +60,7 @@ Supply Chain and Distribution Channels (The Third P)
 - People and companies interact to accomplish individual, company, and channel goals.
 - Success depends on how well the channel members work together.
 
-## Channel Conflict [quiz]
+## Channel Conflict [exercise]
 - Channel conflict occurs when members disagree over goals, roles, and rewards.
 - Horizontal conflict occurs among firms at the same level of the channel.
 - Vertical conflict occurs between different levels of the same channel.
@@ -86,7 +86,7 @@ Supply Chain and Distribution Channels (The Third P)
 - Offers advantages for companies facing large and complex markets.
 - Expands sales and market coverage but can be harder to control and generate conflict.
 
-## The Trend of Disintermediation [quiz]
+## The Trend of Disintermediation [exercise]
 - Disintermediation occurs when product and service producers cut out intermediaries.
 - This includes going directly to final buyers or displacing traditional resellers with new types of intermediaries.
 - Presents both opportunities and strategic threats to established firms.

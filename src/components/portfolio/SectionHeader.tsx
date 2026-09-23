@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { FadeUp } from "./FadeUp";
 
 type SectionHeaderProps = {
   children: React.ReactNode;
@@ -13,7 +12,7 @@ export function SectionHeader({
   align = "left",
 }: SectionHeaderProps) {
   return (
-    <FadeUp
+    <div
       className={cn(
         "mb-12",
         align === "center" ? "text-center mx-auto" : "text-left",
@@ -21,6 +20,6 @@ export function SectionHeader({
       )}
     >
       {children}
-    </FadeUp>
+    </div>
   );
 }

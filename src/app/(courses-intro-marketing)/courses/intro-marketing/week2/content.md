@@ -10,17 +10,17 @@ week: week2
 - Today we will explore the forces that shape a company's marketing environment.
 - We will cover micro and macro-environmental factors, CSR, and marketing ethics.
 
-## Part 1: The Marketing Environment [no-quiz]
+## Part 1: The Marketing Environment [no-exercise]
 - A company's marketing environment consists of the actors and forces outside marketing that affect marketing management's ability to build and maintain successful relationships with target customers.
 - It is made up of a microenvironment and a macroenvironment.
 - Marketers must be environmental trend trackers and opportunity seekers.
 
-## The Microenvironment [quiz]
+## The Microenvironment [exercise]
 - The microenvironment consists of the actors close to the company that affect its ability to serve its customers.
 - These actors include the company itself, suppliers, marketing intermediaries, customer markets, competitors, and publics.
 - Success depends on building relationships with other company departments and these external partners.
 
-## The Macroenvironment [quiz]
+## The Macroenvironment [exercise]
 [diagram: hub-and-spoke - The PESTLE Framework]
 - The macroenvironment consists of the larger societal forces that affect the microenvironment.
 - It shapes opportunities and poses threats to the company.
@@ -44,12 +44,12 @@ week: week2
 ## Discussion: Environmental Forces
 - Discussion: If a global coffee chain wants to enter a new emerging market, which PESTLE factor might pose the most immediate and unpredictable challenge to their launch strategy, and why?
 
-## Part 2: Corporate Social Responsibility (CSR) [no-quiz]
+## Part 2: Corporate Social Responsibility (CSR) [no-exercise]
 - Beyond analyzing the environment, companies must respond to societal expectations.
 - Corporate Social Responsibility involves self-regulating business models that help a company be socially accountable.
 - CSR is not just philanthropy, it is deeply integrated into the business strategy.
 
-## The Pillars of CSR [quiz]
+## The Pillars of CSR [exercise]
 - Economic responsibility: To be profitable and economically viable.
 - Legal responsibility: To obey the law and play by the rules.
 - Ethical responsibility: To do what is right, just, and fair.
@@ -68,12 +68,12 @@ week: week2
 ## Discussion: The Cost of CSR
 - Discussion: When a retail brand publicly commits to sourcing 100% fair-trade materials, prices inevitably rise. Should the brand absorb the cost, or pass it on to consumers, and how does this affect their competitive positioning?
 
-## Part 3: Ethical Considerations in Marketing [no-quiz]
+## Part 3: Ethical Considerations in Marketing [no-exercise]
 - Marketing ethics are the broad guidelines that everyone in the organization must follow.
 - These policies cover distributor relations, advertising standards, customer service, pricing, product development, and general ethical standards.
 - Good ethics is good business.
 
-## Deceptive Practices [quiz]
+## Deceptive Practices [exercise]
 - Deceptive pricing includes falsely advertising "factory" or "wholesale" prices or a large price reduction from a phony high retail price.
 - Deceptive promotion includes misrepresenting the product's features or performance.
 - These practices harm consumers and ultimately destroy brand equity.

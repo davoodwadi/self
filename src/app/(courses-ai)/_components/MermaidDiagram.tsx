@@ -107,7 +107,7 @@ const Mermaid: React.FC<MermaidProps> = ({
 
   return (
     <div
-      className={`gsap-reveal w-full flex flex-col items-center overflow-hidden ${className}`}
+      className={`w-full flex flex-col items-center overflow-hidden ${className}`}
     >
       {error ? (
         <div className="w-full rounded-lg border border-[var(--crimson)]/20 bg-[var(--surface)]/60 px-6 py-4 text-center">

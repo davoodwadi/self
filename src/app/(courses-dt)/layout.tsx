@@ -6,19 +6,22 @@ import { DynamicFooter } from "./DynamicFooter";
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const libreBaskerville = Libre_Baskerville({
   variable: "--font-libre-baskerville",
   subsets: ["latin"],
   weight: ["400", "700"],
+  style: ["normal", "italic"],
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -43,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfairDisplay.variable} ${lora.variable} ${libreBaskerville.variable} ${ibmPlexMono.variable} antialiased theme-crimson-noir`}
+        className={`${playfairDisplay.variable} ${lora.variable} ${libreBaskerville.variable} ${ibmPlexMono.variable} antialiased theme-warm-noir`}
       >
         {children}
         <DynamicFooter />

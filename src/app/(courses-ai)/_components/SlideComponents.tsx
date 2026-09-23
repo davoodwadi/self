@@ -56,7 +56,7 @@ export function CitationProvider({
  * - Wraps all Slide components
  *
  * The deck is deliberately static: slides are simply there as you scroll to
- * them. No entrance animation, no scroll-triggered reveals.
+ * them.
  *
  * PROPS:
  * @param children - All Slide components
@@ -320,7 +320,6 @@ export function Column({
  * PURPOSE:
  * - Eye-catching main heading for title slides or major section breaks
  * - Maximum visual hierarchy and impact
- * - Animated on scroll with GSAP
  *
  * WHEN TO USE:
  * - First slide of course or major sections
@@ -474,7 +473,6 @@ export function Citation({
  *
  * PURPOSE:
  * - Secondary-level heading for sections, topics, or concepts
- * - Animated entry with scroll trigger
  * - Semantic h2 element for accessibility
  *
  * WHEN TO USE:
@@ -486,7 +484,6 @@ export function Citation({
  * - Large serif font (6xl on md+)
  * - Bold weight
  * - Charcoal color
- * - Animated with GSAP
  *
  * PROPS:
  * @param children - Heading text
@@ -686,7 +683,6 @@ export function ContentText({
  * PURPOSE:
  * - Add context label for slides (e.g., "CHAPTER 3", "DISCUSSION PROMPT")
  * - Small uppercase text centered above slide content
- * - Animated entry with GSAP
  *
  * WHEN TO USE:
  * - Optional: For section headers that need a category label
@@ -697,7 +693,6 @@ export function ContentText({
  * STYLING:
  * - Uppercase, bold, tracking-widest
  * - Positioned absolutely at top center
- * - Animated with GSAP
  * - Light charcoal color
  *
  * PROPS:
@@ -1017,7 +1012,6 @@ export function DiscussionCard({
  * BEHAVIOR:
  * - Lazy loaded for performance
  * - Aspect ratio maintained (video aspect 16:9)
- * - Animated entry with GSAP reveal
  *
  * PROPS:
  * @param src - Image path or URL
@@ -1071,7 +1065,6 @@ export function MediaBlock({
  * - Display testimonials, expert quotes, or key statements
  * - Large, prominent styling for emphasis
  * - Attribution footer with optional role/title
- * - Animated entry with GSAP
  *
  * WHEN TO USE:
  * - Expert opinions or research findings
@@ -1085,7 +1078,6 @@ export function MediaBlock({
  * - Italic serif text
  * - Large size (3xl base, 5xl on lg)
  * - Author attribution in smaller text below
- * - Animated reveal
  *
  * PROPS:
  * @param children - Quote text (no quotes needed, automatically formatted)
@@ -1141,7 +1133,6 @@ export function Quote({
  * - Showcase key metrics, numbers, or statistics
  * - Maximum visual emphasis on numerical findings
  * - Used in multi-metric layouts or highlighted findings
- * - Animated entry with GSAP
  *
  * WHEN TO USE:
  * - Research findings: "72% improvement"
@@ -1155,7 +1146,6 @@ export function Quote({
  * - Crimson color for the metric
  * - Gold border and subtle background
  * - Uppercase label below
- * - Animated reveal
  *
  * PROPS:
  * @param value - The metric number/value to display (e.g., "72%")
@@ -1205,7 +1195,6 @@ export function Metric({
  * - Emphasize critical information, warnings, or key points
  * - Two variants: primary (crimson) and secondary (charcoal)
  * - Left border design for visual hierarchy
- * - Animated entry with GSAP
  *
  * WHEN TO USE:
  * - For critical information that needs emphasis
@@ -1295,7 +1284,6 @@ export function Callout({
  * WHEN TO USE:
  * - For enumerated content (key points, steps, features)
  * - Always use with ListItem children
- * - When you want animated stagger on scroll
  * - For readability of grouped information
  * - NOT for inline lists (use ContentText with <ul> instead)
  *
@@ -1338,7 +1326,6 @@ export function AnimatedList({
  * PURPOSE:
  * - Child component of AnimatedList
  * - Renders with crimson bullet point
- * - Animated entry with GSAP stagger
  * - Semantic <li> element
  *
  * BEHAVIOR:
@@ -1356,7 +1343,6 @@ export function AnimatedList({
  * - Crimson bullet (CircleSmall icon) on left
  * - Light charcoal text
  * - Flex layout for bullet + content alignment
- * - Animated reveal
  *
  * PROPS:
  * @param children - Content of the list item (text or JSX)

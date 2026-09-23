@@ -19,9 +19,7 @@
      · trig results rounded, so server and client render the same markup
    ========================================================================== */
 
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react";
 import {
   Key,
   Display,
@@ -1079,74 +1077,34 @@ export function ChannelsConnect() {
 
 /** A campaign line tracked live; feedback arrives; the course turns. */
 export function TrackAdjust() {
-  const root = useRef<SVGGElement>(null);
-
-  // Plays once when the plate scrolls into view, then rests on the full
-  // drawing. The server renders the finished plate; the animation only
-  // rewinds it in the browser, so no-JS and reduced-motion readers see it
-  // complete and there is nothing to mismatch at hydration.
-  useEffect(() => {
-    const g = root.current;
-    if (!g) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    gsap.registerPlugin(ScrollTrigger);
-    const q = (k: string) => g.querySelectorAll<SVGElement>(`[data-a="${k}"]`);
-    const draw = (el: SVGPathElement) => {
-      const len = Math.ceil(el.getTotalLength());
-      return { strokeDasharray: len, strokeDashoffset: len };
-    };
-    const ctx = gsap.context(() => {
-      const track = q("track")[0] as SVGPathElement;
-      const climb = q("climb")[0] as SVGPathElement;
-      const tl = gsap.timeline({
-        // Trigger on the <svg> box: ScrollTrigger measures a <g> unreliably.
-        scrollTrigger: { trigger: g.ownerSVGElement ?? g, start: "top 70%", once: true },
-        defaults: { ease: "power2.out" },
-      });
-      // 1. the campaign line is traced live, ticks passing as it goes
-      tl.fromTo(track, draw(track), { strokeDashoffset: 0, duration: 1.4, ease: "none" })
-        .from(q("tick"), { opacity: 0, duration: 0.15, stagger: 0.3 }, 0.2)
-        .from(q("tracking"), { opacity: 0, duration: 0.4 }, 0.1)
-        // 2. the dip is caught, and feedback lands at once
-        .from(q("dot"), { scale: 0, transformOrigin: "50% 50%", duration: 0.25, ease: "back.out(2)" }, 1.4)
-        .from(q("feedback"), { opacity: 0, y: -10, duration: 0.3 }, 1.5)
-        // 3. the campaign is adjusted and climbs; the unchanged path fades in beside it
-        .from(q("adjust"), { opacity: 0, duration: 0.3 }, 1.9)
-        .fromTo(climb, draw(climb), { strokeDashoffset: 0, duration: 0.9 }, 2.05)
-        .from(q("ghost"), { opacity: 0, duration: 0.6 }, 2.2)
-        .set([track, climb], { clearProps: "strokeDasharray,strokeDashoffset" });
-    }, g);
-    return () => ctx.revert();
-  }, []);
-
   return (
     <Frame
       height={280}
       label="A chart with a campaign line tracked over time. It dips; at the low point a feedback bubble appears right away; a turning arrow marks the adjustment, and the line climbs again. A dashed line shows where the unchanged campaign would have gone."
     >
-      <g ref={root}>
+      <g>
         <Schematic x={776} y={24} />
         <path d="M60 40V230H770" fill="none" stroke={INK} strokeWidth={1.25} />
-        <path data-a="track" d="M60 140C160 130 230 150 300 190" fill="none" stroke={INK} strokeWidth={2.25} />
-        <path data-a="ghost" d="M300 190C380 230 460 244 560 250" fill="none" stroke={INK3} strokeWidth={1.25} strokeDasharray="5 4" />
-        <path data-a="climb" d="M300 190C340 176 380 130 460 100C540 72 640 66 740 60" fill="none" stroke={SIGNAL} strokeWidth={2.5} />
-        <circle data-a="dot" cx={300} cy={190} r={6} fill={SIGNAL} />
+        <path d="M60 140C160 130 230 150 300 190" fill="none" stroke={INK} strokeWidth={2.25} />
+        <path d="M300 190C380 230 460 244 560 250" fill="none" stroke={INK3} strokeWidth={1.25} strokeDasharray="5 4" />
+        <path d="M300 190C340 176 380 130 460 100C540 72 640 66 740 60" fill="none" stroke={SIGNAL} strokeWidth={2.5} />
+        <circle cx={300} cy={190} r={6} fill={SIGNAL} />
         {[100, 160, 220, 280].map((x) => (
-          <line key={x} data-a="tick" x1={x} y1={226} x2={x} y2={234} stroke={INK} strokeWidth={1} />
+          <line key={x} x1={x} y1={226} x2={x} y2={234} stroke={INK} strokeWidth={1} />
         ))}
-        <g data-a="tracking">
+        <g>
           <Key x={70} y={254} fill={INK} size={9.5}>
             REAL-TIME TRACKING
           </Key>
         </g>
-        <g data-a="feedback">
+        <g>
           <Bubble x={212} y={56} w={148} h={40} tone={COUNTER} fill={COUNTER_TINT} />
           <Key x={286} y={80} anchor="middle" fill={COUNTER} size={9}>
             IMMEDIATE FEEDBACK
           </Key>
           <Arrow x1={290} y1={106} x2={298} y2={176} tone={COUNTER} width={1.25} size={6} />
         </g>
-        <g data-a="adjust">
+        <g>
           <CurveArrow x1={330} y1={214} cx={400} cy={210} x2={404} y2={142} tone={SIGNAL} width={1.75} />
           <Key x={420} y={210} fill={SIGNAL} size={9.5}>
             RAPID CAMPAIGN ADJUSTMENT

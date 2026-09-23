@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import {
   Slide,
   SlideDeck,
@@ -64,60 +64,6 @@ const hash = (n: number) => {
   return v - Math.floor(v);
 };
 
-/**
- * Reveal — the deck's single entrance. Opacity plus eight pixels of rise,
- * fired once when the element crosses into view. `delay` staggers siblings.
- */
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  as: Tag = "div",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-  as?: "div" | "li" | "p" | "span" | "figure";
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    if (typeof IntersectionObserver === "undefined") {
-      const frame = requestAnimationFrame(() => setShown(true));
-      return () => cancelAnimationFrame(frame);
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setShown(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <Tag
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      className={className}
-      style={{
-        opacity: shown ? 1 : 0,
-        transform: shown ? "none" : "translateY(8px)",
-        transition: `opacity 700ms ease-out ${delay}ms, transform 700ms ease-out ${delay}ms`,
-      }}
-    >
-      {children}
-    </Tag>
-  );
-}
-
 /** Eyebrow plus slide heading, the masthead every content slide opens with. */
 function Head({
   eyebrow,
@@ -129,7 +75,7 @@ function Head({
   signal?: boolean;
 }) {
   return (
-    <Reveal>
+    <div>
       <div
         className={`${MICRO} ${
           signal ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
@@ -140,7 +86,7 @@ function Head({
       <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
         {children}
       </h2>
-    </Reveal>
+    </div>
   );
 }
 
@@ -166,19 +112,16 @@ function PartPlate({
   return (
     <Slide id={id} border align="left" quizData={quizData}>
       <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-        <Reveal>
+        <div>
           <div aria-hidden>
             <div className={`${MICRO} text-[var(--champagne)]`}>Part</div>
             <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
               {numeral}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal
-          delay={140}
-          className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16"
-        >
+        <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
           <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
             <span className="sr-only">{`Part ${numeral}: `}</span>
             {title}
@@ -194,7 +137,7 @@ function PartPlate({
               {line}
             </p>
           ))}
-        </Reveal>
+        </div>
       </div>
     </Slide>
   );
@@ -204,20 +147,18 @@ function PartPlate({
 /** Discussion prompt, set apart in the deck's one ruled frame. */
 function Discussion({
   children,
-  delay,
 }: {
   children: React.ReactNode;
-  delay: number;
 }) {
   return (
-    <Reveal delay={delay} className="w-full">
+    <div className="w-full">
       <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
         <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
         <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
           {children}
         </p>
       </aside>
-    </Reveal>
+    </div>
   );
 }
 
@@ -350,23 +291,23 @@ export default function Week06BusinessStrategy() {
           06
         </span>
 
-        <Reveal>
+        <div>
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
             <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 06
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={120}>
+        <div>
           <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-black leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
             AI in Business{" "}
             <span className="text-[var(--crimson)]">Strategy</span>
           </h1>
-        </Reveal>
+        </div>
 
-        <Reveal delay={240} className="w-full">
+        <div className="w-full">
           <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
           <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
             Integrating Artificial Intelligence into Competitive Advantage
@@ -384,9 +325,9 @@ export default function Week06BusinessStrategy() {
               Competitive Advantage
             </span>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={360} className="w-full">
+        <div className="w-full">
           <p className="mt-10 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
             Moving beyond technological implementation to strategic alignment
           </p>
@@ -396,9 +337,9 @@ export default function Week06BusinessStrategy() {
               right="Strategic alignment"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={480} className="w-full">
+        <div className="w-full">
           <div className="mt-14 flex w-full flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               Davood Wadi, PhD
@@ -409,7 +350,7 @@ export default function Week06BusinessStrategy() {
               BUSI 654 · Applications of AI in Business
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       <PartPlate
@@ -433,7 +374,7 @@ export default function Week06BusinessStrategy() {
         <Head eyebrow="Opening">The New Strategic Landscape</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <div className={`${MICRO} text-[var(--champagne)]`}>
               Traditional strategy
             </div>
@@ -476,9 +417,9 @@ export default function Week06BusinessStrategy() {
                 STATIC INDUSTRY ANALYSIS
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={260}>
+          <div>
             <div className={`${MICRO} text-[var(--crimson)]`}>AI</div>
             <p className={`${BODY} mt-4`}>
               AI introduces dynamic, predictive capabilities that reshape market
@@ -518,10 +459,10 @@ export default function Week06BusinessStrategy() {
                 RESHAPE MARKET BOUNDARIES
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <Split
               left="Reactive planning"
@@ -533,9 +474,9 @@ export default function Week06BusinessStrategy() {
               foresight.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <figure aria-hidden className="w-full">
               <svg viewBox="0 0 800 84" className="w-full" fill="none">
@@ -589,7 +530,7 @@ export default function Week06BusinessStrategy() {
               significantly.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -607,7 +548,7 @@ export default function Week06BusinessStrategy() {
         <Head eyebrow="The true asset">AI as a Strategic Asset</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Data alone is insufficient for competitive advantage.
             </p>
@@ -677,9 +618,9 @@ export default function Week06BusinessStrategy() {
                 INSUFFICIENT
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={260}>
+          <div>
             <p className={BODY}>
               The true asset is the proprietary algorithmic capability trained
               on unique data.
@@ -761,10 +702,10 @@ export default function Week06BusinessStrategy() {
                 THE TRUE ASSET
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <svg
               aria-hidden
@@ -853,7 +794,7 @@ export default function Week06BusinessStrategy() {
               strategic position.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -865,7 +806,7 @@ export default function Week06BusinessStrategy() {
         <Head eyebrow="Across the chain">Rethinking the Value Chain</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <div className={`${MICRO} text-[var(--champagne)]`}>
               Primary activities
             </div>
@@ -873,8 +814,8 @@ export default function Week06BusinessStrategy() {
               AI transforms primary activities, from inbound logistics to
               customer service.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <div className={`${MICRO} text-[var(--champagne)]`}>
               Support activities
             </div>
@@ -883,10 +824,10 @@ export default function Week06BusinessStrategy() {
               intelligent and predictive.
             </p>
             <Terms items={["intelligent", "predictive"]} />
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <svg
               aria-hidden
@@ -1013,9 +954,9 @@ export default function Week06BusinessStrategy() {
               strategic benefits.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Which segment of the traditional value chain is most vulnerable to
           commoditization by AI competitors?
         </Discussion>
@@ -1032,7 +973,7 @@ export default function Week06BusinessStrategy() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Implementing off-the-shelf AI tools does not confer long-term
               advantage.
@@ -1090,9 +1031,9 @@ export default function Week06BusinessStrategy() {
                 />
               ))}
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={260}>
+          <div>
             <p className={BODY}>
               Strategic value requires deep integration with unique
               organizational processes.
@@ -1135,10 +1076,10 @@ export default function Week06BusinessStrategy() {
                 UNIQUE ORGANIZATIONAL PROCESSES
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <svg
               aria-hidden
@@ -1218,7 +1159,7 @@ export default function Week06BusinessStrategy() {
               paramount.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1229,7 +1170,7 @@ export default function Week06BusinessStrategy() {
       <Slide id="leadership" border align="left">
         <Head eyebrow="Who owns it">The Leadership Imperative</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Executive leadership must own the AI strategy, not delegate it to
             the IT department.
@@ -1306,10 +1247,10 @@ export default function Week06BusinessStrategy() {
               DELEGATE
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className="mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-14">
-          <Reveal delay={300}>
+          <div>
             <p className={BODY}>
               Cultivating an organizational mindset that embraces probabilistic
               outcomes.
@@ -1353,9 +1294,9 @@ export default function Week06BusinessStrategy() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
 
-          <Reveal delay={420}>
+          <div>
             <p className={BODY}>
               Fostering cross-functional collaboration to align AI initiatives
               with business goals.
@@ -1403,7 +1344,7 @@ export default function Week06BusinessStrategy() {
                 CROSS-FUNCTIONAL COLLABORATION
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
       </Slide>
 
@@ -1427,7 +1368,7 @@ export default function Week06BusinessStrategy() {
         <Head eyebrow="Three dimensions">Dimensions of Value Creation</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-3 md:gap-10">
-          <Reveal delay={140}>
+          <div>
             <div className={`${MICRO} text-[var(--crimson)]`}>01</div>
             <p className={`${BODY} mt-3`}>
               Cost reduction through intelligent automation and process
@@ -1459,9 +1400,9 @@ export default function Week06BusinessStrategy() {
               <Schematic />
             </figure>
             <Terms items={["intelligent automation", "process optimization"]} />
-          </Reveal>
+          </div>
 
-          <Reveal delay={260}>
+          <div>
             <div className={`${MICRO} text-[var(--crimson)]`}>02</div>
             <p className={`${BODY} mt-3`}>
               Revenue growth via hyper-personalization and predictive
@@ -1495,9 +1436,9 @@ export default function Week06BusinessStrategy() {
             <Terms
               items={["hyper-personalization", "predictive cross-selling"]}
             />
-          </Reveal>
+          </div>
 
-          <Reveal delay={380}>
+          <div>
             <div className={`${MICRO} text-[var(--crimson)]`}>03</div>
             <p className={`${BODY} mt-3`}>
               Business model innovation enabling entirely new revenue streams.
@@ -1542,10 +1483,10 @@ export default function Week06BusinessStrategy() {
                 NEW REVENUE STREAMS
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={520} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <figure aria-hidden className="w-full">
               <svg viewBox="0 0 800 140" className="w-full" fill="none">
@@ -1602,7 +1543,7 @@ export default function Week06BusinessStrategy() {
               innovation.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1621,7 +1562,7 @@ export default function Week06BusinessStrategy() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Augmenting existing products with predictive maintenance and
               intelligent features.
@@ -1673,9 +1614,9 @@ export default function Week06BusinessStrategy() {
                 EXISTING PRODUCTS
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={260}>
+          <div>
             <p className={BODY}>
               Shifting from selling discrete products to offering continuous,
               AI-enhanced services.
@@ -1720,10 +1661,10 @@ export default function Week06BusinessStrategy() {
                 CONTINUOUS, AI-ENHANCED SERVICES
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Static offerings"
@@ -1735,7 +1676,7 @@ export default function Week06BusinessStrategy() {
               solutions.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1748,7 +1689,7 @@ export default function Week06BusinessStrategy() {
         <Head eyebrow="Cost curves">The Economics of AI</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               High fixed costs of model development paired with near-zero
               marginal costs of deployment.
@@ -1806,9 +1747,9 @@ export default function Week06BusinessStrategy() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
 
-          <Reveal delay={260}>
+          <div>
             <p className={BODY}>
               Economies of scale are amplified by network effects in data
               accumulation.
@@ -1872,10 +1813,10 @@ export default function Week06BusinessStrategy() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${LEAD} max-w-4xl`}>
               Understanding the diminishing returns of data volume versus data
@@ -1940,7 +1881,7 @@ export default function Week06BusinessStrategy() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1956,7 +1897,7 @@ export default function Week06BusinessStrategy() {
       >
         <Head eyebrow="Beyond the firm">Capturing Value from Ecosystems</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Competing as an ecosystem orchestrator rather than a standalone
             firm.
@@ -2025,9 +1966,9 @@ export default function Week06BusinessStrategy() {
               ECOSYSTEM ORCHESTRATOR
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Leveraging AI to optimize partner interactions and platform
@@ -2035,9 +1976,9 @@ export default function Week06BusinessStrategy() {
             </p>
             <Terms items={["partner interactions", "platform dynamics"]} />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <svg
               aria-hidden
@@ -2097,9 +2038,9 @@ export default function Week06BusinessStrategy() {
               Data sharing agreements become critical strategic assets.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           How should a firm balance data sharing for ecosystem growth against
           the risk of leaking competitive advantage?
         </Discussion>
@@ -2113,7 +2054,7 @@ export default function Week06BusinessStrategy() {
       <Slide id="pricing" border align="left">
         <Head eyebrow="Price">Pricing Strategy in the AI Era</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Moving from fixed pricing to dynamic, algorithmic pricing models.
           </p>
@@ -2156,9 +2097,9 @@ export default function Week06BusinessStrategy() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Capturing consumer surplus through personalized pricing based on
@@ -2247,9 +2188,9 @@ export default function Week06BusinessStrategy() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <p className={`${DISPLAY} max-w-4xl`}>
               Managing the ethical and regulatory risks of algorithmic price
@@ -2260,7 +2201,7 @@ export default function Week06BusinessStrategy() {
               className="mt-6"
             />
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2271,7 +2212,7 @@ export default function Week06BusinessStrategy() {
       <Slide id="metrics" border align="left">
         <Head eyebrow="Measuring">Metrics for AI Strategy</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Traditional financial metrics lag behind the leading indicators of
             AI success.
@@ -2333,9 +2274,9 @@ export default function Week06BusinessStrategy() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               New KPIs must focus on algorithmic accuracy, data acquisition
@@ -2351,9 +2292,9 @@ export default function Week06BusinessStrategy() {
               className="mt-6 max-w-4xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <svg
               aria-hidden
@@ -2420,7 +2361,7 @@ export default function Week06BusinessStrategy() {
               business objectives.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       <PartPlate
@@ -2445,7 +2386,7 @@ export default function Week06BusinessStrategy() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Accumulating massive volumes of generic data does not guarantee a
               durable advantage.
@@ -2476,9 +2417,9 @@ export default function Week06BusinessStrategy() {
                 MASSIVE VOLUMES OF GENERIC DATA
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={260}>
+          <div>
             <p className={BODY}>
               Competitors can often purchase or synthesize similar datasets.
             </p>
@@ -2535,10 +2476,10 @@ export default function Week06BusinessStrategy() {
                 </g>
               ))}
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <svg
               aria-hidden
@@ -2618,7 +2559,7 @@ export default function Week06BusinessStrategy() {
               proprietary workflows.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2635,21 +2576,21 @@ export default function Week06BusinessStrategy() {
         <Head eyebrow="Virtuous cycle">Algorithmic Network Effects</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               The cycle where better algorithms attract more users, generating
               better data.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <p className={BODY}>
               This improved data further refines the algorithms, creating a
               virtuous cycle.
             </p>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={380} className="w-full">
+        <div className="w-full">
           <svg
             aria-hidden
             viewBox="0 0 800 284"
@@ -2797,9 +2738,9 @@ export default function Week06BusinessStrategy() {
               VIRTUOUS CYCLE
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={500} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <svg
               aria-hidden
@@ -2854,9 +2795,9 @@ export default function Week06BusinessStrategy() {
               effects is exceptionally difficult.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={620}>
+        <Discussion>
           If a competitor has a five-year head start on algorithmic network
           effects, what asymmetric strategies can a challenger employ?
         </Discussion>
@@ -2872,21 +2813,21 @@ export default function Week06BusinessStrategy() {
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-2 md:gap-14">
           <div>
-            <Reveal delay={140}>
+            <div>
               <p className={BODY}>
                 Choosing between competing on cost leadership or
                 differentiation using AI.
               </p>
-            </Reveal>
-            <Reveal delay={260}>
+            </div>
+            <div>
               <p className={`${LEAD} mt-8`}>
                 AI can uniquely enable firms to pursue both simultaneously,
                 breaking traditional strategic trade-offs.
               </p>
-            </Reveal>
+            </div>
           </div>
 
-          <Reveal delay={380}>
+          <div>
             <figure aria-hidden className="w-full">
               <svg viewBox="0 0 400 312" className="w-full" fill="none">
                 <path
@@ -2977,10 +2918,10 @@ export default function Week06BusinessStrategy() {
                 </text>
               </svg>
             </figure>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={500} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               The emergence of the &quot;smart niche&quot; strategy tailored to
@@ -3029,7 +2970,7 @@ export default function Week06BusinessStrategy() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3060,8 +3001,8 @@ export default function Week06BusinessStrategy() {
                 { sign: "+", text: "secures proprietary advantage" },
               ],
             },
-          ].map((side, i) => (
-            <Reveal key={side.label} delay={140 + i * 120}>
+          ].map((side) => (
+            <div key={side.label}>
               <div className={`${MICRO} text-[var(--champagne)]`}>
                 {side.label}
               </div>
@@ -3093,11 +3034,11 @@ export default function Week06BusinessStrategy() {
                   </div>
                 ))}
               </div>
-            </Reveal>
+            </div>
           ))}
         </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${LEAD} max-w-4xl`}>
               Organizations must map their core competencies to determine where
@@ -3149,7 +3090,7 @@ export default function Week06BusinessStrategy() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3165,7 +3106,7 @@ export default function Week06BusinessStrategy() {
       >
         <Head eyebrow="Taking and giving">Open Source Strategy</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <svg
             aria-hidden
             viewBox="0 0 800 124"
@@ -3241,18 +3182,18 @@ export default function Week06BusinessStrategy() {
               THE FIRM
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={260}>
+          <div>
             <div className={`${MICRO} text-[var(--champagne)]`}>Leveraging</div>
             <p className={`${BODY} mt-4`}>
               Leveraging open source models accelerates development and reduces
               fixed costs.
             </p>
             <Terms items={["accelerates development", "reduces fixed costs"]} />
-          </Reveal>
-          <Reveal delay={380}>
+          </div>
+          <div>
             <div className={`${MICRO} text-[var(--champagne)]`}>
               Contributing
             </div>
@@ -3263,10 +3204,10 @@ export default function Week06BusinessStrategy() {
             <Terms
               items={["attract top talent", "establish industry standards"]}
             />
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={520} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <svg
               aria-hidden
@@ -3313,7 +3254,7 @@ export default function Week06BusinessStrategy() {
               the firm does not control.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3325,21 +3266,21 @@ export default function Week06BusinessStrategy() {
         <Head eyebrow="New entrants">Disruptive AI Innovation</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Anticipating how AI enables non-traditional competitors to enter
               the market.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <p className={BODY}>
               AI lowers the barriers to entry in industries traditionally
               protected by scale.
             </p>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={380} className="w-full">
+        <div className="w-full">
           <svg
             aria-hidden
             viewBox="0 0 800 176"
@@ -3456,9 +3397,9 @@ export default function Week06BusinessStrategy() {
               </g>
             ))}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={500} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <div className={`${MICRO} text-[var(--champagne)]`}>Incumbents</div>
             <p className={`${DISPLAY} mt-4 max-w-4xl`}>
@@ -3470,7 +3411,7 @@ export default function Week06BusinessStrategy() {
               className="mt-6"
             />
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       <PartPlate
@@ -3518,7 +3459,7 @@ export default function Week06BusinessStrategy() {
 
           return (
             <>
-              <Reveal delay={140} className="w-full">
+              <div className="w-full">
                 <p className={`${BODY} mt-9 max-w-4xl`}>
                   Shifting from siloed departments to cross-functional,
                   product-oriented squads.
@@ -3595,9 +3536,9 @@ export default function Week06BusinessStrategy() {
                     CROSS-FUNCTIONAL, PRODUCT-ORIENTED SQUADS
                   </text>
                 </svg>
-              </Reveal>
+              </div>
 
-              <Reveal delay={300} className="w-full">
+              <div className="w-full">
                 <div className={RULED}>
                   <p className={`${BODY} max-w-4xl`}>
                     Integrating data engineering, data science, and business
@@ -3627,12 +3568,12 @@ export default function Week06BusinessStrategy() {
                     )}
                   </svg>
                 </div>
-              </Reveal>
+              </div>
             </>
           );
         })()}
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <figure aria-hidden className="w-full">
               <svg viewBox="0 0 800 120" className="w-full" fill="none">
@@ -3675,7 +3616,7 @@ export default function Week06BusinessStrategy() {
               continuous learning.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3693,7 +3634,7 @@ export default function Week06BusinessStrategy() {
         <Head eyebrow="Where AI sits">Centralized versus Decentralized AI</Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <div className={`${MICRO} text-[var(--champagne)]`}>Centralized</div>
             <p className={`${BODY} mt-4`}>
               Centralized centers of excellence ensure standard practices and
@@ -3740,9 +3681,9 @@ export default function Week06BusinessStrategy() {
               </text>
             </svg>
             <Terms items={["standard practices", "resource efficiency"]} />
-          </Reveal>
+          </div>
 
-          <Reveal delay={260}>
+          <div>
             <div className={`${MICRO} text-[var(--champagne)]`}>
               Decentralized
             </div>
@@ -3783,10 +3724,10 @@ export default function Week06BusinessStrategy() {
               </text>
             </svg>
             <Terms items={["faster execution"]} />
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <svg
               aria-hidden
@@ -3843,7 +3784,7 @@ export default function Week06BusinessStrategy() {
               A hybrid approach often balances governance with agility.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3854,7 +3795,7 @@ export default function Week06BusinessStrategy() {
       <Slide id="talent" border align="left">
         <Head eyebrow="Talent">Talent Strategy and Acquisition</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             The scarcity of specialized AI talent requires innovative
             recruitment and retention strategies.
@@ -3888,9 +3829,9 @@ export default function Week06BusinessStrategy() {
             </text>
           </svg>
           <Terms items={["recruitment", "retention"]} />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <div
               aria-hidden
@@ -3911,9 +3852,9 @@ export default function Week06BusinessStrategy() {
               experts.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <p className={`${BODY} max-w-4xl`}>
               Building a culture that bridges the communication gap between
@@ -3981,9 +3922,9 @@ export default function Week06BusinessStrategy() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Should business units have their own data scientists, or should they
           request resources from a central pool, and how does this impact
           strategic alignment?
@@ -3998,7 +3939,7 @@ export default function Week06BusinessStrategy() {
       <Slide id="agile" border align="left">
         <Head eyebrow="Method">Agile AI Development</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Traditional software development methodologies are insufficient for
             probabilistic AI projects.
@@ -4073,9 +4014,9 @@ export default function Week06BusinessStrategy() {
               PROBABILISTIC AI PROJECTS
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Embracing experimentation, failure, and rapid prototyping.
@@ -4155,9 +4096,9 @@ export default function Week06BusinessStrategy() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <figure aria-hidden className="w-full">
               <svg viewBox="0 0 800 104" className="w-full" fill="none">
@@ -4220,7 +4161,7 @@ export default function Week06BusinessStrategy() {
               deployment.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -4231,7 +4172,7 @@ export default function Week06BusinessStrategy() {
       <Slide id="governance" border align="left">
         <Head eyebrow="Governance">Data Governance as Strategy</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <div className="mt-10 w-full max-w-5xl">
             <Split left="Just a compliance function" right="Strategic enabler" />
             <p className={`${LEAD} mt-6 max-w-4xl`}>
@@ -4239,9 +4180,9 @@ export default function Week06BusinessStrategy() {
               strategic enabler.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Ensuring data quality, lineage, and accessibility across the
@@ -4340,9 +4281,9 @@ export default function Week06BusinessStrategy() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <svg
               aria-hidden
@@ -4390,7 +4331,7 @@ export default function Week06BusinessStrategy() {
               Establishing clear ownership and accountability for data assets.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -4401,7 +4342,7 @@ export default function Week06BusinessStrategy() {
       <Slide id="culture" border align="left">
         <Head eyebrow="Culture">Cultivating an AI Culture</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Shifting the organizational mindset from deterministic rules to
             probabilistic outcomes.
@@ -4453,9 +4394,9 @@ export default function Week06BusinessStrategy() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Encouraging data-driven decision making at all levels of the
@@ -4507,9 +4448,9 @@ export default function Week06BusinessStrategy() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <svg
               aria-hidden
@@ -4556,7 +4497,7 @@ export default function Week06BusinessStrategy() {
               systems.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       <PartPlate
@@ -4581,7 +4522,7 @@ export default function Week06BusinessStrategy() {
           The Execution Gap
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Many AI strategies fail during the transition from pilot to
             production.
@@ -4662,9 +4603,9 @@ export default function Week06BusinessStrategy() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Lack of integration with legacy systems often stalls deployment.
@@ -4732,9 +4673,9 @@ export default function Week06BusinessStrategy() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <p className={`${DISPLAY} max-w-4xl`}>
               Successful execution requires rigorous change management and
@@ -4747,7 +4688,7 @@ export default function Week06BusinessStrategy() {
               className="mt-6 max-w-2xl"
             />
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -4764,7 +4705,7 @@ export default function Week06BusinessStrategy() {
       >
         <Head eyebrow="Model drift">Managing Algorithmic Risk</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             AI models can degrade over time as the external environment changes.
           </p>
@@ -4844,10 +4785,10 @@ export default function Week06BusinessStrategy() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
         <div className="mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-14">
-          <Reveal delay={300}>
+          <div>
             <p className={BODY}>
               Implementing robust monitoring systems to detect model drift and
               data bias.
@@ -4891,9 +4832,9 @@ export default function Week06BusinessStrategy() {
               </text>
             </svg>
             <Terms items={["model drift", "data bias"]} />
-          </Reveal>
+          </div>
 
-          <Reveal delay={420}>
+          <div>
             <p className={BODY}>
               Establishing fallback mechanisms when automated systems fail.
             </p>
@@ -4951,7 +4892,7 @@ export default function Week06BusinessStrategy() {
                 FAIL
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
       </Slide>
 
@@ -4963,7 +4904,7 @@ export default function Week06BusinessStrategy() {
       <Slide id="agility" border align="left">
         <Head eyebrow="Agility">Strategic Agility</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             AI accelerates market dynamics, requiring firms to rapidly pivot
             their strategies.
@@ -5021,10 +4962,10 @@ export default function Week06BusinessStrategy() {
               MARKET DYNAMICS
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className="mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-14">
-          <Reveal delay={300}>
+          <div>
             <p className={BODY}>
               Building continuous sensing capabilities to monitor competitive
               movements.
@@ -5085,9 +5026,9 @@ export default function Week06BusinessStrategy() {
                 COMPETITIVE MOVEMENTS
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={420}>
+          <div>
             <p className={BODY}>
               The capacity to reallocate resources dynamically based on
               predictive insights.
@@ -5149,7 +5090,7 @@ export default function Week06BusinessStrategy() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
         </div>
       </Slide>
 
@@ -5161,15 +5102,15 @@ export default function Week06BusinessStrategy() {
       <Slide id="regulatory" border align="left">
         <Head eyebrow="Regulation">Regulatory Strategy</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Navigating the evolving landscape of global AI regulations and
             compliance standards.
           </p>
           <Terms items={["global AI regulations", "compliance standards"]} />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Proactively engaging with policymakers to shape industry
@@ -5263,9 +5204,9 @@ export default function Week06BusinessStrategy() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <Split
               left="Constraint"
@@ -5278,9 +5219,9 @@ export default function Week06BusinessStrategy() {
             </p>
             <Terms items={["privacy", "ethical compliance"]} className="mt-6" />
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           If a new regulation heavily restricts your primary algorithmic
           advantage, how do you pivot the corporate strategy without losing
           market share?
@@ -5297,7 +5238,7 @@ export default function Week06BusinessStrategy() {
           AI and Corporate Social Responsibility
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             The ethical implications of AI deployment, including bias, fairness,
             and job displacement.
@@ -5307,9 +5248,9 @@ export default function Week06BusinessStrategy() {
             cols="md:grid-cols-3"
             className="mt-6 max-w-4xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Aligning the AI strategy with the broader environmental, social,
@@ -5362,9 +5303,9 @@ export default function Week06BusinessStrategy() {
               <path d="M110 112H690" stroke="var(--charcoal)" strokeOpacity="0.4" />
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <svg
               aria-hidden
@@ -5450,7 +5391,7 @@ export default function Week06BusinessStrategy() {
               AI practices.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -5475,7 +5416,7 @@ export default function Week06BusinessStrategy() {
           The Future Strategic Horizon
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <div aria-hidden className="mt-11 w-full max-w-3xl">
             <Split
               left="Human-machine collaboration"
@@ -5483,7 +5424,7 @@ export default function Week06BusinessStrategy() {
               strikeLeft
             />
           </div>
-        </Reveal>
+        </div>
 
         <ol className="mt-10 w-full max-w-4xl">
           {[
@@ -5491,7 +5432,7 @@ export default function Week06BusinessStrategy() {
             "The shift from human-machine collaboration to autonomous organizational units.",
             "Sustaining strategic advantage in a completely AI-saturated market.",
           ].map((line, i) => (
-            <Reveal key={line} as="li" delay={280 + i * 130} className="block">
+            <li key={line} className="block">
               <div className="grid grid-cols-[4ch_1fr] gap-6 border-t border-[var(--charcoal)]/12 py-7 md:grid-cols-[5ch_1fr] md:gap-10">
                 <span className={`${MICRO} pt-3 text-[var(--crimson)]`}>
                   {pad(i + 1)}
@@ -5500,11 +5441,11 @@ export default function Week06BusinessStrategy() {
                   {line}
                 </p>
               </div>
-            </Reveal>
+            </li>
           ))}
         </ol>
 
-        <Reveal delay={700} className="w-full">
+        <div className="w-full">
           <div className="mt-12 flex w-full max-w-4xl flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               End of Week 06
@@ -5515,7 +5456,7 @@ export default function Week06BusinessStrategy() {
               Davood Wadi, PhD · BUSI 654
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
     </SlideDeck>
   );

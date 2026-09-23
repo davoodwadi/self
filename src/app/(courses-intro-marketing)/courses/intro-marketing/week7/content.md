@@ -15,7 +15,7 @@ Product and Service Strategies (The First P)
 - Today we focus on the first P of the marketing mix: Product.
 - We will explore what makes a product successful from inception to decline.
 
-## The Concept: Defining a Product [quiz]
+## The Concept: Defining a Product [exercise]
 - A product is anything that can be offered to a market for attention, acquisition, use, or consumption.
 - It includes physical objects, services, events, persons, places, organizations, and ideas.
 - Products solve problems and deliver value to consumers.
@@ -25,12 +25,12 @@ Product and Service Strategies (The First P)
 - Convenience goods are purchased frequently with minimal comparison (e.g. toothpaste).
 - Shopping goods require more planning and comparison on quality, price, and style (e.g. furniture).
 
-## Product Classifications: Specialty and Unsought Goods [quiz]
+## Product Classifications: Specialty and Unsought Goods [exercise]
 - Specialty goods have unique characteristics or brand identification requiring special purchase effort (e.g. luxury cars).
 - Unsought goods are products consumers do not normally think of buying (e.g. life insurance).
 - Each category requires a distinct marketing and pricing strategy.
 
-## The Concept: The Product Life Cycle [quiz]
+## The Concept: The Product Life Cycle [exercise]
 - [diagram: cascading flow - stages of the product life cycle]
 - The Product Life Cycle (PLC) describes the course of a product's sales and profits over its lifetime.
 - It consists of five distinct stages: development, introduction, growth, maturity, and decline.
@@ -58,7 +58,7 @@ Product and Service Strategies (The First P)
 - New products can be original products, improvements, modifications, or new brands.
 - Innovation carries high risk, with many new products failing in the marketplace.
 
-## Strategy: New Product Development Process [quiz]
+## Strategy: New Product Development Process [exercise]
 - [diagram: cascading flow - steps in the new product development process]
 - Idea generation and screening start the process by sourcing and filtering new concepts.
 - Concept development and testing involve testing the idea with a group of target consumers.
@@ -70,7 +70,7 @@ Product and Service Strategies (The First P)
 - Test marketing introduces the product and marketing program into realistic market settings.
 - Commercialization is the final step of introducing the new product into the market.
 
-## The Concept: Branding Strategy [quiz]
+## The Concept: Branding Strategy [exercise]
 - A brand is a name, term, sign, symbol, or design that identifies the maker or seller of a product.
 - It represents the consumer's perceptions and feelings about a product and its performance.
 - Brand equity is the differential effect that knowing the brand name has on customer response to the product or its marketing.
@@ -85,7 +85,7 @@ Product and Service Strategies (The First P)
 - It serves multiple functions: protecting the product, attracting attention, and describing the product.
 - Labeling identifies the product, grades it, describes it, and promotes the product through attractive graphics.
 
-## The Concept: The Nature of Services [quiz]
+## The Concept: The Nature of Services [exercise]
 - Services are a form of product that consists of activities, benefits, or satisfactions offered for sale.
 - They are essentially intangible and do not result in the ownership of anything.
 - The service economy is growing rapidly and dominates modern markets.

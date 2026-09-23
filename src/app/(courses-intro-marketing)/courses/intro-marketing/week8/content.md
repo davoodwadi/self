@@ -10,13 +10,13 @@ week: week8
 - Today we explore the second P of the marketing mix, Price.
 - We will examine how price affects the bottom line and customer perception.
 
-## The Paradigm of Price [quiz]
+## The Paradigm of Price [exercise]
 - Price is the only element in the marketing mix that produces revenue.
 - All other elements represent costs to the organization.
 - Price is highly flexible and can be changed quickly compared to product features or channel commitments.
 - It is a critical determinant of buyer choice and market share.
 
-## Part 1: Factors Affecting Pricing Decisions [no-quiz]
+## Part 1: Factors Affecting Pricing Decisions [no-exercise]
 - Setting the right price requires balancing internal capabilities and external realities.
 - Internal factors include marketing objectives and costs.
 - External factors encompass market demand and competitor behavior.
@@ -33,7 +33,7 @@ week: week8
 - Variable costs vary directly with the level of production.
 - Total costs must be covered to achieve long-term viability.
 
-## External Factors: The Market and Demand [quiz]
+## External Factors: The Market and Demand [exercise]
 - While costs set the lower limit, the market sets the upper limit.
 - Understanding the relationship between price and demand is crucial.
 - Different markets exhibit different competitive conditions.
@@ -45,13 +45,13 @@ week: week8
 - Elastic demand means demand changes greatly in response to price changes.
 - Companies must understand elasticity to forecast revenues accurately.
 
-## Part 2: Core Pricing Approaches [no-quiz]
+## Part 2: Core Pricing Approaches [no-exercise]
 [diagram: split-lane - comparing cost-based, value-based, and competition-based pricing]
 - Once factors are understood, marketers must select a pricing approach.
 - Three major pricing strategies dominate the market.
 - They are customer value-based pricing, cost-based pricing, and competition-based pricing.
 
-## Customer Value-Based Pricing [quiz]
+## Customer Value-Based Pricing [exercise]
 - This approach uses buyers' perceptions of value as the key to pricing.
 - Price is considered along with all other marketing mix variables before the marketing program is set.
 - The company assesses customer needs and value perceptions first.
@@ -69,7 +69,7 @@ week: week8
 - Types include cost-plus pricing and break-even pricing.
 - While simple, it ignores demand and competitors' prices.
 
-## Competition-Based Pricing [quiz]
+## Competition-Based Pricing [exercise]
 - Prices are set based on competitors' strategies, prices, costs, and market offerings.
 - Consumers will base their judgments of a product's value on the prices that competitors charge.
 - The company must assess how its offer compares to competitors in terms of customer value.
@@ -79,13 +79,13 @@ week: week8
 - A new streaming platform enters a crowded market dominated by established giants with a unique recommendation algorithm but a smaller content library.
 - Discussion: Should the company use cost-based, value-based, or competition-based pricing?
 
-## Part 3: Pricing Strategies for New Products [no-quiz]
+## Part 3: Pricing Strategies for New Products [no-exercise]
 [diagram: cascading flow - transitioning from market skimming to market penetration over product lifecycle]
 - Introducing a new product brings unique pricing challenges.
 - Pricing must be dynamic and adapt as the product passes through its life cycle.
 - The two primary strategies are market-skimming pricing and market-penetration pricing.
 
-## Market-Skimming Pricing [quiz]
+## Market-Skimming Pricing [exercise]
 - Setting a high price for a new product to skim maximum revenues layer by layer.
 - The company makes fewer but more profitable sales.
 - Product quality and image must support the high price.
@@ -97,7 +97,7 @@ week: week8
 - The market must be highly price-sensitive.
 - Production and distribution costs must decrease as sales volume increases.
 
-## Pricing Strategies for Product Mixes [no-quiz]
+## Pricing Strategies for Product Mixes [no-exercise]
 - The strategy changes when the product is part of a product mix.
 - The firm looks for a set of prices that maximizes its profits on the total mix.
 - Pricing is difficult because the various products have related demand and costs.
@@ -109,7 +109,7 @@ week: week8
 - Optional-product pricing is the pricing of optional or accessory products along with a main product.
 - Companies must decide which items to include in the base price and which to offer as options.
 
-## Captive-Product Pricing [quiz]
+## Captive-Product Pricing [exercise]
 - Setting a price for products that must be used along with a main product.
 - Examples include blades for a razor and games for a video game console.
 - The main product is often priced low, with high markups on the captive supplies.

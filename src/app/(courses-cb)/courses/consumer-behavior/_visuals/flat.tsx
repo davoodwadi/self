@@ -1,11 +1,11 @@
 /* ==========================================================================
    Consumer Behavior — the flat Broadsheet kit (legacy)
    --------------------------------------------------------------------------
-   The helpers the Week 1–4 plates were first drawn with: CSS-variable
+   The helpers the Week 2–4 plates are still drawn with (Week 1 is converted): CSS-variable
    palette, Frame, Key/Note/Display text, the capsule Person, the five
    SenseGlyphs and the teal BrandMark. New and converted plates use
    ./sketch and ./sketch-cast instead (see ../CLAUDE.md); this file goes
-   once Weeks 1–4 are in Editorial Sketch.
+   once Weeks 2–4 are in Editorial Sketch.
 
    Weeks import from here, never from another week.
    ========================================================================== */

@@ -99,7 +99,7 @@ function P({
   return (
     <p
       className={cn(
-        "gsap-reveal type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
+        "type-body max-w-[var(--measure)] [&_strong]:font-semibold [&_strong]:text-[var(--ink)]",
         className,
       )}
     >
@@ -117,7 +117,7 @@ function Lead({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-lead max-w-[46ch]", className)}>
+    <p className={cn("type-lead max-w-[46ch]", className)}>
       {children}
     </p>
   );
@@ -132,7 +132,7 @@ function Statement({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-quote max-w-[30ch]", className)}>
+    <p className={cn("type-quote max-w-[30ch]", className)}>
       {children}
     </p>
   );
@@ -147,7 +147,7 @@ function Big({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-h2 !font-normal", className)}>
+    <p className={cn("type-h2 !font-normal", className)}>
       {children}
     </p>
   );
@@ -201,7 +201,7 @@ function Ruled({
   return (
     <div
       className={cn(
-        "gsap-reveal min-w-0 border-t-2 pt-5",
+        "min-w-0 border-t-2 pt-5",
         BORDER[tone],
         className,
       )}
@@ -220,7 +220,7 @@ function Plate({
   className?: string;
 }) {
   return (
-    <div className={cn("gsap-reveal figure-well w-full p-3 sm:p-5", className)}>
+    <div className={cn("figure-well w-full p-3 sm:p-5", className)}>
       {children}
     </div>
   );
@@ -241,7 +241,7 @@ function KickerHeading({
   tone?: "signal" | "counter";
 }) {
   return (
-    <div className="gsap-reveal w-full mb-8 md:mb-12">
+    <div className="w-full mb-8 md:mb-12">
       <h2 className="type-h1 max-w-[24ch]">
         <span
           className={cn(
@@ -261,7 +261,7 @@ function KickerHeading({
 /** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
 function Prompt({ children }: { children: React.ReactNode }) {
   return (
-    <div className="gsap-reveal relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
+    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
       <p className="type-quote !text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[42ch]">
         {children}
       </p>
@@ -304,7 +304,7 @@ function SectionStrip({
     <ol
       aria-hidden
       className={cn(
-        "gsap-reveal grid w-full grid-cols-5 gap-2 sm:gap-3",
+        "grid w-full grid-cols-5 gap-2 sm:gap-3",
         className,
       )}
     >
@@ -382,7 +382,7 @@ function PlateRow({
   return (
     <div
       className={cn(
-        "gsap-reveal grid w-full items-center gap-6 border-t-2 py-8 md:grid-cols-[minmax(0,27rem)_1fr] md:gap-12",
+        "grid w-full items-center gap-6 border-t-2 py-8 md:grid-cols-[minmax(0,27rem)_1fr] md:gap-12",
         BORDER[tone],
       )}
     >
@@ -417,7 +417,7 @@ function MixStrip() {
   return (
     <ol
       aria-hidden
-      className="gsap-reveal mx-auto mt-10 grid w-full max-w-2xl grid-cols-4 gap-3"
+      className="mx-auto mt-10 grid w-full max-w-2xl grid-cols-4 gap-3"
     >
       {["Product", "Price", "Place", "Promotion"].map((p, i) => (
         <li
@@ -451,9 +451,9 @@ export default function Week7() {
           Product and Service Strategies{" "}
           <span className="text-[var(--signal)]">(The First P)</span>
         </Title>
-        <p className="gsap-reveal type-caption mt-2">Davood Wadi, PhD</p>
+        <p className="type-caption mt-2">Davood Wadi, PhD</p>
 
-        <div className="gsap-reveal mt-14 w-full max-w-3xl space-y-5 text-center">
+        <div className="mt-14 w-full max-w-3xl space-y-5 text-center">
           <p className="type-lead !text-[var(--ink)]">
             Welcome to Week 7 of Introduction to Marketing.
           </p>
@@ -464,7 +464,7 @@ export default function Week7() {
         </div>
         <MixStrip />
 
-        <div className="gsap-reveal mt-14 w-full max-w-3xl border-t border-[var(--rule)] pt-8">
+        <div className="mt-14 w-full max-w-3xl border-t border-[var(--rule)] pt-8">
           <p className="type-body mx-auto text-center">
             We will explore what makes a product successful from{" "}
             <strong className="font-semibold text-[var(--ink)]">
@@ -1136,7 +1136,7 @@ export default function Week7() {
           ].map((item, i) => (
             <li
               key={i}
-              className="gsap-reveal flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
+              className="flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
             >
               <div aria-hidden className="flex items-center justify-between">
                 <span

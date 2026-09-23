@@ -116,21 +116,26 @@ export function SketchFrame({
   height,
   label,
   children,
+  className = "block h-auto w-full",
+  decorative = false,
 }: {
   id: string;
   width: number;
   height: number;
+  /** What is drawn; unused (and hidden from readers) when `decorative`. */
   label: string;
   children: React.ReactNode;
+  className?: string;
+  /** A small row marker beside text that already says it: aria-hidden. */
+  decorative?: boolean;
 }) {
   return (
     <svg
       viewBox={`0 0 ${width} ${height}`}
-      className="block h-auto w-full"
-      role="img"
-      aria-label={label}
+      className={className}
+      {...(decorative ? { "aria-hidden": true } : { role: "img", "aria-label": label })}
     >
-      <title>{label}</title>
+      {decorative ? null : <title>{label}</title>}
       <defs>
         <filter id={`${id}-bleed`} x="-10%" y="-10%" width="120%" height="120%">
           <feTurbulence

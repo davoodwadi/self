@@ -1,0 +1,92 @@
+/**
+ * Shared types and helpers for in-class exercises.
+ *
+ * Each course week keeps its exercises in a local `exercises.json`. A topic
+ * tagged `[exercise]` in content.md gets one exercise, of whichever type fits
+ * what the topic teaches (see the root CLAUDE.md, "Choosing the exercise").
+ * A slide opts in with `exercise={exerciseBySlideId["<slide-id>"]}`, which
+ * renders the exercise on its own screen immediately AFTER that slide, so it
+ * only ever tests what the student has just been taught.
+ *
+ * A quiz is one exercise type. Entries without a `type` are read as quizzes,
+ * so an old `quizzes.json` entry is already a valid exercise.
+ */
+
+import type { CourseQuiz } from "./course-quiz";
+
+/** Multiple choice: apply an idea to a new case. */
+export type QuizExercise = CourseQuiz & { type: "quiz" };
+
+/** Sort into bins: drop each card into the group it belongs to. */
+export type SortExercise = {
+  type: "sort";
+  slide_id: string;
+  prompt: string;
+  bins: { id: string; label: string }[];
+  cards: {
+    id: string;
+    text: string;
+    /** The `id` of the bin the card belongs in. */
+    bin: string;
+    /** Shown after checking: why the card belongs where it does. */
+    explanation?: string;
+  }[];
+};
+
+/** Match-up: pair each term with its example, drawing or definition. */
+export type MatchExercise = {
+  type: "match";
+  slide_id: string;
+  prompt: string;
+  /** Column headings, e.g. "Segmentation base" and "Example". */
+  term_label?: string;
+  match_label?: string;
+  pairs: {
+    id: string;
+    term: string;
+    match: string;
+    explanation?: string;
+  }[];
+};
+
+export type CourseExercise = QuizExercise | SortExercise | MatchExercise;
+
+/** What a week's JSON may hold: typed exercises, or plain quizzes with no `type`. */
+export type ExerciseInput = CourseExercise | CourseQuiz;
+
+export type ExerciseLookup = Record<string, CourseExercise | undefined>;
+
+function normalise(item: ExerciseInput): CourseExercise {
+  return "type" in item ? item : { ...item, type: "quiz" };
+}
+
+export function createExerciseLookup(items: readonly ExerciseInput[]): ExerciseLookup {
+  const lookup: ExerciseLookup = {};
+  for (const item of items) {
+    const exercise = normalise(item);
+    lookup[exercise.slide_id] = exercise;
+  }
+  return lookup;
+}
+
+/**
+ * A stable shuffle seeded by a string (the slide id), so the server and the
+ * client deal the cards in the same order and nothing mismatches on hydration.
+ */
+export function seededShuffle<T>(items: readonly T[], key: string): T[] {
+  let h = 2166136261;
+  for (let i = 0; i < key.length; i++) h = Math.imul(h ^ key.charCodeAt(i), 16777619);
+  let t = h >>> 0;
+  const rnd = () => {
+    t = (t + 0x6d2b79f5) >>> 0;
+    let r = Math.imul(t ^ (t >>> 15), 1 | t);
+    r ^= r + Math.imul(r ^ (r >>> 7), 61 | r);
+    return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+  };
+  const out = [...items];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rnd() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}

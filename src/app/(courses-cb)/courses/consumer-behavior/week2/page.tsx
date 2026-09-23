@@ -80,23 +80,23 @@ const TEXT: Record<Tone, string> = {
 /** One verbatim line at reading size. */
 function P({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <p className={cn("gsap-reveal type-body max-w-[var(--measure)]", className)}>{children}</p>
+    <p className={cn("type-body max-w-[var(--measure)]", className)}>{children}</p>
   );
 }
 
 /** A line promoted to lead size. */
 function Lead({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <p className={cn("gsap-reveal type-lead max-w-[48ch]", className)}>{children}</p>;
+  return <p className={cn("type-lead max-w-[48ch]", className)}>{children}</p>;
 }
 
 /** A line set as a serif statement: the line a slide lands on. */
 function Statement({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <p className={cn("gsap-reveal type-quote max-w-[30ch]", className)}>{children}</p>;
+  return <p className={cn("type-quote max-w-[30ch]", className)}>{children}</p>;
 }
 
 /** A line at h2 size. */
 function Big({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <p className={cn("gsap-reveal type-h2 !font-normal", className)}>{children}</p>;
+  return <p className={cn("type-h2 !font-normal", className)}>{children}</p>;
 }
 
 /** Coloured term inside a line. */
@@ -120,7 +120,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div className={cn("gsap-reveal min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
+    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -129,7 +129,7 @@ function Ruled({
 /** A plate that lives in a column: a figure well without the 680px floor. */
 function Plate({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={cn("gsap-reveal figure-well w-full min-w-0 p-3 sm:p-5", className)}>
+    <div className={cn("figure-well w-full min-w-0 p-3 sm:p-5", className)}>
       {children}
     </div>
   );
@@ -149,7 +149,7 @@ function Heading({
   tone?: "signal" | "counter";
 }) {
   return (
-    <div className="gsap-reveal mb-10 w-full md:mb-14">
+    <div className="mb-10 w-full md:mb-14">
       <h2 className="type-h1 max-w-[22ch]">
         {kicker ? (
           <>
@@ -224,7 +224,7 @@ const STAGE_NAMES = ["Exposure", "Attention", "Interpretation"];
 
 function StageRule({ active }: { active: number[] }) {
   return (
-    <ol aria-hidden className="gsap-reveal mb-12 grid w-full grid-cols-3 gap-2 md:mb-16 sm:gap-4">
+    <ol aria-hidden className="mb-12 grid w-full grid-cols-3 gap-2 md:mb-16 sm:gap-4">
       {STAGE_NAMES.map((name, i) => {
         const on = active.includes(i);
         return (
@@ -260,7 +260,7 @@ function SenseRow({
   return (
     <li
       className={cn(
-        "gsap-reveal grid min-w-0 items-center gap-6 border-t-2 pt-6 md:grid-cols-[4rem_1fr_minmax(0,22rem)] md:gap-10",
+        "grid min-w-0 items-center gap-6 border-t-2 pt-6 md:grid-cols-[4rem_1fr_minmax(0,22rem)] md:gap-10",
         beyond ? "border-[var(--signal)]" : "border-[var(--rule-2)]",
       )}
     >
@@ -280,12 +280,12 @@ export default function Week2() {
       <Slide id="title-slide">
         <div className="grid w-full items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
           <div className="min-w-0">
-            <p className="gsap-reveal type-label !text-[0.8rem] !text-[var(--signal)]">
+            <p className="type-label !text-[0.8rem] !text-[var(--signal)]">
               Week 02
             </p>
-            <p className="gsap-reveal type-caption mt-2">Consumer Behavior · Davood Wadi, PhD</p>
+            <p className="type-caption mt-2">Consumer Behavior · Davood Wadi, PhD</p>
             <Title className="mt-8 !max-w-[14ch]">Perception and Sensory Marketing</Title>
-            <div className="gsap-reveal mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
+            <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
               <p className="type-quote">
                 We do not see things as they are.{" "}
                 <span className="text-[var(--ink-3)]">We see things through our </span>
@@ -296,7 +296,7 @@ export default function Week2() {
               </p>
             </div>
           </div>
-          <div className="gsap-reveal mx-auto w-full max-w-[340px]">
+          <div className="mx-auto w-full max-w-[340px]">
             <Filters />
           </div>
         </div>
@@ -374,7 +374,7 @@ export default function Week2() {
             <li
               key={s.stage}
               className={cn(
-                "gsap-reveal min-w-0 border-t-2 pt-5",
+                "min-w-0 border-t-2 pt-5",
                 i === 2 ? "border-[var(--signal)]" : "border-[var(--ink)]",
               )}
             >
@@ -655,7 +655,7 @@ export default function Week2() {
               ),
             },
           ].map((g) => (
-            <li key={g.name} className="gsap-reveal flex min-w-0 flex-col gap-6">
+            <li key={g.name} className="flex min-w-0 flex-col gap-6">
               <div className="figure-well w-full min-w-0 p-3">{g.plate}</div>
               <div className="border-t-2 border-[var(--signal)] pt-5">
                 <p className="type-body">{g.text}</p>
@@ -679,20 +679,20 @@ export default function Week2() {
           <SemioticTriangle />
         </Figure>
         <ol className="grid w-full gap-10 md:grid-cols-3 md:gap-8">
-          <li className="gsap-reveal min-w-0 border-t-2 border-[var(--ink)] pt-5">
+          <li className="min-w-0 border-t-2 border-[var(--ink)] pt-5">
             <p className="type-body">
               {" "}
               An <Term tone="ink">object</Term> is the actual product being promoted.
             </p>
           </li>
-          <li className="gsap-reveal min-w-0 border-t-2 border-[var(--counter)] pt-5">
+          <li className="min-w-0 border-t-2 border-[var(--counter)] pt-5">
             <p className="type-body">
               {" "}
               A <Term tone="counter">sign</Term> is the sensory image or symbol representing the
               intended meaning.
             </p>
           </li>
-          <li className="gsap-reveal min-w-0 border-t-2 border-[var(--signal)] pt-5">
+          <li className="min-w-0 border-t-2 border-[var(--signal)] pt-5">
             <p className="type-body">
               {" "}
               An <Term>interpretant</Term> is the meaning or feeling derived by the consumer from
@@ -718,7 +718,7 @@ export default function Week2() {
         <Figure height="auto" className="!mt-0">
           <SensorySignatures />
         </Figure>
-        <div className="gsap-reveal relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
+        <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
           <p className="type-quote !text-[clamp(1.35rem,2.5vw,2.1rem)] max-w-[46ch]">
             <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
               Discussion:

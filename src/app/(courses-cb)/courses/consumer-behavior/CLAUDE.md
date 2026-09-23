@@ -9,8 +9,8 @@ Other courses have their own style files; do not bring their conventions (INK/SI
 Anything more than one week draws with lives in `_visuals/`, and each week imports from there. A week's `visuals.tsx` imports only from `_visuals/`, never from another week's folder. When a week needs a piece that currently lives in another week, move it into `_visuals/` first.
 
 - `_visuals/sketch.tsx`: the Editorial Sketch primitives (the table below).
-- `_visuals/sketch-cast.tsx`: the shared Editorial Sketch cast (the fashion `Person` with `handAt`, `BrandBadge`, `BrandPerson`, `Bag`, `Box`, `Heart`, `Backwash`, `Ground`, `cloudPts`, and the `rp`/`at`/`sharp` point helpers). Reuse and extend it rather than drawing a new version inside a week.
-- `_visuals/flat.tsx`: the old flat Broadsheet kit, kept only until Weeks 1–4 are converted. New plates use the sketch files.
+- `_visuals/sketch-cast.tsx`: the shared Editorial Sketch cast: the fashion `Person` (with `handAt`, and `headScale` for children), a seated `Baby`, `BrandBadge`, `BrandPerson`, `Bag`, `Box`, `Heart`, everyday objects (`Magnifier`, `Star`/`Stars`, `SpeechBubble`, `PayCard`, `Eye`, `Megaphone`, `Clock`, `Cart`, `MapPin`), `SketchArrow`, the scene pieces (`Backwash`, `Ground`, `cloudPts`) and the `rp`/`at`/`sharp`/`curvePts` point helpers. Reuse and extend it rather than drawing a new version inside a week.
+- `_visuals/flat.tsx`: the old flat Broadsheet kit, kept only until Weeks 2–4 are converted. New plates use the sketch files.
 
 ## Build every plate from the shared kit
 
@@ -228,4 +228,4 @@ Render it, screenshot it at full size one plate at a time, and ask:
 - Is there enough empty paper around the subject, and does the background wash show past it?
 - Does it sit comfortably next to the Week 1 Receipt?
 
-The Browser pane can't zoom into a region: to see a plate at full size, clone its `<svg>` into a fixed full-screen overlay with `javascript_tool`, screenshot, then remove the overlay. Pages fade in with GSAP, so wait about 7 s after a reload before judging.
+The Browser pane can't zoom into a region: to see a plate at full size, clone its `<svg>` into a fixed full-screen overlay with `javascript_tool`, screenshot, then remove the overlay. Wait for the reload to finish before judging.

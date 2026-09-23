@@ -9,14 +9,14 @@ week: week1
 - Week 01
 - People do not buy products. They buy solutions to feelings, problems, and social needs.
 
-## The Tip of the Iceberg [no-quiz]
+## The Tip of the Iceberg [no-exercise]
 - Most people think consumer behavior is just shopping.
 - The purchase at the register is only one second in a long chain.
 - People spend weeks noticing problems, searching options, and asking friends.
 - After the sale, they use the item, feel happy or regretful, and tell others.
 - Consumer behavior studies the whole chain: before, during, and after the sale.
 
-## The Three Stages of Consumption [quiz]
+## The Three Stages of Consumption [exercise]
 [figure: ConsumptionCycle — three stages: Prepurchase, Purchase, and Postpurchase with consumer and marketer views]
 - Consumption happens in three distinct stages.
 - Stage 1 is Prepurchase. The consumer identifies a need and searches for information. The marketer studies how consumer attitudes form.
@@ -29,7 +29,7 @@ week: week1
 - A parent buys baby food at the grocery store. The parent is the customer. The baby is the consumer.
 - Marketers must satisfy both people. The parent cares about price and nutrition. The baby cares about taste and texture.
 
-## Why Consumers Are Not Calculators [quiz]
+## Why Consumers Are Not Calculators [exercise]
 - Old economics assumed buyers were perfectly rational.
 - This model assumed buyers compare all choices, calculate costs, and pick the best option.
 - Real people have limited time and energy. They use mental shortcuts instead.
@@ -52,7 +52,7 @@ week: week1
 - The user consumes or handles the product.
 - In a household buying a family car, children influence the choice, but parents buy the vehicle.
 
-## Market Segmentation: Who Are We Talking To? [quiz]
+## Market Segmentation: Who Are We Talking To? [exercise]
 [figure: SegmentationPillars — geographic, demographic, psychographic, and behavioral pillars]
 - You cannot appeal to everyone with the same message.
 - Market segmentation divides a big market into smaller groups with shared traits.

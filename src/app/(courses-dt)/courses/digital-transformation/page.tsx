@@ -1,194 +1,204 @@
-"use client";
-
-import React, { useEffect, useRef } from "react";
+import path from "node:path";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { isDeckBuilt } from "@/lib/course-status";
+
+// The course masthead stays in view on the left while the curriculum scrolls
+// on the right, the same layout as the other course landings. A week links
+// out only once its deck has been built.
+
+export const dynamic = "force-static";
+
+const COURSE_DIR = path.join(
+  /* turbopackIgnore: true */ process.cwd(),
+  "src/app/(courses-dt)/courses/digital-transformation",
+);
 
 const COURSE_WEEKS = [
   {
-    week: "WEEK 01",
+    slug: "week-1",
     title: "Introduction to Digital Transformation",
     subtitle:
       "Fundamentally changing how businesses operate and deliver value to customers by integrating digital technology into all areas.",
-    href: "/courses/digital-transformation/week-1",
   },
   {
-    week: "WEEK 02",
+    slug: "week-2",
     title: "Big Data, Porter's Value Chain, and Socio-Technical Systems",
     subtitle:
       "Exploring data structures, Big Data concepts, and organizational frameworks.",
-    href: "/courses/digital-transformation/week-2",
   },
   {
-    week: "WEEK 03",
+    slug: "week-3",
     title: "Change Management & Agile Methodologies",
     subtitle:
       "Exploring data-driven strategies, frameworks for organizational change, and iterative agile processes like Scrum.",
-    href: "/courses/digital-transformation/week-3",
   },
   {
-    week: "WEEK 04",
+    slug: "week-4",
     title: "Technology Acceptance Models & Emerging Paradigms",
     subtitle: "Understanding TAM, UTAUT, IoT, Cloud, Edge, and Fog Computing",
-    href: "/courses/digital-transformation/week-4",
   },
   {
-    week: "WEEK 05",
+    slug: "week-5",
     title: "Cloud, Fog, and Edge Computing",
     subtitle:
       "Understanding modern computing infrastructures and service models",
-    href: "/courses/digital-transformation/week-5",
   },
   {
-    week: "WEEK 06",
+    slug: "week-6",
     title: "AI & Machine Learning",
     subtitle:
       "Understanding Intelligence, ML Algorithms, and Learning Paradigms",
-    href: "/courses/digital-transformation/week-6",
   },
   {
-    week: "WEEK 07",
+    slug: "week-7",
     title: "Blockchain Technology",
     subtitle:
       "Exploring Blockchain, Smart Contracts, and Business Applications",
-    href: "/courses/digital-transformation/week-7",
   },
   {
-    week: "WEEK 08",
+    slug: "week-8",
     title: "Immersive Technologies & Gamification",
     subtitle:
       "Exploring AR, VR, Game Mechanics, and Their Ethical Implications in Business",
-    href: "/courses/digital-transformation/week-8",
   },
   {
-    week: "WEEK 09",
+    slug: "week-9",
     title: "Industry 4.0",
     subtitle: "From the First Industrial Revolution to the Digital Age",
-    href: "/courses/digital-transformation/week-9",
   },
   {
-    week: "WEEK 10",
+    slug: "week-10",
     title: "Cyber Security, Ethics and Social Issues",
     subtitle:
       "Navigating the complex landscape of digital transformation risks, ethical AI, and environmental impacts.",
-    href: "/courses/digital-transformation/week-10",
   },
 ];
 
+const LABEL =
+  "font-accent text-[0.7rem] font-bold uppercase tracking-[0.24em]";
+
+type Row = (typeof COURSE_WEEKS)[number] & { href: string; available: boolean };
+
+function BackLink() {
+  return (
+    <Link
+      href="/courses"
+      className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 transition-colors duration-300 text-[var(--text-muted)] hover:text-[var(--accent1)]"
+      aria-label="Back to all courses"
+    >
+      <ArrowLeft className="w-5 h-5" />
+    </Link>
+  );
+}
+
+/** Week number, title and subtitle: the same row whether it links or not. */
+function RowBody({ week, n }: { week: Row; n: number }) {
+  const on = week.available;
+  return (
+    <>
+      <span
+        className={`font-mono pt-1 text-sm tabular-nums transition-colors ${
+          on
+            ? "text-[var(--accent1)]"
+            : "text-[var(--text-muted)] opacity-60"
+        }`}
+      >
+        {String(n).padStart(2, "0")}
+      </span>
+      <div className="min-w-0">
+        <h3
+          className={`font-body text-[clamp(1.15rem,1.6vw,1.35rem)] font-semibold leading-snug transition-colors ${
+            on
+              ? "text-[var(--text-primary)] group-hover:text-[var(--accent1)]"
+              : "text-[var(--text-muted)]"
+          }`}
+        >
+          {week.title}
+        </h3>
+        <p
+          className={`font-body mt-1.5 max-w-[62ch] text-[0.95rem] leading-relaxed text-[var(--text-secondary)] ${
+            on ? "" : "opacity-70"
+          }`}
+        >
+          {week.subtitle}
+        </p>
+        {on ? null : (
+          <p className={`${LABEL} mt-2.5 !text-[0.65rem] text-[var(--text-muted)]`}>
+            In preparation
+          </p>
+        )}
+      </div>
+      {on ? (
+        <ArrowRight
+          aria-hidden
+          className="mt-1.5 size-4 text-[var(--text-muted)] transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-[var(--accent1)]"
+        />
+      ) : (
+        <span aria-hidden />
+      )}
+    </>
+  );
+}
+
+const ROW =
+  "grid grid-cols-[2.25rem_minmax(0,1fr)_auto] gap-x-4 md:gap-x-6 py-5 -mx-3 px-3";
+
 export default function DigitalTransformationLanding() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    let ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".hero-text",
-        { y: 20, opacity: 0, filter: "blur(10px)" },
-        {
-          y: 0,
-          opacity: 1,
-          filter: "blur(0px)",
-          duration: 1.2,
-          ease: "power3.out",
-          stagger: 0.15,
-        },
-      );
-
-      gsap.fromTo(
-        ".course-card",
-        { y: 30, opacity: 0, filter: "blur(10px)" },
-        {
-          y: 0,
-          opacity: 1,
-          filter: "blur(0px)",
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power2.out",
-          delay: 0.4,
-        },
-      );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+  const weeks: Row[] = COURSE_WEEKS.map((week) => ({
+    ...week,
+    href: `/courses/digital-transformation/${week.slug}`,
+    available: isDeckBuilt(COURSE_DIR, week.slug),
+  }));
 
   return (
-    <div
-      ref={containerRef}
-      className="min-h-screen bg-[var(--background)] text-[var(--text-primary)] font-body py-24 px-6 md:px-12 lg:px-24"
-    >
-      {/* Hero Section */}
-      <div className="max-w-6xl mx-auto mb-20 text-center">
-        <h2 className="hero-text text-label mb-6 tracking-[0.3em] opacity-80">
-          Course Curriculum
-        </h2>
-        <h1 className="hero-text text-display font-heading font-light mb-8 text-[var(--highlight)]">
-          Digital Transformation
-        </h1>
-        <p className="hero-text text-body max-w-2xl mx-auto text-[var(--text-secondary)] text-lg md:text-xl font-light leading-relaxed mb-6">
-          The intersection of business strategy, human systems, and emerging
-          technologies. A ten-week course from foundations to the future of
-          industry.
-        </p>
-        <div className="hero-text flex items-center justify-center space-x-4">
-          <div className="text-left">
-            <p className="text-[var(--text-primary)] text-center font-accent font-bold text-sm tracking-wider ">
-              Davood Wadi, PhD
-            </p>
-            <p className="text-[var(--text-muted)] text-center text-xs font-mono">
-              Lecturer & Course Developer
-            </p>
+    <div className="min-h-screen bg-[var(--background)] text-[var(--text-primary)] font-body">
+      <BackLink />
+      <div className="mx-auto grid w-full max-w-6xl gap-x-16 px-6 md:px-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+        {/* Masthead: stays in view beside the curriculum on wide screens. */}
+        <header className="pt-20 pb-12 md:pt-28 lg:sticky lg:top-0 lg:flex lg:h-svh lg:flex-col lg:justify-center lg:py-16">
+          <h1 className="text-display !text-[clamp(2.6rem,4vw,3.6rem)] font-heading font-light !leading-[1.05] text-[var(--highlight)]">
+            Digital Transformation
+          </h1>
+
+          <p className="mt-7 max-w-[44ch] text-lg font-light leading-relaxed text-[var(--text-secondary)] md:text-xl">
+            The intersection of business strategy, human systems, and emerging
+            technologies. A ten-week course from foundations to the future of
+            industry.
+          </p>
+
+          <p className="font-accent mt-8 border-t border-[var(--border)] pt-5 text-sm font-bold tracking-wider text-[var(--text-primary)]">
+            Davood Wadi, PhD
+          </p>
+
+        </header>
+
+        {/* Curriculum */}
+        <nav aria-label="Course weeks" className="pb-10 lg:py-20">
+          <div className="mb-4">
+            <h2 className={`${LABEL} text-[var(--accent1)]`}>Curriculum</h2>
           </div>
-        </div>
-      </div>
 
-      {/* Grid of Weeks */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {COURSE_WEEKS.map((week, idx) => (
-          <Link
-            href={week.href}
-            key={idx}
-            className="course-card block group h-full"
-          >
-            <div className="bg-[var(--card)] border border-[var(--border)] rounded-sm p-8 h-full flex flex-col justify-between transition-all duration-500 hover:border-[var(--accent1)] hover:shadow-[0_10px_30px_rgba(229,9,20,0.15)] relative overflow-hidden">
-              {/* Subtle hover glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[var(--glow)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          <ol className="border-t border-[var(--border)]">
+            {weeks.map((week, idx) => (
+              <li key={week.slug} className="border-b border-[var(--border)]">
+                {week.available ? (
+                  <Link
+                    href={week.href}
+                    className={`group ${ROW} transition-colors duration-200 hover:bg-[var(--background-alt)]`}
+                  >
+                    <RowBody week={week} n={idx + 1} />
+                  </Link>
+                ) : (
+                  <div aria-disabled="true" className={`${ROW} cursor-default`}>
+                    <RowBody week={week} n={idx + 1} />
+                  </div>
+                )}
+              </li>
+            ))}
+          </ol>
 
-              <div className="relative z-10">
-                <span className="text-label block mb-4 text-[var(--accent1)] font-accent font-bold">
-                  {week.week}
-                </span>
-                <h3 className="text-h2 font-heading font-bold mb-4 text-[var(--text-primary)] transition-colors duration-300">
-                  {week.title}
-                </h3>
-                <p className="text-body text-[var(--text-secondary)] text-sm md:text-base leading-relaxed opacity-80">
-                  {week.subtitle}
-                </p>
-              </div>
-
-              <div className="relative z-10 mt-8 pt-6 border-t border-[var(--border)] flex items-center justify-between">
-                <span className="text-[var(--text-muted)] text-xs uppercase tracking-widest font-accent font-bold group-hover:text-[var(--text-primary)] transition-colors duration-300">
-                  Explore Chapter
-                </span>
-                <svg
-                  className="w-5 h-5 text-[var(--accent1)] transform group-hover:translate-x-2 transition-transform duration-300"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </div>
-            </div>
-          </Link>
-        ))}
+        </nav>
       </div>
     </div>
   );

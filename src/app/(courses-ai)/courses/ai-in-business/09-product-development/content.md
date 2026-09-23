@@ -11,7 +11,7 @@ backgroundShape: "A complex, evolving wireframe of a product transforming into a
 - From Computer-Aided Design to Computer-Augmented Invention
 - Davood Wadi, PhD
 
-## The Paradigm Shift [quiz]
+## The Paradigm Shift [exercise]
 - Product development is undergoing a fundamental transformation.
 - Moving from isolated tasks to a reshaped lifecycle.
 - Covers the "fuzzy front end" of ideation to regulatory compliance.
@@ -29,7 +29,7 @@ backgroundShape: "A complex, evolving wireframe of a product transforming into a
 - Generating novel combinations rather than just retrieving information.
 - Discussion: Can LLMs truly be creative, or are they just recombining existing concepts?
 
-## Divergent vs. Convergent Thinking [quiz]
+## Divergent vs. Convergent Thinking [exercise]
 - LLMs excel at expanding the solution space ("persistence" and "flexibility") [cite: 1, 2].
 - Better at "small ideas" (incremental) than "big ideas" (paradigm shifts) [cite: 2].
 - Acting as co-creators to disrupt habitual thought patterns.

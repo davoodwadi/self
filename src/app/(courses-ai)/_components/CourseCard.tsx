@@ -22,7 +22,7 @@ export function CourseCard({
 }: CourseCardProps) {
   if (isLocked) {
     return (
-      <div className="course-card block opacity-50">
+      <div className="block opacity-50">
         <div className="flex flex-col justify-between relative bg-[var(--background)] border-t-[4px] border-t-[var(--charcoal-light)] p-8 h-full grayscale">
           <div>
             <span className="text-[var(--charcoal-light)] font-bold tracking-widest uppercase text-xs mb-3 block">
@@ -55,7 +55,7 @@ export function CourseCard({
     variant === "gold" ? "text-[var(--charcoal)]" : "text-[var(--surface)]";
 
   return (
-    <Link href={href || "#"} className="course-card block group">
+    <Link href={href || "#"} className="block group">
       <div
         className={cn(
           "flex flex-col justify-between relative bg-[var(--background)] border-t-[4px] p-8 h-full transition-all duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] overflow-hidden",

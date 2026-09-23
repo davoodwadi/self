@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import {
   Slide,
   SlideDeck,
@@ -58,60 +58,6 @@ const TAG = "font-mono text-[10px] uppercase tracking-[0.1em]";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/**
- * Reveal — the deck's single entrance. Opacity plus eight pixels of rise,
- * fired once when the element crosses into view. `delay` staggers siblings.
- */
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  as: Tag = "div",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-  as?: "div" | "li" | "p" | "span" | "figure";
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    if (typeof IntersectionObserver === "undefined") {
-      const frame = requestAnimationFrame(() => setShown(true));
-      return () => cancelAnimationFrame(frame);
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setShown(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <Tag
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      className={className}
-      style={{
-        opacity: shown ? 1 : 0,
-        transform: shown ? "none" : "translateY(8px)",
-        transition: `opacity 700ms ease-out ${delay}ms, transform 700ms ease-out ${delay}ms`,
-      }}
-    >
-      {children}
-    </Tag>
-  );
-}
-
 /** Eyebrow plus slide heading, the masthead every content slide opens with. */
 function Head({
   eyebrow,
@@ -123,7 +69,7 @@ function Head({
   signal?: boolean;
 }) {
   return (
-    <Reveal>
+    <div>
       <div
         className={`${MICRO} ${
           signal ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
@@ -134,7 +80,7 @@ function Head({
       <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
         {children}
       </h2>
-    </Reveal>
+    </div>
   );
 }
 
@@ -155,17 +101,14 @@ function ModulePlate({
   return (
     <Slide id={id} border align="left" quizData={quizData}>
       <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-        <Reveal>
+        <div>
           <div className={`${MICRO} text-[var(--champagne)]`}>Module</div>
           <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
             {numeral}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal
-          delay={140}
-          className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16"
-        >
+        <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
           <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
             {title}
           </h2>
@@ -180,7 +123,7 @@ function ModulePlate({
               {line}
             </p>
           ))}
-        </Reveal>
+        </div>
       </div>
     </Slide>
   );
@@ -189,37 +132,33 @@ function ModulePlate({
 /** Discussion prompt, set apart in the deck's one ruled frame. */
 function Discussion({
   children,
-  delay,
 }: {
   children: React.ReactNode;
-  delay: number;
 }) {
   return (
-    <Reveal delay={delay} className="w-full">
+    <div className="w-full">
       <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
         <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
         <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
           {children}
         </p>
       </aside>
-    </Reveal>
+    </div>
   );
 }
 
 /** Closing statement in display weight. */
 function Verdict({
   children,
-  delay,
 }: {
   children: React.ReactNode;
-  delay: number;
 }) {
   return (
-    <Reveal delay={delay} className="w-full">
+    <div className="w-full">
       <p className="mt-14 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
         {children}
       </p>
-    </Reveal>
+    </div>
   );
 }
 
@@ -351,23 +290,23 @@ export default function Week03Finance() {
           03
         </span>
 
-        <Reveal>
+        <div>
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
             <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 03 in Applications of AI in Business
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={120}>
+        <div>
           <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-black leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
             Applications of AI in{" "}
             <span className="text-[var(--crimson)]">Finance</span>
           </h1>
-        </Reveal>
+        </div>
 
-        <Reveal delay={240} className="w-full">
+        <div className="w-full">
           <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
           <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
             How intelligent systems reshape credit, control, markets,
@@ -395,9 +334,9 @@ export default function Week03Finance() {
               ),
             )}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={360} className="w-full">
+        <div className="w-full">
           <div className="mt-14 flex w-full flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               Davood Wadi, PhD
@@ -408,7 +347,7 @@ export default function Week03Finance() {
               BUSI 654 · Applications of AI in Business
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -420,7 +359,7 @@ export default function Week03Finance() {
       <Slide id="why-finance-ai" border align="left">
         <Head eyebrow="Opening">Why Finance Became an AI Domain</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Finance runs on repeated decisions under uncertainty: approve,
             price, monitor, flag, hedge, and allocate.
@@ -430,9 +369,9 @@ export default function Week03Finance() {
             cols="sm:grid-cols-3 md:grid-cols-6"
             className="mt-6 max-w-5xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-3xl`}>
               Digital channels, machine-readable records, and high-frequency
@@ -481,9 +420,9 @@ export default function Week03Finance() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_20rem] md:gap-12">
             <p className={DISPLAY}>
               Small model errors can scale quickly because financial systems
@@ -531,7 +470,7 @@ export default function Week03Finance() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -549,7 +488,7 @@ export default function Week03Finance() {
           The Financial Firm as a Decision Architecture
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Front office, risk, operations, compliance, and finance each
             transform information into decisions.
@@ -622,9 +561,9 @@ export default function Week03Finance() {
               },
             )}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-3xl`}>
               AI matters when it improves the speed, consistency, or quality of
@@ -636,9 +575,9 @@ export default function Week03Finance() {
               className="mt-6 max-w-2xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Strengthens judgment"
@@ -649,7 +588,7 @@ export default function Week03Finance() {
               judgment and where it creates unacceptable opacity.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -679,7 +618,7 @@ export default function Week03Finance() {
               terms: ["fraud", "credit deterioration", "model drift", "control failures"],
             },
           ].map((row, i) => (
-            <Reveal key={row.word} as="li" delay={140 + i * 130} className="block">
+            <li key={row.word} className="block">
               <div className="grid gap-4 border-t border-[var(--charcoal)]/12 py-8 md:grid-cols-[12rem_1fr] md:gap-12">
                 <div aria-hidden>
                   <span className={`${MICRO} block text-[var(--champagne)]`}>
@@ -700,7 +639,7 @@ export default function Week03Finance() {
                   <Terms items={row.terms} />
                 </div>
               </div>
-            </Reveal>
+            </li>
           ))}
         </ol>
       </Slide>
@@ -725,7 +664,7 @@ export default function Week03Finance() {
           Data Types and Signal Quality in Financial Services
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Structured records such as transactions, bureau files, contracts,
             claims, and market data remain foundational.
@@ -765,9 +704,9 @@ export default function Week03Finance() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-3xl`}>
               Text, voice, document images, and relationship graphs expand what
@@ -875,9 +814,9 @@ export default function Week03Finance() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <div
               aria-hidden
@@ -907,7 +846,7 @@ export default function Week03Finance() {
               resolution often matter more than model novelty.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -952,12 +891,7 @@ export default function Week03Finance() {
               not: "final authority",
             },
           ].map((row, i) => (
-            <Reveal
-              key={row.method}
-              as="li"
-              delay={140 + i * 130}
-              className="block"
-            >
+            <li key={row.method} className="block">
               <div className="grid gap-4 border-t border-[var(--charcoal)]/12 py-8 md:grid-cols-[13rem_1fr] md:gap-12">
                 <div aria-hidden>
                   <span className={`${MICRO} block text-[var(--champagne)]`}>
@@ -988,7 +922,7 @@ export default function Week03Finance() {
                   </div>
                 </div>
               </div>
-            </Reveal>
+            </li>
           ))}
         </ol>
       </Slide>
@@ -1009,13 +943,13 @@ export default function Week03Finance() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               High-value financial decisions are rarely one-shot predictions;
               they carry legal, reputational, and capital consequences.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <svg
               aria-hidden
               viewBox="0 0 400 104"
@@ -1073,10 +1007,10 @@ export default function Week03Finance() {
                 DECISION
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <div className={`${MICRO} text-[var(--crimson)]`}>
               Human oversight
@@ -1105,9 +1039,9 @@ export default function Week03Finance() {
               ))}
             </ul>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <svg aria-hidden viewBox="0 0 800 76" className="w-full" fill="none">
               <circle
@@ -1159,7 +1093,7 @@ export default function Week03Finance() {
               automation is the objective.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       <ModulePlate
@@ -1183,19 +1117,19 @@ export default function Week03Finance() {
           Credit Scoring Beyond Static Rules
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Modern scoring systems can incorporate richer behavioral,
             transactional, and application-level patterns than traditional
             scorecards alone.
           </p>
-        </Reveal>
+        </div>
 
         <div
           aria-hidden
           className="mt-9 grid w-full max-w-5xl gap-10 md:grid-cols-[16rem_1fr] md:gap-0"
         >
-          <Reveal delay={240} className="md:pr-12">
+          <div className="md:pr-12">
             <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
               Traditional scorecards
             </div>
@@ -1213,11 +1147,8 @@ export default function Week03Finance() {
                 </div>
               ))}
             </div>
-          </Reveal>
-          <Reveal
-            delay={360}
-            className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12"
-          >
+          </div>
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
             <div className={`${MICRO} text-[var(--crimson)]`}>
               Modern scoring systems
             </div>
@@ -1280,10 +1211,10 @@ export default function Week03Finance() {
                 },
               )}
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={480} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-3xl`}>
               Their value lies in better rank ordering of risk and better
@@ -1347,9 +1278,9 @@ export default function Week03Finance() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={620} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <Steps
               items={["explain", "govern", "operationalize"]}
@@ -1361,7 +1292,7 @@ export default function Week03Finance() {
               explain, govern, and operationalize the result.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1378,13 +1309,13 @@ export default function Week03Finance() {
         <Head eyebrow="Broader signals">Underwriting with Broader Signals</Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_20rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Lenders increasingly combine internal history, verified cash
               flow, collateral information, and contextual business data.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <svg
               aria-hidden
               viewBox="0 0 320 104"
@@ -1420,10 +1351,10 @@ export default function Week03Finance() {
               <path d="M280 51h30" stroke="var(--crimson)" strokeWidth="1.5" />
               <circle cx="313" cy="51" r="3" fill="var(--crimson)" />
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-3xl`}>
               Broader signals can improve coverage for thin-file applicants,
@@ -1448,9 +1379,9 @@ export default function Week03Finance() {
               )}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl gap-8 md:grid-cols-[16rem_1fr] md:gap-12">
             <ul aria-hidden className="border-t border-[var(--charcoal)]/15">
               {[
@@ -1482,7 +1413,7 @@ export default function Week03Finance() {
               </p>
             </div>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1495,7 +1426,7 @@ export default function Week03Finance() {
           Pricing, Limit Setting, and Profitability
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Credit decisions do not end at approval; institutions also set
             limits, pricing, covenants, and review intensity.
@@ -1550,9 +1481,9 @@ export default function Week03Finance() {
               </g>
             ))}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-3xl`}>
               AI can help align expected loss, expected revenue, and capital
@@ -1583,9 +1514,9 @@ export default function Week03Finance() {
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Optimize · short-term margin"
@@ -1597,7 +1528,7 @@ export default function Week03Finance() {
               while worsening adverse selection or customer trust.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1610,7 +1541,7 @@ export default function Week03Finance() {
           Early Warning Systems and Portfolio Surveillance
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Portfolio models monitor delinquency signals, payment behavior,
             sector weakness, covenant breaches, or utilization changes before
@@ -1666,9 +1597,9 @@ export default function Week03Finance() {
               FORMAL DEFAULT
             </text>
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-3xl`}>
               The goal is not only prediction, but earlier intervention through
@@ -1696,9 +1627,9 @@ export default function Week03Finance() {
               />
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <Steps
               items={["clear playbooks", "authority to act"]}
@@ -1710,7 +1641,7 @@ export default function Week03Finance() {
               playbooks and authority to act.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1724,13 +1655,13 @@ export default function Week03Finance() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Collections systems estimate which account, channel, timing, or
               hardship option is most likely to recover value.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <div aria-hidden className="grid grid-cols-2 gap-6">
               {[
                 { dial: "Account", pick: 2 },
@@ -1757,10 +1688,10 @@ export default function Week03Finance() {
                 </div>
               ))}
             </div>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_22rem] md:gap-14">
             <p className={LEAD}>
               The best treatment is not always the most aggressive; it must
@@ -1814,9 +1745,9 @@ export default function Week03Finance() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div
               aria-hidden
@@ -1855,9 +1786,9 @@ export default function Week03Finance() {
               boundaries for hardship, vulnerability, and escalation.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={660}>
+        <Discussion>
           When should a lender optimize for recovery efficiency, and when should
           it prioritize longer-term relationship preservation even at lower
           near-term cash recovery?
@@ -1874,7 +1805,7 @@ export default function Week03Finance() {
           Explainability, Fairness, and Adverse Action
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Lending models operate under scrutiny because affected customers
             may be denied credit, priced differently, or sent to manual review.
@@ -1891,9 +1822,9 @@ export default function Week03Finance() {
               ),
             )}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Institutions need explanations that are meaningful to risk
@@ -1939,9 +1870,9 @@ export default function Week03Finance() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <figure className="mt-12 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
             <div className={`${MICRO} text-[var(--champagne)]`}>
               The core governance question
@@ -1956,9 +1887,9 @@ export default function Week03Finance() {
               contexts.
             </blockquote>
           </figure>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Should a lender use a more predictive model if its logic is materially
           harder to explain to customers and examiners?
         </Discussion>
@@ -1986,7 +1917,7 @@ export default function Week03Finance() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_18rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Fraud is adaptive: once a pattern is detected, attackers change
               timing, identity, channel, or transaction structure.
@@ -1994,8 +1925,8 @@ export default function Week03Finance() {
             <Terms
               items={["timing", "identity", "channel", "transaction structure"]}
             />
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <svg
               aria-hidden
               viewBox="0 0 280 150"
@@ -2039,10 +1970,10 @@ export default function Week03Finance() {
                 ATTACKERS CHANGE
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Effective systems combine historical patterns with device
@@ -2079,9 +2010,9 @@ export default function Week03Finance() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_20rem] md:gap-12">
             <p className={DISPLAY}>
               Static rules remain useful, but they degrade quickly when
@@ -2126,7 +2057,7 @@ export default function Week03Finance() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2145,13 +2076,13 @@ export default function Week03Finance() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-2 md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               Transaction monitoring seeks suspicious flows, counterparties,
               geographies, or transaction patterns that merit investigation.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <div aria-hidden className="border-t border-[var(--charcoal)]/30">
               <div className="grid grid-cols-4 border-b border-[var(--charcoal)]/15">
                 {["flows", "counterparties", "geographies", "transaction patterns"].map(
@@ -2194,10 +2125,10 @@ export default function Week03Finance() {
                 );
               })}
             </div>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-3xl`}>
               AI can prioritize alerts, cluster related activity, and surface
@@ -2213,9 +2144,9 @@ export default function Week03Finance() {
               className="mt-6 max-w-3xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="md:max-w-2xl">
               <div className="h-[3px] w-full bg-[var(--crimson)]" />
@@ -2243,7 +2174,7 @@ export default function Week03Finance() {
               workflow, and escalation discipline.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2257,7 +2188,7 @@ export default function Week03Finance() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-[17rem_1fr] md:gap-0">
-          <Reveal delay={140} className="md:pr-12">
+          <div className="md:pr-12">
             <p className={BODY}>
               Financial crime often spans accounts, merchants, devices, shell
               entities, and synthetic identities that appear unrelated in
@@ -2292,12 +2223,9 @@ export default function Week03Finance() {
                 ))}
               </div>
             </div>
-          </Reveal>
+          </div>
 
-          <Reveal
-            delay={280}
-            className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12"
-          >
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
             <p className={BODY}>
               Graph methods help connect shared addresses, phones,
               counterparties, and transaction paths into investigable networks.
@@ -2376,10 +2304,10 @@ export default function Week03Finance() {
                 ))}
               </svg>
             </div>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <svg aria-hidden viewBox="0 0 800 84" className="w-full" fill="none">
               {[
@@ -2451,7 +2379,7 @@ export default function Week03Finance() {
               links can hide risk and weak links can create noise.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2464,7 +2392,7 @@ export default function Week03Finance() {
           False Positives, Customer Friction, and Inclusion
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Overly sensitive detection systems block legitimate customers,
             delay payments, and erode trust at critical moments.
@@ -2481,9 +2409,9 @@ export default function Week03Finance() {
               ),
             )}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-3xl`}>
               Institutions must weigh the cost of friction against the cost of
@@ -2507,9 +2435,9 @@ export default function Week03Finance() {
               </svg>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <figure aria-hidden className="max-w-3xl">
               <svg viewBox="0 0 640 172" className="w-full" fill="none">
@@ -2605,9 +2533,9 @@ export default function Week03Finance() {
               financial lives.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           How much customer friction is acceptable in exchange for a meaningful
           reduction in fraud and financial crime exposure?
         </Discussion>
@@ -2623,7 +2551,7 @@ export default function Week03Finance() {
           Compliance Copilots and Case Productivity
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Generative and retrieval systems can summarize alerts, assemble
             evidence, draft narratives, and route cases to the right reviewer.
@@ -2640,9 +2568,9 @@ export default function Week03Finance() {
             mark={4}
             className="mt-6 max-w-5xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Operational leverage for investigators"
@@ -2653,9 +2581,9 @@ export default function Week03Finance() {
               autonomous compliance judgment.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <div
               aria-hidden
@@ -2689,7 +2617,7 @@ export default function Week03Finance() {
               what content can enter the formal record.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       <ModulePlate
@@ -2713,13 +2641,13 @@ export default function Week03Finance() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_19rem] md:gap-14">
-          <Reveal delay={140}>
+          <div>
             <p className={BODY}>
               AI can process prices, volumes, news, filings, macro releases,
               and alternative text streams faster than human analysts.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <svg
               aria-hidden
               viewBox="0 0 300 140"
@@ -2757,10 +2685,10 @@ export default function Week03Finance() {
               <path d="M270 70h22" stroke="var(--crimson)" strokeWidth="1.5" />
               <circle cx="295" cy="70" r="3" fill="var(--crimson)" />
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Predict markets with certainty"
@@ -2773,9 +2701,9 @@ export default function Week03Finance() {
               improve signal extraction and decision support under uncertainty.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Leaders should distinguish between models that identify
@@ -2846,7 +2774,7 @@ export default function Week03Finance() {
               <Schematic className="mt-3" />
             </figure>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2860,7 +2788,7 @@ export default function Week03Finance() {
           Portfolio Construction and Decision Support
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Portfolio tools can help rank opportunities, estimate correlations,
             rebalance exposures, and test scenarios under changing constraints.
@@ -2875,9 +2803,9 @@ export default function Week03Finance() {
             cols="md:grid-cols-4"
             className="mt-6 max-w-5xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-3xl`}>
               Their usefulness depends on assumptions about liquidity,
@@ -2901,9 +2829,9 @@ export default function Week03Finance() {
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <svg aria-hidden viewBox="0 0 800 124" className="w-full" fill="none">
               <circle
@@ -2978,7 +2906,7 @@ export default function Week03Finance() {
               unless governance explicitly permits automated execution.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2996,7 +2924,7 @@ export default function Week03Finance() {
           Model Risk in Non-Stationary Environments
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Financial markets, customer behavior, and macro conditions change,
             sometimes abruptly.
@@ -3044,9 +2972,9 @@ export default function Week03Finance() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               A model that performs well in one regime can fail precisely when
@@ -3114,9 +3042,9 @@ export default function Week03Finance() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <Steps
               items={[
@@ -3135,7 +3063,7 @@ export default function Week03Finance() {
               systems.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3148,7 +3076,7 @@ export default function Week03Finance() {
           Stress Testing and Scenario Analysis
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Stress testing asks how portfolios and business lines behave under
             severe but plausible shocks.
@@ -3205,9 +3133,9 @@ export default function Week03Finance() {
             </svg>
             <Schematic />
           </figure>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-3xl`}>
               AI can accelerate scenario construction, loss estimation,
@@ -3224,9 +3152,9 @@ export default function Week03Finance() {
               className="mt-6 max-w-5xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Predict the future exactly"
@@ -3243,7 +3171,7 @@ export default function Week03Finance() {
               crisis conditions emerge.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3256,7 +3184,7 @@ export default function Week03Finance() {
           Treasury, Liquidity, and Balance Sheet Management
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Treasury teams need forecasts of cash flows, deposit stability,
             funding needs, collateral usage, and interest-rate sensitivity.
@@ -3272,9 +3200,9 @@ export default function Week03Finance() {
             cols="sm:grid-cols-3 md:grid-cols-5"
             className="mt-6 max-w-5xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_16rem] md:gap-14">
             <p className={BODY}>
               AI can improve forecasting granularity and anomaly detection
@@ -3306,9 +3234,9 @@ export default function Week03Finance() {
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="max-w-3xl">
               <div className="flex items-center gap-4">
@@ -3327,7 +3255,7 @@ export default function Week03Finance() {
               are intertwined with regulation, confidence, and market access.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3340,7 +3268,7 @@ export default function Week03Finance() {
           Pricing, Hedging, and the Limits of Automation
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <div className="mt-10 w-full max-w-5xl">
             <Split
               left="Optimized continuously"
@@ -3352,9 +3280,9 @@ export default function Week03Finance() {
               automation can amplify feedback loops and hidden assumptions.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Pricing and hedging systems should be evaluated not only by local
@@ -3403,9 +3331,9 @@ export default function Week03Finance() {
               ))}
             </ul>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={440}>
+        <Discussion>
           Which market or treasury decisions should remain human-approved even
           if an automated system is usually faster and more consistent?
         </Discussion>
@@ -3429,7 +3357,7 @@ export default function Week03Finance() {
       <Slide id="document-processing" border align="left">
         <Head eyebrow="Documents at scale">Intelligent Document Processing</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Financial firms handle applications, income documents, contracts,
             invoices, statements, policies, and regulatory forms at scale.
@@ -3464,9 +3392,9 @@ export default function Week03Finance() {
               </div>
             ))}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[11rem_1fr] md:gap-12">
             <div
               aria-hidden
@@ -3509,9 +3437,9 @@ export default function Week03Finance() {
               />
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split
               left="Merely optical character recognition"
@@ -3524,7 +3452,7 @@ export default function Week03Finance() {
               downstream data, not merely optical character recognition.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3537,7 +3465,7 @@ export default function Week03Finance() {
           Reconciliation, Exceptions, and Control Rooms
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Many finance operations revolve around matching records across
             systems, identifying breaks, and resolving root causes quickly.
@@ -3597,9 +3525,9 @@ export default function Week03Finance() {
               );
             })}
           </svg>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Machine learning can prioritize exceptions, detect unusual break
@@ -3615,9 +3543,9 @@ export default function Week03Finance() {
               className="mt-6 max-w-4xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split left="AI outputs as prompts" right="Hidden rules" />
             <Terms
@@ -3630,7 +3558,7 @@ export default function Week03Finance() {
               rules.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3643,7 +3571,7 @@ export default function Week03Finance() {
           Customer Service, Advice, and Relationship Support
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             AI assistants can handle routine inquiries, summarize relationship
             history, and help staff prepare for conversations.
@@ -3657,9 +3585,9 @@ export default function Week03Finance() {
             cols="md:grid-cols-3"
             className="mt-6 max-w-3xl"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               In wealth management, insurance, or banking, suitability and
@@ -3683,9 +3611,9 @@ export default function Week03Finance() {
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="grid max-w-2xl grid-cols-2 gap-6">
               {[
@@ -3725,7 +3653,7 @@ export default function Week03Finance() {
               speed and consistency, and which require contextual human trust.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3738,7 +3666,7 @@ export default function Week03Finance() {
           Personalization, Suitability, and Conduct Risk
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Financial firms increasingly tailor offers, reminders, education,
             or next-best actions to customer context.
@@ -3762,9 +3690,9 @@ export default function Week03Finance() {
               Customer context
             </span>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Personalization can improve relevance, but unsuitable nudges may
@@ -3832,9 +3760,9 @@ export default function Week03Finance() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div
               aria-hidden
@@ -3862,9 +3790,9 @@ export default function Week03Finance() {
               becomes too prescriptive.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           At what point does personalized financial guidance become a conduct
           risk rather than a service improvement?
         </Discussion>
@@ -3890,12 +3818,12 @@ export default function Week03Finance() {
           Model Governance Across the Lifecycle
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Financial institutions need controls for data sourcing,
             development, validation, deployment, monitoring, and retirement.
           </p>
-        </Reveal>
+        </div>
 
         <ol
           aria-hidden
@@ -3909,7 +3837,7 @@ export default function Week03Finance() {
             "Monitoring",
             "Retirement",
           ].map((stage, i) => (
-            <Reveal key={stage} as="li" delay={220 + i * 70} className="block">
+            <li key={stage} className="block">
               <div className="relative border-t border-[var(--charcoal)]/20 pr-3 pt-4">
                 <span className="absolute -top-[4px] left-0 h-[7px] w-[7px] rounded-full bg-[var(--crimson)]" />
                 <span className={`${MICRO} block text-[var(--champagne)]`}>
@@ -3919,11 +3847,11 @@ export default function Week03Finance() {
                   {stage}
                 </span>
               </div>
-            </Reveal>
+            </li>
           ))}
         </ol>
 
-        <Reveal delay={700} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Governance must clarify who approves use, who challenges
@@ -3951,9 +3879,9 @@ export default function Week03Finance() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={820} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div
               aria-hidden
@@ -4006,7 +3934,7 @@ export default function Week03Finance() {
               rights and review cadence.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -4025,7 +3953,7 @@ export default function Week03Finance() {
           Data Governance, Privacy, and Cybersecurity
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Finance data is sensitive, connected, and valuable, making data
             governance a strategic control function.
@@ -4047,9 +3975,9 @@ export default function Week03Finance() {
               Data governance · strategic control function
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Institutions must manage access, retention, lineage, consent,
@@ -4068,9 +3996,9 @@ export default function Week03Finance() {
               className="mt-6 max-w-4xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <svg aria-hidden viewBox="0 0 800 112" className="w-full" fill="none">
               <path
@@ -4131,7 +4059,7 @@ export default function Week03Finance() {
               target both the institution and the models it depends on.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -4142,7 +4070,7 @@ export default function Week03Finance() {
       <Slide id="build-buy-partner" border align="left">
         <Head eyebrow="Sourcing capability">Build, Buy, or Partner</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
             Some AI capabilities are better sourced from vendors with proven
             tooling, while others justify internal development because data,
@@ -4165,9 +4093,9 @@ export default function Week03Finance() {
               />
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={300} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               The decision depends on differentiation, integration burden,
@@ -4185,9 +4113,9 @@ export default function Week03Finance() {
               className="mt-6 max-w-5xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={440} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div aria-hidden className="max-w-3xl space-y-4">
               <div className="grid grid-cols-[8rem_1fr] items-center gap-4 md:grid-cols-[10rem_1fr]">
@@ -4222,9 +4150,9 @@ export default function Week03Finance() {
               customer outcomes or control failures.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Which finance AI capabilities should remain proprietary, and which
           should be treated as infrastructure?
         </Discussion>
@@ -4241,7 +4169,7 @@ export default function Week03Finance() {
         </Head>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-0">
-          <Reveal delay={140} className="md:pr-12">
+          <div className="md:pr-12">
             <div className={`${MICRO} text-[var(--champagne)]`}>Strongest</div>
             <p className={`${BODY} mt-4`}>
               Generative systems are strongest in summarization, knowledge
@@ -4263,11 +4191,8 @@ export default function Week03Finance() {
                 </span>
               ))}
             </div>
-          </Reveal>
-          <Reveal
-            delay={280}
-            className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12"
-          >
+          </div>
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
             <div className={`${MICRO} text-[var(--crimson)]`}>Weakest</div>
             <p className={`${BODY} mt-4`}>
               They are weakest when used as unchecked authorities for regulated
@@ -4285,10 +4210,10 @@ export default function Week03Finance() {
                 ),
               )}
             </div>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <svg aria-hidden viewBox="0 0 800 120" className="w-full" fill="none">
               <text
@@ -4341,7 +4266,7 @@ export default function Week03Finance() {
               before experimentation spreads across teams.
             </p>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -4360,14 +4285,14 @@ export default function Week03Finance() {
         </Head>
 
         <div className="mt-9 w-full max-w-5xl">
-          <Reveal delay={140}>
+          <div>
             <p className={`${BODY} max-w-4xl`}>
               Durable adoption requires collaboration among business leaders,
               risk, compliance, operations, data teams, model validators, and
               legal partners.
             </p>
-          </Reveal>
-          <Reveal delay={260}>
+          </div>
+          <div>
             <svg
               aria-hidden
               viewBox="12 22 448 226"
@@ -4439,10 +4364,10 @@ export default function Week03Finance() {
                 ADOPTION
               </text>
             </svg>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={400} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Talent strategy is less about hiring only specialists and more
@@ -4477,15 +4402,15 @@ export default function Week03Finance() {
               </div>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <Terms
             items={["trust the workflow", "understand escalation"]}
             className="mt-14"
           />
-        </Reveal>
-        <Verdict delay={600}>
+        </div>
+        <Verdict>
           Change management matters because even accurate models fail when
           front-line staff do not trust the workflow or understand escalation.
         </Verdict>
@@ -4512,7 +4437,7 @@ export default function Week03Finance() {
           Conclusion: AI in Finance as Institutional Capability
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <ol
             aria-hidden
             className="mt-11 grid w-full max-w-4xl grid-cols-2 gap-y-5 sm:grid-cols-3 md:grid-cols-5"
@@ -4533,7 +4458,7 @@ export default function Week03Finance() {
               ),
             )}
           </ol>
-        </Reveal>
+        </div>
 
         <ol className="mt-10 w-full max-w-4xl">
           {[
@@ -4541,7 +4466,7 @@ export default function Week03Finance() {
             "Competitive advantage comes from embedding AI into credit, control, markets, service, and operations without weakening trust.",
             "The executive task is not to automate finance wholesale, but to decide where machine intelligence improves judgment, resilience, and accountability.",
           ].map((line, i) => (
-            <Reveal key={line} as="li" delay={280 + i * 130} className="block">
+            <li key={line} className="block">
               <div className="grid grid-cols-[4ch_1fr] gap-6 border-t border-[var(--charcoal)]/12 py-7 md:grid-cols-[5ch_1fr] md:gap-10">
                 <span className={`${MICRO} pt-3 text-[var(--crimson)]`}>
                   {pad(i + 1)}
@@ -4550,11 +4475,11 @@ export default function Week03Finance() {
                   {line}
                 </p>
               </div>
-            </Reveal>
+            </li>
           ))}
         </ol>
 
-        <Reveal delay={700} className="w-full">
+        <div className="w-full">
           <div className="mt-12 flex w-full max-w-4xl flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               End of Week 03
@@ -4565,7 +4490,7 @@ export default function Week03Finance() {
               Davood Wadi, PhD · BUSI 654
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
     </SlideDeck>
   );

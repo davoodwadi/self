@@ -59,7 +59,7 @@ function P({
 }) {
   return (
     <p
-      className={cn("gsap-reveal type-body max-w-[var(--measure)]", className)}
+      className={cn("type-body max-w-[var(--measure)]", className)}
     >
       {children}
     </p>
@@ -75,7 +75,7 @@ function Lead({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-lead max-w-[48ch]", className)}>
+    <p className={cn("type-lead max-w-[48ch]", className)}>
       {children}
     </p>
   );
@@ -90,7 +90,7 @@ function Statement({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-quote max-w-[30ch]", className)}>
+    <p className={cn("type-quote max-w-[30ch]", className)}>
       {children}
     </p>
   );
@@ -105,7 +105,7 @@ function Big({
   className?: string;
 }) {
   return (
-    <p className={cn("gsap-reveal type-h2 !font-normal", className)}>
+    <p className={cn("type-h2 !font-normal", className)}>
       {children}
     </p>
   );
@@ -148,7 +148,7 @@ function Ruled({
   return (
     <div
       className={cn(
-        "gsap-reveal min-w-0 border-t-2 pt-5",
+        "min-w-0 border-t-2 pt-5",
         BORDER[tone],
         className,
       )}
@@ -175,7 +175,7 @@ function Plate({
   return (
     <div
       className={cn(
-        "gsap-reveal figure-well w-full min-w-0 p-3",
+        "figure-well w-full min-w-0 p-3",
         wide && "overflow-x-auto",
         className,
       )}
@@ -203,7 +203,7 @@ function Heading({
   tone?: "signal" | "counter";
 }) {
   return (
-    <div className="gsap-reveal mb-8 w-full md:mb-10">
+    <div className="mb-8 w-full md:mb-10">
       <h2 className="type-h1 max-w-[22ch]">
         {kicker ? (
           <>
@@ -255,7 +255,7 @@ function Cells({
       )}
     >
       {items.map((s) => (
-        <li key={s.key} className="gsap-reveal flex min-w-0 flex-col gap-4">
+        <li key={s.key} className="flex min-w-0 flex-col gap-4">
           <div className={cn("border-t-2 pt-4", BORDER[s.tone])}>
             <p className="type-body">{s.text}</p>
           </div>
@@ -277,7 +277,7 @@ function MarkLine({
   children: React.ReactNode;
 }) {
   return (
-    <li className="gsap-reveal flex min-w-0 items-start gap-4 border-t border-[var(--ink)] pt-3">
+    <li className="flex min-w-0 items-start gap-4 border-t border-[var(--ink)] pt-3">
       {mark}
       <p className="type-body min-w-0">{children}</p>
     </li>
@@ -291,7 +291,7 @@ function IdeaRule({ active }: { active: 0 | 1 | 2 }) {
   return (
     <ol
       aria-hidden
-      className="gsap-reveal mb-8 grid w-full grid-cols-3 gap-2 sm:gap-4 md:mb-10"
+      className="mb-8 grid w-full grid-cols-3 gap-2 sm:gap-4 md:mb-10"
     >
       {IDEAS.map((name, i) => {
         const on = i === active;
@@ -322,16 +322,16 @@ export default function Week5() {
       <Slide id="title-slide">
         <div className="grid w-full items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
           <div className="min-w-0">
-            <p className="gsap-reveal type-label !text-[0.8rem] !text-[var(--signal)]">
+            <p className="type-label !text-[0.8rem] !text-[var(--signal)]">
               Week 05
             </p>
-            <p className="gsap-reveal type-caption mt-2">
+            <p className="type-caption mt-2">
               Consumer Behavior · Davood Wadi, PhD
             </p>
             <Title className="mt-8 !max-w-[14ch]">
               Personality, Self-Concept, and Lifestyles
             </Title>
-            <div className="gsap-reveal mt-10 max-w-[36ch] border-t-2 border-[var(--ink)] pt-6">
+            <div className="mt-10 max-w-[36ch] border-t-2 border-[var(--ink)] pt-6">
               <p className="type-quote">
                 <span className="text-[var(--ink-3)]">
                   Consumers do not just buy products.
@@ -342,7 +342,7 @@ export default function Week5() {
               </p>
             </div>
           </div>
-          <div className="gsap-reveal mx-auto w-full max-w-[340px]">
+          <div className="mx-auto w-full max-w-[340px]">
             <V.MirrorSelf />
           </div>
         </div>
@@ -993,7 +993,7 @@ export default function Week5() {
           Your Extended Self
         </Heading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1fr] lg:gap-10">
-          <div className="gsap-reveal relative w-full min-w-0 border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-10 md:py-12">
+          <div className="relative w-full min-w-0 border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-10 md:py-12">
             <p className="type-quote !text-[clamp(1.3rem,2vw,1.75rem)] max-w-[46ch]">
               <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
                 Discussion:

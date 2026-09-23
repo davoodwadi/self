@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import {
   Slide,
   SlideDeck,
@@ -65,60 +65,6 @@ const hash = (n: number) => {
 };
 
 /**
- * Reveal — the deck's single entrance. Opacity plus eight pixels of rise,
- * fired once when the element crosses into view. `delay` staggers siblings.
- */
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  as: Tag = "div",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-  as?: "div" | "li" | "p" | "span" | "figure";
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    if (typeof IntersectionObserver === "undefined") {
-      const frame = requestAnimationFrame(() => setShown(true));
-      return () => cancelAnimationFrame(frame);
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setShown(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <Tag
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      className={className}
-      style={{
-        opacity: shown ? 1 : 0,
-        transform: shown ? "none" : "translateY(8px)",
-        transition: `opacity 700ms ease-out ${delay}ms, transform 700ms ease-out ${delay}ms`,
-      }}
-    >
-      {children}
-    </Tag>
-  );
-}
-
-/**
  * Eyebrow plus slide heading. When a heading opens with a "Label:" prefix, the
  * prefix is set as a crimson italic kicker on its own line, inside the same h2
  * so the heading still reads as one sentence.
@@ -133,7 +79,7 @@ function Head({
   children: React.ReactNode;
 }) {
   return (
-    <Reveal>
+    <div>
       <div className={`${MICRO} text-[var(--champagne)]`}>{eyebrow}</div>
       <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
         {kicker && (
@@ -145,7 +91,7 @@ function Head({
         )}
         {children}
       </h2>
-    </Reveal>
+    </div>
   );
 }
 
@@ -155,15 +101,13 @@ function Head({
  */
 function Discussion({
   children,
-  delay,
   figure,
 }: {
   children: React.ReactNode;
-  delay: number;
   figure?: React.ReactNode;
 }) {
   return (
-    <Reveal delay={delay} className="w-full">
+    <div className="w-full">
       <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
         <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
         <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
@@ -171,7 +115,7 @@ function Discussion({
         </p>
         {figure && <div className="mt-8">{figure}</div>}
       </aside>
-    </Reveal>
+    </div>
   );
 }
 
@@ -364,17 +308,15 @@ function Ledger({
 /** One numbered measure: numeral, its sentence, and its own small figure. */
 function Measure({
   n,
-  delay,
   figure,
   children,
 }: {
   n: number;
-  delay: number;
   figure: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
-    <Reveal as="li" delay={delay} className="block">
+    <li className="block">
       <div className="grid gap-5 border-t border-[var(--charcoal)]/12 py-8 md:grid-cols-[4ch_1fr_17rem] md:items-center md:gap-10">
         <span className={`${MICRO} text-[var(--crimson)] md:self-start md:pt-2`}>
           {pad(n)}
@@ -384,7 +326,7 @@ function Measure({
           {figure}
         </div>
       </div>
-    </Reveal>
+    </li>
   );
 }
 
@@ -408,7 +350,7 @@ export default function Week07Edii() {
           07
         </span>
 
-        <Reveal>
+        <div>
           <h1 className="max-w-5xl font-serif text-[clamp(2.75rem,9vw,6.5rem)] font-black leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
             <span
               className={`${MICRO} mb-10 flex items-center gap-4 font-sans tracking-[0.22em] text-[var(--champagne)]`}
@@ -418,20 +360,20 @@ export default function Week07Edii() {
             </span>{" "}
             <span className="text-[var(--crimson)]">EDII</span> in AI
           </h1>
-        </Reveal>
+        </div>
 
-        <Reveal delay={200} className="w-full">
+        <div className="w-full">
           <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
           <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
             Equity, Diversity, Inclusion, and Indigeneity in AI systems
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={340} className="w-full">
+        <div className="w-full">
           <Unfold words={EDII} className="mt-8 w-full max-w-4xl" />
-        </Reveal>
+        </div>
 
-        <Reveal delay={480} className="w-full">
+        <div className="w-full">
           <div className="mt-14 flex w-full flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               Davood Wadi, PhD
@@ -442,7 +384,7 @@ export default function Week07Edii() {
               BUSI 654 · Applications of AI in Business
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -455,7 +397,7 @@ export default function Week07Edii() {
           AI as a Mirror of Society
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Artificial Intelligence learns from historical data rather than
             operating in a vacuum.
@@ -467,9 +409,9 @@ export default function Week07Edii() {
               strikeLeft
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               When data contains societal bias, prejudice, and systemic
@@ -532,9 +474,9 @@ export default function Week07Edii() {
               <Schematic />
             </figure>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               For business leaders, biased AI creates ethical, operational,
@@ -546,9 +488,9 @@ export default function Week07Edii() {
               className="mt-6 max-w-4xl"
             />
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={560}>
+        <Discussion>
           Can you think of a time a brand suffered a major PR crisis due to an
           automated system or algorithm making a biased decision? How did it
           impact their bottom line?
@@ -572,7 +514,7 @@ export default function Week07Edii() {
           How Algorithms Learn Bias
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Bias enters AI through training data bias, algorithmic bias, and
             self-reinforcing feedback loops.
@@ -600,10 +542,10 @@ export default function Week07Edii() {
               ALGORITHMIC BIAS
             </text>
           </svg>
-        </Reveal>
+        </div>
 
         <div className="mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-14">
-          <Reveal delay={300}>
+          <div>
             <p className={BODY}>
               Training data bias can teach a model that historically dominant
               groups are predictors of success.
@@ -656,9 +598,9 @@ export default function Week07Edii() {
                 HISTORICALLY DOMINANT GROUPS
               </text>
             </svg>
-          </Reveal>
+          </div>
 
-          <Reveal delay={420}>
+          <div>
             <p className={BODY}>
               Algorithmic bias often emerges when optimization favors aggregate
               accuracy while ignoring minority edge cases.
@@ -707,10 +649,10 @@ export default function Week07Edii() {
               </svg>
               <Schematic />
             </figure>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Fairness can be assessed through concepts like demographic parity
@@ -722,10 +664,9 @@ export default function Week07Edii() {
               className="mt-6 max-w-2xl"
             />
           </div>
-        </Reveal>
+        </div>
 
         <Discussion
-          delay={660}
           figure={
             <svg
               aria-hidden
@@ -784,7 +725,7 @@ export default function Week07Edii() {
           The ROI of Inclusive AI
         </Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <div aria-hidden className="mt-11 max-w-3xl">
             <Split left="Compliance checkbox" right="Competitive advantage" />
           </div>
@@ -792,10 +733,10 @@ export default function Week07Edii() {
             EDII in AI is not just a compliance checkbox, it is a competitive
             advantage.
           </p>
-        </Reveal>
+        </div>
 
         <div className="mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-14">
-          <Reveal delay={300}>
+          <div>
             <p className={BODY}>
               The cost of bias includes regulatory fines, lawsuits, customer
               distrust, and long-term brand damage.
@@ -808,9 +749,9 @@ export default function Week07Edii() {
                 "long-term brand damage",
               ]}
             />
-          </Reveal>
+          </div>
 
-          <Reveal delay={420}>
+          <div>
             <p className={BODY}>
               The ROI of inclusion comes from stronger products, more resilient
               models, and access to underserved markets.
@@ -823,10 +764,10 @@ export default function Week07Edii() {
                 "access to underserved markets",
               ]}
             />
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <figure aria-hidden className="w-full">
               <svg viewBox="0 0 800 158" className="w-full" fill="none">
@@ -871,9 +812,9 @@ export default function Week07Edii() {
               real-world conditions.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={660}>
+        <Discussion>
           How would you measure the ROI of investing in an AI ethics and
           diversity board for a mid-sized tech company? What KPIs would you
           track?
@@ -894,15 +835,15 @@ export default function Week07Edii() {
       >
         <Head eyebrow="04 / 05">Indigeneity and Data Sovereignty</Head>
 
-        <Reveal delay={140} className="w-full">
+        <div className="w-full">
           <Unfold words={EDII} mark={3} className="mt-10 w-full max-w-4xl" />
           <p className={`${BODY} mt-6 max-w-4xl`}>
             Indigeneity is a critical dimension of EDII, especially when AI
             systems rely on cultural or community data.
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Data colonialism occurs when data is extracted from Indigenous
@@ -965,9 +906,9 @@ export default function Week07Edii() {
               </text>
             </svg>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className={RULED}>
             <div className={`${MICRO} text-[var(--champagne)]`}>OCAP</div>
             <Unfold
@@ -980,9 +921,9 @@ export default function Week07Edii() {
               collected and used.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={540} className="w-full">
+        <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <Split
               left="Raw fuel for models"
@@ -993,9 +934,9 @@ export default function Week07Edii() {
               cultures, and sovereign rights, not just raw fuel for models.
             </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Discussion delay={660}>
+        <Discussion>
           If your company wants to train an LLM on historical cultural texts,
           including Indigenous knowledge, how do you navigate data scraping
           versus data sovereignty?
@@ -1022,7 +963,6 @@ export default function Week07Edii() {
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
             n={1}
-            delay={140}
             figure={
               <svg viewBox="0 0 280 104" className="w-full" fill="none">
                 <circle cx="22" cy="44" r="9" stroke="var(--charcoal)" strokeOpacity="0.6" />
@@ -1054,7 +994,6 @@ export default function Week07Edii() {
 
           <Measure
             n={2}
-            delay={240}
             figure={
               <svg viewBox="0 0 280 96" className="w-full" fill="none">
                 <text {...SVG_LABEL} x="0" y="38" fill="var(--charcoal)" fillOpacity="0.6">
@@ -1081,7 +1020,6 @@ export default function Week07Edii() {
 
           <Measure
             n={3}
-            delay={340}
             figure={
               <svg viewBox="0 0 280 112" className="w-full" fill="none">
                 <rect x="30" y="20" width="220" height="60" rx="30" stroke="var(--charcoal)" strokeOpacity="0.45" />
@@ -1111,7 +1049,6 @@ export default function Week07Edii() {
 
           <Measure
             n={4}
-            delay={440}
             figure={
               <svg viewBox="0 0 280 114" className="w-full" fill="none">
                 <path d="M24 82H80V56H150V30H222" stroke="var(--crimson)" strokeWidth="2" />
@@ -1137,7 +1074,6 @@ export default function Week07Edii() {
         </ol>
 
         <Discussion
-          delay={560}
           figure={
             <svg
               aria-hidden
@@ -1190,16 +1126,16 @@ export default function Week07Edii() {
           07
         </span>
 
-        <Reveal>
+        <div>
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
             <span className="h-px w-10 bg-[var(--crimson)]" />
             End of Week 07
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={140}>
+        <div>
           <p
             aria-hidden
             // Headings take their family from globals.css, which Tailwind's
@@ -1209,13 +1145,13 @@ export default function Week07Edii() {
           >
             <span className="text-[var(--crimson)]">EDII</span> in AI
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={280} className="w-full">
+        <div className="w-full">
           <Unfold words={EDII} className="mt-10 w-full max-w-4xl" />
-        </Reveal>
+        </div>
 
-        <Reveal delay={420} className="w-full">
+        <div className="w-full">
           <div className="mt-14 flex w-full max-w-4xl flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               Davood Wadi, PhD
@@ -1226,7 +1162,7 @@ export default function Week07Edii() {
               BUSI 654 · Applications of AI in Business
             </span>
           </div>
-        </Reveal>
+        </div>
       </Slide>
     </SlideDeck>
   );

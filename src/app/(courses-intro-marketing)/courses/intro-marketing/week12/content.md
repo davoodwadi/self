@@ -23,7 +23,7 @@ week: "week12"
 - Marketers assess economic conditions of target countries.
 - Cultural environments dictate consumer behavior and preferences.
 
-## Assessing the Global Environment [quiz]
+## Assessing the Global Environment [exercise]
 - Tariffs and quotas are common trade barriers.
 - Economic indicators like GDP guide market selection.
 - Cultural nuances influence product acceptance and messaging.
@@ -50,7 +50,7 @@ week: "week12"
 - Direct exporting involves handling your own exports.
 - Exporting requires the least change to the company product lines.
 
-## Market Entry: Joint Venturing [quiz]
+## Market Entry: Joint Venturing [exercise]
 - Joint venturing involves joining with foreign companies.
 - Types include licensing, contract manufacturing, and joint ownership.
 - It shares the financial risk but also reduces management control.
@@ -71,7 +71,7 @@ week: "week12"
 - Adapted global marketing adjusts the strategy to each target market.
 - Standardization lowers costs but adaptation improves local relevance.
 
-## Product Adaptation Strategies [quiz]
+## Product Adaptation Strategies [exercise]
 - Straight extension means marketing a product without any changes.
 - Product adaptation alters the product to meet local conditions.
 - Product invention consists of creating something new for a specific market.
@@ -107,7 +107,7 @@ week: "week12"
 - It enables predictive modeling for consumer behavior.
 - Chatbots and automated systems enhance customer service efficiency.
 
-## AI Personalization and Analytics [quiz]
+## AI Personalization and Analytics [exercise]
 - AI algorithms deliver hyper-personalized content to users.
 - Predictive analytics forecast future buying patterns based on past behavior.
 - Marketers use AI to optimize ad spend in real-time.
@@ -118,7 +118,7 @@ week: "week12"
 - Purpose-driven marketing aligns business goals with social impact.
 - Greenwashing, or false sustainability claims, damages brand reputation.
 
-## The Circular Economy [quiz]
+## The Circular Economy [exercise]
 - The circular economy minimizes waste by designing products for reuse.
 - Brands are shifting from a take-make-dispose model.
 - Product life cycles are extended through repair and recycling programs.
