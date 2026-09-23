@@ -49,7 +49,21 @@ export type MatchExercise = {
   }[];
 };
 
-export type CourseExercise = QuizExercise | SortExercise | MatchExercise;
+/** Put it in order: arrange steps or events into a sequence. */
+export type OrderExercise = {
+  type: "order";
+  slide_id: string;
+  prompt: string;
+  /** The steps in their correct order; students see them shuffled. */
+  steps: {
+    id: string;
+    text: string;
+    /** Why the step sits where it does. */
+    explanation?: string;
+  }[];
+};
+
+export type CourseExercise = QuizExercise | SortExercise | MatchExercise | OrderExercise;
 
 /** What a week's JSON may hold: typed exercises, or plain quizzes with no `type`. */
 export type ExerciseInput = CourseExercise | CourseQuiz;
