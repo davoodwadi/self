@@ -12,7 +12,7 @@ Import from `../_sketch/sketch.tsx`. Do not re-implement these, and do not draw 
 |---|---|
 | `SketchFrame id="sk-<plate>"` | The `<svg>` of every plate. `id` must be unique on the page; it prefixes the bleed and grain filters. Gives `<title>` + `aria-label`. |
 | `InkLine pts seed` | Every real line and outline: wobbly, drawn twice so the edge looks faintly doubled. Use `closed` for shapes. |
-| `PencilLine pts seed` | Anything unreal, imagined, placeholder, "future", reflected, or dashed in the original. |
+| `PencilLine pts seed` | Absent objects and placeholders only: an empty slot, a thing taken away or not bought, a diagram placeholder. Never a person or a scene (see "Visceral, not ghosted"). |
 | `Wash pts seed fill` | Each colour area: ragged edge, set off-register from the line (`dx`/`dy`). |
 | `Paper pts seed` | Paper objects (receipts, cards, signs, packaging): cream fill with faint grain, drawn under their `InkLine`. |
 | `SketchText` | All text: crisp, small, ink. `serif` for a title set on an object. |
@@ -69,7 +69,7 @@ Muted, earthy and warm, with one cool accent. About five colours per plate.
 | `blush` | background wash | `#F2C9B0` |
 | `sky` | glass, background wash | `#BFD6DF` |
 | `earth` | ground wash | `#C9B8A6` |
-| `pencil` | anything unreal | `#6F7785` |
+| `pencil` | absent objects and placeholders | `#6F7785` |
 
 No saturated brights, no neons, no pure black, no CSS variables (`var(--signal)` etc.) inside plates.
 
@@ -77,18 +77,35 @@ No saturated brights, no neons, no pure black, no CSS variables (`var(--signal)`
 
 - **`teal`**: the thing chosen, bought, learned, lit or ticked (the ticks on the Receipt). Only one teal subject per plate, never decoration.
 - **`ochre`** marks a small highlight, a count or a badge (the "3" on the Receipt) and the course's brand badge.
-- **`pencil`** is what is not real: not bought, imagined, remembered, expected, a placeholder.
+- **`pencil`** is an absent object: not bought, taken away, an empty slot, a placeholder. Never a person, a self or a feeling.
+- **`sky`** as a background wash marks a hope, an ideal or a daydream; **`blush`** the here and now.
 - Everything else is descriptive colour for the object itself (a camel coat, a leather bag).
 
-## Unreal or imagined elements
+## Visceral, not ghosted: people and scenes are always fully drawn
 
-Reflections, ghosts, placeholders, "future" or "imagined" versions, and anything dashed in the original are drawn as **unfinished pencil** (`PencilLine`, `SketchText fill={SK.pencil}`):
+A student should *feel* the difference between two states, not decode a line style. Every person and every scene is drawn in finished ink and colour, and the difference between states is carried by things a viewer reads instantly:
 
-- light grey, dashed, uncoloured lines;
-- clearly fainter than the ink, as if the artist hasn't inked that part yet;
-- the same drawing as the real thing, just lighter and broken up.
+- **the body**: posture and pose (slumped, arms down, against upright, hand on hip, head high; a shrug; a hand clutching the chest);
+- **clothes**: a plain, muted outfit against a sharper one in a richer wash;
+- **props**: what they hold or have (the product in hand, a broken heart, a cracked box);
+- **the background wash**: warm `blush` for the here and now, cool `sky` for a hope, daydream or ideal.
 
-The contrast between finished ink with colour and faint dashed pencil is a signature of the style. Use it to show real against not-real. A real action on an unreal thing stays in ink (the strike-through over the pencil PRODUCT line).
+How to apply it:
+
+- **Ideal, aspirational, future or imagined selves** are the same Person (same face, hair and skin), upgraded: confident pose, better clothes, the product in hand, set on a `sky` wash. Never a dashed outline. Their label is ordinary ink.
+- **"Rather than" or "instead of" contrasts** are two fully drawn scenes side by side, each showing its own cause and reaction (a plain faceless product that breaks, and a shrug; the brand-as-person that fails, and a broken heart). Make the stronger case the fuller, warmer one. Don't fade the weaker case into pencil.
+- **Reflections** are inked too, seen through the glass (the `sky` glass wash sits over them).
+- **Imagined things inside a thought cloud** are inked; the cloud already says "imagined".
+
+### Where pencil is still right
+
+Pencil (`PencilLine`, `SketchText fill={SK.pencil}`: light grey, dashed, uncoloured, the same drawing as the real thing, broken up) is kept for **objects that are absent or placeholders**, never for a person or a whole scene:
+
+- the empty spot a product was taken from, or something taken away (the outline of a missing guitar);
+- a thing not bought or not chosen (the unbought bag, the receipt's PRODUCT line);
+- a placeholder in a diagram.
+
+A real action on an unreal thing stays in ink (the strike-through over the pencil PRODUCT line, the X over an unbought bag). If you reach for pencil to show a feeling, an aspiration or a contrast, redraw it with pose, clothes, props and wash instead.
 
 ## People
 
@@ -148,7 +165,7 @@ The contrast between finished ink with colour and faint dashed pencil is a signa
 ### Consistency
 
 9. **Fixed cast per week.** One symbol per idea, reused on every plate (one brand badge, one heart for feeling, one Person glyph for every human). Never switch vocabulary inside a figure (dots in one memory store, blocks in the next).
-10. **Colour has one job.** Follow the colour roles above: `teal` is what is learned, lit or chosen (one subject per plate), `ochre` is a highlight, count or badge, `pencil` is what is not real, and the other washes describe the object itself. Never use teal for decoration.
+10. **Colour has one job.** Follow the colour roles above: `teal` is what is learned, lit or chosen (one subject per plate), `ochre` is a highlight, count or badge, `pencil` is an absent object, and the other washes describe the object itself. Never use teal for decoration.
 11. **Matched elements match exactly.** The same element across panels has the same size, spacing and baseline.
 
 ### Layout inside the plate
@@ -199,7 +216,7 @@ Render it, screenshot it at full size one plate at a time, and ask:
 - Does it look drawn by hand with pen and watercolour, not generated in software?
 - Is everything from the original still there and recognisable, in the same place?
 - Does the colour sit loosely under the lines, with some paper showing?
-- Are unreal or dashed elements clearly fainter than the real ones?
+- Is every person and scene fully inked and coloured, with the difference between states shown by pose, clothes, props and wash (pencil only for absent objects)?
 - Is there enough empty paper around the subject, and does the background wash show past it?
 - Does it sit comfortably next to the Week 1 Receipt?
 
