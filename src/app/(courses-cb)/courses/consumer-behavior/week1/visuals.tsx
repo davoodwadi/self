@@ -17,6 +17,24 @@
 
 import React from "react";
 import {
+  INK,
+  INK2,
+  INK3,
+  RULE,
+  RULE2,
+  SIGNAL,
+  COUNTER,
+  PAPER,
+  PAPER2,
+  SIGNAL_TINT,
+  COUNTER_TINT,
+  Key,
+  Note,
+  Display,
+  Frame,
+  Person,
+} from "../_visuals/flat";
+import {
   SK,
   type Pt,
   seeded,
@@ -28,149 +46,7 @@ import {
   Paper,
   SketchFrame,
   SketchText,
-} from "../_sketch/sketch";
-
-export const INK = "var(--ink)";
-export const INK2 = "var(--ink-2)";
-export const INK3 = "var(--ink-3)";
-export const RULE = "var(--rule)";
-export const RULE2 = "var(--rule-2)";
-export const SIGNAL = "var(--signal)";
-export const COUNTER = "var(--counter)";
-export const PAPER = "var(--paper)";
-export const PAPER2 = "var(--paper-2)";
-export const SIGNAL_TINT = "rgba(192, 74, 38, 0.10)";
-export const COUNTER_TINT = "rgba(30, 78, 82, 0.10)";
-
-const LABEL = "var(--font-label)";
-const BODY = "var(--font-body)";
-const SERIF = "var(--font-heading)";
-
-/* -- typographic helpers ------------------------------------------------- */
-
-type Anchor = "start" | "middle" | "end";
-
-export function Key({
-  x,
-  y,
-  children,
-  anchor = "start",
-  fill = INK3,
-  size = 10.5,
-  weight = 600,
-  transform,
-}: {
-  x: number;
-  y: number;
-  children: React.ReactNode;
-  anchor?: Anchor;
-  fill?: string;
-  size?: number;
-  weight?: number;
-  transform?: string;
-}) {
-  return (
-    <text
-      x={x}
-      y={y}
-      textAnchor={anchor}
-      fontFamily={LABEL}
-      fontSize={size}
-      fontWeight={weight}
-      letterSpacing="0.14em"
-      fill={fill}
-      transform={transform}
-    >
-      {children}
-    </text>
-  );
-}
-
-export function Note({
-  x,
-  y,
-  children,
-  anchor = "start",
-  fill = INK2,
-  size = 13,
-  italic = false,
-}: {
-  x: number;
-  y: number;
-  children: React.ReactNode;
-  anchor?: Anchor;
-  fill?: string;
-  size?: number;
-  italic?: boolean;
-}) {
-  return (
-    <text
-      x={x}
-      y={y}
-      textAnchor={anchor}
-      fontFamily={BODY}
-      fontSize={size}
-      fontStyle={italic ? "italic" : undefined}
-      fill={fill}
-    >
-      {children}
-    </text>
-  );
-}
-
-export function Display({
-  x,
-  y,
-  children,
-  anchor = "start",
-  fill = INK,
-  size = 28,
-}: {
-  x: number;
-  y: number;
-  children: React.ReactNode;
-  anchor?: Anchor;
-  fill?: string;
-  size?: number;
-}) {
-  return (
-    <text
-      x={x}
-      y={y}
-      textAnchor={anchor}
-      fontFamily={SERIF}
-      fontSize={size}
-      fontWeight={500}
-      fill={fill}
-    >
-      {children}
-    </text>
-  );
-}
-
-export function Frame({
-  height,
-  label,
-  children,
-  width = 800,
-}: {
-  height: number;
-  label: string;
-  children: React.ReactNode;
-  width?: number;
-}) {
-  return (
-    <svg
-      viewBox={`0 0 ${width} ${height}`}
-      className="block h-auto w-full"
-      role="img"
-      aria-label={label}
-    >
-      <title>{label}</title>
-      {children}
-    </svg>
-  );
-}
+} from "../_visuals/sketch";
 
 const r2 = (n: number) => Math.round(n * 100) / 100;
 
@@ -219,39 +95,6 @@ function Arrow({
 }
 
 /* -- the cast ------------------------------------------------------------ */
-
-/**
- * One person. (x, y) is the point between the feet; `s` scales the figure
- * (s = 1 is 64 units tall). `head` enlarges the head for a child or a baby.
- */
-export function Person({
-  x,
-  y,
-  s = 1,
-  fill = INK,
-  head = 1,
-  opacity,
-}: {
-  x: number;
-  y: number;
-  s?: number;
-  fill?: string;
-  head?: number;
-  opacity?: number;
-}) {
-  const w = 13 * s;
-  const shoulder = y - 33 * s;
-  const hr = 8 * s * head;
-  const hy = y - 46 * s - 3 * s - hr;
-  return (
-    <g fill={fill} opacity={opacity}>
-      <path
-        d={`M${r2(x - w)} ${r2(y)}V${r2(shoulder)}A${r2(w)} ${r2(w)} 0 0 1 ${r2(x + w)} ${r2(shoulder)}V${r2(y)}Z`}
-      />
-      <circle cx={r2(x)} cy={r2(hy)} r={r2(hr)} />
-    </g>
-  );
-}
 
 /** Magnifying glass, centred on its lens. */
 function Magnifier({

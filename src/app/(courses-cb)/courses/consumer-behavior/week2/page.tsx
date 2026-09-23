@@ -41,8 +41,8 @@ import {
   FigureGround,
   SemioticTriangle,
   SensorySignatures,
-  type Sense,
 } from "./visuals";
+import type { Sense } from "../_visuals/flat";
 
 // ============================================================================
 // CONSUMER BEHAVIOR · WEEK 02 — PERCEPTION AND SENSORY MARKETING

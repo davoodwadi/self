@@ -4,9 +4,17 @@ Every SVG plate in this course (all weeks, the landing page, anything new) is dr
 
 Other courses have their own style files; do not bring their conventions (INK/SIGNAL/COUNTER, flat fills, `--paper-2` wells, duotone icons) here.
 
+## Shared visuals live in `_visuals/`
+
+Anything more than one week draws with lives in `_visuals/`, and each week imports from there. A week's `visuals.tsx` imports only from `_visuals/`, never from another week's folder. When a week needs a piece that currently lives in another week, move it into `_visuals/` first.
+
+- `_visuals/sketch.tsx`: the Editorial Sketch primitives (the table below).
+- `_visuals/sketch-cast.tsx`: the shared Editorial Sketch cast (the fashion `Person` with `handAt`, `BrandBadge`, `BrandPerson`, `Bag`, `Box`, `Heart`, `Backwash`, `Ground`, `cloudPts`, and the `rp`/`at`/`sharp` point helpers). Reuse and extend it rather than drawing a new version inside a week.
+- `_visuals/flat.tsx`: the old flat Broadsheet kit, kept only until Weeks 1–4 are converted. New plates use the sketch files.
+
 ## Build every plate from the shared kit
 
-Import from `../_sketch/sketch.tsx`. Do not re-implement these, and do not draw plates with plain `<line>`/`<rect>`/`<circle>` or the old flat `Frame`/`Key`/`INK`/`SIGNAL` helpers.
+Import from `../_visuals/sketch.tsx` and `../_visuals/sketch-cast.tsx`. Do not re-implement these, and do not draw plates with plain `<line>`/`<rect>`/`<circle>` or the old flat `Frame`/`Key`/`INK`/`SIGNAL` helpers.
 
 | Piece | Use it for |
 |---|---|

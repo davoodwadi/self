@@ -20,11 +20,6 @@
 
 import React from "react";
 import {
-  Frame,
-  Key,
-  Note,
-  Display,
-  Person,
   INK,
   INK2,
   INK3,
@@ -36,8 +31,14 @@ import {
   PAPER2,
   SIGNAL_TINT,
   COUNTER_TINT,
-} from "../week1/visuals";
-import { SenseGlyph } from "../week2/visuals";
+  Key,
+  Note,
+  Display,
+  Frame,
+  Person,
+  SenseGlyph,
+  BrandMark,
+} from "../_visuals/flat";
 
 const GREEN = "var(--affirm)";
 /** Plates sit in paper-2 wells, so a filled zone needs the next step down. */
@@ -179,28 +180,6 @@ function Thought({
 }
 
 /* -- the cast ------------------------------------------------------------ */
-
-/** The brand: a teal badge with a wave. Centred on (x, y), 36 units at s = 1. */
-export function BrandMark({
-  x,
-  y,
-  s = 1,
-  fill = COUNTER,
-  opacity,
-}: {
-  x: number;
-  y: number;
-  s?: number;
-  fill?: string;
-  opacity?: number;
-}) {
-  return (
-    <g transform={`translate(${x} ${y}) scale(${s})`} opacity={opacity}>
-      <rect x={-18} y={-18} width={36} height={36} rx={9} fill={fill} />
-      <path d="M-10 5Q-5 -10 0 0T10 -5" fill="none" stroke={PAPER} strokeWidth={3.8} strokeLinecap="round" />
-    </g>
-  );
-}
 
 /** The brand mark on its own, for the rows of a slide. */
 export function BrandBadge() {

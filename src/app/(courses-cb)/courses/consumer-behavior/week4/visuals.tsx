@@ -19,10 +19,6 @@
 
 import React from "react";
 import {
-  Frame,
-  Key,
-  Display,
-  Person,
   INK,
   INK2,
   INK3,
@@ -34,8 +30,12 @@ import {
   PAPER2,
   SIGNAL_TINT,
   COUNTER_TINT,
-} from "../week1/visuals";
-import { BrandMark } from "../week3/visuals";
+  Key,
+  Display,
+  Frame,
+  Person,
+  BrandMark,
+} from "../_visuals/flat";
 
 const GREEN = "var(--affirm)";
 

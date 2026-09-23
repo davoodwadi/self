@@ -19,11 +19,6 @@
 
 import React from "react";
 import {
-  Frame,
-  Key,
-  Note,
-  Display,
-  Person,
   INK,
   INK2,
   INK3,
@@ -35,7 +30,16 @@ import {
   PAPER2,
   SIGNAL_TINT,
   COUNTER_TINT,
-} from "../week1/visuals";
+  Key,
+  Note,
+  Display,
+  Frame,
+  Person,
+  SENSES,
+  Notes,
+  SenseGlyph,
+  type Sense,
+} from "../_visuals/flat";
 
 const r2 = (n: number) => Math.round(n * 100) / 100;
 
@@ -162,91 +166,6 @@ function Thought({
 }
 
 /* -- the five senses ----------------------------------------------------- */
-
-export type Sense = "sight" | "sound" | "smell" | "touch" | "taste";
-export const SENSES: Sense[] = ["sight", "sound", "smell", "touch", "taste"];
-
-/** Musical notes: two beamed quavers. (x, y) is the centre. */
-function Notes({ x, y, s = 1, fill = INK }: { x: number; y: number; s?: number; fill?: string }) {
-  return (
-    <g transform={`translate(${x} ${y}) scale(${s})`} fill={fill}>
-      <ellipse cx={-10} cy={13} rx={7} ry={5} transform="rotate(-20 -10 13)" />
-      <ellipse cx={12} cy={9} rx={7} ry={5} transform="rotate(-20 12 9)" />
-      <rect x={-5} y={-16} width={2.6} height={29} />
-      <rect x={17} y={-20} width={2.6} height={29} />
-      <path d="M-5 -16L19.6 -20V-13L-5 -9Z" />
-    </g>
-  );
-}
-
-/** One glyph per sense, centred on (x, y), about 48 units across at s = 1. */
-export function SenseGlyph({
-  kind,
-  x,
-  y,
-  s = 1,
-  tone = INK,
-}: {
-  kind: Sense;
-  x: number;
-  y: number;
-  s?: number;
-  tone?: string;
-}) {
-  const t = `translate(${x} ${y}) scale(${s})`;
-  if (kind === "sight")
-    return (
-      <g transform={t}>
-        <path d="M-23 0Q0 -24 23 0Q0 24 -23 0Z" fill={PAPER} stroke={tone} strokeWidth={2.4} strokeLinejoin="round" />
-        <circle r={8.5} fill={tone} />
-        <circle r={3.4} fill={PAPER} />
-      </g>
-    );
-  if (kind === "sound") return <Notes x={x} y={y} s={s} fill={tone} />;
-  if (kind === "smell")
-    return (
-      <g transform={t}>
-        <rect x={-18} y={-2} width={24} height={24} rx={5} fill={PAPER} stroke={tone} strokeWidth={2.4} />
-        <rect x={-10} y={-9} width={8} height={7} fill={tone} />
-        <rect x={-13} y={-16} width={14} height={7} rx={2} fill={tone} />
-        {[0, 8, 16].map((dx) => (
-          <path
-            key={dx}
-            d={`M${6 + dx * 0.55} ${-6 - dx * 0.2}q5 -5 0 -10t0 -10`}
-            fill="none"
-            stroke={tone}
-            strokeWidth={2}
-            strokeLinecap="round"
-            transform={`translate(${dx * 0.5} 0)`}
-          />
-        ))}
-      </g>
-    );
-  if (kind === "touch")
-    return (
-      <g transform={t} fill={tone}>
-        <rect x={-12} y={-1} width={24} height={23} rx={7} />
-        {[
-          { x: -12, h: 20 },
-          { x: -5.6, h: 24 },
-          { x: 0.8, h: 23 },
-          { x: 7.2, h: 18 },
-        ].map((f) => (
-          <rect key={f.x} x={f.x} y={3 - f.h} width={5} height={f.h} rx={2.5} />
-        ))}
-        <rect x={-22} y={4} width={5.4} height={17} rx={2.7} transform="rotate(-38 -19 13)" />
-      </g>
-    );
-  // taste: lips with the tongue out
-  return (
-    <g transform={t}>
-      <path d="M-24 -4Q-14 -18 -4 -13Q0 -11 4 -13Q14 -18 24 -4Q0 -2 -24 -4Z" fill={tone} />
-      <path d="M-24 -4Q0 0 24 -4Q14 12 0 12Q-14 12 -24 -4Z" fill={tone} />
-      <path d="M-10 -1H10V14Q10 25 0 25Q-10 25 -10 14Z" fill={PAPER} stroke={tone} strokeWidth={2.4} strokeLinejoin="round" />
-      <line x1={0} y1={2} x2={0} y2={14} stroke={tone} strokeWidth={1.8} strokeLinecap="round" />
-    </g>
-  );
-}
 
 /** A sense glyph on its own, for the rows of a slide. */
 export function SenseMark({ kind, tone = INK }: { kind: Sense; tone?: string }) {
