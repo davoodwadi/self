@@ -14,18 +14,21 @@ Only test information students have already learned. Never test something they h
 
 ## Choosing the exercise
 
-For each `[exercise]` topic, pick the one exercise type that best fits what that topic teaches. Let the shape of the content decide, and prefer the type that makes students use the idea rather than recall a sentence:
+For each `[exercise]` topic, pick the one exercise type that best fits what that topic teaches. Let the shape of the content decide, and prefer the type that makes students use the idea rather than recall a sentence. Choose from the types that are built:
 
-- **Quiz**: a multiple-choice question. Best for applying an idea to a new case or scenario.
-- **Match-up**: pair each term with its example, drawing or definition. Best for a set of named parts (roles, bases, stages).
-- **Sort into bins**: drop cards into two or three groups. Best for a distinction (need or want, customer or consumer).
-- **Put it in order**: arrange steps or events into a sequence. Best for a process or a timeline.
-- **Spot it in the scene**: tap the parts of a drawing that show the concept. Best for ideas students can see in a real situation.
-- **Which one is it?**: a short case or persona, and students name the concept it shows. Best for recognising a concept in a described person, brand or situation.
-- **Place it on a scale**: set an item on a line between two poles, then compare with the class. Best for ideas of degree, and for opening discussion.
-- **Class poll**: everyone answers and the results appear together. Best for discussion prompts and personal reflection, where no answer is wrong.
+- **Quiz** (`quiz`): a multiple-choice question. Best for applying one idea to a new case or scenario.
+- **Match-up** (`match`): pair each term with its example or definition. Best for a set of named parts (roles, bases, types).
+- **Sort into groups** (`sort`): place cards into two or three groups. Best for a distinction (need or want, customer or consumer) or for assigning moments to stages.
+- **Put it in order** (`order`): arrange steps or events into a sequence. Best for a process or a timeline, especially one with four or more steps.
+- **Which one is it?** (`identify`): a run of short cases, each named with one concept from a shared set. Best for telling several look-alike concepts apart in real situations.
 
-Choose by fit, not by rotation. Variety across a week is welcome when several types suit the content equally well.
+Choose by fit, not by rotation. Variety across a week is welcome when several types suit the content equally well. Cases, cards and examples should be new everyday situations that apply what the slide taught, so students recognise the idea rather than repeat the slide's sentences.
+
+These types are planned but not built yet, so leave them for now: **spot it in the scene** (tap the parts of a drawing that show the concept), **place it on a scale** (set an item between two poles and compare with the class) and **class poll** (everyone answers and the results appear together).
+
+## Where exercises live
+
+Each week keeps its exercises in `exercises.json` beside its `page.tsx`, one entry per `[exercise]` topic, keyed by the slide's `id`. The data shape of every type is defined in `src/lib/course-exercise.ts`, and the shared components in `src/components/exercises/` render them. A slide shows its exercise with `exercise={exercise["<slide-id>"]}`, and it appears on its own screen right after that slide. These components serve every course through the shared `Slide`; courses with their own slide components keep their quizzes until they move to the shared ones.
 
 # Slide density
 

@@ -63,7 +63,24 @@ export type OrderExercise = {
   }[];
 };
 
-export type CourseExercise = QuizExercise | SortExercise | MatchExercise | OrderExercise;
+/** Which one is it?: a run of short cases, each named with one concept from a shared set. */
+export type IdentifyExercise = {
+  type: "identify";
+  slide_id: string;
+  prompt: string;
+  /** The concepts every case is named with. */
+  options: { id: string; label: string }[];
+  cases: {
+    id: string;
+    text: string;
+    /** The `id` of the right option. */
+    answer: string;
+    /** Shown once the case is named correctly. */
+    explanation?: string;
+  }[];
+};
+
+export type CourseExercise = QuizExercise | SortExercise | MatchExercise | OrderExercise | IdentifyExercise;
 
 /** What a week's JSON may hold: typed exercises, or plain quizzes with no `type`. */
 export type ExerciseInput = CourseExercise | CourseQuiz;
@@ -101,6 +118,29 @@ export function seededShuffle<T>(items: readonly T[], key: string): T[] {
   for (let i = out.length - 1; i > 0; i--) {
     const j = Math.floor(rnd() * (i + 1));
     [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
+/**
+ * `seededShuffle`, then moved so no item sits in its own position (index i of
+ * `items`), when that is possible. Used wherever a card's place in the deal
+ * would otherwise give its answer away.
+ */
+export function seededDerangement<T>(items: readonly T[], key: string): T[] {
+  const out = seededShuffle(items, key);
+  const n = out.length;
+  if (n < 2) return out;
+  for (let pass = 0; pass < n; pass++) {
+    let moved = false;
+    for (let i = 0; i < n; i++) {
+      if (out[i] === items[i]) {
+        const j = (i + 1) % n;
+        [out[i], out[j]] = [out[j], out[i]];
+        moved = true;
+      }
+    }
+    if (!moved) break;
   }
   return out;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { seededShuffle, type MatchExercise as MatchData } from "@/lib/course-exercise";
+import { seededDerangement, type MatchExercise as MatchData } from "@/lib/course-exercise";
 import { Card, Explanation, ExerciseHeader, Status, TextButton } from "./parts";
 
 /**
@@ -21,14 +21,8 @@ export default function MatchExercise({
   /** Optional drawings from the course, keyed by pair id; shown with the term. */
   art?: Record<string, React.ReactNode>;
 }) {
-  // Deal the right-hand column in a stable, shuffled order; of its rotations,
-  // keep the one with the fewest examples sitting opposite their own term.
-  const matches = useMemo(() => {
-    const out = seededShuffle(data.pairs, data.slide_id);
-    const fixed = (list: typeof out) => list.filter((p, i) => p.id === data.pairs[i].id).length;
-    const turns = out.map((_, k) => [...out.slice(k), ...out.slice(0, k)]);
-    return turns.reduce((best, t) => (fixed(t) < fixed(best) ? t : best), out);
-  }, [data]);
+  // Deal in a stable, shuffled order with nothing opposite its own answer.
+  const matches = useMemo(() => seededDerangement(data.pairs, data.slide_id), [data]);
 
   /** pair ids matched correctly (a term and its example share the pair id) */
   const [matched, setMatched] = useState<Record<string, true>>({});

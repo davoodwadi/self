@@ -5,6 +5,8 @@ import type { CourseExercise } from "@/lib/course-exercise";
 import InlineQuiz from "@/components/slide-components/InlineQuiz";
 import SortExercise from "./SortExercise";
 import MatchExercise from "./MatchExercise";
+import OrderExercise from "./OrderExercise";
+import IdentifyExercise from "./IdentifyExercise";
 
 /**
  * One exercise, of any type. The mechanics are shared by every course; the
@@ -26,5 +28,9 @@ export default function Exercise({
       return <SortExercise data={data} art={art} />;
     case "match":
       return <MatchExercise data={data} art={art} />;
+    case "order":
+      return <OrderExercise data={data} art={art} />;
+    case "identify":
+      return <IdentifyExercise data={data} art={art} />;
   }
 }

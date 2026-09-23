@@ -1,30 +1,28 @@
 [
   {
+    "type": "order",
     "slide_id": "the-three-stages-of-perception",
-    "question_text": "A shopper walks past a bright end-of-aisle display. It is right in front of her, but she is busy reading a text message and never looks at it. How far did the display get?",
-    "hint": "The display came within range of her senses. Did her mind give it any processing capacity?",
-    "correct_answer_citation": "Week 02 · The Three Stages of Perception",
-    "correct_answer_index": 0,
-    "options": [
+    "prompt": "Follow one ad through the three stages of perception. Put Maya's moments in the order they happen.",
+    "steps": [
       {
-        "option_text": "Exposure, but not attention",
-        "option_explanation": "Correct. The display came within the range of her sensory receptors (exposure), but her mind gave its processing capacity to the message, not to the display."
+        "id": "exposure",
+        "text": "A new sparkling-water ad plays on a screen in the subway station as Maya walks past.",
+        "explanation": "Stage 1 is Exposure: the ad comes within the range of her sensory receptors."
       },
       {
-        "option_text": "Attention, but not exposure",
-        "option_explanation": "The stages are sequential. Attention cannot happen without exposure first, and she never looked at the display."
+        "id": "attention",
+        "text": "The fizzing sound and the bright lime colour make her stop and look at the screen.",
+        "explanation": "Stage 2 is Attention: her mind gives processing capacity to this one stimulus."
       },
       {
-        "option_text": "All the way to interpretation",
-        "option_explanation": "Interpretation means her brain assigned meaning to the display. She never paid attention to it, so it was filtered out before that stage."
-      },
-      {
-        "option_text": "No stage, since it was ignored",
-        "option_explanation": "The display was within range of her senses, so exposure did happen. It was filtered out at the attention stage."
+        "id": "interpretation",
+        "text": "Because the can looks like the craft drinks she likes, she decides it must be a premium brand.",
+        "explanation": "Stage 3 is Interpretation: she assigns meaning based on past experiences and expectations."
       }
     ]
   },
   {
+    "type": "quiz",
     "slide_id": "sensory-thresholds-the-limits-of-awareness",
     "question_text": "A juice brand changes the orange on its label to a very slightly darker shade. Shoppers compare the old and new bottles side by side and cannot tell them apart. What does this tell the brand?",
     "hint": "Shoppers can see both bottles perfectly well. The question is whether they can tell the two apart.",
@@ -50,6 +48,7 @@
     ]
   },
   {
+    "type": "quiz",
     "slide_id": "webers-law-when-differences-matter",
     "question_text": "Four stores each raise one price by exactly one dollar. According to Weber's Law, which increase are shoppers most likely to notice?",
     "hint": "The needed change is a proportion of the starting price, not a fixed amount.",
@@ -75,6 +74,7 @@
     ]
   },
   {
+    "type": "quiz",
     "slide_id": "interpretation-and-gestalt-principles",
     "question_text": "A grocery chain puts all of its store-brand products in the same bright yellow packaging. On the shelf, shoppers see them as one family of products. Which Gestalt principle is at work?",
     "hint": "Think about what the packages have in common.",

@@ -7,9 +7,9 @@ import {
   Title,
   Figure,
 } from "@/components/slide-components/SlideComponents";
-import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
+import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
-import quizzesData from "./quizzes.json";
+import exercisesData from "./exercises.json";
 import {
   CurrentToBetter,
   MotivationGap,
@@ -61,11 +61,13 @@ import {
 // reduction, expectancy, hierarchy of needs, or motivational conflict". A
 // TheoryRule strip names those four and lights one on each theory slide.
 //
-// Quizzes: `Slide` renders `quizData` AFTER its section, so each [quiz]-tagged
-// topic carries its own quiz, testing that slide and the ones before it.
+// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
+// so each [exercise]-tagged topic carries one exercise that tests that slide
+// and the ones before it. The three motivational conflicts are told apart in
+// a run of cases (Which one is it?); the other topics are quizzes.
 // ============================================================================
 
-const quiz = createCourseQuizLookup(quizzesData as CourseQuiz[]);
+const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 type Tone = "signal" | "counter" | "ink";
 
@@ -365,7 +367,7 @@ export default function Week4() {
       <Slide
         id="drive-theory-tension-and-reduction"
         border
-        quizData={quiz["drive-theory-tension-and-reduction"]}
+        exercise={exercise["drive-theory-tension-and-reduction"]}
       >
         <TheoryRule active={0} />
         <Heading kicker="Drive Theory:">Tension and Reduction</Heading>
@@ -412,7 +414,7 @@ export default function Week4() {
       <Slide
         id="expectancy-theory-effort-performance-and-outcome"
         border
-        quizData={quiz["expectancy-theory-effort-performance-and-outcome"]}
+        exercise={exercise["expectancy-theory-effort-performance-and-outcome"]}
       >
         <TheoryRule active={1} />
         <Heading kicker="Expectancy Theory:">Effort, Performance, and Outcome</Heading>
@@ -458,7 +460,7 @@ export default function Week4() {
       {/* ================================================================
           Needs, Wants, and Demand
           ================================================================ */}
-      <Slide id="needs-wants-and-demand" border quizData={quiz["needs-wants-and-demand"]}>
+      <Slide id="needs-wants-and-demand" border exercise={exercise["needs-wants-and-demand"]}>
         <Heading>Needs, Wants, and Demand</Heading>
         <Figure height="auto" className="!mt-0">
           <NeedWantDemand />
@@ -507,7 +509,7 @@ export default function Week4() {
       <Slide
         id="maslows-hierarchy-in-consumer-markets"
         border
-        quizData={quiz["maslows-hierarchy-in-consumer-markets"]}
+        exercise={exercise["maslows-hierarchy-in-consumer-markets"]}
       >
         <TheoryRule active={2} />
         <Heading>Maslow&apos;s Hierarchy in Consumer Markets</Heading>
@@ -550,7 +552,7 @@ export default function Week4() {
       <Slide
         id="motivational-conflicts-three-difficult-choices"
         border
-        quizData={quiz["motivational-conflicts-three-difficult-choices"]}
+        exercise={exercise["motivational-conflicts-three-difficult-choices"]}
       >
         <TheoryRule active={3} />
         <Heading kicker="Motivational Conflicts:">Three Difficult Choices</Heading>
@@ -681,7 +683,7 @@ export default function Week4() {
       <Slide
         id="values-guide-consumer-choices"
         border
-        quizData={quiz["values-guide-consumer-choices"]}
+        exercise={exercise["values-guide-consumer-choices"]}
       >
         <Heading>Values Guide Consumer Choices</Heading>
         <Statement className="!max-w-[34ch]">

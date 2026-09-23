@@ -7,9 +7,9 @@ import {
   Title,
   Figure,
 } from "@/components/slide-components/SlideComponents";
-import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
+import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
-import quizzesData from "./quizzes.json";
+import exercisesData from "./exercises.json";
 import {
   Filters,
   SelectOrganizeInterpret,
@@ -57,11 +57,13 @@ import type { Sense } from "../_visuals/flat";
 // Wayfinding: once the three stages are taught, a StageRule strip lights the
 // stage each later slide belongs to.
 //
-// Quizzes: `Slide` renders `quizData` AFTER its section, so each [quiz]-tagged
-// topic carries its own quiz, testing that slide and the ones before it.
+// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
+// so each [exercise]-tagged topic carries one exercise that tests that slide
+// and the ones before it. The three stages of perception are put in order;
+// thresholds, Weber's law and Gestalt apply an idea to a case, so they are quizzes.
 // ============================================================================
 
-const quiz = createCourseQuizLookup(quizzesData as CourseQuiz[]);
+const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 type Tone = "signal" | "counter" | "ink";
 
@@ -348,7 +350,7 @@ export default function Week2() {
       <Slide
         id="the-three-stages-of-perception"
         border
-        quizData={quiz["the-three-stages-of-perception"]}
+        exercise={exercise["the-three-stages-of-perception"]}
       >
         <StageRule active={[0, 1, 2]} />
         <Heading>The Three Stages of Perception</Heading>
@@ -441,7 +443,7 @@ export default function Week2() {
       <Slide
         id="sensory-thresholds-the-limits-of-awareness"
         border
-        quizData={quiz["sensory-thresholds-the-limits-of-awareness"]}
+        exercise={exercise["sensory-thresholds-the-limits-of-awareness"]}
       >
         <StageRule active={[0]} />
         <Heading kicker="Sensory Thresholds:">The Limits of Awareness</Heading>
@@ -486,7 +488,7 @@ export default function Week2() {
       <Slide
         id="webers-law-when-differences-matter"
         border
-        quizData={quiz["webers-law-when-differences-matter"]}
+        exercise={exercise["webers-law-when-differences-matter"]}
       >
         <StageRule active={[0]} />
         <Heading kicker="Weber's Law:">When Differences Matter</Heading>
@@ -605,7 +607,7 @@ export default function Week2() {
       <Slide
         id="interpretation-and-gestalt-principles"
         border
-        quizData={quiz["interpretation-and-gestalt-principles"]}
+        exercise={exercise["interpretation-and-gestalt-principles"]}
       >
         <StageRule active={[2]} />
         <Heading>Interpretation and Gestalt Principles</Heading>

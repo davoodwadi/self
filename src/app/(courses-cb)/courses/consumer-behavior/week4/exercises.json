@@ -1,5 +1,6 @@
 [
   {
+    "type": "quiz",
     "slide_id": "drive-theory-tension-and-reduction",
     "question_text": "A student skips lunch. By mid-afternoon, an uncomfortable internal state pushes the student toward the vending machine. After eating a sandwich, the discomfort fades. According to drive theory, what happened after the sandwich?",
     "hint": "Drive theory describes what happens to tension once the need behind it is met.",
@@ -25,6 +26,7 @@
     ]
   },
   {
+    "type": "quiz",
     "slide_id": "expectancy-theory-effort-performance-and-outcome",
     "question_text": "A shopper is considering a paid language-learning app. The shopper is confident that practicing every day will lead to passing a language exam, and really wants a job abroad. But the shopper doubts that passing the exam will actually lead to getting that job. Which belief is weak?",
     "hint": "Split the chain into effort → performance and performance → outcome. Which link does the shopper doubt?",
@@ -50,6 +52,7 @@
     ]
   },
   {
+    "type": "quiz",
     "slide_id": "needs-wants-and-demand",
     "question_text": "A hungry teenager craves one particular brand of spicy ramen but has no money this week. For this teenager right now, what is that ramen?",
     "hint": "Demand needs two things behind the want. Which one is missing?",
@@ -75,6 +78,7 @@
     ]
   },
   {
+    "type": "quiz",
     "slide_id": "maslows-hierarchy-in-consumer-markets",
     "question_text": "A student who is still worried about paying rent signs up for an expensive painting class to grow as an artist. A classmate says, \"That makes no sense. Maslow says you have to take care of safety first.\" Is the classmate right?",
     "hint": "Is the hierarchy a strict order of purchases?",
@@ -100,31 +104,64 @@
     ]
   },
   {
+    "type": "identify",
     "slide_id": "motivational-conflicts-three-difficult-choices",
-    "question_text": "A shopper loves the idea of a rich chocolate cake for the weekend but dreads the calories that come with it. Which motivational conflict is this?",
-    "hint": "Count the options. Is there one, or two?",
-    "correct_answer_citation": "Week 04 · Motivational Conflicts: Three Difficult Choices",
-    "correct_answer_index": 3,
+    "prompt": "Each shopper below faces a difficult choice. Name the motivational conflict in each case.",
     "options": [
       {
-        "option_text": "Approach-approach conflict",
-        "option_explanation": "Approach-approach means choosing between two attractive options. Here there is only one option, the cake."
+        "id": "aa",
+        "label": "Approach-approach"
       },
       {
-        "option_text": "Avoidance-avoidance conflict",
-        "option_explanation": "Avoidance-avoidance means every available option has an unwanted consequence. The cake also has an attractive benefit."
+        "id": "av",
+        "label": "Approach-avoidance"
       },
       {
-        "option_text": "Drive reduction",
-        "option_explanation": "Drive reduction is about lowering the tension an unmet need creates. The shopper's problem is one option pulling two ways."
+        "id": "vv",
+        "label": "Avoidance-avoidance"
+      }
+    ],
+    "cases": [
+      {
+        "id": "concert",
+        "text": "Mia has saved enough for either a concert ticket or new running shoes. She wants both, but she can only buy one.",
+        "answer": "aa",
+        "explanation": "Approach-approach conflict: two attractive options, but only one can be chosen."
       },
       {
-        "option_text": "Approach-avoidance conflict",
-        "option_explanation": "Correct. The same option has both an attractive benefit (the taste) and an unpleasant cost (the calories)."
+        "id": "car-repair",
+        "text": "Lena's car has broken down. She can pay for an expensive repair, or take a long, crowded bus to work every day.",
+        "answer": "vv",
+        "explanation": "Avoidance-avoidance conflict: every available option has an unwanted consequence."
+      },
+      {
+        "id": "cake",
+        "text": "Omar wants the rich chocolate cake for the weekend, but he dreads all the calories that come with it.",
+        "answer": "av",
+        "explanation": "Approach-avoidance conflict: the same option has an attractive benefit and an unpleasant cost."
+      },
+      {
+        "id": "apartments",
+        "text": "Jonah has been offered two sunny apartments near campus. He loves both, but he can rent only one.",
+        "answer": "aa",
+        "explanation": "Approach-approach conflict: two attractive options, but only one can be chosen."
+      },
+      {
+        "id": "console",
+        "text": "A new game console would be great fun for Sam, but buying it would use up most of his savings.",
+        "answer": "av",
+        "explanation": "Approach-avoidance conflict: the same option has an attractive benefit and an unpleasant cost."
+      },
+      {
+        "id": "dentist",
+        "text": "Priya can sit through an unpleasant dentist visit now, or risk a painful toothache later.",
+        "answer": "vv",
+        "explanation": "Avoidance-avoidance conflict: every available option has an unwanted consequence."
       }
     ]
   },
   {
+    "type": "quiz",
     "slide_id": "values-guide-consumer-choices",
     "question_text": "Two pairs of headphones cost the same. Model A has more features. Model B has fewer, but everyone in the shopper's friend group wears Model B and compliments each other on it. The shopper buys Model B. Which kind of value guided this choice?",
     "hint": "The shopper did not choose the one with the most features. What did Model B offer instead?",
