@@ -1121,28 +1121,31 @@ export default function Week2() {
       <Slide id="high-pressure-selling" border>
         <Tag>Short term, long term</Tag>
         <Heading className={HEAD}>High-Pressure Selling</Heading>
-        <Statement className="!max-w-[36ch]">
-          Involves persuading people to buy goods they had no thought of
-          buying.
-        </Statement>
-        <div className="mt-10 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)_minmax(0,27rem)] lg:gap-12">
-          <Ruled>
-            <P>
-              It is often used for <Term tone="ink">unsought goods</Term> or in{" "}
-              <Term tone="ink">aggressive B2B environments</Term>.
-            </P>
-          </Ruled>
-          <Ruled tone="signal" weight="thick">
-            <p className="type-h2 !font-normal">
-              High-pressure selling yields{" "}
-              <span className="text-[var(--signal)]">short-term gains</span> but
-              damages{" "}
-              <span className="text-[var(--counter)]">
-                long-term relationships and reputation
-              </span>
-              .
-            </p>
-          </Ruled>
+        <div className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:gap-14">
+          <div>
+            <Statement className="!max-w-[30ch]">
+              Involves persuading people to buy goods they had no thought of
+              buying.
+            </Statement>
+            <div className="mt-10 grid items-start gap-8 md:grid-cols-2 md:gap-10">
+              <Ruled weight="thick">
+                <P>
+                  It is often used for <Term tone="ink">unsought goods</Term> or
+                  in <Term tone="ink">aggressive B2B environments</Term>.
+                </P>
+              </Ruled>
+              <Ruled tone="signal" weight="thick">
+                <P>
+                  High-pressure selling yields{" "}
+                  <Term>short-term gains</Term> but damages{" "}
+                  <Term tone="counter">
+                    long-term relationships and reputation
+                  </Term>
+                  .
+                </P>
+              </Ruled>
+            </div>
+          </div>
           <Plate>
             <PressureOverTime />
           </Plate>

@@ -982,12 +982,11 @@ export function PressureOverTime() {
       height={246}
       label="Schematic curves over time. Short-term gains spike early and fall away. Long-term relationships and reputation start steady and slide downward for the rest of the timeline."
     >
-      <Schematic x={392} y={18} />
-      <rect x={x0} y={28} width={split - x0} height={axis - 36} fill={SIGNAL_TINT} />
+            <rect x={x0} y={28} width={split - x0} height={axis - 36} fill={SIGNAL_TINT} />
       <Key x={(x0 + split) / 2} y={18} anchor="middle" fill={SIGNAL} size={9.5}>
         SHORT TERM
       </Key>
-      <Key x={(split + x1) / 2 - 20} y={18} anchor="middle" fill={COUNTER} size={9.5}>
+      <Key x={(split + x1) / 2} y={18} anchor="middle" fill={COUNTER} size={9.5}>
         LONG TERM
       </Key>
 
@@ -996,6 +995,7 @@ export function PressureOverTime() {
       <Key x={x1} y={axis + 18} anchor="end" fill={INK3} size={9.5}>
         TIME
       </Key>
+      <Schematic x={104} y={axis + 18} />
 
       <path d={gains} fill="none" stroke={SIGNAL} strokeWidth={2.5} />
       <path d={rel} fill="none" stroke={COUNTER} strokeWidth={2.5} />

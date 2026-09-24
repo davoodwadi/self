@@ -33,6 +33,7 @@ import {
   Key,
   Note,
   PAPER,
+  r2,
   RULE,
   RULE2,
   Schematic,
@@ -40,6 +41,7 @@ import {
   SIGNAL_TINT,
 } from "../_visuals/kit";
 import { Person2 } from "../_visuals/objects";
+import { ChatCircleText, HandGrabbing, Newspaper, Storefront } from "@phosphor-icons/react";
 
 /* ==========================================================================
    1 · CENSUS — the consumer market is individuals and households
@@ -54,7 +56,7 @@ export function ConsumerMarket() {
     { x: 690, w: 96, n: 2 },
   ];
   return (
-    <Frame height={250} label="The consumer market: individuals and households buying goods and services for personal consumption.">
+    <Frame height={226} label="The consumer market: a row of individuals and a row of houses with the people of each household inside, bracketed together.">
       <line x1={40} y1={56} x2={760} y2={56} stroke={SIGNAL} strokeWidth={1.5} />
       <line x1={40} y1={56} x2={40} y2={66} stroke={SIGNAL} strokeWidth={1.5} />
       <line x1={760} y1={56} x2={760} y2={66} stroke={SIGNAL} strokeWidth={1.5} />
@@ -97,9 +99,6 @@ export function ConsumerMarket() {
       <Key x={560} y={214} anchor="middle" fill={COUNTER} size={11}>
         HOUSEHOLDS
       </Key>
-      <Note x={400} y={242} anchor="middle" size={13} italic>
-        buying goods and services for personal consumption
-      </Note>
     </Frame>
   );
 }
@@ -158,8 +157,20 @@ export function SearchFork() {
     { y: 164, name: "PUBLIC", hot: false },
     { y: 216, name: "EXPERIENTIAL", hot: false },
   ];
+  const icon = (name: string, y: number, tone: string) => {
+    const p = { x: 452, y: y - 12, size: 24, weight: "duotone" as const, color: tone };
+    if (name === "COMMERCIAL") return <Storefront {...p} />;
+    if (name === "PUBLIC") return <Newspaper {...p} />;
+    if (name === "EXPERIENTIAL") return <HandGrabbing {...p} />;
+    return (
+      <g>
+        <Person2 x={458} y={y + 11} k={0.66} stroke={tone} fill={SIGNAL_TINT} width={1.25} />
+        <Person2 x={474} y={y + 11} k={0.66} stroke={tone} fill={SIGNAL_TINT} width={1.25} />
+      </g>
+    );
+  };
   return (
-    <Frame height={256} label="Once a need is triggered, a consumer may search or may not. Searching draws on personal, commercial, public, and experiential sources; personal sources are the most effective.">
+    <Frame height={256} label="Once a need is triggered, a consumer may search or may not. Searching fans out to four sources: two people (personal), a storefront (commercial), a newspaper (public), and a hand holding the product (experiential); the line to personal is the heaviest, marked most effective.">
       <circle cx={56} cy={150} r={10} fill={SIGNAL} />
       <Key x={56} y={178} anchor="middle" fill={SIGNAL} size={10}>
         NEED
@@ -180,7 +191,7 @@ export function SearchFork() {
         MAY NOT SEARCH
       </Key>
 
-      <Key x={525} y={30} anchor="middle" fill={INK3} size={10}>
+      <Key x={540} y={24} anchor="middle" fill={INK3} size={10}>
         INFORMATION SOURCES
       </Key>
       {sources.map((s) => (
@@ -195,27 +206,22 @@ export function SearchFork() {
           />
           <rect
             x={440}
-            y={s.y - 17}
-            width={170}
-            height={34}
+            y={s.y - 20}
+            width={200}
+            height={40}
             fill={s.hot ? SIGNAL_TINT : PAPER}
             stroke={s.hot ? SIGNAL : INK}
             strokeWidth={s.hot ? 2 : 1.25}
           />
-          <Key x={525} y={s.y + 4} anchor="middle" fill={s.hot ? SIGNAL : INK} size={10.5}>
+          {icon(s.name, s.y, s.hot ? SIGNAL : INK)}
+          <Key x={492} y={s.y + 4} fill={s.hot ? SIGNAL : INK} size={10.5}>
             {s.name}
           </Key>
         </g>
       ))}
-      <Key x={628} y={56} fill={SIGNAL} size={10}>
+      <Key x={656} y={64} fill={SIGNAL} size={10}>
         MOST EFFECTIVE
       </Key>
-      <Note x={628} y={74} size={12} italic>
-        legitimize or evaluate
-      </Note>
-      <Note x={628} y={90} size={12} italic>
-        products for the buyer
-      </Note>
     </Frame>
   );
 }
@@ -399,24 +405,21 @@ export function DissonanceCalm() {
   const amps = [30, -34, 26, -36, 22, -32, 28, -34, 24, -30, 20, -32, 26, -34, 28, -30, 22, -34, 26, -30, 24, -20];
   const pts = amps.map((a, i) => `${40 + i * 15} ${110 + (i === 0 ? 0 : a)}`);
   return (
-    <Frame height={170} label="A jagged line of buyer's remorse, a question mark where brand communication could come in, and a calm line of less dissonance after it.">
+    <Frame height={170} label="A jagged line of buyer's remorse, then a message bubble from the brand, then a calm flat line of less dissonance.">
       <Key x={205} y={40} anchor="middle" fill={INK} size={11}>
         BUYER&apos;S REMORSE
       </Key>
       <path d={`M${pts.join("L")}`} fill="none" stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
 
-      <Key x={400} y={40} anchor="middle" fill={SIGNAL} size={11}>
+      <Key x={400} y={40} anchor="middle" fill={COUNTER} size={11}>
         BRAND COMMUNICATION
       </Key>
-      <circle cx={400} cy={110} r={24} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <Display x={400} y={120} anchor="middle" fill={SIGNAL} size={28}>
-        ?
-      </Display>
+      <ChatCircleText x={372} y={82} size={56} weight="duotone" color={COUNTER} />
 
-      <Key x={595} y={40} anchor="middle" fill={COUNTER} size={11}>
+      <Key x={595} y={40} anchor="middle" fill={INK} size={11}>
         LESS DISSONANCE
       </Key>
-      <line x1={432} y1={110} x2={760} y2={110} stroke={COUNTER} strokeWidth={1.5} />
+      <line x1={440} y1={110} x2={760} y2={110} stroke={INK} strokeWidth={1.5} />
     </Frame>
   );
 }
@@ -425,7 +428,33 @@ export function DissonanceCalm() {
    8 · NESTED RINGS — four kinds of influence around the buyer
    ========================================================================== */
 
-export function InfluenceRings() {
+export function InfluenceRings({ compact = false }: { compact?: boolean } = {}) {
+  if (compact) {
+    // A 400-square version for text to wrap around: names sit on their bands.
+    const c = 200;
+    const rings = [
+      { r: 190, inner: 152, name: "CULTURAL" },
+      { r: 152, inner: 114, name: "SOCIAL" },
+      { r: 114, inner: 76, name: "PERSONAL" },
+      { r: 76, inner: 10, name: "PSYCHOLOGICAL" },
+    ];
+    return (
+      <Frame width={400} height={400} label="Four nested rings around the buyer at the centre, named on their bands: cultural outermost, then social, personal, and psychological.">
+        {rings.map((ring) => (
+          <circle key={ring.name} cx={c} cy={c} r={ring.r} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1} />
+        ))}
+        {rings.map((ring) => (
+          <Key key={ring.name} x={c} y={r2(c - (ring.r + ring.inner) / 2 + 4)} anchor="middle" fill={COUNTER} size={ring.name === "PSYCHOLOGICAL" ? 9.5 : 11}>
+            {ring.name}
+          </Key>
+        ))}
+        <circle cx={c} cy={c} r={9} fill={SIGNAL} />
+        <Key x={c} y={c + 30} anchor="middle" fill={SIGNAL} size={9.5}>
+          THE BUYER
+        </Key>
+      </Frame>
+    );
+  }
   const cx = 480;
   const cy = 188;
   const rings = [
@@ -442,7 +471,7 @@ export function InfluenceRings() {
       <circle cx={cx} cy={cy} r={10} fill={SIGNAL} />
 
       {rings.map((ring) => {
-        const x = cx - Math.sqrt(ring.r * ring.r - (ring.y - cy) * (ring.y - cy));
+        const x = r2(cx - Math.sqrt(ring.r * ring.r - (ring.y - cy) * (ring.y - cy)));
         return (
           <g key={ring.name}>
             <line x1={250} y1={ring.y} x2={x} y2={ring.y} stroke={INK} strokeWidth={1} />
@@ -528,11 +557,11 @@ export function SubcultureField() {
           <circle cx={g.cx} cy={g.cy} r={g.r} fill={g.tint} stroke={g.tone} strokeWidth={1.5} />
           {Array.from({ length: 5 }, (_, i) => {
             const t = ((-90 + i * 72) * Math.PI) / 180;
-            const x = g.cx + 20 * Math.cos(t);
-            const y = g.cy + 20 * Math.sin(t);
+            const x = r2(g.cx + 20 * Math.cos(t));
+            const y = r2(g.cy + 20 * Math.sin(t));
             if (g.shape === "circle") return <circle key={i} cx={x} cy={y} r={4.5} fill={g.tone} />;
             if (g.shape === "square") return <rect key={i} x={x - 4} y={y - 4} width={8} height={8} fill={g.tone} />;
-            return <path key={i} d={`M${x} ${y - 5}L${x + 5} ${y + 4}L${x - 5} ${y + 4}Z`} fill={g.tone} />;
+            return <path key={i} d={`M${x} ${r2(y - 5)}L${r2(x + 5)} ${r2(y + 4)}L${r2(x - 5)} ${r2(y + 4)}Z`} fill={g.tone} />;
           })}
         </g>
       ))}
@@ -635,8 +664,8 @@ export function PerceptionSequence() {
   const cxs = [110, 303, 497, 690];
   const cy = 140;
   const marks = Array.from({ length: 22 }, (_, i) => ({
-    dx: (hash1(i + 1) * 2 - 1) * 60,
-    dy: (hash1(i + 51) * 2 - 1) * 46,
+    dx: r2((hash1(i + 1) * 2 - 1) * 60),
+    dy: r2((hash1(i + 51) * 2 - 1) * 46),
     shape: i % 3,
   }));
   const chosen = [1, 4, 6, 9, 12, 15, 17, 20];
@@ -651,9 +680,11 @@ export function PerceptionSequence() {
     [0, 40],
   ];
   const mark = (x: number, y: number, shape: number, fill: string, key: string) => {
+    x = r2(x);
+    y = r2(y);
     if (shape === 0) return <circle key={key} cx={x} cy={y} r={4.5} fill={fill} />;
     if (shape === 1) return <rect key={key} x={x - 4} y={y - 4} width={8} height={8} fill={fill} />;
-    return <path key={key} d={`M${x} ${y - 5}L${x + 5} ${y + 4}L${x - 5} ${y + 4}Z`} fill={fill} />;
+    return <path key={key} d={`M${x} ${r2(y - 5)}L${r2(x + 5)} ${r2(y + 4)}L${r2(x - 5)} ${r2(y + 4)}Z`} fill={fill} />;
   };
   const headers = [
     { t: "INFORMATION", c: INK3 },
@@ -862,7 +893,39 @@ export function MarketStructureTriptych() {
    16 · ROUND TABLE — five roles around one purchase decision
    ========================================================================== */
 
-export function BuyingCenterTable() {
+export function BuyingCenterTable({ round = false }: { round?: boolean } = {}) {
+  if (round) {
+    // A 400-wide version for text to wrap around: only the table and its roles.
+    const c = { x: 200, y: 165 };
+    const roles = [
+      { a: -90, name: "USERS" },
+      { a: -18, name: "INFLUENCERS" },
+      { a: 54, name: "DECIDERS" },
+      { a: 126, name: "BUYERS" },
+      { a: 198, name: "GATEKEEPERS" },
+    ];
+    return (
+      <Frame width={400} height={306} label="Five people, users, influencers, deciders, buyers, and gatekeepers, around one oval purchase decision.">
+        <ellipse cx={c.x} cy={c.y} rx={96} ry={52} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
+        <Key x={c.x} y={c.y + 4} anchor="middle" fill={SIGNAL} size={10}>
+          PURCHASE DECISION
+        </Key>
+        {roles.map((s) => {
+          const t = (s.a * Math.PI) / 180;
+          const x = r2(c.x + 150 * Math.cos(t));
+          const y = r2(c.y + 112 * Math.sin(t));
+          return (
+            <g key={s.name}>
+              <Person2 x={x} y={r2(y + 17)} k={1.1} />
+              <Key x={x} y={s.a < 0 || s.a > 180 ? y - 30 : y + 36} anchor="middle" fill={INK} size={9.5}>
+                {s.name}
+              </Key>
+            </g>
+          );
+        })}
+      </Frame>
+    );
+  }
   const cx = 520;
   const cy = 160;
   const seats = [
@@ -873,7 +936,7 @@ export function BuyingCenterTable() {
     { a: 198, name: "GATEKEEPERS", below: true },
   ];
   return (
-    <Frame height={300} label="Left: one person, rarely the whole story. Right: users, influencers, deciders, buyers, and gatekeepers seated around one purchase decision.">
+    <Frame height={300} label="Left: one person, rarely the whole story. Right: five people, users, influencers, deciders, buyers, and gatekeepers, around one oval purchase decision.">
       <Person2 x={120} y={196} k={1.6} stroke={INK3} dashed />
       <Key x={120} y={232} anchor="middle" fill={INK3} size={10}>
         RARELY ONE PERSON
@@ -886,12 +949,12 @@ export function BuyingCenterTable() {
       </Key>
       {seats.map((s) => {
         const t = (s.a * Math.PI) / 180;
-        const x = cx + 215 * Math.cos(t);
-        const y = cy + 112 * Math.sin(t);
+        const x = r2(cx + 215 * Math.cos(t));
+        const y = r2(cy + 112 * Math.sin(t));
         return (
           <g key={s.name}>
-            <circle cx={x} cy={y} r={14} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-            <Key x={x} y={s.below ? y + 33 : y - 22} anchor="middle" fill={INK} size={10}>
+            <Person2 x={x} y={r2(y + 17)} k={1.1} />
+            <Key x={x} y={s.below ? y + 36 : y - 30} anchor="middle" fill={INK} size={10}>
               {s.name}
             </Key>
           </g>
@@ -915,39 +978,42 @@ function Badge({ x, y }: { x: number; y: number }) {
 }
 
 export function MatchedExperts() {
+  const ground = 120;
   return (
-    <Frame height={190} label="A well-trained salesperson for the B2B marketer faces a trained purchasing agent for the business buyer, who is backed by more decision participants.">
-      <g transform="translate(0 -60)">
-      <Key x={290} y={110} anchor="middle" fill={INK3} size={10}>
-        B2B MARKETER
+    <Frame width={640} height={170} label="A trained purchasing agent for the business buyer, backed by more decision participants, faces an equal: a well-trained salesperson for the B2B marketer.">
+      <Key x={95} y={50} anchor="middle" fill={INK3} size={9.5}>
+        MORE DECISION
       </Key>
-      <Key x={510} y={110} anchor="middle" fill={INK3} size={10}>
+      <Key x={95} y={64} anchor="middle" fill={INK3} size={9.5}>
+        PARTICIPANTS
+      </Key>
+      {[44, 78, 112, 146].map((x) => (
+        <Person2 key={x} x={x} y={ground} k={1.1} stroke={INK3} />
+      ))}
+
+      <Key x={210} y={36} anchor="middle" fill={INK3} size={10}>
         BUSINESS BUYER
       </Key>
+      <Person2 x={210} y={ground} k={2} />
+      <Badge x={219} y={102} />
 
-      <Person2 x={290} y={196} k={2} />
-      <Badge x={299} y={178} />
-      <Display x={400} y={176} anchor="middle" fill={SIGNAL} size={40}>
+      <Display x={320} y={104} anchor="middle" fill={SIGNAL} size={40}>
         =
       </Display>
-      <Person2 x={510} y={196} k={2} />
-      <Badge x={519} y={178} />
 
-      <Key x={670} y={134} anchor="middle" fill={INK3} size={10}>
-        MORE DECISION PARTICIPANTS
+      <Key x={430} y={36} anchor="middle" fill={INK3} size={10}>
+        B2B MARKETER
       </Key>
-      {[610, 650, 690, 730].map((x) => (
-        <Person2 key={x} x={x} y={196} k={1.15} stroke={INK3} />
-      ))}
-      <line x1={180} y1={196} x2={760} y2={196} stroke={RULE} strokeWidth={1} />
+      <Person2 x={430} y={ground} k={2} />
+      <Badge x={439} y={102} />
 
-      <Key x={290} y={228} anchor="middle" fill={INK} size={10}>
-        WELL-TRAINED SALESPERSON
-      </Key>
-      <Key x={510} y={228} anchor="middle" fill={INK} size={10}>
+      <line x1={30} y1={ground} x2={530} y2={ground} stroke={RULE} strokeWidth={1} />
+      <Key x={210} y={152} anchor="middle" fill={INK} size={10}>
         TRAINED PURCHASING AGENT
       </Key>
-      </g>
+      <Key x={430} y={152} anchor="middle" fill={INK} size={10}>
+        WELL-TRAINED SALESPERSON
+      </Key>
     </Frame>
   );
 }
@@ -956,8 +1022,66 @@ export function MatchedExperts() {
    18 · TWO DOCUMENTS — one product, different materials per role
    ========================================================================== */
 
-export function TwoBrochures() {
+export function TwoBrochures({ column = false }: { column?: boolean } = {}) {
   const lens = [140, 120, 136, 100, 130, 90];
+  if (column) {
+    // A 400-wide version: the product on top feeding two documents below.
+    return (
+      <Frame width={400} height={352} label="One product at the top feeds two documents in one buying center: a technical one for the user, an IT employee, and a financial one for the decider, the CFO.">
+        <rect x={160} y={20} width={80} height={32} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
+        <Key x={200} y={40} anchor="middle" fill={SIGNAL} size={10}>
+          PRODUCT
+        </Key>
+        <path d="M184 56 C184 80 105 72 105 94" fill="none" stroke={INK3} strokeWidth={1.25} />
+        <path d={head2.down(105, 96)} fill="none" stroke={INK3} strokeWidth={1.25} />
+        <path d="M216 56 C216 80 295 72 295 94" fill="none" stroke={INK3} strokeWidth={1.25} />
+        <path d={head2.down(295, 96)} fill="none" stroke={INK3} strokeWidth={1.25} />
+
+        {/* for the user */}
+        <rect x={20} y={100} width={170} height={170} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+        <Key x={105} y={122} anchor="middle" fill={INK} size={9.5}>
+          FOR THE USER
+        </Key>
+        <circle cx={50} cy={152} r={9} fill="none" stroke={INK} strokeWidth={1.75} />
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((d) => (
+          <rect key={d} x={48} y={137} width={4} height={5} fill={INK} transform={`rotate(${d} 50 152)`} />
+        ))}
+        <line x1={72} y1={146} x2={170} y2={146} stroke={INK3} strokeWidth={2} />
+        <line x1={72} y1={158} x2={146} y2={158} stroke={INK3} strokeWidth={2} />
+        {lens.map((l, i) => (
+          <line key={i} x1={36} y1={186 + i * 13} x2={r2(36 + l * 0.9)} y2={186 + i * 13} stroke={RULE2} strokeWidth={2} />
+        ))}
+
+        {/* for the decider */}
+        <rect x={210} y={100} width={170} height={170} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
+        <Key x={295} y={122} anchor="middle" fill={COUNTER} size={9.5}>
+          FOR THE DECIDER
+        </Key>
+        <Display x={242} y={164} anchor="middle" fill={COUNTER} size={30}>
+          $
+        </Display>
+        <line x1={266} y1={146} x2={360} y2={146} stroke={INK3} strokeWidth={2} />
+        <line x1={266} y1={158} x2={336} y2={158} stroke={INK3} strokeWidth={2} />
+        {[24, 40, 56, 72].map((h, i) => (
+          <rect key={h} x={236 + i * 34} y={254 - h} width={22} height={h} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.25} />
+        ))}
+        <line x1={226} y1={254} x2={364} y2={254} stroke={COUNTER} strokeWidth={1} />
+
+        <Key x={105} y={294} anchor="middle" fill={INK} size={10.5}>
+          IT EMPLOYEE
+        </Key>
+        <Key x={295} y={294} anchor="middle" fill={COUNTER} size={10.5}>
+          CFO
+        </Key>
+        <line x1={20} y1={312} x2={380} y2={312} stroke={INK3} strokeWidth={1} />
+        <line x1={20} y1={306} x2={20} y2={312} stroke={INK3} strokeWidth={1} />
+        <line x1={380} y1={306} x2={380} y2={312} stroke={INK3} strokeWidth={1} />
+        <Key x={200} y={334} anchor="middle" fill={INK3} size={9.5}>
+          ONE BUYING CENTER
+        </Key>
+      </Frame>
+    );
+  }
   return (
     <Frame height={290} label="One product at the centre of one buying center, with a technical document for the user, an IT employee, and a financial document for the decider, the CFO.">
       <Key x={400} y={36} anchor="middle" fill={INK3} size={10}>

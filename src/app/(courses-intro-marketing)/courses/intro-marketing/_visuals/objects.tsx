@@ -955,13 +955,13 @@ export function Person2({
   width?: number;
   dashed?: boolean;
 }) {
-  const w = 10 * k;
-  const top = y - 21 * k;
-  const shoulder = y - 12 * k;
+  const w = r2(10 * k);
+  const top = r2(y - 21 * k);
+  const shoulder = r2(y - 12 * k);
   const dash = dashed ? "3 3" : undefined;
   return (
     <g>
-      <circle cx={x} cy={y - 28 * k} r={6 * k} fill={fill} stroke={stroke} strokeWidth={width} strokeDasharray={dash} />
+      <circle cx={x} cy={r2(y - 28 * k)} r={r2(6 * k)} fill={fill} stroke={stroke} strokeWidth={width} strokeDasharray={dash} />
       <path
         d={`M${x - w} ${y}V${shoulder}Q${x - w} ${top} ${x} ${top}Q${x + w} ${top} ${x + w} ${shoulder}V${y}Z`}
         fill={fill}

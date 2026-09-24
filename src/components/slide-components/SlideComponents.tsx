@@ -733,19 +733,22 @@ export function Figure({
   children,
   caption,
   height = "md",
+  dense = false,
   className = "",
 }: {
   children: React.ReactNode;
   caption?: string;
   /** "auto" lets the child set its own height — use it for scaling SVG. */
   height?: "sm" | "md" | "lg" | "auto";
+  /** With "auto": trims the well's padding and the figure's margin, for slides that share a screen. */
+  dense?: boolean;
   className?: string;
 }) {
   const heightClass = {
     sm: "h-[260px] sm:h-[300px]",
     md: "h-[320px] sm:h-[360px] md:h-[400px]",
     lg: "h-[380px] sm:h-[440px] md:h-[520px]",
-    auto: "h-auto p-5 sm:p-7 md:p-9",
+    auto: dense ? "h-auto p-3 sm:p-4 md:p-5" : "h-auto p-5 sm:p-7 md:p-9",
   }[height];
 
   // Auto-height figures hold drawn plates whose labels are sized for the
@@ -755,7 +758,7 @@ export function Figure({
   const isPlate = height === "auto";
 
   return (
-    <figure className={cn("w-full my-10", className)}>
+    <figure className={cn("w-full", dense && height === "auto" ? "my-5" : "my-10", className)}>
       <div
         className={cn(
           "figure-well w-full",

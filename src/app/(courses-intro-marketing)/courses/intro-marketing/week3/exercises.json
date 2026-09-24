@@ -1,0 +1,236 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "need-recognition",
+    "prompt": "Each moment starts a buying process. Sort it by where the trigger comes from.",
+    "bins": [
+      {
+        "id": "internal",
+        "label": "Internal stimulus"
+      },
+      {
+        "id": "external",
+        "label": "External stimulus"
+      }
+    ],
+    "cards": [
+      {
+        "id": "thirst",
+        "text": "Halfway through a long run, Amir feels thirsty and wants a sports drink.",
+        "bin": "internal",
+        "explanation": "The trigger comes from inside Amir, so it is an internal stimulus."
+      },
+      {
+        "id": "window",
+        "text": "Nora walks past a bakery window and sees fresh croissants.",
+        "bin": "external",
+        "explanation": "The trigger comes from the world around her, so it is an external stimulus."
+      },
+      {
+        "id": "tired",
+        "text": "After weeks of back pain, Ben decides his mattress has to go.",
+        "bin": "internal",
+        "explanation": "The discomfort comes from Ben himself, so it is an internal stimulus."
+      },
+      {
+        "id": "coworker",
+        "text": "A coworker's new noise-cancelling headphones make Ines want a pair.",
+        "bin": "external",
+        "explanation": "Seeing someone else's product is an outside trigger, so it is an external stimulus."
+      },
+      {
+        "id": "radio",
+        "text": "A radio ad reminds Paul that his car needs new tires.",
+        "bin": "external",
+        "explanation": "The ad is outside Paul, so it is an external stimulus."
+      },
+      {
+        "id": "hunger",
+        "text": "Late at night, Mia's stomach growls and she orders a pizza.",
+        "bin": "internal",
+        "explanation": "Hunger comes from inside Mia, so it is an internal stimulus."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "information-search",
+    "prompt": "Sam is buying a stroller and gathers information from four places. Match each source type to what Sam uses.",
+    "term_label": "Source type",
+    "match_label": "What Sam uses",
+    "pairs": [
+      {
+        "id": "personal",
+        "term": "Personal sources",
+        "match": "Two friends who already own a stroller",
+        "explanation": "Friends and family are personal sources, and they tend to be the most effective."
+      },
+      {
+        "id": "commercial",
+        "term": "Commercial sources",
+        "match": "The brand's own website and a store salesperson",
+        "explanation": "Advertising, websites and salespeople come from the company selling the product."
+      },
+      {
+        "id": "public",
+        "term": "Public sources",
+        "match": "A consumer-rating organization's published ranking",
+        "explanation": "Mass media and rating organizations are public sources."
+      },
+      {
+        "id": "experiential",
+        "term": "Experiential sources",
+        "match": "Pushing the display model around the store",
+        "explanation": "Handling and trying the product yourself is experiential."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "postpurchase-behavior",
+    "question_text": "Right after paying for an expensive laptop, Karim keeps wondering if he should have bought the other brand. What is he experiencing?",
+    "hint": "The purchase is already made. Think about the stage that comes after it.",
+    "correct_answer_citation": "Week 03 · Step 5: Postpurchase Behavior",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Need recognition, triggered by an internal stimulus.",
+        "option_explanation": "Need recognition starts the buying process. Karim has already bought the laptop, so he is past that stage."
+      },
+      {
+        "option_text": "Evaluation of alternatives within his choice set.",
+        "option_explanation": "Evaluating alternatives happens before the purchase decision. Karim's doubts come after he has bought."
+      },
+      {
+        "option_text": "Cognitive dissonance from postpurchase conflict.",
+        "option_explanation": "Correct. Cognitive dissonance, or buyer discomfort caused by postpurchase conflict, is a common occurrence."
+      },
+      {
+        "option_text": "Situational factors blocking his purchase decision.",
+        "option_explanation": "Situational factors come between intention and decision. Karim did make the purchase, and his discomfort came afterwards."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "psychological-factors",
+    "prompt": "Perception is the process by which people select, organize, and interpret information. Which part of perception is each shopper doing?",
+    "options": [
+      {
+        "id": "select",
+        "label": "Select"
+      },
+      {
+        "id": "organize",
+        "label": "Organize"
+      },
+      {
+        "id": "interpret",
+        "label": "Interpret"
+      }
+    ],
+    "cases": [
+      {
+        "id": "mall",
+        "text": "Walking through a busy mall, Lina notices only the shoe ads and tunes out everything else.",
+        "answer": "select",
+        "explanation": "Lina picks out a few pieces of information and ignores the rest, so she is selecting."
+      },
+      {
+        "id": "shelf",
+        "text": "In the cereal aisle, Omar mentally sorts the boxes into healthy brands and sugary brands.",
+        "answer": "organize",
+        "explanation": "Omar arranges what he sees into groups, so he is organizing."
+      },
+      {
+        "id": "price",
+        "text": "Julie sees the highest price on the wine list and decides it must be the best wine.",
+        "answer": "interpret",
+        "explanation": "Julie gives the price a meaning, so she is interpreting."
+      },
+      {
+        "id": "feed",
+        "text": "Scrolling past dozens of posts, Theo stops only at the one showing the headphones he has been wanting.",
+        "answer": "select",
+        "explanation": "Theo lets one post through and skips the others, so he is selecting."
+      },
+      {
+        "id": "reviews",
+        "text": "Before buying a tent, Aisha lines up the reviews she has read into pros in one column and cons in another.",
+        "answer": "organize",
+        "explanation": "Aisha puts the information into a structure, so she is organizing."
+      },
+      {
+        "id": "pack",
+        "text": "Marc sees a plain, recycled-paper package and concludes the brand cares about the environment.",
+        "answer": "interpret",
+        "explanation": "Marc reads a meaning into the package, so he is interpreting."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "market-structure-and-demand",
+    "question_text": "A maker of aluminum cans sees its orders drop after people start buying fewer soft drinks. Which idea explains this?",
+    "hint": "Where does the can maker's demand ultimately come from?",
+    "correct_answer_citation": "Week 03 · Market Structure and Demand",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Elastic demand, since can buyers react strongly to price.",
+        "option_explanation": "Nothing about price changed here. B2B demand is also more inelastic than B2C demand, not more elastic."
+      },
+      {
+        "option_text": "Postpurchase dissonance among soft drink buyers.",
+        "option_explanation": "Dissonance is discomfort after a purchase. The drop here comes from consumers buying fewer drinks in the first place."
+      },
+      {
+        "option_text": "Market structure, since can makers serve many small buyers.",
+        "option_explanation": "A business marketer normally deals with far fewer but far larger buyers, and buyer count does not explain this drop."
+      },
+      {
+        "option_text": "Derived demand, which comes from consumer demand.",
+        "option_explanation": "Correct. Business demand is derived demand; it ultimately derives from the demand for consumer goods, here soft drinks."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "the-buying-center",
+    "prompt": "A hospital is buying new patient monitors. Match each buying-center role to the person who plays it.",
+    "term_label": "Role",
+    "match_label": "Who plays it",
+    "pairs": [
+      {
+        "id": "users",
+        "term": "User",
+        "match": "The nurses who will work with the monitors every shift",
+        "explanation": "Users are the people who will actually use the product."
+      },
+      {
+        "id": "influencers",
+        "term": "Influencer",
+        "match": "The biomedical engineer whose test report shapes the shortlist",
+        "explanation": "Influencers affect the decision without making it."
+      },
+      {
+        "id": "buyers",
+        "term": "Buyer",
+        "match": "The purchasing agent who negotiates terms and places the order",
+        "explanation": "Buyers have formal authority to select suppliers and arrange the purchase."
+      },
+      {
+        "id": "deciders",
+        "term": "Decider",
+        "match": "The hospital director who approves the supplier",
+        "explanation": "Deciders have the power to make the final choice."
+      },
+      {
+        "id": "gatekeepers",
+        "term": "Gatekeeper",
+        "match": "The assistant who controls which sales reps get a meeting with the director",
+        "explanation": "Gatekeepers control the flow of information to the others."
+      }
+    ]
+  }
+]

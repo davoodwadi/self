@@ -10,10 +10,10 @@ import {
   Tag,
   Figure,
 } from "@/components/slide-components/SlideComponents";
-import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
+import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
 import { Plate } from "../_visuals/kit";
-import quizzesData from "./quizzes.json";
+import exercisesData from "./exercises.json";
 import {
   ConsumerMarket,
   NeedStimuli,
@@ -45,12 +45,12 @@ import {
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
-// Quizzes: in this route group `Slide` renders `quizData` AFTER its section.
-// Each [quiz]-tagged topic therefore carries its own quiz, which tests that
+// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
+// so each [exercise]-tagged topic carries one exercise that tests that
 // slide and the ones before it.
 // ============================================================================
 
-const quiz = createCourseQuizLookup(quizzesData as CourseQuiz[]);
+const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 const SERIF = { fontFamily: "var(--font-heading)", fontWeight: 600 } as const;
 
@@ -190,19 +190,47 @@ function PartPlate({
   id,
   n,
   title,
+  className,
   children,
+  layout = "column",
 }: {
   id: string;
   n: number;
   title: string;
+  className?: string;
   children: React.ReactNode;
+  /** "stacked": numeral and heading share one row and the content runs the full width below. */
+  layout?: "column" | "stacked";
 }) {
+  if (layout === "stacked") {
+    return (
+      <Slide id={id} border className={className}>
+        <div className="flex w-full items-end gap-8 xl:gap-12">
+          <div
+            aria-hidden
+            className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[5rem] xl:text-[6.5rem]"
+            style={{ ...SERIF, fontVariationSettings: '"opsz" 144, "WONK" 1' }}
+          >
+            {String(n).padStart(2, "0")}
+          </div>
+          <h2 className="type-display !text-[clamp(2.2rem,4.2vw,3.5rem)] max-w-[24ch]">
+            <span className="type-label block mb-3 !text-[0.8rem]">
+              {`Part ${n}:`}
+            </span>{" "}
+            {title}
+          </h2>
+        </div>
+        <div className="mt-6 h-px w-full bg-[var(--rule)]" />
+        {children}
+      </Slide>
+    );
+  }
   return (
-    <Slide id={id} border>
+    <Slide id={id} border className={className}>
       <div className="grid w-full gap-8 xl:grid-cols-[minmax(0,15rem)_1fr] xl:gap-16">
         <div
           aria-hidden
-          className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[7rem] xl:text-[13rem]"
+          className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[6rem] xl:text-[8rem]"
           style={{
             ...SERIF,
             fontVariationSettings: '"opsz" 144, "WONK" 1',
@@ -211,13 +239,13 @@ function PartPlate({
           {String(n).padStart(2, "0")}
         </div>
         <div className="min-w-0">
-          <h2 className="type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[18ch]">
-            <span className="type-label block mb-6 !text-[0.8rem]">
+          <h2 className="type-display !text-[clamp(2.2rem,4.2vw,3.5rem)] max-w-[24ch]">
+            <span className="type-label block mb-3 !text-[0.8rem]">
               {`Part ${n}:`}
             </span>{" "}
             {title}
           </h2>
-          <div className="mt-10 h-px w-full bg-[var(--rule)]" />
+          <div className="mt-6 h-px w-full bg-[var(--rule)]" />
           {children}
         </div>
       </div>
@@ -228,7 +256,7 @@ function PartPlate({
 /** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
 function Prompt({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
+    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-7 md:px-12 md:py-9">
       <p className="type-quote !text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[42ch]">
         {children}
       </p>
@@ -243,6 +271,47 @@ function PromptKicker() {
     </span>
   );
 }
+
+/**
+ * Text rail beside a plate. The rail comes first in the DOM (text leads its
+ * plate, on phones too); `side` decides which side the plate sits on.
+ */
+function Split({
+  rail,
+  side = "right",
+  children,
+}: {
+  rail: React.ReactNode;
+  /** Where the rail sits. */
+  side?: "left" | "right";
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      className={cn(
+        "grid w-full items-center gap-4 lg:gap-10",
+        side === "right"
+          ? "lg:grid-cols-[minmax(0,1fr)_17rem]"
+          : "lg:grid-cols-[17rem_minmax(0,1fr)]",
+      )}
+    >
+      <div
+        className={cn(
+          "flex min-w-0 flex-col gap-6",
+          side === "right" && "lg:order-2",
+        )}
+      >
+        {rail}
+      </div>
+      <div className={cn("min-w-0", side === "right" && "lg:order-1")}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/** A sentence set large inside a rail. */
+const RAIL_BIG = "type-h2 !font-normal !text-[1.3rem] !leading-snug";
 
 /* --------------------------------------------------------------------------
    Decision-process wayfinding
@@ -263,12 +332,38 @@ const STAGES = [
 function StageStrip({
   active,
   large = false,
+  vertical = false,
   className = "",
 }: {
   active?: number;
   large?: boolean;
+  /** The whole route as a column of numbered rungs joined by one rule. */
+  vertical?: boolean;
   className?: string;
 }) {
+  if (vertical) {
+    return (
+      <ol aria-hidden className={cn("relative w-full", className)}>
+        <span className="absolute bottom-6 left-[1.35rem] top-6 w-0.5 bg-[var(--ink)]" />
+        {STAGES.map((s, i) => (
+          <li key={s} className="relative flex items-center gap-6 py-2.5">
+            <span
+              className="relative z-10 grid h-11 w-11 shrink-0 place-items-center rounded-full border-2 border-[var(--ink)] bg-[var(--paper)] text-[1rem] text-[var(--signal)]"
+              style={SERIF}
+            >
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <span
+              className="text-[clamp(1.15rem,1.7vw,1.5rem)] leading-tight text-[var(--ink)]"
+              style={SERIF}
+            >
+              {s}
+            </span>
+          </li>
+        ))}
+      </ol>
+    );
+  }
   return (
     <ol
       aria-hidden
@@ -328,17 +423,19 @@ function StepSlide({
   id,
   step,
   title,
+  className,
   children,
 }: {
   id: string;
   step: number;
   title: string;
+  className?: string;
   children: React.ReactNode;
 }) {
   return (
-    <Slide id={id} border quizData={quiz[id]}>
-      <StageStrip active={step - 1} className="mb-12 md:mb-16" />
-      <KickerHeading kicker={`Step ${step}:`}>{title}</KickerHeading>
+    <Slide id={id} border exercise={exercise[id]} className={className}>
+      <StageStrip active={step - 1} className="mb-8 md:mb-10" />
+      <KickerHeading kicker={`Step ${step}:`} className="!mb-2 md:!mb-4">{title}</KickerHeading>
       {children}
     </Slide>
   );
@@ -417,44 +514,70 @@ export default function Week3() {
       {/* ================================================================
           Part 1 — The Consumer Decision-Making Process
           ================================================================ */}
-      <PartPlate id="part-1" n={1} title="The Consumer Decision-Making Process">
-        <Lead className="mt-10 !max-w-[56ch]">
-          Consumer buyer behavior refers to the buying behavior of{" "}
-          <Term>final consumers</Term>.
-        </Lead>
-        <Figure height="auto">
-          <ConsumerMarket />
-        </Figure>
-        <Ruled>
-          <P className="!max-w-[70ch]">
-            The consumer market consists of all the{" "}
-            <Term tone="ink">individuals</Term> and{" "}
-            <Term tone="counter">households</Term> that buy or acquire goods
-            and services for personal consumption.
-          </P>
-        </Ruled>
-        <Statement className="mt-16 !max-w-[34ch]">
-          Understanding this process is key to{" "}
-          <span className="text-[var(--signal)]">predicting</span> how
-          consumers will respond to marketing strategies.
-        </Statement>
-        <StageStrip large className="mt-12" />
-      </PartPlate>
+      <Slide id="part-1" border className="!py-8">
+        {/* Split screen: the definitions and the market on the left, the
+            whole five-step route standing tall on the right. */}
+        <div className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
+          <div className="min-w-0">
+            <div className="flex items-end gap-6">
+              <div
+                aria-hidden
+                className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[5rem] xl:text-[6rem]"
+                style={{ ...SERIF, fontVariationSettings: '"opsz" 144, "WONK" 1' }}
+              >
+                01
+              </div>
+              <h2 className="type-display !text-[clamp(2rem,3.4vw,3rem)]">
+                <span className="type-label block mb-3 !text-[0.8rem]">
+                  Part 1:
+                </span>{" "}
+                The Consumer Decision-Making Process
+              </h2>
+            </div>
+            <div className="mt-6 h-px w-full bg-[var(--rule)]" />
+            <Lead className="mt-6 !max-w-none">
+              Consumer buyer behavior refers to the buying behavior of{" "}
+              <Term>final consumers</Term>.
+            </Lead>
+            <P className="mt-4 !max-w-none">
+              The consumer market consists of all the{" "}
+              <Term tone="ink">individuals</Term> and{" "}
+              <Term tone="counter">households</Term> that buy or acquire goods
+              and services for personal consumption.
+            </P>
+            <Plate className="mt-5">
+              <ConsumerMarket />
+            </Plate>
+          </div>
+          <div className="min-w-0 border-t-2 border-[var(--signal)] pt-6 lg:border-l lg:border-t-0 lg:border-l-[var(--rule)] lg:pl-12 lg:pt-0">
+            <Statement className="!max-w-none !text-[clamp(1.3rem,2vw,1.75rem)]">
+              Understanding this process is key to{" "}
+              <span className="text-[var(--signal)]">predicting</span> how
+              consumers will respond to marketing strategies.
+            </Statement>
+            <StageStrip vertical className="mt-8" />
+          </div>
+        </div>
+      </Slide>
 
-      <StepSlide id="need-recognition" step={1} title="Need Recognition">
-        <Statement className="!max-w-[32ch]">
+      <StepSlide id="need-recognition" step={1} title="Need Recognition" className="!py-8">
+        <Statement className="!max-w-none !text-[clamp(1.8rem,3vw,2.6rem)]">
           The buying process starts with{" "}
           <span className="text-[var(--signal)]">need recognition</span>.
         </Statement>
-        <Figure height="auto">
-          <NeedStimuli />
-        </Figure>
-        <Lead className="!max-w-[60ch]">
-          The buyer recognizes a problem or need triggered by{" "}
-          <Term tone="ink">internal</Term> or{" "}
-          <Term tone="counter">external</Term> stimuli.
-        </Lead>
-        <div className="mt-14 w-full">
+        <div className="mt-2 grid w-full items-center gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)] lg:gap-12">
+          <Ruled>
+            <p className="type-lead">
+              The buyer recognizes a problem or need triggered by{" "}
+              <Term tone="ink">internal</Term> or{" "}
+              <Term tone="counter">external</Term> stimuli.
+            </p>
+          </Ruled>
+          <Plate>
+            <NeedStimuli />
+          </Plate>
+        </div>
+        <div className="w-full">
           <p className="type-label !text-[var(--ink-3)]">
             Marketers must research to find out
           </p>
@@ -467,7 +590,7 @@ export default function Week3() {
               <li
                 key={n}
                 data-n={n}
-                className="num-item border-b border-[var(--rule)] py-6 type-h2 !font-normal"
+                className="num-item border-b border-[var(--rule)] py-4 type-h2 !font-normal"
               >
                 {" "}
                 {item}
@@ -477,15 +600,15 @@ export default function Week3() {
         </div>
       </StepSlide>
 
-      <StepSlide id="information-search" step={2} title="Information Search">
-        <Lead className="!max-w-[56ch]">
-          Once a need is triggered, consumers{" "}
-          <Term>may or may not</Term> search for more information.
-        </Lead>
-        <Figure height="auto">
-          <SearchFork />
-        </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
+      <StepSlide id="information-search" step={2} title="Information Search" className="!py-8">
+        <div className="grid w-full items-start gap-6 md:grid-cols-3 md:gap-10">
+          <Ruled>
+            <p className={RAIL_BIG}>
+              Once a need is triggered, consumers{" "}
+              <span className="text-[var(--signal)]">may or may not</span>{" "}
+              search for more information.
+            </p>
+          </Ruled>
           <Ruled>
             <P>
               Information sources include personal sources, commercial
@@ -493,17 +616,21 @@ export default function Week3() {
             </P>
           </Ruled>
           <Ruled tone="signal">
-            <p className="type-h2 !font-normal">
+            <p className={RAIL_BIG}>
               The most effective sources tend to be{" "}
               <span className="text-[var(--signal)]">personal</span>, as they
               legitimize or evaluate products for the buyer.
             </p>
           </Ruled>
         </div>
+        <Figure height="auto" dense>
+          <SearchFork />
+        </Figure>
       </StepSlide>
 
       <StepSlide
         id="evaluation-of-alternatives"
+        className="!py-8"
         step={3}
         title="Evaluation of Alternatives"
       >
@@ -511,10 +638,9 @@ export default function Week3() {
           Consumers use information to evaluate alternative brands in the{" "}
           <Term>choice set</Term>.
         </Lead>
-        <Figure height="auto">
-          <ChoiceSetSlope />
-        </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
+        {/* Triptych: the cause on the left, the evidence in the middle, what
+            marketers do about it on the right. */}
+        <div className="grid w-full items-center gap-6 lg:grid-cols-[14rem_minmax(0,1fr)_14rem] lg:gap-10">
           <Ruled>
             <P>
               The process varies significantly depending on the{" "}
@@ -522,8 +648,11 @@ export default function Week3() {
               <Term tone="ink">specific buying situation</Term>.
             </P>
           </Ruled>
+          <Plate>
+            <ChoiceSetSlope />
+          </Plate>
           <Ruled tone="signal">
-            <p className="type-h2 !font-normal">
+            <p className={RAIL_BIG}>
               Marketers should study buyers to find out how they{" "}
               <span className="text-[var(--signal)]">actually</span> evaluate
               brand alternatives.
@@ -532,15 +661,12 @@ export default function Week3() {
         </div>
       </StepSlide>
 
-      <StepSlide id="purchase-decision" step={4} title="Purchase Decision">
+      <StepSlide id="purchase-decision" step={4} title="Purchase Decision" className="!py-8">
         <Lead className="!max-w-[58ch]">
           In the evaluation stage, the consumer <Term>ranks brands</Term> and
           forms <Term tone="ink">purchase intentions</Term>.
         </Lead>
-        <Figure height="auto">
-          <IntentionToDecision />
-        </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-[1fr_1.4fr] md:gap-14">
           <Ruled>
             <P>
               Generally, the consumer&apos;s purchase decision will be to buy
@@ -560,82 +686,103 @@ export default function Week3() {
             </p>
           </Ruled>
         </div>
-      </StepSlide>
-
-      <StepSlide id="postpurchase-behavior" step={5} title="Postpurchase Behavior">
-        <Statement className="!max-w-[30ch]">
-          The marketer&apos;s job does{" "}
-          <span className="text-[var(--signal)]">not end</span> when the
-          product is bought.
-        </Statement>
-        <Figure height="auto">
-          <PostpurchaseTimeline />
+        <Figure height="auto" dense>
+          <IntentionToDecision />
         </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled tone="counter">
-            <P>
-              Postpurchase behavior focuses on whether the consumer is{" "}
-              <Term tone="counter">satisfied</Term> or{" "}
-              <Term tone="ink">dissatisfied</Term> with the purchase.
-            </P>
-          </Ruled>
-          <Ruled tone="signal">
-            <p className="type-h2 !font-normal">
-              <span className="text-[var(--signal)]">Cognitive dissonance</span>
-              , or buyer discomfort caused by postpurchase conflict, is a
-              common occurrence.
-            </p>
-          </Ruled>
-        </div>
       </StepSlide>
 
-      <Slide id="discussion-postpurchase-dissonance" border>
+      <StepSlide id="postpurchase-behavior" step={5} title="Postpurchase Behavior" className="!py-8">
+        <Split
+          side="left"
+          rail={
+            <>
+              <Statement className="!max-w-[30ch] !text-[1.5rem]">
+                The marketer&apos;s job does{" "}
+                <span className="text-[var(--signal)]">not end</span> when the
+                product is bought.
+              </Statement>
+              <Ruled tone="counter">
+                <P>
+                  Postpurchase behavior focuses on whether the consumer is{" "}
+                  <Term tone="counter">satisfied</Term> or{" "}
+                  <Term tone="ink">dissatisfied</Term> with the purchase.
+                </P>
+              </Ruled>
+              <Ruled tone="signal">
+                <p className={RAIL_BIG}>
+                  <span className="text-[var(--signal)]">
+                    Cognitive dissonance
+                  </span>
+                  , or buyer discomfort caused by postpurchase conflict, is a
+                  common occurrence.
+                </p>
+              </Ruled>
+            </>
+          }
+        >
+          <Figure height="auto" dense>
+            <PostpurchaseTimeline />
+          </Figure>
+        </Split>
+      </StepSlide>
+
+      <Slide id="discussion-postpurchase-dissonance" border className="!py-8">
         <KickerHeading kicker="Discussion:" tone="counter">
           Postpurchase Dissonance
         </KickerHeading>
-        <Prompt>
-          <PromptKicker /> Think about a time you experienced{" "}
-          <span className="text-[var(--signal)]">&quot;buyer&apos;s remorse&quot;</span>{" "}
-          after a major purchase. How could the brand have{" "}
-          <span className="text-[var(--counter)]">communicated with you</span>{" "}
-          to reduce that cognitive dissonance?
-        </Prompt>
-        <Figure height="auto" className="max-w-5xl">
-          <DissonanceCalm />
-        </Figure>
+        <div className="w-full lg:w-[70%]">
+          <Prompt>
+            <PromptKicker /> Think about a time you experienced{" "}
+            <span className="text-[var(--signal)]">&quot;buyer&apos;s remorse&quot;</span>{" "}
+            after a major purchase. How could the brand have{" "}
+            <span className="text-[var(--counter)]">communicated with you</span>{" "}
+            to reduce that cognitive dissonance?
+          </Prompt>
+        </div>
+        {/* The waveform runs the full width of the slide, like a line
+            printed under the question: remorse, a message, then calm. */}
+        <div className="mt-10 w-full min-w-0 overflow-x-auto border-y border-[var(--rule)] py-4">
+          <div className="min-w-[640px]">
+            <DissonanceCalm />
+          </div>
+        </div>
       </Slide>
 
       {/* ================================================================
           Part 2 — Influences on Buying Behavior
           ================================================================ */}
-      <PartPlate id="part-2" n={2} title="Influences on Buying Behavior">
-        <Lead className="mt-10 !max-w-[60ch]">
-          Consumer purchases are influenced strongly by{" "}
-          <Term tone="counter">cultural</Term>,{" "}
-          <Term tone="counter">social</Term>,{" "}
-          <Term tone="counter">personal</Term>, and{" "}
-          <Term tone="counter">psychological</Term> characteristics.
-        </Lead>
-        <Figure height="auto">
-          <InfluenceRings />
-        </Figure>
-        <div className="grid gap-10 md:grid-cols-2 md:gap-12">
-          <Ruled>
-            <p className="type-h2 !font-normal">
-              Marketers cannot control such factors, but they must take them
-              into account.
-            </p>
-          </Ruled>
-          <Ruled tone="signal">
-            <P>
-              These factors help us understand{" "}
-              <Term>why consumers act the way they do</Term>.
-            </P>
-          </Ruled>
+      <PartPlate id="part-2" n={2} title="Influences on Buying Behavior" className="!py-8">
+        <div className="mt-8 w-full flow-root">
+          {/* On wide screens the rings float right and the lines curve
+              around them. Phones get the plate after the first sentence. */}
+          <div
+            className="hidden lg:block lg:float-right lg:ml-6 lg:w-[27rem]"
+            style={{ shapeOutside: "circle(48%)", shapeMargin: "32px" }}
+          >
+            <InfluenceRings compact />
+          </div>
+          <p className="type-h2 !max-w-none !font-normal !text-[clamp(1.6rem,2.5vw,2.25rem)] !leading-snug">
+            Consumer purchases are influenced strongly by{" "}
+            <Term tone="counter">cultural</Term>,{" "}
+            <Term tone="counter">social</Term>,{" "}
+            <Term tone="counter">personal</Term>, and{" "}
+            <Term tone="counter">psychological</Term> characteristics.
+          </p>
+          <div className="mx-auto mt-6 max-w-[22rem] lg:hidden">
+            <InfluenceRings compact />
+          </div>
+          <p className="type-lead mt-8 !max-w-none !text-[var(--ink)]">
+            Marketers cannot control such factors, but they must take them
+            into account.
+          </p>
+          <p className="type-lead mt-6 !max-w-none">
+            These factors help us understand{" "}
+            <Term>why consumers act the way they do</Term>.
+          </p>
         </div>
       </PartPlate>
 
-      <Slide id="cultural-factors" border>
+      <Slide id="cultural-factors" border className="!py-8">
         <Tag>The most basic cause</Tag>
         <Heading>Cultural Factors</Heading>
         <Statement className="!max-w-[34ch]">
@@ -643,122 +790,148 @@ export default function Week3() {
           <span className="text-[var(--signal)]">most basic cause</span> of a
           person&apos;s wants and behavior.
         </Statement>
-        <div className="mt-14 grid w-full gap-14 lg:grid-cols-2">
+        <div className="mt-8 grid w-full gap-10 lg:grid-cols-2 lg:gap-14">
           <div className="flex min-w-0 flex-col">
-            <Plate>
-              <LearnedFromSociety />
-            </Plate>
-            <Ruled className="mt-8">
+            <Ruled className="mb-5 !pt-3">
               <P>
                 It includes basic values, perceptions, wants, and behaviors{" "}
                 <Term tone="counter">learned from society</Term>.
               </P>
             </Ruled>
+            <Plate className="flex-1">
+              <LearnedFromSociety />
+            </Plate>
           </div>
           <div className="flex min-w-0 flex-col">
-            <Plate>
-              <SubcultureField />
-            </Plate>
-            <Ruled tone="signal" className="mt-8">
+            <Ruled tone="signal" className="mb-5 !pt-3">
               <P>
                 <Term>Subcultures</Term> are groups of people with shared
                 value systems based on common life experiences and situations.
               </P>
             </Ruled>
+            <Plate className="flex-1">
+              <SubcultureField />
+            </Plate>
           </div>
         </div>
       </Slide>
 
-      <Slide id="social-factors" border>
+      <Slide id="social-factors" border className="!py-8">
         <Tag>Groups, networks, family, roles</Tag>
         <Heading>Social Factors</Heading>
-        <Lead className="!max-w-[62ch]">
+        <p className="type-h2 !max-w-[48ch] !font-normal !text-[clamp(1.45rem,2.2vw,1.9rem)] !leading-snug">
           A consumer&apos;s behavior is influenced by social factors such as
           the consumer&apos;s small groups, social networks, family, and social
           roles.
-        </Lead>
-        <Figure height="auto">
-          <SocialWeb />
-        </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled>
-            <P>
-              <Term tone="ink">Reference groups</Term> serve as direct or
-              indirect points of comparison or reference in forming a
-              person&apos;s attitudes or behavior.
-            </P>
-          </Ruled>
-          <Ruled tone="signal">
-            <p className="type-h2 !font-normal">
-              <span className="text-[var(--counter)]">
-                Word-of-mouth influence
-              </span>{" "}
-              and{" "}
-              <span className="text-[var(--signal)]">influencer marketing</span>{" "}
-              play a massive role here.
-            </p>
-          </Ruled>
-        </div>
+        </p>
+        <Split
+          side="left"
+          rail={
+            <>
+              <Ruled>
+                <P>
+                  <Term tone="ink">Reference groups</Term> serve as direct or
+                  indirect points of comparison or reference in forming a
+                  person&apos;s attitudes or behavior.
+                </P>
+              </Ruled>
+              <Ruled tone="signal">
+                <p className={RAIL_BIG}>
+                  <span className="text-[var(--counter)]">
+                    Word-of-mouth influence
+                  </span>{" "}
+                  and{" "}
+                  <span className="text-[var(--signal)]">
+                    influencer marketing
+                  </span>{" "}
+                  play a massive role here.
+                </p>
+              </Ruled>
+            </>
+          }
+        >
+          <Figure height="auto" dense>
+            <SocialWeb />
+          </Figure>
+        </Split>
       </Slide>
 
       <Slide
         id="psychological-factors"
         border
-        quizData={quiz["psychological-factors"]}
+        className="!py-8"
+        exercise={exercise["psychological-factors"]}
       >
         <Tag>Four factors</Tag>
         <Heading>Psychological Factors</Heading>
-        <Lead className="!max-w-[56ch]">
-          A person&apos;s buying choices are further influenced by four major
-          psychological factors.
-        </Lead>
-        <div className="mt-12 w-full">
-          <p className="type-label !text-[var(--ink-3)]">
-            These are
-          </p>
-          <ol className="mt-5 grid w-full gap-x-10 border-t-2 border-[var(--ink)] sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              ["01", "motivation,", false],
-              ["02", "perception,", true],
-              ["03", "learning,", false],
-              ["04", "and beliefs and attitudes.", false],
-            ].map(([n, item, lit]) => (
-              <li
-                key={n as string}
-                data-n={n as string}
-                className={cn(
-                  "num-item border-b border-[var(--rule)] py-6 type-h2 !font-normal",
-                  lit && "text-[var(--signal)]",
-                )}
-              >
-                {" "}
-                {item}
-              </li>
-            ))}
-          </ol>
+        {/* Stacked bands: the four factors as a row of tiles, the one this
+            slide defines lit; then its definition; then the drawing. */}
+        <div className="grid w-full items-end gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)] lg:gap-10">
+          <Lead className="!max-w-none">
+            A person&apos;s buying choices are further influenced by four major
+            psychological factors.
+          </Lead>
+          <div className="min-w-0">
+            <p className="type-label !text-[var(--ink-3)]">These are</p>
+            <ol className="mt-3 grid w-full grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
+              {[
+                ["01", "motivation,", false],
+                ["02", "perception,", true],
+                ["03", "learning,", false],
+                ["04", "and beliefs and attitudes.", false],
+              ].map(([n, item, lit]) => (
+                <li
+                  key={n as string}
+                  data-n={n as string}
+                  className={cn(
+                    "num-item border-t-2 px-4 py-3 text-[1.15rem] leading-snug",
+                    lit
+                      ? "border-[var(--signal)] bg-[var(--signal-tint)] text-[var(--signal)]"
+                      : "border-[var(--ink)] bg-[var(--paper-2)] text-[var(--ink)]",
+                  )}
+                  style={SERIF}
+                >
+                  {" "}
+                  {item}
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
-        <Figure height="auto">
-          <PerceptionSequence />
-        </Figure>
-        <Statement className="!max-w-[44ch] !text-[clamp(1.5rem,2.8vw,2.4rem)]">
+        <Statement className="mt-8 !max-w-none !text-[clamp(1.35rem,2.1vw,1.85rem)]">
           <span className="text-[var(--signal)]">Perception</span> is the
           process by which people select, organize, and interpret information
           to form a meaningful picture of the world.
         </Statement>
+        <Figure height="auto" dense className="mx-auto max-w-[960px]">
+          <PerceptionSequence />
+        </Figure>
       </Slide>
 
-      <Slide id="discussion-social-influence" border>
-        <KickerHeading kicker="Discussion:" tone="counter">
-          Social Influence
-        </KickerHeading>
-        <Prompt>
-          <PromptKicker /> How has a specific social media influencer affected
-          your perception of a brand, and do you think their influence was
-          based more on their{" "}
-          <span className="text-[var(--counter)]">expertise</span> or their{" "}
-          <span className="text-[var(--signal)]">lifestyle</span>?
-        </Prompt>
-        <Figure height="auto" className="max-w-5xl">
+      <Slide id="discussion-social-influence" border className="!py-8">
+        {/* Centred and symmetric: the question sits between two hairlines and
+            the spectrum below it reaches out to both sides, like a slider. */}
+        <div className="flex w-full flex-col items-center text-center">
+          <h2 className="type-h1">
+            <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--counter)]">
+              Discussion:
+            </span>{" "}
+            Social Influence
+          </h2>
+          <div className="mt-8 w-full max-w-5xl border-y-2 border-[var(--counter)] px-4 py-8 md:px-12">
+            <p className="type-quote mx-auto !max-w-[40ch] !text-[clamp(1.45rem,2.6vw,2.2rem)]">
+              <span className="type-label mb-5 block !text-[0.8rem] !leading-none !text-[var(--counter)]">
+                Discussion:
+              </span>{" "}
+              How has a specific social media influencer affected your
+              perception of a brand, and do you think their influence was based
+              more on their{" "}
+              <span className="text-[var(--counter)]">expertise</span> or their{" "}
+              <span className="text-[var(--signal)]">lifestyle</span>?
+            </p>
+          </div>
+        </div>
+        <Figure height="auto" dense className="mx-auto !mt-8 max-w-[1000px]">
           <ExpertiseLifestyle />
         </Figure>
       </Slide>
@@ -766,42 +939,42 @@ export default function Week3() {
       {/* ================================================================
           Part 3 — B2C vs B2B Purchasing
           ================================================================ */}
-      <PartPlate id="part-3" n={3} title="B2C vs B2B Purchasing">
-        <Lead className="mt-10 !max-w-[64ch]">
-          While <Term tone="counter">B2C (Business-to-Consumer)</Term>{" "}
-          marketing focuses on the final consumer,{" "}
-          <Term>B2B (Business-to-Business)</Term> focuses on organizations.
-        </Lead>
-        <Figure height="auto">
-          <ConsumerAndBusinessLanes />
-        </Figure>
-        <div className="grid gap-10 md:grid-cols-2 md:gap-12">
-          <Ruled>
-            <P>
-              Business buyer behavior refers to the buying behavior of
-              organizations that buy goods and services for use in the
-              production of other products.
-            </P>
-          </Ruled>
-          <Ruled tone="signal">
-            <p className="type-h2 !font-normal">
-              The business market is huge and differs from the consumer market
-              in several key ways.
-            </p>
-          </Ruled>
+      <PartPlate id="part-3" n={3} title="B2C vs B2B Purchasing" layout="stacked" className="!py-8">
+        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Lead className="!max-w-none">
+              While <Term tone="counter">B2C (Business-to-Consumer)</Term>{" "}
+              marketing focuses on the final consumer,{" "}
+              <Term>B2B (Business-to-Business)</Term> focuses on organizations.
+            </Lead>
+            <Ruled weight="thin">
+              <P>
+                Business buyer behavior refers to the buying behavior of
+                organizations that buy goods and services for use in the
+                production of other products.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <ConsumerAndBusinessLanes />
+          </Plate>
         </div>
+        {/* A closing band across the full width. */}
+        <p className="type-display mt-10 w-full border-y-2 border-[var(--ink)] py-6 !text-[clamp(1.6rem,2.8vw,2.5rem)] !leading-tight">
+          The business market is{" "}
+          <span className="text-[var(--signal)]">huge</span> and differs from
+          the consumer market in several key ways.
+        </p>
       </PartPlate>
 
       <Slide
         id="market-structure-and-demand"
         border
-        quizData={quiz["market-structure-and-demand"]}
+        className="!py-8"
+        exercise={exercise["market-structure-and-demand"]}
       >
         <Tag>Buyers and demand</Tag>
         <Heading>Market Structure and Demand</Heading>
-        <Figure height="auto">
-          <MarketStructureTriptych />
-        </Figure>
         <div className="grid w-full gap-10 md:grid-cols-3">
           <Ruled tone="signal">
             <P>
@@ -823,40 +996,53 @@ export default function Week3() {
             </P>
           </Ruled>
         </div>
+        <Figure height="auto" dense className="!mt-4">
+          <MarketStructureTriptych />
+        </Figure>
       </Slide>
 
       <Slide
         id="the-buying-center"
         border
-        quizData={quiz["the-buying-center"]}
+        className="!py-8"
+        exercise={exercise["the-buying-center"]}
       >
         <Tag>Many roles, one decision</Tag>
         <Heading>The Buying Center</Heading>
-        <Statement className="!max-w-[34ch]">
-          B2B purchases are{" "}
-          <span className="text-[var(--signal)]">rarely</span> made by a single
-          individual.
-        </Statement>
-        <Figure height="auto">
-          <BuyingCenterTable />
-        </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled>
-            <P>
-              The buying center consists of all the individuals and units that
-              play a role in the purchase decision-making process.
-            </P>
-          </Ruled>
-          <Ruled tone="signal">
-            <p className="type-h2 !font-normal">
-              It includes users, influencers, buyers, deciders, and
-              gatekeepers.
-            </p>
-          </Ruled>
+        <div className="w-full flow-root">
+          {/* On wide screens the table floats right and the lines follow its
+              oval of people. Phones get the plate after the first sentence. */}
+          <div
+            className="hidden lg:block lg:float-right lg:ml-6 lg:w-[28rem]"
+            style={{
+              shapeOutside:
+                "polygon(38% 0%, 100% 0%, 100% 100%, 20% 100%, 20% 64%, 0% 60%, 0% 30%, 38% 22%)",
+              shapeMargin: "28px",
+            }}
+          >
+            <BuyingCenterTable round />
+          </div>
+          <Statement className="!max-w-none !text-[clamp(2rem,3.3vw,3rem)] !leading-[1.12]">
+            B2B purchases are{" "}
+            <span className="text-[var(--signal)]">rarely</span> made by a
+            single individual.
+          </Statement>
+          <div className="mx-auto mt-6 max-w-[24rem] lg:hidden">
+            <BuyingCenterTable round />
+          </div>
+          <p className="type-lead mt-8 !max-w-none !text-[1.45rem] !leading-relaxed !text-[var(--ink)]">
+            The buying center consists of all the individuals and units that
+            play a role in the purchase decision-making process.
+          </p>
+          <p className="type-h2 mt-8 !max-w-none !font-normal !text-[clamp(1.6rem,2.4vw,2.1rem)] !leading-snug">
+            It includes <Term>users</Term>, <Term>influencers</Term>,{" "}
+            <Term>buyers</Term>, <Term>deciders</Term>, and{" "}
+            <Term>gatekeepers</Term>.
+          </p>
         </div>
       </Slide>
 
-      <Slide id="the-nature-of-the-buying-unit" border>
+      <Slide id="the-nature-of-the-buying-unit" border className="!py-8">
         <Tag>Trained buyers, trained sellers</Tag>
         <Heading>The Nature of the Buying Unit</Heading>
         <Lead className="!max-w-[64ch]">
@@ -864,44 +1050,50 @@ export default function Week3() {
           involves <Term tone="ink">more decision participants</Term> and a{" "}
           <Term>more professional purchasing effort</Term>.
         </Lead>
-        <Figure height="auto">
-          <MatchedExperts />
-        </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled>
-            <P>
+        {/* Versus: each sentence stands over the side of the match it names,
+            the buyer's side on the left, the marketer's on the right. */}
+        <div className="mt-4 grid w-full md:grid-cols-2">
+          <div className="min-w-0 border-t-2 border-[var(--ink)] pt-5 md:pr-12">
+            <p className="type-lead !max-w-none !text-[var(--ink-2)]">
               Business buying is done by{" "}
-              <Term tone="ink">trained purchasing agents</Term> who spend their
-              professional lives learning how to buy better.
-            </P>
-          </Ruled>
-          <Ruled tone="signal">
-            <p className="type-h2 !font-normal">
+              <Term tone="ink">trained purchasing agents</Term> who spend
+              their professional lives learning how to buy better.
+            </p>
+          </div>
+          <div className="min-w-0 border-t-2 border-[var(--signal)] pt-5 md:border-l md:border-l-[var(--rule)] md:pl-12">
+            <p className="type-h2 !max-w-none !font-normal">
               Therefore, B2B marketers must have{" "}
               <span className="text-[var(--signal)]">
                 well-trained salespeople
               </span>{" "}
               to deal with well-trained buyers.
             </p>
-          </Ruled>
+          </div>
         </div>
+        <Figure height="auto" dense className="mx-auto !mt-6 max-w-[780px]">
+          <MatchedExperts />
+        </Figure>
       </Slide>
 
-      <Slide id="discussion-b2b-complexity" border>
+      <Slide id="discussion-b2b-complexity" border className="!py-8">
         <KickerHeading kicker="Discussion:" tone="counter">
           B2B Complexity
         </KickerHeading>
-        <Prompt>
-          <PromptKicker /> Why might a B2B software company need to create{" "}
-          <span className="text-[var(--signal)]">
-            entirely different marketing materials
-          </span>{" "}
-          for the &quot;user&quot; (e.g., an IT employee) versus the
-          &quot;decider&quot; (e.g., the CFO) within the same buying center?
-        </Prompt>
-        <Figure height="auto" className="max-w-5xl">
-          <TwoBrochures />
-        </Figure>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
+          <Prompt>
+            <PromptKicker /> Why might a B2B software company need to create{" "}
+            <span className="text-[var(--signal)]">
+              entirely different marketing materials
+            </span>{" "}
+            for the <span className="text-[var(--ink)]">&quot;user&quot;</span>{" "}
+            (e.g., an IT employee) versus the{" "}
+            <span className="text-[var(--counter)]">&quot;decider&quot;</span>{" "}
+            (e.g., the CFO) within the same buying center?
+          </Prompt>
+          <Plate className="mx-auto max-w-[27rem]">
+            <TwoBrochures column />
+          </Plate>
+        </div>
       </Slide>
 
       {/* ================================================================
