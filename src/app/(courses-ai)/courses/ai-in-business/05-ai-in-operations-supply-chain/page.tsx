@@ -8,6 +8,24 @@ import {
 import { ScrollProgress } from "@/app/(courses-ai)/_components/Interactive";
 import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
 import quizzes from "./quizzes.json";
+import {
+  BODY,
+  Discussion1,
+  DISPLAY,
+  hash,
+  Head1,
+  LEAD,
+  MICRO,
+  pad,
+  PartPlate1,
+  RULED,
+  Schematic,
+  Split1,
+  Steps,
+  SVG_LABEL,
+  TAG,
+  Terms,
+} from "../_visuals/kit";
 
 // ============================================================================
 // WEEK 05 — AI IN OPERATIONS AND SUPPLY CHAIN
@@ -26,253 +44,6 @@ import quizzes from "./quizzes.json";
 // ============================================================================
 
 const quiz = createCourseQuizLookup(quizzes as CourseQuiz[]);
-
-/** Small-caps label treatment used for every eyebrow, axis tick and numeral. */
-const MICRO = "font-sans text-[10px] font-semibold uppercase tracking-[0.22em]";
-
-/** The same small-caps treatment for SVG <text>. */
-const SVG_LABEL = {
-  fontSize: 9,
-  letterSpacing: 2.2,
-  fontFamily: "var(--font-sans), sans-serif",
-  fontWeight: 600,
-} as const;
-
-/** Body sentence at the deck's reading size. */
-const BODY =
-  "font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]";
-
-/** A sentence promoted to display weight inside a block. */
-const DISPLAY =
-  "font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]";
-
-/** A sentence one step below display, used inside rules and frames. */
-const LEAD =
-  "font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]";
-
-/** Hairline that opens each later block of a slide. */
-const RULED = "mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8";
-
-/** Mono tag treatment for words lifted out of a sentence. */
-const TAG = "font-mono text-[10px] uppercase tracking-[0.1em]";
-
-const pad = (n: number) => String(n).padStart(2, "0");
-
-/** Deterministic 0–1 hash, so scattered marks match between server and client. */
-const hash = (n: number) => {
-  const v = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
-  return v - Math.floor(v);
-};
-
-/** Eyebrow plus slide heading, the masthead every content slide opens with. */
-function Head({
-  eyebrow,
-  children,
-  signal = false,
-}: {
-  eyebrow: string;
-  children: React.ReactNode;
-  signal?: boolean;
-}) {
-  return (
-    <div>
-      <div
-        className={`${MICRO} ${
-          signal ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
-        }`}
-      >
-        {eyebrow}
-      </div>
-      <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
-        {children}
-      </h2>
-    </div>
-  );
-}
-
-
-/**
- * Part divider: display numeral against a ruled margin. The visible label and
- * numeral are decorative; the h2 carries the full "Part N: Title" heading for
- * assistive technology.
- */
-function PartPlate({
-  id,
-  numeral,
-  title,
-  lines,
-  quizData,
-}: {
-  id: string;
-  numeral: string;
-  title: string;
-  lines: string[];
-  quizData?: CourseQuiz;
-}) {
-  return (
-    <Slide id={id} border align="left" quizData={quizData}>
-      <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-        <div>
-          <div aria-hidden>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Part</div>
-            <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
-              {numeral}
-            </div>
-          </div>
-        </div>
-
-        <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-          <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
-            <span className="sr-only">{`Part ${numeral}: `}</span>
-            {title}
-          </h2>
-          <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
-          {lines.map((line, i) => (
-            <p
-              key={line}
-              className={`${
-                i === 0 ? "mt-8" : "mt-4"
-              } max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl`}
-            >
-              {line}
-            </p>
-          ))}
-        </div>
-      </div>
-    </Slide>
-  );
-}
-
-
-/** Discussion prompt, set apart in the deck's one ruled frame. */
-function Discussion({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="w-full">
-      <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
-        <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-        <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
-          {children}
-        </p>
-      </aside>
-    </div>
-  );
-}
-
-/** A sentence's own list, set as middot-separated mono words. */
-function Terms({
-  items,
-  className = "mt-5",
-}: {
-  items: string[];
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`${className} flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/55`}
-    >
-      {items.map((item, i) => (
-        <React.Fragment key={item}>
-          {i > 0 && <span>·</span>}
-          <span>{item}</span>
-        </React.Fragment>
-      ))}
-    </div>
-  );
-}
-
-/**
- * Numbered cells in a hairline grid. `cols` carries the responsive column
- * classes; `mark` turns one cell crimson.
- */
-function Steps({
-  items,
-  cols,
-  mark,
-  className = "mt-6",
-}: {
-  items: string[];
-  cols: string;
-  mark?: number;
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`${className} grid grid-cols-2 gap-px bg-[var(--charcoal)]/10 ${cols}`}
-    >
-      {items.map((item, i) => (
-        <div key={item} className="bg-[var(--background)] px-4 py-4">
-          <span
-            className={`${MICRO} ${
-              i === mark ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
-            }`}
-          >
-            {pad(i + 1)}
-          </span>
-          <span
-            className={`mt-2 block font-mono text-[11px] uppercase tracking-[0.1em] ${
-              i === mark
-                ? "text-[var(--crimson)]"
-                : "text-[var(--charcoal-light)]/70"
-            }`}
-          >
-            {item}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/** Two labels set against each other across one rule; the right one is marked. */
-function Split({
-  left,
-  right,
-  strikeLeft = false,
-  cols = "grid-cols-2",
-}: {
-  left: string;
-  right: string;
-  strikeLeft?: boolean;
-  cols?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`grid ${cols} border-b border-[var(--charcoal)]/15 pb-3`}
-    >
-      <span
-        className={`${MICRO} pr-4 text-[var(--charcoal-light)]/55 ${
-          strikeLeft ? "[text-decoration-line:line-through]" : ""
-        }`}
-      >
-        {left}
-      </span>
-      <span
-        className={`${MICRO} border-l border-[var(--crimson)]/40 pl-6 text-[var(--crimson)]`}
-      >
-        {right}
-      </span>
-    </div>
-  );
-}
-
-/** Caption for any figure whose proportions are illustrative only. */
-function Schematic({ className = "mt-1" }: { className?: string }) {
-  return (
-    <figcaption
-      className={`${MICRO} ${className} text-[var(--charcoal-light)]/40`}
-    >
-      Schematic
-    </figcaption>
-  );
-}
-
 
 export default function Week05OperationsSupplyChain() {
   return (
@@ -313,7 +84,7 @@ export default function Week05OperationsSupplyChain() {
             Moving from reactive logistics to predictive network optimization.
           </p>
           <div aria-hidden className="mt-6 max-w-3xl">
-            <Split
+            <Split1
               left="Reactive logistics"
               right="Predictive network optimization"
               strikeLeft
@@ -361,7 +132,7 @@ export default function Week05OperationsSupplyChain() {
         </div>
       </Slide>
 
-      <PartPlate
+      <PartPlate1
         id="part-1"
         numeral="1"
         title="The Modern Supply Chain Context"
@@ -379,7 +150,7 @@ export default function Week05OperationsSupplyChain() {
                                                           [quiz topic]
       ================================================================== */}
       <Slide id="global-complexity" border align="left">
-        <Head eyebrow="Opening">The Complexity of Global Operations</Head>
+        <Head1 eyebrow="Opening">The Complexity of Global Operations</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -599,7 +370,7 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Simplified assumptions"
               right="Model this complexity"
               strikeLeft
@@ -624,9 +395,9 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["ai-vs-traditional"]}
       >
-        <Head eyebrow="Two ways to optimize">
+        <Head1 eyebrow="Two ways to optimize">
           AI vs. Traditional Optimization
-        </Head>
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -789,9 +560,9 @@ export default function Week05OperationsSupplyChain() {
           indicators and moves weeks before; crisis management struck.
       ================================================================== */}
       <Slide id="reactive-to-predictive" border align="left">
-        <Head eyebrow="A change of posture">
+        <Head1 eyebrow="A change of posture">
           The Shift from Reactive to Predictive
-        </Head>
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -916,7 +687,7 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Crisis management"
               right="Strategic scenario planning"
               strikeLeft
@@ -934,9 +705,9 @@ export default function Week05OperationsSupplyChain() {
           on the models; departments walled off from each other.
       ================================================================== */}
       <Slide id="data-core" border align="left">
-        <Head eyebrow="What the models run on">
+        <Head1 eyebrow="What the models run on">
           Data: The Core of Operations AI
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1045,13 +816,13 @@ export default function Week05OperationsSupplyChain() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           When supply chain partners refuse to share their operational data, how
           can a lead firm build accurate predictive models?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
-      <PartPlate
+      <PartPlate1
         id="part-2"
         numeral="2"
         title="Demand Sensing and Forecasting"
@@ -1068,7 +839,7 @@ export default function Week05OperationsSupplyChain() {
           long before it reaches the sales ledger.            [quiz topic]
       ================================================================== */}
       <Slide id="beyond-averages" border align="left">
-        <Head eyebrow="Demand sensing">Beyond Historical Averages</Head>
+        <Head1 eyebrow="Demand sensing">Beyond Historical Averages</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -1218,9 +989,9 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["bullwhip"]}
       >
-        <Head eyebrow="Amplification upstream" signal>
+        <Head1 eyebrow="Amplification upstream" signal>
           Mitigating the Bullwhip Effect
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1392,10 +1163,10 @@ export default function Week05OperationsSupplyChain() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           How does algorithmic demand visibility reshape the balance of power
           between mega-retailers and tier-two suppliers?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -1410,7 +1181,7 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["dynamic-inventory"]}
       >
-        <Head eyebrow="Stock that moves">Dynamic Inventory Optimization</Head>
+        <Head1 eyebrow="Stock that moves">Dynamic Inventory Optimization</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -1639,7 +1410,7 @@ export default function Week05OperationsSupplyChain() {
           a fit that re-sets its slope at a structural break.
       ================================================================== */}
       <Slide id="time-series" border align="left">
-        <Head eyebrow="Under the hood">Deep Learning for Time-Series Data</Head>
+        <Head1 eyebrow="Under the hood">Deep Learning for Time-Series Data</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1813,7 +1584,7 @@ export default function Week05OperationsSupplyChain() {
         </div>
       </Slide>
 
-      <PartPlate
+      <PartPlate1
         id="part-3"
         numeral="3"
         title="Logistics and Network Optimization"
@@ -1831,7 +1602,7 @@ export default function Week05OperationsSupplyChain() {
                                                           [quiz topic]
       ================================================================== */}
       <Slide id="routing-at-scale" border align="left">
-        <Head eyebrow="Routing">Solving Complex Routing at Scale</Head>
+        <Head1 eyebrow="Routing">Solving Complex Routing at Scale</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2049,9 +1820,9 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["last-mile"]}
       >
-        <Head eyebrow="The final stretch">
+        <Head1 eyebrow="The final stretch">
           Autonomous Vehicles and Last-Mile Delivery
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2226,9 +1997,9 @@ export default function Week05OperationsSupplyChain() {
           struck against a longer lifespan.                   [quiz topic]
       ================================================================== */}
       <Slide id="predictive-maintenance" border align="left">
-        <Head eyebrow="Keeping the fleet moving">
+        <Head1 eyebrow="Keeping the fleet moving">
           Predictive Maintenance in Fleet Management
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2351,7 +2122,7 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Unplanned downtime"
               right="Operational lifespan"
               strikeLeft
@@ -2364,7 +2135,7 @@ export default function Week05OperationsSupplyChain() {
         </div>
       </Slide>
 
-      <PartPlate
+      <PartPlate1
         id="part-4"
         numeral="4"
         title="Intelligent Procurement"
@@ -2382,9 +2153,9 @@ export default function Week05OperationsSupplyChain() {
           risk indicators lifted out.                         [quiz topic]
       ================================================================== */}
       <Slide id="supplier-risk" border align="left">
-        <Head eyebrow="Procurement risk">
+        <Head1 eyebrow="Procurement risk">
           Proactive Supplier Risk Management
-        </Head>
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -2533,9 +2304,9 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["nlp-contracts"]}
       >
-        <Head eyebrow="Reading the paperwork">
+        <Head1 eyebrow="Reading the paperwork">
           NLP for Contract and Spend Analysis
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2750,10 +2521,10 @@ export default function Week05OperationsSupplyChain() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           If an AI flags a critical supplier as high risk based on unverified
           news sentiment, should procurement immediately halt orders?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -2762,9 +2533,9 @@ export default function Week05OperationsSupplyChain() {
           one tier-three factory, the hidden choke point.
       ================================================================== */}
       <Slide id="multi-tier" border align="left">
-        <Head eyebrow="Seeing past tier one" signal>
+        <Head1 eyebrow="Seeing past tier one" signal>
           Multi-Tier Supply Chain Visibility
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2931,7 +2702,7 @@ export default function Week05OperationsSupplyChain() {
         </div>
       </Slide>
 
-      <PartPlate
+      <PartPlate1
         id="part-5"
         numeral="5"
         title="Warehouse Automation and Vision"
@@ -2948,9 +2719,9 @@ export default function Week05OperationsSupplyChain() {
           order profiles and layout rules.
       ================================================================== */}
       <Slide id="distribution-center" border align="left">
-        <Head eyebrow="Inside the building">
+        <Head1 eyebrow="Inside the building">
           The AI-Powered Distribution Center
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3126,9 +2897,9 @@ export default function Week05OperationsSupplyChain() {
           defect caught; three checks done in milliseconds.   [quiz topic]
       ================================================================== */}
       <Slide id="cv-quality" border align="left">
-        <Head eyebrow="Inspection at speed">
+        <Head1 eyebrow="Inspection at speed">
           Computer Vision for Quality Control
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3267,13 +3038,13 @@ export default function Week05OperationsSupplyChain() {
           down and efficiency up.                        [quiz: cv-quality]
       ================================================================== */}
       <Slide id="cobots" border align="left" quizData={quiz["cobots"]}>
-        <Head eyebrow="Working side by side">
+        <Head1 eyebrow="Working side by side">
           Collaborative Robotics and Human Synergy
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <div className="mt-10 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Replacing them entirely"
               right="Alongside human warehouse associates"
               strikeLeft
@@ -3394,11 +3165,11 @@ export default function Week05OperationsSupplyChain() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Does algorithmic task assignment turn human warehouse workers into
           mechanical extensions of the AI, and what are the ethical
           implications?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -3407,9 +3178,9 @@ export default function Week05OperationsSupplyChain() {
           adding its predicted impact.                        [quiz topic]
       ================================================================== */}
       <Slide id="digital-twins" border align="left">
-        <Head eyebrow="Test before you change">
+        <Head1 eyebrow="Test before you change">
           Digital Twins for Facility Layouts
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -3524,7 +3295,7 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className={RULED}>
-            <Split
+            <Split1
               left="Disrupting actual operations"
               right="Test new layouts and processes"
               strikeLeft
@@ -3544,7 +3315,7 @@ export default function Week05OperationsSupplyChain() {
         </div>
       </Slide>
 
-      <PartPlate
+      <PartPlate1
         id="part-6"
         numeral="6"
         title="Sustainability and Circularity"
@@ -3562,7 +3333,7 @@ export default function Week05OperationsSupplyChain() {
           scenarios compared on carbon impact before the decision.
       ================================================================== */}
       <Slide id="carbon-footprint" border align="left">
-        <Head eyebrow="Emissions">Optimizing the Carbon Footprint</Head>
+        <Head1 eyebrow="Emissions">Optimizing the Carbon Footprint</Head1>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -3592,7 +3363,7 @@ export default function Week05OperationsSupplyChain() {
               rather than just delivery time.
             </p>
             <div aria-hidden className="mt-6 max-w-3xl">
-              <Split left="Just delivery time" right="Fuel consumption" />
+              <Split1 left="Just delivery time" right="Fuel consumption" />
             </div>
           </div>
         </div>
@@ -3657,9 +3428,9 @@ export default function Week05OperationsSupplyChain() {
           meet them.                                          [quiz topic]
       ================================================================== */}
       <Slide id="reverse-logistics" border align="left">
-        <Head eyebrow="Goods coming back">
+        <Head1 eyebrow="Goods coming back">
           AI in Reverse Logistics and Returns
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3843,9 +3614,9 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["waste-reduction"]}
       >
-        <Head eyebrow="Less left over">
+        <Head1 eyebrow="Less left over">
           Waste Reduction via Precision Forecasting
-        </Head>
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           {[
@@ -3911,7 +3682,7 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Spoilage"
               right="Flow of perishable goods"
               strikeLeft
@@ -3924,7 +3695,7 @@ export default function Week05OperationsSupplyChain() {
         </div>
       </Slide>
 
-      <PartPlate
+      <PartPlate1
         id="part-7"
         numeral="7"
         title="Risks and Implementation Strategies"
@@ -3941,9 +3712,9 @@ export default function Week05OperationsSupplyChain() {
           between operators and systems.                      [quiz topic]
       ================================================================== */}
       <Slide id="black-box" border align="left">
-        <Head eyebrow="Trust" signal>
+        <Head1 eyebrow="Trust" signal>
           The Black Box Problem in Operations
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -4094,9 +3865,9 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         quizData={quiz["legacy-systems"]}
       >
-        <Head eyebrow="Plumbing first">
+        <Head1 eyebrow="Plumbing first">
           Overcoming Data Silos and Legacy Systems
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -4289,9 +4060,9 @@ export default function Week05OperationsSupplyChain() {
           aimed at the model itself.
       ================================================================== */}
       <Slide id="cybersecurity" border align="left">
-        <Head eyebrow="Connected and exposed">
+        <Head1 eyebrow="Connected and exposed">
           Cybersecurity in Connected Networks
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_24rem] md:gap-14">
@@ -4456,10 +4227,10 @@ export default function Week05OperationsSupplyChain() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Who is liable when a third-party AI optimization tool is breached,
           causing a systemic shutdown of your logistics network?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -4467,11 +4238,11 @@ export default function Week05OperationsSupplyChain() {
           three investments; change management weighed above technology.
       ================================================================== */}
       <Slide id="human-ai-transition" border align="left">
-        <Head eyebrow="People">The Human-AI Transition in Operations</Head>
+        <Head1 eyebrow="People">The Human-AI Transition in Operations</Head1>
 
         <div className="w-full">
           <div className="mt-10 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Manual planner"
               right="Algorithm manager"
               strikeLeft
@@ -4543,9 +4314,9 @@ export default function Week05OperationsSupplyChain() {
           05
         </span>
 
-        <Head eyebrow="What to carry forward">
+        <Head1 eyebrow="What to carry forward">
           Conclusion: The Autonomous Supply Chain
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <ol

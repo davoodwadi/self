@@ -8,6 +8,7 @@ import {
 import { ScrollProgress } from "@/app/(courses-ai)/_components/Interactive";
 import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
 import quizzes from "./quizzes.json";
+import { MICRO } from "../_visuals/kit";
 
 // ============================================================================
 // WEEK 01 — INTRODUCTION TO AI IN BUSINESS
@@ -32,9 +33,6 @@ import quizzes from "./quizzes.json";
 // ============================================================================
 
 const quiz = createCourseQuizLookup(quizzes as CourseQuiz[]);
-
-/** Small-caps label treatment used for every eyebrow, axis tick and numeral. */
-const MICRO = "font-sans text-[10px] font-semibold uppercase tracking-[0.22em]";
 
 export default function Week01Introduction() {
   return (

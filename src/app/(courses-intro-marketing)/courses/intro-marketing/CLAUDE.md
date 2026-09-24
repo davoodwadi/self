@@ -1,90 +1,22 @@
 # Introduction to Marketing: plate style
 
-These rules cover every SVG plate in this course (all weeks, the landing page, anything new). Other courses have their own style files; do not bring their conventions here.
+These rules cover every SVG plate in this course (all weeks, the landing page, anything new).
 
 ## Design system: Broadsheet
 
 - **Palette** (defined in `(courses-intro-marketing)/globals.css`): warm bone paper `--paper` #FBFAF7, figure wells `--paper-2` #F4F1E9, filled zones `--paper-3` #ECE7DB; ink `--ink` / `--ink-2` / `--ink-3`; hairlines `--rule` / `--rule-2`; persimmon `--signal` #B23A15; teal `--counter` #22575B.
 - **Type:** Fraunces for display, Instrument Sans for body and keys. No monospace anywhere.
-- **Plate helpers** (`Frame`, `Key`, `Note`, `Display`, `Schematic` and the palette constants such as `INK`, `SIGNAL`, `COUNTER`) live in `_visuals/broadsheet.tsx`. Editing them changes every week.
+- **Plate helpers:** every plate is built with `Frame`, `Key`, `Note`, `Display`, `Schematic` and the palette constants (`INK`, `SIGNAL`, `COUNTER`, …).
 - **Look:** hand-built SVG, flat fills, hairline rules, no shadows or gradients. Keys are uppercase and tracked in `var(--font-label)`.
 - **Grammar:** each plate uses its own visual grammar (containment, branching, rings, hub-and-spoke, and so on). Do not repeat one node-and-arrow chart shape across a week.
 - **Invented quantities:** any shape implying a number the content does not give carries the `Schematic` mark. Never put fake numbers on a teaching axis.
 - **Wells:** 400-wide column plates go in a plain `figure-well` div, not `Figure`, whose 680px minimum makes half-width columns scroll.
 
-## Shared visuals live in `_visuals/`: reuse first, then share what you draw
+## Course notes on the SVG rules
 
-Every drawing in `_visuals/` is one the course has already paid for. Weeks import from there and never from another week's folder. What each file holds:
+The SVG rules in the root `CLAUDE.md` apply. In this course:
 
-- `broadsheet.tsx`: the palette constants, the plate helpers and the small geometry helpers (arrowheads, rounding, seeded hashes).
-- `objects.tsx`: people, products, places and marks. Different drawings of the same thing are numbered (`Person1`, `Person2`, …).
-
-For every plate:
-
-1. **Look before you draw.** Search `_visuals/` for the glyph, object or helper the plate needs, including every numbered version, and use the one that fits. Position, size and colour props usually cover the difference.
-2. **Extend when it almost fits.** Add an optional prop to the existing piece, with a default that keeps every current plate unchanged.
-3. **Add to `_visuals/` when nothing fits.** Draw the new piece straight into the file it belongs in and import it into the week; a new drawing of an existing thing takes the next number (`Person4`). A piece still sitting in a week's folder moves to `_visuals/` the moment another week needs it. A week's `visuals.tsx` holds only its plates, the slide-specific compositions.
-
-## SVG rules
-
-### Meaning
-
-1. **No drawing beats a bad drawing.** If a plate does not work after an honest attempt to fix it, remove it. A slide with only its text is better than a slide with a confusing picture.
-2. **Self-evident, or redraw it.** A student must understand the plate from the drawing and the sentence beside it. If it needs a caption, legend or explanation, it has failed (see rule 1).
-3. **Never label an object with its own name.** No BELL, DOG, AD, MUSIC beside the thing drawn. Text inside an SVG is allowed only for:
-   - a concept or stage name from the slide (WEAR-OUT, CONDITIONED RESPONSE);
-   - a quantity or time span (ABOUT 20 SECONDS);
-   - a distinction the picture cannot make (NATIONAL BRAND vs STORE BRAND on look-alike boxes);
-   - text that is part of the object (a price tag's −10%, a wordmark on a package).
-4. **Label in place, not in a legend.** Put a label next to an example of the thing, not in a key row the eye has to decode.
-5. **Draw the thing, not an abstraction of it.** If a chart shows what people bought, draw the products, not grey dots.
-6. **Depict the verb in the sentence.** "Watch a friend *buy*" needs a purchase cue (a bag, a counter), not a friend holding a shoe.
-7. **One example per scene.** When a sentence gives alternatives ("an ad *or* a friend"), draw separate small scenes. Don't merge them into one picture.
-8. **Cut anything that doesn't carry meaning.** Crumbs, a floating star, a loop arrow that returns nowhere, a slash over faded marks: if you cannot say what an element means, delete it. Simpler beats cleverer.
-
-### Consistency
-
-9. **Fixed cast per week.** One symbol per idea, reused on every plate (one brand badge, one heart for feeling, one Person glyph for every human). Never switch vocabulary inside a figure (dots in one memory store, blocks in the next).
-10. **Colour has one job.** INK is neutral, SIGNAL is what is learned, lit or chosen, COUNTER is the brand or the contrast. Never use SIGNAL for decoration.
-11. **Matched elements match exactly.** The same element across panels has the same size, spacing and baseline.
-
-### Layout inside the plate
-
-12. **Lines never pass through other things.** A connector must not cross a product, a label or another node. Route around, or fan out. Three lines at the same height stack into one.
-13. **Nothing touches an edge by accident.** Keep a clear gap between elements and box borders, the canvas edge, dividers, and between labels and lines.
-14. **Arrows start at their source and end at their target.** Not near it, and not inside it.
-15. **Aligned things line up.** Groups sit under what they group, step text sits above its panel, and networks are symmetric unless the asymmetry means something.
-16. **No dead space.** Trim the canvas when an element is removed. Scale figures up when they are small in the frame.
-
-### Placement on the slide
-
-17. **Text leads its plate.** Every plate follows the sentence it illustrates. Never put two plates back to back with no text between them, or the reader attaches the second to the wrong line.
-18. **Sizes.** Column plates are 400 units wide in plain wells. Full-width figures are 800. Nothing may scroll sideways at 375px.
-
-### Technical
-
-19. **Mind the background.** Plates sit on `--paper-2` wells, so an unstroked `--paper-2` fill disappears. Use `--paper-3` for filled zones, and never draw paper-coloured detail on a paper-coloured fill.
-20. **Round every computed coordinate** to 2 decimals, so server and client render identical markup.
-21. **Every plate has a `<title>` and an `aria-label`** that describe what is drawn, updated whenever the drawing changes.
-
-### Verification
-
-22. **HARD RULE: verify each graphic visually, one at a time, before making the next.** After writing or changing a plate, render it and take a screenshot of it at full size (never only a thumbnail or a gallery overview). Check it against every rule above, fix what is wrong, and screenshot again until it passes, or remove it (rule 1). Only then start the next graphic. Do not batch several plates and review them at the end. Code review, reading the SVG source, and automated checks do not replace the screenshot.
-23. **Run the automated checks:** text bounding boxes against the viewBox (overflow), pairwise label overlap, a DOM walk for plate-after-plate runs, and the verbatim content check.
-24. **Wait for the reload before judging a screenshot.** A stale frame looks like a bug.
-
-### Icons (Phosphor)
-
-`@phosphor-icons/react` is installed for use **inside** SVG plates. Lucide (`lucide-react`) stays for UI chrome (buttons, navigation) and is never used in plates.
-
-25. **An icon is a noun, never the plate.** Use a Phosphor icon only to stand for a single, recognisable object inside a hand-built diagram: a megaphone, share arrow, chat bubbles, envelope, gear, lightbulb, eye, lock, shield, shopping bag or cart, clock, graduation cap, globe, buildings, TV, radio, newspaper, a product (mug, sneaker, watch), sentiment faces, a cursor, a check badge. The structure of the diagram (hubs, spokes, Venns, stairs, forks, timelines, arrows) is always drawn by hand.
-26. **Reach for an icon when a hand-drawn glyph is hard to recognise.** If the object is a standard symbol and your drawing could be mistaken for something else (a "wrench" that reads as a magnifier, a "guitar" that reads as a stick), use the icon. If a simple hand-drawn shape already reads clearly, keep it; don't swap for the sake of it.
-27. **Never use an icon for:**
-    - the week's **Person** glyph: people are repeated to show counts, scaled and tinted by segment (Isotype), so they stay our own glyph;
-    - the **brand badge** or any other course-specific symbol that carries a taught meaning;
-    - anything whose **shape encodes data**: coin stacks, bars, curves, axes, dot fields, gauges, scales;
-    - **containers that hold other marks**: speech bubbles with text lines, browser windows or phones showing content, results pages, posts, inboxes;
-    - **labels**: text stays live SVG text from the slide.
-28. **How to place one.** Import named icons from `@phosphor-icons/react` and render them as nested SVGs, centred on a point: `<Megaphone x={cx - s / 2} y={cy - s / 2} size={s} weight="duotone" color={SIGNAL} />`. Colour comes only from the palette constants (INK, SIGNAL, COUNTER), so rule 10 still applies. Use `weight="duotone"` by default (its pale fill matches the plates' outline-plus-tint style) and `regular` below about 20 units. Keep icons at 20 units or more.
-29. **One style per object across the week.** If an object is an icon on one plate, it is the same icon (same weight) on every plate of that week. Never show the same object as an icon in one place and a hand drawing in another inside one plate.
-30. **Icons follow every rule above.** An icon still has to depict the sentence (rules 5–6), sit clear of lines and labels (rules 12–13) and be named in the plate's `<title>`/`aria-label` (rule 21). Include nested icon `<svg>`s in the collision checks.
+- **Rule 10:** INK is neutral, SIGNAL is what is learned, lit or chosen, COUNTER is the brand or the contrast. Never use SIGNAL for decoration.
+- **Rule 18:** column plates sit in plain wells.
+- **Rule 19:** plates sit on `--paper-2` wells, so an unstroked `--paper-2` fill disappears. Use `--paper-3` for filled zones, and never draw paper-coloured detail on a paper-coloured fill.
+- **Rule 28:** colour comes only from the palette constants (INK, SIGNAL, COUNTER). Use `weight="duotone"` by default (its pale fill matches the plates' outline-plus-tint style) and `regular` below about 20 units.

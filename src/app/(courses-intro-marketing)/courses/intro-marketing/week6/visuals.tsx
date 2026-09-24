@@ -42,7 +42,7 @@ import {
   Schematic,
   SIGNAL,
   SIGNAL_TINT,
-} from "../_visuals/broadsheet";
+} from "../_visuals/kit";
 import {
   Coins1,
   HEAD_PATH,

@@ -8,6 +8,31 @@ import {
 import { ScrollProgress } from "@/app/(courses-ai)/_components/Interactive";
 import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
 import quizzes from "./quizzes.json";
+import {
+  BODY,
+  Cite1,
+  COL_RULE,
+  Discussion1,
+  DISPLAY,
+  hash,
+  Head2,
+  headDown,
+  headLeft,
+  headRight,
+  LEAD,
+  Measure,
+  MICRO,
+  pad,
+  PAIR,
+  PartPlate2,
+  RULED,
+  Schematic,
+  Split1,
+  Stat1,
+  Steps,
+  SVG_LABEL,
+  Terms,
+} from "../_visuals/kit";
 
 // ============================================================================
 // WEEK 08 — SUSTAINABILITY IN AI
@@ -31,105 +56,6 @@ import quizzes from "./quizzes.json";
 
 const quiz = createCourseQuizLookup(quizzes as CourseQuiz[]);
 
-/** Small-caps label treatment used for every eyebrow, axis tick and numeral. */
-const MICRO = "font-sans text-[10px] font-semibold uppercase tracking-[0.22em]";
-
-/** The same small-caps treatment for SVG <text>. */
-const SVG_LABEL = {
-  fontSize: 9,
-  letterSpacing: 2.2,
-  fontFamily: "var(--font-sans), sans-serif",
-  fontWeight: 600,
-} as const;
-
-/** Body sentence at the deck's reading size. */
-const BODY =
-  "font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]";
-
-/** A sentence promoted to display weight inside a block. */
-const DISPLAY =
-  "font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]";
-
-/** A sentence one step below display, used inside rules and frames. */
-const LEAD =
-  "font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]";
-
-/** Hairline that opens each later block of a slide. */
-const RULED = "mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8";
-
-/** Two sentences side by side under one hairline. */
-const PAIR =
-  "mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-14";
-
-/** The divider a second column takes inside PAIR. */
-const COL_RULE = "md:border-l md:border-[var(--charcoal)]/10 md:pl-14";
-
-/** Sources listed on the closing Sources slide, by their content.md number. */
-const LISTED = new Set([1, 2, 4, 6, 11, 19, 29, 34, 48]);
-
-const pad = (n: number) => String(n).padStart(2, "0");
-
-/** Deterministic 0–1 hash, so scattered marks match between server and client. */
-const hash = (n: number) => {
-  const v = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
-  return v - Math.floor(v);
-};
-
-/** Open arrowheads whose tip sits at (x, y). */
-const headRight = (x: number, y: number) => `M${x - 8} ${y - 5}l8 5l-8 5`;
-const headLeft = (x: number, y: number) => `M${x + 8} ${y - 5}l-8 5l8 5`;
-const headDown = (x: number, y: number) => `M${x - 5} ${y - 8}l5 8l5-8`;
-const headUp = (x: number, y: number) => `M${x - 5} ${y + 8}l5-8l5 8`;
-
-/**
- * Eyebrow plus slide heading. When a heading opens with a "Label:" prefix, the
- * prefix is set as a crimson italic kicker on its own line, inside the same h2
- * so the heading still reads as one sentence.
- */
-function Head({
-  eyebrow,
-  kicker,
-  children,
-}: {
-  eyebrow: string;
-  kicker?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div>
-      <div className={`${MICRO} text-[var(--champagne)]`}>{eyebrow}</div>
-      <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
-        {kicker && (
-          <>
-            <span className="mb-2 block font-serif text-[1.25rem] font-normal italic leading-tight tracking-[-0.01em] text-[var(--crimson)] md:text-[1.625rem]">
-              {kicker}
-            </span>{" "}
-          </>
-        )}
-        {children}
-      </h2>
-    </div>
-  );
-}
-
-/** Discussion prompt, set apart in the deck's one ruled frame. */
-function Discussion({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="w-full">
-      <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
-        <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-        <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
-          {children}
-        </p>
-      </aside>
-    </div>
-  );
-}
-
 /** The question each topic closes on: an open hairline, lighter than a frame. */
 function Question({
   children,
@@ -145,257 +71,6 @@ function Question({
         </p>
       </div>
     </div>
-  );
-}
-
-/** A [cite: N] marker from content.md, set as superscript source numbers. */
-function Cite({ n }: { n: number[] }) {
-  return (
-    <sup className="ml-1 whitespace-nowrap font-mono text-[0.5em] font-normal not-italic tracking-normal text-[var(--champagne)]">
-      {n.map((k, i) => (
-        <React.Fragment key={k}>
-          {i > 0 && ", "}
-          {LISTED.has(k) ? (
-            <a
-              href={`#source-${k}`}
-              className="underline decoration-[var(--champagne)]/40 underline-offset-2 hover:text-[var(--crimson)]"
-            >
-              {k}
-            </a>
-          ) : (
-            k
-          )}
-        </React.Fragment>
-      ))}
-    </sup>
-  );
-}
-
-/**
- * A number lifted from the sentence under it, set at display size with its
- * unit in small caps. `mark` turns the number crimson.
- */
-function Stat({
-  value,
-  unit,
-  mark = false,
-  size = "lg",
-}: {
-  value: string;
-  unit: string;
-  mark?: boolean;
-  size?: "lg" | "md";
-}) {
-  return (
-    <div aria-hidden className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-      <span
-        // Headings take their family from globals.css, which Tailwind's
-        // font-serif does not match; borrow it so figures echo the h2s.
-        style={{ fontFamily: "var(--font-serif), serif" }}
-        className={`font-black leading-none tracking-[-0.04em] ${
-          size === "lg"
-            ? "text-[3.5rem] md:text-[4.75rem]"
-            : "text-[2.75rem] md:text-[3.5rem]"
-        } ${mark ? "text-[var(--crimson)]" : "text-[var(--charcoal)]"}`}
-      >
-        {value}
-      </span>
-      <span className={`${MICRO} text-[var(--charcoal-light)]/65`}>{unit}</span>
-    </div>
-  );
-}
-
-/** A sentence's own list, set as middot-separated mono words. */
-function Terms({
-  items,
-  className = "mt-5",
-}: {
-  items: string[];
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`${className} flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/55`}
-    >
-      {items.map((item, i) => (
-        <React.Fragment key={item}>
-          {i > 0 && <span>·</span>}
-          <span>{item}</span>
-        </React.Fragment>
-      ))}
-    </div>
-  );
-}
-
-/**
- * Numbered cells in a hairline grid. `cols` carries the responsive column
- * classes; `mark` turns one cell crimson.
- */
-function Steps({
-  items,
-  cols,
-  mark,
-  className = "mt-6",
-}: {
-  items: string[];
-  cols: string;
-  mark?: number;
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`${className} grid grid-cols-2 gap-px bg-[var(--charcoal)]/10 ${cols}`}
-    >
-      {items.map((item, i) => (
-        <div key={item} className="bg-[var(--background)] px-4 py-4">
-          <span
-            className={`${MICRO} ${
-              i === mark ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
-            }`}
-          >
-            {pad(i + 1)}
-          </span>
-          <span
-            className={`mt-2 block font-mono text-[11px] uppercase tracking-[0.1em] ${
-              i === mark
-                ? "text-[var(--crimson)]"
-                : "text-[var(--charcoal-light)]/70"
-            }`}
-          >
-            {item}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/** Two labels set against each other across one rule; the right one is marked. */
-function Split({
-  left,
-  right,
-  strikeLeft = false,
-  cols = "grid-cols-2",
-}: {
-  left: string;
-  right: string;
-  strikeLeft?: boolean;
-  cols?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`grid ${cols} border-b border-[var(--charcoal)]/15 pb-3`}
-    >
-      <span
-        className={`${MICRO} pr-4 text-[var(--charcoal-light)]/55 ${
-          strikeLeft ? "[text-decoration-line:line-through]" : ""
-        }`}
-      >
-        {left}
-      </span>
-      <span
-        className={`${MICRO} border-l border-[var(--crimson)]/40 pl-6 text-[var(--crimson)]`}
-      >
-        {right}
-      </span>
-    </div>
-  );
-}
-
-/** Caption for any figure whose proportions are illustrative only. */
-function Schematic({ className = "mt-1" }: { className?: string }) {
-  return (
-    <figcaption
-      className={`${MICRO} ${className} text-[var(--charcoal-light)]/40`}
-    >
-      Schematic
-    </figcaption>
-  );
-}
-
-/** One numbered measure: numeral, its sentence, and its own small figure. */
-function Measure({
-  n,
-  figure,
-  children,
-}: {
-  n: number;
-  figure: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <li className="block">
-      <div className="grid gap-5 border-t border-[var(--charcoal)]/12 py-8 md:grid-cols-[4ch_1fr_17rem] md:items-center md:gap-10">
-        <span className={`${MICRO} text-[var(--crimson)] md:self-start md:pt-2`}>
-          {pad(n)}
-        </span>
-        <div>{children}</div>
-        <div aria-hidden className="w-full max-w-[17rem]">
-          {figure}
-        </div>
-      </div>
-    </li>
-  );
-}
-
-/**
- * Part divider: display numeral against a ruled margin, then the part's own
- * discussion prompt. The visible label and numeral are decorative; the h2
- * carries the full "Part N: Title" heading for assistive technology.
- */
-function PartPlate({
-  id,
-  numeral,
-  title,
-  lines,
-  discussion,
-  quizData,
-}: {
-  id: string;
-  numeral: string;
-  title: string;
-  lines: string[];
-  discussion: string;
-  quizData?: CourseQuiz;
-}) {
-  return (
-    <Slide id={id} border align="left" quizData={quizData}>
-      <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-        <div>
-          <div aria-hidden>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Part</div>
-            <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
-              {numeral}
-            </div>
-          </div>
-        </div>
-
-        <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-          <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
-            <span className="sr-only">{`Part ${numeral}: `}</span>
-            {title}
-          </h2>
-          <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
-          {lines.map((line, i) => (
-            <p
-              key={line}
-              className={`${
-                i === 0 ? "mt-8" : "mt-4"
-              } max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl`}
-            >
-              {line}
-            </p>
-          ))}
-        </div>
-      </div>
-
-      <div className="w-full md:pl-[14rem]">
-        <Discussion>{discussion}</Discussion>
-      </div>
-    </Slide>
   );
 }
 
@@ -604,13 +279,13 @@ export default function Week08Sustainability() {
           industry's road forking at a pivot point.          [quiz topic]
       ================================================================== */}
       <Slide id="paradox" border align="left">
-        <Head eyebrow="Opening">The AI Sustainability Paradox</Head>
+        <Head2 eyebrow="Opening">The AI Sustainability Paradox</Head2>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             AI acts as both a climate savior and a significant environmental
             burden
-            <Cite n={[1, 2]} />
+            <Cite1 n={[1, 2]} />
           </p>
           <svg
             aria-hidden
@@ -638,10 +313,10 @@ export default function Week08Sustainability() {
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Advanced models optimize energy grids but consume vast resources
-              <Cite n={[23, 24]} />
+              <Cite1 n={[23, 24]} />
             </p>
             <div aria-hidden className="mt-6 max-w-3xl">
-              <Split
+              <Split1
                 left="Optimize energy grids"
                 right="Consume vast resources"
               />
@@ -654,7 +329,7 @@ export default function Week08Sustainability() {
             <p className={`${BODY} max-w-4xl`}>
               The industry faces a critical pivot point between &quot;Red
               AI&quot; and &quot;Green AI&quot;
-              <Cite n={[29, 30]} />
+              <Cite1 n={[29, 30]} />
             </p>
             <svg
               aria-hidden
@@ -690,7 +365,7 @@ export default function Week08Sustainability() {
         </Question>
       </Slide>
 
-      <PartPlate
+      <PartPlate2
         id="part-1"
         numeral="1"
         title="The Environmental Footprint"
@@ -709,7 +384,7 @@ export default function Week08Sustainability() {
           of magnitude, dashed because "likely".
       ================================================================== */}
       <Slide id="hidden-cost" border align="left">
-        <Head eyebrow="Part 1 · 01 / 08">The Hidden Cost of Compute</Head>
+        <Head2 eyebrow="Part 1 · 01 / 08">The Hidden Cost of Compute</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -740,10 +415,10 @@ export default function Week08Sustainability() {
 
         <div className={PAIR}>
           <div>
-            <Stat value="550" unit="metric tons of CO2e" />
+            <Stat1 value="550" unit="metric tons of CO2e" />
             <p className={`${BODY} mt-6`}>
               Training a model like GPT-3 emitted over 550 metric tons of CO2e
-              <Cite n={[2, 3]} />
+              <Cite1 n={[2, 3]} />
             </p>
           </div>
 
@@ -786,15 +461,15 @@ export default function Week08Sustainability() {
           same scale.                                         [quiz topic]
       ================================================================== */}
       <Slide id="inference" border align="left">
-        <Head eyebrow="Part 1 · 02 / 08" kicker="Inference:">
+        <Head2 eyebrow="Part 1 · 02 / 08" kicker="Inference:">
           The Sleeping Giant
-        </Head>
+        </Head2>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Inference constitutes the majority of lifecycle emissions for
             deployed models
-            <Cite n={[1, 2]} />
+            <Cite1 n={[1, 2]} />
           </p>
           <figure aria-hidden className="mt-8 w-full max-w-5xl">
             <svg viewBox="0 0 800 74" className="w-full" fill="none">
@@ -816,11 +491,11 @@ export default function Week08Sustainability() {
             <div className="grid gap-8 md:grid-cols-2 md:gap-14">
               <p className={BODY}>
                 Energy-intensive models consume over 29 Wh per long prompt
-                <Cite n={[1]} />
+                <Cite1 n={[1]} />
               </p>
               <p className={BODY}>
                 Efficient models can operate at approximately 0.4 Wh per prompt
-                <Cite n={[1]} />
+                <Cite1 n={[1]} />
               </p>
             </div>
             <svg
@@ -865,24 +540,24 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["google-report"]}
       >
-        <Head eyebrow="Part 1 · 03 / 08" kicker="Case Study:">
+        <Head2 eyebrow="Part 1 · 03 / 08" kicker="Case Study:">
           Google&apos;s 2025 Report
-        </Head>
+        </Head2>
 
         <div className="mt-11 grid w-full max-w-5xl gap-10 md:grid-cols-3 md:gap-0">
           <div className="md:pr-10">
-            <Stat value="0.24" unit="Wh" size="md" />
+            <Stat1 value="0.24" unit="Wh" size="md" />
             <p className={`${BODY} mt-6`}>
               Median Gemini App text prompt consumes 0.24 Wh of energy
-              <Cite n={[4, 5]} />
+              <Cite1 n={[4, 5]} />
             </p>
           </div>
 
           <div className="md:border-l md:border-[var(--charcoal)]/10 md:px-10">
-            <Stat value="0.03" unit="grams of CO2e" size="md" />
+            <Stat1 value="0.03" unit="grams of CO2e" size="md" />
             <p className={`${BODY} mt-6`}>
               Emissions per prompt are roughly 0.03 grams of CO2e
-              <Cite n={[4, 5]} />
+              <Cite1 n={[4, 5]} />
             </p>
           </div>
 
@@ -940,9 +615,9 @@ export default function Week08Sustainability() {
           cooling loop; the GPT-3 estimate and the 2027 demand set large.
       ================================================================== */}
       <Slide id="water" border align="left">
-        <Head eyebrow="Part 1 · 04 / 08" kicker="Water Consumption:">
+        <Head2 eyebrow="Part 1 · 04 / 08" kicker="Water Consumption:">
           A Critical Metric
-        </Head>
+        </Head2>
 
         <div className="w-full">
           <div className="mt-10 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_16rem] md:gap-14">
@@ -978,20 +653,20 @@ export default function Week08Sustainability() {
 
         <div className={PAIR}>
           <div>
-            <Stat value="~700,000" unit="liters" size="md" />
+            <Stat1 value="~700,000" unit="liters" size="md" />
             <p className={`${BODY} mt-6`}>
               Early estimates: GPT-3 training consumed ~700,000 liters of
               freshwater
-              <Cite n={[1, 6]} />
+              <Cite1 n={[1, 6]} />
             </p>
           </div>
 
           <div className={COL_RULE}>
-            <Stat value="6.6 billion" unit="cubic meters" size="md" mark />
+            <Stat1 value="6.6 billion" unit="cubic meters" size="md" mark />
             <p className={`${BODY} mt-6`}>
               Global AI water demand could reach 6.6 billion cubic meters by
               2027
-              <Cite n={[1, 6]} />
+              <Cite1 n={[1, 6]} />
             </p>
           </div>
         </div>
@@ -1008,9 +683,9 @@ export default function Week08Sustainability() {
           and scale pulling against each other.            [quiz: water]
       ================================================================== */}
       <Slide id="bottles" border align="left" quizData={quiz["bottles"]}>
-        <Head eyebrow="Part 1 · 05 / 08">
+        <Head2 eyebrow="Part 1 · 05 / 08">
           The &quot;Bottles of Water&quot; Debate
-        </Head>
+        </Head2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -1032,7 +707,7 @@ export default function Week08Sustainability() {
             <p className={`${BODY} mt-6`}>
               Studies debate the metric of &quot;bottles of water per
               conversation&quot;
-              <Cite n={[7, 8]} />
+              <Cite1 n={[7, 8]} />
             </p>
           </div>
 
@@ -1057,7 +732,7 @@ export default function Week08Sustainability() {
             <p className={`${BODY} mt-6`}>
               Google reports 0.26 mL (five drops) per median query due to
               efficiency
-              <Cite n={[4, 5]} />
+              <Cite1 n={[4, 5]} />
             </p>
           </div>
         </div>
@@ -1099,9 +774,9 @@ export default function Week08Sustainability() {
           Compute Carbon Intensity cut to a third.
       ================================================================== */}
       <Slide id="hardware" border align="left">
-        <Head eyebrow="Part 1 · 06 / 08">
+        <Head2 eyebrow="Part 1 · 06 / 08">
           Hardware Lifecycle and Embodied Carbon
-        </Head>
+        </Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1141,7 +816,7 @@ export default function Week08Sustainability() {
             <p className={`${BODY} max-w-4xl`}>
               Manufacturing AI accelerators is chemically intensive and
               energy-demanding
-              <Cite n={[11, 12]} />
+              <Cite1 n={[11, 12]} />
             </p>
             <Terms items={["chemically intensive", "energy-demanding"]} />
           </div>
@@ -1152,7 +827,7 @@ export default function Week08Sustainability() {
             <p className={`${BODY} max-w-4xl`}>
               2025 LCA shows efficiency gains can improve Compute Carbon
               Intensity by 3x
-              <Cite n={[11]} />
+              <Cite1 n={[11]} />
             </p>
             <svg
               aria-hidden
@@ -1194,12 +869,12 @@ export default function Week08Sustainability() {
           with its hazardous contents named.
       ================================================================== */}
       <Slide id="e-waste" border align="left">
-        <Head eyebrow="Part 1 · 07 / 08">The E-Waste Challenge</Head>
+        <Head2 eyebrow="Part 1 · 07 / 08">The E-Waste Challenge</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             AI hardware becomes obsolete faster than general-purpose servers
-            <Cite n={[13, 15]} />
+            <Cite1 n={[13, 15]} />
           </p>
           <figure aria-hidden className="mt-8 w-full max-w-5xl">
             <svg viewBox="0 0 800 106" className="w-full" fill="none">
@@ -1227,10 +902,10 @@ export default function Week08Sustainability() {
 
         <div className={PAIR}>
           <div>
-            <Stat value="62 million" unit="tonnes" size="md" />
+            <Stat1 value="62 million" unit="tonnes" size="md" />
             <p className={`${BODY} mt-6`}>
               Global e-waste reached 62 million tonnes in 2022
-              <Cite n={[16]} />
+              <Cite1 n={[16]} />
             </p>
           </div>
 
@@ -1262,7 +937,7 @@ export default function Week08Sustainability() {
             <p className={`${BODY} mt-6`}>
               Specialized chips contain hazardous materials and rare earth
               elements
-              <Cite n={[16, 17]} />
+              <Cite1 n={[16, 17]} />
             </p>
           </div>
         </div>
@@ -1279,12 +954,12 @@ export default function Week08Sustainability() {
           WUE and PUE on one balance.                        [quiz topic]
       ================================================================== */}
       <Slide id="data-center" border align="left">
-        <Head eyebrow="Part 1 · 08 / 08">Data Center Innovation</Head>
+        <Head2 eyebrow="Part 1 · 08 / 08">Data Center Innovation</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Shift toward liquid cooling: Direct-to-chip or immersion cooling
-            <Cite n={[5]} />
+            <Cite1 n={[5]} />
           </p>
           <div
             aria-hidden
@@ -1320,7 +995,7 @@ export default function Week08Sustainability() {
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               DeepMind-style optimization reduces cooling energy by up to 40%
-              <Cite n={[18]} />
+              <Cite1 n={[18]} />
             </p>
             <svg
               aria-hidden
@@ -1393,7 +1068,7 @@ export default function Week08Sustainability() {
         </Question>
       </Slide>
 
-      <PartPlate
+      <PartPlate2
         id="part-2"
         numeral="2"
         title="AI for Climate Mitigation"
@@ -1412,7 +1087,7 @@ export default function Week08Sustainability() {
           joined as a graph.                                 [quiz topic]
       ================================================================== */}
       <Slide id="weather" border align="left">
-        <Head eyebrow="Part 2 · 01 / 04">Revolutionizing Weather Prediction</Head>
+        <Head2 eyebrow="Part 2 · 01 / 04">Revolutionizing Weather Prediction</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1420,7 +1095,7 @@ export default function Week08Sustainability() {
             speed and efficiency
           </p>
           <div aria-hidden className="mt-7 max-w-3xl">
-            <Split left="Numerical Weather Prediction (NWP)" right="AI" />
+            <Split1 left="Numerical Weather Prediction (NWP)" right="AI" />
           </div>
           <Terms items={["speed", "efficiency"]} />
         </div>
@@ -1429,7 +1104,7 @@ export default function Week08Sustainability() {
           <div>
             <p className={BODY}>
               GraphCast: Predicts weather 10 days in advance with high accuracy
-              <Cite n={[19]} />
+              <Cite1 n={[19]} />
             </p>
             <svg
               aria-hidden
@@ -1456,7 +1131,7 @@ export default function Week08Sustainability() {
           <div className={COL_RULE}>
             <p className={BODY}>
               Operates at 0.25-degree resolution using Graph Neural Networks
-              <Cite n={[19]} />
+              <Cite1 n={[19]} />
             </p>
             <svg
               aria-hidden
@@ -1526,14 +1201,14 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["fourcastnet"]}
       >
-        <Head eyebrow="Part 2 · 02 / 04">FourCastNet and Geometric ML</Head>
+        <Head2 eyebrow="Part 2 · 02 / 04">FourCastNet and Geometric ML</Head2>
 
         <div className="w-full">
           <div className="mt-10 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_12rem] md:gap-14">
             <p className={LEAD}>
               NVIDIA&apos;s FourCastNet v3 uses Spherical Fourier Neural
               Operators
-              <Cite n={[20, 21]} />
+              <Cite1 n={[20, 21]} />
             </p>
             <svg
               aria-hidden
@@ -1576,7 +1251,7 @@ export default function Week08Sustainability() {
             <p className={`${BODY} max-w-4xl`}>
               Enables rapid ensemble forecasting to predict extreme weather
               probabilities
-              <Cite n={[21]} />
+              <Cite1 n={[21]} />
             </p>
             <figure aria-hidden className="mt-8 w-full">
               <svg viewBox="0 0 800 176" className="w-full" fill="none">
@@ -1611,12 +1286,12 @@ export default function Week08Sustainability() {
         <div className="w-full">
           <div className={RULED}>
             <div aria-hidden className="max-w-3xl">
-              <Split left="Supercomputers" right="A few GPUs" strikeLeft />
+              <Split1 left="Supercomputers" right="A few GPUs" strikeLeft />
             </div>
             <p className={`${DISPLAY} mt-6 max-w-4xl`}>
               Democratizes forecasting: Runs on a few GPUs instead of
               supercomputers
-              <Cite n={[22]} />
+              <Cite1 n={[22]} />
             </p>
           </div>
         </div>
@@ -1633,7 +1308,7 @@ export default function Week08Sustainability() {
           predicts; one learner managing two unlike stores.  [quiz topic]
       ================================================================== */}
       <Slide id="renewable" border align="left">
-        <Head eyebrow="Part 2 · 03 / 04">Optimizing Renewable Energy</Head>
+        <Head2 eyebrow="Part 2 · 03 / 04">Optimizing Renewable Energy</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1681,7 +1356,7 @@ export default function Week08Sustainability() {
           <div>
             <p className={BODY}>
               AI predicts solar irradiance and wind speeds with high precision
-              <Cite n={[23]} />
+              <Cite1 n={[23]} />
             </p>
             <figure aria-hidden className="mt-7 w-full">
               <svg viewBox="0 0 400 120" className="w-full" fill="none">
@@ -1716,7 +1391,7 @@ export default function Week08Sustainability() {
             <p className={BODY}>
               Reinforcement Learning manages Hybrid Energy Storage Systems
               (HESS)
-              <Cite n={[23, 24]} />
+              <Cite1 n={[23, 24]} />
             </p>
             <svg
               aria-hidden
@@ -1762,7 +1437,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["agriculture"]}
       >
-        <Head eyebrow="Part 2 · 04 / 04">Precision Agriculture</Head>
+        <Head2 eyebrow="Part 2 · 04 / 04">Precision Agriculture</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1811,7 +1486,7 @@ export default function Week08Sustainability() {
             <p className={BODY}>
               Analysis of satellite imagery and soil sensors for Variable Rate
               Technology
-              <Cite n={[26, 28]} />
+              <Cite1 n={[26, 28]} />
             </p>
             <figure aria-hidden className="mt-7 w-full">
               <svg viewBox="0 0 400 176" className="w-full" fill="none">
@@ -1847,7 +1522,7 @@ export default function Week08Sustainability() {
           <div className={COL_RULE}>
             <p className={BODY}>
               Smart irrigation systems optimize water delivery in real-time
-              <Cite n={[27]} />
+              <Cite1 n={[27]} />
             </p>
             <figure aria-hidden className="mt-7 w-full">
               <svg viewBox="0 0 400 130" className="w-full" fill="none">
@@ -1882,7 +1557,7 @@ export default function Week08Sustainability() {
         </Question>
       </Slide>
 
-      <PartPlate
+      <PartPlate2
         id="part-3"
         numeral="3"
         title="The Shift to Green AI"
@@ -1900,13 +1575,13 @@ export default function Week08Sustainability() {
           is primary; progress and consumption untied.       [quiz topic]
       ================================================================== */}
       <Slide id="red-green" border align="left">
-        <Head eyebrow="Part 3 · 01 / 05">Red AI vs. Green AI</Head>
+        <Head2 eyebrow="Part 3 · 01 / 05">Red AI vs. Green AI</Head2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
             <p className={BODY}>
               Red AI: Buying performance with massive computational cost
-              <Cite n={[29, 30]} />
+              <Cite1 n={[29, 30]} />
             </p>
             <figure aria-hidden className="mt-7 w-full">
               <svg viewBox="0 0 400 172" className="w-full" fill="none">
@@ -2022,7 +1697,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["compression"]}
       >
-        <Head eyebrow="Part 3 · 02 / 05">Model Compression Techniques</Head>
+        <Head2 eyebrow="Part 3 · 02 / 05">Model Compression Techniques</Head2>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -2122,7 +1797,7 @@ export default function Week08Sustainability() {
             <p className={BODY}>
               <span className="font-bold">Knowledge Distillation:</span>{" "}
               Training small student models from large teachers
-              <Cite n={[31, 32]} />
+              <Cite1 n={[31, 32]} />
             </p>
           </Measure>
         </ol>
@@ -2140,13 +1815,13 @@ export default function Week08Sustainability() {
                                                [quiz: compression]
       ================================================================== */}
       <Slide id="slms" border align="left" quizData={quiz["slms"]}>
-        <Head eyebrow="Part 3 · 03 / 05">Small Language Models (SLMs)</Head>
+        <Head2 eyebrow="Part 3 · 03 / 05">Small Language Models (SLMs)</Head2>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             The &quot;Small is Sufficient&quot; trend: Using task-specific
             models
-            <Cite n={[34]} />
+            <Cite1 n={[34]} />
           </p>
         </div>
 
@@ -2154,7 +1829,7 @@ export default function Week08Sustainability() {
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Adoption could save roughly 28% of global AI electricity by 2025
-              <Cite n={[34]} />
+              <Cite1 n={[34]} />
             </p>
             <svg
               aria-hidden
@@ -2217,7 +1892,7 @@ export default function Week08Sustainability() {
           the memory–processor shuttle struck out.           [quiz topic]
       ================================================================== */}
       <Slide id="neuromorphic" border align="left">
-        <Head eyebrow="Part 3 · 04 / 05">Neuromorphic Computing</Head>
+        <Head2 eyebrow="Part 3 · 04 / 05">Neuromorphic Computing</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -2238,7 +1913,7 @@ export default function Week08Sustainability() {
             <p className={`${BODY} max-w-4xl`}>
               Spiking Neural Networks (SNNs): Neurons only consume energy when
               active
-              <Cite n={[35, 36]} />
+              <Cite1 n={[35, 36]} />
             </p>
             <svg
               aria-hidden
@@ -2312,7 +1987,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["neuromorphic-gains"]}
       >
-        <Head eyebrow="Part 3 · 05 / 05">Neuromorphic Efficiency Gains</Head>
+        <Head2 eyebrow="Part 3 · 05 / 05">Neuromorphic Efficiency Gains</Head2>
 
         <div className="w-full">
           <div
@@ -2332,7 +2007,7 @@ export default function Week08Sustainability() {
           </div>
           <p className={`${BODY} mt-6 max-w-4xl`}>
             Intel Loihi 2 and BrainChip Akida showing commercial viability
-            <Cite n={[36, 37]} />
+            <Cite1 n={[36, 37]} />
           </p>
         </div>
 
@@ -2340,7 +2015,7 @@ export default function Week08Sustainability() {
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Potential for 100x to 1000x efficiency gains in specific tasks
-              <Cite n={[36, 38]} />
+              <Cite1 n={[36, 38]} />
             </p>
             <svg
               aria-hidden
@@ -2395,7 +2070,7 @@ export default function Week08Sustainability() {
         </Question>
       </Slide>
 
-      <PartPlate
+      <PartPlate2
         id="part-4"
         numeral="4"
         title="Circular Economy & Policy"
@@ -2413,7 +2088,7 @@ export default function Week08Sustainability() {
           bins; a passport tracing recovered materials.
       ================================================================== */}
       <Slide id="circular" border align="left">
-        <Head eyebrow="Part 4 · 01 / 08">AI and the Circular Economy</Head>
+        <Head2 eyebrow="Part 4 · 01 / 08">AI and the Circular Economy</Head2>
 
         <div className="w-full">
           <div className="mt-10 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_18rem] md:gap-14">
@@ -2478,7 +2153,7 @@ export default function Week08Sustainability() {
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               AI robotics sort waste streams with high speed and accuracy
-              <Cite n={[40, 41]} />
+              <Cite1 n={[40, 41]} />
             </p>
             <svg
               aria-hidden
@@ -2531,7 +2206,7 @@ export default function Week08Sustainability() {
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_18rem] md:gap-14">
             <p className={BODY}>
               Digital Waste Passports track recovery of valuable materials
-              <Cite n={[42]} />
+              <Cite1 n={[42]} />
             </p>
             <svg
               aria-hidden
@@ -2569,13 +2244,13 @@ export default function Week08Sustainability() {
           words of the last line listed.
       ================================================================== */}
       <Slide id="biodiversity" border align="left">
-        <Head eyebrow="Part 4 · 02 / 08">Biodiversity Monitoring</Head>
+        <Head2 eyebrow="Part 4 · 02 / 08">Biodiversity Monitoring</Head2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
             <p className={BODY}>
               Passive Acoustic Monitoring (PAM) tracks species via soundscapes
-              <Cite n={[44, 45]} />
+              <Cite1 n={[44, 45]} />
             </p>
             <svg
               aria-hidden
@@ -2606,7 +2281,7 @@ export default function Week08Sustainability() {
           <div className={COL_RULE}>
             <p className={BODY}>
               Computer vision identifies species in real-time via camera traps
-              <Cite n={[44, 46]} />
+              <Cite1 n={[44, 46]} />
             </p>
             <svg
               aria-hidden
@@ -2664,15 +2339,15 @@ export default function Week08Sustainability() {
           those past 10^23 inside the rule.                   [quiz topic]
       ================================================================== */}
       <Slide id="eu-ai-act" border align="left">
-        <Head eyebrow="Part 4 · 03 / 08" kicker="The EU AI Act:">
+        <Head2 eyebrow="Part 4 · 03 / 08" kicker="The EU AI Act:">
           Article 40
-        </Head>
+        </Head2>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Mandates transparency regarding &quot;AI systems resource
             performance&quot;
-            <Cite n={[48, 49]} />
+            <Cite1 n={[48, 49]} />
           </p>
         </div>
 
@@ -2680,7 +2355,7 @@ export default function Week08Sustainability() {
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_11rem] md:gap-14">
             <p className={BODY}>
               General-Purpose AI providers must publish energy consumption data
-              <Cite n={[50, 51]} />
+              <Cite1 n={[50, 51]} />
             </p>
             <svg
               aria-hidden
@@ -2704,7 +2379,7 @@ export default function Week08Sustainability() {
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Applies to models trained with more than 10^23 FLOPs
-              <Cite n={[50]} />
+              <Cite1 n={[50]} />
             </p>
             <svg
               aria-hidden
@@ -2755,7 +2430,7 @@ export default function Week08Sustainability() {
                                                     [quiz: eu-ai-act]
       ================================================================== */}
       <Slide id="iso" border align="left" quizData={quiz["iso"]}>
-        <Head eyebrow="Part 4 · 04 / 08">ISO Standards and Frameworks</Head>
+        <Head2 eyebrow="Part 4 · 04 / 08">ISO Standards and Frameworks</Head2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -2771,7 +2446,7 @@ export default function Week08Sustainability() {
             <p className={`${BODY} mt-6`}>
               ISO/IEC 42001: Management system standard including
               sustainability
-              <Cite n={[53]} />
+              <Cite1 n={[53]} />
             </p>
           </div>
 
@@ -2789,7 +2464,7 @@ export default function Week08Sustainability() {
             </div>
             <p className={`${BODY} mt-6`}>
               ISO/IEC TR 20226: Focuses on energy, water, and e-waste aspects
-              <Cite n={[54, 55]} />
+              <Cite1 n={[54, 55]} />
             </p>
             <Steps items={["energy", "water", "e-waste"]} cols="md:grid-cols-3" />
           </div>
@@ -2797,7 +2472,7 @@ export default function Week08Sustainability() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left='Voluntary "greenwashing"'
               right="Rigorous compliance"
               strikeLeft
@@ -2821,7 +2496,7 @@ export default function Week08Sustainability() {
           overheads it misses.                               [quiz topic]
       ================================================================== */}
       <Slide id="measurement" border align="left">
-        <Head eyebrow="Part 4 · 05 / 08">Measurement Tools</Head>
+        <Head2 eyebrow="Part 4 · 05 / 08">Measurement Tools</Head2>
 
         <div className="w-full">
           <div
@@ -2842,7 +2517,7 @@ export default function Week08Sustainability() {
           <p className={`${BODY} mt-6 max-w-4xl`}>
             Software tools like CodeCarbon and Green Algorithms estimate
             emissions
-            <Cite n={[3, 56]} />
+            <Cite1 n={[3, 56]} />
           </p>
         </div>
 
@@ -2850,7 +2525,7 @@ export default function Week08Sustainability() {
           <div>
             <p className={BODY}>
               Compute Carbon Intensity (CCI) quantifies carbon per unit of work
-              <Cite n={[11]} />
+              <Cite1 n={[11]} />
             </p>
             <svg
               aria-hidden
@@ -2878,7 +2553,7 @@ export default function Week08Sustainability() {
             <p className={BODY}>
               Tools may underestimate true usage by missing overheads like
               cooling
-              <Cite n={[56]} />
+              <Cite1 n={[56]} />
             </p>
             <figure aria-hidden className="mt-7 w-full">
               <svg viewBox="0 0 400 96" className="w-full" fill="none">
@@ -2918,9 +2593,9 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["developers"]}
       >
-        <Head eyebrow="Part 4 · 06 / 08" kicker="Actionable Insights:">
+        <Head2 eyebrow="Part 4 · 06 / 08" kicker="Actionable Insights:">
           Developers
-        </Head>
+        </Head2>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -3010,9 +2685,9 @@ export default function Week08Sustainability() {
           reports held to one edge.
       ================================================================== */}
       <Slide id="organizations" border align="left">
-        <Head eyebrow="Part 4 · 07 / 08" kicker="Actionable Insights:">
+        <Head2 eyebrow="Part 4 · 07 / 08" kicker="Actionable Insights:">
           Organizations
-        </Head>
+        </Head2>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -3115,7 +2790,7 @@ export default function Week08Sustainability() {
           consumption both climbing.                         [quiz topic]
       ================================================================== */}
       <Slide id="future" border align="left">
-        <Head eyebrow="Part 4 · 08 / 08">Future Directions</Head>
+        <Head2 eyebrow="Part 4 · 08 / 08">Future Directions</Head2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -3123,7 +2798,7 @@ export default function Week08Sustainability() {
               Standardizing water reporting to prevent &quot;water washing&quot;
             </p>
             <div aria-hidden className="mt-7">
-              <Split
+              <Split1
                 left='"Water washing"'
                 right="Water reporting"
                 strikeLeft
@@ -3194,7 +2869,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["conclusion"]}
       >
-        <Head eyebrow="Closing">Conclusion</Head>
+        <Head2 eyebrow="Closing">Conclusion</Head2>
 
         <ol className="mt-10 w-full max-w-5xl">
           {[
@@ -3224,10 +2899,10 @@ export default function Week08Sustainability() {
           </li>
         </ol>
 
-        <Discussion>
+        <Discussion1>
           Which sustainability trade-off in AI deployment do you think business
           leaders underestimate most today?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -3235,7 +2910,7 @@ export default function Week08Sustainability() {
           superscript citations across the deck jump here.
       ================================================================== */}
       <Slide id="sources" border align="left">
-        <Head eyebrow="References">Sources</Head>
+        <Head2 eyebrow="References">Sources</Head2>
 
         <div className="w-full">
           <ol className="mt-10 w-full max-w-5xl border-t border-[var(--charcoal)]/15">
@@ -3265,10 +2940,10 @@ export default function Week08Sustainability() {
           </ol>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Which source or framework would you prioritize if you had to build a
           sustainable AI policy for your organization this quarter?
-        </Discussion>
+        </Discussion1>
       </Slide>
     </SlideDeck>
   );

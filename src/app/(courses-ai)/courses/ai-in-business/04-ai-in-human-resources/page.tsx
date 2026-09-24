@@ -8,6 +8,24 @@ import {
 import { ScrollProgress } from "@/app/(courses-ai)/_components/Interactive";
 import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
 import quizzes from "./quizzes.json";
+import {
+  BODY,
+  Discussion1,
+  DISPLAY,
+  Head1,
+  LEAD,
+  MICRO,
+  ModulePlate2,
+  pad,
+  RULED,
+  Schematic,
+  Split1,
+  Steps,
+  SVG_LABEL,
+  TAG,
+  Terms,
+  Verdict,
+} from "../_visuals/kit";
 
 // ============================================================================
 // WEEK 04 — APPLICATIONS OF AI IN HUMAN RESOURCES
@@ -27,253 +45,6 @@ import quizzes from "./quizzes.json";
 // ============================================================================
 
 const quiz = createCourseQuizLookup(quizzes as CourseQuiz[]);
-
-/** Small-caps label treatment used for every eyebrow, axis tick and numeral. */
-const MICRO = "font-sans text-[10px] font-semibold uppercase tracking-[0.22em]";
-
-/** The same small-caps treatment for SVG <text>. */
-const SVG_LABEL = {
-  fontSize: 9,
-  letterSpacing: 2.2,
-  fontFamily: "var(--font-sans), sans-serif",
-  fontWeight: 600,
-} as const;
-
-/** Body sentence at the deck's reading size. */
-const BODY =
-  "font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]";
-
-/** A sentence promoted to display weight inside a block. */
-const DISPLAY =
-  "font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]";
-
-/** A sentence one step below display, used inside rules and frames. */
-const LEAD =
-  "font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]";
-
-/** Hairline that opens each later block of a slide. */
-const RULED = "mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8";
-
-/** Mono tag treatment for words lifted out of a sentence. */
-const TAG = "font-mono text-[10px] uppercase tracking-[0.1em]";
-
-const pad = (n: number) => String(n).padStart(2, "0");
-
-/** Eyebrow plus slide heading, the masthead every content slide opens with. */
-function Head({
-  eyebrow,
-  children,
-  signal = false,
-}: {
-  eyebrow: string;
-  children: React.ReactNode;
-  signal?: boolean;
-}) {
-  return (
-    <div>
-      <div
-        className={`${MICRO} ${
-          signal ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
-        }`}
-      >
-        {eyebrow}
-      </div>
-      <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
-        {children}
-      </h2>
-    </div>
-  );
-}
-
-/** Module divider: display roman numeral against a ruled margin. */
-function ModulePlate({
-  id,
-  numeral,
-  title,
-  lines,
-  quizData,
-}: {
-  id: string;
-  numeral: string;
-  title: string;
-  lines: string[];
-  quizData?: CourseQuiz;
-}) {
-  return (
-    <Slide id={id} border align="left" quizData={quizData}>
-      <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>Module</div>
-          <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
-            {numeral}
-          </div>
-        </div>
-
-        <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-          <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
-            {title}
-          </h2>
-          <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
-          {lines.map((line, i) => (
-            <p
-              key={line}
-              className={`${
-                i === 0 ? "mt-8" : "mt-4"
-              } max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl`}
-            >
-              {line}
-            </p>
-          ))}
-        </div>
-      </div>
-    </Slide>
-  );
-}
-
-/** Discussion prompt, set apart in the deck's one ruled frame. */
-function Discussion({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="w-full">
-      <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
-        <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-        <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
-          {children}
-        </p>
-      </aside>
-    </div>
-  );
-}
-
-/** Closing statement in display weight. */
-function Verdict({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="w-full">
-      <p className="mt-14 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
-        {children}
-      </p>
-    </div>
-  );
-}
-
-/** A sentence's own list, set as middot-separated mono words. */
-function Terms({
-  items,
-  className = "mt-5",
-}: {
-  items: string[];
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`${className} flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/55`}
-    >
-      {items.map((item, i) => (
-        <React.Fragment key={item}>
-          {i > 0 && <span>·</span>}
-          <span>{item}</span>
-        </React.Fragment>
-      ))}
-    </div>
-  );
-}
-
-/**
- * Numbered cells in a hairline grid. `cols` carries the responsive column
- * classes; `mark` turns one cell crimson.
- */
-function Steps({
-  items,
-  cols,
-  mark,
-  className = "mt-6",
-}: {
-  items: string[];
-  cols: string;
-  mark?: number;
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`${className} grid grid-cols-2 gap-px bg-[var(--charcoal)]/10 ${cols}`}
-    >
-      {items.map((item, i) => (
-        <div key={item} className="bg-[var(--background)] px-4 py-4">
-          <span
-            className={`${MICRO} ${
-              i === mark ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
-            }`}
-          >
-            {pad(i + 1)}
-          </span>
-          <span
-            className={`mt-2 block font-mono text-[11px] uppercase tracking-[0.1em] ${
-              i === mark
-                ? "text-[var(--crimson)]"
-                : "text-[var(--charcoal-light)]/70"
-            }`}
-          >
-            {item}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/** Two labels set against each other across one rule; the right one is marked. */
-function Split({
-  left,
-  right,
-  strikeLeft = false,
-  cols = "grid-cols-2",
-}: {
-  left: string;
-  right: string;
-  strikeLeft?: boolean;
-  cols?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`grid ${cols} border-b border-[var(--charcoal)]/15 pb-3`}
-    >
-      <span
-        className={`${MICRO} pr-4 text-[var(--charcoal-light)]/55 ${
-          strikeLeft ? "[text-decoration-line:line-through]" : ""
-        }`}
-      >
-        {left}
-      </span>
-      <span
-        className={`${MICRO} border-l border-[var(--crimson)]/40 pl-6 text-[var(--crimson)]`}
-      >
-        {right}
-      </span>
-    </div>
-  );
-}
-
-/** Caption for any figure whose proportions are illustrative only. */
-function Schematic({ className = "mt-1" }: { className?: string }) {
-  return (
-    <figcaption
-      className={`${MICRO} ${className} text-[var(--charcoal-light)]/40`}
-    >
-      Schematic
-    </figcaption>
-  );
-}
-
 
 export default function Week04HumanResources() {
   return (
@@ -363,7 +134,7 @@ export default function Week04HumanResources() {
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="why-hr-ai" border align="left">
-        <Head eyebrow="Opening">Why HR Became an AI Domain</Head>
+        <Head1 eyebrow="Opening">Why HR Became an AI Domain</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -493,9 +264,9 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["decision-architecture"]}
       >
-        <Head eyebrow="Strategy into people decisions">
+        <Head1 eyebrow="Strategy into people decisions">
           The HR Function as a Decision Architecture
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -669,7 +440,7 @@ export default function Week04HumanResources() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Augmented reliably"
               right="Require human review"
             />
@@ -687,9 +458,9 @@ export default function Week04HumanResources() {
           each carrying its own sources of gain.
       ================================================================== */}
       <Slide id="value-creation" border align="left">
-        <Head eyebrow="Where the value comes from">
+        <Head1 eyebrow="Where the value comes from">
           Value Creation in AI-Enabled HR
-        </Head>
+        </Head1>
 
         <ol className="mt-10 w-full max-w-5xl">
           {[
@@ -752,7 +523,7 @@ export default function Week04HumanResources() {
         </ol>
       </Slide>
 
-      <ModulePlate
+      <ModulePlate2
         id="module-1"
         numeral="I"
         title="Foundations"
@@ -768,9 +539,9 @@ export default function Week04HumanResources() {
           model complexity.
       ================================================================== */}
       <Slide id="hr-data-signal" border align="left">
-        <Head eyebrow="What the models read">
+        <Head1 eyebrow="What the models read">
           HR Data, Signal Quality, and Context
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -873,9 +644,9 @@ export default function Week04HumanResources() {
           struck tag.                                       [quiz topic]
       ================================================================== */}
       <Slide id="method-to-task" border align="left">
-        <Head eyebrow="The right tool for the task">
+        <Head1 eyebrow="The right tool for the task">
           Matching AI Method to the HR Task
-        </Head>
+        </Head1>
 
         <ol className="mt-10 w-full max-w-5xl">
           {[
@@ -955,9 +726,9 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["human-judgment"]}
       >
-        <Head eyebrow="High stakes" signal>
+        <Head1 eyebrow="High stakes" signal>
           Human Judgment in High-Stakes People Decisions
-        </Head>
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_32rem] md:gap-14">
           <div>
@@ -1082,9 +853,9 @@ export default function Week04HumanResources() {
           transactional throughput set against enterprise outcomes.
       ================================================================== */}
       <Slide id="measuring-success" border align="left">
-        <Head eyebrow="What counts as success">
+        <Head1 eyebrow="What counts as success">
           Measuring Success Beyond Efficiency
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1159,7 +930,7 @@ export default function Week04HumanResources() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Transactional throughput"
               right="Enterprise outcomes"
               strikeLeft
@@ -1172,7 +943,7 @@ export default function Week04HumanResources() {
         </div>
       </Slide>
 
-      <ModulePlate
+      <ModulePlate2
         id="module-2"
         numeral="II"
         title="Recruiting and Talent Access"
@@ -1188,7 +959,7 @@ export default function Week04HumanResources() {
           applicants set against better access.
       ================================================================== */}
       <Slide id="sourcing" border align="left">
-        <Head eyebrow="Finding talent">Sourcing and Candidate Discovery</Head>
+        <Head1 eyebrow="Finding talent">Sourcing and Candidate Discovery</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
           <div>
@@ -1270,7 +1041,7 @@ export default function Week04HumanResources() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="More applicants"
               right="Better access to relevant talent"
               strikeLeft
@@ -1289,7 +1060,7 @@ export default function Week04HumanResources() {
           structured review.                                 [quiz topic]
       ================================================================== */}
       <Slide id="resume-screening" border align="left">
-        <Head eyebrow="Matching">Resume Screening and Candidate Matching</Head>
+        <Head1 eyebrow="Matching">Resume Screening and Candidate Matching</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1401,7 +1172,7 @@ export default function Week04HumanResources() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Hidden gatekeepers"
               right="Prioritization and structured review"
               strikeLeft
@@ -1425,9 +1196,9 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["interview-intelligence"]}
       >
-        <Head eyebrow="Assessment">
+        <Head1 eyebrow="Assessment">
           Interview Intelligence and Structured Assessment
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1541,9 +1312,9 @@ export default function Week04HumanResources() {
           accountability.
       ================================================================== */}
       <Slide id="candidate-experience" border align="left">
-        <Head eyebrow="Recruiting operations">
+        <Head1 eyebrow="Recruiting operations">
           Candidate Experience and Recruiting Operations
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1611,7 +1382,7 @@ export default function Week04HumanResources() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Nobody is accountable"
               right="Reduce uncertainty for candidates"
               strikeLeft
@@ -1630,9 +1401,9 @@ export default function Week04HumanResources() {
           employment risk kept by the employer.              [quiz topic]
       ================================================================== */}
       <Slide id="fairness-hiring" border align="left">
-        <Head eyebrow="Under scrutiny" signal>
+        <Head1 eyebrow="Under scrutiny" signal>
           Fairness, Adverse Impact, and Hiring Governance
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1732,14 +1503,14 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Should an employer accept a materially faster recruiting process if
           the scoring logic remains only partially explainable to candidates,
           managers, and legal reviewers?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
-      <ModulePlate
+      <ModulePlate2
         id="module-3"
         numeral="III"
         title="Workforce Planning and Organizational Design"
@@ -1756,7 +1527,7 @@ export default function Week04HumanResources() {
           off course by three shocks.
       ================================================================== */}
       <Slide id="workforce-forecasting" border align="left">
-        <Head eyebrow="Labor demand">Workforce Demand Forecasting</Head>
+        <Head1 eyebrow="Labor demand">Workforce Demand Forecasting</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1909,9 +1680,9 @@ export default function Week04HumanResources() {
           trust.                                             [quiz topic]
       ================================================================== */}
       <Slide id="skills-graphs" border align="left">
-        <Head eyebrow="Internal labor market">
+        <Head1 eyebrow="Internal labor market">
           Skills Graphs and the Internal Labor Market
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2026,11 +1797,11 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Should firms rely on inferred skills data to shape promotion and
           mobility opportunities when many high-value capabilities are still
           informal, relational, or poorly documented?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -2044,9 +1815,9 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["scheduling-staffing"]}
       >
-        <Head eyebrow="Frontline allocation">
+        <Head1 eyebrow="Frontline allocation">
           Scheduling, Staffing, and Frontline Allocation
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2176,7 +1947,7 @@ export default function Week04HumanResources() {
           tests for a legitimate action.
       ================================================================== */}
       <Slide id="attrition-risk" border align="left">
-        <Head eyebrow="Before exit">Attrition Risk and Retention Intervention</Head>
+        <Head1 eyebrow="Before exit">Attrition Risk and Retention Intervention</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2248,7 +2019,7 @@ export default function Week04HumanResources() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <Split left="Who may leave" right="Which actions" />
+            <Split1 left="Who may leave" right="Which actions" />
             <Steps
               items={["legitimate", "effective", "ethically defensible"]}
               cols="grid-cols-3"
@@ -2261,11 +2032,11 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           When does predictive retention become a strategic advantage, and when
           does it become an intrusive practice that changes the employment
           relationship for the worse?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -2274,9 +2045,9 @@ export default function Week04HumanResources() {
           four uses; visibility tipping into surveillance.
       ================================================================== */}
       <Slide id="network-analysis" border align="left">
-        <Head eyebrow="How work flows">
+        <Head1 eyebrow="How work flows">
           Organizational Network Analysis and Collaboration Patterns
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2410,7 +2181,7 @@ export default function Week04HumanResources() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Behavioral visibility"
               right="Perceived as surveillance"
             />
@@ -2423,7 +2194,7 @@ export default function Week04HumanResources() {
         </div>
       </Slide>
 
-      <ModulePlate
+      <ModulePlate2
         id="module-4"
         numeral="IV"
         title="Learning, Development, and Performance"
@@ -2439,9 +2210,9 @@ export default function Week04HumanResources() {
           carried through to real opportunities.
       ================================================================== */}
       <Slide id="personalized-learning" border align="left">
-        <Head eyebrow="Capability building">
+        <Head1 eyebrow="Capability building">
           Personalized Learning and Capability Building
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2580,9 +2351,9 @@ export default function Week04HumanResources() {
           with ambiguity escalated to people.
       ================================================================== */}
       <Slide id="manager-copilots" border align="left">
-        <Head eyebrow="Manager support">
+        <Head1 eyebrow="Manager support">
           Knowledge Retrieval and Manager Copilots
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2707,9 +2478,9 @@ export default function Week04HumanResources() {
           accountability.
       ================================================================== */}
       <Slide id="performance-management" border align="left">
-        <Head eyebrow="Calibration">
+        <Head1 eyebrow="Calibration">
           Performance Management and Goal Calibration
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2775,7 +2546,7 @@ export default function Week04HumanResources() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Replace manager accountability"
               right="Support better judgment"
               strikeLeft
@@ -2799,9 +2570,9 @@ export default function Week04HumanResources() {
           the three sensitive decisions.                     [quiz topic]
       ================================================================== */}
       <Slide id="pay-equity" border align="left">
-        <Head eyebrow="Rewards" signal>
+        <Head1 eyebrow="Rewards" signal>
           Rewards, Promotion, and Pay Equity Analytics
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2925,11 +2696,11 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Should firms use algorithmic recommendations in promotion and
           compensation cycles if doing so improves consistency but may narrow
           managerial discretion and contextual judgment?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -2943,9 +2714,9 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["productivity-analytics"]}
       >
-        <Head eyebrow="Monitoring">
+        <Head1 eyebrow="Monitoring">
           Productivity Analytics and Responsible Monitoring
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3061,13 +2832,13 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Where is the boundary between legitimate operational analytics and
           unacceptable employee surveillance in knowledge-intensive work?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
-      <ModulePlate
+      <ModulePlate2
         id="module-5"
         numeral="V"
         title="Employee Listening, DEI, and Compliance"
@@ -3083,9 +2854,9 @@ export default function Week04HumanResources() {
           what distorts what employees choose to say.
       ================================================================== */}
       <Slide id="employee-listening" border align="left">
-        <Head eyebrow="Listening at scale">
+        <Head1 eyebrow="Listening at scale">
           Employee Listening and Sentiment Interpretation
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3238,9 +3009,9 @@ export default function Week04HumanResources() {
           cause or its remedy.                               [quiz topic]
       ================================================================== */}
       <Slide id="dei-analytics" border align="left">
-        <Head eyebrow="Inclusion analytics" signal>
+        <Head1 eyebrow="Inclusion analytics" signal>
           DEI Analytics and Representation Risk
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3363,9 +3134,9 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["case-triage"]}
       >
-        <Head eyebrow="Employee relations">
+        <Head1 eyebrow="Employee relations">
           Employee Relations, Case Triage, and Policy Guidance
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3486,7 +3257,7 @@ export default function Week04HumanResources() {
               ))}
             </div>
             <div className="mt-8">
-              <Split
+              <Split1
                 left="Final judgment"
                 right="Workflow discipline"
                 strikeLeft
@@ -3507,9 +3278,9 @@ export default function Week04HumanResources() {
           analysis drawn inside what is technically possible.
       ================================================================== */}
       <Slide id="privacy-law" border align="left">
-        <Head eyebrow="Legal boundaries" signal>
+        <Head1 eyebrow="Legal boundaries" signal>
           Privacy, Consent, and Employment Law Boundaries
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3583,14 +3354,14 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Which categories of workforce data should remain off-limits for
           predictive modeling even if they would improve forecast accuracy or
           managerial control?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
-      <ModulePlate
+      <ModulePlate2
         id="module-6"
         numeral="VI"
         title="Governance and the Strategic Operating Model"
@@ -3606,7 +3377,7 @@ export default function Week04HumanResources() {
           value lives in the columns linked to it.           [quiz topic]
       ================================================================== */}
       <Slide id="governance-lifecycle" border align="left">
-        <Head eyebrow="Controls">AI Governance for HR Across the Lifecycle</Head>
+        <Head1 eyebrow="Controls">AI Governance for HR Across the Lifecycle</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3743,9 +3514,9 @@ export default function Week04HumanResources() {
         align="left"
         quizData={quiz["build-buy-partner"]}
       >
-        <Head eyebrow="Sourcing capability">
+        <Head1 eyebrow="Sourcing capability">
           Build, Buy, or Partner in the HR Technology Stack
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3832,11 +3603,11 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Which HR AI capabilities should be treated as strategic internal
           assets, and which are mature enough to buy as standardized
           infrastructure?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -3845,7 +3616,7 @@ export default function Week04HumanResources() {
           set against claims of objectivity.
       ================================================================== */}
       <Slide id="change-trust" border align="left">
-        <Head eyebrow="Adoption">Change Management and Workforce Trust</Head>
+        <Head1 eyebrow="Adoption">Change Management and Workforce Trust</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3936,7 +3707,7 @@ export default function Week04HumanResources() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Claims · objective or inevitable"
               right="Visible governance"
               strikeLeft
@@ -3955,9 +3726,9 @@ export default function Week04HumanResources() {
           to managerial capability.
       ================================================================== */}
       <Slide id="talent-strategy" border align="left">
-        <Head eyebrow="People and skills">
+        <Head1 eyebrow="People and skills">
           Talent Strategy for an AI-Enabled HR Function
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -4058,7 +3829,7 @@ export default function Week04HumanResources() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Side project · small innovation team"
               right="Part of managerial capability"
               strikeLeft
@@ -4078,9 +3849,9 @@ export default function Week04HumanResources() {
           HR domain.
       ================================================================== */}
       <Slide id="operating-model" border align="left">
-        <Head eyebrow="At enterprise scale">
+        <Head1 eyebrow="At enterprise scale">
           Strategic Operating Model for Enterprise HR AI
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -4201,9 +3972,9 @@ export default function Week04HumanResources() {
           04
         </span>
 
-        <Head eyebrow="What to carry forward">
+        <Head1 eyebrow="What to carry forward">
           Conclusion: HR as a Strategic Intelligence Function
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <ol

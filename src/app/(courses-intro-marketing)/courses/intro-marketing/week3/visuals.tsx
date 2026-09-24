@@ -38,10 +38,8 @@ import {
   Schematic,
   SIGNAL,
   SIGNAL_TINT,
-} from "../_visuals/broadsheet";
-import {
-  Person2,
-} from "../_visuals/objects";
+} from "../_visuals/kit";
+import { Person2 } from "../_visuals/objects";
 
 /* ==========================================================================
    1 · CENSUS — the consumer market is individuals and households

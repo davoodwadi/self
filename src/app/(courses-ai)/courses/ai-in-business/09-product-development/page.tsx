@@ -8,6 +8,29 @@ import {
 import { ScrollProgress } from "@/app/(courses-ai)/_components/Interactive";
 import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
 import quizzes from "./quizzes.json";
+import {
+  BODY,
+  Cite2,
+  COL_RULE,
+  Discussion1,
+  DISPLAY,
+  hash,
+  Head3,
+  headDown,
+  headLeft,
+  headRight,
+  LEAD,
+  Measure,
+  MICRO,
+  pad,
+  PAIR,
+  PartPlate3,
+  RULED,
+  Schematic,
+  Split2,
+  Stat2,
+  SVG_LABEL,
+} from "../_visuals/kit";
 
 // ============================================================================
 // WEEK 09 — AI IN PRODUCT DEVELOPMENT
@@ -31,97 +54,6 @@ import quizzes from "./quizzes.json";
 
 const quiz = createCourseQuizLookup(quizzes as CourseQuiz[]);
 
-/** Small-caps label treatment used for every eyebrow, axis tick and numeral. */
-const MICRO = "font-sans text-[10px] font-semibold uppercase tracking-[0.22em]";
-
-/** The same small-caps treatment for SVG <text>. */
-const SVG_LABEL = {
-  fontSize: 9,
-  letterSpacing: 2.2,
-  fontFamily: "var(--font-sans), sans-serif",
-  fontWeight: 600,
-} as const;
-
-/** Body sentence at the deck's reading size. */
-const BODY =
-  "font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]";
-
-/** A sentence promoted to display weight inside a block. */
-const DISPLAY =
-  "font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]";
-
-/** A sentence one step below display, used inside rules and frames. */
-const LEAD =
-  "font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]";
-
-/** Hairline that opens each later block of a slide. */
-const RULED = "mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8";
-
-/** Two sentences side by side under one hairline. */
-const PAIR =
-  "mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-14";
-
-/** The divider a second column takes inside PAIR. */
-const COL_RULE = "md:border-l md:border-[var(--charcoal)]/10 md:pl-14";
-
-const pad = (n: number) => String(n).padStart(2, "0");
-
-/** Deterministic 0–1 hash, so scattered marks match between server and client. */
-const hash = (n: number) => {
-  const v = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
-  return v - Math.floor(v);
-};
-
-/** Open arrowheads whose tip sits at (x, y). */
-const headRight = (x: number, y: number) => `M${x - 8} ${y - 5}l8 5l-8 5`;
-const headLeft = (x: number, y: number) => `M${x + 8} ${y - 5}l-8 5l8 5`;
-const headDown = (x: number, y: number) => `M${x - 5} ${y - 8}l5 8l5-8`;
-
-/** Eyebrow plus slide heading. */
-function Head({
-  eyebrow,
-  children,
-}: {
-  eyebrow: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div>
-      <div className={`${MICRO} text-[var(--champagne)]`}>{eyebrow}</div>
-      <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
-        {children}
-      </h2>
-    </div>
-  );
-}
-
-/** Discussion prompt, set apart in the deck's one ruled frame. */
-function Discussion({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="w-full">
-      <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
-        <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-        <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
-          {children}
-        </p>
-      </aside>
-    </div>
-  );
-}
-
-/** A [cite: N] marker from content.md, set as superscript source numbers. */
-function Cite({ n }: { n: number[] }) {
-  return (
-    <sup className="ml-1 whitespace-nowrap font-mono text-[0.5em] font-normal not-italic tracking-normal text-[var(--champagne)]">
-      {n.join(", ")}
-    </sup>
-  );
-}
-
 /**
  * A bullet written as "Label: sentence". The label is set as a crimson italic
  * kicker on its own line, inside the same paragraph so it still reads as one.
@@ -142,161 +74,6 @@ function Labelled({
       </span>{" "}
       {children}
     </p>
-  );
-}
-
-/**
- * A number lifted from the sentence under it, set at display size with its
- * unit in small caps. `mark` turns the number crimson.
- */
-function Stat({
-  value,
-  unit,
-  mark = false,
-}: {
-  value: string;
-  unit: string;
-  mark?: boolean;
-}) {
-  return (
-    <div aria-hidden className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-      <span
-        // Headings take their family from globals.css, which Tailwind's
-        // font-serif does not match; borrow it so figures echo the h2s.
-        style={{ fontFamily: "var(--font-serif), serif" }}
-        className={`text-[3.5rem] font-black leading-none tracking-[-0.04em] md:text-[4.75rem] ${
-          mark ? "text-[var(--crimson)]" : "text-[var(--charcoal)]"
-        }`}
-      >
-        {value}
-      </span>
-      <span className={`${MICRO} text-[var(--charcoal-light)]/65`}>{unit}</span>
-    </div>
-  );
-}
-
-/** Two labels set against each other across one rule; the right one is marked. */
-function Split({
-  left,
-  right,
-  strikeLeft = false,
-}: {
-  left: string;
-  right: string;
-  strikeLeft?: boolean;
-}) {
-  return (
-    <div
-      aria-hidden
-      className="grid grid-cols-2 border-b border-[var(--charcoal)]/15 pb-3"
-    >
-      <span
-        className={`${MICRO} pr-4 text-[var(--charcoal-light)]/55 ${
-          strikeLeft ? "[text-decoration-line:line-through]" : ""
-        }`}
-      >
-        {left}
-      </span>
-      <span
-        className={`${MICRO} border-l border-[var(--crimson)]/40 pl-6 text-[var(--crimson)]`}
-      >
-        {right}
-      </span>
-    </div>
-  );
-}
-
-/** Caption for any figure whose proportions are illustrative only. */
-function Schematic({ className = "mt-1" }: { className?: string }) {
-  return (
-    <figcaption
-      className={`${MICRO} ${className} text-[var(--charcoal-light)]/40`}
-    >
-      Schematic
-    </figcaption>
-  );
-}
-
-/** One numbered measure: numeral, its sentence, and its own small figure. */
-function Measure({
-  n,
-  figure,
-  children,
-}: {
-  n: number;
-  figure: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <li className="block">
-      <div className="grid gap-5 border-t border-[var(--charcoal)]/12 py-8 md:grid-cols-[4ch_1fr_17rem] md:items-center md:gap-10">
-        <span className={`${MICRO} text-[var(--crimson)] md:self-start md:pt-2`}>
-          {pad(n)}
-        </span>
-        <div>{children}</div>
-        <div aria-hidden className="w-full max-w-[17rem]">
-          {figure}
-        </div>
-      </div>
-    </li>
-  );
-}
-
-/**
- * Part divider: display numeral against a ruled margin, then the part's own
- * discussion prompt. The visible label and numeral are decorative; the h2
- * carries the full "Part N: Title" heading for assistive technology.
- */
-function PartPlate({
-  id,
-  numeral,
-  title,
-  lines,
-  discussion,
-  quizData,
-}: {
-  id: string;
-  numeral: string;
-  title: string;
-  lines: React.ReactNode[];
-  discussion: string;
-  quizData?: CourseQuiz;
-}) {
-  return (
-    <Slide id={id} border align="left" quizData={quizData}>
-      <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-        <div>
-          <div aria-hidden>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Part</div>
-            <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
-              {numeral}
-            </div>
-          </div>
-        </div>
-
-        <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-          <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
-            <span className="sr-only">{`Part ${numeral}: `}</span>
-            {title}
-          </h2>
-          <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
-          {lines.map((line, i) => (
-            <p
-              key={i}
-              className={`${
-                i === 0 ? "mt-8" : "mt-4"
-              } max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl`}
-            >
-              {line}
-            </p>
-          ))}
-        </div>
-      </div>
-
-      <div className="w-full md:pl-[14rem]">
-        <Discussion>{discussion}</Discussion>
-      </div>
-    </Slide>
   );
 }
 
@@ -460,7 +237,7 @@ export default function Week09ProductDevelopment() {
           firms up toward regulatory compliance.              [quiz topic]
       ================================================================== */}
       <Slide id="paradigm-shift" border align="left">
-        <Head eyebrow="Opening">The Paradigm Shift</Head>
+        <Head3 eyebrow="Opening">The Paradigm Shift</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -564,10 +341,10 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           How does &quot;augmented invention&quot; differ from traditional
           &quot;aided design&quot; in your view?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -581,7 +358,7 @@ export default function Week09ProductDevelopment() {
         align="left"
         quizData={quiz["three-shifts"]}
       >
-        <Head eyebrow="Opening">Three Transformative Shifts</Head>
+        <Head3 eyebrow="Opening">Three Transformative Shifts</Head3>
 
         <ol className="mt-11 grid w-full max-w-5xl gap-12 md:grid-cols-3 md:gap-0">
           <li className="block md:pr-8">
@@ -679,13 +456,13 @@ export default function Week09ProductDevelopment() {
           </li>
         </ol>
 
-        <Discussion>
+        <Discussion1>
           Which of these three shifts poses the greatest challenge to legacy
           organizations?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
-      <PartPlate
+      <PartPlate3
         id="part-1"
         numeral="1"
         title="AI-Driven Ideation"
@@ -704,13 +481,13 @@ export default function Week09ProductDevelopment() {
                                                               [quiz topic]
       ================================================================== */}
       <Slide id="divergent-convergent" border align="left">
-        <Head eyebrow="Part 1 · 01 / 05">Divergent vs. Convergent Thinking</Head>
+        <Head3 eyebrow="Part 1 · 01 / 05">Divergent vs. Convergent Thinking</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             LLMs excel at expanding the solution space (&quot;persistence&quot;
             and &quot;flexibility&quot;)
-            <Cite n={[1, 2]} />.
+            <Cite2 n={[1, 2]} />.
           </p>
           <svg
             aria-hidden
@@ -745,7 +522,7 @@ export default function Week09ProductDevelopment() {
             <p className={BODY}>
               Better at &quot;small ideas&quot; (incremental) than &quot;big
               ideas&quot; (paradigm shifts)
-              <Cite n={[2]} />.
+              <Cite2 n={[2]} />.
             </p>
             <svg
               aria-hidden
@@ -801,9 +578,9 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Where should human designers intervene in the LLM ideation process?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -818,7 +595,7 @@ export default function Week09ProductDevelopment() {
         align="left"
         quizData={quiz["persona-simulation"]}
       >
-        <Head eyebrow="Part 1 · 02 / 05">Persona Simulation</Head>
+        <Head3 eyebrow="Part 1 · 02 / 05">Persona Simulation</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -878,7 +655,7 @@ export default function Week09ProductDevelopment() {
           <div>
             <p className={BODY}>
               Tools like Figr parse live web apps to build context-aware memory
-              <Cite n={[3, 4]} />.
+              <Cite2 n={[3, 4]} />.
             </p>
             <svg
               aria-hidden
@@ -937,10 +714,10 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           What are the risks of relying on simulated personas instead of real
           users?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -949,7 +726,7 @@ export default function Week09ProductDevelopment() {
           one open region ringed; twelve months set large.
       ================================================================== */}
       <Slide id="market-trends" border align="left">
-        <Head eyebrow="Part 1 · 03 / 05">Predictive Market Trends</Head>
+        <Head3 eyebrow="Part 1 · 03 / 05">Predictive Market Trends</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -1009,7 +786,7 @@ export default function Week09ProductDevelopment() {
           </div>
 
           <div className={COL_RULE}>
-            <Stat value="12" unit="months in advance" mark />
+            <Stat2 value="12" unit="months in advance" mark />
             <svg
               aria-hidden
               viewBox="0 0 400 28"
@@ -1028,15 +805,15 @@ export default function Week09ProductDevelopment() {
             </svg>
             <p className={`${BODY} mt-6`}>
               Tools like Glimpse track trends up to 12 months in advance
-              <Cite n={[5]} />.
+              <Cite2 n={[5]} />.
             </p>
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           How can companies distinguish between a temporary fad and a
           sustainable trend using AI?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -1045,13 +822,13 @@ export default function Week09ProductDevelopment() {
           the last focus group; product and market cut to fit.
       ================================================================== */}
       <Slide id="latent-needs" border align="left">
-        <Head eyebrow="Part 1 · 04 / 05">Uncovering Latent Needs</Head>
+        <Head3 eyebrow="Part 1 · 04 / 05">Uncovering Latent Needs</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Sentiment analysis on millions of conversations (Brandwatch,
             Sprinklr)
-            <Cite n={[6]} />.
+            <Cite2 n={[6]} />.
           </p>
           <figure aria-hidden className="mt-8 w-full max-w-5xl">
             <svg viewBox="0 0 800 150" className="w-full" fill="none">
@@ -1132,7 +909,7 @@ export default function Week09ProductDevelopment() {
           <div className={COL_RULE}>
             <p className={BODY}>
               Validating &quot;product-market fit&quot; using synthetic data
-              <Cite n={[7]} />.
+              <Cite2 n={[7]} />.
             </p>
             <svg
               aria-hidden
@@ -1157,10 +934,10 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Is synthetic data a valid substitute for real-world consumer
           behavior?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -1169,14 +946,14 @@ export default function Week09ProductDevelopment() {
           gather into one marked block of intelligence.
       ================================================================== */}
       <Slide id="competitor-analysis" border align="left">
-        <Head eyebrow="Part 1 · 05 / 05">Automated Competitor Analysis</Head>
+        <Head3 eyebrow="Part 1 · 05 / 05">Automated Competitor Analysis</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Autonomous agents replacing manual &quot;battlecards&quot;.
           </p>
           <div aria-hidden className="mt-7 max-w-3xl">
-            <Split
+            <Split2
               left='Manual "battlecards"'
               right="Autonomous agents"
               strikeLeft
@@ -1190,7 +967,7 @@ export default function Week09ProductDevelopment() {
               <p className={BODY}>
                 Real-time scraping of documentation, pricing, and release notes
                 (Crayon, Klue)
-                <Cite n={[8, 9]} />.
+                <Cite2 n={[8, 9]} />.
               </p>
               <p className={BODY}>
                 Synthesizing fragmented data into actionable intelligence.
@@ -1236,13 +1013,13 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           How does real-time competitive intelligence change strategic planning
           cycles?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
-      <PartPlate
+      <PartPlate3
         id="part-2"
         numeral="2"
         title="Generative Design & Engineering"
@@ -1252,7 +1029,7 @@ export default function Week09ProductDevelopment() {
           <>
             Reducing optimization time from days to minutes (Diabatix
             ColdStream)
-            <Cite n={[11, 12]} />.
+            <Cite2 n={[11, 12]} />.
           </>,
         ]}
         discussion="What happens to the role of the engineer when AI optimizes the geometry?"
@@ -1264,7 +1041,7 @@ export default function Week09ProductDevelopment() {
           below.
       ================================================================== */}
       <Slide id="manufacturability" border align="left">
-        <Head eyebrow="Part 2 · 01 / 04">Mainstream Manufacturability</Head>
+        <Head3 eyebrow="Part 2 · 01 / 04">Mainstream Manufacturability</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -1277,7 +1054,7 @@ export default function Week09ProductDevelopment() {
           <div className={RULED}>
             <p className={`${BODY} max-w-4xl`}>
               Optimizing for traditional processes: casting, molding, machining
-              <Cite n={[13, 14]} />.
+              <Cite2 n={[13, 14]} />.
             </p>
             <svg
               aria-hidden
@@ -1322,9 +1099,9 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Why has generative design historically been limited to 3D printing?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -1333,14 +1110,14 @@ export default function Week09ProductDevelopment() {
           four sparse points; the solver's long wait against real time.
       ================================================================== */}
       <Slide id="pinns" border align="left">
-        <Head eyebrow="Part 2 · 02 / 04">
+        <Head3 eyebrow="Part 2 · 02 / 04">
           Physics-Informed Neural Networks (PINNs)
-        </Head>
+        </Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Embedding physical laws (Navier-Stokes) into neural networks
-            <Cite n={[15, 16]} />.
+            <Cite2 n={[15, 16]} />.
           </p>
           <svg
             aria-hidden
@@ -1405,7 +1182,7 @@ export default function Week09ProductDevelopment() {
             <p className={BODY}>
               Constraining AI to &quot;obey physics&quot; for accurate
               predictions with sparse data
-              <Cite n={[17]} />.
+              <Cite2 n={[17]} />.
             </p>
             <figure aria-hidden className="mt-7 w-full max-w-[25rem]">
               <svg viewBox="0 0 400 134" className="w-full" fill="none">
@@ -1434,7 +1211,7 @@ export default function Week09ProductDevelopment() {
             <p className={BODY}>
               Enabling &quot;real-time simulation&quot; without waiting for FEA
               solvers
-              <Cite n={[18]} />.
+              <Cite2 n={[18]} />.
             </p>
             <figure aria-hidden className="mt-7 w-full max-w-[25rem]">
               <svg viewBox="0 0 400 104" className="w-full" fill="none">
@@ -1455,10 +1232,10 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           How do PINNs bridge the gap between data science and mechanical
           engineering?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -1467,7 +1244,7 @@ export default function Week09ProductDevelopment() {
           the same outline with both tails marked.
       ================================================================== */}
       <Slide id="synthetic-engineering" border align="left">
-        <Head eyebrow="Part 2 · 03 / 04">Synthetic Data for Engineering</Head>
+        <Head3 eyebrow="Part 2 · 03 / 04">Synthetic Data for Engineering</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -1475,7 +1252,7 @@ export default function Week09ProductDevelopment() {
             dangerous.
           </p>
           <div aria-hidden className="mt-7 max-w-3xl">
-            <Split left="Real-world collection" right="Generating data" />
+            <Split2 left="Real-world collection" right="Generating data" />
           </div>
         </div>
 
@@ -1497,7 +1274,7 @@ export default function Week09ProductDevelopment() {
               <div>
                 <p className={BODY}>
                   Using GANs and VAEs for statistically accurate datasets
-                  <Cite n={[19, 20]} />.
+                  <Cite2 n={[19, 20]} />.
                 </p>
                 <figure aria-hidden className="mt-7 w-full max-w-[25rem]">
                   <svg viewBox="0 0 400 134" className="w-full" fill="none">
@@ -1550,9 +1327,9 @@ export default function Week09ProductDevelopment() {
           );
         })()}
 
-        <Discussion>
+        <Discussion1>
           In what scenarios is synthetic data superior to real-world data?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -1561,7 +1338,7 @@ export default function Week09ProductDevelopment() {
           shortening one after another.
       ================================================================== */}
       <Slide id="privacy-speed" border align="left">
-        <Head eyebrow="Part 2 · 04 / 04">Data Privacy and Speed</Head>
+        <Head3 eyebrow="Part 2 · 04 / 04">Data Privacy and Speed</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1610,7 +1387,7 @@ export default function Week09ProductDevelopment() {
           <div>
             <p className={BODY}>
               Compliant with privacy regulations like GDPR
-              <Cite n={[21]} />.
+              <Cite2 n={[21]} />.
             </p>
             <svg
               aria-hidden
@@ -1661,13 +1438,13 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           How does synthetic data mitigate privacy risks in global engineering
           teams?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
-      <PartPlate
+      <PartPlate3
         id="part-3"
         numeral="3"
         title="Prototyping & Digital Twins"
@@ -1676,7 +1453,7 @@ export default function Week09ProductDevelopment() {
           "AI-guided rapid prototyping in Additive Manufacturing.",
           <>
             In-process correction using computer vision to reduce waste
-            <Cite n={[22, 23]} />.
+            <Cite2 n={[22, 23]} />.
           </>,
         ]}
         discussion="What is the economic impact of self-correcting 3D printers?"
@@ -1688,13 +1465,13 @@ export default function Week09ProductDevelopment() {
           through before one clean part; one mark repeated at every site.
       ================================================================== */}
       <Slide id="parameter-optimization" border align="left">
-        <Head eyebrow="Part 3 · 01 / 03">Parameter Optimization</Head>
+        <Head3 eyebrow="Part 3 · 01 / 03">Parameter Optimization</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Analyzing historical print data to suggest optimal slicing
             parameters
-            <Cite n={[24]} />.
+            <Cite2 n={[24]} />.
           </p>
           <svg
             aria-hidden
@@ -1783,9 +1560,9 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           How does this capability enable decentralized manufacturing?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -1795,12 +1572,12 @@ export default function Week09ProductDevelopment() {
           failure line.
       ================================================================== */}
       <Slide id="cognitive-twins" border align="left">
-        <Head eyebrow="Part 3 · 02 / 03">Cognitive Digital Twins</Head>
+        <Head3 eyebrow="Part 3 · 02 / 03">Cognitive Digital Twins</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             Beyond static virtual replicas to semantic, reasoning models
-            <Cite n={[25, 26]} />.
+            <Cite2 n={[25, 26]} />.
           </p>
           <svg
             aria-hidden
@@ -1894,7 +1671,7 @@ export default function Week09ProductDevelopment() {
           <div className={COL_RULE}>
             <p className={BODY}>
               Predicting failure modes and autonomously suggesting maintenance
-              <Cite n={[25]} />.
+              <Cite2 n={[25]} />.
             </p>
             <figure aria-hidden className="mt-7 w-full max-w-[25rem]">
               <svg viewBox="0 0 400 118" className="w-full" fill="none">
@@ -1915,9 +1692,9 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           At what point does a &quot;twin&quot; become an autonomous operator?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -1926,7 +1703,7 @@ export default function Week09ProductDevelopment() {
           trace; testing placed on the line before physical prototyping.
       ================================================================== */}
       <Slide id="vr-ux" border align="left">
-        <Head eyebrow="Part 3 · 03 / 03">VR and AI-Assisted UX</Head>
+        <Head3 eyebrow="Part 3 · 03 / 03">VR and AI-Assisted UX</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1960,7 +1737,7 @@ export default function Week09ProductDevelopment() {
           <div>
             <p className={BODY}>
               Analyzing gaze patterns and biometrics to predict cognitive load
-              <Cite n={[27]} />.
+              <Cite2 n={[27]} />.
             </p>
             <svg
               aria-hidden
@@ -2019,12 +1796,12 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Can VR testing completely replace physical ergonomic testing?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
-      <PartPlate
+      <PartPlate3
         id="part-4"
         numeral="4"
         title="DfM & Supply Chain Integration"
@@ -2032,11 +1809,11 @@ export default function Week09ProductDevelopment() {
           "Moving DfM from a final checkpoint to a continuous process.",
           <>
             AI-automated DfM checks (CoLab, DFMPro) flagging risks
-            <Cite n={[28, 29]} />.
+            <Cite2 n={[28, 29]} />.
           </>,
           <>
             Learning from historical data to prevent recurring failures
-            <Cite n={[30]} />.
+            <Cite2 n={[30]} />.
           </>,
         ]}
         discussion='How does "continuous DfM" alter the engineering workflow?'
@@ -2048,12 +1825,12 @@ export default function Week09ProductDevelopment() {
           line; an LCA store feeding a shorter footprint.
       ================================================================== */}
       <Slide id="sustainable-materials" border align="left">
-        <Head eyebrow="Part 4 · 01 / 02">Sustainable Material Selection</Head>
+        <Head3 eyebrow="Part 4 · 01 / 02">Sustainable Material Selection</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
             AI discovery of new materials (Materials Nexus)
-            <Cite n={[31, 32]} />.
+            <Cite2 n={[31, 32]} />.
           </p>
           <figure aria-hidden className="mt-8 w-full max-w-5xl">
             <svg viewBox="0 0 800 144" className="w-full" fill="none">
@@ -2107,7 +1884,7 @@ export default function Week09ProductDevelopment() {
           <div className={COL_RULE}>
             <p className={BODY}>
               Integrating with LCA databases for lower carbon footprints
-              <Cite n={[33]} />.
+              <Cite2 n={[33]} />.
             </p>
             <figure aria-hidden className="mt-7 w-full max-w-[25rem]">
               <svg viewBox="0 0 400 118" className="w-full" fill="none">
@@ -2132,9 +1909,9 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           How critical is AI in achieving aggressive sustainability targets?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -2143,12 +1920,12 @@ export default function Week09ProductDevelopment() {
           warnings; a price record running on into a forecast.
       ================================================================== */}
       <Slide id="supply-resilience" border align="left">
-        <Head eyebrow="Part 4 · 02 / 02">Supply Chain Resilience</Head>
+        <Head3 eyebrow="Part 4 · 02 / 02">Supply Chain Resilience</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Mapping multi-tier supply chains with AI (SCM Globe, Resilinc)
-            <Cite n={[34, 35]} />.
+            <Cite2 n={[34, 35]} />.
           </p>
           <svg
             aria-hidden
@@ -2233,7 +2010,7 @@ export default function Week09ProductDevelopment() {
           <div className={COL_RULE}>
             <p className={BODY}>
               Predicting lead times and price fluctuations
-              <Cite n={[36]} />.
+              <Cite2 n={[36]} />.
             </p>
             <figure aria-hidden className="mt-7 w-full max-w-[25rem]">
               <svg viewBox="0 0 400 124" className="w-full" fill="none">
@@ -2254,13 +2031,13 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           How should design teams weigh technical performance against supply
           chain risk?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
-      <PartPlate
+      <PartPlate3
         id="part-5"
         numeral="5"
         title="Personalization & User-Centricity"
@@ -2268,7 +2045,7 @@ export default function Week09ProductDevelopment() {
           'Achieving "mass customization" at scale.',
           <>
             Autonomous configuration for &quot;Lot Size 1&quot; manufacturing
-            <Cite n={[37, 38]} />.
+            <Cite2 n={[37, 38]} />.
           </>,
           "Adjusting tooling and assembly for individual units.",
         ]}
@@ -2281,12 +2058,12 @@ export default function Week09ProductDevelopment() {
           stray one brought back in; one person in the process, then many.
       ================================================================== */}
       <Slide id="generative-customization" border align="left">
-        <Head eyebrow="Part 5 · 01 / 02">Generative Customization</Head>
+        <Head3 eyebrow="Part 5 · 01 / 02">Generative Customization</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Co-designing products with customers (e.g., custom shoe soles)
-            <Cite n={[39]} />.
+            <Cite2 n={[39]} />.
           </p>
           <svg
             aria-hidden
@@ -2414,9 +2191,9 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           What are the brand implications of allowing customers to co-design?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -2426,7 +2203,7 @@ export default function Week09ProductDevelopment() {
           on an otherwise straight path.
       ================================================================== */}
       <Slide id="iot-loops" border align="left">
-        <Head eyebrow="Part 5 · 02 / 02">IoT Feedback Loops (Version 2.0)</Head>
+        <Head3 eyebrow="Part 5 · 02 / 02">IoT Feedback Loops (Version 2.0)</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -2462,7 +2239,7 @@ export default function Week09ProductDevelopment() {
           <div>
             <p className={BODY}>
               Evidence-based iteration analyzing real-world patterns
-              <Cite n={[40, 41]} />.
+              <Cite2 n={[40, 41]} />.
             </p>
             <figure aria-hidden className="mt-7 w-full max-w-[25rem]">
               <svg viewBox="0 0 400 112" className="w-full" fill="none">
@@ -2514,12 +2291,12 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           How do we balance data-driven design with user privacy?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
-      <PartPlate
+      <PartPlate3
         id="part-6"
         numeral="6"
         title="Ethics, Compliance & Standards"
@@ -2527,7 +2304,7 @@ export default function Week09ProductDevelopment() {
           "Safety and ethics as paramount in physical AI.",
           <>
             Addressing ergonomic bias in historical datasets
-            <Cite n={[27, 42]} />.
+            <Cite2 n={[27, 42]} />.
           </>,
           "Using diverse virtual mannequins for inclusive design.",
         ]}
@@ -2539,12 +2316,12 @@ export default function Week09ProductDevelopment() {
           balance; a checklist whose last line is algorithmic fairness.
       ================================================================== */}
       <Slide id="mitigation-tools" border align="left">
-        <Head eyebrow="Part 6 · 01 / 02">Mitigation Tools</Head>
+        <Head3 eyebrow="Part 6 · 01 / 02">Mitigation Tools</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
             Identifying bias in training datasets (Credo AI, IBM)
-            <Cite n={[43, 44]} />.
+            <Cite2 n={[43, 44]} />.
           </p>
           <svg
             aria-hidden
@@ -2630,9 +2407,9 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Should AI fairness be a standard engineering requirement?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -2641,7 +2418,7 @@ export default function Week09ProductDevelopment() {
           back through a graph to ISO/IEC 42001.
       ================================================================== */}
       <Slide id="compliance-automation" border align="left">
-        <Head eyebrow="Part 6 · 02 / 02">Compliance Automation</Head>
+        <Head3 eyebrow="Part 6 · 02 / 02">Compliance Automation</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -2670,7 +2447,7 @@ export default function Week09ProductDevelopment() {
           <div>
             <Labelled label="Automating documentation:">
               model cards, risk assessments (Vanta, Monitaur)
-              <Cite n={[45, 46]} />.
+              <Cite2 n={[45, 46]} />.
             </Labelled>
             <svg
               aria-hidden
@@ -2699,7 +2476,7 @@ export default function Week09ProductDevelopment() {
           <div className={COL_RULE}>
             <p className={BODY}>
               Tracing lineage for ISO/IEC 42001 compliance
-              <Cite n={[47]} />.
+              <Cite2 n={[47]} />.
             </p>
             <svg
               aria-hidden
@@ -2742,10 +2519,10 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           How will regulation impact the speed of AI adoption in product
           development?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -2754,7 +2531,7 @@ export default function Week09ProductDevelopment() {
           unbuildable piece struck from a design.
       ================================================================== */}
       <Slide id="summary" border align="left">
-        <Head eyebrow="Closing · 01 / 04">Summary of Findings</Head>
+        <Head3 eyebrow="Closing · 01 / 04">Summary of Findings</Head3>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -2840,9 +2617,9 @@ export default function Week09ProductDevelopment() {
           </Measure>
         </ol>
 
-        <Discussion>
+        <Discussion1>
           Which of these maturation signs is most visible in your industry?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -2851,7 +2628,7 @@ export default function Week09ProductDevelopment() {
           conjunction set at display weight and marked.
       ================================================================== */}
       <Slide id="speed-safety" border align="left">
-        <Head eyebrow="Closing · 02 / 04">Speed + Safety</Head>
+        <Head3 eyebrow="Closing · 02 / 04">Speed + Safety</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -2907,10 +2684,10 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Can we truly have both speed and safety, or is there always a
           trade-off?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -2919,7 +2696,7 @@ export default function Week09ProductDevelopment() {
           three failure cells.
       ================================================================== */}
       <Slide id="future" border align="left">
-        <Head eyebrow="Closing · 03 / 04">Future Directions</Head>
+        <Head3 eyebrow="Closing · 03 / 04">Future Directions</Head3>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -2963,7 +2740,7 @@ export default function Week09ProductDevelopment() {
           >
             <Labelled label="Interoperable AI Standards:">
               Standardized data formats
-              <Cite n={[48]} />.
+              <Cite2 n={[48]} />.
             </Labelled>
           </Measure>
 
@@ -2995,15 +2772,15 @@ export default function Week09ProductDevelopment() {
           >
             <Labelled label="Small Data Engineering:">
               Robust models from sparse failure data
-              <Cite n={[19]} />.
+              <Cite2 n={[19]} />.
             </Labelled>
           </Measure>
         </ol>
 
-        <Discussion>
+        <Discussion1>
           What are the barriers to achieving the &quot;Self-Healing&quot;
           Design Loop?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -3012,7 +2789,7 @@ export default function Week09ProductDevelopment() {
           network held inside its physics frame.
       ================================================================== */}
       <Slide id="insights" border align="left">
-        <Head eyebrow="Closing · 04 / 04">Actionable Insights</Head>
+        <Head3 eyebrow="Closing · 04 / 04">Actionable Insights</Head3>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -3034,7 +2811,7 @@ export default function Week09ProductDevelopment() {
           >
             <p className={LEAD}>
               Adopt &quot;AI-Augmented&quot; Reviews (CoLab)
-              <Cite n={[28]} />.
+              <Cite2 n={[28]} />.
             </p>
           </Measure>
 
@@ -3058,7 +2835,7 @@ export default function Week09ProductDevelopment() {
           >
             <p className={LEAD}>
               Integrate Compliance Early (Credo AI)
-              <Cite n={[47]} />.
+              <Cite2 n={[47]} />.
             </p>
           </Measure>
 
@@ -3101,14 +2878,14 @@ export default function Week09ProductDevelopment() {
           >
             <p className={LEAD}>
               Invest in &quot;Physical AI&quot; Skills (PINNs context)
-              <Cite n={[15, 42]} />.
+              <Cite2 n={[15, 42]} />.
             </p>
           </Measure>
         </ol>
 
-        <Discussion>
+        <Discussion1>
           Which insight will you prioritize for your organization?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -3116,7 +2893,7 @@ export default function Week09ProductDevelopment() {
           superscripts point to, set as a quiet grid.
       ================================================================== */}
       <Slide id="references" border align="left">
-        <Head eyebrow="Sources">References</Head>
+        <Head3 eyebrow="Sources">References</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -3143,9 +2920,9 @@ export default function Week09ProductDevelopment() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Which source or paper are you most interested in reading further?
-        </Discussion>
+        </Discussion1>
       </Slide>
     </SlideDeck>
   );

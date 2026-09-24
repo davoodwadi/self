@@ -8,6 +8,24 @@ import {
 import { ScrollProgress } from "@/app/(courses-ai)/_components/Interactive";
 import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
 import quizzes from "./quizzes.json";
+import {
+  BODY,
+  Discussion1,
+  DISPLAY,
+  Head1,
+  LEAD,
+  MICRO,
+  ModulePlate2,
+  pad,
+  RULED,
+  Schematic,
+  Split1,
+  Steps,
+  SVG_LABEL,
+  TAG,
+  Terms,
+  Verdict,
+} from "../_visuals/kit";
 
 // ============================================================================
 // WEEK 03 — APPLICATIONS OF AI IN FINANCE
@@ -26,252 +44,6 @@ import quizzes from "./quizzes.json";
 // ============================================================================
 
 const quiz = createCourseQuizLookup(quizzes as CourseQuiz[]);
-
-/** Small-caps label treatment used for every eyebrow, axis tick and numeral. */
-const MICRO = "font-sans text-[10px] font-semibold uppercase tracking-[0.22em]";
-
-/** The same small-caps treatment for SVG <text>. */
-const SVG_LABEL = {
-  fontSize: 9,
-  letterSpacing: 2.2,
-  fontFamily: "var(--font-sans), sans-serif",
-  fontWeight: 600,
-} as const;
-
-/** Body sentence at the deck's reading size. */
-const BODY =
-  "font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]";
-
-/** A sentence promoted to display weight inside a block. */
-const DISPLAY =
-  "font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]";
-
-/** A sentence one step below display, used inside rules and frames. */
-const LEAD =
-  "font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]";
-
-/** Hairline that opens each later block of a slide. */
-const RULED = "mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8";
-
-/** Mono tag treatment for words lifted out of a sentence. */
-const TAG = "font-mono text-[10px] uppercase tracking-[0.1em]";
-
-const pad = (n: number) => String(n).padStart(2, "0");
-
-/** Eyebrow plus slide heading, the masthead every content slide opens with. */
-function Head({
-  eyebrow,
-  children,
-  signal = false,
-}: {
-  eyebrow: string;
-  children: React.ReactNode;
-  signal?: boolean;
-}) {
-  return (
-    <div>
-      <div
-        className={`${MICRO} ${
-          signal ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
-        }`}
-      >
-        {eyebrow}
-      </div>
-      <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
-        {children}
-      </h2>
-    </div>
-  );
-}
-
-/** Module divider: display roman numeral against a ruled margin. */
-function ModulePlate({
-  id,
-  numeral,
-  title,
-  lines,
-  quizData,
-}: {
-  id: string;
-  numeral: string;
-  title: string;
-  lines: string[];
-  quizData?: CourseQuiz;
-}) {
-  return (
-    <Slide id={id} border align="left" quizData={quizData}>
-      <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>Module</div>
-          <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
-            {numeral}
-          </div>
-        </div>
-
-        <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-          <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
-            {title}
-          </h2>
-          <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
-          {lines.map((line, i) => (
-            <p
-              key={line}
-              className={`${
-                i === 0 ? "mt-8" : "mt-4"
-              } max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl`}
-            >
-              {line}
-            </p>
-          ))}
-        </div>
-      </div>
-    </Slide>
-  );
-}
-
-/** Discussion prompt, set apart in the deck's one ruled frame. */
-function Discussion({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="w-full">
-      <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
-        <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-        <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
-          {children}
-        </p>
-      </aside>
-    </div>
-  );
-}
-
-/** Closing statement in display weight. */
-function Verdict({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="w-full">
-      <p className="mt-14 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
-        {children}
-      </p>
-    </div>
-  );
-}
-
-/** A sentence's own list, set as middot-separated mono words. */
-function Terms({
-  items,
-  className = "mt-5",
-}: {
-  items: string[];
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`${className} flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/55`}
-    >
-      {items.map((item, i) => (
-        <React.Fragment key={item}>
-          {i > 0 && <span>·</span>}
-          <span>{item}</span>
-        </React.Fragment>
-      ))}
-    </div>
-  );
-}
-
-/**
- * Numbered cells in a hairline grid. `cols` carries the responsive column
- * classes; `mark` turns one cell crimson.
- */
-function Steps({
-  items,
-  cols,
-  mark,
-  className = "mt-6",
-}: {
-  items: string[];
-  cols: string;
-  mark?: number;
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`${className} grid grid-cols-2 gap-px bg-[var(--charcoal)]/10 ${cols}`}
-    >
-      {items.map((item, i) => (
-        <div key={item} className="bg-[var(--background)] px-4 py-4">
-          <span
-            className={`${MICRO} ${
-              i === mark ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
-            }`}
-          >
-            {pad(i + 1)}
-          </span>
-          <span
-            className={`mt-2 block font-mono text-[11px] uppercase tracking-[0.1em] ${
-              i === mark
-                ? "text-[var(--crimson)]"
-                : "text-[var(--charcoal-light)]/70"
-            }`}
-          >
-            {item}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/** Two labels set against each other across one rule; the right one is marked. */
-function Split({
-  left,
-  right,
-  strikeLeft = false,
-  cols = "grid-cols-2",
-}: {
-  left: string;
-  right: string;
-  strikeLeft?: boolean;
-  cols?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`grid ${cols} border-b border-[var(--charcoal)]/15 pb-3`}
-    >
-      <span
-        className={`${MICRO} pr-4 text-[var(--charcoal-light)]/55 ${
-          strikeLeft ? "[text-decoration-line:line-through]" : ""
-        }`}
-      >
-        {left}
-      </span>
-      <span
-        className={`${MICRO} border-l border-[var(--crimson)]/40 pl-6 text-[var(--crimson)]`}
-      >
-        {right}
-      </span>
-    </div>
-  );
-}
-
-/** Caption for any figure whose proportions are illustrative only. */
-function Schematic({ className = "mt-1" }: { className?: string }) {
-  return (
-    <figcaption
-      className={`${MICRO} ${className} text-[var(--charcoal-light)]/40`}
-    >
-      Schematic
-    </figcaption>
-  );
-}
 
 export default function Week03Finance() {
   return (
@@ -357,7 +129,7 @@ export default function Week03Finance() {
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="why-finance-ai" border align="left">
-        <Head eyebrow="Opening">Why Finance Became an AI Domain</Head>
+        <Head1 eyebrow="Opening">Why Finance Became an AI Domain</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -484,9 +256,9 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["decision-architecture"]}
       >
-        <Head eyebrow="Information into decisions">
+        <Head1 eyebrow="Information into decisions">
           The Financial Firm as a Decision Architecture
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -579,7 +351,7 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Strengthens judgment"
               right="Unacceptable opacity"
             />
@@ -596,9 +368,9 @@ export default function Week03Finance() {
           each carrying its own sources of gain.
       ================================================================== */}
       <Slide id="value-creation" border align="left">
-        <Head eyebrow="Where the value comes from">
+        <Head1 eyebrow="Where the value comes from">
           Value Creation in Finance
-        </Head>
+        </Head1>
 
         <ol className="mt-10 w-full max-w-5xl">
           {[
@@ -644,7 +416,7 @@ export default function Week03Finance() {
         </ol>
       </Slide>
 
-      <ModulePlate
+      <ModulePlate2
         id="module-1"
         numeral="I"
         title="Foundations"
@@ -660,9 +432,9 @@ export default function Week03Finance() {
           ahead of model novelty.
       ================================================================== */}
       <Slide id="data-signal-quality" border align="left">
-        <Head eyebrow="What the models read">
+        <Head1 eyebrow="What the models read">
           Data Types and Signal Quality in Financial Services
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -855,9 +627,9 @@ export default function Week03Finance() {
           struck tag.                                     [quiz topic]
       ================================================================== */}
       <Slide id="method-to-task" border align="left">
-        <Head eyebrow="The right tool for the task">
+        <Head1 eyebrow="The right tool for the task">
           Matching Method to Financial Task
-        </Head>
+        </Head1>
 
         <ol className="mt-10 w-full max-w-5xl">
           {[
@@ -938,9 +710,9 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["human-judgment"]}
       >
-        <Head eyebrow="High stakes" signal>
+        <Head1 eyebrow="High stakes" signal>
           Human Judgment in High-Stakes Finance
-        </Head>
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
           <div>
@@ -1096,7 +868,7 @@ export default function Week03Finance() {
         </div>
       </Slide>
 
-      <ModulePlate
+      <ModulePlate2
         id="module-2"
         numeral="II"
         title="Credit and Lending"
@@ -1113,9 +885,9 @@ export default function Week03Finance() {
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="credit-scoring" border align="left">
-        <Head eyebrow="Beyond the scorecard">
+        <Head1 eyebrow="Beyond the scorecard">
           Credit Scoring Beyond Static Rules
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1306,7 +1078,7 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["underwriting"]}
       >
-        <Head eyebrow="Broader signals">Underwriting with Broader Signals</Head>
+        <Head1 eyebrow="Broader signals">Underwriting with Broader Signals</Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_20rem] md:gap-14">
           <div>
@@ -1422,9 +1194,9 @@ export default function Week03Finance() {
           against what it can worsen.
       ================================================================== */}
       <Slide id="pricing-limits" border align="left">
-        <Head eyebrow="After approval">
+        <Head1 eyebrow="After approval">
           Pricing, Limit Setting, and Profitability
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1518,7 +1290,7 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Optimize · short-term margin"
               right="Worsening · adverse selection or customer trust"
               cols="grid-cols-[1fr_1.6fr]"
@@ -1537,9 +1309,9 @@ export default function Week03Finance() {
           response teams need.
       ================================================================== */}
       <Slide id="early-warning" border align="left">
-        <Head eyebrow="Before default">
+        <Head1 eyebrow="Before default">
           Early Warning Systems and Portfolio Surveillance
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1650,9 +1422,9 @@ export default function Week03Finance() {
           policy boundaries.
       ================================================================== */}
       <Slide id="collections" border align="left">
-        <Head eyebrow="Treatment design">
+        <Head1 eyebrow="Treatment design">
           Collections Strategy and Treatment Design
-        </Head>
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -1788,11 +1560,11 @@ export default function Week03Finance() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           When should a lender optimize for recovery efficiency, and when should
           it prioritize longer-term relationship preservation even at lower
           near-term cash recovery?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -1801,9 +1573,9 @@ export default function Week03Finance() {
           across segments, outcomes and contexts.          [quiz topic]
       ================================================================== */}
       <Slide id="explainability-fairness" border align="left">
-        <Head eyebrow="Under scrutiny" signal>
+        <Head1 eyebrow="Under scrutiny" signal>
           Explainability, Fairness, and Adverse Action
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -1889,13 +1661,13 @@ export default function Week03Finance() {
           </figure>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Should a lender use a more predictive model if its logic is materially
           harder to explain to customers and examiners?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
-      <ModulePlate
+      <ModulePlate2
         id="module-3"
         numeral="III"
         title="Fraud, AML, and Compliance"
@@ -1912,9 +1684,9 @@ export default function Week03Finance() {
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="fraud-adversarial" border align="left">
-        <Head eyebrow="An opponent that adapts">
+        <Head1 eyebrow="An opponent that adapts">
           Fraud Detection as an Adversarial Problem
-        </Head>
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_18rem] md:gap-14">
           <div>
@@ -2071,9 +1843,9 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["transaction-monitoring"]}
       >
-        <Head eyebrow="Financial crime">
+        <Head1 eyebrow="Financial crime">
           Transaction Monitoring and Anti-Money Laundering
-        </Head>
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -2183,9 +1955,9 @@ export default function Week03Finance() {
           phones; broken links and weak links drawn side by side.
       ================================================================== */}
       <Slide id="graph-entity" border align="left">
-        <Head eyebrow="Connecting the network">
+        <Head1 eyebrow="Connecting the network">
           Graph Analytics and Entity Resolution
-        </Head>
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-[17rem_1fr] md:gap-0">
           <div className="md:pr-12">
@@ -2388,9 +2160,9 @@ export default function Week03Finance() {
           groups are caught.
       ================================================================== */}
       <Slide id="false-positives" border align="left">
-        <Head eyebrow="The cost of caution">
+        <Head1 eyebrow="The cost of caution">
           False Positives, Customer Friction, and Inclusion
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2535,10 +2307,10 @@ export default function Week03Finance() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           How much customer friction is acceptable in exchange for a meaningful
           reduction in fraud and financial crime exposure?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -2547,9 +2319,9 @@ export default function Week03Finance() {
           in front of the formal record.
       ================================================================== */}
       <Slide id="compliance-copilots" border align="left">
-        <Head eyebrow="Investigator support">
+        <Head1 eyebrow="Investigator support">
           Compliance Copilots and Case Productivity
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2572,7 +2344,7 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Operational leverage for investigators"
               right="Not autonomous compliance judgment"
             />
@@ -2620,7 +2392,7 @@ export default function Week03Finance() {
         </div>
       </Slide>
 
-      <ModulePlate
+      <ModulePlate2
         id="module-4"
         numeral="IV"
         title="Markets, Treasury, and Risk"
@@ -2636,9 +2408,9 @@ export default function Week03Finance() {
           and once as overfit noise.
       ================================================================== */}
       <Slide id="market-forecasting" border align="left">
-        <Head eyebrow="Reading the market">
+        <Head1 eyebrow="Reading the market">
           Market Forecasting and Signal Extraction
-        </Head>
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_19rem] md:gap-14">
           <div>
@@ -2690,7 +2462,7 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Predict markets with certainty"
               right="Signal extraction and decision support under uncertainty"
               strikeLeft
@@ -2784,9 +2556,9 @@ export default function Week03Finance() {
           automated execution.                              [quiz topic]
       ================================================================== */}
       <Slide id="portfolio-construction" border align="left">
-        <Head eyebrow="Decision support">
+        <Head1 eyebrow="Decision support">
           Portfolio Construction and Decision Support
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -2920,9 +2692,9 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["model-risk"]}
       >
-        <Head eyebrow="When the world shifts" signal>
+        <Head1 eyebrow="When the world shifts" signal>
           Model Risk in Non-Stationary Environments
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3072,9 +2844,9 @@ export default function Week03Finance() {
           what matters before a crisis.
       ================================================================== */}
       <Slide id="stress-testing" border align="left">
-        <Head eyebrow="Severe but plausible">
+        <Head1 eyebrow="Severe but plausible">
           Stress Testing and Scenario Analysis
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3156,7 +2928,7 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Predict the future exactly"
               right="Before crisis conditions emerge"
               strikeLeft
@@ -3180,9 +2952,9 @@ export default function Week03Finance() {
           rule over what they are intertwined with.
       ================================================================== */}
       <Slide id="treasury-liquidity" border align="left">
-        <Head eyebrow="The balance sheet">
+        <Head1 eyebrow="The balance sheet">
           Treasury, Liquidity, and Balance Sheet Management
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3264,13 +3036,13 @@ export default function Week03Finance() {
           evaluation checklist with local accuracy marked as not enough.
       ================================================================== */}
       <Slide id="pricing-hedging" border align="left">
-        <Head eyebrow="Where automation stops">
+        <Head1 eyebrow="Where automation stops">
           Pricing, Hedging, and the Limits of Automation
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <div className="mt-10 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Optimized continuously"
               right="Full automation · feedback loops and hidden assumptions"
               cols="grid-cols-[1fr_1.6fr]"
@@ -3333,13 +3105,13 @@ export default function Week03Finance() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Which market or treasury decisions should remain human-approved even
           if an automated system is usually faster and more consistent?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
-      <ModulePlate
+      <ModulePlate2
         id="module-5"
         numeral="V"
         title="Operations and Client Service"
@@ -3355,7 +3127,7 @@ export default function Week03Finance() {
           benefit that matters.
       ================================================================== */}
       <Slide id="document-processing" border align="left">
-        <Head eyebrow="Documents at scale">Intelligent Document Processing</Head>
+        <Head1 eyebrow="Documents at scale">Intelligent Document Processing</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3441,7 +3213,7 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Merely optical character recognition"
               right="Shorter cycle time · cleaner downstream data"
               strikeLeft
@@ -3461,9 +3233,9 @@ export default function Week03Finance() {
           prompts set against hidden rules.
       ================================================================== */}
       <Slide id="reconciliation" border align="left">
-        <Head eyebrow="Control rooms">
+        <Head1 eyebrow="Control rooms">
           Reconciliation, Exceptions, and Control Rooms
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3547,7 +3319,7 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split left="AI outputs as prompts" right="Hidden rules" />
+            <Split1 left="AI outputs as prompts" right="Hidden rules" />
             <Terms
               items={["audit trails", "override reason codes"]}
               className="mt-4"
@@ -3567,9 +3339,9 @@ export default function Week03Finance() {
           trays for interactions.
       ================================================================== */}
       <Slide id="customer-service" border align="left">
-        <Head eyebrow="Relationship support">
+        <Head1 eyebrow="Relationship support">
           Customer Service, Advice, and Relationship Support
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3662,9 +3434,9 @@ export default function Week03Finance() {
           four guardrails drawn as rails.
       ================================================================== */}
       <Slide id="conduct-risk" border align="left">
-        <Head eyebrow="Conduct" signal>
+        <Head1 eyebrow="Conduct" signal>
           Personalization, Suitability, and Conduct Risk
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3792,13 +3564,13 @@ export default function Week03Finance() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           At what point does personalized financial guidance become a conduct
           risk rather than a service improvement?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
-      <ModulePlate
+      <ModulePlate2
         id="module-6"
         numeral="VI"
         title="Governance and Strategy"
@@ -3814,9 +3586,9 @@ export default function Week03Finance() {
           columns that make it useful.                      [quiz topic]
       ================================================================== */}
       <Slide id="model-governance" border align="left">
-        <Head eyebrow="Across the lifecycle">
+        <Head1 eyebrow="Across the lifecycle">
           Model Governance Across the Lifecycle
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -3949,9 +3721,9 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["data-governance"]}
       >
-        <Head eyebrow="Control function">
+        <Head1 eyebrow="Control function">
           Data Governance, Privacy, and Cybersecurity
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -4068,7 +3840,7 @@ export default function Week03Finance() {
           while accountability stays.
       ================================================================== */}
       <Slide id="build-buy-partner" border align="left">
-        <Head eyebrow="Sourcing capability">Build, Buy, or Partner</Head>
+        <Head1 eyebrow="Sourcing capability">Build, Buy, or Partner</Head1>
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
@@ -4152,10 +3924,10 @@ export default function Week03Finance() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion1>
           Which finance AI capabilities should remain proprietary, and which
           should be treated as infrastructure?
-        </Discussion>
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -4164,9 +3936,9 @@ export default function Week03Finance() {
           across teams.                                     [quiz topic]
       ================================================================== */}
       <Slide id="genai-red-lines" border align="left">
-        <Head eyebrow="Generative AI" signal>
+        <Head1 eyebrow="Generative AI" signal>
           Generative AI in Finance: High-Value Uses and Red Lines
-        </Head>
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-0">
           <div className="md:pr-12">
@@ -4280,9 +4052,9 @@ export default function Week03Finance() {
         align="left"
         quizData={quiz["operating-model"]}
       >
-        <Head eyebrow="People and process">
+        <Head1 eyebrow="People and process">
           Operating Model, Talent, and Change Management
-        </Head>
+        </Head1>
 
         <div className="mt-9 w-full max-w-5xl">
           <div>
@@ -4433,9 +4205,9 @@ export default function Week03Finance() {
           03
         </span>
 
-        <Head eyebrow="What to carry forward">
+        <Head1 eyebrow="What to carry forward">
           Conclusion: AI in Finance as Institutional Capability
-        </Head>
+        </Head1>
 
         <div className="w-full">
           <ol

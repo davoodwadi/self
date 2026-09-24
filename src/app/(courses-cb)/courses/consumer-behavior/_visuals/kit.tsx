@@ -1,12 +1,7 @@
 /* ==========================================================================
-   Consumer Behavior — editorial-sketch primitives
-   --------------------------------------------------------------------------
-   Every plate in this course is drawn with these: wobbly doubled ink, loose
-   watercolour washes set off-register, faint dashed pencil for anything
-   unreal, crisp small ink text. See ../CLAUDE.md for the style rules.
-
-   All noise is seeded and every coordinate is rounded to 2 decimals, so the
-   server and the client render identical markup (no hydration mismatch).
+   Shared kit: the building blocks every week draws and lays out with —
+   colours and type, the plate frame and label helpers, geometry helpers
+   and slide layout blocks. See "Shared pieces" in the root CLAUDE.md.
    ========================================================================== */
 
 import React, { createContext, useContext } from "react";

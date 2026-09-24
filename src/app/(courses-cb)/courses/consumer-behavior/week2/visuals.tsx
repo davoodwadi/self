@@ -16,17 +16,47 @@
 
 import React from "react";
 import { ForkKnife, HandPalm, Scissors, TShirt } from "@phosphor-icons/react";
-import { SK, InkLine, PencilLine, Wash, Paper, SketchFrame, SketchText, blobPts, seeded, wobble, r2, type Pt } from "../_visuals/sketch";
-import { Eye, Heart, Person, handAt, Ground, Box, BrandBadge, Backwash, Cart, SketchArrow, Notes, Thought, Pack, ShapedBottle, at, rp, sharp, curvePts } from "../_visuals/sketch-cast";
 import {
+  blobPts,
+  InkLine,
+  Paper,
+  PencilLine,
+  type Pt,
+  r2,
+  seeded,
+  SK,
+  SketchFrame,
+  SketchText,
+  Wash,
+  wobble,
+} from "../_visuals/kit";
+import {
+  at,
+  Backwash,
+  Box,
+  BrandBadge,
   Can2,
+  Cart,
+  curvePts,
+  Eye,
+  Ground,
+  handAt,
+  Heart,
   Laptop1,
   Mug2,
+  Notes,
+  Pack,
   Perfume1,
+  Person,
   Phone1,
+  rp,
+  ShapedBottle,
+  sharp,
+  SketchArrow,
   Tag1,
+  Thought,
   Watch1,
-} from "../_visuals/sketch-objects";
+} from "../_visuals/objects";
 
 /* -- the five senses -------------------------------------------------------- */
 

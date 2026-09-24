@@ -79,11 +79,7 @@ function Lead({
   children: React.ReactNode;
   className?: string;
 }) {
-  return (
-    <p className={cn("type-lead max-w-[46ch]", className)}>
-      {children}
-    </p>
-  );
+  return <p className={cn("type-lead max-w-[46ch]", className)}>{children}</p>;
 }
 
 /** A sentence set as a serif statement — the line a slide lands on. */
@@ -94,11 +90,7 @@ function Statement({
   children: React.ReactNode;
   className?: string;
 }) {
-  return (
-    <p className={cn("type-quote max-w-[30ch]", className)}>
-      {children}
-    </p>
-  );
+  return <p className={cn("type-quote max-w-[30ch]", className)}>{children}</p>;
 }
 
 /** Coloured term inside a sentence, without the Highlight underline. */
@@ -267,7 +259,9 @@ function PhilosophyStrip({ active }: { active: number[] }) {
               <span
                 className={cn(
                   "block text-[0.68rem] sm:text-[0.8rem] md:text-[0.95rem] leading-tight mt-1 [overflow-wrap:anywhere]",
-                  on ? "text-[var(--ink)] font-semibold" : "text-[var(--ink-3)]/70",
+                  on
+                    ? "text-[var(--ink)] font-semibold"
+                    : "text-[var(--ink-3)]/70",
                 )}
               >
                 {name}
@@ -313,7 +307,15 @@ function InfluenceTrio() {
       verb: "do not create",
       color: "var(--ink-3)",
       glyph: (
-        <circle cx="28" cy="28" r="20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 4" />
+        <circle
+          cx="28"
+          cy="28"
+          r="20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeDasharray="3 4"
+        />
       ),
     },
     {
@@ -322,9 +324,24 @@ function InfluenceTrio() {
       color: "var(--counter)",
       glyph: (
         <>
-          <path d="M8 28 C18 8 38 8 48 28" fill="none" stroke="currentColor" strokeWidth="1.5" />
-          <path d="M8 28 C18 48 38 48 48 28" fill="none" stroke="currentColor" strokeWidth="1.5" />
-          <path d="M42 22 L48 28 L50 20" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <path
+            d="M8 28 C18 8 38 8 48 28"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+          <path
+            d="M8 28 C18 48 38 48 48 28"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+          <path
+            d="M42 22 L48 28 L50 20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
           <circle cx="28" cy="28" r="4" fill="currentColor" />
         </>
       ),
@@ -335,24 +352,44 @@ function InfluenceTrio() {
       color: "var(--signal)",
       glyph: (
         <>
-          <path d="M6 8 L50 8 L32 30 L32 50 L24 50 L24 30 Z" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+          <path
+            d="M6 8 L50 8 L32 30 L32 50 L24 50 L24 30 Z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
         </>
       ),
     },
   ];
   return (
-    <div aria-hidden className="mt-12 grid w-full grid-cols-3 border-t border-[var(--rule)]">
+    <div
+      aria-hidden
+      className="mt-12 grid w-full grid-cols-3 border-t border-[var(--rule)]"
+    >
       {items.map((it, i) => (
         <div
           key={it.term}
-          className={cn("flex items-center gap-4 py-6 pr-3", i > 0 && "border-l border-[var(--rule)] pl-4 md:pl-8")}
+          className={cn(
+            "flex items-center gap-4 py-6 pr-3",
+            i > 0 && "border-l border-[var(--rule)] pl-4 md:pl-8",
+          )}
           style={{ color: it.color }}
         >
-          <svg width="56" height="56" viewBox="0 0 56 56" className="hidden sm:block shrink-0">
+          <svg
+            width="56"
+            height="56"
+            viewBox="0 0 56 56"
+            className="hidden sm:block shrink-0"
+          >
             {it.glyph}
           </svg>
           <div>
-            <div className="text-[1.35rem] md:text-[1.75rem] leading-none text-[var(--ink)]" style={{ fontFamily: "var(--font-heading)", fontWeight: 600 }}>
+            <div
+              className="text-[1.35rem] md:text-[1.75rem] leading-none text-[var(--ink)]"
+              style={{ fontFamily: "var(--font-heading)", fontWeight: 600 }}
+            >
               {it.term}
             </div>
             <div className="type-label mt-2" style={{ color: it.color }}>
@@ -392,7 +429,12 @@ function Cascade({ steps }: { steps: string[] }) {
                 {i + 1}
               </div>
               <p className="type-body !text-[1.05rem] md:!text-[1.02rem] lg:!text-[1.12rem] !leading-[1.5] text-[var(--ink)]">
-                <span className={cn("type-label block mb-2", !last && "!text-[var(--counter)]")}>
+                <span
+                  className={cn(
+                    "type-label block mb-2",
+                    !last && "!text-[var(--counter)]",
+                  )}
+                >
                   {`Step ${i + 1}:`}
                 </span>{" "}
                 {s}
@@ -405,14 +447,22 @@ function Cascade({ steps }: { steps: string[] }) {
                   height="12"
                   viewBox="0 0 12 12"
                 >
-                  <path d="M2 2 L8 6 L2 10" fill="none" stroke="var(--counter)" strokeWidth="1.5" />
+                  <path
+                    d="M2 2 L8 6 L2 10"
+                    fill="none"
+                    stroke="var(--counter)"
+                    strokeWidth="1.5"
+                  />
                 </svg>
               ) : null}
             </li>
           );
         })}
       </ol>
-      <div aria-hidden className="mt-12 hidden md:grid grid-cols-5 gap-4 lg:gap-6">
+      <div
+        aria-hidden
+        className="mt-12 hidden md:grid grid-cols-5 gap-4 lg:gap-6"
+      >
         <div className="col-span-4">
           <div className="h-3 border-x-2 border-b-2 border-[var(--counter)]" />
           <div className="type-label mt-3 text-center !text-[var(--counter)]">
@@ -421,7 +471,9 @@ function Cascade({ steps }: { steps: string[] }) {
         </div>
         <div>
           <div className="h-3 border-x-2 border-b-2 border-[var(--signal)]" />
-          <div className="type-label mt-3 text-center">Capture value in return</div>
+          <div className="type-label mt-3 text-center">
+            Capture value in return
+          </div>
         </div>
       </div>
     </div>
@@ -433,7 +485,10 @@ function FourPs() {
   const ps = [
     { word: "Product", rest: "creating a need-satisfying market offering." },
     { word: "Price", rest: "deciding how much to charge for the offering." },
-    { word: "Place", rest: "determining how to make the offering accessible to target consumers." },
+    {
+      word: "Place",
+      rest: "determining how to make the offering accessible to target consumers.",
+    },
     {
       word: "Promotion",
       rest: "engaging target consumers, communicating the offering, and persuading them of its merits.",
@@ -456,7 +511,11 @@ function FourPs() {
             <p className="type-body max-w-[34ch] text-[var(--ink-2)]">
               <span
                 className="block mb-3 text-[2.5rem] md:text-[3.5rem] leading-none tracking-[-0.02em] text-[var(--ink)]"
-                style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontVariationSettings: '"opsz" 144, "WONK" 1' }}
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 600,
+                  fontVariationSettings: '"opsz" 144, "WONK" 1',
+                }}
               >
                 <span className="text-[var(--signal)]">{p.word[0]}</span>
                 {p.word.slice(1)}
@@ -495,8 +554,16 @@ function GlyphExchange() {
     <svg {...glyphProps}>
       <rect x="1" y="10" width="14" height="20" stroke="currentColor" />
       <rect x="49" y="10" width="14" height="20" stroke="currentColor" />
-      <path d="M19 15 H44 M40 12 L45 15 L40 18" stroke="var(--counter)" strokeWidth="1.5" />
-      <path d="M45 25 H20 M24 22 L19 25 L24 28" stroke="var(--signal)" strokeWidth="1.5" />
+      <path
+        d="M19 15 H44 M40 12 L45 15 L40 18"
+        stroke="var(--counter)"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M45 25 H20 M24 22 L19 25 L24 28"
+        stroke="var(--signal)"
+        strokeWidth="1.5"
+      />
     </svg>
   );
 }
@@ -548,9 +615,7 @@ function GlyphSteps() {
 
 export default function Week1() {
   return (
-    <SlideDeck
-      label="Week 01"
-    >
+    <SlideDeck label="Week 01">
       {/* ================================================================
           Title Slide
           ================================================================ */}
@@ -614,7 +679,11 @@ export default function Week1() {
       {/* ================================================================
           Part 1
           ================================================================ */}
-      <PartPlate id="part-1" n={1} title="Definition and Evolution of Marketing">
+      <PartPlate
+        id="part-1"
+        n={1}
+        title="Definition and Evolution of Marketing"
+      >
         <div className="mt-10 grid gap-8 md:grid-cols-2 md:gap-12">
           <Lead>
             Marketing is often misunderstood as merely selling or advertising.
@@ -697,9 +766,9 @@ export default function Week1() {
           <Ruled keyLabel="01" tone="signal" weight="thick">
             <P>
               <Term tone="ink">The Production Concept</Term> holds that
-              consumers favor products that are available and highly
-              affordable; management must focus on improving production and
-              distribution efficiency.
+              consumers favor products that are available and highly affordable;
+              management must focus on improving production and distribution
+              efficiency.
             </P>
           </Ruled>
           <Ruled keyLabel="02" tone="signal" weight="thick">
@@ -715,9 +784,8 @@ export default function Week1() {
           <p className="type-h2 !font-normal">
             Both orientations carry the danger of focusing too{" "}
             <span className="text-[var(--signal)]">inward</span> on operations
-            rather than{" "}
-            <span className="text-[var(--counter)]">outward</span> on customer
-            needs.
+            rather than <span className="text-[var(--counter)]">outward</span>{" "}
+            on customer needs.
           </p>
           <Figure height="auto" className="!my-0 min-w-0">
             <InwardOutward />
@@ -734,24 +802,34 @@ export default function Week1() {
         <Heading>The Selling and Marketing Concepts</Heading>
         <PhilosophyStrip active={[2, 3]} />
         <div className="mt-4 grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled keyLabel="03" tone="signal" weight="thick" className="space-y-5">
+          <Ruled
+            keyLabel="03"
+            tone="signal"
+            weight="thick"
+            className="space-y-5"
+          >
             <P>
               <Term tone="ink">The Selling Concept</Term> holds that consumers
               will not buy enough of the firm&apos;s products unless it
               undertakes a large-scale selling and promotion effort.
             </P>
             <P>
-              It takes an <Term>inside-out</Term> perspective: starting from
-              the factory, focusing on existing products, and aiming for sales
+              It takes an <Term>inside-out</Term> perspective: starting from the
+              factory, focusing on existing products, and aiming for sales
               volume through heavy selling.
             </P>
           </Ruled>
-          <Ruled keyLabel="04" tone="counter" weight="thick" className="space-y-5">
+          <Ruled
+            keyLabel="04"
+            tone="counter"
+            weight="thick"
+            className="space-y-5"
+          >
             <P>
-              <Term tone="ink">The Marketing Concept</Term> holds that
-              achieving organizational goals depends on knowing the needs and
-              wants of target markets and delivering the desired satisfactions
-              better than competitors.
+              <Term tone="ink">The Marketing Concept</Term> holds that achieving
+              organizational goals depends on knowing the needs and wants of
+              target markets and delivering the desired satisfactions better
+              than competitors.
             </P>
             <P>
               It takes an <Term tone="counter">outside-in</Term> perspective:
@@ -766,7 +844,11 @@ export default function Week1() {
         </Figure>
       </Slide>
 
-      <Slide id="societal-marketing" border quizData={quiz["societal-marketing"]}>
+      <Slide
+        id="societal-marketing"
+        border
+        quizData={quiz["societal-marketing"]}
+      >
         <Tag>The fifth philosophy</Tag>
         <Heading>The Societal Marketing Concept</Heading>
         <PhilosophyStrip active={[4]} />
@@ -779,8 +861,8 @@ export default function Week1() {
           </P>
           <P>
             It holds that marketing strategy should deliver value to customers
-            in a way that maintains or improves both the consumer&apos;s and
-            the society&apos;s well-being.
+            in a way that maintains or improves both the consumer&apos;s and the
+            society&apos;s well-being.
           </P>
         </div>
         <div className="mt-6 grid w-full items-center gap-8 xl:grid-cols-[47.25rem_minmax(0,1fr)] xl:gap-14">
@@ -826,16 +908,15 @@ export default function Week1() {
           <Ruled>
             <P>
               Coined by Theodore Levitt, it warns that companies risk
-              obsolescence if they define their business by products rather
-              than by underlying customer needs.
+              obsolescence if they define their business by products rather than
+              by underlying customer needs.
             </P>
           </Ruled>
           <Ruled>
             <P>
               For example, railroad companies declined because they viewed
-              themselves as being in the{" "}
-              <Term>railroad business</Term> rather than the{" "}
-              <Term tone="counter">transportation business</Term>.
+              themselves as being in the <Term>railroad business</Term> rather
+              than the <Term tone="counter">transportation business</Term>.
             </P>
           </Ruled>
         </div>
@@ -880,9 +961,8 @@ export default function Week1() {
         <Statement className="mt-16 !max-w-[32ch]">
           Marketers <span className="text-[var(--ink-3)]">do not create</span>{" "}
           basic needs, but they{" "}
-          <span className="text-[var(--counter)]">heavily influence</span>{" "}
-          wants and <span className="text-[var(--signal)]">channel</span>{" "}
-          demands.
+          <span className="text-[var(--counter)]">heavily influence</span> wants
+          and <span className="text-[var(--signal)]">channel</span> demands.
         </Statement>
         <InfluenceTrio />
       </PartPlate>
@@ -908,8 +988,8 @@ export default function Week1() {
           <Ruled keyLabel="Wants" tone="counter" weight="thick">
             <P>
               Wants are the form human needs take as they are shaped by culture
-              and individual personality; a hungry person in one culture wants
-              a hamburger, while in another they want rice and fish.
+              and individual personality; a hungry person in one culture wants a
+              hamburger, while in another they want rice and fish.
             </P>
           </Ruled>
           <Ruled keyLabel="Demands" tone="signal" weight="thick">
@@ -998,8 +1078,8 @@ export default function Week1() {
               <Term tone="ink">Customer satisfaction</Term> depends on the
               product&apos;s perceived performance relative to a buyer&apos;s
               expectations; if performance falls short, the customer is
-              dissatisfied, and if performance matches or exceeds
-              expectations, the customer is satisfied or delighted.
+              dissatisfied, and if performance matches or exceeds expectations,
+              the customer is satisfied or delighted.
             </P>
           </Ruled>
           <Figure height="auto" className="!my-0 min-w-0">
@@ -1083,13 +1163,15 @@ export default function Week1() {
         <Statement className="!max-w-[36ch]">
           Marketing managers cannot serve all customers in every way; they must
           select{" "}
-          <span className="text-[var(--signal)]">
-            which customers to serve
-          </span>{" "}
+          <span className="text-[var(--signal)]">which customers to serve</span>{" "}
           and <span className="text-[var(--counter)]">how</span>.
         </Statement>
         <div className="mt-14 grid w-full items-center gap-6 xl:grid-cols-[minmax(0,19rem)_1fr] xl:gap-12">
-          <Ruled keyLabel="Which customers to serve" tone="signal" weight="thick">
+          <Ruled
+            keyLabel="Which customers to serve"
+            tone="signal"
+            weight="thick"
+          >
             <P>
               Selecting target customers involves market segmentation (dividing
               the market) and targeting (selecting segments to enter).
@@ -1133,8 +1215,20 @@ export default function Week1() {
             className="hidden md:flex items-center text-[var(--signal)]"
           >
             <svg width="56" height="20" viewBox="0 0 56 20">
-              <line x1="0" y1="10" x2="52" y2="10" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M44 4 L53 10 L44 16" fill="none" stroke="currentColor" strokeWidth="1.5" />
+              <line
+                x1="0"
+                y1="10"
+                x2="52"
+                y2="10"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M44 4 L53 10 L44 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
             </svg>
           </div>
           <Ruled keyLabel="Action" tone="signal" weight="thick">
@@ -1188,16 +1282,16 @@ export default function Week1() {
         <Tag>Step 5</Tag>
         <Heading>Capturing Value from Customers</Heading>
         <Lead className="!max-w-[58ch]">
-          By creating superior value for customers, the firm captures value
-          from customers in return in the form of sales, profits, and long-term
+          By creating superior value for customers, the firm captures value from
+          customers in return in the form of sales, profits, and long-term
           customer equity.
         </Lead>
         <div className="mt-14 grid w-full gap-10 md:grid-cols-2 md:gap-14">
           <Ruled weight="thick">
             <P>
-              <Term tone="ink">Customer Lifetime Value (CLV)</Term> is the
-              value of the entire stream of purchases a customer makes over a
-              lifetime of patronage.
+              <Term tone="ink">Customer Lifetime Value (CLV)</Term> is the value
+              of the entire stream of purchases a customer makes over a lifetime
+              of patronage.
             </P>
           </Ruled>
           <Ruled tone="signal" weight="thick">
@@ -1255,8 +1349,8 @@ export default function Week1() {
           Managing customer equity requires classifying customers by potential
           profitability and projected loyalty into{" "}
           <Term tone="ink">strangers</Term>,{" "}
-          <Term tone="counter">butterflies</Term>,{" "}
-          <Term>true friends</Term>, and <Term tone="ink">barnacles</Term>.
+          <Term tone="counter">butterflies</Term>, <Term>true friends</Term>,
+          and <Term tone="ink">barnacles</Term>.
         </P>
         <Figure height="auto" className="max-w-4xl">
           <RelationshipGroups />
@@ -1269,7 +1363,9 @@ export default function Week1() {
         </KickerHeading>
         <Prompt>
           <PromptKicker /> Why is it often reported to be{" "}
-          <span className="text-[var(--signal)]">five times more expensive</span>{" "}
+          <span className="text-[var(--signal)]">
+            five times more expensive
+          </span>{" "}
           to acquire a new customer than to retain an existing one, and how
           should a startup balance its marketing budget between the two?
         </Prompt>

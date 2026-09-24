@@ -37,10 +37,8 @@ import {
   Schematic,
   SIGNAL,
   SIGNAL_TINT,
-} from "../_visuals/broadsheet";
-import {
-  Person1,
-} from "../_visuals/objects";
+} from "../_visuals/kit";
+import { Person1 } from "../_visuals/objects";
 
 const AFFIRM = "var(--affirm)";
 const AFFIRM_TINT = "rgba(46, 90, 43, 0.1)";

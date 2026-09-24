@@ -41,7 +41,7 @@ import {
   Schematic,
   SIGNAL,
   SIGNAL_TINT,
-} from "../_visuals/broadsheet";
+} from "../_visuals/kit";
 import {
   Arrow2,
   Bottle2,

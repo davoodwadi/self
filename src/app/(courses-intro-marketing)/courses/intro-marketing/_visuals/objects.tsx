@@ -1,12 +1,7 @@
 /* ==========================================================================
-   Introduction to Marketing — shared glyphs and objects
-   --------------------------------------------------------------------------
-   People, products, places and marks drawn on more than one week's plates,
-   built on ./broadsheet. Where weeks drew the same thing differently, every
-   drawing is kept and numbered (Person1, Person2, ...), in the order the
-   weeks first used them, so each plate renders exactly as before.
-
-   Weeks import from here and ./broadsheet, never from another week.
+   Shared objects: the people, products, places and marks drawn on more than
+   one week's plates, built on ./kit. Different versions of the same thing
+   are numbered (Car1, Car2, ...). See "Shared pieces" in the root CLAUDE.md.
    ========================================================================== */
 
 import React from "react";
@@ -22,7 +17,7 @@ import {
   r2,
   SIGNAL,
   SIGNAL_TINT,
-} from "./broadsheet";
+} from "./kit";
 
 /** A straight arrow from (x1, y1) to (x2, y2). */
 export function Arrow1({

@@ -39,12 +39,8 @@ import {
   Schematic,
   SIGNAL,
   SIGNAL_TINT,
-} from "../_visuals/broadsheet";
-import {
-  Factory1,
-  Gear1,
-  Person2,
-} from "../_visuals/objects";
+} from "../_visuals/kit";
+import { Factory1, Gear1, Person2 } from "../_visuals/objects";
 
 /* ==========================================================================
    1 · FORKED FLOW — what organizations do with what they buy

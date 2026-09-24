@@ -1,12 +1,7 @@
 /* ==========================================================================
-   Introduction to Marketing — the Broadsheet kit
-   --------------------------------------------------------------------------
-   The palette constants, the typographic plate helpers (Frame, Key, Note,
-   Display, Schematic) and the small geometry helpers every week draws with.
-   Where weeks wrote a helper differently, each version is kept and numbered
-   (headAlong1, headAlong2, ...) so every plate renders exactly as before.
-
-   Weeks import from here and ./objects, never from another week.
+   Shared kit: the building blocks every week draws and lays out with —
+   colours and type, the plate frame and label helpers, geometry helpers
+   and slide layout blocks. See "Shared pieces" in the root CLAUDE.md.
    ========================================================================== */
 
 import React from "react";

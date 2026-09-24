@@ -41,11 +41,8 @@ import {
   Schematic,
   SIGNAL,
   SIGNAL_TINT,
-} from "../_visuals/broadsheet";
-import {
-  Coins1,
-  Person3,
-} from "../_visuals/objects";
+} from "../_visuals/kit";
+import { Coins1, Person3 } from "../_visuals/objects";
 
 /** A clipboard with ticked rows, centred on x, top at y. */
 function Clipboard({ x, y, w = 80, h = 96, rows = 3, ticked = 2, tone = INK }: { x: number; y: number; w?: number; h?: number; rows?: number; ticked?: number; tone?: string }) {

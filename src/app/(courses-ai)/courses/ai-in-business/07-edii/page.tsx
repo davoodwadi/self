@@ -8,6 +8,23 @@ import {
 import { ScrollProgress } from "@/app/(courses-ai)/_components/Interactive";
 import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
 import quizzes from "./quizzes.json";
+import {
+  BODY,
+  Discussion2,
+  DISPLAY,
+  hash,
+  Head2,
+  headRight,
+  LEAD,
+  Measure,
+  MICRO,
+  RULED,
+  Schematic,
+  Split1,
+  Steps,
+  SVG_LABEL,
+  Terms,
+} from "../_visuals/kit";
 
 // ============================================================================
 // WEEK 07 — EDII IN AI
@@ -28,207 +45,7 @@ import quizzes from "./quizzes.json";
 
 const quiz = createCourseQuizLookup(quizzes as CourseQuiz[]);
 
-/** Small-caps label treatment used for every eyebrow, axis tick and numeral. */
-const MICRO = "font-sans text-[10px] font-semibold uppercase tracking-[0.22em]";
-
-/** The same small-caps treatment for SVG <text>. */
-const SVG_LABEL = {
-  fontSize: 9,
-  letterSpacing: 2.2,
-  fontFamily: "var(--font-sans), sans-serif",
-  fontWeight: 600,
-} as const;
-
-/** Body sentence at the deck's reading size. */
-const BODY =
-  "font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]";
-
-/** A sentence promoted to display weight inside a block. */
-const DISPLAY =
-  "font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]";
-
-/** A sentence one step below display, used inside rules and frames. */
-const LEAD =
-  "font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]";
-
-/** Hairline that opens each later block of a slide. */
-const RULED = "mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8";
-
 const EDII = ["Equity", "Diversity", "Inclusion", "Indigeneity"];
-
-const pad = (n: number) => String(n).padStart(2, "0");
-
-/** Deterministic 0–1 hash, so scattered marks match between server and client. */
-const hash = (n: number) => {
-  const v = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
-  return v - Math.floor(v);
-};
-
-/**
- * Eyebrow plus slide heading. When a heading opens with a "Label:" prefix, the
- * prefix is set as a crimson italic kicker on its own line, inside the same h2
- * so the heading still reads as one sentence.
- */
-function Head({
-  eyebrow,
-  kicker,
-  children,
-}: {
-  eyebrow: string;
-  kicker?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div>
-      <div className={`${MICRO} text-[var(--champagne)]`}>{eyebrow}</div>
-      <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
-        {kicker && (
-          <>
-            <span className="mb-2 block font-serif text-[1.25rem] font-normal italic leading-tight tracking-[-0.01em] text-[var(--crimson)] md:text-[1.625rem]">
-              {kicker}
-            </span>{" "}
-          </>
-        )}
-        {children}
-      </h2>
-    </div>
-  );
-}
-
-/**
- * Discussion prompt, set apart in the deck's one ruled frame. `figure` sits
- * under the prompt when the question itself carries something to draw.
- */
-function Discussion({
-  children,
-  figure,
-}: {
-  children: React.ReactNode;
-  figure?: React.ReactNode;
-}) {
-  return (
-    <div className="w-full">
-      <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
-        <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-        <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
-          {children}
-        </p>
-        {figure && <div className="mt-8">{figure}</div>}
-      </aside>
-    </div>
-  );
-}
-
-/** A sentence's own list, set as middot-separated mono words. */
-function Terms({
-  items,
-  className = "mt-5",
-}: {
-  items: string[];
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`${className} flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/55`}
-    >
-      {items.map((item, i) => (
-        <React.Fragment key={item}>
-          {i > 0 && <span>·</span>}
-          <span>{item}</span>
-        </React.Fragment>
-      ))}
-    </div>
-  );
-}
-
-/**
- * Numbered cells in a hairline grid. `cols` carries the responsive column
- * classes; `mark` turns one cell crimson.
- */
-function Steps({
-  items,
-  cols,
-  mark,
-  className = "mt-6",
-}: {
-  items: string[];
-  cols: string;
-  mark?: number;
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`${className} grid grid-cols-2 gap-px bg-[var(--charcoal)]/10 ${cols}`}
-    >
-      {items.map((item, i) => (
-        <div key={item} className="bg-[var(--background)] px-4 py-4">
-          <span
-            className={`${MICRO} ${
-              i === mark ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
-            }`}
-          >
-            {pad(i + 1)}
-          </span>
-          <span
-            className={`mt-2 block font-mono text-[11px] uppercase tracking-[0.1em] ${
-              i === mark
-                ? "text-[var(--crimson)]"
-                : "text-[var(--charcoal-light)]/70"
-            }`}
-          >
-            {item}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/** Two labels set against each other across one rule; the right one is marked. */
-function Split({
-  left,
-  right,
-  strikeLeft = false,
-  cols = "grid-cols-2",
-}: {
-  left: string;
-  right: string;
-  strikeLeft?: boolean;
-  cols?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`grid ${cols} border-b border-[var(--charcoal)]/15 pb-3`}
-    >
-      <span
-        className={`${MICRO} pr-4 text-[var(--charcoal-light)]/55 ${
-          strikeLeft ? "[text-decoration-line:line-through]" : ""
-        }`}
-      >
-        {left}
-      </span>
-      <span
-        className={`${MICRO} border-l border-[var(--crimson)]/40 pl-6 text-[var(--crimson)]`}
-      >
-        {right}
-      </span>
-    </div>
-  );
-}
-
-/** Caption for any figure whose proportions are illustrative only. */
-function Schematic({ className = "mt-1" }: { className?: string }) {
-  return (
-    <figcaption
-      className={`${MICRO} ${className} text-[var(--charcoal-light)]/40`}
-    >
-      Schematic
-    </figcaption>
-  );
-}
 
 /**
  * An acronym spelled out: each initial in display weight over the word it
@@ -305,34 +122,6 @@ function Ledger({
   );
 }
 
-/** One numbered measure: numeral, its sentence, and its own small figure. */
-function Measure({
-  n,
-  figure,
-  children,
-}: {
-  n: number;
-  figure: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <li className="block">
-      <div className="grid gap-5 border-t border-[var(--charcoal)]/12 py-8 md:grid-cols-[4ch_1fr_17rem] md:items-center md:gap-10">
-        <span className={`${MICRO} text-[var(--crimson)] md:self-start md:pt-2`}>
-          {pad(n)}
-        </span>
-        <div>{children}</div>
-        <div aria-hidden className="w-full max-w-[17rem]">
-          {figure}
-        </div>
-      </div>
-    </li>
-  );
-}
-
-/** Right-pointing open arrowhead whose tip sits at (x, y). */
-const headRight = (x: number, y: number) => `M${x - 8} ${y - 5}l8 5l-8 5`;
-
 export default function Week07Edii() {
   return (
     <SlideDeck>
@@ -393,9 +182,9 @@ export default function Week07Edii() {
           repeated at scale; the four risks.                  [quiz topic]
       ================================================================== */}
       <Slide id="mirror" border align="left">
-        <Head eyebrow="01 / 05" kicker="The Problem:">
+        <Head2 eyebrow="01 / 05" kicker="The Problem:">
           AI as a Mirror of Society
-        </Head>
+        </Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -403,7 +192,7 @@ export default function Week07Edii() {
             operating in a vacuum.
           </p>
           <div aria-hidden className="mt-7 max-w-3xl">
-            <Split
+            <Split1
               left="Operating in a vacuum"
               right="Historical data"
               strikeLeft
@@ -490,11 +279,11 @@ export default function Week07Edii() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion2>
           Can you think of a time a brand suffered a major PR crisis due to an
           automated system or algorithm making a biased decision? How did it
           impact their bottom line?
-        </Discussion>
+        </Discussion2>
       </Slide>
 
       {/* ==================================================================
@@ -510,9 +299,9 @@ export default function Week07Edii() {
         align="left"
         quizData={quiz["learn-bias"]}
       >
-        <Head eyebrow="02 / 05" kicker="Technical Concept:">
+        <Head2 eyebrow="02 / 05" kicker="Technical Concept:">
           How Algorithms Learn Bias
-        </Head>
+        </Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -666,7 +455,7 @@ export default function Week07Edii() {
           </div>
         </div>
 
-        <Discussion
+        <Discussion2
           figure={
             <svg
               aria-hidden
@@ -711,7 +500,7 @@ export default function Week07Edii() {
           If an AI model achieves 99 percent overall accuracy but has a 40
           percent error rate for a specific minority demographic, is the model
           ready for deployment? Who makes that call in your organization?
-        </Discussion>
+        </Discussion2>
       </Slide>
 
       {/* ==================================================================
@@ -721,13 +510,13 @@ export default function Week07Edii() {
                                      [quiz: learn-bias] [quiz topic]
       ================================================================== */}
       <Slide id="roi" border align="left" quizData={quiz["roi"]}>
-        <Head eyebrow="03 / 05" kicker="Business Impact:">
+        <Head2 eyebrow="03 / 05" kicker="Business Impact:">
           The ROI of Inclusive AI
-        </Head>
+        </Head2>
 
         <div className="w-full">
           <div aria-hidden className="mt-11 max-w-3xl">
-            <Split left="Compliance checkbox" right="Competitive advantage" />
+            <Split1 left="Compliance checkbox" right="Competitive advantage" />
           </div>
           <p className={`${DISPLAY} mt-6 max-w-4xl`}>
             EDII in AI is not just a compliance checkbox, it is a competitive
@@ -814,11 +603,11 @@ export default function Week07Edii() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion2>
           How would you measure the ROI of investing in an AI ethics and
           diversity board for a mid-sized tech company? What KPIs would you
           track?
-        </Discussion>
+        </Discussion2>
       </Slide>
 
       {/* ==================================================================
@@ -833,7 +622,7 @@ export default function Week07Edii() {
         align="left"
         quizData={quiz["data-sovereignty"]}
       >
-        <Head eyebrow="04 / 05">Indigeneity and Data Sovereignty</Head>
+        <Head2 eyebrow="04 / 05">Indigeneity and Data Sovereignty</Head2>
 
         <div className="w-full">
           <Unfold words={EDII} mark={3} className="mt-10 w-full max-w-4xl" />
@@ -925,7 +714,7 @@ export default function Week07Edii() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <Split
+            <Split1
               left="Raw fuel for models"
               right="People, cultures, and sovereign rights"
             />
@@ -936,11 +725,11 @@ export default function Week07Edii() {
           </div>
         </div>
 
-        <Discussion>
+        <Discussion2>
           If your company wants to train an LLM on historical cultural texts,
           including Indigenous knowledge, how do you navigate data scraping
           versus data sovereignty?
-        </Discussion>
+        </Discussion2>
       </Slide>
 
       {/* ==================================================================
@@ -956,9 +745,9 @@ export default function Week07Edii() {
         align="left"
         quizData={quiz["mitigation"]}
       >
-        <Head eyebrow="05 / 05" kicker="Strategy:">
+        <Head2 eyebrow="05 / 05" kicker="Strategy:">
           Mitigation for Business Leaders
-        </Head>
+        </Head2>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -1073,7 +862,7 @@ export default function Week07Edii() {
           </Measure>
         </ol>
 
-        <Discussion
+        <Discussion2
           figure={
             <svg
               aria-hidden
@@ -1105,7 +894,7 @@ export default function Week07Edii() {
           As a future business leader, what is the very first question you will
           ask a vendor selling you a black-box AI solution for your HR
           department?
-        </Discussion>
+        </Discussion2>
       </Slide>
 
       {/* ==================================================================

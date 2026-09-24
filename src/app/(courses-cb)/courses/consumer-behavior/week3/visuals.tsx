@@ -16,8 +16,42 @@
    ========================================================================== */
 
 import React from "react";
-import { SK, InkLine, PencilLine, Wash, Paper, SketchFrame, SketchText, blobPts, r2, type Pt } from "../_visuals/sketch";
-import { BrandBadge, Backwash, Shoe, Screen, Heart, Pack, Box, Thought, Notes, Magnifier, Star, ShapedBottle, SketchArrow, Ground, Person, PayCard, Bag, handAt, at, rp, sharp, curvePts } from "../_visuals/sketch-cast";
+import {
+  blobPts,
+  InkLine,
+  Paper,
+  PencilLine,
+  type Pt,
+  r2,
+  SK,
+  SketchFrame,
+  SketchText,
+  Wash,
+} from "../_visuals/kit";
+import {
+  at,
+  Backwash,
+  Bag,
+  Box,
+  BrandBadge,
+  curvePts,
+  Ground,
+  handAt,
+  Heart,
+  Magnifier,
+  Notes,
+  Pack,
+  PayCard,
+  Person,
+  rp,
+  Screen,
+  ShapedBottle,
+  sharp,
+  Shoe,
+  SketchArrow,
+  Star,
+  Thought,
+} from "../_visuals/objects";
 
 /* -- the week's cast ------------------------------------------------------- */
 

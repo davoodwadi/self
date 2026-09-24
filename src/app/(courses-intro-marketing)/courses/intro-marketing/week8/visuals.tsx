@@ -38,7 +38,7 @@ import {
   Schematic,
   SIGNAL,
   SIGNAL_TINT,
-} from "../_visuals/broadsheet";
+} from "../_visuals/kit";
 import {
   Arrow1,
   Coins1,
