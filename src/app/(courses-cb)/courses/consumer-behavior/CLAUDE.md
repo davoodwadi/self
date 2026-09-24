@@ -4,17 +4,23 @@ Every SVG plate in this course (all weeks, the landing page, anything new) is dr
 
 Other courses have their own style files; do not bring their conventions (INK/SIGNAL/COUNTER, flat fills, `--paper-2` wells, duotone icons) here.
 
-## Shared visuals live in `_visuals/`
+## Shared visuals live in `_visuals/`: reuse first, then share what you draw
 
-Anything more than one week draws with lives in `_visuals/`, and each week imports from there. A week's `visuals.tsx` imports only from `_visuals/`, never from another week's folder. When a week needs a piece that currently lives in another week, move it into `_visuals/` first.
+Every drawing in `_visuals/` is one the course has already paid for. Weeks import from there and never from another week's folder. What each file holds:
 
-- `_visuals/sketch.tsx`: the Editorial Sketch primitives (the table below).
-- `_visuals/sketch-cast.tsx`: the shared Editorial Sketch cast: the fashion `Person` (with `handAt`, and `headScale` for children), a seated `Baby`, `BrandBadge`, `BrandPerson`, `Bag`, `Box`, `Heart`, everyday objects (`Magnifier`, `Star`/`Stars`, `SpeechBubble`, `PayCard`, `Eye`, `Megaphone`, `Clock`, `Cart`, `MapPin`), `SketchArrow`, the scene pieces (`Backwash`, `Ground`, `cloudPts`) and the `rp`/`at`/`sharp`/`curvePts` point helpers. Reuse and extend it rather than drawing a new version inside a week.
-- `_visuals/flat.tsx`: the old flat Broadsheet kit, kept only until Weeks 2–4 are converted. New plates use the sketch files.
+- `sketch.tsx`: the Editorial Sketch primitives (the table below).
+- `sketch-cast.tsx`: people and scene pieces (the fashion `Person` and its relatives, the brand badge, backgrounds, ground, arrows) and the point helpers.
+- `sketch-objects.tsx`: everyday objects. Different drawings of the same object are numbered (`Car1`, `Car2`, …).
+
+For every plate:
+
+1. **Look before you draw.** Search `_visuals/` for the person, object or scene piece the plate needs, including every numbered version, and use the one that fits. Props (`s`, `w`, `seed`, washes, `pencil`) usually cover the difference.
+2. **Extend when it almost fits.** Add an optional prop to the existing piece (a pose, a lid, a tint), with a default that keeps every current plate unchanged.
+3. **Add to `_visuals/` when nothing fits.** Draw the new piece straight into the file it belongs in and import it into the week; a new drawing of an existing object takes the next number (`Car4`). A piece still sitting in a week's folder moves to `_visuals/` the moment another week needs it. A week's `visuals.tsx` holds only its plates, the slide-specific compositions.
 
 ## Build every plate from the shared kit
 
-Import from `../_visuals/sketch.tsx` and `../_visuals/sketch-cast.tsx`. Do not re-implement these, and do not draw plates with plain `<line>`/`<rect>`/`<circle>` or the old flat `Frame`/`Key`/`INK`/`SIGNAL` helpers.
+Draw plates with the primitives below, not with plain `<line>`/`<rect>`/`<circle>` or the old flat `Frame`/`Key`/`INK`/`SIGNAL` helpers.
 
 | Piece | Use it for |
 |---|---|

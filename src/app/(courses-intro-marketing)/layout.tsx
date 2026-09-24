@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { DynamicFooter } from "@/components/slide-components/DynamicFooter";
+import { FitSlides } from "@/components/slide-components/FitSlides";
 
 // Fraunces carries the display voice: an editorial serif with enough
 // eccentricity (the WONK axis) to not read as a default pairing.
@@ -43,6 +44,7 @@ export default function RootLayout({
     >
       <body className="antialiased">
         {children}
+        <FitSlides />
         <DynamicFooter />
       </body>
     </html>

@@ -802,3 +802,102 @@ export function Baby({
     </g>
   );
 }
+
+/* -- shared objects (first drawn for Week 2) ------------------------------ */
+
+/** Two beamed music notes, about 30 units across at s = 1. */
+export function Notes({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
+  const heads: Pt[] = [
+    [-9, 10],
+    [9, 6],
+  ];
+  return (
+    <g>
+      {heads.map(([hx, hy], i) => (
+        <path key={i} d={wobble(rp(blobPts(x + hx * s, y + hy * s, 5 * s, 3.8 * s, seed + i, 9, 0.08)), seed + i, 0.2, 6, true)} fill={SK.ink} />
+      ))}
+      <InkLine pts={at(x, y, [[-4.5, 9], [-4.5, -13]], s)} seed={seed + 3} width={1.3} amp={0.2} />
+      <InkLine pts={at(x, y, [[13.5, 5], [13.5, -17]], s)} seed={seed + 4} width={1.3} amp={0.2} />
+      <InkLine pts={at(x, y, [[-4.5, -13], [13.5, -17]], s)} seed={seed + 5} width={3.2} amp={0.2} />
+    </g>
+  );
+}
+
+/** A thought cloud centred on (x, y), trailing two small puffs toward (tx, ty). */
+export function Thought({ x, y, rx, ry, tx, ty, seed }: { x: number; y: number; rx: number; ry: number; tx: number; ty: number; seed: number }) {
+  const cloud = cloudPts(x, y, rx, ry, 12);
+  const puff = (k: number, r: number) => rp(blobPts(x + (tx - x) * k, y + (ty - y) * k, r, r, seed + k * 10, 8, 0.1));
+  return (
+    <g>
+      <Paper pts={cloud} seed={seed} />
+      <InkLine pts={cloud} seed={seed + 1} width={1.1} closed />
+      <Paper pts={puff(0.62, 4.5)} seed={seed + 2} />
+      <InkLine pts={puff(0.62, 4.5)} seed={seed + 3} width={0.9} closed />
+      <Paper pts={puff(0.84, 2.8)} seed={seed + 4} />
+      <InkLine pts={puff(0.84, 2.8)} seed={seed + 5} width={0.9} closed />
+    </g>
+  );
+}
+
+/** A pack standing on (x, bottom): cream, or washed when `fill` is set. */
+export function Pack({ x, bottom, w = 30, h = 58, seed, fill, badge = false }: { x: number; bottom: number; w?: number; h?: number; seed: number; fill?: string; badge?: boolean }) {
+  const pts = sharp([[x - w / 2, bottom - h], [x + w / 2, bottom - h], [x + w / 2, bottom], [x - w / 2, bottom]], true, 2);
+  return (
+    <g>
+      {fill ? <Wash pts={pts} seed={seed} fill={fill} opacity={0.75} /> : <Paper pts={pts} seed={seed} />}
+      <InkLine pts={pts} seed={seed + 1} width={1.2} closed />
+      {badge ? (
+        <BrandBadge x={x} y={r2(bottom - h * 0.58)} r={r2(w * 0.3)} seed={seed + 2} />
+      ) : (
+        <InkLine pts={rp([[x - w * 0.28, bottom - h * 0.58], [x + w * 0.28, bottom - h * 0.58]])} seed={seed + 2} width={0.8} />
+      )}
+    </g>
+  );
+}
+
+/** A waisted, contoured bottle standing on (x, bottom). */
+export function ShapedBottle({ x, bottom, seed }: { x: number; bottom: number; seed: number }) {
+  const half: Pt[] = [[16, 0], [20, -22], [12, -36], [8, -46], [14, -58], [18, -70], [6, -84], [6, -98]];
+  const pts = at(x, bottom, [...half, ...[...half].reverse().map(([px, py]) => [-px, py] as Pt)]);
+  return (
+    <g>
+      <Wash pts={pts} seed={seed} fill={SK.sky} opacity={0.75} />
+      <InkLine pts={pts} seed={seed + 1} closed />
+      <InkLine pts={at(x, bottom, [[-10, -40], [10, -40]])} seed={seed + 2} width={0.8} />
+    </g>
+  );
+}
+
+/* -- shared objects (first drawn for Week 3) ------------------------------ */
+
+/** A running shoe in side view, toe to +x; (x, y) is the middle of the sole. */
+export function Shoe({ x, y, s = 1, seed, fill = SK.camel }: { x: number; y: number; s?: number; seed: number; fill?: string }) {
+  const upper = at(x, y, [[-26, -5], [-25, -20], [-19, -20], [-13, -15], [-8, -25], [-3, -24], [4, -16], [14, -11], [24, -9], [28, -5]], s);
+  const sole = at(x, y, [[-27, -5], [28, -5], [29, 0], [26, 3], [-26, 3], [-28, -1]], s);
+  return (
+    <g>
+      <Wash pts={upper} seed={seed} fill={fill} opacity={0.8} dx={0.8} dy={0.6} />
+      <Paper pts={sole} seed={seed + 5} />
+      <InkLine pts={upper} seed={seed + 1} width={1.1} amp={0.4} />
+      <InkLine pts={sole} seed={seed + 2} width={1.1} closed amp={0.3} />
+      {[[-4, -19, 2, -15], [1, -16, 7, -12], [6, -14, 12, -10]].map(([x0, y0, x1, y1], i) => (
+        <InkLine key={i} pts={at(x, y, [[x0, y0], [x1, y1]], s)} seed={seed + 6 + i} width={0.8} amp={0.2} />
+      ))}
+    </g>
+  );
+}
+
+/** A wall screen, top-left (x, y); `children` draw on the glass. */
+export function Screen({ x, y, w, h, seed, children }: { x: number; y: number; w: number; h: number; seed: number; children?: React.ReactNode }) {
+  const body = sharp([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], true, 3);
+  const glass = rp([[x + 5, y + 5], [x + w - 5, y + 5], [x + w - 5, y + h - 5], [x + 5, y + h - 5]]);
+  return (
+    <g>
+      <Wash pts={body} seed={seed} fill={SK.charcoal} opacity={0.6} dx={0.8} dy={0.6} />
+      <Paper pts={glass} seed={seed + 1} />
+      <Wash pts={glass} seed={seed + 2} fill={SK.sky} opacity={0.55} dx={0.5} dy={0.4} />
+      <InkLine pts={body} seed={seed + 3} width={1.2} closed />
+      {children}
+    </g>
+  );
+}

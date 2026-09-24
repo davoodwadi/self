@@ -74,28 +74,59 @@
     ]
   },
   {
-    "type": "quiz",
+    "type": "identify",
     "slide_id": "interpretation-and-gestalt-principles",
-    "question_text": "A grocery chain puts all of its store-brand products in the same bright yellow packaging. On the shelf, shoppers see them as one family of products. Which Gestalt principle is at work?",
-    "hint": "Think about what the packages have in common.",
-    "correct_answer_citation": "Week 02 · Interpretation and Gestalt Principles",
-    "correct_answer_index": 3,
+    "prompt": "Each shopper below makes sense of what they see. Name the Gestalt principle at work in each case.",
     "options": [
       {
-        "option_text": "Closure",
-        "option_explanation": "Closure is about filling in missing pieces to see a complete picture. Nothing is missing here; the packs share a colour."
+        "id": "closure",
+        "label": "Closure"
       },
       {
-        "option_text": "Figure-Ground",
-        "option_explanation": "Figure-Ground is about separating one focal object from its background. Here many products are being grouped together."
+        "id": "similarity",
+        "label": "Similarity"
       },
       {
-        "option_text": "Adaptation",
-        "option_explanation": "Adaptation is when consumers stop paying attention to familiar stimuli. The yellow packs are being grouped, not ignored."
+        "id": "figure-ground",
+        "label": "Figure-Ground"
+      }
+    ],
+    "cases": [
+      {
+        "id": "cup-logo",
+        "text": "A café's logo is a coffee cup drawn with gaps in its rim and handle. Customers still see a whole cup.",
+        "answer": "closure",
+        "explanation": "Closure: people fill in missing pieces to perceive a complete picture."
       },
       {
-        "option_text": "Similarity",
-        "option_explanation": "Correct. Consumers group objects with shared visual traits like color and shape together."
+        "id": "store-brand",
+        "text": "A supermarket sells all its store-brand goods in the same green, square packs. Shoppers see them as one family of products.",
+        "answer": "similarity",
+        "explanation": "Similarity: consumers group objects with shared visual traits like color and shape together."
+      },
+      {
+        "id": "perfume-ad",
+        "text": "A perfume ad shows a single gold bottle on a plain black page. The eye goes straight to the bottle.",
+        "answer": "figure-ground",
+        "explanation": "Figure-Ground: people separate a main focal object from its background."
+      },
+      {
+        "id": "cut-letters",
+        "text": "A billboard spells the brand name in letters with their tops cut away. Drivers still read the full name.",
+        "answer": "closure",
+        "explanation": "Closure: people fill in missing pieces to perceive a complete picture."
+      },
+      {
+        "id": "sneaker-page",
+        "text": "An online shop shows one white sneaker on a pale grey page with nothing else around it.",
+        "answer": "figure-ground",
+        "explanation": "Figure-Ground: people separate a main focal object from its background."
+      },
+      {
+        "id": "yogurt-cups",
+        "text": "On a crowded yogurt shelf, one brand's round red cups sit side by side, and shoppers read them as one block.",
+        "answer": "similarity",
+        "explanation": "Similarity: consumers group objects with shared visual traits like color and shape together."
       }
     ]
   }

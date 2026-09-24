@@ -1,11 +1,6 @@
 "use client";
 
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import type { CourseQuiz } from "@/lib/course-quiz";
@@ -112,9 +107,7 @@ export function SlideDeck({
   );
 
   return (
-    <div
-      className="relative min-h-screen bg-[var(--paper)] text-[var(--ink-2)] font-[family-name:var(--font-body)]"
-    >
+    <div className="relative min-h-screen bg-[var(--paper)] text-[var(--ink-2)] font-[family-name:var(--font-body)]">
       {/* Reading rail */}
       <div className="fixed inset-x-0 top-0 z-50 h-px bg-[var(--rule)]">
         <div
@@ -130,7 +123,6 @@ export function SlideDeck({
           aria-label="Back to course contents"
         >
           <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
-          <span className="type-caption hidden sm:inline">Contents</span>
         </button>
 
         {label ? (
@@ -182,12 +174,12 @@ export function Slide({
 }: SlideProps) {
   return (
     <>
-      <section
+      <section data-slide
         id={id}
         className={cn(
           "slide-section relative mx-auto w-full max-w-[var(--slide-max)]",
           "flex flex-col justify-center px-5 md:px-10 lg:px-16",
-          "min-h-screen py-[var(--slide-pad-y)]",
+          "min-h-svh py-[var(--slide-pad-y)]",
           align === "center" ? "items-center text-center" : "items-start",
           border && "border-t border-[var(--rule)]",
           className,
@@ -429,12 +421,7 @@ export function Subtitle({
 }) {
   if (variant === "hero") {
     return (
-      <p
-        className={cn(
-          "type-label !text-[var(--ink-3)] mt-2",
-          className,
-        )}
-      >
+      <p className={cn("type-label !text-[var(--ink-3)] mt-2", className)}>
         {children}
       </p>
     );
@@ -442,10 +429,7 @@ export function Subtitle({
 
   return (
     <p
-      className={cn(
-        "type-lead max-w-[var(--measure)] -mt-6 mb-10",
-        className,
-      )}
+      className={cn("type-lead max-w-[var(--measure)] -mt-6 mb-10", className)}
     >
       {children}
     </p>

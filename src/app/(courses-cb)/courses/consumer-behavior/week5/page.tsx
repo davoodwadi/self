@@ -6,9 +6,9 @@ import {
   Slide,
   Title,
 } from "@/components/slide-components/SlideComponents";
-import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
+import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
-import quizzesData from "./quizzes.json";
+import exercisesData from "./exercises.json";
 import * as V from "./visuals";
 
 // ============================================================================
@@ -26,11 +26,12 @@ import * as V from "./visuals";
 // Wayfinding: the title names three ideas, Self-Concept, Personality and
 // Lifestyles. A strip names them and lights the one each slide belongs to.
 //
-// Quizzes: `Slide` renders `quizData` AFTER its section, so each [quiz]-tagged
-// topic carries its own quiz, testing that slide and the ones before it.
+// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
+// so each [exercise]-tagged topic carries one exercise, of the type that fits
+// it, testing that slide and the ones before it.
 // ============================================================================
 
-const quiz = createCourseQuizLookup(quizzesData as CourseQuiz[]);
+const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 /** Content slides trim the deck's outer padding so each topic fits one screen. */
 const TIGHT = "md:!py-16";
@@ -197,14 +198,16 @@ function Heading({
   kicker,
   children,
   tone = "signal",
+  className = "",
 }: {
   kicker?: string;
   children: React.ReactNode;
   tone?: "signal" | "counter";
+  className?: string;
 }) {
   return (
-    <div className="mb-8 w-full md:mb-10">
-      <h2 className="type-h1 max-w-[22ch]">
+    <div className="mb-6 w-full">
+      <h2 className={cn("type-h1 max-w-[32ch]", className)}>
         {kicker ? (
           <>
             <span
@@ -221,7 +224,7 @@ function Heading({
         ) : null}
         {children}
       </h2>
-      <div className="mt-5 h-px w-full bg-[var(--rule)]" />
+      <div className="mt-3 h-px w-full bg-[var(--rule)]" />
     </div>
   );
 }
@@ -244,7 +247,7 @@ function Cells({
   return (
     <ol
       className={cn(
-        "grid w-full gap-10 md:grid-cols-2 md:gap-x-8 lg:gap-6",
+        "grid w-full gap-10 md:grid-cols-2 md:gap-x-8 lg:gap-x-6 lg:gap-y-6",
         {
           2: "md:gap-x-10",
           3: "lg:grid-cols-3",
@@ -255,8 +258,8 @@ function Cells({
       )}
     >
       {items.map((s) => (
-        <li key={s.key} className="flex min-w-0 flex-col gap-4">
-          <div className={cn("border-t-2 pt-4", BORDER[s.tone])}>
+        <li key={s.key} className="flex min-w-0 flex-col gap-3">
+          <div className={cn("border-t-2 pt-3", BORDER[s.tone])}>
             <p className="type-body">{s.text}</p>
           </div>
           <div className="figure-well mt-auto w-full min-w-0 p-3">
@@ -291,7 +294,7 @@ function IdeaRule({ active }: { active: 0 | 1 | 2 }) {
   return (
     <ol
       aria-hidden
-      className="mb-8 grid w-full grid-cols-3 gap-2 sm:gap-4 md:mb-10"
+      className="mb-6 grid w-full grid-cols-3 gap-2 sm:gap-4"
     >
       {IDEAS.map((name, i) => {
         const on = i === active;
@@ -328,11 +331,11 @@ export default function Week5() {
             <p className="type-caption mt-2">
               Consumer Behavior · Davood Wadi, PhD
             </p>
-            <Title className="mt-8 !max-w-[14ch]">
+            <Title className="mt-6 !max-w-[18ch]">
               Personality, Self-Concept, and Lifestyles
             </Title>
-            <div className="mt-10 max-w-[36ch] border-t-2 border-[var(--ink)] pt-6">
-              <p className="type-quote">
+            <div className="mt-8 max-w-[40ch] border-t-2 border-[var(--ink)] pt-6">
+              <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
                 <span className="text-[var(--ink-3)]">
                   Consumers do not just buy products.
                 </span>{" "}
@@ -356,7 +359,7 @@ export default function Week5() {
         <Heading>What Is the Self-Concept?</Heading>
         {/* The definition and the four things it covers sit beside their
             plate; self-esteem and its two poles share the row below. */}
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-12">
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.25fr_1fr] lg:gap-12">
           <div className="min-w-0">
             <Statement className="!max-w-[26ch] !text-[clamp(1.5rem,2.5vw,2.1rem)]">
               Self-concept is the collection of <Tint>beliefs</Tint> a person
@@ -373,7 +376,7 @@ export default function Week5() {
             <V.SelfJudgement />
           </Plate>
         </div>
-        <div className="mt-12 grid w-full gap-10 lg:grid-cols-[0.9fr_2fr] lg:gap-10">
+        <div className="mt-8 grid w-full gap-10 lg:grid-cols-[0.9fr_2fr] lg:gap-10">
           <Ruled tone="signal" className="self-start">
             <Big>
               <Tint>Self-esteem</Tint> refers to the positivity of a
@@ -418,7 +421,7 @@ export default function Week5() {
         className={TIGHT}
         id="the-actual-self-versus-the-ideal-self"
         border
-        quizData={quiz["the-actual-self-versus-the-ideal-self"]}
+        exercise={exercise["the-actual-self-versus-the-ideal-self"]}
       >
         <IdeaRule active={0} />
         <Heading>The Actual Self Versus the Ideal Self</Heading>
@@ -442,7 +445,7 @@ export default function Week5() {
             under its own sentence. */}
         <Cells
           cols={3}
-          className="mt-10"
+          className="mt-7"
           items={[
             {
               key: "gap",
@@ -492,7 +495,7 @@ export default function Week5() {
         className={TIGHT}
         id="the-extended-self-possessions-as-identity"
         border
-        quizData={quiz["the-extended-self-possessions-as-identity"]}
+        exercise={exercise["the-extended-self-possessions-as-identity"]}
       >
         <IdeaRule active={0} />
         <Heading kicker="The Extended Self:">Possessions as Identity</Heading>
@@ -504,7 +507,7 @@ export default function Week5() {
         </Statement>
         {/* The definition and its four levels read down the left; the rings
             they walk through sit beside them, each level keyed by its mark. */}
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[0.9fr_1.3fr] lg:gap-12">
+        <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
           <div className="min-w-0">
             <Lead>
               The <Term>extended self</Term> includes possessions that people
@@ -556,7 +559,7 @@ export default function Week5() {
         </Lead>
         <Cells
           cols={4}
-          className="mt-10"
+          className="mt-7"
           items={[
             {
               key: "innovativeness",
@@ -618,7 +621,7 @@ export default function Week5() {
         className={TIGHT}
         id="the-big-five-personality-dimensions"
         border
-        quizData={quiz["the-big-five-personality-dimensions"]}
+        exercise={exercise["the-big-five-personality-dimensions"]}
       >
         <IdeaRule active={1} />
         <Heading>The Big Five Personality Dimensions</Heading>
@@ -629,7 +632,7 @@ export default function Week5() {
         {/* The five dimensions are one set, so they read as one strip. */}
         <Cells
           cols={5}
-          className="mt-10"
+          className="mt-7"
           items={[
             {
               key: "openness",
@@ -692,9 +695,9 @@ export default function Week5() {
             },
           ]}
         />
-        <div className="mt-10 grid w-full items-center gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
+        <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[1.7fr_1fr] lg:gap-12">
           <Ruled tone="counter">
-            <Big>
+            <Big className="!text-[clamp(1.4rem,2.2vw,1.9rem)]">
               {" "}
               Marketers use these dimensions to tailor{" "}
               <Tint tone="counter">ad copy</Tint>,{" "}
@@ -715,7 +718,7 @@ export default function Week5() {
         className={TIGHT}
         id="brand-personality-giving-life-to-objects"
         border
-        quizData={quiz["brand-personality-giving-life-to-objects"]}
+        exercise={exercise["brand-personality-giving-life-to-objects"]}
       >
         <IdeaRule active={1} />
         <Heading kicker="Brand Personality:">Giving Life to Objects</Heading>
@@ -731,7 +734,7 @@ export default function Week5() {
         {/* The five dimensions are one set, so they read as one strip. */}
         <Cells
           cols={5}
-          className="mt-10"
+          className="mt-7"
           items={[
             {
               key: "sincerity",
@@ -806,7 +809,9 @@ export default function Week5() {
         border
       >
         <IdeaRule active={1} />
-        <Heading>Anthropomorphism and Brand Relationships</Heading>
+        <Heading className="!max-w-none !text-[clamp(2rem,3.2vw,2.9rem)]">
+          Anthropomorphism and Brand Relationships
+        </Heading>
         {/* Top: what anthropomorphism is, and the mascot that puts it to work.
             Below: the relationship it builds, and the betrayal when it fails. */}
         <div className="grid w-full gap-10 lg:grid-cols-2 lg:gap-12">
@@ -833,9 +838,9 @@ export default function Week5() {
             </Plate>
           </div>
         </div>
-        <div className="mt-8 grid w-full gap-10 lg:grid-cols-2 lg:gap-12">
-          <div className="flex min-w-0 flex-col gap-5">
-            <Big>
+        <div className="mt-6 grid w-full gap-10 lg:grid-cols-2 lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Big className="!text-[clamp(1.2rem,1.7vw,1.5rem)]">
               When consumers view a brand as a{" "}
               <Tint tone="counter">human partner</Tint>, brand loyalty turns
               into an <Tint>emotional relationship</Tint>.
@@ -850,8 +855,8 @@ export default function Week5() {
               </P>
             </Ruled>
           </div>
-          <div className="flex min-w-0 flex-col gap-5">
-            <Big>
+          <div className="flex min-w-0 flex-col gap-4">
+            <Big className="!text-[clamp(1.2rem,1.7vw,1.5rem)]">
               {" "}
               When an anthropomorphized brand fails, consumers feel{" "}
               <Tint>personal betrayal</Tint> rather than simple dissatisfaction.
@@ -870,13 +875,13 @@ export default function Week5() {
         className={TIGHT}
         id="psychographics-and-lifestyles-measuring-aios"
         border
-        quizData={quiz["psychographics-and-lifestyles-measuring-aios"]}
+        exercise={exercise["psychographics-and-lifestyles-measuring-aios"]}
       >
         <IdeaRule active={2} />
         <Heading kicker="Psychographics and Lifestyles:">
           Measuring AIOs
         </Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.2fr] lg:gap-12">
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
           <Statement className="!max-w-[22ch] !text-[clamp(1.5rem,2.5vw,2.1rem)]">
             <span className="text-[var(--ink-3)]">
               Demographics tell us who buys.
@@ -888,7 +893,7 @@ export default function Week5() {
           </Plate>
         </div>
         {/* Lifestyle and the method lead the row; the three AIOs follow. */}
-        <div className="mt-12 grid w-full gap-10 lg:grid-cols-[0.95fr_3fr] lg:gap-8">
+        <div className="mt-5 grid w-full gap-10 lg:grid-cols-[0.95fr_3fr] lg:gap-8">
           <div className="min-w-0 border-t-2 border-[var(--ink)] pt-4">
             <P>
               <Term>Lifestyle</Term> defines a pattern of consumption that
@@ -956,7 +961,7 @@ export default function Week5() {
         </Statement>
         {/* The map sits beside its five lines; each line's mark lights its
             own cells on the map. */}
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[1.25fr_1fr] lg:gap-10">
+        <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[1.25fr_1fr] lg:gap-10">
           <Plate wide>
             <V.VALSMap />
           </Plate>

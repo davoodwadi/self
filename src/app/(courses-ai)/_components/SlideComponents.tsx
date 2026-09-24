@@ -143,7 +143,7 @@ export function Slide({
           <InlineQuiz quizData={quizData} />
         </div>
       )}
-      <section
+      <section data-slide
         id={id}
         className={`slide-section relative min-h-screen flex flex-col justify-center py-10 md:py-12 ${
           align === "left"

@@ -1,0 +1,198 @@
+[
+  {
+    "type": "match",
+    "slide_id": "classical-conditioning-pairing-stimuli",
+    "prompt": "All winter, a tea brand's ads show its logo beside a crackling fireplace. Match each part of classical conditioning to what happens in the campaign.",
+    "term_label": "Classical conditioning",
+    "match_label": "In the tea campaign",
+    "pairs": [
+      {
+        "id": "unconditioned-stimulus",
+        "term": "Unconditioned stimulus",
+        "match": "The sound of a crackling fire in every ad",
+        "explanation": "The crackling fire is the unconditioned stimulus: like upbeat music, it naturally triggers positive feelings."
+      },
+      {
+        "id": "natural-response",
+        "term": "Natural response",
+        "match": "Feeling warm and cozy whenever a fire crackles",
+        "explanation": "The cozy feeling is the natural response the fire brings, before any learning has happened."
+      },
+      {
+        "id": "neutral-stimulus",
+        "term": "Neutral stimulus",
+        "match": "The tea logo, before anyone has seen the ads",
+        "explanation": "At first the logo brings no feeling at all, so it is the neutral stimulus."
+      },
+      {
+        "id": "pairing",
+        "term": "Pairing",
+        "match": "Ad after ad showing the logo right beside the fire",
+        "explanation": "The brand pairs the fire with its logo repeatedly, so the two become linked."
+      },
+      {
+        "id": "conditioned-response",
+        "term": "Conditioned response",
+        "match": "Feeling cozy on seeing the logo alone on a shelf",
+        "explanation": "Seeing the brand alone now produces the positive feeling. This is a conditioned response."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "repetition-and-stimulus-generalization",
+    "prompt": "Each case below shows repetition at work, or a learned response spreading or narrowing. Name what is happening.",
+    "options": [
+      { "id": "repetition", "label": "Repetition" },
+      { "id": "wear-out", "label": "Advertising wear-out" },
+      { "id": "generalization", "label": "Stimulus generalization" },
+      { "id": "discrimination", "label": "Stimulus discrimination" }
+    ],
+    "cases": [
+      {
+        "id": "gym-jingle",
+        "text": "A new gym plays the same short jingle on the radio every morning for a month. By the end, listeners hum it when they pass the gym.",
+        "answer": "repetition",
+        "explanation": "Repetition: repeated exposures strengthen the link between the jingle and the gym."
+      },
+      {
+        "id": "insurance-mute",
+        "text": "The same insurance ad plays in every video break for weeks. Viewers start muting it the moment it begins.",
+        "answer": "wear-out",
+        "explanation": "Advertising wear-out: too much repetition makes consumers tune out or get annoyed."
+      },
+      {
+        "id": "pharmacy-box",
+        "text": "A pharmacy sells its own pain relievers in the same blue-and-yellow box as the best-selling brand, and shoppers trust them straight away.",
+        "answer": "generalization",
+        "explanation": "Stimulus generalization: a similar-looking box triggers the trust shoppers learned for the leader."
+      },
+      {
+        "id": "stitched-heel",
+        "text": "A sneaker brand's ads keep showing close-ups of its one-of-a-kind stitched heel, so buyers can tell its shoes from copies.",
+        "answer": "discrimination",
+        "explanation": "Stimulus discrimination: the brand teaches consumers to spot the unique difference between products."
+      },
+      {
+        "id": "candy-all-year",
+        "text": "A candy brand keeps short ads running all year so shoppers do not lose the link between its logo and fun.",
+        "answer": "repetition",
+        "explanation": "Repetition: repeated exposures prevent memory decay and keep the link strong."
+      },
+      {
+        "id": "board-game",
+        "text": "A toy maker gives its new board game the same lettering and colours as a famous game. Children get as excited as they do for the famous one.",
+        "answer": "generalization",
+        "explanation": "Stimulus generalization: similar stimuli trigger the same learned response."
+      },
+      {
+        "id": "fast-food-jingle",
+        "text": "A fast-food jingle plays in every radio break for months, until listeners roll their eyes and switch stations.",
+        "answer": "wear-out",
+        "explanation": "Advertising wear-out: too much repetition makes consumers tune out or get annoyed."
+      },
+      {
+        "id": "gold-seal",
+        "text": "A butter brand prints a gold seal on every pack and runs ads saying 'only the real one has the seal.' Shoppers now check for it.",
+        "answer": "discrimination",
+        "explanation": "Stimulus discrimination: the brand teaches consumers to spot what makes it different from look-alikes."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "observational-learning-watching-others",
+    "prompt": "Lena watches a fitness coach online; Sami watches a star striker. Sort each moment into the step of observational learning it belongs to.",
+    "bins": [
+      { "id": "attention", "label": "First: attention to the model" },
+      { "id": "memory", "label": "Second: remembering the model" },
+      { "id": "action", "label": "Third: turning memory into action" }
+    ],
+    "cards": [
+      {
+        "id": "lena-watches",
+        "text": "Lena stops scrolling to watch a trusted fitness coach's morning video.",
+        "bin": "attention",
+        "explanation": "First, the consumer directs attention to an attractive or credible model."
+      },
+      {
+        "id": "sami-stares",
+        "text": "Sami watches the star striker's boots for the whole match.",
+        "bin": "attention",
+        "explanation": "First, the consumer directs attention to an attractive model."
+      },
+      {
+        "id": "lena-recalls",
+        "text": "Days later, Lena can still describe the blender the coach used.",
+        "bin": "memory",
+        "explanation": "Second, the consumer remembers what the model says or does."
+      },
+      {
+        "id": "sami-recalls",
+        "text": "At the mall, Sami recalls the exact colour of the striker's boots.",
+        "bin": "memory",
+        "explanation": "Second, the consumer remembers what the model says or does."
+      },
+      {
+        "id": "lena-buys",
+        "text": "Lena orders the same blender online.",
+        "bin": "action",
+        "explanation": "Third, the consumer converts the memory into action by purchasing the same product."
+      },
+      {
+        "id": "sami-buys",
+        "text": "Sami saves his allowance and buys the same boots.",
+        "bin": "action",
+        "explanation": "Third, the consumer converts the memory into action by purchasing the same product."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "the-memory-system-three-stores",
+    "prompt": "Each case below shows a brand message in one of the three memory stores. Name the store at work.",
+    "options": [
+      { "id": "sensory", "label": "Sensory memory" },
+      { "id": "short-term", "label": "Short-term memory" },
+      { "id": "long-term", "label": "Long-term memory" }
+    ],
+    "cases": [
+      {
+        "id": "bakery-poster",
+        "text": "Walking past a bakery, you glimpse a poster in the window. A few seconds later it is gone from your mind.",
+        "answer": "sensory",
+        "explanation": "Sensory memory holds brief sensory inputs for a few seconds. This poster never got your attention."
+      },
+      {
+        "id": "promo-code",
+        "text": "A radio host reads out a promo code, and you repeat it to yourself while you look for a pen.",
+        "answer": "short-term",
+        "explanation": "Short-term memory holds a small amount of information in active consciousness for about twenty seconds."
+      },
+      {
+        "id": "childhood-jingle",
+        "text": "You can still sing the jingle from a cereal ad you loved as a child.",
+        "answer": "long-term",
+        "explanation": "Long-term memory retains information for days, months, or years."
+      },
+      {
+        "id": "billboard-flash",
+        "text": "From a car window, a billboard flashes past. Only its red colour registers for a moment.",
+        "answer": "sensory",
+        "explanation": "Sensory memory holds brief sensory inputs for a few seconds before they fade."
+      },
+      {
+        "id": "pizza-number",
+        "text": "A pizza ad reads its number as \"514 · 555 · 0199\", so you can hold it in mind while you dial.",
+        "answer": "short-term",
+        "explanation": "Chunking helps short-term memory: three chunks fit where ten separate digits would not."
+      },
+      {
+        "id": "running-app",
+        "text": "A runner thinks through how a new running app fits her training plan. Months later she still knows the brand well.",
+        "answer": "long-term",
+        "explanation": "Elaborative rehearsal moved the brand into long-term memory, which lasts for days, months, or years."
+      }
+    ]
+  }
+]

@@ -24,106 +24,49 @@
 
 import React from "react";
 import {
-  Key,
+  COUNTER,
+  COUNTER_TINT,
   Display,
   Frame,
-  Schematic,
+  hash2,
+  headAlong1,
   INK,
   INK3,
-  RULE,
-  RULE2,
-  SIGNAL,
-  COUNTER,
+  Key,
   PAPER,
   PAPER2,
+  r2,
+  RULE,
+  RULE2,
+  Schematic,
+  SIGNAL,
   SIGNAL_TINT,
-  COUNTER_TINT,
-} from "../week1/visuals";
-import { Factory, Warehouse, Store, Person, Pack, Truck, Sheet } from "../week9/visuals";
-import { Coins, Mark } from "../week10/visuals";
+} from "../_visuals/broadsheet";
+import {
+  Arrow2,
+  Bottle2,
+  Bubble3,
+  Chip2,
+  Coins2,
+  CurveArrow2,
+  Factory3,
+  Flag2,
+  FlagPattern,
+  GlyphFrame,
+  Magnifier2,
+  Mark2,
+  Pack4,
+  Person3,
+  Phone3,
+  Sheet,
+  Star3,
+  Store2,
+  Tag2,
+  Truck2,
+  Warehouse,
+} from "../_visuals/objects";
 
 /* -- geometry helpers ------------------------------------------------------ */
-
-/** Rounded to two decimals, so trig points match on server and client. */
-const r2 = (n: number) => Math.round(n * 100) / 100;
-
-/** Deterministic 0–1 hash, rounded so server and client agree. */
-const hash = (n: number) => {
-  const v = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
-  return Math.round((v - Math.floor(v)) * 1e4) / 1e4;
-};
-
-/** Open chevron arrowhead pointing along (dx, dy), tip at (x, y). */
-function headAlong(x: number, y: number, dx: number, dy: number, s = 8) {
-  const len = Math.hypot(dx, dy) || 1;
-  const ux = dx / len;
-  const uy = dy / len;
-  const bx = x - ux * s;
-  const by = y - uy * s;
-  const px = -uy * (s * 0.62);
-  const py = ux * (s * 0.62);
-  return `M${(bx + px).toFixed(2)} ${(by + py).toFixed(2)}L${x.toFixed(2)} ${y.toFixed(2)}L${(bx - px).toFixed(2)} ${(by - py).toFixed(2)}`;
-}
-
-/** A straight arrow from (x1, y1) to (x2, y2). */
-function Arrow({
-  x1,
-  y1,
-  x2,
-  y2,
-  tone = INK,
-  width = 1.5,
-  dash,
-  size = 8,
-}: {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-  tone?: string;
-  width?: number;
-  dash?: string;
-  size?: number;
-}) {
-  return (
-    <g>
-      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={tone} strokeWidth={width} strokeDasharray={dash} />
-      <path d={headAlong(x2, y2, x2 - x1, y2 - y1, size)} fill="none" stroke={tone} strokeWidth={width} />
-    </g>
-  );
-}
-
-/** An arrow along a quadratic curve from (x1, y1) through control (cx, cy). */
-function CurveArrow({
-  x1,
-  y1,
-  cx,
-  cy,
-  x2,
-  y2,
-  tone = INK,
-  width = 1.5,
-  dash,
-  size = 8,
-}: {
-  x1: number;
-  y1: number;
-  cx: number;
-  cy: number;
-  x2: number;
-  y2: number;
-  tone?: string;
-  width?: number;
-  dash?: string;
-  size?: number;
-}) {
-  return (
-    <g>
-      <path d={`M${x1} ${y1}Q${cx} ${cy} ${x2} ${y2}`} fill="none" stroke={tone} strokeWidth={width} strokeDasharray={dash} />
-      <path d={headAlong(x2, y2, x2 - cx, y2 - cy, size)} fill="none" stroke={tone} strokeWidth={width} />
-    </g>
-  );
-}
 
 /* -- the cast of the week -------------------------------------------------- */
 
@@ -140,46 +83,6 @@ export function Border({
   tone?: string;
 }) {
   return <line x1={x} y1={y1} x2={x} y2={y2} stroke={tone} strokeWidth={1.5} strokeDasharray="6 5" />;
-}
-
-export type FlagPattern = "home" | "tri" | "band" | "disc" | "cross" | "diag";
-
-/**
- * A country: a flag on a pole standing on (x, y). The home country flies a
- * solid flag; each foreign country has its own pattern.
- */
-export function Flag({
-  x,
-  y,
-  pattern = "home",
-  tone = INK,
-  h = 34,
-}: {
-  x: number;
-  y: number;
-  pattern?: FlagPattern;
-  tone?: string;
-  h?: number;
-}) {
-  const top = y - h;
-  const w = 24;
-  const fh = 16;
-  return (
-    <g>
-      <line x1={x} y1={y} x2={x} y2={top - 2} stroke={tone} strokeWidth={1.5} strokeLinecap="round" />
-      <rect x={x} y={top} width={w} height={fh} fill={pattern === "home" ? tone : PAPER} stroke={tone} strokeWidth={1.25} />
-      {pattern === "tri" ? <rect x={x} y={top} width={8} height={fh} fill={tone} /> : null}
-      {pattern === "tri" ? <rect x={x + 16} y={top} width={8} height={fh} fill={tone} /> : null}
-      {pattern === "band" ? <rect x={x} y={top + 5} width={w} height={6} fill={tone} /> : null}
-      {pattern === "disc" ? <circle cx={x + 12} cy={top + 8} r={4.5} fill={tone} /> : null}
-      {pattern === "cross" ? (
-        <path d={`M${x + 8} ${top}V${top + fh}M${x} ${top + 8}H${x + w}`} stroke={tone} strokeWidth={3} />
-      ) : null}
-      {pattern === "diag" ? (
-        <path d={`M${x} ${top + fh}L${x + w} ${top}`} stroke={tone} strokeWidth={4} />
-      ) : null}
-    </g>
-  );
 }
 
 /** The world: a globe of meridians and parallels centred on (x, y). */
@@ -209,88 +112,6 @@ export function Globe({
       <line x1={x - r} y1={y} x2={x + r} y2={y} stroke={tone} strokeWidth={width * 0.6} />
       <line x1={r2(x - c)} y1={r2(y - p)} x2={r2(x + c)} y2={r2(y - p)} stroke={tone} strokeWidth={width * 0.45} />
       <line x1={r2(x - c)} y1={r2(y + p)} x2={r2(x + c)} y2={r2(y + p)} stroke={tone} strokeWidth={width * 0.45} />
-    </g>
-  );
-}
-
-/** A price tag, its point on the left at (x, y) centre-line. */
-export function Tag({
-  x,
-  y,
-  w = 54,
-  h = 28,
-  tone = INK,
-  fill = PAPER,
-  children,
-}: {
-  x: number;
-  y: number;
-  w?: number;
-  h?: number;
-  tone?: string;
-  fill?: string;
-  children?: React.ReactNode;
-}) {
-  const t = y - h / 2;
-  const b = y + h / 2;
-  const p = Math.round(h / 2);
-  return (
-    <g>
-      <path
-        d={`M${x} ${y}L${x + p} ${t}H${x + w}V${b}H${x + p}Z`}
-        fill={fill}
-        stroke={tone}
-        strokeWidth={1.5}
-        strokeLinejoin="round"
-      />
-      <circle cx={x + p - 2} cy={y} r={2.6} fill={PAPER} stroke={tone} strokeWidth={1.1} />
-      {children}
-    </g>
-  );
-}
-
-/** Artificial intelligence: a chip with pins, marked AI, centred on (x, y). */
-export function Chip({
-  x,
-  y,
-  s = 44,
-  tone = SIGNAL,
-  fill = SIGNAL_TINT,
-}: {
-  x: number;
-  y: number;
-  s?: number;
-  tone?: string;
-  fill?: string;
-}) {
-  const h = s / 2;
-  const pins = [-0.28, 0, 0.28];
-  const pin = r2(s * 0.16);
-  return (
-    <g>
-      {pins.map((d) => {
-        const o = r2(d * s);
-        return (
-          <g key={d} stroke={tone} strokeWidth={1.5}>
-            <line x1={x + o} y1={y - h - pin} x2={x + o} y2={y - h} />
-            <line x1={x + o} y1={y + h} x2={x + o} y2={y + h + pin} />
-            <line x1={x - h - pin} y1={y + o} x2={x - h} y2={y + o} />
-            <line x1={x + h} y1={y + o} x2={x + h + pin} y2={y + o} />
-          </g>
-        );
-      })}
-      <rect x={x - h} y={y - h} width={s} height={s} rx={r2(s * 0.12)} fill={fill} stroke={tone} strokeWidth={1.75} />
-      <text
-        x={x}
-        y={r2(y + s * 0.15)}
-        textAnchor="middle"
-        fontFamily="var(--font-heading)"
-        fontWeight={600}
-        fontSize={r2(s * 0.42)}
-        fill={tone}
-      >
-        AI
-      </text>
     </g>
   );
 }
@@ -396,80 +217,6 @@ function Cross({ x, y, s = 9, tone = COUNTER, width = 2 }: { x: number; y: numbe
   );
 }
 
-/** A speech bubble with its box at (x, y), tail under its left or right end. */
-function Bubble({
-  x,
-  y,
-  w,
-  h,
-  tone = INK,
-  fill = PAPER,
-  tail = "left",
-  dash,
-}: {
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  tone?: string;
-  fill?: string;
-  tail?: "left" | "right";
-  dash?: string;
-}) {
-  const b = y + h;
-  const r = 6;
-  const t = tail === "left" ? x + 14 : x + w - 14;
-  const d = tail === "left" ? -8 : 8;
-  return (
-    <path
-      d={`M${x + r} ${y}H${x + w - r}Q${x + w} ${y} ${x + w} ${y + r}V${b - r}Q${x + w} ${b} ${x + w - r} ${b}H${Math.max(t, t + d) }L${t + (tail === "left" ? -4 : 4)} ${b + 10}L${Math.min(t, t + d)} ${b}H${x + r}Q${x} ${b} ${x} ${b - r}V${y + r}Q${x} ${y} ${x + r} ${y}Z`}
-      fill={fill}
-      stroke={tone}
-      strokeWidth={1.5}
-      strokeLinejoin="round"
-      strokeDasharray={dash}
-    />
-  );
-}
-
-/** A phone with a screen; its centre at (x, y), k = 1 is 40 by 72. */
-export function Phone({
-  x,
-  y,
-  k = 1,
-  tone = INK,
-  fill = PAPER,
-  screen = PAPER2,
-}: {
-  x: number;
-  y: number;
-  k?: number;
-  tone?: string;
-  fill?: string;
-  screen?: string;
-}) {
-  const w = r2(40 * k);
-  const h = r2(72 * k);
-  return (
-    <g>
-      <rect x={r2(x - w / 2)} y={r2(y - h / 2)} width={w} height={h} rx={r2(6 * k)} fill={fill} stroke={tone} strokeWidth={1.5} />
-      <rect x={r2(x - w / 2 + 4 * k)} y={r2(y - h / 2 + 8 * k)} width={r2(w - 8 * k)} height={r2(h - 18 * k)} fill={screen} stroke={tone} strokeWidth={0.8} />
-      <circle cx={x} cy={r2(y + h / 2 - 5 * k)} r={r2(1.6 * k)} fill={tone} />
-    </g>
-  );
-}
-
-/** A magnifying glass whose lens is centred on (x, y). */
-function Magnifier({ x, y, r = 22, tone = SIGNAL }: { x: number; y: number; r?: number; tone?: string }) {
-  const d = r2(r * 0.71);
-  return (
-    <g>
-      <circle cx={x} cy={y} r={r} fill="none" stroke={tone} strokeWidth={2.25} />
-      <line x1={r2(x + d)} y1={r2(y + d)} x2={r2(x + d + r * 0.7)} y2={r2(y + d + r * 0.7)} stroke={tone} strokeWidth={4} strokeLinecap="round" />
-    </g>
-  );
-}
-
 /** A thought bubble whose box is at (x, y), trailing dots toward (tx, ty). */
 function Thought({
   x,
@@ -557,15 +304,15 @@ export function EntryMode({
       <Border x={x} y1={r2(y - 52 * k)} y2={r2(y + 4 * k)} />
       {kind === "export" ? (
         <g>
-          <Factory x={X(-34)} y={y} k={r2(0.7 * k)} tone={c} />
-          <Arrow x1={X(-10)} y1={r2(y - 14 * k)} x2={X(22)} y2={r2(y - 14 * k)} tone={c} width={1.5} size={6} />
-          <Pack x={X(38)} y={y} w={r2(20 * k)} h={r2(18 * k)} tone={c} />
+          <Factory3 x={X(-34)} y={y} k={r2(0.7 * k)} tone={c} />
+          <Arrow2 x1={X(-10)} y1={r2(y - 14 * k)} x2={X(22)} y2={r2(y - 14 * k)} tone={c} width={1.5} size={6} />
+          <Pack4 x={X(38)} y={y} w={r2(20 * k)} h={r2(18 * k)} tone={c} />
         </g>
       ) : null}
       {kind === "jv" ? (
         <g>
-          <Factory x={X(-34)} y={y} k={r2(0.7 * k)} tone={INK} />
-          <Factory x={X(40)} y={y} k={r2(0.7 * k)} tone={c} fill={tone ? PAPER : COUNTER_TINT} />
+          <Factory3 x={X(-34)} y={y} k={r2(0.7 * k)} tone={INK} />
+          <Factory3 x={X(40)} y={y} k={r2(0.7 * k)} tone={c} fill={tone ? PAPER : COUNTER_TINT} />
           <path
             d={`M${X(-26)} ${r2(y + 8 * k)}V${r2(y + 13 * k)}H${X(34)}V${r2(y + 8 * k)}`}
             fill="none"
@@ -576,8 +323,8 @@ export function EntryMode({
       ) : null}
       {kind === "di" ? (
         <g>
-          <Flag x={X(-44)} y={y} h={r2(30 * k)} tone={INK} />
-          <Factory x={X(40)} y={y} k={r2(0.8 * k)} tone={c} fill={tone ? PAPER : SIGNAL_TINT} />
+          <Flag2 x={X(-44)} y={y} h={r2(30 * k)} tone={INK} />
+          <Factory3 x={X(40)} y={y} k={r2(0.8 * k)} tone={c} fill={tone ? PAPER : SIGNAL_TINT} />
         </g>
       ) : null}
     </g>
@@ -666,12 +413,12 @@ export function CultureEconomy() {
       <line x1={16} y1={160} x2={392} y2={160} stroke={RULE} strokeWidth={1} />
       {cols.map((cx, i) => (
         <g key={cx}>
-          <Flag x={cx - 12} y={70} pattern={pats[i]} />
-          <Bubble x={cx - 38} y={92} w={76} h={28} />
+          <Flag2 x={cx - 12} y={70} pattern={pats[i]} />
+          <Bubble3 x={cx - 38} y={92} w={76} h={28} />
           <text x={cx} y={111} textAnchor="middle" fontFamily="var(--font-body)" fontSize={13} fill={INK}>
             {GREETINGS[i]}
           </text>
-          <Coins x={cx} y={240} n={coins[i]} w={30} />
+          <Coins2 x={cx} y={240} n={coins[i]} w={30} />
         </g>
       ))}
     </Frame>
@@ -687,8 +434,8 @@ export function Navigate() {
       label="A company on the left and a store on the right. Between them stand a government building, labelled political, and a pile of rule sheets, labelled regulatory. The route hops over one and then the other to reach the store."
     >
       <line x1={12} y1={238} x2={388} y2={238} stroke={RULE2} strokeWidth={1} />
-      <Factory x={46} y={238} />
-      <Store x={352} y={238} />
+      <Factory3 x={46} y={238} />
+      <Store2 x={352} y={238} />
       <Government x={140} y={238} k={0.9} />
       <Key x={140} y={258} anchor="middle" fill={INK} size={9.5}>
         POLITICAL
@@ -700,7 +447,7 @@ export function Navigate() {
         REGULATORY
       </Key>
       <path d="M80 214Q140 120 198 214Q258 110 318 214" fill="none" stroke={SIGNAL} strokeWidth={2} strokeDasharray="7 5" />
-      <path d={headAlong(320, 214, 320 - 258, 214 - 110, 8)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+      <path d={headAlong1(320, 214, 320 - 258, 214 - 110, 8)} fill="none" stroke={SIGNAL} strokeWidth={2} />
     </Frame>
   );
 }
@@ -752,14 +499,14 @@ export function TradeSystem() {
               stroke={INK3}
               strokeWidth={1.5}
             />
-            <Pack x={mx} y={my + 8} w={20} h={16} />
+            <Pack4 x={mx} y={my + 8} w={20} h={16} />
           </g>
         );
       })}
       {TRADE_NODES.map((n) => (
         <g key={n.x}>
           <circle cx={n.x} cy={n.y} r={R} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
-          <Flag x={n.x - 9} y={n.y + 16} pattern={n.p} h={30} />
+          <Flag2 x={n.x - 9} y={n.y + 16} pattern={n.p} h={30} />
         </g>
       ))}
     </Frame>
@@ -789,7 +536,7 @@ export function AssessEconomy() {
         return (
           <g key={x}>
             <rect x={x} y={56} width={108} height={160} fill={lit ? SIGNAL_TINT : PAPER} stroke={lit ? SIGNAL : INK} strokeWidth={1.5} />
-            <Flag x={x + 12} y={96} pattern={pats[i]} h={30} />
+            <Flag2 x={x + 12} y={96} pattern={pats[i]} h={30} />
             <line x1={x + 14} y1={202} x2={x + 94} y2={202} stroke={INK3} strokeWidth={1} />
             {bars[i].map((h, j) => (
               <rect key={j} x={x + 20 + j * 18} y={202 - h} width={12} height={h} fill={lit ? SIGNAL : INK} />
@@ -797,7 +544,7 @@ export function AssessEconomy() {
           </g>
         );
       })}
-      <Magnifier x={200} y={170} r={38} />
+      <Magnifier2 x={200} y={170} r={38} />
     </Frame>
   );
 }
@@ -811,8 +558,8 @@ export function CultureChoice() {
       label="Two countries separated by a border, each with the same two products on a shelf: a jar and a box. The shopper on the left reaches for the jar; the shopper on the right reaches for the box."
     >
       <Border x={200} y1={20} y2={250} />
-      <Flag x={20} y={56} pattern="tri" />
-      <Flag x={356} y={56} pattern="disc" />
+      <Flag2 x={20} y={56} pattern="tri" />
+      <Flag2 x={356} y={56} pattern="disc" />
       {[0, 1].map((side) => {
         const o = side * 200;
         const pickJar = side === 0;
@@ -820,9 +567,9 @@ export function CultureChoice() {
           <g key={side}>
             <line x1={o + 36} y1={140} x2={o + 164} y2={140} stroke={INK} strokeWidth={1.5} />
             <Jar x={o + 70} y={140} tone={pickJar ? SIGNAL : INK3} fill={pickJar ? SIGNAL_TINT : PAPER} />
-            <Pack x={o + 130} y={140} w={32} h={32} tone={pickJar ? INK3 : SIGNAL} fill={pickJar ? PAPER : SIGNAL_TINT} />
-            <Person x={o + 100} y={246} k={1.2} />
-            <Arrow
+            <Pack4 x={o + 130} y={140} w={32} h={32} tone={pickJar ? INK3 : SIGNAL} fill={pickJar ? PAPER : SIGNAL_TINT} />
+            <Person3 x={o + 100} y={246} k={1.2} />
+            <Arrow2
               x1={o + 100}
               y1={196}
               x2={pickJar ? o + 76 : o + 124}
@@ -856,28 +603,28 @@ export function TradeBarriers() {
       </Key>
       <Border x={200} y1={60} y2={226} />
       <line x1={70} y1={150} x2={80} y2={174} stroke={INK} strokeWidth={1} />
-      <Tag x={60} y={150} w={60} />
-      <Pack x={86} y={210} w={40} h={36} />
-      <Arrow x1={116} y1={192} x2={276} y2={192} tone={INK} width={1.5} />
+      <Tag2 x={60} y={150} w={60} />
+      <Pack4 x={86} y={210} w={40} h={36} />
+      <Arrow2 x1={116} y1={192} x2={276} y2={192} tone={INK} width={1.5} />
       <line x1={272} y1={150} x2={302} y2={174} stroke={INK} strokeWidth={1} />
-      <Tag x={262} y={150} w={120}>
+      <Tag2 x={262} y={150} w={120}>
         <rect x={322} y={136} width={60} height={28} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
         <Display x={352} y={159} anchor="middle" fill={COUNTER} size={22}>
           +
         </Display>
-      </Tag>
-      <Pack x={312} y={210} w={40} h={36} />
+      </Tag2>
+      <Pack4 x={312} y={210} w={40} h={36} />
       {/* Quota */}
       <Key x={600} y={36} anchor="middle" fill={INK} size={11}>
         QUOTA
       </Key>
       <Border x={600} y1={60} y2={226} />
       {[450, 500, 550].map((x) => (
-        <Pack key={x} x={x} y={210} w={36} h={34} tone={COUNTER} dash="4 3" />
+        <Pack4 key={x} x={x} y={210} w={36} h={34} tone={COUNTER} dash="4 3" />
       ))}
       <rect x={594} y={150} width={12} height={64} fill={COUNTER} />
       {[650, 700, 750].map((x) => (
-        <Pack key={x} x={x} y={210} w={36} h={34} />
+        <Pack4 key={x} x={x} y={210} w={36} h={34} />
       ))}
     </Frame>
   );
@@ -906,7 +653,7 @@ export function GdpSelection() {
         return (
           <g key={i}>
             <rect x={x - 28} y={base - h} width={56} height={h} fill={lit ? SIGNAL : PAPER2} stroke={lit ? SIGNAL : INK} strokeWidth={1.25} />
-            <Flag x={x - 12} y={256} pattern={GDP_FLAGS[i]} h={34} />
+            <Flag2 x={x - 12} y={256} pattern={GDP_FLAGS[i]} h={34} />
           </g>
         );
       })}
@@ -926,22 +673,22 @@ export function Acceptance() {
       height={260}
       label="A product with its advertising message at the top. Arrows carry it to two countries. The group on the left answers with a tick; the group on the right with a cross."
     >
-      <Pack x={176} y={82} w={36} h={40} />
-      <Bubble x={204} y={30} w={64} h={30} tail="left" />
+      <Pack4 x={176} y={82} w={36} h={40} />
+      <Bubble3 x={204} y={30} w={64} h={30} tail="left" />
       <line x1={214} y1={41} x2={258} y2={41} stroke={INK3} strokeWidth={1.25} />
       <line x1={214} y1={50} x2={246} y2={50} stroke={INK3} strokeWidth={1.25} />
-      <Arrow x1={170} y1={96} x2={112} y2={146} tone={INK} width={1.5} />
-      <Arrow x1={230} y1={96} x2={288} y2={146} tone={INK} width={1.5} />
+      <Arrow2 x1={170} y1={96} x2={112} y2={146} tone={INK} width={1.5} />
+      <Arrow2 x1={230} y1={96} x2={288} y2={146} tone={INK} width={1.5} />
       <Tick x={100} y={166} s={11} />
       <Cross x={300} y={168} s={9} />
       {[70, 100, 130].map((x) => (
-        <Person key={x} x={x} y={244} k={0.9} />
+        <Person3 key={x} x={x} y={244} k={0.9} />
       ))}
       {[270, 300, 330].map((x) => (
-        <Person key={x} x={x} y={244} k={0.9} />
+        <Person3 key={x} x={x} y={244} k={0.9} />
       ))}
-      <Flag x={20} y={244} pattern="tri" />
-      <Flag x={356} y={244} pattern="band" />
+      <Flag2 x={20} y={244} pattern="tri" />
+      <Flag2 x={356} y={244} pattern="band" />
     </Frame>
   );
 }
@@ -960,7 +707,7 @@ export function CustomsIgnored() {
       </Key>
       <line x1={170} y1={98} x2={170} y2={148} stroke={INK} strokeWidth={1.5} />
       <path d="M20 150H240Q286 150 296 204" fill="none" stroke={COUNTER} strokeWidth={2.5} />
-      <path d={headAlong(297, 212, 1, 8, 9)} fill="none" stroke={COUNTER} strokeWidth={2.5} />
+      <path d={headAlong1(297, 212, 1, 8, 9)} fill="none" stroke={COUNTER} strokeWidth={2.5} />
       <Cross x={300} y={232} s={10} width={2.5} />
       <Key x={320} y={236} fill={COUNTER} size={10}>
         FAILURE
@@ -1018,7 +765,7 @@ export function BurgerBacklash() {
         [690, 84],
       ].map(([x, y]) => (
         <g key={x}>
-          <Bubble x={x} y={y} w={46} h={32} tone={COUNTER} tail={x > 600 ? "left" : "right"} />
+          <Bubble3 x={x} y={y} w={46} h={32} tone={COUNTER} tail={x > 600 ? "left" : "right"} />
           <Display x={x + 23} y={y + 25} anchor="middle" fill={COUNTER} size={22}>
             !
           </Display>
@@ -1072,8 +819,8 @@ export function Saturated() {
       </Key>
       {outs.map((o, i) => (
         <g key={i}>
-          <Arrow x1={o.x1} y1={o.y1} x2={o.x2} y2={o.y2} tone={SIGNAL} width={2} size={9} />
-          <Flag x={Math.round(o.x2 + 20 * Math.cos((([-26, 0, 26][i]) * Math.PI) / 180)) - 4} y={Math.round(o.y2 + 20 * Math.sin((([-26, 0, 26][i]) * Math.PI) / 180)) + 17} pattern={pats[i]} />
+          <Arrow2 x1={o.x1} y1={o.y1} x2={o.x2} y2={o.y2} tone={SIGNAL} width={2} size={9} />
+          <Flag2 x={Math.round(o.x2 + 20 * Math.cos((([-26, 0, 26][i]) * Math.PI) / 180)) - 4} y={Math.round(o.y2 + 20 * Math.sin((([-26, 0, 26][i]) * Math.PI) / 180)) + 17} pattern={pats[i]} />
         </g>
       ))}
     </Frame>
@@ -1125,8 +872,8 @@ export function HigherProfits() {
         HIGHER PROFITS
       </Key>
       <line x1={60} y1={212} x2={340} y2={212} stroke={INK} strokeWidth={1.5} />
-      <Coins x={130} y={212} n={3} w={64} />
-      <Coins x={270} y={212} n={10} w={64} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Coins2 x={130} y={212} n={3} w={64} />
+      <Coins2 x={270} y={212} n={10} w={64} tone={SIGNAL} fill={SIGNAL_TINT} />
       <Key x={130} y={236} anchor="middle" fill={INK} size={9}>
         DOMESTIC
       </Key>
@@ -1146,16 +893,16 @@ export function OperatingRisks() {
     >
       <line x1={400} y1={24} x2={400} y2={226} stroke={RULE} strokeWidth={1} />
       <Warning x={90} y={64} s={32} />
-      <Coins x={150} y={196} n={6} w={56} />
+      <Coins2 x={150} y={196} n={6} w={56} />
       <path d="M214 76L246 118L232 126L274 184" fill="none" stroke={COUNTER} strokeWidth={2.25} strokeLinejoin="round" />
-      <path d={headAlong(276, 188, 2, 4, 10)} fill="none" stroke={COUNTER} strokeWidth={2.25} />
+      <path d={headAlong1(276, 188, 2, 4, 10)} fill="none" stroke={COUNTER} strokeWidth={2.25} />
       <line x1={100} y1={196} x2={320} y2={196} stroke={INK} strokeWidth={1.5} />
       <Key x={200} y={232} anchor="middle" fill={COUNTER} size={10}>
         FINANCIAL RISKS
       </Key>
       <Warning x={490} y={64} s={32} />
       <line x1={450} y1={196} x2={760} y2={196} stroke={INK} strokeWidth={1.5} />
-      <Truck x={550} y={196} k={1.3} />
+      <Truck2 x={550} y={196} k={1.3} />
       <rect x={614} y={120} width={10} height={76} fill={COUNTER} />
       <rect x={624} y={128} width={96} height={12} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
       {[642, 666, 690].map((x) => (
@@ -1199,7 +946,7 @@ export function EntryCascade() {
           ) : null}
         </g>
       ))}
-      <Arrow x1={40} y1={62} x2={40} y2={386} tone={INK3} width={1.5} />
+      <Arrow2 x1={40} y1={62} x2={40} y2={386} tone={INK3} width={1.5} />
       <Key x={40} y={52} anchor="middle" size={8.5}>
         LOW
       </Key>
@@ -1217,7 +964,7 @@ export function EntryCascade() {
             {i < MODES.length - 1 ? (
               <g>
                 <path d={`M${x + 44} ${y + h}V${next.y + h / 2}H${next.x - 4}`} fill="none" stroke={INK} strokeWidth={1.5} />
-                <path d={headAlong(next.x - 2, next.y + h / 2, 1, 0, 7)} fill="none" stroke={INK} strokeWidth={1.5} />
+                <path d={headAlong1(next.x - 2, next.y + h / 2, 1, 0, 7)} fill="none" stroke={INK} strokeWidth={1.5} />
               </g>
             ) : null}
             <rect x={x} y={y} width={w} height={h} fill={m.fill} stroke={m.tone} strokeWidth={1.5} />
@@ -1248,11 +995,11 @@ export function SimplestRoute() {
       label="A home factory under its flag on the left, a foreign store under another flag on the right, a border between them. One straight arrow runs from the factory across the border to the store."
     >
       <Border x={400} y1={30} y2={196} />
-      <Flag x={50} y={180} />
-      <Factory x={140} y={180} k={1.2} />
-      <Store x={650} y={180} k={1.2} />
-      <Flag x={726} y={180} pattern="tri" />
-      <Arrow x1={180} y1={150} x2={604} y2={150} tone={SIGNAL} width={2.25} size={10} />
+      <Flag2 x={50} y={180} />
+      <Factory3 x={140} y={180} k={1.2} />
+      <Store2 x={650} y={180} k={1.2} />
+      <Flag2 x={726} y={180} pattern="tri" />
+      <Arrow2 x1={180} y1={150} x2={604} y2={150} tone={SIGNAL} width={2.25} size={10} />
       <Key x={110} y={206} anchor="middle" fill={INK} size={9.5}>
         HOME
       </Key>
@@ -1278,11 +1025,11 @@ export function IndirectExport() {
       <Key x={330} y={36} anchor="middle" size={9}>
         FOREIGN
       </Key>
-      <Factory x={46} y={180} k={0.9} />
-      <Arrow x1={78} y1={156} x2={118} y2={156} tone={INK} width={1.5} size={6} />
+      <Factory3 x={46} y={180} k={0.9} />
+      <Arrow2 x1={78} y1={156} x2={118} y2={156} tone={INK} width={1.5} size={6} />
       <Warehouse x={160} y={180} tone={COUNTER} fill={COUNTER_TINT} />
-      <Arrow x1={198} y1={156} x2={302} y2={156} tone={COUNTER} width={1.75} size={7} />
-      <Store x={346} y={180} k={0.9} />
+      <Arrow2 x1={198} y1={156} x2={302} y2={156} tone={COUNTER} width={1.75} size={7} />
+      <Store2 x={346} y={180} k={0.9} />
       <Key x={160} y={202} anchor="middle" fill={COUNTER} size={9}>
         INTERMEDIARY
       </Key>
@@ -1308,10 +1055,10 @@ export function DirectExport() {
       <Key x={330} y={36} anchor="middle" size={9}>
         FOREIGN
       </Key>
-      <Factory x={46} y={180} k={0.9} tone={SIGNAL} fill={SIGNAL_TINT} />
-      <Truck x={170} y={180} k={1.1} tone={SIGNAL} />
-      <Arrow x1={208} y1={156} x2={302} y2={156} tone={SIGNAL} width={1.75} size={7} />
-      <Store x={346} y={180} k={0.9} />
+      <Factory3 x={46} y={180} k={0.9} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Truck2 x={170} y={180} k={1.1} tone={SIGNAL} />
+      <Arrow2 x1={208} y1={156} x2={302} y2={156} tone={SIGNAL} width={1.75} size={7} />
+      <Store2 x={346} y={180} k={0.9} />
       <path d="M20 190V196H206V190" fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <Key x={113} y={214} anchor="middle" fill={SIGNAL} size={9}>
         YOUR OWN EXPORTS
@@ -1334,12 +1081,12 @@ export function SameLine() {
       <Key x={400} y={64} anchor="middle" fill={SIGNAL} size={10}>
         LEAST CHANGE
       </Key>
-      <Arrow x1={290} y1={110} x2={510} y2={110} tone={SIGNAL} width={1.75} />
+      <Arrow2 x1={290} y1={110} x2={510} y2={110} tone={SIGNAL} width={1.75} />
       {home.map((x, i) => (
-        <Pack key={x} x={x} y={160} w={34} h={shapes[i]} />
+        <Pack4 key={x} x={x} y={160} w={34} h={shapes[i]} />
       ))}
       {away.map((x, i) => (
-        <Pack key={x} x={x} y={160} w={34} h={shapes[i]} />
+        <Pack4 key={x} x={x} y={160} w={34} h={shapes[i]} />
       ))}
       <line x1={70} y1={160} x2={272} y2={160} stroke={INK3} strokeWidth={1} />
       <line x1={528} y1={160} x2={730} y2={160} stroke={INK3} strokeWidth={1} />
@@ -1365,10 +1112,10 @@ export function JoinForeign() {
       label="A home company's factory on one side of a border and a foreign company's factory on the other, joined underneath by one bracket across the border labelled joint venture."
     >
       <Border x={400} y1={30} y2={200} />
-      <Flag x={170} y={190} />
-      <Factory x={290} y={190} k={1.2} />
-      <Factory x={520} y={190} k={1.2} tone={COUNTER} fill={COUNTER_TINT} />
-      <Flag x={606} y={190} pattern="disc" tone={COUNTER} />
+      <Flag2 x={170} y={190} />
+      <Factory3 x={290} y={190} k={1.2} />
+      <Factory3 x={520} y={190} k={1.2} tone={COUNTER} fill={COUNTER_TINT} />
+      <Flag2 x={606} y={190} pattern="disc" tone={COUNTER} />
       <Key x={280} y={110} anchor="middle" fill={INK} size={9.5}>
         HOME COMPANY
       </Key>
@@ -1402,30 +1149,30 @@ export function JvTypes() {
       <line x1={533} y1={30} x2={533} y2={240} stroke={RULE} strokeWidth={1} />
       {/* Licensing */}
       <Border x={135} y1={50} y2={214} />
-      <Factory x={70} y={206} k={0.95} />
-      <Factory x={206} y={206} k={0.95} tone={COUNTER} fill={COUNTER_TINT} />
-      <Arrow x1={50} y1={124} x2={216} y2={124} tone={INK} width={1.5} size={7} />
+      <Factory3 x={70} y={206} k={0.95} />
+      <Factory3 x={206} y={206} k={0.95} tone={COUNTER} fill={COUNTER_TINT} />
+      <Arrow2 x1={50} y1={124} x2={216} y2={124} tone={INK} width={1.5} size={7} />
       <Sheet x={135} y={118} w={34} h={44} lines={2} />
-      <Mark x={135} y={130} r={7} tone={INK} />
+      <Mark2 x={135} y={130} r={7} tone={INK} />
       {/* Contract manufacturing */}
       <Border x={372} y1={50} y2={214} />
-      <Factory x={310} y={206} k={0.8} />
-      <Arrow x1={290} y1={124} x2={404} y2={124} tone={INK} width={1.5} size={7} />
+      <Factory3 x={310} y={206} k={0.8} />
+      <Arrow2 x1={290} y1={124} x2={404} y2={124} tone={INK} width={1.5} size={7} />
       <Sheet x={346} y={118} w={30} h={40} lines={3} />
-      <Factory x={432} y={206} k={1.1} tone={COUNTER} fill={COUNTER_TINT} />
-      <Pack x={484} y={206} w={28} h={34} />
-      <Mark x={484} y={188} r={6} tone={INK} />
-      <Pack x={515} y={206} w={28} h={34} />
-      <Mark x={515} y={188} r={6} tone={INK} />
+      <Factory3 x={432} y={206} k={1.1} tone={COUNTER} fill={COUNTER_TINT} />
+      <Pack4 x={484} y={206} w={28} h={34} />
+      <Mark2 x={484} y={188} r={6} tone={INK} />
+      <Pack4 x={515} y={206} w={28} h={34} />
+      <Mark2 x={515} y={188} r={6} tone={INK} />
       {/* Joint ownership */}
       <Border x={665} y1={50} y2={214} />
-      <Flag x={574} y={206} />
-      <Flag x={728} y={206} pattern="disc" tone={COUNTER} />
+      <Flag2 x={574} y={206} />
+      <Flag2 x={728} y={206} pattern="disc" tone={COUNTER} />
       <g clipPath="url(#w12-own-home)">
-        <Factory x={668} y={206} k={1.35} fill={PAPER2} />
+        <Factory3 x={668} y={206} k={1.35} fill={PAPER2} />
       </g>
       <g clipPath="url(#w12-own-foreign)">
-        <Factory x={668} y={206} k={1.35} tone={COUNTER} fill={COUNTER_TINT} />
+        <Factory3 x={668} y={206} k={1.35} tone={COUNTER} fill={COUNTER_TINT} />
       </g>
       <Key x={135} y={262} anchor="middle" fill={INK} size={10}>
         LICENSING
@@ -1497,15 +1244,15 @@ export function OwnPlantAbroad() {
         FOREIGN MARKET
       </Key>
       <line x1={20} y1={210} x2={780} y2={210} stroke={RULE2} strokeWidth={1} />
-      <Flag x={60} y={210} />
-      <Factory x={170} y={210} />
-      <Flag x={324} y={210} pattern="tri" />
-      <Factory x={440} y={210} k={1.55} tone={SIGNAL} fill={SIGNAL_TINT} />
-      <Flag x={496} y={210} h={62} />
-      <Arrow x1={530} y1={186} x2={590} y2={186} tone={SIGNAL} width={1.5} size={7} />
-      <Store x={630} y={210} />
-      <Person x={700} y={210} />
-      <Person x={736} y={210} />
+      <Flag2 x={60} y={210} />
+      <Factory3 x={170} y={210} />
+      <Flag2 x={324} y={210} pattern="tri" />
+      <Factory3 x={440} y={210} k={1.55} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Flag2 x={496} y={210} h={62} />
+      <Arrow2 x1={530} y1={186} x2={590} y2={186} tone={SIGNAL} width={1.5} size={7} />
+      <Store2 x={630} y={210} />
+      <Person3 x={700} y={210} />
+      <Person3 x={736} y={210} />
     </Frame>
   );
 }
@@ -1573,8 +1320,8 @@ export function CurrencyRisk() {
         strokeWidth={2}
         strokeLinejoin="round"
       />
-      <path d={headAlong(292, 110, 1, 0, 8)} fill="none" stroke={COUNTER} strokeWidth={2} />
-      <path d={headAlong(108, 110, -1, 0, 8)} fill="none" stroke={COUNTER} strokeWidth={2} />
+      <path d={headAlong1(292, 110, 1, 0, 8)} fill="none" stroke={COUNTER} strokeWidth={2} />
+      <path d={headAlong1(108, 110, -1, 0, 8)} fill="none" stroke={COUNTER} strokeWidth={2} />
       <Key x={200} y={200} anchor="middle" fill={COUNTER} size={10}>
         CURRENCY RISKS
       </Key>
@@ -1630,8 +1377,8 @@ export function CoffeeCrossroads() {
         BRAND IDENTITY
       </Key>
       <Cup x={110} y={178} />
-      <Mark x={110} y={146} r={16} tone={SIGNAL} />
-      <Coins x={110} y={246} n={2} w={34} />
+      <Mark2 x={110} y={146} r={16} tone={SIGNAL} />
+      <Coins2 x={110} y={246} n={2} w={34} />
       <Key x={110} y={272} anchor="middle" fill={INK} size={9}>
         LIMITED CAPITAL
       </Key>
@@ -1640,9 +1387,9 @@ export function CoffeeCrossroads() {
         ?
       </Display>
       <path d="M290 150Q360 80 566 80" fill="none" stroke={COUNTER} strokeWidth={2} />
-      <path d={headAlong(570, 80, 1, 0, 8)} fill="none" stroke={COUNTER} strokeWidth={2} />
+      <path d={headAlong1(570, 80, 1, 0, 8)} fill="none" stroke={COUNTER} strokeWidth={2} />
       <path d="M290 150Q360 220 566 220" fill="none" stroke={SIGNAL} strokeWidth={2} />
-      <path d={headAlong(570, 220, 1, 0, 8)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+      <path d={headAlong1(570, 220, 1, 0, 8)} fill="none" stroke={SIGNAL} strokeWidth={2} />
       <Key x={452} y={68} anchor="middle" fill={COUNTER} size={10}>
         LICENSING
       </Key>
@@ -1656,8 +1403,8 @@ export function CoffeeCrossroads() {
       <Sheet x={664} y={112} w={36} h={46} />
       <Sheet x={686} y={106} w={36} h={46} />
       <Sheet x={708} y={100} w={36} h={46} />
-      <Store x={680} y={250} />
-      <Flag x={730} y={250} pattern="disc" />
+      <Store2 x={680} y={250} />
+      <Flag2 x={730} y={250} pattern="disc" />
     </Frame>
   );
 }
@@ -1740,9 +1487,9 @@ export function MixSpread({ mode }: { mode: "standardized" | "adapted" }) {
       <MixCard x={200} y={48} cells={same} tone={INK} />
       {xs.map((x, i) => (
         <g key={x}>
-          <Arrow x1={200} y1={80} x2={x} y2={138} tone={tone} width={1.4} size={7} />
+          <Arrow2 x1={200} y1={80} x2={x} y2={138} tone={tone} width={1.4} size={7} />
           <MixCard x={x} y={172} cells={mode === "standardized" ? same : ADAPTED[i]} tone={tone} />
-          <Flag x={x - 12} y={250} pattern={pats[i]} h={32} />
+          <Flag2 x={x - 12} y={250} pattern={pats[i]} h={32} />
         </g>
       ))}
     </Frame>
@@ -1788,19 +1535,6 @@ export function CostRelevance() {
    PRODUCT ADAPTATION STRATEGIES
    ========================================================================== */
 
-/** A bottle standing on (x, y): the invented product. */
-function Bottle({ x, y, tone = SIGNAL, fill = SIGNAL_TINT }: { x: number; y: number; tone?: string; fill?: string }) {
-  return (
-    <path
-      d={`M${x - 16} ${y}V${y - 34}Q${x - 16} ${y - 44} ${x - 6} ${y - 48}V${y - 58}H${x + 6}V${y - 48}Q${x + 16} ${y - 44} ${x + 16} ${y - 34}V${y}Z`}
-      fill={fill}
-      stroke={tone}
-      strokeWidth={1.5}
-      strokeLinejoin="round"
-    />
-  );
-}
-
 /** Home product crossing the border: unchanged, altered, or replaced by something new. */
 export function ProductRow({ kind }: { kind: "extension" | "adaptation" | "invention" }) {
   return (
@@ -1822,18 +1556,18 @@ export function ProductRow({ kind }: { kind: "extension" | "adaptation" | "inven
       <Key x={300} y={22} anchor="middle" size={8.5}>
         FOREIGN MARKET
       </Key>
-      <Pack x={100} y={120} w={44} h={60} tone={kind === "invention" ? INK3 : INK} />
-      <Arrow x1={138} y1={92} x2={258} y2={92} tone={kind === "extension" ? INK : SIGNAL} width={1.5} size={7} />
-      {kind === "extension" ? <Pack x={300} y={120} w={44} h={60} /> : null}
+      <Pack4 x={100} y={120} w={44} h={60} tone={kind === "invention" ? INK3 : INK} />
+      <Arrow2 x1={138} y1={92} x2={258} y2={92} tone={kind === "extension" ? INK : SIGNAL} width={1.5} size={7} />
+      {kind === "extension" ? <Pack4 x={300} y={120} w={44} h={60} /> : null}
       {kind === "adaptation" ? (
         <g>
-          <Pack x={300} y={120} w={58} h={44} tone={SIGNAL} />
+          <Pack4 x={300} y={120} w={58} h={44} tone={SIGNAL} />
           <rect x={271} y={94} width={58} height={16} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
         </g>
       ) : null}
       {kind === "invention" ? (
         <g>
-          <Bottle x={300} y={120} />
+          <Bottle2 x={300} y={120} />
           <path d="M330 56V70M323 63H337M340 80V88M336 84H344" stroke={SIGNAL} strokeWidth={1.5} strokeLinecap="round" />
         </g>
       ) : null}
@@ -1853,7 +1587,7 @@ export function TastesInfrastructure() {
       height={270}
       label="Two inputs on the left, local tastes (a person thinking of a bowl with chopsticks) and infrastructure (a wall socket), feed arrows into one junction. From it a solid arrow selects product adaptation; dashed lines lead to straight extension and product invention."
     >
-      <Person x={60} y={130} k={1.2} />
+      <Person3 x={60} y={130} k={1.2} />
       <Thought x={92} y={30} w={76} h={40} tx={66} ty={92} />
       <path d="M108 48H152Q150 64 130 64Q110 64 108 48Z" fill={PAPER2} stroke={INK} strokeWidth={1.25} strokeLinejoin="round" />
       <path d="M134 46L150 36M140 46L156 38" stroke={INK} strokeWidth={1.25} strokeLinecap="round" />
@@ -1867,15 +1601,15 @@ export function TastesInfrastructure() {
       <Key x={96} y={256} anchor="middle" fill={INK} size={9.5}>
         INFRASTRUCTURE
       </Key>
-      <Arrow x1={180} y1={100} x2={364} y2={140} tone={INK} width={1.5} />
-      <Arrow x1={140} y1={210} x2={364} y2={154} tone={INK} width={1.5} />
+      <Arrow2 x1={180} y1={100} x2={364} y2={140} tone={INK} width={1.5} />
+      <Arrow2 x1={140} y1={210} x2={364} y2={154} tone={INK} width={1.5} />
       <circle cx={380} cy={147} r={12} fill={SIGNAL} />
       {options.map((o, i) => {
         const lit = i === 1;
         return (
           <g key={o.name}>
             {lit ? (
-              <Arrow x1={394} y1={145} x2={500} y2={o.y + 2} tone={SIGNAL} width={2} />
+              <Arrow2 x1={394} y1={145} x2={500} y2={o.y + 2} tone={SIGNAL} width={2} />
             ) : (
               <line x1={392} y1={147} x2={500} y2={o.y + 2} stroke={INK3} strokeWidth={1.25} strokeDasharray="4 4" />
             )}
@@ -1990,12 +1724,12 @@ export function CommAdaptation() {
       label="A home advertisement on the left. Arrows lead to three local advertisements on the right, one per country flag, each with a completely different layout of picture and words."
     >
       <AdCard x={40} y={110} w={140} h={84} layout={0} />
-      <Flag x={98} y={256} />
+      <Flag2 x={98} y={256} />
       {ys.map((y, i) => (
         <g key={y}>
-          <Arrow x1={190} y1={152} x2={512} y2={y + 42} tone={SIGNAL} width={1.5} />
+          <Arrow2 x1={190} y1={152} x2={512} y2={y + 42} tone={SIGNAL} width={1.5} />
           <AdCard x={520} y={y} w={140} h={84} layout={layouts[i]} tone={SIGNAL} />
-          <Flag x={678} y={y + 84} pattern={pats[i]} />
+          <Flag2 x={678} y={y + 84} pattern={pats[i]} />
         </g>
       ))}
     </Frame>
@@ -2009,7 +1743,7 @@ export function TaglineVetting() {
       height={230}
       label="An English tagline in a speech bubble is translated into a French one. A magnifying glass examines the French tagline, labelled cultural context, and a tick marked vetted follows."
     >
-      <Bubble x={40} y={70} w={180} h={64} />
+      <Bubble3 x={40} y={70} w={180} h={64} />
       <Key x={54} y={90} fill={INK} size={10}>
         EN
       </Key>
@@ -2018,18 +1752,18 @@ export function TaglineVetting() {
       <Key x={272} y={84} anchor="middle" size={8.5}>
         TRANSLATED
       </Key>
-      <Arrow x1={232} y1={100} x2={310} y2={100} tone={INK} width={1.5} />
-      <Bubble x={320} y={70} w={180} h={64} />
+      <Arrow2 x1={232} y1={100} x2={310} y2={100} tone={INK} width={1.5} />
+      <Bubble3 x={320} y={70} w={180} h={64} />
       <Key x={334} y={90} fill={INK} size={10}>
         FR
       </Key>
       <line x1={370} y1={98} x2={484} y2={98} stroke={INK} strokeWidth={3} />
       <line x1={370} y1={114} x2={460} y2={114} stroke={INK3} strokeWidth={1.25} />
-      <Magnifier x={430} y={104} r={30} />
+      <Magnifier2 x={430} y={104} r={30} />
       <Key x={430} y={186} anchor="middle" fill={SIGNAL} size={9.5}>
         CULTURAL CONTEXT
       </Key>
-      <Arrow x1={516} y1={102} x2={606} y2={102} tone={SIGNAL} width={1.5} />
+      <Arrow2 x1={516} y1={102} x2={606} y2={102} tone={SIGNAL} width={1.5} />
       <circle cx={648} cy={102} r={28} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
       <Tick x={648} y={104} s={11} width={2.5} />
       <Key x={648} y={156} anchor="middle" fill={SIGNAL} size={9.5}>
@@ -2051,12 +1785,12 @@ export function CostsAdded() {
       height={230}
       label="Three costs joined by plus signs: a truck for transportation, a coin stack sitting on a border for tariffs, and a warehouse marked with a percent sign for intermediary margins."
     >
-      <Truck x={70} y={160} k={1.1} />
+      <Truck2 x={70} y={160} k={1.1} />
       <Display x={136} y={150} anchor="middle" fill={INK3} size={26}>
         +
       </Display>
       <Border x={200} y1={84} y2={172} />
-      <Coins x={200} y={160} n={3} w={40} tone={COUNTER} fill={COUNTER_TINT} />
+      <Coins2 x={200} y={160} n={3} w={40} tone={COUNTER} fill={COUNTER_TINT} />
       <Display x={264} y={150} anchor="middle" fill={INK3} size={26}>
         +
       </Display>
@@ -2125,10 +1859,10 @@ export function PriceEscalation() {
         );
       })}
       <line x1={570} y1={50} x2={620} y2={50} stroke={INK3} strokeWidth={1} strokeDasharray="3 3" />
-      <Tag x={84} y={158} w={52} h={24} />
+      <Tag2 x={84} y={158} w={52} h={24} />
       <path d="M704 180H722M704 50H722" stroke={INK3} strokeWidth={1} />
       <line x1={716} y1={176} x2={716} y2={56} stroke={COUNTER} strokeWidth={1.75} />
-      <path d={headAlong(716, 54, 0, -1, 8)} fill="none" stroke={COUNTER} strokeWidth={1.75} />
+      <path d={headAlong1(716, 54, 0, -1, 8)} fill="none" stroke={COUNTER} strokeWidth={1.75} />
       <text
         x={744}
         y={116}
@@ -2174,12 +1908,12 @@ export function UniformPrice() {
             {c > PRICE ? (
               <rect x={x - 32} y={base - c} width={64} height={c - PRICE} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
             ) : null}
-            <Flag x={x - 12} y={base + 50} pattern={pats[i]} h={32} />
+            <Flag2 x={x - 12} y={base + 50} pattern={pats[i]} h={32} />
           </g>
         );
       })}
       <line x1={70} y1={base - PRICE} x2={780} y2={base - PRICE} stroke={INK} strokeWidth={2} strokeDasharray="8 5" />
-      <Tag x={16} y={base - PRICE} w={46} h={26} />
+      <Tag2 x={16} y={base - PRICE} w={46} h={26} />
       <Key x={780} y={base - PRICE - 10} anchor="end" fill={INK} size={9.5}>
         UNIFORM PRICE
       </Key>
@@ -2193,8 +1927,8 @@ export function UniformPrice() {
 
 const FRAG = Array.from({ length: 4 }, (_, z) =>
   Array.from({ length: 7 }, (_, j) => ({
-    x: Math.round(z * 200 + 26 + hash(z * 17 + j * 3 + 1) * 148),
-    y: Math.round(40 + hash(z * 31 + j * 7 + 5) * 170),
+    x: Math.round(z * 200 + 26 + hash2(z * 17 + j * 3 + 1) * 148),
+    y: Math.round(40 + hash2(z * 31 + j * 7 + 5) * 170),
     sq: (j + z) % 3 === 0,
   })),
 );
@@ -2281,18 +2015,18 @@ export function WholeChannel({ phase }: { phase: "between" | "within" }) {
       <Key x={596} y={92} anchor="middle" fill={b} size={9.5}>
         CHANNEL WITHIN NATIONS
       </Key>
-      <Factory x={74} y={206} tone={a} fill={phase === "between" ? SIGNAL_TINT : PAPER} />
-      <Arrow x1={108} y1={188} x2={160} y2={188} tone={a} width={1.5} size={7} />
+      <Factory3 x={74} y={206} tone={a} fill={phase === "between" ? SIGNAL_TINT : PAPER} />
+      <Arrow2 x1={108} y1={188} x2={160} y2={188} tone={a} width={1.5} size={7} />
       <Ship x={228} y={206} tone={a} />
-      <Arrow x1={290} y1={188} x2={390} y2={188} tone={a} width={1.75} size={8} />
-      <Arrow x1={410} y1={188} x2={440} y2={188} tone={b} width={1.5} size={7} />
+      <Arrow2 x1={290} y1={188} x2={390} y2={188} tone={a} width={1.75} size={8} />
+      <Arrow2 x1={410} y1={188} x2={440} y2={188} tone={b} width={1.5} size={7} />
       <Warehouse x={478} y={206} tone={b} fill={phase === "within" ? SIGNAL_TINT : PAPER} />
-      <Arrow x1={516} y1={188} x2={560} y2={188} tone={b} width={1.5} size={7} />
-      <Store x={600} y={206} tone={b} />
-      <Arrow x1={634} y1={188} x2={670} y2={188} tone={b} width={1.5} size={7} />
-      <Person x={696} y={206} stroke={b} />
-      <Person x={726} y={206} stroke={b} />
-      <Person x={756} y={206} stroke={b} />
+      <Arrow2 x1={516} y1={188} x2={560} y2={188} tone={b} width={1.5} size={7} />
+      <Store2 x={600} y={206} tone={b} />
+      <Arrow2 x1={634} y1={188} x2={670} y2={188} tone={b} width={1.5} size={7} />
+      <Person3 x={696} y={206} stroke={b} />
+      <Person3 x={726} y={206} stroke={b} />
+      <Person3 x={756} y={206} stroke={b} />
       <Key x={726} y={232} anchor="middle" fill={b} size={9}>
         FINAL BUYERS
       </Key>
@@ -2308,7 +2042,7 @@ export function WholeChannel({ phase }: { phase: "between" | "within" }) {
 function FeaturePhone({ x, y, tone }: { x: number; y: number; tone: string }) {
   return (
     <g>
-      <Phone x={x} y={y} k={1.8} tone={tone} />
+      <Phone3 x={x} y={y} k={1.8} tone={tone} />
       {[-36, -12, 12, 36].map((d) => (
         <g key={d}>
           <Tick x={x - 16} y={y + d - 4} s={5} tone={tone} width={1.75} />
@@ -2400,8 +2134,8 @@ function Media({ kind, x, y, tone = INK }: { kind: MediaKind; x: number; y: numb
       </g>
     );
   }
-  if (kind === "phone") return <Phone x={x} y={y} k={0.52} tone={tone} />;
-  return <Chip x={x} y={y} s={28} />;
+  if (kind === "phone") return <Phone3 x={x} y={y} k={0.52} tone={tone} />;
+  return <Chip2 x={x} y={y} s={28} />;
 }
 
 const EVO_XS = [80, 300, 470, 590, 675, 742];
@@ -2441,7 +2175,7 @@ export function Expectations() {
       height={250}
       label="A consumer with two thought bubbles. One holds a leaf, labelled sustainability. The other holds a see-through box with the product visible inside, labelled transparency."
     >
-      <Person x={90} y={240} k={1.4} />
+      <Person3 x={90} y={240} k={1.4} />
       <Key x={190} y={22} anchor="middle" fill={SIGNAL} size={9.5}>
         SUSTAINABILITY
       </Key>
@@ -2452,7 +2186,7 @@ export function Expectations() {
       </Key>
       <Thought x={260} y={124} w={100} h={64} tx={104} ty={192} />
       <rect x={284} y={136} width={52} height={40} fill="none" stroke={INK} strokeWidth={1.25} strokeDasharray="3 3" />
-      <Pack x={310} y={172} w={26} h={24} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Pack4 x={310} y={172} w={26} h={24} tone={SIGNAL} fill={SIGNAL_TINT} />
     </Frame>
   );
 }
@@ -2464,7 +2198,7 @@ const NET = [
   ...Array.from({ length: 9 }, (_, i) => ({ ring: 0.66, a: i * 40 + 5 })),
   ...Array.from({ length: 12 }, (_, i) => ({ ring: 0.94, a: i * 30 + 12 })),
 ].map((n, i) => {
-  const a = ((n.a + hash(i + 3) * 14) * Math.PI) / 180;
+  const a = ((n.a + hash2(i + 3) * 14) * Math.PI) / 180;
   return {
     x: Math.round(NET_CX + 180 * n.ring * Math.cos(a)),
     y: Math.round(NET_CY + 108 * n.ring * Math.sin(a)),
@@ -2495,7 +2229,7 @@ export function HyperConnected() {
       {NET.map((p, i) => (
         <circle key={i} cx={p.x} cy={p.y} r={5} fill={PAPER} stroke={INK} strokeWidth={1.5} />
       ))}
-      <Mark x={NET_CX} y={NET_CY} r={16} />
+      <Mark2 x={NET_CX} y={NET_CY} r={16} />
     </Frame>
   );
 }
@@ -2582,7 +2316,7 @@ export function AiHub() {
         const dx = (n.x - cx) / len;
         const dy = (n.y - cy) / len;
         return (
-          <Arrow
+          <Arrow2
             key={n.kind}
             x1={Math.round(cx + dx * 60)}
             y1={Math.round(cy + dy * 60)}
@@ -2594,7 +2328,7 @@ export function AiHub() {
         );
       })}
       <circle cx={cx} cy={cy} r={54} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} strokeDasharray="4 4" />
-      <Chip x={cx} y={cy} s={56} />
+      <Chip2 x={cx} y={cy} s={56} />
       {nodes.map((n, i) => {
         const side = i === 0 ? "top" : i === 1 ? "right" : i === 4 ? "left" : "bottom";
         const lx = side === "right" ? n.x + 48 : side === "left" ? n.x - 48 : n.x;
@@ -2633,18 +2367,18 @@ export function HyperPersonal() {
       <Key x={470} y={30} anchor="middle" fill={SIGNAL} size={9.5}>
         HYPER-PERSONALIZED CONTENT
       </Key>
-      <Chip x={110} y={148} s={64} />
+      <Chip2 x={110} y={148} s={64} />
       {ys.map((y, i) => {
         const t = (470 - 156) / (626 - 156);
         const cardY = r2(148 + (y - 12 - 148) * t);
         return (
           <g key={y}>
-            <Arrow x1={156} y1={148} x2={626} y2={y - 12} tone={SIGNAL} width={1.25} size={7} />
+            <Arrow2 x1={156} y1={148} x2={626} y2={y - 12} tone={SIGNAL} width={1.25} size={7} />
             <rect x={444} y={cardY - 15} width={52} height={30} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
             <Shape kind={USER_SHAPES[i]} x={460} y={cardY} r={7} tone={SIGNAL} fill={SIGNAL_TINT} />
             <line x1={474} y1={cardY - 4} x2={488} y2={cardY - 4} stroke={SIGNAL} strokeWidth={1.25} />
             <line x1={474} y1={cardY + 4} x2={484} y2={cardY + 4} stroke={SIGNAL} strokeWidth={1.25} />
-            <Person x={652} y={y + 14} k={0.9} />
+            <Person3 x={652} y={y + 14} k={0.9} />
             <Shape kind={USER_SHAPES[i]} x={690} y={y - 4} r={9} tone={INK} fill={PAPER2} />
           </g>
         );
@@ -2664,7 +2398,7 @@ export function PredictPattern() {
     >
       <Schematic />
       <line x1={40} y1={base} x2={764} y2={base} stroke={INK} strokeWidth={1.5} />
-      <path d={headAlong(770, base, 1, 0, 8)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={headAlong1(770, base, 1, 0, 8)} fill="none" stroke={INK} strokeWidth={1.5} />
       <line x1={now} y1={46} x2={now} y2={206} stroke={SIGNAL} strokeWidth={1.5} strokeDasharray="5 4" />
       <Key x={now} y={36} anchor="middle" fill={SIGNAL} size={10}>
         NOW
@@ -2730,12 +2464,12 @@ export function RealTimeSpend() {
       {rows.map((r, i) => (
         <g key={r.y}>
           <AdCard x={20} y={r.y - 22} w={66} h={44} layout={layouts[i]} tone={i === 1 ? SIGNAL : INK} />
-          <Coins x={140} y={r.y + 18} n={r.n} w={32} tone={i === 1 ? SIGNAL : INK} fill={i === 1 ? SIGNAL_TINT : PAPER} />
+          <Coins2 x={140} y={r.y + 18} n={r.n} w={32} tone={i === 1 ? SIGNAL : INK} fill={i === 1 ? SIGNAL_TINT : PAPER} />
           <path d={r.trend} fill="none" stroke={i === 1 ? SIGNAL : INK3} strokeWidth={1.75} strokeLinejoin="round" />
         </g>
       ))}
-      <CurveArrow x1={162} y1={74} cx={206} cy={92} x2={166} y2={118} tone={SIGNAL} width={1.5} size={7} />
-      <CurveArrow x1={162} y1={214} cx={206} cy={190} x2={166} y2={156} tone={SIGNAL} width={1.5} size={7} />
+      <CurveArrow2 x1={162} y1={74} cx={206} cy={92} x2={166} y2={118} tone={SIGNAL} width={1.5} size={7} />
+      <CurveArrow2 x1={162} y1={214} cx={206} cy={190} x2={166} y2={156} tone={SIGNAL} width={1.5} size={7} />
     </Frame>
   );
 }
@@ -2789,14 +2523,14 @@ export function GreenPreference() {
       {panels.map((p) => (
         <g key={p.cx}>
           <line x1={p.cx - 96} y1={110} x2={p.cx + 96} y2={110} stroke={INK} strokeWidth={1.5} />
-          <Pack x={p.cx - 46} y={110} w={38} h={48} />
-          <Pack x={p.cx + 46} y={110} w={38} h={48} tone={SIGNAL} fill={SIGNAL_TINT} />
+          <Pack4 x={p.cx - 46} y={110} w={38} h={48} />
+          <Pack4 x={p.cx + 46} y={110} w={38} h={48} tone={SIGNAL} fill={SIGNAL_TINT} />
           <Leaf x={p.cx + 46} y={104} s={24} />
           {Array.from({ length: p.plain }, (_, j) => (
-            <Person key={`p${j}`} x={Math.round(p.cx - 46 + (j - (p.plain - 1) / 2) * 17)} y={200} k={0.72} />
+            <Person3 key={`p${j}`} x={Math.round(p.cx - 46 + (j - (p.plain - 1) / 2) * 17)} y={200} k={0.72} />
           ))}
           {Array.from({ length: p.leaf }, (_, j) => (
-            <Person
+            <Person3
               key={`l${j}`}
               x={Math.round(p.cx + 46 + (j - (p.leaf - 1) / 2) * 17)}
               y={200}
@@ -2807,7 +2541,7 @@ export function GreenPreference() {
           ))}
         </g>
       ))}
-      <Arrow x1={40} y1={240} x2={760} y2={240} tone={INK3} width={1.5} />
+      <Arrow2 x1={40} y1={240} x2={760} y2={240} tone={INK3} width={1.5} />
     </Frame>
   );
 }
@@ -2823,23 +2557,14 @@ export function AlignedGoals() {
       <Key x={30} y={80} fill={INK} size={9.5}>
         BUSINESS GOALS
       </Key>
-      <CurveArrow x1={30} y1={94} cx={210} cy={94} x2={290} y2={118} tone={INK} width={2.25} size={9} />
+      <CurveArrow2 x1={30} y1={94} cx={210} cy={94} x2={290} y2={118} tone={INK} width={2.25} size={9} />
       <Key x={30} y={186} fill={SIGNAL} size={9.5}>
         SOCIAL IMPACT
       </Key>
-      <CurveArrow x1={30} y1={164} cx={210} cy={164} x2={290} y2={140} tone={SIGNAL} width={2.25} size={9} />
+      <CurveArrow2 x1={30} y1={164} cx={210} cy={164} x2={290} y2={140} tone={SIGNAL} width={2.25} size={9} />
       <Target x={336} y={129} r={34} tone={SIGNAL} />
     </Frame>
   );
-}
-
-function Star({ x, y, r, fill, tone }: { x: number; y: number; r: number; fill: string; tone: string }) {
-  const pts = Array.from({ length: 10 }, (_, i) => {
-    const a = ((-90 + i * 36) * Math.PI) / 180;
-    const rr = i % 2 ? r * 0.45 : r;
-    return `${r2(x + rr * Math.cos(a))} ${r2(y + rr * Math.sin(a))}`;
-  });
-  return <path d={`M${pts.join("L")}Z`} fill={fill} stroke={tone} strokeWidth={1.25} strokeLinejoin="round" />;
 }
 
 /** A leaf-labelled pack fronting a smoking factory; the brand's stars fall away. */
@@ -2850,7 +2575,7 @@ export function Greenwash() {
       height={250}
       label="A pack printed with a large leaf stands in front of a factory whose chimney pours smoke. An arrow leads to a row of five reputation stars, only two of them still filled: brand reputation."
     >
-      <Factory x={176} y={216} k={1.3} />
+      <Factory3 x={176} y={216} k={1.3} />
       {[
         [192, 132, 7],
         [202, 114, 9],
@@ -2858,11 +2583,11 @@ export function Greenwash() {
       ].map(([x, y, r]) => (
         <circle key={y} cx={x} cy={y} r={r} fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
       ))}
-      <Pack x={100} y={216} w={100} h={140} />
+      <Pack4 x={100} y={216} w={100} h={140} />
       <Leaf x={100} y={196} s={70} />
-      <Arrow x1={222} y1={186} x2={262} y2={150} tone={COUNTER} width={1.75} size={8} />
+      <Arrow2 x1={222} y1={186} x2={262} y2={150} tone={COUNTER} width={1.75} size={8} />
       {[0, 1, 2, 3, 4].map((i) => (
-        <Star key={i} x={258 + i * 28} y={124} r={12} fill={i < 2 ? COUNTER : PAPER} tone={i < 2 ? COUNTER : RULE2} />
+        <Star3 key={i} x={258 + i * 28} y={124} r={12} fill={i < 2 ? COUNTER : PAPER} tone={i < 2 ? COUNTER : RULE2} />
       ))}
       <Key x={314} y={100} anchor="middle" fill={COUNTER} size={9}>
         BRAND REPUTATION
@@ -2880,7 +2605,7 @@ function Bin({ x, y, fillLevel = 0, overflow = false, tone = INK }: { x: number;
     <g strokeLinejoin="round">
       {overflow ? (
         <g>
-          <Pack x={x - 12} y={y - 50} w={18} h={16} tone={tone} />
+          <Pack4 x={x - 12} y={y - 50} w={18} h={16} tone={tone} />
           <circle cx={x + 8} cy={y - 58} r={8} fill={PAPER} stroke={tone} strokeWidth={1.25} />
           <path d={`M${x - 4} ${y - 66}L${x + 4} ${y - 78}L${x + 12} ${y - 66}Z`} fill={PAPER} stroke={tone} strokeWidth={1.25} />
         </g>
@@ -2915,7 +2640,7 @@ export function ReuseLoop() {
         return (
           <g key={a}>
             <path d={`M${s.x} ${s.y}A${R} ${R} 0 0 1 ${e.x} ${e.y}`} fill="none" stroke={SIGNAL} strokeWidth={2} />
-            <path d={headAlong(e.x, e.y, -Math.sin(t), Math.cos(t), 9)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+            <path d={headAlong1(e.x, e.y, -Math.sin(t), Math.cos(t), 9)} fill="none" stroke={SIGNAL} strokeWidth={2} />
           </g>
         );
       })}
@@ -2925,9 +2650,9 @@ export function ReuseLoop() {
         return (
           <g key={a}>
             <circle cx={p.x} cy={p.y} r={32} fill={PAPER} stroke={SIGNAL} strokeWidth={1.75} />
-            {i === 0 ? <Pack x={p.x} y={p.y + 14} w={28} h={28} tone={SIGNAL} dash="3 2" /> : null}
-            {i === 1 ? <Person x={p.x} y={p.y + 20} k={0.95} /> : null}
-            {i === 2 ? <Pack x={p.x} y={p.y + 14} w={28} h={28} tone={SIGNAL} fill={SIGNAL_TINT} /> : null}
+            {i === 0 ? <Pack4 x={p.x} y={p.y + 14} w={28} h={28} tone={SIGNAL} dash="3 2" /> : null}
+            {i === 1 ? <Person3 x={p.x} y={p.y + 20} k={0.95} /> : null}
+            {i === 2 ? <Pack4 x={p.x} y={p.y + 14} w={28} h={28} tone={SIGNAL} fill={SIGNAL_TINT} /> : null}
           </g>
         );
       })}
@@ -2957,10 +2682,10 @@ export function TakeMakeDispose() {
     >
       <rect x={124} y={130} width={12} height={34} fill={PAPER} stroke={INK} strokeWidth={1.5} />
       <circle cx={130} cy={108} r={28} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
-      <Factory x={396} y={164} k={1.25} />
+      <Factory3 x={396} y={164} k={1.25} />
       <Bin x={640} y={164} overflow tone={COUNTER} />
-      <Arrow x1={176} y1={142} x2={344} y2={142} tone={COUNTER} width={1.75} dash="6 4" />
-      <Arrow x1={440} y1={142} x2={604} y2={142} tone={COUNTER} width={1.75} dash="6 4" />
+      <Arrow2 x1={176} y1={142} x2={344} y2={142} tone={COUNTER} width={1.75} dash="6 4" />
+      <Arrow2 x1={440} y1={142} x2={604} y2={142} tone={COUNTER} width={1.75} dash="6 4" />
       <Key x={130} y={190} anchor="middle" fill={INK} size={10}>
         TAKE
       </Key>
@@ -2970,7 +2695,7 @@ export function TakeMakeDispose() {
       <Key x={640} y={190} anchor="middle" fill={COUNTER} size={10}>
         DISPOSE
       </Key>
-      <CurveArrow x1={660} y1={204} cx={400} cy={300} x2={150} y2={206} tone={SIGNAL} width={2.25} size={10} />
+      <CurveArrow2 x1={660} y1={204} cx={400} cy={300} x2={150} y2={206} tone={SIGNAL} width={2.25} size={10} />
     </Frame>
   );
 }
@@ -3039,8 +2764,8 @@ export function Opportunities() {
       <Key x={200} y={32} anchor="middle" fill={SIGNAL} size={9.5}>
         NEW BUSINESS OPPORTUNITIES
       </Key>
-      <Store x={120} y={196} k={1.4} tone={SIGNAL} fill={SIGNAL_TINT} />
-      <Store x={280} y={196} k={1.4} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Store2 x={120} y={196} k={1.4} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Store2 x={280} y={196} k={1.4} tone={SIGNAL} fill={SIGNAL_TINT} />
       <g transform="rotate(45 120 98)">
         <rect x={116} y={100} width={8} height={30} rx={3} fill={PAPER} stroke={INK} strokeWidth={1.75} />
         <path d="M114 101Q106 96 106 86Q106 76 114 72V84H126V72Q134 76 134 86Q134 96 126 101Z" fill={PAPER} stroke={INK} strokeWidth={1.75} strokeLinejoin="round" />
@@ -3055,7 +2780,7 @@ export function Opportunities() {
         return (
           <g key={a}>
             <path d={`M${sx} ${sy}A16 16 0 0 1 ${ex} ${ey}`} fill="none" stroke={INK} strokeWidth={1.75} />
-            <path d={headAlong(ex, ey, -Math.sin(e), Math.cos(e), 6)} fill="none" stroke={INK} strokeWidth={1.75} />
+            <path d={headAlong1(ex, ey, -Math.sin(e), Math.cos(e), 6)} fill="none" stroke={INK} strokeWidth={1.75} />
           </g>
         );
       })}
@@ -3116,7 +2841,7 @@ export function ArPreview() {
       <Sofa x={140} y={212} tone={INK3} dash="4 3" />
       <line x1={268} y1={112} x2={206} y2={160} stroke={RULE2} strokeWidth={1} strokeDasharray="3 3" />
       <line x1={268} y1={186} x2={206} y2={212} stroke={RULE2} strokeWidth={1} strokeDasharray="3 3" />
-      <Phone x={300} y={150} k={1.6} />
+      <Phone3 x={300} y={150} k={1.6} />
       <line x1={275} y1={176} x2={325} y2={176} stroke={INK3} strokeWidth={1} />
       <Sofa x={300} y={176} k={0.34} tone={SIGNAL} fill={SIGNAL_TINT} />
       <Key x={200} y={244} anchor="middle" fill={SIGNAL} size={9.5}>
@@ -3141,9 +2866,9 @@ export function VrWorld() {
       <ellipse cx={200} cy={138} rx={180} ry={120} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
       <ellipse cx={200} cy={138} rx={150} ry={96} fill="none" stroke={SIGNAL} strokeWidth={1} strokeDasharray="3 4" />
       {marks.map((m) => (
-        <Mark key={`${m.x}-${m.y}`} x={m.x} y={m.y} r={11} />
+        <Mark2 key={`${m.x}-${m.y}`} x={m.x} y={m.y} r={11} />
       ))}
-      <Person x={200} y={200} k={1.8} />
+      <Person3 x={200} y={200} k={1.8} />
       <rect x={185} y={144} width={30} height={11} rx={3} fill={INK} />
       <path d="M185 149Q174 149 176 140" fill="none" stroke={INK} strokeWidth={1.5} />
     </Frame>
@@ -3159,12 +2884,12 @@ export function PhysicalDigitalBridge() {
     >
       <path d="M0 150H236L216 250H0Z" fill={PAPER2} stroke={INK} strokeWidth={1.5} />
       <path d="M800 150H564L584 250H800Z" fill={PAPER2} stroke={INK} strokeWidth={1.5} />
-      <Store x={120} y={150} k={1.4} />
+      <Store2 x={120} y={150} k={1.4} />
       <Key x={120} y={186} anchor="middle" fill={INK} size={10}>
         PHYSICAL
       </Key>
       <Media kind="computer" x={660} y={126} />
-      <Phone x={722} y={122} k={0.62} />
+      <Phone3 x={722} y={122} k={0.62} />
       <Key x={680} y={186} anchor="middle" fill={INK} size={10}>
         DIGITAL
       </Key>
@@ -3192,8 +2917,8 @@ export function PhysicalDigitalBridge() {
 type Touch = "store" | "web" | "app" | "email" | "social" | "ad";
 
 function TouchGlyph({ kind, x, y, tone = INK }: { kind: Touch; x: number; y: number; tone?: string }) {
-  if (kind === "store") return <Store x={x} y={y + 14} k={0.62} tone={tone} />;
-  if (kind === "app") return <Phone x={x} y={y} k={0.5} tone={tone} />;
+  if (kind === "store") return <Store2 x={x} y={y + 14} k={0.62} tone={tone} />;
+  if (kind === "app") return <Phone3 x={x} y={y} k={0.5} tone={tone} />;
   if (kind === "web") {
     return (
       <g>
@@ -3217,7 +2942,7 @@ function TouchGlyph({ kind, x, y, tone = INK }: { kind: Touch; x: number; y: num
   if (kind === "social") {
     return (
       <g>
-        <Bubble x={x - 18} y={y - 15} w={30} h={20} tone={tone} />
+        <Bubble3 x={x - 18} y={y - 15} w={30} h={20} tone={tone} />
         <circle cx={x + 10} cy={y + 8} r={7} fill={PAPER2} stroke={tone} strokeWidth={1.25} />
       </g>
     );
@@ -3242,7 +2967,7 @@ export function UnifiedTouchpoints() {
       label="A customer at the centre of an oval ring of six touchpoints: a store, a website, an app, an email, a social post and a billboard. Every touchpoint carries the same brand seal."
     >
       <ellipse cx={cx} cy={cy} rx={300} ry={108} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <Person x={cx} y={cy + 34} k={2} />
+      <Person3 x={cx} y={cy + 34} k={2} />
       {TOUCHES.map((t, i) => {
         const a = ((-90 + i * 60) * Math.PI) / 180;
         const x = Math.round(cx + 300 * Math.cos(a));
@@ -3251,7 +2976,7 @@ export function UnifiedTouchpoints() {
           <g key={t}>
             <circle cx={x} cy={y} r={32} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
             <TouchGlyph kind={t} x={x} y={y} />
-            <Mark x={x + 24} y={y - 24} r={8} />
+            <Mark2 x={x + 24} y={y - 24} r={8} />
           </g>
         );
       })}
@@ -3276,12 +3001,12 @@ export function SeamlessJourney() {
         OFFLINE
       </Key>
       <path d="M130 70C210 70 230 184 300 184S400 70 470 70S560 184 640 184H716" fill="none" stroke={SIGNAL} strokeWidth={2.5} />
-      <path d={headAlong(722, 184, 1, 0, 9)} fill="none" stroke={SIGNAL} strokeWidth={2.5} />
-      <Phone x={130} y={70} k={0.6} />
-      <Store x={300} y={206} />
+      <path d={headAlong1(722, 184, 1, 0, 9)} fill="none" stroke={SIGNAL} strokeWidth={2.5} />
+      <Phone3 x={130} y={70} k={0.6} />
+      <Store2 x={300} y={206} />
       <Media kind="computer" x={470} y={72} />
-      <Store x={640} y={206} />
-      <Person x={752} y={206} />
+      <Store2 x={640} y={206} />
+      <Person3 x={752} y={206} />
     </Frame>
   );
 }
@@ -3302,7 +3027,7 @@ export function DataIntegration() {
       {inputs.map((p) => (
         <g key={p.kind}>
           <TouchGlyph kind={p.kind} x={84} y={p.y} />
-          <CurveArrow x1={124} y1={p.y} cx={260} cy={p.y} x2={336} y2={136} tone={INK3} width={1.25} size={6} />
+          <CurveArrow2 x1={124} y1={p.y} cx={260} cy={p.y} x2={336} y2={136} tone={INK3} width={1.25} size={6} />
         </g>
       ))}
       <path d="M344 104V166A36 11 0 0 0 416 166V104" fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
@@ -3311,7 +3036,7 @@ export function DataIntegration() {
       <Key x={380} y={206} anchor="middle" fill={SIGNAL} size={9.5}>
         DATA INTEGRATION
       </Key>
-      <Arrow x1={424} y1={136} x2={700} y2={136} tone={SIGNAL} width={2.25} size={9} />
+      <Arrow2 x1={424} y1={136} x2={700} y2={136} tone={SIGNAL} width={2.25} size={9} />
       {[480, 540, 600, 660].map((x, i) => (
         <g key={x}>
           <circle cx={x} cy={136} r={9} fill={PAPER} stroke={SIGNAL} strokeWidth={1.75} />
@@ -3323,7 +3048,7 @@ export function DataIntegration() {
       <Key x={570} y={112} anchor="middle" fill={SIGNAL} size={9.5}>
         CUSTOMER JOURNEY
       </Key>
-      <Person x={740} y={156} k={1.1} />
+      <Person3 x={740} y={156} k={1.1} />
     </Frame>
   );
 }
@@ -3339,7 +3064,7 @@ export function WhereTheLine() {
       height={270}
       label="A phone showing an ad with a baby bottle. Beside it, a line running from helpful personalization to invasive surveillance, watched by an eye at the far end. A dashed divider stands on the line with a question mark over it."
     >
-      <Phone x={120} y={140} k={1.9} />
+      <Phone3 x={120} y={140} k={1.9} />
       <rect x={112} y={112} width={16} height={8} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
       <path d="M115 112Q115 100 120 98Q125 100 125 112" fill={PAPER} stroke={SIGNAL} strokeWidth={1.25} />
       <rect x={110} y={120} width={20} height={40} rx={5} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
@@ -3368,19 +3093,11 @@ export function WhereTheLine() {
    CONCLUSION — small glyphs for the three takeaways
    ========================================================================== */
 
-function GlyphFrame({ children }: { children: React.ReactNode }) {
-  return (
-    <svg viewBox="0 0 72 56" width={72} height={56} aria-hidden className="block shrink-0">
-      {children}
-    </svg>
-  );
-}
-
 export function GlyphGlobal() {
   return (
     <GlyphFrame>
       <Globe x={25} y={30} r={19} width={1.4} />
-      <Flag x={47} y={50} h={32} pattern="home" tone={SIGNAL} />
+      <Flag2 x={47} y={50} h={32} pattern="home" tone={SIGNAL} />
     </GlyphFrame>
   );
 }
@@ -3388,7 +3105,7 @@ export function GlyphGlobal() {
 export function GlyphFuture() {
   return (
     <GlyphFrame>
-      <Chip x={17} y={30} s={20} />
+      <Chip2 x={17} y={30} s={20} />
       <Leaf x={38} y={44} s={26} />
       <rect x={50} y={24} width={20} height={11} rx={3} fill={SIGNAL} />
       <path d="M50 29Q46 29 47 23" fill="none" stroke={SIGNAL} strokeWidth={1.25} />

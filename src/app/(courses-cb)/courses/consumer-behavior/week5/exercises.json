@@ -1,0 +1,291 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "the-actual-self-versus-the-ideal-self",
+    "prompt": "Each case shows one side of the self-concept at work. Is it the actual self, the ideal self, compensatory consumption, or a fantasy appeal?",
+    "options": [
+      { "id": "actual", "label": "Actual self" },
+      { "id": "ideal", "label": "Ideal self" },
+      { "id": "compensatory", "label": "Compensatory consumption" },
+      { "id": "fantasy", "label": "Fantasy appeal" }
+    ],
+    "cases": [
+      {
+        "id": "dating-profile",
+        "text": "Asked to describe himself honestly for a dating profile, Leo writes: \"average cook, a bit disorganized, loves bad movies.\"",
+        "answer": "actual",
+        "explanation": "Actual self: a realistic appraisal of the qualities Leo has right now."
+      },
+      {
+        "id": "five-years",
+        "text": "Priya pictures the person she wants to be in five years: calm, well travelled, and fluent in Spanish.",
+        "answer": "ideal",
+        "explanation": "Ideal self: her conception of who she would like to be."
+      },
+      {
+        "id": "climbing-course",
+        "text": "Stuck behind a desk and feeling far from the adventurous person he wants to be, Sam books an expensive climbing course.",
+        "answer": "compensatory",
+        "explanation": "Compensatory consumption: Sam buys something to bridge the gap between his actual self and his ideal self."
+      },
+      {
+        "id": "yacht-watch",
+        "text": "A watch ad shows a relaxed sailor steering a yacht at sunset, the watch on his wrist, with the line \"Your time is coming.\"",
+        "answer": "fantasy",
+        "explanation": "Fantasy appeal: the ad shows viewers how the watch brings them closer to their ideal self."
+      },
+      {
+        "id": "fitness-app",
+        "text": "Before building a plan, a fitness app asks Nora for a candid rating of her energy, sleep, and strength today.",
+        "answer": "actual",
+        "explanation": "Actual self: an honest look at the qualities she has right now, not the ones she hopes for."
+      },
+      {
+        "id": "career-blazer",
+        "text": "Feeling unpolished beside his classmates, a student buys a tailored blazer before the career fair to feel like the confident professional he wants to become.",
+        "answer": "compensatory",
+        "explanation": "Compensatory consumption: the gap between the two selves creates tension, and the blazer is bought to bridge it."
+      },
+      {
+        "id": "mood-board",
+        "text": "Jonas keeps a mood board of the tidy, minimalist home life he would like to live one day.",
+        "answer": "ideal",
+        "explanation": "Ideal self: the board pictures who Jonas would like to be, not who he is now."
+      },
+      {
+        "id": "skincare-party",
+        "text": "A skincare ad follows a glowing model through a glamorous party and suggests the cream is the step between the viewer's life and hers.",
+        "answer": "fantasy",
+        "explanation": "Fantasy appeal: aspirational advertising that shows how the product brings the viewer closer to an ideal self."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "the-extended-self-possessions-as-identity",
+    "prompt": "Each possession below has become part of someone's identity. At which level of the extended self does it sit?",
+    "options": [
+      { "id": "individual", "label": "Individual" },
+      { "id": "family", "label": "Family" },
+      { "id": "community", "label": "Community" },
+      { "id": "group", "label": "Group" }
+    ],
+    "cases": [
+      {
+        "id": "paycheque-ring",
+        "text": "Kai bought a silver ring with a first paycheque and never takes it off.",
+        "answer": "individual",
+        "explanation": "Individual level: personal items like jewelry define personal identity."
+      },
+      {
+        "id": "birthday-table",
+        "text": "The Okafors keep the old kitchen table where every family birthday was celebrated, even after buying new chairs.",
+        "answer": "family",
+        "explanation": "Family level: a home's furnishings represent family identity and shared memories."
+      },
+      {
+        "id": "lighthouse-mug",
+        "text": "People who grew up in a small coastal town put its lighthouse on their mugs and phone cases, wherever they live now.",
+        "answer": "community",
+        "explanation": "Community level: a hometown shapes local identity."
+      },
+      {
+        "id": "team-scarf",
+        "text": "A supporter wears the same team scarf to every home game and paints their face in the club colors.",
+        "answer": "group",
+        "explanation": "Group level: an attachment to a sports team defines group identity."
+      },
+      {
+        "id": "restored-motorbike",
+        "text": "Ines spends every weekend restoring an old motorbike and says it shows exactly who she is.",
+        "answer": "individual",
+        "explanation": "Individual level: personal items like cars and bikes define personal identity."
+      },
+      {
+        "id": "hallway-photos",
+        "text": "A family lines the hallway of their home with framed photos from every holiday they have taken together.",
+        "answer": "family",
+        "explanation": "Family level: the home and what fills it hold the family's shared memories."
+      },
+      {
+        "id": "street-festival",
+        "text": "At the yearly street festival, residents wear T-shirts printed with the name of their neighborhood.",
+        "answer": "community",
+        "explanation": "Community level: the neighborhood shapes local identity."
+      },
+      {
+        "id": "movement-stickers",
+        "text": "A climate activist's reusable bottle is covered in stickers from the movement's marches.",
+        "answer": "group",
+        "explanation": "Group level: an attachment to a social movement defines group identity."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "the-big-five-personality-dimensions",
+    "prompt": "Match each Big Five dimension to the shopper who shows it most.",
+    "term_label": "Big Five dimension",
+    "match_label": "The shopper",
+    "pairs": [
+      {
+        "id": "openness",
+        "term": "Openness to experience",
+        "match": "Orders the one dish on the menu nobody at the table has heard of",
+        "explanation": "Openness to experience: curiosity, creativity, and interest in novelty."
+      },
+      {
+        "id": "conscientiousness",
+        "term": "Conscientiousness",
+        "match": "Plans the week's meals every Sunday and has never missed a bill",
+        "explanation": "Conscientiousness: organization, self-discipline, and reliability."
+      },
+      {
+        "id": "extraversion",
+        "term": "Extraversion",
+        "match": "Chats with everyone in the checkout line and stays at every party until the end",
+        "explanation": "Extraversion: sociability, energy, and talkativeness in social settings."
+      },
+      {
+        "id": "agreeableness",
+        "term": "Agreeableness",
+        "match": "Offers to help a stranger carry heavy groceries to the car",
+        "explanation": "Agreeableness: friendliness, warmth, empathy, and cooperation with others."
+      },
+      {
+        "id": "neuroticism",
+        "term": "Neuroticism",
+        "match": "Worries for days when an online order arrives one day late",
+        "explanation": "Neuroticism: emotional instability, a tendency to experience anxiety, and mood swings."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "brand-personality-giving-life-to-objects",
+    "prompt": "Each brand below shows consumers a clear set of human traits. Which brand personality dimension is it?",
+    "options": [
+      { "id": "sincerity", "label": "Sincerity" },
+      { "id": "excitement", "label": "Excitement" },
+      { "id": "competence", "label": "Competence" },
+      { "id": "sophistication", "label": "Sophistication" },
+      { "id": "ruggedness", "label": "Ruggedness" }
+    ],
+    "cases": [
+      {
+        "id": "family-bakery",
+        "text": "A family bakery prints \"baked honestly, just like at home\" on plain paper bags, with a smiling drawing of its founder.",
+        "answer": "sincerity",
+        "explanation": "Sincerity: down-to-earth, honest, wholesome, and cheerful."
+      },
+      {
+        "id": "e-scooter",
+        "text": "A new e-scooter brand launches with bold colors, playful stunts, and a futuristic design nobody has seen before.",
+        "answer": "excitement",
+        "explanation": "Excitement: daring, spirited, imaginative, and modern."
+      },
+      {
+        "id": "tax-software",
+        "text": "A tax app's ads stress its expert engineers, its accuracy, and millions of successful returns filed.",
+        "answer": "competence",
+        "explanation": "Competence: reliable, intelligent, and successful."
+      },
+      {
+        "id": "fountain-pen",
+        "text": "A fountain pen maker shows its pens only in candlelit, black-tie settings, held by graceful hands.",
+        "answer": "sophistication",
+        "explanation": "Sophistication: upper-class, elegant, and charming."
+      },
+      {
+        "id": "hiking-boots",
+        "text": "A hiking boot brand shows one pair surviving mud, snow, and ten years of mountain trails.",
+        "answer": "ruggedness",
+        "explanation": "Ruggedness: outdoorsy, tough, and durable."
+      },
+      {
+        "id": "skydive-drink",
+        "text": "An energy drink sponsors skydivers and fills its ads with wild, imaginative stunts.",
+        "answer": "excitement",
+        "explanation": "Excitement: daring, spirited, and imaginative."
+      },
+      {
+        "id": "farm-yogurt",
+        "text": "A yogurt brand shows the real farmers who make it and promises \"nothing to hide, just milk and fruit.\"",
+        "answer": "sincerity",
+        "explanation": "Sincerity: honest and wholesome."
+      },
+      {
+        "id": "work-truck",
+        "text": "A pick-up truck is filmed hauling logs through a muddy forest in a storm.",
+        "answer": "ruggedness",
+        "explanation": "Ruggedness: outdoorsy, tough, and durable."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "psychographics-and-lifestyles-measuring-aios",
+    "prompt": "A lifestyle survey mixes all three kinds of AIO question. Sort each question into Activities, Interests, or Opinions.",
+    "bins": [
+      { "id": "activities", "label": "Activities" },
+      { "id": "interests", "label": "Interests" },
+      { "id": "opinions", "label": "Opinions" }
+    ],
+    "cards": [
+      {
+        "id": "camping",
+        "text": "How many weekends a year do you go camping?",
+        "bin": "activities",
+        "explanation": "Activities: vacations and hobbies, what people do with their time."
+      },
+      {
+        "id": "sports-team",
+        "text": "Do you play on a sports team after work?",
+        "bin": "activities",
+        "explanation": "Activities: hobbies and social events."
+      },
+      {
+        "id": "concerts",
+        "text": "How often do you go to concerts or the cinema?",
+        "bin": "activities",
+        "explanation": "Activities: entertainment."
+      },
+      {
+        "id": "cooking",
+        "text": "How important is cooking at home to you?",
+        "bin": "interests",
+        "explanation": "Interests: food and home."
+      },
+      {
+        "id": "fashion",
+        "text": "Do you keep up with the latest fashion?",
+        "bin": "interests",
+        "explanation": "Interests: fashion."
+      },
+      {
+        "id": "local-news",
+        "text": "How closely do you follow what happens in your town?",
+        "bin": "interests",
+        "explanation": "Interests: community."
+      },
+      {
+        "id": "big-business-tax",
+        "text": "Do big companies pay their fair share of tax?",
+        "bin": "opinions",
+        "explanation": "Opinions: business and social issues."
+      },
+      {
+        "id": "electric-cars",
+        "text": "Are electric cars worth the price?",
+        "bin": "opinions",
+        "explanation": "Opinions: products."
+      },
+      {
+        "id": "leader",
+        "text": "Would you describe yourself as a natural leader?",
+        "bin": "opinions",
+        "explanation": "Opinions: oneself."
+      }
+    ]
+  }
+]

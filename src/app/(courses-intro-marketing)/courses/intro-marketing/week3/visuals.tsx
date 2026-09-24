@@ -20,84 +20,28 @@
 
 import React from "react";
 import {
-  Key,
-  Note,
+  COUNTER,
+  COUNTER_TINT,
   Display,
   Frame,
-  Schematic,
+  glyphProps,
+  hash1,
+  head2,
+  headAlong1,
   INK,
-  INK2,
   INK3,
+  Key,
+  Note,
+  PAPER,
   RULE,
   RULE2,
+  Schematic,
   SIGNAL,
-  COUNTER,
-  PAPER,
   SIGNAL_TINT,
-  COUNTER_TINT,
-} from "../week1/visuals";
-
-/** Open chevron arrowhead pointing along (dx, dy), tip at (x, y). */
-function headAlong(x: number, y: number, dx: number, dy: number, s = 8) {
-  const len = Math.hypot(dx, dy) || 1;
-  const ux = dx / len;
-  const uy = dy / len;
-  const bx = x - ux * s;
-  const by = y - uy * s;
-  const px = -uy * (s * 0.62);
-  const py = ux * (s * 0.62);
-  return `M${(bx + px).toFixed(2)} ${(by + py).toFixed(2)}L${x.toFixed(2)} ${y.toFixed(2)}L${(bx - px).toFixed(2)} ${(by - py).toFixed(2)}`;
-}
-
-const head = {
-  right: (x: number, y: number) => headAlong(x, y, 1, 0),
-  left: (x: number, y: number) => headAlong(x, y, -1, 0),
-  down: (x: number, y: number) => headAlong(x, y, 0, 1),
-  up: (x: number, y: number) => headAlong(x, y, 0, -1),
-};
-
-/** Deterministic 0–1 hash, so scattered marks match on server and client. */
-const hash = (n: number) => {
-  const v = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
-  return v - Math.floor(v);
-};
-
-/** A person glyph standing on (x, y). k scales it; 1 is 34 units tall. */
-function Person({
-  x,
-  y,
-  k = 1,
-  stroke = INK,
-  fill = PAPER,
-  width = 1.5,
-  dashed = false,
-}: {
-  x: number;
-  y: number;
-  k?: number;
-  stroke?: string;
-  fill?: string;
-  width?: number;
-  dashed?: boolean;
-}) {
-  const w = 10 * k;
-  const top = y - 21 * k;
-  const shoulder = y - 12 * k;
-  const dash = dashed ? "3 3" : undefined;
-  return (
-    <g>
-      <circle cx={x} cy={y - 28 * k} r={6 * k} fill={fill} stroke={stroke} strokeWidth={width} strokeDasharray={dash} />
-      <path
-        d={`M${x - w} ${y}V${shoulder}Q${x - w} ${top} ${x} ${top}Q${x + w} ${top} ${x + w} ${shoulder}V${y}Z`}
-        fill={fill}
-        stroke={stroke}
-        strokeWidth={width}
-        strokeLinejoin="round"
-        strokeDasharray={dash}
-      />
-    </g>
-  );
-}
+} from "../_visuals/broadsheet";
+import {
+  Person2,
+} from "../_visuals/objects";
 
 /* ==========================================================================
    1 · CENSUS — the consumer market is individuals and households
@@ -121,7 +65,7 @@ export function ConsumerMarket() {
       </Key>
 
       {singles.map((x) => (
-        <Person key={x} x={x} y={ground} k={1.25} />
+        <Person2 key={x} x={x} y={ground} k={1.25} />
       ))}
 
       <Display x={322} y={ground - 12} anchor="middle" fill={INK3} size={30}>
@@ -142,7 +86,7 @@ export function ConsumerMarket() {
               strokeLinejoin="round"
             />
             {offsets.map((o) => (
-              <Person key={o} x={h.x + o} y={ground} k={0.9} stroke={COUNTER} />
+              <Person2 key={o} x={h.x + o} y={ground} k={0.9} stroke={COUNTER} />
             ))}
           </g>
         );
@@ -180,7 +124,7 @@ export function NeedStimuli() {
       <circle cx={400} cy={127} r={2} fill={SIGNAL} />
 
       <line x1={320} y1={210} x2={480} y2={210} stroke={RULE} strokeWidth={1} />
-      <Person x={400} y={210} k={2.2} />
+      <Person2 x={400} y={210} k={2.2} />
 
       {/* internal: a pulse inside the body */}
       <circle cx={400} cy={190} r={4} fill={INK} />
@@ -197,7 +141,7 @@ export function NeedStimuli() {
       <line x1={656} y1={118} x2={704} y2={118} stroke={COUNTER} strokeWidth={2} />
       <rect x={628} y={132} width={98} height={7} fill={COUNTER_TINT} />
       <line x1={606} y1={124} x2={426} y2={146} stroke={COUNTER} strokeWidth={1.5} />
-      <path d={headAlong(424, 146, -182, 22)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <path d={headAlong1(424, 146, -182, 22)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       <Key x={677} y={176} anchor="middle" fill={COUNTER} size={11}>
         EXTERNAL STIMULI
       </Key>
@@ -386,20 +330,20 @@ export function IntentionToDecision() {
       <line x1={298} y1={125} x2={400} y2={125} stroke={SIGNAL} strokeWidth={2} />
       <line x1={400} y1={125} x2={620} y2={125} stroke={SIGNAL} strokeWidth={2} strokeDasharray="6 6" />
       <line x1={620} y1={125} x2={686} y2={125} stroke={SIGNAL} strokeWidth={2} />
-      <path d={head.right(688, 125)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+      <path d={head2.right(688, 125)} fill="none" stroke={SIGNAL} strokeWidth={2} />
       <circle cx={700} cy={125} r={10} fill={SIGNAL} />
       <Key x={700} y={160} anchor="middle" fill={SIGNAL} size={10}>
         PURCHASE DECISION
       </Key>
 
       <line x1={460} y1={62} x2={460} y2={112} stroke={COUNTER} strokeWidth={1.5} />
-      <path d={head.down(460, 114)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <path d={head2.down(460, 114)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       <Key x={460} y={48} anchor="middle" fill={COUNTER} size={10}>
         ATTITUDES OF OTHERS
       </Key>
 
       <line x1={560} y1={196} x2={560} y2={138} stroke={COUNTER} strokeWidth={1.5} />
-      <path d={head.up(560, 136)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <path d={head2.up(560, 136)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       <Key x={560} y={216} anchor="middle" fill={COUNTER} size={10}>
         UNEXPECTED SITUATIONAL FACTORS
       </Key>
@@ -417,7 +361,7 @@ export function PostpurchaseTimeline() {
     <Frame height={250} label="A timeline with the product bought partway along. The marketer's job continues past that point, through cognitive dissonance, to a satisfied or dissatisfied consumer.">
       <line x1={60} y1={44} x2={736} y2={44} stroke={SIGNAL} strokeWidth={1.5} />
       <line x1={60} y1={44} x2={60} y2={54} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.right(740, 44)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(740, 44)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <Key x={400} y={32} anchor="middle" fill={SIGNAL} size={11}>
         THE MARKETER&apos;S JOB
       </Key>
@@ -533,7 +477,7 @@ export function LearnedFromSociety() {
         SOCIETY
       </Key>
       <line x1={200} y1={60} x2={200} y2={236} stroke={INK3} strokeWidth={1.25} />
-      <path d={head.down(200, 238)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <path d={head2.down(200, 238)} fill="none" stroke={INK3} strokeWidth={1.25} />
       {chips.map((c, i) => {
         const top = 76 + i * 38;
         return (
@@ -545,7 +489,7 @@ export function LearnedFromSociety() {
           </g>
         );
       })}
-      <Person x={200} y={306} k={1.6} stroke={SIGNAL} />
+      <Person2 x={200} y={306} k={1.6} stroke={SIGNAL} />
     </Frame>
   );
 }
@@ -634,13 +578,13 @@ export function SocialWeb() {
         INDIRECT
       </Key>
 
-      <Person x={400} y={196} k={1.6} />
+      <Person2 x={400} y={196} k={1.6} />
       <Key x={400} y={222} anchor="middle" fill={INK} size={10.5}>
         CONSUMER
       </Key>
 
       {[176, 200, 224].map((x) => (
-        <Person key={x} x={x} y={100} k={0.85} />
+        <Person2 key={x} x={x} y={100} k={0.85} />
       ))}
       <Key x={200} y={124} anchor="middle" fill={INK} size={10.5}>
         FAMILY
@@ -659,7 +603,7 @@ export function SocialWeb() {
         SMALL GROUPS
       </Key>
 
-      <Person x={600} y={100} k={1} stroke={SIGNAL} />
+      <Person2 x={600} y={100} k={1} stroke={SIGNAL} />
       <path d="M614 62 A 14 14 0 0 1 614 82" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
       <path d="M622 55 A 24 24 0 0 1 622 89" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
       <Key x={600} y={124} anchor="middle" fill={SIGNAL} size={10.5}>
@@ -693,8 +637,8 @@ export function PerceptionSequence() {
   const cxs = [110, 303, 497, 690];
   const cy = 140;
   const marks = Array.from({ length: 22 }, (_, i) => ({
-    dx: (hash(i + 1) * 2 - 1) * 60,
-    dy: (hash(i + 51) * 2 - 1) * 46,
+    dx: (hash1(i + 1) * 2 - 1) * 60,
+    dy: (hash1(i + 51) * 2 - 1) * 46,
     shape: i % 3,
   }));
   const chosen = [1, 4, 6, 9, 12, 15, 17, 20];
@@ -729,7 +673,7 @@ export function PerceptionSequence() {
       {cxs.slice(0, -1).map((x, i) => (
         <g key={x}>
           <line x1={x + 80} y1={cy} x2={cxs[i + 1] - 82} y2={cy} stroke={INK3} strokeWidth={1.25} />
-          <path d={head.right(cxs[i + 1] - 80, cy)} fill="none" stroke={INK3} strokeWidth={1.25} />
+          <path d={head2.right(cxs[i + 1] - 80, cy)} fill="none" stroke={INK3} strokeWidth={1.25} />
         </g>
       ))}
 
@@ -768,11 +712,11 @@ export function ExpertiseLifestyle() {
       <Display x={400} y={52} anchor="middle" fill={SIGNAL} size={26}>
         ?
       </Display>
-      <Person x={400} y={120} k={1.5} />
+      <Person2 x={400} y={120} k={1.5} />
       <line x1={368} y1={104} x2={302} y2={104} stroke={INK3} strokeWidth={1.25} />
-      <path d={head.left(300, 104)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <path d={head2.left(300, 104)} fill="none" stroke={INK3} strokeWidth={1.25} />
       <line x1={432} y1={104} x2={498} y2={104} stroke={INK3} strokeWidth={1.25} />
-      <path d={head.right(500, 104)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <path d={head2.right(500, 104)} fill="none" stroke={INK3} strokeWidth={1.25} />
 
       <line x1={140} y1={130} x2={660} y2={130} stroke={INK3} strokeWidth={1.5} />
       <circle cx={140} cy={130} r={6} fill={COUNTER} />
@@ -805,8 +749,8 @@ export function ConsumerAndBusinessLanes() {
         BUSINESS
       </Key>
       <line x1={244} y1={80} x2={638} y2={80} stroke={COUNTER} strokeWidth={1.5} />
-      <path d={head.right(640, 80)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
-      <Person x={690} y={98} k={1.2} stroke={COUNTER} />
+      <path d={head2.right(640, 80)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <Person2 x={690} y={98} k={1.2} stroke={COUNTER} />
       <Key x={690} y={124} anchor="middle" fill={COUNTER} size={10.5}>
         FINAL CONSUMER
       </Key>
@@ -821,7 +765,7 @@ export function ConsumerAndBusinessLanes() {
         BUSINESS
       </Key>
       <line x1={244} y1={190} x2={374} y2={190} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.right(376, 190)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(376, 190)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <path
         d="M380 174 L380 158 L415 170 L415 158 L450 170 L450 158 L485 170 L485 158 L520 170 L520 174"
         fill={SIGNAL_TINT}
@@ -834,7 +778,7 @@ export function ConsumerAndBusinessLanes() {
         ORGANIZATION
       </Key>
       <line x1={524} y1={190} x2={634} y2={190} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.right(636, 190)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(636, 190)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <Note x={580} y={178} anchor="middle" size={11.5} italic>
         used in production
       </Note>
@@ -891,7 +835,7 @@ export function MarketStructureTriptych() {
         CONSUMER DEMAND
       </Key>
       <line x1={400} y1={94} x2={400} y2={152} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.down(400, 154)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.down(400, 154)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <rect x={310} y={158} width={180} height={32} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
       <Key x={400} y={178} anchor="middle" fill={SIGNAL} size={10}>
         BUSINESS DEMAND
@@ -932,7 +876,7 @@ export function BuyingCenterTable() {
   ];
   return (
     <Frame height={300} label="Left: one person, rarely the whole story. Right: users, influencers, deciders, buyers, and gatekeepers seated around one purchase decision.">
-      <Person x={120} y={196} k={1.6} stroke={INK3} dashed />
+      <Person2 x={120} y={196} k={1.6} stroke={INK3} dashed />
       <Key x={120} y={232} anchor="middle" fill={INK3} size={10}>
         RARELY ONE PERSON
       </Key>
@@ -983,19 +927,19 @@ export function MatchedExperts() {
         BUSINESS BUYER
       </Key>
 
-      <Person x={290} y={196} k={2} />
+      <Person2 x={290} y={196} k={2} />
       <Badge x={299} y={178} />
       <Display x={400} y={176} anchor="middle" fill={SIGNAL} size={40}>
         =
       </Display>
-      <Person x={510} y={196} k={2} />
+      <Person2 x={510} y={196} k={2} />
       <Badge x={519} y={178} />
 
       <Key x={670} y={134} anchor="middle" fill={INK3} size={10}>
         MORE DECISION PARTICIPANTS
       </Key>
       {[610, 650, 690, 730].map((x) => (
-        <Person key={x} x={x} y={196} k={1.15} stroke={INK3} />
+        <Person2 key={x} x={x} y={196} k={1.15} stroke={INK3} />
       ))}
       <line x1={180} y1={196} x2={760} y2={196} stroke={RULE} strokeWidth={1} />
 
@@ -1039,13 +983,13 @@ export function TwoBrochures() {
 
       {/* the product */}
       <line x1={356} y1={150} x2={296} y2={150} stroke={INK3} strokeWidth={1.25} />
-      <path d={head.left(294, 150)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <path d={head2.left(294, 150)} fill="none" stroke={INK3} strokeWidth={1.25} />
       <rect x={360} y={134} width={80} height={32} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
       <Key x={400} y={154} anchor="middle" fill={SIGNAL} size={10}>
         PRODUCT
       </Key>
       <line x1={444} y1={150} x2={504} y2={150} stroke={INK3} strokeWidth={1.25} />
-      <path d={head.right(506, 150)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <path d={head2.right(506, 150)} fill="none" stroke={INK3} strokeWidth={1.25} />
 
       {/* for the decider */}
       <rect x={510} y={56} width={180} height={190} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
@@ -1075,14 +1019,6 @@ export function TwoBrochures() {
 /* ==========================================================================
    Conclusion glyphs — each echoes a plate already seen
    ========================================================================== */
-
-const glyphProps = {
-  width: 64,
-  height: 40,
-  viewBox: "0 0 64 40",
-  fill: "none",
-  "aria-hidden": true,
-} as const;
 
 export function GlyphRoute() {
   return (

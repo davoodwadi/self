@@ -22,148 +22,41 @@
 
 import React from "react";
 import {
-  Key,
-  Note,
+  COUNTER,
+  COUNTER_TINT,
   Display,
   Frame,
-  Schematic,
+  glyphProps,
+  hash2,
+  head2,
+  headAlong1,
   INK,
   INK3,
-  RULE,
-  RULE2,
-  SIGNAL,
-  COUNTER,
+  Key,
+  Note,
   PAPER,
   PAPER2,
+  r2,
+  RULE,
+  RULE2,
+  Schematic,
+  SIGNAL,
   SIGNAL_TINT,
-  COUNTER_TINT,
-} from "../week1/visuals";
-
-/** Open chevron arrowhead pointing along (dx, dy), tip at (x, y). */
-function headAlong(x: number, y: number, dx: number, dy: number, s = 8) {
-  const len = Math.hypot(dx, dy) || 1;
-  const ux = dx / len;
-  const uy = dy / len;
-  const bx = x - ux * s;
-  const by = y - uy * s;
-  const px = -uy * (s * 0.62);
-  const py = ux * (s * 0.62);
-  return `M${(bx + px).toFixed(2)} ${(by + py).toFixed(2)}L${x.toFixed(2)} ${y.toFixed(2)}L${(bx - px).toFixed(2)} ${(by - py).toFixed(2)}`;
-}
-
-const head = {
-  right: (x: number, y: number) => headAlong(x, y, 1, 0),
-  left: (x: number, y: number) => headAlong(x, y, -1, 0),
-  down: (x: number, y: number) => headAlong(x, y, 0, 1),
-  up: (x: number, y: number) => headAlong(x, y, 0, -1),
-};
-
-/**
- * Deterministic 0–1 hash, so scattered marks match on server and client.
- * Rounded to four places: Node and the browser disagree on Math.sin in the
- * last few digits.
- */
-const hash = (n: number) => {
-  const v = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
-  return Math.round((v - Math.floor(v)) * 1e4) / 1e4;
-};
-
-/** Round a computed coordinate, for the same server/client reason. */
-const r2 = (n: number) => Math.round(n * 100) / 100;
+} from "../_visuals/broadsheet";
+import {
+  Coins1,
+  HEAD_PATH,
+  Head1,
+  Mark1,
+  Pack1,
+  Person3,
+  Phone1,
+} from "../_visuals/objects";
 
 /* -- shared glyphs --------------------------------------------------------- */
 
-/** A person glyph standing on (x, y). k scales it; 1 is 34 units tall. */
-function Person({
-  x,
-  y,
-  k = 1,
-  stroke = INK,
-  fill = PAPER,
-  width = 1.5,
-}: {
-  x: number;
-  y: number;
-  k?: number;
-  stroke?: string;
-  fill?: string;
-  width?: number;
-}) {
-  const w = 10 * k;
-  const top = y - 21 * k;
-  const shoulder = y - 12 * k;
-  return (
-    <g>
-      <circle cx={x} cy={y - 28 * k} r={6 * k} fill={fill} stroke={stroke} strokeWidth={width} />
-      <path
-        d={`M${x - w} ${y}V${shoulder}Q${x - w} ${top} ${x} ${top}Q${x + w} ${top} ${x + w} ${shoulder}V${y}Z`}
-        fill={fill}
-        stroke={stroke}
-        strokeWidth={width}
-        strokeLinejoin="round"
-      />
-    </g>
-  );
-}
-
-/**
- * A buyer mark. Four kinds stand for four different sets of needs,
- * characteristics, or behaviors: circle, square, triangle, diamond.
- */
-function Mark({
-  kind,
-  x,
-  y,
-  s = 5,
-  fill,
-  stroke,
-  width = 1.25,
-}: {
-  kind: number;
-  x: number;
-  y: number;
-  s?: number;
-  fill: string;
-  stroke?: string;
-  width?: number;
-}) {
-  const common = { fill, stroke: stroke ?? "none", strokeWidth: stroke ? width : 0 };
-  if (kind === 0) return <circle cx={x} cy={y} r={s} {...common} />;
-  if (kind === 1) return <rect x={r2(x - s * 0.9)} y={r2(y - s * 0.9)} width={r2(s * 1.8)} height={r2(s * 1.8)} {...common} />;
-  if (kind === 2)
-    return <path d={`M${x} ${r2(y - s * 1.1)}L${r2(x + s * 1.05)} ${r2(y + s * 0.8)}L${r2(x - s * 1.05)} ${r2(y + s * 0.8)}Z`} {...common} strokeLinejoin="round" />;
-  return <path d={`M${x} ${r2(y - s * 1.2)}L${r2(x + s)} ${y}L${x} ${r2(y + s * 1.2)}L${r2(x - s)} ${y}Z`} {...common} strokeLinejoin="round" />;
-}
-
 /** Tone for each buyer kind. */
 const KIND_TONE = [COUNTER, INK, SIGNAL, INK3];
-
-/** A small package (a product or an offer), centred on x, bottom at y. */
-function Pack({
-  x,
-  y,
-  w = 34,
-  h = 30,
-  tone = INK,
-  fill = PAPER,
-  kind,
-}: {
-  x: number;
-  y: number;
-  w?: number;
-  h?: number;
-  tone?: string;
-  fill?: string;
-  kind?: number;
-}) {
-  return (
-    <g>
-      <rect x={x - w / 2} y={y - h} width={w} height={h} fill={fill} stroke={tone} strokeWidth={1.5} />
-      <path d={`M${x - w / 2} ${y - h + 8}H${x + w / 2}`} stroke={tone} strokeWidth={1} />
-      {kind !== undefined ? <Mark kind={kind} x={x} y={y - h / 2 + 4} s={4.5} fill={tone} /> : null}
-    </g>
-  );
-}
 
 /** A tub of protein powder, centred on x, bottom at y. */
 function Tub({ x, y, s = 1, tone = INK, fill = PAPER }: { x: number; y: number; s?: number; tone?: string; fill?: string }) {
@@ -182,67 +75,17 @@ function Tub({ x, y, s = 1, tone = INK, fill = PAPER }: { x: number; y: number; 
   );
 }
 
-/** A smartphone, top-left at (x, y). */
-function Phone({ x, y, w = 70, h = 128, tone = INK, fill = PAPER }: { x: number; y: number; w?: number; h?: number; tone?: string; fill?: string }) {
-  return (
-    <g>
-      <rect x={x} y={y} width={w} height={h} rx={10} fill={fill} stroke={tone} strokeWidth={1.75} />
-      <rect x={x + 6} y={y + 14} width={w - 12} height={h - 30} rx={2} fill={PAPER} stroke={tone} strokeWidth={1} />
-      <line x1={x + w / 2 - 8} y1={y + 7} x2={x + w / 2 + 8} y2={y + 7} stroke={tone} strokeWidth={1.5} strokeLinecap="round" />
-      <circle cx={x + w / 2} cy={y + h - 8} r={3} fill="none" stroke={tone} strokeWidth={1.25} />
-    </g>
-  );
-}
-
-/** A head in profile, facing left, inside a 200 × 220 box. */
-const HEAD_PATH =
-  "M150 205 C150 190 175 170 185 140 C200 95 190 40 140 15 C95 -5 40 5 25 55 C20 70 22 85 20 95 L2 128 L18 136 L16 150 L22 158 L18 170 C22 186 40 190 62 186 L68 205";
-
-function Head({
-  x,
-  y,
-  k = 1,
-  faceRight = false,
-  tone = INK,
-  fill = "none",
-}: {
-  x: number;
-  y: number;
-  k?: number;
-  faceRight?: boolean;
-  tone?: string;
-  fill?: string;
-}) {
-  const t = faceRight ? `translate(${x + 200 * k} ${y}) scale(${-k} ${k})` : `translate(${x} ${y}) scale(${k})`;
-  return (
-    <g transform={t}>
-      <path d={HEAD_PATH} fill={fill} stroke={tone} strokeWidth={1.75 / k} strokeLinejoin="round" strokeLinecap="round" />
-    </g>
-  );
-}
-
-/** A stack of coins centred on x, bottom coin at y. */
-function Coins({ x, y, n = 4, rx = 13, tone = INK }: { x: number; y: number; n?: number; rx?: number; tone?: string }) {
-  return (
-    <g>
-      {Array.from({ length: n }, (_, i) => (
-        <ellipse key={i} cx={x} cy={y - i * 7} rx={rx} ry={4.5} fill={PAPER} stroke={tone} strokeWidth={1.25} />
-      ))}
-    </g>
-  );
-}
-
 /* ==========================================================================
    1 · SORTED CROWD — a market divided into distinct groups of buyers
    ========================================================================== */
 
 export function MarketDivided() {
   // 24 buyers, six of each kind, in a jittered 6 × 4 grid.
-  const order = Array.from({ length: 24 }, (_, i) => i).sort((a, b) => hash(a + 40) - hash(b + 40));
+  const order = Array.from({ length: 24 }, (_, i) => i).sort((a, b) => hash2(a + 40) - hash2(b + 40));
   const mixed = order.map((slot, i) => ({
     kind: i % 4,
-    x: r2(56 + (slot % 6) * 42 + (hash(slot + 90) - 0.5) * 16),
-    y: r2(84 + Math.floor(slot / 6) * 44 + (hash(slot + 190) - 0.5) * 14),
+    x: r2(56 + (slot % 6) * 42 + (hash2(slot + 90) - 0.5) * 16),
+    y: r2(84 + Math.floor(slot / 6) * 44 + (hash2(slot + 190) - 0.5) * 14),
   }));
   const groupX = [410, 510, 610, 710];
   const inGroup = [
@@ -260,11 +103,11 @@ export function MarketDivided() {
       </Key>
       <rect x={30} y={50} width={264} height={200} fill="none" stroke={INK3} strokeWidth={1.25} />
       {mixed.map((m, i) => (
-        <Mark key={i} kind={m.kind} x={m.x} y={m.y} s={6} fill={KIND_TONE[m.kind]} />
+        <Mark1 key={i} kind={m.kind} x={m.x} y={m.y} s={6} fill={KIND_TONE[m.kind]} />
       ))}
 
       <line x1={306} y1={150} x2={352} y2={150} stroke={INK} strokeWidth={1.5} />
-      <path d={head.right(354, 150)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(354, 150)} fill="none" stroke={INK} strokeWidth={1.5} />
 
       <Key x={360} y={32} fill={SIGNAL} size={10.5}>
         DISTINCT GROUPS OF BUYERS
@@ -273,10 +116,10 @@ export function MarketDivided() {
         <g key={gx}>
           <rect x={gx - 42} y={50} width={84} height={112} rx={4} fill={PAPER} stroke={KIND_TONE[g]} strokeWidth={1.5} />
           {inGroup.map(([dx, dy], j) => (
-            <Mark key={j} kind={g} x={gx + dx} y={106 + dy} s={6} fill={KIND_TONE[g]} />
+            <Mark1 key={j} kind={g} x={gx + dx} y={106 + dy} s={6} fill={KIND_TONE[g]} />
           ))}
           <line x1={gx} y1={164} x2={gx} y2={184} stroke={KIND_TONE[g]} strokeWidth={1.25} />
-          <Pack x={gx} y={222} w={46} h={36} tone={KIND_TONE[g]} kind={g} />
+          <Pack1 x={gx} y={222} w={46} h={36} tone={KIND_TONE[g]} kind={g} />
         </g>
       ))}
       <path d="M368 232 V240 H752 V232" fill="none" stroke={INK} strokeWidth={1.25} />
@@ -410,7 +253,7 @@ export function DemographicCard() {
     <Frame width={400} height={300} label="A profile card for one buyer with nine demographic fields: age, life-cycle stage, gender, income, occupation, education, religion, ethnicity, and generation. Beside the portrait, a ruler: easier to measure.">
       <rect x={16} y={16} width={368} height={272} rx={6} fill={PAPER} stroke={INK} strokeWidth={1.5} />
       <rect x={36} y={40} width={92} height={108} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.25} />
-      <Person x={82} y={148} k={2.2} stroke={COUNTER} />
+      <Person3 x={82} y={148} k={2.2} stroke={COUNTER} />
 
       {/* ruler: easier to measure */}
       <rect x={36} y={184} width={92} height={18} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
@@ -495,8 +338,8 @@ export function PsychographicTwins() {
         ≠
       </Display>
 
-      <Person x={260} y={274} k={2} stroke={INK} />
-      <Person x={560} y={274} k={2} stroke={INK} />
+      <Person3 x={260} y={274} k={2} stroke={INK} />
+      <Person3 x={560} y={274} k={2} stroke={INK} />
       <path d="M180 282 V290 H640 V282" fill="none" stroke={INK} strokeWidth={1.25} />
       <Key x={410} y={310} anchor="middle" fill={INK} size={10}>
         SAME DEMOGRAPHIC GROUP
@@ -523,7 +366,7 @@ export function LifestyleProducts() {
       <circle cx={70} cy={76} r={36} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
       <path d="M44 94 L64 66 L76 80 L84 70 L98 94 Z" fill="none" stroke={COUNTER} strokeWidth={1.5} strokeLinejoin="round" />
       <path d="M118 76 H262" stroke={COUNTER} strokeWidth={1.5} />
-      <path d={head.right(264, 76)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <path d={head2.right(264, 76)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       <rect x={278} y={46} width={84} height={60} fill={PAPER} stroke={INK} strokeWidth={1.5} />
       <path d="M296 98 L320 60 L344 98 Z M320 60 V98" fill="none" stroke={COUNTER} strokeWidth={1.5} strokeLinejoin="round" />
 
@@ -531,7 +374,7 @@ export function LifestyleProducts() {
       <circle cx={70} cy={150} r={36} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
       <path d="M52 158 H88 V148 A5 5 0 0 0 83 143 H57 A5 5 0 0 0 52 148 Z M58 143 V132 H82 V143" fill="none" stroke={SIGNAL} strokeWidth={1.5} strokeLinejoin="round" />
       <path d="M118 150 H262" stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.right(264, 150)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(264, 150)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <rect x={278} y={120} width={84} height={60} fill={PAPER} stroke={INK} strokeWidth={1.5} />
       <path d="M320 144 V172 M308 172 H332 M306 144 L312 130 H328 L334 144 Z" fill="none" stroke={SIGNAL} strokeWidth={1.5} strokeLinejoin="round" />
 
@@ -575,10 +418,10 @@ export function BehavioralVariables() {
 
       {/* user status */}
       <g strokeDasharray="3 3">
-        <Person x={372} y={112} k={1.25} stroke={INK3} />
+        <Person3 x={372} y={112} k={1.25} stroke={INK3} />
       </g>
-      <Person x={400} y={112} k={1.25} stroke={INK} />
-      <Person x={428} y={112} k={1.25} stroke={SIGNAL} fill={SIGNAL} />
+      <Person3 x={400} y={112} k={1.25} stroke={INK} />
+      <Person3 x={428} y={112} k={1.25} stroke={SIGNAL} fill={SIGNAL} />
 
       {/* usage rate */}
       {[
@@ -593,7 +436,7 @@ export function BehavioralVariables() {
       {/* loyalty status */}
       <path d="M720 96 C700 84 694 72 700 64 C706 56 716 58 720 66 C724 58 734 56 740 64 C746 72 740 84 720 96 Z" fill={SIGNAL} />
       <path d="M753.83 63.69 A36 36 0 1 1 738 44.82" fill="none" stroke={INK} strokeWidth={1.75} />
-      <path d={headAlong(738, 44.82, 0.866, 0.5, 9)} fill="none" stroke={INK} strokeWidth={1.75} />
+      <path d={headAlong1(738, 44.82, 0.866, 0.5, 9)} fill="none" stroke={INK} strokeWidth={1.75} />
 
       {[
         ["OCCASIONS", ""],
@@ -648,21 +491,21 @@ export function BenefitMapping() {
       {rows.map((r) => (
         <g key={r.y}>
           <circle cx={120} cy={r.y} r={24} fill={PAPER} stroke={r.tone} strokeWidth={1.5} />
-          <Mark kind={r.kind} x={120} y={r.y} s={11} fill={r.tone} />
+          <Mark1 kind={r.kind} x={120} y={r.y} s={11} fill={r.tone} />
 
           <line x1={152} y1={r.y} x2={316} y2={r.y} stroke={r.tone} strokeWidth={1.25} />
-          <path d={head.right(318, r.y)} fill="none" stroke={r.tone} strokeWidth={1.25} />
+          <path d={head2.right(318, r.y)} fill="none" stroke={r.tone} strokeWidth={1.25} />
           {[350, 400, 450].map((px) => (
             <g key={px}>
-              <Person x={px} y={r.y + 20} k={1.1} stroke={r.tone} />
-              <Mark kind={r.kind} x={px} y={r.y + 8} s={3.5} fill={r.tone} />
+              <Person3 x={px} y={r.y + 20} k={1.1} stroke={r.tone} />
+              <Mark1 kind={r.kind} x={px} y={r.y + 8} s={3.5} fill={r.tone} />
             </g>
           ))}
 
           <line x1={484} y1={r.y} x2={612} y2={r.y} stroke={r.tone} strokeWidth={1.25} />
-          <path d={head.right(614, r.y)} fill="none" stroke={r.tone} strokeWidth={1.25} />
-          <Pack x={652} y={r.y + 20} w={42} h={44} tone={r.tone} kind={r.kind} />
-          <Pack x={712} y={r.y + 20} w={42} h={44} tone={r.tone} kind={r.kind} />
+          <path d={head2.right(614, r.y)} fill="none" stroke={r.tone} strokeWidth={1.25} />
+          <Pack1 x={652} y={r.y + 20} w={42} h={44} tone={r.tone} kind={r.kind} />
+          <Pack1 x={712} y={r.y + 20} w={42} h={44} tone={r.tone} kind={r.kind} />
         </g>
       ))}
     </Frame>
@@ -808,7 +651,7 @@ export function EvaluateSelect() {
           <g key={i}>
             <rect x={x} y={38} width={110} height={96} fill={on ? SIGNAL_TINT : PAPER} stroke={on ? SIGNAL : INK3} strokeWidth={on ? 2 : 1.25} />
             {[25, 55, 85].map((dx) => (
-              <Person key={dx} x={x + dx} y={120} k={1} stroke={on ? SIGNAL : INK3} />
+              <Person3 key={dx} x={x + dx} y={120} k={1} stroke={on ? SIGNAL : INK3} />
             ))}
             <rect x={x + 0.75} y={160.75} width={108.5} height={10.5} fill="none" stroke={INK3} strokeWidth={1.5} />
             <rect x={x} y={160} width={r2(110 * s)} height={12} fill={on ? SIGNAL : INK3} />
@@ -852,7 +695,7 @@ export function ThreeFactors() {
       ))}
       <line x1={90} y1={140} x2={200} y2={140} stroke={INK} strokeWidth={1.25} />
       <path d="M86 100 L180 54" fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      <path d={headAlong(182, 53, 94, -46, 9)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+      <path d={headAlong1(182, 53, 94, -46, 9)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
 
       {/* structural attractiveness */}
       <rect x={370} y={66} width={60} height={60} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
@@ -865,7 +708,7 @@ export function ThreeFactors() {
       ].map(([x1, y1, x2, y2]) => (
         <g key={`${x1}-${y1}`}>
           <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={INK3} strokeWidth={1.75} />
-          <path d={headAlong(x2, y2, x2 - x1, y2 - y1)} fill="none" stroke={INK3} strokeWidth={1.75} />
+          <path d={headAlong1(x2, y2, x2 - x1, y2 - y1)} fill="none" stroke={INK3} strokeWidth={1.75} />
         </g>
       ))}
 
@@ -873,7 +716,7 @@ export function ThreeFactors() {
       <circle cx={630} cy={98} r={32} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       <circle cx={630} cy={98} r={19} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       <circle cx={630} cy={98} r={7} fill={COUNTER} />
-      <Coins x={712} y={136} n={6} rx={17} tone={INK} />
+      <Coins1 x={712} y={136} n={6} rx={17} tone={INK} />
 
       {[
         [150, "SEGMENT SIZE", "AND GROWTH", INK],
@@ -918,11 +761,11 @@ export function CrowdedSegment() {
       ))}
       {[62, 94, 126].map((y, i) => (
         <g key={y}>
-          <Person x={30 + i * 10} y={y + 14} k={0.7} stroke={SIGNAL} />
+          <Person3 x={30 + i * 10} y={y + 14} k={0.7} stroke={SIGNAL} />
           <path d={`M${48 + i * 10} ${y} C90 ${y} 100 95 146 95`} fill="none" stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
         </g>
       ))}
-      <path d={head.right(152, 95)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(152, 95)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <Key x={20} y={176} fill={SIGNAL} size={9}>
         NEW ENTRANTS
       </Key>
@@ -943,11 +786,11 @@ export function SkillsFit() {
       <path d="M30 50 H166 V74 C186 74 194 82 194 94 C194 106 186 114 166 114 V138 H30 Z" fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.75} strokeLinejoin="round" />
       <path d="M234 50 H370 V138 H234 V114 C254 114 262 106 262 94 C262 82 254 74 234 74 Z" fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} strokeLinejoin="round" />
       <line x1={180} y1={30} x2={222} y2={30} stroke={INK} strokeWidth={1.5} />
-      <path d={head.right(224, 30)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <Person x={98} y={108} k={1.1} stroke={COUNTER} />
-      <Person x={318} y={108} k={1.1} stroke={SIGNAL} />
-      <Person x={298} y={112} k={0.8} stroke={SIGNAL} />
-      <Person x={338} y={112} k={0.8} stroke={SIGNAL} />
+      <path d={head2.right(224, 30)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <Person3 x={98} y={108} k={1.1} stroke={COUNTER} />
+      <Person3 x={318} y={108} k={1.1} stroke={SIGNAL} />
+      <Person3 x={298} y={112} k={0.8} stroke={SIGNAL} />
+      <Person3 x={338} y={112} k={0.8} stroke={SIGNAL} />
       <Key x={98} y={164} anchor="middle" fill={COUNTER} size={9}>
         SKILLS AND
       </Key>
@@ -1014,7 +857,7 @@ export function TargetUndifferentiated() {
         <circle key={x} cx={x} cy={y} r={64} fill={SIGNAL_TINT} stroke={INK3} strokeWidth={1} strokeDasharray="4 3" />
       ))}
       {marketBuyers().map((b, i) => (
-        <Mark key={i} kind={b.kind} x={b.x} y={b.y} s={5.5} fill={INK3} />
+        <Mark1 key={i} kind={b.kind} x={b.x} y={b.y} s={5.5} fill={INK3} />
       ))}
       <circle cx={172} cy={106} r={13} fill={SIGNAL} />
     </Frame>
@@ -1034,12 +877,12 @@ export function TargetDifferentiated() {
         <circle key={c.kind} cx={c.cx + 1} cy={c.cy - 2} r={34} fill={PAPER} stroke={KIND_TONE[c.kind]} strokeWidth={1.75} />
       ))}
       {marketBuyers().map((b, i) => (
-        <Mark key={i} kind={b.kind} x={b.x} y={b.y} s={5.5} fill={b.niche ? RULE2 : KIND_TONE[b.kind]} />
+        <Mark1 key={i} kind={b.kind} x={b.x} y={b.y} s={5.5} fill={b.niche ? RULE2 : KIND_TONE[b.kind]} />
       ))}
       {packs.map((p) => (
         <g key={p.x}>
           <line x1={p.x} y1={p.y - 14} x2={p.c.cx + (p.x < p.c.cx ? -24 : 24)} y2={p.c.cy + (p.y < p.c.cy ? -24 : 24)} stroke={KIND_TONE[p.c.kind]} strokeWidth={1} />
-          <Pack x={p.x} y={p.y} w={30} h={28} tone={KIND_TONE[p.c.kind]} kind={p.c.kind} />
+          <Pack1 x={p.x} y={p.y} w={30} h={28} tone={KIND_TONE[p.c.kind]} kind={p.c.kind} />
         </g>
       ))}
     </Frame>
@@ -1051,13 +894,13 @@ export function TargetConcentrated() {
     <Frame width={360} height={232} label="The same market, faded, except one small niche in the corner. It is ringed and filled: a large share of one smaller segment.">
       <MarketField />
       {marketBuyers().map((b, i) =>
-        b.niche ? null : <Mark key={i} kind={b.kind} x={b.x} y={b.y} s={5.5} fill={RULE2} />,
+        b.niche ? null : <Mark1 key={i} kind={b.kind} x={b.x} y={b.y} s={5.5} fill={RULE2} />,
       )}
       <circle cx={NICHE_C.cx} cy={NICHE_C.cy} r={30} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={2} />
       {NICHE.map(([dx, dy], i) => (
-        <Mark key={i} kind={3} x={NICHE_C.cx + dx} y={NICHE_C.cy + dy} s={6} fill={SIGNAL} />
+        <Mark1 key={i} kind={3} x={NICHE_C.cx + dx} y={NICHE_C.cy + dy} s={6} fill={SIGNAL} />
       ))}
-      <Pack x={226} y={200} w={30} h={28} tone={SIGNAL} fill={PAPER} kind={3} />
+      <Pack1 x={226} y={200} w={30} h={28} tone={SIGNAL} fill={PAPER} kind={3} />
     </Frame>
   );
 }
@@ -1069,7 +912,7 @@ export function TargetMicro() {
       {marketBuyers().map((b, i) => (
         <g key={i}>
           <circle cx={b.x} cy={b.y} r={8.5} fill={PAPER} stroke={SIGNAL} strokeWidth={1.25} />
-          <Mark kind={b.kind} x={b.x} y={b.y} s={4.2} fill={KIND_TONE[b.kind]} />
+          <Mark1 kind={b.kind} x={b.x} y={b.y} s={4.2} fill={KIND_TONE[b.kind]} />
         </g>
       ))}
       <path d="M312 60 C302 48 298 42 298 36 A14 14 0 0 1 326 36 C326 42 322 48 312 60 Z" fill={SIGNAL} />
@@ -1094,9 +937,9 @@ export function ProteinFork() {
       <Tub x={110} y={190} s={2} tone={INK} />
 
       <path d="M164 140 C220 140 220 78 280 78" fill="none" stroke={COUNTER} strokeWidth={1.5} />
-      <path d={head.right(282, 78)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <path d={head2.right(282, 78)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       <path d="M164 150 C220 150 220 212 280 212" fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.right(282, 212)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(282, 212)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
 
       <Key x={296} y={28} fill={COUNTER} size={10.5}>
         DIFFERENTIATED MARKETING?
@@ -1112,7 +955,7 @@ export function ProteinFork() {
               [-22, 92],
               [0, 92],
             ].map(([dx, y]) => (
-              <Mark key={`${dx}-${y}`} kind={g} x={x + dx - 6} y={y} s={6} fill={KIND_TONE[g]} />
+              <Mark1 key={`${dx}-${y}`} kind={g} x={x + dx - 6} y={y} s={6} fill={KIND_TONE[g]} />
             ))}
             <Tub x={x + 46} y={104} s={0.95} tone={KIND_TONE[g]} />
           </g>
@@ -1131,7 +974,7 @@ export function ProteinFork() {
         [346, 236],
         [372, 236],
       ].map(([x, y]) => (
-        <Mark key={`${x}-${y}`} kind={3} x={x} y={y} s={7} fill={SIGNAL} />
+        <Mark1 key={`${x}-${y}`} kind={3} x={x} y={y} s={7} fill={SIGNAL} />
       ))}
       <Tub x={436} y={250} s={1.3} tone={SIGNAL} />
       {[520, 600, 680].map((x) => (
@@ -1154,9 +997,9 @@ export function OfferingAndMind() {
       <Note x={40} y={44} size={12.5} italic>
         the firm&apos;s market offering
       </Note>
-      <Pack x={80} y={200} w={64} h={84} tone={INK3} />
-      <Pack x={164} y={200} w={64} h={84} tone={INK3} />
-      <Pack x={260} y={206} w={76} h={98} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Pack1 x={80} y={200} w={64} h={84} tone={INK3} />
+      <Pack1 x={164} y={200} w={64} h={84} tone={INK3} />
+      <Pack1 x={260} y={206} w={76} h={98} tone={SIGNAL} fill={SIGNAL_TINT} />
       <path d="M260 138 L265 149 L277 150 L268 158 L271 170 L260 164 L249 170 L252 158 L243 150 L255 149 Z" fill={SIGNAL} />
       <line x1={36} y1={206} x2={316} y2={206} stroke={INK} strokeWidth={1.25} />
       <Key x={260} y={232} anchor="middle" fill={SIGNAL} size={9.5}>
@@ -1167,12 +1010,12 @@ export function OfferingAndMind() {
       </Key>
 
       <line x1={330} y1={150} x2={414} y2={150} stroke={SIGNAL} strokeWidth={1.75} />
-      <path d={head.right(416, 150)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+      <path d={head2.right(416, 150)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
 
       <Key x={760} y={24} anchor="end" fill={SIGNAL} size={10.5}>
         POSITIONING
       </Key>
-      <Head x={470} y={56} k={1.05} tone={INK} fill={PAPER} />
+      <Head1 x={470} y={56} k={1.05} tone={INK} fill={PAPER} />
       {/* the map in the mind */}
       <line x1={540} y1={130} x2={680} y2={130} stroke={RULE2} strokeWidth={1} />
       <line x1={610} y1={78} x2={610} y2={186} stroke={RULE2} strokeWidth={1} />
@@ -1217,11 +1060,11 @@ export function PerceptualMap() {
     <Frame height={404} label="A perceptual positioning map. Two buying dimensions cross at the centre. A brand circle sits in the upper right; competing products are grey circles of different sizes. A key explains that each circle's position is the brand's perceived positioning, and its size is relative market share.">
       <Schematic x={792} y={18} />
       <line x1={60} y1={210} x2={560} y2={210} stroke={INK} strokeWidth={1.5} />
-      <path d={head.right(562, 210)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <path d={head.left(58, 210)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(562, 210)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.left(58, 210)} fill="none" stroke={INK} strokeWidth={1.5} />
       <line x1={310} y1={34} x2={310} y2={388} stroke={INK} strokeWidth={1.5} />
-      <path d={head.up(310, 32)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <path d={head.down(310, 390)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.up(310, 32)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.down(310, 390)} fill="none" stroke={INK} strokeWidth={1.5} />
       <Key x={322} y={40} fill={INK} size={9.5}>
         BUYING DIMENSION 2
       </Key>
@@ -1318,7 +1161,7 @@ export function DifferenceSieve() {
         );
       })}
       <line x1={428} y1={bandY(7)} x2={466} y2={bandY(7)} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.right(468, bandY(7))} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(468, bandY(7))} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <Key x={478} y={bandY(7) + 4} fill={SIGNAL} size={10.5}>
         PROMOTE
       </Key>
@@ -1435,7 +1278,7 @@ export function EstablishMaintain() {
       <Schematic x={792} y={18} />
       <line x1={60} y1={30} x2={60} y2={190} stroke={INK3} strokeWidth={1.25} />
       <line x1={60} y1={190} x2={770} y2={190} stroke={INK3} strokeWidth={1.25} />
-      <path d={head.right(772, 190)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <path d={head2.right(772, 190)} fill="none" stroke={INK3} strokeWidth={1.25} />
       <Key x={70} y={30} fill={INK3} size={9.5}>
         POSITION
       </Key>
@@ -1483,7 +1326,7 @@ export function EstablishMaintain() {
 export function PhonesInMind() {
   return (
     <Frame height={262} label="A consumer in profile looks at two smartphones: a popular brand and its main competitor. Above the first, a question: what is its value proposition? Between them, a double arrow asks how it differentiates itself.">
-      <Head x={30} y={40} k={0.9} faceRight tone={INK} fill={PAPER} />
+      <Head1 x={30} y={40} k={0.9} faceRight tone={INK} fill={PAPER} />
       <path d="M196 144 L420 110 M196 144 L620 110" fill="none" stroke={INK3} strokeWidth={1} strokeDasharray="4 5" />
       <Key x={110} y={254} anchor="middle" fill={INK} size={9.5}>
         IN THE MINDS OF CONSUMERS
@@ -1492,7 +1335,7 @@ export function PhonesInMind() {
       <Key x={420} y={34} anchor="middle" fill={SIGNAL} size={10}>
         VALUE PROPOSITION?
       </Key>
-      <Phone x={385} y={52} w={70} h={130} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Phone1 x={385} y={52} w={70} h={130} tone={SIGNAL} fill={SIGNAL_TINT} />
       <Display x={420} y={130} anchor="middle" fill={SIGNAL} size={30}>
         ?
       </Display>
@@ -1503,7 +1346,7 @@ export function PhonesInMind() {
         SMARTPHONE BRAND
       </Key>
 
-      <Phone x={585} y={52} w={70} h={130} tone={INK3} />
+      <Phone1 x={585} y={52} w={70} h={130} tone={INK3} />
       <Key x={620} y={208} anchor="middle" fill={INK3} size={9.5}>
         MAIN
       </Key>
@@ -1512,8 +1355,8 @@ export function PhonesInMind() {
       </Key>
 
       <line x1={470} y1={117} x2={570} y2={117} stroke={INK} strokeWidth={1.5} />
-      <path d={head.right(572, 117)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <path d={head.left(468, 117)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(572, 117)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.left(468, 117)} fill="none" stroke={INK} strokeWidth={1.5} />
       <Note x={520} y={104} anchor="middle" size={12} italic>
         differentiates
       </Note>
@@ -1524,14 +1367,6 @@ export function PhonesInMind() {
 /* ==========================================================================
    Conclusion glyphs — each echoes a plate already seen
    ========================================================================== */
-
-const glyphProps = {
-  width: 64,
-  height: 40,
-  viewBox: "0 0 64 40",
-  fill: "none",
-  "aria-hidden": true,
-} as const;
 
 export function GlyphSegment() {
   return (

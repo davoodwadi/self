@@ -22,113 +22,29 @@
 
 import React from "react";
 import {
-  Key,
-  Note,
+  COUNTER,
+  COUNTER_TINT,
   Display,
   Frame,
-  Schematic,
+  glyphProps,
+  head2,
+  headAlong1,
   INK,
   INK3,
+  Key,
+  Note,
+  PAPER,
   RULE,
   RULE2,
+  Schematic,
   SIGNAL,
-  COUNTER,
-  PAPER,
   SIGNAL_TINT,
-  COUNTER_TINT,
-} from "../week1/visuals";
-
-/** Open chevron arrowhead pointing along (dx, dy), tip at (x, y). */
-function headAlong(x: number, y: number, dx: number, dy: number, s = 8) {
-  const len = Math.hypot(dx, dy) || 1;
-  const ux = dx / len;
-  const uy = dy / len;
-  const bx = x - ux * s;
-  const by = y - uy * s;
-  const px = -uy * (s * 0.62);
-  const py = ux * (s * 0.62);
-  return `M${(bx + px).toFixed(2)} ${(by + py).toFixed(2)}L${x.toFixed(2)} ${y.toFixed(2)}L${(bx - px).toFixed(2)} ${(by - py).toFixed(2)}`;
-}
-
-const head = {
-  right: (x: number, y: number) => headAlong(x, y, 1, 0),
-  left: (x: number, y: number) => headAlong(x, y, -1, 0),
-  down: (x: number, y: number) => headAlong(x, y, 0, 1),
-  up: (x: number, y: number) => headAlong(x, y, 0, -1),
-};
-
-/** A person glyph standing on (x, y). k scales it; 1 is 34 units tall. */
-function Person({
-  x,
-  y,
-  k = 1,
-  stroke = INK,
-  fill = PAPER,
-  width = 1.5,
-  dashed = false,
-}: {
-  x: number;
-  y: number;
-  k?: number;
-  stroke?: string;
-  fill?: string;
-  width?: number;
-  dashed?: boolean;
-}) {
-  const w = 10 * k;
-  const top = y - 21 * k;
-  const shoulder = y - 12 * k;
-  const dash = dashed ? "3 3" : undefined;
-  return (
-    <g>
-      <circle cx={x} cy={y - 28 * k} r={6 * k} fill={fill} stroke={stroke} strokeWidth={width} strokeDasharray={dash} />
-      <path
-        d={`M${x - w} ${y}V${shoulder}Q${x - w} ${top} ${x} ${top}Q${x + w} ${top} ${x + w} ${shoulder}V${y}Z`}
-        fill={fill}
-        stroke={stroke}
-        strokeWidth={width}
-        strokeLinejoin="round"
-        strokeDasharray={dash}
-      />
-    </g>
-  );
-}
-
-/** A gear of radius r centred on (x, y). */
-function Gear({ x, y, r, stroke = INK, width = 1.5 }: { x: number; y: number; r: number; stroke?: string; width?: number }) {
-  const teeth = r > 10 ? 8 : 6;
-  return (
-    <g>
-      <circle cx={x} cy={y} r={r} fill={PAPER} stroke={stroke} strokeWidth={width} />
-      <circle cx={x} cy={y} r={r * 0.35} fill="none" stroke={stroke} strokeWidth={width} />
-      {Array.from({ length: teeth }, (_, i) => (
-        <rect
-          key={i}
-          x={x - r * 0.16}
-          y={y - r - r * 0.34}
-          width={r * 0.32}
-          height={r * 0.36}
-          fill={stroke}
-          transform={`rotate(${(360 / teeth) * i} ${x} ${y})`}
-        />
-      ))}
-    </g>
-  );
-}
-
-/** A small factory: box with a sawtooth roof, centred on x, standing on y. */
-function Factory({ x, y, w = 56, h = 36, stroke = INK, fill = PAPER }: { x: number; y: number; w?: number; h?: number; stroke?: string; fill?: string }) {
-  const left = x - w / 2;
-  const step = w / 3;
-  const top = y - h;
-  const roof = Array.from({ length: 3 }, (_, i) => `L${left + step * i} ${top - 12}L${left + step * (i + 1)} ${top}`).join("");
-  return (
-    <g>
-      <path d={`M${left} ${top}${roof}Z`} fill={fill} stroke={stroke} strokeWidth={1.5} strokeLinejoin="round" />
-      <rect x={left} y={top} width={w} height={h} fill={fill} stroke={stroke} strokeWidth={1.5} />
-    </g>
-  );
-}
+} from "../_visuals/broadsheet";
+import {
+  Factory1,
+  Gear1,
+  Person2,
+} from "../_visuals/objects";
 
 /* ==========================================================================
    1 · FORKED FLOW — what organizations do with what they buy
@@ -142,7 +58,7 @@ export function TwoUses() {
         SELLER
       </Key>
       <line x1={184} y1={120} x2={276} y2={120} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.right(278, 120)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(278, 120)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <Note x={230} y={160} anchor="middle" size={11.5} italic>
         products and services
       </Note>
@@ -154,10 +70,10 @@ export function TwoUses() {
 
       {/* produce other goods */}
       <path d="M444 120 C500 120 510 64 562 64" fill="none" stroke={INK} strokeWidth={1.5} />
-      <path d={head.right(564, 64)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <Factory x={610} y={84} w={80} h={40} />
+      <path d={head2.right(564, 64)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <Factory1 x={610} y={84} w={80} h={40} />
       <line x1={654} y1={64} x2={690} y2={64} stroke={INK} strokeWidth={1.5} />
-      <path d={head.right(692, 64)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(692, 64)} fill="none" stroke={INK} strokeWidth={1.5} />
       {[698, 724, 750].map((x) => (
         <rect key={x} x={x} y={53} width={22} height={22} fill={PAPER} stroke={INK} strokeWidth={1.25} />
       ))}
@@ -167,9 +83,9 @@ export function TwoUses() {
 
       {/* their own operations */}
       <path d="M444 120 C500 120 510 176 584 176" fill="none" stroke={COUNTER} strokeWidth={1.5} />
-      <path d={head.right(586, 176)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
-      <Gear x={612} y={176} r={16} stroke={COUNTER} />
-      <Gear x={646} y={194} r={10} stroke={COUNTER} />
+      <path d={head2.right(586, 176)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <Gear1 x={612} y={176} r={16} stroke={COUNTER} />
+      <Gear1 x={646} y={194} r={10} stroke={COUNTER} />
       <Key x={620} y={230} anchor="middle" fill={COUNTER} size={10}>
         THEIR OWN OPERATIONS
       </Key>
@@ -226,9 +142,9 @@ export function MarketSplitLane() {
       <Key x={460} y={80} anchor="middle" fill={COUNTER} size={10}>
         CONSUMER DEMAND
       </Key>
-      <Person x={460} y={138} k={1.3} stroke={COUNTER} />
+      <Person2 x={460} y={138} k={1.3} stroke={COUNTER} />
       <line x1={460} y1={142} x2={460} y2={196} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.down(460, 198)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.down(460, 198)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <Note x={474} y={183} size={11.5} italic>
         comes from consumer demand
       </Note>
@@ -259,7 +175,7 @@ export function SignOffSheet() {
         B2C PURCHASE
       </Key>
       <line x1={110} y1={230} x2={230} y2={230} stroke={RULE} strokeWidth={1} />
-      <Person x={170} y={230} k={1.8} />
+      <Person2 x={170} y={230} k={1.8} />
 
       <line x1={340} y1={30} x2={340} y2={280} stroke={RULE} strokeWidth={1} />
 
@@ -276,7 +192,7 @@ export function SignOffSheet() {
         const signed = i < 4;
         return (
           <g key={r}>
-            <Person x={428} y={r + 10} k={0.6} stroke={INK3} width={1.25} />
+            <Person2 x={428} y={r + 10} k={0.6} stroke={INK3} width={1.25} />
             <line x1={450} y1={r + 8} x2={620} y2={r + 8} stroke={RULE2} strokeWidth={1.25} />
             {signed ? (
               <path d={`M458 ${r + 4} c 10 -12 16 10 26 -2 s 14 8 24 -4 s 12 6 30 0`} fill="none" stroke={INK} strokeWidth={1.25} />
@@ -418,7 +334,7 @@ export function EvCascade() {
             {next ? (
               <>
                 <path d={`M${cx} ${y + h} V${y + 52 + h / 2} H${x + 186}`} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-                <path d={head.right(x + 188, y + 52 + h / 2)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+                <path d={head2.right(x + 188, y + 52 + h / 2)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
               </>
             ) : null}
             <rect x={x} y={y} width={w} height={h} fill={i === 0 ? COUNTER_TINT : PAPER} stroke={t.tone} strokeWidth={1.5} />
@@ -483,7 +399,7 @@ export function BuyingCenterOrg() {
             return (
               <g key={o}>
                 <line x1={d.c} y1={124} x2={d.c + o} y2={170} stroke={RULE2} strokeWidth={1} />
-                <Person x={d.c + o} y={206} k={0.9} stroke={on ? SIGNAL : INK3} fill={on ? SIGNAL_TINT : PAPER} />
+                <Person2 x={d.c + o} y={206} k={0.9} stroke={on ? SIGNAL : INK3} fill={on ? SIGNAL_TINT : PAPER} />
                 {on ? (
                   <line
                     x1={d.c + o}
@@ -516,7 +432,7 @@ export function BuyingCenterOrg() {
 type RoleIcon = "gear" | "ruler" | "contract" | "check" | "gate";
 
 function RoleGlyph({ icon, x, y, tone }: { icon: RoleIcon; x: number; y: number; tone: string }) {
-  if (icon === "gear") return <Gear x={x} y={y} r={7} stroke={tone} width={1.5} />;
+  if (icon === "gear") return <Gear1 x={x} y={y} r={7} stroke={tone} width={1.5} />;
   if (icon === "ruler")
     return (
       <g>
@@ -628,7 +544,7 @@ export function RadiatingRoles({ phase }: { phase: "first" | "second" }) {
 export function RoleMapping() {
   return (
     <Frame height={210} label="Left: one person linked to two roles, decider and buyer. Right: three people linked to the same role, influencer.">
-      <Person x={110} y={168} k={1.8} />
+      <Person2 x={110} y={168} k={1.8} />
       <line x1={132} y1={138} x2={218} y2={84} stroke={INK3} strokeWidth={1.25} />
       <line x1={132} y1={138} x2={218} y2={136} stroke={INK3} strokeWidth={1.25} />
       <rect x={220} y={70} width={130} height={28} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
@@ -647,7 +563,7 @@ export function RoleMapping() {
 
       {[70, 120, 170].map((feet) => (
         <g key={feet}>
-          <Person x={480} y={feet} k={1} />
+          <Person2 x={480} y={feet} k={1} />
           <line x1={496} y1={feet - 17} x2={598} y2={120} stroke={INK3} strokeWidth={1.25} />
         </g>
       ))}
@@ -683,19 +599,19 @@ export function BuyingSituations() {
             <Key x={cx} y={40} anchor="middle" fill={tone} size={11}>
               {p.name}
             </Key>
-            <Person x={cx - 70} y={150} k={1.2} stroke={tone} />
+            <Person2 x={cx - 70} y={150} k={1.2} stroke={tone} />
             {i < 2 ? (
               <>
-                <Factory x={cx + 50} y={148} stroke={tone} />
+                <Factory1 x={cx + 50} y={148} stroke={tone} />
                 <path d={`M${cx - 52} 112 Q${cx - 10} 70 ${cx + 16} 106`} fill="none" stroke={tone} strokeWidth={1.5} />
-                <path d={headAlong(cx + 18, 108, 26, 36)} fill="none" stroke={tone} strokeWidth={1.5} />
+                <path d={headAlong1(cx + 18, 108, 26, 36)} fill="none" stroke={tone} strokeWidth={1.5} />
                 <path d={`M${cx + 18} 156 Q${cx - 10} 196 ${cx - 50} 158`} fill="none" stroke={tone} strokeWidth={1.5} />
-                <path d={headAlong(cx - 52, 156, -40, -38)} fill="none" stroke={tone} strokeWidth={1.5} />
+                <path d={headAlong1(cx - 52, 156, -40, -38)} fill="none" stroke={tone} strokeWidth={1.5} />
               </>
             ) : (
               <>
                 <line x1={cx - 44} y1={132} x2={cx + 14} y2={132} stroke={tone} strokeWidth={1.5} />
-                <path d={head.right(cx + 16, 132)} fill="none" stroke={tone} strokeWidth={1.5} />
+                <path d={head2.right(cx + 16, 132)} fill="none" stroke={tone} strokeWidth={1.5} />
                 <rect x={cx + 22} y={112} width={56} height={40} fill={SIGNAL_TINT} stroke={tone} strokeWidth={1.5} strokeDasharray="4 4" />
                 <Display x={cx + 50} y={141} anchor="middle" fill={tone} size={22}>
                   ?
@@ -793,7 +709,7 @@ export function RelationshipRope() {
       {strands.map((s) => (
         <path key={s.i} d={s.d} fill="none" stroke={s.i === 0 ? INK : SIGNAL} strokeWidth={1.5} />
       ))}
-      <path d={head.right(756, 118)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+      <path d={head2.right(756, 118)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
       {strands.map((s) => (
         <circle key={`d${s.i}`} cx={s.x0} cy={s.y0} r={4.5} fill={s.i === 0 ? INK : PAPER} stroke={s.i === 0 ? INK : SIGNAL} strokeWidth={1.5} />
       ))}
@@ -848,7 +764,7 @@ export function LifetimeBracket() {
         SINGLE TRANSACTION
       </Key>
       <line x1={60} y1={base} x2={756} y2={base} stroke={INK3} strokeWidth={1.25} />
-      <path d={head.right(758, base)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <path d={head2.right(758, base)} fill="none" stroke={INK3} strokeWidth={1.25} />
       <Key x={756} y={212} anchor="end" fill={INK3} size={10}>
         TIME
       </Key>
@@ -866,7 +782,7 @@ export function StrategicPartners() {
       <circle cx={110} cy={50} r={24} fill={PAPER} stroke={INK3} strokeWidth={1.5} />
       <circle cx={290} cy={50} r={24} fill={PAPER} stroke={INK3} strokeWidth={1.5} />
       <line x1={136} y1={50} x2={262} y2={50} stroke={INK3} strokeWidth={1.25} />
-      <path d={head.right(264, 50)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <path d={head2.right(264, 50)} fill="none" stroke={INK3} strokeWidth={1.25} />
       <Key x={110} y={92} anchor="middle" fill={INK3} size={10}>
         SELLER
       </Key>
@@ -874,7 +790,7 @@ export function StrategicPartners() {
         CUSTOMER
       </Key>
       <line x1={200} y1={98} x2={200} y2={114} stroke={INK3} strokeWidth={1.25} />
-      <path d={head.down(200, 116)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <path d={head2.down(200, 116)} fill="none" stroke={INK3} strokeWidth={1.25} />
       <circle cx={172} cy={162} r={40} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
       <circle cx={228} cy={162} r={40} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
       <Key x={200} y={224} anchor="middle" fill={SIGNAL} size={10.5}>
@@ -944,7 +860,7 @@ export function KamCore() {
         const t = (deg * Math.PI) / 180;
         const x = cx + rx * Math.cos(t);
         const y = cy + ry * Math.sin(t);
-        return <path key={deg} d={headAlong(x, y, -rx * Math.sin(t), ry * Math.cos(t), 10)} fill="none" stroke={INK3} strokeWidth={1.75} />;
+        return <path key={deg} d={headAlong1(x, y, -rx * Math.sin(t), ry * Math.cos(t), 10)} fill="none" stroke={INK3} strokeWidth={1.75} />;
       })}
       {[
         [cx, cy - 60, cx, cy - ry + ph / 2],
@@ -1025,7 +941,7 @@ export function RetentionLoop() {
         const [x, y] = at(d);
         return <circle key={d} cx={x} cy={y} r={7} fill={SIGNAL} opacity={0.2 + i * 0.2} />;
       })}
-      <path d={headAlong(ax, ay, -150 * Math.sin(t40), 55 * Math.cos(t40), 10)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+      <path d={headAlong1(ax, ay, -150 * Math.sin(t40), 55 * Math.cos(t40), 10)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
       <Key x={cx} y={cy - 2} anchor="middle" fill={COUNTER} size={11}>
         RETENTION
       </Key>
@@ -1051,7 +967,7 @@ export function BarrierWall() {
       {[50, 80, 110].map((y) => (
         <g key={y}>
           <line x1={372} y1={y} x2={236} y2={y} stroke={INK3} strokeWidth={1.25} />
-          <path d={head.left(234, y)} fill="none" stroke={INK3} strokeWidth={1.25} />
+          <path d={head2.left(234, y)} fill="none" stroke={INK3} strokeWidth={1.25} />
         </g>
       ))}
       <Key x={304} y={146} anchor="middle" fill={INK3} size={9.5}>
@@ -1085,7 +1001,7 @@ export function JointInnovation() {
         JOINT INNOVATION
       </Key>
       <path d="M220 40 H260 V70 H300 V100 H340 V116" fill="none" stroke={COUNTER} strokeWidth={1.75} strokeLinejoin="round" />
-      <path d={head.down(340, 122)} fill="none" stroke={COUNTER} strokeWidth={1.75} />
+      <path d={head2.down(340, 122)} fill="none" stroke={COUNTER} strokeWidth={1.75} />
       <Key x={290} y={142} anchor="middle" fill={COUNTER} size={9.5}>
         COST REDUCTIONS
       </Key>
@@ -1137,14 +1053,6 @@ export function DependenceRisk() {
 /* ==========================================================================
    Conclusion glyphs — each echoes a plate already seen
    ========================================================================== */
-
-const glyphProps = {
-  width: 64,
-  height: 40,
-  viewBox: "0 0 64 40",
-  fill: "none",
-  "aria-hidden": true,
-} as const;
 
 export function GlyphSplitLane() {
   return (

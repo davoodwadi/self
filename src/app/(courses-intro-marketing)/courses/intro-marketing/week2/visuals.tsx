@@ -19,62 +19,34 @@
 
 import React from "react";
 import {
+  COUNTER,
+  COUNTER_TINT,
+  Display,
+  Frame,
+  head1,
+  headAlong1,
   INK,
   INK2,
   INK3,
-  RULE,
-  RULE2,
-  SIGNAL,
-  COUNTER,
-  PAPER,
-  PAPER2,
-  SIGNAL_TINT,
-  COUNTER_TINT,
   Key,
   Note,
-  Display,
-  Frame,
+  PAPER,
+  PAPER2,
+  RULE,
+  RULE2,
   Schematic,
-} from "../week1/visuals";
+  SIGNAL,
+  SIGNAL_TINT,
+} from "../_visuals/broadsheet";
+import {
+  Person1,
+} from "../_visuals/objects";
 
 const AFFIRM = "var(--affirm)";
 const AFFIRM_TINT = "rgba(46, 90, 43, 0.1)";
 const INK_TINT = "rgba(23, 22, 15, 0.06)";
 
-/** Open chevron arrowheads whose tip sits at (x, y). */
-const head = {
-  right: (x: number, y: number) => `M${x - 8} ${y - 5}L${x} ${y}L${x - 8} ${y + 5}`,
-  left: (x: number, y: number) => `M${x + 8} ${y - 5}L${x} ${y}L${x + 8} ${y + 5}`,
-  down: (x: number, y: number) => `M${x - 5} ${y - 8}L${x} ${y}L${x + 5} ${y - 8}`,
-  up: (x: number, y: number) => `M${x - 5} ${y + 8}L${x} ${y}L${x + 5} ${y + 8}`,
-};
-
-/** Arrowhead pointing along the direction (dx, dy), tip at (x, y). */
-function headAlong(x: number, y: number, dx: number, dy: number, s = 8) {
-  const len = Math.hypot(dx, dy) || 1;
-  const ux = dx / len;
-  const uy = dy / len;
-  const bx = x - ux * s;
-  const by = y - uy * s;
-  const px = -uy * (s * 0.62);
-  const py = ux * (s * 0.62);
-  return `M${(bx + px).toFixed(2)} ${(by + py).toFixed(2)}L${x.toFixed(2)} ${y.toFixed(2)}L${(bx - px).toFixed(2)} ${(by - py).toFixed(2)}`;
-}
-
 const f2 = (n: number) => +n.toFixed(2);
-
-/** A small standing figure, feet at (x, y). */
-function Person({ x, y, s = 1, tone = INK }: { x: number; y: number; s?: number; tone?: string }) {
-  return (
-    <g>
-      <circle cx={x} cy={y - 26 * s} r={5 * s} fill={tone} />
-      <path
-        d={`M${x - 8 * s} ${y} L${x - 8 * s} ${y - 10 * s} Q${x - 8 * s} ${y - 18 * s} ${x} ${y - 18 * s} Q${x + 8 * s} ${y - 18 * s} ${x + 8 * s} ${y - 10 * s} L${x + 8 * s} ${y} Z`}
-        fill={tone}
-      />
-    </g>
-  );
-}
 
 /* ==========================================================================
    1 · NESTED RINGS — the environment around marketing
@@ -100,7 +72,7 @@ export function EnvironmentRings() {
     return (
       <g key={`${deg}-${inner.rx}`}>
         <line x1={f2(x0)} y1={f2(y0)} x2={f2(x1)} y2={f2(y1)} stroke={tone} strokeWidth={1.5} />
-        <path d={headAlong(x1, y1, x1 - x0, y1 - y0, 7)} fill="none" stroke={tone} strokeWidth={1.5} />
+        <path d={headAlong1(x1, y1, x1 - x0, y1 - y0, 7)} fill="none" stroke={tone} strokeWidth={1.5} />
       </g>
     );
   };
@@ -238,7 +210,7 @@ export function MicroActors() {
       ].map(([a, b]) => (
         <g key={a}>
           <line x1={a + 4} y1={row} x2={b - 4} y2={row} stroke={INK} strokeWidth={1.5} />
-          <path d={head.right(b - 3, row)} fill="none" stroke={INK} strokeWidth={1.5} />
+          <path d={head1.right(b - 3, row)} fill="none" stroke={INK} strokeWidth={1.5} />
         </g>
       ))}
     </Frame>
@@ -295,7 +267,7 @@ export function PestleHub() {
         return (
           <g key={i}>
             <line x1={f2(x0)} y1={f2(y0)} x2={f2(x1)} y2={f2(y1)} stroke={COUNTER} strokeWidth={1.5} />
-            <path d={headAlong(x1, y1, dx, dy, 8)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+            <path d={headAlong1(x1, y1, dx, dy, 8)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
             <circle cx={f2(nx)} cy={f2(ny)} r={node} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
             <Display x={f2(nx)} y={f2(ny + 11)} anchor="middle" size={32} fill={SIGNAL}>
               {p.letter}
@@ -360,7 +332,7 @@ export function PoliticalCorridor() {
       {[284, 306, 328].map((x) => (
         <g key={x}>
           <line x1={x} y1={top + 6} x2={x} y2={top + 30} stroke={SIGNAL} strokeWidth={2} />
-          <path d={head.down(x, top + 32)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+          <path d={head1.down(x, top + 32)} fill="none" stroke={SIGNAL} strokeWidth={2} />
         </g>
       ))}
       <Key x={306} y={top - 12} anchor="middle" fill={SIGNAL} size={12}>
@@ -374,7 +346,7 @@ export function PoliticalCorridor() {
         stroke={SIGNAL}
         strokeWidth={2.5}
       />
-      <path d={head.right(378, mid + 30)} fill="none" stroke={SIGNAL} strokeWidth={2.5} />
+      <path d={head1.right(378, mid + 30)} fill="none" stroke={SIGNAL} strokeWidth={2.5} />
       <circle cx={24} cy={mid} r={6} fill={SIGNAL} />
       <Key x={36} y={mid - 14} fill={SIGNAL} size={11}>
         A BUSINESS
@@ -485,7 +457,7 @@ export function SocialStrata() {
         return (
           <g key={i}>
             <path d={`M112 108 C128 108 128 ${ty} ${x - 8} ${ty}`} fill="none" stroke={INK} strokeWidth={1.25} />
-            <path d={head.right(x - 4, ty)} fill="none" stroke={INK} strokeWidth={1.25} />
+            <path d={head1.right(x - 4, ty)} fill="none" stroke={INK} strokeWidth={1.25} />
           </g>
         );
       })}
@@ -588,7 +560,7 @@ export function LegislationCanopy() {
 
       {/* consumers */}
       {[-24, 0, 24].map((d) => (
-        <Person key={d} x={cols[1] + d} y={ground} s={d === 0 ? 1.2 : 1} tone={COUNTER} />
+        <Person1 key={d} x={cols[1] + d} y={ground} s={d === 0 ? 1.2 : 1} tone={COUNTER} />
       ))}
 
       {/* society */}
@@ -662,14 +634,14 @@ export function ResourceExchange() {
 
       {/* needed as inputs */}
       <line x1={leftC + 66} y1={92} x2={rightC - 58} y2={92} stroke={COUNTER} strokeWidth={2} />
-      <path d={head.right(rightC - 56, 92)} fill="none" stroke={COUNTER} strokeWidth={2} />
+      <path d={head1.right(rightC - 56, 92)} fill="none" stroke={COUNTER} strokeWidth={2} />
       <Key x={200} y={80} anchor="middle" fill={COUNTER} size={10}>
         NEEDED AS INPUTS
       </Key>
 
       {/* affected by */}
       <line x1={leftC + 68} y1={140} x2={rightC - 58} y2={140} stroke={SIGNAL} strokeWidth={2} />
-      <path d={head.left(leftC + 66, 140)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+      <path d={head1.left(leftC + 66, 140)} fill="none" stroke={SIGNAL} strokeWidth={2} />
       <Key x={200} y={162} anchor="middle" fill={SIGNAL} size={10}>
         AFFECTED BY
       </Key>
@@ -822,7 +794,7 @@ export function AbsorbOrPass() {
         {pass ? (
           <>
             <line x1={x + w + 12} y1={base - price - 4} x2={x + w + 12} y2={priceY + 8} stroke={COUNTER} strokeWidth={1.5} />
-            <path d={head.up(x + w + 12, priceY + 6)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+            <path d={head1.up(x + w + 12, priceY + 6)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
           </>
         ) : null}
       </g>
@@ -993,7 +965,7 @@ export function PressureOverTime() {
 
       <line x1={x0} y1={base} x2={x1} y2={base} stroke={RULE2} strokeWidth={1} />
       <line x1={x0} y1={290} x2={x1 - 6} y2={290} stroke={INK3} strokeWidth={1} />
-      <path d={head.right(x1, 290)} fill="none" stroke={INK3} strokeWidth={1} />
+      <path d={head1.right(x1, 290)} fill="none" stroke={INK3} strokeWidth={1} />
       <Key x={x1} y={310} anchor="end" fill={INK3} size={9.5}>
         TIME
       </Key>
@@ -1122,7 +1094,7 @@ export function GenerationsBand() {
       <Key x={x0} y={40} fill={INK} size={11}>
         THE PRESENT
       </Key>
-      <Person x={x0 + 14} y={86} tone={INK} />
+      <Person1 x={x0 + 14} y={86} tone={INK} />
       <rect x={x0 + 40} y={60} width={30} height={26} fill={PAPER} stroke={INK} strokeWidth={1.5} />
       <path d={`M${x0 + 36} 62 L${x0 + 55} 48 L${x0 + 74} 62`} fill="none" stroke={INK} strokeWidth={1.5} />
       <Note x={x0} y={206} size={13} fill={INK2}>
@@ -1134,12 +1106,12 @@ export function GenerationsBand() {
         FUTURE GENERATIONS
       </Key>
       {[0, 1, 2, 3].map((i) => (
-        <Person key={i} x={x1 - 14 - i * 22} y={86} s={i % 2 === 0 ? 1 : 0.8} tone={COUNTER} />
+        <Person1 key={i} x={x1 - 14 - i * 22} y={86} s={i % 2 === 0 ? 1 : 0.8} tone={COUNTER} />
       ))}
 
       {/* time */}
       <line x1={x0} y1={244} x2={x1 - 6} y2={244} stroke={INK3} strokeWidth={1} />
-      <path d={head.right(x1, 244)} fill="none" stroke={INK3} strokeWidth={1} />
+      <path d={head1.right(x1, 244)} fill="none" stroke={INK3} strokeWidth={1} />
       {[0.25, 0.5, 0.75].map((t) => (
         <line key={t} x1={x0 + (x1 - x0) * t} y1={240} x2={x0 + (x1 - x0) * t} y2={248} stroke={INK3} strokeWidth={1} />
       ))}

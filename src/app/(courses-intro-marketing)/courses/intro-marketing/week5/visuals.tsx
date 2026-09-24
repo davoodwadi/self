@@ -21,87 +21,31 @@
 
 import React from "react";
 import {
-  Key,
-  Note,
+  COUNTER,
+  COUNTER_TINT,
   Display,
   Frame,
-  Schematic,
+  glyphProps,
+  hash2,
+  head2,
+  headAlong1,
   INK,
   INK3,
-  RULE,
-  RULE2,
-  SIGNAL,
-  COUNTER,
+  Key,
+  Note,
   PAPER,
   PAPER2,
+  r2,
+  RULE,
+  RULE2,
+  Schematic,
+  SIGNAL,
   SIGNAL_TINT,
-  COUNTER_TINT,
-} from "../week1/visuals";
-
-/** Open chevron arrowhead pointing along (dx, dy), tip at (x, y). */
-function headAlong(x: number, y: number, dx: number, dy: number, s = 8) {
-  const len = Math.hypot(dx, dy) || 1;
-  const ux = dx / len;
-  const uy = dy / len;
-  const bx = x - ux * s;
-  const by = y - uy * s;
-  const px = -uy * (s * 0.62);
-  const py = ux * (s * 0.62);
-  return `M${(bx + px).toFixed(2)} ${(by + py).toFixed(2)}L${x.toFixed(2)} ${y.toFixed(2)}L${(bx - px).toFixed(2)} ${(by - py).toFixed(2)}`;
-}
-
-const head = {
-  right: (x: number, y: number) => headAlong(x, y, 1, 0),
-  left: (x: number, y: number) => headAlong(x, y, -1, 0),
-  down: (x: number, y: number) => headAlong(x, y, 0, 1),
-  up: (x: number, y: number) => headAlong(x, y, 0, -1),
-};
-
-/**
- * Deterministic 0–1 hash, so scattered marks match on server and client.
- * Rounded to four places: Node and the browser disagree on Math.sin in the
- * last few digits, which the big multiplier would push into the attributes.
- */
-const hash = (n: number) => {
-  const v = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
-  return Math.round((v - Math.floor(v)) * 1e4) / 1e4;
-};
-
-/** Round a computed coordinate, for the same server/client reason. */
-const r2 = (n: number) => Math.round(n * 100) / 100;
-
-/** A person glyph standing on (x, y). k scales it; 1 is 34 units tall. */
-function Person({
-  x,
-  y,
-  k = 1,
-  stroke = INK,
-  fill = PAPER,
-  width = 1.5,
-}: {
-  x: number;
-  y: number;
-  k?: number;
-  stroke?: string;
-  fill?: string;
-  width?: number;
-}) {
-  const w = 10 * k;
-  const top = y - 21 * k;
-  const shoulder = y - 12 * k;
-  return (
-    <g>
-      <circle cx={x} cy={y - 28 * k} r={6 * k} fill={fill} stroke={stroke} strokeWidth={width} />
-      <path
-        d={`M${x - w} ${y}V${shoulder}Q${x - w} ${top} ${x} ${top}Q${x + w} ${top} ${x + w} ${shoulder}V${y}Z`}
-        fill={fill}
-        stroke={stroke}
-        strokeWidth={width}
-        strokeLinejoin="round"
-      />
-    </g>
-  );
-}
+} from "../_visuals/broadsheet";
+import {
+  Coins1,
+  Person3,
+} from "../_visuals/objects";
 
 /** A clipboard with ticked rows, centred on x, top at y. */
 function Clipboard({ x, y, w = 80, h = 96, rows = 3, ticked = 2, tone = INK }: { x: number; y: number; w?: number; h?: number; rows?: number; ticked?: number; tone?: string }) {
@@ -124,17 +68,6 @@ function Clipboard({ x, y, w = 80, h = 96, rows = 3, ticked = 2, tone = INK }: {
   );
 }
 
-/** A stack of coins centred on x, bottom coin at y. */
-function Coins({ x, y, n = 4, rx = 13, tone = INK }: { x: number; y: number; n?: number; rx?: number; tone?: string }) {
-  return (
-    <g>
-      {Array.from({ length: n }, (_, i) => (
-        <ellipse key={i} cx={x} cy={y - i * 7} rx={rx} ry={4.5} fill={PAPER} stroke={tone} strokeWidth={1.25} />
-      ))}
-    </g>
-  );
-}
-
 /* ==========================================================================
    1 · BRIDGE — information connects people to the marketer
    ========================================================================== */
@@ -149,8 +82,8 @@ export function ResearchBridge() {
     <Frame height={240} label="Consumers, customers, and the public are connected to the marketer through information. The information passes through design, collection, and analysis, and the marketer uses it to identify and define opportunities and problems.">
       {groups.map((g) => (
         <g key={g.name}>
-          <Person x={60} y={g.y} stroke={COUNTER} />
-          <Person x={82} y={g.y} stroke={COUNTER} />
+          <Person3 x={60} y={g.y} stroke={COUNTER} />
+          <Person3 x={82} y={g.y} stroke={COUNTER} />
           <Key x={104} y={g.y - 10} fill={COUNTER} size={10}>
             {g.name}
           </Key>
@@ -174,9 +107,9 @@ export function ResearchBridge() {
         </Key>
       ))}
       <line x1={560} y1={132} x2={586} y2={132} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.right(588, 132)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(588, 132)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
 
-      <Person x={616} y={160} k={1.4} />
+      <Person3 x={616} y={160} k={1.4} />
       <Key x={616} y={186} anchor="middle" fill={INK} size={10}>
         MARKETER
       </Key>
@@ -278,7 +211,7 @@ export function ObjectiveFork() {
       <circle cx={433} cy={124} r={12} fill={PAPER} stroke={SIGNAL} strokeWidth={1.75} />
       <circle cx={497} cy={124} r={12} fill={SIGNAL} />
       <line x1={447} y1={124} x2={481} y2={124} stroke={SIGNAL} strokeWidth={1.75} />
-      <path d={head.right(483, 124)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+      <path d={head2.right(483, 124)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
       <Key x={465} y={188} anchor="middle" fill={SIGNAL} size={12.5}>
         CAUSAL
       </Key>
@@ -340,7 +273,7 @@ export function PlanSheet() {
       ].map(([x, y]) => (
         <g key={y}>
           <line x1={621} y1={140} x2={x} y2={y} stroke={INK} strokeWidth={1.5} />
-          <path d={headAlong(x, y, x - 621, y - 140)} fill="none" stroke={INK} strokeWidth={1.5} />
+          <path d={headAlong1(x, y, x - 621, y - 140)} fill="none" stroke={INK} strokeWidth={1.5} />
         </g>
       ))}
     </Frame>
@@ -368,7 +301,7 @@ export function CostValueBalance() {
         </g>
       ))}
 
-      <Coins x={80} y={148} n={4} rx={12} tone={INK} />
+      <Coins1 x={80} y={148} n={4} rx={12} tone={INK} />
       <path d="M320 116 L338 134 L320 152 L302 134 Z" fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
 
       <Key x={80} y={188} anchor="middle" fill={INK} size={9.5}>
@@ -422,13 +355,13 @@ export function ImplementInterpret() {
           {i < 2 ? (
             <>
               <line x1={c.x + 112} y1={84} x2={c.x + 136} y2={84} stroke={COUNTER} strokeWidth={1.5} />
-              <path d={head.right(c.x + 138, 84)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+              <path d={head2.right(c.x + 138, 84)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
             </>
           ) : null}
         </g>
       ))}
       <line x1={432} y1={84} x2={466} y2={84} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.right(468, 84)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(468, 84)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       {s4.map((c, i) => (
         <g key={c.a}>
           <rect x={c.x} y={62} width={130} height={44} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
@@ -441,7 +374,7 @@ export function ImplementInterpret() {
           {i === 0 ? (
             <>
               <line x1={602} y1={84} x2={626} y2={84} stroke={SIGNAL} strokeWidth={1.5} />
-              <path d={head.right(628, 84)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+              <path d={head2.right(628, 84)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
             </>
           ) : null}
         </g>
@@ -449,19 +382,19 @@ export function ImplementInterpret() {
 
       <line x1={40} y1={140} x2={760} y2={140} stroke={RULE} strokeWidth={1} />
 
-      <Person x={180} y={236} k={1.5} stroke={COUNTER} />
+      <Person3 x={180} y={236} k={1.5} stroke={COUNTER} />
       <Key x={180} y={262} anchor="middle" fill={COUNTER} size={10}>
         RESEARCHERS
       </Key>
-      <Person x={620} y={236} k={1.5} stroke={SIGNAL} />
+      <Person3 x={620} y={236} k={1.5} stroke={SIGNAL} />
       <Key x={620} y={262} anchor="middle" fill={SIGNAL} size={10}>
         MANAGERS
       </Key>
 
       <line x1={206} y1={214} x2={304} y2={214} stroke={INK} strokeWidth={1.5} />
-      <path d={head.right(306, 214)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(306, 214)} fill="none" stroke={INK} strokeWidth={1.5} />
       <line x1={594} y1={214} x2={496} y2={214} stroke={INK} strokeWidth={1.5} />
-      <path d={head.left(494, 214)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.left(494, 214)} fill="none" stroke={INK} strokeWidth={1.5} />
       <Note x={400} y={180} anchor="middle" size={12} italic>
         work together
       </Note>
@@ -492,7 +425,7 @@ export function SalesDropFork() {
       </Key>
 
       <path d="M312 178 C400 178 420 80 514 80" fill="none" stroke={INK3} strokeWidth={1.5} strokeDasharray="5 5" />
-      <path d={head.right(516, 80)} fill="none" stroke={INK3} strokeWidth={1.5} />
+      <path d={head2.right(516, 80)} fill="none" stroke={INK3} strokeWidth={1.5} />
       <Note x={642} y={48} anchor="middle" size={12} italic>
         rushing to launch
       </Note>
@@ -502,7 +435,7 @@ export function SalesDropFork() {
       </Key>
 
       <line x1={312} y1={178} x2={514} y2={178} stroke={SIGNAL} strokeWidth={1.75} />
-      <path d={head.right(516, 178)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+      <path d={head2.right(516, 178)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
       <rect x={522} y={154} width={240} height={48} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
       <Key x={642} y={174} anchor="middle" fill={SIGNAL} size={9.5}>
         EXPLORATORY RESEARCH
@@ -631,9 +564,9 @@ export function SecondarySplitLane() {
 
       {/* converge on the current problem */}
       <path d="M524 106 C580 106 584 152 614 156" fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={headAlong(616, 156.5, 1, 0.25)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={headAlong1(616, 156.5, 1, 0.25)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <path d="M524 222 C580 222 584 170 614 166" fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={headAlong(616, 165.5, 1, -0.25)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={headAlong1(616, 165.5, 1, -0.25)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <rect x={620} y={143} width={150} height={36} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
       <Key x={695} y={165} anchor="middle" fill={SIGNAL} size={10}>
         CURRENT PROBLEM
@@ -745,7 +678,7 @@ export function PrimaryDecisions() {
         AT HAND
       </Key>
       <line x1={194} y1={114} x2={256} y2={114} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.right(258, 114)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(258, 114)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
 
       <path d="M266 48 V40 H614 V48" fill="none" stroke={INK3} strokeWidth={1.25} />
       <Key x={440} y={30} anchor="middle" fill={INK3} size={10}>
@@ -782,7 +715,7 @@ export function PrimaryDecisions() {
       })}
 
       <line x1={614} y1={114} x2={658} y2={114} stroke={INK} strokeWidth={1.5} />
-      <path d={head.right(660, 114)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(660, 114)} fill="none" stroke={INK} strokeWidth={1.5} />
       <rect x={664} y={96} width={116} height={36} fill={PAPER} stroke={SIGNAL} strokeWidth={1.75} />
       <Key x={722} y={118} anchor="middle" fill={SIGNAL} size={10}>
         PRIMARY DATA
@@ -811,7 +744,7 @@ export function RelevantCostly() {
       <path d="M266 48 L294 48 L280 85 L294 122 L266 122 L280 85 Z" fill="none" stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
       <path d="M270 122 L290 122 L280 104 Z" fill={INK3} />
       <path d="M272 58 L288 58 L280 76 Z" fill={INK3} opacity={0.5} />
-      <Coins x={346} y={122} n={6} rx={16} tone={INK} />
+      <Coins1 x={346} y={122} n={6} rx={16} tone={INK} />
       <Key x={306} y={162} anchor="middle" fill={INK} size={9.5}>
         MORE TIME AND RESOURCES
       </Key>
@@ -833,15 +766,15 @@ export function ObservePlate() {
       {Array.from({ length: 9 }, (_, i) => {
         const row = Math.floor(i / 3);
         const x = 162 + (i % 3) * 58 + (row % 2) * 14;
-        const h = 18 + Math.round(hash(i) * 12);
+        const h = 18 + Math.round(hash2(i) * 12);
         const base = 92 + row * 40;
         return <rect key={i} x={x} y={base - h} width={28} height={h} fill="none" stroke={RULE2} strokeWidth={1.25} />;
       })}
       <line x1={120} y1={206} x2={344} y2={206} stroke={RULE} strokeWidth={1} />
       <line x1={86} y1={76} x2={194} y2={160} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 4" />
       <line x1={86} y1={76} x2={282} y2={160} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 4" />
-      <Person x={200} y={206} k={1.3} />
-      <Person x={288} y={206} k={1.3} />
+      <Person3 x={200} y={206} k={1.3} />
+      <Person3 x={288} y={206} k={1.3} />
       <path d="M32 70 Q58 46 84 70 Q58 94 32 70 Z" fill={PAPER} stroke={SIGNAL} strokeWidth={1.75} />
       <circle cx={58} cy={70} r={8} fill={SIGNAL} />
     </Frame>
@@ -892,7 +825,7 @@ export function ExperimentPlate() {
             [-20, 140],
             [20, 140],
           ].map(([dx, feet]) => (
-            <Person key={`${dx}-${feet}`} x={g.c + dx} y={feet} k={0.9} stroke={g.lit ? SIGNAL : INK} />
+            <Person3 key={`${dx}-${feet}`} x={g.c + dx} y={feet} k={0.9} stroke={g.lit ? SIGNAL : INK} />
           ))}
           <rect x={g.c - 14} y={g.lit ? 186 : 206} width={28} height={g.lit ? 40 : 20} fill={g.lit ? SIGNAL : PAPER} stroke={g.lit ? SIGNAL : INK3} strokeWidth={1.5} />
         </g>
@@ -920,7 +853,7 @@ export function NovelShelf() {
       </Key>
       {Array.from({ length: 10 }, (_, i) => {
         const x = 50 + i * 42;
-        const h = 82 + Math.round(hash(i + 7) * 22);
+        const h = 82 + Math.round(hash2(i + 7) * 22);
         return (
           <g key={i}>
             <rect x={x} y={180 - h} width={34} height={h} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
@@ -941,7 +874,7 @@ export function NovelShelf() {
       </Note>
 
       <line x1={526} y1={128} x2={626} y2={128} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.right(628, 128)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(628, 128)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <Key x={690} y={50} anchor="middle" fill={SIGNAL} size={10.5}>
         PRIMARY DATA
       </Key>
@@ -955,8 +888,8 @@ export function NovelShelf() {
    ========================================================================== */
 
 export function BigDataFork() {
-  const field = Array.from({ length: 420 }, (_, i) => [40 + hash(i) * 290, 48 + hash(i + 900) * 164] as const);
-  const more = Array.from({ length: 360 }, (_, i) => [488 + hash(i + 3000) * 264, 30 + hash(i + 5000) * 64] as const);
+  const field = Array.from({ length: 420 }, (_, i) => [40 + hash2(i) * 290, 48 + hash2(i + 900) * 164] as const);
+  const more = Array.from({ length: 360 }, (_, i) => [488 + hash2(i + 3000) * 264, 30 + hash2(i + 5000) * 64] as const);
   const pattern: [number, number][] = [
     [512, 196],
     [556, 186],
@@ -975,7 +908,7 @@ export function BigDataFork() {
       ))}
 
       <path d="M340 128 C400 128 410 62 474 62" fill="none" stroke={INK3} strokeWidth={1.5} strokeDasharray="5 5" />
-      <path d={head.right(476, 62)} fill="none" stroke={INK3} strokeWidth={1.5} />
+      <path d={head2.right(476, 62)} fill="none" stroke={INK3} strokeWidth={1.5} />
       <rect x={480} y={24} width={280} height={76} fill="none" stroke={RULE2} strokeWidth={1.25} strokeDasharray="4 4" />
       {more.map(([x, y], i) => (
         <circle key={i} cx={x} cy={y} r={1.3} fill={INK3} opacity={0.4} />
@@ -985,7 +918,7 @@ export function BigDataFork() {
       </Key>
 
       <path d="M340 128 C400 128 410 180 474 180" fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      <path d={head.right(476, 180)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+      <path d={head2.right(476, 180)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
       <rect x={480} y={146} width={280} height={66} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
       <path d={`M${pattern.map((p) => p.join(" ")).join("L")}`} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
       {pattern.map(([x, y]) => (
@@ -1025,7 +958,7 @@ export function CrmCycle() {
       {[-45, 45, 135, 225].map((deg) => {
         const t = (deg * Math.PI) / 180;
         const [x, y] = at(deg);
-        return <path key={deg} d={headAlong(x, y, -rx * Math.sin(t), ry * Math.cos(t), 10)} fill="none" stroke={INK3} strokeWidth={1.75} />;
+        return <path key={deg} d={headAlong1(x, y, -rx * Math.sin(t), ry * Math.cos(t), 10)} fill="none" stroke={INK3} strokeWidth={1.75} />;
       })}
       {[-60, -30, 30, 60, 120, 150, 210, 240].map((deg) => {
         const [x, y] = at(deg);
@@ -1044,7 +977,7 @@ export function CrmCycle() {
         <line key={`${x1}-${y1}`} x1={x2} y1={y2} x2={x1} y2={y1} stroke={INK} strokeWidth={1} strokeDasharray="3 4" />
       ))}
       <line x1={cx} y1={cy + 64} x2={cx} y2={cy + ry - ph / 2} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head.down(cx, cy + ry - ph / 2 - 1)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.down(cx, cy + ry - ph / 2 - 1)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
 
       <circle cx={cx} cy={cy} r={62} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
       {["DETAILED", "CUSTOMER", "INFORMATION"].map((w, i) => (
@@ -1076,7 +1009,7 @@ export function CrmCycle() {
 export function AnalyticsDig() {
   const lx = 260;
   const ly = 170;
-  const dots = Array.from({ length: 380 }, (_, i) => [40 + hash(i + 11000) * 430, 88 + hash(i + 13000) * 134] as const).filter(
+  const dots = Array.from({ length: 380 }, (_, i) => [40 + hash2(i + 11000) * 430, 88 + hash2(i + 13000) * 134] as const).filter(
     ([x, y]) => Math.hypot(x - lx, y - ly) > 40 && !(Math.abs(x - lx) < 5 && y < ly),
   );
   const pattern: [number, number][] = [
@@ -1110,11 +1043,11 @@ export function AnalyticsDig() {
       </Key>
 
       <line x1={488} y1={150} x2={538} y2={112} stroke={INK} strokeWidth={1.5} />
-      <path d={headAlong(540, 110.5, 50, -38)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={headAlong1(540, 110.5, 50, -38)} fill="none" stroke={INK} strokeWidth={1.5} />
       <line x1={488} y1={160} x2={536} y2={194} stroke={INK} strokeWidth={1.5} />
-      <path d={headAlong(538, 195.5, 48, 34)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={headAlong1(538, 195.5, 48, 34)} fill="none" stroke={INK} strokeWidth={1.5} />
 
-      <Person x={566} y={122} k={0.9} stroke={COUNTER} />
+      <Person3 x={566} y={122} k={0.9} stroke={COUNTER} />
       <Key x={590} y={110} fill={COUNTER} size={10}>
         CUSTOMER INSIGHTS
       </Key>
@@ -1133,7 +1066,7 @@ export function AnalyticsDig() {
    ========================================================================== */
 
 export function InterpretationChain() {
-  const dots = Array.from({ length: 64 }, (_, i) => [44 + hash(i + 21000) * 150, 104 + hash(i + 23000) * 96] as const);
+  const dots = Array.from({ length: 64 }, (_, i) => [44 + hash2(i + 21000) * 150, 104 + hash2(i + 23000) * 96] as const);
   return (
     <Frame height={250} label="Raw data on its own, sent straight across, is crossed out. Passed through a person, the human element of interpretation, it becomes customer insights: the foundation on which customer value and relationships are built.">
       <Key x={40} y={90} fill={INK3} size={10}>
@@ -1150,8 +1083,8 @@ export function InterpretationChain() {
       </Note>
 
       <line x1={206} y1={172} x2={262} y2={172} stroke={INK3} strokeWidth={1.5} />
-      <path d={head.right(264, 172)} fill="none" stroke={INK3} strokeWidth={1.5} />
-      <Person x={310} y={200} k={1.6} />
+      <path d={head2.right(264, 172)} fill="none" stroke={INK3} strokeWidth={1.5} />
+      <Person3 x={310} y={200} k={1.6} />
       <Key x={310} y={222} anchor="middle" fill={INK} size={9.5}>
         HUMAN ELEMENT
       </Key>
@@ -1160,7 +1093,7 @@ export function InterpretationChain() {
       </Key>
 
       <line x1={380} y1={206} x2={502} y2={206} stroke={SIGNAL} strokeWidth={1.75} />
-      <path d={head.right(504, 206)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+      <path d={head2.right(504, 206)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
       <Note x={440} y={194} anchor="middle" size={11.5} italic>
         fresh understandings
       </Note>
@@ -1225,14 +1158,6 @@ export function PrivacyLine() {
 /* ==========================================================================
    Conclusion glyphs — each echoes a plate already seen
    ========================================================================== */
-
-const glyphProps = {
-  width: 64,
-  height: 40,
-  viewBox: "0 0 64 40",
-  fill: "none",
-  "aria-hidden": true,
-} as const;
 
 export function GlyphAim() {
   return (

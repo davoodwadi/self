@@ -53,7 +53,20 @@ import {
   Bag,
   Box,
   Heart,
+  SketchArrow,
+  SpeechBubble,
 } from "../_visuals/sketch-cast";
+import {
+  Can4,
+  Car3,
+  Laptop2,
+  Perfume2,
+  Phone3,
+  Shelf2,
+  Suitcase2,
+  Tick2,
+  Watch2,
+} from "../_visuals/sketch-objects";
 
 
 /* ==========================================================================
@@ -193,19 +206,6 @@ export function SelfJudgement() {
   );
 }
 
-/** A small store shelf: one wooden plank on two uprights, standing on `gy`. */
-function Shelf({ x0, x1, y, gy, seed }: { x0: number; x1: number; y: number; gy: number; seed: number }) {
-  const plank: Pt[] = [[x0, y], [x1, y], [x1, y + 9], [x0, y + 9]];
-  return (
-    <g>
-      <InkLine pts={[[x0 + 10, y + 9], [x0 + 10, gy]]} seed={seed} width={1.2} />
-      <InkLine pts={[[x1 - 10, y + 9], [x1 - 10, gy]]} seed={seed + 1} width={1.2} />
-      <Wash pts={plank} seed={seed + 2} fill={SK.leather} opacity={0.6} />
-      <InkLine pts={plank} seed={seed + 3} closed />
-    </g>
-  );
-}
-
 /** One shelf, the familiar brand and a NEW box; the buyer has taken one. */
 function EsteemChoice({ pick, look, id, label, seed }: { pick: "brand" | "new"; look: Look; id: string; label: string; seed: number }) {
   const gy = 226;
@@ -220,7 +220,7 @@ function EsteemChoice({ pick, look, id, label, seed }: { pick: "brand" | "new"; 
     <SketchFrame id={id} width={400} height={250} label={label}>
       <Backwash cx={210} cy={134} rx={190} ry={112} seed={seed} />
       <Ground x0={24} x1={380} y={gy} seed={seed + 1} />
-      <Shelf x0={218} x1={382} y={sy} gy={gy} seed={seed + 4} />
+      <Shelf2 x0={218} x1={382} y={sy} gy={gy} seed={seed + 4} />
       {/* the product still on the shelf, and the empty slot the other left */}
       <Box x={slots[left]} bottom={sy} w={bw} h={bh} mark={left} seed={seed + 10} fill={left === "new" ? SK.sky : SK.camel} />
       <Box x={slots[pick]} bottom={sy} w={bw} h={bh} mark="none" pencil seed={seed + 14} />
@@ -637,7 +637,7 @@ export function Innovativeness() {
     >
       <Backwash cx={206} cy={128} rx={192} ry={106} seed={1001} />
       <Ground x0={18} x1={384} y={gy} seed={1004} />
-      <Shelf x0={318} x1={390} y={150} gy={gy} seed={1008} />
+      <Shelf2 x0={318} x1={390} y={150} gy={gy} seed={1008} />
       <Box x={356} bottom={150} w={38} h={48} mark="new" fill={SK.sky} seed={1012} />
       {queue.map((q, i) => (
         <Person key={q.x} x={q.x} y={gy} h={ph * 0.94} look={q.look} arms={["down", "down"]} seed={1020 + i * 80} />
@@ -645,29 +645,6 @@ export function Innovativeness() {
       <Person x={fx} y={gy} h={ph * 0.94} look={{ hair: "curly", hairTone: SK.charcoal, skin: SK.brown, skinOpacity: 0.55, wear: SK.camel }} arms={["hip", "reach"]} seed={1300} />
       <Box x={r2(hx + 12)} bottom={r2(hy + 6)} w={36} h={44} mark="new" fill={SK.sky} seed={1340} />
     </SketchFrame>
-  );
-}
-
-/** A car, side on; (x, y) is the middle of its wheelbase on the ground. */
-function Car({ x, y, s = 1, seed, fill = SK.leather }: { x: number; y: number; s?: number; seed: number; fill?: string }) {
-  const body = at(x, y, [[-60, -10], [-60, -28], [-44, -32], [-26, -52], [22, -52], [40, -32], [60, -28], [62, -10]], s);
-  const glass = at(x, y, [[-22, -34], [-16, -47], [16, -47], [30, -34]], s);
-  return (
-    <g>
-      <Wash pts={body} seed={seed} fill={fill} opacity={0.55} />
-      <Wash pts={glass} seed={seed + 1} fill={SK.sky} opacity={0.8} dx={1} dy={0} />
-      <InkLine pts={body} seed={seed + 2} closed />
-      <InkLine pts={glass} seed={seed + 3} closed width={1} />
-      {[-36, 38].map((wx, i) => {
-        const wheel = rp(blobPts(x + wx * s, y - 10 * s, 11 * s, 11 * s, seed + 4 + i, 12, 0.05));
-        return (
-          <g key={wx}>
-            <Wash pts={wheel} seed={seed + 6 + i} fill={SK.charcoal} opacity={0.7} dx={0.5} dy={0.5} />
-            <InkLine pts={wheel} seed={seed + 8 + i} closed width={1.2} />
-          </g>
-        );
-      })}
-    </g>
   );
 }
 
@@ -691,7 +668,7 @@ export function Materialism() {
     >
       <Backwash cx={206} cy={122} rx={190} ry={110} seed={1401} />
       <Ground x0={20} x1={384} y={gy} seed={1404} />
-      <Car x={296} y={gy} s={1.15} seed={1410} />
+      <Car3 x={296} y={gy} s={1.15} seed={1410} />
       {pile.map((b, i) => (
         <Box key={i} x={b.x} bottom={b.b} w={b.w} h={b.hh} fill={b.f} seed={1430 + i * 5} />
       ))}
@@ -861,20 +838,6 @@ export function Openness() {
   );
 }
 
-/** A teal tick, like the Receipt's: what is done or chosen. */
-function Tick({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
-  return (
-    <path
-      d={wobble(at(x, y, [[-7, -1], [-1, 6], [10, -9]], s), seed, 0.5, 5)}
-      fill="none"
-      stroke={SK.teal}
-      strokeWidth={2.6}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  );
-}
-
 /** Organization: every item on the list is done. */
 export function Conscientiousness() {
   const { w, h, gy, ph } = BIG;
@@ -906,7 +869,7 @@ export function Conscientiousness() {
           <g key={i}>
             <InkLine pts={sharp(box)} seed={1960 + i * 4} closed width={0.9} />
             <InkLine pts={rp([[bx + 36, y], [bx + (i % 2 ? 70 : 80), y]])} seed={1961 + i * 4} width={0.8} amp={0.4} />
-            <Tick x={bx + 23} y={y - 2} s={0.9} seed={1962 + i * 4} />
+            <Tick2 x={bx + 23} y={y - 2} s={0.9} seed={1962 + i * 4} />
           </g>
         );
       })}
@@ -914,31 +877,14 @@ export function Conscientiousness() {
   );
 }
 
-/** A speech bubble with a few lines of talk; the tail points at (tx, ty). */
+/** The shared speech bubble with a few lines of talk inside it. */
 function Speech({ x, y, w, h, tx, ty, seed, lines = 2 }: { x: number; y: number; w: number; h: number; tx: number; ty: number; seed: number; lines?: number }) {
   const l = x - w / 2;
   const r = x + w / 2;
   const t = y - h / 2;
-  const b = y + h / 2;
-  const side = tx < x ? -1 : 1;
-  const tb = x + side * w * 0.12;
-  const pts: Pt[] = rp([
-    [l + 8, t],
-    [r - 8, t],
-    [r, t + 8],
-    [r, b - 8],
-    [r - 8, b],
-    [tb + 7 * side, b],
-    [tx, ty],
-    [tb - 7 * side, b],
-    [l + 8, b],
-    [l, b - 8],
-    [l, t + 8],
-  ]);
   return (
     <g>
-      <Paper pts={pts} seed={seed} />
-      <InkLine pts={pts} seed={seed + 1} closed width={1.1} />
+      <SpeechBubble x={x} y={y} w={w} h={h} tx={tx} ty={ty} seed={seed} />
       {Array.from({ length: lines }, (_, i) => (
         <InkLine
           key={i}
@@ -1164,36 +1110,6 @@ function GreetingCard({ x, y, seed, s = 1 }: { x: number; y: number; seed: numbe
   );
 }
 
-/** A can; (x, y) is the middle of its base. `label` colours the band. */
-function Can({ x, y, w = 34, h = 50, label = SK.camel, seed, bolt = false }: { x: number; y: number; w?: number; h?: number; label?: string; seed: number; bolt?: boolean }) {
-  const top = y - h;
-  const hw = w / 2;
-  const body = at(x, 0, [[-hw, top + 3], [-hw, y - 3], [-hw * 0.5, y + 1], [hw * 0.5, y + 1], [hw, y - 3], [hw, top + 3]]);
-  const lid = rp(blobPts(x, top + 3, hw, 4, seed, 12, 0.02));
-  const band = at(x, 0, [[-hw, top + h * 0.2], [hw, top + h * 0.2], [hw, top + h * 0.84], [-hw, top + h * 0.84]]);
-  const rim = (yy: number, k: number) => (
-    <InkLine pts={at(x, 0, [[-hw, yy], [-hw * 0.5, yy + 2.5], [hw * 0.5, yy + 2.5], [hw, yy]])} seed={seed + k} width={0.8} />
-  );
-  return (
-    <g>
-      <Paper pts={[...body]} seed={seed + 9} />
-      <Wash pts={band} seed={seed + 1} fill={label} opacity={0.9} />
-      <InkLine pts={body} seed={seed + 2} width={1.2} />
-      <InkLine pts={lid} seed={seed + 3} closed width={1} />
-      {rim(top + 9, 6)}
-      {rim(y - 8, 7)}
-      {bolt ? (
-        <g>
-          <Wash pts={at(x, top + h * 0.52, [[2, -10], [-5, 1], [0, 1], [-3, 10], [6, -2], [1, -2], [4, -10]], w / 22)} seed={seed + 4} fill={SK.ochre} opacity={0.95} dx={0} dy={0} />
-          <InkLine pts={sharp(at(x, top + h * 0.52, [[2, -10], [-5, 1], [0, 1], [-3, 10], [6, -2], [1, -2], [4, -10]], w / 22))} seed={seed + 5} closed width={0.8} />
-        </g>
-      ) : (
-        <Paper pts={rp(blobPts(x, top + h * 0.52, hw * 0.55, h * 0.13, seed + 4, 10, 0.05))} seed={seed + 5} />
-      )}
-    </g>
-  );
-}
-
 /** Sincerity: down-to-earth and cheerful, with a greeting card and a soup can. */
 export function Sincerity() {
   const { w, h, gy, ph, px } = DIM;
@@ -1208,23 +1124,8 @@ export function Sincerity() {
       <Ground x0={20} x1={384} y={gy} seed={2804} />
       <BrandPerson x={px} y={gy} h={ph} look={{ hair: "curly", hairTone: SK.tan, skin: SK.skin, wear: SK.camel, legs: SK.tan }} arms={["hip", "wave"]} seed={2810} />
       <GreetingCard x={218} y={gy} s={1.45} seed={2850} />
-      <Can x={320} y={gy} w={52} h={76} label={SK.blush} seed={2860} />
+      <Can4 x={320} y={gy} w={52} h={76} label={SK.blush} seed={2860} />
     </SketchFrame>
-  );
-}
-
-/** A smartphone standing on (x, y). */
-function Phone({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
-  const body = sharp(at(x, y, [[-20, 0], [-20, -78], [20, -78], [20, 0]], s), true, 4);
-  const screen = at(x, y, [[-15, -8], [-15, -70], [15, -70], [15, -8]], s);
-  return (
-    <g>
-      <Wash pts={body} seed={seed} fill={SK.charcoal} opacity={0.65} />
-      <Wash pts={screen} seed={seed + 1} fill={SK.sky} opacity={0.85} dx={0} dy={0} />
-      <InkLine pts={body} seed={seed + 2} closed />
-      <InkLine pts={sharp(screen)} seed={seed + 3} closed width={0.8} />
-      <InkLine pts={at(x, y, [[-4, -74], [4, -74]], s)} seed={seed + 4} width={1.1} />
-    </g>
   );
 }
 
@@ -1241,8 +1142,8 @@ export function Excitement() {
       <Backwash cx={204} cy={112} rx={190} ry={98} seed={2901} />
       <Ground x0={20} x1={384} y={gy} seed={2904} />
       <BrandPerson x={px} y={gy} h={ph * 0.92} look={{ hair: "short", hairTone: SK.charcoal, skin: SK.tan, skinOpacity: 0.5, wear: SK.charcoal, legs: SK.sky, outfit: "jacket" }} arms={["up", "up"]} seed={2910} />
-      <Phone x={214} y={gy} s={1.05} seed={2950} />
-      <Can x={310} y={gy} w={40} h={86} label={SK.sky} bolt seed={2960} />
+      <Phone3 x={214} y={gy} s={1.05} seed={2950} />
+      <Can4 x={310} y={gy} w={40} h={86} label={SK.sky} bolt seed={2960} />
     </SketchFrame>
   );
 }
@@ -1257,24 +1158,6 @@ function Briefcase({ x, y, w = 34, seed }: { x: number; y: number; w?: number; s
       <Wash pts={body} seed={seed + 1} fill={SK.leather} opacity={0.7} />
       <InkLine pts={body} seed={seed + 2} closed />
       <InkLine pts={rp([[x - w / 2, t + w * 0.28], [x + w / 2, t + w * 0.28]])} seed={seed + 3} width={0.8} />
-    </g>
-  );
-}
-
-/** A laptop showing a search box; (x, y) is the middle of its base. */
-function Laptop({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
-  const lid = sharp(at(x, y, [[-32, -8], [-30, -58], [30, -58], [32, -8]], s));
-  const base = sharp(at(x, y, [[-40, 0], [-32, -8], [32, -8], [40, 0]], s));
-  const search = sharp(at(x, y, [[-20, -38], [20, -38], [20, -28], [-20, -28]], s));
-  return (
-    <g>
-      <Wash pts={lid} seed={seed} fill={SK.sky} opacity={0.6} />
-      <Wash pts={base} seed={seed + 1} fill={SK.charcoal} opacity={0.5} dx={0.5} dy={0.5} />
-      <InkLine pts={lid} seed={seed + 2} closed />
-      <InkLine pts={base} seed={seed + 3} closed width={1.1} />
-      <Paper pts={search} seed={seed + 4} />
-      <InkLine pts={search} seed={seed + 5} closed width={0.9} />
-      <InkLine pts={rp(blobPts(x + 14 * s, y - 33 * s, 2.6 * s, 2.6 * s, seed + 6, 8, 0.05))} seed={seed + 6} closed width={0.8} />
     </g>
   );
 }
@@ -1294,51 +1177,9 @@ export function Competence() {
       <Ground x0={20} x1={384} y={gy} seed={3004} />
       <BrandPerson x={px} y={gy} h={ph} look={{ hair: "short", hairTone: SK.brown, skin: SK.skin, wear: SK.charcoal, legs: SK.charcoal, outfit: "jacket" }} arms={["hip", "hold"]} seed={3010} />
       <Briefcase x={hx} y={hy} seed={3050} />
-      <Laptop x={186} y={gy} s={0.82} seed={3060} />
-      <Car x={306} y={gy} s={1} fill={SK.sky} seed={3070} />
+      <Laptop2 x={186} y={gy} s={0.82} seed={3060} />
+      <Car3 x={306} y={gy} s={1} fill={SK.sky} seed={3070} />
     </SketchFrame>
-  );
-}
-
-/** A perfume bottle standing on (x, y). */
-function Perfume({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
-  const glass = sharp(at(x, y, [[-22, 0], [-22, -40], [22, -40], [22, 0]], s), true, 3);
-  const neck = sharp(at(x, y, [[-6, -40], [-6, -48], [6, -48], [6, -40]], s));
-  const cap = sharp(at(x, y, [[-11, -48], [-11, -64], [11, -64], [11, -48]], s));
-  const label = sharp(at(x, y, [[-12, -14], [-12, -28], [12, -28], [12, -14]], s));
-  return (
-    <g>
-      <Wash pts={glass} seed={seed} fill={SK.sky} opacity={0.7} />
-      <Wash pts={cap} seed={seed + 1} fill={SK.charcoal} opacity={0.75} dx={0.5} dy={0.5} />
-      <InkLine pts={glass} seed={seed + 2} closed />
-      <InkLine pts={neck} seed={seed + 3} closed width={1} />
-      <InkLine pts={cap} seed={seed + 4} closed />
-      <Paper pts={label} seed={seed + 5} />
-      <InkLine pts={label} seed={seed + 6} closed width={0.8} />
-    </g>
-  );
-}
-
-/** A wristwatch standing upright; (x, y) is the foot of its strap. */
-function Watch({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
-  const cy = y - 38 * s;
-  const face = rp(blobPts(x, cy, 18 * s, 18 * s, seed, 16, 0.02));
-  const inner = rp(blobPts(x, cy, 13 * s, 13 * s, seed + 1, 14, 0.02));
-  const top = sharp(at(x, y, [[-10, -54], [-9, -76], [9, -76], [10, -54]], s));
-  const bot = sharp(at(x, y, [[-10, -22], [-9, 0], [9, 0], [10, -22]], s));
-  return (
-    <g>
-      <Wash pts={top} seed={seed + 2} fill={SK.leather} opacity={0.7} />
-      <Wash pts={bot} seed={seed + 3} fill={SK.leather} opacity={0.7} />
-      <InkLine pts={top} seed={seed + 4} closed width={1.1} />
-      <InkLine pts={bot} seed={seed + 5} closed width={1.1} />
-      <Wash pts={face} seed={seed + 6} fill={SK.ochre} opacity={0.7} dx={1} dy={0.5} />
-      <InkLine pts={face} seed={seed + 7} closed />
-      <Paper pts={inner} seed={seed + 8} />
-      <InkLine pts={inner} seed={seed + 9} closed width={0.8} />
-      <InkLine pts={rp([[x, cy], [x, cy - 9 * s]])} seed={seed + 10} width={1.1} />
-      <InkLine pts={rp([[x, cy], [x + 6 * s, cy + 3 * s]])} seed={seed + 11} width={1.1} />
-    </g>
   );
 }
 
@@ -1355,8 +1196,8 @@ export function Sophistication() {
       <Backwash cx={204} cy={112} rx={190} ry={98} seed={3101} />
       <Ground x0={20} x1={384} y={gy} seed={3104} />
       <BrandPerson x={px} y={gy} h={ph} look={{ hair: "bun", hairTone: SK.charcoal, skin: SK.camel, skinOpacity: 0.55, wear: SK.charcoal, outfit: "gown" }} arms={["hip", "down"]} seed={3110} />
-      <Perfume x={206} y={gy} s={1.2} seed={3150} />
-      <Watch x={314} y={gy} s={1.3} seed={3160} />
+      <Perfume2 x={206} y={gy} s={1.2} seed={3150} />
+      <Watch2 x={314} y={gy} s={1.3} seed={3160} />
     </SketchFrame>
   );
 }
@@ -1448,7 +1289,7 @@ export function FaceInObject() {
       id="sk-face-in-object"
       width={400}
       height={268}
-      label="A person looks at the front of a car. Its headlights read as eyes and its grille as a smile; the face they see, with brows and pupils, is sketched over the car in faint pencil."
+      label="A person looks at the front of a car. Its headlights read as eyes and its grille as a smile; the face they see, with brows, pupils and a smile, is inked over the car."
     >
       <Backwash cx={214} cy={140} rx={190} ry={120} seed={3301} />
       <Ground x0={20} x1={384} y={gy} seed={3304} />
@@ -1477,12 +1318,12 @@ export function FaceInObject() {
       <InkLine pts={grille} seed={3370} closed width={1.1} />
       <InkLine pts={at(cx, gy, [[-92, -32], [92, -32]])} seed={3371} width={1} />
 
-      {/* the face the viewer reads into it: still pencil */}
-      <PencilLine pts={at(cx, gy, [[-64, -112], [-50, -122], [-34, -116]])} seed={3380} width={1.3} />
-      <PencilLine pts={at(cx, gy, [[34, -116], [50, -122], [64, -112]])} seed={3381} width={1.3} />
-      <PencilLine pts={rp(blobPts(cx - 48, gy - 72, 6, 6, 3382, 8, 0.05))} seed={3382} closed width={1.2} dash="3 3" />
-      <PencilLine pts={rp(blobPts(cx + 56, gy - 72, 6, 6, 3383, 8, 0.05))} seed={3383} closed width={1.2} dash="3 3" />
-      <PencilLine pts={at(cx, gy, [[-50, -58], [-30, -38], [0, -34], [30, -38], [50, -58]])} seed={3384} width={1.3} />
+      {/* the face the viewer reads into it, inked like the car it lives on */}
+      <InkLine pts={at(cx, gy, [[-64, -112], [-50, -122], [-34, -116]])} seed={3380} width={1.2} />
+      <InkLine pts={at(cx, gy, [[34, -116], [50, -122], [64, -112]])} seed={3381} width={1.2} />
+      <Wash pts={rp(blobPts(cx - 48, gy - 72, 5, 5, 3382, 8, 0.05))} seed={3385} fill={SK.brown} opacity={0.9} dx={0.4} dy={0.3} />
+      <Wash pts={rp(blobPts(cx + 56, gy - 72, 5, 5, 3383, 8, 0.05))} seed={3386} fill={SK.brown} opacity={0.9} dx={0.4} dy={0.3} />
+      <InkLine pts={at(cx, gy, [[-50, -58], [-30, -38], [0, -34], [30, -38], [50, -58]])} seed={3384} width={1.2} />
     </SketchFrame>
   );
 }
@@ -1544,18 +1385,6 @@ export function Mascot() {
   );
 }
 
-/** A hand-drawn arrow from a to b, head at b. */
-function Arrow({ a, b, seed, width = 1.4 }: { a: Pt; b: Pt; seed: number; width?: number }) {
-  const ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
-  const hd = (da: number): Pt => [r2(b[0] - Math.cos(ang + da) * 11), r2(b[1] - Math.sin(ang + da) * 11)];
-  return (
-    <g>
-      <InkLine pts={rp([a, b])} seed={seed} width={width} />
-      <InkLine pts={[hd(0.45), rp([b])[0], hd(-0.45)]} seed={seed + 1} width={width} amp={0.3} />
-    </g>
-  );
-}
-
 /** A loyalty stamp card; (x, y) is its top-left corner. */
 function StampCard({ x, y, seed }: { x: number; y: number; seed: number }) {
   const card = sharp(rp([[x, y], [x + 70, y], [x + 70, y + 42], [x, y + 42]]), true, 2);
@@ -1604,7 +1433,7 @@ export function BrandPartner() {
         BRAND LOYALTY
       </SketchText>
 
-      <Arrow a={[352, 170]} b={[444, 170]} seed={3600} />
+      <SketchArrow pts={[[352, 170], [444, 170]]} seed={3600} width={1.4} head={11} />
 
       {/* the relationship: hand in hand with the brand as a person */}
       <Person x={570} y={gy} h={ph} look={SHOPPER} arms={["hip", "hold"]} seed={3610} />
@@ -1799,24 +1628,6 @@ function Cheers({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed:
   return <g>{[glass(-1, 0), glass(1, 1)]}</g>;
 }
 
-/** An upright suitcase with a tag; (x, y) is the middle of its base. */
-function Suitcase({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
-  const body = sharp(at(x, y, [[-14, -4], [-14, -38], [14, -38], [14, -4]], s), true, 2.5);
-  return (
-    <g>
-      <InkLine pts={at(x, y, [[-6, -38], [-6, -48], [6, -48], [6, -38]], s)} seed={seed} width={1.1} />
-      <Wash pts={body} seed={seed + 1} fill={SK.sky} opacity={0.6} />
-      <InkLine pts={body} seed={seed + 2} closed />
-      <InkLine pts={at(x, y, [[-5, -34], [-5, -8]], s)} seed={seed + 3} width={0.8} />
-      <InkLine pts={at(x, y, [[5, -34], [5, -8]], s)} seed={seed + 4} width={0.8} />
-      <Paper pts={sharp(at(x, y, [[14, -30], [24, -26], [22, -18], [13, -22]], s))} seed={seed + 5} />
-      <InkLine pts={sharp(at(x, y, [[14, -30], [24, -26], [22, -18], [13, -22]], s))} seed={seed + 6} closed width={0.8} />
-      <InkLine pts={rp(blobPts(x - 8 * s, y - 1 * s, 2.4 * s, 2.4 * s, seed + 7, 8, 0.05))} seed={seed + 7} closed width={1} />
-      <InkLine pts={rp(blobPts(x + 8 * s, y - 1 * s, 2.4 * s, 2.4 * s, seed + 8, 8, 0.05))} seed={seed + 8} closed width={1} />
-    </g>
-  );
-}
-
 /** A striped box of popcorn; (x, y) is the middle of its base. */
 function Popcorn({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const box = sharp(at(x, y, [[-15, -34], [15, -34], [11, 0], [-11, 0]], s));
@@ -1860,7 +1671,7 @@ export function Activities() {
       <Briefcase x={134} y={rows[0] - 16} w={34} seed={4120} />
       <Guitar x={134} y={rows[1] + 2} s={1.05} seed={4130} />
       <Cheers x={134} y={rows[2] - 12} s={1} seed={4140} />
-      <Suitcase x={132} y={rows[3] + 23} s={0.9} seed={4150} />
+      <Suitcase2 x={132} y={rows[3] + 23} s={0.9} seed={4150} />
       <Popcorn x={134} y={rows[4] + 22} s={0.9} seed={4160} />
       {rows.map((y, i) => (
         <g key={y}>
@@ -1882,7 +1693,7 @@ export function Interests() {
     { t: "HOME", fill: SK.sky, art: (cx, cy, sd) => <House x={cx} y={cy + 22} s={0.95} seed={sd} /> },
     { t: "JOB", fill: SK.earth, art: (cx, cy, sd) => <Briefcase x={cx} y={cy - 18} w={40} seed={sd} /> },
     { t: "COMMUNITY", fill: SK.sky, art: (cx, cy, sd) => <Skyline x={cx} y={cy + 24} s={0.8} seed={sd} /> },
-    { t: "FOOD", fill: SK.earth, art: (cx, cy, sd) => <Can x={cx} y={cy + 24} w={34} h={48} label={SK.blush} seed={sd} /> },
+    { t: "FOOD", fill: SK.earth, art: (cx, cy, sd) => <Can4 x={cx} y={cy + 24} w={34} h={48} label={SK.blush} seed={sd} /> },
     { t: "FASHION", fill: SK.blush, art: (cx, cy, sd) => <Shirt x={cx} y={cy} s={1.05} seed={sd} /> },
   ];
   return (
@@ -2025,7 +1836,7 @@ export function VALSMap() {
       <SketchText x={20} y={402} size={10}>
         LOW RESOURCES
       </SketchText>
-      <Arrow a={[52, 330]} b={[52, 40]} seed={4602} />
+      <SketchArrow pts={[[52, 330], [52, 40]]} seed={4602} width={1.4} head={11} />
       <InkLine pts={[[52, 330], [52, 380]]} seed={4604} width={1.4} />
       <InkLine pts={[[44, 370], [52, 382], [60, 370]]} seed={4605} width={1.4} amp={0.3} />
 

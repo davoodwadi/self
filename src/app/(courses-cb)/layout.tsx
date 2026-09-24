@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { DynamicFooter } from "./DynamicFooter";
+import { FitSlides } from "@/components/slide-components/FitSlides";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -39,6 +40,7 @@ export default function RootLayout({
     >
       <body className="antialiased">
         {children}
+        <FitSlides />
         <DynamicFooter />
       </body>
     </html>

@@ -119,7 +119,7 @@ export function PosterHero({
   plate: React.ReactNode;
 }) {
   return (
-    <section id="hero" className="min-h-svh flex items-center px-4 sm:px-8 md:px-16 py-24">
+    <section data-slide id="hero" className="min-h-svh flex items-center px-4 sm:px-8 md:px-16 py-24">
       <Frame className="w-full max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center p-6 sm:p-10 md:p-14">
           <div>
@@ -164,7 +164,7 @@ export function ChapterBand({
   description: string;
 }) {
   return (
-    <section
+    <section data-slide
       id={id}
       className="bg-[var(--dt-ink)] text-[var(--dt-cream)] px-4 sm:px-8 md:px-16 py-28 md:py-36 min-h-svh flex items-center"
     >
@@ -200,7 +200,7 @@ export function Slide({
   children: React.ReactNode;
 }) {
   return (
-    <section
+    <section data-slide
       id={id}
       className="min-h-svh flex flex-col justify-center px-4 sm:px-8 md:px-16 py-10 md:py-12 border-b-[5px] border-[var(--dt-ink)]"
     >
@@ -336,7 +336,7 @@ export function DiscussionSlide({
   plate: React.ReactNode;
 }) {
   return (
-    <section className="px-4 sm:px-8 md:px-16 py-24 md:py-32 border-b-[5px] border-[var(--dt-ink)] min-h-svh flex items-center">
+    <section data-slide className="px-4 sm:px-8 md:px-16 py-24 md:py-32 border-b-[5px] border-[var(--dt-ink)] min-h-svh flex items-center">
       <div className="max-w-4xl mx-auto text-center">
         <p className="font-heading font-bold text-[clamp(1.7rem,3.6vw,2.9rem)] leading-[1.25]">{quote}</p>
         <div className="flex items-center justify-center gap-4 mt-10">
@@ -364,7 +364,7 @@ export function Summary({
   takeaways: string[];
 }) {
   return (
-    <section id={id} className="min-h-svh flex flex-col justify-center px-4 sm:px-8 md:px-16 py-12 md:py-14">
+    <section data-slide id={id} className="min-h-svh flex flex-col justify-center px-4 sm:px-8 md:px-16 py-12 md:py-14">
       <Frame className="w-full max-w-5xl mx-auto">
         <div className="p-6 sm:p-8 md:p-10">
           <Kicker>CONCLUSION</Kicker>

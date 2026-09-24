@@ -36,7 +36,9 @@ Each topic in content.md should read as one slide, not a scroll of screens. Keep
 
 # Slide height
 
-Every slide (the title or hero, section and chapter openers, content slides, discussion and exercise slides, and the summary) fills at least one screen: `min-h-svh` on its section, with the content centred vertically (`flex flex-col justify-center`). A slide with more content grows taller than the screen, and the next slide starts on a fresh screen. Exercise screens start from a fixed top instead of being centred, so the prompt and the answer areas stay still while students work.
+Every slide (the title or hero, section and chapter openers, content slides, discussion and exercise slides, and the summary) fits one screen: `min-h-svh` on its section, with the content centred vertically (`flex flex-col justify-center`), and the next slide starts on a fresh screen. Exercise screens start from a fixed top instead of being centred, so the prompt and the answer areas stay still while students work.
+
+Lay each slide out to fit a 1440×900 screen at full size. `FitSlides` (`src/components/slide-components/FitSlides.tsx`) adapts it to other screens: drawings and images shrink first, then the whole slide zooms, down to 60%. Every course layout renders `<FitSlides />`, and every slide section carries `data-slide`. Visuals are `svg[role=img]` or `img` so they can shrink. A slide that still runs past the screen holds too much for one screen and gets a density pass.
 
 # Visual style
 

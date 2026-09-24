@@ -18,180 +18,32 @@
    ========================================================================== */
 
 import React from "react";
-
-export const INK = "var(--ink)";
-export const INK2 = "var(--ink-2)";
-export const INK3 = "var(--ink-3)";
-export const RULE = "var(--rule)";
-export const RULE2 = "var(--rule-2)";
-export const SIGNAL = "var(--signal)";
-export const COUNTER = "var(--counter)";
-export const PAPER = "var(--paper)";
-export const PAPER2 = "var(--paper-2)";
-export const SIGNAL_TINT = "rgba(178, 58, 21, 0.09)";
-export const COUNTER_TINT = "rgba(34, 87, 91, 0.09)";
-
-const LABEL = "var(--font-label)";
-const BODY = "var(--font-body)";
-const SERIF = "var(--font-heading)";
+import {
+  Anchor,
+  COUNTER,
+  COUNTER_TINT,
+  Display,
+  Frame,
+  hash1,
+  head1,
+  headAlong1,
+  INK,
+  INK2,
+  INK3,
+  Key,
+  Note,
+  PAPER,
+  RULE,
+  RULE2,
+  Schematic,
+  SIGNAL,
+  SIGNAL_TINT,
+} from "../_visuals/broadsheet";
+import {
+  Chip1,
+} from "../_visuals/objects";
 
 /* -- small typographic helpers ------------------------------------------- */
-
-type Anchor = "start" | "middle" | "end";
-
-export function Key({
-  x,
-  y,
-  children,
-  anchor = "start",
-  fill = INK3,
-  size = 10.5,
-  weight = 600,
-}: {
-  x: number;
-  y: number;
-  children: React.ReactNode;
-  anchor?: Anchor;
-  fill?: string;
-  size?: number;
-  weight?: number;
-}) {
-  return (
-    <text
-      x={x}
-      y={y}
-      textAnchor={anchor}
-      fontFamily={LABEL}
-      fontSize={size}
-      fontWeight={weight}
-      letterSpacing="0.14em"
-      fill={fill}
-    >
-      {children}
-    </text>
-  );
-}
-
-export function Note({
-  x,
-  y,
-  children,
-  anchor = "start",
-  fill = INK2,
-  size = 13,
-  italic = false,
-}: {
-  x: number;
-  y: number;
-  children: React.ReactNode;
-  anchor?: Anchor;
-  fill?: string;
-  size?: number;
-  italic?: boolean;
-}) {
-  return (
-    <text
-      x={x}
-      y={y}
-      textAnchor={anchor}
-      fontFamily={BODY}
-      fontSize={size}
-      fontStyle={italic ? "italic" : undefined}
-      fill={fill}
-    >
-      {children}
-    </text>
-  );
-}
-
-/** Display numeral or word in Fraunces, for the few places a plate shouts. */
-export function Display({
-  x,
-  y,
-  children,
-  anchor = "start",
-  fill = INK,
-  size = 28,
-}: {
-  x: number;
-  y: number;
-  children: React.ReactNode;
-  anchor?: Anchor;
-  fill?: string;
-  size?: number;
-}) {
-  return (
-    <text
-      x={x}
-      y={y}
-      textAnchor={anchor}
-      fontFamily={SERIF}
-      fontSize={size}
-      fontWeight={600}
-      fill={fill}
-    >
-      {children}
-    </text>
-  );
-}
-
-export function Frame({
-  height,
-  label,
-  children,
-  width = 800,
-}: {
-  height: number;
-  label: string;
-  children: React.ReactNode;
-  width?: number;
-}) {
-  return (
-    <svg
-      viewBox={`0 0 ${width} ${height}`}
-      className="w-full h-auto block"
-      role="img"
-      aria-label={label}
-    >
-      <title>{label}</title>
-      {children}
-    </svg>
-  );
-}
-
-/** Open chevron arrowheads whose tip sits at (x, y). */
-const head = {
-  right: (x: number, y: number) => `M${x - 8} ${y - 5}L${x} ${y}L${x - 8} ${y + 5}`,
-  left: (x: number, y: number) => `M${x + 8} ${y - 5}L${x} ${y}L${x + 8} ${y + 5}`,
-  down: (x: number, y: number) => `M${x - 5} ${y - 8}L${x} ${y}L${x + 5} ${y - 8}`,
-  up: (x: number, y: number) => `M${x - 5} ${y + 8}L${x} ${y}L${x + 5} ${y + 8}`,
-};
-
-/** Arrowhead pointing along the direction (dx, dy), tip at (x, y). */
-function headAlong(x: number, y: number, dx: number, dy: number, s = 8) {
-  const len = Math.hypot(dx, dy) || 1;
-  const ux = dx / len;
-  const uy = dy / len;
-  const bx = x - ux * s;
-  const by = y - uy * s;
-  const px = -uy * (s * 0.62);
-  const py = ux * (s * 0.62);
-  return `M${(bx + px).toFixed(2)} ${(by + py).toFixed(2)}L${x.toFixed(2)} ${y.toFixed(2)}L${(bx - px).toFixed(2)} ${(by - py).toFixed(2)}`;
-}
-
-export function Schematic({ x = 792, y = 18 }: { x?: number; y?: number }) {
-  return (
-    <Key x={x} y={y} anchor="end" size={9} fill={INK3}>
-      SCHEMATIC
-    </Key>
-  );
-}
-
-/** Deterministic 0–1 hash, so scattered marks match on server and client. */
-const hash = (n: number) => {
-  const v = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
-  return v - Math.floor(v);
-};
 
 /* ==========================================================================
    1 · ICEBERG — selling is the visible tip
@@ -282,14 +134,14 @@ export function ValueExchange() {
 
       {/* create → */}
       <line x1={232} y1={82} x2={566} y2={82} stroke={COUNTER} strokeWidth={2} />
-      <path d={head.right(568, 82)} fill="none" stroke={COUNTER} strokeWidth={2} />
+      <path d={head1.right(568, 82)} fill="none" stroke={COUNTER} strokeWidth={2} />
       <Key x={400} y={68} anchor="middle" fill={COUNTER} size={11}>
         CREATE CUSTOMER VALUE
       </Key>
 
       {/* ← capture */}
       <line x1={234} y1={128} x2={568} y2={128} stroke={SIGNAL} strokeWidth={2} />
-      <path d={head.left(232, 128)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+      <path d={head1.left(232, 128)} fill="none" stroke={SIGNAL} strokeWidth={2} />
       <Key x={400} y={152} anchor="middle" fill={SIGNAL} size={11}>
         CAPTURE VALUE IN RETURN
       </Key>
@@ -322,7 +174,7 @@ export function AttractKeep() {
       {/* attract */}
       <circle cx={cx[0]} cy={cy} r={r} fill={PAPER} stroke={INK3} strokeWidth={1} />
       <line x1={40} y1={cy} x2={cx[0] - 6} y2={cy} stroke={COUNTER} strokeWidth={2} />
-      <path d={head.right(cx[0] - 4, cy)} fill="none" stroke={COUNTER} strokeWidth={2} />
+      <path d={head1.right(cx[0] - 4, cy)} fill="none" stroke={COUNTER} strokeWidth={2} />
       <circle cx={40} cy={cy} r={5} fill={COUNTER} />
       <Key x={cx[0]} y={180} anchor="middle" fill={COUNTER} size={17}>
         ATTRACT NEW
@@ -337,7 +189,7 @@ export function AttractKeep() {
         strokeWidth={2}
       />
       <path
-        d={headAlong(ex, ey, -Math.sin(a1), Math.cos(a1))}
+        d={headAlong1(ex, ey, -Math.sin(a1), Math.cos(a1))}
         fill="none"
         stroke={SIGNAL}
         strokeWidth={2}
@@ -404,7 +256,7 @@ export function InwardOutward() {
               return (
                 <g key={deg}>
                   <line x1={X0} y1={y0} x2={X1} y2={y1} stroke={tone} strokeWidth={1.5} />
-                  <path d={headAlong(X1, y1, X1 - X0, y1 - y0, 6)} fill="none" stroke={tone} strokeWidth={1.5} />
+                  <path d={headAlong1(X1, y1, X1 - X0, y1 - y0, 6)} fill="none" stroke={tone} strokeWidth={1.5} />
                 </g>
               );
             })}
@@ -455,7 +307,7 @@ function DirectionGlyph({
         return (
           <g key={`${dx}${dy}`}>
             <line x1={x0} y1={y0} x2={x1} y2={y1} stroke={tone} strokeWidth={1.75} />
-            <path d={headAlong(x1, y1, dx * (r1 - r0), dy * (r1 - r0), 6)} fill="none" stroke={tone} strokeWidth={1.75} />
+            <path d={headAlong1(x1, y1, dx * (r1 - r0), dy * (r1 - r0), 6)} fill="none" stroke={tone} strokeWidth={1.75} />
           </g>
         );
       })}
@@ -530,7 +382,7 @@ export function SellingVersusMarketing() {
               ))}
               {i < 3 ? (
                 <path
-                  d={head.right(xs[i] + 140, lane.top + 14)}
+                  d={head1.right(xs[i] + 140, lane.top + 14)}
                   fill="none"
                   stroke={lane.tone}
                   strokeWidth={1.5}
@@ -632,31 +484,6 @@ export function MyopiaView() {
    left says what each is; the lane to the right shows it happening.
    ========================================================================== */
 
-function Chip({
-  x,
-  y,
-  w,
-  label,
-  tone = INK,
-  fill = PAPER,
-}: {
-  x: number;
-  y: number;
-  w: number;
-  label: string;
-  tone?: string;
-  fill?: string;
-}) {
-  return (
-    <g>
-      <rect x={x} y={y - 17} width={w} height={28} fill={fill} stroke={tone} strokeWidth={1.25} />
-      <Key x={x + w / 2} y={y + 1} anchor="middle" fill={tone} size={10.5}>
-        {label}
-      </Key>
-    </g>
-  );
-}
-
 export function NeedsWantsDemandsLanes() {
   const spine = 36;
   const lane = 250;
@@ -690,7 +517,7 @@ export function NeedsWantsDemandsLanes() {
       ].map((t) => (
         <g key={t.a}>
           <line x1={spine + 8} y1={t.y0} x2={spine + 8} y2={t.y1 - 2} stroke={t.tone} strokeWidth={1.75} />
-          <path d={head.down(spine + 8, t.y1)} fill="none" stroke={t.tone} strokeWidth={1.75} />
+          <path d={head1.down(spine + 8, t.y1)} fill="none" stroke={t.tone} strokeWidth={1.75} />
           <Key x={spine + 22} y={t.y0 + 64} fill={t.tone} size={9.5}>
             {t.a}
           </Key>
@@ -718,11 +545,11 @@ export function NeedsWantsDemandsLanes() {
       ))}
 
       {/* ---- lane 2: one need, two cultures ---- */}
-      <Chip x={lane} y={196} w={150} label="A HUNGRY PERSON" tone={INK} />
+      <Chip1 x={lane} y={196} w={150} label="A HUNGRY PERSON" tone={INK} />
       <path d={`M${lane + 150} 190 C${lane + 200} 190 ${lane + 200} 160 ${lane + 262} 160`} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       <path d={`M${lane + 150} 190 C${lane + 200} 190 ${lane + 200} 220 ${lane + 262} 220`} fill="none" stroke={COUNTER} strokeWidth={1.5} />
-      <path d={head.right(lane + 268, 160)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
-      <path d={head.right(lane + 268, 220)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <path d={head1.right(lane + 268, 160)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <path d={head1.right(lane + 268, 220)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       <Key x={lane + 280} y={152} fill={INK3} size={9.5}>
         IN ONE CULTURE
       </Key>
@@ -737,15 +564,15 @@ export function NeedsWantsDemandsLanes() {
       </Note>
 
       {/* ---- lane 3: the word equation ---- */}
-      <Chip x={lane} y={330} w={120} label="WANT" tone={COUNTER} fill={COUNTER_TINT} />
+      <Chip1 x={lane} y={330} w={120} label="WANT" tone={COUNTER} fill={COUNTER_TINT} />
       <Display x={lane + 142} y={338} size={24} anchor="middle" fill={INK3}>
         +
       </Display>
-      <Chip x={lane + 164} y={330} w={150} label="BUYING POWER" tone={INK} />
+      <Chip1 x={lane + 164} y={330} w={150} label="BUYING POWER" tone={INK} />
       <Display x={lane + 336} y={338} size={24} anchor="middle" fill={INK3}>
         =
       </Display>
-      <Chip x={lane + 358} y={330} w={150} label="DEMAND" tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Chip1 x={lane + 358} y={330} w={150} label="DEMAND" tone={SIGNAL} fill={SIGNAL_TINT} />
     </Frame>
   );
 }
@@ -802,7 +629,7 @@ export function OfferingRosette() {
 
       {/* aimed at the need */}
       <line x1={c.x + d + r + 18} y1={c.y} x2={604} y2={c.y} stroke={INK} strokeWidth={1.5} />
-      <path d={head.right(606, c.y)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head1.right(606, c.y)} fill="none" stroke={INK} strokeWidth={1.5} />
       <Key x={(c.x + d + r + 18 + 604) / 2} y={c.y - 12} anchor="middle" fill={INK3} size={9.5}>
         TO SATISFY
       </Key>
@@ -866,8 +693,8 @@ export function PerceivedValueBars() {
             <rect x={g.x + w + 10} y={ctop} width={w} height={g.c} fill={RULE2} />
             <line x1={g.x} y1={top} x2={g.x + 2 * w + 10} y2={top} stroke={tone} strokeWidth={1} strokeDasharray="3 3" />
             <line x1={bx} y1={top + 3} x2={bx} y2={ctop - 3} stroke={tone} strokeWidth={g.on ? 2 : 1.25} />
-            <path d={head.up(bx, top + 2)} fill="none" stroke={tone} strokeWidth={g.on ? 2 : 1.25} />
-            <path d={head.down(bx, ctop - 2)} fill="none" stroke={tone} strokeWidth={g.on ? 2 : 1.25} />
+            <path d={head1.up(bx, top + 2)} fill="none" stroke={tone} strokeWidth={g.on ? 2 : 1.25} />
+            <path d={head1.down(bx, ctop - 2)} fill="none" stroke={tone} strokeWidth={g.on ? 2 : 1.25} />
             {g.on ? (
               <>
                 <Key x={g.x + 2 * w + 24} y={(top + ctop) / 2 - 2} fill={SIGNAL} size={10.5}>
@@ -927,7 +754,7 @@ export function SatisfactionGauge() {
 
       {/* performance axis */}
       <line x1={50} y1={y + 96} x2={742} y2={y + 96} stroke={INK3} strokeWidth={1} />
-      <path d={head.right(750, y + 96)} fill="none" stroke={INK3} strokeWidth={1} />
+      <path d={head1.right(750, y + 96)} fill="none" stroke={INK3} strokeWidth={1} />
       <Key x={750} y={y + 88} anchor="end" fill={INK3} size={9}>
         PERCEIVED PERFORMANCE
       </Key>
@@ -953,7 +780,7 @@ export function FourPlusOne() {
         RESEARCH
       </Key>
       <line x1={x0 + 84} y1={30} x2={752} y2={30} stroke={RULE2} strokeWidth={1} />
-      <path d={head.right(760, 30)} fill="none" stroke={RULE2} strokeWidth={1} />
+      <path d={head1.right(760, 30)} fill="none" stroke={RULE2} strokeWidth={1} />
       <Key x={760} y={52} anchor="end" fill={INK3} size={9.5}>
         VALUE CAPTURE
       </Key>
@@ -1023,8 +850,8 @@ export function SegmentTarget() {
   };
 
   const dots = Array.from({ length: 120 }, (_, i) => {
-    const px = field.x + 8 + hash(i + 1) * (field.w - 16);
-    const py = field.y + 8 + hash(i + 401) * (field.h - 16);
+    const px = field.x + 8 + hash1(i + 1) * (field.w - 16);
+    const py = field.y + 8 + hash1(i + 401) * (field.h - 16);
     return { px: +px.toFixed(1), py: +py.toFixed(1), r: region(px, py) };
   });
 
@@ -1075,7 +902,7 @@ export function SegmentTarget() {
       {panel(0, false)}
 
       <line x1={field.x + field.w + 12} y1={157} x2={field.x + field.w + 60} y2={157} stroke={INK} strokeWidth={1.5} />
-      <path d={head.right(field.x + field.w + 62, 157)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head1.right(field.x + field.w + 62, 157)} fill="none" stroke={INK} strokeWidth={1.5} />
 
       <Key x={field.x + 410} y={30} fill={SIGNAL} size={11}>
         TARGETING
@@ -1135,7 +962,7 @@ export function RelationshipCycle() {
               strokeWidth={3}
             />
             <path
-              d={headAlong(b.x, b.y, -Math.sin(b.t), Math.cos(b.t), 9)}
+              d={headAlong1(b.x, b.y, -Math.sin(b.t), Math.cos(b.t), 9)}
               fill="none"
               stroke={tone}
               strokeWidth={2.5}
@@ -1192,7 +1019,7 @@ export function LifetimeStream() {
   const cut = 6;
   const bars = Array.from({ length: 24 }, (_, i) => ({
     x: 74 + i * 28,
-    h: Math.round(30 + hash(i + 11) * 36),
+    h: Math.round(30 + hash1(i + 11) * 36),
   }));
   const last = bars[bars.length - 1];
   const w = 16;
@@ -1204,7 +1031,7 @@ export function LifetimeStream() {
     >
       <Schematic />
       <line x1={50} y1={base} x2={762} y2={base} stroke={INK} strokeWidth={1} />
-      <path d={head.right(770, base)} fill="none" stroke={INK} strokeWidth={1} />
+      <path d={head1.right(770, base)} fill="none" stroke={INK} strokeWidth={1} />
       <Key x={770} y={base + 24} anchor="end" fill={INK3} size={9.5}>
         A LIFETIME OF PATRONAGE
       </Key>
@@ -1293,8 +1120,8 @@ export function EquityLedger() {
   const now = 300;
   const x0 = now + 14;
   const rows = [
-    ...[0, 1, 2, 3].map((i) => ({ y: 76 + i * 24, len: Math.round(150 + hash(i + 71) * 230), potential: false })),
-    ...[0, 1, 2].map((i) => ({ y: 188 + i * 24, len: Math.round(110 + hash(i + 91) * 200), potential: true })),
+    ...[0, 1, 2, 3].map((i) => ({ y: 76 + i * 24, len: Math.round(150 + hash1(i + 71) * 230), potential: false })),
+    ...[0, 1, 2].map((i) => ({ y: 188 + i * 24, len: Math.round(110 + hash1(i + 91) * 200), potential: true })),
   ];
 
   return (
@@ -1389,7 +1216,7 @@ export function RelationshipGroups() {
 
       {/* y axis */}
       <line x1={g.x - 20} y1={g.y + g.h} x2={g.x - 20} y2={g.y + 8} stroke={INK3} strokeWidth={1} />
-      <path d={head.up(g.x - 20, g.y + 2)} fill="none" stroke={INK3} strokeWidth={1} />
+      <path d={head1.up(g.x - 20, g.y + 2)} fill="none" stroke={INK3} strokeWidth={1} />
       <Key x={g.x - 32} y={g.y + 12} anchor="end" fill={INK3} size={9.5}>
         HIGH
       </Key>
@@ -1404,7 +1231,7 @@ export function RelationshipGroups() {
 
       {/* x axis */}
       <line x1={g.x} y1={g.y + g.h + 20} x2={g.x + g.w - 8} y2={g.y + g.h + 20} stroke={INK3} strokeWidth={1} />
-      <path d={head.right(g.x + g.w - 2, g.y + g.h + 20)} fill="none" stroke={INK3} strokeWidth={1} />
+      <path d={head1.right(g.x + g.w - 2, g.y + g.h + 20)} fill="none" stroke={INK3} strokeWidth={1} />
       <Key x={g.x} y={g.y + g.h + 44} fill={INK3} size={9.5}>
         LOW
       </Key>

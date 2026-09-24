@@ -1,15 +1,10 @@
 "use client";
 
 import React from "react";
-import {
-  SlideDeck,
-  Slide,
-  Title,
-  Figure,
-} from "@/components/slide-components/SlideComponents";
-import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
+import { SlideDeck, Slide, Title } from "@/components/slide-components/SlideComponents";
+import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
-import quizzesData from "./quizzes.json";
+import exercisesData from "./exercises.json";
 import {
   BrainBrands,
   ExperienceChanges,
@@ -18,7 +13,9 @@ import {
   UpdateLoop,
   HabitWeek,
   Pavlov,
-  ConditioningFlow,
+  MusicFeeling,
+  PairedRepeatedly,
+  BrandAlone,
   RepetitionCurve,
   GeneralizationChart,
   CopyCat,
@@ -54,19 +51,26 @@ import {
 // ============================================================================
 // Every line on these slides is transcribed verbatim from content.md; the
 // design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx and reuse the words of the slide they illustrate.
+// live in ./visuals.tsx (Editorial Sketch, see ../CLAUDE.md).
 //
-// SIGNAL marks what is learned, lit or recalled; COUNTER the brand itself and
-// the other side of a contrast (wear-out, discrimination, the discussion).
+// SIGNAL marks what is learned, lit or recalled; COUNTER the other side of a
+// contrast (wear-out, discrimination, the discussion).
 //
 // Wayfinding: the title line says people "learn, remember, and forget", so a
 // PhaseRule strip lights the one of those three each later slide belongs to.
 //
-// Quizzes: `Slide` renders `quizData` AFTER its section, so each [quiz]-tagged
-// topic carries its own quiz, testing that slide and the ones before it.
+// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
+// so each [exercise]-tagged topic carries one exercise that tests that slide
+// and the ones before it. The parts of classical conditioning are matched to
+// a new campaign; repetition, wear-out, generalization and discrimination are
+// told apart case by case (identify), as are the three memory stores; the
+// moments of observational learning are sorted into its three steps.
 // ============================================================================
 
-const quiz = createCourseQuizLookup(quizzesData as CourseQuiz[]);
+const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
+
+/** Content slides trim the section's 7rem padding so each topic reads as one screen. */
+const TIGHT = "md:!py-16";
 
 type Tone = "signal" | "counter" | "ink";
 
@@ -131,11 +135,22 @@ function Ruled({
   );
 }
 
-/** A plate that lives in a column: a figure well without the 680px floor. */
-function Plate({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+/**
+ * A plate in a figure well. A `wide` (800-unit) plate keeps a legible minimum
+ * width on phones and scrolls inside its well there; from lg up it fits.
+ */
+function Plate({
+  children,
+  wide = false,
+  className = "",
+}: {
+  children: React.ReactNode;
+  wide?: boolean;
+  className?: string;
+}) {
   return (
-    <div className={cn("figure-well w-full min-w-0 p-3 sm:p-5", className)}>
-      {children}
+    <div className={cn("figure-well w-full min-w-0 p-3", wide && "overflow-x-auto", className)}>
+      {wide ? <div className="min-w-[480px] lg:min-w-0">{children}</div> : children}
     </div>
   );
 }
@@ -154,7 +169,7 @@ function Heading({
   tone?: "signal" | "counter";
 }) {
   return (
-    <div className="mb-10 w-full md:mb-14">
+    <div className="mb-8 w-full md:mb-10">
       <h2 className="type-h1 max-w-[22ch]">
         {kicker ? (
           <>
@@ -170,57 +185,63 @@ function Heading({
         ) : null}
         {children}
       </h2>
-      <div className="mt-6 h-px w-full bg-[var(--rule)]" />
+      <div className="mt-5 h-px w-full bg-[var(--rule)]" />
     </div>
   );
 }
 
-/** A line and a column plate side by side. */
-function Pair({
-  plateFirst = false,
-  plate,
+/** Lines on the left, a plate on the right; on phones the plate follows the lines. */
+function Lede({
   children,
+  plate,
+  wide = false,
+  cols = "lg:grid-cols-[1fr_1.9fr]",
+}: {
+  children: React.ReactNode;
+  plate: React.ReactNode;
+  wide?: boolean;
+  cols?: string;
+}) {
+  return (
+    <div className={cn("grid w-full items-center gap-8 lg:gap-12", cols)}>
+      <div className="min-w-0">{children}</div>
+      <Plate wide={wide} className={wide ? "" : "lg:max-w-[440px] lg:justify-self-end"}>
+        {plate}
+      </Plate>
+    </div>
+  );
+}
+
+/**
+ * A row of ruled cells, each a verbatim line with its plate beneath. Plates
+ * sit at the foot of their cell so a row of them shares one baseline.
+ */
+function Cells({
+  cols,
+  items,
   className = "",
 }: {
-  plateFirst?: boolean;
-  plate: React.ReactNode;
-  children: React.ReactNode;
+  cols: 3 | 4;
+  items: { key: string; tone: Tone; text: React.ReactNode; plate?: React.ReactNode }[];
   className?: string;
 }) {
   return (
-    <div className={cn("grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-14", className)}>
-      {plateFirst ? <Plate>{plate}</Plate> : null}
-      <div className="min-w-0">{children}</div>
-      {plateFirst ? null : <Plate>{plate}</Plate>}
-    </div>
-  );
-}
-
-/** A ruled line with its plate beneath. */
-function PlateColumn({
-  tone = "ink",
-  text,
-  plate,
-}: {
-  tone?: Tone;
-  text: React.ReactNode;
-  plate: React.ReactNode;
-}) {
-  return (
-    <div className="flex min-w-0 flex-col gap-6">
-      <Ruled tone={tone}>
-        <P className="!text-[clamp(1.05rem,1.5vw,1.3rem)]">{text}</P>
-      </Ruled>
-      <Plate>{plate}</Plate>
-    </div>
-  );
-}
-
-function Columns({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <div className={cn("grid w-full items-start gap-12 lg:grid-cols-2 lg:gap-14", className)}>
-      {children}
-    </div>
+    <ol
+      className={cn(
+        "grid w-full gap-10 sm:grid-cols-2 sm:gap-x-8 lg:gap-6",
+        { 3: "lg:grid-cols-3", 4: "lg:grid-cols-4" }[cols],
+        className,
+      )}
+    >
+      {items.map((s) => (
+        <li key={s.key} className="flex min-w-0 flex-col gap-4">
+          <div className={cn("border-t-2 pt-4", BORDER[s.tone])}>
+            <p className="type-body">{s.text}</p>
+          </div>
+          {s.plate ? <Plate className="mt-auto">{s.plate}</Plate> : null}
+        </li>
+      ))}
+    </ol>
   );
 }
 
@@ -229,7 +250,7 @@ const PHASES = ["Learn", "Remember", "Forget"];
 
 function PhaseRule({ active }: { active: number[] }) {
   return (
-    <ol aria-hidden className="mb-12 grid w-full grid-cols-3 gap-2 md:mb-16 sm:gap-4">
+    <ol aria-hidden className="mb-8 grid w-full grid-cols-3 gap-2 sm:gap-4 md:mb-10">
       {PHASES.map((name, i) => {
         const on = active.includes(i);
         return (
@@ -250,55 +271,8 @@ function PhaseRule({ active }: { active: number[] }) {
   );
 }
 
-/** A numbered column; the numeral comes from CSS so the sentence stays whole. */
-function Step({
-  n,
-  tone = "ink",
-  children,
-  className = "",
-}: {
-  n: number;
-  tone?: Tone;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <li
-      data-n={String(n)}
-      className={cn(
-        "min-w-0 border-t-2 pt-5 before:mb-3 before:block before:font-[family-name:var(--font-heading)] before:text-[1.6rem] before:leading-none before:content-[attr(data-n)]",
-        BORDER[tone],
-        tone === "signal" ? "before:text-[var(--signal)]" : "before:text-[var(--ink-3)]",
-        className,
-      )}
-    >
-      {children}
-    </li>
-  );
-}
-
-/** One consequence of a behaviour: the line and a small scene. */
-function OutcomeRow({
-  tone,
-  plate,
-  children,
-}: {
-  tone: Tone;
-  plate: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <li
-      className={cn(
-        "grid min-w-0 items-center gap-6 border-t-2 pt-6 md:grid-cols-[1fr_minmax(0,22rem)] md:gap-12",
-        BORDER[tone],
-      )}
-    >
-      <p className="type-h2 !font-normal !text-[clamp(1.25rem,2vw,1.7rem)]">{children}</p>
-      <div className="figure-well w-full min-w-0 p-3">{plate}</div>
-    </li>
-  );
-}
+/** A lede line sized to share a row with a wide plate. */
+const LEDE = "!text-[clamp(1.3rem,2vw,1.75rem)]";
 
 export default function Week3() {
   return (
@@ -332,221 +306,283 @@ export default function Week3() {
       {/* ================================================================
           What Is Consumer Learning?
           ================================================================ */}
-      <Slide id="what-is-consumer-learning" border>
+      <Slide className={TIGHT} id="what-is-consumer-learning" border>
         <PhaseRule active={[0]} />
         <Heading>What Is Consumer Learning?</Heading>
-        <Statement className="!max-w-[34ch]">
-          Learning is a <Tint>permanent change in behavior</Tint> caused by{" "}
-          <Tint tone="ink">experience</Tint>.
-        </Statement>
-        <Figure height="auto">
-          <ExperienceChanges />
-        </Figure>
-        <Columns>
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                The experience can be <Term>direct</Term>. You try a new snack and like the taste.
-              </>
-            }
-            plate={<DirectTry />}
-          />
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                The experience can also be <Term>indirect</Term>. You see an ad or watch a friend
-                buy running shoes.
-              </>
-            }
-            plate={<IndirectWatch />}
-          />
-        </Columns>
-        <Pair plate={<UpdateLoop />} className="mt-20">
-          <Ruled tone="ink">
-            <Lead>
-              Learning is an <Term tone="ink">ongoing process</Term>. Consumers constantly update
-              their knowledge when they see new products.
-            </Lead>
-          </Ruled>
-        </Pair>
-        <Ruled tone="signal" className="mt-20 w-full">
-          <Big className="max-w-[44ch]">
-            Marketers study learning so that brand names become{" "}
-            <Tint>automatic habits</Tint> in the mind of the buyer.
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <HabitWeek />
-        </Figure>
+        <Lede wide plate={<ExperienceChanges />}>
+          <Statement className={LEDE}>
+            Learning is a <Tint>permanent change in behavior</Tint> caused by{" "}
+            <Tint tone="ink">experience</Tint>.
+          </Statement>
+        </Lede>
+        <Cells
+          cols={4}
+          className="mt-10"
+          items={[
+            {
+              key: "direct",
+              tone: "signal",
+              plate: <DirectTry />,
+              text: (
+                <>
+                  The experience can be <Term>direct</Term>. You try a new snack and like the taste.
+                </>
+              ),
+            },
+            {
+              key: "indirect",
+              tone: "signal",
+              plate: <IndirectWatch />,
+              text: (
+                <>
+                  The experience can also be <Term>indirect</Term>. You see an ad or watch a friend
+                  buy running shoes.
+                </>
+              ),
+            },
+            {
+              key: "ongoing",
+              tone: "ink",
+              plate: <UpdateLoop />,
+              text: (
+                <>
+                  Learning is an <Term tone="ink">ongoing process</Term>. Consumers constantly update
+                  their knowledge when they see new products.
+                </>
+              ),
+            },
+            {
+              key: "habits",
+              tone: "signal",
+              plate: <HabitWeek />,
+              text: (
+                <>
+                  Marketers study learning so that brand names become{" "}
+                  <Term>automatic habits</Term> in the mind of the buyer.
+                </>
+              ),
+            },
+          ]}
+        />
       </Slide>
 
       {/* ================================================================
           Classical Conditioning: Pairing Stimuli
           ================================================================ */}
       <Slide
+        className={TIGHT}
         id="classical-conditioning-pairing-stimuli"
         border
-        quizData={quiz["classical-conditioning-pairing-stimuli"]}
+        exercise={exercise["classical-conditioning-pairing-stimuli"]}
       >
         <PhaseRule active={[0]} />
         <Heading kicker="Classical Conditioning:">Pairing Stimuli</Heading>
-        <Pair plate={<Pavlov />}>
-          <Statement>
+        <Lede plate={<Pavlov />} cols="lg:grid-cols-[1.3fr_1fr]">
+          <Statement className={cn(LEDE, "!max-w-[36ch]")}>
             Classical conditioning happens when a stimulus that brings a{" "}
             <Tint>natural response</Tint> pairs with a <Tint tone="counter">neutral stimulus</Tint>.
           </Statement>{" "}
-          <P className="mt-8">
+          <P className="mt-5">
             <Term tone="ink">Ivan Pavlov</Term> first demonstrated this with dogs, meat powder, and
             a bell.
           </P>
-        </Pair>
-        <ol className="mt-16 grid w-full gap-10 md:grid-cols-3 md:gap-8">
-          <Step n={1}>
-            <p className="type-body">
-              {" "}
-              In marketing, an <Term tone="ink">unconditioned stimulus</Term> like upbeat music
-              naturally triggers positive feelings.
-            </p>
-          </Step>
-          <Step n={2}>
-            <p className="type-body">
-              {" "}
-              A brand <Term tone="ink">pairs</Term> this music with its logo or product
-              repeatedly.
-            </p>
-          </Step>
-          <Step n={3} tone="signal">
-            <p className="type-body">
-              {" "}
-              Over time, seeing the brand alone produces the positive feeling. This is a{" "}
-              <Term>conditioned response</Term>.
-            </p>
-          </Step>
-        </ol>
-        <Figure height="auto">
-          <ConditioningFlow />
-        </Figure>
+        </Lede>
+        <Cells
+          cols={3}
+          className="mt-10"
+          items={[
+            {
+              key: "unconditioned",
+              tone: "ink",
+              plate: <MusicFeeling />,
+              text: (
+                <>
+                  {" "}
+                  In marketing, an <Term tone="ink">unconditioned stimulus</Term> like upbeat music
+                  naturally triggers positive feelings.
+                </>
+              ),
+            },
+            {
+              key: "pairs",
+              tone: "ink",
+              plate: <PairedRepeatedly />,
+              text: (
+                <>
+                  {" "}
+                  A brand <Term tone="ink">pairs</Term> this music with its logo or product
+                  repeatedly.
+                </>
+              ),
+            },
+            {
+              key: "conditioned",
+              tone: "signal",
+              plate: <BrandAlone />,
+              text: (
+                <>
+                  {" "}
+                  Over time, seeing the brand alone produces the positive feeling. This is a{" "}
+                  <Term>conditioned response</Term>.
+                </>
+              ),
+            },
+          ]}
+        />
       </Slide>
 
       {/* ================================================================
           Repetition and Stimulus Generalization
           ================================================================ */}
       <Slide
+        className={TIGHT}
         id="repetition-and-stimulus-generalization"
         border
-        quizData={quiz["repetition-and-stimulus-generalization"]}
+        exercise={exercise["repetition-and-stimulus-generalization"]}
       >
         <PhaseRule active={[0]} />
         <Heading>Repetition and Stimulus Generalization</Heading>
-        <Columns>
-          <Ruled tone="signal">
-            <Lead>
+        <Lede wide plate={<RepetitionCurve />}>
+          <Ruled tone="signal" className="!pt-4">
+            <P>
               Conditioning needs <Term>repetition</Term>. Repeated exposures prevent memory decay
               and strengthen the link.
-            </Lead>
+            </P>
           </Ruled>
-          <Ruled tone="counter">
-            <Lead>
+          <Ruled tone="counter" className="mt-6 !pt-4">
+            <P>
               Too much repetition causes <Term tone="counter">advertising wear-out</Term>.
               Consumers tune out or get annoyed.
-            </Lead>
+            </P>
           </Ruled>
-        </Columns>
-        <Figure height="auto">
-          <RepetitionCurve />
-        </Figure>
-        <Big className="mt-10 max-w-[42ch]">
-          <Tint>Stimulus generalization</Tint> happens when similar stimuli trigger the same
-          learned response.
-        </Big>
-        <Figure height="auto">
-          <GeneralizationChart />
-        </Figure>
-        <Columns>
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                <Term>Store brands</Term> use this principle. They copy the package colors and
-                fonts of national brand leaders.
-              </>
-            }
-            plate={<CopyCat />}
-          />
-          <PlateColumn
-            tone="counter"
-            text={
-              <>
-                <Term tone="counter">Stimulus discrimination</Term> occurs when a brand teaches
-                consumers to spot unique differences between products.
-              </>
-            }
-            plate={<SpotTheDifference />}
-          />
-        </Columns>
+        </Lede>
+        <Cells
+          cols={3}
+          className="mt-10"
+          items={[
+            {
+              key: "generalization",
+              tone: "signal",
+              plate: <GeneralizationChart />,
+              text: (
+                <>
+                  <Term>Stimulus generalization</Term> happens when similar stimuli trigger the same
+                  learned response.
+                </>
+              ),
+            },
+            {
+              key: "store-brands",
+              tone: "signal",
+              plate: <CopyCat />,
+              text: (
+                <>
+                  <Term>Store brands</Term> use this principle. They copy the package colors and
+                  fonts of national brand leaders.
+                </>
+              ),
+            },
+            {
+              key: "discrimination",
+              tone: "counter",
+              plate: <SpotTheDifference />,
+              text: (
+                <>
+                  <Term tone="counter">Stimulus discrimination</Term> occurs when a brand teaches
+                  consumers to spot unique differences between products.
+                </>
+              ),
+            },
+          ]}
+        />
       </Slide>
 
       {/* ================================================================
           Instrumental Conditioning: Rewards and Punishments
           ================================================================ */}
-      <Slide id="instrumental-conditioning-rewards-and-punishments" border>
+      <Slide className={TIGHT} id="instrumental-conditioning-rewards-and-punishments" border>
         <PhaseRule active={[0]} />
         <Heading kicker="Instrumental Conditioning:">Rewards and Punishments</Heading>
-        <Lead className="text-[var(--ink-3)]">
-          Instrumental conditioning is also called <Term tone="ink">operant conditioning</Term>.
-        </Lead>
-        <Statement className="mt-10 !max-w-[34ch]">
-          People learn to <Tint>perform</Tint> behaviors that produce positive outcomes and{" "}
-          <Tint tone="ink">avoid</Tint> negative outcomes.
-        </Statement>
-        <Figure height="auto">
-          <InstrumentalMatrix />
-        </Figure>
-        <ol className="flex w-full flex-col gap-10">
-          <OutcomeRow tone="signal" plate={<LoyaltyPoints />}>
-            {" "}
-            <Term>Positive reinforcement</Term> rewards good behavior. Loyalty points and
-            thank-you discounts encourage repeat visits.
-          </OutcomeRow>
-          <OutcomeRow tone="signal" plate={<HeadacheGone />}>
-            {" "}
-            <Term>Negative reinforcement</Term> shows how a product removes a negative state.
-            Taking medicine removes a headache.
-          </OutcomeRow>
-          <OutcomeRow tone="ink" plate={<LateFee />}>
-            {" "}
-            <Term tone="ink">Punishment</Term> occurs when an unpleasant event follows an action.
-            Late fees teach consumers not to pay bills late.
-          </OutcomeRow>
-        </ol>
+        <Lede plate={<InstrumentalMatrix />} cols="lg:grid-cols-[1fr_1.2fr]">
+          <Lead className="text-[var(--ink-3)]">
+            Instrumental conditioning is also called <Term tone="ink">operant conditioning</Term>.
+          </Lead>{" "}
+          <Statement className={cn(LEDE, "mt-5 !max-w-[34ch]")}>
+            People learn to <Tint>perform</Tint> behaviors that produce positive outcomes and{" "}
+            <Tint tone="ink">avoid</Tint> negative outcomes.
+          </Statement>
+        </Lede>
+        <Cells
+          cols={3}
+          className="mt-10"
+          items={[
+            {
+              key: "positive",
+              tone: "signal",
+              plate: <LoyaltyPoints />,
+              text: (
+                <>
+                  {" "}
+                  <Term>Positive reinforcement</Term> rewards good behavior. Loyalty points and
+                  thank-you discounts encourage repeat visits.
+                </>
+              ),
+            },
+            {
+              key: "negative",
+              tone: "signal",
+              plate: <HeadacheGone />,
+              text: (
+                <>
+                  {" "}
+                  <Term>Negative reinforcement</Term> shows how a product removes a negative state.
+                  Taking medicine removes a headache.
+                </>
+              ),
+            },
+            {
+              key: "punishment",
+              tone: "ink",
+              plate: <LateFee />,
+              text: (
+                <>
+                  {" "}
+                  <Term tone="ink">Punishment</Term> occurs when an unpleasant event follows an
+                  action. Late fees teach consumers not to pay bills late.
+                </>
+              ),
+            },
+          ]}
+        />
       </Slide>
 
       {/* ================================================================
           Observational Learning: Watching Others
           ================================================================ */}
       <Slide
+        className={TIGHT}
         id="observational-learning-watching-others"
         border
-        quizData={quiz["observational-learning-watching-others"]}
+        exercise={exercise["observational-learning-watching-others"]}
       >
         <PhaseRule active={[0]} />
         <Heading kicker="Observational Learning:">Watching Others</Heading>
-        <Statement className="!max-w-[36ch]">
-          Consumers do not learn only from personal rewards.{" "}
-          <Tint>They also learn by watching other people.</Tint>
-        </Statement>
-        <Figure height="auto">
-          <LearnByWatching />
-        </Figure>
-        <Big className="max-w-[40ch]">
-          This process is called <Tint>observational learning</Tint> or <Tint>modeling</Tint>.
-        </Big>
-        <ol className="mt-16 grid w-full gap-12 lg:grid-cols-3 lg:gap-8">
-          {[
+        <Lede plate={<LearnByWatching />} cols="lg:grid-cols-[1fr_1.3fr]">
+          <Statement className={cn(LEDE, "!max-w-[36ch]")}>
+            Consumers do not learn only from personal rewards.{" "}
+            <Tint>They also learn by watching other people.</Tint>
+          </Statement>{" "}
+          <Big className="mt-5 !text-[clamp(1.15rem,1.7vw,1.45rem)]">
+            This process is called <Tint>observational learning</Tint> or <Tint>modeling</Tint>.
+          </Big>
+        </Lede>
+        <Cells
+          cols={3}
+          className="mt-10"
+          items={[
             {
               key: "attention",
+              tone: "ink",
               plate: <AttendModel />,
               text: (
                 <>
@@ -558,6 +594,7 @@ export default function Week3() {
             },
             {
               key: "memory",
+              tone: "ink",
               plate: <RememberModel />,
               text: (
                 <>
@@ -569,6 +606,7 @@ export default function Week3() {
             },
             {
               key: "action",
+              tone: "signal",
               plate: <CopyPurchase />,
               text: (
                 <>
@@ -578,219 +616,261 @@ export default function Week3() {
                 </>
               ),
             },
-          ].map((s, i) => (
-            <li key={s.key} className="flex min-w-0 flex-col gap-6">
-              <div className="figure-well w-full min-w-0 p-3">{s.plate}</div>
-              <div
-                className={cn(
-                  "border-t-2 pt-5",
-                  i === 2 ? "border-[var(--signal)]" : "border-[var(--ink)]",
-                )}
-              >
-                <p className="type-body">{s.text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+          ]}
+        />
       </Slide>
 
       {/* ================================================================
           The Memory System: Three Stores
           ================================================================ */}
       <Slide
+        className={TIGHT}
         id="the-memory-system-three-stores"
         border
-        quizData={quiz["the-memory-system-three-stores"]}
+        exercise={exercise["the-memory-system-three-stores"]}
       >
         <PhaseRule active={[1]} />
         <Heading kicker="The Memory System:">Three Stores</Heading>
-        <Statement className="!max-w-[34ch]">
-          Memory is the process of <Tint>acquiring</Tint> information and{" "}
-          <Tint>storing</Tint> it over time for later use.
-        </Statement>
-        <Figure height="auto">
-          <MemoryStorageFlow />
-        </Figure>
-        <div className="grid w-full gap-12 lg:grid-cols-3 lg:gap-8">
-          <Ruled tone="ink">
-            <P>
-              <Term tone="ink">Sensory memory</Term> holds brief sensory inputs for a few seconds.
-              If an ad gets attention, it moves forward.
-            </P>
-          </Ruled>
-          <div className="flex min-w-0 flex-col gap-6">
-            <Ruled tone="ink">
-              <P>
-                <Term tone="ink">Short-term memory</Term> holds a small amount of information in
-                active consciousness for about twenty seconds.
-              </P>
-            </Ruled>{" "}
-            <Ruled tone="signal">
-              <P>
-                <Term>Chunking</Term> helps short-term memory. Brands group phone numbers or slogan
-                words into memorable chunks.
-              </P>
-            </Ruled>
-            <Plate>
-              <Chunking />
-            </Plate>
-          </div>
-          <Ruled tone="signal">
-            <P>
-              <Term>Long-term memory</Term> retains information for days, months, or years
-              through elaborative rehearsal.
-            </P>
-          </Ruled>
-        </div>
+        <Lede wide plate={<MemoryStorageFlow />}>
+          <Statement className={LEDE}>
+            Memory is the process of <Tint>acquiring</Tint> information and{" "}
+            <Tint>storing</Tint> it over time for later use.
+          </Statement>
+        </Lede>
+        <Cells
+          cols={4}
+          className="mt-10"
+          items={[
+            {
+              key: "sensory",
+              tone: "ink",
+              text: (
+                <>
+                  <Term tone="ink">Sensory memory</Term> holds brief sensory inputs for a few
+                  seconds. If an ad gets attention, it moves forward.
+                </>
+              ),
+            },
+            {
+              key: "short-term",
+              tone: "ink",
+              text: (
+                <>
+                  <Term tone="ink">Short-term memory</Term> holds a small amount of information in
+                  active consciousness for about twenty seconds.
+                </>
+              ),
+            },
+            {
+              key: "chunking",
+              tone: "signal",
+              plate: <Chunking />,
+              text: (
+                <>
+                  <Term>Chunking</Term> helps short-term memory. Brands group phone numbers or slogan
+                  words into memorable chunks.
+                </>
+              ),
+            },
+            {
+              key: "long-term",
+              tone: "signal",
+              text: (
+                <>
+                  <Term>Long-term memory</Term> retains information for days, months, or years
+                  through elaborative rehearsal.
+                </>
+              ),
+            },
+          ]}
+        />
       </Slide>
 
       {/* ================================================================
           Associative Networks and Brand Nodes
           ================================================================ */}
-      <Slide id="associative-networks-and-brand-nodes" border>
+      <Slide className={TIGHT} id="associative-networks-and-brand-nodes" border>
         <PhaseRule active={[1]} />
         <Heading>Associative Networks and Brand Nodes</Heading>
-        <Pair plate={<SpiderWeb />}>
-          <Statement>
+        <Lede plate={<SpiderWeb />} cols="lg:grid-cols-[1.4fr_1fr]">
+          <Statement className={LEDE}>
             Long-term memory stores knowledge as an <Tint>associative network</Tint>.
           </Statement>{" "}
-          <P className="mt-8">
+          <P className="mt-5">
             Think of memory as a <Term tone="ink">spider web of connected nodes</Term>. Each node
             represents a concept, brand, or feeling.
           </P>
-        </Pair>
-        <Big className="mt-20 max-w-[44ch]">
-          When you think of a brand like Nike, related nodes <Tint>light up</Tint>: running,
-          sneakers, athletes, and Just Do It.
-        </Big>
-        <Figure height="auto">
-          <BrandAssociativeNetwork />
-        </Figure>
-        <Ruled tone="signal" className="w-full">
-          <Lead className="!max-w-[56ch]">
-            <Term>Spreading activation</Term> happens when one memory node triggers nearby
-            connected nodes.
-          </Lead>
-        </Ruled>
-        <Figure height="auto">
-          <SpreadingActivation />
-        </Figure>
-        <Pair plate={<StrongLinks />}>
-          <Statement>
-            Strong positive links make a brand <Tint>easy to recall</Tint> when standing in a store
-            aisle.
-          </Statement>
-        </Pair>
+        </Lede>
+        <Cells
+          cols={3}
+          className="mt-10"
+          items={[
+            {
+              key: "nike",
+              tone: "signal",
+              plate: <BrandAssociativeNetwork />,
+              text: (
+                <>
+                  When you think of a brand like Nike, related nodes <Term>light up</Term>: running,
+                  sneakers, athletes, and Just Do It.
+                </>
+              ),
+            },
+            {
+              key: "spreading",
+              tone: "signal",
+              plate: <SpreadingActivation />,
+              text: (
+                <>
+                  <Term>Spreading activation</Term> happens when one memory node triggers nearby
+                  connected nodes.
+                </>
+              ),
+            },
+            {
+              key: "strong",
+              tone: "signal",
+              plate: <StrongLinks />,
+              text: (
+                <>
+                  Strong positive links make a brand <Term>easy to recall</Term> when standing in a
+                  store aisle.
+                </>
+              ),
+            },
+          ]}
+        />
       </Slide>
 
       {/* ================================================================
           Brand Retrieval and Cues in the Aisle
           ================================================================ */}
-      <Slide id="brand-retrieval-and-cues-in-the-aisle" border>
+      <Slide className={TIGHT} id="brand-retrieval-and-cues-in-the-aisle" border>
         <PhaseRule active={[1]} />
         <Heading>Brand Retrieval and Cues in the Aisle</Heading>
-        <Pair plate={<Retrieve />}>
-          <Statement>
+        <Lede plate={<Retrieve />} cols="lg:grid-cols-[1.4fr_1fr]">
+          <Statement className={LEDE}>
             Having information in memory is useless if the buyer{" "}
             <Tint>cannot retrieve it</Tint> at the point of purchase.
           </Statement>{" "}
-          <P className="mt-8">
+          <P className="mt-5">
             <Term tone="ink">Retrieval</Term> is the process of accessing information from
             long-term memory.
           </P>
-        </Pair>
-        <Big className="mt-20 max-w-[44ch]">
-          <Tint>Retrieval cues</Tint> trigger brand memories. Packaging shapes, colors, and logos
-          act as visual retrieval cues.
-        </Big>
-        <Figure height="auto">
-          <RetrievalCues />
-        </Figure>
-        <Ruled tone="ink" className="w-full">
-          <Lead className="!max-w-[58ch]">
-            If an ad shows a distinct green box, using that <Term>exact green box</Term> on the
-            shelf helps shoppers find the product.
-          </Lead>
-        </Ruled>
-        <Figure height="auto">
-          <GreenBox />
-        </Figure>
-        <Pair plate={<MoodMatch />}>
-          <Ruled tone="signal">
-            <P className="!text-[clamp(1.1rem,1.6vw,1.4rem)]">
-              <Term>State-dependent retrieval</Term> means buyers remember ad messages better when
-              their internal mood matches the ad.
-            </P>
-          </Ruled>
-        </Pair>
+        </Lede>
+        <Cells
+          cols={3}
+          className="mt-10"
+          items={[
+            {
+              key: "cues",
+              tone: "signal",
+              plate: <RetrievalCues />,
+              text: (
+                <>
+                  <Term>Retrieval cues</Term> trigger brand memories. Packaging shapes, colors, and
+                  logos act as visual retrieval cues.
+                </>
+              ),
+            },
+            {
+              key: "green-box",
+              tone: "ink",
+              plate: <GreenBox />,
+              text: (
+                <>
+                  If an ad shows a distinct green box, using that <Term>exact green box</Term> on
+                  the shelf helps shoppers find the product.
+                </>
+              ),
+            },
+            {
+              key: "mood",
+              tone: "signal",
+              plate: <MoodMatch />,
+              text: (
+                <>
+                  <Term>State-dependent retrieval</Term> means buyers remember ad messages better
+                  when their internal mood matches the ad.
+                </>
+              ),
+            },
+          ]}
+        />
       </Slide>
 
       {/* ================================================================
           Why Consumers Forget
           ================================================================ */}
-      <Slide id="why-consumers-forget" border>
+      <Slide className={TIGHT} id="why-consumers-forget" border>
         <PhaseRule active={[2]} />
         <Heading>Why Consumers Forget</Heading>
-        <Statement className="!max-w-[34ch]">
-          Forgetting is normal. Memory traces <Tint>fade over time</Tint> through decay.
-        </Statement>
-        <Figure height="auto">
-          <ForgettingCurve />
-        </Figure>
-        <Pair plate={<Interference />}>
-          <Ruled tone="ink">
-            <Lead>
-              <Term tone="ink">Interference</Term> also causes forgetting. New brand ads displace
-              memories of older brand messages.
-            </Lead>
-          </Ruled>
-        </Pair>
-        <Columns className="mt-20">
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                <Term>Retroactive interference</Term> occurs when new learning displaces old
-                information.
-              </>
-            }
-            plate={<Retroactive />}
-          />
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                <Term>Proactive interference</Term> occurs when older habits make it hard to learn a
-                new brand name.
-              </>
-            }
-            plate={<Proactive />}
-          />
-        </Columns>
-        <Ruled tone="counter" className="mt-20 w-full">
-          <Big className="max-w-[44ch]">
-            Marketers <Tint tone="counter">fight forgetting</Tint> with consistent visual identity,
-            reminder ads, and clear shelf placement.
-          </Big>
-        </Ruled>
-        <Figure height="auto">
-          <FightForgetting />
-        </Figure>
+        <Lede wide plate={<ForgettingCurve />} cols="lg:grid-cols-[1fr_1.5fr]">
+          <Statement className={LEDE}>
+            Forgetting is normal. Memory traces <Tint>fade over time</Tint> through decay.
+          </Statement>
+        </Lede>
+        <Cells
+          cols={3}
+          className="mt-10"
+          items={[
+            {
+              key: "interference",
+              tone: "ink",
+              plate: <Interference />,
+              text: (
+                <>
+                  <Term tone="ink">Interference</Term> also causes forgetting. New brand ads
+                  displace memories of older brand messages.
+                </>
+              ),
+            },
+            {
+              key: "retroactive",
+              tone: "signal",
+              plate: <Retroactive />,
+              text: (
+                <>
+                  <Term>Retroactive interference</Term> occurs when new learning displaces old
+                  information.
+                </>
+              ),
+            },
+            {
+              key: "proactive",
+              tone: "signal",
+              plate: <Proactive />,
+              text: (
+                <>
+                  <Term>Proactive interference</Term> occurs when older habits make it hard to learn
+                  a new brand name.
+                </>
+              ),
+            },
+          ]}
+        />
+        <div className="mt-8 w-full">
+          <Lede wide plate={<FightForgetting />} cols="lg:grid-cols-[1fr_1.5fr]">
+            <Ruled tone="counter">
+              <Big className="!text-[clamp(1.2rem,1.8vw,1.55rem)]">
+                Marketers <Tint tone="counter">fight forgetting</Tint> with consistent visual
+                identity, reminder ads, and clear shelf placement.
+              </Big>
+            </Ruled>
+          </Lede>
+        </div>
       </Slide>
 
       {/* ================================================================
           Discussion
           ================================================================ */}
-      <Slide id="discussion-your-brand-web" border>
+      <Slide className={TIGHT} id="discussion-your-brand-web" border>
         <Heading kicker="Discussion:" tone="counter">
           Your Brand Web
         </Heading>
-        <Figure height="auto" className="!mt-0">
-          <YourBrandWeb />
-        </Figure>
-        <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
-          <p className="type-quote !text-[clamp(1.35rem,2.5vw,2.1rem)] max-w-[46ch]">
-            <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
+        <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-8 md:px-12 md:py-10">
+          <p className="type-quote !text-[clamp(1.3rem,2.2vw,1.9rem)] max-w-[52ch]">
+            <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--counter)]">
               Discussion:
             </span>{" "}
             Pick a brand you buy regularly.{" "}
@@ -798,6 +878,9 @@ export default function Week3() {
             brand teach you these links through conditioning, observation, or personal experience?
           </p>
         </div>
+        <Plate wide className="mt-8">
+          <YourBrandWeb />
+        </Plate>
       </Slide>
     </SlideDeck>
   );

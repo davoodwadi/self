@@ -1,12 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  SlideDeck,
-  Slide,
-  Title,
-  Figure,
-} from "@/components/slide-components/SlideComponents";
+import { SlideDeck, Slide, Title } from "@/components/slide-components/SlideComponents";
 import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
 import exercisesData from "./exercises.json";
@@ -16,8 +11,6 @@ import {
   SensoryFlood,
   SameAdTwoImpressions,
   PerceptionFunnel,
-  SensoryWheel,
-  SenseMark,
   SightVignette,
   SoundVignette,
   SmellVignette,
@@ -27,7 +20,8 @@ import {
   FarBillboard,
   JndLadder,
   ProportionBars,
-  WebersLawScale,
+  CandyJump,
+  LaptopSliver,
   StayBelow,
   Exceed,
   Overload,
@@ -42,14 +36,13 @@ import {
   SemioticTriangle,
   SensorySignatures,
 } from "./visuals";
-import type { Sense } from "../_visuals/flat";
 
 // ============================================================================
 // CONSUMER BEHAVIOR · WEEK 02 — PERCEPTION AND SENSORY MARKETING
 // ============================================================================
 // Every line on these slides is transcribed verbatim from content.md; the
 // design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx and reuse the words of the slide they illustrate.
+// live in ./visuals.tsx (Editorial Sketch, see ../CLAUDE.md).
 //
 // SIGNAL marks what gets through (noticed, detected, the sense beyond sight
 // and sound), COUNTER the other view (the unnoticed change, the sign).
@@ -59,11 +52,15 @@ import type { Sense } from "../_visuals/flat";
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise that tests that slide
-// and the ones before it. The three stages of perception are put in order;
-// thresholds, Weber's law and Gestalt apply an idea to a case, so they are quizzes.
+// and the ones before it. The three stages of perception are put in order,
+// the three look-alike Gestalt principles are named case by case (identify);
+// thresholds and Weber's law apply one idea to a case, so they are quizzes.
 // ============================================================================
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
+
+/** Content slides trim the section's 7rem padding so each topic reads as one screen. */
+const TIGHT = "md:!py-16";
 
 type Tone = "signal" | "counter" | "ink";
 
@@ -128,11 +125,22 @@ function Ruled({
   );
 }
 
-/** A plate that lives in a column: a figure well without the 680px floor. */
-function Plate({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+/**
+ * A plate in a figure well. A `wide` (800-unit) plate keeps a legible minimum
+ * width on phones and scrolls inside its well there; from lg up it fits.
+ */
+function Plate({
+  children,
+  wide = false,
+  className = "",
+}: {
+  children: React.ReactNode;
+  wide?: boolean;
+  className?: string;
+}) {
   return (
-    <div className={cn("figure-well w-full min-w-0 p-3 sm:p-5", className)}>
-      {children}
+    <div className={cn("figure-well w-full min-w-0 p-3", wide && "overflow-x-auto", className)}>
+      {wide ? <div className="min-w-[480px] lg:min-w-0">{children}</div> : children}
     </div>
   );
 }
@@ -151,7 +159,7 @@ function Heading({
   tone?: "signal" | "counter";
 }) {
   return (
-    <div className="mb-10 w-full md:mb-14">
+    <div className="mb-8 w-full md:mb-10">
       <h2 className="type-h1 max-w-[22ch]">
         {kicker ? (
           <>
@@ -167,57 +175,41 @@ function Heading({
         ) : null}
         {children}
       </h2>
-      <div className="mt-6 h-px w-full bg-[var(--rule)]" />
+      <div className="mt-5 h-px w-full bg-[var(--rule)]" />
     </div>
   );
 }
 
-/** A line and a column plate side by side. */
-function Pair({
-  plateFirst = false,
-  plate,
-  children,
+/**
+ * A row of ruled cells, each a verbatim line with its plate beneath. Plates
+ * sit at the foot of their cell so a row of them shares one baseline.
+ */
+function Cells({
+  cols,
+  items,
   className = "",
 }: {
-  plateFirst?: boolean;
-  plate: React.ReactNode;
-  children: React.ReactNode;
+  cols: 3 | 4 | 5;
+  items: { key: string; tone: Tone; text: React.ReactNode; plate: React.ReactNode }[];
   className?: string;
 }) {
   return (
-    <div className={cn("grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-14", className)}>
-      {plateFirst ? <Plate>{plate}</Plate> : null}
-      <div className="min-w-0">{children}</div>
-      {plateFirst ? null : <Plate>{plate}</Plate>}
-    </div>
-  );
-}
-
-/** A ruled line with its plate beneath. */
-function PlateColumn({
-  tone = "ink",
-  text,
-  plate,
-}: {
-  tone?: Tone;
-  text: React.ReactNode;
-  plate: React.ReactNode;
-}) {
-  return (
-    <div className="flex min-w-0 flex-col gap-6">
-      <Ruled tone={tone}>
-        <P className="!text-[clamp(1.05rem,1.5vw,1.3rem)]">{text}</P>
-      </Ruled>
-      <Plate>{plate}</Plate>
-    </div>
-  );
-}
-
-function Columns({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <div className={cn("grid w-full items-start gap-12 lg:grid-cols-2 lg:gap-14", className)}>
-      {children}
-    </div>
+    <ol
+      className={cn(
+        "grid w-full gap-10 sm:grid-cols-2 sm:gap-x-8 lg:gap-6",
+        { 3: "lg:grid-cols-3", 4: "lg:grid-cols-4", 5: "lg:grid-cols-5" }[cols],
+        className,
+      )}
+    >
+      {items.map((s) => (
+        <li key={s.key} className="flex min-w-0 flex-col gap-4">
+          <div className={cn("border-t-2 pt-4", BORDER[s.tone])}>
+            <p className="type-body">{s.text}</p>
+          </div>
+          <Plate className="mt-auto">{s.plate}</Plate>
+        </li>
+      ))}
+    </ol>
   );
 }
 
@@ -226,7 +218,7 @@ const STAGE_NAMES = ["Exposure", "Attention", "Interpretation"];
 
 function StageRule({ active }: { active: number[] }) {
   return (
-    <ol aria-hidden className="mb-12 grid w-full grid-cols-3 gap-2 md:mb-16 sm:gap-4">
+    <ol aria-hidden className="mb-8 grid w-full grid-cols-3 gap-2 sm:gap-4 md:mb-10">
       {STAGE_NAMES.map((name, i) => {
         const on = active.includes(i);
         return (
@@ -244,32 +236,6 @@ function StageRule({ active }: { active: number[] }) {
         );
       })}
     </ol>
-  );
-}
-
-/** One sense: its glyph, the verbatim line, and a small scene. */
-function SenseRow({
-  kind,
-  beyond,
-  plate,
-  children,
-}: {
-  kind: Sense;
-  beyond: boolean;
-  plate: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <li
-      className={cn(
-        "grid min-w-0 items-center gap-6 border-t-2 pt-6 md:grid-cols-[4rem_1fr_minmax(0,22rem)] md:gap-10",
-        beyond ? "border-[var(--signal)]" : "border-[var(--rule-2)]",
-      )}
-    >
-      <SenseMark kind={kind} tone={beyond ? "var(--signal)" : "var(--ink-3)"} />
-      <p className="type-h2 !font-normal !text-[clamp(1.25rem,2vw,1.7rem)]">{children}</p>
-      <div className="figure-well w-full min-w-0 p-3">{plate}</div>
-    </li>
   );
 }
 
@@ -307,58 +273,65 @@ export default function Week2() {
       {/* ================================================================
           What Is Perception?
           ================================================================ */}
-      <Slide id="what-is-perception" border>
+      <Slide className={TIGHT} id="what-is-perception" border>
         <Heading>What Is Perception?</Heading>
-        <Statement className="!max-w-[34ch]">
-          Perception is the process of <Tint>selecting</Tint>, <Tint>organizing</Tint>, and{" "}
-          <Tint>interpreting</Tint> sensations.
-        </Statement>
-        <Figure height="auto">
-          <SelectOrganizeInterpret />
-        </Figure>
-        <div className="mt-6 grid w-full gap-8 md:grid-cols-2">
-          <Ruled tone="ink">
-            <Lead>Raw sensory inputs reach our sensory organs every second.</Lead>
-          </Ruled>{" "}
-          <Ruled tone="ink">
-            <Lead>
-              <Term tone="ink">Sights, sounds, smells, tastes, and textures</Term> flood our
-              environment.
-            </Lead>
-          </Ruled>
-        </div>
-        <Figure height="auto">
-          <SensoryFlood />
-        </Figure>
-        <Ruled tone="signal" className="w-full">
-          <Statement className="!max-w-[34ch]">
-            Perception creates <Tint>meaning</Tint> out of this <Tint tone="ink">chaos</Tint>.
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.9fr] lg:gap-12">
+          <Statement className="!text-[clamp(1.35rem,2.2vw,1.9rem)]">
+            Perception is the process of <Tint>selecting</Tint>, <Tint>organizing</Tint>, and{" "}
+            <Tint>interpreting</Tint> sensations.
           </Statement>
-        </Ruled>
-        <Figure height="auto" className="!mt-16">
-          <SameAdTwoImpressions />
-        </Figure>
-        <Big className="max-w-[46ch]">
-          Two people exposed to the <Tint tone="ink">exact same advertisement</Tint> often walk
-          away with <Tint>completely different impressions</Tint>.
-        </Big>
+          <Plate wide>
+            <SelectOrganizeInterpret />
+          </Plate>
+        </div>
+        <div className="mt-10 grid w-full items-stretch gap-10 lg:grid-cols-2 lg:gap-14">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Ruled tone="ink" className="!pt-4">
+              <P>Raw sensory inputs reach our sensory organs every second.</P>{" "}
+              <P className="mt-2">
+                <Term tone="ink">Sights, sounds, smells, tastes, and textures</Term> flood our
+                environment.
+              </P>
+            </Ruled>
+            <Plate className="mt-auto">
+              <SensoryFlood />
+            </Plate>
+          </div>
+          <div className="flex min-w-0 flex-col gap-4">
+            <Ruled tone="signal" className="!pt-4">
+              <P>
+                Perception creates <Term>meaning</Term> out of this <Term tone="ink">chaos</Term>.
+              </P>{" "}
+              <P className="mt-2">
+                Two people exposed to the <Term tone="ink">exact same advertisement</Term> often
+                walk away with <Term>completely different impressions</Term>.
+              </P>
+            </Ruled>
+            <Plate className="mt-auto">
+              <SameAdTwoImpressions />
+            </Plate>
+          </div>
+        </div>
       </Slide>
 
       {/* ================================================================
           The Three Stages of Perception
           ================================================================ */}
       <Slide
+        className={TIGHT}
         id="the-three-stages-of-perception"
         border
         exercise={exercise["the-three-stages-of-perception"]}
       >
         <StageRule active={[0, 1, 2]} />
         <Heading>The Three Stages of Perception</Heading>
-        <Lead>Perception occurs in three sequential stages.</Lead>
-        <Figure height="auto">
-          <PerceptionFunnel />
-        </Figure>
-        <ol className="grid w-full gap-10 md:grid-cols-3 md:gap-8">
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_2.2fr] lg:gap-12">
+          <Statement>Perception occurs in three sequential stages.</Statement>
+          <Plate wide>
+            <PerceptionFunnel />
+          </Plate>
+        </div>
+        <ol className="mt-10 grid w-full gap-8 md:grid-cols-3">
           {[
             {
               stage: "Stage 1 is Exposure.",
@@ -376,19 +349,24 @@ export default function Week2() {
             <li
               key={s.stage}
               className={cn(
-                "min-w-0 border-t-2 pt-5",
+                "min-w-0 border-t-2 pt-4",
                 i === 2 ? "border-[var(--signal)]" : "border-[var(--ink)]",
               )}
             >
-              <p className={cn("type-h2 !font-normal", i === 2 && "text-[var(--signal)]")}>
+              <p
+                className={cn(
+                  "type-h2 !font-normal !text-[clamp(1.25rem,1.9vw,1.6rem)]",
+                  i === 2 && "text-[var(--signal)]",
+                )}
+              >
                 {s.stage}
               </p>{" "}
-              <p className="type-body mt-5">{s.def}</p>
+              <p className="type-body mt-3">{s.def}</p>
             </li>
           ))}
         </ol>
-        <Ruled tone="ink" className="mt-16 w-full">
-          <Statement className="!max-w-[36ch]">
+        <Ruled tone="ink" className="mt-10 w-full">
+          <Statement className="!max-w-[46ch] !text-[clamp(1.2rem,1.8vw,1.5rem)]">
             Most stimuli get <Tint tone="ink">filtered out</Tint> during exposure and attention
             before reaching <Tint>interpretation</Tint>.
           </Statement>
@@ -398,49 +376,86 @@ export default function Week2() {
       {/* ================================================================
           Sensory Marketing: Beyond Sight and Sound
           ================================================================ */}
-      <Slide id="sensory-marketing-beyond-sight-and-sound" border>
+      <Slide className={TIGHT} id="sensory-marketing-beyond-sight-and-sound" border>
         <StageRule active={[0]} />
         <Heading kicker="Sensory Marketing:">Beyond Sight and Sound</Heading>
-        <Statement className="!max-w-[34ch]">
+        <Statement className="!max-w-[40ch]">
           Sensory marketing engages the consumer&apos;s <Tint>senses</Tint> to influence their
           feelings and choices.
         </Statement>
-        <Figure height="auto">
-          <SensoryWheel />
-        </Figure>
-        <ol className="flex w-full flex-col gap-10">
-          <SenseRow kind="sight" beyond={false} plate={<SightVignette />}>
-            {" "}
-            <Term tone="ink">Sight</Term> creates visual identity, package recognition, and color
-            associations.
-          </SenseRow>
-          <SenseRow kind="sound" beyond={false} plate={<SoundVignette />}>
-            {" "}
-            <Term tone="ink">Sound</Term> shapes shopping tempo and brand memory through musical
-            jingles.
-          </SenseRow>
-          <SenseRow kind="smell" beyond plate={<SmellVignette />}>
-            {" "}
-            <Term>Smell</Term> connects directly to the limbic system, triggering emotional
-            memories.
-          </SenseRow>
-          <SenseRow kind="touch" beyond plate={<TouchVignette />}>
-            {" "}
-            <Term>Touch</Term>, also called haptics, builds psychological ownership when consumers
-            hold an item.
-          </SenseRow>
-          <SenseRow kind="taste" beyond plate={<TasteVignette />}>
-            {" "}
-            <Term>Taste</Term> drives loyalty in food and beverage markets through distinct flavor
-            profiles.
-          </SenseRow>
-        </ol>
+        <Cells
+          cols={5}
+          className="mt-10"
+          items={[
+            {
+              key: "sight",
+              tone: "ink",
+              plate: <SightVignette />,
+              text: (
+                <>
+                  {" "}
+                  <Term tone="ink">Sight</Term> creates visual identity, package recognition, and
+                  color associations.
+                </>
+              ),
+            },
+            {
+              key: "sound",
+              tone: "ink",
+              plate: <SoundVignette />,
+              text: (
+                <>
+                  {" "}
+                  <Term tone="ink">Sound</Term> shapes shopping tempo and brand memory through
+                  musical jingles.
+                </>
+              ),
+            },
+            {
+              key: "smell",
+              tone: "signal",
+              plate: <SmellVignette />,
+              text: (
+                <>
+                  {" "}
+                  <Term>Smell</Term> connects directly to the limbic system, triggering emotional
+                  memories.
+                </>
+              ),
+            },
+            {
+              key: "touch",
+              tone: "signal",
+              plate: <TouchVignette />,
+              text: (
+                <>
+                  {" "}
+                  <Term>Touch</Term>, also called haptics, builds psychological ownership when
+                  consumers hold an item.
+                </>
+              ),
+            },
+            {
+              key: "taste",
+              tone: "signal",
+              plate: <TasteVignette />,
+              text: (
+                <>
+                  {" "}
+                  <Term>Taste</Term> drives loyalty in food and beverage markets through distinct
+                  flavor profiles.
+                </>
+              ),
+            },
+          ]}
+        />
       </Slide>
 
       {/* ================================================================
           Sensory Thresholds: The Limits of Awareness
           ================================================================ */}
       <Slide
+        className={TIGHT}
         id="sensory-thresholds-the-limits-of-awareness"
         border
         exercise={exercise["sensory-thresholds-the-limits-of-awareness"]}
@@ -448,183 +463,230 @@ export default function Week2() {
         <StageRule active={[0]} />
         <Heading kicker="Sensory Thresholds:">The Limits of Awareness</Heading>
         <Lead>Senses have physical and psychological limits.</Lead>
-        <Big className="mt-12 max-w-[42ch]">
-          The <Tint>absolute threshold</Tint> is the minimum amount of stimulation a person can
-          detect on a sensory channel.
-        </Big>
-        <Figure height="auto">
-          <AbsoluteThreshold />
-        </Figure>
-        <Pair plate={<FarBillboard />}>
-          <Ruled tone="ink">
-            <P className="!text-[clamp(1.1rem,1.6vw,1.4rem)]">
-              A billboard with tiny text placed far from a highway falls{" "}
-              <Term>below the absolute threshold</Term> of drivers.
-            </P>
-          </Ruled>
-        </Pair>
-        <div className="mt-20 grid w-full gap-8 md:grid-cols-2">
-          <Ruled tone="counter">
-            <Big>
-              The <Tint tone="counter">differential threshold</Tint> is the ability of a sensory
-              system to detect changes or differences between two stimuli.
-            </Big>
-          </Ruled>{" "}
-          <Ruled tone="signal">
-            <Big>
-              The minimum difference between two stimuli needed for detection is called the{" "}
-              <Tint>Just Noticeable Difference, or JND</Tint>.
-            </Big>
-          </Ruled>
-        </div>
-        <Figure height="auto">
-          <JndLadder />
-        </Figure>
+        <Cells
+          cols={3}
+          className="mt-10"
+          items={[
+            {
+              key: "absolute",
+              tone: "signal",
+              plate: <AbsoluteThreshold />,
+              text: (
+                <>
+                  The <Term>absolute threshold</Term> is the minimum amount of stimulation a person
+                  can detect on a sensory channel.
+                </>
+              ),
+            },
+            {
+              key: "billboard",
+              tone: "ink",
+              plate: <FarBillboard />,
+              text: (
+                <>
+                  A billboard with tiny text placed far from a highway falls{" "}
+                  <Term>below the absolute threshold</Term> of drivers.
+                </>
+              ),
+            },
+            {
+              key: "differential",
+              tone: "counter",
+              plate: <JndLadder />,
+              text: (
+                <>
+                  The <Term tone="counter">differential threshold</Term> is the ability of a
+                  sensory system to detect changes or differences between two stimuli.{" "}
+                  <span className="mt-2 block">
+                    The minimum difference between two stimuli needed for detection is called the{" "}
+                    <Term>Just Noticeable Difference, or JND</Term>.
+                  </span>
+                </>
+              ),
+            },
+          ]}
+        />
       </Slide>
 
       {/* ================================================================
           Weber's Law: When Differences Matter
           ================================================================ */}
       <Slide
+        className={TIGHT}
         id="webers-law-when-differences-matter"
         border
         exercise={exercise["webers-law-when-differences-matter"]}
       >
         <StageRule active={[0]} />
         <Heading kicker="Weber's Law:">When Differences Matter</Heading>
-        <Pair plate={<ProportionBars />}>
-          <Statement>
-            Weber&apos;s Law states that the <Tint tone="ink">stronger the initial stimulus</Tint>,
-            the <Tint>greater the change</Tint> must be for people to notice it.
-          </Statement>{" "}
-          <P className="mt-8">
-            The needed change is not a fixed amount. It is a{" "}
-            <Term>constant proportion</Term> of the initial intensity.
-          </P>
-        </Pair>
-        <Figure height="auto" className="!mt-16">
-          <WebersLawScale />
-        </Figure>
-        <Columns>
-          <Ruled tone="signal">
-            <P>
-              A ten-cent price increase on a one-dollar candy bar is{" "}
-              <Term>noticeable right away</Term> because it is a ten percent jump.
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
+          <div className="min-w-0">
+            <Statement className="!max-w-[36ch] !text-[clamp(1.3rem,2vw,1.75rem)]">
+              Weber&apos;s Law states that the <Tint tone="ink">stronger the initial stimulus</Tint>,
+              the <Tint>greater the change</Tint> must be for people to notice it.
+            </Statement>{" "}
+            <P className="mt-5">
+              The needed change is not a fixed amount. It is a{" "}
+              <Term>constant proportion</Term> of the initial intensity.
             </P>
-          </Ruled>
-          <Ruled tone="ink">
-            <P>
-              A ten-cent price increase on a thousand-dollar laptop will go{" "}
-              <Term tone="ink">completely unnoticed</Term>.
-            </P>
-          </Ruled>
-        </Columns>
-        <Columns className="mt-20">
-          <PlateColumn
-            tone="counter"
-            text={
-              <>
-                Marketers <Term tone="counter">stay below the JND</Term> when shrinking package
-                sizes or raising prices slightly.
-              </>
-            }
-            plate={<StayBelow />}
-          />
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                Marketers <Term>exceed the JND</Term> when redesigning a package or announcing a
-                major discount.
-              </>
-            }
-            plate={<Exceed />}
-          />
-        </Columns>
+          </div>
+          <Plate className="max-w-[440px] lg:justify-self-end">
+            <ProportionBars />
+          </Plate>
+        </div>
+        <Cells
+          cols={4}
+          className="mt-10"
+          items={[
+            {
+              key: "candy",
+              tone: "signal",
+              plate: <CandyJump />,
+              text: (
+                <>
+                  A ten-cent price increase on a one-dollar candy bar is{" "}
+                  <Term>noticeable right away</Term> because it is a ten percent jump.
+                </>
+              ),
+            },
+            {
+              key: "laptop",
+              tone: "ink",
+              plate: <LaptopSliver />,
+              text: (
+                <>
+                  A ten-cent price increase on a thousand-dollar laptop will go{" "}
+                  <Term tone="ink">completely unnoticed</Term>.
+                </>
+              ),
+            },
+            {
+              key: "below",
+              tone: "counter",
+              plate: <StayBelow />,
+              text: (
+                <>
+                  Marketers <Term tone="counter">stay below the JND</Term> when shrinking package
+                  sizes or raising prices slightly.
+                </>
+              ),
+            },
+            {
+              key: "exceed",
+              tone: "signal",
+              plate: <Exceed />,
+              text: (
+                <>
+                  Marketers <Term>exceed the JND</Term> when redesigning a package or announcing a
+                  major discount.
+                </>
+              ),
+            },
+          ]}
+        />
       </Slide>
 
       {/* ================================================================
           Attention: The Battle for Mental Energy
           ================================================================ */}
-      <Slide id="attention-the-battle-for-mental-energy" border>
+      <Slide className={TIGHT} id="attention-the-battle-for-mental-energy" border>
         <StageRule active={[1]} />
         <Heading kicker="Attention:">The Battle for Mental Energy</Heading>
-        <Big className="max-w-[44ch]">
-          Consumers face <Tint>sensory overload</Tint> from thousands of ads, notifications, and
-          store displays every day.
-        </Big>
-        <Figure height="auto">
-          <Overload />
-        </Figure>
-        <div className="grid w-full gap-x-14 gap-y-16 lg:grid-cols-2">
-          <PlateColumn
-            tone="ink"
-            text={
-              <>
-                <Term tone="ink">Selective exposure</Term> means consumers choose what media and
-                messages they see or avoid.
-              </>
-            }
-            plate={<SkipAd />}
-          />
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                <Term>Perceptual vigilance</Term> means consumers notice stimuli that relate to
-                their current needs. A hungry person notices restaurant signs.
-              </>
-            }
-            plate={<Vigilance />}
-          />
-          <PlateColumn
-            tone="signal"
-            text={
-              <>
-                <Term>Perceptual defense</Term> means consumers screen out threatening or
-                contradictory messages. Heavy smokers often ignore warning labels on cigarette
-                packs.
-              </>
-            }
-            plate={<Defense />}
-          />
-          <PlateColumn
-            tone="ink"
-            text={
-              <>
-                <Term tone="ink">Adaptation</Term> occurs when consumers no with time stop paying
-                attention to familiar stimuli.
-              </>
-            }
-            plate={<Adaptation />}
-          />
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.9fr] lg:gap-12">
+          <Big className="!text-[clamp(1.3rem,2vw,1.75rem)]">
+            Consumers face <Tint>sensory overload</Tint> from thousands of ads, notifications, and
+            store displays every day.
+          </Big>
+          <Plate wide>
+            <Overload />
+          </Plate>
         </div>
+        <Cells
+          cols={4}
+          className="mt-10"
+          items={[
+            {
+              key: "selective",
+              tone: "ink",
+              plate: <SkipAd />,
+              text: (
+                <>
+                  <Term tone="ink">Selective exposure</Term> means consumers choose what media and
+                  messages they see or avoid.
+                </>
+              ),
+            },
+            {
+              key: "vigilance",
+              tone: "signal",
+              plate: <Vigilance />,
+              text: (
+                <>
+                  <Term>Perceptual vigilance</Term> means consumers notice stimuli that relate to
+                  their current needs. A hungry person notices restaurant signs.
+                </>
+              ),
+            },
+            {
+              key: "defense",
+              tone: "signal",
+              plate: <Defense />,
+              text: (
+                <>
+                  <Term>Perceptual defense</Term> means consumers screen out threatening or
+                  contradictory messages. Heavy smokers often ignore warning labels on cigarette
+                  packs.
+                </>
+              ),
+            },
+            {
+              key: "adaptation",
+              tone: "ink",
+              plate: <Adaptation />,
+              text: (
+                <>
+                  <Term tone="ink">Adaptation</Term> occurs when consumers no with time stop paying
+                  attention to familiar stimuli.
+                </>
+              ),
+            },
+          ]}
+        />
       </Slide>
 
       {/* ================================================================
           Interpretation and Gestalt Principles
           ================================================================ */}
       <Slide
+        className={TIGHT}
         id="interpretation-and-gestalt-principles"
         border
         exercise={exercise["interpretation-and-gestalt-principles"]}
       >
         <StageRule active={[2]} />
         <Heading>Interpretation and Gestalt Principles</Heading>
-        <Pair plate={<WholeFromParts />}>
-          <Statement>
-            People do not interpret stimuli in isolation.{" "}
-            <Tint>They organize them into patterns.</Tint>
-          </Statement>{" "}
-          <P className="mt-8">
-            <Term tone="ink">Gestalt psychology</Term> explains how people construct whole
-            meanings from individual elements.
-          </P>
-        </Pair>
-        <ol className="mt-20 grid w-full gap-12 lg:grid-cols-3 lg:gap-8">
-          {[
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
+          <div className="min-w-0">
+            <Statement className="!max-w-[36ch] !text-[clamp(1.3rem,2vw,1.75rem)]">
+              People do not interpret stimuli in isolation.{" "}
+              <Tint>They organize them into patterns.</Tint>
+            </Statement>{" "}
+            <P className="mt-5">
+              <Term tone="ink">Gestalt psychology</Term> explains how people construct whole
+              meanings from individual elements.
+            </P>
+          </div>
+          <Plate className="max-w-[440px] lg:justify-self-end">
+            <WholeFromParts />
+          </Plate>
+        </div>
+        <Cells
+          cols={3}
+          className="mt-10"
+          items={[
             {
-              name: "Closure",
+              key: "closure",
+              tone: "signal",
               plate: <Closure />,
               text: (
                 <>
@@ -635,7 +697,8 @@ export default function Week2() {
               ),
             },
             {
-              name: "Similarity",
+              key: "similarity",
+              tone: "signal",
               plate: <Similarity />,
               text: (
                 <>
@@ -646,7 +709,8 @@ export default function Week2() {
               ),
             },
             {
-              name: "Figure-Ground",
+              key: "figure-ground",
+              tone: "signal",
               plate: <FigureGround />,
               text: (
                 <>
@@ -656,54 +720,55 @@ export default function Week2() {
                 </>
               ),
             },
-          ].map((g) => (
-            <li key={g.name} className="flex min-w-0 flex-col gap-6">
-              <div className="figure-well w-full min-w-0 p-3">{g.plate}</div>
-              <div className="border-t-2 border-[var(--signal)] pt-5">
-                <p className="type-body">{g.text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+          ]}
+        />
       </Slide>
 
       {/* ================================================================
           Semiotics: The Meaning of Marketing Messages
           ================================================================ */}
-      <Slide id="semiotics-the-meaning-of-marketing-messages" border>
+      <Slide className={TIGHT} id="semiotics-the-meaning-of-marketing-messages" border>
         <StageRule active={[2]} />
         <Heading kicker="Semiotics:">The Meaning of Marketing Messages</Heading>
-        <Lead>Marketers design ads to send symbolic messages to buyers.</Lead>
-        <Big className="mt-10 max-w-[40ch]">
-          <Tint>Semiotics</Tint> is the study of signs, symbols, and their assigned meanings.
-        </Big>
-        <Figure height="auto">
-          <SemioticTriangle />
-        </Figure>
-        <ol className="grid w-full gap-10 md:grid-cols-3 md:gap-8">
-          <li className="min-w-0 border-t-2 border-[var(--ink)] pt-5">
-            <p className="type-body">
-              {" "}
-              An <Term tone="ink">object</Term> is the actual product being promoted.
-            </p>
-          </li>
-          <li className="min-w-0 border-t-2 border-[var(--counter)] pt-5">
-            <p className="type-body">
-              {" "}
-              A <Term tone="counter">sign</Term> is the sensory image or symbol representing the
-              intended meaning.
-            </p>
-          </li>
-          <li className="min-w-0 border-t-2 border-[var(--signal)] pt-5">
-            <p className="type-body">
-              {" "}
-              An <Term>interpretant</Term> is the meaning or feeling derived by the consumer from
-              the sign.
-            </p>
-          </li>
-        </ol>
-        <Ruled tone="signal" className="mt-16 w-full">
-          <Statement className="!max-w-[34ch]">
+        {/* The triangle sits beside the lines it draws; on phones it follows
+            the definition of semiotics, before the three parts. */}
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.45fr] lg:gap-x-12">
+          <div className="min-w-0 lg:col-start-1 lg:row-start-1 lg:self-end">
+            <Lead>Marketers design ads to send symbolic messages to buyers.</Lead>
+            <Big className="mt-5 !text-[clamp(1.3rem,2vw,1.75rem)]">
+              <Tint>Semiotics</Tint> is the study of signs, symbols, and their assigned meanings.
+            </Big>
+          </div>
+          <Plate wide className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
+            <SemioticTriangle />
+          </Plate>
+          <div className="min-w-0 lg:col-start-1 lg:row-start-2 lg:self-start">
+            <ol className="grid w-full gap-4">
+              <li className="min-w-0 border-t-2 border-[var(--ink)] pt-3">
+                <p className="type-body">
+                  {" "}
+                  An <Term tone="ink">object</Term> is the actual product being promoted.
+                </p>
+              </li>
+              <li className="min-w-0 border-t-2 border-[var(--counter)] pt-3">
+                <p className="type-body">
+                  {" "}
+                  A <Term tone="counter">sign</Term> is the sensory image or symbol representing
+                  the intended meaning.
+                </p>
+              </li>
+              <li className="min-w-0 border-t-2 border-[var(--signal)] pt-3">
+                <p className="type-body">
+                  {" "}
+                  An <Term>interpretant</Term> is the meaning or feeling derived by the consumer
+                  from the sign.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <Ruled tone="signal" className="mt-10 w-full">
+          <Statement className="!max-w-[46ch] !text-[clamp(1.2rem,1.8vw,1.5rem)]">
             A luxury watch ad uses an image of an <Tint tone="counter">eagle</Tint> to signify{" "}
             <Tint>freedom and prestige</Tint>.
           </Statement>
@@ -713,16 +778,13 @@ export default function Week2() {
       {/* ================================================================
           Discussion
           ================================================================ */}
-      <Slide id="discussion-sensory-signatures" border>
+      <Slide className={TIGHT} id="discussion-sensory-signatures" border>
         <Heading kicker="Discussion:" tone="counter">
           Sensory Signatures
         </Heading>
-        <Figure height="auto" className="!mt-0">
-          <SensorySignatures />
-        </Figure>
-        <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
-          <p className="type-quote !text-[clamp(1.35rem,2.5vw,2.1rem)] max-w-[46ch]">
-            <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
+        <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-8 md:px-12 md:py-10">
+          <p className="type-quote !text-[clamp(1.3rem,2.2vw,1.9rem)] max-w-[52ch]">
+            <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--counter)]">
               Discussion:
             </span>{" "}
             Name a brand that you recognize instantly{" "}
@@ -731,6 +793,9 @@ export default function Week2() {
             <Tint>How does that sensory cue build brand recall?</Tint>
           </p>
         </div>
+        <Plate wide className="mt-8">
+          <SensorySignatures />
+        </Plate>
       </Slide>
     </SlideDeck>
   );

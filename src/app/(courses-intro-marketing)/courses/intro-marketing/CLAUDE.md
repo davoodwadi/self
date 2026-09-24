@@ -6,11 +6,24 @@ These rules cover every SVG plate in this course (all weeks, the landing page, a
 
 - **Palette** (defined in `(courses-intro-marketing)/globals.css`): warm bone paper `--paper` #FBFAF7, figure wells `--paper-2` #F4F1E9, filled zones `--paper-3` #ECE7DB; ink `--ink` / `--ink-2` / `--ink-3`; hairlines `--rule` / `--rule-2`; persimmon `--signal` #B23A15; teal `--counter` #22575B.
 - **Type:** Fraunces for display, Instrument Sans for body and keys. No monospace anywhere.
-- **Plate helpers** live in `week1/visuals.tsx` and are imported by every later week: `Frame`, `Key`, `Note`, `Display`, `Schematic`, and the colour constants `INK`, `INK2`, `INK3`, `RULE`, `RULE2`, `SIGNAL`, `COUNTER`, `PAPER`, `PAPER2`, `SIGNAL_TINT`, `COUNTER_TINT`. Editing them in Week 1 changes every week.
+- **Plate helpers** (`Frame`, `Key`, `Note`, `Display`, `Schematic` and the palette constants such as `INK`, `SIGNAL`, `COUNTER`) live in `_visuals/broadsheet.tsx`. Editing them changes every week.
 - **Look:** hand-built SVG, flat fills, hairline rules, no shadows or gradients. Keys are uppercase and tracked in `var(--font-label)`.
 - **Grammar:** each plate uses its own visual grammar (containment, branching, rings, hub-and-spoke, and so on). Do not repeat one node-and-arrow chart shape across a week.
 - **Invented quantities:** any shape implying a number the content does not give carries the `Schematic` mark. Never put fake numbers on a teaching axis.
 - **Wells:** 400-wide column plates go in a plain `figure-well` div, not `Figure`, whose 680px minimum makes half-width columns scroll.
+
+## Shared visuals live in `_visuals/`: reuse first, then share what you draw
+
+Every drawing in `_visuals/` is one the course has already paid for. Weeks import from there and never from another week's folder. What each file holds:
+
+- `broadsheet.tsx`: the palette constants, the plate helpers and the small geometry helpers (arrowheads, rounding, seeded hashes).
+- `objects.tsx`: people, products, places and marks. Different drawings of the same thing are numbered (`Person1`, `Person2`, …).
+
+For every plate:
+
+1. **Look before you draw.** Search `_visuals/` for the glyph, object or helper the plate needs, including every numbered version, and use the one that fits. Position, size and colour props usually cover the difference.
+2. **Extend when it almost fits.** Add an optional prop to the existing piece, with a default that keeps every current plate unchanged.
+3. **Add to `_visuals/` when nothing fits.** Draw the new piece straight into the file it belongs in and import it into the week; a new drawing of an existing thing takes the next number (`Person4`). A piece still sitting in a week's folder moves to `_visuals/` the moment another week needs it. A week's `visuals.tsx` holds only its plates, the slide-specific compositions.
 
 ## SVG rules
 

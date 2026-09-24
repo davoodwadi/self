@@ -21,308 +21,42 @@
 
 import React from "react";
 import {
-  Key,
-  Note,
+  COUNTER,
+  COUNTER_TINT,
   Display,
   Frame,
-  Schematic,
+  headAlong1,
   INK,
   INK3,
-  RULE,
-  RULE2,
-  SIGNAL,
-  COUNTER,
+  Key,
+  Note,
   PAPER,
   PAPER2,
+  RULE,
+  RULE2,
+  Schematic,
+  SIGNAL,
   SIGNAL_TINT,
-  COUNTER_TINT,
-} from "../week1/visuals";
+} from "../_visuals/broadsheet";
+import {
+  Arrow2,
+  Coins1,
+  Factory3,
+  Pack4,
+  Person3,
+  Sheet,
+  Store2,
+  Truck2,
+  TwoWay1,
+  Warehouse,
+} from "../_visuals/objects";
 
 /* -- geometry helpers ------------------------------------------------------ */
-
-/** Open chevron arrowhead pointing along (dx, dy), tip at (x, y). */
-function headAlong(x: number, y: number, dx: number, dy: number, s = 8) {
-  const len = Math.hypot(dx, dy) || 1;
-  const ux = dx / len;
-  const uy = dy / len;
-  const bx = x - ux * s;
-  const by = y - uy * s;
-  const px = -uy * (s * 0.62);
-  const py = ux * (s * 0.62);
-  return `M${(bx + px).toFixed(2)} ${(by + py).toFixed(2)}L${x.toFixed(2)} ${y.toFixed(2)}L${(bx - px).toFixed(2)} ${(by - py).toFixed(2)}`;
-}
-
-/** A straight arrow from (x1, y1) to (x2, y2). */
-function Arrow({
-  x1,
-  y1,
-  x2,
-  y2,
-  tone = INK,
-  width = 1.5,
-  dash,
-  size = 8,
-}: {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-  tone?: string;
-  width?: number;
-  dash?: string;
-  size?: number;
-}) {
-  return (
-    <g>
-      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={tone} strokeWidth={width} strokeDasharray={dash} />
-      <path d={headAlong(x2, y2, x2 - x1, y2 - y1, size)} fill="none" stroke={tone} strokeWidth={width} />
-    </g>
-  );
-}
-
-/** An arrow with a head at both ends — a two-way flow. */
-function TwoWay({
-  x1,
-  y1,
-  x2,
-  y2,
-  tone = INK3,
-  width = 1.25,
-  dash,
-}: {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-  tone?: string;
-  width?: number;
-  dash?: string;
-}) {
-  return (
-    <g>
-      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={tone} strokeWidth={width} strokeDasharray={dash} />
-      <path d={headAlong(x2, y2, x2 - x1, y2 - y1)} fill="none" stroke={tone} strokeWidth={width} />
-      <path d={headAlong(x1, y1, x1 - x2, y1 - y2)} fill="none" stroke={tone} strokeWidth={width} />
-    </g>
-  );
-}
 
 /* -- the cast of the week -------------------------------------------------- */
 /* The same five glyphs stand for the same five parties on every plate: a
    factory is the producer, a warehouse the wholesaler, a crate the jobber's
    broken bulk, a shopfront the retailer, a person the final consumer. */
-
-/** A factory, centred on x, standing on y. About 58 wide, 50 tall. */
-export function Factory({
-  x,
-  y,
-  tone = INK,
-  fill = PAPER,
-  k = 1,
-  dash,
-}: {
-  x: number;
-  y: number;
-  tone?: string;
-  fill?: string;
-  k?: number;
-  dash?: string;
-}) {
-  return (
-    <path
-      d={`M${x - 29 * k} ${y} V${y - 26 * k} L${x - 14 * k} ${y - 37 * k} V${y - 26 * k} L${x + 1 * k} ${y - 37 * k} V${y - 26 * k} L${x + 12 * k} ${y - 37 * k} V${y - 52 * k} H${x + 23 * k} V${y} Z`}
-      fill={fill}
-      stroke={tone}
-      strokeWidth={1.5}
-      strokeLinejoin="round"
-      strokeDasharray={dash}
-    />
-  );
-}
-
-/** A warehouse with a shutter, centred on x, standing on y. About 64 wide. */
-export function Warehouse({
-  x,
-  y,
-  tone = INK,
-  fill = PAPER,
-  k = 1,
-  dash,
-}: {
-  x: number;
-  y: number;
-  tone?: string;
-  fill?: string;
-  k?: number;
-  dash?: string;
-}) {
-  return (
-    <g strokeLinejoin="round" strokeDasharray={dash}>
-      <path
-        d={`M${x - 32 * k} ${y} V${y - 28 * k} L${x} ${y - 46 * k} L${x + 32 * k} ${y - 28 * k} V${y} Z`}
-        fill={fill}
-        stroke={tone}
-        strokeWidth={1.5}
-      />
-      <rect x={x - 15 * k} y={y - 22 * k} width={30 * k} height={22 * k} fill={PAPER2} stroke={tone} strokeWidth={1.25} />
-      <path
-        d={`M${x - 15 * k} ${y - 16 * k} H${x + 15 * k} M${x - 15 * k} ${y - 10 * k} H${x + 15 * k}`}
-        stroke={tone}
-        strokeWidth={1}
-      />
-    </g>
-  );
-}
-
-/** A shopfront with an awning, centred on x, standing on y. About 62 wide. */
-export function Store({
-  x,
-  y,
-  tone = INK,
-  fill = PAPER,
-  k = 1,
-  dash,
-}: {
-  x: number;
-  y: number;
-  tone?: string;
-  fill?: string;
-  k?: number;
-  dash?: string;
-}) {
-  return (
-    <g strokeLinejoin="round" strokeDasharray={dash}>
-      <rect x={x - 24 * k} y={y - 30 * k} width={48 * k} height={30 * k} fill={fill} stroke={tone} strokeWidth={1.5} />
-      <path
-        d={`M${x - 28 * k} ${y - 44 * k} H${x + 28 * k} L${x + 31 * k} ${y - 30 * k} H${x - 31 * k} Z`}
-        fill={PAPER2}
-        stroke={tone}
-        strokeWidth={1.5}
-      />
-      <rect x={x - 7 * k} y={y - 18 * k} width={14 * k} height={18 * k} fill={PAPER2} stroke={tone} strokeWidth={1.25} />
-    </g>
-  );
-}
-
-/** A person glyph standing on (x, y). k scales it; 1 is 34 units tall. */
-export function Person({
-  x,
-  y,
-  k = 1,
-  stroke = INK,
-  fill = PAPER,
-  width = 1.5,
-}: {
-  x: number;
-  y: number;
-  k?: number;
-  stroke?: string;
-  fill?: string;
-  width?: number;
-}) {
-  const w = 10 * k;
-  const top = y - 21 * k;
-  const shoulder = y - 12 * k;
-  return (
-    <g>
-      <circle cx={x} cy={y - 28 * k} r={6 * k} fill={fill} stroke={stroke} strokeWidth={width} />
-      <path
-        d={`M${x - w} ${y}V${shoulder}Q${x - w} ${top} ${x} ${top}Q${x + w} ${top} ${x + w} ${shoulder}V${y}Z`}
-        fill={fill}
-        stroke={stroke}
-        strokeWidth={width}
-        strokeLinejoin="round"
-      />
-    </g>
-  );
-}
-
-/** A crate or carton, centred on x, bottom at y. */
-export function Pack({
-  x,
-  y,
-  w = 34,
-  h = 30,
-  tone = INK,
-  fill = PAPER,
-  dash,
-}: {
-  x: number;
-  y: number;
-  w?: number;
-  h?: number;
-  tone?: string;
-  fill?: string;
-  dash?: string;
-}) {
-  return (
-    <g>
-      <rect x={x - w / 2} y={y - h} width={w} height={h} fill={fill} stroke={tone} strokeWidth={1.5} strokeDasharray={dash} />
-      <path d={`M${x - w / 2} ${y - h + Math.round(h / 4)}H${x + w / 2}`} stroke={tone} strokeWidth={1} strokeDasharray={dash} />
-    </g>
-  );
-}
-
-/** A delivery truck, centred on x, wheels on y. About 70 wide. */
-export function Truck({ x, y, tone = INK, k = 1 }: { x: number; y: number; tone?: string; k?: number }) {
-  return (
-    <g strokeLinejoin="round">
-      <rect x={x - 32 * k} y={y - 34 * k} width={38 * k} height={26 * k} fill={PAPER} stroke={tone} strokeWidth={1.5} />
-      <path
-        d={`M${x + 6 * k} ${y - 8 * k} V${y - 26 * k} H${x + 20 * k} L${x + 30 * k} ${y - 16 * k} V${y - 8 * k} Z`}
-        fill={PAPER}
-        stroke={tone}
-        strokeWidth={1.5}
-      />
-      <circle cx={x - 20 * k} cy={y - 5 * k} r={5 * k} fill={PAPER} stroke={tone} strokeWidth={1.5} />
-      <circle cx={x + 18 * k} cy={y - 5 * k} r={5 * k} fill={PAPER} stroke={tone} strokeWidth={1.5} />
-    </g>
-  );
-}
-
-/** A stack of coins centred on x, bottom coin at y. */
-export function Coins({ x, y, n = 4, rx = 13, tone = INK }: { x: number; y: number; n?: number; rx?: number; tone?: string }) {
-  return (
-    <g>
-      {Array.from({ length: n }, (_, i) => (
-        <ellipse key={i} cx={x} cy={y - i * 7} rx={rx} ry={4.5} fill={PAPER} stroke={tone} strokeWidth={1.25} />
-      ))}
-    </g>
-  );
-}
-
-/** A sheet of paper with ruled lines: a contract, an order, a report. */
-export function Sheet({
-  x,
-  y,
-  w = 38,
-  h = 48,
-  tone = INK,
-  fill = PAPER,
-  lines = 4,
-  seal,
-}: {
-  x: number;
-  y: number;
-  w?: number;
-  h?: number;
-  tone?: string;
-  fill?: string;
-  lines?: number;
-  seal?: string;
-}) {
-  const l = x - w / 2;
-  const t = y - h / 2;
-  return (
-    <g>
-      <rect x={l} y={t} width={w} height={h} fill={fill} stroke={tone} strokeWidth={1.5} />
-      {Array.from({ length: lines }, (_, i) => (
-        <line key={i} x1={l + 6} y1={t + 10 + i * 8} x2={l + w - 6} y2={t + 10 + i * 8} stroke={INK3} strokeWidth={1} />
-      ))}
-      {seal ? <circle cx={x + w / 2 - 9} cy={y + h / 2 - 9} r={5} fill={seal} /> : null}
-    </g>
-  );
-}
 
 /** A clash: two short strokes meeting at a struck point. */
 export function Clash({ x, y, k = 1, tone = SIGNAL }: { x: number; y: number; k?: number; tone?: string }) {
@@ -369,11 +103,11 @@ export function ProductionToConsumption() {
       label="A factory on the left marked production, a truck and a shopfront between, and a person on the right marked consumption. An arrow runs the whole width."
     >
       <line x1={30} y1={112} x2={570} y2={112} stroke={RULE} strokeWidth={1.25} />
-      <Factory x={72} y={112} />
-      <Truck x={218} y={112} k={0.9} tone={SIGNAL} />
-      <Store x={368} y={112} />
-      <Person x={520} y={112} k={1.35} />
-      <Arrow x1={110} y1={40} x2={488} y2={40} tone={SIGNAL} width={1.5} />
+      <Factory3 x={72} y={112} />
+      <Truck2 x={218} y={112} k={0.9} tone={SIGNAL} />
+      <Store2 x={368} y={112} />
+      <Person3 x={520} y={112} k={1.35} />
+      <Arrow2 x1={110} y1={40} x2={488} y2={40} tone={SIGNAL} width={1.5} />
       <Under x={72} y={128} fill={INK}>
         PRODUCTION
       </Under>
@@ -435,15 +169,15 @@ export function MakeAvailable() {
       height={232}
       label="Above: the product finished at the plant, with the buyer far off across a dashed gap and nothing joining them. Below: the same product on a shelf the buyer is standing at, reaching for it."
     >
-      <Factory x={52} y={88} k={0.72} tone={INK3} />
-      <Pack x={112} y={88} w={34} h={30} tone={INK3} fill={PAPER2} />
+      <Factory3 x={52} y={88} k={0.72} tone={INK3} />
+      <Pack4 x={112} y={88} w={34} h={30} tone={INK3} fill={PAPER2} />
       <line x1={24} y1={88} x2={140} y2={88} stroke={INK3} strokeWidth={1.75} />
       <Key x={82} y={108} anchor="middle" fill={INK3} size={9.5}>
         MADE
       </Key>
       <path d="M156 74 H310" stroke={RULE2} strokeWidth={1.25} strokeDasharray="5 5" />
       <Clash x={233} y={74} k={0.34} tone={RULE2} />
-      <Person x={352} y={88} k={1.1} stroke={INK3} />
+      <Person3 x={352} y={88} k={1.1} stroke={INK3} />
       <Key x={352} y={108} anchor="middle" fill={INK3} size={9.5}>
         A BUYER
       </Key>
@@ -451,15 +185,15 @@ export function MakeAvailable() {
       <line x1={20} y1={126} x2={380} y2={126} stroke={RULE} strokeWidth={1} />
 
       <Warehouse x={60} y={200} k={0.66} tone={SIGNAL} fill={SIGNAL_TINT} />
-      <Store x={140} y={200} k={0.62} tone={SIGNAL} fill={SIGNAL_TINT} />
-      <Arrow x1={92} y1={166} x2={116} y2={166} tone={SIGNAL} width={1.5} size={6} />
+      <Store2 x={140} y={200} k={0.62} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Arrow2 x1={92} y1={166} x2={116} y2={166} tone={SIGNAL} width={1.5} size={6} />
       <Key x={100} y={148} anchor="middle" fill={SIGNAL} size={9.5}>
         THESE ORGANIZATIONS
       </Key>
       <line x1={188} y1={200} x2={376} y2={200} stroke={INK} strokeWidth={2.5} />
-      <Pack x={228} y={200} w={38} h={34} tone={SIGNAL} fill={SIGNAL_TINT} />
-      <Arrow x1={176} y1={182} x2={206} y2={182} tone={SIGNAL} width={1.5} size={6} />
-      <Person x={318} y={200} k={1.2} />
+      <Pack4 x={228} y={200} w={38} h={34} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Arrow2 x1={176} y1={182} x2={206} y2={182} tone={SIGNAL} width={1.5} size={6} />
+      <Person3 x={318} y={200} k={1.2} />
       {/* the buyer's arm, reaching from the shoulder to the product on the shelf */}
       <path d="M303 178 L256 186" stroke={INK} strokeWidth={2} strokeLinecap="round" />
       <Key x={282} y={224} anchor="middle" fill={SIGNAL} size={9.5}>
@@ -486,8 +220,8 @@ export function ChannelSpan() {
     >
       <path d="M16 200 H150 V300 H16 Z" fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
       <path d="M650 200 H784 V300 H650 Z" fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
-      <Factory x={82} y={198} />
-      <Person x={716} y={198} k={1.4} />
+      <Factory3 x={82} y={198} />
+      <Person3 x={716} y={198} k={1.4} />
       <Under x={82} y={222} fill={INK}>
         PRODUCERS
       </Under>
@@ -504,8 +238,8 @@ export function ChannelSpan() {
       <Key x={400} y={138} anchor="middle" fill={SIGNAL} size={10.5}>
         THE MARKETING CHANNEL BRIDGES
       </Key>
-      <Arrow x1={110} y1={158} x2={148} y2={158} tone={SIGNAL} width={1.5} />
-      <Arrow x1={652} y1={158} x2={690} y2={158} tone={SIGNAL} width={1.5} />
+      <Arrow2 x1={110} y1={158} x2={148} y2={158} tone={SIGNAL} width={1.5} />
+      <Arrow2 x1={652} y1={158} x2={690} y2={158} tone={SIGNAL} width={1.5} />
       {piers.map((p) => (
         <g key={p.name}>
           <rect x={p.x - 7} y={166} width={14} height={62} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
@@ -536,7 +270,7 @@ export function LargerNetwork() {
       <Key x={38} y={46} fill={COUNTER} size={11}>
         A LARGER VALUE DELIVERY NETWORK
       </Key>
-      <Pack x={92} y={166} w={44} h={38} />
+      <Pack4 x={92} y={166} w={44} h={38} />
       <Key x={92} y={192} anchor="middle" fill={INK} size={10}>
         SUPPLIERS
       </Key>
@@ -544,12 +278,12 @@ export function LargerNetwork() {
       <Key x={394} y={104} anchor="middle" fill={SIGNAL} size={10}>
         MARKETING CHANNELS
       </Key>
-      <Factory x={272} y={166} k={0.7} tone={SIGNAL} />
+      <Factory3 x={272} y={166} k={0.7} tone={SIGNAL} />
       <Warehouse x={394} y={166} k={0.66} tone={SIGNAL} />
-      <Store x={512} y={166} k={0.66} tone={SIGNAL} />
-      <Arrow x1={124} y1={140} x2={190} y2={140} tone={COUNTER} width={1.5} size={7} />
-      <Arrow x1={598} y1={140} x2={664} y2={140} tone={COUNTER} width={1.5} size={7} />
-      <Person x={706} y={166} k={1.3} />
+      <Store2 x={512} y={166} k={0.66} tone={SIGNAL} />
+      <Arrow2 x1={124} y1={140} x2={190} y2={140} tone={COUNTER} width={1.5} size={7} />
+      <Arrow2 x1={598} y1={140} x2={664} y2={140} tone={COUNTER} width={1.5} size={7} />
+      <Person3 x={706} y={166} k={1.3} />
       <Key x={706} y={192} anchor="middle" fill={INK} size={10}>
         CUSTOMERS
       </Key>
@@ -581,21 +315,21 @@ export function NetworkMembers() {
           <rect x={m.x - 74} y={40} width={148} height={112} fill={PAPER} stroke={m.glyph === "factory" ? SIGNAL : INK} strokeWidth={m.glyph === "factory" ? 1.75 : 1.25} />
           {m.glyph === "pack" ? (
             <g>
-              <Pack x={m.x - 18} y={124} w={34} h={30} />
-              <Pack x={m.x + 20} y={124} w={34} h={44} />
+              <Pack4 x={m.x - 18} y={124} w={34} h={30} />
+              <Pack4 x={m.x + 20} y={124} w={34} h={44} />
             </g>
           ) : null}
-          {m.glyph === "factory" ? <Factory x={m.x} y={124} tone={SIGNAL} fill={SIGNAL_TINT} /> : null}
+          {m.glyph === "factory" ? <Factory3 x={m.x} y={124} tone={SIGNAL} fill={SIGNAL_TINT} /> : null}
           {m.glyph === "warehouse" ? <Warehouse x={m.x} y={124} /> : null}
-          {m.glyph === "person" ? <Person x={m.x} y={124} k={1.5} /> : null}
+          {m.glyph === "person" ? <Person3 x={m.x} y={124} k={1.5} /> : null}
           <Key x={m.x} y={172} anchor="middle" fill={m.glyph === "factory" ? SIGNAL : INK} size={10}>
             {m.name}
           </Key>
         </g>
       ))}
-      <TwoWay x1={182} y1={96} x2={224} y2={96} tone={COUNTER} />
-      <TwoWay x1={380} y1={96} x2={422} y2={96} tone={COUNTER} />
-      <TwoWay x1={578} y1={96} x2={620} y2={96} tone={COUNTER} />
+      <TwoWay1 x1={182} y1={96} x2={224} y2={96} tone={COUNTER} />
+      <TwoWay1 x1={380} y1={96} x2={422} y2={96} tone={COUNTER} />
+      <TwoWay1 x1={578} y1={96} x2={620} y2={96} tone={COUNTER} />
       <line x1={30} y1={198} x2={772} y2={198} stroke={COUNTER} strokeWidth={1.5} />
       <line x1={30} y1={192} x2={30} y2={204} stroke={COUNTER} strokeWidth={1.5} />
       <line x1={772} y1={192} x2={772} y2={204} stroke={COUNTER} strokeWidth={1.5} />
@@ -632,7 +366,7 @@ export function SystemPerformance() {
       <Key x={189} y={84} anchor="middle" fill={PAPER} size={10}>
         THE ENTIRE SYSTEM
       </Key>
-      <Arrow x1={344} y1={140} x2={344} y2={70} tone={COUNTER} width={1.75} />
+      <Arrow2 x1={344} y1={140} x2={344} y2={70} tone={COUNTER} width={1.75} />
       <Key x={376} y={158} anchor="end" fill={COUNTER} size={9.5}>
         IMPROVE
       </Key>
@@ -678,8 +412,8 @@ export function InformationHub() {
         const by = Math.round(162 - uy * 82);
         return (
           <g key={i}>
-            <TwoWay x1={ax} y1={ay} x2={bx} y2={by} tone={COUNTER} width={1.5} />
-            {s.glyph === "factory" ? <Factory x={s.x} y={s.y + 26} /> : <Person x={s.x} y={s.y + 26} k={1.4} />}
+            <TwoWay1 x1={ax} y1={ay} x2={bx} y2={by} tone={COUNTER} width={1.5} />
+            {s.glyph === "factory" ? <Factory3 x={s.x} y={s.y + 26} /> : <Person3 x={s.x} y={s.y + 26} k={1.4} />}
             <Key x={s.x} y={s.y - 32} anchor="middle" fill={INK} size={10}>
               {s.name}
             </Key>
@@ -707,7 +441,7 @@ export function MoreThanAlone() {
       height={272}
       label="Above, the firm on its own runs a line to each of three buyers. Below, the same firm runs one line to an intermediary, which runs a line to each of sixteen."
     >
-      <Factory x={50} y={98} k={0.78} tone={INK3} />
+      <Factory3 x={50} y={98} k={0.78} tone={INK3} />
       <Key x={50} y={118} anchor="middle" fill={INK3} size={9.5}>
         ON ITS OWN
       </Key>
@@ -715,24 +449,24 @@ export function MoreThanAlone() {
         <line key={y} x1={82} y1={70} x2={142} y2={y} stroke={INK3} strokeWidth={1} />
       ))}
       {few.map((y) => (
-        <Person key={y} x={158} y={y + 11} k={0.66} stroke={INK3} />
+        <Person3 key={y} x={158} y={y + 11} k={0.66} stroke={INK3} />
       ))}
       <line x1={20} y1={136} x2={380} y2={136} stroke={RULE} strokeWidth={1} />
 
-      <Factory x={50} y={230} k={0.78} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Factory3 x={50} y={230} k={0.78} tone={SIGNAL} fill={SIGNAL_TINT} />
       <Key x={50} y={248} anchor="middle" fill={SIGNAL} size={9.5}>
         THROUGH THEM
       </Key>
-      <Arrow x1={84} y1={200} x2={124} y2={200} tone={SIGNAL} width={1.75} size={7} />
+      <Arrow2 x1={84} y1={200} x2={124} y2={200} tone={SIGNAL} width={1.75} size={7} />
       <Warehouse x={166} y={224} k={0.8} tone={SIGNAL} fill={SIGNAL_TINT} />
       {many.map((y) => (
         <line key={y} x1={200} y1={200} x2={252} y2={y + 11} stroke={SIGNAL} strokeWidth={0.9} />
       ))}
       {many.map((y) => (
-        <Person key={y} x={268} y={y + 22} k={0.62} stroke={SIGNAL} />
+        <Person3 key={y} x={268} y={y + 22} k={0.62} stroke={SIGNAL} />
       ))}
       {many.map((y) => (
-        <Person key={`b${y}`} x={312} y={y + 22} k={0.62} stroke={SIGNAL} />
+        <Person3 key={`b${y}`} x={312} y={y + 22} k={0.62} stroke={SIGNAL} />
       ))}
       <Key x={376} y={266} anchor="end" fill={SIGNAL} size={9.5}>
         MORE THAN IT CAN ACHIEVE ALONE
@@ -882,8 +616,8 @@ export function AssortmentTransform() {
       <Key x={400} y={186} anchor="middle" fill={SIGNAL} size={10}>
         THE ASSORTMENTS
       </Key>
-      <Arrow x1={256} y1={158} x2={296} y2={158} tone={SIGNAL} width={1.75} />
-      <Arrow x1={504} y1={158} x2={548} y2={158} tone={SIGNAL} width={1.75} />
+      <Arrow2 x1={256} y1={158} x2={296} y2={158} tone={SIGNAL} width={1.75} />
+      <Arrow2 x1={504} y1={158} x2={548} y2={158} tone={SIGNAL} width={1.75} />
 
       <Key x={664} y={30} anchor="middle" fill={INK} size={10}>
         WANTED BY CONSUMERS
@@ -928,9 +662,9 @@ export function FnInformation() {
       label="Two groups, one of consumers and one of competitors, each under its own magnifier. What both lenses find is collected into one report."
     >
       <rect x={20} y={48} width={144} height={96} fill={PAPER} stroke={INK} strokeWidth={1.25} />
-      <Person x={56} y={130} k={0.88} />
-      <Person x={92} y={130} k={0.88} />
-      <Person x={128} y={130} k={0.88} />
+      <Person3 x={56} y={130} k={0.88} />
+      <Person3 x={92} y={130} k={0.88} />
+      <Person3 x={128} y={130} k={0.88} />
       <Key x={92} y={70} anchor="middle" fill={INK} size={9.5}>
         CONSUMERS
       </Key>
@@ -939,8 +673,8 @@ export function FnInformation() {
         <line x1={110} y1={131} x2={124} y2={146} stroke={SIGNAL} strokeWidth={3} strokeLinecap="round" />
       </g>
       <rect x={186} y={48} width={126} height={96} fill={PAPER} stroke={COUNTER} strokeWidth={1.25} />
-      <Factory x={222} y={134} k={0.6} tone={COUNTER} />
-      <Factory x={276} y={134} k={0.6} tone={COUNTER} />
+      <Factory3 x={222} y={134} k={0.6} tone={COUNTER} />
+      <Factory3 x={276} y={134} k={0.6} tone={COUNTER} />
       <Key x={249} y={70} anchor="middle" fill={COUNTER} size={9.5}>
         COMPETITORS
       </Key>
@@ -951,7 +685,7 @@ export function FnInformation() {
       <Sheet x={358} y={96} w={48} h={62} tone={SIGNAL} lines={5} />
       <path d="M92 156 V170 H358 V132" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
       <path d="M249 156 V170" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
-      <path d={headAlong(358, 128, 0, -1)} fill="none" stroke={SIGNAL} strokeWidth={1.25} />
+      <path d={headAlong1(358, 128, 0, -1)} fill="none" stroke={SIGNAL} strokeWidth={1.25} />
       <Key x={200} y={194} anchor="middle" fill={SIGNAL} size={10}>
         INFORMATION GATHERING
       </Key>
@@ -970,7 +704,7 @@ export function FnPromotion() {
       <Key x={58} y={150} anchor="middle" fill={INK} size={9.5}>
         AN OFFER
       </Key>
-      <Arrow x1={92} y1={96} x2={116} y2={96} tone={INK3} width={1.25} size={7} />
+      <Arrow2 x1={92} y1={96} x2={116} y2={96} tone={INK3} width={1.25} size={7} />
       <path d="M134 78 H158 L196 52 V140 L158 114 H134 Z" fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} strokeLinejoin="round" />
       {[24, 42, 60].map((r, i) => (
         <path
@@ -983,7 +717,7 @@ export function FnPromotion() {
         />
       ))}
       {[62, 96, 130].map((y) => (
-        <Person key={y} x={352} y={y + 14} k={0.72} stroke={INK} />
+        <Person3 key={y} x={352} y={y + 14} k={0.72} stroke={INK} />
       ))}
       <Key x={200} y={186} anchor="middle" fill={SIGNAL} size={10}>
         DEVELOPMENT AND DISSEMINATION
@@ -1013,8 +747,8 @@ export function FnContacting() {
       </Key>
       {pairs.map((p, i) => (
         <g key={i}>
-          <Pack x={76} y={p.oy + 16} w={40} h={32} tone={p.tone} fill={i === 0 ? SIGNAL_TINT : PAPER} />
-          <Person x={324} y={p.by + 20} k={0.92} stroke={p.tone} />
+          <Pack4 x={76} y={p.oy + 16} w={40} h={32} tone={p.tone} fill={i === 0 ? SIGNAL_TINT : PAPER} />
+          <Person3 x={324} y={p.by + 20} k={0.92} stroke={p.tone} />
           <path
             d={`M100 ${p.oy} C180 ${p.oy} 224 ${p.by} 300 ${p.by}`}
             fill="none"
@@ -1038,8 +772,8 @@ export function FnNegotiating() {
       height={FN_H}
       label="Two parties face each other across a table holding price and terms. Once they agree, the title to the goods passes from one side to the other."
     >
-      <Person x={56} y={112} k={1.15} />
-      <Person x={344} y={112} k={1.15} stroke={COUNTER} />
+      <Person3 x={56} y={112} k={1.15} />
+      <Person3 x={344} y={112} k={1.15} stroke={COUNTER} />
       <rect x={112} y={54} width={176} height={58} fill={PAPER} stroke={INK} strokeWidth={1.25} />
       <Key x={200} y={76} anchor="middle" fill={INK} size={9.5}>
         PRICE
@@ -1047,11 +781,11 @@ export function FnNegotiating() {
       <Key x={200} y={98} anchor="middle" fill={INK} size={9.5}>
         AND OTHER TERMS
       </Key>
-      <TwoWay x1={90} y1={82} x2={108} y2={82} tone={INK3} />
-      <TwoWay x1={292} y1={82} x2={310} y2={82} tone={INK3} />
+      <TwoWay1 x1={90} y1={82} x2={108} y2={82} tone={INK3} />
+      <TwoWay1 x1={292} y1={82} x2={310} y2={82} tone={INK3} />
       <line x1={24} y1={126} x2={376} y2={126} stroke={RULE} strokeWidth={1} />
       <Sheet x={140} y={152} w={38} h={44} tone={SIGNAL} lines={3} seal={SIGNAL} />
-      <Arrow x1={168} y1={152} x2={246} y2={152} tone={SIGNAL} width={1.75} />
+      <Arrow2 x1={168} y1={152} x2={246} y2={152} tone={SIGNAL} width={1.75} />
       <Key x={266} y={156} fill={SIGNAL} size={9.5}>
         OWNERSHIP
       </Key>
@@ -1075,10 +809,10 @@ export function FnPhysical() {
       {[0, 1, 2, 3, 4, 5].map((i) => (
         <line key={i} x1={112 + i * 44} y1={132} x2={132 + i * 44} y2={132} stroke={RULE2} strokeWidth={2} />
       ))}
-      <Pack x={124} y={122} w={30} h={26} tone={SIGNAL} fill={SIGNAL_TINT} />
-      <Truck x={228} y={122} k={1.05} tone={SIGNAL} />
-      <Store x={340} y={122} k={0.86} />
-      <Arrow x1={110} y1={58} x2={300} y2={58} tone={SIGNAL} width={1.5} />
+      <Pack4 x={124} y={122} w={30} h={26} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Truck2 x={228} y={122} k={1.05} tone={SIGNAL} />
+      <Store2 x={340} y={122} k={0.86} />
+      <Arrow2 x1={110} y1={58} x2={300} y2={58} tone={SIGNAL} width={1.5} />
       <Key x={200} y={44} anchor="middle" fill={SIGNAL} size={9.5}>
         GOODS MOVE
       </Key>
@@ -1097,16 +831,16 @@ export function FnFinancing() {
       height={FN_H}
       label="Coins paid down to fund the channel's work, drawn as a beam the intermediary holds up while also carrying a block marked risk."
     >
-      <Coins x={70} y={104} n={5} rx={22} tone={SIGNAL} />
+      <Coins1 x={70} y={104} n={5} rx={22} tone={SIGNAL} />
       <Key x={70} y={126} anchor="middle" fill={SIGNAL} size={9.5}>
         FINANCING
       </Key>
-      <Arrow x1={104} y1={82} x2={150} y2={82} tone={SIGNAL} width={1.5} size={7} />
+      <Arrow2 x1={104} y1={82} x2={150} y2={82} tone={SIGNAL} width={1.5} size={7} />
       <rect x={162} y={64} width={126} height={38} fill={PAPER} stroke={INK} strokeWidth={1.5} />
       <Key x={225} y={88} anchor="middle" fill={INK} size={9.5}>
         CHANNEL WORK
       </Key>
-      <Person x={225} y={152} k={1.2} />
+      <Person3 x={225} y={152} k={1.2} />
       <rect x={300} y={54} width={76} height={48} fill={SIGNAL} />
       <Key x={338} y={82} anchor="middle" fill={PAPER} size={10}>
         RISKS
@@ -1130,11 +864,11 @@ export function LevelLayer() {
       height={250}
       label="A ruled line from the producer to the final buyer. A single layer of intermediaries sits across it, and the distance still to travel is shorter after it than before."
     >
-      <Factory x={62} y={140} />
+      <Factory3 x={62} y={140} />
       <Under x={62} y={164} fill={INK}>
         PRODUCER
       </Under>
-      <Person x={742} y={140} k={1.4} />
+      <Person3 x={742} y={140} k={1.4} />
       <Under x={742} y={164} fill={INK}>
         THE FINAL BUYER
       </Under>
@@ -1147,7 +881,7 @@ export function LevelLayer() {
       <Note x={404} y={100} anchor="middle" size={11} fill={SIGNAL}>
         a layer of intermediaries
       </Note>
-      <Arrow x1={488} y1={200} x2={700} y2={200} tone={SIGNAL} width={1.5} />
+      <Arrow2 x1={488} y1={200} x2={700} y2={200} tone={SIGNAL} width={1.5} />
       <line x1={100} y1={194} x2={100} y2={206} stroke={INK3} strokeWidth={1.25} />
       <line x1={488} y1={194} x2={488} y2={206} stroke={SIGNAL} strokeWidth={1.25} />
       <line x1={100} y1={200} x2={326} y2={200} stroke={INK3} strokeWidth={1.25} strokeDasharray="5 4" />
@@ -1185,8 +919,8 @@ export function ChannelLength() {
       </Key>
       {rows.map((r) => (
         <g key={r.levels}>
-          <Factory x={64} y={r.y + 24} k={0.62} />
-          <Person x={608} y={r.y + 24} k={1} />
+          <Factory3 x={64} y={r.y + 24} k={0.62} />
+          <Person3 x={608} y={r.y + 24} k={1} />
           <line x1={92} y1={r.y} x2={584} y2={r.y} stroke={RULE2} strokeWidth={1} />
           {r.glyphs.map((g, i) => {
             const x = 240 + i * 176;
@@ -1196,7 +930,7 @@ export function ChannelLength() {
                 {g === "warehouse" ? (
                   <Warehouse x={x - 34} y={r.y + 18} k={0.58} tone={SIGNAL} />
                 ) : (
-                  <Store x={x - 34} y={r.y + 18} k={0.58} tone={SIGNAL} />
+                  <Store2 x={x - 34} y={r.y + 18} k={0.58} tone={SIGNAL} />
                 )}
                 <Key x={x + 4} y={r.y + 4} fill={SIGNAL} size={9.5}>
                   LEVEL
@@ -1230,15 +964,15 @@ export function DirectChannel() {
       height={190}
       label="A producer joined straight to a buyer by one unbroken arrow. The space between them is empty and marked as having no intermediary levels."
     >
-      <Factory x={62} y={116} />
+      <Factory3 x={62} y={116} />
       <Under x={62} y={140} fill={INK}>
         PRODUCER
       </Under>
-      <Person x={338} y={116} k={1.4} />
+      <Person3 x={338} y={116} k={1.4} />
       <Under x={338} y={140} fill={INK}>
         BUYER
       </Under>
-      <Arrow x1={100} y1={88} x2={296} y2={88} tone={SIGNAL} width={2.5} />
+      <Arrow2 x1={100} y1={88} x2={296} y2={88} tone={SIGNAL} width={2.5} />
       <rect x={128} y={38} width={140} height={34} fill="none" stroke={RULE2} strokeWidth={1.25} strokeDasharray="5 5" />
       <Key x={198} y={60} anchor="middle" fill={INK3} size={9.5}>
         NO LEVELS
@@ -1283,15 +1017,15 @@ export function IndirectLevels() {
       </Key>
       {rows.map((r, ri) => (
         <g key={ri}>
-          <Factory x={56} y={r.y + 22} k={0.6} />
-          <Person x={738} y={r.y + 22} k={1} />
+          <Factory3 x={56} y={r.y + 22} k={0.6} />
+          <Person3 x={738} y={r.y + 22} k={1} />
           <line x1={84} y1={r.y} x2={712} y2={r.y} stroke={RULE} strokeWidth={1} />
           {r.stops.map((s) => (
             <g key={s.x}>
               <circle cx={s.x} cy={r.y} r={22} fill={PAPER} stroke={SIGNAL} strokeWidth={1.75} />
               {s.g === "warehouse" ? <Warehouse x={s.x} y={r.y + 12} k={0.46} tone={SIGNAL} /> : null}
-              {s.g === "store" ? <Store x={s.x} y={r.y + 12} k={0.46} tone={SIGNAL} /> : null}
-              {s.g === "pack" ? <Pack x={s.x} y={r.y + 11} w={22} h={20} tone={SIGNAL} fill={SIGNAL_TINT} /> : null}
+              {s.g === "store" ? <Store2 x={s.x} y={r.y + 12} k={0.46} tone={SIGNAL} /> : null}
+              {s.g === "pack" ? <Pack4 x={s.x} y={r.y + 11} w={22} h={20} tone={SIGNAL} fill={SIGNAL_TINT} /> : null}
               <Key x={s.x} y={r.y - 30} anchor="middle" fill={SIGNAL} size={9.5}>
                 {s.name}
               </Key>
@@ -1331,7 +1065,7 @@ export function ControlComplexity() {
       <Key x={216} y={222} anchor="middle" fill={INK3} size={9.5}>
         MORE LEVELS
       </Key>
-      <Arrow x1={72} y1={214} x2={356} y2={214} tone={INK3} width={1.25} size={7} />
+      <Arrow2 x1={72} y1={214} x2={356} y2={214} tone={INK3} width={1.25} size={7} />
       {[72, 168, 264, 360].map((x) => (
         <line key={x} x1={x} y1={196} x2={x} y2={202} stroke={INK3} strokeWidth={1.25} />
       ))}
@@ -1349,14 +1083,14 @@ export function TwoRoutes() {
       height={300}
       label="A new snack brand at a fork. The upper route goes straight to buyers through its own website. The lower route goes through a major grocery chain and reaches a much wider shelf."
     >
-      <Pack x={72} y={170} w={56} h={52} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Pack4 x={72} y={170} w={56} h={52} tone={SIGNAL} fill={SIGNAL_TINT} />
       <Key x={72} y={194} anchor="middle" fill={SIGNAL} size={9.5}>
         A NEW BRAND
       </Key>
       <path d="M112 146 C190 146 196 78 268 78" fill="none" stroke={SIGNAL} strokeWidth={2} />
-      <path d={headAlong(272, 78, 1, 0)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+      <path d={headAlong1(272, 78, 1, 0)} fill="none" stroke={SIGNAL} strokeWidth={2} />
       <path d="M112 146 C190 146 196 232 268 232" fill="none" stroke={COUNTER} strokeWidth={2} />
-      <path d={headAlong(272, 232, 1, 0)} fill="none" stroke={COUNTER} strokeWidth={2} />
+      <path d={headAlong1(272, 232, 1, 0)} fill="none" stroke={COUNTER} strokeWidth={2} />
 
       <rect x={292} y={40} width={128} height={76} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
       <path d="M292 60 H420" stroke={SIGNAL} strokeWidth={1.25} />
@@ -1365,20 +1099,20 @@ export function TwoRoutes() {
       <Key x={356} y={92} anchor="middle" fill={SIGNAL} size={9.5}>
         YOUR WEBSITE
       </Key>
-      <Arrow x1={428} y1={78} x2={492} y2={78} tone={SIGNAL} width={1.5} size={7} />
-      <Person x={528} y={100} k={1.15} stroke={SIGNAL} />
+      <Arrow2 x1={428} y1={78} x2={492} y2={78} tone={SIGNAL} width={1.5} size={7} />
+      <Person3 x={528} y={100} k={1.15} stroke={SIGNAL} />
       <Key x={528} y={122} anchor="middle" fill={INK3} size={9.5}>
         DIRECTLY
       </Key>
 
-      <Store x={340} y={256} tone={COUNTER} />
+      <Store2 x={340} y={256} tone={COUNTER} />
       <Key x={340} y={278} anchor="middle" fill={COUNTER} size={9.5}>
         A MAJOR GROCERY CHAIN
       </Key>
-      <Arrow x1={392} y1={224} x2={460} y2={224} tone={COUNTER} width={1.5} size={7} />
+      <Arrow2 x1={392} y1={224} x2={460} y2={224} tone={COUNTER} width={1.5} size={7} />
       {[0, 1, 2, 3].map((r) =>
         [0, 1, 2, 3, 4].map((c) => (
-          <Person key={`${r}-${c}`} x={498 + c * 56} y={196 + r * 34} k={0.56} stroke={COUNTER} />
+          <Person3 key={`${r}-${c}`} x={498 + c * 56} y={196 + r * 34} k={0.56} stroke={COUNTER} />
         )),
       )}
       <line x1={476} y1={36} x2={476} y2={280} stroke={RULE} strokeWidth={1} strokeDasharray="5 5" />
@@ -1408,20 +1142,20 @@ export function BehavioralSystem() {
       {firms.map((f) => (
         <g key={f.x}>
           <rect x={f.x - 78} y={66} width={156} height={110} fill={PAPER} stroke={INK} strokeWidth={1.25} />
-          {f.g === "factory" ? <Factory x={f.x - 40} y={166} k={0.72} /> : null}
+          {f.g === "factory" ? <Factory3 x={f.x - 40} y={166} k={0.72} /> : null}
           {f.g === "warehouse" ? <Warehouse x={f.x - 40} y={166} k={0.68} /> : null}
-          {f.g === "store" ? <Store x={f.x - 40} y={166} k={0.68} /> : null}
-          <Person x={f.x + 24} y={166} k={1} stroke={SIGNAL} />
-          <Person x={f.x + 54} y={166} k={1} stroke={SIGNAL} />
+          {f.g === "store" ? <Store2 x={f.x - 40} y={166} k={0.68} /> : null}
+          <Person3 x={f.x + 24} y={166} k={1} stroke={SIGNAL} />
+          <Person3 x={f.x + 54} y={166} k={1} stroke={SIGNAL} />
         </g>
       ))}
-      <Person x={738} y={166} k={1.2} />
+      <Person3 x={738} y={166} k={1.2} />
       <Under x={738} y={190} fill={INK}>
         CUSTOMER
       </Under>
-      <TwoWay x1={224} y1={102} x2={286} y2={102} tone={SIGNAL} width={1.5} />
-      <TwoWay x1={448} y1={102} x2={510} y2={102} tone={SIGNAL} width={1.5} />
-      <TwoWay x1={672} y1={102} x2={716} y2={102} tone={SIGNAL} width={1.5} />
+      <TwoWay1 x1={224} y1={102} x2={286} y2={102} tone={SIGNAL} width={1.5} />
+      <TwoWay1 x1={448} y1={102} x2={510} y2={102} tone={SIGNAL} width={1.5} />
+      <TwoWay1 x1={672} y1={102} x2={716} y2={102} tone={SIGNAL} width={1.5} />
       <Key x={400} y={222} anchor="middle" fill={SIGNAL} size={10}>
         PEOPLE AND COMPANIES INTERACT
       </Key>
@@ -1442,7 +1176,7 @@ export function ThreeGoals() {
       <circle cx={260} cy={124} r={104} fill={PAPER} stroke={COUNTER} strokeWidth={1.75} />
       <circle cx={260} cy={124} r={70} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
       <circle cx={260} cy={124} r={34} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <Person x={260} y={138} k={0.8} stroke={SIGNAL} />
+      <Person3 x={260} y={138} k={0.8} stroke={SIGNAL} />
       <line x1={294} y1={124} x2={470} y2={124} stroke={SIGNAL} strokeWidth={1.25} />
       <line x1={330} y1={90} x2={470} y2={90} stroke={INK} strokeWidth={1.25} />
       <line x1={364} y1={52} x2={470} y2={52} stroke={COUNTER} strokeWidth={1.25} />
@@ -1477,13 +1211,13 @@ export function WorkTogether() {
       label="Three channel members standing on one line, each with a hand on the same rope, pulling a load that is moving off to the right."
     >
       <line x1={24} y1={150} x2={376} y2={150} stroke={RULE} strokeWidth={1.25} />
-      <Person x={58} y={150} k={1.05} stroke={SIGNAL} />
-      <Person x={104} y={150} k={1.05} stroke={SIGNAL} />
-      <Person x={150} y={150} k={1.05} stroke={SIGNAL} />
+      <Person3 x={58} y={150} k={1.05} stroke={SIGNAL} />
+      <Person3 x={104} y={150} k={1.05} stroke={SIGNAL} />
+      <Person3 x={150} y={150} k={1.05} stroke={SIGNAL} />
       {/* the rope runs at arm height, below every head */}
       <line x1={52} y1={130} x2={250} y2={130} stroke={SIGNAL} strokeWidth={2.5} />
       <rect x={254} y={106} width={56} height={44} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
-      <Arrow x1={318} y1={128} x2={370} y2={128} tone={SIGNAL} width={2} />
+      <Arrow2 x1={318} y1={128} x2={370} y2={128} tone={SIGNAL} width={2} />
       <Key x={200} y={72} anchor="middle" fill={INK3} size={9.5}>
         ONE ROPE, ONE DIRECTION
       </Key>
@@ -1510,8 +1244,8 @@ export function GoalsRolesRewards() {
       height={250}
       label="Two channel members face each other. Between them sit three contested items: goals, roles and rewards. Each is struck through with a clash mark."
     >
-      <Person x={62} y={150} k={1.5} />
-      <Person x={738} y={150} k={1.5} stroke={COUNTER} />
+      <Person3 x={62} y={150} k={1.5} />
+      <Person3 x={738} y={150} k={1.5} stroke={COUNTER} />
       <Under x={62} y={174} fill={INK}>
         MEMBER
       </Under>
@@ -1550,13 +1284,13 @@ export function HorizontalConflict() {
       height={230}
       label="One producer above, feeding a row of three retailers on the same rung. The clash sits between two of those retailers, along the rung."
     >
-      <Factory x={200} y={66} k={0.72} tone={INK3} />
+      <Factory3 x={200} y={66} k={0.72} tone={INK3} />
       {[70, 200, 330].map((x) => (
         <line key={x} x1={200} y1={72} x2={x} y2={122} stroke={RULE2} strokeWidth={1} />
       ))}
       <line x1={30} y1={140} x2={370} y2={140} stroke={SIGNAL} strokeWidth={2} />
       {[70, 200, 330].map((x) => (
-        <Store key={x} x={x} y={172} k={0.82} tone={SIGNAL} />
+        <Store2 key={x} x={x} y={172} k={0.82} tone={SIGNAL} />
       ))}
       <Clash x={135} y={140} k={0.72} />
       <Clash x={265} y={140} k={0.72} />
@@ -1582,9 +1316,9 @@ export function VerticalConflict() {
       label="A single channel drawn as a column: producer at the top, wholesaler in the middle, retailer at the foot. The clashes sit on the links between the levels."
     >
       <line x1={200} y1={40} x2={200} y2={206} stroke={COUNTER} strokeWidth={2} />
-      <Factory x={200} y={62} k={0.68} tone={COUNTER} fill={PAPER} />
+      <Factory3 x={200} y={62} k={0.68} tone={COUNTER} fill={PAPER} />
       <Warehouse x={200} y={140} k={0.62} tone={COUNTER} fill={PAPER} />
-      <Store x={200} y={206} k={0.62} tone={COUNTER} fill={PAPER} />
+      <Store2 x={200} y={206} k={0.62} tone={COUNTER} fill={PAPER} />
       <Clash x={200} y={100} k={0.72} tone={COUNTER} />
       <Clash x={200} y={172} k={0.72} tone={COUNTER} />
       <Key x={242} y={46} fill={INK} size={9.5}>
@@ -1627,10 +1361,10 @@ export function SeparateBusinesses() {
       {firms.map((f) => (
         <g key={f.x}>
           <rect x={f.x - 92} y={70} width={184} height={128} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-          {f.g === "factory" ? <Factory x={f.x - 26} y={180} /> : null}
+          {f.g === "factory" ? <Factory3 x={f.x - 26} y={180} /> : null}
           {f.g === "warehouse" ? <Warehouse x={f.x - 26} y={180} /> : null}
-          {f.g === "store" ? <Store x={f.x - 26} y={180} /> : null}
-          <Arrow x1={f.x + 52} y1={180} x2={f.x + 52} y2={98} tone={SIGNAL} width={1.75} />
+          {f.g === "store" ? <Store2 x={f.x - 26} y={180} /> : null}
+          <Arrow2 x1={f.x + 52} y1={180} x2={f.x + 52} y2={98} tone={SIGNAL} width={1.75} />
           <Key x={f.x + 62} y={124} fill={SIGNAL} size={9.5}>
             ITS OWN
           </Key>
@@ -1685,9 +1419,9 @@ export function VmsCascade() {
       {steps.map((s, i) => (
         <g key={s.name}>
           <rect x={s.x - 84} y={s.y} width={168} height={62} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
-          {s.g === "factory" ? <Factory x={s.x - 44} y={s.y + 56} k={0.72} /> : null}
+          {s.g === "factory" ? <Factory3 x={s.x - 44} y={s.y + 56} k={0.72} /> : null}
           {s.g === "warehouse" ? <Warehouse x={s.x - 44} y={s.y + 56} k={0.68} /> : null}
-          {s.g === "store" ? <Store x={s.x - 44} y={s.y + 56} k={0.68} /> : null}
+          {s.g === "store" ? <Store2 x={s.x - 44} y={s.y + 56} k={0.68} /> : null}
           <Key x={s.x + 76} y={s.y + 36} anchor="end" fill={INK} size={9.5}>
             {s.name}
           </Key>
@@ -1700,7 +1434,7 @@ export function VmsCascade() {
             />
           ) : null}
           {i < steps.length - 1 ? (
-            <path d={headAlong(s.x + 166, s.y + 100, 0, 1)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+            <path d={headAlong1(s.x + 166, s.y + 100, 0, 1)} fill="none" stroke={SIGNAL} strokeWidth={2} />
           ) : null}
         </g>
       ))}
@@ -1760,7 +1494,7 @@ export function ThreePowers() {
         ].map(([x, y], i) => (
           <g key={i}>
             <circle cx={x} cy={y} r={13} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
-            <Arrow x1={x - 12} y1={y} x2={Math.round(620 + 48)} y2={Math.round(136 + (y - 136) / 3)} tone={COUNTER} width={1.25} size={6} />
+            <Arrow2 x1={x - 12} y1={y} x2={Math.round(620 + 48)} y2={Math.round(136 + (y - 136) / 3)} tone={COUNTER} width={1.25} size={6} />
           </g>
         ))}
       </g>
@@ -1838,10 +1572,10 @@ export function CorporateVms() {
       {[96, 200, 304].map((x, i) => (
         <g key={x}>
           <rect x={x - 38} y={88} width={76} height={54} fill={PAPER} stroke={SIGNAL} strokeWidth={1.25} />
-          {i === 0 ? <Factory x={x} y={136} k={0.6} tone={SIGNAL} /> : null}
+          {i === 0 ? <Factory3 x={x} y={136} k={0.6} tone={SIGNAL} /> : null}
           {i === 1 ? <Warehouse x={x} y={136} k={0.56} tone={SIGNAL} /> : null}
-          {i === 2 ? <Store x={x} y={136} k={0.56} tone={SIGNAL} /> : null}
-          {i < 2 ? <Arrow x1={x + 40} y1={115} x2={x + 56} y2={115} tone={SIGNAL} width={1.25} size={6} /> : null}
+          {i === 2 ? <Store2 x={x} y={136} k={0.56} tone={SIGNAL} /> : null}
+          {i < 2 ? <Arrow2 x1={x + 40} y1={115} x2={x + 56} y2={115} tone={SIGNAL} width={1.25} size={6} /> : null}
         </g>
       ))}
       <Key x={200} y={186} anchor="middle" fill={INK} size={10}>
@@ -1862,9 +1596,9 @@ export function ContractualVms() {
       {firms.map((x, i) => (
         <g key={x}>
           <rect x={x - 56} y={44} width={112} height={76} fill={PAPER} stroke={INK} strokeWidth={1.5} strokeDasharray="5 4" />
-          {i === 0 ? <Factory x={x} y={114} k={0.64} /> : null}
+          {i === 0 ? <Factory3 x={x} y={114} k={0.64} /> : null}
           {i === 1 ? <Warehouse x={x} y={114} k={0.6} /> : null}
-          {i === 2 ? <Store x={x} y={114} k={0.6} /> : null}
+          {i === 2 ? <Store2 x={x} y={114} k={0.6} /> : null}
           <Key x={x} y={66} anchor="middle" fill={INK3} size={9.5}>
             INDEPENDENT
           </Key>
@@ -1900,13 +1634,13 @@ export function AdministeredVms() {
       {[212, 272, 332].map((x, i) => (
         <g key={x}>
           <rect x={x - 24} y={78} width={48} height={52} fill={PAPER} stroke={COUNTER} strokeWidth={1.25} />
-          {i === 0 ? <Factory x={x} y={126} k={0.5} tone={COUNTER} /> : null}
+          {i === 0 ? <Factory3 x={x} y={126} k={0.5} tone={COUNTER} /> : null}
           {i === 1 ? <Warehouse x={x} y={126} k={0.46} tone={COUNTER} /> : null}
-          {i === 2 ? <Store x={x} y={126} k={0.46} tone={COUNTER} /> : null}
+          {i === 2 ? <Store2 x={x} y={126} k={0.46} tone={COUNTER} /> : null}
         </g>
       ))}
       <line x1={188} y1={60} x2={188} y2={148} stroke={COUNTER} strokeWidth={1.5} />
-      <Arrow x1={160} y1={104} x2={184} y2={104} tone={COUNTER} width={1.5} size={7} />
+      <Arrow2 x1={160} y1={104} x2={184} y2={104} tone={COUNTER} width={1.5} size={7} />
       <Key x={200} y={186} anchor="middle" fill={COUNTER} size={10}>
         COORDINATES SUCCESSIVE STAGES
       </Key>
@@ -1925,7 +1659,7 @@ export function MultiChannels() {
       label="A single firm on the left with three channels leaving it: a direct one, one through a retailer, and one through a wholesaler and retailer. They lead to two customer segments on the right."
     >
       <rect x={20} y={110} width={140} height={84} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
-      <Factory x={90} y={188} tone={SIGNAL} fill={PAPER} />
+      <Factory3 x={90} y={188} tone={SIGNAL} fill={PAPER} />
       <Key x={90} y={128} anchor="middle" fill={SIGNAL} size={10}>
         A SINGLE FIRM
       </Key>
@@ -1936,13 +1670,13 @@ export function MultiChannels() {
       ].map((lane, li) => (
         <g key={li}>
           <path d={`M160 152 C210 152 210 ${lane.y} 262 ${lane.y}`} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-          <path d={headAlong(266, lane.y, 1, 0)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+          <path d={headAlong1(266, lane.y, 1, 0)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
           {lane.stops.map((g, i) => {
             const x = 320 + i * 120;
             return (
               <g key={i}>
                 {g === "warehouse" ? <Warehouse x={x} y={lane.y + 22} k={0.6} tone={SIGNAL} /> : null}
-                {g === "store" ? <Store x={x} y={lane.y + 22} k={0.6} tone={SIGNAL} /> : null}
+                {g === "store" ? <Store2 x={x} y={lane.y + 22} k={0.6} tone={SIGNAL} /> : null}
                 <line x1={x + 22} y1={lane.y} x2={x + 92} y2={lane.y} stroke={SIGNAL} strokeWidth={1.5} />
               </g>
             );
@@ -1953,10 +1687,10 @@ export function MultiChannels() {
       <rect x={570} y={30} width={210} height={112} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
       <rect x={570} y={166} width={210} height={112} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
       {[0, 1, 2].map((i) => (
-        <Person key={`a${i}`} x={620 + i * 56} y={124} k={0.9} stroke={COUNTER} />
+        <Person3 key={`a${i}`} x={620 + i * 56} y={124} k={0.9} stroke={COUNTER} />
       ))}
       {[0, 1, 2].map((i) => (
-        <Person key={`b${i}`} x={620 + i * 56} y={260} k={0.9} stroke={COUNTER} />
+        <Person3 key={`b${i}`} x={620 + i * 56} y={260} k={0.9} stroke={COUNTER} />
       ))}
       <Key x={675} y={54} anchor="middle" fill={COUNTER} size={10}>
         CUSTOMER SEGMENT
@@ -1995,7 +1729,7 @@ export function ComplexMarkets() {
       {clusters.map((c, ci) =>
         Array.from({ length: c.rows }, (_, r) =>
           Array.from({ length: c.cols }, (_, k) => (
-            <Person
+            <Person3
               key={`${ci}-${r}-${k}`}
               x={c.x + k * 26}
               y={c.y + r * 28}
@@ -2027,7 +1761,7 @@ export function CoverageAndConflict() {
     >
       <Schematic x={792} y={16} />
       <rect x={44} y={128} width={56} height={62} fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
-      <Arrow x1={110} y1={158} x2={144} y2={158} tone={SIGNAL} width={1.5} size={7} />
+      <Arrow2 x1={110} y1={158} x2={144} y2={158} tone={SIGNAL} width={1.5} size={7} />
       <rect x={156} y={62} width={144} height={128} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
       <Key x={228} y={130} anchor="middle" fill={SIGNAL} size={10}>
         SALES AND
@@ -2041,9 +1775,9 @@ export function CoverageAndConflict() {
       <line x1={476} y1={238} x2={708} y2={238} stroke={RULE} strokeWidth={1} />
       <line x1={400} y1={40} x2={400} y2={224} stroke={RULE} strokeWidth={1} strokeDasharray="5 5" />
 
-      <Factory x={492} y={110} k={0.78} tone={COUNTER} />
-      <Store x={490} y={210} k={0.72} tone={COUNTER} />
-      <Person x={706} y={168} k={1.4} stroke={COUNTER} />
+      <Factory3 x={492} y={110} k={0.78} tone={COUNTER} />
+      <Store2 x={490} y={210} k={0.72} tone={COUNTER} />
+      <Person3 x={706} y={168} k={1.4} stroke={COUNTER} />
       <path d="M522 92 C600 92 620 140 668 152" fill="none" stroke={COUNTER} strokeWidth={1.75} />
       <path d="M518 194 C600 194 622 182 668 172" fill="none" stroke={COUNTER} strokeWidth={1.75} />
       <Clash x={636} y={162} k={0.7} tone={COUNTER} />
@@ -2071,11 +1805,11 @@ export function CutOut() {
       label="The old chain runs producer, wholesaler, retailer, buyer. The two middle links are lifted out of the line and greyed. A new arrow runs straight from the producer to the final buyer."
     >
       <line x1={110} y1={92} x2={660} y2={92} stroke={RULE2} strokeWidth={1.25} strokeDasharray="6 5" />
-      <Factory x={72} y={110} />
+      <Factory3 x={72} y={110} />
       <Under x={72} y={134} fill={INK}>
         PRODUCERS
       </Under>
-      <Person x={716} y={110} k={1.4} />
+      <Person3 x={716} y={110} k={1.4} />
       <Under x={716} y={134} fill={INK}>
         FINAL BUYERS
       </Under>
@@ -2083,12 +1817,12 @@ export function CutOut() {
         <rect x={252} y={30} width={130} height={62} fill={PAPER2} stroke={INK3} strokeWidth={1.25} strokeDasharray="5 4" />
         <Warehouse x={317} y={84} k={0.62} tone={INK3} />
         <rect x={418} y={30} width={130} height={62} fill={PAPER2} stroke={INK3} strokeWidth={1.25} strokeDasharray="5 4" />
-        <Store x={483} y={84} k={0.62} tone={INK3} />
+        <Store2 x={483} y={84} k={0.62} tone={INK3} />
       </g>
       <Key x={400} y={22} anchor="middle" fill={INK3} size={9.5}>
         CUT OUT
       </Key>
-      <Arrow x1={110} y1={182} x2={676} y2={182} tone={SIGNAL} width={2.5} />
+      <Arrow2 x1={110} y1={182} x2={676} y2={182} tone={SIGNAL} width={2.5} />
       <Key x={393} y={210} anchor="middle" fill={SIGNAL} size={10.5}>
         GOING DIRECTLY TO FINAL BUYERS
       </Key>
@@ -2115,18 +1849,18 @@ export function NewIntermediaries() {
         <Key x={200} y={34} anchor="middle" fill={INK3} size={9.5}>
           THE TRADITIONAL RESELLER
         </Key>
-        <Store x={200} y={84} k={0.95} tone={INK3} />
+        <Store2 x={200} y={84} k={0.95} tone={INK3} />
       </g>
       <Key x={200} y={104} anchor="middle" fill={INK3} size={9.5}>
         DISPLACED
       </Key>
 
-      <Factory x={44} y={156} k={0.66} />
-      <Person x={362} y={156} k={1.15} />
+      <Factory3 x={44} y={156} k={0.66} />
+      <Person3 x={362} y={156} k={1.15} />
       {/* the line stops at the vacated place, so nothing runs through a label */}
       <line x1={74} y1={134} x2={148} y2={134} stroke={INK} strokeWidth={1.75} />
       <line x1={252} y1={134} x2={334} y2={134} stroke={INK} strokeWidth={1.75} />
-      <path d={headAlong(334, 134, 1, 0)} fill="none" stroke={INK} strokeWidth={1.75} />
+      <path d={headAlong1(334, 134, 1, 0)} fill="none" stroke={INK} strokeWidth={1.75} />
       <rect x={150} y={114} width={100} height={40} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
       <Key x={200} y={138} anchor="middle" fill={SIGNAL} size={9.5}>
         A NEW TYPE
@@ -2154,9 +1888,9 @@ export function OpportunityThreat() {
         THE SAME TREND
       </Key>
       <path d="M200 148 C200 108 240 108 296 84" fill="none" stroke={SIGNAL} strokeWidth={2} />
-      <path d={headAlong(300, 82, 2, -1)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+      <path d={headAlong1(300, 82, 2, -1)} fill="none" stroke={SIGNAL} strokeWidth={2} />
       <path d="M200 148 C200 108 160 108 104 84" fill="none" stroke={COUNTER} strokeWidth={2} />
-      <path d={headAlong(100, 82, -2, -1)} fill="none" stroke={COUNTER} strokeWidth={2} />
+      <path d={headAlong1(100, 82, -2, -1)} fill="none" stroke={COUNTER} strokeWidth={2} />
       <Key x={312} y={66} anchor="end" fill={SIGNAL} size={10}>
         OPPORTUNITIES
       </Key>
@@ -2191,23 +1925,23 @@ export function StreamingBypass() {
         AND SERVICES
       </Key>
       <path d="M148 110 C220 110 232 62 300 62" fill="none" stroke={INK3} strokeWidth={1.75} />
-      <path d={headAlong(304, 62, 1, 0)} fill="none" stroke={INK3} strokeWidth={1.75} />
+      <path d={headAlong1(304, 62, 1, 0)} fill="none" stroke={INK3} strokeWidth={1.75} />
       <rect x={312} y={30} width={172} height={64} fill={PAPER2} stroke={INK3} strokeWidth={1.5} />
       <Key x={398} y={68} anchor="middle" fill={INK3} size={10}>
         CABLE PROVIDERS
       </Key>
       <path d="M484 62 C560 62 580 104 640 116" fill="none" stroke={INK3} strokeWidth={1.75} strokeDasharray="5 4" />
-      <path d={headAlong(644, 117, 3, 1)} fill="none" stroke={INK3} strokeWidth={1.75} />
+      <path d={headAlong1(644, 117, 3, 1)} fill="none" stroke={INK3} strokeWidth={1.75} />
 
       <path d="M148 146 C240 146 240 202 300 202" fill="none" stroke={SIGNAL} strokeWidth={2} />
-      <path d={headAlong(304, 202, 1, 0)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+      <path d={headAlong1(304, 202, 1, 0)} fill="none" stroke={SIGNAL} strokeWidth={2} />
       <rect x={312} y={172} width={172} height={62} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
       <Key x={398} y={208} anchor="middle" fill={SIGNAL} size={10}>
         STREAMING SERVICES
       </Key>
       <path d="M484 202 C560 202 580 160 640 144" fill="none" stroke={SIGNAL} strokeWidth={2} />
-      <path d={headAlong(644, 143, 3, -1)} fill="none" stroke={SIGNAL} strokeWidth={2} />
-      <Person x={716} y={154} k={1.5} />
+      <path d={headAlong1(644, 143, 3, -1)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+      <Person3 x={716} y={154} k={1.5} />
       <Under x={716} y={180} fill={INK}>
         VIEWERS
       </Under>
@@ -2230,10 +1964,10 @@ export function ThreeDomains() {
       label="The chain from producer to consumer, with two bands drawn over it. Wholesaling covers the stretch that sells for resale or business use. Retailing covers the last stretch to the final consumer. A band beneath the whole chain is logistics."
     >
       <line x1={70} y1={132} x2={744} y2={132} stroke={RULE} strokeWidth={1.25} />
-      <Factory x={70} y={150} k={0.8} />
+      <Factory3 x={70} y={150} k={0.8} />
       <Warehouse x={294} y={150} k={0.8} />
-      <Store x={520} y={150} k={0.8} />
-      <Person x={730} y={150} k={1.3} />
+      <Store2 x={520} y={150} k={0.8} />
+      <Person3 x={730} y={150} k={1.3} />
       <rect x={196} y={62} width={272} height={40} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
       <Key x={332} y={88} anchor="middle" fill={COUNTER} size={10.5}>
         WHOLESALING
@@ -2250,8 +1984,8 @@ export function ThreeDomains() {
       <Key x={400} y={222} anchor="middle" fill={INK} size={10.5}>
         LOGISTICS MANAGEMENT
       </Key>
-      <Arrow x1={64} y1={216} x2={38} y2={216} tone={INK} width={1.25} size={7} />
-      <Arrow x1={736} y1={216} x2={762} y2={216} tone={INK} width={1.25} size={7} />
+      <Arrow2 x1={64} y1={216} x2={38} y2={216} tone={INK} width={1.25} size={7} />
+      <Arrow2 x1={736} y1={216} x2={762} y2={216} tone={INK} width={1.25} size={7} />
       <Key x={400} y={34} anchor="middle" fill={INK3} size={9.5}>
         ALL THE ACTIVITIES INVOLVED
       </Key>
@@ -2277,11 +2011,11 @@ export function SoldToWhom({ side }: { side: "retail" | "wholesale" }) {
           : "Goods sold from a warehouse to a shopfront that will resell them and to a factory that will use them in its business."
       }
     >
-      {retail ? <Store x={72} y={126} tone={tone} fill={tint} /> : <Warehouse x={72} y={126} tone={tone} fill={tint} />}
+      {retail ? <Store2 x={72} y={126} tone={tone} fill={tint} /> : <Warehouse x={72} y={126} tone={tone} fill={tint} />}
       {retail ? (
         <g>
-          <Arrow x1={116} y1={100} x2={252} y2={100} tone={tone} width={2} />
-          <Person x={318} y={126} k={1.6} />
+          <Arrow2 x1={116} y1={100} x2={252} y2={100} tone={tone} width={2} />
+          <Person3 x={318} y={126} k={1.6} />
           <Key x={318} y={152} anchor="middle" fill={INK} size={9.5}>
             FINAL CONSUMERS
           </Key>
@@ -2292,14 +2026,14 @@ export function SoldToWhom({ side }: { side: "retail" | "wholesale" }) {
       ) : (
         <g>
           <path d="M116 110 C170 110 176 62 226 62" fill="none" stroke={tone} strokeWidth={1.75} />
-          <path d={headAlong(230, 62, 1, 0)} fill="none" stroke={tone} strokeWidth={1.75} />
+          <path d={headAlong1(230, 62, 1, 0)} fill="none" stroke={tone} strokeWidth={1.75} />
           <path d="M116 110 C170 110 176 158 226 158" fill="none" stroke={tone} strokeWidth={1.75} />
-          <path d={headAlong(230, 158, 1, 0)} fill="none" stroke={tone} strokeWidth={1.75} />
-          <Store x={272} y={82} k={0.7} tone={INK} />
+          <path d={headAlong1(230, 158, 1, 0)} fill="none" stroke={tone} strokeWidth={1.75} />
+          <Store2 x={272} y={82} k={0.7} tone={INK} />
           <Key x={310} y={64} fill={INK} size={9.5}>
             RESALE
           </Key>
-          <Factory x={272} y={176} k={0.7} tone={INK} />
+          <Factory3 x={272} y={176} k={0.7} tone={INK} />
           <Key x={310} y={158} fill={INK} size={9.5}>
             BUSINESS
           </Key>
@@ -2327,15 +2061,15 @@ export function EfficientFlow() {
       label="Materials enter a plant on the left, final goods leave it on the right, and the line through it is drawn unbroken and even: the flow is managed to stay efficient."
     >
       <rect x={140} y={64} width={120} height={78} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <Factory x={200} y={134} k={0.78} />
-      <Pack x={48} y={116} w={34} h={30} tone={INK3} />
-      <Pack x={48} y={84} w={34} h={28} tone={INK3} />
+      <Factory3 x={200} y={134} k={0.78} />
+      <Pack4 x={48} y={116} w={34} h={30} tone={INK3} />
+      <Pack4 x={48} y={84} w={34} h={28} tone={INK3} />
       <Key x={48} y={144} anchor="middle" fill={INK3} size={9.5}>
         MATERIALS
       </Key>
-      <Arrow x1={78} y1={92} x2={134} y2={92} tone={SIGNAL} width={1.75} />
-      <Arrow x1={266} y1={92} x2={322} y2={92} tone={SIGNAL} width={1.75} />
-      <Pack x={352} y={116} w={38} h={34} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Arrow2 x1={78} y1={92} x2={134} y2={92} tone={SIGNAL} width={1.75} />
+      <Arrow2 x1={266} y1={92} x2={322} y2={92} tone={SIGNAL} width={1.75} />
+      <Pack4 x={352} y={116} w={38} h={34} tone={SIGNAL} fill={SIGNAL_TINT} />
       <Key x={352} y={144} anchor="middle" fill={SIGNAL} size={9.5}>
         FINAL GOODS
       </Key>
@@ -2370,14 +2104,14 @@ export function FinalSteps() {
       <line x1={120} y1={118} x2={700} y2={118} stroke={RULE} strokeWidth={1.25} />
       {steps.map((s, i) => (
         <g key={s.name}>
-          {s.g === "factory" ? <Factory x={s.x} y={160} /> : null}
+          {s.g === "factory" ? <Factory3 x={s.x} y={160} /> : null}
           {s.g === "warehouse" ? <Warehouse x={s.x} y={160} /> : null}
-          {s.g === "store" ? <Store x={s.x} y={160} tone={SIGNAL} fill={PAPER} /> : null}
-          {s.g === "person" ? <Person x={s.x} y={160} k={1.5} /> : null}
+          {s.g === "store" ? <Store2 x={s.x} y={160} tone={SIGNAL} fill={PAPER} /> : null}
+          {s.g === "person" ? <Person3 x={s.x} y={160} k={1.5} /> : null}
           <Key x={s.x} y={210} anchor="middle" fill={i === 2 ? SIGNAL : INK} size={10}>
             {s.name}
           </Key>
-          {i < 3 ? <Arrow x1={s.x + 44} y1={118} x2={steps[i + 1].x - 44} y2={118} tone={i === 2 ? SIGNAL : INK3} width={1.5} size={7} /> : null}
+          {i < 3 ? <Arrow2 x1={s.x + 44} y1={118} x2={steps[i + 1].x - 44} y2={118} tone={i === 2 ? SIGNAL : INK3} width={1.5} size={7} /> : null}
         </g>
       ))}
       <Key x={120} y={92} anchor="middle" fill={INK3} size={9.5}>
@@ -2423,14 +2157,14 @@ export function ShopperToBuyer() {
       <Key x={414} y={146} anchor="middle" fill={PAPER} size={10}>
         OF SALE
       </Key>
-      <Person x={310} y={246} k={1.4} />
+      <Person3 x={310} y={246} k={1.4} />
       <Key x={310} y={270} anchor="middle" fill={INK} size={10}>
         SHOPPERS
       </Key>
-      <Arrow x1={344} y1={220} x2={484} y2={220} tone={SIGNAL} width={2} />
+      <Arrow2 x1={344} y1={220} x2={484} y2={220} tone={SIGNAL} width={2} />
       <line x1={414} y1={176} x2={414} y2={214} stroke={SIGNAL} strokeWidth={1.5} strokeDasharray="4 4" />
-      <Person x={528} y={246} k={1.4} stroke={SIGNAL} />
-      <Pack x={572} y={246} w={30} h={28} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Person3 x={528} y={246} k={1.4} stroke={SIGNAL} />
+      <Pack4 x={572} y={246} w={30} h={28} tone={SIGNAL} fill={SIGNAL_TINT} />
       <Key x={540} y={270} anchor="middle" fill={SIGNAL} size={10}>
         BUYERS
       </Key>
@@ -2460,7 +2194,7 @@ export function TargetAndPositioning() {
         [0, 1, 2, 3].map((c) => {
           const inTarget = r > 0 && r < 3 && c > 0 && c < 3;
           return (
-            <Person
+            <Person3
               key={`${r}-${c}`}
               x={48 + c * 38}
               y={80 + r * 30}
@@ -2512,7 +2246,7 @@ export function BetterOrCheaper() {
         PERFORMING IT
       </Key>
       <rect x={220} y={60} width={140} height={140} fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
-      <Factory x={290} y={196} k={0.72} tone={INK3} />
+      <Factory3 x={290} y={196} k={0.72} tone={INK3} />
       <Key x={290} y={226} anchor="middle" fill={INK3} size={10}>
         PRODUCERS
       </Key>
@@ -2522,7 +2256,7 @@ export function BetterOrCheaper() {
         WHOLESALERS
       </Key>
       <line x1={220} y1={60} x2={660} y2={60} stroke={RULE2} strokeWidth={1} strokeDasharray="5 4" />
-      <Arrow x1={440} y1={78} x2={440} y2={122} tone={SIGNAL} width={1.75} />
+      <Arrow2 x1={440} y1={78} x2={440} y2={122} tone={SIGNAL} width={1.75} />
       <Key x={452} y={104} fill={SIGNAL} size={10}>
         MORE COST EFFECTIVELY
       </Key>
@@ -2547,7 +2281,7 @@ export function ManySmallCustomers() {
       height={280}
       label="Above, a manufacturer runs a separate line to each of six small customers. Below, it runs one line to a wholesaler, which runs the six. The count of lines the manufacturer pays for falls from six to one."
     >
-      <Factory x={62} y={132} k={0.8} tone={INK3} />
+      <Factory3 x={62} y={132} k={0.8} tone={INK3} />
       <Key x={62} y={156} anchor="middle" fill={INK3} size={9.5}>
         MANUFACTURERS
       </Key>
@@ -2555,18 +2289,18 @@ export function ManySmallCustomers() {
         <line key={y} x1={92} y1={112} x2={244} y2={y} stroke={INK3} strokeWidth={1} />
       ))}
       {targets.map((y) => (
-        <Person key={y} x={262} y={y + 12} k={0.62} stroke={INK3} />
+        <Person3 key={y} x={262} y={y + 12} k={0.62} stroke={INK3} />
       ))}
       <Key x={262} y={252} anchor="middle" fill={INK3} size={9.5}>
         SIX LINES TO KEEP
       </Key>
       <line x1={330} y1={30} x2={330} y2={250} stroke={RULE} strokeWidth={1} strokeDasharray="5 5" />
 
-      <Factory x={392} y={132} k={0.8} tone={SIGNAL} />
+      <Factory3 x={392} y={132} k={0.8} tone={SIGNAL} />
       <Key x={392} y={156} anchor="middle" fill={SIGNAL} size={9.5}>
         MANUFACTURERS
       </Key>
-      <Arrow x1={424} y1={112} x2={488} y2={112} tone={SIGNAL} width={2.5} />
+      <Arrow2 x1={424} y1={112} x2={488} y2={112} tone={SIGNAL} width={2.5} />
       <Warehouse x={532} y={140} k={0.82} tone={SIGNAL} fill={SIGNAL_TINT} />
       <Key x={532} y={164} anchor="middle" fill={SIGNAL} size={9.5}>
         WHOLESALERS
@@ -2575,7 +2309,7 @@ export function ManySmallCustomers() {
         <line key={y} x1={570} y1={112} x2={700} y2={y} stroke={SIGNAL} strokeWidth={1} />
       ))}
       {targets.map((y) => (
-        <Person key={y} x={718} y={y + 12} k={0.62} stroke={SIGNAL} />
+        <Person3 key={y} x={718} y={y + 12} k={0.62} stroke={SIGNAL} />
       ))}
       <Key x={560} y={252} anchor="middle" fill={SIGNAL} size={9.5}>
         ONE LINE, AT A LOW COST
@@ -2597,12 +2331,12 @@ export function HoldInventory() {
       height={260}
       label="A supplier on the left and a customer on the right, each holding only a little stock. Between them the wholesaler holds the tall stack, so the cost and the risk of carrying it sit with the wholesaler."
     >
-      <Factory x={90} y={176} />
+      <Factory3 x={90} y={176} />
       <Key x={90} y={200} anchor="middle" fill={INK} size={10}>
         SUPPLIERS
       </Key>
-      <Pack x={168} y={176} w={38} h={30} tone={INK3} />
-      <Arrow x1={168} y1={122} x2={168} y2={148} tone={INK3} width={1.25} size={7} />
+      <Pack4 x={168} y={176} w={38} h={30} tone={INK3} />
+      <Arrow2 x1={168} y1={122} x2={168} y2={148} tone={INK3} width={1.25} size={7} />
       <Key x={168} y={110} anchor="middle" fill={INK3} size={9.5}>
         REDUCED
       </Key>
@@ -2627,12 +2361,12 @@ export function HoldInventory() {
         THEY HOLD INVENTORIES
       </Key>
 
-      <Pack x={632} y={176} w={38} h={30} tone={INK3} />
-      <Arrow x1={632} y1={122} x2={632} y2={148} tone={INK3} width={1.25} size={7} />
+      <Pack4 x={632} y={176} w={38} h={30} tone={INK3} />
+      <Arrow2 x1={632} y1={122} x2={632} y2={148} tone={INK3} width={1.25} size={7} />
       <Key x={632} y={110} anchor="middle" fill={INK3} size={9.5}>
         REDUCED
       </Key>
-      <Person x={716} y={176} k={1.4} />
+      <Person3 x={716} y={176} k={1.4} />
       <Key x={716} y={200} anchor="middle" fill={INK} size={10}>
         CUSTOMERS
       </Key>
@@ -2665,16 +2399,16 @@ export function PlanImplementControl() {
           <Key x={s.x} y={76} anchor="middle" fill={SIGNAL} size={10.5}>
             {s.name}
           </Key>
-          {i < 2 ? <Arrow x1={s.x + 90} y1={69} x2={s.x + 132} y2={69} tone={SIGNAL} width={1.5} size={7} /> : null}
+          {i < 2 ? <Arrow2 x1={s.x + 90} y1={69} x2={s.x + 132} y2={69} tone={SIGNAL} width={1.5} size={7} /> : null}
         </g>
       ))}
       <path d="M712 69 H756 V126 H44 V69 H88" fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={headAlong(88, 69, 1, 0)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={headAlong1(88, 69, 1, 0)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
       <line x1={70} y1={196} x2={730} y2={196} stroke={INK} strokeWidth={1.75} />
-      <Factory x={100} y={196} k={0.78} />
-      <Truck x={400} y={196} />
-      <Store x={696} y={196} k={0.82} />
-      <Arrow x1={160} y1={158} x2={640} y2={158} tone={INK} width={1.5} />
+      <Factory3 x={100} y={196} k={0.78} />
+      <Truck2 x={400} y={196} />
+      <Store2 x={696} y={196} k={0.82} />
+      <Arrow2 x1={160} y1={158} x2={640} y2={158} tone={INK} width={1.5} />
       <Key x={400} y={146} anchor="middle" fill={INK} size={10}>
         THE PHYSICAL FLOW OF GOODS
       </Key>
@@ -2736,22 +2470,22 @@ export function ThreeDistributions() {
       label="The company as a box in the middle. Inbound distribution enters from the left, outbound distribution leaves to the right, and reverse distribution loops back from the customer along the bottom."
     >
       <rect x={300} y={92} width={200} height={104} fill={PAPER} stroke={INK} strokeWidth={1.75} />
-      <Factory x={400} y={176} />
+      <Factory3 x={400} y={176} />
       <Key x={400} y={120} anchor="middle" fill={INK} size={10.5}>
         THE COMPANY
       </Key>
-      <Pack x={80} y={158} w={40} h={34} tone={COUNTER} fill={COUNTER_TINT} />
-      <Arrow x1={118} y1={130} x2={292} y2={130} tone={COUNTER} width={2} />
+      <Pack4 x={80} y={158} w={40} h={34} tone={COUNTER} fill={COUNTER_TINT} />
+      <Arrow2 x1={118} y1={130} x2={292} y2={130} tone={COUNTER} width={2} />
       <Key x={204} y={116} anchor="middle" fill={COUNTER} size={10.5}>
         INBOUND
       </Key>
-      <Arrow x1={508} y1={130} x2={682} y2={130} tone={SIGNAL} width={2} />
+      <Arrow2 x1={508} y1={130} x2={682} y2={130} tone={SIGNAL} width={2} />
       <Key x={596} y={116} anchor="middle" fill={SIGNAL} size={10.5}>
         OUTBOUND
       </Key>
-      <Person x={732} y={158} k={1.4} stroke={SIGNAL} />
+      <Person3 x={732} y={158} k={1.4} stroke={SIGNAL} />
       <path d="M732 178 V236 H400 V206" fill="none" stroke={INK} strokeWidth={1.75} strokeDasharray="6 4" />
-      <path d={headAlong(400, 202, 0, -1)} fill="none" stroke={INK} strokeWidth={1.75} />
+      <path d={headAlong1(400, 202, 0, -1)} fill="none" stroke={INK} strokeWidth={1.75} />
       <Key x={566} y={256} anchor="middle" fill={INK} size={10.5}>
         REVERSE
       </Key>
@@ -2782,10 +2516,10 @@ export function UpstreamDownstream() {
       <Schematic x={792} y={16} />
       {stages.map((s) => (
         <g key={s.name}>
-          {s.g === "pack" ? <Pack x={s.x} y={186} w={44} h={40} /> : null}
-          {s.g === "factory" ? <Factory x={s.x} y={186} /> : null}
-          {s.g === "store" ? <Store x={s.x} y={186} /> : null}
-          {s.g === "person" ? <Person x={s.x} y={186} k={1.4} /> : null}
+          {s.g === "pack" ? <Pack4 x={s.x} y={186} w={44} h={40} /> : null}
+          {s.g === "factory" ? <Factory3 x={s.x} y={186} /> : null}
+          {s.g === "store" ? <Store2 x={s.x} y={186} /> : null}
+          {s.g === "person" ? <Person3 x={s.x} y={186} k={1.4} /> : null}
           <Key x={s.x} y={212} anchor="middle" fill={INK} size={10}>
             {s.name}
           </Key>
@@ -2807,11 +2541,11 @@ export function UpstreamDownstream() {
       <Key x={58} y={68} fill={SIGNAL} size={10}>
         VALUE ADDED
       </Key>
-      <Arrow x1={116} y1={250} x2={700} y2={250} tone={SIGNAL} width={2} />
+      <Arrow2 x1={116} y1={250} x2={700} y2={250} tone={SIGNAL} width={2} />
       <Key x={408} y={238} anchor="middle" fill={SIGNAL} size={10.5}>
         DOWNSTREAM: MATERIALS AND FINAL GOODS
       </Key>
-      <Arrow x1={700} y1={278} x2={116} y2={278} tone={COUNTER} width={2} dash="6 4" />
+      <Arrow2 x1={700} y1={278} x2={116} y2={278} tone={COUNTER} width={2} dash="6 4" />
       <Key x={408} y={294} anchor="middle" fill={COUNTER} size={10.5}>
         UPSTREAM: RELATED INFORMATION
       </Key>
@@ -2832,7 +2566,7 @@ export function ServiceAndCost() {
     >
       <Schematic x={392} y={16} />
       <line x1={200} y1={40} x2={200} y2={196} stroke={RULE} strokeWidth={1.25} />
-      <Arrow x1={140} y1={150} x2={140} y2={56} tone={SIGNAL} width={2.5} />
+      <Arrow2 x1={140} y1={150} x2={140} y2={56} tone={SIGNAL} width={2.5} />
       <Key x={124} y={98} anchor="end" fill={SIGNAL} size={10}>
         CUSTOMER
       </Key>
@@ -2842,7 +2576,7 @@ export function ServiceAndCost() {
       <Key x={140} y={44} anchor="middle" fill={SIGNAL} size={9.5}>
         MAXIMIZE
       </Key>
-      <Arrow x1={260} y1={86} x2={260} y2={180} tone={COUNTER} width={2.5} />
+      <Arrow2 x1={260} y1={86} x2={260} y2={180} tone={COUNTER} width={2.5} />
       <Key x={276} y={98} fill={COUNTER} size={10}>
         DISTRIBUTION
       </Key>
@@ -2893,7 +2627,7 @@ export function SupplyFunctions() {
       </g>
       <g>
         <line x1={412} y1={136} x2={580} y2={136} stroke={INK} strokeWidth={1.75} />
-        <Truck x={496} y={136} />
+        <Truck2 x={496} y={136} />
         {[0, 1, 2, 3].map((i) => (
           <line key={i} x1={420 + i * 44} y1={148} x2={440 + i * 44} y2={148} stroke={RULE2} strokeWidth={2} />
         ))}
@@ -2936,7 +2670,7 @@ export function OutsourceLogistics() {
           </Key>
         </g>
       ))}
-      <Arrow x1={290} y1={134} x2={382} y2={134} tone={SIGNAL} width={2.5} />
+      <Arrow2 x1={290} y1={134} x2={382} y2={134} tone={SIGNAL} width={2.5} />
       <Key x={336} y={118} anchor="middle" fill={SIGNAL} size={10}>
         OUTSOURCING
       </Key>
@@ -2974,13 +2708,13 @@ export function ThreeGains() {
       <line x1={534} y1={34} x2={534} y2={186} stroke={RULE} strokeWidth={1} strokeDasharray="5 5" />
       <rect x={60} y={64} width={54} height={104} fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
       <rect x={150} y={124} width={54} height={44} fill={SIGNAL} />
-      <Arrow x1={132} y1={88} x2={132} y2={140} tone={SIGNAL} width={1.75} />
+      <Arrow2 x1={132} y1={88} x2={132} y2={140} tone={SIGNAL} width={1.75} />
       <Key x={132} y={192} anchor="middle" fill={SIGNAL} size={10}>
         SAVE MONEY
       </Key>
       <rect x={330} y={124} width={54} height={44} fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
       <rect x={420} y={64} width={54} height={104} fill={SIGNAL} />
-      <Arrow x1={402} y1={140} x2={402} y2={88} tone={SIGNAL} width={1.75} />
+      <Arrow2 x1={402} y1={140} x2={402} y2={88} tone={SIGNAL} width={1.75} />
       <Key x={402} y={192} anchor="middle" fill={SIGNAL} size={10}>
         IMPROVE SERVICE
       </Key>
@@ -3002,7 +2736,7 @@ export function ThreeGains() {
         [686, 70],
         [738, 104],
       ].map(([x, y], i) => (
-        <Arrow key={i} x1={x} y1={y} x2={Math.round(666 + (x - 666) / 4)} y2={Math.round(142 - 34 + (y - 108) / 4)} tone={RULE2} width={1.25} size={6} />
+        <Arrow2 key={i} x1={x} y1={y} x2={Math.round(666 + (x - 666) / 4)} y2={Math.round(142 - 34 + (y - 108) / 4)} tone={RULE2} width={1.25} size={6} />
       ))}
       <Key x={400} y={216} anchor="middle" fill={INK3} size={9.5}>
         WHAT 3PL PROVIDERS CAN HELP COMPANIES DO

@@ -64,6 +64,14 @@ import {
   sharp,
   type Look,
 } from "../_visuals/sketch-cast";
+import {
+  Can1,
+  Car1,
+  Glass1,
+  Mug1,
+  Shelf1,
+  shelf1Pos,
+} from "../_visuals/sketch-objects";
 
 /* ==========================================================================
    TITLE · a receipt that did not sell a product
@@ -609,39 +617,6 @@ export function BuysUses() {
    WHY CONSUMERS ARE NOT CALCULATORS
    ========================================================================== */
 
-const SHELF_COLS = 4;
-const SHELF_ROWS = 3;
-function shelfPos(i: number) {
-  const c = i % SHELF_COLS;
-  const r = Math.floor(i / SHELF_COLS);
-  return { x: 150 + c * 62, y: 70 + r * 62 };
-}
-
-const SHELF_WASH = [SK.camel, SK.earth, SK.sky, SK.tan];
-
-/** Three wooden planks of twelve small products; `lit` is washed teal (the pick). */
-function Shelf({ lit, faded = false }: { lit: number; faded?: boolean }) {
-  return (
-    <g>
-      {Array.from({ length: SHELF_ROWS }, (_, r) => (
-        <InkLine key={r} pts={[[118, 92 + r * 62], [364, 92 + r * 62 + (r % 2 ? 1 : -1)]]} seed={400 + r} width={1.6} />
-      ))}
-      {Array.from({ length: SHELF_COLS * SHELF_ROWS }, (_, i) => {
-        const { x, y } = shelfPos(i);
-        const on = i === lit;
-        const h = 32 + ((i * 7) % 3) * 3;
-        const box = rp([[x - 15, y + 20 - h], [x + 15, y + 20 - h], [x + 15, y + 20], [x - 15, y + 20]]);
-        return (
-          <g key={i} opacity={faded && !on ? 0.35 : 1}>
-            <Wash pts={box} seed={410 + i} fill={on ? SK.teal : SHELF_WASH[i % 4]} opacity={on ? 0.75 : 0.5} />
-            <InkLine pts={box} seed={430 + i} width={on ? 1.5 : 1.1} closed />
-          </g>
-        );
-      })}
-    </g>
-  );
-}
-
 /** The old model: visit every option, score it, take the best. */
 export function CalculatorWalk() {
   const best = 10;
@@ -658,7 +633,7 @@ export function CalculatorWalk() {
     [128, rowY(2)],
     [362, rowY(2)],
   ];
-  const b = shelfPos(best);
+  const b = shelf1Pos(best);
   return (
     <SketchFrame
       id="sk-calculator-walk"
@@ -669,10 +644,10 @@ export function CalculatorWalk() {
       <Backwash cx={220} cy={136} rx={184} ry={118} seed={450} opacity={0.4} />
       <Ground x0={24} x1={100} y={186} seed={452} />
       <Person x={60} y={186} h={112} look={{ hair: "short", hairTone: SK.brown, wear: SK.charcoal, legs: SK.charcoal, outfit: "jacket" }} arms={["down", "point"]} seed={460} />
-      <Shelf lit={best} />
+      <Shelf1 lit={best} />
       <SketchArrow pts={path} seed={470} width={1.1} head={7} />
       {Array.from({ length: 12 }, (_, i) => {
-        const p = shelfPos(i);
+        const p = shelf1Pos(i);
         return <path key={i} d={wobble(rp(blobPts(p.x, rowY(Math.floor(i / 4)), 2.4, 2.4, 480 + i, 7, 0.1)), 480 + i, 0.1, 4, true)} fill={SK.ink} />;
       })}
       <Star x={b.x} y={b.y + 3} r={9} seed={496} />
@@ -702,7 +677,7 @@ function Battery({ x, y, seed }: { x: number; y: number; seed: number }) {
 /** Real people: short of time and energy, one shortcut to a familiar pick. */
 export function ShortcutWalk() {
   const pick = 4;
-  const p = shelfPos(pick);
+  const p = shelf1Pos(pick);
   const hand = handAt(60, 186, 112, "reach");
   return (
     <SketchFrame
@@ -713,7 +688,7 @@ export function ShortcutWalk() {
     >
       <Backwash cx={220} cy={136} rx={184} ry={118} seed={500} opacity={0.4} />
       <Ground x0={24} x1={100} y={186} seed={502} />
-      <Shelf lit={pick} faded />
+      <Shelf1 lit={pick} faded />
       <Person x={60} y={186} h={112} look={{ hair: "bob", hairTone: SK.brown, wear: SK.camel, legs: SK.charcoal }} arms={["down", "reach"]} seed={510} />
       <Clock x={34} y={46} r={13} seed={520} />
       <Battery x={80} y={46} seed={524} />
@@ -831,50 +806,6 @@ export function CalculatorError() {
    NEEDS VERSUS WANTS
    ========================================================================== */
 
-/** A tall glass of cold water; (x, y) is the base centre. */
-function Glass({ x, y, seed }: { x: number; y: number; seed: number }) {
-  const glass = at(x, y, [[-17, -62], [17, -62], [13, 0], [-13, 0]]);
-  const water = at(x, y, [[-15.5, -42], [15.5, -42], [13, 0], [-13, 0]]);
-  return (
-    <g>
-      <Wash pts={water} seed={seed} fill={SK.sky} opacity={0.8} dx={1} dy={0} />
-      <InkLine pts={glass} seed={seed + 1} closed />
-      <InkLine pts={at(x, y, [[-15, -42], [15, -42]])} seed={seed + 2} width={0.9} />
-      {/* two ice cubes */}
-      <InkLine pts={at(x, y, [[-9, -38], [-1, -39], [-1, -31], [-9, -30]])} seed={seed + 3} width={0.8} closed />
-      <InkLine pts={at(x, y, [[1, -30], [9, -31], [9, -23], [1, -22]])} seed={seed + 4} width={0.8} closed />
-    </g>
-  );
-}
-
-/** A soda can; (x, y) is the base centre. */
-function Can({ x, y, seed }: { x: number; y: number; seed: number }) {
-  const rim = (cy: number, half: "top" | "bottom" | "all") =>
-    rp(
-      Array.from({ length: half === "all" ? 13 : 7 }, (_, i) => {
-        const a = half === "all" ? (i / 12) * Math.PI * 2 : half === "top" ? Math.PI + (i / 6) * Math.PI : (i / 6) * Math.PI;
-        return [x + Math.cos(a) * 16, y + cy + Math.sin(a) * 4] as Pt;
-      }),
-    );
-  const outline = rp([[x - 16, y - 54], ...rim(-2, "bottom").reverse(), [x + 16, y - 54]]);
-  return (
-    <g>
-      <Wash pts={[...rim(-54, "top"), ...rim(-2, "bottom")]} seed={seed} fill={SK.charcoal} opacity={0.5} />
-      <InkLine pts={outline} seed={seed + 1} />
-      <InkLine pts={rim(-54, "all")} seed={seed + 2} width={1.1} closed />
-      <path
-        d={wobble(rp([[x - 16, y - 30], [x - 6, y - 25], [x + 6, y - 33], [x + 16, y - 28]]), seed + 3, 0.3, 6)}
-        fill="none"
-        stroke={SK.ochre}
-        strokeWidth={4}
-        strokeLinecap="round"
-        opacity={0.9}
-      />
-      <InkLine pts={at(x, y, [[1, -55], [8, -57], [9, -54]])} seed={seed + 4} width={1} amp={0.1} />
-    </g>
-  );
-}
-
 /** A cup of hot tea on its saucer, steam rising; (x, y) is the base centre. */
 function TeaCup({ x, y, seed }: { x: number; y: number; seed: number }) {
   const cup = at(x, y, [[-24, -40], [18, -40], [16, -16], [6, -2], [-14, -2], [-22, -16]]);
@@ -962,10 +893,10 @@ export function NeedWantTrio() {
       </SketchText>
 
       <g transform={`translate(530 ${mtl + 44}) scale(1.35) translate(-530 ${-(mtl + 44)})`}>
-        <Glass x={530} y={mtl + 44} seed={740} />
+        <Glass1 x={530} y={mtl + 44} seed={740} />
       </g>
       <g transform={`translate(630 ${mtl + 44}) scale(1.35) translate(-630 ${-(mtl + 44)})`}>
-        <Can x={630} y={mtl + 44} seed={750} />
+        <Can1 x={630} y={mtl + 44} seed={750} />
       </g>
       <g transform={`translate(580 ${other + 44}) scale(1.35) translate(-580 ${-(other + 44)})`}>
         <TeaCup x={580} y={other + 44} seed={760} />
@@ -977,19 +908,6 @@ export function NeedWantTrio() {
 /* ==========================================================================
    THE MANY ROLES ONE PERSON PLAYS
    ========================================================================== */
-
-/** A mug held up at (x, y), its handle toward +x. */
-function Mug({ x, y, s = 1.6, seed }: { x: number; y: number; s?: number; seed: number }) {
-  const cup = sharp(at(x, y, [[-5.5, -7], [5.5, -7], [5, 6], [-5, 6]], s), true, 1);
-  return (
-    <g>
-      <Paper pts={cup} seed={seed} />
-      <Wash pts={cup} seed={seed + 1} fill={SK.camel} opacity={0.65} dx={0.6} dy={0.4} />
-      <InkLine pts={cup} seed={seed + 2} width={1.1} amp={0.2} closed />
-      <InkLine pts={at(x, y, [[5.5, -4], [9.5, -3.5], [9.5, 2], [5.2, 3]], s)} seed={seed + 3} width={1} amp={0.2} />
-    </g>
-  );
-}
 
 /** The one shopper who plays every role this week. */
 const SHOPPER: Look = { hair: "bob", hairTone: SK.brown, wear: SK.camel, legs: SK.charcoal };
@@ -1045,39 +963,8 @@ export function RoleGlyph({ role }: { role: 0 | 1 | 2 | 3 }) {
         </g>
       ) : null}
       {role === 2 ? <PayCard x={r2(hand[0] + 7)} y={r2(hand[1] - 2)} w={19} tilt={-12} seed={seed + 10} /> : null}
-      {role === 3 ? <Mug x={r2(mouth[0] + 9)} y={r2(mouth[1] + 3)} seed={seed + 10} /> : null}
+      {role === 3 ? <Mug1 x={r2(mouth[0] + 9)} y={r2(mouth[1] + 3)} seed={seed + 10} /> : null}
     </SketchFrame>
-  );
-}
-
-/** A family sedan standing on (x, y), washed teal: the thing being bought. */
-function Car({ x, y, seed }: { x: number; y: number; seed: number }) {
-  const body = at(x, y, [[-130, -22], [-131, -50], [-112, -62], [-70, -66], [-40, -104], [52, -104], [86, -66], [118, -60], [132, -42], [132, -22]]);
-  const front = sharp(at(x, y, [[-58, -68], [-34, -96], [-3, -96], [-3, -68]]), true, 2);
-  const back = sharp(at(x, y, [[5, -68], [5, -96], [48, -96], [72, -68]]), true, 2);
-  return (
-    <g>
-      <Wash pts={body} seed={seed} fill={SK.teal} opacity={0.6} />
-      <InkLine pts={body} seed={seed + 1} closed />
-      <Wash pts={front} seed={seed + 2} fill={SK.sky} opacity={0.85} dx={1} dy={1} />
-      <InkLine pts={front} seed={seed + 3} width={1.1} closed />
-      <Wash pts={back} seed={seed + 4} fill={SK.sky} opacity={0.85} dx={1} dy={1} />
-      <InkLine pts={back} seed={seed + 5} width={1.1} closed />
-      <InkLine pts={at(x, y, [[-20, -58], [-10, -58]])} seed={seed + 6} width={1.2} amp={0.2} />
-      {[-78, 80].map((dx, i) => {
-        const tyre = rp(blobPts(x + dx, y - 20, 20, 20, seed + 10 + i, 14, 0.04));
-        const hub = rp(blobPts(x + dx, y - 20, 7, 7, seed + 12 + i, 8, 0.05));
-        return (
-          <g key={dx}>
-            <Paper pts={tyre} seed={seed + 14 + i} />
-            <Wash pts={tyre} seed={seed + 16 + i} fill={SK.charcoal} opacity={0.8} dx={0.5} dy={0.5} />
-            <InkLine pts={tyre} seed={seed + 18 + i} closed />
-            <Paper pts={hub} seed={seed + 20 + i} />
-            <InkLine pts={hub} seed={seed + 22 + i} width={0.9} closed />
-          </g>
-        );
-      })}
-    </g>
   );
 }
 
@@ -1099,7 +986,7 @@ export function FamilyCar() {
       <Person x={166} y={g} h={132} look={SHOPPER} arms={["hip", "reach"]} seed={1010} />
       <PayCard x={r2(card[0] + 7)} y={r2(card[1] - 2)} w={24} tilt={-12} seed={1110} />
 
-      <Car x={400} y={g} seed={1120} />
+      <Car1 x={400} y={g} seed={1120} />
 
       {/* children: the influencers */}
       <Person x={624} y={g} h={80} headScale={1.5} flip look={{ hair: "curly", hairTone: SK.brown, skin: SK.brown, skinOpacity: 0.5, wear: SK.ochre, legs: SK.tan }} arms={["up", "down"]} seed={1150} />

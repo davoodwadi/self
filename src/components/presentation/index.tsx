@@ -67,7 +67,7 @@ export const FloatingNav = ({ sections }: { sections: { id: string, label: strin
 // 3. Hero Section
 export const Hero = ({ category, title, subtitle, author, date, institution }: any) => {
   return (
-    <section id="hero" className="relative h-screen w-full flex flex-col justify-center px-8 md:px-16 overflow-hidden bg-background">
+    <section data-slide id="hero" className="relative h-screen w-full flex flex-col justify-center px-8 md:px-16 overflow-hidden bg-background">
       <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at center, var(--accent2), transparent 70%)' }} />
       
       <div className="max-w-[var(--container)] mx-auto w-full z-10">
@@ -109,7 +109,7 @@ export const Hero = ({ category, title, subtitle, author, date, institution }: a
 // 4. Chapter Header
 export const ChapterHeader = ({ id, number, title, description, altBg = false }: any) => {
   return (
-    <section id={id} className={`relative py-[var(--section-py)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} min-h-screen flex flex-col justify-center`}>
+    <section data-slide id={id} className={`relative py-[var(--section-py)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} min-h-screen flex flex-col justify-center`}>
       <div className="max-w-[var(--container)] w-full mx-auto relative">
         <div className="absolute top-0 right-0 text-[8rem] leading-none font-heading font-light opacity-10 text-accent1 select-none">
           {number}
@@ -129,7 +129,7 @@ export const ChapterHeader = ({ id, number, title, description, altBg = false }:
 // 5. Zigzag Content Block
 export const ZigzagContent = ({ id, label, title, segments, startRight = false, altBg = false }: any) => {
   return (
-    <section id={id} className={`py-[var(--section-py)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} overflow-hidden min-h-screen flex flex-col justify-center`}>
+    <section data-slide id={id} className={`py-[var(--section-py)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} overflow-hidden min-h-screen flex flex-col justify-center`}>
       <div className="max-w-[var(--container)] w-full mx-auto">
         <div className="mb-16 md:mb-24 text-center">
           <p className="text-label mb-4">{label}</p>
@@ -177,7 +177,7 @@ export const ZigzagContent = ({ id, label, title, segments, startRight = false, 
 // 6. Concept Cards Zigzag
 export const ConceptCardsZigzag = ({ cards, id, startRight = true, altBg = false }: any) => {
   return (
-    <section id={id} className={`py-[var(--section-py)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} min-h-screen flex flex-col justify-center overflow-hidden`}>
+    <section data-slide id={id} className={`py-[var(--section-py)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} min-h-screen flex flex-col justify-center overflow-hidden`}>
       <div className="max-w-[var(--container)] w-full mx-auto">
         <div className="flex flex-col relative w-full pt-12 gap-12 md:gap-16">
           {cards.map((card: any, idx: number) => {
@@ -205,7 +205,7 @@ export const ConceptCardsZigzag = ({ cards, id, startRight = true, altBg = false
 // 7. Cinematic Quote
 export const CinematicQuote = ({ quote, author, altBg = true }: any) => {
   return (
-    <section className={`relative py-[var(--section-py-lg)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} overflow-hidden min-h-screen flex flex-col justify-center`}>
+    <section data-slide className={`relative py-[var(--section-py-lg)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} overflow-hidden min-h-screen flex flex-col justify-center`}>
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       
@@ -226,7 +226,7 @@ export const CinematicQuote = ({ quote, author, altBg = true }: any) => {
 // 8. Conclusion Section
 export const Conclusion = ({ title, summary, takeaways, id }: any) => {
   return (
-    <section id={id} className="py-[var(--section-py)] px-8 md:px-16 bg-background-alt relative min-h-screen flex flex-col justify-center">
+    <section data-slide id={id} className="py-[var(--section-py)] px-8 md:px-16 bg-background-alt relative min-h-screen flex flex-col justify-center">
       <div className="max-w-[var(--container-narrow)] w-full mx-auto">
         <p className="text-label mb-4">CONCLUSION</p>
         <h2 className="text-h1 mb-8">{title}</h2>
@@ -250,7 +250,7 @@ export const Conclusion = ({ title, summary, takeaways, id }: any) => {
 // 9. Data Block (Simple Diagram container for now)
 export const DataBlock = ({ id, title, label, children, altBg = false }: any) => {
     return (
-      <section id={id} className={`py-[var(--section-py)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} overflow-hidden min-h-screen flex flex-col justify-center`}>
+      <section data-slide id={id} className={`py-[var(--section-py)] px-8 md:px-16 ${altBg ? 'bg-background-alt' : 'bg-background'} overflow-hidden min-h-screen flex flex-col justify-center`}>
         <div className="max-w-[var(--container)] w-full mx-auto">
           <p className="text-label mb-4">{label}</p>
           <h3 className="text-h1 mb-12">{title}</h3>

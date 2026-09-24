@@ -23,98 +23,42 @@
 
 import React from "react";
 import {
-  Key,
+  COUNTER,
+  COUNTER_TINT,
   Display,
   Frame,
-  Schematic,
+  headAlong1,
   INK,
   INK3,
-  RULE,
-  RULE2,
-  SIGNAL,
-  COUNTER,
+  Key,
   PAPER,
   PAPER2,
+  r2,
+  RULE,
+  RULE2,
+  Schematic,
+  SIGNAL,
   SIGNAL_TINT,
-  COUNTER_TINT,
-} from "../week1/visuals";
-import { Person, Pack, Store } from "../week9/visuals";
+} from "../_visuals/broadsheet";
+import {
+  Arrow2,
+  Bubble1,
+  Coins2,
+  Gift2,
+  GlyphFrame,
+  Mark2,
+  Pack4,
+  Person3,
+  Store2,
+  Tool,
+  ToolKind,
+  Tv1,
+  TwoWay2,
+} from "../_visuals/objects";
 
 /* -- geometry helpers ------------------------------------------------------ */
 
-/** Open chevron arrowhead pointing along (dx, dy), tip at (x, y). */
-function headAlong(x: number, y: number, dx: number, dy: number, s = 8) {
-  const len = Math.hypot(dx, dy) || 1;
-  const ux = dx / len;
-  const uy = dy / len;
-  const bx = x - ux * s;
-  const by = y - uy * s;
-  const px = -uy * (s * 0.62);
-  const py = ux * (s * 0.62);
-  return `M${(bx + px).toFixed(2)} ${(by + py).toFixed(2)}L${x.toFixed(2)} ${y.toFixed(2)}L${(bx - px).toFixed(2)} ${(by - py).toFixed(2)}`;
-}
-
-/** A straight arrow from (x1, y1) to (x2, y2). */
-function Arrow({
-  x1,
-  y1,
-  x2,
-  y2,
-  tone = INK,
-  width = 1.5,
-  dash,
-  size = 8,
-}: {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-  tone?: string;
-  width?: number;
-  dash?: string;
-  size?: number;
-}) {
-  return (
-    <g>
-      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={tone} strokeWidth={width} strokeDasharray={dash} />
-      <path d={headAlong(x2, y2, x2 - x1, y2 - y1, size)} fill="none" stroke={tone} strokeWidth={width} />
-    </g>
-  );
-}
-
-/** An arrow with a head at both ends — a two-way exchange. */
-function TwoWay({
-  x1,
-  y1,
-  x2,
-  y2,
-  tone = INK,
-  width = 1.5,
-  dash,
-}: {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-  tone?: string;
-  width?: number;
-  dash?: string;
-}) {
-  return (
-    <g>
-      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={tone} strokeWidth={width} strokeDasharray={dash} />
-      <path d={headAlong(x2, y2, x2 - x1, y2 - y1)} fill="none" stroke={tone} strokeWidth={width} />
-      <path d={headAlong(x1, y1, x1 - x2, y1 - y2)} fill="none" stroke={tone} strokeWidth={width} />
-    </g>
-  );
-}
-
-/** Rounded to two decimals, so trig points match on server and client. */
-const r2 = (n: number) => Math.round(n * 100) / 100;
-
 /* -- the cast of the week -------------------------------------------------- */
-
-export type ToolKind = "ad" | "pr" | "sp" | "ps" | "dd";
 
 export const TOOLS: { kind: ToolKind; name: string }[] = [
   { kind: "ad", name: "ADVERTISING" },
@@ -123,133 +67,6 @@ export const TOOLS: { kind: ToolKind; name: string }[] = [
   { kind: "ps", name: "PERSONAL SELLING" },
   { kind: "dd", name: "DIRECT AND DIGITAL" },
 ];
-
-/**
- * One of the five promotion tools, centred on (x, y). About 44 wide and 32
- * tall at k = 1: megaphone, newspaper, coupon, two people, phone.
- */
-export function Tool({
-  kind,
-  x,
-  y,
-  k = 1,
-  tone = INK,
-  fill = PAPER,
-}: {
-  kind: ToolKind;
-  x: number;
-  y: number;
-  k?: number;
-  tone?: string;
-  fill?: string;
-}) {
-  const X = (d: number) => r2(x + d * k);
-  const Y = (d: number) => r2(y + d * k);
-  const sw = 1.5;
-  if (kind === "ad") {
-    return (
-      <g strokeLinejoin="round" strokeLinecap="round">
-        <rect x={X(-22)} y={Y(-5)} width={r2(6 * k)} height={r2(10 * k)} fill={fill} stroke={tone} strokeWidth={sw} />
-        <path d={`M${X(-16)} ${Y(-5)}L${X(12)} ${Y(-15)}V${Y(15)}L${X(-16)} ${Y(5)}Z`} fill={fill} stroke={tone} strokeWidth={sw} />
-        <path d={`M${X(-10)} ${Y(3)}L${X(-12)} ${Y(12)}H${X(-6)}L${X(-4)} ${Y(1)}`} fill={fill} stroke={tone} strokeWidth={sw} />
-        <path
-          d={`M${X(17)} ${Y(-7)}Q${X(21)} ${Y(0)} ${X(17)} ${Y(7)}M${X(21)} ${Y(-12)}Q${X(28)} ${Y(0)} ${X(21)} ${Y(12)}`}
-          fill="none"
-          stroke={tone}
-          strokeWidth={1.25}
-        />
-      </g>
-    );
-  }
-  if (kind === "pr") {
-    return (
-      <g strokeLinejoin="round">
-        <rect x={X(-17)} y={Y(-15)} width={r2(34 * k)} height={r2(30 * k)} fill={fill} stroke={tone} strokeWidth={sw} />
-        <rect x={X(-12)} y={Y(-10)} width={r2(24 * k)} height={r2(5 * k)} fill={tone} />
-        <path
-          d={[-1, 4, 9]
-            .map((d) => `M${X(-12)} ${Y(d)}H${X(-2)}M${X(2)} ${Y(d)}H${X(12)}`)
-            .join("")}
-          stroke={tone}
-          strokeWidth={1}
-        />
-      </g>
-    );
-  }
-  if (kind === "sp") {
-    const r = r2(4 * k);
-    return (
-      <g strokeLinejoin="round">
-        <path
-          d={`M${X(-22)} ${Y(-12)}H${X(22)}V${Y(-4)}A${r} ${r} 0 0 0 ${X(22)} ${Y(4)}V${Y(12)}H${X(-22)}V${Y(4)}A${r} ${r} 0 0 0 ${X(-22)} ${Y(-4)}Z`}
-          fill={fill}
-          stroke={tone}
-          strokeWidth={sw}
-        />
-        <line x1={X(-9)} y1={Y(-12)} x2={X(-9)} y2={Y(12)} stroke={tone} strokeWidth={1} strokeDasharray="2 2" />
-        <text
-          x={X(6)}
-          y={Y(6)}
-          textAnchor="middle"
-          fontFamily="var(--font-heading)"
-          fontWeight={600}
-          fontSize={r2(17 * k)}
-          fill={tone}
-        >
-          %
-        </text>
-      </g>
-    );
-  }
-  if (kind === "ps") {
-    return (
-      <g>
-        <Person x={X(-10)} y={Y(16)} k={r2(0.75 * k)} stroke={tone} fill={tone === INK ? PAPER : fill} />
-        <Person x={X(10)} y={Y(16)} k={r2(0.75 * k)} stroke={tone} fill={PAPER} />
-        <path
-          d={`M${X(-5)} ${Y(-20)}H${X(5)}Q${X(8)} ${Y(-20)} ${X(8)} ${Y(-17)}V${Y(-15)}Q${X(8)} ${Y(-12)} ${X(5)} ${Y(-12)}H${X(1)}L${X(-2)} ${Y(-9)}V${Y(-12)}H${X(-5)}Q${X(-8)} ${Y(-12)} ${X(-8)} ${Y(-15)}V${Y(-17)}Q${X(-8)} ${Y(-20)} ${X(-5)} ${Y(-20)}Z`}
-          fill={PAPER}
-          stroke={tone}
-          strokeWidth={1.1}
-          strokeLinejoin="round"
-        />
-      </g>
-    );
-  }
-  // "dd" — a phone with a message on its screen
-  return (
-    <g strokeLinejoin="round">
-      <rect x={X(-11)} y={Y(-17)} width={r2(22 * k)} height={r2(34 * k)} rx={r2(3 * k)} fill={fill} stroke={tone} strokeWidth={sw} />
-      <rect x={X(-8)} y={Y(-13)} width={r2(16 * k)} height={r2(23 * k)} fill={PAPER2} stroke={tone} strokeWidth={0.75} />
-      <rect x={X(-6)} y={Y(-10)} width={r2(9 * k)} height={r2(5 * k)} rx={r2(1.5 * k)} fill={tone} />
-      <rect x={X(-3)} y={Y(-3)} width={r2(9 * k)} height={r2(5 * k)} rx={r2(1.5 * k)} fill={PAPER} stroke={tone} strokeWidth={0.9} />
-      <circle cx={X(0)} cy={Y(13.5)} r={r2(1.3 * k)} fill={tone} />
-    </g>
-  );
-}
-
-/** The brand message: a ring with a diamond. Same seal = same message. */
-export function Mark({
-  x,
-  y,
-  r = 10,
-  tone = SIGNAL,
-  fill = PAPER,
-}: {
-  x: number;
-  y: number;
-  r?: number;
-  tone?: string;
-  fill?: string;
-}) {
-  const d = r2(r * 0.55);
-  return (
-    <g>
-      <circle cx={x} cy={y} r={r} fill={fill} stroke={tone} strokeWidth={1.5} />
-      <path d={`M${x} ${r2(y - d)}L${r2(x + d)} ${y}L${x} ${r2(y + d)}L${r2(x - d)} ${y}Z`} fill={tone} />
-    </g>
-  );
-}
 
 /** A message that is not the brand's: a different shape each time. */
 function OddMark({
@@ -283,83 +100,6 @@ function OddMark({
     <g>
       <circle cx={x} cy={y} r={r} fill={PAPER} stroke={tone} strokeWidth={1.5} strokeDasharray="3 2" />
       <circle cx={x} cy={y} r={Math.round(r / 3)} fill={tone} />
-    </g>
-  );
-}
-
-/** A stack of coins standing on y: spending. */
-export function Coins({
-  x,
-  y,
-  n,
-  tone = INK,
-  fill = PAPER,
-  w = 28,
-}: {
-  x: number;
-  y: number;
-  n: number;
-  tone?: string;
-  fill?: string;
-  w?: number;
-}) {
-  const h = 6;
-  const top = y - n * h;
-  return (
-    <g>
-      {Array.from({ length: n }, (_, i) => (
-        <rect key={i} x={x - w / 2} y={y - (i + 1) * h} width={w} height={h} rx={3} fill={fill} stroke={tone} strokeWidth={1.2} />
-      ))}
-      <ellipse cx={x} cy={top} rx={w / 2} ry={3.5} fill={PAPER} stroke={tone} strokeWidth={1.2} />
-    </g>
-  );
-}
-
-/** A speech bubble whose box starts at (x, y), tail at the bottom. */
-function Bubble({
-  x,
-  y,
-  w,
-  h,
-  tone = INK,
-  fill = PAPER,
-  tail = "left",
-  dash,
-  width = 1.5,
-}: {
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  tone?: string;
-  fill?: string;
-  tail?: "left" | "right";
-  dash?: string;
-  width?: number;
-}) {
-  const b = y + h;
-  const l = tail === "left" ? x + 10 : x + w - 20;
-  const t = tail === "left" ? `M${l} ${b}L${x + 6} ${b + 9}L${l + 10} ${b}` : `M${l} ${b}L${x + w - 6} ${b + 9}L${l + 10} ${b}`;
-  return (
-    <g strokeLinejoin="round">
-      <rect x={x} y={y} width={w} height={h} rx={6} fill={fill} stroke={tone} strokeWidth={width} strokeDasharray={dash} />
-      <path d={t} fill={fill} stroke={tone} strokeWidth={width} strokeDasharray={dash} />
-      {/* open the box where the tail joins it */}
-      <line x1={l + 1.5} y1={b} x2={l + 8.5} y2={b} stroke={fill === "none" ? PAPER : fill} strokeWidth={width + 0.8} />
-    </g>
-  );
-}
-
-/** A television set with its stand, centred on x, standing on y. */
-function Tv({ x, y, k = 1, tone = INK }: { x: number; y: number; k?: number; tone?: string }) {
-  const X = (d: number) => r2(x + d * k);
-  const Y = (d: number) => r2(y + d * k);
-  return (
-    <g strokeLinejoin="round">
-      <path d={`M${X(-12)} ${Y(-56)}L${X(0)} ${Y(-46)}L${X(12)} ${Y(-60)}`} fill="none" stroke={tone} strokeWidth={1.25} />
-      <rect x={X(-38)} y={Y(-46)} width={r2(76 * k)} height={r2(40 * k)} rx={r2(3 * k)} fill={PAPER} stroke={tone} strokeWidth={1.5} />
-      <rect x={X(-31)} y={Y(-40)} width={r2(62 * k)} height={r2(28 * k)} fill={PAPER2} stroke={tone} strokeWidth={0.9} />
-      <path d={`M${X(-14)} ${Y(0)}L${X(-8)} ${Y(-6)}M${X(14)} ${Y(0)}L${X(8)} ${Y(-6)}`} stroke={tone} strokeWidth={1.5} />
     </g>
   );
 }
@@ -430,9 +170,9 @@ export function EngageRelate() {
         const right = 200 + r.gap / 2;
         return (
           <g key={i}>
-            <Mark x={left} y={r.y - 10} r={12} tone={i === 2 ? SIGNAL : INK} />
-            <Person x={right} y={r.y + 6} k={0.9} stroke={i === 2 ? SIGNAL : INK} />
-            <TwoWay x1={left + 18} y1={r.y - 10} x2={right - 16} y2={r.y - 10} tone={r.tone} width={r.w} dash={r.dash} />
+            <Mark2 x={left} y={r.y - 10} r={12} tone={i === 2 ? SIGNAL : INK} />
+            <Person3 x={right} y={r.y + 6} k={0.9} stroke={i === 2 ? SIGNAL : INK} />
+            <TwoWay2 x1={left + 18} y1={r.y - 10} x2={right - 16} y2={r.y - 10} tone={r.tone} width={r.w} dash={r.dash} />
             {r.key ? (
               <Key x={200} y={r.y + 20} anchor="middle" fill={i === 2 ? SIGNAL : INK3} size={10}>
                 {r.key}
@@ -441,7 +181,7 @@ export function EngageRelate() {
           </g>
         );
       })}
-      <Arrow x1={22} y1={40} x2={22} y2={230} tone={RULE2} width={1} size={6} />
+      <Arrow2 x1={22} y1={40} x2={22} y2={230} tone={RULE2} width={1} size={6} />
     </Frame>
   );
 }
@@ -454,8 +194,8 @@ export function PersuasiveValue() {
       height={250}
       label="A brand seal on the left speaks a large bubble. Inside the bubble a price tag with a check mark: customer value. An arrow carries it to a consumer on the right."
     >
-      <Mark x={44} y={170} r={16} />
-      <Bubble x={74} y={42} w={196} h={96} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Mark2 x={44} y={170} r={16} />
+      <Bubble1 x={74} y={42} w={196} h={96} tone={SIGNAL} fill={SIGNAL_TINT} />
       {/* tag with a check: value */}
       <path d="M126 70H196L214 90L196 110H126Z" fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} strokeLinejoin="round" />
       <circle cx={200} cy={90} r={3.5} fill="none" stroke={SIGNAL} strokeWidth={1.25} />
@@ -463,8 +203,8 @@ export function PersuasiveValue() {
       <Key x={172} y={126} anchor="middle" fill={SIGNAL} size={9.5}>
         CUSTOMER VALUE
       </Key>
-      <Arrow x1={282} y1={100} x2={330} y2={140} tone={SIGNAL} width={2} />
-      <Person x={352} y={210} k={1.5} stroke={SIGNAL} />
+      <Arrow2 x1={282} y1={100} x2={330} y2={140} tone={SIGNAL} width={2} />
+      <Person3 x={352} y={210} k={1.5} stroke={SIGNAL} />
       <Key x={200} y={228} anchor="middle" fill={INK} size={10}>
         PERSUASIVELY
       </Key>
@@ -492,7 +232,7 @@ export function CoreOfComms() {
       <Key x={200} y={66} anchor="middle" fill={INK} size={10}>
         COMMUNICATIONS
       </Key>
-      <Mark x={200} y={158} r={10} />
+      <Mark2 x={200} y={158} r={10} />
       {TOOLS.map((t, i) => (
         <Tool key={t.kind} kind={t.kind} x={ring[i].x} y={ring[i].y} k={0.42} tone={SIGNAL} />
       ))}
@@ -530,10 +270,10 @@ export function MessageHub() {
         const ay = Math.round(cy + 84 * n.uy);
         const bx = Math.round(n.x - 48 * n.ux);
         const by = Math.round(n.y - 38 * n.uy);
-        return <Arrow key={n.kind} x1={ax} y1={ay} x2={bx} y2={by} tone={SIGNAL} width={1.5} />;
+        return <Arrow2 key={n.kind} x1={ax} y1={ay} x2={bx} y2={by} tone={SIGNAL} width={1.5} />;
       })}
       <circle cx={cx} cy={cy} r={76} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={2} />
-      <Mark x={cx} y={cy - 16} r={16} />
+      <Mark2 x={cx} y={cy - 16} r={16} />
       <Key x={cx} y={cy + 20} anchor="middle" fill={SIGNAL} size={10}>
         CONSISTENT
       </Key>
@@ -548,7 +288,7 @@ export function MessageHub() {
         return (
           <g key={n.kind}>
             <Tool kind={n.kind} x={n.x} y={n.y} k={1.05} />
-            <Mark x={n.x + 22} y={n.y - 18} r={6} />
+            <Mark2 x={n.x + 22} y={n.y - 18} r={6} />
             <Key x={lx} y={ly} anchor={anchor} fill={INK} size={10.5}>
               {n.name}
             </Key>
@@ -606,7 +346,7 @@ export function DispersedReach() {
         ADVERTISING
       </Key>
       {buyers.map((b, i) => (
-        <Person key={i} x={b.x} y={b.y + 11} k={0.58} stroke={INK} />
+        <Person3 key={i} x={b.x} y={b.y + 11} k={0.58} stroke={INK} />
       ))}
       <Key x={232} y={280} fill={INK} size={10.5}>
         MASSES OF GEOGRAPHICALLY DISPERSED BUYERS
@@ -630,12 +370,12 @@ export function RepeatMessage() {
       <Tool kind="ad" x={36} y={96} k={0.8} tone={SIGNAL} />
       {xs.map((x) => (
         <g key={x}>
-          <Bubble x={x} y={68} w={42} h={34} tone={SIGNAL} fill={SIGNAL_TINT} width={1.25} />
-          <Mark x={x + 21} y={85} r={8} />
+          <Bubble1 x={x} y={68} w={42} h={34} tone={SIGNAL} fill={SIGNAL_TINT} width={1.25} />
+          <Mark2 x={x + 21} y={85} r={8} />
           <line x1={x + 21} y1={144} x2={x + 21} y2={152} stroke={INK3} strokeWidth={1} />
         </g>
       ))}
-      <Arrow x1={70} y1={148} x2={390} y2={148} tone={INK3} width={1} size={6} />
+      <Arrow2 x1={70} y1={148} x2={390} y2={148} tone={INK3} width={1} size={6} />
       {xs.map((x, i) => (
         <Key key={x} x={x + 21} y={172} anchor="middle" fill={INK3} size={9.5}>
           {String(i + 1)}
@@ -656,12 +396,12 @@ export function TvCost() {
       height={240}
       label="A television set on the left. On the right a very tall stack of coins, drawn in the contrast colour: what a television campaign costs."
     >
-      <Tv x={120} y={196} k={1.35} />
+      <Tv1 x={120} y={196} k={1.35} />
       <Key x={120} y={222} anchor="middle" fill={INK} size={10}>
         TELEVISION
       </Key>
-      <Arrow x1={186} y1={150} x2={236} y2={150} tone={INK3} width={1.25} />
-      <Coins x={292} y={200} n={17} tone={COUNTER} fill={COUNTER_TINT} w={46} />
+      <Arrow2 x1={186} y1={150} x2={236} y2={150} tone={INK3} width={1.25} />
+      <Coins2 x={292} y={200} n={17} tone={COUNTER} fill={COUNTER_TINT} w={46} />
       <Key x={292} y={222} anchor="middle" fill={COUNTER} size={10}>
         VERY COSTLY
       </Key>
@@ -677,19 +417,19 @@ export function NoSalesperson() {
       height={268}
       label="Two rows. Above, a television sends a thin dashed one-way arrow to a distant viewer. Below, a company salesperson and a buyer stand face to face, joined by a thick two-way arrow."
     >
-      <Tv x={66} y={104} k={0.8} tone={INK3} />
+      <Tv1 x={66} y={104} k={0.8} tone={INK3} />
       <Key x={66} y={124} anchor="middle" fill={INK3} size={9.5}>
         ADVERTISING
       </Key>
-      <Arrow x1={112} y1={78} x2={296} y2={78} tone={INK3} width={1} dash="4 4" />
-      <Person x={328} y={104} k={1.2} stroke={INK3} />
+      <Arrow2 x1={112} y1={78} x2={296} y2={78} tone={INK3} width={1} dash="4 4" />
+      <Person3 x={328} y={104} k={1.2} stroke={INK3} />
       <line x1={20} y1={144} x2={380} y2={144} stroke={RULE} strokeWidth={1} />
       <Key x={200} y={172} anchor="middle" fill={SIGNAL} size={9.5}>
         DIRECT PERSUASIVENESS
       </Key>
-      <Person x={144} y={242} k={1.4} stroke={SIGNAL} fill={SIGNAL_TINT} />
-      <Person x={256} y={242} k={1.4} stroke={INK} />
-      <TwoWay x1={162} y1={210} x2={238} y2={210} tone={SIGNAL} width={2.25} />
+      <Person3 x={144} y={242} k={1.4} stroke={SIGNAL} fill={SIGNAL_TINT} />
+      <Person3 x={256} y={242} k={1.4} stroke={INK} />
+      <TwoWay2 x1={162} y1={210} x2={238} y2={210} tone={SIGNAL} width={2.25} />
       <Key x={200} y={262} anchor="middle" fill={SIGNAL} size={9.5}>
         COMPANY SALESPEOPLE
       </Key>
@@ -751,16 +491,16 @@ export function AvoidersReached() {
       <Key x={338} y={136} anchor="middle" fill={INK3} size={9.5}>
         SALESPEOPLE
       </Key>
-      <Arrow x1={96} y1={148} x2={140} y2={186} tone={INK3} width={1.1} dash="4 3" />
-      <Arrow x1={304} y1={148} x2={260} y2={186} tone={INK3} width={1.1} dash="4 3" />
+      <Arrow2 x1={96} y1={148} x2={140} y2={186} tone={INK3} width={1.1} dash="4 3" />
+      <Arrow2 x1={304} y1={148} x2={260} y2={186} tone={INK3} width={1.1} dash="4 3" />
       <Blocked x={152} y={198} />
       <Blocked x={248} y={198} />
       <Tool kind="pr" x={200} y={62} k={1.2} tone={SIGNAL} fill={SIGNAL_TINT} />
       <Key x={200} y={28} anchor="middle" fill={SIGNAL} size={9.5}>
         PUBLIC RELATIONS
       </Key>
-      <Arrow x1={200} y1={86} x2={200} y2={180} tone={SIGNAL} width={2} />
-      <Person x={200} y={252} k={1.6} stroke={INK} />
+      <Arrow2 x1={200} y1={86} x2={200} y2={180} tone={SIGNAL} width={2} />
+      <Person3 x={200} y={252} k={1.6} stroke={INK} />
       <Key x={200} y={278} anchor="middle" fill={INK} size={9.5}>
         PROSPECTS
       </Key>
@@ -780,8 +520,8 @@ export function Dramatize() {
       <path d="M186 38L110 222H290L214 38Z" fill={SIGNAL_TINT} />
       <path d="M184 20H216L222 38H178Z" fill={INK} />
       <ellipse cx={200} cy={222} rx={112} ry={14} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <Pack x={200} y={218} w={58} h={70} tone={SIGNAL} fill={PAPER} />
-      <Mark x={200} y={180} r={11} />
+      <Pack4 x={200} y={218} w={58} h={70} tone={SIGNAL} fill={PAPER} />
+      <Mark2 x={200} y={180} r={11} />
       <Key x={20} y={64} fill={SIGNAL} size={10}>
         DRAMATIZES
       </Key>
@@ -821,18 +561,6 @@ export function Underused() {
    SALES PROMOTION
    ========================================================================== */
 
-/** A small wrapped gift, bottom at y. */
-function Gift({ x, y, s = 14, tone = SIGNAL }: { x: number; y: number; s?: number; tone?: string }) {
-  const h = s / 2;
-  return (
-    <g strokeLinejoin="round">
-      <rect x={x - h} y={y - s} width={s} height={s} fill={PAPER} stroke={tone} strokeWidth={1.3} />
-      <path d={`M${x} ${y - s}V${y}M${x - h} ${y - h}H${x + h}`} stroke={tone} strokeWidth={1.1} />
-      <path d={`M${x} ${y - s}Q${x - h} ${y - s - h} ${x - 2} ${y - s}M${x} ${y - s}Q${x + h} ${y - s - h} ${x + 2} ${y - s}`} fill="none" stroke={tone} strokeWidth={1.2} />
-    </g>
-  );
-}
-
 /** Coupons, contests, discounts and premiums, each drawn. */
 export function FourIncentives() {
   const tiles = [110, 303, 497, 690];
@@ -868,9 +596,9 @@ export function FourIncentives() {
         % OFF
       </Display>
       {/* premium: a product with a free gift tied on */}
-      <Pack x={666} y={140} w={46} h={66} tone={INK} />
-      <Mark x={666} y={108} r={9} />
-      <Gift x={718} y={140} s={30} />
+      <Pack4 x={666} y={140} w={46} h={66} tone={INK} />
+      <Mark2 x={666} y={108} r={9} />
+      <Gift2 x={718} y={140} s={30} />
       <path d="M689 124Q698 116 703 124" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
     </Frame>
   );
@@ -895,7 +623,7 @@ export function AttentionIncentive() {
         STRONG INCENTIVE TO PURCHASE
       </Key>
       {packs.map((x) => (
-        <Pack key={x} x={x} y={130} w={44} h={60} tone={x === 200 ? SIGNAL : INK3} fill={x === 200 ? SIGNAL_TINT : PAPER} />
+        <Pack4 key={x} x={x} y={130} w={44} h={60} tone={x === 200 ? SIGNAL : INK3} fill={x === 200 ? SIGNAL_TINT : PAPER} />
       ))}
       <line x1={24} y1={130} x2={376} y2={130} stroke={INK} strokeWidth={2} />
       {viewers.map((x) => (
@@ -906,7 +634,7 @@ export function AttentionIncentive() {
         %
       </Display>
       {viewers.map((x) => (
-        <Person key={x} x={x} y={272} k={1.3} />
+        <Person3 key={x} x={x} y={272} k={1.3} />
       ))}
       <Key x={20} y={174} fill={SIGNAL} size={9.5}>
         ATTENTION
@@ -931,14 +659,14 @@ export function QuickResponse() {
       <path d="M238 20V30L246 34" fill="none" stroke={INK} strokeWidth={1.5} strokeLinecap="round" />
       {early.map((x) => (
         <g key={x}>
-          <Person x={x} y={168} k={1.1} stroke={SIGNAL} />
-          <Gift x={x + 21} y={166} s={14} />
+          <Person3 x={x} y={168} k={1.1} stroke={SIGNAL} />
+          <Gift2 x={x + 21} y={166} s={14} />
         </g>
       ))}
       {late.map((x) => (
-        <Person key={x} x={x} y={168} k={1.1} stroke={INK3} />
+        <Person3 key={x} x={x} y={168} k={1.1} stroke={INK3} />
       ))}
-      <Arrow x1={20} y1={180} x2={386} y2={180} tone={INK} width={1.25} size={7} />
+      <Arrow2 x1={20} y1={180} x2={386} y2={180} tone={INK} width={1.25} size={7} />
       <Key x={129} y={206} anchor="middle" fill={SIGNAL} size={10}>
         QUICK RESPONSE
       </Key>
@@ -975,7 +703,7 @@ export function ShortLived() {
       <Key x={414} y={110} fill={SIGNAL} size={10}>
         SHORT-LIVED
       </Key>
-      <Arrow x1={70} y1={258} x2={740} y2={258} tone={INK3} width={1} size={6} />
+      <Arrow2 x1={70} y1={258} x2={740} y2={258} tone={INK3} width={1} size={6} />
       <Key x={740} y={282} anchor="end" fill={INK3} size={9}>
         TIME
       </Key>
@@ -1059,7 +787,7 @@ export function Commitment() {
         PERSONAL SELLING
       </Key>
       <rect x={30} y={114} width={330} height={28} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
-      <Arrow x1={30} y1={166} x2={386} y2={166} tone={INK3} width={1} size={6} />
+      <Arrow2 x1={30} y1={166} x2={386} y2={166} tone={INK3} width={1} size={6} />
       {ticks.map((x) => (
         <line key={x} x1={x} y1={162} x2={x} y2={170} stroke={INK3} strokeWidth={1} />
       ))}
@@ -1084,7 +812,7 @@ export function MostExpensive() {
         const lit = t.kind === "ps";
         return (
           <g key={t.kind}>
-            <Coins x={xs[i]} y={206} n={lit ? 13 : 5} tone={lit ? SIGNAL : INK3} fill={lit ? SIGNAL_TINT : PAPER} w={34} />
+            <Coins2 x={xs[i]} y={206} n={lit ? 13 : 5} tone={lit ? SIGNAL : INK3} fill={lit ? SIGNAL_TINT : PAPER} w={34} />
             <Tool kind={t.kind} x={xs[i]} y={234} k={0.72} tone={lit ? SIGNAL : INK3} />
           </g>
         );
@@ -1131,16 +859,16 @@ export function Targeted() {
         <circle key={i} cx={d.x} cy={d.y} r={3.5} fill={RULE2} />
       ))}
       <Tool kind="dd" x={90} y={150} k={1.9} tone={SIGNAL} fill={SIGNAL_TINT} />
-      <Arrow x1={134} y1={140} x2={436} y2={128} tone={SIGNAL} width={1.75} />
-      <Arrow x1={134} y1={162} x2={612} y2={196} tone={SIGNAL} width={1.75} />
+      <Arrow2 x1={134} y1={140} x2={436} y2={128} tone={SIGNAL} width={1.75} />
+      <Arrow2 x1={134} y1={162} x2={612} y2={196} tone={SIGNAL} width={1.75} />
       <circle cx={one.x} cy={one.y - 10} r={30} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <Person x={one.x} y={one.y + 8} k={1} stroke={SIGNAL} />
+      <Person3 x={one.x} y={one.y + 8} k={1} stroke={SIGNAL} />
       <Key x={one.x} y={one.y - 50} anchor="middle" fill={SIGNAL} size={10}>
         A SPECIFIC CUSTOMER
       </Key>
       <circle cx={group.x} cy={group.y + 2} r={48} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} strokeDasharray="5 3" />
       {members.map((m, i) => (
-        <Person key={i} x={m.x} y={m.y + 10} k={0.66} stroke={SIGNAL} />
+        <Person3 key={i} x={m.x} y={m.y + 10} k={0.66} stroke={SIGNAL} />
       ))}
       <Key x={group.x} y={group.y + 72} anchor="middle" fill={SIGNAL} size={10}>
         COMMUNITY
@@ -1160,11 +888,11 @@ export function Immediate() {
       <rect x={134} y={18} width={132} height={256} rx={16} fill={PAPER} stroke={INK} strokeWidth={1.75} />
       <rect x={146} y={42} width={108} height={196} fill={PAPER2} stroke={INK} strokeWidth={0.9} />
       <circle cx={200} cy={256} r={6} fill="none" stroke={INK} strokeWidth={1.25} />
-      <Bubble x={154} y={60} w={86} h={48} tone={INK} fill={PAPER} />
+      <Bubble1 x={154} y={60} w={86} h={48} tone={INK} fill={PAPER} />
       <circle cx={174} cy={84} r={11} fill={PAPER2} stroke={SIGNAL} strokeWidth={1.25} />
-      <Person x={174} y={93} k={0.42} stroke={SIGNAL} width={1.1} />
+      <Person3 x={174} y={93} k={0.42} stroke={SIGNAL} width={1.1} />
       <path d="M192 76H228M192 86H222M192 96H214" stroke={INK3} strokeWidth={1.5} />
-      <Bubble x={170} y={134} w={76} h={34} tone={SIGNAL} fill={SIGNAL_TINT} tail="right" />
+      <Bubble1 x={170} y={134} w={76} h={34} tone={SIGNAL} fill={SIGNAL_TINT} tail="right" />
       <path d="M182 146H232M182 156H218" stroke={SIGNAL} strokeWidth={1.5} />
       <line x1={124} y1={84} x2={150} y2={84} stroke={INK3} strokeWidth={1} />
       <Key x={120} y={88} anchor="end" fill={INK} size={9.5}>
@@ -1192,14 +920,14 @@ export function Dialogue() {
       height={286}
       label="A brand seal on the left and a customer on the right. Between them four speech bubbles take turns, brand, customer, brand, customer, stepping down the plate."
     >
-      <Mark x={44} y={140} r={18} />
-      <Person x={356} y={170} k={1.5} />
+      <Mark2 x={44} y={140} r={18} />
+      <Person3 x={356} y={170} k={1.5} />
       {turns.map((t, i) => {
         const brand = t.side === "left";
         const x = brand ? 84 : 196;
         return (
           <g key={i}>
-            <Bubble x={x} y={t.y} w={120} h={34} tone={brand ? SIGNAL : INK} fill={brand ? SIGNAL_TINT : PAPER} tail={brand ? "left" : "right"} />
+            <Bubble1 x={x} y={t.y} w={120} h={34} tone={brand ? SIGNAL : INK} fill={brand ? SIGNAL_TINT : PAPER} tail={brand ? "left" : "right"} />
             <path d={`M${x + 14} ${t.y + 13}H${x + 104}M${x + 14} ${t.y + 23}H${x + 80}`} stroke={brand ? SIGNAL : INK3} strokeWidth={1.5} />
           </g>
         );
@@ -1225,7 +953,7 @@ export function Bullseye() {
       <circle cx={270} cy={120} r={15} fill={SIGNAL} />
       <Tool kind="dd" x={54} y={120} k={1.3} tone={SIGNAL} fill={SIGNAL_TINT} />
       <line x1={86} y1={120} x2={262} y2={120} stroke={SIGNAL} strokeWidth={2.5} />
-      <path d={headAlong(266, 120, 1, 0, 12)} fill="none" stroke={SIGNAL} strokeWidth={2.5} />
+      <path d={headAlong1(266, 120, 1, 0, 12)} fill="none" stroke={SIGNAL} strokeWidth={2.5} />
       <path d="M96 120L86 112M96 120L86 128M106 120L96 112M106 120L96 128" stroke={SIGNAL} strokeWidth={1.5} />
       <Key x={270} y={242} anchor="middle" fill={SIGNAL} size={10}>
         HIGHLY TARGETED
@@ -1251,7 +979,7 @@ export function BudgetScale() {
       <Display x={400} y={84} anchor="middle" fill={SIGNAL} size={34}>
         ?
       </Display>
-      <Coins x={400} y={156} n={8} tone={SIGNAL} fill={SIGNAL_TINT} w={40} />
+      <Coins2 x={400} y={156} n={8} tone={SIGNAL} fill={SIGNAL_TINT} w={40} />
       <line x1={160} y1={160} x2={640} y2={160} stroke={INK} strokeWidth={3} strokeLinecap="round" />
       <path d="M400 162L370 250H430Z" fill={PAPER2} stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
       <line x1={330} y1={250} x2={470} y2={250} stroke={INK} strokeWidth={2} />
@@ -1303,7 +1031,7 @@ export function Bombarded() {
         const ux = dx / len;
         const uy = dy / len;
         return (
-          <Arrow
+          <Arrow2
             key={i}
             x1={Math.round(s.x + ux * 34)}
             y1={Math.round(s.y + uy * 24)}
@@ -1318,7 +1046,7 @@ export function Bombarded() {
       {sources.map((s, i) => (
         <Tool key={i} kind={s.kind} x={s.x} y={s.y} k={0.85} tone={INK} />
       ))}
-      <Person x={cx} y={cy + 34} k={2} stroke={INK} fill={PAPER2} />
+      <Person3 x={cx} y={cy + 34} k={2} stroke={INK} fill={PAPER2} />
     </Frame>
   );
 }
@@ -1338,9 +1066,9 @@ export function ConfusedImage() {
       {rows.map((r) => (
         <g key={r.y}>
           <Tool kind={r.kind} x={90} y={r.y} k={1.2} />
-          <Arrow x1={130} y1={r.y} x2={226} y2={r.y} tone={INK3} width={1.1} size={6} />
+          <Arrow2 x1={130} y1={r.y} x2={226} y2={r.y} tone={INK3} width={1.1} size={6} />
           <OddMark x={250} y={r.y} shape={r.shape} r={13} />
-          <Arrow x1={272} y1={r.y} x2={536} y2={104 + (r.y - 145) / 6} tone={COUNTER} width={1.1} size={6} />
+          <Arrow2 x1={272} y1={r.y} x2={536} y2={104 + (r.y - 145) / 6} tone={COUNTER} width={1.1} size={6} />
         </g>
       ))}
       <Key x={90} y={290} anchor="middle" fill={INK} size={9.5}>
@@ -1358,7 +1086,7 @@ export function ConfusedImage() {
       </Display>
       <circle cx={626} cy={172} r={5} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.25} />
       <circle cx={630} cy={188} r={3.5} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.25} />
-      <Person x={636} y={276} k={2} stroke={INK} />
+      <Person3 x={636} y={276} k={2} stroke={INK} />
       <Key x={624} y={36} anchor="middle" fill={COUNTER} size={10}>
         CONFUSED COMPANY IMAGE
       </Key>
@@ -1416,7 +1144,7 @@ export function Fragmented() {
           </g>
         );
       })}
-      <Mark x={18} y={22} r={10} />
+      <Mark2 x={18} y={22} r={10} />
       <path
         d="M30 30H142V113H258V187H374V262H336"
         fill="none"
@@ -1425,8 +1153,8 @@ export function Fragmented() {
         strokeDasharray="5 4"
         strokeLinejoin="round"
       />
-      <path d={headAlong(332, 262, -1, 0, 7)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      <Person x={312} y={292} k={1.1} stroke={SIGNAL} />
+      <path d={headAlong1(332, 262, -1, 0, 7)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+      <Person3 x={312} y={292} k={1.1} stroke={SIGNAL} />
     </Frame>
   );
 }
@@ -1446,8 +1174,8 @@ export function TiedTogether() {
       {rows.map((r) => (
         <g key={r.y}>
           <Tool kind={r.kind} x={90} y={r.y} k={1.2} />
-          <Arrow x1={130} y1={r.y} x2={226} y2={r.y} tone={INK3} width={1.1} size={6} />
-          <Mark x={250} y={r.y} r={13} />
+          <Arrow2 x1={130} y1={r.y} x2={226} y2={r.y} tone={INK3} width={1.1} size={6} />
+          <Mark2 x={250} y={r.y} r={13} />
           <path d={`M266 ${r.y}C330 ${r.y} 350 145 392 145`} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
         </g>
       ))}
@@ -1455,7 +1183,7 @@ export function TiedTogether() {
       <Display x={420} y={151} anchor="middle" fill={SIGNAL} size={16}>
         IMC
       </Display>
-      <Arrow x1={450} y1={140} x2={538} y2={114} tone={SIGNAL} width={3} />
+      <Arrow2 x1={450} y1={140} x2={538} y2={114} tone={SIGNAL} width={3} />
       <Key x={420} y={200} anchor="middle" fill={SIGNAL} size={9.5}>
         TIES TOGETHER
       </Key>
@@ -1463,10 +1191,10 @@ export function TiedTogether() {
         {"ALL OF THE COMPANY'S MESSAGES"}
       </Key>
       <ellipse cx={624} cy={106} rx={84} ry={52} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <Mark x={624} y={106} r={26} />
+      <Mark2 x={624} y={106} r={26} />
       <circle cx={626} cy={172} r={5} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
       <circle cx={630} cy={188} r={3.5} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
-      <Person x={636} y={276} k={2} stroke={INK} />
+      <Person3 x={636} y={276} k={2} stroke={INK} />
       <Key x={624} y={36} anchor="middle" fill={SIGNAL} size={10}>
         ONE COMPANY IMAGE
       </Key>
@@ -1507,7 +1235,7 @@ export function Coordinated() {
         INTEGRATING AND COORDINATING
       </Key>
       <path d="M622 118L660 150M622 134L660 150M622 150H660M622 166L660 150M622 182L660 150" stroke={SIGNAL} strokeWidth={1.25} />
-      <Mark x={698} y={150} r={34} />
+      <Mark2 x={698} y={150} r={34} />
       <Key x={170} y={288} anchor="middle" fill={INK3} size={9.5}>
         MANY COMMUNICATIONS CHANNELS
       </Key>
@@ -1527,7 +1255,7 @@ export function ClearConsistentCompelling() {
       {[140, 400, 660].map((x) => (
         <rect key={x} x={x - 116} y={20} width={232} height={154} fill={PAPER} stroke={RULE} strokeWidth={1} />
       ))}
-      <Mark x={140} y={97} r={30} />
+      <Mark2 x={140} y={97} r={30} />
       <path
         d={[
           corner(96, 53, 1, 1),
@@ -1540,14 +1268,14 @@ export function ClearConsistentCompelling() {
         strokeWidth={1.75}
       />
       {[336, 400, 464].map((x) => (
-        <Mark key={x} x={x} y={97} r={20} />
+        <Mark2 key={x} x={x} y={97} r={20} />
       ))}
       {[368, 432].map((x) => (
         <path key={x} d={`M${x - 5} 94H${x + 5}M${x - 5} 100H${x + 5}`} stroke={INK} strokeWidth={1.5} />
       ))}
-      <Mark x={612} y={97} r={26} />
-      <Arrow x1={690} y1={97} x2={648} y2={97} tone={SIGNAL} width={2} />
-      <Person x={718} y={136} k={1.4} />
+      <Mark2 x={612} y={97} r={26} />
+      <Arrow2 x1={690} y1={97} x2={648} y2={97} tone={SIGNAL} width={2} />
+      <Person3 x={718} y={136} k={1.4} />
       {[
         { x: 140, n: "CLEAR" },
         { x: 400, n: "CONSISTENT" },
@@ -1593,8 +1321,8 @@ export function Disconnect() {
       <line x1={20} y1={150} x2={380} y2={150} stroke={RULE} strokeWidth={1} />
       <Dept x={30} y={172} tone={SIGNAL} />
       <Dept x={258} y={172} tone={SIGNAL} />
-      <Mark x={86} y={216} r={12} />
-      <Mark x={314} y={216} r={12} />
+      <Mark2 x={86} y={216} r={12} />
+      <Mark2 x={314} y={216} r={12} />
       <line x1={142} y1={207} x2={258} y2={207} stroke={SIGNAL} strokeWidth={2.5} />
       <Key x={200} y={272} anchor="middle" fill={SIGNAL} size={9.5}>
         COORDINATED
@@ -1610,20 +1338,20 @@ export function Touchpoints() {
       height={238}
       label="Five touchpoints in a row, a store, a billboard, a phone app, a package and a salesperson, each carrying the same brand seal, all tied together by one line along the bottom."
     >
-      <Store x={100} y={150} k={1.25} />
-      <Mark x={100} y={104} r={7} />
+      <Store2 x={100} y={150} k={1.25} />
+      <Mark2 x={100} y={104} r={7} />
       {/* billboard */}
       <path d="M232 150V112M268 150V112" stroke={INK} strokeWidth={1.5} />
       <rect x={202} y={60} width={96} height={52} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <Mark x={250} y={86} r={14} />
+      <Mark2 x={250} y={86} r={14} />
       {/* phone */}
       <rect x={380} y={84} width={40} height={66} rx={6} fill={PAPER} stroke={INK} strokeWidth={1.5} />
       <rect x={386} y={94} width={28} height={44} fill={PAPER2} stroke={INK} strokeWidth={0.75} />
-      <Mark x={400} y={116} r={9} />
-      <Pack x={550} y={150} w={58} h={62} />
-      <Mark x={550} y={122} r={12} />
-      <Person x={700} y={150} k={1.7} />
-      <Mark x={700} y={140} r={6} />
+      <Mark2 x={400} y={116} r={9} />
+      <Pack4 x={550} y={150} w={58} h={62} />
+      <Mark2 x={550} y={122} r={12} />
+      <Person3 x={700} y={150} k={1.7} />
+      <Mark2 x={700} y={140} r={6} />
       <line x1={60} y1={164} x2={740} y2={164} stroke={SIGNAL} strokeWidth={2.25} />
       {[100, 250, 400, 550, 700].map((x) => (
         <line key={x} x1={x} y1={151} x2={x} y2={164} stroke={SIGNAL} strokeWidth={1.5} />
@@ -1675,7 +1403,7 @@ export function StepCascade() {
               />
             ) : null}
             {i < STEPS.length - 1 ? (
-              <path d={headAlong(at(i + 1).x - 2, y + 66 + 29, 1, 0, 7)} fill="none" stroke={INK} strokeWidth={1.5} />
+              <path d={headAlong1(at(i + 1).x - 2, y + 66 + 29, 1, 0, 7)} fill="none" stroke={INK} strokeWidth={1.5} />
             ) : null}
             <rect
               x={x}
@@ -1705,7 +1433,7 @@ export function StepCascade() {
         strokeWidth={1.5}
         strokeDasharray="5 4"
       />
-      <path d={headAlong(at(0).x + 105, at(0).y - 1, 0, 1, 7)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <path d={headAlong1(at(0).x + 105, at(0).y - 1, 0, 1, 7)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       <Key x={at(4).x + 122} y={16} anchor="end" fill={COUNTER} size={9.5}>
         FEEDBACK
       </Key>
@@ -1730,14 +1458,14 @@ export function WhereTheyStand() {
       height={262}
       label="A product on the right. Three members of the target audience stand at different distances from it, near, middling and far, and a measuring line runs from each of them to the product."
     >
-      <Pack x={352} y={150} w={48} h={58} tone={SIGNAL} fill={SIGNAL_TINT} />
-      <Mark x={352} y={116} r={9} />
+      <Pack4 x={352} y={150} w={48} h={58} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Mark2 x={352} y={116} r={9} />
       <Key x={352} y={74} anchor="middle" fill={SIGNAL} size={9.5}>
         PRODUCT
       </Key>
       <line x1={24} y1={150} x2={376} y2={150} stroke={INK} strokeWidth={1.25} />
       {[56, 150, 250].map((x) => (
-        <Person key={x} x={x} y={150} k={1.2} />
+        <Person3 key={x} x={x} y={150} k={1.2} />
       ))}
       {people.map((p, i) => (
         <g key={p.x}>
@@ -1787,9 +1515,9 @@ export function ReadinessStairs() {
           </g>
         );
       })}
-      <Person x={74} y={234} k={1.2} stroke={SIGNAL} fill={SIGNAL_TINT} />
+      <Person3 x={74} y={234} k={1.2} stroke={SIGNAL} fill={SIGNAL_TINT} />
       <line x1={112} y1={194} x2={650} y2={42} stroke={SIGNAL} strokeWidth={1.75} strokeDasharray="6 4" />
-      <path d={headAlong(654, 41, 538, -152, 10)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+      <path d={headAlong1(654, 41, 538, -152, 10)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
     </Frame>
   );
 }
@@ -1802,9 +1530,9 @@ export function GuideToPurchase() {
       height={232}
       label="A consumer on the left. A dashed guiding path curves up and over to a large ticked box on the right, the final purchase decision."
     >
-      <Person x={64} y={186} k={1.4} />
+      <Person3 x={64} y={186} k={1.4} />
       <path d="M92 142Q190 20 282 110" fill="none" stroke={SIGNAL} strokeWidth={2} strokeDasharray="6 4" />
-      <path d={headAlong(286, 114, 1, 1, 10)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+      <path d={headAlong1(286, 114, 1, 1, 10)} fill="none" stroke={SIGNAL} strokeWidth={2} />
       <rect x={290} y={112} width={70} height={70} fill={SIGNAL} />
       <path d="M306 146L320 162L346 128" fill="none" stroke={PAPER} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" />
       <Key x={200} y={220} anchor="middle" fill={SIGNAL} size={9.5}>
@@ -1894,18 +1622,18 @@ export function ConcludeOrLeave() {
       height={300}
       label="Two messages. The first ends in a boxed conclusion and hands it to the listener. The second ends in a question mark, and the listener supplies the conclusion in their own thought bubble."
     >
-      <Bubble x={24} y={24} w={236} h={88} />
+      <Bubble1 x={24} y={24} w={236} h={88} />
       <path d="M40 46H240M40 62H220" stroke={INK3} strokeWidth={1.5} />
       <rect x={40} y={74} width={140} height={24} fill={SIGNAL} />
       <Key x={110} y={90} anchor="middle" fill={PAPER} size={9}>
         CONCLUSION
       </Key>
-      <Person x={330} y={112} k={1.4} />
+      <Person3 x={330} y={112} k={1.4} />
       <Key x={24} y={140} fill={SIGNAL} size={9.5}>
         DRAW A CONCLUSION
       </Key>
       <line x1={20} y1={156} x2={380} y2={156} stroke={RULE} strokeWidth={1} />
-      <Bubble x={24} y={182} w={236} h={66} />
+      <Bubble1 x={24} y={182} w={236} h={66} />
       <path d="M40 204H240M40 220H200" stroke={INK3} strokeWidth={1.5} />
       <Display x={230} y={234} anchor="middle" fill={COUNTER} size={24}>
         ?
@@ -1913,7 +1641,7 @@ export function ConcludeOrLeave() {
       <ellipse cx={336} cy={196} rx={40} ry={20} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.25} />
       <rect x={316} y={189} width={40} height={14} fill={COUNTER} />
       <circle cx={326} cy={224} r={3.5} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1} />
-      <Person x={322} y={282} k={1.4} />
+      <Person3 x={322} y={282} k={1.4} />
       <Key x={24} y={286} fill={COUNTER} size={9.5}>
         LEAVE IT TO THE AUDIENCE
       </Key>
@@ -1938,7 +1666,7 @@ export function AdFormat() {
       <path d="M170 24V274M230 24V274M112 108H288M112 190H288" stroke={RULE2} strokeWidth={1} strokeDasharray="3 3" />
       <rect x={126} y={40} width={148} height={16} fill={INK} />
       <rect x={126} y={70} width={148} height={78} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.25} />
-      <Mark x={200} y={109} r={16} />
+      <Mark2 x={200} y={109} r={16} />
       <path d="M126 166H274M126 178H250" stroke={INK3} strokeWidth={1.5} />
       <path d={wave} stroke={SIGNAL} strokeWidth={2} strokeLinecap="round" />
       {[SIGNAL, COUNTER, INK].map((c, i) => (
@@ -2029,8 +1757,8 @@ export function Parity() {
       height={226}
       label="Two coin stacks of the same height, the competitors' and ours, joined by a dashed level line with an equals sign between them."
     >
-      <Coins x={120} y={186} n={10} tone={COUNTER} fill={COUNTER_TINT} w={50} />
-      <Coins x={280} y={186} n={10} tone={SIGNAL} fill={SIGNAL_TINT} w={50} />
+      <Coins2 x={120} y={186} n={10} tone={COUNTER} fill={COUNTER_TINT} w={50} />
+      <Coins2 x={280} y={186} n={10} tone={SIGNAL} fill={SIGNAL_TINT} w={50} />
       <line x1={80} y1={116} x2={320} y2={116} stroke={INK} strokeWidth={1} strokeDasharray="4 3" />
       <Display x={200} y={172} anchor="middle" fill={INK} size={30}>
         =
@@ -2065,17 +1793,17 @@ export function ObjectiveTask() {
       </Key>
       {tasks.map((t) => (
         <g key={t.y}>
-          <Arrow x1={80} y1={68} x2={116} y2={t.y + 18} tone={INK3} width={1} size={6} />
+          <Arrow2 x1={80} y1={68} x2={116} y2={t.y + 18} tone={INK3} width={1} size={6} />
           <rect x={120} y={t.y} width={96} height={36} fill={PAPER} stroke={INK} strokeWidth={1.25} />
           <Key x={168} y={t.y + 22} anchor="middle" fill={INK} size={9.5}>
             TASK
           </Key>
-          <Coins x={246} y={t.y + 34} n={t.n} w={24} />
+          <Coins2 x={246} y={t.y + 34} n={t.n} w={24} />
         </g>
       ))}
       <path d="M276 30H286V166H276" fill="none" stroke={INK} strokeWidth={1.25} />
-      <Arrow x1={290} y1={98} x2={322} y2={98} tone={SIGNAL} width={1.5} size={6} />
-      <Coins x={356} y={136} n={7} tone={SIGNAL} fill={SIGNAL_TINT} w={34} />
+      <Arrow2 x1={290} y1={98} x2={322} y2={98} tone={SIGNAL} width={1.5} size={6} />
+      <Coins2 x={356} y={136} n={7} tone={SIGNAL} fill={SIGNAL_TINT} w={34} />
       <Key x={356} y={160} anchor="middle" fill={SIGNAL} size={9.5}>
         BUDGET
       </Key>
@@ -2140,7 +1868,7 @@ export function LogicChain() {
             <Key x={b.x + 100} y={75} anchor="middle" fill={last ? PAPER : INK} size={11}>
               {b.n}
             </Key>
-            {i < boxes.length - 1 ? <Arrow x1={b.x + 208} y1={70} x2={b.x + 252} y2={70} tone={INK} width={1.75} /> : null}
+            {i < boxes.length - 1 ? <Arrow2 x1={b.x + 208} y1={70} x2={b.x + 252} y2={70} tone={INK} width={1.75} /> : null}
           </g>
         );
       })}
@@ -2156,7 +1884,7 @@ export function TiedToGoals() {
       height={242}
       label="A stack of coins on the left tied by a taut line to a flag planted on a hill on the right: spending attached to the strategic goal."
     >
-      <Coins x={84} y={200} n={9} tone={SIGNAL} fill={SIGNAL_TINT} w={46} />
+      <Coins2 x={84} y={200} n={9} tone={SIGNAL} fill={SIGNAL_TINT} w={46} />
       <path d="M200 200Q300 120 390 200Z" fill={PAPER2} stroke={INK} strokeWidth={1.25} />
       <line x1={296} y1={162} x2={296} y2={60} stroke={INK} strokeWidth={1.75} />
       <path d="M297 60L344 76L297 92Z" fill={SIGNAL} />
@@ -2220,11 +1948,11 @@ export function Roi() {
       <Key x={200} y={30} anchor="middle" fill={INK} size={9.5}>
         RETURN ON INVESTMENT
       </Key>
-      <Coins x={60} y={170} n={5} w={40} />
-      <Arrow x1={92} y1={134} x2={160} y2={122} tone={INK3} width={1.25} size={6} />
+      <Coins2 x={60} y={170} n={5} w={40} />
+      <Arrow2 x1={92} y1={134} x2={160} y2={122} tone={INK3} width={1.25} size={6} />
       <Tool kind="ad" x={200} y={120} k={1.25} />
-      <Arrow x1={244} y1={122} x2={306} y2={134} tone={SIGNAL} width={1.5} size={6} />
-      <Coins x={340} y={170} n={9} tone={SIGNAL} fill={SIGNAL_TINT} w={40} />
+      <Arrow2 x1={244} y1={122} x2={306} y2={134} tone={SIGNAL} width={1.5} size={6} />
+      <Coins2 x={340} y={170} n={9} tone={SIGNAL} fill={SIGNAL_TINT} w={40} />
       <Key x={60} y={196} anchor="middle" fill={INK} size={9.5}>
         INVESTMENT
       </Key>
@@ -2243,18 +1971,18 @@ export function Remember() {
       height={262}
       label="An interviewer with a clipboard asks a question, drawn as a bubble with a question mark. The member of the target audience across from them pictures the brand seal in a thought bubble."
     >
-      <Bubble x={36} y={40} w={96} h={54} />
+      <Bubble1 x={36} y={40} w={96} h={54} />
       <Display x={84} y={78} anchor="middle" fill={INK} size={28}>
         ?
       </Display>
-      <Person x={80} y={212} k={1.6} />
+      <Person3 x={80} y={212} k={1.6} />
       <rect x={100} y={176} width={20} height={26} fill={PAPER} stroke={INK} strokeWidth={1.25} />
       <path d="M104 186H116M104 192H114" stroke={INK3} strokeWidth={1} />
       <ellipse cx={304} cy={82} rx={60} ry={42} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <Mark x={304} y={82} r={18} />
+      <Mark2 x={304} y={82} r={18} />
       <circle cx={312} cy={138} r={5} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
       <circle cx={316} cy={152} r={3.5} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
-      <Person x={320} y={212} k={1.6} />
+      <Person3 x={320} y={212} k={1.6} />
       <Key x={200} y={246} anchor="middle" fill={SIGNAL} size={9.5}>
         DO THEY REMEMBER THE MESSAGE?
       </Key>
@@ -2353,7 +2081,7 @@ export function SalesShare() {
           </Key>
         </g>
       ))}
-      <Arrow x1={602} y1={150} x2={638} y2={150} tone={INK} width={1.5} size={6} />
+      <Arrow2 x1={602} y1={150} x2={638} y2={150} tone={INK} width={1.5} size={6} />
       <Key x={620} y={270} anchor="middle" fill={INK} size={10}>
         MARKET SHARE
       </Key>
@@ -2411,14 +2139,6 @@ export function StartupSlice() {
    CONCLUSION — small glyphs
    ========================================================================== */
 
-function GlyphFrame({ children }: { children: React.ReactNode }) {
-  return (
-    <svg viewBox="0 0 72 56" width={72} height={56} aria-hidden className="block shrink-0">
-      {children}
-    </svg>
-  );
-}
-
 export function GlyphMix() {
   const pts = [0, 1, 2, 3, 4].map((i) => {
     const a = ((-90 + i * 72) * Math.PI) / 180;
@@ -2432,7 +2152,7 @@ export function GlyphMix() {
           <circle cx={p.x} cy={p.y} r={4.5} fill={PAPER} stroke={INK} strokeWidth={1.25} />
         </g>
       ))}
-      <Mark x={36} y={29} r={8} />
+      <Mark2 x={36} y={29} r={8} />
     </GlyphFrame>
   );
 }
@@ -2441,7 +2161,7 @@ export function GlyphTogether() {
   return (
     <GlyphFrame>
       <path d="M4 10C24 10 26 28 44 28M4 28H44M4 46C24 46 26 28 44 28" fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <Mark x={56} y={28} r={11} />
+      <Mark2 x={56} y={28} r={11} />
     </GlyphFrame>
   );
 }
@@ -2460,7 +2180,7 @@ export function GlyphAudience() {
 export function GlyphBudget() {
   return (
     <GlyphFrame>
-      <Coins x={22} y={52} n={6} tone={SIGNAL} fill={SIGNAL_TINT} w={26} />
+      <Coins2 x={22} y={52} n={6} tone={SIGNAL} fill={SIGNAL_TINT} w={26} />
       <path d="M42 50V8M42 50H70" fill="none" stroke={INK} strokeWidth={1.25} />
       <path d="M44 44L54 34L60 38L68 18" fill="none" stroke={SIGNAL} strokeWidth={1.75} strokeLinejoin="round" />
     </GlyphFrame>

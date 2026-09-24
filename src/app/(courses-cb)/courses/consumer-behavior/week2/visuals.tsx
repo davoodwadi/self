@@ -1,270 +1,166 @@
 /* ==========================================================================
-   Consumer Behavior · Week 02 — figures
+   Consumer Behavior · Week 02 — plates (Editorial Sketch)
    --------------------------------------------------------------------------
-   Hand-drawn SVG plates for perception and sensory marketing. The drawing
-   system (Frame, Key, Note, Display, Person, the palette) comes from Week 01
-   so both weeks read as one book.
+   Perception and sensory marketing, drawn in ink and watercolour with the
+   shared kit in ../_visuals (see ../CLAUDE.md for the style rules).
 
    Fixed cast for this week:
-     · SenseGlyph: eye (sight), notes (sound), perfume bottle (smell), open
-       hand (touch), mouth and tongue (taste). Every plate that names a sense
-       uses the same glyph for it.
-     · Person: every human.
-     · Stimulus marks (dot, square, triangle, arc): raw sensations before the
-       mind has done anything with them.
-
-   INK is the neutral case, SIGNAL what gets through (noticed, detected,
-   chosen), COUNTER the other view. Labels reuse the words of the slide.
+     · SenseGlyph: the five sense organs, always the same drawing: an eye
+       (sight), an ear (sound), a nose (smell), an open hand (touch) and lips
+       (taste).
+     · Person: every human (the shared fashion figure).
+     · Heart: a feeling. BrandBadge: the brand.
+   Teal is the one thing that gets through (noticed, detected, chosen) on a
+   plate; pencil is only for something absent (the old, bigger pack).
    ========================================================================== */
 
 import React from "react";
+import { ForkKnife, HandPalm, Scissors, TShirt } from "@phosphor-icons/react";
+import { SK, InkLine, PencilLine, Wash, Paper, SketchFrame, SketchText, blobPts, seeded, wobble, r2, type Pt } from "../_visuals/sketch";
+import { Eye, Heart, Person, handAt, Ground, Box, BrandBadge, Backwash, Cart, SketchArrow, Notes, Thought, Pack, ShapedBottle, at, rp, sharp, curvePts } from "../_visuals/sketch-cast";
 import {
-  INK,
-  INK2,
-  INK3,
-  RULE,
-  RULE2,
-  SIGNAL,
-  COUNTER,
-  PAPER,
-  PAPER2,
-  SIGNAL_TINT,
-  COUNTER_TINT,
-  Key,
-  Note,
-  Display,
-  Frame,
-  Person,
-  SENSES,
-  Notes,
-  SenseGlyph,
-  type Sense,
-} from "../_visuals/flat";
+  Can2,
+  Laptop1,
+  Mug2,
+  Perfume1,
+  Phone1,
+  Tag1,
+  Watch1,
+} from "../_visuals/sketch-objects";
 
-const r2 = (n: number) => Math.round(n * 100) / 100;
+/* -- the five senses -------------------------------------------------------- */
 
-/** Deterministic scatter in [0, 1), rounded so server and client agree. */
-function hash(i: number, salt = 0) {
-  const n = Math.sin((i + 1) * 12.9898 + salt * 78.233) * 43758.5453;
-  return Math.round((n - Math.floor(n)) * 1e4) / 1e4;
-}
+export type Sense = "sight" | "sound" | "smell" | "touch" | "taste";
+export const SENSES: Sense[] = ["sight", "sound", "smell", "touch", "taste"];
 
-/** Point on a circle, rounded (Node and Chromium differ in the last digits). */
-function polar(cx: number, cy: number, r: number, deg: number) {
-  const a = (deg * Math.PI) / 180;
-  return { x: r2(cx + r * Math.cos(a)), y: r2(cy + r * Math.sin(a)) };
-}
-
-/** Open arrowhead pointing along (dx, dy), tip at (x, y). */
-function headAlong(x: number, y: number, dx: number, dy: number, s = 8) {
-  const len = Math.hypot(dx, dy) || 1;
-  const ux = dx / len;
-  const uy = dy / len;
-  const bx = x - ux * s;
-  const by = y - uy * s;
-  const px = -uy * (s * 0.62);
-  const py = ux * (s * 0.62);
-  return `M${r2(bx + px)} ${r2(by + py)}L${r2(x)} ${r2(y)}L${r2(bx - px)} ${r2(by - py)}`;
-}
-
-function Arrow({
-  x1,
-  y1,
-  x2,
-  y2,
-  stroke = INK,
-  width = 1.5,
-  dash,
-  opacity,
-}: {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-  stroke?: string;
-  width?: number;
-  dash?: string;
-  opacity?: number;
-}) {
+/** An ear seen from the side, about 30 units tall at s = 1. */
+function Ear({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
+  const outer = at(x, y, [[-4, -13], [3, -15], [9, -11], [11, -3], [8, 4], [4, 8], [3, 13], [-1, 16], [-5, 14]], s);
+  const inner = at(x, y, [[-3, -7], [2, -8], [5, -4], [4, 1], [0, 3], [1, 7]], s);
   return (
-    <g fill="none" stroke={stroke} strokeWidth={width} strokeLinecap="round" strokeLinejoin="round" opacity={opacity}>
-      <line x1={x1} y1={y1} x2={x2} y2={y2} strokeDasharray={dash} />
-      <path d={headAlong(x2, y2, x2 - x1, y2 - y1)} />
+    <g>
+      <Wash pts={outer} seed={seed} fill={SK.skin} opacity={0.75} dx={0.8} dy={0.5} />
+      <InkLine pts={outer} seed={seed + 1} width={1.2} />
+      <InkLine pts={inner} seed={seed + 2} width={0.9} />
     </g>
   );
 }
 
-/** Smooth curve through points (Catmull-Rom as cubic Béziers). */
-function smooth(pts: [number, number][]) {
-  let d = `M${pts[0][0]} ${pts[0][1]}`;
-  for (let i = 0; i < pts.length - 1; i++) {
-    const p0 = pts[i - 1] ?? pts[i];
-    const p1 = pts[i];
-    const p2 = pts[i + 1];
-    const p3 = pts[i + 2] ?? p2;
-    const c1x = r2(p1[0] + (p2[0] - p0[0]) / 6);
-    const c1y = r2(p1[1] + (p2[1] - p0[1]) / 6);
-    const c2x = r2(p2[0] - (p3[0] - p1[0]) / 6);
-    const c2y = r2(p2[1] - (p3[1] - p1[1]) / 6);
-    d += `C${c1x} ${c1y} ${c2x} ${c2y} ${p2[0]} ${p2[1]}`;
-  }
-  return d;
-}
-
-function Heart({ x, y, s = 1, fill = SIGNAL }: { x: number; y: number; s?: number; fill?: string }) {
+/** A nose in profile, facing −x, about 28 units tall at s = 1. */
+function Nose({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
+  const bridge = at(x, y, [[2, -14], [-2, -4], [-7, 5], [-9, 9], [-6, 11], [-2, 10]], s);
+  const wing = at(x, y, [[-2, 10], [1, 7], [4, 9], [3, 12]], s);
+  const skin = at(x, y, [[3, -14], [-2, -4], [-8, 6], [-8, 11], [5, 12], [7, 0], [7, -14]], s);
   return (
-    <path
-      transform={`translate(${x} ${y}) scale(${s})`}
-      d="M0 9C-4 5-12 1-12-5A6 6 0 0 1 0-8A6 6 0 0 1 12-5C12 1 4 5 0 9Z"
-      fill={fill}
-    />
-  );
-}
-
-function starPath(cx: number, cy: number, R: number) {
-  const pts: string[] = [];
-  for (let i = 0; i < 10; i++) {
-    const p = polar(cx, cy, i % 2 === 0 ? R : R * 0.45, -90 + i * 36);
-    pts.push(`${p.x} ${p.y}`);
-  }
-  return `M${pts.join("L")}Z`;
-}
-
-function Star({ x, y, R = 10, fill = SIGNAL }: { x: number; y: number; R?: number; fill?: string }) {
-  return <path d={starPath(x, y, R)} fill={fill} stroke={fill} strokeWidth={1.2} strokeLinejoin="round" />;
-}
-
-/** Thought bubble: a cloud-ish ellipse with two trailing dots toward (tx, ty). */
-function Thought({
-  x,
-  y,
-  rx = 44,
-  ry = 30,
-  tx,
-  ty,
-  stroke = INK,
-}: {
-  x: number;
-  y: number;
-  rx?: number;
-  ry?: number;
-  tx: number;
-  ty: number;
-  stroke?: string;
-}) {
-  const ax = r2(x + (tx - x) * 0.55);
-  const ay = r2(y + (ty - y) * 0.55);
-  const bx = r2(x + (tx - x) * 0.8);
-  const by = r2(y + (ty - y) * 0.8);
-  return (
-    <g fill={PAPER} stroke={stroke} strokeWidth={1.6}>
-      <ellipse cx={x} cy={y} rx={rx} ry={ry} />
-      <circle cx={ax} cy={ay} r={5} />
-      <circle cx={bx} cy={by} r={3} />
+    <g>
+      <Wash pts={skin} seed={seed} fill={SK.skin} opacity={0.7} dx={0.8} dy={0.4} />
+      <InkLine pts={bridge} seed={seed + 1} width={1.2} />
+      <InkLine pts={wing} seed={seed + 2} width={0.9} />
     </g>
   );
 }
 
-/* -- the five senses ----------------------------------------------------- */
-
-/** A sense glyph on its own, for the rows of a slide. */
-export function SenseMark({ kind, tone = INK }: { kind: Sense; tone?: string }) {
+/** Closed lips, about 30 units wide at s = 1. */
+function Lips({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
+  const shape = at(x, y, [[-15, 0], [-8, -6], [-2.5, -5.5], [0, -3.5], [2.5, -5.5], [8, -6], [15, 0], [8, 6.5], [0, 7.5], [-8, 6.5]], s);
   return (
-    <svg viewBox="0 0 64 64" className="h-16 w-16 shrink-0" aria-hidden>
-      <SenseGlyph kind={kind} x={32} y={32} s={1.1} tone={tone} />
-    </svg>
+    <g>
+      <Wash pts={shape} seed={seed} fill={SK.camel} opacity={0.7} dx={0.8} dy={0.5} />
+      <InkLine pts={shape} seed={seed + 1} width={1.2} closed />
+      <InkLine pts={at(x, y, [[-14, 0], [-6, 1], [0, 0.5], [6, 1], [14, 0]], s)} seed={seed + 2} width={0.9} />
+    </g>
   );
 }
 
-/* -- raw stimulus marks ---------------------------------------------------- */
-
-type Mk = 0 | 1 | 2 | 3;
-
-function Stim({ x, y, k, fill, r = 6, opacity }: { x: number; y: number; k: Mk; fill: string; r?: number; opacity?: number }) {
-  if (k === 0) return <circle cx={x} cy={y} r={r} fill={fill} opacity={opacity} />;
-  if (k === 1)
-    return <rect x={r2(x - r * 0.85)} y={r2(y - r * 0.85)} width={r2(r * 1.7)} height={r2(r * 1.7)} fill={fill} opacity={opacity} />;
-  if (k === 2)
-    return <path d={`M${x} ${r2(y - r)}L${r2(x + r)} ${r2(y + r * 0.8)}H${r2(x - r)}Z`} fill={fill} opacity={opacity} />;
+/** An open hand (a light Phosphor palm over a skin wash), `size` units tall. */
+function Palm({ x, y, size = 30, seed }: { x: number; y: number; size?: number; seed: number }) {
   return (
-    <path
-      d={`M${r2(x - r)} ${r2(y + r * 0.4)}Q${x} ${r2(y - r * 1.2)} ${r2(x + r)} ${r2(y + r * 0.4)}`}
-      fill="none"
-      stroke={fill}
-      strokeWidth={2.2}
-      strokeLinecap="round"
-      opacity={opacity}
-    />
+    <g>
+      <Wash pts={rp(blobPts(x, y + size * 0.08, size * 0.3, size * 0.36, seed, 10, 0.1))} seed={seed} fill={SK.skin} opacity={0.7} dx={0.5} dy={0.5} />
+      <HandPalm x={r2(x - size / 2)} y={r2(y - size / 2)} size={size} weight="light" color={SK.ink} />
+    </g>
   );
 }
+
+/** One sense, always drawn as the same organ. (x, y) is its centre. */
+export function SenseGlyph({ kind, x, y, s = 1, seed }: { kind: Sense; x: number; y: number; s?: number; seed: number }) {
+  if (kind === "sight") return <Eye x={x} y={y} w={r2(32 * s)} seed={seed} />;
+  if (kind === "sound") return <Ear x={x} y={y} s={s} seed={seed} />;
+  if (kind === "smell") return <Nose x={x} y={y} s={s} seed={seed} />;
+  if (kind === "touch") return <Palm x={x} y={y} size={r2(32 * s)} seed={seed} />;
+  return <Lips x={x} y={y} s={s} seed={seed} />;
+}
+
+/* -- small objects ------------------------------------------------------------ */
 
 /* ==========================================================================
    TITLE · the same cup, before and after the filters
    ========================================================================== */
 
-function Mug({ x, y, stroke = INK, fill = PAPER }: { x: number; y: number; stroke?: string; fill?: string }) {
-  return (
-    <g stroke={stroke} strokeWidth={2.2} strokeLinejoin="round">
-      <path
-        d={`M${x + 30} ${y - 19}Q${x + 48} ${y - 19} ${x + 48} ${y - 3}Q${x + 48} ${y + 11} ${x + 30} ${y + 11}`}
-        fill="none"
-      />
-      <path
-        d={`M${x - 30} ${y - 29}H${x + 30}V${y + 9}Q${x + 30} ${y + 29} ${x + 10} ${y + 29}H${x - 10}Q${x - 30} ${y + 29} ${x - 30} ${y + 9}Z`}
-        fill={fill}
-      />
-    </g>
-  );
-}
-
 export function Filters() {
-  const rays = [-20, -10, 0, 10, 20];
+  const cx = 180;
+  const rays = [-14, -7, 0, 7, 14];
+  const lenses: [number, string][] = [
+    [138, SK.blush],
+    [180, SK.sky],
+    [222, SK.ochre],
+  ];
   return (
-    <Frame
+    <SketchFrame
+      id="sk-filters"
       width={360}
       height={470}
-      label="A plain cup at the top, marked as it is. Lines of sight run down through a band of the five senses (an eye, notes, a perfume bottle, a hand, a tongue) and then through three overlapping coloured lenses marked personal filters. Below the lenses the lines turn orange, and the cup at the bottom is tilted, tinted orange and carries a heart: as we see it."
+      label="A plain cream mug at the top, as it is. Lines of sight run down through a band of the five senses (an eye, an ear, a nose, a hand and lips), then through three overlapping coloured lenses, the personal filters. At the bottom the same mug is tilted, washed ochre and carries a heart: as we see it."
     >
-      <Key x={180} y={24} anchor="middle" fill={INK3} size={11}>
-        AS IT IS
-      </Key>
-      <Mug x={172} y={78} />
+      <Wash seed={5} fill={SK.blush} opacity={0.35} dx={0} dy={0} pts={blobPts(180, 250, 172, 226, 5)} />
 
-      {/* lines of sight: plain above the filters, tinted below */}
-      {rays.map((d) => (
+      <SketchText x={cx} y={26} anchor="middle" size={10}>
+        AS IT IS
+      </SketchText>
+      <Mug2 x={cx - 7} y={72} s={1.25} seed={20} />
+
+      {/* lines of sight: plain ink above the filters, warm below */}
+      {rays.map((d, i) => (
         <g key={d}>
-          <line x1={172 + d} y1={116} x2={172 + d * 1.3} y2={300} stroke={INK3} strokeWidth={1.2} strokeDasharray="3 4" />
-          <line x1={172 + d * 1.3} y1={300} x2={180 + d * 1.6} y2={352} stroke={SIGNAL} strokeWidth={1.6} strokeDasharray="3 4" />
+          <InkLine pts={rp([[cx + d, 112], [cx + d * 1.2, 156]])} seed={30 + i} width={0.7} amp={0.4} />
+          <InkLine pts={rp([[cx + d * 1.3, 216], [cx + d * 1.5, 246]])} seed={40 + i} width={0.7} amp={0.4} />
+          <InkLine pts={rp([[cx + d * 1.6, 318], [cx + d * 1.8, 346]])} seed={50 + i} width={0.9} amp={0.4} color={SK.tan} />
         </g>
       ))}
 
       {/* our senses */}
-      <rect x={118} y={133} width={124} height={18} fill={PAPER} />
-      <Key x={180} y={146} anchor="middle" fill={INK} size={11}>
+      <SketchText x={34} y={152} size={10}>
         OUR SENSES
-      </Key>
-      <rect x={34} y={156} width={292} height={50} rx={25} fill={PAPER} stroke={INK} strokeWidth={1.6} />
+      </SketchText>
+      <Paper pts={sharp([[26, 162], [334, 162], [334, 210], [26, 210]], true, 12)} seed={60} />
+      <InkLine pts={sharp([[26, 162], [334, 162], [334, 210], [26, 210]], true, 12)} seed={61} closed />
       {SENSES.map((k, i) => (
-        <SenseGlyph key={k} kind={k} x={78 + i * 51} y={181} s={0.52} />
+        <SenseGlyph key={k} kind={k} x={66 + i * 57} y={185} s={0.9} seed={70 + i * 10} />
       ))}
 
-      {/* personal filters */}
-      <rect x={100} y={225} width={160} height={18} fill={PAPER} />
-      <Key x={180} y={238} anchor="middle" fill={INK} size={11}>
-        PERSONAL FILTERS
-      </Key>
-      <circle cx={140} cy={276} r={28} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.6} />
-      <circle cx={180} cy={276} r={28} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.6} />
-      <circle cx={220} cy={276} r={28} fill="rgba(24, 22, 19, 0.06)" stroke={INK} strokeWidth={1.6} />
+      {/* personal filters: three overlapping lenses */}
+      {lenses.map(([x, fill], i) => (
+        <Wash key={x} pts={rp(blobPts(x, 282, 30, 30, 120 + i, 14, 0.05))} seed={120 + i} fill={fill} opacity={0.55} dx={1.5} dy={1} />
+      ))}
+      {lenses.map(([x], i) => (
+        <InkLine key={x} pts={rp(blobPts(x, 282, 30, 30, 130 + i, 14, 0.04))} seed={130 + i} width={1.2} closed />
+      ))}
+      <SketchText x={262} y={262} size={10}>
+        PERSONAL
+      </SketchText>
+      <SketchText x={262} y={276} size={10}>
+        FILTERS
+      </SketchText>
 
-      <g transform="rotate(-7 180 392)">
-        <Mug x={172} y={392} stroke={SIGNAL} fill={SIGNAL_TINT} />
-        <Heart x={172} y={393} s={0.9} />
+      {/* the mug as we see it */}
+      <g transform="rotate(-7 180 396)">
+        <Mug2 x={cx - 7} y={394} s={1.25} seed={140} fill={SK.ochre} />
+        <Heart x={cx - 10} y={396} s={1.2} seed={150} />
       </g>
-      <Key x={180} y={458} anchor="middle" fill={SIGNAL} size={11}>
+      <SketchText x={cx} y={458} anchor="middle" size={10}>
         AS WE SEE IT
-      </Key>
-    </Frame>
+      </SketchText>
+    </SketchFrame>
   );
 }
 
@@ -272,223 +168,233 @@ export function Filters() {
    WHAT IS PERCEPTION?
    ========================================================================== */
 
-// Twenty raw sensations. The seven dots (k = 0) are the ones that get picked.
-const SCATTER: [number, number, Mk][] = [
-  [-58, -58, 1], [-24, -62, 0], [14, -52, 2], [54, -60, 3],
-  [-46, -26, 0], [-6, -22, 3], [34, -30, 0], [62, -8, 1],
-  [-62, 4, 2], [-26, 10, 0], [10, 4, 1], [44, 16, 0],
-  [-50, 40, 3], [-14, 44, 2], [24, 40, 0], [60, 48, 2],
-  [-60, 66, 1], [-22, 70, 3], [18, 68, 1], [54, 72, 0],
-];
-// Where the seven picked dots go when they are organized: two eyes, a smile.
-const FACE: [number, number][] = [
-  [-22, -22], [22, -22], [-34, 14], [-18, 28], [0, 32], [18, 28], [34, 14],
-];
-
-export function SelectOrganizeInterpret() {
-  const cx = [110, 310, 510, 700];
-  const cy = 128;
-  const picked = SCATTER.map((p, i) => (p[2] === 0 ? i : -1)).filter((i) => i >= 0);
-  const labels = ["SENSATIONS", "SELECTING", "ORGANIZING", "INTERPRETING"];
+/** A raw sensation: a small ink dot, square, triangle or arc. */
+function Mark({ x, y, k, seed, lit = false, r = 7.5 }: { x: number; y: number; k: number; seed: number; lit?: boolean; r?: number }) {
+  const shape: Pt[] =
+    k === 0
+      ? rp(blobPts(x, y, r, r, seed, 9, 0.12))
+      : k === 1
+        ? rp(sharp([[x - r * 0.85, y - r * 0.85], [x + r * 0.85, y - r * 0.85], [x + r * 0.85, y + r * 0.85], [x - r * 0.85, y + r * 0.85]], true, 1))
+        : k === 2
+          ? rp(sharp([[x, y - r], [x + r, y + r * 0.8], [x - r, y + r * 0.8]], true, 1))
+          : [];
+  if (k === 3) return <InkLine pts={curvePts([x - r, y + r * 0.4], [x, y - r * 1.2], [x + r, y + r * 0.4], 6)} seed={seed} width={1.3} amp={0.3} />;
   return (
-    <Frame
-      height={260}
-      label="Four panels left to right. Sensations: twenty grey marks of mixed shapes scattered at random. Selecting: the same scatter with seven dots lit orange and the rest faded. Organizing: the seven dots rearranged into two eyes and a smile. Interpreting: a solid smiling face."
-    >
-      {cx.slice(0, 3).map((x) => (
-        <Arrow key={x} x1={x + 88} y1={cy} x2={x + 112} y2={cy} stroke={INK3} />
-      ))}
-
-      {/* sensations */}
-      {SCATTER.map(([dx, dy, k], i) => (
-        <Stim key={i} x={cx[0] + dx} y={cy + dy - 4} k={k} fill={INK3} />
-      ))}
-
-      {/* selecting */}
-      {SCATTER.map(([dx, dy, k], i) => (
-        <Stim
-          key={i}
-          x={cx[1] + dx}
-          y={cy + dy - 4}
-          k={k}
-          fill={k === 0 ? SIGNAL : RULE2}
-          opacity={k === 0 ? 1 : 0.55}
-        />
-      ))}
-
-      {/* organizing */}
-      {picked.map((_, j) => (
-        <Stim key={j} x={cx[2] + FACE[j][0]} y={cy + FACE[j][1]} k={0} fill={SIGNAL} />
-      ))}
-
-      {/* interpreting */}
-      <circle cx={cx[3]} cy={cy} r={62} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={2} />
-      <circle cx={cx[3] - 22} cy={cy - 20} r={7} fill={SIGNAL} />
-      <circle cx={cx[3] + 22} cy={cy - 20} r={7} fill={SIGNAL} />
-      <path
-        d={`M${cx[3] - 34} ${cy + 12}Q${cx[3]} ${cy + 52} ${cx[3] + 34} ${cy + 12}`}
-        fill="none"
-        stroke={SIGNAL}
-        strokeWidth={6}
-        strokeLinecap="round"
-      />
-
-      {labels.map((t, i) => (
-        <Key key={t} x={cx[i]} y={234} anchor="middle" fill={i === 0 ? INK3 : SIGNAL} size={11}>
-          {t}
-        </Key>
-      ))}
-    </Frame>
+    <g>
+      {lit ? <Wash pts={shape} seed={seed} fill={SK.teal} opacity={0.85} dx={0.6} dy={0.5} /> : null}
+      <InkLine pts={shape} seed={seed + 1} width={lit ? 1.2 : 1} amp={0.3} closed />
+    </g>
   );
 }
 
-/** Colour swatches: something to see. */
-function Swatches({ x, y }: { x: number; y: number }) {
+// Twenty raw sensations. The seven dots (k = 0) are the ones that get picked.
+const SCATTER: [number, number, number][] = [
+  [-58, -52, 1], [-24, -56, 0], [14, -48, 2], [54, -54, 3],
+  [-46, -22, 0], [-6, -18, 3], [34, -26, 0], [62, -4, 1],
+  [-62, 6, 2], [-26, 12, 0], [10, 6, 1], [44, 16, 0],
+  [-50, 40, 3], [-14, 44, 2], [24, 38, 0], [60, 46, 2],
+  [-60, 64, 1], [-22, 68, 3], [18, 66, 1], [54, 70, 0],
+];
+// Where the seven picked dots go when they are organized: two eyes, a smile.
+const FACE: Pt[] = [[-22, -20], [22, -20], [-34, 14], [-18, 28], [0, 32], [18, 28], [34, 14]];
+
+export function SelectOrganizeInterpret() {
+  const cx = [110, 310, 510, 700];
+  const cy = 108;
+  const picked = SCATTER.filter((p) => p[2] === 0);
+  const labels = ["SENSATIONS", "SELECTING", "ORGANIZING", "INTERPRETING"];
+  const face = rp(blobPts(cx[3], cy, 60, 60, 410, 16, 0.05));
+  return (
+    <SketchFrame
+      id="sk-select-organize"
+      width={800}
+      height={236}
+      label="Four panels left to right. Sensations: twenty small ink marks of mixed shapes scattered at random. Selecting: the same scatter with seven dots washed teal. Organizing: those seven dots moved into two eyes and a smile. Interpreting: a whole smiling face washed teal."
+    >
+      <Wash seed={400} fill={SK.blush} opacity={0.35} dx={0} dy={0} pts={blobPts(400, 118, 396, 112, 400, 18, 0.1)} />
+      {cx.slice(0, 3).map((x, i) => (
+        <SketchArrow key={x} pts={[[x + 86, cy], [x + 114, cy]]} seed={420 + i * 3} head={8} />
+      ))}
+
+      {SCATTER.map(([dx, dy, k], i) => (
+        <Mark key={i} x={cx[0] + dx} y={cy + dy - 6} k={k} seed={430 + i * 2} />
+      ))}
+      {SCATTER.map(([dx, dy, k], i) => (
+        <Mark key={i} x={cx[1] + dx} y={cy + dy - 6} k={k} seed={480 + i * 2} lit={k === 0} />
+      ))}
+      {picked.map((_, j) => (
+        <Mark key={j} x={cx[2] + FACE[j][0]} y={cy + FACE[j][1]} k={0} seed={530 + j * 2} lit />
+      ))}
+
+      <Wash pts={face} seed={550} fill={SK.teal} opacity={0.45} />
+      <InkLine pts={face} seed={551} width={1.4} closed />
+      <path d={wobble(rp(blobPts(cx[3] - 21, cy - 18, 3.2, 4.2, 552, 8, 0.1)), 552, 0.2, 6, true)} fill={SK.ink} />
+      <path d={wobble(rp(blobPts(cx[3] + 21, cy - 18, 3.2, 4.2, 553, 8, 0.1)), 553, 0.2, 6, true)} fill={SK.ink} />
+      <InkLine pts={curvePts([cx[3] - 32, cy + 12], [cx[3], cy + 50], [cx[3] + 32, cy + 12], 10)} seed={554} width={1.8} amp={0.4} />
+
+      {labels.map((t, i) => (
+        <SketchText key={t} x={cx[i]} y={214} anchor="middle" size={11}>
+          {t}
+        </SketchText>
+      ))}
+    </SketchFrame>
+  );
+}
+
+
+/** Three colour swatches, overlapping: something to see. */
+function Swatches({ x, y, seed }: { x: number; y: number; seed: number }) {
+  const sq = (dx: number, dy: number, w: number): Pt[] => sharp([[x + dx, y + dy], [x + dx + w, y + dy], [x + dx + w, y + dy + w], [x + dx, y + dy + w]], true, 1);
+  const tiles: [Pt[], string][] = [
+    [sq(-20, -16, 20), SK.camel],
+    [sq(-6, -6, 20), SK.sky],
+    [sq(6, -20, 16), SK.ochre],
+  ];
   return (
     <g>
-      <rect x={x - 22} y={y - 16} width={22} height={22} fill={SIGNAL} />
-      <rect x={x - 8} y={y - 8} width={22} height={22} fill={COUNTER} />
-      <rect x={x + 6} y={y - 20} width={18} height={18} fill={INK} />
+      {tiles.map(([pts, fill], i) => (
+        <g key={i}>
+          <Wash pts={pts} seed={seed + i * 2} fill={fill} opacity={0.8} dx={1} dy={0.8} />
+          <InkLine pts={pts} seed={seed + i * 2 + 1} width={1} amp={0.3} closed />
+        </g>
+      ))}
+    </g>
+  );
+}
+
+/** Three rising wisps: something to smell. */
+function Wisps({ x, y, seed }: { x: number; y: number; seed: number }) {
+  return (
+    <g>
+      {[-12, 0, 12].map((dx, i) => (
+        <InkLine key={dx} pts={at(x + dx, y, [[0, 18], [5, 10], [0, 2], [-5, -6], [0, -14], [4, -20]])} seed={seed + i} width={1.3} />
+      ))}
     </g>
   );
 }
 
 /** A wrapped sweet: something to taste. */
-function Sweet({ x, y }: { x: number; y: number }) {
-  return (
-    <g fill={INK}>
-      <ellipse cx={x} cy={y} rx={14} ry={11} />
-      <path d={`M${x - 12} ${y}L${x - 26} ${y - 10}V${y + 10}Z`} />
-      <path d={`M${x + 12} ${y}L${x + 26} ${y - 10}V${y + 10}Z`} />
-      <path d={`M${x - 6} ${y - 8}Q${x + 4} ${y} ${x - 6} ${y + 8}`} fill="none" stroke={PAPER} strokeWidth={2} />
-    </g>
-  );
-}
-
-/** A woven patch: something to feel. */
-function Weave({ x, y }: { x: number; y: number }) {
+function Sweet({ x, y, seed }: { x: number; y: number; seed: number }) {
+  const body = rp(blobPts(x, y, 12, 9.5, seed, 10, 0.06));
+  const endL = at(x, y, [[-11, -2], [-23, -10], [-21, 0], [-23, 10], [-11, 2]]);
+  const endR = at(x, y, [[11, -2], [23, -10], [21, 0], [23, 10], [11, 2]]);
   return (
     <g>
-      <rect x={x - 22} y={y - 18} width={44} height={36} rx={4} fill={PAPER} stroke={INK} strokeWidth={1.8} />
-      {[-10, 0, 10].map((dy) => (
-        <path
-          key={dy}
-          d={`M${x - 18} ${y + dy}l6 -4l6 4l6 -4l6 4l6 -4l6 4`}
-          fill="none"
-          stroke={INK}
-          strokeWidth={1.6}
-          strokeLinejoin="round"
-        />
-      ))}
+      <Wash pts={endL} seed={seed + 1} fill={SK.ochre} opacity={0.7} dx={0.5} dy={0.5} />
+      <Wash pts={endR} seed={seed + 2} fill={SK.ochre} opacity={0.7} dx={0.5} dy={0.5} />
+      <InkLine pts={endL} seed={seed + 3} width={1} closed />
+      <InkLine pts={endR} seed={seed + 4} width={1} closed />
+      <Wash pts={body} seed={seed + 5} fill={SK.ochre} opacity={0.85} dx={0.6} dy={0.5} />
+      <InkLine pts={body} seed={seed + 6} width={1.2} closed />
+      <InkLine pts={at(x, y, [[-4, -6], [2, 0], [-4, 6]])} seed={seed + 7} width={0.8} />
     </g>
   );
 }
 
-function Wisps({ x, y, stroke = INK }: { x: number; y: number; stroke?: string }) {
+/** A woven patch of cloth: something to feel. */
+function Weave({ x, y, seed }: { x: number; y: number; seed: number }) {
+  const patch = sharp([[x - 20, y - 16], [x + 20, y - 16], [x + 20, y + 16], [x - 20, y + 16]], true, 3);
   return (
-    <g fill="none" stroke={stroke} strokeWidth={2.2} strokeLinecap="round">
-      {[-14, 0, 14].map((dx) => (
-        <path key={dx} d={`M${x + dx} ${y + 18}q7 -7 0 -14t0 -14t0 -14`} />
+    <g>
+      <Wash pts={patch} seed={seed} fill={SK.camel} opacity={0.5} dx={1} dy={0.8} />
+      <InkLine pts={patch} seed={seed + 1} width={1.2} closed />
+      {[-8, 0, 8].map((dy, i) => (
+        <InkLine key={dy} pts={at(x, y + dy, [[-16, 0], [-11, -3], [-6, 0], [-1, -3], [4, 0], [9, -3], [15, 0]])} seed={seed + 2 + i} width={0.8} amp={0.3} />
       ))}
     </g>
   );
 }
 
 export function SensoryFlood() {
-  const head = { x: 400, y: 186 };
-  const src = [
-    { x: 80, label: "SIGHTS" },
-    { x: 240, label: "SOUNDS" },
-    { x: 400, label: "SMELLS" },
-    { x: 560, label: "TASTES" },
-    { x: 720, label: "TEXTURES" },
+  const head: Pt = [200, 128];
+  // the five inputs sit round the head, each with its label above it
+  const src: { x: number; y: number; t: string; el: React.ReactNode }[] = [
+    { x: 52, y: 176, t: "SIGHTS", el: <Swatches x={52} y={176} seed={610} /> },
+    { x: 84, y: 76, t: "SOUNDS", el: <Notes x={80} y={76} s={1.1} seed={620} /> },
+    { x: 200, y: 50, t: "SMELLS", el: <Wisps x={200} y={50} seed={630} /> },
+    { x: 316, y: 76, t: "TASTES", el: <Sweet x={316} y={76} seed={640} /> },
+    { x: 348, y: 176, t: "TEXTURES", el: <Weave x={348} y={176} seed={650} /> },
   ];
-  const iy = 64;
   return (
-    <Frame
-      height={320}
-      label="Five kinds of input across the top: sights (colour swatches), sounds (sound waves), smells (rising wisps), tastes (a wrapped sweet) and textures (a woven patch). Three arrows from each, fifteen in all, pour down onto one person's head."
+    <SketchFrame
+      id="sk-sensory-flood"
+      width={400}
+      height={312}
+      label="A person stands in the middle, ringed by five kinds of input: sights (colour swatches), sounds (music notes), smells (rising wisps), tastes (a wrapped sweet) and textures (a woven patch). Two arrows run from each one to the person's head."
     >
-      <Swatches x={80} y={iy} />
-      <Notes x={240} y={iy} />
-      <Wisps x={400} y={iy - 4} />
-      <Sweet x={560} y={iy} />
-      <Weave x={720} y={iy} />
-      {src.map((s) => (
-        <Key key={s.label} x={s.x} y={24} anchor="middle" fill={INK} size={11}>
-          {s.label}
-        </Key>
+      <Wash seed={600} fill={SK.blush} opacity={0.4} dx={0} dy={0} pts={blobPts(200, 168, 194, 142, 600, 16, 0.1)} />
+      {src.map((c) => (
+        <g key={c.t}>
+          <SketchText x={c.x} y={c.y - 30} anchor="middle" size={9}>
+            {c.t}
+          </SketchText>
+          {c.el}
+        </g>
       ))}
-      {src.flatMap((s, i) =>
-        [-18, 0, 18].map((d) => {
-          const x1 = s.x + d;
-          const y1 = iy + 34;
-          const dx = head.x - x1;
-          const dy = head.y - y1;
-          const len = Math.hypot(dx, dy);
-          const stop = 30;
-          return (
-            <Arrow
-              key={`${i}${d}`}
-              x1={x1}
-              y1={y1}
-              x2={r2(head.x - (dx / len) * stop + d * 0.3)}
-              y2={r2(head.y - (dy / len) * stop)}
-              stroke={SIGNAL}
-              width={1.3}
-              opacity={0.85}
-            />
-          );
-        }),
-      )}
-      <Person x={400} y={306} s={1.75} fill={INK} />
-      <line x1={250} y1={306} x2={550} y2={306} stroke={RULE2} />
-    </Frame>
+      {src.flatMap((c, i) => {
+        const dx = head[0] - c.x;
+        const dy = head[1] - c.y;
+        const len = Math.hypot(dx, dy);
+        const ux = dx / len;
+        const uy = dy / len;
+        return [-7, 7].map((d, j) => {
+          const px = -uy * d;
+          const py = ux * d;
+          const p0: Pt = [c.x + ux * 30 + px, c.y + uy * 30 + py];
+          const p1: Pt = [head[0] - ux * 26 + px * 0.5, head[1] - uy * 26 + py * 0.5];
+          return <SketchArrow key={`${i}${j}`} pts={rp([p0, p1])} seed={660 + i * 4 + j * 2} width={1} head={6} />;
+        });
+      })}
+
+      <Ground x0={130} x1={270} y={298} seed={700} />
+      <Person x={200} y={298} h={184} seed={710} look={{ hair: "curly", wear: SK.camel }} arms={["down", "down"]} />
+    </SketchFrame>
+  );
+}
+
+
+/** A billboard on two posts: board from (x0, top) to (x1, bottom), posts to `ground`. */
+function Billboard({ x0, x1, top, bottom, ground, seed, children }: { x0: number; x1: number; top: number; bottom: number; ground: number; seed: number; children?: React.ReactNode }) {
+  const board = sharp([[x0, top], [x1, top], [x1, bottom], [x0, bottom]], true, 2);
+  const w = x1 - x0;
+  return (
+    <g>
+      <InkLine pts={rp([[x0 + w * 0.25, bottom], [x0 + w * 0.25, ground]])} seed={seed} width={1.4} />
+      <InkLine pts={rp([[x1 - w * 0.25, bottom], [x1 - w * 0.25, ground]])} seed={seed + 1} width={1.4} />
+      <Paper pts={board} seed={seed + 2} />
+      <InkLine pts={board} seed={seed + 3} closed />
+      {children}
+    </g>
   );
 }
 
 /** One advertisement, two viewers, two different impressions. */
 export function SameAdTwoImpressions() {
-  const g = 300;
+  const g = 284;
   return (
-    <Frame
-      height={320}
-      label="One billboard advertisement in the middle, showing a product and a star. Two people look at it from either side. One thinks of a heart; the other thinks of a frowning face."
+    <SketchFrame
+      id="sk-same-ad"
+      width={400}
+      height={300}
+      label="One billboard advertisement in the middle, showing a product box with the brand badge. Two people look up at it from either side. One thinks of a whole heart; the other thinks of a broken heart."
     >
-      {/* the billboard */}
-      <line x1={350} y1={150} x2={350} y2={g} stroke={INK} strokeWidth={3} />
-      <line x1={450} y1={150} x2={450} y2={g} stroke={INK} strokeWidth={3} />
-      <rect x={290} y={40} width={220} height={112} rx={4} fill={PAPER} stroke={INK} strokeWidth={2} />
-      <rect x={316} y={62} width={48} height={70} rx={6} fill={SIGNAL} />
-      <rect x={326} y={82} width={28} height={16} rx={2} fill={PAPER} />
-      <Star x={404} y={80} R={13} fill={INK} />
-      <rect x={384} y={104} width={104} height={7} rx={3} fill={RULE2} />
-      <rect x={384} y={118} width={72} height={7} rx={3} fill={RULE2} />
-      <Key x={400} y={28} anchor="middle" fill={INK3} size={11}>
-        THE EXACT SAME ADVERTISEMENT
-      </Key>
+      <Wash seed={800} fill={SK.blush} opacity={0.4} dx={0} dy={0} pts={blobPts(200, 170, 194, 128, 800, 16, 0.1)} />
+      <Ground x0={30} x1={370} y={g} seed={805} />
+      <Billboard x0={128} x1={272} top={46} bottom={130} ground={g} seed={810}>
+        <Box x={170} bottom={118} w={40} h={58} seed={820} />
+        <InkLine pts={rp([[204, 76], [254, 76]])} seed={825} width={2} amp={0.4} />
+        <InkLine pts={rp([[204, 90], [244, 90]])} seed={826} width={2} amp={0.4} />
+        <InkLine pts={rp([[204, 104], [234, 104]])} seed={827} width={2} amp={0.4} />
+      </Billboard>
 
-      {/* sight lines */}
-      <line x1={196} y1={214} x2={286} y2={130} stroke={INK3} strokeDasharray="3 4" />
-      <line x1={604} y1={214} x2={514} y2={130} stroke={INK3} strokeDasharray="3 4" />
+      <Person x={64} y={g} h={168} seed={830} look={{ hair: "bob", wear: SK.camel }} arms={["hip", "down"]} />
+      <Thought x={60} y={60} rx={34} ry={24} tx={66} ty={118} seed={870} />
+      <Heart x={60} y={61} s={1.3} seed={880} />
 
-      {/* left viewer: loves it */}
-      <Person x={180} y={g} s={1.45} fill={SIGNAL} />
-      <Thought x={96} y={104} rx={48} ry={34} tx={162} ty={196} stroke={SIGNAL} />
-      <Heart x={96} y={105} s={1.35} />
-
-      {/* right viewer: does not */}
-      <Person x={620} y={g} s={1.45} fill={COUNTER} />
-      <Thought x={704} y={104} rx={48} ry={34} tx={638} ty={196} stroke={COUNTER} />
-      <g fill="none" stroke={COUNTER} strokeWidth={2.2} strokeLinecap="round">
-        <circle cx={704} cy={104} r={19} />
-        <path d="M694 116Q704 106 714 116" />
-      </g>
-      <circle cx={697} cy={98} r={2} fill={COUNTER} />
-      <circle cx={711} cy={98} r={2} fill={COUNTER} />
-
-      <line x1={60} y1={g} x2={740} y2={g} stroke={RULE2} />
-    </Frame>
+      <Person x={336} y={g} h={168} flip seed={890} look={{ hair: "short", wear: SK.sky, skin: SK.tan, skinOpacity: 0.55 }} arms={["down", "down"]} />
+      <Thought x={340} y={60} rx={34} ry={24} tx={334} ty={118} seed={930} />
+      <Heart x={340} y={61} s={1.3} seed={940} broken />
+    </SketchFrame>
   );
 }
 
@@ -499,266 +405,198 @@ export function SameAdTwoImpressions() {
 export const STAGES = ["Exposure", "Attention", "Interpretation"];
 
 export function PerceptionFunnel() {
-  const c = 180;
-  // funnel edges: wide at exposure, narrower at attention, a tube at interpretation
-  const top = (x: number) => (x <= 300 ? 70 + ((x - 40) / 260) * 40 : x <= 540 ? 110 + ((x - 300) / 240) * 50 : 160);
-  const half = (x: number) => c - top(x);
-
+  const c = 176;
+  const top = (x: number) => (x <= 300 ? 70 + ((x - 40) / 260) * 40 : x <= 540 ? 110 + ((x - 300) / 240) * 46 : 156);
+  const rnd = seeded(1001);
   const exposure = Array.from({ length: 36 }, (_, i) => {
     const col = i % 6;
     const row = Math.floor(i / 6);
-    const x = r2(66 + col * 38 + (hash(i, 1) - 0.5) * 14);
-    const h = half(x) - 12;
-    const y = r2(c + ((row - 2.5) / 2.5) * h * 0.92 + (hash(i, 2) - 0.5) * 8);
-    return { x, y, k: (i * 7) % 4 as Mk };
+    const x = r2(68 + col * 38 + (rnd() - 0.5) * 12);
+    const h = c - top(x) - 14;
+    const y = r2(c + ((row - 2.5) / 2.5) * h * 0.9 + (rnd() - 0.5) * 6);
+    return { x, y, k: (i * 7) % 4 };
   });
-  const attention = [
-    [340, 166], [364, 190], [392, 170], [420, 188], [448, 172], [476, 190], [500, 176], [522, 186],
-  ];
-  const heap1 = Array.from({ length: 16 }, (_, i) => ({ x: 70 + i * 13 + (hash(i, 3) - 0.5) * 6, y: 322 - (i % 2) * 8 }));
-  const heap2 = Array.from({ length: 8 }, (_, i) => ({ x: 360 + i * 20, y: 322 - (i % 2) * 8 }));
-
+  const attention: Pt[] = [[336, 164], [360, 190], [388, 168], [414, 188], [440, 170], [466, 190], [492, 174], [516, 186]];
+  const heap1 = Array.from({ length: 14 }, (_, i) => ({ x: r2(84 + i * 13 + (rnd() - 0.5) * 5), y: 318 - (i % 2) * 9, k: (i * 3) % 4 }));
+  const heap2 = Array.from({ length: 7 }, (_, i) => ({ x: 368 + i * 18, y: 318 - (i % 2) * 9 }));
+  const funnel: Pt[] = sharp([[40, 70], [300, 110], [540, 156], [760, 156], [760, 196], [540, 196], [300, 242], [40, 282]], true, 2);
   const xs = [170, 420, 650];
   return (
-    <Frame
-      height={380}
-      label="A funnel lying on its side. Stage 1, Exposure, is the wide mouth holding thirty-six grey marks. Stage 2, Attention, is narrower and holds eight dark dots. Stage 3, Interpretation, is a thin tube holding one orange dot. Under the first two stages, marks drop out of the funnel into piles marked filtered out."
+    <SketchFrame
+      id="sk-funnel"
+      width={800}
+      height={350}
+      label="A funnel lying on its side. Stage 1, Exposure, is the wide mouth holding thirty-six small marks. Stage 2, Attention, is narrower and holds eight dots. Stage 3, Interpretation, is a thin tube holding one teal dot, with an arrow leading out. Under the first two stages, marks drop out of the funnel into two piles marked filtered out."
     >
+      <Wash seed={1000} fill={SK.blush} opacity={0.35} dx={0} dy={0} pts={blobPts(400, 186, 396, 162, 1000, 18, 0.08)} />
       {xs.map((x, i) => (
         <g key={x}>
-          <Key x={x} y={24} anchor="middle" fill={SIGNAL}>
+          <SketchText x={x} y={22} anchor="middle" size={10}>
             {`STAGE ${i + 1}`}
-          </Key>
-          <Display x={x} y={52} anchor="middle" size={22}>
+          </SketchText>
+          <SketchText x={x} y={50} anchor="middle" size={22} serif>
             {STAGES[i]}
-          </Display>
+          </SketchText>
         </g>
       ))}
 
-      <path
-        d="M40 70L300 110L540 160H760V200H540L300 250L40 290Z"
-        fill={PAPER}
-        stroke={INK}
-        strokeWidth={1.8}
-        strokeLinejoin="round"
-      />
-      <line x1={300} y1={112} x2={300} y2={248} stroke={RULE2} strokeDasharray="3 5" />
-      <line x1={540} y1={162} x2={540} y2={198} stroke={RULE2} strokeDasharray="3 5" />
+      <Paper pts={funnel} seed={1010} />
+      <InkLine pts={funnel} seed={1011} width={1.5} closed />
+      <InkLine pts={[[300, 116], [300, 236]]} seed={1012} width={0.7} />
+      <InkLine pts={[[540, 161], [540, 191]]} seed={1013} width={0.7} />
 
       {exposure.map((p, i) => (
-        <Stim key={i} x={p.x} y={p.y} k={p.k} fill={INK3} r={5.5} />
+        <Mark key={i} x={p.x} y={p.y} k={p.k} r={5.5} seed={1020 + i * 2} />
       ))}
       {attention.map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r={5.5} fill={INK} />
+        <Mark key={i} x={x} y={y} k={0} r={5.5} seed={1100 + i * 2} />
       ))}
-      <circle cx={650} cy={c} r={11} fill={SIGNAL} />
-      <Arrow x1={676} y1={c} x2={740} y2={c} stroke={SIGNAL} width={2} />
+      <Mark x={620} y={c} k={0} r={10} seed={1120} lit />
+      <SketchArrow pts={[[642, c], [742, c]]} seed={1122} width={1.4} head={9} />
 
       {/* what falls out */}
-      <Arrow x1={170} y1={284} x2={170} y2={304} stroke={INK3} dash="3 3" />
-      <Arrow x1={430} y1={238} x2={430} y2={304} stroke={INK3} dash="3 3" />
+      <SketchArrow pts={[[170, 272], [170, 298]]} seed={1130} width={1} head={6} />
+      <SketchArrow pts={[[420, 230], [420, 298]]} seed={1132} width={1} head={6} />
       {heap1.map((p, i) => (
-        <circle key={i} cx={r2(p.x)} cy={p.y} r={4.5} fill={RULE2} />
+        <Mark key={i} x={p.x} y={p.y} k={p.k} r={4.5} seed={1140 + i * 2} />
       ))}
       {heap2.map((p, i) => (
-        <circle key={i} cx={p.x} cy={p.y} r={4.5} fill={RULE2} />
+        <Mark key={i} x={p.x} y={p.y} k={0} r={4.5} seed={1180 + i * 2} />
       ))}
-      <Key x={170} y={356} anchor="middle" fill={INK3}>
+      <SketchText x={170} y={342} anchor="middle" size={10}>
         FILTERED OUT
-      </Key>
-      <Key x={430} y={356} anchor="middle" fill={INK3}>
+      </SketchText>
+      <SketchText x={422} y={342} anchor="middle" size={10}>
         FILTERED OUT
-      </Key>
-    </Frame>
+      </SketchText>
+    </SketchFrame>
   );
 }
 
 /* ==========================================================================
-   SENSORY MARKETING
+   SENSORY MARKETING · one small scene per sense (all 300 × 220, ground 196)
    ========================================================================== */
 
-const SENSE_WORD: Record<Sense, string> = {
-  sight: "SIGHT",
-  sound: "SOUND",
-  smell: "SMELL",
-  touch: "TOUCH",
-  taste: "TASTE",
-};
+const VG = 196;
 
-function sector(cx: number, cy: number, r0: number, r1: number, a0: number, a1: number) {
-  const p0 = polar(cx, cy, r1, a0);
-  const p1 = polar(cx, cy, r1, a1);
-  const p2 = polar(cx, cy, r0, a1);
-  const p3 = polar(cx, cy, r0, a0);
-  return `M${p0.x} ${p0.y}A${r1} ${r1} 0 0 1 ${p1.x} ${p1.y}L${p2.x} ${p2.y}A${r0} ${r0} 0 0 0 ${p3.x} ${p3.y}Z`;
-}
 
-/** The five senses around the consumer; the three beyond sight and sound lit. */
-export function SensoryWheel() {
-  const cx = 400;
-  const cy = 206;
-  return (
-    <Frame
-      height={420}
-      label="A wheel of five segments around a person: sight, sound, smell, touch and taste, each with its icon. Sight and sound are drawn in grey; smell, touch and taste, the senses beyond sight and sound, are drawn in orange."
-    >
-      {SENSES.map((k, i) => {
-        const a = -90 + i * 72;
-        const beyond = i >= 2;
-        const g = polar(cx, cy, 125, a);
-        const l = polar(cx, cy, 186, a);
-        const anchor = Math.abs(l.x - cx) < 20 ? "middle" : l.x > cx ? "start" : "end";
-        const ly = Math.abs(l.x - cx) < 20 ? (l.y < cy ? l.y + 4 : l.y + 12) : l.y + 4;
-        return (
-          <g key={k}>
-            <path
-              d={sector(cx, cy, 82, 168, a - 34, a + 34)}
-              fill={beyond ? SIGNAL_TINT : PAPER2}
-              stroke={beyond ? SIGNAL : RULE2}
-              strokeWidth={1.6}
-              strokeLinejoin="round"
-            />
-            <SenseGlyph kind={k} x={g.x} y={g.y} s={1.05} tone={beyond ? SIGNAL : INK3} />
-            <Key x={l.x} y={ly} anchor={anchor} fill={beyond ? SIGNAL : INK3} size={12}>
-              {SENSE_WORD[k]}
-            </Key>
-            {k === "touch" ? (
-              <Note x={l.x - 2} y={ly + 20} anchor={anchor} fill={INK3} size={12} italic>
-                haptics
-              </Note>
-            ) : null}
-          </g>
-        );
-      })}
-      <circle cx={cx} cy={cy} r={70} fill={PAPER} stroke={INK} strokeWidth={1.6} />
-      <Person x={cx} y={cy + 36} s={1.05} fill={INK} />
-    </Frame>
-  );
-}
-
-/** Sight: plain packages on a shelf; one is picked out by colour alone. */
+/** Sight: plain packs on a shelf; one is picked out by its colour. */
 export function SightVignette() {
-  const packs = [0, 1, 2, 3, 4];
+  const xs = [118, 156, 194, 232, 270];
   const lit = 3;
   return (
-    <Frame width={400} height={200} label="An eye on the left; a sight line runs past four grey boxes on a shelf to the one orange box, which carries no words at all.">
-      <SenseGlyph kind="sight" x={48} y={96} s={1.1} tone={SIGNAL} />
-      {packs.map((i) => {
-        const x = 140 + i * 50;
-        const on = i === lit;
-        return (
-          <g key={i}>
-            <rect x={x - 17} y={70} width={34} height={70} rx={4} fill={on ? SIGNAL : PAPER2} stroke={on ? SIGNAL : RULE2} strokeWidth={1.6} />
-            <circle cx={x} cy={96} r={8} fill={on ? PAPER : RULE} />
-          </g>
-        );
-      })}
-      <line x1={112} y1={140} x2={372} y2={140} stroke={INK} strokeWidth={2.4} />
-      <path d={`M76 94Q220 36 ${140 + lit * 50} 64`} fill="none" stroke={SIGNAL} strokeWidth={1.6} strokeDasharray="4 4" />
-      <path d={headAlong(140 + lit * 50, 64, 1, 0.35)} fill="none" stroke={SIGNAL} strokeWidth={1.6} strokeLinecap="round" />
-    </Frame>
+    <SketchFrame id="sk-sight" width={300} height={220} label="An eye on the left looks along a shelf of five packs. Four are plain cream; the eye's line of sight lands on the one teal pack with the brand badge.">
+      <Backwash cx={156} cy={122} rx={136} ry={90} seed={1200} />
+      <SenseGlyph kind="sight" x={42} y={82} s={1.3} seed={1205} />
+      {xs.map((x, i) => (
+        <Pack key={x} x={x} bottom={VG - 4} h={74} seed={1210 + i * 4} fill={i === lit ? SK.teal : undefined} badge={i === lit} />
+      ))}
+      <InkLine pts={[[94, VG - 3], [292, VG - 5]]} seed={1240} width={1.8} />
+      <SketchArrow pts={curvePts([66, 74], [150, 16], [xs[lit] - 4, VG - 86], 12)} seed={1242} width={1} head={7} />
+    </SketchFrame>
   );
 }
 
-/** Sound: a jingle plays, and the shopper carries it away in memory. */
-export function SoundVignette() {
-  return (
-    <Frame width={400} height={200} label="A loudspeaker plays notes; the same notes sit in a thought bubble above a shopper pushing a trolley.">
-      {/* speaker */}
-      <g fill={INK}>
-        <rect x={26} y={84} width={18} height={32} rx={2} />
-        <path d="M44 84L74 60V140L44 116Z" />
-      </g>
-      <g fill="none" stroke={INK3} strokeWidth={2} strokeLinecap="round">
-        <path d="M86 84Q96 100 86 116" />
-        <path d="M98 74Q114 100 98 126" />
-      </g>
-      <Notes x={148} y={92} s={0.8} fill={SIGNAL} />
-      <Arrow x1={176} y1={100} x2={218} y2={100} stroke={INK3} dash="3 4" />
-      {/* shopper remembering the jingle */}
-      <Person x={270} y={186} s={1.2} fill={INK} />
-      <Thought x={330} y={52} rx={40} ry={28} tx={282} ty={96} stroke={SIGNAL} />
-      <Notes x={330} y={52} s={0.72} fill={SIGNAL} />
-      <g fill="none" stroke={INK} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
-        <path d="M286 142H300L308 170H350L358 150H304" />
-        <circle cx={314} cy={180} r={3.2} fill={INK} />
-        <circle cx={344} cy={180} r={3.2} fill={INK} />
-      </g>
-      <line x1={20} y1={186} x2={380} y2={186} stroke={RULE2} />
-    </Frame>
-  );
-}
-
-/** Smell: the scent goes straight in, to a heart. */
-export function SmellVignette() {
-  const profile = smooth([
-    [318, 186], [316, 158], [336, 132], [338, 96], [322, 56], [284, 34], [240, 38],
-    [206, 60], [196, 90], [178, 116], [194, 124], [190, 138], [200, 152], [218, 156], [222, 186],
-  ]);
-  return (
-    <Frame width={400} height={200} label="A perfume bottle gives off a scent that drifts into the nose of a head in profile, and a line runs from the nose straight to a heart inside the head, marked limbic system.">
-      <SenseGlyph kind="smell" x={64} y={112} s={1.25} tone={SIGNAL} />
-      <path d={profile} fill={PAPER} stroke={INK} strokeWidth={2.2} strokeLinejoin="round" />
-      <path d="M96 84Q130 70 150 96T176 116" fill="none" stroke={SIGNAL} strokeWidth={1.8} strokeDasharray="4 4" strokeLinecap="round" />
-      <path d="M186 114Q222 104 256 94" fill="none" stroke={SIGNAL} strokeWidth={2.2} strokeLinecap="round" />
-      <Heart x={272} y={92} s={1.2} />
-      <Key x={274} y={134} anchor="middle" fill={SIGNAL} size={9.5}>
-        LIMBIC SYSTEM
-      </Key>
-    </Frame>
-  );
-}
-
-/** Touch: holding it makes it feel like yours. */
-export function TouchVignette() {
-  return (
-    <Frame width={400} height={200} label="A shopper holds a product in both hands; a tag hanging from it reads mine.">
-      <Person x={150} y={188} s={1.9} fill={INK} />
-      <path d="M126 118L168 128M174 118L184 126" stroke={INK} strokeWidth={8} strokeLinecap="round" />
-      <rect x={176} y={96} width={62} height={52} rx={5} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={2} />
-      <line x1={176} y1={110} x2={238} y2={110} stroke={SIGNAL} strokeWidth={1.8} />
-      <SenseGlyph kind="touch" x={180} y={126} s={0.62} tone={INK} />
-      {/* the tag */}
-      <path d="M238 104Q262 100 270 116" fill="none" stroke={INK3} strokeWidth={1.4} />
-      <path d="M270 110L346 110L358 126L346 142H270Z" fill={PAPER} stroke={SIGNAL} strokeWidth={2} strokeLinejoin="round" />
-      <circle cx={280} cy={126} r={3.5} fill="none" stroke={SIGNAL} strokeWidth={1.6} />
-      <Key x={316} y={131} anchor="middle" fill={SIGNAL} size={13} weight={700}>
-        MINE
-      </Key>
-      <line x1={40} y1={188} x2={380} y2={188} stroke={RULE2} />
-    </Frame>
-  );
-}
-
-function Can({ x, y, fill = SIGNAL }: { x: number; y: number; fill?: string }) {
-  // (x, y) is the base centre
+/** A loudspeaker facing +x: magnet box at (x, y), cone opening to the right. */
+function Speaker({ x, y, seed }: { x: number; y: number; seed: number }) {
+  const box = sharp([[x - 8, y - 14], [x + 6, y - 14], [x + 6, y + 14], [x - 8, y + 14]], true, 1.5);
+  const cone = rp([[x + 6, y - 12], [x + 30, y - 32], [x + 30, y + 32], [x + 6, y + 12]]);
   return (
     <g>
-      <rect x={x - 15} y={y - 54} width={30} height={54} rx={5} fill={fill} />
-      <rect x={x - 12} y={y - 58} width={24} height={6} rx={2} fill={INK} />
-      <path d={`M${x - 15} ${y - 32}Q${x} ${y - 22} ${x + 15} ${y - 32}`} fill="none" stroke={PAPER} strokeWidth={2.5} />
+      <Wash pts={box} seed={seed} fill={SK.charcoal} opacity={0.7} dx={0.6} dy={0.5} />
+      <InkLine pts={box} seed={seed + 1} width={1.2} closed />
+      <Wash pts={cone} seed={seed + 2} fill={SK.camel} opacity={0.6} />
+      <InkLine pts={cone} seed={seed + 3} width={1.2} closed />
+      <InkLine pts={curvePts([x + 40, y - 14], [x + 48, y], [x + 40, y + 14], 6)} seed={seed + 4} width={1} />
+      <InkLine pts={curvePts([x + 50, y - 24], [x + 62, y], [x + 50, y + 24], 8)} seed={seed + 5} width={1} />
     </g>
   );
 }
 
-/** Taste: the same flavour, bought again and again. */
-export function TasteVignette() {
+/** Sound: a jingle plays in the store, and the shopper carries it in memory. */
+export function SoundVignette() {
+  const h = 138;
   return (
-    <Frame width={400} height={200} label="A shopper beside a row of five identical orange cans of the same drink, each one ticked; a looping arrow runs back from the last can to the first.">
-      <Person x={52} y={170} s={1.3} fill={INK} />
-      {[0, 1, 2, 3, 4].map((i) => {
-        const x = 130 + i * 58;
-        return (
-          <g key={i}>
-            <Can x={x} y={170} />
-            <path d={`M${x - 7} ${96}L${x - 2} ${101}L${x + 8} ${89}`} fill="none" stroke={SIGNAL} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
-          </g>
-        );
-      })}
-      <path d="M362 70Q362 36 246 36T130 70" fill="none" stroke={INK3} strokeWidth={1.6} strokeDasharray="4 4" />
-      <path d={headAlong(130, 72, 0, 1)} fill="none" stroke={INK3} strokeWidth={1.6} strokeLinecap="round" />
-      <line x1={20} y1={170} x2={380} y2={170} stroke={RULE2} />
-    </Frame>
+    <SketchFrame id="sk-sound" width={300} height={220} label="A loudspeaker plays music notes into a store. A shopper pushing a cart hums along: the same notes sit in a thought cloud above the shopper's head.">
+      <Backwash cx={150} cy={118} rx={140} ry={90} seed={1300} />
+      <Ground x0={100} x1={292} y={VG} seed={1305} />
+      <Speaker x={24} y={112} seed={1310} />
+      <Notes x={70} y={62} s={0.85} seed={1320} />
+      <Person x={124} y={VG} h={h} seed={1330} look={{ hair: "bun", wear: SK.sky, skin: SK.camel, skinOpacity: 0.6 }} arms={["down", "low"]} />
+      <Cart x={234} y={170} s={2.4} seed={1370} />
+      <Thought x={206} y={40} rx={38} ry={24} tx={132} ty={58} seed={1380} />
+      <Notes x={202} y={38} s={0.8} seed={1390} />
+    </SketchFrame>
+  );
+}
+
+/** Smell: the scent goes straight in, to the limbic system and a feeling. */
+export function SmellVignette() {
+  // a head in profile, facing −x: forehead, brow, nose, lips, chin, neck; then the back of the skull
+  const face: Pt[] = rp([
+    [204, 38], [182, 52], [174, 72], [172, 84], [160, 100], [150, 110], [160, 116], [158, 124],
+    [164, 128], [159, 134], [166, 146], [182, 158], [194, 162], [196, 200],
+  ]);
+  const skull: Pt[] = rp([[204, 38], [238, 34], [268, 52], [280, 84], [278, 120], [264, 148], [258, 200]]);
+  const head: Pt[] = [...face, ...[...skull].reverse()];
+  const hair: Pt[] = rp([[196, 40], [230, 30], [264, 46], [280, 82], [279, 118], [268, 142], [258, 112], [246, 76], [222, 56], [200, 50]]);
+  return (
+    <SketchFrame id="sk-smell" width={300} height={220} label="A perfume bottle gives off a scent that drifts into the nose of a head in profile. An arrow runs from the nose straight to a heart inside the head, marked limbic system.">
+      <Backwash cx={150} cy={116} rx={140} ry={92} seed={1400} />
+      <Ground x0={14} x1={100} y={VG} seed={1405} />
+      <Perfume1 x={52} bottom={VG - 2} seed={1410} />
+      {[-6, 6].map((d, i) => (
+        <InkLine key={d} pts={curvePts([52 + d, 122], [92 + d, 70 + i * 12], [144, 106 + i * 6], 10)} seed={1420 + i} width={1} />
+      ))}
+
+      <Wash pts={head} seed={1430} fill={SK.skin} opacity={0.5} dx={1.5} dy={1} />
+      <Wash pts={hair} seed={1431} fill={SK.brown} opacity={0.6} dx={0.8} dy={0.4} />
+      <InkLine pts={face} seed={1432} width={1.3} />
+      <InkLine pts={skull} seed={1433} width={1.3} />
+      <InkLine pts={rp([[176, 80], [184, 78]])} seed={1434} width={0.8} />
+
+      <SketchArrow pts={rp([[164, 110], [190, 104], [210, 98]])} seed={1440} width={1.2} head={6} />
+      <Heart x={226} y={96} s={1.05} seed={1445} />
+      <SketchText x={228} y={128} anchor="middle" size={7.5}>
+        LIMBIC SYSTEM
+      </SketchText>
+    </SketchFrame>
+  );
+}
+
+/** Touch: holding the item makes it feel like yours. */
+export function TouchVignette() {
+  const h = 176;
+  const hand = handAt(106, VG, h, "carry");
+  return (
+    <SketchFrame id="sk-touch" width={300} height={220} label="A shopper holds a teal product box close against the chest. A tag hanging from the box reads mine.">
+      <Backwash cx={150} cy={118} rx={140} ry={90} seed={1500} />
+      <Ground x0={50} x1={170} y={VG} seed={1505} />
+      <Person x={106} y={VG} h={h} seed={1510} look={{ hair: "long", wear: SK.camel, hairTone: SK.tan }} arms={["hug", "carry"]} />
+      <Box x={r2(hand[0] - 8)} bottom={r2(hand[1] + 20)} w={44} h={40} fill={SK.teal} seed={1560} />
+      <InkLine pts={curvePts([hand[0] + 14, hand[1] - 10], [hand[0] + 40, hand[1] - 22], [hand[0] + 62, hand[1] - 8], 8)} seed={1570} width={0.9} />
+      <Tag1 x={r2(hand[0] + 70)} y={r2(hand[1] - 8)} seed={1575} w={64}>
+        MINE
+      </Tag1>
+    </SketchFrame>
+  );
+}
+
+/** Taste: the same drink, bought again and again. */
+export function TasteVignette() {
+  const h = 176;
+  const hand = handAt(100, VG, h, "reach");
+  return (
+    <SketchFrame id="sk-taste" width={300} height={220} label="A shopper puts another teal drinks can into a shopping cart that already holds four of the same teal can.">
+      <Backwash cx={150} cy={118} rx={140} ry={90} seed={1600} />
+      <Ground x0={40} x1={290} y={VG} seed={1605} />
+      <Person x={100} y={VG} h={h} seed={1610} look={{ hair: "short", wear: SK.charcoal, legs: SK.tan, skin: SK.brown, skinOpacity: 0.45 }} arms={["down", "reach"]} />
+      <Can2 x={r2(hand[0] + 2)} bottom={r2(hand[1] + 16)} w={16} seed={1660} />
+      {[0, 1, 2, 3].map((i) => (
+        <Can2 key={i} x={r2(186 + i * 19)} bottom={146 - (i % 2) * 3} w={16} seed={1670 + i * 4} />
+      ))}
+      <Cart x={206} y={170} s={2.4} seed={1700} />
+    </SketchFrame>
   );
 }
 
@@ -766,130 +604,142 @@ export function TasteVignette() {
    SENSORY THRESHOLDS
    ========================================================================== */
 
+/** A bar from (x, base) up `h` units, `w` wide: teal when lit, cream when not. */
+function Bar({ x, base, h, w, seed, lit = false }: { x: number; base: number; h: number; w: number; seed: number; lit?: boolean }) {
+  const pts = sharp([[x - w / 2, base - h], [x + w / 2, base - h], [x + w / 2, base], [x - w / 2, base]], true, 1.5);
+  return (
+    <g>
+      {lit ? <Wash pts={pts} seed={seed} fill={SK.teal} opacity={0.75} dx={1} dy={0.8} /> : <Paper pts={pts} seed={seed} />}
+      <InkLine pts={pts} seed={seed + 1} width={1.1} closed />
+    </g>
+  );
+}
+
 /** Eight stimuli of rising strength; only those above the line are detected. */
 export function AbsoluteThreshold() {
-  const base = 230;
-  const line = 150;
-  const heights = [14, 30, 48, 66, 92, 118, 146, 172];
+  const base = 206;
+  const line = 124;
+  const heights = [12, 28, 46, 66, 94, 120, 146, 172];
+  const bx = (i: number) => 86 + i * 42;
   return (
-    <Frame
-      height={290}
-      label="Eight bars rising in height from left to right, marked stimulation. A dashed line across them is the absolute threshold. The four bars that stop below the line are faded and marked not detected; the four that cross it are orange and marked detected."
+    <SketchFrame
+      id="sk-absolute"
+      width={400}
+      height={262}
+      label="Eight bars of stimulation rising in height from left to right. A line across them is the absolute threshold. The four bars that stop below the line are left cream, marked not detected; the four that cross it are washed teal, marked detected."
     >
-      <Arrow x1={96} y1={base} x2={96} y2={36} stroke={INK3} />
-      <Key x={0} y={0} fill={INK3} transform={`translate(80 ${base - 60}) rotate(-90)`}>
-        STIMULATION
-      </Key>
-      {heights.map((h, i) => {
-        const x = 150 + i * 72;
-        const on = base - h < line;
-        return (
-          <rect
-            key={i}
-            x={x - 20}
-            y={base - h}
-            width={40}
-            height={h}
-            rx={2}
-            fill={on ? SIGNAL : PAPER2}
-            stroke={on ? SIGNAL : RULE2}
-            strokeWidth={1.4}
-            strokeDasharray={on ? undefined : "3 3"}
-          />
-        );
-      })}
-      <line x1={112} y1={line} x2={760} y2={line} stroke={INK} strokeWidth={1.6} strokeDasharray="7 5" />
-      <Key x={116} y={line - 10} fill={INK}>
+      <Backwash cx={210} cy={130} rx={196} ry={124} seed={1800} />
+      <SketchArrow pts={[[48, base], [48, 34]]} seed={1805} width={1.1} head={7} />
+      <g transform={`translate(38 ${base - 20}) rotate(-90)`}>
+        <SketchText x={0} y={0} size={9}>
+          STIMULATION
+        </SketchText>
+      </g>
+      {heights.map((h, i) => (
+        <Bar key={i} x={bx(i)} base={base} h={h} w={26} seed={1810 + i * 2} lit={base - h < line} />
+      ))}
+      <InkLine pts={[[62, base], [390, base]]} seed={1830} width={1.3} />
+      <InkLine pts={[[62, line], [390, line]]} seed={1831} width={1.6} />
+      <SketchText x={66} y={line - 10} size={9}>
         ABSOLUTE THRESHOLD
-      </Key>
-      <line x1={112} y1={base} x2={760} y2={base} stroke={INK} strokeWidth={1.4} />
-      <path d={`M130 ${base + 14}V${base + 22}H386V${base + 14}`} fill="none" stroke={INK3} strokeWidth={1.2} />
-      <Key x={258} y={base + 44} anchor="middle" fill={INK3}>
+      </SketchText>
+      <InkLine pts={[[bx(0) - 13, base + 12], [bx(0) - 13, base + 18], [bx(3) + 13, base + 18], [bx(3) + 13, base + 12]]} seed={1835} width={0.9} amp={0.3} />
+      <SketchText x={r2((bx(0) + bx(3)) / 2)} y={base + 38} anchor="middle" size={9}>
         NOT DETECTED
-      </Key>
-      <path d={`M418 ${base + 14}V${base + 22}H674V${base + 14}`} fill="none" stroke={SIGNAL} strokeWidth={1.2} />
-      <Key x={546} y={base + 44} anchor="middle" fill={SIGNAL}>
+      </SketchText>
+      <InkLine pts={[[bx(4) - 13, base + 12], [bx(4) - 13, base + 18], [bx(7) + 13, base + 18], [bx(7) + 13, base + 12]]} seed={1837} width={0.9} amp={0.3} />
+      <SketchText x={r2((bx(4) + bx(7)) / 2)} y={base + 38} anchor="middle" size={9}>
         DETECTED
-      </Key>
-    </Frame>
+      </SketchText>
+    </SketchFrame>
   );
 }
 
 /** From the driver's seat, the far billboard's text is too small to read. */
 export function FarBillboard() {
+  const hz = 132;
+  const glass = rp([...curvePts([26, 30], [200, 10], [374, 30], 10), [386, 206], [14, 206]]);
+  const road = rp([[150, 204], [197, hz], [203, hz], [250, 204]]);
   return (
-    <Frame width={400} height={260} label="The view through a car windscreen: a highway runs to the horizon, and a billboard stands far off beside it, its lines of text too small to read. A question mark hangs over it.">
-      {/* windscreen */}
-      <path d="M26 30Q200 6 374 30L390 216H10Z" fill={COUNTER_TINT} stroke={INK} strokeWidth={2.2} strokeLinejoin="round" />
-      {/* ground and road */}
-      <path d="M17 134H383L390 216H10Z" fill={PAPER2} />
-      <line x1={17} y1={134} x2={383} y2={134} stroke={INK3} strokeWidth={1.2} />
-      <path d="M150 216L196 134H204L250 216Z" fill={RULE} />
+    <SketchFrame id="sk-far-billboard" width={400} height={262} label="The view through a car windscreen: a highway runs to the horizon, and far off beside it stands a small billboard whose lines of text are too small to read. An ochre question mark hangs over it.">
+      <Backwash cx={200} cy={96} rx={160} ry={66} seed={1900} fill={SK.sky} opacity={0.55} />
+      <Wash pts={rp([[40, hz - 2], [200, hz - 4], [360, hz - 1], [376, 196], [200, 200], [26, 194]])} seed={1901} fill={SK.earth} opacity={0.45} dx={0} dy={0} />
+      <Wash pts={road} seed={1902} fill={SK.charcoal} opacity={0.3} dx={0} dy={0} />
+      <InkLine pts={[[36, hz], [164, hz - 1]]} seed={1903} width={0.9} />
+      <InkLine pts={[[236, hz - 1], [366, hz + 1]]} seed={1904} width={0.9} />
+      <InkLine pts={road.slice(0, 2)} seed={1905} width={1.1} />
+      <InkLine pts={road.slice(2)} seed={1906} width={1.1} />
       {[0, 1, 2].map((i) => (
-        <line key={i} x1={200} y1={206 - i * 26} x2={200} y2={196 - i * 26 + i * 4} stroke={PAPER} strokeWidth={3 - i * 0.8} />
+        <InkLine key={i} pts={rp([[200, 194 - i * 22], [200, 183 - i * 20]])} seed={1907 + i} width={1.6 - i * 0.4} amp={0.2} />
       ))}
-      {/* the far billboard */}
-      <line x1={282} y1={120} x2={282} y2={136} stroke={INK} strokeWidth={1.2} />
-      <line x1={298} y1={120} x2={298} y2={136} stroke={INK} strokeWidth={1.2} />
-      <rect x={274} y={106} width={32} height={16} fill={PAPER} stroke={INK} strokeWidth={1.2} />
-      {[110.5, 114, 117.5].map((y, i) => (
-        <line key={y} x1={277} y1={y} x2={i === 2 ? 292 : 303} y2={y} stroke={INK3} strokeWidth={0.8} />
+
+      {/* the far billboard, its text a blur of tiny lines */}
+      <InkLine pts={[[296, 124], [296, 133]]} seed={1910} width={0.8} amp={0.1} />
+      <InkLine pts={[[306, 124], [306, 133]]} seed={1911} width={0.8} amp={0.1} />
+      <Paper pts={sharp([[289, 113], [313, 113], [313, 124], [289, 124]], true, 0.8)} seed={1912} />
+      <InkLine pts={sharp([[289, 113], [313, 113], [313, 124], [289, 124]], true, 0.8)} seed={1913} width={0.8} amp={0.1} closed />
+      {[116.5, 119, 121.5].map((y, i) => (
+        <InkLine key={y} pts={[[292, y], [i === 2 ? 302 : 310, y]]} seed={1914 + i} width={0.4} amp={0.1} />
       ))}
-      <Display x={290} y={96} anchor="middle" fill={SIGNAL} size={26}>
+      <SketchText x={301} y={102} anchor="middle" size={22} serif fill={SK.tan}>
         ?
-      </Display>
-      {/* dashboard and wheel */}
-      <path d="M0 216H400V260H0Z" fill={INK} />
-      <path d="M92 260A62 40 0 0 1 216 260" fill="none" stroke={INK3} strokeWidth={6} />
-    </Frame>
+      </SketchText>
+
+      <InkLine pts={glass} seed={1920} width={1.6} closed />
+      {/* the dashboard edge and the top of the steering wheel */}
+      <InkLine pts={[[6, 222], [394, 220]]} seed={1921} width={1.2} />
+      <Wash pts={rp([...curvePts([96, 262], [150, 190], [204, 262], 10), ...curvePts([190, 262], [150, 206], [110, 262], 10)])} seed={1922} fill={SK.leather} opacity={0.8} dx={0} dy={0} />
+      <InkLine pts={curvePts([96, 262], [150, 190], [204, 262], 12)} seed={1923} width={1.2} />
+      <InkLine pts={curvePts([110, 262], [150, 206], [190, 262], 12)} seed={1924} width={1.1} />
+    </SketchFrame>
+  );
+}
+
+/** A lying bar from x0, `len` long, top at y: cream, or washed with `fill`. */
+function HBar({ x0, y, len, h = 11, seed, fill }: { x0: number; y: number; len: number; h?: number; seed: number; fill?: string }) {
+  const pts = sharp([[x0, y], [x0 + len, y], [x0 + len, y + h], [x0, y + h]], true, 1);
+  return (
+    <g>
+      {fill ? <Wash pts={pts} seed={seed} fill={fill} opacity={0.8} dx={0.6} dy={0.5} /> : <Paper pts={pts} seed={seed} />}
+      <InkLine pts={pts} seed={seed + 1} width={1} amp={0.3} closed />
+    </g>
   );
 }
 
 /** Pairs of bars with a growing difference: the first one noticed is the JND. */
 export function JndLadder() {
-  const diffs = [2, 6, 14, 28];
-  const noticed = (d: number) => d >= 14;
-  const x0 = 150;
-  const L = 300;
+  const diffs = [3, 8, 18, 36];
+  const x0 = 40;
+  const L = 190;
+  const rowY = (i: number) => 30 + i * 56;
+  const jnd = 2;
   return (
-    <Frame
-      height={330}
-      label="Four rows, each comparing two bars. The top bar is always the same length; the bottom bar is longer by a small orange piece that grows from row to row. The first two rows are marked same; the last two are marked different. The first row marked different is bracketed as the just noticeable difference, JND."
+    <SketchFrame
+      id="sk-jnd"
+      width={400}
+      height={262}
+      label="Four rows, each comparing two bars. The top bar of each pair is always the same length; the bottom bar is longer by a small piece that grows from row to row. The first two rows are marked same; the last two are marked different. The piece in the first row marked different is washed teal and bracketed as the JND."
     >
-      <Key x={x0} y={30} fill={INK3}>
-        TWO STIMULI
-      </Key>
-      <Key x={700} y={30} anchor="middle" fill={INK3}>
-        DETECTED?
-      </Key>
+      <Backwash cx={200} cy={132} rx={194} ry={122} seed={2000} />
       {diffs.map((d, i) => {
-        const y = 62 + i * 66;
-        const on = noticed(d);
+        const y = rowY(i);
+        const on = i >= jnd;
         return (
           <g key={d}>
-            <rect x={x0} y={y} width={L} height={14} fill={INK} />
-            <rect x={x0} y={y + 20} width={L} height={14} fill={INK} />
-            <rect x={x0 + L} y={y + 20} width={d} height={14} fill={SIGNAL} />
-            <Key x={x0 - 20} y={y + 11} anchor="end" fill={INK3}>
-              A
-            </Key>
-            <Key x={x0 - 20} y={y + 31} anchor="end" fill={INK3}>
-              B
-            </Key>
-            <Key x={700} y={y + 22} anchor="middle" fill={on ? SIGNAL : INK3} size={12}>
+            <HBar x0={x0} y={y} len={L} h={14} seed={2010 + i * 8} />
+            <HBar x0={x0} y={y + 19} len={L} h={14} seed={2012 + i * 8} />
+            <HBar x0={x0 + L} y={y + 19} len={d} h={14} seed={2014 + i * 8} fill={i === jnd ? SK.teal : SK.ochre} />
+            <SketchText x={340} y={y + 22} anchor="middle" size={10}>
               {on ? "DIFFERENT" : "SAME"}
-            </Key>
-            <line x1={500} y1={y + 17} x2={630} y2={y + 17} stroke={RULE} strokeDasharray="1 5" strokeLinecap="round" strokeWidth={1.6} />
+            </SketchText>
           </g>
         );
       })}
-      {/* the first difference that gets noticed */}
-      <path d={`M${x0 + L} ${62 + 2 * 66 + 42}V${62 + 2 * 66 + 50}H${x0 + L + 14}V${62 + 2 * 66 + 42}`} fill="none" stroke={SIGNAL} strokeWidth={1.6} />
-      <line x1={x0 + L + 7} y1={62 + 2 * 66 + 50} x2={x0 + L + 7} y2={62 + 2 * 66 + 58} stroke={SIGNAL} strokeWidth={1.6} />
-      <Key x={x0 + L + 20} y={62 + 2 * 66 + 64} fill={SIGNAL} size={12}>
+      <InkLine pts={rp([[x0 + L, rowY(jnd) + 38], [x0 + L, rowY(jnd) + 43], [x0 + L + diffs[jnd], rowY(jnd) + 43], [x0 + L + diffs[jnd], rowY(jnd) + 38]])} seed={2050} width={0.9} amp={0.1} />
+      <SketchText x={x0 + L + diffs[jnd] + 8} y={rowY(jnd) + 48} size={10}>
         JND
-      </Key>
-    </Frame>
+      </SketchText>
+    </SketchFrame>
   );
 }
 
@@ -897,159 +747,211 @@ export function JndLadder() {
    WEBER'S LAW
    ========================================================================== */
 
-/** The same ten per cent looks bigger the stronger the starting point. */
+/** The same ten per cent is a bigger piece the stronger the starting point. */
 export function ProportionBars() {
-  const bars = [70, 150, 280];
+  const bars = [64, 136, 272];
+  const x0 = 30;
   return (
-    <Frame width={400} height={240} label="Three bars of rising length, marked initial stimulus. Each ends in an orange piece that is one tenth of its length, marked plus ten per cent, so the orange piece grows as the bar grows.">
-      <Key x={30} y={30} fill={INK3}>
-        INITIAL STIMULUS
-      </Key>
-      <Key x={30} y={46} fill={SIGNAL}>
-        + CHANGE NEEDED
-      </Key>
+    <SketchFrame id="sk-proportion" width={400} height={214} label="Three bars of rising length, each an initial stimulus. Each ends in a teal piece one tenth of its length, marked plus ten per cent, so the piece grows as the bar grows.">
+      <Backwash cx={200} cy={110} rx={192} ry={100} seed={2100} />
       {bars.map((w, i) => {
-        const y = 76 + i * 52;
+        const y = 34 + i * 58;
         return (
           <g key={w}>
-            <rect x={30} y={y} width={w} height={24} fill={INK} />
-            <rect x={30 + w} y={y} width={w * 0.1} height={24} fill={SIGNAL} />
-            <Key x={30 + w * 1.1 + 10} y={y + 17} fill={SIGNAL} size={12}>
+            <HBar x0={x0} y={y} len={w} h={28} seed={2110 + i * 4} />
+            <HBar x0={x0 + w} y={y} len={r2(w * 0.1)} h={28} seed={2112 + i * 4} fill={SK.teal} />
+            <SketchText x={r2(x0 + w * 1.1 + 10)} y={y + 19} size={11}>
               +10%
-            </Key>
+            </SketchText>
           </g>
         );
       })}
-    </Frame>
+      <SketchText x={x0 + 12} y={34 + 2 * 58 + 18} size={9}>
+        INITIAL STIMULUS
+      </SketchText>
+    </SketchFrame>
   );
 }
 
-function CandyBar({ x, y }: { x: number; y: number }) {
+/** A wrapped candy bar centred on (x, y). */
+function CandyBar({ x, y, seed }: { x: number; y: number; seed: number }) {
+  const body = sharp([[x - 34, y - 13], [x + 34, y - 13], [x + 34, y + 13], [x - 34, y + 13]], true, 2);
+  const endL = rp([[x - 34, y - 12], [x - 44, y - 17], [x - 42, y], [x - 44, y + 17], [x - 34, y + 12]]);
+  const endR = rp([[x + 34, y - 12], [x + 44, y - 17], [x + 42, y], [x + 44, y + 17], [x + 34, y + 12]]);
+  const label = sharp([[x - 14, y - 7], [x + 14, y - 7], [x + 14, y + 7], [x - 14, y + 7]], true, 1);
   return (
     <g>
-      <path d={`M${x - 34} ${y - 12}L${x - 42} ${y - 16}V${y + 16}L${x - 34} ${y + 12}Z`} fill={INK3} />
-      <path d={`M${x + 34} ${y - 12}L${x + 42} ${y - 16}V${y + 16}L${x + 34} ${y + 12}Z`} fill={INK3} />
-      <rect x={x - 34} y={y - 13} width={68} height={26} rx={3} fill={SIGNAL} />
-      <rect x={x - 14} y={y - 7} width={28} height={14} rx={2} fill={PAPER} />
-    </g>
-  );
-}
-
-function Laptop({ x, y }: { x: number; y: number }) {
-  return (
-    <g>
-      <rect x={x - 30} y={y - 24} width={60} height={38} rx={3} fill={PAPER} stroke={INK} strokeWidth={2.2} />
-      <rect x={x - 24} y={y - 18} width={48} height={26} fill={COUNTER_TINT} />
-      <path d={`M${x - 40} ${y + 16}H${x + 40}L${x + 34} ${y + 24}H${x - 34}Z`} fill={INK} />
-    </g>
-  );
-}
-
-export function WebersLawScale() {
-  const x0 = 150;
-  const L = 330;
-  const rows = [
-    { y: 100, from: "$1.00", to: "$1.10", pct: "+10%", ext: L * 0.1, verdict: "NOTICEABLE RIGHT AWAY", on: true },
-    { y: 244, from: "$1,000.00", to: "$1,000.10", pct: "+0.01%", ext: L * 0.0001, verdict: "COMPLETELY UNNOTICED", on: false },
-  ];
-  return (
-    <Frame
-      height={320}
-      label="Two price rises of the same ten cents. Top: a candy bar goes from one dollar to one dollar ten; its price bar grows by an orange tenth, marked plus ten per cent, noticeable right away. Bottom: a laptop goes from one thousand dollars to one thousand dollars and ten cents; its price bar grows by a sliver too thin to see, marked plus 0.01 per cent, completely unnoticed."
-    >
-      <Key x={x0} y={28} fill={INK3}>
-        THE SAME TEN-CENT INCREASE
-      </Key>
-      {rows.map((r, i) => (
-        <g key={r.from}>
-          {i === 0 ? <CandyBar x={70} y={r.y} /> : <Laptop x={70} y={r.y} />}
-          <Display x={x0} y={r.y - 22} size={22}>
-            {r.from} <tspan fill={INK3}>→</tspan> <tspan fill={r.on ? SIGNAL : INK}>{r.to}</tspan>
-          </Display>
-          <rect x={x0} y={r.y - 8} width={L} height={26} fill={INK} />
-          {r.on ? (
-            <rect x={x0 + L} y={r.y - 8} width={r.ext} height={26} fill={SIGNAL} />
-          ) : (
-            <line x1={x0 + L + 0.5} y1={r.y - 8} x2={x0 + L + 0.5} y2={r.y + 18} stroke={SIGNAL} strokeWidth={0.6} />
-          )}
-          <Key x={x0 + L + (r.on ? r.ext : 0) + 12} y={r.y + 10} fill={SIGNAL} size={12}>
-            {r.pct}
-          </Key>
-          <Key x={x0} y={r.y + 44} fill={r.on ? SIGNAL : INK3} size={12}>
-            {r.verdict}
-          </Key>
+      {[endL, endR].map((p, i) => (
+        <g key={i}>
+          <Wash pts={p} seed={seed + i} fill={SK.tan} opacity={0.6} dx={0.5} dy={0.4} />
+          <InkLine pts={p} seed={seed + 2 + i} width={1} closed />
         </g>
       ))}
-      <line x1={40} y1={172} x2={760} y2={172} stroke={RULE} />
-    </Frame>
-  );
-}
-
-/** A meter with the JND marked and a pointer below or above it. */
-function JndMeter({ y, at, tone }: { y: number; at: number; tone: string }) {
-  return (
-    <g>
-      <rect x={40} y={y} width={320} height={10} rx={5} fill={PAPER2} stroke={RULE2} />
-      <rect x={200} y={y} width={160} height={10} rx={0} fill={SIGNAL_TINT} />
-      <line x1={200} y1={y - 8} x2={200} y2={y + 18} stroke={INK} strokeWidth={2} />
-      <Key x={200} y={y + 36} anchor="middle" fill={INK}>
-        JND
-      </Key>
-      <path d={`M${at} ${y - 2}L${at - 7} ${y - 14}H${at + 7}Z`} fill={tone} />
+      <Wash pts={body} seed={seed + 4} fill={SK.camel} opacity={0.8} />
+      <InkLine pts={body} seed={seed + 5} closed />
+      <Paper pts={label} seed={seed + 6} />
+      <InkLine pts={label} seed={seed + 7} width={0.9} closed />
     </g>
   );
 }
 
-/** Staying below: the pack shrinks a little inside its old outline. */
-export function StayBelow() {
+/** One price rise of ten cents: the product, old → new price, and the bar that grows. */
+function PriceRise({
+  id,
+  label,
+  product,
+  from,
+  to,
+  pct,
+  ext,
+  seed,
+}: {
+  id: string;
+  label: string;
+  product: React.ReactNode;
+  from: string;
+  to: string;
+  pct: string;
+  ext: number;
+  seed: number;
+}) {
+  const x0 = 140;
+  const L = 180;
+  const y = 146;
   return (
-    <Frame width={400} height={250} label="A snack pack drawn inside the dashed outline of its old, slightly bigger size, beside a price tag that has crept up by a few cents. Below, a meter shows the change sitting just short of the JND mark.">
-      <rect x={70} y={26} width={118} height={140} rx={6} fill="none" stroke={INK3} strokeWidth={1.4} strokeDasharray="4 4" />
-      <rect x={76} y={34} width={106} height={126} rx={6} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={2} />
-      <rect x={92} y={64} width={74} height={34} rx={4} fill={COUNTER} />
-      <rect x={92} y={110} width={50} height={6} rx={3} fill={COUNTER} opacity={0.5} />
-      <g transform="rotate(8 290 94)">
-        <path d="M232 70H330L346 94L330 118H232Z" fill={PAPER} stroke={COUNTER} strokeWidth={2} strokeLinejoin="round" />
-        <circle cx={332} cy={94} r={3.5} fill="none" stroke={COUNTER} strokeWidth={1.6} />
-        <Display x={278} y={102} anchor="middle" fill={COUNTER} size={20}>
-          $4.09
-        </Display>
-      </g>
-      <JndMeter y={200} at={176} tone={COUNTER} />
-    </Frame>
+    <SketchFrame id={id} width={400} height={234} label={label}>
+      <Backwash cx={200} cy={122} rx={192} ry={108} seed={seed} />
+      <SketchText x={200} y={76} anchor="middle" size={26} serif>
+        {from} → {to}
+      </SketchText>
+      {product}
+      <HBar x0={x0} y={y} len={L} h={32} seed={seed + 10} />
+      {ext >= 1 ? (
+        <HBar x0={x0 + L} y={y} len={ext} h={32} seed={seed + 12} fill={SK.teal} />
+      ) : (
+        <InkLine pts={[[x0 + L + 1, y], [x0 + L + 1, y + 32]]} seed={seed + 12} width={0.5} amp={0.1} color={SK.teal} />
+      )}
+      <SketchText x={r2(x0 + L + Math.max(ext, 0) + 8)} y={y + 21} size={12}>
+        {pct}
+      </SketchText>
+    </SketchFrame>
   );
 }
 
-function Burst({ x, y, R = 40, fill = SIGNAL }: { x: number; y: number; R?: number; fill?: string }) {
-  const pts: string[] = [];
-  for (let i = 0; i < 24; i++) {
-    const p = polar(x, y, i % 2 === 0 ? R : R * 0.8, i * 15);
-    pts.push(`${p.x} ${p.y}`);
-  }
-  return <path d={`M${pts.join("L")}Z`} fill={fill} />;
+/** Ten cents on a one-dollar candy bar: a ten per cent jump. */
+export function CandyJump() {
+  return (
+    <PriceRise
+      id="sk-candy-jump"
+      label="A candy bar whose price goes from one dollar to one dollar ten. Its price bar grows by a teal tenth, marked plus ten per cent."
+      product={<g transform="translate(70 162) scale(1.25) translate(-70 -162)"><CandyBar x={70} y={162} seed={2210} /></g>}
+      from="$1.00"
+      to="$1.10"
+      pct="+10%"
+      ext={18}
+      seed={2200}
+    />
+  );
 }
 
-/** Exceeding: a bold new pack and a big discount nobody can miss. */
-export function Exceed() {
+/** Ten cents on a thousand-dollar laptop: a sliver nobody can see. */
+export function LaptopSliver() {
   return (
-    <Frame width={400} height={250} label="A small grey old pack beside a redesigned pack in bold orange stripes, with a big starburst reading minus forty per cent. Below, a meter shows the change far past the JND mark.">
-      <rect x={28} y={86} width={56} height={70} rx={4} fill={PAPER2} stroke={RULE2} strokeWidth={1.6} />
-      <rect x={38} y={102} width={36} height={16} rx={3} fill={RULE2} />
-      <Arrow x1={94} y1={122} x2={126} y2={122} stroke={INK3} />
-      <rect x={138} y={26} width={118} height={140} rx={6} fill={SIGNAL} />
-      {[52, 76, 100].map((y) => (
-        <rect key={y} x={138} y={y} width={118} height={10} fill={PAPER} opacity={0.9} />
+    <PriceRise
+      id="sk-laptop-sliver"
+      label="A laptop whose price goes from one thousand dollars to one thousand dollars and ten cents. Its price bar grows by a sliver too thin to see, marked plus 0.01 per cent."
+      product={<g transform="translate(70 158) scale(1.25) translate(-70 -158)"><Laptop1 x={70} y={158} seed={2310} /></g>}
+      from="$1,000.00"
+      to="$1,000.10"
+      pct="+0.01%"
+      ext={0}
+      seed={2300}
+    />
+  );
+}
+
+/** The JND on a meter: past the mark is noticed (teal); the pointer sits at `at`. */
+function JndMeter({ y, at: px, seed }: { y: number; at: number; seed: number }) {
+  const track = sharp([[40, y], [360, y], [360, y + 10], [40, y + 10]], true, 2);
+  return (
+    <g>
+      <Paper pts={track} seed={seed} />
+      <Wash pts={rp([[200, y], [360, y], [360, y + 10], [200, y + 10]])} seed={seed + 1} fill={SK.teal} opacity={0.55} dx={0} dy={0} />
+      <InkLine pts={track} seed={seed + 2} width={1} closed />
+      <InkLine pts={[[200, y - 8], [200, y + 18]]} seed={seed + 3} width={1.6} amp={0.2} />
+      <SketchText x={200} y={y + 34} anchor="middle" size={10}>
+        JND
+      </SketchText>
+      <path d={wobble(sharp([[px, y - 2], [px - 8, y - 17], [px + 8, y - 17]], true, 1), seed + 4, 0.2, 8, true)} fill={SK.ink} />
+    </g>
+  );
+}
+
+/** Staying below: the pack shrinks inside its old outline; the price creeps up. */
+export function StayBelow() {
+  const old = sharp([[58, 30], [128, 30], [128, 160], [58, 160]], true, 2);
+  const now = sharp([[66, 46], [120, 46], [120, 160], [66, 160]], true, 2);
+  return (
+    <SketchFrame id="sk-stay-below" width={400} height={234} label="Two small scenes. A snack pack drawn inside the pencil outline of its old, bigger size. A price tag of three ninety-nine followed by one of four oh nine. Below, a meter shows the pointer sitting just short of the JND mark.">
+      <Backwash cx={200} cy={116} rx={194} ry={112} seed={2400} />
+      <PencilLine pts={old} seed={2405} closed />
+      <Wash pts={now} seed={2406} fill={SK.camel} opacity={0.7} />
+      <InkLine pts={now} seed={2407} closed />
+      <BrandBadge x={93} y={98} r={13} seed={2408} />
+
+      <Tag1 x={228} y={58} w={80} seed={2420} size={14}>
+        $3.99
+      </Tag1>
+      <SketchArrow pts={[[272, 80], [272, 110]]} seed={2425} width={1} head={6} />
+      <Tag1 x={228} y={132} w={80} seed={2430} size={14}>
+        $4.09
+      </Tag1>
+
+      <JndMeter y={192} at={178} seed={2440} />
+    </SketchFrame>
+  );
+}
+
+/** A starburst of `n` points centred on (x, y). */
+function burstPts(x: number, y: number, R: number, n = 12): Pt[] {
+  return rp(
+    Array.from({ length: n * 2 }, (_, i) => {
+      const a = (i * Math.PI) / n;
+      const rr = i % 2 === 0 ? R : R * 0.78;
+      return [x + Math.cos(a) * rr, y + Math.sin(a) * rr] as Pt;
+    }),
+  );
+}
+
+/** Exceeding: a bold new pack, and a discount nobody can miss. */
+export function Exceed() {
+  const old = sharp([[42, 104], [84, 104], [84, 160], [42, 160]], true, 2);
+  const now = sharp([[112, 34], [180, 34], [180, 160], [112, 160]], true, 2);
+  const burst = sharp(burstPts(300, 96, 58, 12), true, 1);
+  return (
+    <SketchFrame id="sk-exceed" width={400} height={234} label="Two small scenes. A small plain old pack, an arrow, and a bigger redesigned pack in bold ochre with stripes and the word new. A big ochre starburst reading minus forty per cent. Below, a meter shows the pointer far past the JND mark.">
+      <Backwash cx={200} cy={116} rx={194} ry={112} seed={2500} />
+      <Paper pts={old} seed={2505} />
+      <InkLine pts={old} seed={2506} closed />
+      <InkLine pts={rp([[50, 128], [76, 128]])} seed={2507} width={0.8} />
+      <SketchArrow pts={[[92, 132], [106, 132]]} seed={2508} width={1} head={5} />
+      <Wash pts={now} seed={2510} fill={SK.ochre} opacity={0.8} />
+      {[62, 84].map((y, i) => (
+        <InkLine key={y} pts={rp([[114, y], [178, y]])} seed={2511 + i} width={3} amp={0.4} color={SK.tan} />
       ))}
-      <rect x={156} y={122} width={82} height={30} rx={4} fill={INK} />
-      <Key x={197} y={142} anchor="middle" fill={PAPER} size={12} weight={700}>
+      <InkLine pts={now} seed={2515} width={1.4} closed />
+      <SketchText x={146} y={132} anchor="middle" size={14}>
         NEW
-      </Key>
-      <Burst x={318} y={84} R={52} />
-      <Display x={318} y={93} anchor="middle" fill={PAPER} size={24}>
+      </SketchText>
+
+      <Wash pts={burst} seed={2520} fill={SK.ochre} opacity={0.85} />
+      <InkLine pts={burst} seed={2521} width={1.2} amp={0.3} closed />
+      <SketchText x={302} y={104} anchor="middle" size={22}>
         −40%
-      </Display>
-      <JndMeter y={200} at={330} tone={SIGNAL} />
-    </Frame>
+      </SketchText>
+
+      <JndMeter y={192} at={332} seed={2540} />
+    </SketchFrame>
   );
 }
 
@@ -1057,198 +959,217 @@ export function Exceed() {
    ATTENTION
    ========================================================================== */
 
-type Card = { x: number; y: number; w: number; h: number; kind: "ad" | "phone" | "badge" | "sign"; n?: string; tone?: string };
+type Clutter =
+  | { kind: "ad"; x: number; y: number; w: number; h: number; tone: string }
+  | { kind: "phone"; x: number; y: number; n: string }
+  | { kind: "sign"; x: number; y: number; w: number; h: number; n: string };
 
-const CLUTTER: Card[] = [
-  { x: 24, y: 20, w: 120, h: 72, kind: "ad", tone: SIGNAL },
-  { x: 160, y: 40, w: 44, h: 80, kind: "phone", n: "12" },
-  { x: 222, y: 14, w: 96, h: 58, kind: "ad", tone: COUNTER },
-  { x: 36, y: 118, w: 92, h: 60, kind: "sign", n: "SALE" },
-  { x: 142, y: 146, w: 110, h: 64, kind: "ad", tone: INK },
-  { x: 40, y: 204, w: 44, h: 72, kind: "phone", n: "99+" },
-  { x: 100, y: 228, w: 120, h: 52, kind: "ad", tone: SIGNAL },
-  { x: 236, y: 226, w: 84, h: 54, kind: "sign", n: "NEW" },
-  { x: 482, y: 16, w: 104, h: 62, kind: "ad", tone: INK },
-  { x: 600, y: 32, w: 44, h: 80, kind: "phone", n: "7" },
-  { x: 660, y: 18, w: 116, h: 70, kind: "ad", tone: COUNTER },
-  { x: 552, y: 104, w: 104, h: 58, kind: "sign", n: "−50%" },
-  { x: 672, y: 112, w: 100, h: 62, kind: "ad", tone: SIGNAL },
-  { x: 486, y: 178, w: 116, h: 60, kind: "ad", tone: COUNTER },
-  { x: 618, y: 196, w: 44, h: 80, kind: "phone", n: "34" },
-  { x: 680, y: 206, w: 96, h: 70, kind: "sign", n: "BUY" },
-  { x: 338, y: 14, w: 124, h: 66, kind: "ad", tone: SIGNAL },
-  { x: 272, y: 92, w: 44, h: 80, kind: "phone", n: "5" },
-  { x: 372, y: 96, w: 92, h: 50, kind: "sign", n: "HOT" },
-];
-
-function ClutterCard({ c }: { c: Card }) {
-  if (c.kind === "phone")
-    return (
-      <g>
-        <rect x={c.x} y={c.y} width={c.w} height={c.h} rx={7} fill={PAPER} stroke={INK} strokeWidth={1.6} />
-        <rect x={c.x + 5} y={c.y + 10} width={c.w - 10} height={c.h - 22} fill={COUNTER_TINT} />
-        <circle cx={c.x + c.w - 2} cy={c.y + 2} r={11} fill={SIGNAL} />
-        <Key x={c.x + c.w - 2} y={c.y + 5.5} anchor="middle" fill={PAPER} size={c.n && c.n.length > 2 ? 7.5 : 9} weight={700}>
-          {c.n}
-        </Key>
-      </g>
-    );
+function ClutterCard({ c, seed }: { c: Clutter; seed: number }) {
+  if (c.kind === "phone") return <Phone1 x={c.x} y={c.y} n={c.n} seed={seed} />;
+  const box = sharp([[c.x, c.y], [c.x + c.w, c.y], [c.x + c.w, c.y + c.h], [c.x, c.y + c.h]], true, 2);
   if (c.kind === "sign")
     return (
       <g>
-        <rect x={c.x} y={c.y} width={c.w} height={c.h} rx={4} fill={INK} />
-        <Key x={c.x + c.w / 2} y={c.y + c.h / 2 + 5} anchor="middle" fill={PAPER} size={13} weight={700}>
+        <Paper pts={box} seed={seed} />
+        <InkLine pts={box} seed={seed + 1} width={1.4} closed />
+        <SketchText x={r2(c.x + c.w / 2)} y={r2(c.y + c.h / 2 + 6)} anchor="middle" size={16}>
           {c.n}
-        </Key>
+        </SketchText>
       </g>
     );
+  const pic = sharp([[c.x + 8, c.y + 8], [c.x + c.h - 8, c.y + 8], [c.x + c.h - 8, c.y + c.h - 8], [c.x + 8, c.y + c.h - 8]], true, 1.5);
   return (
     <g>
-      <rect x={c.x} y={c.y} width={c.w} height={c.h} rx={3} fill={PAPER} stroke={INK} strokeWidth={1.4} />
-      <rect x={c.x + 8} y={c.y + 8} width={c.h - 16} height={c.h - 16} rx={3} fill={c.tone} />
-      <rect x={c.x + c.h} y={c.y + 12} width={c.w - c.h - 10} height={6} rx={3} fill={RULE2} />
-      <rect x={c.x + c.h} y={c.y + 24} width={(c.w - c.h - 10) * 0.6} height={6} rx={3} fill={RULE2} />
+      <Paper pts={box} seed={seed} />
+      <Wash pts={pic} seed={seed + 1} fill={c.tone} opacity={0.75} dx={0.6} dy={0.5} />
+      <InkLine pts={box} seed={seed + 2} width={1.1} closed />
+      <InkLine pts={rp([[c.x + c.h, c.y + 16], [c.x + c.w - 10, c.y + 16]])} seed={seed + 3} width={2} amp={0.3} />
+      <InkLine pts={rp([[c.x + c.h, c.y + 28], [c.x + c.h + (c.w - c.h - 10) * 0.6, c.y + 28]])} seed={seed + 4} width={2} amp={0.3} />
     </g>
   );
 }
 
+const CLUTTER: Clutter[] = [
+  { kind: "ad", x: 24, y: 20, w: 120, h: 70, tone: SK.camel },
+  { kind: "phone", x: 160, y: 36, n: "12" },
+  { kind: "ad", x: 220, y: 14, w: 100, h: 60, tone: SK.sky },
+  { kind: "sign", x: 30, y: 110, w: 96, h: 54, n: "SALE" },
+  { kind: "ad", x: 142, y: 140, w: 110, h: 64, tone: SK.tan },
+  { kind: "phone", x: 272, y: 92, n: "5" },
+  { kind: "phone", x: 34, y: 190, n: "99+" },
+  { kind: "ad", x: 96, y: 214, w: 120, h: 54, tone: SK.sky },
+  { kind: "sign", x: 232, y: 206, w: 90, h: 52, n: "NEW" },
+  { kind: "ad", x: 480, y: 16, w: 104, h: 62, tone: SK.tan },
+  { kind: "phone", x: 598, y: 26, n: "7" },
+  { kind: "ad", x: 656, y: 14, w: 120, h: 68, tone: SK.camel },
+  { kind: "sign", x: 540, y: 118, w: 104, h: 56, n: "−50%" },
+  { kind: "ad", x: 676, y: 108, w: 100, h: 62, tone: SK.sky },
+  { kind: "ad", x: 486, y: 196, w: 116, h: 60, tone: SK.camel },
+  { kind: "phone", x: 622, y: 190, n: "34" },
+  { kind: "sign", x: 686, y: 198, w: 90, h: 58, n: "BUY" },
+];
+
 export function Overload() {
   return (
-    <Frame height={300} label="A shopper stands in a gap surrounded on both sides by a wall of ads, store signs reading sale, new, buy and minus fifty per cent, and phones whose red notification badges read 7, 12, 34 and 99-plus.">
+    <SketchFrame id="sk-overload" width={800} height={300} label="A shopper, hands to the head, stands in a narrow gap between two walls of clutter: ads, store signs reading sale, new, buy and minus fifty per cent, and phones whose ochre notification badges read 5, 7, 12, 34 and 99-plus.">
+      <Backwash cx={400} cy={150} rx={396} ry={146} seed={2600} opacity={0.35} />
       {CLUTTER.map((c, i) => (
-        <ClutterCard key={i} c={c} />
+        <ClutterCard key={i} c={c} seed={2610 + i * 8} />
       ))}
-      <Person x={400} y={284} s={1.7} fill={INK} />
-      <line x1={20} y1={284} x2={780} y2={284} stroke={RULE2} />
-    </Frame>
+      <Ground x0={350} x1={450} y={288} seed={2760} />
+      <Person x={400} y={288} h={230} seed={2770} look={{ hair: "bob", wear: SK.camel }} arms={["chin", "chin"]} />
+    </SketchFrame>
+  );
+}
+
+/** A mouse pointer with its tip at (x, y). */
+function Pointer({ x, y, seed }: { x: number; y: number; seed: number }) {
+  const pts = sharp(at(x, y, [[0, 0], [0, 30], [8, 23], [14, 35], [20, 32], [14, 21], [24, 21]]), true, 1);
+  return (
+    <g>
+      <Paper pts={pts} seed={seed} />
+      <InkLine pts={pts} seed={seed + 1} width={1.3} amp={0.3} closed />
+    </g>
   );
 }
 
 /** Selective exposure: the viewer skips the ad. */
 export function SkipAd() {
+  const player = sharp([[36, 18], [364, 18], [364, 204], [36, 204]], true, 6);
+  const button = sharp([[226, 122], [346, 122], [346, 158], [226, 158]], true, 3);
   return (
-    <Frame width={400} height={220} label="A video player showing an ad, with a skip ad button in the corner and a pointer about to press it.">
-      <rect x={40} y={20} width={320} height={180} rx={8} fill={INK} />
-      <rect x={60} y={44} width={70} height={100} rx={8} fill={SIGNAL} />
-      <rect x={146} y={60} width={130} height={9} rx={4} fill={INK3} />
-      <rect x={146} y={80} width={90} height={9} rx={4} fill={INK3} />
-      <Key x={60} y={36} fill={INK3} size={9}>
-        AD
-      </Key>
-      <rect x={60} y={176} width={280} height={4} rx={2} fill={INK2} />
-      <rect x={60} y={176} width={40} height={4} rx={2} fill={SIGNAL} />
-      <rect x={236} y={122} width={112} height={36} rx={4} fill={PAPER} />
-      <Key x={292} y={145} anchor="middle" fill={INK} size={12} weight={700}>
-        SKIP AD ›
-      </Key>
-      {/* pointer */}
-      <path d="M312 150L312 184L321 176L328 192L335 189L328 173L340 173Z" fill={PAPER} stroke={INK} strokeWidth={1.8} strokeLinejoin="round" />
-    </Frame>
+    <SketchFrame id="sk-skip-ad" width={400} height={240} label="A video player showing an ad for a product box, with a teal skip ad button in the corner and a pointer about to press it.">
+      <g transform="translate(0 9)">
+        <Backwash cx={200} cy={112} rx={196} ry={108} seed={2800} opacity={0.4} />
+        <Wash pts={player} seed={2801} fill={SK.charcoal} opacity={0.6} />
+        <InkLine pts={player} seed={2802} width={1.4} closed />
+        <Box x={100} bottom={150} w={58} h={84} fill={SK.camel} seed={2810} />
+        <InkLine pts={rp([[148, 64], [276, 64]])} seed={2815} width={3} amp={0.4} color={SK.paper} />
+        <InkLine pts={rp([[148, 84], [236, 84]])} seed={2816} width={3} amp={0.4} color={SK.paper} />
+        <InkLine pts={rp([[56, 186], [344, 186]])} seed={2817} width={3} amp={0.2} color={SK.earth} />
+        <InkLine pts={rp([[56, 186], [96, 186]])} seed={2818} width={3} amp={0.2} color={SK.ochre} />
+        <Wash pts={button} seed={2820} fill={SK.teal} opacity={0.95} dx={0.8} dy={0.6} />
+        <InkLine pts={button} seed={2821} width={1.2} closed />
+        <SketchText x={286} y={145} anchor="middle" size={13}>
+          SKIP AD ›
+        </SketchText>
+        <Pointer x={314} y={150} seed={2830} />
+      </g>
+    </SketchFrame>
   );
 }
 
-function ForkKnife({ x, y, s = 1, fill = INK }: { x: number; y: number; s?: number; fill?: string }) {
+/** A shop sign on a post: board centred on x, from `top`, post down to `ground`. */
+function ShopSign({ x, top, ground, seed, fill, children }: { x: number; top: number; ground: number; seed: number; fill?: string; children?: React.ReactNode }) {
+  const board = sharp([[x - 36, top], [x + 36, top], [x + 36, top + 54], [x - 36, top + 54]], true, 3);
   return (
-    <g transform={`translate(${x} ${y}) scale(${s})`} fill={fill}>
-      <rect x={-12} y={-16} width={3} height={12} rx={1} />
-      <rect x={-7.5} y={-16} width={3} height={12} rx={1} />
-      <rect x={-3} y={-16} width={3} height={12} rx={1} />
-      <rect x={-12} y={-6} width={12} height={5} rx={2} />
-      <rect x={-7.5} y={-2} width={3} height={20} rx={1.5} />
-      <path d="M7 -16Q14 -8 12 4H8Z" />
-      <rect x={8} y={2} width={3.4} height={16} rx={1.5} />
+    <g>
+      <InkLine pts={rp([[x, top + 54], [x, ground]])} seed={seed} width={1.5} />
+      {fill ? <Wash pts={board} seed={seed + 1} fill={fill} opacity={0.8} /> : <Paper pts={board} seed={seed + 1} />}
+      <InkLine pts={board} seed={seed + 2} closed />
+      {children}
     </g>
   );
 }
 
 /** Perceptual vigilance: the hungry person sees the restaurant sign. */
 export function Vigilance() {
-  const signs = [
-    { x: 116, kind: "a" },
-    { x: 216, kind: "food" },
-    { x: 316, kind: "b" },
-  ];
+  const g = 226;
+  const icon = 28;
   return (
-    <Frame width={400} height={220} label="A hungry person, thinking of a fork and knife, looks up at three shop signs. Two plain signs are grey; the restaurant sign with a fork and knife is orange and a sight line runs to it.">
-      {signs.map((s) => {
-        const on = s.kind === "food";
-        return (
-          <g key={s.x}>
-            <line x1={s.x} y1={78} x2={s.x} y2={204} stroke={on ? INK : RULE2} strokeWidth={2} />
-            <rect x={s.x - 34} y={26} width={68} height={52} rx={5} fill={on ? SIGNAL : PAPER2} stroke={on ? SIGNAL : RULE2} strokeWidth={1.6} />
-            {on ? (
-              <ForkKnife x={s.x} y={52} s={1.1} fill={PAPER} />
-            ) : s.kind === "a" ? (
-              <rect x={s.x - 14} y={40} width={28} height={24} fill={RULE2} />
-            ) : (
-              <circle cx={s.x} cy={52} r={13} fill={RULE2} />
-            )}
-          </g>
-        );
-      })}
-      <Person x={50} y={204} s={1.2} fill={INK} />
-      <Thought x={40} y={60} rx={26} ry={20} tx={48} ty={112} stroke={INK} />
-      <ForkKnife x={41} y={60} s={0.75} fill={INK} />
-      <line x1={62} y1={128} x2={176} y2={70} stroke={SIGNAL} strokeWidth={1.6} strokeDasharray="4 4" />
-      <line x1={20} y1={204} x2={380} y2={204} stroke={RULE2} />
-    </Frame>
+    <SketchFrame id="sk-vigilance" width={400} height={240} label="A hungry person, thinking of a fork and knife, looks past a clothes shop sign and a hair salon sign to a third, teal restaurant sign with a fork and knife on it. A line of sight arcs from the person's eyes to that sign.">
+      <Backwash cx={200} cy={124} rx={196} ry={112} seed={2900} />
+      <Ground x0={20} x1={380} y={g} seed={2905} />
+      <ShopSign x={168} top={52} ground={g} seed={2910}>
+        <TShirt x={168 - icon / 2} y={79 - icon / 2} size={icon} weight="light" color={SK.ink} />
+      </ShopSign>
+      <ShopSign x={256} top={52} ground={g} seed={2920}>
+        <Scissors x={256 - icon / 2} y={79 - icon / 2} size={icon} weight="light" color={SK.ink} />
+      </ShopSign>
+      <ShopSign x={344} top={52} ground={g} seed={2930} fill={SK.teal}>
+        <ForkKnife x={344 - icon / 2} y={79 - icon / 2} size={icon} weight="light" color={SK.ink} />
+      </ShopSign>
+
+      <Person x={62} y={g} h={160} seed={2940} look={{ hair: "curly", wear: SK.sky, skin: SK.tan, skinOpacity: 0.55 }} arms={["down", "hip"]} />
+      <Thought x={54} y={30} rx={30} ry={18} tx={62} ty={62} seed={2990} />
+      <ForkKnife x={54 - 11} y={30 - 11} size={22} weight="light" color={SK.ink} />
+      <SketchArrow pts={curvePts([80, 74], [210, 0], [318, 46], 16)} seed={2995} width={1} head={7} />
+    </SketchFrame>
   );
 }
 
-/** Perceptual defense: the warning is screened out before it lands. */
-export function Defense() {
+/** A cigarette pack centred on (x, y) with its big warning label. */
+function CigarettePack({ x, y, seed }: { x: number; y: number; seed: number }) {
+  const body = sharp([[x - 30, y - 42], [x + 30, y - 42], [x + 30, y + 42], [x - 30, y + 42]], true, 2);
+  const lid = rp([[x - 30, y - 42], [x + 30, y - 42], [x + 30, y - 24], [x - 30, y - 24]]);
+  const label = sharp([[x - 25, y - 16], [x + 25, y - 16], [x + 25, y + 36], [x - 25, y + 36]], true, 1.5);
+  const tri = sharp([[x, y - 8], [x + 13, y + 14], [x - 13, y + 14]], true, 1);
   return (
-    <Frame width={400} height={220} label="A cigarette pack with a large warning label on the right. On the left a person holds up a curved shield, and the lines coming from the warning bounce off it.">
-      <Person x={70} y={204} s={1.5} fill={INK} />
-      <path d="M118 70Q146 116 118 162" fill="none" stroke={SIGNAL} strokeWidth={5} strokeLinecap="round" />
-      {[86, 116, 146].map((y, i) => (
-        <g key={y}>
-          <line x1={250} y1={y} x2={140} y2={y} stroke={INK3} strokeWidth={1.4} strokeDasharray="4 4" />
-          <path d={`M140 ${y}L166 ${y + (i - 1) * 16 - 18}`} fill="none" stroke={INK3} strokeWidth={1.4} strokeDasharray="4 4" />
-        </g>
-      ))}
-      {/* the pack */}
-      <rect x={256} y={38} width={96} height={150} rx={4} fill={PAPER} stroke={INK} strokeWidth={2} />
-      <rect x={256} y={38} width={96} height={30} rx={4} fill={INK} />
-      <rect x={264} y={84} width={80} height={90} fill={INK} />
-      <path d="M304 96L324 130H284Z" fill="none" stroke={PAPER} strokeWidth={2.4} strokeLinejoin="round" />
-      <line x1={304} y1={106} x2={304} y2={118} stroke={PAPER} strokeWidth={2.4} strokeLinecap="round" />
-      <circle cx={304} cy={124} r={1.6} fill={PAPER} />
-      <Key x={304} y={156} anchor="middle" fill={PAPER} size={11} weight={700}>
+    <g>
+      <Paper pts={body} seed={seed} />
+      <Wash pts={lid} seed={seed + 1} fill={SK.charcoal} opacity={0.6} dx={0.5} dy={0.4} />
+      <Wash pts={label} seed={seed + 2} fill={SK.ochre} opacity={0.85} dx={0.6} dy={0.4} />
+      <InkLine pts={body} seed={seed + 3} width={1.2} closed />
+      <InkLine pts={rp([[x - 30, y - 24], [x + 30, y - 24]])} seed={seed + 4} width={0.9} />
+      <InkLine pts={label} seed={seed + 5} width={1} closed />
+      <InkLine pts={tri} seed={seed + 6} width={1.2} amp={0.2} closed />
+      <InkLine pts={rp([[x, y - 1], [x, y + 6]])} seed={seed + 7} width={1.6} amp={0.1} />
+      <SketchText x={x} y={y + 29} anchor="middle" size={8}>
         WARNING
-      </Key>
-      <line x1={20} y1={204} x2={380} y2={204} stroke={RULE2} />
-    </Frame>
+      </SketchText>
+    </g>
   );
 }
 
-/** Adaptation: the same sign, noticed less and less. */
-export function Adaptation() {
-  const xs = [70, 200, 330];
-  const fade = [1, 0.45, 0.16];
+/** Perceptual defense: the smoker holds the pack out and looks the other way. */
+export function Defense() {
+  const g = 226;
+  const h = 190;
+  const pack = handAt(196, g, h, "reach", -1, true);
+  const cig = handAt(196, g, h, "chin", 1, true);
   return (
-    <Frame width={400} height={220} label="The same billboard drawn three times along an arrow marked with time: when new it is bright orange with an open eye above it; when familiar it is faded; at the end it has almost disappeared.">
-      {xs.map((x, i) => (
-        <g key={x} opacity={fade[i]}>
-          <rect x={x - 46} y={70} width={92} height={60} rx={3} fill={SIGNAL} />
-          <Star x={x - 20} y={100} R={12} fill={PAPER} />
-          <rect x={x} y={90} width={34} height={6} rx={3} fill={PAPER} />
-          <rect x={x} y={104} width={24} height={6} rx={3} fill={PAPER} />
-          <line x1={x} y1={130} x2={x} y2={156} stroke={INK} strokeWidth={2} />
-          <SenseGlyph kind="sight" x={x} y={40} s={0.8} tone={INK} />
+    <SketchFrame id="sk-defense" width={400} height={240} label="A smoker holds a cigarette to the lips and turns the head away, while the other hand holds out a cigarette pack with a big ochre warning label on it, unlooked-at.">
+      <Backwash cx={200} cy={124} rx={196} ry={112} seed={3000} />
+      <Ground x0={110} x1={310} y={g} seed={3005} />
+      <Person x={196} y={g} h={h} flip seed={3010} look={{ hair: "short", wear: SK.charcoal, legs: SK.tan, skin: SK.skin }} arms={["reach", "chin"]} />
+      <CigarettePack x={r2(pack[0] + 34)} y={r2(pack[1] - 4)} seed={3060} />
+      <InkLine pts={rp([[cig[0] - 2, cig[1]], [cig[0] - 18, cig[1] - 3]])} seed={3070} width={2.4} amp={0.1} color={SK.paper} />
+      <InkLine pts={rp([[cig[0] - 2, cig[1] - 1.5], [cig[0] - 18, cig[1] - 4.5], [cig[0] - 18, cig[1] - 1.5], [cig[0] - 2, cig[1] + 1.5]])} seed={3071} width={0.7} amp={0.1} />
+      <InkLine pts={rp([[cig[0] - 20, cig[1] - 6], [cig[0] - 26, cig[1] - 14], [cig[0] - 21, cig[1] - 22], [cig[0] - 27, cig[1] - 32]])} seed={3072} width={0.8} />
+    </SketchFrame>
+  );
+}
+
+/** Adaptation: the same person passes the same billboard, and notices it less each time. */
+export function Adaptation() {
+  const g = 188;
+  const xs = [70, 200, 330];
+  const labels = ["NEW", "FAMILIAR", "WITH TIME"];
+  const look = { hair: "bun" as const, wear: SK.camel, skin: SK.skin };
+  const phone = handAt(318, g, 124, "carry", 1, true);
+  return (
+    <SketchFrame id="sk-adaptation" width={400} height={240} label="The same person passes the same billboard three times along a time line. New: facing it and pointing up at it. Familiar: walking by, arms down. With time: turned away from it, looking at a phone.">
+      <Backwash cx={200} cy={118} rx={196} ry={112} seed={3100} />
+      {xs.map((cx, i) => (
+        <g key={cx}>
+          <Ground x0={cx - 56} x1={cx + 56} y={g} seed={3110 + i * 4} />
+          <Billboard x0={cx + 6} x1={cx + 58} top={36} bottom={70} ground={g} seed={3130 + i * 10}>
+            <BrandBadge x={cx + 32} y={53} r={10} seed={3136 + i * 10} />
+          </Billboard>
         </g>
       ))}
-      <Arrow x1={30} y1={180} x2={372} y2={180} stroke={INK3} />
-      <Key x={70} y={204} anchor="middle" fill={INK}>
-        NEW
-      </Key>
-      <Key x={200} y={204} anchor="middle" fill={INK3}>
-        FAMILIAR
-      </Key>
-      <Key x={330} y={204} anchor="middle" fill={INK3}>
-        WITH TIME
-      </Key>
-    </Frame>
+      <Person x={48} y={g} h={124} seed={3170} look={look} arms={["down", "point"]} />
+      <Person x={176} y={g} h={124} seed={3170} look={look} arms={["down", "down"]} />
+      <Person x={318} y={g} h={124} flip seed={3170} look={look} arms={["down", "carry"]} />
+      <Phone1 x={r2(phone[0] - 7)} y={r2(phone[1] - 17)} seed={3190} w={12} h={20} />
+
+      <SketchArrow pts={[[20, 206], [384, 206]]} seed={3200} width={1} head={7} />
+      {labels.map((t, i) => (
+        <SketchText key={t} x={xs[i]} y={230} anchor="middle" size={9}>
+          {t}
+        </SketchText>
+      ))}
+    </SketchFrame>
   );
 }
 
@@ -1258,94 +1179,128 @@ export function Adaptation() {
 
 /** Separate dots that the eye reads as one whole heart. */
 export function WholeFromParts() {
-  const heart = (t: number) => {
-    // parametric heart, t in [0, 2π)
+  const heart = (t: number): Pt => {
     const x = 16 * Math.sin(t) ** 3;
     const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
-    return { x: r2(200 + x * 6.4), y: r2(116 - y * 6.4) };
+    return [200 + x * 6, 100 - y * 6];
   };
-  const n = 22;
   const dense = Array.from({ length: 721 }, (_, i) => heart((i / 720) * Math.PI * 2));
   const acc = [0];
-  for (let i = 1; i < dense.length; i++) acc.push(acc[i - 1] + Math.hypot(dense[i].x - dense[i - 1].x, dense[i].y - dense[i - 1].y));
+  for (let i = 1; i < dense.length; i++) acc.push(acc[i - 1] + Math.hypot(dense[i][0] - dense[i - 1][0], dense[i][1] - dense[i - 1][1]));
   const total = acc[acc.length - 1];
+  const n = 22;
   const dots = Array.from({ length: n }, (_, k) => dense[acc.findIndex((a) => a >= (k / n) * total)]);
   return (
-    <Frame width={400} height={240} label="Twenty-two separate dots with gaps between them, laid out so that together they read as one heart.">
-      {dots.map((p, i) => (
-        <circle key={i} cx={p.x} cy={p.y} r={7} fill={i % 2 === 0 ? SIGNAL : INK} />
-      ))}
-    </Frame>
-  );
-}
-
-/** Closure: a logo made of broken shapes still reads as complete. */
-export function Closure() {
-  const pts = [
-    { x: 200, y: 58 },
-    { x: 258, y: 158 },
-    { x: 142, y: 158 },
-  ];
-  const R = 36;
-  // each disc has a wedge cut out, pointing at the centroid
-  const cx = 200;
-  const cy = 124.67;
-  return (
-    <Frame width={400} height={260} label="A badge logo: three orange discs, each with a wedge cut out, placed so the cut-outs line up into a white triangle that is never drawn. Two bars beneath stand in for the brand name.">
-      <rect x={96} y={16} width={208} height={190} rx={22} fill={PAPER2} stroke={RULE2} strokeWidth={1.4} />
-      {pts.map((p, i) => {
-        const a = (Math.atan2(cy - p.y, cx - p.x) * 180) / Math.PI;
-        const s = polar(p.x, p.y, R, a - 30);
-        const e = polar(p.x, p.y, R, a + 30);
-        return <path key={i} d={`M${p.x} ${p.y}L${s.x} ${s.y}A${R} ${R} 0 1 0 ${e.x} ${e.y}Z`} fill={SIGNAL} />;
+    <SketchFrame id="sk-whole-from-parts" width={400} height={220} label="Twenty-two separate dots with gaps between them, laid out so that together they read as one heart.">
+      <Backwash cx={200} cy={112} rx={180} ry={104} seed={3300} />
+      {dots.map(([x, y], i) => {
+        const pts = rp(blobPts(x, y, 7, 7, 3310 + i, 9, 0.12));
+        return (
+          <g key={i}>
+            <Wash pts={pts} seed={3310 + i} fill={i % 2 === 0 ? SK.camel : SK.tan} opacity={0.85} dx={0.8} dy={0.6} />
+            <InkLine pts={pts} seed={3340 + i} width={1} amp={0.3} closed />
+          </g>
+        );
       })}
-      <rect x={140} y={224} width={120} height={9} rx={4} fill={INK} />
-      <rect x={160} y={241} width={80} height={7} rx={3} fill={RULE2} />
-    </Frame>
+    </SketchFrame>
   );
 }
 
-/** Similarity: evenly spaced packs group by shared colour and shape. */
+/** Closure: a logo made of cut discs still reads as a whole triangle. */
+export function Closure() {
+  const c: Pt = [200, 114];
+  const R = 36;
+  const tips: Pt[] = [
+    [200, 66],
+    [242, 138],
+    [158, 138],
+  ];
+  const card = sharp([[104, 14], [296, 14], [296, 222], [104, 222]], true, 10);
+  return (
+    <SketchFrame id="sk-closure" width={400} height={234} label="A brand logo on a cream card: three ochre discs, each with a wedge cut out, placed so the cut-outs line up into a triangle that is never drawn. Two short lines beneath stand for the brand name.">
+      <Backwash cx={200} cy={118} rx={180} ry={110} seed={3400} />
+      <Paper pts={card} seed={3401} />
+      <InkLine pts={card} seed={3402} closed />
+      {tips.map(([x, y], i) => {
+        const a = Math.atan2(c[1] - y, c[0] - x);
+        const arc = Array.from({ length: 15 }, (_, k) => {
+          const t = a + Math.PI / 6 + (k / 14) * (Math.PI * 2 - Math.PI / 3);
+          return [x + Math.cos(t) * R, y + Math.sin(t) * R] as Pt;
+        });
+        const pts = rp([[x, y], ...arc]);
+        return (
+          <g key={i}>
+            <Wash pts={pts} seed={3410 + i * 3} fill={SK.ochre} opacity={0.85} dx={0.8} dy={0.6} />
+            <InkLine pts={sharp(pts, true, 1)} seed={3411 + i * 3} width={1.2} amp={0.3} closed />
+          </g>
+        );
+      })}
+      <InkLine pts={[[146, 194], [254, 194]]} seed={3430} width={3} amp={0.4} />
+      <InkLine pts={[[166, 207], [234, 207]]} seed={3431} width={1.6} amp={0.4} />
+    </SketchFrame>
+  );
+}
+
+/** Similarity: evenly spaced packs still group by shared colour and shape. */
 export function Similarity() {
   const cols = 8;
   const rows = 3;
   const group = (c: number) => (c < 3 ? 0 : c < 5 ? 1 : 2);
-  const tone = [SIGNAL, INK, COUNTER];
+  const tone = [SK.camel, SK.charcoal, SK.sky];
+  const shelf = (r: number) => 78 + r * 70;
   return (
-    <Frame width={400} height={260} label="A shelf of twenty-four packs in three rows, all evenly spaced. The three left columns are orange boxes, the middle two are dark round tins, the right three are teal tall bottles, so the eye sees three brand blocks.">
+    <SketchFrame id="sk-similarity" width={400} height={234} label="A shelf of twenty-four evenly spaced packs in three rows. The three left columns are camel boxes, the middle two are dark round tins, the right three are pale blue tall bottles, so the eye sees three blocks.">
+      <Backwash cx={200} cy={118} rx={196} ry={112} seed={3500} />
       {Array.from({ length: rows }, (_, r) => (
         <g key={r}>
-          <line x1={24} y1={84 + r * 72} x2={376} y2={84 + r * 72} stroke={INK} strokeWidth={2.4} />
           {Array.from({ length: cols }, (_, c) => {
             const x = 44 + c * 44;
+            const b = shelf(r) - 2;
             const g = group(c);
-            const base = 82 + r * 72;
-            if (g === 0) return <rect key={c} x={x - 15} y={base - 50} width={30} height={50} rx={3} fill={tone[g]} />;
-            if (g === 1) return <ellipse key={c} cx={x} cy={base - 18} rx={16} ry={18} fill={tone[g]} />;
-            return <path key={c} d={`M${x - 11} ${base}V${base - 38}Q${x - 11} ${base - 46} ${x - 4} ${base - 50}V${base - 58}H${x + 4}V${base - 50}Q${x + 11} ${base - 46} ${x + 11} ${base - 38}V${base}Z`} fill={tone[g]} />;
+            const sd = 3510 + r * 40 + c * 4;
+            const pts =
+              g === 0
+                ? sharp([[x - 14, b - 48], [x + 14, b - 48], [x + 14, b], [x - 14, b]], true, 1.5)
+                : g === 1
+                  ? rp(blobPts(x, b - 17, 16, 17, sd, 12, 0.04))
+                  : sharp([[x - 10, b], [x - 10, b - 34], [x - 4, b - 42], [x - 4, b - 54], [x + 4, b - 54], [x + 4, b - 42], [x + 10, b - 34], [x + 10, b]], true, 1);
+            return (
+              <g key={c}>
+                <Wash pts={pts} seed={sd} fill={tone[g]} opacity={g === 1 ? 0.6 : 0.8} dx={0.8} dy={0.6} />
+                <InkLine pts={pts} seed={sd + 1} width={1.1} closed />
+              </g>
+            );
           })}
+          <InkLine pts={[[22, shelf(r)], [378, shelf(r)]]} seed={3500 + r * 3} width={1.8} />
         </g>
       ))}
-    </Frame>
+    </SketchFrame>
   );
 }
 
-/** Figure-ground: a vase, or two faces. */
+/** Figure-ground: a dark vase, or two pale faces looking at each other. */
 export function FigureGround() {
   // the right-hand profile (a face looking left); the left side mirrors it
-  const edge: [number, number][] = [
-    [72, 22], [66, 64], [58, 90], [64, 104], [30, 132], [48, 146], [38, 160],
-    [52, 174], [42, 194], [64, 212], [72, 240],
+  const edge: Pt[] = [
+    [70, 20], [64, 50], [56, 80], [62, 94], [22, 120], [40, 130], [32, 142],
+    [42, 152], [32, 162], [50, 178], [36, 196], [60, 214], [70, 230],
   ];
   const cx = 200;
-  const right = edge.map(([dx, y]) => [cx + dx, y] as [number, number]);
-  const left = [...edge].reverse().map(([dx, y]) => [cx - dx, y] as [number, number]);
-  const d = `${smooth(right)}L${left[0][0]} ${left[0][1]}${smooth(left).replace(/^M[^C]+/, "")}Z`;
+  const right = edge.map(([dx, y]) => [cx + dx, y] as Pt);
+  const left = [...edge].reverse().map(([dx, y]) => [cx - dx, y] as Pt);
+  const vase = rp([...right, ...left]);
+  const panel = sharp([[84, 20], [316, 20], [316, 230], [84, 230]], true, 2);
   return (
-    <Frame width={400} height={260} label="The classic vase-and-faces picture: an orange vase in the middle whose two edges are also the profiles of two pale faces looking at each other.">
-      <rect x={90} y={22} width={220} height={218} fill={PAPER2} stroke={RULE2} strokeWidth={1.4} />
-      <path d={d} fill={SIGNAL} />
-    </Frame>
+    <SketchFrame id="sk-figure-ground" width={400} height={234} label="The classic vase-and-faces picture: a dark vase in the middle of a cream panel, whose two edges are also the profiles of two pale faces looking at each other.">
+      <Backwash cx={200} cy={117} rx={180} ry={110} seed={3600} />
+      <g transform="translate(12.8 0) scale(0.936)">
+        <Paper pts={panel} seed={3601} />
+        <Wash pts={vase} seed={3602} fill={SK.charcoal} opacity={0.8} dx={1} dy={0} />
+        <InkLine pts={right} seed={3603} width={1.3} amp={0.5} />
+        <InkLine pts={[...left].reverse()} seed={3604} width={1.3} amp={0.5} />
+        <InkLine pts={panel} seed={3605} closed />
+      </g>
+    </SketchFrame>
   );
 }
 
@@ -1353,85 +1308,73 @@ export function FigureGround() {
    SEMIOTICS
    ========================================================================== */
 
-function Watch({ x, y }: { x: number; y: number }) {
+/** A bald eagle, wings spread wide, head turned in profile; (x, y) is its body centre. */
+function Eagle({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
+  const wingR: Pt[] = [[6, -10], [30, -22], [56, -28], [78, -26], [90, -18], [82, -14], [90, -9], [80, -6], [86, -1], [74, 0], [78, 5], [62, 4], [40, 6], [12, 10]];
+  const wingL: Pt[] = wingR.map(([px, py]) => [-px, py] as Pt).reverse();
+  const body = rp(blobPts(x, y + 6 * s, 13 * s, 24 * s, seed, 12, 0.05));
+  const head = at(x, y, [[-8, -14], [-7, -28], [0, -35], [9, -31], [10, -20], [7, -12]], s);
+  const beak = at(x, y, [[-6, -30], [-16, -28], [-18, -22], [-12, -23], [-6, -22]], s);
+  const tail = at(x, y, [[-9, 26], [9, 26], [15, 46], [0, 50], [-15, 46]], s);
   return (
     <g>
-      <rect x={x - 12} y={y - 44} width={24} height={88} rx={6} fill={INK} />
-      <circle cx={x} cy={y} r={25} fill={PAPER} stroke={INK} strokeWidth={4} />
-      <circle cx={x} cy={y} r={19} fill="none" stroke={RULE2} strokeWidth={1} />
-      <path d={`M${x} ${y}V${y - 14}M${x} ${y}L${x + 10} ${y + 5}`} stroke={INK} strokeWidth={2.2} strokeLinecap="round" />
-      <rect x={x + 24} y={y - 4} width={6} height={8} rx={1.5} fill={INK} />
-      <circle cx={x} cy={y} r={2} fill={SIGNAL} />
-    </g>
-  );
-}
-
-function Eagle({ x, y, fill = INK }: { x: number; y: number; fill?: string }) {
-  // a bird in flight, wings raised, seen from the front
-  return (
-    <g transform={`translate(${x} ${y})`} fill={fill}>
-      <path d="M-6 -6C-20 -14 -34 -26 -48 -32L-58 -32L-49 -27L-60 -22L-49 -19L-57 -12L-44 -11C-32 -5 -20 3 -6 6Z" />
-      <path d="M6 -6C20 -14 34 -26 48 -32L58 -32L49 -27L60 -22L49 -19L57 -12L44 -11C32 -5 20 3 6 6Z" />
-      <ellipse cx={0} cy={4} rx={8} ry={14} />
-      <path d="M-5 14L-13 32L-4 29L0 34L4 29L13 32L5 14Z" />
-      <circle cx={0} cy={-16} r={7} />
-      <path d="M-2 -14L0 -6L3 -13Z" fill={SIGNAL} />
+      {[wingL, wingR].map((w, i) => (
+        <g key={i}>
+          <Wash pts={at(x, y, w, s)} seed={seed + 1 + i} fill={SK.brown} opacity={0.72} />
+          <InkLine pts={at(x, y, w, s)} seed={seed + 3 + i} width={1.1} closed />
+        </g>
+      ))}
+      <Paper pts={tail} seed={seed + 5} />
+      <InkLine pts={tail} seed={seed + 6} width={1.1} closed />
+      <Wash pts={body} seed={seed + 7} fill={SK.brown} opacity={0.8} />
+      <InkLine pts={body} seed={seed + 8} closed />
+      <Paper pts={head} seed={seed + 9} />
+      <InkLine pts={head} seed={seed + 10} width={1.1} closed />
+      <Wash pts={beak} seed={seed + 11} fill={SK.ochre} opacity={0.95} dx={0.4} dy={0.3} />
+      <InkLine pts={beak} seed={seed + 12} width={1} closed />
+      <path d={wobble(rp(blobPts(x - 2 * s, y - 27 * s, 1.5 * s, 1.5 * s, seed + 13, 6, 0.1)), seed + 13, 0.1, 4, true)} fill={SK.ink} />
+      <InkLine pts={at(x, y, [[-5, 28], [-7, 36]], s)} seed={seed + 14} width={1.4} color={SK.tan} />
+      <InkLine pts={at(x, y, [[5, 28], [7, 36]], s)} seed={seed + 15} width={1.4} color={SK.tan} />
     </g>
   );
 }
 
 export function SemioticTriangle() {
-  const obj = { x: 160, y: 290 };
-  const sign = { x: 400, y: 100 };
-  const intp = { x: 640, y: 290 };
-  const R = 64;
-  const edge = (a: { x: number; y: number }, b: { x: number; y: number }) => {
-    const dx = b.x - a.x;
-    const dy = b.y - a.y;
-    const len = Math.hypot(dx, dy);
-    return {
-      x1: r2(a.x + (dx / len) * (R + 8)),
-      y1: r2(a.y + (dy / len) * (R + 8)),
-      x2: r2(b.x - (dx / len) * (R + 8)),
-      y2: r2(b.y - (dy / len) * (R + 8)),
-    };
-  };
+  const card = sharp([[304, 30], [496, 30], [496, 186], [304, 186]], true, 3);
   return (
-    <Frame
-      height={420}
-      label="A triangle of three circles. Bottom left, the object: a luxury watch. Top, the sign: an eagle in flight. Bottom right, the interpretant: a person, with freedom and prestige written beneath. Arrows run from the object up to the sign and from the sign down to the person; a dashed line joins the watch and the person."
+    <SketchFrame
+      id="sk-semiotic"
+      width={800}
+      height={448}
+      label="A triangle of three parts. Bottom left, the object: a luxury watch with a gold bezel. Top, the sign: an ad card showing a bald eagle soaring. Bottom right, the interpretant: a person standing tall and confident on a pale sky wash, with freedom and prestige written beneath. Arrows run from the watch up to the eagle ad and from the ad down to the person."
     >
-      <Arrow {...edge(obj, sign)} stroke={INK} />
-      <Arrow {...edge(sign, intp)} stroke={SIGNAL} />
-      <line {...edge(obj, intp)} stroke={RULE2} strokeWidth={1.4} strokeDasharray="4 5" />
+      <Backwash cx={400} cy={224} rx={396} ry={212} seed={3700} opacity={0.35} />
 
-      <circle cx={obj.x} cy={obj.y} r={R} fill={PAPER} stroke={INK} strokeWidth={1.8} />
-      <Watch x={obj.x} y={obj.y} />
-      <Key x={obj.x} y={obj.y + R + 28} anchor="middle" fill={INK} size={12}>
+      <Watch1 x={170} y={292} s={1.1} seed={3710} />
+      <SketchText x={170} y={406} anchor="middle" size={17}>
         OBJECT
-      </Key>
-      <Note x={obj.x} y={obj.y + R + 50} anchor="middle" fill={INK3}>
-        the luxury watch
-      </Note>
+      </SketchText>
 
-      <circle cx={sign.x} cy={sign.y} r={R} fill={PAPER} stroke={COUNTER} strokeWidth={1.8} />
-      <Eagle x={sign.x} y={sign.y + 4} fill={COUNTER} />
-      <Key x={sign.x + R + 20} y={sign.y - 4} fill={COUNTER} size={12}>
+      <Paper pts={card} seed={3740} />
+      <InkLine pts={card} seed={3741} width={1.3} closed />
+      <Eagle x={400} y={98} s={0.94} seed={3750} />
+      <SketchText x={510} y={114} size={17}>
         SIGN
-      </Key>
-      <Note x={sign.x + R + 20} y={sign.y + 18} fill={INK3}>
-        an image of an eagle
-      </Note>
+      </SketchText>
 
-      <circle cx={intp.x} cy={intp.y} r={R} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.8} />
-      <Person x={intp.x} y={intp.y + 36} s={1.05} fill={SIGNAL} />
-      <Key x={intp.x} y={intp.y + R + 28} anchor="middle" fill={SIGNAL} size={12}>
+      <Backwash cx={630} cy={296} rx={78} ry={96} seed={3770} fill={SK.sky} opacity={0.6} />
+      <Person x={630} y={372} h={176} seed={3780} look={{ hair: "long", wear: SK.charcoal, hairTone: SK.brown, legs: SK.charcoal, outfit: "coat" }} arms={["hip", "hip"]} />
+      <Ground x0={570} x1={690} y={372} seed={3830} />
+      <SketchText x={630} y={404} anchor="middle" size={17}>
         INTERPRETANT
-      </Key>
-      <Note x={intp.x} y={intp.y + R + 50} anchor="middle" fill={INK3}>
+      </SketchText>
+      <SketchText x={630} y={430} anchor="middle" size={20} serif>
         freedom and prestige
-      </Note>
-    </Frame>
+      </SketchText>
+
+      <SketchArrow pts={curvePts([214, 236], [240, 170], [292, 150], 10)} seed={3840} />
+      <SketchArrow pts={curvePts([508, 150], [566, 170], [596, 200], 10)} seed={3843} />
+    </SketchFrame>
   );
 }
 
@@ -1439,54 +1382,50 @@ export function SemioticTriangle() {
    DISCUSSION
    ========================================================================== */
 
-function ShapedBottle({ x, y, fill = COUNTER }: { x: number; y: number; fill?: string }) {
-  // (x, y) is the base centre; a waisted, contoured bottle
-  return (
-    <path
-      d={`M${x - 16} ${y}Q${x - 20} ${y - 22} ${x - 12} ${y - 36}Q${x - 6} ${y - 46} ${x - 14} ${y - 58}Q${x - 18} ${y - 70} ${x - 6} ${y - 82}V${y - 96}H${x + 6}V${y - 82}Q${x + 18} ${y - 70} ${x + 14} ${y - 58}Q${x + 6} ${y - 46} ${x + 12} ${y - 36}Q${x + 20} ${y - 22} ${x + 16} ${y}Z`}
-      fill={fill}
-    />
-  );
-}
 
 export function SensorySignatures() {
-  const card = { x: 400, y: 150, w: 190, h: 130 };
-  const cues = [
-    { x: 120, y: 78, label: "SIGNATURE SCENT" },
-    { x: 120, y: 236, label: "DISTINCT JINGLE" },
-    { x: 680, y: 78, label: "UNIQUE BOTTLE SHAPE" },
-    { x: 680, y: 236, label: "SPECIFIC COLOR" },
+  const card = sharp([[305, 88], [495, 88], [495, 218], [305, 218]], true, 10);
+  const cues: { x: number; y: number; t: string }[] = [
+    { x: 120, y: 134, t: "SIGNATURE SCENT" },
+    { x: 120, y: 276, t: "DISTINCT JINGLE" },
+    { x: 680, y: 134, t: "UNIQUE BOTTLE SHAPE" },
+    { x: 680, y: 276, t: "SPECIFIC COLOR" },
   ];
+  const swatch = sharp([[652, 206], [708, 206], [708, 250], [652, 250]], true, 3);
   return (
-    <Frame
-      height={320}
-      label="A blank brand card in the middle holding only a question mark: no name and no logo. Four cues point to it: a signature scent (a perfume bottle), a distinct jingle (notes), a unique bottle shape (a contoured bottle) and a specific color (a swatch)."
+    <SketchFrame
+      id="sk-signatures"
+      width={800}
+      height={296}
+      label="A blank brand card in the middle holding only a question mark: no name and no logo. Four cues point to it: a signature scent (a perfume bottle), a distinct jingle (music notes), a unique bottle shape (a waisted, contoured bottle) and a specific color (an ochre swatch)."
     >
-      {cues.map((c) => {
-        const toRight = c.x < card.x;
-        const x1 = toRight ? c.x + 100 : c.x - 100;
-        const x2 = toRight ? card.x - card.w / 2 - 12 : card.x + card.w / 2 + 12;
-        const y2 = card.y + (c.y < card.y ? -24 : 24);
-        return <Arrow key={c.label} x1={x1} y1={c.y - 4} x2={x2} y2={y2} stroke={COUNTER} dash="4 4" />;
-      })}
-      <SenseGlyph kind="smell" x={120} y={52} s={1.2} tone={COUNTER} />
-      <SenseGlyph kind="sound" x={120} y={210} s={1.1} tone={COUNTER} />
-      <ShapedBottle x={680} y={76} />
-      <rect x={652} y={188} width={56} height={40} rx={4} fill={SIGNAL} />
+      <Backwash cx={400} cy={150} rx={396} ry={136} seed={3900} opacity={0.35} />
+      <Perfume1 x={120} bottom={114} seed={3910} />
+      <Notes x={116} y={234} s={1.4} seed={3920} />
+      <ShapedBottle x={680} bottom={114} seed={3930} />
+      <Wash pts={swatch} seed={3940} fill={SK.ochre} opacity={0.9} />
+      <InkLine pts={swatch} seed={3941} closed />
       {cues.map((c) => (
-        <Key key={c.label} x={c.x} y={c.y + (c.y < 150 ? 22 : 28) + (c.label === "UNIQUE BOTTLE SHAPE" ? 4 : 0)} anchor="middle" fill={INK} size={11}>
-          {c.label}
-        </Key>
+        <SketchText key={c.t} x={c.x} y={c.y} anchor="middle" size={12}>
+          {c.t}
+        </SketchText>
       ))}
+      {cues.map((c, i) => {
+        const left = c.x < 400;
+        const top = c.y < 200;
+        const p0: Pt = [left ? c.x + 60 : c.x - 60, top ? 84 : 230];
+        const p1: Pt = [left ? 296 : 504, top ? 124 : 184];
+        return <SketchArrow key={i} pts={rp([p0, p1])} seed={3950 + i * 3} width={1.1} head={8} />;
+      })}
 
-      <rect x={card.x - card.w / 2} y={card.y - card.h / 2} width={card.w} height={card.h} rx={10} fill={PAPER} stroke={INK} strokeWidth={2} />
-      <rect x={card.x - card.w / 2 + 18} y={card.y + 34} width={card.w - 36} height={8} rx={4} fill={RULE} />
-      <Display x={card.x} y={card.y + 18} anchor="middle" fill={COUNTER} size={64}>
+      <Paper pts={card} seed={3970} />
+      <InkLine pts={card} seed={3971} width={1.4} closed />
+      <SketchText x={400} y={176} anchor="middle" size={64} serif fill={SK.tan}>
         ?
-      </Display>
-      <Key x={card.x} y={card.y + card.h / 2 + 28} anchor="middle" fill={COUNTER} size={11}>
+      </SketchText>
+      <SketchText x={400} y={246} anchor="middle" size={13}>
         BRAND RECALL
-      </Key>
-    </Frame>
+      </SketchText>
+    </SketchFrame>
   );
 }
