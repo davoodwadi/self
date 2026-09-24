@@ -5,6 +5,7 @@
    ========================================================================== */
 
 import React from "react";
+import { cn } from "@/lib/utils";
 
 export const INK = "var(--ink)";
 
@@ -227,4 +228,23 @@ export function headAlong2(x: number, y: number, dx: number, dy: number, s = 8) 
   const px = -uy * (s * 0.62);
   const py = ux * (s * 0.62);
   return `M${r2(bx + px)} ${r2(by + py)}L${r2(x)} ${r2(y)}L${r2(bx - px)} ${r2(by - py)}`;
+}
+
+/* --------------------------------------------------------------------------
+   Slide layout blocks
+   -------------------------------------------------------------------------- */
+
+/** A plate that lives in a column: a figure well without the 680px floor. */
+export function Plate({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={cn("figure-well w-full min-w-0 p-3 sm:p-5", className)}>
+      {children}
+    </div>
+  );
 }

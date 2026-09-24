@@ -12,6 +12,7 @@ import {
 } from "@/components/slide-components/SlideComponents";
 import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
 import { cn } from "@/lib/utils";
+import { Plate } from "../_visuals/kit";
 import quizzesData from "./quizzes.json";
 import {
   ConsumerMarket,
@@ -145,21 +146,6 @@ function Ruled({
         className,
       )}
     >
-      {children}
-    </div>
-  );
-}
-
-/** A plate that lives in a column: a figure well without the 680px floor. */
-function Plate({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div className={cn("figure-well w-full p-3 sm:p-5", className)}>
       {children}
     </div>
   );

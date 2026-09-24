@@ -8,13 +8,11 @@ import {
   Subtitle,
   Heading,
   Tag,
-  Row,
-  Column,
-  Figure,
 } from "@/components/slide-components/SlideComponents";
-import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
+import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
-import quizzesData from "./quizzes.json";
+import { Plate } from "../_visuals/kit";
+import exercisesData from "./exercises.json";
 import {
   MarketingIceberg,
   ValueExchange,
@@ -44,12 +42,15 @@ import {
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
-// Quizzes: in this route group `Slide` renders `quizData` AFTER its section.
-// Each [quiz]-tagged topic therefore carries its own quiz, which tests that
-// slide and the ones before it.
+// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
+// so each [exercise]-tagged topic carries one exercise that tests that slide
+// and the ones before it.
 // ============================================================================
 
-const quiz = createCourseQuizLookup(quizzesData as CourseQuiz[]);
+const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
+
+/** Slide headings run one line where they can, leaving the screen to content. */
+const HEAD = "md:!mb-8 [&_h2]:!max-w-[34ch]";
 
 /** One verbatim sentence at reading size. */
 function P({
@@ -211,7 +212,7 @@ function PartPlate({
           {String(n).padStart(2, "0")}
         </div>
         <div className="min-w-0">
-          <h2 className="type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[16ch]">
+          <h2 className="type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[22ch]">
             <span className="type-label block mb-6 !text-[0.8rem]">
               {`Part ${n}:`}
             </span>{" "}
@@ -236,7 +237,7 @@ const PHILOSOPHIES = [
 
 function PhilosophyStrip({ active }: { active: number[] }) {
   return (
-    <div aria-hidden className="w-full my-8">
+    <div aria-hidden className="w-full my-6">
       <ol className="grid grid-cols-5 border-t border-[var(--rule-2)]">
         {PHILOSOPHIES.map((name, i) => {
           const on = active.includes(i);
@@ -283,7 +284,7 @@ function PhilosophyStrip({ active }: { active: number[] }) {
 /** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
 function Prompt({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
+    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-8 md:px-12 md:py-10">
       <p className="type-quote !text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[40ch]">
         {children}
       </p>
@@ -366,7 +367,7 @@ function InfluenceTrio() {
   return (
     <div
       aria-hidden
-      className="mt-12 grid w-full grid-cols-3 border-t border-[var(--rule)]"
+      className="mt-8 grid w-full grid-cols-3 border-t border-[var(--rule)]"
     >
       {items.map((it, i) => (
         <div
@@ -495,14 +496,14 @@ function FourPs() {
     },
   ];
   return (
-    <div className="relative mt-14 w-full">
+    <div className="relative mt-6 w-full">
       {/* Equal rows put the cross exactly at 50% / 50%, under the disc. */}
       <ul className="grid w-full md:grid-cols-2 md:auto-rows-fr">
         {ps.map((p, i) => (
           <li
             key={p.word}
             className={cn(
-              "py-8 md:py-12 border-[var(--ink)]",
+              "py-6 md:py-7 border-[var(--ink)]",
               i < 2 ? "md:border-b" : "",
               i % 2 === 0 ? "md:border-r md:pr-36" : "md:pl-36",
               i > 0 && "border-t md:border-t-0",
@@ -510,7 +511,7 @@ function FourPs() {
           >
             <p className="type-body max-w-[34ch] text-[var(--ink-2)]">
               <span
-                className="block mb-3 text-[2.5rem] md:text-[3.5rem] leading-none tracking-[-0.02em] text-[var(--ink)]"
+                className="block mb-2 text-[2.25rem] md:text-[2.75rem] leading-none tracking-[-0.02em] text-[var(--ink)]"
                 style={{
                   fontFamily: "var(--font-heading)",
                   fontWeight: 600,
@@ -528,7 +529,7 @@ function FourPs() {
       </ul>
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 hidden h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[var(--signal)] bg-[var(--paper)] md:flex"
+        className="pointer-events-none absolute left-1/2 top-1/2 hidden h-28 w-28 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[var(--signal)] bg-[var(--paper)] md:flex"
       >
         <span className="type-label text-center leading-snug">
           Target
@@ -684,192 +685,192 @@ export default function Week1() {
         n={1}
         title="Definition and Evolution of Marketing"
       >
-        <div className="mt-10 grid gap-8 md:grid-cols-2 md:gap-12">
-          <Lead>
-            Marketing is often misunderstood as merely selling or advertising.
-          </Lead>
-          <Lead>
-            In reality, <Term>selling is only the visible tip</Term> of the
-            marketing iceberg.
-          </Lead>
-        </div>
-        <Figure height="auto">
-          <MarketingIceberg />
-        </Figure>
-        <div className="grid gap-8 md:grid-cols-2 md:gap-12">
-          <P>
-            Modern marketing focuses on{" "}
-            <Term tone="counter">
-              creating, delivering, and communicating value
-            </Term>{" "}
-            to customers.
-          </P>
-          <P>
-            Its ultimate goal is to build strong, profitable customer
-            relationships and <Term>capture value in return</Term>.
-          </P>
+        <div className="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-14">
+          <div className="grid gap-4">
+            <Lead>
+              Marketing is often misunderstood as merely selling or advertising.
+            </Lead>
+            <Lead>
+              In reality, <Term>selling is only the visible tip</Term> of the
+              marketing iceberg.
+            </Lead>
+            <div className="h-px w-full bg-[var(--rule)]" />
+            <P>
+              Modern marketing focuses on{" "}
+              <Term tone="counter">
+                creating, delivering, and communicating value
+              </Term>{" "}
+              to customers.
+            </P>
+            <P>
+              Its ultimate goal is to build strong, profitable customer
+              relationships and <Term>capture value in return</Term>.
+            </P>
+          </div>
+          <Plate className="sm:!p-4">
+            <MarketingIceberg />
+          </Plate>
         </div>
       </PartPlate>
 
-      <Slide id="what-is-marketing" border quizData={quiz["what-is-marketing"]}>
+      <Slide id="what-is-marketing" border exercise={exercise["what-is-marketing"]}>
         <Tag>Definition</Tag>
-        <Heading>What is Marketing?</Heading>
-        <Statement className="!max-w-[36ch]">
-          Marketing is the process by which companies engage customers, build
-          strong customer relationships, and{" "}
-          <span className="text-[var(--counter)]">create customer value</span>{" "}
-          in order to{" "}
-          <span className="text-[var(--signal)]">
-            capture value from customers in return
-          </span>
-          .
-        </Statement>
-        <Figure height="auto" className="max-w-4xl">
-          <ValueExchange />
-        </Figure>
-        <Row gap="large" items="center" className="!mt-4">
-          <Column spanRatio="1/2">
+        <Heading className={HEAD}>What is Marketing?</Heading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-14">
+          <Statement className="!max-w-[36ch]">
+            Marketing is the process by which companies engage customers, build
+            strong customer relationships, and{" "}
+            <span className="text-[var(--counter)]">create customer value</span>{" "}
+            in order to{" "}
+            <span className="text-[var(--signal)]">
+              capture value from customers in return
+            </span>
+            .
+          </Statement>
+          <Plate>
+            <ValueExchange />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-14">
+          <div className="space-y-6">
             <P>
               The dual goal of marketing is to{" "}
               <Term tone="counter">attract new customers</Term> by promising
               superior value and <Term>keep current customers</Term> by
               delivering satisfaction.
             </P>
-            <div className="mt-8 w-full">
-              <AttractKeep />
-            </div>
-          </Column>
-          <Column spanRatio="1/2">
-            <Ruled weight="thick" className="md:ml-8">
-              <p className="type-h2 !font-normal max-w-[28ch]">
+            <Ruled weight="thick">
+              <p className="type-h2 !font-normal max-w-[34ch]">
                 Sound marketing is essential for the success of every
                 organization, from commercial giants to non-profit entities.
               </p>
             </Ruled>
-          </Column>
-        </Row>
+          </div>
+          <Plate>
+            <AttractKeep />
+          </Plate>
+        </div>
       </Slide>
 
       <Slide
         id="evolution-of-philosophies"
         border
-        quizData={quiz["evolution-of-philosophies"]}
+        exercise={exercise["evolution-of-philosophies"]}
       >
         <Tag>Five philosophies</Tag>
-        <Heading>The Evolution of Marketing Philosophies</Heading>
+        <Heading className={HEAD}>The Evolution of Marketing Philosophies</Heading>
         <Lead>
           Organizations have approached the marketplace through five distinct
           philosophies over time.
         </Lead>
         <PhilosophyStrip active={[0, 1]} />
-        <div className="mt-6 grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled keyLabel="01" tone="signal" weight="thick">
-            <P>
-              <Term tone="ink">The Production Concept</Term> holds that
-              consumers favor products that are available and highly affordable;
-              management must focus on improving production and distribution
-              efficiency.
-            </P>
-          </Ruled>
-          <Ruled keyLabel="02" tone="signal" weight="thick">
-            <P>
-              <Term tone="ink">The Product Concept</Term> suggests consumers
-              favor products offering the most quality, performance, and
-              innovative features; the focus is on continuous product
-              improvements.
-            </P>
-          </Ruled>
-        </div>
-        <div className="mt-16 grid w-full items-center gap-6 xl:grid-cols-[minmax(0,21.75rem)_1fr] xl:gap-12">
-          <p className="type-h2 !font-normal">
-            Both orientations carry the danger of focusing too{" "}
-            <span className="text-[var(--signal)]">inward</span> on operations
-            rather than <span className="text-[var(--counter)]">outward</span>{" "}
-            on customer needs.
-          </p>
-          <Figure height="auto" className="!my-0 min-w-0">
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-14">
+          <div className="space-y-8">
+            <div className="grid gap-8 md:grid-cols-2">
+              <Ruled keyLabel="01" tone="signal" weight="thick">
+                <P>
+                  <Term tone="ink">The Production Concept</Term> holds that
+                  consumers favor products that are available and highly
+                  affordable; management must focus on improving production
+                  and distribution efficiency.
+                </P>
+              </Ruled>
+              <Ruled keyLabel="02" tone="signal" weight="thick">
+                <P>
+                  <Term tone="ink">The Product Concept</Term> suggests
+                  consumers favor products offering the most quality,
+                  performance, and innovative features; the focus is on
+                  continuous product improvements.
+                </P>
+              </Ruled>
+            </div>
+            <p className="type-h2 !font-normal max-w-[40ch]">
+              Both orientations carry the danger of focusing too{" "}
+              <span className="text-[var(--signal)]">inward</span> on operations
+              rather than <span className="text-[var(--counter)]">outward</span>{" "}
+              on customer needs.
+            </p>
+          </div>
+          <Plate>
             <InwardOutward />
-          </Figure>
+          </Plate>
         </div>
       </Slide>
 
       <Slide
         id="selling-and-marketing"
         border
-        quizData={quiz["selling-and-marketing"]}
+        exercise={exercise["selling-and-marketing"]}
       >
         <Tag>Inside-out, outside-in</Tag>
-        <Heading>The Selling and Marketing Concepts</Heading>
+        <Heading className={HEAD}>The Selling and Marketing Concepts</Heading>
         <PhilosophyStrip active={[2, 3]} />
-        <div className="mt-4 grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled
-            keyLabel="03"
-            tone="signal"
-            weight="thick"
-            className="space-y-5"
-          >
-            <P>
-              <Term tone="ink">The Selling Concept</Term> holds that consumers
-              will not buy enough of the firm&apos;s products unless it
-              undertakes a large-scale selling and promotion effort.
-            </P>
-            <P>
-              It takes an <Term>inside-out</Term> perspective: starting from the
-              factory, focusing on existing products, and aiming for sales
-              volume through heavy selling.
-            </P>
-          </Ruled>
-          <Ruled
-            keyLabel="04"
-            tone="counter"
-            weight="thick"
-            className="space-y-5"
-          >
-            <P>
-              <Term tone="ink">The Marketing Concept</Term> holds that achieving
-              organizational goals depends on knowing the needs and wants of
-              target markets and delivering the desired satisfactions better
-              than competitors.
-            </P>
-            <P>
-              It takes an <Term tone="counter">outside-in</Term> perspective:
-              starting with a well-defined market, focusing on customer needs,
-              and integrating all marketing activities to generate profits
-              through customer satisfaction.
-            </P>
-          </Ruled>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-14">
+          <div className="grid gap-8 md:grid-cols-2">
+            <Ruled
+              keyLabel="03"
+              tone="signal"
+              weight="thick"
+              className="space-y-5"
+            >
+              <P>
+                <Term tone="ink">The Selling Concept</Term> holds that consumers
+                will not buy enough of the firm&apos;s products unless it
+                undertakes a large-scale selling and promotion effort.
+              </P>
+              <P>
+                It takes an <Term>inside-out</Term> perspective: starting from the
+                factory, focusing on existing products, and aiming for sales
+                volume through heavy selling.
+              </P>
+            </Ruled>
+            <Ruled
+              keyLabel="04"
+              tone="counter"
+              weight="thick"
+              className="space-y-5"
+            >
+              <P>
+                <Term tone="ink">The Marketing Concept</Term> holds that achieving
+                organizational goals depends on knowing the needs and wants of
+                target markets and delivering the desired satisfactions better
+                than competitors.
+              </P>
+              <P>
+                It takes an <Term tone="counter">outside-in</Term> perspective:
+                starting with a well-defined market, focusing on customer needs,
+                and integrating all marketing activities to generate profits
+                through customer satisfaction.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <SellingVersusMarketing />
+          </Plate>
         </div>
-        <Figure height="auto">
-          <SellingVersusMarketing />
-        </Figure>
       </Slide>
 
       <Slide
         id="societal-marketing"
         border
-        quizData={quiz["societal-marketing"]}
+        exercise={exercise["societal-marketing"]}
       >
         <Tag>The fifth philosophy</Tag>
-        <Heading>The Societal Marketing Concept</Heading>
+        <Heading className={HEAD}>The Societal Marketing Concept</Heading>
         <PhilosophyStrip active={[4]} />
-        <div className="mt-6 grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <P>
-            The Societal Marketing Concept questions whether the pure marketing
-            concept overlooks possible conflicts between{" "}
-            <Term>short-run consumer wants</Term> and{" "}
-            <Term tone="counter">long-run consumer welfare</Term>.
-          </P>
-          <P>
-            It holds that marketing strategy should deliver value to customers
-            in a way that maintains or improves both the consumer&apos;s and the
-            society&apos;s well-being.
-          </P>
-        </div>
-        <div className="mt-6 grid w-full items-center gap-8 xl:grid-cols-[47.25rem_minmax(0,1fr)] xl:gap-14">
-          <Figure height="auto" className="min-w-0">
-            <SocietalTriangle />
-          </Figure>
-          <div className="space-y-8">
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-14">
+          <div className="grid gap-8 md:grid-cols-2">
+            <P>
+              The Societal Marketing Concept questions whether the pure
+              marketing concept overlooks possible conflicts between{" "}
+              <Term>short-run consumer wants</Term> and{" "}
+              <Term tone="counter">long-run consumer welfare</Term>.
+            </P>
+            <P>
+              It holds that marketing strategy should deliver value to
+              customers in a way that maintains or improves both the
+              consumer&apos;s and the society&apos;s well-being.
+            </P>
             <Ruled weight="thick" tone="signal">
               <P>
                 It calls for sustainable marketing that balances three core
@@ -884,46 +885,60 @@ export default function Week1() {
               </p>
             </Ruled>
           </div>
+          <Plate>
+            <SocietalTriangle />
+          </Plate>
         </div>
       </Slide>
 
       <Slide id="marketing-myopia" border>
         <Tag>Theodore Levitt</Tag>
-        <Heading>Marketing Myopia</Heading>
-        <Lead className="!max-w-[58ch]">
-          Marketing myopia occurs when sellers pay more attention to{" "}
-          <span className="text-[var(--signal)]">
-            the specific products they offer
-          </span>{" "}
-          than to{" "}
-          <span className="text-[var(--counter)]">
-            the benefits and experiences produced by these products
-          </span>
-          .
-        </Lead>
-        <Figure height="auto">
-          <MyopiaView />
-        </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled>
+        <Heading className={HEAD}>Marketing Myopia</Heading>
+        <div className="w-full flow-root">
+          {/* On wide screens the beam floats right and the text wraps along its
+              outline: long lines above and below the cone, short beside the
+              eye. Phones get the plate after the first sentence instead. */}
+          <div
+            className="hidden lg:block lg:float-right lg:ml-12 lg:mb-6 lg:w-[34rem]"
+            style={{
+              shapeOutside:
+                "polygon(0% 37%, 41% 37%, 98% 5%, 100% 5%, 100% 95%, 98% 95%, 41% 63%, 0% 63%)",
+              shapeMargin: "36px",
+            }}
+          >
+            <MyopiaView />
+          </div>
+          <Lead className="!max-w-none">
+            Marketing myopia occurs when sellers pay more attention to{" "}
+            <span className="text-[var(--signal)]">
+              the specific products they offer
+            </span>{" "}
+            than to{" "}
+            <span className="text-[var(--counter)]">
+              the benefits and experiences produced by these products
+            </span>
+            .
+          </Lead>
+          <div className="mt-6 lg:hidden">
+            <MyopiaView />
+          </div>
+          <div className="mt-5 space-y-5 [&_p]:!max-w-none">
             <P>
               Coined by Theodore Levitt, it warns that companies risk
-              obsolescence if they define their business by products rather than
-              by underlying customer needs.
+              obsolescence if they define their business by products rather
+              than by underlying customer needs.
             </P>
-          </Ruled>
-          <Ruled>
             <P>
               For example, railroad companies declined because they viewed
               themselves as being in the <Term>railroad business</Term> rather
               than the <Term tone="counter">transportation business</Term>.
             </P>
-          </Ruled>
+            <Statement className="!text-[clamp(1.45rem,2.2vw,1.9rem)]">
+              Smart marketers view their products as problem-solving tools
+              rather than physical ends in themselves.
+            </Statement>
+          </div>
         </div>
-        <Statement className="mt-16 !max-w-[34ch]">
-          Smart marketers view their products as problem-solving tools rather
-          than physical ends in themselves.
-        </Statement>
       </Slide>
 
       <Slide id="discussion-myopia" border>
@@ -949,7 +964,7 @@ export default function Week1() {
           Part 2
           ================================================================ */}
       <PartPlate id="part-2" n={2} title="Needs, Wants, and Demands">
-        <div className="mt-10 grid gap-8 md:grid-cols-2 md:gap-12">
+        <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-12">
           <Lead>
             The most fundamental concept underlying marketing is human needs.
           </Lead>
@@ -958,7 +973,7 @@ export default function Week1() {
             allows marketers to design relevant offerings.
           </P>
         </div>
-        <Statement className="mt-16 !max-w-[32ch]">
+        <Statement className="mt-10 !max-w-[32ch]">
           Marketers <span className="text-[var(--ink-3)]">do not create</span>{" "}
           basic needs, but they{" "}
           <span className="text-[var(--counter)]">heavily influence</span> wants
@@ -970,44 +985,50 @@ export default function Week1() {
       <Slide
         id="needs-wants-demands"
         border
-        quizData={quiz["needs-wants-demands"]}
+        exercise={exercise["needs-wants-demands"]}
       >
         <Tag>Comparing needs, wants, and demands</Tag>
-        <Heading>Needs, Wants, and Demands Defined</Heading>
-        <Figure height="auto" className="!mt-0">
-          <NeedsWantsDemandsLanes />
-        </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-3 md:gap-10">
-          <Ruled keyLabel="Needs" weight="thick">
-            <P>
-              Human needs are states of felt deprivation, including basic
-              physical needs (food, clothing, warmth), social needs (belonging,
-              affection), and individual needs (knowledge, self-expression).
-            </P>
-          </Ruled>
-          <Ruled keyLabel="Wants" tone="counter" weight="thick">
-            <P>
-              Wants are the form human needs take as they are shaped by culture
-              and individual personality; a hungry person in one culture wants a
-              hamburger, while in another they want rice and fish.
-            </P>
-          </Ruled>
-          <Ruled keyLabel="Demands" tone="signal" weight="thick">
-            <P>
-              Demands are human wants that are backed by buying power; when
-              accompanied by purchasing ability, wants become demands.
-            </P>
-          </Ruled>
+        <Heading className={HEAD}>Needs, Wants, and Demands Defined</Heading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] lg:gap-12">
+          <div className="space-y-6">
+            <Ruled keyLabel="Needs" weight="thick">
+              <P>
+                Human needs are states of felt deprivation, including basic
+                physical needs (food, clothing, warmth), social needs
+                (belonging, affection), and individual needs (knowledge,
+                self-expression).
+              </P>
+            </Ruled>
+            <Ruled keyLabel="Wants" tone="counter" weight="thick">
+              <P>
+                Wants are the form human needs take as they are shaped by
+                culture and individual personality; a hungry person in one
+                culture wants a hamburger, while in another they want rice and
+                fish.
+              </P>
+            </Ruled>
+            <Ruled keyLabel="Demands" tone="signal" weight="thick">
+              <P>
+                Demands are human wants that are backed by buying power; when
+                accompanied by purchasing ability, wants become demands.
+              </P>
+            </Ruled>
+          </div>
+          <div className="min-w-0 space-y-8">
+            <Plate>
+              <NeedsWantsDemandsLanes />
+            </Plate>
+            <p className="type-h2 !font-normal">
+              Marketers conduct extensive research to identify unmet needs and
+              formulate products that translate wants into actual demand.
+            </p>
+          </div>
         </div>
-        <p className="type-h2 !font-normal mt-14 max-w-[44ch]">
-          Marketers conduct extensive research to identify unmet needs and
-          formulate products that translate wants into actual demand.
-        </p>
       </Slide>
 
       <Slide id="market-offerings" border>
         <Tag>Market offerings</Tag>
-        <Heading>Market Offerings: Goods, Services, and Experiences</Heading>
+        <Heading className={HEAD}>Market Offerings: Goods, Services, and Experiences</Heading>
         <div className="grid w-full items-center gap-8 xl:grid-cols-[minmax(0,1fr)_47.25rem] xl:gap-14">
           <div className="space-y-6">
             <Lead>
@@ -1021,11 +1042,11 @@ export default function Week1() {
               offered to a market to satisfy a need or want.
             </P>
           </div>
-          <Figure height="auto" className="!my-0 min-w-0">
+          <Plate>
             <OfferingRosette />
-          </Figure>
+          </Plate>
         </div>
-        <div className="mt-14 grid w-full gap-10 md:grid-cols-2 md:gap-14">
+        <div className="mt-8 grid w-full gap-10 md:grid-cols-2 md:gap-14">
           <Ruled weight="thick">
             <P>
               Market offerings are not limited to physical products; they
@@ -1045,46 +1066,48 @@ export default function Week1() {
       <Slide
         id="customer-value-satisfaction"
         border
-        quizData={quiz["customer-value-satisfaction"]}
+        exercise={exercise["customer-value-satisfaction"]}
       >
         <Tag>Value and satisfaction</Tag>
-        <Heading>Customer Value and Satisfaction</Heading>
-        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-14">
+        <Heading className={HEAD}>Customer Value and Satisfaction</Heading>
+        <div className="grid w-full gap-6 md:grid-cols-2 md:gap-10">
           <Lead>
-            Consumers usually face a broad array of products and services that
-            might satisfy a given need.
+            Consumers usually face a broad array of products and services
+            that might satisfy a given need.
           </Lead>
           <Lead>
             Customers form expectations about the value and satisfaction that
             various market offerings will deliver.
           </Lead>
         </div>
-        <div className="mt-14 grid w-full items-center gap-6 xl:grid-cols-[minmax(0,19rem)_1fr] xl:gap-12">
-          <Ruled tone="counter" weight="thick">
-            <P>
-              <Term tone="ink">Customer perceived value</Term> is the
-              customer&apos;s evaluation of the difference between all the
-              benefits and all the costs of a marketing offer relative to
-              competing offers.
-            </P>
-          </Ruled>
-          <Figure height="auto" className="!my-0 min-w-0">
-            <PerceivedValueBars />
-          </Figure>
-        </div>
-        <div className="mt-12 grid w-full items-center gap-6 xl:grid-cols-[minmax(0,19rem)_1fr] xl:gap-12">
-          <Ruled tone="signal" weight="thick">
-            <P>
-              <Term tone="ink">Customer satisfaction</Term> depends on the
-              product&apos;s perceived performance relative to a buyer&apos;s
-              expectations; if performance falls short, the customer is
-              dissatisfied, and if performance matches or exceeds expectations,
-              the customer is satisfied or delighted.
-            </P>
-          </Ruled>
-          <Figure height="auto" className="!my-0 min-w-0">
-            <SatisfactionGauge />
-          </Figure>
+        <div className="mt-8 grid w-full items-start gap-8 md:grid-cols-2 md:gap-10">
+          <div className="min-w-0 space-y-5">
+            <Ruled tone="counter" weight="thick">
+              <P>
+                <Term tone="ink">Customer perceived value</Term> is the
+                customer&apos;s evaluation of the difference between all the
+                benefits and all the costs of a marketing offer relative to
+                competing offers.
+              </P>
+            </Ruled>
+            <Plate>
+              <PerceivedValueBars />
+            </Plate>
+          </div>
+          <div className="min-w-0 space-y-5">
+            <Ruled tone="signal" weight="thick">
+              <P>
+                <Term tone="ink">Customer satisfaction</Term> depends on the
+                product&apos;s perceived performance relative to a buyer&apos;s
+                expectations; if performance falls short, the customer is
+                dissatisfied, and if performance matches or exceeds
+                expectations, the customer is satisfied or delighted.
+              </P>
+            </Ruled>
+            <Plate>
+              <SatisfactionGauge />
+            </Plate>
+          </div>
         </div>
       </Slide>
 
@@ -1113,20 +1136,22 @@ export default function Week1() {
         n={3}
         title="The Marketing Process and Creating Customer Value"
       >
-        <div className="mt-10 grid gap-8 md:grid-cols-2 md:gap-12">
-          <Lead>
-            To translate marketing theory into practice, organizations follow a
-            structured marketing process.
-          </Lead>
-          <P>
-            The process consists of five distinct steps that guide decisions
-            from research to value capture.
-          </P>
+        <div className="mt-8 grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:gap-12">
+          <div className="space-y-4">
+            <Lead>
+              To translate marketing theory into practice, organizations follow
+              a structured marketing process.
+            </Lead>
+            <P>
+              The process consists of five distinct steps that guide decisions
+              from research to value capture.
+            </P>
+          </div>
+          <Plate>
+            <FourPlusOne />
+          </Plate>
         </div>
-        <Figure height="auto">
-          <FourPlusOne />
-        </Figure>
-        <Statement className="!max-w-[34ch]">
+        <Statement className="mt-8 !max-w-[44ch]">
           The{" "}
           <span className="text-[var(--counter)]">
             first four steps create value for customers
@@ -1139,9 +1164,9 @@ export default function Week1() {
         </Statement>
       </PartPlate>
 
-      <Slide id="five-step-process" border quizData={quiz["five-step-process"]}>
+      <Slide id="five-step-process" border exercise={exercise["five-step-process"]}>
         <Tag>The Five-Step Marketing Process</Tag>
-        <Heading>The Five-Step Marketing Process</Heading>
+        <Heading className={HEAD}>The Five-Step Marketing Process</Heading>
         <Cascade
           steps={[
             "Understand the marketplace and customer needs and wants.",
@@ -1156,32 +1181,35 @@ export default function Week1() {
       <Slide
         id="customer-driven-strategy"
         border
-        quizData={quiz["customer-driven-strategy"]}
+        exercise={exercise["customer-driven-strategy"]}
       >
         <Tag>Step 2</Tag>
-        <Heading>Designing a Customer-Driven Marketing Strategy</Heading>
-        <Statement className="!max-w-[36ch]">
-          Marketing managers cannot serve all customers in every way; they must
-          select{" "}
-          <span className="text-[var(--signal)]">which customers to serve</span>{" "}
-          and <span className="text-[var(--counter)]">how</span>.
-        </Statement>
-        <div className="mt-14 grid w-full items-center gap-6 xl:grid-cols-[minmax(0,19rem)_1fr] xl:gap-12">
-          <Ruled
-            keyLabel="Which customers to serve"
-            tone="signal"
-            weight="thick"
-          >
-            <P>
-              Selecting target customers involves market segmentation (dividing
-              the market) and targeting (selecting segments to enter).
-            </P>
-          </Ruled>
-          <Figure height="auto" className="!my-0 min-w-0">
-            <SegmentTarget />
-          </Figure>
+        <Heading className={HEAD}>Designing a Customer-Driven Marketing Strategy</Heading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-2 lg:gap-12">
+          <Statement className="!max-w-[30ch]">
+            Marketing managers cannot serve all customers in every way; they
+            must select{" "}
+            <span className="text-[var(--signal)]">which customers to serve</span>{" "}
+            and <span className="text-[var(--counter)]">how</span>.
+          </Statement>
+          <div className="min-w-0 space-y-5">
+            <Ruled
+              keyLabel="Which customers to serve"
+              tone="signal"
+              weight="thick"
+            >
+              <P>
+                Selecting target customers involves market segmentation
+                (dividing the market) and targeting (selecting segments to
+                enter).
+              </P>
+            </Ruled>
+            <Plate>
+              <SegmentTarget />
+            </Plate>
+          </div>
         </div>
-        <div className="mt-14 grid w-full gap-10 md:grid-cols-2 md:gap-14">
+        <div className="mt-8 grid w-full gap-10 md:grid-cols-2 md:gap-12">
           <Ruled keyLabel="How" tone="counter" weight="thick">
             <P>
               Choosing a <Term tone="counter">value proposition</Term> defines
@@ -1190,17 +1218,17 @@ export default function Week1() {
             </P>
           </Ruled>
           <Ruled tone="counter">
-            <p className="type-h2 !font-normal">
+            <Lead className="!text-[var(--ink)]">
               A strong value proposition differentiates the brand and gives
               customers a compelling reason to choose it over competitors.
-            </p>
+            </Lead>
           </Ruled>
         </div>
       </Slide>
 
       <Slide id="four-ps" border>
         <Tag>Step 3</Tag>
-        <Heading>
+        <Heading className={HEAD}>
           Constructing an Integrated Marketing Program: The 4 Ps
         </Heading>
         <div className="grid w-full items-stretch gap-6 md:grid-cols-[1fr_auto_1fr] md:gap-8">
@@ -1241,25 +1269,25 @@ export default function Week1() {
         <FourPs />
       </Slide>
 
-      <Slide id="crm" border quizData={quiz["crm"]}>
+      <Slide id="crm" border exercise={exercise["crm"]}>
         <Tag>Step 4</Tag>
-        <Heading>Building Customer Relationships (CRM)</Heading>
-        <Statement className="!max-w-[40ch] !text-[clamp(1.4rem,2.6vw,2.2rem)]">
+        <Heading className={HEAD}>Building Customer Relationships (CRM)</Heading>
+        <Statement className="!max-w-[48ch] !text-[clamp(1.4rem,2.3vw,2rem)]">
           Customer Relationship Management (CRM) is the overall process of
           building and maintaining profitable customer relationships by
           delivering superior customer value and satisfaction.
         </Statement>
-        <div className="mt-14 grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled tone="counter" weight="thick">
-            <P>
-              CRM involves{" "}
-              <Term tone="counter">
-                acquiring, engaging, keeping, and growing
-              </Term>{" "}
-              customers across all company touchpoints.
-            </P>
-          </Ruled>
+        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] lg:gap-12">
           <div className="space-y-6">
+            <Ruled tone="counter" weight="thick">
+              <P>
+                CRM involves{" "}
+                <Term tone="counter">
+                  acquiring, engaging, keeping, and growing
+                </Term>{" "}
+                customers across all company touchpoints.
+              </P>
+            </Ruled>
             <Ruled tone="signal" weight="thick">
               <P>
                 Customer engagement marketing goes beyond selling to foster
@@ -1272,41 +1300,43 @@ export default function Week1() {
               brands and each other using social and mobile technologies.
             </P>
           </div>
+          <Plate>
+            <RelationshipCycle />
+          </Plate>
         </div>
-        <Figure height="auto">
-          <RelationshipCycle />
-        </Figure>
       </Slide>
 
-      <Slide id="capturing-value" border quizData={quiz["capturing-value"]}>
+      <Slide id="capturing-value" border exercise={exercise["capturing-value"]}>
         <Tag>Step 5</Tag>
-        <Heading>Capturing Value from Customers</Heading>
-        <Lead className="!max-w-[58ch]">
+        <Heading className={HEAD}>Capturing Value from Customers</Heading>
+        <Lead className="!max-w-[64ch]">
           By creating superior value for customers, the firm captures value from
           customers in return in the form of sales, profits, and long-term
           customer equity.
         </Lead>
-        <div className="mt-14 grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled weight="thick">
-            <P>
-              <Term tone="ink">Customer Lifetime Value (CLV)</Term> is the value
-              of the entire stream of purchases a customer makes over a lifetime
-              of patronage.
-            </P>
-          </Ruled>
-          <Ruled tone="signal" weight="thick">
-            <P>
-              Losing a customer means losing more than{" "}
-              <Term>a single sale</Term>; it means losing{" "}
-              <Term>the entire future income stream</Term> that customer
-              represents.
-            </P>
-          </Ruled>
+        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] lg:gap-12">
+          <div className="space-y-6">
+            <Ruled weight="thick">
+              <P>
+                <Term tone="ink">Customer Lifetime Value (CLV)</Term> is the
+                value of the entire stream of purchases a customer makes over a
+                lifetime of patronage.
+              </P>
+            </Ruled>
+            <Ruled tone="signal" weight="thick">
+              <P>
+                Losing a customer means losing more than{" "}
+                <Term>a single sale</Term>; it means losing{" "}
+                <Term>the entire future income stream</Term> that customer
+                represents.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <LifetimeStream />
+          </Plate>
         </div>
-        <Figure height="auto">
-          <LifetimeStream />
-        </Figure>
-        <div className="mt-4 grid w-full items-center gap-6 xl:grid-cols-[minmax(0,19rem)_1fr] xl:gap-12">
+        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] lg:gap-12">
           <Ruled tone="signal" weight="thick">
             <P>
               <Term tone="ink">Share of customer</Term> is the portion of the
@@ -1314,47 +1344,56 @@ export default function Week1() {
               categories.
             </P>
           </Ruled>
-          <Figure height="auto" className="!my-0 min-w-0">
+          <Plate>
             <ShareOfCustomer />
-          </Figure>
+          </Plate>
         </div>
       </Slide>
 
-      <Slide id="customer-equity" border quizData={quiz["customer-equity"]}>
+      <Slide id="customer-equity" border exercise={exercise["customer-equity"]}>
         <Tag>The ultimate aim</Tag>
-        <Heading>Customer Equity</Heading>
-        <Statement className="!max-w-[34ch]">
+        <Heading className={HEAD}>Customer Equity</Heading>
+        <Statement className="!max-w-[56ch] !text-[clamp(1.4rem,2.3vw,2rem)]">
           The ultimate aim of customer relationship management is to produce
           high customer equity.
         </Statement>
-        <div className="mt-14 grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled tone="signal" weight="thick">
-            <P>
-              <Term tone="ink">Customer equity</Term> is the total combined
-              customer lifetime values of all of the company&apos;s current and
-              potential customers.
-            </P>
-          </Ruled>
-          <Ruled tone="counter" weight="thick">
-            <P>
-              While sales and market share reflect the past, customer equity
-              suggests the future value of the firm.
-            </P>
-          </Ruled>
+        <div className="mt-8 grid w-full items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-12">
+          <div className="min-w-0 space-y-6">
+            <div className="grid gap-8 md:grid-cols-2">
+              <Ruled tone="signal" weight="thick">
+                <P>
+                  <Term tone="ink">Customer equity</Term> is the total combined
+                  customer lifetime values of all of the company&apos;s current
+                  and potential customers.
+                </P>
+              </Ruled>
+              <Ruled tone="counter" weight="thick">
+                <P>
+                  While sales and market share reflect the past, customer
+                  equity suggests the future value of the firm.
+                </P>
+              </Ruled>
+            </div>
+            <Plate>
+              <EquityLedger />
+            </Plate>
+          </div>
+          <div className="min-w-0 space-y-6">
+            <Ruled weight="thick">
+              <P>
+                Managing customer equity requires classifying customers by
+                potential profitability and projected loyalty into{" "}
+                <Term tone="ink">strangers</Term>,{" "}
+                <Term tone="counter">butterflies</Term>,{" "}
+                <Term>true friends</Term>, and{" "}
+                <Term tone="ink">barnacles</Term>.
+              </P>
+            </Ruled>
+            <Plate>
+              <RelationshipGroups />
+            </Plate>
+          </div>
         </div>
-        <Figure height="auto">
-          <EquityLedger />
-        </Figure>
-        <P className="mt-14 !max-w-[60ch]">
-          Managing customer equity requires classifying customers by potential
-          profitability and projected loyalty into{" "}
-          <Term tone="ink">strangers</Term>,{" "}
-          <Term tone="counter">butterflies</Term>, <Term>true friends</Term>,
-          and <Term tone="ink">barnacles</Term>.
-        </P>
-        <Figure height="auto" className="max-w-4xl">
-          <RelationshipGroups />
-        </Figure>
       </Slide>
 
       <Slide id="discussion-retention" border>
@@ -1369,9 +1408,9 @@ export default function Week1() {
           to acquire a new customer than to retain an existing one, and how
           should a startup balance its marketing budget between the two?
         </Prompt>
-        <Figure height="auto" className="max-w-5xl">
+        <Plate className="mt-8 max-w-5xl">
           <AcquireRetain />
-        </Figure>
+        </Plate>
       </Slide>
 
       {/* ================================================================

@@ -78,7 +78,7 @@
     /* --- Measure & rhythm ------------------------------------------------ */
     --measure:        68ch;   /* prose line length ceiling */
     --slide-max:      80rem;
-    --slide-pad-y:    7rem;
+    --slide-pad-y:    4.5rem;  /* room for one-screen slides */
     --rule-weight:    1px;
 
     /* ------------------------------------------------------------------

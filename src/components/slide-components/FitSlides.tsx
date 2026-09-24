@@ -12,7 +12,8 @@
  *
  *  1. Visuals give way first. Text keeps its width (narrowing it only wraps
  *     more lines), so every drawing and image (`svg[role=img]`, `img`) is
- *     scaled down by one factor, just far enough to fit, down to MIN_SCALE.
+ *     scaled down by one factor, just far enough to fit, down to MIN_SCALE,
+ *     and never further than actually shortens the slide.
  *  2. If the text alone is still taller than the screen (a short laptop
  *     window), the slide's content is zoomed down until it fits, but never
  *     below MIN_ZOOM, so body text stays readable. A slide that needs more
@@ -73,17 +74,36 @@ function fitSlide(slide: HTMLElement) {
     });
     return [...tallest.values()].reduce((a, b) => a + b, 0);
   };
+  const scale = (k: number) =>
+    shrinkable.forEach((v, j) => {
+      v.style.maxHeight = k < 1 ? `${Math.floor(natural[j] * k)}px` : "";
+      // An image keeps its aspect inside the shorter box; an SVG does so already.
+      if (v instanceof HTMLImageElement) v.style.objectFit = k < 1 ? "contain" : "";
+    });
   let k = 1;
   for (let i = 0; i < 12 && shrinkable.length > 0 && k > MIN_SCALE; i++) {
     const excess = over();
     if (excess <= 0) break;
     const total = rows();
     k = Math.max(MIN_SCALE, (k * (total - excess - 4)) / total);
-    shrinkable.forEach((v, j) => {
-      v.style.maxHeight = `${Math.floor(natural[j] * k)}px`;
-      // An image keeps its aspect inside the shorter box; an SVG does so already.
-      if (v instanceof HTMLImageElement) v.style.objectFit = "contain";
-    });
+    scale(k);
+  }
+  // Shrinking stops paying once a visual is shorter than the text beside it:
+  // the row keeps the text's height. Give visuals back every pixel that does
+  // not help the fit, so none is left small in an empty well.
+  if (k < 1) {
+    const settled = over();
+    const target = settled > 0 ? settled + 1 : 0;
+    let lo = k;
+    let hi = 1;
+    for (let i = 0; i < 8; i++) {
+      const mid = (lo + hi) / 2;
+      scale(mid);
+      if (over() <= target) lo = mid;
+      else hi = mid;
+    }
+    k = lo;
+    scale(k);
   }
 
   let zoom = 1;

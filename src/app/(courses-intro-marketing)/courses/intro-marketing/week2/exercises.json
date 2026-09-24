@@ -1,0 +1,226 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "microenvironment",
+    "prompt": "A yogurt brand depends on six kinds of actors close to it. Which actor is each one?",
+    "options": [
+      { "id": "company", "label": "The company itself" },
+      { "id": "suppliers", "label": "Suppliers" },
+      { "id": "intermediaries", "label": "Marketing intermediaries" },
+      { "id": "customers", "label": "Customer markets" },
+      { "id": "competitors", "label": "Competitors" },
+      { "id": "publics", "label": "Publics" }
+    ],
+    "cases": [
+      {
+        "id": "dairy-farm",
+        "text": "A dairy farm sells the brand the milk it turns into yogurt.",
+        "answer": "suppliers",
+        "explanation": "The farm provides an input the brand needs to make its product, so it is a supplier."
+      },
+      {
+        "id": "grocery-chain",
+        "text": "A grocery chain stocks the yogurt and sells it to shoppers.",
+        "answer": "intermediaries",
+        "explanation": "The chain sits between the brand and the people who buy, so it is a marketing intermediary."
+      },
+      {
+        "id": "families",
+        "text": "Families buy the yogurt for their children's lunches.",
+        "answer": "customers",
+        "explanation": "They are the buyers the brand serves, so they belong to its customer markets."
+      },
+      {
+        "id": "rival-cup",
+        "text": "Another yogurt brand puts a cheaper cup on the same shelf.",
+        "answer": "competitors",
+        "explanation": "It is chasing the same shoppers with a similar product, so it is a competitor."
+      },
+      {
+        "id": "newspaper",
+        "text": "A local newspaper writes about the brand's new plant.",
+        "answer": "publics",
+        "explanation": "The newspaper is not a partner or a buyer, but it can affect the brand's ability to serve customers. It is one of the publics."
+      },
+      {
+        "id": "finance",
+        "text": "The brand's finance department sets how much marketing can spend this year.",
+        "answer": "company",
+        "explanation": "Finance is another department inside the company, so it is part of the company itself."
+      },
+      {
+        "id": "citizens",
+        "text": "A citizens' group near the plant asks questions about its water use.",
+        "answer": "publics",
+        "explanation": "The group has an interest in the company and can affect it, without buying from it or supplying it. It is one of the publics."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "macroenvironment",
+    "prompt": "A juice company is planning next year. Is each change an actor close to the company or a larger societal force?",
+    "bins": [
+      { "id": "micro", "label": "Microenvironment" },
+      { "id": "macro", "label": "Macroenvironment" }
+    ],
+    "cards": [
+      {
+        "id": "rates",
+        "text": "The central bank raises interest rates across the country.",
+        "bin": "macro",
+        "explanation": "Interest rates are a broad force that reaches every company and every consumer, not one actor near the company."
+      },
+      {
+        "id": "bottle-supplier",
+        "text": "The company's bottle supplier raises its prices.",
+        "bin": "micro",
+        "explanation": "A supplier is an actor close to the company."
+      },
+      {
+        "id": "ad-law",
+        "text": "A new law limits how sugary drinks can be advertised to children.",
+        "bin": "macro",
+        "explanation": "A law is a larger societal force. It shapes what every drinks company, and its partners, can do."
+      },
+      {
+        "id": "rival-store",
+        "text": "A rival juice bar opens across the street from the company's shop.",
+        "bin": "micro",
+        "explanation": "A competitor is one of the actors close to the company."
+      },
+      {
+        "id": "local-values",
+        "text": "Shoppers across the country start to prefer locally made food.",
+        "bin": "macro",
+        "explanation": "A shift in a society's values and preferences is a larger societal force."
+      },
+      {
+        "id": "retailer-drops",
+        "text": "A supermarket chain stops stocking the company's juice.",
+        "bin": "micro",
+        "explanation": "A reseller is a marketing intermediary, one of the actors close to the company."
+      },
+      {
+        "id": "drought",
+        "text": "A long drought cuts the fruit harvest across the region.",
+        "bin": "macro",
+        "explanation": "Natural resources are a larger force. The drought affects every grower and buyer, not only this company."
+      },
+      {
+        "id": "budget-cut",
+        "text": "The company's own finance department cuts the marketing budget.",
+        "bin": "micro",
+        "explanation": "Other company departments belong to the company itself, the first actor in the microenvironment."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "pillars-of-csr",
+    "prompt": "Which of the four responsibilities is each company acting on?",
+    "options": [
+      { "id": "economic", "label": "Economic responsibility" },
+      { "id": "legal", "label": "Legal responsibility" },
+      { "id": "ethical", "label": "Ethical responsibility" },
+      { "id": "philanthropic", "label": "Philanthropic responsibility" }
+    ],
+    "cases": [
+      {
+        "id": "bakery-price",
+        "text": "A bakery chain prices its bread so it covers its costs and still earns a profit.",
+        "answer": "economic",
+        "explanation": "Staying profitable and economically viable is the economic responsibility."
+      },
+      {
+        "id": "recall",
+        "text": "A toy maker pulls a toy from stores after a new safety law bans one of its parts.",
+        "answer": "legal",
+        "explanation": "It is obeying the law and playing by the rules."
+      },
+      {
+        "id": "fair-suppliers",
+        "text": "A furniture maker pays its small suppliers on time and at a fair rate, though no law requires it.",
+        "answer": "ethical",
+        "explanation": "No rule forces it. The company is doing what is right, just and fair."
+      },
+      {
+        "id": "food-bank",
+        "text": "A grocery chain gives its unsold food to local food banks every week.",
+        "answer": "philanthropic",
+        "explanation": "It contributes resources to the community to improve quality of life."
+      },
+      {
+        "id": "privacy",
+        "text": "A software firm changes how it stores customer data to meet new privacy rules.",
+        "answer": "legal",
+        "explanation": "Meeting the rules set by law is the legal responsibility."
+      },
+      {
+        "id": "hidden-fee",
+        "text": "A phone company warns customers about a fee before they sign, although it could stay silent.",
+        "answer": "ethical",
+        "explanation": "Staying silent would be allowed. Being open with customers is doing what is fair."
+      },
+      {
+        "id": "coding-club",
+        "text": "A bank pays for a free coding program at a community centre.",
+        "answer": "philanthropic",
+        "explanation": "Giving money to a community program is contributing resources to the community."
+      },
+      {
+        "id": "slow-year",
+        "text": "A small brewery cuts waste so it can stay in business through a slow year.",
+        "answer": "economic",
+        "explanation": "Keeping the business viable is the economic responsibility."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "deceptive-practices",
+    "prompt": "Is each ad an example of deceptive pricing or deceptive promotion?",
+    "bins": [
+      { "id": "pricing", "label": "Deceptive pricing" },
+      { "id": "promotion", "label": "Deceptive promotion" }
+    ],
+    "cards": [
+      {
+        "id": "mattress",
+        "text": "A mattress store marks a bed \"was $2,000, now $799\", but it never sold for $2,000.",
+        "bin": "pricing",
+        "explanation": "The large reduction is measured from a phony high retail price."
+      },
+      {
+        "id": "vacuum",
+        "text": "A vacuum ad claims twice the suction of other brands, but tests show it has the same.",
+        "bin": "promotion",
+        "explanation": "The ad misrepresents the product's performance."
+      },
+      {
+        "id": "wholesale-sign",
+        "text": "A shop's sign promises \"wholesale prices for everyone\" while it charges normal retail prices.",
+        "bin": "pricing",
+        "explanation": "Falsely advertising wholesale prices is deceptive pricing."
+      },
+      {
+        "id": "camera",
+        "text": "A phone ad shows photos that the phone's camera cannot actually take.",
+        "bin": "promotion",
+        "explanation": "The ad misrepresents one of the product's features."
+      },
+      {
+        "id": "factory-outlet",
+        "text": "A store calls its tags \"factory prices\", but it buys from distributors like any other store.",
+        "bin": "pricing",
+        "explanation": "Falsely advertising factory prices is deceptive pricing."
+      },
+      {
+        "id": "waterproof",
+        "text": "An ad calls a running shoe waterproof, but water gets in on the first rainy day.",
+        "bin": "promotion",
+        "explanation": "The ad misrepresents what the product can do."
+      }
+    ]
+  }
+]

@@ -1,0 +1,477 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "what-is-marketing",
+    "prompt": "Marketing has a dual goal. Is each move mainly about attracting new customers or keeping current ones?",
+    "bins": [
+      { "id": "attract", "label": "Attract new customers" },
+      { "id": "keep", "label": "Keep current customers" }
+    ],
+    "cards": [
+      {
+        "id": "gym-trial",
+        "text": "A gym offers a free first month to people who have never trained there.",
+        "bin": "attract",
+        "explanation": "It reaches people who are not yet customers by promising superior value."
+      },
+      {
+        "id": "network-ad",
+        "text": "A phone carrier's ads promise the fastest network to people with a rival plan.",
+        "bin": "attract",
+        "explanation": "Promising superior value to win customers away from rivals attracts new customers."
+      },
+      {
+        "id": "bakery-order",
+        "text": "A bakery has a regular's usual order ready before she reaches the counter.",
+        "bin": "keep",
+        "explanation": "Delivering satisfaction to someone who already buys keeps current customers."
+      },
+      {
+        "id": "airline-fix",
+        "text": "An airline rebooks a frequent flyer within minutes after a cancelled flight.",
+        "bin": "keep",
+        "explanation": "Satisfying an existing customer when something goes wrong keeps them."
+      },
+      {
+        "id": "grocer-flyer",
+        "text": "A new grocery store mails opening-week deals to every home in the area.",
+        "bin": "attract",
+        "explanation": "The store has no customers yet, so it promises value to attract new ones."
+      },
+      {
+        "id": "repair-free",
+        "text": "A bike shop tunes up bikes it sold last year at no charge each spring.",
+        "bin": "keep",
+        "explanation": "It keeps past buyers satisfied, so they stay customers."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "evolution-of-philosophies",
+    "prompt": "Which philosophy is each manager following: the Production Concept or the Product Concept?",
+    "bins": [
+      { "id": "production", "label": "Production Concept" },
+      { "id": "product", "label": "Product Concept" }
+    ],
+    "cards": [
+      {
+        "id": "automate",
+        "text": "A bike maker automates its plant so it can sell the same bike for less.",
+        "bin": "production",
+        "explanation": "Lower cost through production efficiency makes the product highly affordable."
+      },
+      {
+        "id": "camera",
+        "text": "A phone maker adds a better camera and a faster chip every single year.",
+        "bin": "product",
+        "explanation": "Continuous improvement of performance and features is the Product Concept."
+      },
+      {
+        "id": "warehouses",
+        "text": "A snack company opens more warehouses so its chips reach every corner store.",
+        "bin": "production",
+        "explanation": "Making the product available everywhere is distribution efficiency."
+      },
+      {
+        "id": "suction",
+        "text": "A vacuum maker spends its budget making each model's suction stronger.",
+        "bin": "product",
+        "explanation": "The focus is on product quality and performance."
+      },
+      {
+        "id": "bulk",
+        "text": "A furniture firm cuts its models to three so it can build them faster and cheaper.",
+        "bin": "production",
+        "explanation": "Fewer models make production more efficient and the furniture more affordable."
+      },
+      {
+        "id": "materials",
+        "text": "A boot maker keeps testing new materials to make the warmest boot on the market.",
+        "bin": "product",
+        "explanation": "Chasing the most quality and innovative features is the Product Concept."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "selling-and-marketing",
+    "prompt": "You have now met four philosophies. Which one is each company following?",
+    "options": [
+      { "id": "production", "label": "Production Concept" },
+      { "id": "product", "label": "Product Concept" },
+      { "id": "selling", "label": "Selling Concept" },
+      { "id": "marketing", "label": "Marketing Concept" }
+    ],
+    "cases": [
+      {
+        "id": "overstock",
+        "text": "A car dealer has too many of last year's models, so it doubles commissions and runs ads all weekend to move them.",
+        "answer": "selling",
+        "explanation": "It starts from the factory's existing products and aims for volume through heavy selling. That is the inside-out Selling Concept."
+      },
+      {
+        "id": "stroller",
+        "text": "Before designing a stroller, a company spends months with city parents to learn what they struggle with.",
+        "answer": "marketing",
+        "explanation": "It starts with a well-defined market and its needs. That is the outside-in Marketing Concept."
+      },
+      {
+        "id": "cheap-shoes",
+        "text": "A shoe maker moves to a larger plant so it can cut its price and stock every discount store.",
+        "answer": "production",
+        "explanation": "Affordability and availability through production and distribution efficiency is the Production Concept."
+      },
+      {
+        "id": "blender",
+        "text": "A blender brand adds a more powerful motor and two new settings to every model this year.",
+        "answer": "product",
+        "explanation": "Continuous product improvement in performance and features is the Product Concept."
+      },
+      {
+        "id": "gym-calls",
+        "text": "A gym with empty memberships to fill hires a call centre to phone every number in the area.",
+        "answer": "selling",
+        "explanation": "It pushes what it already has through a large-scale selling effort."
+      },
+      {
+        "id": "bank-app",
+        "text": "A bank studies how students handle money, then builds an account and app around what they told it.",
+        "answer": "marketing",
+        "explanation": "It learns the needs of a target market first and delivers satisfaction better than competitors."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "societal-marketing",
+    "prompt": "A fast-food chain is planning a new menu the societal way. Which of the three considerations does each point serve?",
+    "bins": [
+      { "id": "profits", "label": "Company profits" },
+      { "id": "wants", "label": "Consumer wants" },
+      { "id": "public", "label": "Public interest" }
+    ],
+    "cards": [
+      {
+        "id": "margin",
+        "text": "Each new item has to earn a healthy margin.",
+        "bin": "profits",
+        "explanation": "The company still needs the menu to make money."
+      },
+      {
+        "id": "tasty",
+        "text": "Customers want meals that taste great and come fast.",
+        "bin": "wants",
+        "explanation": "This is what consumers want in the short run."
+      },
+      {
+        "id": "packaging",
+        "text": "Every box and cup must be recyclable.",
+        "bin": "public",
+        "explanation": "Less waste serves society's well-being."
+      },
+      {
+        "id": "sales",
+        "text": "The menu should raise sales in every store.",
+        "bin": "profits",
+        "explanation": "Sales that lead to profit serve the company."
+      },
+      {
+        "id": "combo",
+        "text": "Diners asked for bigger combo meals.",
+        "bin": "wants",
+        "explanation": "It is a consumer want, which may conflict with long-run welfare."
+      },
+      {
+        "id": "salt",
+        "text": "Salt and sugar are cut across the menu.",
+        "bin": "public",
+        "explanation": "Protecting long-run consumer health serves the public interest."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "needs-wants-demands",
+    "prompt": "Is each case a need, a want, or a demand?",
+    "bins": [
+      { "id": "need", "label": "Need" },
+      { "id": "want", "label": "Want" },
+      { "id": "demand", "label": "Demand" }
+    ],
+    "cards": [
+      {
+        "id": "cold",
+        "text": "Feeling cold on the walk to class in January",
+        "bin": "need",
+        "explanation": "A state of felt deprivation: the basic physical need for warmth."
+      },
+      {
+        "id": "lonely",
+        "text": "Feeling lonely in the first week at a new school",
+        "bin": "need",
+        "explanation": "A social need for belonging and affection."
+      },
+      {
+        "id": "parka",
+        "text": "Wishing for the same parka everyone on campus wears",
+        "bin": "want",
+        "explanation": "The need for warmth has taken a form shaped by culture and personality."
+      },
+      {
+        "id": "poutine",
+        "text": "Craving a poutine when hungry late at night",
+        "bin": "want",
+        "explanation": "Hunger is the need. Poutine is the form it takes here, shaped by culture."
+      },
+      {
+        "id": "laptop-saved",
+        "text": "Having saved $1,200 to buy the laptop she has picked out",
+        "bin": "demand",
+        "explanation": "The want is backed by buying power, so it is a demand."
+      },
+      {
+        "id": "concert",
+        "text": "Buying two concert tickets the moment they go on sale",
+        "bin": "demand",
+        "explanation": "A want accompanied by purchasing ability is a demand."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "customer-value-satisfaction",
+    "prompt": "Compare what each customer expected with how the offering performed. Is the customer dissatisfied, satisfied or delighted?",
+    "bins": [
+      { "id": "dissatisfied", "label": "Dissatisfied" },
+      { "id": "satisfied", "label": "Satisfied" },
+      { "id": "delighted", "label": "Delighted" }
+    ],
+    "cards": [
+      {
+        "id": "late-pizza",
+        "text": "The app promised pizza in 30 minutes. It came after an hour, cold.",
+        "bin": "dissatisfied",
+        "explanation": "Performance fell short of expectations."
+      },
+      {
+        "id": "hotel-upgrade",
+        "text": "She booked a basic room and was upgraded to a suite with a view.",
+        "bin": "delighted",
+        "explanation": "Performance exceeded expectations."
+      },
+      {
+        "id": "haircut",
+        "text": "He asked for his usual haircut and got exactly his usual haircut.",
+        "bin": "satisfied",
+        "explanation": "Performance matched expectations."
+      },
+      {
+        "id": "earbuds",
+        "text": "The ad said the earbuds last 8 hours. They die after 3.",
+        "bin": "dissatisfied",
+        "explanation": "Perceived performance fell short of what the buyer expected."
+      },
+      {
+        "id": "bus",
+        "text": "The bus was due at 8:10 and arrived at 8:10.",
+        "bin": "satisfied",
+        "explanation": "Performance matched expectations."
+      },
+      {
+        "id": "mechanic",
+        "text": "The garage quoted two days, fixed the car in two hours and washed it too.",
+        "bin": "delighted",
+        "explanation": "Performance went well beyond expectations."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "five-step-process",
+    "prompt": "Two graduates open a café beside campus. Put their moves in the order of the five-step marketing process.",
+    "steps": [
+      {
+        "id": "understand",
+        "text": "They talk to students between classes about what they want from a morning coffee.",
+        "explanation": "Step 1: understand the marketplace and customer needs and wants."
+      },
+      {
+        "id": "strategy",
+        "text": "They decide to serve students and promise good coffee that is fast and cheap.",
+        "explanation": "Step 2: design a customer-value-driven marketing strategy."
+      },
+      {
+        "id": "program",
+        "text": "They set the menu and prices, sign a lease by the main gate and launch an Instagram account.",
+        "explanation": "Step 3: construct an integrated marketing program that delivers superior value."
+      },
+      {
+        "id": "engage",
+        "text": "They learn regulars' names, run a loyalty card and surprise students with free cookies in exam week.",
+        "explanation": "Step 4: engage customers, build profitable relationships and create customer delight."
+      },
+      {
+        "id": "capture",
+        "text": "Loyal regulars bring steady profits, year after year.",
+        "explanation": "Step 5: capture value from customers to create profits and customer equity."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "customer-driven-strategy",
+    "prompt": "A new sneaker brand is designing its strategy. Which decision is each move: segmentation, targeting or the value proposition?",
+    "options": [
+      { "id": "segmentation", "label": "Segmentation" },
+      { "id": "targeting", "label": "Targeting" },
+      { "id": "value-prop", "label": "Value proposition" }
+    ],
+    "cases": [
+      {
+        "id": "split",
+        "text": "The team divides sneaker buyers into runners, skaters, collectors and people who want comfort at work.",
+        "answer": "segmentation",
+        "explanation": "Dividing the market into groups is market segmentation."
+      },
+      {
+        "id": "choose-runners",
+        "text": "They decide to sell only to serious runners.",
+        "answer": "targeting",
+        "explanation": "Selecting which segment to enter is targeting."
+      },
+      {
+        "id": "promise",
+        "text": "They promise runners the lightest shoe that still lasts 1,000 km.",
+        "answer": "value-prop",
+        "explanation": "The set of benefits the brand promises to deliver is its value proposition."
+      },
+      {
+        "id": "age-groups",
+        "text": "They sort runners by age and by how many kilometres they run each week.",
+        "answer": "segmentation",
+        "explanation": "Splitting the market into groups is still segmentation."
+      },
+      {
+        "id": "skip-collectors",
+        "text": "They choose not to chase collectors, even though that group spends a lot.",
+        "answer": "targeting",
+        "explanation": "Deciding which segments to enter, and which to leave, is targeting."
+      },
+      {
+        "id": "reason",
+        "text": "Their ads give runners one reason to pick them over big rivals: fewer injuries.",
+        "answer": "value-prop",
+        "explanation": "A value proposition differentiates the brand and gives customers a compelling reason to choose it."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "crm",
+    "prompt": "CRM involves acquiring, engaging, keeping and growing customers. Match each part to what a streaming service does.",
+    "term_label": "Part of CRM",
+    "match_label": "What the service does",
+    "pairs": [
+      {
+        "id": "acquire",
+        "term": "Acquiring",
+        "match": "Offers a free first month to people who have never subscribed.",
+        "explanation": "Bringing in someone who is not yet a customer is acquiring."
+      },
+      {
+        "id": "engage",
+        "term": "Engaging",
+        "match": "Invites subscribers to vote on which cancelled show comes back.",
+        "explanation": "Involving customers directly in shaping the brand is engaging."
+      },
+      {
+        "id": "keep",
+        "term": "Keeping",
+        "match": "Offers a cheaper plan to subscribers who click Cancel.",
+        "explanation": "Holding on to a customer who is about to leave is keeping."
+      },
+      {
+        "id": "grow",
+        "term": "Growing",
+        "match": "Sells current subscribers an add-on with live sports.",
+        "explanation": "Selling more to a customer the firm already has is growing."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "capturing-value",
+    "question_text": "A shopper who has bought groceries at the same store every week for years switches to a rival. According to the lecture, what has the store lost?",
+    "hint": "Think about Customer Lifetime Value.",
+    "correct_answer_citation": "Week 01 · Capturing Value from Customers",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Only the value of that shopper's next weekly grocery purchase.",
+        "option_explanation": "Losing a customer means losing more than a single sale."
+      },
+      {
+        "option_text": "The entire future income stream that customer represented.",
+        "option_explanation": "Correct. Customer Lifetime Value is the whole stream of purchases, so losing the customer loses that future stream."
+      },
+      {
+        "option_text": "Nothing lasting, because share of customer stays the same.",
+        "option_explanation": "Share of customer is the portion of the customer's purchasing the company gets. When the shopper leaves, it falls."
+      },
+      {
+        "option_text": "A single sale, since each weekly purchase is a separate event.",
+        "option_explanation": "The lecture treats purchases as a stream over a lifetime of patronage, not as separate events."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "customer-equity",
+    "prompt": "Place each customer by potential profitability and projected loyalty. Which group are they?",
+    "options": [
+      { "id": "strangers", "label": "Strangers" },
+      { "id": "butterflies", "label": "Butterflies" },
+      { "id": "true-friends", "label": "True friends" },
+      { "id": "barnacles", "label": "Barnacles" }
+    ],
+    "cases": [
+      {
+        "id": "hotel-exec",
+        "text": "A business traveller spends big on hotel stays but books whichever chain is cheapest that week.",
+        "answer": "butterflies",
+        "explanation": "High potential profitability, low projected loyalty: a butterfly."
+      },
+      {
+        "id": "one-off",
+        "text": "A tourist buys one bottle of water at a corner store and will never pass by again.",
+        "answer": "strangers",
+        "explanation": "Low potential profitability and low projected loyalty: a stranger."
+      },
+      {
+        "id": "family-grocer",
+        "text": "A family of five does its full weekly shop at the same grocer and has for ten years.",
+        "answer": "true-friends",
+        "explanation": "High potential profitability and high projected loyalty: a true friend."
+      },
+      {
+        "id": "bank-small",
+        "text": "A client has banked with the same branch for 30 years but keeps only $40 there and calls weekly for help.",
+        "answer": "barnacles",
+        "explanation": "High projected loyalty but low potential profitability: a barnacle."
+      },
+      {
+        "id": "loyal-bigspender",
+        "text": "A regular buys a new premium bike from the same shop every two years and brings it there for every repair.",
+        "answer": "true-friends",
+        "explanation": "Profitable and loyal: a true friend."
+      },
+      {
+        "id": "deal-chaser",
+        "text": "A shopper visits only on clearance days, buys one cheap item and tries a different store next time.",
+        "answer": "strangers",
+        "explanation": "Little profit and little loyalty: a stranger."
+      }
+    ]
+  }
+]

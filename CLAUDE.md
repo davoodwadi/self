@@ -34,6 +34,12 @@ Each week keeps its exercises in `exercises.json` beside its `page.tsx`, one ent
 
 Each topic in content.md should read as one slide, not a scroll of screens. Keep slides content dense: every visual has to earn its space, and related ideas belong together, not spread out. How to achieve that is a design choice, slide by slide. Never cut or reword content to make a slide fit.
 
+## Slide layouts
+
+Give each week a varied mix of layouts, so no two neighbouring slides feel the same. Pick the arrangement that suits each slide's content: text beside a plate, plates in columns under their sentences, a statement across the top, a full-width figure, and others worth exploring.
+
+Wrapping text around a visual, as magazines and textbooks do, is one option in that mix. It suits a plate with a strong outline (a beam, a slope, a triangle) and enough running prose to flow down its full height. Let the lines follow the drawing's outline (`shape-outside`) with generous space around it. Keep the text left-aligned so it breaks naturally, and on phones show the plate after its first sentence. Use it sparingly, on the slides it lifts, and keep it one choice among many rather than a house style.
+
 # Slide height
 
 Every slide (the title or hero, section and chapter openers, content slides, discussion and exercise slides, and the summary) fits one screen: `min-h-svh` on its section, with the content centred vertically (`flex flex-col justify-center`), and the next slide starts on a fresh screen. Exercise screens start from a fixed top instead of being centred, so the prompt and the answer areas stay still while students work.

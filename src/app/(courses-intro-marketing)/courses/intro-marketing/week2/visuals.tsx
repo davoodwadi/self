@@ -38,10 +38,9 @@ import {
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
-import { Person1 } from "../_visuals/objects";
+import { Cpu } from "@phosphor-icons/react";
+import { Factory1, Gift1, Pack1, Person1, Store2 } from "../_visuals/objects";
 
-const AFFIRM = "var(--affirm)";
-const AFFIRM_TINT = "rgba(46, 90, 43, 0.1)";
 const INK_TINT = "rgba(23, 22, 15, 0.06)";
 
 const f2 = (n: number) => +n.toFixed(2);
@@ -51,75 +50,70 @@ const f2 = (n: number) => +n.toFixed(2);
    ========================================================================== */
 
 export function EnvironmentRings() {
-  const cx = 400;
-  const cy = 176;
-  const micro = { rx: 250, ry: 104 };
-  const macro = { rx: 376, ry: 158 };
+  const cx = 200;
+  const cy = 160;
+  const micro = { rx: 136, ry: 100 };
+  const macro = { rx: 188, ry: 150 };
 
   const onEllipse = (e: { rx: number; ry: number }, deg: number) => {
     const t = (deg * Math.PI) / 180;
     return { x: cx + e.rx * Math.cos(t), y: cy + e.ry * Math.sin(t) };
   };
-  const inward = (deg: number, outer: { rx: number; ry: number }, inner: { rx: number; ry: number }, tone: string) => {
-    const a = onEllipse(outer, deg);
-    const b = onEllipse(inner, deg);
-    const x0 = a.x + (b.x - a.x) * 0.22;
-    const y0 = a.y + (b.y - a.y) * 0.22;
-    const x1 = a.x + (b.x - a.x) * 0.78;
-    const y1 = a.y + (b.y - a.y) * 0.78;
+  const inward = (deg: number) => {
+    const a = onEllipse(macro, deg);
+    const b = onEllipse(micro, deg);
+    const x0 = a.x + (b.x - a.x) * 0.2;
+    const y0 = a.y + (b.y - a.y) * 0.2;
+    const x1 = a.x + (b.x - a.x) * 0.8;
+    const y1 = a.y + (b.y - a.y) * 0.8;
     return (
-      <g key={`${deg}-${inner.rx}`}>
-        <line x1={f2(x0)} y1={f2(y0)} x2={f2(x1)} y2={f2(y1)} stroke={tone} strokeWidth={1.5} />
-        <path d={headAlong1(x1, y1, x1 - x0, y1 - y0, 7)} fill="none" stroke={tone} strokeWidth={1.5} />
+      <g key={deg}>
+        <line x1={f2(x0)} y1={f2(y0)} x2={f2(x1)} y2={f2(y1)} stroke={COUNTER} strokeWidth={1.5} />
+        <path d={headAlong1(x1, y1, x1 - x0, y1 - y0, 7)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       </g>
     );
   };
-  const core = { rx: 150, ry: 44 };
+  const box = { w: 100, h: 44 };
+  const left = cx - 18 - box.w;
+  const right = cx + 18;
 
   return (
     <Frame
-      height={350}
-      label="Two rings around marketing. The inner ring is the microenvironment, the outer ring the macroenvironment. At the centre, marketing management builds relationships with target customers, and arrows from both rings press in on that relationship."
+      width={400}
+      height={320}
+      label="Two rings around marketing. The inner ring is the microenvironment, the outer ring the macroenvironment. At the centre, marketing management is joined to target customers by a relationship, and arrows from the outer ring press in on the inner one."
     >
       <ellipse cx={cx} cy={cy} rx={macro.rx} ry={macro.ry} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.25} />
       <ellipse cx={cx} cy={cy} rx={micro.rx} ry={micro.ry} fill={PAPER} stroke={INK} strokeWidth={1.25} />
 
-      <Key x={cx} y={cy - macro.ry + 30} anchor="middle" fill={COUNTER} size={12}>
+      <Key x={cx} y={cy - macro.ry + 30} anchor="middle" fill={COUNTER} size={11.5}>
         MACROENVIRONMENT
       </Key>
-      <Key x={cx} y={cy - micro.ry + 28} anchor="middle" fill={INK} size={12}>
+      <Key x={cx} y={cy - micro.ry + 30} anchor="middle" fill={INK} size={11.5}>
         MICROENVIRONMENT
       </Key>
 
-      {[18, 162, 198, 342].map((d) => inward(d, macro, micro, COUNTER))}
-      {[10, 170, 190, 350].map((d) => inward(d, micro, core, INK))}
+      {[28, 152, 208, 332].map(inward)}
 
       {/* the relationship at the centre */}
-      <rect x={cx - 150} y={cy - 22} width={112} height={44} fill={SIGNAL} />
-      <Key x={cx - 94} y={cy - 4} anchor="middle" fill={PAPER} size={9.5}>
+      <rect x={left} y={cy - box.h / 2} width={box.w} height={box.h} fill={SIGNAL} />
+      <Key x={left + box.w / 2} y={cy - 3} anchor="middle" fill={PAPER} size={9.5}>
         MARKETING
       </Key>
-      <Key x={cx - 94} y={cy + 10} anchor="middle" fill={PAPER} size={9.5}>
+      <Key x={left + box.w / 2} y={cy + 11} anchor="middle" fill={PAPER} size={9.5}>
         MANAGEMENT
       </Key>
-      <rect x={cx + 38} y={cy - 22} width={112} height={44} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={cx + 94} y={cy - 4} anchor="middle" fill={SIGNAL} size={9.5}>
+      <rect x={right} y={cy - box.h / 2} width={box.w} height={box.h} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={right + box.w / 2} y={cy - 3} anchor="middle" fill={SIGNAL} size={9.5}>
         TARGET
       </Key>
-      <Key x={cx + 94} y={cy + 10} anchor="middle" fill={SIGNAL} size={9.5}>
+      <Key x={right + box.w / 2} y={cy + 11} anchor="middle" fill={SIGNAL} size={9.5}>
         CUSTOMERS
       </Key>
-      <line x1={cx - 36} y1={cy - 4} x2={cx + 36} y2={cy - 4} stroke={SIGNAL} strokeWidth={1.5} />
-      <line x1={cx - 36} y1={cy + 4} x2={cx + 36} y2={cy + 4} stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={cx} y={cy + 42} anchor="middle" fill={SIGNAL} size={9}>
+      <line x1={cx - 16} y1={cy - 4} x2={cx + 16} y2={cy - 4} stroke={SIGNAL} strokeWidth={1.5} />
+      <line x1={cx - 16} y1={cy + 4} x2={cx + 16} y2={cy + 4} stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={cx} y={cy + 46} anchor="middle" fill={SIGNAL} size={9.5}>
         RELATIONSHIPS
-      </Key>
-
-      <Key x={16} y={24} fill={INK3} size={10}>
-        ACTORS AND FORCES
-      </Key>
-      <Key x={16} y={40} fill={INK3} size={10}>
-        OUTSIDE MARKETING
       </Key>
     </Frame>
   );
@@ -129,88 +123,122 @@ export function EnvironmentRings() {
    2 · CHAIN BETWEEN BANDS — the six actors of the microenvironment
    ========================================================================== */
 
-export function MicroActors() {
-  const row = 186;
-  const boxes = [
-    { x: 20, w: 140, lines: ["SUPPLIERS"] },
-    { x: 440, w: 170, lines: ["MARKETING", "INTERMEDIARIES"] },
-    { x: 650, w: 130, lines: ["CUSTOMER", "MARKETS"] },
-  ];
-  const company = { x: 200, y: 118, w: 200, h: 136 };
-  const bandTop = { y: 30, h: 34 };
-  const bandBottom = { y: 318, h: 34 };
-  const ticks = [90, 250, 350, 525, 715];
-
+/** A company as a building: a roof slab over a block of department windows. */
+function Company({
+  cx,
+  base,
+  w,
+  h,
+  tone,
+  lit = false,
+}: {
+  cx: number;
+  base: number;
+  w: number;
+  h: number;
+  tone: string;
+  lit?: boolean;
+}) {
+  const left = cx - w / 2;
+  const pad = w * 0.08;
+  const gap = w * 0.05;
+  const ww = (w - 2 * pad - gap) / 2;
+  const wh = (h - 2 * pad - gap) / 2;
   return (
-    <Frame
-      height={372}
-      label="The microenvironment. Suppliers, the company itself, marketing intermediaries and customer markets form a chain. Inside the company, marketing sits among other company departments. Competitors run along the top of the chain and publics along the bottom."
-    >
-      {/* bands */}
-      <rect x={20} y={bandTop.y} width={760} height={bandTop.h} fill={INK_TINT} />
-      <Key x={400} y={bandTop.y + 22} anchor="middle" fill={INK} size={11}>
-        COMPETITORS
-      </Key>
-      <rect x={20} y={bandBottom.y} width={760} height={bandBottom.h} fill={INK_TINT} />
-      <Key x={400} y={bandBottom.y + 22} anchor="middle" fill={INK} size={11}>
-        PUBLICS
-      </Key>
-      {ticks.map((x) => (
-        <g key={x}>
-          <line x1={x} y1={bandTop.y + bandTop.h} x2={x} y2={x > 200 && x < 400 ? company.y : row - 30} stroke={RULE2} strokeWidth={1} strokeDasharray="2 4" />
-          <line x1={x} y1={x > 200 && x < 400 ? company.y + company.h : row + 30} x2={x} y2={bandBottom.y} stroke={RULE2} strokeWidth={1} strokeDasharray="2 4" />
-        </g>
-      ))}
-
-      {/* external partners */}
-      {boxes.map((b) => (
-        <g key={b.lines[0]}>
-          <rect x={b.x} y={row - 30} width={b.w} height={60} fill={PAPER} stroke={COUNTER} strokeWidth={1.25} />
-          {b.lines.map((l, i) => (
-            <Key key={l} x={b.x + b.w / 2} y={row + 4 + (i - (b.lines.length - 1) / 2) * 15} anchor="middle" fill={COUNTER} size={10.5}>
-              {l}
-            </Key>
-          ))}
-        </g>
-      ))}
-
-      {/* the company itself */}
-      <rect x={company.x} y={company.y} width={company.w} height={company.h} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <Key x={company.x + company.w / 2} y={company.y + 22} anchor="middle" fill={INK} size={10.5}>
-        THE COMPANY ITSELF
-      </Key>
+    <g>
+      <rect x={f2(left - 5)} y={f2(base - h - 8)} width={f2(w + 10)} height={8} fill={tone} />
+      <rect x={f2(left)} y={f2(base - h)} width={w} height={h} fill={PAPER} stroke={tone} strokeWidth={1.5} />
       {[0, 1].map((r) =>
         [0, 1].map((c) => {
-          const x = company.x + 14 + c * 88;
-          const y = company.y + 36 + r * 36;
-          const on = r === 0 && c === 0;
+          const on = lit && r === 0 && c === 0;
           return (
-            <g key={`${r}${c}`}>
-              <rect x={x} y={y} width={84} height={32} fill={on ? SIGNAL : PAPER2} stroke={on ? SIGNAL : RULE2} strokeWidth={1} />
-              {on ? (
-                <Key x={x + 42} y={y + 20} anchor="middle" fill={PAPER} size={9}>
-                  MARKETING
-                </Key>
-              ) : null}
-            </g>
+            <rect
+              key={`${r}${c}`}
+              x={f2(left + pad + c * (ww + gap))}
+              y={f2(base - h + pad + r * (wh + gap))}
+              width={f2(ww)}
+              height={f2(wh)}
+              fill={on ? SIGNAL : "var(--paper-3)"}
+              stroke={on ? SIGNAL : tone}
+              strokeWidth={1}
+            />
           );
         }),
       )}
-      <Key x={company.x + company.w / 2} y={company.y + company.h - 12} anchor="middle" fill={INK3} size={8.5}>
-        + OTHER COMPANY DEPARTMENTS
+    </g>
+  );
+}
+
+export function MicroActors() {
+  const base = 232;
+  const flow = 196;
+  const co = { cx: 350, w: 190, h: 100 };
+  const chain: [number, number][] = [
+    [138, co.cx - co.w / 2 - 8],
+    [co.cx + co.w / 2 + 8, 500],
+    [620, 664],
+  ];
+
+  return (
+    <Frame
+      height={380}
+      label="The microenvironment. A supplier's factory, the company itself, a store that resells its goods and a group of customers form a chain from left to right. Inside the company building, the marketing window is lit among the other departments. Rival company buildings stand in a band along the top, and groups of people, the publics, in a band along the bottom."
+    >
+      {/* competitors: rival companies, drawn like the company itself */}
+      <rect x={16} y={14} width={768} height={82} fill={INK_TINT} />
+      <Key x={32} y={60} fill={INK} size={11.5}>
+        COMPETITORS
       </Key>
+      {[330, 450, 570].map((x) => (
+        <Company key={x} cx={x} base={84} w={62} h={40} tone={INK3} />
+      ))}
 
       {/* the chain */}
-      {[
-        [160, 200],
-        [400, 440],
-        [610, 650],
-      ].map(([a, b]) => (
+      <Factory1 x={90} y={base} w={84} h={52} stroke={COUNTER} />
+      <Company cx={co.cx} base={base} w={co.w} h={co.h} tone={INK} lit />
+      <Key x={f2(co.cx - co.w / 2 + co.w * 0.08 + (co.w * 0.79) / 4)} y={base - co.h + 34} anchor="middle" fill={PAPER} size={9.5}>
+        MARKETING
+      </Key>
+      <Store2 x={560} y={base} k={1.6} tone={COUNTER} />
+      {[680, 712, 744].map((x) => (
+        <Person1 key={x} x={x} y={base} s={1.4} tone={COUNTER} />
+      ))}
+      {chain.map(([a, b]) => (
         <g key={a}>
-          <line x1={a + 4} y1={row} x2={b - 4} y2={row} stroke={INK} strokeWidth={1.5} />
-          <path d={head1.right(b - 3, row)} fill="none" stroke={INK} strokeWidth={1.5} />
+          <line x1={a} y1={flow} x2={b - 2} y2={flow} stroke={INK} strokeWidth={1.5} />
+          <path d={head1.right(b, flow)} fill="none" stroke={INK} strokeWidth={1.5} />
         </g>
       ))}
+
+      <Key x={co.cx} y={110} anchor="middle" fill={INK} size={11}>
+        THE COMPANY ITSELF
+      </Key>
+      <Key x={90} y={258} anchor="middle" fill={COUNTER} size={11}>
+        SUPPLIERS
+      </Key>
+      <Key x={560} y={258} anchor="middle" fill={COUNTER} size={11}>
+        MARKETING
+      </Key>
+      <Key x={560} y={274} anchor="middle" fill={COUNTER} size={11}>
+        INTERMEDIARIES
+      </Key>
+      <Key x={712} y={258} anchor="middle" fill={COUNTER} size={11}>
+        CUSTOMER
+      </Key>
+      <Key x={712} y={274} anchor="middle" fill={COUNTER} size={11}>
+        MARKETS
+      </Key>
+
+      {/* publics: groups of people with a stake in the company */}
+      <rect x={16} y={290} width={768} height={76} fill={INK_TINT} />
+      <Key x={32} y={334} fill={INK} size={11.5}>
+        PUBLICS
+      </Key>
+      {[300, 450, 600].map((g) =>
+        [-22, 0, 22].map((d) => (
+          <Person1 key={g + d} x={g + d} y={354} s={1.1} tone={INK3} />
+        )),
+      )}
     </Frame>
   );
 }
@@ -310,7 +338,7 @@ export function PoliticalCorridor() {
     <Frame
       width={400}
       height={236}
-      label="A business moves along a corridor. The walls are laws. A narrow gate is a government agency. Pressure groups push down on the path and bend it. Together they influence or limit how a business can operate."
+      label="A company building sits at the start of a path that runs along a corridor. The walls are laws. A narrow gate is a government agency. A group of people above the wall, the pressure groups, push down on the path and bend it. Together they influence or limit how a business can operate."
     >
       {/* laws: the walls */}
       <line x1={20} y1={top} x2={380} y2={top} stroke={INK} strokeWidth={2.5} />
@@ -326,29 +354,27 @@ export function PoliticalCorridor() {
         GOVERNMENT AGENCIES
       </Key>
 
-      {/* pressure groups: pushing down */}
+      {/* pressure groups: people above the wall, pushing down on the path */}
       {[284, 306, 328].map((x) => (
         <g key={x}>
+          <Person1 x={x} y={top - 6} s={0.9} tone={SIGNAL} />
           <line x1={x} y1={top + 6} x2={x} y2={top + 30} stroke={SIGNAL} strokeWidth={2} />
           <path d={head1.down(x, top + 32)} fill="none" stroke={SIGNAL} strokeWidth={2} />
         </g>
       ))}
-      <Key x={306} y={top - 12} anchor="middle" fill={SIGNAL} size={12}>
+      <Key x={306} y={top - 46} anchor="middle" fill={SIGNAL} size={12}>
         PRESSURE GROUPS
       </Key>
 
-      {/* the business */}
+      {/* the business and the path it can take */}
+      <Company cx={54} base={mid + 18} w={44} h={32} tone={INK} />
       <path
-        d={`M24 ${mid} L${gate + 40} ${mid} C${gate + 76} ${mid} ${gate + 86} ${mid + 30} ${gate + 120} ${mid + 30} L370 ${mid + 30}`}
+        d={`M82 ${mid} L${gate + 40} ${mid} C${gate + 76} ${mid} ${gate + 86} ${mid + 30} ${gate + 120} ${mid + 30} L370 ${mid + 30}`}
         fill="none"
         stroke={SIGNAL}
         strokeWidth={2.5}
       />
       <path d={head1.right(378, mid + 30)} fill="none" stroke={SIGNAL} strokeWidth={2.5} />
-      <circle cx={24} cy={mid} r={6} fill={SIGNAL} />
-      <Key x={36} y={mid - 14} fill={SIGNAL} size={11}>
-        A BUSINESS
-      </Key>
     </Frame>
   );
 }
@@ -479,44 +505,49 @@ export function SocialStrata() {
    ========================================================================== */
 
 export function TechnologyBranches() {
-  const root = { x: 70, y: 124 };
-  const fork = { x: 150, y: 124 };
+  const root = { x: 54, y: 123 };
+  const fork = { x: 140, y: 123 };
   const ends = [
-    { y: 62, lines: ["NEW PRODUCT", "OPPORTUNITIES"] },
-    { y: 186, lines: ["NEW MARKET", "OPPORTUNITIES"] },
-  ];
+    { y: 58, kind: "product", lines: ["NEW PRODUCT", "OPPORTUNITIES"] },
+    { y: 188, kind: "market", lines: ["NEW MARKET", "OPPORTUNITIES"] },
+  ] as const;
+  const icon = 46;
 
   return (
     <Frame
       width={400}
-      height={236}
-      label="A stem grows from new technologies and forks into new product opportunities and new market opportunities, each budding into further shoots."
+      height={250}
+      label="A microchip, new technologies, grows a stem that forks in two. One branch buds into three new product packs, new product opportunities. The other buds into three new pairs of people, new market opportunities."
     >
-      {/* the forces that create */}
-      <line x1={20} y1={root.y} x2={root.x - 10} y2={root.y} stroke={INK3} strokeWidth={1.5} strokeDasharray="3 4" />
-      <circle cx={root.x} cy={root.y} r={11} fill={SIGNAL} />
-      <Key x={root.x - 50} y={root.y + 36} fill={SIGNAL} size={11.5}>
+      <Cpu x={root.x - icon / 2} y={root.y - icon / 2} size={icon} weight="duotone" color={SIGNAL} />
+      <Key x={16} y={root.y + 44} fill={SIGNAL} size={11.5}>
         NEW
       </Key>
-      <Key x={root.x - 50} y={root.y + 52} fill={SIGNAL} size={11.5}>
+      <Key x={16} y={root.y + 60} fill={SIGNAL} size={11.5}>
         TECHNOLOGIES
       </Key>
-      <line x1={root.x + 11} y1={root.y} x2={fork.x} y2={fork.y} stroke={SIGNAL} strokeWidth={2.5} />
+      <line x1={root.x + icon / 2 + 2} y1={root.y} x2={fork.x} y2={fork.y} stroke={SIGNAL} strokeWidth={2.5} />
 
-      {ends.map((e, i) => {
-        const tip = { x: 232, y: e.y };
+      {ends.map((e) => {
+        const tip = { x: 200, y: e.y };
         return (
-          <g key={i}>
-            <path d={`M${fork.x} ${fork.y} C${fork.x + 44} ${fork.y} ${tip.x - 50} ${tip.y} ${tip.x} ${tip.y}`} fill="none" stroke={COUNTER} strokeWidth={2.5} />
-            {/* buds */}
-            {[-22, 0, 22].map((d) => (
+          <g key={e.kind}>
+            <path d={`M${fork.x} ${fork.y} C${fork.x + 40} ${fork.y} ${tip.x - 46} ${tip.y} ${tip.x} ${tip.y}`} fill="none" stroke={COUNTER} strokeWidth={2.5} />
+            {[-34, 0, 34].map((d) => (
               <g key={d}>
-                <path d={`M${tip.x} ${tip.y} C${tip.x + 18} ${tip.y} ${tip.x + 22} ${tip.y + d} ${tip.x + 40} ${tip.y + d}`} fill="none" stroke={COUNTER} strokeWidth={1.25} />
-                <circle cx={tip.x + 44} cy={tip.y + d} r={4} fill={d === 0 ? COUNTER : PAPER} stroke={COUNTER} strokeWidth={1.25} />
+                <path d={`M${tip.x} ${tip.y} C${tip.x + 14} ${tip.y} ${tip.x + 16} ${tip.y + d} ${tip.x + 30} ${tip.y + d}`} fill="none" stroke={COUNTER} strokeWidth={1.25} />
+                {e.kind === "product" ? (
+                  <Pack1 x={tip.x + 43} y={tip.y + d + 9} w={20} h={18} tone={COUNTER} />
+                ) : (
+                  <>
+                    <Person1 x={tip.x + 40} y={tip.y + d + 11} s={0.72} tone={COUNTER} />
+                    <Person1 x={tip.x + 55} y={tip.y + d + 11} s={0.72} tone={COUNTER} />
+                  </>
+                )}
               </g>
             ))}
             {e.lines.map((l, j) => (
-              <Key key={l} x={tip.x + 58} y={tip.y + (j === 0 ? -1 : 15)} fill={COUNTER} size={11}>
+              <Key key={l} x={tip.x + 74} y={tip.y + (j === 0 ? -2 : 14)} fill={COUNTER} size={10.5}>
                 {l}
               </Key>
             ))}
@@ -606,39 +637,37 @@ export function ResourceExchange() {
     <Frame
       width={400}
       height={236}
-      label="Natural resources on the left and marketers on the right. An upper arrow carries resources to marketers as inputs. A lower arrow runs back: resources are affected by marketing activities."
+      label="Natural resources on the left, drawn as land with a tree and water, and marketers on the right, drawn as a company building. An upper arrow carries resources to marketers as inputs. A lower arrow runs back: resources are affected by marketing activities."
     >
       {/* natural resources: land, a tree, water */}
-      <path d={`M${leftC - 58} 132 Q${leftC - 20} 78 ${leftC + 12} 104 Q${leftC + 36} 88 ${leftC + 58} 132 Z`} fill={AFFIRM_TINT} stroke={AFFIRM} strokeWidth={1.5} strokeLinejoin="round" />
-      <line x1={leftC - 14} y1={104} x2={leftC - 14} y2={80} stroke={AFFIRM} strokeWidth={2} />
-      <circle cx={leftC - 14} cy={70} r={14} fill={AFFIRM} />
+      <path d={`M${leftC - 58} 132 Q${leftC - 20} 78 ${leftC + 12} 104 Q${leftC + 36} 88 ${leftC + 58} 132 Z`} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} strokeLinejoin="round" />
+      <line x1={leftC - 14} y1={104} x2={leftC - 14} y2={80} stroke={COUNTER} strokeWidth={2} />
+      <circle cx={leftC - 14} cy={70} r={14} fill={COUNTER} />
       {[146, 158].map((y) => (
         <path key={y} d={`M${leftC - 54} ${y} q9 -6 18 0 t18 0 t18 0 t18 0 t18 0 t18 0`} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       ))}
-      <Key x={leftC} y={196} anchor="middle" fill={AFFIRM} size={11}>
+      <Key x={leftC} y={196} anchor="middle" fill={COUNTER} size={11}>
         NATURAL
       </Key>
-      <Key x={leftC} y={212} anchor="middle" fill={AFFIRM} size={11}>
+      <Key x={leftC} y={212} anchor="middle" fill={COUNTER} size={11}>
         RESOURCES
       </Key>
 
-      {/* marketers */}
-      <rect x={rightC - 44} y={84} width={88} height={76} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <path d={`M${rightC - 52} 86 L${rightC} 58 L${rightC + 52} 86`} fill="none" stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
-      <rect x={rightC - 12} y={124} width={24} height={36} fill={INK} />
+      {/* marketers: the company building used across the week */}
+      <Company cx={rightC} base={160} w={96} h={70} tone={INK} lit />
       <Key x={rightC} y={196} anchor="middle" fill={INK} size={11}>
         MARKETERS
       </Key>
 
       {/* needed as inputs */}
-      <line x1={leftC + 66} y1={92} x2={rightC - 58} y2={92} stroke={COUNTER} strokeWidth={2} />
-      <path d={head1.right(rightC - 56, 92)} fill="none" stroke={COUNTER} strokeWidth={2} />
-      <Key x={200} y={80} anchor="middle" fill={COUNTER} size={10}>
+      <line x1={leftC + 66} y1={104} x2={rightC - 60} y2={104} stroke={INK} strokeWidth={2} />
+      <path d={head1.right(rightC - 58, 104)} fill="none" stroke={INK} strokeWidth={2} />
+      <Key x={200} y={92} anchor="middle" fill={INK} size={10}>
         NEEDED AS INPUTS
       </Key>
 
       {/* affected by */}
-      <line x1={leftC + 68} y1={140} x2={rightC - 58} y2={140} stroke={SIGNAL} strokeWidth={2} />
+      <line x1={leftC + 68} y1={140} x2={rightC - 60} y2={140} stroke={SIGNAL} strokeWidth={2} />
       <path d={head1.left(leftC + 66, 140)} fill="none" stroke={SIGNAL} strokeWidth={2} />
       <Key x={200} y={162} anchor="middle" fill={SIGNAL} size={10}>
         AFFECTED BY
@@ -658,45 +687,48 @@ export function CsrWeave() {
   const rows = 5;
   const rowH = 20;
   const gap = 12;
-  const top = 72;
+  const top = 88;
 
   const strategy = (x: number, w: number) =>
     Array.from({ length: rows }, (_, r) => (
       <rect key={r} x={x} y={top + r * (rowH + gap)} width={w} height={rowH} fill={INK2} />
     ));
 
-  const right = { x: 460, w: 300 };
-  const threads = Array.from({ length: 6 }, (_, i) => right.x + 26 + i * 50);
+  const right = { x: 452, w: 316 };
+  const threads = Array.from({ length: 6 }, (_, i) => right.x + 28 + i * 52);
   const bottom = top + rows * (rowH + gap) - gap;
 
   return (
     <Frame
-      height={292}
-      label="Left: a block of business strategy with philanthropy as a small box set apart from it, labelled just philanthropy and struck through. Right: CSR threads woven over and under every layer of the business strategy, labelled deeply integrated."
+      height={296}
+      label="Left, struck through as just philanthropy: a block of business strategy with a gift box, philanthropy, set apart beside it. Right, deeply integrated: CSR threads woven over and under every layer of the business strategy."
     >
       {/* ---- left: just philanthropy ---- */}
-      <Key x={40} y={34} fill={INK3} size={11.5}>
+      <Key x={32} y={38} fill={INK3} size={16}>
         JUST PHILANTHROPY
       </Key>
-      <line x1={36} y1={30} x2={196} y2={30} stroke={SIGNAL} strokeWidth={2} />
-      {strategy(40, 220)}
-      <rect x={290} y={top + 2 * (rowH + gap) - 10} width={60} height={40} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
-      <circle cx={320} cy={top + 2 * (rowH + gap) + 10} r={5} fill={SIGNAL} />
-      <Key x={320} y={top + 2 * (rowH + gap) + 52} anchor="middle" fill={SIGNAL} size={10}>
+      <line x1={26} y1={32} x2={244} y2={32} stroke={SIGNAL} strokeWidth={2.5} />
+      {strategy(32, 196)}
+      <Gift1 x={292} y={top + 2 * (rowH + gap) - 12} w={48} h={40} />
+      <Key x={316} y={bottom + 38} anchor="middle" fill={SIGNAL} size={14}>
         PHILANTHROPY
       </Key>
-      <Key x={150} y={bottom + 30} anchor="middle" fill={INK3} size={10}>
+      <Key x={130} y={bottom + 38} anchor="middle" fill={INK3} size={14}>
         BUSINESS STRATEGY
       </Key>
 
-      <line x1={400} y1={24} x2={400} y2={270} stroke={RULE} strokeWidth={1} />
+      <line x1={400} y1={20} x2={400} y2={276} stroke={RULE} strokeWidth={1} />
 
       {/* ---- right: woven in ---- */}
-      <Key x={right.x} y={34} fill={SIGNAL} size={11.5}>
+      <Key x={right.x} y={38} fill={SIGNAL} size={16}>
         DEEPLY INTEGRATED
       </Key>
+      <Key x={(threads[0] + threads[5]) / 2} y={60} anchor="middle" fill={SIGNAL} size={14}>
+        CSR
+      </Key>
+      <path d={`M${threads[0]} ${top - 12} V${top - 18} H${threads[5]} V${top - 12}`} fill="none" stroke={SIGNAL} strokeWidth={1.25} />
       {threads.map((x) => (
-        <line key={`t${x}`} x1={x} y1={top - 18} x2={x} y2={bottom + 18} stroke={SIGNAL} strokeWidth={6} />
+        <line key={`t${x}`} x1={x} y1={top - 8} x2={x} y2={bottom + 12} stroke={SIGNAL} strokeWidth={6} />
       ))}
       {strategy(right.x, right.w)}
       {threads.map((x, i) =>
@@ -706,11 +738,8 @@ export function CsrWeave() {
           ) : null,
         ),
       )}
-      <Key x={right.x + right.w / 2} y={bottom + 42} anchor="middle" fill={INK3} size={10}>
+      <Key x={right.x + right.w / 2} y={bottom + 38} anchor="middle" fill={INK3} size={14}>
         BUSINESS STRATEGY
-      </Key>
-      <Key x={right.x + right.w} y={34} anchor="end" fill={SIGNAL} size={11}>
-        CSR ↓
       </Key>
     </Frame>
   );
@@ -721,26 +750,27 @@ export function CsrWeave() {
    ========================================================================== */
 
 export function GreenwashingGap() {
-  const x0 = 40;
-  const claim = 700;
-  const act = 250;
-  const h = 44;
-  const r1 = 72;
-  const r2 = 158;
+  const x0 = 20;
+  const claim = 376;
+  const act = 138;
+  const h = 40;
+  const r1 = 62;
+  const r2 = 142;
 
   return (
     <Frame
+      width={400}
       height={262}
       label="Schematic. Two bars of time and money. The bar for claiming to be green is long and hollow. The bar for actually implementing business practices is short and solid. The difference between them is greenwashing."
     >
-      <Schematic x={792} y={254} />
+      <Schematic x={392} y={254} />
 
-      <Key x={x0} y={r1 - 12} fill={AFFIRM} size={11.5}>
+      <Key x={x0} y={r1 - 12} fill={COUNTER} size={11}>
         {"CLAIMING TO BE “GREEN”"}
       </Key>
-      <rect x={x0 + 1} y={r1 + 1} width={claim - x0 - 2} height={h - 2} fill={AFFIRM_TINT} stroke={AFFIRM} strokeWidth={2} strokeDasharray="7 5" />
+      <rect x={x0 + 1} y={r1 + 1} width={claim - x0 - 2} height={h - 2} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={2} strokeDasharray="7 5" />
 
-      <Key x={x0} y={r2 - 12} fill={INK} size={11.5}>
+      <Key x={x0} y={r2 - 12} fill={INK} size={11}>
         ACTUALLY IMPLEMENTING BUSINESS PRACTICES
       </Key>
       <rect x={x0} y={r2} width={act - x0} height={h} fill={INK} />
@@ -749,12 +779,12 @@ export function GreenwashingGap() {
       <line x1={act} y1={r2 + h / 2} x2={claim - 8} y2={r2 + h / 2} stroke={SIGNAL} strokeWidth={1.5} strokeDasharray="3 4" />
       <line x1={claim} y1={r1 + h + 4} x2={claim} y2={r2 + h} stroke={SIGNAL} strokeWidth={1.5} strokeDasharray="3 4" />
       <path d={`M${act + 6} ${r2 + h + 12} L${act + 6} ${r2 + h + 22} L${claim} ${r2 + h + 22} L${claim} ${r2 + h + 12}`} fill="none" stroke={SIGNAL} strokeWidth={2} />
-      <Key x={(act + claim) / 2} y={r2 + h + 46} anchor="middle" fill={SIGNAL} size={13}>
+      <Key x={(act + claim) / 2} y={r2 + h + 44} anchor="middle" fill={SIGNAL} size={12.5}>
         GREENWASHING
       </Key>
 
       {/* axis */}
-      <Key x={x0} y={r2 + h + 46} fill={INK3} size={10}>
+      <Key x={x0} y={r2 + h + 44} fill={INK3} size={9.5}>
         TIME AND MONEY →
       </Key>
     </Frame>
@@ -767,64 +797,63 @@ export function GreenwashingGap() {
    ========================================================================== */
 
 export function AbsorbOrPass() {
-  const base = 250;
-  const w = 76;
-  const cost = 96;
+  const base = 262;
+  const w = 80;
+  const cost = 92;
   const extra = 44;
-  const price = 176;
-
-  const column = (x: number, pass: boolean) => {
-    const priceY = base - price - (pass ? extra : 0);
-    return (
-      <g>
-        <rect x={x} y={base - cost} width={w} height={cost} fill={INK2} />
-        <rect x={x + 0.75} y={base - cost - extra + 0.75} width={w - 1.5} height={extra - 1.5} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
-        <Key x={x + w / 2} y={base - cost / 2 + 4} anchor="middle" fill={PAPER} size={10}>
-          COST
-        </Key>
-        {pass ? (
-          <line x1={x - 22} y1={base - price} x2={x + w + 22} y2={base - price} stroke={RULE2} strokeWidth={1.25} strokeDasharray="4 4" />
-        ) : null}
-        <line x1={x - 22} y1={priceY} x2={x + w + 22} y2={priceY} stroke={COUNTER} strokeWidth={3} />
-        <Key x={x + w + 30} y={priceY + 4} fill={COUNTER} size={11}>
-          PRICE
-        </Key>
-        {pass ? (
-          <>
-            <line x1={x + w + 12} y1={base - price - 4} x2={x + w + 12} y2={priceY + 8} stroke={COUNTER} strokeWidth={1.5} />
-            <path d={head1.up(x + w + 12, priceY + 6)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
-          </>
-        ) : null}
-      </g>
-    );
-  };
+  const price = 190;
+  const cols = [{ x: 60, pass: false }, { x: 262, pass: true }];
 
   return (
     <Frame
-      height={320}
-      label="Schematic. Fair-trade materials add to cost in two columns. In the first, the brand absorbs the cost and the price stays where it was. In the second, the brand passes it on to consumers and the price rises by the same amount."
+      width={400}
+      height={330}
+      label="Schematic. In two columns, a block of 100% fair-trade materials adds to the cost. In the first, the brand absorbs the cost and the price line stays where it was. In the second, the brand passes it on to consumers and the price line rises by the same amount."
     >
-      <Schematic x={792} y={312} />
+      <Schematic x={392} y={322} />
+      <line x1={20} y1={base} x2={380} y2={base} stroke={INK} strokeWidth={1} />
+      <line x1={200} y1={20} x2={200} y2={base} stroke={RULE} strokeWidth={1} />
 
-      {/* the commitment, keyed to the dashed block it adds to cost */}
-      <rect x={40} y={134} width={36} height={28} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
-      <Key x={90} y={145} fill={SIGNAL} size={10.5}>
+      {cols.map(({ x, pass }) => {
+        const priceY = base - price - (pass ? extra : 0);
+        return (
+          <g key={x}>
+            <rect x={x} y={base - cost} width={w} height={cost} fill={INK2} />
+            <Key x={x + w / 2} y={base - cost / 2 + 4} anchor="middle" fill={PAPER} size={10}>
+              COST
+            </Key>
+            <rect x={x + 0.75} y={base - cost - extra + 0.75} width={w - 1.5} height={extra - 1.5} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
+            {pass ? (
+              <>
+                <line x1={x - 22} y1={base - price} x2={x + w + 22} y2={base - price} stroke={RULE2} strokeWidth={1.25} strokeDasharray="4 4" />
+                <line x1={x + w + 12} y1={base - price - 4} x2={x + w + 12} y2={priceY + 8} stroke={COUNTER} strokeWidth={1.5} />
+                <path d={head1.up(x + w + 12, priceY + 6)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+              </>
+            ) : null}
+            <line x1={x - 22} y1={priceY} x2={x + w + 22} y2={priceY} stroke={COUNTER} strokeWidth={3} />
+            <Key x={x - 22} y={priceY - 9} fill={COUNTER} size={10.5}>
+              PRICE
+            </Key>
+          </g>
+        );
+      })}
+
+      {/* the commitment, named on the block it adds */}
+      <Key x={cols[0].x + w / 2} y={base - cost - extra - 24} anchor="middle" fill={SIGNAL} size={9.5}>
         100% FAIR-TRADE
       </Key>
-      <Key x={90} y={161} fill={SIGNAL} size={10.5}>
+      <Key x={cols[0].x + w / 2} y={base - cost - extra - 11} anchor="middle" fill={SIGNAL} size={9.5}>
         MATERIALS
       </Key>
 
-      {column(330, false)}
-      {column(590, true)}
-
-      <line x1={300} y1={base} x2={780} y2={base} stroke={INK} strokeWidth={1} />
-      <line x1={500} y1={56} x2={500} y2={base} stroke={RULE} strokeWidth={1} />
-      <Key x={368} y={base + 30} anchor="middle" fill={INK} size={11.5}>
+      <Key x={cols[0].x + w / 2} y={base + 26} anchor="middle" fill={INK} size={10.5}>
         ABSORB THE COST
       </Key>
-      <Key x={628} y={base + 30} anchor="middle" fill={INK} size={11.5}>
-        PASS IT ON TO CONSUMERS
+      <Key x={cols[1].x + w / 2} y={base + 26} anchor="middle" fill={INK} size={10.5}>
+        PASS IT ON
+      </Key>
+      <Key x={cols[1].x + w / 2} y={base + 41} anchor="middle" fill={INK} size={10.5}>
+        TO CONSUMERS
       </Key>
     </Frame>
   );
@@ -937,49 +966,48 @@ export function MisrepresentedChecklist() {
    ========================================================================== */
 
 export function PressureOverTime() {
-  const x0 = 70;
-  const x1 = 760;
-  const base = 196;
-  const split = 250;
+  const x0 = 30;
+  const x1 = 380;
+  const split = 130;
+  const axis = 224;
 
   // gains: a sharp early spike that falls away
-  const gains = `M${x0} ${base} C120 ${base} 140 70 180 70 C216 70 226 ${base - 18} 270 ${base - 8} L${x1} ${base - 4}`;
+  const gains = `M${x0} 196 C52 196 60 62 84 62 C104 62 110 184 ${split + 4} 190 L${x1} 194`;
   // relationships and reputation: steady, then sliding once the pressure lands
-  const rel = `M${x0} 120 L200 120 C300 124 420 200 560 236 C640 256 700 262 ${x1} 266`;
+  const rel = `M${x0} 76 L95 76 C145 79 205 118 275 136 C315 146 345 150 ${x1} 152`;
 
   return (
     <Frame
-      height={320}
+      width={400}
+      height={246}
       label="Schematic curves over time. Short-term gains spike early and fall away. Long-term relationships and reputation start steady and slide downward for the rest of the timeline."
     >
-      <Schematic />
-      <rect x={x0} y={34} width={split - x0} height={250} fill={SIGNAL_TINT} />
-      <Key x={(x0 + split) / 2} y={28} anchor="middle" fill={SIGNAL} size={10}>
+      <Schematic x={392} y={18} />
+      <rect x={x0} y={28} width={split - x0} height={axis - 36} fill={SIGNAL_TINT} />
+      <Key x={(x0 + split) / 2} y={18} anchor="middle" fill={SIGNAL} size={9.5}>
         SHORT TERM
       </Key>
-      <Key x={(split + x1) / 2} y={28} anchor="middle" fill={COUNTER} size={10}>
+      <Key x={(split + x1) / 2 - 20} y={18} anchor="middle" fill={COUNTER} size={9.5}>
         LONG TERM
       </Key>
 
-      <line x1={x0} y1={base} x2={x1} y2={base} stroke={RULE2} strokeWidth={1} />
-      <line x1={x0} y1={290} x2={x1 - 6} y2={290} stroke={INK3} strokeWidth={1} />
-      <path d={head1.right(x1, 290)} fill="none" stroke={INK3} strokeWidth={1} />
-      <Key x={x1} y={310} anchor="end" fill={INK3} size={9.5}>
+      <line x1={x0} y1={axis} x2={x1 - 6} y2={axis} stroke={INK3} strokeWidth={1} />
+      <path d={head1.right(x1, axis)} fill="none" stroke={INK3} strokeWidth={1} />
+      <Key x={x1} y={axis + 18} anchor="end" fill={INK3} size={9.5}>
         TIME
       </Key>
 
-      <path d={gains} fill="none" stroke={SIGNAL} strokeWidth={3} />
-      <path d={rel} fill="none" stroke={COUNTER} strokeWidth={3} />
+      <path d={gains} fill="none" stroke={SIGNAL} strokeWidth={2.5} />
+      <path d={rel} fill="none" stroke={COUNTER} strokeWidth={2.5} />
 
-      <Key x={196} y={62} fill={SIGNAL} size={11.5}>
+      <Key x={96} y={58} fill={SIGNAL} size={10.5}>
         SHORT-TERM GAINS
       </Key>
-      <Key x={290} y={252} fill={COUNTER} size={11.5}>
-        LONG-TERM RELATIONSHIPS
-      </Key>
-      <Key x={290} y={269} fill={COUNTER} size={11.5}>
-        AND REPUTATION
-      </Key>
+      {["LONG-TERM", "RELATIONSHIPS", "AND REPUTATION"].map((l, i) => (
+        <Key key={l} x={x1} y={96 + i * 14} anchor="end" fill={COUNTER} size={10.5}>
+          {l}
+        </Key>
+      ))}
     </Frame>
   );
 }
@@ -989,56 +1017,41 @@ export function PressureOverTime() {
    ========================================================================== */
 
 export function ObsolescenceLifespans() {
-  const x0 = 200;
-  const need = 700;
-  const r1 = 70;
-  const r2 = 156;
-  const h = 30;
-  const spans = [
-    { a: 200, b: 316 },
-    { a: 324, b: 432 },
-    { a: 440, b: 556 },
-    { a: 564, b: 690 },
-  ];
+  const x0 = 20;
+  const need = 276;
+  const r1 = 64;
+  const r2 = 138;
+  const h = 28;
+  const gap = 6;
+  const span = (need - x0 - 3 * gap) / 4;
+  const spans = [0, 1, 2, 3].map((i) => ({ a: x0 + i * (span + gap), b: x0 + i * (span + gap) + span }));
 
   return (
     <Frame
-      height={272}
-      label="Schematic. Top row: one product lasting until it actually needs replacement. Bottom row: over the same time, four products, each made obsolete early and replaced, drive frequent replacement sales and pile up at the end."
+      width={400}
+      height={244}
+      label="Schematic. Top row: one product lasting until it actually needs replacement. Bottom row, planned obsolescence: over the same time, four products, each made obsolete early and replaced, drive frequent replacement sales and pile up at the end, an environmental concern."
     >
-      <Schematic x={120} y={264} />
-      <Key x={792} y={238} anchor="end" fill={SIGNAL} size={10}>
-        ENVIRONMENTAL
-      </Key>
-      <Key x={792} y={253} anchor="end" fill={SIGNAL} size={10}>
-        CONCERNS
-      </Key>
+      <Schematic x={392} y={236} />
 
-      <line x1={need} y1={36} x2={need} y2={216} stroke={INK} strokeWidth={1.5} strokeDasharray="5 4" />
-      <Key x={need} y={30} anchor="middle" fill={INK} size={10}>
-        ACTUALLY NEEDS REPLACEMENT
+      <Key x={need} y={24} anchor="middle" fill={INK} size={10}>
+        ACTUALLY NEEDS
       </Key>
+      <Key x={need} y={38} anchor="middle" fill={INK} size={10}>
+        REPLACEMENT
+      </Key>
+      <line x1={need} y1={48} x2={need} y2={r2 + h + 6} stroke={INK} strokeWidth={1.5} strokeDasharray="5 4" />
 
-      <Key x={180} y={r1 + 20} anchor="end" fill={INK3} size={10.5}>
-        NEEDED
-      </Key>
       <rect x={x0} y={r1} width={need - x0} height={h} fill={COUNTER} />
 
-      <Key x={180} y={r2 + 12} anchor="end" fill={SIGNAL} size={10.5}>
-        PLANNED
+      <Key x={x0} y={r2 - 12} fill={SIGNAL} size={10.5}>
+        PLANNED OBSOLESCENCE
       </Key>
-      <Key x={180} y={r2 + 28} anchor="end" fill={SIGNAL} size={10.5}>
-        OBSOLESCENCE
-      </Key>
-      {spans.map((s, i) => (
-        <g key={i}>
-          <rect x={s.a} y={r2} width={s.b - s.a} height={h} fill={i === 0 ? SIGNAL : SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
-          {/* the break */}
-          <path d={`M${s.b} ${r2 - 4} l-6 10 l8 6 l-6 10 l4 12`} fill="none" stroke={PAPER} strokeWidth={3} />
-        </g>
+      {spans.map((sp, i) => (
+        <rect key={i} x={f2(sp.a)} y={r2} width={f2(span)} height={h} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
       ))}
-      <path d={`M${spans[0].a} ${r2 + h + 12} L${spans[0].a} ${r2 + h + 20} L${spans[3].b} ${r2 + h + 20} L${spans[3].b} ${r2 + h + 12}`} fill="none" stroke={SIGNAL} strokeWidth={1.25} />
-      <Key x={(spans[0].a + spans[3].b) / 2} y={r2 + h + 42} anchor="middle" fill={SIGNAL} size={11}>
+      <path d={`M${x0} ${r2 + h + 10} V${r2 + h + 18} H${f2(spans[3].b)} V${r2 + h + 10}`} fill="none" stroke={SIGNAL} strokeWidth={1.25} />
+      <Key x={(x0 + spans[3].b) / 2} y={r2 + h + 40} anchor="middle" fill={SIGNAL} size={10}>
         FREQUENT REPLACEMENT SALES
       </Key>
 
@@ -1046,16 +1059,22 @@ export function ObsolescenceLifespans() {
       {[0, 1, 2, 3].map((i) => (
         <rect
           key={i}
-          x={722 + (i % 2) * 8}
+          x={318 + (i % 2) * 8}
           y={r2 + h - 10 - i * 12}
-          width={50}
+          width={44}
           height={10}
-          fill={i === 3 ? SIGNAL_TINT : SIGNAL_TINT}
+          fill={SIGNAL_TINT}
           stroke={SIGNAL}
           strokeWidth={1}
-          transform={`rotate(${i % 2 === 0 ? -6 : 5} ${747 + (i % 2) * 8} ${r2 + h - 5 - i * 12})`}
+          transform={`rotate(${i % 2 === 0 ? -6 : 5} ${340 + (i % 2) * 8} ${r2 + h - 5 - i * 12})`}
         />
       ))}
+      <Key x={344} y={r2 + h + 26} anchor="middle" fill={SIGNAL} size={9.5}>
+        ENVIRONMENTAL
+      </Key>
+      <Key x={344} y={r2 + h + 40} anchor="middle" fill={SIGNAL} size={9.5}>
+        CONCERNS
+      </Key>
     </Frame>
   );
 }
@@ -1065,54 +1084,48 @@ export function ObsolescenceLifespans() {
    ========================================================================== */
 
 export function GenerationsBand() {
-  const x0 = 60;
-  const x1 = 760;
-  const mid = 150;
+  const x0 = 20;
+  const x1 = 380;
+  const mid = 152;
+  const glyphs = 78;
 
   return (
     <Frame
-      height={286}
-      label="A band runs from the present to future generations and grows wider as it goes. On the left, consumers and businesses meet their present needs. On the right, future generations keep, or gain, the ability to meet their needs."
+      width={400}
+      height={234}
+      label="A band runs from the present, on the left, to future generations, on the right, and grows wider as it goes. On the left stand a person and a company building, consumers and businesses. On the right stand four people, future generations, whose ability to meet their needs is preserved or enhanced."
     >
       {/* the ability to meet needs */}
       <path
-        d={`M${x0} ${mid - 22} C300 ${mid - 22} 520 ${mid - 44} ${x1} ${mid - 48} L${x1} ${mid + 48} C520 ${mid + 44} 300 ${mid + 22} ${x0} ${mid + 22} Z`}
+        d={`M${x0} ${mid - 22} C150 ${mid - 22} 260 ${mid - 44} ${x1} ${mid - 48} L${x1} ${mid + 48} C260 ${mid + 44} 150 ${mid + 22} ${x0} ${mid + 22} Z`}
         fill={COUNTER_TINT}
         stroke={COUNTER}
         strokeWidth={1.25}
       />
-      <Key x={400} y={mid + 5} anchor="middle" fill={COUNTER} size={11.5}>
+      <Key x={200} y={mid + 4} anchor="middle" fill={COUNTER} size={10.5}>
         THE ABILITY TO MEET THEIR NEEDS
       </Key>
-      <Key x={x1} y={mid + 70} anchor="end" fill={COUNTER} size={10}>
-        PRESERVES OR ENHANCES
-      </Key>
 
-      {/* present */}
-      <Key x={x0} y={40} fill={INK} size={11}>
+      {/* present: consumers and businesses */}
+      <Key x={x0} y={26} fill={INK} size={10.5}>
         THE PRESENT
       </Key>
-      <Person1 x={x0 + 14} y={86} tone={INK} />
-      <rect x={x0 + 40} y={60} width={30} height={26} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <path d={`M${x0 + 36} 62 L${x0 + 55} 48 L${x0 + 74} 62`} fill="none" stroke={INK} strokeWidth={1.5} />
-      <Note x={x0} y={206} size={13} fill={INK2}>
-        consumers and businesses
-      </Note>
+      <Person1 x={x0 + 12} y={glyphs} tone={INK} />
+      <Company cx={x0 + 50} base={glyphs} w={36} h={28} tone={INK} />
+      <Key x={x0} y={glyphs + 22} fill={INK} size={10}>
+        CONSUMERS AND BUSINESSES
+      </Key>
 
       {/* future generations */}
-      <Key x={x1} y={40} anchor="end" fill={INK} size={11}>
+      <Key x={x1} y={26} anchor="end" fill={COUNTER} size={10.5}>
         FUTURE GENERATIONS
       </Key>
       {[0, 1, 2, 3].map((i) => (
-        <Person1 key={i} x={x1 - 14 - i * 22} y={86} s={i % 2 === 0 ? 1 : 0.8} tone={COUNTER} />
+        <Person1 key={i} x={x1 - 10 - i * 22} y={glyphs} s={i % 2 === 0 ? 1 : 0.8} tone={COUNTER} />
       ))}
-
-      {/* time */}
-      <line x1={x0} y1={244} x2={x1 - 6} y2={244} stroke={INK3} strokeWidth={1} />
-      <path d={head1.right(x1, 244)} fill="none" stroke={INK3} strokeWidth={1} />
-      {[0.25, 0.5, 0.75].map((t) => (
-        <line key={t} x1={x0 + (x1 - x0) * t} y1={240} x2={x0 + (x1 - x0) * t} y2={248} stroke={INK3} strokeWidth={1} />
-      ))}
+      <Key x={x1} y={mid + 70} anchor="end" fill={COUNTER} size={10}>
+        PRESERVES OR ENHANCES
+      </Key>
     </Frame>
   );
 }

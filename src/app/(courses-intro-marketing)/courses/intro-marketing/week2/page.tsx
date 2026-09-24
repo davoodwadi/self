@@ -8,11 +8,12 @@ import {
   Subtitle,
   Heading,
   Tag,
-  Figure,
 } from "@/components/slide-components/SlideComponents";
-import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
+import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
-import quizzesData from "./quizzes.json";
+import { glyphProps, Plate } from "../_visuals/kit";
+import { Gear1, Person1 } from "../_visuals/objects";
+import exercisesData from "./exercises.json";
 import {
   EnvironmentRings,
   MicroActors,
@@ -40,18 +41,24 @@ import {
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
-// Quizzes: in this route group `Slide` renders `quizData` AFTER its section.
-// Each [quiz]-tagged topic therefore carries its own quiz, which tests that
-// slide and the ones before it.
+// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
+// so each [exercise]-tagged topic carries one exercise that tests that slide
+// and the ones before it.
 //
 // Sentences split across list items (the policy areas, the obsolescence
 // strategies) keep a leading space inside each item and print their numerals
 // from CSS, so the sentence survives intact in the page text.
 // ============================================================================
 
-const quiz = createCourseQuizLookup(quizzesData as CourseQuiz[]);
+const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 const SERIF = { fontFamily: "var(--font-heading)", fontWeight: 600 } as const;
+
+/** Slide headings run one line where they can, leaving the screen to content. */
+const HEAD = "md:!mb-8 [&_h2]:!max-w-[34ch]";
+
+/** Text beside a 400-wide column plate. */
+const BESIDE = "grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-12";
 
 /** One verbatim sentence at reading size. */
 function P({
@@ -109,13 +116,12 @@ function Term({
   tone = "signal",
 }: {
   children: React.ReactNode;
-  tone?: "signal" | "counter" | "ink" | "affirm";
+  tone?: "signal" | "counter" | "ink";
 }) {
   const color = {
     signal: "text-[var(--signal)]",
     counter: "text-[var(--counter)]",
     ink: "text-[var(--ink)]",
-    affirm: "text-[var(--affirm)]",
   }[tone];
   return <strong className={cn("font-semibold", color)}>{children}</strong>;
 }
@@ -178,8 +184,8 @@ function KickerHeading({
   tone?: "signal" | "counter";
 }) {
   return (
-    <div className="w-full mb-8 md:mb-12">
-      <h2 className="type-h1 max-w-[22ch]">
+    <div className="w-full mb-8">
+      <h2 className="type-h1 max-w-[34ch]">
         <span
           className={cn(
             "type-label block mb-4 !text-[0.8rem]",
@@ -221,13 +227,13 @@ function PartPlate({
           {String(n).padStart(2, "0")}
         </div>
         <div className="min-w-0">
-          <h2 className="type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[16ch]">
+          <h2 className="type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[22ch]">
             <span className="type-label block mb-6 !text-[0.8rem]">
               {`Part ${n}:`}
             </span>{" "}
             {title}
           </h2>
-          <div className="mt-10 h-px w-full bg-[var(--rule)]" />
+          <div className="mt-8 h-px w-full bg-[var(--rule)]" />
           {children}
         </div>
       </div>
@@ -238,7 +244,7 @@ function PartPlate({
 /** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
 function Prompt({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
+    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-8 md:px-12 md:py-10">
       <p className="type-quote !text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[40ch]">
         {children}
       </p>
@@ -251,21 +257,6 @@ function PromptKicker() {
     <span className="type-label !text-[var(--counter)] block mb-6 !text-[0.8rem] !leading-none">
       Discussion:
     </span>
-  );
-}
-
-/** A plate that lives in a column: a figure well without the 680px floor. */
-function Plate({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div className={cn("figure-well w-full p-3 sm:p-5", className)}>
-      {children}
-    </div>
   );
 }
 
@@ -285,7 +276,7 @@ const FORCES = [
 /** The six letters as a strip; the pair on this slide is lit. */
 function PestleStrip({ active }: { active: number[] }) {
   return (
-    <div aria-hidden className="w-full mb-12">
+    <div aria-hidden className="w-full mb-8">
       <ol className="grid grid-cols-6 border-t border-[var(--rule-2)]">
         {FORCES.map((name, i) => {
           const on = active.includes(i);
@@ -293,13 +284,13 @@ function PestleStrip({ active }: { active: number[] }) {
             <li
               key={name}
               className={cn(
-                "-mt-px border-t-2 pt-3 pr-1.5",
+                "-mt-px flex items-baseline gap-2.5 border-t-2 pt-2.5 pr-1.5",
                 on ? "border-[var(--signal)]" : "border-transparent",
               )}
             >
               <span
                 className={cn(
-                  "block leading-none text-[2rem] md:text-[2.75rem]",
+                  "block leading-none text-[1.75rem] md:text-[2.1rem]",
                   on ? "text-[var(--signal)]" : "text-[var(--ink-3)]/30",
                 )}
                 style={SERIF}
@@ -308,7 +299,7 @@ function PestleStrip({ active }: { active: number[] }) {
               </span>
               <span
                 className={cn(
-                  "mt-2 hidden sm:block text-[0.72rem] md:text-[0.85rem] leading-tight [overflow-wrap:anywhere]",
+                  "hidden lg:block text-[0.85rem] leading-tight [overflow-wrap:anywhere]",
                   on
                     ? "font-semibold text-[var(--ink)]"
                     : "text-[var(--ink-3)]/55",
@@ -324,35 +315,59 @@ function PestleStrip({ active }: { active: number[] }) {
   );
 }
 
-/** One force of a PESTLE pair: its definition, then its plate. The strip
-    above already names the letter, so the column does not repeat it. */
+/**
+ * One force of a PESTLE pair: its definition, then its plate. The strip
+ * above already names the letter, so the column does not repeat it.
+ * `beside` sets the plate to the right of the sentence instead of under it.
+ */
 function Force({
   tone,
   plate,
+  beside = false,
   children,
 }: {
   tone: "signal" | "counter";
   plate: React.ReactNode;
+  beside?: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <Ruled tone={tone} weight="thick" className="flex min-w-0 flex-col">
-      <P className="mb-7 min-h-[3.25em]">{children}</P>
-      <Plate className="mt-auto">{plate}</Plate>
+    <Ruled
+      tone={tone}
+      weight="thick"
+      className={cn(
+        "min-w-0",
+        beside
+          ? "grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] md:gap-8"
+          : "flex flex-col",
+      )}
+    >
+      <P className={beside ? "" : "mb-5"}>{children}</P>
+      <Plate className={beside ? "" : "mt-auto max-w-[24rem]"}>{plate}</Plate>
     </Ruled>
   );
 }
 
+/**
+ * The three PESTLE pairs share a heading and the letter strip, and each
+ * sets its two forces and closing line in its own arrangement:
+ *  · "columns": the forces side by side, the closing line underneath;
+ *  · "rows": the forces stacked, each with its plate beside it, the closing
+ *    line in a column at the right;
+ *  · "triple": the two forces and the closing line as three columns.
+ */
 function PestlePair({
   id,
   title,
   active,
+  layout,
   children,
   closing,
 }: {
   id: string;
   title: string;
   active: number[];
+  layout: "columns" | "rows" | "triple";
   children: React.ReactNode;
   closing: React.ReactNode;
 }) {
@@ -360,10 +375,24 @@ function PestlePair({
     <Slide id={id} border>
       <KickerHeading kicker="PESTLE Analysis:">{title}</KickerHeading>
       <PestleStrip active={active} />
-      <div className="grid w-full gap-14 lg:grid-cols-2 lg:gap-14">
-        {children}
-      </div>
-      <Statement className="mt-16 !max-w-[38ch]">{closing}</Statement>
+      {layout === "columns" ? (
+        <>
+          <div className="grid w-full gap-10 lg:grid-cols-2 lg:gap-14">
+            {children}
+          </div>
+          <Statement className="mt-10 !max-w-[44ch]">{closing}</Statement>
+        </>
+      ) : layout === "rows" ? (
+        <div className="grid w-full items-center gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,18rem)] xl:gap-14">
+          <div className="space-y-6">{children}</div>
+          <Statement className="!text-[clamp(1.6rem,2.3vw,2.1rem)]">{closing}</Statement>
+        </div>
+      ) : (
+        <div className="grid w-full gap-10 lg:grid-cols-3 lg:gap-10">
+          {children}
+          <Statement className="self-center !text-[clamp(1.6rem,2.4vw,2.2rem)]">{closing}</Statement>
+        </div>
+      )}
     </Slide>
   );
 }
@@ -410,7 +439,7 @@ function CsrTemple() {
         {pillars.map((p, i) => (
           <li
             key={p.name}
-            className="flex flex-col border-x-2 border-[var(--ink)] bg-[var(--paper)]"
+            className="flex min-w-0 flex-col border-x-2 border-[var(--ink)] bg-[var(--paper)]"
           >
             <div aria-hidden className="-mx-[6px] h-2 bg-[var(--ink)]" />
             <p className="type-body flex-1 px-4 pb-8 pt-6 text-[var(--ink-2)] md:px-5">
@@ -422,7 +451,7 @@ function CsrTemple() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span
-                  className="block text-[1.7rem] leading-none text-[var(--ink)] md:text-[1.9rem]"
+                  className="block text-[1.7rem] leading-none text-[var(--ink)] [overflow-wrap:anywhere] md:text-[1.9rem]"
                   style={SERIF}
                 >
                   {p.name}
@@ -482,10 +511,8 @@ function BusinessCase() {
       key: "Employees",
       glyph: (
         <>
-          <circle cx="16" cy="15" r="5" fill="currentColor" />
-          <path d="M7 42 V31 Q7 23 16 23 Q25 23 25 31 V42 Z" fill="currentColor" />
-          <circle cx="33" cy="17" r="4.5" fill="none" stroke="currentColor" strokeWidth="1.75" />
-          <path d="M26 42 V32 Q26 25 33 25 Q41 25 41 32 V42" fill="none" stroke="currentColor" strokeWidth="1.75" />
+          <Person1 x={15} y={44} s={1.2} tone="var(--ink)" />
+          <Person1 x={34} y={44} s={1} tone="var(--ink)" />
         </>
       ),
       text: "CSR programs can improve employee morale, recruitment, and retention.",
@@ -497,23 +524,7 @@ function BusinessCase() {
     },
     {
       key: "Operations",
-      glyph: (
-        <>
-          <circle cx="24" cy="28" r="7" fill="none" stroke="currentColor" strokeWidth="1.75" />
-          {[0, 45, 90, 135, 180, 225, 270, 315].map((d) => (
-            <rect
-              key={d}
-              x="21.5"
-              y="11"
-              width="5"
-              height="7"
-              fill="currentColor"
-              transform={`rotate(${d} 24 28)`}
-            />
-          ))}
-          <circle cx="24" cy="28" r="12.5" fill="none" stroke="currentColor" strokeWidth="1.75" />
-        </>
-      ),
+      glyph: <Gear1 x={24} y={26} r={14} stroke="var(--ink)" width={1.75} />,
       text: "It also helps mitigate risks and can even reduce operational costs through sustainable practices.",
       moves: [
         ["Risks", "down"],
@@ -527,7 +538,7 @@ function BusinessCase() {
       {rows.map((r) => (
         <li
           key={r.key}
-          className="grid gap-5 border-t-2 border-[var(--ink)] py-8 md:grid-cols-[9rem_1fr] lg:grid-cols-[9rem_1fr_15rem] lg:gap-10"
+          className="grid gap-5 border-t-2 border-[var(--ink)] py-7 md:grid-cols-[9rem_1fr] lg:grid-cols-[9rem_1fr_15rem] lg:gap-10"
         >
           <div aria-hidden className="flex items-center gap-3 text-[var(--ink)] md:flex-col md:items-start">
             <svg width="48" height="48" viewBox="0 0 48 48">
@@ -557,7 +568,7 @@ function BusinessCase() {
 /** Glyphs for the three obsolescence strategies. */
 function StrategyGlyph({ kind }: { kind: "break" | "styles" | "delay" }) {
   return (
-    <svg aria-hidden width="76" height="44" viewBox="0 0 76 44" className="mb-4 block">
+    <svg aria-hidden width="76" height="44" viewBox="0 0 76 44" className="block shrink-0">
       {kind === "break" ? (
         <>
           <path d="M4 12 H34 L30 20 L36 26 L32 34 H4 Z" fill="var(--signal-tint)" stroke="var(--signal)" strokeWidth="1.5" strokeLinejoin="round" />
@@ -611,14 +622,6 @@ function ConceptStep() {
 }
 
 /* Tiny callback glyphs for the conclusion — each echoes a plate already seen. */
-const glyphProps = {
-  width: 64,
-  height: 40,
-  viewBox: "0 0 64 40",
-  fill: "none",
-  "aria-hidden": true,
-} as const;
-
 function GlyphRings() {
   return (
     <svg {...glyphProps}>
@@ -738,64 +741,69 @@ export default function Week2() {
           Part 1
           ================================================================ */}
       <PartPlate id="part-1" n={1} title="The Marketing Environment">
-        <Lead className="mt-10 !max-w-[60ch]">
-          A company&apos;s marketing environment consists of the{" "}
-          <Term tone="counter">actors and forces outside marketing</Term> that
-          affect marketing management&apos;s ability to build and maintain
-          successful relationships with <Term>target customers</Term>.
-        </Lead>
-        <Figure height="auto">
-          <EnvironmentRings />
-        </Figure>
-        <div className="grid gap-10 md:grid-cols-2 md:gap-12">
-          <Ruled weight="thick">
-            <P>
-              It is made up of a <Term tone="ink">microenvironment</Term> and a{" "}
-              <Term tone="counter">macroenvironment</Term>.
-            </P>
-          </Ruled>
-          <Ruled tone="signal" weight="thick">
-            <p className="type-h2 !font-normal">
-              Marketers must be environmental trend trackers and opportunity
-              seekers.
-            </p>
-          </Ruled>
+        <div className="mt-8 grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:gap-12">
+          <div className="space-y-7">
+            <Lead className="!max-w-[52ch]">
+              A company&apos;s marketing environment consists of the{" "}
+              <Term tone="counter">actors and forces outside marketing</Term>{" "}
+              that affect marketing management&apos;s ability to build and
+              maintain successful relationships with{" "}
+              <Term>target customers</Term>.
+            </Lead>
+            <Ruled weight="thick">
+              <P>
+                It is made up of a <Term tone="ink">microenvironment</Term> and
+                a <Term tone="counter">macroenvironment</Term>.
+              </P>
+            </Ruled>
+            <Ruled tone="signal" weight="thick">
+              <p className="type-h2 !font-normal">
+                Marketers must be environmental trend trackers and opportunity
+                seekers.
+              </p>
+            </Ruled>
+          </div>
+          <Plate>
+            <EnvironmentRings />
+          </Plate>
         </div>
       </PartPlate>
 
-      <Slide id="microenvironment" border quizData={quiz["microenvironment"]}>
+      <Slide id="microenvironment" border exercise={exercise["microenvironment"]}>
         <Tag>Six actors</Tag>
-        <Heading>The Microenvironment</Heading>
-        <Statement className="!max-w-[34ch]">
+        <Heading className={HEAD}>The Microenvironment</Heading>
+        <Statement className="!max-w-[46ch] !text-[clamp(1.5rem,2.4vw,2.1rem)]">
           The microenvironment consists of the{" "}
           <span className="text-[var(--signal)]">
             actors close to the company
           </span>{" "}
           that affect its ability to serve its customers.
         </Statement>
-        <Figure height="auto">
-          <MicroActors />
-        </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled weight="thick">
-            <P>
-              These actors include the company itself, suppliers, marketing
-              intermediaries, customer markets, competitors, and publics.
-            </P>
-          </Ruled>
-          <Ruled tone="signal" weight="thick">
-            <P>
-              Success depends on building relationships with{" "}
-              <Term>other company departments</Term> and these{" "}
-              <Term tone="counter">external partners</Term>.
-            </P>
-          </Ruled>
+        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:gap-12">
+          <Plate>
+            <MicroActors />
+          </Plate>
+          <div className="space-y-8">
+            <Ruled weight="thick">
+              <P>
+                These actors include the company itself, suppliers, marketing
+                intermediaries, customer markets, competitors, and publics.
+              </P>
+            </Ruled>
+            <Ruled tone="signal" weight="thick">
+              <P>
+                Success depends on building relationships with{" "}
+                <Term>other company departments</Term> and these{" "}
+                <Term tone="counter">external partners</Term>.
+              </P>
+            </Ruled>
+          </div>
         </div>
       </Slide>
 
-      <Slide id="macroenvironment" border quizData={quiz["macroenvironment"]}>
+      <Slide id="macroenvironment" border exercise={exercise["macroenvironment"]}>
         <Tag>Larger societal forces</Tag>
-        <Heading>The Macroenvironment</Heading>
+        <Heading className={HEAD}>The Macroenvironment</Heading>
         <div className="grid w-full items-center gap-8 xl:grid-cols-[minmax(0,19rem)_1fr] xl:gap-12">
           <div className="space-y-8">
             <Lead>
@@ -813,9 +821,9 @@ export default function Week2() {
               </P>
             </Ruled>
           </div>
-          <Figure height="auto" className="!my-0 min-w-0">
+          <Plate>
             <PestleHub />
-          </Figure>
+          </Plate>
         </div>
       </Slide>
 
@@ -823,6 +831,7 @@ export default function Week2() {
         id="pestle-political-economic"
         title="Political and Economic"
         active={[0, 1]}
+        layout="columns"
         closing={
           <>
             These forces dictate{" "}
@@ -852,6 +861,7 @@ export default function Week2() {
         id="pestle-social-technological"
         title="Social and Technological"
         active={[2, 3]}
+        layout="rows"
         closing={
           <>
             Marketers must{" "}
@@ -864,12 +874,12 @@ export default function Week2() {
           </>
         }
       >
-        <Force tone="signal" plate={<SocialStrata />}>
+        <Force tone="signal" plate={<SocialStrata />} beside>
           <Term tone="ink">Social:</Term> Institutions and other forces that
           affect a society&apos;s basic values, perceptions, preferences, and
           behaviors.
         </Force>
-        <Force tone="counter" plate={<TechnologyBranches />}>
+        <Force tone="counter" plate={<TechnologyBranches />} beside>
           <Term tone="ink">Technological:</Term> Forces that create new
           technologies, creating new product and market opportunities.
         </Force>
@@ -879,6 +889,7 @@ export default function Week2() {
         id="pestle-legal-environmental"
         title="Legal and Environmental"
         active={[4, 5]}
+        layout="triple"
         closing={
           <>
             <span className="text-[var(--signal)]">Compliance</span> and{" "}
@@ -914,12 +925,12 @@ export default function Week2() {
         </Prompt>
         <ol
           aria-hidden
-          className="mt-10 grid w-full max-w-5xl grid-cols-3 border-l border-t border-[var(--counter-line)] md:grid-cols-6"
+          className="mt-8 grid w-full max-w-5xl grid-cols-3 border-l border-t border-[var(--counter-line)] md:grid-cols-6"
         >
           {FORCES.map((name) => (
             <li
               key={name}
-              className="border-b border-r border-[var(--counter-line)] px-3 py-5 md:px-4"
+              className="border-b border-r border-[var(--counter-line)] px-3 py-4 md:px-4"
             >
               <span
                 className="block text-[2.25rem] leading-none text-[var(--counter)]"
@@ -939,7 +950,7 @@ export default function Week2() {
           Part 2
           ================================================================ */}
       <PartPlate id="part-2" n={2} title="Corporate Social Responsibility (CSR)">
-        <div className="mt-10 grid gap-8 md:grid-cols-2 md:gap-12">
+        <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-12">
           <Lead>
             Beyond analyzing the environment, companies must respond to
             societal expectations.
@@ -950,43 +961,47 @@ export default function Week2() {
             help a company be socially accountable.
           </P>
         </div>
-        <Figure height="auto">
-          <CsrWeave />
-        </Figure>
-        <Statement className="!max-w-[34ch]">
-          CSR is not just philanthropy, it is{" "}
-          <span className="text-[var(--signal)]">
-            deeply integrated into the business strategy
-          </span>
-          .
-        </Statement>
+        <div className="mt-8 grid items-center gap-8 lg:grid-cols-[minmax(0,15rem)_1fr] lg:gap-10">
+          <Statement className="!text-[clamp(1.5rem,2.3vw,2rem)]">
+            CSR is not just philanthropy, it is{" "}
+            <span className="text-[var(--signal)]">
+              deeply integrated into the business strategy
+            </span>
+            .
+          </Statement>
+          <Plate>
+            <CsrWeave />
+          </Plate>
+        </div>
       </PartPlate>
 
-      <Slide id="pillars-of-csr" border quizData={quiz["pillars-of-csr"]}>
+      <Slide id="pillars-of-csr" border exercise={exercise["pillars-of-csr"]}>
         <Tag>Four responsibilities</Tag>
-        <Heading>The Pillars of CSR</Heading>
+        <Heading className={HEAD}>The Pillars of CSR</Heading>
         <CsrTemple />
       </Slide>
 
       <Slide id="business-case-for-csr" border>
         <Tag>Why it pays</Tag>
-        <Heading>The Business Case for CSR</Heading>
+        <Heading className={HEAD}>The Business Case for CSR</Heading>
         <BusinessCase />
       </Slide>
 
       <Slide id="greenwashing" border>
         <Tag>Claims against action</Tag>
-        <Heading>Greenwashing: A Marketing Trap</Heading>
-        <Lead className="!max-w-[60ch]">
-          Greenwashing occurs when a company spends more time and money{" "}
-          <Term tone="affirm">claiming to be &quot;green&quot;</Term> than{" "}
-          <Term tone="ink">actually implementing</Term> business practices that
-          minimize environmental impact.
-        </Lead>
-        <Figure height="auto">
-          <GreenwashingGap />
-        </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
+        <Heading className={HEAD}>Greenwashing: A Marketing Trap</Heading>
+        <div className={BESIDE}>
+          <Lead className="!max-w-[40ch]">
+            Greenwashing occurs when a company spends more time and money{" "}
+            <Term tone="counter">claiming to be &quot;green&quot;</Term> than{" "}
+            <Term tone="ink">actually implementing</Term> business practices
+            that minimize environmental impact.
+          </Lead>
+          <Plate>
+            <GreenwashingGap />
+          </Plate>
+        </div>
+        <div className="mt-10 grid w-full gap-10 md:grid-cols-2 md:gap-14">
           <Ruled tone="signal" weight="thick">
             <P>
               It damages <Term>brand trust</Term> and can lead to{" "}
@@ -1006,33 +1021,35 @@ export default function Week2() {
         <KickerHeading kicker="Discussion:" tone="counter">
           The Cost of CSR
         </KickerHeading>
-        <Prompt>
-          <PromptKicker /> When a retail brand publicly commits to sourcing
-          100% fair-trade materials, prices inevitably rise. Should the brand{" "}
-          <span className="text-[var(--signal)]">absorb the cost</span>, or{" "}
-          <span className="text-[var(--counter)]">
-            pass it on to consumers
-          </span>
-          , and how does this affect their competitive positioning?
-        </Prompt>
-        <Figure height="auto" className="max-w-5xl">
-          <AbsorbOrPass />
-        </Figure>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-12">
+          <Prompt>
+            <PromptKicker /> When a retail brand publicly commits to sourcing
+            100% fair-trade materials, prices inevitably rise. Should the brand{" "}
+            <span className="text-[var(--signal)]">absorb the cost</span>, or{" "}
+            <span className="text-[var(--counter)]">
+              pass it on to consumers
+            </span>
+            , and how does this affect their competitive positioning?
+          </Prompt>
+          <Plate>
+            <AbsorbOrPass />
+          </Plate>
+        </div>
       </Slide>
 
       {/* ================================================================
           Part 3
           ================================================================ */}
       <PartPlate id="part-3" n={3} title="Ethical Considerations in Marketing">
-        <Lead className="mt-10 !max-w-[52ch]">
+        <Lead className="mt-8 !max-w-[52ch]">
           Marketing ethics are the broad guidelines that{" "}
           <Term tone="ink">everyone in the organization</Term> must follow.
         </Lead>
-        <div className="mt-14">
+        <div className="mt-8">
           <p className="type-label !text-[var(--ink-3)]">
             These policies cover
           </p>
-          <ol className="mt-5 grid w-full gap-x-10 border-t-2 border-[var(--ink)] sm:grid-cols-2 lg:grid-cols-3">
+          <ol className="mt-4 grid w-full gap-x-10 border-t-2 border-[var(--ink)] sm:grid-cols-2 lg:grid-cols-3">
             {[
               ["01", "distributor relations,"],
               ["02", "advertising standards,"],
@@ -1044,7 +1061,7 @@ export default function Week2() {
               <li
                 key={n}
                 data-n={n}
-                className="num-item border-b border-[var(--rule)] py-6 type-h2 !font-normal"
+                className="num-item border-b border-[var(--rule)] py-4 type-h2 !font-normal"
               >
                 {" "}
                 {item}
@@ -1052,44 +1069,50 @@ export default function Week2() {
             ))}
           </ol>
         </div>
-        <Statement className="mt-16 !text-[clamp(2.2rem,4.6vw,3.9rem)]">
+        <Statement className="mt-8 !text-[clamp(1.8rem,3.2vw,2.8rem)]">
           Good <span className="text-[var(--counter)]">ethics</span> is good{" "}
           <span className="text-[var(--signal)]">business</span>.
         </Statement>
       </PartPlate>
 
-      <Slide id="deceptive-practices" border quizData={quiz["deceptive-practices"]}>
+      <Slide id="deceptive-practices" border exercise={exercise["deceptive-practices"]}>
         <Tag>Pricing and promotion</Tag>
-        <Heading>Deceptive Practices</Heading>
-        <div className="grid w-full gap-14 lg:grid-cols-2">
-          <div className="flex min-w-0 flex-col">
-            <div aria-hidden className="type-label mb-5 border-t-2 border-[var(--signal)] pt-4">
-              Deceptive pricing
+        <Heading className={HEAD}>Deceptive Practices</Heading>
+        <div className="grid w-full gap-12 lg:grid-cols-2">
+          {(
+            [
+              [
+                "Deceptive pricing",
+                <P key="p">
+                  Deceptive pricing includes falsely advertising
+                  &quot;factory&quot; or &quot;wholesale&quot; prices or a large
+                  price reduction from a <Term>phony high retail price</Term>.
+                </P>,
+                <PhonyPriceTag key="v" />,
+              ],
+              [
+                "Deceptive promotion",
+                <P key="p">
+                  Deceptive promotion includes{" "}
+                  <Term>
+                    misrepresenting the product&apos;s features or performance
+                  </Term>
+                  .
+                </P>,
+                <MisrepresentedChecklist key="v" />,
+              ],
+            ] as const
+          ).map(([key, text, plate]) => (
+            <div key={key} className="flex min-w-0 flex-col">
+              <div aria-hidden className="type-label mb-4 border-t-2 border-[var(--signal)] pt-4">
+                {key}
+              </div>
+              <div className="mb-5 min-h-[3.4em]">{text}</div>
+              <Plate className="mt-auto max-w-[25rem]">{plate}</Plate>
             </div>
-            <Plate>
-              <PhonyPriceTag />
-            </Plate>
-            <P className="mt-6">
-              Deceptive pricing includes falsely advertising &quot;factory&quot;
-              or &quot;wholesale&quot; prices or a large price reduction from a{" "}
-              <Term>phony high retail price</Term>.
-            </P>
-          </div>
-          <div className="flex min-w-0 flex-col">
-            <div aria-hidden className="type-label mb-5 border-t-2 border-[var(--signal)] pt-4">
-              Deceptive promotion
-            </div>
-            <Plate>
-              <MisrepresentedChecklist />
-            </Plate>
-            <P className="mt-6">
-              Deceptive promotion includes{" "}
-              <Term>misrepresenting the product&apos;s features or performance</Term>
-              .
-            </P>
-          </div>
+          ))}
         </div>
-        <Statement className="mt-16 !max-w-[34ch]">
+        <Statement className="mt-10 !max-w-[40ch] !text-[clamp(1.5rem,2.4vw,2.1rem)]">
           These practices harm consumers and ultimately destroy{" "}
           <span className="text-[var(--signal)]">brand equity</span>.
         </Statement>
@@ -1097,78 +1120,84 @@ export default function Week2() {
 
       <Slide id="high-pressure-selling" border>
         <Tag>Short term, long term</Tag>
-        <Heading>High-Pressure Selling</Heading>
-        <div className="grid w-full items-end gap-8 md:grid-cols-[3fr_2fr] md:gap-14">
-          <Statement className="!max-w-[26ch]">
-            Involves persuading people to buy goods they had no thought of
-            buying.
-          </Statement>
+        <Heading className={HEAD}>High-Pressure Selling</Heading>
+        <Statement className="!max-w-[36ch]">
+          Involves persuading people to buy goods they had no thought of
+          buying.
+        </Statement>
+        <div className="mt-10 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)_minmax(0,27rem)] lg:gap-12">
           <Ruled>
             <P>
               It is often used for <Term tone="ink">unsought goods</Term> or in{" "}
               <Term tone="ink">aggressive B2B environments</Term>.
             </P>
           </Ruled>
+          <Ruled tone="signal" weight="thick">
+            <p className="type-h2 !font-normal">
+              High-pressure selling yields{" "}
+              <span className="text-[var(--signal)]">short-term gains</span> but
+              damages{" "}
+              <span className="text-[var(--counter)]">
+                long-term relationships and reputation
+              </span>
+              .
+            </p>
+          </Ruled>
+          <Plate>
+            <PressureOverTime />
+          </Plate>
         </div>
-        <Figure height="auto">
-          <PressureOverTime />
-        </Figure>
-        <p className="type-h2 !font-normal max-w-[48ch]">
-          High-pressure selling yields{" "}
-          <span className="text-[var(--signal)]">short-term gains</span> but
-          damages{" "}
-          <span className="text-[var(--counter)]">
-            long-term relationships and reputation
-          </span>
-          .
-        </p>
       </Slide>
 
       <Slide id="planned-obsolescence" border>
         <Tag>Before it needs replacement</Tag>
-        <Heading>Planned Obsolescence</Heading>
-        <Lead className="!max-w-[52ch]">
-          Causing products to become obsolete{" "}
-          <Term>before they actually need replacement</Term>.
-        </Lead>
-        <Figure height="auto">
-          <ObsolescenceLifespans />
-        </Figure>
-        <div className="w-full">
-          <p className="type-label !text-[var(--ink-3)]">
-            Strategies include
-          </p>
-          <ol className="mt-5 grid w-full gap-x-10 border-t-2 border-[var(--ink)] md:grid-cols-3">
-            {(
-              [
-                ["break", "using materials that break easily,"],
-                ["styles", "continuous changing of styles,"],
-                ["delay", "or delaying functional features until later models."],
-              ] as const
-            ).map(([kind, item]) => (
-              <li
-                key={kind}
-                className="border-b border-[var(--rule)] py-6 type-h2 !font-normal md:border-b-0"
-              >
-                {" "}
-                <StrategyGlyph kind={kind} />
-                {item}
-              </li>
-            ))}
-          </ol>
+        <Heading className={HEAD}>Planned Obsolescence</Heading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)] lg:gap-14">
+          <div>
+            <Lead className="!max-w-[40ch]">
+              Causing products to become obsolete{" "}
+              <Term>before they actually need replacement</Term>.
+            </Lead>
+            <p className="type-label mt-8 !text-[var(--ink-3)]">
+              Strategies include
+            </p>
+            <ol className="mt-3 w-full border-t-2 border-[var(--ink)]">
+              {(
+                [
+                  ["break", "using materials that break easily,"],
+                  ["styles", "continuous changing of styles,"],
+                  ["delay", "or delaying functional features until later models."],
+                ] as const
+              ).map(([kind, item]) => (
+                <li
+                  key={kind}
+                  className="flex items-center gap-5 border-b border-[var(--rule)] py-3.5 type-h2 !font-normal"
+                >
+                  {" "}
+                  <StrategyGlyph kind={kind} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div>
+            <Plate>
+              <ObsolescenceLifespans />
+            </Plate>
+            <Ruled tone="signal" weight="thick" className="mt-6">
+              <P>
+                While it drives{" "}
+                <Term tone="ink">frequent replacement sales</Term>, it raises
+                significant <Term>environmental and ethical concerns</Term>.
+              </P>
+            </Ruled>
+          </div>
         </div>
-        <Ruled tone="signal" weight="thick" className="mt-14 w-full">
-          <P className="!max-w-[62ch]">
-            While it drives <Term tone="ink">frequent replacement sales</Term>,
-            it raises significant <Term>environmental and ethical concerns</Term>
-            .
-          </P>
-        </Ruled>
       </Slide>
 
       <Slide id="sustainable-marketing" border>
         <Tag>Now and later</Tag>
-        <Heading>Sustainable Marketing</Heading>
+        <Heading className={HEAD}>Sustainable Marketing</Heading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-14">
           <Lead>
             Socially and environmentally responsible marketing that meets the{" "}
@@ -1179,18 +1208,20 @@ export default function Week2() {
             <Term tone="counter">future generations</Term> to meet their needs.
           </Lead>
         </div>
-        <Figure height="auto">
-          <GenerationsBand />
-        </Figure>
-        <div className="mt-4 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,22rem)_1fr] lg:gap-14">
-          <p className="type-h2 !font-normal">
-            It goes beyond the marketing concept to adopt a{" "}
-            <span className="text-[var(--signal)]">
-              societal marketing concept
-            </span>
-            .
-          </p>
-          <ConceptStep />
+        <div className="mt-10 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-14">
+          <Plate>
+            <GenerationsBand />
+          </Plate>
+          <div className="space-y-8">
+            <p className="type-h2 !font-normal max-w-[30ch]">
+              It goes beyond the marketing concept to adopt a{" "}
+              <span className="text-[var(--signal)]">
+                societal marketing concept
+              </span>
+              .
+            </p>
+            <ConceptStep />
+          </div>
         </div>
       </Slide>
 
