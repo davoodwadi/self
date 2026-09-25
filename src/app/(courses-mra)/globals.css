@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   FIELD LEDGER — design system for Marketing Research & Analytics
+   --------------------------------------------------------------------------
+   An analyst's notebook: cool grey-white paper, graphite ink, one ink-blue
+   signal and one ochre counterweight. Structure comes from hairline rules
+   and tabular figures rather than boxes and shadows.
+
+   Ink      #15181D   headings, rules, the default voice
+   Signal   #2C4A8C   ink blue — emphasis, the finding, the "evidence" colour
+   Counter  #A5621B   ochre — secondary category, contrast cases, discussion
+   Paper    #F8F8F5   cool paper ground
+   ========================================================================== */
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-signal: var(--signal);
+  --color-counter: var(--counter);
+  --color-affirm: var(--affirm);
+
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+
+  --font-display: var(--font-newsreader);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-sans);
+  --font-serif: var(--font-newsreader);
+}
+
+@layer base {
+  :root {
+    /* --- Ground --------------------------------------------------------- */
+    --paper: #f8f8f5; /* page */
+    --paper-2: #efefea; /* figure wells, bands */
+    --paper-3: #e3e3dc; /* pressed / active, filled zones */
+
+    /* --- Ink ------------------------------------------------------------ */
+    --ink: #15181d; /* headings */
+    --ink-2: #363b44; /* body */
+    --ink-3: #676d77; /* captions, meta */
+    --rule: #d9dad3; /* hairlines */
+    --rule-2: #c3c5bc; /* emphasised rule */
+
+    /* --- Signal (ink blue) ---------------------------------------------- */
+    --signal: #2c4a8c;
+    --signal-deep: #1d3366;
+    --signal-tint: rgba(44, 74, 140, 0.07);
+    --signal-line: rgba(44, 74, 140, 0.28);
+
+    /* --- Counter (ochre) ------------------------------------------------- */
+    --counter: #a5621b;
+    --counter-deep: #7a4812;
+    --counter-tint: rgba(165, 98, 27, 0.08);
+    --counter-line: rgba(165, 98, 27, 0.28);
+
+    /* --- Status ---------------------------------------------------------- */
+    --affirm: #2e6a4a;
+    --affirm-tint: rgba(46, 106, 74, 0.08);
+
+    /* --- Type ------------------------------------------------------------ */
+    --font-heading: var(--font-newsreader, Georgia, "Times New Roman", serif);
+    --font-body: var(--font-plex-sans, ui-sans-serif, system-ui, sans-serif);
+    --font-label: var(--font-body);
+
+    /* --- Measure & rhythm ------------------------------------------------ */
+    --measure: 68ch;
+    --slide-max: 78rem;
+    --slide-pad-y: 4.5rem;
+    --rule-weight: 1px;
+
+    /* --- Aliases for the shared slide components (InlineQuiz etc.) ------- */
+    --crimson: var(--signal);
+    --crimson-light: var(--signal-deep);
+    --charcoal: var(--ink);
+    --charcoal-light: var(--ink-2);
+    --gold: var(--counter);
+    --surface: var(--paper);
+    --background: var(--paper);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink-2);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--ink);
+    font-family: var(--font-heading);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background: var(--signal);
+    color: var(--paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+  }
+}
+
+/* ==========================================================================
+   Typographic scale
+   ========================================================================== */
+
+.type-display {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+
+.type-h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.1rem, 4.6vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.type-h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.22;
+  color: var(--ink);
+}
+
+.type-lead {
+  font-size: clamp(1.125rem, 1.6vw, 1.35rem);
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.type-body {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.type-label {
+  font-family: var(--font-label);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.type-caption {
+  font-family: var(--font-label);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-size: 0.8125rem;
+  color: var(--ink-3);
+  letter-spacing: 0.01em;
+}
+
+.type-quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3.1vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+/* Figure wells: a tinted panel that belongs to the paper. */
+.figure-well {
+  background: var(--paper-2);
+  border: var(--rule-weight) solid var(--rule);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

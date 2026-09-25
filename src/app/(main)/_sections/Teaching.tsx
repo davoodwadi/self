@@ -53,6 +53,12 @@ const SITES = [
     description:
       "Why people buy, use, and discard products. Perception, learning and memory, motivation, attitudes, decision-making, and the heuristics behind everyday choices.",
   },
+  {
+    title: "Marketing Research & Analytics",
+    href: "/courses/marketing-research-analytics",
+    description:
+      "Examines the design and conduct of marketing research in support of managerial decision-making. Topics include research design, measurement, sampling, experimentation, and multivariate and predictive analysis, with attention to the role of artificial intelligence in the research process.",
+  },
 ];
 
 export function Teaching() {

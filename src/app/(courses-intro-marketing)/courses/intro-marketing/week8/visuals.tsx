@@ -19,6 +19,7 @@
    ========================================================================== */
 
 import React from "react";
+import { Disc, GameController } from "@phosphor-icons/react";
 import {
   COUNTER,
   COUNTER_TINT,
@@ -30,7 +31,8 @@ import {
   INK3,
   Key,
   PAPER,
-  PAPER2,
+  PAPER3,
+  r2,
   RULE,
   RULE2,
   SIGNAL,
@@ -38,13 +40,15 @@ import {
 } from "../_visuals/kit";
 import {
   Arrow1,
-  Coins1,
+  Coins2,
+  Company1,
   Eye1,
   Factory2,
   Flag1,
   Gift1,
   Head3,
   Laptop1,
+  Mark2,
   Pack3,
   Person3,
   Star1,
@@ -78,7 +82,7 @@ export function BottomLinePerception() {
       <path d="M112 60 H160 M112 64 H160" stroke={INK} strokeWidth={1.25} />
       <line x1={126} y1={73} x2={160} y2={73} stroke={SIGNAL} strokeWidth={3} />
       <Arrow1 x1={244} y1={48} x2={190} y2={48} tone={INK3} />
-      <Tag1 x={300} y={48} w={92} h={46} tone={SIGNAL} fill={SIGNAL_TINT} label="PRICE" size={11} width={2} />
+      <Tag1 x={300} y={48} w={92} h={46} tone={SIGNAL} fill={SIGNAL_TINT} label="$$" size={11} width={2} />
       <Arrow1 x1={356} y1={48} x2={410} y2={48} tone={INK3} />
       <Eye1 x={466} y={48} k={1.2} />
       <Key x={136} y={106} anchor="middle" fill={INK} size={10.5}>
@@ -103,11 +107,11 @@ export function RevenueAndCosts() {
     { x: 670, name: "Promotion" },
   ];
   return (
-    <Frame height={310} label="The four elements of the marketing mix as bars around a zero line. Price is the only bar that rises above the line, as revenue. Product, place, and promotion all fall below it, as costs.">
-      <Display x={44} y={112} anchor="middle" fill={SIGNAL} size={26}>
+    <Frame height={252} label="The four elements of the marketing mix as bars around a zero line. Price is the only bar that rises above the line, as revenue. Product, place, and promotion all fall below it, as costs.">
+      <Display x={44} y={72} anchor="middle" fill={SIGNAL} size={26}>
         +
       </Display>
-      <Display x={44} y={214} anchor="middle" fill={INK3} size={26}>
+      <Display x={44} y={174} anchor="middle" fill={INK3} size={26}>
         −
       </Display>
       {cols.map((c) => {
@@ -116,27 +120,26 @@ export function RevenueAndCosts() {
           <g key={c.name}>
             {isPrice ? (
               <g>
-                <rect x={c.x - 55} y={66} width={110} height={94} fill={SIGNAL} />
-                <Key x={c.x} y={118} anchor="middle" fill={PAPER} size={10.5}>
+                <rect x={c.x - 55} y={16} width={110} height={104} fill={SIGNAL} />
+                <Key x={c.x} y={72} anchor="middle" fill={PAPER} size={10.5}>
                   REVENUE
                 </Key>
-                <Coins1 x={c.x} y={50} n={3} rx={14} tone={SIGNAL} />
               </g>
             ) : (
               <g>
-                <rect x={c.x - 55} y={160} width={110} height={76} fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
-                <Key x={c.x} y={203} anchor="middle" fill={INK3} size={10.5}>
+                <rect x={c.x - 55} y={120} width={110} height={76} fill={PAPER3} stroke={INK3} strokeWidth={1.25} />
+                <Key x={c.x} y={163} anchor="middle" fill={INK3} size={10.5}>
                   COSTS
                 </Key>
               </g>
             )}
-            <Display x={c.x} y={284} anchor="middle" fill={isPrice ? SIGNAL : INK} size={20}>
+            <Display x={c.x} y={236} anchor="middle" fill={isPrice ? SIGNAL : INK} size={20}>
               {c.name}
             </Display>
           </g>
         );
       })}
-      <line x1={64} y1={160} x2={766} y2={160} stroke={INK} strokeWidth={1.75} />
+      <line x1={64} y1={120} x2={766} y2={120} stroke={INK} strokeWidth={1.75} />
     </Frame>
   );
 }
@@ -195,7 +198,7 @@ export function ChoiceShare() {
       <Key x={200} y={194} anchor="middle" fill={INK} size={9.5}>
         BUYER CHOICE
       </Key>
-      <rect x={20} y={206} width={360} height={18} fill={PAPER2} stroke={INK} strokeWidth={1.25} />
+      <rect x={20} y={206} width={360} height={18} fill={PAPER3} stroke={INK} strokeWidth={1.25} />
       <rect x={20.6} y={206.6} width={230} height={16.8} fill={SIGNAL} />
       <Key x={20} y={243} fill={SIGNAL} size={9.5}>
         MARKET SHARE
@@ -215,16 +218,16 @@ export function InsideOutside() {
       <Key x={764} y={44} anchor="end" fill={COUNTER} size={10.5}>
         EXTERNAL
       </Key>
-      <rect x={40} y={60} width={360} height={200} fill={PAPER2} stroke={INK} strokeWidth={2} />
+      <rect x={40} y={60} width={360} height={200} fill={PAPER3} stroke={INK} strokeWidth={2} />
       <Key x={60} y={88} fill={INK} size={10.5}>
         INTERNAL
       </Key>
 
-      <Flag1 x={86} y={166} />
+      <Flag1 x={86} y={166} tone={INK} />
       <Key x={138} y={152} fill={INK} size={10}>
         MARKETING OBJECTIVES
       </Key>
-      <Coins1 x={98} y={232} n={4} rx={13} tone={INK} />
+      <Coins2 x={98} y={238} n={4} tone={INK} w={30} />
       <Key x={138} y={226} fill={INK} size={10}>
         COSTS
       </Key>
@@ -237,16 +240,16 @@ export function InsideOutside() {
       <Key x={664} y={152} anchor="end" fill={COUNTER} size={10}>
         MARKET DEMAND
       </Key>
-      <Pack3 x={700} y={238} w={26} h={28} tone={COUNTER} />
-      <Pack3 x={736} y={238} w={26} h={28} tone={COUNTER} />
+      <Company1 cx={694} base={246} w={32} h={28} tone={COUNTER} />
+      <Company1 cx={746} base={246} w={32} h={28} tone={COUNTER} />
       <Key x={664} y={226} anchor="end" fill={COUNTER} size={10}>
         COMPETITOR BEHAVIOR
       </Key>
       <Arrow1 x1={500} y1={148} x2={456} y2={172} tone={COUNTER} />
       <Arrow1 x1={500} y1={222} x2={456} y2={196} tone={COUNTER} />
 
-      <rect x={344} y={158} width={112} height={52} fill={PAPER} />
-      <Tag1 x={400} y={184} w={112} h={52} tone={SIGNAL} fill={SIGNAL_TINT} label="PRICE" size={12} width={2.25} />
+      <Tag1 x={400} y={184} w={112} h={52} tone={SIGNAL} fill={PAPER} width={2.25} />
+      <Tag1 x={400} y={184} w={112} h={52} tone={SIGNAL} fill={SIGNAL_TINT} label="$$" size={12} width={2.25} />
     </Frame>
   );
 }
@@ -303,11 +306,11 @@ export function Objectives({ pair }: { pair: "first" | "second" }) {
           <path d="M40 128 Q56 120 72 128 T104 128 T136 128 T168 128" fill="none" stroke={INK3} strokeWidth={1.25} />
         </ObjectiveCard>
         <ObjectiveCard cx={295} lines={["CURRENT PROFIT", "MAXIMIZATION"]}>
-          <Coins1 x={250} y={124} n={2} rx={13} tone={SIGNAL} />
-          <Coins1 x={290} y={124} n={5} rx={13} tone={SIGNAL} />
-          <Coins1 x={330} y={124} n={9} rx={13} tone={SIGNAL} />
-          <line x1={228} y1={130} x2={362} y2={130} stroke={INK} strokeWidth={1.25} />
-          <line x1={228} y1={32} x2={362} y2={32} stroke={SIGNAL} strokeWidth={1} strokeDasharray="3 3" />
+          <Coins2 x={252} y={130} n={3} tone={SIGNAL} fill={SIGNAL_TINT} w={30} />
+          <Coins2 x={295} y={130} n={7} tone={SIGNAL} fill={SIGNAL_TINT} w={30} />
+          <Coins2 x={338} y={130} n={12} tone={SIGNAL} fill={SIGNAL_TINT} w={30} />
+          <line x1={226} y1={130} x2={364} y2={130} stroke={INK} strokeWidth={1.25} />
+          <line x1={226} y1={54} x2={364} y2={54} stroke={SIGNAL} strokeWidth={1} strokeDasharray="3 3" />
         </ObjectiveCard>
       </Frame>
     );
@@ -315,14 +318,14 @@ export function Objectives({ pair }: { pair: "first" | "second" }) {
   return (
     <Frame width={400} height={196} label="Two objective cards. Market share leadership: a pie where one slice holds most of the market. Product quality leadership: a medal with a star.">
       <ObjectiveCard cx={105} lines={["MARKET SHARE", "LEADERSHIP"]}>
-        <circle cx={105} cy={80} r={40} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
+        <circle cx={105} cy={80} r={40} fill={PAPER3} stroke={INK} strokeWidth={1.5} />
         <path d="M105 80 L105 40 A40 40 0 1 1 65 80 Z" fill={SIGNAL} stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
       </ObjectiveCard>
       <ObjectiveCard cx={295} lines={["PRODUCT QUALITY", "LEADERSHIP"]}>
-        <path d="M280 94 L268 132 L281 126 L287 138 L296 102 Z M310 94 L322 132 L309 126 L303 138 L294 102 Z" fill={PAPER} stroke={INK} strokeWidth={1.25} strokeLinejoin="round" />
-        <circle cx={295} cy={72} r={34} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-        <circle cx={295} cy={72} r={27} fill="none" stroke={INK} strokeWidth={1} />
-        <Star1 x={295} y={73} k={1.05} fill={SIGNAL} />
+        <path d="M280 86 L268 124 L281 118 L287 130 L296 94 Z M310 86 L322 124 L309 118 L303 130 L294 94 Z" fill={PAPER} stroke={INK} strokeWidth={1.25} strokeLinejoin="round" />
+        <circle cx={295} cy={64} r={34} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+        <circle cx={295} cy={64} r={27} fill="none" stroke={INK} strokeWidth={1} />
+        <Star1 x={295} y={65} k={1.05} fill={SIGNAL} />
       </ObjectiveCard>
     </Frame>
   );
@@ -375,16 +378,15 @@ export function CostFloor() {
       <Key x={342} y={50} fill={INK3} size={9.5}>
         PRICE
       </Key>
-      <Tag1 x={220} y={128} w={96} h={40} tone={SIGNAL} fill={SIGNAL_TINT} label="PRICE" size={10.5} width={2} />
+      <Tag1 x={220} y={128} w={96} h={40} tone={SIGNAL} fill={SIGNAL_TINT} label="$$" size={10.5} width={2} />
       <rect x={20} y={150} width={360} height={34} fill={INK} />
       <Key x={36} y={172} fill={PAPER} size={10.5}>
         COSTS · THE ABSOLUTE FLOOR
       </Key>
-      {Array.from({ length: 12 }, (_, i) => (
+      {Array.from({ length: 11 }, (_, i) => (
         <line key={i} x1={20 + i * 32} y1={240} x2={52 + i * 32} y2={190} stroke={RULE} strokeWidth={1} />
       ))}
-      <rect x={172} y={198} width={96} height={36} fill={PAPER} />
-      <Tag1 x={220} y={216} w={88} h={32} tone={INK3} dash="4 3" strike />
+      <Tag1 x={220} y={216} w={88} h={32} tone={INK3} fill={PAPER} dash="4 3" strike />
     </Frame>
   );
 }
@@ -421,7 +423,6 @@ export function CostLine({ kind }: { kind: "fixed" | "variable" }) {
           <Key x={360} y={98} anchor="end" fill={INK} size={10.5}>
             FIXED COSTS
           </Key>
-          <Factory2 x={120} y={170} tone={INK3} />
         </g>
       ) : (
         <g>
@@ -442,7 +443,7 @@ export function CostLine({ kind }: { kind: "fixed" | "variable" }) {
 export function TotalCosts() {
   return (
     <Frame height={290} label="Left: a chart where a flat band of fixed costs and a rising wedge of variable costs stack into total costs. Right: a revenue bar that reaches above the total costs bar, and a long arrow: long-term viability.">
-      <rect x={60} y={160} width={340} height={40} fill={PAPER2} stroke={INK3} strokeWidth={1} />
+      <rect x={60} y={160} width={340} height={40} fill={PAPER3} stroke={INK3} strokeWidth={1} />
       <path d="M60 160 L400 60 V160 Z" fill={COUNTER_TINT} />
       <line x1={60} y1={160} x2={400} y2={60} stroke={INK} strokeWidth={2.5} />
       <Key x={230} y={185} anchor="middle" fill={INK} size={9.5}>
@@ -465,7 +466,7 @@ export function TotalCosts() {
 
       <Arrow1 x1={430} y1={130} x2={472} y2={130} tone={INK3} />
 
-      <rect x={520} y={160} width={80} height={40} fill={PAPER2} stroke={INK3} strokeWidth={1} />
+      <rect x={520} y={160} width={80} height={40} fill={PAPER3} stroke={INK3} strokeWidth={1} />
       <rect x={520} y={96} width={80} height={64} fill={COUNTER_TINT} stroke={INK3} strokeWidth={1} />
       <rect x={650} y={70} width={80} height={130} fill={SIGNAL} />
       <line x1={500} y1={96} x2={756} y2={96} stroke={INK} strokeWidth={1.25} strokeDasharray="5 4" />
@@ -503,12 +504,12 @@ export function FloorCeiling() {
       {[560, 600, 640, 680, 720].map((x) => (
         <Person3 key={x} x={x} y={46} k={0.75} stroke={PAPER} fill={COUNTER} />
       ))}
-      <rect x={20} y={50} width={760} height={170} fill={PAPER2} />
+      <rect x={20} y={50} width={760} height={170} fill={PAPER3} />
       <rect x={20} y={220} width={760} height={34} fill={INK} />
       <Key x={40} y={242} fill={PAPER} size={10.5}>
         COSTS · LOWER LIMIT
       </Key>
-      <Tag1 x={400} y={135} w={110} h={48} tone={SIGNAL} fill={PAPER} label="PRICE" size={12} width={2.25} />
+      <Tag1 x={400} y={135} w={110} h={48} tone={SIGNAL} fill={PAPER} label="$$" size={12} width={2.25} />
       <line x1={500} y1={64} x2={500} y2={206} stroke={INK3} strokeWidth={1.25} strokeDasharray="4 4" />
       <path d={headAlong1(500, 60, 0, -1)} fill="none" stroke={INK3} strokeWidth={1.25} />
       <path d={headAlong1(500, 210, 0, 1)} fill="none" stroke={INK3} strokeWidth={1.25} />
@@ -533,7 +534,7 @@ export function DemandCurve() {
       <Key x={372} y={224} anchor="end" fill={INK3} size={9}>
         DEMAND
       </Key>
-      <line x1={80} y1={40} x2={360} y2={190} stroke={INK} strokeWidth={2.5} />
+      <line x1={110} y1={56} x2={360} y2={190} stroke={INK} strokeWidth={2.5} />
       <path d="M60 80 H155 V200" fill="none" stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
       <path d="M60 150 H285 V200" fill="none" stroke={COUNTER} strokeWidth={1.25} strokeDasharray="4 3" />
       <circle cx={155} cy={80} r={6} fill={SIGNAL} />
@@ -571,25 +572,19 @@ export function MarketStructures() {
                 {line}
               </Key>
             ))}
-            <rect x={x} y={56} width={180} height={130} fill={PAPER2} stroke={RULE2} strokeWidth={1} />
+            <rect x={x} y={56} width={180} height={130} fill={PAPER3} stroke={RULE2} strokeWidth={1} />
             {i < 2
-              ? Array.from({ length: 15 }, (_, k) => {
-                  const c = k % 5;
-                  const r = Math.floor(k / 5);
-                  const sx = cx - 60 + c * 30;
-                  const sy = 91 + r * 30;
-                  const shape = i === 0 ? 1 : (r * 2 + c) % 3;
-                  return shape === 0 ? (
-                    <circle key={k} cx={sx} cy={sy} r={8} fill={INK} />
-                  ) : shape === 1 ? (
-                    <rect key={k} x={sx - 7} y={sy - 7} width={14} height={14} fill={INK} />
-                  ) : (
-                    <path key={k} d={`M${sx} ${sy - 9} L${sx + 9} ${sy + 7} H${sx - 9} Z`} fill={INK} />
-                  );
+              ? Array.from({ length: 12 }, (_, k) => {
+                  const c = k % 4;
+                  const r = Math.floor(k / 4);
+                  // Monopolistic competition: every seller a different size.
+                  const w = i === 0 ? 22 : [18, 26, 20, 24, 24, 18, 26, 20, 20, 24, 18, 26][k];
+                  const h = i === 0 ? 16 : [12, 20, 16, 12, 18, 14, 12, 20, 20, 14, 18, 12][k];
+                  return <Company1 key={k} cx={cx - 57 + c * 38} base={96 + r * 38} w={w} h={h} tone={INK} />;
                 })
               : i === 2
-                ? [-52, 0, 52].map((dx) => <rect key={dx} x={cx + dx - 20} y={101} width={40} height={40} fill={INK} />)
-                : <rect x={cx - 32} y={89} width={64} height={64} fill={INK} />}
+                ? [-56, 0, 56].map((dx) => <Company1 key={dx} cx={cx + dx} base={160} w={36} h={50} tone={INK} />)
+                : <Company1 cx={cx} base={168} w={76} h={78} tone={INK} />}
             <rect x={x + 15} y={222} width={150} height={14} fill={PAPER} stroke={INK} strokeWidth={1.25} />
             <rect x={x + 15.6} y={222.6} width={Math.round(149 * p.f)} height={12.8} fill={SIGNAL} />
           </g>
@@ -608,10 +603,11 @@ export function MarketStructures() {
 
 export function Elasticity({ kind, title }: { kind: "inelastic" | "elastic"; title?: string }) {
   const inelastic = kind === "inelastic";
-  // Inelastic: steep line (190,40)→(230,200); crosses y=90 at 202.5, y=120 at 210.
-  // Elastic: flat line (80,70)→(360,140); crosses y=90 at 160, y=120 at 280.
-  const q0 = inelastic ? 202 : 160;
-  const q1 = inelastic ? 210 : 280;
+  // Price moves from 90 to 120. Inelastic: steep line (232,58)→(268,202),
+  // crossing those prices at 240 and 247.5. Elastic: flat line
+  // (140,70)→(370,140), crossing them at 206 and 304.
+  const q0 = inelastic ? 240 : 206;
+  const q1 = inelastic ? 247.5 : 304;
   const heading = title ?? (inelastic ? "INELASTIC DEMAND" : "ELASTIC DEMAND");
   return (
     <Frame
@@ -623,33 +619,36 @@ export function Elasticity({ kind, title }: { kind: "inelastic" | "elastic"; tit
           : "A flat demand line. The same change in price moves demand a long way: demand changes greatly."
       }
     >
-      <rect x={60} y={90} width={312} height={30} fill={SIGNAL_TINT} />
-      <line x1={60} y1={30} x2={60} y2={210} stroke={INK3} strokeWidth={1.25} />
-      <line x1={60} y1={210} x2={372} y2={210} stroke={INK3} strokeWidth={1.25} />
-      <path d={headAlong1(60, 28, 0, -1)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <rect x={120} y={90} width={252} height={30} fill={SIGNAL_TINT} />
+      <line x1={120} y1={30} x2={120} y2={210} stroke={INK3} strokeWidth={1.25} />
+      <line x1={120} y1={210} x2={372} y2={210} stroke={INK3} strokeWidth={1.25} />
+      <path d={headAlong1(120, 28, 0, -1)} fill="none" stroke={INK3} strokeWidth={1.25} />
       <path d={headAlong1(374, 210, 1, 0)} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={70} y={36} fill={INK3} size={9}>
+      <Key x={130} y={36} fill={INK3} size={9.5}>
         PRICE
       </Key>
-      <Key x={372} y={202} anchor="end" fill={INK3} size={9}>
+      <Key x={372} y={200} anchor="end" fill={INK3} size={9.5}>
         DEMAND
       </Key>
-      <Key x={372} y={36} anchor="end" fill={INK} size={10}>
+      <Key x={372} y={36} anchor="end" fill={INK} size={10.5}>
         {heading}
       </Key>
-      <line x1={60} y1={90} x2={60} y2={120} stroke={SIGNAL} strokeWidth={5} />
-      <Key x={68} y={138} fill={SIGNAL} size={9}>
-        CHANGE IN PRICE
+      <line x1={120} y1={90} x2={120} y2={120} stroke={SIGNAL} strokeWidth={5} />
+      <Key x={108} y={102} anchor="end" fill={SIGNAL} size={10}>
+        CHANGE
+      </Key>
+      <Key x={108} y={116} anchor="end" fill={SIGNAL} size={10}>
+        IN PRICE
       </Key>
       {inelastic ? (
-        <line x1={190} y1={40} x2={230} y2={200} stroke={INK} strokeWidth={2.5} />
+        <line x1={232} y1={58} x2={268} y2={202} stroke={INK} strokeWidth={2.5} />
       ) : (
-        <line x1={80} y1={70} x2={360} y2={140} stroke={INK} strokeWidth={2.5} />
+        <line x1={140} y1={70} x2={370} y2={140} stroke={INK} strokeWidth={2.5} />
       )}
       <line x1={q0} y1={90} x2={q0} y2={210} stroke={COUNTER} strokeWidth={1.25} strokeDasharray="4 3" />
       <line x1={q1} y1={120} x2={q1} y2={210} stroke={COUNTER} strokeWidth={1.25} strokeDasharray="4 3" />
       <line x1={q0} y1={210} x2={q1} y2={210} stroke={COUNTER} strokeWidth={6} />
-      <Key x={(q0 + q1) / 2} y={236} anchor="middle" fill={COUNTER} size={9.5}>
+      <Key x={(q0 + q1) / 2} y={236} anchor="middle" fill={COUNTER} size={10}>
         {inelastic ? "DEMAND HARDLY CHANGES" : "DEMAND CHANGES GREATLY"}
       </Key>
     </Frame>
@@ -662,32 +661,32 @@ export function Elasticity({ kind, title }: { kind: "inelastic" | "elastic"; tit
 
 export function RevenueForecast() {
   return (
-    <Frame height={262} label="Revenues over time. At a price increase the line forks into a forecast. If demand is inelastic, revenues rise. If demand is elastic, revenues fall.">
-      <rect x={400} y={44} width={364} height={192} fill={PAPER2} />
-      <Key x={410} y={228} fill={INK3} size={9}>
+    <Frame width={400} height={250} label="Revenues over time. At a price increase the line forks into a forecast. If demand is inelastic, revenues rise. If demand is elastic, revenues fall.">
+      <rect x={200} y={44} width={176} height={166} fill={PAPER3} />
+      <Key x={208} y={232} fill={INK3} size={9.5}>
         FORECAST
       </Key>
-      <line x1={60} y1={40} x2={60} y2={236} stroke={INK3} strokeWidth={1.25} />
-      <line x1={60} y1={236} x2={766} y2={236} stroke={INK3} strokeWidth={1.25} />
-      <path d={headAlong1(768, 236, 1, 0)} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={70} y={46} fill={INK3} size={9}>
+      <line x1={40} y1={30} x2={40} y2={210} stroke={INK3} strokeWidth={1.25} />
+      <line x1={40} y1={210} x2={380} y2={210} stroke={INK3} strokeWidth={1.25} />
+      <path d={headAlong1(382, 210, 1, 0)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <Key x={48} y={36} fill={INK3} size={9.5}>
         REVENUES
       </Key>
-      <Key x={766} y={254} anchor="end" fill={INK3} size={9}>
+      <Key x={380} y={232} anchor="end" fill={INK3} size={9.5}>
         TIME
       </Key>
-      <path d="M60 150 C160 148 260 142 400 140" fill="none" stroke={INK} strokeWidth={2.5} />
-      <line x1={400} y1={30} x2={400} y2={236} stroke={SIGNAL} strokeWidth={1.5} strokeDasharray="5 4" />
-      <Key x={392} y={36} anchor="end" fill={SIGNAL} size={10}>
+      <path d="M40 132 C100 131 150 128 200 126" fill="none" stroke={INK} strokeWidth={2.5} />
+      <line x1={200} y1={30} x2={200} y2={210} stroke={SIGNAL} strokeWidth={1.5} strokeDasharray="5 4" />
+      <Key x={208} y={36} fill={SIGNAL} size={10}>
         PRICE INCREASE
       </Key>
-      <path d="M400 140 C520 130 640 104 740 84" fill="none" stroke={COUNTER} strokeWidth={2.5} strokeDasharray="7 5" />
-      <path d="M400 140 C520 152 640 180 740 200" fill="none" stroke={SIGNAL} strokeWidth={2.5} strokeDasharray="7 5" />
-      <circle cx={400} cy={140} r={5} fill={INK} />
-      <Key x={740} y={70} anchor="end" fill={COUNTER} size={10}>
+      <path d="M200 126 C260 118 310 98 368 80" fill="none" stroke={INK} strokeWidth={2.5} strokeDasharray="7 5" />
+      <path d="M200 126 C260 136 310 158 368 176" fill="none" stroke={COUNTER} strokeWidth={2.5} strokeDasharray="7 5" />
+      <circle cx={200} cy={126} r={5} fill={INK} />
+      <Key x={368} y={64} anchor="end" fill={INK} size={9.5}>
         IF DEMAND IS INELASTIC
       </Key>
-      <Key x={740} y={222} anchor="end" fill={SIGNAL} size={10}>
+      <Key x={368} y={194} anchor="end" fill={COUNTER} size={9.5}>
         IF DEMAND IS ELASTIC
       </Key>
     </Frame>
@@ -701,12 +700,12 @@ export function RevenueForecast() {
 export function ApproachLanes() {
   const lanes = [
     { c: 56, name: "CUSTOMER VALUE-BASED PRICING", tone: SIGNAL, tint: SIGNAL_TINT },
-    { c: 160, name: "COST-BASED PRICING", tone: INK, tint: PAPER2 },
+    { c: 160, name: "COST-BASED PRICING", tone: INK, tint: PAPER3 },
     { c: 264, name: "COMPETITION-BASED PRICING", tone: COUNTER, tint: COUNTER_TINT },
   ];
   return (
     <Frame height={320} label="One box, select a pricing approach, splits into three lanes that each end in a price tag. Customer value-based pricing starts from a customer. Cost-based pricing starts from costs. Competition-based pricing starts from competitors' price tags.">
-      <rect x={20} y={128} width={170} height={64} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
+      <rect x={20} y={128} width={170} height={64} fill={PAPER3} stroke={INK} strokeWidth={1.5} />
       <Key x={105} y={156} anchor="middle" fill={INK} size={9.5}>
         SELECT A
       </Key>
@@ -722,12 +721,12 @@ export function ApproachLanes() {
             {l.name}
           </Key>
           <Arrow1 x1={610} y1={l.c} x2={694} y2={l.c} tone={l.tone} />
-          <Tag1 x={744} y={l.c} w={76} h={34} tone={l.tone} fill={PAPER} label="PRICE" size={9.5} />
+          <Tag1 x={744} y={l.c} w={76} h={34} tone={l.tone} fill={PAPER} label="$$" size={9.5} />
         </g>
       ))}
       <Person3 x={294} y={76} k={1.1} stroke={SIGNAL} />
       <Star1 x={316} y={36} k={0.5} fill={SIGNAL} />
-      <Coins1 x={300} y={178} n={4} rx={13} tone={INK} />
+      <Coins2 x={300} y={184} n={4} tone={INK} w={30} />
       <Tag1 x={296} y={252} w={42} h={18} tone={COUNTER} />
       <Tag1 x={308} y={276} w={42} h={18} tone={COUNTER} />
     </Frame>
@@ -744,7 +743,7 @@ export function ValueKey() {
       <Head3 x={16} y={20} k={0.6} faceRight tone={INK} fill={PAPER} />
       <Star1 x={74} y={78} k={0.9} fill={SIGNAL} />
       <Arrow1 x1={152} y1={90} x2={214} y2={90} tone={SIGNAL} width={1.75} />
-      <Tag1 x={292} y={90} w={112} h={46} tone={SIGNAL} fill={SIGNAL_TINT} label="PRICE" size={11} width={2} />
+      <Tag1 x={292} y={90} w={112} h={46} tone={SIGNAL} fill={SIGNAL_TINT} label="$$" size={11} width={2} />
       <Key x={292} y={140} anchor="middle" fill={SIGNAL} size={9.5}>
         THE KEY TO PRICING
       </Key>
@@ -780,7 +779,7 @@ export function MixTogether() {
         );
       })}
       <Arrow1 x1={612} y1={88} x2={648} y2={88} tone={INK} />
-      <rect x={654} y={44} width={132} height={96} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
+      <rect x={654} y={44} width={132} height={96} fill={PAPER3} stroke={INK} strokeWidth={1.5} />
       <path d="M708 72 V64 A12 12 0 0 1 732 64 V72" fill="none" stroke={INK} strokeWidth={2.5} />
       <rect x={702} y={72} width={36} height={24} fill={INK} />
       <Key x={720} y={116} anchor="middle" fill={INK} size={9}>
@@ -850,7 +849,7 @@ export function GoodValueBalance() {
       <Bell x={150} y={95} tone={INK} />
       <Tag1 x={290} y={79} w={76} h={32} tone={SIGNAL} fill={SIGNAL_TINT} label="$$" size={10} />
       <line x1={50} y1={97} x2={350} y2={97} stroke={INK} strokeWidth={3} />
-      <path d="M200 99 L222 136 H178 Z" fill={PAPER2} stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
+      <path d="M200 99 L222 136 H178 Z" fill={PAPER3} stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
       <line x1={160} y1={136.5} x2={240} y2={136.5} stroke={INK} strokeWidth={1.5} />
       <Key x={116} y={164} anchor="middle" fill={INK} size={9.5}>
         QUALITY AND GOOD SERVICE
@@ -868,24 +867,24 @@ export function GoodValueBalance() {
 
 export function LessExpensiveVersion() {
   return (
-    <Frame width={400} height={214} label="A large package of an established brand-name product with a high price tag. An arrow leads to a smaller, simpler package with the same star mark and a lower price tag: a less expensive version.">
-      <Tag1 x={120} y={40} w={72} h={28} tone={INK} label="$$$" size={10} />
+    <Frame width={400} height={214} label="A large package of an established brand-name product with a high price tag. An arrow leads to a smaller, simpler package with the same brand seal and a lower price tag: a less expensive version.">
+      <Tag1 x={120} y={40} w={72} h={28} tone={INK} label="$$$" size={11.2} />
       <Pack3 x={120} y={170} w={96} h={104} tone={INK} />
-      <Star1 x={120} y={124} k={0.9} fill={INK} />
+      <Mark2 x={120} y={126} r={18} tone={INK} />
       <Arrow1 x1={184} y1={140} x2={248} y2={140} tone={SIGNAL} width={1.75} />
-      <Tag1 x={300} y={82} w={54} h={26} tone={SIGNAL} fill={SIGNAL_TINT} label="$" size={10} />
+      <Tag1 x={300} y={82} w={54} h={26} tone={SIGNAL} fill={SIGNAL_TINT} label="$" size={11.2} />
       <rect x={270} y={106} width={60} height={64} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <Star1 x={300} y={140} k={0.55} fill={SIGNAL} />
-      <Key x={120} y={192} anchor="middle" fill={INK} size={9}>
+      <Mark2 x={300} y={142} r={11} tone={SIGNAL} />
+      <Key x={120} y={192} anchor="middle" fill={INK} size={10.1}>
         ESTABLISHED
       </Key>
-      <Key x={120} y={206} anchor="middle" fill={INK} size={9}>
+      <Key x={120} y={206} anchor="middle" fill={INK} size={10.1}>
         BRAND-NAME PRODUCT
       </Key>
-      <Key x={300} y={192} anchor="middle" fill={SIGNAL} size={9}>
+      <Key x={300} y={192} anchor="middle" fill={SIGNAL} size={10.1}>
         LESS EXPENSIVE
       </Key>
-      <Key x={300} y={206} anchor="middle" fill={SIGNAL} size={9}>
+      <Key x={300} y={206} anchor="middle" fill={SIGNAL} size={10.1}>
         VERSION
       </Key>
     </Frame>
@@ -931,20 +930,19 @@ export function ValueAddedFeatures() {
 
 export function HigherNotCut() {
   return (
-    <Frame width={400} height={220} label="A price tag with two routes. Up: to a higher price tag with a star, charge higher prices. Down, dashed and struck out: cutting prices to match competitors.">
-      <Key x={30} y={40} fill={COUNTER} size={9.5}>
+    <Frame width={400} height={220} label="A price tag with two routes. Up: to a higher price tag, charge higher prices. Down, dashed and struck out: cutting prices to match competitors.">
+      <Key x={360} y={96} anchor="end" fill={COUNTER} size={10.6}>
         CHARGE HIGHER PRICES
       </Key>
-      <Tag1 x={70} y={120} w={70} h={30} tone={INK} label="$$" size={10} />
+      <Tag1 x={70} y={120} w={70} h={30} tone={INK} label="$$" size={11.2} />
       <Arrow1 x1={110} y1={106} x2={270} y2={60} tone={COUNTER} width={2} />
-      <Tag1 x={320} y={52} w={80} h={34} tone={COUNTER} fill={COUNTER_TINT} label="$$$" size={10} />
-      <Star1 x={372} y={22} k={0.5} fill={COUNTER} />
+      <Tag1 x={320} y={52} w={80} h={34} tone={COUNTER} fill={COUNTER_TINT} label="$$$" size={11.2} />
       <Arrow1 x1={110} y1={134} x2={270} y2={180} tone={INK3} width={1.5} dash="5 4" />
-      <Tag1 x={320} y={188} w={70} h={30} tone={INK3} dash="4 3" label="$" size={10} strike />
-      <Key x={30} y={196} fill={INK3} size={9}>
+      <Tag1 x={320} y={188} w={70} h={30} tone={INK3} dash="4 3" label="$" size={11.2} strike />
+      <Key x={30} y={196} fill={INK3} size={10.1}>
         CUTTING PRICES
       </Key>
-      <Key x={30} y={210} fill={INK3} size={9}>
+      <Key x={30} y={210} fill={INK3} size={10.1}>
         TO MATCH COMPETITORS
       </Key>
     </Frame>
@@ -967,79 +965,75 @@ export function CostBuildUp() {
       <Factory2 x={135} y={96} />
       <Truck1 x={310} y={96} />
       <Store1 x={460} y={96} />
-      <Coins1 x={615} y={90} n={4} rx={14} tone={SIGNAL} />
+      <Coins2 x={615} y={100} n={4} tone={SIGNAL} fill={SIGNAL_TINT} w={32} />
       {segs.map((s, i) => {
         const last = i === segs.length - 1;
         return (
           <g key={s.t}>
             <rect x={s.a} y={110} width={s.b - s.a} height={50} fill={last ? SIGNAL_TINT : PAPER} stroke={last ? SIGNAL : INK} strokeWidth={1.5} />
-            <Key x={(s.a + s.b) / 2} y={139} anchor="middle" fill={last ? SIGNAL : INK} size={9.5}>
+            <Key x={(s.a + s.b) / 2} y={139} anchor="middle" fill={last ? SIGNAL : INK} size={10.6}>
               {s.t}
             </Key>
           </g>
         );
       })}
       <path d="M40 172 V180 H530 V172" fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={285} y={200} anchor="middle" fill={INK} size={9.5}>
+      <Key x={285} y={200} anchor="middle" fill={INK} size={10.6}>
         COSTS
       </Key>
-      <Key x={615} y={182} anchor="middle" fill={SIGNAL} size={9.5}>
+      <Key x={615} y={182} anchor="middle" fill={SIGNAL} size={10.6}>
         FOR EFFORT AND RISK
       </Key>
       <Arrow1 x1={706} y1={135} x2={726} y2={135} tone={INK} />
-      <Tag1 x={762} y={135} w={68} h={34} tone={INK} label="PRICE" size={9.5} />
+      <Tag1 x={762} y={135} w={68} h={34} tone={INK} label="$$" size={10.6} />
     </Frame>
   );
 }
 
 /* ==========================================================================
-   25 · COST-PLUS — cost, plus something on top, makes the price (400)
+   25 · TWO TYPES — cost-plus pricing beside break-even pricing
    ========================================================================== */
 
-export function CostPlus() {
+export function CostTypes() {
   return (
-    <Frame width={400} height={200} label="Cost-plus pricing: a block of cost with a small block added on top, which together make the price.">
-      <Key x={30} y={30} fill={INK} size={10}>
+    <Frame height={250} label="Two panels. Cost-plus pricing: a block of cost with a small block added on, which together make the price tag. Break-even pricing: a total costs line that starts above zero and a revenue line that starts at zero and rises faster; they cross at the break-even point.">
+      <Key x={30} y={32} fill={INK} size={13.8}>
         COST-PLUS PRICING
       </Key>
-      <rect x={30} y={80} width={180} height={56} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
-      <Key x={120} y={112} anchor="middle" fill={INK} size={10}>
+      <rect x={30} y={100} width={180} height={60} fill={PAPER3} stroke={INK} strokeWidth={1.5} />
+      <Key x={120} y={134} anchor="middle" fill={INK} size={13.8}>
         COST
       </Key>
-      <rect x={210} y={80} width={58} height={56} fill={SIGNAL} />
-      <path d="M229 108 H249 M239 98 V118" stroke={PAPER} strokeWidth={3} />
-      <Arrow1 x1={280} y1={108} x2={314} y2={108} tone={INK} />
-      <Tag1 x={354} y={108} w={72} h={36} tone={SIGNAL} fill={SIGNAL_TINT} label="PRICE" size={9.5} />
-    </Frame>
-  );
-}
+      <rect x={210} y={100} width={56} height={60} fill={SIGNAL} />
+      <path d="M228 130 H248 M238 120 V140" stroke={PAPER} strokeWidth={3} />
+      <Arrow1 x1={278} y1={130} x2={306} y2={130} tone={INK} />
+      <Tag1 x={346} y={130} w={68} h={36} tone={SIGNAL} fill={SIGNAL_TINT} label="$$" size={12.5} />
 
-/* ==========================================================================
-   26 · BREAK-EVEN — where revenue meets total costs (400)
-   ========================================================================== */
+      <line x1={400} y1={20} x2={400} y2={230} stroke={RULE2} strokeWidth={1} strokeDasharray="3 4" />
 
-export function BreakEven() {
-  return (
-    <Frame width={400} height={240} label="Break-even pricing: a chart with a total costs line that starts above zero and a revenue line that starts at zero and rises faster. They cross at the break-even point.">
-      <line x1={60} y1={22} x2={80} y2={22} stroke={SIGNAL} strokeWidth={2.5} />
-      <Key x={88} y={26} fill={SIGNAL} size={9}>
-        REVENUE
+      <Key x={430} y={32} fill={INK} size={13.8}>
+        BREAK-EVEN PRICING
       </Key>
-      <line x1={60} y1={42} x2={80} y2={42} stroke={INK} strokeWidth={2.5} />
-      <Key x={88} y={46} fill={INK} size={9}>
-        TOTAL COSTS
-      </Key>
-      <line x1={50} y1={60} x2={50} y2={200} stroke={INK3} strokeWidth={1.25} />
-      <line x1={50} y1={200} x2={372} y2={200} stroke={INK3} strokeWidth={1.25} />
-      <path d={headAlong1(374, 200, 1, 0)} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={372} y={224} anchor="end" fill={INK3} size={9}>
+      <line x1={450} y1={60} x2={450} y2={210} stroke={INK3} strokeWidth={1.25} />
+      <line x1={450} y1={210} x2={772} y2={210} stroke={INK3} strokeWidth={1.25} />
+      <path d={headAlong1(774, 210, 1, 0)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <Key x={772} y={236} anchor="end" fill={INK3} size={11.9}>
         SALES VOLUME
       </Key>
-      <line x1={50} y1={140} x2={370} y2={60} stroke={INK} strokeWidth={2.5} />
-      <line x1={50} y1={200} x2={370} y2={30} stroke={SIGNAL} strokeWidth={2.5} />
-      <line x1={263} y1={87} x2={263} y2={200} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
-      <circle cx={263} cy={87} r={6} fill={PAPER} stroke={SIGNAL} strokeWidth={2.5} />
-      <Key x={276} y={114} fill={SIGNAL} size={10}>
+      <line x1={450} y1={150} x2={720} y2={89} stroke={INK} strokeWidth={2.5} />
+      <line x1={450} y1={210} x2={720} y2={70} stroke={SIGNAL} strokeWidth={2.5} />
+      <Key x={728} y={74} fill={SIGNAL} size={11.9}>
+        REVENUE
+      </Key>
+      <Key x={728} y={97} fill={INK} size={11.9}>
+        TOTAL
+      </Key>
+      <Key x={728} y={111} fill={INK} size={11.9}>
+        COSTS
+      </Key>
+      <line x1={655} y1={104} x2={655} y2={210} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
+      <circle cx={655} cy={104} r={6} fill={PAPER} stroke={SIGNAL} strokeWidth={2.5} />
+      <Key x={666} y={160} fill={SIGNAL} size={12.5}>
         BREAK-EVEN
       </Key>
     </Frame>
@@ -1053,28 +1047,28 @@ export function BreakEven() {
 export function Blinkers() {
   return (
     <Frame height={240} label="A head looking along a narrow beam that holds only costs. Outside the beam, greyed and dashed, sit demand and competitors' prices.">
-      <path d="M156 94 L500 40 V150 Z" fill={PAPER2} />
+      <path d="M156 94 L500 40 V150 Z" fill={PAPER3} />
       <line x1={156} y1={94} x2={500} y2={40} stroke={INK3} strokeWidth={1} strokeDasharray="4 4" />
       <line x1={156} y1={94} x2={500} y2={150} stroke={INK3} strokeWidth={1} strokeDasharray="4 4" />
       <Head3 x={24} y={30} k={0.8} faceRight tone={INK} fill={PAPER} />
-      <Key x={104} y={230} anchor="middle" fill={INK} size={9.5}>
+      <Key x={104} y={230} anchor="middle" fill={INK} size={12.3}>
         COST-BASED PRICING
       </Key>
-      <Coins1 x={420} y={106} n={5} rx={15} tone={INK} />
-      <Key x={420} y={130} anchor="middle" fill={INK} size={10}>
+      <Coins2 x={420} y={112} n={5} tone={INK} w={32} />
+      <Key x={420} y={130} anchor="middle" fill={INK} size={13}>
         COSTS
       </Key>
 
-      <Tag1 x={604} y={40} w={56} h={24} tone={INK3} dash="4 3" label="$$" size={9} />
-      <Tag1 x={680} y={40} w={56} h={24} tone={INK3} dash="4 3" label="$" size={9} />
-      <Tag1 x={756} y={40} w={56} h={24} tone={INK3} dash="4 3" label="$$$" size={9} />
-      <Key x={680} y={78} anchor="middle" fill={INK3} size={9.5}>
+      <Tag1 x={604} y={40} w={56} h={24} tone={INK3} dash="4 3" label="$$" size={11.7} />
+      <Tag1 x={680} y={40} w={56} h={24} tone={INK3} dash="4 3" label="$" size={11.7} />
+      <Tag1 x={756} y={40} w={56} h={24} tone={INK3} dash="4 3" label="$$$" size={11.7} />
+      <Key x={680} y={78} anchor="middle" fill={INK3} size={12.3}>
         COMPETITORS&apos; PRICES
       </Key>
       <line x1={570} y1={130} x2={570} y2={206} stroke={INK3} strokeWidth={1} strokeDasharray="3 3" />
       <line x1={570} y1={206} x2={740} y2={206} stroke={INK3} strokeWidth={1} strokeDasharray="3 3" />
       <line x1={584} y1={140} x2={730} y2={198} stroke={INK3} strokeWidth={2} strokeDasharray="6 4" />
-      <Key x={656} y={228} anchor="middle" fill={INK3} size={9.5}>
+      <Key x={656} y={228} anchor="middle" fill={INK3} size={12.3}>
         DEMAND
       </Key>
     </Frame>
@@ -1094,14 +1088,14 @@ export function CompetitorReadings() {
   ];
   return (
     <Frame height={230} label="A file on competitors with four entries: strategies, prices, costs, and market offerings. Lines from all four converge on one price tag: prices are set.">
-      <rect x={40} y={20} width={260} height={196} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
+      <rect x={40} y={20} width={260} height={196} fill={PAPER3} stroke={INK} strokeWidth={1.5} />
       <Key x={60} y={48} fill={INK} size={10.5}>
         COMPETITORS&apos;
       </Key>
       <line x1={60} y1={60} x2={280} y2={60} stroke={RULE2} strokeWidth={1} />
       <Flag1 x={70} y={rows[0].y + 12} k={0.5} tone={INK} />
       <Tag1 x={78} y={rows[1].y} w={36} h={18} tone={INK} />
-      <Coins1 x={78} y={rows[2].y + 8} n={3} rx={10} tone={INK} />
+      <Coins2 x={78} y={rows[2].y + 10} n={3} tone={INK} w={22} />
       <Pack3 x={78} y={rows[3].y + 11} w={24} h={22} tone={INK} />
       {rows.map((r) => (
         <g key={r.t}>
@@ -1112,7 +1106,7 @@ export function CompetitorReadings() {
         </g>
       ))}
       <Arrow1 x1={560} y1={118} x2={612} y2={118} tone={COUNTER} width={1.75} />
-      <Tag1 x={684} y={118} w={120} h={50} tone={COUNTER} fill={COUNTER_TINT} label="PRICE" size={11} width={2} />
+      <Tag1 x={684} y={118} w={120} h={50} tone={COUNTER} fill={COUNTER_TINT} label="$$" size={11} width={2} />
       <Key x={684} y={170} anchor="middle" fill={COUNTER} size={9.5}>
         PRICES ARE SET
       </Key>
@@ -1128,24 +1122,21 @@ export function ValueJudged() {
   return (
     <Frame height={244} label="Consumers stand before a shelf. Three competitor products carry their price tags. A product at the end has a question mark on its tag: its value is judged from the prices that competitors charge.">
       <Person3 x={60} y={150} k={1.8} />
-      <Key x={60} y={176} anchor="middle" fill={INK} size={9.5}>
-        CONSUMERS
-      </Key>
       {[200, 340, 480].map((x, i) => (
         <g key={x}>
           <Pack3 x={x} y={150} w={70} h={76} tone={INK} />
-          <Tag1 x={x} y={176} w={64} h={26} tone={INK} label={["$$", "$$$", "$$"][i]} size={9.5} />
+          <Tag1 x={x} y={176} w={64} h={26} tone={INK} label={["$$", "$$$", "$$"][i]} size={10.6} />
         </g>
       ))}
       <Pack3 x={690} y={150} w={70} h={76} tone={COUNTER} fill={COUNTER_TINT} />
-      <Tag1 x={690} y={176} w={64} h={26} tone={COUNTER} fill={COUNTER_TINT} label="?" size={11} />
+      <Tag1 x={690} y={176} w={64} h={26} tone={COUNTER} fill={COUNTER_TINT} label="?" size={12.3} />
       <line x1={110} y1={150} x2={770} y2={150} stroke={INK} strokeWidth={2} />
       <Arrow1 x1={524} y1={176} x2={648} y2={176} tone={COUNTER} dash="5 4" />
       <path d="M165 200 V208 H515 V200" fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={340} y={230} anchor="middle" fill={INK} size={9.5}>
+      <Key x={340} y={230} anchor="middle" fill={INK} size={10.6}>
         PRICES THAT COMPETITORS CHARGE
       </Key>
-      <Key x={690} y={230} anchor="middle" fill={COUNTER} size={9.5}>
+      <Key x={690} y={230} anchor="middle" fill={COUNTER} size={10.6}>
         A PRODUCT&apos;S VALUE
       </Key>
     </Frame>
@@ -1158,34 +1149,31 @@ export function ValueJudged() {
 
 export function ValueJustifies() {
   return (
-    <Frame width={400} height={236} label="Two bars of customer value, each with a price tag above it. The competitors' bar is shorter. Our offer's bar is taller, greater value, and its price tag sits higher.">
-      <rect x={20} y={14} width={12} height={12} fill={COUNTER} />
-      <Key x={40} y={24} fill={INK} size={9}>
+    <Frame width={400} height={236} label="A chart of customer value. The competitors' bar is shorter, with a lower price tag above it. Our offer's bar is taller, greater value, and its price tag sits higher: a higher price.">
+      <line x1={50} y1={30} x2={50} y2={200} stroke={INK3} strokeWidth={1.25} />
+      <path d={headAlong1(50, 28, 0, -1)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <Key x={60} y={36} fill={INK3} size={9.5}>
         CUSTOMER VALUE
       </Key>
-      <Tag1 x={28} y={44} w={22} h={14} tone={INK} />
-      <Key x={44} y={48} fill={INK} size={9}>
-        PRICE
-      </Key>
-      <rect x={85} y={120} width={70} height={80} fill={INK3} />
-      <Tag1 x={124} y={100} w={60} h={26} tone={INK} label="$$" size={9.5} />
+      <rect x={95} y={130} width={70} height={70} fill={INK3} />
+      <Tag1 x={134} y={110} w={60} h={26} tone={INK} label="$$" size={9.5} />
       <rect x={245} y={80} width={70} height={120} fill={COUNTER} />
       <Tag1 x={284} y={60} w={60} h={26} tone={COUNTER} fill={COUNTER_TINT} label="$$$" size={9.5} />
-      <line x1={155} y1={120} x2={330} y2={120} stroke={INK3} strokeWidth={1.25} strokeDasharray="4 3" />
+      <line x1={165} y1={130} x2={245} y2={130} stroke={INK3} strokeWidth={1.25} strokeDasharray="4 3" />
       <line x1={50} y1={200} x2={380} y2={200} stroke={INK} strokeWidth={1.5} />
-      <Key x={324} y={100} fill={COUNTER} size={9}>
+      <Key x={324} y={104} fill={COUNTER} size={9.5}>
         GREATER
       </Key>
-      <Key x={324} y={112} fill={COUNTER} size={9}>
+      <Key x={324} y={117} fill={COUNTER} size={9.5}>
         VALUE
       </Key>
-      <Key x={322} y={58} fill={COUNTER} size={9}>
+      <Key x={322} y={56} fill={COUNTER} size={9.5}>
         HIGHER
       </Key>
-      <Key x={322} y={70} fill={COUNTER} size={9}>
+      <Key x={322} y={69} fill={COUNTER} size={9.5}>
         PRICE
       </Key>
-      <Key x={120} y={222} anchor="middle" fill={INK3} size={9.5}>
+      <Key x={130} y={222} anchor="middle" fill={INK3} size={9.5}>
         COMPETITORS
       </Key>
       <Key x={280} y={222} anchor="middle" fill={COUNTER} size={9.5}>
@@ -1253,13 +1241,13 @@ export function StreamingMarket() {
    ========================================================================== */
 
 export function SkimToPenetrate() {
-  const bounds = [180, 300, 450, 640, 760];
+  const bounds = [75.8, 217.4, 394.4, 618.6, 760.2];
   const stages = ["INTRODUCTION", "GROWTH", "MATURITY", "DECLINE"];
   const steps = [
-    { a: 192, b: 288, y: 70, tone: SIGNAL },
-    { a: 312, b: 438, y: 120, tone: INK },
-    { a: 462, b: 628, y: 170, tone: INK },
-    { a: 652, b: 748, y: 220, tone: COUNTER },
+    { a: 89.96, b: 203.24, y: 70, tone: SIGNAL },
+    { a: 231.56, b: 380.24, y: 120, tone: INK },
+    { a: 408.56, b: 604.44, y: 170, tone: INK },
+    { a: 632.76, b: 746.04, y: 220, tone: COUNTER },
   ];
   return (
     <Frame height={300} label="Price over the product life cycle, with a faint sales curve behind. Price starts high in introduction, labelled market skimming, and cascades down one step per stage through growth and maturity to a low price in decline, labelled market penetration.">
@@ -1267,35 +1255,35 @@ export function SkimToPenetrate() {
         <line key={x} x1={x} y1={42} x2={x} y2={280} stroke={RULE2} strokeWidth={1} strokeDasharray="3 4" />
       ))}
       {stages.map((s, i) => (
-        <Key key={s} x={(bounds[i] + bounds[i + 1]) / 2} y={34} anchor="middle" fill={INK} size={9}>
+        <Key key={s} x={r2((bounds[i] + bounds[i + 1]) / 2)} y={34} anchor="middle" fill={INK} size={9}>
           {s}
         </Key>
       ))}
-      <path d="M180 270 C230 268 270 255 300 230 C360 180 400 130 470 116 C540 106 600 108 640 126 C690 150 730 190 760 220" fill="none" stroke={RULE2} strokeWidth={2} />
-      <Key x={540} y={98} anchor="middle" fill={INK3} size={9}>
+      <path d="M75.8 270 C134.8 268 182 255 217.4 230 C288.2 180 335.4 130 418 116 C500.6 106 571.4 108 618.6 126 C677.6 150 724.8 190 760.2 220" fill="none" stroke={RULE2} strokeWidth={2} />
+      <Key x={500.6} y={98} anchor="middle" fill={INK3} size={9}>
         SALES
       </Key>
-      <line x1={170} y1={44} x2={170} y2={280} stroke={INK3} strokeWidth={1.25} />
-      <line x1={170} y1={280} x2={766} y2={280} stroke={INK3} strokeWidth={1.25} />
-      <path d={headAlong1(768, 280, 1, 0)} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={160} y={56} anchor="end" fill={INK3} size={9}>
+      <line x1={64} y1={44} x2={64} y2={280} stroke={INK3} strokeWidth={1.25} />
+      <line x1={64} y1={280} x2={774} y2={280} stroke={INK3} strokeWidth={1.25} />
+      <path d={headAlong1(776, 280, 1, 0)} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <Key x={56} y={56} anchor="end" fill={INK3} size={9}>
         PRICE
       </Key>
       {steps.map((s, i) => (
         <g key={s.a}>
-          <rect x={s.a} y={s.y - 7} width={s.b - s.a} height={14} fill={s.tone} />
+          <rect x={s.a} y={s.y - 7} width={r2(s.b - s.a)} height={14} fill={s.tone} />
           {i < steps.length - 1 ? (
             <g>
-              <path d={`M${s.b - 14} ${s.y + 7} V${steps[i + 1].y} H${steps[i + 1].a - 6}`} fill="none" stroke={INK3} strokeWidth={1.25} />
-              <path d={headAlong1(steps[i + 1].a - 4, steps[i + 1].y, 1, 0, 7)} fill="none" stroke={INK3} strokeWidth={1.25} />
+              <path d={`M${r2(s.b - 14)} ${s.y + 7} V${steps[i + 1].y} H${r2(steps[i + 1].a - 6)}`} fill="none" stroke={INK3} strokeWidth={1.25} />
+              <path d={headAlong1(r2(steps[i + 1].a - 4), steps[i + 1].y, 1, 0, 7)} fill="none" stroke={INK3} strokeWidth={1.25} />
             </g>
           ) : null}
         </g>
       ))}
-      <Key x={192} y={56} fill={SIGNAL} size={10}>
+      <Key x={89.96} y={56} fill={SIGNAL} size={10}>
         MARKET SKIMMING
       </Key>
-      <Key x={748} y={250} anchor="end" fill={COUNTER} size={10}>
+      <Key x={746.04} y={250} anchor="end" fill={COUNTER} size={10}>
         MARKET PENETRATION
       </Key>
     </Frame>
@@ -1320,16 +1308,16 @@ export function MarketLayers({ mode }: { mode: "skim" | "penetrate" }) {
       label={
         skim
           ? "The market as a pyramid of five layers of buyers, one buyer at the top and more in each layer below. Beside each layer, a price tag steps down from the highest price at the top: the company skims layer by layer, starting with the top layer."
-          : "The market as a pyramid of five layers of buyers, every layer lit at once. A long arrow runs from top to bottom beside it, quickly and deeply, down to one low initial price tag."
+          : "The market as a pyramid of five layers of buyers, every layer lit at once. A low initial price tag sits at the top of a long arrow that runs down beside every layer: quickly and deeply."
       }
     >
-      <Key x={20} y={24} fill={INK3} size={9.5}>
+      <Key x={170} y={64} anchor="end" fill={INK3} size={9.5}>
         THE MARKET
       </Key>
-      {layers.map(({ k, top, bot, row }) => {
+      {layers.map(({ k, top, bot }) => {
         const lit = skim ? k === 0 : true;
         const tone = skim ? (lit ? SIGNAL : INK) : COUNTER;
-        const tint = skim ? (lit ? SIGNAL_TINT : PAPER2) : COUNTER_TINT;
+        const tint = skim ? (lit ? SIGNAL_TINT : PAPER3) : COUNTER_TINT;
         return (
           <g key={k}>
             <path
@@ -1340,7 +1328,7 @@ export function MarketLayers({ mode }: { mode: "skim" | "penetrate" }) {
               strokeLinejoin="round"
             />
             {Array.from({ length: 2 * k + 1 }, (_, j) => (
-              <circle key={j} cx={220 + (j - k) * 14} cy={row} r={4} fill={tone} />
+              <Person3 key={j} x={220 + (j - k) * 16} y={bot - 6} k={0.62} stroke={tone} width={1.25} />
             ))}
           </g>
         );
@@ -1364,15 +1352,14 @@ export function MarketLayers({ mode }: { mode: "skim" | "penetrate" }) {
         </g>
       ) : (
         <g>
-          <line x1={470} y1={34} x2={470} y2={238} stroke={COUNTER} strokeWidth={4} />
-          <path d={headAlong1(470, 246, 0, 1, 12)} fill="none" stroke={COUNTER} strokeWidth={4} />
-          <Key x={492} y={140} fill={COUNTER} size={10}>
-            QUICKLY AND DEEPLY
-          </Key>
-          <line x1={220 + hw(252) + 12} y1={252} x2={440} y2={252} stroke={COUNTER} strokeWidth={1} strokeDasharray="3 4" />
-          <Tag1 x={540} y={252} w={84} h={28} tone={COUNTER} fill={COUNTER_TINT} label="$" size={10} />
-          <Key x={596} y={256} fill={COUNTER} size={10}>
+          <Tag1 x={470} y={44} w={84} h={28} tone={COUNTER} fill={COUNTER_TINT} label="$" size={10} />
+          <Key x={526} y={48} fill={COUNTER} size={10}>
             LOW INITIAL PRICE
+          </Key>
+          <line x1={470} y1={66} x2={470} y2={262} stroke={COUNTER} strokeWidth={4} />
+          <path d={headAlong1(470, 270, 0, 1, 12)} fill="none" stroke={COUNTER} strokeWidth={4} />
+          <Key x={492} y={170} fill={COUNTER} size={10}>
+            QUICKLY AND DEEPLY
           </Key>
         </g>
       )}
@@ -1386,15 +1373,15 @@ export function MarketLayers({ mode }: { mode: "skim" | "penetrate" }) {
 
 export function FewerProfitable() {
   return (
-    <Frame width={400} height={220} label="Only three buyers, but each one stands beside a tall stack of coins: fewer but more profitable sales.">
-      {[50, 170, 290].map((x) => (
+    <Frame width={400} height={172} label="Only three buyers, but each one stands beside a tall stack of coins: fewer but more profitable sales.">
+      {[62, 182, 302].map((x) => (
         <g key={x}>
-          <Person3 x={x} y={170} k={1.5} />
-          <Coins1 x={x + 44} y={166} n={7} rx={12} tone={SIGNAL} />
+          <Person3 x={x} y={126} k={1.7} />
+          <Coins2 x={x + 46} y={126} n={13} tone={SIGNAL} fill={SIGNAL_TINT} w={32} />
         </g>
       ))}
-      <line x1={20} y1={172} x2={380} y2={172} stroke={INK} strokeWidth={1.25} />
-      <Key x={200} y={202} anchor="middle" fill={SIGNAL} size={10}>
+      <line x1={20} y1={126} x2={380} y2={126} stroke={INK} strokeWidth={1.25} />
+      <Key x={200} y={156} anchor="middle" fill={SIGNAL} size={10}>
         <tspan fill={INK}>FEWER</tspan> BUT MORE PROFITABLE SALES
       </Key>
     </Frame>
@@ -1408,7 +1395,7 @@ export function FewerProfitable() {
 export function QualityImagePillars() {
   return (
     <Frame width={400} height={224} label="A high price tag resting on a lintel held up by two pillars: product quality, marked with a star, and image, marked with an eye.">
-      <Tag1 x={200} y={34} w={150} h={44} tone={SIGNAL} fill={SIGNAL_TINT} label="HIGH PRICE" size={10.5} width={2} />
+      <Tag1 x={200} y={34} w={150} h={44} tone={SIGNAL} fill={SIGNAL_TINT} label="$$$$$" size={10.5} width={2} />
       <rect x={80} y={62} width={240} height={14} fill={INK} />
       {[134, 266].map((cx) => (
         <g key={cx}>
@@ -1435,20 +1422,20 @@ export function QualityImagePillars() {
 
 export function NoUndercut() {
   return (
-    <Frame width={400} height={210} label="A market behind a wall holds a high price tag. Outside the wall, a competitor with a lower, dashed price tag pushes toward it and is stopped by the wall.">
+    <Frame width={400} height={210} label="A market behind a wall holds a high price tag. Outside the wall, a competitor company with a lower, dashed price tag pushes toward it and is stopped by the wall.">
       <rect x={172} y={30} width={208} height={160} fill={SIGNAL_TINT} />
       <rect x={158} y={20} width={14} height={180} fill={INK} />
       {[40, 60, 80, 100, 120, 140, 160, 180].map((y) => (
         <line key={y} x1={158} y1={y} x2={172} y2={y} stroke={PAPER} strokeWidth={1.25} />
       ))}
-      <Tag1 x={282} y={96} w={116} h={44} tone={SIGNAL} fill={PAPER} label="HIGH PRICE" size={10} width={2} />
+      <Tag1 x={282} y={96} w={116} h={44} tone={SIGNAL} fill={PAPER} label="$$$$$" size={10} width={2} />
       <Key x={282} y={172} anchor="middle" fill={INK} size={9.5}>
         THE MARKET
       </Key>
       <Tag1 x={70} y={76} w={56} h={26} tone={INK3} dash="4 3" label="$" size={10} />
-      <Pack3 x={70} y={150} w={44} h={50} tone={INK3} />
-      <Arrow1 x1={104} y1={124} x2={150} y2={124} tone={INK3} />
-      <path d="M122 98 L136 112 M136 98 L122 112" stroke={SIGNAL} strokeWidth={2.5} />
+      <Company1 cx={70} base={150} w={44} h={40} tone={INK3} />
+      <Arrow1 x1={104} y1={130} x2={150} y2={130} tone={INK3} />
+      <path d="M122 104 L136 118 M136 104 L122 118" stroke={INK} strokeWidth={2.5} />
       <Key x={70} y={176} anchor="middle" fill={INK3} size={9.5}>
         COMPETITORS
       </Key>
@@ -1475,7 +1462,7 @@ export function ManyBuyersShare() {
       <Key x={330} y={136} anchor="middle" fill={COUNTER} size={9.5}>
         QUICKLY
       </Key>
-      <rect x={20} y={160} width={360} height={24} fill={PAPER2} stroke={INK} strokeWidth={1.25} />
+      <rect x={20} y={160} width={360} height={24} fill={PAPER3} stroke={INK} strokeWidth={1.25} />
       <rect x={20.6} y={160.6} width={280} height={22.8} fill={COUNTER} />
       <Key x={20} y={206} fill={COUNTER} size={9.5}>
         LARGE MARKET SHARE
@@ -1530,7 +1517,10 @@ export function AloneVsMix() {
       <rect x={180} y={30} width={204} height={130} fill="none" stroke={INK3} strokeWidth={1.25} strokeDasharray="5 4" />
       <path d="M232 66 H332 V128 H232 Z M232 66 L332 128" fill="none" stroke={INK3} strokeWidth={1.25} />
       {nodes.map(([x, y], i) => (
-        <Pack3 key={`${x}-${y}`} x={x} y={y + 22} w={40} h={44} tone={i === 2 ? SIGNAL : INK} fill={i === 2 ? SIGNAL_TINT : PAPER} />
+        <g key={`${x}-${y}`}>
+          {i === 2 ? <Pack3 x={x} y={y + 22} w={40} h={44} tone={SIGNAL} fill={PAPER} /> : null}
+          <Pack3 x={x} y={y + 22} w={40} h={44} tone={i === 2 ? SIGNAL : INK} fill={i === 2 ? SIGNAL_TINT : PAPER} />
+        </g>
       ))}
       <Key x={282} y={182} anchor="middle" fill={INK} size={9.5}>
         PRODUCT MIX
@@ -1548,21 +1538,21 @@ export function TotalMixProfit() {
   return (
     <Frame height={276} label="Four products, each with its own price tag, together a set of prices. Their profit bars differ, and one sits below zero. They add up to one tall bar: profits on the total mix.">
       <path d="M118 34 V28 H542 V34" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
-      <Key x={330} y={20} anchor="middle" fill={SIGNAL} size={10}>
+      <Key x={330} y={20} anchor="middle" fill={SIGNAL} size={11.2}>
         A SET OF PRICES
       </Key>
-      <Key x={40} y={190} fill={INK3} size={9.5}>
+      <Key x={40} y={190} fill={INK3} size={10.6}>
         PROFITS
       </Key>
       {profits.map((p, i) => {
         const x = 150 + i * 120;
         return (
           <g key={x}>
-            <Tag1 x={x} y={52} w={56} h={24} tone={INK} label={["$$", "$", "$$$", "$$"][i]} size={9} />
+            <Tag1 x={x} y={52} w={56} h={24} tone={INK} label={["$$", "$", "$$$", "$$"][i]} size={10.1} />
             {p > 0 ? (
               <rect x={x - 32} y={200 - p} width={64} height={p} fill={INK} />
             ) : (
-              <rect x={x - 32} y={200} width={64} height={-p} fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
+              <rect x={x - 32} y={200} width={64} height={-p} fill={PAPER3} stroke={INK3} strokeWidth={1.25} />
             )}
             <Pack3 x={x} y={262} w={26} h={22} tone={INK} />
           </g>
@@ -1573,10 +1563,10 @@ export function TotalMixProfit() {
         =
       </Display>
       <rect x={630} y={80} width={100} height={120} fill={SIGNAL} />
-      <Key x={680} y={226} anchor="middle" fill={SIGNAL} size={9.5}>
+      <Key x={680} y={226} anchor="middle" fill={SIGNAL} size={10.6}>
         PROFITS ON
       </Key>
-      <Key x={680} y={240} anchor="middle" fill={SIGNAL} size={9.5}>
+      <Key x={680} y={240} anchor="middle" fill={SIGNAL} size={10.6}>
         THE TOTAL MIX
       </Key>
     </Frame>
@@ -1603,17 +1593,18 @@ export function RelatedDemand() {
       )}
       {nodes.map(([x, y], i) => (
         <g key={`${x}-${y}`}>
+          {i === 0 ? <Pack3 x={x} y={y + 18} w={44} h={36} tone={SIGNAL} fill={PAPER} /> : null}
           <Pack3 x={x} y={y + 18} w={44} h={36} tone={i === 0 ? SIGNAL : INK} fill={i === 0 ? SIGNAL_TINT : PAPER} />
           {i > 0 ? (
-            <Display x={x + (x < 200 ? -34 : 34)} y={y + 8} anchor="middle" fill={INK3} size={18}>
+            <Display x={x + (x < 200 ? -34 : 34)} y={y + 8} anchor="middle" fill={INK3} size={20.2}>
               ?
             </Display>
           ) : null}
         </g>
       ))}
-      <Tag1 x={264} y={48} w={50} h={22} tone={SIGNAL} fill={PAPER} label="$" size={9.5} />
+      <Tag1 x={264} y={48} w={50} h={22} tone={SIGNAL} fill={PAPER} label="$" size={10.6} />
       <Arrow1 x1={302} y1={34} x2={302} y2={62} tone={SIGNAL} width={1.75} />
-      <Key x={200} y={214} anchor="middle" fill={INK} size={9.5}>
+      <Key x={200} y={214} anchor="middle" fill={INK} size={10.6}>
         RELATED DEMAND AND COSTS
       </Key>
     </Frame>
@@ -1627,21 +1618,21 @@ export function RelatedDemand() {
 export function PriceSteps() {
   const items = [
     { a: 80, b: 300, top: 190, w: 50, h: 50, tag: "$", tx: 250 },
-    { a: 300, b: 520, top: 140, w: 60, h: 60, tag: "$$", tx: 475 },
-    { a: 520, b: 740, top: 90, w: 70, h: 60, tag: "$$$", tx: 700 },
+    { a: 300, b: 520, top: 140, w: 60, h: 60, tag: "$$", tx: 474 },
+    { a: 520, b: 740, top: 90, w: 70, h: 60, tag: "$$$", tx: 708 },
   ];
   return (
     <Frame height={244} label="Three products in a line, small, medium, and large, standing on a staircase. Each has a higher price tag than the one before, and the rise between each step is marked as a price step.">
-      <Key x={80} y={30} fill={INK} size={10}>
+      <Key x={80} y={30} fill={INK} size={13}>
         VARIOUS PRODUCTS IN A LINE
       </Key>
       {items.map((it) => {
         const cx = it.a + 110;
         return (
           <g key={it.a}>
-            <rect x={it.a} y={it.top} width={it.b - it.a} height={230 - it.top} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
+            <rect x={it.a} y={it.top} width={it.b - it.a} height={230 - it.top} fill={PAPER3} stroke={INK} strokeWidth={1.5} />
             <Pack3 x={cx} y={it.top} w={it.w} h={it.h} tone={INK} />
-            <Tag1 x={it.tx} y={it.top - 24} w={Math.max(50, 18 + it.tag.length * 12)} h={24} tone={SIGNAL} fill={SIGNAL_TINT} label={it.tag} size={9.5} />
+            <Tag1 x={it.tx} y={it.top - 24} w={30 + it.tag.length * 12} h={24} tone={SIGNAL} fill={SIGNAL_TINT} label={it.tag} size={12.3} />
           </g>
         );
       })}
@@ -1653,7 +1644,7 @@ export function PriceSteps() {
           <line x1={d.x} y1={d.y1} x2={d.x} y2={d.y2} stroke={SIGNAL} strokeWidth={1.5} />
           <path d={headAlong1(d.x, d.y1, 0, -1, 6)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
           <path d={headAlong1(d.x, d.y2, 0, 1, 6)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-          <Key x={d.x} y={d.ky} anchor="middle" fill={SIGNAL} size={9}>
+          <Key x={d.x} y={d.ky} anchor="middle" fill={SIGNAL} size={11.7}>
             PRICE STEP
           </Key>
         </g>
@@ -1672,26 +1663,26 @@ export function StepInputs() {
       {[140, 400, 660].map((cx) => (
         <rect key={cx} x={cx - 115} y={16} width={230} height={108} fill={PAPER} stroke={INK} strokeWidth={1.25} />
       ))}
-      <Coins1 x={116} y={82} n={3} rx={14} tone={INK} />
-      <Coins1 x={164} y={82} n={7} rx={14} tone={INK} />
-      <Key x={140} y={110} anchor="middle" fill={INK} size={9.5}>
+      <Coins2 x={118} y={88} n={3} tone={INK} w={30} />
+      <Coins2 x={162} y={88} n={8} tone={INK} w={30} />
+      <Key x={140} y={110} anchor="middle" fill={INK} size={12.3}>
         COST DIFFERENCES
       </Key>
 
       <Person3 x={352} y={84} k={1.25} />
       {[0, 1, 2, 3].map((i) => (
-        <Star1 key={i} x={392 + i * 22} y={56} k={0.55} fill={i < 3 ? SIGNAL : RULE2} />
+        <Star1 key={i} x={392 + i * 22} y={56} k={0.55} fill={i < 3 ? INK : RULE2} />
       ))}
-      <Key x={400} y={104} anchor="middle" fill={INK} size={9}>
+      <Key x={400} y={101} anchor="middle" fill={INK} size={11.7}>
         CUSTOMER EVALUATIONS
       </Key>
-      <Key x={400} y={117} anchor="middle" fill={INK} size={9}>
+      <Key x={400} y={116} anchor="middle" fill={INK} size={11.7}>
         OF FEATURES
       </Key>
 
-      <Tag1 x={632} y={52} w={54} h={24} tone={INK3} label="$$" size={9} />
-      <Tag1 x={692} y={74} w={54} h={24} tone={INK3} label="$" size={9} />
-      <Key x={660} y={110} anchor="middle" fill={INK} size={9.5}>
+      <Tag1 x={632} y={52} w={54} h={24} tone={INK3} label="$$" size={11.7} />
+      <Tag1 x={692} y={74} w={54} h={24} tone={INK3} label="$" size={11.7} />
+      <Key x={660} y={110} anchor="middle" fill={INK} size={12.3}>
         COMPETITORS&apos; PRICES
       </Key>
 
@@ -1699,7 +1690,7 @@ export function StepInputs() {
       <Arrow1 x1={400} y1={130} x2={400} y2={170} tone={INK3} />
       <Arrow1 x1={640} y1={130} x2={434} y2={172} tone={INK3} />
       <path d="M350 216 H380 V200 H410 V184 H440 V216 Z" fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={2} strokeLinejoin="round" />
-      <Key x={456} y={210} fill={SIGNAL} size={9.5}>
+      <Key x={456} y={210} fill={SIGNAL} size={12.3}>
         PRICE STEPS
       </Key>
     </Frame>
@@ -1740,21 +1731,21 @@ function Charger({ x, y, tone = INK }: { x: number; y: number; tone?: string }) 
 export function OptionalProducts() {
   return (
     <Frame width={400} height={232} label="A laptop, the main product, with its own price tag. Dashed lines lead to three accessories below it, a mouse, a sleeve, and a charger, each with its own small price tag: optional or accessory products.">
-      <Key x={200} y={28} anchor="middle" fill={INK} size={9.5}>
+      <Key x={200} y={28} anchor="middle" fill={INK} size={12.3}>
         MAIN PRODUCT
       </Key>
       <Laptop1 cx={200} top={42} />
-      <Tag1 x={312} y={70} w={58} h={24} tone={INK} label="$$$" size={9} />
+      <Tag1 x={312} y={70} w={58} h={24} tone={INK} label="$$$" size={11.7} />
       <line x1={150} y1={132} x2={82} y2={160} stroke={INK3} strokeWidth={1.25} strokeDasharray="4 3" />
       <line x1={200} y1={132} x2={200} y2={160} stroke={INK3} strokeWidth={1.25} strokeDasharray="4 3" />
       <line x1={250} y1={132} x2={322} y2={160} stroke={INK3} strokeWidth={1.25} strokeDasharray="4 3" />
       <Mouse x={70} y={182} tone={SIGNAL} />
       <Sleeve x={200} y={182} tone={SIGNAL} />
       <Charger x={330} y={186} tone={SIGNAL} />
-      <Tag1 x={106} y={170} w={32} h={16} tone={SIGNAL} label="$" size={8} />
-      <Tag1 x={254} y={168} w={32} h={16} tone={SIGNAL} label="$" size={8} />
-      <Tag1 x={366} y={176} w={32} h={16} tone={SIGNAL} label="$" size={8} />
-      <Key x={200} y={224} anchor="middle" fill={SIGNAL} size={9.5}>
+      <Tag1 x={106} y={170} w={32} h={16} tone={SIGNAL} label="$" size={10.4} />
+      <Tag1 x={254} y={168} w={32} h={16} tone={SIGNAL} label="$" size={10.4} />
+      <Tag1 x={366} y={176} w={32} h={16} tone={SIGNAL} label="$" size={10.4} />
+      <Key x={200} y={224} anchor="middle" fill={SIGNAL} size={12.3}>
         OPTIONAL OR ACCESSORY PRODUCTS
       </Key>
     </Frame>
@@ -1774,7 +1765,7 @@ export function BaseOrOptions() {
       <Pack3 x={200} y={58} w={30} h={26} tone={INK} />
       <Arrow1 x1={180} y1={52} x2={122} y2={74} tone={INK3} />
       <Arrow1 x1={220} y1={52} x2={278} y2={74} tone={INK3} />
-      <rect x={16} y={80} width={176} height={136} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
+      <rect x={16} y={80} width={176} height={136} fill={PAPER3} stroke={INK} strokeWidth={1.5} />
       <Key x={104} y={102} anchor="middle" fill={INK} size={10}>
         BASE PRICE
       </Key>
@@ -1797,7 +1788,7 @@ export function BaseOrOptions() {
 export function CaptiveFit() {
   return (
     <Frame width={400} height={180} label="A main product with a notch cut into it, and a second piece whose tab is shaped to fit only that notch, sliding toward it: a product that must be used along with the main product.">
-      <path d="M30 50 H200 V80 H170 V110 H200 V140 H30 Z" fill={PAPER2} stroke={INK} strokeWidth={1.75} strokeLinejoin="round" />
+      <path d="M30 50 H200 V80 H170 V110 H200 V140 H30 Z" fill={PAPER3} stroke={INK} strokeWidth={1.75} strokeLinejoin="round" />
       <path d="M250 60 H360 V130 H250 V110 H222 V80 H250 Z" fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={2} strokeLinejoin="round" />
       <Arrow1 x1={330} y1={40} x2={270} y2={40} tone={SIGNAL} />
       <Key x={115} y={166} anchor="middle" fill={INK} size={9.5}>
@@ -1814,41 +1805,35 @@ export function CaptiveFit() {
    47 · EXAMPLES — a razor and its blades, a console and its games
    ========================================================================== */
 
+/** A double-edge razor blade, centred on (x, y). */
+function Blade({ x, y }: { x: number; y: number }) {
+  return (
+    <g>
+      <rect x={x - 30} y={y - 13} width={60} height={26} rx={4} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={`M${x - 16} ${y} H${x + 16}`} stroke={SIGNAL} strokeWidth={4} strokeLinecap="round" />
+      <circle cx={x - 20} cy={y} r={3} fill={PAPER} stroke={SIGNAL} strokeWidth={1.25} />
+      <circle cx={x + 20} cy={y} r={3} fill={PAPER} stroke={SIGNAL} strokeWidth={1.25} />
+    </g>
+  );
+}
+
 export function CaptiveExamples() {
   return (
-    <Frame height={190} label="Two examples side by side. A razor with three replacement blades. A video game console with three games.">
-      <rect x={60} y={96} width={180} height={16} rx={8} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <rect x={240} y={70} width={22} height={68} fill={INK} />
-      {[310, 346, 382].map((x) => (
-        <g key={x}>
-          <rect x={x - 13} y={82} width={26} height={44} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-          <path d={`M${x - 8} 94 H${x + 8} M${x - 8} 104 H${x + 8} M${x - 8} 114 H${x + 8}`} stroke={SIGNAL} strokeWidth={1} />
-        </g>
+    <Frame height={176} label="Two examples side by side. A safety razor with a row of three replacement blades beside it. A video game controller with a row of three game discs beside it.">
+      <rect x={60} y={44} width={96} height={18} rx={3} fill={PAPER} stroke={INK} strokeWidth={1.75} />
+      <rect x={100} y={62} width={16} height={12} fill={INK} />
+      <rect x={101} y={74} width={14} height={78} rx={5} fill={PAPER} stroke={INK} strokeWidth={1.75} />
+      <path d="M101 96 H115 M101 108 H115 M101 120 H115 M101 132 H115" stroke={INK} strokeWidth={1} />
+      {[60, 98, 136].map((y) => (
+        <Blade key={y} x={260} y={y} />
       ))}
-      <Key x={160} y={170} anchor="middle" fill={INK} size={10}>
-        RAZOR
-      </Key>
-      <Key x={346} y={170} anchor="middle" fill={SIGNAL} size={10}>
-        BLADES
-      </Key>
 
-      <line x1={430} y1={30} x2={430} y2={170} stroke={RULE2} strokeWidth={1} strokeDasharray="3 4" />
+      <line x1={400} y1={24} x2={400} y2={156} stroke={RULE2} strokeWidth={1} strokeDasharray="3 4" />
 
-      <rect x={470} y={80} width={160} height={54} rx={8} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <path d="M490 98 H560" stroke={INK} strokeWidth={2} />
-      <circle cx={608} cy={118} r={4} fill={INK} />
-      {[686, 722, 758].map((x) => (
-        <g key={x}>
-          <rect x={x - 14} y={82} width={28} height={42} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-          <circle cx={x} cy={103} r={7} fill="none" stroke={SIGNAL} strokeWidth={1.25} />
-        </g>
+      <GameController x={450} y={40} size={100} weight="duotone" color={INK} />
+      {[610, 680, 750].map((x) => (
+        <Disc key={x} x={x - 30} y={60} size={60} weight="duotone" color={SIGNAL} />
       ))}
-      <Key x={550} y={170} anchor="middle" fill={INK} size={10}>
-        VIDEO GAME CONSOLE
-      </Key>
-      <Key x={722} y={170} anchor="middle" fill={SIGNAL} size={10}>
-        GAMES
-      </Key>
     </Frame>
   );
 }
@@ -1859,37 +1844,38 @@ export function CaptiveExamples() {
 
 export function CaptiveMarkups() {
   return (
-    <Frame height={266} label="Price bars split into cost and markup. The main product's bar is almost all cost with a sliver of markup: priced low. Five captive supplies each have a small cost and a large markup: high markups.">
-      <rect x={600} y={40} width={12} height={12} fill={PAPER2} stroke={INK3} strokeWidth={1} />
-      <Key x={620} y={50} fill={INK} size={9}>
+    <Frame height={196} label="Price bars split into cost and markup. The main product's bar is almost all cost with a sliver of markup: priced low. Five captive supplies each have a small cost and a large markup: high markups.">
+      <rect x={80} y={40} width={120} height={100} fill={PAPER3} stroke={INK3} strokeWidth={1} />
+      <rect x={80} y={34} width={120} height={6} fill={SIGNAL} />
+      <Key x={140} y={94} anchor="middle" fill={INK} size={11.4}>
         COST
       </Key>
-      <rect x={680} y={40} width={12} height={12} fill={SIGNAL} />
-      <Key x={700} y={50} fill={INK} size={9}>
-        MARKUP
-      </Key>
-      <rect x={80} y={150} width={120} height={60} fill={PAPER2} stroke={INK3} strokeWidth={1} />
-      <rect x={80} y={145} width={120} height={5} fill={SIGNAL} />
       {[0, 1, 2, 3, 4].map((i) => {
         const x = 320 + i * 84;
         return (
           <g key={x}>
-            <rect x={x} y={190} width={60} height={20} fill={PAPER2} stroke={INK3} strokeWidth={1} />
-            <rect x={x} y={120} width={60} height={70} fill={SIGNAL} />
+            <rect x={x} y={120} width={60} height={20} fill={PAPER3} stroke={INK3} strokeWidth={1} />
+            <rect x={x} y={64} width={60} height={56} fill={SIGNAL} />
           </g>
         );
       })}
-      <line x1={50} y1={210} x2={770} y2={210} stroke={INK} strokeWidth={1.5} />
-      <Key x={140} y={234} anchor="middle" fill={INK} size={9.5}>
+      <Key x={350} y={96} anchor="middle" fill={PAPER} size={9}>
+        MARKUP
+      </Key>
+      <Key x={312} y={134} anchor="end" fill={INK3} size={10.8}>
+        COST
+      </Key>
+      <line x1={50} y1={140} x2={770} y2={140} stroke={INK} strokeWidth={1.5} />
+      <Key x={140} y={164} anchor="middle" fill={INK} size={11.4}>
         MAIN PRODUCT
       </Key>
-      <Key x={140} y={250} anchor="middle" fill={INK3} size={9.5}>
+      <Key x={140} y={180} anchor="middle" fill={INK3} size={11.4}>
         PRICED LOW
       </Key>
-      <Key x={518} y={234} anchor="middle" fill={INK} size={9.5}>
+      <Key x={518} y={164} anchor="middle" fill={INK} size={11.4}>
         CAPTIVE SUPPLIES
       </Key>
-      <Key x={518} y={250} anchor="middle" fill={SIGNAL} size={9.5}>
+      <Key x={518} y={180} anchor="middle" fill={SIGNAL} size={11.4}>
         HIGH MARKUPS
       </Key>
     </Frame>
@@ -1902,29 +1888,28 @@ export function CaptiveMarkups() {
 
 export function OngoingStream() {
   return (
-    <Frame height={180} label="A timeline. At the start, one initial purchase of a console. After it, a steady run of games along the line, each with a coin: ongoing revenue streams.">
-      <line x1={40} y1={140} x2={762} y2={140} stroke={INK} strokeWidth={1.5} />
-      <path d={headAlong1(764, 140, 1, 0)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <rect x={56} y={100} width={68} height={28} rx={6} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <path d="M68 111 H98" stroke={INK} strokeWidth={1.5} />
-      <circle cx={90} cy={140} r={6} fill={INK} />
-      <Key x={90} y={166} anchor="middle" fill={INK} size={9.5}>
+    <Frame height={170} label="A timeline. At the start, one initial purchase of a game controller. After it, a steady run of game discs along the line: ongoing revenue streams.">
+      <line x1={40} y1={130} x2={762} y2={130} stroke={INK} strokeWidth={1.5} />
+      <path d={headAlong1(764, 130, 1, 0)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <GameController x={62} y={70} size={56} weight="duotone" color={INK} />
+      <circle cx={90} cy={130} r={6} fill={INK} />
+      <Key x={90} y={156} anchor="middle" fill={INK} size={11.4}>
         INITIAL PURCHASE
       </Key>
-      <path d="M200 88 V82 H680 V88" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
-      <Key x={440} y={70} anchor="middle" fill={SIGNAL} size={10}>
+      <path d="M200 60 V54 H680 V60" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
+      <Key x={440} y={42} anchor="middle" fill={SIGNAL} size={12}>
         ONGOING REVENUE STREAMS
       </Key>
       {Array.from({ length: 7 }, (_, i) => {
         const x = 200 + i * 80;
         return (
           <g key={x}>
-            <rect x={x - 9} y={98} width={18} height={24} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.25} />
-            <circle cx={x} cy={140} r={6} fill={SIGNAL} />
+            <Disc x={x - 16} y={78} size={32} weight="duotone" color={SIGNAL} />
+            <circle cx={x} cy={130} r={5} fill={SIGNAL} />
           </g>
         );
       })}
-      <Key x={762} y={166} anchor="end" fill={INK3} size={9}>
+      <Key x={762} y={156} anchor="end" fill={INK3} size={10.8}>
         TIME
       </Key>
     </Frame>
@@ -1977,7 +1962,7 @@ export function BundleRideAlong() {
       <Key x={40} y={38} fill={INK} size={9.5}>
         THE BUNDLE
       </Key>
-      <rect x={40} y={50} width={320} height={110} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
+      <rect x={40} y={50} width={320} height={110} fill={PAPER3} stroke={INK} strokeWidth={1.5} />
       <Pack3 x={110} y={150} w={56} h={70} tone={INK} />
       <Pack3 x={200} y={150} w={56} h={70} tone={INK} />
       <Pack3 x={290} y={150} w={56} h={70} tone={SIGNAL} fill={SIGNAL_TINT} />
@@ -2028,7 +2013,7 @@ export function BundleThreshold() {
 export function ClearInventory() {
   const remaining = new Set([9, 10, 11]);
   return (
-    <Frame width={400} height={200} label="A shelf of excess inventory, most of its boxes now dashed outlines because they have been cleared out. An arrow leads to two wrapped bundles under a star: value.">
+    <Frame width={400} height={200} label="A shelf of excess inventory, most of its boxes now dashed outlines because they have been cleared out. An arrow leads to two wrapped bundles: value.">
       {Array.from({ length: 12 }, (_, i) => {
         const c = i % 4;
         const r = Math.floor(i / 4);
@@ -2054,8 +2039,7 @@ export function ClearInventory() {
       <Arrow1 x1={182} y1={112} x2={226} y2={112} tone={INK3} />
       <Gift1 x={242} y={104} w={58} h={58} />
       <Gift1 x={312} y={104} w={58} h={58} />
-      <Star1 x={306} y={46} k={0.8} fill={COUNTER} />
-      <Key x={306} y={188} anchor="middle" fill={COUNTER} size={9.5}>
+      <Key x={306} y={188} anchor="middle" fill={SIGNAL} size={9.5}>
         VALUE
       </Key>
     </Frame>
@@ -2079,15 +2063,12 @@ export function PodDilemma() {
   return (
     <Frame height={276} label="A premium coffee machine with proprietary pods that only fit this machine. From a question mark, two routes. Price the machine low, with a low price tag followed by a long run of pods: sell more pods. Or price the machine high, with a high price tag and a star: a premium brand image.">
       <Pod x={120} y={34} />
-      <rect x={60} y={44} width={120} height={30} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
+      <rect x={60} y={44} width={120} height={30} fill={PAPER3} stroke={INK} strokeWidth={1.5} />
       <rect x={72} y={74} width={96} height={146} fill={PAPER} stroke={INK} strokeWidth={1.5} />
       <rect x={112} y={74} width={16} height={18} fill={INK} />
       <Star1 x={120} y={132} k={0.7} fill={INK} />
       <path d="M100 184 H140 L136 220 H104 Z" fill={PAPER} stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
       <rect x={56} y={220} width={128} height={12} fill={INK} />
-      <Key x={120} y={256} anchor="middle" fill={INK} size={9.5}>
-        PREMIUM COFFEE MACHINE
-      </Key>
       {[
         [236, 200],
         [266, 200],

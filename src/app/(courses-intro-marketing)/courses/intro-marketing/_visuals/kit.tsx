@@ -25,6 +25,9 @@ export const PAPER = "var(--paper)";
 
 export const PAPER2 = "var(--paper-2)";
 
+/** Filled zones inside a plate: plates sit on --paper-2 wells. */
+export const PAPER3 = "var(--paper-3)";
+
 export const SIGNAL_TINT = "rgba(178, 58, 21, 0.09)";
 
 export const COUNTER_TINT = "rgba(34, 87, 91, 0.09)";

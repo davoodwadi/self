@@ -1,0 +1,250 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "the-paradigm-of-price",
+    "prompt": "A café owner is planning next month. Does each decision set a price, which produces revenue, or is it another element of the mix, which represents a cost?",
+    "bins": [
+      { "id": "price", "label": "Price: produces revenue" },
+      { "id": "cost", "label": "Another element: a cost" }
+    ],
+    "cards": [
+      {
+        "id": "latte",
+        "text": "Setting the price of a large latte at $5.25",
+        "bin": "price",
+        "explanation": "This is a price. Price is the only element in the marketing mix that produces revenue."
+      },
+      {
+        "id": "oat",
+        "text": "Adding an oat-milk option to the menu",
+        "bin": "cost",
+        "explanation": "A new menu option is part of the product, and it represents a cost to the café."
+      },
+      {
+        "id": "delivery",
+        "text": "Signing up with a delivery app",
+        "bin": "cost",
+        "explanation": "Delivery is a channel decision. It represents a cost, not revenue."
+      },
+      {
+        "id": "croissant",
+        "text": "Raising the price of croissants from $3.50 to $3.75",
+        "bin": "price",
+        "explanation": "A price change produces revenue, and it can be made quickly, by the next morning."
+      },
+      {
+        "id": "instagram",
+        "text": "Paying for sponsored Instagram posts",
+        "bin": "cost",
+        "explanation": "This is promotion. All other elements represent costs to the organization."
+      },
+      {
+        "id": "shot",
+        "text": "Charging $1 for an extra espresso shot",
+        "bin": "price",
+        "explanation": "It sets what customers pay, so it is price, the element that produces revenue."
+      },
+      {
+        "id": "cups",
+        "text": "Printing new cups with the café's logo",
+        "bin": "cost",
+        "explanation": "New cups are part of the product the café offers. They cost money to make."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "external-factors-the-market-and-demand",
+    "prompt": "A small roaster in Verdun is pricing a bag of coffee. Does each fact help set the lower limit on price, or the upper limit?",
+    "bins": [
+      { "id": "floor", "label": "Lower limit: costs" },
+      { "id": "ceiling", "label": "Upper limit: the market" }
+    ],
+    "cards": [
+      {
+        "id": "beans",
+        "text": "Green beans cost $9 for each bag roasted",
+        "bin": "floor",
+        "explanation": "This is a variable cost. Costs set the lower limit for price."
+      },
+      {
+        "id": "pay",
+        "text": "Shoppers say they would not pay more than $24 a bag",
+        "bin": "ceiling",
+        "explanation": "What buyers will pay is the market. The market sets the upper limit."
+      },
+      {
+        "id": "rent",
+        "text": "Rent on the roastery is $3,000 a month",
+        "bin": "floor",
+        "explanation": "Rent is a fixed cost. Total costs must be covered, so costs set the floor."
+      },
+      {
+        "id": "demand",
+        "text": "At $22 a bag, far fewer shoppers buy than at $18",
+        "bin": "ceiling",
+        "explanation": "This is the relationship between price and demand, which comes from the market."
+      },
+      {
+        "id": "roaster",
+        "text": "Paying the roaster for each hour of roasting",
+        "bin": "floor",
+        "explanation": "Labour that grows with production is a variable cost, part of the lower limit."
+      },
+      {
+        "id": "rivals",
+        "text": "Many other roasters sell similar bags nearby",
+        "bin": "ceiling",
+        "explanation": "Competitive conditions are part of the market, which limits how high the price can go."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "customer-value-based-pricing",
+    "question_text": "Before designing a new e-bike, a Montréal company asks riders what they value and what that is worth to them. It then sets a target price and designs the bike to meet it. Which approach is this?",
+    "hint": "The company started with the buyers, not with its costs.",
+    "correct_answer_citation": "Week 08 · Customer Value-Based Pricing",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Cost-based pricing, starting from costs",
+        "option_explanation": "Cost-based pricing starts from the product and its costs. This company started with what riders value."
+      },
+      {
+        "option_text": "Customer value-based pricing",
+        "option_explanation": "Correct. The company assesses customer needs and value perceptions first, and uses them as the key to pricing."
+      },
+      {
+        "option_text": "Competition-based pricing",
+        "option_explanation": "Competition-based pricing looks at competitors' strategies, prices, costs, and offerings. This company asked riders."
+      },
+      {
+        "option_text": "Pricing for current profit maximization",
+        "option_explanation": "Current profit maximization is a marketing objective. The question asks which pricing approach the company used."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "competition-based-pricing",
+    "prompt": "Which pricing approach is each business using?",
+    "options": [
+      { "id": "value", "label": "Customer value-based" },
+      { "id": "cost", "label": "Cost-based" },
+      { "id": "competition", "label": "Competition-based" }
+    ],
+    "cases": [
+      {
+        "id": "bakery",
+        "text": "A bakery adds up flour, labour, and delivery for each cake, then adds 20% on top.",
+        "answer": "cost",
+        "explanation": "The price starts from the costs of producing, distributing, and selling, plus a return."
+      },
+      {
+        "id": "gas",
+        "text": "A gas station checks the price at the station across the street every morning and sets its own to match.",
+        "answer": "competition",
+        "explanation": "The price is set from what competitors charge."
+      },
+      {
+        "id": "theatre",
+        "text": "A theatre company asks its audience what an evening out is worth to them before it sets ticket prices.",
+        "answer": "value",
+        "explanation": "It assesses customer needs and value perceptions first, then sets the price."
+      },
+      {
+        "id": "gym",
+        "text": "A new gym in Laval compares its hours and equipment with nearby gyms, finds it offers more, and prices above them.",
+        "answer": "competition",
+        "explanation": "It compared its offer with competitors. Greater value justified a higher price."
+      },
+      {
+        "id": "chairs",
+        "text": "A furniture maker prices each chair to cover what it costs to make, ship, and sell, plus a fair return.",
+        "answer": "cost",
+        "explanation": "Costs plus a fair rate of return for effort and risk: cost-based pricing."
+      },
+      {
+        "id": "app",
+        "text": "Before building a budgeting app, a start-up asks students what features they need and what those are worth to them.",
+        "answer": "value",
+        "explanation": "Buyers' perceptions of value are the key to the price, set before the product is built."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "market-skimming-pricing",
+    "question_text": "A company plans to launch a new product with market-skimming pricing. Which situation would make that plan a poor choice?",
+    "hint": "Look at what must be true for a high price to hold.",
+    "correct_answer_citation": "Week 08 · Market-Skimming Pricing",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Its quality and image support a high price",
+        "option_explanation": "Product quality and image must support the high price, so this helps skimming."
+      },
+      {
+        "option_text": "Rivals could easily enter and undercut it",
+        "option_explanation": "Correct. Competitors should not be able to easily enter the market and undercut the high price."
+      },
+      {
+        "option_text": "It expects fewer but more profitable sales",
+        "option_explanation": "That is what skimming is meant to produce: fewer but more profitable sales."
+      },
+      {
+        "option_text": "It will skim revenues layer by layer",
+        "option_explanation": "Skimming maximum revenues layer by layer is the definition of the strategy, not a problem with it."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "captive-product-pricing",
+    "prompt": "Which product mix pricing strategy is each company using?",
+    "options": [
+      { "id": "line", "label": "Product line pricing" },
+      { "id": "optional", "label": "Optional-product pricing" },
+      { "id": "captive", "label": "Captive-product pricing" }
+    ],
+    "cases": [
+      {
+        "id": "printer",
+        "text": "A printer maker sells its printers cheaply and earns most of its profit on ink cartridges that only fit them.",
+        "answer": "captive",
+        "explanation": "The cartridges must be used with the printer, and they carry the high markups."
+      },
+      {
+        "id": "car",
+        "text": "A car dealer sells the base model and lets buyers add heated seats and a sunroof for extra.",
+        "answer": "optional",
+        "explanation": "The extras are optional products priced along with the main product."
+      },
+      {
+        "id": "hotel",
+        "text": "A hotel sells standard rooms at $150, deluxe rooms at $210, and suites at $340.",
+        "answer": "line",
+        "explanation": "It sets the price steps between the products in one line."
+      },
+      {
+        "id": "toothbrush",
+        "text": "An electric toothbrush sells for $30, and its replacement brush heads only fit that brush.",
+        "answer": "captive",
+        "explanation": "The heads must be used with the main product, so they are captive products."
+      },
+      {
+        "id": "pizza",
+        "text": "A pizzeria charges extra for each topping a customer adds to a cheese pizza.",
+        "answer": "optional",
+        "explanation": "It decides what is in the base price and what is offered as an option."
+      },
+      {
+        "id": "phones",
+        "text": "A phone maker prices its three models $200 apart, based on their features and rivals' prices.",
+        "answer": "line",
+        "explanation": "Price steps based on feature evaluations and competitors' prices: product line pricing."
+      }
+    ]
+  }
+]

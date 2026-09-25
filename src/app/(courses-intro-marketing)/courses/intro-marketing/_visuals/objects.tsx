@@ -481,9 +481,9 @@ export function CurveArrow2({
 export function Eye1({ x, y, k = 1, tone = COUNTER }: { x: number; y: number; k?: number; tone?: string }) {
   return (
     <g>
-      <path d={`M${x - 26 * k} ${y} Q${x} ${y - 24 * k} ${x + 26 * k} ${y} Q${x} ${y + 24 * k} ${x - 26 * k} ${y} Z`} fill={PAPER} stroke={tone} strokeWidth={1.75} strokeLinejoin="round" />
-      <circle cx={x} cy={y} r={9 * k} fill={tone} />
-      <circle cx={x} cy={y} r={3 * k} fill={PAPER} />
+      <path d={`M${r2(x - 26 * k)} ${y} Q${x} ${r2(y - 24 * k)} ${r2(x + 26 * k)} ${y} Q${x} ${r2(y + 24 * k)} ${r2(x - 26 * k)} ${y} Z`} fill={PAPER} stroke={tone} strokeWidth={1.75} strokeLinejoin="round" />
+      <circle cx={x} cy={y} r={r2(9 * k)} fill={tone} />
+      <circle cx={x} cy={y} r={r2(3 * k)} fill={PAPER} />
     </g>
   );
 }
