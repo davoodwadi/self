@@ -1,0 +1,295 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "geographic-and-demographic-segmentation",
+    "prompt": "Each company below splits its market in one way. Is it segmenting geographically or demographically?",
+    "bins": [
+      {
+        "id": "geographic",
+        "label": "Geographic segmentation"
+      },
+      {
+        "id": "demographic",
+        "label": "Demographic segmentation"
+      }
+    ],
+    "cards": [
+      {
+        "id": "snow-tires",
+        "text": "A tire maker sells snow tires in Québec and all-season tires in British Columbia.",
+        "bin": "geographic",
+        "explanation": "Québec and British Columbia are geographical units (provinces), so the market is divided by place."
+      },
+      {
+        "id": "student-account",
+        "text": "A bank offers one account for university students and another for retirees.",
+        "bin": "demographic",
+        "explanation": "Students and retirees differ in age and life-cycle stage, which are demographic variables."
+      },
+      {
+        "id": "plateau-cafe",
+        "text": "A coffee chain changes its menu for each Montréal neighborhood, from the Plateau to Saint-Laurent.",
+        "bin": "geographic",
+        "explanation": "Neighborhoods are the smallest geographical unit on the slide."
+      },
+      {
+        "id": "baby-boomers",
+        "text": "A travel company designs one tour for baby boomers and a different one for Gen Z.",
+        "bin": "demographic",
+        "explanation": "Baby boomers and Gen Z are generations, one of the demographic variables."
+      },
+      {
+        "id": "luxury-income",
+        "text": "A car brand aims its top model at households earning over $250,000 a year.",
+        "bin": "demographic",
+        "explanation": "The company divides buyers by income, a demographic variable."
+      },
+      {
+        "id": "city-rural",
+        "text": "A phone company runs one plan for big cities and another for rural counties.",
+        "bin": "geographic",
+        "explanation": "Cities and counties are geographical units, so this is geographic segmentation."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "behavioral-segmentation",
+    "prompt": "A sportswear brand segments its buyers by behavior. Which variable is it using in each case?",
+    "options": [
+      {
+        "id": "occasions",
+        "label": "Occasions"
+      },
+      {
+        "id": "benefits",
+        "label": "Benefits sought"
+      },
+      {
+        "id": "user-status",
+        "label": "User status"
+      },
+      {
+        "id": "usage-rate",
+        "label": "Usage rate"
+      },
+      {
+        "id": "loyalty",
+        "label": "Loyalty status"
+      }
+    ],
+    "cases": [
+      {
+        "id": "marathon",
+        "text": "It runs a campaign in the weeks before the Montréal marathon, when runners buy new shoes.",
+        "answer": "occasions",
+        "explanation": "The campaign is timed to a moment when people buy, so it segments by occasion."
+      },
+      {
+        "id": "cushion",
+        "text": "It sells one shoe line to buyers who want cushioning and another to buyers who want speed.",
+        "answer": "benefits",
+        "explanation": "Cushioning and speed are the benefits people look for, so this is segmenting by benefits sought."
+      },
+      {
+        "id": "first-pair",
+        "text": "It sends a guide to people who have never bought running gear before.",
+        "answer": "user-status",
+        "explanation": "The group is non-users, or first-time users, so it segments by user status."
+      },
+      {
+        "id": "heavy-runners",
+        "text": "It offers a discount to runners who wear out three pairs of shoes a year.",
+        "answer": "usage-rate",
+        "explanation": "These buyers use a lot of the product, so the variable is usage rate."
+      },
+      {
+        "id": "always-buy",
+        "text": "It invites customers who have bought only its brand for five years to an early sale.",
+        "answer": "loyalty",
+        "explanation": "These buyers keep coming back to the brand, so they are grouped by loyalty status."
+      },
+      {
+        "id": "gift",
+        "text": "It creates gift sets that go on sale only in December.",
+        "answer": "occasions",
+        "explanation": "The December holidays are an occasion for buying, so this segments by occasion."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "evaluating-market-segments",
+    "prompt": "A Canadian snack company is weighing new segments. Which of the three factors does each finding speak to?",
+    "options": [
+      {
+        "id": "size",
+        "label": "Segment size and growth"
+      },
+      {
+        "id": "structure",
+        "label": "Segment structural attractiveness"
+      },
+      {
+        "id": "company",
+        "label": "Company objectives and resources"
+      }
+    ],
+    "cases": [
+      {
+        "id": "gluten-free",
+        "text": "Sales of gluten-free snacks have grown every year for the past five years.",
+        "answer": "size",
+        "explanation": "How big a segment is and how fast it grows is the first factor, segment size and growth."
+      },
+      {
+        "id": "giants",
+        "text": "Three large, aggressive rivals already fight over the protein-bar segment.",
+        "answer": "structure",
+        "explanation": "Many strong and aggressive competitors make a segment less attractive in its structure."
+      },
+      {
+        "id": "no-bakery",
+        "text": "The company has no factory that can bake fresh bread, which the bakery segment requires.",
+        "answer": "company",
+        "explanation": "The company lacks the skills and resources to succeed there, so this is about its own objectives and resources."
+      },
+      {
+        "id": "easy-entry",
+        "text": "Anyone with a kitchen and a website can start selling homemade granola.",
+        "answer": "structure",
+        "explanation": "When it is easy for new entrants to come in, the segment is structurally less attractive."
+      },
+      {
+        "id": "tiny-market",
+        "text": "Only a few hundred people in the country buy insect-protein chips.",
+        "answer": "size",
+        "explanation": "A very small segment fails on size and growth."
+      },
+      {
+        "id": "goal",
+        "text": "Its five-year plan is to become known for healthy snacks for children.",
+        "answer": "company",
+        "explanation": "What the company wants to achieve is its objectives, the third factor."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "choosing-a-differentiation-and-positioning-strategy",
+    "prompt": "A laptop maker is choosing which differences to promote. Each difference below fails one test. Which one?",
+    "options": [
+      {
+        "id": "important",
+        "label": "Important"
+      },
+      {
+        "id": "distinctive",
+        "label": "Distinctive"
+      },
+      {
+        "id": "superior",
+        "label": "Superior"
+      },
+      {
+        "id": "communicable",
+        "label": "Communicable"
+      },
+      {
+        "id": "preemptive",
+        "label": "Preemptive"
+      },
+      {
+        "id": "affordable",
+        "label": "Affordable"
+      },
+      {
+        "id": "profitable",
+        "label": "Profitable"
+      }
+    ],
+    "cases": [
+      {
+        "id": "logo-colour",
+        "text": "The logo on the lid comes in 40 colours, but buyers say they do not care about it.",
+        "answer": "important",
+        "explanation": "A difference must deliver a benefit buyers value. This one does not matter to them."
+      },
+      {
+        "id": "usb-c",
+        "text": "Its laptops charge through USB-C, just like every other laptop on the shelf.",
+        "answer": "distinctive",
+        "explanation": "Every competitor offers the same thing, so it is not distinctive."
+      },
+      {
+        "id": "slow-fast",
+        "text": "It claims fast start-up, but a rival's laptop starts up twice as fast.",
+        "answer": "superior",
+        "explanation": "Other ways to get the same benefit are better, so the difference is not superior."
+      },
+      {
+        "id": "hidden-chip",
+        "text": "A new cooling chip works well, but buyers cannot see or feel what it does.",
+        "answer": "communicable",
+        "explanation": "If buyers cannot see the difference or have it explained to them, it is not communicable."
+      },
+      {
+        "id": "copy",
+        "text": "Its thin design could be copied by rivals within two months.",
+        "answer": "preemptive",
+        "explanation": "Competitors can copy it easily, so the difference is not preemptive."
+      },
+      {
+        "id": "gold",
+        "text": "A gold-plated edition is lovely, but it doubles the price for buyers.",
+        "answer": "affordable",
+        "explanation": "Buyers cannot afford to pay for the difference, so it is not affordable."
+      },
+      {
+        "id": "free-repairs",
+        "text": "Free lifetime repairs would cost the company more than it earns on each laptop.",
+        "answer": "profitable",
+        "explanation": "The company cannot make money on this difference, so it is not profitable."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "developing-a-value-proposition",
+    "prompt": "Compare each brand with its rivals. Match each value proposition to the brand that offers it.",
+    "term_label": "Value proposition",
+    "match_label": "Brand",
+    "pairs": [
+      {
+        "id": "more-more",
+        "term": "More for More",
+        "match": "A hotel offers butlers, silk sheets and a rooftop spa, and charges three times the price of other hotels.",
+        "explanation": "More benefits at a higher price is More for More."
+      },
+      {
+        "id": "same-less",
+        "term": "The Same for Less",
+        "match": "A grocery store brand of cereal tastes the same as the leading brand and costs 30% less.",
+        "explanation": "The same benefits at a lower price is The Same for Less."
+      },
+      {
+        "id": "less-much-less",
+        "term": "Less for much Less",
+        "match": "An airline drops free bags, meals and seat choice, and sells its tickets at a fraction of the usual fare.",
+        "explanation": "Fewer benefits for a much lower price is Less for much Less."
+      },
+      {
+        "id": "more-same",
+        "term": "More for the Same",
+        "match": "A car brand adds heated seats and a longer warranty but keeps its price level with its rivals.",
+        "explanation": "More benefits at the same price is More for the Same."
+      },
+      {
+        "id": "more-less",
+        "term": "More for Less",
+        "match": "A new phone has a better camera and longer battery than the market leader, yet costs less.",
+        "explanation": "More benefits at a lower price is More for Less."
+      }
+    ]
+  }
+]

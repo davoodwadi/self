@@ -19,7 +19,6 @@ import {
   pad,
   PartPlate1,
   RULED,
-  Schematic,
   Split1,
   Steps,
   SVG_LABEL,
@@ -34,8 +33,7 @@ import {
 // argument, with hairlines instead of boxes and crimson marking one thing.
 //
 // Sentences are transcribed verbatim from content.md. Figures carry only words
-// that already appear in the slide's sentences; any shape that suggests a
-// quantity is labelled SCHEMATIC because content.md gives no numbers.
+// that already appear in the slide's sentences.
 //
 // Quizzes: `Slide` renders `quizData` BEFORE its section. A [quiz] tag in
 // content.md marks the topic to test, so each quiz is attached to the slide
@@ -294,7 +292,6 @@ export default function Week06BusinessStrategy() {
                   ));
                 })()}
               </svg>
-              <Schematic />
             </figure>
             <p className={`${DISPLAY} mt-6 max-w-4xl`}>
               The velocity of strategic decision making accelerates
@@ -1063,7 +1060,6 @@ export default function Week06BusinessStrategy() {
                   PROBABILISTIC OUTCOMES
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
 
@@ -1168,7 +1164,6 @@ export default function Week06BusinessStrategy() {
                   />
                 ))}
               </svg>
-              <Schematic />
             </figure>
             <Terms items={["intelligent automation", "process optimization"]} />
           </div>
@@ -1202,7 +1197,6 @@ export default function Week06BusinessStrategy() {
                   />
                 ))}
               </svg>
-              <Schematic />
             </figure>
             <Terms
               items={["hyper-personalization", "predictive cross-selling"]}
@@ -1307,7 +1301,6 @@ export default function Week06BusinessStrategy() {
                   HIGHEST STRATEGIC RETURN
                 </text>
               </svg>
-              <Schematic />
             </figure>
             <p className={`${DISPLAY} mt-6 max-w-4xl`}>
               The highest strategic return often comes from business model
@@ -1516,7 +1509,6 @@ export default function Week06BusinessStrategy() {
                   DEPLOYMENT
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
 
@@ -1582,7 +1574,6 @@ export default function Week06BusinessStrategy() {
                   DATA ACCUMULATION
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -1649,7 +1640,6 @@ export default function Week06BusinessStrategy() {
                   DIMINISHING RETURNS
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -1866,7 +1856,6 @@ export default function Week06BusinessStrategy() {
                 strokeWidth="2"
               />
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -1956,7 +1945,6 @@ export default function Week06BusinessStrategy() {
                   PERSONALIZED PRICING
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -2043,7 +2031,6 @@ export default function Week06BusinessStrategy() {
                 TRADITIONAL FINANCIAL METRICS
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -3380,7 +3367,6 @@ export default function Week06BusinessStrategy() {
                   CONTINUOUS LEARNING
                 </text>
               </svg>
-              <Schematic />
             </figure>
             <p className={`${DISPLAY} mt-6 max-w-4xl`}>
               The operating model must optimize for rapid iteration and
@@ -3925,7 +3911,6 @@ export default function Week06BusinessStrategy() {
                   ENTERPRISE SCALE DEPLOYMENT
                 </text>
               </svg>
-              <Schematic />
             </figure>
             <p className={`${DISPLAY} mt-6 max-w-4xl`}>
               Managing the lifecycle from proof of concept to enterprise scale
@@ -4163,7 +4148,6 @@ export default function Week06BusinessStrategy() {
                 PROBABILISTIC OUTCOMES
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -4372,7 +4356,6 @@ export default function Week06BusinessStrategy() {
                 FAIL
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -4554,7 +4537,6 @@ export default function Week06BusinessStrategy() {
                 DEGRADE OVER TIME
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -4859,7 +4841,6 @@ export default function Week06BusinessStrategy() {
                   PREDICTIVE INSIGHTS
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>

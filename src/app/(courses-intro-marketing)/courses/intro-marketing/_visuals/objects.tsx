@@ -362,6 +362,57 @@ export function Coins2({
   );
 }
 
+/**
+ * A company as a building: a roof slab over a block of department windows,
+ * centred on cx and standing on base. `lit` lights the top-left window.
+ */
+export function Company1({
+  cx,
+  base,
+  w,
+  h,
+  tone,
+  lit = false,
+  fill = PAPER,
+}: {
+  cx: number;
+  base: number;
+  w: number;
+  h: number;
+  tone: string;
+  lit?: boolean;
+  fill?: string;
+}) {
+  const left = cx - w / 2;
+  const pad = w * 0.08;
+  const gap = w * 0.05;
+  const ww = (w - 2 * pad - gap) / 2;
+  const wh = (h - 2 * pad - gap) / 2;
+  return (
+    <g>
+      <rect x={r2(left - 5)} y={r2(base - h - 8)} width={r2(w + 10)} height={8} fill={tone} />
+      <rect x={r2(left)} y={r2(base - h)} width={w} height={h} fill={fill} stroke={tone} strokeWidth={1.5} />
+      {[0, 1].map((r) =>
+        [0, 1].map((c) => {
+          const on = lit && r === 0 && c === 0;
+          return (
+            <rect
+              key={`${r}${c}`}
+              x={r2(left + pad + c * (ww + gap))}
+              y={r2(base - h + pad + r * (wh + gap))}
+              width={r2(ww)}
+              height={r2(wh)}
+              fill={on ? SIGNAL : "var(--paper-3)"}
+              stroke={on ? SIGNAL : tone}
+              strokeWidth={1}
+            />
+          );
+        }),
+      )}
+    </g>
+  );
+}
+
 /** An arrow along a quadratic curve through control point (cx, cy). */
 export function CurveArrow1({
   x1,
@@ -455,7 +506,7 @@ export function Factory1({ x, y, w = 56, h = 36, stroke = INK, fill = PAPER }: {
   const left = x - w / 2;
   const step = w / 3;
   const top = y - h;
-  const roof = Array.from({ length: 3 }, (_, i) => `L${left + step * i} ${top - 12}L${left + step * (i + 1)} ${top}`).join("");
+  const roof = Array.from({ length: 3 }, (_, i) => `L${r2(left + step * i)} ${top - 12}L${r2(left + step * (i + 1))} ${top}`).join("");
   return (
     <g>
       <path d={`M${left} ${top}${roof}Z`} fill={fill} stroke={stroke} strokeWidth={1.5} strokeLinejoin="round" />
@@ -495,7 +546,7 @@ export function Factory3({
 }) {
   return (
     <path
-      d={`M${x - 29 * k} ${y} V${y - 26 * k} L${x - 14 * k} ${y - 37 * k} V${y - 26 * k} L${x + 1 * k} ${y - 37 * k} V${y - 26 * k} L${x + 12 * k} ${y - 37 * k} V${y - 52 * k} H${x + 23 * k} V${y} Z`}
+      d={`M${r2(x - 29 * k)} ${y} V${r2(y - 26 * k)} L${r2(x - 14 * k)} ${r2(y - 37 * k)} V${r2(y - 26 * k)} L${r2(x + 1 * k)} ${r2(y - 37 * k)} V${r2(y - 26 * k)} L${r2(x + 12 * k)} ${r2(y - 37 * k)} V${r2(y - 52 * k)} H${r2(x + 23 * k)} V${y} Z`}
       fill={fill}
       stroke={tone}
       strokeWidth={1.5}
@@ -651,7 +702,7 @@ export function Head1({
   const t = faceRight ? `translate(${x + 200 * k} ${y}) scale(${-k} ${k})` : `translate(${x} ${y}) scale(${k})`;
   return (
     <g transform={t}>
-      <path d={HEAD_PATH} fill={fill} stroke={tone} strokeWidth={1.75 / k} strokeLinejoin="round" strokeLinecap="round" />
+      <path d={HEAD_PATH} fill={fill} stroke={tone} strokeWidth={r2(1.75 / k)} strokeLinejoin="round" strokeLinecap="round" />
     </g>
   );
 }
@@ -830,6 +881,7 @@ export function Pack1({
   tone = INK,
   fill = PAPER,
   kind,
+  markFill,
 }: {
   x: number;
   y: number;
@@ -838,12 +890,16 @@ export function Pack1({
   tone?: string;
   fill?: string;
   kind?: number;
+  /** Fill for the mark; when set, the mark is outlined in `tone`. */
+  markFill?: string;
 }) {
   return (
     <g>
       <rect x={x - w / 2} y={y - h} width={w} height={h} fill={fill} stroke={tone} strokeWidth={1.5} />
       <path d={`M${x - w / 2} ${y - h + 8}H${x + w / 2}`} stroke={tone} strokeWidth={1} />
-      {kind !== undefined ? <Mark1 kind={kind} x={x} y={y - h / 2 + 4} s={4.5} fill={tone} /> : null}
+      {kind !== undefined ? (
+        <Mark1 kind={kind} x={x} y={y - h / 2 + 4} s={4.5} fill={markFill ?? tone} stroke={markFill ? tone : undefined} />
+      ) : null}
     </g>
   );
 }
@@ -990,14 +1046,14 @@ export function Person3({
   fill?: string;
   width?: number;
 }) {
-  const w = 10 * k;
-  const top = y - 21 * k;
-  const shoulder = y - 12 * k;
+  const w = r2(10 * k);
+  const top = r2(y - 21 * k);
+  const shoulder = r2(y - 12 * k);
   return (
     <g>
-      <circle cx={x} cy={y - 28 * k} r={6 * k} fill={fill} stroke={stroke} strokeWidth={width} />
+      <circle cx={x} cy={r2(y - 28 * k)} r={r2(6 * k)} fill={fill} stroke={stroke} strokeWidth={width} />
       <path
-        d={`M${x - w} ${y}V${shoulder}Q${x - w} ${top} ${x} ${top}Q${x + w} ${top} ${x + w} ${shoulder}V${y}Z`}
+        d={`M${r2(x - w)} ${y}V${shoulder}Q${r2(x - w)} ${top} ${x} ${top}Q${r2(x + w)} ${top} ${r2(x + w)} ${shoulder}V${y}Z`}
         fill={fill}
         stroke={stroke}
         strokeWidth={width}
@@ -1173,14 +1229,14 @@ export function Store2({
 }) {
   return (
     <g strokeLinejoin="round" strokeDasharray={dash}>
-      <rect x={x - 24 * k} y={y - 30 * k} width={48 * k} height={30 * k} fill={fill} stroke={tone} strokeWidth={1.5} />
+      <rect x={r2(x - 24 * k)} y={r2(y - 30 * k)} width={r2(48 * k)} height={r2(30 * k)} fill={fill} stroke={tone} strokeWidth={1.5} />
       <path
-        d={`M${x - 28 * k} ${y - 44 * k} H${x + 28 * k} L${x + 31 * k} ${y - 30 * k} H${x - 31 * k} Z`}
+        d={`M${r2(x - 28 * k)} ${r2(y - 44 * k)} H${r2(x + 28 * k)} L${r2(x + 31 * k)} ${r2(y - 30 * k)} H${r2(x - 31 * k)} Z`}
         fill={PAPER2}
         stroke={tone}
         strokeWidth={1.5}
       />
-      <rect x={x - 7 * k} y={y - 18 * k} width={14 * k} height={18 * k} fill={PAPER2} stroke={tone} strokeWidth={1.25} />
+      <rect x={r2(x - 7 * k)} y={r2(y - 18 * k)} width={r2(14 * k)} height={r2(18 * k)} fill={PAPER2} stroke={tone} strokeWidth={1.25} />
     </g>
   );
 }

@@ -16,8 +16,6 @@
      · INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or outward-looking state
      · every label reuses words from the slide the plate sits on
-     · anything that implies a quantity the content does not give is marked
-       SCHEMATIC
    ========================================================================== */
 
 import React from "react";
@@ -39,12 +37,12 @@ import {
   r2,
   RULE,
   RULE2,
-  Schematic,
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
 import {
-  Coins1,
+  Coins2,
+  Company1,
   HEAD_PATH,
   Head1,
   Mark1,
@@ -55,8 +53,35 @@ import {
 
 /* -- shared glyphs --------------------------------------------------------- */
 
-/** Tone for each buyer kind. */
-const KIND_TONE = [COUNTER, INK, SIGNAL, INK3];
+/**
+ * Each buyer kind has its own mark (circle, square, triangle, diamond). The
+ * tones only help tell them apart, so none is SIGNAL: SIGNAL stays free for
+ * the segment a plate lights. Kind 3 is hollow so its diamond never reads as
+ * kind 1's square.
+ */
+const KIND_TONE = [COUNTER, INK, INK3, INK];
+const KIND_FILL = [COUNTER, INK, INK3, PAPER];
+
+/**
+ * A buyer: a person filled in their kind's tone, wearing their kind's mark.
+ * `tone` overrides the kind's colour (a lit or faded buyer), keeping the mark.
+ */
+function Buyer({ kind, x, y, k = 0.8, tone }: { kind: number; x: number; y: number; k?: number; tone?: string }) {
+  const stroke = tone ?? KIND_TONE[kind];
+  const fill = tone ?? KIND_FILL[kind];
+  return (
+    <g>
+      <Person3 x={x} y={y} k={k} stroke={stroke} fill={fill} width={1.25} />
+      <Mark1
+        kind={kind}
+        x={x}
+        y={r2(y - 8 * k)}
+        s={r2(3.4 * k)}
+        fill={fill === PAPER ? INK : PAPER}
+      />
+    </g>
+  );
+}
 
 /** A tub of protein powder, centred on x, bottom at y. */
 function Tub({ x, y, s = 1, tone = INK, fill = PAPER }: { x: number; y: number; s?: number; tone?: string; fill?: string }) {
@@ -70,7 +95,7 @@ function Tub({ x, y, s = 1, tone = INK, fill = PAPER }: { x: number; y: number; 
         strokeLinejoin="round"
       />
       <rect x={r2(x - 22 * s)} y={r2(y - 48 * s)} width={r2(44 * s)} height={r2(8 * s)} fill={tone} />
-      <rect x={r2(x - 19.5 * s)} y={r2(y - 30 * s)} width={r2(39 * s)} height={r2(13 * s)} fill={fill === PAPER ? SIGNAL_TINT : PAPER} stroke={tone} strokeWidth={1} />
+      <rect x={r2(x - 19.5 * s)} y={r2(y - 30 * s)} width={r2(39 * s)} height={r2(13 * s)} fill={fill !== PAPER ? PAPER : tone === SIGNAL ? SIGNAL_TINT : "var(--paper-3)"} stroke={tone} strokeWidth={1} />
     </g>
   );
 }
@@ -84,46 +109,42 @@ export function MarketDivided() {
   const order = Array.from({ length: 24 }, (_, i) => i).sort((a, b) => hash2(a + 40) - hash2(b + 40));
   const mixed = order.map((slot, i) => ({
     kind: i % 4,
-    x: r2(56 + (slot % 6) * 42 + (hash2(slot + 90) - 0.5) * 16),
-    y: r2(84 + Math.floor(slot / 6) * 44 + (hash2(slot + 190) - 0.5) * 14),
+    x: r2(50 + (slot % 6) * 44 + (hash2(slot + 90) - 0.5) * 12),
+    y: r2(100 + Math.floor(slot / 6) * 50 + (hash2(slot + 190) - 0.5) * 8),
   }));
-  const groupX = [410, 510, 610, 710];
-  const inGroup = [
-    [-18, -22],
-    [18, -22],
-    [-18, 0],
-    [18, 0],
-    [-18, 22],
-    [18, 22],
-  ];
+  const groupX = [396, 506, 616, 726];
+  const inGroup = [-28, 0, 28].flatMap((dx) => [
+    [dx, 98],
+    [dx, 146],
+  ]);
   return (
-    <Frame height={276} label="A market of mixed buyers, drawn as four kinds of mark, is divided into four distinct groups, each holding only one kind. Each group gets its own product or marketing program.">
-      <Key x={30} y={32} fill={INK} size={10.5}>
+    <Frame height={300} label="A market of mixed buyers, four kinds of people each wearing their own mark, is divided into four distinct groups, each holding only one kind. Under each group sits its own product, marked for that group.">
+      <Key x={20} y={30} fill={INK} size={10.5}>
         A MARKET
       </Key>
-      <rect x={30} y={50} width={264} height={200} fill="none" stroke={INK3} strokeWidth={1.25} />
+      <rect x={20} y={44} width={286} height={232} fill="none" stroke={INK3} strokeWidth={1.25} />
       {mixed.map((m, i) => (
-        <Mark1 key={i} kind={m.kind} x={m.x} y={m.y} s={6} fill={KIND_TONE[m.kind]} />
+        <Buyer key={i} kind={m.kind} x={m.x} y={m.y} />
       ))}
 
-      <line x1={306} y1={150} x2={352} y2={150} stroke={INK} strokeWidth={1.5} />
-      <path d={head2.right(354, 150)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <line x1={316} y1={160} x2={334} y2={160} stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(336, 160)} fill="none" stroke={INK} strokeWidth={1.5} />
 
-      <Key x={360} y={32} fill={SIGNAL} size={10.5}>
+      <Key x={348} y={30} fill={SIGNAL} size={10.5}>
         DISTINCT GROUPS OF BUYERS
       </Key>
       {groupX.map((gx, g) => (
         <g key={gx}>
-          <rect x={gx - 42} y={50} width={84} height={112} rx={4} fill={PAPER} stroke={KIND_TONE[g]} strokeWidth={1.5} />
-          {inGroup.map(([dx, dy], j) => (
-            <Mark1 key={j} kind={g} x={gx + dx} y={106 + dy} s={6} fill={KIND_TONE[g]} />
+          <rect x={gx - 48} y={44} width={96} height={120} rx={4} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+          {inGroup.map(([dx, y], j) => (
+            <Buyer key={j} kind={g} x={gx + dx} y={y} />
           ))}
-          <line x1={gx} y1={164} x2={gx} y2={184} stroke={KIND_TONE[g]} strokeWidth={1.25} />
-          <Pack1 x={gx} y={222} w={46} h={36} tone={KIND_TONE[g]} kind={g} />
+          <line x1={gx} y1={164} x2={gx} y2={190} stroke={INK3} strokeWidth={1.25} />
+          <Pack1 x={gx} y={232} w={46} h={40} tone={KIND_TONE[g]} kind={g} markFill={KIND_FILL[g]} />
         </g>
       ))}
-      <path d="M368 232 V240 H752 V232" fill="none" stroke={INK} strokeWidth={1.25} />
-      <Key x={560} y={264} anchor="middle" fill={INK} size={10}>
+      <path d="M348 244 V252 H774 V244" fill="none" stroke={INK} strokeWidth={1.25} />
+      <Key x={561} y={276} anchor="middle" fill={INK} size={10}>
         SEPARATE PRODUCTS OR MARKETING PROGRAMS
       </Key>
     </Frame>
@@ -215,30 +236,30 @@ export function GlyphActionable() {
 export function GeographicZoom() {
   const levels = ["NATIONS", "STATES", "REGIONS", "COUNTIES", "CITIES", "NEIGHBORHOODS"];
   return (
-    <Frame width={400} height={300} label="Six nested outlines, each inside the last: nations, states, regions, counties, cities, and neighborhoods. The smallest holds a map pin.">
+    <Frame width={400} height={232} label="Six nested outlines, each inside the last: nations, states, regions, counties, cities, and neighborhoods. The smallest holds a map pin.">
       {levels.map((name, i) => {
-        const w = 360 - i * 50;
-        const top = 20 + i * 42;
+        const x = 12 + i * 22;
+        const y = 12 + i * 26;
         const last = i === levels.length - 1;
         return (
           <g key={name}>
             <rect
-              x={380 - w}
-              y={top}
-              width={w}
-              height={290 - top}
+              x={x}
+              y={y}
+              width={376 - i * 30}
+              height={208 - i * 32}
               fill={last ? SIGNAL_TINT : i % 2 ? PAPER2 : PAPER}
               stroke={last ? SIGNAL : INK3}
               strokeWidth={last ? 1.75 : 1.25}
             />
-            <Key x={380 - w + 10} y={top + 18} fill={last ? SIGNAL : INK} size={9.5}>
+            <Key x={x + 10} y={y + 18} fill={last ? SIGNAL : INK} size={9.5}>
               {name}
             </Key>
           </g>
         );
       })}
-      <path d="M325 286 C316 275 314 272 314 268 A11 11 0 0 1 336 268 C336 272 334 275 325 286 Z" fill={SIGNAL} />
-      <circle cx={325} cy={268} r={4} fill={PAPER} />
+      <path d="M300 182 C291 171 289 168 289 164 A11 11 0 0 1 311 164 C311 168 309 171 300 182 Z" fill={SIGNAL} />
+      <circle cx={300} cy={164} r={4} fill={PAPER} />
     </Frame>
   );
 }
@@ -250,32 +271,32 @@ export function GeographicZoom() {
 export function DemographicCard() {
   const fields = ["AGE", "LIFE-CYCLE STAGE", "GENDER", "INCOME", "OCCUPATION", "EDUCATION", "RELIGION", "ETHNICITY", "GENERATION"];
   return (
-    <Frame width={400} height={300} label="A profile card for one buyer with nine demographic fields: age, life-cycle stage, gender, income, occupation, education, religion, ethnicity, and generation. Beside the portrait, a ruler: easier to measure.">
-      <rect x={16} y={16} width={368} height={272} rx={6} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <rect x={36} y={40} width={92} height={108} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.25} />
-      <Person3 x={82} y={148} k={2.2} stroke={COUNTER} />
+    <Frame width={400} height={232} label="A profile card for one buyer with nine demographic fields, each ticked: age, life-cycle stage, gender, income, occupation, education, religion, ethnicity, and generation. Under the portrait, a ruler: easier to measure.">
+      <rect x={12} y={10} width={376} height={212} rx={6} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <rect x={32} y={28} width={92} height={96} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.25} />
+      <Person3 x={78} y={124} k={2} stroke={COUNTER} />
 
       {/* ruler: easier to measure */}
-      <rect x={36} y={184} width={92} height={18} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+      <rect x={32} y={146} width={92} height={18} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
       {Array.from({ length: 9 }, (_, i) => (
-        <line key={i} x1={44 + i * 9.5} y1={184} x2={44 + i * 9.5} y2={i % 2 ? 190 : 194} stroke={SIGNAL} strokeWidth={1.25} />
+        <line key={i} x1={40 + i * 9.5} y1={146} x2={40 + i * 9.5} y2={i % 2 ? 152 : 156} stroke={SIGNAL} strokeWidth={1.25} />
       ))}
-      <Key x={82} y={230} anchor="middle" fill={SIGNAL} size={9}>
+      <Key x={78} y={186} anchor="middle" fill={SIGNAL} size={9}>
         EASIER TO
       </Key>
-      <Key x={82} y={244} anchor="middle" fill={SIGNAL} size={9}>
+      <Key x={78} y={200} anchor="middle" fill={SIGNAL} size={9}>
         MEASURE
       </Key>
 
       {fields.map((f, i) => {
-        const y = 52 + i * 26;
+        const y = 36 + i * 21;
         return (
           <g key={f}>
-            <Key x={150} y={y} fill={INK} size={9}>
+            <Key x={146} y={y} fill={INK} size={9}>
               {f}
             </Key>
-            <line x1={150} y1={y + 8} x2={366} y2={y + 8} stroke={RULE} strokeWidth={1} />
-            <path d={`M${352} ${y - 3} L${356} ${y + 1} L${363} ${y - 7}`} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+            <line x1={146} y1={y + 7} x2={370} y2={y + 7} stroke={RULE} strokeWidth={1} />
+            <path d={`M${356} ${y - 3} L${360} ${y + 1} L${367} ${y - 7}`} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
           </g>
         );
       })}
@@ -305,9 +326,9 @@ function OutdoorScene({ x, y }: { x: number; y: number }) {
 function HomeScene({ x, y }: { x: number; y: number }) {
   return (
     <g transform={`translate(${x} ${y})`}>
-      <path d="M40 60 H104 A8 8 0 0 1 112 68 V96 H32 V68 A8 8 0 0 1 40 60 Z" fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d="M48 60 V34 A10 10 0 0 1 58 24 H86 A10 10 0 0 1 96 34 V60" fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <path d="M36 96 V104 M108 96 V104" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d="M40 60 H104 A8 8 0 0 1 112 68 V96 H32 V68 A8 8 0 0 1 40 60 Z" fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <path d="M48 60 V34 A10 10 0 0 1 58 24 H86 A10 10 0 0 1 96 34 V60" fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d="M36 96 V104 M108 96 V104" stroke={INK} strokeWidth={1.5} />
       <path d="M150 104 V32 M136 104 H164" stroke={INK} strokeWidth={1.5} />
       <path d="M134 32 L144 12 H158 L168 32 Z" fill={PAPER} stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
       <path d="M186 90 L200 86 V100 L186 104 L172 100 V86 Z M186 90 V104" fill={PAPER} stroke={INK} strokeWidth={1.25} strokeLinejoin="round" />
@@ -325,7 +346,7 @@ export function PsychographicTwins() {
 
       {[
         { x: 140, tone: COUNTER, scene: <OutdoorScene x={155} y={48} /> },
-        { x: 440, tone: SIGNAL, scene: <HomeScene x={455} y={48} /> },
+        { x: 440, tone: INK, scene: <HomeScene x={455} y={48} /> },
       ].map((p) => (
         <g key={p.x}>
           <rect x={p.x} y={38} width={240} height={128} rx={14} fill={PAPER} stroke={p.tone} strokeWidth={1.5} />
@@ -352,36 +373,41 @@ export function PsychographicTwins() {
    6 · LIFESTYLE TO PRODUCT — offerings that align (400)
    ========================================================================== */
 
+/** The armchair from HomeScene, drawn small, centred on (x, y). */
+function Armchair({ x, y, k = 0.5, tone = INK }: { x: number; y: number; k?: number; tone?: string }) {
+  const w = r2(1.5 / k);
+  return (
+    <g transform={`translate(${r2(x - 72 * k)} ${r2(y - 64 * k)}) scale(${k})`}>
+      <path d="M40 60 H104 A8 8 0 0 1 112 68 V96 H32 V68 A8 8 0 0 1 40 60 Z" fill={PAPER} stroke={tone} strokeWidth={w} />
+      <path d="M48 60 V34 A10 10 0 0 1 58 24 H86 A10 10 0 0 1 96 34 V60" fill="none" stroke={tone} strokeWidth={w} />
+      <path d="M36 96 V104 M108 96 V104" stroke={tone} strokeWidth={w} />
+    </g>
+  );
+}
+
 export function LifestyleProducts() {
   return (
-    <Frame width={400} height={196} label="Two rows. An outdoor lifestyle lines up with a tent; a quiet lifestyle at home lines up with a reading lamp.">
-      <Key x={70} y={24} anchor="middle" fill={INK3} size={9}>
-        LIFESTYLES
-      </Key>
-      <Key x={320} y={24} anchor="middle" fill={INK3} size={9}>
-        PRODUCTS
-      </Key>
-
+    <Frame width={400} height={176} label="Two rows. An outdoor lifestyle of mountains aligns with a tent for sale; a quiet lifestyle at home, an armchair, aligns with a reading lamp for sale.">
       {/* outdoor → tent */}
-      <circle cx={70} cy={76} r={36} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
-      <path d="M44 94 L64 66 L76 80 L84 70 L98 94 Z" fill="none" stroke={COUNTER} strokeWidth={1.5} strokeLinejoin="round" />
-      <path d="M118 76 H262" stroke={COUNTER} strokeWidth={1.5} />
-      <path d={head2.right(264, 76)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
-      <rect x={278} y={46} width={84} height={60} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <path d="M296 98 L320 60 L344 98 Z M320 60 V98" fill="none" stroke={COUNTER} strokeWidth={1.5} strokeLinejoin="round" />
+      <circle cx={60} cy={48} r={36} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
+      <path d="M34 66 L54 38 L66 52 L74 42 L88 66 Z" fill="none" stroke={COUNTER} strokeWidth={1.5} strokeLinejoin="round" />
+      <path d="M108 48 H262" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(264, 48)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <rect x={284} y={18} width={84} height={60} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <path d="M302 70 L326 32 L350 70 Z M326 32 V70" fill="none" stroke={COUNTER} strokeWidth={1.5} strokeLinejoin="round" />
 
       {/* home → lamp */}
-      <circle cx={70} cy={150} r={36} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d="M52 158 H88 V148 A5 5 0 0 0 83 143 H57 A5 5 0 0 0 52 148 Z M58 143 V132 H82 V143" fill="none" stroke={SIGNAL} strokeWidth={1.5} strokeLinejoin="round" />
-      <path d="M118 150 H262" stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head2.right(264, 150)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <rect x={278} y={120} width={84} height={60} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <path d="M320 144 V172 M308 172 H332 M306 144 L312 130 H328 L334 144 Z" fill="none" stroke={SIGNAL} strokeWidth={1.5} strokeLinejoin="round" />
+      <circle cx={60} cy={128} r={36} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <Armchair x={60} y={128} k={0.5} />
+      <path d="M108 128 H262" stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(264, 128)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <rect x={284} y={98} width={84} height={60} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <path d="M326 122 V150 M314 150 H338 M312 122 L318 108 H334 L340 122 Z" fill="none" stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
 
-      <Note x={190} y={68} anchor="middle" size={11.5} italic>
+      <Note x={185} y={40} anchor="middle" size={11.5} italic fill={SIGNAL}>
         align
       </Note>
-      <Note x={190} y={142} anchor="middle" size={11.5} italic>
+      <Note x={185} y={120} anchor="middle" size={11.5} italic fill={SIGNAL}>
         align
       </Note>
     </Frame>
@@ -466,12 +492,12 @@ export function BehavioralVariables() {
 
 export function BenefitMapping() {
   const rows = [
-    { y: 92, kind: 0, tone: COUNTER },
-    { y: 162, kind: 2, tone: SIGNAL },
-    { y: 232, kind: 1, tone: INK },
+    { y: 90, kind: 0 },
+    { y: 154, kind: 2 },
+    { y: 218, kind: 1 },
   ];
   return (
-    <Frame height={270} label="A three-column map. Each major benefit, drawn as a shape, links to the kinds of people who look for it, wearing that shape, and to the major brands that deliver it, carrying the same shape.">
+    <Frame height={250} label="A three-column map. Each major benefit, drawn as a shape, links to the kinds of people who look for it, each person wearing that shape, and to the major brands that deliver it, carrying the same shape.">
       {[
         { x: 120, n: "01", a: "MAJOR BENEFITS" },
         { x: 400, n: "02", a: "PEOPLE WHO LOOK FOR EACH" },
@@ -488,24 +514,21 @@ export function BenefitMapping() {
       ))}
       <line x1={30} y1={64} x2={770} y2={64} stroke={RULE2} strokeWidth={1} />
 
-      {rows.map((r) => (
+      {rows.map(({ y, kind }) => ({ y, kind, tone: KIND_TONE[kind] })).map((r) => (
         <g key={r.y}>
           <circle cx={120} cy={r.y} r={24} fill={PAPER} stroke={r.tone} strokeWidth={1.5} />
-          <Mark1 kind={r.kind} x={120} y={r.y} s={11} fill={r.tone} />
+          <Mark1 kind={r.kind} x={120} y={r.y} s={11} fill={KIND_FILL[r.kind]} stroke={r.tone} width={1.5} />
 
           <line x1={152} y1={r.y} x2={316} y2={r.y} stroke={r.tone} strokeWidth={1.25} />
           <path d={head2.right(318, r.y)} fill="none" stroke={r.tone} strokeWidth={1.25} />
           {[350, 400, 450].map((px) => (
-            <g key={px}>
-              <Person3 x={px} y={r.y + 20} k={1.1} stroke={r.tone} />
-              <Mark1 kind={r.kind} x={px} y={r.y + 8} s={3.5} fill={r.tone} />
-            </g>
+            <Buyer key={px} kind={r.kind} x={px} y={r.y + 20} k={1.1} />
           ))}
 
           <line x1={484} y1={r.y} x2={612} y2={r.y} stroke={r.tone} strokeWidth={1.25} />
           <path d={head2.right(614, r.y)} fill="none" stroke={r.tone} strokeWidth={1.25} />
-          <Pack1 x={652} y={r.y + 20} w={42} h={44} tone={r.tone} kind={r.kind} />
-          <Pack1 x={712} y={r.y + 20} w={42} h={44} tone={r.tone} kind={r.kind} />
+          <Pack1 x={652} y={r.y + 20} w={42} h={44} tone={r.tone} kind={r.kind} markFill={KIND_FILL[r.kind]} />
+          <Pack1 x={712} y={r.y + 20} w={42} h={44} tone={r.tone} kind={r.kind} markFill={KIND_FILL[r.kind]} />
         </g>
       ))}
     </Frame>
@@ -519,14 +542,14 @@ export function BenefitMapping() {
 export function BusinessTowers() {
   const shared = ["LOYALTY STATUS", "USAGE RATE", "USER STATUS", "BENEFITS SOUGHT", "DEMOGRAPHIC", "GEOGRAPHIC"].reverse();
   const extra = ["CUSTOMER OPERATING CHARACTERISTICS", "PURCHASING APPROACHES", "SITUATIONAL FACTORS", "PERSONAL CHARACTERISTICS"];
-  const base = 276;
-  const step = 23;
+  const base = 290;
+  const step = 27;
   const block = (x: number, i: number, label: string, lit: boolean) => {
     const y = base - (i + 1) * step;
     return (
       <g key={`${x}-${label}`}>
-        <rect x={x} y={y} width={280} height={20} fill={lit ? SIGNAL_TINT : PAPER} stroke={lit ? SIGNAL : INK} strokeWidth={1.25} />
-        <Key x={x + 140} y={y + 14} anchor="middle" fill={lit ? SIGNAL : INK} size={9}>
+        <rect x={x} y={y} width={280} height={24} fill={lit ? SIGNAL_TINT : PAPER} stroke={lit ? SIGNAL : INK} strokeWidth={1.25} />
+        <Key x={x + 140} y={y + 16.5} anchor="middle" fill={lit ? SIGNAL : INK} size={label.length > 30 ? 9 : 10}>
           {label}
         </Key>
       </g>
@@ -534,34 +557,34 @@ export function BusinessTowers() {
   };
   const sharedTop = base - shared.length * step;
   return (
-    <Frame height={316} label="Two towers of segmentation variables. The consumer tower and the business tower share the same six blocks: geographic, demographic, benefits sought, user status, usage rate, loyalty status. The business tower stacks four more on top: customer operating characteristics, purchasing approaches, situational factors, personal characteristics.">
+    <Frame height={332} label="Two towers of segmentation variables. The consumer tower and the business tower share the same six blocks: geographic, demographic, benefits sought, user status, usage rate, loyalty status. The business tower stacks four more on top: customer operating characteristics, purchasing approaches, situational factors, personal characteristics.">
       {shared.map((s, i) => block(20, i, s, false))}
       {shared.map((s, i) => block(400, i, s, false))}
       {extra.map((s, i) => block(400, i + shared.length, s, true))}
 
       <line x1={10} y1={base + 1} x2={700} y2={base + 1} stroke={INK} strokeWidth={1.75} />
-      <Key x={160} y={300} anchor="middle" fill={INK} size={10}>
+      <Key x={160} y={316} anchor="middle" fill={INK} size={10}>
         CONSUMER MARKETERS
       </Key>
-      <Key x={540} y={300} anchor="middle" fill={INK} size={10}>
+      <Key x={540} y={316} anchor="middle" fill={INK} size={10}>
         BUSINESS MARKETERS
       </Key>
 
       {[sharedTop - 2, base - 1].map((y) => (
         <line key={y} x1={304} y1={y} x2={396} y2={y} stroke={INK3} strokeWidth={1} strokeDasharray="3 4" />
       ))}
-      <Note x={350} y={198} anchor="middle" size={12} italic>
+      <Note x={350} y={210} anchor="middle" size={12} italic>
         many of the
       </Note>
-      <Note x={350} y={214} anchor="middle" size={12} italic>
+      <Note x={350} y={228} anchor="middle" size={12} italic>
         same variables
       </Note>
 
       <path d={`M688 ${base - 10 * step} H696 V${sharedTop - 3} H688`} fill="none" stroke={SIGNAL} strokeWidth={1.25} />
-      <Key x={706} y={base - 8 * step + 4} fill={SIGNAL} size={9}>
+      <Key x={706} y={base - 8 * step + 2} fill={SIGNAL} size={10}>
         ADDITIONAL
       </Key>
-      <Key x={706} y={base - 8 * step + 18} fill={SIGNAL} size={9}>
+      <Key x={706} y={base - 8 * step + 17} fill={SIGNAL} size={10}>
         VARIABLES
       </Key>
     </Frame>
@@ -574,12 +597,12 @@ export function BusinessTowers() {
 
 export function ShoeOverlap() {
   const circles = [
-    { cx: 380, cy: 124, tone: INK, name: "DEMOGRAPHIC", lx: 290, ly: 26, anchor: "end" as const },
-    { cx: 500, cy: 124, tone: COUNTER, name: "PSYCHOGRAPHIC", lx: 590, ly: 26, anchor: "start" as const },
-    { cx: 440, cy: 222, tone: INK3, name: "BEHAVIORAL", lx: 440, ly: 334, anchor: "middle" as const },
+    { cx: 392, cy: 120, tone: INK, name: "DEMOGRAPHIC", lx: 290, ly: 26, anchor: "end" as const },
+    { cx: 488, cy: 120, tone: COUNTER, name: "PSYCHOGRAPHIC", lx: 590, ly: 26, anchor: "start" as const },
+    { cx: 440, cy: 206, tone: INK3, name: "BEHAVIORAL", lx: 440, ly: 322, anchor: "middle" as const },
   ];
   return (
-    <Frame height={346} label="An athletic shoe beside three overlapping circles: demographic, psychographic, and behavioral. Where all three overlap sits one specific consumer group.">
+    <Frame height={336} label="An athletic shoe, with the brand's colour on its sole, beside three overlapping circles: demographic, psychographic, and behavioral. Where all three overlap stand three people, one specific consumer group.">
       {/* sneaker */}
       <path
         d="M44 234 V204 C44 190 52 182 64 182 L94 190 C108 192 118 184 126 172 L140 152 C146 144 156 146 160 154 L178 184 C198 196 232 200 250 208 C262 214 264 224 262 234 Z"
@@ -588,12 +611,9 @@ export function ShoeOverlap() {
         strokeWidth={1.75}
         strokeLinejoin="round"
       />
-      <rect x={38} y={232} width={230} height={12} rx={5} fill={SIGNAL} />
+      <rect x={38} y={232} width={230} height={12} rx={5} fill={COUNTER} />
       <path d="M150 166 L164 158 M158 178 L172 170 M168 190 L182 182" stroke={INK} strokeWidth={1.5} strokeLinecap="round" />
       <path d="M88 214 C130 214 170 206 206 214" fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={152} y={278} anchor="middle" fill={INK} size={10}>
-        ATHLETIC SHOES
-      </Key>
 
       {circles.map((c) => (
         <g key={c.name}>
@@ -603,18 +623,13 @@ export function ShoeOverlap() {
           </Key>
         </g>
       ))}
-      <line x1={296} y1={30} x2={330} y2={58} stroke={INK} strokeWidth={1} />
-      <line x1={584} y1={30} x2={550} y2={58} stroke={COUNTER} strokeWidth={1} />
+      <line x1={296} y1={30} x2={326} y2={54} stroke={INK} strokeWidth={1} />
+      <line x1={584} y1={30} x2={554} y2={54} stroke={COUNTER} strokeWidth={1} />
 
-      <circle cx={440} cy={162} r={18} fill={SIGNAL} />
-      {[
-        [433, 157],
-        [447, 157],
-        [440, 169],
-      ].map(([x, y]) => (
-        <circle key={`${x}-${y}`} cx={x} cy={y} r={3} fill={PAPER} />
+      {[422, 440, 458].map((x) => (
+        <Person3 key={x} x={x} y={166} k={0.65} stroke={SIGNAL} fill={SIGNAL} width={1} />
       ))}
-      <line x1={458} y1={168} x2={640} y2={220} stroke={SIGNAL} strokeWidth={1.25} />
+      <line x1={470} y1={160} x2={640} y2={212} stroke={SIGNAL} strokeWidth={1.25} />
       <Key x={646} y={218} fill={SIGNAL} size={10}>
         A SPECIFIC
       </Key>
@@ -634,7 +649,6 @@ export function EvaluateSelect() {
   const chosen = [1, 3];
   return (
     <Frame height={256} label="Five market segments, each with an attractiveness meter. The two most attractive are selected, and a bracket joins them: one or more segments to enter.">
-      <Schematic x={792} y={20} />
       <Key x={20} y={98} fill={INK3} size={9.5}>
         SEGMENTS
       </Key>
@@ -716,7 +730,7 @@ export function ThreeFactors() {
       <circle cx={630} cy={98} r={32} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       <circle cx={630} cy={98} r={19} fill="none" stroke={COUNTER} strokeWidth={1.5} />
       <circle cx={630} cy={98} r={7} fill={COUNTER} />
-      <Coins1 x={712} y={136} n={6} rx={17} tone={INK} />
+      <Coins2 x={712} y={130} n={6} w={36} tone={INK} />
 
       {[
         [150, "SEGMENT SIZE", "AND GROWTH", INK],
@@ -741,35 +755,35 @@ export function ThreeFactors() {
    ========================================================================== */
 
 export function CrowdedSegment() {
-  const rivals: [number, number, number][] = [
-    [176, 72, 20],
-    [232, 64, -30],
-    [300, 76, 160],
-    [196, 118, 110],
-    [262, 110, 200],
-    [330, 122, -120],
-    [350, 64, 60],
+  const rivals: [number, number][] = [
+    [172, 84],
+    [228, 84],
+    [284, 84],
+    [340, 84],
+    [200, 140],
+    [256, 140],
+    [312, 140],
   ];
   return (
-    <Frame width={400} height={188} label="A segment drawn as an enclosure crowded with strong, aggressive competitors pointing every way. Its wall has an open gap, and new entrants stream in through it.">
-      <Key x={380} y={24} anchor="end" fill={SIGNAL} size={9.5}>
+    <Frame width={400} height={192} label="A segment drawn as an enclosure packed with seven strong competitors, drawn as solid company buildings. Its wall has an open gap, and three new entrant companies stream in through it.">
+      <Key x={380} y={22} anchor="end" fill={SIGNAL} size={9.5}>
         LESS ATTRACTIVE
       </Key>
-      <path d="M130 70 V40 H380 V150 H130 V120" fill="none" stroke={INK} strokeWidth={2} />
-      {rivals.map(([x, y, deg]) => (
-        <path key={`${x}-${y}`} d="M-10 -9 L12 0 L-10 9 Z" transform={`translate(${x} ${y}) rotate(${deg})`} fill={INK} />
+      <path d="M130 72 V36 H380 V152 H130 V118" fill="none" stroke={INK} strokeWidth={2} />
+      {rivals.map(([cx, base]) => (
+        <Company1 key={`${cx}-${base}`} cx={cx} base={base} w={32} h={30} tone={INK} fill={INK} />
       ))}
-      {[62, 94, 126].map((y, i) => (
-        <g key={y}>
-          <Person3 x={30 + i * 10} y={y + 14} k={0.7} stroke={SIGNAL} />
-          <path d={`M${48 + i * 10} ${y} C90 ${y} 100 95 146 95`} fill="none" stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
+      {[62, 96, 130].map((base) => (
+        <g key={base}>
+          <Company1 cx={40} base={base} w={22} h={18} tone={SIGNAL} />
+          <path d={`M58 ${base - 9} C96 ${base - 9} 104 95 144 95`} fill="none" stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="4 3" />
         </g>
       ))}
-      <path d={head2.right(152, 95)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={20} y={176} fill={SIGNAL} size={9}>
+      <path d={head2.right(150, 95)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={20} y={178} fill={SIGNAL} size={9}>
         NEW ENTRANTS
       </Key>
-      <Key x={255} y={176} anchor="middle" fill={INK} size={9}>
+      <Key x={255} y={178} anchor="middle" fill={INK} size={9}>
         STRONG, AGGRESSIVE COMPETITORS
       </Key>
     </Frame>
@@ -782,12 +796,12 @@ export function CrowdedSegment() {
 
 export function SkillsFit() {
   return (
-    <Frame width={400} height={188} label="Two jigsaw pieces. The company's piece, skills and resources, has a tab that fits the socket in the segment's piece: needed to succeed in that segment.">
+    <Frame width={400} height={188} label="Two jigsaw pieces. The company's piece, a company building marked skills and resources, has a tab that fits the socket in the segment's piece: needed to succeed in that segment.">
       <path d="M30 50 H166 V74 C186 74 194 82 194 94 C194 106 186 114 166 114 V138 H30 Z" fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.75} strokeLinejoin="round" />
       <path d="M234 50 H370 V138 H234 V114 C254 114 262 106 262 94 C262 82 254 74 234 74 Z" fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} strokeLinejoin="round" />
       <line x1={180} y1={30} x2={222} y2={30} stroke={INK} strokeWidth={1.5} />
       <path d={head2.right(224, 30)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <Person3 x={98} y={108} k={1.1} stroke={COUNTER} />
+      <Company1 cx={98} base={118} w={44} h={36} tone={COUNTER} />
       <Person3 x={318} y={108} k={1.1} stroke={SIGNAL} />
       <Person3 x={298} y={112} k={0.8} stroke={SIGNAL} />
       <Person3 x={338} y={112} k={0.8} stroke={SIGNAL} />
@@ -811,28 +825,31 @@ export function SkillsFit() {
    15 · FOUR TARGETING PANELS — the same market, targeted four ways (360)
    ========================================================================== */
 
+/* Buyers' feet, relative to their cluster's centre: two rows of three. */
 const OFFSETS: [number, number][] = [
-  [-20, -12],
-  [0, -18],
-  [20, -10],
-  [-16, 12],
-  [4, 8],
-  [22, 14],
+  [-26, -2],
+  [0, -4],
+  [26, -2],
+  [-26, 24],
+  [0, 22],
+  [26, 24],
 ];
 const NICHE: [number, number][] = [
-  [-11, -9],
-  [11, -10],
-  [-10, 10],
-  [12, 9],
+  [-13, 0],
+  [13, 0],
+  [-13, 24],
+  [13, 24],
 ];
 const CLUSTERS = [
-  { kind: 0, cx: 96, cy: 78 },
-  { kind: 1, cx: 252, cy: 70 },
-  { kind: 2, cx: 168, cy: 150 },
+  { kind: 0, cx: 90, cy: 68 },
+  { kind: 1, cx: 262, cy: 68 },
+  { kind: 2, cx: 164, cy: 148 },
 ];
-const NICHE_C = { kind: 3, cx: 296, cy: 180 };
+const NICHE_C = { kind: 3, cx: 290, cy: 160 };
+/** Buyer scale on the four targeting panels. */
+const BK = 0.6;
 
-/** Every buyer in the shared market, as {kind, x, y}. */
+/** Every buyer in the shared market, as {kind, x, y (feet)}. */
 function marketBuyers() {
   const out: { kind: number; x: number; y: number; niche: boolean }[] = [];
   CLUSTERS.forEach((c) => OFFSETS.forEach(([dx, dy]) => out.push({ kind: c.kind, x: c.cx + dx, y: c.cy + dy, niche: false })));
@@ -840,83 +857,97 @@ function marketBuyers() {
   return out;
 }
 
+/** Centre of a group's glyphs (buyers stand on their feet, so it sits above cy). */
+const mid = (c: { cx: number; cy: number }) => ({ x: c.cx, y: c.cy + 1 });
+
 function MarketField() {
   return <rect x={16} y={16} width={328} height={200} fill="none" stroke={INK3} strokeWidth={1.25} />;
 }
 
 export function TargetUndifferentiated() {
   const needs = [
-    [124, 92],
-    [222, 86],
-    [170, 142],
+    [120, 86],
+    [230, 86],
+    [175, 146],
   ];
   return (
-    <Frame width={360} height={232} label="The whole market. Three overlapping need circles, one around each group of buyers, and the area they share is lit: what is common in the needs of consumers.">
+    <Frame width={360} height={232} label="The whole market of buyers, all drawn alike in grey. Three overlapping need circles, one around each group, and the area they share is lit: what is common in the needs of consumers.">
       <MarketField />
       {needs.map(([x, y]) => (
-        <circle key={x} cx={x} cy={y} r={64} fill={SIGNAL_TINT} stroke={INK3} strokeWidth={1} strokeDasharray="4 3" />
+        <circle key={x} cx={x} cy={y} r={58} fill={SIGNAL_TINT} stroke={INK3} strokeWidth={1} strokeDasharray="4 3" />
       ))}
       {marketBuyers().map((b, i) => (
-        <Mark1 key={i} kind={b.kind} x={b.x} y={b.y} s={5.5} fill={INK3} />
+        <Buyer key={i} kind={b.kind} x={b.x} y={b.y} k={BK} tone={INK3} />
       ))}
-      <circle cx={172} cy={106} r={13} fill={SIGNAL} />
+      <circle cx={175} cy={108} r={11} fill={SIGNAL} />
     </Frame>
   );
 }
 
 export function TargetDifferentiated() {
+  const R = 44;
   const packs = [
-    { x: 42, y: 46, c: CLUSTERS[0] },
-    { x: 318, y: 118, c: CLUSTERS[1] },
-    { x: 92, y: 196, c: CLUSTERS[2] },
+    { x: 40, y: 150, c: CLUSTERS[0] },
+    { x: 176, y: 62, c: CLUSTERS[1] },
+    { x: 80, y: 206, c: CLUSTERS[2] },
   ];
   return (
-    <Frame width={360} height={232} label="The same market. Each of three segments is ringed in its own colour, and each has its own separate offer beside it.">
+    <Frame width={360} height={232} label="The same market. Each of three segments is ringed in its own colour, and each has its own separate offer beside it, carrying its mark.">
       <MarketField />
       {CLUSTERS.map((c) => (
-        <circle key={c.kind} cx={c.cx + 1} cy={c.cy - 2} r={34} fill={PAPER} stroke={KIND_TONE[c.kind]} strokeWidth={1.75} />
+        <circle key={c.kind} cx={mid(c).x} cy={mid(c).y} r={R} fill={PAPER} stroke={KIND_TONE[c.kind]} strokeWidth={1.75} />
       ))}
       {marketBuyers().map((b, i) => (
-        <Mark1 key={i} kind={b.kind} x={b.x} y={b.y} s={5.5} fill={b.niche ? RULE2 : KIND_TONE[b.kind]} />
+        <Buyer key={i} kind={b.kind} x={b.x} y={b.y} k={BK} tone={b.niche ? RULE2 : undefined} />
       ))}
-      {packs.map((p) => (
-        <g key={p.x}>
-          <line x1={p.x} y1={p.y - 14} x2={p.c.cx + (p.x < p.c.cx ? -24 : 24)} y2={p.c.cy + (p.y < p.c.cy ? -24 : 24)} stroke={KIND_TONE[p.c.kind]} strokeWidth={1} />
-          <Pack1 x={p.x} y={p.y} w={30} h={28} tone={KIND_TONE[p.c.kind]} kind={p.c.kind} />
-        </g>
-      ))}
+      {packs.map((p) => {
+        const m = mid(p.c);
+        const top = { x: p.x, y: p.y - 28 };
+        const dx = top.x - m.x;
+        const dy = top.y - m.y;
+        const d = Math.hypot(dx, dy);
+        return (
+          <g key={p.x}>
+            <line x1={top.x} y1={top.y} x2={r2(m.x + (dx / d) * R)} y2={r2(m.y + (dy / d) * R)} stroke={KIND_TONE[p.c.kind]} strokeWidth={1} />
+            <Pack1 x={p.x} y={p.y} w={30} h={28} tone={KIND_TONE[p.c.kind]} kind={p.c.kind} markFill={KIND_FILL[p.c.kind]} />
+          </g>
+        );
+      })}
     </Frame>
   );
 }
 
 export function TargetConcentrated() {
+  const m = mid(NICHE_C);
   return (
-    <Frame width={360} height={232} label="The same market, faded, except one small niche in the corner. It is ringed and filled: a large share of one smaller segment.">
+    <Frame width={360} height={232} label="The same market, faded, except one small niche. It is ringed and lit, and has its own offer: a large share of one smaller segment.">
       <MarketField />
       {marketBuyers().map((b, i) =>
-        b.niche ? null : <Mark1 key={i} kind={b.kind} x={b.x} y={b.y} s={5.5} fill={RULE2} />,
+        b.niche ? null : <Buyer key={i} kind={b.kind} x={b.x} y={b.y} k={BK} tone={RULE2} />,
       )}
-      <circle cx={NICHE_C.cx} cy={NICHE_C.cy} r={30} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={2} />
+      <circle cx={m.x} cy={m.y} r={35} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={2} />
       {NICHE.map(([dx, dy], i) => (
-        <Mark1 key={i} kind={3} x={NICHE_C.cx + dx} y={NICHE_C.cy + dy} s={6} fill={SIGNAL} />
+        <Buyer key={i} kind={3} x={NICHE_C.cx + dx} y={NICHE_C.cy + dy} k={BK} tone={SIGNAL} />
       ))}
-      <Pack1 x={226} y={200} w={30} h={28} tone={SIGNAL} fill={PAPER} kind={3} />
+      <line x1={241} y1={m.y + 6} x2={256} y2={m.y + 6} stroke={SIGNAL} strokeWidth={1} />
+      <Pack1 x={226} y={m.y + 20} w={30} h={28} tone={SIGNAL} fill={PAPER} kind={3} />
     </Frame>
   );
 }
 
 export function TargetMicro() {
+  const m = mid(NICHE_C);
   return (
-    <Frame width={360} height={232} label="The same market, but every single buyer has a small ring of their own, and a map pin marks a local customer segment.">
+    <Frame width={360} height={232} label="The same market, but every single buyer has a small ring of their own, and a map pin marks one local customer segment.">
       <MarketField />
       {marketBuyers().map((b, i) => (
         <g key={i}>
-          <circle cx={b.x} cy={b.y} r={8.5} fill={PAPER} stroke={SIGNAL} strokeWidth={1.25} />
-          <Mark1 kind={b.kind} x={b.x} y={b.y} s={4.2} fill={KIND_TONE[b.kind]} />
+          <circle cx={b.x} cy={r2(b.y - 10.5)} r={12.5} fill={PAPER} stroke={SIGNAL} strokeWidth={1.25} />
+          <Buyer kind={b.kind} x={b.x} y={b.y} k={BK} />
         </g>
       ))}
-      <path d="M312 60 C302 48 298 42 298 36 A14 14 0 0 1 326 36 C326 42 322 48 312 60 Z" fill={SIGNAL} />
-      <circle cx={312} cy={36} r={4.5} fill={PAPER} />
+      <path d={`M${m.x} ${m.y - 30} C${m.x - 8} ${m.y - 40} ${m.x - 11} ${m.y - 45} ${m.x - 11} ${m.y - 50} A11 11 0 0 1 ${m.x + 11} ${m.y - 50} C${m.x + 11} ${m.y - 45} ${m.x + 8} ${m.y - 40} ${m.x} ${m.y - 30} Z`} fill={SIGNAL} />
+      <circle cx={m.x} cy={m.y - 50} r={3.8} fill={PAPER} />
     </Frame>
   );
 }
@@ -927,7 +958,7 @@ export function TargetMicro() {
 
 export function ProteinFork() {
   return (
-    <Frame height={276} label="A tub of premium, organic, plant-based protein powder with two routes. Up: differentiated marketing, three segments each with its own tub. Down: concentrated marketing, one niche with one tub.">
+    <Frame height={276} label="A tub of premium, organic, plant-based protein powder with two routes. Up: differentiated marketing, three segments of buyers each with its own tub. Down: concentrated marketing, one niche of buyers with one tub, the other segments left empty.">
       <Key x={110} y={56} anchor="middle" fill={INK} size={9.5}>
         PREMIUM · ORGANIC
       </Key>
@@ -950,12 +981,12 @@ export function ProteinFork() {
           <g key={g}>
             <rect x={x - 42} y={44} width={124} height={68} rx={4} fill={PAPER} stroke={KIND_TONE[g]} strokeWidth={1.25} />
             {[
-              [-22, 64],
-              [0, 64],
-              [-22, 92],
-              [0, 92],
+              [-28, 78],
+              [-6, 78],
+              [-28, 106],
+              [-6, 106],
             ].map(([dx, y]) => (
-              <Mark1 key={`${dx}-${y}`} kind={g} x={x + dx - 6} y={y} s={6} fill={KIND_TONE[g]} />
+              <Buyer key={`${dx}-${y}`} kind={g} x={x + dx} y={y} k={0.65} />
             ))}
             <Tub x={x + 46} y={104} s={0.95} tone={KIND_TONE[g]} />
           </g>
@@ -967,14 +998,14 @@ export function ProteinFork() {
       </Key>
       <rect x={298} y={178} width={184} height={80} rx={4} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
       {[
-        [320, 200],
-        [346, 200],
-        [372, 200],
-        [320, 236],
-        [346, 236],
-        [372, 236],
+        [322, 212],
+        [348, 212],
+        [374, 212],
+        [322, 248],
+        [348, 248],
+        [374, 248],
       ].map(([x, y]) => (
-        <Mark1 key={`${x}-${y}`} kind={3} x={x} y={y} s={7} fill={SIGNAL} />
+        <Buyer key={`${x}-${y}`} kind={3} x={x} y={y} k={0.8} tone={SIGNAL} />
       ))}
       <Tub x={436} y={250} s={1.3} tone={SIGNAL} />
       {[520, 600, 680].map((x) => (
@@ -1048,74 +1079,39 @@ export function OfferingAndMind() {
    ========================================================================== */
 
 export function PerceptualMap() {
+  // Competing products: [x, y, r]. Radius stands for relative market share.
   const rivals: [number, number, number][] = [
-    [168, 118, 46],
-    [196, 306, 30],
-    [446, 312, 20],
-    [488, 150, 13],
+    [104, 96, 36],
+    [118, 262, 24],
+    [296, 268, 15],
+    [336, 144, 10],
   ];
-  const bx = 410;
-  const by = 94;
+  const bx = 282;
+  const by = 84;
   return (
-    <Frame height={404} label="A perceptual positioning map. Two buying dimensions cross at the centre. A brand circle sits in the upper right; competing products are grey circles of different sizes. A key explains that each circle's position is the brand's perceived positioning, and its size is relative market share.">
-      <Schematic x={792} y={18} />
-      <line x1={60} y1={210} x2={560} y2={210} stroke={INK} strokeWidth={1.5} />
-      <path d={head2.right(562, 210)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <path d={head2.left(58, 210)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <line x1={310} y1={34} x2={310} y2={388} stroke={INK} strokeWidth={1.5} />
-      <path d={head2.up(310, 32)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <path d={head2.down(310, 390)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <Key x={322} y={40} fill={INK} size={9.5}>
+    <Frame width={400} height={352} label="A perceptual positioning map. Two buying dimensions cross at the centre. The brand, a lit circle, sits in the upper right, with dashed lines to both axes marking its position. Competing products are grey circles of different sizes around it.">
+      <line x1={24} y1={176} x2={376} y2={176} stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(378, 176)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.left(22, 176)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <line x1={200} y1={22} x2={200} y2={330} stroke={INK} strokeWidth={1.5} />
+      <path d={head2.up(200, 20)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.down(200, 332)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <Key x={212} y={28} fill={INK} size={9.5}>
         BUYING DIMENSION 2
       </Key>
-      <Key x={560} y={234} anchor="end" fill={INK} size={9.5}>
+      <Key x={376} y={198} anchor="end" fill={INK} size={9.5}>
         BUYING DIMENSION 1
       </Key>
 
       {rivals.map(([x, y, r]) => (
-        <circle key={`${x}-${y}`} cx={x} cy={y} r={r} fill={PAPER2} stroke={INK3} strokeWidth={1.5} />
+        <circle key={`${x}-${y}`} cx={x} cy={y} r={r} fill="var(--paper-3)" stroke={INK3} strokeWidth={1.5} />
       ))}
 
-      <line x1={bx} y1={by + 24} x2={bx} y2={208} stroke={SIGNAL} strokeWidth={1} strokeDasharray="3 4" />
-      <line x1={bx - 24} y1={by} x2={312} y2={by} stroke={SIGNAL} strokeWidth={1} strokeDasharray="3 4" />
-      <circle cx={bx} cy={by} r={24} fill={SIGNAL} />
+      <line x1={bx} y1={by + 26} x2={bx} y2={174} stroke={SIGNAL} strokeWidth={1} strokeDasharray="3 4" />
+      <line x1={bx - 26} y1={by} x2={202} y2={by} stroke={SIGNAL} strokeWidth={1} strokeDasharray="3 4" />
+      <circle cx={bx} cy={by} r={26} fill={SIGNAL} />
       <Key x={bx} y={by + 4} anchor="middle" fill={PAPER} size={9}>
         BRAND
-      </Key>
-
-      {/* key */}
-      <line x1={592} y1={40} x2={592} y2={388} stroke={RULE} strokeWidth={1} />
-      <path d="M612 74 H660 M636 50 V98" stroke={RULE2} strokeWidth={1} />
-      <circle cx={648} cy={62} r={6} fill={SIGNAL} />
-      <line x1={648} y1={68} x2={648} y2={74} stroke={SIGNAL} strokeWidth={1} strokeDasharray="2 2" />
-      <line x1={642} y1={62} x2={636} y2={62} stroke={SIGNAL} strokeWidth={1} strokeDasharray="2 2" />
-      <Key x={612} y={128} fill={INK} size={9.5}>
-        POSITION OF EACH CIRCLE
-      </Key>
-      <Note x={612} y={148} size={12.5} italic>
-        the brand&apos;s perceived
-      </Note>
-      <Note x={612} y={164} size={12.5} italic>
-        positioning
-      </Note>
-
-      <circle cx={622} cy={262} r={8} fill={PAPER2} stroke={INK3} strokeWidth={1.5} />
-      <circle cx={670} cy={248} r={22} fill={PAPER2} stroke={INK3} strokeWidth={1.5} />
-      <line x1={606} y1={272} x2={700} y2={272} stroke={RULE2} strokeWidth={1} />
-      <Key x={612} y={304} fill={INK} size={9.5}>
-        SIZE OF THE CIRCLE
-      </Key>
-      <Note x={612} y={324} size={12.5} italic>
-        relative market share
-      </Note>
-
-      <circle cx={619} cy={358} r={7} fill={SIGNAL} />
-      <Key x={634} y={362} fill={SIGNAL} size={9.5}>
-        BRAND
-      </Key>
-      <circle cx={619} cy={382} r={7} fill={PAPER2} stroke={INK3} strokeWidth={1.5} />
-      <Key x={634} y={386} fill={INK3} size={9.5}>
-        COMPETING PRODUCTS
       </Key>
     </Frame>
   );
@@ -1128,19 +1124,19 @@ export function PerceptualMap() {
 export function DifferenceSieve() {
   const screens = ["IMPORTANT", "DISTINCTIVE", "SUPERIOR", "COMMUNICABLE", "PREEMPTIVE", "AFFORDABLE", "PROFITABLE"];
   const counts = [14, 11, 9, 7, 5, 3, 2, 1];
-  const bandY = (k: number) => 40 + k * 36;
-  const screenY = (i: number) => 58 + i * 36;
+  const cx = 463;
+  const bandY = (k: number) => 44 + k * 36;
+  const screenY = (i: number) => 62 + i * 36;
   return (
-    <Frame height={318} label="A sieve with seven screens: important, distinctive, superior, communicable, preemptive, affordable, profitable. Fourteen possible differences enter at the top; some are dropped at every screen, and one passes all seven to be promoted.">
-      <Key x={210} y={bandY(0) + 4} anchor="end" fill={INK} size={9.5}>
+    <Frame height={316} label="A sieve with seven screens: important, distinctive, superior, communicable, preemptive, affordable, profitable. Fourteen possible differences enter at the top; fewer pass each screen, and the one that passes all seven is promoted.">
+      <Key x={cx} y={22} anchor="middle" fill={INK} size={9.5}>
         DIFFERENCES
       </Key>
-      <line x1={620} y1={24} x2={620} y2={310} stroke={RULE} strokeWidth={1} />
 
       {screens.map((s, i) => (
         <g key={s}>
-          <line x1={226} y1={screenY(i)} x2={594} y2={screenY(i)} stroke={INK} strokeWidth={1.5} strokeDasharray="14 6" />
-          <Key x={210} y={screenY(i) + 4} anchor="end" fill={INK} size={9.5}>
+          <line x1={209} y1={screenY(i)} x2={717} y2={screenY(i)} stroke={INK} strokeWidth={1.5} strokeDasharray="14 6" />
+          <Key x={193} y={screenY(i) + 4} anchor="end" fill={INK} size={9.5}>
             {s}
           </Key>
         </g>
@@ -1148,21 +1144,17 @@ export function DifferenceSieve() {
 
       {counts.map((n, k) => {
         const last = k === counts.length - 1;
-        const dropped = k === 0 ? 0 : counts[k - 1] - n;
         return (
           <g key={k}>
             {Array.from({ length: n }, (_, j) => (
-              <circle key={j} cx={410 + (j - (n - 1) / 2) * 24} cy={bandY(k)} r={last ? 8 : 5} fill={last ? SIGNAL : INK} />
-            ))}
-            {Array.from({ length: dropped }, (_, j) => (
-              <circle key={`d${j}`} cx={644 + j * 18} cy={bandY(k) - 18} r={4.5} fill="none" stroke={INK3} strokeWidth={1.25} />
+              <circle key={j} cx={cx + (j - (n - 1) / 2) * 28} cy={bandY(k)} r={last ? 8 : 5} fill={last ? SIGNAL : INK} />
             ))}
           </g>
         );
       })}
-      <line x1={428} y1={bandY(7)} x2={466} y2={bandY(7)} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head2.right(468, bandY(7))} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={478} y={bandY(7) + 4} fill={SIGNAL} size={10.5}>
+      <line x1={cx + 18} y1={bandY(7)} x2={cx + 56} y2={bandY(7)} stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.right(cx + 58, bandY(7))} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={cx + 68} y={bandY(7) + 4} fill={SIGNAL} size={10.5}>
         PROMOTE
       </Key>
     </Frame>
@@ -1209,7 +1201,6 @@ export function ValueGrid() {
           const name = cells[`${r}-${c}`];
           const x = x0 + c * cw;
           const y = y0 + r * ch;
-          const strong = r === 0 && c === 2;
           return (
             <g key={`${r}-${c}`}>
               <rect
@@ -1217,12 +1208,12 @@ export function ValueGrid() {
                 y={y + 3}
                 width={cw - 6}
                 height={ch - 6}
-                fill={name ? (strong ? SIGNAL : SIGNAL_TINT) : PAPER2}
+                fill={name ? SIGNAL_TINT : PAPER2}
                 stroke={name ? SIGNAL : RULE}
                 strokeWidth={name ? 1.5 : 1}
               />
               {name ? (
-                <Display x={x + cw / 2} y={y + ch / 2 + 6} anchor="middle" fill={strong ? PAPER : SIGNAL} size={17}>
+                <Display x={x + cw / 2} y={y + ch / 2 + 6} anchor="middle" fill={SIGNAL} size={17}>
                   {name}
                 </Display>
               ) : null}
@@ -1272,10 +1263,9 @@ export function FourPsColonnade() {
    ========================================================================== */
 
 export function EstablishMaintain() {
-  const pulses = [520, 560, 600, 640, 680, 720];
+  const pulses = [524, 568, 612, 656, 700, 744];
   return (
-    <Frame height={244} label="A schematic curve over time. Establishing or changing a position rises slowly over a long stretch. Then a level line holds, kept up by regular marks of consistent performance and communication.">
-      <Schematic x={792} y={18} />
+    <Frame height={244} label="A curve over time. Establishing or changing a position rises slowly over a long stretch. Then a level line holds, kept up by regular marks of consistent performance and communication: maintaining it.">
       <line x1={60} y1={30} x2={60} y2={190} stroke={INK3} strokeWidth={1.25} />
       <line x1={60} y1={190} x2={770} y2={190} stroke={INK3} strokeWidth={1.25} />
       <path d={head2.right(772, 190)} fill="none" stroke={INK3} strokeWidth={1.25} />
@@ -1288,13 +1278,12 @@ export function EstablishMaintain() {
 
       <path d="M60 180 C200 178 270 168 330 132 C390 96 420 68 490 64" fill="none" stroke={INK} strokeWidth={2} />
       <line x1={490} y1={64} x2={760} y2={64} stroke={SIGNAL} strokeWidth={2.5} />
-      {pulses.map((x, i) =>
-        i % 2 ? (
-          <rect key={x} x={x - 5} y={59} width={10} height={10} fill={SIGNAL} />
-        ) : (
-          <circle key={x} cx={x} cy={64} r={5.5} fill={SIGNAL} />
-        ),
-      )}
+      {pulses.map((x) => (
+        <circle key={x} cx={x} cy={64} r={5.5} fill={SIGNAL} />
+      ))}
+      <Note x={634} y={42} anchor="middle" size={12.5} italic fill={SIGNAL}>
+        consistent performance and communication
+      </Note>
 
       <Note x={270} y={116} anchor="middle" size={12.5} italic>
         usually takes a long time
@@ -1303,18 +1292,10 @@ export function EstablishMaintain() {
       <Key x={275} y={234} anchor="middle" fill={INK} size={9.5}>
         ESTABLISHING OR CHANGING A POSITION
       </Key>
-
-      <Key x={625} y={40} anchor="middle" fill={SIGNAL} size={9.5}>
+      <path d="M494 204 V212 H760 V204" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
+      <Key x={627} y={234} anchor="middle" fill={SIGNAL} size={9.5}>
         MAINTAINING IT
       </Key>
-      <circle cx={512} cy={100} r={4.5} fill={SIGNAL} />
-      <Note x={524} y={104} size={12} italic>
-        consistent performance
-      </Note>
-      <rect x={507.5} y={117.5} width={9} height={9} fill={SIGNAL} />
-      <Note x={524} y={126} size={12} italic>
-        consistent communication
-      </Note>
     </Frame>
   );
 }

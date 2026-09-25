@@ -12,8 +12,6 @@
      · INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or the outward-looking state
      · every label reuses words from the slide the plate sits on
-     · anything that implies a quantity the content does not give is marked
-       SCHEMATIC
      · keys are set in the body grotesque, uppercase and tracked (no mono)
    ========================================================================== */
 
@@ -37,7 +35,6 @@ import {
   r2,
   RULE,
   RULE2,
-  Schematic,
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
@@ -844,9 +841,8 @@ export function PerceivedValueBars() {
     <Frame
       width={400}
       height={224}
-      label="Schematic. Three offers, each drawn as a benefits bar above a costs bar. The stretch of benefits beyond the costs is perceived value; this offer's is the longest, even though one competing offer has more benefits and more costs."
+      label="Three offers, each drawn as a benefits bar above a costs bar. The stretch of benefits beyond the costs is perceived value; this offer's is the longest, even though one competing offer has more benefits and more costs."
     >
-      <Schematic x={392} y={22} />
 
       {offers.map((o) => {
         const by = o.top + 16;
@@ -1391,9 +1387,8 @@ export function LifetimeStream() {
   return (
     <Frame
       height={214}
-      label="Schematic. One customer's purchases as a row of bars over a lifetime of patronage. At the point the customer is lost, one bar is a single sale; every bar after it is the entire future income stream."
+      label="One customer's purchases as a row of bars over a lifetime of patronage. At the point the customer is lost, one bar is a single sale; every bar after it is the entire future income stream."
     >
-      <Schematic />
       <line x1={50} y1={base} x2={762} y2={base} stroke={INK} strokeWidth={1} />
       <path
         d={head1.right(770, base)}
@@ -1486,7 +1481,7 @@ export function ShareOfCustomer() {
   return (
     <Frame
       height={140}
-      label="Schematic. One bar is all of a customer's purchasing in a product category. The company's portion is marked as share of customer."
+      label="One bar is all of a customer's purchasing in a product category. The company's portion is marked as share of customer."
     >
       <Key x={x1} y={24} anchor="end" fill={INK3} size={9.5}>
         {"THE CUSTOMER'S PURCHASING IN THE CATEGORY"}
@@ -1505,7 +1500,6 @@ export function ShareOfCustomer() {
       <Key x={(x0 + split) / 2} y={128} anchor="middle" fill={SIGNAL} size={11}>
         SHARE OF CUSTOMER
       </Key>
-      <Schematic x={x1} y={128} />
     </Frame>
   );
 }
@@ -1533,9 +1527,8 @@ export function EquityLedger() {
   return (
     <Frame
       height={320}
-      label="Schematic. A line marks now. To the left, sales and market share reflect the past. To the right, lifetime value streams from current and potential customers add up to customer equity."
+      label="A line marks now. To the left, sales and market share reflect the past. To the right, lifetime value streams from current and potential customers add up to customer equity."
     >
-      <Schematic />
 
       {/* now */}
       <line x1={now} y1={50} x2={now} y2={270} stroke={INK} strokeWidth={1.5} />

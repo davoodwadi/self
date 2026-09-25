@@ -14,8 +14,6 @@
      · INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or outward-looking state
      · every label reuses words from the slide the plate sits on
-     · anything that implies a quantity the content does not give is marked
-       SCHEMATIC
    ========================================================================== */
 
 import React from "react";
@@ -36,7 +34,6 @@ import {
   r2,
   RULE,
   RULE2,
-  Schematic,
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
@@ -243,7 +240,6 @@ export function ChoiceSetSlope() {
   ];
   return (
     <Frame height={292} label="The same four brands in a choice set, ranked in one order by one consumer in one situation, and in a different order by another consumer in another situation.">
-      <Schematic />
       <Key x={L} y={40} anchor="middle" fill={INK3} size={10}>
         ONE CONSUMER, ONE SITUATION
       </Key>
@@ -832,7 +828,6 @@ export function MarketStructureTriptych() {
     `M${ds.map((d, i) => `${600 + i * 17} ${base + d}`).join("L")}`;
   return (
     <Frame height={240} label="Three panels. Buyers: many small B2C buyers against a few large B2B buyers. Derived demand: consumer demand drives business demand. Demand over time: B2C steady, B2B fluctuating.">
-      <Schematic />
       <line x1={267} y1={20} x2={267} y2={228} stroke={RULE} strokeWidth={1} />
       <line x1={533} y1={20} x2={533} y2={228} stroke={RULE} strokeWidth={1} />
 

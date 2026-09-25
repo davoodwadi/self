@@ -15,7 +15,6 @@
      · INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or the outward-looking state
      · every label reuses words from the slide the plate sits on
-     · anything implying a quantity the content does not give is SCHEMATIC
      · integer coordinates only, so server and client render the same markup
    ========================================================================== */
 
@@ -34,7 +33,6 @@ import {
   PAPER2,
   RULE,
   RULE2,
-  Schematic,
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
@@ -354,7 +352,6 @@ export function SystemPerformance() {
       height={230}
       label="Four narrow bars, one per partner, standing under a single wide bar. The wide bar is the performance of the entire system, and it is lifted higher than any partner reaches alone."
     >
-      <Schematic x={392} y={16} />
       <line x1={24} y1={180} x2={376} y2={180} stroke={INK} strokeWidth={1.5} />
       {[62, 132, 202, 272].map((x, i) => (
         <rect key={x} x={x} y={180 - (i === 1 ? 46 : 38)} width={44} height={i === 1 ? 46 : 38} fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
@@ -1051,7 +1048,6 @@ export function ControlComplexity() {
       height={250}
       label="A plot with the number of levels along the bottom. One line falls as levels are added: the producer's control. The other rises: channel complexity."
     >
-      <Schematic x={392} y={16} />
       <line x1={56} y1={196} x2={376} y2={196} stroke={INK} strokeWidth={1.5} />
       <line x1={56} y1={40} x2={56} y2={196} stroke={INK} strokeWidth={1.5} />
       <path d="M72 62 L360 176" stroke={INK} strokeWidth={2} fill="none" />
@@ -1520,7 +1516,6 @@ export function EconomiesImpact() {
       height={230}
       label="Costs and impact for a channel of separate firms, then for a unified one. Moving to the unified system the cost bar falls and the impact bar rises."
     >
-      <Schematic x={392} y={16} />
       <line x1={40} y1={172} x2={370} y2={172} stroke={INK} strokeWidth={1.5} />
       <rect x={70} y={82} width={54} height={90} fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
       <rect x={140} y={116} width={54} height={56} fill={SIGNAL} />
@@ -1759,7 +1754,6 @@ export function CoverageAndConflict() {
       height={286}
       label="On the left, market coverage grows from a small block to a large one and sales rise with it. On the right, two of the firm's own channels reach the same buyer and a clash appears where they overlap."
     >
-      <Schematic x={792} y={16} />
       <rect x={44} y={128} width={56} height={62} fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
       <Arrow2 x1={110} y1={158} x2={144} y2={158} tone={SIGNAL} width={1.5} size={7} />
       <rect x={156} y={62} width={144} height={128} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
@@ -2237,7 +2231,6 @@ export function BetterOrCheaper() {
       height={260}
       label="The same channel function costed twice: once performed by the producer and once by the wholesaler. The wholesaler's bar is shorter and its quality mark higher."
     >
-      <Schematic x={792} y={16} />
       <line x1={140} y1={200} x2={744} y2={200} stroke={INK} strokeWidth={1.5} />
       <Key x={130} y={94} anchor="end" fill={INK3} size={9.5}>
         COST OF
@@ -2513,7 +2506,6 @@ export function UpstreamDownstream() {
       height={300}
       label="A chain of four stages. A band above it shows value being added as materials and final goods move downstream. A dashed band below shows information moving upstream, back the other way."
     >
-      <Schematic x={792} y={16} />
       {stages.map((s) => (
         <g key={s.name}>
           {s.g === "pack" ? <Pack4 x={s.x} y={186} w={44} h={40} /> : null}
@@ -2564,7 +2556,6 @@ export function ServiceAndCost() {
       height={230}
       label="Two opposed arrows on one axis. Customer service is pushed to its maximum at the top. Distribution costs are pushed to their minimum at the bottom."
     >
-      <Schematic x={392} y={16} />
       <line x1={200} y1={40} x2={200} y2={196} stroke={RULE} strokeWidth={1.25} />
       <Arrow2 x1={140} y1={150} x2={140} y2={56} tone={SIGNAL} width={2.5} />
       <Key x={124} y={98} anchor="end" fill={SIGNAL} size={10}>

@@ -19,7 +19,6 @@ import {
   Measure,
   MICRO,
   RULED,
-  Schematic,
   Split1,
   Steps,
   SVG_LABEL,
@@ -33,8 +32,7 @@ import {
 // argument, with hairlines instead of boxes and crimson marking one thing.
 //
 // Sentences are transcribed verbatim from content.md. Figures carry only words
-// that already appear on their slide; any shape that suggests a quantity
-// content.md does not give is labelled SCHEMATIC.
+// that already appear on their slide.
 //
 // Quizzes: `Slide` renders `quizData` BEFORE its section. content.md for this
 // week carries no [quiz] tags and has five topics, so each topic gets one quiz.
@@ -260,7 +258,6 @@ export default function Week07Edii() {
                   </text>
                 ))}
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -436,7 +433,6 @@ export default function Week07Edii() {
                   MINORITY EDGE CASES
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -594,7 +590,6 @@ export default function Week07Edii() {
                   REAL-WORLD CONDITIONS
                 </text>
               </svg>
-              <Schematic />
             </figure>
             <p className={`${DISPLAY} mt-6 max-w-4xl`}>
               Algorithms audited for fairness often perform more reliably in

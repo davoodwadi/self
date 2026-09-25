@@ -18,7 +18,6 @@ import {
   ModulePlate2,
   pad,
   RULED,
-  Schematic,
   Split1,
   Steps,
   SVG_LABEL,
@@ -34,8 +33,7 @@ import {
 // own argument, with hairlines instead of boxes and crimson marking one thing.
 //
 // Sentences are transcribed verbatim from content.md. Figures carry only words
-// that already appear in the slide's sentences; any shape that suggests a
-// quantity is labelled SCHEMATIC because content.md gives no numbers.
+// that already appear in the slide's sentences.
 //
 // Quizzes: `Slide` renders `quizData` BEFORE its section. content.md marks the
 // topic to be tested with [quiz], so each quiz is attached to the slide that
@@ -189,7 +187,6 @@ export default function Week03Finance() {
                   );
                 })}
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -1047,7 +1044,6 @@ export default function Week03Finance() {
                   RISK →
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -1826,7 +1822,6 @@ export default function Week03Finance() {
                   TIME →
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -2543,7 +2538,6 @@ export default function Week03Finance() {
                   );
                 })}
               </div>
-              <Schematic className="mt-3" />
             </figure>
           </div>
         </div>
@@ -2742,7 +2736,6 @@ export default function Week03Finance() {
                 );
               })}
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -2811,7 +2804,6 @@ export default function Week03Finance() {
                   FAIL
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -2903,7 +2895,6 @@ export default function Week03Finance() {
                 SHOCKS →
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 

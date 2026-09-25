@@ -25,8 +25,7 @@ import {
 // argument, with hairlines instead of boxes and crimson marking one thing.
 //
 // Sentences are transcribed verbatim from content.md. Figures carry only words
-// that already appear in the slide's sentences; any shape that suggests a
-// quantity is labelled SCHEMATIC because content.md gives no numbers.
+// that already appear in the slide's sentences.
 //
 // Quizzes: `Slide` renders `quizData` BEFORE its section. content.md marks the
 // topic to be tested with [quiz], so each quiz is attached to the slide that
@@ -542,9 +541,6 @@ export default function Week02Marketing() {
                 <text {...SVG_LABEL} x="226" y="57" fill="var(--charcoal)" fillOpacity="0.6">DECISIONS</text>
                 <text {...SVG_LABEL} x="220" y="120" textAnchor="end" fill="var(--charcoal)" fillOpacity="0.45">MORE SEGMENTS →</text>
               </svg>
-              <figcaption className={`${MICRO} mt-2 text-[var(--charcoal-light)]/40`}>
-                Schematic
-              </figcaption>
             </figure>
           </div>
         </div>
@@ -604,11 +600,6 @@ export default function Week02Marketing() {
               </div>
             </div>
           ))}
-        </div>
-        <div>
-          <div className={`${MICRO} mt-4 text-[var(--charcoal-light)]/40`}>
-            Schematic
-          </div>
         </div>
 
         <div className="w-full">
@@ -693,9 +684,6 @@ export default function Week02Marketing() {
                   ))}
                 </div>
               ))}
-              <figcaption className={`${MICRO} mt-3 text-[var(--charcoal-light)]/40`}>
-                Schematic
-              </figcaption>
             </figure>
           </div>
         </div>
@@ -852,9 +840,6 @@ export default function Week02Marketing() {
                   TRUST
                 </text>
               </svg>
-              <figcaption className={`${MICRO} mt-1 text-[var(--charcoal-light)]/40`}>
-                Schematic
-              </figcaption>
             </figure>
           </div>
         </div>
@@ -1125,7 +1110,7 @@ export default function Week02Marketing() {
                 </div>
               ))}
               <div className={`${MICRO} text-[var(--charcoal-light)]/40`}>
-                Schematic · time →
+                Time →
               </div>
             </div>
             <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
@@ -1173,9 +1158,6 @@ export default function Week02Marketing() {
                 </g>
               ))}
             </svg>
-            <figcaption className={`${MICRO} mt-1 text-[var(--charcoal-light)]/40`}>
-              Schematic
-            </figcaption>
           </figure>
         </div>
 
@@ -1352,9 +1334,6 @@ export default function Week02Marketing() {
                 <text {...SVG_LABEL} x="34" y="14" fill="var(--charcoal)" fillOpacity="0.5">BUDGET</text>
                 <text {...SVG_LABEL} x="290" y="146" textAnchor="end" fill="var(--charcoal)" fillOpacity="0.45">TIME →</text>
               </svg>
-              <figcaption className={`${MICRO} mt-1 text-[var(--charcoal-light)]/40`}>
-                Schematic
-              </figcaption>
             </figure>
           </div>
         </div>
@@ -1439,9 +1418,6 @@ export default function Week02Marketing() {
                 <text {...SVG_LABEL} x="85" y="190" textAnchor="middle" fill="var(--charcoal)" fillOpacity="0.5">CONTROL</text>
                 <text {...SVG_LABEL} x="195" y="190" textAnchor="middle" fill="var(--charcoal)">TREATMENT</text>
               </svg>
-              <figcaption className={`${MICRO} mt-1 text-[var(--charcoal-light)]/40`}>
-                Schematic
-              </figcaption>
             </figure>
           </div>
         </div>
@@ -1537,9 +1513,6 @@ export default function Week02Marketing() {
                 <text {...SVG_LABEL} x="708" y="86" fill="var(--charcoal)" fillOpacity="0.5">COUNTER-</text>
                 <text {...SVG_LABEL} x="708" y="100" fill="var(--charcoal)" fillOpacity="0.5">FACTUAL</text>
               </svg>
-              <figcaption className={`${MICRO} mt-1 text-[var(--charcoal-light)]/40`}>
-                Schematic
-              </figcaption>
             </figure>
           </div>
         </div>
@@ -1609,9 +1582,6 @@ export default function Week02Marketing() {
               <text {...SVG_LABEL} x="336" y="12" textAnchor="end" fill="var(--charcoal)" fillOpacity="0.45">OVER TIME →</text>
             </svg>
           </div>
-        </div>
-        <div>
-          <div className={`${MICRO} mt-3 text-[var(--charcoal-light)]/40`}>Schematic</div>
         </div>
 
         <div className="w-full">
@@ -1793,9 +1763,6 @@ export default function Week02Marketing() {
                 <text {...SVG_LABEL} x="250" y="208" textAnchor="end" fill="var(--charcoal)" fillOpacity="0.5">AT RISK →</text>
                 <text {...SVG_LABEL} x="0" y="0" transform="translate(18 190) rotate(-90)" fill="var(--charcoal)" fillOpacity="0.5">WORTH SAVING →</text>
               </svg>
-              <figcaption className={`${MICRO} mt-1 text-[var(--charcoal-light)]/40`}>
-                Schematic
-              </figcaption>
             </figure>
           </div>
         </div>
@@ -1842,9 +1809,6 @@ export default function Week02Marketing() {
                 <text {...SVG_LABEL} x="238" y="30" fill="var(--crimson)">SHAPED</text>
                 <text {...SVG_LABEL} x="238" y="88" fill="var(--charcoal)" fillOpacity="0.5">DESTINY</text>
               </svg>
-              <figcaption className={`${MICRO} mt-1 text-[var(--charcoal-light)]/40`}>
-                Schematic
-              </figcaption>
             </figure>
           </div>
         </div>

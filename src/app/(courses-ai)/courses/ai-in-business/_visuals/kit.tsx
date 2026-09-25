@@ -494,16 +494,6 @@ export function PartPlate3({
   );
 }
 
-/** Caption for any figure whose proportions are illustrative only. */
-export function Schematic({ className = "mt-1" }: { className?: string }) {
-  return (
-    <figcaption
-      className={`${MICRO} ${className} text-[var(--charcoal-light)]/40`}
-    >
-      Schematic
-    </figcaption>
-  );
-}
 
 /** Two labels set against each other across one rule; the right one is marked. */
 export function Split1({

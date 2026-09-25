@@ -9,7 +9,6 @@ These rules cover every SVG figure in this course (all weeks, the landing page, 
 - **Type:** the `MICRO` small-caps label (`font-sans text-[10px] font-semibold uppercase tracking-[0.22em]`) for every eyebrow, axis tick and numeral; `var(--font-serif)` for display.
 - **Where figures live:** inline in each week's `page.tsx`, next to the slide they illustrate. There is no `visuals.tsx`.
 - **Words:** figures carry only words that already appear in the slide's sentences.
-- **Invented quantities:** any shape implying a number content.md does not give carries the `Schematic` caption. When content.md gives real numbers, draw to scale and drop `Schematic`.
 - **Headings:** `(courses-ai)/globals.css` sets h1–h6 outside any cascade layer, so Tailwind utilities on headings lose. Set heading type through CSS-module classes.
 
 ## Course notes on the SVG rules

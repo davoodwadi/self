@@ -26,7 +26,6 @@ import {
   PAIR,
   PartPlate2,
   RULED,
-  Schematic,
   Split1,
   Stat1,
   Steps,
@@ -44,8 +43,7 @@ import {
 // are set as superscript source numbers, linked to the Sources slide when that
 // source is listed there. Figures carry only words and numbers that already
 // appear on their slide. Where content.md gives the numbers (29 Wh against
-// 0.4 Wh, 3x, 40%, 28%, 32-bit to 4-bit) a figure is drawn to them; any other
-// shape that suggests a quantity is labelled SCHEMATIC.
+// 0.4 Wh, 3x, 40%, 28%, 32-bit to 4-bit) a figure is drawn to them.
 //
 // Quizzes: `Slide` renders `quizData` BEFORE its section. content.md for this
 // week carries no [quiz] tags, so twelve topics were chosen to test: the
@@ -442,7 +440,6 @@ export default function Week08Sustainability() {
                   MAGNITUDE
                 </text>
               </svg>
-              <Schematic />
             </figure>
             <p className={`${BODY} mt-5`}>
               Newer models likely exceed these figures by orders of magnitude
@@ -482,7 +479,6 @@ export default function Week08Sustainability() {
                 INFERENCE
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -896,7 +892,6 @@ export default function Week08Sustainability() {
                 OBSOLETE
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -1278,7 +1273,6 @@ export default function Week08Sustainability() {
                   ENSEMBLE FORECASTING
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -1348,7 +1342,6 @@ export default function Week08Sustainability() {
                 THE GRID
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -1383,7 +1376,6 @@ export default function Week08Sustainability() {
                   HIGH PRECISION
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
 
@@ -1515,7 +1507,6 @@ export default function Week08Sustainability() {
                   VARIABLE RATE TECHNOLOGY
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
 
@@ -1546,7 +1537,6 @@ export default function Week08Sustainability() {
                   REAL-TIME
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -1613,7 +1603,6 @@ export default function Week08Sustainability() {
                   />
                 ))}
               </svg>
-              <Schematic />
             </figure>
           </div>
 
@@ -2570,7 +2559,6 @@ export default function Week08Sustainability() {
                   OVERHEADS LIKE COOLING
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -2848,7 +2836,6 @@ export default function Week08Sustainability() {
                   TOTAL CONSUMPTION
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>

@@ -16,8 +16,6 @@
      · INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or outward-looking state
      · every label reuses words from the slide the plate sits on
-     · anything that implies a quantity the content does not give is marked
-       SCHEMATIC
    ========================================================================== */
 
 import React from "react";
@@ -34,13 +32,29 @@ import {
   Key,
   Note,
   PAPER,
+  r2,
   RULE,
   RULE2,
-  Schematic,
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
-import { Factory1, Gear1, Person2 } from "../_visuals/objects";
+import { Coins2, Company1, Factory1, Pack1, Person2 } from "../_visuals/objects";
+import {
+  BatteryVerticalFull,
+  CalendarCheck,
+  Car,
+  Desktop,
+  Funnel,
+  Handshake,
+  Lightbulb,
+  Package,
+  PencilRuler,
+  PencilSimple,
+  Printer,
+  SealCheck,
+  Signature,
+  Wrench,
+} from "@phosphor-icons/react";
 
 /* ==========================================================================
    1 · FORKED FLOW — what organizations do with what they buy
@@ -48,42 +62,45 @@ import { Factory1, Gear1, Person2 } from "../_visuals/objects";
 
 export function TwoUses() {
   return (
-    <Frame height={240} label="A seller sells products and services to an organization, which uses them either to produce other goods or for its own operations.">
-      <rect x={40} y={104} width={140} height={32} fill={PAPER} stroke={INK} strokeWidth={1.25} />
-      <Key x={110} y={124} anchor="middle" fill={INK} size={10}>
-        SELLER
-      </Key>
-      <line x1={184} y1={120} x2={276} y2={120} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head2.right(278, 120)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <Note x={230} y={160} anchor="middle" size={11.5} italic>
+    <Frame height={260} label="A selling company ships a package of products and services to another organization, lit. From there one path leads to a factory turning out three packed goods, labelled produce other goods; the other leads to an office desk with a computer and printer, labelled own operations.">
+      {/* the seller */}
+      <Company1 cx={80} base={170} w={84} h={64} tone={INK} />
+      <line x1={132} y1={140} x2={250} y2={140} stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(252, 140)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <Package x={172} y={100} size={38} weight="duotone" color={INK} />
+      <Note x={191} y={166} anchor="middle" size={12} italic>
         products and services
       </Note>
 
-      <rect x={280} y={100} width={160} height={40} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={360} y={124} anchor="middle" fill={SIGNAL} size={10}>
-        ORGANIZATION
-      </Key>
+      {/* the buying organization */}
+      <Company1 cx={318} base={170} w={100} h={76} tone={SIGNAL} fill={SIGNAL_TINT} />
 
       {/* produce other goods */}
-      <path d="M444 120 C500 120 510 64 562 64" fill="none" stroke={INK} strokeWidth={1.5} />
-      <path d={head2.right(564, 64)} fill="none" stroke={INK} strokeWidth={1.5} />
-      <Factory1 x={610} y={84} w={80} h={40} />
-      <line x1={654} y1={64} x2={690} y2={64} stroke={INK} strokeWidth={1.5} />
-      <path d={head2.right(692, 64)} fill="none" stroke={INK} strokeWidth={1.5} />
-      {[698, 724, 750].map((x) => (
-        <rect key={x} x={x} y={53} width={22} height={22} fill={PAPER} stroke={INK} strokeWidth={1.25} />
+      <path d="M374 118 C430 118 440 70 500 70" fill="none" stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(502, 70)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <Factory1 x={556} y={92} w={84} h={40} />
+      <line x1={606} y1={72} x2={640} y2={72} stroke={INK} strokeWidth={1.5} />
+      <path d={head2.right(642, 72)} fill="none" stroke={INK} strokeWidth={1.5} />
+      {[666, 706, 746].map((x) => (
+        <Pack1 key={x} x={x} y={88} w={32} h={34} />
       ))}
-      <Key x={670} y={22} anchor="middle" fill={INK} size={10}>
+      <Key x={556} y={124} anchor="middle" fill={INK} size={10.5}>
         PRODUCE OTHER GOODS
       </Key>
 
-      {/* their own operations */}
-      <path d="M444 120 C500 120 510 176 584 176" fill="none" stroke={COUNTER} strokeWidth={1.5} />
-      <path d={head2.right(586, 176)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
-      <Gear1 x={612} y={176} r={16} stroke={COUNTER} />
-      <Gear1 x={646} y={194} r={10} stroke={COUNTER} />
-      <Key x={620} y={230} anchor="middle" fill={COUNTER} size={10}>
-        THEIR OWN OPERATIONS
+      {/* own operations */}
+      <path d="M374 150 C430 150 440 200 500 200" fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <path d={head2.right(502, 200)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <line x1={520} y1={222} x2={668} y2={222} stroke={COUNTER} strokeWidth={2} />
+      <line x1={532} y1={222} x2={532} y2={242} stroke={COUNTER} strokeWidth={1.5} />
+      <line x1={656} y1={222} x2={656} y2={242} stroke={COUNTER} strokeWidth={1.5} />
+      <Desktop x={534} y={174} size={48} weight="duotone" color={COUNTER} />
+      <Printer x={606} y={184} size={38} weight="duotone" color={COUNTER} />
+      <Key x={700} y={206} fill={COUNTER} size={10.5}>
+        OWN
+      </Key>
+      <Key x={700} y={221} fill={COUNTER} size={10.5}>
+        OPERATIONS
       </Key>
     </Frame>
   );
@@ -95,64 +112,54 @@ export function TwoUses() {
 
 export function MarketSplitLane() {
   const calm = [0, -5, -2, -6, -1, -4, -3, -6, -2, -5, -3];
-  const swing = [0, -22, 12, -26, 16, -10, 22, -24, 8, -18, 12];
+  const swing = [0, -24, 12, -26, 16, -10, 22, -24, 8, -18, 12];
   const spark = (base: number, ds: number[]) =>
-    `M${ds.map((d, i) => `${600 + i * 16} ${base + d}`).join("L")}`;
+    `M${ds.map((d, i) => `${572 + i * 18} ${base + d}`).join("L")}`;
   return (
-    <Frame height={284} label="A split lane. Top, B2C: many small buyers, demand from the consumer, steadier over time. Bottom, B2B: fewer, much larger buyers, derived demand that comes down from consumer demand, fluctuating more rapidly.">
-      <Schematic />
-      <Key x={250} y={40} anchor="middle" fill={INK3} size={10}>
-        BUYERS
-      </Key>
-      <Key x={460} y={40} anchor="middle" fill={INK3} size={10}>
-        SOURCE OF DEMAND
-      </Key>
-      <Key x={680} y={40} anchor="middle" fill={INK3} size={10}>
-        DEMAND OVER TIME
-      </Key>
+    <Frame height={250} label="A split lane in three columns. Buyers: the B2C lane holds a crowd of small people, the B2B lane three large company buildings. Source of demand: a consumer in the B2C lane, with an arrow down into a B2B company, labelled derived demand. Demand over time: a gently wavering B2C line above a sharply zigzagging B2B line that fluctuates more rapidly.">
+      <rect x={0} y={134} width={800} height={112} fill={SIGNAL_TINT} />
+      <line x1={0} y1={134} x2={800} y2={134} stroke={RULE} strokeWidth={1.5} />
+      <line x1={266} y1={28} x2={266} y2={240} stroke={RULE} strokeWidth={1} />
+      <line x1={533} y1={28} x2={533} y2={240} stroke={RULE} strokeWidth={1} />
 
-      <line x1={20} y1={56} x2={780} y2={56} stroke={RULE2} strokeWidth={1} />
-      <rect x={20} y={168} width={760} height={96} fill={SIGNAL_TINT} />
-      <line x1={20} y1={160} x2={780} y2={160} stroke={RULE} strokeWidth={1.5} />
-
-      <Display x={64} y={114} anchor="middle" fill={COUNTER} size={22}>
+      <Display x={16} y={90} fill={COUNTER} size={22}>
         B2C
       </Display>
-      <Display x={64} y={226} anchor="middle" fill={SIGNAL} size={22}>
+      <Display x={16} y={198} fill={SIGNAL} size={22}>
         B2B
       </Display>
 
-      {/* buyers */}
-      {Array.from({ length: 30 }, (_, i) => (
-        <circle key={i} cx={212 + (i % 6) * 15} cy={80 + Math.floor(i / 6) * 14} r={3.5} fill={PAPER} stroke={COUNTER} strokeWidth={1.25} />
+      {/* buyers: a crowd of small ones, a few large ones */}
+      {Array.from({ length: 21 }, (_, i) => (
+        <Person2
+          key={i}
+          x={98 + (i % 7) * 22}
+          y={58 + Math.floor(i / 7) * 30}
+          k={0.5}
+          stroke={COUNTER}
+          width={1.1}
+        />
       ))}
-      {[
-        [208, 216, 22],
-        [262, 210, 28],
-        [310, 222, 18],
-      ].map(([x, y, r]) => (
-        <circle key={x} cx={x} cy={y} r={r} fill={PAPER} stroke={SIGNAL} strokeWidth={1.75} />
-      ))}
+      <Company1 cx={100} base={228} w={42} h={48} tone={SIGNAL} />
+      <Company1 cx={163} base={228} w={54} h={62} tone={SIGNAL} />
+      <Company1 cx={224} base={228} w={38} h={40} tone={SIGNAL} />
 
       {/* source of demand */}
-      <Key x={460} y={80} anchor="middle" fill={COUNTER} size={10}>
+      <Key x={400} y={46} anchor="middle" fill={COUNTER} size={10}>
         CONSUMER DEMAND
       </Key>
-      <Person2 x={460} y={138} k={1.3} stroke={COUNTER} />
-      <line x1={460} y1={142} x2={460} y2={196} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d={head2.down(460, 198)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-      <Note x={474} y={183} size={11.5} italic>
-        comes from consumer demand
-      </Note>
-      <rect x={390} y={200} width={140} height={32} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={460} y={220} anchor="middle" fill={SIGNAL} size={10}>
+      <Person2 x={400} y={110} k={1.2} stroke={COUNTER} />
+      <line x1={400} y1={116} x2={400} y2={160} stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head2.down(400, 162)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <Company1 cx={400} base={214} w={56} h={40} tone={SIGNAL} />
+      <Key x={400} y={236} anchor="middle" fill={SIGNAL} size={10}>
         DERIVED DEMAND
       </Key>
 
       {/* demand over time */}
-      <path d={spark(106, calm)} fill="none" stroke={COUNTER} strokeWidth={1.5} strokeLinejoin="round" />
-      <path d={spark(216, swing)} fill="none" stroke={SIGNAL} strokeWidth={1.75} strokeLinejoin="round" />
-      <Note x={680} y={256} anchor="middle" size={12} italic>
+      <path d={spark(92, calm)} fill="none" stroke={COUNTER} strokeWidth={1.5} strokeLinejoin="round" />
+      <path d={spark(192, swing)} fill="none" stroke={SIGNAL} strokeWidth={1.75} strokeLinejoin="round" />
+      <Note x={662} y={238} anchor="middle" size={12} italic>
         fluctuates more rapidly
       </Note>
     </Frame>
@@ -166,22 +173,22 @@ export function MarketSplitLane() {
 export function SignOffSheet() {
   const rows = [110, 142, 174, 206, 238];
   return (
-    <Frame height={300} label="Left: a B2C purchase made by one person. Right: a B2B purchase order that needs sign-off from several decision participants.">
-      <Key x={170} y={36} anchor="middle" fill={INK3} size={10}>
+    <Frame height={286} label="Left, under B2C purchase: one person alone. Right, under B2B purchase: a purchase order with five people listed, four of them already signed and ticked, one still to sign.">
+      <Key x={170} y={36} anchor="middle" fill={INK3} size={12}>
         B2C PURCHASE
       </Key>
-      <line x1={110} y1={230} x2={230} y2={230} stroke={RULE} strokeWidth={1} />
-      <Person2 x={170} y={230} k={1.8} />
+      <line x1={100} y1={250} x2={240} y2={250} stroke={RULE} strokeWidth={1} />
+      <Person2 x={170} y={250} k={2.6} />
 
       <line x1={340} y1={30} x2={340} y2={280} stroke={RULE} strokeWidth={1} />
 
-      <Key x={560} y={36} anchor="middle" fill={SIGNAL} size={10}>
+      <Key x={560} y={36} anchor="middle" fill={SIGNAL} size={12}>
         B2B PURCHASE
       </Key>
       <rect x={400} y={50} width={320} height={220} fill={PAPER} stroke={INK} strokeWidth={1.5} />
       <rect x={400.75} y={50.75} width={318.5} height={33} fill={SIGNAL_TINT} />
       <line x1={400} y1={84} x2={720} y2={84} stroke={SIGNAL} strokeWidth={1} />
-      <Key x={560} y={72} anchor="middle" fill={SIGNAL} size={11}>
+      <Key x={560} y={72} anchor="middle" fill={SIGNAL} size={12}>
         PURCHASE ORDER
       </Key>
       {rows.map((r, i) => {
@@ -200,9 +207,6 @@ export function SignOffSheet() {
           </g>
         );
       })}
-      <Key x={560} y={292} anchor="middle" fill={INK} size={10}>
-        MORE DECISION PARTICIPANTS
-      </Key>
     </Frame>
   );
 }
@@ -257,7 +261,7 @@ export function FormalChecklist() {
   const rows = [
     { y: 76, len: 110 },
     { y: 116, len: 90 },
-    { y: 156, len: 100 },
+    { y: 156, len: 44 },
   ];
   return (
     <Frame width={360} height={226} label="A clipboard checklist with every step ticked and an approved stamp.">
@@ -270,10 +274,10 @@ export function FormalChecklist() {
           <line x1={140} y1={r.y} x2={140 + r.len} y2={r.y} stroke={RULE2} strokeWidth={3} />
         </g>
       ))}
-      <g transform="rotate(-14 234 186)">
-        <circle cx={234} cy={186} r={30} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={2} />
-        <circle cx={234} cy={186} r={24} fill="none" stroke={SIGNAL} strokeWidth={1} />
-        <Key x={234} y={190} anchor="middle" fill={SIGNAL} size={9}>
+      <g transform="rotate(-14 230 172)">
+        <circle cx={230} cy={172} r={34} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={2} />
+        <circle cx={230} cy={172} r={28} fill="none" stroke={SIGNAL} strokeWidth={1} />
+        <Key x={231} y={175} anchor="middle" fill={SIGNAL} size={8}>
           APPROVED
         </Key>
       </g>
@@ -287,19 +291,16 @@ export function FormalChecklist() {
 
 export function Interlock() {
   return (
-    <Frame width={360} height={220} label="Two interlocking rings, buyer and seller, that cannot be pulled apart.">
+    <Frame width={360} height={196} label="Two interlocking rings, one labelled buyer and one labelled seller, linked so they cannot be pulled apart.">
       <circle cx={140} cy={104} r={60} fill="none" stroke={COUNTER} strokeWidth={8} />
       <circle cx={220} cy={104} r={60} fill="none" stroke={SIGNAL} strokeWidth={8} />
       <path d="M165.4 49.6 A60 60 0 0 1 192 74" fill="none" stroke={PAPER} strokeWidth={14} />
       <path d="M165.4 49.6 A60 60 0 0 1 192 74" fill="none" stroke={COUNTER} strokeWidth={8} />
-      <Key x={112} y={108} anchor="middle" fill={COUNTER} size={10}>
+      <Key x={112} y={108} anchor="middle" fill={COUNTER} size={11.5}>
         BUYER
       </Key>
-      <Key x={248} y={108} anchor="middle" fill={SIGNAL} size={10}>
+      <Key x={248} y={108} anchor="middle" fill={SIGNAL} size={11.5}>
         SELLER
-      </Key>
-      <Key x={180} y={204} anchor="middle" fill={INK3} size={10}>
-        HIGHLY DEPENDENT
       </Key>
     </Frame>
   );
@@ -310,56 +311,76 @@ export function Interlock() {
    ========================================================================== */
 
 export function EvCascade() {
-  const tiers = [
-    { label: "CONSUMER DEMAND", tone: COUNTER },
-    { label: "EV MAKERS", tone: INK },
-    { label: "BATTERY MANUFACTURERS", tone: INK },
-    { label: "RAW MATERIAL SUPPLIERS", tone: INK },
-  ];
-  const w = 170;
-  const h = 36;
+  const x0 = [16, 100, 184, 268];
+  const tread = [86, 170, 254, 338];
+  const cx = x0.map((x) => x + 60);
+  const hx = cx[3] + 14;
+  const stairs = `M16 ${tread[0]}${x0
+    .map((x, i) => (i < 3 ? `H${x + 104}V${tread[i + 1]}` : `H${x + 114}`))
+    .join("")}`;
   return (
-    <Frame height={250} label="Consumer demand for electric vehicles drops, and the drop steps down the B2B supply chain to EV makers, battery manufacturers, and raw material suppliers, with open questions at the last two.">
-      {tiers.map((t, i) => {
-        const x = 30 + i * 190;
-        const y = 40 + i * 52;
-        const next = i < tiers.length - 1;
-        const cx = x + 150;
-        return (
-          <g key={t.label}>
-            {next ? (
-              <>
-                <path d={`M${cx} ${y + h} V${y + 52 + h / 2} H${x + 186}`} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-                <path d={head2.right(x + 188, y + 52 + h / 2)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
-              </>
-            ) : null}
-            <rect x={x} y={y} width={w} height={h} fill={i === 0 ? COUNTER_TINT : PAPER} stroke={t.tone} strokeWidth={1.5} />
-            <Key x={x + w / 2} y={y + 22} anchor="middle" fill={t.tone} size={9.5}>
-              {t.label}
-            </Key>
-            {i === 0 ? (
-              <>
-                <circle cx={x + w} cy={y} r={13} fill={SIGNAL} />
-                <path d={`M${x + w} ${y - 6} V${y + 6} M${x + w - 5} ${y + 1} L${x + w} ${y + 6} L${x + w + 5} ${y + 1}`} fill="none" stroke={PAPER} strokeWidth={2} />
-                <Note x={x + 85} y={y + h + 18} anchor="middle" size={11.5} italic>
-                  for electric vehicles
-                </Note>
-              </>
-            ) : null}
-            {i >= 2 ? (
-              <>
-                <circle cx={x + w} cy={y} r={13} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
-                <Display x={x + w} y={y + 6} anchor="middle" fill={SIGNAL} size={16}>
-                  ?
-                </Display>
-              </>
-            ) : null}
-          </g>
-        );
-      })}
-      <Key x={30} y={236} fill={INK3} size={10}>
-        B2B SUPPLY CHAIN
+    <Frame width={400} height={360} label="A staircase stepping down to the right. On the top step, a consumer with a falling-demand badge, labelled consumer demand for electric vehicles. The drop runs down the stairs to an electric car, then to a battery, labelled battery manufacturers, then to a heap of raw material rocks, labelled raw material suppliers. The last two carry question marks.">
+      <path d={stairs} fill="none" stroke={INK3} strokeWidth={1.5} strokeLinejoin="round" />
+      {[0, 1, 2].map((i) => (
+        <g key={i}>
+          <line x1={x0[i] + 104} y1={tread[i] + 4} x2={x0[i] + 104} y2={tread[i + 1] - 4} stroke={SIGNAL} strokeWidth={2.5} />
+          <path d={head2.down(x0[i] + 104, tread[i + 1] - 2)} fill="none" stroke={SIGNAL} strokeWidth={2} />
+        </g>
+      ))}
+
+      {/* consumer demand drops */}
+      <Person2 x={cx[0]} y={tread[0]} k={1.4} stroke={COUNTER} fill={COUNTER_TINT} />
+      <circle cx={cx[0] + 26} cy={tread[0] - 44} r={11} fill={SIGNAL} />
+      <path d={`M${cx[0] + 26} ${tread[0] - 50}V${tread[0] - 38}M${cx[0] + 21} ${tread[0] - 43}L${cx[0] + 26} ${tread[0] - 38}L${cx[0] + 31} ${tread[0] - 43}`} fill="none" stroke={PAPER} strokeWidth={2} />
+      <Key x={132} y={34} fill={COUNTER} size={10}>
+        CONSUMER DEMAND
       </Key>
+      <Note x={132} y={52} size={12} italic>
+        for electric vehicles
+      </Note>
+
+      {/* the car */}
+      <Car x={cx[1] - 28} y={tread[1] - 54} size={56} weight="duotone" color={INK} />
+
+      {/* battery manufacturers */}
+      <BatteryVerticalFull x={cx[2] - 26} y={tread[2] - 56} size={52} weight="duotone" color={INK} />
+      <Key x={172} y={222} anchor="end" fill={INK} size={10}>
+        BATTERY
+      </Key>
+      <Key x={172} y={237} anchor="end" fill={INK} size={10}>
+        MANUFACTURERS
+      </Key>
+
+      {/* raw material suppliers */}
+      <path d={`M${hx - 34} ${tread[3]}L${hx - 20} ${tread[3] - 20}L${hx - 8} ${tread[3] - 30}L${hx + 4} ${tread[3] - 26}L${hx + 20} ${tread[3] - 14}L${hx + 34} ${tread[3]}Z`} fill="var(--paper-3)" stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
+      {[
+        [-16, -10, 6],
+        [2, -13, 6],
+        [-5, -22, 5],
+        [16, -6, 5],
+      ].map(([dx, dy, r]) => (
+        <path
+          key={`${dx}${dy}`}
+          d={`M${hx + dx - r} ${tread[3] + dy + 2}L${hx + dx - 1} ${tread[3] + dy - r}L${hx + dx + r} ${tread[3] + dy - 1}L${hx + dx + 2} ${tread[3] + dy + r - 1}Z`}
+          fill={INK3}
+        />
+      ))}
+      <Key x={256} y={306} anchor="end" fill={INK} size={10}>
+        RAW MATERIAL
+      </Key>
+      <Key x={256} y={321} anchor="end" fill={INK} size={10}>
+        SUPPLIERS
+      </Key>
+
+      {/* open questions */}
+      {[2, 3].map((i) => (
+        <g key={i}>
+          <circle cx={cx[i] + 30} cy={tread[i] - 58} r={12} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+          <Display x={cx[i] + 30} y={tread[i] - 52} anchor="middle" fill={SIGNAL} size={16}>
+            ?
+          </Display>
+        </g>
+      ))}
     </Frame>
   );
 }
@@ -377,12 +398,9 @@ export function BuyingCenterOrg() {
   const lit = new Set(["180:40", "400:-40", "400:40", "620:-40"]);
   const offsets = [-40, 0, 40];
   return (
-    <Frame height={296} label="An organization chart with three departments. People from different departments are pulled together into the buying center, which cuts across the formal structure.">
-      <rect x={330} y={24} width={140} height={30} fill={PAPER} stroke={INK} strokeWidth={1.25} />
-      <Key x={400} y={44} anchor="middle" fill={INK} size={10}>
-        ORGANIZATION
-      </Key>
-      <path d="M400 54 V76 M180 76 H620 M180 76 V96 M400 76 V96 M620 76 V96" fill="none" stroke={INK3} strokeWidth={1.25} />
+    <Frame height={296} label="An organization chart: a company building at the top over three departments, finance, operations and IT, each with three people. People from different departments are pulled together into the buying center, which cuts across the formal structure.">
+      <Company1 cx={400} base={58} w={50} h={38} tone={INK} />
+      <path d="M400 58 V76 M180 76 H620 M180 76 V96 M400 76 V96 M620 76 V96" fill="none" stroke={INK3} strokeWidth={1.25} />
 
       {depts.map((d) => (
         <g key={d.name}>
@@ -425,61 +443,34 @@ export function BuyingCenterOrg() {
    7 · RADIATING — roles within the buying center
    ========================================================================== */
 
-type RoleIcon = "gear" | "ruler" | "contract" | "check" | "gate";
+type RoleIcon = "user" | "influencer" | "buyer" | "decider" | "gatekeeper";
 
-function RoleGlyph({ icon, x, y, tone }: { icon: RoleIcon; x: number; y: number; tone: string }) {
-  if (icon === "gear") return <Gear1 x={x} y={y} r={7} stroke={tone} width={1.5} />;
-  if (icon === "ruler")
-    return (
-      <g>
-        <rect x={x - 12} y={y - 5} width={24} height={10} fill="none" stroke={tone} strokeWidth={1.5} />
-        {[-7, -2, 3, 8].map((o, i) => (
-          <line key={o} x1={x + o} y1={y - 5} x2={x + o} y2={y - (i % 2 ? 1 : -1)} stroke={tone} strokeWidth={1.25} />
-        ))}
-      </g>
-    );
-  if (icon === "contract")
-    return (
-      <g>
-        <rect x={x - 8} y={y - 11} width={16} height={22} fill="none" stroke={tone} strokeWidth={1.5} />
-        <line x1={x - 4} y1={y - 5} x2={x + 4} y2={y - 5} stroke={tone} strokeWidth={1.25} />
-        <line x1={x - 4} y1={y - 1} x2={x + 4} y2={y - 1} stroke={tone} strokeWidth={1.25} />
-        <path d={`M${x - 5} ${y + 6} c 3 -4 4 3 6 0 s 3 2 4 -1`} fill="none" stroke={tone} strokeWidth={1.25} />
-      </g>
-    );
-  if (icon === "check")
-    return <path d={`M${x - 9} ${y} L${x - 3} ${y + 6} L${x + 9} ${y - 7}`} fill="none" stroke={tone} strokeWidth={2.25} />;
-  return (
-    <path
-      d={`M${x - 11} ${y - 9} H${x + 11} L${x + 3} ${y + 1} V${y + 10} H${x - 3} V${y + 1} Z`}
-      fill="none"
-      stroke={tone}
-      strokeWidth={1.5}
-      strokeLinejoin="round"
-    />
-  );
+/** The week's role icons, one noun per buying-center role, centred on (x, y). */
+function RoleGlyph({ icon, x, y, tone, size = 30 }: { icon: RoleIcon; x: number; y: number; tone: string; size?: number }) {
+  const Icon = { user: Wrench, influencer: PencilRuler, buyer: Signature, decider: SealCheck, gatekeeper: Funnel }[icon];
+  return <Icon x={r2(x - size / 2)} y={r2(y - size / 2)} size={size} weight="duotone" color={tone} />;
 }
 
 export function RadiatingRoles({ phase }: { phase: "first" | "second" }) {
   const cx = 400;
   const cy = 250;
   const roles: { a: number; name: string; icon: RoleIcon }[] = [
-    { a: 180, name: "USERS", icon: "gear" },
-    { a: 135, name: "INFLUENCERS", icon: "ruler" },
-    { a: 90, name: "BUYERS", icon: "contract" },
-    { a: 45, name: "DECIDERS", icon: "check" },
-    { a: 0, name: "GATEKEEPERS", icon: "gate" },
+    { a: 180, name: "USERS", icon: "user" },
+    { a: 135, name: "INFLUENCERS", icon: "influencer" },
+    { a: 90, name: "BUYERS", icon: "buyer" },
+    { a: 45, name: "DECIDERS", icon: "decider" },
+    { a: 0, name: "GATEKEEPERS", icon: "gatekeeper" },
   ];
   const label =
     phase === "first"
-      ? "Roles radiate from the buying center: users, influencers, and buyers are shown; two further roles are still to come."
-      : "Roles radiate from the buying center: users, influencers, and buyers, now joined by deciders and gatekeepers.";
+      ? "Five spokes radiate from the buying center. Three are lit, each a circle with its icon: users (a wrench), influencers (a pencil and ruler) and buyers (a signature). Two more circles on the right are empty and dashed, still to come."
+      : "Five spokes radiate from the buying center. Users (a wrench), influencers (a pencil and ruler) and buyers (a signature) are drawn in grey; deciders (a seal with a check) and gatekeepers (a funnel) are lit.";
   return (
     <Frame height={300} label={label}>
       {roles.map((r, i) => {
         const t = (r.a * Math.PI) / 180;
-        const x = cx + 260 * Math.cos(t);
-        const y = cy - 180 * Math.sin(t);
+        const x = r2(cx + 260 * Math.cos(t));
+        const y = r2(cy - 180 * Math.sin(t));
         const state = phase === "first" ? (i < 3 ? "lit" : "future") : i < 3 ? "known" : "lit";
         const tone = state === "lit" ? SIGNAL : state === "known" ? INK3 : RULE2;
         const len = Math.hypot(x - cx, y - cy);
@@ -487,17 +478,17 @@ export function RadiatingRoles({ phase }: { phase: "first" | "second" }) {
         const uy = (y - cy) / len;
         const keyProps =
           r.a === 90
-            ? { x, y: y - 34, anchor: "middle" as const }
+            ? { x, y: y - 36, anchor: "middle" as const }
             : r.a > 90
-              ? { x: x - 34, y: y + 4, anchor: "end" as const }
-              : { x: x + 34, y: y + 4, anchor: "start" as const };
+              ? { x: x - 36, y: y + 4, anchor: "end" as const }
+              : { x: x + 36, y: y + 4, anchor: "start" as const };
         return (
           <g key={r.name}>
             <line
-              x1={cx + ux * 38}
-              y1={cy + uy * 38}
-              x2={x - ux * 26}
-              y2={y - uy * 26}
+              x1={r2(cx + ux * 38)}
+              y1={r2(cy + uy * 38)}
+              x2={r2(x - ux * 30)}
+              y2={r2(y - uy * 30)}
               stroke={tone}
               strokeWidth={state === "lit" ? 1.75 : 1}
               strokeDasharray={state === "future" ? "4 5" : undefined}
@@ -505,7 +496,7 @@ export function RadiatingRoles({ phase }: { phase: "first" | "second" }) {
             <circle
               cx={x}
               cy={y}
-              r={24}
+              r={26}
               fill={state === "lit" ? SIGNAL_TINT : PAPER}
               stroke={tone}
               strokeWidth={state === "lit" ? 1.75 : 1.25}
@@ -537,39 +528,46 @@ export function RadiatingRoles({ phase }: { phase: "first" | "second" }) {
    8 · ROLE MAP — one person, many roles; many people, one role
    ========================================================================== */
 
+/** A role on the role map: its circle and icon, with the role's name beside it. */
+function RoleNode({ x, y, icon, name, tone, fill }: { x: number; y: number; icon: RoleIcon; name: string; tone: string; fill: string }) {
+  return (
+    <g>
+      <circle cx={x} cy={y} r={24} fill={fill} stroke={tone} strokeWidth={1.75} />
+      <RoleGlyph icon={icon} x={x} y={y} tone={tone} size={28} />
+      <Key x={x + 34} y={y + 4} fill={tone} size={10.5}>
+        {name}
+      </Key>
+    </g>
+  );
+}
+
+/** A tie from (x1, y1) to the rim of the role circle at (x2, y2). */
+function Tie({ x1, y1, x2, y2 }: { x1: number; y1: number; x2: number; y2: number }) {
+  const len = Math.hypot(x2 - x1, y2 - y1);
+  const k = (len - 28) / len;
+  return <line x1={x1} y1={y1} x2={r2(x1 + (x2 - x1) * k)} y2={r2(y1 + (y2 - y1) * k)} stroke={INK3} strokeWidth={1.5} />;
+}
+
 export function RoleMapping() {
   return (
-    <Frame height={210} label="Left: one person linked to two roles, decider and buyer. Right: three people linked to the same role, influencer.">
-      <Person2 x={110} y={168} k={1.8} />
-      <line x1={132} y1={138} x2={218} y2={84} stroke={INK3} strokeWidth={1.25} />
-      <line x1={132} y1={138} x2={218} y2={136} stroke={INK3} strokeWidth={1.25} />
-      <rect x={220} y={70} width={130} height={28} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <Key x={285} y={88} anchor="middle" fill={SIGNAL} size={10}>
-        DECIDER
-      </Key>
-      <rect x={220} y={122} width={130} height={28} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <Key x={285} y={140} anchor="middle" fill={INK} size={10}>
-        BUYER
-      </Key>
-      <Key x={200} y={196} anchor="middle" fill={INK} size={10}>
-        ONE PERSON, MULTIPLE ROLES
-      </Key>
+    <Frame width={400} height={320} label="Top: one person tied to two roles, decider (a seal with a check) and buyer (a signature). Bottom: three people tied to the same role, influencer (a pencil and ruler).">
+      {/* one person, two roles */}
+      <Person2 x={84} y={132} k={1.8} />
+      <Tie x1={106} y1={94} x2={236} y2={48} />
+      <Tie x1={106} y1={100} x2={236} y2={118} />
+      <RoleNode x={236} y={48} icon="decider" name="DECIDER" tone={SIGNAL} fill={SIGNAL_TINT} />
+      <RoleNode x={236} y={118} icon="buyer" name="BUYER" tone={SIGNAL} fill={SIGNAL_TINT} />
 
-      <line x1={400} y1={30} x2={400} y2={180} stroke={RULE} strokeWidth={1} />
+      <line x1={20} y1={164} x2={380} y2={164} stroke={RULE} strokeWidth={1} />
 
-      {[70, 120, 170].map((feet) => (
+      {/* three people, one role */}
+      {[216, 260, 304].map((feet) => (
         <g key={feet}>
-          <Person2 x={480} y={feet} k={1} />
-          <line x1={496} y1={feet - 17} x2={598} y2={120} stroke={INK3} strokeWidth={1.25} />
+          <Person2 x={84} y={feet} k={1} />
+          <Tie x1={100} y1={feet - 16} x2={236} y2={244} />
         </g>
       ))}
-      <rect x={600} y={106} width={130} height={28} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
-      <Key x={665} y={124} anchor="middle" fill={COUNTER} size={10}>
-        INFLUENCER
-      </Key>
-      <Key x={600} y={196} anchor="middle" fill={INK} size={10}>
-        MULTIPLE PEOPLE, SAME ROLE
-      </Key>
+      <RoleNode x={236} y={244} icon="influencer" name="INFLUENCER" tone={COUNTER} fill={COUNTER_TINT} />
     </Frame>
   );
 }
@@ -580,56 +578,40 @@ export function RoleMapping() {
 
 export function BuyingSituations() {
   const panels = [
-    { cx: 140, name: "STRAIGHT REBUY", tone: INK, note: "reorders without modifications" },
-    { cx: 400, name: "MODIFIED REBUY", tone: COUNTER, note: "modifies specs, prices, or suppliers" },
-    { cx: 660, name: "NEW TASK", tone: SIGNAL, note: "purchases for the first time" },
+    { cx: 133, tone: INK },
+    { cx: 400, tone: COUNTER },
+    { cx: 667, tone: SIGNAL },
   ];
   return (
-    <Frame height={240} label="Three panels. Straight rebuy: the same order loops back to the same supplier. Modified rebuy: the loop is edited. New task: a single first arrow to an unknown supplier.">
-      <line x1={270} y1={30} x2={270} y2={210} stroke={RULE} strokeWidth={1} />
-      <line x1={530} y1={30} x2={530} y2={210} stroke={RULE} strokeWidth={1} />
+    <Frame height={170} label="Three panels in columns. Straight rebuy: a buyer and a supplier's factory joined by an order loop that goes round unchanged. Modified rebuy: the same loop with a pencil on it, editing the order. New task: a buyer's single first arrow to a dashed, unknown supplier marked with a question mark.">
+      <line x1={266} y1={16} x2={266} y2={154} stroke={RULE} strokeWidth={1} />
+      <line x1={533} y1={16} x2={533} y2={154} stroke={RULE} strokeWidth={1} />
       {panels.map((p, i) => {
         const { cx, tone } = p;
         return (
-          <g key={p.name}>
-            <Key x={cx} y={40} anchor="middle" fill={tone} size={11}>
-              {p.name}
-            </Key>
-            <Person2 x={cx - 70} y={150} k={1.2} stroke={tone} />
+          <g key={cx}>
+            <Person2 x={cx - 70} y={116} k={1.3} stroke={tone} fill={i === 2 ? SIGNAL_TINT : PAPER} />
             {i < 2 ? (
               <>
-                <Factory1 x={cx + 50} y={148} stroke={tone} />
-                <path d={`M${cx - 52} 112 Q${cx - 10} 70 ${cx + 16} 106`} fill="none" stroke={tone} strokeWidth={1.5} />
-                <path d={headAlong1(cx + 18, 108, 26, 36)} fill="none" stroke={tone} strokeWidth={1.5} />
-                <path d={`M${cx + 18} 156 Q${cx - 10} 196 ${cx - 50} 158`} fill="none" stroke={tone} strokeWidth={1.5} />
-                <path d={headAlong1(cx - 52, 156, -40, -38)} fill="none" stroke={tone} strokeWidth={1.5} />
+                <Factory1 x={cx + 56} y={114} stroke={tone} />
+                <path d={`M${cx - 50} 70 Q${cx - 12} 26 ${cx + 18} 82`} fill="none" stroke={tone} strokeWidth={1.5} />
+                <path d={headAlong1(cx + 19, 84, 16, 34)} fill="none" stroke={tone} strokeWidth={1.5} />
+                <path d={`M${cx + 40} 124 Q${cx} 162 ${cx - 48} 126`} fill="none" stroke={tone} strokeWidth={1.5} />
+                <path d={headAlong1(cx - 50, 124, -30, -16)} fill="none" stroke={tone} strokeWidth={1.5} />
               </>
             ) : (
               <>
-                <line x1={cx - 44} y1={132} x2={cx + 14} y2={132} stroke={tone} strokeWidth={1.5} />
-                <path d={head2.right(cx + 16, 132)} fill="none" stroke={tone} strokeWidth={1.5} />
-                <rect x={cx + 22} y={112} width={56} height={40} fill={SIGNAL_TINT} stroke={tone} strokeWidth={1.5} strokeDasharray="4 4" />
-                <Display x={cx + 50} y={141} anchor="middle" fill={tone} size={22}>
+                <line x1={cx - 44} y1={98} x2={cx + 14} y2={98} stroke={tone} strokeWidth={1.5} />
+                <path d={head2.right(cx + 16, 98)} fill="none" stroke={tone} strokeWidth={1.5} />
+                <rect x={cx + 24} y={74} width={60} height={46} fill={SIGNAL_TINT} stroke={tone} strokeWidth={1.5} strokeDasharray="4 4" />
+                <Display x={cx + 54} y={106} anchor="middle" fill={tone} size={24}>
                   ?
                 </Display>
-                {[
-                  [cx + 88, 104, cx + 96, 96],
-                  [cx + 92, 124, cx + 102, 124],
-                  [cx + 88, 144, cx + 96, 152],
-                ].map(([x1, y1, x2, y2]) => (
-                  <line key={`${x1}-${y1}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke={tone} strokeWidth={1.5} />
-                ))}
               </>
             )}
             {i === 1 ? (
-              <g transform={`rotate(-40 ${cx - 14} 70)`}>
-                <rect x={cx - 30} y={66} width={26} height={8} fill={PAPER} stroke={tone} strokeWidth={1.5} />
-                <path d={`M${cx - 4} 66 L${cx + 6} 70 L${cx - 4} 74 Z`} fill={tone} />
-              </g>
+              <PencilSimple x={cx - 16} y={16} size={32} weight="duotone" color={tone} />
             ) : null}
-            <Note x={cx} y={222} anchor="middle" size={12} italic>
-              {p.note}
-            </Note>
           </g>
         );
       })}
@@ -642,41 +624,45 @@ export function BuyingSituations() {
    ========================================================================== */
 
 export function PowerPodium() {
-  const chips = ["USERS", "INFLUENCERS", "BUYERS", "DECIDERS", "GATEKEEPERS"];
+  const roles: { name: string; icon: RoleIcon }[] = [
+    { name: "USERS", icon: "user" },
+    { name: "INFLUENCERS", icon: "influencer" },
+    { name: "BUYERS", icon: "buyer" },
+    { name: "DECIDERS", icon: "decider" },
+    { name: "GATEKEEPERS", icon: "gatekeeper" },
+  ];
   return (
-    <Frame height={248} label="An empty three-step podium with question marks, and the five buying-center roles waiting below to be ranked by power.">
-      <Key x={400} y={32} anchor="middle" fill={INK3} size={10}>
-        WHO WIELDS THE MOST ACTUAL POWER?
-      </Key>
-      <rect x={350} y={90} width={100} height={80} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <rect x={250} y={120} width={100} height={50} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <rect x={450} y={140} width={100} height={30} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <Display x={400} y={142} anchor="middle" fill={SIGNAL} size={30}>
+    <Frame height={250} label="An empty three-step podium with a question mark over each step, and the five buying-center roles waiting in a row below, each a circle with its icon: users, influencers, buyers, deciders and gatekeepers.">
+      <rect x={350} y={62} width={100} height={80} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
+      <rect x={250} y={92} width={100} height={50} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <rect x={450} y={112} width={100} height={30} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <Display x={400} y={114} anchor="middle" fill={SIGNAL} size={30}>
         1
       </Display>
-      <Display x={300} y={156} anchor="middle" fill={INK3} size={22}>
+      <Display x={300} y={128} anchor="middle" fill={INK3} size={22}>
         2
       </Display>
-      <Display x={500} y={163} anchor="middle" fill={INK3} size={18}>
+      <Display x={500} y={135} anchor="middle" fill={INK3} size={18}>
         3
       </Display>
-      <Display x={400} y={80} anchor="middle" fill={SIGNAL} size={28}>
+      <Display x={400} y={50} anchor="middle" fill={SIGNAL} size={28}>
         ?
       </Display>
-      <Display x={300} y={110} anchor="middle" fill={INK3} size={22}>
+      <Display x={300} y={82} anchor="middle" fill={INK3} size={22}>
         ?
       </Display>
-      <Display x={500} y={130} anchor="middle" fill={INK3} size={20}>
+      <Display x={500} y={102} anchor="middle" fill={INK3} size={20}>
         ?
       </Display>
-      <line x1={200} y1={170} x2={600} y2={170} stroke={RULE} strokeWidth={1} />
-      {chips.map((c, i) => {
-        const x = 120 + i * 140;
+      <line x1={200} y1={142} x2={600} y2={142} stroke={RULE} strokeWidth={1} />
+      {roles.map((r, i) => {
+        const x = 100 + i * 150;
         return (
-          <g key={c}>
-            <rect x={x - 58} y={200} width={116} height={28} fill={PAPER} stroke={INK3} strokeWidth={1.25} />
-            <Key x={x} y={218} anchor="middle" fill={INK} size={9.5}>
-              {c}
+          <g key={r.name}>
+            <circle cx={x} cy={188} r={22} fill={PAPER} stroke={INK3} strokeWidth={1.5} />
+            <RoleGlyph icon={r.icon} x={x} y={188} tone={INK} size={26} />
+            <Key x={x} y={236} anchor="middle" fill={INK} size={10}>
+              {r.name}
             </Key>
           </g>
         );
@@ -695,17 +681,18 @@ export function RelationshipRope() {
     const y = (x: number) => 118 + 9 * Math.sin(x / 32 + i * 1.05);
     const pts: string[] = [];
     for (let x = x0; x <= 740; x += 6) pts.push(`${x} ${y(x).toFixed(1)}`);
-    return { i, x0, y0: y(x0), d: `M${pts.join("L")}` };
+    return { i, x0, y0: r2(y(x0)), d: `M${pts.join("L")}` };
   });
   return (
-    <Frame height={236} label="A single thread starting at the first transaction gains strands with each new transaction until it becomes a thick long term partnership, resting on a foundation of trust and mutual benefit.">
+    <Frame height={176} label="A single thread starting at the first transaction gains strands with each new transaction until it becomes a thick long term partnership, resting on a foundation of trust and mutual benefit.">
+      <g transform="translate(0 -54)">
       {[270, 440, 610].map((x) => (
         <line key={x} x1={x} y1={134} x2={x} y2={184} stroke={RULE2} strokeWidth={1} />
       ))}
       {strands.map((s) => (
         <path key={s.i} d={s.d} fill="none" stroke={s.i === 0 ? INK : SIGNAL} strokeWidth={1.5} />
       ))}
-      <path d={head2.right(756, 118)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+      <path d={head2.right(750, 118)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
       {strands.map((s) => (
         <circle key={`d${s.i}`} cx={s.x0} cy={s.y0} r={4.5} fill={s.i === 0 ? INK : PAPER} stroke={s.i === 0 ? INK : SIGNAL} strokeWidth={1.5} />
       ))}
@@ -724,6 +711,7 @@ export function RelationshipRope() {
       <Key x={571} y={207} anchor="middle" fill={COUNTER} size={11}>
         MUTUAL BENEFIT
       </Key>
+      </g>
     </Frame>
   );
 }
@@ -737,7 +725,6 @@ export function LifetimeBracket() {
   const base = 190;
   return (
     <Frame height={230} label="A row of purchases over time. One bar alone is a single transaction; a bracket over all of them is customer lifetime value.">
-      <Schematic />
       <line x1={80} y1={56} x2={726} y2={56} stroke={SIGNAL} strokeWidth={1.5} />
       <line x1={80} y1={56} x2={80} y2={66} stroke={SIGNAL} strokeWidth={1.5} />
       <line x1={726} y1={56} x2={726} y2={66} stroke={SIGNAL} strokeWidth={1.5} />
@@ -774,22 +761,20 @@ export function LifetimeBracket() {
 
 export function StrategicPartners() {
   return (
-    <Frame width={400} height={234} label="Top: a seller and a customer kept apart, joined by a single arrow. Bottom: the two circles overlap as strategic partners.">
-      <circle cx={110} cy={50} r={24} fill={PAPER} stroke={INK3} strokeWidth={1.5} />
-      <circle cx={290} cy={50} r={24} fill={PAPER} stroke={INK3} strokeWidth={1.5} />
-      <line x1={136} y1={50} x2={262} y2={50} stroke={INK3} strokeWidth={1.25} />
-      <path d={head2.right(264, 50)} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={110} y={92} anchor="middle" fill={INK3} size={10}>
-        SELLER
-      </Key>
-      <Key x={290} y={92} anchor="middle" fill={INK3} size={10}>
-        CUSTOMER
-      </Key>
-      <line x1={200} y1={98} x2={200} y2={114} stroke={INK3} strokeWidth={1.25} />
-      <path d={head2.down(200, 116)} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <circle cx={172} cy={162} r={40} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <circle cx={228} cy={162} r={40} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
-      <Key x={200} y={224} anchor="middle" fill={SIGNAL} size={10.5}>
+    <Frame width={400} height={240} label="Top: a seller's building and a customer's building far apart, joined by a single one-way arrow. An arrow leads down to the same two buildings standing side by side, lit, under a handshake, labelled strategic partners.">
+      {/* before: a seller and a customer kept apart */}
+      <Company1 cx={90} base={72} w={52} h={38} tone={INK3} />
+      <Company1 cx={310} base={72} w={52} h={38} tone={INK3} />
+      <line x1={126} y1={52} x2={272} y2={52} stroke={INK3} strokeWidth={1.5} />
+      <path d={head2.right(274, 52)} fill="none" stroke={INK3} strokeWidth={1.5} />
+      <line x1={200} y1={78} x2={200} y2={88} stroke={INK3} strokeWidth={1.5} />
+      <path d={head2.down(200, 90)} fill="none" stroke={INK3} strokeWidth={1.5} />
+
+      {/* after: strategic partners */}
+      <Handshake x={177} y={96} size={46} weight="duotone" color={SIGNAL} />
+      <Company1 cx={152} base={212} w={70} h={52} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Company1 cx={248} base={212} w={70} h={52} tone={COUNTER} fill={COUNTER_TINT} />
+      <Key x={200} y={234} anchor="middle" fill={SIGNAL} size={12}>
         STRATEGIC PARTNERS
       </Key>
     </Frame>
@@ -801,32 +786,35 @@ export function StrategicPartners() {
    ========================================================================== */
 
 export function DeepUnderstanding() {
-  const lx = 236;
-  const ly = 140;
-  const dots: [number, number][] = [];
-  for (let x = 120; x <= 290; x += 17)
-    for (let y = 108; y <= 172; y += 16) if (Math.hypot(x - lx, y - ly) > 40) dots.push([x, y]);
+  const lx = 238;
+  const ly = 156;
   return (
-    <Frame width={400} height={220} label="An industry box containing the customer's business, with a magnifying lens looking closely into it.">
+    <Frame width={400} height={220} label="A box labelled industry holding a row of small grey company buildings and, in the middle, the larger customer's business. A magnifying lens held over the customer's building shows a bar chart of what is inside.">
       <rect x={24} y={20} width={352} height={186} fill="none" stroke={INK3} strokeWidth={1.25} />
-      <Key x={40} y={42} fill={INK3} size={10}>
+      <Key x={40} y={44} fill={INK3} size={12}>
         INDUSTRY
       </Key>
-      <rect x={96} y={64} width={208} height={120} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
-      <Key x={112} y={86} fill={COUNTER} size={10}>
+      <line x1={40} y1={188} x2={360} y2={188} stroke={RULE2} strokeWidth={1} />
+      {[
+        [66, 34, 28],
+        [112, 30, 22],
+        [304, 32, 30],
+        [348, 26, 20],
+      ].map(([cx, w, h]) => (
+        <Company1 key={cx} cx={cx} base={188} w={w} h={h} tone={INK3} />
+      ))}
+      <Company1 cx={200} base={188} w={92} h={70} tone={COUNTER} fill={COUNTER_TINT} />
+      <Key x={200} y={96} anchor="middle" fill={COUNTER} size={12}>
         CUSTOMER&apos;S BUSINESS
       </Key>
-      {dots.map(([x, y]) => (
-        <circle key={`${x}-${y}`} cx={x} cy={y} r={1.8} fill={COUNTER} opacity={0.5} />
-      ))}
-      <line x1={259} y1={163} x2={292} y2={196} stroke={SIGNAL} strokeWidth={5} strokeLinecap="round" />
-      <circle cx={lx} cy={ly} r={32} fill={PAPER} stroke={SIGNAL} strokeWidth={2.5} />
+      <line x1={260} y1={178} x2={282} y2={198} stroke={SIGNAL} strokeWidth={5} strokeLinecap="round" />
+      <circle cx={lx} cy={ly} r={30} fill={PAPER} stroke={SIGNAL} strokeWidth={2.5} />
       {[
-        [222, 16],
-        [234, 26],
-        [246, 12],
+        [224, 14],
+        [236, 24],
+        [248, 10],
       ].map(([x, h]) => (
-        <rect key={x} x={x - 4} y={154 - h} width={8} height={h} fill={SIGNAL} />
+        <rect key={x} x={x - 4} y={170 - h} width={8} height={h} fill={SIGNAL} />
       ))}
     </Frame>
   );
@@ -847,15 +835,15 @@ export function KamCore() {
     { t: 90, name: "EXCEPTIONAL SERVICE" },
     { t: 180, name: "LONG TERM RELATIONSHIP" },
   ];
-  const pw = 196;
-  const ph = 32;
+  const pw = 212;
+  const ph = 34;
   return (
     <Frame height={316} label="The Key Account Management process as a loop around a core of the most valuable customers: dedicated team, customized solutions, exceptional service, and long term relationship, repeating.">
       <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="none" stroke={INK3} strokeWidth={1.5} />
       {[-45, 45, 135, 225].map((deg) => {
         const t = (deg * Math.PI) / 180;
-        const x = cx + rx * Math.cos(t);
-        const y = cy + ry * Math.sin(t);
+        const x = r2(cx + rx * Math.cos(t));
+        const y = r2(cy + ry * Math.sin(t));
         return <path key={deg} d={headAlong1(x, y, -rx * Math.sin(t), ry * Math.cos(t), 10)} fill="none" stroke={INK3} strokeWidth={1.75} />;
       })}
       {[
@@ -868,18 +856,18 @@ export function KamCore() {
       ))}
       <circle cx={cx} cy={cy} r={60} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
       {["MOST", "VALUABLE", "CUSTOMERS"].map((w, i) => (
-        <Key key={w} x={cx} y={cy - 10 + i * 16} anchor="middle" fill={SIGNAL} size={10}>
+        <Key key={w} x={cx} y={cy - 10 + i * 16} anchor="middle" fill={SIGNAL} size={11}>
           {w}
         </Key>
       ))}
       {stages.map((s) => {
         const t = (s.t * Math.PI) / 180;
-        const x = cx + rx * Math.cos(t);
-        const y = cy + ry * Math.sin(t);
+        const x = r2(cx + rx * Math.cos(t));
+        const y = r2(cy + ry * Math.sin(t));
         return (
           <g key={s.name}>
             <rect x={x - pw / 2} y={y - ph / 2} width={pw} height={ph} rx={16} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-            <Key x={x} y={y + 4} anchor="middle" fill={INK} size={10}>
+            <Key x={x} y={y + 4} anchor="middle" fill={INK} size={11}>
               {s.name}
             </Key>
           </g>
@@ -895,23 +883,21 @@ export function KamCore() {
 
 export function KeyAccountShare() {
   return (
-    <Frame width={400} height={196} label="Two bars. Key accounts are a small share of customers but a large share of revenue and profit.">
-      <Schematic x={392} />
-      <Key x={20} y={40} fill={INK} size={10}>
+    <Frame width={400} height={176} label="Two bars. Key accounts fill a small share of the customers bar but a large share of the revenue and profit bar, labelled key accounts, with a dashed line joining the two shares.">
+      <Key x={20} y={40} fill={INK} size={12}>
         CUSTOMERS
       </Key>
       <rect x={20} y={50} width={360} height={26} fill={PAPER} stroke={INK3} strokeWidth={1.25} />
       <rect x={20} y={50} width={50} height={26} fill={SIGNAL} />
-      <Key x={20} y={118} fill={INK} size={10}>
+      <Key x={20} y={130} fill={INK} size={12}>
         REVENUE AND PROFIT
       </Key>
-      <rect x={20} y={128} width={360} height={26} fill={PAPER} stroke={INK3} strokeWidth={1.25} />
-      <rect x={20} y={128} width={260} height={26} fill={SIGNAL} />
-      <line x1={70} y1={76} x2={280} y2={128} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="3 4" />
-      <rect x={20} y={172} width={10} height={10} fill={SIGNAL} />
-      <Key x={38} y={181} fill={SIGNAL} size={10}>
+      <rect x={20} y={140} width={360} height={28} fill={PAPER} stroke={INK3} strokeWidth={1.25} />
+      <rect x={20} y={140} width={260} height={28} fill={SIGNAL} />
+      <Key x={32} y={159} fill={PAPER} size={11}>
         KEY ACCOUNTS
       </Key>
+      <line x1={70} y1={76} x2={280} y2={140} stroke={SIGNAL} strokeWidth={1.25} strokeDasharray="3 4" />
     </Frame>
   );
 }
@@ -920,87 +906,80 @@ export function KeyAccountShare() {
    17 · BENEFIT PLATES — retention, barriers, joint innovation (400 wide)
    ========================================================================== */
 
-export function RetentionLoop() {
-  const cx = 200;
-  const cy = 85;
-  const at = (deg: number) => {
-    const t = (deg * Math.PI) / 180;
-    return [cx + 150 * Math.cos(t), cy + 55 * Math.sin(t)] as const;
-  };
-  const stops = [200, 245, 290, 335, 20];
-  const [ax, ay] = at(40);
-  const t40 = (40 * Math.PI) / 180;
+/**
+ * The week's supplier and business customer in a strong relationship: the
+ * seller's building (lit) beside the customer's, a handshake above them.
+ * Centred on cx, standing on base; about 150 wide and 106 tall.
+ */
+function Partners({ cx, base }: { cx: number; base: number }) {
   return (
-    <Frame width={400} height={160} label="A customer returning around a loop again and again, labelled retention and loyalty.">
-      <ellipse cx={cx} cy={cy} rx={150} ry={55} fill="none" stroke={INK3} strokeWidth={1.25} />
-      {stops.map((d, i) => {
-        const [x, y] = at(d);
-        return <circle key={d} cx={x} cy={y} r={7} fill={SIGNAL} opacity={0.2 + i * 0.2} />;
-      })}
-      <path d={headAlong1(ax, ay, -150 * Math.sin(t40), 55 * Math.cos(t40), 10)} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
-      <Key x={cx} y={cy - 2} anchor="middle" fill={COUNTER} size={11}>
-        RETENTION
-      </Key>
-      <Key x={cx} y={cy + 16} anchor="middle" fill={COUNTER} size={11}>
-        AND LOYALTY
-      </Key>
+    <g>
+      <Company1 cx={cx - 38} base={base} w={58} h={46} tone={SIGNAL} fill={SIGNAL_TINT} />
+      <Company1 cx={cx + 38} base={base} w={58} h={46} tone={COUNTER} fill={COUNTER_TINT} />
+      <Handshake x={cx - 19} y={base - 104} size={38} weight="duotone" color={SIGNAL} />
+    </g>
+  );
+}
+
+export function RetentionLoop() {
+  const days = [224, 262, 300, 338, 376];
+  return (
+    <Frame width={400} height={168} label="A supplier and its business customer side by side under a handshake. A time line runs from them to the right, with a ticked calendar page for each period, the customer staying on every one.">
+      <Partners cx={96} base={140} />
+      <line x1={180} y1={140} x2={386} y2={140} stroke={COUNTER} strokeWidth={1.5} />
+      <path d={head2.right(388, 140)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      {days.map((x) => (
+        <CalendarCheck key={x} x={x - 15} y={100} size={30} weight="duotone" color={COUNTER} />
+      ))}
     </Frame>
   );
 }
 
 export function BarrierWall() {
+  const bricks: [number, number, number][] = [];
+  for (let r = 0; r < 7; r++) {
+    const y = 26 + r * 16;
+    if (r % 2 === 0) bricks.push([200, y, 24]);
+    else {
+      bricks.push([200, y, 12]);
+      bricks.push([212, y, 12]);
+    }
+  }
   return (
-    <Frame width={400} height={160} label="A seller and customer overlapping as a strong relationship, protected by a wall that stops competitors' arrows.">
-      <circle cx={80} cy={80} r={26} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <circle cx={118} cy={80} r={26} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
-      <Key x={100} y={146} anchor="middle" fill={SIGNAL} size={9.5}>
-        STRONG RELATIONSHIP
-      </Key>
-      <Key x={219} y={20} anchor="middle" fill={INK} size={9.5}>
-        BARRIER
-      </Key>
-      <rect x={212} y={28} width={14} height={104} fill={INK} />
-      {[50, 80, 110].map((y) => (
+    <Frame width={400} height={168} label="A supplier and its business customer under a handshake on the left, behind a brick wall. On the right, two grey competitor buildings send arrows that stop at the wall.">
+      <g transform="translate(0 12)">
+      <Partners cx={92} base={138} />
+      {bricks.map(([x, y, w]) => (
+        <rect key={`${x}-${y}`} x={x} y={y} width={w} height={16} fill="var(--paper-3)" stroke={INK} strokeWidth={1.25} />
+      ))}
+      <Company1 cx={350} base={66} w={46} h={34} tone={INK3} />
+      <Company1 cx={350} base={138} w={46} h={34} tone={INK3} />
+      {[52, 118].map((y) => (
         <g key={y}>
-          <line x1={372} y1={y} x2={236} y2={y} stroke={INK3} strokeWidth={1.25} />
-          <path d={head2.left(234, y)} fill="none" stroke={INK3} strokeWidth={1.25} />
+          <line x1={320} y1={y} x2={234} y2={y} stroke={INK3} strokeWidth={1.5} />
+          <path d={head2.left(232, y)} fill="none" stroke={INK3} strokeWidth={1.5} />
         </g>
       ))}
-      <Key x={304} y={146} anchor="middle" fill={INK3} size={9.5}>
-        COMPETITORS
-      </Key>
+      </g>
     </Frame>
   );
 }
 
 export function JointInnovation() {
   return (
-    <Frame width={400} height={160} label="Two overlapping circles with a spark where they meet, labelled joint innovation, beside a cost line stepping down, labelled cost reductions.">
-      <circle cx={80} cy={78} r={36} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <circle cx={126} cy={78} r={36} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
-      <circle cx={103} cy={78} r={3} fill={INK} />
-      {Array.from({ length: 8 }, (_, i) => {
-        const t = (i * 45 * Math.PI) / 180;
-        return (
-          <line
-            key={i}
-            x1={103 + 6 * Math.cos(t)}
-            y1={78 + 6 * Math.sin(t)}
-            x2={103 + 12 * Math.cos(t)}
-            y2={78 + 12 * Math.sin(t)}
-            stroke={INK}
-            strokeWidth={1.5}
-          />
-        );
-      })}
-      <Key x={103} y={142} anchor="middle" fill={SIGNAL} size={9.5}>
-        JOINT INNOVATION
-      </Key>
-      <path d="M220 40 H260 V70 H300 V100 H340 V116" fill="none" stroke={COUNTER} strokeWidth={1.75} strokeLinejoin="round" />
-      <path d={head2.down(340, 122)} fill="none" stroke={COUNTER} strokeWidth={1.75} />
-      <Key x={290} y={142} anchor="middle" fill={COUNTER} size={9.5}>
-        COST REDUCTIONS
-      </Key>
+    <Frame width={400} height={168} label="A supplier and its business customer side by side, with a lit lightbulb over their handshake. On the right, three stacks of coins get shorter step by step, with an arrow pointing down.">
+      <Partners cx={96} base={160} />
+      <Lightbulb x={77} y={8} size={38} weight="duotone" color={SIGNAL} />
+      <line x1={196} y1={160} x2={380} y2={160} stroke={RULE2} strokeWidth={1} />
+      {[
+        [236, 8],
+        [294, 5],
+        [352, 2],
+      ].map(([x, n]) => (
+        <Coins2 key={x} x={x} y={160} n={n} w={44} tone={COUNTER} />
+      ))}
+      <path d="M232 80 L346 120" fill="none" stroke={COUNTER} strokeWidth={1.5} />
+      <path d={headAlong1(348, 121, 114, 40)} fill="none" stroke={COUNTER} strokeWidth={1.5} />
     </Frame>
   );
 }
@@ -1011,35 +990,33 @@ export function JointInnovation() {
 
 export function DependenceRisk() {
   return (
-    <Frame height={250} label="Left: a supplier platform tilting on a single cracked column, one key account. Right: the same platform over dashed, undecided columns with a question of how to mitigate these risks.">
-      <line x1={80} y1={210} x2={320} y2={210} stroke={RULE} strokeWidth={1} />
-      <rect x={180} y={98} width={40} height={112} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
-      <path d="M180 140 L192 146 L186 154 L200 160 L194 168 L220 176" fill="none" stroke={INK} strokeWidth={1.25} />
-      <g transform="rotate(-5 200 83)">
-        <rect x={100} y={70} width={200} height={26} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-        <Key x={200} y={88} anchor="middle" fill={INK} size={10}>
-          SUPPLIER
-        </Key>
+    <Frame height={256} label="Left: a supplier's building on a tilting plank that rests on one tall, cracked customer building, labelled single key account. Right: the same supplier on a level plank over four dashed, undecided supports with a question mark between them, labelled how to mitigate these risks?">
+      {/* too dependent on a single key account */}
+      <line x1={80} y1={220} x2={320} y2={220} stroke={RULE} strokeWidth={1} />
+      <Company1 cx={200} base={220} w={52} h={96} tone={COUNTER} fill={COUNTER_TINT} />
+      <path d="M180 146 L190 156 L184 166 L198 174 L192 184 L218 192" fill="none" stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
+      <g transform="rotate(-6 200 110)">
+        <rect x={100} y={104} width={200} height={10} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+        <Company1 cx={200} base={104} w={104} h={52} tone={INK} />
       </g>
-      <Key x={200} y={234} anchor="middle" fill={SIGNAL} size={10.5}>
+      <Key x={200} y={246} anchor="middle" fill={COUNTER} size={11}>
         SINGLE KEY ACCOUNT
       </Key>
 
-      <line x1={400} y1={40} x2={400} y2={230} stroke={RULE} strokeWidth={1} />
+      <line x1={400} y1={36} x2={400} y2={236} stroke={RULE} strokeWidth={1} />
 
-      <line x1={480} y1={210} x2={720} y2={210} stroke={RULE} strokeWidth={1} />
-      {[520, 560, 600, 640, 680].map((x) => (
-        <rect key={x} x={x - 11} y={98} width={22} height={112} fill="none" stroke={INK3} strokeWidth={1.25} strokeDasharray="4 4" />
+      {/* how to mitigate */}
+      <line x1={480} y1={220} x2={720} y2={220} stroke={RULE} strokeWidth={1} />
+      {[524, 562, 638, 676].map((x) => (
+        <rect key={x} x={x - 12} y={114} width={24} height={106} fill="none" stroke={INK3} strokeWidth={1.25} strokeDasharray="4 4" />
       ))}
-      <rect x={500} y={70} width={200} height={26} fill={PAPER} stroke={INK} strokeWidth={1.5} />
-      <Key x={600} y={88} anchor="middle" fill={INK} size={10}>
-        SUPPLIER
-      </Key>
-      <circle cx={600} cy={156} r={20} fill={PAPER} stroke={COUNTER} strokeWidth={1.5} />
-      <Display x={600} y={166} anchor="middle" fill={COUNTER} size={26}>
+      <rect x={500} y={104} width={200} height={10} fill={PAPER} stroke={INK} strokeWidth={1.5} />
+      <Company1 cx={600} base={104} w={104} h={52} tone={INK} />
+      <circle cx={600} cy={166} r={20} fill={PAPER} stroke={SIGNAL} strokeWidth={1.5} />
+      <Display x={600} y={176} anchor="middle" fill={SIGNAL} size={26}>
         ?
       </Display>
-      <Key x={600} y={234} anchor="middle" fill={COUNTER} size={10}>
+      <Key x={600} y={246} anchor="middle" fill={SIGNAL} size={11}>
         HOW TO MITIGATE THESE RISKS?
       </Key>
     </Frame>

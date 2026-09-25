@@ -13,8 +13,6 @@
      · INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or the outward-looking state
      · every label reuses words from the slide the plate sits on
-     · anything that implies a quantity the content does not give is marked
-       SCHEMATIC
    ========================================================================== */
 
 import React from "react";
@@ -34,12 +32,11 @@ import {
   PAPER2,
   RULE,
   RULE2,
-  Schematic,
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
 import { Cpu } from "@phosphor-icons/react";
-import { Factory1, Gift1, Pack1, Person1, Store2 } from "../_visuals/objects";
+import { Company1, Factory1, Gift1, Pack1, Person1, Store2 } from "../_visuals/objects";
 
 const INK_TINT = "rgba(23, 22, 15, 0.06)";
 
@@ -123,52 +120,6 @@ export function EnvironmentRings() {
    2 · CHAIN BETWEEN BANDS — the six actors of the microenvironment
    ========================================================================== */
 
-/** A company as a building: a roof slab over a block of department windows. */
-function Company({
-  cx,
-  base,
-  w,
-  h,
-  tone,
-  lit = false,
-}: {
-  cx: number;
-  base: number;
-  w: number;
-  h: number;
-  tone: string;
-  lit?: boolean;
-}) {
-  const left = cx - w / 2;
-  const pad = w * 0.08;
-  const gap = w * 0.05;
-  const ww = (w - 2 * pad - gap) / 2;
-  const wh = (h - 2 * pad - gap) / 2;
-  return (
-    <g>
-      <rect x={f2(left - 5)} y={f2(base - h - 8)} width={f2(w + 10)} height={8} fill={tone} />
-      <rect x={f2(left)} y={f2(base - h)} width={w} height={h} fill={PAPER} stroke={tone} strokeWidth={1.5} />
-      {[0, 1].map((r) =>
-        [0, 1].map((c) => {
-          const on = lit && r === 0 && c === 0;
-          return (
-            <rect
-              key={`${r}${c}`}
-              x={f2(left + pad + c * (ww + gap))}
-              y={f2(base - h + pad + r * (wh + gap))}
-              width={f2(ww)}
-              height={f2(wh)}
-              fill={on ? SIGNAL : "var(--paper-3)"}
-              stroke={on ? SIGNAL : tone}
-              strokeWidth={1}
-            />
-          );
-        }),
-      )}
-    </g>
-  );
-}
-
 export function MicroActors() {
   const base = 232;
   const flow = 196;
@@ -190,12 +141,12 @@ export function MicroActors() {
         COMPETITORS
       </Key>
       {[330, 450, 570].map((x) => (
-        <Company key={x} cx={x} base={84} w={62} h={40} tone={INK3} />
+        <Company1 key={x} cx={x} base={84} w={62} h={40} tone={INK3} />
       ))}
 
       {/* the chain */}
       <Factory1 x={90} y={base} w={84} h={52} stroke={COUNTER} />
-      <Company cx={co.cx} base={base} w={co.w} h={co.h} tone={INK} lit />
+      <Company1 cx={co.cx} base={base} w={co.w} h={co.h} tone={INK} lit />
       <Key x={f2(co.cx - co.w / 2 + co.w * 0.08 + (co.w * 0.79) / 4)} y={base - co.h + 34} anchor="middle" fill={PAPER} size={9.5}>
         MARKETING
       </Key>
@@ -367,7 +318,7 @@ export function PoliticalCorridor() {
       </Key>
 
       {/* the business and the path it can take */}
-      <Company cx={54} base={mid + 18} w={44} h={32} tone={INK} />
+      <Company1 cx={54} base={mid + 18} w={44} h={32} tone={INK} />
       <path
         d={`M82 ${mid} L${gate + 40} ${mid} C${gate + 76} ${mid} ${gate + 86} ${mid + 30} ${gate + 120} ${mid + 30} L370 ${mid + 30}`}
         fill="none"
@@ -397,9 +348,8 @@ export function EconomicThreshold() {
     <Frame
       width={400}
       height={236}
-      label="Schematic. A bar of purchasing power reaches past the product's price. Below it, inflation and interest rates eat into the same bar, and what is left no longer reaches the price."
+      label="A bar of purchasing power reaches past the product's price. Below it, inflation and interest rates eat into the same bar, and what is left no longer reaches the price."
     >
-      <Schematic x={392} y={228} />
 
       {/* the price line */}
       <line x1={price} y1={42} x2={price} y2={r2 + h + 6} stroke={INK} strokeWidth={1.5} strokeDasharray="5 4" />
@@ -654,7 +604,7 @@ export function ResourceExchange() {
       </Key>
 
       {/* marketers: the company building used across the week */}
-      <Company cx={rightC} base={160} w={96} h={70} tone={INK} lit />
+      <Company1 cx={rightC} base={160} w={96} h={70} tone={INK} lit />
       <Key x={rightC} y={196} anchor="middle" fill={INK} size={11}>
         MARKETERS
       </Key>
@@ -761,9 +711,8 @@ export function GreenwashingGap() {
     <Frame
       width={400}
       height={262}
-      label="Schematic. Two bars of time and money. The bar for claiming to be green is long and hollow. The bar for actually implementing business practices is short and solid. The difference between them is greenwashing."
+      label="Two bars of time and money. The bar for claiming to be green is long and hollow. The bar for actually implementing business practices is short and solid. The difference between them is greenwashing."
     >
-      <Schematic x={392} y={254} />
 
       <Key x={x0} y={r1 - 12} fill={COUNTER} size={11}>
         {"CLAIMING TO BE “GREEN”"}
@@ -808,9 +757,8 @@ export function AbsorbOrPass() {
     <Frame
       width={400}
       height={330}
-      label="Schematic. In two columns, a block of 100% fair-trade materials adds to the cost. In the first, the brand absorbs the cost and the price line stays where it was. In the second, the brand passes it on to consumers and the price line rises by the same amount."
+      label="In two columns, a block of 100% fair-trade materials adds to the cost. In the first, the brand absorbs the cost and the price line stays where it was. In the second, the brand passes it on to consumers and the price line rises by the same amount."
     >
-      <Schematic x={392} y={322} />
       <line x1={20} y1={base} x2={380} y2={base} stroke={INK} strokeWidth={1} />
       <line x1={200} y1={20} x2={200} y2={base} stroke={RULE} strokeWidth={1} />
 
@@ -869,9 +817,8 @@ export function PhonyPriceTag() {
     <Frame
       width={400}
       height={250}
-      label="Schematic. A price tag stamped factory price. A crossed-out was price sits above a lower now price; a note marks the was price as a phony high retail price."
+      label="A price tag stamped factory price. A crossed-out was price sits above a lower now price; a note marks the was price as a phony high retail price."
     >
-      <Schematic x={392} y={242} />
       <g transform="rotate(-4 140 130)">
         <path d="M40 60 L200 60 L240 130 L200 200 L40 200 Z" fill={PAPER} stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
         <circle cx={206} cy={130} r={7} fill="none" stroke={INK} strokeWidth={1.5} />
@@ -980,7 +927,7 @@ export function PressureOverTime() {
     <Frame
       width={400}
       height={246}
-      label="Schematic curves over time. Short-term gains spike early and fall away. Long-term relationships and reputation start steady and slide downward for the rest of the timeline."
+      label="Curves over time. Short-term gains spike early and fall away. Long-term relationships and reputation start steady and slide downward for the rest of the timeline."
     >
             <rect x={x0} y={28} width={split - x0} height={axis - 36} fill={SIGNAL_TINT} />
       <Key x={(x0 + split) / 2} y={18} anchor="middle" fill={SIGNAL} size={9.5}>
@@ -995,7 +942,6 @@ export function PressureOverTime() {
       <Key x={x1} y={axis + 18} anchor="end" fill={INK3} size={9.5}>
         TIME
       </Key>
-      <Schematic x={104} y={axis + 18} />
 
       <path d={gains} fill="none" stroke={SIGNAL} strokeWidth={2.5} />
       <path d={rel} fill="none" stroke={COUNTER} strokeWidth={2.5} />
@@ -1030,9 +976,8 @@ export function ObsolescenceLifespans() {
     <Frame
       width={400}
       height={244}
-      label="Schematic. Top row: one product lasting until it actually needs replacement. Bottom row, planned obsolescence: over the same time, four products, each made obsolete early and replaced, drive frequent replacement sales and pile up at the end, an environmental concern."
+      label="Top row: one product lasting until it actually needs replacement. Bottom row, planned obsolescence: over the same time, four products, each made obsolete early and replaced, drive frequent replacement sales and pile up at the end, an environmental concern."
     >
-      <Schematic x={392} y={236} />
 
       <Key x={need} y={24} anchor="middle" fill={INK} size={10}>
         ACTUALLY NEEDS
@@ -1111,7 +1056,7 @@ export function GenerationsBand() {
         THE PRESENT
       </Key>
       <Person1 x={x0 + 12} y={glyphs} tone={INK} />
-      <Company cx={x0 + 50} base={glyphs} w={36} h={28} tone={INK} />
+      <Company1 cx={x0 + 50} base={glyphs} w={36} h={28} tone={INK} />
       <Key x={x0} y={glyphs + 22} fill={INK} size={10}>
         CONSUMERS AND BUSINESSES
       </Key>

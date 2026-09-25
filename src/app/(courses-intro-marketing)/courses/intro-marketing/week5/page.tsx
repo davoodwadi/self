@@ -10,10 +10,10 @@ import {
   Tag,
   Figure,
 } from "@/components/slide-components/SlideComponents";
-import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
+import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
 import { Plate } from "../_visuals/kit";
-import quizzesData from "./quizzes.json";
+import exercisesData from "./exercises.json";
 import {
   ResearchBridge,
   ProblemAim,
@@ -21,6 +21,7 @@ import {
   PlanSheet,
   CostValueBalance,
   ImplementInterpret,
+  WorkTogether,
   SalesDropFork,
   TwoDataTypes,
   SecondarySplitLane,
@@ -50,12 +51,12 @@ import {
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
-// Quizzes: in this route group `Slide` renders `quizData` AFTER its section.
-// Each [quiz]-tagged topic therefore carries its own quiz, which tests that
+// Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
+// so each [exercise]-tagged topic carries one exercise that tests that
 // slide and the ones before it.
 // ============================================================================
 
-const quiz = createCourseQuizLookup(quizzesData as CourseQuiz[]);
+const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 const SERIF = { fontFamily: "var(--font-heading)", fontWeight: 600 } as const;
 
@@ -190,13 +191,15 @@ function KickerHeading({
   kicker,
   children,
   tone = "signal",
+  className = "",
 }: {
   kicker: string;
   children: React.ReactNode;
   tone?: "signal" | "counter";
+  className?: string;
 }) {
   return (
-    <div className="w-full mb-8 md:mb-12">
+    <div className={cn("w-full mb-8 md:mb-12", className)}>
       <h2 className="type-h1 max-w-[24ch]">
         <span
           className={cn(
@@ -213,50 +216,36 @@ function KickerHeading({
   );
 }
 
-/** Part plate: an oversized numeral beside the part heading. */
-function PartPlate({
-  id,
-  n,
-  title,
-  children,
-}: {
-  id: string;
-  n: number;
-  title: string;
-  children: React.ReactNode;
-}) {
+/** The outlined numeral that marks a part. */
+function PartNumeral({ n, className = "" }: { n: number; className?: string }) {
   return (
-    <Slide id={id} border>
-      <div className="grid w-full gap-8 xl:grid-cols-[minmax(0,15rem)_1fr] xl:gap-16">
-        <div
-          aria-hidden
-          className="select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] text-[7rem] xl:text-[13rem]"
-          style={{
-            ...SERIF,
-            fontVariationSettings: '"opsz" 144, "WONK" 1',
-          }}
-        >
-          {String(n).padStart(2, "0")}
-        </div>
-        <div className="min-w-0">
-          <h2 className="type-display !text-[clamp(2.4rem,5.4vw,4.5rem)] max-w-[18ch]">
-            <span className="type-label block mb-6 !text-[0.8rem]">
-              {`Part ${n}:`}
-            </span>{" "}
-            {title}
-          </h2>
-          <div className="mt-10 h-px w-full bg-[var(--rule)]" />
-          {children}
-        </div>
-      </div>
-    </Slide>
+    <div
+      aria-hidden
+      className={cn(
+        "select-none leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)]",
+        className,
+      )}
+      style={{ ...SERIF, fontVariationSettings: '"opsz" 144, "WONK" 1' }}
+    >
+      {String(n).padStart(2, "0")}
+    </div>
+  );
+}
+
+/** The part heading, "Part N:" kept as a kicker inside the h2. */
+function PartTitle({ n, title }: { n: number; title: string }) {
+  return (
+    <h2 className="type-display !text-[clamp(2.2rem,4.2vw,3.5rem)] max-w-[26ch]">
+      <span className="type-label block mb-3 !text-[0.8rem]">{`Part ${n}:`}</span>{" "}
+      {title}
+    </h2>
   );
 }
 
 /** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
 function Prompt({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-14 md:py-16">
+    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-7 md:px-12 md:py-9">
       <p className="type-quote !text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[42ch]">
         {children}
       </p>
@@ -366,9 +355,11 @@ function StepSlide({
   children: React.ReactNode;
 }) {
   return (
-    <Slide id={id} border quizData={quiz[id]}>
-      <StepStrip active={steps} className="mb-12 md:mb-16" />
-      <KickerHeading kicker={kicker}>{title}</KickerHeading>
+    <Slide id={id} border className="!py-8" exercise={exercise[id]}>
+      <StepStrip active={steps} className="mb-6" />
+      <KickerHeading kicker={kicker} className="md:!mb-6">
+        {title}
+      </KickerHeading>
       {children}
     </Slide>
   );
@@ -442,32 +433,40 @@ export default function Week5() {
       {/* ================================================================
           Part 1 — The Marketing Research Process
           ================================================================ */}
-      <PartPlate id="part-1" n={1} title="The Marketing Research Process">
-        <Lead className="mt-10 !max-w-[58ch]">
-          Marketing research is the <Term>systematic</Term> design,
-          collection, and analysis of data.
-        </Lead>
-        <Figure height="auto">
-          <ResearchBridge />
-        </Figure>
-        <div className="grid gap-10 md:grid-cols-2 md:gap-12">
-          <Ruled tone="counter">
-            <P>
-              It connects{" "}
-              <Term tone="counter">consumers, customers, and the public</Term>{" "}
-              to the marketer through information.
-            </P>
-          </Ruled>
-          <Ruled tone="signal">
-            <Big>
-              This information is used to identify and define marketing{" "}
-              <Tint tone="counter">opportunities</Tint> and{" "}
-              <Tint>problems</Tint>.
-            </Big>
-          </Ruled>
+      <Slide id="part-1" border className="!py-8">
+        <div className="flex w-full items-end gap-8 xl:gap-12">
+          <PartNumeral n={1} className="text-[5rem] xl:text-[6.5rem]" />
+          <PartTitle n={1} title="The Marketing Research Process" />
         </div>
-        <StepStrip large className="mt-16" />
-      </PartPlate>
+        <div className="mt-6 h-px w-full bg-[var(--rule)]" />
+        {/* A text rail beside the bridge the sentences describe. */}
+        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,3.3fr)_minmax(0,8fr)] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Lead className="!max-w-none">
+              Marketing research is the <Term>systematic</Term> design,
+              collection, and analysis of data.
+            </Lead>
+            <Ruled tone="counter">
+              <P>
+                It connects{" "}
+                <Term tone="counter">consumers, customers, and the public</Term>{" "}
+                to the marketer through information.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                This information is used to identify and define marketing{" "}
+                <Term tone="counter">opportunities</Term> and{" "}
+                <Term tone="ink">problems</Term>.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <ResearchBridge />
+          </Plate>
+        </div>
+        <StepStrip large className="mt-12" />
+      </Slide>
 
       <StepSlide
         id="defining-the-problem"
@@ -475,32 +474,32 @@ export default function Week5() {
         kicker="Step 1:"
         title="Defining the Problem"
       >
-        <Statement className="!max-w-[38ch]">
-          The first step is to carefully{" "}
-          <Tint>define the problem</Tint> and agree on research objectives.
-        </Statement>
-        <Figure height="auto">
-          <ProblemAim />
-        </Figure>
-        <div className="grid w-full items-start gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)]">
-          <Ruled tone="signal">
-            <Big>
-              This is often <Tint>the hardest step</Tint>, as it guides the
+        {/* Plates in columns, each under the sentences it draws. */}
+        <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Statement className="!max-w-[34ch]">
+              The first step is to carefully{" "}
+              <Tint>define the problem</Tint> and agree on research
+              objectives.
+            </Statement>
+            <P>
+              This is often <Term>the hardest step</Term>, as it guides the
               entire research process.
+            </P>
+            <Plate>
+              <ProblemAim />
+            </Plate>
+          </div>
+          <Ruled className="flex min-w-0 flex-col gap-5">
+            <Big>
+              Objectives can be <Term tone="ink">exploratory</Term>,{" "}
+              <Term tone="counter">descriptive</Term>, or{" "}
+              <Term>causal</Term> depending on the problem.
             </Big>
-          </Ruled>
-          <div className="flex min-w-0 flex-col gap-8">
             <Plate>
               <ObjectiveFork />
             </Plate>
-            <Ruled>
-              <P>
-                Objectives can be <Term tone="ink">exploratory</Term>,{" "}
-                <Term tone="counter">descriptive</Term>, or{" "}
-                <Term>causal</Term> depending on the problem.
-              </P>
-            </Ruled>
-          </div>
+          </Ruled>
         </div>
       </StepSlide>
 
@@ -510,31 +509,29 @@ export default function Week5() {
         kicker="Step 2:"
         title="Developing the Research Plan"
       >
-        <Lead className="!max-w-[52ch]">
-          The research plan determines the <Term>exact information</Term>{" "}
-          needed.
-        </Lead>
-        <Figure height="auto">
+        {/* Two sentences over the plan sheet they fill in. */}
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Lead className="!max-w-none">
+            The research plan determines the <Term>exact information</Term>{" "}
+            needed.
+          </Lead>
+          <Lead className="!max-w-none">
+            It outlines <Term tone="counter">sources of existing data</Term>{" "}
+            and spells out specific research approaches.
+          </Lead>
+        </div>
+        <Figure height="auto" dense className="mx-auto !my-4 max-w-[790px]">
           <PlanSheet />
         </Figure>
-        <div className="grid w-full items-start gap-14 lg:grid-cols-2">
-          <Ruled>
-            <Big>
-              It outlines <Tint tone="counter">sources of existing data</Tint>{" "}
-              and spells out specific research approaches.
-            </Big>
-          </Ruled>
-          <div className="flex min-w-0 flex-col gap-8">
-            <Plate>
-              <CostValueBalance />
-            </Plate>
-            <Ruled tone="signal">
-              <P>
-                The plan must <Term>balance</Term> the cost of obtaining data
-                against the value of the insights.
-              </P>
-            </Ruled>
-          </div>
+        {/* The trade-off the plan must strike, beside its balance. */}
+        <div className="grid w-full items-center gap-8 border-t-2 border-[var(--signal)] pt-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:gap-12">
+          <Statement className="!max-w-none !text-[clamp(1.5rem,2.3vw,2rem)]">
+            The plan must <Tint>balance</Tint> the cost of obtaining data
+            against the value of the insights.
+          </Statement>
+          <Plate className="!p-2">
+            <CostValueBalance />
+          </Plate>
         </div>
       </StepSlide>
 
@@ -544,40 +541,46 @@ export default function Week5() {
         kicker="Steps 3 and 4:"
         title="Implementing and Interpreting"
       >
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
+        {/* Each sentence stands over its half of the pipeline. */}
+        <div className="grid w-full gap-8 md:grid-cols-[minmax(0,43fr)_minmax(0,37fr)] md:gap-12">
           <Ruled tone="counter">
-            <P>
-              <Term tone="counter">Implementing</Term> involves collecting,
+            <Big>
+              <Tint tone="counter">Implementing</Tint> involves collecting,
               processing, and analyzing the information.
-            </P>
+            </Big>
           </Ruled>
           <Ruled tone="signal">
-            <P>
-              <Term>Interpreting</Term> the findings involves drawing
+            <Big>
+              <Tint>Interpreting</Tint> the findings involves drawing
               conclusions and reporting them to management.
-            </P>
+            </Big>
           </Ruled>
         </div>
-        <Figure height="auto">
+        <Figure height="auto" dense>
           <ImplementInterpret />
         </Figure>
-        <Statement className="!max-w-[36ch]">
-          Managers and researchers must <Tint>work together</Tint> to extract
-          actionable insights.
-        </Statement>
+        {/* The closing sentence beside the two people it names. */}
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)] lg:gap-12">
+          <Statement className="!max-w-[30ch]">
+            Managers and researchers must <Tint>work together</Tint> to extract
+            actionable insights.
+          </Statement>
+          <Plate>
+            <WorkTogether />
+          </Plate>
+        </div>
       </StepSlide>
 
-      <Slide id="discussion-defining-the-problem" border>
-        <KickerHeading kicker="Discussion:" tone="counter">
+      <Slide id="discussion-defining-the-problem" border className="!py-8">
+        <KickerHeading kicker="Discussion:" tone="counter" className="md:!mb-6">
           Defining the Problem
         </KickerHeading>
         <Prompt>
-          <PromptKicker /> If a company notices a{" "}
-          <Tint>sudden drop in sales</Tint> for a flagship product, what
-          specific <Tint tone="counter">exploratory research objectives</Tint>{" "}
-          might they set before rushing to launch a new advertising campaign?
+          <PromptKicker /> If a company notices a sudden drop in sales for a
+          flagship product, what specific{" "}
+          <Tint>exploratory research objectives</Tint> might they set before rushing to launch a new advertising campaign?
         </Prompt>
-        <Figure height="auto" className="max-w-5xl">
+        <Figure height="auto" dense className="!mt-6 max-w-5xl">
           <SalesDropFork />
         </Figure>
       </Slide>
@@ -585,42 +588,51 @@ export default function Week5() {
       {/* ================================================================
           Part 2 — Primary vs. Secondary Data
           ================================================================ */}
-      <PartPlate id="part-2" n={2} title="Primary vs. Secondary Data">
-        <Lead className="mt-10 !max-w-[58ch]">
-          Marketers gather two main types of data:{" "}
-          <Term>primary</Term> and <Term tone="counter">secondary</Term>.
-        </Lead>
-        <Figure height="auto">
-          <TwoDataTypes />
-        </Figure>
-        <div className="grid gap-10 md:grid-cols-2 md:gap-12">
-          <Ruled>
-            <P>
-              Understanding the difference is crucial for{" "}
-              <Term tone="ink">cost-effective research</Term>.
-            </P>
-          </Ruled>
-          <Ruled tone="signal">
-            <Big>
-              Each type of data has distinct{" "}
-              <Tint tone="counter">advantages</Tint> and{" "}
-              <Tint>limitations</Tint>.
-            </Big>
-          </Ruled>
+      <Slide id="part-2" border className="!py-8">
+        <div className="grid w-full gap-8 xl:grid-cols-[minmax(0,13rem)_1fr] xl:gap-14">
+          <PartNumeral n={2} className="text-[6rem] xl:text-[10rem]" />
+          <div className="min-w-0">
+            <PartTitle n={2} title="Primary vs. Secondary Data" />
+            <div className="mt-6 h-px w-full bg-[var(--rule)]" />
+            <Lead className="mt-6 !max-w-[58ch]">
+              Marketers gather two main types of data:{" "}
+              <Term>primary</Term> and <Term tone="counter">secondary</Term>.
+            </Lead>
+            <Figure height="auto" dense className="!my-5">
+              <TwoDataTypes />
+            </Figure>
+            <div className="grid gap-8 md:grid-cols-2 md:gap-12">
+              <Ruled>
+                <P>
+                  Understanding the difference is crucial for{" "}
+                  <Term tone="ink">cost-effective research</Term>.
+                </P>
+              </Ruled>
+              <Ruled tone="signal">
+                <Big>
+                  Each type of data has distinct{" "}
+                  <Tint tone="counter">advantages</Tint> and{" "}
+                  <Tint>limitations</Tint>.
+                </Big>
+              </Ruled>
+            </div>
+          </div>
         </div>
-      </PartPlate>
+      </Slide>
 
-      <Slide id="secondary-data" border quizData={quiz["secondary-data"]}>
+      <Slide
+        id="secondary-data"
+        border
+        className="!py-8"
+        exercise={exercise["secondary-data"]}
+      >
         <Tag>Information that already exists</Tag>
         <Heading>Secondary Data</Heading>
-        <Statement className="!max-w-[36ch]">
+        <Statement className="!max-w-none !text-[clamp(1.6rem,2.6vw,2.2rem)]">
           Secondary data consists of information that{" "}
           <Tint tone="counter">already exists</Tint> somewhere.
         </Statement>
-        <Figure height="auto">
-          <SecondarySplitLane />
-        </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
+        <div className="mt-6 grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Ruled tone="signal">
             <P>
               It is usually collected for{" "}
@@ -630,14 +642,18 @@ export default function Week5() {
           </Ruled>
           <Ruled tone="counter">
             <P>
-              Sources include <Term tone="counter">internal databases</Term>,
-              government reports, and commercial data services.
+              Sources include <Term tone="ink">internal databases</Term>,{" "}
+              <Term tone="counter">government reports</Term>, and{" "}
+              <Term tone="counter">commercial data services</Term>.
             </P>
           </Ruled>
         </div>
+        <Figure height="auto" dense className="mx-auto max-w-[920px]">
+          <SecondarySplitLane />
+        </Figure>
       </Slide>
 
-      <Slide id="advantages-and-disadvantages-of-secondary-data" border>
+      <Slide id="advantages-and-disadvantages-of-secondary-data" border className="!py-8">
         <Tag>Speed, reach, and risk</Tag>
         <Heading>Advantages and Disadvantages of Secondary Data</Heading>
         <ol className="w-full">
@@ -676,52 +692,53 @@ export default function Week5() {
             <li
               key={i}
               className={cn(
-                "grid items-center gap-6 border-t-2 py-8 md:grid-cols-[minmax(0,27rem)_1fr] md:gap-12",
+                "grid items-center gap-6 border-t-2 py-3 md:grid-cols-[minmax(0,1fr)_minmax(0,23rem)] md:gap-12",
                 row.border,
               )}
             >
-              <Plate className="!p-2 sm:!p-3">{row.plate}</Plate>
               <p className="type-h2 !font-normal max-w-[30ch]">{row.text}</p>
+              <Plate className="!p-2">{row.plate}</Plate>
             </li>
           ))}
         </ol>
       </Slide>
 
-      <Slide id="primary-data" border quizData={quiz["primary-data"]}>
+      <Slide
+        id="primary-data"
+        border
+        className="!py-8"
+        exercise={exercise["primary-data"]}
+      >
         <Tag>Collected for the purpose at hand</Tag>
         <Heading>Primary Data</Heading>
-        <Statement className="!max-w-[36ch]">
+        <Statement className="!max-w-none !text-[clamp(1.6rem,2.6vw,2.2rem)]">
           Primary data consists of information collected for the{" "}
           <Tint>specific purpose at hand</Tint>.
         </Statement>
-        <Figure height="auto">
+        <Lead className="mt-5 !max-w-none">
+          It requires decisions on research approaches, contact methods, and
+          sampling plans.
+        </Lead>
+        <Figure height="auto" dense className="mx-auto !my-4 max-w-[880px]">
           <PrimaryDecisions />
         </Figure>
-        <div className="grid w-full items-start gap-14 lg:grid-cols-2">
-          <Ruled>
-            <Big>
-              It requires decisions on research approaches, contact methods,
-              and sampling plans.
-            </Big>
-          </Ruled>
-          <div className="flex min-w-0 flex-col gap-8">
-            <Plate>
-              <RelevantCostly />
-            </Plate>
-            <Ruled tone="signal">
-              <P>
-                This data is <Term>highly relevant</Term> but takes{" "}
-                <Term tone="ink">more time and resources</Term> to gather.
-              </P>
-            </Ruled>
-          </div>
+        {/* What that tailoring gives, and what it costs. */}
+        <div className="grid w-full items-center gap-8 border-t-2 border-[var(--signal)] pt-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:gap-12">
+          <Big className="!max-w-[28ch]">
+            This data is <Tint>highly relevant</Tint> but takes more time and
+            resources to gather.
+          </Big>
+          <Plate className="!p-2">
+            <RelevantCostly />
+          </Plate>
         </div>
       </Slide>
 
       <Slide
         id="primary-research-approaches"
         border
-        quizData={quiz["primary-research-approaches"]}
+        className="!py-8"
+        exercise={exercise["primary-research-approaches"]}
       >
         <Tag>Observe, ask, or test</Tag>
         <Heading>Primary Research Approaches</Heading>
@@ -760,18 +777,18 @@ export default function Week5() {
               ),
             },
           ].map((col, i) => (
-            <div key={i} className="flex min-w-0 flex-col gap-6">
-              <Plate>{col.plate}</Plate>
-              <Ruled tone={col.tone}>
+            <div key={i} className="flex min-w-0 flex-col gap-5">
+              <Ruled tone={col.tone} className="md:min-h-[6.5rem]">
                 <P>{col.text}</P>
               </Ruled>
+              <Plate>{col.plate}</Plate>
             </div>
           ))}
         </div>
       </Slide>
 
-      <Slide id="discussion-choosing-data-types" border>
-        <KickerHeading kicker="Discussion:" tone="counter">
+      <Slide id="discussion-choosing-data-types" border className="!py-8">
+        <KickerHeading kicker="Discussion:" tone="counter" className="md:!mb-6">
           Choosing Data Types
         </KickerHeading>
         <Prompt>
@@ -781,7 +798,7 @@ export default function Week5() {
           data rather than{" "}
           <Tint tone="counter">secondary data</Tint>?
         </Prompt>
-        <Figure height="auto" className="max-w-5xl">
+        <Figure height="auto" dense className="!mt-6 max-w-5xl">
           <NovelShelf />
         </Figure>
       </Slide>
@@ -789,107 +806,121 @@ export default function Week5() {
       {/* ================================================================
           Part 3 — Data Analytics and Customer Insights
           ================================================================ */}
-      <PartPlate id="part-3" n={3} title="Data Analytics and Customer Insights">
-        <Lead className="mt-10 !max-w-[58ch]">
-          In the digital age, marketers have access to{" "}
-          <Term tone="ink">massive amounts of data</Term>.
-        </Lead>
-        <Figure height="auto">
-          <BigDataFork />
-        </Figure>
-        <div className="grid gap-10 md:grid-cols-2 md:gap-12">
+      <Slide id="part-3" border className="!py-8">
+        <div className="flex w-full items-end gap-8 xl:gap-12">
+          <PartNumeral n={3} className="text-[5rem] xl:text-[6.5rem]" />
+          <PartTitle n={3} title="Data Analytics and Customer Insights" />
+        </div>
+        <div className="mt-6 h-px w-full bg-[var(--rule)]" />
+        {/* Two sentences over the field they describe, then a closing band. */}
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Ruled>
+            <Lead className="!max-w-none">
+              In the digital age, marketers have access to{" "}
+              <Term tone="ink">massive amounts of data</Term>.
+            </Lead>
+          </Ruled>
           <Ruled>
             <P>
               <Term tone="ink">Big Data</Term> refers to the huge and complex
               data sets generated by sophisticated technologies.
             </P>
           </Ruled>
-          <Ruled tone="signal">
-            <Big>
-              The challenge is not getting more data, but getting{" "}
-              <Tint>better data and insights</Tint>.
-            </Big>
-          </Ruled>
         </div>
-      </PartPlate>
+        <Figure height="auto" dense className="mx-auto max-w-[880px]">
+          <BigDataFork />
+        </Figure>
+        <p className="type-display w-full border-y-2 border-[var(--ink)] py-5 !text-[clamp(1.6rem,2.8vw,2.4rem)] !leading-tight">
+          The challenge is not getting more data, but getting{" "}
+          <span className="text-[var(--signal)]">better data and insights</span>.
+        </p>
+      </Slide>
 
       <Slide
         id="customer-relationship-management"
         border
-        quizData={quiz["customer-relationship-management"]}
+        className="!py-8"
+        exercise={exercise["customer-relationship-management"]}
       >
         <Tag>The CRM cycle</Tag>
         <Heading>Customer Relationship Management (CRM)</Heading>
-        <Statement className="!max-w-[36ch]">
-          CRM involves managing{" "}
-          <Tint>detailed information about individual customers</Tint>.
-        </Statement>
-        <Figure height="auto">
-          <CrmCycle />
-        </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled tone="signal">
-            <P>
-              Marketers use CRM to carefully manage customer{" "}
-              <Term>touchpoints</Term> to maximize <Term>loyalty</Term>.
-            </P>
-          </Ruled>
-          <Ruled>
-            <P>
-              It <Term tone="ink">integrates</Term> everything a company
-              sales, service, and marketing teams know about customers.
-            </P>
-          </Ruled>
+        {/* A text rail beside the cycle it describes. */}
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-10">
+          <div className="flex min-w-0 flex-col gap-6">
+            <Statement className="!max-w-none !text-[clamp(1.5rem,2.3vw,2rem)]">
+              CRM involves managing{" "}
+              <Tint>detailed information about individual customers</Tint>.
+            </Statement>
+            <Ruled tone="signal">
+              <P>
+                Marketers use CRM to carefully manage customer{" "}
+                <Term>touchpoints</Term> to maximize <Term>loyalty</Term>.
+              </P>
+            </Ruled>
+            <Ruled>
+              <P>
+                It <Term tone="ink">integrates</Term> everything a company
+                sales, service, and marketing teams know about customers.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <CrmCycle />
+          </Plate>
         </div>
       </Slide>
 
       <Slide
         id="role-of-marketing-analytics"
         border
-        quizData={quiz["role-of-marketing-analytics"]}
+        className="!py-8"
+        exercise={exercise["role-of-marketing-analytics"]}
       >
         <Tag>Patterns in big data</Tag>
         <Heading>The Role of Marketing Analytics</Heading>
-        <Lead className="!max-w-[56ch]">
+        <Lead className="!max-w-none">
           <Term>Marketing analytics</Term> consists of the analysis tools,
           technologies, and processes.
         </Lead>
-        <Figure height="auto">
-          <AnalyticsDig />
-        </Figure>
-        <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
-          <Ruled tone="signal">
-            <Big>
-              These tools are used to dig out{" "}
-              <Tint>meaningful patterns</Tint> in big data.
-            </Big>
-          </Ruled>
-          <Ruled tone="counter">
-            <P>
-              Analytics helps marketers gain{" "}
-              <Term tone="counter">customer insights</Term> and gauge{" "}
-              <Term tone="ink">marketing performance</Term>.
-            </P>
-          </Ruled>
+        {/* The lens first, then what it digs out and where that leads. */}
+        <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,9fr)_minmax(0,4fr)] lg:gap-10">
+          <Plate>
+            <AnalyticsDig />
+          </Plate>
+          <div className="flex min-w-0 flex-col gap-6">
+            <Ruled tone="signal">
+              <Big>
+                These tools are used to dig out{" "}
+                <Tint>meaningful patterns</Tint> in big data.
+              </Big>
+            </Ruled>
+            <Ruled tone="counter">
+              <P>
+                Analytics helps marketers gain{" "}
+                <Term tone="counter">customer insights</Term> and gauge{" "}
+                <Term tone="ink">marketing performance</Term>.
+              </P>
+            </Ruled>
+          </div>
         </div>
       </Slide>
 
-      <Slide id="transforming-data-into-actionable-insights" border>
+      <Slide id="transforming-data-into-actionable-insights" border className="!py-8">
         <Tag>The human element</Tag>
         <Heading>Transforming Data into Actionable Insights</Heading>
-        <Statement className="!max-w-[34ch]">
-          Data alone is useless without the{" "}
-          <Tint>human element of interpretation</Tint>.
+        <Statement className="!max-w-none !text-[clamp(1.6rem,2.6vw,2.2rem)]">
+          Data alone is useless without the human element of
+          interpretation.
         </Statement>
-        <Figure height="auto">
+        <Figure height="auto" dense className="mx-auto max-w-[900px]">
           <InterpretationChain />
         </Figure>
         <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
           <Ruled tone="signal">
-            <P>
-              <Term>Customer insights</Term> are fresh understandings of
+            <Big>
+              <Tint>Customer insights</Tint> are fresh understandings of
               customers and the marketplace.
-            </P>
+            </Big>
           </Ruled>
           <Ruled tone="counter">
             <Big>
@@ -900,8 +931,8 @@ export default function Week5() {
         </div>
       </Slide>
 
-      <Slide id="discussion-the-ethics-of-big-data" border>
-        <KickerHeading kicker="Discussion:" tone="counter">
+      <Slide id="discussion-the-ethics-of-big-data" border className="!py-8">
+        <KickerHeading kicker="Discussion:" tone="counter" className="md:!mb-6">
           The Ethics of Big Data
         </KickerHeading>
         <Prompt>
@@ -910,7 +941,7 @@ export default function Week5() {
           <Tint tone="counter">personalized value</Tint> and{" "}
           <Tint>invading consumer privacy</Tint>?
         </Prompt>
-        <Figure height="auto" className="max-w-5xl">
+        <Figure height="auto" dense className="!mt-6 max-w-5xl">
           <PrivacyLine />
         </Figure>
       </Slide>

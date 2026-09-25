@@ -18,7 +18,6 @@
    Conventions carried over from earlier weeks:
      · viewBox width 800 (400 for column plates), flat fills, hairline rules
      · every label reuses words from the slide the plate sits on
-     · anything implying a quantity the content does not give is SCHEMATIC
      · trig results rounded, so server and client render the same markup
    ========================================================================== */
 
@@ -38,7 +37,6 @@ import {
   r2,
   RULE,
   RULE2,
-  Schematic,
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
@@ -642,7 +640,6 @@ export function GdpSelection() {
       height={270}
       label="Bars for six countries, each above its flag, showing GDP. The tallest bar is lit, with a target above it labelled market selection."
     >
-      <Schematic />
       <Key x={40} y={base - 70} anchor="middle" fill={INK} size={10}>
         GDP
       </Key>
@@ -835,7 +832,6 @@ export function ScaleCurve() {
       height={260}
       label="A curve of cost per unit falling as volume grows. A dot early on the curve is marked domestic; a dot far along it, where cost per unit is lower, is marked global."
     >
-      <Schematic x={392} />
       <Key x={372} y={44} anchor="end" fill={INK} size={9.5}>
         ECONOMIES OF SCALE
       </Key>
@@ -867,7 +863,6 @@ export function HigherProfits() {
       height={260}
       label="Two coin stacks labelled higher profits: a short stack marked domestic and a much taller stack marked global."
     >
-      <Schematic x={392} />
       <Key x={200} y={44} anchor="middle" fill={INK} size={9.5}>
         HIGHER PROFITS
       </Key>
@@ -1200,7 +1195,6 @@ export function RiskControlSplit() {
       height={240}
       label="Two bars, each split in half between the home company and the foreign company. The financial risk bar is marked shared; the management control bar is marked reduced."
     >
-      <Schematic />
       <rect x={x0} y={30} width={14} height={14} fill={INK} />
       <Key x={x0 + 22} y={42} fill={INK} size={9.5}>
         HOME COMPANY
@@ -1271,7 +1265,6 @@ export function ModeMeter({ metric }: { metric: "control" | "capital" }) {
           : "Capital commitment for each entry mode: two coins for exporting, five for joint venturing and ten for direct investment."
       }
     >
-      <Schematic x={392} />
       <Key x={20} y={30} fill={INK} size={10}>
         {title}
       </Key>
@@ -1508,7 +1501,6 @@ export function CostRelevance() {
       height={250}
       label="Paired bars. For costs, standardization's bar is short and adaptation's is tall. For local relevance, standardization's bar is short and adaptation's is tall."
     >
-      <Schematic />
       <rect x={40} y={24} width={14} height={14} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.25} />
       <Key x={62} y={36} fill={COUNTER} size={9.5}>
         STANDARDIZATION
@@ -1829,7 +1821,6 @@ export function PriceEscalation() {
       height={300}
       label="A waterfall chart. The home price is a short bar. Transportation, tariffs and intermediary margins each add a step on top. The foreign price at the end is a bar several times taller, and the gap between the two is marked price escalation."
     >
-      <Schematic x={600} />
       <line x1={50} y1={base} x2={720} y2={base} stroke={INK} strokeWidth={1.5} />
       {steps.map((s, i) => {
         const next = steps[i + 1];
@@ -1893,7 +1884,6 @@ export function UniformPrice() {
       height={280}
       label="Cost bars for five markets under one dashed line marked uniform price. In three markets the cost sits below the line; in two the cost bar breaks through it, and the part above the line is shaded."
     >
-      <Schematic />
       <rect x={96} y={20} width={14} height={14} fill={PAPER2} stroke={INK} strokeWidth={1.25} />
       <Key x={118} y={32} fill={INK} size={9.5}>
         COST
@@ -2396,7 +2386,6 @@ export function PredictPattern() {
       height={250}
       label="Shopping bags along a time line: small, small, large, repeating, up to a dashed line marked now. After it, the same pattern continues in dashed outline as the forecast of future buying patterns."
     >
-      <Schematic />
       <line x1={40} y1={base} x2={764} y2={base} stroke={INK} strokeWidth={1.5} />
       <path d={headAlong1(770, base, 1, 0, 8)} fill="none" stroke={INK} strokeWidth={1.5} />
       <line x1={now} y1={46} x2={now} y2={206} stroke={SIGNAL} strokeWidth={1.5} strokeDasharray="5 4" />
@@ -2517,7 +2506,6 @@ export function GreenPreference() {
       height={270}
       label="Three moments in time, left to right. In each, a plain pack and a pack with a leaf stand on a shelf with shoppers below them. Over time the shoppers at the plain pack drop from five to one and the shoppers at the leaf pack rise from one to five."
     >
-      <Schematic />
       <line x1={270} y1={40} x2={270} y2={214} stroke={RULE} strokeWidth={1} />
       <line x1={530} y1={40} x2={530} y2={214} stroke={RULE} strokeWidth={1} />
       {panels.map((p) => (
@@ -2707,7 +2695,6 @@ export function LifeExtended() {
       height={200}
       label="A bar for a product's life, then two more segments added to its end: repair, then recycling. A bracket under the added segments reads extended."
     >
-      <Schematic />
       <rect x={60} y={80} width={320} height={36} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
       <rect x={380} y={80} width={160} height={36} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
       <rect x={540} y={80} width={180} height={36} fill={SIGNAL} stroke={SIGNAL} strokeWidth={1.5} />
@@ -2736,7 +2723,6 @@ export function ImpactDown() {
       height={240}
       label="Environmental impact as two bars: a tall bar for take-make-dispose and a short bar for the circular model."
     >
-      <Schematic x={392} />
       <Key x={200} y={40} anchor="middle" fill={INK} size={9.5}>
         ENVIRONMENTAL IMPACT
       </Key>

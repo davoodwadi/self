@@ -17,7 +17,6 @@
        message, the step in focus); COUNTER the limit, the conflict or the
        competitor; INK the neutral case
      · every label reuses words from the slide the plate sits on
-     · anything implying a quantity the content does not give is SCHEMATIC
      · integer coordinates only, so server and client render the same markup
    ========================================================================== */
 
@@ -36,7 +35,6 @@ import {
   r2,
   RULE,
   RULE2,
-  Schematic,
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
@@ -147,7 +145,6 @@ export function BlendBar() {
       <Key x={40} y={232} fill={SIGNAL} size={10.5}>
         THE SPECIFIC BLEND OF PROMOTIONAL TOOLS
       </Key>
-      <Schematic x={760} y={232} />
     </Frame>
   );
 }
@@ -452,7 +449,6 @@ export function Believability() {
       <Key x={24} y={30} fill={INK} size={10}>
         BELIEVABILITY
       </Key>
-      <Schematic x={392} y={30} />
       <rect x={96} y={60} width={68} height={150} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.75} />
       <rect x={236} y={162} width={68} height={48} fill={PAPER2} stroke={INK3} strokeWidth={1.25} />
       <line x1={40} y1={210} x2={360} y2={210} stroke={INK} strokeWidth={1.25} />
@@ -552,7 +548,6 @@ export function Underused() {
       <Key x={500} y={132} anchor="middle" fill={COUNTER} size={10}>
         UNDERUSED
       </Key>
-      <Schematic x={760} y={164} />
     </Frame>
   );
 }
@@ -707,7 +702,6 @@ export function ShortLived() {
       <Key x={740} y={282} anchor="end" fill={INK3} size={9}>
         TIME
       </Key>
-      <Schematic x={740} y={24} />
     </Frame>
   );
 }
@@ -765,7 +759,6 @@ export function LateStages() {
       <Key x={40} y={244} fill={INK3} size={10}>
         THE BUYING PROCESS
       </Key>
-      <Schematic x={760} y={264} />
     </Frame>
   );
 }
@@ -794,7 +787,6 @@ export function Commitment() {
       <Key x={386} y={192} anchor="end" fill={INK3} size={9}>
         TIME
       </Key>
-      <Schematic x={392} y={18} />
     </Frame>
   );
 }
@@ -820,7 +812,6 @@ export function MostExpensive() {
       <Key x={276} y={112} anchor="middle" fill={SIGNAL} size={10}>
         MOST EXPENSIVE
       </Key>
-      <Schematic x={392} y={18} />
     </Frame>
   );
 }
@@ -1715,7 +1706,6 @@ export function Affordable() {
       <Key x={330} y={130} anchor="middle" fill={SIGNAL} size={9.5}>
         PROMOTION
       </Key>
-      <Schematic x={370} y={160} />
     </Frame>
   );
 }
@@ -1744,7 +1734,6 @@ export function PercentOfSales() {
       <Display x={64} y={151} anchor="middle" fill={SIGNAL} size={18}>
         %
       </Display>
-      <Schematic x={370} y={188} />
     </Frame>
   );
 }
@@ -1843,7 +1832,6 @@ export function Assumptions() {
         ASSUMPTION
       </Key>
       <line x1={196} y1={94} x2={214} y2={130} stroke={SIGNAL} strokeWidth={1} />
-      <Schematic x={392} y={18} />
     </Frame>
   );
 }
@@ -2085,7 +2073,6 @@ export function SalesShare() {
       <Key x={620} y={270} anchor="middle" fill={INK} size={10}>
         MARKET SHARE
       </Key>
-      <Schematic x={792} y={24} />
     </Frame>
   );
 }

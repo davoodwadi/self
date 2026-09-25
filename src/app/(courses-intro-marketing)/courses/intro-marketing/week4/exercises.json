@@ -1,0 +1,219 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "market-structure-and-demand",
+    "prompt": "Each case shows one way B2B markets differ from B2C markets. Which one is it?",
+    "options": [
+      { "id": "buyers", "label": "Fewer, but much larger, buyers" },
+      { "id": "derived", "label": "Derived demand" },
+      { "id": "fluctuates", "label": "Fluctuates more rapidly" }
+    ],
+    "cases": [
+      {
+        "id": "engines",
+        "text": "A jet engine maker sells to only a handful of aircraft makers, and each order is worth hundreds of millions of dollars.",
+        "answer": "buyers",
+        "explanation": "A few customers, each buying a lot: B2B markets typically have fewer, but much larger, buyers than B2C markets."
+      },
+      {
+        "id": "tannery",
+        "text": "A leather tannery gets fewer orders because shoppers are buying fewer handbags this year.",
+        "answer": "derived",
+        "explanation": "The tannery's orders follow what shoppers buy. Its demand is derived demand, meaning it comes from consumer demand."
+      },
+      {
+        "id": "steel",
+        "text": "A steel mill's orders jump by 40% one quarter and drop by 35% the next.",
+        "answer": "fluctuates",
+        "explanation": "Big swings from one quarter to the next show B2B demand fluctuating more rapidly than consumer demand."
+      },
+      {
+        "id": "chains",
+        "text": "When more Montrealers take up cycling, a maker of bike chains gets more orders from bike makers.",
+        "answer": "derived",
+        "explanation": "The chain maker sells to bike makers, but its orders rise because consumers want more bikes. That is derived demand."
+      },
+      {
+        "id": "tires",
+        "text": "A tire maker sells to five car companies, while a sneaker brand sells to millions of runners.",
+        "answer": "buyers",
+        "explanation": "Five car companies against millions of runners: the B2B seller has fewer, but much larger, buyers."
+      },
+      {
+        "id": "boxes",
+        "text": "People buy about the same amount of cereal every week, yet the box maker's orders swing up and down from month to month.",
+        "answer": "fluctuates",
+        "explanation": "Steady consumer buying next to swinging orders for boxes: B2B demand fluctuates more rapidly than consumer demand."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "types-of-decisions-and-the-decision-process",
+    "prompt": "Sort each purchase: does it show the traits of a B2B purchase or of a B2C purchase?",
+    "bins": [
+      { "id": "b2b", "label": "B2B purchase" },
+      { "id": "b2c", "label": "B2C purchase" }
+    ],
+    "cards": [
+      {
+        "id": "robot",
+        "text": "Engineers, finance staff and a plant manager all sign off before a factory buys a new robot.",
+        "bin": "b2b",
+        "explanation": "Many people take part, so it has more decision participants, a trait of B2B purchases."
+      },
+      {
+        "id": "sandwich",
+        "text": "A student grabs a sandwich between classes.",
+        "bin": "b2c",
+        "explanation": "One person decides in a moment, with no formal process: a consumer purchase."
+      },
+      {
+        "id": "mri",
+        "text": "A hospital follows a written approval process with set steps before it buys an MRI machine.",
+        "bin": "b2b",
+        "explanation": "The B2B buying process is highly formalized, with written steps and approvals."
+      },
+      {
+        "id": "sofa",
+        "text": "A couple picks a sofa after a weekend of browsing stores.",
+        "bin": "b2c",
+        "explanation": "Two people shop for their own home. That is a consumer purchase, not an organization's formal buying effort."
+      },
+      {
+        "id": "airline",
+        "text": "An airline and its engine supplier work together for decades, and neither could easily replace the other.",
+        "bin": "b2b",
+        "explanation": "Buyers and sellers are highly dependent on each other in B2B markets and build long term relationships."
+      },
+      {
+        "id": "coffee",
+        "text": "A shopper switches coffee brands because another one is on sale this week.",
+        "bin": "b2c",
+        "explanation": "No close tie to the seller and no formal process: a quick consumer choice."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "roles-in-the-buying-center",
+    "prompt": "A restaurant chain is buying new kitchen ovens. Which buying center role does each person play?",
+    "options": [
+      { "id": "user", "label": "User" },
+      { "id": "influencer", "label": "Influencer" },
+      { "id": "buyer", "label": "Buyer" }
+    ],
+    "cases": [
+      {
+        "id": "cook",
+        "text": "Lina is a line cook who will bake with the new ovens every shift.",
+        "answer": "user",
+        "explanation": "Users are members of the organization who will actually use the product."
+      },
+      {
+        "id": "engineer",
+        "text": "An engineer writes down the size, power and heat the ovens must have.",
+        "answer": "influencer",
+        "explanation": "Influencers affect the buying decision by providing information or specifications."
+      },
+      {
+        "id": "purchasing",
+        "text": "The purchasing manager picks the oven supplier and negotiates the price and delivery dates.",
+        "answer": "buyer",
+        "explanation": "Buyers have formal authority to select the supplier and arrange terms."
+      },
+      {
+        "id": "consultant",
+        "text": "An outside energy consultant sends a report comparing how much power each oven uses.",
+        "answer": "influencer",
+        "explanation": "The consultant provides information that shapes the decision, which is what influencers do."
+      },
+      {
+        "id": "baker",
+        "text": "The pastry team will run the ovens every morning to bake bread.",
+        "answer": "user",
+        "explanation": "They will actually use the product, so they are users."
+      },
+      {
+        "id": "contract",
+        "text": "Marc from procurement signs the purchase contract with the chosen supplier.",
+        "answer": "buyer",
+        "explanation": "Arranging the terms with the supplier is the buyer's formal authority."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "types-of-buying-situations",
+    "prompt": "Each case is a business purchase. Which buying situation is it?",
+    "options": [
+      { "id": "straight", "label": "Straight rebuy" },
+      { "id": "modified", "label": "Modified rebuy" },
+      { "id": "new", "label": "New task" }
+    ],
+    "cases": [
+      {
+        "id": "paper",
+        "text": "An office reorders the same printer paper from the same supplier, as it does every month.",
+        "answer": "straight",
+        "explanation": "A routine reorder without modifications is a straight rebuy."
+      },
+      {
+        "id": "cups",
+        "text": "A café chain keeps its cup supplier but now wants compostable cups at a new price.",
+        "answer": "modified",
+        "explanation": "The buyer wants to modify product specifications and prices, so it is a modified rebuy."
+      },
+      {
+        "id": "drone",
+        "text": "A farm buys crop-spraying drones for the first time.",
+        "answer": "new",
+        "explanation": "The buyer purchases the product for the first time, so it is a new task."
+      },
+      {
+        "id": "switch",
+        "text": "A school board keeps buying the same laptops but moves the order to a cheaper supplier.",
+        "answer": "modified",
+        "explanation": "Changing the supplier is a modification, so this is a modified rebuy."
+      },
+      {
+        "id": "gloves",
+        "text": "A clinic's system automatically reorders the same box of gloves whenever stock runs low.",
+        "answer": "straight",
+        "explanation": "Nothing changes in the order, so it is a straight rebuy."
+      },
+      {
+        "id": "software",
+        "text": "A small firm buys accounting software for the first time after years of spreadsheets.",
+        "answer": "new",
+        "explanation": "It has never bought this kind of product before, so it is a new task."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "key-account-management",
+    "question_text": "A packaging firm earns most of its profit from three large retailers, so it gives each one a dedicated team and custom solutions. What is the firm practicing?",
+    "hint": "Look for the most valuable customers, dedicated teams, and customized solutions.",
+    "correct_answer_citation": "Week 04 · Key Account Management (KAM)",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "A straight rebuy, since the retailers reorder the same packaging.",
+        "option_explanation": "A straight rebuy describes a buyer's routine reorder, not how a supplier manages its most valuable customers."
+      },
+      {
+        "option_text": "Derived demand, since retailers set the firm's prices.",
+        "option_explanation": "Derived demand is about demand coming from consumer demand. This case is about dedicated teams for the top customers."
+      },
+      {
+        "option_text": "Gatekeeping, since the dedicated teams control information.",
+        "option_explanation": "Gatekeepers control the flow of information inside a buying organization, not a supplier's service to its best customers."
+      },
+      {
+        "option_text": "Key Account Management with its most valuable customers.",
+        "option_explanation": "Correct. KAM builds long term relationships with the most valuable customers, who contribute disproportionately to revenue and profit, through dedicated teams and customized solutions."
+      }
+    ]
+  }
+]

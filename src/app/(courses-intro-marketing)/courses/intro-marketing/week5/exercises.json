@@ -1,0 +1,272 @@
+[
+  {
+    "type": "quiz",
+    "slide_id": "defining-the-problem",
+    "question_text": "A research team skips agreeing on objectives and starts collecting data right away. Why is this risky?",
+    "hint": "Think about what the first step does for every step that comes after it.",
+    "correct_answer_citation": "Week 05 · Step 1: Defining the Problem",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Research objectives are only set after data is analyzed.",
+        "option_explanation": "The first step is to define the problem and agree on research objectives, before any data is collected."
+      },
+      {
+        "option_text": "Defining the problem is the easiest step to redo later.",
+        "option_explanation": "Defining the problem is often the hardest step, not the easiest."
+      },
+      {
+        "option_text": "The first step guides the entire research process.",
+        "option_explanation": "Correct. Defining the problem is often the hardest step, as it guides the entire research process."
+      },
+      {
+        "option_text": "Objectives only matter when the research is causal.",
+        "option_explanation": "Objectives can be exploratory, descriptive, or causal. Every kind of research needs them."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "developing-the-research-plan",
+    "prompt": "A Montréal bakery chain is writing its research plan. Which part of the plan is each decision?",
+    "options": [
+      { "id": "info", "label": "The exact information needed" },
+      { "id": "sources", "label": "Sources of existing data" },
+      { "id": "approach", "label": "A specific research approach" },
+      { "id": "balance", "label": "Cost against the value of insights" }
+    ],
+    "cases": [
+      {
+        "id": "which-hours",
+        "text": "The plan states that the team must learn which hours of the day bring the fewest customers into each shop.",
+        "answer": "info",
+        "explanation": "Pinning down exactly what the team needs to learn is the plan determining the exact information needed."
+      },
+      {
+        "id": "till-records",
+        "text": "The plan lists the chain's own till records and a city report on foot traffic as places to look first.",
+        "answer": "sources",
+        "explanation": "Till records and a city report already exist. Listing them is outlining sources of existing data."
+      },
+      {
+        "id": "questionnaire",
+        "text": "The plan says the team will hand a short questionnaire to 300 customers at the counter.",
+        "answer": "approach",
+        "explanation": "Saying how new information will be gathered spells out a specific research approach."
+      },
+      {
+        "id": "cheaper-study",
+        "text": "A $40,000 study is dropped for a $3,000 one, because the answer will only change the opening hours of two shops.",
+        "answer": "balance",
+        "explanation": "The plan weighs what the data costs against what the insights are worth to the decision."
+      },
+      {
+        "id": "price-point",
+        "text": "The plan states that the team must find the highest price customers would pay for a dozen croissants.",
+        "answer": "info",
+        "explanation": "A precise statement of what must be found out is the exact information needed."
+      },
+      {
+        "id": "watch-line",
+        "text": "The plan says a researcher will stand in two shops and count how long people wait in line.",
+        "answer": "approach",
+        "explanation": "This spells out how the data will be gathered: a specific research approach."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "secondary-data",
+    "prompt": "A sporting-goods retailer wants to know why winter-boot sales fell. Match each source of secondary data to what the retailer finds there.",
+    "term_label": "Source",
+    "match_label": "What the retailer finds",
+    "pairs": [
+      {
+        "id": "internal",
+        "term": "Internal databases",
+        "match": "Its own sales records from the last five winters",
+        "explanation": "The records were kept for accounting, inside the company. They already exist, so they are internal secondary data."
+      },
+      {
+        "id": "government",
+        "term": "Government reports",
+        "match": "Statistics Canada figures on household spending",
+        "explanation": "A government agency published these figures for its own purposes. They already exist and can be relevant to the retailer's problem."
+      },
+      {
+        "id": "commercial",
+        "term": "Commercial data services",
+        "match": "A market-research firm's report on footwear sales, sold to any buyer",
+        "explanation": "A firm collects and sells this data to many clients. It is a commercial data service."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "primary-data",
+    "prompt": "A coffee chain is gathering data. Sort each piece: is it primary data or secondary data?",
+    "bins": [
+      { "id": "primary", "label": "Primary data" },
+      { "id": "secondary", "label": "Secondary data" }
+    ],
+    "cards": [
+      {
+        "id": "taste-test",
+        "text": "Answers from a taste test the chain runs this week on its new oat latte.",
+        "bin": "primary",
+        "explanation": "The taste test is collected for the specific purpose at hand, so it is primary data."
+      },
+      {
+        "id": "census",
+        "text": "Census figures on how many people live near each café.",
+        "bin": "secondary",
+        "explanation": "The census already exists and was collected for another purpose. That makes it secondary data."
+      },
+      {
+        "id": "receipts",
+        "text": "Last year's sales receipts, kept for the accountants.",
+        "bin": "secondary",
+        "explanation": "The receipts already exist in an internal database, collected for another purpose."
+      },
+      {
+        "id": "interviews",
+        "text": "Interviews with 20 regulars about why they stopped buying muffins.",
+        "bin": "primary",
+        "explanation": "The interviews are collected for this specific problem. That is primary data."
+      },
+      {
+        "id": "industry-report",
+        "text": "A research firm's report on coffee trends that it sells to many companies.",
+        "bin": "secondary",
+        "explanation": "A commercial data service collected it for many buyers. It already exists, so it is secondary data."
+      },
+      {
+        "id": "count",
+        "text": "A count, taken by staff this morning, of how many customers order to go.",
+        "bin": "primary",
+        "explanation": "Staff gathered it for the question at hand, so it is primary data."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "primary-research-approaches",
+    "prompt": "Each case gathers primary data. Which research approach is it?",
+    "options": [
+      { "id": "observational", "label": "Observational research" },
+      { "id": "survey", "label": "Survey research" },
+      { "id": "experimental", "label": "Experimental research" }
+    ],
+    "cases": [
+      {
+        "id": "aisle",
+        "text": "A grocer films how shoppers move through the cereal aisle and where they stop.",
+        "answer": "observational",
+        "explanation": "The grocer gathers data by observing relevant people and actions."
+      },
+      {
+        "id": "brand-aware",
+        "text": "A bank asks 1,000 students which credit cards they have heard of and how they feel about each one.",
+        "answer": "survey",
+        "explanation": "Asking about knowledge and attitudes gathers descriptive information. That is survey research."
+      },
+      {
+        "id": "two-prices",
+        "text": "A café sells a muffin at $3 in one shop and $4 in a matched shop, keeping everything else the same.",
+        "answer": "experimental",
+        "explanation": "Matched groups and controlled factors show whether the price causes a change in sales. That is causal information."
+      },
+      {
+        "id": "gym",
+        "text": "A gym counts which machines members use most at each hour of the day.",
+        "answer": "observational",
+        "explanation": "The gym watches what members do instead of asking them. That is observational research."
+      },
+      {
+        "id": "two-emails",
+        "text": "An online store sends two matched groups the same email with different subject lines to see which one causes more clicks.",
+        "answer": "experimental",
+        "explanation": "Two matched groups, one factor changed: experimental research gathers causal information."
+      },
+      {
+        "id": "rating",
+        "text": "A hotel emails guests a form asking them to rate their stay from 1 to 5.",
+        "answer": "survey",
+        "explanation": "A rating form gathers descriptive information about attitudes. That is survey research."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "customer-relationship-management",
+    "question_text": "A bank's sales, service, and marketing teams each keep separate notes on the same client and never share them. Which idea is the bank failing to apply?",
+    "hint": "Which idea brings together everything the teams know about individual customers?",
+    "correct_answer_citation": "Week 05 · Customer Relationship Management (CRM)",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Experimental research, which matches groups and controls factors.",
+        "option_explanation": "Experimental research gathers causal information. It does not combine what teams know about customers."
+      },
+      {
+        "option_text": "CRM, which integrates what those teams know about customers.",
+        "option_explanation": "Correct. CRM manages detailed information about individual customers and integrates what sales, service, and marketing teams know."
+      },
+      {
+        "option_text": "Survey research, which gathers knowledge and attitudes.",
+        "option_explanation": "Survey research gathers descriptive information. The bank's problem is unshared customer information."
+      },
+      {
+        "option_text": "Big Data, which refers to huge and complex data sets.",
+        "option_explanation": "Big Data describes huge, complex data sets. The bank needs to integrate its teams' customer knowledge."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "role-of-marketing-analytics",
+    "prompt": "An online clothing store runs analytics on its data. Sort each finding: does it give a customer insight, or gauge marketing performance?",
+    "bins": [
+      { "id": "insight", "label": "Customer insight" },
+      { "id": "performance", "label": "Marketing performance" }
+    ],
+    "cards": [
+      {
+        "id": "rain",
+        "text": "Shoppers in Montréal buy rain jackets two days before a rainy forecast.",
+        "bin": "insight",
+        "explanation": "A pattern in how customers behave is a customer insight."
+      },
+      {
+        "id": "email",
+        "text": "The spring email campaign brought 12% more visits than last spring's.",
+        "bin": "performance",
+        "explanation": "Measuring what a campaign achieved gauges marketing performance."
+      },
+      {
+        "id": "sizes",
+        "text": "Customers who return one size usually reorder the next size up.",
+        "bin": "insight",
+        "explanation": "This shows how customers act, so it is a customer insight."
+      },
+      {
+        "id": "ad-cost",
+        "text": "Each sale from video ads cost $9, against $4 from search ads.",
+        "bin": "performance",
+        "explanation": "Comparing what each ad channel returns gauges marketing performance."
+      },
+      {
+        "id": "late-night",
+        "text": "Parents of young children mostly shop after 10 p.m. on their phones.",
+        "bin": "insight",
+        "explanation": "A pattern in when and how a group of customers shops is a customer insight."
+      },
+      {
+        "id": "banner",
+        "text": "The new homepage banner raised sales of the featured jacket by 20%.",
+        "bin": "performance",
+        "explanation": "Checking the result of a marketing action gauges marketing performance."
+      }
+    ]
+  }
+]

@@ -177,13 +177,6 @@ export function headAlong1(x: number, y: number, dx: number, dy: number, s = 8) 
   return `M${(bx + px).toFixed(2)} ${(by + py).toFixed(2)}L${x.toFixed(2)} ${y.toFixed(2)}L${(bx - px).toFixed(2)} ${(by - py).toFixed(2)}`;
 }
 
-export function Schematic({ x = 792, y = 18 }: { x?: number; y?: number }) {
-  return (
-    <Key x={x} y={y} anchor="end" size={9} fill={INK3}>
-      SCHEMATIC
-    </Key>
-  );
-}
 
 /** Deterministic 0–1 hash, so scattered marks match on server and client. */
 export const hash1 = (n: number) => {

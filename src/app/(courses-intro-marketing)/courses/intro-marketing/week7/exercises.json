@@ -1,0 +1,263 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "defining-a-product",
+    "prompt": "Each of these is offered to a market, so each is a product. Which kind of product is it?",
+    "options": [
+      { "id": "object", "label": "Physical object" },
+      { "id": "service", "label": "Service" },
+      { "id": "event", "label": "Event" },
+      { "id": "person", "label": "Person" },
+      { "id": "place", "label": "Place" },
+      { "id": "organization", "label": "Organization" },
+      { "id": "idea", "label": "Idea" }
+    ],
+    "cases": [
+      {
+        "id": "tourism-montreal",
+        "text": "Tourism Montréal runs ads inviting Americans to spend a weekend in the city.",
+        "answer": "place",
+        "explanation": "The city itself is being offered for attention and a visit, so the product is a place."
+      },
+      {
+        "id": "osheaga",
+        "text": "Osheaga sells passes for its three-day music festival in Parc Jean-Drapeau.",
+        "answer": "event",
+        "explanation": "A festival happens on set dates, so the product is an event."
+      },
+      {
+        "id": "seatbelt",
+        "text": "A government campaign urges drivers to put their phone away at the wheel.",
+        "answer": "idea",
+        "explanation": "Nothing is sold here. The campaign offers a way of thinking and acting, so the product is an idea."
+      },
+      {
+        "id": "centraide",
+        "text": "Centraide asks people to support its work across the community with a monthly gift.",
+        "answer": "organization",
+        "explanation": "People are asked to back the charity as a whole, so the product is an organization."
+      },
+      {
+        "id": "athlete",
+        "text": "An agent pitches a star hockey player to brands looking for a new face.",
+        "answer": "person",
+        "explanation": "The player is the one being offered to the brands, so the product is a person."
+      },
+      {
+        "id": "haircut",
+        "text": "A salon on Saint-Denis offers a cut and style for $45.",
+        "answer": "service",
+        "explanation": "The customer pays for work done for them, so the product is a service."
+      },
+      {
+        "id": "bike",
+        "text": "A shop sells a city bike that buyers can ride home the same day.",
+        "answer": "object",
+        "explanation": "The bike is a thing the buyer takes away, so the product is a physical object."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "specialty-and-unsought-goods",
+    "prompt": "Which kind of consumer good is each purchase?",
+    "options": [
+      { "id": "convenience", "label": "Convenience good" },
+      { "id": "shopping", "label": "Shopping good" },
+      { "id": "specialty", "label": "Specialty good" },
+      { "id": "unsought", "label": "Unsought good" }
+    ],
+    "cases": [
+      {
+        "id": "gum",
+        "text": "A student grabs a pack of gum at the checkout without looking at other brands.",
+        "answer": "convenience",
+        "explanation": "It is bought often and with minimal comparison, like toothpaste."
+      },
+      {
+        "id": "coat",
+        "text": "A shopper visits three stores to compare winter coats on warmth, price, and look.",
+        "answer": "shopping",
+        "explanation": "The buyer plans and compares on quality, price, and style, like furniture."
+      },
+      {
+        "id": "watch",
+        "text": "A buyer waits eight months for one particular watch brand and will not take any other.",
+        "answer": "specialty",
+        "explanation": "Strong brand identification leads to special purchase effort, like a luxury car."
+      },
+      {
+        "id": "funeral",
+        "text": "A salesperson calls about a pre-paid funeral plan that the family had never considered.",
+        "answer": "unsought",
+        "explanation": "It is a product consumers do not normally think of buying, like life insurance."
+      },
+      {
+        "id": "milk",
+        "text": "A parent picks up milk at the dépanneur on the way home, as they do every few days.",
+        "answer": "convenience",
+        "explanation": "It is bought frequently with little thought about alternatives."
+      },
+      {
+        "id": "sofa",
+        "text": "A couple spends two weekends testing sofas before choosing one.",
+        "answer": "shopping",
+        "explanation": "This takes more planning and comparison on quality, price, and style."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "the-product-life-cycle",
+    "prompt": "Put the five stages of the product life cycle in order, from first to last.",
+    "steps": [
+      {
+        "id": "development",
+        "text": "Development",
+        "explanation": "The product is developed before it can reach the market."
+      },
+      {
+        "id": "introduction",
+        "text": "Introduction",
+        "explanation": "Next, the product is introduced to the market."
+      },
+      {
+        "id": "growth",
+        "text": "Growth",
+        "explanation": "After introduction, the product grows."
+      },
+      {
+        "id": "maturity",
+        "text": "Maturity",
+        "explanation": "Growth gives way to maturity."
+      },
+      {
+        "id": "decline",
+        "text": "Decline",
+        "explanation": "Decline is the last of the five stages."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "new-product-development-process",
+    "prompt": "A snack company is working on a new protein bar. Which step of the process is each moment?",
+    "options": [
+      { "id": "generation", "label": "Idea generation" },
+      { "id": "screening", "label": "Idea screening" },
+      { "id": "concept", "label": "Concept development and testing" },
+      { "id": "strategy", "label": "Marketing strategy development" }
+    ],
+    "cases": [
+      {
+        "id": "contest",
+        "text": "Staff, suppliers, and customers send in 300 suggestions for new snacks.",
+        "answer": "generation",
+        "explanation": "The company is sourcing new concepts."
+      },
+      {
+        "id": "cut",
+        "text": "The team drops every idea that would need a new factory, leaving five.",
+        "answer": "screening",
+        "explanation": "The team is filtering the concepts it has."
+      },
+      {
+        "id": "panel",
+        "text": "A written description of the bar is shown to twenty gym-goers, who say what they think.",
+        "answer": "concept",
+        "explanation": "The idea is being tested with a group of target consumers."
+      },
+      {
+        "id": "plan",
+        "text": "The team writes down who the bar is for, how it will be positioned, and a first-year budget.",
+        "answer": "strategy",
+        "explanation": "This outlines the initial marketing strategy for the new product."
+      },
+      {
+        "id": "survey",
+        "text": "Students in the target market react to two versions of the bar's description.",
+        "answer": "concept",
+        "explanation": "Trying the idea on target consumers is concept testing."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "branding-strategy",
+    "question_text": "In a blind taste test, shoppers rate two colas the same. When the labels are shown, they rate one far higher and say they would pay more for it. What does that difference show?",
+    "hint": "The drink did not change. Only knowing the name did.",
+    "correct_answer_citation": "Week 07 · The Concept: Branding Strategy",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Brand equity",
+        "option_explanation": "Correct. Brand equity is the differential effect that knowing the brand name has on customer response to the product or its marketing."
+      },
+      {
+        "option_text": "Product life cycle",
+        "option_explanation": "The product life cycle describes sales and profits over a product's lifetime. It does not explain a change caused by seeing a name."
+      },
+      {
+        "option_text": "Concept testing",
+        "option_explanation": "Concept testing tries a new idea on target consumers. These colas are existing brands."
+      },
+      {
+        "option_text": "Test marketing",
+        "option_explanation": "Test marketing introduces a new product into realistic market settings. The difference here comes from knowing the brand name."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "the-nature-of-services",
+    "prompt": "After paying, does the buyer own something, or have they bought a service?",
+    "bins": [
+      { "id": "service", "label": "A service: no ownership" },
+      { "id": "good", "label": "A physical good: the buyer owns it" }
+    ],
+    "cards": [
+      {
+        "id": "tour",
+        "text": "A guided walking tour of Old Québec",
+        "bin": "service",
+        "explanation": "The visitor pays for an activity. When it ends, they own nothing from it."
+      },
+      {
+        "id": "hotel",
+        "text": "A night in a hotel room",
+        "bin": "service",
+        "explanation": "The guest uses the room but does not own it."
+      },
+      {
+        "id": "tax",
+        "text": "An accountant preparing a tax return",
+        "bin": "service",
+        "explanation": "The client buys the accountant's work, a benefit, not an object."
+      },
+      {
+        "id": "massage",
+        "text": "A one-hour massage",
+        "bin": "service",
+        "explanation": "It is a satisfaction offered for sale. Nothing is taken home."
+      },
+      {
+        "id": "boots",
+        "text": "A pair of winter boots",
+        "bin": "good",
+        "explanation": "The buyer takes the boots home and owns them."
+      },
+      {
+        "id": "coffee",
+        "text": "A bag of coffee beans",
+        "bin": "good",
+        "explanation": "The beans are a physical object the buyer now owns."
+      },
+      {
+        "id": "phone",
+        "text": "A new phone",
+        "bin": "good",
+        "explanation": "The phone is tangible and belongs to the buyer."
+      }
+    ]
+  }
+]

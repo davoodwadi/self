@@ -18,7 +18,6 @@ import {
   ModulePlate2,
   pad,
   RULED,
-  Schematic,
   Split1,
   Steps,
   SVG_LABEL,
@@ -34,8 +33,7 @@ import {
 // argument, with hairlines instead of boxes and crimson marking one thing.
 //
 // Sentences are transcribed verbatim from content.md. Figures carry only words
-// that already appear in the slide's sentences; any shape that suggests a
-// quantity is labelled SCHEMATIC because content.md gives no numbers.
+// that already appear in the slide's sentences.
 //
 // Quizzes: `Slide` renders `quizData` BEFORE its section. content.md for this
 // week carries no [quiz] tags, so the tested topics follow Week 03's density
@@ -205,7 +203,6 @@ export default function Week04HumanResources() {
                   );
                 })}
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -1272,7 +1269,6 @@ export default function Week04HumanResources() {
                   strokeOpacity="0.12"
                 />
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -1444,7 +1440,6 @@ export default function Week04HumanResources() {
                 </span>
               </div>
             ))}
-            <Schematic className="pt-1" />
           </figure>
         </div>
 
@@ -1663,7 +1658,6 @@ export default function Week04HumanResources() {
                   WORKFORCE FORECASTS
                 </text>
               </svg>
-              <Schematic />
             </figure>
             <p className={`${DISPLAY} mt-6 max-w-4xl`}>
               Leaders should treat workforce forecasts as decision support
@@ -1859,7 +1853,6 @@ export default function Week04HumanResources() {
                 SHIFT COVERAGE
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -2627,7 +2620,6 @@ export default function Week04HumanResources() {
               </text>
               <path d="M500 64V102" stroke="var(--crimson)" strokeOpacity="0.3" strokeDasharray="2 3" />
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -3086,7 +3078,6 @@ export default function Week04HumanResources() {
                   STRUCTURAL BARRIERS
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>

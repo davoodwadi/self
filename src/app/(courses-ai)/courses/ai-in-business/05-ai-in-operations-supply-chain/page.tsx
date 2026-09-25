@@ -19,7 +19,6 @@ import {
   pad,
   PartPlate1,
   RULED,
-  Schematic,
   Split1,
   Steps,
   SVG_LABEL,
@@ -34,8 +33,7 @@ import {
 // argument, with hairlines instead of boxes and crimson marking one thing.
 //
 // Sentences are transcribed verbatim from content.md. Figures carry only words
-// that already appear in the slide's sentences; any shape that suggests a
-// quantity is labelled SCHEMATIC because content.md gives no numbers.
+// that already appear in the slide's sentences.
 //
 // Quizzes: `Slide` renders `quizData` BEFORE its section. A [quiz] tag in
 // content.md marks the topic to test, so each quiz is attached to the slide
@@ -548,7 +546,6 @@ export default function Week05OperationsSupplyChain() {
                   DEEP LEARNING
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -681,7 +678,6 @@ export default function Week05OperationsSupplyChain() {
                 WEEKS BEFORE
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -971,7 +967,6 @@ export default function Week05OperationsSupplyChain() {
                   LONG BEFORE
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -1055,7 +1050,6 @@ export default function Week05OperationsSupplyChain() {
                 RETAIL DEMAND
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -1154,7 +1148,6 @@ export default function Week05OperationsSupplyChain() {
                   STRUCTURAL SHIFTS
                 </text>
               </svg>
-              <Schematic />
             </figure>
             <p className={`${DISPLAY} mt-6 max-w-4xl`}>
               Predictive analytics prevent manufacturers from overreacting to
@@ -1261,7 +1254,6 @@ export default function Week05OperationsSupplyChain() {
                   EXCESS HOLDING COSTS
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
 
@@ -1317,7 +1309,6 @@ export default function Week05OperationsSupplyChain() {
                   OPTIMAL INVENTORY TARGETS
                 </text>
               </svg>
-              <Schematic />
             </figure>
             <Terms
               items={["real-time demand probabilities", "supplier lead times"]}
@@ -1464,7 +1455,6 @@ export default function Week05OperationsSupplyChain() {
                 PREDICTING
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -1527,7 +1517,6 @@ export default function Week05OperationsSupplyChain() {
                       strokeOpacity="0.12"
                     />
                   </svg>
-                  <Schematic />
                 </figure>
               ))}
             </div>
@@ -1574,7 +1563,6 @@ export default function Week05OperationsSupplyChain() {
                   strokeWidth="2"
                 />
               </svg>
-              <Schematic />
             </figure>
             <p className={`${DISPLAY} mt-6 max-w-4xl`}>
               Advanced models automatically adjust their parameters when
@@ -1699,7 +1687,6 @@ export default function Week05OperationsSupplyChain() {
                 THOUSANDS OF DELIVERIES
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -2115,7 +2102,6 @@ export default function Week05OperationsSupplyChain() {
                   COMPONENT FAILURES
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -3352,7 +3338,6 @@ export default function Week05OperationsSupplyChain() {
               </div>
               <div className="h-full flex-1 bg-[var(--charcoal)]/10" />
             </div>
-            <Schematic className="mt-2" />
           </figure>
         </div>
 
@@ -3412,7 +3397,6 @@ export default function Week05OperationsSupplyChain() {
                   Before making purchasing decisions
                 </span>
               </div>
-              <Schematic className="mt-2" />
             </figure>
             <p className={`${DISPLAY} mt-7 max-w-4xl`}>
               AI models help procurement teams evaluate the carbon impact of
@@ -3591,7 +3575,6 @@ export default function Week05OperationsSupplyChain() {
                   REVERSE NETWORK CAPACITY
                 </text>
               </svg>
-              <Schematic />
             </figure>
             <Terms items={["product characteristics", "seasonal trends"]} />
             <p className={`${DISPLAY} mt-7 max-w-4xl`}>
@@ -3673,7 +3656,6 @@ export default function Week05OperationsSupplyChain() {
                 <div className={`${MICRO} mt-3 text-right text-[var(--crimson)]`}>
                   {panel.excessLabel}
                 </div>
-                <Schematic className="mt-1" />
               </figure>
               <Terms items={panel.terms} />
             </div>
@@ -4107,7 +4089,6 @@ export default function Week05OperationsSupplyChain() {
                   INTERCONNECTED · AUTOMATED
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>

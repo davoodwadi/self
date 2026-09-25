@@ -15,7 +15,6 @@
    Conventions carried over from earlier weeks:
      · viewBox width 800 (400 for column plates), flat fills, hairline rules
      · every label reuses words from the slide the plate sits on
-     · anything implying a quantity the content does not give is SCHEMATIC
      · trig results rounded, so server and client render the same markup
    ========================================================================== */
 
@@ -36,7 +35,6 @@ import {
   r2,
   RULE,
   RULE2,
-  Schematic,
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
@@ -817,7 +815,6 @@ export function TrackAdjust() {
       label="A chart with a campaign line tracked over time. It dips; at the low point a feedback bubble appears right away; a turning arrow marks the adjustment, and the line climbs again. A dashed line shows where the unchanged campaign would have gone."
     >
       <g>
-        <Schematic x={776} y={24} />
         <path d="M60 40V230H770" fill="none" stroke={INK} strokeWidth={1.25} />
         <path d="M60 140C160 130 230 150 300 190" fill="none" stroke={INK} strokeWidth={2.25} />
         <path d="M300 190C380 230 460 244 560 250" fill="none" stroke={INK3} strokeWidth={1.25} strokeDasharray="5 4" />
@@ -1298,7 +1295,7 @@ export function SeoThree() {
  * One plot, one time axis. Traffic builds and holds; direct advertising cost
  * lies flat on zero. The axis is offset a few units below zero so the cost
  * line reads as its own line instead of merging with the axis. Both lines are
- * labelled at their ends. No values are given, so the plate is SCHEMATIC.
+ * labelled at their ends.
  */
 export function SeoTraffic() {
   const L = 70;
@@ -1320,7 +1317,6 @@ export function SeoTraffic() {
       height={286}
       label="One chart over time. A teal area rises slowly, climbs, and then holds high to the end, labelled long-term, sustainable traffic. Along its bottom edge a persimmon line lies flat on zero from start to finish, labelled direct advertising costs. A single time axis runs just below."
     >
-      <Schematic x={792} y={18} />
       {[25, 50, 75, 100].map((v) => (
         <line key={v} x1={L} y1={Y(v)} x2={R} y2={Y(v)} stroke={RULE} strokeWidth={0.75} />
       ))}
@@ -1527,7 +1523,6 @@ export function Monitoring() {
       height={270}
       label="A monitor showing two lines over time, ad spend and return. An eye watches it. Beside it a budget dial with a hand turning the needle: constant monitoring and budget optimization, aimed at return on ad spend."
     >
-      <Schematic x={392} y={16} />
       <rect x={20} y={30} width={240} height={150} rx={4} fill={PAPER} stroke={INK} strokeWidth={1.5} />
       <path d="M130 180V204M96 206H164" stroke={INK} strokeWidth={1.5} />
       <path d="M40 150H240" stroke={RULE} strokeWidth={1} />
@@ -2597,7 +2592,6 @@ export function Escalation() {
       height={290}
       label="A chart of negative mentions over time. A dashed curve rises steeply into a shaded zone at the top labelled crisis. The solid line follows it only at the start: at an early point marked with the brand seal, the brand addresses the issue and the line flattens out well below the crisis zone."
     >
-      <Schematic x={776} y={24} />
       <rect x={70} y={36} width={700} height={52} fill={COUNTER_TINT} />
       <Key x={760} y={66} anchor="end" fill={COUNTER} size={10.5}>
         CRISES
@@ -2733,7 +2727,6 @@ export function MicroVsCeleb() {
       height={330}
       label="Two audiences drawn as dots. Left, a high-profile celebrity above a big field of sixty dots, only a handful lit as engaged. Right, a micro-influencer above a small field of twelve dots, more than half of them lit. The right field is small but its share of engaged dots is far higher."
     >
-      <Schematic x={776} y={24} />
       {/* celebrity with a star */}
       <Person3 x={200} y={84} k={1.6} stroke={INK} />
       <Star2 x={228} y={36} r={11} tone={INK} fill={PAPER} />
@@ -2880,7 +2873,6 @@ export function MetricSpan() {
       <Display x={120} y={210} anchor="middle" size={26} fill={SIGNAL}>
         2 / 10
       </Display>
-      <Schematic x={200} y={234} />
       {/* attribution */}
       <path d="M380 150H720" stroke={INK} strokeWidth={1.5} strokeDasharray="4 3" />
       <Person3 x={380} y={168} k={0.9} stroke={INK} />
@@ -2912,7 +2904,6 @@ export function MetricSpan() {
           return el;
         });
       })()}
-      <Schematic x={760} y={258} />
     </Frame>
   );
 }

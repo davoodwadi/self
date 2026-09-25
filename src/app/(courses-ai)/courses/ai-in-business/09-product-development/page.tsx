@@ -26,7 +26,6 @@ import {
   PAIR,
   PartPlate3,
   RULED,
-  Schematic,
   Split2,
   Stat2,
   SVG_LABEL,
@@ -42,9 +41,8 @@ import {
 // its own Discussion prompt. The [cite: N] markers are set as superscript
 // source numbers. content.md lists no sources for them (its References slide
 // points to deepResearch.md), so they are not linked. Figures carry only words
-// that already appear on their slide; any shape that suggests a quantity is
-// labelled SCHEMATIC, except where content.md gives the number ("up to 12
-// months") and the figure is drawn to it.
+// that already appear on their slide; where content.md gives the number ("up to 12
+// months"), the figure is drawn to it.
 //
 // Quizzes: `Slide` renders `quizData` BEFORE its section. content.md tags two
 // topics [quiz] (The Paradigm Shift; Divergent vs. Convergent Thinking), so
@@ -413,7 +411,6 @@ export default function Week09ProductDevelopment() {
                 <rect x="10" y="88" width="260" height="12" fill="var(--crimson)" />
                 <path d="M94.5 14V110" stroke="var(--charcoal)" strokeOpacity="0.4" strokeDasharray="2 3" />
               </svg>
-              <Schematic />
             </figure>
             <Labelled
               label="From Additive to Mainstream Generative Engineering:"
@@ -747,7 +744,6 @@ export default function Week09ProductDevelopment() {
                 PREDICTIVE FORECASTING
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -862,7 +858,6 @@ export default function Week09ProductDevelopment() {
                 SENTIMENT ANALYSIS
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -1203,7 +1198,6 @@ export default function Week09ProductDevelopment() {
                   SPARSE DATA
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
 
@@ -1227,7 +1221,6 @@ export default function Week09ProductDevelopment() {
                 </text>
                 <rect x="0" y="84" width="14" height="12" fill="var(--crimson)" />
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -1299,7 +1292,6 @@ export default function Week09ProductDevelopment() {
                       STATISTICALLY ACCURATE DATASETS
                     </text>
                   </svg>
-                  <Schematic />
                 </figure>
               </div>
 
@@ -1320,7 +1312,6 @@ export default function Week09ProductDevelopment() {
                       EDGE CASES
                     </text>
                   </svg>
-                  <Schematic />
                 </figure>
               </div>
             </div>
@@ -1433,7 +1424,6 @@ export default function Week09ProductDevelopment() {
                   DEVELOPMENT CYCLES
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -1687,7 +1677,6 @@ export default function Week09ProductDevelopment() {
                   FAILURE MODES
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -1852,7 +1841,6 @@ export default function Week09ProductDevelopment() {
                 NEW MATERIALS
               </text>
             </svg>
-            <Schematic />
           </figure>
         </div>
 
@@ -1877,7 +1865,6 @@ export default function Week09ProductDevelopment() {
                   CARBON-NEGATIVE
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
 
@@ -1904,7 +1891,6 @@ export default function Week09ProductDevelopment() {
                   LOWER CARBON FOOTPRINTS
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -2026,7 +2012,6 @@ export default function Week09ProductDevelopment() {
                   LEAD TIMES
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
         </div>
@@ -2262,7 +2247,6 @@ export default function Week09ProductDevelopment() {
                   ITERATION
                 </text>
               </svg>
-              <Schematic />
             </figure>
           </div>
 

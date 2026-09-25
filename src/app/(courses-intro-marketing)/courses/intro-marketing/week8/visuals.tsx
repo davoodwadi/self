@@ -15,8 +15,6 @@
      · INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or outward-looking state
      · every label reuses words from the slide the plate sits on
-     · anything that implies a quantity the content does not give is marked
-       SCHEMATIC
      · integer coordinates only, so server and client render the same markup
    ========================================================================== */
 
@@ -35,7 +33,6 @@ import {
   PAPER2,
   RULE,
   RULE2,
-  Schematic,
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
@@ -156,7 +153,6 @@ export function ChangeSpeed() {
   ];
   return (
     <Frame height={250} label="Three lanes, each with a bar for how long a change takes. Price: a sliver, changed quickly. Product features: a long bar. Channel commitments: the longest bar.">
-      <Schematic x={792} y={16} />
       {lanes.map((l) => (
         <g key={l.name}>
           <Key x={30} y={l.y + 4} fill={l.tone === INK3 ? INK : l.tone} size={10}>
@@ -409,7 +405,6 @@ export function CostLine({ kind }: { kind: "fixed" | "variable" }) {
           : "A chart of cost against production level. Variable costs are a line rising from zero: they vary directly with production."
       }
     >
-      <Schematic x={392} y={16} />
       <line x1={50} y1={30} x2={50} y2={182} stroke={INK3} strokeWidth={1.25} />
       <line x1={50} y1={182} x2={372} y2={182} stroke={INK3} strokeWidth={1.25} />
       <path d={headAlong1(374, 182, 1, 0)} fill="none" stroke={INK3} strokeWidth={1.25} />
@@ -447,7 +442,6 @@ export function CostLine({ kind }: { kind: "fixed" | "variable" }) {
 export function TotalCosts() {
   return (
     <Frame height={290} label="Left: a chart where a flat band of fixed costs and a rising wedge of variable costs stack into total costs. Right: a revenue bar that reaches above the total costs bar, and a long arrow: long-term viability.">
-      <Schematic x={792} y={16} />
       <rect x={60} y={160} width={340} height={40} fill={PAPER2} stroke={INK3} strokeWidth={1} />
       <path d="M60 160 L400 60 V160 Z" fill={COUNTER_TINT} />
       <line x1={60} y1={160} x2={400} y2={60} stroke={INK} strokeWidth={2.5} />
@@ -529,7 +523,6 @@ export function FloorCeiling() {
 export function DemandCurve() {
   return (
     <Frame width={400} height={240} label="A demand curve sloping down. At a high price, demand is low. At a low price, demand is high.">
-      <Schematic x={392} y={16} />
       <line x1={60} y1={30} x2={60} y2={200} stroke={INK3} strokeWidth={1.25} />
       <line x1={60} y1={200} x2={372} y2={200} stroke={INK3} strokeWidth={1.25} />
       <path d={headAlong1(60, 28, 0, -1)} fill="none" stroke={INK3} strokeWidth={1.25} />
@@ -568,7 +561,6 @@ export function MarketStructures() {
   ];
   return (
     <Frame height={250} label="Four markets side by side. Pure competition: many identical sellers. Monopolistic competition: many different sellers. Oligopoly: a few large sellers. Pure monopoly: one seller. Under each, a bar for pricing freedom grows from nearly empty to nearly full.">
-      <Schematic x={792} y={14} />
       {panels.map((p, i) => {
         const x = 16 + i * 196;
         const cx = x + 90;
@@ -671,7 +663,6 @@ export function Elasticity({ kind, title }: { kind: "inelastic" | "elastic"; tit
 export function RevenueForecast() {
   return (
     <Frame height={262} label="Revenues over time. At a price increase the line forks into a forecast. If demand is inelastic, revenues rise. If demand is elastic, revenues fall.">
-      <Schematic x={792} y={16} />
       <rect x={400} y={44} width={364} height={192} fill={PAPER2} />
       <Key x={410} y={228} fill={INK3} size={9}>
         FORECAST
@@ -973,7 +964,6 @@ export function CostBuildUp() {
   ];
   return (
     <Frame height={212} label="A price built up as one bar: the costs of producing, distributing, and selling the product, plus a fair rate of return for effort and risk. The bar ends in a price tag.">
-      <Schematic x={792} y={16} />
       <Factory2 x={135} y={96} />
       <Truck1 x={310} y={96} />
       <Store1 x={460} y={96} />
@@ -1031,7 +1021,6 @@ export function CostPlus() {
 export function BreakEven() {
   return (
     <Frame width={400} height={240} label="Break-even pricing: a chart with a total costs line that starts above zero and a revenue line that starts at zero and rises faster. They cross at the break-even point.">
-      <Schematic x={392} y={16} />
       <line x1={60} y1={22} x2={80} y2={22} stroke={SIGNAL} strokeWidth={2.5} />
       <Key x={88} y={26} fill={SIGNAL} size={9}>
         REVENUE
@@ -1170,7 +1159,6 @@ export function ValueJudged() {
 export function ValueJustifies() {
   return (
     <Frame width={400} height={236} label="Two bars of customer value, each with a price tag above it. The competitors' bar is shorter. Our offer's bar is taller, greater value, and its price tag sits higher.">
-      <Schematic x={392} y={16} />
       <rect x={20} y={14} width={12} height={12} fill={COUNTER} />
       <Key x={40} y={24} fill={INK} size={9}>
         CUSTOMER VALUE
@@ -1275,7 +1263,6 @@ export function SkimToPenetrate() {
   ];
   return (
     <Frame height={300} label="Price over the product life cycle, with a faint sales curve behind. Price starts high in introduction, labelled market skimming, and cascades down one step per stage through growth and maturity to a low price in decline, labelled market penetration.">
-      <Schematic x={792} y={14} />
       {bounds.slice(1, -1).map((x) => (
         <line key={x} x1={x} y1={42} x2={x} y2={280} stroke={RULE2} strokeWidth={1} strokeDasharray="3 4" />
       ))}
@@ -1504,7 +1491,6 @@ export function ManyBuyersShare() {
 export function CostsFall() {
   return (
     <Frame width={400} height={230} label="A chart of costs against sales volume. Production and distribution costs start high and fall as sales volume increases.">
-      <Schematic x={392} y={16} />
       <line x1={50} y1={30} x2={50} y2={190} stroke={INK3} strokeWidth={1.25} />
       <line x1={50} y1={190} x2={372} y2={190} stroke={INK3} strokeWidth={1.25} />
       <path d={headAlong1(50, 28, 0, -1)} fill="none" stroke={INK3} strokeWidth={1.25} />
@@ -1561,7 +1547,6 @@ export function TotalMixProfit() {
   const profits = [40, -24, 72, 32];
   return (
     <Frame height={276} label="Four products, each with its own price tag, together a set of prices. Their profit bars differ, and one sits below zero. They add up to one tall bar: profits on the total mix.">
-      <Schematic x={792} y={16} />
       <path d="M118 34 V28 H542 V34" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
       <Key x={330} y={20} anchor="middle" fill={SIGNAL} size={10}>
         A SET OF PRICES
@@ -1875,7 +1860,6 @@ export function CaptiveExamples() {
 export function CaptiveMarkups() {
   return (
     <Frame height={266} label="Price bars split into cost and markup. The main product's bar is almost all cost with a sliver of markup: priced low. Five captive supplies each have a small cost and a large markup: high markups.">
-      <Schematic x={792} y={16} />
       <rect x={600} y={40} width={12} height={12} fill={PAPER2} stroke={INK3} strokeWidth={1} />
       <Key x={620} y={50} fill={INK} size={9}>
         COST
