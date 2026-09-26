@@ -1,0 +1,286 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "qualitative-and-quantitative-research",
+    "prompt": "Sort each study by the approach it takes.",
+    "bins": [
+      { "id": "qual", "label": "Qualitative research" },
+      { "id": "quant", "label": "Quantitative research" }
+    ],
+    "cards": [
+      {
+        "id": "gym",
+        "text": "Twelve lapsed gym members are asked, in open conversation, why they stopped attending.",
+        "bin": "qual",
+        "explanation": "A small sample and an unstructured conversation about the reasons for behavior: qualitative research."
+      },
+      {
+        "id": "share",
+        "text": "A structured questionnaire estimates the share of 1,500 adults who order meal kits each month.",
+        "bin": "quant",
+        "explanation": "A large sample chosen to represent a population, and a measure of how often a behavior occurs: quantitative research."
+      },
+      {
+        "id": "photos",
+        "text": "Eight parents photograph their breakfast table every morning for a week and describe each photograph.",
+        "bin": "qual",
+        "explanation": "The data consist of images and words from a small sample: qualitative research."
+      },
+      {
+        "id": "rating",
+        "text": "A bank asks 900 customers to rate their satisfaction on a scale from 1 to 10 and compares the regions statistically.",
+        "bin": "quant",
+        "explanation": "Numbers that are analyzed statistically, from a large structured sample: quantitative research."
+      },
+      {
+        "id": "interpret",
+        "text": "After a survey shows that loyalty fell among young customers, the firm holds conversations with ten of them to understand why.",
+        "bin": "qual",
+        "explanation": "Qualitative research is also used after quantitative research, to interpret its findings."
+      },
+      {
+        "id": "extent",
+        "text": "A retailer measures, across 40 stores, how far the average basket value rises during a promotion.",
+        "bin": "quant",
+        "explanation": "Measuring to what extent a behavior occurs, across a large set of cases: quantitative research."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "depth-interviews",
+    "prompt": "A participant in a depth interview discusses a reusable water bottle. Put the answers in the order that laddering moves through them, from the product attribute to the personal value.",
+    "steps": [
+      {
+        "id": "attribute",
+        "text": "“The bottle keeps water cold all day.”",
+        "explanation": "Laddering begins with a product attribute: a property of the bottle itself."
+      },
+      {
+        "id": "consequence1",
+        "text": "“So I no longer buy drinks while I am out.”",
+        "explanation": "The first consequence: what the attribute allows the participant to do."
+      },
+      {
+        "id": "consequence2",
+        "text": "“So I produce less plastic waste.”",
+        "explanation": "A further consequence of the first one, one step closer to what the participant cares about."
+      },
+      {
+        "id": "value",
+        "text": "“Because I want to live responsibly.”",
+        "explanation": "The ladder ends at the personal value that the attribute ultimately serves."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "projective-techniques",
+    "prompt": "Each case describes a task given to a participant. Name the projective technique it uses.",
+    "options": [
+      { "id": "association", "label": "Association" },
+      { "id": "completion", "label": "Completion" },
+      { "id": "construction", "label": "Construction" },
+      { "id": "expressive", "label": "Expressive" }
+    ],
+    "cases": [
+      {
+        "id": "word",
+        "text": "The moderator says “energy drink”, and the participant says the first word that comes to mind.",
+        "answer": "association",
+        "explanation": "Responding to a word with the first word or idea that occurs: an association technique."
+      },
+      {
+        "id": "sentence",
+        "text": "The participant finishes the sentence “A man who drives an electric car is …”",
+        "answer": "completion",
+        "explanation": "Completing an incomplete sentence is a completion technique."
+      },
+      {
+        "id": "bubble",
+        "text": "The participant sees a drawing of two friends at a supermarket shelf and writes what one of them is saying.",
+        "answer": "construction",
+        "explanation": "Constructing the words spoken by a person in a drawing is a construction technique."
+      },
+      {
+        "id": "neighbour",
+        "text": "The participant describes how a typical neighbour feels when buying the cheapest brand of coffee.",
+        "answer": "expressive",
+        "explanation": "Describing the feelings of another person is the third-person technique, an expressive technique."
+      },
+      {
+        "id": "story",
+        "text": "The participant is given the opening of a story about a family choosing a holiday and writes how it ends.",
+        "answer": "completion",
+        "explanation": "Completing an incomplete story is a completion technique."
+      },
+      {
+        "id": "role",
+        "text": "The participant acts out the role of a salesperson trying to sell an insurance policy to a sceptical customer.",
+        "answer": "expressive",
+        "explanation": "Acting out a role is an expressive technique."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "selecting-a-qualitative-method",
+    "prompt": "Each case describes a research problem. Name the qualitative method that is most appropriate.",
+    "options": [
+      { "id": "focus", "label": "Focus group" },
+      { "id": "depth", "label": "Depth interview" },
+      { "id": "projective", "label": "Projective technique" },
+      { "id": "observation", "label": "Observation" },
+      { "id": "ethnography", "label": "Ethnography" },
+      { "id": "netnography", "label": "Netnography" }
+    ],
+    "cases": [
+      {
+        "id": "concepts",
+        "text": "A snack brand has five early concepts for a new flavour and wants reactions that build on one another.",
+        "answer": "focus",
+        "explanation": "Interaction among participants is expected to generate ideas in the early evaluation of concepts: a focus group."
+      },
+      {
+        "id": "debt",
+        "text": "A bank wants to understand how customers decided to consolidate their personal debts.",
+        "answer": "depth",
+        "explanation": "A sensitive topic and a complex decision: depth interviews."
+      },
+      {
+        "id": "status",
+        "text": "A luxury watch brand suspects that buyers are reluctant to admit that social status motivates their purchase.",
+        "answer": "projective",
+        "explanation": "Participants are unlikely to state their true motives directly, so an indirect, projective technique is appropriate."
+      },
+      {
+        "id": "aisle",
+        "text": "A retailer needs to know how long shoppers spend at the coffee shelf and which packages they pick up.",
+        "answer": "observation",
+        "explanation": "The behavior itself is the object of study, and shoppers cannot accurately report it: observation."
+      },
+      {
+        "id": "cooking",
+        "text": "A kitchen appliance firm wants to understand how families prepare weekday dinners in their own homes.",
+        "answer": "ethnography",
+        "explanation": "The research requires an understanding of behavior in its everyday context: ethnography."
+      },
+      {
+        "id": "gamers",
+        "text": "A game publisher wants to understand how players discuss a new game's pricing in forums and review platforms.",
+        "answer": "netnography",
+        "explanation": "The relevant consumers discuss the topic in online communities: netnography."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "coding",
+    "prompt": "Sort each coding decision by the approach it follows.",
+    "bins": [
+      { "id": "deductive", "label": "Deductive coding" },
+      { "id": "inductive", "label": "Inductive coding" }
+    ],
+    "cards": [
+      {
+        "id": "theory",
+        "text": "Before reading the transcripts, the analyst lists codes for the five dimensions of a published model of service quality.",
+        "bin": "deductive",
+        "explanation": "The codes are defined in advance on the basis of theory: deductive coding."
+      },
+      {
+        "id": "emerge",
+        "text": "While reading, the analyst notices that several participants mention the smell of the store and creates a new code for it.",
+        "bin": "inductive",
+        "explanation": "The code is developed from the data during analysis: inductive coding."
+      },
+      {
+        "id": "previous",
+        "text": "The team reuses the codebook from last year's study of the same product category.",
+        "bin": "deductive",
+        "explanation": "The codes are defined in advance, on the basis of previous research: deductive coding."
+      },
+      {
+        "id": "open",
+        "text": "The analyst begins with no list of codes and labels each segment with the idea it expresses.",
+        "bin": "inductive",
+        "explanation": "All codes are developed from the data: inductive coding."
+      },
+      {
+        "id": "apply",
+        "text": "A coder assigns each segment one of the codes listed in the codebook, following its definitions and examples.",
+        "bin": "deductive",
+        "explanation": "Applying predefined codes from a codebook is deductive coding."
+      },
+      {
+        "id": "split",
+        "text": "Midway through the analysis, the analyst divides one broad code into two new codes that the transcripts suggest.",
+        "bin": "inductive",
+        "explanation": "The new codes are developed from the data during analysis: inductive coding."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "saturation",
+    "question_text": "A researcher records the new codes that each interview produces. Interviews 1 to 8 produced 9, 6, 4, 3, 2, 1, 1 and 0 new codes, and interviews 9 to 11 produced none. The research question is narrow and the participants are similar. What should the researcher do?",
+    "hint": "Think about the definition of saturation.",
+    "correct_answer_citation": "Week 03 · Saturation",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Calculate the sample size required for a margin of error of 5%, and continue until it is reached.",
+        "option_explanation": "Qualitative samples are not determined by statistical calculation."
+      },
+      {
+        "option_text": "Continue until thirty interviews have been conducted, since qualitative studies require a fixed number.",
+        "option_explanation": "The number required depends on the diversity of the participants and the breadth of the question, not on a fixed rule."
+      },
+      {
+        "option_text": "Conclude that saturation has been reached, stop data collection, and report the number of new codes per interview.",
+        "option_explanation": "Correct. Additional interviews no longer produce new codes, and the record of new codes per interview shows how saturation was assessed."
+      },
+      {
+        "option_text": "Stop after the first interview that produced no new codes, since one such interview proves saturation.",
+        "option_explanation": "Interview 8 produced no new codes, but interviews 9 to 11 were needed to show that additional interviews no longer produce new codes."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "validating-ai-coding-against-human-coders",
+    "prompt": "A research team plans to code 300 interview transcripts with a large language model. Put the validation steps in order.",
+    "steps": [
+      {
+        "id": "codebook",
+        "text": "Develop a codebook with clear definitions and examples.",
+        "explanation": "Everything that follows, human and AI coding alike, uses the codebook, so it comes first."
+      },
+      {
+        "id": "humans",
+        "text": "Have two human coders code a sample of 30 transcripts independently.",
+        "explanation": "The human coders establish the benchmark, working independently with the codebook."
+      },
+      {
+        "id": "ai",
+        "text": "Have the AI tool code the same 30 transcripts with the same codebook.",
+        "explanation": "The AI codes exactly the same sample, so that its coding can be compared with the human coding."
+      },
+      {
+        "id": "measure",
+        "text": "Measure the agreement between the AI and the human coders, and compare it with the agreement between the two humans.",
+        "explanation": "The agreement among the human coders is the standard that the AI's agreement is compared with."
+      },
+      {
+        "id": "revise",
+        "text": "Examine the segments on which they disagree, and revise the codebook or the instructions to the AI tool.",
+        "explanation": "The disagreements show where the definitions or the instructions need revision."
+      },
+      {
+        "id": "full",
+        "text": "Code all 300 transcripts with the AI tool, and report the level of agreement.",
+        "explanation": "The full dataset is coded only once agreement is comparable to that among the human coders, and the level is reported."
+      }
+    ]
+  }
+]

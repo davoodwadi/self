@@ -1,0 +1,329 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "levels-of-measurement-and-permissible-statistics",
+    "prompt": "Sort each analysis by whether the level of measurement of its data permits it.",
+    "bins": [
+      { "id": "ok", "label": "Permitted by the data" },
+      { "id": "no", "label": "Assumes a higher level than the data possess" }
+    ],
+    "cards": [
+      {
+        "id": "store-mode",
+        "text": "Reporting the store format (supermarket, convenience store, online) that respondents use most often.",
+        "bin": "ok",
+        "explanation": "Store format is nominal, and nominal data permit counts, percentages and the mode."
+      },
+      {
+        "id": "id-mean",
+        "text": "Reporting that the average respondent identification number in the sample is 512.4.",
+        "bin": "no",
+        "explanation": "Identification numbers are nominal labels. A mean assumes at least interval data and cannot be meaningfully interpreted."
+      },
+      {
+        "id": "rank-median",
+        "text": "Reporting the median rank that respondents gave a coffee brand among five brands.",
+        "bin": "ok",
+        "explanation": "Ranks are ordinal, and ordinal data permit the median and percentiles."
+      },
+      {
+        "id": "rank-twice",
+        "text": "Concluding that the brand ranked first is preferred twice as much as the brand ranked second.",
+        "bin": "no",
+        "explanation": "Ranks show order but not the magnitude of the differences, so statements of proportion are not permitted."
+      },
+      {
+        "id": "rating-mean",
+        "text": "Reporting the mean and standard deviation of ratings of a hotel on a scale from 1 to 7.",
+        "bin": "ok",
+        "explanation": "Rating scales are commonly treated as interval scales, which permit the mean and the standard deviation."
+      },
+      {
+        "id": "celsius",
+        "text": "Concluding that a day of 30 degrees Celsius is twice as warm as a day of 15 degrees Celsius.",
+        "bin": "no",
+        "explanation": "Celsius is an interval scale with an arbitrary zero, so 30 degrees is not twice as warm as 15 degrees."
+      },
+      {
+        "id": "spend",
+        "text": "Concluding that loyalty-card members spend three times as much per month as non-members.",
+        "bin": "ok",
+        "explanation": "Spending has an absolute zero point, so it is a ratio scale and statements of proportion are permitted."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "semantic-differential-scales",
+    "prompt": "Each case describes a survey item. Name the scaling technique it uses.",
+    "options": [
+      { "id": "paired", "label": "Paired comparison" },
+      { "id": "rank", "label": "Rank-order" },
+      { "id": "constant", "label": "Constant sum" },
+      { "id": "likert", "label": "Likert" },
+      { "id": "semantic", "label": "Semantic differential" }
+    ],
+    "cases": [
+      {
+        "id": "airline",
+        "text": "Respondents mark a point between “punctual” and “unpunctual,” and between “uncomfortable” and “comfortable,” for an airline.",
+        "answer": "semantic",
+        "explanation": "Pairs of opposite adjectives at the two ends of a scale, with the favorable adjective on different sides: a semantic differential scale."
+      },
+      {
+        "id": "phone",
+        "text": "Respondents divide 100 points among battery life, camera, price and screen size to show how much each matters.",
+        "answer": "constant",
+        "explanation": "A fixed number of points divided among attributes to show their relative importance: a constant sum scale."
+      },
+      {
+        "id": "gym",
+        "text": "Respondents rate “The staff at this gym are helpful” from 1, strongly disagree, to 7, strongly agree.",
+        "answer": "likert",
+        "explanation": "A statement rated by degree of agreement, evaluated on its own: a Likert scale."
+      },
+      {
+        "id": "juice",
+        "text": "Respondents taste two orange juices and state which one they prefer.",
+        "answer": "paired",
+        "explanation": "A choice of one of two objects according to a criterion: a paired comparison scale."
+      },
+      {
+        "id": "streaming",
+        "text": "Respondents place six streaming services in order from the one they would keep longest to the one they would cancel first.",
+        "answer": "rank",
+        "explanation": "Several objects placed in order by a criterion: a rank-order scale."
+      },
+      {
+        "id": "bank",
+        "text": "Respondents rate a bank on seven-point scales between “traditional” and “innovative,” and between “trustworthy” and “untrustworthy.”",
+        "answer": "semantic",
+        "explanation": "Opposite adjectives at the ends of a seven-point scale, used to describe the image of a company: a semantic differential scale."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "decisions-in-constructing-rating-scales",
+    "prompt": "Each case describes a change to a rating scale. Name the decision the researcher has made.",
+    "options": [
+      { "id": "number", "label": "Number of categories" },
+      { "id": "balance", "label": "Balanced or unbalanced" },
+      { "id": "oddeven", "label": "Odd or even" },
+      { "id": "forced", "label": "Forced or nonforced" },
+      { "id": "labels", "label": "Verbal labels" }
+    ],
+    "cases": [
+      {
+        "id": "dontknow",
+        "text": "A survey about a new pension product adds “I don’t know enough to say,” because many employees have not read the plan.",
+        "answer": "forced",
+        "explanation": "A “don’t know” option makes the scale nonforced, which suits respondents who lack the knowledge to answer."
+      },
+      {
+        "id": "sixpoint",
+        "text": "A researcher replaces a five-point scale with a six-point scale, so that respondents cannot choose the middle.",
+        "answer": "oddeven",
+        "explanation": "An even number of categories removes the neutral midpoint and requires respondents to lean in one direction."
+      },
+      {
+        "id": "excellent",
+        "text": "A hotel’s scale reads poor, good, very good, excellent, outstanding: one unfavorable category and four favorable ones.",
+        "answer": "balance",
+        "explanation": "The favorable and unfavorable categories are unequal in number, so the scale is unbalanced."
+      },
+      {
+        "id": "endpoints",
+        "text": "A scale from 1 to 7 carries words only at 1, “very dissatisfied,” and at 7, “very satisfied.”",
+        "answer": "labels",
+        "explanation": "Labels are provided only for the endpoints rather than for every category."
+      },
+      {
+        "id": "twenty",
+        "text": "A researcher reduces a scale from twenty points to seven, because respondents cannot reliably tell point 14 from point 15.",
+        "answer": "number",
+        "explanation": "Respondents can reliably distinguish only a limited number of categories; five to nine are commonly used."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "reliability-versus-validity",
+    "prompt": "Sort each measure by what it achieves.",
+    "bins": [
+      { "id": "both", "label": "Reliable and valid" },
+      { "id": "reliable", "label": "Reliable, not valid" },
+      { "id": "neither", "label": "Neither reliable nor valid" }
+    ],
+    "cards": [
+      {
+        "id": "tape",
+        "text": "A tape measure whose first five centimeters have been cut off, so every length it gives is five centimeters too long.",
+        "bin": "reliable",
+        "explanation": "Its readings are consistent, so it is reliable, but they are systematically wrong, so it is not valid."
+      },
+      {
+        "id": "leading",
+        "text": "A satisfaction item worded so that it consistently encourages favorable answers, and gives the same results each time it is repeated.",
+        "bin": "reliable",
+        "explanation": "Consistent results show reliability; the systematic error of the wording means the item is not valid."
+      },
+      {
+        "id": "published",
+        "text": "A published service-quality scale that gives consistent results over time and correlates with other measures of service quality.",
+        "bin": "both",
+        "explanation": "Consistent results show reliability, and convergent evidence supports its validity."
+      },
+      {
+        "id": "tired",
+        "text": "An item answered at the end of a long questionnaire, when fatigued respondents give very different answers each time it is repeated.",
+        "bin": "neither",
+        "explanation": "Inconsistent results mean the item is not reliable, and a measure cannot be valid without being reliable."
+      },
+      {
+        "id": "kitchen",
+        "text": "A kitchen scale that gives the correct weight of a bag of flour every time.",
+        "bin": "both",
+        "explanation": "Its readings are consistent and correct: free of both random and systematic error."
+      },
+      {
+        "id": "jumpy",
+        "text": "A thermometer whose readings of the same room jump by several degrees from one minute to the next.",
+        "bin": "neither",
+        "explanation": "Its readings vary unpredictably, so it is not reliable, and therefore it cannot be valid."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "question-wording",
+    "prompt": "Each draft question breaks one wording principle. Name the problem.",
+    "options": [
+      { "id": "technical", "label": "Technical term" },
+      { "id": "ambiguous", "label": "Ambiguous word" },
+      { "id": "leading", "label": "Leading" },
+      { "id": "double", "label": "Double-barreled" },
+      { "id": "assumption", "label": "Implicit assumption" },
+      { "id": "unable", "label": "Unable to provide" }
+    ],
+    "cases": [
+      {
+        "id": "delivery",
+        "text": "“How satisfied are you with the speed and the cost of our delivery?”",
+        "answer": "double",
+        "explanation": "It asks about two issues at once, so one answer cannot show which one the respondent means."
+      },
+      {
+        "id": "regularly",
+        "text": "“Do you regularly buy organic vegetables?”",
+        "answer": "ambiguous",
+        "explanation": "“Regularly” may mean weekly to one respondent and yearly to another."
+      },
+      {
+        "id": "loyalty",
+        "text": "“Wouldn’t you agree that our loyalty program offers excellent value?”",
+        "answer": "leading",
+        "explanation": "The wording suggests the desired answer."
+      },
+      {
+        "id": "omnichannel",
+        "text": "“How would you rate our omnichannel fulfillment proposition?”",
+        "answer": "technical",
+        "explanation": "“Omnichannel fulfillment proposition” is a technical term that respondents may not understand."
+      },
+      {
+        "id": "widget",
+        "text": "“How many times a week do you use the app’s budgeting feature?” asked of every customer.",
+        "answer": "assumption",
+        "explanation": "It assumes that the respondent uses the feature without first establishing it."
+      },
+      {
+        "id": "shampoo",
+        "text": "“Which brand of shampoo did you buy in March three years ago?”",
+        "answer": "unable",
+        "explanation": "Respondents cannot accurately recall a distant purchase; recent purchases are asked instead."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "response-bias",
+    "prompt": "Match each form of response bias with the case that shows it.",
+    "term_label": "Response bias",
+    "match_label": "Case",
+    "pairs": [
+      {
+        "id": "social",
+        "term": "Social desirability bias",
+        "match": "Respondents report twice as many hours of exercise per week as their fitness trackers record.",
+        "explanation": "Overstating a behavior that presents the respondent favorably is social desirability bias."
+      },
+      {
+        "id": "acquiescence",
+        "term": "Acquiescence bias",
+        "match": "A respondent agrees both that the store is too expensive and that the store is good value.",
+        "explanation": "Agreeing with two contradictory statements shows agreement regardless of content."
+      },
+      {
+        "id": "extreme",
+        "term": "Extreme responding",
+        "match": "A respondent answers every rating question with a 1 or a 7, whatever the question asks.",
+        "explanation": "Selecting the endpoints of the scale regardless of the question is extreme responding."
+      },
+      {
+        "id": "midpoint",
+        "term": "Midpoint responding",
+        "match": "A respondent selects 4 on every seven-point item in a long online survey.",
+        "explanation": "Selecting the middle of the scale regardless of the question is midpoint responding."
+      },
+      {
+        "id": "interviewer",
+        "term": "Interviewer bias",
+        "match": "Customers rate the shop’s service more favorably when the interviewer wears the shop’s uniform.",
+        "explanation": "The presence or behavior of the interviewer influences the responses."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "an-ai-assisted-item-development-procedure",
+    "prompt": "A research team needs a scale to measure trust in a food-delivery app. Put the steps of the procedure in order.",
+    "steps": [
+      {
+        "id": "define",
+        "text": "The team writes a definition of trust in a delivery app in words.",
+        "explanation": "The construct is first defined conceptually."
+      },
+      {
+        "id": "search",
+        "text": "The team searches published research for an existing validated trust scale that suits the study.",
+        "explanation": "A suitable validated scale is used in its published form; items are generated only if none exists."
+      },
+      {
+        "id": "generate",
+        "text": "Finding no suitable scale, the team asks an AI tool for thirty candidate items.",
+        "explanation": "AI generates the pool of candidate items only after the search for a validated scale."
+      },
+      {
+        "id": "experts",
+        "text": "Three experts review the items for coverage of the construct and for flaws in wording.",
+        "explanation": "Experts judge content validity and wording before any pretesting."
+      },
+      {
+        "id": "ai-pretest",
+        "text": "AI-simulated respondents answer the revised items and flag obvious ambiguities.",
+        "explanation": "AI pretesting comes before real respondents and supplements them."
+      },
+      {
+        "id": "cognitive",
+        "text": "Twelve app users explain aloud how they interpret each item in cognitive interviews.",
+        "explanation": "Pretesting with real respondents reveals the problems that AI-simulated respondents cannot."
+      },
+      {
+        "id": "pilot",
+        "text": "The scale is administered to a pilot sample, and its reliability and validity are assessed.",
+        "explanation": "The procedure ends with the assessment of reliability and validity in a pilot sample."
+      }
+    ]
+  }
+]

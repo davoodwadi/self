@@ -1,0 +1,272 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "cross-sectional-and-longitudinal-designs",
+    "prompt": "Sort each study by the way its design treats time.",
+    "bins": [
+      { "id": "single", "label": "Single cross-sectional" },
+      { "id": "multiple", "label": "Multiple cross-sectional" },
+      { "id": "longitudinal", "label": "Longitudinal" }
+    ],
+    "cards": [
+      {
+        "id": "gym",
+        "text": "A fitness chain surveys 800 adults once in March to estimate how many hold a gym membership.",
+        "bin": "single",
+        "explanation": "One sample is drawn and measured once: a single cross-sectional design."
+      },
+      {
+        "id": "awareness",
+        "text": "A bank surveys a new random sample of 500 adults every quarter to track awareness of its brand.",
+        "bin": "multiple",
+        "explanation": "Each quarter draws a different sample, and each sample is measured once: a multiple cross-sectional design."
+      },
+      {
+        "id": "scanner",
+        "text": "The same 2,000 households scan every grocery purchase at home each week for two years.",
+        "bin": "longitudinal",
+        "explanation": "The same households report repeatedly over time, as in a panel: a longitudinal design."
+      },
+      {
+        "id": "election",
+        "text": "A streaming service compares viewing habits in two independent samples, one drawn in 2023 and one in 2025.",
+        "bin": "multiple",
+        "explanation": "Two different samples, each measured once, make a multiple cross-sectional design."
+      },
+      {
+        "id": "switch",
+        "text": "A telecom firm contacts the same 600 subscribers every six months to record which provider each one uses.",
+        "bin": "longitudinal",
+        "explanation": "Measuring the same individuals repeatedly reveals who switches provider: a longitudinal design."
+      },
+      {
+        "id": "concept",
+        "text": "A snack brand asks 300 shoppers once, in one week, how they perceive its packaging.",
+        "bin": "single",
+        "explanation": "One sample is measured at one point in time: a single cross-sectional design."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "selecting-a-research-design",
+    "prompt": "Each case describes a decision situation. Name the research design that is appropriate at this stage.",
+    "options": [
+      { "id": "exploratory", "label": "Exploratory research" },
+      { "id": "descriptive", "label": "Descriptive research" },
+      { "id": "causal", "label": "Causal research" }
+    ],
+    "cases": [
+      {
+        "id": "decline",
+        "text": "A publisher's newsletter subscriptions have stagnated, and no one in the firm can suggest why.",
+        "answer": "exploratory",
+        "explanation": "The problem is ambiguous and little is known about it, so exploratory research is appropriate."
+      },
+      {
+        "id": "profile",
+        "text": "A car-sharing firm needs to know the age, income, and trip frequency of its current members before planning a campaign.",
+        "answer": "descriptive",
+        "explanation": "The problem is defined and the decision requires an accurate description of a group: descriptive research."
+      },
+      {
+        "id": "shipping",
+        "text": "An online retailer must decide whether free shipping on orders above 40 euros would increase the average order value.",
+        "answer": "causal",
+        "explanation": "The decision depends on the effect of a specific marketing action, so causal research is appropriate."
+      },
+      {
+        "id": "hypotheses",
+        "text": "A hotel group wants to understand what business travellers mean when they describe a stay as 'restful', before it drafts any survey.",
+        "answer": "exploratory",
+        "explanation": "The aim is to define the problem and develop hypotheses, which is the purpose of exploratory research."
+      },
+      {
+        "id": "share",
+        "text": "A beverage firm needs an estimate of the share of households in each region that buy sparkling water every month.",
+        "answer": "descriptive",
+        "explanation": "Estimating the magnitude of a phenomenon in a market is the task of descriptive research."
+      },
+      {
+        "id": "label",
+        "text": "A cereal brand has two package designs and must choose the one that produces higher purchase intention.",
+        "answer": "causal",
+        "explanation": "Testing whether a package design changes purchase intention requires manipulating the design: causal research."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "evaluating-secondary-data",
+    "prompt": "Match each criterion for evaluating secondary data with the concern it addresses.",
+    "term_label": "Criterion",
+    "match_label": "Concern about a source",
+    "pairs": [
+      {
+        "id": "methodology",
+        "term": "Methodology",
+        "match": "The report does not state how many people were surveyed or what the response rate was.",
+        "explanation": "The sample, the response rate and the questionnaire concern how the data were collected: methodology."
+      },
+      {
+        "id": "accuracy",
+        "term": "Accuracy",
+        "match": "Two industry reports estimate the same market at 1.2 and 1.9 billion euros.",
+        "explanation": "Comparing several sources reveals the extent of error in the data: accuracy."
+      },
+      {
+        "id": "currency",
+        "term": "Currency",
+        "match": "The figures on online grocery shopping were collected before the pandemic.",
+        "explanation": "When the data were collected, and whether conditions have changed since, is currency."
+      },
+      {
+        "id": "purpose",
+        "term": "Purpose",
+        "match": "A study of sugar consumption was funded by a soft drink industry association.",
+        "explanation": "Data collected to support a particular position may be biased: purpose."
+      },
+      {
+        "id": "definitions",
+        "term": "Definitions",
+        "match": "One source counts 'young adults' as 18 to 24, another as 18 to 34.",
+        "explanation": "How key variables, such as age groups, were defined is the definitions criterion."
+      },
+      {
+        "id": "dependability",
+        "term": "Dependability",
+        "match": "The statistic appears on an anonymous blog with no stated author or organization.",
+        "explanation": "The expertise, credibility and reputation of the source determine its dependability."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "external-secondary-data-syndicated-services",
+    "prompt": "Each case describes a firm's information need. Name the syndicated service that meets it.",
+    "options": [
+      { "id": "panel", "label": "Consumer panel" },
+      { "id": "retail", "label": "Retail tracking service" },
+      { "id": "media", "label": "Media audience measurement service" }
+    ],
+    "cases": [
+      {
+        "id": "repeat",
+        "text": "A yoghurt brand wants to know whether the same households that tried its new flavor bought it again in the following months.",
+        "answer": "panel",
+        "explanation": "Repeat purchase by the same households over time is recorded by a consumer panel."
+      },
+      {
+        "id": "shelf",
+        "text": "A detergent manufacturer wants weekly unit sales of its brand and its competitors' brands across supermarket chains.",
+        "answer": "retail",
+        "explanation": "Sales through retail outlets, from point-of-sale scanner data, come from a retail tracking service."
+      },
+      {
+        "id": "tv",
+        "text": "An advertiser wants to know how many viewers aged 25 to 44 watched a sports broadcast in which its commercial appeared.",
+        "answer": "media",
+        "explanation": "The size and composition of a television audience are estimated by a media audience measurement service."
+      },
+      {
+        "id": "promo",
+        "text": "A snack firm wants to compare the sales of its products in pharmacies and convenience stores after a competitor's price cut.",
+        "answer": "retail",
+        "explanation": "Product sales by type of retail outlet are recorded by a retail tracking service."
+      },
+      {
+        "id": "podcast",
+        "text": "A publisher selling advertising needs an independent estimate of the audience for its digital video channel.",
+        "answer": "media",
+        "explanation": "Audience size for digital media is estimated by a media audience measurement service."
+      },
+      {
+        "id": "switching",
+        "text": "A coffee brand wants to see which brands its former buyers switched to over the past year.",
+        "answer": "panel",
+        "explanation": "Following the purchases of the same households over time is the function of a consumer panel."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "types-of-customer-data",
+    "prompt": "Each case describes data used by a firm. Name the type of customer data.",
+    "options": [
+      { "id": "zero", "label": "Zero-party data" },
+      { "id": "first", "label": "First-party data" },
+      { "id": "second", "label": "Second-party data" },
+      { "id": "third", "label": "Third-party data" }
+    ],
+    "cases": [
+      {
+        "id": "orders",
+        "text": "An online bookshop analyzes the order histories of its registered customers.",
+        "answer": "first",
+        "explanation": "The firm collected the data directly from its own customers: first-party data."
+      },
+      {
+        "id": "quiz",
+        "text": "A skincare brand's website asks visitors to complete a skin-type quiz, and uses their answers to recommend products.",
+        "answer": "zero",
+        "explanation": "Customers provide the answers intentionally, so they are zero-party data, a subset of first-party data."
+      },
+      {
+        "id": "rail",
+        "text": "A car rental firm receives booking data directly from a rail operator under a partnership agreement.",
+        "answer": "second",
+        "explanation": "Another organization's first-party data, obtained directly through a partnership, are second-party data."
+      },
+      {
+        "id": "broker",
+        "text": "A furniture retailer buys a list of 'recent home movers' from a data broker that compiles it from many websites.",
+        "answer": "third",
+        "explanation": "The broker has no direct relationship with the consumers and sells aggregated data to many buyers: third-party data."
+      },
+      {
+        "id": "app",
+        "text": "A supermarket records which products members scan with its loyalty app.",
+        "answer": "first",
+        "explanation": "The supermarket collects the records directly from its own customers: first-party data."
+      },
+      {
+        "id": "prefs",
+        "text": "A streaming service's subscribers select their favorite genres in their profile settings.",
+        "answer": "zero",
+        "explanation": "Stated preferences that customers enter intentionally in a profile are zero-party data."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "verifying-ai-assisted-desk-research",
+    "prompt": "An AI tool has returned a market-size figure with a citation. Put the researcher's verification steps in order.",
+    "steps": [
+      {
+        "id": "locate",
+        "text": "Locate the original source for the reference, independently of the AI tool.",
+        "explanation": "Verification begins by finding the source without relying on the tool that cited it."
+      },
+      {
+        "id": "exists",
+        "text": "Confirm that the source exists and that its authors, publisher, and date are as stated.",
+        "explanation": "Once located, the source is checked against the reference, since fabricated references look plausible."
+      },
+      {
+        "id": "appears",
+        "text": "Confirm that the cited figure appears in the source.",
+        "explanation": "A real source may still not contain the figure attributed to it."
+      },
+      {
+        "id": "context",
+        "text": "Examine the context of the figure, including its definitions, sample, and date.",
+        "explanation": "A summary can omit qualifications, so the figure is read in its original context."
+      },
+      {
+        "id": "criteria",
+        "text": "Evaluate the source against methodology, accuracy, currency, purpose, definitions, and dependability.",
+        "explanation": "Finally, the source is judged by the same criteria as any secondary data."
+      }
+    ]
+  }
+]

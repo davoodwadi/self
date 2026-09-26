@@ -1,0 +1,393 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "research-analytics-and-intelligence",
+    "prompt": "Each case describes a source of evidence for marketing managers. Name the activity.",
+    "options": [
+      { "id": "research", "label": "Marketing research" },
+      { "id": "analytics", "label": "Marketing analytics" },
+      { "id": "intelligence", "label": "Marketing intelligence" }
+    ],
+    "cases": [
+      {
+        "id": "mortgage",
+        "text": "A bank commissions a four-week study to learn why applicants abandon its online mortgage application.",
+        "answer": "research",
+        "explanation": "A project that collects new data to answer one specific question is marketing research."
+      },
+      {
+        "id": "checkout",
+        "text": "The e-commerce team analyzes daily checkout data from the firm's own website to forecast next month's orders.",
+        "answer": "analytics",
+        "explanation": "Ongoing analysis of data the firm already generates, used to predict performance, is marketing analytics."
+      },
+      {
+        "id": "digest",
+        "text": "A brand manager receives a weekly digest of competitors' price changes and new packaging regulations.",
+        "answer": "intelligence",
+        "explanation": "Continuous monitoring of competitors and regulation in the external environment is marketing intelligence."
+      },
+      {
+        "id": "lounge",
+        "text": "An airline conducts a one-time survey of business travellers to decide whether to open a premium lounge.",
+        "answer": "research",
+        "explanation": "New data are collected once, for one decision, so the activity is project-based marketing research."
+      },
+      {
+        "id": "churn",
+        "text": "A telecom firm tracks monthly churn from its own customer records to predict which subscribers will leave.",
+        "answer": "analytics",
+        "explanation": "The data are the firm's own customer records, analyzed continuously: marketing analytics."
+      },
+      {
+        "id": "plant",
+        "text": "A food manufacturer continuously follows industry reports on plant-based ingredients and proposed labelling laws.",
+        "answer": "intelligence",
+        "explanation": "Industry developments and regulatory changes are part of the external environment: marketing intelligence."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "problem-identification-and-problem-solving-research",
+    "prompt": "Sort each study by the type of research it represents.",
+    "bins": [
+      { "id": "identification", "label": "Problem-identification research" },
+      { "id": "solving", "label": "Problem-solving research" }
+    ],
+    "cards": [
+      {
+        "id": "share",
+        "text": "Quarterly market share tracking reveals a gradual loss in one region.",
+        "bin": "identification",
+        "explanation": "Tracking detects a problem that was not yet apparent, so it is problem-identification research."
+      },
+      {
+        "id": "potential",
+        "text": "A study estimates the size of an untapped market for electric bicycles in suburban areas.",
+        "bin": "identification",
+        "explanation": "A market potential study identifies an opportunity or problem; no choice among actions is being tested yet."
+      },
+      {
+        "id": "image",
+        "text": "An annual brand image survey shows that younger consumers perceive the brand as dated.",
+        "bin": "identification",
+        "explanation": "Brand image research brings a hidden problem to light: problem-identification research."
+      },
+      {
+        "id": "ads",
+        "text": "Two versions of a television advertisement are tested to select the one to broadcast.",
+        "bin": "solving",
+        "explanation": "Advertising testing informs a choice between alternatives, so it is problem-solving research."
+      },
+      {
+        "id": "price",
+        "text": "Three price points for a new subscription plan are compared to choose the launch price.",
+        "bin": "solving",
+        "explanation": "Pricing research chooses among alternative courses of action: problem-solving research."
+      },
+      {
+        "id": "concept",
+        "text": "Consumers evaluate four concepts for a new snack before one is selected for development.",
+        "bin": "solving",
+        "explanation": "A product concept test informs the choice among concepts: problem-solving research."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "when-research-is-justified",
+    "prompt": "Should the firm conduct research? Classify each situation.",
+    "options": [
+      { "id": "justified", "label": "Justified" },
+      { "id": "made", "label": "Not justified: decision already made" },
+      { "id": "cost", "label": "Not justified: cost exceeds value" },
+      { "id": "late", "label": "Not justified: findings arrive too late" }
+    ],
+    "cases": [
+      {
+        "id": "flagship",
+        "text": "A retailer must choose between two sites for a $20 million flagship store, and its managers disagree about where demand is higher.",
+        "answer": "justified",
+        "explanation": "The decision is consequential and the right course of action is uncertain, so research is justified."
+      },
+      {
+        "id": "logo",
+        "text": "The chief executive has already signed off a new logo and asks for a survey to show the board that customers like it.",
+        "answer": "made",
+        "explanation": "The decision has been made; the study would serve only to legitimize it."
+      },
+      {
+        "id": "muffin",
+        "text": "A café owner considers a $15,000 study to decide whether to add a muffin flavour that costs $200 to trial.",
+        "answer": "cost",
+        "explanation": "The study would cost far more than the value of the decision it is meant to inform."
+      },
+      {
+        "id": "response",
+        "text": "A competitor launches tomorrow and the firm must set its response price tonight; a pricing study would take six weeks.",
+        "answer": "late",
+        "explanation": "The findings would arrive only after the decision must be made."
+      },
+      {
+        "id": "hybrid",
+        "text": "A car maker is uncertain whether buyers would accept a 10% higher price for a hybrid model to be produced in large volumes.",
+        "answer": "justified",
+        "explanation": "A large, uncertain decision: the expected benefit of research is likely to exceed its cost."
+      },
+      {
+        "id": "confirm",
+        "text": "A manager requests research to confirm a price increase that took effect last month.",
+        "answer": "made",
+        "explanation": "The price has already changed; the research would only legitimize a decision already taken."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "symptoms-versus-problems",
+    "prompt": "An online grocery service is losing business. Sort each statement: is it a symptom or a possible underlying problem?",
+    "bins": [
+      { "id": "symptom", "label": "Symptom" },
+      { "id": "problem", "label": "Problem" }
+    ],
+    "cards": [
+      {
+        "id": "orders",
+        "text": "Online orders fell by 15% this quarter.",
+        "bin": "symptom",
+        "explanation": "A decline in orders is an observable change, so it is a symptom."
+      },
+      {
+        "id": "complaints",
+        "text": "Complaints about late deliveries have doubled.",
+        "bin": "symptom",
+        "explanation": "Increasing complaints are an observable change: a symptom."
+      },
+      {
+        "id": "repeat",
+        "text": "Fewer customers place a second order.",
+        "bin": "symptom",
+        "explanation": "Fewer repeat purchases are observed, not explained: a symptom."
+      },
+      {
+        "id": "rival",
+        "text": "A new rival service offers free delivery in the same neighbourhoods.",
+        "bin": "problem",
+        "explanation": "A new competitor is a possible underlying cause of the decline: a problem."
+      },
+      {
+        "id": "slow",
+        "text": "A software update made the checkout page slower to load.",
+        "bin": "problem",
+        "explanation": "Slower service is a cause that could produce the symptoms: a problem."
+      },
+      {
+        "id": "fee",
+        "text": "A higher delivery fee now exceeds what many students are willing to pay.",
+        "bin": "problem",
+        "explanation": "A price increase is a possible underlying cause: a problem."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "management-decision-problem-versus-marketing-research-problem",
+    "prompt": "Match each management decision problem with its corresponding marketing research problem.",
+    "term_label": "Management decision problem",
+    "match_label": "Marketing research problem",
+    "pairs": [
+      {
+        "id": "branches",
+        "term": "Should the bank close some of its branches?",
+        "match": "How often do customers of each branch use in-branch services, and which of them would move to digital channels?",
+        "explanation": "The action is closing branches; the information required is branch use and willingness to switch."
+      },
+      {
+        "id": "seats",
+        "term": "Should the airline introduce a fee for seat selection?",
+        "match": "What proportion of passengers would pay to choose a seat, and how would the fee affect their choice of airline?",
+        "explanation": "The action is a new fee; the information required is willingness to pay and its effect on airline choice."
+      },
+      {
+        "id": "hours",
+        "term": "Should the gym extend its opening hours?",
+        "match": "At what times do current and prospective members prefer to train, and how many would visit during the additional hours?",
+        "explanation": "The action is longer hours; the information required is preferred training times and expected visits."
+      },
+      {
+        "id": "cereal",
+        "term": "Should the cereal brand launch a low-sugar line?",
+        "match": "How large is the segment that prefers low-sugar cereal, and what taste and price does that segment expect?",
+        "explanation": "The action is a launch; the information required is the segment's size and its expectations."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "the-six-steps-of-the-research-process",
+    "prompt": "A juice brand wants to understand weak sales of its new line. Put the project's activities in the order of the research process.",
+    "steps": [
+      {
+        "id": "audit",
+        "text": "Conduct a problem audit with the brand manager about the weak sales.",
+        "explanation": "Step 1: defining the problem."
+      },
+      {
+        "id": "approach",
+        "text": "State research questions and hypotheses, such as whether shoppers consider the price too high.",
+        "explanation": "Step 2: developing an approach to the problem."
+      },
+      {
+        "id": "design",
+        "text": "Choose a survey, specify the measures, and define the sample of shoppers.",
+        "explanation": "Step 3: formulating the research design."
+      },
+      {
+        "id": "field",
+        "text": "Field the survey online with 800 shoppers.",
+        "explanation": "Step 4: collecting the data."
+      },
+      {
+        "id": "analyze",
+        "text": "Clean the responses and compare ratings across groups of shoppers.",
+        "explanation": "Step 5: preparing and analyzing the data."
+      },
+      {
+        "id": "report",
+        "text": "Present the findings with a recommendation linked to the pricing decision.",
+        "explanation": "Step 6: preparing and presenting the report."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "applications-of-ai-in-marketing-research",
+    "prompt": "Match each use of AI with the step of the research process in which it occurs.",
+    "term_label": "Step",
+    "match_label": "Use of AI",
+    "pairs": [
+      {
+        "id": "definition",
+        "term": "Problem definition",
+        "match": "A model reads the last three board reports and proposes possible reasons why subscription renewals fell.",
+        "explanation": "Summarizing background documents and proposing explanations for a symptom belong to problem definition."
+      },
+      {
+        "id": "design",
+        "term": "Research design",
+        "match": "A model drafts the screening questions for a study of first-time car buyers.",
+        "explanation": "Drafting screening criteria and questions is part of research design."
+      },
+      {
+        "id": "collection",
+        "term": "Data collection",
+        "match": "An AI moderator conducts 300 text-based interviews at the same time, in Spanish and in English.",
+        "explanation": "Moderating interviews at scale and in several languages is data collection."
+      },
+      {
+        "id": "analysis",
+        "term": "Analysis",
+        "match": "A model assigns 5,000 open-ended complaints to themes such as price, delivery, and staff.",
+        "explanation": "Coding open-ended responses is analysis."
+      },
+      {
+        "id": "reporting",
+        "term": "Reporting",
+        "match": "A model drafts a one-page summary for executives and a set of detailed charts for analysts.",
+        "explanation": "Drafting summaries and visualizations for different audiences is reporting."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "limitations-of-ai-in-marketing-research",
+    "prompt": "Each case shows a limitation of AI in marketing research. Name the limitation.",
+    "options": [
+      { "id": "false", "label": "False facts or references" },
+      { "id": "bias", "label": "Bias from training data" },
+      { "id": "framing", "label": "Conformity to the prompt's framing" },
+      { "id": "simulated", "label": "Simulated consumers are not real consumers" },
+      { "id": "fluency", "label": "Fluency is not evidence of accuracy" }
+    ],
+    "cases": [
+      {
+        "id": "citation",
+        "text": "A literature summary cites a 2021 journal article on loyalty programmes that does not exist in any library database.",
+        "answer": "false",
+        "explanation": "The reference appears credible but is false."
+      },
+      {
+        "id": "nurse",
+        "text": "Asked to describe a typical nurse for a persona, a model always describes a woman.",
+        "answer": "bias",
+        "explanation": "The model reproduces a bias present in its training data."
+      },
+      {
+        "id": "love",
+        "text": "An analyst asks, \"Why do customers love our new design?\" and the model lists five reasons why customers love it.",
+        "answer": "framing",
+        "explanation": "A leading prompt yields a confirmatory answer."
+      },
+      {
+        "id": "panel",
+        "text": "A panel of 500 AI-simulated respondents rates a new snack far more favourably than a later panel of real shoppers.",
+        "answer": "simulated",
+        "explanation": "The simulated responses appeared plausible but differed systematically from those of real people."
+      },
+      {
+        "id": "tone",
+        "text": "Two answers from the same tool, one correct and one incorrect, are written in the same assured and polished style.",
+        "answer": "fluency",
+        "explanation": "The output has the same apparent confidence whether it is accurate or not."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "obligations-to-respondents",
+    "prompt": "Sort each research practice: does it meet the obligations to respondents, or violate them?",
+    "bins": [
+      { "id": "meets", "label": "Meets the obligations" },
+      { "id": "violates", "label": "Violates an obligation" }
+    ],
+    "cards": [
+      {
+        "id": "purpose",
+        "text": "An online survey states the purpose of the study, how the data will be used, and that participants may stop at any time.",
+        "bin": "meets",
+        "explanation": "This is informed consent."
+      },
+      {
+        "id": "aggregate",
+        "text": "Results are reported as percentages for the whole region, with no names or identifying details.",
+        "bin": "meets",
+        "explanation": "Reporting only in aggregate protects respondents' privacy."
+      },
+      {
+        "id": "anonymized",
+        "text": "Transcripts are anonymized and then analyzed with an AI tool that the consent form describes.",
+        "bin": "meets",
+        "explanation": "The use of the AI tool falls within the scope of the consent that respondents gave."
+      },
+      {
+        "id": "sugging",
+        "text": "A caller introduces a \"short survey\" and ends it by offering a discounted phone plan.",
+        "bin": "violates",
+        "explanation": "Soliciting sales under the guise of research is sugging."
+      },
+      {
+        "id": "chatbot",
+        "text": "An analyst pastes interview transcripts, names included, into a public AI chatbot that the consent form never mentioned.",
+        "bin": "violates",
+        "explanation": "Uploading the data is a use of it that falls outside the consent respondents gave, and it exposes personal data."
+      },
+      {
+        "id": "pressure",
+        "text": "A researcher calls a person five times after the person has declined to take part.",
+        "bin": "violates",
+        "explanation": "Respondents are not pressured to participate."
+      }
+    ]
+  }
+]
