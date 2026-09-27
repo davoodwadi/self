@@ -28,10 +28,12 @@ import {
   DarkPattern,
   Punished,
   RegretCheck,
+  DelegatedPurchase,
+  HiddenUnitPrice,
 } from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR · WEEK 01 — WHAT IS CONSUMER BEHAVIOR?
+// CONSUMER BEHAVIOR · WEEK 01 — INTRODUCTION TO CONSUMER BEHAVIOR
 // ============================================================================
 // Every line on these slides is transcribed verbatim from content.md; the
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -43,8 +45,9 @@ import {
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise that tests that slide
-// and the ones before it. The type fits the topic: the stages and the
-// calculator contrast are sorts, the four segmentation bases a match-up.
+// and the ones before it. The type fits the topic: the stages, the
+// calculator contrast and the split of work between consumer and AI agent are
+// sorts, the four segmentation bases a match-up.
 // ============================================================================
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
@@ -159,7 +162,7 @@ function Heading({
 }) {
   return (
     <div className="mb-8 w-full md:mb-10">
-      <h2 className="type-h1 max-w-[22ch]">
+      <h2 className="type-h1 max-w-[32ch]">
         {kicker ? (
           <>
             <span
@@ -233,6 +236,75 @@ function PhaseRule({ active }: { active: number[] }) {
   );
 }
 
+/** The ethical border: helping, manipulating, the trickery aimed at shoppers
+ *  and at their agents, and its price, each line with its plate. */
+const ETHICS: {
+  key: string;
+  tone: Tone;
+  label?: string;
+  plate: React.ReactNode;
+  text: React.ReactNode;
+}[] = [
+  {
+    key: "helping",
+    tone: "counter",
+    label: "Helping",
+    plate: <Informs />,
+    text: (
+      <>
+        <Tint tone="counter">Ethical marketing</Tint> informs buyers and delivers genuine
+        value.
+      </>
+    ),
+  },
+  {
+    key: "manipulating",
+    tone: "signal",
+    label: "Manipulating",
+    plate: <Marionette />,
+    text: (
+      <>
+        <Tint>Manipulative marketing</Tint> takes unfair advantage of human cognitive
+        weaknesses.
+      </>
+    ),
+  },
+  {
+    key: "dark",
+    tone: "signal",
+    plate: <DarkPattern />,
+    text: (
+      <>
+        <Tint>Dark patterns</Tint> are deceptive website designs that trick shoppers into
+        signing up or spending more.
+      </>
+    ),
+  },
+  {
+    key: "agents",
+    tone: "signal",
+    plate: <HiddenUnitPrice />,
+    text: (
+      <>
+        Dark patterns can also target the <Tint>AI agents</Tint> that shop for consumers.
+        A store can make key details, such as the unit price, hard for an agent to find.
+        The agent may then choose a worse option for the consumer.
+      </>
+    ),
+  },
+  {
+    key: "punish",
+    tone: "ink",
+    plate: <Punished />,
+    text: (
+      <>
+        Regulators and consumers increasingly <Tint>punish</Tint> companies that rely on
+        trickery.
+      </>
+    ),
+  },
+];
+
 const numerals = `.step-n::before { content: attr(data-n); }`;
 
 export default function Week1() {
@@ -248,7 +320,7 @@ export default function Week1() {
               Week 01
             </p>
             <p className="type-caption mt-2">Consumer Behavior · Davood Wadi, PhD</p>
-            <Title className="mt-8 !max-w-[14ch]">What Is Consumer Behavior?</Title>
+            <Title className="mt-8 !max-w-[14ch]">Introduction to Consumer Behavior</Title>
             <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
               <p className="type-quote">
                 People do not buy products.{" "}
@@ -581,6 +653,78 @@ export default function Week1() {
       </Slide>
 
       {/* ================================================================
+          The AI Agent as a Surrogate Consumer
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="the-ai-agent-as-a-surrogate-consumer"
+        border
+        exercise={exercise["the-ai-agent-as-a-surrogate-consumer"]}
+      >
+        <Heading>The AI Agent as a Surrogate Consumer</Heading>
+        <div className="grid w-full items-end gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
+          <Statement className="!max-w-[36ch] !text-[clamp(1.3rem,2vw,1.7rem)]">
+            A <Tint>surrogate consumer</Tint> is an agent who makes buying decisions on behalf of
+            another person.
+          </Statement>
+          <div className="grid min-w-0 gap-4">
+            <P>Personal shoppers, travel agents, and wedding planners have long played this role.</P>
+            <Ruled tone="signal" className="!pt-3">
+              <Big className="!text-[clamp(1.2rem,1.8vw,1.5rem)]">
+                Today, consumers can also delegate this role to <Tint>AI agents</Tint>.
+              </Big>
+            </Ruled>
+          </div>
+        </div>
+        {/* The three lines sit over the three panels they describe; the
+            roles line and the two audiences follow beside the plate. */}
+        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[1.9fr_1fr] lg:gap-10">
+          <div className="min-w-0">
+            <ol className="grid w-full gap-6 md:grid-cols-3">
+              {[
+                {
+                  tone: "ink" as Tone,
+                  text: <>The consumer states a goal, such as &ldquo;find running shoes under $120.&rdquo;</>,
+                },
+                {
+                  tone: "signal" as Tone,
+                  text: (
+                    <>
+                      The <Term>AI agent</Term> searches for options, compares them, and can
+                      complete the purchase.
+                    </>
+                  ),
+                },
+                {
+                  tone: "ink" as Tone,
+                  text: <>The consumer still uses the product and judges its quality after the sale.</>,
+                },
+              ].map((c, i) => (
+                <li key={i} className={cn("min-w-0 border-t-2 pt-3", BORDER[c.tone])}>
+                  <p className="type-body">{c.text}</p>
+                </li>
+              ))}
+            </ol>
+            <Plate wide className="mt-4">
+              <DelegatedPurchase />
+            </Plate>
+          </div>
+          <div className="grid min-w-0 gap-6">
+            <P className="!text-[clamp(1.05rem,1.5vw,1.3rem)]">
+              In the language of roles, the AI agent can act as the <Term>influencer</Term> and
+              the <Term>buyer</Term>. The consumer remains the <Term tone="ink">user</Term>.
+            </P>
+            <Ruled tone="signal" className="!pt-3">
+              <Statement className="!text-[clamp(1.2rem,1.8vw,1.5rem)]">
+                Marketers now inform <Tint>two audiences</Tint>: the consumer and the AI agent
+                that shops for the consumer.
+              </Statement>
+            </Ruled>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ================================================================
           Market Segmentation
           ================================================================ */}
       <Slide
@@ -658,68 +802,38 @@ export default function Week1() {
           ================================================================ */}
       <Slide className={TIGHT} id="the-ethical-border-helping-versus-manipulating" border>
         <Heading kicker="The Ethical Border:">Helping Versus Manipulating</Heading>
-        <Statement className="!max-w-[40ch]">
+        <Statement className="!max-w-[48ch] !text-[clamp(1.3rem,2vw,1.7rem)]">
           Understanding consumers gives firms <Tint>great power</Tint> over everyday choices.
         </Statement>
-        {/* Helping and manipulating, then the trickery and its price: four
-            lines in a row, each over its own plate. */}
-        <ol className="mt-10 grid w-full gap-10 md:grid-cols-2 md:gap-x-8 lg:grid-cols-4 lg:gap-6">
-          {[
-            {
-              key: "helping",
-              tone: "counter" as Tone,
-              label: "Helping",
-              plate: <Informs />,
-              text: (
-                <>
-                  <Tint tone="counter">Ethical marketing</Tint> informs buyers and delivers genuine
-                  value.
-                </>
-              ),
-            },
-            {
-              key: "manipulating",
-              tone: "signal" as Tone,
-              label: "Manipulating",
-              plate: <Marionette />,
-              text: (
-                <>
-                  <Tint>Manipulative marketing</Tint> takes unfair advantage of human cognitive
-                  weaknesses.
-                </>
-              ),
-            },
-            {
-              key: "dark",
-              tone: "signal" as Tone,
-              plate: <DarkPattern />,
-              text: (
-                <>
-                  <Tint>Dark patterns</Tint> are deceptive website designs that trick shoppers into
-                  signing up or spending more.
-                </>
-              ),
-            },
-            {
-              key: "punish",
-              tone: "ink" as Tone,
-              plate: <Punished />,
-              text: (
-                <>
-                  Regulators and consumers increasingly <Tint>punish</Tint> companies that rely on
-                  trickery.
-                </>
-              ),
-            },
-          ].map((c) => (
+        {/* Helping and manipulating side by side, each line beside its plate;
+            then the trickery aimed at shoppers and at their agents, and its
+            price, each line over its plate. */}
+        <ol className="mt-6 grid w-full gap-8 md:grid-cols-2 md:gap-10">
+          {ETHICS.slice(0, 2).map((c) => (
+            <li
+              key={c.key}
+              className={cn(
+                "grid min-w-0 items-center gap-4 border-t-2 pt-4 sm:grid-cols-[1fr_minmax(0,240px)]",
+                BORDER[c.tone],
+              )}
+            >
+              <div className="min-w-0">
+                {c.label ? <p className={cn("type-label mb-2", TEXT[c.tone])}>{c.label}</p> : null}
+                <p className="type-body !text-[clamp(1rem,1.2vw,1.1rem)]">{c.text}</p>
+              </div>
+              <div className="figure-well w-full min-w-0 p-3">{c.plate}</div>
+            </li>
+          ))}
+        </ol>
+        <ol className="mt-8 grid w-full gap-10 md:grid-cols-3 md:gap-8">
+          {ETHICS.slice(2).map((c) => (
             <li key={c.key} className="flex min-w-0 flex-col gap-4">
               <div className={cn("border-t-2 pt-4", BORDER[c.tone])}>
-                {c.label ? (
-                  <p className={cn("type-label mb-3", TEXT[c.tone])}>{c.label}</p>
-                ) : null}
-                <p className="type-lead">{c.text}</p>
+                <p className="type-body !text-[clamp(1rem,1.2vw,1.1rem)]">{c.text}</p>
               </div>
-              <div className="figure-well mt-auto w-full min-w-0 p-3">{c.plate}</div>
+              <div className="figure-well mx-auto mt-auto w-full min-w-0 max-w-[300px] p-3">
+                {c.plate}
+              </div>
             </li>
           ))}
         </ol>

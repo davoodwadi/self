@@ -292,3 +292,30 @@ export function SketchText({
     </text>
   );
 }
+
+/**
+ * A quiet action under an interactive plate: one small outlined button in the
+ * label face, for plates whose action is a discrete event (ask again, draw
+ * again) rather than a value to set.
+ */
+export function PlateButton({
+  children,
+  onClick,
+  icon,
+}: {
+  children: React.ReactNode;
+  onClick: () => void;
+  icon?: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="inline-flex items-center gap-2 border border-[var(--rule-2)] bg-[var(--paper)] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--ink-2)] transition-colors hover:border-[var(--ink-3)] hover:text-[var(--ink)] active:bg-[var(--paper-3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rule-2)]"
+      style={{ fontFamily: LABEL }}
+    >
+      {icon}
+      {children}
+    </button>
+  );
+}

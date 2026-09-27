@@ -70,6 +70,16 @@ week: week3
 - If an ad shows a distinct green box, using that exact green box on the shelf helps shoppers find the product.
 - State-dependent retrieval means buyers remember ad messages better when their internal mood matches the ad.
 
+## Brand Retrieval in Conversational Search [exercise]
+- Consumers now also search by asking an AI assistant, such as "Which running shoes are best for flat feet?"
+- The assistant answers with a short list of brands.
+- This list often becomes the consumer's consideration set: the small group of brands the consumer seriously considers.
+- A brand that is missing from the answer may never be considered, even if the consumer knows it.
+- The assistant learns about brands from what is written about them, such as reviews, articles, and product pages.
+- In this way, the assistant also forms links between brands and attributes, much like an associative network.
+- Retrieval cues move from the shelf into the question. Words such as "cheap," "durable," or "eco-friendly" shape which brands the assistant retrieves.
+- Marketers therefore work to link their brands clearly to the needs that consumers mention in their questions.
+
 ## Why Consumers Forget
 - Forgetting is normal. Memory traces fade over time through decay.
 - Interference also causes forgetting. New brand ads displace memories of older brand messages.

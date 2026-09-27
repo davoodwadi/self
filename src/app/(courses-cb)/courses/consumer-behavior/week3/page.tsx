@@ -44,6 +44,9 @@ import {
   Proactive,
   FightForgetting,
   YourBrandWeb,
+  AssistantShortList,
+  WebFromReviews,
+  CueInQuestion,
 } from "./visuals";
 
 // ============================================================================
@@ -170,7 +173,7 @@ function Heading({
 }) {
   return (
     <div className="mb-8 w-full md:mb-10">
-      <h2 className="type-h1 max-w-[22ch]">
+      <h2 className="type-h1 max-w-[40ch]">
         {kicker ? (
           <>
             <span
@@ -797,6 +800,84 @@ export default function Week3() {
             },
           ]}
         />
+      </Slide>
+
+      {/* ================================================================
+          Brand Retrieval in Conversational Search
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="brand-retrieval-in-conversational-search"
+        border
+        exercise={exercise["brand-retrieval-in-conversational-search"]}
+      >
+        <Heading>Brand Retrieval in Conversational Search</Heading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.6fr_1fr] lg:gap-12">
+          <div className="min-w-0">
+            <Statement className="!max-w-[44ch] !text-[clamp(1.2rem,1.8vw,1.5rem)]">
+              Consumers now also search by <Tint>asking an AI assistant</Tint>, such as
+              &ldquo;Which running shoes are best for flat feet?&rdquo;
+            </Statement>{" "}
+            <P className="mt-4">The assistant answers with a short list of brands.</P>{" "}
+            <P className="mt-2">
+              This list often becomes the consumer&apos;s <Term>consideration set</Term>: the small
+              group of brands the consumer seriously considers.
+            </P>{" "}
+            <P className="mt-2">
+              A brand that is <Term tone="ink">missing from the answer</Term> may never be
+              considered, even if the consumer knows it.
+            </P>
+          </div>
+          <Plate className="lg:max-w-[340px] lg:justify-self-end">
+            <AssistantShortList />
+          </Plate>
+        </div>
+        <ol className="mt-8 grid w-full gap-10 md:grid-cols-2 md:gap-10">
+          {[
+            {
+              key: "links",
+              tone: "ink" as Tone,
+              plate: <WebFromReviews />,
+              text: (
+                <>
+                  The assistant learns about brands from what is written about them, such as
+                  reviews, articles, and product pages. In this way, the assistant also forms{" "}
+                  <Term tone="ink">links between brands and attributes</Term>, much like an
+                  associative network.
+                </>
+              ),
+            },
+            {
+              key: "cues",
+              tone: "signal" as Tone,
+              plate: <CueInQuestion />,
+              text: (
+                <>
+                  <Term>Retrieval cues</Term> move from the shelf into the question. Words such as
+                  &ldquo;cheap,&rdquo; &ldquo;durable,&rdquo; or &ldquo;eco-friendly&rdquo; shape
+                  which brands the assistant retrieves.
+                </>
+              ),
+            },
+          ].map((c) => (
+            <li
+              key={c.key}
+              className={cn(
+                "grid min-w-0 items-center gap-4 border-t-2 pt-4 sm:grid-cols-[1fr_minmax(0,250px)]",
+                BORDER[c.tone],
+              )}
+            >
+              <p className="type-body">{c.text}</p>
+              <Plate>{c.plate}</Plate>
+            </li>
+          ))}
+        </ol>
+        <Ruled tone="signal" className="mt-6 w-full !pt-3">
+          <P className="!max-w-none !text-[clamp(1.05rem,1.4vw,1.25rem)]">
+            Marketers therefore work to <Term>link their brands clearly</Term> to the needs that
+            consumers mention in their questions.
+          </P>
+        </Ruled>
       </Slide>
 
       {/* ================================================================

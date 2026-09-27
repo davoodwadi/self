@@ -32,6 +32,15 @@ backgroundShape: "A dynamic map of personal identities, brand traits, extended s
 - Community level: neighborhoods and hometowns shape local identity.
 - Group level: attachments to sports teams, subcultures, or social movements define group identity.
 
+## Identity and Automation: The Tasks Consumers Keep [exercise]
+- Many products and AI tools now promise to do tasks for the consumer, from cooking to writing.
+- Consumers do not always welcome this help.
+- When a task is central to a person's identity, the person wants to feel that the result is their own work.
+- Research shows that people who strongly identify with an activity, such as cooking, are less interested in products that automate the skills involved (Leung, Paolacci, & Puntoni, 2018).
+- A passionate home baker may reject a machine that makes bread automatically, while a busy parent may welcome it.
+- For the same reason, a consumer may let an AI agent handle routine purchases but keep the choices that express who they are.
+- Marketers of automated products can leave room for the consumer's own contribution, so the consumer still feels ownership of the result.
+
 ## Personality Traits and Consumer Behavior
 - Personality refers to a person's unique psychological makeup that consistently influences their responses to the environment.
 - Trait theory views personality as a set of measurable characteristics.
@@ -79,6 +88,15 @@ backgroundShape: "A dynamic map of personal identities, brand traits, extended s
 - Achievers and Strivers are motivated by achievement, status, and recognition from peers.
 - Experiencers and Makers are motivated by self-expression, physical activity, and adventure.
 - Survivors have the fewest resources and focus on meeting basic needs rather than expressing lifestyle.
+
+## Synthetic Consumers: AI as a Survey Respondent [exercise]
+- Psychographic research depends on asking consumers about their activities, interests, and opinions.
+- Some researchers now ask large language models to answer surveys as if they were consumers with a given profile. These answers are called synthetic responses.
+- Synthetic responses are fast and cheap. Early studies found that they can mirror some patterns in real consumer data, such as sensitivity to price (Brand, Israeli, & Ngwe, 2023).
+- Synthetic responses also have limits. The same model can give a different answer each time it is asked the same question (Wadi & Fredette, 2025).
+- Models can also show biases, such as anchoring on a number in the question (Wadi & Fredette, 2025) or favoring products from some countries over others (Wadi, Ghodrat, & Philp, 2026).
+- A synthetic consumer has no lived experience of buying or using a product.
+- Synthetic responses can help researchers design and pretest a survey. Decisions about real consumers still need data from real consumers.
 
 ## Discussion: Your Extended Self
 - Discussion: Name one possession you own that feels like part of your identity. If someone took it away, how would it change the way you see yourself? Does it reflect your actual self or your ideal self?

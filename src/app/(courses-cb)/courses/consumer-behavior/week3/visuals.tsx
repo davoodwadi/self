@@ -11,8 +11,11 @@
      · Node: a knot in the memory web; a lit node takes the teal wash.
      · Head: one profile, wherever memory sits inside the buyer.
      · Person: every human (the shared fashion figure).
+     · Agent: the AI assistant (shared: a phone with the AI sparkle). Its
+       memory is AttributeWeb: running-shoe brands linked to word nodes.
    Teal is the one thing learned, lit or recalled on a plate; pencil is only
-   for something absent (an empty slot, a forgotten or displaced message).
+   for something absent (an empty slot, a forgotten or displaced message, a
+   brand missing from the assistant's answer).
    ========================================================================== */
 
 import React from "react";
@@ -29,6 +32,7 @@ import {
   Wash,
 } from "../_visuals/kit";
 import {
+  Agent,
   at,
   Backwash,
   Bag,
@@ -49,7 +53,9 @@ import {
   sharp,
   Shoe,
   SketchArrow,
+  SpeechBubble,
   Star,
+  Stars,
   Thought,
 } from "../_visuals/objects";
 
@@ -1723,6 +1729,157 @@ export function YourBrandWeb() {
       <SketchText x={648} y={362} anchor="middle" size={11}>
         PERSONAL EXPERIENCE
       </SketchText>
+    </SketchFrame>
+  );
+}
+
+/* ==========================================================================
+   BRAND RETRIEVAL IN CONVERSATIONAL SEARCH
+   The assistant is the shared Agent (a phone with the AI sparkle). Brands
+   are running shoes told apart by colour; the one missing from its answer is
+   pencil. Its memory is the week's web: Node links and WordNode attributes.
+   ========================================================================== */
+
+/** The three brands the assistant names, and the one it leaves out. */
+const LISTED = [SK.camel, SK.charcoal, SK.sky];
+
+/** The consumer asks; the assistant answers with a short list of three brands. */
+export function AssistantShortList() {
+  const g = 222;
+  return (
+    <SketchFrame
+      id="sk-short-list"
+      width={400}
+      height={262}
+      label="A shopper asks the AI agent phone, in a speech bubble, best for flat feet? An arrow runs from the agent to a card listing three running shoes in camel, charcoal and sky, headed consideration set. A fourth shoe, in pencil, sits below the card: a brand missing from the answer."
+    >
+      <Backwash cx={200} cy={134} rx={194} ry={118} seed={5000} opacity={0.4} />
+      <Ground x0={14} x1={214} y={g} seed={5001} />
+      <Person x={48} y={g} h={150} seed={5010} look={{ hair: "long", hairTone: SK.brown, wear: SK.tan, skin: SK.camel, skinOpacity: 0.6 }} arms={["down", "hip"]} />
+      <SpeechBubble x={128} y={40} w={176} h={44} tx={62} ty={84} seed={5040} />
+      <SketchText x={128} y={44} anchor="middle" size={10.5}>
+        BEST FOR FLAT FEET?
+      </SketchText>
+      <Agent x={170} y={g} s={1.05} seed={5050} />
+      <SketchArrow pts={[[198, 172], [226, 150]]} seed={5060} />
+
+      <SketchText x={312} y={24} anchor="middle" size={9.5}>
+        CONSIDERATION SET
+      </SketchText>
+      <Paper pts={sharp([[236, 34], [388, 34], [388, 184], [236, 184]], true, 3)} seed={5070} />
+      <InkLine pts={sharp([[236, 34], [388, 34], [388, 184], [236, 184]], true, 3)} seed={5071} closed />
+      {LISTED.map((fill, i) => (
+        <Shoe key={fill} x={312} y={78 + i * 44} s={0.95} seed={5080 + i * 10} fill={fill} />
+      ))}
+      <Shoe x={312} y={236} s={0.95} seed={5120} pencil />
+    </SketchFrame>
+  );
+}
+
+/** The assistant's web: two brands (shoes) linked to three attributes. */
+const WEB_WORDS: { word: string; y: number }[] = [
+  { word: "DURABLE", y: 0 },
+  { word: "LIGHT", y: 62 },
+  { word: "CHEAP", y: 124 },
+];
+const WEB_BRANDS: { fill: string; y: number; links: number[] }[] = [
+  { fill: SK.camel, y: 30, links: [0, 1] },
+  { fill: SK.charcoal, y: 106, links: [1, 2] },
+];
+
+/**
+ * The web with its top-left brand at (x, y). `cue` lights one attribute, the
+ * links from it and the brand they reach.
+ */
+function AttributeWeb({ x, y, seed, cue }: { x: number; y: number; seed: number; cue?: number }) {
+  const wx = x + 112;
+  return (
+    <g>
+      {WEB_BRANDS.map((b, i) =>
+        b.links.map((w) => (
+          <Link
+            key={`${i}-${w}`}
+            a={[x + 32, y + b.y - 10]}
+            b={[wx - 44, y + WEB_WORDS[w].y + 2]}
+            seed={seed + i * 10 + w}
+            lit={cue === w}
+          />
+        )),
+      )}
+      {WEB_BRANDS.map((b, i) => {
+        const lit = cue !== undefined && b.links.includes(cue) && i === WEB_BRANDS.findIndex((bb) => bb.links.includes(cue));
+        return (
+          <g key={b.fill}>
+            {lit ? <Wash pts={rp(blobPts(x, y + b.y - 10, 38, 22, seed + 40 + i, 12, 0.08))} seed={seed + 44 + i} fill={SK.teal} opacity={0.4} /> : null}
+            <Shoe x={x} y={y + b.y} s={0.95} seed={seed + 50 + i * 10} fill={b.fill} />
+          </g>
+        );
+      })}
+      {WEB_WORDS.map((w, i) => (
+        <WordNode key={w.word} x={wx} y={y + w.y} word={w.word} size={10} seed={seed + 80 + i * 5} lit={cue === i} />
+      ))}
+    </g>
+  );
+}
+
+/** Reviews, an article and a product page feed the assistant, which links brands to attributes. */
+export function WebFromReviews() {
+  const g = 214;
+  const cards: Pt[][] = [0, 1, 2].map((i) => sharp([[14 + i * 10, 44 + i * 44], [80 + i * 10, 44 + i * 44], [80 + i * 10, 108 + i * 44], [14 + i * 10, 108 + i * 44]], true, 2));
+  return (
+    <SketchFrame
+      id="sk-web-reviews"
+      width={400}
+      height={236}
+      label="A stack of three pages, a review with stars, an article and a product page with a shoe, and an arrow into the AI agent phone. An arrow runs on to the agent's web: a camel shoe linked to durable and light, a charcoal shoe linked to light and cheap."
+    >
+      <Backwash cx={200} cy={124} rx={194} ry={108} seed={5200} opacity={0.4} />
+      {cards.map((c, i) => (
+        <g key={i}>
+          <Paper pts={c} seed={5210 + i * 6} />
+          <InkLine pts={c} seed={5211 + i * 6} width={1.1} closed />
+        </g>
+      ))}
+      <Stars x={26} y={60} n={4} of={5} r={4.5} gap={11} seed={5230} />
+      {[78, 92].map((ly, i) => (
+        <InkLine key={ly} pts={rp([[22, ly], [72, ly]])} seed={5240 + i} width={0.8} amp={0.3} />
+      ))}
+      <InkLine pts={rp([[32, 100], [82, 100]])} seed={5245} width={3} amp={0.3} color={SK.earth} />
+      {[114, 126].map((ly, i) => (
+        <InkLine key={ly} pts={rp([[32, ly], [82, ly]])} seed={5246 + i} width={0.8} amp={0.3} />
+      ))}
+      <Shoe x={52} y={164} s={0.5} seed={5250} fill={SK.sky} />
+      {[176, 188].map((ly, i) => (
+        <InkLine key={ly} pts={rp([[42, ly], [92, ly]])} seed={5256 + i} width={0.8} amp={0.3} />
+      ))}
+      <SketchArrow pts={[[104, 150], [120, 150]]} seed={5260} />
+      <Ground x0={118} x1={168} y={g} seed={5262} />
+      <Agent x={142} y={g} s={0.9} seed={5265} />
+      <SketchArrow pts={[[166, 150], [184, 150]]} seed={5264} />
+      <AttributeWeb x={216} y={78} seed={5300} />
+    </SketchFrame>
+  );
+}
+
+/** The word in the question is the cue: it lights "durable" and the brand linked to it. */
+export function CueInQuestion() {
+  const g = 222;
+  return (
+    <SketchFrame
+      id="sk-cue-question"
+      width={400}
+      height={244}
+      label="A shopper asks, in a speech bubble, durable running shoes? An arrow runs from the bubble to the word durable in the AI agent's web, which lights teal along with its link to the camel shoe; the charcoal shoe, linked only to light and cheap, stays unlit."
+    >
+      <Backwash cx={200} cy={128} rx={194} ry={112} seed={5400} opacity={0.4} />
+      <Ground x0={10} x1={120} y={g} seed={5401} />
+      <Person x={46} y={g} h={140} seed={5410} look={{ hair: "long", hairTone: SK.brown, wear: SK.tan, skin: SK.camel, skinOpacity: 0.6 }} arms={["down", "hip"]} />
+      <SpeechBubble x={110} y={38} w={200} h={42} tx={60} ty={96} seed={5440} />
+      <SketchText x={110} y={42} anchor="middle" size={10.5}>
+        DURABLE RUNNING SHOES?
+      </SketchText>
+      <SketchArrow pts={curvePts([214, 34], [290, 22], [318, 70], 10)} seed={5450} color={SK.teal} width={1.6} />
+      <AttributeWeb x={214} y={96} seed={5460} cue={0} />
     </SketchFrame>
   );
 }

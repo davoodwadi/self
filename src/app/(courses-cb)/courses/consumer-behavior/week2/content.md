@@ -56,6 +56,16 @@ week: week2
 - Perceptual defense means consumers screen out threatening or contradictory messages. Heavy smokers often ignore warning labels on cigarette packs.
 - Adaptation occurs when consumers no with time stop paying attention to familiar stimuli.
 
+## Machine Perception: How AI Agents Perceive Products [exercise]
+- An AI agent that shops for a consumer does not see, hear, smell, touch, or taste a product.
+- It perceives a product through data: the name, price, size, ingredients, ratings, and reviews.
+- For an AI agent, exposure means the product information is available for the agent to read.
+- A product with missing or unclear details may never reach the agent's attention.
+- Attention depends on position for both people and AI agents.
+- Shoppers notice products at eye level on a shelf and at the top of a search results page more often.
+- Research shows that AI agents can also favor options because of where they appear in a list.
+- Sensory marketing still matters, because the consumer uses the product with all five senses after the sale.
+
 ## Interpretation and Gestalt Principles [exercise]
 [figure: GestaltPrinciples — Closure, Similarity, and Figure-Ground visual examples in brand design]
 - People do not interpret stimuli in isolation. They organize them into patterns.

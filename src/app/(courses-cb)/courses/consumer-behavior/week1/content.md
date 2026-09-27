@@ -1,5 +1,5 @@
 ---
-topic: What Is Consumer Behavior?
+topic: Introduction to Consumer Behavior
 lecturer: "Davood Wadi, PhD"
 course: Consumer Behavior
 week: week1
@@ -52,6 +52,16 @@ week: week1
 - The user consumes or handles the product.
 - In a household buying a family car, children influence the choice, but parents buy the vehicle.
 
+## The AI Agent as a Surrogate Consumer [exercise]
+- A surrogate consumer is an agent who makes buying decisions on behalf of another person.
+- Personal shoppers, travel agents, and wedding planners have long played this role.
+- Today, consumers can also delegate this role to AI agents.
+- The consumer states a goal, such as "find running shoes under $120."
+- The AI agent searches for options, compares them, and can complete the purchase.
+- The consumer still uses the product and judges its quality after the sale.
+- In the language of roles, the AI agent can act as the influencer and the buyer. The consumer remains the user.
+- Marketers now inform two audiences: the consumer and the AI agent that shops for the consumer.
+
 ## Market Segmentation: Who Are We Talking To? [exercise]
 [figure: SegmentationPillars — geographic, demographic, psychographic, and behavioral pillars]
 - You cannot appeal to everyone with the same message.
@@ -66,6 +76,8 @@ week: week1
 - Ethical marketing informs buyers and delivers genuine value.
 - Manipulative marketing takes unfair advantage of human cognitive weaknesses.
 - Dark patterns are deceptive website designs that trick shoppers into signing up or spending more.
+- Dark patterns can also target the AI agents that shop for consumers.
+- A store can make key details, such as the unit price, hard for an agent to find. The agent may then choose a worse option for the consumer.
 - Regulators and consumers increasingly punish companies that rely on trickery.
 
 ## Discussion: Your Last Regretful Purchase

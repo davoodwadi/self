@@ -5,7 +5,8 @@
    receipt, an iceberg, a chain, a consumption cycle, a parent and a baby,
    two walks along the same shelf, four pulls on one shopper, a branching
    need, one shopper in four roles, a family car, a crowd sorted into
-   groups, a temple of segments, and the ethical border. The style rules
+   groups, a temple of segments, an AI agent shopping for the shopper, and the
+   ethical border, including a dark pattern aimed at the agent. The style rules
    live in ../CLAUDE.md; shared marks come from ../_visuals.
 
    Fixed cast for this week:
@@ -17,11 +18,14 @@
        full size and scaled down (Figure) so the washes read.
      · StageGlyph: magnifier (prepurchase), bag (purchase), star rating
        (postpurchase), on the cycle and again on the discussion plate.
+     · Agent: the AI agent, a phone with the AI sparkle (shared, reused in
+       later weeks). The running shoes it buys for the shopper are teal.
 
    Colour roles: teal is the one thing chosen, lit or ticked on a plate (the
    Receipt ticks, the lit link, the best pick, the family car, the
-   pre-ticked box); ochre a highlight or count; pencil only the Receipt's
-   PRODUCT line, the thing not bought.
+   pre-ticked box, the box the agent picks); ochre a highlight or count;
+   pencil only the Receipt's PRODUCT line, the thing not bought, and the
+   unit prices a store hides from the agent.
    ========================================================================== */
 
 import React from "react";
@@ -40,6 +44,7 @@ import {
   wobble,
 } from "../_visuals/kit";
 import {
+  Agent,
   at,
   Baby,
   Backwash,
@@ -59,12 +64,14 @@ import {
   MapPin,
   Megaphone,
   Mug1,
+  Pack,
   PayCard,
   Person,
   rp,
   sharp,
   Shelf1,
   shelf1Pos,
+  Shoe,
   SketchArrow,
   SpeechBubble,
   Star,
@@ -1455,6 +1462,112 @@ export function RegretCheck() {
         IMPULSIVE WANT
       </SketchText>
       </g>
+    </SketchFrame>
+  );
+}
+
+/* ==========================================================================
+   THE AI AGENT AS A SURROGATE CONSUMER
+   The agent is the shared Agent (a phone with the AI sparkle). The running
+   shoes it buys are teal wherever they are the thing chosen.
+   ========================================================================== */
+
+/** The shopper with the week's look, in the running shoes the agent bought. */
+const SHOD: Look = { ...SHOPPER, shoes: SK.teal };
+
+/**
+ * Three panels under the three lines: the consumer states the goal to the
+ * agent; the agent searches, compares and pays; the consumer wears and rates.
+ */
+export function DelegatedPurchase() {
+  const g = 206;
+  const hand = handAt(92, g, 160, "hold");
+  const held = handAt(624, g, 160, "reach");
+  return (
+    <SketchFrame
+      id="sk-delegated"
+      width={800}
+      height={230}
+      label="Three sketched panels. Left: the shopper holds a phone showing the AI sparkle and says, in a speech bubble with a running shoe, under $120. Middle: the AI agent phone beside three running shoes, a magnifying glass over them, the middle pair in teal chosen and a payment card beside it. Right: the shopper in the teal running shoes holds one up to look at it, with a star rating above."
+    >
+      {[133, 400, 667].map((cx, i) => (
+        <Backwash key={cx} cx={cx} cy={122} rx={118} ry={92} seed={3100 + i} opacity={0.38} />
+      ))}
+      {[[24, 244], [292, 510], [556, 776]].map(([x0, x1], i) => (
+        <Ground key={x0} x0={x0} x1={x1} y={g} seed={3110 + i} />
+      ))}
+
+      {/* 1 · the consumer states the goal */}
+      <Person x={92} y={g} h={160} look={SHOPPER} arms={["hip", "hold"]} seed={3120} />
+      <Agent x={r2(hand[0] + 4)} y={r2(hand[1] + 10)} s={0.5} seed={3140} />
+      <SpeechBubble x={194} y={60} w={136} h={80} tx={112} ty={54} seed={3150} />
+      <Shoe x={208} y={52} s={1} seed={3152} fill={SK.camel} />
+      <SketchText x={208} y={82} anchor="middle" size={12}>
+        UNDER $120
+      </SketchText>
+
+      {/* 2 · the agent searches, compares and pays */}
+      <Agent x={322} y={g} s={1.5} seed={3160} />
+      {[74, 134, 194].map((y, i) => (
+        <Shoe key={y} x={430} y={y} s={0.95} seed={3170 + i * 10} fill={i === 1 ? SK.teal : SK.camel} />
+      ))}
+      <Magnifier x={488} y={52} r={14} seed={3200} />
+      <SketchArrow pts={[[358, 124], [396, 124]]} seed={3210} />
+      <PayCard x={492} y={124} w={30} tilt={-8} seed={3212} />
+
+      {/* 3 · the consumer uses and judges */}
+      <Person x={624} y={g} h={160} look={SHOD} arms={["hip", "reach"]} seed={3220} />
+      <Shoe x={r2(held[0] + 22)} y={r2(held[1] + 4)} s={0.95} seed={3230} fill={SK.teal} />
+      <Stars x={690} y={58} n={2} of={3} r={11} gap={24} seed={3240} />
+    </SketchFrame>
+  );
+}
+
+/**
+ * A dark pattern aimed at the agent: the unit price on each shelf label is
+ * faint (pencil, hard to find), so the agent picks the small box that looks
+ * cheaper, although the large box costs less per 100 g.
+ */
+export function HiddenUnitPrice() {
+  const g = 214;
+  const labels = [
+    { x: 178, price: "$4.00", unit: "$1.67 / 100 G" },
+    { x: 318, price: "$6.00", unit: "$0.80 / 100 G" },
+  ];
+  return (
+    <SketchFrame
+      id="sk-hidden-unit"
+      width={400}
+      height={290}
+      label="The AI agent phone points to a small cereal box in teal priced $4.00 rather than a large box priced $6.00. On each shelf label the unit price is faint and hard to read: $1.67 per 100 g for the small box, $0.80 per 100 g for the large one."
+    >
+      <Backwash cx={214} cy={150} rx={186} ry={124} seed={3400} opacity={0.4} />
+      <Wash pts={rp([[112, g - 2], [384, g - 2], [384, g + 7], [112, g + 7]])} seed={3401} fill={SK.leather} opacity={0.55} />
+      <InkLine pts={[[110, g], [386, g]]} seed={3402} />
+      <InkLine pts={[[110, g + 7], [386, g + 7]]} seed={3403} width={0.9} />
+
+      <Pack x={178} bottom={g} w={50} h={76} seed={3410} fill={SK.teal} />
+      <Pack x={318} bottom={g} w={82} h={150} seed={3420} fill={SK.camel} />
+
+      {labels.map((l, i) => {
+        const box = sharp(rp([[l.x - 48, g + 14], [l.x + 48, g + 14], [l.x + 48, g + 60], [l.x - 48, g + 60]]), true, 2);
+        return (
+          <g key={l.x}>
+            <Paper pts={box} seed={3430 + i * 5} />
+            <InkLine pts={box} seed={3431 + i * 5} width={1} closed />
+            <SketchText x={l.x} y={g + 36} anchor="middle" size={16}>
+              {l.price}
+            </SketchText>
+            <SketchText x={l.x} y={g + 52} anchor="middle" size={10.5} fill={SK.pencil}>
+              {l.unit}
+            </SketchText>
+          </g>
+        );
+      })}
+
+      <Ground x0={18} x1={100} y={g} seed={3448} />
+      <Agent x={58} y={g} s={1.3} seed={3450} />
+      <SketchArrow pts={[[88, 160], [118, 168], [146, 172]]} seed={3460} />
     </SketchFrame>
   );
 }

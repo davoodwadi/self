@@ -1,4 +1,8 @@
+import { CB_DIR, readCurriculum } from "@/lib/curriculum";
 import { Section } from "./Section";
+
+// Course text that has a curriculum.md is read from it, not written here.
+const CB = readCurriculum(CB_DIR);
 
 const ROLES = [
   {
@@ -28,7 +32,12 @@ const ROLES = [
   },
 ];
 
-const SITES = [
+const SITES: {
+  title: string;
+  subtitle?: string;
+  href: string;
+  description: string;
+}[] = [
   {
     title: "Introduction to Marketing",
     href: "/courses/intro-marketing",
@@ -48,10 +57,10 @@ const SITES = [
       "Covers how organizations adopt new technologies, manage the transition, and measure outcomes. Topics include platform business models, data-driven decision-making, and technology adoption frameworks.",
   },
   {
-    title: "Consumer Behavior",
+    title: CB.title,
+    subtitle: CB.subtitle,
     href: "/courses/consumer-behavior",
-    description:
-      "Why people buy, use, and discard products. Perception, learning and memory, motivation, attitudes, decision-making, and the heuristics behind everyday choices.",
+    description: CB.summary,
   },
   {
     title: "Marketing Research & Analytics",
@@ -97,6 +106,9 @@ export function Teaching() {
                   {s.title}
                 </a>
               </h3>
+              {s.subtitle && (
+                <p className="mt-1 text-sm text-ink-3">{s.subtitle}</p>
+              )}
               <p className="mt-2 text-sm">{s.description}</p>
             </li>
           ))}

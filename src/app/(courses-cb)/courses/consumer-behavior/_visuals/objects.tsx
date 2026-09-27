@@ -172,6 +172,8 @@ export type Look = {
   wear?: string;
   legs?: string;
   outfit?: Outfit;
+  /** Shoe wash; leather by default. */
+  shoes?: string;
 };
 
 const HAIR: Record<Hair, Pt[]> = {
@@ -228,6 +230,7 @@ export function Person({
     wear = SK.camel,
     legs = SK.charcoal,
     outfit = "coat",
+    shoes = SK.leather,
   } = look;
 
   const hem = outfit === "jacket" ? -110 : outfit === "gown" ? -5 : -84;
@@ -287,8 +290,8 @@ export function Person({
           <Ln pencil={pencil} pts={P([legR[5], legR[4], legR[3]])} seed={seed + 15} />
         </>
       )}
-      <Tone pencil={pencil} pts={P(shoeL)} seed={seed + 16} fill={SK.leather} opacity={0.8} dx={0.5} dy={0} />
-      <Tone pencil={pencil} pts={P(shoeR)} seed={seed + 17} fill={SK.leather} opacity={0.8} dx={0.5} dy={0} />
+      <Tone pencil={pencil} pts={P(shoeL)} seed={seed + 16} fill={shoes} opacity={0.8} dx={0.5} dy={0} />
+      <Tone pencil={pencil} pts={P(shoeR)} seed={seed + 17} fill={shoes} opacity={0.8} dx={0.5} dy={0} />
       <Ln pencil={pencil} pts={P(shoeL)} seed={seed + 18} width={1} closed />
       <Ln pencil={pencil} pts={P(shoeR)} seed={seed + 19} width={1} closed />
 
@@ -878,9 +881,16 @@ export function ShapedBottle({ x, bottom, seed }: { x: number; bottom: number; s
 /* -- shared objects (first drawn for Week 3) ------------------------------ */
 
 /** A running shoe in side view, toe to +x; (x, y) is the middle of the sole. */
-export function Shoe({ x, y, s = 1, seed, fill = SK.camel }: { x: number; y: number; s?: number; seed: number; fill?: string }) {
+export function Shoe({ x, y, s = 1, seed, fill = SK.camel, pencil = false }: { x: number; y: number; s?: number; seed: number; fill?: string; pencil?: boolean }) {
   const upper = at(x, y, [[-26, -5], [-25, -20], [-19, -20], [-13, -15], [-8, -25], [-3, -24], [4, -16], [14, -11], [24, -9], [28, -5]], s);
   const sole = at(x, y, [[-27, -5], [28, -5], [29, 0], [26, 3], [-26, 3], [-28, -1]], s);
+  if (pencil)
+    return (
+      <g>
+        <PencilLine pts={upper} seed={seed + 1} />
+        <PencilLine pts={sole} seed={seed + 2} closed />
+      </g>
+    );
   return (
     <g>
       <Wash pts={upper} seed={seed} fill={fill} opacity={0.8} dx={0.8} dy={0.6} />
@@ -1448,6 +1458,33 @@ export function Watch2({ x, y, s = 1, seed }: { x: number; y: number; s?: number
       <InkLine pts={inner} seed={seed + 9} closed width={0.8} />
       <InkLine pts={rp([[x, cy], [x, cy - 9 * s]])} seed={seed + 10} width={1.1} />
       <InkLine pts={rp([[x, cy], [x + 6 * s, cy + 3 * s]])} seed={seed + 11} width={1.1} />
+    </g>
+  );
+}
+
+/** A four-point sparkle centred on (x, y), `r` from centre to tip: the mark of AI. */
+export function Sparkle({ x, y, r, seed, fill = SK.ink }: { x: number; y: number; r: number; seed: number; fill?: string }) {
+  const k = r * 0.26;
+  const pts = sharp(rp([[x, y - r], [x + k, y - k], [x + r, y], [x + k, y + k], [x, y + r], [x - k, y + k], [x - r, y], [x - k, y - k]]), true, r * 0.08);
+  return <path d={wobble(pts, seed, 0.15, 4, true)} fill={fill} />;
+}
+
+/**
+ * The AI agent, the same on every plate of the course: a standing phone
+ * (base centre at (x, y), 40 × 78 at s = 1) with the AI sparkle on its glass.
+ */
+export function Agent({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
+  const body = sharp(at(x, y, [[-20, 0], [-20, -78], [20, -78], [20, 0]], s), true, 4 * s);
+  const screen = at(x, y, [[-15, -8], [-15, -70], [15, -70], [15, -8]], s);
+  return (
+    <g>
+      <Wash pts={body} seed={seed} fill={SK.charcoal} opacity={0.65} />
+      <Wash pts={screen} seed={seed + 1} fill={SK.sky} opacity={0.85} dx={0} dy={0} />
+      <InkLine pts={body} seed={seed + 2} closed />
+      <InkLine pts={sharp(screen)} seed={seed + 3} closed width={0.8} />
+      <InkLine pts={at(x, y, [[-4, -74], [4, -74]], s)} seed={seed + 4} width={1.1} />
+      <Sparkle x={r2(x - 1 * s)} y={r2(y - 37 * s)} r={r2(11 * s)} seed={seed + 5} />
+      <Sparkle x={r2(x + 8 * s)} y={r2(y - 52 * s)} r={r2(4.5 * s)} seed={seed + 6} />
     </g>
   );
 }

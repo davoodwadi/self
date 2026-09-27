@@ -3,6 +3,9 @@ import { Fraunces, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { DynamicFooter } from "./DynamicFooter";
 import { FitSlides } from "@/components/slide-components/FitSlides";
+import { CB_DIR, readCurriculum } from "@/lib/curriculum";
+
+const CB = readCurriculum(CB_DIR);
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -18,11 +21,10 @@ const instrumentSans = Instrument_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Consumer Behavior",
-    template: "%s · Consumer Behavior",
+    default: CB.title,
+    template: `%s · ${CB.title}`,
   },
-  description:
-    "A twelve-week course in consumer behavior for marketing majors, taught by Davood Wadi, PhD.",
+  description: CB.summary,
   icons: {
     icon: "/icon-large.svg",
   },

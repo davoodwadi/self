@@ -89,6 +89,54 @@
     ]
   },
   {
+    "type": "identify",
+    "slide_id": "intrinsic-and-extrinsic-motivation-why-consumers-write-reviews",
+    "prompt": "Each case shows why a consumer writes, or stops writing, online reviews. Name the motive at work.",
+    "options": [
+      { "id": "intrinsic", "label": "Intrinsic motivation" },
+      { "id": "extrinsic", "label": "Extrinsic motivation" },
+      { "id": "crowding", "label": "Crowding out" }
+    ],
+    "cases": [
+      {
+        "id": "trail",
+        "text": "Sam reviews a hiking app to warn other hikers that its maps skip a closed trail.",
+        "answer": "intrinsic",
+        "explanation": "Intrinsic motivation: Sam writes to help other people, not for a reward."
+      },
+      {
+        "id": "points",
+        "text": "Priya reviews a blender because the store adds 200 loyalty points for every review.",
+        "answer": "extrinsic",
+        "explanation": "Extrinsic motivation: the review is written for an outside reward."
+      },
+      {
+        "id": "paid",
+        "text": "Leo used to review cafés for fun. After an app started paying $1 per review, he now writes only when he is paid.",
+        "answer": "crowding",
+        "explanation": "Crowding out: the reward replaced the enjoyment that used to drive Leo's reviews."
+      },
+      {
+        "id": "fun",
+        "text": "Mia rates every recipe she cooks because writing about food is something she enjoys.",
+        "answer": "intrinsic",
+        "explanation": "Intrinsic motivation: the activity itself is rewarding."
+      },
+      {
+        "id": "draw",
+        "text": "Omar posts a review of his headphones to enter a draw for a $500 gift card.",
+        "answer": "extrinsic",
+        "explanation": "Extrinsic motivation: the draw is an outside reward."
+      },
+      {
+        "id": "job",
+        "text": "Once a hotel paid Ana for reviews, writing one began to feel like a chore, and she stopped writing them to help other travelers.",
+        "answer": "crowding",
+        "explanation": "Crowding out: when a kind act is paid, it can start to feel like a transaction."
+      }
+    ]
+  },
+  {
     "type": "sort",
     "slide_id": "needs-wants-and-demand",
     "prompt": "Sort each case: is it a need, a want, or demand?",

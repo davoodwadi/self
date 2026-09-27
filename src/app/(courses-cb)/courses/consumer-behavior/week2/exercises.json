@@ -74,6 +74,53 @@
     ]
   },
   {
+    "type": "sort",
+    "slide_id": "machine-perception-how-ai-agents-perceive-products",
+    "prompt": "An AI agent is choosing a scented candle for a consumer. Which of these can the agent perceive, and which can only the consumer perceive? Sort them into the two groups.",
+    "bins": [
+      { "id": "agent", "label": "The AI agent can perceive it" },
+      { "id": "person", "label": "Only the consumer can perceive it" }
+    ],
+    "cards": [
+      {
+        "id": "price",
+        "text": "The candle costs $18.",
+        "bin": "agent",
+        "explanation": "An AI agent perceives a product through data such as the price."
+      },
+      {
+        "id": "scent",
+        "text": "The warm vanilla smell when the candle burns.",
+        "bin": "person",
+        "explanation": "An AI agent does not smell a product; the consumer does."
+      },
+      {
+        "id": "rating",
+        "text": "An average rating of 4.6 stars from 800 reviews.",
+        "bin": "agent",
+        "explanation": "Ratings and reviews are data the agent can read."
+      },
+      {
+        "id": "glass",
+        "text": "The smooth, heavy feel of the glass jar in the hand.",
+        "bin": "person",
+        "explanation": "An AI agent does not touch a product; the consumer feels it after the sale."
+      },
+      {
+        "id": "burn",
+        "text": "A listed burn time of 50 hours.",
+        "bin": "agent",
+        "explanation": "Size and product details are data the agent can read."
+      },
+      {
+        "id": "flicker",
+        "text": "The soft flicker of the flame in a dark room.",
+        "bin": "person",
+        "explanation": "An AI agent does not see a product; the consumer uses it with the senses."
+      }
+    ]
+  },
+  {
     "type": "identify",
     "slide_id": "interpretation-and-gestalt-principles",
     "prompt": "Each shopper below makes sense of what they see. Name the Gestalt principle at work in each case.",

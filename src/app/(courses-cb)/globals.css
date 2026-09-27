@@ -122,6 +122,16 @@
   color: var(--ink);
 }
 
+.type-subtitle {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  line-height: 1.3;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  color: var(--ink-2);
+}
+
 .type-lead {
   font-size: clamp(1.125rem, 1.6vw, 1.35rem);
   line-height: 1.55;

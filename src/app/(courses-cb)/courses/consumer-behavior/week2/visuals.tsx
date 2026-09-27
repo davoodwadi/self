@@ -10,8 +10,11 @@
        (taste).
      · Person: every human (the shared fashion figure).
      · Heart: a feeling. BrandBadge: the brand.
+     · Agent: the AI agent (shared: a phone with the AI sparkle). It
+       perceives products only as data sheets and results pages.
    Teal is the one thing that gets through (noticed, detected, chosen) on a
-   plate; pencil is only for something absent (the old, bigger pack).
+   plate; pencil is only for something absent (the old, bigger pack, the
+   details missing from a product's data sheet).
    ========================================================================== */
 
 import React from "react";
@@ -31,6 +34,7 @@ import {
   wobble,
 } from "../_visuals/kit";
 import {
+  Agent,
   at,
   Backwash,
   Box,
@@ -53,6 +57,7 @@ import {
   ShapedBottle,
   sharp,
   SketchArrow,
+  Stars,
   Tag1,
   Thought,
   Watch1,
@@ -1456,6 +1461,176 @@ export function SensorySignatures() {
       <SketchText x={400} y={246} anchor="middle" size={13}>
         BRAND RECALL
       </SketchText>
+    </SketchFrame>
+  );
+}
+
+/* ==========================================================================
+   MACHINE PERCEPTION
+   The AI agent is the shared Agent (a phone with the AI sparkle). A product
+   reaches it only as a data sheet; teal is the product that gets through.
+   ========================================================================== */
+
+type Field = { name: string; value?: string; stars?: number };
+
+const FIELDS: Field[][] = [
+  [
+    { name: "PRICE", value: "$4.99" },
+    { name: "SIZE", value: "500 G" },
+    { name: "INGREDIENTS", value: "OATS, HONEY" },
+    { name: "RATING", stars: 4 },
+    { name: "REVIEWS", value: "1,240" },
+  ],
+  [
+    { name: "PRICE", value: "$5.49" },
+    { name: "SIZE" },
+    { name: "INGREDIENTS" },
+    { name: "RATING" },
+    { name: "REVIEWS" },
+  ],
+];
+
+/** A product data sheet, top-left (x, y), 214 × 176: missing values are pencil dashes. */
+function DataSheet({ x, y, fields, seed }: { x: number; y: number; fields: Field[]; seed: number }) {
+  const w = 214;
+  const card = sharp([[x, y], [x + w, y], [x + w, y + 176], [x, y + 176]], true, 3);
+  return (
+    <g>
+      <Paper pts={card} seed={seed} />
+      <InkLine pts={card} seed={seed + 1} closed />
+      {fields.map((f, i) => {
+        const ry = y + 34 + i * 31;
+        return (
+          <g key={f.name}>
+            <SketchText x={x + 14} y={ry} size={10.5}>
+              {f.name}
+            </SketchText>
+            {f.value ? (
+              <SketchText x={x + w - 14} y={ry} anchor="end" size={12}>
+                {f.value}
+              </SketchText>
+            ) : f.stars ? (
+              <Stars x={x + w - 86} y={ry - 4} n={f.stars} of={5} r={6} gap={15} seed={seed + 10 + i} />
+            ) : (
+              <PencilLine pts={[[x + w - 60, ry - 3], [x + w - 14, ry - 3]]} seed={seed + 10 + i} />
+            )}
+            {i < fields.length - 1 ? (
+              <InkLine pts={[[x + 12, ry + 12], [x + w - 12, ry + 12]]} seed={seed + 20 + i} width={0.5} amp={0.2} />
+            ) : null}
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+/**
+ * The agent perceives products only as data: the cereal with a complete
+ * sheet reaches it; the one with missing details does not.
+ */
+export function DataSheets() {
+  const g = 230;
+  return (
+    <SketchFrame
+      id="sk-data-sheets"
+      width={800}
+      height={262}
+      label="The AI agent phone stands between two product data sheets. On the left, a teal cereal box and its complete sheet: price $4.99, size 500 g, ingredients oats and honey, four stars, 1,240 reviews; an arrow runs from the sheet to the agent. On the right, a camel cereal box and a sheet with only a price of $5.49; its other details are empty pencil dashes, and no arrow reaches the agent."
+    >
+      <Backwash cx={400} cy={138} rx={390} ry={118} seed={4000} opacity={0.4} />
+      <Ground x0={24} x1={776} y={g} seed={4001} />
+
+      <Pack x={62} bottom={g} w={58} h={100} seed={4010} fill={SK.teal} />
+      <SketchArrow pts={[[96, 150], [118, 150]]} seed={4015} />
+      <DataSheet x={124} y={42} fields={FIELDS[0]} seed={4020} />
+      <SketchArrow pts={[[344, 146], [370, 150]]} seed={4050} />
+
+      <Agent x={400} y={g} s={1.5} seed={4060} />
+
+      <DataSheet x={462} y={42} fields={FIELDS[1]} seed={4070} />
+      <SketchArrow pts={[[708, 150], [682, 150]]} seed={4095} />
+      <Pack x={742} bottom={g} w={58} h={100} seed={4100} fill={SK.camel} />
+    </SketchFrame>
+  );
+}
+
+/** A page of search results, top-left (x, y), `w` wide: four rows, the top one teal. */
+function ResultsList({ x, y, w, seed }: { x: number; y: number; w: number; seed: number }) {
+  const rowH = 44;
+  const page = sharp([[x, y], [x + w, y], [x + w, y + 22 + rowH * 4], [x, y + 22 + rowH * 4]], true, 3);
+  return (
+    <g>
+      <Paper pts={page} seed={seed} />
+      <InkLine pts={page} seed={seed + 1} closed />
+      <InkLine pts={rp([[x + 10, y + 11], [x + w - 10, y + 11]])} seed={seed + 2} width={4} amp={0.3} color={SK.earth} />
+      {[0, 1, 2, 3].map((i) => {
+        const ry = y + 22 + i * rowH;
+        const thumb = sharp([[x + 10, ry + 8], [x + 38, ry + 8], [x + 38, ry + 36], [x + 10, ry + 36]], true, 1.5);
+        return (
+          <g key={i}>
+            <Wash pts={thumb} seed={seed + 10 + i} fill={i === 0 ? SK.teal : SK.camel} opacity={i === 0 ? 0.85 : 0.55} dx={0.5} dy={0.4} />
+            <InkLine pts={thumb} seed={seed + 20 + i} width={1} closed />
+            <InkLine pts={rp([[x + 48, ry + 17], [x + w - 16, ry + 17]])} seed={seed + 30 + i} width={1.6} amp={0.3} />
+            <InkLine pts={rp([[x + 48, ry + 28], [x + w * 0.62, ry + 28]])} seed={seed + 40 + i} width={0.8} amp={0.3} />
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+/**
+ * Where shoppers look: the eye-level shelf, and the top of a results page.
+ * Two small scenes; the product that gets noticed is teal in each.
+ */
+export function EyeLevelTopResult() {
+  const g = 214;
+  const planks = [92, 146, 200];
+  return (
+    <SketchFrame
+      id="sk-eye-level"
+      width={400}
+      height={232}
+      label="Two small scenes. Left: a shopper looks straight ahead at the middle shelf of three, where the teal product sits at eye level. Right: a page of search results with a pointer on the first result, whose thumbnail is teal."
+    >
+      <Backwash cx={104} cy={126} rx={100} ry={100} seed={4200} opacity={0.4} />
+      <Backwash cx={300} cy={126} rx={96} ry={100} seed={4201} opacity={0.4} />
+      <Ground x0={12} x1={196} y={g} seed={4202} />
+
+      <Person x={40} y={g} h={150} seed={4210} look={{ hair: "short", wear: SK.sky, legs: SK.charcoal }} arms={["down", "down"]} />
+      {planks.map((py, i) => (
+        <g key={py}>
+          <Wash pts={rp([[92, py], [188, py], [188, py + 7], [92, py + 7]])} seed={4220 + i} fill={SK.leather} opacity={0.55} />
+          <InkLine pts={[[92, py], [188, py]]} seed={4225 + i} />
+          {[108, 140, 172].map((px, j) => (
+            <Pack key={px} x={px} bottom={py} w={20} h={32} seed={4230 + i * 10 + j * 3} fill={i === 0 && j === 1 ? SK.teal : SK.camel} />
+          ))}
+        </g>
+      ))}
+      <InkLine pts={[[92, 60], [92, g]]} seed={4270} width={1.1} />
+      <SketchArrow pts={curvePts([54, 76], [96, 62], [128, 70], 10)} seed={4275} width={1} head={6} />
+
+      <ResultsList x={220} y={28} w={164} seed={4300} />
+      <Pointer x={262} y={60} seed={4350} />
+    </SketchFrame>
+  );
+}
+
+/** The agent reads the same results page and takes the top result. */
+export function AgentTopResult() {
+  const g = 214;
+  return (
+    <SketchFrame
+      id="sk-agent-top"
+      width={400}
+      height={232}
+      label="The AI agent phone beside a page of search results; an arrow runs from the agent to the first result, whose thumbnail is teal."
+    >
+      <Backwash cx={210} cy={126} rx={190} ry={100} seed={4400} opacity={0.4} />
+      <Ground x0={20} x1={130} y={g} seed={4401} />
+      <Agent x={74} y={g} s={1.4} seed={4410} />
+      <SketchArrow pts={curvePts([108, 116], [150, 64], [203, 72], 10)} seed={4420} />
+      <ResultsList x={196} y={28} w={176} seed={4430} />
     </SketchFrame>
   );
 }

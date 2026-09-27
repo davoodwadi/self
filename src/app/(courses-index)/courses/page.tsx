@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { CB_DIR, readCurriculum } from "@/lib/curriculum";
 
 // ============================================================================
 // /courses — COURSE INDEX
@@ -23,8 +24,12 @@ type Course = {
   slug: string;
   code: string | null;
   title: string;
+  subtitle?: string;
   description: string;
 };
+
+// Course text that has a curriculum.md is read from it, not written here.
+const CB = readCurriculum(CB_DIR);
 
 const COURSES: Course[] = [
   {
@@ -37,9 +42,9 @@ const COURSES: Course[] = [
   {
     slug: "consumer-behavior",
     code: null,
-    title: "Consumer Behavior",
-    description:
-      "Why people buy, use, and discard products. Perception, learning and memory, motivation, attitudes, decision-making, and the heuristics behind everyday choices.",
+    title: CB.title,
+    subtitle: CB.subtitle,
+    description: CB.summary,
   },
   {
     slug: "digital-transformation",
@@ -135,6 +140,12 @@ function CourseCard({ course }: { course: Course }) {
       <h2 className="mt-4 font-display text-2xl leading-snug font-semibold text-ink lg:text-[1.75rem]">
         {course.title}
       </h2>
+
+      {course.subtitle && (
+        <p className="mt-1.5 font-display text-lg leading-snug text-ink-2">
+          {course.subtitle}
+        </p>
+      )}
 
       <p className="mt-4 text-sm leading-relaxed text-ink-2">
         {course.description}

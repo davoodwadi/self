@@ -31,6 +31,16 @@ backgroundShape: "A layered field of consumer drives, goals, conflicts, and invo
 - Valence is the value the consumer places on that outcome.
 - A consumer is more motivated when the goal seems possible, the product seems useful, and the result feels valuable.
 
+## Intrinsic and Extrinsic Motivation: Why Consumers Write Reviews [exercise]
+- Intrinsic motivation comes from the activity itself, such as enjoyment or the wish to help others.
+- Extrinsic motivation comes from an outside reward, such as money, points, or a discount.
+- Many consumers write online reviews to help other shoppers decide. This is an intrinsic, altruistic motive.
+- Firms often offer rewards for reviews, because reviews guide both shoppers and the AI agents that read reviews for them.
+- A reward can crowd out intrinsic motives. When people are paid for a kind act, the act can start to feel like a transaction.
+- The message that comes with a request matters. In a field study with a North American online retailer, asking customers to help other shoppers raised the odds of a review more than asking them to help the company (Wadi et al., 2026a).
+- In a follow-up experiment, a $10 credit raised review intentions more when the message asked customers to help other shoppers than when it asked them to help the company.
+- The same reward also works differently for different people. A reward paid only when a review received a "helpful" vote raised the number and length of reviews more for first-time reviewers than for experienced reviewers (Wadi et al., 2026b).
+
 ## Needs, Wants, and Demand [exercise]
 - A need is a basic biological or psychological requirement, such as hunger, safety, or belonging.
 - A want is the specific product or service chosen to satisfy a need.
@@ -59,6 +69,7 @@ backgroundShape: "A layered field of consumer drives, goals, conflicts, and invo
 - Message involvement is high when the consumer pays close attention to the information in an advertisement.
 - Purchase situation involvement changes with time pressure, social setting, and perceived risk.
 - High involvement leads to more effort and careful comparison. Low involvement often leads to habit and simple cues.
+- Involvement also shapes delegation. A consumer may let an AI agent reorder laundry detergent, a low-involvement purchase, but still choose an engagement ring in person.
 
 ## Values Guide Consumer Choices [exercise]
 - Values are enduring beliefs about what is important or desirable.

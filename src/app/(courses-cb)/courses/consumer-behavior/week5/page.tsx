@@ -539,6 +539,64 @@ export default function Week5() {
       </Slide>
 
       {/* ================================================================
+          Identity and Automation: The Tasks Consumers Keep
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="identity-and-automation-the-tasks-consumers-keep"
+        border
+        exercise={exercise["identity-and-automation-the-tasks-consumers-keep"]}
+      >
+        <IdeaRule active={0} />
+        <Heading kicker="Identity and Automation:">The Tasks Consumers Keep</Heading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_minmax(0,400px)] lg:gap-12">
+          <div className="grid min-w-0 gap-3">
+            <Statement className="!max-w-[44ch] !text-[clamp(1.2rem,1.8vw,1.5rem)]">
+              Many products and AI tools now promise to do tasks for the consumer, from cooking to
+              writing.
+            </Statement>
+            <P>
+              Consumers <Term>do not always welcome</Term> this help.
+            </P>
+            <P>
+              When a task is central to a person&apos;s identity, the person wants to feel that the
+              result is <Term>their own work</Term>.
+            </P>
+            <P>
+              Research shows that people who strongly identify with an activity, such as cooking,
+              are less interested in products that automate the skills involved (Leung, Paolacci,
+              &amp; Puntoni, 2018).
+            </P>
+            <P>
+              A passionate home baker may <Term>reject</Term> a machine that makes bread
+              automatically, while a busy parent may welcome it.
+            </P>
+          </div>
+          <Plate>
+            <V.BakerVsParent />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[1fr_1fr_minmax(0,340px)] lg:gap-10">
+          <Ruled tone="ink" className="!pt-3">
+            <P>
+              For the same reason, a consumer may let an AI agent handle{" "}
+              <Term tone="ink">routine purchases</Term> but keep the choices that express who they
+              are.
+            </P>
+          </Ruled>
+          <Ruled tone="signal" className="!pt-3">
+            <P>
+              Marketers of automated products can leave room for the consumer&apos;s{" "}
+              <Term>own contribution</Term>, so the consumer still feels ownership of the result.
+            </P>
+          </Ruled>
+          <Plate>
+            <V.LeaveTheLastStep />
+          </Plate>
+        </div>
+      </Slide>
+
+      {/* ================================================================
           Personality Traits and Consumer Behavior
           ================================================================ */}
       <Slide
@@ -988,6 +1046,68 @@ export default function Week5() {
             </MarkLine>
           </ol>
         </div>
+      </Slide>
+
+      {/* ================================================================
+          Synthetic Consumers: AI as a Survey Respondent
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="synthetic-consumers-ai-as-a-survey-respondent"
+        border
+        exercise={exercise["synthetic-consumers-ai-as-a-survey-respondent"]}
+      >
+        <IdeaRule active={2} />
+        <Heading kicker="Synthetic Consumers:">AI as a Survey Respondent</Heading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_minmax(0,400px)] lg:gap-12">
+          <div className="grid min-w-0 gap-3">
+            <P>
+              Psychographic research depends on asking consumers about their activities, interests,
+              and opinions.
+            </P>
+            <Statement className="!max-w-[46ch] !text-[clamp(1.15rem,1.7vw,1.45rem)]">
+              Some researchers now ask large language models to answer surveys as if they were
+              consumers with a given profile. These answers are called{" "}
+              <Tint>synthetic responses</Tint>.
+            </Statement>
+            <P>
+              Synthetic responses are fast and cheap. Early studies found that they can mirror some
+              patterns in real consumer data, such as sensitivity to price (Brand, Israeli, &amp;
+              Ngwe, 2023).
+            </P>
+          </div>
+          <Plate>
+            <V.RealAndSynthetic />
+          </Plate>
+        </div>
+        {/* The first limit leads its plate; the others follow beneath it. */}
+        <div className="mt-8 grid w-full items-center gap-6 lg:grid-cols-[1fr_minmax(0,400px)] lg:gap-x-12">
+          <Ruled tone="counter" className="!pt-3 lg:col-start-1 lg:row-start-1 lg:self-end">
+            <P>
+              Synthetic responses also have <Term tone="counter">limits</Term>. The same model can
+              give a different answer each time it is asked the same question (Wadi &amp; Fredette,
+              2025).
+            </P>
+          </Ruled>
+          <Plate className="lg:col-start-2 lg:row-span-3 lg:row-start-1">
+            <V.AskAgain />
+          </Plate>
+          <P className="lg:col-start-1 lg:row-start-2">
+            Models can also show biases, such as anchoring on a number in the question (Wadi &amp;
+            Fredette, 2025) or favoring products from some countries over others (Wadi, Ghodrat,
+            &amp; Philp, 2026).
+          </P>
+          <P className="lg:col-start-1 lg:row-start-3 lg:self-start">
+            A synthetic consumer has <Term tone="ink">no lived experience</Term> of buying or using
+            a product.
+          </P>
+        </div>
+        <Ruled tone="signal" className="mt-6 w-full !pt-3">
+          <P className="!max-w-none">
+            Synthetic responses can help researchers <Term>design and pretest</Term> a survey.
+            Decisions about real consumers still need data from real consumers.
+          </P>
+        </Ruled>
       </Slide>
 
       {/* ================================================================

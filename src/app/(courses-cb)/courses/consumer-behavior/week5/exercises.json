@@ -122,6 +122,53 @@
     ]
   },
   {
+    "type": "sort",
+    "slide_id": "identity-and-automation-the-tasks-consumers-keep",
+    "prompt": "Each consumer is offered a product or AI tool that does a task for them. Sort each one by whether the consumer is likely to welcome the help or resist it.",
+    "bins": [
+      { "id": "welcome", "label": "Likely to welcome it" },
+      { "id": "resist", "label": "Likely to resist it" }
+    ],
+    "cards": [
+      {
+        "id": "sourdough",
+        "text": "A weekend baker who posts her sourdough online is offered a machine that does every step.",
+        "bin": "resist",
+        "explanation": "Baking is central to her identity, so she wants the loaf to feel like her own work."
+      },
+      {
+        "id": "nurse",
+        "text": "A nurse on night shifts is offered a meal kit that cooks itself.",
+        "bin": "welcome",
+        "explanation": "Cooking is a routine task for her, not part of who she is."
+      },
+      {
+        "id": "stylist",
+        "text": "A fashion blogger is offered an AI tool that picks every outfit for her.",
+        "bin": "resist",
+        "explanation": "Her outfits express who she is, so she keeps that choice for herself."
+      },
+      {
+        "id": "paper",
+        "text": "A student lets an AI agent reorder printer paper each month.",
+        "bin": "welcome",
+        "explanation": "A routine purchase is easy to hand to an AI agent."
+      },
+      {
+        "id": "guitar",
+        "text": "A guitarist who writes his own songs is offered an app that composes songs for him.",
+        "bin": "resist",
+        "explanation": "Songwriting is part of his identity, so automating it takes away the sense that the song is his."
+      },
+      {
+        "id": "parking",
+        "text": "A commuter lets her car park itself in a tight garage.",
+        "bin": "welcome",
+        "explanation": "Parking is not a task she identifies with, so automation simply saves effort."
+      }
+    ]
+  },
+  {
     "type": "match",
     "slide_id": "the-big-five-personality-dimensions",
     "prompt": "Match each Big Five dimension to the shopper who shows it most.",
@@ -285,6 +332,32 @@
         "text": "Would you describe yourself as a natural leader?",
         "bin": "opinions",
         "explanation": "Opinions: oneself."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "synthetic-consumers-ai-as-a-survey-respondent",
+    "question_text": "A startup wants to know whether students would pay $15 a month for a meal-planning app. Which use of synthetic responses fits what the slide describes?",
+    "hint": "Think about what synthetic responses are good for, and about their limits.",
+    "correct_answer_citation": "Week 05 · Synthetic Consumers: AI as a Survey Respondent",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Replace the student survey with synthetic responses, because they are fast and cheap",
+        "option_explanation": "Speed and cost are real advantages, but decisions about real consumers still need data from real consumers."
+      },
+      {
+        "option_text": "Use synthetic responses to test the survey's wording before surveying real students",
+        "option_explanation": "Correct. Synthetic responses can help researchers design and pretest a survey."
+      },
+      {
+        "option_text": "Ask a model once whether it would pay $15, and report that answer as the students' view",
+        "option_explanation": "The same model can give a different answer each time it is asked the same question, so one answer is not a reliable estimate."
+      },
+      {
+        "option_text": "Trust the model's answer because it has used many meal-planning apps",
+        "option_explanation": "A synthetic consumer has no lived experience of buying or using a product."
       }
     ]
   }

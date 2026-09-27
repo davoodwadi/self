@@ -39,6 +39,9 @@ import {
   ExperientialValue,
   FitsValues,
   FindTheMotive,
+  WhyReview,
+  CreditByMessage,
+  DelegateByInvolvement,
 } from "./visuals";
 
 // ============================================================================
@@ -58,8 +61,9 @@ import {
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise that tests that slide
 // and the ones before it. Drive theory is a process, so its moments are put
-// in order; the three expectancy beliefs and the three motivational conflicts
-// are told apart case by case (identify); needs, wants and demand, and the
+// in order; the three expectancy beliefs, intrinsic and extrinsic motives and
+// crowding out, and the three motivational conflicts are told apart case by
+// case (identify); needs, wants and demand, and the
 // three kinds of value, are sorted into groups; Maslow's levels are matched to
 // purchases.
 // ============================================================================
@@ -170,7 +174,7 @@ function Heading({
 }) {
   return (
     <div className="mb-8 w-full md:mb-10 [@media(min-width:768px)_and_(max-height:900px)]:!mb-6">
-      <h2 className="type-h1 max-w-[22ch]">
+      <h2 className="type-h1 max-w-[32ch]">
         {kicker ? (
           <>
             <span
@@ -222,10 +226,13 @@ function Cells({
   cols,
   items,
   className = "",
+  plateClass = "",
 }: {
   cols: 3 | 4;
   items: { key: string; tone: Tone; text: React.ReactNode; plate?: React.ReactNode }[];
   className?: string;
+  /** Extra classes for each cell's plate, such as a width cap on a dense slide. */
+  plateClass?: string;
 }) {
   return (
     <ol
@@ -240,7 +247,7 @@ function Cells({
           <div className={cn("border-t-2 pt-4", BORDER[s.tone])}>
             <p className="type-body">{s.text}</p>
           </div>
-          {s.plate ? <Plate className="mt-auto">{s.plate}</Plate> : null}
+          {s.plate ? <Plate className={cn("mt-auto", plateClass)}>{s.plate}</Plate> : null}
         </li>
       ))}
     </ol>
@@ -499,6 +506,79 @@ export default function Week4() {
       </Slide>
 
       {/* ================================================================
+          Intrinsic and Extrinsic Motivation: Why Consumers Write Reviews
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="intrinsic-and-extrinsic-motivation-why-consumers-write-reviews"
+        border
+        exercise={exercise["intrinsic-and-extrinsic-motivation-why-consumers-write-reviews"]}
+      >
+        <Heading kicker="Intrinsic and Extrinsic Motivation:">Why Consumers Write Reviews</Heading>
+        {/* The definitions lead the two-panel plate; the reward and its risk
+            follow beneath them, beside the plate. */}
+        <div className="grid w-full items-center gap-6 lg:grid-cols-[1fr_minmax(0,400px)] lg:gap-x-12">
+          <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:col-start-1 lg:row-start-1 lg:self-end">
+            <Ruled tone="signal" className="!pt-3">
+              <P>
+                <Term>Intrinsic motivation</Term> comes from the activity itself, such as enjoyment
+                or the wish to help others.
+              </P>
+            </Ruled>
+            <Ruled tone="ink" className="!pt-3">
+              <P>
+                <Term tone="ink">Extrinsic motivation</Term> comes from an outside reward, such as
+                money, points, or a discount.
+              </P>
+            </Ruled>
+            <P className="sm:col-span-2">
+              Many consumers write online reviews to <Term>help other shoppers</Term> decide. This
+              is an intrinsic, altruistic motive.
+            </P>
+          </div>
+          <Plate className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
+            <WhyReview />
+          </Plate>
+          <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:col-start-1 lg:row-start-2 lg:self-start">
+            <P>
+              Firms often offer rewards for reviews, because reviews guide both shoppers and the AI
+              agents that read reviews for them.
+            </P>
+            <Ruled tone="counter" className="!pt-3">
+              <P>
+                A reward can <Term tone="counter">crowd out</Term> intrinsic motives. When people are
+                paid for a kind act, the act can start to feel like a transaction.
+              </P>
+            </Ruled>
+          </div>
+        </div>
+        <div className={cn("grid w-full items-center gap-8 lg:grid-cols-[1fr_minmax(0,360px)] lg:gap-12", GAP)}>
+          <div className="grid min-w-0 gap-4">
+            <P className="!max-w-none">
+              The <Term>message</Term> that comes with a request matters. In a field study with a
+              North American online retailer, asking customers to help other shoppers raised the
+              odds of a review more than asking them to help the company (Wadi et al., 2026a).
+            </P>
+            <P className="!max-w-none">
+              In a follow-up experiment, a $10 credit raised review intentions more when the message
+              asked customers to help other shoppers than when it asked them to help the company.
+            </P>
+          </div>
+          <Plate>
+            <CreditByMessage />
+          </Plate>
+        </div>
+        <Ruled tone="ink" className={cn("w-full !pt-3", GAP)}>
+          <P className="!max-w-none">
+            The same reward also works differently for different people. A reward paid only when a
+            review received a &ldquo;helpful&rdquo; vote raised the number and length of reviews
+            more for <Term tone="ink">first-time reviewers</Term> than for experienced reviewers
+            (Wadi et al., 2026b).
+          </P>
+        </Ruled>
+      </Slide>
+
+      {/* ================================================================
           Needs, Wants, and Demand
           ================================================================ */}
       <Slide
@@ -695,7 +775,7 @@ export default function Week4() {
           ================================================================ */}
       <Slide className={TIGHT} id="consumer-involvement-how-much-does-it-matter" border>
         <Heading kicker="Consumer Involvement:">How Much Does It Matter?</Heading>
-        <Lede wide plate={<InvolvementScale />}>
+        <Lede wide plate={<InvolvementScale />} cols="lg:grid-cols-[1.2fr_1fr]">
           <Statement className={cn(LEDE, "!max-w-[32ch]")}>
             Involvement is the <Tint>personal importance</Tint> a consumer assigns to a product,
             message, or purchase situation.
@@ -703,8 +783,8 @@ export default function Week4() {
         </Lede>
         <Cells
           cols={3}
-         
           className={GAP}
+          plateClass="mx-auto max-w-[210px]"
           items={[
             {
               key: "product",
@@ -743,9 +823,11 @@ export default function Week4() {
             },
           ]}
         />
-        <Lede wide plate={<HighVsLow />} className={GAP}>
-          <Ruled tone="signal" className="!pt-4">
-            <Lead>
+        {/* High and low involvement lead their plate; the delegation line
+            sits beneath them and leads its own plate on the right. */}
+        <div className={cn("grid w-full items-center gap-6 lg:grid-cols-[1.6fr_1.1fr_0.8fr] lg:gap-x-8", GAP)}>
+          <Ruled tone="signal" className="!pt-4 lg:col-start-1 lg:row-start-1 lg:self-end">
+            <Lead className="!text-[clamp(1.05rem,1.4vw,1.25rem)]">
               {" "}
               <Term>High involvement</Term> leads to more effort and careful comparison.{" "}
               <span className="text-[var(--ink-3)]">
@@ -753,7 +835,18 @@ export default function Week4() {
               </span>
             </Lead>
           </Ruled>
-        </Lede>
+          <Plate wide className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
+            <HighVsLow />
+          </Plate>
+          <P className="lg:col-start-1 lg:row-start-2 lg:self-start">
+            Involvement also shapes <Term>delegation</Term>. A consumer may let an AI agent reorder
+            laundry detergent, a low-involvement purchase, but still choose an engagement ring in
+            person.
+          </P>
+          <Plate className="lg:col-start-3 lg:row-span-2 lg:row-start-1">
+            <DelegateByInvolvement />
+          </Plate>
+        </div>
       </Slide>
 
       {/* ================================================================

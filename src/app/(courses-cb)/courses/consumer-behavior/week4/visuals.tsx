@@ -11,6 +11,8 @@
        upgraded (upright, a sharper coat, the product in hand) on a sky wash.
      · BrandBadge: the brand and its offer, on a pack or a card.
      · Heart: a feeling or what matters to the consumer.
+     · Agent: the AI agent (shared: a phone with the AI sparkle).
+     · ReviewCard: a star-rated review, the week's sign for a written review.
    Teal is the one thing chosen, reached or ticked on a plate; pencil is only
    for something absent (an option not taken, a product not yet chosen).
    ========================================================================== */
@@ -29,6 +31,7 @@ import {
   Wash,
 } from "../_visuals/kit";
 import {
+  Agent,
   at,
   Backwash,
   Bag,
@@ -1754,6 +1757,238 @@ export function FindTheMotive() {
           </SketchText>
         </g>
       ))}
+    </SketchFrame>
+  );
+}
+
+/* ==========================================================================
+   INTRINSIC AND EXTRINSIC MOTIVATION: WHY CONSUMERS WRITE REVIEWS
+   The reviewer is the week's Person with a phone; the Heart is the wish to
+   help (intrinsic), the credit tag the outside reward (extrinsic).
+   ========================================================================== */
+
+/** The reviewer with a phone in the near hand, standing on (x, g). */
+function Reviewer({ x, g, seed, flip = false, look = BETTER }: { x: number; g: number; seed: number; flip?: boolean; look?: Look }) {
+  const [hx, hy] = handAt(x, g, 140, "hold", 1, flip);
+  return (
+    <g>
+      <Person x={x} y={g} h={140} look={look} arms={["down", "hold"]} flip={flip} seed={seed} />
+      <Phone2 x={r2(hx + (flip ? -3 : 3))} y={r2(hy - 10)} s={0.36} seed={seed + 80} />
+    </g>
+  );
+}
+
+/** A small review card, top-left (x, y): five stars over two lines of text. */
+function ReviewCard({ x, y, seed }: { x: number; y: number; seed: number }) {
+  const card = sharp([[x, y], [x + 54, y], [x + 54, y + 34], [x, y + 34]], true, 2);
+  return (
+    <g>
+      <Paper pts={card} seed={seed} />
+      <InkLine pts={card} seed={seed + 1} width={1} closed />
+      {[0, 1, 2, 3, 4].map((i) => (
+        <Star key={i} x={x + 9 + i * 9} y={y + 10} r={3.6} seed={seed + 2 + i} filled={i < 4} />
+      ))}
+      <InkLine pts={rp([[x + 6, y + 21], [x + 48, y + 21]])} seed={seed + 8} width={0.7} amp={0.2} />
+      <InkLine pts={rp([[x + 6, y + 28], [x + 36, y + 28]])} seed={seed + 9} width={0.7} amp={0.2} />
+    </g>
+  );
+}
+
+/**
+ * Two panels, the same reviewer writing the same review. Intrinsic: the
+ * motive (a thought) is a heart and the review goes to another shopper.
+ * Extrinsic: the motive is the credit.
+ */
+export function WhyReview() {
+  const g = 212;
+  return (
+    <SketchFrame
+      id="sk-why-review"
+      width={400}
+      height={232}
+      label="Two panels. Intrinsic: a reviewer thinking of a heart holds up a star-rated review, and an arrow carries it to another shopper reading a phone. Extrinsic: the same reviewer holds up the same review while thinking of a tag reading plus ten dollars."
+    >
+      <Backwash cx={100} cy={126} rx={94} ry={98} seed={3600} opacity={0.4} />
+      <Backwash cx={300} cy={126} rx={94} ry={98} seed={3601} opacity={0.4} />
+      <InkLine pts={rp([[204, 20], [204, 214]])} seed={3602} width={0.6} />
+      <SketchText x={100} y={24} anchor="middle" size={11}>
+        INTRINSIC
+      </SketchText>
+      <SketchText x={300} y={24} anchor="middle" size={11}>
+        EXTRINSIC
+      </SketchText>
+
+      <Ground x0={12} x1={194} y={g} seed={3603} />
+      <Reviewer x={40} g={g} seed={3610} />
+      <Thought x={66} y={52} rx={24} ry={17} tx={46} ty={78} seed={3630} />
+      <Heart x={66} y={51} s={1} seed={3640} />
+      <ReviewCard x={70} y={96} seed={3645} />
+      <SketchArrow pts={[[128, 113], [152, 120]]} seed={3655} width={1.1} head={6} />
+      <Reviewer x={180} g={g} seed={3660} flip look={PLAIN} />
+
+      <Ground x0={210} x1={388} y={g} seed={3604} />
+      <Reviewer x={240} g={g} seed={3670} />
+      <Thought x={272} y={52} rx={36} ry={19} tx={246} ty={78} seed={3690} />
+      <Tag2 x={272} y={52} text="+$10" seed={3700} />
+      <ReviewCard x={270} y={96} seed={3710} />
+    </SketchFrame>
+  );
+}
+
+/** Review intention (1–5) by message, without and with a $10 credit (Wadi et al., 2026a, Study 2). */
+const INTENTION = [
+  { label: ["HELP OTHER", "SHOPPERS"], none: 2.75, credit: 4.32 },
+  { label: ["HELP THE", "COMPANY"], none: 2.95, credit: 3.95 },
+];
+
+/**
+ * One bar per message on the 1–5 intention scale: the lower part is intention
+ * with no credit, the upper part what the $10 credit adds. The larger gain is
+ * teal.
+ */
+export function CreditByMessage() {
+  const base = 214;
+  const unit = 40;
+  const yOf = (v: number) => r2(base - (v - 1) * unit);
+  return (
+    <SketchFrame
+      id="sk-credit-message"
+      width={400}
+      height={262}
+      label="Review intention on a scale from 1 to 5, one bar per message. Help other shoppers: 2.75 with no credit, rising to 4.32 with a ten-dollar credit, a teal gain of 1.57. Help the company: 2.95 with no credit, rising to 3.95 with the credit, a gain of 1.00."
+    >
+      <Backwash cx={214} cy={134} rx={186} ry={120} seed={3800} opacity={0.4} />
+      <InkLine pts={rp([[70, yOf(5) - 6], [70, base]])} seed={3801} width={1} />
+      <InkLine pts={rp([[70, base], [372, base]])} seed={3802} width={1} />
+      {[1, 2, 3, 4, 5].map((v) => (
+        <g key={v}>
+          <InkLine pts={rp([[64, yOf(v)], [70, yOf(v)]])} seed={3803 + v} width={0.8} amp={0.1} />
+          <SketchText x={58} y={yOf(v) + 4} anchor="end" size={10}>
+            {String(v)}
+          </SketchText>
+        </g>
+      ))}
+      <SketchText x={70} y={30} anchor="middle" size={9.5}>
+        REVIEW INTENTION
+      </SketchText>
+
+      {INTENTION.map((m, i) => {
+        const x0 = 118 + i * 140;
+        const x1 = x0 + 104;
+        const low = sharp([[x0, yOf(m.none)], [x1, yOf(m.none)], [x1, base], [x0, base]], true, 1.5);
+        const up = sharp([[x0, yOf(m.credit)], [x1, yOf(m.credit)], [x1, yOf(m.none)], [x0, yOf(m.none)]], true, 1.5);
+        const cx = (x0 + x1) / 2;
+        const gain = r2(m.credit - m.none);
+        return (
+          <g key={m.label[1]}>
+            <Paper pts={low} seed={3820 + i * 10} />
+            <InkLine pts={low} seed={3821 + i * 10} width={1.1} closed />
+            <Wash pts={up} seed={3822 + i * 10} fill={i === 0 ? SK.teal : SK.camel} opacity={0.75} />
+            <InkLine pts={up} seed={3823 + i * 10} width={1.1} closed />
+            <SketchText x={cx} y={r2(yOf(m.credit) - 8)} anchor="middle" size={12}>
+              {m.credit.toFixed(2)}
+            </SketchText>
+            <SketchText x={cx} y={r2((yOf(m.credit) + yOf(m.none)) / 2 - 2)} anchor="middle" size={9.5}>
+              $10 CREDIT
+            </SketchText>
+            <SketchText x={cx} y={r2((yOf(m.credit) + yOf(m.none)) / 2 + 11)} anchor="middle" size={11}>
+              {`+${gain.toFixed(2)}`}
+            </SketchText>
+            <SketchText x={cx} y={r2(yOf(m.none) + 18)} anchor="middle" size={11}>
+              {m.none.toFixed(2)}
+            </SketchText>
+            <SketchText x={cx} y={r2(yOf(m.none) + 32)} anchor="middle" size={9.5}>
+              NO CREDIT
+            </SketchText>
+            {m.label.map((t, k) => (
+              <SketchText key={t} x={cx} y={base + 20 + k * 13} anchor="middle" size={10}>
+                {t}
+              </SketchText>
+            ))}
+          </g>
+        );
+      })}
+    </SketchFrame>
+  );
+}
+
+/* ==========================================================================
+   INVOLVEMENT AND DELEGATION
+   ========================================================================== */
+
+/** A laundry detergent jug standing on (x, bottom). */
+function Jug({ x, bottom, seed }: { x: number; bottom: number; seed: number }) {
+  const body = sharp(rp([[x - 22, bottom], [x - 22, bottom - 50], [x - 12, bottom - 62], [x + 6, bottom - 62], [x + 22, bottom - 50], [x + 22, bottom]]), true, 3);
+  const cap = sharp(rp([[x - 10, bottom - 62], [x - 10, bottom - 72], [x + 2, bottom - 72], [x + 2, bottom - 62]]), true, 1.5);
+  const handle = rp([[x + 8, bottom - 58], [x + 20, bottom - 56], [x + 20, bottom - 40], [x + 12, bottom - 40]]);
+  const label = sharp(rp([[x - 16, bottom - 36], [x + 16, bottom - 36], [x + 16, bottom - 14], [x - 16, bottom - 14]]), true, 1.5);
+  return (
+    <g>
+      <Wash pts={body} seed={seed} fill={SK.sky} opacity={0.8} />
+      <InkLine pts={body} seed={seed + 1} closed />
+      <InkLine pts={handle} seed={seed + 2} width={1} />
+      <Wash pts={cap} seed={seed + 3} fill={SK.charcoal} opacity={0.6} />
+      <InkLine pts={cap} seed={seed + 4} width={1} closed />
+      <Paper pts={label} seed={seed + 5} />
+      <InkLine pts={label} seed={seed + 6} width={0.9} closed />
+    </g>
+  );
+}
+
+/**
+ * Delegation follows involvement: the agent reorders detergent (low); the
+ * consumer holds up an engagement ring to choose it in person (high).
+ */
+export function DelegateByInvolvement() {
+  const g = 196;
+  const [hx, hy] = handAt(292, g, 150, "reach");
+  return (
+    <SketchFrame
+      id="sk-delegate-involvement"
+      width={400}
+      height={218}
+      label="Two panels. Low involvement: the AI agent phone and a laundry detergent jug with a circular repeat arrow over it, reordered by the agent. High involvement: a person holds up an engagement ring in a teal box and looks at it closely."
+    >
+      <Backwash cx={100} cy={118} rx={94} ry={90} seed={3900} opacity={0.4} />
+      <Backwash cx={300} cy={118} rx={94} ry={90} seed={3901} opacity={0.4} />
+      <InkLine pts={rp([[200, 18], [200, 200]])} seed={3902} width={0.6} />
+      <SketchText x={100} y={24} anchor="middle" size={10.5}>
+        LOW INVOLVEMENT
+      </SketchText>
+      <SketchText x={300} y={24} anchor="middle" size={10.5}>
+        HIGH INVOLVEMENT
+      </SketchText>
+
+      <Ground x0={14} x1={188} y={g} seed={3903} />
+      <Agent x={54} y={g} s={1.05} seed={3910} />
+      <SketchArrow pts={[[82, 150], [110, 150]]} seed={3920} />
+      <Jug x={146} bottom={g} seed={3930} />
+      <SketchArrow
+        pts={rp(Array.from({ length: 14 }, (_, i) => {
+          const a = Math.PI * (0.62 + (i / 13) * 1.62);
+          return [146 + Math.cos(a) * 17, 94 + Math.sin(a) * 17] as Pt;
+        }))}
+        seed={3940}
+        width={1.2}
+        head={6}
+      />
+
+      <Ground x0={212} x1={388} y={g} seed={3904} />
+      <Person x={292} y={g} h={150} look={BETTER} arms={["hip", "reach"]} seed={3950} />
+      {(() => {
+        const box = sharp(rp([[hx - 2, hy - 10], [hx + 24, hy - 10], [hx + 24, hy + 6], [hx - 2, hy + 6]]), true, 2);
+        const ring = rp(blobPts(hx + 11, hy - 18, 6, 6, 3962, 12, 0.04));
+        const gem = sharp(rp([[hx + 11, hy - 32], [hx + 15, hy - 27], [hx + 11, hy - 24], [hx + 7, hy - 27]]), true, 0.8);
+        return (
+          <g>
+            <Wash pts={box} seed={3960} fill={SK.teal} opacity={0.85} />
+            <InkLine pts={box} seed={3961} width={1.1} closed />
+            <InkLine pts={ring} seed={3963} width={1.4} closed />
+            <Wash pts={gem} seed={3964} fill={SK.sky} opacity={0.9} dx={0.3} dy={0.3} />
+            <InkLine pts={gem} seed={3965} width={0.9} closed />
+          </g>
+        );
+      })()}
     </SketchFrame>
   );
 }

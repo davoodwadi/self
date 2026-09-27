@@ -95,6 +95,53 @@
     ]
   },
   {
+    "type": "sort",
+    "slide_id": "the-ai-agent-as-a-surrogate-consumer",
+    "prompt": "A student asks an AI agent to buy her hiking boots. Who does each step: the consumer or the AI agent? Sort them into the two groups.",
+    "bins": [
+      { "id": "consumer", "label": "The consumer" },
+      { "id": "agent", "label": "The AI agent" }
+    ],
+    "cards": [
+      {
+        "id": "goal",
+        "text": "Asks for waterproof hiking boots under $150.",
+        "bin": "consumer",
+        "explanation": "The consumer states a goal."
+      },
+      {
+        "id": "search",
+        "text": "Looks through the boots sold by six online stores.",
+        "bin": "agent",
+        "explanation": "The AI agent searches for options."
+      },
+      {
+        "id": "compare",
+        "text": "Lines up the prices, weights and ratings of four pairs.",
+        "bin": "agent",
+        "explanation": "The AI agent compares the options."
+      },
+      {
+        "id": "checkout",
+        "text": "Pays for the chosen pair with the saved card.",
+        "bin": "agent",
+        "explanation": "The AI agent can complete the purchase, acting as the buyer."
+      },
+      {
+        "id": "hike",
+        "text": "Wears the boots on a weekend hike.",
+        "bin": "consumer",
+        "explanation": "The consumer still uses the product and remains the user."
+      },
+      {
+        "id": "judge",
+        "text": "Decides after a month that the boots were worth the price.",
+        "bin": "consumer",
+        "explanation": "The consumer judges the product's quality after the sale."
+      }
+    ]
+  },
+  {
     "type": "match",
     "slide_id": "market-segmentation-who-are-we-talking-to",
     "prompt": "Match each segmentation base with the company that is using it.",

@@ -35,6 +35,9 @@ import {
   FigureGround,
   SemioticTriangle,
   SensorySignatures,
+  DataSheets,
+  EyeLevelTopResult,
+  AgentTopResult,
 } from "./visuals";
 
 // ============================================================================
@@ -53,7 +56,8 @@ import {
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise that tests that slide
 // and the ones before it. The three stages of perception are put in order,
-// the three look-alike Gestalt principles are named case by case (identify);
+// the three look-alike Gestalt principles are named case by case (identify),
+// what an AI agent can and cannot perceive is a sort;
 // thresholds and Weber's law apply one idea to a case, so they are quizzes.
 // ============================================================================
 
@@ -160,7 +164,7 @@ function Heading({
 }) {
   return (
     <div className="mb-8 w-full md:mb-10">
-      <h2 className="type-h1 max-w-[22ch]">
+      <h2 className="type-h1 max-w-[32ch]">
         {kicker ? (
           <>
             <span
@@ -652,6 +656,89 @@ export default function Week2() {
             },
           ]}
         />
+      </Slide>
+
+      {/* ================================================================
+          Machine Perception: How AI Agents Perceive Products
+          ================================================================ */}
+      <Slide
+        className={TIGHT}
+        id="machine-perception-how-ai-agents-perceive-products"
+        border
+        exercise={exercise["machine-perception-how-ai-agents-perceive-products"]}
+      >
+        <Heading kicker="Machine Perception:">How AI Agents Perceive Products</Heading>
+        <Big className="!max-w-none !text-[clamp(1.15rem,1.6vw,1.4rem)]">
+          An AI agent that shops for a consumer does not see, hear, smell, touch, or taste a
+          product.
+        </Big>
+        {/* What the agent perceives, and what exposure and attention mean for
+            it, lead the plate of two data sheets. */}
+        <div className="mt-5 grid w-full items-center gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
+          <div className="grid min-w-0 gap-3">
+            <P>
+              It perceives a product through <Term>data</Term>: the name, price, size, ingredients,
+              ratings, and reviews.
+            </P>
+            <P>
+              For an AI agent, <Term tone="ink">exposure</Term> means the product information is
+              available for the agent to read.
+            </P>
+            <P>
+              A product with <Term tone="counter">missing or unclear details</Term> may never reach
+              the agent&apos;s attention.
+            </P>
+          </div>
+          <Plate wide>
+            <DataSheets />
+          </Plate>
+        </div>
+        <Statement className="mt-6 !max-w-[48ch] !text-[clamp(1.2rem,1.8vw,1.5rem)]">
+          Attention depends on <Tint>position</Tint> for both people and AI agents.
+        </Statement>
+        <ol className="mt-4 grid w-full gap-8 md:grid-cols-2 md:gap-10">
+          {[
+            {
+              key: "shoppers",
+              tone: "ink" as Tone,
+              plate: <EyeLevelTopResult />,
+              text: (
+                <>
+                  Shoppers notice products at <Term tone="ink">eye level</Term> on a shelf and at
+                  the <Term tone="ink">top of a search results page</Term> more often.
+                </>
+              ),
+            },
+            {
+              key: "agents",
+              tone: "signal" as Tone,
+              plate: <AgentTopResult />,
+              text: (
+                <>
+                  Research shows that <Term>AI agents</Term> can also favor options because of
+                  where they appear in a list.
+                </>
+              ),
+            },
+          ].map((c) => (
+            <li
+              key={c.key}
+              className={cn(
+                "grid min-w-0 items-center gap-4 border-t-2 pt-4 sm:grid-cols-[1fr_minmax(0,270px)]",
+                BORDER[c.tone],
+              )}
+            >
+              <p className="type-body">{c.text}</p>
+              <Plate>{c.plate}</Plate>
+            </li>
+          ))}
+        </ol>
+        <Ruled tone="signal" className="mt-5 w-full !pt-3">
+          <P className="!max-w-none !text-[clamp(1.05rem,1.4vw,1.25rem)]">
+            <Term>Sensory marketing still matters</Term>, because the consumer uses the product
+            with all five senses after the sale.
+          </P>
+        </Ruled>
       </Slide>
 
       {/* ================================================================

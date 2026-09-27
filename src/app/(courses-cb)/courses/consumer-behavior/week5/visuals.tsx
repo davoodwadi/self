@@ -15,6 +15,8 @@
        anthropomorphism).
      · Bag and Box: what is bought, carrying the badge.
      · Heart: feeling.
+     · Agent: the AI agent (shared: a phone with the AI sparkle), here the
+       synthetic survey respondent. BreadMachine: the automated product.
 
    Colour roles: teal is the one thing chosen, lit or ticked on a plate;
    ochre the badge or a count; pencil only an absent object (an empty slot,
@@ -22,11 +24,13 @@
    ========================================================================== */
 
 import React from "react";
+import { RotateCw } from "lucide-react";
 import {
   blobPts,
   InkLine,
   Paper,
   PencilLine,
+  PlateButton,
   type Pt,
   r2,
   seeded,
@@ -37,6 +41,7 @@ import {
   wobble,
 } from "../_visuals/kit";
 import {
+  Agent,
   at,
   Backwash,
   Bag,
@@ -46,6 +51,7 @@ import {
   Can4,
   Car3,
   cloudPts,
+  curvePts,
   Ground,
   handAt,
   Heart,
@@ -1909,5 +1915,299 @@ export function YourPossession() {
       <Person x={580} y={gy} h={ph} look={look} arms={["hug", "hold"]} seed={5010} />
       <Guitar x={g(580)[0]} y={g(580)[1]} s={2.3} seed={5060} pencil />
     </SketchFrame>
+  );
+}
+
+/* ==========================================================================
+   IDENTITY AND AUTOMATION: THE TASKS CONSUMERS KEEP
+   The home baker (bun, camel apron coat) keeps the task; the bread machine
+   is the automation. Teal is the machine where it is chosen.
+   ========================================================================== */
+
+const BAKER: Look = { hair: "bun", hairTone: SK.brown, wear: SK.camel, legs: SK.charcoal };
+const PARENT: Look = { hair: "short", hairTone: SK.charcoal, skin: SK.tan, skinOpacity: 0.6, wear: SK.sky, legs: SK.charcoal, outfit: "jacket" };
+
+/** A loaf with three score marks, centred on (x, y), `w` wide. */
+function Loaf({ x, y, w = 40, seed }: { x: number; y: number; w?: number; seed: number }) {
+  const h = w * 0.5;
+  const pts = rp(Array.from({ length: 13 }, (_, i) => {
+    const a = Math.PI + (i / 12) * Math.PI;
+    return [x + Math.cos(a) * (w / 2), y + Math.sin(a) * h] as Pt;
+  }));
+  return (
+    <g>
+      <Wash pts={pts} seed={seed} fill={SK.tan} opacity={0.7} />
+      <InkLine pts={pts} seed={seed + 1} width={1.1} closed />
+      {[-0.22, 0, 0.22].map((k, i) => (
+        <InkLine key={k} pts={rp([[x + k * w - 4, y - h * 0.55], [x + k * w + 4, y - h * 0.25]])} seed={seed + 2 + i} width={0.8} amp={0.2} />
+      ))}
+    </g>
+  );
+}
+
+/** A bread machine standing on (x, bottom): a box with a window and a lid. */
+function BreadMachine({ x, bottom, seed, pencil = false, fill = SK.charcoal }: { x: number; bottom: number; seed: number; pencil?: boolean; fill?: string }) {
+  const body = sharp(rp([[x - 26, bottom], [x - 26, bottom - 44], [x - 20, bottom - 50], [x + 20, bottom - 50], [x + 26, bottom - 44], [x + 26, bottom]]), true, 3);
+  const win = sharp(rp([[x - 14, bottom - 38], [x + 14, bottom - 38], [x + 14, bottom - 22], [x - 14, bottom - 22]]), true, 2);
+  const knob = rp(blobPts(x + 16, bottom - 10, 3, 3, seed + 9, 8, 0.05));
+  if (pencil)
+    return (
+      <g>
+        <PencilLine pts={body} seed={seed} closed />
+        <PencilLine pts={win} seed={seed + 1} closed />
+      </g>
+    );
+  return (
+    <g>
+      <Wash pts={body} seed={seed} fill={fill} opacity={0.65} />
+      <InkLine pts={body} seed={seed + 1} closed />
+      <Wash pts={win} seed={seed + 2} fill={SK.sky} opacity={0.8} dx={0.3} dy={0.3} />
+      <InkLine pts={win} seed={seed + 3} width={0.9} closed />
+      <InkLine pts={knob} seed={seed + 4} width={0.9} closed />
+    </g>
+  );
+}
+
+/**
+ * Two scenes. The home baker holds up a loaf made by hand and passes on the
+ * machine (pencil, crossed out); the busy parent, a child at hand, uses it.
+ */
+export function BakerVsParent() {
+  const g = 208;
+  const [hx, hy] = handAt(56, g, 150, "reach");
+  return (
+    <SketchFrame
+      id="sk-baker-parent"
+      width={400}
+      height={228}
+      label="Two scenes. Left: a home baker holds up a loaf made by hand, a heart above, beside a bread machine drawn in pencil and crossed out. Right: a busy parent with a small child stands beside a teal bread machine with a loaf rising from it."
+    >
+      <Backwash cx={100} cy={124} rx={94} ry={96} seed={6000} opacity={0.4} />
+      <Backwash cx={300} cy={124} rx={94} ry={96} seed={6001} opacity={0.4} />
+      <InkLine pts={rp([[200, 18], [200, 210]])} seed={6002} width={0.6} />
+
+      <Ground x0={12} x1={190} y={g} seed={6003} />
+      <Person x={56} y={g} h={150} look={BAKER} arms={["hip", "reach"]} seed={6010} />
+      <Loaf x={r2(hx + 20)} y={r2(hy + 2)} w={42} seed={6040} />
+      <Heart x={62} y={36} s={1.1} seed={6050} />
+      <BreadMachine x={156} bottom={g} seed={6060} pencil />
+      <InkLine pts={rp([[128, g - 56], [184, g - 4]])} seed={6070} width={1.4} />
+      <InkLine pts={rp([[184, g - 56], [128, g - 4]])} seed={6071} width={1.4} />
+
+      <Ground x0={210} x1={388} y={g} seed={6004} />
+      <Person x={238} y={g} h={150} look={PARENT} arms={["down", "low"]} seed={6080} />
+      <Person x={272} y={g} h={82} headScale={1.4} look={{ hair: "curly", hairTone: SK.brown, wear: SK.ochre, legs: SK.tan }} arms={["reach", "down"]} flip seed={6110} />
+      <BreadMachine x={344} bottom={g} seed={6140} fill={SK.teal} />
+      <Loaf x={344} y={g - 50} w={36} seed={6150} />
+    </SketchFrame>
+  );
+}
+
+/**
+ * Leaving room for the consumer: the machine mixes the dough, and the baker
+ * shapes and scores the loaf by hand. The baker's step is washed teal.
+ */
+export function LeaveTheLastStep() {
+  const g = 204;
+  const top = 134;
+  const board = sharp(rp([[186, top], [290, top], [290, top + 9], [186, top + 9]]), true, 2);
+  return (
+    <SketchFrame
+      id="sk-last-step"
+      width={400}
+      height={224}
+      label="An arrow runs from a bread machine to a table, where the home baker leans in with both hands to shape the loaf. A teal wash lies behind the baker's hands and the loaf: the step left to the consumer."
+    >
+      <Backwash cx={200} cy={120} rx={192} ry={96} seed={6200} opacity={0.4} />
+      <Ground x0={14} x1={386} y={g} seed={6201} />
+      <BreadMachine x={70} bottom={g} seed={6210} />
+      <SketchArrow pts={curvePts([96, 150], [140, 96], [190, 118], 10)} seed={6260} />
+      <Wash pts={rp(blobPts(244, 118, 62, 32, 6270, 14, 0.06))} seed={6271} fill={SK.teal} opacity={0.4} />
+      <Wash pts={board} seed={6280} fill={SK.leather} opacity={0.6} />
+      <InkLine pts={board} seed={6281} closed width={1.1} />
+      <InkLine pts={rp([[194, top + 9], [194, g]])} seed={6295} width={1.1} />
+      <InkLine pts={rp([[282, top + 9], [282, g]])} seed={6296} width={1.1} />
+      <Loaf x={236} y={top} w={52} seed={6290} />
+      <Person x={318} y={g} h={160} look={BAKER} arms={["across", "low"]} flip seed={6300} />
+    </SketchFrame>
+  );
+}
+
+/* ==========================================================================
+   SYNTHETIC CONSUMERS: AI AS A SURVEY RESPONDENT
+   The survey is a paper form with rows of five boxes; synthetic respondents
+   are the shared Agent, each tagged with the profile it answers as.
+   ========================================================================== */
+
+/** A row of five answer boxes, left edge at x; `pick` (0–4) is ticked. */
+function Scale5({ x, y, pick, seed, box = 18 }: { x: number; y: number; pick?: number; seed: number; box?: number }) {
+  return (
+    <g>
+      {[0, 1, 2, 3, 4].map((i) => {
+        const b = sharp(rp([[x + i * (box + 4), y], [x + i * (box + 4) + box, y], [x + i * (box + 4) + box, y + box], [x + i * (box + 4), y + box]]), true, 1.5);
+        return (
+          <g key={i}>
+            <Paper pts={b} seed={seed + i * 3} />
+            <InkLine pts={b} seed={seed + i * 3 + 1} width={0.9} closed />
+            {pick === i ? (
+              <InkLine pts={rp([[x + i * (box + 4) + 4, y + box * 0.55], [x + i * (box + 4) + box * 0.42, y + box - 4], [x + i * (box + 4) + box - 3, y + 3]])} seed={seed + 20} width={2} color={SK.teal} amp={0.2} />
+            ) : null}
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+/** Real consumers and profiled AI agents fill in the same survey. */
+export function RealAndSynthetic() {
+  const g = 212;
+  const form = sharp(rp([[156, 40], [244, 40], [244, 196], [156, 196]]), true, 3);
+  const people: Look[] = [
+    { hair: "curly", hairTone: SK.charcoal, skin: SK.brown, skinOpacity: 0.55, wear: SK.sky, legs: SK.charcoal },
+    { hair: "bob", hairTone: SK.brown, wear: SK.camel, legs: SK.charcoal },
+    { hair: "short", hairTone: SK.tan, skin: SK.camel, skinOpacity: 0.6, wear: SK.earth, legs: SK.tan, outfit: "jacket" },
+  ];
+  const tags = ["24", "41", "67"];
+  return (
+    <SketchFrame
+      id="sk-real-synthetic"
+      width={400}
+      height={232}
+      label="In the middle, a paper survey with rows of five answer boxes. On the left, three real consumers; on the right, three AI agent phones, each tagged with the age of the profile it answers as: 24, 41 and 67. Arrows run from both groups to the survey."
+    >
+      <Backwash cx={200} cy={124} rx={194} ry={104} seed={6400} opacity={0.4} />
+      <SketchText x={70} y={24} anchor="middle" size={10.5}>
+        REAL
+      </SketchText>
+      <SketchText x={332} y={24} anchor="middle" size={10.5}>
+        SYNTHETIC
+      </SketchText>
+      <Ground x0={10} x1={134} y={g} seed={6401} />
+      {people.map((look, i) => (
+        <Person key={i} x={30 + i * 40} y={g} h={120} look={look} arms={["down", "down"]} seed={6410 + i * 40} />
+      ))}
+      <SketchArrow pts={[[128, 118], [150, 118]]} seed={6540} />
+
+      <Paper pts={form} seed={6550} />
+      <InkLine pts={form} seed={6551} closed />
+      {[58, 104, 150].map((y, i) => (
+        <g key={y}>
+          <InkLine pts={rp([[166, y], [232, y]])} seed={6560 + i} width={0.8} amp={0.2} />
+          <Scale5 x={167} y={y + 10} seed={6570 + i * 30} box={11} />
+        </g>
+      ))}
+
+      <SketchArrow pts={[[272, 118], [250, 118]]} seed={6660} />
+      <Ground x0={266} x1={392} y={g} seed={6402} />
+      {tags.map((t, i) => (
+        <g key={t}>
+          <Agent x={290 + i * 42} y={g} s={0.8} seed={6670 + i * 10} />
+          <SketchText x={290 + i * 42} y={g - 86} anchor="middle" size={9.5}>
+            AGE
+          </SketchText>
+          <SketchText x={290 + i * 42} y={g - 71} anchor="middle" size={12}>
+            {t}
+          </SketchText>
+        </g>
+      ))}
+    </SketchFrame>
+  );
+}
+
+/**
+ * The answer distribution the sampler draws from. SIMULATED: a plausible
+ * spread for one five-point question, not a result from any study. Replace
+ * it with a real model's answer distribution when one is available.
+ */
+const SIM_PMF = [0.05, 0.15, 0.3, 0.35, 0.15];
+/** The first three asks match the three rows the slide started from. */
+const FIRST_ASKS = [1, 3, 2];
+
+/** The k-th simulated answer (0–4): seeded, so server and client agree. */
+function simulatedAnswer(k: number): number {
+  if (k < FIRST_ASKS.length) return FIRST_ASKS[k];
+  const u = seeded(9100 + k)();
+  let acc = 0;
+  for (let i = 0; i < SIM_PMF.length; i++) {
+    acc += SIM_PMF[i];
+    if (u < acc) return i;
+  }
+  return SIM_PMF.length - 1;
+}
+
+/**
+ * Ask the same model the same question again. Each ask ticks one box (the
+ * latest answer) and adds to the bar beneath it, so the spread of answers
+ * builds up the more often the question is asked.
+ */
+export function AskAgain() {
+  const [asked, setAsked] = React.useState(FIRST_ASKS.length);
+  const counts = [0, 0, 0, 0, 0];
+  for (let k = 0; k < asked; k++) counts[simulatedAnswer(k)]++;
+  const latest = simulatedAnswer(asked - 1);
+  const peak = Math.max(...counts);
+  const box = 36;
+  const x0 = 164;
+  const base = 238;
+  const barH = 118;
+  const colX = (i: number) => x0 + i * (box + 4);
+  const card = sharp(rp([[10, 14], [132, 14], [132, 42], [10, 42]]), true, 3);
+  const label = `The AI agent phone, asked would you buy it? ${asked} times, answers on a row of five boxes; its latest answer is box ${latest + 1}. Bars under the boxes count the answers so far: ${counts.join(", ")}. The data are simulated.`;
+  return (
+    <>
+      <SketchFrame id="sk-ask-again" width={400} height={262} label={label}>
+        <Backwash cx={200} cy={132} rx={194} ry={122} seed={6900} opacity={0.4} />
+        <Paper pts={card} seed={6901} />
+        <InkLine pts={card} seed={6902} width={1} closed />
+        <SketchText x={71} y={32} anchor="middle" size={9.5}>
+          WOULD YOU BUY IT?
+        </SketchText>
+        <SketchArrow pts={[[71, 48], [71, 76]]} seed={6903} width={1} head={5} />
+        <Ground x0={20} x1={122} y={180} seed={6904} />
+        <Agent x={71} y={180} s={1.05} seed={6910} />
+        <SketchText x={71} y={204} anchor="middle" size={10}>
+          {`ASKED ${asked} ${asked === 1 ? "TIME" : "TIMES"}`}
+        </SketchText>
+        <SketchArrow pts={curvePts([98, 110], [124, 56], [156, 52], 10)} seed={6920} width={1} head={5} />
+
+        <SketchText x={colX(0)} y={24} size={9.5}>
+          LATEST ANSWER
+        </SketchText>
+        <Scale5 x={x0} y={34} pick={latest} seed={6930} box={box} />
+
+        <InkLine pts={rp([[x0 - 6, base], [colX(4) + box + 6, base]])} seed={6960} width={1} />
+        {counts.map((c, i) => {
+          const h = r2((c / peak) * barH);
+          const bar = sharp(rp([[colX(i) + 4, base - h], [colX(i) + box - 4, base - h], [colX(i) + box - 4, base], [colX(i) + 4, base]]), true, 1.5);
+          return (
+            <g key={i}>
+              {c > 0 ? (
+                <>
+                  <Wash pts={bar} seed={6970 + i} fill={SK.camel} opacity={0.7} />
+                  <InkLine pts={bar} seed={6980 + i} width={1} closed />
+                </>
+              ) : null}
+              <SketchText x={r2(colX(i) + box / 2)} y={r2(base - h - 6)} anchor="middle" size={11}>
+                {String(c)}
+              </SketchText>
+            </g>
+          );
+        })}
+        <SketchText x={colX(0)} y={254} size={9.5}>
+          ANSWERS SO FAR
+        </SketchText>
+        <SketchText x={colX(4) + box} y={254} anchor="end" size={9.5} fill={SK.pencil}>
+          SIMULATED
+        </SketchText>
+      </SketchFrame>
+      <div className="mt-2 flex flex-wrap items-center gap-2 px-1" aria-live="polite">
+        <PlateButton onClick={() => setAsked((a) => a + 1)} icon={<RotateCw className="size-3.5" aria-hidden />}>
+          Ask again
+        </PlateButton>
+        <PlateButton onClick={() => setAsked((a) => a + 10)}>Ask 10 more</PlateButton>
+        <PlateButton onClick={() => setAsked(FIRST_ASKS.length)}>Start over</PlateButton>
+      </div>
+    </>
   );
 }

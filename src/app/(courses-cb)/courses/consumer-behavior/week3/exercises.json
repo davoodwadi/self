@@ -194,5 +194,53 @@
         "explanation": "Elaborative rehearsal moved the brand into long-term memory, which lasts for days, months, or years."
       }
     ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "brand-retrieval-in-conversational-search",
+    "prompt": "Each case shows a consumer searching with an AI assistant. Name the idea at work.",
+    "options": [
+      { "id": "cue", "label": "Retrieval cue" },
+      { "id": "set", "label": "Consideration set" },
+      { "id": "links", "label": "Links between brands and attributes" }
+    ],
+    "cases": [
+      {
+        "id": "quiet",
+        "text": "Ana asks for a quiet dishwasher. The word \"quiet\" decides which brands the assistant names.",
+        "answer": "cue",
+        "explanation": "Retrieval cue: the words in the question shape which brands the assistant retrieves."
+      },
+      {
+        "id": "three",
+        "text": "The assistant names three dishwashers, and Ana compares only those three.",
+        "answer": "set",
+        "explanation": "Consideration set: the assistant's short list becomes the small group of brands Ana seriously considers."
+      },
+      {
+        "id": "reviews",
+        "text": "Thousands of reviews describe one blender brand as \"powerful,\" so the assistant connects that brand with power.",
+        "answer": "links",
+        "explanation": "Links between brands and attributes: the assistant learns about brands from what is written about them."
+      },
+      {
+        "id": "eco",
+        "text": "Tom types \"eco-friendly detergent\" instead of \"cheap detergent\" and gets different brands.",
+        "answer": "cue",
+        "explanation": "Retrieval cue: changing the word in the question changes the brands retrieved."
+      },
+      {
+        "id": "forgotten",
+        "text": "Tom never thinks about the detergent his family used for years, because the assistant did not mention it.",
+        "answer": "set",
+        "explanation": "Consideration set: a brand missing from the answer may never be considered, even if the consumer knows it."
+      },
+      {
+        "id": "sturdy",
+        "text": "Product pages and articles keep calling one suitcase brand \"sturdy,\" and the assistant now pairs the two.",
+        "answer": "links",
+        "explanation": "Links between brands and attributes: the assistant forms these links much like an associative network."
+      }
+    ]
   }
 ]
