@@ -4,7 +4,7 @@
    ========================================================================== */
 
 import React from "react";
-import { INK, PAPER, r2 } from "./kit";
+import { Key, INK, INK3, RULE2, PAPER, r2 } from "./kit";
 
 /**
  * Person1: the course's one glyph for a human (respondent, member, manager).
@@ -135,5 +135,70 @@ export function Store1({
       />
       <rect x={r2(cx - s(2.2))} y={r2(cy + s(1.5))} width={s(4.4)} height={r2(base - cy - s(1.5))} fill={stroke} />
     </g>
+  );
+}
+
+/**
+ * RatingRow1: a row of rating boxes from 1 to n, the chosen one filled; the item's
+ * wording above it is drawn as a hairline bar, since the procedure, not the
+ * words, is the point.
+ */
+export function RatingRow1({
+  x,
+  y,
+  n = 7,
+  pick,
+  box = 24,
+  gap = 4,
+  tone = INK,
+  stem,
+  numbers = true,
+}: {
+  x: number;
+  y: number;
+  n?: number;
+  /** 1-based chosen category, or none. */
+  pick?: number;
+  box?: number;
+  gap?: number;
+  tone?: string;
+  /** Length of the hairline bar standing for the item's wording. */
+  stem?: number;
+  numbers?: boolean;
+}) {
+  return (
+    <g>
+      {stem ? (
+        <line x1={x + 2} y1={y - 12} x2={x + stem} y2={y - 12} stroke={RULE2} strokeWidth={4} strokeLinecap="round" />
+      ) : null}
+      {Array.from({ length: n }, (_, i) => {
+        const bx = x + i * (box + gap);
+        const on = pick === i + 1;
+        return (
+          <g key={i}>
+            <rect x={bx} y={y} width={box} height={box} fill={on ? tone : PAPER} stroke={on ? tone : INK3} strokeWidth={1.25} />
+            {numbers ? (
+              <Key x={r2(bx + box / 2)} y={r2(y + box / 2 + 4)} anchor="middle" fill={on ? PAPER : INK3} size={10.5} weight={on ? 700 : 500}>
+                {i + 1}
+              </Key>
+            ) : null}
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+/** Tick1: a tick inside a box or circle centred on (cx, cy). */
+export function Tick1({ cx, cy, s = 5, stroke = PAPER }: { cx: number; cy: number; s?: number; stroke?: string }) {
+  return (
+    <path
+      d={`M${r2(cx - s)} ${r2(cy)}L${r2(cx - s * 0.3)} ${r2(cy + s * 0.7)}L${r2(cx + s)} ${r2(cy - s * 0.8)}`}
+      fill="none"
+      stroke={stroke}
+      strokeWidth={1.75}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   );
 }

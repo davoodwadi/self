@@ -1,0 +1,224 @@
+[
+  {
+    "type": "order",
+    "slide_id": "the-data-preparation-process",
+    "prompt": "A hotel group has just closed its guest survey. Put the analyst's data preparation steps in order.",
+    "steps": [
+      {
+        "id": "check",
+        "text": "Review the returned questionnaires for unanswered sections and against the completion-time and attention-check criteria set before fieldwork.",
+        "explanation": "Responses are first checked for completeness and for the data quality criteria specified before data collection."
+      },
+      {
+        "id": "code",
+        "text": "Assign 1 to 5 to each rating answer and enter every guest as a row of the dataset.",
+        "explanation": "The responses are then coded and recorded in a data matrix."
+      },
+      {
+        "id": "clean",
+        "text": "Correct a rating of 8 on a five-point item and investigate a guest who reports 400 nights in one year.",
+        "explanation": "Cleaning corrects or removes errors and inconsistencies in the data matrix once it exists."
+      },
+      {
+        "id": "missing",
+        "text": "Decide how to treat the guests who skipped the income question, and weight the sample to the known mix of business and leisure guests.",
+        "explanation": "Missing values are treated, and statistical adjustments such as weighting applied, after cleaning."
+      },
+      {
+        "id": "strategy",
+        "text": "Choose the statistics for each question according to the research questions and each variable's level of measurement.",
+        "explanation": "Finally, the analysis strategy is selected."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "missing-values",
+    "prompt": "Each case describes how an analyst handled missing answers. Name the method.",
+    "options": [
+      { "id": "casewise", "label": "Casewise deletion" },
+      { "id": "pairwise", "label": "Pairwise deletion" },
+      { "id": "mean", "label": "Mean substitution" },
+      { "id": "model", "label": "Model-based imputation" }
+    ],
+    "cases": [
+      {
+        "id": "shrink",
+        "text": "A survey of 800 members is analysed on only 470, because every member who skipped any of the twelve questions is left out.",
+        "answer": "casewise",
+        "explanation": "Respondents with any missing value are excluded, which can substantially reduce the sample size."
+      },
+      {
+        "id": "income-estimate",
+        "text": "A respondent's unreported income is estimated from their occupation, region, and household size.",
+        "answer": "model",
+        "explanation": "The missing value is estimated from the respondent's other answers."
+      },
+      {
+        "id": "different-n",
+        "text": "The report's correlation between age and spending rests on 612 respondents, while the one between age and satisfaction rests on 655.",
+        "answer": "pairwise",
+        "explanation": "Each calculation uses all respondents with complete data for the variables involved, so different statistics are based on different respondents."
+      },
+      {
+        "id": "too-tidy",
+        "text": "After every blank rating is replaced with 3.6, the dataset keeps all 500 respondents, but the standard deviation of the rating falls from 1.2 to 0.9.",
+        "answer": "mean",
+        "explanation": "Mean substitution preserves the sample size but understates the variability of the data."
+      },
+      {
+        "id": "only-complete",
+        "text": "A cross-tabulation of age by region and a table of average spending both use the same 390 respondents who answered every question.",
+        "answer": "casewise",
+        "explanation": "Only respondents with no missing values are kept, so every statistic rests on the same reduced group."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "selecting-descriptive-statistics",
+    "prompt": "Match each variable with the statistics the analysis reports for it.",
+    "term_label": "Variable",
+    "match_label": "Statistics",
+    "pairs": [
+      {
+        "id": "airline",
+        "term": "The airline a traveller flew most recently.",
+        "match": "Frequency distribution and mode",
+        "explanation": "The airline is a nominal variable: its categories have no order, so only frequencies and the mode apply."
+      },
+      {
+        "id": "rank",
+        "term": "Each respondent's ranking of five streaming services, from first to fifth.",
+        "match": "Frequency distribution, median and percentiles",
+        "explanation": "A ranking is ordinal: positions are ordered, but the distances between them are unknown."
+      },
+      {
+        "id": "index",
+        "term": "A service-quality score averaged across eight rating items, symmetrically distributed.",
+        "match": "Mean and standard deviation",
+        "explanation": "A rating averaged across several items is treated as interval, and its distribution is symmetric."
+      },
+      {
+        "id": "spend",
+        "term": "Households' annual spending on travel, with a few very high spenders.",
+        "match": "Median and interquartile range",
+        "explanation": "Spending is a ratio variable with a skewed distribution, so the median and interquartile range describe it best, with the mean where appropriate."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "interpreting-cross-tabulations",
+    "question_text": "A cross-tabulation shows that 62 percent of customers who attended a store's cooking class bought premium cookware, against 21 percent of customers who did not attend. When the table is split by whether the customer already owned premium cookware before the class, the difference largely disappears within each group. What does the analysis indicate?",
+    "hint": "Consider what the third variable reveals about the original association.",
+    "correct_answer_citation": "Week 06 · Interpreting Cross-Tabulations",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "The class causes customers to buy premium cookware, since the original difference is large.",
+        "option_explanation": "A difference in percentages indicates an association; an association does not establish causation."
+      },
+      {
+        "option_text": "The third variable concealed an association that was absent from the original table.",
+        "option_explanation": "Here the association was visible in the original table and weakened when the third variable was introduced."
+      },
+      {
+        "option_text": "The original association is likely spurious: customers who already owned premium cookware were both more likely to attend and more likely to buy.",
+        "option_explanation": "Correct. The introduction of a third variable can reveal that an apparent association is spurious."
+      },
+      {
+        "option_text": "The difference is statistically significant, because it exceeds 40 percentage points.",
+        "option_explanation": "The size of a difference alone does not establish significance; that is assessed with the chi-square test, introduced in Week 7."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "selecting-a-chart",
+    "prompt": "Each case states a finding for a presentation. Name the display that suits it.",
+    "options": [
+      { "id": "bar", "label": "Bar chart" },
+      { "id": "line", "label": "Line chart" },
+      { "id": "histogram", "label": "Histogram" },
+      { "id": "scatter", "label": "Scatter plot" },
+      { "id": "stacked", "label": "Stacked bar chart (%)" },
+      { "id": "table", "label": "Table" }
+    ],
+    "cases": [
+      {
+        "id": "subscribers",
+        "text": "Subscriptions to a meal-kit service rose every month from January 2024 to December 2025.",
+        "answer": "line",
+        "explanation": "The finding concerns change over time."
+      },
+      {
+        "id": "delivery",
+        "text": "Delivery times for 2,000 orders cluster between two and four days, with a long tail of late orders.",
+        "answer": "histogram",
+        "explanation": "The finding concerns the distribution of a single quantitative variable."
+      },
+      {
+        "id": "price-units",
+        "text": "Across 40 stores, the higher the shelf price of a juice, the fewer units it sells.",
+        "answer": "scatter",
+        "explanation": "The finding concerns the relationship between two quantitative variables."
+      },
+      {
+        "id": "payment-mix",
+        "text": "Customers in each of three regions divide their payments differently among card, cash, and mobile wallet.",
+        "answer": "stacked",
+        "explanation": "The finding compares the composition of several groups."
+      },
+      {
+        "id": "prices",
+        "text": "The procurement team needs the exact unit price quoted by each of twelve suppliers.",
+        "answer": "table",
+        "explanation": "A table is preferable when decision makers require exact values."
+      },
+      {
+        "id": "awareness",
+        "text": "Aided awareness of the firm's brand is higher than that of each of its four competitors.",
+        "answer": "bar",
+        "explanation": "The finding compares values across categories."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "verifying-ai-assisted-analysis",
+    "prompt": "An analyst asks an AI assistant for average satisfaction by store. Put the verification steps in order.",
+    "steps": [
+      {
+        "id": "codebook",
+        "text": "Give the assistant the codebook, stating that 99 means no answer and that the store is a nominal variable.",
+        "explanation": "The codebook is supplied first, including the codes for missing values and the level of measurement of each variable."
+      },
+      {
+        "id": "code",
+        "text": "Read the code the assistant ran, looking for filters that drop any stores or respondents.",
+        "explanation": "The executed code is then reviewed, including any filters and exclusions."
+      },
+      {
+        "id": "n",
+        "text": "Check that each store's average rests on the number of respondents the survey collected there.",
+        "explanation": "The number of respondents behind each result is confirmed next."
+      },
+      {
+        "id": "reproduce",
+        "text": "Recalculate the three highest store averages in a spreadsheet.",
+        "explanation": "The principal figures are then reproduced independently, using a different tool or method."
+      },
+      {
+        "id": "interpret",
+        "text": "Remove the assistant's sentence that the renovated stores “drive” higher satisfaction, since the survey was descriptive.",
+        "explanation": "The interpretation is checked against the level of measurement and the research design, with no unsupported causal claim."
+      },
+      {
+        "id": "document",
+        "text": "Save the questions asked and the code executed with the report.",
+        "explanation": "Finally, the questions and code are documented so that the analysis can be reproduced."
+      }
+    ]
+  }
+]

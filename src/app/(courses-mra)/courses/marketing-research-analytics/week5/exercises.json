@@ -1,0 +1,212 @@
+[
+  {
+    "type": "order",
+    "slide_id": "the-sampling-design-process",
+    "prompt": "A supermarket chain plans a survey of its loyalty-card members. Put the steps of its sampling design in order.",
+    "steps": [
+      {
+        "id": "population",
+        "text": "Define the members to be studied: loyalty-card holders in the province who shopped at least once in the past six months.",
+        "explanation": "The target population comes first: its elements, geographical boundaries and time period."
+      },
+      {
+        "id": "frame",
+        "text": "Obtain the loyalty-card database as the list from which respondents will be drawn.",
+        "explanation": "The sampling frame is the list or procedure from which the sample is drawn, so it follows the definition of the population."
+      },
+      {
+        "id": "technique",
+        "text": "Decide to draw members at random from each store region.",
+        "explanation": "With the frame in hand, the researcher selects a sampling technique."
+      },
+      {
+        "id": "size",
+        "text": "Decide how many members to invite.",
+        "explanation": "The sample size is determined after the technique."
+      },
+      {
+        "id": "execute",
+        "text": "Draw the members, send the invitations, and record how the draw was carried out.",
+        "explanation": "Finally, the sampling process is executed and documented."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "sampling-and-nonsampling-error",
+    "prompt": "Each case describes a gap between a survey result and the true population value. Name its source.",
+    "options": [
+      { "id": "sampling", "label": "Sampling error" },
+      { "id": "frame", "label": "Frame error" },
+      { "id": "nonresponse", "label": "Nonresponse error" },
+      { "id": "response", "label": "Response error" }
+    ],
+    "cases": [
+      {
+        "id": "landline",
+        "text": "A survey of a city's residents draws its sample from a directory of landline numbers, which omits most households under 35.",
+        "answer": "frame",
+        "explanation": "The list from which the sample is drawn does not correspond to the target population of all residents."
+      },
+      {
+        "id": "twosamples",
+        "text": "Two random samples of 200 customers, drawn from the same complete list in the same week, estimate satisfaction at 71% and 66%.",
+        "answer": "sampling",
+        "explanation": "Each sample observes only a subset of the population, so their results differ from each other and from the true value. A larger sample would reduce this gap."
+      },
+      {
+        "id": "recall",
+        "text": "Respondents asked how many times they ate at a restaurant in the past year report far more visits than the restaurants' receipts show.",
+        "answer": "response",
+        "explanation": "The respondents give inaccurate answers because of faulty recall."
+      },
+      {
+        "id": "busy",
+        "text": "In a survey about time use, the busiest people were least likely to reply, so the results understate how busy the population is.",
+        "answer": "nonresponse",
+        "explanation": "The people who responded differ systematically from those who did not."
+      },
+      {
+        "id": "bigger",
+        "text": "A firm doubles the sample drawn from its list of app users to represent all customers, but its estimate does not move closer to the true value.",
+        "answer": "frame",
+        "explanation": "Increasing the sample size does not reduce nonsampling error: the list of app users still does not correspond to all customers."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "selecting-a-sampling-technique",
+    "prompt": "Match each research situation with the sampling technique appropriate to it.",
+    "term_label": "Situation",
+    "match_label": "Technique",
+    "pairs": [
+      {
+        "id": "market-size",
+        "term": "A manufacturer needs an estimate of the number of households in the country that own an electric bicycle, with a stated margin of error.",
+        "match": "Probability sampling",
+        "explanation": "The finding must be projected to the population with a known level of precision."
+      },
+      {
+        "id": "pretest",
+        "term": "A researcher wants ten people to try a draft questionnaire this afternoon before it is finalised.",
+        "match": "Nonprobability sampling",
+        "explanation": "Pretesting does not require projection to the population, so a faster and less expensive sample is appropriate."
+      },
+      {
+        "id": "tiers",
+        "term": "A bank needs accurate satisfaction estimates for each of its three account tiers, whose customers differ substantially.",
+        "match": "Stratified sampling",
+        "explanation": "The subgroups differ substantially and each must be estimated accurately."
+      },
+      {
+        "id": "villages",
+        "term": "A study requires in-person interviews with farmers spread across hundreds of villages.",
+        "match": "Cluster sampling",
+        "explanation": "The population is geographically dispersed and in-person data collection is required, so villages can serve as clusters."
+      },
+      {
+        "id": "collectors",
+        "term": "A study targets collectors of vintage mechanical watches, who meet at a small number of clubs and fairs.",
+        "match": "Snowball sampling",
+        "explanation": "The population is rare and its members know one another, so initial respondents can identify further ones."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "precision-and-confidence",
+    "question_text": "A survey of 385 customers estimates a proportion with a margin of error of plus or minus five percentage points at 95 percent confidence. The marketing director asks for a margin of plus or minus 2.5 points, at the same confidence level. Approximately how many completed questionnaires are required?",
+    "hint": "Consider what happens to the sample size when the margin of error is halved.",
+    "correct_answer_citation": "Week 05 · Precision and Confidence",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "About 770, twice the original sample.",
+        "option_explanation": "The margin of error appears squared in the formula, so halving it requires more than twice the sample."
+      },
+      {
+        "option_text": "About 545, since the margin of error falls with the square root of the sample size.",
+        "option_explanation": "That calculation increases the sample by the square root of two, which reduces the margin only to about 3.5 points."
+      },
+      {
+        "option_text": "About 1,540, four times the original sample.",
+        "option_explanation": "Correct. Halving the margin of error requires approximately four times the sample size: 1.96² × 0.25 / 0.025² ≈ 1,537."
+      },
+      {
+        "option_text": "It depends on the number of customers the firm has, which the question does not give.",
+        "option_explanation": "For large populations, the required sample size depends on the desired precision, not on the size of the population."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "data-quality-checks",
+    "prompt": "Each case describes a respondent in an online survey. Name the check that would identify them.",
+    "options": [
+      { "id": "time", "label": "Completion time" },
+      { "id": "attention", "label": "Attention check" },
+      { "id": "consistency", "label": "Consistency check" },
+      { "id": "open", "label": "Open-ended review" },
+      { "id": "technical", "label": "Technical check" }
+    ],
+    "cases": [
+      {
+        "id": "ninety",
+        "text": "A respondent finishes a 15-minute questionnaire in 90 seconds.",
+        "answer": "time",
+        "explanation": "Completion far below the minimum threshold shows that the questions could not have been read."
+      },
+      {
+        "id": "neverflown",
+        "text": "A respondent reports never having flown and then rates the in-flight meals of three airlines.",
+        "answer": "consistency",
+        "explanation": "The answers to related questions contradict one another."
+      },
+      {
+        "id": "sameanswer",
+        "text": "An item reads “For this item, select ‘strongly agree’,” and a respondent selects “neither agree nor disagree,” as on every other item.",
+        "answer": "attention",
+        "explanation": "The respondent failed an instruction to select a specific answer."
+      },
+      {
+        "id": "sixphones",
+        "text": "Six completed questionnaires with different names arrive from the same device within ten minutes.",
+        "answer": "technical",
+        "explanation": "Technical checks identify duplicate responses from the same device."
+      },
+      {
+        "id": "generic",
+        "text": "Asked why they chose their current mobile carrier, a respondent writes a polished paragraph on the general benefits of customer service that names no carrier.",
+        "answer": "open",
+        "explanation": "Generic text that could answer any question, possibly generated by AI, is found by reviewing the open-ended answers."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "limitations-of-synthetic-respondents",
+    "question_text": "A vendor's synthetic panel of 5,000 respondents rates a proposed plant-based cheese at 5.1 on a 7-point purchase-intention scale, with a standard deviation of 0.4, and reports a margin of error of ±0.01. What is the most serious problem with this result?",
+    "hint": "Consider what connects a sample to the population it describes.",
+    "correct_answer_citation": "Week 05 · Limitations of Synthetic Respondents",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "The panel is too small; 10,000 synthetic respondents would reduce the margin of error further.",
+        "option_explanation": "Adding synthetic respondents does not connect them to the population, so the margin of error remains meaningless at any size."
+      },
+      {
+        "option_text": "No sampling frame connects the synthetic respondents to the population, so the margin of error cannot be meaningfully calculated, and a new product lies outside the model's experience.",
+        "option_explanation": "Correct. The responses reflect the model's training data, the margin of error has no meaning for a synthetic sample, and the model has no experience of a product absent from that data."
+      },
+      {
+        "option_text": "A standard deviation of 0.4 shows that consumers agree closely, which makes the estimate especially reliable.",
+        "option_explanation": "Synthetic responses typically show less variation than real responses, which understates the diversity of opinion rather than demonstrating agreement."
+      },
+      {
+        "option_text": "Purchase intention should be measured on a 5-point scale.",
+        "option_explanation": "The number of scale categories is not the problem; the source of the responses is."
+      }
+    ]
+  }
+]
