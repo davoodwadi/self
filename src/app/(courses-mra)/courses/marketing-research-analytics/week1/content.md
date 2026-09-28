@@ -127,6 +127,20 @@ week: week1
 - Researchers should document where and how AI was used, so that others can evaluate and replicate the work.
 - The use of AI shifts the researcher's effort from producing the work to verifying it.
 
+## AI Agents as a Subject of Marketing Research [no-exercise]
+- An AI agent is a system built on a large language model that can search for information, compare alternatives, and complete transactions on behalf of a person.
+- A consumer who delegates a purchase to an AI agent makes the agent a surrogate consumer: the consumer states the goal, and the agent acquires product information and selects an alternative.
+- In agent-mediated purchasing, the agent rather than the consumer encounters the product page, the price presentation, and the sponsorship label.
+- Research questions therefore extend from consumers to their agents: which information agents acquire, how they weight product attributes, and whose interests their recommendations serve.
+- New management decision problems follow, such as how to present product information to AI agents, and whether an agent is suitable for deployment to the firm's customers.
+
+## Evaluating AI Systems as a Research Task [exercise]
+- The evaluation of an AI model or agent is a research problem: the researcher defines the behavior of interest, measures it under controlled conditions, and estimates it with known precision.
+- Standard AI benchmarks report accuracy on large sets of general questions, such as mathematics or programming. They do not establish how a model behaves in a specific marketing task.
+- A behavioral evaluation applies the methods of this course to the AI system: validated measures (Week 4), adequate samples of responses (Week 5), hypothesis tests (Week 7), and controlled experiments (Week 8).
+- The same model can produce different responses to the same prompt, so that a single response is not a reliable basis for conclusions about its behavior (Wadi & Fredette, 2025).
+- The researcher who evaluates an AI system is accountable for the evidence in the same way as for research on consumers.
+
 ## Part 5: Ethics in Marketing Research [no-exercise]
 - Marketing research involves four stakeholders: the researcher, the client, the respondent, and the public.
 - Each stakeholder holds rights and bears obligations.
@@ -155,3 +169,4 @@ week: week1
 - The research process comprises six steps, from problem definition to reporting, to which researchers often return iteratively.
 - AI can accelerate every step of the process, but its output must be verified, and the researcher remains accountable for every finding.
 - Ethical research protects respondents, reports accurately to clients, and respects the public interest.
+- AI agents that acquire information and select products on consumers' behalf are a new subject of marketing research, and the evaluation of AI systems applies the methods of measurement, sampling, and experimentation developed in this course.

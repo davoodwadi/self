@@ -33,6 +33,7 @@ import {
   TwoValueAxes,
   TwoChartsOneDataset,
   MissingCode,
+  ConsensusVersusEntropy,
 } from "./visuals";
 
 // ============================================================================
@@ -990,6 +991,61 @@ export default function Week6() {
       </Slide>
 
       {/* ================================================================
+          Describing Model Responses
+          ================================================================ */}
+      <Slide
+        id="describing-model-responses"
+        border
+        className="!py-8"
+        exercise={exercise["describing-model-responses"]}
+      >
+        <SlideHeading>Describing Model Responses</SlideHeading>
+        <Statement className="!max-w-none !text-[clamp(1.35rem,2.1vw,1.8rem)]">
+          The responses of an AI model to repeated prompts are described with the same statistics as survey data:
+          frequency distributions, measures of central tendency, and measures of dispersion.
+        </Statement>
+        <div className="mt-7 grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Ruled weight="thin">
+            <P>
+              The <Term tone="ink">coefficient of variation</Term>, the standard deviation divided by the mean,
+              compares the variability of responses across models and products measured on different scales.
+            </P>
+          </Ruled>
+          <Ruled weight="thin">
+            <P>
+              A mean response alone can conceal important differences. Two models with the same mean on a Likert
+              item may differ in whether their responses concentrate on one point or spread across the scale.
+            </P>
+          </Ruled>
+        </div>
+        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Ruled tone="signal">
+              <p className={BIG}>
+                For ordinal responses, a <Term>consensus</Term> measure summarizes how concentrated the distribution
+                is, from complete agreement on one scale point to an even split between the two extremes (Wadi,
+                Ghodrat, &amp; Philp, 2026).
+              </p>
+            </Ruled>
+            <Ruled tone="counter" weight="thin">
+              <P>
+                Entropy, a common measure of uncertainty in AI research, treats the scale points as unordered
+                categories, and therefore does not distinguish a split between adjacent points from a split between
+                opposite extremes.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <ConsensusVersusEntropy />
+          </Plate>
+        </div>
+        <p className="type-quote mt-7 w-full border-t-2 border-[var(--ink)] pt-5 !max-w-none !text-[clamp(1.15rem,1.8vw,1.5rem)]">
+          Charts of full response distributions for each model, rather than a single bar for each mean, show both
+          the level and the variability of model behavior.
+        </p>
+      </Slide>
+
+      {/* ================================================================
           Discussion: An Answer in Seconds
           ================================================================ */}
       <Slide id="discussion-an-answer-in-seconds" border className="!py-8">
@@ -1017,6 +1073,7 @@ export default function Week6() {
             "Cross-tabulation reveals associations between variables, which may be spurious and do not establish causation.",
             "Charts communicate one finding each, with a chart type suited to that finding and axes that represent the data accurately.",
             "AI data-analysis assistants accelerate analysis, but their code, case counts, and interpretations must be verified before the results inform a decision.",
+            "The responses of AI models are described by their full distributions, including dispersion and, for ordinal scales, consensus, rather than by a single typical answer.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
               <Numbered n={i + 1} tone="signal">

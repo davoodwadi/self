@@ -31,7 +31,7 @@ import {
   Toggles,
   seeded,
 } from "../_visuals/kit";
-import { Person1, Cup1, RatingRow1 as RatingRow, Tick1 as Tick } from "../_visuals/objects";
+import { Person1, Cup1, RatingRow1 as RatingRow, Tick1 as Tick, AiMark1 } from "../_visuals/objects";
 
 /* --------------------------------------------------------------------------
    Measurement and Scaling
@@ -1273,3 +1273,126 @@ export function QuestionnaireFunnel() {
   );
 }
 
+
+/* --------------------------------------------------------------------------
+   Measuring the Attitudes of AI Models
+   -------------------------------------------------------------------------- */
+
+/**
+ * One CETSCALE item as it is put to a language model: the country varies
+ * across conditions, the wording is otherwise the validated item, and a
+ * fixed instruction asks for a single scale point.
+ */
+export function ScaleForModel() {
+  const countries = ["USA", "CHINA", "CANADA", "FRANCE"];
+  const on = 2;
+  const cw = 84;
+  const card = { x: 16, y: 72, w: 368, h: 124 };
+  return (
+    <Frame
+      width={400}
+      height={210}
+      label="A consumer ethnocentrism item put to an AI model: the country in the wording is varied across four conditions, the United States, China, Canada and France; here it reads Canadians should always buy Canadian-made products instead of imports. A fixed instruction asks for only the digit, and the model answers with one point on a seven-point scale"
+    >
+      <Key x={16} y={22} fill={INK3} size={9.5}>CONDITION</Key>
+      {countries.map((c, i) => {
+        const x = 16 + i * (cw + 10);
+        const hit = i === on;
+        return (
+          <g key={c}>
+            <rect x={x} y={32} width={cw} height={22} fill={hit ? SIGNAL_TINT : PAPER} stroke={hit ? SIGNAL : INK3} strokeWidth={hit ? 1.5 : 1} />
+            <Key x={r2(x + cw / 2)} y={47} anchor="middle" fill={hit ? SIGNAL : INK3} size={9.5} weight={hit ? 700 : 500}>{c}</Key>
+          </g>
+        );
+      })}
+      <rect x={card.x} y={card.y} width={card.w} height={card.h} fill={PAPER} stroke={RULE2} strokeWidth={1} />
+      <text x={card.x + 14} y={card.y + 26} fontFamily="var(--font-body)" fontSize={14} fill={INK}>
+        <tspan fill={SIGNAL} fontWeight={600}>Canadians</tspan> should always buy <tspan fill={SIGNAL} fontWeight={600}>Canadian</tspan>-made
+      </text>
+      <Note x={card.x + 14} y={card.y + 46} size={14} fill={INK}>products instead of imports.</Note>
+      <Note x={card.x + 14} y={card.y + 72} size={12} fill={INK3} italic>Respond with only the digit.</Note>
+      <RatingRow x={card.x + 14} y={card.y + 88} n={7} pick={3} box={24} gap={5} />
+      <AiMark1 cx={card.x + 14 + 7 * 29 + 18} cy={card.y + 100} s={20} fill={INK} />
+    </Frame>
+  );
+}
+
+/* --------------------------------------------------------------------------
+   Response Distributions in Place of Single Answers
+   -------------------------------------------------------------------------- */
+
+/** A model's probabilities for the seven points of one Likert item (simulated). */
+const ITEM_PMF = [0.02, 0.05, 0.12, 0.3, 0.33, 0.14, 0.04];
+const DRAW_SEED = 41;
+
+/** The first n answers generated from ITEM_PMF, identical on server and client. */
+function drawAnswers(n: number) {
+  const rnd = seeded(DRAW_SEED);
+  return Array.from({ length: n }, () => {
+    let u = rnd();
+    for (let i = 0; i < ITEM_PMF.length; i++) {
+      u -= ITEM_PMF[i];
+      if (u < 0) return i + 1;
+    }
+    return ITEM_PMF.length;
+  });
+}
+
+/**
+ * Interactive: each press generates one answer from the model's distribution
+ * over a seven-point item. The bars, the exact distribution, stay fixed while
+ * the generated answers vary, so any single answer is one draw from it. It
+ * opens with one generated answer, the state the slide shows untouched.
+ */
+export function ResponseDraws() {
+  const [n, setN] = useState(1);
+  const answers = drawAnswers(n);
+  const last = answers[answers.length - 1];
+  const shown = answers.slice(-12);
+  const x0 = 50;
+  const x1 = 350;
+  const base = 158;
+  const scale = 330;
+  const bw = 32;
+  const sx = (v: number) => r2(x0 + ((v - 1) / 6) * (x1 - x0));
+  return (
+    <>
+      <Frame
+        width={400}
+        height={226}
+        label={`Simulated probabilities a model assigns to the seven points of one Likert item: 2, 5, 12, 30, 33, 14 and 4 percent. The latest generated answer is ${last}; answers so far: ${shown.join(", ")}`}
+      >
+        <Key x={16} y={20} fill={INK3} size={9.5}>PROBABILITY OF EACH POINT</Key>
+        <Key x={384} y={20} anchor="end" fill={INK3} size={9}>SIMULATED</Key>
+        {ITEM_PMF.map((p, i) => {
+          const v = i + 1;
+          const h = r2(p * scale);
+          const hit = v === last;
+          return (
+            <g key={v}>
+              <rect x={r2(sx(v) - bw / 2)} y={r2(base - h)} width={bw} height={h} fill={hit ? SIGNAL : PAPER3} stroke={hit ? SIGNAL : INK} strokeWidth={1.25} />
+              <Key x={sx(v)} y={r2(base - h - 6)} anchor="middle" fill={hit ? SIGNAL : INK3} size={9.5}>{`${Math.round(p * 100)}%`}</Key>
+              <Key x={sx(v)} y={base + 18} anchor="middle" fill={hit ? SIGNAL : INK3} size={11} weight={hit ? 700 : 500}>{`${v}`}</Key>
+            </g>
+          );
+        })}
+        <line x1={x0 - 26} y1={base} x2={x1 + 26} y2={base} stroke={INK} strokeWidth={1.25} />
+        <line x1={16} y1={base + 32} x2={384} y2={base + 32} stroke={RULE2} strokeWidth={1} />
+        <Key x={16} y={base + 54} fill={INK3} size={9.5}>GENERATED ANSWERS</Key>
+        {shown.map((a, i) => {
+          const latest = i === shown.length - 1;
+          return (
+            <Key key={i} x={r2(190 + i * 16)} y={base + 54} anchor="middle" fill={latest ? SIGNAL : INK} size={12} weight={latest ? 700 : 500}>
+              {`${a}`}
+            </Key>
+          );
+        })}
+      </Frame>
+      <div className="mt-3 flex items-center gap-3">
+        <PlateButton onClick={() => setN((k) => k + 1)} icon={<Shuffle className="size-3.5" aria-hidden />}>
+          Generate an answer
+        </PlateButton>
+      </div>
+    </>
+  );
+}

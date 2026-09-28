@@ -29,9 +29,10 @@ week: week8
 - Test units are the entities exposed to the treatments, such as consumers, stores, or geographic regions.
 - Extraneous variables are variables other than the treatments that could affect the dependent variable, such as the season or the characteristics of the test units.
 - The treatment group receives the treatment, and the control group does not, or receives the current version.
+- A manipulation check is a measure that verifies whether participants perceived the treatment as intended, such as asking participants which price they saw.
 
 ## Random Assignment [no-exercise]
-- In random assignment, each test unit has an equal chance of being assigned to each group.
+- In random assignment, chance alone determines the group of each test unit, and each test unit has a known, planned probability of being assigned to each group, usually an equal one.
 - Random assignment makes the groups equivalent, on average, on all characteristics, including characteristics that the researcher has not measured.
 - A difference in the dependent variable between randomly assigned groups can therefore be attributed to the treatment, within the limits of sampling variation.
 - Random assignment differs from the random sampling introduced in Week 5. Random sampling determines who is studied and supports generalization to the population. Random assignment determines who receives which treatment and supports causal inference.
@@ -61,6 +62,7 @@ week: week8
 - A laboratory experiment is conducted in an artificial environment constructed by the researcher, such as a simulated store or an online study with a panel of respondents.
 - Laboratory experiments offer strong control over extraneous variables, and therefore high internal validity, at relatively low cost.
 - A field experiment is conducted in a natural setting, such as actual stores, websites, or markets, often without participants being aware of the experiment.
+- Field experiments conducted without participants' awareness raise the questions of informed consent and harm introduced in Week 1, and are subject to the same ethical standards as other research.
 - Field experiments offer higher external validity, since behavior is observed under real conditions, but less control over extraneous variables.
 - The two are frequently combined: a laboratory experiment identifies promising treatments, and a field experiment confirms their effect in the market.
 
@@ -155,6 +157,26 @@ week: week8
 ## Discussion: The Platform Has Chosen
 - Discussion: An advertising platform's bandit algorithm selects one of five creative versions after two days and allocates nearly all impressions to it. The brand manager proposes to use this version in the firm's national television campaign. What does the platform's result establish, what does it not establish, and which additional evidence should be obtained?
 
+## Part 6: Experiments on AI Agents [no-exercise]
+- AI agents are also the subject of experiments, when the research question concerns how the agents themselves search, evaluate, and choose.
+- Such experiments apply the principles of experimental design introduced in this week to the instructions, information, and alternatives that agents receive.
+
+## Controlled Experiments on AI Agents [exercise]
+- When an AI agent is the subject of research rather than a proxy for consumers, its responses are direct evidence about the agent's behavior.
+- The system prompt is the set of instructions given to an agent before the consumer's request, usually by the firm or the researcher that deploys it.
+- The factors manipulated in such experiments include the system prompt, such as the party the agent is told it serves; the consumer's instruction, such as the specificity of the goal; the information environment, such as the cost of acquiring an attribute; and the attributes of the alternatives, such as a sponsorship label.
+- Factorial designs cross these factors to estimate their main effects and interactions.
+- In one study, a 2 × 2 design crossed the cost of inspecting an attribute ($0.00 vs. $10.00) with the specificity of the goal ("find the best deal" vs. "find the coffee with the lowest price per ounce"), across eight models and 100 sessions per condition, for 3,200 sessions in total (Wadi & Ma, 2026b).
+- The order of alternatives and attributes is randomized across sessions, and the design is replicated across models, providers, and wordings of the prompt.
+
+## Process Tracing With AI Agents [exercise]
+- An information board is a process-tracing method in which product attributes are hidden in the cells of a matrix, and the participant opens cells one at a time before choosing (Payne, Bettman, & Johnson, 1993).
+- A tool is a function that an AI agent can call to retrieve information or perform an action, such as looking up the price of a product.
+- The same method can be applied to AI agents by placing each attribute behind a tool that the agent must call to reveal it, at a cost that the researcher sets (Wadi & Ma, 2026b).
+- The record of tool calls shows which attributes the agent acquired, in which order, and which it omitted before choosing.
+- Process tracing separates two sources of a poor choice: failure to acquire the necessary information and failure to use it correctly.
+- In a validation study, seven of eight agents given a fixed set of attributes selected the alternative implied by those attributes in nearly all sessions, and no agent made an arithmetic error when asked to calculate unit prices. Most poor choices therefore arose from incomplete information acquisition (Wadi & Ma, 2026b).
+
 ## Key Takeaways
 - Causal inference requires concomitant variation, time order, and the elimination of other possible causes.
 - Random assignment makes treatment and control groups equivalent on average, and supports the attribution of differences to the treatment.
@@ -162,3 +184,4 @@ week: week8
 - A/B and multivariate tests are randomized field experiments that require a primary metric, a planned sample size and duration, and no early stopping.
 - Quasi-experimental designs, such as difference-in-differences, estimate causal effects when randomization is not possible, under stated assumptions.
 - AI agents can pilot experimental materials but cannot replace real participants, and bandit algorithms optimize performance during a test at the cost of precise estimates of effect size.
+- Controlled experiments on AI agents manipulate prompts, roles, and information environments in factorial designs, and process tracing separates failures of information acquisition from failures of information use.

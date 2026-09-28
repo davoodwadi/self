@@ -1,0 +1,237 @@
+[
+  {
+    "type": "order",
+    "slide_id": "the-hypothesis-testing-procedure",
+    "prompt": "Does satisfaction differ between a streaming service's annual and monthly plans? Order the steps.",
+    "steps": [
+      {
+        "id": "hypotheses",
+        "text": "State H0 and H1 for the two plans.",
+        "explanation": "The researcher first formulates the null hypothesis (the plans have the same mean satisfaction) and the alternative hypothesis (they differ)."
+      },
+      {
+        "id": "test",
+        "text": "Choose the independent-samples t-test.",
+        "explanation": "The appropriate statistical test is selected next: the plans are held by different subscribers, and satisfaction is rated on an interval scale."
+      },
+      {
+        "id": "alpha",
+        "text": "Set the significance level at 0.05.",
+        "explanation": "The significance level is specified before the data are examined."
+      },
+      {
+        "id": "collect",
+        "text": "Survey 400 subscribers per plan; compute t.",
+        "explanation": "The data are then collected and the test statistic calculated."
+      },
+      {
+        "id": "pvalue",
+        "text": "Find the p-value for that t: 0.012.",
+        "explanation": "The p-value associated with the test statistic is then determined."
+      },
+      {
+        "id": "compare",
+        "text": "Reject H0, since 0.012 is below 0.05.",
+        "explanation": "The p-value is compared with the significance level, and the null hypothesis is rejected if the p-value is smaller."
+      },
+      {
+        "id": "conclude",
+        "text": "Tell management what this means for pricing.",
+        "explanation": "Finally, the conclusion is stated in terms of the marketing research problem."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "type-i-and-type-ii-errors",
+    "prompt": "In each case, the truth about the population is known afterwards. Sort each conclusion by the type of error it contains.",
+    "bins": [
+      { "id": "type1", "label": "Type I error" },
+      { "id": "type2", "label": "Type II error" }
+    ],
+    "cards": [
+      {
+        "id": "packaging",
+        "text": "A test reports that a new package design raises purchase intention; in fact, the design has no effect.",
+        "bin": "type1",
+        "explanation": "The null hypothesis of no difference was true but was rejected: a difference was reported that does not exist."
+      },
+      {
+        "id": "price",
+        "text": "A small test finds no significant effect of free delivery on order size, although free delivery does increase it.",
+        "bin": "type2",
+        "explanation": "The null hypothesis was false but was not rejected: a real difference was not detected."
+      },
+      {
+        "id": "segment",
+        "text": "An analyst concludes that customers in the north respond better to a coupon than customers in the south; the two regions respond identically.",
+        "bin": "type1",
+        "explanation": "A difference was reported that does not exist in the population."
+      },
+      {
+        "id": "abandon",
+        "text": "A firm drops a loyalty email after a test shows no significant effect, although the email does raise repeat purchases.",
+        "bin": "type2",
+        "explanation": "A real improvement went undetected, leading the firm to abandon an effective campaign."
+      },
+      {
+        "id": "store",
+        "text": "A retailer rolls out a new store layout after a significant test result, but the layout does not change spending.",
+        "bin": "type1",
+        "explanation": "The null hypothesis was rejected although it was true, so budget was spent on an ineffective change."
+      },
+      {
+        "id": "underpowered",
+        "text": "With 20 respondents per group, a test fails to detect that a new recipe is preferred to the old one, as it is.",
+        "bin": "type2",
+        "explanation": "A false null hypothesis was not rejected; with a small sample the test had little power."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "selecting-a-test",
+    "prompt": "Each case describes a comparison a marketing analyst wants to test. Name the test to use.",
+    "options": [
+      { "id": "independent", "label": "Independent-samples t-test" },
+      { "id": "paired", "label": "Paired-samples t-test" },
+      { "id": "anova", "label": "Analysis of variance" },
+      { "id": "chisquare", "label": "Chi-square test" },
+      { "id": "mannwhitney", "label": "Mann-Whitney U test" }
+    ],
+    "cases": [
+      {
+        "id": "ad-before-after",
+        "text": "Each of 150 panel members rates a hotel brand from 0 to 100 before and after watching its new commercial.",
+        "answer": "paired",
+        "explanation": "Two means are obtained from the same respondents, measured twice."
+      },
+      {
+        "id": "three-prices",
+        "text": "Three groups of shoppers each see one of three prices for the same jacket and state how much they would pay for it in dollars.",
+        "answer": "anova",
+        "explanation": "The means of a ratio variable are compared across three groups."
+      },
+      {
+        "id": "brand-region",
+        "text": "A survey asks whether the brand a respondent prefers (A, B or C) is associated with the region in which they live.",
+        "answer": "chisquare",
+        "explanation": "Both variables are nominal, so their association in a cross-tabulation is assessed with the chi-square test."
+      },
+      {
+        "id": "spend-app",
+        "text": "Monthly spending in dollars is compared between customers who use the mobile app and customers who do not.",
+        "answer": "independent",
+        "explanation": "The means of a ratio variable are compared between two groups of different respondents."
+      },
+      {
+        "id": "rank-ads",
+        "text": "Readers of two magazines rank a set of advertisements, and the analyst compares how highly the two readerships rank one of them.",
+        "answer": "mannwhitney",
+        "explanation": "Ranks are an ordinal variable, and two groups of different respondents are compared, so a nonparametric test is used."
+      },
+      {
+        "id": "two-packs",
+        "text": "Every participant in a taste test rates both a can design and a bottle design of the same drink on a 1-to-10 scale treated as interval.",
+        "answer": "paired",
+        "explanation": "The same respondents rate two objects, so the paired-samples t-test is used."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "effect-size",
+    "question_text": "Two studies test a redesigned checkout. Study A (40,000 customers) finds a significant difference with Cohen's d = 0.05. Study B (60 customers) finds d = 0.60, not significant. Which statement is correct?",
+    "hint": "Consider what an effect size measures and what it does not depend on.",
+    "correct_answer_citation": "Week 07 · Effect Size",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Study A found the larger effect, because only its result is statistically significant.",
+        "option_explanation": "Significance depends on the sample size; with 40,000 customers very small differences become significant. Its d of 0.05 is far smaller."
+      },
+      {
+        "option_text": "The effects cannot be compared, because the studies used different sample sizes.",
+        "option_explanation": "Effect sizes are independent of the sample size, which is precisely what allows findings to be compared across studies with different sample sizes."
+      },
+      {
+        "option_text": "Study B estimated the larger effect, medium to large by convention, although its small sample did not establish it statistically.",
+        "option_explanation": "Correct. A d of 0.60 lies between the conventional medium (0.5) and large (0.8) values, while 0.05 is well below small (0.2); a large difference may fail to reach significance in a small sample."
+      },
+      {
+        "option_text": "Both studies found medium effects, because both compare the same checkout designs.",
+        "option_explanation": "The two estimates differ greatly in magnitude: 0.05 is far below the conventional small value of 0.2, and 0.60 exceeds the medium value of 0.5."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "preregistration-and-reproducible-analysis",
+    "prompt": "Each case describes something a research team does. Name the practice.",
+    "options": [
+      { "id": "prereg", "label": "Preregistration" },
+      { "id": "confirmatory", "label": "Confirmatory analysis" },
+      { "id": "exploratory", "label": "Exploratory analysis" },
+      { "id": "reproducible", "label": "Reproducible analysis" },
+      { "id": "complete", "label": "Complete reporting" }
+    ],
+    "cases": [
+      {
+        "id": "timestamp",
+        "text": "Before fieldwork begins, the team files a dated document stating its hypothesis, a sample of 600, the rule for excluding speeders and the test it will run.",
+        "answer": "prereg",
+        "explanation": "The hypotheses, sample size, exclusion criteria and analysis plan are documented before the data are collected."
+      },
+      {
+        "id": "planned-test",
+        "text": "Once the data arrive, the team runs exactly the t-test named in its filed plan on the hypothesis stated there.",
+        "answer": "confirmatory",
+        "explanation": "A confirmatory analysis tests a hypothesis specified in advance."
+      },
+      {
+        "id": "new-pattern",
+        "text": "While examining the data, the team notices that weekend shoppers respond unusually well and records this as a hypothesis for its next study.",
+        "answer": "exploratory",
+        "explanation": "An exploratory analysis generates hypotheses for future testing rather than testing one specified in advance."
+      },
+      {
+        "id": "shared-script",
+        "text": "The team shares its documented analysis script, so that a colleague who runs it on the same data file obtains identical results.",
+        "answer": "reproducible",
+        "explanation": "Reproducible analysis is conducted with documented code, so another analyst can obtain the same results from the same data."
+      },
+      {
+        "id": "null-results",
+        "text": "The final report lists all nine tests the team conducted, including the seven that were not significant.",
+        "answer": "complete",
+        "explanation": "Complete reporting states every test conducted, including those that did not produce significant results."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "hypothesis-testing-in-ai-evaluation",
+    "question_text": "A team tests every pair of 12 prompt wordings, with 20,000 responses per wording. One pair differs significantly (p = 0.03): mean ratings of 5.61 and 5.58 on a seven-point scale. What should the team add before concluding?",
+    "hint": "Consider both the size of the samples and the number of tests conducted.",
+    "correct_answer_citation": "Week 07 · Hypothesis Testing in AI Evaluation",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Nothing: with 20,000 responses per wording, p = 0.03 establishes a meaningful difference.",
+        "option_explanation": "With very large samples, very small differences become statistically significant; significance alone does not show that the difference matters."
+      },
+      {
+        "option_text": "More responses per wording, so that the p-value falls below 0.001.",
+        "option_explanation": "A smaller p-value would not make a difference of 0.03 points larger, and the problem of many tests would remain."
+      },
+      {
+        "option_text": "A single response to each wording from a newer model, to confirm the result.",
+        "option_explanation": "Claims about newer models are tested rather than assumed, and a single response is not a sample."
+      },
+      {
+        "option_text": "An effect size and confidence interval, and a correction for the 66 pairwise tests.",
+        "option_explanation": "Correct. Effect sizes and confidence intervals accompany every test, and 12 wordings give 66 pairs, so the corrections for multiple comparisons apply: 0.05 / 66 is about 0.0008, well below 0.03."
+      }
+    ]
+  }
+]

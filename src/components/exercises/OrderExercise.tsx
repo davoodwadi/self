@@ -98,8 +98,17 @@ export default function OrderExercise({
         )}
       </ul>
 
-      {/* the sequence: numbered slots, each as tall as the tallest step */}
-      <ol className="mt-8 grid gap-3 border-t-2 border-[var(--ink)] pt-5" aria-label="The sequence">
+      {/* the sequence: numbered slots, each as tall as the tallest step; a
+          long sequence runs down two columns on wide screens, so it fits
+          one screen */}
+      <ol
+        className={cn(
+          "mt-8 grid gap-3 border-t-2 border-[var(--ink)] pt-5",
+          n > 5 && "lg:grid-flow-col lg:grid-cols-2 lg:gap-x-8 lg:[grid-template-rows:repeat(var(--rows),auto)]",
+        )}
+        style={{ "--rows": Math.ceil(n / 2) } as React.CSSProperties}
+        aria-label="The sequence"
+      >
         {data.steps.map((s, i) => (
           <li key={s.id} className="flex min-w-0 items-start gap-4">
             <span

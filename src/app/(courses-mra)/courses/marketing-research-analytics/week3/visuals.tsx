@@ -879,3 +879,77 @@ export function CommunityVoices() {
     </Frame>
   );
 }
+
+/* --------------------------------------------------------------------------
+   Reasoning Traces as Verbal Protocols
+   -------------------------------------------------------------------------- */
+
+/**
+ * A shopping agent's reasoning trace, coded like an interview transcript:
+ * one segment states the objective the agent adopts, another expresses
+ * skepticism toward a sponsored listing. The codes come from a codebook.
+ */
+export function CodedTrace() {
+  const lines = [
+    "The user asked for the best deal on",
+    "coffee, so I will look for the lowest",
+    "total price.",
+    "Coffee A costs $4.99 and Coffee B",
+    "costs $5.00.",
+    "Coffee A is marked Sponsored, so its",
+    "placement may have been paid for.",
+  ];
+  const top = 58;
+  const lh = 22;
+  const ly = (i: number) => top + i * lh;
+  const segments = [
+    { from: 0, to: 2, kind: "OBJECTIVE", code: "lowest total price" },
+    { from: 5, to: 6, kind: "SKEPTICISM", code: "paid placement" },
+  ];
+  const sx = 12;
+  const sw = 240;
+  const tx = 272;
+  return (
+    <Frame
+      width={400}
+      height={212}
+      label="A page of an AI agent's reasoning trace with two highlighted segments, coded from a codebook: the first states the objective, the lowest total price; the second expresses skepticism about a paid placement"
+    >
+      <rect x={sx} y={10} width={sw} height={192} fill={PAPER} stroke={RULE2} strokeWidth={1} />
+      <AiMark1 cx={sx + 16} cy={27} s={14} fill={SIGNAL} />
+      <Key x={sx + 30} y={31} fill={INK3} size={9}>REASONING TRACE</Key>
+      {segments.map((g, i) => (
+        <rect
+          key={i}
+          x={sx + 6}
+          y={r2(ly(g.from) - 15)}
+          width={sw - 12}
+          height={r2((g.to - g.from + 1) * lh - 2)}
+          fill={PAPER3}
+        />
+      ))}
+      {lines.map((t, i) => (
+        <Note key={i} x={sx + 12} y={ly(i)} size={12} fill={INK2}>
+          {t}
+        </Note>
+      ))}
+      {segments.map((g, i) => {
+        const y0 = ly(g.from) - 15;
+        const y1 = ly(g.to) + 5;
+        const mid = r2((y0 + y1) / 2);
+        return (
+          <g key={i}>
+            <path d={`M${sx + sw + 4} ${r2(y0 + 1)}H${sx + sw + 9}V${r2(y1 - 1)}H${sx + sw + 4}`} fill="none" stroke={INK} strokeWidth={1.5} />
+            <line x1={sx + sw + 9} y1={mid} x2={tx - 4} y2={mid} stroke={INK} strokeWidth={1.25} />
+            <Key x={tx} y={r2(mid - 6)} fill={INK3} size={9}>
+              {g.kind}
+            </Key>
+            <Note x={tx} y={r2(mid + 10)} size={12} fill={INK} weight={600}>
+              {g.code}
+            </Note>
+          </g>
+        );
+      })}
+    </Frame>
+  );
+}

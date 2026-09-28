@@ -208,5 +208,31 @@
         "option_explanation": "The number of scale categories is not the problem; the source of the responses is."
       }
     ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "sampling-in-ai-evaluation",
+    "question_text": "An analyst asks a language model once how much it would pay for a one-kilogram bag of coffee, and it answers $14. The analyst reports that the model values the product at $14. A colleague submits the same prompt 100 times and obtains a mean of $11.40 with a standard deviation of $4.10. Which statement is correct?",
+    "hint": "Consider what each response represents, and what the mean of many responses estimates.",
+    "correct_answer_citation": "Week 05 · Sampling in AI Evaluation",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "The analyst's single answer is the better measure, because it is the model's first and unprompted response.",
+        "option_explanation": "Every response to the same prompt is a draw from the same response distribution; the first has no special status."
+      },
+      {
+        "option_text": "The mean of $11.40 is an unbiased estimate of the model's typical response, and $14 was one draw from the model's response distribution.",
+        "option_explanation": "Correct. Each response is a draw from the model's response distribution, and the mean of many responses to the same prompt estimates its typical behavior; with a standard deviation of $4.10, a single answer of $14 is unremarkable."
+      },
+      {
+        "option_text": "The two results contradict each other, so the model's willingness to pay cannot be evaluated.",
+        "option_explanation": "The results do not contradict each other: a single draw is expected to differ from the mean of the distribution."
+      },
+      {
+        "option_text": "The colleague's estimate is no more precise than the analyst's, because both come from the same model.",
+        "option_explanation": "The standard error of the mean decreases as the number of responses increases, so 100 responses give a far more precise estimate."
+      }
+    ]
   }
 ]

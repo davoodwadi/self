@@ -220,5 +220,31 @@
         "explanation": "Finally, the questions and code are documented so that the analysis can be reproduced."
       }
     ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "describing-model-responses",
+    "question_text": "Two AI models each rate a new product 500 times on a seven-point purchase-intention item. Half of model X's responses are 3 and half are 4; half of model Y's responses are 1 and half are 6. A report concludes that the two models hold the same view, because both have a mean of 3.5 and both have an entropy of 1 bit. Which statement is correct?",
+    "hint": "Consider which statistics take the order of the scale points into account.",
+    "correct_answer_citation": "Week 06 · Describing Model Responses",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "The report is correct: equal means and equal entropy show that the two distributions are the same.",
+        "option_explanation": "A mean can conceal how responses are spread, and entropy ignores the order of the scale points, so neither shows that the distributions are the same."
+      },
+      {
+        "option_text": "The report is incorrect: a consensus measure would show that model X's responses are concentrated on adjacent points, while model Y's are split between distant points.",
+        "option_explanation": "Correct. Consensus takes the order of the scale points into account, so it separates a split between adjacent points from a split between distant ones, which the mean and entropy do not."
+      },
+      {
+        "option_text": "The report is incorrect, because the coefficient of variation is the only appropriate measure of dispersion for Likert items.",
+        "option_explanation": "The coefficient of variation compares variability across measures on different scales; for ordinal responses, a consensus measure describes how concentrated the distribution is."
+      },
+      {
+        "option_text": "The report cannot be evaluated without more than 500 responses per model.",
+        "option_explanation": "The problem is not the number of responses but the statistics used to describe them."
+      }
+    ]
   }
 ]

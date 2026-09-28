@@ -3,6 +3,9 @@ import { Newsreader, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { DynamicFooter } from "@/components/slide-components/DynamicFooter";
 import { FitSlides } from "@/components/slide-components/FitSlides";
+import { MRA_DIR, readCurriculum } from "@/lib/curriculum";
+
+const MRA = readCurriculum(MRA_DIR);
 
 // Newsreader carries the display voice: a text serif cut for reading on
 // screens. IBM Plex Sans sets body copy and figures, whose tabular numerals
@@ -22,11 +25,10 @@ const plexSans = IBM_Plex_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Marketing Research & Analytics",
-    template: "%s · Marketing Research & Analytics",
+    default: MRA.title,
+    template: `%s · ${MRA.title}`,
   },
-  description:
-    "A twelve-week master's course in marketing research and analytics, with AI throughout, taught by Davood Wadi, PhD.",
+  description: MRA.summary,
   icons: {
     icon: "/icon-large.svg",
   },

@@ -17,7 +17,7 @@ import {
   Prompt,
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
-import { UncertaintyNarrowing, EvidenceLanes, ShareTracking, ChooseAmongAlternatives, JustifiedQuadrant, SymptomAndCauses, CancellationsDoubled, ResearchProcess, SimulatedVersusReal, EffortShift, Stakeholders, PreciseWrongTarget } from "./visuals";
+import { UncertaintyNarrowing, EvidenceLanes, ShareTracking, ChooseAmongAlternatives, JustifiedQuadrant, SymptomAndCauses, CancellationsDoubled, ResearchProcess, SimulatedVersusReal, EffortShift, Stakeholders, PreciseWrongTarget, AgentMediatedPurchase, SamePromptResponses } from "./visuals";
 
 // ============================================================================
 // WEEK 01 — RESEARCH FOR MARKETING DECISIONS
@@ -763,6 +763,101 @@ export default function Week1() {
       </Slide>
 
       {/* ================================================================
+          AI Agents as a Subject of Marketing Research
+          ================================================================ */}
+      <Slide id="ai-agents-as-a-subject-of-marketing-research" border className="!py-8">
+        <SlideHeading>AI Agents as a Subject of Marketing Research</SlideHeading>
+        <Statement className="!max-w-none !text-[clamp(1.35rem,2.1vw,1.8rem)]">
+          An <span className="text-[var(--signal)]">AI agent</span> is a system built on a large language model that
+          can search for information, compare alternatives, and complete transactions on behalf of a person.
+        </Statement>
+        <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Ruled>
+              <p className={BIG}>
+                A consumer who delegates a purchase to an AI agent makes the agent a{" "}
+                <Term>surrogate consumer</Term>: the consumer states the goal, and the agent acquires product
+                information and selects an alternative.
+              </p>
+            </Ruled>
+            <Ruled tone="counter">
+              <p className={BIG}>
+                In agent-mediated purchasing, the agent rather than the consumer encounters the product page, the
+                price presentation, and the sponsorship label.
+              </p>
+            </Ruled>
+          </div>
+          <Plate>
+            <AgentMediatedPurchase />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Ruled weight="thin">
+            <P>
+              Research questions therefore extend from consumers to their agents: which information agents
+              acquire, how they weight product attributes, and whose interests their recommendations serve.
+            </P>
+          </Ruled>
+          <Ruled weight="thin">
+            <P>
+              New management decision problems follow, such as how to present product information to AI agents,
+              and whether an agent is suitable for deployment to the firm&apos;s customers.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Evaluating AI Systems as a Research Task
+          ================================================================ */}
+      <Slide
+        id="evaluating-ai-systems-as-a-research-task"
+        border
+        className="!py-8"
+        exercise={exercise["evaluating-ai-systems-as-a-research-task"]}
+      >
+        <SlideHeading>Evaluating AI Systems as a Research Task</SlideHeading>
+        <Statement className="!max-w-none !text-[clamp(1.35rem,2.1vw,1.8rem)]">
+          The evaluation of an AI model or agent is a research problem: the researcher defines the behavior of
+          interest, measures it under controlled conditions, and estimates it with known precision.
+        </Statement>
+        <div className="mt-7 grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Ruled tone="counter" weight="thin">
+            <P>
+              Standard AI benchmarks report accuracy on large sets of general questions, such as mathematics or
+              programming. They do not establish how a model behaves in a specific marketing task.
+            </P>
+          </Ruled>
+          <Ruled tone="signal" weight="thin">
+            <P>
+              A <Term>behavioral evaluation</Term> applies the methods of this course to the AI system: validated
+              measures (Week 4), adequate samples of responses (Week 5), hypothesis tests (Week 7), and controlled
+              experiments (Week 8).
+            </P>
+          </Ruled>
+        </div>
+        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Ruled>
+              <p className={BIG}>
+                The same model can produce different responses to the same prompt, so that a single response is
+                not a reliable basis for conclusions about its behavior (Wadi &amp; Fredette, 2025).
+              </p>
+            </Ruled>
+            <Ruled weight="thin">
+              <P>
+                The researcher who evaluates an AI system is accountable for the evidence in the same way as for
+                research on consumers.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <SamePromptResponses />
+          </Plate>
+        </div>
+      </Slide>
+
+      {/* ================================================================
           Part 5: Ethics in Marketing Research
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
@@ -910,6 +1005,7 @@ export default function Week1() {
             "The research process comprises six steps, from problem definition to reporting, to which researchers often return iteratively.",
             "AI can accelerate every step of the process, but its output must be verified, and the researcher remains accountable for every finding.",
             "Ethical research protects respondents, reports accurately to clients, and respects the public interest.",
+            "AI agents that acquire information and select products on consumers' behalf are a new subject of marketing research, and the evaluation of AI systems applies the methods of measurement, sampling, and experimentation developed in this course.",
           ].map((s, i) => (
             <li key={i} className={cn("min-w-0")}>
               <Numbered n={i + 1} tone="signal">

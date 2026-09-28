@@ -1647,3 +1647,67 @@ export function MissingCode() {
     </>
   );
 }
+
+/* --------------------------------------------------------------------------
+   Describing Model Responses
+   -------------------------------------------------------------------------- */
+
+/** Ordinal consensus of a distribution over points 1..n (1 = all on one point, 0 = split between the extremes). */
+function consensus(pmf: number[]) {
+  const n = pmf.length;
+  const mean = pmf.reduce((a, p, i) => a + p * (i + 1), 0);
+  return 1 + pmf.reduce((a, p, i) => (p > 0 ? a + p * Math.log2(1 - Math.abs(i + 1 - mean) / (n - 1)) : a), 0);
+}
+
+/** Shannon entropy in bits: blind to the order of the scale points. */
+function entropy(pmf: number[]) {
+  return -pmf.reduce((a, p) => (p > 0 ? a + p * Math.log2(p) : a), 0);
+}
+
+/**
+ * Two models' responses to the same seven-point item: one splits between two
+ * adjacent points, the other between the two extremes. Entropy is the same
+ * for both; the ordinal consensus separates them.
+ */
+export function ConsensusVersusEntropy() {
+  const rows = [
+    { key: "MODEL A", pmf: [0, 0, 0, 0.5, 0.5, 0, 0], base: 92 },
+    { key: "MODEL B", pmf: [0.5, 0, 0, 0, 0, 0, 0.5], base: 210 },
+  ];
+  const x0 = 34;
+  const step = 30;
+  const bw = 20;
+  const sx = (v: number) => x0 + (v - 1) * step;
+  const hMax = 110;
+  const cx = 282;
+  return (
+    <Frame
+      width={400}
+      height={234}
+      label={`Responses of two models to the same seven-point item. Model A splits its responses equally between 4 and 5; model B splits them equally between 1 and 7. Entropy is ${entropy(rows[0].pmf).toFixed(2)} bits for both, while consensus is ${consensus(rows[0].pmf).toFixed(2)} for model A and ${consensus(rows[1].pmf).toFixed(2)} for model B`}
+    >
+      {rows.map((r) => (
+        <g key={r.key}>
+          <Key x={16} y={r.base - 70} fill={INK3} size={9.5}>{r.key}</Key>
+          {r.pmf.map((p, i) => {
+            const h = r2(p * hMax);
+            const v = i + 1;
+            return (
+              <g key={v}>
+                {p > 0 ? (
+                  <rect x={r2(sx(v) - bw / 2)} y={r2(r.base - h)} width={bw} height={h} fill={PAPER3} stroke={INK} strokeWidth={1.25} />
+                ) : null}
+                <Key x={sx(v)} y={r.base + 15} anchor="middle" fill={INK3} size={9.5}>{`${v}`}</Key>
+              </g>
+            );
+          })}
+          <line x1={x0 - 16} y1={r.base} x2={sx(7) + 16} y2={r.base} stroke={INK} strokeWidth={1.25} />
+          <Key x={cx} y={r.base - 44} fill={SIGNAL} size={9}>CONSENSUS</Key>
+          <Display x={cx} y={r.base - 18} fill={SIGNAL} size={24}>{consensus(r.pmf).toFixed(2)}</Display>
+          <Key x={cx} y={r.base + 4} fill={INK3} size={9}>{`ENTROPY ${entropy(r.pmf).toFixed(2)} BITS`}</Key>
+        </g>
+      ))}
+      <line x1={16} y1={120} x2={384} y2={120} stroke={RULE2} strokeWidth={1} />
+    </Frame>
+  );
+}

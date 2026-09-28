@@ -344,6 +344,32 @@
     ]
   },
   {
+    "type": "quiz",
+    "slide_id": "evaluating-ai-systems-as-a-research-task",
+    "question_text": "A retailer plans to deploy an AI shopping assistant on its website. The vendor reports that the underlying model scores 91 percent on a widely used benchmark of general knowledge and reasoning. A manager also asked the assistant once which of two coffees offered better value, and the answer was correct. Which conclusion does this evidence support?",
+    "hint": "Consider what each piece of evidence measures, and how many responses it rests on.",
+    "correct_answer_citation": "Week 01 · Evaluating AI Systems as a Research Task",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "The assistant is suitable for deployment, because both the benchmark and the manager's test show accurate performance.",
+        "option_explanation": "The benchmark measures general capabilities, not behavior in the retailer's task, and the manager's test rests on a single response."
+      },
+      {
+        "option_text": "Neither result establishes how the assistant behaves in this task; a behavioral evaluation should measure its choices in the retailer's task, across many responses, under controlled conditions.",
+        "option_explanation": "Correct. A benchmark does not establish behavior in a specific marketing task, and a single response is not a reliable basis for conclusions, because the same model can respond differently to the same prompt."
+      },
+      {
+        "option_text": "The benchmark result is sufficient, and the manager's test only needs to be repeated with a different pair of coffees.",
+        "option_explanation": "A general benchmark does not establish how the model behaves in the retailer's task, so it cannot be sufficient on its own."
+      },
+      {
+        "option_text": "The manager's test is sufficient, because unlike the benchmark it measured the specific marketing task.",
+        "option_explanation": "The task is the right one, but one response is a single draw; the same prompt can yield a different answer the next time."
+      }
+    ]
+  },
+  {
     "type": "sort",
     "slide_id": "obligations-to-respondents",
     "prompt": "Sort each research practice: does it meet the obligations to respondents, or violate them?",

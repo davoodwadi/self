@@ -143,6 +143,19 @@ week: week5
 - They are not used as a substitute for real respondents when the findings inform consequential decisions.
 - Where synthetic respondents are used, their results are compared with those of a real sample on the same questions, and their use is disclosed in the report.
 
+## Sampling in AI Evaluation [exercise]
+- A language model generates its responses with controlled randomness, so that the same prompt can yield different responses.
+- Each response is therefore a draw from the model's response distribution, in the way that each respondent is a draw from a population.
+- The common practice of evaluating a model on a single response to each prompt ignores this variation.
+- In one evaluation, the willingness to pay that language models stated for the same product under the same prompt varied with a coefficient of variation of up to 0.44 (Wadi & Fredette, 2025).
+- The mean of many responses to the same prompt is an unbiased estimate of the model's typical behavior, and its standard error decreases as the number of responses increases (Wadi & Fredette, 2025).
+
+## Determining the Number of Responses [no-exercise]
+- The number of responses per prompt is determined in the same way as a sample size: by the required precision, or by the power to detect an effect of a given size, a concept introduced in Week 7.
+- For example, a power analysis can determine the number of responses required to detect a small difference among several models or prompts (Wadi & Fredette, 2025).
+- Prompts are also sampled. Because results can change with minor changes in wording, conclusions are more general when they hold across several wordings of the same instruction.
+- Models are sampled as well. A result obtained with one model does not generalize to other models, so evaluations include several models from several providers.
+
 ## Discussion: A Synthetic Panel
 - Discussion: A vendor offers a synthetic panel of 10,000 respondents, delivered within one hour at a fraction of the cost of a human sample, and states that its results are "95 percent accurate." Which questions should the research team ask the vendor, and for which decisions, if any, would such a panel be appropriate?
 
@@ -153,3 +166,4 @@ week: week5
 - The sample size depends on the desired precision and confidence, and the number of contacts depends on the incidence and completion rates.
 - Online panels require data quality checks for speeders, straight-liners, fraudulent respondents, and bots, with criteria specified in advance.
 - Synthetic respondents are not a sample of the target population, and they supplement rather than replace real respondents.
+- A single model response is not a measurement: AI evaluations sample many responses per prompt, determine their number by precision or power, and vary prompts and models.

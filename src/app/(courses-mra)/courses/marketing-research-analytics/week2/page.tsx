@@ -16,7 +16,7 @@ import {
   Prompt,
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
-import { PilotSamples, AssociationNotCause, SwitchingPanel, ControlledEffect, DesignSequence, InquiriesToPurchases, DefinitionShift, InternalCoverage, DataRelationships } from "./visuals";
+import { PilotSamples, AssociationNotCause, SwitchingPanel, ControlledEffect, DesignSequence, InquiriesToPurchases, DefinitionShift, InternalCoverage, DataRelationships, AuditLog, ListingExperiment } from "./visuals";
 
 // ============================================================================
 // WEEK 02 — RESEARCH DESIGN AND SECONDARY DATA
@@ -874,6 +874,104 @@ export default function Week2() {
       </Slide>
 
       {/* ================================================================
+          Part 5: Research Designs for Studying AI Agents
+          ================================================================ */}
+      <Slide id="part-5" border className="!py-8">
+        <PartHead n={5} title="Research Designs for Studying AI Agents" />
+        <Statement className="mt-8 !max-w-none !text-[clamp(1.45rem,2.4vw,2rem)]">
+          The research designs introduced in Part 1 also apply when the subject of research is an AI agent rather
+          than a consumer.
+        </Statement>
+        <div className="mt-9 w-full">
+          <Ruled tone="signal">
+            <p className={BIG}>
+              Two designs predominate: <Term tone="ink">descriptive audits</Term> of agent outputs and{" "}
+              <Term tone="ink">causal experiments</Term> on agent choice.
+            </p>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Descriptive Audits of AI Agents
+          ================================================================ */}
+      <Slide id="descriptive-audits-of-ai-agents" border className="!py-8">
+        <SlideHeading>Descriptive Audits of AI Agents</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Ruled>
+              <p className={BIG}>
+                An <Term>audit</Term> systematically records the outputs of an AI agent across a large set of
+                queries, such as the brands an assistant recommends in response to 500 product questions.
+              </p>
+            </Ruled>
+            <Ruled weight="thin">
+              <P>Audits describe what agents do: which brands appear, how often, and in which position.</P>
+            </Ruled>
+          </div>
+          <Plate>
+            <AuditLog />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Ruled tone="signal" weight="thin">
+            <P>
+              Audits of AI shopping agents have documented position effects, in which an alternative&apos;s place
+              in a list influences whether the agent selects it (Wadi &amp; Ma, 2026a).
+            </P>
+          </Ruled>
+          <Ruled tone="counter" weight="thin">
+            <P>
+              An audit observes only the final output. Because the queries differ in many respects at once, an
+              audit cannot attribute a pattern in the outputs to a particular cause.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Causal Experiments on AI Agents
+          ================================================================ */}
+      <Slide
+        id="causal-experiments-on-ai-agents"
+        border
+        className="!py-8"
+        exercise={exercise["causal-experiments-on-ai-agents"]}
+      >
+        <SlideHeading>Causal Experiments on AI Agents</SlideHeading>
+        <Statement className="!max-w-none !text-[clamp(1.35rem,2.1vw,1.8rem)]">
+          A causal experiment manipulates one factor while all other elements of the prompt, the products, and
+          the environment are held constant.
+        </Statement>
+        <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Ruled>
+              <p className={BIG}>
+                For example, the same hotel listing is presented with and without a sponsorship label, and the
+                agent&apos;s choices are compared across the two conditions.
+              </p>
+            </Ruled>
+            <Ruled weight="thin">
+              <P>The order of alternatives and attributes is randomized across sessions, to control for position effects.</P>
+            </Ruled>
+            <Ruled weight="thin">
+              <P>
+                Each condition can be repeated many times at low cost, and each session can be run independently
+                of the others, so that no carryover occurs between conditions.
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <ListingExperiment />
+          </Plate>
+        </div>
+        <p className="type-quote mt-7 w-full border-t-2 border-[var(--ink)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
+          A descriptive audit identifies a pattern in agent behavior; a causal experiment tests whether a specific
+          factor produces it.
+        </p>
+      </Slide>
+
+      {/* ================================================================
           Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
@@ -887,8 +985,9 @@ export default function Week2() {
             "Secondary data are internal or external, and external data are published or syndicated.",
             "Customer data are classified as first-, second-, or third-party, and the decline of third-party data has increased the value of first-party data.",
             "AI tools accelerate desk research, but every reference and figure they provide must be verified against the original source.",
+            "Descriptive audits record what AI agents recommend and select, while causal experiments manipulate one factor at a time to establish why they do so.",
           ].map((s, i) => (
-            <li key={i} className={i === 6 ? "min-w-0 lg:col-span-2" : "min-w-0"}>
+            <li key={i} className="min-w-0">
               <Numbered n={i + 1} tone="signal">
                 <Ruled weight="thin">
                   <P className="!leading-snug">{s}</P>

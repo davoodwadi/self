@@ -24,6 +24,7 @@ import {
 import {
   Frame,
   Key,
+  Note,
   Display,
   INK,
   INK3,
@@ -41,7 +42,7 @@ import {
   RULE,
   Slider,
 } from "../_visuals/kit";
-import { Person1, Cup1, AiMark1 } from "../_visuals/objects";
+import { Person1, Cup1, AiMark1, Tick1 } from "../_visuals/objects";
 
 /**
  * The Purpose of Marketing Research: the same question, level of demand,
@@ -776,6 +777,109 @@ export function PreciseWrongTarget() {
       {target(t2.x, t2.y, INK, PAPER3)}
       <Key x={t1.x} y={128} anchor="middle" fill={COUNTER} size={10.5}>THE QUESTION AS DEFINED</Key>
       <Key x={t2.x} y={128} anchor="middle" fill={INK} size={10.5}>THE ACTUAL PROBLEM</Key>
+    </Frame>
+  );
+}
+
+/**
+ * AI Agents as a Subject of Marketing Research: in agent-mediated purchasing
+ * the consumer states the goal, and the agent acquires information from the
+ * product page (prices, a sponsorship label) and selects an alternative. The
+ * consumer never sees the page.
+ */
+export function AgentMediatedPurchase() {
+  const page = { x: 246, y: 30, w: 144, h: 138 };
+  const rows = [
+    { y: 44, price: "$4.99", sponsored: true, chosen: false },
+    { y: 110, price: "$5.49", sponsored: false, chosen: true },
+  ];
+  return (
+    <Frame
+      width={400}
+      height={184}
+      label="A consumer passes a goal to an AI agent. The agent acquires information from a product page the consumer does not see: two listings with their prices, one labelled sponsored. The agent selects the other listing"
+    >
+      <Person1 x={34} y={150} k={1.35} />
+      <line x1={58} y1={104} x2={108} y2={104} stroke={INK} strokeWidth={1.5} />
+      <path d={head.right(110, 104, 7)} fill="none" stroke={INK} strokeWidth={1.5} />
+      <Key x={84} y={94} anchor="middle" fill={INK3} size={9.5}>GOAL</Key>
+
+      <AiMark1 cx={134} cy={104} s={34} fill={SIGNAL} />
+
+      <line x1={158} y1={104} x2={238} y2={104} stroke={SIGNAL} strokeWidth={1.5} />
+      <path d={head.right(240, 104, 7)} fill="none" stroke={SIGNAL} strokeWidth={1.5} />
+      <Key x={199} y={94} anchor="middle" fill={SIGNAL} size={9.5}>ACQUIRES</Key>
+
+      <rect x={page.x} y={page.y} width={page.w} height={page.h} fill={PAPER} stroke={RULE2} strokeWidth={1.25} />
+      {rows.map((r) => (
+        <g key={r.price}>
+          <rect x={page.x + 10} y={r.y} width={38} height={38} fill={PAPER3} />
+          <line x1={page.x + 58} y1={r.y + 6} x2={page.x + 108} y2={r.y + 6} stroke={RULE2} strokeWidth={4} strokeLinecap="round" />
+          <Note x={page.x + 58} y={r.y + 27} size={14} fill={INK} weight={600}>{r.price}</Note>
+          {r.sponsored ? (
+            <g>
+              <rect x={page.x + 58} y={r.y + 34} width={72} height={15} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1} />
+              <Key x={page.x + 94} y={r.y + 45} anchor="middle" fill={COUNTER} size={8.5}>SPONSORED</Key>
+            </g>
+          ) : null}
+          {r.chosen ? (
+            <g>
+              <rect x={page.x + 4} y={r.y - 6} width={page.w - 8} height={52} fill="none" stroke={SIGNAL} strokeWidth={1.75} />
+              <circle cx={page.x + 122} cy={r.y + 20} r={10} fill={SIGNAL} />
+              <Tick1 cx={page.x + 122} cy={r.y + 20} s={4.5} />
+            </g>
+          ) : null}
+        </g>
+      ))}
+    </Frame>
+  );
+}
+
+/**
+ * Evaluating AI Systems as a Research Task: twenty responses from the same
+ * model to the same prompt, stacked on a seven-point scale. Any one of them,
+ * taken alone, could be read as the model's answer.
+ */
+export function SamePromptResponses() {
+  const counts = [0, 1, 3, 6, 5, 4, 1];
+  const x0 = 44;
+  const x1 = 364;
+  const base = 126;
+  const sx = (v: number) => r2(x0 + ((v - 1) / 6) * (x1 - x0));
+  const dot = 13;
+  const one = { v: 6, i: 3 };
+  return (
+    <Frame
+      width={400}
+      height={160}
+      label="Twenty responses from one model to one prompt, stacked on a one-to-seven scale: they spread from 2 to 7, most at 4 and 5. A single response, at 6, is highlighted"
+    >
+      <Key x={16} y={22} fill={INK3} size={10}>20 RESPONSES · SAME MODEL · SAME PROMPT</Key>
+      {counts.map((c, k) =>
+        Array.from({ length: c }, (_, i) => {
+          const hit = k + 1 === one.v && i === one.i;
+          return (
+            <circle
+              key={`${k}-${i}`}
+              cx={sx(k + 1)}
+              cy={r2(base - 10 - i * dot)}
+              r={5}
+              fill={hit ? SIGNAL : PAPER3}
+              stroke={hit ? SIGNAL : INK}
+              strokeWidth={1.25}
+            />
+          );
+        }),
+      )}
+      <line x1={r2(sx(one.v) + 9)} y1={r2(base - 10 - one.i * dot)} x2={r2(sx(one.v) + 22)} y2={r2(base - 10 - one.i * dot)} stroke={SIGNAL} strokeWidth={1.25} />
+      <Key x={r2(sx(one.v) + 26)} y={r2(base - 6 - one.i * dot)} fill={SIGNAL} size={9.5}>ONE</Key>
+      <line x1={x0 - 14} y1={base} x2={x1 + 14} y2={base} stroke={INK} strokeWidth={1.25} />
+      {[1, 2, 3, 4, 5, 6, 7].map((v) => (
+        <g key={v}>
+          <line x1={sx(v)} y1={base} x2={sx(v)} y2={base + 5} stroke={INK} strokeWidth={1} />
+          <Key x={sx(v)} y={base + 20} anchor="middle" fill={INK3} size={10.5}>{`${v}`}</Key>
+        </g>
+      ))}
     </Frame>
   );
 }

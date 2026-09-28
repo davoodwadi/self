@@ -146,6 +146,23 @@ week: week2
 ## Discussion: Desk Research With AI
 - Discussion: An analyst preparing a market entry report asks an AI tool for the size of the plant-based dairy market in three countries. The tool returns three precise figures, each with a citation. Which steps should the analyst take before the figures are included in the report, and what should the report disclose about their origin?
 
+## Part 5: Research Designs for Studying AI Agents [no-exercise]
+- The research designs introduced in Part 1 also apply when the subject of research is an AI agent rather than a consumer.
+- Two designs predominate: descriptive audits of agent outputs and causal experiments on agent choice.
+
+## Descriptive Audits of AI Agents [no-exercise]
+- An audit systematically records the outputs of an AI agent across a large set of queries, such as the brands an assistant recommends in response to 500 product questions.
+- Audits describe what agents do: which brands appear, how often, and in which position.
+- Audits of AI shopping agents have documented position effects, in which an alternative's place in a list influences whether the agent selects it (Wadi & Ma, 2026a).
+- An audit observes only the final output. Because the queries differ in many respects at once, an audit cannot attribute a pattern in the outputs to a particular cause.
+
+## Causal Experiments on AI Agents [exercise]
+- A causal experiment manipulates one factor while all other elements of the prompt, the products, and the environment are held constant.
+- For example, the same hotel listing is presented with and without a sponsorship label, and the agent's choices are compared across the two conditions.
+- The order of alternatives and attributes is randomized across sessions, to control for position effects.
+- Each condition can be repeated many times at low cost, and each session can be run independently of the others, so that no carryover occurs between conditions.
+- A descriptive audit identifies a pattern in agent behavior; a causal experiment tests whether a specific factor produces it.
+
 ## Key Takeaways
 - The research design specifies how the information required by the marketing research problem is obtained and analyzed.
 - Exploratory research clarifies the problem, descriptive research describes a market or a group, and causal research tests the effect of a marketing action.
@@ -154,3 +171,4 @@ week: week2
 - Secondary data are internal or external, and external data are published or syndicated.
 - Customer data are classified as first-, second-, or third-party, and the decline of third-party data has increased the value of first-party data.
 - AI tools accelerate desk research, but every reference and figure they provide must be verified against the original source.
+- Descriptive audits record what AI agents recommend and select, while causal experiments manipulate one factor at a time to establish why they do so.

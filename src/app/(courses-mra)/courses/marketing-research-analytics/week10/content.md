@@ -107,6 +107,14 @@ week: week10
 - Market simulators use the estimated part-worths to predict the shares of preference for competing products under alternative scenarios, such as a new product launch or a competitor's price change.
 - Because conjoint choices are hypothetical, they may overstate willingness to pay. Estimates are therefore compared with market data where possible.
 
+## Conjoint Designs for AI Agents [exercise]
+- A conjoint design can be administered to an AI agent in the same form as to a consumer: the agent chooses among profiles whose attributes vary according to an experimental design.
+- The part-worths estimated from the agent's choices show how much each attribute level contributes to the agent's selection.
+- For example, a sponsorship label can be included as an attribute, so that its negative part-worth measures the penalty the agent applies to paid listings.
+- The part-worths can be compared across conditions of the agent's instructions. In hotel-booking choice experiments, agents told they served the booking platform penalized sponsored listings less than agents told they served the traveler (Wadi & Ma, 2026c).
+- The wording of the label can be varied as an attribute level. The label "Sponsored" reduced choice of the paid listing more than the label "Promoted" (Wadi & Ma, 2026c).
+- Because AI agents show position effects, the order of the profiles in each choice task is randomized (Wadi & Ma, 2026a).
+
 ## Part 4: AI-Driven Segmentation [no-exercise]
 - Traditional segmentation relies on structured variables, such as survey ratings and purchase records.
 - Much of the information about customers' needs is contained in unstructured text, such as open-ended survey responses, reviews, and service conversations.
@@ -142,3 +150,4 @@ week: week10
 - Relative importance and willingness to pay depend on the attributes and levels included in the study, and hypothetical choices may overstate willingness to pay.
 - Embeddings allow customers to be segmented on the needs they express in unstructured text, with each cluster interpreted by reading its texts.
 - AI-generated personas communicate segment data, and every characteristic they contain must be supported by that data.
+- Conjoint designs administered to AI agents estimate the part-worths agents assign to attributes such as price and sponsorship, and these part-worths can be compared across the instructions the agents receive.

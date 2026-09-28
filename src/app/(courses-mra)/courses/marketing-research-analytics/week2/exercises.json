@@ -268,5 +268,58 @@
         "explanation": "Finally, the source is judged by the same criteria as any secondary data."
       }
     ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "causal-experiments-on-ai-agents",
+    "prompt": "Sort each study of AI agents by its research design.",
+    "bins": [
+      {
+        "id": "audit",
+        "label": "Descriptive audit"
+      },
+      {
+        "id": "experiment",
+        "label": "Causal experiment"
+      }
+    ],
+    "cards": [
+      {
+        "id": "shoes",
+        "text": "Researchers record which running-shoe brands an AI assistant recommends in response to 400 product questions written by real shoppers.",
+        "bin": "audit",
+        "explanation": "The outputs are recorded across many different queries, and nothing is manipulated: an audit."
+      },
+      {
+        "id": "price",
+        "text": "The same product page is shown to an agent with the price set at $49.99 in one condition and $50.00 in the other, with everything else identical.",
+        "bin": "experiment",
+        "explanation": "One factor, the price ending, is manipulated while everything else is held constant."
+      },
+      {
+        "id": "weekly",
+        "text": "A brand records, every week, the position at which its product appears in the answers of three AI assistants.",
+        "bin": "audit",
+        "explanation": "The brand describes what the assistants do, over time, without manipulating any factor."
+      },
+      {
+        "id": "principal",
+        "text": "An agent's instructions name the consumer as the party it serves in half of the sessions and the retailer in the other half, with the sessions otherwise identical.",
+        "bin": "experiment",
+        "explanation": "The party the agent serves is manipulated, and all other elements are held constant."
+      },
+      {
+        "id": "grocery",
+        "text": "Analysts compare how often store brands appear in AI recommendations across 1,000 grocery questions from different product categories.",
+        "bin": "audit",
+        "explanation": "The questions differ in many respects at once, so the comparison describes a pattern but cannot attribute it to a cause."
+      },
+      {
+        "id": "badge",
+        "text": "Two identical listings differ only in whether a best-seller badge is shown, and the order of the listings is randomized across sessions.",
+        "bin": "experiment",
+        "explanation": "Only the badge differs between conditions, and randomizing the order controls for position effects."
+      }
+    ]
   }
 ]

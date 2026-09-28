@@ -152,6 +152,22 @@ week: week11
 - The analyst then revises the model, the data, or the decision rule, and repeats the comparison.
 - Finally, the analyst documents the audit and monitors the model's outcomes across groups after deployment.
 
+## Behavioral Evaluation Beyond Benchmarks [no-exercise]
+- Language models and AI agents inform decisions about which products consumers see and buy, and they are audited for bias in the same way as predictive models.
+- Benchmarks measure general capabilities and do not reveal systematic biases in specific marketing tasks.
+- Position bias is the tendency to select an alternative because of its place in a list (Wadi & Ma, 2026a).
+- Sponsorship bias arises when the party an agent is told it serves changes the penalty it applies to paid listings (Wadi & Ma, 2026c).
+- Country-of-origin bias arises when a model's evaluations shift for particular pairings of the model's country of development and the country being evaluated. A fully crossed factorial design separates this interaction from each model's baseline tendency (Wadi, Ghodrat, & Philp, 2026).
+- Bias varies across models, so that an audit applies to the specific model and version that is deployed.
+
+## Auditing an AI Agent [exercise]
+- The analyst first defines the task, the population of queries, and the normative standard against which the agent's behavior is judged.
+- The analyst then designs controlled variations of the prompts and the alternatives, with positions and orders randomized.
+- The analyst then collects a sufficient number of responses for each condition from the model version to be deployed.
+- The analyst then compares the agent's choices with the normative standard and across conditions, with effect sizes and corrections for multiple comparisons.
+- The analyst then revises the system prompt, the information provided to the agent, or the choice of model, and repeats the comparison.
+- Finally, the analyst documents the audit and repeats it whenever the provider updates the model.
+
 ## Discussion: A Discount Model
 - Discussion: A retailer's model directs its largest discounts to the customers predicted to be most price-sensitive. An audit reveals that customers in lower-income postal codes receive smaller discounts on average than customers in higher-income postal codes. Which sources of bias could explain this result, which fairness criterion is relevant, and what should the retailer do?
 
@@ -162,3 +178,4 @@ week: week11
 - Predicting which customers will churn is not the same as identifying those whom an intervention would retain; uplift modeling addresses the second question.
 - Recommendation systems personalize offers through content-based and collaborative methods, and are evaluated through A/B tests of business outcomes.
 - Predictive models can be biased against groups of customers, and firms assess them against explicit fairness criteria, explain their decisions, and monitor them after deployment.
+- Language models and AI agents are audited for position, sponsorship, and country-of-origin biases with controlled designs, and each audit applies to the specific model version deployed.

@@ -1,0 +1,436 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "conditions-for-causality",
+    "prompt": "Each claim that X causes Y has a weakness. Name the condition for causality that it fails to satisfy.",
+    "options": [
+      {
+        "id": "variation",
+        "label": "Concomitant variation"
+      },
+      {
+        "id": "order",
+        "label": "Time order"
+      },
+      {
+        "id": "elimination",
+        "label": "Elimination of other causes"
+      }
+    ],
+    "cases": [
+      {
+        "id": "jingle",
+        "text": "A brand manager credits a new jingle for sales, yet weeks with and without the jingle on air show the same sales.",
+        "answer": "variation",
+        "explanation": "The presumed cause and the presumed effect do not vary together, so the first condition fails."
+      },
+      {
+        "id": "shelf",
+        "text": "Stores that gave a snack more shelf space sell more of it, but managers added the space after noticing the snack was selling well.",
+        "answer": "order",
+        "explanation": "The higher sales came before the extra shelf space, so the presumed cause does not precede the effect."
+      },
+      {
+        "id": "bakery",
+        "text": "A bakery's sales rose after it installed a new sign, but a large office building opened next door in the same month.",
+        "answer": "elimination",
+        "explanation": "The new office workers are another possible cause of the rise that has not been ruled out."
+      },
+      {
+        "id": "email",
+        "text": "Customers who received a discount email spent no more than customers who did not receive it.",
+        "answer": "variation",
+        "explanation": "Receiving the email and spending do not vary together, so there is no association to explain."
+      },
+      {
+        "id": "gyms",
+        "text": "Gyms that advertise on radio have more members, but they are also the gyms located in the largest cities.",
+        "answer": "elimination",
+        "explanation": "City size could explain both the advertising and the membership, and it has not been ruled out."
+      },
+      {
+        "id": "loyalty",
+        "text": "A café links its sales growth to a loyalty card, but the growth began two months before the card was introduced.",
+        "answer": "order",
+        "explanation": "The effect started before the presumed cause, so the time order condition fails."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "threats-to-internal-validity",
+    "prompt": "Each case describes something that could distort the result of an experiment. Name the threat to internal validity.",
+    "options": [
+      {
+        "id": "history",
+        "label": "History"
+      },
+      {
+        "id": "maturation",
+        "label": "Maturation"
+      },
+      {
+        "id": "testing",
+        "label": "Testing effects"
+      },
+      {
+        "id": "instrumentation",
+        "label": "Instrumentation"
+      },
+      {
+        "id": "selection",
+        "label": "Selection bias"
+      },
+      {
+        "id": "mortality",
+        "label": "Mortality"
+      }
+    ],
+    "cases": [
+      {
+        "id": "heat",
+        "text": "During a two-week test of a new cold-drink display, a heatwave raises drink sales across the whole city.",
+        "answer": "history",
+        "explanation": "An external event during the experiment affects the dependent variable."
+      },
+      {
+        "id": "skill",
+        "text": "Over a six-month test of a new app feature, users become more skilled with the app and use it more, with or without the feature.",
+        "answer": "maturation",
+        "explanation": "The test units themselves change over time."
+      },
+      {
+        "id": "pretest",
+        "text": "Respondents who first answer a questionnaire about a brand pay closer attention to that brand when they later watch the test advertisement.",
+        "answer": "testing",
+        "explanation": "The initial measurement influences the later measurement."
+      },
+      {
+        "id": "conversion",
+        "text": "Halfway through a checkout test, the analytics team starts counting a purchase only once payment has cleared.",
+        "answer": "instrumentation",
+        "explanation": "The measurement procedure, the definition of a conversion, changes during the test."
+      },
+      {
+        "id": "volunteer",
+        "text": "Only managers who are enthusiastic about a new store layout agree to try it, and their stores were already outperforming the rest.",
+        "answer": "selection",
+        "explanation": "The groups differed before the treatment because the stores volunteered."
+      },
+      {
+        "id": "dropout",
+        "text": "In a month-long taste test, participants who dislike the new recipe stop attending, while the control group stays complete.",
+        "answer": "mortality",
+        "explanation": "Test units leave at different rates across the groups."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "laboratory-and-field-experiments",
+    "prompt": "Sort each study by the kind of experiment it is.",
+    "bins": [
+      {
+        "id": "lab",
+        "label": "Laboratory experiment"
+      },
+      {
+        "id": "field",
+        "label": "Field experiment"
+      }
+    ],
+    "cards": [
+      {
+        "id": "panel",
+        "text": "Panel respondents view two versions of a shampoo advertisement in an online study and rate each one.",
+        "bin": "lab",
+        "explanation": "An online study with a panel of respondents is an artificial environment constructed by the researcher."
+      },
+      {
+        "id": "yogurt",
+        "text": "A supermarket chain changes the shelf price of a yogurt in 40 of its stores and compares weekly sales with its other stores.",
+        "bin": "field",
+        "explanation": "Behavior is observed in actual stores under real conditions."
+      },
+      {
+        "id": "mock",
+        "text": "Participants shop in a simulated store built inside a research facility.",
+        "bin": "lab",
+        "explanation": "A simulated store is an artificial setting that gives strong control over extraneous variables."
+      },
+      {
+        "id": "airline",
+        "text": "An airline shows two fare displays to real customers on its live booking website.",
+        "bin": "field",
+        "explanation": "A live website is a natural setting, and customers may be unaware of the experiment."
+      },
+      {
+        "id": "cola",
+        "text": "Participants at a research center taste three unbranded colas under identical lighting and rate them.",
+        "bin": "lab",
+        "explanation": "The researcher constructs and controls the setting."
+      },
+      {
+        "id": "mail",
+        "text": "A bank mails two versions of a credit card offer to 20,000 customers and tracks applications.",
+        "bin": "field",
+        "explanation": "The offers reach customers in their ordinary circumstances, which supports external validity."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "designing-an-ab-test",
+    "prompt": "A streaming service wants to test a new sign-up page. Put the steps of the A/B test in order.",
+    "steps": [
+      {
+        "id": "hypothesis",
+        "text": "State that the new page increases sign-ups, with sign-up rate as the primary metric.",
+        "explanation": "The hypothesis and the primary metric are specified first, before any data are collected."
+      },
+      {
+        "id": "size",
+        "text": "Calculate the visitors and days needed to detect the smallest lift worth acting on.",
+        "explanation": "Sample size and duration follow from the smallest effect of practical importance and the desired power."
+      },
+      {
+        "id": "assign",
+        "text": "Set up random assignment of visitors to the current page or the new page.",
+        "explanation": "Random assignment is configured before the test starts."
+      },
+      {
+        "id": "run",
+        "text": "Run the test for three full weeks without checking early for significance.",
+        "explanation": "The test runs for its planned duration, across complete weekly cycles, without being stopped early."
+      },
+      {
+        "id": "analyze",
+        "text": "Test the difference in sign-up rate and report the lift with its confidence interval.",
+        "explanation": "The difference in the primary metric is tested, and the effect size and its interval are reported."
+      },
+      {
+        "id": "document",
+        "text": "Record the decision and its reasons, even if the difference was not significant.",
+        "explanation": "The decision and rationale are documented, including tests with no significant difference."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "quasi-experimental-designs",
+    "question_text": "A coffee chain renovates its stores in City X but not in City Y. Average daily customers per store rise from 400 to 460 in City X and from 420 to 440 in City Y over the same period. What is the difference-in-differences estimate of the renovation's effect?",
+    "hint": "Compute each city's change first, then compare the two changes.",
+    "correct_answer_citation": "Week 08 · Quasi-Experimental Designs",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "60 customers per store per day",
+        "option_explanation": "This is City X's change alone (460 − 400), a before–after comparison that ignores what happened in City Y over the same period."
+      },
+      {
+        "option_text": "20 customers per store per day",
+        "option_explanation": "This compares the two cities after the renovation only (460 − 440), ignoring that they started from different levels."
+      },
+      {
+        "option_text": "40 customers per store per day",
+        "option_explanation": "Correct. City X changed by 60 and City Y by 20; the difference between the two changes is 60 − 20 = 40."
+      },
+      {
+        "option_text": "80 customers per store per day",
+        "option_explanation": "This adds the two changes instead of subtracting the control city's change from the treated city's change."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "piloting-experiments-with-simulated-subjects",
+    "prompt": "A team plans an experiment on an eco-label for a detergent package. Sort each question by what can answer it.",
+    "bins": [
+      {
+        "id": "pilot",
+        "label": "A pilot with simulated subjects can check this"
+      },
+      {
+        "id": "real",
+        "label": "Only real participants can establish this"
+      }
+    ],
+    "cards": [
+      {
+        "id": "instructions",
+        "text": "Whether the instructions to participants are clear.",
+        "bin": "pilot",
+        "explanation": "Pilots with simulated subjects can reveal unclear instructions."
+      },
+      {
+        "id": "stimulus",
+        "text": "Whether the labelled and unlabelled packages look different enough to convey the treatment.",
+        "bin": "pilot",
+        "explanation": "Pilots can reveal stimuli that fail to convey the intended difference."
+      },
+      {
+        "id": "check",
+        "text": "Whether the question asking which package participants saw works as a manipulation check.",
+        "bin": "pilot",
+        "explanation": "Pilots can reveal manipulation checks that do not work."
+      },
+      {
+        "id": "effect",
+        "text": "How much the eco-label raises consumers' purchase intention.",
+        "bin": "real",
+        "explanation": "The responses of simulated subjects are not evidence of how consumers respond, and the materials may lead the model to exaggerate the effect."
+      },
+      {
+        "id": "segment",
+        "text": "Whether the effect of the label is larger among older consumers.",
+        "bin": "real",
+        "explanation": "How actual consumer groups respond can be established only with real participants."
+      },
+      {
+        "id": "sales",
+        "text": "Whether the label increases the detergent's sales.",
+        "bin": "real",
+        "explanation": "A pilot precedes an experiment with real participants and does not replace it."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "ab-tests-and-bandits-compared",
+    "prompt": "Sort each situation by the approach that suits its objective.",
+    "bins": [
+      {
+        "id": "bandit",
+        "label": "Bandit"
+      },
+      {
+        "id": "fixed",
+        "label": "Fixed A/B test"
+      }
+    ],
+    "cards": [
+      {
+        "id": "headline",
+        "text": "A news site chooses among four headlines for a story that will be read mostly in the next six hours.",
+        "bin": "bandit",
+        "explanation": "The objective is to maximize performance during a short period."
+      },
+      {
+        "id": "shipping",
+        "text": "A retailer needs to know how much a free-shipping threshold raises average order value, for next year's plan.",
+        "bin": "fixed",
+        "explanation": "An accurate estimate of the size of an effect calls for a fixed A/B test."
+      },
+      {
+        "id": "flash",
+        "text": "A three-day flash sale must show the best-performing banner as quickly as possible.",
+        "bin": "bandit",
+        "explanation": "A short promotion benefits from exposing fewer users to inferior versions."
+      },
+      {
+        "id": "checkout",
+        "text": "A product team wants to understand why a redesigned checkout performs better before rolling it out worldwide.",
+        "bin": "fixed",
+        "explanation": "Understanding why one version performs better calls for a fixed A/B test."
+      },
+      {
+        "id": "subject",
+        "text": "An email campaign for a weekend event chooses among five subject lines while the campaign runs.",
+        "bin": "bandit",
+        "explanation": "Performance matters only during the short campaign, so reducing exposure to weaker versions is the priority."
+      },
+      {
+        "id": "board",
+        "text": "A subscription service must report the effect of a price change, with a confidence interval, to its board.",
+        "bin": "fixed",
+        "explanation": "A bandit's unequal, changing allocation does not support the same statistical inferences as a fixed test."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "controlled-experiments-on-ai-agents",
+    "prompt": "A researcher studies AI agents that book hotels. Match each manipulated factor with its example.",
+    "term_label": "Factor",
+    "match_label": "Example",
+    "pairs": [
+      {
+        "id": "system",
+        "term": "System prompt",
+        "match": "The agent is told that it works for the booking platform rather than for the traveler.",
+        "explanation": "The system prompt sets the party the agent is told it serves."
+      },
+      {
+        "id": "instruction",
+        "term": "Consumer's instruction",
+        "match": "The request reads \"find me a good hotel\" in one condition and \"find the hotel with the lowest total price for three nights\" in the other.",
+        "explanation": "The consumer's instruction varies in the specificity of the goal."
+      },
+      {
+        "id": "environment",
+        "term": "Information environment",
+        "match": "Checking each hotel's cancellation policy costs the agent a tool call priced at $5.",
+        "explanation": "The information environment sets the cost of acquiring an attribute."
+      },
+      {
+        "id": "attributes",
+        "term": "Attributes of the alternatives",
+        "match": "One of the hotels on the list carries a \"Sponsored\" label.",
+        "explanation": "A sponsorship label is an attribute of one of the alternatives."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "process-tracing-with-ai-agents",
+    "prompt": "Each record of tool calls ends in a poor choice. Name the source of the poor choice.",
+    "options": [
+      {
+        "id": "acquire",
+        "label": "Failure to acquire"
+      },
+      {
+        "id": "use",
+        "label": "Failure to use"
+      }
+    ],
+    "cases": [
+      {
+        "id": "detergent",
+        "text": "The agent opens only the prices of two detergents, never the number of loads, and picks the cheaper bottle, which costs more per load.",
+        "answer": "acquire",
+        "explanation": "The information needed for the right choice was never acquired; given what it saw, picking the cheaper bottle was consistent."
+      },
+      {
+        "id": "cereal",
+        "text": "The agent opens the price and size of both cereals, computes the price per gram incorrectly and picks the one that costs more per gram.",
+        "answer": "use",
+        "explanation": "The necessary information was acquired but used incorrectly."
+      },
+      {
+        "id": "stated",
+        "text": "The agent opens the unit price of both options, states that B is cheaper per unit, and then chooses A.",
+        "answer": "use",
+        "explanation": "The agent had the information and stated the right conclusion, but its choice did not follow from it."
+      },
+      {
+        "id": "cost",
+        "text": "Told that each inspection costs $10, the agent opens a single cell and chooses immediately.",
+        "answer": "acquire",
+        "explanation": "The agent stopped searching before it had the attributes needed to compare the options."
+      },
+      {
+        "id": "brand",
+        "text": "Asked for the best deal on coffee, the agent opens the brand and the rating of each coffee but none of the prices.",
+        "answer": "acquire",
+        "explanation": "The attributes that define a good deal were omitted before choosing."
+      },
+      {
+        "id": "laptop",
+        "text": "The agent opens every attribute of three laptops and then chooses the one that is worst on the goal it was given.",
+        "answer": "use",
+        "explanation": "All the information was acquired; the poor choice arose from how it was used."
+      }
+    ]
+  }
+]

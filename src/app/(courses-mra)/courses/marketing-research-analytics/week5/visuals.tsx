@@ -830,3 +830,75 @@ export function SyntheticSpread() {
     </>
   );
 }
+
+/* --------------------------------------------------------------------------
+   Sampling in AI Evaluation
+   -------------------------------------------------------------------------- */
+
+/** Simulated willingness to pay stated by one model for one product, prompt after prompt. */
+const WTP_MEAN = 9;
+const WTP_SD = 3.6;
+const WTP_MAX_K = 200;
+const WTP_DRAWS: { v: number; j: number }[] = (() => {
+  const rnd = seeded(20250914);
+  return Array.from({ length: WTP_MAX_K }, () => {
+    const u1 = Math.max(rnd(), 1e-9);
+    const u2 = rnd();
+    const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+    return { v: Math.min(19.5, Math.max(0.5, WTP_MEAN + WTP_SD * z)), j: rnd() };
+  });
+})();
+
+/**
+ * Interactive: the slider sets how many responses are drawn from the same
+ * model with the same prompt. Each response is a dot; below the axis, the
+ * mean of the responses and its 95 percent confidence interval, which
+ * narrows with the square root of the number of responses. It opens at 10.
+ */
+export function ResponsesPerPrompt() {
+  const [k, setK] = useState(10);
+  const draws = WTP_DRAWS.slice(0, k);
+  const mean = draws.reduce((a, d) => a + d.v, 0) / k;
+  const sd = k > 1 ? Math.sqrt(draws.reduce((a, d) => a + (d.v - mean) ** 2, 0) / (k - 1)) : 0;
+  const half = k > 1 ? (1.96 * sd) / Math.sqrt(k) : 0;
+  const x0 = 40;
+  const x1 = 372;
+  const sx = (v: number) => r2(x0 + (v / 20) * (x1 - x0));
+  const axis = 128;
+  const yMean = 170;
+  const money = (v: number) => `$${v.toFixed(2)}`;
+  return (
+    <>
+      <Frame
+        width={400}
+        height={212}
+        label={`Simulated willingness to pay stated by one model in ${k} ${k === 1 ? "response" : "responses"} to the same prompt${k > 1 ? `, spread from ${money(Math.min(...draws.map((d) => d.v)))} to ${money(Math.max(...draws.map((d) => d.v)))}` : ""}. The mean is ${money(mean)}${k > 1 ? `, with a 95 percent confidence interval of plus or minus ${money(half)}` : "; a single response gives no estimate of variation"}`}
+      >
+        <Key x={16} y={20} fill={INK3} size={9.5}>{`${k} ${k === 1 ? "RESPONSE" : "RESPONSES"} · SAME PROMPT`}</Key>
+        <Key x={384} y={20} anchor="end" fill={INK3} size={9}>SIMULATED</Key>
+        {draws.map((d, i) => (
+          <circle key={i} cx={sx(d.v)} cy={r2(44 + d.j * 66)} r={k > 60 ? 3 : 4} fill={PAPER3} stroke={INK} strokeWidth={1} />
+        ))}
+        <line x1={x0 - 10} y1={axis} x2={x1 + 10} y2={axis} stroke={INK} strokeWidth={1.25} />
+        {[0, 5, 10, 15, 20].map((v) => (
+          <g key={v}>
+            <line x1={sx(v)} y1={axis} x2={sx(v)} y2={axis + 5} stroke={INK} strokeWidth={1} />
+            <Key x={sx(v)} y={axis + 19} anchor="middle" fill={INK3} size={10}>{`$${v}`}</Key>
+          </g>
+        ))}
+        {k > 1 ? (
+          <g>
+            <rect x={sx(mean - half)} y={yMean - 7} width={r2(sx(mean + half) - sx(mean - half))} height={14} fill={SIGNAL_TINT} />
+            <line x1={sx(mean - half)} y1={yMean - 9} x2={sx(mean - half)} y2={yMean + 9} stroke={SIGNAL} strokeWidth={1.5} />
+            <line x1={sx(mean + half)} y1={yMean - 9} x2={sx(mean + half)} y2={yMean + 9} stroke={SIGNAL} strokeWidth={1.5} />
+          </g>
+        ) : null}
+        <circle cx={sx(mean)} cy={yMean} r={5} fill={SIGNAL} />
+        <Key x={16} y={yMean + 34} fill={SIGNAL} size={10}>
+          {k > 1 ? `MEAN ${money(mean)} · 95% INTERVAL ± ${money(half)}` : `ONE RESPONSE ${money(mean)} · NO ESTIMATE OF VARIATION`}
+        </Key>
+      </Frame>
+      <Slider label="Responses" value={k} min={1} max={WTP_MAX_K} onChange={setK} />
+    </>
+  );
+}

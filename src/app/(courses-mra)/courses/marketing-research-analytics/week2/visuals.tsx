@@ -6,7 +6,7 @@
 
 import React, { useState } from "react";
 import { RotateCw } from "lucide-react";
-import { Lightbulb, ChartBar, Flask, Envelope, Bicycle, Buildings, Globe, Database } from "@phosphor-icons/react";
+import { Lightbulb, ChartBar, Flask, Envelope, Bicycle, Buildings, Globe, Database, Bed } from "@phosphor-icons/react";
 import {
   Frame,
   Key,
@@ -19,6 +19,9 @@ import {
   COUNTER,
   PAPER,
   SIGNAL_TINT,
+  PAPER3,
+  COUNTER_TINT,
+  Note,
   head,
   headAlong,
   r2,
@@ -27,7 +30,7 @@ import {
   Segmented,
   Slider,
 } from "../_visuals/kit";
-import { Person1, Store1 } from "../_visuals/objects";
+import { Person1, Store1, AiMark1 } from "../_visuals/objects";
 
 /* --------------------------------------------------------------------------
    Exploratory Research
@@ -839,6 +842,120 @@ export function DataRelationships() {
       {keys.map((k, i) => (
         <Key key={k.t} x={cols[i] + 100} y={146} anchor="middle" fill={k.tone}>{k.t}</Key>
       ))}
+    </Frame>
+  );
+}
+
+/* --------------------------------------------------------------------------
+   Descriptive Audits of AI Agents
+   -------------------------------------------------------------------------- */
+
+/**
+ * An audit log: the brands an AI assistant listed, in order, for six product
+ * questions. One brand is traced across the log, and the bottom row counts
+ * where it appeared: what agents do, how often, and in which position.
+ */
+export function AuditLog() {
+  const rows = [
+    { q: 78, brands: ["B", "D", "A"] },
+    { q: 60, brands: ["B", "A", "C"] },
+    { q: 84, brands: ["A", "B", "E"] },
+    { q: 52, brands: ["B", "C", "D"] },
+    { q: 70, brands: ["C", "A", "D"] },
+    { q: 66, brands: ["B", "E", "A"] },
+  ];
+  const cols = [156, 246, 336];
+  const top = 50;
+  const lh = 27;
+  const tally = cols.map((_, c) => rows.filter((r) => r.brands[c] === "B").length);
+  const yTally = top + rows.length * lh + 20;
+  return (
+    <Frame
+      width={400}
+      height={yTally + 12}
+      label="An audit log of six product questions put to an AI assistant, with the three brands it listed for each, in order. Brand B appears first in four questions, second in one and third in none"
+    >
+      <Key x={16} y={24} fill={INK3} size={9.5}>QUESTION</Key>
+      {["1ST", "2ND", "3RD"].map((h, c) => (
+        <Key key={h} x={cols[c]} y={24} anchor="middle" fill={INK3} size={9.5}>{h}</Key>
+      ))}
+      <line x1={16} y1={32} x2={384} y2={32} stroke={RULE2} strokeWidth={1} />
+      {rows.map((r, i) => {
+        const y = top + i * lh;
+        return (
+          <g key={i}>
+            <line x1={18} y1={y} x2={18 + r.q} y2={y} stroke={RULE2} strokeWidth={4} strokeLinecap="round" />
+            {r.brands.map((b, c) => {
+              const hit = b === "B";
+              return (
+                <g key={c}>
+                  <rect x={cols[c] - 30} y={y - 10} width={60} height={20} fill={hit ? SIGNAL_TINT : PAPER} stroke={hit ? SIGNAL : INK3} strokeWidth={hit ? 1.5 : 1} />
+                  <Key x={cols[c]} y={y + 4} anchor="middle" fill={hit ? SIGNAL : INK3} size={10.5} weight={hit ? 700 : 500}>{b}</Key>
+                </g>
+              );
+            })}
+          </g>
+        );
+      })}
+      <line x1={16} y1={yTally - 18} x2={384} y2={yTally - 18} stroke={INK} strokeWidth={1.25} />
+      <Key x={16} y={yTally} fill={SIGNAL} size={9.5}>BRAND B</Key>
+      {tally.map((n, c) => (
+        <Key key={c} x={cols[c]} y={yTally} anchor="middle" fill={SIGNAL} size={11} weight={700}>{`${n} OF 6`}</Key>
+      ))}
+    </Frame>
+  );
+}
+
+/* --------------------------------------------------------------------------
+   Causal Experiments on AI Agents
+   -------------------------------------------------------------------------- */
+
+/**
+ * The same hotel listing in two conditions that differ only in a sponsorship
+ * label. Each condition is run in many independent agent sessions, and the
+ * agent's choices are compared across the two.
+ */
+export function ListingExperiment() {
+  const cards = [
+    { x: 20, sponsored: false },
+    { x: 216, sponsored: true },
+  ];
+  const w = 164;
+  const top = 14;
+  const h = 96;
+  const yRuns = 146;
+  const yBracket = 184;
+  return (
+    <Frame
+      width={400}
+      height={222}
+      label="The same hotel listing, with the same photo and price, shown in two conditions: without and with a sponsored label. Each condition is run in many independent agent sessions, and the agent's choices are compared across the two conditions"
+    >
+      {cards.map((c) => {
+        const cx = c.x + w / 2;
+        return (
+          <g key={c.x}>
+            <rect x={c.x} y={top} width={w} height={h} fill={PAPER} stroke={RULE2} strokeWidth={1.25} />
+            <rect x={c.x + 12} y={top + 12} width={48} height={48} fill={PAPER3} />
+            <Bed x={c.x + 36 - 14} y={top + 36 - 14} size={28} weight="regular" color={INK} />
+            <line x1={c.x + 72} y1={top + 20} x2={c.x + 144} y2={top + 20} stroke={RULE2} strokeWidth={4} strokeLinecap="round" />
+            <Note x={c.x + 72} y={top + 46} size={15} fill={INK} weight={600}>$189</Note>
+            {c.sponsored ? (
+              <g>
+                <rect x={c.x + 12} y={top + 70} width={78} height={16} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1} />
+                <Key x={c.x + 51} y={top + 81.5} anchor="middle" fill={COUNTER} size={8.5}>SPONSORED</Key>
+              </g>
+            ) : null}
+            {Array.from({ length: 6 }, (_, i) => (
+              <AiMark1 key={i} cx={r2(cx - 50 + i * 20)} cy={yRuns} s={13} fill={INK} />
+            ))}
+            <line x1={cx} y1={yRuns + 12} x2={cx} y2={yBracket} stroke={SIGNAL} strokeWidth={1.25} />
+          </g>
+        );
+      })}
+      <line x1={cards[0].x + w / 2} y1={yBracket} x2={cards[1].x + w / 2} y2={yBracket} stroke={SIGNAL} strokeWidth={1.25} />
+      <Key x={200} y={yBracket + 22} anchor="middle" fill={SIGNAL} size={10}>CHOICES COMPARED</Key>
+      <Key x={200} y={yRuns + 4} anchor="middle" fill={INK3} size={9}>SESSIONS</Key>
     </Frame>
   );
 }

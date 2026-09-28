@@ -51,6 +51,7 @@ week: week7
 - The appropriate test depends on the level of measurement of the variables, the number of groups compared, and whether the groups consist of different or the same respondents.
 - Tests of means are used for interval and ratio variables.
 - Tests of frequencies are used for nominal variables.
+- Nonparametric tests, such as the Mann-Whitney U test and the Wilcoxon signed-rank test, are used for ordinal variables.
 
 ## The Independent-Samples t-Test [no-exercise]
 - The independent-samples t-test compares the means of an interval or ratio variable between two groups of different respondents.
@@ -83,6 +84,7 @@ week: week7
 - To compare two means obtained from the same respondents, the paired-samples t-test is used.
 - To compare the means of three or more groups, analysis of variance is used.
 - To assess the association between two nominal variables, the chi-square test is used.
+- To compare two groups on an ordinal variable, a nonparametric test such as the Mann-Whitney U test is used.
 
 ## Discussion: Testing a Loyalty Program
 - Discussion: A grocery chain reports that members of its loyalty program spend on average 18 percent more per month than nonmembers, and the difference is statistically significant. Which hypotheses were tested, which test was appropriate, and does the result establish that the program increases spending?
@@ -107,7 +109,7 @@ week: week7
 - Effect sizes allow findings to be compared across studies with different sample sizes.
 
 ## Confidence Intervals [no-exercise]
-- A confidence interval reports a range of plausible values for a population parameter, such as a difference between two means.
+- A confidence interval, which extends the margin of error introduced in Week 5, reports a range of plausible values for a population parameter, such as a difference between two means.
 - A 95 percent confidence interval for a difference in mean spending of 8 to 22 dollars indicates both the likely size of the difference and the uncertainty of the estimate.
 - If a 95 percent confidence interval for a difference excludes zero, the difference is statistically significant at the 0.05 level.
 - Confidence intervals are therefore more informative than p-values alone, and are reported together with them.
@@ -138,6 +140,19 @@ week: week7
 - Reproducible analysis is conducted with documented code, so that another analyst can obtain the same results from the same data.
 - Complete reporting states every test conducted, including those that did not produce significant results.
 
+## Hypothesis Testing in AI Evaluation [exercise]
+- Comparisons of AI models and prompts are hypothesis tests, in which the responses to each model or prompt form a sample.
+- A t-test compares two models or prompts, and analysis of variance compares several, with each response as an observation.
+- Because additional responses cost little, very large samples are easily obtained, and very small differences become statistically significant. Effect sizes and confidence intervals therefore accompany every test.
+- Evaluations that compare many models, prompts, and products involve many tests at once, and the corrections for multiple comparisons introduced in this week apply.
+- Claims that a newer model performs better are tested rather than assumed. In one evaluation, newer model generations were more susceptible to anchoring in price judgments than older generations (Wadi & Fredette, 2025).
+
+## Reproducibility of AI Evaluations [no-exercise]
+- Providers update their models frequently, and a model with the same name may behave differently some months later.
+- A reproducible evaluation records the exact model version, the date, the generation settings, the complete prompts, and the number of responses per condition.
+- The hypotheses, measures, and analyses are preregistered before the responses are collected, as for research with human participants.
+- The prompts, responses, and analysis code are retained, so that the evaluation can be repeated on newer models with the same design.
+
 ## Discussion: Twenty Segments
 - Discussion: An analyst tests whether a new loyalty offer increased spending in each of 20 customer segments and finds a statistically significant increase in one segment. The marketing director proposes to extend the offer to that segment immediately. How should this result be interpreted, and what further evidence should be obtained before the decision is taken?
 
@@ -148,3 +163,4 @@ week: week7
 - The t-test compares two means, analysis of variance compares three or more means, and the chi-square test assesses the association between two nominal variables.
 - Statistical significance does not establish practical significance, and effect sizes and confidence intervals are reported together with p-values.
 - p-Hacking, selective reporting, and uncorrected multiple comparisons increase false findings, while preregistration and reproducible analysis protect against them.
+- Comparisons of AI models and prompts are hypothesis tests that require effect sizes, corrections for multiple comparisons, and complete records of model versions and prompts.

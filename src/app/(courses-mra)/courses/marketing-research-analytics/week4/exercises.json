@@ -325,5 +325,31 @@
         "explanation": "The procedure ends with the assessment of reliability and validity in a pilot sample."
       }
     ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "measuring-the-attitudes-of-ai-models",
+    "question_text": "A research team wants to measure the price consciousness of three language models that a retailer is considering as shopping assistants. A validated eight-item price-consciousness scale exists. Which procedure follows the approach introduced on this slide?",
+    "hint": "Consider the form of the scale, how the items are presented, and how the model is asked to answer.",
+    "correct_answer_citation": "Week 04 · Measuring the Attitudes of AI Models",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Ask each model, in an open-ended question, how important low prices are to it, and code the answers.",
+        "option_explanation": "Open-ended answers from a model can be evasive, and they do not use the validated measure."
+      },
+      {
+        "option_text": "Shorten the scale to the three items that seem most relevant to AI, and present them together in one prompt.",
+        "option_explanation": "Changing the scale removes its established reliability and validity, and the items are administered separately."
+      },
+      {
+        "option_text": "Administer all eight items in their exact validated wording, each in a separate prompt, with a fixed instruction to answer with a single scale point.",
+        "option_explanation": "Correct. The exact validated form retains the measure's reliability and validity, and the fixed instruction prevents evasive answers."
+      },
+      {
+        "option_text": "Ask each model to rate its own price consciousness on a single seven-point item.",
+        "option_explanation": "A single self-rating is not the validated multi-item scale used for consumers."
+      }
+    ]
   }
 ]

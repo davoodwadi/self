@@ -33,6 +33,8 @@ import {
   BathroomScale,
   QuestionForms,
   QuestionnaireFunnel,
+  ScaleForModel,
+  ResponseDraws,
 } from "./visuals";
 
 // ============================================================================
@@ -1109,6 +1111,89 @@ export default function Week4() {
       </Slide>
 
       {/* ================================================================
+          Measuring the Attitudes of AI Models
+          ================================================================ */}
+      <Slide
+        id="measuring-the-attitudes-of-ai-models"
+        border
+        className="!py-8"
+        exercise={exercise["measuring-the-attitudes-of-ai-models"]}
+      >
+        <SlideHeading>Measuring the Attitudes of AI Models</SlideHeading>
+        <Statement className="!max-w-none !text-[clamp(1.35rem,2.1vw,1.8rem)]">
+          AI models that advise and shop for consumers may hold systematic evaluative tendencies, which
+          researchers measure with the same multi-item scales used for consumers.
+        </Statement>
+        <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Ruled>
+              <p className={BIG}>
+                The scale is administered in its exact validated form, so that the measure retains its established
+                reliability and validity.
+              </p>
+            </Ruled>
+            <Ruled weight="thin">
+              <P>
+                For example, the 17 items of the Consumer Ethnocentrism Tendencies Scale (CETSCALE) have been
+                administered to language models, with the name of the country varied across conditions (Wadi,
+                Ghodrat, &amp; Philp, 2026).
+              </P>
+            </Ruled>
+            <Ruled weight="thin">
+              <P>
+                A fixed instruction requires the model to answer with a single scale point, because open-ended
+                answers can be evasive, such as &quot;As an AI, I do not have a country.&quot;
+              </P>
+            </Ruled>
+            <Ruled weight="thin">
+              <P>Each item is administered separately, with the name of the country inserted into the wording of the item.</P>
+            </Ruled>
+          </div>
+          <Plate>
+            <ScaleForModel />
+          </Plate>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Response Distributions in Place of Single Answers
+          ================================================================ */}
+      <Slide id="response-distributions-in-place-of-single-answers" border className="!py-8">
+        <SlideHeading>Response Distributions in Place of Single Answers</SlideHeading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Ruled tone="signal">
+              <p className={BIG}>
+                A language model does not hold one fixed answer to a Likert item. It assigns a probability to each
+                point of the scale, and a generated answer is one draw from this distribution.
+              </p>
+            </Ruled>
+            <Ruled tone="counter" weight="thin">
+              <P>A single generated answer can therefore misrepresent the model&apos;s position on the item.</P>
+            </Ruled>
+          </div>
+          <Plate>
+            <ResponseDraws />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Ruled weight="thin">
+            <P>
+              With open-weight models, the researcher can read the probability that the model assigns to each
+              scale point directly, and so obtain the exact response distribution without repeated sampling (Wadi,
+              Ghodrat, &amp; Philp, 2026).
+            </P>
+          </Ruled>
+          <Ruled weight="thin">
+            <P>
+              The distribution shows both the model&apos;s typical response and its certainty, which a single
+              answer cannot show.
+            </P>
+          </Ruled>
+        </div>
+      </Slide>
+
+      {/* ================================================================
           Discussion: A Questionnaire in Ten Minutes
           ================================================================ */}
       <Slide id="discussion-a-questionnaire-in-ten-minutes" border className="!py-8">
@@ -1136,6 +1221,7 @@ export default function Week4() {
             "Reliability is the consistency of a measure, validity is the extent to which it measures the intended construct, and a measure can be reliable without being valid.",
             "Question wording, question order, and response bias affect the accuracy of responses, and every questionnaire is pretested before data collection.",
             "AI accelerates item development and review, but AI-generated items must be assessed for content validity and pretested with real respondents.",
+            "Validated scales can be administered to AI models in their exact form, and a model's response to an item is a distribution over the scale points rather than a single answer.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
               <Numbered n={i + 1} tone="signal">

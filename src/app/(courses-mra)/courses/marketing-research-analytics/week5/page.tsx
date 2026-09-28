@@ -17,7 +17,7 @@ import {
 } from "../_visuals/kit";
 import { AiMark1 } from "../_visuals/objects";
 import exercisesData from "./exercises.json";
-import { ErrorsAndSampleSize, PeriodicList, StrataAndClusters, SampleSizeCurve, ContactFunnel, QualityChecks, SyntheticSpread } from "./visuals";
+import { ErrorsAndSampleSize, PeriodicList, StrataAndClusters, SampleSizeCurve, ContactFunnel, QualityChecks, SyntheticSpread, ResponsesPerPrompt } from "./visuals";
 
 // ============================================================================
 // WEEK 05 — SAMPLING AND DATA COLLECTION
@@ -858,6 +858,94 @@ export default function Week5() {
       </Slide>
 
       {/* ================================================================
+          Sampling in AI Evaluation
+          ================================================================ */}
+      <Slide
+        id="sampling-in-ai-evaluation"
+        border
+        className="!py-8"
+        exercise={exercise["sampling-in-ai-evaluation"]}
+      >
+        <SlideHeading>Sampling in AI Evaluation</SlideHeading>
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Ruled>
+            <p className={BIG}>
+              A language model generates its responses with controlled randomness, so that the same prompt can
+              yield different responses.
+            </p>
+          </Ruled>
+          <Ruled tone="signal">
+            <p className={BIG}>
+              Each response is therefore a draw from the model&apos;s response distribution, in the way that each
+              respondent is a draw from a population.
+            </p>
+          </Ruled>
+        </div>
+        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Ruled tone="counter" weight="thin">
+              <P>The common practice of evaluating a model on a single response to each prompt ignores this variation.</P>
+            </Ruled>
+            <Ruled weight="thin">
+              <P>
+                In one evaluation, the willingness to pay that language models stated for the same product under the
+                same prompt varied with a coefficient of variation of up to 0.44 (Wadi &amp; Fredette, 2025).
+              </P>
+            </Ruled>
+            <Ruled weight="thin">
+              <P>
+                The mean of many responses to the same prompt is an unbiased estimate of the model&apos;s typical
+                behavior, and its standard error decreases as the number of responses increases (Wadi &amp;
+                Fredette, 2025).
+              </P>
+            </Ruled>
+          </div>
+          <Plate>
+            <ResponsesPerPrompt />
+          </Plate>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          Determining the Number of Responses
+          ================================================================ */}
+      <Slide id="determining-the-number-of-responses" border className="!py-8">
+        <SlideHeading>Determining the Number of Responses</SlideHeading>
+        <Statement className="!max-w-none !text-[clamp(1.35rem,2.1vw,1.8rem)]">
+          The number of responses per prompt is determined in the same way as a sample size: by the required{" "}
+          <span className="text-[var(--signal)]">precision</span>, or by the{" "}
+          <span className="text-[var(--signal)]">power</span> to detect an effect of a given size.
+        </Statement>
+        <div className="mt-8 w-full">
+          <Ruled weight="thin">
+            <P className="!max-w-none">
+              For example, a power analysis can determine the number of responses required to detect a small
+              difference among several models or prompts (Wadi &amp; Fredette, 2025).
+            </P>
+          </Ruled>
+        </div>
+        <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Numbered n={1}>
+            <Ruled>
+              <p className={BIG}>
+                <Term tone="ink">Prompts</Term> are also sampled. Because results can change with minor changes in
+                wording, conclusions are more general when they hold across several wordings of the same
+                instruction.
+              </p>
+            </Ruled>
+          </Numbered>
+          <Numbered n={2}>
+            <Ruled>
+              <p className={BIG}>
+                <Term tone="ink">Models</Term> are sampled as well. A result obtained with one model does not
+                generalize to other models, so evaluations include several models from several providers.
+              </p>
+            </Ruled>
+          </Numbered>
+        </div>
+      </Slide>
+
+      {/* ================================================================
           Discussion: A Synthetic Panel
           ================================================================ */}
       <Slide id="discussion-a-synthetic-panel" border className="!py-8">
@@ -886,6 +974,7 @@ export default function Week5() {
             "The sample size depends on the desired precision and confidence, and the number of contacts depends on the incidence and completion rates.",
             "Online panels require data quality checks for speeders, straight-liners, fraudulent respondents, and bots, with criteria specified in advance.",
             "Synthetic respondents are not a sample of the target population, and they supplement rather than replace real respondents.",
+            "A single model response is not a measurement: AI evaluations sample many responses per prompt, determine their number by precision or power, and vary prompts and models.",
           ].map((s, i) => (
             <li key={i} className="min-w-0">
               <Numbered n={i + 1} tone="signal">

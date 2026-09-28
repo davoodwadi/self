@@ -1,8 +1,9 @@
-import { CB_DIR, readCurriculum } from "@/lib/curriculum";
+import { CB_DIR, MRA_DIR, readCurriculum } from "@/lib/curriculum";
 import { Section } from "./Section";
 
 // Course text that has a curriculum.md is read from it, not written here.
 const CB = readCurriculum(CB_DIR);
+const MRA = readCurriculum(MRA_DIR);
 
 const ROLES = [
   {
@@ -63,10 +64,10 @@ const SITES: {
     description: CB.summary,
   },
   {
-    title: "Marketing Research & Analytics",
+    title: MRA.title,
+    subtitle: MRA.subtitle,
     href: "/courses/marketing-research-analytics",
-    description:
-      "Examines the design and conduct of marketing research in support of managerial decision-making. Topics include research design, measurement, sampling, experimentation, and multivariate and predictive analysis, with attention to the role of artificial intelligence in the research process.",
+    description: MRA.summary,
   },
 ];
 

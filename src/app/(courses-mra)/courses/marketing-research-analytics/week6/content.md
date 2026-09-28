@@ -154,6 +154,14 @@ week: week6
 - The analyst then confirms that the interpretation is consistent with the level of measurement and the research design, and makes no causal claim that the design does not support.
 - Finally, the analyst documents the questions asked and the code executed, so that the analysis can be reproduced.
 
+## Describing Model Responses [exercise]
+- The responses of an AI model to repeated prompts are described with the same statistics as survey data: frequency distributions, measures of central tendency, and measures of dispersion.
+- The coefficient of variation, the standard deviation divided by the mean, compares the variability of responses across models and products measured on different scales.
+- A mean response alone can conceal important differences. Two models with the same mean on a Likert item may differ in whether their responses concentrate on one point or spread across the scale.
+- For ordinal responses, a consensus measure summarizes how concentrated the distribution is, from complete agreement on one scale point to an even split between the two extremes (Wadi, Ghodrat, & Philp, 2026).
+- Entropy, a common measure of uncertainty in AI research, treats the scale points as unordered categories, and therefore does not distinguish a split between adjacent points from a split between opposite extremes.
+- Charts of full response distributions for each model, rather than a single bar for each mean, show both the level and the variability of model behavior.
+
 ## Discussion: An Answer in Seconds
 - Discussion: A brand manager uploads a survey dataset to an AI assistant and asks which customer segment is most satisfied. The assistant replies within seconds with a segment name, a mean score, and a chart. Which checks should the brand manager perform before presenting the result to senior management?
 
@@ -164,3 +172,4 @@ week: week6
 - Cross-tabulation reveals associations between variables, which may be spurious and do not establish causation.
 - Charts communicate one finding each, with a chart type suited to that finding and axes that represent the data accurately.
 - AI data-analysis assistants accelerate analysis, but their code, case counts, and interpretations must be verified before the results inform a decision.
+- The responses of AI models are described by their full distributions, including dispersion and, for ordinal scales, consensus, rather than by a single typical answer.

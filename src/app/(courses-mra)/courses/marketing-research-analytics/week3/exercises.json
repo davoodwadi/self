@@ -282,5 +282,62 @@
         "explanation": "The full dataset is coded only once agreement is comparable to that among the human coders, and the level is reported."
       }
     ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "reasoning-traces-as-verbal-protocols",
+    "prompt": "Each excerpt comes from the reasoning trace of an AI shopping agent. Code it with the category from the codebook.",
+    "options": [
+      {
+        "id": "total",
+        "label": "Objective: lowest total price"
+      },
+      {
+        "id": "unit",
+        "label": "Objective: lowest price per unit"
+      },
+      {
+        "id": "skeptic",
+        "label": "Skepticism toward a sponsored listing"
+      }
+    ],
+    "cases": [
+      {
+        "id": "cheapest",
+        "text": "The user wants to spend as little as possible, so I will pick whichever bag of rice costs less at the checkout.",
+        "answer": "total",
+        "explanation": "The agent states that it will minimize the amount paid, regardless of quantity."
+      },
+      {
+        "id": "per-kilo",
+        "text": "The bags differ in size, so I need the price per kilogram before I can compare them.",
+        "answer": "unit",
+        "explanation": "The agent adopts price per unit of quantity as its criterion."
+      },
+      {
+        "id": "promoted",
+        "text": "The first hotel carries a Promoted label, which suggests the platform was paid to show it, so I will not rely on its position.",
+        "answer": "skeptic",
+        "explanation": "The agent expresses doubt about a listing because its placement may have been paid for."
+      },
+      {
+        "id": "lower-number",
+        "text": "Detergent A is $11.99 and Detergent B is $12.49, so A is the better deal.",
+        "answer": "total",
+        "explanation": "The agent compares the prices alone, without the quantity in each package."
+      },
+      {
+        "id": "per-load",
+        "text": "To find the best value I will divide each price by the number of washing loads in the bottle.",
+        "answer": "unit",
+        "explanation": "Price per load is a price per unit of quantity."
+      },
+      {
+        "id": "paid",
+        "text": "This listing is marked as sponsored; its high position may reflect payment rather than quality.",
+        "answer": "skeptic",
+        "explanation": "The agent questions the listing because the sponsorship label indicates a paid placement."
+      }
+    ]
   }
 ]

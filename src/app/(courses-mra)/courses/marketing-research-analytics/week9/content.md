@@ -156,6 +156,24 @@ week: week9
 ## Discussion: Accuracy or Understanding?
 - Discussion: A data science team presents a machine learning model that predicts weekly sales more accurately than the firm's marketing mix model, and proposes to use it to set next year's advertising budget. What can the new model contribute to the budget decision, and what can it not contribute?
 
+## Part 6: Choice Models for AI Agents [no-exercise]
+- When AI agents select products, their choices can be analyzed with the models used for consumer choice.
+- Such models estimate how agents weight product attributes and test the mechanisms that link a manipulation to a choice.
+
+## Estimating How AI Agents Weight Attributes [exercise]
+- The conditional logit model extends logistic regression to choices among several alternatives, and estimates a coefficient for each attribute of the alternatives.
+- The researcher presents the agent with many choice sets in which the attributes vary, and estimates the coefficients from its choices.
+- The estimates are compared with a normative benchmark. For a packaged good, the normative objective is the lowest price per unit, which weights a cent of the price exactly as much as one hundredth of a dollar.
+- In one study, separate coefficients for the whole-dollar and the cent components of coffee prices were estimated across 1,014 choice sets. The ratio of the two coefficients ranged from 0.55 to 1.12 across eight models, and for seven of the eight models its confidence interval included the normative value of 1 (Wadi & Ma, 2026b).
+- Under complete information, most agents therefore did not discount the cents in a price, in contrast to the left-digit effect documented among consumers.
+
+## Mediation Analysis [exercise]
+- Mediation analysis tests whether the effect of a manipulated variable on an outcome passes through an intermediate variable, called the mediator.
+- The indirect effect is the part of the effect transmitted through the mediator, and the direct effect is the remainder.
+- In a study of sponsored listings, the skepticism an agent expressed in its reasoning trace mediated the effect of a sponsorship label on the agent's choice, and this indirect effect was weaker when the agent was told it served the platform rather than the traveler (Wadi & Ma, 2026c).
+- In a study of pricing cues, the cost of acquiring attributes reduced the number of diagnostic attributes the agent acquired, which in turn reduced the frequency of optimal choices, particularly under a vague goal (Wadi & Ma, 2026b).
+- The mediator is measured rather than manipulated, so that the analysis provides evidence consistent with a mechanism rather than proof of it.
+
 ## Key Takeaways
 - Correlation measures the strength and direction of a linear relationship; regression estimates the expected change in an outcome associated with each independent variable.
 - Multiple regression coefficients are partial effects, interpreted holding the other variables constant, and are assessed together with model fit and diagnostics.
@@ -163,3 +181,4 @@ week: week9
 - Logistic regression models binary outcomes, and its coefficients are interpreted as odds ratios and predicted probabilities.
 - Marketing mix modeling estimates channel contributions from aggregate data, attribution assigns credit to individual touchpoints, and both are validated with incrementality experiments.
 - Machine learning models frequently predict more accurately than regression, but they do not estimate the effect of marketing actions, and prediction does not establish causation.
+- Conditional logit models estimate how AI agents weight product attributes against a normative benchmark, and mediation analysis tests the mechanism that links a manipulation to an agent's choice.

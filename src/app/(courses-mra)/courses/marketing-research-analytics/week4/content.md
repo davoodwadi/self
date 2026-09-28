@@ -183,6 +183,19 @@ week: week4
 - The items are then pretested with real respondents through cognitive interviews.
 - Finally, the scale is administered to a pilot sample, and its reliability and validity are assessed.
 
+## Measuring the Attitudes of AI Models [exercise]
+- AI models that advise and shop for consumers may hold systematic evaluative tendencies, which researchers measure with the same multi-item scales used for consumers.
+- The scale is administered in its exact validated form, so that the measure retains its established reliability and validity.
+- For example, the 17 items of the Consumer Ethnocentrism Tendencies Scale (CETSCALE) have been administered to language models, with the name of the country varied across conditions (Wadi, Ghodrat, & Philp, 2026).
+- A fixed instruction requires the model to answer with a single scale point, because open-ended answers can be evasive, such as "As an AI, I do not have a country."
+- Each item is administered separately, with the name of the country inserted into the wording of the item.
+
+## Response Distributions in Place of Single Answers [no-exercise]
+- A language model does not hold one fixed answer to a Likert item. It assigns a probability to each point of the scale, and a generated answer is one draw from this distribution.
+- A single generated answer can therefore misrepresent the model's position on the item.
+- With open-weight models, the researcher can read the probability that the model assigns to each scale point directly, and so obtain the exact response distribution without repeated sampling (Wadi, Ghodrat, & Philp, 2026).
+- The distribution shows both the model's typical response and its certainty, which a single answer cannot show.
+
 ## Discussion: A Questionnaire in Ten Minutes
 - Discussion: A product manager uses an AI tool to produce a complete customer satisfaction questionnaire in ten minutes and proposes to launch it the same day. Which checks should the questionnaire undergo before launch, and which of them cannot be performed by an AI tool?
 
@@ -193,3 +206,4 @@ week: week4
 - Reliability is the consistency of a measure, validity is the extent to which it measures the intended construct, and a measure can be reliable without being valid.
 - Question wording, question order, and response bias affect the accuracy of responses, and every questionnaire is pretested before data collection.
 - AI accelerates item development and review, but AI-generated items must be assessed for content validity and pretested with real respondents.
+- Validated scales can be administered to AI models in their exact form, and a model's response to an item is a distribution over the scale points rather than a single answer.

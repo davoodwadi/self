@@ -94,3 +94,5 @@ export function readCurriculum(courseDir: string): Curriculum {
 }
 
 export const CB_DIR = "src/app/(courses-cb)/courses/consumer-behavior";
+export const MRA_DIR =
+  "src/app/(courses-mra)/courses/marketing-research-analytics";

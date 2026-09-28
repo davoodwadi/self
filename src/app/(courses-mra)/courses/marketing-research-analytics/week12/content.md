@@ -160,6 +160,13 @@ week: week12
 - The researcher ensures that research is conducted lawfully and ethically, and that the people who provide data are protected.
 - The researcher remains accountable for every finding in the report, as introduced in Week 1.
 
+## Agent-Mediated Markets as a Research Agenda [exercise]
+- As AI agents search, evaluate, and purchase on consumers' behalf, the insights function studies the agents as well as the consumers.
+- How agents choose: which product information agents acquire, how they weight attributes, and how the presentation of information in the storefront affects their choices (Wadi & Ma, 2026b).
+- Whom agents serve: whether the agent's recommendations change with the party it is told it serves, and whether sponsorship disclosures protect consumers when the agent rather than the consumer reads them (Wadi & Ma, 2026c).
+- How brands appear to agents: whether the brand is included in the alternatives that AI assistants present, in which position, and with which attributes.
+- The methods of this course apply directly: audits describe agent behavior, controlled experiments test its causes, and validated measures and adequate samples make the evidence reliable.
+
 ## Discussion: The Insights Team of the Future
 - Discussion: A chief executive proposes to reduce the firm's insights team to two people, and to rely on AI tools and self-service platforms for all other research. Which research activities could such an arrangement perform adequately, which would be at risk, and how should the insights function be organized to use AI tools while maintaining the validity of its evidence?
 
@@ -170,6 +177,7 @@ week: week12
 - Statistical analysis, from hypothesis tests to regression and multivariate methods, quantifies the evidence and its uncertainty.
 - Customer analytics and predictive models inform decisions about individual customers, subject to evaluation, fairness, and explanation.
 - AI tools accelerate every step of the research process, and the researcher's responsibility to verify their output increases accordingly.
+- AI models and AI agents are also subjects of research, evaluated with the same standards of measurement, sampling, and experimental design that apply to human respondents.
 
 ## Key Takeaways
 - User-generated content provides large volumes of unsolicited evidence, but its authors are self-selected and its findings cannot be projected to the customer base.
@@ -178,3 +186,4 @@ week: week12
 - Data protection requires a legal basis, limited purposes, minimal data, and respect for individual rights, including when data are submitted to AI tools.
 - A research report distinguishes findings, conclusions, and recommendations, states its limitations, and discloses the use of AI.
 - The researcher's role in an AI-enabled organization centers on problem definition, research design, verification, integration, and accountability.
+- In agent-mediated markets, the insights function studies how AI agents choose, whom they serve, and how brands appear to them, with the methods of measurement, sampling, and experimentation developed in this course.

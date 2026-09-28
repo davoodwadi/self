@@ -3,9 +3,12 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import type { Week } from "./weeks";
+import type { Curriculum, CurriculumWeek } from "@/lib/curriculum";
 
-type Row = Week & { href: string; available: boolean };
+type Row = CurriculumWeek & { href: string; available: boolean };
+
+/** The masthead text, all of it read from curriculum.md. */
+type Masthead = Omit<Curriculum, "weeks">;
 
 /** Week number, title and blurb: the same row whether it links or not. */
 function RowBody({ week, n }: { week: Row; n: number }) {
@@ -37,7 +40,7 @@ function RowBody({ week, n }: { week: Row; n: number }) {
               : "type-body !text-[0.95rem] mt-1.5 max-w-[62ch] opacity-70"
           }
         >
-          {week.blurb}
+          {week.summary}
         </p>
         {week.available ? null : (
           <p className="type-label mt-2.5 !text-[0.65rem] !text-[var(--ink-3)]">
@@ -72,7 +75,13 @@ function BackLink() {
 const ROW =
   "grid grid-cols-[2.25rem_minmax(0,1fr)_auto] gap-x-4 md:gap-x-6 py-5 -mx-3 px-3";
 
-export default function CourseIndex({ weeks }: { weeks: Row[] }) {
+export default function CourseIndex({
+  course,
+  weeks,
+}: {
+  course: Masthead;
+  weeks: Row[];
+}) {
 
   return (
     <div className="relative min-h-screen">
@@ -82,22 +91,22 @@ export default function CourseIndex({ weeks }: { weeks: Row[] }) {
         <header className="pt-20 pb-12 md:pt-28 lg:sticky lg:top-0 lg:flex lg:h-svh lg:flex-col lg:justify-center lg:py-16">
           <div className="flex items-center gap-3 mb-7">
             <span className="h-px w-7 bg-[var(--signal)]" aria-hidden />
-            <span className="type-label">Master&rsquo;s · 12 weeks</span>
+            <span className="type-label">
+              {[course.level, course.program, course.duration]
+                .map((item) => item.replaceAll(" ", "\u00a0"))
+                .join(" · ")}
+            </span>
           </div>
 
-          <h1 className="type-display max-w-[12ch]">Marketing Research &amp; Analytics</h1>
+          <h1 className="type-display max-w-[12ch]">{course.title}</h1>
+          <p className="type-subtitle mt-4">{course.subtitle}</p>
 
-          <p className="type-lead mt-7 max-w-[46ch]">
-            This course examines how marketing research produces evidence for
-            managerial decisions. Students formulate research problems, design
-            qualitative, survey, and experimental studies, and analyze data
-            with statistical, multivariate, and predictive methods. Throughout,
-            the course evaluates the capabilities and limitations of artificial
-            intelligence as an instrument of marketing research.
+          <p className="type-lead mt-7 max-w-[52ch] !text-[clamp(1rem,1.15vw,1.125rem)]">
+            {course.overview}
           </p>
 
           <p className="type-body mt-8 border-t border-[var(--rule)] pt-5 !text-[var(--ink)]">
-            Davood Wadi, PhD
+            {course.instructor}
           </p>
 
         </header>
