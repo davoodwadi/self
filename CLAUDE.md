@@ -40,6 +40,10 @@ Give each week a varied mix of layouts, so no two neighbouring slides feel the s
 
 Wrapping text around a visual, as magazines and textbooks do, is one option in that mix. It suits a plate with a strong outline (a beam, a slope, a triangle) and enough running prose to flow down its full height. Let the lines follow the drawing's outline (`shape-outside`) with generous space around it. Keep the text left-aligned so it breaks naturally, and on phones show the plate after its first sentence. Use it sparingly, on the slides it lifts, and keep it one choice among many rather than a house style.
 
+## Picture variety
+
+Give each week a varied mix of pictures as well as layouts. For each plate, start from the idea and ask what picture shows it best: an object seen up close, a place, a document or package, a diagram, a map, data, or a person. Draw a person when the body, face or gesture carries the idea.
+
 ## Colour on slides
 
 Build hierarchy with type and space: size, weight, rules and white space. Save colour for the one thing on each slide the eye should land on, the slide's key idea; a slide with no colour at all is fine. Defined terms read clearly in bold ink. Structure (rules, tabs, labels, borders, numbering) stays in ink or grey, so colour on content has nothing competing with it. Each course's accent has one meaning across the deck. A second accent earns its place only where it marks a contrast students must see.
@@ -64,20 +68,16 @@ For every plate, consider whether an interaction would let students discover som
 
 An interactive plate may run on simulated data when its lesson is a mechanism, such as how answers vary from one sample to the next or how an estimate settles as samples add up. Label the plate SIMULATED where the data appear, keep the simulated numbers plausible, and keep them clearly apart from any cited study so they are never read as its results. When the lesson is a result, such as the size of an effect or the shape of a curve a study found, build the plate on that study's real data. Replace simulated data with real data as soon as it is available.
 
-# Shared pieces: reuse first, then share what you build
+# Shared pieces
 
 Every course keeps the pieces its weeks build with in a `_visuals/` folder inside the course, split the same way in every course:
 
 - `_visuals/kit.tsx`: what everything is built with: the palette and type, the plate frame and label helpers, drawing primitives, geometry helpers and slide layout blocks.
-- `_visuals/objects.tsx`: what gets drawn: people, products, places and marks, built on `./kit`.
+- `_visuals/objects.tsx`: what gets drawn: people, products, places, concepts and marks, built on `./kit`.
 
 Every piece in `_visuals/` is one the course has already paid for. Weeks import from their course's `_visuals/` and never from another week's folder, and pieces stay within their course, like its style.
 
-For every slide and plate:
-
-1. **Look before you build.** Search the course's `_visuals/` for what you need, including every numbered version, and use the one that fits. Props usually cover the difference.
-2. **Extend when it almost fits.** Add an optional prop to the existing piece, with a default that keeps every current slide unchanged.
-3. **Add to `_visuals/` when nothing fits.** Write the new piece straight into the file it belongs in and import it into the week. A new version of something that already exists takes the next number (`Car1`, `Car2`, … then `Car3`). A piece still sitting in a week's folder moves to `_visuals/` the moment another week needs it. A week keeps only its own slides and the plates drawn for them.
+Draw what the plate needs. If `_visuals/` already has a piece that fits, use it or extend it with an optional prop; otherwise write a new one. A new version of an existing object takes the next number (`Car3`). A piece moves into `_visuals/` the moment a second week needs it, and a week keeps only its own slides and plates.
 
 # SVG rules
 
@@ -100,7 +100,7 @@ These rules cover every SVG plate or figure in every course. Each course's `CLAU
 
 ## Consistency
 
-9. **Fixed cast per week.** One symbol per idea, reused on every plate (one brand badge, one heart for feeling, one Person glyph for every human). Never switch vocabulary inside a figure (dots in one memory store, blocks in the next).
+9. **Fixed cast per week.** When an idea recurs, it keeps one symbol (one brand badge, one heart for feeling, one Person glyph for every human). Never switch vocabulary inside a figure (dots in one memory store, blocks in the next).
 10. **Colour has one job.** Each course's palette names a neutral, one accent for what is learned, lit or chosen, and a contrast (see the course's `CLAUDE.md`). The accent marks one subject per plate and is never decoration.
 11. **Matched elements match exactly.** The same element across panels has the same size, spacing and baseline.
 

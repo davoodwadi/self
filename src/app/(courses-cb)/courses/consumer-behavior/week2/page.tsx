@@ -231,11 +231,11 @@ export default function Week2() {
             <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
               <p className="type-quote">
                 We do not see things as they are.{" "}
-                <span className="text-[var(--ink-3)]">We see things through our </span>
+                {"We see things through our "}
                 <Tint>senses</Tint>
-                <span className="text-[var(--ink-3)]"> and </span>
+                {" and "}
                 <Tint>personal filters</Tint>
-                <span className="text-[var(--ink-3)]">.</span>
+                .
               </p>
             </div>
           </div>

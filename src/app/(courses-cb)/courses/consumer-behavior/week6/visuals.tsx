@@ -35,6 +35,7 @@ import {
   SketchFrame,
   SketchText,
   Wash,
+  wobble,
 } from "../_visuals/kit";
 import {
   Agent,
@@ -59,10 +60,11 @@ import {
   Screen,
   sharp,
   SketchArrow,
-  Shelf2,
   SpeechBubble,
+  Stars,
   Thought,
   Tag1,
+  Tick1,
   Tick2,
 } from "../_visuals/objects";
 
@@ -74,32 +76,104 @@ const SHOPPER: Look = { hair: "bob", hairTone: SK.brown, wear: SK.camel, legs: S
    Title
    ========================================================================== */
 
-/** Feel, think and act: one shopper with a heart, a thought and a bag. */
-export function FeelThinkAct() {
-  const g = 300;
-  const h = 230;
-  const x = 196;
-  const hand = handAt(x, g, h, "down", 1);
+/** A pair of open scissors lying flat, pivot at (x, y), blades toward +x, turned by `rot`. */
+function Scissors({ x, y, rot = 0, seed }: { x: number; y: number; rot?: number; seed: number }) {
+  const bladeA = sharp(rp([[x, y], [x + 46, y - 9], [x + 48, y - 6], [x + 4, y + 3]]), true, 1);
+  const bladeB = sharp(rp([[x, y], [x + 44, y + 12], [x + 45, y + 15], [x - 2, y + 4]]), true, 1);
+  const ringA = rp(blobPts(x - 14, y - 9, 9, 6.5, seed + 4, 10, 0.06));
+  const ringB = rp(blobPts(x - 13, y + 11, 9, 6.5, seed + 5, 10, 0.06));
+  return (
+    <g transform={`rotate(${rot} ${x} ${y})`}>
+      <Wash pts={bladeA} seed={seed} fill={SK.stone} opacity={0.8} dx={0.5} dy={0.4} />
+      <Wash pts={bladeB} seed={seed + 1} fill={SK.stone} opacity={0.8} dx={0.5} dy={0.4} />
+      <InkLine pts={bladeA} seed={seed + 2} width={1} closed />
+      <InkLine pts={bladeB} seed={seed + 3} width={1} closed />
+      <Wash pts={ringA} seed={seed + 6} fill={SK.charcoal} opacity={0.55} dx={0.5} dy={0.4} />
+      <Wash pts={ringB} seed={seed + 7} fill={SK.charcoal} opacity={0.55} dx={0.5} dy={0.4} />
+      <InkLine pts={ringA} seed={seed + 8} width={1.1} closed />
+      <InkLine pts={ringB} seed={seed + 9} width={1.1} closed />
+      <InkLine pts={rp([[x - 6, y - 4], [x, y]])} seed={seed + 10} width={1} />
+      <InkLine pts={rp([[x - 5, y + 7], [x, y + 2]])} seed={seed + 11} width={1} />
+    </g>
+  );
+}
+
+/** A ballpoint pen lying from (x0, y0) to its tip at (x1, y1). */
+function Pen({ x0, y0, x1, y1, seed }: { x0: number; y0: number; x1: number; y1: number; seed: number }) {
+  const len = Math.hypot(x1 - x0, y1 - y0);
+  const ux = (x1 - x0) / len;
+  const uy = (y1 - y0) / len;
+  const nx = -uy * 3.2;
+  const ny = ux * 3.2;
+  const tipBase: Pt = [x1 - ux * 12, y1 - uy * 12];
+  const body = rp([[x0 + nx, y0 + ny], [tipBase[0] + nx, tipBase[1] + ny], [tipBase[0] - nx, tipBase[1] - ny], [x0 - nx, y0 - ny]]);
+  const tip = rp([[tipBase[0] + nx, tipBase[1] + ny], [x1, y1], [tipBase[0] - nx, tipBase[1] - ny]]);
+  return (
+    <g>
+      <Wash pts={body} seed={seed} fill={SK.charcoal} opacity={0.7} dx={0.5} dy={0.5} />
+      <InkLine pts={sharp(body)} seed={seed + 1} width={1} closed />
+      <InkLine pts={tip} seed={seed + 2} width={1} />
+      <InkLine pts={rp([[x0 + ux * 10, y0 + uy * 10], [x0 + ux * 34, y0 + uy * 34]])} seed={seed + 3} width={0.9} color={SK.ochre} />
+    </g>
+  );
+}
+
+/**
+ * The week's opening still life, seen from above: a magazine open at the
+ * brand's ad. In pen, the reader has doodled a heart beside it (feel) and a
+ * cloud of ticked thoughts in the margin (think); the coupon has been cut out
+ * and lies by the scissors, its bag washed teal (act). The empty hole it left
+ * is pencil.
+ */
+export function AdOnTheDesk() {
+  const tilt = -4;
+  const left = sharp(rp([[40, 40], [206, 40], [206, 270], [40, 270]]), true, 2);
+  const right = sharp(rp([[206, 40], [372, 40], [372, 270], [206, 270]]), true, 2);
+  const hole = rp([[292, 196], [360, 196], [360, 258], [292, 258]]);
+  const coupon = sharp(rp([[0, 0], [70, 0], [70, 62], [0, 62]]), true, 1.5);
   return (
     <SketchFrame
-      id="sk-feel-think-act"
-      width={360}
-      height={322}
-      label="A shopper stands with a teal shopping bag carrying the brand badge in hand. A heart floats beside the chest, and a thought cloud above holds the brand's box with two ticked lines."
+      id="sk-ad-on-the-desk"
+      width={420}
+      height={360}
+      label="Seen from above: a magazine lies open at an advertisement for the brand's box. In pen, a reader has drawn a heart beside the ad and a thought cloud with two ticks in the margin. A coupon has been cut from the corner of the page, leaving a pencil outline of the gap; the coupon, showing a teal shopping bag, lies beside a pair of scissors and a pen."
     >
-      <Backwash cx={190} cy={176} rx={170} ry={140} seed={100} />
-      <Ground x0={110} x1={290} y={g} seed={101} />
-      <Thought x={76} y={76} rx={62} ry={46} tx={186} ty={86} seed={110} />
-      <Box x={50} bottom={102} w={32} h={42} seed={120} />
-      {[66, 88].map((y, i) => (
-        <g key={y}>
-          <Tick2 x={80} y={y} s={0.6} seed={130 + i * 4} />
-          <InkLine pts={rp([[92, y], [116, y]])} seed={140 + i} width={0.9} amp={0.3} />
+      <Backwash cx={210} cy={180} rx={204} ry={170} seed={100} opacity={0.45} />
+      <g transform={`rotate(${tilt} 206 155)`}>
+        <Paper pts={left} seed={101} />
+        <Paper pts={right} seed={102} />
+        <InkLine pts={left} seed={103} closed />
+        <InkLine pts={right} seed={104} closed />
+        <InkLine pts={rp([[206, 44], [206, 266]])} seed={105} width={1.6} />
+        {/* the article on the left page */}
+        <InkLine pts={rp([[58, 62], [150, 62]])} seed={106} width={2.2} amp={0.3} />
+        {[84, 96, 108, 120, 132, 144, 156, 168, 180, 192].map((y, i) => (
+          <InkLine key={y} pts={rp([[58, y], [i % 4 === 3 ? 150 : 188, y]])} seed={110 + i} width={0.7} amp={0.25} />
+        ))}
+        {/* the reader's thought in the margin */}
+        <MiniThought x={110} y={232} r={30} seed={130} />
+        {[224, 242].map((y, i) => (
+          <g key={y}>
+            <Tick1 x={96} y={y - 2} s={0.7} seed={140 + i} color={SK.ink} />
+            <InkLine pts={rp([[106, y], [130, y]])} seed={144 + i} width={0.8} amp={0.25} />
+          </g>
+        ))}
+        {/* the ad on the right page */}
+        <InkLine pts={rp([[226, 64], [352, 64]])} seed={150} width={2.6} amp={0.3} />
+        <InkLine pts={rp([[226, 80], [316, 80]])} seed={151} width={0.9} amp={0.25} />
+        <Box x={262} bottom={180} w={58} h={72} seed={152} />
+        <Heart x={336} y={128} s={1.5} seed={160} />
+        <PencilLine pts={hole} seed={170} closed />
+      </g>
+      <g transform="rotate(8 286 312)">
+        <g transform="translate(250 280)">
+          <Paper pts={coupon} seed={180} />
+          <path d={wobble(coupon, 181, 0.4, 16, true)} fill="none" stroke={SK.ink} strokeWidth={1} strokeDasharray="5 4" />
+          <Bag x={35} y={12} w={28} fill={SK.teal} seed={182} />
         </g>
-      ))}
-      <Person x={x} y={g} h={h} look={SHOPPER} arms={["hip", "down"]} seed={150} />
-      <Heart x={250} y={146} s={1.3} seed={160} />
-      <Bag x={hand[0]} y={hand[1]} w={40} fill={SK.teal} seed={170} />
+      </g>
+      <Scissors x={384} y={318} rot={196} seed={190} />
+      <Pen x0={24} y0={318} x1={132} y1={298} seed={200} />
     </SketchFrame>
   );
 }
@@ -108,80 +182,102 @@ export function FeelThinkAct() {
    What Are Consumer Attitudes?
    ========================================================================== */
 
-/** Three shoppers placed along one line, from unfavorable to favorable. */
+/**
+ * An attitude as a reading on a meter: the brand's box faces an old dial
+ * that runs from unfavorable to favorable, its needle resting somewhere
+ * between the two.
+ */
 export function Evaluations() {
-  const g = 168;
-  const h = 128;
+  const cx = 248;
+  const cy = 176;
+  const R = 112;
+  const face = sharp(rp([[118, 34], [378, 34], [378, 204], [118, 204]]), true, 6);
+  const arc = (r: number, n = 24): Pt[] =>
+    rp(Array.from({ length: n + 1 }, (_, i) => {
+      const a = Math.PI + (i / n) * Math.PI;
+      return [cx + Math.cos(a) * r, cy + Math.sin(a) * r] as Pt;
+    }));
+  const at2 = (t: number, r: number): Pt => {
+    const a = Math.PI + t * Math.PI;
+    return [r2(cx + Math.cos(a) * r), r2(cy + Math.sin(a) * r)];
+  };
+  const needle = 0.62;
   return (
     <SketchFrame
       id="sk-evaluations"
       width={400}
       height={226}
-      label="An arrow runs from UNFAVORABLE on the left to FAVORABLE on the right. Three shoppers stand along it, each beside the same branded box: on the left one turns away from it, a broken heart beside them, in the middle one shrugs, on the right one hugs the box with a heart."
+      label="The brand's box stands beside a meter. The meter's dial runs from UNFAVORABLE on the left to FAVORABLE on the right, and its needle rests a little past the middle."
     >
-      <Backwash cx={200} cy={110} rx={194} ry={100} seed={200} />
-      <Ground x0={14} x1={386} y={g} seed={201} />
-
-      {/* unfavorable: turned away from the box, a broken heart */}
-      <Box x={128} bottom={g} w={30} h={38} seed={210} />
-      <Person x={78} y={g} h={h} look={{ hair: "short", hairTone: SK.charcoal, skin: SK.camel, skinOpacity: 0.6, wear: SK.earth, legs: SK.tan, outfit: "jacket" }} arms={["down", "down"]} flip seed={220} />
-      <Heart x={50} y={58} s={0.9} broken seed={230} />
-
-      {/* between: a shrug */}
-      <Box x={258} bottom={g} w={30} h={38} seed={240} />
-      <Person x={208} y={g} h={h} look={{ hair: "curly", hairTone: SK.brown, skin: SK.brown, skinOpacity: 0.5, wear: SK.sky, legs: SK.charcoal }} arms={["shrug", "shrug"]} seed={250} />
-
-      {/* favorable: the box held close, a heart */}
-      <Person x={326} y={g} h={h} look={SHOPPER} arms={["down", "hug"]} seed={270} />
-      <Box x={340} bottom={110} w={26} h={32} seed={280} />
-      <Heart x={362} y={58} s={0.9} seed={290} />
-
-      <SketchArrow pts={rp([[20, 196], [380, 196]])} seed={300} width={1.1} head={8} />
-      <InkLine pts={rp([[20, 191], [20, 201]])} seed={302} width={1.1} />
-      <SketchText x={20} y={218} size={10.5}>
+      <Backwash cx={200} cy={116} rx={194} ry={104} seed={200} />
+      <Box x={58} bottom={196} w={64} h={80} seed={210} />
+      <Paper pts={face} seed={220} />
+      <Wash pts={face} seed={221} fill={SK.earth} opacity={0.25} />
+      <InkLine pts={face} seed={222} closed />
+      <InkLine pts={arc(R)} seed={223} width={1.4} />
+      <InkLine pts={arc(R - 10)} seed={224} width={0.8} />
+      {Array.from({ length: 11 }, (_, i) => {
+        const t = i / 10;
+        const long = i % 5 === 0;
+        return <InkLine key={i} pts={[at2(t, R - 10), at2(t, R - (long ? 26 : 18))]} seed={230 + i} width={long ? 1.3 : 0.9} amp={0.2} />;
+      })}
+      <InkLine pts={[[cx, cy], at2(needle, R - 18)]} seed={250} width={2.2} amp={0.2} />
+      <InkLine pts={rp(blobPts(cx, cy, 6, 6, 251, 8, 0.05))} seed={252} width={1.2} closed />
+      <Wash pts={rp(blobPts(cx, cy, 6, 6, 253, 8, 0.05))} seed={253} fill={SK.charcoal} opacity={0.8} dx={0} dy={0} />
+      <SketchText x={136} y={196} size={10.5}>
         UNFAVORABLE
       </SketchText>
-      <SketchText x={380} y={218} anchor="end" size={10.5}>
+      <SketchText x={360} y={196} anchor="end" size={10.5}>
         FAVORABLE
       </SketchText>
     </SketchFrame>
   );
 }
 
-/** A pack in pencil: on the shelf, but never considered. */
-function PencilPack({ x, bottom, w = 30, h = 58, seed }: { x: number; bottom: number; w?: number; h?: number; seed: number }) {
-  return (
-    <g>
-      <PencilLine pts={sharp([[x - w / 2, bottom - h], [x + w / 2, bottom - h], [x + w / 2, bottom], [x - w / 2, bottom]], true, 2)} seed={seed} closed />
-      <PencilLine pts={rp([[x - w * 0.28, bottom - h * 0.58], [x + w * 0.28, bottom - h * 0.58]])} seed={seed + 1} />
-    </g>
-  );
-}
-
-/** The same brand taken from the shelf every week, the others never looked at. */
+/**
+ * Four weekly receipts laid side by side: the other items change from week
+ * to week, but the brand's line is the same on every one, ticked.
+ */
 export function SameBrandEveryWeek() {
-  const g = 196;
-  const plank = 112;
-  const h = 150;
-  const x = 124;
+  const others = [
+    [44, 30, 52],
+    [36, 48, 28],
+    [50, 26, 40],
+    [30, 44, 46],
+  ];
   return (
     <SketchFrame
       id="sk-same-brand"
       width={400}
       height={214}
-      label="EVERY WEEK, a shopper reaches straight for the teal pack with the brand badge at the end of a shelf. The other packs on the shelf are drawn in pencil: never considered."
+      label="Four shop receipts, WEEK 1 to WEEK 4, side by side. Each lists different items, but every one has the same line with the brand badge, ticked in teal, in the same place."
     >
-      <Backwash cx={204} cy={112} rx={190} ry={96} seed={320} />
-      <Ground x0={30} x1={390} y={g} seed={321} />
-      <Shelf2 x0={150} x1={390} y={plank} gy={g} seed={322} />
-      <Pack x={176} bottom={plank} seed={330} fill={SK.teal} badge />
-      {[226, 272, 318, 364].map((px, i) => (
-        <PencilPack key={px} x={px} bottom={plank} seed={340 + i * 4} />
-      ))}
-      <Person x={x} y={g} h={h} look={SHOPPER} arms={["down", "reach"]} seed={360} />
-      <SketchText x={30} y={30} size={10.5}>
-        EVERY WEEK
-      </SketchText>
+      <Backwash cx={200} cy={108} rx={194} ry={100} seed={320} />
+      {others.map((lens, i) => {
+        const x0 = 22 + i * 92;
+        const top = 22 + (i % 2) * 8;
+        const h = 168;
+        const zig: Pt[] = [];
+        for (let k = 0; k <= 8; k++) zig.push([r2(x0 + 76 - k * 9.5), r2(top + h + (k % 2 ? 5 : 0))]);
+        const shape = rp([[x0, top], [x0 + 76, top], ...zig]);
+        return (
+          <g key={i} transform={`rotate(${[-3, 2, -1.5, 3][i]} ${x0 + 38} ${top + 84})`}>
+            <Paper pts={shape} seed={330 + i * 20} />
+            <InkLine pts={shape} seed={331 + i * 20} width={1} closed />
+            <SketchText x={x0 + 38} y={top + 20} anchor="middle" size={10}>
+              {`WEEK ${i + 1}`}
+            </SketchText>
+            <InkLine pts={rp([[x0 + 10, top + 30], [x0 + 66, top + 30]])} seed={332 + i * 20} width={0.7} amp={0.2} />
+            {lens.map((l, k) => (
+              <InkLine key={k} pts={rp([[x0 + 10, top + 50 + k * 18 + (k >= 1 ? 28 : 0)], [x0 + 10 + l, top + 50 + k * 18 + (k >= 1 ? 28 : 0)]])} seed={333 + i * 20 + k} width={0.8} amp={0.25} />
+            ))}
+            <BrandBadge x={x0 + 17} y={top + 82} r={7} seed={340 + i * 20} />
+            <InkLine pts={rp([[x0 + 28, top + 82], [x0 + 52, top + 82]])} seed={341 + i * 20} width={0.9} amp={0.2} />
+            <Tick2 x={x0 + 63} y={top + 81} s={0.55} seed={342 + i * 20} />
+            <InkLine pts={rp([[x0 + 10, top + 150], [x0 + 66, top + 150]])} seed={343 + i * 20} width={1.2} amp={0.2} />
+          </g>
+        );
+      })}
     </SketchFrame>
   );
 }
@@ -220,21 +316,31 @@ export function ResistNew() {
    The ABC Model
    ========================================================================== */
 
-/** Affect: the brand's box held close, a heart beside it. */
+/** Affect: the brand's post on a phone, a big heart tapped beneath it. */
 export function AffectPlate() {
-  const g = 196;
+  const body = sharp(rp([[104, 12], [196, 12], [196, 204], [104, 204]]), true, 10);
+  const glass = rp([[112, 26], [188, 26], [188, 190], [112, 190]]);
+  const photo = sharp(rp([[118, 36], [182, 36], [182, 112], [118, 112]]), true, 2);
   return (
     <SketchFrame
       id="sk-affect"
       width={300}
       height={214}
-      label="A shopper hugs the brand's box to the chest, a large heart floating beside it."
+      label="A phone shows the brand's post: a photo of its box, and beneath it a large heart, tapped, with a few lines of comments."
     >
-      <Backwash cx={150} cy={112} rx={140} ry={96} seed={500} />
-      <Ground x0={70} x1={230} y={g} seed={501} />
-      <Person x={136} y={g} h={170} look={SHOPPER} arms={["down", "hug"]} seed={510} />
-      <Box x={148} bottom={110} w={32} h={38} seed={520} />
-      <Heart x={204} y={66} s={1.5} seed={530} />
+      <Backwash cx={150} cy={108} rx={140} ry={98} seed={500} />
+      <Wash pts={body} seed={501} fill={SK.charcoal} opacity={0.6} />
+      <InkLine pts={body} seed={502} closed />
+      <Paper pts={glass} seed={503} />
+      <InkLine pts={sharp(glass)} seed={504} width={0.8} closed />
+      <Wash pts={photo} seed={505} fill={SK.sky} opacity={0.55} dx={0.5} dy={0.4} />
+      <InkLine pts={photo} seed={506} width={0.9} closed />
+      <Box x={150} bottom={104} w={34} h={42} seed={507} />
+      <Heart x={150} y={140} s={1.6} seed={510} />
+      {[166, 178].map((y, i) => (
+        <InkLine key={y} pts={rp([[120, y], [i ? 160 : 178, y]])} seed={520 + i} width={0.8} amp={0.25} />
+      ))}
+      <InkLine pts={rp([[140, 18], [160, 18]])} seed={525} width={1.1} />
     </SketchFrame>
   );
 }
@@ -279,27 +385,30 @@ export function BehaviorPlate() {
   );
 }
 
-/** Cognition: a thinking shopper, the brand's box in a thought with its beliefs. */
+/** Cognition: the brand's pack, and a thought about it: three ticked beliefs. */
 export function CognitionPlate() {
-  const g = 196;
+  const pack = sharp(rp([[30, 56], [110, 56], [110, 196], [30, 196]]), true, 3);
   return (
     <SketchFrame
       id="sk-cognition"
       width={300}
       height={214}
-      label="A shopper stands with a hand to the chin, thinking. The thought cloud holds the brand's box beside three lines of beliefs about it, each with a tick."
+      label="The brand's tall pack stands on the left with label lines on its front. A thought cloud trails from it, holding three lines of beliefs about it, each with a tick."
     >
-      <Backwash cx={150} cy={112} rx={140} ry={96} seed={640} />
-      <Ground x0={150} x1={290} y={g} seed={641} />
-      <Thought x={84} y={74} rx={64} ry={48} tx={216} ty={50} seed={650} />
-      <Box x={46} bottom={98} w={30} h={38} seed={660} />
-      {[56, 74, 92].map((y, i) => (
+      <Backwash cx={150} cy={110} rx={140} ry={98} seed={640} />
+      <Wash pts={pack} seed={650} fill={SK.camel} opacity={0.6} />
+      <InkLine pts={pack} seed={651} closed />
+      <BrandBadge x={70} y={96} r={18} seed={652} />
+      {[134, 148, 162].map((y, i) => (
+        <InkLine key={y} pts={rp([[44, y], [i === 1 ? 84 : 96, y]])} seed={655 + i} width={0.8} amp={0.25} />
+      ))}
+      <Thought x={208} y={98} rx={70} ry={52} tx={112} ty={178} seed={660} />
+      {[74, 98, 122].map((y, i) => (
         <g key={y}>
-          <Tick2 x={76} y={y} s={0.55} seed={670 + i * 4} />
-          <InkLine pts={rp([[88, y], [i === 1 ? 118 : 130, y]])} seed={690 + i} width={0.9} amp={0.3} />
+          <Tick2 x={172} y={y} s={0.6} seed={670 + i * 4} />
+          <InkLine pts={rp([[186, y], [i === 1 ? 226 : 242, y]])} seed={690 + i} width={0.9} amp={0.3} />
         </g>
       ))}
-      <Person x={224} y={g} h={170} look={SHOPPER} arms={["down", "chin"]} flip seed={700} />
     </SketchFrame>
   );
 }
@@ -442,28 +551,75 @@ function Leaf({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: n
   );
 }
 
-/** Value-expressive: a tote with a leaf, carried head high: what the owner stands for. */
+/**
+ * Value-expressive: a closed laptop lid covered in its owner's stickers, a
+ * leaf, a bicycle, a mountain and a sun, showing what the owner stands for.
+ */
 export function ValueExpressivePlate() {
-  const g = 196;
-  const h = 160;
-  const x = 108;
-  const hand = handAt(x, g, h, "down", 1);
-  const tote = rp([[hand[0] - 20, hand[1] + 18], [hand[0] + 20, hand[1] + 18], [hand[0] + 23, hand[1] + 62], [hand[0] - 23, hand[1] + 62]]);
+  const lid = sharp(rp([[22, 30], [218, 30], [218, 172], [22, 172]]), true, 8);
+  const disc = (x: number, y: number, r: number, seed: number, fill: string) => {
+    const pts = rp(blobPts(x, y, r, r, seed, 14, 0.04));
+    return (
+      <g>
+        <Paper pts={pts} seed={seed} />
+        <Wash pts={pts} seed={seed + 1} fill={fill} opacity={0.35} dx={0.5} dy={0.4} />
+        <InkLine pts={pts} seed={seed + 2} width={1} closed />
+      </g>
+    );
+  };
+  const wheel = (x: number, y: number, seed: number) => <InkLine pts={rp(blobPts(x, y, 8, 8, seed, 12, 0.03))} seed={seed} width={1} closed />;
+  const sun = rp(blobPts(176, 136, 8, 8, 1060, 12, 0.04));
   return (
     <SketchFrame
       id="sk-value-expressive"
       width={240}
       height={214}
-      label="A shopper stands tall, hand on hip, carrying a cloth tote bag printed with a large teal leaf."
+      label="A closed laptop seen from the front, covered in its owner's stickers: a large teal leaf, a bicycle, a mountain and a sun."
     >
-      <Backwash cx={120} cy={112} rx={112} ry={98} seed={1000} />
-      <Ground x0={40} x1={200} y={g} seed={1001} />
-      <Person x={x} y={g} h={h} look={{ hair: "curly", hairTone: SK.brown, skin: SK.brown, skinOpacity: 0.5, wear: SK.sky, legs: SK.charcoal }} arms={["hip", "down"]} seed={1010} />
-      <InkLine pts={rp([[hand[0] - 12, hand[1] + 19], [hand[0] - 6, hand[1] + 1], [hand[0] + 6, hand[1] + 1], [hand[0] + 12, hand[1] + 19]])} seed={1020} width={1} />
-      <Paper pts={tote} seed={1021} />
-      <Wash pts={tote} seed={1022} fill={SK.earth} opacity={0.45} />
-      <InkLine pts={tote} seed={1023} closed />
-      <Leaf x={r2(hand[0] - 3)} y={r2(hand[1] + 54)} s={1.3} seed={1030} />
+      <Backwash cx={120} cy={104} rx={112} ry={94} seed={1000} />
+      <Wash pts={lid} seed={1001} fill={SK.charcoal} opacity={0.55} />
+      <InkLine pts={lid} seed={1002} closed />
+      {(() => {
+        const base = sharp(rp([[14, 172], [226, 172], [232, 184], [8, 184]]), true, 2);
+        return (
+          <>
+            <Wash pts={base} seed={1003} fill={SK.stone} opacity={0.9} dx={0} dy={0} />
+            <InkLine pts={base} seed={1004} width={1.1} closed />
+          </>
+        );
+      })()}
+
+      {disc(76, 92, 38, 1010, SK.teal)}
+      <Leaf x={70} y={118} s={2.2} seed={1015} />
+
+      {disc(170, 66, 28, 1020, SK.sky)}
+      {wheel(156, 72, 1025)}
+      {wheel(184, 72, 1026)}
+      <InkLine pts={rp([[156, 72], [166, 56], [178, 56], [184, 72]])} seed={1027} width={1} />
+      <InkLine pts={rp([[166, 56], [170, 72], [178, 56]])} seed={1028} width={0.9} />
+
+      <g>
+        {(() => {
+          const card = sharp(rp([[104, 136], [148, 136], [148, 164], [104, 164]]), true, 2);
+          const peak = rp([[108, 160], [122, 142], [130, 152], [136, 146], [145, 160]]);
+          return (
+            <>
+              <Paper pts={card} seed={1040} />
+              <Wash pts={peak} seed={1041} fill={SK.earth} opacity={0.8} dx={0} dy={0} />
+              <InkLine pts={card} seed={1042} width={1} closed />
+              <InkLine pts={peak} seed={1043} width={1} />
+            </>
+          );
+        })()}
+      </g>
+
+      {disc(176, 136, 25, 1050, SK.blush)}
+      <Wash pts={sun} seed={1061} fill={SK.ochre} opacity={0.8} dx={0.5} dy={0.4} />
+      <InkLine pts={sun} seed={1062} width={1} closed />
+      {Array.from({ length: 8 }, (_, i) => {
+        const a = (i / 8) * Math.PI * 2;
+        return <InkLine key={i} pts={rp([[176 + Math.cos(a) * 11, 136 + Math.sin(a) * 11], [176 + Math.cos(a) * 16, 136 + Math.sin(a) * 16]])} seed={1063 + i} width={0.9} amp={0.1} />;
+      })}
     </SketchFrame>
   );
 }
@@ -691,49 +847,75 @@ function Mortarboard({ x, y, s = 1, seed }: { x: number; y: number; s?: number; 
 
 const SOURCE: Look = { hair: "short", hairTone: SK.brown, skin: SK.tan, skinOpacity: 0.55, wear: SK.earth, legs: SK.charcoal, outfit: "jacket" };
 
-/** Expertise: a source in a graduation cap holds up the brand's pack. */
+/**
+ * Expertise: the brand's pack carries an expert's seal, a rosette with the
+ * graduation cap the week uses for expertise.
+ */
 export function ExpertSource() {
-  const g = 196;
-  const h = 160;
-  const x = 120;
-  const hand = handAt(x, g, h, "carry", 1);
+  const pack = sharp(rp([[70, 34], [168, 34], [168, 196], [70, 196]]), true, 3);
+  const sx = 186;
+  const sy = 92;
+  const petals = rp(Array.from({ length: 24 }, (_, i) => {
+    const a = (i / 24) * Math.PI * 2;
+    const r = i % 2 ? 30 : 36;
+    return [sx + Math.cos(a) * r, sy + Math.sin(a) * r] as Pt;
+  }));
+  const inner = rp(blobPts(sx, sy, 24, 24, 1940, 14, 0.03));
+  const tails = [rp([[sx - 14, sy + 26], [sx - 24, sy + 70], [sx - 14, sy + 62], [sx - 6, sy + 72], [sx - 2, sy + 30]]), rp([[sx + 2, sy + 30], [sx + 8, sy + 72], [sx + 14, sy + 62], [sx + 26, sy + 70], [sx + 14, sy + 26]])];
   return (
     <SketchFrame
       id="sk-expert"
       width={300}
       height={214}
-      label="A spokesperson in a graduation cap holds up the brand's pack and points to it."
+      label="The brand's pack with a large rosette seal pinned to it; in the middle of the seal is a graduation cap, the mark of expertise."
     >
-      <Backwash cx={150} cy={112} rx={140} ry={96} seed={1900} />
-      <Ground x0={60} x1={240} y={g} seed={1901} />
-      <Person x={x} y={g} h={h} look={SOURCE} arms={["down", "carry"]} seed={1910} />
-      <Mortarboard x={r2(x + 1)} y={r2(g - h * 0.99)} s={1.3} seed={1950} />
-      <Pack x={r2(hand[0] + 16)} bottom={r2(hand[1] + 14)} w={30} h={46} seed={1960} badge />
+      <Backwash cx={150} cy={110} rx={140} ry={98} seed={1900} />
+      <Wash pts={pack} seed={1901} fill={SK.camel} opacity={0.6} />
+      <InkLine pts={pack} seed={1902} closed />
+      <BrandBadge x={104} y={78} r={20} seed={1903} />
+      {[132, 148, 164].map((y, i) => (
+        <InkLine key={y} pts={rp([[84, y], [i === 1 ? 124 : 140, y]])} seed={1905 + i} width={0.8} amp={0.25} />
+      ))}
+      {tails.map((t, i) => (
+        <g key={i}>
+          <Wash pts={t} seed={1920 + i} fill={SK.tan} opacity={0.7} dx={0.5} dy={0.4} />
+          <InkLine pts={t} seed={1922 + i} width={1} closed />
+        </g>
+      ))}
+      <Wash pts={petals} seed={1930} fill={SK.ochre} opacity={0.85} dx={0.6} dy={0.4} />
+      <InkLine pts={petals} seed={1931} width={1} closed />
+      <Paper pts={inner} seed={1941} />
+      <InkLine pts={inner} seed={1942} width={1} closed />
+      <Mortarboard x={sx} y={sy + 6} s={1.15} seed={1950} />
     </SketchFrame>
   );
 }
 
-/** Trustworthiness: a hand on the heart, telling the good point and the bad. */
+/**
+ * Trustworthiness: an honest review card for the brand. Four stars of five,
+ * one good point ticked and one weak point owned up to, crossed.
+ */
 export function TrustworthySource() {
-  const g = 196;
-  const h = 136;
-  const x = 112;
+  const card = sharp(rp([[40, 26], [262, 26], [262, 190], [40, 190]]), true, 4);
   return (
     <SketchFrame
       id="sk-trustworthy"
       width={300}
       height={214}
-      label="A spokesperson with a hand on the chest speaks honestly about the brand: the speech bubble shows the brand's pack with one ticked point and one crossed-out point."
+      label="An honest review card for the brand: the brand's badge, four of five stars filled, one point ticked and one point crossed, and a signature at the bottom."
     >
-      <Backwash cx={150} cy={112} rx={140} ry={96} seed={2000} />
-      <Ground x0={50} x1={220} y={g} seed={2001} />
-      <Person x={x} y={g} h={h} look={SOURCE} arms={["down", "hug"]} seed={2010} />
-      <SpeechBubble x={206} y={36} w={150} h={54} tx={126} ty={78} seed={2020} />
-      <Pack x={156} bottom={56} w={24} h={36} seed={2030} badge />
-      <Tick2 x={186} y={26} s={0.6} seed={2040} />
-      <InkLine pts={rp([[198, 26], [264, 26]])} seed={2041} width={0.9} amp={0.3} />
-      <Cross x={186} y={48} r={4.5} seed={2042} />
-      <InkLine pts={rp([[198, 48], [248, 48]])} seed={2044} width={0.9} amp={0.3} />
+      <Backwash cx={150} cy={108} rx={140} ry={98} seed={2000} />
+      <g transform="rotate(-3 151 108)">
+        <Paper pts={card} seed={2001} />
+        <InkLine pts={card} seed={2002} closed />
+        <BrandBadge x={74} y={60} r={18} seed={2003} />
+        <Stars x={112} y={60} n={4} of={5} r={10} gap={26} seed={2010} />
+        <Tick2 x={70} y={106} s={0.7} seed={2040} />
+        <InkLine pts={rp([[86, 106], [226, 106]])} seed={2041} width={0.9} amp={0.3} />
+        <Cross x={70} y={134} r={5.5} seed={2042} />
+        <InkLine pts={rp([[86, 134], [196, 134]])} seed={2044} width={0.9} amp={0.3} />
+        <InkLine pts={curvePts([150, 172], [176, 150], [200, 168], 8).concat(curvePts([200, 168], [214, 180], [236, 162], 6).slice(1))} seed={2050} width={1} amp={0.4} />
+      </g>
     </SketchFrame>
   );
 }

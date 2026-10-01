@@ -298,13 +298,13 @@ export default function Week1() {
             <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
               <p className="type-quote">
                 People do not buy products.{" "}
-                <span className="text-[var(--ink-3)]">They buy solutions to </span>
+                {"They buy solutions to "}
                 <Tint>feelings</Tint>
-                <span className="text-[var(--ink-3)]">, </span>
+                {", "}
                 <Tint>problems</Tint>
-                <span className="text-[var(--ink-3)]">, and </span>
+                {", and "}
                 <Tint>social needs</Tint>
-                <span className="text-[var(--ink-3)]">.</span>
+                .
               </p>
             </div>
           </div>

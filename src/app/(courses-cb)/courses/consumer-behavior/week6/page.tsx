@@ -6,7 +6,10 @@ import {
   Slide,
   Title,
 } from "@/components/slide-components/SlideComponents";
-import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
+import {
+  createExerciseLookup,
+  type ExerciseInput,
+} from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
 import exercisesData from "./exercises.json";
 import * as V from "./visuals";
@@ -60,9 +63,7 @@ function P({
   className?: string;
 }) {
   return (
-    <p
-      className={cn("type-body max-w-[var(--measure)]", className)}
-    >
+    <p className={cn("type-body max-w-[var(--measure)]", className)}>
       {children}
     </p>
   );
@@ -76,11 +77,7 @@ function Lead({
   children: React.ReactNode;
   className?: string;
 }) {
-  return (
-    <p className={cn("type-lead max-w-[48ch]", className)}>
-      {children}
-    </p>
-  );
+  return <p className={cn("type-lead max-w-[48ch]", className)}>{children}</p>;
 }
 
 /** A line set as a serif statement: the line a slide lands on. */
@@ -91,11 +88,7 @@ function Statement({
   children: React.ReactNode;
   className?: string;
 }) {
-  return (
-    <p className={cn("type-quote max-w-[30ch]", className)}>
-      {children}
-    </p>
-  );
+  return <p className={cn("type-quote max-w-[30ch]", className)}>{children}</p>;
 }
 
 /** A line at h2 size. */
@@ -106,11 +99,7 @@ function Big({
   children: React.ReactNode;
   className?: string;
 }) {
-  return (
-    <p className={cn("type-h2 !font-normal", className)}>
-      {children}
-    </p>
-  );
+  return <p className={cn("type-h2 !font-normal", className)}>{children}</p>;
 }
 
 /** Coloured term inside a line. */
@@ -148,13 +137,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        "min-w-0 border-t-2 pt-5",
-        BORDER[tone],
-        className,
-      )}
-    >
+    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -270,7 +253,6 @@ function Cells({
   );
 }
 
-
 /** A ruled line with its plate beside it, for rows of text-and-picture pairs. */
 function SideCell({
   plate,
@@ -291,7 +273,9 @@ function SideCell({
       )}
     >
       <p className="type-body min-w-0">{children}</p>
-      <div className={cn("figure-well w-full min-w-0 p-2", plateClass)}>{plate}</div>
+      <div className={cn("figure-well w-full min-w-0 p-2", plateClass)}>
+        {plate}
+      </div>
     </div>
   );
 }
@@ -303,7 +287,7 @@ export default function Week6() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
+        <div className="grid w-full items-center gap-14 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
           <div className="min-w-0">
             <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
               Week 06
@@ -311,18 +295,18 @@ export default function Week6() {
             <p className="type-caption mt-2">
               Consumer Behavior · Davood Wadi, PhD
             </p>
-            <Title className="mt-6 !max-w-[18ch]">Attitudes and Persuasion</Title>
+            <Title className="mt-6 !max-w-[18ch]">
+              Attitudes and Persuasion
+            </Title>
             <div className="mt-8 max-w-[40ch] border-t-2 border-[var(--ink)] pt-6">
               <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
-                <span className="text-[var(--ink-3)]">
-                  Consumers do not just evaluate products.
-                </span>{" "}
+                Consumers do not just evaluate products.{" "}
                 They <Tint>feel, think, and act</Tint> toward them.
               </p>
             </div>
           </div>
-          <div className="mx-auto w-full max-w-[360px]">
-            <V.FeelThinkAct />
+          <div className="mx-auto w-full max-w-[520px]">
+            <V.AdOnTheDesk />
           </div>
         </div>
       </Slide>
@@ -337,12 +321,13 @@ export default function Week6() {
         <div className="grid w-full items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5">
             <Statement className="!max-w-[30ch] !text-[clamp(1.5rem,2.5vw,2.1rem)]">
-              An attitude is a <Tint>lasting evaluation</Tint> of a person, object, or idea.
+              An attitude is a <Tint>lasting evaluation</Tint> of a person,
+              object, or idea.
             </Statement>
             <Ruled tone="ink" className="!pt-3">
               <P>
-                Attitudes can be <Term>favorable</Term>, <Term>unfavorable</Term>, or somewhere
-                between the two.
+                Attitudes can be <Term>favorable</Term>,{" "}
+                <Term>unfavorable</Term>, or somewhere between the two.
               </P>
             </Ruled>
             <Plate>
@@ -350,10 +335,16 @@ export default function Week6() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-8">
-            <SideCell className="sm:grid-cols-[0.62fr_1.6fr]" plate={<V.SameBrandEveryWeek />}>
+            <SideCell
+              className="sm:grid-cols-[0.62fr_1.6fr]"
+              plate={<V.SameBrandEveryWeek />}
+            >
               They help consumers <Term>simplify repeated choices</Term>.
             </SideCell>
-            <SideCell className="sm:grid-cols-[0.62fr_1.6fr]" plate={<V.ResistNew />}>
+            <SideCell
+              className="sm:grid-cols-[0.62fr_1.6fr]"
+              plate={<V.ResistNew />}
+            >
               They can also make consumers <Term>resist new information</Term>.
             </SideCell>
           </div>
@@ -379,7 +370,8 @@ export default function Week6() {
               plate: <V.AffectPlate />,
               text: (
                 <>
-                  <Term>Affect</Term> means feelings and emotions toward an object.
+                  <Term>Affect</Term> means feelings and emotions toward an
+                  object.
                 </>
               ),
             },
@@ -389,8 +381,8 @@ export default function Week6() {
               plate: <V.BehaviorPlate />,
               text: (
                 <>
-                  <Term>Behavior</Term> means actions or intentions, such as buying, recommending,
-                  or avoiding a brand.
+                  <Term>Behavior</Term> means actions or intentions, such as
+                  buying, recommending, or avoiding a brand.
                 </>
               ),
             },
@@ -400,7 +392,8 @@ export default function Week6() {
               plate: <V.CognitionPlate />,
               text: (
                 <>
-                  <Term>Cognition</Term> means beliefs and thoughts about an object.
+                  <Term>Cognition</Term> means beliefs and thoughts about an
+                  object.
                 </>
               ),
             },
@@ -440,8 +433,8 @@ export default function Week6() {
               plate: <V.UtilitarianPlate />,
               text: (
                 <>
-                  The <Term>utilitarian function</Term> helps consumers gain benefits or avoid
-                  costs.
+                  The <Term>utilitarian function</Term> helps consumers gain
+                  benefits or avoid costs.
                 </>
               ),
             },
@@ -451,8 +444,8 @@ export default function Week6() {
               plate: <V.ValueExpressivePlate />,
               text: (
                 <>
-                  The <Term>value-expressive function</Term> communicates identity, values, and
-                  self-image.
+                  The <Term>value-expressive function</Term> communicates
+                  identity, values, and self-image.
                 </>
               ),
             },
@@ -462,8 +455,8 @@ export default function Week6() {
               plate: <V.EgoDefensivePlate />,
               text: (
                 <>
-                  The <Term>ego-defensive function</Term> protects self-esteem from uncomfortable
-                  threats.
+                  The <Term>ego-defensive function</Term> protects self-esteem
+                  from uncomfortable threats.
                 </>
               ),
             },
@@ -473,8 +466,8 @@ export default function Week6() {
               plate: <V.KnowledgePlate />,
               text: (
                 <>
-                  The <Term>knowledge function</Term> organizes information and makes the world
-                  easier to understand.
+                  The <Term>knowledge function</Term> organizes information and
+                  makes the world easier to understand.
                 </>
               ),
             },
@@ -501,7 +494,8 @@ export default function Week6() {
               plate: <V.StandardHierarchy />,
               text: (
                 <>
-                  The <Term>standard learning hierarchy</Term> is think, feel, then act.
+                  The <Term>standard learning hierarchy</Term> is think, feel,
+                  then act.
                 </>
               ),
             },
@@ -510,8 +504,8 @@ export default function Week6() {
               plate: <V.LowInvolvementHierarchy />,
               text: (
                 <>
-                  The <Term>low-involvement hierarchy</Term> is think briefly, act, then develop a
-                  feeling.
+                  The <Term>low-involvement hierarchy</Term> is think briefly,
+                  act, then develop a feeling.
                 </>
               ),
             },
@@ -520,7 +514,8 @@ export default function Week6() {
               plate: <V.ExperientialHierarchy />,
               text: (
                 <>
-                  The <Term>experiential hierarchy</Term> is feel, act, then explain.
+                  The <Term>experiential hierarchy</Term> is feel, act, then
+                  explain.
                 </>
               ),
             },
@@ -536,7 +531,8 @@ export default function Week6() {
         </ol>
         <Ruled tone="ink" className="mt-5 w-full">
           <Statement className="!max-w-[52ch] !text-[clamp(1.3rem,2vw,1.7rem)]">
-            The hierarchy depends on the <Tint>product, the consumer, and the purchase situation</Tint>.
+            The hierarchy depends on the{" "}
+            <Tint>product, the consumer, and the purchase situation</Tint>.
           </Statement>
         </Ruled>
       </Slide>
@@ -557,22 +553,30 @@ export default function Week6() {
             its three scenes across the bottom. */}
         <div className="grid w-full items-center gap-8 lg:grid-cols-[0.6fr_2.4fr] lg:gap-10">
           <Statement className="!max-w-[22ch] !text-[clamp(1.4rem,2.2vw,1.9rem)]">
-            Source credibility comes from <Tint>expertise and trustworthiness</Tint>.
+            Source credibility comes from{" "}
+            <Tint>expertise and trustworthiness</Tint>.
           </Statement>
           <div className="grid min-w-0 gap-6 md:grid-cols-2">
-            <SideCell className="sm:grid-cols-[0.75fr_1.5fr]" plate={<V.ExpertSource />}>
+            <SideCell
+              className="sm:grid-cols-[0.75fr_1.5fr]"
+              plate={<V.ExpertSource />}
+            >
               <Term>Expertise</Term> makes a source seem knowledgeable.
             </SideCell>
-            <SideCell className="sm:grid-cols-[0.75fr_1.5fr]" plate={<V.TrustworthySource />}>
-              <Term>Trustworthiness</Term> makes a source seem honest and dependable.
+            <SideCell
+              className="sm:grid-cols-[0.75fr_1.5fr]"
+              plate={<V.TrustworthySource />}
+            >
+              <Term>Trustworthiness</Term> makes a source seem honest and
+              dependable.
             </SideCell>
           </div>
         </div>
         <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[0.6fr_2.4fr] lg:gap-10">
           <Ruled tone="ink">
             <Lead>
-              <Term>Source attractiveness</Term> comes from familiarity, likability, and
-              similarity.
+              <Term>Source attractiveness</Term> comes from familiarity,
+              likability, and similarity.
             </Lead>
           </Ruled>
           <Plate wide>
@@ -590,7 +594,9 @@ export default function Week6() {
         border
         exercise={exercise["ai-as-a-message-source-aversion-and-appreciation"]}
       >
-        <Heading kicker="AI as a Message Source:">Aversion and Appreciation</Heading>
+        <Heading kicker="AI as a Message Source:">
+          Aversion and Appreciation
+        </Heading>
         <Lead className="!max-w-none">
           Consumers now receive advice from AI systems as well as from people.
         </Lead>
@@ -598,23 +604,28 @@ export default function Week6() {
             then what decides between them, and what credibility still needs. */}
         <div className="mt-4 grid w-full gap-x-10 gap-y-5 lg:grid-cols-2">
           <SideCell plate={<V.SameMistake />}>
-            <Term>Algorithm aversion</Term> is the tendency to trust an algorithm less than a
-            person. After people see an algorithm make a mistake, they lose confidence in it faster
-            than in a person who makes the same mistake (Dietvorst, Simmons, &amp; Massey, 2015).
+            <Term>Algorithm aversion</Term> is the tendency to trust an
+            algorithm less than a person. After people see an algorithm make a
+            mistake, they lose confidence in it faster than in a person who
+            makes the same mistake (Dietvorst, Simmons, &amp; Massey, 2015).
           </SideCell>
           <SideCell plate={<V.FollowTheEstimate />}>
-            <Term>Algorithm appreciation</Term> is the opposite tendency. In some tasks, such as
-            numerical estimates, people follow advice more when they are told it comes from an
-            algorithm than from a person (Logg, Minson, &amp; Moore, 2019).
+            <Term>Algorithm appreciation</Term> is the opposite tendency. In
+            some tasks, such as numerical estimates, people follow advice more
+            when they are told it comes from an algorithm than from a person
+            (Logg, Minson, &amp; Moore, 2019).
           </SideCell>
           <SideCell plate={<V.ObjectiveSubjective />}>
-            <Term tone="signal">The task matters.</Term> Consumers trust algorithms more for tasks
-            that seem objective, such as calculating a loan payment, than for tasks that seem
-            subjective, such as choosing a gift (Castelo, Bos, &amp; Lehmann, 2019).
+            <Term tone="signal">The task matters.</Term> Consumers trust
+            algorithms more for tasks that seem objective, such as calculating a
+            loan payment, than for tasks that seem subjective, such as choosing
+            a gift (Castelo, Bos, &amp; Lehmann, 2019).
           </SideCell>
           <SideCell plate={<V.WhoseInterests />}>
-            Credibility still rests on <Term>expertise and trustworthiness</Term>. An AI source can
-            seem expert but not trustworthy when consumers do not know whose interests it serves.
+            Credibility still rests on{" "}
+            <Term>expertise and trustworthiness</Term>. An AI source can seem
+            expert but not trustworthy when consumers do not know whose
+            interests it serves.
           </SideCell>
         </div>
       </Slide>
@@ -634,7 +645,8 @@ export default function Week6() {
           <div className="flex min-w-0 flex-col gap-4">
             <Ruled tone="ink" className="!pt-3">
               <Lead>
-                A <Term>positive frame</Term> emphasizes gains, benefits, or a desirable result.
+                A <Term>positive frame</Term> emphasizes gains, benefits, or a
+                desirable result.
               </Lead>
             </Ruled>
             <Plate>
@@ -644,8 +656,8 @@ export default function Week6() {
           <div className="flex min-w-0 flex-col gap-4">
             <Ruled tone="ink" className="!pt-3">
               <Lead>
-                A <Term>negative frame</Term> emphasizes losses, risks, or the problem that may
-                follow inaction.
+                A <Term>negative frame</Term> emphasizes losses, risks, or the
+                problem that may follow inaction.
               </Lead>
             </Ruled>
             <Plate>
@@ -671,13 +683,14 @@ export default function Week6() {
         <Heading>Measuring the Attitudes of AI Models</Heading>
         <div className="grid w-full gap-6 md:grid-cols-2 md:gap-10">
           <P className="!max-w-none">
-            Researchers measure consumer attitudes with rating scales. A <Term>Likert scale</Term>{" "}
-            asks how much a person agrees with a statement, for example from 1 (strongly disagree)
-            to 7 (strongly agree).
+            Researchers measure consumer attitudes with rating scales. A{" "}
+            <Term>Likert scale</Term> asks how much a person agrees with a
+            statement, for example from 1 (strongly disagree) to 7 (strongly
+            agree).
           </P>
           <P className="!max-w-none">
-            Researchers now give the same scales to AI models, because models that advise and shop
-            for consumers may carry attitudes of their own.
+            Researchers now give the same scales to AI models, because models
+            that advise and shop for consumers may carry attitudes of their own.
           </P>
         </div>
         {/* The three lines the instrument lets students test (one answer
@@ -685,17 +698,20 @@ export default function Week6() {
             the instrument follows them, and the closing line sits beside it. */}
         <div className="mt-5 grid w-full gap-6 border-t-2 border-[var(--ink)] pt-3 md:grid-cols-3 md:gap-8">
           <P>
-            A model does not give one fixed answer. Asked the same question many times, it can give
-            a different rating each time (Wadi &amp; Fredette, 2025).
+            A model does not give one fixed answer. Asked the same question many
+            times, it can give a different rating each time (Wadi &amp;
+            Fredette, 2025).
           </P>
           <P>
-            A <Term tone="signal">single answer can therefore mislead</Term>. Reliable measurement
-            asks the question many times, or reads the probability the model assigns to each point
-            on the scale (Wadi, Ghodrat, &amp; Philp, 2026).
+            A <Term tone="signal">single answer can therefore mislead</Term>.
+            Reliable measurement asks the question many times, or reads the
+            probability the model assigns to each point on the scale (Wadi,
+            Ghodrat, &amp; Philp, 2026).
           </P>
           <P>
-            Measured this way, models from different developers held different attitudes on the
-            same consumer attitude scale (Wadi, Ghodrat, &amp; Philp, 2026).
+            Measured this way, models from different developers held different
+            attitudes on the same consumer attitude scale (Wadi, Ghodrat, &amp;
+            Philp, 2026).
           </P>
         </div>
         <div className="mt-5 grid w-full items-center gap-8 lg:grid-cols-[2.4fr_1fr] lg:gap-10">
@@ -705,8 +721,8 @@ export default function Week6() {
           <div className="flex min-w-0 flex-col gap-4">
             <Ruled tone="ink" className="!pt-3">
               <P>
-                An attitude in a model is a <Term>pattern in its answers</Term>. It is not a feeling
-                that the model experiences.
+                An attitude in a model is a <Term>pattern in its answers</Term>.
+                It is not a feeling that the model experiences.
               </P>
             </Ruled>
             <Plate>
@@ -719,7 +735,11 @@ export default function Week6() {
       {/* ================================================================
           Discussion
           ================================================================ */}
-      <Slide className={TIGHT} id="discussion-audit-a-persuasive-message" border>
+      <Slide
+        className={TIGHT}
+        id="discussion-audit-a-persuasive-message"
+        border
+      >
         <Heading kicker="Discussion:" tone="counter">
           Audit a Persuasive Message
         </Heading>
@@ -739,7 +759,9 @@ export default function Week6() {
                   <span className="type-label pt-1 !text-[0.8rem] !text-[var(--ink-3)]">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)]">{line}</p>
+                  <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)]">
+                    {line}
+                  </p>
                 </li>
               ))}
             </ol>

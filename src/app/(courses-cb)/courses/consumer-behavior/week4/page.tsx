@@ -279,9 +279,9 @@ export default function Week4() {
             <Title className="mt-8 !max-w-[14ch]">Motivation, Needs, and Values</Title>
             <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
               <p className="type-quote">
-                <span className="text-[var(--ink-3)]">Every purchase is an attempt to </span>
+                {"Every purchase is an attempt to "}
                 move from a current state to <Tint>a better one</Tint>
-                <span className="text-[var(--ink-3)]">.</span>
+                .
               </p>
             </div>
           </div>

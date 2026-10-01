@@ -301,9 +301,7 @@ export default function Week5() {
             </Title>
             <div className="mt-8 max-w-[40ch] border-t-2 border-[var(--ink)] pt-6">
               <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
-                <span className="text-[var(--ink-3)]">
-                  Consumers do not just buy products.
-                </span>{" "}
+                Consumers do not just buy products.{" "}
                 They buy symbols that mirror{" "}
                 who they are and{" "}
                 <Tint>who they hope to become</Tint>.

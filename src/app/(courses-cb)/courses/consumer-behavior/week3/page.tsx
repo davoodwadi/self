@@ -265,9 +265,9 @@ export default function Week3() {
             <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
               <p className="type-quote">
                 Brands live in the <Tint>brain</Tint>.{" "}
-                <span className="text-[var(--ink-3)]">How people </span>
+                {"How people "}
                 <Tint tone="ink">learn, remember, and forget</Tint>
-                <span className="text-[var(--ink-3)]"> shapes every purchase.</span>
+                {" shapes every purchase."}
               </p>
             </div>
           </div>
