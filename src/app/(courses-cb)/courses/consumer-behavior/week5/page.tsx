@@ -19,12 +19,8 @@ import * as V from "./visuals";
 // live in ./visuals.tsx, drawn in the course's Editorial Sketch style (see
 // ../CLAUDE.md), and reuse the words of the slide they illustrate.
 //
-// In the slide text, SIGNAL marks the self a consumer reaches for (the ideal
-// self, the lit trait, the chosen segment); COUNTER the brand and the
-// discussion.
-//
-// Wayfinding: the title names three ideas, Self-Concept, Personality and
-// Lifestyles. A strip names them and lights the one each slide belongs to.
+// In the slide text, colour is rare: each slide gives SIGNAL to at most one
+// phrase, its key idea. Defined terms are bold ink, and every rule is ink.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise, of the type that fits
@@ -115,7 +111,7 @@ function Big({
 /** Coloured term inside a line. */
 function Term({
   children,
-  tone = "signal",
+  tone = "ink",
 }: {
   children: React.ReactNode;
   tone?: Tone;
@@ -213,9 +209,7 @@ function Heading({
             <span
               className={cn(
                 "type-label mb-4 block !text-[0.8rem]",
-                tone === "counter"
-                  ? "!text-[var(--counter)]"
-                  : "!text-[var(--signal)]",
+                "!text-[var(--ink-3)]",
               )}
             >
               {kicker}
@@ -287,35 +281,6 @@ function MarkLine({
   );
 }
 
-/** Self-Concept · Personality · Lifestyles, the three ideas in the title. */
-const IDEAS = ["Self-Concept", "Personality", "Lifestyles"];
-
-function IdeaRule({ active }: { active: 0 | 1 | 2 }) {
-  return (
-    <ol
-      aria-hidden
-      className="mb-6 grid w-full grid-cols-3 gap-2 sm:gap-4"
-    >
-      {IDEAS.map((name, i) => {
-        const on = i === active;
-        return (
-          <li
-            key={name}
-            className={cn(
-              "min-w-0 border-t-2 pt-2 text-[0.72rem] font-semibold uppercase tracking-[0.14em]",
-              on
-                ? "border-[var(--signal)] text-[var(--signal)]"
-                : "border-[var(--rule)] text-[var(--ink-3)]",
-            )}
-          >
-            {name}
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
-
 export default function Week5() {
   return (
     <SlideDeck label="Week 05">
@@ -325,7 +290,7 @@ export default function Week5() {
       <Slide id="title-slide">
         <div className="grid w-full items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
           <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--signal)]">
+            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
               Week 05
             </p>
             <p className="type-caption mt-2">
@@ -340,7 +305,7 @@ export default function Week5() {
                   Consumers do not just buy products.
                 </span>{" "}
                 They buy symbols that mirror{" "}
-                <Tint tone="ink">who they are</Tint> and{" "}
+                who they are and{" "}
                 <Tint>who they hope to become</Tint>.
               </p>
             </div>
@@ -355,7 +320,6 @@ export default function Week5() {
           What Is the Self-Concept?
           ================================================================ */}
       <Slide className={TIGHT} id="what-is-the-self-concept" border>
-        <IdeaRule active={0} />
         <Heading>What Is the Self-Concept?</Heading>
         {/* The definition and the four things it covers sit beside their
             plate; self-esteem and its two poles share the row below. */}
@@ -367,9 +331,9 @@ export default function Week5() {
             </Statement>
             <Lead className="mt-5 text-[var(--ink-3)]">
               It includes how we judge our own{" "}
-              <Term tone="ink">appearance</Term>,{" "}
-              <Term tone="ink">intellect</Term>, <Term tone="ink">skills</Term>,
-              and <Term tone="ink">character</Term>.
+              <Term>appearance</Term>,{" "}
+              <Term>intellect</Term>, <Term>skills</Term>,
+              and <Term>character</Term>.
             </Lead>
           </div>
           <Plate wide>
@@ -377,9 +341,9 @@ export default function Week5() {
           </Plate>
         </div>
         <div className="mt-8 grid w-full gap-10 lg:grid-cols-[0.9fr_2fr] lg:gap-10">
-          <Ruled tone="signal" className="self-start">
+          <Ruled tone="ink" className="self-start">
             <Big>
-              <Tint>Self-esteem</Tint> refers to the positivity of a
+              Self-esteem refers to the positivity of a
               person&apos;s self-concept.
             </Big>
           </Ruled>
@@ -387,7 +351,7 @@ export default function Week5() {
             items={[
               {
                 key: "high",
-                tone: "signal",
+                tone: "ink",
                 plate: <V.HighEsteem />,
                 text: (
                   <>
@@ -403,7 +367,7 @@ export default function Week5() {
                 text: (
                   <>
                     {" "}
-                    People with <Term tone="ink">low self-esteem</Term> try to
+                    People with <Term>low self-esteem</Term> try to
                     avoid failure and seek reassurance through safe, well-known
                     brands.
                   </>
@@ -423,19 +387,18 @@ export default function Week5() {
         border
         exercise={exercise["the-actual-self-versus-the-ideal-self"]}
       >
-        <IdeaRule active={0} />
         <Heading>The Actual Self Versus the Ideal Self</Heading>
         <div className="grid w-full gap-10 md:grid-cols-2 md:gap-14">
           <Ruled tone="ink">
             <Lead>
-              The <Term tone="ink">actual self</Term> is our realistic appraisal
+              The <Term>actual self</Term> is our realistic appraisal
               of the qualities we have right now.
             </Lead>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled tone="ink">
             <Lead>
               {" "}
-              The <Term>ideal self</Term> is our conception of who we would like
+              The <Term tone="signal">ideal self</Term> is our conception of who we would like
               to be.
             </Lead>
           </Ruled>
@@ -449,7 +412,7 @@ export default function Week5() {
           items={[
             {
               key: "gap",
-              tone: "signal",
+              tone: "ink",
               plate: <V.GapPanel />,
               text: (
                 <>
@@ -460,7 +423,7 @@ export default function Week5() {
             },
             {
               key: "bridge",
-              tone: "signal",
+              tone: "ink",
               plate: <V.BridgePanel />,
               text: (
                 <>
@@ -472,13 +435,13 @@ export default function Week5() {
             },
             {
               key: "ad",
-              tone: "counter",
+              tone: "ink",
               plate: <V.AdPanel />,
               text: (
                 <>
                   {" "}
-                  <Term tone="counter">Fantasy appeals</Term> and{" "}
-                  <Term tone="counter">aspirational advertising</Term> show
+                  <Term>Fantasy appeals</Term> and{" "}
+                  <Term>aspirational advertising</Term> show
                   consumers how a product brings them closer to their ideal
                   self.
                 </>
@@ -497,7 +460,6 @@ export default function Week5() {
         border
         exercise={exercise["the-extended-self-possessions-as-identity"]}
       >
-        <IdeaRule active={0} />
         <Heading kicker="The Extended Self:">Possessions as Identity</Heading>
         <Statement className="!max-w-[40ch] !text-[clamp(1.5rem,2.5vw,2.1rem)]">
           We are what we own.{" "}
@@ -510,24 +472,24 @@ export default function Week5() {
         <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
           <div className="min-w-0">
             <Lead>
-              The <Term>extended self</Term> includes possessions that people
+              The <Term tone="signal">extended self</Term> includes possessions that people
               use to define their social identity.
             </Lead>
             <ol className="mt-6 flex w-full flex-col gap-4">
               <MarkLine mark={<V.RingMark lit={0} />}>
-                <Term tone="ink">Individual level:</Term> personal items like
+                <Term>Individual level:</Term> personal items like
                 jewelry, cars, and clothing define personal identity.
               </MarkLine>
               <MarkLine mark={<V.RingMark lit={1} />}>
-                <Term tone="ink">Family level:</Term> a consumer&apos;s home and
+                <Term>Family level:</Term> a consumer&apos;s home and
                 furnishings represent family identity and shared memories.
               </MarkLine>
               <MarkLine mark={<V.RingMark lit={2} />}>
-                <Term tone="ink">Community level:</Term> neighborhoods and
+                <Term>Community level:</Term> neighborhoods and
                 hometowns shape local identity.
               </MarkLine>
               <MarkLine mark={<V.RingMark lit={3} />}>
-                <Term tone="ink">Group level:</Term> attachments to sports
+                <Term>Group level:</Term> attachments to sports
                 teams, subcultures, or social movements define group identity.
               </MarkLine>
             </ol>
@@ -547,7 +509,6 @@ export default function Week5() {
         border
         exercise={exercise["identity-and-automation-the-tasks-consumers-keep"]}
       >
-        <IdeaRule active={0} />
         <Heading kicker="Identity and Automation:">The Tasks Consumers Keep</Heading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_minmax(0,400px)] lg:gap-12">
           <div className="grid min-w-0 gap-3">
@@ -560,7 +521,7 @@ export default function Week5() {
             </P>
             <P>
               When a task is central to a person&apos;s identity, the person wants to feel that the
-              result is <Term>their own work</Term>.
+              result is <Term tone="signal">their own work</Term>.
             </P>
             <P>
               Research shows that people who strongly identify with an activity, such as cooking,
@@ -580,11 +541,11 @@ export default function Week5() {
           <Ruled tone="ink" className="!pt-3">
             <P>
               For the same reason, a consumer may let an AI agent handle{" "}
-              <Term tone="ink">routine purchases</Term> but keep the choices that express who they
+              <Term>routine purchases</Term> but keep the choices that express who they
               are.
             </P>
           </Ruled>
-          <Ruled tone="signal" className="!pt-3">
+          <Ruled tone="ink" className="!pt-3">
             <P>
               Marketers of automated products can leave room for the consumer&apos;s{" "}
               <Term>own contribution</Term>, so the consumer still feels ownership of the result.
@@ -604,7 +565,6 @@ export default function Week5() {
         id="personality-traits-and-consumer-behavior"
         border
       >
-        <IdeaRule active={1} />
         <Heading>Personality Traits and Consumer Behavior</Heading>
         <Statement className="!max-w-[46ch] !text-[clamp(1.5rem,2.5vw,2.1rem)]">
           Personality refers to a person&apos;s unique psychological makeup that{" "}
@@ -612,7 +572,7 @@ export default function Week5() {
           environment.
         </Statement>
         <Lead className="mt-5 text-[var(--ink-3)]">
-          <Term tone="ink">Trait theory</Term> views personality as a set of
+          <Term>Trait theory</Term> views personality as a set of
           measurable characteristics.
         </Lead>
         <Cells
@@ -625,7 +585,7 @@ export default function Week5() {
               plate: <V.Innovativeness />,
               text: (
                 <>
-                  <Term tone="ink">Innovativeness</Term> is the degree to which
+                  <Term>Innovativeness</Term> is the degree to which
                   a person likes to try new things.
                 </>
               ),
@@ -637,7 +597,7 @@ export default function Week5() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">Materialism</Term> is the emphasis a person
+                  <Term>Materialism</Term> is the emphasis a person
                   places on owning worldly goods for status.
                 </>
               ),
@@ -649,7 +609,7 @@ export default function Week5() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">Need for cognition</Term> is the degree to
+                  <Term>Need for cognition</Term> is the degree to
                   which a person enjoys thinking hard and reading detailed
                   product descriptions.
                 </>
@@ -662,7 +622,7 @@ export default function Week5() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">Frugality</Term> is the tendency to
+                  <Term>Frugality</Term> is the tendency to
                   prioritize careful spending and resourcefulness over wasteful
                   buying.
                 </>
@@ -681,7 +641,6 @@ export default function Week5() {
         border
         exercise={exercise["the-big-five-personality-dimensions"]}
       >
-        <IdeaRule active={1} />
         <Heading>The Big Five Personality Dimensions</Heading>
         <Statement className="!max-w-[46ch] !text-[clamp(1.5rem,2.5vw,2.1rem)]">
           Psychologists identify five fundamental dimensions of human
@@ -694,7 +653,7 @@ export default function Week5() {
           items={[
             {
               key: "openness",
-              tone: "signal",
+              tone: "ink",
               plate: <V.Openness />,
               text: (
                 <>
@@ -705,7 +664,7 @@ export default function Week5() {
             },
             {
               key: "conscientiousness",
-              tone: "signal",
+              tone: "ink",
               plate: <V.Conscientiousness />,
               text: (
                 <>
@@ -717,7 +676,7 @@ export default function Week5() {
             },
             {
               key: "extraversion",
-              tone: "signal",
+              tone: "ink",
               plate: <V.Extraversion />,
               text: (
                 <>
@@ -729,7 +688,7 @@ export default function Week5() {
             },
             {
               key: "agreeableness",
-              tone: "signal",
+              tone: "ink",
               plate: <V.Agreeableness />,
               text: (
                 <>
@@ -741,7 +700,7 @@ export default function Week5() {
             },
             {
               key: "neuroticism",
-              tone: "signal",
+              tone: "ink",
               plate: <V.Neuroticism />,
               text: (
                 <>
@@ -754,13 +713,13 @@ export default function Week5() {
           ]}
         />
         <div className="mt-7 grid w-full items-center gap-8 lg:grid-cols-[1.7fr_1fr] lg:gap-12">
-          <Ruled tone="counter">
+          <Ruled tone="ink">
             <Big className="!text-[clamp(1.4rem,2.2vw,1.9rem)]">
               {" "}
               Marketers use these dimensions to tailor{" "}
-              <Tint tone="counter">ad copy</Tint>,{" "}
-              <Tint tone="counter">visual tone</Tint>, and{" "}
-              <Tint tone="counter">brand messaging</Tint>.
+              ad copy,{" "}
+              visual tone, and{" "}
+              brand messaging.
             </Big>
           </Ruled>
           <Plate wide>
@@ -778,12 +737,11 @@ export default function Week5() {
         border
         exercise={exercise["brand-personality-giving-life-to-objects"]}
       >
-        <IdeaRule active={1} />
         <Heading kicker="Brand Personality:">Giving Life to Objects</Heading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
           <Statement className="!max-w-[30ch] !text-[clamp(1.5rem,2.5vw,2.1rem)]">
             Brand personality is the set of <Tint>human traits</Tint> that
-            consumers assign to a <Tint tone="counter">brand name</Tint>.
+            consumers assign to a brand name.
           </Statement>
           <Plate className="mx-auto max-w-[300px]">
             <V.BrandTraits />
@@ -796,11 +754,11 @@ export default function Week5() {
           items={[
             {
               key: "sincerity",
-              tone: "counter",
+              tone: "ink",
               plate: <V.Sincerity />,
               text: (
                 <>
-                  <Term tone="counter">Sincerity:</Term> brands seen as
+                  <Term>Sincerity:</Term> brands seen as
                   down-to-earth, honest, wholesome, and cheerful, like Hallmark
                   or Campbell&apos;s.
                 </>
@@ -808,48 +766,48 @@ export default function Week5() {
             },
             {
               key: "excitement",
-              tone: "counter",
+              tone: "ink",
               plate: <V.Excitement />,
               text: (
                 <>
                   {" "}
-                  <Term tone="counter">Excitement:</Term> brands seen as daring,
+                  <Term>Excitement:</Term> brands seen as daring,
                   spirited, imaginative, and modern, like Apple or Red Bull.
                 </>
               ),
             },
             {
               key: "competence",
-              tone: "counter",
+              tone: "ink",
               plate: <V.Competence />,
               text: (
                 <>
                   {" "}
-                  <Term tone="counter">Competence:</Term> brands seen as
+                  <Term>Competence:</Term> brands seen as
                   reliable, intelligent, and successful, like Volvo or Google.
                 </>
               ),
             },
             {
               key: "sophistication",
-              tone: "counter",
+              tone: "ink",
               plate: <V.Sophistication />,
               text: (
                 <>
                   {" "}
-                  <Term tone="counter">Sophistication:</Term> brands seen as
+                  <Term>Sophistication:</Term> brands seen as
                   upper-class, elegant, and charming, like Chanel or Rolex.
                 </>
               ),
             },
             {
               key: "ruggedness",
-              tone: "counter",
+              tone: "ink",
               plate: <V.Ruggedness />,
               text: (
                 <>
                   {" "}
-                  <Term tone="counter">Ruggedness:</Term> brands seen as
+                  <Term>Ruggedness:</Term> brands seen as
                   outdoorsy, tough, and durable, like Jeep or Patagonia.
                 </>
               ),
@@ -866,7 +824,6 @@ export default function Week5() {
         id="anthropomorphism-and-brand-relationships"
         border
       >
-        <IdeaRule active={1} />
         <Heading className="!max-w-none !text-[clamp(2rem,3.2vw,2.9rem)]">
           Anthropomorphism and Brand Relationships
         </Heading>
@@ -876,7 +833,7 @@ export default function Week5() {
           <div className="grid min-w-0 items-center gap-5 sm:grid-cols-[1fr_1.1fr]">
             <Lead className="!text-[var(--ink)]">
               Anthropomorphism occurs when people assign{" "}
-              <Term>human qualities, faces, or intentions</Term> to non-human
+              <Term tone="signal">human qualities, faces, or intentions</Term> to non-human
               objects.
             </Lead>
             <Plate>
@@ -884,9 +841,9 @@ export default function Week5() {
             </Plate>
           </div>
           <div className="grid min-w-0 items-center gap-5 sm:grid-cols-[1fr_1.1fr]">
-            <Ruled tone="counter">
+            <Ruled tone="ink">
               <Lead>
-                <Term tone="counter">Mascots</Term> like the Michelin Man or the
+                <Term>Mascots</Term> like the Michelin Man or the
                 M&amp;M characters make abstract corporate products feel
                 friendly.
               </Lead>
@@ -900,13 +857,13 @@ export default function Week5() {
           <div className="flex min-w-0 flex-col gap-4">
             <Big className="!text-[clamp(1.2rem,1.7vw,1.5rem)]">
               When consumers view a brand as a{" "}
-              <Tint tone="counter">human partner</Tint>, brand loyalty turns
-              into an <Tint>emotional relationship</Tint>.
+              human partner, brand loyalty turns
+              into an emotional relationship.
             </Big>
             <Plate wide>
               <V.BrandPartner />
             </Plate>
-            <Ruled tone="signal">
+            <Ruled tone="ink">
               <P>
                 <Term>Brand love</Term> occurs when a consumer feels passion,
                 commitment, and positive attachment toward a brand.
@@ -917,7 +874,7 @@ export default function Week5() {
             <Big className="!text-[clamp(1.2rem,1.7vw,1.5rem)]">
               {" "}
               When an anthropomorphized brand fails, consumers feel{" "}
-              <Tint>personal betrayal</Tint> rather than simple dissatisfaction.
+              personal betrayal rather than simple dissatisfaction.
             </Big>
             <Plate wide>
               <V.Betrayal />
@@ -935,7 +892,6 @@ export default function Week5() {
         border
         exercise={exercise["psychographics-and-lifestyles-measuring-aios"]}
       >
-        <IdeaRule active={2} />
         <Heading kicker="Psychographics and Lifestyles:">
           Measuring AIOs
         </Heading>
@@ -968,7 +924,7 @@ export default function Week5() {
             items={[
               {
                 key: "activities",
-                tone: "signal",
+                tone: "ink",
                 plate: <V.Activities />,
                 text: (
                   <>
@@ -979,7 +935,7 @@ export default function Week5() {
               },
               {
                 key: "interests",
-                tone: "signal",
+                tone: "ink",
                 plate: <V.Interests />,
                 text: (
                   <>
@@ -991,7 +947,7 @@ export default function Week5() {
               },
               {
                 key: "opinions",
-                tone: "signal",
+                tone: "ink",
                 plate: <V.Opinions />,
                 text: (
                   <>
@@ -1010,7 +966,6 @@ export default function Week5() {
           The VALS Segmentation System
           ================================================================ */}
       <Slide className={TIGHT} id="the-vals-segmentation-system" border>
-        <IdeaRule active={2} />
         <Heading>The VALS Segmentation System</Heading>
         <Statement className="!max-w-[46ch] !text-[clamp(1.5rem,2.5vw,2.1rem)]">
           The Values and Lifestyles system, or VALS, divides adults into{" "}
@@ -1029,19 +984,19 @@ export default function Week5() {
               high resources and abundant energy.
             </MarkLine>
             <MarkLine mark={<V.VALSMark lit={["thinkers", "believers"]} />}>
-              <Term tone="ink">Thinkers and Believers</Term> are motivated by
+              <Term>Thinkers and Believers</Term> are motivated by
               ideals, knowledge, and principles.
             </MarkLine>
             <MarkLine mark={<V.VALSMark lit={["achievers", "strivers"]} />}>
-              <Term tone="ink">Achievers and Strivers</Term> are motivated by
+              <Term>Achievers and Strivers</Term> are motivated by
               achievement, status, and recognition from peers.
             </MarkLine>
             <MarkLine mark={<V.VALSMark lit={["experiencers", "makers"]} />}>
-              <Term tone="ink">Experiencers and Makers</Term> are motivated by
+              <Term>Experiencers and Makers</Term> are motivated by
               self-expression, physical activity, and adventure.
             </MarkLine>
             <MarkLine mark={<V.VALSMark lit={["survivors"]} />}>
-              <Term tone="ink">Survivors</Term> have the fewest resources and
+              <Term>Survivors</Term> have the fewest resources and
               focus on meeting basic needs rather than expressing lifestyle.
             </MarkLine>
           </ol>
@@ -1057,7 +1012,6 @@ export default function Week5() {
         border
         exercise={exercise["synthetic-consumers-ai-as-a-survey-respondent"]}
       >
-        <IdeaRule active={2} />
         <Heading kicker="Synthetic Consumers:">AI as a Survey Respondent</Heading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_minmax(0,400px)] lg:gap-12">
           <div className="grid min-w-0 gap-3">
@@ -1082,9 +1036,9 @@ export default function Week5() {
         </div>
         {/* The first limit leads its plate; the others follow beneath it. */}
         <div className="mt-8 grid w-full items-center gap-6 lg:grid-cols-[1fr_minmax(0,400px)] lg:gap-x-12">
-          <Ruled tone="counter" className="!pt-3 lg:col-start-1 lg:row-start-1 lg:self-end">
+          <Ruled tone="ink" className="!pt-3 lg:col-start-1 lg:row-start-1 lg:self-end">
             <P>
-              Synthetic responses also have <Term tone="counter">limits</Term>. The same model can
+              Synthetic responses also have <Term>limits</Term>. The same model can
               give a different answer each time it is asked the same question (Wadi &amp; Fredette,
               2025).
             </P>
@@ -1098,11 +1052,11 @@ export default function Week5() {
             &amp; Philp, 2026).
           </P>
           <P className="lg:col-start-1 lg:row-start-3 lg:self-start">
-            A synthetic consumer has <Term tone="ink">no lived experience</Term> of buying or using
+            A synthetic consumer has <Term>no lived experience</Term> of buying or using
             a product.
           </P>
         </div>
-        <Ruled tone="signal" className="mt-6 w-full !pt-3">
+        <Ruled tone="ink" className="mt-6 w-full !pt-3">
           <P className="!max-w-none">
             Synthetic responses can help researchers <Term>design and pretest</Term> a survey.
             Decisions about real consumers still need data from real consumers.
@@ -1124,10 +1078,10 @@ export default function Week5() {
                 Discussion:
               </span>{" "}
               Name one possession you own that feels like part of your identity.{" "}
-              <Tint tone="counter">
+              
                 If someone took it away, how would it change the way you see
                 yourself?
-              </Tint>{" "}
+              {" "}
               Does it reflect your actual self or your ideal self?
             </p>
           </div>

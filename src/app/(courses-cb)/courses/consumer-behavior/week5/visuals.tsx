@@ -285,7 +285,7 @@ function Levels({ seed }: { seed: number }) {
 function PanelWashes({ seed }: { seed: number }) {
   return (
     <g>
-      <Backwash cx={112} cy={222} rx={104} ry={98} seed={seed} />
+      <Backwash cx={112} cy={222} rx={104} ry={98} seed={seed} fill={SK.blush} />
       <Backwash cx={306} cy={128} rx={92} ry={104} seed={seed + 1} fill={SK.sky} opacity={0.5} />
     </g>
   );
@@ -860,7 +860,7 @@ export function Conscientiousness() {
     >
       <Backwash cx={206} cy={112} rx={190} ry={98} seed={1901} />
       <Ground x0={20} x1={384} y={gy} seed={1904} />
-      <Person x={px} y={gy} h={ph} look={{ hair: "bob", hairTone: SK.charcoal, skin: SK.camel, skinOpacity: 0.55, wear: SK.camel, legs: SK.charcoal, outfit: "jacket" }} arms={["hip", "reach"]} seed={1910} />
+      <Person x={px} y={gy} h={ph} look={{ hair: "bob", hairTone: SK.charcoal, skin: SK.camel, skinOpacity: 0.55, wear: SK.sky, legs: SK.charcoal, outfit: "jacket" }} arms={["hip", "reach"]} seed={1910} />
       <Wash pts={board} seed={1950} fill={SK.leather} opacity={0.55} dx={2} dy={2} />
       <Paper pts={at(0, 0, [[bx + 8, by + 12], [bx + 88, by + 12], [bx + 88, by + 116], [bx + 8, by + 116]])} seed={1951} />
       <InkLine pts={sharp(board)} seed={1952} closed />
@@ -908,10 +908,10 @@ export function Extraversion() {
   const sh = ph * 0.86;
   const cx = 200;
   const listeners: { x: number; flip: boolean; look: Look }[] = [
-    { x: 52, flip: false, look: { hair: "short", hairTone: SK.charcoal, wear: SK.sky, outfit: "jacket", legs: SK.charcoal } },
+    { x: 52, flip: false, look: { hair: "short", hairTone: SK.charcoal, wear: SK.charcoal, outfit: "jacket", legs: SK.tan } },
     { x: 116, flip: false, look: { hair: "bun", hairTone: SK.brown, skin: SK.tan, skinOpacity: 0.5, wear: SK.leather, outfit: "dress" } },
     { x: 284, flip: true, look: { hair: "long", hairTone: SK.camel, wear: SK.charcoal, legs: SK.tan } },
-    { x: 348, flip: true, look: { hair: "curly", hairTone: SK.charcoal, skin: SK.brown, skinOpacity: 0.55, wear: SK.camel } },
+    { x: 348, flip: true, look: { hair: "curly", hairTone: SK.charcoal, skin: SK.brown, skinOpacity: 0.55, wear: SK.sky } },
   ];
   return (
     <SketchFrame
@@ -949,7 +949,7 @@ export function Agreeableness() {
       <Backwash cx={204} cy={112} rx={190} ry={98} seed={2101} />
       <Ground x0={20} x1={384} y={gy} seed={2104} />
       <Person x={ax} y={gy} h={ph} look={{ hair: "short", hairTone: SK.brown, skin: SK.camel, skinOpacity: 0.5, wear: SK.sky, legs: SK.charcoal, outfit: "jacket" }} arms={["across", "carry"]} seed={2110} />
-      <Person x={bx} y={gy} h={ph} look={{ hair: "bun", hairTone: SK.charcoal, skin: SK.brown, skinOpacity: 0.5, wear: SK.camel, legs: SK.tan }} arms={["across", "carry"]} flip seed={2200} />
+      <Person x={bx} y={gy} h={ph} look={{ hair: "bun", hairTone: SK.charcoal, skin: SK.brown, skinOpacity: 0.5, wear: SK.charcoal, legs: SK.tan }} arms={["across", "carry"]} flip seed={2200} />
       <Wash pts={box} seed={2250} fill={SK.tan} opacity={0.55} />
       <InkLine pts={sharp(box)} seed={2251} closed />
       <InkLine pts={rp([[lx + 6, ly - 18], [rx - 6, ly - 18]])} seed={2252} width={0.8} />
@@ -971,7 +971,7 @@ export function Neuroticism() {
       height={h}
       label="A person hugs themselves anxiously under a dark storm cloud with rain and a lightning bolt."
     >
-      <Backwash cx={204} cy={116} rx={186} ry={96} seed={2301} fill={SK.sky} opacity={0.45} />
+      <Backwash cx={204} cy={116} rx={186} ry={96} seed={2301} />
       <Ground x0={40} x1={364} y={gy} seed={2304} />
       <Person x={px} y={gy} h={ph * 0.74} look={{ hair: "long", hairTone: SK.brown, skin: SK.skin, wear: SK.sky, legs: SK.charcoal }} arms={["hug", "hug"]} seed={2310} />
       <Wash pts={cloud} seed={2350} fill={SK.charcoal} opacity={0.55} />
@@ -1593,8 +1593,12 @@ function Guitar({ x, y, s = 1, seed, pencil = false }: { x: number; y: number; s
   return (
     <g>
       <Ln pencil={pencil} pts={at(x, y, [[4, -6], [22, -24]], s)} seed={seed + 2} width={2.2} />
-      <Paper pts={lower} seed={seed + 9} />
-      <Paper pts={upper} seed={seed + 10} />
+      {pencil ? null : (
+        <>
+          <Paper pts={lower} seed={seed + 9} />
+          <Paper pts={upper} seed={seed + 10} />
+        </>
+      )}
       <Tone pencil={pencil} pts={lower} seed={seed + 3} fill={SK.camel} opacity={0.75} />
       <Tone pencil={pencil} pts={upper} seed={seed + 4} fill={SK.camel} opacity={0.75} />
       <Ln pencil={pencil} pts={lower} seed={seed + 5} closed width={1.1} />
@@ -1905,7 +1909,7 @@ export function YourPossession() {
       label="Left: a person holds their guitar close. Right: the same person in the same pose with empty arms; the guitar that was taken away is only a faint pencil outline."
     >
       <Backwash cx={218} cy={170} rx={168} ry={146} seed={5001} />
-      <Backwash cx={582} cy={170} rx={168} ry={146} seed={5002} fill={SK.sky} opacity={0.4} />
+      <Backwash cx={582} cy={170} rx={168} ry={146} seed={5002} />
       <Ground x0={80} x1={360} y={gy} seed={5004} />
       <Ground x0={440} x1={720} y={gy} seed={5008} />
 

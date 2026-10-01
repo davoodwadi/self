@@ -39,9 +39,9 @@ import {
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
-// SIGNAL marks the operative case (the consumer's real behaviour, the
-// customer who pays, the ethical side), COUNTER the other view (the marketer
-// watching, the consumer who uses, the old model).
+// Colour is rare (see the root CLAUDE.md): each slide gives SIGNAL to at most
+// one phrase, its key idea; defined terms are bold ink and every rule is ink.
+// The consumer/customer slide keeps COUNTER for the one contrast it teaches.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise that tests that slide
@@ -94,7 +94,7 @@ function Big({ children, className = "" }: { children: React.ReactNode; classNam
 }
 
 /** Coloured term inside a line. */
-function Term({ children, tone = "signal" }: { children: React.ReactNode; tone?: Tone }) {
+function Term({ children, tone = "ink" }: { children: React.ReactNode; tone?: Tone }) {
   return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
@@ -168,7 +168,7 @@ function Heading({
             <span
               className={cn(
                 "type-label mb-4 block !text-[0.8rem]",
-                tone === "counter" ? "!text-[var(--counter)]" : "!text-[var(--signal)]",
+                "!text-[var(--ink-3)]",
               )}
             >
               {kicker}
@@ -207,32 +207,6 @@ function Columns({ children, className = "" }: { children: React.ReactNode; clas
     <div className={cn("grid w-full items-stretch gap-12 lg:grid-cols-2 lg:gap-14", className)}>
       {children}
     </div>
-  );
-}
-
-/** Before · during · after — where each slide sits on the consumption chain. */
-const PHASES = ["Before", "During", "After"];
-
-function PhaseRule({ active }: { active: number[] }) {
-  return (
-    <ol aria-hidden className="mb-8 grid w-full grid-cols-3 gap-2 sm:gap-4 md:mb-10">
-      {PHASES.map((name, i) => {
-        const on = active.includes(i);
-        return (
-          <li
-            key={name}
-            className={cn(
-              "min-w-0 border-t-2 pt-2 text-[0.72rem] font-semibold uppercase tracking-[0.14em]",
-              on
-                ? "border-[var(--signal)] text-[var(--signal)]"
-                : "border-[var(--rule)] text-[var(--ink-3)]",
-            )}
-          >
-            {name}
-          </li>
-        );
-      })}
-    </ol>
   );
 }
 
@@ -316,7 +290,7 @@ export default function Week1() {
       <Slide id="title-slide">
         <div className="grid w-full items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
           <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--signal)]">
+            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
               Week 01
             </p>
             <p className="type-caption mt-2">Consumer Behavior · Davood Wadi, PhD</p>
@@ -349,14 +323,14 @@ export default function Week1() {
             the whole-chain line share the row beneath it. */}
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.3fr] lg:gap-x-12">
           <Statement className="!max-w-[26ch] lg:col-start-1 lg:row-start-1 lg:self-end">
-            Most people think consumer behavior is <Tint>just shopping</Tint>.
+            Most people think consumer behavior is just shopping.
           </Statement>
           <Plate wide className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
             <Iceberg />
           </Plate>
           <div className="min-w-0 lg:col-start-1 lg:row-start-2 lg:self-start">
             <Big className="!text-[clamp(1.3rem,2vw,1.7rem)]">
-              The purchase at the register is only <Tint>one second</Tint> in a long chain.
+              The purchase at the register is only one second in a long chain.
             </Big>
             <Plate className="mt-5 max-w-[400px]">
               <OneSecondChain />
@@ -372,7 +346,7 @@ export default function Week1() {
             <p className="type-label mb-3 !text-[var(--ink)]">After</p>
             <P>After the sale, they use the item, feel happy or regretful, and tell others.</P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled tone="ink">
             <Statement className="!text-[clamp(1.2rem,1.8vw,1.5rem)]">
               Consumer behavior studies the <Tint>whole chain</Tint>: before, during, and after
               the sale.
@@ -390,7 +364,6 @@ export default function Week1() {
         border
         exercise={exercise["the-three-stages-of-consumption"]}
       >
-        <PhaseRule active={[0, 1, 2]} />
         <Heading>The Three Stages of Consumption</Heading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_2fr] lg:gap-12">
           <Statement>Consumption happens in three distinct stages.</Statement>
@@ -424,7 +397,7 @@ export default function Week1() {
               </div>{" "}
               <div className="mt-3 flex items-start gap-3 border-t border-[var(--rule)] pt-3">
                 <MarketerMark />
-                <p className="type-body !text-[var(--counter)]">{s.marketer}</p>
+                <p className="type-body">{s.marketer}</p>
               </div>
             </li>
           ))}
@@ -435,7 +408,6 @@ export default function Week1() {
           Consumers Versus Customers
           ================================================================ */}
       <Slide className={TIGHT} id="consumers-versus-customers" border>
-        <PhaseRule active={[1, 2]} />
         <Heading>Consumers Versus Customers</Heading>
         {/* The two definitions sit beside the parent and baby they describe;
             what each of them cares about closes the slide. */}
@@ -457,14 +429,14 @@ export default function Week1() {
               <span className="text-[var(--signal)]">customer</span>
             </div>
             <div className="mt-8 grid w-full gap-6 sm:grid-cols-2">
-              <Ruled tone="signal">
+              <Ruled tone="ink">
                 <Big>
-                  A <Tint>customer</Tint> buys the product.
+                  A customer buys the product.
                 </Big>
               </Ruled>{" "}
-              <Ruled tone="counter">
+              <Ruled tone="ink">
                 <Big>
-                  A <Tint tone="counter">consumer</Tint> uses the product.
+                  A consumer uses the product.
                 </Big>
               </Ruled>
             </div>
@@ -475,20 +447,20 @@ export default function Week1() {
             </Plate>
             <P className="mt-5 !max-w-[60ch]">
               A parent buys baby food at the grocery store. <Term>The parent is the customer.</Term>{" "}
-              <Term tone="counter">The baby is the consumer.</Term>
+              <Term>The baby is the consumer.</Term>
             </P>
           </div>
         </div>
         <div className="mt-10 grid w-full items-end gap-6 md:grid-cols-3 md:gap-8">
           <Statement>Marketers must satisfy both people.</Statement>{" "}
-          <Ruled tone="signal">
+          <Ruled tone="ink">
             <P>
               The parent cares about <Term>price and nutrition</Term>.
             </P>
           </Ruled>{" "}
-          <Ruled tone="counter">
+          <Ruled tone="ink">
             <P>
-              The baby cares about <Term tone="counter">taste and texture</Term>.
+              The baby cares about <Term>taste and texture</Term>.
             </P>
           </Ruled>
         </div>
@@ -509,16 +481,16 @@ export default function Week1() {
         <div className="grid w-full items-start gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
           <div className="min-w-0">
             <Lead>
-              Old economics assumed buyers were <Term tone="counter">perfectly rational</Term>.
+              Old economics assumed buyers were <Term>perfectly rational</Term>.
             </Lead>
             <Columns className="mt-6 !gap-6 sm:grid-cols-2">
               <PlateColumn
-                tone="counter"
+                tone="ink"
                 text="This model assumed buyers compare all choices, calculate costs, and pick the best option."
                 plate={<CalculatorWalk />}
               />
               <PlateColumn
-                tone="signal"
+                tone="ink"
                 text={
                   <>
                     Real people have <Term>limited time and energy</Term>. They use{" "}
@@ -530,7 +502,7 @@ export default function Week1() {
             </Columns>
           </div>
           <div className="min-w-0">
-            <Ruled tone="signal">
+            <Ruled tone="ink">
               <Big className="!text-[clamp(1.3rem,2vw,1.7rem)]">
                 Real decisions depend on <Tint>mood</Tint>, <Tint>habits</Tint>,{" "}
                 <Tint>brand loyalty</Tint>, and <Tint>social pressure</Tint>.
@@ -541,8 +513,8 @@ export default function Week1() {
             </Plate>
             <div className="mt-8 grid w-full items-center gap-6 sm:grid-cols-[1fr_minmax(0,220px)]">
               <Statement className="!text-[clamp(1.3rem,2vw,1.7rem)]">
-                Marketers who treat consumers as <Tint tone="counter">cold calculators</Tint>{" "}
-                make <Tint>bad predictions</Tint>.
+                Marketers who treat consumers as cold calculators{" "}
+                make bad predictions.
               </Statement>
               <Plate className="max-w-[220px]">
                 <CalculatorError />
@@ -556,23 +528,22 @@ export default function Week1() {
           Needs Versus Wants
           ================================================================ */}
       <Slide className={TIGHT} id="needs-versus-wants" border>
-        <PhaseRule active={[0]} />
         <Heading>Needs Versus Wants</Heading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Ruled tone="ink">
             <p className="type-label mb-3 !text-[var(--ink)]">Need</p>
             <Big>
-              A <Tint tone="ink">need</Tint> is a basic biological or psychological requirement.
+              A need is a basic biological or psychological requirement.
             </Big>{" "}
             <P className="mt-4">
               Examples include thirst, hunger, shelter, and belonging.{" "}
-              <Term tone="ink">Needs exist before marketing.</Term>
+              <Term>Needs exist before marketing.</Term>
             </P>
           </Ruled>{" "}
-          <Ruled tone="signal">
+          <Ruled tone="ink">
             <p className="type-label mb-3">Want</p>
             <Big>
-              A <Tint>want</Tint> is a specific way to satisfy that need.
+              A want is a specific way to satisfy that need.
             </Big>{" "}
             <P className="mt-4">
               <Term>Culture and personality shape wants.</Term>
@@ -583,19 +554,19 @@ export default function Week1() {
             under it, beside the plate. */}
         <div className="mt-10 grid w-full items-center gap-8 lg:grid-cols-[1fr_1.35fr] lg:gap-x-12">
           <P className="!max-w-[62ch] lg:col-start-1 lg:row-start-1 lg:self-end">
-            A thirsty person in <Term tone="ink">Montreal</Term> wants cold tap water or a soda. A
-            thirsty person in <Term tone="ink">another country</Term> might want hot tea.
+            A thirsty person in <Term>Montreal</Term> wants cold tap water or a soda. A
+            thirsty person in <Term>another country</Term> might want hot tea.
           </P>
           <Plate wide className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
             <NeedWantTrio />
           </Plate>
           <div className="grid w-full gap-6 lg:col-start-1 lg:row-start-2 lg:self-start">
-            <Ruled tone="counter">
+            <Ruled tone="ink">
               <Statement className="!text-[clamp(1.2rem,1.8vw,1.5rem)]">
-                Marketers <Tint tone="counter">do not create</Tint> basic needs.
+                Marketers do not create basic needs.
               </Statement>
             </Ruled>{" "}
-            <Ruled tone="signal">
+            <Ruled tone="ink">
               <Statement className="!text-[clamp(1.2rem,1.8vw,1.5rem)]">
                 Marketers <Tint>create attractive wants</Tint> to satisfy existing needs.
               </Statement>
@@ -608,7 +579,6 @@ export default function Week1() {
           The Many Roles One Person Plays
           ================================================================ */}
       <Slide className={TIGHT} id="the-many-roles-one-person-plays" border>
-        <PhaseRule active={[0, 1, 2]} />
         <Heading>The Many Roles One Person Plays</Heading>
         <Lead>One purchase often involves several distinct roles.</Lead>
         <ol className="mt-8 grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
@@ -626,7 +596,7 @@ export default function Week1() {
                 <span
                   aria-hidden
                   data-n={String(i + 1).padStart(2, "0")}
-                  className="step-n block shrink-0 text-[1.6rem] leading-none text-[var(--signal)]"
+                  className="step-n block shrink-0 text-[1.6rem] leading-none text-[var(--ink)]"
                   style={SERIF}
                 />
                 <p className="type-body">
@@ -642,8 +612,8 @@ export default function Week1() {
         </ol>
         <div className="mt-10 grid w-full items-center gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-12">
           <Big className="max-w-[48ch]">
-            In a household buying a family car, <Tint tone="counter">children influence</Tint> the
-            choice, but <Tint>parents buy</Tint> the vehicle.
+            In a household buying a family car, children influence the
+            choice, but parents buy the vehicle.
           </Big>
           <Plate wide>
             <FamilyCar />
@@ -669,9 +639,9 @@ export default function Week1() {
           </Statement>
           <div className="grid min-w-0 gap-4">
             <P>Personal shoppers, travel agents, and wedding planners have long played this role.</P>
-            <Ruled tone="signal" className="!pt-3">
+            <Ruled tone="ink" className="!pt-3">
               <Big className="!text-[clamp(1.2rem,1.8vw,1.5rem)]">
-                Today, consumers can also delegate this role to <Tint>AI agents</Tint>.
+                Today, consumers can also delegate this role to AI agents.
               </Big>
             </Ruled>
           </div>
@@ -687,7 +657,7 @@ export default function Week1() {
                   text: <>The consumer states a goal, such as &ldquo;find running shoes under $120.&rdquo;</>,
                 },
                 {
-                  tone: "signal" as Tone,
+                  tone: "ink" as Tone,
                   text: (
                     <>
                       The <Term>AI agent</Term> searches for options, compares them, and can
@@ -712,11 +682,11 @@ export default function Week1() {
           <div className="grid min-w-0 gap-6">
             <P className="!text-[clamp(1.05rem,1.5vw,1.3rem)]">
               In the language of roles, the AI agent can act as the <Term>influencer</Term> and
-              the <Term>buyer</Term>. The consumer remains the <Term tone="ink">user</Term>.
+              the <Term>buyer</Term>. The consumer remains the <Term>user</Term>.
             </P>
-            <Ruled tone="signal" className="!pt-3">
+            <Ruled tone="ink" className="!pt-3">
               <Statement className="!text-[clamp(1.2rem,1.8vw,1.5rem)]">
-                Marketers now inform <Tint>two audiences</Tint>: the consumer and the AI agent
+                Marketers now inform two audiences: the consumer and the AI agent
                 that shops for the consumer.
               </Statement>
             </Ruled>
@@ -739,17 +709,17 @@ export default function Week1() {
           {[
             {
               key: "one",
-              tone: "counter" as Tone,
+              tone: "ink" as Tone,
               plate: <OneMessage />,
               text: (
                 <>
-                  You cannot appeal to everyone with the <Term tone="counter">same message</Term>.
+                  You cannot appeal to everyone with the <Term>same message</Term>.
                 </>
               ),
             },
             {
               key: "groups",
-              tone: "signal" as Tone,
+              tone: "ink" as Tone,
               plate: <SortedGroups />,
               text: (
                 <>
@@ -782,7 +752,7 @@ export default function Week1() {
             ].map((t) => {
               const [head, ...rest] = t.split(" group people by ");
               return (
-                <li key={t} className="min-w-0 border-t-2 border-[var(--signal)] pt-4">
+                <li key={t} className="min-w-0 border-t-2 border-[var(--ink)] pt-4">
                   <p className="type-body">
                     {" "}
                     <Term>{head}</Term> group people by {rest.join(" group people by ")}
@@ -853,8 +823,8 @@ export default function Week1() {
                 Discussion:
               </span>{" "}
               Think of an item you bought recently that you now regret buying.{" "}
-              <Tint tone="counter">Which stage of consumption failed you?</Tint> Did you buy it for
-              a <Tint tone="counter">need</Tint> or an <Tint>impulsive want</Tint>?
+              Which stage of consumption failed you? Did you buy it for
+              a need or an impulsive want?
             </p>
           </div>
           <Plate wide>

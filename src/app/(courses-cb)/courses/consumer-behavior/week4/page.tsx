@@ -51,12 +51,8 @@ import {
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx (Editorial Sketch, see ../CLAUDE.md).
 //
-// SIGNAL marks what the consumer wants or reaches for (the desired state, the
-// drive, the goal); COUNTER the offer, the marketer and the discussion.
-//
-// Wayfinding: the discussion asks which theory explains a purchase: "drive
-// reduction, expectancy, hierarchy of needs, or motivational conflict". A
-// TheoryRule strip names those four and lights one on each theory slide.
+// Colour is rare (see the root CLAUDE.md): each slide gives SIGNAL to at most
+// one phrase, its key idea; defined terms are bold ink and every rule is ink.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise that tests that slide
@@ -113,7 +109,7 @@ function Statement({ children, className = "" }: { children: React.ReactNode; cl
 }
 
 /** Coloured term inside a line. */
-function Term({ children, tone = "signal" }: { children: React.ReactNode; tone?: Tone }) {
+function Term({ children, tone = "ink" }: { children: React.ReactNode; tone?: Tone }) {
   return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
@@ -180,7 +176,7 @@ function Heading({
             <span
               className={cn(
                 "type-label mb-4 block !text-[0.8rem]",
-                tone === "counter" ? "!text-[var(--counter)]" : "!text-[var(--signal)]",
+                "!text-[var(--ink-3)]",
               )}
             >
               {kicker}
@@ -254,29 +250,6 @@ function Cells({
   );
 }
 
-/** Drive reduction · Expectancy · Hierarchy of needs · Motivational conflict. */
-const THEORIES = ["Drive reduction", "Expectancy", "Hierarchy of needs", "Motivational conflict"];
-
-function TheoryRule({ active }: { active: 0 | 1 | 2 | 3 }) {
-  return (
-    <ol aria-hidden className="mb-8 grid w-full grid-cols-2 gap-x-4 gap-y-3 md:mb-10 md:grid-cols-4">
-      {THEORIES.map((name, i) => (
-        <li
-          key={name}
-          className={cn(
-            "min-w-0 border-t-2 pt-2 text-[0.72rem] font-semibold uppercase tracking-[0.14em]",
-            i === active
-              ? "border-[var(--signal)] text-[var(--signal)]"
-              : "border-[var(--rule)] text-[var(--ink-3)]",
-          )}
-        >
-          {name}
-        </li>
-      ))}
-    </ol>
-  );
-}
-
 /** A line with the pyramid tiers it names. */
 function TierLine({ lit, children }: { lit: number[]; children: React.ReactNode }) {
   return (
@@ -299,7 +272,7 @@ export default function Week4() {
       <Slide id="title-slide">
         <div className="grid w-full items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
           <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--signal)]">
+            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
               Week 04
             </p>
             <p className="type-caption mt-2">Consumer Behavior · Davood Wadi, PhD</p>
@@ -327,7 +300,7 @@ export default function Week4() {
           <Statement className={cn(LEDE, "!max-w-[34ch]")}>
             Motivation is the process that drives people to act when they feel a{" "}
             <Tint>gap</Tint> between their <Tint tone="ink">current state</Tint> and a{" "}
-            <Tint>desired state</Tint>.
+            desired state.
           </Statement>
         </Lede>
         <Cells
@@ -337,7 +310,7 @@ export default function Week4() {
           items={[
             {
               key: "tension",
-              tone: "signal",
+              tone: "ink",
               plate: <TensionAction />,
               text: (
                 <>
@@ -348,7 +321,7 @@ export default function Week4() {
             },
             {
               key: "motives",
-              tone: "signal",
+              tone: "ink",
               plate: <GymMotives />,
               text: (
                 <>
@@ -361,13 +334,13 @@ export default function Week4() {
             },
             {
               key: "connect",
-              tone: "counter",
+              tone: "ink",
               plate: <ConnectOffer />,
               text: (
                 <>
                   {" "}
                   Marketers study motives so they can connect an{" "}
-                  <Term tone="counter">offer</Term> with a <Term>goal</Term> that matters to the
+                  <Term>offer</Term> with a <Term>goal</Term> that matters to the
                   consumer.
                 </>
               ),
@@ -385,7 +358,6 @@ export default function Week4() {
         border
         exercise={exercise["drive-theory-tension-and-reduction"]}
       >
-        <TheoryRule active={0} />
         <Heading kicker="Drive Theory:">Tension and Reduction</Heading>
         <div className="grid w-full gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-end lg:gap-12">
           <Statement className={cn(LEDE, "!max-w-[36ch]")}>
@@ -393,7 +365,7 @@ export default function Week4() {
             <Tint>drive</Tint>.
           </Statement>{" "}
           <Lead className="text-[var(--ink-3)]">
-            The drive <Term tone="ink">pushes</Term> the consumer toward an action that reduces the
+            The drive <Term>pushes</Term> the consumer toward an action that reduces the
             discomfort.
           </Lead>
         </div>
@@ -403,7 +375,7 @@ export default function Week4() {
           items={[
             {
               key: "hunger",
-              tone: "signal",
+              tone: "ink",
               plate: <HungerThirst />,
               text: (
                 <>
@@ -415,7 +387,7 @@ export default function Week4() {
             },
             {
               key: "falls",
-              tone: "signal",
+              tone: "ink",
               plate: <DriveCurve />,
               text: (
                 <>
@@ -427,13 +399,13 @@ export default function Week4() {
             },
             {
               key: "marketing",
-              tone: "counter",
+              tone: "ink",
               plate: <MarketingDrive />,
               text: (
                 <>
                   {" "}
-                  Marketing can <Term tone="ink">remind</Term> people of a need or show how a
-                  product may <Term tone="counter">reduce</Term> the resulting drive.
+                  Marketing can <Term>remind</Term> people of a need or show how a
+                  product may <Term>reduce</Term> the resulting drive.
                 </>
               ),
             },
@@ -450,7 +422,6 @@ export default function Week4() {
         border
         exercise={exercise["expectancy-theory-effort-performance-and-outcome"]}
       >
-        <TheoryRule active={1} />
         <Heading kicker="Expectancy Theory:">Effort, Performance, and Outcome</Heading>
         <Lede wide plate={<ExpectancyChain />}>
           <Statement className={cn(LEDE, "!max-w-[30ch]")}>
@@ -485,7 +456,7 @@ export default function Week4() {
             },
             {
               key: "valence",
-              tone: "signal",
+              tone: "ink",
               text: (
                 <>
                   {" "}
@@ -496,7 +467,7 @@ export default function Week4() {
           ]}
         />
         <Lede wide plate={<MoreMotivated />} className={GAP}>
-          <Ruled tone="signal" className="!pt-4">
+          <Ruled tone="ink" className="!pt-4">
             <Lead>
               A consumer is more motivated when the goal seems <Term>possible</Term>, the product
               seems <Term>useful</Term>, and the result feels <Term>valuable</Term>.
@@ -519,7 +490,7 @@ export default function Week4() {
             follow beneath them, beside the plate. */}
         <div className="grid w-full items-center gap-6 lg:grid-cols-[1fr_minmax(0,400px)] lg:gap-x-12">
           <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:col-start-1 lg:row-start-1 lg:self-end">
-            <Ruled tone="signal" className="!pt-3">
+            <Ruled tone="ink" className="!pt-3">
               <P>
                 <Term>Intrinsic motivation</Term> comes from the activity itself, such as enjoyment
                 or the wish to help others.
@@ -527,7 +498,7 @@ export default function Week4() {
             </Ruled>
             <Ruled tone="ink" className="!pt-3">
               <P>
-                <Term tone="ink">Extrinsic motivation</Term> comes from an outside reward, such as
+                <Term>Extrinsic motivation</Term> comes from an outside reward, such as
                 money, points, or a discount.
               </P>
             </Ruled>
@@ -544,9 +515,9 @@ export default function Week4() {
               Firms often offer rewards for reviews, because reviews guide both shoppers and the AI
               agents that read reviews for them.
             </P>
-            <Ruled tone="counter" className="!pt-3">
+            <Ruled tone="ink" className="!pt-3">
               <P>
-                A reward can <Term tone="counter">crowd out</Term> intrinsic motives. When people are
+                A reward can <Term>crowd out</Term> intrinsic motives. When people are
                 paid for a kind act, the act can start to feel like a transaction.
               </P>
             </Ruled>
@@ -572,7 +543,7 @@ export default function Week4() {
           <P className="!max-w-none">
             The same reward also works differently for different people. A reward paid only when a
             review received a &ldquo;helpful&rdquo; vote raised the number and length of reviews
-            more for <Term tone="ink">first-time reviewers</Term> than for experienced reviewers
+            more for <Term>first-time reviewers</Term> than for experienced reviewers
             (Wadi et al., 2026b).
           </P>
         </Ruled>
@@ -598,7 +569,7 @@ export default function Week4() {
               plate: <NeedHunger />,
               text: (
                 <>
-                  A <Term tone="ink">need</Term> is a basic biological or psychological
+                  A <Term>need</Term> is a basic biological or psychological
                   requirement, such as hunger, safety, or belonging.
                 </>
               ),
@@ -610,14 +581,14 @@ export default function Week4() {
               text: (
                 <>
                   {" "}
-                  A <Term tone="ink">want</Term> is the specific product or service chosen to
+                  A <Term>want</Term> is the specific product or service chosen to
                   satisfy a need.
                 </>
               ),
             },
             {
               key: "shaped",
-              tone: "signal",
+              tone: "ink",
               plate: <ShapedWants />,
               text: (
                 <>
@@ -628,7 +599,7 @@ export default function Week4() {
             },
             {
               key: "demand",
-              tone: "signal",
+              tone: "ink",
               plate: <DemandTest />,
               text: (
                 <>
@@ -659,7 +630,6 @@ export default function Week4() {
         border
         exercise={exercise["maslows-hierarchy-in-consumer-markets"]}
       >
-        <TheoryRule active={2} />
         <Heading>Maslow&apos;s Hierarchy in Consumer Markets</Heading>
         <Statement className={cn(LEDE, "!max-w-[48ch]")}>
           Maslow proposed that human needs can be arranged from{" "}
@@ -667,13 +637,13 @@ export default function Week4() {
         </Statement>
         <ol className="mt-6 grid w-full gap-6 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4 lg:gap-6">
           <TierLine lit={[0]}>
-            <Term tone="ink">Physiological needs</Term> include food, water, and sleep.
+            <Term>Physiological needs</Term> include food, water, and sleep.
           </TierLine>
           <TierLine lit={[1]}>
-            <Term tone="ink">Safety needs</Term> include protection, stability, and health.
+            <Term>Safety needs</Term> include protection, stability, and health.
           </TierLine>
           <TierLine lit={[2, 3]}>
-            <Term tone="counter">Belonging and esteem needs</Term> include friendship,
+            <Term>Belonging and esteem needs</Term> include friendship,
             acceptance, achievement, and status.
           </TierLine>
           <TierLine lit={[4]}>
@@ -686,7 +656,7 @@ export default function Week4() {
             <MaslowPyramid />
           </Plate>
           <Statement className={cn(LEDE, "!max-w-[30ch]")}>
-            Consumers can pursue several levels <Tint>at the same time</Tint>.{" "}
+            Consumers can pursue several levels at the same time.{" "}
             <span className="text-[var(--ink-3)]">
               The hierarchy is a guide, not a strict shopping sequence.
             </span>
@@ -706,7 +676,6 @@ export default function Week4() {
         border
         exercise={exercise["motivational-conflicts-three-difficult-choices"]}
       >
-        <TheoryRule active={3} />
         <Heading kicker="Motivational Conflicts:">Three Difficult Choices</Heading>
         <Cells
           cols={3}
@@ -714,7 +683,7 @@ export default function Week4() {
           items={[
             {
               key: "aa",
-              tone: "signal",
+              tone: "ink",
               plate: <ApproachApproach />,
               text: (
                 <>
@@ -730,7 +699,7 @@ export default function Week4() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">Approach-avoidance conflict</Term> occurs when the same option
+                  <Term>Approach-avoidance conflict</Term> occurs when the same option
                   has both an attractive benefit and an unpleasant cost.
                 </>
               ),
@@ -742,7 +711,7 @@ export default function Week4() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">Avoidance-avoidance conflict</Term> occurs when every available
+                  <Term>Avoidance-avoidance conflict</Term> occurs when every available
                   option has an unwanted consequence.
                 </>
               ),
@@ -751,7 +720,7 @@ export default function Week4() {
         />
         <div className={cn(GAP, "grid w-full gap-10 lg:grid-cols-2 lg:gap-12")}>
           <Lede plate={<PhoneOrTrip />} cols="xl:grid-cols-[1fr_1.35fr]">
-            <Ruled tone="signal" className="!pt-4">
+            <Ruled tone="ink" className="!pt-4">
               <P>
                 {" "}
                 A buyer may want <Term>a new phone</Term> and <Term>a weekend trip</Term>, but the
@@ -760,10 +729,10 @@ export default function Week4() {
             </Ruled>
           </Lede>
           <Lede plate={<ClearerChoice />} cols="xl:grid-cols-[1fr_1.35fr]">
-            <Ruled tone="counter" className="!pt-4">
+            <Ruled tone="ink" className="!pt-4">
               <P>
-                Strong brands reduce conflict by making <Term tone="counter">benefits clear</Term>{" "}
-                and <Term tone="counter">costs easier to understand</Term>.
+                Strong brands reduce conflict by making <Term>benefits clear</Term>{" "}
+                and <Term>costs easier to understand</Term>.
               </P>
             </Ruled>
           </Lede>
@@ -792,7 +761,7 @@ export default function Week4() {
               plate: <ProductInvolvement />,
               text: (
                 <>
-                  <Term tone="ink">Product involvement</Term> is high when the product affects
+                  <Term>Product involvement</Term> is high when the product affects
                   identity, risk, or daily life.
                 </>
               ),
@@ -804,7 +773,7 @@ export default function Week4() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">Message involvement</Term> is high when the consumer pays close
+                  <Term>Message involvement</Term> is high when the consumer pays close
                   attention to the information in an advertisement.
                 </>
               ),
@@ -816,7 +785,7 @@ export default function Week4() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">Purchase situation involvement</Term> changes with time
+                  <Term>Purchase situation involvement</Term> changes with time
                   pressure, social setting, and perceived risk.
                 </>
               ),
@@ -826,7 +795,7 @@ export default function Week4() {
         {/* High and low involvement lead their plate; the delegation line
             sits beneath them and leads its own plate on the right. */}
         <div className={cn("grid w-full items-center gap-6 lg:grid-cols-[1.6fr_1.1fr_0.8fr] lg:gap-x-8", GAP)}>
-          <Ruled tone="signal" className="!pt-4 lg:col-start-1 lg:row-start-1 lg:self-end">
+          <Ruled tone="ink" className="!pt-4 lg:col-start-1 lg:row-start-1 lg:self-end">
             <Lead className="!text-[clamp(1.05rem,1.4vw,1.25rem)]">
               {" "}
               <Term>High involvement</Term> leads to more effort and careful comparison.{" "}
@@ -873,7 +842,7 @@ export default function Week4() {
               plate: <FunctionalValue />,
               text: (
                 <>
-                  <Term tone="ink">Functional values</Term> focus on performance, convenience, and
+                  <Term>Functional values</Term> focus on performance, convenience, and
                   reliability.
                 </>
               ),
@@ -885,7 +854,7 @@ export default function Week4() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">Social values</Term> focus on belonging, recognition, and how
+                  <Term>Social values</Term> focus on belonging, recognition, and how
                   others see the consumer.
                 </>
               ),
@@ -897,7 +866,7 @@ export default function Week4() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">Experiential values</Term> focus on pleasure, excitement,
+                  <Term>Experiential values</Term> focus on pleasure, excitement,
                   comfort, or meaning.
                 </>
               ),
@@ -905,7 +874,7 @@ export default function Week4() {
           ]}
         />
         <Lede wide plate={<FitsValues />} className={GAP}>
-          <Ruled tone="signal" className="!pt-4">
+          <Ruled tone="ink" className="!pt-4">
             <Lead>
               {" "}
               Consumers often choose between products by asking which one{" "}
@@ -928,7 +897,7 @@ export default function Week4() {
               Discussion:
             </span>{" "}
             Choose a recent purchase.{" "}
-            <Tint tone="counter">What need or value did it serve?</Tint> Which theory best
+            What need or value did it serve? Which theory best
             explains your choice: drive reduction, expectancy, hierarchy of needs, or
             motivational conflict?
           </p>

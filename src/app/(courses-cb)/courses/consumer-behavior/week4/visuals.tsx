@@ -524,7 +524,7 @@ export function CurrentToBetter() {
       height={400}
       label="At the foot of a short flight of steps, a person in a plain coat stands with arms hanging. At the top of the steps, on a pale sky wash, the same person stands upright in a camel coat, a hand on the hip and a shopping bag in the other hand."
     >
-      <Backwash cx={84} cy={278} rx={82} ry={110} seed={10} />
+      <Backwash cx={84} cy={278} rx={82} ry={110} seed={10} fill={SK.blush} />
       <Backwash cx={286} cy={138} rx={74} ry={110} seed={12} fill={SK.sky} opacity={0.55} />
       <Wash pts={stairs} seed={20} fill={SK.earth} opacity={0.5} dx={2} dy={2} />
       <InkLine pts={stairs.slice(0, -1)} seed={21} />
@@ -557,7 +557,7 @@ export function MotivationGap() {
       height={330}
       label="Two ledges with a gap between them. On the lower ledge, marked current state, a person in a plain coat stands with arms hanging. On the higher ledge across the gap, marked desired state, the same person stands upright in a camel coat on a sky wash. A bracket in the gap is marked gap, and an arrow marked act arcs from the first person over to the second."
     >
-      <Backwash cx={176} cy={176} rx={140} ry={112} seed={300} />
+      <Backwash cx={176} cy={176} rx={140} ry={112} seed={300} fill={SK.blush} />
       <Backwash cx={628} cy={92} rx={140} ry={96} seed={302} fill={SK.sky} opacity={0.55} />
       <Wash pts={low} seed={310} fill={SK.earth} opacity={0.55} />
       <InkLine pts={low.slice(1, -1)} seed={311} />

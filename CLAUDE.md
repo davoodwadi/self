@@ -40,6 +40,12 @@ Give each week a varied mix of layouts, so no two neighbouring slides feel the s
 
 Wrapping text around a visual, as magazines and textbooks do, is one option in that mix. It suits a plate with a strong outline (a beam, a slope, a triangle) and enough running prose to flow down its full height. Let the lines follow the drawing's outline (`shape-outside`) with generous space around it. Keep the text left-aligned so it breaks naturally, and on phones show the plate after its first sentence. Use it sparingly, on the slides it lifts, and keep it one choice among many rather than a house style.
 
+## Colour on slides
+
+Build hierarchy with type and space: size, weight, rules and white space. Save colour for the one thing on each slide the eye should land on, the slide's key idea; a slide with no colour at all is fine. Defined terms read clearly in bold ink. Structure (rules, tabs, labels, borders, numbering) stays in ink or grey, so colour on content has nothing competing with it. Each course's accent has one meaning across the deck. A second accent earns its place only where it marks a contrast students must see.
+
+Test: glance at a slide for two seconds. The coloured part should be the thing you want students to remember.
+
 # Slide height
 
 Every slide (the title or hero, section and chapter openers, content slides, discussion and exercise slides, and the summary) fits one screen: `min-h-svh` on its section, with the content centred vertically (`flex flex-col justify-center`), and the next slide starts on a fresh screen. Exercise screens start from a fixed top instead of being centred, so the prompt and the answer areas stay still while students work.

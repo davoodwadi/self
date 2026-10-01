@@ -31,7 +31,7 @@ export function Backwash({
   rx,
   ry,
   seed,
-  fill = SK.blush,
+  fill = SK.stone,
   opacity = 0.5,
 }: {
   cx: number;

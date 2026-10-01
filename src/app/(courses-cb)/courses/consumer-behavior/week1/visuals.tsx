@@ -115,8 +115,8 @@ export function Receipt() {
       height={H}
       label="A sketched till receipt: the line for a product is struck through, and the lines bought are feelings, problems and social needs, each ticked."
     >
-      {/* one pale blush wash behind the subject */}
-      <Wash seed={5} fill={SK.blush} opacity={0.55} dx={0} dy={0} pts={blob} />
+      {/* one pale stone wash behind the subject */}
+      <Wash seed={5} fill={SK.stone} opacity={0.55} dx={0} dy={0} pts={blob} />
 
       {/* a few scratchy strokes and an earth wash for the ground */}
       <Wash

@@ -147,7 +147,7 @@ export function Filters() {
       height={470}
       label="A plain cream mug at the top, as it is. Lines of sight run down through a band of the five senses (an eye, an ear, a nose, a hand and lips), then through three overlapping coloured lenses, the personal filters. At the bottom the same mug is tilted, washed ochre and carries a heart: as we see it."
     >
-      <Wash seed={5} fill={SK.blush} opacity={0.35} dx={0} dy={0} pts={blobPts(180, 250, 172, 226, 5)} />
+      <Wash seed={5} fill={SK.stone} opacity={0.35} dx={0} dy={0} pts={blobPts(180, 250, 172, 226, 5)} />
 
       <SketchText x={cx} y={26} anchor="middle" size={10}>
         AS IT IS
@@ -246,7 +246,7 @@ export function SelectOrganizeInterpret() {
       height={236}
       label="Four panels left to right. Sensations: twenty small ink marks of mixed shapes scattered at random. Selecting: the same scatter with seven dots washed teal. Organizing: those seven dots moved into two eyes and a smile. Interpreting: a whole smiling face washed teal."
     >
-      <Wash seed={400} fill={SK.blush} opacity={0.35} dx={0} dy={0} pts={blobPts(400, 118, 396, 112, 400, 18, 0.1)} />
+      <Wash seed={400} fill={SK.stone} opacity={0.35} dx={0} dy={0} pts={blobPts(400, 118, 396, 112, 400, 18, 0.1)} />
       {cx.slice(0, 3).map((x, i) => (
         <SketchArrow key={x} pts={[[x + 86, cy], [x + 114, cy]]} seed={420 + i * 3} head={8} />
       ))}
@@ -357,7 +357,7 @@ export function SensoryFlood() {
       height={312}
       label="A person stands in the middle, ringed by five kinds of input: sights (colour swatches), sounds (music notes), smells (rising wisps), tastes (a wrapped sweet) and textures (a woven patch). Two arrows run from each one to the person's head."
     >
-      <Wash seed={600} fill={SK.blush} opacity={0.4} dx={0} dy={0} pts={blobPts(200, 168, 194, 142, 600, 16, 0.1)} />
+      <Wash seed={600} fill={SK.stone} opacity={0.4} dx={0} dy={0} pts={blobPts(200, 168, 194, 142, 600, 16, 0.1)} />
       {src.map((c) => (
         <g key={c.t}>
           <SketchText x={c.x} y={c.y - 30} anchor="middle" size={9}>
@@ -413,7 +413,7 @@ export function SameAdTwoImpressions() {
       height={300}
       label="One billboard advertisement in the middle, showing a product box with the brand badge. Two people look up at it from either side. One thinks of a whole heart; the other thinks of a broken heart."
     >
-      <Wash seed={800} fill={SK.blush} opacity={0.4} dx={0} dy={0} pts={blobPts(200, 170, 194, 128, 800, 16, 0.1)} />
+      <Wash seed={800} fill={SK.stone} opacity={0.4} dx={0} dy={0} pts={blobPts(200, 170, 194, 128, 800, 16, 0.1)} />
       <Ground x0={30} x1={370} y={g} seed={805} />
       <Billboard x0={128} x1={272} top={46} bottom={130} ground={g} seed={810}>
         <Box x={170} bottom={118} w={40} h={58} seed={820} />
@@ -463,7 +463,7 @@ export function PerceptionFunnel() {
       height={350}
       label="A funnel lying on its side. Stage 1, Exposure, is the wide mouth holding thirty-six small marks. Stage 2, Attention, is narrower and holds eight dots. Stage 3, Interpretation, is a thin tube holding one teal dot, with an arrow leading out. Under the first two stages, marks drop out of the funnel into two piles marked filtered out."
     >
-      <Wash seed={1000} fill={SK.blush} opacity={0.35} dx={0} dy={0} pts={blobPts(400, 186, 396, 162, 1000, 18, 0.08)} />
+      <Wash seed={1000} fill={SK.stone} opacity={0.35} dx={0} dy={0} pts={blobPts(400, 186, 396, 162, 1000, 18, 0.08)} />
       {xs.map((x, i) => (
         <g key={x}>
           <SketchText x={x} y={22} anchor="middle" size={10}>

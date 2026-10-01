@@ -56,11 +56,8 @@ import {
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx (Editorial Sketch, see ../CLAUDE.md).
 //
-// SIGNAL marks what is learned, lit or recalled; COUNTER the other side of a
-// contrast (wear-out, discrimination, the discussion).
-//
-// Wayfinding: the title line says people "learn, remember, and forget", so a
-// PhaseRule strip lights the one of those three each later slide belongs to.
+// Colour is rare (see the root CLAUDE.md): each slide gives SIGNAL to at most
+// one phrase, its key idea; defined terms are bold ink and every rule is ink.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise that tests that slide
@@ -112,7 +109,7 @@ function Big({ children, className = "" }: { children: React.ReactNode; classNam
 }
 
 /** Coloured term inside a line. */
-function Term({ children, tone = "signal" }: { children: React.ReactNode; tone?: Tone }) {
+function Term({ children, tone = "ink" }: { children: React.ReactNode; tone?: Tone }) {
   return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
@@ -179,7 +176,7 @@ function Heading({
             <span
               className={cn(
                 "type-label mb-4 block !text-[0.8rem]",
-                tone === "counter" ? "!text-[var(--counter)]" : "!text-[var(--signal)]",
+                "!text-[var(--ink-3)]",
               )}
             >
               {kicker}
@@ -248,32 +245,6 @@ function Cells({
   );
 }
 
-/** Learn · Remember · Forget — the words of the title line. */
-const PHASES = ["Learn", "Remember", "Forget"];
-
-function PhaseRule({ active }: { active: number[] }) {
-  return (
-    <ol aria-hidden className="mb-8 grid w-full grid-cols-3 gap-2 sm:gap-4 md:mb-10">
-      {PHASES.map((name, i) => {
-        const on = active.includes(i);
-        return (
-          <li
-            key={name}
-            className={cn(
-              "min-w-0 border-t-2 pt-2 text-[0.72rem] font-semibold uppercase tracking-[0.14em]",
-              on
-                ? "border-[var(--signal)] text-[var(--signal)]"
-                : "border-[var(--rule)] text-[var(--ink-3)]",
-            )}
-          >
-            {name}
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
-
 /** A lede line sized to share a row with a wide plate. */
 const LEDE = "!text-[clamp(1.3rem,2vw,1.75rem)]";
 
@@ -286,7 +257,7 @@ export default function Week3() {
       <Slide id="title-slide">
         <div className="grid w-full items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
           <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--signal)]">
+            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
               Week 03
             </p>
             <p className="type-caption mt-2">Consumer Behavior · Davood Wadi, PhD</p>
@@ -310,7 +281,6 @@ export default function Week3() {
           What Is Consumer Learning?
           ================================================================ */}
       <Slide className={TIGHT} id="what-is-consumer-learning" border>
-        <PhaseRule active={[0]} />
         <Heading>What Is Consumer Learning?</Heading>
         <Lede wide plate={<ExperienceChanges />}>
           <Statement className={LEDE}>
@@ -324,7 +294,7 @@ export default function Week3() {
           items={[
             {
               key: "direct",
-              tone: "signal",
+              tone: "ink",
               plate: <DirectTry />,
               text: (
                 <>
@@ -334,7 +304,7 @@ export default function Week3() {
             },
             {
               key: "indirect",
-              tone: "signal",
+              tone: "ink",
               plate: <IndirectWatch />,
               text: (
                 <>
@@ -349,14 +319,14 @@ export default function Week3() {
               plate: <UpdateLoop />,
               text: (
                 <>
-                  Learning is an <Term tone="ink">ongoing process</Term>. Consumers constantly update
+                  Learning is an <Term>ongoing process</Term>. Consumers constantly update
                   their knowledge when they see new products.
                 </>
               ),
             },
             {
               key: "habits",
-              tone: "signal",
+              tone: "ink",
               plate: <HabitWeek />,
               text: (
                 <>
@@ -378,15 +348,14 @@ export default function Week3() {
         border
         exercise={exercise["classical-conditioning-pairing-stimuli"]}
       >
-        <PhaseRule active={[0]} />
         <Heading kicker="Classical Conditioning:">Pairing Stimuli</Heading>
         <Lede plate={<Pavlov />} cols="lg:grid-cols-[1.3fr_1fr]">
           <Statement className={cn(LEDE, "!max-w-[36ch]")}>
             Classical conditioning happens when a stimulus that brings a{" "}
-            <Tint>natural response</Tint> pairs with a <Tint tone="counter">neutral stimulus</Tint>.
+            natural response pairs with a neutral stimulus.
           </Statement>{" "}
           <P className="mt-5">
-            <Term tone="ink">Ivan Pavlov</Term> first demonstrated this with dogs, meat powder, and
+            <Term>Ivan Pavlov</Term> first demonstrated this with dogs, meat powder, and
             a bell.
           </P>
         </Lede>
@@ -401,7 +370,7 @@ export default function Week3() {
               text: (
                 <>
                   {" "}
-                  In marketing, an <Term tone="ink">unconditioned stimulus</Term> like upbeat music
+                  In marketing, an <Term>unconditioned stimulus</Term> like upbeat music
                   naturally triggers positive feelings.
                 </>
               ),
@@ -413,14 +382,14 @@ export default function Week3() {
               text: (
                 <>
                   {" "}
-                  A brand <Term tone="ink">pairs</Term> this music with its logo or product
+                  A brand <Term>pairs</Term> this music with its logo or product
                   repeatedly.
                 </>
               ),
             },
             {
               key: "conditioned",
-              tone: "signal",
+              tone: "ink",
               plate: <BrandAlone />,
               text: (
                 <>
@@ -443,18 +412,17 @@ export default function Week3() {
         border
         exercise={exercise["repetition-and-stimulus-generalization"]}
       >
-        <PhaseRule active={[0]} />
         <Heading>Repetition and Stimulus Generalization</Heading>
         <Lede wide plate={<RepetitionCurve />}>
-          <Ruled tone="signal" className="!pt-4">
+          <Ruled tone="ink" className="!pt-4">
             <P>
               Conditioning needs <Term>repetition</Term>. Repeated exposures prevent memory decay
               and strengthen the link.
             </P>
           </Ruled>
-          <Ruled tone="counter" className="mt-6 !pt-4">
+          <Ruled tone="ink" className="mt-6 !pt-4">
             <P>
-              Too much repetition causes <Term tone="counter">advertising wear-out</Term>.
+              Too much repetition causes <Term>advertising wear-out</Term>.
               Consumers tune out or get annoyed.
             </P>
           </Ruled>
@@ -465,7 +433,7 @@ export default function Week3() {
           items={[
             {
               key: "generalization",
-              tone: "signal",
+              tone: "ink",
               plate: <GeneralizationChart />,
               text: (
                 <>
@@ -476,7 +444,7 @@ export default function Week3() {
             },
             {
               key: "store-brands",
-              tone: "signal",
+              tone: "ink",
               plate: <CopyCat />,
               text: (
                 <>
@@ -487,11 +455,11 @@ export default function Week3() {
             },
             {
               key: "discrimination",
-              tone: "counter",
+              tone: "ink",
               plate: <SpotTheDifference />,
               text: (
                 <>
-                  <Term tone="counter">Stimulus discrimination</Term> occurs when a brand teaches
+                  <Term>Stimulus discrimination</Term> occurs when a brand teaches
                   consumers to spot unique differences between products.
                 </>
               ),
@@ -504,11 +472,10 @@ export default function Week3() {
           Instrumental Conditioning: Rewards and Punishments
           ================================================================ */}
       <Slide className={TIGHT} id="instrumental-conditioning-rewards-and-punishments" border>
-        <PhaseRule active={[0]} />
         <Heading kicker="Instrumental Conditioning:">Rewards and Punishments</Heading>
         <Lede plate={<InstrumentalMatrix />} cols="lg:grid-cols-[1fr_1.2fr]">
           <Lead className="text-[var(--ink-3)]">
-            Instrumental conditioning is also called <Term tone="ink">operant conditioning</Term>.
+            Instrumental conditioning is also called <Term>operant conditioning</Term>.
           </Lead>{" "}
           <Statement className={cn(LEDE, "mt-5 !max-w-[34ch]")}>
             People learn to <Tint>perform</Tint> behaviors that produce positive outcomes and{" "}
@@ -521,7 +488,7 @@ export default function Week3() {
           items={[
             {
               key: "positive",
-              tone: "signal",
+              tone: "ink",
               plate: <LoyaltyPoints />,
               text: (
                 <>
@@ -533,7 +500,7 @@ export default function Week3() {
             },
             {
               key: "negative",
-              tone: "signal",
+              tone: "ink",
               plate: <HeadacheGone />,
               text: (
                 <>
@@ -550,7 +517,7 @@ export default function Week3() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">Punishment</Term> occurs when an unpleasant event follows an
+                  <Term>Punishment</Term> occurs when an unpleasant event follows an
                   action. Late fees teach consumers not to pay bills late.
                 </>
               ),
@@ -568,12 +535,11 @@ export default function Week3() {
         border
         exercise={exercise["observational-learning-watching-others"]}
       >
-        <PhaseRule active={[0]} />
         <Heading kicker="Observational Learning:">Watching Others</Heading>
         <Lede plate={<LearnByWatching />} cols="lg:grid-cols-[1fr_1.3fr]">
           <Statement className={cn(LEDE, "!max-w-[36ch]")}>
             Consumers do not learn only from personal rewards.{" "}
-            <Tint>They also learn by watching other people.</Tint>
+            They also learn by watching other people.
           </Statement>{" "}
           <Big className="mt-5 !text-[clamp(1.15rem,1.7vw,1.45rem)]">
             This process is called <Tint>observational learning</Tint> or <Tint>modeling</Tint>.
@@ -590,7 +556,7 @@ export default function Week3() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">First</Term>, the consumer directs attention to an attractive or
+                  <Term>First</Term>, the consumer directs attention to an attractive or
                   credible model.
                 </>
               ),
@@ -602,14 +568,14 @@ export default function Week3() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">Second</Term>, the consumer remembers what the model says or
+                  <Term>Second</Term>, the consumer remembers what the model says or
                   does.
                 </>
               ),
             },
             {
               key: "action",
-              tone: "signal",
+              tone: "ink",
               plate: <CopyPurchase />,
               text: (
                 <>
@@ -632,7 +598,6 @@ export default function Week3() {
         border
         exercise={exercise["the-memory-system-three-stores"]}
       >
-        <PhaseRule active={[1]} />
         <Heading kicker="The Memory System:">Three Stores</Heading>
         <Lede wide plate={<MemoryStorageFlow />}>
           <Statement className={LEDE}>
@@ -649,7 +614,7 @@ export default function Week3() {
               tone: "ink",
               text: (
                 <>
-                  <Term tone="ink">Sensory memory</Term> holds brief sensory inputs for a few
+                  <Term>Sensory memory</Term> holds brief sensory inputs for a few
                   seconds. If an ad gets attention, it moves forward.
                 </>
               ),
@@ -659,14 +624,14 @@ export default function Week3() {
               tone: "ink",
               text: (
                 <>
-                  <Term tone="ink">Short-term memory</Term> holds a small amount of information in
+                  <Term>Short-term memory</Term> holds a small amount of information in
                   active consciousness for about twenty seconds.
                 </>
               ),
             },
             {
               key: "chunking",
-              tone: "signal",
+              tone: "ink",
               plate: <Chunking />,
               text: (
                 <>
@@ -677,7 +642,7 @@ export default function Week3() {
             },
             {
               key: "long-term",
-              tone: "signal",
+              tone: "ink",
               text: (
                 <>
                   <Term>Long-term memory</Term> retains information for days, months, or years
@@ -693,14 +658,13 @@ export default function Week3() {
           Associative Networks and Brand Nodes
           ================================================================ */}
       <Slide className={TIGHT} id="associative-networks-and-brand-nodes" border>
-        <PhaseRule active={[1]} />
         <Heading>Associative Networks and Brand Nodes</Heading>
         <Lede plate={<SpiderWeb />} cols="lg:grid-cols-[1.4fr_1fr]">
           <Statement className={LEDE}>
             Long-term memory stores knowledge as an <Tint>associative network</Tint>.
           </Statement>{" "}
           <P className="mt-5">
-            Think of memory as a <Term tone="ink">spider web of connected nodes</Term>. Each node
+            Think of memory as a <Term>spider web of connected nodes</Term>. Each node
             represents a concept, brand, or feeling.
           </P>
         </Lede>
@@ -710,7 +674,7 @@ export default function Week3() {
           items={[
             {
               key: "nike",
-              tone: "signal",
+              tone: "ink",
               plate: <BrandAssociativeNetwork />,
               text: (
                 <>
@@ -721,7 +685,7 @@ export default function Week3() {
             },
             {
               key: "spreading",
-              tone: "signal",
+              tone: "ink",
               plate: <SpreadingActivation />,
               text: (
                 <>
@@ -732,7 +696,7 @@ export default function Week3() {
             },
             {
               key: "strong",
-              tone: "signal",
+              tone: "ink",
               plate: <StrongLinks />,
               text: (
                 <>
@@ -749,7 +713,6 @@ export default function Week3() {
           Brand Retrieval and Cues in the Aisle
           ================================================================ */}
       <Slide className={TIGHT} id="brand-retrieval-and-cues-in-the-aisle" border>
-        <PhaseRule active={[1]} />
         <Heading>Brand Retrieval and Cues in the Aisle</Heading>
         <Lede plate={<Retrieve />} cols="lg:grid-cols-[1.4fr_1fr]">
           <Statement className={LEDE}>
@@ -757,7 +720,7 @@ export default function Week3() {
             <Tint>cannot retrieve it</Tint> at the point of purchase.
           </Statement>{" "}
           <P className="mt-5">
-            <Term tone="ink">Retrieval</Term> is the process of accessing information from
+            <Term>Retrieval</Term> is the process of accessing information from
             long-term memory.
           </P>
         </Lede>
@@ -767,7 +730,7 @@ export default function Week3() {
           items={[
             {
               key: "cues",
-              tone: "signal",
+              tone: "ink",
               plate: <RetrievalCues />,
               text: (
                 <>
@@ -789,7 +752,7 @@ export default function Week3() {
             },
             {
               key: "mood",
-              tone: "signal",
+              tone: "ink",
               plate: <MoodMatch />,
               text: (
                 <>
@@ -824,7 +787,7 @@ export default function Week3() {
               group of brands the consumer seriously considers.
             </P>{" "}
             <P className="mt-2">
-              A brand that is <Term tone="ink">missing from the answer</Term> may never be
+              A brand that is <Term>missing from the answer</Term> may never be
               considered, even if the consumer knows it.
             </P>
           </div>
@@ -842,14 +805,14 @@ export default function Week3() {
                 <>
                   The assistant learns about brands from what is written about them, such as
                   reviews, articles, and product pages. In this way, the assistant also forms{" "}
-                  <Term tone="ink">links between brands and attributes</Term>, much like an
+                  <Term>links between brands and attributes</Term>, much like an
                   associative network.
                 </>
               ),
             },
             {
               key: "cues",
-              tone: "signal" as Tone,
+              tone: "ink" as Tone,
               plate: <CueInQuestion />,
               text: (
                 <>
@@ -872,7 +835,7 @@ export default function Week3() {
             </li>
           ))}
         </ol>
-        <Ruled tone="signal" className="mt-6 w-full !pt-3">
+        <Ruled tone="ink" className="mt-6 w-full !pt-3">
           <P className="!max-w-none !text-[clamp(1.05rem,1.4vw,1.25rem)]">
             Marketers therefore work to <Term>link their brands clearly</Term> to the needs that
             consumers mention in their questions.
@@ -884,7 +847,6 @@ export default function Week3() {
           Why Consumers Forget
           ================================================================ */}
       <Slide className={TIGHT} id="why-consumers-forget" border>
-        <PhaseRule active={[2]} />
         <Heading>Why Consumers Forget</Heading>
         <Lede wide plate={<ForgettingCurve />} cols="lg:grid-cols-[1fr_1.5fr]">
           <Statement className={LEDE}>
@@ -901,14 +863,14 @@ export default function Week3() {
               plate: <Interference />,
               text: (
                 <>
-                  <Term tone="ink">Interference</Term> also causes forgetting. New brand ads
+                  <Term>Interference</Term> also causes forgetting. New brand ads
                   displace memories of older brand messages.
                 </>
               ),
             },
             {
               key: "retroactive",
-              tone: "signal",
+              tone: "ink",
               plate: <Retroactive />,
               text: (
                 <>
@@ -919,7 +881,7 @@ export default function Week3() {
             },
             {
               key: "proactive",
-              tone: "signal",
+              tone: "ink",
               plate: <Proactive />,
               text: (
                 <>
@@ -932,9 +894,9 @@ export default function Week3() {
         />
         <div className="mt-8 w-full">
           <Lede wide plate={<FightForgetting />} cols="lg:grid-cols-[1fr_1.5fr]">
-            <Ruled tone="counter">
+            <Ruled tone="ink">
               <Big className="!text-[clamp(1.2rem,1.8vw,1.55rem)]">
-                Marketers <Tint tone="counter">fight forgetting</Tint> with consistent visual
+                Marketers fight forgetting with consistent visual
                 identity, reminder ads, and clear shelf placement.
               </Big>
             </Ruled>
@@ -955,7 +917,7 @@ export default function Week3() {
               Discussion:
             </span>{" "}
             Pick a brand you buy regularly.{" "}
-            <Tint tone="counter">What four associations pop into your mind first?</Tint> Did the
+            What four associations pop into your mind first? Did the
             brand teach you these links through conditioning, observation, or personal experience?
           </p>
         </div>

@@ -47,11 +47,8 @@ import {
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx (Editorial Sketch, see ../CLAUDE.md).
 //
-// SIGNAL marks what gets through (noticed, detected, the sense beyond sight
-// and sound), COUNTER the other view (the unnoticed change, the sign).
-//
-// Wayfinding: once the three stages are taught, a StageRule strip lights the
-// stage each later slide belongs to.
+// Colour is rare (see the root CLAUDE.md): each slide gives SIGNAL to at most
+// one phrase, its key idea; defined terms are bold ink and every rule is ink.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise that tests that slide
@@ -103,7 +100,7 @@ function Big({ children, className = "" }: { children: React.ReactNode; classNam
 }
 
 /** Coloured term inside a line. */
-function Term({ children, tone = "signal" }: { children: React.ReactNode; tone?: Tone }) {
+function Term({ children, tone = "ink" }: { children: React.ReactNode; tone?: Tone }) {
   return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
@@ -170,7 +167,7 @@ function Heading({
             <span
               className={cn(
                 "type-label mb-4 block !text-[0.8rem]",
-                tone === "counter" ? "!text-[var(--counter)]" : "!text-[var(--signal)]",
+                "!text-[var(--ink-3)]",
               )}
             >
               {kicker}
@@ -217,32 +214,6 @@ function Cells({
   );
 }
 
-/** Exposure · Attention · Interpretation — the stage each slide belongs to. */
-const STAGE_NAMES = ["Exposure", "Attention", "Interpretation"];
-
-function StageRule({ active }: { active: number[] }) {
-  return (
-    <ol aria-hidden className="mb-8 grid w-full grid-cols-3 gap-2 sm:gap-4 md:mb-10">
-      {STAGE_NAMES.map((name, i) => {
-        const on = active.includes(i);
-        return (
-          <li
-            key={name}
-            className={cn(
-              "min-w-0 border-t-2 pt-2 text-[0.72rem] font-semibold uppercase tracking-[0.14em]",
-              on
-                ? "border-[var(--signal)] text-[var(--signal)]"
-                : "border-[var(--rule)] text-[var(--ink-3)]",
-            )}
-          >
-            {name}
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
-
 export default function Week2() {
   return (
     <SlideDeck label="Week 02">
@@ -252,7 +223,7 @@ export default function Week2() {
       <Slide id="title-slide">
         <div className="grid w-full items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
           <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--signal)]">
+            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
               Week 02
             </p>
             <p className="type-caption mt-2">Consumer Behavior · Davood Wadi, PhD</p>
@@ -293,7 +264,7 @@ export default function Week2() {
             <Ruled tone="ink" className="!pt-4">
               <P>Raw sensory inputs reach our sensory organs every second.</P>{" "}
               <P className="mt-2">
-                <Term tone="ink">Sights, sounds, smells, tastes, and textures</Term> flood our
+                <Term>Sights, sounds, smells, tastes, and textures</Term> flood our
                 environment.
               </P>
             </Ruled>
@@ -302,12 +273,12 @@ export default function Week2() {
             </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
-            <Ruled tone="signal" className="!pt-4">
+            <Ruled tone="ink" className="!pt-4">
               <P>
-                Perception creates <Term>meaning</Term> out of this <Term tone="ink">chaos</Term>.
+                Perception creates <Term>meaning</Term> out of this <Term>chaos</Term>.
               </P>{" "}
               <P className="mt-2">
-                Two people exposed to the <Term tone="ink">exact same advertisement</Term> often
+                Two people exposed to the <Term>exact same advertisement</Term> often
                 walk away with <Term>completely different impressions</Term>.
               </P>
             </Ruled>
@@ -327,7 +298,6 @@ export default function Week2() {
         border
         exercise={exercise["the-three-stages-of-perception"]}
       >
-        <StageRule active={[0, 1, 2]} />
         <Heading>The Three Stages of Perception</Heading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_2.2fr] lg:gap-12">
           <Statement>Perception occurs in three sequential stages.</Statement>
@@ -354,13 +324,12 @@ export default function Week2() {
               key={s.stage}
               className={cn(
                 "min-w-0 border-t-2 pt-4",
-                i === 2 ? "border-[var(--signal)]" : "border-[var(--ink)]",
+                "border-[var(--ink)]",
               )}
             >
               <p
                 className={cn(
                   "type-h2 !font-normal !text-[clamp(1.25rem,1.9vw,1.6rem)]",
-                  i === 2 && "text-[var(--signal)]",
                 )}
               >
                 {s.stage}
@@ -381,7 +350,6 @@ export default function Week2() {
           Sensory Marketing: Beyond Sight and Sound
           ================================================================ */}
       <Slide className={TIGHT} id="sensory-marketing-beyond-sight-and-sound" border>
-        <StageRule active={[0]} />
         <Heading kicker="Sensory Marketing:">Beyond Sight and Sound</Heading>
         <Statement className="!max-w-[40ch]">
           Sensory marketing engages the consumer&apos;s <Tint>senses</Tint> to influence their
@@ -398,7 +366,7 @@ export default function Week2() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">Sight</Term> creates visual identity, package recognition, and
+                  <Term>Sight</Term> creates visual identity, package recognition, and
                   color associations.
                 </>
               ),
@@ -410,14 +378,14 @@ export default function Week2() {
               text: (
                 <>
                   {" "}
-                  <Term tone="ink">Sound</Term> shapes shopping tempo and brand memory through
+                  <Term>Sound</Term> shapes shopping tempo and brand memory through
                   musical jingles.
                 </>
               ),
             },
             {
               key: "smell",
-              tone: "signal",
+              tone: "ink",
               plate: <SmellVignette />,
               text: (
                 <>
@@ -429,7 +397,7 @@ export default function Week2() {
             },
             {
               key: "touch",
-              tone: "signal",
+              tone: "ink",
               plate: <TouchVignette />,
               text: (
                 <>
@@ -441,7 +409,7 @@ export default function Week2() {
             },
             {
               key: "taste",
-              tone: "signal",
+              tone: "ink",
               plate: <TasteVignette />,
               text: (
                 <>
@@ -464,7 +432,6 @@ export default function Week2() {
         border
         exercise={exercise["sensory-thresholds-the-limits-of-awareness"]}
       >
-        <StageRule active={[0]} />
         <Heading kicker="Sensory Thresholds:">The Limits of Awareness</Heading>
         <Lead>Senses have physical and psychological limits.</Lead>
         <Cells
@@ -473,7 +440,7 @@ export default function Week2() {
           items={[
             {
               key: "absolute",
-              tone: "signal",
+              tone: "ink",
               plate: <AbsoluteThreshold />,
               text: (
                 <>
@@ -495,11 +462,11 @@ export default function Week2() {
             },
             {
               key: "differential",
-              tone: "counter",
+              tone: "ink",
               plate: <JndLadder />,
               text: (
                 <>
-                  The <Term tone="counter">differential threshold</Term> is the ability of a
+                  The <Term>differential threshold</Term> is the ability of a
                   sensory system to detect changes or differences between two stimuli.{" "}
                   <span className="mt-2 block">
                     The minimum difference between two stimuli needed for detection is called the{" "}
@@ -521,7 +488,6 @@ export default function Week2() {
         border
         exercise={exercise["webers-law-when-differences-matter"]}
       >
-        <StageRule active={[0]} />
         <Heading kicker="Weber's Law:">When Differences Matter</Heading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
           <div className="min-w-0">
@@ -544,7 +510,7 @@ export default function Week2() {
           items={[
             {
               key: "candy",
-              tone: "signal",
+              tone: "ink",
               plate: <CandyJump />,
               text: (
                 <>
@@ -560,24 +526,24 @@ export default function Week2() {
               text: (
                 <>
                   A ten-cent price increase on a thousand-dollar laptop will go{" "}
-                  <Term tone="ink">completely unnoticed</Term>.
+                  <Term>completely unnoticed</Term>.
                 </>
               ),
             },
             {
               key: "below",
-              tone: "counter",
+              tone: "ink",
               plate: <StayBelow />,
               text: (
                 <>
-                  Marketers <Term tone="counter">stay below the JND</Term> when shrinking package
+                  Marketers <Term>stay below the JND</Term> when shrinking package
                   sizes or raising prices slightly.
                 </>
               ),
             },
             {
               key: "exceed",
-              tone: "signal",
+              tone: "ink",
               plate: <Exceed />,
               text: (
                 <>
@@ -594,7 +560,6 @@ export default function Week2() {
           Attention: The Battle for Mental Energy
           ================================================================ */}
       <Slide className={TIGHT} id="attention-the-battle-for-mental-energy" border>
-        <StageRule active={[1]} />
         <Heading kicker="Attention:">The Battle for Mental Energy</Heading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.9fr] lg:gap-12">
           <Big className="!text-[clamp(1.3rem,2vw,1.75rem)]">
@@ -615,14 +580,14 @@ export default function Week2() {
               plate: <SkipAd />,
               text: (
                 <>
-                  <Term tone="ink">Selective exposure</Term> means consumers choose what media and
+                  <Term>Selective exposure</Term> means consumers choose what media and
                   messages they see or avoid.
                 </>
               ),
             },
             {
               key: "vigilance",
-              tone: "signal",
+              tone: "ink",
               plate: <Vigilance />,
               text: (
                 <>
@@ -633,7 +598,7 @@ export default function Week2() {
             },
             {
               key: "defense",
-              tone: "signal",
+              tone: "ink",
               plate: <Defense />,
               text: (
                 <>
@@ -649,7 +614,7 @@ export default function Week2() {
               plate: <Adaptation />,
               text: (
                 <>
-                  <Term tone="ink">Adaptation</Term> occurs when consumers no with time stop paying
+                  <Term>Adaptation</Term> occurs when consumers no with time stop paying
                   attention to familiar stimuli.
                 </>
               ),
@@ -681,11 +646,11 @@ export default function Week2() {
               ratings, and reviews.
             </P>
             <P>
-              For an AI agent, <Term tone="ink">exposure</Term> means the product information is
+              For an AI agent, <Term>exposure</Term> means the product information is
               available for the agent to read.
             </P>
             <P>
-              A product with <Term tone="counter">missing or unclear details</Term> may never reach
+              A product with <Term>missing or unclear details</Term> may never reach
               the agent&apos;s attention.
             </P>
           </div>
@@ -704,14 +669,14 @@ export default function Week2() {
               plate: <EyeLevelTopResult />,
               text: (
                 <>
-                  Shoppers notice products at <Term tone="ink">eye level</Term> on a shelf and at
-                  the <Term tone="ink">top of a search results page</Term> more often.
+                  Shoppers notice products at <Term>eye level</Term> on a shelf and at
+                  the <Term>top of a search results page</Term> more often.
                 </>
               ),
             },
             {
               key: "agents",
-              tone: "signal" as Tone,
+              tone: "ink" as Tone,
               plate: <AgentTopResult />,
               text: (
                 <>
@@ -733,7 +698,7 @@ export default function Week2() {
             </li>
           ))}
         </ol>
-        <Ruled tone="signal" className="mt-5 w-full !pt-3">
+        <Ruled tone="ink" className="mt-5 w-full !pt-3">
           <P className="!max-w-none !text-[clamp(1.05rem,1.4vw,1.25rem)]">
             <Term>Sensory marketing still matters</Term>, because the consumer uses the product
             with all five senses after the sale.
@@ -750,7 +715,6 @@ export default function Week2() {
         border
         exercise={exercise["interpretation-and-gestalt-principles"]}
       >
-        <StageRule active={[2]} />
         <Heading>Interpretation and Gestalt Principles</Heading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
           <div className="min-w-0">
@@ -759,7 +723,7 @@ export default function Week2() {
               <Tint>They organize them into patterns.</Tint>
             </Statement>{" "}
             <P className="mt-5">
-              <Term tone="ink">Gestalt psychology</Term> explains how people construct whole
+              <Term>Gestalt psychology</Term> explains how people construct whole
               meanings from individual elements.
             </P>
           </div>
@@ -773,7 +737,7 @@ export default function Week2() {
           items={[
             {
               key: "closure",
-              tone: "signal",
+              tone: "ink",
               plate: <Closure />,
               text: (
                 <>
@@ -785,7 +749,7 @@ export default function Week2() {
             },
             {
               key: "similarity",
-              tone: "signal",
+              tone: "ink",
               plate: <Similarity />,
               text: (
                 <>
@@ -797,7 +761,7 @@ export default function Week2() {
             },
             {
               key: "figure-ground",
-              tone: "signal",
+              tone: "ink",
               plate: <FigureGround />,
               text: (
                 <>
@@ -815,7 +779,6 @@ export default function Week2() {
           Semiotics: The Meaning of Marketing Messages
           ================================================================ */}
       <Slide className={TIGHT} id="semiotics-the-meaning-of-marketing-messages" border>
-        <StageRule active={[2]} />
         <Heading kicker="Semiotics:">The Meaning of Marketing Messages</Heading>
         {/* The triangle sits beside the lines it draws; on phones it follows
             the definition of semiotics, before the three parts. */}
@@ -834,17 +797,17 @@ export default function Week2() {
               <li className="min-w-0 border-t-2 border-[var(--ink)] pt-3">
                 <p className="type-body">
                   {" "}
-                  An <Term tone="ink">object</Term> is the actual product being promoted.
+                  An <Term>object</Term> is the actual product being promoted.
                 </p>
               </li>
-              <li className="min-w-0 border-t-2 border-[var(--counter)] pt-3">
+              <li className="min-w-0 border-t-2 border-[var(--ink)] pt-3">
                 <p className="type-body">
                   {" "}
-                  A <Term tone="counter">sign</Term> is the sensory image or symbol representing
+                  A <Term>sign</Term> is the sensory image or symbol representing
                   the intended meaning.
                 </p>
               </li>
-              <li className="min-w-0 border-t-2 border-[var(--signal)] pt-3">
+              <li className="min-w-0 border-t-2 border-[var(--ink)] pt-3">
                 <p className="type-body">
                   {" "}
                   An <Term>interpretant</Term> is the meaning or feeling derived by the consumer
@@ -854,10 +817,10 @@ export default function Week2() {
             </ol>
           </div>
         </div>
-        <Ruled tone="signal" className="mt-10 w-full">
+        <Ruled tone="ink" className="mt-10 w-full">
           <Statement className="!max-w-[46ch] !text-[clamp(1.2rem,1.8vw,1.5rem)]">
-            A luxury watch ad uses an image of an <Tint tone="counter">eagle</Tint> to signify{" "}
-            <Tint>freedom and prestige</Tint>.
+            A luxury watch ad uses an image of an eagle to signify{" "}
+            freedom and prestige.
           </Statement>
         </Ruled>
       </Slide>
@@ -875,9 +838,9 @@ export default function Week2() {
               Discussion:
             </span>{" "}
             Name a brand that you recognize instantly{" "}
-            <Tint tone="counter">without seeing its name or logo</Tint>. Does it use a signature
+            without seeing its name or logo. Does it use a signature
             scent, a distinct jingle, a unique bottle shape, or a specific color?{" "}
-            <Tint>How does that sensory cue build brand recall?</Tint>
+            How does that sensory cue build brand recall?
           </p>
         </div>
         <Plate wide className="mt-8">

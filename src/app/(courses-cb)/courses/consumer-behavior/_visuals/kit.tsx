@@ -18,7 +18,8 @@ export const SK = {
   teal: "#5E9C94", // the one cool accent: what is chosen, learned, lit
   ochre: "#E8B84A", // small highlights, badges, logos
   charcoal: "#3E3A4A", // trousers, dark fabric
-  blush: "#F2C9B0", // background wash
+  stone: "#D0C7B5", // the default background wash: a quiet warm neutral
+  blush: "#F2C9B0", // the here and now, set against a sky wash; warm details
   sky: "#BFD6DF", // glass, background wash
   earth: "#C9B8A6", // ground wash
   pencil: "#6F7785", // anything unreal, imagined, dashed

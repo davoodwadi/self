@@ -1,0 +1,336 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "the-abc-model-feeling-doing-and-thinking",
+    "prompt": "Each card is one thing a consumer says or does about a brand. Is it affect, behavior, or cognition?",
+    "bins": [
+      { "id": "affect", "label": "Affect" },
+      { "id": "behavior", "label": "Behavior" },
+      { "id": "cognition", "label": "Cognition" }
+    ],
+    "cards": [
+      {
+        "id": "love-smell",
+        "text": "\"I just love the smell of this shampoo.\"",
+        "bin": "affect",
+        "explanation": "Affect: a feeling toward the product."
+      },
+      {
+        "id": "nervous-airline",
+        "text": "\"Flying with that airline makes me nervous.\"",
+        "bin": "affect",
+        "explanation": "Affect: an emotion toward the brand."
+      },
+      {
+        "id": "proud-bike",
+        "text": "\"I feel proud every time I ride my new bike.\"",
+        "bin": "affect",
+        "explanation": "Affect: a feeling the object brings up."
+      },
+      {
+        "id": "told-sister",
+        "text": "Ana tells her sister to try the café on the corner.",
+        "bin": "behavior",
+        "explanation": "Behavior: recommending is an action toward the brand."
+      },
+      {
+        "id": "skip-brand",
+        "text": "Omar walks past the energy drink he had a bad experience with.",
+        "bin": "behavior",
+        "explanation": "Behavior: avoiding a brand is an action."
+      },
+      {
+        "id": "plan-to-buy",
+        "text": "\"I'm going to buy that laptop when it goes on sale.\"",
+        "bin": "behavior",
+        "explanation": "Behavior: an intention to buy counts as behavior."
+      },
+      {
+        "id": "battery-lasts",
+        "text": "\"I believe this phone's battery lasts two full days.\"",
+        "bin": "cognition",
+        "explanation": "Cognition: a belief about the product."
+      },
+      {
+        "id": "pricier-store",
+        "text": "\"That store brand costs less than the national brand.\"",
+        "bin": "cognition",
+        "explanation": "Cognition: a thought about the product's price."
+      },
+      {
+        "id": "made-locally",
+        "text": "\"I think this yogurt is made locally.\"",
+        "bin": "cognition",
+        "explanation": "Cognition: a belief about where the product comes from."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "four-functions-of-attitudes",
+    "prompt": "Match each function of attitudes with the consumer whose attitude serves it.",
+    "term_label": "Function",
+    "match_label": "Consumer",
+    "pairs": [
+      {
+        "id": "utilitarian",
+        "term": "Utilitarian",
+        "match": "Lena likes her bank because it charges no monthly fees.",
+        "explanation": "Utilitarian: the attitude rests on gaining a benefit and avoiding a cost."
+      },
+      {
+        "id": "value-expressive",
+        "term": "Value-expressive",
+        "match": "Malik wears only second-hand clothes to show that he cares about the planet.",
+        "explanation": "Value-expressive: the attitude communicates his values and self-image."
+      },
+      {
+        "id": "ego-defensive",
+        "term": "Ego-defensive",
+        "match": "Before a first date, Jo buys a strong mouthwash so she won't feel embarrassed.",
+        "explanation": "Ego-defensive: the attitude protects her self-esteem from an uncomfortable threat."
+      },
+      {
+        "id": "knowledge",
+        "term": "Knowledge",
+        "match": "In a country he has never visited, Chen picks the one supermarket chain he recognizes, because he knows what to expect inside.",
+        "explanation": "Knowledge: the attitude organizes information and makes an unfamiliar situation easier to understand."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "how-attitudes-form-three-hierarchies",
+    "prompt": "Each case describes how an attitude formed. Which hierarchy is it?",
+    "options": [
+      { "id": "standard", "label": "Standard learning" },
+      { "id": "low", "label": "Low involvement" },
+      { "id": "experiential", "label": "Experiential" }
+    ],
+    "cases": [
+      {
+        "id": "fridge",
+        "text": "Before buying a refrigerator, Sara compares energy ratings and reviews for weeks, comes to prefer one model, and then buys it.",
+        "answer": "standard",
+        "explanation": "Standard learning: think, feel, then act."
+      },
+      {
+        "id": "batteries",
+        "text": "Tom grabs a pack of batteries at the checkout after a glance at the price. Only after using them does he decide he likes the brand.",
+        "answer": "low",
+        "explanation": "Low involvement: think briefly, act, then develop a feeling."
+      },
+      {
+        "id": "concert",
+        "text": "Mia hears a song she loves, buys concert tickets on the spot, and later tells friends the band's lyrics are clever.",
+        "answer": "experiential",
+        "explanation": "Experiential: feel, act, then explain."
+      },
+      {
+        "id": "insurance",
+        "text": "Raj reads every policy detail for three insurers, decides which one he trusts, and then signs up.",
+        "answer": "standard",
+        "explanation": "Standard learning: beliefs come first, then a feeling, then the purchase."
+      },
+      {
+        "id": "jacket",
+        "text": "Elena tries on a jacket, loves how it feels, buys it, and only at home lists its good points to herself.",
+        "answer": "experiential",
+        "explanation": "Experiential: the feeling leads, the action follows, and the explanation comes last."
+      },
+      {
+        "id": "dish-soap",
+        "text": "Leo picks the dish soap on the end of the aisle without much thought. After a month of using it, he finds he prefers it.",
+        "answer": "low",
+        "explanation": "Low involvement: a brief thought, a purchase, then a feeling."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "who-delivers-the-message-changes-its-impact",
+    "prompt": "Each card describes the source of a message. Does its impact come from expertise, trustworthiness, or attractiveness?",
+    "bins": [
+      { "id": "expertise", "label": "Expertise" },
+      { "id": "trustworthiness", "label": "Trustworthiness" },
+      { "id": "attractiveness", "label": "Attractiveness" }
+    ],
+    "cards": [
+      {
+        "id": "dentist",
+        "text": "A dentist explains how a toothpaste protects enamel.",
+        "bin": "expertise",
+        "explanation": "Expertise: the source seems knowledgeable."
+      },
+      {
+        "id": "mechanic",
+        "text": "A race-car mechanic recommends a brand of motor oil.",
+        "bin": "expertise",
+        "explanation": "Expertise: the source knows the subject."
+      },
+      {
+        "id": "pros-cons",
+        "text": "A reviewer admits the headphones feel tight but still recommends them.",
+        "bin": "trustworthiness",
+        "explanation": "Trustworthiness: naming a downside makes the source seem honest."
+      },
+      {
+        "id": "not-paid",
+        "text": "A blogger says she paid for the stroller herself and was not sponsored.",
+        "bin": "trustworthiness",
+        "explanation": "Trustworthiness: the source seems honest and dependable."
+      },
+      {
+        "id": "same-student",
+        "text": "A campus ad shows a student who looks and talks like the students watching it.",
+        "bin": "attractiveness",
+        "explanation": "Attractiveness: similarity between the source and the audience."
+      },
+      {
+        "id": "seen-everywhere",
+        "text": "An actor viewers have seen in many commercials appears in a new one.",
+        "bin": "attractiveness",
+        "explanation": "Attractiveness: familiarity with the source."
+      },
+      {
+        "id": "warm-host",
+        "text": "A cheerful, friendly TV host presents a cooking brand.",
+        "bin": "attractiveness",
+        "explanation": "Attractiveness: likability of the source."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "ai-as-a-message-source-aversion-and-appreciation",
+    "prompt": "Each case shows a consumer taking advice from an AI system. Is it algorithm aversion, algorithm appreciation, or an AI that seems expert but not trustworthy?",
+    "options": [
+      { "id": "aversion", "label": "Algorithm aversion" },
+      { "id": "appreciation", "label": "Algorithm appreciation" },
+      { "id": "untrusted", "label": "Expert but not trustworthy" }
+    ],
+    "cases": [
+      {
+        "id": "weather-app",
+        "text": "After a weather app wrongly predicts sun once, Priya stops checking it. Her neighbor's forecasts are wrong just as often, but she still asks him.",
+        "answer": "aversion",
+        "explanation": "Algorithm aversion: after one mistake, she loses confidence in the algorithm faster than in the person."
+      },
+      {
+        "id": "calorie-estimate",
+        "text": "Asked to guess the calories in a meal, Ben changes his answer more when the suggested number is labelled as coming from an algorithm than when it is labelled as coming from another diner.",
+        "answer": "appreciation",
+        "explanation": "Algorithm appreciation: for a numerical estimate, he follows advice more when it comes from an algorithm."
+      },
+      {
+        "id": "travel-assistant",
+        "text": "A travel assistant knows every flight and fare, but Kim cannot tell whether it is paid to push one airline, so she double-checks every suggestion.",
+        "answer": "untrusted",
+        "explanation": "The AI seems expert but not trustworthy, because Kim does not know whose interests it serves."
+      },
+      {
+        "id": "route-mistake",
+        "text": "Carlos's navigation app sends him into one traffic jam, and he switches it off for good, though he keeps following a friend who gave him a bad route last week.",
+        "answer": "aversion",
+        "explanation": "Algorithm aversion: the same mistake costs the algorithm more trust than the person."
+      },
+      {
+        "id": "room-size",
+        "text": "Estimating how much paint a room needs, Nadia takes the algorithm's number over the store clerk's.",
+        "answer": "appreciation",
+        "explanation": "Algorithm appreciation: in a numerical estimate, she follows the algorithm's advice."
+      },
+      {
+        "id": "shopping-agent",
+        "text": "A shopping agent gives detailed, accurate product comparisons, but Aisha does not know whether the store that runs it ranks its own products first.",
+        "answer": "untrusted",
+        "explanation": "Expert but not trustworthy: credibility needs trustworthiness, and she does not know whose interests the agent serves."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "framing-changes-what-the-audience-notices",
+    "prompt": "Each card is a line from a message. Is it a positive frame or a negative frame?",
+    "bins": [
+      { "id": "positive", "label": "Positive frame" },
+      { "id": "negative", "label": "Negative frame" }
+    ],
+    "cards": [
+      {
+        "id": "brighter-smile",
+        "text": "\"Get a brighter smile in two weeks.\"",
+        "bin": "positive",
+        "explanation": "Positive frame: it emphasizes a desirable result."
+      },
+      {
+        "id": "dont-lose-data",
+        "text": "\"Don't lose your photos when your phone breaks.\"",
+        "bin": "negative",
+        "explanation": "Negative frame: it emphasizes a loss that may follow inaction."
+      },
+      {
+        "id": "earn-points",
+        "text": "\"Earn double points on every purchase this month.\"",
+        "bin": "positive",
+        "explanation": "Positive frame: it emphasizes a gain."
+      },
+      {
+        "id": "skin-damage",
+        "text": "\"Without sunscreen, one afternoon can damage your skin for years.\"",
+        "bin": "negative",
+        "explanation": "Negative frame: it emphasizes a risk."
+      },
+      {
+        "id": "fat-free",
+        "text": "\"95% fat-free.\"",
+        "bin": "positive",
+        "explanation": "Positive frame: it presents the fact as a benefit."
+      },
+      {
+        "id": "missing-out",
+        "text": "\"Every day without insulation, heat leaks out of your home.\"",
+        "bin": "negative",
+        "explanation": "Negative frame: it emphasizes the problem that follows inaction."
+      },
+      {
+        "id": "more-energy",
+        "text": "\"Wake up with more energy every morning.\"",
+        "bin": "positive",
+        "explanation": "Positive frame: it emphasizes a benefit."
+      },
+      {
+        "id": "late-fees",
+        "text": "\"Stop paying late fees you could have avoided.\"",
+        "bin": "negative",
+        "explanation": "Negative frame: it emphasizes a cost."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "measuring-the-attitudes-of-ai-models",
+    "question_text": "A brand team wants to know how a shopping assistant's AI model feels about its products. They ask the model once to rate \"This brand is trustworthy\" on a 1–7 scale, and it answers 6. Which conclusion fits the slide?",
+    "hint": "Think about how a model answers the same question more than once, and what an attitude in a model is.",
+    "correct_answer_citation": "Week 06 · Measuring the Attitudes of AI Models",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "The model's attitude toward the brand is 6, so the team can report it",
+        "option_explanation": "A model does not give one fixed answer. A single answer can mislead."
+      },
+      {
+        "option_text": "The model feels warmly toward the brand",
+        "option_explanation": "An attitude in a model is a pattern in its answers. It is not a feeling that the model experiences."
+      },
+      {
+        "option_text": "The team should ask the same question many times, or read the probability the model assigns to each point, before drawing a conclusion",
+        "option_explanation": "Correct. Reliable measurement asks the question many times, or reads the probability the model assigns to each point on the scale."
+      },
+      {
+        "option_text": "Any other developer's model would give the same rating, so one model is enough",
+        "option_explanation": "Measured reliably, models from different developers held different attitudes on the same consumer attitude scale."
+      }
+    ]
+  }
+]

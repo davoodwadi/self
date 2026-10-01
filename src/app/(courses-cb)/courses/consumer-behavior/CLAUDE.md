@@ -45,7 +45,7 @@ A quick, confident sketch from a fashion or magazine illustrator: ink and waterc
 - Washes roughly follow each shape but don't sit perfectly inside it. They spill slightly past the lines, fall a little short, and sit a touch off-register, so paper shows through.
 - Each area is one flat, slightly translucent colour: no gradients, no shading, no highlights, no drop shadows.
 - Some shapes stay uncoloured, just ink on paper. Not everything needs a wash.
-- Behind the main subject sits one large, pale wash (`SK.blush` behind a person or object, `SK.sky` behind glass), a ragged `blobPts` patch that spills visibly past the subject.
+- Behind the main subject sits one large, pale wash (`SK.stone` behind a person or object, `SK.sky` behind glass), a ragged `blobPts` patch that spills visibly past the subject. The neutral wash lets the slide's one accent and the plate's teal subject carry the colour.
 - A few scratchy pen strokes over a pale `SK.earth` wash suggest the ground. No full floor or background scene.
 
 ## Palette (`SK`)
@@ -64,7 +64,8 @@ Muted, earthy and warm, with one cool accent. About five colours per plate.
 | `teal` | the cool accent (see colour roles) | `#5E9C94` |
 | `ochre` | small highlights, badges, logos | `#E8B84A` |
 | `charcoal` | trousers, dark fabric | `#3E3A4A` |
-| `blush` | background wash | `#F2C9B0` |
+| `stone` | the default background wash | `#D0C7B5` |
+| `blush` | the here and now beside a `sky` wash; warm details | `#F2C9B0` |
 | `sky` | glass, background wash | `#BFD6DF` |
 | `earth` | ground wash | `#C9B8A6` |
 | `pencil` | absent objects and placeholders | `#6F7785` |
@@ -76,7 +77,8 @@ No saturated brights, no neons, no pure black, no CSS variables (`var(--signal)`
 - **`teal`**: the thing chosen, bought, learned, lit or ticked (the ticks on the Receipt). Only one teal subject per plate, never decoration.
 - **`ochre`** marks a small highlight, a count or a badge (the "3" on the Receipt) and the course's brand badge.
 - **`pencil`** is an absent object: not bought, taken away, an empty slot, a placeholder. Never a person, a self or a feeling.
-- **`sky`** as a background wash marks a hope, an ideal or a daydream; **`blush`** the here and now.
+- **`stone`** is the everyday background wash and carries no meaning.
+- **`sky`** as a background wash marks a hope, an ideal or a daydream. When a plate sets the here and now against it, the here and now takes **`blush`**.
 - Everything else is descriptive colour for the object itself (a camel coat, a leather bag).
 
 ## Visceral, not ghosted: people and scenes are always fully drawn
@@ -86,7 +88,7 @@ A student should *feel* the difference between two states, not decode a line sty
 - **the body**: posture and pose (slumped, arms down, against upright, hand on hip, head high; a shrug; a hand clutching the chest);
 - **clothes**: a plain, muted outfit against a sharper one in a richer wash;
 - **props**: what they hold or have (the product in hand, a broken heart, a cracked box);
-- **the background wash**: warm `blush` for the here and now, cool `sky` for a hope, daydream or ideal.
+- **the background wash**: warm `blush` for the here and now beside a cool `sky` for a hope, daydream or ideal.
 
 How to apply it:
 
@@ -148,7 +150,7 @@ A real action on an unreal thing stays in ink (the strike-through over the penci
 The SVG rules in the root `CLAUDE.md` apply. In this course:
 
 - **Rule 8:** the one background wash and the ground strokes are part of the style and are exempt.
-- **Rule 10:** follow the colour roles above: `teal` is what is learned, lit or chosen (one subject per plate), `ochre` is a highlight, count or badge, `pencil` is an absent object, and the other washes describe the object itself. Never use teal for decoration.
+- **Rule 10:** follow the colour roles above: `teal` is what is learned, lit or chosen (one subject per plate), `ochre` is a highlight, count or badge, `pencil` is an absent object, `stone` is the quiet background wash behind every subject, `blush` beside `sky` sets the here and now against a hope, and the other washes describe the object itself. Never use teal for decoration.
 - **Rule 16:** empty paper *around* the subject is part of the look; trim only canvas that holds nothing at all.
 - **Rule 19:** plates bring their own palette: never use `--paper-2`/`--paper-3` or any CSS variable inside a plate. A plate in a `figure-well` must still read, so give it a background wash, and never draw cream detail on a cream fill.
 - **Rule 20:** `wobble` already rounds; round anything else yourself, and never use `Math.random()`.
@@ -164,4 +166,5 @@ Render it, screenshot it at full size one plate at a time, and ask:
 - Does the colour sit loosely under the lines, with some paper showing?
 - Is every person and scene fully inked and coloured, with the difference between states shown by pose, clothes, props and wash (pencil only for absent objects)?
 - Is there enough empty paper around the subject, and does the background wash show past it?
+- Does the plate read calm on its slide: a stone wash behind it (blush only beside sky), with the slide's one accent and the plate's teal subject as the only strong colour?
 - Does it sit comfortably next to the Week 1 Receipt?
