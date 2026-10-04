@@ -1,0 +1,317 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "system-1-and-system-2",
+    "prompt": "Each card shows a consumer thinking about a purchase. Is the consumer using fast, automatic System 1 or slow, deliberate System 2?",
+    "bins": [
+      { "id": "s1", "label": "System 1" },
+      { "id": "s2", "label": "System 2" }
+    ],
+    "cards": [
+      {
+        "id": "logo",
+        "text": "Amir spots the familiar orange logo of his usual crackers and drops a box into the cart without slowing down.",
+        "bin": "s1",
+        "explanation": "System 1: recognizing a familiar logo happens in an instant and without effort."
+      },
+      {
+        "id": "sale",
+        "text": "Leila turns into a shop the moment she sees a large red banner in the window.",
+        "bin": "s1",
+        "explanation": "System 1: reacting to a sale sign is fast and automatic."
+      },
+      {
+        "id": "milk",
+        "text": "On a busy weekday, Tom grabs the same carton of milk he always buys.",
+        "bin": "s1",
+        "explanation": "System 1: most everyday purchases rely on fast, automatic thinking."
+      },
+      {
+        "id": "detergent",
+        "text": "Rosa divides the price of each detergent bottle by its number of washes before choosing.",
+        "bin": "s2",
+        "explanation": "System 2: comparing the price per unit is slow, deliberate, and effortful."
+      },
+      {
+        "id": "lease",
+        "text": "Before signing a car lease, Ken reads every clause about fees and penalties.",
+        "bin": "s2",
+        "explanation": "System 2: reading the terms of a contract takes deliberate effort, and the decision is important."
+      },
+      {
+        "id": "odd-price",
+        "text": "Mina sees a jacket priced far below what she expected, stops, and checks the label and reviews to find out why.",
+        "bin": "s2",
+        "explanation": "System 2 takes over when something looks clearly wrong at first sight and the consumer has the time to think."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "heuristics-mental-shortcuts",
+    "prompt": "Each consumer takes a mental shortcut. Which heuristic is it?",
+    "options": [
+      { "id": "availability", "label": "Availability" },
+      { "id": "representativeness", "label": "Representativeness" },
+      { "id": "price-quality", "label": "Price-quality inference" }
+    ],
+    "cases": [
+      {
+        "id": "flight",
+        "text": "After a week of news stories about lost luggage, Dev decides that checking a bag on his airline is very risky.",
+        "answer": "availability",
+        "explanation": "Availability: recent examples come easily to mind, so Dev judges the risk as higher."
+      },
+      {
+        "id": "olive-oil",
+        "text": "Unable to taste the olive oils on the shelf, Hana picks the most expensive bottle because she assumes it must be better.",
+        "answer": "price-quality",
+        "explanation": "Price-quality inference: when quality cannot be judged directly, a higher price is read as higher quality."
+      },
+      {
+        "id": "cola",
+        "text": "A supermarket cola in a red can with white script seems to Luis as good as the leading brand.",
+        "answer": "representativeness",
+        "explanation": "Representativeness: the can resembles the market leader, so it seems to share its quality."
+      },
+      {
+        "id": "scam",
+        "text": "Because her friend was recently overcharged by a phone repair shop, Pia believes most repair shops overcharge.",
+        "answer": "availability",
+        "explanation": "Availability: one vivid example that comes easily to mind makes the event seem common."
+      },
+      {
+        "id": "skin-cream",
+        "text": "Omar trusts a $90 face cream more than a $20 one, though he cannot tell what is in either.",
+        "answer": "price-quality",
+        "explanation": "Price-quality inference: the higher price is taken as a signal of quality."
+      },
+      {
+        "id": "organic",
+        "text": "A cereal box with green leaves and a farm drawing seems healthy to Ada because it looks like the organic brands she knows.",
+        "answer": "representativeness",
+        "explanation": "Representativeness: the box resembles a familiar category, so Ada judges it as belonging to it."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "anchoring-the-first-number-counts",
+    "question_text": "A furniture store places a $2,400 sofa at the entrance, beside the $1,100 sofa it most wants to sell. Which explanation fits what the slide describes?",
+    "hint": "Think about what an initial number does to a later judgment.",
+    "correct_answer_citation": "Week 08 · Anchoring: The First Number Counts",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "The $2,400 sofa will sell best, because consumers assume the higher price signals higher quality",
+        "option_explanation": "That describes the price-quality inference. The store's aim here is to change how the $1,100 price is judged."
+      },
+      {
+        "option_text": "The first price has no effect, because consumers ignore numbers that are not relevant to their choice",
+        "option_explanation": "Anchoring occurs even when the initial number is irrelevant."
+      },
+      {
+        "option_text": "The $2,400 price acts as an anchor that makes $1,100 seem lower than it would on its own",
+        "option_explanation": "Correct. An initial number influences a later judgment, as a \"compare at\" label makes a lower price seem lower."
+      },
+      {
+        "option_text": "Consumers will compare every sofa in the store and choose the one with the highest value",
+        "option_explanation": "That is the classical model of the rational consumer, not anchoring."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "loss-aversion-and-the-endowment-effect",
+    "prompt": "Each card describes a consumer's reaction. Does it show loss aversion or the endowment effect?",
+    "bins": [
+      { "id": "loss", "label": "Loss aversion" },
+      { "id": "endowment", "label": "Endowment effect" }
+    ],
+    "cards": [
+      {
+        "id": "parking",
+        "text": "A $30 parking fine ruins Sara's day, but a $30 refund the week before barely lifted her mood.",
+        "bin": "loss",
+        "explanation": "Loss aversion: a loss feels stronger than a gain of the same size."
+      },
+      {
+        "id": "mug",
+        "text": "Ben would not sell the mug he was given for $10, though he would never have paid more than $5 for it.",
+        "bin": "endowment",
+        "explanation": "Endowment effect: people value an item more once they own it."
+      },
+      {
+        "id": "stock",
+        "text": "Nadia feels the $50 her shares lost far more than the $50 they gained the month before.",
+        "bin": "loss",
+        "explanation": "Loss aversion: outcomes are judged as gains or losses, and the loss weighs more."
+      },
+      {
+        "id": "trial",
+        "text": "After a 30-day trial of a music service, Theo pays to keep it because cancelling would mean giving up his playlists.",
+        "bin": "endowment",
+        "explanation": "Endowment effect: after a month of use, giving the service up feels like a loss."
+      },
+      {
+        "id": "sofa",
+        "text": "Kim asks far more for her used sofa than buyers are willing to pay for it.",
+        "bin": "endowment",
+        "explanation": "Endowment effect: owning the sofa raises the value Kim places on it."
+      },
+      {
+        "id": "bet",
+        "text": "Raj refuses a coin toss in which he would win $20 or lose $20.",
+        "bin": "loss",
+        "explanation": "Loss aversion: losing $20 hurts more than winning $20 pleases, so the even bet feels bad."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "status-quo-bias-and-framing-effects",
+    "prompt": "Each card describes a consumer's choice. Is it status quo bias or a framing effect?",
+    "bins": [
+      { "id": "status-quo", "label": "Status quo bias" },
+      { "id": "framing", "label": "Framing effect" }
+    ],
+    "cards": [
+      {
+        "id": "gym",
+        "text": "Elena keeps paying for the gym she has used for six years, although a cheaper gym with better hours opened next door.",
+        "bin": "status-quo",
+        "explanation": "Status quo bias: she keeps things as they are even when a better offer exists."
+      },
+      {
+        "id": "yogurt",
+        "text": "Shoppers prefer a yogurt labelled \"95% fat free\" to the same yogurt labelled \"5% fat.\"",
+        "bin": "framing",
+        "explanation": "Framing effect: the facts are the same, but the way they are presented changes the choice."
+      },
+      {
+        "id": "insurance",
+        "text": "Marc renews the same car insurance every year without looking at other quotes.",
+        "bin": "status-quo",
+        "explanation": "Status quo bias: he prefers to keep his current insurer."
+      },
+      {
+        "id": "late-fee",
+        "text": "Drivers react more strongly to a \"$5 late-payment fee\" than to a \"$5 early-payment discount\" on the same bill.",
+        "bin": "framing",
+        "explanation": "Framing effect: the fee is framed as a loss, so it draws a stronger reaction than the same gap framed as a discount."
+      },
+      {
+        "id": "surgery",
+        "text": "Patients choose a treatment described as \"90% survival\" more often than one described as \"10% mortality.\"",
+        "bin": "framing",
+        "explanation": "Framing effect: the two descriptions state the same facts."
+      },
+      {
+        "id": "streaming",
+        "text": "Jun keeps a streaming service he rarely watches, because switching to another one feels like a hassle.",
+        "bin": "status-quo",
+        "explanation": "Status quo bias: he stays with what he has instead of changing."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "choice-architecture-defaults-and-nudges",
+    "prompt": "Each case describes how options are arranged for a consumer. Is it a default, a nudge, or a dark pattern?",
+    "options": [
+      { "id": "default", "label": "Default" },
+      { "id": "nudge", "label": "Nudge" },
+      { "id": "dark", "label": "Dark pattern" }
+    ],
+    "cases": [
+      {
+        "id": "pension",
+        "text": "New employees are enrolled in the pension plan unless they fill in a form to leave it.",
+        "answer": "default",
+        "explanation": "Default: the option a person receives if they do nothing."
+      },
+      {
+        "id": "water",
+        "text": "A canteen moves bottled water to the front of the fridge and puts sugary drinks on the bottom shelf, at the same prices.",
+        "answer": "nudge",
+        "explanation": "Nudge: the arrangement steers behavior without removing any option or changing its price, in the diner's own interest."
+      },
+      {
+        "id": "cancel",
+        "text": "A subscription can be started with one click, but cancelling it takes six screens and a phone call.",
+        "answer": "dark",
+        "explanation": "Dark pattern: the design works against the consumer's interest."
+      },
+      {
+        "id": "green",
+        "text": "An energy company signs every new customer up for the renewable plan unless they choose another plan.",
+        "answer": "default",
+        "explanation": "Default: customers who do nothing receive the renewable plan."
+      },
+      {
+        "id": "insurance-box",
+        "text": "At checkout, a travel site hides a pre-ticked box that adds paid insurance to the ticket.",
+        "answer": "dark",
+        "explanation": "Dark pattern: the same tool as a default, used against the person's interest and not transparent."
+      },
+      {
+        "id": "reminder",
+        "text": "A bank shows customers a clear message when a recurring payment will overdraw their account, so they can move money in time.",
+        "answer": "nudge",
+        "explanation": "Nudge: transparent, it serves the person's own interest, and no option is removed."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "do-ai-agents-use-heuristics",
+    "question_text": "A company upgrades its shopping agent to the newest AI model, expecting it to be immune to pricing tricks. Based on the studies on the slide, what should the company expect?",
+    "hint": "The studies found both heuristic-like and rational choices. What did the slide say a bias depends on?",
+    "correct_answer_citation": "Week 08 · Do AI Agents Use Heuristics?",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "The newest model will show no biases, because newer models are always less biased",
+        "option_explanation": "In one study, newer models were more susceptible to anchoring than older models."
+      },
+      {
+        "option_text": "The new agent will always be misled by just-below prices such as $4.99",
+        "option_explanation": "When all product details were visible, seven of eight agents gave the cents the same weight as whole dollars."
+      },
+      {
+        "option_text": "AI agents cannot show human biases, because they are not people",
+        "option_explanation": "AI agents learn from text written by people, and some studies find heuristic-like choices such as anchoring and position effects."
+      },
+      {
+        "option_text": "Whether the agent shows a bias will depend on the conditions in which it chooses",
+        "option_explanation": "Correct. Studies find both heuristic-like and rational choices, so a bias depends on the conditions of the choice."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "information-costs-and-storefront-design",
+    "question_text": "An online grocer finds that AI agents shopping on its site often pick the bag of rice with the lower price even when it costs more per kilogram. Each product's weight appears only on its product page. Which change fits what the slide describes?",
+    "hint": "Where did the heuristic-like choices come from: the agents' reasoning or the information they held?",
+    "correct_answer_citation": "Week 08 · Information Costs and Storefront Design",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Show the weight and the unit price in the product list, where agents can reach them easily",
+        "option_explanation": "Correct. Making diagnostic details such as weight and unit price easy to reach helps agents choose well."
+      },
+      {
+        "option_text": "Add a larger discount badge to the cheaper bag",
+        "option_explanation": "A discount frame does not give the agent the detail it needs to compare value."
+      },
+      {
+        "option_text": "Nothing can help, because agents make arithmetic errors when they calculate price per unit",
+        "option_explanation": "None of the agents made an error when asked to calculate the price per unit."
+      },
+      {
+        "option_text": "Rely on unit-price rules for shelf labels, which already cover what agents can reach",
+        "option_explanation": "Those rules were written for human shoppers and do not yet cover what an agent can reach."
+      }
+    ]
+  }
+]

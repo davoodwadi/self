@@ -320,3 +320,33 @@ export function PlateButton({
     </button>
   );
 }
+
+/* -- a quiet segmented control under an interactive plate ------------------- */
+
+/** A row of outlined buttons of which one is on: for plates that switch between a few states. */
+export function PlateToggle<T extends string>({ options, value, onChange }: { options: { id: T; label: string }[]; value: T; onChange: (id: T) => void }) {
+  return (
+    <div className="mt-2 flex flex-wrap items-center gap-2 px-1" role="group">
+      {options.map((o) => {
+        const on = o.id === value;
+        return (
+          <button
+            key={o.id}
+            type="button"
+            aria-pressed={on}
+            onClick={() => onChange(o.id)}
+            className={
+              "inline-flex items-center border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rule-2)] " +
+              (on
+                ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)]"
+                : "border-[var(--rule-2)] bg-[var(--paper)] text-[var(--ink-2)] hover:border-[var(--ink-3)] hover:text-[var(--ink)]")
+            }
+            style={{ fontFamily: "var(--font-label)" }}
+          >
+            {o.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}

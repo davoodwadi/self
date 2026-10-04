@@ -1,0 +1,376 @@
+[
+  {
+    "type": "order",
+    "slide_id": "the-five-stages-of-the-decision-process",
+    "prompt": "Follow Ines's laptop purchase through the five stages of the decision process. Put her moments in the order they happen.",
+    "steps": [
+      {
+        "id": "problem",
+        "text": "Ines's laptop battery stops holding a charge, and she realizes she cannot keep working this way.",
+        "explanation": "Stage 1 is problem recognition: she notices a gap between her current state and the state she wants."
+      },
+      {
+        "id": "search",
+        "text": "She reads reviews and asks a friend which laptops are worth a look.",
+        "explanation": "Stage 2 is information search: she looks for information about possible solutions."
+      },
+      {
+        "id": "evaluate",
+        "text": "She lines up three models and compares them on price, weight, and battery life.",
+        "explanation": "Stage 3 is evaluation of alternatives: she compares the options on the attributes that matter."
+      },
+      {
+        "id": "choice",
+        "text": "She picks one model and pays for it at the checkout.",
+        "explanation": "Stage 4 is product choice: she selects one option and buys it."
+      },
+      {
+        "id": "post",
+        "text": "After a month of daily use, she decides the laptop is as good as she expected.",
+        "explanation": "Stage 5 is postpurchase evaluation: she uses the product and judges whether it met her expectations."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "problem-recognition-the-actual-state-and-the-ideal-state",
+    "prompt": "Each card describes a consumer who has noticed a gap between the actual state and the ideal state. Did the actual state fall (need recognition) or did the ideal state rise (opportunity recognition)?",
+    "bins": [
+      {
+        "id": "need",
+        "label": "Need recognition"
+      },
+      {
+        "id": "opportunity",
+        "label": "Opportunity recognition"
+      }
+    ],
+    "cards": [
+      {
+        "id": "headphones",
+        "text": "Kofi's headphones stop working halfway through his commute.",
+        "bin": "need",
+        "explanation": "Need recognition: the actual state fell when the headphones broke."
+      },
+      {
+        "id": "fridge",
+        "text": "Nora opens the fridge on Sunday evening and finds it empty.",
+        "bin": "need",
+        "explanation": "Need recognition: the actual state fell because the food ran out."
+      },
+      {
+        "id": "prescription",
+        "text": "A pharmacy text reminds Joe that his prescription runs out this week.",
+        "bin": "need",
+        "explanation": "Need recognition: the reminder points to a product that runs out, so the actual state is about to fall."
+      },
+      {
+        "id": "camera",
+        "text": "Mia sees a friend's new camera and wishes her own photos looked that sharp.",
+        "bin": "opportunity",
+        "explanation": "Opportunity recognition: her own camera still works, but the ideal state rose."
+      },
+      {
+        "id": "e-bike",
+        "text": "Sam's old bike works fine, but an ad shows an electric bike that could halve his commute.",
+        "bin": "opportunity",
+        "explanation": "Opportunity recognition: the ad shows a better state that Sam had not imagined."
+      },
+      {
+        "id": "reading-corner",
+        "text": "Lena's flat is comfortable, but a magazine shows a reading corner she now wants in her own room.",
+        "bin": "opportunity",
+        "explanation": "Opportunity recognition: the ideal state rose, though nothing in her flat got worse."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "three-levels-of-decision-making",
+    "prompt": "Each case describes one purchase. Which level of decision making is it?",
+    "options": [
+      {
+        "id": "routine",
+        "label": "Routine response"
+      },
+      {
+        "id": "limited",
+        "label": "Limited problem solving"
+      },
+      {
+        "id": "extended",
+        "label": "Extended problem solving"
+      }
+    ],
+    "cases": [
+      {
+        "id": "oat-milk",
+        "text": "Every Friday, Aroha takes the same brand of oat milk from the shelf without glancing at the others.",
+        "answer": "routine",
+        "explanation": "Routine response: automatic, with little or no search."
+      },
+      {
+        "id": "backpack",
+        "text": "Tariq needs a new backpack. He compares three models in the shop and takes the one with the best straps.",
+        "answer": "limited",
+        "explanation": "Limited problem solving: some search and a simple rule across a few options."
+      },
+      {
+        "id": "lease",
+        "text": "Wen and Hugo spend four months visiting flats, reading contracts, and asking relatives before they sign a lease.",
+        "answer": "extended",
+        "explanation": "Extended problem solving: extensive search and careful comparison for a costly, rare purchase."
+      },
+      {
+        "id": "toothpaste",
+        "text": "At the register, Pia adds her usual toothpaste to the basket in a few seconds.",
+        "answer": "routine",
+        "explanation": "Routine response: she buys the same product with no search."
+      },
+      {
+        "id": "cereal",
+        "text": "Ida wants a new cereal. She tries two flavors and picks the one her kids like more.",
+        "answer": "limited",
+        "explanation": "Limited problem solving: she compares a few options with a simple rule."
+      },
+      {
+        "id": "car",
+        "text": "Before buying a car, Omar reads reviews, test drives five models, and compares the financing offers.",
+        "answer": "extended",
+        "explanation": "Extended problem solving: the purchase is expensive and risky, so effort is high."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "information-search-internal-and-external",
+    "prompt": "Each card describes how a consumer looks for information. Is it internal search or external search?",
+    "bins": [
+      {
+        "id": "internal",
+        "label": "Internal search"
+      },
+      {
+        "id": "external",
+        "label": "External search"
+      }
+    ],
+    "cards": [
+      {
+        "id": "hotel",
+        "text": "Before booking a hotel, Ravi recalls the one his colleague raved about last year.",
+        "bin": "internal",
+        "explanation": "Internal search: he looks into memory."
+      },
+      {
+        "id": "reviews",
+        "text": "Joy reads five customer reviews of a vacuum cleaner.",
+        "bin": "external",
+        "explanation": "External search: reviews are new information from outside."
+      },
+      {
+        "id": "shoes",
+        "text": "Hana thinks back to her last running shoes and what she liked about them.",
+        "bin": "internal",
+        "explanation": "Internal search: she draws on what she already knows."
+      },
+      {
+        "id": "sunscreen",
+        "text": "Luis asks a shop assistant which sunscreen suits sensitive skin.",
+        "bin": "external",
+        "explanation": "External search: sales staff are a source of new information."
+      },
+      {
+        "id": "ink",
+        "text": "Omar remembers that the last printer ink he bought leaked.",
+        "bin": "internal",
+        "explanation": "Internal search: the information comes from his own memory."
+      },
+      {
+        "id": "prices",
+        "text": "Kim compares prices on three retailer websites.",
+        "bin": "external",
+        "explanation": "External search: websites supply new information."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "delegated-search-when-an-ai-agent-gathers-the-information",
+    "question_text": "Dana asks an AI agent to find her running shoes. Each time the agent opens a product page, it is charged a small fee. Which outcome fits what the slide describes?",
+    "hint": "Think about what happens to the amount of searching when each look-up has a cost, and what the quality of the final choice depends on.",
+    "correct_answer_citation": "Week 07 · Delegated Search: When an AI Agent Gathers the Information",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "The agent opens every product page anyway, because an agent has no reason to stop searching",
+        "option_explanation": "When each look-up had a cost, agents stopped searching earlier."
+      },
+      {
+        "option_text": "The agent may stop searching early and choose without a detail it needed",
+        "option_explanation": "Correct. When each look-up had a cost, agents stopped searching earlier and sometimes chose without the details they needed."
+      },
+      {
+        "option_text": "The choice will be as good as if look-ups were free, because the agent reasons well",
+        "option_explanation": "The quality of a delegated decision depends on the information the agent gathers, not only on how well it reasons."
+      },
+      {
+        "option_text": "The agent will always choose a worse product than a human shopper would",
+        "option_explanation": "With free look-ups, agents gathered the details they needed and rarely chose a worse product."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "the-delegation-instruction-how-specific-is-the-goal",
+    "prompt": "Each card is an instruction a consumer gives to an AI agent. Does it leave the criterion open (vague goal) or state it (specific goal)?",
+    "bins": [
+      {
+        "id": "vague",
+        "label": "Vague goal"
+      },
+      {
+        "id": "specific",
+        "label": "Specific goal"
+      }
+    ],
+    "cards": [
+      {
+        "id": "good-laptop",
+        "text": "\"Find me a good laptop.\"",
+        "bin": "vague",
+        "explanation": "Vague: \"good\" leaves the criterion open."
+      },
+      {
+        "id": "battery",
+        "text": "\"Find the laptop under $900 with the longest battery life.\"",
+        "bin": "specific",
+        "explanation": "Specific: it states a price limit and the criterion, battery life."
+      },
+      {
+        "id": "best-headphones",
+        "text": "\"Get me the best headphones.\"",
+        "bin": "vague",
+        "explanation": "Vague: \"best\" does not say on what."
+      },
+      {
+        "id": "rated",
+        "text": "\"Choose the cheapest headphones rated 4.5 stars or higher.\"",
+        "bin": "specific",
+        "explanation": "Specific: the criterion is the lowest price among highly rated options."
+      },
+      {
+        "id": "nice-hotel",
+        "text": "\"Book a nice hotel for the weekend.\"",
+        "bin": "vague",
+        "explanation": "Vague: \"nice\" is not a criterion the agent can pursue."
+      },
+      {
+        "id": "cheap-hotel",
+        "text": "\"Book the cheapest hotel within one kilometer of the station.\"",
+        "bin": "specific",
+        "explanation": "Specific: it names the criterion and the distance limit."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "evaluating-alternatives-from-awareness-to-consideration",
+    "prompt": "Chen is about to buy coffee. Match each set of brands with the part of her thinking it describes.",
+    "term_label": "Set",
+    "match_label": "Chen's coffee brands",
+    "pairs": [
+      {
+        "id": "awareness",
+        "term": "Awareness set",
+        "match": "Every coffee brand Chen has ever heard of, including ones she has never tried.",
+        "explanation": "The awareness set includes all the brands a consumer knows."
+      },
+      {
+        "id": "evoked",
+        "term": "Evoked set",
+        "match": "The few brands that come to Chen's mind when she thinks about buying coffee.",
+        "explanation": "The evoked set includes the brands a consumer recalls from memory when making a decision."
+      },
+      {
+        "id": "consideration",
+        "term": "Consideration set",
+        "match": "The two brands Chen weighs seriously before she chooses.",
+        "explanation": "The consideration set includes the brands the consumer seriously considers buying."
+      },
+      {
+        "id": "inept",
+        "term": "Inept set",
+        "match": "A brand Chen will not buy because she once found it bitter.",
+        "explanation": "The inept set includes brands the consumer rejects."
+      },
+      {
+        "id": "inert",
+        "term": "Inert set",
+        "match": "A brand Chen recalls but feels no pull toward, either way.",
+        "explanation": "The inert set includes brands the consumer feels indifferent toward."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "decision-rules-how-consumers-choose",
+    "prompt": "Each case describes how a consumer chooses. Which decision rule is it?",
+    "options": [
+      {
+        "id": "compensatory",
+        "label": "Compensatory"
+      },
+      {
+        "id": "lexicographic",
+        "label": "Lexicographic"
+      },
+      {
+        "id": "aspects",
+        "label": "Elimination by aspects"
+      },
+      {
+        "id": "conjunctive",
+        "label": "Conjunctive"
+      }
+    ],
+    "cases": [
+      {
+        "id": "camera-first",
+        "text": "Sofia picks the phone with the best camera, her top priority. Two phones tie, so she takes the one with the better battery.",
+        "answer": "lexicographic",
+        "explanation": "Lexicographic: best on the most important attribute, with ties settled on the next attribute."
+      },
+      {
+        "id": "flights",
+        "text": "Ben crosses off every flight with more than one stop, then every flight that leaves after 9 a.m., until only one is left.",
+        "answer": "aspects",
+        "explanation": "Elimination by aspects: options that fail a cut-off on an important attribute are removed, one attribute at a time."
+      },
+      {
+        "id": "apartment",
+        "text": "Maya will only consider apartments with at least two bedrooms, rent under $1,500, and a lift. An apartment that fails any one of these is out.",
+        "answer": "conjunctive",
+        "explanation": "Conjunctive: a minimum level on every attribute, and falling below one rejects the option."
+      },
+      {
+        "id": "weak-battery",
+        "text": "Ravi's favorite laptop has a weak battery, but its excellent screen and low price make up for it, so he buys it.",
+        "answer": "compensatory",
+        "explanation": "Compensatory: a strength on some attributes makes up for a weakness on another."
+      },
+      {
+        "id": "tent",
+        "text": "Tom cares most about price. He buys the cheapest tent and does not look at the other attributes.",
+        "answer": "lexicographic",
+        "explanation": "Lexicographic: he chooses the option that is best on the most important attribute."
+      },
+      {
+        "id": "hotel-scores",
+        "text": "Ines scores each hotel on price, location, and rooms, adds the scores up, and books the highest total.",
+        "answer": "compensatory",
+        "explanation": "Compensatory: a high score on one attribute can offset a low score on another."
+      }
+    ]
+  }
+]

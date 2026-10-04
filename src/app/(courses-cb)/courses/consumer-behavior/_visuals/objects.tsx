@@ -1488,3 +1488,29 @@ export function Agent({ x, y, s = 1, seed }: { x: number; y: number; s?: number;
     </g>
   );
 }
+
+/* -- the instant-coffee jar (Weeks 7–8) ----------------------------------- */
+
+/**
+ * An instant-coffee jar standing on (x, bottom): glass with a dark lid, a paper
+ * label with the brand badge, and coffee filled to `level` (0 to 1).
+ */
+export function Jar({ x, bottom, w = 44, h = 64, level = 1, seed, lit = false }: { x: number; bottom: number; w?: number; h?: number; level?: number; seed: number; lit?: boolean }) {
+  const body = sharp(rp([[x - w / 2, bottom - h], [x + w / 2, bottom - h], [x + w / 2, bottom], [x - w / 2, bottom]]), true, 2);
+  const lid = sharp(rp([[x - w / 2 - 2, bottom - h - 13], [x + w / 2 + 2, bottom - h - 13], [x + w / 2 + 2, bottom - h], [x - w / 2 - 2, bottom - h]]), true, 1.2);
+  const fillH = Math.max(0, level) * (h - 6);
+  const coffee = rp([[x - w / 2 + 2, bottom - fillH - 2], [x + w / 2 - 2, bottom - fillH - 2], [x + w / 2 - 2, bottom - 2], [x - w / 2 + 2, bottom - 2]]);
+  const label = sharp(rp([[x - w / 2 + 4, bottom - h * 0.66], [x + w / 2 - 4, bottom - h * 0.66], [x + w / 2 - 4, bottom - h * 0.24], [x - w / 2 + 4, bottom - h * 0.24]]), true, 1);
+  return (
+    <g>
+      <Wash pts={body} seed={seed} fill={lit ? SK.teal : SK.sky} opacity={lit ? 0.55 : 0.4} dx={0.6} dy={0.4} />
+      {fillH > 3 ? <Wash pts={coffee} seed={seed + 1} fill={SK.leather} opacity={0.7} dx={0.3} dy={0} /> : null}
+      <InkLine pts={body} seed={seed + 2} closed />
+      <Wash pts={lid} seed={seed + 3} fill={SK.charcoal} opacity={0.75} dx={0.5} dy={0.3} />
+      <InkLine pts={lid} seed={seed + 4} width={1.1} closed />
+      <Paper pts={label} seed={seed + 5} />
+      <InkLine pts={label} seed={seed + 6} width={0.9} closed />
+      <BrandBadge x={x} y={r2(bottom - h * 0.45)} r={r2(w * 0.14)} seed={seed + 7} />
+    </g>
+  );
+}
