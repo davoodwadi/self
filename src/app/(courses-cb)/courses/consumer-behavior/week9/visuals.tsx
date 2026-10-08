@@ -49,6 +49,7 @@ import {
   type Look,
   Notes,
   Person,
+  ReviewCard,
   rp,
   sharp,
   SketchArrow,
@@ -147,76 +148,6 @@ export function Face({ x, y, r = 14, mood, seed, lit = false }: { x: number; y: 
         width={1.3}
         amp={0.15}
       />
-    </g>
-  );
-}
-
-/**
- * A written review: a paper card, `w` wide with its top-left at (x, y), a
- * row of stars and `lines` of handwriting (the last one `last` long, 0-1).
- */
-export function ReviewCard({
-  x,
-  y,
-  w = 120,
-  stars,
-  lines = 3,
-  last = 0.6,
-  seed,
-  pencil = false,
-  lit = false,
-  r = 6,
-}: {
-  x: number;
-  y: number;
-  w?: number;
-  stars: number;
-  lines?: number;
-  last?: number;
-  seed: number;
-  pencil?: boolean;
-  lit?: boolean;
-  r?: number;
-}) {
-  const gap = r * 2.5;
-  const lh = r * 1.9;
-  const h = r2(r * 3.6 + Math.max(1, lines) * lh + r);
-  const card = sharp(rp([[x, y], [x + w, y], [x + w, y + h], [x, y + h]]), true, 2);
-  const rnd = seeded(seed + 50);
-  return (
-    <g>
-      {pencil ? null : lit ? <Wash pts={card} seed={seed} fill={SK.teal} opacity={0.32} dx={1.5} dy={1} /> : null}
-      {pencil ? null : <Paper pts={card} seed={seed + 1} />}
-      {pencil ? <PencilLine pts={card} seed={seed + 2} closed /> : <InkLine pts={card} seed={seed + 2} width={1.1} closed />}
-      {pencil ? (
-        Array.from({ length: 5 }, (_, i) => (
-          <PencilLine
-            key={i}
-            pts={rp(Array.from({ length: 10 }, (_, k) => {
-              const a = -Math.PI / 2 + (k * Math.PI) / 5;
-              const rr = k % 2 === 0 ? r : r * 0.45;
-              return [x + r * 1.8 + i * gap + Math.cos(a) * rr, y + r * 1.9 + Math.sin(a) * rr] as Pt;
-            }))}
-            seed={seed + 10 + i}
-            closed
-            dash="2 3"
-          />
-        ))
-      ) : (
-        <Stars x={r2(x + r * 1.8)} y={r2(y + r * 1.9)} n={stars} r={r} gap={gap} seed={seed + 10} />
-      )}
-      {Array.from({ length: lines }, (_, i) => {
-        const ly = r2(y + r * 3.9 + i * lh + lh * 0.45);
-        const len = i === lines - 1 ? last : 0.82 + rnd() * 0.1;
-        const x0 = x + r * 1.2;
-        const x1 = r2(x0 + (w - r * 2.4) * len);
-        const pts = rp(Array.from({ length: 7 }, (_, k) => [x0 + ((x1 - x0) * k) / 6, ly + (k % 2 ? -0.9 : 0.9)] as Pt));
-        return pencil ? (
-          <PencilLine key={i} pts={pts} seed={seed + 30 + i} />
-        ) : (
-          <InkLine key={i} pts={pts} seed={seed + 30 + i} width={0.8} amp={0.4} />
-        );
-      })}
     </g>
   );
 }
