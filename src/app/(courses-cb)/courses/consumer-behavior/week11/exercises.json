@@ -1,0 +1,310 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "cultural-values-hofstedes-dimensions",
+    "prompt": "Each situation reflects one of Hofstede's dimensions. Name the dimension it shows most clearly.",
+    "options": [
+      { "id": "idv", "label": "Individualism vs collectivism" },
+      { "id": "pdi", "label": "Power distance" },
+      { "id": "uai", "label": "Uncertainty avoidance" },
+      { "id": "mas", "label": "Masculinity vs femininity" },
+      { "id": "lto", "label": "Long-term orientation" }
+    ],
+    "cases": [
+      {
+        "id": "manager",
+        "text": "In one country, employees rarely question a manager's decision, and shoppers trust a brand more when a senior executive endorses it.",
+        "answer": "pdi",
+        "explanation": "People accept an unequal distribution of power and status."
+      },
+      {
+        "id": "guarantee",
+        "text": "Shoppers stick to familiar brands, read every guarantee and avoid products that have just come on the market.",
+        "answer": "uai",
+        "explanation": "They feel uncomfortable with ambiguity and risk."
+      },
+      {
+        "id": "winner",
+        "text": "Car ads in one market show the driver beating rivals and finishing first; in another they show a calm family enjoying a weekend away.",
+        "answer": "mas",
+        "explanation": "Achievement and competition versus care and quality of life."
+      },
+      {
+        "id": "savings",
+        "text": "Parents put a large share of their income into a savings plan for their children's education, even if it means fewer treats today.",
+        "answer": "lto",
+        "explanation": "A focus on future rewards, such as saving."
+      },
+      {
+        "id": "family-decision",
+        "text": "A young buyer will not choose a new phone until parents and siblings have agreed on the brand.",
+        "answer": "idv",
+        "explanation": "The buyer acts mainly as a member of a group: collectivism."
+      },
+      {
+        "id": "be-yourself",
+        "text": "A clothing brand's slogan invites customers to create a look that no one else has.",
+        "answer": "idv",
+        "explanation": "Standing out from the crowd suits an individualist culture."
+      },
+      {
+        "id": "new-gadget",
+        "text": "In one market, consumers wait for a gadget's second version and plenty of reviews before buying, while in another they queue on launch day.",
+        "answer": "uai",
+        "explanation": "The waiting consumers avoid the ambiguity and risk of an untested product."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "rituals-myths-and-symbols",
+    "prompt": "Name the kind of ritual or symbol each situation shows.",
+    "options": [
+      { "id": "grooming", "label": "Grooming ritual" },
+      { "id": "gift", "label": "Gift-giving ritual" },
+      { "id": "holiday", "label": "Holiday ritual" },
+      { "id": "rite", "label": "Rite of passage" },
+      { "id": "myth", "label": "Myth" }
+    ],
+    "cases": [
+      {
+        "id": "shave",
+        "text": "Every morning before work, Tom shaves, applies aftershave and chooses a watch, always in the same order.",
+        "answer": "grooming",
+        "explanation": "A routine that moves him from his private self to his public self."
+      },
+      {
+        "id": "thank-you",
+        "text": "Nadia brings a box of chocolates to thank a neighbour who watered her plants.",
+        "answer": "gift",
+        "explanation": "The gift expresses a relationship and an obligation."
+      },
+      {
+        "id": "diwali",
+        "text": "Stores stock lamps, sweets and new clothes weeks before Diwali, when sales rise sharply.",
+        "answer": "holiday",
+        "explanation": "A holiday ritual creates a large seasonal market."
+      },
+      {
+        "id": "license",
+        "text": "After passing her driving test, Lea's family gives her a key ring and takes her out to celebrate.",
+        "answer": "rite",
+        "explanation": "The occasion marks a change in social status and comes with its own products."
+      },
+      {
+        "id": "underdog",
+        "text": "A sportswear ad tells the story of a runner from a small village who trains alone and wins the national title.",
+        "answer": "myth",
+        "explanation": "The brand borrows the myth of the hero who overcomes a challenge."
+      },
+      {
+        "id": "retirement",
+        "text": "Colleagues buy a farewell cake and an engraved pen when Maria retires after thirty years.",
+        "answer": "rite",
+        "explanation": "Retirement marks a change in social status."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "sacred-and-profane-consumption",
+    "prompt": "Is each object sacred or profane, or is it gaining or losing sacred status?",
+    "options": [
+      { "id": "sacred", "label": "Sacred" },
+      { "id": "profane", "label": "Profane" },
+      { "id": "sacralization", "label": "Sacralization" },
+      { "id": "desacralization", "label": "Desacralization" }
+    ],
+    "cases": [
+      {
+        "id": "dish-soap",
+        "text": "The bottle of dish soap Ahmed buys every two weeks.",
+        "answer": "profane",
+        "explanation": "An ordinary, everyday object with no special status."
+      },
+      {
+        "id": "ticket",
+        "text": "Lina frames the ticket from the concert where her partner proposed and hangs it above her desk.",
+        "answer": "sacralization",
+        "explanation": "An ordinary ticket becomes sacred through a special event."
+      },
+      {
+        "id": "anthem",
+        "text": "A country's national anthem is used as the jingle in a cheap fast-food ad.",
+        "answer": "desacralization",
+        "explanation": "A national symbol loses sacred status on cheap commercial use."
+      },
+      {
+        "id": "ring",
+        "text": "Carlos keeps his late grandfather's wedding ring in a locked box and would not sell it at any price.",
+        "answer": "sacred",
+        "explanation": "He sets it apart, treats it with respect and refuses to sell it."
+      },
+      {
+        "id": "stapler",
+        "text": "The office stapler that everyone borrows and nobody returns.",
+        "answer": "profane",
+        "explanation": "An everyday object with no special status."
+      },
+      {
+        "id": "shell",
+        "text": "After a honeymoon in Greece, a shell picked up on the beach takes a place of honour on the shelf.",
+        "answer": "sacralization",
+        "explanation": "A souvenir from a special trip becomes sacred."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "subcultures-shared-identity-within-a-culture",
+    "prompt": "Which kind of subculture is each marketer reaching? Sort the cards.",
+    "bins": [
+      { "id": "age", "label": "Age subculture" },
+      { "id": "geographic", "label": "Geographic subculture" },
+      { "id": "ethnic", "label": "Ethnic or religious subculture" }
+    ],
+    "cards": [
+      {
+        "id": "nostalgia",
+        "text": "A streaming service promotes 1980s cartoons to people born in the 1970s.",
+        "bin": "age",
+        "explanation": "It targets a generation through the media it grew up with."
+      },
+      {
+        "id": "ramadan",
+        "text": "A grocer extends opening hours after sunset during Ramadan.",
+        "bin": "ethnic",
+        "explanation": "It respects a religious tradition and its holiday."
+      },
+      {
+        "id": "snow-tires",
+        "text": "A tire maker advertises winter tires only in the snowy northern provinces.",
+        "bin": "geographic",
+        "explanation": "It reflects regional differences in climate."
+      },
+      {
+        "id": "tiktok",
+        "text": "A snack brand launches on short-video apps with creators popular among Generation Z.",
+        "bin": "age",
+        "explanation": "It reaches a generation through its media habits."
+      },
+      {
+        "id": "local-dish",
+        "text": "A fast-food chain adds a regional dish to its menu in one part of the country.",
+        "bin": "geographic",
+        "explanation": "It reflects regional differences in food."
+      },
+      {
+        "id": "kosher-line",
+        "text": "A food company certifies a product line as kosher for Passover.",
+        "bin": "ethnic",
+        "explanation": "It follows dietary rules of a religious subculture."
+      },
+      {
+        "id": "dialect",
+        "text": "A bank runs radio ads in the local dialect of one region.",
+        "bin": "geographic",
+        "explanation": "It reflects regional differences in language."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "social-class-and-status-symbols",
+    "question_text": "Two shoppers buy expensive coats from the same luxury label. One chooses a plain coat whose only mark is a small stitched label inside; the other chooses a coat with the brand's name printed across the back. Which description fits the slide?",
+    "hint": "Think about how old money and new money tend to signal status.",
+    "correct_answer_citation": "Week 11 · Social Class and Status Symbols",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Both shoppers signal status in the same way, because they paid the same price",
+        "option_explanation": "Price alone does not decide how status is signalled; the visibility of the brand differs."
+      },
+      {
+        "option_text": "The plain coat is not a status symbol, because no one can see the brand",
+        "option_explanation": "Old money often signals status quietly, through heritage and understated quality."
+      },
+      {
+        "option_text": "The printed coat signals old money, because the brand has a long history",
+        "option_explanation": "Visible brands and logos are the typical signal of new money."
+      },
+      {
+        "option_text": "The plain coat fits how old money often signals status; the printed coat fits how new money often does",
+        "option_explanation": "Correct. Old money tends to signal quietly through understated quality, new money through visible brands and logos."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "consumer-ethnocentrism-and-country-of-origin",
+    "prompt": "Is each consumer showing a country-of-origin effect or consumer ethnocentrism?",
+    "bins": [
+      { "id": "coo", "label": "Country-of-origin effect" },
+      { "id": "ethno", "label": "Consumer ethnocentrism" }
+    ],
+    "cards": [
+      {
+        "id": "italian-espresso",
+        "text": "Ana trusts an espresso machine more because it was made in Italy.",
+        "bin": "coo",
+        "explanation": "She judges the product by the country where it was made."
+      },
+      {
+        "id": "domestic-tv",
+        "text": "Ben buys a domestic television even though an imported one is cheaper and better rated, because he thinks buying imports hurts local jobs.",
+        "bin": "ethno",
+        "explanation": "He believes buying from his own country is right and buying imports is wrong."
+      },
+      {
+        "id": "japanese-camera",
+        "text": "A photographer assumes a camera is high quality because it is Japanese.",
+        "bin": "coo",
+        "explanation": "A country is linked with quality in a category."
+      },
+      {
+        "id": "local-only",
+        "text": "Chloe feels guilty whenever she buys imported fruit and always looks for the home-grown label first.",
+        "bin": "ethno",
+        "explanation": "She prefers domestic products as a matter of principle."
+      },
+      {
+        "id": "scotch",
+        "text": "A shopper pays more for whisky made in Scotland than for a similar whisky made elsewhere.",
+        "bin": "coo",
+        "explanation": "The country is associated with quality in that category."
+      },
+      {
+        "id": "keep-working",
+        "text": "Dev agrees strongly with the statement that people should buy national products to keep the country working.",
+        "bin": "ethno",
+        "explanation": "This is the kind of CETSCALE statement that measures consumer ethnocentrism."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "cultural-bias-in-ai-models",
+    "question_text": "A global coffee brand from China asks an AI assistant to describe Chinese coffee brands to shoppers in Canada. Based on the study of AI models and the CETSCALE, what should the brand do?",
+    "hint": "Recall what the study found about statements concerning China, and what the slide says global brands need to do.",
+    "correct_answer_citation": "Week 11 · Cultural Bias in AI Models",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Nothing: AI models answer the same way whatever country a question is about",
+        "option_explanation": "The study found that answers shifted with the country in the question."
+      },
+      {
+        "option_text": "Rely on one model, because all models were equally ethnocentric",
+        "option_explanation": "The models differed in how ethnocentric their answers were overall."
+      },
+      {
+        "option_text": "Check how assistants represent its country of origin in each market, because models' answers varied by model and by the country asked about",
+        "option_explanation": "Correct. Models carried cultural preferences, so global brands need to check how assistants represent their origin in each market."
+      },
+      {
+        "option_text": "Hide its country of origin from every AI assistant",
+        "option_explanation": "The slide says brands need to check how assistants represent their origin, not hide it."
+      }
+    ]
+  }
+]

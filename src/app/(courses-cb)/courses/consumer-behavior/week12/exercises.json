@@ -1,0 +1,296 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "mobile-shopping-and-social-commerce",
+    "prompt": "Each purchase happens in a different way. Name the kind of shopping it shows.",
+    "options": [
+      { "id": "mobile", "label": "Mobile shopping" },
+      { "id": "social", "label": "Social commerce" },
+      { "id": "live", "label": "Live-stream shopping" }
+    ],
+    "cases": [
+      {
+        "id": "bus",
+        "text": "Waiting for a bus, a student opens a grocery app on their phone and orders tonight's dinner ingredients.",
+        "answer": "mobile",
+        "explanation": "Buying through a smartphone app, at any moment."
+      },
+      {
+        "id": "tap-video",
+        "text": "A skincare serum appears in a short video in a social media feed. The viewer taps it and pays without leaving the app.",
+        "answer": "social",
+        "explanation": "Buying directly inside a social media platform, in the same feed."
+      },
+      {
+        "id": "host",
+        "text": "A host demonstrates a blender on camera for an hour, viewers send comments, and a discount ends when a timer reaches zero.",
+        "answer": "live",
+        "explanation": "Entertainment, a host's demonstration and a limited-time offer together."
+      },
+      {
+        "id": "midnight",
+        "text": "Unable to sleep, a shopper buys a lamp on a store's mobile website at 1 a.m.",
+        "answer": "mobile",
+        "explanation": "A mobile website makes a purchase possible at any moment, which invites impulse buying."
+      },
+      {
+        "id": "friend-post",
+        "text": "A friend's post shows a pair of sunglasses with a shop button; a few seconds later the sunglasses are in the viewer's cart inside the same app.",
+        "answer": "social",
+        "explanation": "Social influence and the purchase meet in a single moment inside the platform."
+      },
+      {
+        "id": "countdown",
+        "text": "During an evening broadcast, a presenter tries on three jackets and announces that the price will rise in ten minutes.",
+        "answer": "live",
+        "explanation": "A live demonstration with a limited-time offer."
+      }
+    ]
+  },
+  {
+    "slide_id": "algorithm-driven-discovery",
+    "type": "quiz",
+    "question_text": "Over a year, a streaming app's home page fills with crime documentaries after a viewer finishes several of them. The viewer never sees the app's comedies or nature series, although the app has thousands of them. What does this show?",
+    "hint": "Think about what happens when the algorithm keeps showing more of what the viewer already likes.",
+    "correct_answer_citation": "A filter bubble forms when the algorithm keeps showing more of what the consumer already likes.",
+    "options": [
+      {
+        "option_text": "A filter bubble: the recommender keeps showing more of what the viewer already likes, so other titles never reach the viewer's attention.",
+        "option_explanation": "Correct. Recommendations narrow what the viewer sees to the algorithm's predictions."
+      },
+      {
+        "option_text": "Social commerce: the viewer is buying inside a social media platform.",
+        "option_explanation": "Nothing is bought inside a social media feed here; the issue is what the recommender shows."
+      },
+      {
+        "option_text": "The assortment is too small: the app does not offer other kinds of titles.",
+        "option_explanation": "The app has thousands of other titles; the viewer simply never sees them."
+      },
+      {
+        "option_text": "Impulse buying: the viewer chooses quickly because the app is always available.",
+        "option_explanation": "Impulse buying concerns spur-of-the-moment purchases, not which products the algorithm shows."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "type": "identify",
+    "slide_id": "agentic-commerce-from-recommendation-to-autonomous-purchase",
+    "prompt": "Each case shows how much of the purchase a consumer hands to an AI agent. Name the level.",
+    "options": [
+      { "id": "l1", "label": "Level 1: the AI recommends" },
+      { "id": "l2", "label": "Level 2: the AI searches and compares" },
+      { "id": "l3", "label": "Level 3: the AI selects and prepares, the consumer approves" },
+      { "id": "l4", "label": "Level 4: the AI buys within set limits" }
+    ],
+    "cases": [
+      {
+        "id": "printer-ink",
+        "text": "An agent reorders printer ink whenever the cartridge runs low, as long as each order stays under $40. The consumer only sees the delivery.",
+        "answer": "l4",
+        "explanation": "The agent completes the purchase on its own, within a budget the consumer set."
+      },
+      {
+        "id": "hiking-boots",
+        "text": "An assistant lists five hiking boots worth considering. The consumer then searches the shops and buys a pair.",
+        "answer": "l1",
+        "explanation": "The AI only recommends; the consumer searches and buys."
+      },
+      {
+        "id": "flights",
+        "text": "An agent checks twenty airlines and returns a table of the three best flights. The consumer picks one and pays.",
+        "answer": "l2",
+        "explanation": "The AI searches and compares; the consumer chooses and buys."
+      },
+      {
+        "id": "groceries",
+        "text": "An agent fills a grocery cart for the week and sends a message: tap to confirm the order.",
+        "answer": "l3",
+        "explanation": "The AI selects and prepares the purchase; the consumer approves it."
+      },
+      {
+        "id": "gift",
+        "text": "An agent chooses a birthday gift, adds it to the cart with gift wrapping, and waits for the consumer's yes.",
+        "answer": "l3",
+        "explanation": "The consumer still approves before the purchase goes through."
+      },
+      {
+        "id": "laptops",
+        "text": "An assistant reads hundreds of laptop specifications and reviews and shows a side-by-side comparison of four models.",
+        "answer": "l2",
+        "explanation": "Searching and comparing are handed over; choosing and buying are not."
+      }
+    ]
+  },
+  {
+    "slide_id": "conflicts-of-duty-whom-does-the-ai-agent-serve",
+    "type": "quiz",
+    "question_text": "A booking platform deploys an AI assistant whose instructions say only that it works for the platform. Travelers complain that it recommends sponsored hotels too often. Based on the hotel-booking experiments, which change is most likely to reduce this?",
+    "hint": "Recall what one added sentence did in the experiments (Wadi & Ma, 2026c).",
+    "correct_answer_citation": "Adding one sentence stating that its recommendations should serve the traveler removed this difference (Wadi & Ma, 2026c).",
+    "options": [
+      {
+        "option_text": "Add a sentence to the instructions stating that its recommendations should serve the traveler.",
+        "option_explanation": "Correct. In the experiments, this one sentence removed the difference between the platform-employed and traveler-employed agent."
+      },
+      {
+        "option_text": "Tell the agent more clearly that it works for the booking platform.",
+        "option_explanation": "When the agent was told it worked for the platform, it penalized sponsored hotels less, not more."
+      },
+      {
+        "option_text": "Raise the prices of the sponsored hotels.",
+        "option_explanation": "Prices were held equal in the experiments; the difference came from whom the agent was told it served."
+      },
+      {
+        "option_text": "Remove all reviews from the listings.",
+        "option_explanation": "Reviews were not what produced the difference; the agent's principal was."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "type": "identify",
+    "slide_id": "data-collection-and-surveillance",
+    "prompt": "Each situation shows one idea from the slide. Name it.",
+    "options": [
+      { "id": "personalization", "label": "Personalization" },
+      { "id": "paradox", "label": "Privacy paradox" },
+      { "id": "surveillance", "label": "Surveillance capitalism" },
+      { "id": "ethical", "label": "Ethical data practice" }
+    ],
+    "cases": [
+      {
+        "id": "survey-coupon",
+        "text": "A shopper ticks 'very concerned' about privacy in a survey, then gives a café their birthday, email and phone number for a free muffin.",
+        "answer": "paradox",
+        "explanation": "What the consumer says about privacy differs from what they do for a small benefit."
+      },
+      {
+        "id": "sell-predictions",
+        "text": "An app's main income comes from predicting which of its users will soon move house and selling those predictions to furniture and insurance firms.",
+        "answer": "surveillance",
+        "explanation": "Data on behavior are turned into predictions that are sold to others (Zuboff, 2019)."
+      },
+      {
+        "id": "running-offer",
+        "text": "After weeks of morning runs logged in a fitness app, a user sees an offer for running socks in their size.",
+        "answer": "personalization",
+        "explanation": "A relevant offer built from the consumer's own data saves them time."
+      },
+      {
+        "id": "minimal-form",
+        "text": "A delivery service asks only for an address, explains in two sentences what it will do with it, and asks the customer to agree before collecting anything.",
+        "answer": "ethical",
+        "explanation": "Informed consent, only the data needed, and an explanation of its use."
+      },
+      {
+        "id": "location-quiz",
+        "text": "A shopper who says they never share their location switches it on to unlock a 5% discount.",
+        "answer": "paradox",
+        "explanation": "Stated privacy concern, then personal data shared for a small benefit."
+      },
+      {
+        "id": "music-home",
+        "text": "A music app's home page greets each listener with a playlist built from their own recent listening.",
+        "answer": "personalization",
+        "explanation": "The firm uses the record of the consumer's behavior to make the offer relevant."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "algorithmic-pricing",
+    "prompt": "Sort each price change: does it follow demand and supply, or the data about one consumer?",
+    "bins": [
+      { "id": "dynamic", "label": "Dynamic pricing" },
+      { "id": "personalized", "label": "Personalized pricing" }
+    ],
+    "cards": [
+      {
+        "id": "concert",
+        "text": "Concert tickets cost more as the remaining seats sell out.",
+        "bin": "dynamic",
+        "explanation": "The price moves with demand and supply."
+      },
+      {
+        "id": "rain-ride",
+        "text": "Ride prices jump when it starts to rain and many people want a car at once.",
+        "bin": "dynamic",
+        "explanation": "Surge pricing follows demand."
+      },
+      {
+        "id": "loyal-customer",
+        "text": "A shopper who buys from a site every week is shown a higher price for the same blender than a first-time visitor.",
+        "bin": "personalized",
+        "explanation": "Different consumers, different prices for the same product, based on data about each."
+      },
+      {
+        "id": "device",
+        "text": "Two friends search for the same hotel room at the same moment and see different prices on their own phones.",
+        "bin": "personalized",
+        "explanation": "The price is set for each consumer, not by the room's demand."
+      },
+      {
+        "id": "holiday-flights",
+        "text": "Flights for the holiday weekend cost more than the same flights a week later.",
+        "bin": "dynamic",
+        "explanation": "Prices rise with demand on busy dates."
+      },
+      {
+        "id": "neighbourhood",
+        "text": "An online shop charges customers from wealthier postal codes more for the same headphones.",
+        "bin": "personalized",
+        "explanation": "Data about each consumer set the price they see."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "sustainable-consumption-and-the-conscious-consumer",
+    "prompt": "Each case shows one idea from the slide. Name it.",
+    "options": [
+      { "id": "conscious", "label": "Conscious consumer" },
+      { "id": "gap", "label": "Attitude-behavior gap" },
+      { "id": "greenwashing", "label": "Greenwashing" },
+      { "id": "life", "label": "Extending product life" }
+    ],
+    "cases": [
+      {
+        "id": "eco-cap",
+        "text": "A bottle is covered in leaves and says 'eco-friendly', but only its cap is made from recycled plastic.",
+        "answer": "greenwashing",
+        "explanation": "A misleading claim about the product's environmental benefits."
+      },
+      {
+        "id": "fast-fashion",
+        "text": "A student says fast fashion is harmful, then buys five cheap T-shirts during a flash sale.",
+        "answer": "gap",
+        "explanation": "A positive attitude toward sustainability, but the purchase follows price."
+      },
+      {
+        "id": "phone-repair",
+        "text": "Instead of buying a new phone, a consumer has the battery replaced and keeps the old one for two more years.",
+        "answer": "life",
+        "explanation": "Repair extends the product's life and reduces waste."
+      },
+      {
+        "id": "coffee-origin",
+        "text": "Before buying coffee, a shopper checks how the farmers were paid and how the beans were transported, not only the price and taste.",
+        "answer": "conscious",
+        "explanation": "The consumer weighs the environmental and social effects of the purchase."
+      },
+      {
+        "id": "rent-suit",
+        "text": "For a single wedding, a guest rents a suit rather than buying one.",
+        "answer": "life",
+        "explanation": "Rental lets many people use one product."
+      },
+      {
+        "id": "natural-claim",
+        "text": "A detergent's ad shows forests and rivers, while the product itself has no environmental advantage over its rivals.",
+        "answer": "greenwashing",
+        "explanation": "The firm implies environmental benefits the product does not have."
+      }
+    ]
+  }
+]

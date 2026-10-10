@@ -1586,3 +1586,18 @@ export function ReviewCard({
     </g>
   );
 }
+
+/* -- money (Weeks 10, 12) -------------------------------------------------- */
+
+/** A coin, centred on (x, y). */
+export function Coin({ x, y, r = 9, seed }: { x: number; y: number; r?: number; seed: number }) {
+  return (
+    <g>
+      <Wash pts={rp(blobPts(x, y, r, r, seed, 10, 0.05))} seed={seed} fill={SK.ochre} opacity={0.9} dx={0.4} dy={0.3} />
+      <InkLine pts={rp(blobPts(x, y, r, r, seed + 1, 10, 0.05))} seed={seed + 1} closed width={1} />
+      <SketchText x={x} y={r2(y + r * 0.42)} anchor="middle" size={r2(r * 1.2)} serif>
+        $
+      </SketchText>
+    </g>
+  );
+}
