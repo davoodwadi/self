@@ -9,6 +9,7 @@ week: week5
 - Welcome to Week 5 of Introduction to Marketing.
 - Today we focus on Marketing Research and Data Analytics.
 - We will cover the research process, data types, and how insights drive decisions.
+- We will also examine how artificial intelligence assists research and where its answers must be checked.
 
 ## Part 1: The Marketing Research Process [no-exercise]
 - Marketing research is the systematic design, collection, and analysis of data.
@@ -59,6 +60,14 @@ week: week5
 - Survey research is best for gathering descriptive information about knowledge and attitudes.
 - Experimental research is best for gathering causal information by matching groups and controlling factors.
 
+## AI in Marketing Research [exercise]
+- Artificial intelligence now assists at several steps of the research process.
+- In secondary research, AI tools can search and summarize existing reports, but they can also invent sources or figures, so every claim must be checked against the original.
+- In survey research, some researchers ask AI models to answer a questionnaire as if they were consumers with a given profile. These answers are called synthetic responses.
+- Synthetic responses are fast and cheap, and early studies found that they can mirror some patterns in real consumer data, such as sensitivity to price (Brand, Israeli, & Ngwe, 2023).
+- They also have limits: the same model can give a different answer each time it is asked the same question (Wadi & Fredette, 2025).
+- Synthetic responses can help researchers draft and pretest a survey, but decisions about real customers still need primary data from real customers.
+
 ## Discussion: Choosing Data Types
 - Discussion: When launching a completely novel product category that does not currently exist, why might a company have to rely heavily on primary data rather than secondary data?
 
@@ -89,4 +98,5 @@ week: week5
 ## Conclusion: Data-Driven Decision Making
 - Marketing research reduces uncertainty in decision making.
 - A strategic mix of primary and secondary data provides a complete market view.
+- Artificial intelligence can speed up research, but its output is a starting point that real data must confirm.
 - Effective use of analytics transforms raw data into a competitive advantage.

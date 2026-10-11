@@ -34,7 +34,7 @@ export default function DigitalTransformationWeek7() {
  {/* Navigation */}
       <Link
         href="/courses/digital-transformation"
-        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--charcoal-light)] hover:text-[var(--crimson)] hover:border-[var(--crimson)] hover:bg-[var(--crimson)]/5 transition-colors duration-300 group "
+        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--text-muted)] hover:text-[var(--accent1)] transition-colors duration-300"
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />

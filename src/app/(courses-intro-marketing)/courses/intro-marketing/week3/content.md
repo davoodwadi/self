@@ -9,6 +9,7 @@ week: week3
 - Welcome to Week 3 of Introduction to Marketing.
 - Today we will explore Consumer Behavior.
 - We will cover the consumer decision-making process, influences on buying behavior, and B2B vs B2C purchasing.
+- We will also ask which steps of that process consumers now delegate to AI agents.
 
 ## Part 1: The Consumer Decision-Making Process [no-exercise]
 - Consumer buyer behavior refers to the buying behavior of final consumers.
@@ -39,6 +40,15 @@ week: week3
 - The marketer's job does not end when the product is bought.
 - Postpurchase behavior focuses on whether the consumer is satisfied or dissatisfied with the purchase.
 - Cognitive dissonance, or buyer discomfort caused by postpurchase conflict, is a common occurrence.
+
+## Delegating the Decision to an AI Agent [exercise]
+- Consumers can now hand some steps of the decision process to an AI agent that shops on their behalf.
+- Need recognition stays with the consumer, who tells the AI agent what they want.
+- Information search and evaluation of alternatives are the steps most often delegated: the AI agent gathers product details and compares the options.
+- The purchase decision may be made by the AI agent or returned to the consumer for approval.
+- Postpurchase behavior stays with the consumer, who uses the product and decides whether it met their expectations.
+- The instruction matters. In one study, when each product look-up had a cost and the goal was vague, AI agents often skipped the package size and chose a coffee that cost more per ounce; with a specific goal, they checked the details and chose better (Wadi & Ma, 2026b).
+- Consumers also keep some tasks for themselves by choice: people who see an activity, such as cooking, as part of who they are tend to resist handing it to a machine (Leung, Paolacci, & Puntoni, 2018).
 
 ## Discussion: Postpurchase Dissonance
 - Discussion: Think about a time you experienced "buyer's remorse" after a major purchase. How could the brand have communicated with you to reduce that cognitive dissonance?
@@ -91,5 +101,6 @@ week: week3
 
 ## Conclusion: Consumer Behavior
 - Understanding the consumer decision-making process is foundational to effective marketing.
+- As AI agents take over search and evaluation, marketers must understand both the consumer's decision and the AI agent's part in it.
 - Cultural, social, and psychological factors continuously shape consumer preferences.
 - While B2B and B2C markets share some similarities, B2B purchasing is generally more complex, professional, and relationship-driven.

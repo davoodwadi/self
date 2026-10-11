@@ -9,6 +9,7 @@ week: week2
 - Welcome to Week 2 of Introduction to Marketing.
 - Today we will explore the forces that shape a company's marketing environment.
 - We will cover micro and macro-environmental factors, CSR, and marketing ethics.
+- We will also examine artificial intelligence as a force in the marketing environment and as a new subject for marketing ethics.
 
 ## Part 1: The Marketing Environment [no-exercise]
 - A company's marketing environment consists of the actors and forces outside marketing that affect marketing management's ability to build and maintain successful relationships with target customers.
@@ -40,6 +41,13 @@ week: week2
 - **Legal:** Specific legislation protecting companies from each other, protecting consumers, and protecting the interests of society.
 - **Environmental:** Natural resources that are needed as inputs by marketers or that are affected by marketing activities.
 - Compliance and environmental sustainability are now baseline expectations for modern businesses.
+
+## Artificial Intelligence in the Marketing Environment [exercise]
+- Artificial intelligence shows how one development can touch several PESTLE forces at once.
+- **Technological:** AI agents can now search, compare, and buy on a consumer's behalf, creating new ways to reach customers.
+- **Legal:** New laws set rules for how companies use AI. The European Union's AI Act, for example, requires that people be told when they are talking to a chatbot and that AI-generated images, audio, and video imitating real people or events be labeled.
+- **Social:** Consumers differ in how much they trust AI to make choices for them, and this trust shapes how much buying they delegate.
+- Marketers who track these forces early can adapt their offerings and practices before competitors do.
 
 ## Discussion: Environmental Forces
 - Discussion: If a global coffee chain wants to enter a new emerging market, which PESTLE factor might pose the most immediate and unpredictable challenge to their launch strategy, and why?
@@ -83,6 +91,14 @@ week: week2
 - It is often used for unsought goods or in aggressive B2B environments.
 - High-pressure selling yields short-term gains but damages long-term relationships and reputation.
 
+## Dark Patterns Directed at AI Agents [exercise]
+- A dark pattern is a design that leads a person toward a choice they would not otherwise make, such as a fake countdown timer or a fee revealed only at checkout.
+- As AI agents shop for consumers, some sellers aim the same tricks at the agent instead of the person.
+- A seller may show a key fact, such as the price per ounce, only inside an image that the AI agent cannot read.
+- A seller may hide text on a product page, invisible to people, that instructs AI agents to recommend the product.
+- A seller may post fake reviews written to sway the AI agent's comparison.
+- Like deceptive pricing and promotion, these practices harm the consumer the agent works for and destroy trust in the brand once they are discovered.
+
 ## Planned Obsolescence
 - Causing products to become obsolete before they actually need replacement.
 - Strategies include using materials that break easily, continuous changing of styles, or delaying functional features until later models.
@@ -97,3 +113,4 @@ week: week2
 - The marketing environment is dynamic and constantly evolving.
 - Companies must actively monitor micro and macro forces to seize opportunities and mitigate threats.
 - Ultimately, long-term success requires a commitment to ethical practices and genuine corporate social responsibility.
+- These commitments now extend to AI agents: a company that would not deceive a consumer should not deceive the AI agent that shops for one.

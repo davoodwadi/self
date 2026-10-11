@@ -1,0 +1,332 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "structured-and-unstructured-data",
+    "prompt": "A hotel chain holds all of the data below. Sort each item into structured or unstructured data.",
+    "bins": [
+      { "id": "structured", "label": "Structured data" },
+      { "id": "unstructured", "label": "Unstructured data" }
+    ],
+    "cards": [
+      {
+        "id": "bookings",
+        "text": "A table of bookings: guest name, room number, check-in date, nightly rate",
+        "bin": "structured",
+        "explanation": "Every booking fills the same columns, so the rows can be searched and summed."
+      },
+      {
+        "id": "reviews",
+        "text": "Guest reviews written on a travel website",
+        "bin": "unstructured",
+        "explanation": "Free text with no predefined format: each review is written differently."
+      },
+      {
+        "id": "minibar",
+        "text": "A list of minibar items with item code, price and stock count",
+        "bin": "structured",
+        "explanation": "An inventory list in fixed rows and columns."
+      },
+      {
+        "id": "cctv",
+        "text": "Video from the lobby security cameras",
+        "bin": "unstructured",
+        "explanation": "Video has no rows or columns to query."
+      },
+      {
+        "id": "thermostat",
+        "text": "Room thermostat readings stored as room, time and temperature",
+        "bin": "structured",
+        "explanation": "Sensor data in a structured format: the same three fields for every reading."
+      },
+      {
+        "id": "emails",
+        "text": "Emails from guests asking about late check-out",
+        "bin": "unstructured",
+        "explanation": "Emails and text messages have no predefined structure."
+      },
+      {
+        "id": "photos",
+        "text": "Photos guests tag the hotel in on social media",
+        "bin": "unstructured",
+        "explanation": "Images and social media posts are unstructured."
+      },
+      {
+        "id": "payments",
+        "text": "Card payments recorded with amount, date and booking number",
+        "bin": "structured",
+        "explanation": "Transaction records sit in fixed fields, like sales data."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "big-data-and-the-three-vs",
+    "prompt": "A ride-hailing platform runs on Big Data. Match each V with the situation that shows it.",
+    "term_label": "V",
+    "match_label": "Situation",
+    "pairs": [
+      {
+        "id": "volume",
+        "term": "Volume",
+        "match": "Years of trip records for millions of riders now fill several petabytes of storage.",
+        "explanation": "Volume is the amount of data: terabytes or petabytes."
+      },
+      {
+        "id": "velocity",
+        "term": "Velocity",
+        "match": "Every driver's phone sends its location every few seconds, and prices update in real time.",
+        "explanation": "Velocity is the speed at which data is generated and processed."
+      },
+      {
+        "id": "variety",
+        "term": "Variety",
+        "match": "The platform keeps payment tables, rider ratings in free text and photos of damaged cars.",
+        "explanation": "Variety is the mix of formats: structured tables alongside text and images."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "data-storage",
+    "question_text": "A city transit agency wants to keep every raw camera clip, sensor log and passenger complaint in its original format, without deciding yet how it will be analysed. Where should it keep this data?",
+    "hint": "Which repository stores raw data in its native format until it is needed?",
+    "correct_answer_citation": "Data Lakes: Repositories that store vast amounts of raw data in its native format until it is needed for analysis.",
+    "options": [
+      {
+        "option_text": "A data lake",
+        "option_explanation": "Right. A data lake holds raw data in its native format until an analysis needs it."
+      },
+      {
+        "option_text": "A data warehouse",
+        "option_explanation": "A data warehouse stores structured data, organised in advance for query and analysis. Raw clips and logs in their native format belong in a lake."
+      },
+      {
+        "option_text": "A spreadsheet",
+        "option_explanation": "A spreadsheet holds structured rows and columns, not raw video and free text."
+      },
+      {
+        "option_text": "Nowhere until the analysis is planned",
+        "option_explanation": "A data lake exists so that raw data can be kept before its use is decided."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "type": "identify",
+    "slide_id": "analytics-tools",
+    "prompt": "A grocery chain analyses its sales data. Name the kind of analytics each case shows.",
+    "options": [
+      { "id": "descriptive", "label": "Descriptive" },
+      { "id": "predictive", "label": "Predictive" },
+      { "id": "prescriptive", "label": "Prescriptive" }
+    ],
+    "cases": [
+      {
+        "id": "dashboard",
+        "text": "A dashboard shows last month's sales for each store.",
+        "answer": "descriptive",
+        "explanation": "It summarises historical data: what has happened."
+      },
+      {
+        "id": "forecast",
+        "text": "A model estimates how much ice cream each store will sell next week, using past sales and the weather forecast.",
+        "answer": "predictive",
+        "explanation": "It forecasts a future outcome from historical data."
+      },
+      {
+        "id": "reorder",
+        "text": "Software tells each store manager exactly how many cases of milk to order to keep waste lowest.",
+        "answer": "prescriptive",
+        "explanation": "It recommends an action, found by optimisation."
+      },
+      {
+        "id": "report",
+        "text": "A quarterly report lists the ten best-selling products of the past three months.",
+        "answer": "descriptive",
+        "explanation": "A report that summarises what has already happened."
+      },
+      {
+        "id": "churn",
+        "text": "A model flags loyalty-card members who are likely to stop shopping at the chain next month.",
+        "answer": "predictive",
+        "explanation": "It forecasts future behaviour; it does not yet say what to do."
+      },
+      {
+        "id": "price",
+        "text": "A system sets the discount on each bakery item at 6 p.m. to sell out before closing.",
+        "answer": "prescriptive",
+        "explanation": "It recommends, and here takes, an action based on the analysis."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "primary-and-support-activities",
+    "prompt": "A bicycle maker carries out the activities below. Sort each one into primary or support activities.",
+    "bins": [
+      { "id": "primary", "label": "Primary activities" },
+      { "id": "support", "label": "Support activities" }
+    ],
+    "cards": [
+      {
+        "id": "steel",
+        "text": "Unloading steel tubing at the factory and storing it until it is used",
+        "bin": "primary",
+        "explanation": "Inbound logistics: receiving and warehousing raw materials."
+      },
+      {
+        "id": "weld",
+        "text": "Welding and painting frames on the assembly line",
+        "bin": "primary",
+        "explanation": "Operations: transforming inputs into the final product."
+      },
+      {
+        "id": "ship",
+        "text": "Packing finished bicycles and shipping them to shops",
+        "bin": "primary",
+        "explanation": "Outbound logistics: getting the finished product to the customer."
+      },
+      {
+        "id": "repair",
+        "text": "Repairing bicycles under warranty",
+        "bin": "primary",
+        "explanation": "Service: maintaining the product's value after purchase."
+      },
+      {
+        "id": "buy",
+        "text": "Negotiating a contract with a new supplier of brakes",
+        "bin": "support",
+        "explanation": "Procurement: acquiring the goods and services the company needs."
+      },
+      {
+        "id": "rnd",
+        "text": "Designing a lighter frame in the research lab",
+        "bin": "support",
+        "explanation": "Technology development: research and development, and product design."
+      },
+      {
+        "id": "train",
+        "text": "Training new welders",
+        "bin": "support",
+        "explanation": "Human resource management: recruiting, hiring and training the workforce."
+      },
+      {
+        "id": "finance",
+        "text": "Preparing the annual budget and quality-control system",
+        "bin": "support",
+        "explanation": "Firm infrastructure: planning, finance and quality control."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "data-value-chain-interpretation-to-feedback",
+    "prompt": "A coffee chain wants to know why some stores sell less in the afternoon. Put its work in the order of the Data Value Chain.",
+    "steps": [
+      {
+        "id": "generation",
+        "text": "Every sale at the till creates a record with the time and the items.",
+        "explanation": "Data generation: data is created by transactions."
+      },
+      {
+        "id": "collection",
+        "text": "The records from all tills are gathered automatically each night.",
+        "explanation": "Data collection: the generated data is gathered."
+      },
+      {
+        "id": "storage",
+        "text": "The records are kept in a cloud database the analysts can reach.",
+        "explanation": "Data storage: kept for easy access and retrieval."
+      },
+      {
+        "id": "processing",
+        "text": "Duplicate sales are removed and missing store codes are filled in.",
+        "explanation": "Data processing: cleaning and organising the data for analysis."
+      },
+      {
+        "id": "analysis",
+        "text": "Analysts find that afternoon sales drop most in stores near offices.",
+        "explanation": "Data analysis: techniques applied to find patterns."
+      },
+      {
+        "id": "visualization",
+        "text": "A dashboard chart shows afternoon sales for each store.",
+        "explanation": "Data visualization: presenting the findings in charts."
+      },
+      {
+        "id": "interpretation",
+        "text": "Managers conclude that office workers leave by 4 p.m.",
+        "explanation": "Data interpretation: domain knowledge turns findings into a conclusion."
+      },
+      {
+        "id": "utilization",
+        "text": "The office-area stores shorten their afternoon hours.",
+        "explanation": "Data utilization: the insight drives a decision."
+      },
+      {
+        "id": "feedback",
+        "text": "The chain starts tracking sales under the new hours to see what changed.",
+        "explanation": "Feedback and iteration: the decision leads to new data generation and analysis."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "technical-system",
+    "prompt": "A hospital introduces a new patient-records system. Sort each element into the social system or the technical system.",
+    "bins": [
+      { "id": "social", "label": "Social system" },
+      { "id": "technical", "label": "Technical system" }
+    ],
+    "cards": [
+      {
+        "id": "tablets",
+        "text": "The tablets nurses carry on their rounds",
+        "bin": "technical",
+        "explanation": "Hardware: physical devices used in the system."
+      },
+      {
+        "id": "trust",
+        "text": "Senior doctors trust their own handwritten notes more than the screen",
+        "bin": "social",
+        "explanation": "Norms and values shape how people work together."
+      },
+      {
+        "id": "app",
+        "text": "The records application and its database",
+        "bin": "technical",
+        "explanation": "Software: programs and databases that run on hardware."
+      },
+      {
+        "id": "handover",
+        "text": "Nurses on the night shift rely on the day shift's handover",
+        "bin": "social",
+        "explanation": "Interdependence: one group's actions affect another."
+      },
+      {
+        "id": "wifi",
+        "text": "The hospital's wireless network",
+        "bin": "technical",
+        "explanation": "Networks: LANs, WANs and the internet."
+      },
+      {
+        "id": "roles",
+        "text": "Who may sign off a prescription: doctors, not nurses",
+        "bin": "social",
+        "explanation": "Roles and structures among individuals and groups."
+      },
+      {
+        "id": "helpdesk",
+        "text": "Troubleshooting and updates from the IT helpdesk",
+        "bin": "technical",
+        "explanation": "Support and maintenance keep the system running smoothly."
+      },
+      {
+        "id": "new-chief",
+        "text": "A new head of nursing changes how the wards are run",
+        "bin": "social",
+        "explanation": "Stability and change: leadership changes can disrupt the status quo."
+      }
+    ]
+  }
+]

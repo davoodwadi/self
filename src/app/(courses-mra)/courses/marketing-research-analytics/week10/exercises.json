@@ -1,0 +1,296 @@
+[
+  {
+    "type": "quiz",
+    "slide_id": "factor-analysis",
+    "question_text": "A smartphone survey asks for ratings on eight attributes. The factor analysis gives eigenvalues of 3.1, 2.2, 0.8, 0.6 and smaller. On the first factor, battery life, durability and repair cost load highly; on the second, camera quality, screen color and design load highly. Which conclusion follows?",
+    "hint": "Apply the eigenvalue rule, then name each factor from its high loadings.",
+    "correct_answer_citation": "Week 10 · Factor Analysis",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Retain eight factors, one for each attribute.",
+        "option_explanation": "Factor analysis reduces the attributes to fewer dimensions; only two eigenvalues exceed one."
+      },
+      {
+        "option_text": "Retain two factors, which might be named reliability and appearance.",
+        "option_explanation": "Correct. Two eigenvalues exceed one, and each factor is named from the variables that load highly on it."
+      },
+      {
+        "option_text": "Retain three factors, since the third eigenvalue is close to one.",
+        "option_explanation": "An eigenvalue of 0.8 falls below the conventional threshold of one, and no third group of attributes is described."
+      },
+      {
+        "option_text": "Treat battery life as the dependent variable and the others as predictors.",
+        "option_explanation": "Factor analysis is an interdependence technique: it does not distinguish dependent from independent variables."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "interpreting-a-perceptual-map",
+    "prompt": "A perceptual map of sports drinks shows brands and the ideal points of three segments. What does each observation indicate?",
+    "options": [
+      {
+        "id": "competition",
+        "label": "Intense competition"
+      },
+      {
+        "id": "fit",
+        "label": "Fit with a segment"
+      },
+      {
+        "id": "opportunity",
+        "label": "Positioning opportunity"
+      },
+      {
+        "id": "no-opportunity",
+        "label": "No opportunity"
+      }
+    ],
+    "cases": [
+      {
+        "id": "twins",
+        "text": "Two brands sit almost on top of each other in the high-energy, high-price corner.",
+        "answer": "competition",
+        "explanation": "Proximity indicates perceived similarity, and therefore the intensity of competition between the two brands."
+      },
+      {
+        "id": "gap-crowd",
+        "text": "No brand sits in the low-sugar, mid-price region, where the ideal points of a large segment lie.",
+        "answer": "opportunity",
+        "explanation": "The region is unoccupied, and a sufficient number of consumers have their ideal point there."
+      },
+      {
+        "id": "near-ideal",
+        "text": "One brand sits a short distance from the ideal point of the endurance athletes' segment.",
+        "answer": "fit",
+        "explanation": "A short distance to a segment's ideal point indicates that the brand's perceived position matches that segment's preferences."
+      },
+      {
+        "id": "gap-empty",
+        "text": "No brand sits in the low-energy, high-price region, and no segment has an ideal point there.",
+        "answer": "no-opportunity",
+        "explanation": "An unoccupied region is an opportunity only if enough consumers have their ideal point in it."
+      },
+      {
+        "id": "far-ideal",
+        "text": "A brand sits far from all three ideal points, closest to that of the casual-exercise segment.",
+        "answer": "fit",
+        "explanation": "The distance to each ideal point shows how well the brand's perceived position matches each segment; here the match is weak."
+      },
+      {
+        "id": "cluster3",
+        "text": "Three store brands crowd the low-price, plain-flavour region.",
+        "answer": "competition",
+        "explanation": "Brands positioned close together are perceived as similar and compete directly."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "the-clustering-procedure",
+    "prompt": "A bank segments its credit card holders. Put the steps of the clustering procedure in order.",
+    "steps": [
+      {
+        "id": "variables",
+        "text": "Choose the benefits cardholders seek, such as rewards, as clustering variables.",
+        "explanation": "The clustering variables come first, selected according to the research problem."
+      },
+      {
+        "id": "standardize",
+        "text": "Standardize monthly spending and the benefit ratings, which use different scales.",
+        "explanation": "Standardizing keeps spending, with its larger numerical range, from dominating the distance."
+      },
+      {
+        "id": "method",
+        "text": "Choose Euclidean distance and k-means for the 200,000 cardholders.",
+        "explanation": "The distance measure and the clustering method are chosen next; k-means suits a large dataset."
+      },
+      {
+        "id": "number",
+        "text": "Compare three-, four- and five-cluster solutions on statistics and interpretability.",
+        "explanation": "The number of clusters is set by statistical criteria and the interpretability of the solution."
+      },
+      {
+        "id": "profile",
+        "text": "Describe each cluster by age, income and channels not used in clustering.",
+        "explanation": "Profiling on other variables makes each segment identifiable and reachable."
+      },
+      {
+        "id": "stability",
+        "text": "Repeat the analysis on two random halves of the cardholders and compare.",
+        "explanation": "The stability of the solution is assessed last."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "evaluating-segments",
+    "prompt": "Each segment found by cluster analysis fails one evaluation criterion. Which one?",
+    "options": [
+      {
+        "id": "measurable",
+        "label": "Measurable"
+      },
+      {
+        "id": "substantial",
+        "label": "Substantial"
+      },
+      {
+        "id": "accessible",
+        "label": "Accessible"
+      },
+      {
+        "id": "differentiable",
+        "label": "Differentiable"
+      },
+      {
+        "id": "actionable",
+        "label": "Actionable"
+      }
+    ],
+    "cases": [
+      {
+        "id": "tiny",
+        "text": "A furniture retailer's segment of collectors of antique lamps holds 40 customers nationwide.",
+        "answer": "substantial",
+        "explanation": "The segment is too small to justify a distinct marketing program."
+      },
+      {
+        "id": "same-response",
+        "text": "Two segments of a streaming service react to price increases, promotions and advertising in exactly the same way.",
+        "answer": "differentiable",
+        "explanation": "A segment that does not respond differently to marketing actions need not be treated separately."
+      },
+      {
+        "id": "no-media",
+        "text": "A segment of retired hobbyists uses no channel or medium that the firm can identify or buy.",
+        "answer": "accessible",
+        "explanation": "The segment cannot be reached through identifiable channels and media."
+      },
+      {
+        "id": "no-resources",
+        "text": "A regional brewery identifies a segment that would require a national distribution network it cannot afford.",
+        "answer": "actionable",
+        "explanation": "The firm lacks the resources to design and implement a program for the segment."
+      },
+      {
+        "id": "unknown-size",
+        "text": "A segment defined by an attitude that no available data source records, so its size cannot be estimated.",
+        "answer": "measurable",
+        "explanation": "The size and characteristics of the segment cannot be estimated."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "interpreting-part-worth-utilities",
+    "question_text": "Headphone part-worth ranges are 0.6 for brand, 1.8 for noise cancelling and 1.6 for price, with prices tested from $150 to $250. What is the relative importance of noise cancelling, and how would testing prices from $100 to $400 change the importance of price?",
+    "hint": "Divide the attribute's range by the sum of the ranges; then ask how a wider price range changes the price part-worths.",
+    "correct_answer_citation": "Week 10 · Interpreting Part-Worth Utilities",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "33 percent; the importance of price would stay the same.",
+        "option_explanation": "Each attribute's range is divided by the total of 4.0, not shared equally; and importance depends on the levels included."
+      },
+      {
+        "option_text": "45 percent; the importance of price would fall.",
+        "option_explanation": "1.8 divided by 4.0 is 45 percent, but a wider range of prices increases the apparent importance of price."
+      },
+      {
+        "option_text": "45 percent; the importance of price would rise.",
+        "option_explanation": "Correct. 1.8 / (0.6 + 1.8 + 1.6) = 45 percent, and a wider range of prices widens the range of the price part-worths."
+      },
+      {
+        "option_text": "1.8 percent; price is the most important attribute.",
+        "option_explanation": "1.8 is the range of the part-worths, not the relative importance, and noise cancelling has the largest range."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "conjoint-designs-for-ai-agents",
+    "question_text": "A retailer gives a shopping agent choice tasks of four profiles varying in price, rating, delivery time and an \"Ad\" label. The agent is told in one condition that it serves the shopper, in another that it serves the retailer. Which approach is sound?",
+    "hint": "Recall how the label is treated as an attribute, and what agents' position effects require.",
+    "correct_answer_citation": "Week 10 · Conjoint Designs for AI Agents",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Randomize profile order in each task, and compare the \"Ad\" label's part-worth across the two conditions.",
+        "option_explanation": "Correct. AI agents show position effects, so order is randomized, and the label's part-worth measures the penalty the agent applies under each set of instructions."
+      },
+      {
+        "option_text": "Always show the labelled profile first, and read the price part-worth as the penalty for paid listings.",
+        "option_explanation": "A fixed position confounds the label with position effects, and the penalty is measured by the label's own part-worth."
+      },
+      {
+        "option_text": "Ask the agent how important the label is, since an agent reports its weights accurately.",
+        "option_explanation": "Conjoint analysis infers importance from choices among complete profiles rather than from direct questions."
+      },
+      {
+        "option_text": "Run one condition only, since an agent's part-worths do not depend on its instructions.",
+        "option_explanation": "Agents told they served the booking platform penalized sponsored listings less than agents told they served the traveler."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "ai-generated-personas",
+    "prompt": "A language model wrote a persona from the profile of a commuter segment: 68% are aged 25–34, 81% travel by train, 59% buy coffee on the way, and the main theme of their answers is reliability. Sort each line of the persona.",
+    "bins": [
+      {
+        "id": "supported",
+        "label": "Supported by the segment data"
+      },
+      {
+        "id": "unsupported",
+        "label": "Not supported by the data"
+      }
+    ],
+    "cards": [
+      {
+        "id": "age",
+        "text": "Daniel is 29.",
+        "bin": "supported",
+        "explanation": "Most of the segment is aged 25–34."
+      },
+      {
+        "id": "train",
+        "text": "He takes the train to work.",
+        "bin": "supported",
+        "explanation": "81% of the segment travel by train."
+      },
+      {
+        "id": "coffee",
+        "text": "He buys a coffee on the way.",
+        "bin": "supported",
+        "explanation": "59% of the segment buy coffee on the way."
+      },
+      {
+        "id": "reliable",
+        "text": "Delays are his main frustration.",
+        "bin": "supported",
+        "explanation": "Reliability is the main theme of the segment's answers."
+      },
+      {
+        "id": "job",
+        "text": "He is a software engineer.",
+        "bin": "unsupported",
+        "explanation": "An occupation the data do not describe."
+      },
+      {
+        "id": "family",
+        "text": "He recently became a father.",
+        "bin": "unsupported",
+        "explanation": "A family situation the data do not describe."
+      },
+      {
+        "id": "quote",
+        "text": "\"I just want my mornings to run like clockwork.\"",
+        "bin": "unsupported",
+        "explanation": "A quotation the model wrote, not one a member of the segment gave."
+      }
+    ]
+  }
+]

@@ -547,10 +547,10 @@ export function Numbered({
 export function PartHead({ n, title, className = "" }: { n: number; title: string; className?: string }) {
   return (
     <div className={cn("w-full", className)}>
-      <div className="flex items-end gap-6 xl:gap-10">
+      <div className="flex items-end gap-4 sm:gap-6 xl:gap-10">
         <div
           aria-hidden
-          className="select-none text-[5rem] leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] xl:text-[7rem]"
+          className="select-none text-[3.5rem] leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] sm:text-[5rem] xl:text-[7rem]"
           style={{ fontFamily: "var(--font-heading)", fontWeight: 500 }}
         >
           {String(n).padStart(2, "0")}

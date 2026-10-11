@@ -129,3 +129,43 @@
   letter-spacing: 0.05em;
   color: var(--text-muted);
 }
+
+/* Type roles the shared exercises read (src/components/exercises). They take
+   the deck's own tokens, so an exercise looks native on the cream deck. */
+.type-h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.type-lead {
+  font-family: var(--font-body);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.type-body {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.type-label {
+  font-family: var(--font-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+
+.type-caption {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--ink-3);
+}

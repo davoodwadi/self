@@ -14,8 +14,8 @@ Deep, muted poster inks on warm cream, like colours printed on paper: calm to lo
 
 | Constant | Colour | Use | Hex | Contrast on cream |
 |---|---|---|---|---|
-| `CREAM` | Warm cream | plate and page background, gaps between shapes, badges, text on a coloured shape | `#F1EADB` | — |
-| `INK` | Warm black | silhouettes, frames, rules, text | `#1D1B1A` | 14.3:1 |
+| `CREAM` | Soft warm white | plate and page background, gaps between shapes, badges, text on a coloured shape | `#EFEBE3` | — |
+| `INK` | Warm black | silhouettes, frames, rules, text | `#1D1B1A` | 14.4:1 |
 | `SKIN` | Pale beige | visible skin | `#DCCFB8` | — |
 | `SIGNAL` | Brick red | what is learned, lit or chosen (rule 10) | `#A63A2C` | 5.4:1 |
 | `COUNTER` | Deep blue | the contrast (rule 10) | `#1F5FAF` | 5.3:1 |

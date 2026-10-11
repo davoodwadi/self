@@ -14,6 +14,7 @@ Product and Service Strategies (The First P)
 - Welcome to Week 7 of Introduction to Marketing.
 - Today we focus on the first P of the marketing mix: Product.
 - We will explore what makes a product successful from inception to decline.
+- We will also see how artificial intelligence is changing new product development and the delivery of services.
 
 ## The Concept: Defining a Product [exercise]
 - A product is anything that can be offered to a market for attention, acquisition, use, or consumption.
@@ -70,6 +71,13 @@ Product and Service Strategies (The First P)
 - Test marketing introduces the product and marketing program into realistic market settings.
 - Commercialization is the final step of introducing the new product into the market.
 
+## Artificial Intelligence in New Product Development [exercise]
+- Artificial intelligence is now used at several steps of the new product development process.
+- In idea generation, AI tools can produce hundreds of product ideas in minutes, so the hard work shifts to screening them.
+- In concept development and testing, marketers can ask AI models to react to a concept as target consumers might, which helps refine the concept before it is shown to real consumers.
+- In product development, AI tools can turn a concept into images and early designs that are quick to test.
+- AI speeds up the early steps, but business analysis, test marketing, and commercialization still depend on real costs, real consumers, and real market results.
+
 ## The Concept: Branding Strategy [exercise]
 - A brand is a name, term, sign, symbol, or design that identifies the maker or seller of a product.
 - It represents the consumer's perceptions and feelings about a product and its performance.
@@ -102,6 +110,14 @@ Product and Service Strategies (The First P)
 - Service profit chain links service firm profits with employee and customer satisfaction.
 - Internal marketing means the firm must orient and motivate its customer-contact employees.
 
+## AI-Delivered Services [exercise]
+- Many services are now delivered fully or partly by artificial intelligence, such as chatbots that answer customer questions or AI assistants that book travel.
+- AI changes how a firm manages the four service characteristics.
+- Inseparability: the service is produced by the AI system, not by a frontline employee, and it can be available at any hour.
+- Perishability: an AI system can serve many customers at once, so capacity can grow and shrink with demand.
+- Variability: an AI system follows the same instructions every time, yet it can still give different answers to the same question (Wadi & Fredette, 2025), so firms must test its quality as they would train employees.
+- Intangibility remains: customers still cannot judge the service before they use it, so trust and clear disclosure that they are talking to an AI system matter.
+
 ## Discussion: Overcoming Service Perishability
 - An airline has 50 empty seats on a flight departing in 24 hours. Once the plane takes off, the revenue opportunity for those seats is gone forever.
 - Offering deep last-minute discounts might fill the seats but could train customers to wait for cheap tickets in the future.
@@ -112,3 +128,4 @@ Product and Service Strategies (The First P)
 - Continuous new product development is essential for long-term growth and survival.
 - Strong branding and effective packaging create lasting consumer connections.
 - Services require distinct strategies to manage their intangibility, inseparability, variability, and perishability.
+- Artificial intelligence speeds up product development and delivers many services, but people still judge the results and remain responsible for them.

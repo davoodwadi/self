@@ -227,6 +227,185 @@ export function headAlong2(x: number, y: number, dx: number, dy: number, s = 8) 
 }
 
 /* --------------------------------------------------------------------------
+   Interactive plates
+   A plate's untouched state is the complete picture the slide shows on a
+   projector; these pieces let students move one thing and watch the result.
+   -------------------------------------------------------------------------- */
+
+/**
+ * A knob the student drags along one axis of the plate it sits in: a paper
+ * disc with an open chevron either side, so the way it moves is visible
+ * before anyone touches it. `value` is in the plate's own units. Arrow keys
+ * move it too.
+ */
+export function DragKnob({
+  x,
+  y,
+  value,
+  min,
+  max,
+  onChange,
+  label,
+  axis = "x",
+  tone = INK,
+  step = 1,
+}: {
+  /** The fixed coordinate of the knob's track (y for a horizontal knob, x for a vertical one). */
+  x?: number;
+  y?: number;
+  value: number;
+  min: number;
+  max: number;
+  onChange: (value: number) => void;
+  label: string;
+  axis?: "x" | "y";
+  tone?: string;
+  step?: number;
+}) {
+  const cx = axis === "x" ? value : (x ?? 0);
+  const cy = axis === "x" ? (y ?? 0) : value;
+  const clamp = (v: number) => Math.min(max, Math.max(min, Math.round(v / step) * step));
+  const toPlate = (e: React.PointerEvent<SVGGElement>) => {
+    const svg = e.currentTarget.ownerSVGElement;
+    const m = svg?.getScreenCTM();
+    if (!svg || !m) return value;
+    const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
+    return axis === "x" ? p.x : p.y;
+  };
+  const a = 7;
+  const chevrons =
+    axis === "x"
+      ? [headAlong2(cx - 15, cy, -1, 0, 5), headAlong2(cx + 15, cy, 1, 0, 5)]
+      : [headAlong2(cx, cy - 15, 0, -1, 5), headAlong2(cx, cy + 15, 0, 1, 5)];
+  return (
+    <g
+      role="slider"
+      tabIndex={0}
+      aria-label={label}
+      aria-valuemin={min}
+      aria-valuemax={max}
+      aria-valuenow={Math.round(value)}
+      aria-orientation={axis === "x" ? "horizontal" : "vertical"}
+      className="outline-none [&:focus-visible_.knob]:stroke-[3]"
+      style={{ cursor: axis === "x" ? "ew-resize" : "ns-resize", touchAction: "none", userSelect: "none" }}
+      onPointerDown={(e) => {
+        e.preventDefault();
+        e.currentTarget.setPointerCapture(e.pointerId);
+        onChange(clamp(toPlate(e)));
+      }}
+      onPointerMove={(e) => {
+        if (e.currentTarget.hasPointerCapture(e.pointerId)) onChange(clamp(toPlate(e)));
+      }}
+      onKeyDown={(e) => {
+        const d =
+          e.key === "ArrowRight" || e.key === "ArrowUp"
+            ? 1
+            : e.key === "ArrowLeft" || e.key === "ArrowDown"
+              ? -1
+              : 0;
+        if (!d) return;
+        e.preventDefault();
+        onChange(clamp(value + d * step * 5 * (axis === "y" ? -1 : 1)));
+      }}
+    >
+      <circle cx={cx} cy={cy} r={20} fill="transparent" />
+      {chevrons.map((d) => (
+        <path key={d} d={d} fill="none" stroke={tone} strokeWidth={1.5} />
+      ))}
+      <circle className="knob" cx={cx} cy={cy} r={a} fill={PAPER} stroke={tone} strokeWidth={2} />
+    </g>
+  );
+}
+
+/** A row of choices under an interactive plate, one pressed at a time. */
+export function Segmented<T extends string>({
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  label: string;
+  options: { id: T; label: string }[];
+  value: T;
+  onChange: (value: T) => void;
+}) {
+  return (
+    <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 px-1" role="group" aria-label={label}>
+      <span className="type-label shrink-0 !text-[0.66rem] !text-[var(--ink-3)]">{label}</span>
+      <div className="flex flex-wrap border border-[var(--rule-2)]">
+        {options.map((o) => {
+          const on = o.id === value;
+          return (
+            <button
+              key={o.id}
+              type="button"
+              aria-pressed={on}
+              onClick={() => onChange(o.id)}
+              className={cn(
+                "type-label border-l border-[var(--rule-2)] px-3 py-1.5 !text-[0.68rem] first:border-l-0 transition-colors",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--rule-2)]",
+                on
+                  ? "bg-[var(--ink)] !text-[var(--paper)]"
+                  : "bg-[var(--paper)] !text-[var(--ink-2)] hover:bg-[var(--paper-3)]",
+              )}
+            >
+              {o.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * A row of independent on/off choices under an interactive plate, for plates
+ * that combine several named inputs rather than switching between views.
+ */
+export function Toggles<T extends string>({
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  label: string;
+  options: { id: T; label: string }[];
+  value: T[];
+  onChange: (value: T[]) => void;
+}) {
+  return (
+    <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 px-1" role="group" aria-label={label}>
+      <span className="type-label shrink-0 !text-[0.66rem] !text-[var(--ink-3)]">{label}</span>
+      <div className="flex flex-wrap gap-2">
+        {options.map((o) => {
+          const on = value.includes(o.id);
+          return (
+            <button
+              key={o.id}
+              type="button"
+              aria-pressed={on}
+              onClick={() =>
+                onChange(on ? value.filter((v) => v !== o.id) : options.map((x) => x.id).filter((id) => id === o.id || value.includes(id)))
+              }
+              className={cn(
+                "type-label inline-flex items-center gap-1.5 border px-3 py-1.5 !text-[0.68rem] transition-colors",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rule-2)]",
+                on
+                  ? "border-[var(--ink)] bg-[var(--ink)] !text-[var(--paper)]"
+                  : "border-dashed border-[var(--ink-3)] bg-[var(--paper)] !text-[var(--ink-2)] hover:border-solid hover:bg-[var(--paper-3)]",
+              )}
+            >
+              <span aria-hidden>{on ? "\u2713" : "+"}</span>
+              {o.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* --------------------------------------------------------------------------
    Slide layout blocks
    -------------------------------------------------------------------------- */
 

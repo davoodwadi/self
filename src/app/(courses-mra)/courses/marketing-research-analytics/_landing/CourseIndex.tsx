@@ -93,6 +93,7 @@ export default function CourseIndex({
             <span className="h-px w-7 bg-[var(--signal)]" aria-hidden />
             <span className="type-label">
               {[course.level, course.program, course.duration]
+                .filter((item): item is string => Boolean(item))
                 .map((item) => item.replaceAll(" ", "\u00a0"))
                 .join(" · ")}
             </span>

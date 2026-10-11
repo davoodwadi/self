@@ -15,6 +15,7 @@ Supply Chain and Distribution Channels (The Third P)
 - Welcome to Week 9.
 - Today we explore the Third P: Place.
 - We will unpack how products move from production to consumption.
+- We will also examine the AI agent as a new member of the distribution channel.
 
 ## Module 1: The Nature of Marketing Channels
 - A marketing channel is a set of interdependent organizations.
@@ -91,6 +92,13 @@ Supply Chain and Distribution Channels (The Third P)
 - This includes going directly to final buyers or displacing traditional resellers with new types of intermediaries.
 - Presents both opportunities and strategic threats to established firms.
 
+## Agentic Commerce: The AI Agent as an Intermediary [exercise]
+- Agentic commerce is buying and selling in which an AI agent searches, compares, and purchases on a buyer's behalf.
+- The AI agent performs several functions of an intermediary: it gathers information, matches offers to the buyer's needs, and can negotiate and complete the purchase.
+- It is a new type of intermediary that can displace traditional resellers, so it is a current example of disintermediation.
+- The AI agent may also decide which sellers the buyer ever sees, and AI agents can favor options simply because of where they appear in a list (Wadi & Ma, 2026a).
+- Producers must decide whether to sell through the AI agents of large platforms, build their own, or make their offers easy for any AI agent to read and buy.
+
 ## Discussion: Surviving Disintermediation
 - Discussion: As streaming services bypass traditional cable providers, how can cable companies adapt to remain relevant in the distribution channel?
 
@@ -128,3 +136,4 @@ Supply Chain and Distribution Channels (The Third P)
 - Distribution channels are the critical link between producers and final consumers.
 - Choosing the right channel structure balances control, coverage, and cost.
 - Effective channel management and logistics create sustainable competitive advantages.
+- As AI agents begin to search and buy for customers, they join the channel as a new intermediary that producers must plan for.

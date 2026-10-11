@@ -16,10 +16,14 @@
    ========================================================================== */
 
 import React from "react";
-import { Smiley, SmileySad, SmileyWink } from "@phosphor-icons/react";
+import { Hoodie, ImageSquare, Smiley, SmileySad, SmileyWink } from "@phosphor-icons/react";
 import {
   Anchor,
   COUNTER,
+  DragKnob,
+  PAPER3,
+  Segmented,
+  Toggles,
   COUNTER_TINT,
   Display,
   Frame,
@@ -38,7 +42,7 @@ import {
   SIGNAL,
   SIGNAL_TINT,
 } from "../_visuals/kit";
-import { Chip1 } from "../_visuals/objects";
+import { Chip1, Chip2, Person1 } from "../_visuals/objects";
 
 /* -- small typographic helpers ------------------------------------------- */
 
@@ -831,47 +835,58 @@ export function OfferingRosette() {
 export function PerceivedValueBars() {
   const x0 = 10;
   const h = 18;
+  // This offer's benefits and costs are the student's to move; the two
+  // competing offers stay put. Lengths are in plate units from x0.
+  const [b, setB] = React.useState(240);
+  const [c, setC] = React.useState(124);
   const offers = [
-    { top: 12, b: 240, c: 124, name: "THIS OFFER", on: true },
-    { top: 84, b: 300, c: 236, name: "COMPETING OFFER", on: false },
-    { top: 156, b: 180, c: 96, name: "COMPETING OFFER", on: false },
+    { top: 12, b, c, name: "THIS OFFER", mine: true },
+    { top: 84, b: 300, c: 236, name: "COMPETING OFFER", mine: false },
+    { top: 156, b: 180, c: 96, name: "COMPETING OFFER", mine: false },
   ];
+  const values = offers.map((o) => o.b - o.c);
+  const best = values.indexOf(Math.max(...values));
 
   return (
     <Frame
       width={400}
       height={224}
-      label="Three offers, each drawn as a benefits bar above a costs bar. The stretch of benefits beyond the costs is perceived value; this offer's is the longest, even though one competing offer has more benefits and more costs."
+      label={`Three offers, each drawn as a benefits bar above a costs bar; the stretch of benefits beyond the costs is perceived value. The benefits and costs of this offer can be dragged. ${best === 0 ? "This offer" : best === 1 ? "The competing offer with the most benefits" : "The cheaper competing offer"} now has the highest perceived value.`}
     >
-
-      {offers.map((o) => {
+      {offers.map((o, i) => {
         const by = o.top + 16;
         const cy = by + h + 6;
         const mid = cy + h / 2;
         const bEnd = x0 + o.b;
         const cEnd = x0 + o.c;
-        const tone = o.on ? SIGNAL : INK3;
-        const sw = o.on ? 2 : 1.25;
+        const on = i === best;
+        const tone = on ? SIGNAL : INK3;
+        const sw = on ? 2 : 1.25;
         return (
           <g key={o.top}>
-            <Key x={x0} y={o.top + 10} fill={o.on ? INK : INK3} size={9.5}>
+            <Key x={x0} y={o.top + 10} fill={o.mine ? INK : INK3} size={9.5}>
               {o.name}
             </Key>
+            {on ? (
+              <Key x={390} y={o.top + 10} anchor="end" fill={SIGNAL} size={9.5}>
+                HIGHEST PERCEIVED VALUE
+              </Key>
+            ) : null}
             <rect
               x={x0}
               y={by}
               width={o.b}
               height={h}
-              fill={o.on ? COUNTER : "rgba(34, 87, 91, 0.4)"}
+              fill={o.mine ? COUNTER : "rgba(34, 87, 91, 0.4)"}
             />
             <rect
               x={x0}
               y={cy}
               width={o.c}
               height={h}
-              fill={o.on ? INK3 : "rgba(111, 106, 92, 0.4)"}
+              fill={o.mine ? INK3 : "rgba(111, 106, 92, 0.4)"}
             />
-            {o.on ? (
+            {o.mine ? (
               <>
                 <Key x={x0 + 8} y={by + 12.5} fill={PAPER} size={9}>
                   ALL THE BENEFITS
@@ -892,20 +907,35 @@ export function PerceivedValueBars() {
               strokeDasharray="3 3"
             />
             {/* the difference: benefits beyond costs */}
-            <line
-              x1={cEnd + 3}
-              y1={mid}
-              x2={bEnd - 3}
-              y2={mid}
-              stroke={tone}
-              strokeWidth={sw}
-            />
-            <path d={head1.left(cEnd + 2, mid)} fill="none" stroke={tone} strokeWidth={sw} />
-            <path d={head1.right(bEnd - 2, mid)} fill="none" stroke={tone} strokeWidth={sw} />
-            {o.on ? (
-              <Key x={bEnd + 10} y={mid + 3.5} fill={SIGNAL} size={10}>
-                PERCEIVED VALUE
-              </Key>
+            {o.b - o.c > (o.mine ? 34 : 12) ? (
+              <>
+                <line x1={cEnd + (o.mine ? 22 : 3)} y1={mid} x2={bEnd - 3} y2={mid} stroke={tone} strokeWidth={sw} />
+                <path d={head1.left(cEnd + (o.mine ? 21 : 2), mid)} fill="none" stroke={tone} strokeWidth={sw} />
+                <path d={head1.right(bEnd - 2, mid)} fill="none" stroke={tone} strokeWidth={sw} />
+              </>
+            ) : null}
+            {o.mine ? (
+              <>
+                <DragKnob
+                  y={by + h / 2}
+                  value={bEnd}
+                  min={x0 + 130}
+                  max={x0 + 340}
+                  onChange={(v) => {
+                    setB(v - x0);
+                    setC((cc) => Math.min(cc, v - x0));
+                  }}
+                  label="All the benefits of this offer"
+                />
+                <DragKnob
+                  y={cy + h / 2}
+                  value={cEnd}
+                  min={x0 + 40}
+                  max={bEnd}
+                  onChange={(v) => setC(v - x0)}
+                  label="All the costs of this offer"
+                />
+              </>
             ) : null}
           </g>
         );
@@ -919,13 +949,20 @@ export function PerceivedValueBars() {
    ========================================================================== */
 
 export function SatisfactionGauge() {
-  const band = 76;
+  // The product's perceived performance is fixed; the student moves the
+  // buyer's expectations and watches the same performance change verdict.
+  const perf = 262;
+  const half = 36;
+  const [exp, setExp] = React.useState(160);
+  const band = 70;
   const bh = 34;
-  const axis = band + bh + 12;
+  const axis = band + bh + 14;
+  const lo = Math.max(10, exp - half);
+  const hi = Math.min(390, exp + half);
   const zones = [
     {
       x0: 10,
-      x1: 168,
+      x1: lo,
       k: "FALLS SHORT",
       v: "DISSATISFIED",
       Face: SmileySad,
@@ -933,8 +970,8 @@ export function SatisfactionGauge() {
       tone: INK3,
     },
     {
-      x0: 168,
-      x1: 232,
+      x0: lo,
+      x1: hi,
       k: "MATCHES",
       v: "SATISFIED",
       Face: Smiley,
@@ -942,7 +979,7 @@ export function SatisfactionGauge() {
       tone: COUNTER,
     },
     {
-      x0: 232,
+      x0: hi,
       x1: 390,
       k: "EXCEEDS",
       v: "DELIGHTED",
@@ -951,41 +988,239 @@ export function SatisfactionGauge() {
       tone: SIGNAL,
     },
   ];
-  const s = 34;
+  const verdict = zones[perf < lo ? 0 : perf <= hi ? 1 : 2];
+  const s = 36;
 
   return (
     <Frame
       width={400}
-      height={170}
-      label="Perceived performance runs along an arrow, with the buyer's expectations marked in the middle. Performance that falls short gets a sad face, dissatisfied; performance that matches gets a smile, satisfied; performance that exceeds gets a beaming wink, delighted."
+      height={176}
+      label={`Perceived performance is fixed on an arrow; the buyer's expectations can be dragged along it. Performance that falls short of expectations is dissatisfied, that matches is satisfied, that exceeds is delighted. With expectations where they are now, the same performance leaves the customer ${verdict.v.toLowerCase()}.`}
     >
+      {/* the verdict for this product's performance */}
+      <verdict.Face x={perf - s / 2} y={2} size={s} weight="duotone" color={verdict.tone} />
+      <Key x={perf} y={54} anchor="middle" fill={verdict.tone} size={11}>
+        {verdict.v}
+      </Key>
+
       {zones.map((z) => {
-        const cx = (z.x0 + z.x1) / 2;
+        if (z.x1 - z.x0 <= 0) return null;
+        // The key sits in the zone's middle, or in its wider side when the
+        // performance line would run through it.
+        let kx = (z.x0 + z.x1) / 2;
+        let room = z.x1 - z.x0;
+        if (Math.abs(kx - perf) < 44) {
+          const left = perf - z.x0;
+          const right = z.x1 - perf;
+          kx = left > right ? (z.x0 + perf) / 2 : (perf + z.x1) / 2;
+          room = Math.max(left, right);
+        }
         return (
           <g key={z.k}>
-            <z.Face x={cx - s / 2} y={8} size={s} weight="duotone" color={z.tone} />
-            <Key x={cx} y={62} anchor="middle" fill={z.tone} size={11}>
-              {z.v}
-            </Key>
             <rect x={z.x0} y={band} width={z.x1 - z.x0} height={bh} fill={z.fill} />
-            <Key x={cx} y={band + 21} anchor="middle" fill={z.tone} size={8.5}>
-              {z.k}
-            </Key>
+            {room >= 66 ? (
+              <Key x={kx} y={band + 21} anchor="middle" fill={z.tone} size={8.5}>
+                {z.k}
+              </Key>
+            ) : null}
           </g>
         );
       })}
 
-      {/* perceived performance, with expectations as a point on it */}
+      {/* the product's perceived performance, fixed */}
+      <line x1={perf} y1={60} x2={perf} y2={axis + 36} stroke={INK} strokeWidth={1.5} />
+      <circle cx={perf} cy={axis} r={4} fill={INK} />
+
+      {/* the axis, with expectations as the knob on it */}
       <line x1={10} y1={axis} x2={388} y2={axis} stroke={INK3} strokeWidth={1} />
       <path d={head1.right(390, axis)} fill="none" stroke={INK3} strokeWidth={1} />
-      <path d={`M200 ${axis - 6} L208 ${axis + 7} L192 ${axis + 7} Z`} fill={INK} />
-      <Key x={200} y={axis + 24} anchor="middle" fill={INK} size={9.5}>
+      <Key x={exp} y={axis + 28} anchor="middle" fill={INK} size={9.5}>
         EXPECTATIONS
       </Key>
-      <Key x={390} y={axis + 40} anchor="end" fill={INK3} size={8.5}>
+      <Key x={perf} y={axis + 50} anchor="middle" fill={INK} size={9.5}>
         PERCEIVED PERFORMANCE
       </Key>
+      <DragKnob
+        y={axis}
+        value={exp}
+        min={60}
+        max={340}
+        onChange={setExp}
+        label="The buyer's expectations"
+      />
     </Frame>
+  );
+}
+
+/* ==========================================================================
+   11b · WHAT THE AI AGENT CAN READ — two listings, one comparison
+   The student chooses which of jacket A's facts its seller states as text;
+   the rest sit inside a product photo, which people see and the AI agent
+   cannot read. The agent compares only what it can read.
+   ========================================================================== */
+
+type Fact = "price" | "waterproof" | "reviews";
+
+export const AGENT_FACTS: { id: Fact; label: string }[] = [
+  { id: "price", label: "Price" },
+  { id: "waterproof", label: "Waterproofing" },
+  { id: "reviews", label: "Reviews" },
+];
+
+const JACKETS = {
+  a: { price: 139, waterproof: 20000, reviews: 4.8 },
+  b: { price: 149, waterproof: 10000, reviews: 4.2 },
+};
+
+const factText = (f: Fact, j: (typeof JACKETS)["a"]) =>
+  f === "price"
+    ? `$${j.price}`
+    : f === "waterproof"
+      ? `${j.waterproof.toLocaleString("en-US")} mm`
+      : `${j.reviews} / 5`;
+
+/** Which jacket wins one fact, judged only from what the agent can read. */
+function factWinner(f: Fact, aReadable: boolean): "a" | "b" {
+  if (!aReadable) return "b";
+  const a = JACKETS.a[f];
+  const b = JACKETS.b[f];
+  return f === "price" ? (a <= b ? "a" : "b") : a >= b ? "a" : "b";
+}
+
+export function AgentReads() {
+  const [readable, setReadable] = React.useState<Fact[]>(["price"]);
+  const wins = AGENT_FACTS.map((f) => factWinner(f.id, readable.includes(f.id)));
+  const pick = wins.filter((w) => w === "a").length >= 2 ? "a" : "b";
+
+  const cardW = 214;
+  const cards = [
+    { id: "a" as const, x: 16 },
+    { id: "b" as const, x: 250 },
+  ];
+  const top = 88;
+  const rowY = (i: number) => top + 108 + i * 40;
+  const panel = 506;
+  const ca = 162;
+  const cb = 244;
+
+  return (
+    <div>
+      <Frame
+        height={336}
+        label={`A consumer wants a rain jacket under $150, and an AI agent compares two listings. Jacket A costs $139, is waterproof to 20,000 mm and has reviews of 4.8 out of 5; jacket B costs $149, 10,000 mm and 4.2. Jacket B states every fact as text. Jacket A states ${readable.length ? readable.map((f) => f).join(" and ") : "nothing"} as text and shows the rest only inside a product photo, which the AI agent cannot read. Comparing only what it can read, the AI agent picks jacket ${pick.toUpperCase()}.`}
+      >
+        {/* the want, handed to the AI agent */}
+        <Person1 x={40} y={58} s={1.1} />
+        <rect x={62} y={22} width={228} height={36} rx={18} fill={PAPER} stroke={INK} strokeWidth={1.25} />
+        <Note x={176} y={46} anchor="middle" size={16} fill={INK}>
+          a rain jacket under $150
+        </Note>
+        <line x1={300} y1={40} x2={624} y2={40} stroke={INK3} strokeWidth={1.25} />
+        <path d={head1.right(632, 40)} fill="none" stroke={INK3} strokeWidth={1.25} />
+        <Chip2 x={664} y={40} s={40} tone={INK} fill={PAPER} />
+
+        {/* two listings, as a person sees them */}
+        {cards.map((c) => {
+          const j = JACKETS[c.id];
+          const chosen = pick === c.id;
+          return (
+            <g key={c.id}>
+              <rect
+                x={c.x}
+                y={top}
+                width={cardW}
+                height={232}
+                fill={PAPER}
+                stroke={chosen ? SIGNAL : RULE2}
+                strokeWidth={chosen ? 2.5 : 1.25}
+              />
+              <Hoodie x={c.x + 18} y={top + 16} size={58} weight="duotone" color={INK} />
+              <Display x={c.x + cardW - 20} y={top + 52} anchor="end" size={30} fill={chosen ? SIGNAL : INK}>
+                {c.id.toUpperCase()}
+              </Display>
+              {AGENT_FACTS.map((f, i) => {
+                const y = rowY(i);
+                const asText = c.id === "b" || readable.includes(f.id);
+                return (
+                  <g key={f.id}>
+                    {asText ? (
+                      <>
+                        <Key x={c.x + 16} y={y} fill={INK3} size={10}>
+                          {f.label.toUpperCase()}
+                        </Key>
+                        <Note x={c.x + 16} y={y + 21} size={17} fill={INK}>
+                          {factText(f.id, j)}
+                        </Note>
+                      </>
+                    ) : (
+                      <>
+                        {/* the fact is printed inside a product photo */}
+                        <rect x={c.x + 10} y={y - 14} width={cardW - 20} height={34} fill={PAPER3} stroke={INK3} strokeWidth={1} />
+                        <ImageSquare x={c.x + 16} y={y - 7} size={20} weight="duotone" color={INK3} />
+                        <Note x={c.x + 42} y={y + 8} size={13.5} fill={INK2} italic>
+                          {`${f.id === "waterproof" ? "waterproof" : f.label.toLowerCase()} ${factText(f.id, j).toLowerCase()}`}
+                        </Note>
+                      </>
+                    )}
+                  </g>
+                );
+              })}
+            </g>
+          );
+        })}
+
+        {/* what the AI agent can read, and its comparison */}
+        <Key x={panel} y={top + 12} fill={INK} size={11}>
+          WHAT THE AI AGENT CAN READ
+        </Key>
+        <Display x={panel + ca} y={top + 52} anchor="middle" size={20} fill={INK3}>
+          A
+        </Display>
+        <Display x={panel + cb} y={top + 52} anchor="middle" size={20} fill={INK3}>
+          B
+        </Display>
+        {AGENT_FACTS.map((f, i) => {
+          const y = top + 92 + i * 40;
+          const aRead = readable.includes(f.id);
+          return (
+            <g key={f.id}>
+              <line x1={panel} y1={y - 24} x2={784} y2={y - 24} stroke={RULE} strokeWidth={1} />
+              <Key x={panel} y={y} fill={INK3} size={9}>
+                {f.label.toUpperCase()}
+              </Key>
+              <Note x={panel + ca} y={y + 1} anchor="middle" size={14.5} fill={wins[i] === "a" ? INK : INK3}>
+                {aRead ? factText(f.id, JACKETS.a) : "?"}
+              </Note>
+              <Note x={panel + cb} y={y + 1} anchor="middle" size={14.5} fill={wins[i] === "b" ? INK : INK3}>
+                {factText(f.id, JACKETS.b)}
+              </Note>
+              {/* the better reading of this fact, underlined */}
+              <line
+                x1={panel + (wins[i] === "a" ? ca : cb) - 34}
+                y1={y + 8}
+                x2={panel + (wins[i] === "a" ? ca : cb) + 34}
+                y2={y + 8}
+                stroke={INK}
+                strokeWidth={1.75}
+              />
+            </g>
+          );
+        })}
+        <line x1={panel} y1={top + 188} x2={786} y2={top + 188} stroke={INK} strokeWidth={1.25} />
+        <Key x={panel} y={top + 222} fill={SIGNAL} size={12}>
+          {"THE AI AGENT'S PICK"}
+        </Key>
+        <Display x={784} y={top + 230} anchor="end" size={34} fill={SIGNAL}>
+          {pick.toUpperCase()}
+        </Display>
+      </Frame>
+      <Toggles
+        label="Jacket A's seller states as text"
+        options={AGENT_FACTS}
+        value={readable}
+        onChange={setReadable}
+      />
+    </div>
   );
 }
 
@@ -1719,43 +1954,182 @@ export function RelationshipGroups() {
 }
 
 /* ==========================================================================
-   19 · FIVE TO ONE — the reported cost of acquiring versus retaining
-   Drawn to the ratio the discussion itself gives.
+   19 · FIVE TO ONE — split a year's budget between acquiring and retaining
+   SIMULATED: the 5:1 cost ratio is the one the discussion gives; the budget,
+   customer bases and the share who would leave are plausible round numbers.
    ========================================================================== */
 
-export function AcquireRetain() {
-  const x0 = 280;
-  const w = 82;
-  const pitch = 90;
-  return (
-    <Frame
-      height={176}
-      label="Five equal blocks to acquire a new customer, one block to retain an existing one."
-    >
-      <Key x={x0 - 24} y={62} anchor="end" fill={INK} size={10.5}>
-        ACQUIRE A NEW CUSTOMER
-      </Key>
-      {[0, 1, 2, 3, 4].map((i) => (
-        <rect
-          key={i}
-          x={x0 + i * pitch}
-          y={38}
-          width={w}
-          height={36}
-          fill={SIGNAL}
-        />
-      ))}
-      <Display x={x0 + 5 * pitch + 10} y={68} size={30} fill={SIGNAL}>
-        5×
-      </Display>
+const BUDGET = 10000;
+const ACQUIRE = 100;
+const RETAIN = 20;
+const WOULD_LEAVE = 0.3;
+const FIRMS = {
+  startup: { base: 40, label: "A startup" },
+  established: { base: 1000, label: "An established firm" },
+} as const;
+type Firm = keyof typeof FIRMS;
 
-      <Key x={x0 - 24} y={134} anchor="end" fill={INK} size={10.5}>
-        RETAIN AN EXISTING ONE
-      </Key>
-      <rect x={x0} y={110} width={w} height={36} fill={COUNTER} />
-      <Display x={x0 + pitch + 10} y={140} size={30} fill={COUNTER}>
-        1×
-      </Display>
-    </Frame>
+const money = (n: number) => `$${n.toLocaleString("en-US")}`;
+
+export function AcquireRetain() {
+  const [firm, setFirm] = React.useState<Firm>("startup");
+  const [retainSpend, setRetainSpend] = React.useState(5000);
+  const base = FIRMS[firm].base;
+  const leaving = Math.round(base * WOULD_LEAVE);
+  const kept = Math.min(leaving, Math.floor(retainSpend / RETAIN));
+  const gained = Math.floor((BUDGET - retainSpend) / ACQUIRE);
+  const stayed = base - leaving;
+  const lost = leaving - kept;
+  const total = stayed + kept + gained;
+  // The year-end bar is drawn to the best total this firm could reach.
+  const best = Math.max(
+    ...Array.from({ length: 101 }, (_, i) => {
+      const r = i * 100;
+      return stayed + Math.min(leaving, Math.floor(r / RETAIN)) + Math.floor((BUDGET - r) / ACQUIRE);
+    }),
+  );
+  const scaleMax = Math.max(best, base) * 1.04;
+
+  // Budget bar: x from b0 to b1; the divider is the knob.
+  const b0 = 190;
+  const b1 = 690;
+  const split = r2(b0 + ((BUDGET - retainSpend) / BUDGET) * (b1 - b0));
+  const by = 58;
+  const unused = retainSpend - kept * RETAIN;
+  const usedW = r2(((kept * RETAIN) / BUDGET) * (b1 - b0));
+  const bh = 40;
+  // Year-end customers: one stacked bar.
+  const y2 = 196;
+  const w = (n: number) => r2((n / scaleMax) * (b1 - b0));
+  const xs = r2(b0 + w(stayed));
+  const xk = r2(xs + w(kept));
+  const xg = r2(xk + w(gained));
+
+  return (
+    <div>
+      <Frame
+        height={270}
+        label={`SIMULATED. ${FIRMS[firm].label} with ${base} customers splits a ${money(BUDGET)} budget: acquiring a new customer costs ${money(ACQUIRE)} and retaining an existing one costs ${money(RETAIN)}, five times less. ${leaving} customers would leave this year. Now ${money(BUDGET - retainSpend)} acquires ${gained} new customers and ${money(retainSpend)} retains ${kept}, for ${total} customers at year end.`}
+      >
+        <Key x={790} y={18} anchor="end" fill={INK3} size={9}>
+          SIMULATED
+        </Key>
+
+        {/* the budget, split by the knob */}
+        <Key x={b0 - 16} y={by + 16} anchor="end" fill={INK} size={10.5}>
+          {`${money(BUDGET)} BUDGET`}
+        </Key>
+        <Key x={b0 - 16} y={by + 32} anchor="end" fill={INK3} size={9}>
+          FOR ONE YEAR
+        </Key>
+        <rect x={b0} y={by} width={r2(split - b0)} height={bh} fill={SIGNAL} />
+        <rect x={split} y={by} width={usedW} height={bh} fill={COUNTER} />
+        {unused > 0 ? (
+          <rect
+            x={r2(split + usedW + 0.75)}
+            y={by + 0.75}
+            width={Math.max(0, r2(b1 - split - usedW - 1.5))}
+            height={bh - 1.5}
+            fill={COUNTER_TINT}
+            stroke={COUNTER}
+            strokeWidth={1}
+            strokeDasharray="4 3"
+          />
+        ) : null}
+        {split - b0 > 130 ? (
+          <Key x={b0 + 12} y={by + 25} fill={PAPER} size={10}>
+            {`ACQUIRE ${money(BUDGET - retainSpend)}`}
+          </Key>
+        ) : null}
+        {usedW > 130 ? (
+          <Key x={split + 18} y={by + 25} fill={PAPER} size={10}>
+            {`RETAIN ${money(retainSpend - unused)}`}
+          </Key>
+        ) : null}
+        {unused > 0 && b1 - split - usedW > 150 ? (
+          <Key x={b1 - 12} y={by + 25} anchor="end" fill={COUNTER} size={10}>
+            {`UNUSED ${money(unused)}`}
+          </Key>
+        ) : null}
+        <Key x={b0} y={by - 12} fill={SIGNAL} size={9}>
+          {`${money(ACQUIRE)} TO ACQUIRE A NEW CUSTOMER`}
+        </Key>
+        <Key x={b1} y={by - 12} anchor="end" fill={COUNTER} size={9}>
+          {`${money(RETAIN)} TO RETAIN AN EXISTING ONE`}
+        </Key>
+        <line x1={split} y1={by - 4} x2={split} y2={by + bh + 4} stroke={INK} strokeWidth={1.5} />
+        <DragKnob
+          y={by + bh / 2}
+          value={split}
+          min={b0}
+          max={b1}
+          onChange={(v) => setRetainSpend(Math.round(((b1 - v) / (b1 - b0)) * (BUDGET / 100)) * 100)}
+          label="Split of the budget between acquiring and retaining"
+        />
+
+        {/* what the money buys */}
+        <Key x={b0} y={by + bh + 26} fill={SIGNAL} size={9.5}>
+          {`${gained} NEW CUSTOMERS`}
+        </Key>
+        <Key x={b1} y={by + bh + 26} anchor="end" fill={COUNTER} size={9.5}>
+          {`${kept} OF ${leaving} WHO WOULD LEAVE ARE KEPT`}
+        </Key>
+
+        {/* customers at year end */}
+        <Key x={b0 - 16} y={y2 + 16} anchor="end" fill={INK} size={10.5}>
+          CUSTOMERS
+        </Key>
+        <Key x={b0 - 16} y={y2 + 32} anchor="end" fill={INK3} size={9}>
+          AT YEAR END
+        </Key>
+        <rect x={b0} y={y2} width={w(stayed)} height={bh} fill={INK3} />
+        <rect x={xs} y={y2} width={w(kept)} height={bh} fill={COUNTER} />
+        <rect x={xk} y={y2} width={w(gained)} height={bh} fill={SIGNAL} />
+        {[
+          { x: b0, n: stayed, k: "STAYED" },
+          { x: xs, n: kept, k: "KEPT" },
+          { x: xk, n: gained, k: "NEW" },
+        ].map((seg) =>
+          w(seg.n) >= 84 ? (
+            <Key key={seg.k} x={seg.x + 10} y={y2 + 25} fill={PAPER} size={9.5}>
+              {`${seg.n.toLocaleString("en-US")} ${seg.k}`}
+            </Key>
+          ) : w(seg.n) >= 30 ? (
+            <Key key={seg.k} x={r2(seg.x + w(seg.n) / 2)} y={y2 + 25} anchor="middle" fill={PAPER} size={9.5}>
+              {seg.n.toLocaleString("en-US")}
+            </Key>
+          ) : null,
+        )}
+        {lost > 0 ? (
+          <rect
+            x={xg + 0.75}
+            y={y2 + 0.75}
+            width={Math.max(0, w(lost) - 1.5)}
+            height={bh - 1.5}
+            fill="none"
+            stroke={INK3}
+            strokeWidth={1}
+            strokeDasharray="3 3"
+          />
+        ) : null}
+        {lost > 0 && w(lost) > 40 ? (
+          <Key x={r2(xg + w(lost) / 2)} y={y2 + 25} anchor="middle" fill={INK3} size={9}>
+            LOST
+          </Key>
+        ) : null}
+        <Display x={r2(Math.max(xg + w(lost), b0) + 14)} y={y2 + 30} size={30} fill={INK}>
+          {total.toLocaleString("en-US")}
+        </Display>
+        <Key x={b0} y={y2 + bh + 22} fill={INK3} size={9}>
+          {`STARTED THE YEAR WITH ${base.toLocaleString("en-US")}`}
+        </Key>
+      </Frame>
+      <Segmented
+        label="The firm"
+        options={(Object.keys(FIRMS) as Firm[]).map((id) => ({ id, label: FIRMS[id].label }))}
+        value={firm}
+        onChange={setFirm}
+      />
+    </div>
   );
 }

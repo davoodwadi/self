@@ -23,7 +23,8 @@ export type Curriculum = {
   title: string;
   subtitle: string;
   level: string;
-  program: string;
+  /** Optional: a course without a **Program** line omits it from its masthead. */
+  program?: string;
   duration: string;
   instructor: string;
   summary: string;
@@ -84,7 +85,7 @@ export function readCurriculum(courseDir: string): Curriculum {
     title: heading.slice(2).replace(/\s+-\s+Course Curriculum\s*$/, "").trim(),
     subtitle: field(fields, "Subtitle", file),
     level: field(fields, "Course Level", file),
-    program: field(fields, "Program", file),
+    program: fields.get("Program"),
     duration: field(fields, "Duration", file),
     instructor: field(fields, "Instructor", file),
     summary: field(fields, "Summary", file),
@@ -94,5 +95,6 @@ export function readCurriculum(courseDir: string): Curriculum {
 }
 
 export const CB_DIR = "src/app/(courses-cb)/courses/consumer-behavior";
+export const IM_DIR = "src/app/(courses-intro-marketing)/courses/intro-marketing";
 export const MRA_DIR =
   "src/app/(courses-mra)/courses/marketing-research-analytics";

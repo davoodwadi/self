@@ -10,6 +10,7 @@ week: 10-imc
 - Welcome to Week 10
 - Exploring Integrated Marketing Communications
 - Understanding the Fourth P of the Marketing Mix
+- Using Generative AI in Marketing Communications
 
 ## The Promotion Mix [exercise]
 - Defines the specific blend of promotional tools
@@ -90,6 +91,13 @@ week: 10-imc
 - Structure decisions determine whether to draw a conclusion or leave it to the audience
 - Format considerations include design, layout, color, and sound
 
+## Generative AI in Marketing Communications [exercise]
+- Generative AI drafts ad copy, images, and video in minutes
+- Makes it cheap to produce many versions of a message, each tailored to a different audience
+- More versions raise the risk of inconsistent messages, so IMC coordination matters more, not less
+- AI-generated content can contain errors or claims the product cannot support, so people must review it before release
+- Audiences increasingly expect, and some laws require, that realistic AI-generated content be disclosed
+
 ## Setting the Promotional Budget [exercise]
 - Affordable Method: Setting the budget at the level management thinks the company can afford
 - Percentage-of-Sales Method: Setting the budget at a certain percentage of current or forecasted sales
@@ -116,3 +124,4 @@ week: 10-imc
 - IMC ensures all promotional tools work together to deliver a consistent message
 - Effective communication requires understanding the audience and setting clear objectives
 - Strategic budgeting and measurement are essential for maximizing promotional impact
+- Generative AI multiplies the messages a company can create, which makes integration and review essential

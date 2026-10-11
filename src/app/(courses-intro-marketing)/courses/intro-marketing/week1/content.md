@@ -9,6 +9,7 @@ week: week1
 - Welcome to Week 1 of Introduction to Marketing.
 - Today we establish the foundational principles of modern marketing.
 - We will cover the definition and evolution of marketing, needs, wants, and demands, and the five-step marketing process.
+- We will also meet a new kind of customer: the AI agent that shops on a consumer's behalf.
 
 ## Part 1: Definition and Evolution of Marketing [no-exercise]
 - Marketing is often misunderstood as merely selling or advertising.
@@ -72,6 +73,14 @@ week: week1
 - Customer perceived value is the customer's evaluation of the difference between all the benefits and all the costs of a marketing offer relative to competing offers.
 - Customer satisfaction depends on the product's perceived performance relative to a buyer's expectations; if performance falls short, the customer is dissatisfied, and if performance matches or exceeds expectations, the customer is satisfied or delighted.
 
+## Marketing to AI Agents [exercise]
+- Consumers are beginning to delegate part of their buying to AI agents: software that can search for, compare, and purchase products on a person's behalf.
+- The consumer states a want, such as "a rain jacket under $150," and the AI agent turns that want into a search, a comparison, and sometimes a purchase.
+- The need, the want, and the buying power still belong to the consumer; the AI agent acts on them.
+- The AI agent judges an offer only from the information it can read, such as prices, specifications, and reviews.
+- The consumer still uses the product and decides after the purchase whether it met their expectations.
+- Marketers therefore communicate value to two audiences: the consumer who uses the offering and the AI agent that evaluates it.
+
 ## Discussion: Needs Versus Shaped Wants
 - Discussion: Do modern smartphone and social media companies create entirely new human needs, or do they simply offer novel, highly engaging ways to fulfill ancient human needs for communication and social belonging?
 
@@ -128,3 +137,4 @@ week: week1
 - Success requires moving beyond outdated production and selling mindsets to a customer-centric marketing philosophy.
 - Understanding needs, wants, and demands forms the bedrock for designing compelling market offerings.
 - Following the five-step marketing process allows firms to build lasting customer relationships and maximize customer equity.
+- As consumers delegate search and purchase to AI agents, marketers must create value that both the consumer and the consumer's AI agent can recognize.

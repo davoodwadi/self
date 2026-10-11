@@ -1,8 +1,9 @@
-import { CB_DIR, MRA_DIR, readCurriculum } from "@/lib/curriculum";
+import { CB_DIR, IM_DIR, MRA_DIR, readCurriculum } from "@/lib/curriculum";
 import { Section } from "./Section";
 
 // Course text that has a curriculum.md is read from it, not written here.
 const CB = readCurriculum(CB_DIR);
+const IM = readCurriculum(IM_DIR);
 const MRA = readCurriculum(MRA_DIR);
 
 const ROLES = [
@@ -40,10 +41,10 @@ const SITES: {
   description: string;
 }[] = [
   {
-    title: "Introduction to Marketing",
+    title: IM.title,
+    subtitle: IM.subtitle,
     href: "/courses/intro-marketing",
-    description:
-      "What is Marketing? How do we define a consumer? What strategies firms adopt to influence consumption decisions?",
+    description: IM.summary,
   },
   {
     title: "Applications of AI in Business",

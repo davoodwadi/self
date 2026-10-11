@@ -3,6 +3,9 @@ import { Fraunces, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { DynamicFooter } from "@/components/slide-components/DynamicFooter";
 import { FitSlides } from "@/components/slide-components/FitSlides";
+import { IM_DIR, readCurriculum } from "@/lib/curriculum";
+
+const IM = readCurriculum(IM_DIR);
 
 // Fraunces carries the display voice: an editorial serif with enough
 // eccentricity (the WONK axis) to not read as a default pairing.
@@ -22,11 +25,10 @@ const instrumentSans = Instrument_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Introduction to Marketing",
-    template: "%s · Introduction to Marketing",
+    default: IM.title,
+    template: `%s · ${IM.title}`,
   },
-  description:
-    "A twelve-week introduction to marketing strategy, taught by Davood Wadi, PhD.",
+  description: IM.summary,
   icons: {
     icon: "/icon-large.svg",
   },

@@ -19,7 +19,9 @@ import {
   MicroActors,
   PestleHub,
   PoliticalCorridor,
-  EconomicThreshold,
+  PurchasingPower,
+  AiTouchesForces,
+  AgentScale,
   SocialStrata,
   TechnologyBranches,
   LegislationCanopy,
@@ -31,7 +33,7 @@ import {
   MisrepresentedChecklist,
   PressureOverTime,
   ObsolescenceLifespans,
-  GenerationsBand,
+  SustainableCatch,
 } from "./visuals";
 
 // ============================================================================
@@ -324,11 +326,13 @@ function Force({
   tone,
   plate,
   beside = false,
+  wide = false,
   children,
 }: {
   tone: "signal" | "counter";
   plate: React.ReactNode;
   beside?: boolean;
+  wide?: boolean;
   children: React.ReactNode;
 }) {
   return (
@@ -343,7 +347,7 @@ function Force({
       )}
     >
       <P className={beside ? "" : "mb-5"}>{children}</P>
-      <Plate className={beside ? "" : "mt-auto max-w-[24rem]"}>{plate}</Plate>
+      <Plate className={beside || wide ? "" : "mt-auto max-w-[24rem]"}>{plate}</Plate>
     </Ruled>
   );
 }
@@ -354,7 +358,8 @@ function Force({
  *  · "columns": the forces side by side, the closing line underneath;
  *  · "rows": the forces stacked, each with its plate beside it, the closing
  *    line in a column at the right;
- *  · "triple": the two forces and the closing line as three columns.
+ *  · "triple": the two forces and the closing line as three columns;
+ *  · "wide": as "columns", with the wider column for an interactive plate.
  */
 function PestlePair({
   id,
@@ -367,7 +372,7 @@ function PestlePair({
   id: string;
   title: string;
   active: number[];
-  layout: "columns" | "rows" | "triple";
+  layout: "columns" | "rows" | "triple" | "wide";
   children: React.ReactNode;
   closing: React.ReactNode;
 }) {
@@ -375,7 +380,14 @@ function PestlePair({
     <Slide id={id} border>
       <KickerHeading kicker="PESTLE Analysis:">{title}</KickerHeading>
       <PestleStrip active={active} />
-      {layout === "columns" ? (
+      {layout === "wide" ? (
+        <>
+          <div className="grid w-full items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-14">
+            {children}
+          </div>
+          <Statement className="mt-8 !max-w-[60ch] !text-[clamp(1.4rem,2vw,1.8rem)]">{closing}</Statement>
+        </>
+      ) : layout === "columns" ? (
         <>
           <div className="grid w-full gap-10 lg:grid-cols-2 lg:gap-14">
             {children}
@@ -663,6 +675,18 @@ function GlyphTemple() {
   );
 }
 
+function GlyphAgent() {
+  return (
+    <svg {...glyphProps}>
+      <circle cx="9" cy="11" r="4" fill="var(--ink)" />
+      <path d="M3 32 V24 Q3 18 9 18 Q15 18 15 24 V32 Z" fill="var(--ink)" />
+      <path d="M20 21 H37 M33 18 L37 21 L33 24" stroke="var(--ink-3)" strokeWidth="1.5" />
+      <rect x="44" y="10" width="18" height="18" rx="2" stroke="var(--signal)" strokeWidth="1.5" />
+      <path d="M49 6 V10 M57 6 V10 M49 28 V32 M57 28 V32" stroke="var(--signal)" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
 export default function Week2() {
   return (
     <SlideDeck
@@ -703,6 +727,14 @@ export default function Week2() {
             marketing ethics
           </a>
           .
+        </p>
+        <p className="type-body mt-5 max-w-3xl text-center">
+          We will also examine{" "}
+          <a href="#ai-in-the-marketing-environment" className="toc-link">
+            artificial intelligence
+          </a>{" "}
+          as a force in the marketing environment and as a new subject for
+          marketing ethics.
         </p>
         <style>{`
           .toc-link {
@@ -745,7 +777,7 @@ export default function Week2() {
           <div className="space-y-7">
             <Lead className="!max-w-[52ch]">
               A company&apos;s marketing environment consists of the{" "}
-              <Term tone="counter">actors and forces outside marketing</Term>{" "}
+              <Term tone="ink">actors and forces outside marketing</Term>{" "}
               that affect marketing management&apos;s ability to build and
               maintain successful relationships with{" "}
               <Term>target customers</Term>.
@@ -753,7 +785,7 @@ export default function Week2() {
             <Ruled weight="thick">
               <P>
                 It is made up of a <Term tone="ink">microenvironment</Term> and
-                a <Term tone="counter">macroenvironment</Term>.
+                a <Term tone="ink">macroenvironment</Term>.
               </P>
             </Ruled>
             <Ruled tone="signal" weight="thick">
@@ -794,7 +826,7 @@ export default function Week2() {
               <P>
                 Success depends on building relationships with{" "}
                 <Term>other company departments</Term> and these{" "}
-                <Term tone="counter">external partners</Term>.
+                <Term tone="ink">external partners</Term>.
               </P>
             </Ruled>
           </div>
@@ -811,7 +843,7 @@ export default function Week2() {
               affect the microenvironment.
             </Lead>
             <P>
-              It shapes <Term tone="counter">opportunities</Term> and poses{" "}
+              It shapes <Term tone="ink">opportunities</Term> and poses{" "}
               <Term>threats</Term> to the company.
             </P>
             <Ruled tone="signal" weight="thick">
@@ -831,7 +863,7 @@ export default function Week2() {
         id="pestle-political-economic"
         title="Political and Economic"
         active={[0, 1]}
-        layout="columns"
+        layout="wide"
         closing={
           <>
             These forces dictate{" "}
@@ -850,7 +882,7 @@ export default function Week2() {
           <Term tone="ink">Political:</Term> Laws, government agencies, and
           pressure groups that influence or limit organizations and individuals.
         </Force>
-        <Force tone="counter" plate={<EconomicThreshold />}>
+        <Force tone="counter" plate={<PurchasingPower />} wide>
           <Term tone="ink">Economic:</Term> Factors that affect consumer
           purchasing power and spending patterns, such as inflation and interest
           rates.
@@ -912,6 +944,58 @@ export default function Week2() {
         </Force>
       </PestlePair>
 
+      <Slide
+        id="ai-in-the-marketing-environment"
+        border
+        exercise={exercise["ai-in-the-marketing-environment"]}
+      >
+        <Tag>One development, several forces</Tag>
+        <Heading className={cn(HEAD, "[&_h2]:!max-w-none [&_h2]:!text-[clamp(2rem,3.3vw,3rem)]")}>
+          Artificial Intelligence in the Marketing Environment
+        </Heading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-12">
+          <Statement className="!max-w-[26ch]">
+            Artificial intelligence shows how one development can touch{" "}
+            <span className="text-[var(--signal)]">
+              several PESTLE forces at once
+            </span>
+            .
+          </Statement>
+          <Plate>
+            <AiTouchesForces />
+          </Plate>
+        </div>
+        <div className="mt-8 grid w-full gap-8 lg:grid-cols-[1fr_1.45fr_1fr] lg:gap-10">
+          <Ruled weight="thick">
+            <P>
+              <Term tone="ink">Technological:</Term> AI agents can now search,
+              compare, and buy on a consumer&apos;s behalf, creating new ways to
+              reach customers.
+            </P>
+          </Ruled>
+          <Ruled weight="thick">
+            <P>
+              <Term tone="ink">Legal:</Term> New laws set rules for how
+              companies use AI. The European Union&apos;s AI Act, for example,
+              requires that people be told when they are talking to a chatbot
+              and that AI-generated images, audio, and video imitating real
+              people or events be labeled.
+            </P>
+          </Ruled>
+          <Ruled weight="thick">
+            <P>
+              <Term tone="ink">Social:</Term> Consumers differ in how much they
+              trust AI to make choices for them, and this trust shapes how much
+              buying they delegate.
+            </P>
+          </Ruled>
+        </div>
+        <p className="type-lead !text-[var(--ink)] mt-8 max-w-[64ch]">
+          Marketers who track these forces early can adapt their offerings and
+          practices before competitors do.
+        </p>
+      </Slide>
+
       <Slide id="discussion-environmental-forces" border>
         <KickerHeading kicker="Discussion:" tone="counter">
           Environmental Forces
@@ -957,7 +1041,7 @@ export default function Week2() {
           </Lead>
           <P>
             Corporate Social Responsibility involves{" "}
-            <Term tone="counter">self-regulating business models</Term> that
+            <Term tone="ink">self-regulating business models</Term> that
             help a company be socially accountable.
           </P>
         </div>
@@ -993,7 +1077,7 @@ export default function Week2() {
         <div className={BESIDE}>
           <Lead className="!max-w-[40ch]">
             Greenwashing occurs when a company spends more time and money{" "}
-            <Term tone="counter">claiming to be &quot;green&quot;</Term> than{" "}
+            <Term tone="ink">claiming to be &quot;green&quot;</Term> than{" "}
             <Term tone="ink">actually implementing</Term> business practices
             that minimize environmental impact.
           </Lead>
@@ -1021,7 +1105,7 @@ export default function Week2() {
         <KickerHeading kicker="Discussion:" tone="counter">
           The Cost of CSR
         </KickerHeading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-12">
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] lg:gap-12">
           <Prompt>
             <PromptKicker /> When a retail brand publicly commits to sourcing
             100% fair-trade materials, prices inevitably rise. Should the brand{" "}
@@ -1121,7 +1205,7 @@ export default function Week2() {
       <Slide id="high-pressure-selling" border>
         <Tag>Short term, long term</Tag>
         <Heading className={HEAD}>High-Pressure Selling</Heading>
-        <div className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:gap-14">
+        <div className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,38rem)] lg:gap-14">
           <div>
             <Statement className="!max-w-[30ch]">
               Involves persuading people to buy goods they had no thought of
@@ -1138,7 +1222,7 @@ export default function Week2() {
                 <P>
                   High-pressure selling yields{" "}
                   <Term>short-term gains</Term> but damages{" "}
-                  <Term tone="counter">
+                  <Term tone="ink">
                     long-term relationships and reputation
                   </Term>
                   .
@@ -1150,6 +1234,58 @@ export default function Week2() {
             <PressureOverTime />
           </Plate>
         </div>
+      </Slide>
+
+      <Slide
+        id="dark-patterns-ai-agents"
+        border
+        exercise={exercise["dark-patterns-ai-agents"]}
+      >
+        <Tag>Tricks aimed at the agent</Tag>
+        <Heading className={HEAD}>Dark Patterns Directed at AI Agents</Heading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] lg:gap-12">
+          <div>
+            <P>
+              A <Term tone="ink">dark pattern</Term> is a design that leads a
+              person toward a choice they would not otherwise make, such as a
+              fake countdown timer or a fee revealed only at checkout.
+            </P>
+            <P className="mt-4">
+              As AI agents shop for consumers, some sellers aim the same tricks
+              at the agent instead of the person.
+            </P>
+            <ol className="mt-5 w-full border-t-2 border-[var(--ink)]">
+              {[
+                "A seller may show a key fact, such as the price per ounce, only inside an image that the AI agent cannot read.",
+                "A seller may hide text on a product page, invisible to people, that instructs AI agents to recommend the product.",
+                "A seller may post fake reviews written to sway the AI agent's comparison.",
+              ].map((t, i) => (
+                <li
+                  key={i}
+                  className="grid grid-cols-[1.75rem_1fr] gap-2 border-b border-[var(--rule)] py-2.5"
+                >
+                  <span
+                    aria-hidden
+                    className="type-caption pt-1 tabular-nums !text-[var(--ink-3)]"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <P>{t}</P>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <Plate>
+            <AgentScale />
+          </Plate>
+        </div>
+        <Statement className="mt-8 !max-w-[56ch] !text-[clamp(1.3rem,2vw,1.7rem)]">
+          Like deceptive pricing and promotion, these practices{" "}
+          <span className="text-[var(--signal)]">
+            harm the consumer the agent works for
+          </span>{" "}
+          and destroy trust in the brand once they are discovered.
+        </Statement>
       </Slide>
 
       <Slide id="planned-obsolescence" border>
@@ -1208,12 +1344,12 @@ export default function Week2() {
           </Lead>
           <Lead>
             It also preserves or enhances the ability of{" "}
-            <Term tone="counter">future generations</Term> to meet their needs.
+            <Term tone="ink">future generations</Term> to meet their needs.
           </Lead>
         </div>
-        <div className="mt-10 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-14">
+        <div className="mt-10 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,32rem)_1fr] lg:gap-14">
           <Plate>
-            <GenerationsBand />
+            <SustainableCatch />
           </Plate>
           <div className="space-y-8">
             <p className="type-h2 !font-normal max-w-[30ch]">
@@ -1233,7 +1369,7 @@ export default function Week2() {
           ================================================================ */}
       <Slide id="conclusion" border>
         <KickerHeading kicker="Conclusion:">Adapting Responsibly</KickerHeading>
-        <ol className="grid w-full gap-x-12 gap-y-12 md:grid-cols-3">
+        <ol className="grid w-full gap-x-14 gap-y-9 md:grid-cols-2">
           {[
             {
               glyph: <GlyphRings />,
@@ -1247,12 +1383,16 @@ export default function Week2() {
               glyph: <GlyphTemple />,
               text: "Ultimately, long-term success requires a commitment to ethical practices and genuine corporate social responsibility.",
             },
+            {
+              glyph: <GlyphAgent />,
+              text: "These commitments now extend to AI agents: a company that would not deceive a consumer should not deceive the AI agent that shops for one.",
+            },
           ].map((item, i) => (
             <li
               key={i}
-              className="flex flex-col gap-6 border-t-2 border-[var(--ink)] pt-6"
+              className="grid grid-cols-[4.5rem_1fr] gap-6 border-t-2 border-[var(--ink)] pt-6"
             >
-              <div aria-hidden className="flex items-center justify-between">
+              <div aria-hidden className="flex flex-col gap-4">
                 <span
                   className="text-[2.6rem] leading-none text-[var(--signal)]"
                   style={SERIF}

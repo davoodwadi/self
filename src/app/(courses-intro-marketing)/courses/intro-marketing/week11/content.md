@@ -9,6 +9,7 @@ week: week11
 - Welcome to Week 11
 - Digital and Social Media Marketing
 - Exploring the transition from traditional strategies to digital ecosystems
+- Understanding search when the answer comes from an AI assistant
 
 ## The Evolution: Traditional to Digital
 - Marketing has shifted from static, one-way communication to interactive dialogues
@@ -64,6 +65,14 @@ week: week11
 - Automation tools can trigger specific messages during critical points in the customer journey
 - Success relies on delivering value rather than overwhelming subscribers with promotional material
 
+## From Search Engines to AI Answers [exercise]
+- Consumers increasingly ask AI assistants questions instead of typing keywords into a search engine
+- The AI assistant reads many sources and returns a single answer, often without a list of links to click
+- Visibility now depends on whether a brand's content is drawn on in that answer, a practice sometimes called generative engine optimization
+- Clear, factual, and well-structured content serves both organic search rankings and AI answers
+- When AI agents shop, they read ranked product lists, and they can favor options simply because of where they appear in a list (Wadi & Ma, 2026a)
+- Paid placements now reach AI agents as well as people, and the label matters: AI agents chose a paid listing less often when it was labeled "Sponsored" than when it was labeled "Promoted" (Wadi & Ma, 2026c)
+
 ## Discussion: SEO vs. SEM Investment
 - Discussion: A startup has limited funds and must decide whether to invest entirely in immediate SEM campaigns for quick sales or long-term SEO strategy for sustainable growth. Which path creates a more resilient digital presence?
 
@@ -117,3 +126,4 @@ week: week11
 - A comprehensive strategy must integrate SEO, SEM, content, and email marketing
 - Social media offers unparalleled opportunities for community building and engagement
 - Ethical data practices and continuous adaptation are crucial for long-term digital success
+- As AI assistants and agents answer and shop for consumers, digital strategy must earn visibility with both people and AI

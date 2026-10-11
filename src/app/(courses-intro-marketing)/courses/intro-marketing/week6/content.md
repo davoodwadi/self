@@ -9,6 +9,7 @@ week: week6
 - Welcome to Week 6 of Introduction to Marketing.
 - Today we will explore Segmentation, Targeting, and Positioning (STP).
 - We will cover the bases for segmenting markets, evaluating and selecting target markets, and developing a compelling positioning strategy.
+- We will also consider how a brand holds its position when AI assistants recommend products to consumers.
 
 ## Part 1: Market Segmentation [no-exercise]
 - Market segmentation involves dividing a market into distinct groups of buyers who have different needs, characteristics, or behaviors.
@@ -82,6 +83,14 @@ week: week6
 - All the company's marketing mix efforts (the 4 Ps) must support the positioning strategy.
 - Establishing a position or changing one usually takes a long time, but maintaining it requires consistent performance and communication.
 
+## Positioning for AI Assistants [exercise]
+- Consumers increasingly ask AI assistants for advice, such as "Which running shoes are best for long distances?"
+- The AI assistant answers with a short list of brands, built from the product pages, reviews, and articles it can draw on.
+- A brand that is missing from that list is not considered, however strong its position in other channels.
+- To be included, a brand needs its position stated clearly and consistently wherever the AI assistant finds information: the same benefit, backed by specific facts.
+- A vague claim such as "the best shoe" gives the AI assistant little to compare, while a specific claim such as "cushioning tested for 800 kilometers" links the brand to a benefit that matches the question.
+- Positioning therefore now means occupying a clear place both in the minds of target consumers and in the information AI assistants use to answer them.
+
 ## Discussion: Brand Positioning
 - Discussion: Think of a popular smartphone brand. What is its value proposition, and how does it differentiate itself from its main competitor in the minds of consumers?
 
@@ -90,3 +99,4 @@ week: week6
 - Segmentation allows marketers to identify distinct groups with unique needs.
 - Targeting selects the most attractive segments to serve.
 - Positioning ensures the brand occupies a clear, distinctive place in the consumer's mind.
+- As consumers turn to AI assistants for recommendations, that place must also be clear in the information those assistants draw on.

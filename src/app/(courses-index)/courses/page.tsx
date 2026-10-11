@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { CB_DIR, MRA_DIR, readCurriculum } from "@/lib/curriculum";
+import { CB_DIR, IM_DIR, MRA_DIR, readCurriculum } from "@/lib/curriculum";
 
 // ============================================================================
 // /courses — COURSE INDEX
@@ -30,6 +30,7 @@ type Course = {
 
 // Course text that has a curriculum.md is read from it, not written here.
 const CB = readCurriculum(CB_DIR);
+const IM = readCurriculum(IM_DIR);
 const MRA = readCurriculum(MRA_DIR);
 
 const COURSES: Course[] = [
@@ -57,9 +58,9 @@ const COURSES: Course[] = [
   {
     slug: "intro-marketing",
     code: null,
-    title: "Introduction to Marketing",
-    description:
-      "What is marketing? How do we define a consumer? What strategies firms adopt to influence consumption decisions, from STP through the marketing mix.",
+    title: IM.title,
+    subtitle: IM.subtitle,
+    description: IM.summary,
   },
   {
     slug: "marketing-research-analytics",

@@ -287,6 +287,53 @@
     ]
   },
   {
+    "type": "sort",
+    "slide_id": "marketing-to-ai-agents",
+    "prompt": "In each case a shopper uses an AI agent. Who is doing this part of the buying: the consumer or the AI agent?",
+    "bins": [
+      { "id": "consumer", "label": "The consumer" },
+      { "id": "agent", "label": "The AI agent" }
+    ],
+    "cards": [
+      {
+        "id": "gift-idea",
+        "text": "Wants a birthday gift for a friend who loves hiking.",
+        "bin": "consumer",
+        "explanation": "The want belongs to the consumer; the AI agent only acts on it."
+      },
+      {
+        "id": "hotel-list",
+        "text": "Lists three hotels under $200 a night that offer free cancellation.",
+        "bin": "agent",
+        "explanation": "Turning a want into a search and a shortlist is the AI agent's job."
+      },
+      {
+        "id": "battery-specs",
+        "text": "Compares the battery life printed in each laptop's specifications.",
+        "bin": "agent",
+        "explanation": "The AI agent judges offers from the information it can read, such as specifications."
+      },
+      {
+        "id": "bike-money",
+        "text": "Has saved enough money to pay for a new bike.",
+        "bin": "consumer",
+        "explanation": "Buying power stays with the consumer, which is what turns a want into a demand."
+      },
+      {
+        "id": "ink-order",
+        "text": "Places the order for the cheapest printer ink that fits the printer.",
+        "bin": "agent",
+        "explanation": "Completing the purchase is something the AI agent can do on the consumer's behalf."
+      },
+      {
+        "id": "tight-headphones",
+        "text": "Decides after a week of wearing them that the headphones are too tight.",
+        "bin": "consumer",
+        "explanation": "The consumer uses the product and judges after the purchase whether it met expectations."
+      }
+    ]
+  },
+  {
     "type": "order",
     "slide_id": "five-step-process",
     "prompt": "Two graduates open a café beside campus. Put their moves in the order of the five-step marketing process.",

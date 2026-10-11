@@ -1,0 +1,399 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "data-analytics-four-key-types",
+    "prompt": "A city bike-share scheme analyses its trip data. Name the type of analytics each question shows.",
+    "options": [
+      { "id": "descriptive", "label": "Descriptive" },
+      { "id": "diagnostic", "label": "Diagnostic" },
+      { "id": "predictive", "label": "Predictive" },
+      { "id": "prescriptive", "label": "Prescriptive" }
+    ],
+    "cases": [
+      {
+        "id": "trips-last-month",
+        "text": "How many trips started at each station last month?",
+        "answer": "descriptive",
+        "explanation": "Descriptive: what happened?"
+      },
+      {
+        "id": "why-drop",
+        "text": "Why did trips from the train station fall by half in March?",
+        "answer": "diagnostic",
+        "explanation": "Diagnostic: why did this happen?"
+      },
+      {
+        "id": "summer-demand",
+        "text": "How many bikes will riders want at the beach stations next summer?",
+        "answer": "predictive",
+        "explanation": "Predictive: what might happen in the future?"
+      },
+      {
+        "id": "move-bikes",
+        "text": "Which stations should the van restock first tomorrow morning?",
+        "answer": "prescriptive",
+        "explanation": "Prescriptive: what should we do next? It yields a recommendation for the next step."
+      },
+      {
+        "id": "busiest-hour",
+        "text": "Which hour of the day had the most rentals this year?",
+        "answer": "descriptive",
+        "explanation": "A summary of what already happened."
+      },
+      {
+        "id": "repair-cause",
+        "text": "Why do bikes at one station need repairs twice as often as the rest?",
+        "answer": "diagnostic",
+        "explanation": "It looks for the cause behind something that happened."
+      },
+      {
+        "id": "best-price",
+        "text": "What price for a day pass would bring in the most riders next season?",
+        "answer": "prescriptive",
+        "explanation": "It asks for the optimal course of action, not only a forecast."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "challenges-and-considerations",
+    "prompt": "A radio station plans to become a streaming audio app. Sort each challenge into technology or business.",
+    "bins": [
+      { "id": "technology", "label": "Technology" },
+      { "id": "business", "label": "Business" }
+    ],
+    "cards": [
+      {
+        "id": "servers",
+        "text": "Servers that keep working when ten times the usual listeners tune in for a big match",
+        "bin": "technology",
+        "explanation": "Infrastructure to support demand, like Netflix's cloud infrastructure."
+      },
+      {
+        "id": "compression",
+        "text": "Compressing shows so they sound clear on a weak phone signal",
+        "bin": "technology",
+        "explanation": "Encoding that keeps high fidelity yet stays lightweight."
+      },
+      {
+        "id": "subscriptions",
+        "text": "Moving from income from on-air adverts to paid monthly subscriptions",
+        "bin": "business",
+        "explanation": "A new business model."
+      },
+      {
+        "id": "rivals",
+        "text": "Other apps offering the same shows, and illegal copies shared online",
+        "bin": "business",
+        "explanation": "Competition and piracy."
+      },
+      {
+        "id": "loyalty",
+        "text": "Getting listeners to come back to the app every week",
+        "bin": "business",
+        "explanation": "Consumer engagement and loyalty."
+      },
+      {
+        "id": "playback",
+        "text": "A player that streams on phones, cars and smart speakers",
+        "bin": "technology",
+        "explanation": "A technical capability the service has to build."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "the-eight-steps-5-to-8",
+    "prompt": "A hospital moves from paper charts to electronic patient records. Put its change effort in the order of Kotter's eight steps.",
+    "steps": [
+      {
+        "id": "urgency",
+        "text": "The director shows staff how lost paper charts led to repeated tests and delays.",
+        "explanation": "1. Create a Sense of Urgency: the risks of not changing."
+      },
+      {
+        "id": "coalition",
+        "text": "Respected senior nurses, doctors and the IT lead form a group to lead the change.",
+        "explanation": "2. Build a Guiding Coalition: influential people with authority, expertise and credibility."
+      },
+      {
+        "id": "vision",
+        "text": "The group sets out a picture of every patient's record available on any ward in seconds.",
+        "explanation": "3. Form a Strategic Vision and Initiatives: the desired outcomes."
+      },
+      {
+        "id": "communicate",
+        "text": "The vision is shared at every ward meeting and in the staff newsletter.",
+        "explanation": "4. Communicate the Vision to all stakeholders."
+      },
+      {
+        "id": "empower",
+        "text": "Staff get training, tablets and help on the wards to use the new system.",
+        "explanation": "5. Empower Broad-Based Action: training, resources and support."
+      },
+      {
+        "id": "wins",
+        "text": "The first ward to go paperless is celebrated for cutting waiting times.",
+        "explanation": "6. Generate Short-Term Wins."
+      },
+      {
+        "id": "consolidate",
+        "text": "On the strength of that success, the system is extended to pharmacy and outpatients.",
+        "explanation": "7. Consolidate Gains and Produce More Change: larger change initiatives."
+      },
+      {
+        "id": "anchor",
+        "text": "Electronic records become part of hospital policy and of training for every new hire.",
+        "explanation": "8. Anchor New Approaches in the Culture: policies, procedures and ongoing communication."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "adkar-ability-reinforcement",
+    "prompt": "A bank's branch staff are moving to a new customer system. For each person, name the ADKAR outcome they have not yet reached.",
+    "options": [
+      { "id": "awareness", "label": "Awareness" },
+      { "id": "desire", "label": "Desire" },
+      { "id": "knowledge", "label": "Knowledge" },
+      { "id": "ability", "label": "Ability" },
+      { "id": "reinforcement", "label": "Reinforcement" }
+    ],
+    "cases": [
+      {
+        "id": "why",
+        "text": "A clerk asks why the bank is replacing a system that works perfectly well.",
+        "answer": "awareness",
+        "explanation": "She does not yet understand the need for change or the reasons behind it."
+      },
+      {
+        "id": "against",
+        "text": "A teller knows why the change is coming but wants no part of it.",
+        "answer": "desire",
+        "explanation": "He is aware of the change but does not want to support or participate in it."
+      },
+      {
+        "id": "no-training",
+        "text": "An adviser is keen to switch but has never been shown how the new screens work.",
+        "answer": "knowledge",
+        "explanation": "He lacks the knowledge of how to change: training and resources."
+      },
+      {
+        "id": "slow",
+        "text": "A cashier finished the training but still freezes when a real customer is waiting.",
+        "answer": "ability",
+        "explanation": "Knowledge is not enough: she still has to practise the new skills and implement them."
+      },
+      {
+        "id": "back-to-old",
+        "text": "After a month with no recognition or support, a team quietly goes back to paper forms.",
+        "answer": "reinforcement",
+        "explanation": "Without reinforcement the change is not maintained over time."
+      },
+      {
+        "id": "worried",
+        "text": "A manager fears the new system will be used to monitor her team, so she delays the switch.",
+        "answer": "desire",
+        "explanation": "An unaddressed concern blocks the desire to support the change."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "traditional-vs-agile-project-management",
+    "prompt": "Two teams are each building a new mobile app for a gym chain. Sort what each team does into traditional or agile project management.",
+    "bins": [
+      { "id": "traditional", "label": "Traditional" },
+      { "id": "agile", "label": "Agile" }
+    ],
+    "cards": [
+      {
+        "id": "full-spec",
+        "text": "Writes a 60-page specification of every screen before any work begins",
+        "bin": "traditional",
+        "explanation": "A fixed target defined upfront through detailed planning."
+      },
+      {
+        "id": "vision",
+        "text": "Starts from one sentence: members should book a class in under a minute",
+        "bin": "agile",
+        "explanation": "A flexible vision that serves as a guiding principle."
+      },
+      {
+        "id": "approval",
+        "text": "Needs a sign-off form from the steering committee to add a new button",
+        "bin": "traditional",
+        "explanation": "Changes to the plan require formal processes and approvals."
+      },
+      {
+        "id": "two-weeks",
+        "text": "Releases a small piece every two weeks and asks members what to improve",
+        "bin": "agile",
+        "explanation": "Small iterations, with feedback from stakeholders after each one."
+      },
+      {
+        "id": "on-budget",
+        "text": "Judges success by finishing on the date and budget set at the start",
+        "bin": "traditional",
+        "explanation": "Success measured by adherence to the initial plan, timeline and budget."
+      },
+      {
+        "id": "shift",
+        "text": "Drops a planned chat feature when members ask for workout tracking instead",
+        "bin": "agile",
+        "explanation": "Adjusts to feedback even if the end goal shifts."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "principles-of-scrum-4-to-6",
+    "prompt": "A small team builds an online shop for a bakery with Scrum. Match each principle of Scrum with what the team does.",
+    "term_label": "Principle",
+    "match_label": "What the team does",
+    "pairs": [
+      {
+        "id": "empirical",
+        "term": "Empirical Process Control",
+        "match": "The team checks real order data each week and changes its plan when checkout turns out to be the slow part.",
+        "explanation": "Decisions based on what is known: transparency, inspection and adaptation."
+      },
+      {
+        "id": "self-org",
+        "term": "Self-Organization",
+        "match": "The developers decide among themselves who builds the menu page and how.",
+        "explanation": "Teams organize their work without being directed by outside authorities."
+      },
+      {
+        "id": "collaboration",
+        "term": "Collaboration",
+        "match": "The baker joins the team every few weeks to try the shop and talk it through.",
+        "explanation": "Teamwork and communication among team members, stakeholders and customers."
+      },
+      {
+        "id": "value",
+        "term": "Value-Based Prioritization",
+        "match": "Online ordering is built before the recipe blog, because orders bring in money.",
+        "explanation": "The most important features first, by the value they deliver."
+      },
+      {
+        "id": "timebox",
+        "term": "Time Boxing",
+        "match": "Every planning meeting ends after one hour, whether or not the debate is finished.",
+        "explanation": "A fixed time limit creates urgency and focus."
+      },
+      {
+        "id": "iterative",
+        "term": "Iterative Development",
+        "match": "The shop goes live with one product page, then grows a little every two weeks.",
+        "explanation": "Small, incremental cycles with regular feedback and adjustments."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "roles-in-scrum",
+    "prompt": "A Scrum team builds a ticket app for a theatre. Sort each task to the role responsible for it.",
+    "bins": [
+      { "id": "po", "label": "Product Owner" },
+      { "id": "sm", "label": "Scrum Master" },
+      { "id": "dev", "label": "Development Team" }
+    ],
+    "cards": [
+      {
+        "id": "rank",
+        "text": "Puts seat selection at the top of the backlog after talking to theatre-goers",
+        "bin": "po",
+        "explanation": "The voice of the customer, managing the product backlog."
+      },
+      {
+        "id": "explain",
+        "text": "Explains to the team what the theatre means by a group booking",
+        "bin": "po",
+        "explanation": "Ensures that the team understands the items in the backlog."
+      },
+      {
+        "id": "blocker",
+        "text": "Gets the payment provider to fix the test account that has blocked work for two days",
+        "bin": "sm",
+        "explanation": "Removes impediments that hinder the team's progress."
+      },
+      {
+        "id": "shield",
+        "text": "Asks the marketing director to stop sending the developers urgent side requests",
+        "bin": "sm",
+        "explanation": "Shields the team from external distractions and interruptions."
+      },
+      {
+        "id": "build",
+        "text": "A designer, two developers and a tester build and test the seat map together",
+        "bin": "dev",
+        "explanation": "A cross-functional group that delivers the product increment."
+      },
+      {
+        "id": "how",
+        "text": "Decides among themselves how to split the work on the checkout this sprint",
+        "bin": "dev",
+        "explanation": "The development team self-organizes to decide how to do the work."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "events-in-scrum-daily-scrum-review-retrospective",
+    "prompt": "A team runs a two-week sprint on a food-delivery app. Put its events in order.",
+    "steps": [
+      {
+        "id": "planning",
+        "text": "The team picks the top backlog items and agrees the goal: pay with a saved card.",
+        "explanation": "Sprint Planning opens the sprint: what work will be done, and the sprint goal."
+      },
+      {
+        "id": "daily-1",
+        "text": "On the first morning, each member says what they will do today in a 15-minute meeting.",
+        "explanation": "The Daily Scrum is held every day during the sprint."
+      },
+      {
+        "id": "daily-2",
+        "text": "A week in, a developer says at the stand-up that the bank's test server is down.",
+        "explanation": "The Daily Scrum also surfaces impediments: what obstacles are in my way?"
+      },
+      {
+        "id": "review",
+        "text": "On the last day the team shows the restaurant owners the working card payment.",
+        "explanation": "The Sprint Review demonstrates the completed work at the end of the sprint."
+      },
+      {
+        "id": "retro",
+        "text": "Afterwards the team discusses what went well and what to change next sprint.",
+        "explanation": "The Sprint Retrospective is held after the review."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "artifacts-in-scrum",
+    "question_text": "At the end of a sprint, a team has built a search bar that works but has not been tested, and a filter that is built and tested to the team's quality and acceptance criteria. What belongs in this sprint's increment?",
+    "hint": "The increment must meet the team's definition of \"done\".",
+    "correct_answer_citation": "Increment: The sum of all completed product backlog items at the end of a sprint. The increment must meet the team's definition of \"done,\" which includes quality criteria and acceptance criteria.",
+    "options": [
+      {
+        "option_text": "Only the filter",
+        "option_explanation": "Right. Only the filter meets the definition of \"done\", so only it is part of the increment."
+      },
+      {
+        "option_text": "Both the filter and the search bar",
+        "option_explanation": "The search bar has not met the quality criteria, so it is not done and not part of the increment."
+      },
+      {
+        "option_text": "Neither: the increment is the list of work still to do",
+        "option_explanation": "The list of work still to do is the product backlog. The increment is the completed work."
+      },
+      {
+        "option_text": "Everything the team selected for this sprint",
+        "option_explanation": "That is the sprint backlog. The increment holds only the items that are completed and done."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]

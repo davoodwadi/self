@@ -9,6 +9,7 @@ week: week8
 - Welcome to Week 8 of Introduction to Marketing.
 - Today we explore the second P of the marketing mix, Price.
 - We will examine how price affects the bottom line and customer perception.
+- We will also look at prices set by algorithms and compared by AI agents.
 
 ## The Paradigm of Price [exercise]
 - Price is the only element in the marketing mix that produces revenue.
@@ -75,6 +76,15 @@ week: week8
 - The company must assess how its offer compares to competitors in terms of customer value.
 - If the offer provides greater value, a higher price can be justified.
 
+## Algorithmic Pricing and AI Agents [exercise]
+- Many companies now set prices with algorithms that respond to demand and to competitors' prices.
+- Dynamic pricing changes the price of the same product over time, such as ride fares that rise when demand is high.
+- Personalized pricing offers different customers different prices based on data about them, which raises questions of fairness and can damage trust when customers find out.
+- On the buying side, AI agents can now compare prices on a consumer's behalf.
+- In one study, one coffee cost $4.99 for 10 ounces and another cost $5.00 for 11 ounces; the $5.00 coffee was cheaper per ounce (Wadi & Ma, 2026b).
+- When looking up details had a cost and the goal was vague, AI agents often skipped the package size and chose the $4.99 coffee, but with a specific goal they compared price per ounce and chose better (Wadi & Ma, 2026b).
+- Competition-based pricing must therefore consider how competing offers look both to consumers and to the AI agents that compare them.
+
 ## Discussion: Pricing Approaches
 - A new streaming platform enters a crowded market dominated by established giants with a unique recommendation algorithm but a smaller content library.
 - Discussion: Should the company use cost-based, value-based, or competition-based pricing?
@@ -130,3 +140,4 @@ week: week8
 - Decisions must align internal costs and objectives with external market realities.
 - Whether cost-based, value-based, or competition-based, the strategy must reflect customer perceptions.
 - Effective product mix and new product pricing ensures long-term profitability and market positioning.
+- As algorithms set prices and AI agents compare them, clear and fair pricing becomes easier for buyers to reward and harder for sellers to hide.

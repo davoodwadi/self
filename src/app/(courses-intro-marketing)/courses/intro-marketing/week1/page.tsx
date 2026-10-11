@@ -25,6 +25,7 @@ import {
   OfferingRosette,
   PerceivedValueBars,
   SatisfactionGauge,
+  AgentReads,
   FourPlusOne,
   SegmentTarget,
   RelationshipCycle,
@@ -162,14 +163,17 @@ function KickerHeading({
   kicker,
   children,
   tone = "signal",
+  wide = false,
 }: {
   kicker: string;
   children: React.ReactNode;
   tone?: "signal" | "counter";
+  /** Let a long heading run one line on wide screens. */
+  wide?: boolean;
 }) {
   return (
-    <div className="w-full mb-8 md:mb-12">
-      <h2 className="type-h1 max-w-[22ch]">
+    <div className={cn("w-full", wide ? "mb-6 md:mb-8" : "mb-8 md:mb-12")}>
+      <h2 className={cn("type-h1", wide ? "max-w-[34ch]" : "max-w-[22ch]")}>
         <span
           className={cn(
             "type-label block mb-4 !text-[0.8rem]",
@@ -180,7 +184,7 @@ function KickerHeading({
         </span>{" "}
         {children}
       </h2>
-      <div className="mt-6 h-px w-full bg-[var(--rule)]" />
+      <div className={cn("h-px w-full bg-[var(--rule)]", wide ? "mt-4" : "mt-6")} />
     </div>
   );
 }
@@ -282,10 +286,29 @@ function PhilosophyStrip({ active }: { active: number[] }) {
 }
 
 /** Discussion prompt. "Discussion:" stays in the sentence as a kicker. */
-function Prompt({ children }: { children: React.ReactNode }) {
+function Prompt({
+  children,
+  compact = false,
+}: {
+  children: React.ReactNode;
+  /** A smaller prompt for a discussion slide that also carries a plate. */
+  compact?: boolean;
+}) {
   return (
-    <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-8 md:px-12 md:py-10">
-      <p className="type-quote !text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[40ch]">
+    <div
+      className={cn(
+        "relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)]",
+        compact ? "px-7 py-6 md:px-10 md:py-7" : "px-7 py-8 md:px-12 md:py-10",
+      )}
+    >
+      <p
+        className={cn(
+          "type-quote",
+          compact
+            ? "!text-[clamp(1.3rem,2vw,1.75rem)] max-w-[52ch]"
+            : "!text-[clamp(1.45rem,2.7vw,2.3rem)] max-w-[40ch]",
+        )}
+      >
         {children}
       </p>
     </div>
@@ -614,6 +637,26 @@ function GlyphSteps() {
   );
 }
 
+function GlyphAgent() {
+  return (
+    <svg {...glyphProps}>
+      <circle cx="9" cy="11" r="4" fill="currentColor" />
+      <path d="M3 32 V24 Q3 18 9 18 Q15 18 15 24 V32 Z" fill="currentColor" />
+      <path
+        d="M20 21 H37 M33 18 L37 21 L33 24"
+        stroke="var(--ink-3)"
+        strokeWidth="1.5"
+      />
+      <rect x="44" y="10" width="18" height="18" rx="2" stroke="var(--signal)" strokeWidth="1.5" />
+      <path
+        d="M49 6 V10 M57 6 V10 M49 28 V32 M57 28 V32"
+        stroke="var(--signal)"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+}
+
 export default function Week1() {
   return (
     <SlideDeck label="Week 01">
@@ -652,6 +695,10 @@ export default function Week1() {
             the five-step marketing process
           </a>
           .
+        </p>
+        <p className="type-body mt-5 max-w-3xl text-center">
+          We will also meet a new kind of customer: the AI agent that shops on
+          a consumer&apos;s behalf.
         </p>
         <style>{`
           .toc-link {
@@ -1080,8 +1127,8 @@ export default function Week1() {
             various market offerings will deliver.
           </Lead>
         </div>
-        <div className="mt-8 grid w-full items-start gap-8 md:grid-cols-2 md:gap-10">
-          <div className="min-w-0 space-y-5">
+        <div className="mt-6 grid w-full items-start gap-8 md:grid-cols-2 md:gap-10">
+          <div className="min-w-0 space-y-4">
             <Ruled tone="counter" weight="thick">
               <P>
                 <Term tone="ink">Customer perceived value</Term> is the
@@ -1094,7 +1141,7 @@ export default function Week1() {
               <PerceivedValueBars />
             </Plate>
           </div>
-          <div className="min-w-0 space-y-5">
+          <div className="min-w-0 space-y-4">
             <Ruled tone="signal" weight="thick">
               <P>
                 <Term tone="ink">Customer satisfaction</Term> depends on the
@@ -1109,6 +1156,51 @@ export default function Week1() {
             </Plate>
           </div>
         </div>
+      </Slide>
+
+      <Slide
+        id="marketing-to-ai-agents"
+        border
+        exercise={exercise["marketing-to-ai-agents"]}
+      >
+        <Tag>A new kind of customer</Tag>
+        <Heading className={HEAD}>Marketing to AI Agents</Heading>
+        <Lead className="!max-w-[64ch]">
+          Consumers are beginning to delegate part of their buying to{" "}
+          <Term tone="ink">AI agents</Term>: software that can search for,
+          compare, and purchase products on a person&apos;s behalf.
+        </Lead>
+        <div className="mt-6 grid w-full items-center gap-8 xl:grid-cols-[minmax(0,1fr)_42rem] xl:gap-12">
+          <div className="min-w-0 space-y-4">
+            <P>
+              The consumer states a want, such as &quot;a rain jacket under
+              $150,&quot; and the AI agent turns that want into a search, a
+              comparison, and sometimes a purchase.
+            </P>
+            <P>
+              The need, the want, and the buying power still belong to the
+              consumer; the AI agent acts on them.
+            </P>
+            <Ruled weight="thick">
+              <P>
+                The AI agent judges an offer only from the information it can
+                read, such as prices, specifications, and reviews.
+              </P>
+            </Ruled>
+            <P>
+              The consumer still uses the product and decides after the
+              purchase whether it met their expectations.
+            </P>
+          </div>
+          <Plate>
+            <AgentReads />
+          </Plate>
+        </div>
+        <Statement className="mt-5 !max-w-[60ch] !text-[clamp(1.3rem,2vw,1.7rem)]">
+          Marketers therefore communicate value to{" "}
+          <span className="text-[var(--signal)]">two audiences</span>: the
+          consumer who uses the offering and the AI agent that evaluates it.
+        </Statement>
       </Slide>
 
       <Slide id="discussion-needs" border>
@@ -1397,10 +1489,10 @@ export default function Week1() {
       </Slide>
 
       <Slide id="discussion-retention" border>
-        <KickerHeading kicker="Discussion:" tone="counter">
+        <KickerHeading kicker="Discussion:" tone="counter" wide>
           Customer Acquisition vs. Retention
         </KickerHeading>
-        <Prompt>
+        <Prompt compact>
           <PromptKicker /> Why is it often reported to be{" "}
           <span className="text-[var(--signal)]">
             five times more expensive
@@ -1408,7 +1500,7 @@ export default function Week1() {
           to acquire a new customer than to retain an existing one, and how
           should a startup balance its marketing budget between the two?
         </Prompt>
-        <Plate className="mt-8 max-w-5xl">
+        <Plate className="mt-6 max-w-[56rem]">
           <AcquireRetain />
         </Plate>
       </Slide>
@@ -1417,10 +1509,10 @@ export default function Week1() {
           Conclusion
           ================================================================ */}
       <Slide id="conclusion" border>
-        <KickerHeading kicker="Conclusion:">
+        <KickerHeading kicker="Conclusion:" wide>
           Foundations of Modern Marketing
         </KickerHeading>
-        <ol className="grid w-full gap-x-14 gap-y-12 md:grid-cols-2">
+        <ol className="grid w-full gap-x-14 gap-y-9 md:grid-cols-2">
           {[
             {
               glyph: <GlyphExchange />,
@@ -1438,10 +1530,17 @@ export default function Week1() {
               glyph: <GlyphSteps />,
               text: "Following the five-step marketing process allows firms to build lasting customer relationships and maximize customer equity.",
             },
+            {
+              glyph: <GlyphAgent />,
+              text: "As consumers delegate search and purchase to AI agents, marketers must create value that both the consumer and the consumer's AI agent can recognize.",
+            },
           ].map((item, i) => (
             <li
               key={i}
-              className="grid grid-cols-[4.5rem_1fr] gap-6 border-t-2 border-[var(--ink)] pt-6"
+              className={cn(
+                "grid grid-cols-[4.5rem_1fr] gap-6 border-t-2 border-[var(--ink)] pt-6",
+                i === 4 && "md:col-span-2 [&_p]:max-w-[62ch]",
+              )}
             >
               <div aria-hidden className="flex flex-col gap-4">
                 <span

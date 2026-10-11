@@ -9,6 +9,7 @@ week: week4
 - Welcome to Week 4 of Introduction to Marketing.
 - Today we will explore Business-to-Business, or B2B, marketing.
 - We will cover B2B market characteristics, buying centers, and relationship marketing.
+- We will also see how AI agents are joining the organizational buying center.
 
 ## Part 1: Characteristics of B2B Markets [no-exercise]
 - B2B marketing involves selling products and services to other organizations.
@@ -55,6 +56,14 @@ week: week4
 - A modified rebuy is a situation where the buyer wants to modify product specifications, prices, or suppliers.
 - A new task is a situation where the buyer purchases a product or service for the first time.
 
+## AI Agents in the Buying Center [exercise]
+- Organizations are beginning to use AI agents in purchasing, and these agents take on some buying center roles.
+- In a straight rebuy, an AI agent can reorder supplies automatically when stock runs low, acting as the buyer.
+- An AI agent that screens supplier offers and passes only a shortlist to managers acts as a gatekeeper.
+- An AI agent that compares supplier specifications and recommends one acts as an influencer.
+- In new task situations, people usually remain the deciders, because these purchases carry the most risk.
+- Suppliers must therefore present prices, specifications, and terms in a form that AI agents can read, while still building relationships with the people who decide.
+
 ## Discussion: Buying Center Dynamics
 - Discussion: In a 'new task' buying situation for an enterprise software system, which buying center role do you think wields the most actual power, and why?
 
@@ -85,4 +94,5 @@ week: week4
 ## Conclusion: B2B Marketing
 - B2B marketing is characterized by complex decisions, derived demand, and multiple stakeholders.
 - Understanding the buying center is crucial for targeting the right individuals.
+- As AI agents take on buying center roles, suppliers must reach both the people and the AI agents that shape a purchase.
 - Long term relationship building and Key Account Management are essential for sustained B2B success.

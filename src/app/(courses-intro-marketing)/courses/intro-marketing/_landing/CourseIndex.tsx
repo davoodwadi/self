@@ -3,12 +3,14 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import type { Week } from "./weeks";
+import type { Curriculum, CurriculumWeek } from "@/lib/curriculum";
 
-type Row = Week & { href: string; available: boolean };
+type Row = CurriculumWeek & { href: string; available: boolean };
+
+type Masthead = Omit<Curriculum, "weeks">;
 
 /** Week number, title and topics: the same row whether it links or not. */
-function RowBody({ week, n }: { week: Row; n: number }) {
+function RowBody({ week }: { week: Row }) {
   return (
     <>
       <span
@@ -18,7 +20,7 @@ function RowBody({ week, n }: { week: Row; n: number }) {
             : "type-caption tabular-nums pt-1 opacity-55"
         }
       >
-        {String(n).padStart(2, "0")}
+        {String(week.n).padStart(2, "0")}
       </span>
       <div className="min-w-0">
         <h3
@@ -74,8 +76,13 @@ function BackLink() {
   );
 }
 
-export default function CourseIndex({ weeks }: { weeks: Row[] }) {
-
+export default function CourseIndex({
+  course,
+  weeks,
+}: {
+  course: Masthead;
+  weeks: Row[];
+}) {
   return (
     <div className="relative min-h-screen">
       <BackLink />
@@ -84,22 +91,25 @@ export default function CourseIndex({ weeks }: { weeks: Row[] }) {
         <header className="pt-20 pb-12 md:pt-28 lg:sticky lg:top-0 lg:flex lg:h-svh lg:flex-col lg:justify-center lg:py-16">
           <div className="flex items-center gap-3 mb-7">
             <span className="h-px w-7 bg-[var(--signal)]" aria-hidden />
-            <span className="type-label">Bachelor&apos;s · 12 Weeks</span>
+            <span className="type-label">
+              {[course.level, course.program, course.duration]
+                .filter((item): item is string => Boolean(item))
+                .map((item) => item.replaceAll(" ", "\u00a0"))
+                .join(" · ")}
+            </span>
           </div>
 
           <h1 className="type-display !text-[clamp(2.8rem,5vw,4.5rem)]">
-            Introduction to Marketing
+            {course.title}
           </h1>
+          <p className="type-subtitle mt-4">{course.subtitle}</p>
 
-          <p className="type-lead mt-7 max-w-[46ch]">
-            This course introduces the fundamental concepts, theories, and
-            practices of modern marketing. Students will explore how
-            organizations create, communicate, and deliver value to target
-            customers while achieving business objectives.
+          <p className="type-lead mt-7 max-w-[52ch] !text-[clamp(1rem,1.15vw,1.125rem)]">
+            {course.overview}
           </p>
 
           <p className="type-body mt-8 border-t border-[var(--rule)] pt-5 !text-[var(--ink)]">
-            Davood Wadi, PhD
+            {course.instructor}
           </p>
 
         </header>
@@ -111,18 +121,18 @@ export default function CourseIndex({ weeks }: { weeks: Row[] }) {
           </div>
 
           <ol className="border-t border-[var(--rule)]">
-            {weeks.map((week, idx) => (
+            {weeks.map((week) => (
               <li key={week.slug} className="border-b border-[var(--rule)]">
                 {week.available ? (
                   <Link
                     href={week.href}
                     className={`group ${ROW} transition-colors duration-200 hover:bg-[var(--paper-2)]`}
                   >
-                    <RowBody week={week} n={idx + 1} />
+                    <RowBody week={week} />
                   </Link>
                 ) : (
                   <div aria-disabled="true" className={`${ROW} cursor-default`}>
-                    <RowBody week={week} n={idx + 1} />
+                    <RowBody week={week} />
                   </div>
                 )}
               </li>

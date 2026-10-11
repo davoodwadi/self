@@ -1,0 +1,218 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "limitations-of-user-generated-content",
+    "prompt": "A restaurant group studies online reviews of its restaurants. Which limitation of user-generated content does each problem show?",
+    "options": [
+      { "id": "self-selected", "label": "Self-selected authors" },
+      { "id": "extreme", "label": "Extreme experiences" },
+      { "id": "platform", "label": "Platform demographics" },
+      { "id": "fake", "label": "Fake or automated content" },
+      { "id": "algorithm", "label": "Algorithmic visibility" }
+    ],
+    "cases": [
+      {
+        "id": "one-and-five",
+        "text": "Most reviews give one star or five stars, although guests surveyed after their meals mostly rate the visit a three or a four.",
+        "answer": "extreme",
+        "explanation": "Guests with extreme experiences are more likely to post, so ratings concentrate at the highest and lowest values."
+      },
+      {
+        "id": "young-app",
+        "text": "Reviews on a photo-sharing app come almost entirely from diners under 30, while most of the group's guests are over 45.",
+        "answer": "platform",
+        "explanation": "The users of each platform differ demographically from the population and from the users of other platforms."
+      },
+      {
+        "id": "same-wording",
+        "text": "Forty five-star reviews posted in one week use nearly identical sentences, from accounts created that week.",
+        "answer": "fake",
+        "explanation": "Fake reviews and automated accounts, including those that use language models to write text, distort the content."
+      },
+      {
+        "id": "top-reviews",
+        "text": "The analyst collected only the reviews the site displays first, which the site ranks by its own measure of helpfulness.",
+        "answer": "algorithm",
+        "explanation": "Platform algorithms determine visibility, so the reviews collected may not represent all those published."
+      },
+      {
+        "id": "projection",
+        "text": "A manager reports that 64% of the group's customers like the new menu, because 64% of reviews mentioning it are positive.",
+        "answer": "self-selected",
+        "explanation": "Reviewers chose to post; they are not a probability sample, so the 64% cannot be projected to the customer base with a known precision."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "selecting-a-text-analytics-method",
+    "prompt": "Each manager holds a large collection of customer text. Which method suits each decision?",
+    "options": [
+      { "id": "sentiment", "label": "Sentiment analysis" },
+      { "id": "aspect", "label": "Aspect-based sentiment" },
+      { "id": "topic", "label": "Topic modeling" },
+      { "id": "classification", "label": "Text classification" }
+    ],
+    "cases": [
+      {
+        "id": "sponsorship",
+        "text": "A brand sponsored a football tournament and wants to know whether posts about it became more favorable in the following month.",
+        "answer": "sentiment",
+        "explanation": "The decision needs the overall favorability of the conversation and its trend after a campaign."
+      },
+      {
+        "id": "headphones",
+        "text": "A headphone maker wants to know whether reviewers complain more about comfort, sound or battery life.",
+        "answer": "aspect",
+        "explanation": "The decision concerns specific product attributes, so sentiment is needed toward each attribute mentioned."
+      },
+      {
+        "id": "gym",
+        "text": "A gym chain has 6,000 open-ended answers from former members and no list of reasons in mind.",
+        "answer": "topic",
+        "explanation": "The relevant themes are not known in advance, so they are identified from the texts themselves."
+      },
+      {
+        "id": "bank-inbox",
+        "text": "A bank wants each incoming email sent to the fraud, card or mortgage team.",
+        "answer": "classification",
+        "explanation": "The categories are known in advance and every message must be assigned to one of them."
+      },
+      {
+        "id": "hotel-wifi",
+        "text": "A hotel chain wants to know which features of its rooms, such as the beds, the Wi-Fi or the showers, generate complaints.",
+        "answer": "aspect",
+        "explanation": "The question is about particular attributes, so each attribute's sentiment is measured separately."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "validating-text-analytics",
+    "prompt": "An insurer will use a language model to classify claim emails. Put the validation steps in order.",
+    "steps": [
+      { "id": "sample", "text": "Draw a random sample of 500 claim emails.", "explanation": "Validation starts from a random sample of the collection." },
+      { "id": "humans", "text": "Two staff code the sample independently; measure their agreement.", "explanation": "Human coding is the standard, and its own reliability is checked first." },
+      { "id": "model", "text": "Run the language model on the same 500 emails.", "explanation": "The automated method codes the same sample the people coded." },
+      { "id": "compare", "text": "Report precision and recall for each claim category.", "explanation": "The automated coding is compared with the human coding, category by category." },
+      { "id": "groups", "text": "Check whether accuracy differs for French and English emails.", "explanation": "Accuracy can differ across products, customer groups or languages." },
+      { "id": "repeat", "text": "Repeat the check every quarter.", "explanation": "Consumers' language and the model's behavior change over time." }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "privacy-in-text-and-social-data",
+    "question_text": "A report on a pharmacy chain quotes a public forum post word for word, with the author's username removed: \"My pharmacist at the Elm Street store told everyone in line about my insulin prescription.\" What is the problem?",
+    "hint": "Think about what a reader could do with the exact words.",
+    "correct_answer_citation": "Week 12 · Privacy in Text and Social Data",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "None: the post was public, so the firm may quote it in any report it writes.",
+        "option_explanation": "Publicly accessible content is not free to use for any purpose; platform terms, law and the author's reasonable expectations limit it."
+      },
+      {
+        "option_text": "None: once the username is removed, the quotation cannot identify anyone.",
+        "option_explanation": "Removing names does not anonymize a text."
+      },
+      {
+        "option_text": "Its exact words can be searched to find the author, and it reveals a health condition.",
+        "option_explanation": "Correct. A verbatim quotation can be located with a search engine, and health is a special category that requires additional protection; the quotation is paraphrased or used with permission."
+      },
+      {
+        "option_text": "Keep the quotation, but add the store's postal code and the author's age.",
+        "option_explanation": "Combinations of individually harmless characteristics can also identify an individual."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "findings-conclusions-and-recommendations",
+    "prompt": "These sentences come from a report on a meal-kit company's falling orders. Is each a finding, a conclusion or a recommendation?",
+    "options": [
+      { "id": "finding", "label": "Finding" },
+      { "id": "conclusion", "label": "Conclusion" },
+      { "id": "recommendation", "label": "Recommendation" }
+    ],
+    "cases": [
+      {
+        "id": "skipped",
+        "text": "Customers who skipped three or more weeks fell from 18% to 31% of subscribers after the menu change.",
+        "answer": "finding",
+        "explanation": "It states what the data show."
+      },
+      {
+        "id": "menu-cause",
+        "text": "The smaller menu is the main reason that subscribers order less often.",
+        "answer": "conclusion",
+        "explanation": "It interprets the findings in relation to the research problem."
+      },
+      {
+        "id": "restore",
+        "text": "Restore eight recipes a week in one region, and compare orders there with the other regions before restoring them everywhere.",
+        "answer": "recommendation",
+        "explanation": "It proposes an action on the basis of the conclusions."
+      },
+      {
+        "id": "reasons",
+        "text": "Of 400 lapsed subscribers surveyed, 46% chose \"not enough variety\" as their main reason.",
+        "answer": "finding",
+        "explanation": "A result from the data, with no interpretation added."
+      },
+      {
+        "id": "price-not",
+        "text": "Price is not what is driving the decline in orders.",
+        "answer": "conclusion",
+        "explanation": "It interprets findings about the problem; it proposes no action."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "agent-mediated-markets-as-a-research-agenda",
+    "prompt": "An insights team plans studies of AI shopping agents. Which question of the research agenda does each study address?",
+    "bins": [
+      { "id": "choose", "label": "How agents choose" },
+      { "id": "serve", "label": "Whom agents serve" },
+      { "id": "appear", "label": "How brands appear to agents" }
+    ],
+    "cards": [
+      {
+        "id": "unit-price",
+        "text": "Does showing the price per kilogram on the product page change which detergent an agent buys?",
+        "bin": "choose",
+        "explanation": "It tests how the presentation of information in the storefront affects agents' choices."
+      },
+      {
+        "id": "inspect",
+        "text": "Which product details does an agent open before buying, when each look takes time?",
+        "bin": "choose",
+        "explanation": "It asks which product information agents acquire."
+      },
+      {
+        "id": "retailer-agent",
+        "text": "Does a retailer's agent recommend its own store brand more often than a shopper's own agent does?",
+        "bin": "serve",
+        "explanation": "It asks whether recommendations change with the party the agent serves."
+      },
+      {
+        "id": "sponsored",
+        "text": "Does labeling a listing \"Sponsored\" change how often agents recommend it?",
+        "bin": "serve",
+        "explanation": "It asks whether sponsorship disclosures protect consumers when an agent reads them."
+      },
+      {
+        "id": "included",
+        "text": "When asked for the best running shoes, how often does an assistant include our brand among the options?",
+        "bin": "appear",
+        "explanation": "It measures whether the brand is included in the alternatives AI assistants present."
+      },
+      {
+        "id": "position",
+        "text": "In which place, and with which features, does an assistant list our brand?",
+        "bin": "appear",
+        "explanation": "It measures the brand's position and the attributes shown with it."
+      }
+    ]
+  }
+]

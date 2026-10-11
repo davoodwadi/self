@@ -1,0 +1,184 @@
+[
+  {
+    "type": "quiz",
+    "slide_id": "digital-transformation",
+    "question_text": "A regional bank gives every branch new tablets for opening accounts. Staff still print each form, collect a signature on paper and file it in a cabinet, exactly as before. Why is this not yet digital transformation?",
+    "hint": "The slide names three things that are equally important.",
+    "correct_answer_citation": "Technology is a key enabler, but people and processes are equally important.",
+    "options": [
+      {
+        "option_text": "The technology changed, but the people and processes did not.",
+        "option_explanation": "Right. Technology is a key enabler, but people and processes are equally important. The tablets changed nothing about how the bank operates."
+      },
+      {
+        "option_text": "The bank bought tablets instead of more powerful computers.",
+        "option_explanation": "Better hardware would not help. The way staff work stays the same whatever device they hold."
+      },
+      {
+        "option_text": "Only some areas of a bank can use digital technology.",
+        "option_explanation": "Digital transformation is the integration of digital technology into all areas of a business, a bank included."
+      },
+      {
+        "option_text": "Digital transformation is complete once every branch has the new technology.",
+        "option_explanation": "Owning the technology is not the change. Transformation changes how the business operates and delivers value to customers."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "type": "identify",
+    "slide_id": "key-components",
+    "prompt": "Six organizations are changing how they work. Name the key component of digital transformation each case shows.",
+    "options": [
+      { "id": "technology", "label": "Technology Integration" },
+      { "id": "culture", "label": "Cultural Change" },
+      { "id": "customer", "label": "Customer-Centric Approach" },
+      { "id": "process", "label": "Process Optimization" },
+      { "id": "data", "label": "Data-Driven Decision Making" },
+      { "id": "agility", "label": "Agility and Flexibility" }
+    ],
+    "cases": [
+      {
+        "id": "vans",
+        "text": "A grocery chain fits its delivery vans with IoT sensors and moves its stock records to the cloud.",
+        "answer": "technology",
+        "explanation": "It adopts advanced technologies (IoT, cloud computing) to streamline its operations."
+      },
+      {
+        "id": "hospital",
+        "text": "A hospital's managers praise teams that try new ideas, even when some of the trials fail.",
+        "answer": "culture",
+        "explanation": "It builds a mindset of innovation and experimentation among employees."
+      },
+      {
+        "id": "hotel",
+        "text": "A hotel uses each guest's past stays to offer the room type and breakfast that guest usually prefers.",
+        "answer": "customer",
+        "explanation": "It uses insight into customer preferences to deliver a personalized experience."
+      },
+      {
+        "id": "claims",
+        "text": "An insurer redesigns its claims handling so that routine claims are approved automatically.",
+        "answer": "process",
+        "explanation": "It reengineers a business process and automates a routine task to remove inefficiency."
+      },
+      {
+        "id": "bakery",
+        "text": "A bakery chain studies sales by store and by hour before it sets new opening times.",
+        "answer": "data",
+        "explanation": "It collects and analyzes data to make an informed decision."
+      },
+      {
+        "id": "cafe",
+        "text": "When a new payment app suddenly becomes popular, a café chain accepts it at every till within a month.",
+        "answer": "agility",
+        "explanation": "It adapts quickly to a new technology and to changing customer demands."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "digitization-digitalization-transformation",
+    "prompt": "Sort each change into the stage it belongs to on the staircase.",
+    "bins": [
+      { "id": "digitization", "label": "Digitization" },
+      { "id": "digitalization", "label": "Digitalization" },
+      { "id": "transformation", "label": "Digital transformation" }
+    ],
+    "cards": [
+      {
+        "id": "library",
+        "text": "A library scans its paper card catalogue into PDF files.",
+        "bin": "digitization",
+        "explanation": "Analog information is converted into digital format: digitize information."
+      },
+      {
+        "id": "clinic",
+        "text": "A clinic types its handwritten patient notes into files sorted by patient name.",
+        "bin": "digitization",
+        "explanation": "The information is digitized and organized; nothing about the work itself changes yet."
+      },
+      {
+        "id": "school",
+        "text": "A school photographs its old exam papers and stores them as image files.",
+        "bin": "digitization",
+        "explanation": "Paper becomes digital files: digitize information."
+      },
+      {
+        "id": "invoices",
+        "text": "An accounting firm sets its software to send every client's invoice automatically each month.",
+        "bin": "digitalization",
+        "explanation": "A process that staff did by hand is now automated."
+      },
+      {
+        "id": "warehouse",
+        "text": "A warehouse links its order system to its shipping system, so orders no longer have to be typed in twice.",
+        "bin": "digitalization",
+        "explanation": "The process is streamlined; the business itself stays the same."
+      },
+      {
+        "id": "leave",
+        "text": "A company replaces paper holiday requests with an online form that routes each request to the right manager.",
+        "bin": "digitalization",
+        "explanation": "An existing process is automated and streamlined."
+      },
+      {
+        "id": "rental",
+        "text": "A video-rental chain closes its stores and rebuilds itself as a streaming subscription service.",
+        "bin": "transformation",
+        "explanation": "It rethinks its business model and creates a new value proposition: the institution is transformed."
+      },
+      {
+        "id": "taxi",
+        "text": "A taxi firm becomes an app where riders book, track and pay for any nearby driver.",
+        "bin": "transformation",
+        "explanation": "It goes beyond digitization: the business model and the customer experience change."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "pyramid",
+    "prompt": "Match each layer of the pyramid with the initiative that belongs to it.",
+    "term_label": "Layer",
+    "match_label": "Initiative",
+    "pairs": [
+      {
+        "id": "foundation",
+        "term": "Foundation Layer",
+        "match": "A retailer moves its servers to the cloud and adds protection against cyberattacks.",
+        "explanation": "Cloud computing and cybersecurity are technology infrastructure."
+      },
+      {
+        "id": "data",
+        "term": "Data Layer",
+        "match": "A bank sets rules on who may use customer data and builds dashboards to analyse it.",
+        "explanation": "Data governance and analytics tools sit in the data layer."
+      },
+      {
+        "id": "process",
+        "term": "Process Layer",
+        "match": "A factory automates the workflow that approves each purchase order.",
+        "explanation": "Workflow automation re-engineers a business process."
+      },
+      {
+        "id": "customer",
+        "term": "Customer Experience Layer",
+        "match": "An airline redesigns its booking app so travellers can change a seat in two taps.",
+        "explanation": "User experience design improves the customer experience through a digital channel."
+      },
+      {
+        "id": "culture",
+        "term": "Culture and Leadership Layer",
+        "match": "A new CEO runs a change programme and trains every employee in digital skills.",
+        "explanation": "Change management and employee training belong to culture and leadership."
+      },
+      {
+        "id": "innovation",
+        "term": "Innovation Layer",
+        "match": "A carmaker partners with startups to experiment with new business models.",
+        "explanation": "Experimentation and partnerships with startups explore new business models."
+      }
+    ]
+  }
+]

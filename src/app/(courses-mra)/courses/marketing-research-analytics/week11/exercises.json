@@ -1,0 +1,295 @@
+[
+  {
+    "type": "quiz",
+    "slide_id": "drivers-of-customer-lifetime-value",
+    "question_text": "A streaming service earns an annual margin of $60 per subscriber, retains 70% of subscribers each year, and uses a discount rate of 10%, so its CLV is 60 × 0.7 / 0.4, or $105. Which single change raises CLV the most?",
+    "hint": "Recompute m × r / (1 + d − r) for each change.",
+    "correct_answer_citation": "Week 11 · Drivers of Customer Lifetime Value",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Raise the annual margin by 10%, to $66.",
+        "option_explanation": "CLV rises to 66 × 0.7 / 0.4, about $116: a gain of about $11, a tenth of CLV."
+      },
+      {
+        "option_text": "Raise retention by ten points, to 80%.",
+        "option_explanation": "Correct. CLV rises to 60 × 0.8 / 0.3, or $160: a gain of $55, because CLV is particularly sensitive to the retention rate."
+      },
+      {
+        "option_text": "Lower the discount rate to 8%.",
+        "option_explanation": "CLV rises to 60 × 0.7 / 0.38, about $111: a gain of about $6."
+      },
+      {
+        "option_text": "All three raise CLV by the same amount.",
+        "option_explanation": "The three drivers enter the formula differently; the retention rate appears in both the numerator and the denominator."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "interpreting-rfm-profiles",
+    "prompt": "An online bookstore scores its customers on recency, frequency and monetary value from 1 to 5. Which profile does each customer have?",
+    "options": [
+      {
+        "id": "valuable",
+        "label": "Most valuable"
+      },
+      {
+        "id": "risk",
+        "label": "At risk"
+      },
+      {
+        "id": "new",
+        "label": "New"
+      },
+      {
+        "id": "lapsed",
+        "label": "Lapsed"
+      }
+    ],
+    "cases": [
+      {
+        "id": "weekly",
+        "text": "Buys two or three books a month, spends heavily, and placed an order yesterday.",
+        "answer": "valuable",
+        "explanation": "High recency, frequency and monetary scores: a most valuable active customer, to be rewarded."
+      },
+      {
+        "id": "gone-quiet",
+        "text": "Bought a book almost every month for two years, then nothing for the past eight months.",
+        "answer": "risk",
+        "explanation": "High frequency and spending but low recency: once valuable, now at risk of being lost, and worth contacting."
+      },
+      {
+        "id": "first-order",
+        "text": "Created an account last week and bought one paperback.",
+        "answer": "new",
+        "explanation": "High recency but low frequency: a recent new customer whose future value is not yet established, to be developed."
+      },
+      {
+        "id": "one-off",
+        "text": "Bought one discounted book two years ago and has not returned.",
+        "answer": "lapsed",
+        "explanation": "Low on all three measures: lapsed, and reactivation may cost more than it returns."
+      },
+      {
+        "id": "box-set",
+        "text": "Ordered a large box set three days ago, the first purchase since signing up a month earlier.",
+        "answer": "new",
+        "explanation": "Recent, but only one purchase: frequency is low, so the customer's future value is not yet established."
+      },
+      {
+        "id": "holiday-only",
+        "text": "Ordered every few weeks for three years and spent heavily, but has not bought anything in the past nine months.",
+        "answer": "risk",
+        "explanation": "High frequency and monetary value with low recency: at risk of being lost, and worth contacting."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "the-confusion-matrix",
+    "question_text": "In a bank's holdout sample of 2,000 customers, 200 close their accounts. A churn model flags 100 customers as likely to close, and 80 of them do. What are the model's precision and recall?",
+    "hint": "Precision divides by the customers flagged; recall divides by the customers who actually closed.",
+    "correct_answer_citation": "Week 11 · The Confusion Matrix",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Precision 80%, recall 40%.",
+        "option_explanation": "Correct. 80 of the 100 flagged customers closed (precision), and the model found 80 of the 200 who closed (recall)."
+      },
+      {
+        "option_text": "Precision 40%, recall 80%.",
+        "option_explanation": "The two are swapped: precision is about the customers predicted to churn, recall about the actual churners."
+      },
+      {
+        "option_text": "Precision 4%, recall 40%.",
+        "option_explanation": "Precision divides the true positives by the customers flagged (100), not by the whole sample."
+      },
+      {
+        "option_text": "Accuracy is 93%, so the model finds most of the customers who close.",
+        "option_explanation": "Accuracy is high because most customers stay; the model still misses 120 of the 200 who close, a recall of 40%."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "predicting-churn-and-preventing-churn",
+    "prompt": "A gym ran a randomized test of a call offering a free month to members whose contracts end soon. What type is each member?",
+    "options": [
+      {
+        "id": "persuadable",
+        "label": "Persuadable"
+      },
+      {
+        "id": "sure",
+        "label": "Sure thing"
+      },
+      {
+        "id": "lost",
+        "label": "Lost cause"
+      },
+      {
+        "id": "dog",
+        "label": "Sleeping dog"
+      }
+    ],
+    "cases": [
+      {
+        "id": "planned-renew",
+        "text": "Trains five times a week and would renew whether or not anyone called.",
+        "answer": "sure",
+        "explanation": "Stays regardless, so the free month is a cost without a benefit."
+      },
+      {
+        "id": "moving",
+        "text": "Is moving to another city next month and will cancel whatever is offered.",
+        "answer": "lost",
+        "explanation": "Leaves regardless of the intervention."
+      },
+      {
+        "id": "undecided",
+        "text": "Was going to let the contract lapse, but the free month changes their mind and they renew.",
+        "answer": "persuadable",
+        "explanation": "Would leave without the call and stays with it: the customer uplift modeling directs the intervention to."
+      },
+      {
+        "id": "reminded",
+        "text": "Had forgotten the contract was ending and would have rolled over automatically; the call reminds them to cancel.",
+        "answer": "dog",
+        "explanation": "Would stay without contact but is prompted to leave by it."
+      },
+      {
+        "id": "price-shopper",
+        "text": "Was comparing cheaper gyms, accepts the free month, and stays for another year.",
+        "answer": "persuadable",
+        "explanation": "The intervention changed the decision to leave."
+      },
+      {
+        "id": "injury",
+        "text": "Cannot train for a year after surgery and cancels despite the offer.",
+        "answer": "lost",
+        "explanation": "No intervention changes the decision to leave."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "recommendation-systems",
+    "prompt": "A music streaming service designs its recommendations. Match each term with what happens on the service.",
+    "term_label": "Term",
+    "match_label": "On the service",
+    "pairs": [
+      {
+        "id": "content",
+        "term": "Content-based recommendation",
+        "match": "A folk fan is offered other songs tagged folk.",
+        "explanation": "Suggests items similar, in their attributes, to those the customer already chose."
+      },
+      {
+        "id": "collab",
+        "term": "Collaborative filtering",
+        "match": "A jazz album is offered because similar listeners played it.",
+        "explanation": "Suggests items chosen by customers whose past behavior resembles the customer's."
+      },
+      {
+        "id": "hybrid",
+        "term": "Hybrid system",
+        "match": "Song tags and similar listeners' plays are combined.",
+        "explanation": "Hybrid systems combine both approaches."
+      },
+      {
+        "id": "cold",
+        "term": "Cold-start problem",
+        "match": "A song released today has no plays, so it is never suggested.",
+        "explanation": "A new item has too little history for collaborative filtering."
+      },
+      {
+        "id": "popularity",
+        "term": "Popularity bias",
+        "match": "Suggestions keep returning to the same fifty chart hits.",
+        "explanation": "Recommendations concentrate on items that are already popular, narrowing what customers encounter."
+      },
+      {
+        "id": "abtest",
+        "term": "A/B test",
+        "match": "Half of new subscribers get the new recommender; cancellations are compared.",
+        "explanation": "A/B tests evaluate a recommender's effect on business outcomes such as retention."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "auditing-a-predictive-model",
+    "prompt": "An insurer audits its loyalty-discount model. Put the audit steps in order.",
+    "steps": [
+      {
+        "id": "define",
+        "text": "Choose age groups and equal opportunity as the criterion.",
+        "explanation": "The groups and the fairness criterion are defined first."
+      },
+      {
+        "id": "compare",
+        "text": "Compare discount and error rates by age group on holdout data.",
+        "explanation": "Predictions and errors are then compared across the groups on holdout data."
+      },
+      {
+        "id": "proxies",
+        "text": "Check whether years since first licence stands in for age.",
+        "explanation": "The variables are examined next for proxies of protected characteristics."
+      },
+      {
+        "id": "explain",
+        "text": "Use SHAP values and importance to find what drives the gap.",
+        "explanation": "Local and global explanations identify the variables responsible for the differences."
+      },
+      {
+        "id": "revise",
+        "text": "Drop the proxy, retrain, and compare the age groups again.",
+        "explanation": "The model, data or decision rule is revised, and the comparison repeated."
+      },
+      {
+        "id": "monitor",
+        "text": "Document the audit and track discounts by age group each quarter.",
+        "explanation": "Finally, the audit is documented and outcomes are monitored after deployment."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "auditing-an-ai-agent",
+    "prompt": "A travel site audits the AI agent that suggests hotels to its users. Put the steps of the audit in order.",
+    "steps": [
+      {
+        "id": "standard",
+        "text": "Define the task, the booking requests, and the standard: the best-rated hotel within budget.",
+        "explanation": "The task, the population of queries and the normative standard come first."
+      },
+      {
+        "id": "design",
+        "text": "Vary which hotel is labelled sponsored, and shuffle the hotel order.",
+        "explanation": "Controlled variations of prompts and alternatives are designed next, with positions randomized."
+      },
+      {
+        "id": "collect",
+        "text": "Run each condition 500 times on the model version to be deployed.",
+        "explanation": "A sufficient number of responses is collected from the version to be deployed."
+      },
+      {
+        "id": "compare",
+        "text": "Compare picks with the standard by condition, with effect sizes and corrections.",
+        "explanation": "Choices are compared with the standard and across conditions."
+      },
+      {
+        "id": "revise",
+        "text": "Rewrite the system prompt to ignore sponsorship, and compare again.",
+        "explanation": "The system prompt, information or model is revised, and the comparison repeated."
+      },
+      {
+        "id": "repeat",
+        "text": "Document the audit and repeat it at the provider's next model update.",
+        "explanation": "Finally, the audit is documented and repeated whenever the provider updates the model."
+      }
+    ]
+  }
+]

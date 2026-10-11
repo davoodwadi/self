@@ -119,10 +119,10 @@ export function SlideDeck({
       <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-4 md:px-8 md:py-5 mix-blend-multiply">
         <button
           onClick={() => router.push(parentPath)}
-          className="group flex items-center gap-2 text-[var(--ink-3)] hover:text-[var(--signal)] transition-colors duration-200"
+          className="flex items-center gap-2 text-[var(--ink-3)] hover:text-[var(--signal)] transition-colors duration-200"
           aria-label="Back to course contents"
         >
-          <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
+          <ArrowLeft className="w-3.5 h-3.5" />
         </button>
 
         {label ? (

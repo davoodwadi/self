@@ -1,0 +1,337 @@
+[
+  {
+    "type": "quiz",
+    "slide_id": "correlation",
+    "question_text": "Across 40 cafés, the correlation between the hours of live music per evening and evening sales is 0.02. A scatter plot shows sales rising up to about three hours of music and falling beyond that. What can the analyst conclude?",
+    "hint": "Ask what kind of relationship r measures.",
+    "correct_answer_citation": "Week 09 · Correlation",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Live music has no relationship with evening sales.",
+        "option_explanation": "A correlation near zero rules out only a linear relationship. The scatter plot shows a strong relationship that rises and then falls."
+      },
+      {
+        "option_text": "Live music causes sales to rise and then fall.",
+        "option_explanation": "A correlation, or a pattern in a scatter plot, does not establish causation; other causes have not been ruled out."
+      },
+      {
+        "option_text": "The relationship is strong but not linear, so r understates it.",
+        "option_explanation": "Correct. r measures only the linear relationship, and a response that rises and then falls can produce an r near zero."
+      },
+      {
+        "option_text": "The relationship is weak and negative, since r is below 0.5.",
+        "option_explanation": "An r of 0.02 is neither negative nor a measure of the curved relationship in the plot."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "interpreting-regression-coefficients",
+    "prompt": "A café chain estimates daily cups sold as: Cups = 400 − 30 × Price + 2 × Temperature + 50 × Weekend, with price in dollars, temperature in degrees and Weekend coded 1 for Saturday and Sunday, 0 otherwise. Match each term with its interpretation.",
+    "term_label": "Term",
+    "match_label": "Interpretation",
+    "pairs": [
+      {
+        "id": "price",
+        "term": "−30 × Price",
+        "match": "A one-dollar increase in price is associated with 30 fewer cups a day, holding temperature and the day constant.",
+        "explanation": "A partial coefficient: the expected change in Y for a one-unit increase in price, with the other variables held constant."
+      },
+      {
+        "id": "temperature",
+        "term": "2 × Temperature",
+        "match": "Each additional degree is associated with 2 more cups a day, holding price and the day constant.",
+        "explanation": "The coefficient is the expected change in cups for a one-unit increase in temperature."
+      },
+      {
+        "id": "weekend",
+        "term": "50 × Weekend",
+        "match": "Saturdays and Sundays sell 50 more cups than weekdays, the reference category, at the same price and temperature.",
+        "explanation": "A dummy variable's coefficient is interpreted relative to the reference category coded 0."
+      },
+      {
+        "id": "intercept",
+        "term": "400",
+        "match": "The expected cups sold when price, temperature and Weekend are all zero.",
+        "explanation": "The intercept is the expected value of Y when every independent variable is zero."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "omitted-variables-and-reverse-causality",
+    "prompt": "Each regression finds a positive association that may not reflect a causal effect. Name the problem.",
+    "options": [
+      {
+        "id": "omitted",
+        "label": "Omitted variable"
+      },
+      {
+        "id": "reverse",
+        "label": "Reverse causality"
+      }
+    ],
+    "cases": [
+      {
+        "id": "sunscreen",
+        "text": "A sunscreen brand's weekly sales rise with its display advertising, but both are heaviest in the hottest weeks, and the model has no temperature variable.",
+        "answer": "omitted",
+        "explanation": "Temperature affects sales and is correlated with advertising, but it is excluded from the model."
+      },
+      {
+        "id": "shelf",
+        "text": "Stores give more shelf space to the snacks that already sell best, and a model finds that shelf space predicts snack sales.",
+        "answer": "reverse",
+        "explanation": "Sales determine shelf space here, so the dependent variable influences the independent variable."
+      },
+      {
+        "id": "salesforce",
+        "text": "A firm hires more sales representatives in territories where orders are growing, and a model finds that representatives predict orders.",
+        "answer": "reverse",
+        "explanation": "Growth in orders leads to hiring, so the association runs from the outcome to the predictor."
+      },
+      {
+        "id": "income",
+        "text": "Regions with more premium-brand advertising buy more premium products, and advertisers target high-income regions; income is not in the model.",
+        "answer": "omitted",
+        "explanation": "Income affects purchases and is correlated with advertising, so leaving it out overstates the effect of advertising."
+      },
+      {
+        "id": "budget",
+        "text": "Each year's advertising budget is set at 5 percent of the previous year's sales, and a model of annual sales finds a large advertising coefficient.",
+        "answer": "reverse",
+        "explanation": "The budget depends on past sales, so higher sales produce higher advertising."
+      },
+      {
+        "id": "launch",
+        "text": "A brand's email volume and its online sales both peak in the month of a product launch, and the model of sales includes email but not the launch.",
+        "answer": "omitted",
+        "explanation": "The launch increases sales and coincides with more email, so a model without it credits the email."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "interpreting-logistic-regression",
+    "question_text": "Without a loyalty discount, 20 percent of customers renew their subscription. A logistic regression gives the discount an odds ratio of 2.0, holding other variables constant. What is the predicted probability of renewal with the discount?",
+    "hint": "Convert the probability to odds, apply the odds ratio, and convert back.",
+    "correct_answer_citation": "Week 09 · Interpreting Logistic Regression",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "40 percent",
+        "option_explanation": "This doubles the probability. The odds ratio doubles the odds, not the probability."
+      },
+      {
+        "option_text": "About 33 percent",
+        "option_explanation": "Correct. The odds are 0.20 / 0.80 = 0.25; doubled, they are 0.50, which corresponds to a probability of 0.50 / 1.50 ≈ 33 percent."
+      },
+      {
+        "option_text": "22 percent",
+        "option_explanation": "This adds 2 percentage points; an odds ratio multiplies the odds."
+      },
+      {
+        "option_text": "50 percent",
+        "option_explanation": "0.50 is the new odds, not the new probability."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "marketing-mix-modeling-and-attribution-compared",
+    "prompt": "Sort each question by the approach that can answer it.",
+    "bins": [
+      {
+        "id": "mmm",
+        "label": "Marketing mix modeling"
+      },
+      {
+        "id": "attribution",
+        "label": "Attribution"
+      },
+      {
+        "id": "experiment",
+        "label": "Incrementality experiment"
+      }
+    ],
+    "cards": [
+      {
+        "id": "radio",
+        "text": "How much did last year's radio campaign contribute to total sales?",
+        "bin": "mmm",
+        "explanation": "Radio is an offline channel, which only the aggregate model covers."
+      },
+      {
+        "id": "yesterday",
+        "text": "Which touchpoints appeared in the paths of the customers who bought online yesterday?",
+        "bin": "attribution",
+        "explanation": "Attribution works at the level of individual customers and provides results quickly."
+      },
+      {
+        "id": "would",
+        "text": "Would the customers who clicked brand search ads have bought anyway?",
+        "bin": "experiment",
+        "explanation": "Only a holdout test shows what happens without the ads, which neither approach establishes on its own."
+      },
+      {
+        "id": "roi",
+        "text": "What has been the return on television, print and promotions over three years of weekly sales?",
+        "bin": "mmm",
+        "explanation": "The aggregate time-series model estimates each channel's return, offline channels included."
+      },
+      {
+        "id": "path",
+        "text": "How should credit for a conversion be split between a display ad and the social post that followed it?",
+        "bin": "attribution",
+        "explanation": "Assigning credit across the touchpoints in a path is the task of attribution."
+      },
+      {
+        "id": "geo",
+        "text": "Does pausing social ads in half of the regions reduce sales in those regions?",
+        "bin": "experiment",
+        "explanation": "A geographic experiment estimates the causal effect of the channel."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "selecting-a-modeling-approach",
+    "prompt": "Sort each decision by the approach it requires.",
+    "bins": [
+      {
+        "id": "regression",
+        "label": "Linear or logistic regression"
+      },
+      {
+        "id": "ml",
+        "label": "Machine learning model"
+      },
+      {
+        "id": "experiment",
+        "label": "Experiment or quasi-experiment"
+      }
+    ],
+    "cards": [
+      {
+        "id": "fraud",
+        "text": "A bank must flag, each night, the card transactions most likely to be fraudulent.",
+        "bin": "ml",
+        "explanation": "The decision requires accurate predictions for individual cases, not interpretable effects."
+      },
+      {
+        "id": "shipping",
+        "text": "An online store has never offered free shipping and wants to know how it would change order rates.",
+        "bin": "experiment",
+        "explanation": "The action has not been taken before, so its causal effect has to be estimated with an experiment."
+      },
+      {
+        "id": "elasticity",
+        "text": "A grocer wants an interpretable estimate of how much a ten-cent price increase changes weekly milk sales.",
+        "bin": "regression",
+        "explanation": "The decision requires an interpretable estimate of the effect of a specific variable."
+      },
+      {
+        "id": "leads",
+        "text": "A software firm wants to rank thousands of trial users by their likelihood of buying a licence.",
+        "bin": "ml",
+        "explanation": "The decision requires accurate predictions for individual users."
+      },
+      {
+        "id": "vip",
+        "text": "A hotel chain has offered upgrades only to its top members and wants to know whether upgrades would raise loyalty among all members.",
+        "bin": "experiment",
+        "explanation": "The action has been taken only for selected customers, so past data cannot separate its effect from the customers' loyalty."
+      },
+      {
+        "id": "drivers",
+        "text": "A telecom firm wants to report how much each additional dropped call changes the odds that a customer cancels.",
+        "bin": "regression",
+        "explanation": "Logistic regression gives an interpretable odds ratio for a specific variable."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "estimating-how-ai-agents-weight-attributes",
+    "question_text": "A conditional logit model of an AI agent's choices between laundry detergents gives a ratio of 0.40 between the cent and the whole-dollar price coefficients, with a confidence interval from 0.25 to 0.55. What does this indicate?",
+    "hint": "Compare the interval with the normative value.",
+    "correct_answer_citation": "Week 09 · Estimating How AI Agents Weight Attributes",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "The agent weights a cent exactly as much as one hundredth of a dollar.",
+        "option_explanation": "That would be a ratio of 1, and the interval from 0.25 to 0.55 does not include 1."
+      },
+      {
+        "option_text": "The agent weights cents more heavily than whole dollars.",
+        "option_explanation": "A ratio above 1 would indicate that; a ratio of 0.40 indicates the opposite."
+      },
+      {
+        "option_text": "The agent cannot calculate prices.",
+        "option_explanation": "The coefficients describe how the agent weights the two price components in its choices, not its arithmetic."
+      },
+      {
+        "option_text": "The agent discounts the cents in a price, as the left-digit effect does among consumers.",
+        "option_explanation": "Correct. A cent receives less than one hundredth of the weight of a dollar, and the interval excludes the normative value of 1."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "mediation-analysis",
+    "prompt": "A researcher tests whether a \"Best seller\" badge raises an AI agent's choice of a backpack because the agent rates the backpack as more popular. Name the role of each variable in the analysis.",
+    "options": [
+      {
+        "id": "manipulated",
+        "label": "Manipulated variable"
+      },
+      {
+        "id": "mediator",
+        "label": "Mediator"
+      },
+      {
+        "id": "outcome",
+        "label": "Outcome"
+      }
+    ],
+    "cases": [
+      {
+        "id": "badge",
+        "text": "Whether the backpack carries the \"Best seller\" badge, set at random in each session.",
+        "answer": "manipulated",
+        "explanation": "The researcher sets the badge, so it is the manipulated variable."
+      },
+      {
+        "id": "popularity",
+        "text": "The popularity the agent attributes to the backpack in its reasoning trace, coded on a seven-point scale.",
+        "answer": "mediator",
+        "explanation": "The intermediate variable through which the badge is expected to act; it is measured, not manipulated."
+      },
+      {
+        "id": "choice",
+        "text": "Whether the agent selects the backpack.",
+        "answer": "outcome",
+        "explanation": "The choice is the outcome the badge is expected to affect."
+      },
+      {
+        "id": "goal",
+        "text": "In a second study, the instruction given to the agent, either a vague or a specific goal, assigned at random.",
+        "answer": "manipulated",
+        "explanation": "The researcher assigns the goal, so it is manipulated."
+      },
+      {
+        "id": "acquired",
+        "text": "In that study, the number of product attributes the agent opens before choosing.",
+        "answer": "mediator",
+        "explanation": "The attributes acquired lie between the instruction and the choice, and they are measured from the record of tool calls."
+      },
+      {
+        "id": "optimal",
+        "text": "In that study, whether the agent picks the product with the lowest price per unit.",
+        "answer": "outcome",
+        "explanation": "An optimal choice is the outcome."
+      }
+    ]
+  }
+]

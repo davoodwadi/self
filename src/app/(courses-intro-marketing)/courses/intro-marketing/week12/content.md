@@ -12,6 +12,7 @@ week: "week12"
 - Welcome to Week 12 of Introduction to Marketing.
 - Today we will explore global marketing strategies.
 - We will also examine emerging trends shaping the future.
+- We will close by asking whom the AI agents that shop for consumers are built to serve.
 
 ## What is Global Marketing?
 - Global marketing involves targeting markets across the world.
@@ -113,6 +114,14 @@ week: "week12"
 - Marketers use AI to optimize ad spend in real-time.
 - Ethical concerns regarding data privacy remain a significant challenge.
 
+## Whom Do AI Agents Serve? [exercise]
+- An AI agent that shops for a consumer is often built and run by a platform that also earns money from sellers.
+- The consumer wants the best option, while the platform may also want sponsored listings to be chosen, a conflict of interest.
+- In hotel-booking experiments, an AI agent told that it worked for the traveler chose a sponsored hotel less often than an otherwise similar hotel without sponsorship (Wadi & Ma, 2026c).
+- When the same AI agent was told that it worked for the booking platform, it penalized sponsored hotels less (Wadi & Ma, 2026c).
+- Adding one sentence stating that its recommendations should serve the traveler removed this difference (Wadi & Ma, 2026c).
+- As more buying is delegated to AI agents, marketers, platforms, and regulators must decide whose interests these agents are built to serve.
+
 ## Sustainability and Purpose-Driven Marketing
 - Consumers increasingly prefer brands with strong environmental commitments.
 - Purpose-driven marketing aligns business goals with social impact.
@@ -143,3 +152,4 @@ week: "week12"
 - Global expansion requires careful selection of entry and adaptation strategies.
 - The future of marketing is driven by AI, sustainability, and immersive tech.
 - Marketers must balance technological innovation with ethical responsibility.
+- As AI agents buy on consumers' behalf, the future of marketing depends on agents that serve the customer they act for.
