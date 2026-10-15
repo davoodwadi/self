@@ -28,12 +28,17 @@ week: week-3
 
 ## Data analytics - Four key types [exercise]
 1. **Descriptive**: What happened?
+   - Definition:
+   - **Descriptive analytics** is the process of summarizing *historical data* to understand **what has happened** in the past.
 2. **Diagnostic**: Why did this happen?
+   - Definition:
+   - **Diagnostic analytics** is the process of examining data to uncover the *root causes* and **why an outcome happened**.
 3. **Prescriptive**: What should we do next?
+   - Definition:
+   - **Prescriptive analytics** is the process of using data to determine an *optimal course of action*, yielding **recommendations** for next steps.
 4. **Predictive**: What might happen in the future?
-- Prescriptive Analytics
-  - Definition:
-  - **Prescriptive analytics** is the process of using data to determine an *optimal course of action*, yielding **recommendations** for next steps.
+   - Definition:
+   - **Predictive analytics** is the process of using *historical data and statistical models* to **forecast** what might happen in the future.
 
 ## Netflix Timeline [no-exercise]
 - 1997: **Netflix founded**: Pay-per-rental model

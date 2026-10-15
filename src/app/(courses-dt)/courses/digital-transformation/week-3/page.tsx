@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { ProgressBar } from "@/components/presentation";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -25,17 +27,35 @@ import {
   FourTypes,
   NetflixTimeline,
   NETFLIX_YEARS,
+  NetflixConsiderations,
+  NetflixConsiderationsTall,
   AlignedChange,
   KotterStairs,
+  KotterSteps1To4,
+  KotterSteps1To4Tall,
+  KotterSteps5To8,
+  KotterSteps5To8Tall,
   BoxToCloud,
+  MicrosoftKotter1To4,
+  MicrosoftKotter5To8,
+  AdkarOverview,
+  AdkarOverviewTall,
+  AdkarFirstThree,
+  AdkarFirstThreeTall,
+  AdkarLastTwo,
+  AdkarLastTwoTall,
   SmallReleases,
   TwoPaths,
+  TradVsAgileInteractive,
+  TradVsAgileTall,
   RugbyScrum,
-  ThreePillars,
+  ScrumPrinciples1To3,
+  ScrumPrinciples1To3Tall,
+  ScrumPrinciples4To6,
+  ScrumPrinciples4To6Tall,
   ScrumProcess,
-  ProductOwnerRole,
-  ScrumMasterRole,
-  DevTeamRole,
+  ScrumRolesHub,
+  ScrumRolesHubTall,
 } from "./visuals";
 
 const SECTIONS = [
@@ -54,7 +74,6 @@ const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
 /* Body copy: the reading serif; terms set bold in the display serif. */
 const BODY = "font-body text-base md:text-[1.06rem] leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
-const SMALL = "font-body text-[0.95rem] leading-[1.5] [&_strong]:font-heading [&_strong]:font-bold";
 const LIST =
   "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
 const SUB = "font-accent font-bold uppercase tracking-[0.2em] text-[0.68rem]";
@@ -75,22 +94,8 @@ function Bullets({ items, className = "" }: { items: React.ReactNode[]; classNam
 function Ask({ children }: { children: React.ReactNode }) {
   return (
     <p className="mt-3 pt-3 border-t border-[var(--rule-2)] font-heading italic leading-snug [&_strong]:font-bold">
-      <span className={`${SUB} not-italic block mb-1`}>Question:</span>
-      {children}
+      <span className={`${SUB} not-italic block mb-1`}>Question:</span> {children}
     </p>
-  );
-}
-
-/* A numbered step: numeral, name, then its points. */
-function Step({ n, name, children }: { n: number; name: string; children: React.ReactNode }) {
-  return (
-    <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-      <p className="font-heading font-bold text-lg leading-tight mb-2 flex items-baseline gap-3">
-        <span className="font-accent text-base">{n}.</span>
-        <span>{name}:</span>
-      </p>
-      {children}
-    </div>
   );
 }
 
@@ -107,6 +112,24 @@ function Letter({ l, size = "w-12 h-12 text-3xl" }: { l: string; size?: string }
 }
 
 export default function DigitalTransformationWeek3() {
+  const [activeAnalytics, setActiveAnalytics] = useState(0);
+  const [activeTimeline, setActiveTimeline] = useState(0);
+  const [activeChallenge, setActiveChallenge] = useState(0);
+  const [activeKotter14, setActiveKotter14] = useState(0);
+  const [activeKotter58, setActiveKotter58] = useState(0);
+  const [activeMs14, setActiveMs14] = useState(0);
+  const [activeMs58, setActiveMs58] = useState(0);
+  const [activeAdkarOverview, setActiveAdkarOverview] = useState(0);
+  const [activeAdkar13, setActiveAdkar13] = useState(0);
+  const [activeAdkar45, setActiveAdkar45] = useState(0);
+  const [activeTradAgile, setActiveTradAgile] = useState(0);
+  const [activeScrum13, setActiveScrum13] = useState(0);
+  const [activeScrum46, setActiveScrum46] = useState(0);
+  const [activeScrumRole, setActiveScrumRole] = useState(0);
+  const [activeScrumEvent1, setActiveScrumEvent1] = useState(0);
+  const [activeScrumEvent2, setActiveScrumEvent2] = useState(0);
+  const [activeScrumArtifact, setActiveScrumArtifact] = useState(0);
+
   return (
     <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
       <ProgressBar />
@@ -147,8 +170,7 @@ export default function DigitalTransformationWeek3() {
         title="How Netflix Transformed The Movie Industry"
       >
         <p className="font-heading text-[clamp(1.5rem,2.6vw,2.1rem)] leading-snug max-w-4xl">
-          <strong className="text-[var(--dt-signal)]">Prescriptive</strong> Analytics for Strategic Decision-Making in
-          Business
+          <strong>Prescriptive</strong> Analytics for Strategic Decision-Making in Business
         </p>
         <Row cols="lg:grid-cols-[1.2fr_1fr]">
           <div>
@@ -182,98 +204,169 @@ export default function DigitalTransformationWeek3() {
         title="Data analytics - Four key types"
         exercise={exercise["data-analytics-four-key-types"]}
       >
-        <ol className={`${BODY} grid sm:grid-cols-2 lg:grid-cols-4 gap-5`}>
-          {[
-            ["Descriptive", "What happened?"],
-            ["Diagnostic", "Why did this happen?"],
-            ["Prescriptive", "What should we do next?"],
-            ["Predictive", "What might happen in the future?"],
-          ].map(([name, q], i) => (
-            <li key={name} className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-              <p className="font-heading text-xl leading-snug">
-                <span className="font-accent text-base mr-2">{i + 1}.</span>
-                <strong>{name}</strong>: {q}
-              </p>
-            </li>
-          ))}
-        </ol>
         <PlateWell>
-          <FourTypes />
+          <FourTypes active={activeAnalytics} onSelect={setActiveAnalytics} />
         </PlateWell>
-        <div className={`${BODY} grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-2 items-baseline`}>
-          <p className="font-heading font-bold text-xl">Prescriptive Analytics</p>
-          <div>
-            <p className={`${SUB} mb-1`}>Definition:</p>
-            <p className="text-lg">
-              <strong>Prescriptive analytics</strong> is the process of using data to determine an{" "}
-              <em>optimal course of action</em>, yielding <strong>recommendations</strong> for next steps.
-            </p>
-          </div>
-        </div>
+        <ol className={`${BODY} grid`}>
+          {[
+            {
+              name: "Descriptive",
+              q: "What happened?",
+              def: (
+                <>
+                  <strong>Descriptive analytics</strong> is the process of summarizing <em>historical data</em> to
+                  understand <strong>what has happened</strong> in the past.
+                </>
+              ),
+            },
+            {
+              name: "Diagnostic",
+              q: "Why did this happen?",
+              def: (
+                <>
+                  <strong>Diagnostic analytics</strong> is the process of examining data to uncover the{" "}
+                  <em>root causes</em> and <strong>why an outcome happened</strong>.
+                </>
+              ),
+            },
+            {
+              name: "Prescriptive",
+              q: "What should we do next?",
+              def: (
+                <>
+                  <strong>Prescriptive analytics</strong> is the process of using data to determine an{" "}
+                  <em>optimal course of action</em>, yielding <strong>recommendations</strong> for next steps.
+                </>
+              ),
+            },
+            {
+              name: "Predictive",
+              q: "What might happen in the future?",
+              def: (
+                <>
+                  <strong>Predictive analytics</strong> is the process of using{" "}
+                  <em>historical data and statistical models</em> to <strong>forecast</strong> what might happen in the
+                  future.
+                </>
+              ),
+            },
+          ].map((item, i) => {
+            const isLit = i === activeAnalytics;
+            return (
+              <li
+                key={item.name}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading text-2xl md:text-3xl leading-snug flex items-baseline gap-3">
+                  <span className="font-heading font-bold">{i + 1}.</span>
+                  <span>
+                    <strong>{item.name}</strong>: {item.q}
+                  </span>
+                </p>
+                <div className="border-t-[2px] border-[var(--dt-ink)] pt-4 grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-2 items-baseline">
+                  <p className="font-heading font-bold text-xl">{item.name} Analytics</p>
+                  <div>
+                    <p className={`${SUB} mb-1`}>Definition:</p>
+                    <p className="text-lg">{item.def}</p>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
       </Slide>
 
       <Slide id="netflix-timeline" label="CASE STUDY" title="Netflix Timeline">
         <PlateWell>
-          <NetflixTimeline />
+          <NetflixTimeline active={activeTimeline} onSelect={setActiveTimeline} />
         </PlateWell>
-        <ol className={`${BODY} grid grid-cols-2 md:grid-cols-4 gap-6`}>
+        <ol className={`${BODY} grid`}>
           {[
             ["Netflix founded", "Pay-per-rental model"],
             ["Change in business model", "Monthly subscription"],
             ["Growth in user base", "1 million subscribers"],
             ["Streaming service", "Complete transformation of business into digital"],
-          ].map(([name, text], i) => (
-            <li key={name} className="border-t-[4px] border-[var(--dt-ink)] pt-3 text-center">
-              {/* the plate's years are too small to read on a phone */}
-              <p className={`sm:hidden ${SUB} ${i === 3 ? "text-[var(--dt-signal)]" : ""}`}>{NETFLIX_YEARS[i]}:</p>
-              <p className="font-heading font-bold text-xl leading-snug">
-                <strong>{name}</strong>:
-              </p>
-              <p className="mt-1">{text}</p>
-            </li>
-          ))}
+          ].map(([name, text], i) => {
+            const isLit = i === activeTimeline;
+            return (
+              <li
+                key={name}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading text-2xl md:text-3xl leading-snug flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="font-heading font-bold">{NETFLIX_YEARS[i]}:</span>{" "}
+                  <span>
+                    <strong>{name}</strong>: {text}
+                  </span>
+                </p>
+              </li>
+            );
+          })}
         </ol>
       </Slide>
 
-      <Slide id="challenges-and-considerations" exercise={exercise["challenges-and-considerations"]}>
-        <div className="grid lg:grid-cols-[1fr_1.5fr] gap-10 lg:gap-16 items-center">
-          <div>
-            <Kicker>Challenges and Considerations</Kicker>
-            <h3 className="font-heading font-bold text-[clamp(2rem,4vw,3.4rem)] leading-[1.05] mt-5">
-              What Netflix needs to consider for digital transformation
-            </h3>
+      <Slide
+        id="challenges-and-considerations"
+        label="Challenges and Considerations"
+        title="What Netflix needs to consider for digital transformation"
+        exercise={exercise["challenges-and-considerations"]}
+      >
+        <PlateWell>
+          <div className="hidden sm:block">
+            <NetflixConsiderations active={activeChallenge} onSelect={setActiveChallenge} />
           </div>
-          <div className={`${BODY} !text-xl flex flex-col gap-8`}>
-            <div className="border-t-[5px] border-[var(--dt-ink)] pt-4">
-              <p className="font-heading font-bold text-2xl mb-3">Technology</p>
-              <Bullets
-                items={[
-                  <>
-                    <strong>Cloud infrastructure</strong> to support demand
-                  </>,
-                  <>
-                    <strong>Video encoding</strong> technology (high fidelity yet lightweight)
-                  </>,
-                ]}
-              />
-            </div>
-            <div className="border-t-[5px] border-[var(--dt-ink)] pt-4">
-              <p className="font-heading font-bold text-2xl mb-3">Business</p>
-              <Bullets
-                items={[
-                  <>
-                    New <strong>business model</strong>: Movie rental -&gt; Stream on demand
-                  </>,
-                  <>
-                    <strong>Competition</strong> and <strong>Piracy</strong>
-                  </>,
-                  <>
-                    Consumer <strong>engagement</strong> and <strong>loyalty</strong>
-                  </>,
-                ]}
-              />
-            </div>
+          <div className="sm:hidden">
+            <NetflixConsiderationsTall active={activeChallenge} onSelect={setActiveChallenge} />
           </div>
+        </PlateWell>
+        <div className={`${BODY} !text-lg md:!text-xl grid`}>
+          {[
+            {
+              name: "Technology",
+              items: [
+                <>
+                  <strong>Cloud infrastructure</strong> to support demand
+                </>,
+                <>
+                  <strong>Video encoding</strong> technology (high fidelity yet lightweight)
+                </>,
+              ],
+            },
+            {
+              name: "Business",
+              items: [
+                <>
+                  New <strong>business model</strong>: Movie rental -&gt; Stream on demand
+                </>,
+                <>
+                  <strong>Competition</strong> and <strong>Piracy</strong>
+                </>,
+                <>
+                  Consumer <strong>engagement</strong> and <strong>loyalty</strong>
+                </>,
+              ],
+            },
+          ].map((group, i) => {
+            const isLit = i === activeChallenge;
+            return (
+              <div
+                key={group.name}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-2xl md:text-3xl mb-3">{group.name}</p>
+                <Bullets items={group.items} />
+              </div>
+            );
+          })}
         </div>
       </Slide>
 
@@ -294,11 +387,8 @@ export default function DigitalTransformationWeek3() {
 
       <Slide id="change-management" label="DEFINITION" title="Change Management">
         <p className="font-heading text-[clamp(1.5rem,2.8vw,2.3rem)] leading-[1.3] max-w-5xl [&_strong]:font-bold">
-          Change management ensures that organizations smoothly transition to digital transformation by{" "}
-          <span className="text-[var(--dt-signal)]">
-            aligning <strong>people</strong>, <strong>processes</strong>, and <strong>technology</strong>
-          </span>
-          .
+          Change management ensures that organizations smoothly transition to digital transformation by aligning{" "}
+          <strong>people</strong>, <strong>processes</strong>, and <strong>technology</strong>.
         </p>
         <PlateWell>
           <AlignedChange />
@@ -322,10 +412,20 @@ export default function DigitalTransformationWeek3() {
       </Slide>
 
       <Slide id="the-eight-steps-1-to-4" label="KOTTER'S 8 STEPS" title="The Eight Steps: 1 to 4">
-        <div className={`${SMALL} grid sm:grid-cols-2 lg:grid-cols-4 gap-6`}>
-          <Step n={1} name="Create a Sense of Urgency">
-            <Bullets
-              items={[
+        <PlateWell>
+          <div className="hidden sm:block">
+            <KotterSteps1To4 active={activeKotter14} onSelect={setActiveKotter14} />
+          </div>
+          <div className="sm:hidden">
+            <KotterSteps1To4Tall active={activeKotter14} onSelect={setActiveKotter14} />
+          </div>
+        </PlateWell>
+        <div className={`${BODY} grid`}>
+          {[
+            {
+              n: 1,
+              name: "Create a Sense of Urgency",
+              points: [
                 <>
                   Highlight the <strong>importance of change</strong> and the potential{" "}
                   <strong>risks of not changing</strong>.
@@ -334,16 +434,18 @@ export default function DigitalTransformationWeek3() {
                   This step involves <strong>communicating</strong> the need for change to <strong>motivate</strong>{" "}
                   stakeholders and create a sense of urgency.
                 </>,
-              ]}
-            />
-            <Ask>
-              How can leaders effectively create urgency without causing <strong>panic</strong> or{" "}
-              <strong>resistance</strong>?
-            </Ask>
-          </Step>
-          <Step n={2} name="Build a Guiding Coalition">
-            <Bullets
-              items={[
+              ],
+              ask: (
+                <>
+                  How can leaders effectively create urgency without causing <strong>panic</strong> or{" "}
+                  <strong>resistance</strong>?
+                </>
+              ),
+            },
+            {
+              n: 2,
+              name: "Build a Guiding Coalition",
+              points: [
                 <>
                   Form a group of <strong>influential people</strong> within the organization who can lead the change
                   effort.
@@ -352,13 +454,13 @@ export default function DigitalTransformationWeek3() {
                   This coalition should have the <strong>authority</strong>, <strong>expertise</strong>, and{" "}
                   <strong>credibility</strong> to drive the change process.
                 </>,
-              ]}
-            />
-            <Ask>What qualities should leaders look for when forming a guiding coalition?</Ask>
-          </Step>
-          <Step n={3} name="Form a Strategic Vision and Initiatives">
-            <Bullets
-              items={[
+              ],
+              ask: <>What qualities should leaders look for when forming a guiding coalition?</>,
+            },
+            {
+              n: 3,
+              name: "Form a Strategic Vision and Initiatives",
+              points: [
                 <>
                   Develop a clear <strong>vision</strong> for the future and outline the <strong>initiatives</strong>{" "}
                   that will help achieve that vision.
@@ -367,13 +469,13 @@ export default function DigitalTransformationWeek3() {
                   This step involves <strong>articulating</strong> the <strong>desired outcomes</strong> and how the
                   change will benefit the organization.
                 </>,
-              ]}
-            />
-            <Ask>How can a compelling vision help unify and motivate employees during digital transformation?</Ask>
-          </Step>
-          <Step n={4} name="Communicate the Vision">
-            <Bullets
-              items={[
+              ],
+              ask: <>How can a compelling vision help unify and motivate employees during digital transformation?</>,
+            },
+            {
+              n: 4,
+              name: "Communicate the Vision",
+              points: [
                 <>
                   Share the vision and strategy with <strong>all stakeholders</strong>.
                 </>,
@@ -381,12 +483,37 @@ export default function DigitalTransformationWeek3() {
                   Effective communication is crucial to ensure that <em>everyone</em> <strong>understands</strong> the
                   change and is <strong>aligned</strong> with the vision.
                 </>,
-              ]}
-            />
-            <Ask>
-              What communication methods are most effective for ensuring employees understand and support the vision?
-            </Ask>
-          </Step>
+              ],
+              ask: (
+                <>
+                  What communication methods are most effective for ensuring employees understand and support the
+                  vision?
+                </>
+              ),
+            },
+          ].map((s, i) => {
+            const isLit = i === activeKotter14;
+            return (
+              <div
+                key={s.n}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <div>
+                  <p className="font-heading font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
+                    <span className="font-heading text-3xl leading-none">{s.n}.</span>
+                    <span>{s.name}:</span>
+                  </p>
+                  <Bullets items={s.points} />
+                </div>
+                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l-[3px] md:border-[var(--dt-ink)] md:pl-6">
+                  <Ask>{s.ask}</Ask>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </Slide>
 
@@ -396,7 +523,15 @@ export default function DigitalTransformationWeek3() {
         title="The Eight Steps: 5 to 8"
         exercise={exercise["the-eight-steps-5-to-8"]}
       >
-        <div className={`${SMALL} grid md:grid-cols-2 gap-x-10 gap-y-5`}>
+        <PlateWell>
+          <div className="hidden sm:block">
+            <KotterSteps5To8 active={activeKotter58} onSelect={setActiveKotter58} />
+          </div>
+          <div className="sm:hidden">
+            <KotterSteps5To8Tall active={activeKotter58} onSelect={setActiveKotter58} />
+          </div>
+        </PlateWell>
+        <div className={`${BODY} grid`}>
           {[
             {
               n: 5,
@@ -458,16 +593,29 @@ export default function DigitalTransformationWeek3() {
               ],
               ask: "What strategies can leaders use to ensure changes become permanent and part of the organizational culture?",
             },
-          ].map((s) => (
-            <div key={s.n} className="grid grid-cols-[auto_1fr] gap-x-4 border-t-[4px] border-[var(--dt-ink)] pt-3">
-              <span className="font-heading font-bold text-5xl leading-none">{s.n}</span>
-              <div>
-                <p className="font-heading font-bold text-lg leading-tight mb-2">{s.name}:</p>
-                <Bullets items={s.points} />
-                <Ask>{s.ask}</Ask>
+          ].map((s, i) => {
+            const isLit = i === activeKotter58;
+            return (
+              <div
+                key={s.n}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <div>
+                  <p className="font-heading font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
+                    <span className="font-heading text-3xl leading-none">{s.n}.</span>
+                    <span>{s.name}:</span>
+                  </p>
+                  <Bullets items={s.points} />
+                </div>
+                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l-[3px] md:border-[var(--dt-ink)] md:pl-6">
+                  <Ask>{s.ask}</Ask>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </Slide>
 
@@ -482,7 +630,7 @@ export default function DigitalTransformationWeek3() {
                 He sought to shift the company&apos;s <strong>culture</strong>
               </>,
               <>
-                Focus towards <strong className="text-[var(--dt-signal)]">cloud computing</strong>
+                Focus towards <strong>cloud computing</strong>
               </>,
             ].map((s, i) => (
               <li
@@ -504,64 +652,88 @@ export default function DigitalTransformationWeek3() {
         label="THE CASE OF MICROSOFT"
         title="Microsoft’s transformation and Kotter’s 8 Steps: 1 to 4"
       >
-        <div className={`${BODY} grid md:grid-cols-2 gap-x-10 gap-y-6`}>
-          <Step n={1} name="Create a Sense of Urgency">
-            <Bullets
-              items={[
-                <>
-                  Nadella&apos;s emphasis on adapting to a <strong>rapidly changing</strong> technology landscape
-                </>,
-                <>
-                  the rise of <strong>cloud computing</strong> and <strong>mobile</strong> technology
-                </>,
-                <>
-                  He communicated the urgency of evolving from a <strong>traditional software</strong> company to a{" "}
-                  <strong>cloud-first</strong>, <strong>mobile-first</strong> organization.
-                </>,
-              ]}
-            />
-          </Step>
-          <Step n={2} name="Build a Guiding Coalition">
-            <Bullets
-              items={[
-                <>
-                  Nadella built a strong leadership team that included <strong>executives</strong> from{" "}
-                  <em>various divisions</em>.
-                </>,
-              ]}
-            />
-          </Step>
-          <Step n={3} name="Form a Strategic Vision and Initiatives">
-            <Bullets
-              items={[
-                <>
-                  Nadella articulated a clear vision for Microsoft’s future:
-                  <Bullets
-                    className="mt-1"
-                    items={["cloud services", "artificial intelligence", "collaboration tools"]}
-                  />
-                </>,
-                <>
-                  Introduced initiatives like <strong>Microsoft Azure</strong> and <strong>Office 365</strong> to
-                  support this vision
-                </>,
-              ]}
-            />
-          </Step>
-          <Step n={4} name="Communicate the Vision">
-            <Bullets
-              items={[
-                <>
-                  Through various channels:
-                  <Bullets className="mt-1" items={["company-wide meetings,", "emails,", "public appearances"]} />
-                </>,
-                <>
-                  He encouraged <strong>open dialogue</strong> and <strong>feedback</strong>, fostering a{" "}
-                  <em>culture of transparency</em>.
-                </>,
-              ]}
-            />
-          </Step>
+        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-8 lg:gap-12 items-center">
+          <PlateWell>
+            <MicrosoftKotter1To4 active={activeMs14} onSelect={setActiveMs14} />
+          </PlateWell>
+          <div className={`${BODY} !text-lg grid`}>
+            {[
+              {
+                n: 1,
+                name: "Create a Sense of Urgency",
+                items: [
+                  <>
+                    Nadella&apos;s emphasis on adapting to a <strong>rapidly changing</strong> technology landscape
+                  </>,
+                  <>
+                    the rise of <strong>cloud computing</strong> and <strong>mobile</strong> technology
+                  </>,
+                  <>
+                    He communicated the urgency of evolving from a <strong>traditional software</strong> company to a{" "}
+                    <strong>cloud-first</strong>, <strong>mobile-first</strong> organization.
+                  </>,
+                ],
+              },
+              {
+                n: 2,
+                name: "Build a Guiding Coalition",
+                items: [
+                  <>
+                    Nadella built a strong leadership team that included <strong>executives</strong> from{" "}
+                    <em>various divisions</em>.
+                  </>,
+                ],
+              },
+              {
+                n: 3,
+                name: "Form a Strategic Vision and Initiatives",
+                items: [
+                  <>
+                    Nadella articulated a clear vision for Microsoft’s future:
+                    <Bullets
+                      className="mt-1"
+                      items={["cloud services", "artificial intelligence", "collaboration tools"]}
+                    />
+                  </>,
+                  <>
+                    Introduced initiatives like <strong>Microsoft Azure</strong> and <strong>Office 365</strong> to
+                    support this vision
+                  </>,
+                ],
+              },
+              {
+                n: 4,
+                name: "Communicate the Vision",
+                items: [
+                  <>
+                    Through various channels:
+                    <Bullets className="mt-1" items={["company-wide meetings,", "emails,", "public appearances"]} />
+                  </>,
+                  <>
+                    He encouraged <strong>open dialogue</strong> and <strong>feedback</strong>, fostering a{" "}
+                    <em>culture of transparency</em>.
+                  </>,
+                ],
+              },
+            ].map((s, i) => {
+              const isLit = i === activeMs14;
+              return (
+                <div
+                  key={s.n}
+                  aria-hidden={!isLit}
+                  className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-5 transition-opacity duration-200 ${
+                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                  }`}
+                >
+                  <p className="font-heading font-bold text-2xl md:text-3xl leading-tight mb-4 flex items-baseline gap-3">
+                    <span className="font-heading text-3xl md:text-4xl leading-none">{s.n}.</span>
+                    <span>{s.name}:</span>
+                  </p>
+                  <Bullets className="gap-2" items={s.items} />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </Slide>
 
@@ -570,109 +742,163 @@ export default function DigitalTransformationWeek3() {
         label="THE CASE OF MICROSOFT"
         title="Microsoft’s transformation and Kotter’s 8 Steps: 5 to 8"
       >
-        <div className={`${BODY} grid sm:grid-cols-2 lg:grid-cols-4 gap-6`}>
-          <Step n={5} name="Empower Broad-Based Action">
-            <Bullets
-              items={[
-                <>
-                  Nadella encouraged employees to <strong>take risks</strong> and <strong>innovate</strong>.
-                </>,
-                <>
-                  He removed <strong>bureaucratic obstacles</strong> and promoted a <strong>growth mindset</strong>,
-                  allowing teams to experiment and <em>learn from failures</em>.
-                </>,
-              ]}
-            />
-          </Step>
-          <Step n={6} name="Generate Short-Term Wins">
-            <Bullets
-              items={[
-                <>
-                  Microsoft saw <em>significant early successes</em> with the adoption of Azure and the growth of Office
-                  365.
-                </>,
-                <>
-                  These wins were <strong>celebrated</strong> and <strong>communicated</strong> throughout the
-                  organization.
-                </>,
-              ]}
-            />
-          </Step>
-          <Step n={7} name="Consolidate Gains and Produce More Change">
-            <Bullets
-              items={[
-                <>
-                  Building on the initial successes, Microsoft continued to <strong>invest</strong> in cloud technology
-                  and expand its <strong>product offerings</strong>.
-                </>,
-                <>
-                  Nadella’s leadership helped to <strong>solidify</strong> the company’s position in the{" "}
-                  <em>cloud market</em>.
-                </>,
-              ]}
-            />
-          </Step>
-          <Step n={8} name="Anchor New Approaches in the Culture">
-            <Bullets
-              items={[
-                <>
-                  Nadella worked to embed a culture of <strong>collaboration</strong>, <strong>inclusivity</strong>, and{" "}
-                  <strong>continuous learning</strong> within Microsoft.
-                </>,
-                <>
-                  He emphasized values such as <strong>empathy</strong> and <strong>teamwork</strong>
-                </>,
-                <>
-                  Ensuring that the new approaches became part of the <strong>organizational culture</strong>.
-                </>,
-              ]}
-            />
-          </Step>
+        <div className="grid lg:grid-cols-[1fr_1.05fr] gap-8 lg:gap-12 items-center">
+          <div className={`${BODY} !text-lg grid order-2 lg:order-1`}>
+            {[
+              {
+                n: 5,
+                name: "Empower Broad-Based Action",
+                items: [
+                  <>
+                    Nadella encouraged employees to <strong>take risks</strong> and <strong>innovate</strong>.
+                  </>,
+                  <>
+                    He removed <strong>bureaucratic obstacles</strong> and promoted a <strong>growth mindset</strong>,
+                    allowing teams to experiment and <em>learn from failures</em>.
+                  </>,
+                ],
+              },
+              {
+                n: 6,
+                name: "Generate Short-Term Wins",
+                items: [
+                  <>
+                    Microsoft saw <em>significant early successes</em> with the adoption of Azure and the growth of
+                    Office 365.
+                  </>,
+                  <>
+                    These wins were <strong>celebrated</strong> and <strong>communicated</strong> throughout the
+                    organization.
+                  </>,
+                ],
+              },
+              {
+                n: 7,
+                name: "Consolidate Gains and Produce More Change",
+                items: [
+                  <>
+                    Building on the initial successes, Microsoft continued to <strong>invest</strong> in cloud
+                    technology and expand its <strong>product offerings</strong>.
+                  </>,
+                  <>
+                    Nadella’s leadership helped to <strong>solidify</strong> the company’s position in the{" "}
+                    <em>cloud market</em>.
+                  </>,
+                ],
+              },
+              {
+                n: 8,
+                name: "Anchor New Approaches in the Culture",
+                items: [
+                  <>
+                    Nadella worked to embed a culture of <strong>collaboration</strong>, <strong>inclusivity</strong>,
+                    and <strong>continuous learning</strong> within Microsoft.
+                  </>,
+                  <>
+                    He emphasized values such as <strong>empathy</strong> and <strong>teamwork</strong>
+                  </>,
+                  <>
+                    Ensuring that the new approaches became part of the <strong>organizational culture</strong>.
+                  </>,
+                ],
+              },
+            ].map((s, i) => {
+              const isLit = i === activeMs58;
+              return (
+                <div
+                  key={s.n}
+                  aria-hidden={!isLit}
+                  className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-5 transition-opacity duration-200 ${
+                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                  }`}
+                >
+                  <p className="font-heading font-bold text-2xl md:text-3xl leading-tight mb-4 flex items-baseline gap-3">
+                    <span className="font-heading text-3xl md:text-4xl leading-none">{s.n}.</span>
+                    <span>{s.name}:</span>
+                  </p>
+                  <Bullets className="gap-2" items={s.items} />
+                </div>
+              );
+            })}
+          </div>
+          <div className="order-1 lg:order-2">
+            <PlateWell>
+              <MicrosoftKotter5To8 active={activeMs58} onSelect={setActiveMs58} />
+            </PlateWell>
+          </div>
         </div>
       </Slide>
 
       <Slide id="prosci-adkar-change-management-model" label="FRAMEWORK" title="Prosci - ADKAR Change Management Model">
-        <Row cols="lg:grid-cols-[1fr_1fr]" className="!items-start">
-          <div className={`${BODY} text-lg`}>
-            <Bullets
-              className="gap-3"
-              items={[
-                <>
-                  The <strong>Prosci ADKAR Model</strong> is a widely recognized framework for change management
-                </>,
-                <>Developed by Prosci, a research and training organization focused on change management practices.</>,
-                <>
-                  The model is designed to help organizations <strong>manage change effectively</strong> by focusing on
-                  the <strong>individual aspects of change</strong>.
-                </>,
-                <>
-                  ADKAR is an <em>acronym</em> that stands for the <em>five key outcomes</em> that{" "}
-                  <strong>individuals</strong> need to achieve for successful change.
-                </>,
-              ]}
-            />
+        <div className={`${BODY} grid md:grid-cols-2 gap-x-10 gap-y-2`}>
+          <Bullets
+            className="gap-2"
+            items={[
+              <>
+                The <strong>Prosci ADKAR Model</strong> is a widely recognized framework for change management
+              </>,
+              <>Developed by Prosci, a research and training organization focused on change management practices.</>,
+            ]}
+          />
+          <Bullets
+            className="gap-2"
+            items={[
+              <>
+                The model is designed to help organizations <strong>manage change effectively</strong> by focusing on
+                the <strong>individual aspects of change</strong>.
+              </>,
+              <>
+                ADKAR is an <em>acronym</em> that stands for the <em>five key outcomes</em> that{" "}
+                <strong>individuals</strong> need to achieve for successful change.
+              </>,
+            ]}
+          />
+        </div>
+        <PlateWell>
+          <div className="hidden sm:block">
+            <AdkarOverview active={activeAdkarOverview} onSelect={setActiveAdkarOverview} />
           </div>
-          <ol className="flex flex-col gap-2">
-            {[
-              ["A", "Awareness", "Of the need for change"],
-              ["D", "Desire", "To participate and support the change"],
-              ["K", "Knowledge", "On how to change"],
-              ["A", "Ability", "To implement required skills and behaviors"],
-              ["R", "Reinforcement", "To sustain the change"],
-            ].map(([l, name, text]) => (
-              <li key={name} className="flex items-center gap-4 border-[3px] border-[var(--dt-ink)]">
+          <div className="sm:hidden">
+            <AdkarOverviewTall active={activeAdkarOverview} onSelect={setActiveAdkarOverview} />
+          </div>
+        </PlateWell>
+        <ol className="grid">
+          {[
+            ["A", "Awareness", "Of the need for change"],
+            ["D", "Desire", "To participate and support the change"],
+            ["K", "Knowledge", "On how to change"],
+            ["A", "Ability", "To implement required skills and behaviors"],
+            ["R", "Reinforcement", "To sustain the change"],
+          ].map(([l, name, text], i) => {
+            const isLit = i === activeAdkarOverview;
+            return (
+              <li
+                key={name}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 flex items-center gap-4 border-[3px] border-[var(--dt-ink)] transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
                 <Letter l={l} size="w-14 h-14 text-4xl" />
-                <p className="font-body text-lg leading-snug pr-3">
+                <p className="font-body text-xl md:text-2xl leading-snug pr-4">
                   <strong className="font-heading font-bold">{name}</strong> – {text}
                 </p>
               </li>
-            ))}
-          </ol>
-        </Row>
+            );
+          })}
+        </ol>
       </Slide>
 
       <Slide id="adkar-awareness-desire-knowledge" label="PROSCI - ADKAR" title="ADKAR: Awareness, Desire, Knowledge">
-        <div className={`${SMALL} grid md:grid-cols-3 gap-6 md:gap-8`}>
+        <PlateWell>
+          <div className="hidden sm:block">
+            <AdkarFirstThree active={activeAdkar13} onSelect={setActiveAdkar13} />
+          </div>
+          <div className="sm:hidden">
+            <AdkarFirstThreeTall active={activeAdkar13} onSelect={setActiveAdkar13} />
+          </div>
+        </PlateWell>
+        <div className={`${BODY} grid`}>
           {[
             {
               l: "A",
@@ -728,19 +954,32 @@ export default function DigitalTransformationWeek3() {
               ],
               ask: "What happens if employees understand the need for change but lack the necessary knowledge to implement it?",
             },
-          ].map((e, i) => (
-            <div key={e.name} className="flex flex-col">
-              <div className="flex items-center gap-4 mb-4">
-                <Letter l={e.l} size="w-16 h-16 text-5xl" />
-                <p className="font-heading font-bold text-2xl">
-                  <span className="font-accent text-base mr-2">{i + 1}.</span>
-                  {e.name}:
-                </p>
+          ].map((e, i) => {
+            const isLit = i === activeAdkar13;
+            return (
+              <div
+                key={e.name}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 grid md:grid-cols-[1.35fr_1fr] gap-6 md:gap-10 items-start transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <div>
+                  <div className="flex items-center gap-4 mb-3">
+                    <Letter l={e.l} size="w-14 h-14 text-4xl" />
+                    <p className="font-heading font-bold text-2xl">
+                      <span className="font-accent text-base mr-2">{i + 1}.</span>
+                      {e.name}:
+                    </p>
+                  </div>
+                  <Bullets items={e.points} />
+                </div>
+                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l-[3px] md:border-[var(--dt-ink)] md:pl-6">
+                  <Ask>{e.ask}</Ask>
+                </div>
               </div>
-              <Bullets items={e.points} />
-              <Ask>{e.ask}</Ask>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </Slide>
 
@@ -750,7 +989,15 @@ export default function DigitalTransformationWeek3() {
         title="ADKAR: Ability, Reinforcement"
         exercise={exercise["adkar-ability-reinforcement"]}
       >
-        <div className={`${BODY} md:!text-lg flex flex-col`}>
+        <PlateWell>
+          <div className="hidden sm:block">
+            <AdkarLastTwo active={activeAdkar45} onSelect={setActiveAdkar45} />
+          </div>
+          <div className="sm:hidden">
+            <AdkarLastTwoTall active={activeAdkar45} onSelect={setActiveAdkar45} />
+          </div>
+        </PlateWell>
+        <div className={`${BODY} md:!text-lg grid`}>
           {[
             {
               l: "A",
@@ -782,29 +1029,35 @@ export default function DigitalTransformationWeek3() {
               ],
               ask: "What risks do organizations face if they fail to reinforce changes after implementation?",
             },
-          ].map((e) => (
-            <div
-              key={e.name}
-              className="grid md:grid-cols-[auto_1.4fr_1fr] gap-x-8 gap-y-3 items-start py-6 border-t-[4px] border-[var(--dt-ink)]"
-            >
-              <div className="flex items-center gap-4">
-                <Letter l={e.l} size="w-20 h-20 text-6xl" />
-                <p className="font-heading font-bold text-2xl md:hidden">
-                  {e.n}. {e.name}:
-                </p>
+          ].map((e, i) => {
+            const isLit = i === activeAdkar45;
+            return (
+              <div
+                key={e.name}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 grid md:grid-cols-[auto_1.4fr_1fr] gap-x-8 gap-y-3 items-start pt-5 border-t-[4px] border-[var(--dt-ink)] transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <div className="flex items-center gap-4">
+                  <Letter l={e.l} size="w-16 h-16 text-5xl" />
+                  <p className="font-heading font-bold text-2xl md:hidden">
+                    {e.n}. {e.name}:
+                  </p>
+                </div>
+                <div>
+                  <p className="font-heading font-bold text-2xl mb-2 hidden md:block">
+                    <span className="font-accent text-base mr-2">{e.n}.</span>
+                    {e.name}:
+                  </p>
+                  <Bullets items={e.points} />
+                </div>
+                <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l-[3px] md:border-[var(--dt-ink)] md:pl-6">
+                  <Ask>{e.ask}</Ask>
+                </div>
               </div>
-              <div>
-                <p className="font-heading font-bold text-2xl mb-2 hidden md:block">
-                  <span className="font-accent text-base mr-2">{e.n}.</span>
-                  {e.name}:
-                </p>
-                <Bullets items={e.points} />
-              </div>
-              <div className="[&>p]:mt-0 [&>p]:pt-0 [&>p]:border-t-0 md:border-l-[3px] md:border-[var(--dt-ink)] md:pl-6">
-                <Ask>{e.ask}</Ask>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </Slide>
 
@@ -835,7 +1088,7 @@ export default function DigitalTransformationWeek3() {
                 <>Applicable to various fields</>,
                 <>
                   Emphasizes <strong>collaboration</strong>, <strong>customer feedback</strong>, and{" "}
-                  <strong className="text-[var(--dt-signal)]">small, rapid releases of products or features</strong>.
+                  <strong>small, rapid releases of products or features</strong>.
                 </>,
                 <>
                   Designed to <strong>accommodate change</strong> and <strong>deliver value</strong> to customers more{" "}
@@ -856,10 +1109,15 @@ export default function DigitalTransformationWeek3() {
         title="Traditional vs. Agile Project Management"
         exercise={exercise["traditional-vs-agile-project-management"]}
       >
-        <div className={`${BODY} grid grid-cols-1 md:grid-cols-[11rem_1fr_1fr] gap-x-10`}>
-          <span className="hidden md:block" />
-          <p className="hidden md:block font-heading font-bold text-xl pb-2">Traditional:</p>
-          <p className="hidden md:block font-heading font-bold text-xl pb-2 text-[var(--dt-signal)]">Agile:</p>
+        <PlateWell>
+          <div className="hidden sm:block">
+            <TradVsAgileInteractive active={activeTradAgile} onSelect={setActiveTradAgile} />
+          </div>
+          <div className="sm:hidden">
+            <TradVsAgileTall active={activeTradAgile} onSelect={setActiveTradAgile} />
+          </div>
+        </PlateWell>
+        <div className={`${BODY} grid`}>
           {[
             {
               n: 1,
@@ -953,22 +1211,33 @@ export default function DigitalTransformationWeek3() {
                 </>,
               ],
             },
-          ].map((r) => (
-            <React.Fragment key={r.n}>
-              <p className="font-heading font-bold text-lg border-t-[4px] border-[var(--dt-ink)] pt-2 pb-1 md:pb-3">
-                <span className="font-accent text-base mr-2">{r.n}.</span>
-                {r.name}:
-              </p>
-              <div className="md:border-t-[4px] md:border-[var(--dt-ink)] pt-2 pb-3">
-                <p className="md:hidden font-heading font-bold">Traditional:</p>
-                <Bullets items={r.trad} />
+          ].map((r, i) => {
+            const isLit = i === activeTradAgile;
+            return (
+              <div
+                key={r.n}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-2xl mb-4 flex items-baseline gap-3">
+                  <span className="font-heading text-3xl leading-none">{r.n}.</span>
+                  <span>{r.name}:</span>
+                </p>
+                <div className="grid md:grid-cols-2 gap-6 md:gap-10">
+                  <div className="border-t-[2px] border-[var(--dt-ink)] pt-3">
+                    <p className="font-heading font-bold text-xl mb-2">Traditional:</p>
+                    <Bullets items={r.trad} />
+                  </div>
+                  <div className="border-t-[2px] border-[var(--dt-ink)] pt-3">
+                    <p className="font-heading font-bold text-xl mb-2">Agile:</p>
+                    <Bullets items={r.agile} />
+                  </div>
+                </div>
               </div>
-              <div className="md:border-t-[4px] md:border-[var(--dt-ink)] pt-2 pb-3">
-                <p className="md:hidden font-heading font-bold text-[var(--dt-signal)]">Agile:</p>
-                <Bullets items={r.agile} />
-              </div>
-            </React.Fragment>
-          ))}
+            );
+          })}
         </div>
       </Slide>
 
@@ -989,7 +1258,7 @@ export default function DigitalTransformationWeek3() {
               items={[
                 <>Scrum is an Agile framework</>,
                 <>
-                  <strong className="text-[var(--dt-signal)]">iterative and incremental development</strong>
+                  <strong>iterative and incremental development</strong>
                 </>,
                 <>
                   Particularly popular in <em>software development</em>
@@ -1071,9 +1340,26 @@ export default function DigitalTransformationWeek3() {
       </Slide>
 
       <Slide id="principles-of-scrum-1-to-3" label="PRINCIPLES OF SCRUM" title="Principles of Scrum: 1 to 3">
-        <div className={`${SMALL} flex flex-col gap-6`}>
-          <Step n={1} name="Empirical Process Control">
-            <div className="grid md:grid-cols-[1fr_1fr_1.1fr] gap-x-8 gap-y-3 items-start">
+        <PlateWell>
+          <div className="hidden sm:block">
+            <ScrumPrinciples1To3 active={activeScrum13} onSelect={setActiveScrum13} />
+          </div>
+          <div className="sm:hidden">
+            <ScrumPrinciples1To3Tall active={activeScrum13} onSelect={setActiveScrum13} />
+          </div>
+        </PlateWell>
+        <div className={`${BODY} grid`}>
+          <div
+            aria-hidden={activeScrum13 !== 0}
+            className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+              activeScrum13 === 0 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+            }`}
+          >
+            <p className="font-heading font-bold text-2xl mb-3 flex items-baseline gap-3">
+              <span className="font-heading text-3xl leading-none">1.</span>
+              <span>Empirical Process Control:</span>
+            </p>
+            <div className="grid md:grid-cols-[1fr_1.3fr] gap-x-10 gap-y-3 items-start">
               <div>
                 <p className="font-heading font-bold">Definition:</p>
                 <Bullets
@@ -1109,9 +1395,6 @@ export default function DigitalTransformationWeek3() {
                   ]}
                 />
               </div>
-              <PlateWell>
-                <ThreePillars />
-              </PlateWell>
               <Bullets
                 className="gap-2"
                 items={[
@@ -1131,70 +1414,100 @@ export default function DigitalTransformationWeek3() {
                 ]}
               />
             </div>
-          </Step>
-          <div className="grid md:grid-cols-2 gap-6 md:gap-10">
-            <Step n={2} name="Self-Organization">
-              <p className="font-heading font-bold">Definition:</p>
-              <Bullets
-                items={[
-                  <>
-                    Teams are empowered to <strong>organize</strong> their work <strong>without being directed</strong>{" "}
-                    by outside authorities.
-                  </>,
-                ]}
-              />
-              <p className="font-heading font-bold mt-3">Application in Scrum:</p>
-              <Bullets
-                items={[
-                  <>
-                    Scrum teams are <strong>cross-functional</strong> and <strong>self-managing</strong>,
-                  </>,
-                  <>
-                    They decide <strong>how</strong> to accomplish their work.
-                  </>,
-                  <>
-                    This autonomy fosters <strong>creativity</strong>, <strong>accountability</strong>, and{" "}
-                    <strong>a sense of ownership</strong> among team members,
-                  </>,
-                  <>
-                    leading to higher <strong>motivation</strong> and better <strong>results</strong>.
-                  </>,
-                ]}
-              />
-            </Step>
-            <Step n={3} name="Collaboration">
-              <p className="font-heading font-bold">Definition:</p>
-              <Bullets
-                items={[
-                  <>
-                    Effective <strong>teamwork</strong> and <strong>communication</strong> are essential in Scrum.
-                  </>,
-                ]}
-              />
-              <p className="font-heading font-bold mt-3">Application in Scrum:</p>
-              <Bullets
-                items={[
-                  <>Scrum promotes collaboration among team members, stakeholders, and customers.</>,
-                  <>
-                    <em>Regular ceremonies</em>,
-                    <Bullets
-                      className="mt-1"
-                      items={[
-                        <>
-                          <strong>Daily Scrums</strong>,
-                        </>,
-                        <>
-                          <strong>Sprint Reviews</strong>,
-                        </>,
-                        <>
-                          <strong>Retrospectives</strong>,
-                        </>,
-                      ]}
-                    />
-                  </>,
-                ]}
-              />
-            </Step>
+          </div>
+
+          <div
+            aria-hidden={activeScrum13 !== 1}
+            className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+              activeScrum13 === 1 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+            }`}
+          >
+            <p className="font-heading font-bold text-2xl mb-3 flex items-baseline gap-3">
+              <span className="font-heading text-3xl leading-none">2.</span>
+              <span>Self-Organization:</span>
+            </p>
+            <div className="grid md:grid-cols-2 gap-6 md:gap-10">
+              <div>
+                <p className="font-heading font-bold">Definition:</p>
+                <Bullets
+                  items={[
+                    <>
+                      Teams are empowered to <strong>organize</strong> their work{" "}
+                      <strong>without being directed</strong> by outside authorities.
+                    </>,
+                  ]}
+                />
+              </div>
+              <div>
+                <p className="font-heading font-bold">Application in Scrum:</p>
+                <Bullets
+                  items={[
+                    <>
+                      Scrum teams are <strong>cross-functional</strong> and <strong>self-managing</strong>,
+                    </>,
+                    <>
+                      They decide <strong>how</strong> to accomplish their work.
+                    </>,
+                    <>
+                      This autonomy fosters <strong>creativity</strong>, <strong>accountability</strong>, and{" "}
+                      <strong>a sense of ownership</strong> among team members,
+                    </>,
+                    <>
+                      leading to higher <strong>motivation</strong> and better <strong>results</strong>.
+                    </>,
+                  ]}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div
+            aria-hidden={activeScrum13 !== 2}
+            className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+              activeScrum13 === 2 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+            }`}
+          >
+            <p className="font-heading font-bold text-2xl mb-3 flex items-baseline gap-3">
+              <span className="font-heading text-3xl leading-none">3.</span>
+              <span>Collaboration:</span>
+            </p>
+            <div className="grid md:grid-cols-2 gap-6 md:gap-10">
+              <div>
+                <p className="font-heading font-bold">Definition:</p>
+                <Bullets
+                  items={[
+                    <>
+                      Effective <strong>teamwork</strong> and <strong>communication</strong> are essential in Scrum.
+                    </>,
+                  ]}
+                />
+              </div>
+              <div>
+                <p className="font-heading font-bold">Application in Scrum:</p>
+                <Bullets
+                  items={[
+                    <>Scrum promotes collaboration among team members, stakeholders, and customers.</>,
+                    <>
+                      <em>Regular ceremonies</em>,
+                      <Bullets
+                        className="mt-1"
+                        items={[
+                          <>
+                            <strong>Daily Scrums</strong>,
+                          </>,
+                          <>
+                            <strong>Sprint Reviews</strong>,
+                          </>,
+                          <>
+                            <strong>Retrospectives</strong>,
+                          </>,
+                        ]}
+                      />
+                    </>,
+                  ]}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </Slide>
@@ -1205,7 +1518,15 @@ export default function DigitalTransformationWeek3() {
         title="Principles of Scrum: 4 to 6"
         exercise={exercise["principles-of-scrum-4-to-6"]}
       >
-        <div className={`${BODY} flex flex-col`}>
+        <PlateWell>
+          <div className="hidden sm:block">
+            <ScrumPrinciples4To6 active={activeScrum46} onSelect={setActiveScrum46} />
+          </div>
+          <div className="sm:hidden">
+            <ScrumPrinciples4To6Tall active={activeScrum46} onSelect={setActiveScrum46} />
+          </div>
+        </PlateWell>
+        <div className={`${BODY} grid`}>
           {[
             {
               n: 4,
@@ -1248,27 +1569,35 @@ export default function DigitalTransformationWeek3() {
                 </>
               ),
             },
-          ].map((p) => (
-            <div
-              key={p.n}
-              className="grid md:grid-cols-[16rem_1fr_1fr] gap-x-8 gap-y-2 py-5 border-t-[4px] border-[var(--dt-ink)]"
-            >
-              <p className="font-heading font-bold text-2xl leading-tight flex items-baseline gap-3">
-                <span className="font-heading text-5xl leading-none">{p.n}.</span>
-                <span>{p.name}</span>
-              </p>
-              <div>
-                <p className="font-heading font-bold">Definition:</p>
-                <Bullets items={[p.def]} />
-              </div>
-              {p.app && (
-                <div>
-                  <p className="font-heading font-bold">Application in Scrum:</p>
-                  <Bullets items={p.app} />
+          ].map((p, i) => {
+            const isLit = i === activeScrum46;
+            return (
+              <div
+                key={p.n}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-2xl leading-tight mb-3 flex items-baseline gap-3">
+                  <span className="font-heading text-3xl leading-none">{p.n}.</span>
+                  <span>{p.name}</span>
+                </p>
+                <div className={`grid ${p.app ? "md:grid-cols-2" : "md:grid-cols-1"} gap-6 md:gap-10`}>
+                  <div>
+                    <p className="font-heading font-bold">Definition:</p>
+                    <Bullets items={[p.def]} />
+                  </div>
+                  {p.app && (
+                    <div>
+                      <p className="font-heading font-bold">Application in Scrum:</p>
+                      <Bullets items={p.app} />
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </Slide>
 
@@ -1285,11 +1614,18 @@ export default function DigitalTransformationWeek3() {
         <p className="font-heading text-xl md:text-2xl leading-snug">
           Scrum defines three primary roles, each with specific responsibilities:
         </p>
-        <div className={`${SMALL} grid md:grid-cols-3 gap-6 md:gap-8`}>
+        <PlateWell>
+          <div className="hidden sm:block">
+            <ScrumRolesHub active={activeScrumRole} onSelect={setActiveScrumRole} />
+          </div>
+          <div className="sm:hidden">
+            <ScrumRolesHubTall active={activeScrumRole} onSelect={setActiveScrumRole} />
+          </div>
+        </PlateWell>
+        <div className={`${BODY} grid`}>
           {[
             {
               name: "Product Owner",
-              plate: <ProductOwnerRole />,
               points: [
                 <>
                   Represents the <strong>stakeholders</strong> and the voice of the <strong>customer</strong>.
@@ -1305,7 +1641,6 @@ export default function DigitalTransformationWeek3() {
             },
             {
               name: "Scrum Master",
-              plate: <ScrumMasterRole />,
               points: [
                 <>
                   Acts as a <em>facilitator</em> and <em>coach</em> for the Scrum team.
@@ -1320,7 +1655,6 @@ export default function DigitalTransformationWeek3() {
             },
             {
               name: "Development Team",
-              plate: <DevTeamRole />,
               points: [
                 <>
                   A <strong>cross-functional</strong> group of professionals who work collaboratively to deliver the
@@ -1335,13 +1669,21 @@ export default function DigitalTransformationWeek3() {
                 </>,
               ],
             },
-          ].map((r) => (
-            <div key={r.name} className="flex flex-col gap-3 border-t-[4px] border-[var(--dt-ink)] pt-3">
-              <p className="font-heading font-bold text-2xl">{r.name}:</p>
-              <PlateWell>{r.plate}</PlateWell>
-              <Bullets items={r.points} />
-            </div>
-          ))}
+          ].map((r, i) => {
+            const isLit = i === activeScrumRole;
+            return (
+              <div
+                key={r.name}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 flex flex-col gap-3 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-2xl">{r.name}:</p>
+                <Bullets items={r.points} />
+              </div>
+            );
+          })}
         </div>
       </Slide>
 
@@ -1359,14 +1701,14 @@ export default function DigitalTransformationWeek3() {
             <p className="font-heading text-xl">Events (ceremonies) that structure the workflow:</p>
           </div>
           <PlateWell>
-            <ScrumProcess lit="events" />
+            <ScrumProcess mode="events-first" active={activeScrumEvent1} onSelect={setActiveScrumEvent1} />
           </PlateWell>
         </div>
-        <div className={`${BODY} grid md:grid-cols-2 gap-6 md:gap-10`}>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-            <p className="font-heading font-bold text-2xl mb-2">Sprint:</p>
-            <Bullets
-              items={[
+        <div className={`${BODY} grid`}>
+          {[
+            {
+              name: "Sprint",
+              items: [
                 <>
                   A <strong>time-boxed iteration</strong>, usually lasting <em>1 to 4 weeks</em>
                 </>,
@@ -1377,13 +1719,11 @@ export default function DigitalTransformationWeek3() {
                   Each sprint begins with a <strong>planning session</strong> and ends with a{" "}
                   <strong>review and retrospective</strong>.
                 </>,
-              ]}
-            />
-          </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-            <p className="font-heading font-bold text-2xl mb-2">Sprint Planning:</p>
-            <Bullets
-              items={[
+              ],
+            },
+            {
+              name: "Sprint Planning",
+              items: [
                 <>
                   A meeting held at the beginning of each sprint where the team decides{" "}
                   <strong>what work will be done</strong>.
@@ -1395,9 +1735,23 @@ export default function DigitalTransformationWeek3() {
                 <>
                   The team defines the <strong>sprint goal</strong>, which is a clear objective for the sprint.
                 </>,
-              ]}
-            />
-          </div>
+              ],
+            },
+          ].map((ev, i) => {
+            const isLit = i === activeScrumEvent1;
+            return (
+              <div
+                key={ev.name}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-2xl mb-2">{ev.name}:</p>
+                <Bullets items={ev.items} />
+              </div>
+            );
+          })}
         </div>
       </Slide>
 
@@ -1407,35 +1761,49 @@ export default function DigitalTransformationWeek3() {
         title="Events in Scrum: Daily Scrum, Review, Retrospective"
         exercise={exercise["events-in-scrum-daily-scrum-review-retrospective"]}
       >
-        <div className={`${BODY} grid md:grid-cols-3 gap-6 md:gap-8`}>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+        <PlateWell>
+          <ScrumProcess mode="events-second" active={activeScrumEvent2} onSelect={setActiveScrumEvent2} />
+        </PlateWell>
+        <div className={`${BODY} grid`}>
+          <div
+            aria-hidden={activeScrumEvent2 !== 0}
+            className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+              activeScrumEvent2 === 0 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+            }`}
+          >
             <p className="font-heading font-bold text-2xl mb-2">Daily Scrum (Stand-up):</p>
-            <Bullets
-              items={[
-                <>
-                  A <strong>short</strong>, <strong>time-boxed</strong> meeting (<em>usually 15 minutes</em>) held every
-                  day during the sprint.
-                </>,
-                <>Team members answer three questions:</>,
-              ]}
-            />
-            <ol className="my-3 flex flex-col gap-1 bg-[var(--paper-2)] p-4">
-              {["What did I do yesterday?", "What will I do today?", "What obstacles are in my way?"].map((q) => (
-                <li key={q} className="font-heading font-bold text-lg">
-                  {q}
-                </li>
-              ))}
-            </ol>
-            <Bullets
-              items={[
-                <>
-                  The purpose is to <strong>synchronize</strong> activities and identify any{" "}
-                  <strong>impediments</strong>.
-                </>,
-              ]}
-            />
+            <div className="grid md:grid-cols-[1.2fr_1fr] gap-6 md:gap-10 items-start">
+              <div>
+                <Bullets
+                  items={[
+                    <>
+                      A <strong>short</strong>, <strong>time-boxed</strong> meeting (<em>usually 15 minutes</em>) held
+                      every day during the sprint.
+                    </>,
+                    <>Team members answer three questions:</>,
+                    <>
+                      The purpose is to <strong>synchronize</strong> activities and identify any{" "}
+                      <strong>impediments</strong>.
+                    </>,
+                  ]}
+                />
+              </div>
+              <ol className="flex flex-col gap-1 bg-[var(--paper-2)] p-4">
+                {["What did I do yesterday?", "What will I do today?", "What obstacles are in my way?"].map((q) => (
+                  <li key={q} className="font-heading font-bold text-lg">
+                    {q}
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+
+          <div
+            aria-hidden={activeScrumEvent2 !== 1}
+            className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+              activeScrumEvent2 === 1 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+            }`}
+          >
             <p className="font-heading font-bold text-2xl mb-2">Sprint Review:</p>
             <Bullets
               items={[
@@ -1452,7 +1820,13 @@ export default function DigitalTransformationWeek3() {
               ]}
             />
           </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+
+          <div
+            aria-hidden={activeScrumEvent2 !== 2}
+            className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+              activeScrumEvent2 === 2 ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+            }`}
+          >
             <p className="font-heading font-bold text-2xl mb-2">Sprint Retrospective:</p>
             <Bullets
               items={[
@@ -1492,13 +1866,13 @@ export default function DigitalTransformationWeek3() {
           Scrum uses specific artifacts to <em>manage</em> work and provide <em>transparency</em>:
         </p>
         <PlateWell>
-          <ScrumProcess lit="artifacts" />
+          <ScrumProcess mode="artifacts" active={activeScrumArtifact} onSelect={setActiveScrumArtifact} />
         </PlateWell>
-        <div className={`${BODY} grid md:grid-cols-3 gap-6 md:gap-8`}>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-            <p className="font-heading font-bold text-2xl mb-2">Product Backlog:</p>
-            <Bullets
-              items={[
+        <div className={`${BODY} grid`}>
+          {[
+            {
+              name: "Product Backlog",
+              items: [
                 <>
                   An <strong>ordered</strong> list of all desired work on the project,
                   <span className="block mt-1 font-heading italic">
@@ -1508,26 +1882,22 @@ export default function DigitalTransformationWeek3() {
                 <>
                   The <strong>product owner</strong> is responsible for maintaining and prioritizing the backlog.
                 </>,
-              ]}
-            />
-          </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-            <p className="font-heading font-bold text-2xl mb-2">Sprint Backlog:</p>
-            <Bullets
-              items={[
+              ],
+            },
+            {
+              name: "Sprint Backlog",
+              items: [
                 <>
                   A subset of the product backlog items selected for the <strong>current sprint</strong>,
                 </>,
                 <>
                   The <strong>development team</strong> is responsible for managing the sprint backlog.
                 </>,
-              ]}
-            />
-          </div>
-          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
-            <p className="font-heading font-bold text-2xl mb-2">Increment:</p>
-            <Bullets
-              items={[
+              ],
+            },
+            {
+              name: "Increment",
+              items: [
                 <>
                   The <strong>sum of all completed</strong> product backlog items at the end of a sprint.
                 </>,
@@ -1535,9 +1905,23 @@ export default function DigitalTransformationWeek3() {
                   The increment must meet the team&apos;s <em>definition</em> of <strong>&quot;done,&quot;</strong>{" "}
                   which includes <strong>quality</strong> criteria and <strong>acceptance</strong> criteria.
                 </>,
-              ]}
-            />
-          </div>
+              ],
+            },
+          ].map((ar, i) => {
+            const isLit = i === activeScrumArtifact;
+            return (
+              <div
+                key={ar.name}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-2xl mb-2">{ar.name}:</p>
+                <Bullets items={ar.items} />
+              </div>
+            );
+          })}
         </div>
       </Slide>
 

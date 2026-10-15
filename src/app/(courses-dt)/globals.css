@@ -43,10 +43,10 @@
     --highlight: #fffdf9;
     --glow: rgba(255, 90, 69, 0.14);
 
-    --font-heading: "Playfair Display", var(--font-playfair-display), serif;
-    --font-body: "Lora", var(--font-lora), serif;
-    --font-accent: "Libre Baskerville", var(--font-libre-baskerville), serif;
-    --font-mono: "IBM Plex Mono", var(--font-ibm-plex-mono), monospace;
+    --font-heading: var(--font-fraunces), Georgia, "Times New Roman", serif;
+    --font-body: var(--font-lora), "Lora", serif;
+    --font-accent: var(--font-libre-baskerville), "Libre Baskerville", serif;
+    --font-mono: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
   }
 
   /* Shared Spacing - Applies to all themes */

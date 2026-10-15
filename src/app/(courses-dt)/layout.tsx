@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Lora, Libre_Baskerville, IBM_Plex_Mono } from "next/font/google";
+import { Fraunces, Lora, Libre_Baskerville, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { DynamicFooter } from "./DynamicFooter";
 import { FitSlides } from "@/components/slide-components/FitSlides";
 
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair-display",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  display: "swap",
 });
 
 const lora = Lora({
@@ -45,9 +44,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${lora.variable} ${libreBaskerville.variable} ${ibmPlexMono.variable}`}
+    >
       <body
-        className={`${playfairDisplay.variable} ${lora.variable} ${libreBaskerville.variable} ${ibmPlexMono.variable} antialiased theme-warm-noir`}
+        className={`${fraunces.variable} ${lora.variable} ${libreBaskerville.variable} ${ibmPlexMono.variable} antialiased theme-warm-noir`}
       >
         {children}
         <FitSlides />

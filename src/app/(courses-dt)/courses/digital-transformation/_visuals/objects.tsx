@@ -60,14 +60,16 @@ export function Doc({
   x,
   y,
   k = 1,
+  tone,
 }: {
   x: number;
   y: number;
   k?: number;
+  tone?: string;
 }) {
   return (
     <g transform={`translate(${x} ${y}) scale(${k})`}>
-      <Solid outer={`${DOC_SHEET} ${DOC_FOLD}`} holes={DOC_LINES} />
+      <Solid outer={`${DOC_SHEET} ${DOC_FOLD}`} holes={DOC_LINES} tone={tone} />
     </g>
   );
 }
