@@ -77,7 +77,6 @@ export default function DigitalTransformationWeek2() {
         title="Big Data, Porter's Value Chain, and Socio-Technical Systems"
         subtitle="Exploring data structures, Big Data concepts, and organizational frameworks."
         author="Dr. Davood Wadi"
-        date="Spring 2025"
         institution="Digital Transformation"
         plate={<HeroDataToValue />}
       />

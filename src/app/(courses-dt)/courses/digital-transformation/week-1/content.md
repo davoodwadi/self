@@ -38,11 +38,24 @@ week: week-1
 # Chapter 02: Digitization, Digitalization, and Digital Transformation
 
 ## Digitization, Digitalization, and Digital Transformation [exercise]
-- Digitization refers to converting analog information into digital format.
-- It involves the use of technology to improve efficiency and accuracy.
-- Digital transformation goes beyond digitization by rethinking business models and processes.
-- It focuses on enhancing customer experiences and creating new value propositions.
-- Successful digital transformation requires a strategic vision and leadership commitment.
+1. **Digitization**
+   - **Definition**: Digitization is the process of converting analog information into a digital format. This involves transforming physical objects, documents, or processes into a digital representation that can be easily stored, accessed, and manipulated by computers.
+   - **Examples**:
+     - Scanning paper documents to create digital files (PDFs, images).
+     - Converting vinyl records into digital audio files (MP3s).
+     - Turning physical photographs into digital images.
+2. **Digitalization**
+   - **Definition**: Digitalization refers to the use of digital technologies to change a business model and provide new revenue and value-producing opportunities. It involves leveraging digitized data to improve processes, enhance customer experiences, and create efficiencies.
+   - **Examples**:
+     - Implementing electronic invoicing systems to streamline billing processes.
+     - Using customer relationship management (CRM) software to manage customer interactions and data.
+     - Automating workflows through software tools to improve operational efficiency.
+3. **Digital Transformation**
+   - **Definition**: Digital transformation is a broader, more strategic concept that encompasses the cultural, organizational, and operational changes that organizations undergo to fully leverage digital technologies. It involves rethinking how an organization operates and delivers value to customers in a digital-first world.
+   - **Examples**:
+     - A retail company shifting from brick-and-mortar stores to an omnichannel approach that integrates online and offline shopping experiences.
+     - A traditional manufacturing company adopting IoT (Internet of Things) technologies to optimize production processes and supply chain management.
+     - A financial institution transforming its services to offer mobile banking and digital payment solutions, enhancing customer engagement and accessibility.
 
 ## Discussion Question [no-exercise]
 - How can organizations ensure that their digitization efforts align with their overall digital transformation strategy?

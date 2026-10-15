@@ -50,7 +50,6 @@ export default function DigitalTransformationWeek8() {
         title="Immersive Technologies & Gamification"
         subtitle="Exploring AR, VR, Game Mechanics, and Their Ethical Implications in Business"
         author="Dr. Davood Wadi"
-        date="Spring 2025"
         institution="Digital Transformation"
       />
 

@@ -1,0 +1,329 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "components-of-tam-beliefs-attitude-and-intention",
+    "prompt": "A commuter coffee shop launches a mobile pre-order app. Name which component of TAM each customer statement shows.",
+    "options": [
+      { "id": "pu", "label": "Perceived Usefulness (PU)" },
+      { "id": "peou", "label": "Perceived Ease of Use (PEOU)" },
+      { "id": "attitude", "label": "Attitude Toward Use" },
+      { "id": "intention", "label": "Behavioral Intention to Use" }
+    ],
+    "cases": [
+      {
+        "id": "skip-queue",
+        "text": "Ordering on the train saves me ten minutes every morning before work.",
+        "answer": "pu",
+        "explanation": "Perceived Usefulness (PU) is the belief that using the technology enhances performance or productivity by saving time."
+      },
+      {
+        "id": "two-taps",
+        "text": "Reordering my usual latte takes two taps and no typing at all.",
+        "answer": "peou",
+        "explanation": "Perceived Ease of Use (PEOU) is the belief that using the technology will be free of effort."
+      },
+      {
+        "id": "feel-good",
+        "text": "I really like having this app on my phone; it is a great way to buy coffee.",
+        "answer": "attitude",
+        "explanation": "Attitude Toward Use is the overall favorable or unfavorable feeling determined by usefulness and ease of use."
+      },
+      {
+        "id": "next-week",
+        "text": "Starting Monday, I am going to pre-order through the app every commute.",
+        "answer": "intention",
+        "explanation": "Behavioral Intention to Use is the plan to use the technology in future activities."
+      },
+      {
+        "id": "confusing-menu",
+        "text": "Finding the oat-milk option takes way too many menus and buried settings.",
+        "answer": "peou",
+        "explanation": "Effort and friction in the interface directly lower Perceived Ease of Use (PEOU)."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "tam-for-bestbuy-adoption-and-benefits",
+    "question_text": "An online electronics retailer adds twelve new comparison filters, live voice commands, and a warranty calculator into a single chat window for its virtual shopping assistant. Customers suddenly stop finishing their chats. According to the TAM analysis for BestBuy, what best explains this drop?",
+    "hint": "Consider the slide's question on how adding more features affects ease of use.",
+    "correct_answer_index": 0,
+    "correct_answer_citation": "How is adding more features reducing the ease of use?",
+    "options": [
+      {
+        "option_text": "Packing too many features into the interface reduced Perceived Ease of Use, hurting customers' attitude and intention to use the assistant.",
+        "option_explanation": "Right. Even features meant to be helpful can clutter the chat interface and lower Perceived Ease of Use, which dampens attitude toward using and actual adoption."
+      },
+      {
+        "option_text": "According to TAM, adding features always increases both Perceived Ease of Use and Perceived Usefulness.",
+        "option_explanation": "Adding features may aim to raise usefulness, but it often increases complexity and reduces Perceived Ease of Use."
+      },
+      {
+        "option_text": "Perceived Ease of Use has no effect on Attitude Toward Using once a customer visits an e-commerce site.",
+        "option_explanation": "In TAM, both Perceived Usefulness and Perceived Ease of Use determine Attitude Toward Using."
+      },
+      {
+        "option_text": "Online reviews and influencer endorsements directly determine Actual System Use without affecting usefulness or ease of use.",
+        "option_explanation": "In TAM, social influence acts as an external variable that shapes Perceived Usefulness and Perceived Ease of Use first."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "tam-for-ai-chatbots-in-a-hospital-adoption-and-benefits",
+    "prompt": "A regional clinic rolls out an AI symptom-checker chatbot. Sort each item into External Variables, TAM Beliefs (Ease of Use & Usefulness), or Benefits for the Hospital.",
+    "bins": [
+      { "id": "external", "label": "External Variables" },
+      { "id": "beliefs", "label": "Ease of Use & Usefulness" },
+      { "id": "benefits", "label": "Benefits for the Hospital" }
+    ],
+    "cards": [
+      {
+        "id": "nlp-db",
+        "text": "Natural language processing connected to verified medical databases",
+        "bin": "external",
+        "explanation": "System features (NLP and medical databases) are an external variable."
+      },
+      {
+        "id": "endorsement",
+        "text": "Local family doctors and community leaders endorse the chatbot to patients",
+        "bin": "external",
+        "explanation": "Social influence from healthcare professionals and community leaders is an external variable."
+      },
+      {
+        "id": "plain-words",
+        "text": "Patients can describe symptoms in everyday, non-technical language",
+        "bin": "beliefs",
+        "explanation": "Handling non-technical language with a simple interface creates Perceived Ease of Use."
+      },
+      {
+        "id": "filter-non-urgent",
+        "text": "Nurses see that the tool filters out minor colds so they can treat critical cases",
+        "bin": "beliefs",
+        "explanation": "Filtering non-urgent cases so staff can focus on critical patients is Perceived Usefulness."
+      },
+      {
+        "id": "faster-guidance",
+        "text": "Patients receive quicker responses and clearer guidance for their symptoms",
+        "bin": "benefits",
+        "explanation": "Improved patient experience is one of the three measured benefits for the hospital."
+      },
+      {
+        "id": "resource-allocation",
+        "text": "Shorter triage times allow the clinic to allocate beds and staff more efficiently",
+        "bin": "benefits",
+        "explanation": "Operational efficiency and better resource allocation are hospital-level benefits of adoption."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "tam-for-ikeas-self-return-kiosk-adoption-and-benefits",
+    "prompt": "A hardware store introduces a self-return kiosk. Put the customer's adoption journey in the order of the Technology Acceptance Model (TAM).",
+    "steps": [
+      {
+        "id": "ext-vars",
+        "text": "The store sets up a touch-screen kiosk with a barcode scanner, on-screen guidance, and a staff member nearby.",
+        "explanation": "1. External Variables: system features and training/support come first outside the core beliefs."
+      },
+      {
+        "id": "peou-pu",
+        "text": "A shopper notices the step-by-step visual prompts look effortless and that using the kiosk skips the twenty-minute counter queue.",
+        "explanation": "2. Perceived Ease of Use and Perceived Usefulness are shaped by those external variables."
+      },
+      {
+        "id": "attitude",
+        "text": "Because it looks both simple and time-saving, the shopper views the kiosk as an effective solution.",
+        "explanation": "3. Attitude Toward Using (A) is determined by Perceived Ease of Use and Perceived Usefulness."
+      },
+      {
+        "id": "intention",
+        "text": "The shopper decides to use the kiosk for next week's return and tells a neighbor to try it too.",
+        "explanation": "4. Behavioral Intention to Use (BI) follows from a positive attitude."
+      },
+      {
+        "id": "actual-use",
+        "text": "Over the season, shoppers routinely complete returns at the kiosk, cutting counter lines and freeing staff for complex issues.",
+        "explanation": "5. Actual System Use is the final outcome, producing operational efficiency and cost savings."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "the-unified-theory-of-acceptance-and-use-of-technology-utaut",
+    "prompt": "A law firm rolls out a new document-search platform. Match each primary UTAUT construct with what it captures at the firm.",
+    "term_label": "UTAUT Construct",
+    "match_label": "At the law firm",
+    "pairs": [
+      {
+        "id": "pe",
+        "term": "Performance Expectancy",
+        "match": "Associates believe the platform lets them find case precedents in half the time.",
+        "explanation": "Performance Expectancy is how much the technology is perceived to enhance job performance."
+      },
+      {
+        "id": "ee",
+        "term": "Effort Expectancy",
+        "match": "Paralegals find the search bar and filters straightforward to learn on day one.",
+        "explanation": "Effort Expectancy reflects the perceived ease of use of the technology."
+      },
+      {
+        "id": "si",
+        "term": "Social Influence",
+        "match": "Senior partners openly expect every practice group to use the new platform.",
+        "explanation": "Social Influence is how much individuals perceive that important others believe they should use the technology."
+      },
+      {
+        "id": "fc",
+        "term": "Facilitating Conditions",
+        "match": "The firm provides fast Wi-Fi, a Lunch-and-Learn workshop, and a dedicated helpdesk.",
+        "explanation": "Facilitating Conditions are the infrastructure, training, and technical support available to users."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "utaut-for-ikeas-self-return-kiosk-moderating-variables",
+    "prompt": "An airline installs self-service bag-drop kiosks at its terminals. Name which moderating variable from the IKEA UTAUT analysis explains each pattern.",
+    "options": [
+      { "id": "age", "label": "Age" },
+      { "id": "experience", "label": "Experience" },
+      { "id": "voluntariness", "label": "Voluntariness of Use" },
+      { "id": "cultural", "label": "Cultural Context" }
+    ],
+    "cases": [
+      {
+        "id": "closed-desks",
+        "text": "When the airline closes all staffed desks so flyers feel forced to use the kiosk, satisfaction scores drop sharply.",
+        "answer": "voluntariness",
+        "explanation": "Voluntariness of Use: when customers feel forced to use the kiosk with no alternative, satisfaction and adoption are impacted."
+      },
+      {
+        "id": "frequent-flyers",
+        "text": "Travelers who have used self-check-in machines at hotels and train stations breeze through without asking staff for help.",
+        "answer": "experience",
+        "explanation": "Experience: prior familiarity with similar technologies helps users adapt faster with less guidance."
+      },
+      {
+        "id": "college-crowd",
+        "text": "University students on spring break adopt the touch-screen tag printers almost immediately compared with older flyers.",
+        "answer": "age",
+        "explanation": "Age: younger customers often adopt the kiosk more quickly due to greater familiarity with technology."
+      },
+      {
+        "id": "regional-habit",
+        "text": "Airports in regions where automated train gates and self-checkout are everyday norms see twice the first-month kiosk usage.",
+        "answer": "cultural",
+        "explanation": "Cultural Context: acceptance varies with regional or cultural familiarity with self-service technology."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "iot-privacy-and-security",
+    "prompt": "A hospital deploys connected patient-monitoring wristbands. Match each IoT privacy and security best practice with how the hospital applies it.",
+    "term_label": "Best Practice",
+    "match_label": "Hospital Action",
+    "pairs": [
+      {
+        "id": "auth",
+        "term": "Implement strong device authentication",
+        "match": "Replace factory passwords with digital certificates and two-factor sign-in for nurse tablets.",
+        "explanation": "Strong authentication uses two-factor authentication, biometrics, or digital certificates instead of default passwords."
+      },
+      {
+        "id": "net",
+        "term": "Secure network communications",
+        "match": "Encrypt wristband traffic with TLS/SSL and place medical sensors on a separate network segment.",
+        "explanation": "Securing network communications means encrypting data in transit and segmenting IoT devices on separate networks."
+      },
+      {
+        "id": "updates",
+        "term": "Keep software and firmware updated",
+        "match": "Turn on automatic security patching so every wristband receives firmware fixes overnight.",
+        "explanation": "Regularly updating firmware and enabling automatic updates protects against known vulnerabilities."
+      },
+      {
+        "id": "limit",
+        "term": "Limit data collection and storage",
+        "match": "Record only pulse and temperature needed for care, and pseudonymize patient identifiers.",
+        "explanation": "Collecting only the minimum necessary data and anonymizing or pseudonymizing it reduces breach impact."
+      },
+      {
+        "id": "educate",
+        "term": "Educate users on IoT security",
+        "match": "Train ward staff on safe device setup and how to report unusual sensor alerts immediately.",
+        "explanation": "Educating users provides clear guidelines on setup, use, and reporting suspicious activities."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "iiot-and-iot-device-management-process",
+    "prompt": "A cold-chain logistics company installs connected temperature sensors in its refrigerated trucks. Put the five stages of the IoT Device Management Process in order.",
+    "steps": [
+      {
+        "id": "provision",
+        "text": "Provisioning and Authentication: register each new truck sensor and verify its cryptographic identity on the network.",
+        "explanation": "1. Provisioning and Authentication comes first when enrolling new devices."
+      },
+      {
+        "id": "config",
+        "text": "Configuration and Control: set the temperature alert thresholds and sampling intervals remotely for each route.",
+        "explanation": "2. Configuration and Control sets how authenticated devices operate."
+      },
+      {
+        "id": "monitor",
+        "text": "Monitoring and Diagnostics: track sensor battery levels, signal strength, and fault logs while trucks are on the road.",
+        "explanation": "3. Monitoring and Diagnostics watches active devices in real time to catch issues."
+      },
+      {
+        "id": "update",
+        "text": "Software Updates and Maintenance: push a firmware patch over the air to fix a calibration bug across the fleet.",
+        "explanation": "4. Software Updates and Maintenance keeps deployed devices secure and reliable."
+      },
+      {
+        "id": "decommission",
+        "text": "Decommissioning: revoke network credentials and wipe stored logs when an old sensor unit is retired.",
+        "explanation": "5. Decommissioning safely retires end-of-life devices."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "disambiguating-the-terms",
+    "prompt": "A manufacturing group connects its factories and delivery fleet. Name whether each part of its architecture is IoT, Edge, Fog, or Cloud.",
+    "options": [
+      { "id": "iot", "label": "IoT" },
+      { "id": "edge", "label": "Edge" },
+      { "id": "fog", "label": "Fog" },
+      { "id": "cloud", "label": "Cloud" }
+    ],
+    "cases": [
+      {
+        "id": "wrist-fridge",
+        "text": "Smart thermostats and vibration sensors mounted on assembly-line motors that collect and transmit readings.",
+        "answer": "iot",
+        "explanation": "IoT refers to connected physical devices that collect and transmit data from their environment."
+      },
+      {
+        "id": "brake-now",
+        "text": "An onboard processor inside an autonomous forklift that stops the vehicle in milliseconds when a person steps in front of it.",
+        "answer": "edge",
+        "explanation": "Edge computing processes data right at or near the source for ultra-low-latency, real-time tasks."
+      },
+      {
+        "id": "plant-gateway",
+        "text": "A local factory-floor network node that aggregates machine readings across one plant and sends hourly summaries upstream.",
+        "answer": "fog",
+        "explanation": "Fog computing acts as a bridge between edge and cloud, analyzing machine data across local networks before sending summaries to the cloud."
+      },
+      {
+        "id": "central-aws",
+        "text": "A centralized remote data center on AWS that stores five years of global sales and production history for company-wide analytics.",
+        "answer": "cloud",
+        "explanation": "Cloud computing provides centralized storage and processing over the internet with high scalability."
+      }
+    ]
+  }
+]

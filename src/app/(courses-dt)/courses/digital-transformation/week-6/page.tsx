@@ -49,7 +49,6 @@ export default function DigitalTransformationWeek6() {
         title="AI & Machine Learning"
         subtitle="Understanding Intelligence, ML Algorithms, and Learning Paradigms"
         author="Dr. Davood Wadi"
-        date="Spring 2025"
         institution="Digital Transformation"
       />
 

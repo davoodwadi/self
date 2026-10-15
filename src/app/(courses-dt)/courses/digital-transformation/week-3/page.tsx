@@ -123,7 +123,6 @@ export default function DigitalTransformationWeek3() {
         category="WEEK 03 — DIGITAL TRANSFORMATION"
         title="Change Management, Project Management"
         author="Dr. Davood Wadi"
-        date="Spring 2025"
         institution="Digital Transformation"
         agenda={[
           "The Case of Netflix",

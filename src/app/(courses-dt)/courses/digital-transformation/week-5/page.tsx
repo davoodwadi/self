@@ -51,7 +51,6 @@ export default function DigitalTransformationWeek5() {
         title="Cloud, Fog, and Edge Computing"
         subtitle="Understanding modern computing infrastructures and service models"
         author="Dr. Davood Wadi"
-        date="Spring 2025"
         institution="Digital Transformation"
       />
 

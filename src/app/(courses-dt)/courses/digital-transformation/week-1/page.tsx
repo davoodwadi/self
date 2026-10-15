@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { ProgressBar } from "@/components/presentation";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -21,6 +23,8 @@ import {
   HeroShopScreen,
   EqualFooting,
   DataDecision,
+  KeyComponentsHub,
+  KeyComponentsHubTall,
   TransformationSteps,
   TransformationStepsTall,
   Pyramid,
@@ -42,14 +46,65 @@ const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 /* Body copy: the reading serif; terms set bold in the display serif. */
 const BODY = "font-body text-base md:text-[1.06rem] leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
 
-const COMPONENTS = [
-  ["Technology Integration", "This involves the adoption of advanced technologies such as cloud computing, artificial intelligence (AI), big data analytics, the Internet of Things (IoT), and automation. These technologies enable organizations to streamline processes, enhance decision-making, and improve efficiency."],
-  ["Cultural Change", "Digital transformation requires a shift in organizational culture. It encourages a mindset of innovation, agility, and collaboration. Employees at all levels must be willing to embrace change, experiment with new ideas, and adapt to evolving market conditions."],
-  ["Customer-Centric Approach", "Understanding and meeting customer needs is at the heart of digital transformation. Organizations must leverage data and analytics to gain insights into customer behavior, preferences, and pain points, allowing them to deliver personalized experiences and build stronger relationships."],
-  ["Process Optimization", "Digital transformation often involves reengineering business processes to eliminate inefficiencies and enhance productivity. This can include automating routine tasks, improving supply chain management, and optimizing resource allocation."],
-  ["Data-Driven Decision Making", "Organizations must harness the power of data to inform their strategies and operations. By collecting, analyzing, and interpreting data, businesses can make informed decisions that drive growth and innovation."],
-  ["Agility and Flexibility", "In a rapidly changing digital landscape, organizations must be agile and responsive. This means being able to quickly adapt to new technologies, market trends, and customer demands."],
+const COMPONENTS: [string, React.ReactNode][] = [
+  [
+    "Technology Integration",
+    "This involves the adoption of advanced technologies such as cloud computing, artificial intelligence (AI), big data analytics, the Internet of Things (IoT), and automation. These technologies enable organizations to streamline processes, enhance decision-making, and improve efficiency.",
+  ],
+  [
+    "Cultural Change",
+    "Digital transformation requires a shift in organizational culture. It encourages a mindset of innovation, agility, and collaboration. Employees at all levels must be willing to embrace change, experiment with new ideas, and adapt to evolving market conditions.",
+  ],
+  [
+    "Customer-Centric Approach",
+    "Understanding and meeting customer needs is at the heart of digital transformation. Organizations must leverage data and analytics to gain insights into customer behavior, preferences, and pain points, allowing them to deliver personalized experiences and build stronger relationships.",
+  ],
+  [
+    "Process Optimization",
+    "Digital transformation often involves reengineering business processes to eliminate inefficiencies and enhance productivity. This can include automating routine tasks, improving supply chain management, and optimizing resource allocation.",
+  ],
+  [
+    "Data-Driven Decision Making",
+    "Organizations must harness the power of data to inform their strategies and operations. By collecting, analyzing, and interpreting data, businesses can make informed decisions that drive growth and innovation.",
+  ],
+  [
+    "Agility and Flexibility",
+    "In a rapidly changing digital landscape, organizations must be agile and responsive. This means being able to quickly adapt to new technologies, market trends, and customer demands.",
+  ],
 ];
+
+const STAGES: [string, string, string[]][] = [
+  [
+    "Digitization",
+    "Digitization is the process of converting analog information into a digital format. This involves transforming physical objects, documents, or processes into a digital representation that can be easily stored, accessed, and manipulated by computers.",
+    [
+      "Scanning paper documents to create digital files (PDFs, images).",
+      "Converting vinyl records into digital audio files (MP3s).",
+      "Turning physical photographs into digital images.",
+    ],
+  ],
+  [
+    "Digitalization",
+    "Digitalization refers to the use of digital technologies to change a business model and provide new revenue and value-producing opportunities. It involves leveraging digitized data to improve processes, enhance customer experiences, and create efficiencies.",
+    [
+      "Implementing electronic invoicing systems to streamline billing processes.",
+      "Using customer relationship management (CRM) software to manage customer interactions and data.",
+      "Automating workflows through software tools to improve operational efficiency.",
+    ],
+  ],
+  [
+    "Digital Transformation",
+    "Digital transformation is a broader, more strategic concept that encompasses the cultural, organizational, and operational changes that organizations undergo to fully leverage digital technologies. It involves rethinking how an organization operates and delivers value to customers in a digital-first world.",
+    [
+      "A retail company shifting from brick-and-mortar stores to an omnichannel approach that integrates online and offline shopping experiences.",
+      "A traditional manufacturing company adopting IoT (Internet of Things) technologies to optimize production processes and supply chain management.",
+      "A financial institution transforming its services to offer mobile banking and digital payment solutions, enhancing customer engagement and accessibility.",
+    ],
+  ],
+];
+
+const LIST =
+  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.58em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
 
 const LAYERS = [
   ["Foundation Layer (Technology Infrastructure)", "This is the base of the pyramid and includes the essential technology infrastructure that supports digital initiatives. It encompasses hardware, software, networks, and data management systems.", "Cloud computing, data storage solutions, cybersecurity measures, and network infrastructure."],
@@ -61,6 +116,10 @@ const LAYERS = [
 ];
 
 export default function DigitalTransformationWeek1() {
+  const [activeComponent, setActiveComponent] = useState(0);
+  const [activeStage, setActiveStage] = useState(0);
+  const [activeLayer, setActiveLayer] = useState(0);
+
   return (
     <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
       <ProgressBar />
@@ -78,7 +137,6 @@ export default function DigitalTransformationWeek1() {
         title="Introduction to digital transformation"
         subtitle="Foundations of Digital Transformation"
         author="Dr. Davood Wadi"
-        date="Spring 2025"
         institution="Digital Transformation"
         agenda={[
           "Introduction to Digital Transformation",
@@ -99,32 +157,32 @@ export default function DigitalTransformationWeek1() {
         title="Digital Transformation"
         exercise={exercise["digital-transformation"]}
       >
-        <p className="font-heading text-2xl md:text-[2rem] leading-snug max-w-5xl">
+        <p className="font-heading text-2xl md:text-[1.95rem] leading-snug max-w-5xl">
           Digital transformation is the{" "}
-          <span className="text-[var(--dt-signal)]">
+          <strong className="font-bold">
             integration of digital technology into all areas of a business
-          </span>
+          </strong>
           .
         </p>
-        <div className="grid md:grid-cols-3 gap-6 md:gap-10 items-start">
-          <div className={`${BODY} !text-lg md:!text-xl flex flex-col gap-5`}>
+        <div className={`${BODY} !text-lg md:!text-[1.18rem] grid md:grid-cols-2 gap-6 md:gap-10`}>
+          <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+            It fundamentally changes how businesses operate and deliver value to customers.
+          </p>
+          <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
+            It requires a cultural shift that challenges the status quo.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-start">
+          <div className={`${BODY} !text-lg flex flex-col gap-3`}>
             <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
-              It fundamentally changes how businesses operate and deliver value to customers.
-            </p>
-            <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
-              It requires a cultural shift that challenges the status quo.
-            </p>
-          </div>
-          <div className={`${BODY} !text-lg md:!text-xl flex flex-col gap-4`}>
-            <p className="border-t-[3px] border-[var(--dt-ink)] pt-3 md:min-h-[3.4em]">
               Technology is a key enabler, but people and processes are equally important.
             </p>
             <PlateWell>
               <EqualFooting />
             </PlateWell>
           </div>
-          <div className={`${BODY} !text-lg md:!text-xl flex flex-col gap-4`}>
-            <p className="border-t-[3px] border-[var(--dt-ink)] pt-3 md:min-h-[3.4em]">
+          <div className={`${BODY} !text-lg flex flex-col gap-3`}>
+            <p className="border-t-[3px] border-[var(--dt-ink)] pt-3">
               Data-driven decision-making is essential for successful transformation.
             </p>
             <PlateWell>
@@ -140,16 +198,33 @@ export default function DigitalTransformationWeek1() {
         title="Key Components of Digital Transformation"
         exercise={exercise["key-components"]}
       >
-        <ol className={`${BODY} md:!text-[1.1rem] grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6`}>
-          {COMPONENTS.map(([name, text], i) => (
-            <li key={name} className="border-t-[3px] border-[var(--dt-ink)] pt-3">
-              <p className="flex items-baseline gap-3 mb-2">
-                <span className="font-heading font-bold text-3xl leading-none">{i + 1}.</span>
-                <strong className="text-xl leading-tight">{name}</strong>
-              </p>
-              <p>{text}</p>
-            </li>
-          ))}
+        <PlateWell>
+          <div className="hidden sm:block">
+            <KeyComponentsHub active={activeComponent} onSelect={setActiveComponent} />
+          </div>
+          <div className="sm:hidden">
+            <KeyComponentsHubTall active={activeComponent} onSelect={setActiveComponent} />
+          </div>
+        </PlateWell>
+        <ol className={`${BODY} !text-lg md:!text-[1.14rem] !leading-[1.65] grid`}>
+          {COMPONENTS.map(([name, text], i) => {
+            const isLit = i === activeComponent;
+            return (
+              <li
+                key={name}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-2 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="flex items-baseline gap-3">
+                  <span className="font-heading font-bold text-2xl md:text-3xl leading-none">{i + 1}.</span>
+                  <strong className="text-xl md:text-2xl leading-tight">{name}:</strong>
+                </p>
+                <p>{text}</p>
+              </li>
+            );
+          })}
         </ol>
       </Slide>
 
@@ -170,33 +245,52 @@ export default function DigitalTransformationWeek1() {
         title="Digitization, Digitalization, and Digital Transformation"
         exercise={exercise["digitization-digitalization-transformation"]}
       >
-        <div className="grid lg:grid-cols-[1fr_2.1fr] gap-6 lg:gap-10 items-center">
-          <div className={`${BODY} !text-lg flex flex-col gap-5`}>
-            <div className="flex flex-col gap-2 border-t-[3px] border-[var(--dt-ink)] pt-3">
-              <p>
-                <strong>Digitization</strong> refers to converting analog information into digital format.
-              </p>
-              <p>It involves the use of technology to improve efficiency and accuracy.</p>
-            </div>
-            <div className="flex flex-col gap-2 border-t-[3px] border-[var(--dt-ink)] pt-3">
-              <p>
-                <strong>Digital transformation</strong>{" "}
-                <span className="text-[var(--dt-signal)]">goes beyond digitization</span> by rethinking business
-                models and processes.
-              </p>
-              <p>It focuses on enhancing customer experiences and creating new value propositions.</p>
-              <p>Successful digital transformation requires a strategic vision and leadership commitment.</p>
-            </div>
+        <PlateWell>
+          <div className="hidden sm:block">
+            <TransformationSteps active={activeStage} onSelect={setActiveStage} />
           </div>
-          <PlateWell>
-            <div className="hidden sm:block">
-              <TransformationSteps />
-            </div>
-            <div className="sm:hidden">
-              <TransformationStepsTall />
-            </div>
-          </PlateWell>
-        </div>
+          <div className="sm:hidden">
+            <TransformationStepsTall active={activeStage} onSelect={setActiveStage} />
+          </div>
+        </PlateWell>
+        <ol className={`${BODY} !text-base md:!text-[1.06rem] !leading-[1.58] grid`}>
+          {STAGES.map(([name, definition, examples], i) => {
+            const isLit = i === activeStage;
+            return (
+              <li
+                key={name}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 grid lg:grid-cols-[1.15fr_1fr] gap-6 lg:gap-10 items-start transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <div className="flex flex-col gap-2">
+                  <p className="flex items-baseline gap-3">
+                    <span className="font-heading font-bold text-2xl md:text-3xl leading-none">
+                      {i + 1}.
+                    </span>
+                    <strong className="text-xl md:text-2xl leading-tight">{name}</strong>
+                  </p>
+                  <p>
+                    <strong>Definition</strong>: {definition}
+                  </p>
+                </div>
+                <div className="border-t-[2px] lg:border-t-0 lg:border-l-[2px] border-[var(--dt-ink)] pt-3 lg:pt-0 lg:pl-8">
+                  <p className="mb-1.5">
+                    <strong>Examples</strong>:
+                  </p>
+                  <ul className={LIST}>
+                    {examples.map((ex) => (
+                      <li key={ex}>
+                        <span>{ex}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
       </Slide>
 
       <DiscussionSlide
@@ -216,26 +310,39 @@ export default function DigitalTransformationWeek1() {
         title="The Digital Transformation Pyramid"
         exercise={exercise["pyramid"]}
       >
-        <div className="grid lg:grid-cols-[1fr_340px] gap-6 lg:gap-10 items-center">
-          <ol className={`${BODY} !text-[0.9rem] !leading-[1.5] grid sm:grid-cols-2 gap-x-7 gap-y-4`}>
-            {LAYERS.map(([name, description, components], i) => (
-              <li key={name} className="border-t-[3px] border-[var(--dt-ink)] pt-2">
-                <p className="flex items-baseline gap-2 mb-1">
-                  <span className="font-heading font-bold text-lg leading-none">{i + 1}.</span>
-                  <strong className="text-[1.05rem] leading-tight">{name}</strong>
-                </p>
-                <p>
-                  <strong>Description</strong>: {description}
-                </p>
-                <p className="mt-1">
-                  <strong>Key Components</strong>: {components}
-                </p>
-              </li>
-            ))}
+        <div className="grid lg:grid-cols-[1.08fr_1fr] gap-8 lg:gap-12 items-center">
+          <PlateWell>
+            <Pyramid active={activeLayer} onSelect={setActiveLayer} />
+          </PlateWell>
+          <ol className={`${BODY} !text-lg md:!text-[1.14rem] !leading-[1.65] grid`}>
+            {LAYERS.map(([name, description, components], i) => {
+              const isLit = i === activeLayer;
+              return (
+                <li
+                  key={name}
+                  aria-hidden={!isLit}
+                  className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-5 flex flex-col gap-4 transition-opacity duration-200 ${
+                    isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                  }`}
+                >
+                  <p className="flex items-baseline gap-3">
+                    <span className="font-heading font-bold text-3xl md:text-4xl leading-none">
+                      {i + 1}.
+                    </span>
+                    <strong className="text-2xl md:text-[1.65rem] leading-tight">
+                      {name}
+                    </strong>
+                  </p>
+                  <p className="border-t-[2px] border-[var(--dt-ink)] pt-4">
+                    <strong>Description</strong>: {description}
+                  </p>
+                  <p className="border-t-[2px] border-[var(--dt-ink)] pt-4">
+                    <strong>Key Components</strong>: {components}
+                  </p>
+                </li>
+              );
+            })}
           </ol>
-          <div className="max-w-[340px] w-full mx-auto">
-            <Pyramid />
-          </div>
         </div>
       </Slide>
 

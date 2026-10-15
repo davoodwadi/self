@@ -66,13 +66,15 @@ Solid black on cream (physical) against the same solid black on a screen (digita
 - Small marks are simple geometry (circles, stars, arrows, short rules) in solid black or red, or cream on a coloured shape.
 - Badges and logos are generic: a cream circle with a simple black mark such as a star. No real brands.
 
-### Type
+### Type and text colour
 
-Text follows rule 3. When text is allowed, write it in sentence case, as it appears in the source ("Digital transformation", "Digitize information"), in INK or SIGNAL, or CREAM on a coloured shape:
+Text inside a plate follows rule 3. When text is allowed, write it in sentence case, as it appears in the source ("Digital transformation", "Digitize information"), in INK or SIGNAL, or CREAM on a coloured shape:
 
 - headings and stage or group names: bold display serif (`var(--font-heading)`, weight 700), about 20 units;
 - names set on a shape (a step, a bar, a block): the reading serif (`var(--font-body)`, weight 600), about 15–17 units;
 - lines of a two-line label about 1.4× the font size apart, so descenders clear the line below.
+
+**Avoid using `SIGNAL` red to highlight slide text.** Build hierarchy on the slide with type and space: font size, bold `INK` (`<strong>` in `var(--font-heading)`), rules and white space. Keep headings, subheadings, defined terms, list numerals, borders and body copy in `INK`. When a plate already uses `SIGNAL` red for its focal or active element, the text beside it stays in `INK` so it never competes with the visual. At most one short key phrase on a text-only slide may take `SIGNAL`; a slide with no red body text at all is preferred.
 
 ### Avoid
 
@@ -80,6 +82,7 @@ Text follows rule 3. When text is allowed, write it in sentence case, as it appe
 - Outline-style drawing, sketchy lines, hand-drawn wobble.
 - Detailed faces, facial expressions, fingers, fabric folds.
 - Colours outside the palette.
+- Overusing `SIGNAL` red on slide text, headings, numerals or rules.
 - Busy backgrounds, decorative clutter, real logos or brand names.
 
 ### Look checklist (with rules 22–24)

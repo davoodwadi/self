@@ -87,8 +87,12 @@ export const Hero = ({ category, title, subtitle, author, date, institution }: a
         
         <div className="text-body text-text-muted flex items-center gap-4">
           <span>{author}</span>
-          <span>&middot;</span>
-          <span>{date}</span>
+          {date && (
+            <>
+              <span>&middot;</span>
+              <span>{date}</span>
+            </>
+          )}
           <span>&middot;</span>
           <span>{institution}</span>
         </div>

@@ -44,7 +44,6 @@ export default function DigitalTransformationWeek7() {
         title="Blockchain Technology"
         subtitle="Exploring Blockchain, Smart Contracts, and Business Applications"
         author="Dr. Davood Wadi"
-        date="Spring 2025"
         institution="Digital Transformation"
       />
 

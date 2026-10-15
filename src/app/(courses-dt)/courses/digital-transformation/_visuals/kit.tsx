@@ -42,7 +42,7 @@ export function Plate({
       viewBox={`0 0 ${w} ${h}`}
       role="img"
       aria-label={title}
-      className="block w-full h-auto"
+      className="block w-full h-auto select-none [&_*]:outline-none [&_*:focus]:outline-none [&_*:focus-visible]:outline-none"
       style={{ background: CREAM }}
     >
       <title>{title}</title>
@@ -268,7 +268,7 @@ export function PosterHero({
   title: string;
   subtitle?: string;
   author: string;
-  date: string;
+  date?: string;
   institution: string;
   plate: React.ReactNode;
   /** The lecture's agenda, listed under the subtitle. */
@@ -309,10 +309,12 @@ export function PosterHero({
             )}
             <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 font-accent text-sm">
               <span className="font-bold">{author}</span>
-              <span className="flex items-center gap-4">
-                <Diamond />
-                {date}
-              </span>
+              {date && (
+                <span className="flex items-center gap-4">
+                  <Diamond />
+                  {date}
+                </span>
+              )}
               <span className="flex items-center gap-4">
                 <Diamond />
                 {institution}

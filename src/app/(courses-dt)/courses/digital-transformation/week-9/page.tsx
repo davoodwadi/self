@@ -43,7 +43,6 @@ export default function DigitalTransformationWeek9() {
         title="Industry 4.0"
         subtitle="From the First Industrial Revolution to the Digital Age"
         author="Dr. Davood Wadi"
-        date="Spring 2025"
         institution="Digital Transformation"
       />
 

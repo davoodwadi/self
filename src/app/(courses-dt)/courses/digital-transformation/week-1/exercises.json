@@ -79,7 +79,7 @@
   {
     "type": "sort",
     "slide_id": "digitization-digitalization-transformation",
-    "prompt": "Sort each change into the stage it belongs to on the staircase.",
+    "prompt": "Sort each organizational change into the stage it belongs to.",
     "bins": [
       { "id": "digitization", "label": "Digitization" },
       { "id": "digitalization", "label": "Digitalization" },

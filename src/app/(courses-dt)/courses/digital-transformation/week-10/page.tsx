@@ -41,7 +41,6 @@ export default function DigitalTransformationWeek10() {
         title="Cyber Security, Ethics and Social Issues"
         subtitle="Navigating the complex landscape of digital transformation risks, ethical AI, and environmental impacts."
         author="Dr. Davood Wadi"
-        date="Spring 2025"
         institution="Digital Transformation"
       />
 
