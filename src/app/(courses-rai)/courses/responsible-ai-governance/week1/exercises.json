@@ -1,0 +1,300 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "applying-ethical-frameworks-to-algorithmic-decisions",
+    "prompt": "Each statement evaluates a commercial AI deployment through one ethical framework. Identify the framework.",
+    "options": [
+      { "id": "consequentialist", "label": "Consequentialist evaluation" },
+      { "id": "deontological", "label": "Deontological evaluation" },
+      { "id": "virtue", "label": "Virtue-ethical evaluation" }
+    ],
+    "cases": [
+      {
+        "id": "delivery-routing",
+        "text": "A grocery platform approves an automated dispatch algorithm because it cuts average delivery times by 14 minutes across the city, even though one outer suburb waits slightly longer.",
+        "answer": "consequentialist",
+        "explanation": "Judging the algorithm by net aggregate outcomes across affected parties is consequentialist evaluation."
+      },
+      {
+        "id": "synthetic-voice",
+        "text": "A bank prohibits its collections chatbot from impersonating a human caller because customers have a right not to be deceived, even when the human-sounding script collects more overdue balances.",
+        "answer": "deontological",
+        "explanation": "Enforcing an inviolable duty not to deceive consumers regardless of profitability is deontological evaluation."
+      },
+      {
+        "id": "cancellation-maze",
+        "text": "A subscription service rejects a retention chatbot that hides the cancel button behind five confusing prompts, concluding that the design erodes the firm's habits of honesty and care toward subscribers.",
+        "answer": "virtue",
+        "explanation": "Asking what kind of institution the firm becomes and whether the system reflects trustworthiness and care is virtue-ethical evaluation."
+      },
+      {
+        "id": "hidden-telemetry",
+        "text": "An automaker refuses to train its cabin assistant on microphone recordings collected without explicit driver opt-in, holding that informed consent is a non-negotiable consumer right.",
+        "answer": "deontological",
+        "explanation": "Treating informed consent and individual autonomy as binding constraints is deontological evaluation."
+      },
+      {
+        "id": "loophole-pricing",
+        "text": "Although a fee-disclosure rule technically permits showing surcharges in pale grey footnotes during AI checkout, leadership blocks the practice because a trustworthy retailer does not exploit regulatory loopholes.",
+        "answer": "virtue",
+        "explanation": "Focusing on institutional character and integrity beyond mere rule compliance is virtue-ethical evaluation."
+      },
+      {
+        "id": "triage-surplus",
+        "text": "An airline evaluates a rebooking algorithm by comparing total passenger delay hours saved against the refund costs paid to the travellers bumped from oversold flights.",
+        "answer": "consequentialist",
+        "explanation": "Weighing total benefits against total harms across groups in a cost-benefit calculation is consequentialist evaluation."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "the-problem-of-many-hands",
+    "question_text": "A regional pharmacy chain integrates a third-party language model into its patient refill portal. After the assistant advises several elderly customers to double a dosage when a refill is delayed, the model developer blames the pharmacy's custom system prompt, while the pharmacy blames the model's pre-trained weights. Under accountable algorithmic governance, how is this dispute resolved?",
+    "hint": "Distinguish between who contributed causally to the error and who holds accountability to the customer in the market.",
+    "correct_answer_citation": "Week 01 · The Problem of Many Hands",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Neither party is liable, because probabilistic outputs from a combined supply chain cannot be traced to a single decision maker.",
+        "option_explanation": "Allowing fragmented contributions to erase responsibility is the exact failure mode of the problem of many hands."
+      },
+      {
+        "option_text": "Only the foundation model developer is accountable to the patients, because pre-training created the model's baseline medical knowledge.",
+        "option_explanation": "While pre-training is a causal contribution, the developer did not deploy the patient-facing refill portal."
+      },
+      {
+        "option_text": "Causal contribution is distinguished from managerial and legal liability: the pharmacy chain that deployed the system to its patients remains accountable for the decisions the portal makes in its market.",
+        "option_explanation": "Correct. Accountable governance resolves the problem of many hands by holding the deploying firm accountable for customer-facing decisions, even when upstream vendors contributed to the system."
+      },
+      {
+        "option_text": "The patients bear responsibility if they accepted the portal's terms of service before reading the assistant's reply.",
+        "option_explanation": "Accountability for a deployed commercial system rests with the deploying organization, not with consumers harmed by its advice."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "allocating-accountability-across-stakeholders",
+    "prompt": "Match each stakeholder in the commercial AI value chain with the governance obligation it is accountable for.",
+    "term_label": "Value-chain actor",
+    "match_label": "Governance obligation",
+    "pairs": [
+      {
+        "id": "developer",
+        "term": "Foundation model developer",
+        "match": "Publish model documentation disclosing training-corpus gaps, baseline bias evaluations, and known failure modes before licensing the API.",
+        "explanation": "Foundation model developers are accountable for documenting training data limitations, baseline capabilities and biases, and known failure modes."
+      },
+      {
+        "id": "deployer",
+        "term": "Deploying firm",
+        "match": "Validate the configured assistant on the bank's own credit workflows, set human review gates, and monitor approval rates across customer segments.",
+        "explanation": "Deploying firms are accountable for task-specific validation, prompt and interface configuration, human oversight, and segment monitoring."
+      },
+      {
+        "id": "platform",
+        "term": "Digital platform",
+        "match": "Ensure marketplace ranking and auction rules do not covertly favor the platform's own private-label goods and label sponsored placements clearly.",
+        "explanation": "Platforms are accountable for ranking and auction integrity, clear sponsorship disclosures, and preventing self-preferencing or deceptive design."
+      },
+      {
+        "id": "auditor",
+        "term": "Auditor and ethics board",
+        "match": "Conduct an independent verification free of commercial conflicts of interest and report uncovered risks directly to leadership and regulators.",
+        "explanation": "Auditors and ethics boards are accountable for independent verification, conflict-of-interest independence, and accurate risk reporting."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "why-benchmark-accuracy-fails-as-a-governance-standard",
+    "prompt": "Each scenario describes why a high benchmark score failed to predict commercial readiness. Name the failure mode.",
+    "options": [
+      { "id": "mismatch", "label": "Construct mismatch" },
+      { "id": "fragility", "label": "Single-sample fragility" },
+      { "id": "sensitivity", "label": "Prompt and context sensitivity" },
+      { "id": "contamination", "label": "Benchmark contamination" }
+    ],
+    "cases": [
+      {
+        "id": "olympiad-credit",
+        "text": "A lender selects a model because it ranks first on a graduate-level physics and coding leaderboard, but the model systematically misprices small-business loans in retail.",
+        "answer": "mismatch",
+        "explanation": "Physics and coding scores measure general capability rather than the market behavior of interest, which is construct mismatch."
+      },
+      {
+        "id": "one-run-pass",
+        "text": "A compliance analyst runs each test prompt once at temperature 0.7, sees no biased output, and signs off—unaware that the model recommends a predatory loan on 35% of repeated runs.",
+        "answer": "fragility",
+        "explanation": "Testing a single draw per prompt instead of estimating the distribution across repeated samples is single-sample fragility."
+      },
+      {
+        "id": "persona-shift",
+        "text": "A model refuses to use demographic stereotypes on neutral safety tests, yet steers lower-income shoppers toward high-fee installment plans once given a commercial 'maximize checkout margin' system prompt.",
+        "answer": "sensitivity",
+        "explanation": "Passing neutral test phrasings while failing under realistic commercial prompts and role assignments is prompt and context sensitivity."
+      },
+      {
+        "id": "leaked-test",
+        "text": "A vendor's model scores 98% on a public financial-ethics exam because the exam's question bank was scraped into its pre-training corpus, but fails on newly written customer cases.",
+        "answer": "contamination",
+        "explanation": "High scores caused by test items appearing in training data without real-world generalization is benchmark contamination."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "the-six-stages-of-algorithmic-governance",
+    "prompt": "A retail bank is governing a new AI small-business credit line tool. Put the governance activities in order from Stage 1 to Stage 6.",
+    "steps": [
+      {
+        "id": "stage-1-scoping",
+        "text": "Define the credit decision the model will inform, identify small-business applicants as affected stakeholders, and classify the tool in a high-risk regulatory tier.",
+        "explanation": "Stage 1 is scoping and risk classification before development begins."
+      },
+      {
+        "id": "stage-2-data",
+        "text": "Audit historical lending records and training data for borrower consent, privacy compliance, and underrepresentation of rural merchants.",
+        "explanation": "Stage 2 is data and provenance review."
+      },
+      {
+        "id": "stage-3-audit",
+        "text": "Run controlled experimental tests on the candidate model to measure approval-rate disparities, prompt robustness, and task adherence.",
+        "explanation": "Stage 3 is pre-deployment behavioral auditing."
+      },
+      {
+        "id": "stage-4-oversight",
+        "text": "Build the underwriter review interface, applicant disclosure notices, and a formal appeal workflow for declined merchants.",
+        "explanation": "Stage 4 is oversight and disclosure design."
+      },
+      {
+        "id": "stage-5-signoff",
+        "text": "Present the completed audit dossier to the bank's risk committee for formal authorization to launch under specified operating limits.",
+        "explanation": "Stage 5 is authorization and launch sign-off."
+      },
+      {
+        "id": "stage-6-monitoring",
+        "text": "Track live approval rates by region every week and trigger an automatic rollback protocol if disparate-impact thresholds are breached.",
+        "explanation": "Stage 6 is post-deployment monitoring and incident response."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "human-in-the-loop-human-on-the-loop-and-autonomous-regimes",
+    "prompt": "Sort each deployed system into the oversight regime that describes how decision authority is shared.",
+    "bins": [
+      { "id": "hitl", "label": "Human-in-the-loop" },
+      { "id": "hotl", "label": "Human-on-the-loop" },
+      { "id": "auto", "label": "Fully autonomous" }
+    ],
+    "cards": [
+      {
+        "id": "commercial-loan",
+        "text": "An underwriting model scores corporate loan applications, but a senior credit officer must inspect the dossier and sign off before any approval or denial is sent.",
+        "bin": "hitl",
+        "explanation": "A human actively reviews and approves each individual case before action is taken: human-in-the-loop."
+      },
+      {
+        "id": "oncology-triage",
+        "text": "A diagnostic model highlights suspected tumours on a scan and queues a draft referral that cannot be scheduled until the attending physician approves it.",
+        "bin": "hitl",
+        "explanation": "Each individual recommendation requires active human approval before execution: human-in-the-loop."
+      },
+      {
+        "id": "surge-pricing",
+        "text": "A ride-hail pricing engine updates fares every 30 seconds across a city while a pricing analyst watches live anomaly dashboards and can cap or halt multipliers.",
+        "bin": "hotl",
+        "explanation": "Decisions execute automatically in real time while an operator monitors dashboards with override and shutdown authority: human-on-the-loop."
+      },
+      {
+        "id": "card-fraud",
+        "text": "A payment gateway blocks suspected stolen-card bursts automatically while fraud operations engineers monitor false-positive alerts and can relax or shut off a rule.",
+        "bin": "hotl",
+        "explanation": "Real-time automated execution paired with live human monitoring and intervention is human-on-the-loop."
+      },
+      {
+        "id": "rtb-ads",
+        "text": "An ad-exchange bidder places microsecond bids on display impressions within pre-set budget caps, with performance reviewed only in monthly statistical audits.",
+        "bin": "auto",
+        "explanation": "Actions initiate and complete without contemporaneous human review, bounded by pre-programmed constraints and periodic audits: fully autonomous."
+      },
+      {
+        "id": "reordering-agent",
+        "text": "A household shopping agent automatically reorders detergent whenever smart-shelf weight drops, operating within a $40 price ceiling without human confirmation.",
+        "bin": "auto",
+        "explanation": "The agent completes transactions without contemporaneous review under pre-programmed constraints: fully autonomous."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "matching-oversight-regimes-to-decision-risk",
+    "prompt": "Match each market decision to the appropriate oversight regime based on its reversibility, severity of harm, and required speed.",
+    "options": [
+      { "id": "hitl", "label": "Human-in-the-loop review" },
+      { "id": "hotl", "label": "Human-on-the-loop with circuit breakers" },
+      { "id": "auto", "label": "Autonomous with periodic statistical auditing" }
+    ],
+    "cases": [
+      {
+        "id": "disability-claim",
+        "text": "Terminating a policyholder's long-term disability benefits—a low-frequency decision that causes severe financial harm and is costly to reverse.",
+        "answer": "hitl",
+        "explanation": "High-stakes, low-frequency decisions that are difficult to reverse require human-in-the-loop review with interpretable evidence and recourse."
+      },
+      {
+        "id": "warehouse-allocation",
+        "text": "Reallocating hourly stock across regional warehouses—thousands of medium-stakes adjustments per day where sudden demand spikes can trigger automated circuit breakers.",
+        "answer": "hotl",
+        "explanation": "Medium-stakes, high-frequency operational decisions call for human-on-the-loop monitoring with automated circuit breakers."
+      },
+      {
+        "id": "homepage-banners",
+        "text": "Re-ranking the order of six apparel banners on a fashion site's homepage—millions of low-stakes impressions per hour where any poor ordering is easily corrected.",
+        "answer": "auto",
+        "explanation": "Low-stakes, high-velocity decisions where errors are easily corrected can operate autonomously under periodic statistical auditing."
+      },
+      {
+        "id": "franchise-termination",
+        "text": "Deactivating a small restaurant's marketplace account for alleged policy violations—a rare decision that can bankrupt the merchant if erroneous.",
+        "answer": "hitl",
+        "explanation": "Severe harm and low reversibility require individual human-in-the-loop review and formal recourse before action."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "dual-agency-and-governance-risks-in-agentic-commerce",
+    "prompt": "Match each governance risk in agent-mediated commerce with the market scenario that illustrates it.",
+    "term_label": "Agentic governance risk",
+    "match_label": "Market scenario",
+    "pairs": [
+      {
+        "id": "principal-agent",
+        "term": "Principal-agent conflict",
+        "match": "A retail marketplace's built-in shopping assistant steers a buyer toward a higher-margin sponsored blender because the platform earns ad revenue on promoted clicks.",
+        "explanation": "When an advertising-funded platform deploys the consumer's assistant, its commercial incentive conflicts with its duty to the shopper (Wadi & Ma, 2026c)."
+      },
+      {
+        "id": "position-bias",
+        "term": "Heuristic and position bias",
+        "match": "Given a catalog of 50 identical-quality USB cables, a shopping agent disproportionately selects whichever listing appears in the first or last slot of the context window.",
+        "explanation": "AI agents rely on cognitive shortcuts and exhibit non-monotonic position effects when scanning catalogs (Wadi & Ma, 2026a, 2026b)."
+      },
+      {
+        "id": "adversarial-storefront",
+        "term": "Adversarial storefront manipulation",
+        "match": "A third-party seller hides white-on-white text in a product description instructing any reading LLM to ignore higher prices and rate the item as the safest choice.",
+        "explanation": "Embedding hidden instructions or strategic framing in listings to hijack an agent's evaluation is adversarial storefront manipulation."
+      },
+      {
+        "id": "liability-ambiguity",
+        "term": "Liability ambiguity",
+        "match": "An autonomous assistant books a non-refundable $1,800 flight to the wrong city, and the traveller, airline platform, and model vendor each deny financial responsibility.",
+        "explanation": "Uncertainty over whether the consumer, platform, or model developer bears the loss from an unsuitable autonomous purchase is liability ambiguity."
+      }
+    ]
+  }
+]

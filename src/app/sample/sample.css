@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  --page-bg: #faf7f0;
+  --page-subtle: #f2ece0;
+  --ink: #181715;
+  --ink-body: #2c2a26;
+  --ink-muted: #6e695f;
+  --ink-faint: #9c9588;
+  --rule: rgba(24, 23, 21, 0.14);
+  --rule-strong: rgba(24, 23, 21, 0.45);
+  --crimson: #b63a2b;
+  --crimson-tint: rgba(182, 58, 43, 0.1);
+  --ochre: #8f6319;
+  --ochre-tint: rgba(143, 99, 25, 0.11);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--page-bg);
+  color: var(--ink);
+  font-family: var(--font-editorial), Georgia, Cambria, "Times New Roman", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.cinematic-surface {
+  background-color: var(--page-bg);
+  background-image: radial-gradient(
+    ellipse 90% 75% at 50% 30%,
+    #fdfbf7 0%,
+    #faf7f0 65%,
+    #f3ede1 100%
+  );
+}

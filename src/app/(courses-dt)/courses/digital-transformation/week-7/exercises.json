@@ -1,0 +1,254 @@
+[
+  {
+    "type": "match",
+    "slide_id": "features-of-blockchain",
+    "prompt": "Match each core feature of blockchain with how it operates in a shared shipping ledger.",
+    "term_label": "Blockchain Feature",
+    "match_label": "In the Shipping Ledger",
+    "pairs": [
+      {
+        "id": "decentralized",
+        "term": "Decentralized",
+        "match": "Copies of the shipment ledger live across ports, carriers, and customs offices rather than on a single company's central cloud server.",
+        "explanation": "Decentralized means there is no single point of control and data is distributed across a network, in contrast with cloud computing."
+      },
+      {
+        "id": "immutable",
+        "term": "Immutable",
+        "match": "Once a container's inspection timestamp is written to the ledger, no participant can retroactively edit or delete the entry.",
+        "explanation": "Immutability means recorded transactions are permanent and cannot be altered."
+      },
+      {
+        "id": "consensus",
+        "term": "Consensus",
+        "match": "A new customs clearance entry is added only after the network's participating nodes verify and agree that the record is valid.",
+        "explanation": "Consensus requires all parties in the network to agree on the validity of transactions."
+      },
+      {
+        "id": "programmable",
+        "term": "Programmable",
+        "match": "Self-executing code on the ledger releases the carrier's freight fee the moment port sensors confirm the container arrived below 4°C.",
+        "explanation": "Programmability allows smart contracts to settle transactions automatically based on complex situations."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "case-study-amazon",
+    "prompt": "Arrange the five stages of an IoT-and-smart-contract supply chain process in the order they occur.",
+    "steps": [
+      {
+        "id": "order-placement",
+        "text": "Order Placement: A pharmacy chain places an order for temperature-sensitive vaccines, triggering a smart contract on the blockchain.",
+        "explanation": "The workflow begins when the buyer places an order, which initializes and triggers the smart contract."
+      },
+      {
+        "id": "shipment-tracking",
+        "text": "Shipment Tracking: Connected IoT sensors inside the refrigerated truck monitor temperature and location in real time and update the blockchain.",
+        "explanation": "While goods are in transit, IoT sensors continuously track shipment conditions and log updates to the blockchain."
+      },
+      {
+        "id": "delivery-confirmation",
+        "text": "Delivery Confirmation: When the shipment arrives at the warehouse and passes verification, the smart contract automatically releases payment to the supplier.",
+        "explanation": "Upon verified delivery, the smart contract executes the payment to the supplier without manual invoicing delays."
+      },
+      {
+        "id": "documentation",
+        "text": "Documentation: Every transaction detail, sensor reading, and fulfilled term is permanently recorded on the immutable blockchain ledger.",
+        "explanation": "All transactions and contract terms are stored immutably on the blockchain as an auditable record."
+      },
+      {
+        "id": "post-purchase",
+        "text": "Post-purchase Services: The immutable record supports ongoing product support, warranty verification, and any return claims.",
+        "explanation": "After fulfillment and documentation, post-purchase services such as product support and returns rely on the recorded history."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "smart-contracts-in-real-estate",
+    "prompt": "Sort each property transaction characteristic into Traditional Contracts or Smart Contracts.",
+    "bins": [
+      { "id": "traditional", "label": "Traditional Contracts" },
+      { "id": "smart", "label": "Smart Contracts" }
+    ],
+    "cards": [
+      {
+        "id": "manual-paper",
+        "text": "Manually executed and signed on paper or digital documents, taking weeks or months to close.",
+        "bin": "traditional",
+        "explanation": "Traditional real estate contracts rely on manual execution and lengthy processing."
+      },
+      {
+        "id": "brokers-notaries",
+        "text": "Requires trust in multiple intermediaries such as brokers, lawyers, and notaries, increasing transaction fees.",
+        "bin": "traditional",
+        "explanation": "Traditional contracts depend on third-party intermediaries and carry higher fee costs."
+      },
+      {
+        "id": "court-forgery",
+        "text": "Vulnerable to deed forgery and data manipulation, with disputes generally requiring court action or mediation.",
+        "bin": "traditional",
+        "explanation": "Paper and centralized records face forgery risks and rely on legal mediation when disputes arise."
+      },
+      {
+        "id": "auto-minutes",
+        "text": "Automatically executes in minutes to hours as soon as predefined closing conditions are met.",
+        "bin": "smart",
+        "explanation": "Smart contracts automate execution once conditions are met, completing transfers in minutes to hours."
+      },
+      {
+        "id": "minimized-trust",
+        "text": "Minimizes trust requirements and lowers costs by eliminating third-party intermediaries.",
+        "bin": "smart",
+        "explanation": "Smart contracts rely on blockchain security rather than costly intermediaries."
+      },
+      {
+        "id": "immutable-dispute",
+        "text": "Secures ownership on an immutable blockchain ledger with built-in mechanisms for automated dispute resolution.",
+        "bin": "smart",
+        "explanation": "Blockchain immutability protects title records and enables coded dispute resolution."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "bank-loan-approval-process",
+    "question_text": "A credit union replaces its manual small-business loan review with a blockchain smart contract. When a bakery owner submits a loan application, what happens next in the smart-contract workflow and what outcome does it produce?",
+    "hint": "Recall the three steps of the bank loan approval process and how they change processing time and operational costs.",
+    "correct_answer_index": 0,
+    "correct_answer_citation": "Process: Customer submits loan application. Smart contract verifies identity, credit score, and other conditions. Automatic loan disbursement upon confirmation. Outcomes: Reduced processing time from days to minutes. Lower operational costs and less human error.",
+    "options": [
+      {
+        "option_text": "The smart contract automatically verifies the applicant's identity, credit score, and required conditions, then disburses the funds upon confirmation—cutting processing time from days to minutes and lowering operational costs and human error.",
+        "option_explanation": "Correct. The smart contract verifies predefined criteria (identity, credit score, documents) and automatically disburses the loan, reducing time from days to minutes and minimizing manual errors."
+      },
+      {
+        "option_text": "The smart contract emails the application PDF to a loan committee for manual underwriting, which takes several weeks but stores the final signature on a central cloud server.",
+        "option_explanation": "Smart contracts eliminate manual underwriting bottlenecks and execute on a decentralized blockchain rather than waiting weeks for manual committee review."
+      },
+      {
+        "option_text": "The smart contract approves every loan application without checking credit scores or identity, because blockchain transactions are anonymous and unconditional.",
+        "option_explanation": "Smart contracts are conditional (if/then): they explicitly verify identity, credit score, and other predefined conditions before disbursing funds."
+      },
+      {
+        "option_text": "The smart contract requires an external notary and two attorneys to co-sign each stage, increasing fees in exchange for faster court litigation.",
+        "option_explanation": "Smart contracts reduce or eliminate intermediaries and lower operational costs rather than adding third-party fees."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "smart-contracts-in-legal-contracts",
+    "prompt": "Match each legal contract concept with how it appears when a startup hires a freelance web developer.",
+    "term_label": "Legal Contract Concept",
+    "match_label": "Startup & Web Developer Scenario",
+    "pairs": [
+      {
+        "id": "complexity-ambiguity",
+        "term": "Complexity, Length & Ambiguity",
+        "match": "A 30-page paper agreement uses vague phrases like 'satisfactory website speed,' leading the founder and developer to interpret the requirement differently.",
+        "explanation": "Traditional legal contracts often contain lengthy, convoluted terms open to interpretation, causing disputes."
+      },
+      {
+        "id": "legal-intervention",
+        "term": "Need for Legal Intervention",
+        "match": "When the founder withholds the final payment, both sides have to hire lawyers and wait months for a court hearing, incurring high legal costs.",
+        "explanation": "Traditional agreements often require costly and slow court involvement to enforce terms."
+      },
+      {
+        "id": "automated-conditions",
+        "term": "Automated Transactions & Conditions",
+        "match": "The agreement is coded so that 50% of the fee releases automatically when the staging site passes automated load tests and delivery is confirmed.",
+        "explanation": "Smart contracts execute transactions automatically once predefined conditions—such as performance milestones or delivery confirmation—are met."
+      },
+      {
+        "id": "builtin-mechanisms",
+        "term": "Built-in Dispute Mechanisms",
+        "match": "If a milestone deadline is missed, a pre-coded algorithm automatically refunds the escrowed deposit to the startup without going to court.",
+        "explanation": "Built-in mechanisms resolve disputes automatically through defined algorithms without resorting to courts."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "smart-contracts-in-voting-systems",
+    "prompt": "Each election scenario below highlights a specific blockchain voting feature. Identify which feature is at work.",
+    "options": [
+      { "id": "immutable", "label": "Immutable Ledger" },
+      { "id": "decentralization", "label": "Decentralization" },
+      { "id": "automated", "label": "Automated Vote Counting" },
+      { "id": "transparent", "label": "Transparent Validation" },
+      { "id": "condition", "label": "Condition-Based Execution" }
+    ],
+    "cases": [
+      {
+        "id": "no-alter-ballot",
+        "text": "Once a citizen casts their digital ballot, the record is permanently locked so no official or hacker can alter or delete the vote afterward.",
+        "answer": "immutable",
+        "explanation": "An Immutable Ledger ensures all votes are permanently recorded and cannot be altered once submitted."
+      },
+      {
+        "id": "multi-node-defense",
+        "text": "Election records are distributed across hundreds of independent validator nodes nationwide, so taking down one server cannot compromise the election.",
+        "answer": "decentralization",
+        "explanation": "Decentralization distributes data across multiple nodes, reducing the risk of centralized attacks."
+      },
+      {
+        "id": "instant-tally",
+        "text": "The moment polls close at 8:00 PM, the smart contract tallies every submitted ballot instantaneously, avoiding days of manual recounting delays.",
+        "answer": "automated",
+        "explanation": "Automated Vote Counting tallies votes via smart contracts as soon as they are submitted, enabling real-time results."
+      },
+      {
+        "id": "stakeholder-verify",
+        "text": "Independent observers and voters can cryptographically audit that each ballot was included in the final count without relying on a closed counting room.",
+        "answer": "transparent",
+        "explanation": "Transparent Validation allows each vote to be tracked and verified by all stakeholders."
+      },
+      {
+        "id": "voter-eligibility",
+        "text": "Before a ballot can be submitted, the smart contract checks that the voter is registered in the district and has not already voted.",
+        "answer": "condition",
+        "explanation": "Condition-Based Execution enforces voting rules and requirements such as eligibility verification."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "other-use-cases-of-smart-contracts",
+    "prompt": "Identify which smart contract application domain each real-world scenario illustrates.",
+    "options": [
+      { "id": "crowdfunding", "label": "Crowdfunding" },
+      { "id": "charity", "label": "Donations and Charity" },
+      { "id": "education", "label": "Education" },
+      { "id": "ip", "label": "Intellectual Property Management" }
+    ],
+    "cases": [
+      {
+        "id": "hardware-milestones",
+        "text": "Backers fund a clean-energy startup; the smart contract holds the pool and releases each tranche of capital only when the team completes a verified prototype milestone.",
+        "answer": "crowdfunding",
+        "explanation": "In Crowdfunding, smart contracts automatically release funds to projects upon reaching specified milestones."
+      },
+      {
+        "id": "earthquake-relief",
+        "text": "Donors send Bitcoin to a disaster-relief organization, and every purchase of medical supplies and shelter kits is tracked on the blockchain so donors can verify how funds were spent.",
+        "answer": "charity",
+        "explanation": "In Donations and Charity (disaster management), blockchain and smart contracts track purchases made with donated funds to ensure transparency."
+      },
+      {
+        "id": "course-diploma",
+        "text": "As soon as a student passes the final exam and completes all required modules, a smart contract issues a verifiable digital certificate to their wallet.",
+        "answer": "education",
+        "explanation": "In Education, smart contracts automatically issue certificates upon course completion."
+      },
+      {
+        "id": "music-royalty",
+        "text": "An independent musician timestamps their original track on the blockchain to prove they created it first, and a smart contract automatically pays them royalties whenever the song is licensed.",
+        "answer": "ip",
+        "explanation": "In Intellectual Property Management, blockchain records who created content first and smart contracts automate licensing and royalty enforcement."
+      }
+    ]
+  }
+]

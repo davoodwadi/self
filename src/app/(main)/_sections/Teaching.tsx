@@ -1,10 +1,11 @@
-import { CB_DIR, IM_DIR, MRA_DIR, readCurriculum } from "@/lib/curriculum";
+import { CB_DIR, IM_DIR, MRA_DIR, RAI_DIR, readCurriculum } from "@/lib/curriculum";
 import { Section } from "./Section";
 
 // Course text that has a curriculum.md is read from it, not written here.
 const CB = readCurriculum(CB_DIR);
 const IM = readCurriculum(IM_DIR);
 const MRA = readCurriculum(MRA_DIR);
+const RAI = readCurriculum(RAI_DIR);
 
 const ROLES = [
   {
@@ -69,6 +70,12 @@ const SITES: {
     subtitle: MRA.subtitle,
     href: "/courses/marketing-research-analytics",
     description: MRA.summary,
+  },
+  {
+    title: RAI.title,
+    subtitle: RAI.subtitle,
+    href: "/courses/responsible-ai-governance",
+    description: RAI.summary,
   },
 ];
 

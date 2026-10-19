@@ -1,0 +1,199 @@
+[
+  {
+    "type": "match",
+    "slide_id": "the-evolving-threat-landscape",
+    "prompt": "Match each cybersecurity threat or attack-surface vector with the scenario that illustrates it.",
+    "term_label": "Threat or Attack-Surface Vector",
+    "match_label": "Real-World Scenario",
+    "pairs": [
+      {
+        "id": "state-sponsored",
+        "term": "State-Sponsored Attacks",
+        "match": "A foreign intelligence unit quietly infiltrates a national power-grid operator over several months to map critical industrial controls.",
+        "explanation": "State-sponsored attacks are sophisticated cyber operations backed by nation-states targeting critical infrastructure or strategic assets."
+      },
+      {
+        "id": "ransomware",
+        "term": "Ransomware",
+        "match": "Attackers encrypt a regional hospital's scheduling and billing servers, demanding payment before restoring access to patient records.",
+        "explanation": "Ransomware locks an organization out of its own systems or data until a ransom is paid, halting operations and damaging reputation."
+      },
+      {
+        "id": "supply-chain",
+        "term": "Supply Chain Vulnerabilities",
+        "match": "Intruders slip malicious code into a trusted third-party accounting plugin so every client company that installs the update is compromised.",
+        "explanation": "Supply chain vulnerabilities exploit a third-party vendor or software dependency to breach downstream businesses."
+      },
+      {
+        "id": "iot-manipulation",
+        "term": "IoT (Device Manipulation)",
+        "match": "Attackers hijack unpatched network-connected warehouse temperature sensors to falsify cold-storage readings and pivot into the corporate LAN.",
+        "explanation": "Connected IoT hardware expands the attack surface when physical sensors and devices can be manipulated remotely."
+      },
+      {
+        "id": "remote-mfa",
+        "term": "Remote Work (Multifactor Authentication)",
+        "match": "An employee logging into cloud payroll from a home network must approve a cryptographic hardware prompt in addition to entering a password.",
+        "explanation": "Remote work and cloud adoption expand the perimeter beyond the office, making Multifactor Authentication essential to verify identity."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "case-study-cra-data-leak",
+    "prompt": "Arrange the events of the Canadian Revenue Agency (CRA) data leak case study into their logical and chronological sequence.",
+    "steps": [
+      {
+        "id": "hr-block-credentials",
+        "text": "Dating back to 2020, hackers obtain confidential data used by H&R Block Canada, one of the country's largest tax preparation firms.",
+        "explanation": "The breach chain began with attackers acquiring confidential credentials and data associated with H&R Block Canada."
+      },
+      {
+        "id": "direct-deposit-fraud",
+        "text": "Using unauthorized access, imposters alter taxpayers' direct deposit information, file false tax returns, and siphon over $6 million in fraudulent refunds.",
+        "explanation": "Once inside, imposters changed direct deposit routing and submitted fraudulent returns to steal over $6 million from the public purse."
+      },
+      {
+        "id": "cra-internal-exposure",
+        "text": "CRA confirms that an internal error left over 30,000 Canadian taxpayers' Social Insurance Numbers (SIN), tax returns, and financial details accessible to unauthorized individuals.",
+        "explanation": "Beyond external credential abuse, the CRA confirmed an internal error exposed over 30,000 taxpayers' SINs and financial records."
+      },
+      {
+        "id": "opc-privacy-act",
+        "text": "The Office of the Privacy Commissioner of Canada (OPC) conducts an ongoing investigation to determine whether the CRA met its obligations under the Privacy Act.",
+        "explanation": "Following the exposure, the OPC launched an investigation into the agency's compliance with the federal Privacy Act."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "ethics-in-digital-transformation",
+    "prompt": "Sort each product architecture decision into the ethical data approach it represents.",
+    "bins": [
+      { "id": "minimization", "label": "Privacy by Design & Data Minimization" },
+      { "id": "personalization", "label": "Data-Driven Personalization Model" }
+    ],
+    "cards": [
+      {
+        "id": "zero-collection-transit",
+        "text": "A city transit app calculates route times directly on the rider's phone and never uploads or stores GPS coordinates on company servers.",
+        "bin": "minimization",
+        "explanation": "Instead of attempting to protect collected location histories, the app follows data minimization by not collecting the data at all."
+      },
+      {
+        "id": "ephemeral-age-check",
+        "text": "A checkout terminal verifies a buyer's age token locally and immediately discards the birth date rather than saving a customer profile.",
+        "bin": "minimization",
+        "explanation": "Privacy needs little data collection; discarding unnecessary attributes at the point of use embodies privacy by design."
+      },
+      {
+        "id": "behavioral-feed",
+        "text": "A streaming platform logs every pause, rewind, time of day, and device location to tailor a custom homepage for each subscriber.",
+        "bin": "personalization",
+        "explanation": "Personalization needs personal data: the business model depends on continuous behavioral collection to customize recommendations."
+      },
+      {
+        "id": "cross-store-loyalty",
+        "text": "A grocer links credit-card purchases, pharmacy refills, and app browsing history into a unified shopper graph to send individualized coupons.",
+        "bin": "personalization",
+        "explanation": "This data-driven business model maximizes personal data collection to drive targeted personalization, trading off privacy."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "ethical-ai-and-algorithm-governance",
+    "prompt": "Identify which algorithmic bias or governance failure is illustrated by each AI scenario.",
+    "options": [
+      { "id": "social-bias", "label": "Social Bias" },
+      { "id": "racial-bias", "label": "Racial Bias" },
+      { "id": "gender-bias", "label": "Gender Bias" },
+      { "id": "cognitive-bias", "label": "Cognitive Bias" },
+      { "id": "explainability", "label": "Transparency & Explainability Gap" }
+    ],
+    "cases": [
+      {
+        "id": "postal-code-credit",
+        "text": "A loan-scoring model penalizes applicants from lower-income zip codes and non-elite schools, reproducing socioeconomic class stratification.",
+        "answer": "social-bias",
+        "explanation": "Penalizing applicants based on socioeconomic status and neighborhood prestige reflects social bias encoded in historical data."
+      },
+      {
+        "id": "facial-false-positive",
+        "text": "A security camera recognition model trained mostly on lighter-skinned faces misidentifies darker-skinned shoppers at ten times the rate.",
+        "answer": "racial-bias",
+        "explanation": "Disproportionate error rates across racial groups due to unrepresentative training sets are a textbook case of racial bias."
+      },
+      {
+        "id": "resume-stem-filter",
+        "text": "An automated recruiting tool trained on ten years of male-dominated engineering resumes downgrades applications mentioning women's professional associations.",
+        "answer": "gender-bias",
+        "explanation": "Skewing job rankings by gender patterns in historical hiring data demonstrates gender bias."
+      },
+      {
+        "id": "anchoring-confirm-metric",
+        "text": "Engineers tune a forecasting model to weight recent viral spikes ten times heavier than baseline trends because the team overvalues vivid recent events.",
+        "answer": "cognitive-bias",
+        "explanation": "Embedding human mental shortcuts such as recency or confirmation bias into model design introduces cognitive bias."
+      },
+      {
+        "id": "opaque-denial",
+        "text": "A patient is denied coverage by a deep neural network, and neither the hospital nor the vendor can answer how the AI model reached its decision.",
+        "answer": "explainability",
+        "explanation": "Transparency and explainability requirements ask: 'How is the AI model making decisions?' A black box that cannot be audited fails this requirement."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "environmental-sustainability-growth",
+    "question_text": "Between 2017 and 2023, frontier AI training costs rose from $930 for the original Transformer model to over $78 million for GPT-4, growing by a factor of 2x to 3x per year. If an AI lab's flagship training run cost $100 million in 2023 and follows the upper 3x annual growth rate, what does this trajectory imply for 2027?",
+    "hint": "Consider what happens when a $100M training run multiplies by 2x to 3x each year over four years (2023 to 2027).",
+    "correct_answer_index": 0,
+    "correct_answer_citation": "Training costs for frontier AI models have grown by a factor of 2x to 3x per year for the past eight years. If this trend continues, the largest training runs could cost more than a billion dollars by 2027.",
+    "options": [
+      {
+        "option_text": "The largest single training runs will exceed $1 billion by 2027, accompanied by a massive escalation in energy consumption and carbon footprint.",
+        "option_explanation": "Correct. Compounding 2x–3x per year pushes frontier training runs past $1 billion by 2027, intensifying the environmental carbon footprint of digital technologies."
+      },
+      {
+        "option_text": "Training costs will plateau around $100 million because staff salaries replace compute hardware as the only growing expense.",
+        "option_explanation": "Even excluding staff salaries, compute costs alone grew from $930 (2017) to $41M–$78.4M for GPT-4 and $30M–$191M for Gemini Ultra (2023)."
+      },
+      {
+        "option_text": "Hardware efficiency improvements reduce frontier training costs by 2x to 3x per year back toward the 2017 Transformer baseline.",
+        "option_explanation": "Total training costs have risen—not fallen—by 2x to 3x per year for the past eight years as model scale outpaces hardware efficiency."
+      },
+      {
+        "option_text": "Only open-source models incur carbon footprints, while proprietary models like GPT-4 and Gemini Ultra have zero environmental impact.",
+        "option_explanation": "Every large-scale training run consumes megawatt-hours of data-center electricity and cooling water regardless of licensing model."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "platform-power-and-digital-monopolies",
+    "question_text": "In 2024, a startup launching a new web application discovers that to host its site reliably at scale, it effectively must go through one of the top five cloud companies. Which economic mechanism from the lecture explains this concentration of infrastructure power?",
+    "hint": "Think about how each additional customer, developer tool, and global data center makes a leading platform more valuable and harder for newcomers to rival.",
+    "correct_answer_index": 0,
+    "correct_answer_citation": "Platform Power and Digital Monopolies: Network effects and winner-takes-all dynamics — In 2024, if you were to host your website, you had to go through one of top five cloud companies.",
+    "options": [
+      {
+        "option_text": "Network effects and winner-takes-all dynamics that centralize cloud computing power among a handful of dominant platforms.",
+        "option_explanation": "Correct. Strong network effects and scale economies create winner-takes-all dynamics, concentrating web hosting among the top five cloud companies."
+      },
+      {
+        "option_text": "Data minimization regulations that legally prohibit companies from operating more than five cloud providers globally.",
+        "option_explanation": "Cloud centralization is driven by economic network effects and winner-takes-all dynamics, not a legal cap on provider count."
+      },
+      {
+        "option_text": "Algorithmic cognitive bias that causes web browsers to block websites hosted on independent servers.",
+        "option_explanation": "Cognitive bias is an AI fairness issue, whereas cloud market concentration stems from network effects and winner-takes-all platform dynamics."
+      },
+      {
+        "option_text": "Supply chain ransomware that destroyed all on-premise servers in 2020.",
+        "option_explanation": "While cybersecurity risks exist, the dominance of the top five cloud companies is the result of network effects and winner-takes-all dynamics."
+      }
+    ]
+  }
+]

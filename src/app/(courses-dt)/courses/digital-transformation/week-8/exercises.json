@@ -1,0 +1,209 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "virtual-reality-vr-and-augmented-reality-ar",
+    "prompt": "Sort each real-world scenario into Virtual Reality (VR) or Augmented Reality (AR).",
+    "bins": [
+      { "id": "vr", "label": "Virtual Reality (VR)" },
+      { "id": "ar", "label": "Augmented Reality (AR)" }
+    ],
+    "cards": [
+      {
+        "id": "surgeon-headset",
+        "text": "A surgical resident puts on a headset that blocks out the clinic and places them inside a fully computer-generated operating theater with 3D audio and haptic resistance on their hand controllers.",
+        "bin": "vr",
+        "explanation": "VR uses headsets to create a fully computer-generated environment experienced through visual, auditory, and haptic stimuli."
+      },
+      {
+        "id": "sofa-tablet",
+        "text": "A shopper holds up their tablet in their living room to project a life-sized digital sofa onto their actual hardwood floor before ordering.",
+        "bin": "ar",
+        "explanation": "AR overlays digital objects onto the real world through a tablet or smartphone, letting the user see both physical and virtual elements together."
+      },
+      {
+        "id": "warehouse-glasses",
+        "text": "A warehouse technician wears smart glasses that display glowing picking arrows and torque specs directly over the physical shelving and bolts in front of them.",
+        "bin": "ar",
+        "explanation": "AR glasses overlay digital information onto physical surroundings so the worker interacts with both virtual cues and real shelves."
+      },
+      {
+        "id": "offshore-rig",
+        "text": "An energy engineer steps into a headset simulation of a deep-sea oil rig fire, practicing emergency valve shutoffs inside a 360-degree virtual world.",
+        "bin": "vr",
+        "explanation": "The engineer is completely immersed in a computer-generated environment rather than viewing overlays on their physical room."
+      },
+      {
+        "id": "museum-phone",
+        "text": "A museum visitor points their smartphone camera at a stone statue, and historical translations and a reconstructed paint layer appear over the live camera view.",
+        "bin": "ar",
+        "explanation": "Viewing digital overlays on top of a real physical object through a smartphone is Augmented Reality."
+      },
+      {
+        "id": "architect-walkthrough",
+        "text": "A client wears a head-mounted display to walk through an unbuilt hotel lobby that exists only as a 3D digital model.",
+        "bin": "vr",
+        "explanation": "A headset that replaces the real room with a fully computer-generated 3D environment is Virtual Reality."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "elements-of-gamification",
+    "prompt": "Match each core gamification element with how it operates in a workplace sustainability program.",
+    "term_label": "Gamification Element",
+    "match_label": "Workplace Sustainability Example",
+    "pairs": [
+      {
+        "id": "points",
+        "term": "Points",
+        "match": "Employees earn +15 Eco-Credits every time they commute by bike or log a zero-waste lunch, giving them a quantifiable score of their daily actions.",
+        "explanation": "Points are earned for completing tasks or participating in activities and serve as a measurable form of progress and achievement."
+      },
+      {
+        "id": "badges",
+        "term": "Badges",
+        "match": "Completing 30 consecutive car-free commutes unlocks a 'Green Commuter' crest on the employee's profile to recognize the accomplishment.",
+        "explanation": "Badges are visual representations of accomplishments earned by completing specific tasks, providing recognition and motivation."
+      },
+      {
+        "id": "leaderboards",
+        "term": "Leaderboards",
+        "match": "A live lobby display ranks the company's regional offices from first to tenth based on total energy saved this month.",
+        "explanation": "Leaderboards rank participants based on performance, fostering competition through social comparison and status."
+      },
+      {
+        "id": "challenges-quests",
+        "term": "Challenges and Quests",
+        "match": "Teams embark on a 'Zero-Paper Week' mission with three progressively harder obstacles to clear before Friday to unlock a team lunch.",
+        "explanation": "Challenges and quests structure tasks as an adventure where users overcome obstacles to unlock rewards."
+      },
+      {
+        "id": "levels-progression",
+        "term": "Levels and Progression",
+        "match": "As an employee's cumulative Eco-Credits grow across the year, their account advances from Bronze Apprentice to Silver Steward to Gold Guardian.",
+        "explanation": "Levels and progression let users advance by completing objectives or accumulating points, providing a sustained sense of progression."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "challenges-of-gamification",
+    "prompt": "Each scenario below illustrates one of the two key pitfalls of gamification. Identify which challenge is occurring.",
+    "options": [
+      { "id": "overjustification", "label": "Overjustification Effect" },
+      { "id": "excessive-freedom", "label": "Excessive Freedom" }
+    ],
+    "cases": [
+      {
+        "id": "reading-vouchers",
+        "text": "A library pays children $2 in gift vouchers for every book they finish during the summer; once the voucher campaign ends in September, the children read fewer books than they did before the program started.",
+        "answer": "overjustification",
+        "explanation": "Relying too heavily on extrinsic rewards (vouchers) undermined the children's intrinsic enjoyment of reading for its own sake."
+      },
+      {
+        "id": "onboarding-sandbox",
+        "text": "A company launches a 3D virtual campus for new hires to explore freely, but provides no missions, checklists, or goals—within ten minutes, new hires wander aimlessly and close the app out of boredom.",
+        "answer": "excessive-freedom",
+        "explanation": "An open-world environment with no clear objectives creates excessive freedom, leaving users bored and disengaged."
+      },
+      {
+        "id": "coder-bounties",
+        "text": "Engineers who used to voluntarily mentor junior teammates for personal fulfillment stop helping whenever a question does not carry a 'Mentor Bounty' token.",
+        "answer": "overjustification",
+        "explanation": "Heavy extrinsic bounties shifted the engineers' focus from intrinsic personal growth and enjoyment to purely chasing the reward."
+      },
+      {
+        "id": "language-metaverse",
+        "text": "A language-learning app drops learners into a massive virtual city with hundreds of NPCs but no structured quests or level targets, causing learners to quit because they cannot tell what to do next.",
+        "answer": "excessive-freedom",
+        "explanation": "Without structured objectives or quests, excessive freedom in an open world makes the experience feel aimless and boring."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "zombies-run",
+    "prompt": "Arrange the stages of the 'Zombies, Run!' gamified running loop in the order a runner experiences them.",
+    "steps": [
+      {
+        "id": "walk-or-run",
+        "text": "Step outside to walk, jog, or run anywhere in the real world while wearing headphones.",
+        "explanation": "The experience begins with physical exercise in the real world—walking or running at your own pace."
+      },
+      {
+        "id": "hear-mission",
+        "text": "Listen as the story mission unfolds through radio transmissions delivered between tracks of your own music playlist.",
+        "explanation": "Audio storytelling immerses the runner as 'Runner 5' in between their own songs."
+      },
+      {
+        "id": "collect-supplies",
+        "text": "Automatically pick up virtual medicine, batteries, and supplies as you cover distance so you can rebuild and grow your home base afterward.",
+        "explanation": "Running distance translates into virtual supplies collected during the mission to expand Abel Township."
+      },
+      {
+        "id": "zombie-chase",
+        "text": "When an audio alert warns that a zombie horde is closing in, physically sprint faster for a short burst to escape and protect your supplies.",
+        "explanation": "Zombie chases turn interval sprints into an urgent narrative obstacle inside the run."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "ethical-concerns",
+    "question_text": "Why did the US Military and robotics makers like iRobot adopt standard PlayStation and Xbox-style controllers for systems such as RADBO and the PackBot IED disposal robot, and what ethical issue does this raise?",
+    "hint": "Think about who the operators are, how many hours they have spent with console games, and what happens when the interface for play is used for weapons systems.",
+    "correct_answer_index": 0,
+    "correct_answer_citation": "“For RADBO, the operators are generally a much younger audience... utilizing a PlayStation or Xbox type of controller such as the FMCU seems to be a natural transition for the gaming generation.” Younger soldiers with gaming experience adapt quickly, raising ethical concerns about using play interfaces for advanced weapon systems.",
+    "options": [
+      {
+        "option_text": "Younger operators already have thousands of hours of console gaming experience (such as Halo), making the controller a natural transition that drastically cuts training time—while ethically blurring the boundary between playing a video game and operating real-world weapons.",
+        "option_explanation": "Correct. Familiar console controllers capitalize on prior gaming fluency so young soldiers adapt quickly, which raises serious ethical questions when the same tactile interface is used for lethal or high-stakes military systems."
+      },
+      {
+        "option_text": "Console controllers require 10,000 hours of specialized military school before a soldier can move a robot, which deliberately slows down field deployment.",
+        "option_explanation": "On the contrary, the Xbox controller was adopted specifically because younger soldiers could adapt to it almost immediately without lengthy interface training."
+      },
+      {
+        "option_text": "Gaming controllers are only used to award points and leaderboards to soldiers after they sweep the barracks floor.",
+        "option_explanation": "In the military case, physical Xbox/PlayStation controllers are used directly to pilot field robotics (PackBot) and laser/weapons systems (RADBO)."
+      },
+      {
+        "option_text": "Commercial controllers eliminate all ethical concerns because they turn real-world operations into harmless virtual reality games.",
+        "option_explanation": "The operations take place in the real world with real consequences; using a gaming controller raises—rather than eliminates—ethical concerns."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "can-immersive-technology-and-gamification-help-my-business",
+    "prompt": "Match each business diagnostic question about gamification with the product scenario that directly addresses it.",
+    "term_label": "Business Question",
+    "match_label": "Strategic Evaluation",
+    "pairs": [
+      {
+        "id": "struggle-intrinsic",
+        "term": "Do my users struggle with intrinsic motivation?",
+        "match": "A physical-therapy clinic notices patients find daily home knee-extension repetitions tedious and quit after week one because recovery feels invisibly slow.",
+        "explanation": "Before adding gamification, a business first checks whether users actually lack intrinsic motivation for the task."
+      },
+      {
+        "id": "induce-story",
+        "term": "How can you induce intrinsic motivation using a story?",
+        "match": "A budgeting app frames each week's savings deposit as supplying an expedition crew crossing a continent, making users care about the journey itself.",
+        "explanation": "A compelling narrative or story can spark genuine curiosity and intrinsic engagement rather than relying on dry numbers alone."
+      },
+      {
+        "id": "balance-motivation",
+        "term": "How to properly balance extrinsic vs. intrinsic motivation?",
+        "match": "A coding platform uses milestone badges to celebrate early breakthroughs, then shifts emphasis toward building personal projects the learner is proud to share.",
+        "explanation": "Balancing extrinsic and intrinsic motivation means using external markers to scaffold progress without crowding out personal mastery."
+      },
+      {
+        "id": "hurt-person",
+        "term": "Is replacing the actual intrinsic motivation with the fabricated one going to hurt the person?",
+        "match": "A mental-health journaling app rejects public streak leaderboards after realizing users would write shallow daily entries just to protect their rank instead of reflecting honestly.",
+        "explanation": "If a fabricated game metric replaces authentic intrinsic purpose, it can harm the user's real wellbeing and goal."
+      }
+    ]
+  }
+]

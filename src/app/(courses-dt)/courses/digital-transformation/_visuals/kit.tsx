@@ -156,6 +156,94 @@ export function MiniScreen({ x, y, children }: { x: number; y: number; children:
   );
 }
 
+/* -- Knob: a draggable handle on a track (for interactive plates) --------- */
+
+/* A cream handle with two arrowheads that moves along a track starting at
+   (x, y) and running `len` units right (axis "x") or up (axis "y"). Drag it,
+   or use the arrow keys. */
+export function Knob({
+  x,
+  y,
+  value,
+  min,
+  max,
+  onChange,
+  label,
+  tone = INK,
+  len = 240,
+  axis = "x",
+  step = 5,
+}: {
+  x: number;
+  y: number;
+  value: number;
+  min: number;
+  max: number;
+  onChange: (v: number) => void;
+  label: string;
+  tone?: string;
+  len?: number;
+  axis?: "x" | "y";
+  /** how far one arrow-key press moves the value */
+  step?: number;
+}) {
+  const clamp = (v: number) => Math.min(max, Math.max(min, Math.round(v)));
+  const toVal = (e: React.PointerEvent<SVGGElement>) => {
+    const svg = e.currentTarget.ownerSVGElement;
+    const m = svg?.getScreenCTM();
+    if (!svg || !m) return value;
+    const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
+    const frac = axis === "x" ? (p.x - x) / len : (y - p.y) / len;
+    return clamp(min + frac * (max - min));
+  };
+  const t = (value - min) / (max - min);
+  const kx = axis === "x" ? r2(x + t * len) : x;
+  const ky = axis === "x" ? y : r2(y - t * len);
+  const arrows =
+    axis === "x"
+      ? [
+          `M ${r2(kx - 5)} ${ky} L ${r2(kx - 1)} ${r2(ky - 4)} V ${r2(ky + 4)} Z`,
+          `M ${r2(kx + 5)} ${ky} L ${r2(kx + 1)} ${r2(ky - 4)} V ${r2(ky + 4)} Z`,
+        ]
+      : [
+          `M ${kx} ${r2(ky - 5)} L ${r2(kx - 4)} ${r2(ky - 1)} H ${r2(kx + 4)} Z`,
+          `M ${kx} ${r2(ky + 5)} L ${r2(kx - 4)} ${r2(ky + 1)} H ${r2(kx + 4)} Z`,
+        ];
+  return (
+    <g
+      role="slider"
+      tabIndex={0}
+      aria-label={label}
+      aria-valuemin={min}
+      aria-valuemax={max}
+      aria-valuenow={value}
+      aria-orientation={axis === "x" ? "horizontal" : "vertical"}
+      className="outline-none"
+      style={{ cursor: axis === "x" ? "ew-resize" : "ns-resize", touchAction: "none", userSelect: "none" }}
+      onPointerDown={(e) => {
+        e.preventDefault();
+        e.currentTarget.setPointerCapture(e.pointerId);
+        onChange(toVal(e));
+      }}
+      onPointerMove={(e) => {
+        if (e.currentTarget.hasPointerCapture(e.pointerId)) onChange(toVal(e));
+      }}
+      onKeyDown={(e) => {
+        const d =
+          e.key === "ArrowRight" || e.key === "ArrowUp" ? step : e.key === "ArrowLeft" || e.key === "ArrowDown" ? -step : 0;
+        if (!d) return;
+        e.preventDefault();
+        onChange(clamp(value + d));
+      }}
+    >
+      <circle cx={kx} cy={ky} r={20} fill="transparent" />
+      <circle cx={kx} cy={ky} r={11} fill={CREAM} stroke={tone} strokeWidth={3.5} />
+      <path d={arrows[0]} fill={tone} />
+      <path d={arrows[1]} fill={tone} />
+    </g>
+  );
+}
+
 /* ==========================================================================
    Deck layout
    ========================================================================== */
@@ -265,7 +353,7 @@ export function PosterHero({
   agenda,
 }: {
   category: string;
-  title: string;
+  title: React.ReactNode;
   subtitle?: string;
   author: string;
   date?: string;

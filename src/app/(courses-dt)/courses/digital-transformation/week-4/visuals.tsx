@@ -47,6 +47,7 @@ import {
   MiniScreen,
   Arrow,
   Pointer,
+  Knob as DragKnob,
 } from "../_visuals/kit";
 import { Person, Shop, Doc, Coins } from "../_visuals/objects";
 
@@ -306,70 +307,6 @@ export function ExternalVariablesInteractive() {
         {`${active.n}. ${active.name}`}
       </text>
     </Plate>
-  );
-}
-
-/* -- Interactive SVG slider knob (Flat Silhouette style) ------------------ */
-
-function DragKnob({
-  x,
-  y,
-  value,
-  min,
-  max,
-  onChange,
-  label,
-  tone = INK,
-}: {
-  x: number;
-  y: number;
-  value: number;
-  min: number;
-  max: number;
-  onChange: (v: number) => void;
-  label: string;
-  tone?: string;
-}) {
-  const clamp = (v: number) => Math.min(max, Math.max(min, Math.round(v)));
-  const toVal = (e: React.PointerEvent<SVGGElement>) => {
-    const svg = e.currentTarget.ownerSVGElement;
-    const m = svg?.getScreenCTM();
-    if (!svg || !m) return value;
-    const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
-    const frac = (p.x - x) / 240;
-    return clamp(min + frac * (max - min));
-  };
-  const kx = r2(x + ((value - min) / (max - min)) * 240);
-  return (
-    <g
-      role="slider"
-      tabIndex={0}
-      aria-label={label}
-      aria-valuemin={min}
-      aria-valuemax={max}
-      aria-valuenow={value}
-      className="outline-none"
-      style={{ cursor: "ew-resize", touchAction: "none", userSelect: "none" }}
-      onPointerDown={(e) => {
-        e.preventDefault();
-        e.currentTarget.setPointerCapture(e.pointerId);
-        onChange(toVal(e));
-      }}
-      onPointerMove={(e) => {
-        if (e.currentTarget.hasPointerCapture(e.pointerId)) onChange(toVal(e));
-      }}
-      onKeyDown={(e) => {
-        const d = e.key === "ArrowRight" || e.key === "ArrowUp" ? 5 : e.key === "ArrowLeft" || e.key === "ArrowDown" ? -5 : 0;
-        if (!d) return;
-        e.preventDefault();
-        onChange(clamp(value + d));
-      }}
-    >
-      <circle cx={kx} cy={y} r={20} fill="transparent" />
-      <circle cx={kx} cy={y} r={11} fill={CREAM} stroke={tone} strokeWidth={3.5} />
-      <path d={`M ${r2(kx - 5)} ${y} L ${r2(kx - 1)} ${y - 4} V ${y + 4} Z`} fill={tone} />
-      <path d={`M ${r2(kx + 5)} ${y} L ${r2(kx + 1)} ${y - 4} V ${y + 4} Z`} fill={tone} />
-    </g>
   );
 }
 

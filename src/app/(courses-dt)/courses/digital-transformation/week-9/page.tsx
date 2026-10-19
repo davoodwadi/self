@@ -1,297 +1,782 @@
-import React from "react"
+"use client";
+
+import React, { useState } from "react";
+import { ProgressBar } from "@/components/presentation";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+
+import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
+import exercisesData from "./exercises.json";
+
 import {
-  ProgressBar,
-  FloatingNav,
-  Hero,
-  ChapterHeader,
-  ZigzagContent,
-  ConceptCardsZigzag,
-  CinematicQuote,
-  Conclusion
-} from "@/components/presentation"
-import { ArrowLeft } from "lucide-react"
-import Link from "next/link"
-import img1759 from "./1794_Morgenstern_Bauernhof_anagoria.jpg"
-import img1890 from "./One Room Schoolhouse.jpg"
-import img1932 from "./medium-sized-jpeg-27.jpg"
-import img2006 from "./180719111041-02-file-2000s-restricted.jpg"
+  DECK_THEME,
+  DeckNav,
+  PosterHero,
+  ChapterBand,
+  Slide,
+  PlateWell,
+  Summary,
+} from "../_visuals/kit";
+import {
+  HeroFourRevolutionsEngine,
+  Canada1759Interactive,
+  SteamMillCrossSectionInteractive,
+  FirstRevSocietySimulatorInteractive,
+  Transition1890BridgeInteractive,
+  SecondRevolutionPowerGridInteractive,
+  InventionsWorkbenchInteractive,
+  MegacitySkylineInteractive,
+  WorkerBalance1932Interactive,
+  SiliconWaferCircuitInteractive,
+  InnovationWaveInteractive,
+  Workflow2006AdapterInteractive,
+  CyberPhysicalConvergenceInteractive,
+  Industry4ImpactDialInteractive,
+} from "./visuals";
 
 const SECTIONS = [
-  { id: "hero", label: "Introduction" }, 
+  { id: "hero", label: "Introduction" },
   { id: "ch1", label: "1st Revolution" },
   { id: "ch2", label: "2nd Revolution" },
   { id: "ch3", label: "3rd Revolution" },
   { id: "ch4", label: "Industry 4.0" },
-  { id: "conclusion", label: "Summary" }
-]
+  { id: "conclusion", label: "Conclusion" },
+];
+
+const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
+
+const BODY_BASE = "font-body leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
+const BODY = `${BODY_BASE} text-base md:text-[1.06rem]`;
+const LIST =
+  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
+const SUBLIST =
+  "list-none flex flex-col gap-1 mt-1 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['–'] [&>li]:before:shrink-0";
+
+function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
+  return (
+    <ul className={`${LIST} ${className}`}>
+      {items.map((it, i) => (
+        <li key={i}>
+          <span>{it}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Dashes({ items }: { items: React.ReactNode[] }) {
+  return (
+    <ul className={SUBLIST}>
+      {items.map((it, i) => (
+        <li key={i}>
+          <span>{it}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function DigitalTransformationWeek9() {
+  const [activeFirstPillar, setActiveFirstPillar] = useState(0);
+  const [activeFirstImpact, setActiveFirstImpact] = useState(0);
+  const [activeSecondPillar, setActiveSecondPillar] = useState(0);
+  const [activeSecondInvention, setActiveSecondInvention] = useState(0);
+  const [activeSecondImpact, setActiveSecondImpact] = useState(0);
+  const [activeThirdPillar, setActiveThirdPillar] = useState(0);
+  const [activeThirdInnovation, setActiveThirdInnovation] = useState(0);
+  const [activeFourthTech, setActiveFourthTech] = useState(0);
+  const [activeFourthImpact, setActiveFourthImpact] = useState(0);
+
   return (
-    <main className="relative w-full overflow-x-hidden bg-background min-h-screen font-body text-text-primary">
+    <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
       <ProgressBar />
-      <FloatingNav sections={SECTIONS} />
- {/* Navigation */}
+      <DeckNav sections={SECTIONS} />
       <Link
         href="/courses/digital-transformation"
-        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--text-muted)] hover:text-[var(--accent1)] transition-colors duration-300"
+        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-300"
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
-      <Hero
-        category="WEEK 09 — DIGITAL TRANSFORMATION"
-        title="Industry 4.0"
-        subtitle="From the First Industrial Revolution to the Digital Age"
+
+      <PosterHero
+        category="WEEK 9 — DIGITAL TRANSFORMATION"
+        title="Week 9: Industry 4.0"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
+        agenda={[
+          "The First Industrial Revolution",
+          "The Second Industrial Revolution",
+          "The Third Industrial Revolution (Digital Revolution)",
+          "The Fourth Industrial Revolution (Industry 4.0)",
+          "Impact on Society and Business",
+        ]}
+        plate={<HeroFourRevolutionsEngine />}
       />
 
-      {/* CHAPTER 1 */}
-      <ChapterHeader
-        id="ch1"
-        number="01"
+      {/* ================================================================
+          CHAPTER 1 — THE FIRST INDUSTRIAL REVOLUTION
+          ================================================================ */}
+      <ChapterBand id="ch1" number="01" title="The First Industrial Revolution" />
+
+      <Slide id="question-1759" label="QUESTION" title="Question">
+        <div className={`${BODY} text-lg grid md:grid-cols-2 gap-5`}>
+          <Bullets
+            items={[
+              <>Place yourself in 1759.</>,
+              <>You are in Canada.</>,
+            ]}
+          />
+          <Bullets
+            items={[
+              <>As an individual, what jobs are available to you?</>,
+              <>Which career path would you choose?</>,
+            ]}
+          />
+        </div>
+        <PlateWell>
+          <Canada1759Interactive />
+        </PlateWell>
+      </Slide>
+
+      <Slide
+        id="the-first-industrial-revolution"
+        label="18TH–19TH CENTURY"
         title="The First Industrial Revolution"
-        description="The transition from agrarian societies to mechanized production powered by steam."
-        altBg={true}
-      />
+        exercise={exercise["the-first-industrial-revolution"]}
+      >
+        <div className={`${BODY} flex flex-wrap items-center justify-between gap-4`}>
+          <a
+            href="https://www.youtube.com/watch?v=xLhNP0qp38Q"
+            target="_blank"
+            rel="noreferrer"
+            className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+          >
+            The Industrial Revolution (18-19th Century)
+          </a>
+        </div>
+        <PlateWell>
+          <SteamMillCrossSectionInteractive active={activeFirstPillar} onSelect={setActiveFirstPillar} />
+        </PlateWell>
+        <ol className={`${BODY} grid`}>
+          {[
+            {
+              title: "1. Mechanization of Production",
+              desc: "Introduction of machines to replace human and animal labor, significantly increasing productivity.",
+            },
+            {
+              title: "2. Steam Power",
+              desc: "The development of the steam engine revolutionized transportation and manufacturing.",
+            },
+            {
+              title: "3. Factory System",
+              desc: (
+                <>
+                  Large-scale production in <strong>centralized</strong> factories replaced cottage industries and small
+                  workshops.
+                </>
+              ),
+            },
+            {
+              title: "4. Textile Industry Boom",
+              desc: "The invention of machines like the spinning jenny and power loom transformed textile manufacturing.",
+            },
+            {
+              title: "5. Iron and Coal Production",
+              desc: "Growth in ironworks and coal mining provided the raw materials for machinery and transportation.",
+            },
+            {
+              title: "6. Railroads and Canals",
+              desc: "Improved transportation networks enabled faster movement of goods and people.",
+            },
+          ].map((it, i) => {
+            const isLit = i === activeFirstPillar;
+            return (
+              <li
+                key={it.title}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <div className="text-lg md:text-xl mt-1">
+                  <Dashes items={[it.desc]} />
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </Slide>
 
-      <ZigzagContent
-        label="MECHANIZATION & STEAM"
-        title="The Dawn of Industry"
-        startRight={true}
-        altBg={true}
-        segments={[
-          {
-            type: "text",
-            content: (
-              <p>
-                Place yourself in 1759 Canada. As an individual, what jobs are available to you? Which career path would you choose in a pre-industrial society where human and animal labor dominate?
-              </p>
-            )
-          },
-          {
-            type: "image",
-            imageUrl: img1759
-          },
-          {
-            type: "text",
-            content: (
-              <p>
-                The First Industrial Revolution (18th-19th Century) introduced the mechanization of production. The development of the steam engine revolutionized transportation and manufacturing, while large-scale centralized factories replaced small cottage industries.
-              </p>
-            )
-          },
-          {
-            type: "insight",
-            label: "KEY COMPONENTS",
-            content: "The textile industry boom, driven by inventions like the spinning jenny, was supported by exponential growth in ironworks and coal mining, and faster movement of goods via railroads and canals."
-          }
-        ]}
-      />
+      <Slide id="first-revolution-impact-on-society" label="SOCIETAL SHIFT" title="Impact on Society">
+        <PlateWell>
+          <FirstRevSocietySimulatorInteractive active={activeFirstImpact} onSelect={setActiveFirstImpact} />
+        </PlateWell>
+        <ol className={`${BODY} grid`}>
+          {[
+            {
+              title: "1. Urbanization",
+              desc: "People moved to cities for factory jobs, leading to rapid urban growth.",
+            },
+            {
+              title: "2. Rise of the Working Class",
+              desc: "A new class of industrial workers emerged, often working in harsh conditions.",
+            },
+            {
+              title: "3. Improved Transportation",
+              desc: "Railways and steamships facilitated faster trade and mobility.",
+            },
+            {
+              title: "4. Increased Production and Trade",
+              desc: "Widespread availability of goods improved standards of living for some.",
+            },
+            {
+              title: "5. Environmental Effects",
+              desc: "Increased pollution and deforestation due to industrial activity.",
+            },
+          ].map((it, i) => {
+            const isLit = i === activeFirstImpact;
+            return (
+              <li
+                key={it.title}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <div className="text-lg md:text-xl mt-1">
+                  <Dashes items={[it.desc]} />
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </Slide>
 
-      <ConceptCardsZigzag
-        startRight={false}
-        cards={[
-          { number: "01", title: "Urbanization", description: "People moved en masse to cities for factory jobs, leading to unprecedented rapid urban growth and new societal structures." },
-          { number: "02", title: "Rise of the Working Class", description: "A new class of industrial workers emerged, often working in harsh conditions that eventually led to labor movements." },
-          { number: "03", title: "Increased Trade", description: "Widespread availability of manufactured goods improved standards of living for some, alongside faster mobility via railways." },
-          { number: "04", title: "Environmental Effects", description: "The heavy reliance on coal and iron resulted in increased pollution and widespread deforestation due to industrial activity." }
-        ]}
-        altBg={true}
-      />
+      {/* ================================================================
+          CHAPTER 2 — THE SECOND INDUSTRIAL REVOLUTION
+          ================================================================ */}
+      <ChapterBand id="ch2" number="02" title="The Second Industrial Revolution" />
 
-      <CinematicQuote
-        quote="It is 1890. The Industrial Revolution has just happened. How would you transition from your current job to a new one? Which career path would you take?"
-        author="Class Discussion"
-        altBg={false}
-      />
+      <Slide id="question-1890" label="QUESTION" title="Question">
+        <div className={`${BODY} text-lg grid md:grid-cols-2 gap-5`}>
+          <Bullets
+            items={[
+              <>It is 1890.</>,
+              <>The Industrial Revolution has just happened.</>,
+            ]}
+          />
+          <Bullets
+            items={[
+              <>How would you transition from your current job to a new one.</>,
+              <>Which career path would you take?</>,
+            ]}
+          />
+        </div>
+        <PlateWell>
+          <Transition1890BridgeInteractive />
+        </PlateWell>
+      </Slide>
 
-      {/* CHAPTER 2 */}
-      <ChapterHeader
-        id="ch2"
-        number="02"
+      <Slide
+        id="the-second-industrial-revolution"
+        label="ELECTRIFICATION & MASS PRODUCTION"
         title="The Second Industrial Revolution"
-        description="Mass production, widespread electrification, and the birth of modern transportation."
-        altBg={true}
-      />
+      >
+        <div className={`${BODY} flex flex-wrap items-center justify-between gap-4`}>
+          <a
+            href="https://www.youtube.com/watch?v=aLvJ8p9KIH8"
+            target="_blank"
+            rel="noreferrer"
+            className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+          >
+            The Second Industrial Revolution
+          </a>
+        </div>
+        <PlateWell>
+          <SecondRevolutionPowerGridInteractive active={activeSecondPillar} onSelect={setActiveSecondPillar} />
+        </PlateWell>
+        <ol className={`${BODY} grid`}>
+          {[
+            {
+              title: "1. Mass Production & Assembly Line",
+              items: [
+                "Standardized manufacturing processes made products cheaper and more widely available.",
+                "Henry Ford’s assembly line (1913) revolutionized automobile production, reducing costs and time.",
+              ],
+            },
+            {
+              title: "2. Widespread Electrification",
+              items: [
+                "Electricity replaced steam as the primary power source, leading to new industries and consumer products.",
+                "Enabled efficient lighting, factory machinery, and communication systems.",
+              ],
+            },
+            {
+              title: "3. Innovation in Steel Production",
+              items: [
+                "The Bessemer Process (1856) allowed for mass manufacturing of steel, boosting construction and infrastructure.",
+                "Led to skyscrapers, bridges, and modern railroads.",
+              ],
+            },
+            {
+              title: "4. Advances in Chemical Industry",
+              items: [
+                "Large-scale production of chemicals, including fertilizers, plastics, and synthetic dyes.",
+                "Paved the way for modern medicine, explosives, and consumer goods.",
+              ],
+            },
+            {
+              title: "5. Revolution in Transportation & Communication",
+              items: [
+                "Automobiles & Airplanes — Karl Benz (1885) and the Wright Brothers (1903) transformed personal and commercial travel.",
+                "Telegraph & Telephone — Samuel Morse (telegraph, 1830s) and Alexander Graham Bell (telephone, 1876) accelerated global communication.",
+              ],
+            },
+          ].map((it, i) => {
+            const isLit = i === activeSecondPillar;
+            return (
+              <li
+                key={it.title}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <div className="text-lg mt-1">
+                  <Dashes items={it.items} />
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </Slide>
 
-      <ZigzagContent
-        label="MASS PRODUCTION"
-        title="Electrification & Assembly Lines"
-        startRight={false}
-        altBg={true}
-        segments={[
-          {
-            type: "image",
-            imageUrl: img1890
-          },
-          {
-            type: "text",
-            content: (
-              <p>
-                The Second Industrial Revolution brought mass production and the assembly line. Standardized processes made products cheaper, while Henry Ford’s assembly line in 1913 revolutionized automobile production, drastically reducing costs and assembly time.
-              </p>
-            )
-          },
-          {
-            type: "text",
-            content: (
-              <p>
-                Widespread electrification replaced steam as the primary power source, leading to new industries and consumer products. It enabled efficient lighting, factory machinery, and communication systems that operated around the clock.
-              </p>
-            )
-          },
-          {
-            type: "insight",
-            label: "MATERIALS & CHEMICALS",
-            content: "Innovations in steel production (the Bessemer Process) led to skyscrapers and modern railroads, while advances in the chemical industry paved the way for modern medicine, fertilizers, and synthetic materials."
-          }
-        ]}
-      />
+      <Slide
+        id="second-revolution-key-inventions"
+        label="KEY INVENTIONS"
+        title="The Second Industrial Revolution"
+        exercise={exercise["second-revolution-key-inventions"]}
+      >
+        <p className="font-heading font-bold text-xl border-l-[5px] border-[var(--dt-ink)] pl-4">Key inventions</p>
+        <PlateWell>
+          <InventionsWorkbenchInteractive active={activeSecondInvention} onSelect={setActiveSecondInvention} />
+        </PlateWell>
+        <ol className={`${BODY} grid`}>
+          {[
+            {
+              title: "1. Electric Light Bulb",
+              desc: (
+                <>
+                  Thomas Edison (1879) enabled <strong>night-time work</strong> and extended productivity.
+                </>
+              ),
+            },
+            {
+              title: "2. Internal Combustion Engine",
+              desc: "Powered automobiles and transformed transportation.",
+            },
+            {
+              title: "3. Radio Waves",
+              desc: "Guglielmo Marconi transmitted the first wireless communication (1895).",
+            },
+            {
+              title: "4. Automobile Production Line",
+              desc: "Henry Ford’s innovation made cars affordable for the masses.",
+            },
+          ].map((it, i) => {
+            const isLit = i === activeSecondInvention;
+            return (
+              <li
+                key={it.title}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <div className="text-lg md:text-xl mt-1">
+                  <Dashes items={[it.desc]} />
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </Slide>
 
-      <ConceptCardsZigzag
-        startRight={true}
-        cards={[
-          { number: "01", title: "Electric Light Bulb", description: "Invented by Thomas Edison in 1879, it enabled night-time work, extended productivity, and fundamentally changed human sleep patterns." },
-          { number: "02", title: "Internal Combustion Engine", description: "Powered automobiles and transformed transportation, leading to modern commercial travel and the decline of horse-drawn transit." },
-          { number: "03", title: "Radio Waves", description: "Guglielmo Marconi transmitted the first wireless communication in 1895, setting the stage for global broadcasting." },
-          { number: "04", title: "Global Communication", description: "Samuel Morse's telegraph and Alexander Graham Bell's telephone accelerated global communication, shrinking the world." }
-        ]}
-        altBg={true}
-      />
+      <Slide id="second-revolution-impact-on-society" label="SOCIETAL SHIFT" title="Impact on Society">
+        <PlateWell>
+          <MegacitySkylineInteractive active={activeSecondImpact} onSelect={setActiveSecondImpact} />
+        </PlateWell>
+        <ol className={`${BODY} grid`}>
+          {[
+            {
+              title: "1. Urban Growth & Megacities",
+              desc: "Expansion of cities, improved sanitation, and the rise of skyscrapers.",
+            },
+            {
+              title: "2. Rise of Consumer Culture",
+              desc: "Increased production led to greater product variety and advertising growth.",
+            },
+            {
+              title: "3. New Job Opportunities",
+              desc: "The rise of industrial corporations required a larger workforce, including in business management.",
+            },
+            {
+              title: "4. Improved Living Standards",
+              desc: "Advancements in medicine, sanitation, and food production extended life expectancy.",
+            },
+            {
+              title: "5. Worker Exploitation and Inequality",
+              desc: "Long hours, low wages, and unsafe working conditions sparked labor movements.",
+            },
+            {
+              title: "6. Environmental Consequences",
+              desc: "Increased pollution from coal, steel, and chemical industries.",
+            },
+          ].map((it, i) => {
+            const isLit = i === activeSecondImpact;
+            return (
+              <li
+                key={it.title}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <div className="text-lg md:text-xl mt-1">
+                  <Dashes items={[it.desc]} />
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </Slide>
 
-      <CinematicQuote
-        quote="It is 1932. How is your job impacted now? In what aspects has it improved? In what aspects has it worsened?"
-        author="Class Discussion"
-        altBg={false}
-      />
+      {/* ================================================================
+          CHAPTER 3 — THE THIRD INDUSTRIAL REVOLUTION (DIGITAL REVOLUTION)
+          ================================================================ */}
+      <ChapterBand id="ch3" number="03" title="The Third Industrial Revolution (Digital Revolution)" />
 
-      {/* CHAPTER 3 */}
-      <ChapterHeader
-        id="ch3"
-        number="03"
-        title="The Third Industrial Revolution"
-        description="The digital revolution, computing, and the creation of the world wide web."
-        altBg={true}
-      />
+      <Slide id="questions-1932" label="QUESTIONS" title="Questions">
+        <div className={`${BODY} text-lg grid md:grid-cols-2 gap-5`}>
+          <Bullets
+            items={[
+              <>It is 1932.</>,
+              <>How is your job impacted now?</>,
+            ]}
+          />
+          <Bullets
+            items={[
+              <>In what aspects has it improved?</>,
+              <>In what aspects has it worsened?</>,
+            ]}
+          />
+        </div>
+        <PlateWell>
+          <WorkerBalance1932Interactive />
+        </PlateWell>
+      </Slide>
 
-      <ZigzagContent
-        label="DIGITAL COMPUTING"
-        title="The Information Age"
-        startRight={true}
-        altBg={true}
-        segments={[
-          {
-            type: "image",
-            imageUrl: img1932
-          },
-          {
-            type: "text",
-            content: (
-              <p>
-                The Third Industrial Revolution (1960s-Present) leverages digital computing, automation, and the internet to transform industries. The invention of the transistor (1947) and microprocessor (1971) enabled the development of personal computers.
-              </p>
-            )
-          },
-          {
-            type: "text",
-            content: (
-              <p>
-                Industries began integrating robots and automated systems for manufacturing, reducing human labor while increasing efficiency. The invention of the internet (1969) and World Wide Web (1990) fundamentally transformed how businesses and people interact globally.
-              </p>
-            )
-          },
-          {
-            type: "insight",
-            label: "INNOVATION REPLACES INVENTION",
-            content: "We shifted from creating entirely new physical tools to innovating on top of digital platforms, utilizing Big Data, Artificial Intelligence, and Renewable Energy for smarter decision-making."
-          }
-        ]}
-      />
+      <Slide
+        id="the-third-industrial-revolution"
+        label="DIGITAL REVOLUTION"
+        title="The Third Industrial Revolution (Digital Revolution)"
+      >
+        <div className={`${BODY} text-sm md:text-[0.95rem] border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+          <Bullets
+            className="md:grid md:grid-cols-3 md:gap-4"
+            items={[
+              <>The First Industrial Revolution (1760-1840) introduced steam-powered machines and mechanization.</>,
+              <>
+                The Second Industrial Revolution (1870-1914) advanced with electricity, mass production, and
+                telecommunications.
+              </>,
+              <>
+                The Third Industrial Revolution (1960s-Present) leverages digital computing, automation, and the
+                internet to transform industries.
+              </>,
+            ]}
+          />
+        </div>
+        <PlateWell>
+          <SiliconWaferCircuitInteractive active={activeThirdPillar} onSelect={setActiveThirdPillar} />
+        </PlateWell>
+        <ol className={`${BODY} grid`}>
+          {[
+            {
+              title: "1. Digital Computing & Microprocessors",
+              desc: "The invention of the transistor (1947) and microprocessor (1971) enabled the development of personal computers and digital devices.",
+            },
+            {
+              title: "2. Automation & Robotics",
+              desc: "Industries began integrating robots and automated systems for manufacturing, reducing human labor while increasing efficiency.",
+            },
+            {
+              title: "3. The Internet & Connectivity",
+              desc: "The invention of the internet (1969, ARPANET) and World Wide Web (1990, Tim Berners-Lee) transformed how businesses and people interact.",
+            },
+            {
+              title: "4. Renewable Energy",
+              desc: "Shift from fossil fuels to sustainable energy sources, such as solar and wind power.",
+            },
+            {
+              title: "5. Big Data and AI Advancements",
+              desc: "Growth in data collection, cloud computing, and artificial intelligence allows for smarter decision-making and automation.",
+            },
+          ].map((it, i) => {
+            const isLit = i === activeThirdPillar;
+            return (
+              <li
+                key={it.title}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <div className="text-lg mt-1">
+                  <Dashes items={[it.desc]} />
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </Slide>
 
-      <ConceptCardsZigzag
-        startRight={false}
-        cards={[
-          { number: "01", title: "Personal Computers", description: "The 1970s and 1980s enabled businesses and individuals to access computing power, democratizing technology processing." },
-          { number: "02", title: "The Internet", description: "The 1990s onward changed communication, commerce, and social interactions, connecting the entire globe instantaneously." },
-          { number: "03", title: "Mobile Technology", description: "The 2000s saw smartphones and wireless networks revolutionize accessibility, putting the internet in everyone's pocket." },
-          { number: "04", title: "E-Commerce", description: "Platforms like Amazon and Alibaba transformed global trade, allowing digital storefronts to reach worldwide audiences." }
-        ]}
-        altBg={true}
-      />
+      <Slide
+        id="third-revolution-key-innovations"
+        label="PLATFORM SHIFT"
+        title="Key Innovations"
+        exercise={exercise["third-revolution-key-innovations"]}
+      >
+        <p className="font-heading font-bold text-xl border-l-[5px] border-[var(--dt-ink)] pl-4">
+          Innovation replaces invention
+        </p>
+        <PlateWell>
+          <InnovationWaveInteractive active={activeThirdInnovation} onSelect={setActiveThirdInnovation} />
+        </PlateWell>
+        <ol className={`${BODY} grid`}>
+          {[
+            {
+              title: "1. Personal Computers (1970s-1980s)",
+              desc: "Enabled businesses and individuals access to computers (democratization).",
+            },
+            {
+              title: "2. The Internet (1990s-Present)",
+              desc: "Changed communication, commerce, and social interactions globally.",
+            },
+            {
+              title: "3. Mobile Technology (2000s-Present)",
+              desc: "Smartphones and wireless networks revolutionized accessibility.",
+            },
+            {
+              title: "4. E-Commerce (1990s-Present)",
+              desc: "Platforms like Amazon and Alibaba transformed global trade.",
+            },
+            {
+              title: "5. Artificial Intelligence & Machine Learning (2010s-Present)",
+              desc: "Automation of decision-making and business processes.",
+            },
+          ].map((it, i) => {
+            const isLit = i === activeThirdInnovation;
+            return (
+              <li
+                key={it.title}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <div className="text-lg md:text-xl mt-1">
+                  <Dashes items={[it.desc]} />
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </Slide>
 
-      <CinematicQuote
-        quote="It is 2006. How would your job adapt to the Third Industrial Revolution?"
-        author="Class Discussion"
-        altBg={false}
-      />
+      {/* ================================================================
+          CHAPTER 4 — THE FOURTH INDUSTRIAL REVOLUTION (INDUSTRY 4.0)
+          ================================================================ */}
+      <ChapterBand id="ch4" number="04" title="The Fourth Industrial Revolution (Industry 4.0)" />
 
-      {/* CHAPTER 4 */}
-      <ChapterHeader
-        id="ch4"
-        number="04"
-        title="The Fourth Industrial Revolution"
-        description="Industry 4.0: Blurring the lines between physical, digital, and biological spheres."
-        altBg={true}
-      />
+      <Slide id="question-2006" label="QUESTION" title="Question">
+        <div className={`${BODY} text-lg grid md:grid-cols-2 gap-5`}>
+          <Bullets items={[<>It is 2006.</>]} />
+          <Bullets items={[<>How would your job adapt to the Third Industrial Revolution.</>]} />
+        </div>
+        <PlateWell>
+          <Workflow2006AdapterInteractive />
+        </PlateWell>
+      </Slide>
 
-      <ZigzagContent
+      <Slide
+        id="the-fourth-industrial-revolution"
         label="INDUSTRY 4.0"
-        title="Cyber-Physical Systems"
-        startRight={true}
-        altBg={true}
-        segments={[
-          {
-            type: "image",
-            imageUrl: img2006
-          },
-          {
-            type: "text",
-            content: (
-              <p>
-                The Fourth Industrial Revolution is characterized by Artificial Intelligence, Machine Learning, and the Internet of Things (IoT). Smart factories now use machines that self-diagnose issues and optimize operations autonomously without human intervention.
-              </p>
-            )
-          },
-          {
-            type: "text",
-            content: (
-              <p>
-                Big Data and Cloud Computing enable real-time supply chain optimization. Blockchain and decentralized technologies provide immutable tracking, while Advanced Robotics and Biotechnology are driving human-machine integration to unprecedented levels.
-              </p>
-            )
-          },
-          {
-            type: "insight",
-            label: "ETHICAL CHALLENGES",
-            content: "As AI and automation replace millions of jobs, we face critical challenges regarding cybersecurity, data privacy, algorithmic bias, and the urgent need for workforce reskilling."
-          }
-        ]}
-      />
+        title="The Fourth Industrial Revolution (Industry 4.0)"
+        exercise={exercise["the-fourth-industrial-revolution"]}
+      >
+        <div className={`${BODY} flex flex-wrap items-center gap-6 text-sm md:text-base`}>
+          <a
+            href="https://www.youtube.com/watch?v=SCGV1tNBoeU"
+            target="_blank"
+            rel="noreferrer"
+            className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+          >
+            The Fourth Industrial Revolution - WEF
+          </a>
+          <a
+            href="https://www.youtube.com/watch?v=eH1fFdjzJAw"
+            target="_blank"
+            rel="noreferrer"
+            className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+          >
+            What will the future of jobs be like? - WEF
+          </a>
+        </div>
+        <PlateWell>
+          <CyberPhysicalConvergenceInteractive active={activeFourthTech} onSelect={setActiveFourthTech} />
+        </PlateWell>
+        <ol className={`${BODY} grid`}>
+          {[
+            {
+              title: "1. Artificial Intelligence (AI) & Machine Learning",
+              desc: "Examples: Chatbots, self-learning algorithms, recommendation systems (Netflix, Amazon).",
+            },
+            {
+              title: "2. Internet of Things (IoT) & Cyber-Physical Systems",
+              desc: "Example: Smart factories where machines self-diagnose issues and optimize operations.",
+            },
+            {
+              title: "3. Big Data & Cloud Computing",
+              desc: "Example: Real-time supply chain optimization by companies like Amazon.",
+            },
+            {
+              title: "4. Blockchain & Decentralized Technologies",
+              desc: "Example: Cryptocurrencies (Bitcoin), supply chain tracking.",
+            },
+            {
+              title: "5. Advanced Robotics & Automation",
+              desc: "Example: Automated warehouse robots in e-commerce fulfillment.",
+            },
+            {
+              title: "6. Biotechnology, 3D Printing & Human-Machine Integration",
+              desc: "Example: 3D-printed organs and AI-assisted drug discovery.",
+            },
+            {
+              title: "7. Quantum Computing & 5G Networks",
+              desc: "Example: AI-powered medical diagnostics using quantum-enhanced computing power.",
+            },
+          ].map((it, i) => {
+            const isLit = i === activeFourthTech;
+            return (
+              <li
+                key={it.title}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <div className="text-lg md:text-xl mt-1">
+                  <Dashes items={[it.desc]} />
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </Slide>
 
-      <ConceptCardsZigzag
-        startRight={false}
-        cards={[
-          { number: "01", title: "Hyper-Personalization", description: "AI enables better customization of products and services for individual consumers at scale, from content recommendations to medicine." },
-          { number: "02", title: "Smart Cities", description: "Urban management improves with IoT-enabled infrastructure and digital governance, optimizing traffic, energy use, and public safety." },
-          { number: "03", title: "New Business Models", description: "Growth of platform economies like Uber and subscription-based services like Netflix have fundamentally changed how value is delivered." },
-          { number: "04", title: "Quantum Computing", description: "Next-generation computational power combined with 5G networks will enable breakthroughs in cryptography, material science, and AI diagnostics." }
-        ]}
-        altBg={true}
-      />
+      <Slide
+        id="fourth-revolution-impact-on-society-and-business"
+        label="SOCIETY & BUSINESS"
+        title="Impact on Society and Business"
+        exercise={exercise["fourth-revolution-impact-on-society-and-business"]}
+      >
+        <div className={`${BODY} flex flex-wrap items-center justify-between gap-4 text-sm md:text-base`}>
+          <a
+            href="https://www.youtube.com/watch?v=hfqD5aW0X5U"
+            target="_blank"
+            rel="noreferrer"
+            className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+          >
+            Ready for Brain Transparency? - WEF
+          </a>
+        </div>
+        <PlateWell>
+          <Industry4ImpactDialInteractive active={activeFourthImpact} onSelect={setActiveFourthImpact} />
+        </PlateWell>
+        <ol className={`${BODY} grid`}>
+          {[
+            {
+              title: "1. Hyper-Personalized Products & Services",
+              desc: "AI enables better customization.",
+            },
+            {
+              title: "2. Smart Cities & Digital Governance",
+              desc: "Urban management improves with IoT-enabled infrastructure.",
+            },
+            {
+              title: "3. Increased Productivity & Efficiency",
+              desc: "AI and automation reduce waste and costs.",
+            },
+            {
+              title: "4. New Business Models",
+              desc: "Growth of platform economies (Uber, Airbnb) and subscription-based services (Netflix, SaaS).",
+            },
+            {
+              title: "5. Job Disruption & Reskilling Needs",
+              desc: "AI and automation may replace millions of jobs.",
+            },
+            {
+              title: "6. Cybersecurity & Privacy Concerns",
+              desc: "Increased reliance on digital tech poses risks of cyberattacks.",
+            },
+            {
+              title: "7. Ethical Challenges",
+              desc: "AI bias, surveillance, and job displacement concerns.",
+            },
+          ].map((it, i) => {
+            const isLit = i === activeFourthImpact;
+            return (
+              <li
+                key={it.title}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                <p className="font-heading font-bold text-xl md:text-2xl">{it.title}</p>
+                <div className="text-lg md:text-xl mt-1">
+                  <Dashes items={[it.desc]} />
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </Slide>
 
-      {/* CONCLUSION */}
-      <Conclusion
+      {/* ================================================================
+          CONCLUSION
+          ================================================================ */}
+      <Summary
         id="conclusion"
-        title="Summary"
-        summary="The industrial revolutions have progressively transformed human labor and society. From steam and mechanization in the 18th century, to electricity and mass production, then digital computing, and now AI and IoT in Industry 4.0. Each phase brought profound societal shifts, unlocking new capabilities while raising complex challenges in ethics, privacy, and workforce disruption."
+        title="Conclusion"
         takeaways={[
-          "The First Revolution mechanized production using water and steam power.",
-          "The Second Revolution created mass production powered by electricity.",
-          "The Third Revolution automated production using electronics and IT.",
-          "The Fourth Revolution integrates physical, digital, and biological systems through AI and IoT."
+          "The First Industrial Revolution (1760-1840) introduced steam-powered machines and mechanization.",
+          "The Second Industrial Revolution (1870-1914) advanced with electricity, mass production, and telecommunications.",
+          "The Third Industrial Revolution (1960s-Present) leverages digital computing, automation, and the internet to transform industries.",
+          "The Fourth Industrial Revolution (Industry 4.0) integrates AI, IoT, cyber-physical systems, cloud, blockchain, robotics, biotechnology, and quantum computing.",
         ]}
       />
     </main>
-  )
+  );
 }
+

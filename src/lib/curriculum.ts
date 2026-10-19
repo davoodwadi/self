@@ -98,3 +98,6 @@ export const CB_DIR = "src/app/(courses-cb)/courses/consumer-behavior";
 export const IM_DIR = "src/app/(courses-intro-marketing)/courses/intro-marketing";
 export const MRA_DIR =
   "src/app/(courses-mra)/courses/marketing-research-analytics";
+export const RAI_DIR =
+  "src/app/(courses-rai)/courses/responsible-ai-governance";
+

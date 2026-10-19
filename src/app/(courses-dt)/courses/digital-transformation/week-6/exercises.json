@@ -1,0 +1,246 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "artificial-intelligence-which-one-is-ai",
+    "prompt": "Each scenario below shows a form of intelligence at work. Name whether it demonstrates Animal, Human, or Artificial intelligence.",
+    "options": [
+      { "id": "animal", "label": "Animal Intelligence" },
+      { "id": "human", "label": "Human Intelligence" },
+      { "id": "artificial", "label": "Artificial Intelligence" }
+    ],
+    "cases": [
+      {
+        "id": "salmon-stream",
+        "text": "Pacific salmon navigate thousands of kilometres back to the exact stream where they hatched to spawn.",
+        "answer": "animal",
+        "explanation": "Instinctual survival and navigation behavior built into the species is animal intelligence."
+      },
+      {
+        "id": "hospital-xray",
+        "text": "A radiology system scans chest X-rays to highlight suspicious lung nodules before a doctor reviews the file.",
+        "answer": "artificial",
+        "explanation": "Object detection in medical imaging is a core capability of artificial intelligence."
+      },
+      {
+        "id": "film-score",
+        "text": "A composer writes an original cello score to capture the grief of a character in a dramatic film scene.",
+        "answer": "human",
+        "explanation": "Creativity and emotional understanding in composing music are hallmarks of human intelligence."
+      },
+      {
+        "id": "review-sentiment",
+        "text": "An e-commerce tool reads ten thousand French product reviews, translates them into English, and flags angry customers.",
+        "answer": "artificial",
+        "explanation": "Language translation and sentiment analysis performed by machines are artificial intelligence tasks."
+      },
+      {
+        "id": "beaver-dam",
+        "text": "Young beavers that have never seen a dam before gather branches and mud to block running water.",
+        "answer": "animal",
+        "explanation": "Building shelter and structures from instinct for survival is animal intelligence."
+      },
+      {
+        "id": "podcast-playlist",
+        "text": "A streaming app studies the episodes you finished this month and queues three new shows that match your listening habits.",
+        "answer": "artificial",
+        "explanation": "Pattern recognition in historical listening data to power a recommendation engine is artificial intelligence."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "rise-of-machine-learning",
+    "prompt": "Sort each development into the force driving the 21st-century rise of Machine Learning that it illustrates.",
+    "bins": [
+      { "id": "compute", "label": "Increase in Compute Power" },
+      { "id": "data", "label": "Increase in Data (Big Data)" },
+      { "id": "storage", "label": "Decrease in Storage Costs" }
+    ],
+    "cards": [
+      {
+        "id": "gpu-clusters",
+        "text": "Specialized graphics processors run millions of matrix calculations in parallel, cutting training time from months to hours.",
+        "bin": "compute",
+        "explanation": "Faster parallel processors directly represent the increase in compute power."
+      },
+      {
+        "id": "smart-meters",
+        "text": "Millions of household smart meters, phones, and checkout scanners stream continuous records every second.",
+        "bin": "data",
+        "explanation": "Connected devices and digital transactions generate the explosion of Big Data needed to train ML models."
+      },
+      {
+        "id": "archive-pennies",
+        "text": "A retailer keeps ten years of item-level receipt histories on cloud drives for a few cents per gigabyte.",
+        "bin": "storage",
+        "explanation": "Cheaper disk and cloud storage make it affordable to retain massive historical datasets."
+      },
+      {
+        "id": "ai-chips",
+        "text": "Modern server racks pack thousands of times more floating-point operations per second than 1990s workstations.",
+        "bin": "compute",
+        "explanation": "Exponential growth in processing speed is the increase in compute power."
+      },
+      {
+        "id": "clickstream-logs",
+        "text": "Every search query, video pause, and cart addition across billions of web sessions is logged as a training example.",
+        "bin": "data",
+        "explanation": "Vast streams of user interactions expand the volume of Big Data available for learning."
+      },
+      {
+        "id": "medical-scans-vault",
+        "text": "A hospital network archives millions of high-resolution MRI scans without deleting older years to free up space.",
+        "bin": "storage",
+        "explanation": "Falling storage costs allow organizations to keep large unstructured archives indefinitely."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "logistic-regression",
+    "prompt": "Each team below is choosing a machine learning algorithm. Name whether the task fits a Decision Tree, Linear Regression, or Logistic Regression.",
+    "options": [
+      { "id": "tree", "label": "Decision Tree" },
+      { "id": "linear", "label": "Linear Regression" },
+      { "id": "logistic", "label": "Logistic Regression" }
+    ],
+    "cases": [
+      {
+        "id": "coffee-demand",
+        "text": "A grocery chain wants to predict the exact number of coffee bags a store will sell next week at different shelf prices.",
+        "answer": "linear",
+        "explanation": "Predicting a continuous numerical quantity (sales volume from price) is a Linear Regression task."
+      },
+      {
+        "id": "email-open",
+        "text": "An online clothing shop wants to predict whether a subscriber will click the link in a promotional email (yes or no).",
+        "answer": "logistic",
+        "explanation": "Predicting a binary outcome (click vs. no click) from customer and product characteristics uses Logistic Regression."
+      },
+      {
+        "id": "hike-flowchart",
+        "text": "A park ranger checks trail conditions step by step—first whether there is lightning, then whether the trail is icy—to decide whether to open the hike.",
+        "answer": "tree",
+        "explanation": "Splitting a decision into sequential condition branches (like checking weather conditions to play tennis) is a Decision Tree."
+      },
+      {
+        "id": "used-car-price",
+        "text": "A dealership estimates the dollar resale value of a used van based on its mileage and age.",
+        "answer": "linear",
+        "explanation": "Dollar resale value is a continuous outcome, which Linear Regression predicts."
+      },
+      {
+        "id": "ad-conversion",
+        "text": "A travel website predicts whether a visitor viewing a hotel page will book the room or leave without booking.",
+        "answer": "logistic",
+        "explanation": "Book vs. not book is a binary outcome ideal for Logistic Regression."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "random-forest",
+    "prompt": "Match each core element of Random Forest with how it works when a logistics firm predicts package delivery delays.",
+    "term_label": "Random Forest Concept",
+    "match_label": "In the Delivery Delay Model",
+    "pairs": [
+      {
+        "id": "ensemble",
+        "term": "Ensemble Method",
+        "match": "Instead of relying on one decision tree, the firm builds hundreds of trees, each trained on a random sample of past shipments and route features.",
+        "explanation": "Ensemble Method builds a forest of decision trees trained on random subsets of data and features."
+      },
+      {
+        "id": "diversity",
+        "term": "Diversity",
+        "match": "Because each tree sees different routes and weather columns, one tree catches port bottlenecks while another catches winter storm patterns.",
+        "explanation": "Independent training on random subsets creates diverse models that capture different patterns."
+      },
+      {
+        "id": "voting",
+        "term": "Voting/Averaging",
+        "match": "To classify a parcel as Late or On-Time, the system picks whichever class most trees voted for; to estimate minutes delayed, it averages all trees' numbers.",
+        "explanation": "Classification takes the majority vote across trees, while regression takes the average prediction."
+      },
+      {
+        "id": "robustness",
+        "term": "Robustness",
+        "match": "A single tree that memorized a freak one-day highway closure is outvoted by the rest of the forest, preventing overfitting on new shipments.",
+        "explanation": "Combining many independent trees cancels out individual errors and reduces overfitting."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "supervised-vs-unsupervised-learning-comparison",
+    "prompt": "Sort each data characteristic, task, or evaluation metric into Supervised Learning or Unsupervised Learning.",
+    "bins": [
+      { "id": "supervised", "label": "Supervised Learning" },
+      { "id": "unsupervised", "label": "Unsupervised Learning" }
+    ],
+    "cards": [
+      {
+        "id": "labeled-pairs",
+        "text": "Training examples pair every input record with a known output target.",
+        "bin": "supervised",
+        "explanation": "Supervised learning requires labeled data where inputs are paired with known outputs."
+      },
+      {
+        "id": "direct-feedback",
+        "text": "Prediction errors are corrected directly against ground-truth labels during training.",
+        "bin": "supervised",
+        "explanation": "Supervised learning uses direct feedback from labels to correct errors."
+      },
+      {
+        "id": "f1-rmse",
+        "text": "Evaluated with Accuracy, Precision, Recall, F1-Score, or RMSE.",
+        "bin": "supervised",
+        "explanation": "These metrics compare model predictions against known true labels or values."
+      },
+      {
+        "id": "unlabeled-inputs",
+        "text": "The algorithm receives only input variables with no predefined outcomes or target column.",
+        "bin": "unsupervised",
+        "explanation": "Unsupervised learning analyzes unlabeled data containing inputs only."
+      },
+      {
+        "id": "clustering-pca",
+        "text": "Used for K-Means clustering, topic modeling (LDA), and dimensionality reduction (PCA).",
+        "bin": "unsupervised",
+        "explanation": "Clustering and dimensionality reduction discover hidden structure without labels."
+      },
+      {
+        "id": "silhouette-elbow",
+        "text": "Assessed with the Silhouette Score, Elbow Method, or Reconstruction Error.",
+        "bin": "unsupervised",
+        "explanation": "Without ground-truth labels, unsupervised models use internal structure metrics like Silhouette Score and Elbow Method."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "case-studies-supervised-vs-unsupervised-learning",
+    "question_text": "A pharmacy chain launches two analytics projects: Project A uses five years of labeled prescription refill records (refilled on time vs. abandoned) to predict which patients will miss their next refill. Project B feeds 40 unlabeled store-level demographic and basket variables into an algorithm to group its 600 pharmacies into natural store formats. Which learning paradigms do Projects A and B use?",
+    "hint": "Check whether each project trains on known historical outcomes (labels) or searches for natural groupings without prior labels.",
+    "correct_answer_index": 0,
+    "correct_answer_citation": "Supervised Learning: Algorithms learn from labeled data, where each input example is paired with a corresponding output (target). Unsupervised Learning: Algorithms analyze unlabeled data to discover hidden patterns, groupings, or structures without predefined outcomes.",
+    "options": [
+      {
+        "option_text": "Project A uses Supervised Learning (classification from labeled refill outcomes); Project B uses Unsupervised Learning (clustering unlabeled stores).",
+        "option_explanation": "Correct. Project A maps inputs to a known historical target label (refilled vs. abandoned), while Project B discovers natural clusters in unlabeled store data."
+      },
+      {
+        "option_text": "Project A uses Unsupervised Learning because future refills have not happened yet; Project B uses Supervised Learning because store variables are numerical.",
+        "option_explanation": "Predicting future outcomes from labeled historical records is Supervised Learning, and numerical inputs without target labels are still Unsupervised."
+      },
+      {
+        "option_text": "Both projects use Supervised Learning because both rely on historical pharmacy data stored in a structured database.",
+        "option_explanation": "Having historical data in a database does not make a task supervised; what matters is whether the training data include known output labels."
+      },
+      {
+        "option_text": "Both projects use Unsupervised Learning because neither project uses a rules-based expert system.",
+        "option_explanation": "Both Supervised and Unsupervised Learning are machine learning paradigms, distinguished by the presence or absence of training labels."
+      }
+    ]
+  }
+]

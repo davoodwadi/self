@@ -2,10 +2,12 @@ import path from "node:path";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { isDeckBuilt } from "@/lib/course-status";
+import { DECK_THEME, Diamond } from "./_visuals/kit";
 
 // The course masthead stays in view on the left while the curriculum scrolls
-// on the right, the same layout as the other course landings. A week links
-// out only once its deck has been built.
+// on the right, the same layout as the other course landings, styled in the
+// course's Flat Silhouette poster palette and typography. A week links out
+// only once its deck has been built.
 
 export const dynamic = "force-static";
 
@@ -76,7 +78,7 @@ const COURSE_WEEKS = [
 ];
 
 const LABEL =
-  "font-accent text-[0.7rem] font-bold uppercase tracking-[0.24em]";
+  "font-accent text-[0.7rem] font-bold uppercase tracking-[0.25em]";
 
 type Row = (typeof COURSE_WEEKS)[number] & { href: string; available: boolean };
 
@@ -84,7 +86,7 @@ function BackLink() {
   return (
     <Link
       href="/courses"
-      className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 transition-colors duration-300 text-[var(--text-muted)] hover:text-[var(--accent1)]"
+      className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 transition-colors duration-300 text-[var(--ink-3)] hover:text-[var(--dt-signal)]"
       aria-label="Back to all courses"
     >
       <ArrowLeft className="w-5 h-5" />
@@ -98,33 +100,33 @@ function RowBody({ week, n }: { week: Row; n: number }) {
   return (
     <>
       <span
-        className={`font-mono pt-1 text-sm tabular-nums transition-colors ${
+        className={`font-heading font-bold pt-0.5 text-lg tabular-nums transition-colors ${
           on
-            ? "text-[var(--accent1)]"
-            : "text-[var(--text-muted)] opacity-60"
+            ? "text-[var(--dt-ink)] group-hover:text-[var(--dt-signal)]"
+            : "text-[var(--ink-3)] opacity-60"
         }`}
       >
         {String(n).padStart(2, "0")}
       </span>
       <div className="min-w-0">
         <h3
-          className={`font-body text-[clamp(1.15rem,1.6vw,1.35rem)] font-semibold leading-snug transition-colors ${
+          className={`font-heading font-bold text-[clamp(1.2rem,1.7vw,1.45rem)] leading-snug tracking-[-0.01em] transition-colors ${
             on
-              ? "text-[var(--text-primary)] group-hover:text-[var(--accent1)]"
-              : "text-[var(--text-muted)]"
+              ? "text-[var(--dt-ink)] group-hover:text-[var(--dt-signal)]"
+              : "text-[var(--ink-3)]"
           }`}
         >
           {week.title}
         </h3>
         <p
-          className={`font-body mt-1.5 max-w-[62ch] text-[0.95rem] leading-relaxed text-[var(--text-secondary)] ${
+          className={`font-body mt-1.5 max-w-[62ch] text-[0.98rem] leading-relaxed text-[var(--ink-3)] ${
             on ? "" : "opacity-70"
           }`}
         >
           {week.subtitle}
         </p>
         {on ? null : (
-          <p className={`${LABEL} mt-2.5 !text-[0.65rem] text-[var(--text-muted)]`}>
+          <p className={`${LABEL} mt-2.5 !text-[0.65rem] text-[var(--ink-3)]`}>
             In preparation
           </p>
         )}
@@ -132,7 +134,7 @@ function RowBody({ week, n }: { week: Row; n: number }) {
       {on ? (
         <ArrowRight
           aria-hidden
-          className="mt-1.5 size-4 text-[var(--text-muted)] transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-[var(--accent1)]"
+          className="mt-1.5 size-4 text-[var(--dt-ink)] transition-[color,transform] duration-200 group-hover:translate-x-1 group-hover:text-[var(--dt-signal)]"
         />
       ) : (
         <span aria-hidden />
@@ -152,40 +154,64 @@ export default function DigitalTransformationLanding() {
   }));
 
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--text-primary)] font-body">
+    <div
+      style={DECK_THEME}
+      className="min-h-screen bg-[var(--dt-cream)] text-[var(--dt-ink)] font-body"
+    >
       <BackLink />
       <div className="mx-auto grid w-full max-w-6xl gap-x-16 px-6 md:px-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
         {/* Masthead: stays in view beside the curriculum on wide screens. */}
         <header className="pt-20 pb-12 md:pt-28 lg:sticky lg:top-0 lg:flex lg:h-svh lg:flex-col lg:justify-center lg:py-16">
-          <h1 className="text-display !text-[clamp(2.6rem,4vw,3.6rem)] font-heading font-light !leading-[1.05] text-[var(--highlight)]">
+          <p className={`${LABEL} flex items-center gap-3 text-[var(--dt-signal)]`}>
+            <span
+              aria-hidden
+              className="inline-block w-2 h-2 rotate-45 shrink-0 bg-[var(--dt-signal)]"
+            />
+            CMPT 641 · {weeks.length} Weeks
+          </p>
+
+          <h1 className="mt-5 font-heading font-bold text-[clamp(2.6rem,4.4vw,3.9rem)] leading-[1.02] tracking-[-0.02em] text-[var(--dt-ink)]">
             Digital Transformation
           </h1>
 
-          <p className="mt-7 max-w-[44ch] text-lg font-light leading-relaxed text-[var(--text-secondary)] md:text-xl">
+          <div className="mt-6 h-[5px] w-24 bg-[var(--dt-signal)]" />
+
+          <p className="mt-6 max-w-[44ch] font-body text-lg leading-relaxed text-[var(--dt-ink)] md:text-xl">
             The intersection of business strategy, human systems, and emerging
             technologies. A ten-week course from foundations to the future of
             industry.
           </p>
 
-          <p className="font-accent mt-8 border-t border-[var(--border)] pt-5 text-sm font-bold tracking-wider text-[var(--text-primary)]">
-            Davood Wadi, PhD
-          </p>
-
+          <div className="mt-8 border-t-[3px] border-[var(--dt-ink)] pt-5">
+            <p className="flex items-center gap-3 font-accent text-sm font-bold tracking-wider text-[var(--dt-ink)]">
+              <Diamond />
+              Davood Wadi, PhD
+            </p>
+          </div>
         </header>
 
         {/* Curriculum */}
         <nav aria-label="Course weeks" className="pb-10 lg:py-20">
           <div className="mb-4">
-            <h2 className={`${LABEL} text-[var(--accent1)]`}>Curriculum</h2>
+            <h2 className={`${LABEL} flex items-center gap-3 text-[var(--dt-signal)]`}>
+              <span
+                aria-hidden
+                className="inline-block w-2 h-2 rotate-45 shrink-0 bg-[var(--dt-signal)]"
+              />
+              Curriculum
+            </h2>
           </div>
 
-          <ol className="border-t border-[var(--border)]">
+          <ol className="border-t-[4px] border-[var(--dt-ink)]">
             {weeks.map((week, idx) => (
-              <li key={week.slug} className="border-b border-[var(--border)]">
+              <li
+                key={week.slug}
+                className="border-b border-[var(--dt-ink)]/25 last:border-b-[3px] last:border-[var(--dt-ink)]"
+              >
                 {week.available ? (
                   <Link
                     href={week.href}
-                    className={`group ${ROW} transition-colors duration-200 hover:bg-[var(--background-alt)]`}
+                    className={`group ${ROW} transition-colors duration-200 hover:bg-[var(--paper-2)]`}
                   >
                     <RowBody week={week} n={idx + 1} />
                   </Link>
@@ -197,7 +223,6 @@ export default function DigitalTransformationLanding() {
               </li>
             ))}
           </ol>
-
         </nav>
       </div>
     </div>

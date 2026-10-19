@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { CB_DIR, IM_DIR, MRA_DIR, readCurriculum } from "@/lib/curriculum";
+import { CB_DIR, IM_DIR, MRA_DIR, RAI_DIR, readCurriculum } from "@/lib/curriculum";
 
 // ============================================================================
 // /courses — COURSE INDEX
 // ============================================================================
-// A junction page. Five courses, one screen, no scroll on desktop: people
+// A junction page. Six courses, one screen, no scroll on desktop: people
 // arrive here to leave, and each course already has its own syllabus.
 // ============================================================================
 
@@ -15,7 +15,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Courses · Davood Wadi, PhD",
   description:
-    "Course websites and lecture decks by Davood Wadi, PhD: Applications of AI in Business, Consumer Behavior, Digital Transformation, Introduction to Marketing, and Marketing Research & Analytics.",
+    "Course websites and lecture decks by Davood Wadi, PhD: Applications of AI in Business, Consumer Behavior, Digital Transformation, Introduction to Marketing, Marketing Research & Analytics, and Responsible AI & Algorithmic Governance.",
 };
 
 const MICRO = "text-[10px] font-semibold uppercase tracking-[0.24em]";
@@ -32,6 +32,7 @@ type Course = {
 const CB = readCurriculum(CB_DIR);
 const IM = readCurriculum(IM_DIR);
 const MRA = readCurriculum(MRA_DIR);
+const RAI = readCurriculum(RAI_DIR);
 
 const COURSES: Course[] = [
   {
@@ -68,6 +69,13 @@ const COURSES: Course[] = [
     title: MRA.title,
     subtitle: MRA.subtitle,
     description: MRA.summary,
+  },
+  {
+    slug: "responsible-ai-governance",
+    code: null,
+    title: RAI.title,
+    subtitle: RAI.subtitle,
+    description: RAI.summary,
   },
 ];
 

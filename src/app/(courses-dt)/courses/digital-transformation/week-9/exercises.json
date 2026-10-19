@@ -1,0 +1,190 @@
+[
+  {
+    "type": "match",
+    "slide_id": "the-first-industrial-revolution",
+    "prompt": "Match each core pillar of the First Industrial Revolution with the historical transformation that illustrates it.",
+    "term_label": "First Revolution Pillar",
+    "match_label": "18th–19th Century Transformation",
+    "pairs": [
+      {
+        "id": "mechanization",
+        "term": "Mechanization of Production",
+        "match": "Mechanical threshers and iron gear drives replace teams of draft horses and hand-flails, multiplying output per worker.",
+        "explanation": "Mechanization introduced machines to replace human and animal labor, significantly increasing productivity."
+      },
+      {
+        "id": "steam-power",
+        "term": "Steam Power",
+        "match": "Coal-fired boilers and reciprocating pistons allow mills and locomotives to run anywhere, freed from seasonal river currents.",
+        "explanation": "The development of the steam engine revolutionized both manufacturing and transportation."
+      },
+      {
+        "id": "factory-system",
+        "term": "Factory System",
+        "match": "Hundreds of weavers leave dispersed rural cottages to work scheduled shifts under one roof in a multi-storey Manchester mill.",
+        "explanation": "The factory system consolidated large-scale production in centralized factories, replacing cottage industries and small workshops."
+      },
+      {
+        "id": "textile-boom",
+        "term": "Textile Industry Boom",
+        "match": "Multi-spindle spinning jennies and power looms spin thread and weave cloth at a fraction of the time required by a hand wheel.",
+        "explanation": "Inventions like the spinning jenny and power loom transformed textile manufacturing."
+      },
+      {
+        "id": "iron-coal",
+        "term": "Iron and Coal Production",
+        "match": "Expanded deep-seam coal mines and blast furnaces supply the structural metal and fuel needed to build engines and rails.",
+        "explanation": "Growth in ironworks and coal mining provided the essential raw materials for machinery and transportation."
+      },
+      {
+        "id": "railroads-canals",
+        "term": "Railroads and Canals",
+        "match": "Inland waterways with locks and iron rail lines link inland manufacturing towns directly to coastal ports for rapid freight movement.",
+        "explanation": "Improved transportation networks of railroads and canals enabled faster movement of goods and people."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "second-revolution-key-inventions",
+    "prompt": "Identify which key invention of the Second Industrial Revolution drove each industrial breakthrough.",
+    "options": [
+      { "id": "light-bulb", "label": "Electric Light Bulb" },
+      { "id": "combustion-engine", "label": "Internal Combustion Engine" },
+      { "id": "radio-waves", "label": "Radio Waves" },
+      { "id": "assembly-line", "label": "Automobile Production Line" }
+    ],
+    "cases": [
+      {
+        "id": "night-shift-mill",
+        "text": "A steel fabrication plant in 1888 adds a full midnight-to-dawn shift under bright, smokeless overhead illumination, operating continuously around the clock.",
+        "answer": "light-bulb",
+        "explanation": "Thomas Edison's electric light bulb (1879) enabled safe night-time work and extended factory productivity beyond daylight hours."
+      },
+      {
+        "id": "ship-to-shore",
+        "text": "A steamship crossing the Atlantic in 1901 transmits an urgent distress and cargo update to a coastal station hundreds of miles away without any undersea cable.",
+        "answer": "radio-waves",
+        "explanation": "Guglielmo Marconi's transmission of radio waves (1895) enabled the first wireless communication across distances."
+      },
+      {
+        "id": "highland-park-chassis",
+        "text": "Instead of skilled mechanics building one car at a stationary bench over twelve hours, a moving conveyor brings each chassis past specialized stations, cutting build time to 93 minutes and making the car affordable for working families.",
+        "answer": "assembly-line",
+        "explanation": "Henry Ford's moving automobile production line (1913) reduced assembly costs and time, making cars affordable for the masses."
+      },
+      {
+        "id": "motor-delivery-truck",
+        "text": "A compact liquid-fueled piston engine replaces horse teams and heavy external steam boilers, allowing compact motorcars and delivery trucks to travel city streets independently.",
+        "answer": "combustion-engine",
+        "explanation": "The internal combustion engine powered automobiles and transformed personal and commercial road transportation."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "third-revolution-key-innovations",
+    "prompt": "Arrange these five milestones of the Third Industrial Revolution in chronological order to trace how digital innovation layered on earlier foundations.",
+    "steps": [
+      {
+        "id": "transistor-microprocessor",
+        "text": "Engineers invent the transistor (1947) and the single-chip microprocessor (1971), shrinking electronic logic onto silicon.",
+        "explanation": "The transistor (1947) and microprocessor (1971) created the hardware foundation that made personal computing possible."
+      },
+      {
+        "id": "personal-computers",
+        "text": "Personal computers (1970s–1980s) bring desktop computing power directly to small businesses and individual households.",
+        "explanation": "Built on microprocessors, personal computers in the 1970s–1980s democratized access to computing."
+      },
+      {
+        "id": "internet-ecommerce",
+        "text": "The World Wide Web and global internet (1990s) connect those computers worldwide, enabling e-commerce platforms like Amazon and Alibaba.",
+        "explanation": "Following widespread PC adoption, the 1990s internet and e-commerce transformed global communication and trade."
+      },
+      {
+        "id": "mobile-tech",
+        "text": "Smartphones and high-speed wireless networks (2000s) untether internet access from the desk, putting global connectivity in every pocket.",
+        "explanation": "In the 2000s, mobile technology and wireless networks revolutionized anywhere-accessibility."
+      },
+      {
+        "id": "ai-ml-processes",
+        "text": "Artificial intelligence and machine learning (2010s–Present) leverage massive web and mobile data streams to automate business decision-making.",
+        "explanation": "In the 2010s and beyond, AI and machine learning built atop global cloud and mobile data to automate complex decisions."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "the-fourth-industrial-revolution",
+    "question_text": "An automotive plant outfits every stamping press with vibration and thermal sensors linked to a live digital model; when a bearing begins to wear, the machine diagnoses the fault itself, re-routes work to an adjacent press, and schedules its own replacement part via cloud logistics. Which core Industry 4.0 pillar does this self-diagnosing factory floor primarily illustrate?",
+    "hint": "Look for the technology pillar specifically defined by physical machines connected with sensors that self-diagnose issues and optimize operations autonomously.",
+    "correct_answer_index": 0,
+    "correct_answer_citation": "Internet of Things (IoT) & Cyber-Physical Systems — Example: Smart factories where machines self-diagnose issues and optimize operations.",
+    "options": [
+      {
+        "option_text": "Internet of Things (IoT) & Cyber-Physical Systems",
+        "option_explanation": "Correct. Smart factories where connected physical machines self-diagnose issues and optimize operations autonomously are the defining example of IoT and Cyber-Physical Systems in Industry 4.0."
+      },
+      {
+        "option_text": "Biotechnology, 3D Printing & Human-Machine Integration",
+        "option_explanation": "Biotechnology and 3D printing focus on applications such as 3D-printed organs and AI-assisted drug discovery rather than self-diagnosing factory machinery."
+      },
+      {
+        "option_text": "The Second Industrial Revolution's Bessemer Steel Process",
+        "option_explanation": "The Bessemer Process (1856) enabled mass steel production during the Second Industrial Revolution, without digital sensors or autonomous self-diagnosis."
+      },
+      {
+        "option_text": "Blockchain Cryptocurrencies",
+        "option_explanation": "Blockchain provides decentralized immutable ledgers (such as Bitcoin or supply chain tracking), whereas sensor-driven machine self-diagnosis is an IoT cyber-physical system."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "fourth-revolution-impact-on-society-and-business",
+    "prompt": "Sort each Industry 4.0 outcome into the societal and business impact category it represents.",
+    "bins": [
+      { "id": "value-models", "label": "Hyper-Personalization & New Business Models" },
+      { "id": "urban-productivity", "label": "Smart Cities & Productivity" },
+      { "id": "risks-ethics", "label": "Job Disruption, Security & Ethics" }
+    ],
+    "cards": [
+      {
+        "id": "custom-inhaler",
+        "text": "An AI platform tailors a patient's daily asthma dosage and subscription software-as-a-service plan to their individual biometric history.",
+        "bin": "value-models",
+        "explanation": "AI-driven individual customization and SaaS/platform models exemplify Hyper-Personalized Products & Services and New Business Models."
+      },
+      {
+        "id": "uber-airbnb-platform",
+        "text": "A mobility and lodging marketplace connects millions of drivers and hosts with travelers without owning a single vehicle or hotel building.",
+        "bin": "value-models",
+        "explanation": "Platform economies like Uber and Airbnb represent the New Business Models of Industry 4.0."
+      },
+      {
+        "id": "iot-traffic-grid",
+        "text": "Municipal road sensors and connected streetlamps dynamically adjust signal timing and power draw across downtown corridors.",
+        "bin": "urban-productivity",
+        "explanation": "IoT-enabled urban infrastructure optimizing city management is the core of Smart Cities & Digital Governance."
+      },
+      {
+        "id": "zero-waste-mill",
+        "text": "Automated vision systems detect material defects in milliseconds on a packaging line, cutting scrap waste and unit costs by 30%.",
+        "bin": "urban-productivity",
+        "explanation": "AI and automation reducing waste and operational costs illustrates Increased Productivity & Efficiency."
+      },
+      {
+        "id": "warehouse-reskilling",
+        "text": "Autonomous fulfillment bots replace manual stock-picking roles, requiring displaced warehouse staff to retrain as robot fleet technicians.",
+        "bin": "risks-ethics",
+        "explanation": "Automation replacing routine roles and requiring workforce retraining illustrates Job Disruption & Reskilling Needs."
+      },
+      {
+        "id": "biased-hiring-breach",
+        "text": "A hospital's connected diagnostic network faces ransomware attacks while an automated screening algorithm exhibits demographic bias.",
+        "bin": "risks-ethics",
+        "explanation": "Digital attack surfaces, AI bias, and surveillance fall under Cybersecurity & Privacy Concerns and Ethical Challenges."
+      }
+    ]
+  }
+]

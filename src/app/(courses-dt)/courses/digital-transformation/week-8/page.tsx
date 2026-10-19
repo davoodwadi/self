@@ -1,306 +1,616 @@
-import React from "react"
-import {
-  ProgressBar,
-  FloatingNav,
-  Hero,
-  ChapterHeader,
-  ZigzagContent,
-  ConceptCardsZigzag,
-  CinematicQuote,
-  Conclusion,
-  DataBlock
-} from "@/components/presentation"
+"use client";
 
-import pilotImage from "./5761.png"
-import arvrImage from "./What-is-The-Future-of-Augmented-Reality-In-Our-Everyday-Life.jpg"
-import swipeVsSweep from "./swipe vs sweep.png"
-import darkSoulsImage from "./DARK-SOULS™-REMASTERED-5.png"
-import progressBarsImage from "./progressBars.png"
-import msFlightSim from "./97706ebe-894a-47d5-9720-ad1e18092076.jpg"
-import guitarHero from "./sddefault.jpg"
-import zombiesRun from "./Capture.png"
-import militaryController from "./8218300.png"
-import packbotController from "./1000w_q95.png"
-import Image from "next/image"
-import { ArrowLeft } from "lucide-react"
-import Link from "next/link"
+import React, { useState } from "react";
+import { ProgressBar } from "@/components/presentation";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+
+import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
+import exercisesData from "./exercises.json";
+
+import {
+  DECK_THEME,
+  DeckNav,
+  PosterHero,
+  ChapterBand,
+  Slide,
+  Row,
+  PlateWell,
+  Summary,
+} from "../_visuals/kit";
+import {
+  HeroImmersivePlate,
+  PilotTrainingInteractive,
+  SimulatingPlate,
+  InteractingPlate,
+  BlendingPlate,
+  VirtualRealityPlate,
+  AugmentedRealityPlate,
+  SwipeVsSweepPlate,
+  GamificationElementsInteractive,
+  GamificationElementsTall,
+  ProgressBarComparisonInteractive,
+  OverjustificationInteractive,
+  ExcessiveFreedomPlate,
+  FlightSimCaseInteractive,
+  FlightSimCaseTall,
+  GuitarHeroCurveInteractive,
+  ZombiesRunPlate,
+  ZombiesRunTall,
+  MilitaryControllerPlate,
+  BusinessQuestionsPlate,
+} from "./visuals";
+
 const SECTIONS = [
-  { id: "hero", label: "Introduction" }, 
-  { id: "ch1", label: "Immersive Tech" },
+  { id: "hero", label: "Introduction" },
+  { id: "ch1", label: "Immersive Technologies" },
   { id: "ch2", label: "Gamification" },
-  { id: "ch3", label: "Cases & Ethics" }, 
-  { id: "conclusion", label: "Summary" }
-]
+  { id: "ch3", label: "Business Cases" },
+  { id: "ch4", label: "Ethical Concerns" },
+  { id: "conclusion", label: "Conclusion" },
+];
+
+const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
+
+/* Body copy: the reading serif; terms set bold in the display serif. */
+const BODY_BASE = "font-body leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
+const BODY = `${BODY_BASE} text-base md:text-[1.08rem]`;
+const LIST =
+  "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
+const SUBLIST =
+  "list-none flex flex-col gap-1 mt-1.5 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['–'] [&>li]:before:shrink-0";
+
+function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
+  return (
+    <ul className={`${LIST} ${className}`}>
+      {items.map((it, i) => (
+        <li key={i}>
+          <span>{it}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Dashes({ items }: { items: React.ReactNode[] }) {
+  return (
+    <ul className={SUBLIST}>
+      {items.map((it, i) => (
+        <li key={i}>
+          <span>{it}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function DigitalTransformationWeek8() {
+  const [activeElement, setActiveElement] = useState(0);
+  const [activeFlightFeature, setActiveFlightFeature] = useState(0);
+  const [activeBizQuestion, setActiveBizQuestion] = useState(0);
+
   return (
-    <main className="relative w-full overflow-x-hidden bg-background min-h-screen font-body text-text-primary">
+    <main className="relative w-full overflow-x-hidden min-h-screen font-body" style={DECK_THEME}>
       <ProgressBar />
-      <FloatingNav sections={SECTIONS} />
- {/* Navigation */}
+      <DeckNav sections={SECTIONS} />
       <Link
         href="/courses/digital-transformation"
-        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--text-muted)] hover:text-[var(--accent1)] transition-colors duration-300"
+        className="fixed top-3 left-3 z-50 flex items-center justify-center w-10 h-10 text-[var(--ink-3)] hover:text-[var(--dt-signal)] transition-colors duration-300"
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
-      <Hero
-        category="WEEK 08 — DIGITAL TRANSFORMATION"
-        title="Immersive Technologies & Gamification"
-        subtitle="Exploring AR, VR, Game Mechanics, and Their Ethical Implications in Business"
+
+      <PosterHero
+        category="WEEK 8 — DIGITAL TRANSFORMATION"
+        title="Week 8: Immersive Technologies"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
-      />
-
-      {/* CHAPTER 1 */}
-      <ChapterHeader
-        id="ch1"
-        number="01"
-        title="Immersive Technologies"
-        description="An overview of digital tools that simulate realistic environments and blend digital content with the physical world."
-        altBg={true}
-      />
-
-      <ZigzagContent
-        label="THEORETICAL FRAMEWORK"
-        title="Simulating Reality"
-        startRight={false}
-        altBg={true}
-        segments={[
-          {
-            type: "insight",
-            label: "THE 10,000 HOUR PROBLEM",
-            content: "Consider the challenge of becoming a pilot. Achieving proficiency requires immense time and resources, often cited as 10,000 hours of practice. How can technology accelerate this intensive learning process?"
-          },
-          {
-            type: "image",
-            imageUrl: pilotImage
-          },
-          {
-            type: "text",
-            content: (
-              <p>
-                Immersive technologies constitute a suite of digital tools and methodologies designed to create or augment user experiences. They achieve this by simulating realistic environments and facilitating interaction with virtual elements.
-              </p>
-            )
-          },
-          {
-            type: "image",
-            imageUrl: arvrImage
-          },
-          {
-            type: "text",
-            content: (
-              <p>
-                By seamlessly blending digital content with the physical world, these technologies offer unprecedented opportunities for training, visualization, and consumer engagement.
-              </p>
-            )
-          }
+        agenda={[
+          "Immersive Technologies — AR, VR",
+          "Gamification",
+          "Business Cases",
+          "Ethical Concerns",
         ]}
+        plate={<HeroImmersivePlate />}
       />
 
-      <ConceptCardsZigzag
-        startRight={false}
-        cards={[
-          { number: "01", title: "Virtual Reality (VR)", description: "Utilizes headsets to create a fully computer-generated environment. Users are completely immersed in a virtual world through visual, auditory, and occasionally haptic feedback." },
-          { number: "02", title: "Augmented Reality (AR)", description: "Overlays digital information or objects onto the real world. Enhances perception of surroundings, allowing interaction with both virtual and physical elements via devices like smartphones or smart glasses." }
-        ]}
-        altBg={true}
-      />
+      {/* ================================================================
+          CHAPTER 1 — IMMERSIVE TECHNOLOGIES
+          ================================================================ */}
+      <ChapterBand id="ch1" number="01" title="Immersive Technologies" />
 
-      {/* CHAPTER 2 */}
-      <ChapterHeader
-        id="ch2"
-        number="02"
-        title="Principles of Gamification"
-        description="The strategic application of game-design elements and mechanics within non-game contexts to drive behavior."
-        altBg={false}
-      />
+      <Slide id="question-becoming-a-pilot" label="QUESTION" title="Question">
+        <div className={`${BODY} text-lg grid md:grid-cols-2 gap-5`}>
+          <Bullets
+            items={[
+              <>Think of becoming a pilot.</>,
+              <>Why is it deemed a difficult task? Why are there more people with driver&apos;s license than with pilot&apos;s license?</>,
+            ]}
+          />
+          <Bullets
+            items={[
+              <>&ldquo;It takes 10,000 hours to become proficient with flying.&rdquo;</>,
+              <>What solutions do we have to this problem?</>,
+            ]}
+          />
+        </div>
+        <PlateWell>
+          <PilotTrainingInteractive />
+        </PlateWell>
+      </Slide>
 
-      <ZigzagContent
-        label="BEHAVIORAL DESIGN"
-        title="Motivating Action"
-        startRight={true}
-        altBg={false}
-        segments={[
-          {
-            type: "text",
-            content: (
-              <p>
-                Gamification leverages inherent human tendencies toward play, achievement, and social interaction. Its primary objective is to engage and motivate individuals to achieve specific goals, enhancing the overall user experience.
+      <Slide id="immersive-technologies" label="CORE CONCEPT" title="Immersive technologies">
+        <div className={`${BODY} text-xl md:text-2xl border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+          <p>
+            Immersive technologies: a group of digital tools and techniques that create or enhance{" "}
+            <strong>user experiences</strong>
+          </p>
+        </div>
+        <div className={`${BODY} grid md:grid-cols-3 gap-6 items-start`}>
+          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+            <p className="text-lg md:text-xl">
+              <strong>simulating</strong> realistic environments,
+            </p>
+            <PlateWell>
+              <SimulatingPlate />
+            </PlateWell>
+          </div>
+          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+            <p className="text-lg md:text-xl">
+              <strong>interacting</strong> with virtual elements,
+            </p>
+            <PlateWell>
+              <InteractingPlate />
+            </PlateWell>
+          </div>
+          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+            <p className="text-lg md:text-xl">
+              <strong>blending</strong> digital content with the physical world.
+            </p>
+            <PlateWell>
+              <BlendingPlate />
+            </PlateWell>
+          </div>
+        </div>
+      </Slide>
+
+      <Slide
+        id="virtual-reality-vr-and-augmented-reality-ar"
+        label="IMMERSIVE TECHNOLOGIES"
+        title="Virtual Reality (VR) and Augmented Reality (AR)"
+        exercise={exercise["virtual-reality-vr-and-augmented-reality-ar"]}
+      >
+        <div className={`${BODY} grid md:grid-cols-2 gap-6 md:gap-8 items-start`}>
+          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+            <div>
+              <p className="text-xl">
+                1. <strong>Virtual Reality (VR)</strong>
               </p>
-            )
-          },
-          {
-            type: "image",
-            imageUrl: swipeVsSweep
-          },
-          {
-            type: "insight",
-            label: "REFLECTION QUESTION",
-            content: "Why are individuals more willing to endlessly swipe their phone screens than to sweep their floors? Gamification transforms mundane tasks to feel inherently more enjoyable and rewarding."
-          }
-        ]}
-      />
+              <Dashes
+                items={[
+                  <>
+                    using headsets to create a <em>fully computer-generated</em> environment that users can interact
+                    with.
+                  </>,
+                  <>
+                    In VR, users are completely immersed in a virtual world, typically experienced through visual and
+                    auditory stimuli, and sometimes through haptic feedback.
+                  </>,
+                ]}
+              />
+            </div>
+            <PlateWell>
+              <VirtualRealityPlate />
+            </PlateWell>
+            <p className="border-l-[4px] border-[var(--dt-ink)] pl-3 text-[0.98rem]">
+              Research <em>three</em> VR hardware. Find what their use cases are. Write the information down and share
+              it with the class.
+            </p>
+          </div>
 
-      <ConceptCardsZigzag
-        startRight={true}
-        cards={[
-          { title: "Points", description: "Earned for completing tasks or reaching milestones. They serve as a quantifiable, measurable form of progress and achievement." },
-          { title: "Badges", description: "Visual representations of accomplishments. They provide immediate recognition and motivate continued participation." },
-          { title: "Leaderboards", description: "Rank participants based on performance. Fosters healthy competition by tapping into the human desire for social comparison and status." },
-          { title: "Challenges & Quests", description: "Structures standard tasks as adventures, creating engagement by motivating users to overcome obstacles and unlock rewards." },
-          { title: "Levels & Progression", description: "Advancing through levels provides users with a distinct, sustained sense of progression over time." }
-        ]}
-        altBg={false}
-      />
-
-      <ZigzagContent
-        label="PROGRESSION MECHANICS"
-        title="Designing the Experience"
-        startRight={false}
-        altBg={false}
-        segments={[
-          {
-            type: "text",
-            content: (
-              <p>
-                The distinction between a challenging game and a tedious chore often lies in the design of progression. Immediate, clear feedback transforms frustration into engagement.
+          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+            <div>
+              <p className="text-xl">
+                2. <strong>Augmented Reality (AR)</strong>
               </p>
-            )
-          },
-          {
-            type: "image",
-            imageUrl: darkSoulsImage
-          },
-          {
-            type: "text",
-            content: (
-              <p>
-                The design and implementation of progress indicators, such as progress bars, fundamentally influence user perception of advancement. A well-structured progression system provides continuous, measurable motivation.
-              </p>
-            )
-          },
-          {
-            type: "image",
-            imageUrl: progressBarsImage
-          }
-        ]}
-      />
-
-      <CinematicQuote
-        quote="Consider the structure of a two-year academic program. Does it provide sufficient feedback to foster a genuine sense of progression? How might gamification enhance the student journey?"
-        author="Academic Reflection"
-        altBg={false}
-      />
-
-      {/* CHAPTER 3 */}
-      <ChapterHeader
-        id="ch3"
-        number="03"
-        title="Business Cases & Ethical Concerns"
-        description="Analyzing successful implementations of gamification and confronting the ethical challenges of manipulative design."
-        altBg={true}
-      />
-
-      <ZigzagContent
-        label="CASE STUDIES"
-        title="Simulators and Audio Adventures"
-        startRight={true}
-        altBg={true}
-        segments={[
-          {
-            type: "text",
-            content: (
-              <p>
-                Microsoft Flight Simulator represents a pinnacle of immersive technology, utilizing realistic graphics, dynamic weather, and VR support to create virtual cockpit experiences that rival professional aviation training.
-              </p>
-            )
-          },
-          {
-            type: "image",
-            imageUrl: msFlightSim
-          },
-          {
-            type: "text",
-            content: (
-              <p>
-                Conversely, Guitar Hero demonstrated how gamification can overcome the steep learning curve of musical instruments, turning repetitive practice into immediate, rewarding progression.
-              </p>
-            )
-          },
-          {
-            type: "image",
-            imageUrl: guitarHero
-          }
-        ]}
-      />
-
-      <DataBlock label="INNOVATIVE APPLICATION" title="Zombies, Run!" altBg={true}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 items-center">
-          <Image src={zombiesRun} alt="Zombies Run App Interface" className="w-full h-auto rounded-xl object-contain shadow-2xl" />
-          <div className="bg-card/80 backdrop-blur-md p-8 rounded-xl shadow-xl border border-border">
-            <h3 className="text-h2 mb-4">Fitness Meets Narrative</h3>
-            <p className="text-body text-text-secondary">
-              This application successfully gamifies physical exercise by turning a standard jog into an immersive audio adventure. Users must physically accelerate to escape virtual threats, effectively blending intrinsic health goals with engaging extrinsic narrative mechanics.
+              <Dashes
+                items={[
+                  <>
+                    AR <strong>overlays</strong> digital information or objects onto the real world,
+                  </>,
+                  <>enhancing the perception of the surroundings.</>,
+                  <>
+                    Users can view AR content through devices like{" "}
+                    <strong>smartphones, tablets, or AR glasses</strong>,
+                  </>,
+                  <>
+                    allowing for interaction with <strong>both</strong> virtual and physical elements.
+                  </>,
+                ]}
+              />
+            </div>
+            <PlateWell>
+              <AugmentedRealityPlate />
+            </PlateWell>
+            <p className="border-l-[4px] border-[var(--dt-ink)] pl-3 text-[0.98rem]">
+              Research <em>three</em> AR hardware. Find what their use cases are. Write the information down and share
+              it with the class.
             </p>
           </div>
         </div>
-      </DataBlock>
+      </Slide>
 
-      <ConceptCardsZigzag
-        startRight={false}
-        cards={[
-          { title: "Overjustification Effect", description: "Relying too heavily on extrinsic rewards can undermine intrinsic motivation, leading users to engage only for the reward rather than for personal growth." },
-          { title: "Excessive Freedom", description: "Providing an open-world experience without clear objectives or structure can paradoxically lead to user boredom and decreased engagement." }
-        ]}
-        altBg={true}
-      />
+      {/* ================================================================
+          CHAPTER 2 — GAMIFICATION
+          ================================================================ */}
+      <ChapterBand id="ch2" number="02" title="Gamification" />
 
-      <ZigzagContent
-        label="CRITICAL ANALYSIS"
-        title="Ethical Implications"
-        startRight={true}
-        altBg={true}
-        segments={[
-          {
-            type: "text",
-            content: (
+      <Slide id="gamification" label="BEHAVIORAL DESIGN" title="Gamification">
+        <Row cols="lg:grid-cols-[1.15fr_1fr]">
+          <div className={`${BODY} flex flex-col gap-5`}>
+            <Bullets
+              items={[
+                <>
+                  Gamification is the application of <strong>game-design</strong> elements, principles, and mechanics in
+                  non-game contexts
+                </>,
+                <>
+                  <strong>engage and motivate</strong> individuals to achieve specific goals, enhance user experience,
+                  and drive behavior.
+                </>,
+                <>
+                  to leverage humans&apos; <strong>natural tendencies</strong> toward{" "}
+                  <em>play, achievement, and social interaction</em>,
+                </>,
+                <>
+                  making tasks feel <em>more enjoyable and rewarding</em>.
+                </>,
+              ]}
+            />
+            <p className="font-heading font-bold text-xl border-t-[4px] border-[var(--dt-ink)] pt-4">
+              Why are people more willing to swipe their phone than sweep their floor?
+            </p>
+          </div>
+          <PlateWell>
+            <SwipeVsSweepPlate />
+          </PlateWell>
+        </Row>
+      </Slide>
+
+      <Slide
+        id="elements-of-gamification"
+        label="MECHANICS"
+        title="Elements of Gamification"
+        exercise={exercise["elements-of-gamification"]}
+      >
+        <PlateWell>
+          <div className="hidden sm:block">
+            <GamificationElementsInteractive active={activeElement} onSelect={setActiveElement} />
+          </div>
+          <div className="sm:hidden">
+            <GamificationElementsTall active={activeElement} onSelect={setActiveElement} />
+          </div>
+        </PlateWell>
+        <div className={`${BODY} grid`}>
+          {[
+            <p key="points" className="text-xl">
+              1. <strong>Points</strong>: Users earn points for completing tasks, achieving milestones, or participating
+              in activities. Points serve as a measurable form of progress and achievement.
+            </p>,
+            <div key="badges" className="text-xl">
               <p>
-                The integration of gaming interfaces into high-stakes environments raises significant ethical concerns. The military has increasingly adopted commercial gaming controllers, such as those from Xbox, to operate advanced weapon systems and robotics.
+                2. <strong>Badges</strong>: Badges are visual representations of accomplishments that users can earn by
+                completing specific tasks or challenges.
               </p>
-            )
-          },
-          {
-            type: "image",
-            imageUrl: militaryController
-          },
-          {
-            type: "insight",
-            label: "THE GAMING GENERATION",
-            content: "Utilizing familiar interfaces like PlayStation or Xbox controllers acts as a natural transition for younger operators. It capitalizes on thousands of hours of prior gaming experience to accelerate military training."
-          },
-          {
-            type: "image",
-            imageUrl: packbotController
-          }
-        ]}
-      />
+              <Dashes
+                items={[
+                  <>
+                    They provide <em>recognition</em> and can <em>motivate</em> further participation.
+                  </>,
+                ]}
+              />
+            </div>,
+            <div key="leaderboards" className="text-xl">
+              <p>
+                3. <strong>Leaderboards</strong>: Leaderboards rank participants based on their performance, often
+                fostering healthy competition among users.
+              </p>
+              <Dashes
+                items={[
+                  <>
+                    This element taps into people&apos;s desire for <em>social comparison and status</em>.
+                  </>,
+                ]}
+              />
+            </div>,
+            <div key="challenges" className="grid md:grid-cols-[1.25fr_1fr] gap-6">
+              <p className="text-lg">
+                4. <strong>Challenges and Quests</strong>: Structuring tasks as challenges or quests can create a sense
+                of adventure and engagement. Users may be motivated to complete these tasks to overcome obstacles or
+                unlock rewards.
+              </p>
+              <div className="border-l-[4px] border-[var(--dt-ink)] pl-4">
+                <Bullets
+                  items={[
+                    <>Why some people are drawn to challenging games?</>,
+                    <>What is the difference between a challenging game and a challenging job? What is a chore?</>,
+                  ]}
+                />
+              </div>
+            </div>,
+            <p key="levels" className="text-xl">
+              5. <strong>Levels and Progression</strong>: Users can advance through levels by completing certain
+              objectives or accumulating points. This system provides a <strong>sense of progression</strong>.
+            </p>,
+          ].map((item, i) => {
+            const isLit = i === activeElement;
+            return (
+              <div
+                key={i}
+                aria-hidden={!isLit}
+                className={`col-start-1 row-start-1 border-t-[4px] border-[var(--dt-ink)] pt-4 transition-opacity duration-200 ${
+                  isLit ? "opacity-100" : "opacity-0 pointer-events-none select-none"
+                }`}
+              >
+                {item}
+              </div>
+            );
+          })}
+        </div>
+      </Slide>
 
-      {/* CONCLUSION */}
-      <Conclusion
+      <Slide id="progress-bar-and-group-question" label="PROGRESSION DESIGN" title="Progress Bar and Group Question">
+        <p className="font-heading font-bold text-xl border-l-[5px] border-[var(--dt-ink)] pl-4">
+          What is the difference between these two progress bars in terms of design?
+        </p>
+        <PlateWell>
+          <ProgressBarComparisonInteractive />
+        </PlateWell>
+        <div className={`${BODY} grid md:grid-cols-3 gap-5 border-t-[4px] border-[var(--dt-ink)] pt-4`}>
+          <p>Think about your MBA program.</p>
+          <p>
+            Does the two-year completion timelime provide enough <strong>progression</strong> to give you a sense of
+            progression?
+          </p>
+          <p>Provide a proposal that would enhance the sense of progression for the students.</p>
+        </div>
+      </Slide>
+
+      <Slide
+        id="challenges-of-gamification"
+        label="PITFALLS"
+        title="Challenges of Gamification:"
+        exercise={exercise["challenges-of-gamification"]}
+      >
+        <div className={`${BODY} grid md:grid-cols-2 gap-6 md:gap-8 items-start`}>
+          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+            <div>
+              <p className="text-xl mb-1.5">
+                <strong>Overjustification Effect</strong>
+              </p>
+              <Dashes
+                items={[
+                  <>
+                    Relying too heavily on <strong>extrinsic rewards</strong> can undermine{" "}
+                    <strong>intrinsic motivation</strong>, leading users to only engage in activities for the{" "}
+                    <em>rewards</em> rather than for personal growth or <em>enjoyment</em>.
+                  </>,
+                  <>e.g., when you finish a game you tend to enjoy the game world less.</>,
+                ]}
+              />
+            </div>
+            <PlateWell>
+              <OverjustificationInteractive />
+            </PlateWell>
+          </div>
+          <div className="border-t-[4px] border-[var(--dt-ink)] pt-4 flex flex-col gap-3">
+            <div>
+              <p className="text-xl mb-1.5">
+                <strong>Excessive Freedom</strong>
+              </p>
+              <Dashes
+                items={[
+                  <>An open-world game with no objectives</>,
+                  <>Does it make the game boring?</>,
+                ]}
+              />
+            </div>
+            <PlateWell>
+              <ExcessiveFreedomPlate />
+            </PlateWell>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ================================================================
+          CHAPTER 3 — BUSINESS CASES
+          ================================================================ */}
+      <ChapterBand id="ch3" number="03" title="Business Cases" />
+
+      <Slide
+        id="the-case-of-microsoft-flight-simulator"
+        label="CASE STUDY"
+        title="The Case of Microsoft Flight Simulator"
+      >
+        <div className={`${BODY} grid sm:grid-cols-2 lg:grid-cols-3 gap-4`}>
+          {[
+            <>Realistic Graphics and Simulated Environments</>,
+            <>Virtual Cockpit Experiences</>,
+            <>VR Support</>,
+            <>Dynamic Weather and Air Traffic</>,
+            <>Community and Multiplayer Features</>,
+          ].map((item, i) => {
+            const isLit = i === activeFlightFeature;
+            return (
+              <div
+                key={i}
+                onClick={() => setActiveFlightFeature(i)}
+                className={`cursor-pointer border-t-[4px] border-[var(--dt-ink)] pt-3 flex items-baseline gap-2.5 transition-colors ${
+                  isLit ? "font-heading font-bold" : ""
+                }`}
+              >
+                <span className="font-accent text-sm shrink-0">{i + 1}.</span>
+                <span>{item}</span>
+              </div>
+            );
+          })}
+          <div className="border-t-[4px] border-[var(--dt-ink)] pt-3">
+            <a
+              href="https://www.youtube.com/watch?v=LPoZx88OQQg"
+              target="_blank"
+              rel="noreferrer"
+              className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+            >
+              Motion Simulator build and test flight
+            </a>
+          </div>
+        </div>
+        <PlateWell>
+          <div className="hidden sm:block">
+            <FlightSimCaseInteractive active={activeFlightFeature} onSelect={setActiveFlightFeature} />
+          </div>
+          <div className="sm:hidden">
+            <FlightSimCaseTall active={activeFlightFeature} onSelect={setActiveFlightFeature} />
+          </div>
+        </PlateWell>
+      </Slide>
+
+      <Slide id="guitar-hero" label="CASE STUDY" title="Guitar Hero">
+        <Row cols="lg:grid-cols-[1.1fr_1fr]">
+          <div className={`${BODY} flex flex-col gap-3`}>
+            <Bullets
+              items={[
+                <>Learning to play a musical instrument can be quite challenging.</>,
+                <>The initial learning curve is steep.</>,
+                <>In the first few months there seems to be little progression.</>,
+                <>Until you get good, nobody wants to listen to your play.</>,
+                <>Introducing Guitar Hero</>,
+                <a
+                  key="gh-link"
+                  href="https://www.youtube.com/watch?v=Fneaa0E6PwE"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+                >
+                  ONE BY METALLICA ~ 150% SPEED ~ FIRST EVER 100% FC!!!!!!!!!!
+                </a>,
+              ]}
+            />
+          </div>
+          <PlateWell>
+            <GuitarHeroCurveInteractive />
+          </PlateWell>
+        </Row>
+      </Slide>
+
+      <Slide id="zombies-run" label="CASE STUDY" title="Zombies, Run!" exercise={exercise["zombies-run"]}>
+        <div className={`${BODY} grid md:grid-cols-3 gap-5 border-t-[4px] border-[var(--dt-ink)] pt-4`}>
+          <p>
+            <a
+              href="https://www.youtube.com/watch?v=QXV5akCoHSQ"
+              target="_blank"
+              rel="noreferrer"
+              className="underline font-heading font-bold hover:text-[var(--dt-signal)]"
+            >
+              Trailer
+            </a>
+          </p>
+          <p>What do you think this trailer is?</p>
+          <p className="font-heading font-bold">Zombies, Run!</p>
+        </div>
+        <PlateWell>
+          <div className="hidden sm:block">
+            <ZombiesRunPlate />
+          </div>
+          <div className="sm:hidden">
+            <ZombiesRunTall />
+          </div>
+        </PlateWell>
+      </Slide>
+
+      {/* ================================================================
+          CHAPTER 4 — ETHICAL CONCERNS & BUSINESS STRATEGY
+          ================================================================ */}
+      <ChapterBand id="ch4" number="04" title="Ethical Concerns & Business Strategy" />
+
+      <Slide id="ethical-concerns" label="ETHICAL CONCERNS" title="Ethical Concerns" exercise={exercise["ethical-concerns"]}>
+        <div className={`${BODY} text-lg border-l-[5px] border-[var(--dt-ink)] pl-4`}>
+          <Bullets
+            items={[
+              <>US Military has been using Xbox Controllers for controlling advanced weapons systems.</>,
+              <>Why?</>,
+            ]}
+          />
+        </div>
+        <PlateWell>
+          <MilitaryControllerPlate />
+        </PlateWell>
+        <div className={`${BODY} grid md:grid-cols-2 gap-6`}>
+          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+            &ldquo;For RADBO, the operators are generally a much younger audience,&rdquo; an Air Force spokesman tells
+            WIRED. &ldquo;Therefore, utilizing a PlayStation or Xbox type of controller such as the FMCU seems to be a
+            natural transition for the gaming generation.&rdquo;
+          </p>
+          <p className="border-t-[4px] border-[var(--dt-ink)] pt-4">
+            &ldquo;By 2006, games like Halo were dominant in the military,&rdquo; Tom Phelps, then a product director at
+            iRobot, told Business Insider in 2013 of the company’s adoption of a standard Xbox controller for its
+            PackBot IED disposal robot. &ldquo;So we worked with the military to socialize and standardize the concept …
+            It was considered a very strong success, younger soldiers with a lot of gaming experience were able to adapt
+            quickly.&rdquo;
+          </p>
+        </div>
+      </Slide>
+
+      <Slide
+        id="can-immersive-technology-and-gamification-help-my-business"
+        label="BUSINESS STRATEGY"
+        title="Can Immersive Technology and Gamification Help My Business?"
+        exercise={exercise["can-immersive-technology-and-gamification-help-my-business"]}
+      >
+        <Row cols="lg:grid-cols-[1.25fr_1fr]">
+          <div className="flex flex-col gap-4">
+            <p className="font-heading font-bold text-xl">Questions to ask</p>
+            <ol className={`${BODY} flex flex-col gap-3`}>
+              {[
+                <>Do my users struggle with intrinsic motivation?</>,
+                <>How can you induce intrinsic motivation using a story?</>,
+                <>How to properly balance extrinsic vs. intrinsic motivation?</>,
+                <>Is replacing the actual intrinsic motivation with the fabricated one going to hurt the person?</>,
+              ].map((q, i) => {
+                const isLit = i === activeBizQuestion;
+                return (
+                  <li
+                    key={i}
+                    onClick={() => setActiveBizQuestion(i)}
+                    className={`cursor-pointer border-t-[4px] border-[var(--dt-ink)] pt-3 flex items-baseline gap-3 text-lg transition-colors ${
+                      isLit ? "font-heading font-bold" : ""
+                    }`}
+                  >
+                    <span className="font-accent text-sm shrink-0">{i + 1}.</span>
+                    <span>{q}</span>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+          <PlateWell>
+            <BusinessQuestionsPlate active={activeBizQuestion} onSelect={setActiveBizQuestion} />
+          </PlateWell>
+        </Row>
+      </Slide>
+
+      <Summary
         id="conclusion"
-        title="Summary"
-        summary="Immersive technologies like Augmented Reality and Virtual Reality are redefining how organizations train personnel and engage users by blending digital content with physical environments. Simultaneously, gamification leverages our inherent psychological drives for achievement and progression to motivate behavior. However, the application of these powerful tools must be carefully balanced to avoid undermining intrinsic motivation and must be critically evaluated when deployed in high-stakes or ethically sensitive contexts."
+        title="Conclusion"
         takeaways={[
-          "AR and VR create realistic simulations that accelerate complex learning processes.",
-          "Gamification transforms non-game contexts using points, badges, and structured challenges.",
-          "Effective progression design mitigates frustration and maintains long-term engagement.",
-          "Over-reliance on extrinsic rewards can trigger the overjustification effect.",
-          "Familiar gaming interfaces are increasingly co-opted for high-stakes real-world applications."
+          "Explain Immersive Technology",
+          "Give examples of Gamification",
+          "Difference between intrinsic and extrinsic motivation",
+          "Ethical concerns with gamification",
         ]}
       />
     </main>
-  )
+  );
 }
+

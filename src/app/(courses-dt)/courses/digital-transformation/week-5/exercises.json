@@ -1,0 +1,272 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "key-characteristics-of-cloud-computing",
+    "prompt": "Each business below uses the cloud. Name the key characteristic of cloud computing that each case shows.",
+    "options": [
+      { "id": "scalability", "label": "Scalability" },
+      { "id": "cost", "label": "Cost-Effectiveness" },
+      { "id": "accessibility", "label": "Accessibility" },
+      { "id": "flexibility", "label": "Flexibility and Innovation" }
+    ],
+    "cases": [
+      {
+        "id": "concert-tickets",
+        "text": "A ticket website adds servers for the hour a stadium concert goes on sale, then gives them back.",
+        "answer": "scalability",
+        "explanation": "Resources are scaled up for the traffic spike and down again afterwards."
+      },
+      {
+        "id": "monthly-bill",
+        "text": "A start-up never buys a server room; it pays a monthly bill for the hours its rented servers ran.",
+        "answer": "cost",
+        "explanation": "No in-house hardware to buy, and it pays only for what it uses: pay-as-you-go."
+      },
+      {
+        "id": "hotel-lobby",
+        "text": "A sales representative opens the company's order system from a hotel lobby abroad.",
+        "answer": "accessibility",
+        "explanation": "The service is reachable from anywhere with an internet connection."
+      },
+      {
+        "id": "new-feature",
+        "text": "A bank's team launches a new budgeting feature in its app within days rather than months.",
+        "answer": "flexibility",
+        "explanation": "Rapid deployment of new services fosters innovation."
+      },
+      {
+        "id": "friday-nights",
+        "text": "A food-delivery app runs twice as many servers on Friday nights as on Monday mornings.",
+        "answer": "scalability",
+        "explanation": "Capacity goes up and down with demand."
+      },
+      {
+        "id": "rota",
+        "text": "A nurse checks next week's shift rota on a phone at home.",
+        "answer": "accessibility",
+        "explanation": "Anywhere with an internet connection, on any device."
+      },
+      {
+        "id": "no-replacement",
+        "text": "A design studio no longer replaces the servers in its back office every four years.",
+        "answer": "cost",
+        "explanation": "Renting removes the capital expense of in-house hardware."
+      },
+      {
+        "id": "checkout-test",
+        "text": "An online shop tries a new checkout page with a few customers this week and rolls it out to everyone next week.",
+        "answer": "flexibility",
+        "explanation": "New services can be deployed, tested and changed quickly."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "cloud-service-models-saas",
+    "prompt": "Sort each cloud service into the model it belongs to.",
+    "bins": [
+      { "id": "iaas", "label": "IaaS" },
+      { "id": "paas", "label": "PaaS" },
+      { "id": "saas", "label": "SaaS" }
+    ],
+    "cards": [
+      {
+        "id": "game-servers",
+        "text": "A game studio rents virtual servers and installs its own game software on them.",
+        "bin": "iaas",
+        "explanation": "It rents virtualized computing resources and runs everything above them itself."
+      },
+      {
+        "id": "lab-storage",
+        "text": "A research lab rents virtual machines and storage to run its own analysis programs.",
+        "bin": "iaas",
+        "explanation": "Servers and storage, rented: Infrastructure as a Service."
+      },
+      {
+        "id": "upload-code",
+        "text": "A developer uploads app code, and the platform deploys and scales it with no servers to set up.",
+        "bin": "paas",
+        "explanation": "Build, deploy and scale without managing the underlying infrastructure."
+      },
+      {
+        "id": "provider-tools",
+        "text": "A start-up's engineers build their app with the provider's tools and databases and never touch the machines underneath.",
+        "bin": "paas",
+        "explanation": "Tools and platforms for developers to build applications."
+      },
+      {
+        "id": "school-suite",
+        "text": "A school signs in to a ready-made email and document suite in the browser.",
+        "bin": "saas",
+        "explanation": "A fully functional application delivered over the internet."
+      },
+      {
+        "id": "clinic-booking",
+        "text": "A dental clinic books appointments in an online scheduling app it pays for each month.",
+        "bin": "saas",
+        "explanation": "The clinic only uses the finished application."
+      },
+      {
+        "id": "crm-calls",
+        "text": "A sales team logs customer calls in a CRM it opens in the browser.",
+        "bin": "saas",
+        "explanation": "Like Salesforce: a CRM delivered as software over the internet."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "risks-and-challenges",
+    "prompt": "Each company below runs on the cloud. Name the risk or challenge each case shows.",
+    "options": [
+      { "id": "security", "label": "Security Concerns" },
+      { "id": "dependence", "label": "Dependence on Providers" },
+      { "id": "cost", "label": "Cost Management" }
+    ],
+    "cases": [
+      {
+        "id": "open-bucket",
+        "text": "A storage folder left open to the public lets strangers download customer files.",
+        "answer": "security",
+        "explanation": "A data breach caused by storage that was not managed properly."
+      },
+      {
+        "id": "provider-down",
+        "text": "The provider's data centre goes down for six hours, and an online shop cannot take orders.",
+        "answer": "dependence",
+        "explanation": "An outage at the provider disrupts the shop's operations."
+      },
+      {
+        "id": "test-servers",
+        "text": "Test servers left running all month triple the company's cloud bill.",
+        "answer": "cost",
+        "explanation": "Poorly managed usage leads to unexpected expenses."
+      },
+      {
+        "id": "stolen-password",
+        "text": "Someone signs in to the company's cloud account with a stolen password.",
+        "answer": "security",
+        "explanation": "Unauthorized access."
+      },
+      {
+        "id": "streaming-fault",
+        "text": "A video app stops working for millions of viewers when its cloud provider has a fault.",
+        "answer": "dependence",
+        "explanation": "The app relies on the provider, so the provider's outage becomes its outage."
+      },
+      {
+        "id": "no-one-tracks",
+        "text": "Every team starts its own servers and no one tracks the total, so the bill surprises the finance team.",
+        "answer": "cost",
+        "explanation": "Usage nobody manages turns into an unexpected expense."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "edge-computing",
+    "prompt": "Match each characteristic of edge computing with the case that shows it.",
+    "term_label": "Characteristic",
+    "match_label": "Case",
+    "pairs": [
+      {
+        "id": "proximity",
+        "term": "Proximity to Data Source",
+        "match": "A security camera analyses its own video on a chip inside the camera.",
+        "explanation": "Data is processed at the device that generates it."
+      },
+      {
+        "id": "latency",
+        "term": "Low Latency",
+        "match": "A warehouse robot stops within milliseconds when a worker steps into its path.",
+        "explanation": "Industrial automation needs real-time decisions."
+      },
+      {
+        "id": "bandwidth",
+        "term": "Bandwidth Optimization",
+        "match": "A wind farm sends the cloud one summary an hour instead of every sensor reading.",
+        "explanation": "Less data goes to the cloud, saving costs and reducing internet congestion."
+      },
+      {
+        "id": "reliability",
+        "term": "Reliability",
+        "match": "A ship's engine monitor keeps working in mid-ocean with no internet connection.",
+        "explanation": "The system keeps functioning with limited or no internet connectivity."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "key-characteristics-of-fog-computing",
+    "question_text": "A city adds 5,000 parking sensors. Gateways in each neighbourhood process the sensors' readings first, so the city's cloud keeps up even though five times more devices are now sending data. Which characteristic of fog computing does this show best?",
+    "hint": "Look at what happens to the cloud as the number of devices grows.",
+    "correct_answer_citation": "Scalability: Can handle large volumes of data from multiple IoT devices without overwhelming the cloud.",
+    "options": [
+      {
+        "option_text": "Scalability",
+        "option_explanation": "Right. Many more devices send data, and the fog layer handles the volume without overwhelming the cloud."
+      },
+      {
+        "option_text": "Supports Real-Time Applications",
+        "option_explanation": "That is about low-latency processing for applications like smart cities. The case is about volume, not speed."
+      },
+      {
+        "option_text": "Reliability",
+        "option_explanation": "Reliability is a characteristic of edge computing on these slides: working with limited or no internet."
+      },
+      {
+        "option_text": "Low Latency",
+        "option_explanation": "Low latency is an edge characteristic about speed. Here the point is that the cloud is not overwhelmed."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "type": "sort",
+    "slide_id": "fog-computing-in-smart-cities",
+    "prompt": "Where is each piece of data processed? Sort each case into edge, fog or cloud.",
+    "bins": [
+      { "id": "edge", "label": "Edge" },
+      { "id": "fog", "label": "Fog" },
+      { "id": "cloud", "label": "Cloud" }
+    ],
+    "cards": [
+      {
+        "id": "car-brakes",
+        "text": "A car's own computer brakes when a child steps into the road.",
+        "bin": "edge",
+        "explanation": "Processed at the device that generates the data."
+      },
+      {
+        "id": "watch-heartbeat",
+        "text": "A smartwatch spots an irregular heartbeat on the watch itself.",
+        "bin": "edge",
+        "explanation": "Processed on the device, close to its source."
+      },
+      {
+        "id": "factory-gateway",
+        "text": "A gateway on a factory's local network combines readings from forty machines.",
+        "bin": "fog",
+        "explanation": "A fog node on the local network, between the machines and the cloud."
+      },
+      {
+        "id": "street-routers",
+        "text": "Routers on street corners process the camera feeds from the surrounding blocks.",
+        "bin": "fog",
+        "explanation": "Distributed processing across fog nodes within the city's network."
+      },
+      {
+        "id": "five-years",
+        "text": "A retailer analyses five years of sales from all its stores worldwide.",
+        "bin": "cloud",
+        "explanation": "Large-scale analysis in centralized cloud data centres."
+      },
+      {
+        "id": "film-library",
+        "text": "A streaming service stores its whole film library for viewers everywhere.",
+        "bin": "cloud",
+        "explanation": "Centralized storage reached over the internet from anywhere."
+      }
+    ]
+  }
+]
