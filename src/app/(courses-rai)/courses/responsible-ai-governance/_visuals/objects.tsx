@@ -1,9 +1,9 @@
 /* ==========================================================================
-   Shared objects: Isometric Tabletop Diorama pieces built on ./kit.
-   Every scene sits on a 3D bevelled mineral board (`IsoBase`) with 3D
-   sculpted figures (`IsoPerson`), 3D blocks (`IsoBlock`), houses (`IsoHouse`),
-   coin stacks (`IsoCoinStack`), and translucent glass cubes (`GlassCube`)
-   for AI systems and algorithms.
+   Shared objects: 3D axonometric & architectural pieces built on ./kit.
+   These are reusable building blocks (`IsoPerson`, `IsoBlock`, `GlassCube`,
+   `IsoHouse`, `IsoCoinStack`, and optional `IsoBase` for multi-actor scenes),
+   used alongside bespoke 3D instruments, exploded cutaways, documents, maps,
+   and data sculptures in each week's visuals.
    ========================================================================== */
 
 import React from "react";

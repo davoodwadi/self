@@ -1,0 +1,219 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "identifying-sources-of-bias-in-commercial-pipelines",
+    "prompt": "Each case describes a commercial AI pipeline in which bias enters at a specific stage. Identify the source of bias.",
+    "options": [
+      { "id": "historical", "label": "Historical bias" },
+      { "id": "representation", "label": "Representation bias" },
+      { "id": "measurement", "label": "Measurement bias" },
+      { "id": "aggregation", "label": "Aggregation bias" }
+    ],
+    "cases": [
+      {
+        "id": "wealth-advisor-promotions",
+        "text": "A wealth-management firm trains a promotion recommender on twenty years of partner evaluations recorded during an era when senior client accounts were assigned almost exclusively to men.",
+        "answer": "historical",
+        "explanation": "Historical bias is present when the training records accurately capture a past shaped by structural inequality or unequal treatment, teaching the model to replicate that history."
+      },
+      {
+        "id": "rural-voice-banking",
+        "text": "A mobile bank trains its voice-authentication model on audio clips recorded almost entirely by urban speakers in one metropolitan region, resulting in high lock-out rates for rural dialect speakers.",
+        "answer": "representation",
+        "explanation": "Representation bias arises when target population segments are undersampled or missing from the training dataset, raising error rates for those segments at deployment."
+      },
+      {
+        "id": "dental-urgency-spend",
+        "text": "A health insurer trains a preventive-outreach model using prior out-of-pocket dental spending as the label for oral health need, systematically under-ranking uninsured workers who postponed clinic visits.",
+        "answer": "measurement",
+        "explanation": "Measurement bias arises when the observable proxy chosen for an unobservable construct (spending as a proxy for medical need) differs in accuracy or meaning across income groups."
+      },
+      {
+        "id": "pooled-diabetes-risk",
+        "text": "A digital health platform fits a single linear risk equation across all age and ethnic cohorts even though clinical biomarkers relate to disease onset through distinct curves in each cohort.",
+        "answer": "aggregation",
+        "explanation": "Aggregation bias arises when one uniform model pools populations whose conditional relationships between predictors and outcomes differ."
+      },
+      {
+        "id": "store-theft-patrols",
+        "text": "A retail chain trains a store-shrinkage risk model using past security incident logs as a proxy for actual theft rates, overlooking that security guards were stationed three times as often in lower-income districts.",
+        "answer": "measurement",
+        "explanation": "Using enforcement or inspection records as a proxy for underlying offense rates confounds behavior with monitoring intensity, a classic form of measurement bias."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "selecting-a-group-fairness-criterion",
+    "prompt": "Match each group fairness criterion with the commercial governance scenario in which it is the primary standard.",
+    "term_label": "Group fairness criterion",
+    "match_label": "Commercial governance scenario",
+    "pairs": [
+      {
+        "id": "demographic-parity",
+        "term": "Demographic parity",
+        "match": "A national coding fellowship distributes awareness ads and interview waivers so that applicants from every region receive offers at the same 25 percent selection rate, rather than relying on historically exclusionary referral labels.",
+        "explanation": "Demographic parity equalizes selection rates P(D = 1) across groups and is selected when historical labels are contaminated or proportional outreach is the policy goal."
+      },
+      {
+        "id": "equal-opportunity",
+        "term": "Equal opportunity",
+        "match": "A micro-business lender configures its underwriting model so that creditworthy shop owners who would repay their loans have the same 85 percent approval probability across all demographic groups.",
+        "explanation": "Equal opportunity equalizes true positive rates P(D = 1 | Y = 1) to protect qualified individuals in disadvantaged groups from false rejection."
+      },
+      {
+        "id": "equalized-odds",
+        "term": "Equalized odds",
+        "match": "An e-commerce fraud engine is constrained so that both missed fraud detections among bad actors and disruptive account freezes among legitimate shoppers occur at equal rates across demographic segments.",
+        "explanation": "Equalized odds equalizes both the true positive rate and the false positive rate across groups when both false rejections and false flags carry severe harm."
+      },
+      {
+        "id": "calibration",
+        "term": "Predictive parity and calibration",
+        "match": "An auto-loan syndicate requires that a risk score of 680 correspond to a 92 percent actual repayment rate in every demographic group so underwriters can apply a single score cutoff.",
+        "explanation": "Calibration within groups and predictive parity ensure that a numeric risk score carries identical predictive meaning across groups under a uniform cutoff rule."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "counterfactual-fairness-and-causal-pathways",
+    "question_text": "A graduate fellowship committee removes applicant race and gender columns from its scoring model, but keeps standardized test scores that are strongly shaped by disparities in neighborhood high-school funding associated with protected attributes. Why does this model satisfy fairness through unawareness yet fail counterfactual fairness?",
+    "hint": "Trace how the protected attribute influences the prediction through mediating variables in the causal graph.",
+    "correct_answer_citation": "Week 02 · Counterfactual Fairness and Causal Pathways",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Because counterfactual fairness requires that every applicant receive the exact same fellowship score regardless of academic preparation.",
+        "option_explanation": "Counterfactual fairness does not assign identical scores to everyone; it adjusts for causal pathways transmitting protected-attribute disparities."
+      },
+      {
+        "option_text": "Because dropping the demographic column leaves intact the causal pathway from the protected attribute through the mediating variable (school quality) to the test score, so the prediction would still change in a counterfactual world where the applicant's group changed.",
+        "option_explanation": "Correct. Unlike fairness through unawareness, counterfactual fairness removes the causal influence of the protected attribute on downstream mediators unless the pathway is explicitly business-necessary."
+      },
+      {
+        "option_text": "Because counterfactual fairness only evaluates group-level four-fifths ratios rather than individual applicants.",
+        "option_explanation": "Counterfactual fairness is an individual-level causal criterion, whereas the four-fifths rule screens group-level disparate impact."
+      },
+      {
+        "option_text": "Because standardized test scores are unobservable constructs rather than measured variables.",
+        "option_explanation": "Test scores are observed features acting as downstream mediators in the causal graph."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "managerial-trade-offs-in-credit-hiring-and-ad-delivery",
+    "prompt": "Given that the fairness impossibility theorem prevents satisfying all criteria at once under unequal base rates, identify which fairness priority fits each domain decision.",
+    "options": [
+      { "id": "calibration", "label": "Calibration (Sufficiency)" },
+      { "id": "top-funnel", "label": "Demographic parity or Equal opportunity" },
+      { "id": "equalized-odds", "label": "Equalized odds (Separation)" }
+    ],
+    "cases": [
+      {
+        "id": "resume-funnel",
+        "text": "An enterprise HR team configures its automated resume screener at the top of the hiring funnel so that qualified applicants from underrepresented groups reach human interviews at the same rate as majority applicants.",
+        "answer": "top-funnel",
+        "explanation": "In automated resume screening, leaders prioritize demographic parity or equal opportunity at the top of the funnel so qualified underrepresented candidates reach human interviews."
+      },
+      {
+        "id": "er-triage",
+        "text": "A hospital clinical governance board requires its sepsis-alert algorithm to equalize both missed-diagnosis rates for sick patients and false-alarm interventions for healthy patients across demographic groups.",
+        "answer": "equalized-odds",
+        "explanation": "In medical triage or fraud intervention, equalized odds is prioritized so neither missed diagnoses nor burdensome false investigations fall disproportionately on one group."
+      },
+      {
+        "id": "scorecard-cutoff",
+        "text": "A mortgage lender insists that a credit score of 700 must indicate the exact same probability of default for every borrower segment, accepting that unequal base rates will create a gap in false rejection rates.",
+        "answer": "calibration",
+        "explanation": "Consumer credit lenders historically prioritized calibration so that a numeric credit score implied the same default risk across groups under a single cutoff."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "pre-processing-in-processing-and-post-processing-mitigation",
+    "prompt": "Sort each bias-mitigation action into the pipeline stage where it intervenes.",
+    "bins": [
+      { "id": "pre", "label": "Pre-processing" },
+      { "id": "in", "label": "In-processing" },
+      { "id": "post", "label": "Post-processing" }
+    ],
+    "cards": [
+      {
+        "id": "reweight-rows",
+        "text": "Assign higher sample weights to underrepresented minority borrowers in the training table before fitting the credit scorecard.",
+        "bin": "pre",
+        "explanation": "Reweighting or resampling observations before a model is fit is a pre-processing intervention."
+      },
+      {
+        "id": "decorrelate-features",
+        "text": "Transform input features prior to model training so that behavioral predictors are orthogonal to protected demographic attributes.",
+        "bin": "pre",
+        "explanation": "Modifying or transforming training features before fitting the model is pre-processing."
+      },
+      {
+        "id": "loss-penalty",
+        "text": "Add a regularization term to the gradient-boosting loss function that penalizes differences in false-negative rates between groups during training.",
+        "bin": "in",
+        "explanation": "Modifying the learning algorithm's objective with a fairness penalty during training is in-processing."
+      },
+      {
+        "id": "adversarial-head",
+        "text": "Train a neural recommender jointly with an adversarial network that forces internal embeddings to strip out information that predicts group membership.",
+        "bin": "in",
+        "explanation": "Adversarial debiasing inside the training loop is an in-processing intervention."
+      },
+      {
+        "id": "group-thresholds",
+        "text": "Leave a proprietary vendor credit model untouched, but calibrate separate approval score cutoffs by group to equalize true positive rates.",
+        "bin": "post",
+        "explanation": "Adjusting output scores or group-specific decision thresholds without retraining the model is post-processing."
+      },
+      {
+        "id": "output-recalibration",
+        "text": "Apply a post-hoc monotone transformation to a frozen model's predicted probabilities so that selection rates satisfy the four-fifths rule.",
+        "bin": "post",
+        "explanation": "Transforming outputs after training while keeping the trained model unchanged is post-processing."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "six-steps-of-a-disparate-impact-audit",
+    "prompt": "A digital mortgage lender is conducting a formal disparate-impact audit of its automated pre-approval model. Arrange the six audit steps in order from Step 1 to Step 6.",
+    "steps": [
+      {
+        "id": "step-1-scope",
+        "text": "Define the pre-approval decision scope, the protected borrower groups under fair-lending law, and equal opportunity plus the four-fifths rule as the target criteria.",
+        "explanation": "Step 1 defines the decision scope, protected groups of concern, and domain-appropriate legal and ethical fairness criteria."
+      },
+      {
+        "id": "step-2-dataset",
+        "text": "Assemble a representative holdout sample of mortgage applications with verified or ethically inferred demographic group labels.",
+        "explanation": "Step 2 assembles an audit dataset with verified or ethically inferred group membership labels on a representative holdout sample."
+      },
+      {
+        "id": "step-3-metrics",
+        "text": "Calculate baseline selection rates, the four-fifths ratio, true positive rates, false positive rates, and group calibration curves on the holdout set.",
+        "explanation": "Step 3 computes baseline group metrics across the confusion matrix and calibration curves."
+      },
+      {
+        "id": "step-4-diagnose",
+        "text": "Test whether the observed approval gap is driven by rural undersampling, postal-code proxy variables, or biased historical default labels.",
+        "explanation": "Step 4 diagnoses the specific pipeline stage responsible for the observed disparity."
+      },
+      {
+        "id": "step-5-mitigate",
+        "text": "Compare sample reweighting, penalized loss training, and threshold adjustment along the accuracy-fairness frontier and select the operating point.",
+        "explanation": "Step 5 evaluates pre-, in-, and post-processing mitigations along the accuracy-fairness frontier and selects the operating point."
+      },
+      {
+        "id": "step-6-report",
+        "text": "Document the chosen trade-off in a formal governance audit report and configure live production alerts to detect post-launch fairness drift.",
+        "explanation": "Step 6 records the decision in a formal audit report and configures continuous production alerts for fairness drift."
+      }
+    ]
+  }
+]

@@ -60,8 +60,8 @@ export {
 // WEEK 01 — FOUNDATIONS OF RESPONSIBLE AI IN MARKETS
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md;
-// the design only decides where each sentence sits and what Isometric Tabletop
-// Diorama plate is drawn beside it. Plates live in ./visuals.tsx.
+// the design only decides where each sentence sits and what 3D architectural
+// & technical illustration plate is drawn beside it. Plates live in ./visuals.tsx.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise on what it taught.
@@ -262,12 +262,12 @@ export default function Week1Page() {
           ================================================================ */}
       <Slide id="deontology-rights-and-duties" border className="!py-8">
         <SlideHeading>Deontology, Rights, and Duties</SlideHeading>
-        <Statement className="!max-w-none !text-[clamp(1.35rem,2.1vw,1.8rem)]">
-          <Term tone="counter">Deontology</Term> judges an action by whether it
-          respects moral duties, individual rights, and autonomy, regardless of
-          the aggregate profitability of the outcome.
-        </Statement>
-        <div className="mt-7 grid w-full gap-8 md:grid-cols-3">
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
+          <Statement className="!max-w-none !text-[clamp(1.3rem,2vw,1.72rem)]">
+            <Term tone="counter">Deontology</Term> judges an action by whether it
+            respects moral duties, individual rights, and autonomy, regardless of
+            the aggregate profitability of the outcome.
+          </Statement>
           <Ruled tone="counter">
             <P>
               In market governance, deontological rules establish{" "}
@@ -276,6 +276,11 @@ export default function Week1Page() {
               prohibition of discrimination against protected classes.
             </P>
           </Ruled>
+        </div>
+        <Plate className="my-5">
+          <IsoDeontologicalDuty />
+        </Plate>
+        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Ruled tone="signal">
             <P>
               Under a deontological standard, a{" "}
@@ -292,9 +297,6 @@ export default function Week1Page() {
             </P>
           </Ruled>
         </div>
-        <Plate className="mt-6">
-          <IsoDeontologicalDuty />
-        </Plate>
       </Slide>
 
       {/* ================================================================
@@ -1022,6 +1024,11 @@ export default function Week1Page() {
               the marketplace.
             </P>
           </Ruled>
+        </div>
+        <Plate className="my-5">
+          <IsoSurrogateConsumer />
+        </Plate>
+        <div className="grid w-full gap-8 md:grid-cols-2">
           <Ruled tone="signal">
             <P>
               In agent-mediated commerce,{" "}
@@ -1038,9 +1045,6 @@ export default function Week1Page() {
             </P>
           </Ruled>
         </div>
-        <Plate className="mt-6">
-          <IsoSurrogateConsumer />
-        </Plate>
       </Slide>
 
       {/* ================================================================
