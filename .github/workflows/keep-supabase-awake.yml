@@ -10,13 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
-      - name: Query the database
+      - name: Read one row
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          curl --fail-with-body -sS -X POST "$SUPABASE_URL/rest/v1/rpc/ping" \
+          curl --fail-with-body -sS "$SUPABASE_URL/rest/v1/questions?select=*&limit=1" \
             -H "apikey: $SUPABASE_ANON_KEY" \
-            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
-            -H "Content-Type: application/json" \
-            -d '{}'
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY"
