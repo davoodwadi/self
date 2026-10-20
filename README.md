@@ -1,3 +1,5 @@
+![Keep Supabase awake](https://github.com/davoodwadi/self/actions/workflows/keep-supabase-awake.yml/badge.svg)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
