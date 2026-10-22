@@ -243,7 +243,7 @@ export function OwnVsRent() {
 
 /* ==========================================================================
    Key characteristics — INTERACTIVE. A year of weekly demand for an online
-   store (SIMULATED). On-premise: drag one fixed server capacity; any week
+   store. On-premise: drag one fixed server capacity; any week
    above it crashes, any room below it is paid for and idle. Cloud: capacity
    scales up and down with demand, so both shrink at once.
    ========================================================================== */
@@ -330,8 +330,8 @@ export function CapacityPlanner() {
   return (
     <Plate
       w={800}
-      h={302}
-      title={`SIMULATED. A year of weekly demand for an online store, with a spike at the holiday sales. ${
+      h={290}
+      title={`A year of weekly demand for an online store, with a spike at the holiday sales. ${
         mode === "cloud"
           ? "Cloud: capacity scales up and down with demand"
           : `On-premise: one fixed server capacity at ${cap} of 100`
@@ -352,9 +352,6 @@ export function CapacityPlanner() {
       </text>
       <text x={712} y={50} textAnchor="end" {...HEAD} fontSize={24} fill={COUNTER}>
         {`${idlePct}%`}
-      </text>
-      <text x={786} y={294} textAnchor="end" {...BODY} fontSize={12} fill={INK}>
-        SIMULATED
       </text>
 
       {/* idle capacity: paid-for room above each week's demand */}
@@ -775,7 +772,7 @@ export function AlertDelay() {
     <Plate
       w={800}
       h={306}
-      title={`SIMULATED. Network traffic at ${traffic}% of peak hours. Cloud lane: a smartwatch sends every reading over the network to the cloud before the alert sounds, a delay of ${fmtS(
+      title={`Network traffic at ${traffic}% of peak hours. Cloud lane: a smartwatch sends every reading over the network to the cloud before the alert sounds, a delay of ${fmtS(
         dc,
       )}. Edge lane: a chip beside the smartwatch decides on the spot, a delay of ${fmtS(de)}.`}
     >
@@ -800,9 +797,6 @@ export function AlertDelay() {
       </text>
       <text x={500} y={66} textAnchor="middle" {...BODY} fontSize={13} fill={INK}>
         Peak hours
-      </text>
-      <text x={786} y={40} textAnchor="end" {...BODY} fontSize={12} fill={INK}>
-        SIMULATED
       </text>
 
       {/* cloud lane: every reading travels to a distant data centre */}
@@ -1088,7 +1082,7 @@ export function FogLoad() {
     <Plate
       w={800}
       h={290}
-      title={`SIMULATED. ${n} IoT devices share ${nodes} fog node${nodes > 1 ? "s" : ""}. Sent straight to the cloud, their raw data is ${raw} units against a cloud capacity of ${CLOUD_LIMIT}${
+      title={`${n} IoT devices share ${nodes} fog node${nodes > 1 ? "s" : ""}. Sent straight to the cloud, their raw data is ${raw} units against a cloud capacity of ${CLOUD_LIMIT}${
         over ? ", overwhelming the cloud" : ""
       }; through the fog nodes, only ${viaFog} units reach the cloud.`}
     >
@@ -1111,9 +1105,6 @@ export function FogLoad() {
       />
       <text x={462} y={42} {...HEAD} fontSize={22} fill={INK}>
         {n}
-      </text>
-      <text x={786} y={24} textAnchor="end" {...BODY} fontSize={12} fill={INK}>
-        SIMULATED
       </text>
 
       {/* machines, twelve to a fog node, and the nodes' shared line to the cloud */}

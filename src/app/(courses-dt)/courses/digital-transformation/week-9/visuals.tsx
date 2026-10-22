@@ -292,7 +292,7 @@ export function HeroFourRevolutionsEngine() {
 
 /* ==========================================================================
    2 · Question: 1759 Canada — Interactive Pre-Industrial River-Valley
-   Livelihood Selector & Muscle-Power Workday Instrument (SIMULATED)
+   Livelihood Selector & Muscle-Power Workday Instrument
    ========================================================================== */
 
 const PATHS_1759 = [
@@ -348,7 +348,7 @@ export function Canada1759Interactive() {
     <Plate
       w={800}
       h={268}
-      title={`Interactive 1759 Canada pre-industrial career landscape: four selectable livelihoods along a river-valley profile (1. Farming plough and pine, 2. Fur trade voyageur canoe on water, 3. Blacksmith anvil and hammer, 4. Cottage spinning wheel) paired with a simulated muscle-power workday slider (${hours} hours/day, ${output} ${chosen.unit})`}
+      title={`Interactive 1759 Canada pre-industrial career landscape: four selectable livelihoods along a river-valley profile (1. Farming plough and pine, 2. Fur trade voyageur canoe on water, 3. Blacksmith anvil and hammer, 4. Cottage spinning wheel) paired with a muscle-power workday slider (${hours} hours/day, ${output} ${chosen.unit})`}
     >
       {/* Left header */}
       <text x={20} y={28} {...HEAD} fontSize={18} fill={INK}>
@@ -462,9 +462,6 @@ export function Canada1759Interactive() {
       {/* Right interactive panel: Pre-Industrial Muscle-Power Limit */}
       <text x={552} y={28} {...HEAD} fontSize={16.5} fill={INK}>
         Muscle Power
-      </text>
-      <text x={784} y={28} textAnchor="end" {...BODY} fontSize={12.5} fill={INK}>
-        SIMULATED
       </text>
 
       <rect x={552} y={42} width={232} height={58} fill={COUNTER_FILL} stroke={INK} strokeWidth={2.5} />
@@ -723,7 +720,7 @@ export function SteamMillCrossSectionInteractive({
 
 /* ==========================================================================
    4 · First Revolution Impact on Society — Panoramic Valley Transformation
-   & Interactive 1760–1850 Time Scrubber (SIMULATED)
+   & Interactive 1760–1850 Time Scrubber
    ========================================================================== */
 
 const FIRST_SOCIETY_IMPACTS = [
@@ -764,7 +761,7 @@ export function FirstRevSocietySimulatorInteractive({
     <Plate
       w={800}
       h={256}
-      title={`Interactive societal impact panorama of the First Industrial Revolution (${year}, SIMULATED): 1. Urbanization (migration arrow into multi-storey city blocks), 2. Working Class (industrial workers under factory shift clock), 3. Transport (paddle steamship and rail), 4. Trade and Goods (stacked manufactured crates), and 5. Environment (felled tree stumps and smokestack plumes). Urban share: ${urbanPct}%, Trade output: ${tradeMult}x`}
+      title={`Interactive societal impact panorama of the First Industrial Revolution (${year}): 1. Urbanization (migration arrow into multi-storey city blocks), 2. Working Class (industrial workers under factory shift clock), 3. Transport (paddle steamship and rail), 4. Trade and Goods (stacked manufactured crates), and 5. Environment (felled tree stumps and smokestack plumes). Urban share: ${urbanPct}%, Trade output: ${tradeMult}x`}
     >
       {/* Left header */}
       <text x={18} y={26} {...HEAD} fontSize={16.5} fill={INK}>
@@ -903,9 +900,6 @@ export function FirstRevSocietySimulatorInteractive({
       {/* Right panel: Interactive Year Scrubber (1760 -> 1850) */}
       <text x={556} y={26} {...HEAD} fontSize={17} fill={INK}>
         Year: {year}
-      </text>
-      <text x={784} y={26} textAnchor="end" {...BODY} fontSize={12} fill={INK}>
-        SIMULATED
       </text>
 
       {/* Three live indicators driven by the year slider */}
@@ -1806,7 +1800,7 @@ export function MegacitySkylineInteractive({
 
 /* ==========================================================================
    9 · Questions: 1932 — Riveted Steel Skyscraper Girder Balance (How Work
-   Improved vs. How Work Worsened by 1932, SIMULATED)
+   Improved vs. How Work Worsened by 1932)
    ========================================================================== */
 
 export function WorkerBalance1932Interactive() {
@@ -1820,14 +1814,11 @@ export function WorkerBalance1932Interactive() {
     <Plate
       w={800}
       h={256}
-      title={`Interactive 1932 riveted steel girder balance comparing how industrial work improved (left pan: electric light, affordable goods, medical and living standards) versus how it worsened (right pan: repetitive assembly pace, unsafe high-steel hazards, long hours and displacement) at ${pace}% line pace (SIMULATED)`}
+      title={`Interactive 1932 riveted steel girder balance comparing how industrial work improved (left pan: electric light, affordable goods, medical and living standards) versus how it worsened (right pan: repetitive assembly pace, unsafe high-steel hazards, long hours and displacement) at ${pace}% line pace`}
     >
-      {/* Top title & SIMULATED marker */}
+      {/* Top title */}
       <text x={20} y={26} {...HEAD} fontSize={17.5} fill={INK}>
         1932 Industrial Work Balance (Click Side or Drag Line Speed)
-      </text>
-      <text x={780} y={26} textAnchor="end" {...BODY} fontSize={12.5} fill={INK}>
-        SIMULATED
       </text>
 
       {/* Central 1932 riveted steel truss fulcrum */}

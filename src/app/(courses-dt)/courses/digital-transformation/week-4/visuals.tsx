@@ -208,12 +208,8 @@ export function ExternalVariablesInteractive() {
     <Plate
       w={400}
       h={284}
-      title={`SIMULATED. Five external variables on the left (1 System Features, 2 User Characteristics, 3 Social Influence, 4 Training and Support, 5 Task Characteristics) point to Perceived Usefulness (U) and Perceived Ease of Use (E) on the right; ${active.name} is selected in red, setting U to ${active.u}% and E to ${active.e}%`}
+      title={`Five external variables on the left (1 System Features, 2 User Characteristics, 3 Social Influence, 4 Training and Support, 5 Task Characteristics) point to Perceived Usefulness (U) and Perceived Ease of Use (E) on the right; ${active.name} is selected in red, setting U to ${active.u}% and E to ${active.e}%`}
     >
-      <text x={386} y={20} textAnchor="end" fontFamily="var(--font-body)" fontWeight={600} fontSize={12} fill={INK}>
-        SIMULATED
-      </text>
-
       {/* Five selectable external variable rows with distinct silhouettes */}
       {EXT_VARS.map((v, i) => {
         const y = rowY(i);
@@ -333,21 +329,9 @@ export function TamBeliefsInteractive() {
   return (
     <Plate
       w={800}
-      h={244}
-      title={`SIMULATED. Interactive TAM sliders: Perceived Usefulness (PU) is set to ${pu}% and Perceived Ease of Use (PEOU) is set to ${peou}%, producing Attitude Toward Use of ${attitude}% and Behavioral Intention to Use of ${intention}%`}
+      h={222}
+      title={`Interactive TAM sliders: Perceived Usefulness (PU) is set to ${pu}% and Perceived Ease of Use (PEOU) is set to ${peou}%, producing Attitude Toward Use of ${attitude}% and Behavioral Intention to Use of ${intention}%`}
     >
-      <text
-        x={776}
-        y={24}
-        textAnchor="end"
-        fontFamily="var(--font-body)"
-        fontWeight={600}
-        fontSize={13}
-        fill={INK}
-      >
-        SIMULATED
-      </text>
-
       {/* Left: Draggable input beliefs */}
       <text x={trackX} y={44} fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={INK}>
         Perceived Usefulness (PU)
@@ -483,12 +467,8 @@ export function BestBuyFeatureTradeoff() {
     <Plate
       w={800}
       h={246}
-      title={`SIMULATED. Interactive feature trade-off for BestBuy's virtual shopping assistant: with ${features} ${features === 1 ? "feature" : "features"} on the screen, Perceived Usefulness is ${u}%, Perceived Ease of Use is ${e}%, and Actual System Use is ${use}%`}
+      title={`Interactive feature trade-off for BestBuy's virtual shopping assistant: with ${features} ${features === 1 ? "feature" : "features"} on the screen, Perceived Usefulness is ${u}%, Perceived Ease of Use is ${e}%, and Actual System Use is ${use}%`}
     >
-      <text x={776} y={22} textAnchor="end" fontFamily="var(--font-body)" fontWeight={600} fontSize={13} fill={INK}>
-        SIMULATED
-      </text>
-
       {/* Left: Framed screen showing the chat assistant + feature modules */}
       <Monitor x={28} y={16} w={184} h={120}>
         <ChatCircle x={50} y={36} size={42} weight="fill" color={INK} />
@@ -659,12 +639,8 @@ export function HospitalPeakSimulator() {
     <Plate
       w={400}
       h={256}
-      title={`SIMULATED. Interactive hospital triage simulator: when the chatbot filters ${filterPct}% of non-urgent cases, Waiting times drop to ${waitPct}% and Staff focus on critical patients rises to ${criticalFocus}%`}
+      title={`Interactive hospital triage simulator: when the chatbot filters ${filterPct}% of non-urgent cases, Waiting times drop to ${waitPct}% and Staff focus on critical patients rises to ${criticalFocus}%`}
     >
-      <text x={380} y={22} textAnchor="end" fontFamily="var(--font-body)" fontWeight={600} fontSize={12} fill={INK}>
-        SIMULATED
-      </text>
-
       {/* Draggable input: Non-urgent cases filtered by chatbot */}
       <text x={trackX} y={42} fontFamily="var(--font-heading)" fontWeight={700} fontSize={16} fill={INK}>
         Non-urgent cases filtered
@@ -1117,12 +1093,8 @@ export function IkeaModeratorsInteractive() {
     <Plate
       w={400}
       h={280}
-      title={`SIMULATED. Interactive IKEA moderating variables: ${active.n}. ${active.short} is selected on the left, comparing kiosk adoption between ${active.hiLabel} (${active.hiVal}%) and ${active.loLabel} (${active.loVal}%) on the right`}
+      title={`Interactive IKEA moderating variables: ${active.n}. ${active.short} is selected on the left, comparing kiosk adoption between ${active.hiLabel} (${active.hiVal}%) and ${active.loLabel} (${active.loVal}%) on the right`}
     >
-      <text x={386} y={20} textAnchor="end" fontFamily="var(--font-body)" fontWeight={600} fontSize={12} fill={INK}>
-        SIMULATED
-      </text>
-
       {/* Left: Five selectable moderators */}
       {IKEA_MODS.map((m, i) => {
         const y = rowY(i);
@@ -1522,7 +1494,7 @@ export function EdgeFogCloudInteractive() {
     <Plate
       w={800}
       h={226}
-      title={`SIMULATED. Interactive comparison of Edge, Fog, and Cloud computing: processing at the ${active.label} tier shows the round-trip path from the data source and produces Latency of ${active.latency}% and Bandwidth usage of ${active.bandwidth}%`}
+      title={`Interactive comparison of Edge, Fog, and Cloud computing: processing at the ${active.label} tier shows the round-trip path from the data source and produces Latency of ${active.latency}% and Bandwidth usage of ${active.bandwidth}%`}
     >
       {/* Leftmost: Data source (Autonomous vehicle / Factory machine) */}
       <circle cx={68} cy={66} r={44} fill={INK} />
@@ -1605,9 +1577,6 @@ export function EdgeFogCloudInteractive() {
         {`${active.bandwidth}%`}
       </text>
 
-      <text x={784} y={201} textAnchor="end" fontFamily="var(--font-body)" fontWeight={600} fontSize={12.5} fill={INK}>
-        SIMULATED
-      </text>
     </Plate>
   );
 }

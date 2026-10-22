@@ -1354,7 +1354,7 @@ export function FinancialServicesTall({
 
 /* ==========================================================================
    11 · Bank Loan Approval Process — Interactive Credit Score & Smart Contract
-   Loan Disbursement Simulator (SIMULATED)
+   Loan Disbursement Simulator
    ========================================================================== */
 
 export function BankLoanSimulatorInteractive() {
@@ -1368,15 +1368,12 @@ export function BankLoanSimulatorInteractive() {
     <Plate
       w={400}
       h={314}
-      title={`SIMULATED. Interactive Bank Loan Smart Contract: applicant submits loan application on the left, smart contract on the center screen checks identity and credit score (${score} vs 680 threshold), resulting in ${approved ? "automatic loan disbursement in minutes" : "application hold below threshold"}`}
+      title={`Interactive Bank Loan Smart Contract: applicant submits loan application on the left, smart contract on the center screen checks identity and credit score (${score} vs 680 threshold), resulting in ${approved ? "automatic loan disbursement in minutes" : "application hold below threshold"}`}
     >
       {/* Status readout badge */}
       <rect x={18} y={12} width={246} height={32} fill={activeTone} />
       <text x={141} y={33} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
         {approved ? `Score ${score} ≥ 680 → Auto-Disbursed` : `Score ${score} < 680 → Conditions Unmet`}
-      </text>
-      <text x={382} y={32} textAnchor="end" {...BODY} fontSize={12} fill={INK}>
-        SIMULATED
       </text>
 
       {/* Step 1: Customer submits loan application */}

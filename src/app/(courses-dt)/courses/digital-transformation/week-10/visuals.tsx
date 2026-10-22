@@ -528,7 +528,7 @@ export function ReviewRevolutionsDialInteractive({
 
 /* ==========================================================================
    3 · The Evolving Threat Landscape — Interactive Attack-Surface & Threat
-   Defense Dome (SIMULATED governance posture + real lecture vectors)
+   Defense Dome (made-up governance posture + real lecture vectors)
    ========================================================================== */
 
 const THREAT_VECTORS = [
@@ -570,7 +570,7 @@ export function ThreatLandscapeDefenseDomeInteractive({
     <Plate
       w={540}
       h={380}
-      title={`Interactive cybersecurity threat dome (SIMULATED): select State-Sponsored Attacks, Ransomware, or Supply Chain Vulnerabilities, and drag the governance & MFA defense slider (${defenseLevel}%) to contract residual breach exposure (${exposurePct}%)`}
+      title={`Interactive cybersecurity threat dome: select State-Sponsored Attacks, Ransomware, or Supply Chain Vulnerabilities, and drag the governance & MFA defense slider (${defenseLevel}%) to contract residual breach exposure (${exposurePct}%)`}
     >
       {/* Top threat selector pills */}
       {[
@@ -612,7 +612,7 @@ export function ThreatLandscapeDefenseDomeInteractive({
       {/* Economic & Reputational risk readout */}
       <rect x={264} y={56} width={260} height={28} fill={INK} />
       <text x={394} y={75} textAnchor="middle" {...HEAD} fontSize={13} fill={CREAM}>
-        SIMULATED · Breach Risk: {exposurePct}%
+        Breach Risk: {exposurePct}%
       </text>
 
       {/* Left attack-surface expansion nodes (IoT, Cloud, Remote Work MFA) */}
@@ -1254,7 +1254,7 @@ export function CraBreachForensicTimelineInteractive({
 
 /* ==========================================================================
    7 · Ethics in Digital Transformation — Interactive Privacy Aperture vs.
-   Personalization Instrument (SIMULATED trade-off dial)
+   Personalization Instrument
    "Instead of protecting the collected data, do not collect data at all."
    ========================================================================== */
 
@@ -1270,7 +1270,7 @@ export function PrivacyMinimizationApertureInteractive() {
     <Plate
       w={800}
       h={304}
-      title={`Interactive privacy-by-design iris aperture (SIMULATED): drag the data collection knob (${collectionLevel}%) or click 'Do Not Collect Data At All' to see how Data Minimization preserves Privacy Rights (${privacyScore}%) while Data-Driven Personalization (${personalizationScore}%) demands personal data`}
+      title={`Interactive privacy-by-design iris aperture: drag the data collection knob (${collectionLevel}%) or click 'Do Not Collect Data At All' to see how Data Minimization preserves Privacy Rights (${privacyScore}%) while Data-Driven Personalization (${personalizationScore}%) demands personal data`}
     >
       {/* Left column: Privacy by Design & Data Minimization */}
       <rect x={20} y={16} width={236} height={212} fill={COUNTER_FILL} stroke={INK} strokeWidth={3} />
@@ -1320,7 +1320,7 @@ export function PrivacyMinimizationApertureInteractive() {
       {/* Center: Framed digital Monitor holding the Mechanical Camera Iris Aperture */}
       <Monitor x={274} y={16} w={252} h={184}>
         <text x={400} y={40} textAnchor="middle" {...HEAD} fontSize={13.5} fill={INK}>
-          SIMULATED · Collection Aperture
+          Collection Aperture
         </text>
         <CameraIrisGlyph
           cx={400}
@@ -1569,7 +1569,7 @@ export function AlgorithmGovernanceXrayInteractive({
 
 /* ==========================================================================
    9 · Truth, Trust and Digital Information Integrity — Interactive Content
-   Moderation Balance Fulcrum (SIMULATED)
+   Moderation Balance Fulcrum
    "The balance between battling misinformation and censorship"
    ========================================================================== */
 
@@ -1591,12 +1591,12 @@ export function InformationIntegrityFulcrumInteractive() {
     <Plate
       w={800}
       h={296}
-      title={`Interactive content moderation balance fulcrum (SIMULATED): drag the moderation strictness knob (${filterStrictness}%) between Battling Misinformation and Censorship Risk. Current state: ${stateLabel}`}
+      title={`Interactive content moderation balance fulcrum: drag the moderation strictness knob (${filterStrictness}%) between Battling Misinformation and Censorship Risk. Current state: ${stateLabel}`}
     >
       {/* Top status banner */}
       <rect x={20} y={14} width={760} height={36} fill={stateTone} />
       <text x={400} y={37} textAnchor="middle" {...HEAD} fontSize={14.5} fill={CREAM}>
-        SIMULATED · {stateLabel}
+        {stateLabel}
       </text>
 
       {/* Central Fulcrum Base */}
@@ -1977,7 +1977,7 @@ export function ExponentialCostForecasterInteractive() {
 
 /* ==========================================================================
    12 · Platform Power and Digital Monopolies — Interactive Network-Effects
-   & Top-5 Cloud Centralization Funnel (SIMULATED network effect dial)
+   & Top-5 Cloud Centralization Funnel
    "In 2024, if you were to host your website, you had to go through one of
    top five cloud companies."
    ========================================================================== */
@@ -1994,7 +1994,7 @@ export function CloudMonopolyGravityInteractive() {
     <Plate
       w={540}
       h={360}
-      title={`Interactive platform power and cloud monopoly funnel (SIMULATED): drag the network effects slider (${networkStrength}%) to watch independent websites converge through the top five cloud companies in 2024 under winner-takes-all dynamics`}
+      title={`Interactive platform power and cloud monopoly funnel: drag the network effects slider (${networkStrength}%) to watch independent websites converge through the top five cloud companies in 2024 under winner-takes-all dynamics`}
     >
       {/* Top 8 Website / Business Nodes */}
       <text x={270} y={22} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
@@ -2044,7 +2044,7 @@ export function CloudMonopolyGravityInteractive() {
 
       {/* Bottom Interactive Network Effects Slider */}
       <text x={24} y={336} {...HEAD} fontSize={13.5} fill={INK}>
-        SIMULATED · Network Effects: {networkStrength}%
+        Network Effects: {networkStrength}%
       </text>
       <rect x={336} y={328} width={168} height={8} fill={INK} />
       <rect x={336} y={328} width={r2(t * 168)} height={8} fill={SIGNAL} />

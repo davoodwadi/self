@@ -97,7 +97,7 @@ export function HeroImmersivePlate() {
 /* ==========================================================================
    2 · Question: Becoming a Pilot — Driver's license vs. Pilot's 10,000 hours,
    and an interactive simulator slider showing how immersive simulation solves
-   the 10,000-hour training bottleneck (SIMULATED)
+   the 10,000-hour training bottleneck
    ========================================================================== */
 
 export function PilotTrainingInteractive() {
@@ -147,9 +147,6 @@ export function PilotTrainingInteractive() {
       {/* Right instrument: Solution — shifting 10,000 hours into Flight Simulator */}
       <text x={296} y={32} {...HEAD} fontSize={18} fill={INK}>
         Solution: Flight Simulator
-      </text>
-      <text x={780} y={32} textAnchor="end" {...BODY} fontSize={13} fill={INK}>
-        SIMULATED
       </text>
 
       {/* Physical aircraft -> Framed Simulator Screen */}
@@ -662,46 +659,44 @@ export function OverjustificationInteractive() {
   return (
     <Plate
       w={400}
-      h={224}
-      title={`Interactive overjustification effect plate (SIMULATED): as extrinsic rewards reliance is dragged to ${extrinsic}%, intrinsic motivation drops to ${intrinsic}%`}
+      h={194}
+      title={`Interactive overjustification effect plate: as extrinsic rewards reliance is dragged to ${extrinsic}%, intrinsic motivation drops to ${intrinsic}%`}
     >
-      <text x={376} y={26} textAnchor="end" {...BODY} fontSize={12.5} fill={INK}>
-        SIMULATED
-      </text>
+      <g transform="translate(0 -30)">
+        {/* Extrinsic Rewards row (max 4 coins -> top at y=51) */}
+        <Coins x={46} y={104} n={nCoins} />
+        <text x={88} y={58} {...HEAD} fontSize={14.5} fill={SIGNAL}>
+          Extrinsic rewards ({extrinsic}%)
+        </text>
+        <rect x={88} y={68} width={280} height={20} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
+        <rect x={88} y={68} width={extW} height={20} fill={SIGNAL} />
 
-      {/* Extrinsic Rewards row (max 4 coins -> top at y=40, well clear of top edge) */}
-      <Coins x={46} y={104} n={nCoins} />
-      <text x={88} y={58} {...HEAD} fontSize={14.5} fill={SIGNAL}>
-        Extrinsic rewards ({extrinsic}%)
-      </text>
-      <rect x={88} y={68} width={280} height={20} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={88} y={68} width={extW} height={20} fill={SIGNAL} />
+        {/* Intrinsic Motivation row */}
+        <Heart x={28} y={120} size={36} weight="fill" color={COUNTER} />
+        <text x={88} y={128} {...HEAD} fontSize={14.5} fill={COUNTER}>
+          Intrinsic motivation ({intrinsic}%)
+        </text>
+        <rect x={88} y={138} width={280} height={20} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
+        <rect x={88} y={138} width={intW} height={20} fill={COUNTER} />
 
-      {/* Intrinsic Motivation row */}
-      <Heart x={28} y={120} size={36} weight="fill" color={COUNTER} />
-      <text x={88} y={128} {...HEAD} fontSize={14.5} fill={COUNTER}>
-        Intrinsic motivation ({intrinsic}%)
-      </text>
-      <rect x={88} y={138} width={280} height={20} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
-      <rect x={88} y={138} width={intW} height={20} fill={COUNTER} />
-
-      {/* Slider for Extrinsic Reliance */}
-      <text x={24} y={201} {...BODY} fontSize={14} fill={INK}>
-        Reward reliance
-      </text>
-      <path d="M 156 196 H 366" stroke={INK} strokeWidth={4} />
-      <Knob
-        x={156}
-        y={196}
-        len={210}
-        value={extrinsic}
-        min={0}
-        max={100}
-        step={5}
-        tone={SIGNAL}
-        label="Extrinsic reward reliance percentage"
-        onChange={setExtrinsic}
-      />
+        {/* Slider for Extrinsic Reliance */}
+        <text x={24} y={201} {...BODY} fontSize={14} fill={INK}>
+          Reward reliance
+        </text>
+        <path d="M 156 196 H 366" stroke={INK} strokeWidth={4} />
+        <Knob
+          x={156}
+          y={196}
+          len={210}
+          value={extrinsic}
+          min={0}
+          max={100}
+          step={5}
+          tone={SIGNAL}
+          label="Extrinsic reward reliance percentage"
+          onChange={setExtrinsic}
+        />
+      </g>
     </Plate>
   );
 }
@@ -907,7 +902,7 @@ export function FlightSimCaseTall({
 /* ==========================================================================
    10 · Guitar Hero — Interactive learning-curve plate (w = 400) comparing
    perceived progression in the first few months of a traditional musical
-   instrument vs. Guitar Hero (SIMULATED)
+   instrument vs. Guitar Hero
    ========================================================================== */
 
 export function GuitarHeroCurveInteractive() {
@@ -941,13 +936,10 @@ export function GuitarHeroCurveInteractive() {
     <Plate
       w={400}
       h={304}
-      title={`Interactive learning-curve chart (SIMULATED) comparing perceived progression over 12 months between Guitar Hero in red (high immediate progression, ${ghVal}% at Month ${month}) and a traditional instrument in blue (flat early curve, ${instVal}% at Month ${month}), with a draggable month slider`}
+      title={`Interactive learning-curve chart comparing perceived progression over 12 months between Guitar Hero in red (high immediate progression, ${ghVal}% at Month ${month}) and a traditional instrument in blue (flat early curve, ${instVal}% at Month ${month}), with a draggable month slider`}
     >
       <text x={24} y={28} {...HEAD} fontSize={16} fill={INK}>
         Perceived progression
-      </text>
-      <text x={376} y={28} textAnchor="end" {...BODY} fontSize={12.5} fill={INK}>
-        SIMULATED
       </text>
 
       {/* Axes */}

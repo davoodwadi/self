@@ -488,7 +488,7 @@ export function RulesVsMlInteractive() {
     <Plate
       w={800}
       h={242}
-      title={`SIMULATED. Left: Rules-Based Expert Systems in blue, where a person writes explicit rules for a screen and performance stays flat at ${rulesScore}%. Right: Machine Learning in red, where Data and a Performance Metric automatically train the model on a screen; dragging the Data slider to ${dataPct}% raises the Performance Metric to ${mlScore}%`}
+      title={`Left: Rules-Based Expert Systems in blue, where a person writes explicit rules for a screen and performance stays flat at ${rulesScore}%. Right: Machine Learning in red, where Data and a Performance Metric automatically train the model on a screen; dragging the Data slider to ${dataPct}% raises the Performance Metric to ${mlScore}%`}
     >
       {/* Center divider */}
       <path d="M 392 18 V 226" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
@@ -510,9 +510,6 @@ export function RulesVsMlInteractive() {
           Metric: {rulesScore}%
         </text>
       </Monitor>
-      <text x={200} y={214} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
-        SIMULATED
-      </text>
 
       {/* RIGHT: Machine Learning (SIGNAL red focal point) */}
       <text x={596} y={32} textAnchor="middle" {...HEAD} fontSize={19} fill={SIGNAL}>
@@ -580,12 +577,8 @@ export function RiseOfMlInteractive({
     <Plate
       w={800}
       h={266}
-      title={`SIMULATED. Three 21st-century drivers of Machine Learning at year ${year}: Compute Power (${computePct}%, rising), Big Data (${dataPct}%, rising), and Storage Costs (${storageCostPct}%, falling), controlled by a timeline slider from 2000 to 2025`}
+      title={`Three 21st-century drivers of Machine Learning at year ${year}: Compute Power (${computePct}%, rising), Big Data (${dataPct}%, rising), and Storage Costs (${storageCostPct}%, falling), controlled by a timeline slider from 2000 to 2025`}
     >
-      <text x={782} y={20} textAnchor="end" {...BODY} fontSize={12} fill={INK}>
-        SIMULATED
-      </text>
-
       <path d="M 269 20 V 196 M 531 20 V 196" stroke={INK} strokeWidth={1.8} strokeDasharray="4 5" />
 
       {cols.map((c) => {
@@ -840,16 +833,12 @@ export function LinearRegressionInteractive() {
     <Plate
       w={400}
       h={308}
-      title={`SIMULATED. Linear Regression scatter plot of retail store transactions with Price on the horizontal axis and Sales on the vertical axis; at Price $${price}, the red regression line predicts Sales of ${predSales} units`}
+      title={`Linear Regression scatter plot of retail store transactions with Price on the horizontal axis and Sales on the vertical axis; at Price $${price}, the red regression line predicts Sales of ${predSales} units`}
     >
       {/* Prediction readout badge above plot */}
       <rect x={68} y={10} width={196} height={30} fill={SIGNAL} />
       <text x={166} y={30} textAnchor="middle" {...BODY} fontSize={14} fill={CREAM}>
         Price ${price} → Sales: {predSales}
-      </text>
-
-      <text x={384} y={29} textAnchor="end" {...BODY} fontSize={12} fill={INK}>
-        SIMULATED
       </text>
 
       {/* Axes */}
@@ -938,16 +927,12 @@ export function LogisticRegressionInteractive() {
     <Plate
       w={400}
       h={308}
-      title={`SIMULATED. Logistic Regression S-curve for retail website click prediction: customer match score ${score} yields ${pct}% probability, predicting ${willClick ? "Click (1)" : "No Click (0)"}`}
+      title={`Logistic Regression S-curve for retail website click prediction: customer match score ${score} yields ${pct}% probability, predicting ${willClick ? "Click (1)" : "No Click (0)"}`}
     >
       {/* Binary prediction badge above plot */}
       <rect x={68} y={10} width={196} height={30} fill={activeTone} />
       <text x={166} y={30} textAnchor="middle" {...BODY} fontSize={14} fill={CREAM}>
         {willClick ? `Click (1) · ${pct}%` : `No Click (0) · ${pct}%`}
-      </text>
-
-      <text x={384} y={29} textAnchor="end" {...BODY} fontSize={12} fill={INK}>
-        SIMULATED
       </text>
 
       {/* Axes */}
