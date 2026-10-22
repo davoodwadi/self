@@ -17,11 +17,10 @@ import {
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  IsoMitigationFrontier,
   IsoSixStepAuditLoop,
   IsoUniversityAdSkew,
 } from "./visuals-legacy";
-import { AdAuctionSkew, AggregationBias, CalibrationTubes, CausalPipework, ConfusionCutoff, CreditAgeTradeoff, CriterionContexts, DomainTradeoffs, GroupAverageVsIndividual, ImpossibilityLevels, IncompatibleTriad, IndividualFairness, MarketingPipelines, DemographicParity, FeedbackLoop, FourFifthsRule, FourSources, HistoricalBias, MeasurementBias, PipelineStages, ProxyReconstruction, RepresentationBias, SeparationTrays, StatisticalToMarket, ThreeFamilies, TreatmentVsImpact } from "./visuals";
+import { AdAuctionSkew, AggregationBias, CalibrationTubes, CausalPipework, ConfusionCutoff, CreditAgeTradeoff, CriterionContexts, DomainTradeoffs, GroupAverageVsIndividual, ImpossibilityLevels, IncompatibleTriad, IndividualFairness, MarketingPipelines, MitigationFrontier, DemographicParity, FeedbackLoop, FourFifthsRule, FourSources, HistoricalBias, MeasurementBias, PipelineStages, ProxyReconstruction, RepresentationBias, SeparationTrays, StatisticalToMarket, ThreeFamilies, TreatmentVsImpact } from "./visuals";
 
 // ============================================================================
 // WEEK 02 — ALGORITHMIC BIAS, FAIRNESS, AND DISCRIMINATION
@@ -1126,7 +1125,7 @@ export default function Week2Page() {
           </P>
         </Ruled>
         <Plate className="mt-5">
-          <IsoMitigationFrontier />
+          <MitigationFrontier />
         </Plate>
       </Slide>
 

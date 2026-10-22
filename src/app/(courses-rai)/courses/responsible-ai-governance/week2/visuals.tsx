@@ -2088,3 +2088,106 @@ export function AdAuctionSkew() {
     </div>
   );
 }
+
+/**
+ * Mitigation. FIG. 1: the three points of intervention along the pipeline:
+ * a weight set on the training data (pre-processing), a penalty weight hung
+ * on the learning gear (in-processing), and group-specific thresholds on the
+ * output scores (post-processing). FIG. 2: the accuracy-fairness frontier;
+ * the slider tightens the fairness constraint and moves the operating point,
+ * and the accuracy given up is dimensioned in red.
+ */
+export function MitigationFrontier() {
+  const [k, setK] = useState(50);
+  const id = "w2-frontier";
+  const lam = k / 100;
+  const acc = (x: number) => 0.9 - 0.08 * Math.pow(x, 2.5);
+  const X = (x: number) => r2(470 + x * 290);
+  const Y = (a: number) => r2(150 - ((a - 0.8) / 0.12) * 120);
+  const curve = Array.from({ length: 41 }, (_, i) => {
+    const x = i / 40;
+    return `${i === 0 ? "M" : "L"}${X(x)} ${Y(acc(x))}`;
+  }).join("");
+  const a = acc(lam);
+  const disparity = 0.3 * (1 - lam);
+  const lost = Y(a) - Y(0.9);
+  return (
+    <div>
+      <Frame
+        width={800}
+        height={196}
+        label={`Patent drawing in two figures. FIG. 1, three points of intervention: a weight set on the pile of training data, pre-processing; a penalty weight hung from the learning gear, in-processing; and two group-specific threshold blades on the output scores, post-processing. FIG. 2, the accuracy-fairness frontier: a curve falls slowly and then steeply as fairness rises. With the fairness constraint at ${k}%, the operating point sits at ${(a * 100).toFixed(1)}% accuracy with a disparity of ${disparity.toFixed(2)}${lost > 0.5 ? ", and the accuracy given up is dimensioned in red" : ""}.`}
+      >
+        <PatentDefs id={id} />
+
+        {/* FIG. 1 — three points of intervention */}
+        <line x1={20} y1={140} x2={394} y2={140} {...hair} />
+        <Pile id={id} x={36} y={140} n={9} w={56} />
+        <ObliqueBox id={id} x={50} y={98} w={22} h={14} dx={5} dy={3} />
+        <path d="M56 98V92H66V98" fill="none" {...ink} />
+        <line x1={112} y1={114} x2={156} y2={114} {...hair} strokeDasharray={CENTRE_DASH} />
+        <ObliqueBox id={id} x={160} y={70} w={74} h={70} dx={10} dy={6} />
+        <circle cx={197} cy={100} r={22} fill={stip(id, "light")} {...ink} />
+        <Gear cx={197} cy={100} r={12} n={10} />
+        <line x1={197} y1={100} x2={197} y2={126} {...ink} />
+        <ObliqueBox id={id} x={189} y={126} w={16} h={10} dx={4} dy={2.5} />
+        <line x1={248} y1={114} x2={280} y2={114} {...hair} strokeDasharray={CENTRE_DASH} />
+        {[86, 122].map((y, j) => (
+          <g key={y}>
+            <ObliqueBox id={id} x={284} y={y} w={110} h={6} dx={8} dy={5} />
+            <ObliqueBox id={id} x={j === 0 ? 344 : 324} y={y - 24} w={4} h={24} dx={4} dy={2.5} />
+          </g>
+        ))}
+        {[
+          [64, "PRE-PROCESSING"],
+          [197, "IN-PROCESSING"],
+          [340, "POST-PROCESSING"],
+        ].map(([x, t]) => (
+          <PatentKey key={t as string} x={x as number} y={162} size={9.5}>
+            {t}
+          </PatentKey>
+        ))}
+
+        <line x1={414} y1={14} x2={414} y2={176} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+        {/* FIG. 2 — the accuracy-fairness frontier */}
+        <path d="M470 22V150H772" fill="none" {...ink} />
+        <PatentKey x={772} y={166} anchor="end" size={10}>
+          FAIRNESS
+        </PatentKey>
+        <text x={456} y={86} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={10} letterSpacing="0.22em" fill={PAT.ink} transform="rotate(-90 456 86)">
+          ACCURACY
+        </text>
+        <path d={curve} fill="none" {...ink} strokeWidth={LINE.bold} />
+        <line x1={X(0)} y1={Y(0.9)} x2={X(lam)} y2={Y(0.9)} {...hair} strokeDasharray="4 3" />
+        {lost > 0.5 ? (
+          <g>
+            <line x1={r2(X(lam) + 12)} y1={Y(0.9)} x2={r2(X(lam) + 12)} y2={Y(a)} stroke={PAT.signal} strokeWidth={LINE.outline} />
+            <path d={`M${r2(X(lam) + 8)} ${Y(0.9)}H${r2(X(lam) + 16)}M${r2(X(lam) + 8)} ${Y(a)}H${r2(X(lam) + 16)}`} fill="none" stroke={PAT.signal} strokeWidth={LINE.outline} />
+          </g>
+        ) : null}
+        <circle cx={X(lam)} cy={Y(a)} r={5} fill={PAT.paper} {...ink} strokeWidth={LINE.bold} />
+        <Num x={486} y={118} size={14} anchor="start">
+          {`${(a * 100).toFixed(1)}%`}
+        </Num>
+        <PatentKey x={548} y={118} anchor="start" size={9.5}>
+          ACCURACY
+        </PatentKey>
+        <Num x={486} y={140} size={14} anchor="start">
+          {disparity.toFixed(2)}
+        </Num>
+        <PatentKey x={548} y={140} anchor="start" size={9.5}>
+          DISPARITY
+        </PatentKey>
+
+        <Fig x={208} y={190} n={1} size={12}>
+          mitigation
+        </Fig>
+        <Fig x={620} y={190} n={2} size={12}>
+          accuracy-fairness frontier
+        </Fig>
+      </Frame>
+      <Slider label="Fairness constraint" value={k} min={0} max={100} step={10} onChange={setK} formatValue={(v) => `${v}%`} />
+    </div>
+  );
+}
