@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
-import { Figure } from "../_visuals/objects";
+import { Chip, Coins, Figure, Gear, cross, tick } from "../_visuals/objects";
 
 /* ==========================================================================
    WEEK 02 PLATES: PATENT DRAWING
@@ -238,6 +238,230 @@ export function FourFifthsRule() {
         </PatentKey>
       </Frame>
       <Slider label="Protected group selection rate" value={rateB} min={10} max={60} step={2} onChange={setRateB} formatValue={(v) => `${v}%`} />
+    </div>
+  );
+}
+
+/**
+ * Part 1: the pipeline pulled apart along its centre line into the four
+ * stages bias can enter (data generation, measurement, model specification,
+ * market deployment). Each stage is its own mechanism and lets bias in its
+ * own way (red): a skewed record in the hopper, a gauge reading off, a
+ * mis-cut gear, and a short allocation to one group's tray.
+ */
+export function PipelineStages() {
+  const id = "w2-stages";
+  const y = 62;
+  const h = 84;
+  const w = 172;
+  const xs = [18, 214, 410, 606];
+  const red = { stroke: PAT.signal, strokeWidth: LINE.bold, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  const keys = ["DATA GENERATION", "MEASUREMENT", "MODEL SPECIFICATION", "MARKET DEPLOYMENT"];
+  return (
+    <Frame
+      width={800}
+      height={204}
+      label="Patent drawing, exploded view: the modeling pipeline pulled apart along a centre line into four housings, data generation, measurement, model specification and market deployment. Bias enters each in its own way, drawn in red: one skewed record among the records falling into the data hopper, a gauge whose needle reads off its mark, a mis-cut gear in the model's gear train, and, at deployment, a short stack of allocations in one group's tray beside a full stack in the other's."
+    >
+      <PatentDefs id={id} />
+      <line x1={12} y1={y + 30} x2={792} y2={y + 30} {...hair} strokeDasharray={CENTRE_DASH} />
+      {xs.map((x, i) => (
+        <g key={x}>
+          <ObliqueBox id={id} x={x} y={y} w={w} h={h} dx={12} dy={8} />
+          {/* flanges where the housings were pulled apart */}
+          <rect x={x - 5} y={y + 14} width={5} height={32} fill={PAT.paper} {...ink} />
+          <rect x={x + w} y={y + 14} width={5} height={32} fill={stip(id, "dense")} {...ink} />
+          <line x1={x} y1={y + 58} x2={x + w} y2={y + 58} {...hair} />
+          <PatentKey x={x + w / 2} y={y + 75} size={9.5}>
+            {keys[i]}
+          </PatentKey>
+        </g>
+      ))}
+
+      {/* 1 — data generation: records falling into a hopper */}
+      <path d="M58 8H148L114 54H92Z" fill={PAT.paper} {...ink} />
+      <path d="M148 8L156 3L120 50L114 54Z" fill={stip(id, "dense")} {...ink} />
+      <path d={`M92 54V${y}M114 54V${y - 6}`} fill="none" {...ink} />
+      <Chip id={id} x={78} y={30} w={22} d={7} sk={8} />
+      <Chip id={id} x={102} y={22} w={22} d={7} sk={8} red />
+      <Chip id={id} x={92} y={44} w={16} d={6} sk={6} />
+
+      {/* 2 — measurement: a gauge reading off its mark */}
+      <circle cx={300} cy={y + 29} r={24} fill={stip(id, "light")} {...ink} />
+      <circle cx={300} cy={y + 29} r={20} fill={PAT.paper} {...ink} />
+      {[-60, -30, 30, 60].map((t) => (
+        <line
+          key={t}
+          x1={r2(300 + Math.sin((t * Math.PI) / 180) * 18)}
+          y1={r2(y + 29 - Math.cos((t * Math.PI) / 180) * 18)}
+          x2={r2(300 + Math.sin((t * Math.PI) / 180) * 13)}
+          y2={r2(y + 29 - Math.cos((t * Math.PI) / 180) * 13)}
+          {...hair}
+        />
+      ))}
+      <path d={`M300 ${y + 14}L297 ${y + 8}H303Z`} fill={PAT.ink} />
+      <line x1={300} y1={y + 29} x2={r2(300 + Math.sin(0.8) * 16)} y2={r2(y + 29 - Math.cos(0.8) * 16)} {...red} />
+      <circle cx={300} cy={y + 29} r={2} fill={PAT.signal} />
+
+      {/* 3 — model specification: the gear train, one gear mis-cut */}
+      <circle cx={496} cy={y + 29} r={26} fill={stip(id, "light")} {...ink} />
+      <Gear cx={487} cy={y + 23} r={11} n={10} />
+      <path d={gearPathRed(505, y + 37, 7, 7)} fill={PAT.paper} {...red} strokeWidth={LINE.outline} />
+      <circle cx={505} cy={y + 37} r={1.8} fill={PAT.signal} />
+
+      {/* 4 — market deployment: a nozzle filling two groups' trays */}
+      <path d={`M689 ${y + h}V${y + h + 10}H681V${y + h + 18}H703V${y + h + 10}H695V${y + h}Z`} fill={PAT.paper} {...ink} />
+      <ObliqueBox id={id} x={658} y={194} w={56} h={7} dx={10} dy={6} />
+      <ObliqueBox id={id} x={726} y={194} w={50} h={7} dx={10} dy={6} />
+      <Coins id={id} cx={692} y={193} n={4} rx={13} ry={4} h={5} />
+      <Coins id={id} cx={753} y={193} n={1} rx={13} ry={4} h={5} red />
+    </Frame>
+  );
+}
+
+/** A gear outline for the mis-cut gear: one tooth missing. */
+function gearPathRed(cx: number, cy: number, r: number, n: number) {
+  const pts: string[] = [];
+  for (let i = 0; i < n; i++) {
+    const a = (i / n) * Math.PI * 2;
+    const st = (Math.PI * 2) / n;
+    const ring = i === 2 ? [[r, a], [r, a + st * 0.54]] : [[r, a], [r + 3, a + st * 0.12], [r + 3, a + st * 0.42], [r, a + st * 0.54]];
+    for (const [rr, aa] of ring) pts.push(`${r2(cx + rr * Math.cos(aa))} ${r2(cy + rr * Math.sin(aa))}`);
+  }
+  return `M${pts.join("L")}Z`;
+}
+
+/**
+ * A head-and-shoulders portrait in a frame, (x, y) the frame's top-left: the
+ * record of one person. `coat` "dense" is the week's protected group.
+ */
+function Portrait({ id, x, y, w = 22, h = 30, coat = "paper", stroke = PAT.ink }: { id: string; x: number; y: number; w?: number; h?: number; coat?: "paper" | "dense" | "signal"; stroke?: string }) {
+  const cx = r2(x + w / 2);
+  const o = { stroke, strokeWidth: LINE.hair, strokeLinejoin: "round" as const };
+  const hr = r2(w * 0.2);
+  const sh = r2(w * 0.36);
+  return (
+    <g>
+      <rect x={x} y={y} width={w} height={h} fill={PAT.paper} {...o} strokeWidth={LINE.outline} />
+      <path
+        d={`M${r2(cx - sh)} ${r2(y + h)}V${r2(y + h * 0.78)}Q${r2(cx - sh)} ${r2(y + h * 0.56)} ${cx} ${r2(y + h * 0.56)}Q${r2(cx + sh)} ${r2(y + h * 0.56)} ${r2(cx + sh)} ${r2(y + h * 0.78)}V${r2(y + h)}`}
+        fill={coat === "paper" ? PAT.paper : stip(id, coat)}
+        {...o}
+      />
+      <circle cx={cx} cy={r2(y + h * 0.36)} r={hr} fill={PAT.paper} {...o} />
+    </g>
+  );
+}
+
+/**
+ * Historical bias in hiring: the record of ten years of executive promotions
+ * (nine of ten portraits from the majority group) trains the hiring model,
+ * which passes a new applicant like the past (tick) and rejects an applicant
+ * from the protected group (red).
+ */
+export function HistoricalBias() {
+  const id = "w2-hist";
+  const past = [0, 0, 0, 0, 0, 0, 0, 1, 0, 0];
+  return (
+    <Frame
+      width={400}
+      height={176}
+      label="Patent drawing: a board of ten portraits records ten years of executive promotions, nine of them from the majority group and one from the protected group. A centre line runs from the board into the hiring model's housing, its gears in a window. Out of the model come two applicant files: the majority-group applicant's file is ticked, and the protected-group applicant's file is rejected with a cross, both drawn in red."
+    >
+      <PatentDefs id={id} />
+
+      {/* Ten years of past promotions */}
+      <ObliqueBox id={id} x={12} y={38} w={146} h={104} dx={10} dy={6} />
+      {past.map((g, i) => (
+        <Portrait key={i} id={id} x={22 + (i % 5) * 26} y={48 + Math.floor(i / 5) * 46} w={22} h={38} coat={g ? "dense" : "paper"} />
+      ))}
+      <PatentKey x={85} y={166} size={11.5}>
+        10 YEARS
+      </PatentKey>
+
+      {/* The hiring model trained on that record */}
+      <line x1={172} y1={92} x2={196} y2={92} {...hair} strokeDasharray={CENTRE_DASH} />
+      <ObliqueBox id={id} x={198} y={62} w={60} h={60} dx={10} dy={6} />
+      <circle cx={228} cy={92} r={19} fill={stip(id, "light")} {...ink} />
+      <Gear cx={222} cy={87} r={8.5} n={9} />
+      <Gear cx={236} cy={100} r={6} n={7} phase={0.3} />
+      <path d="M272 82L292 62M272 104L292 124" fill="none" {...hair} strokeDasharray={CENTRE_DASH} />
+
+      {/* Two new applicants' files */}
+      <ObliqueBox id={id} x={296} y={22} w={88} h={50} dx={8} dy={5} />
+      <Portrait id={id} x={304} y={28} w={24} h={38} />
+      <path d={tick(360, 47, 11)} fill="none" {...ink} strokeWidth={LINE.bold} />
+      <ObliqueBox id={id} x={296} y={112} w={88} h={50} dx={8} dy={5} stroke={PAT.signal} />
+      <Portrait id={id} x={304} y={118} w={24} h={38} coat="signal" stroke={PAT.signal} />
+      <path d={cross(360, 137, 10)} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" />
+    </Frame>
+  );
+}
+
+/** A half-round meter, 0 to `max` across its arc, needle at `value`. */
+function Meter({ cx, cy, r, value, max, red = false }: { cx: number; cy: number; r: number; value: number; max: number; red?: boolean }) {
+  const at = (v: number, rr: number) => {
+    const a = Math.PI * (1 - Math.min(v, max) / max);
+    return [r2(cx + Math.cos(a) * rr), r2(cy - Math.sin(a) * rr)] as const;
+  };
+  const [nx, ny] = at(value, r - 6);
+  return (
+    <g>
+      <path d={`M${cx - r} ${cy}A${r} ${r} 0 0 1 ${cx + r} ${cy}Z`} fill={PAT.paper} {...ink} />
+      {Array.from({ length: 7 }, (_, i) => {
+        const [x1, y1] = at((max * i) / 6, r - 2);
+        const [x2, y2] = at((max * i) / 6, r - (i % 3 === 0 ? 9 : 6));
+        return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} {...hair} />;
+      })}
+      <line x1={cx} y1={cy} x2={nx} y2={ny} stroke={red ? PAT.signal : PAT.ink} strokeWidth={LINE.bold} strokeLinecap="round" />
+      <circle cx={cx} cy={cy} r={2.4} fill={red ? PAT.signal : PAT.ink} />
+    </g>
+  );
+}
+
+/**
+ * Representation bias: a training set of twenty faces, of which the slider
+ * sets the protected group's share; two meters read the deployed error rate
+ * for each group. The protected group's error falls steeply as its share
+ * rises, and the gains taper off toward parity.
+ */
+export function RepresentationBias() {
+  const [share, setShare] = useState(10);
+  const id = "w2-repr";
+  const n = Math.round((20 * share) / 100);
+  // Fixed order in which seats in the sample go to the protected group.
+  const order = [7, 13, 2, 18, 10, 5, 16, 0, 11, 8, 19, 3, 14, 6, 17, 1, 12, 9, 15, 4];
+  const seats = new Set(order.slice(0, n));
+  const errB = r2(4 + 30 * Math.exp(-share / 8));
+  const errA = r2(4 + 30 * Math.exp(-(100 - share) / 8));
+  const high = errB > 2 * errA;
+  return (
+    <div>
+      <Frame
+        width={400}
+        height={176}
+        label={`Patent drawing: a training set of twenty face records, ${n} of them from the underrepresented protected group (${share}%). Two meters read the error rate after deployment: ${Math.round(errA)}% for the majority group and ${Math.round(errB)}% for the protected group${high ? ", far higher, in red" : ""}.`}
+      >
+        <PatentDefs id={id} />
+        <ObliqueBox id={id} x={12} y={22} w={150} h={140} dx={10} dy={6} />
+        {Array.from({ length: 20 }, (_, i) => (
+          <Portrait key={i} id={id} x={20 + (i % 5) * 28} y={30 + Math.floor(i / 5) * 32} w={22} h={28} coat={seats.has(i) ? "dense" : "paper"} />
+        ))}
+        <PatentKey x={300} y={30} size={11.5}>
+          ERROR RATE
+        </PatentKey>
+        <Meter cx={250} cy={104} r={42} value={errA} max={36} />
+        <Meter cx={350} cy={104} r={42} value={errB} max={36} red={high} />
+        <Portrait id={id} x={238} y={116} w={24} h={30} />
+        <Portrait id={id} x={338} y={116} w={24} h={30} coat={high ? "signal" : "dense"} stroke={high ? PAT.signal : PAT.ink} />
+        <Num x={250} y={168} size={15}>
+          {`${Math.round(errA)}%`}
+        </Num>
+        <Num x={350} y={168} size={15} fill={high ? PAT.signal : PAT.ink}>
+          {`${Math.round(errB)}%`}
+        </Num>
+      </Frame>
+      <Slider label="Underrepresented group in training data" value={share} min={0} max={50} step={5} onChange={setShare} formatValue={(v) => `${v}%`} />
     </div>
   );
 }

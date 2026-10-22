@@ -17,9 +17,6 @@ import {
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  IsoPipelineBiasStages,
-  IsoHistoricalBias,
-  IsoRepresentationBias,
   IsoMeasurementBias,
   IsoAggregationBias,
   IsoProxyReconstruction,
@@ -44,7 +41,7 @@ import {
   IsoSixStepAuditLoop,
   IsoUniversityAdSkew,
 } from "./visuals-legacy";
-import { FourFifthsRule, StatisticalToMarket, TreatmentVsImpact } from "./visuals";
+import { FourFifthsRule, HistoricalBias, PipelineStages, RepresentationBias, StatisticalToMarket, TreatmentVsImpact } from "./visuals";
 
 // ============================================================================
 // WEEK 02 — ALGORITHMIC BIAS, FAIRNESS, AND DISCRIMINATION
@@ -222,7 +219,7 @@ export default function Week2Page() {
           </Ruled>
         </div>
         <Plate className="mt-6">
-          <IsoPipelineBiasStages />
+          <PipelineStages />
         </Plate>
       </Slide>
 
@@ -251,7 +248,7 @@ export default function Week2Page() {
               </Ruled>
             </div>
             <Plate>
-              <IsoHistoricalBias />
+              <HistoricalBias />
             </Plate>
           </div>
           <div className="flex flex-col justify-between gap-4">
@@ -273,7 +270,7 @@ export default function Week2Page() {
               </Ruled>
             </div>
             <Plate>
-              <IsoRepresentationBias />
+              <RepresentationBias />
             </Plate>
           </div>
         </div>
