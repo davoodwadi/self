@@ -769,3 +769,281 @@ export function FeedbackLoop() {
     </Frame>
   );
 }
+
+/**
+ * Identifying the four sources, one figure each, in the week's cast.
+ * FIG. 1 historical bias: a large, cleanly kept pile of records whose label
+ * tabs are red. FIG. 2 representation bias: the population's faces above a
+ * sample tray whose protected-group seats are empty (red). FIG. 3
+ * measurement bias: equal thermometers, unequal coin stacks (the short one
+ * red). FIG. 4 aggregation bias: one straightedge through two groups, the
+ * minority's residuals red.
+ */
+export function FourSources() {
+  const id = "w2-four";
+  const red = { stroke: PAT.signal, strokeWidth: LINE.bold, strokeLinecap: "round" as const };
+  const g = 152;
+  const people = ["paper", "dense", "paper", "paper", "dense", "paper", "dense", "paper"] as const;
+  const X = (v: number) => r2(626 + v * 14);
+  const Y = (v: number) => r2(146 - v * 10);
+  const major: [number, number][] = [[0.5, 1.3], [1.5, 1.6], [2.4, 2.4], [3.3, 2.5], [4.2, 3.2], [5.1, 3.3], [6, 4], [6.9, 4.1], [7.8, 4.8]];
+  const minor: [number, number][] = [[4.6, 4.6], [5.6, 6.1], [6.6, 7.6], [7.6, 9.1]];
+  const pooled = (x: number) => 1.15 + 0.47 * x;
+  return (
+    <Frame
+      width={800}
+      height={196}
+      label="Patent drawing in four figures. FIG. 1, historical bias: a large, neat pile of records whose label tabs are all red. FIG. 2, representation bias: a row of eight faces from the population, three of the protected group, above a sample tray whose three protected-group seats are empty and outlined in red. FIG. 3, measurement bias: two thermometers at the same reading beside two coin stacks, one tall and one short in red. FIG. 4, aggregation bias: one straightedge laid through white majority points and dense minority points, the minority points' residuals drawn in red."
+    >
+      <PatentDefs id={id} />
+
+      {/* FIG. 1 — historical bias: the labels themselves */}
+      <line x1={20} y1={g + 1} x2={182} y2={g + 1} {...hair} />
+      <Pile id={id} x={60} y={g} n={30} w={86} />
+      {Array.from({ length: 10 }, (_, i) => (
+        <path key={i} d={`M60 ${g - 5 - i * 9}h-12v-5h12`} fill={stip(id, "signal")} stroke={PAT.signal} strokeWidth={LINE.outline} strokeLinejoin="round" />
+      ))}
+
+      <line x1={200} y1={16} x2={200} y2={170} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 2 — representation bias: seats left empty in the sample */}
+      {people.map((c, i) => (
+        <Portrait key={i} id={id} x={224 + i * 19} y={30} w={16} h={26} coat={c} />
+      ))}
+      <line x1={300} y1={64} x2={300} y2={88} {...hair} strokeDasharray={CENTRE_DASH} />
+      <path d={headAlongPath(300, 92, 0, 1, 6)} fill="none" {...hair} />
+      <ObliqueBox id={id} x={220} y={100} w={160} h={44} dx={10} dy={6} />
+      {people.map((c, i) =>
+        c === "dense" ? (
+          <rect key={i} x={226 + i * 19} y={108} width={16} height={26} fill="none" stroke={PAT.signal} strokeWidth={LINE.outline} strokeDasharray="3 2" />
+        ) : (
+          <Portrait key={i} id={id} x={226 + i * 19} y={108} w={16} h={26} />
+        ),
+      )}
+
+      <line x1={400} y1={16} x2={400} y2={170} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 3 — measurement bias: same need, unequal spending */}
+      <line x1={420} y1={g + 1} x2={582} y2={g + 1} {...hair} />
+      {[
+        { x: 440, coins: 9 },
+        { x: 516, coins: 2 },
+      ].map((p) => (
+        <g key={p.x}>
+          <Thermometer id={id} cx={p.x} top={52} bulbY={g - 8} level={70} />
+          <Coins id={id} cx={p.x + 36} y={g} n={p.coins} rx={12} ry={4} h={7} red={p.coins < 4} />
+        </g>
+      ))}
+      <line x1={448} y1={70} x2={524} y2={70} {...hair} strokeDasharray="4 2.5" />
+
+      <line x1={600} y1={16} x2={600} y2={170} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 4 — aggregation bias: one straightedge for two groups */}
+      <path d="M622 30V150H780" fill="none" {...ink} />
+      {minor.map(([x, y]) => (
+        <line key={x} x1={X(x)} y1={Y(y)} x2={X(x)} y2={Y(pooled(x))} {...red} />
+      ))}
+      <line x1={X(0)} y1={Y(pooled(0))} x2={X(10.5)} y2={Y(pooled(10.5))} {...ink} strokeWidth={LINE.bold} />
+      {major.map(([x, y]) => (
+        <circle key={x} cx={X(x)} cy={Y(y)} r={3.4} fill={PAT.paper} {...ink} />
+      ))}
+      {minor.map(([x, y]) => (
+        <circle key={x} cx={X(x)} cy={Y(y)} r={4.4} fill={stip(id, "dense")} {...ink} />
+      ))}
+
+      <Fig x={100} y={186} n={1} size={12}>
+        historical bias
+      </Fig>
+      <Fig x={300} y={186} n={2} size={12}>
+        representation bias
+      </Fig>
+      <Fig x={500} y={186} n={3} size={12}>
+        measurement bias
+      </Fig>
+      <Fig x={700} y={186} n={4} size={12}>
+        aggregation bias
+      </Fig>
+    </Frame>
+  );
+}
+
+/**
+ * A confusion matrix as a shallow tray, (x, y) the front face's top-left:
+ * columns Y = 1, Y = 0; rows D = 1, D = 0. A bold frame rings the cells a
+ * criterion conditions on (`given`, as [row0, col0, rows, cols]); dense
+ * stipple fills the cells it counts.
+ */
+function Matrix({ id, x, y, cw = 44, ch = 32, given, count }: { id: string; x: number; y: number; cw?: number; ch?: number; given: [number, number, number, number]; count: [number, number][] }) {
+  const has = (r: number, c: number) => count.some(([a, b]) => a === r && b === c);
+  const [r0, c0, nr, nc] = given;
+  return (
+    <g>
+      <ObliqueBox id={id} x={x} y={y} w={cw * 2} h={ch * 2} dx={8} dy={5} />
+      {[0, 1].map((r) =>
+        [0, 1].map((c) => (
+          <rect key={`${r}${c}`} x={x + c * cw} y={y + r * ch} width={cw} height={ch} fill={has(r, c) ? stip(id, "dense") : PAT.paper} {...hair} />
+        )),
+      )}
+      <rect x={x + c0 * cw} y={y + r0 * ch} width={nc * cw} height={nr * ch} fill="none" {...ink} strokeWidth={LINE.bold} />
+    </g>
+  );
+}
+
+/**
+ * Part 2: the three families of group fairness, each read off the same
+ * confusion matrix for Group A and Group B. Independence counts the approved
+ * row out of every applicant; separation counts approvals within the true
+ * outcome's column; sufficiency counts repayers within the approved row.
+ */
+export function ThreeFamilies() {
+  const id = "w2-fam";
+  const figs = [
+    { x: 10, name: "independence", given: [0, 0, 2, 2] as [number, number, number, number], count: [[0, 0], [0, 1]] as [number, number][] },
+    { x: 276, name: "separation", given: [0, 0, 2, 1] as [number, number, number, number], count: [[0, 0]] as [number, number][] },
+    { x: 542, name: "sufficiency", given: [0, 0, 1, 2] as [number, number, number, number], count: [[0, 0]] as [number, number][] },
+  ];
+  return (
+    <Frame
+      width={800}
+      height={176}
+      label="Patent drawing in three figures. Each figure shows the confusion matrix of Group A beside that of Group B, columns for Y = 1 and Y = 0, rows for D = 1 and D = 0, with an equals sign between them. A bold frame rings the cells each criterion conditions on and dense stipple fills the cells it counts. FIG. 1, independence: the whole matrix is framed and the approved row is stippled. FIG. 2, separation: the Y = 1 column is framed and its approved cell is stippled. FIG. 3, sufficiency: the D = 1 row is framed and its repaid cell is stippled."
+    >
+      <PatentDefs id={id} />
+      {figs.map((f, i) => (
+        <g key={f.name}>
+          {i > 0 ? <line x1={f.x - 12} y1={14} x2={f.x - 12} y2={150} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} /> : null}
+          <Num x={f.x + 60} y={34} size={12}>
+            Y = 1
+          </Num>
+          <Num x={f.x + 104} y={34} size={12}>
+            Y = 0
+          </Num>
+          <Num x={f.x + 34} y={68} size={12} anchor="end">
+            D = 1
+          </Num>
+          <Num x={f.x + 34} y={100} size={12} anchor="end">
+            D = 0
+          </Num>
+          <Matrix id={id} x={f.x + 38} y={46} given={f.given} count={f.count} />
+          <Num x={f.x + 146} y={84} size={20}>
+            =
+          </Num>
+          <Matrix id={id} x={f.x + 160} y={46} given={f.given} count={f.count} />
+          <PatentKey x={f.x + 82} y={130} size={10}>
+            GROUP A
+          </PatentKey>
+          <PatentKey x={f.x + 204} y={130} size={10}>
+            GROUP B
+          </PatentKey>
+          <Fig x={f.x + 126} y={164} n={i + 1} size={12}>
+            {f.name}
+          </Fig>
+        </g>
+      ))}
+    </Frame>
+  );
+}
+
+/**
+ * Confusion matrices across groups, as an instrument. Each group's applicants
+ * sit on a score axis in two rows: those who would repay (Y = 1, white) and
+ * those who would default (Y = 0, dense). The cutoff blade approves every
+ * score at or above it; qualified applicants left of the blade (rejected)
+ * turn red. The table reads the four rates for each group.
+ */
+export function ConfusionCutoff() {
+  const [cut, setCut] = useState(60);
+  const id = "w2-conf";
+  const groups = [
+    { name: "GROUP A", y: 44, pos: [45, 55, 62, 68, 72, 78, 84, 90, 95], neg: [15, 25, 33, 40, 50, 58, 66] },
+    { name: "GROUP B", y: 118, pos: [38, 44, 52, 60, 70, 82], neg: [8, 14, 22, 28, 34, 42, 49, 57, 65, 76] },
+  ];
+  const X = (v: number) => r2(124 + v * 3.9);
+  const pct = (a: number, b: number) => (b === 0 ? "–" : `${Math.round((100 * a) / b)}%`);
+  const stats = groups.map((g) => {
+    const tp = g.pos.filter((v) => v >= cut).length;
+    const fp = g.neg.filter((v) => v >= cut).length;
+    const n = g.pos.length + g.neg.length;
+    return [pct(tp + fp, n), pct(tp, g.pos.length), pct(fp, g.neg.length), pct(tp, tp + fp)];
+  });
+  const rows = ["P(D = 1)", "P(D = 1 | Y = 1)", "P(D = 1 | Y = 0)", "P(Y = 1 | D = 1)"];
+  const bx = X(cut);
+  return (
+    <div>
+      <Frame
+        width={800}
+        height={186}
+        label={`Patent drawing of two score axes, one per group, with the cutoff blade at a score of ${cut}. Applicants who would repay sit in a white row and those who would default in a dense row; everyone at or above the cutoff is approved, and qualified applicants below it, rejected, are drawn in red. The table reads, for Group A and Group B: selection rate ${stats[0][0]} and ${stats[1][0]}; true positive rate ${stats[0][1]} and ${stats[1][1]}; false positive rate ${stats[0][2]} and ${stats[1][2]}; positive predictive value ${stats[0][3]} and ${stats[1][3]}.`}
+      >
+        <PatentDefs id={id} />
+        {/* the cutoff blade */}
+        <ObliqueBox id={id} x={r2(bx - 2)} y={30} w={4} h={128} dx={6} dy={4} />
+        <Num x={r2(bx - 10)} y={24} size={11.5} anchor="end">
+          D = 0
+        </Num>
+        <Num x={r2(bx + 14)} y={24} size={11.5} anchor="start">
+          D = 1
+        </Num>
+        {groups.map((g) => (
+          <g key={g.name}>
+            <PatentKey x={14} y={g.y + 16} anchor="start" size={10}>
+              {g.name}
+            </PatentKey>
+            {[0, 1].map((r) => (
+              <g key={r}>
+                <line x1={X(0)} y1={g.y + r * 24} x2={X(100)} y2={g.y + r * 24} {...hair} />
+                <Num x={114} y={g.y + r * 24 + 4} size={11.5} anchor="end">
+                  {r === 0 ? "Y = 1" : "Y = 0"}
+                </Num>
+              </g>
+            ))}
+            {g.pos.map((v) => {
+              const rejected = v < cut;
+              return <circle key={`p${v}`} cx={X(v)} cy={g.y} r={5.5} fill={rejected ? stip(id, "signal") : PAT.paper} stroke={rejected ? PAT.signal : PAT.ink} strokeWidth={rejected ? LINE.bold : LINE.outline} />;
+            })}
+            {g.neg.map((v) => (
+              <circle key={`n${v}`} cx={X(v)} cy={g.y + 24} r={5.5} fill={stip(id, "dense")} {...ink} />
+            ))}
+          </g>
+        ))}
+        {/* score axis */}
+        <line x1={X(0)} y1={160} x2={X(100)} y2={160} {...ink} />
+        {[0, 50, 100].map((v) => (
+          <g key={v}>
+            <line x1={X(v)} y1={160} x2={X(v)} y2={165} {...ink} />
+            <Num x={X(v)} y={179} size={11.5}>
+              {v}
+            </Num>
+          </g>
+        ))}
+        <Num x={X(100) + 14} y={164} size={12} anchor="start">
+          S
+        </Num>
+
+        {/* the table */}
+        <line x1={578} y1={30} x2={790} y2={30} {...ink} />
+        <PatentKey x={718} y={24} size={10}>
+          A
+        </PatentKey>
+        <PatentKey x={768} y={24} size={10}>
+          B
+        </PatentKey>
+        {rows.map((r, i) => (
+          <g key={r}>
+            <Num x={582} y={56 + i * 30} size={12} anchor="start">
+              {r}
+            </Num>
+            <Num x={716} y={56 + i * 30} size={14}>
+              {stats[0][i]}
+            </Num>
+            <Num x={766} y={56 + i * 30} size={14}>
+              {stats[1][i]}
+            </Num>
+            <line x1={578} y1={64 + i * 30} x2={790} y2={64 + i * 30} {...hair} />
+          </g>
+        ))}
+      </Frame>
+      <Slider label="Cutoff threshold" value={cut} min={20} max={90} step={2} onChange={setCut} />
+    </div>
+  );
+}

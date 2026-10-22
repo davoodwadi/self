@@ -17,9 +17,6 @@ import {
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  IsoDiagnosticBench,
-  IsoThreeFairnessFamilies,
-  IsoConfusionMatrix3D,
   IsoDemographicParity,
   IsoSeparationBridge,
   IsoCalibrationTower,
@@ -37,7 +34,7 @@ import {
   IsoSixStepAuditLoop,
   IsoUniversityAdSkew,
 } from "./visuals-legacy";
-import { AggregationBias, FeedbackLoop, FourFifthsRule, HistoricalBias, MeasurementBias, PipelineStages, ProxyReconstruction, RepresentationBias, StatisticalToMarket, TreatmentVsImpact } from "./visuals";
+import { AggregationBias, ConfusionCutoff, FeedbackLoop, FourFifthsRule, FourSources, HistoricalBias, MeasurementBias, PipelineStages, ProxyReconstruction, RepresentationBias, StatisticalToMarket, ThreeFamilies, TreatmentVsImpact } from "./visuals";
 
 // ============================================================================
 // WEEK 02 — ALGORITHMIC BIAS, FAIRNESS, AND DISCRIMINATION
@@ -436,7 +433,7 @@ export default function Week2Page() {
           </li>
         </ol>
         <Plate className="mt-5">
-          <IsoDiagnosticBench />
+          <FourSources />
         </Plate>
       </Slide>
 
@@ -470,7 +467,7 @@ export default function Week2Page() {
           </Ruled>
         </div>
         <Plate className="mt-6">
-          <IsoThreeFairnessFamilies />
+          <ThreeFamilies />
         </Plate>
       </Slide>
 
@@ -521,7 +518,7 @@ export default function Week2Page() {
           </Ruled>
         </div>
         <Plate className="mt-5">
-          <IsoConfusionMatrix3D />
+          <ConfusionCutoff />
         </Plate>
       </Slide>
 
