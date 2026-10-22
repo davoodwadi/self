@@ -233,7 +233,8 @@ export function Tag({ cx, cy, text, red = false, w = 54, size = 13 }: { cx: numb
  * A person as a patent figure, standing with feet at (x, y), facing right
  * (`flip` faces left). Clean outline, light stipple on the coat, dense on the
  * trousers. `arm`: "down" at the side, "reach" held forward, "raise" lifted,
- * "lift" both arms up.
+ * "lift" both arms up. `coat` sets the coat's tone ("paper" and "dense" tell two
+ * groups apart; "signal" marks the finding, trousers included).
  */
 export function Figure({
   id,
@@ -243,6 +244,7 @@ export function Figure({
   arm = "down",
   flip = false,
   stroke = PAT.ink,
+  coat = "light",
 }: {
   id: string;
   x: number;
@@ -251,6 +253,7 @@ export function Figure({
   arm?: "down" | "reach" | "raise" | "lift";
   flip?: boolean;
   stroke?: string;
+  coat?: "light" | "dense" | "signal" | "paper";
 }) {
   const o = { stroke, strokeWidth: LINE.outline / s, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
   const fwd =
@@ -262,12 +265,12 @@ export function Figure({
   return (
     <g transform={`translate(${x} ${y}) scale(${flip ? -s : s} ${s})`}>
       {/* legs */}
-      <path d="M-9 -36L-8 0H-1L0 -30L1 0H8L9 -36Z" fill={stip(id, "dense")} {...o} />
+      <path d="M-9 -36L-8 0H-1L0 -30L1 0H8L9 -36Z" fill={stip(id, coat === "signal" ? "signal" : "dense")} {...o} />
       <path d="M-11 0H-1M1 0H11" fill="none" {...o} />
       {/* back arm */}
       <path d={arm === "lift" ? "M-10 -62L-24 -84L-29 -81L-14 -56Z" : "M-10 -62L-14 -36L-9 -35L-6 -56Z"} fill={PAT.paper} {...o} />
       {/* coat */}
-      <path d="M-11 -64Q0 -68 11 -64L10 -34H-10Z" fill={stip(id, "light")} {...o} />
+      <path d="M-11 -64Q0 -68 11 -64L10 -34H-10Z" fill={coat === "paper" ? PAT.paper : stip(id, coat)} {...o} />
       <path d="M0 -66V-34" fill="none" {...o} strokeWidth={LINE.hair / s} />
       {/* front arm */}
       <path d={fwd} fill={PAT.paper} {...o} />

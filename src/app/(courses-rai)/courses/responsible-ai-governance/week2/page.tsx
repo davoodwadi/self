@@ -17,9 +17,6 @@ import {
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  IsoStatisticalToMarketSorting,
-  IsoTreatmentVsImpact,
-  IsoFourFifthsRule,
   IsoPipelineBiasStages,
   IsoHistoricalBias,
   IsoRepresentationBias,
@@ -46,7 +43,8 @@ import {
   IsoMitigationFrontier,
   IsoSixStepAuditLoop,
   IsoUniversityAdSkew,
-} from "./visuals";
+} from "./visuals-legacy";
+import { FourFifthsRule, StatisticalToMarket, TreatmentVsImpact } from "./visuals";
 
 // ============================================================================
 // WEEK 02 — ALGORITHMIC BIAS, FAIRNESS, AND DISCRIMINATION
@@ -106,7 +104,7 @@ export default function Week2Page() {
           </Ruled>
         </div>
         <Plate className="mt-5">
-          <IsoStatisticalToMarketSorting />
+          <StatisticalToMarket />
         </Plate>
         <div className="mt-6 grid w-full gap-6 md:grid-cols-2 md:gap-10">
           <Ruled weight="thin">
@@ -146,50 +144,48 @@ export default function Week2Page() {
           </Term>
           .
         </Lead>
-        <div className="mt-6 grid w-full gap-8 md:grid-cols-2 md:gap-10">
-          <div className="flex flex-col justify-between gap-4">
-            <div className="grid gap-4">
-              <Ruled weight="thin">
-                <P>
-                  <Term tone="ink">Disparate treatment</Term> occurs when a
-                  decision rule intentionally or explicitly treats individuals
-                  differently because of a protected characteristic.
-                </P>
-              </Ruled>
-              <Ruled tone="signal" weight="thin">
-                <P>
-                  <Term tone="signal">Disparate impact</Term> occurs when a
-                  facially neutral policy or algorithm disproportionately harms a
-                  protected group without a demonstrable business necessity.
-                </P>
-              </Ruled>
-              <Ruled weight="thin">
-                <P>
-                  Removing protected attributes from a model&apos;s input table,
-                  known as <Term tone="ink">fairness through unawareness</Term>,
-                  prevents explicit disparate treatment on paper but rarely
-                  prevents disparate impact in practice.
-                </P>
-              </Ruled>
-            </div>
-            <Plate>
-              <IsoTreatmentVsImpact />
-            </Plate>
-          </div>
-          <div className="flex flex-col justify-between gap-4">
-            <Ruled tone="counter">
-              <p className={BIG}>
-                A common regulatory benchmark for screening disparate impact is
-                the <Term tone="counter">four-fifths rule</Term>, under which a
-                selection rate for any protected group that is{" "}
-                <Term tone="signal">less than 80 percent</Term> of the rate for
-                the highest-selected group signals potential adverse impact.
-              </p>
+        <div className="mt-4 grid w-full items-center gap-6 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-10">
+          <div className="grid gap-4">
+            <Ruled weight="thin">
+              <P>
+                <Term tone="ink">Disparate treatment</Term> occurs when a
+                decision rule intentionally or explicitly treats individuals
+                differently because of a protected characteristic.
+              </P>
             </Ruled>
-            <Plate>
-              <IsoFourFifthsRule />
-            </Plate>
+            <Ruled tone="signal" weight="thin">
+              <P>
+                <Term tone="signal">Disparate impact</Term> occurs when a
+                facially neutral policy or algorithm disproportionately harms a
+                protected group without a demonstrable business necessity.
+              </P>
+            </Ruled>
+            <Ruled weight="thin">
+              <P>
+                Removing protected attributes from a model&apos;s input table,
+                known as <Term tone="ink">fairness through unawareness</Term>,
+                prevents explicit disparate treatment on paper but rarely
+                prevents disparate impact in practice.
+              </P>
+            </Ruled>
           </div>
+          <Plate>
+            <TreatmentVsImpact />
+          </Plate>
+        </div>
+        <div className="mt-4 grid w-full items-center gap-6 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-10">
+          <Ruled tone="counter">
+            <p className="type-lead">
+              A common regulatory benchmark for screening disparate impact is
+              the <Term tone="counter">four-fifths rule</Term>, under which a
+              selection rate for any protected group that is{" "}
+              <Term tone="signal">less than 80 percent</Term> of the rate for
+              the highest-selected group signals potential adverse impact.
+            </p>
+          </Ruled>
+          <Plate>
+            <FourFifthsRule />
+          </Plate>
         </div>
       </Slide>
 
