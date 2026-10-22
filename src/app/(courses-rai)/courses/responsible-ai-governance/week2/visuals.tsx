@@ -1500,3 +1500,99 @@ export function IndividualFairness() {
     </Frame>
   );
 }
+
+/** A straight pipe run from (x1, y1) to (x2, y2), horizontal or vertical, `red` when it carries the discrimination. */
+function Pipe({ id, x1, y1, x2, y2, red = false }: { id: string; x1: number; y1: number; x2: number; y2: number; red?: boolean }) {
+  const t = 3.5;
+  const h = y1 === y2;
+  const x = Math.min(x1, x2) - (h ? 0 : t);
+  const y = Math.min(y1, y2) - (h ? t : 0);
+  const w = h ? Math.abs(x2 - x1) : 2 * t;
+  const hh = h ? 2 * t : Math.abs(y2 - y1);
+  return <rect x={x} y={y} width={w} height={hh} fill={red ? stip(id, "signal") : PAT.paper} stroke={red ? PAT.signal : PAT.ink} strokeWidth={LINE.outline} />;
+}
+
+/** An upright tank, (cx, top) the centre of its lid. */
+function Tank({ id, cx, top, h = 34, rx = 17, red = false }: { id: string; cx: number; top: number; h?: number; rx?: number; red?: boolean }) {
+  const c = red ? PAT.signal : PAT.ink;
+  return (
+    <g>
+      <path d={`M${cx - rx} ${top}V${top + h}A${rx} 5 0 0 0 ${cx + rx} ${top + h}V${top}`} fill={red ? stip(id, "signal") : PAT.paper} stroke={c} strokeWidth={LINE.outline} />
+      <ellipse cx={cx} cy={top} rx={rx} ry={5} fill={stip(id, "light")} stroke={c} strokeWidth={LINE.outline} />
+    </g>
+  );
+}
+
+/**
+ * Counterfactual fairness as pipework. The protected attribute's tank feeds
+ * the decision directly and through a mediator (school quality) into test
+ * scores. FIG. 1, fairness through unawareness: the direct pipe is blanked
+ * off, but the attribute still flows (red) through the mediator to the
+ * decision. FIG. 2, counterfactual fairness: a closed valve removes the
+ * attribute's effect on the mediator, and only the legitimate flow remains.
+ */
+export function CausalPipework() {
+  const id = "w2-cause";
+  const fig = (x0: number, counterfactual: boolean) => {
+    const ax = x0 + 38;
+    const mx = x0 + 138;
+    const tx = x0 + 238;
+    const dx = x0 + 330;
+    const y = 72;
+    const red = !counterfactual;
+    return (
+      <g>
+        {/* direct pipe, blanked off near the attribute in both figures */}
+        <Pipe id={id} x1={ax} y1={y + 40} x2={ax} y2={132} />
+        <Pipe id={id} x1={ax - 3.5} y1={132} x2={dx + 3.5} y2={132} />
+        <Pipe id={id} x1={dx} y1={132} x2={dx} y2={y + 22} />
+        <rect x={ax - 10} y={y + 46} width={20} height={6} fill={stip(id, "dense")} {...ink} />
+        {/* attribute → mediator → test scores → decision */}
+        <Pipe id={id} x1={ax + 17} y1={y + 16} x2={mx - 17} y2={y + 16} red={red} />
+        <Pipe id={id} x1={mx + 17} y1={y + 16} x2={tx - 17} y2={y + 16} red={red} />
+        <Pipe id={id} x1={tx + 17} y1={y + 16} x2={dx - 16} y2={y + 16} red={red} />
+        {counterfactual ? (
+          <g>
+            <path d={`M${x0 + 80} ${y + 8}L${x0 + 96} ${y + 24}V${y + 8}L${x0 + 80} ${y + 24}Z`} fill={PAT.paper} {...ink} />
+            <line x1={x0 + 88} y1={y + 16} x2={x0 + 88} y2={y} {...ink} />
+            <ellipse cx={x0 + 88} cy={y - 2} rx={10} ry={3} fill={PAT.paper} {...ink} strokeWidth={LINE.bold} />
+          </g>
+        ) : null}
+        <Tank id={id} cx={ax} top={y} />
+        <Tank id={id} cx={mx} top={y} red={red} />
+        <Tank id={id} cx={tx} top={y} red={red} />
+        <ObliqueBox id={id} x={dx - 16} y={y + 2} w={32} h={20} dx={8} dy={5} stroke={red ? PAT.signal : PAT.ink} />
+        {[
+          [ax, ["PROTECTED", "ATTRIBUTE"]],
+          [mx, ["SCHOOL", "QUALITY"]],
+          [tx, ["TEST", "SCORES"]],
+          [dx + 4, ["DECISION"]],
+        ].map(([x, lines]) =>
+          (lines as string[]).map((l, k) => (
+            <PatentKey key={l} x={x as number} y={36 + k * 13 - ((lines as string[]).length - 1) * 13 + 13} size={9.5}>
+              {l}
+            </PatentKey>
+          )),
+        )}
+      </g>
+    );
+  };
+  return (
+    <Frame
+      width={800}
+      height={176}
+      label="Patent drawing in two figures of pipework: a tank for the protected attribute feeds a tank for neighborhood school quality, which feeds a tank for test scores, which feeds the decision; a second, direct pipe from the protected attribute to the decision is blanked off near the attribute. FIG. 1, fairness through unawareness: with only the direct pipe blanked off, the attribute's flow still runs in red through school quality and test scores to the decision. FIG. 2, counterfactual fairness: a closed valve on the pipe from the protected attribute to school quality removes its effect, and the remaining pipes to the decision carry no red."
+    >
+      <PatentDefs id={id} />
+      {fig(14, false)}
+      <line x1={400} y1={14} x2={400} y2={148} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+      {fig(414, true)}
+      <Fig x={200} y={168} n={1} size={12}>
+        fairness through unawareness
+      </Fig>
+      <Fig x={600} y={168} n={2} size={12}>
+        counterfactual fairness
+      </Fig>
+    </Frame>
+  );
+}
