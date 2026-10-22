@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 
 export {
-  IsoSixStages as SixStages,
   IsoSharedAuthority as SharedAuthority,
   IsoInTheLoop as InTheLoop,
   IsoOnTheLoop as OnTheLoop,
@@ -1018,11 +1017,12 @@ function Detail({ cx, cy, r }: { cx: number; cy: number; r: number }) {
 
 /** A patent reference numeral with its curved leader line to the part. */
 function Numeral({ n, x, y, tx, ty, bold = false }: { n: number | string; x: number; y: number; tx: number; ty: number; bold?: boolean }) {
+  const sy = ty < y - 6 ? y - 15 : y + 4;
   const mx = r2((x + tx) / 2 + 8);
-  const my = r2((y + ty) / 2 - 4);
+  const my = r2((sy + ty) / 2 - 4);
   return (
     <g>
-      <path d={`M${x} ${y + 4}Q${mx} ${my} ${tx} ${ty}`} fill="none" {...hair} />
+      <path d={`M${x} ${sy}Q${mx} ${my} ${tx} ${ty}`} fill="none" {...hair} />
       <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-heading)" fontStyle="italic" fontSize={bold ? 17 : 14} fontWeight={bold ? 700 : 400} fill={PAT.ink}>
         {n}
       </text>
@@ -1681,6 +1681,107 @@ export function BenchmarkFailures() {
         ]}
         value={focus}
         onChange={setFocus}
+      />
+    </div>
+  );
+}
+
+/**
+ * The six stages as one pipeline, numbered as in the slide's list: (1) a
+ * stepped risk-tier gauge, (2) a sieve drum for the data, (3) a test chamber
+ * with an inspection window, (4) a gate valve with a hand wheel, (5) the
+ * sign-off stamp, (6) a strip-chart monitor whose trace breaks the threshold
+ * (red) and sends a rollback line back to stage 3. Choosing a stage rings it.
+ */
+export function SixStages() {
+  const [stage, setStage] = useState<"all" | "1" | "2" | "3" | "4" | "5" | "6">("all");
+  const id = "w1-six";
+  const xs = [90, 210, 330, 450, 570, 690];
+  const holes: [number, number][] = [];
+  for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) holes.push([194 + i * 11, 124 + j * 9]);
+  const trace = "M662 138L670 134L678 140L686 130L694 136";
+  const spike = "M694 136L700 100L706 140";
+  return (
+    <div>
+      <Frame
+        width={800}
+        height={215}
+        label={`Patent drawing of the six stages as one pipeline with reference numerals: 1, a stepped risk-tier gauge; 2, a sieve drum the data passes through; 3, a test chamber with an inspection window; 4, a gate valve with a hand wheel; 5, a stamp over a seal pad for sign-off; 6, a strip-chart monitor whose trace spikes over the threshold in red, sending a rollback line back to stage 3.${stage === "all" ? "" : ` Stage ${stage} is ringed.`}`}
+      >
+        <PatentDefs id={id} />
+
+        {/* Pipeline */}
+        <path d="M24 135H776M24 145H776" fill="none" {...ink} />
+        <path d="M776 135L784 140L776 145" fill="none" {...ink} />
+
+        {/* 1 — stepped risk-tier gauge */}
+        <ObliqueBox id={id} x={60} y={130} w={20} h={30} dx={8} dy={5} />
+        <ObliqueBox id={id} x={80} y={110} w={20} h={50} dx={8} dy={5} />
+        <ObliqueBox id={id} x={100} y={90} w={20} h={70} dx={8} dy={5} />
+        <path d="M90 92L86 84H94Z" fill={PAT.ink} />
+        <line x1={90} y1={76} x2={90} y2={84} {...hair} />
+
+        {/* 2 — sieve drum */}
+        <path d="M188 112H234A8 28 0 0 1 234 168H188" fill={PAT.paper} {...ink} />
+        <ellipse cx={188} cy={140} rx={8} ry={28} fill={stip(id, "light")} {...ink} />
+        {holes.map(([x, y]) => (
+          <circle key={`${x}-${y}`} cx={x} cy={y} r={1.6} fill={PAT.paper} {...hair} />
+        ))}
+
+        {/* 3 — test chamber with window */}
+        <ObliqueBox id={id} x={298} y={96} w={64} h={64} dx={12} dy={8} />
+        <circle cx={330} cy={128} r={16} fill={stip(id, "light")} {...ink} />
+        <circle cx={330} cy={128} r={11} fill={PAT.paper} {...hair} />
+
+        {/* 4 — gate valve and hand wheel */}
+        <ObliqueBox id={id} x={430} y={114} w={40} h={46} dx={10} dy={6} />
+        <line x1={450} y1={108} x2={450} y2={78} {...ink} strokeWidth={LINE.bold} />
+        <ellipse cx={450} cy={74} rx={20} ry={6} fill="none" {...ink} />
+        <line x1={430} y1={74} x2={470} y2={74} {...hair} />
+        <line x1={450} y1={68} x2={450} y2={80} {...hair} />
+
+        {/* 5 — sign-off stamp over a seal pad */}
+        <ellipse cx={570} cy={74} rx={9} ry={4} fill={PAT.paper} {...ink} />
+        <path d="M566 78V98H574V78" fill={PAT.paper} {...ink} />
+        <ObliqueBox id={id} x={552} y={100} w={36} h={10} dx={7} dy={4} />
+        <line x1={570} y1={113} x2={570} y2={124} {...hair} strokeDasharray={CENTRE_DASH} />
+        <ObliqueBox id={id} x={548} y={130} w={44} h={18} dx={8} dy={5} />
+
+        {/* 6 — strip-chart monitor; the trace breaks the threshold */}
+        <ObliqueBox id={id} x={652} y={88} w={76} h={72} dx={12} dy={8} />
+        <rect x={658} y={96} width={64} height={52} fill={PAT.paper} {...hair} />
+        <line x1={658} y1={112} x2={722} y2={112} {...hair} strokeDasharray="4 2" />
+        <path d={trace} fill="none" {...ink} />
+        <path d={spike} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinejoin="round" strokeLinecap="round" />
+        <path d="M706 140L716 134" fill="none" {...hair} />
+
+        {/* Rollback line from 6 back to 3 */}
+        <path d="M690 76V34H330V80" fill="none" {...ink} strokeWidth={LINE.bold} />
+        <path d={headAlongPath(330, 84, 0, 1, 8)} fill="none" {...ink} strokeWidth={LINE.bold} />
+        <PatentKey x={510} y={26} size={10}>
+          ROLLBACK
+        </PatentKey>
+
+        {/* Reference numerals */}
+        {xs.map((x, i) => (
+          <Numeral key={x} n={i + 1} x={x - 14} y={196} tx={x} ty={164} bold={stage === String(i + 1)} />
+        ))}
+
+        {stage !== "all" ? <Detail cx={xs[Number(stage) - 1]} cy={124} r={56} /> : null}
+      </Frame>
+      <Segmented
+        label="Governance stage"
+        options={[
+          { id: "all", label: "All 6 stages" },
+          { id: "1", label: "01 Scoping" },
+          { id: "2", label: "02 Data" },
+          { id: "3", label: "03 Audit" },
+          { id: "4", label: "04 Oversight" },
+          { id: "5", label: "05 Sign-off" },
+          { id: "6", label: "06 Monitor" },
+        ]}
+        value={stage}
+        onChange={setStage}
       />
     </div>
   );
