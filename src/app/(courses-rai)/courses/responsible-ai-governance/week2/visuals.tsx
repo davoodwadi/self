@@ -1903,3 +1903,95 @@ export function CreditAgeTradeoff() {
     </Frame>
   );
 }
+
+/**
+ * Part 5. FIG. 1: the human marketer's brief, its exclusions box left empty.
+ * FIG. 2: the platform's automated systems, each serving a customer from each
+ * group: ad delivery fills one screen and leaves the other blank, dynamic
+ * pricing quotes a higher price, personalization sends fewer offers. The
+ * protected group's side of each is red.
+ */
+export function MarketingPipelines() {
+  const id = "w2-mkt";
+  const red = { stroke: PAT.signal, strokeWidth: LINE.outline, strokeLinejoin: "round" as const };
+  const rows = [
+    { y: 26, key: "AD DELIVERY" },
+    { y: 84, key: "DYNAMIC PRICING" },
+    { y: 142, key: "PERSONALIZATION" },
+  ];
+  const screen = (x: number, y: number, on: boolean) => (
+    <g>
+      <rect x={x} y={y} width={40} height={28} fill={PAT.paper} {...(on ? ink : red)} strokeDasharray={on ? undefined : "3 2"} />
+      {on ? [8, 14, 20].map((d) => <line key={d} x1={x + 6} y1={y + d} x2={x + (d === 20 ? 24 : 34)} y2={y + d} {...hair} />) : null}
+    </g>
+  );
+  const offers = (x: number, y: number, n: number, warn: boolean) =>
+    Array.from({ length: n }, (_, i) => (
+      <rect key={i} x={x + i * 8} y={y + i * 4} width={26} height={18} fill={warn ? stip(id, "signal") : PAT.paper} {...(warn ? red : ink)} />
+    ));
+  return (
+    <Frame
+      width={800}
+      height={196}
+      label="Patent drawing in two figures. FIG. 1, explicit exclusions by a human marketer: a marketer holds out a campaign brief whose exclusions box is empty. FIG. 2, automated ad delivery, dynamic pricing and personalization: a platform's housing serves two customers in each system, one from each group. Ad delivery shows the ad on one customer's screen and leaves the protected-group customer's screen blank, in red; dynamic pricing quotes $40 to one and $52, in red, to the other; personalization sends three offers to one and a single offer, in red, to the other."
+    >
+      <PatentDefs id={id} />
+
+      {/* FIG. 1 — the marketer's brief, no exclusions */}
+      <line x1={20} y1={170} x2={230} y2={170} {...hair} />
+      <Figure id={id} x={66} y={169} s={1.25} arm="reach" />
+      <ObliqueBox id={id} x={110} y={40} w={96} h={86} dx={8} dy={5} />
+      <line x1={120} y1={54} x2={180} y2={54} {...ink} />
+      {[64, 72, 80].map((y) => (
+        <line key={y} x1={120} y1={y} x2={196} y2={y} {...hair} />
+      ))}
+      <PatentKey x={158} y={98} size={9.5}>
+        EXCLUSIONS
+      </PatentKey>
+      <rect x={120} y={104} width={76} height={14} fill="none" {...ink} />
+
+      <line x1={250} y1={14} x2={250} y2={180} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 2 — the platform's automated systems */}
+      <ObliqueBox id={id} x={272} y={58} w={72} h={72} dx={10} dy={6} />
+      <circle cx={308} cy={94} r={22} fill={stip(id, "light")} {...ink} />
+      <Gear cx={302} cy={88} r={10} n={9} />
+      <Gear cx={318} cy={104} r={7} n={7} phase={0.3} />
+      {rows.map((r) => (
+        <path key={r.key} d={`M354 94C380 94 380 ${r.y + 14} 404 ${r.y + 14}`} fill="none" {...hair} />
+      ))}
+      {rows.map((r, i) => (
+        <g key={r.key}>
+          <PatentKey x={410} y={r.y + 18} anchor="start" size={9.5}>
+            {r.key}
+          </PatentKey>
+          <Portrait id={id} x={560} y={r.y} w={22} h={30} />
+          <Portrait id={id} x={676} y={r.y} w={22} h={30} coat="signal" stroke={PAT.signal} />
+          {i === 0 ? (
+            <g>
+              {screen(590, r.y + 1, true)}
+              {screen(706, r.y + 1, false)}
+            </g>
+          ) : i === 1 ? (
+            <g>
+              <Tag cx={622} cy={r.y + 15} text="$40" w={48} size={14} />
+              <Tag cx={738} cy={r.y + 15} text="$52" w={48} size={14} red />
+            </g>
+          ) : (
+            <g>
+              {offers(590, r.y + 2, 3, false)}
+              {offers(706, r.y + 2, 1, true)}
+            </g>
+          )}
+        </g>
+      ))}
+
+      <Fig x={125} y={190} n={1} size={12}>
+        explicit exclusions
+      </Fig>
+      <Fig x={520} y={190} n={2} size={12}>
+        automated systems
+      </Fig>
+    </Frame>
+  );
+}
