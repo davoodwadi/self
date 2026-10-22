@@ -1851,3 +1851,55 @@ export function DomainTradeoffs() {
     </Frame>
   );
 }
+
+/**
+ * Discussion case: the calibrated bank's false rejection rates, in two
+ * graduated cylinders: creditworthy young adults rejected at 35 percent
+ * (red), older borrowers at 18 percent.
+ */
+export function CreditAgeTradeoff() {
+  const id = "w2-age";
+  const top = 40;
+  const bottom = 178;
+  const yAt = (p: number) => r2(bottom - ((bottom - top) * p) / 40);
+  return (
+    <Frame
+      width={400}
+      height={240}
+      label="Patent drawing: two graduated cylinders of false rejection rates among creditworthy borrowers; the young adults' cylinder is filled to 35% and drawn in red, the older borrowers' to 18%."
+    >
+      <PatentDefs id={id} />
+      <PatentKey x={200} y={18} size={13}>
+        FALSE REJECTION RATE
+      </PatentKey>
+      {[0, 10, 20, 30, 40].map((p) => (
+        <g key={p}>
+          <line x1={68} y1={yAt(p)} x2={76} y2={yAt(p)} {...hair} />
+          <Num x={60} y={r2(yAt(p) + 5)} size={14} anchor="end">
+            {p}
+          </Num>
+        </g>
+      ))}
+      <Cylinder id={id} cx={132} top={top} bottom={bottom} rx={42} ry={9} level={35 / 40} red />
+      <Cylinder id={id} cx={300} top={top} bottom={bottom} rx={42} ry={9} level={18 / 40} />
+      <Num x={180} y={r2(yAt(35) + 8)} size={22} anchor="start" fill={PAT.signal}>
+        35%
+      </Num>
+      <Num x={348} y={r2(yAt(18) + 8)} size={22} anchor="start">
+        18%
+      </Num>
+      <PatentKey x={132} y={216} size={13}>
+        YOUNG
+      </PatentKey>
+      <PatentKey x={132} y={233} size={13}>
+        ADULTS
+      </PatentKey>
+      <PatentKey x={300} y={216} size={13}>
+        OLDER
+      </PatentKey>
+      <PatentKey x={300} y={233} size={13}>
+        BORROWERS
+      </PatentKey>
+    </Frame>
+  );
+}
