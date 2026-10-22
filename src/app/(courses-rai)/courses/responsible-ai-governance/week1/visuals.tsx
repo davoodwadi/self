@@ -673,15 +673,17 @@ export function VirtueCharacter() {
   );
 }
 
-/** A stack of `n` coins standing on (cx, y): white rims, a light-stippled cap. */
-function Coins({ id, cx, y, n, rx = 15, ry = 5, h = 5 }: { id: string; cx: number; y: number; n: number; rx?: number; ry?: number; h?: number }) {
+/** A stack of `n` coins standing on (cx, y): white rims, a light-stippled cap (red for the finding). */
+function Coins({ id, cx, y, n, rx = 15, ry = 5, h = 5, red = false }: { id: string; cx: number; y: number; n: number; rx?: number; ry?: number; h?: number; red?: boolean }) {
   const top = y - n * h;
+  const c = red ? PAT.signal : PAT.ink;
   return (
     <g>
       <path
         d={`M${r2(cx - rx)} ${top}V${y}A${rx} ${ry} 0 0 0 ${r2(cx + rx)} ${y}V${top}Z`}
         fill={PAT.paper}
         {...ink}
+        stroke={c}
       />
       {Array.from({ length: n - 1 }, (_, i) => (
         <path
@@ -689,9 +691,10 @@ function Coins({ id, cx, y, n, rx = 15, ry = 5, h = 5 }: { id: string; cx: numbe
           d={`M${r2(cx - rx)} ${y - (i + 1) * h}A${rx} ${ry} 0 0 0 ${r2(cx + rx)} ${y - (i + 1) * h}`}
           fill="none"
           {...hair}
+          stroke={c}
         />
       ))}
-      <ellipse cx={cx} cy={top} rx={rx} ry={ry} fill={stip(id, "light")} {...ink} />
+      <ellipse cx={cx} cy={top} rx={rx} ry={ry} fill={stip(id, red ? "signal" : "light")} {...ink} stroke={c} />
     </g>
   );
 }
@@ -2292,144 +2295,111 @@ export function SurrogateConsumer() {
 }
 
 /**
- * Dual agency: the agent's decision needle should point to the consumer it
- * serves (dashed), but each risk pulls it (red) toward something else: a
- * magnet of promoted placements, a weight on the first slot, a hook hidden in
- * a listing's text, or a loss with no one assigned to bear it.
+ * Dual agency and governance risks, in four figures around the same agent.
+ * FIG. 1: the consumer holds the agent's lead while its arm reaches for the
+ * platform's coin stack (red). FIG. 2: its lens reads only the top of a ranked
+ * catalog and grips slot 1 (red), while the best item sits lower. FIG. 3: a
+ * listing hides instruction lines (red, dashed) that run straight into the
+ * agent's lens. FIG. 4: the receipt for the loss, with leaders to consumer,
+ * platform and developer, none attached.
  */
 export function DualAgencyRisks() {
-  const [risk, setRisk] = useState<"conflict" | "position" | "adversarial" | "liability">("conflict");
   const id = "w1-dual";
-  const cx = 330;
-  const cy = 100;
-  const deg = { conflict: 0, position: -28, adversarial: 18, liability: -8 }[risk];
-  const a = (deg * Math.PI) / 180;
-  const ux = Math.cos(a);
-  const uy = Math.sin(a);
-  const tip = [r2(cx + ux * 40), r2(cy + uy * 40)];
-  const needle = `M${r2(cx - uy * 5)} ${r2(cy + ux * 5)}L${tip[0]} ${tip[1]}L${r2(cx + uy * 5)} ${r2(cy - ux * 5)}Z`;
-  const tail = `M${r2(cx - uy * 5)} ${r2(cy + ux * 5)}L${r2(cx - ux * 18)} ${r2(cy - uy * 18)}L${r2(cx + uy * 5)} ${r2(cy - ux * 5)}Z`;
-  const pullTo = {
-    conflict: [520, 100],
-    position: [540, 52],
-    adversarial: [548, 117],
-    liability: [540, 92],
-  }[risk];
-  const what = {
-    conflict: "a horseshoe magnet marked promoted placements",
-    position: "a heavy weight sitting on the first of three ranked slots",
-    adversarial: "a red hook hidden among a product listing's lines of text",
-    liability: "a torn receipt for the loss, with dashed leaders to the consumer, the platform and the developer and none attached",
-  }[risk];
+  const red = { stroke: PAT.signal, strokeWidth: LINE.bold, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   return (
-    <div>
-      <Frame
-        width={800}
-        height={215}
-        label={`Patent drawing: a consumer stands on the left; a dashed line shows where the agent's decision dial should point, toward the consumer, but its red needle is pulled to the right by ${what}.`}
-      >
-        <PatentDefs id={id} />
-        <line x1={40} y1={190} x2={760} y2={190} {...hair} />
-        <Figure id={id} x={100} y={189} s={1.45} />
+    <Frame
+      width={800}
+      height={206}
+      label="Patent drawing in four figures of the AI agent, a small housing with a lens and an arm. FIG. 1, principal-agent conflicts: a consumer holds a lead to the agent while its arm reaches for a red stack of coins on the platform's side. FIG. 2, heuristic and position biases: the agent's gripper takes slot 1 of a six-slot ranked catalog, in red, while the best item, marked with a star, sits at slot 5. FIG. 3, adversarial storefront manipulation: a product listing carries hidden instruction lines, dashed in red, and a red line runs from them into the agent's lens. FIG. 4, liability ambiguity: a torn receipt with its total in red, and dashed leaders to consumer, platform and developer, none attached."
+    >
+      <PatentDefs id={id} />
 
-        {/* The agent's decision dial */}
-        <line x1={cx} y1={146} x2={cx} y2={178} {...ink} />
-        <ObliqueBox id={id} x={cx - 30} y={178} w={60} h={12} dx={10} dy={6} />
-        <circle cx={cx} cy={cy} r={50} fill={stip(id, "light")} {...ink} />
-        <circle cx={cx} cy={cy} r={44} fill={PAT.paper} {...ink} />
-        {Array.from({ length: 12 }, (_, i) => {
-          const t = (i * Math.PI) / 6;
-          return (
-            <line key={i} x1={r2(cx + Math.cos(t) * 38)} y1={r2(cy + Math.sin(t) * 38)} x2={r2(cx + Math.cos(t) * 43)} y2={r2(cy + Math.sin(t) * 43)} {...hair} />
-          );
-        })}
-        <line x1={cx - 6} y1={cy} x2={cx - 40} y2={cy} {...hair} strokeDasharray="4 3" />
-        <line x1={128} y1={98} x2={274} y2={cy} {...hair} strokeDasharray={CENTRE_DASH} />
-        <path d={tail} fill={PAT.paper} {...ink} />
-        <path d={needle} fill={stip(id, "signal")} stroke={PAT.signal} strokeWidth={LINE.outline} strokeLinejoin="round" />
-        <circle cx={cx} cy={cy} r={3} fill={PAT.paper} {...ink} />
-        <line x1={384} y1={r2(cy + uy * 54)} x2={pullTo[0] - 8} y2={pullTo[1]} stroke={PAT.signal} strokeWidth={LINE.hair} strokeDasharray="3 3" />
+      {/* FIG. 1 — principal-agent conflicts */}
+      <line x1={14} y1={168} x2={188} y2={168} {...hair} />
+      <Figure id={id} x={34} y={167} s={1.12} arm="reach" />
+      <path d="M68 109Q80 126 84 140" fill="none" {...ink} />
+      <ObliqueBox id={id} x={134} y={156} w={44} h={12} dx={6} dy={4} />
+      <Coins id={id} cx={156} y={154} n={6} rx={13} ry={4} h={5} red />
+      <Agent id={id} x={80} y={167} gx={156} gy={114} />
+      <Fig x={100} y={194} n={1} size={9.5}>
+        principal-agent conflicts
+      </Fig>
 
-        {/* What pulls the needle */}
-        {risk === "conflict" ? (
-          <g>
-            <path d="M600 70H550A30 30 0 0 0 550 130H600V112H552A12 12 0 0 1 552 88H600Z" fill={PAT.paper} {...ink} />
-            <path d="M520 100A30 30 0 0 1 550 70V88A12 12 0 0 0 540 100Z" fill={stip(id, "dense")} />
-            <rect x={586} y={70} width={14} height={18} fill={stip(id, "dense")} {...ink} />
-            <rect x={586} y={112} width={14} height={18} fill={stip(id, "dense")} {...ink} />
-            <PatentKey x={570} y={160} size={10}>
-              PROMOTED PLACEMENTS
-            </PatentKey>
-          </g>
-        ) : null}
-        {risk === "position" ? (
-          <g>
-            <ObliqueBox id={id} x={548} y={36} w={150} h={132} dx={12} dy={8} />
-            {[0, 1, 2].map((i) => (
-              <g key={i}>
-                <rect x={558} y={46 + i * 40} width={130} height={32} fill={PAT.paper} {...ink} />
-                <text x={570} y={67 + i * 40} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={13} fill={PAT.ink}>
-                  {i + 1}
-                </text>
-                <line x1={584} y1={58 + i * 40} x2={640} y2={58 + i * 40} {...hair} />
-                <line x1={584} y1={66 + i * 40} x2={624} y2={66 + i * 40} {...hair} />
-              </g>
-            ))}
-            <path d="M648 70V54L656 46H676V62L668 70Z" fill={stip(id, "dense")} {...ink} />
-            <path d="M648 54H668V70M668 54L676 46" fill="none" {...ink} />
-            <PatentKey x={624} y={186} size={10}>
-              POSITION BIAS
-            </PatentKey>
-          </g>
-        ) : null}
-        {risk === "adversarial" ? (
-          <g>
-            <ObliqueBox id={id} x={556} y={40} w={150} h={120} dx={12} dy={8} />
-            <ObliqueBox id={id} x={570} y={56} w={40} h={36} dx={8} dy={5} />
-            {[60, 70, 80, 102, 110, 126, 134, 142].map((y) => (
-              <line key={y} x1={y < 90 ? 622 : 570} y1={y} x2={690} y2={y} {...hair} />
-            ))}
-            <path d="M548 117H603M606 120V136C606 146 593 146 593 137L598 140" fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" strokeLinejoin="round" />
-            <circle cx={606} cy={117} r={3} fill={PAT.paper} stroke={PAT.signal} strokeWidth={LINE.outline} />
-            <PatentKey x={630} y={182} size={10}>
-              HIDDEN INSTRUCTIONS
-            </PatentKey>
-          </g>
-        ) : null}
-        {risk === "liability" ? (
-          <g>
-            <path d="M548 56H612V128L604 122L596 128L588 122L580 128L572 122L564 128L556 122L548 128Z" fill={PAT.paper} {...ink} />
-            {[68, 78, 88].map((y) => (
-              <line key={y} x1={556} y1={y} x2={604} y2={y} {...hair} />
-            ))}
-            <line x1={556} y1={104} x2={604} y2={104} stroke={PAT.signal} strokeWidth={LINE.bold} />
-            {[
-              ["CONSUMER", 56],
-              ["PLATFORM", 96],
-              ["DEVELOPER", 136],
-            ].map(([n, y]) => (
-              <g key={n}>
-                <line x1={620} y1={92} x2={652} y2={(y as number) - 4} {...hair} strokeDasharray="3 3" />
-                <PatentKey x={660} y={y as number} anchor="start" size={10}>
-                  {n}
-                </PatentKey>
-              </g>
-            ))}
-          </g>
-        ) : null}
-      </Frame>
-      <Segmented
-        label="Agentic governance risk"
-        options={[
-          { id: "conflict", label: "1. Principal-agent conflict" },
-          { id: "position", label: "2. Position bias" },
-          { id: "adversarial", label: "3. Adversarial storefront" },
-          { id: "liability", label: "4. Liability ambiguity" },
-        ]}
-        value={risk}
-        onChange={setRisk}
-      />
-    </div>
+      <line x1={200} y1={16} x2={200} y2={180} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 2 — heuristic and position biases */}
+      <line x1={212} y1={168} x2={388} y2={168} {...hair} />
+      <ObliqueBox id={id} x={300} y={36} w={76} h={132} dx={8} dy={5} />
+      {[0, 1, 2, 3, 4, 5].map((i) => (
+        <g key={i}>
+          <rect
+            x={306}
+            y={42 + i * 21}
+            width={64}
+            height={16}
+            fill={i === 0 ? stip(id, "signal") : PAT.paper}
+            stroke={i === 0 ? PAT.signal : PAT.ink}
+            strokeWidth={i === 0 ? LINE.bold : LINE.outline}
+          />
+          <text x={314} y={54 + i * 21} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={10} fill={i === 0 ? PAT.signal : PAT.ink}>
+            {i + 1}
+          </text>
+          {i === 0 ? null : <line x1={324} y1={50 + i * 21} x2={i === 4 ? 344 : 360} y2={50 + i * 21} {...hair} />}
+        </g>
+      ))}
+      <path d={star(358, 134, 6)} fill={PAT.paper} {...ink} />
+      <Agent id={id} x={220} y={167} gx={300} gy={56} />
+      <Fig x={300} y={194} n={2} size={9.5}>
+        heuristic and position biases
+      </Fig>
+
+      <line x1={400} y1={16} x2={400} y2={180} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 3 — adversarial storefront manipulation */}
+      <line x1={412} y1={168} x2={588} y2={168} {...hair} />
+      <ObliqueBox id={id} x={494} y={40} w={84} h={128} dx={8} dy={5} />
+      <ObliqueBox id={id} x={504} y={52} w={34} h={30} dx={5} dy={3} />
+      {[56, 64, 72].map((y) => (
+        <line key={y} x1={548} y1={y} x2={570} y2={y} {...hair} />
+      ))}
+      {[96, 104, 112].map((y) => (
+        <line key={y} x1={504} y1={y} x2={570} y2={y} {...hair} />
+      ))}
+      {[140, 148].map((y) => (
+        <line key={y} x1={504} y1={y} x2={566} y2={y} stroke={PAT.signal} strokeWidth={LINE.outline} strokeDasharray="3 2.5" />
+      ))}
+      <path d="M502 144H448" {...red} />
+      <path d={headAlongPath(446, 144, -1, 0, 7)} {...red} />
+      <Agent id={id} x={412} y={167} gx={486} gy={84} />
+      <Fig x={500} y={194} n={3} size={9.5}>
+        adversarial storefront manipulation
+      </Fig>
+
+      <line x1={600} y1={16} x2={600} y2={180} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 4 — liability ambiguity */}
+      <path d="M622 36H680V140L673 134L666 140L659 134L652 140L645 134L638 140L631 134L622 140Z" fill={PAT.paper} {...ink} />
+      {[50, 60, 70, 80, 90].map((y) => (
+        <line key={y} x1={630} y1={y} x2={y === 90 ? 656 : 672} y2={y} {...hair} />
+      ))}
+      <line x1={630} y1={110} x2={672} y2={110} stroke={PAT.signal} strokeWidth={LINE.bold} />
+      {[
+        ["CONSUMER", 52],
+        ["PLATFORM", 92],
+        ["DEVELOPER", 132],
+      ].map(([n, y]) => (
+        <g key={n}>
+          <line x1={686} y1={88} x2={700} y2={(y as number) - 4} {...hair} strokeDasharray="3 3" />
+          <circle cx={702} cy={(y as number) - 4} r={2} fill={PAT.paper} {...hair} />
+          <PatentKey x={710} y={y as number} anchor="start" size={8.5}>
+            {n}
+          </PatentKey>
+        </g>
+      ))}
+      <Fig x={700} y={194} n={4} size={9.5}>
+        liability ambiguity
+      </Fig>
+    </Frame>
   );
 }
 
