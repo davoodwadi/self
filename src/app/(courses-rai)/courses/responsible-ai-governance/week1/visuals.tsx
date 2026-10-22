@@ -98,7 +98,7 @@ export function ScalingRule() {
         <ObliqueBox id={id} x={90} y={106} w={52} h={15} dx={10} dy={7} />
         <line x1={121} y1={126} x2={121} y2={156} {...hair} strokeDasharray={CENTRE_DASH} />
         <Sheet id={id} x={66} y={192} w={96} d={28} sk={22} t={5} lines={3} />
-        <Fig x={121} y={226} n={1}>
+        <Fig x={121} y={226} n={1} size={11}>
           one decision at a time
         </Fig>
 
@@ -134,7 +134,7 @@ export function ScalingRule() {
             </g>
           );
         })}
-        <Fig x={526} y={226} n={2}>
+        <Fig x={526} y={226} n={2} size={11}>
           thousands of decisions per second
         </Fig>
       </Frame>
@@ -181,21 +181,21 @@ export function GovernanceAuthority() {
       <ObliqueBox id={id} x={70} y={84} w={236} h={112} dx={18} dy={11} />
 
       {/* Evidence dossier standing in its slot */}
-      <path d="M232 82L239 77H305L298 82Z" fill={PAT.ink} />
-      <ObliqueBox id={id} x={236} y={18} w={64} h={62} dx={8} dy={5} top={PAT.paper} />
+      <path d="M218 82L225 77H315L308 82Z" fill={PAT.ink} />
+      <ObliqueBox id={id} x={222} y={18} w={88} h={62} dx={8} dy={5} top={PAT.paper} />
       {[14.5, 16].map((y) => (
-        <line key={y} x1={r2(236 + (18 - y) * 1.6)} y1={y} x2={r2(300 + (18 - y) * 1.6)} y2={y} {...hair} strokeWidth={0.45} />
+        <line key={y} x1={r2(222 + (18 - y) * 1.6)} y1={y} x2={r2(310 + (18 - y) * 1.6)} y2={y} {...hair} strokeWidth={0.45} />
       ))}
-      <text x={268} y={34} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={8} letterSpacing="0.1em" fill={PAT.ink}>
+      <PatentKey x={267} y={36} size={9.5}>
         EVIDENCE
-      </text>
-      {[45, 53, 61, 69].map((y) => (
-        <line key={y} x1={246} y1={y} x2={y === 69 ? 272 : 290} y2={y} {...hair} />
+      </PatentKey>
+      {[47, 55, 63, 71].map((y) => (
+        <line key={y} x1={234} y1={y} x2={y === 71 ? 266 : 298} y2={y} {...hair} />
       ))}
 
       {/* Hidden interlock: the dossier in its slot frees the key */}
-      <path d="M268 86V148H218" fill="none" {...hair} strokeDasharray="4 2.5" />
-      <path d="M262 86H274M218 142V154" fill="none" {...hair} />
+      <path d="M266 86V148H218" fill="none" {...hair} strokeDasharray="4 2.5" />
+      <path d="M260 86H272M218 142V154" fill="none" {...hair} />
 
       {/* Key switch: dial ring, stops, plug and key */}
       <circle cx={cx} cy={cy} r={36} fill={stip(id, "light")} {...ink} />
@@ -280,10 +280,10 @@ export function EthicsWashing() {
       ))}
       {plaque ? (
         <g>
-          <ObliqueBox id={id} x={c - 68} y={58} w={94} h={56} dx={4} dy={3} />
-          <text x={c - 21} y={77} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={11} letterSpacing="0.1em" fill={PAT.ink}>
+          <ObliqueBox id={id} x={c - 72} y={58} w={102} h={56} dx={4} dy={3} />
+          <PatentKey x={c - 21} y={77} size={9.5}>
             OUR VALUES
-          </text>
+          </PatentKey>
           {[88, 96, 104].map((y) => (
             <line key={y} x1={c - 54} y1={y} x2={c + (y === 104 ? 0 : 12)} y2={y} {...hair} />
           ))}
@@ -646,7 +646,7 @@ export function VirtueCharacter() {
       />
       <path d="M189 152L185 160M189 152L195 158" fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" />
       <line x1={40} y1={176} x2={352} y2={176} {...hair} />
-      <Fig x={200} y={204} n={1}>
+      <Fig x={200} y={204} n={1} size={11}>
         exploit loopholes in disclosure rules
       </Fig>
 
@@ -662,7 +662,7 @@ export function VirtueCharacter() {
       <line x1={587} y1={41} x2={587} y2={140} {...hair} />
       <path d="M587 140L593 148L587 162L581 148Z" fill={stip(id, "dense")} {...ink} />
       <line x1={440} y1={176} x2={752} y2={176} {...hair} />
-      <Fig x={600} y={204} n={2}>
+      <Fig x={600} y={204} n={2} size={11}>
         trustworthiness, honesty, and care
       </Fig>
     </Frame>
@@ -737,14 +737,14 @@ export function Consequentialism() {
       <Pan id={id} cx={L.x} hookY={L.y + 3} y={148} w={84} />
       <Coins id={id} cx={86} y={147} n={6} rx={9} ry={3} h={5} />
       <Coins id={id} cx={106} y={147} n={4} rx={9} ry={3} h={5} />
-      <PatentKey x={L.x} y={190} size={10}>
+      <PatentKey x={L.x} y={194} size={15}>
         BENEFITS
       </PatentKey>
 
       {/* Right pan: harms */}
       <Pan id={id} cx={R.x} hookY={R.y + 3} y={112} w={64} />
       <ObliqueBox id={id} x={292} y={98} w={20} h={13} dx={6} dy={4} front={stip(id, "signal")} top={PAT.paper} stroke={PAT.signal} />
-      <PatentKey x={R.x} y={150} fill={PAT.signal} size={10}>
+      <PatentKey x={R.x} y={154} fill={PAT.signal} size={15}>
         HARMS
       </PatentKey>
     </Frame>
@@ -812,22 +812,28 @@ export function VirtueEthics() {
     <Frame
       width={400}
       height={210}
-      label="Patent drawing: a classical institution front with pediment, entablature and four fluted columns on two steps; the lower step reads trustworthy, honest, responsible."
+      label="Patent drawing: a classical institution front with pediment, entablature and four fluted columns on two steps; the entablature reads trustworthy, the upper step honest and the lower step responsible."
     >
       <PatentDefs id={id} />
 
       {/* Steps */}
-      <ObliqueBox id={id} x={56} y={165} w={268} h={18} dx={14} dy={9} />
-      <ObliqueBox id={id} x={72} y={151} w={236} h={14} dx={14} dy={9} />
-      <PatentKey x={190} y={178} size={8.5}>
-        TRUSTWORTHY · HONEST · RESPONSIBLE
+      <ObliqueBox id={id} x={56} y={169} w={268} h={24} dx={14} dy={9} />
+      <ObliqueBox id={id} x={72} y={147} w={236} h={22} dx={14} dy={9} />
+      <PatentKey x={190} y={163} size={15}>
+        HONEST
+      </PatentKey>
+      <PatentKey x={190} y={186} size={15}>
+        RESPONSIBLE
       </PatentKey>
 
       {/* Pediment and entablature */}
-      <path d="M72 58L190 20L308 58Z" fill={PAT.paper} {...ink} />
-      <path d="M190 20L204 11L322 49L308 58Z" fill={stip(id, "light")} {...ink} />
-      <path d="M96 52L190 30L284 52Z" fill="none" {...hair} />
-      <ObliqueBox id={id} x={72} y={58} w={236} h={16} dx={14} dy={9} top={PAT.paper} />
+      <path d="M72 50L190 14L308 50Z" fill={PAT.paper} {...ink} />
+      <path d="M190 14L204 5L322 41L308 50Z" fill={stip(id, "light")} {...ink} />
+      <path d="M98 45L190 23L282 45Z" fill="none" {...hair} />
+      <ObliqueBox id={id} x={72} y={50} w={236} h={24} dx={14} dy={9} top={PAT.paper} />
+      <PatentKey x={190} y={67} size={15}>
+        TRUSTWORTHY
+      </PatentKey>
 
       {/* Columns */}
       {cols.map((x) => (
@@ -840,7 +846,6 @@ export function VirtueEthics() {
           <path d={`M${x + 21} 81.5H${x + 27.5}V146.5H${x + 21}Z`} fill={stip(id, "dense")} />
         </g>
       ))}
-
     </Frame>
   );
 }
@@ -866,20 +871,20 @@ function House({ id, x, y, w = 50, h = 34, dx = 14, dy = 9, roof = 20 }: { id: s
 }
 
 /** A price tag with a string hole, its text centred: for rates and prices. */
-function Tag({ cx, cy, text, red = false, w = 54 }: { cx: number; cy: number; text: string; red?: boolean; w?: number }) {
+function Tag({ cx, cy, text, red = false, w = 54, size = 13 }: { cx: number; cy: number; text: string; red?: boolean; w?: number; size?: number }) {
   const c = red ? PAT.signal : PAT.ink;
   const x0 = r2(cx - w / 2);
   return (
     <g>
       <path
-        d={`M${x0} ${cy - 10}H${r2(cx + w / 2)}V${cy + 10}H${x0}L${r2(x0 - 9)} ${cy}Z`}
+        d={`M${x0} ${r2(cy - size * 0.8)}H${r2(cx + w / 2)}V${r2(cy + size * 0.8)}H${x0}L${r2(x0 - 9)} ${cy}Z`}
         fill={PAT.paper}
         stroke={c}
         strokeWidth={red ? LINE.bold : LINE.outline}
         strokeLinejoin="round"
       />
       <circle cx={r2(x0 - 2)} cy={cy} r={1.8} fill="none" stroke={c} strokeWidth={LINE.hair} />
-      <text x={r2(cx + 2)} y={cy + 4.5} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={13} fill={c}>
+      <text x={r2(cx + 2)} y={r2(cy + size * 0.35)} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={size} fill={c}>
         {text}
       </text>
     </g>
@@ -898,11 +903,11 @@ export function LoanWide() {
   return (
     <Frame
       width={800}
-      height={166}
+      height={178}
       label="Patent drawing in plan view: a strip of ground divided by a postal-code boundary line; three identical houses on each side; each house on the postal code A side carries a 6.2% rate tag, each house on the postal code B side carries an 11.8% rate tag in red."
     >
       <PatentDefs id={id} />
-      <g transform="translate(0 -46)">
+      <g transform="translate(0 -40)">
 
       {/* Ground and boundary */}
       <path d="M36 186L76 126H776L736 186Z" fill={stip(id, "light")} {...ink} />
@@ -912,21 +917,21 @@ export function LoanWide() {
         <g key={x}>
           <House id={id} x={x} y={174} w={62} h={40} roof={24} />
           <line x1={x + 31} y1={108} x2={x + 31} y2={84} {...hair} />
-          <Tag cx={x + 31} cy={72} text="6.2%" />
+          <Tag cx={x + 31} cy={68} text="6.2%" w={74} size={19} />
         </g>
       ))}
       {right.map((x) => (
         <g key={x}>
           <House id={id} x={x} y={174} w={62} h={40} roof={24} />
           <line x1={x + 31} y1={108} x2={x + 31} y2={84} stroke={PAT.signal} strokeWidth={LINE.hair} />
-          <Tag cx={x + 31} cy={72} text="11.8%" red />
+          <Tag cx={x + 31} cy={68} text="11.8%" w={74} size={19} red />
         </g>
       ))}
 
-      <PatentKey x={228} y={204} size={10.5}>
+      <PatentKey x={228} y={208} size={16.5}>
         POSTAL CODE A
       </PatentKey>
-      <PatentKey x={598} y={204} size={10.5}>
+      <PatentKey x={598} y={208} size={16.5}>
         POSTAL CODE B
       </PatentKey>
       </g>
@@ -1055,7 +1060,7 @@ function Numeral({ n, x, y, tx, ty, bold = false }: { n: number | string; x: num
   return (
     <g>
       <path d={`M${x} ${sy}Q${mx} ${my} ${tx} ${ty}`} fill="none" {...hair} />
-      <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-heading)" fontStyle="italic" fontSize={bold ? 17 : 14} fontWeight={bold ? 700 : 400} fill={PAT.ink}>
+      <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-heading)" fontStyle="italic" fontSize={bold ? 18 : 14} fill={PAT.ink}>
         {n}
       </text>
     </g>
@@ -1333,20 +1338,20 @@ export function AccountabilityDossiers() {
       </Fig>
 
       {/* FIG. 3 — ranked listings, the sponsored slot tagged */}
-      <ObliqueBox id={id} x={444} y={52} w={112} h={112} dx={14} dy={9} />
+      <ObliqueBox id={id} x={440} y={52} w={128} h={112} dx={14} dy={9} />
       {[0, 1, 2].map((i) => (
         <g key={i}>
-          <rect x={454} y={62 + i * 33} width={92} height={26} fill={PAT.paper} {...ink} />
-          <rect x={460} y={68 + i * 33} width={14} height={14} fill={stip(id, "light")} {...hair} />
-          <line x1={480} y1={71 + i * 33} x2={i === 0 ? 490 : 536} y2={71 + i * 33} {...hair} />
-          <line x1={480} y1={79 + i * 33} x2={524} y2={79 + i * 33} {...hair} />
+          <rect x={450} y={62 + i * 33} width={108} height={26} fill={PAT.paper} {...ink} />
+          <rect x={456} y={68 + i * 33} width={14} height={14} fill={stip(id, "light")} {...hair} />
+          {i === 0 ? null : <line x1={476} y1={71 + i * 33} x2={548} y2={71 + i * 33} {...hair} />}
+          <line x1={476} y1={79 + i * 33} x2={i === 0 ? 520 : 536} y2={79 + i * 33} {...hair} />
         </g>
       ))}
-      <rect x={494} y={64} width={50} height={11} fill={PAT.paper} {...ink} />
-      <text x={519} y={72.2} textAnchor="middle" fontFamily="var(--font-body)" fontSize={6.6} letterSpacing="0.04em" fill={PAT.ink}>
+      <rect x={474} y={64} width={80} height={11} fill={PAT.paper} {...ink} />
+      <PatentKey x={514} y={72.6} size={8.2}>
         SPONSORED
-      </text>
-      <Fig x={500} y={196} n={3} size={11}>
+      </PatentKey>
+      <Fig x={506} y={196} n={3} size={11}>
         sponsorship disclosures
       </Fig>
 
@@ -1357,11 +1362,11 @@ export function AccountabilityDossiers() {
       <ObliqueBox id={id} x={676} y={72} w={44} h={12} dx={8} dy={5} />
       <line x1={700} y1={88} x2={700} y2={108} {...hair} strokeDasharray={CENTRE_DASH} />
       <Sheet id={id} x={636} y={164} w={110} d={44} sk={28} t={4} />
-      <ellipse cx={704} cy={142} rx={33} ry={14} fill="none" {...ink} />
-      <ellipse cx={704} cy={142} rx={28} ry={11} fill="none" {...hair} />
-      <text x={704} y={145} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={8} letterSpacing="0.08em" fill={PAT.ink}>
+      <ellipse cx={704} cy={142} rx={42} ry={15} fill="none" {...ink} />
+      <ellipse cx={704} cy={142} rx={37} ry={12} fill="none" {...hair} />
+      <PatentKey x={704} y={145.5} size={8.2}>
         VERIFIED
-      </text>
+      </PatentKey>
       <Fig x={700} y={196} n={4} size={11}>
         independent verification
       </Fig>
@@ -1413,11 +1418,11 @@ export function InsuranceClaims() {
       <PatentDefs id={id} />
 
       {form(40)}
-      <PatentKey x={70} y={110} size={9}>
+      <PatentKey x={70} y={112} size={11}>
         NATIVE
       </PatentKey>
       {form(128)}
-      <PatentKey x={70} y={198} size={9}>
+      <PatentKey x={70} y={200} size={11}>
         NON-NATIVE
       </PatentKey>
 
@@ -1482,7 +1487,7 @@ export function BenchmarkGap() {
       <path d="M94 170V78C94 20 306 20 306 78V170" fill="none" {...ink} />
       <path d="M110 112V80C110 48 140 36 164 32" fill="none" {...hair} />
       <ellipse cx={200} cy={34} rx={12} ry={4} fill={PAT.paper} {...ink} />
-      <Fig x={200} y={204} n={1} size={11.5}>
+      <Fig x={200} y={204} n={1} size={11}>
         technical benchmark performance
       </Fig>
 
@@ -1499,7 +1504,7 @@ export function BenchmarkGap() {
       <path d="M586 112L590 106L588 118L592 112L590 124" fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinejoin="round" strokeLinecap="round" />
       {/* the same model block, now carrying market load */}
       <ObliqueBox id={id} x={542} y={84} w={28} h={24} dx={8} dy={5} />
-      <Fig x={600} y={204} n={2} size={11.5}>
+      <Fig x={600} y={204} n={2} size={11}>
         a real market setting
       </Fig>
     </Frame>
@@ -1630,14 +1635,14 @@ export function BenchmarkFailures() {
         <PatentDefs id={id} />
 
         {/* FIG. 1 — construct mismatch */}
-        <ObliqueBox id={id} x={74} y={50} w={46} h={34} dx={10} dy={6} />
-        <PatentKey x={98} y={70} size={7}>
+        <ObliqueBox id={id} x={62} y={50} w={70} h={34} dx={10} dy={6} />
+        <PatentKey x={97} y={71} size={10}>
           TRIVIA
         </PatentKey>
         <line x1={97} y1={90} x2={97} y2={118} {...hair} strokeDasharray={CENTRE_DASH} />
         <ObliqueBox id={id} x={46} y={140} w={104} h={14} dx={24} dy={16} top={PAT.paper} />
         <ellipse cx={110} cy={132} rx={20} ry={5} fill={stip(id, "dense")} {...ink} />
-        <PatentKey x={98} y={172} size={8}>
+        <PatentKey x={98} y={174} size={10}>
           CREDIT
         </PatentKey>
         <Fig x={100} y={202} n={1} size={11}>
@@ -1680,14 +1685,14 @@ export function BenchmarkFailures() {
         {[134, 142, 150].map((y) => (
           <line key={y} x1={624} y1={y} x2={674} y2={y} {...hair} />
         ))}
-        <PatentKey x={649} y={176} size={8}>
+        <PatentKey x={649} y={178} size={10}>
           TEST
         </PatentKey>
         <ObliqueBox id={id} x={708} y={112} w={58} h={48} dx={20} dy={14} top={PAT.paper} />
         {[120, 128, 136, 144, 152].map((y) => (
           <line key={y} x1={708} y1={y} x2={766} y2={y} {...hair} />
         ))}
-        <PatentKey x={737} y={176} size={8}>
+        <PatentKey x={737} y={178} size={10}>
           TRAIN
         </PatentKey>
         <path d="M660 112Q686 62 728 92" {...redLine} />
@@ -1787,7 +1792,7 @@ export function SixStages() {
         {/* Rollback line from 6 back to 3 */}
         <path d="M690 76V34H330V80" fill="none" {...ink} strokeWidth={LINE.bold} />
         <path d={headAlongPath(330, 84, 0, 1, 8)} fill="none" {...ink} strokeWidth={LINE.bold} />
-        <PatentKey x={510} y={26} size={10}>
+        <PatentKey x={510} y={25} size={12}>
           ROLLBACK
         </PatentKey>
 
@@ -1974,7 +1979,7 @@ export function Autonomous() {
         <line key={x} x1={x} y1={126} x2={x} y2={152} {...ink} />
       ))}
       <ObliqueBox id={id} x={44} y={122} w={270} h={6} dx={4} dy={2.5} />
-      <PatentKey x={180} y={112} size={9}>
+      <PatentKey x={180} y={110} size={15}>
         CONSTRAINTS
       </PatentKey>
       <Belt id={id} at={[]} x1={296} />
@@ -2040,7 +2045,7 @@ export function OversightFailures() {
         <PatentKey x={300} y={40} size={10}>
           {`${casesPerHour} CASES / HR`}
         </PatentKey>
-        <Fig x={195} y={204} n={1} size={11.5}>
+        <Fig x={195} y={204} n={1} size={11}>
           rubber-stamping
         </Fig>
 
@@ -2055,7 +2060,7 @@ export function OversightFailures() {
         <Gear cx={612} cy={66} r={14} n={10} phase={0.1} />
         <Gear cx={648} cy={70} r={10} n={8} />
         <Figure id={id} x={592} y={175} s={0.92} arm="lift" stroke={PAT.signal} />
-        <Fig x={600} y={204} n={2} size={11.5}>
+        <Fig x={600} y={204} n={2} size={11}>
           moral crumple zones
         </Fig>
       </Frame>
@@ -2210,7 +2215,7 @@ export function DelegatedExchange() {
       <line x1={40} y1={180} x2={360} y2={180} {...hair} />
       <Shelf id={id} x={210} y={58} />
       <Figure id={id} x={166} y={179} s={1.45} arm="reach" />
-      <Fig x={200} y={206} n={1} size={11.5}>
+      <Fig x={200} y={206} n={1} size={11}>
         human-mediated exchange
       </Fig>
 
@@ -2222,7 +2227,7 @@ export function DelegatedExchange() {
       <Figure id={id} x={466} y={179} s={1.45} />
       <line x1={486} y1={112} x2={538} y2={140} {...hair} strokeDasharray={CENTRE_DASH} />
       <Agent id={id} x={540} y={180} gx={640} gy={110} />
-      <Fig x={600} y={206} n={2} size={11.5}>
+      <Fig x={600} y={206} n={2} size={11}>
         agent-mediated exchange
       </Fig>
     </Frame>
@@ -2265,10 +2270,10 @@ export function SurrogateConsumer() {
           </text>
           {r.ad ? (
             <g>
-              <rect x={164} y={r.y + 6} width={58} height={13} fill={PAT.paper} {...ink} />
-              <text x={193} y={r.y + 15.6} textAnchor="middle" fontFamily="var(--font-body)" fontSize={7.4} letterSpacing="0.04em" fill={PAT.ink}>
+              <rect x={164} y={r.y + 4} width={98} height={16} fill={PAT.paper} {...ink} />
+              <PatentKey x={214} y={r.y + 15.8} size={9.5}>
                 SPONSORED
-              </text>
+              </PatentKey>
             </g>
           ) : null}
         </g>
@@ -2432,12 +2437,12 @@ export function TravelAgentHotel() {
 
       {/* Sponsored hotel, ranked first, letting the noise in */}
       <Hotel id={id} x={84} y={60} />
-      <rect x={92} y={34} width={68} height={16} fill={PAT.paper} {...ink} />
+      <rect x={76} y={32} width={100} height={18} fill={PAT.paper} {...ink} />
       <line x1={100} y1={50} x2={100} y2={58} {...ink} />
       <line x1={152} y1={50} x2={152} y2={58} {...ink} />
-      <text x={126} y={45.4} textAnchor="middle" fontFamily="var(--font-body)" fontSize={7.6} letterSpacing="0.04em" fill={PAT.ink}>
+      <PatentKey x={127} y={45} size={11}>
         SPONSORED
-      </text>
+      </PatentKey>
       {[16, 26, 36].map((r) => (
         <path key={r} d={arc(r)} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" />
       ))}

@@ -626,7 +626,7 @@ export function PartHead({ n, title, className = "" }: { n: number; title: strin
       <div className="flex items-end gap-4 sm:gap-6 xl:gap-10">
         <div
           aria-hidden
-          className="select-none text-[3.5rem] leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--signal)] sm:text-[5rem] xl:text-[7rem]"
+          className="select-none text-[3.5rem] leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_var(--ink)] sm:text-[5rem] xl:text-[7rem]"
           style={{ fontFamily: "var(--font-heading)", fontWeight: 500 }}
         >
           {String(n).padStart(2, "0")}
@@ -640,17 +640,17 @@ export function PartHead({ n, title, className = "" }: { n: number; title: strin
   );
 }
 
-/** Discussion prompt on a verdigris-tinted panel. "Discussion:" stays in the sentence as a kicker. */
+/** Discussion prompt beside an ink rule. "Discussion:" stays in the sentence as a kicker. */
 export function Prompt({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div
       className={cn(
-        "w-full border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-7 md:px-11 md:py-9",
+        "w-full border-l-2 border-[var(--ink)] px-7 py-7 md:px-11 md:py-9",
         className,
       )}
     >
       <p className="type-quote max-w-[44ch] !text-[clamp(1.3rem,2.1vw,1.85rem)]">
-        <span className="type-label mb-5 block !text-[0.8rem] !leading-none !text-[var(--counter)]">Discussion:</span>{" "}
+        <span className="type-label mb-5 block !text-[0.8rem] !leading-none">Discussion:</span>{" "}
         {children}
       </p>
     </div>

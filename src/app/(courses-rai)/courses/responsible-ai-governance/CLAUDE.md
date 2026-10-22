@@ -32,6 +32,9 @@ A red finding is drawn in red line and/or red stipple (`stip(id, "signal")`); it
 
 - Headings and display: **Libre Caslon Text** 400 (`--font-heading`), italic for FIG. lines.
 - Body and labels: **Libre Franklin** (`--font-body`).
+- Inside plates and their controls everything is Caslon, weight 400: keys and any word printed on a drawn object (a badge, a sign, a stamp) are `PatentKey` capitals at 0.22em tracking; numerals and quantities are plain Caslon; FIG. lines are Caslon italic. No sans and no bold in a plate.
+- Size by what students see, not by viewBox units: measured at 1440×900 after `FitSlides` has run, keys and object words read at 11–13px, FIG. lines at 12–15px, and quantities larger. A column plate renders far smaller than a full-width one, so the same idea needs bigger units there. When a slide shrinks its plates to fit, give the slide more room (a side-by-side layout, a shorter plate) rather than smaller type.
+- The controls under a plate (`Segmented`, `Slider`, `PlateButton`) use the same Caslon tracked capitals in ink; their labels are terms from the slide.
 
 ## Visual variety across a week
 
@@ -65,6 +68,7 @@ The Isometric Tabletop pieces (`PAL`, `GlassCube`, `IsoBlock`, `IsoPerson`, `Iso
 Render each plate, screenshot it at full size, and check:
 
 - **Line and stipple:** only ink outlines at the three weights and stipple tone; no grey or flat fills.
+- **Type:** every label in Caslon at the sizes above, measured on the rendered slide.
 - **Projection:** solids share one oblique direction and depth within the plate; front faces white.
 - **One finding:** red marks one subject, as line or stipple.
 - **Variety:** a different kind of drawing from the plates before and after it.

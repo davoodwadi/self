@@ -80,7 +80,7 @@ export default function Week1Page() {
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 01 · Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
-          Foundations of <span className="text-[var(--signal)]">Responsible AI</span> in Markets
+          Foundations of Responsible AI in Markets
         </Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[40ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.35rem,2.2vw,1.9rem)]">
@@ -108,7 +108,7 @@ export default function Week1Page() {
               using the same decision rule.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               An <Term tone="signal">error, bias, or perverse incentive</Term> in
               that rule therefore scales immediately across an entire market
@@ -127,10 +127,10 @@ export default function Week1Page() {
               short-term revenue, that can conflict with consumer welfare.
             </P>
           </Ruled>
-          <Ruled tone="counter" weight="thin">
+          <Ruled weight="thin">
             <P>
               Governing these systems requires both{" "}
-              <Term tone="counter">normative principles</Term> that define
+              <Term tone="ink">normative principles</Term> that define
               acceptable behavior and <Term tone="ink">empirical methods</Term>{" "}
               that verify whether a deployed system complies with them.
             </P>
@@ -144,9 +144,9 @@ export default function Week1Page() {
       <Slide id="defining-responsible-ai-and-algorithmic-governance" border className="!py-8">
         <SlideHeading>Defining Responsible AI and Algorithmic Governance</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
-              <Term tone="counter">Responsible AI</Term> is the practice of
+              <Term tone="ink">Responsible AI</Term> is the practice of
               designing, deploying, and operating artificial intelligence systems
               so that their decisions are fair, transparent, safe,
               privacy-preserving, and accountable to affected stakeholders.
@@ -172,7 +172,7 @@ export default function Week1Page() {
               <GovernanceAuthority />
             </Plate>
           </Ruled>
-          <Ruled tone="signal" className="flex flex-col justify-between">
+          <Ruled className="flex flex-col justify-between">
             <P>
               Ethics without governance produces aspirational statements that do
               not alter engineering or marketing decisions, a failure known as{" "}
@@ -194,7 +194,7 @@ export default function Week1Page() {
           Managers and regulators evaluate algorithmic decisions through three
           foundational traditions in normative ethics:{" "}
           <Term tone="ink">consequentialism</Term>,{" "}
-          <Term tone="counter">deontology</Term>, and{" "}
+          <Term tone="ink">deontology</Term>, and{" "}
           <Term tone="ink">virtue ethics</Term>.
         </Statement>
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
@@ -204,7 +204,7 @@ export default function Week1Page() {
               and identifies different failure modes.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Because the three frameworks can reach{" "}
               <span className="text-[var(--signal)]">conflicting conclusions</span>{" "}
@@ -235,14 +235,14 @@ export default function Week1Page() {
               objective functions.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
               A consequentialist defense of personalized recommendations argues
               that matching products to preferences reduces search costs and
-              increases <Term tone="counter">total consumer surplus</Term>.
+              increases <Term tone="ink">total consumer surplus</Term>.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               Consequentialism fails as a sole governance standard when an
               algorithm maximizes average benefit by{" "}
@@ -264,14 +264,14 @@ export default function Week1Page() {
         <SlideHeading>Deontology, Rights, and Duties</SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Statement className="!max-w-none !text-[clamp(1.3rem,2vw,1.72rem)]">
-            <Term tone="counter">Deontology</Term> judges an action by whether it
+            <Term tone="ink">Deontology</Term> judges an action by whether it
             respects moral duties, individual rights, and autonomy, regardless of
             the aggregate profitability of the outcome.
           </Statement>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
               In market governance, deontological rules establish{" "}
-              <Term tone="counter">inviolable constraints</Term>, such as the duty
+              <Term tone="ink">inviolable constraints</Term>, such as the duty
               not to deceive consumers, the right to informed consent, and the
               prohibition of discrimination against protected classes.
             </P>
@@ -281,7 +281,7 @@ export default function Week1Page() {
           <DeontologicalDuty />
         </Plate>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               Under a deontological standard, a{" "}
               <Term tone="signal">manipulative interface or a fabricated product review</Term>{" "}
@@ -310,14 +310,14 @@ export default function Week1Page() {
           integrity of the decision maker and the institution.
         </Statement>
         <div className="mt-7 grid w-full gap-8 md:grid-cols-3">
-          <Ruled tone="counter">
+          <Ruled>
             <P>
               It asks what kind of organization a firm becomes when it deploys a
               given algorithmic system, and whether the system cultivates{" "}
-              <Term tone="counter">trustworthiness, honesty, and care</Term>.
+              <Term tone="ink">trustworthiness, honesty, and care</Term>.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               A firm that designs its AI assistant to{" "}
               <Term tone="signal">exploit loopholes in disclosure rules</Term> may
@@ -361,9 +361,9 @@ export default function Week1Page() {
             </Plate>
           </Ruled>
 
-          <Ruled tone="counter" className="flex flex-col justify-between">
+          <Ruled tone="ink" className="flex flex-col justify-between">
             <P>
-              <Term tone="counter">Deontological evaluation</Term> asks whether the
+              <Term tone="ink">Deontological evaluation</Term> asks whether the
               system violates a consumer right, breaches a fiduciary or contractual
               duty, or treats individuals merely as instruments for revenue.
             </P>
@@ -384,8 +384,8 @@ export default function Week1Page() {
           </Ruled>
         </div>
 
-        <div className="mt-8 border-t border-[var(--rule)] pt-5">
-          <P className="max-w-[72ch]">
+        <div className="mt-8 grid w-full items-center gap-8 border-t border-[var(--rule)] pt-5 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-10">
+          <P>
             An automated loan-pricing model that raises bank profits while{" "}
             <Term tone="signal">
               charging higher interest rates to applicants from specific postal codes
@@ -394,7 +394,7 @@ export default function Week1Page() {
             deployment, whereas deontological non-discrimination duties and
             institutional integrity require <Term tone="ink">revision or rejection</Term>.
           </P>
-          <Plate className="mt-4">
+          <Plate>
             <LoanWide />
           </Plate>
         </div>
@@ -410,7 +410,7 @@ export default function Week1Page() {
             Commercial AI systems are rarely built, trained, deployed, and used
             by a single organization.
           </Statement>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Because multiple actors contribute to the final decision that
               reaches the consumer, responsibility can become{" "}
@@ -465,10 +465,10 @@ export default function Week1Page() {
             </Numbered>
           </li>
           <li className="min-w-0">
-            <Numbered n={4} tone="signal">
-              <Ruled tone="signal" weight="thin">
+            <Numbered n={4}>
+              <Ruled weight="thin">
                 <P>
-                  <Term tone="signal">Consumers and bystanders</Term> experience the
+                  <Term tone="ink">Consumers and bystanders</Term> experience the
                   downstream consequences of the system&apos;s recommendations,
                   prices, and eligibility decisions.
                 </P>
@@ -476,10 +476,10 @@ export default function Week1Page() {
             </Numbered>
           </li>
           <li className="min-w-0">
-            <Numbered n={5} tone="counter">
-              <Ruled tone="counter" weight="thin">
+            <Numbered n={5}>
+              <Ruled weight="thin">
                 <P>
-                  <Term tone="counter">Regulators, auditors, and civil society organizations</Term>{" "}
+                  <Term tone="ink">Regulators, auditors, and civil society organizations</Term>{" "}
                   monitor market outcomes and enforce statutory and industry
                   standards.
                 </P>
@@ -503,7 +503,7 @@ export default function Week1Page() {
       >
         <SlideHeading>The Problem of Many Hands</SlideHeading>
         <Lead className="!max-w-none">
-          The <Term tone="signal">problem of many hands</Term> arises when a
+          The <Term tone="ink">problem of many hands</Term> arises when a
           harmful outcome is produced by the combined actions of several
           contributors, so that no single actor feels or accepts full
           responsibility.
@@ -556,9 +556,9 @@ export default function Week1Page() {
               model documentation.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
-              <Term tone="signal">Deploying firms</Term> are accountable for
+              <Term tone="ink">Deploying firms</Term> are accountable for
               task-specific validation, prompt and interface configuration, human
               oversight, and monitoring outcomes across their own customer
               segments.
@@ -571,9 +571,9 @@ export default function Week1Page() {
               disclosures, and preventing self-preferencing or deceptive design.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
-              <Term tone="counter">Auditors and ethics boards</Term> are
+              <Term tone="ink">Auditors and ethics boards</Term> are
               accountable for independent verification, conflict-of-interest
               independence, and accurate reporting of risks to leadership and
               regulators.
@@ -589,7 +589,7 @@ export default function Week1Page() {
           13 · Discussion: When a Pricing Model Discriminates
           ================================================================ */}
       <Slide id="discussion-when-a-pricing-model-discriminates" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
+        <SlideHeading kicker="Discussion:">
           When a Pricing Model Discriminates
         </SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
@@ -620,7 +620,7 @@ export default function Week1Page() {
               technical benchmarks to select models for commercial deployment.
             </p>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               A core premise of this course is that{" "}
               <span className="text-[var(--signal)]">
@@ -648,10 +648,10 @@ export default function Week1Page() {
               mathematical problem solving, or code generation.
             </P>
           </Ruled>
-          <Ruled tone="counter" weight="thin">
+          <Ruled weight="thin">
             <P>
               Market decisions occur in{" "}
-              <Term tone="counter">strategic, stochastic, and socially sensitive environments</Term>{" "}
+              <Term tone="ink">strategic, stochastic, and socially sensitive environments</Term>{" "}
               where there is often no single factual answer.
             </P>
           </Ruled>
@@ -665,7 +665,7 @@ export default function Week1Page() {
               demographic groups in customer service interactions.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               Furthermore, large language models generate{" "}
               <Term tone="signal">probabilistic outputs</Term>: the same prompt
@@ -699,16 +699,16 @@ export default function Week1Page() {
               neutrality in product comparison.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
-              <Term tone="signal">Single-sample fragility</Term> occurs when an
+              <Term tone="ink">Single-sample fragility</Term> occurs when an
               evaluation tests one response per prompt rather than estimating the
               distribution of responses across repeated samples.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
-              <Term tone="counter">Prompt and context sensitivity</Term> occurs
+              <Term tone="ink">Prompt and context sensitivity</Term> occurs
               when a model passes safety checks under neutral test phrasings but
               exhibits bias when given realistic commercial system prompts or role
               assignments.
@@ -762,10 +762,10 @@ export default function Week1Page() {
             </Numbered>
           </li>
           <li className="min-w-0">
-            <Numbered n={3} tone="signal">
-              <Ruled tone="signal" weight="thin">
+            <Numbered n={3}>
+              <Ruled weight="thin">
                 <P>
-                  <Term tone="signal">Stage 3 is pre-deployment behavioral auditing</Term>,
+                  <Term tone="ink">Stage 3 is pre-deployment behavioral auditing</Term>,
                   which tests the system under controlled experimental conditions
                   for fairness, robustness, manipulation, and task adherence.
                 </P>
@@ -784,10 +784,10 @@ export default function Week1Page() {
             </Numbered>
           </li>
           <li className="min-w-0">
-            <Numbered n={5} tone="counter">
-              <Ruled tone="counter" weight="thin">
+            <Numbered n={5}>
+              <Ruled weight="thin">
                 <P>
-                  <Term tone="counter">Stage 5 is authorization and launch sign-off</Term>,
+                  <Term tone="ink">Stage 5 is authorization and launch sign-off</Term>,
                   in which a designated governance authority reviews the audit
                   dossier and formally approves, restricts, or rejects deployment.
                 </P>
@@ -821,7 +821,7 @@ export default function Week1Page() {
             Governance frameworks classify automated systems by how authority is
             shared between the algorithm and human decision makers.
           </Statement>
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Adding a human to a workflow does not automatically make a system
               safe; oversight must be designed around the{" "}
@@ -850,9 +850,9 @@ export default function Week1Page() {
           Human-in-the-Loop, Human-on-the-Loop, and Autonomous Regimes
         </SlideHeading>
         <div className="grid w-full gap-8 md:grid-cols-3">
-          <Ruled tone="counter" className="flex flex-col justify-between">
+          <Ruled className="flex flex-col justify-between">
             <P>
-              In a <Term tone="counter">human-in-the-loop regime</Term>, the
+              In a <Term tone="ink">human-in-the-loop regime</Term>, the
               algorithm generates a recommendation or score, but a human must
               actively review and approve each individual case before any action
               is taken, as in high-value commercial lending or medical triage.
@@ -873,9 +873,9 @@ export default function Week1Page() {
               <OnTheLoop />
             </Plate>
           </Ruled>
-          <Ruled tone="signal" className="flex flex-col justify-between">
+          <Ruled className="flex flex-col justify-between">
             <P>
-              In a <Term tone="signal">fully autonomous regime</Term>, the
+              In a <Term tone="ink">fully autonomous regime</Term>, the
               algorithm initiates and completes actions without contemporaneous
               human review, bounded only by pre-programmed constraints and
               periodic post-hoc audits, as in programmatic ad bidding or automated
@@ -902,9 +902,9 @@ export default function Week1Page() {
               evidence is available.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
-              <Term tone="counter">Algorithm aversion</Term> is the opposite
+              <Term tone="ink">Algorithm aversion</Term> is the opposite
               tendency to distrust and override an algorithm entirely after
               observing a single error, even when the algorithm outperforms human
               judgment on average.
@@ -918,9 +918,9 @@ export default function Week1Page() {
               review into a formality.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
-              <Term tone="signal">Moral crumple zones</Term> arise when an
+              <Term tone="ink">Moral crumple zones</Term> arise when an
               organization places a low-authority human operator in the loop
               primarily to absorb blame when a complex automated system fails.
             </P>
@@ -945,21 +945,21 @@ export default function Week1Page() {
           The appropriate oversight regime depends on the{" "}
           <Term tone="ink">reversibility</Term> of the decision, the{" "}
           <Term tone="signal">severity of potential harm</Term> to the
-          individual, and the <Term tone="counter">speed</Term> at which the
+          individual, and the <Term tone="ink">speed</Term> at which the
           decision must be made.
         </Lead>
         <div className="mt-6 grid w-full gap-8 md:grid-cols-3">
-          <Ruled tone="signal">
+          <Ruled>
             <P>
-              <Term tone="signal">High-stakes, low-frequency decisions</Term>{" "}
+              <Term tone="ink">High-stakes, low-frequency decisions</Term>{" "}
               that are difficult to reverse, such as denying a mortgage or
               terminating an employee, require human-in-the-loop review supported
               by interpretable evidence and formal recourse.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
-              <Term tone="counter">Medium-stakes, high-frequency decisions</Term>,
+              <Term tone="ink">Medium-stakes, high-frequency decisions</Term>,
               such as flagging suspicious transactions or adjusting inventory
               allocations, call for human-on-the-loop monitoring with automated
               circuit breakers.
@@ -990,7 +990,7 @@ export default function Week1Page() {
             <span className="text-[var(--signal)]">autonomous actor</span> that
             searches, evaluates, and purchases on the consumer&apos;s behalf.
           </Statement>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               This shift from human-mediated to agent-mediated exchange
               introduces a new class of governance problems that spans every week
@@ -1017,10 +1017,10 @@ export default function Week1Page() {
               purchase.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
               When a consumer delegates search and evaluation to an AI agent, the
-              agent acts as a <Term tone="counter">surrogate consumer</Term> in
+              agent acts as a <Term tone="ink">surrogate consumer</Term> in
               the marketplace.
             </P>
           </Ruled>
@@ -1029,7 +1029,7 @@ export default function Week1Page() {
           <SurrogateConsumer />
         </Plate>
         <div className="grid w-full gap-8 md:grid-cols-2">
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               In agent-mediated commerce,{" "}
               <Term tone="signal">the AI agent rather than the human shopper</Term>{" "}
@@ -1058,9 +1058,9 @@ export default function Week1Page() {
       >
         <SlideHeading>Dual Agency and Governance Risks in Agentic Commerce</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-2">
-          <Ruled tone="signal">
+          <Ruled>
             <P>
-              <Term tone="signal">Principal-agent conflicts</Term> arise when a
+              <Term tone="ink">Principal-agent conflicts</Term> arise when a
               conversational shopping assistant is deployed by an
               advertising-funded platform whose revenue depends on selling
               promoted placements, creating a conflict of duty between the
@@ -1075,9 +1075,9 @@ export default function Week1Page() {
               consumer choices (Wadi &amp; Ma, 2026a, 2026b).
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
-              <Term tone="counter">Adversarial storefront manipulation</Term>{" "}
+              <Term tone="ink">Adversarial storefront manipulation</Term>{" "}
               occurs when sellers embed hidden instructions or strategic framing
               in product descriptions to hijack an agent&apos;s evaluation without
               the human shopper&apos;s knowledge.
@@ -1101,7 +1101,7 @@ export default function Week1Page() {
           25 · Discussion: The Autonomous Travel Agent
           ================================================================ */}
       <Slide id="discussion-the-autonomous-travel-agent" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
+        <SlideHeading kicker="Discussion:">
           The Autonomous Travel Agent
         </SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
@@ -1140,8 +1140,8 @@ export default function Week1Page() {
               key={i}
               className={i === 6 ? "min-w-0 md:col-span-2 lg:col-span-3" : "min-w-0"}
             >
-              <Numbered n={i + 1} tone={i === 6 ? "signal" : "ink"}>
-                <Ruled tone={i === 6 ? "signal" : "ink"} weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled weight="thin">
                   <P className={i === 6 ? "!max-w-none" : ""}>{takeaway}</P>
                 </Ruled>
               </Numbered>
