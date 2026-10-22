@@ -1958,27 +1958,41 @@ export function OnTheLoop() {
   );
 }
 
-/** Fully autonomous: cases run between constraint rails into a log that is audited after the fact. */
+/**
+ * Fully autonomous: cases run on between two guard rails (the pre-programmed
+ * constraints) with no one at the belt; their record lands in a log on a
+ * lectern, read later through a hand lens (the periodic post-hoc audit).
+ */
 export function Autonomous() {
   const id = "w1-auto";
+  const posts = [50, 136, 222, 308];
   return (
     <Frame
       width={400}
       height={210}
-      label="Patent drawing: cases run along a conveyor between two rails marked constraints, with no person present, and drop into an open log book at the end; a hand lens rests on the log for the periodic post-hoc audit."
+      label="Patent drawing: cases run continuously along a conveyor between two guard rails, the pre-programmed constraints, with no person at the belt; past the end of the belt an open log book lies on a lectern under a hand lens, for the periodic post-hoc audit."
     >
       <PatentDefs id={id} />
-      {/* far rail */}
-      <ObliqueBox id={id} x={46} y={146} w={234} h={8} dx={6} dy={4} />
-      <Belt id={id} at={[48, 104, 160, 216]} x0={26} x1={286} arrow={false} />
-      {/* near rail */}
-      <ObliqueBox id={id} x={26} y={168} w={260} h={14} dx={6} dy={4} />
-      <PatentKey x={156} y={179} size={8.5}>
+      {/* far guard rail on posts */}
+      {posts.map((x) => (
+        <line key={x} x1={x} y1={126} x2={x} y2={152} {...ink} />
+      ))}
+      <ObliqueBox id={id} x={44} y={122} w={270} h={6} dx={4} dy={2.5} />
+      <PatentKey x={180} y={112} size={9}>
         CONSTRAINTS
       </PatentKey>
-      {/* log book, audited after the fact */}
-      <Sheet id={id} x={300} y={150} w={74} d={34} sk={14} t={6} lines={4} />
-      <Lens id={id} cx={340} cy={124} r={13} a={-0.5} handle={18} />
+      <Belt id={id} at={[]} x1={296} />
+      {[44, 100, 156, 212, 260].map((x) => (
+        <Chip key={x} id={id} x={x} y={159} w={26} d={8} sk={10} />
+      ))}
+      {/* near guard rail along the front edge */}
+      <ObliqueBox id={id} x={26} y={162} w={270} h={5} dx={4} dy={2.5} />
+
+      {/* log on a lectern, audited after the fact */}
+      <line x1={354} y1={128} x2={354} y2={186} {...ink} />
+      <ObliqueBox id={id} x={334} y={186} w={40} h={6} dx={6} dy={4} />
+      <Sheet id={id} x={322} y={126} w={52} d={28} sk={10} t={5} lines={3} />
+      <Lens id={id} cx={348} cy={74} r={15} a={-0.75} handle={16} />
     </Frame>
   );
 }
