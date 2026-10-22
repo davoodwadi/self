@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 
 export {
-  IsoDelegatedExchange as DelegatedExchange,
   IsoSurrogateConsumer as SurrogateConsumer,
   IsoDualAgencyRisks as DualAgencyRisks,
   IsoTravelAgentHotel as TravelAgentHotel,
@@ -2093,5 +2092,93 @@ export function DecisionRiskRegimes() {
         onChange={setTier}
       />
     </div>
+  );
+}
+
+/* The AI agent keeps one glyph through Part 5: a small housing with a scanning
+   lens and an articulated arm ending in a gripper. */
+
+/**
+ * The AI agent: housing with feet at (x, y) (front-left bottom corner), a lens
+ * on its front and an arm reaching right to the gripper at (gx, gy).
+ */
+function Agent({ id, x, y, gx, gy, stroke = PAT.ink }: { id: string; x: number; y: number; gx: number; gy: number; stroke?: string }) {
+  const o = { stroke, strokeWidth: LINE.outline, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
+  const sx = x + 46;
+  const sy = y - 30;
+  const ex = r2((sx + gx) / 2);
+  const ey = r2(Math.min(sy, gy) - 16);
+  return (
+    <g>
+      {/* arm: shoulder, elbow, gripper */}
+      <path d={`M${sx} ${sy}L${ex} ${ey}L${gx} ${gy - 6}`} fill="none" {...o} strokeWidth={3.2} />
+      <path d={`M${sx} ${sy}L${ex} ${ey}L${gx} ${gy - 6}`} fill="none" stroke={PAT.paper} strokeWidth={1.4} strokeLinejoin="round" strokeLinecap="round" />
+      <circle cx={ex} cy={ey} r={3} fill={PAT.paper} {...o} />
+      <path d={`M${gx - 5} ${gy - 6}L${gx - 6} ${gy + 2}M${gx + 5} ${gy - 6}L${gx + 6} ${gy + 2}M${gx - 5} ${gy - 6}H${gx + 5}`} fill="none" {...o} />
+      {/* housing */}
+      <path d={`M${x + 46} ${y - 40}L${x + 54} ${y - 45}V${y - 5}L${x + 46} ${y}Z`} fill={stip(id, "dense")} {...o} />
+      <path d={`M${x} ${y - 40}L${x + 8} ${y - 45}H${x + 54}L${x + 46} ${y - 40}Z`} fill={stip(id, "light")} {...o} />
+      <rect x={x} y={y - 40} width={46} height={40} fill={PAT.paper} {...o} />
+      <circle cx={x + 23} cy={y - 22} r={10} fill={stip(id, "light")} {...o} />
+      <circle cx={x + 23} cy={y - 22} r={5.5} fill={PAT.paper} {...o} />
+      <circle cx={x + 23} cy={y - 22} r={1.6} fill={stroke} />
+      <circle cx={sx} cy={sy} r={3} fill={PAT.paper} {...o} />
+    </g>
+  );
+}
+
+/** A shop shelf with goods on two shelves; (x, y) is the front face's top-left. */
+function Shelf({ id, x, y, w = 120, h = 116 }: { id: string; x: number; y: number; w?: number; h?: number }) {
+  const rows = [y + h * 0.42, y + h * 0.82];
+  return (
+    <g>
+      <ObliqueBox id={id} x={x} y={y} w={w} h={h} dx={16} dy={10} />
+      {rows.map((ry) => (
+        <g key={ry}>
+          <line x1={x} y1={ry} x2={x + w} y2={ry} {...ink} />
+          {[0.1, 0.4, 0.7].map((f, i) => (
+            <ObliqueBox key={f} id={id} x={r2(x + w * f)} y={r2(ry - 22 + (i % 2) * 6)} w={22} h={r2(22 - (i % 2) * 6)} dx={5} dy={3} />
+          ))}
+        </g>
+      ))}
+    </g>
+  );
+}
+
+/**
+ * Part 5: from human-mediated to agent-mediated exchange. FIG. 1: the
+ * consumer reaches the shelf. FIG. 2: the consumer stands back and the agent,
+ * acting on their behalf, reaches the same shelf.
+ */
+export function DelegatedExchange() {
+  const id = "w1-deleg";
+  return (
+    <Frame
+      width={800}
+      height={215}
+      label="Patent drawing in two figures. FIG. 1, human-mediated exchange: a consumer reaches for goods on a shop shelf. FIG. 2, agent-mediated exchange: the consumer stands back, joined by a centre line to an AI agent, a small housing with a lens and an arm, which reaches the same shelf on the consumer's behalf."
+    >
+      <PatentDefs id={id} />
+
+      {/* FIG. 1 */}
+      <line x1={40} y1={180} x2={360} y2={180} {...hair} />
+      <Shelf id={id} x={210} y={58} />
+      <Figure id={id} x={166} y={179} s={1.45} arm="reach" />
+      <Fig x={200} y={206} n={1} size={11.5}>
+        human-mediated exchange
+      </Fig>
+
+      <line x1={400} y1={20} x2={400} y2={190} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 2 */}
+      <line x1={440} y1={180} x2={760} y2={180} {...hair} />
+      <Shelf id={id} x={630} y={58} />
+      <Figure id={id} x={466} y={179} s={1.45} />
+      <line x1={486} y1={112} x2={538} y2={140} {...hair} strokeDasharray={CENTRE_DASH} />
+      <Agent id={id} x={540} y={180} gx={640} gy={110} />
+      <Fig x={600} y={206} n={2} size={11.5}>
+        agent-mediated exchange
+      </Fig>
+    </Frame>
   );
 }
