@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 
 export {
-  IsoSharedAuthority as SharedAuthority,
   IsoInTheLoop as InTheLoop,
   IsoOnTheLoop as OnTheLoop,
   IsoAutonomous as Autonomous,
@@ -1784,5 +1783,77 @@ export function SixStages() {
         onChange={setStage}
       />
     </div>
+  );
+}
+
+/** A small card lying flat at (x, y), front-left corner; red for the finding. */
+function Chip({ id, x, y, red = false, w = 22, d = 7, sk = 8 }: { id: string; x: number; y: number; red?: boolean; w?: number; d?: number; sk?: number }) {
+  return (
+    <path
+      d={`M${x} ${y}L${r2(x + sk)} ${r2(y - d)}H${r2(x + sk + w)}L${r2(x + w)} ${y}Z`}
+      fill={red ? stip(id, "signal") : PAT.paper}
+      stroke={red ? PAT.signal : PAT.ink}
+      strokeWidth={LINE.outline}
+      strokeLinejoin="round"
+    />
+  );
+}
+
+/**
+ * Part 4: authority shared between the algorithm and a human reviewer. The
+ * algorithm's housing sends a stream of cases up a conveyor into a funnel
+ * over the reviewer's desk; the funnel's neck passes one case at a time, and
+ * the excess spills over the rim (red): the cognitive limits of the reviewer.
+ */
+export function SharedAuthority() {
+  const id = "w1-shared";
+  const belt = (t: number) => [r2(176 + t * 196), r2(108 - t * 58)] as const;
+  return (
+    <Frame
+      width={800}
+      height={210}
+      label="Patent drawing: an algorithm's housing, its gears shown in a cutaway, sends a stream of case cards up a conveyor into a funnel over a reviewer's desk; the funnel's narrow neck passes one card at a time to the reviewer standing at the desk, while excess cards spill over the rim in red, marked cognitive limits."
+    >
+      <PatentDefs id={id} />
+      <g transform="translate(76 0)">
+      <line x1={40} y1={190} x2={640} y2={190} {...hair} />
+
+      {/* Algorithm housing, cut away */}
+      <ObliqueBox id={id} x={60} y={86} w={110} h={104} dx={14} dy={9} />
+      <path d="M74 100H150L156 108L148 116L156 124L148 132L156 140L148 148L156 156L148 164L156 172L150 176H74Z" fill={stip(id, "light")} {...ink} />
+      <Gear cx={104} cy={128} r={18} n={12} />
+      <Gear cx={134} cy={156} r={10} n={8} phase={0.2} />
+
+      {/* Conveyor of cases */}
+      <path d={`M170 112L${belt(1)[0]} ${belt(1)[1] + 4}M170 104L${belt(1)[0]} ${belt(1)[1] - 4}`} fill="none" {...ink} />
+      {[0.1, 0.3, 0.5, 0.7, 0.88].map((t) => (
+        <Chip key={t} id={id} x={belt(t)[0] - 10} y={belt(t)[1] - 4} />
+      ))}
+
+      {/* Funnel over the desk */}
+      <ellipse cx={420} cy={52} rx={44} ry={9} fill={stip(id, "dense")} {...ink} />
+      <path d="M376 52L412 104H428L464 52A44 9 0 0 1 376 52Z" fill={PAT.paper} {...ink} />
+      <path d="M412 104V112H428V104" fill={PAT.paper} {...ink} />
+
+      {/* The spill: cognitive limits */}
+      <Chip id={id} x={352} y={70} red />
+      <Chip id={id} x={340} y={104} red w={20} />
+      <Chip id={id} x={348} y={140} red />
+      <Chip id={id} x={330} y={188} red />
+      <Chip id={id} x={356} y={188} red />
+      <PatentKey x={420} y={28} fill={PAT.signal} size={10.5}>
+        COGNITIVE LIMITS
+      </PatentKey>
+
+      {/* Desk and the one case on it */}
+      <ObliqueBox id={id} x={384} y={134} w={100} h={8} dx={18} dy={10} />
+      <line x1={392} y1={142} x2={392} y2={190} {...ink} />
+      <line x1={476} y1={142} x2={476} y2={190} {...ink} />
+      <Chip id={id} x={410} y={130} />
+
+      {/* Reviewer */}
+      <Figure id={id} x={540} y={189} s={1.45} arm="reach" flip />
+      </g>
+    </Frame>
   );
 }
