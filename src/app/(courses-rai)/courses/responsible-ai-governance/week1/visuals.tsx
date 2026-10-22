@@ -152,56 +152,80 @@ export function ScalingRule() {
 }
 
 /**
- * Governance authority: an evidence dossier tied by a centre line to a lever
- * gate with three positions (approve, restrict, halt); the lever stands at
- * approve.
+ * Governance authority: a key switch with three positions (approve, restrict,
+ * halt) on the model's housing; it turns only with the evidence dossier
+ * standing in the slot beside it. The key stands at approve.
  */
 export function GovernanceAuthority() {
   const id = "w1-auth";
+  const cx = 178;
+  const cy = 148;
   const stops = [
-    { y: 72, name: "APPROVE" },
-    { y: 112, name: "RESTRICT" },
-    { y: 152, name: "HALT" },
+    { deg: -52, name: "APPROVE", anchor: "end" as const },
+    { deg: 0, name: "RESTRICT", anchor: "middle" as const },
+    { deg: 52, name: "HALT", anchor: "start" as const },
   ];
+  const at = (deg: number, r: number) => {
+    const a = (deg * Math.PI) / 180;
+    return [r2(cx + Math.sin(a) * r), r2(cy - Math.cos(a) * r)] as const;
+  };
   return (
     <Frame
       width={400}
       height={210}
-      label="Patent drawing: a stack of papers marked evidence is tied by a centre line to a lever gate with three positions, approve, restrict and halt; the lever stands at approve."
+      label="Patent drawing: a key switch on a housing has three positions, approve, restrict and halt; the key is turned to approve. An evidence dossier stands in a slot in the top of the housing, and a hidden interlock, drawn dashed, runs from the slot to the switch."
     >
       <PatentDefs id={id} />
 
-      {/* Evidence dossier: a stack of pages lying down */}
-      <ObliqueBox id={id} x={22} y={124} w={104} h={30} dx={30} dy={44} top={PAT.paper} />
-      {[0, 1, 2].map((j) => (
-        <line key={j} x1={r2(46 + j * -6)} y1={r2(98 + j * 9)} x2={r2(118 + j * -6)} y2={r2(98 + j * 9)} {...hair} />
+      {/* Housing */}
+      <ObliqueBox id={id} x={70} y={84} w={236} h={112} dx={18} dy={11} />
+
+      {/* Evidence dossier standing in its slot */}
+      <path d="M232 82L239 77H305L298 82Z" fill={PAT.ink} />
+      <ObliqueBox id={id} x={236} y={18} w={64} h={62} dx={8} dy={5} top={PAT.paper} />
+      {[14.5, 16].map((y) => (
+        <line key={y} x1={r2(236 + (18 - y) * 1.6)} y1={y} x2={r2(300 + (18 - y) * 1.6)} y2={y} {...hair} strokeWidth={0.45} />
       ))}
-      {[1, 2, 3, 4].map((j) => (
-        <line key={j} x1={22} y1={124 + j * 6} x2={126} y2={124 + j * 6} {...hair} strokeWidth={0.45} />
-      ))}
-      <PatentKey x={74} y={180} size={10}>
+      <text x={268} y={34} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={8} letterSpacing="0.1em" fill={PAT.ink}>
         EVIDENCE
-      </PatentKey>
-
-      <line x1={160} y1={108} x2={200} y2={108} {...hair} strokeDasharray={CENTRE_DASH} />
-
-      {/* Lever gate */}
-      <ObliqueBox id={id} x={200} y={44} w={150} h={140} dx={16} dy={10} />
-      <rect x={315} y={62} width={12} height={100} rx={6} fill={stip(id, "dense")} {...ink} />
-      {stops.map((s) => (
-        <g key={s.name}>
-          <line x1={305} y1={s.y} x2={312} y2={s.y} {...hair} />
-          <PatentKey x={298} y={s.y + 3.5} anchor="end" size={9.5}>
-            {s.name}
-          </PatentKey>
-        </g>
+      </text>
+      {[45, 53, 61, 69].map((y) => (
+        <line key={y} x1={246} y1={y} x2={y === 69 ? 272 : 290} y2={y} {...hair} />
       ))}
-      {/* Lever, pulled up to the approve stop */}
-      <path d="M318 72L336 30H342L324 72Z" fill={PAT.paper} {...ink} />
-      <path d="M339 30L342 30L324 72L321.5 72Z" fill={stip(id, "dense")} />
-      <circle cx={339} cy={28} r={9} fill={PAT.paper} {...ink} />
-      <path d="M332.5 32.5A9 9 0 0 0 347.5 25.5A9 9 0 0 1 332.5 32.5Z" fill={stip(id, "dense")} />
-      <ellipse cx={321} cy={72} rx={7} ry={3.5} fill={PAT.paper} {...ink} />
+
+      {/* Hidden interlock: the dossier in its slot frees the key */}
+      <path d="M268 86V148H218" fill="none" {...hair} strokeDasharray="4 2.5" />
+      <path d="M262 86H274M218 142V154" fill="none" {...hair} />
+
+      {/* Key switch: dial ring, stops, plug and key */}
+      <circle cx={cx} cy={cy} r={36} fill={stip(id, "light")} {...ink} />
+      <circle cx={cx} cy={cy} r={29} fill={PAT.paper} {...ink} />
+      {stops.map((s) => {
+        const [x1, y1] = at(s.deg, 36);
+        const [x2, y2] = at(s.deg, 42);
+        const [tx, ty] = at(s.deg, 48);
+        return (
+          <g key={s.name}>
+            <line x1={x1} y1={y1} x2={x2} y2={y2} {...ink} />
+            <PatentKey x={tx} y={r2(ty + (s.deg === 0 ? -1 : 4))} anchor={s.anchor} size={9}>
+              {s.name}
+            </PatentKey>
+          </g>
+        );
+      })}
+      <circle cx={cx} cy={cy} r={10} fill={stip(id, "light")} {...ink} />
+      <g transform={`rotate(-52 ${cx} ${cy})`}>
+        {/* the key: shank in the plug, shoulders, and a flat head with its ring hole */}
+        <path
+          d={`M${cx - 3} ${cy + 3}V${cy - 10}H${cx - 6}V${cy - 14}H${cx - 10}Q${cx - 13} ${cy - 14} ${cx - 13} ${cy - 18}V${cy - 32}Q${cx - 13} ${cy - 38} ${cx - 7} ${cy - 38}H${cx + 7}Q${cx + 13} ${cy - 38} ${cx + 13} ${cy - 32}V${cy - 18}Q${cx + 13} ${cy - 14} ${cx + 10} ${cy - 14}H${cx + 6}V${cy - 10}H${cx + 3}V${cy + 3}Z`}
+          fill={PAT.paper}
+          {...ink}
+          strokeWidth={LINE.bold}
+        />
+        <path d={`M${cx + 8} ${cy - 37}Q${cx + 12} ${cy - 36} ${cx + 12} ${cy - 32}V${cy - 18}Q${cx + 12} ${cy - 15} ${cx + 8} ${cy - 15}Z`} fill={stip(id, "dense")} />
+        <circle cx={cx} cy={cy - 31} r={3} fill={PAT.paper} {...ink} />
+        <line x1={cx - 8} y1={cy - 22} x2={cx + 6} y2={cy - 22} {...hair} />
+      </g>
     </Frame>
   );
 }
