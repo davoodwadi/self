@@ -1047,3 +1047,79 @@ export function ConfusionCutoff() {
     </div>
   );
 }
+
+/** A qualified applicant: a patent figure holding a certificate up over the head. */
+function Qualified({ id, x, y, s = 0.62, coat = "paper", stroke = PAT.ink }: { id: string; x: number; y: number; s?: number; coat?: "paper" | "dense" | "signal"; stroke?: string }) {
+  const hx = r2(x + 27 * s);
+  const hy = r2(y - 84 * s);
+  const w = r2(15 * s);
+  const h = r2(18 * s);
+  return (
+    <g>
+      <Figure id={id} x={x} y={y} s={s} arm="raise" coat={coat} stroke={stroke} />
+      <rect x={r2(hx - w / 2)} y={r2(hy - h)} width={w} height={h} fill={PAT.paper} stroke={stroke} strokeWidth={LINE.outline} />
+      <line x1={r2(hx - w / 2 + 2.5)} y1={r2(hy - h * 0.6)} x2={r2(hx + w / 2 - 2.5)} y2={r2(hy - h * 0.6)} stroke={stroke} strokeWidth={LINE.hair} />
+    </g>
+  );
+}
+
+/**
+ * Demographic parity: each group has ten applicants and a platform for the
+ * 30 percent approved. Group A's three qualified applicants fill its
+ * platform. The slider sets how many of Group B's ten are qualified; parity
+ * still approves exactly three, so either qualified applicants are left on
+ * the ground or less-qualified ones are raised (red).
+ */
+export function DemographicParity() {
+  const [rateB, setRateB] = useState(50);
+  const id = "w2-parity";
+  const g = 146;
+  const q = rateB / 10;
+  type P = { qualified: boolean; red: boolean };
+  const groupA: { up: P[]; down: P[] } = {
+    up: [0, 1, 2].map(() => ({ qualified: true, red: false })),
+    down: Array.from({ length: 7 }, () => ({ qualified: false, red: false })),
+  };
+  const upB: P[] = Array.from({ length: 3 }, (_, i) => (i < q ? { qualified: true, red: false } : { qualified: false, red: true }));
+  const downB: P[] = Array.from({ length: 7 }, (_, i) => (i < q - 3 ? { qualified: true, red: true } : { qualified: false, red: false }));
+  const errors = q > 3 ? `${q - 3} qualified applicant${q - 3 > 1 ? "s are" : " is"} left unapproved, in red` : q < 3 ? `${3 - q} less-qualified applicant${3 - q > 1 ? "s are" : " is"} approved, in red` : "the three approved are exactly the three qualified";
+  const person = (p: P, x: number, y: number, coat: "paper" | "dense", k: string) =>
+    p.qualified ? (
+      <Qualified key={k} id={id} x={x} y={y} s={0.76} coat={p.red ? "signal" : coat} stroke={p.red ? PAT.signal : PAT.ink} />
+    ) : (
+      <Figure key={k} id={id} x={x} y={y} s={0.76} coat={p.red ? "signal" : coat} stroke={p.red ? PAT.signal : PAT.ink} />
+    );
+  const group = (x0: number, up: P[], down: P[], coat: "paper" | "dense", name: string) => (
+    <g>
+      <line x1={x0} y1={g + 1} x2={x0 + 366} y2={g + 1} {...hair} />
+      <ObliqueBox id={id} x={x0} y={g - 18} w={104} h={18} dx={12} dy={7} />
+      <Num x={x0 + 52} y={g - 4} size={13}>
+        30%
+      </Num>
+      {up.map((p, i) => person(p, x0 + 18 + i * 32, g - 21, coat, `u${i}`))}
+      {down.map((p, i) => person(p, x0 + 136 + i * 33, g, coat, `d${i}`))}
+      <PatentKey x={x0 + 183} y={g + 20} size={10}>
+        {name}
+      </PatentKey>
+    </g>
+  );
+  return (
+    <div>
+      <Frame
+        width={800}
+        height={174}
+        label={`Patent drawing: two groups of ten applicants, Group A in white coats and Group B in dense coats; applicants who are qualified hold up a certificate. Each group has a platform for the 30% approved under demographic parity. Group A's three qualified applicants stand on its platform. ${q * 10}% of Group B is qualified; with three of its ten approved, ${errors}.`}
+      >
+        <PatentDefs id={id} />
+        {group(14, groupA.up, groupA.down, "paper", "GROUP A")}
+        <line x1={400} y1={10} x2={400} y2={164} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+        {group(420, upB, downB, "dense", "GROUP B")}
+        <line x1={52} y1={22} x2={52} y2={40} {...hair} />
+        <PatentKey x={40} y={16} anchor="start" size={10}>
+          QUALIFIED
+        </PatentKey>
+      </Frame>
+      <Slider label="Group B qualification rate" value={rateB} min={10} max={60} step={10} onChange={setRateB} formatValue={(v) => `${v}%`} />
+    </div>
+  );
+}
