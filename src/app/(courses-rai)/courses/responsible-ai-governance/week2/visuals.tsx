@@ -444,7 +444,7 @@ export function IsoFourFifthsRule() {
     <div>
       <Frame
         width={400}
-        height={215}
+        height={200}
         label={`Isometric tabletop diorama of the four-fifths rule: a glass AI cube feeds two 3D cylindrical selection towers on the board. Group A stands at 50% selection rate, projecting an 80% caliper arm at 40%; Group B stands at ${rateB}% (ratio ${ratio.toFixed(2)}), ${adverse ? "falling below the four-fifths bar and triggering a red adverse impact signal" : "meeting the four-fifths benchmark in verdigris"}.`}
       >
         <IsoBase />
@@ -556,10 +556,6 @@ export function IsoFourFifthsRule() {
             <line x1={331} y1={yTopB} x2={341} y2={yTopB} stroke={PAL.signal} strokeWidth="1.8" />
           </g>
         )}
-
-        <Key x={368} y={198} anchor="end" fill={PAL.ink3} size={8.5}>
-          SIMULATED
-        </Key>
       </Frame>
       <Slider
         label="Group B selection rate"
@@ -1022,10 +1018,6 @@ export function IsoRepresentationBias() {
         >
           MIN
         </Key>
-
-        <Key x={44} y={196} anchor="start" fill={PAL.ink3} size={8.5}>
-          SIMULATED
-        </Key>
       </Frame>
       <Slider
         label="Underrepresented group in training data"
@@ -1261,7 +1253,7 @@ export function IsoAggregationBias() {
     <div>
       <Frame
         width={400}
-        height={215}
+        height={200}
         label={`Isometric tabletop diorama of aggregation bias: on the left stand two distinct populations; in the center, a glass AI cube fits ${isPooled ? "a single pooled slope that matches the majority group pins closely while missing the minority group's opposite slope, resulting in poor minority fit on the right" : "two separate group-specific slopes that fit both populations accurately"}.`}
       >
         <IsoBase />
@@ -1400,10 +1392,6 @@ export function IsoAggregationBias() {
           size={8.5}
         >
           MIN FIT
-        </Key>
-
-        <Key x={368} y={198} anchor="end" fill={PAL.ink3} size={8.5}>
-          SIMULATED
         </Key>
       </Frame>
       <Segmented
@@ -2078,7 +2066,7 @@ export function IsoConfusionMatrix3D() {
         </text>
 
         <Key x={754} y={198} anchor="end" fill={PAL.ink3} size={8.5}>
-          SIMULATED · N = 100
+          N = 100
         </Key>
       </Frame>
       <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -2470,10 +2458,6 @@ export function IsoSeparationBridge() {
         <Key x={656} y={192} anchor="middle" fill={fprEqual ? PAL.counter : PAL.signal} size={8.5}>
           GRP B
         </Key>
-
-        <Key x={754} y={198} anchor="end" fill={PAL.ink3} size={8.5}>
-          SIMULATED
-        </Key>
       </Frame>
       <Segmented
         label="Separation standard"
@@ -2626,10 +2610,6 @@ export function IsoCalibrationTower() {
             </g>
           );
         })}
-
-        <Key x={754} y={198} anchor="end" fill={PAL.ink3} size={8.5}>
-          SIMULATED
-        </Key>
       </Frame>
       <Segmented
         label="Score calibration state"
@@ -3637,7 +3617,7 @@ export function IsoImpossibilityInstrument() {
         />
 
         <Key x={754} y={198} anchor="end" fill={PAL.ink3} size={8.5}>
-          SIMULATED · CHOULDECHOVA IDENTITY
+          CHOULDECHOVA IDENTITY
         </Key>
       </Frame>
       <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -4206,7 +4186,7 @@ export function IsoAdAuctionSkew() {
         </Key>
 
         <Key x={754} y={198} anchor="end" fill={PAL.ink3} size={8.5}>
-          SIMULATED · AUCTION DELIVERY
+          AUCTION DELIVERY
         </Key>
       </Frame>
       <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -4417,7 +4397,7 @@ export function IsoMitigationFrontier() {
           strokeWidth="1.6"
         />
         <Key x={604} y={192} anchor="middle" fill={PAL.ink3} size={8}>
-          SIMULATED ACCURACY-FAIRNESS FRONTIER
+          ACCURACY-FAIRNESS FRONTIER
         </Key>
       </Frame>
       <Slider
