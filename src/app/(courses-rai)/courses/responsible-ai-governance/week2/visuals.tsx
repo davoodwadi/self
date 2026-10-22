@@ -162,7 +162,7 @@ export function TreatmentVsImpact() {
 }
 
 /** A graduated cylinder seen from the front, filled to `level` (0..1 of its height). */
-function Cylinder({ id, cx, top, bottom, rx = 30, ry = 7, level, red = false }: { id: string; cx: number; top: number; bottom: number; rx?: number; ry?: number; level: number; red?: boolean }) {
+function Cylinder({ id, cx, top, bottom, rx = 30, ry = 7, level, red = false, tone = "light" }: { id: string; cx: number; top: number; bottom: number; rx?: number; ry?: number; level: number; red?: boolean; tone?: "light" | "dense" }) {
   const yl = r2(bottom - (bottom - top) * level);
   const c = red ? PAT.signal : PAT.ink;
   return (
@@ -170,7 +170,7 @@ function Cylinder({ id, cx, top, bottom, rx = 30, ry = 7, level, red = false }: 
       <path d={`M${cx - rx} ${top}V${bottom}A${rx} ${ry} 0 0 0 ${cx + rx} ${bottom}V${top}`} fill={PAT.paper} {...ink} />
       <path
         d={`M${cx - rx} ${yl}V${bottom}A${rx} ${ry} 0 0 0 ${cx + rx} ${bottom}V${yl}A${rx} ${ry} 0 0 1 ${cx - rx} ${yl}Z`}
-        fill={stip(id, red ? "signal" : "light")}
+        fill={stip(id, red ? "signal" : tone)}
         stroke={c}
         strokeWidth={LINE.outline}
       />
@@ -1195,6 +1195,68 @@ export function SeparationTrays() {
           </Fig>
         </g>
       ))}
+    </Frame>
+  );
+}
+
+/**
+ * Sufficiency: calibration read off test tubes. At each score level S, one
+ * tube per group holds the share who repaid; the blade is the single cutoff.
+ * FIG. 1, calibration within groups: both groups' tubes fill to the same
+ * level at every score. FIG. 2: at the same scores Group B's tubes fall
+ * short (red), so the one cutoff no longer means the same thing for both.
+ */
+export function CalibrationTubes() {
+  const id = "w2-calib";
+  const levels = [0.2, 0.4, 0.6, 0.8];
+  const top = 34;
+  const bottom = 150;
+  const Y = (v: number) => r2(bottom - (bottom - top) * v);
+  const fig = (x0: number, calibrated: boolean, n: number, name: string) => {
+    const X = (v: number) => r2(x0 + 30 + ((v - 0.2) / 0.6) * 270);
+    return (
+      <g>
+        {levels.map((v) => {
+          const b = calibrated ? v : v - 0.17;
+          return (
+            <g key={v}>
+              <Cylinder id={id} cx={X(v) - 13} top={top} bottom={bottom} rx={10} ry={3} level={v} />
+              <Cylinder id={id} cx={X(v) + 13} top={top} bottom={bottom} rx={10} ry={3} level={b} tone="dense" red={!calibrated} />
+              <Num x={X(v)} y={170} size={12}>
+                {v}
+              </Num>
+            </g>
+          );
+        })}
+        <Num x={X(0.8) + 40} y={170} size={12} anchor="start">
+          S
+        </Num>
+        {/* the single cutoff */}
+        <ObliqueBox id={id} x={r2((X(0.4) + X(0.6)) / 2 - 2)} y={30} w={4} h={128} dx={6} dy={4} />
+        <Fig x={x0 + 165} y={194} n={n} size={12}>
+          {name}
+        </Fig>
+      </g>
+    );
+  };
+  return (
+    <Frame
+      width={800}
+      height={204}
+      label="Patent drawing in two figures. At four score levels S, 0.2, 0.4, 0.6 and 0.8, two test tubes stand side by side, Group A's lightly stippled and Group B's densely stippled, each filled to the share of applicants with that score who repaid; a blade between 0.4 and 0.6 is the single cutoff. FIG. 1, calibration within groups: both groups' tubes fill to the same level at every score. FIG. 2, a stricter predictive standard: at every score Group B's tubes, in red, fill lower than Group A's."
+    >
+      <PatentDefs id={id} />
+      {fig(14, true, 1, "calibration within groups")}
+      <line x1={400} y1={14} x2={400} y2={176} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+      {fig(414, false, 2, "a stricter predictive standard")}
+      <path d="M196 16H206L211 26" fill="none" {...hair} />
+      <PatentKey x={192} y={20} anchor="end" size={10}>
+        GROUP A
+      </PatentKey>
+      <path d="M252 16H242L237 26" fill="none" {...hair} />
+      <PatentKey x={256} y={20} anchor="start" size={10}>
+        GROUP B
+      </PatentKey>
     </Frame>
   );
 }
