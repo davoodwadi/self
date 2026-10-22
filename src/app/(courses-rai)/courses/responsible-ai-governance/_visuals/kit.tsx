@@ -156,8 +156,8 @@ export function PatentKey({
 }
 
 /**
- * Legacy palette of the earlier Isometric Tabletop style. Weeks 1–2 still use
- * it until their plates are redrawn in patent drawing; new plates use PAT.
+ * Legacy palette of the earlier Isometric Tabletop style. Week 2 still uses
+ * it until its plates are redrawn in patent drawing; new plates use PAT.
  */
 export const PAL = {
   paper: "#F2F5F4",

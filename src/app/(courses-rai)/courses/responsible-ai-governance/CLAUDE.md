@@ -58,7 +58,7 @@ Vary the camera distance, subject and drawing grammar so neighbouring slides fee
 
 New objects are drawn in the week's `visuals.tsx` and move to `_visuals/objects.tsx` when a second week needs them.
 
-The Isometric Tabletop pieces (`PAL`, `GlassCube`, `IsoBlock`, `IsoPerson`, `IsoHouse`, `IsoCoinStack`, `IsoBase`) belong to the previous style. Weeks 1 and 2 still use them until their plates are redrawn; new plates do not use them, and they are deleted once no week imports them.
+The Isometric Tabletop pieces (`PAL`, `GlassCube`, `IsoBlock`, `IsoPerson`, `IsoHouse`, `IsoCoinStack`, `IsoBase`) belong to the previous style. Week 2 still uses them until its plates are redrawn; new plates do not use them, and they are deleted once no week imports them.
 
 ## Style checklist (with root rules 22–24)
 

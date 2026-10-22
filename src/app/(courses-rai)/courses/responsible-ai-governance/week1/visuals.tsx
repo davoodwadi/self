@@ -3,10 +3,6 @@
 import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 
-export {
-  IsoTravelAgentHotel as TravelAgentHotel,
-} from "./visuals-legacy";
-
 /* ==========================================================================
    WEEK 01 PLATES: PATENT DRAWING
    --------------------------------------------------------------------------
@@ -2378,5 +2374,66 @@ export function DualAgencyRisks() {
         onChange={setRisk}
       />
     </div>
+  );
+}
+
+/** A hotel block with a grid of windows; (x, y) is the front face's top-left. */
+function Hotel({ id, x, y, w = 84, h = 112 }: { id: string; x: number; y: number; w?: number; h?: number }) {
+  const cols = 3;
+  const rows = 5;
+  return (
+    <g>
+      <ObliqueBox id={id} x={x} y={y} w={w} h={h} dx={14} dy={9} />
+      {Array.from({ length: rows * cols }, (_, k) => {
+        const c = k % cols;
+        const r = Math.floor(k / cols);
+        return <rect key={k} x={r2(x + 10 + c * ((w - 20) / cols))} y={y + 10 + r * 17} width={14} height={10} fill={PAT.paper} {...hair} />;
+      })}
+      <rect x={r2(x + w / 2 - 9)} y={y + h - 18} width={18} height={18} fill={PAT.paper} {...ink} />
+    </g>
+  );
+}
+
+/**
+ * Discussion case: the agent pins the first-ranked, sponsored hotel, which
+ * lets the street noise in (red); the quiet four-star hotel beside it is
+ * passed over.
+ */
+export function TravelAgentHotel() {
+  const id = "w1-hotel";
+  const arc = (r: number) => `M${r2(236 - r * 0.5)} ${r2(112 - r * 0.87)}A${r} ${r} 0 0 0 ${r2(236 - r * 0.5)} ${r2(112 + r * 0.87)}`;
+  return (
+    <Frame
+      width={400}
+      height={215}
+      label="Patent drawing: two hotel blocks; the left one carries a sponsored sign on its roof and red noise waves at its side, and the AI agent beside it takes hold of it; the right one, with four stars on its roof sign, is quiet and passed over."
+    >
+      <PatentDefs id={id} />
+      <line x1={20} y1={190} x2={380} y2={190} {...hair} />
+
+      {/* Sponsored hotel, ranked first, letting the noise in */}
+      <Hotel id={id} x={84} y={60} />
+      <rect x={92} y={34} width={68} height={16} fill={PAT.paper} {...ink} />
+      <line x1={100} y1={50} x2={100} y2={58} {...ink} />
+      <line x1={152} y1={50} x2={152} y2={58} {...ink} />
+      <text x={126} y={45.4} textAnchor="middle" fontFamily="var(--font-body)" fontSize={7.6} letterSpacing="0.04em" fill={PAT.ink}>
+        SPONSORED
+      </text>
+      {[16, 26, 36].map((r) => (
+        <path key={r} d={arc(r)} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" />
+      ))}
+
+      {/* Quiet four-star hotel, passed over */}
+      <Hotel id={id} x={264} y={60} />
+      <rect x={272} y={34} width={68} height={16} fill={PAT.paper} {...ink} />
+      <line x1={280} y1={50} x2={280} y2={58} {...ink} />
+      <line x1={332} y1={50} x2={332} y2={58} {...ink} />
+      {[0, 1, 2, 3].map((i) => (
+        <path key={i} d={star(285 + i * 14, 42, 5)} fill="none" {...ink} />
+      ))}
+
+      {/* The agent pins the sponsored hotel */}
+      <Agent id={id} x={14} y={190} gx={92} gy={178} />
+    </Frame>
   );
 }

@@ -60,8 +60,8 @@ export {
 // WEEK 01 — FOUNDATIONS OF RESPONSIBLE AI IN MARKETS
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md;
-// the design only decides where each sentence sits and what 3D architectural
-// & technical illustration plate is drawn beside it. Plates live in ./visuals.tsx.
+// the design only decides where each sentence sits and what patent-drawing
+// plate is drawn beside it. Plates live in ./visuals.tsx.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise on what it taught.
