@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 
 export {
-  IsoDualAgencyRisks as DualAgencyRisks,
   IsoTravelAgentHotel as TravelAgentHotel,
 } from "./visuals-legacy";
 
@@ -2237,5 +2236,147 @@ export function SurrogateConsumer() {
       <path d="M574 108L584 100H606L596 108Z" fill={PAT.paper} {...ink} />
       <Figure id={id} x={640} y={189} s={1.45} arm="reach" flip />
     </Frame>
+  );
+}
+
+/**
+ * Dual agency: the agent's decision needle should point to the consumer it
+ * serves (dashed), but each risk pulls it (red) toward something else: a
+ * magnet of promoted placements, a weight on the first slot, a hook hidden in
+ * a listing's text, or a loss with no one assigned to bear it.
+ */
+export function DualAgencyRisks() {
+  const [risk, setRisk] = useState<"conflict" | "position" | "adversarial" | "liability">("conflict");
+  const id = "w1-dual";
+  const cx = 330;
+  const cy = 100;
+  const deg = { conflict: 0, position: -28, adversarial: 18, liability: -8 }[risk];
+  const a = (deg * Math.PI) / 180;
+  const ux = Math.cos(a);
+  const uy = Math.sin(a);
+  const tip = [r2(cx + ux * 40), r2(cy + uy * 40)];
+  const needle = `M${r2(cx - uy * 5)} ${r2(cy + ux * 5)}L${tip[0]} ${tip[1]}L${r2(cx + uy * 5)} ${r2(cy - ux * 5)}Z`;
+  const tail = `M${r2(cx - uy * 5)} ${r2(cy + ux * 5)}L${r2(cx - ux * 18)} ${r2(cy - uy * 18)}L${r2(cx + uy * 5)} ${r2(cy - ux * 5)}Z`;
+  const pullTo = {
+    conflict: [520, 100],
+    position: [540, 52],
+    adversarial: [548, 117],
+    liability: [540, 92],
+  }[risk];
+  const what = {
+    conflict: "a horseshoe magnet marked promoted placements",
+    position: "a heavy weight sitting on the first of three ranked slots",
+    adversarial: "a red hook hidden among a product listing's lines of text",
+    liability: "a torn receipt for the loss, with dashed leaders to the consumer, the platform and the developer and none attached",
+  }[risk];
+  return (
+    <div>
+      <Frame
+        width={800}
+        height={215}
+        label={`Patent drawing: a consumer stands on the left; a dashed line shows where the agent's decision dial should point, toward the consumer, but its red needle is pulled to the right by ${what}.`}
+      >
+        <PatentDefs id={id} />
+        <line x1={40} y1={190} x2={760} y2={190} {...hair} />
+        <Figure id={id} x={100} y={189} s={1.45} />
+
+        {/* The agent's decision dial */}
+        <line x1={cx} y1={146} x2={cx} y2={178} {...ink} />
+        <ObliqueBox id={id} x={cx - 30} y={178} w={60} h={12} dx={10} dy={6} />
+        <circle cx={cx} cy={cy} r={50} fill={stip(id, "light")} {...ink} />
+        <circle cx={cx} cy={cy} r={44} fill={PAT.paper} {...ink} />
+        {Array.from({ length: 12 }, (_, i) => {
+          const t = (i * Math.PI) / 6;
+          return (
+            <line key={i} x1={r2(cx + Math.cos(t) * 38)} y1={r2(cy + Math.sin(t) * 38)} x2={r2(cx + Math.cos(t) * 43)} y2={r2(cy + Math.sin(t) * 43)} {...hair} />
+          );
+        })}
+        <line x1={cx - 6} y1={cy} x2={cx - 40} y2={cy} {...hair} strokeDasharray="4 3" />
+        <line x1={128} y1={98} x2={274} y2={cy} {...hair} strokeDasharray={CENTRE_DASH} />
+        <path d={tail} fill={PAT.paper} {...ink} />
+        <path d={needle} fill={stip(id, "signal")} stroke={PAT.signal} strokeWidth={LINE.outline} strokeLinejoin="round" />
+        <circle cx={cx} cy={cy} r={3} fill={PAT.paper} {...ink} />
+        <line x1={384} y1={r2(cy + uy * 54)} x2={pullTo[0] - 8} y2={pullTo[1]} stroke={PAT.signal} strokeWidth={LINE.hair} strokeDasharray="3 3" />
+
+        {/* What pulls the needle */}
+        {risk === "conflict" ? (
+          <g>
+            <path d="M600 70H550A30 30 0 0 0 550 130H600V112H552A12 12 0 0 1 552 88H600Z" fill={PAT.paper} {...ink} />
+            <path d="M520 100A30 30 0 0 1 550 70V88A12 12 0 0 0 540 100Z" fill={stip(id, "dense")} />
+            <rect x={586} y={70} width={14} height={18} fill={stip(id, "dense")} {...ink} />
+            <rect x={586} y={112} width={14} height={18} fill={stip(id, "dense")} {...ink} />
+            <PatentKey x={570} y={160} size={10}>
+              PROMOTED PLACEMENTS
+            </PatentKey>
+          </g>
+        ) : null}
+        {risk === "position" ? (
+          <g>
+            <ObliqueBox id={id} x={548} y={36} w={150} h={132} dx={12} dy={8} />
+            {[0, 1, 2].map((i) => (
+              <g key={i}>
+                <rect x={558} y={46 + i * 40} width={130} height={32} fill={PAT.paper} {...ink} />
+                <text x={570} y={67 + i * 40} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={13} fill={PAT.ink}>
+                  {i + 1}
+                </text>
+                <line x1={584} y1={58 + i * 40} x2={640} y2={58 + i * 40} {...hair} />
+                <line x1={584} y1={66 + i * 40} x2={624} y2={66 + i * 40} {...hair} />
+              </g>
+            ))}
+            <path d="M648 70V54L656 46H676V62L668 70Z" fill={stip(id, "dense")} {...ink} />
+            <path d="M648 54H668V70M668 54L676 46" fill="none" {...ink} />
+            <PatentKey x={624} y={186} size={10}>
+              POSITION BIAS
+            </PatentKey>
+          </g>
+        ) : null}
+        {risk === "adversarial" ? (
+          <g>
+            <ObliqueBox id={id} x={556} y={40} w={150} h={120} dx={12} dy={8} />
+            <ObliqueBox id={id} x={570} y={56} w={40} h={36} dx={8} dy={5} />
+            {[60, 70, 80, 102, 110, 126, 134, 142].map((y) => (
+              <line key={y} x1={y < 90 ? 622 : 570} y1={y} x2={690} y2={y} {...hair} />
+            ))}
+            <path d="M548 117H603M606 120V136C606 146 593 146 593 137L598 140" fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx={606} cy={117} r={3} fill={PAT.paper} stroke={PAT.signal} strokeWidth={LINE.outline} />
+            <PatentKey x={630} y={182} size={10}>
+              HIDDEN INSTRUCTIONS
+            </PatentKey>
+          </g>
+        ) : null}
+        {risk === "liability" ? (
+          <g>
+            <path d="M548 56H612V128L604 122L596 128L588 122L580 128L572 122L564 128L556 122L548 128Z" fill={PAT.paper} {...ink} />
+            {[68, 78, 88].map((y) => (
+              <line key={y} x1={556} y1={y} x2={604} y2={y} {...hair} />
+            ))}
+            <line x1={556} y1={104} x2={604} y2={104} stroke={PAT.signal} strokeWidth={LINE.bold} />
+            {[
+              ["CONSUMER", 56],
+              ["PLATFORM", 96],
+              ["DEVELOPER", 136],
+            ].map(([n, y]) => (
+              <g key={n}>
+                <line x1={620} y1={92} x2={652} y2={(y as number) - 4} {...hair} strokeDasharray="3 3" />
+                <PatentKey x={660} y={y as number} anchor="start" size={10}>
+                  {n}
+                </PatentKey>
+              </g>
+            ))}
+          </g>
+        ) : null}
+      </Frame>
+      <Segmented
+        label="Agentic governance risk"
+        options={[
+          { id: "conflict", label: "1. Principal-agent conflict" },
+          { id: "position", label: "2. Position bias" },
+          { id: "adversarial", label: "3. Adversarial storefront" },
+          { id: "liability", label: "4. Liability ambiguity" },
+        ]}
+        value={risk}
+        onChange={setRisk}
+      />
+    </div>
   );
 }
