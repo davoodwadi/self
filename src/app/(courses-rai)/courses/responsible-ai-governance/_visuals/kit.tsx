@@ -155,31 +155,6 @@ export function PatentKey({
   );
 }
 
-/**
- * Legacy palette of the earlier Isometric Tabletop style. Week 2 still uses
- * it until its plates are redrawn in patent drawing; new plates use PAT.
- */
-export const PAL = {
-  paper: "#F2F5F4",
-  well: "#E5ECEA",
-  slabTop: "#E8EFED",
-  slabLeft: "#CEDAD7",
-  slabRight: "#B4C4C0",
-  ink: "#101820",
-  ink2: "#2B3742",
-  ink3: "#586773",
-  rule: "#C4D1CE",
-  signal: "#C83E1D",
-  signalLight: "#F2D2C9",
-  signalMid: "#DF7A61",
-  counter: "#1B5E4B",
-  counterLight: "#CBE0DA",
-  counterMid: "#4C8C79",
-  skin1: "#E4C0A4",
-  skin2: "#C28E6C",
-  skin3: "#8D5D3F",
-} as const;
-
 export const LABEL = "var(--font-label)";
 export const BODY = "var(--font-body)";
 export const SERIF = "var(--font-heading)";

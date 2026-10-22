@@ -17,16 +17,43 @@ import {
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  IsoUniversityAdSkew,
-} from "./visuals-legacy";
-import { AdAuctionSkew, AggregationBias, AuditSteps, CalibrationTubes, CausalPipework, ConfusionCutoff, CreditAgeTradeoff, CriterionContexts, DomainTradeoffs, GroupAverageVsIndividual, ImpossibilityLevels, IncompatibleTriad, IndividualFairness, MarketingPipelines, MitigationFrontier, DemographicParity, FeedbackLoop, FourFifthsRule, FourSources, HistoricalBias, MeasurementBias, PipelineStages, ProxyReconstruction, RepresentationBias, SeparationTrays, StatisticalToMarket, ThreeFamilies, TreatmentVsImpact } from "./visuals";
+  AdAuctionSkew,
+  AggregationBias,
+  AuditSteps,
+  CalibrationTubes,
+  CausalPipework,
+  ConfusionCutoff,
+  CreditAgeTradeoff,
+  CriterionContexts,
+  DemographicParity,
+  DomainTradeoffs,
+  FeedbackLoop,
+  FourFifthsRule,
+  FourSources,
+  GroupAverageVsIndividual,
+  HistoricalBias,
+  ImpossibilityLevels,
+  IncompatibleTriad,
+  IndividualFairness,
+  MarketingPipelines,
+  MeasurementBias,
+  MitigationFrontier,
+  PipelineStages,
+  ProxyReconstruction,
+  RepresentationBias,
+  SeparationTrays,
+  StatisticalToMarket,
+  ThreeFamilies,
+  TreatmentVsImpact,
+  UniversityAdSkew,
+} from "./visuals";
 
 // ============================================================================
 // WEEK 02 — ALGORITHMIC BIAS, FAIRNESS, AND DISCRIMINATION
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md;
-// the design only decides where each sentence sits and what Isometric Tabletop
-// Diorama plate is drawn beside it. Plates live in ./visuals.tsx.
+// the design only decides where each sentence sits and what patent drawing
+// is drawn beside it. Plates live in ./visuals.tsx.
 // ============================================================================
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
@@ -1237,7 +1264,7 @@ export default function Week2Page() {
             how the university and the platform should intervene.
           </Prompt>
           <Plate>
-            <IsoUniversityAdSkew />
+            <UniversityAdSkew />
           </Plate>
         </div>
       </Slide>

@@ -1211,7 +1211,6 @@ export function CalibrationTubes() {
   const levels = [0.2, 0.4, 0.6, 0.8];
   const top = 34;
   const bottom = 150;
-  const Y = (v: number) => r2(bottom - (bottom - top) * v);
   const fig = (x0: number, calibrated: boolean, n: number, name: string) => {
     const X = (v: number) => r2(x0 + 30 + ((v - 0.2) / 0.6) * 270);
     return (
@@ -2263,6 +2262,55 @@ export function AuditSteps() {
       {xs.map((x, i) => (
         <Numeral key={x} n={i + 1} x={x - 16} y={174} tx={x - 4} ty={g + 4} />
       ))}
+    </Frame>
+  );
+}
+
+/**
+ * Discussion case: the university's neutral targeting card goes into the ad
+ * platform, which piles 82 percent of the impressions on men (red) and 18
+ * percent on women.
+ */
+export function UniversityAdSkew() {
+  const id = "w2-univ";
+  return (
+    <Frame
+      width={400}
+      height={244}
+      label="Patent drawing: a targeting card reading age 21 to 40 and bachelor's degree feeds into an ad platform's housing, which delivers the ad's impressions into two piles: a tall pile of 82% served to men, drawn in red, and a short pile of 18% served to women."
+    >
+      <PatentDefs id={id} />
+      {/* the neutral targeting card */}
+      <ObliqueBox id={id} x={86} y={12} w={200} h={52} dx={10} dy={6} />
+      <PatentKey x={186} y={34} size={11.5}>
+        AGE 21 TO 40
+      </PatentKey>
+      <PatentKey x={186} y={54} size={11.5}>
+        BACHELOR&apos;S DEGREE
+      </PatentKey>
+      <line x1={186} y1={68} x2={186} y2={84} {...hair} strokeDasharray={CENTRE_DASH} />
+      {/* the ad platform */}
+      <ObliqueBox id={id} x={150} y={86} w={72} h={58} dx={10} dy={6} />
+      <circle cx={186} cy={115} r={20} fill={stip(id, "light")} {...ink} />
+      <Gear cx={180} cy={110} r={9} n={9} />
+      <Gear cx={195} cy={124} r={6} n={7} phase={0.3} />
+      <path d="M150 128C110 128 100 140 100 150" fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} />
+      <path d="M232 128C280 128 290 170 290 186" fill="none" {...hair} />
+      {/* the two piles of impressions */}
+      <Pile id={id} x={66} y={214} n={20} w={60} red />
+      <Pile id={id} x={262} y={214} n={4} w={60} />
+      <Num x={140} y={168} size={22} anchor="start" fill={PAT.signal}>
+        82%
+      </Num>
+      <Num x={336} y={204} size={22} anchor="start">
+        18%
+      </Num>
+      <PatentKey x={98} y={236} size={12}>
+        MEN
+      </PatentKey>
+      <PatentKey x={294} y={236} size={12}>
+        WOMEN
+      </PatentKey>
     </Frame>
   );
 }
