@@ -2069,82 +2069,79 @@ export function OversightFailures() {
 }
 
 /**
- * Matching oversight to decision risk: three columns whose height is the
- * severity of potential harm (the tallest in red), with the cases in front
- * showing how often each decision comes; on each column sits its regime's
- * control: the approval gate, the stop switch, the audit lens. Choosing a
- * tier rings it.
+ * Matching oversight to decision risk, in three figures. FIG. 1: one mortgage
+ * (a house on its deed, red: the severe, hard-to-reverse harm) waits at a
+ * closed gate whose lever a reviewer holds. FIG. 2: a stream of transactions
+ * runs on a belt wired to a knife-switch circuit breaker. FIG. 3: a webpage
+ * carousel reorders its tiles on its own while a hand lens samples it.
  */
 export function DecisionRiskRegimes() {
-  const [tier, setTier] = useState<"all" | "high" | "medium" | "low">("all");
   const id = "w1-risk";
-  const cols = [
-    { k: "high", x: 120, h: 112, n: 1, name: "HIGH-STAKES" },
-    { k: "medium", x: 340, h: 70, n: 4, name: "MEDIUM-STAKES" },
-    { k: "low", x: 560, h: 34, n: 9, name: "LOW-STAKES" },
-  ] as const;
-  const ringed = cols.find((c) => c.k === tier);
   return (
-    <div>
-      <Frame
-        width={800}
-        height={215}
-        label={`Patent drawing: three columns stand for decision tiers, their heights the severity of potential harm. The high-stakes column is tallest and red, with one case in front and an approval gate on top; the medium-stakes column has four cases in front and a stop switch on top; the low-stakes column is lowest, with nine cases in front and an audit lens on top.${ringed ? ` The ${ringed.name.toLowerCase()} tier is ringed.` : ""}`}
-      >
-        <PatentDefs id={id} />
-        <line x1={60} y1={176} x2={760} y2={176} {...hair} />
-        {cols.map((c, i) => {
-          const top = 166 - c.h;
-          const red = i === 0;
-          return (
-            <g key={c.k}>
-              <ObliqueBox
-                id={id}
-                x={c.x}
-                y={top}
-                w={70}
-                h={c.h}
-                dx={18}
-                dy={12}
-                front={red ? stip(id, "signal") : PAT.paper}
-                stroke={red ? PAT.signal : PAT.ink}
-              />
-              {/* cases in front: how often the decision comes */}
-              {Array.from({ length: c.n }, (_, j) => (
-                <Chip key={j} id={id} x={c.x + 82 + (j % 3) * 24} y={174 - Math.floor(j / 3) * 9} w={18} d={6} sk={6} />
-              ))}
-              <PatentKey x={c.x + 54} y={198} size={10}>
-                {c.name}
-              </PatentKey>
-            </g>
-          );
-        })}
+    <Frame
+      width={800}
+      height={182}
+      label="Patent drawing in three figures. FIG. 1, high-stakes, low-frequency: a single mortgage case, a house on its deed drawn in red, waits at a closed gate whose lever a reviewer holds. FIG. 2, medium-stakes, high-frequency: a stream of transaction cards runs along a belt under a monitor whose trace runs below a dashed threshold, and the belt is wired to a breaker box with a throw lever. FIG. 3, low-stakes, high-velocity: a webpage carousel swaps its tiles on its own while a hand lens looks over it for periodic auditing."
+    >
+      <PatentDefs id={id} />
+      <g transform="translate(0 -34)">
 
-        {/* regime controls on top of each column */}
-        <ObliqueBox id={id} x={146} y={30} w={8} h={20} dx={14} dy={9} />
-        <line x1={160} y1={22} x2={186} y2={10} {...ink} strokeWidth={LINE.bold} />
-        <circle cx={188} cy={9} r={4} fill={PAT.paper} {...ink} />
+      {/* FIG. 1 — one mortgage held at the reviewer's gate */}
+      <line x1={24} y1={176} x2={256} y2={176} {...hair} />
+      <Sheet id={id} x={34} y={170} w={84} d={26} sk={22} t={4} fill={stip(id, "signal")} stroke={PAT.signal} sw={LINE.bold} />
+      <House id={id} x={64} y={160} w={40} h={28} roof={16} dx={10} dy={6} />
+      <ObliqueBox id={id} x={150} y={92} w={10} h={80} dx={16} dy={10} />
+      <line x1={168} y1={84} x2={198} y2={60} {...ink} strokeWidth={LINE.bold} />
+      <circle cx={200} cy={58} r={4.5} fill={PAT.paper} {...ink} />
+      <Figure id={id} x={230} y={175} s={1.32} arm="raise" flip />
+      <Fig x={140} y={204} n={1} size={11}>
+        high-stakes, low-frequency
+      </Fig>
 
-        <line x1={384} y1={78} x2={384} y2={88} {...ink} />
-        <path d="M374 78A10 5 0 0 1 394 78V73A10 5 0 0 0 374 73Z" fill={stip(id, "dense")} {...ink} />
-        <ellipse cx={384} cy={73} rx={10} ry={5} fill={PAT.paper} {...ink} />
+      <line x1={272} y1={20} x2={272} y2={190} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-        <Lens id={id} cx={598} cy={108} r={12} a={-0.6} handle={14} />
+      {/* FIG. 2 — a stream of transactions, a monitor over it, a breaker at its end */}
+      <line x1={384} y1={124} x2={384} y2={152} {...ink} />
+      <ObliqueBox id={id} x={334} y={64} w={100} h={60} dx={10} dy={6} />
+      <rect x={342} y={72} width={84} height={44} fill={PAT.paper} {...hair} />
+      <line x1={342} y1={84} x2={426} y2={84} {...hair} strokeDasharray="4 2.5" />
+      <path d="M346 104L358 98L370 102L382 92L394 98L406 90L420 96" fill="none" {...ink} />
+      <Belt id={id} at={[296, 336, 376, 416]} x0={288} x1={456} arrow={false} />
+      {/* breaker box with its throw lever, wired to the belt */}
+      <ObliqueBox id={id} x={488} y={112} w={30} h={42} dx={8} dy={5} />
+      <rect x={496} y={120} width={14} height={20} fill={stip(id, "light")} {...hair} />
+      <path d="M503 130L517 104" {...ink} strokeWidth={LINE.bold} />
+      <circle cx={518} cy={102} r={3.4} fill={PAT.paper} {...ink} />
+      <circle cx={503} cy={130} r={2} fill={PAT.ink} />
+      <path d="M488 148H478" fill="none" {...hair} strokeDasharray="3 2" />
+      <Fig x={400} y={204} n={2} size={11}>
+        medium-stakes, high-frequency
+      </Fig>
 
-        {ringed ? <Detail cx={ringed.x + 54} cy={tier === "high" ? 96 : 120} r={tier === "high" ? 90 : 64} /> : null}
-      </Frame>
-      <Segmented
-        label="Inspect risk regime"
-        options={[
-          { id: "all", label: "All 3 tiers" },
-          { id: "high", label: "High stakes (in-the-loop)" },
-          { id: "medium", label: "Medium stakes (on-the-loop)" },
-          { id: "low", label: "Low stakes (autonomous)" },
-        ]}
-        value={tier}
-        onChange={setTier}
-      />
-    </div>
+      <line x1={548} y1={20} x2={548} y2={190} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 3 — a webpage carousel reordering itself, a lens over it */}
+      <ObliqueBox id={id} x={576} y={74} w={176} h={96} dx={10} dy={6} />
+      <line x1={576} y1={88} x2={752} y2={88} {...ink} />
+      {[584, 590, 596].map((x) => (
+        <circle key={x} cx={x} cy={81} r={1.8} fill={PAT.paper} {...hair} />
+      ))}
+      {[0, 1, 2].map((i) => (
+        <g key={i}>
+          <rect x={600 + i * 46} y={104} width={38} height={44} fill={PAT.paper} {...ink} />
+          <ObliqueBox id={id} x={608 + i * 46} y={116} w={16} h={14} dx={4} dy={3} />
+          <line x1={606 + i * 46} y1={138} x2={632 + i * 46} y2={138} {...hair} />
+        </g>
+      ))}
+      <path d="M592 120L586 126L592 132M736 120L742 126L736 132" fill="none" {...ink} />
+      <path d="M622 100Q645 90 668 100" fill="none" {...hair} />
+      <path d={headAlongPath(668, 100, 10, 4, 6)} fill="none" {...hair} />
+      <Lens id={id} cx={712} cy={124} r={19} a={0.75} handle={22} />
+      <Fig x={666} y={204} n={3} size={11}>
+        low-stakes, high-velocity
+      </Fig>
+      </g>
+    </Frame>
   );
 }
 
