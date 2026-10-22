@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 
 export {
-  IsoOversightFailures as OversightFailures,
   IsoDecisionRiskRegimes as DecisionRiskRegimes,
   IsoDelegatedExchange as DelegatedExchange,
   IsoSurrogateConsumer as SurrogateConsumer,
@@ -961,7 +960,8 @@ export function FragmentedChain() {
 /**
  * A person as a patent figure, standing with feet at (x, y), facing right
  * (`flip` faces left). Clean outline, light stipple on the coat, dense on the
- * trousers. `arm`: "down" at the side, "reach" held forward, "raise" lifted.
+ * trousers. `arm`: "down" at the side, "reach" held forward, "raise" lifted,
+ * "lift" both arms up.
  */
 function Figure({
   id,
@@ -976,7 +976,7 @@ function Figure({
   x: number;
   y: number;
   s?: number;
-  arm?: "down" | "reach" | "raise";
+  arm?: "down" | "reach" | "raise" | "lift";
   flip?: boolean;
   stroke?: string;
 }) {
@@ -984,7 +984,7 @@ function Figure({
   const fwd =
     arm === "reach"
       ? "M10 -62L30 -54L31 -48L10 -54Z"
-      : arm === "raise"
+      : arm === "raise" || arm === "lift"
         ? "M10 -62L24 -84L29 -81L14 -56Z"
         : "M10 -62L14 -36L9 -35L6 -56Z";
   return (
@@ -993,7 +993,7 @@ function Figure({
       <path d="M-9 -36L-8 0H-1L0 -30L1 0H8L9 -36Z" fill={stip(id, "dense")} {...o} />
       <path d="M-11 0H-1M1 0H11" fill="none" {...o} />
       {/* back arm */}
-      <path d="M-10 -62L-14 -36L-9 -35L-6 -56Z" fill={PAT.paper} {...o} />
+      <path d={arm === "lift" ? "M-10 -62L-24 -84L-29 -81L-14 -56Z" : "M-10 -62L-14 -36L-9 -35L-6 -56Z"} fill={PAT.paper} {...o} />
       {/* coat */}
       <path d="M-11 -64Q0 -68 11 -64L10 -34H-10Z" fill={stip(id, "light")} {...o} />
       <path d="M0 -66V-34" fill="none" {...o} strokeWidth={LINE.hair / s} />
@@ -1943,5 +1943,76 @@ export function Autonomous() {
       <Sheet id={id} x={300} y={150} w={74} d={34} sk={14} t={6} lines={4} />
       <Lens id={id} cx={340} cy={124} r={13} a={-0.5} handle={18} />
     </Frame>
+  );
+}
+
+/**
+ * Failure modes of human oversight. FIG. 1: the reviewer's case stack grows
+ * with the caseload; at a light load a lens sits over the top case, past 30
+ * cases an hour the stamp comes down on cases unread (red). FIG. 2: a person
+ * holds up the whole automated system, a moral crumple zone (red).
+ */
+export function OversightFailures() {
+  const [casesPerHour, setCasesPerHour] = useState(100);
+  const overloaded = casesPerHour > 30;
+  const id = "w1-crumple";
+  const sheets = Math.max(2, Math.round(casesPerHour / 10));
+  const h = sheets * 7;
+  const top = 176 - h;
+  return (
+    <div>
+      <Frame
+        width={800}
+        height={215}
+        label={`Patent drawing in two figures. FIG. 1, rubber-stamping: at ${casesPerHour} cases an hour the reviewer's stack is ${sheets} cases high; ${overloaded ? "a stamp comes down on the top case unread, and the stamped case is red" : "a hand lens sits over the top case for careful review, the stamp set aside"}. FIG. 2, moral crumple zones: a single person in red holds up a large automated system above their head.`}
+      >
+        <PatentDefs id={id} />
+
+        {/* FIG. 1 — case stack, lens or stamp */}
+        <line x1={50} y1={176} x2={340} y2={176} {...hair} />
+        <ObliqueBox id={id} x={90} y={top} w={110} h={h} dx={34} dy={22} top={overloaded ? stip(id, "signal") : PAT.paper} stroke={PAT.ink} />
+        {overloaded ? <path d={`M${90} ${top}L124 ${top - 22}H234L200 ${top}Z`} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinejoin="round" /> : null}
+        {Array.from({ length: sheets - 1 }, (_, i) => (
+          <line key={i} x1={90} y1={top + (i + 1) * 7} x2={200} y2={top + (i + 1) * 7} {...hair} strokeWidth={0.4} />
+        ))}
+        {overloaded ? (
+          <g>
+            <line x1={162} y1={top - 70} x2={162} y2={top - 48} {...hair} strokeDasharray={CENTRE_DASH} />
+            <ellipse cx={162} cy={top - 44} rx={11} ry={5} fill={PAT.paper} {...ink} />
+            <path d={`M158 ${top - 40}V${top - 24}H166V${top - 40}`} fill={PAT.paper} {...ink} />
+            <ObliqueBox id={id} x={140} y={top - 22} w={44} h={10} dx={8} dy={5} />
+          </g>
+        ) : (
+          <g>
+            <Lens id={id} cx={164} cy={top - 30} r={18} a={-0.6} handle={22} />
+            <ellipse cx={280} cy={146} rx={11} ry={5} fill={PAT.paper} {...ink} />
+            <path d="M276 150V164H284V150" fill={PAT.paper} {...ink} />
+            <ObliqueBox id={id} x={258} y={166} w={44} h={10} dx={8} dy={5} />
+          </g>
+        )}
+        <PatentKey x={300} y={40} size={10}>
+          {`${casesPerHour} CASES / HR`}
+        </PatentKey>
+        <Fig x={195} y={204} n={1} size={11.5}>
+          rubber-stamping
+        </Fig>
+
+        <line x1={400} y1={20} x2={400} y2={190} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+        {/* FIG. 2 — one person holding up the whole system */}
+        <line x1={440} y1={176} x2={770} y2={176} {...hair} />
+        <ObliqueBox id={id} x={494} y={34} w={196} h={64} dx={22} dy={14} />
+        <path d="M506 44H676L682 52L674 60L682 68L674 76L682 84L676 90H506Z" fill={stip(id, "light")} {...ink} />
+        <Gear cx={540} cy={67} r={14} n={10} />
+        <Gear cx={576} cy={70} r={10} n={8} phase={0.2} />
+        <Gear cx={612} cy={66} r={14} n={10} phase={0.1} />
+        <Gear cx={648} cy={70} r={10} n={8} />
+        <Figure id={id} x={592} y={175} s={0.92} arm="lift" stroke={PAT.signal} />
+        <Fig x={600} y={204} n={2} size={11.5}>
+          moral crumple zones
+        </Fig>
+      </Frame>
+      <Slider label="Reviewer caseload (cases / hr)" value={casesPerHour} min={10} max={120} step={10} onChange={setCasesPerHour} />
+    </div>
   );
 }
