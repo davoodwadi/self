@@ -1362,3 +1362,74 @@ export function CriterionContexts() {
     </Frame>
   );
 }
+
+/**
+ * Part 3. FIG. 1, the group average: eight members of one group, a tick or
+ * a cross over each, average to 50 percent; yet two equally qualified
+ * members side by side get opposite outcomes, the rejected one red. FIG. 2,
+ * the single consumer: one person under a hand lens.
+ */
+export function GroupAverageVsIndividual() {
+  const id = "w2-indiv";
+  const g = 168;
+  const members = [
+    { ok: true, q: false },
+    { ok: false, q: false },
+    { ok: true, q: true },
+    { ok: false, q: true, red: true },
+    { ok: true, q: false },
+    { ok: false, q: false },
+    { ok: true, q: false },
+    { ok: false, q: false },
+  ];
+  return (
+    <Frame
+      width={800}
+      height={206}
+      label="Patent drawing in two figures. FIG. 1, the group average: eight members of one group stand in a row under a bar reading a 50% group average; a tick or a cross hangs over each. Two members side by side, both holding up the same certificate, are equally qualified, yet one has a tick and the other a cross, drawn in red. FIG. 2, the single consumer: one person stands under a large hand lens."
+    >
+      <PatentDefs id={id} />
+
+      {/* FIG. 1 — the group average */}
+      <line x1={20} y1={g + 1} x2={480} y2={g + 1} {...hair} />
+      <ObliqueBox id={id} x={40} y={18} w={420} h={22} dx={10} dy={6} />
+      <PatentKey x={250} y={34} size={11}>
+        GROUP AVERAGE 50%
+      </PatentKey>
+      {members.map((m, i) => {
+        const x = 62 + i * 54;
+        const c = m.red ? PAT.signal : PAT.ink;
+        return (
+          <g key={i}>
+            {m.ok ? (
+              <path d={tick(x + 4, 58, 7)} fill="none" stroke={c} strokeWidth={LINE.bold} strokeLinecap="round" strokeLinejoin="round" />
+            ) : (
+              <path d={cross(x + 4, 58, 6)} fill="none" stroke={c} strokeWidth={LINE.bold} strokeLinecap="round" />
+            )}
+            {m.q ? (
+              <Qualified id={id} x={x} y={g} s={0.86} coat={m.red ? "signal" : "paper"} stroke={c} />
+            ) : (
+              <Figure id={id} x={x} y={g} s={0.86} coat="paper" />
+            )}
+          </g>
+        );
+      })}
+
+      <line x1={500} y1={14} x2={500} y2={184} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 2 — the single consumer under the lens */}
+      <line x1={540} y1={g + 1} x2={780} y2={g + 1} {...hair} />
+      <Figure id={id} x={640} y={g} s={1.2} coat="paper" />
+      {/* a hand lens held over the consumer: rim and handle, the glass clear */}
+      <path d="M640 52a52 52 0 1 0 0.01 0ZM640 58a46 46 0 1 1 -0.01 0Z" fill={stip(id, "dense")} fillRule="evenodd" {...ink} />
+      <path d="M676.2 67.4L704.5 39.1L711.6 46.2L683.3 74.5" fill={stip(id, "dense")} {...ink} />
+
+      <Fig x={250} y={198} n={1} size={12}>
+        the group average
+      </Fig>
+      <Fig x={640} y={198} n={2} size={12}>
+        the single consumer
+      </Fig>
+    </Frame>
+  );
+}
