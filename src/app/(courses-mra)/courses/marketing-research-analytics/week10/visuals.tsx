@@ -4,7 +4,7 @@
    sentence it illustrates on the slide.
 
    Data: the factor, map, cluster, conjoint, simulator and embedding plates
-   run on SIMULATED data and say so on the plate. The AI-agent plate uses
+   run on made-up data. The AI-agent plate uses
    Wadi & Ma (2026c): Table 4 (sponsorship coefficients by principal, Study 1)
    and Table 14 (choice shares by disclosure label, Study 2).
    ========================================================================== */
@@ -163,7 +163,6 @@ export function FactorRetention() {
         ).join(", ")}`}
       >
         <Key x={sx0 - 20} y={22}>SCREE PLOT</Key>
-        <Key x={sx1 + 8} y={22} anchor="end" size={9.5} fill={INK3}>SIMULATED</Key>
 
         {/* axes */}
         <line x1={sx0} y1={sB} x2={sx1 + 8} y2={sB} stroke={INK} strokeWidth={1.25} />
@@ -485,7 +484,6 @@ export function NewEntrant() {
       }`}
     >
       <MapAxes cx={cx} cy={cy} h={h} />
-      <Key x={cx - h} y={22} fill={INK3} size={9.5}>SIMULATED</Key>
 
       {CONSUMERS.map((c, i) => {
         const mine = choice[i] === BANKS.length;
@@ -601,7 +599,6 @@ export function StandardizeFirst() {
         }`}
       >
         <Key x={L - 20} y={22}>CUSTOMERS IN TWO CLUSTERS</Key>
-        <Key x={R} y={22} anchor="end" size={9.5} fill={INK3}>SIMULATED</Key>
 
         <line x1={L} y1={B} x2={R + 8} y2={B} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(R + 8, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
@@ -756,7 +753,6 @@ export function DendrogramCut() {
       label={`Dendrogram of twelve customers merged by average linkage; a cut line, which can be dragged, crosses the tree at a distance of ${fmt(cut)} and gives ${groups.length} cluster${groups.length > 1 ? "s" : ""}`}
     >
       <Key x={L - 70} y={22}>DENDROGRAM</Key>
-      <Key x={R + 108} y={22} anchor="end" size={9.5} fill={INK3}>SIMULATED</Key>
 
       {/* distance axis */}
       <line x1={L - 30} y1={base} x2={L - 30} y2={T - 14} stroke={INK} strokeWidth={1.25} />
@@ -945,7 +941,6 @@ export function ClustersFromNothing() {
         label={`Sixty customers ${data === "none" ? "with no group structure" : "in three real groups"}, clustered into three segments by k-means on half-sample ${draw}; ${share}% of customers stay in the same segment as on the previous half-sample`}
       >
         <Key x={L} y={22}>{`THREE CLUSTERS FROM HALF-SAMPLE ${draw}`}</Key>
-        <Key x={L + W} y={22} anchor="end" size={9.5} fill={INK3}>SIMULATED</Key>
         <rect x={L - 10} y={T - 14} width={W + 20} height={H + 28} fill="none" stroke={RULE2} strokeWidth={1} />
         {pts.map((p, i) => (
           <Person1 key={i} x={X(p[0])} y={r2(Y(p[1]) + 7)} k={0.42} width={1.1} {...look[lab[i]]} />
@@ -1323,7 +1318,6 @@ export function PriceRangeImportance() {
 
         {/* relative importance */}
         <Key x={20} y={by - 10}>RELATIVE IMPORTANCE</Key>
-        <Key x={660} y={by - 10} anchor="end" size={9.5} fill={INK3}>SIMULATED</Key>
         {ranges.map((r, i) => {
           const x0 = r2(bx + (ranges.slice(0, i).reduce((a, b) => a + b, 0) / total) * bw);
           const w = r2((r / total) * bw);
@@ -1396,7 +1390,6 @@ export function MarketSimulator() {
         )}) ${pct[1]}%, and C (16 hours, $1,150) ${pct[2]}%${gap === 30 ? "; A and B tie when B is $30 cheaper, the willingness to pay for four more hours" : ""}`}
       >
         <Key x={20} y={22}>SHARES OF PREFERENCE</Key>
-        <Key x={660} y={22} anchor="end" size={9.5} fill={INK3}>SIMULATED</Key>
         {items.map((it, i) => {
           const x = colX[i];
           const c = i === 0 ? SIGNAL : i === 1 ? COUNTER : INK;
@@ -1617,7 +1610,6 @@ export function EmbeddingNeighbors() {
         }: ${ranked.map((r) => `"${ANSWERS[r.i].t}" (${by === "meaning" ? `similarity ${r.sim.toFixed(2)}` : `${r.shared.length} shared words`})`).join(" and ")}`}
       >
         <Key x={20} y={24}>ANSWERS PLACED BY THEIR EMBEDDINGS</Key>
-        <Key x={500} y={24} anchor="end" size={9.5} fill={INK3}>SIMULATED</Key>
 
         {ANSWERS.map((a, i) => {
           const on = i === sel;

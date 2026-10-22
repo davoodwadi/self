@@ -210,7 +210,6 @@ export function SameSourceDifferences() {
 
         {/* strip of differences, one dot per pair of samples */}
         <Key x={20} y={226}>{`DIFFERENCE BETWEEN THE TWO MEANS · ${draws} PAIRS OF SAMPLES`}</Key>
-        <Key x={620} y={226} anchor="end" fill={INK3}>SIMULATED</Key>
         {dots.map((d, i) => (
           <circle key={i} cx={d.x} cy={d.y} r={d.last ? 4 : 3.1} fill={d.last ? SIGNAL : INK3} fillOpacity={d.last ? 1 : 0.65} />
         ))}
@@ -1314,10 +1313,9 @@ export function ForkingPaths() {
       <Frame
         width={640}
         height={196}
-        label={`One hundred simulated studies of a difference that does not exist. ${on.length === 0 ? "With one planned test" : `With ${on.length} practice${on.length > 1 ? "s" : ""} applied`}, ${count} of the 100 report a statistically significant difference`}
+        label={`One hundred studies of a difference that does not exist. ${on.length === 0 ? "With one planned test" : `With ${on.length} practice${on.length > 1 ? "s" : ""} applied`}, ${count} of the 100 report a statistically significant difference`}
       >
         <Key x={20} y={22}>100 STUDIES · NO DIFFERENCE EXISTS</Key>
-        <Key x={620} y={22} anchor="end" fill={INK3}>SIMULATED</Key>
         {Array.from({ length: 100 }, (_, i) => {
           const x = 20 + (i % cols) * (w + gx);
           const y = 40 + Math.floor(i / cols) * (h + gy);
@@ -1394,10 +1392,10 @@ export function ManyTests() {
       <Frame
         width={680}
         height={262}
-        label={`${k} tests of true null hypotheses at a level of ${fmtLevel(level)} per test${bonf ? " after the Bonferroni correction" : ""}. In this simulated run ${hits} of the ${k} tests ${hits === 1 ? "is" : "are"} significant. The probability of at least one significant result is ${Math.round(prob * 100)} percent`}
+        label={`${k} tests of true null hypotheses at a level of ${fmtLevel(level)} per test${bonf ? " after the Bonferroni correction" : ""}. In this run ${hits} of the ${k} tests ${hits === 1 ? "is" : "are"} significant. The probability of at least one significant result is ${Math.round(prob * 100)} percent`}
       >
         <Key x={20} y={22} fill={INK}>{`${k} TEST${k > 1 ? "S" : ""} · NO REAL DIFFERENCES`}</Key>
-        <Key x={20} y={42} fill={INK3}>{`LEVEL PER TEST ${fmtLevel(level)} · SIMULATED`}</Key>
+        <Key x={20} y={42} fill={INK3}>{`LEVEL PER TEST ${fmtLevel(level)}`}</Key>
         {NULL_PS.slice(0, k).map((p, i) => {
           const x = gx0 + (i % 10) * (tile + gap);
           const y = gy0 + Math.floor(i / 10) * (tile + gap);

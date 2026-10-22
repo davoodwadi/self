@@ -1360,10 +1360,9 @@ export function ResponseDraws() {
       <Frame
         width={400}
         height={226}
-        label={`Simulated probabilities a model assigns to the seven points of one Likert item: 2, 5, 12, 30, 33, 14 and 4 percent. The latest generated answer is ${last}; answers so far: ${shown.join(", ")}`}
+        label={`Probabilities a model assigns to the seven points of one Likert item: 2, 5, 12, 30, 33, 14 and 4 percent. The latest generated answer is ${last}; answers so far: ${shown.join(", ")}`}
       >
         <Key x={16} y={20} fill={INK3} size={9.5}>PROBABILITY OF EACH POINT</Key>
-        <Key x={384} y={20} anchor="end" fill={INK3} size={9}>SIMULATED</Key>
         {ITEM_PMF.map((p, i) => {
           const v = i + 1;
           const h = r2(p * scale);

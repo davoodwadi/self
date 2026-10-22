@@ -264,7 +264,6 @@ export function ShareOfVoice() {
         label={`Weekly mentions in a category over 26 weeks: our brand, with its negative mentions in ochre, under brands B and C. Our negative mentions surge from week 18. A window covers weeks ${start + 1} to ${start + span}: our share of voice there is ${pct(sov)}, and ${pct(neg)} of our mentions are negative`}
       >
         <Key x={20} y={22} size={10}>WEEKLY MENTIONS IN THE CATEGORY</Key>
-        <Key x={660} y={22} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
         {[0, 500, 1000].map((v) => (
           <g key={v}>
             <line x1={x0 - 6} y1={Y(v)} x2={x0 + 26 * bw} y2={Y(v)} stroke={v ? RULE : INK} strokeWidth={v ? 1 : 1.25} />
@@ -398,7 +397,6 @@ export function WhoPosts() {
         height={322}
         label={`Ratings of 1 to 5 stars. All customers: 4%, 8%, 22%, 41% and 25%, a mean of 3.75. Posted reviews, when extreme experiences are ${k} times as likely to be posted: ${shares.map(pct).join(", ")}, a mean of ${mean(shares).toFixed(2)}; ${pct(ends)} of posted reviews are 1 or 5 stars, against 29% of customers`}
       >
-        <Key x={660} y={18} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
         <RatingBars x={36} shares={EXPERIENCE} fill={PAPER3} stroke={INK3} keyText="ALL 1,000 CUSTOMERS" mean={mean(EXPERIENCE)} />
         <RatingBars x={388} shares={shares} fill={SIGNAL_TINT} stroke={SIGNAL} keyText={`THE ${Math.round(posted * 1000)} WHO POST A REVIEW`} mean={mean(shares)} keyFill={SIGNAL} />
         <path d={`M318 140H359${head.right(360, 140)}`} fill="none" stroke={INK3} strokeWidth={1.5} />
@@ -630,7 +628,6 @@ export function TopicCount() {
         label={`Topics found in 8,400 cancellation comments with ${k} topics: ${topics.map((t, i) => `topic ${i + 1}, ${t.label ?? "mixed"} (${t.words.map((w) => w[0]).join(", ")})`).join("; ")}. Three comments are shown as mixtures of these topics`}
       >
         <Key x={20} y={22} size={10}>{`${k} TOPICS IN 8,400 CANCELLATION COMMENTS`}</Key>
-        <Key x={660} y={22} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
         {topics.map((t, i) => {
           const x = 20 + i * colW;
           return (
@@ -724,7 +721,6 @@ export function WordingFlips() {
         label={`A language model classifies twelve customer messages into delivery, billing, product fault or account. Instructions: ${WORDINGS[v]} ${v === "a" ? "This is the reference wording." : `${changed} of 12 messages receive a different category than under wording A.`}`}
       >
         <Key x={20} y={22} size={10}>{v === "c" ? "INSTRUCTIONS, FEW-SHOT" : `INSTRUCTIONS ${v.toUpperCase()}, ZERO-SHOT`}</Key>
-        <Key x={660} y={22} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
         <rect x={20} y={34} width={640} height={40} fill={PAPER} stroke={INK3} strokeWidth={1} />
         <AiMark1 cx={42} cy={54} s={22} fill={SIGNAL} />
         <Note x={64} y={59} size={13.5} italic fill={INK}>{WORDINGS[v]}</Note>
@@ -810,7 +806,6 @@ export function ValidationByLanguage() {
         label={`Precision and recall of an automated classification against human coding of ${d.n} ${lang === "all" ? "sampled texts in all languages" : `${{ en: "English", es: "Spanish", fr: "French" }[lang]} texts`}: ${cats.map((c, i) => `${c.toLowerCase()} ${pct(d.rows[i][0])} and ${pct(d.rows[i][1])}`).join("; ")}`}
       >
         <Key x={20} y={22} size={10}>{`${d.n} SAMPLED TEXTS${lang === "all" ? "" : `, ${{ en: "ENGLISH", es: "SPANISH", fr: "FRENCH" }[lang]}`}`}</Key>
-        <Key x={660} y={22} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
         <Person1 x={34} y={66} k={0.75} />
         <Person1 x={54} y={66} k={0.75} />
         <Note x={72} y={56} size={12.5} fill={INK2}>Two people agree on 92% of texts.</Note>
@@ -908,7 +903,6 @@ export function ReIdentification() {
       >
         <Key x={20} y={22} size={10}>{"ONE RESPONDENT’S RECORD"}</Key>
         <rect x={20} y={36} width={264} height={236} fill={PAPER} stroke={INK3} strokeWidth={1.1} />
-        <Key x={20} y={306} size={9} fill={INK3}>SIMULATED</Key>
         {fields.map((f, i) => {
           const y = 76 + i * 56;
           const kept = f.id !== "name" && on.includes(f.id);
@@ -1073,7 +1067,6 @@ export function StoryChart() {
         <Note x={40} y={80} size={12.5} fill={INK3}>
           {`Main reason for cancelling, ${n.toLocaleString("en-US")} customers interviewed, 95% confidence intervals`}
         </Note>
-        <Key x={640} y={80} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
         {REASONS.map(([r, p], i) => {
           const y = 104 + i * 44;
           const h = half(p);

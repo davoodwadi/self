@@ -4,9 +4,9 @@
    sentence it illustrates on the slide.
 
    Data: the plates on correlation, least squares, fit, multicollinearity,
-   omitted variables, marketing mix and overfitting run on SIMULATED data and
-   say so on the plate. The two AI-agent plates use Wadi & Ma (2026b), Table
-   W2 (cent-to-dollar ratios, Study 1 baseline) and Wadi & Ma (2026c),
+   omitted variables, marketing mix and overfitting run on made-up data. The
+   two AI-agent plates use Wadi & Ma (2026b), Table W2 (cent-to-dollar
+   ratios, Study 1 baseline) and Wadi & Ma (2026c),
    Tables 7 and 8 (moderated mediation, Study 1).
    ========================================================================== */
 
@@ -146,7 +146,6 @@ export function CorrelationStrength() {
       }; a scale from −1 to +1 can be dragged to change r. Beside it, stores whose weekly units rise and then fall with shelf height: a strong nonlinear relationship with r = 0.00`}
     >
       <Key x={L} y={22}>WEEKLY UNITS BY PRICE</Key>
-      <Key x={R} y={22} anchor="end" fill={INK3}>SIMULATED</Key>
       <Display x={R} y={50} anchor="end" size={26} fill={SIGNAL}>{`r = ${fmt(r, 2)}`}</Display>
 
       {/* axes */}
@@ -315,7 +314,6 @@ export function LeastSquares() {
       }. Either end of the line can be dragged`}
     >
       <Key x={L} y={16}>WEEKLY SALES BY ADVERTISING</Key>
-      <Key x={540} y={16} anchor="end" fill={INK3}>SIMULATED</Key>
 
       {/* axes */}
       <line x1={L} y1={B} x2={R + 10} y2={B} stroke={INK} strokeWidth={1.25} />
@@ -515,7 +513,6 @@ export function AddedVariables() {
         }. R² is ${now.r2.toFixed(3)} and adjusted R² is ${now.adj.toFixed(3)}`}
       >
         <Key x={L} y={16}>MODEL OF 40 WEEKS OF SALES</Key>
-        <Key x={520} y={16} anchor="end" fill={INK3}>SIMULATED</Key>
         <line x1={L} y1={B} x2={R} y2={B} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(R, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
         <line x1={L} y1={B} x2={L} y2={T - 6} stroke={INK} strokeWidth={1.25} />
@@ -584,7 +581,6 @@ export function ResidualPatterns() {
       label="Four residual plots. With no pattern, residuals scatter evenly around zero. A curved band indicates a nonlinear relationship; a fan that widens indicates unequal variance; long runs above and below zero across weeks indicate dependence between observations"
     >
       <Key x={12} y={14} size={10}>RESIDUALS</Key>
-      <Key x={388} y={14} anchor="end" fill={INK3} size={10}>SIMULATED</Key>
       {panels.map((p, k) => {
         const x0 = 12 + (k % 2) * (w + 24);
         const top = 28 + Math.floor(k / 2) * 154;
@@ -664,7 +660,6 @@ export function CollinearEstimates() {
       >
         <Key x={20} y={22}>COEFFICIENT ESTIMATED ON 20 SAMPLES</Key>
         <Key x={580} y={22} anchor="end">{`SPEND CORRELATION r = ${rho.toFixed(2)}`}</Key>
-        <Key x={20} y={286} fill={INK3} size={9}>SIMULATED</Key>
         <rect x={x0} y={36} width={r2(X(0) - x0)} height={150} fill={COUNTER_TINT} />
         <line x1={X(0)} y1={36} x2={X(0)} y2={190} stroke={INK3} strokeWidth={1} />
         <Key x={X(0)} y={204} anchor="middle" size={9.5}>0</Key>
@@ -761,7 +756,6 @@ export function OmittedHoliday() {
         }`}
       >
         <Key x={L} y={22}>WEEKLY SALES BY ADVERTISING</Key>
-        <Key x={R} y={22} anchor="end" fill={INK3}>SIMULATED</Key>
         <line x1={L} y1={B} x2={R} y2={B} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(R, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
         <line x1={L} y1={B} x2={L} y2={T - 6} stroke={INK} strokeWidth={1.25} />
@@ -853,7 +847,6 @@ export function LinearProbability() {
         <Key x={0} y={0} anchor="middle" size={10}>PROBABILITY OF PURCHASE</Key>
       </g>
       <Key x={R} y={282} anchor="end" size={10}>PAGES VIEWED</Key>
-      <Key x={L + 8} y={282} size={9.5} fill={INK3}>SIMULATED</Key>
 
       {VISITS.map(([x, y], i) => (
         <Person1 key={i} x={X(x)} y={r2(Y(y) - 1)} k={0.48} fill={y ? INK : PAPER} />
@@ -1114,7 +1107,6 @@ export function MixDecomposition() {
       label="Two years of weekly sales decomposed by a marketing mix model into stacked contributions: the base with seasonality, television, search and social media, with the observed sales drawn as a line over them. Estimated return per dollar: television $1.40, search $2.10, social media $0.70"
     >
       <Key x={L} y={18}>WEEKLY SALES, DECOMPOSED</Key>
-      <Key x={R} y={18} anchor="end" fill={INK3}>SIMULATED</Key>
       {MIX.layers.map((l, j) => (
         <path key={l.id} d={band(j)} fill={l.fill} />
       ))}
@@ -1246,7 +1238,6 @@ export function BudgetSplit() {
         label={`A $1 million budget split ${100 - pct}% to television and ${pct}% to search. Television: average return $${rows[0].avg.toFixed(2)}, marginal return $${rows[0].m.toFixed(2)} per dollar. Search: average return $${rows[1].avg.toFixed(2)}, marginal return $${rows[1].m.toFixed(2)}. Total sales $${Math.round(total).toLocaleString("en-US")} thousand, highest when the two marginal returns are equal`}
       >
         <Key x={L} y={18}>SALES BY EXPENDITURE</Key>
-        <Key x={R} y={18} anchor="end" size={9.5} fill={INK3}>SIMULATED</Key>
         <line x1={L} y1={B} x2={R + 8} y2={B} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(R + 8, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
         <line x1={L} y1={B} x2={L} y2={T - 6} stroke={INK} strokeWidth={1.25} />
@@ -1447,7 +1438,6 @@ export function BrandSearchHoldout() {
     >
       <MagnifyingGlass x={x0 - 18} y={10} size={26} weight="regular" color={INK} />
       <Key x={x0 + 16} y={28}>LAST-CLICK ATTRIBUTION</Key>
-      <Key x={540} y={28} anchor="end" fill={INK3} size={10}>SIMULATED</Key>
       {Array.from({ length: n }, (_, i) => (
         <Person1 key={i} x={x0 + i * dx} y={84} k={0.95} fill={COUNTER} stroke={COUNTER} />
       ))}
@@ -1531,7 +1521,6 @@ export function Overfitting() {
           </clipPath>
         </defs>
         <Key x={L} y={20}>WEEKLY SALES</Key>
-        <Key x={R} y={20} anchor="end" fill={INK3}>SIMULATED</Key>
         <line x1={L} y1={B} x2={R} y2={B} stroke={INK} strokeWidth={1.25} />
         <path d={head.right(R, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
         <line x1={L} y1={B} x2={L} y2={T - 6} stroke={INK} strokeWidth={1.25} />
@@ -1613,7 +1602,6 @@ export function TreeVersusLine() {
       label={`Forty stores' weekly units by price: steady up to about $4.50, then falling. Linear regression fits one straight line with a slope of ${Math.round(b)} units per dollar. A tree ensemble fits a stepped curve that follows the bend, without a coefficient`}
     >
       <Key x={L} y={18}>WEEKLY UNITS BY PRICE</Key>
-      <Key x={R} y={18} anchor="end" fill={INK3}>SIMULATED</Key>
       <line x1={L} y1={B} x2={R} y2={B} stroke={INK} strokeWidth={1.25} />
       <path d={head.right(R, B, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
       <line x1={L} y1={B} x2={L} y2={T - 6} stroke={INK} strokeWidth={1.25} />
@@ -1671,7 +1659,6 @@ export function DiscountImportance() {
       label="A purchase model's variable importance: discount received 0.34, past purchases 0.27, months as a customer 0.18, emails opened 0.12, region 0.05. Below, sixteen customers from the historical data: the discounts went to the six most loyal"
     >
       <Key x={20} y={20}>VARIABLE IMPORTANCE</Key>
-      <Key x={580} y={20} anchor="end" fill={INK3}>SIMULATED</Key>
       {IMPORTANCE.map((r, i) => {
         const y = 40 + i * 26;
         return (

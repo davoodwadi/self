@@ -4,7 +4,7 @@
    sentence it illustrates on the slide.
 
    Data: the customer, model, evaluation, recommendation and fairness plates
-   run on SIMULATED data and say so on the plate. The country-of-origin plate
+   run on made-up data. The country-of-origin plate
    uses Wadi, Ghodrat & Philp (2026): Table 2 (main effects) and Figure 5
    (model × target interactions) for the CETSCALE.
    ========================================================================== */
@@ -126,7 +126,6 @@ export function CustomerLedger() {
           {c.key}
         </Key>
       ))}
-      <Key x={660} y={320} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
       <line x1={20} y1={48} x2={660} y2={48} stroke={INK} strokeWidth={1.25} />
       <rect x={14} y={r2(top + lit * rh - 4)} width={652} height={rh} fill={SIGNAL_TINT} />
       {LEDGER.map((row, i) => {
@@ -307,7 +306,6 @@ export function ObservedEnd() {
       })}
       <path d={`M${r2(X(9) + 6)} 108v-6H${r2(X(12) - 6)}v6`} fill="none" stroke={INK3} strokeWidth={1} />
       <Key x={r2(X(12) - 10)} y={98} anchor="end" size={9}>NO PURCHASE FOR 3 MONTHS</Key>
-      <Key x={20} y={210} size={9} fill={INK3}>SIMULATED</Key>
     </Frame>
   );
 }
@@ -475,7 +473,7 @@ export function RfmRanking() {
     <div>
       <Frame
         width={680}
-        height={366}
+        height={350}
         label={`Twenty customers ranked by ${names[by]} and grouped into quintiles. Customers who responded to the next offer, from the top quintile down: ${counts.join(", ")} of 4`}
       >
         <Key x={tx0} y={30} size={9.5}>PURCHASES, LAST 12 MONTHS</Key>
@@ -521,7 +519,6 @@ export function RfmRanking() {
             </g>
           );
         })}
-        <Key x={660} y={360} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
       </Frame>
       <Segmented<Rfm>
         label="Rank customers by"
@@ -614,7 +611,6 @@ export function ChurnRanking() {
       label={`Twelve customers ranked by predicted probability of churning, from ${probs[0]}% to ${probs[11]}%. The four with the highest scores (${probs.slice(0, reach).join(", ")}%) receive the retention offer`}
     >
       <Key x={20} y={24} size={10}>PREDICTED PROBABILITY OF CHURNING</Key>
-      <Key x={660} y={24} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
       <line x1={x0 - 26} y1={base} x2={r2(x0 + 11 * step + 26)} y2={base} stroke={INK} strokeWidth={1.25} />
       {probs.map((p, i) => {
         const x = x0 + i * step;
@@ -767,7 +763,6 @@ export function FirstSplit() {
             </g>
           );
         })}
-        <Key x={660} y={326} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
       </Frame>
       <Segmented<SplitVar>
         label="First split on"
@@ -842,7 +837,6 @@ export function ForestAverage() {
         label={`A random forest of ${n} tree${n > 1 ? "s" : ""}: the trees' predictions for one customer's churn probability range from ${Math.round(Math.min(...votes) * 100)}% to ${Math.round(Math.max(...votes) * 100)}%, and their average is ${Math.round(mean * 100)}%. The forest's holdout error is ${(forestError(n) * 100).toFixed(1)}%, falling quickly with the first trees and then flattening`}
       >
         <Key x={20} y={22} size={10}>{"ONE CUSTOMER’S PREDICTED CHURN PROBABILITY"}</Key>
-        <Key x={660} y={22} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
         {dots.map((d, i) => (
           <circle key={i} cx={d.x} cy={d.y} r={2.1} fill={INK3} />
         ))}
@@ -1025,7 +1019,6 @@ export function LeakageCheck() {
             </g>
           );
         })}
-        <Key x={540} y={284} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
       </Frame>
       <Toggles<"form">
         label="Model's variables"
@@ -1110,12 +1103,11 @@ export function ThresholdMatrix() {
   return (
     <Frame
       width={680}
-      height={350}
+      height={340}
       label={`Holdout customers ranked by predicted churn probability, with a threshold of ${t}%: ${flagged} customers predicted to churn. True positives ${tp}, false positives ${fp}, false negatives ${fn}, true negatives ${tn}. Precision ${pct(precision)}, recall ${pct(recall)}, accuracy ${pct(accuracy)}`}
       svgProps={{ style: { touchAction: "none" } }}
     >
       <Key x={20} y={18} size={10}>PREDICTED PROBABILITY OF CHURNING</Key>
-      <Key x={660} y={344} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
       <rect x={x0} y={24} width={r2(cut - x0)} height={r2(yb - 24)} fill={SIGNAL_TINT} />
       <line x1={x0} y1={yb} x2={x1} y2={yb} stroke={INK} strokeWidth={1.25} />
       <line x1={x0} y1={yb} x2={x0} y2={24} stroke={INK} strokeWidth={1.25} />
@@ -1272,7 +1264,6 @@ export function GainsChart() {
         <Display x={r2(bx0 + 10 * bstep)} y={bb + 72} anchor="end" size={22} fill={net >= 0 ? SIGNAL : COUNTER}>
           {signed(net)}
         </Display>
-        <Key x={20} y={328} size={9} fill={INK3}>SIMULATED</Key>
       </Frame>
       <Slider label={`Deciles contacted: ${depth}`} value={depth} min={1} max={10} onChange={setDepth} showValue={false} />
     </div>
@@ -1319,7 +1310,7 @@ export function UpliftTargeting() {
     <div>
       <Frame
         width={680}
-        height={360}
+        height={350}
         label={`Forty customers by what they would do without and with a retention call: 7 persuadables, 20 sure things, 8 lost causes, 5 sleeping dogs. ${
           by === "all" ? "Calling everyone" : by === "churn" ? "Calling the ten highest churn scores" : "Calling the ten highest uplift estimates"
         }: ${called} calls, ${kept} customers kept by the call, ${lost} lost because of it, ${wasted} calls with no effect; net ${net >= 0 ? "+" : "−"}${Math.abs(net)}`}
@@ -1369,7 +1360,6 @@ export function UpliftTargeting() {
             <Display x={r2(150 + i * 127)} y={330} size={24} fill={m.c}>{m.v}</Display>
           </g>
         ))}
-        <Key x={660} y={354} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
       </Frame>
       <Segmented<Target>
         label="Call"
@@ -1578,7 +1568,6 @@ export function FeedbackLoop() {
         }`}
       >
         <Key x={20} y={22} size={10}>ESTIMATED RESPONSE RATE</Key>
-        <Key x={660} y={22} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
         {[10, 15, 20, 25].map((v) => (
           <g key={v}>
             <line x1={x0 - 4} y1={Y(v)} x2={x0} y2={Y(v)} stroke={INK} strokeWidth={1.25} />
@@ -1861,7 +1850,6 @@ export function ExplainOffer() {
           </g>
         ))}
         <Key x={282} y={292} size={9} fill={INK3}>{`COUNTERFACTUAL: BALANCE OF ${usd(cfBalance)} OR MORE QUALIFIES`}</Key>
-        <Key x={660} y={314} anchor="end" size={9} fill={INK3}>SIMULATED</Key>
       </Frame>
       <Slider label={`This customer's account balance: ${usd(bal)}`} value={bal} min={400} max={1600} step={50} onChange={setBal} showValue={false} />
     </div>
@@ -2124,7 +2112,6 @@ export function OrderRandomization() {
             <Key x={bx} y={224} size={9} fill={INK3}>NOT SEPARABLE FROM THE LISTINGS</Key>
           </g>
         )}
-        <Key x={20} y={308} size={9} fill={INK3}>SIMULATED</Key>
       </Frame>
       <Segmented<OrderMode>
         label="Order of the listings"

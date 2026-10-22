@@ -872,10 +872,9 @@ export function ResponsesPerPrompt() {
       <Frame
         width={400}
         height={212}
-        label={`Simulated willingness to pay stated by one model in ${k} ${k === 1 ? "response" : "responses"} to the same prompt${k > 1 ? `, spread from ${money(Math.min(...draws.map((d) => d.v)))} to ${money(Math.max(...draws.map((d) => d.v)))}` : ""}. The mean is ${money(mean)}${k > 1 ? `, with a 95 percent confidence interval of plus or minus ${money(half)}` : "; a single response gives no estimate of variation"}`}
+        label={`Willingness to pay stated by one model in ${k} ${k === 1 ? "response" : "responses"} to the same prompt${k > 1 ? `, spread from ${money(Math.min(...draws.map((d) => d.v)))} to ${money(Math.max(...draws.map((d) => d.v)))}` : ""}. The mean is ${money(mean)}${k > 1 ? `, with a 95 percent confidence interval of plus or minus ${money(half)}` : "; a single response gives no estimate of variation"}`}
       >
         <Key x={16} y={20} fill={INK3} size={9.5}>{`${k} ${k === 1 ? "RESPONSE" : "RESPONSES"} · SAME PROMPT`}</Key>
-        <Key x={384} y={20} anchor="end" fill={INK3} size={9}>SIMULATED</Key>
         {draws.map((d, i) => (
           <circle key={i} cx={sx(d.v)} cy={r2(44 + d.j * 66)} r={k > 60 ? 3 : 4} fill={PAPER3} stroke={INK} strokeWidth={1} />
         ))}

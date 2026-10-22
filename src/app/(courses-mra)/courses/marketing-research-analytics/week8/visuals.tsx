@@ -1109,12 +1109,11 @@ export function PeekingPaths() {
       <Frame
         width={640}
         height={344}
-        label={`Simulated A/B tests of two identical versions over 28 days, showing the test statistic after each day for 20 of 200 tests. ${
+        label={`A/B tests of two identical versions over 28 days, showing the test statistic after each day for 20 of 200 tests. ${
           daily ? "Checked every day and stopped at the first significant result" : "Checked once at the planned end"
         }, ${fp} of 200 tests, ${Math.round((fp / PEEK_TESTS) * 100)} percent, report a difference that does not exist`}
       >
         <Key x={20} y={22}>{"TWO IDENTICAL VERSIONS \u00b7 TEST STATISTIC AFTER EACH DAY"}</Key>
-        <Key x={620} y={22} anchor="end" fill={INK3}>SIMULATED</Key>
         {/* the significance zones */}
         <rect x={x0} y={Y(lim)} width={x1 - x0} height={r2(Y(1.96) - Y(lim))} fill={COUNTER_TINT} />
         <rect x={x0} y={Y(-1.96)} width={x1 - x0} height={r2(Y(-lim) - Y(-1.96))} fill={COUNTER_TINT} />
@@ -1438,7 +1437,6 @@ export function PilotDemand() {
         <RatingRow1 x={36} y={188} n={7} box={14} gap={2} numbers={false} />
 
         <Key x={sx} y={22}>PURCHASE INTENTION</Key>
-        <Key x={620} y={22} anchor="end" fill={INK3}>SIMULATED</Key>
         {rows.map((r) => {
           const count = new Map<number, number>();
           return (
@@ -1519,10 +1517,9 @@ export function BanditAllocation() {
       <Frame
         width={640}
         height={332}
-        label={`A simulated bandit allocating 2,000 daily impressions among four ad versions over 14 days. On day 1 each version receives about a quarter; by day ${day}, version C, the best performer, receives ${shareC} percent`}
+        label={`A bandit allocating 2,000 daily impressions among four ad versions over 14 days. On day 1 each version receives about a quarter; by day ${day}, version C, the best performer, receives ${shareC} percent`}
       >
         <Key x={20} y={22}>SHARE OF EACH DAY&rsquo;S IMPRESSIONS</Key>
-        <Key x={620} y={22} anchor="end" fill={INK3}>SIMULATED</Key>
         <Key x={20} y={52} fill={SIGNAL}>{`DAY ${day} \u00b7 VERSION C`}</Key>
         <Display x={170} y={56} size={26} fill={SIGNAL}>{`${shareC}%`}</Display>
 
@@ -1604,7 +1601,6 @@ export function CostAndPrecision() {
         label={`28,000 impressions over four ad versions, ${m === "fixed" ? "split equally, 7,000 each" : "allocated by a bandit: 1,294, 3,954, 18,773 and 3,981"}. ${fmt(weaker)} impressions go to the weaker versions, losing about ${lost} clicks. The 95 percent confidence interval for version C's advantage over version A is plus or minus ${half.toFixed(2)} percentage points`}
       >
         <Key x={20} y={22}>IMPRESSIONS PER VERSION</Key>
-        <Key x={620} y={22} anchor="end" fill={INK3}>SIMULATED</Key>
         {n.map((v, i) => (
           <g key={i}>
             <Key x={20} y={r2(58 + i * 34 + 4)} fill={i === 2 ? SIGNAL : INK2}>{VERSIONS[i]}</Key>
