@@ -21,7 +21,144 @@ export const PAPER3 = "var(--paper-3)";
 export const SIGNAL_TINT = "rgba(200, 62, 29, 0.12)";
 export const COUNTER_TINT = "rgba(27, 94, 75, 0.13)";
 
-/** Cool mineral palette constants for Isometric Tabletop Diorama plates. */
+/* --------------------------------------------------------------------------
+   Patent drawing: the course style (see the course CLAUDE.md).
+   -------------------------------------------------------------------------- */
+
+/** Patent-drawing palette: white sheet, black line and stipple, examiner's red. */
+export const PAT = {
+  paper: "#FFFFFF",
+  ink: "#141414",
+  ink3: "#666666",
+  signal: "#B8321F",
+  counter: "#1F5747",
+} as const;
+
+/** Line weights: outlines, hairlines (text lines, hidden edges) and emphasis. */
+export const LINE = { outline: 0.9, hair: 0.6, bold: 1.3 } as const;
+
+/** Centre line (long dash, short dash) for axes, dividers and alignment. */
+export const CENTRE_DASH = "14 3 2 3";
+
+/** The stipple fills. `id` prefixes keep several plates on one page apart. */
+export const stip = (id: string, tone: "dense" | "light" | "signal" | "counter") => `url(#${id}-${tone})`;
+
+/**
+ * Stipple pattern defs. Render once inside each plate's <Frame>, then fill
+ * shaded faces with `stip(id, "dense")` (side faces, shadows), `stip(id,
+ * "light")` (top faces), and `stip(id, "signal")` for the one finding.
+ */
+export function PatentDefs({ id }: { id: string }) {
+  const dot = (tone: string, colour: string, size: number, r: [number, number]) => (
+    <pattern id={`${id}-${tone}`} width={size} height={size} patternUnits="userSpaceOnUse">
+      <circle cx={1} cy={1} r={r[0]} fill={colour} />
+      <circle cx={r2(size * 0.72)} cy={r2(size * 0.66)} r={r[1]} fill={colour} />
+    </pattern>
+  );
+  return (
+    <defs>
+      {dot("dense", PAT.ink, 3, [0.55, 0.45])}
+      {dot("light", PAT.ink, 5, [0.5, 0.4])}
+      {dot("signal", PAT.signal, 3, [0.6, 0.5])}
+      {dot("counter", PAT.counter, 3, [0.6, 0.5])}
+    </defs>
+  );
+}
+
+/**
+ * A box in oblique projection: white front face, stippled top and side.
+ * (x, y) is the front face's top-left; the depth runs up and right by (dx, dy).
+ */
+export function ObliqueBox({
+  id,
+  x,
+  y,
+  w,
+  h,
+  dx = 10,
+  dy = 6,
+  front = PAT.paper,
+  top,
+  side,
+  stroke = PAT.ink,
+}: {
+  id: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  dx?: number;
+  dy?: number;
+  front?: string;
+  top?: string;
+  side?: string;
+  stroke?: string;
+}) {
+  const s = { stroke, strokeWidth: LINE.outline, strokeLinejoin: "round" as const };
+  return (
+    <g>
+      <path d={`M${x} ${y}L${r2(x + dx)} ${r2(y - dy)}H${r2(x + w + dx)}L${r2(x + w)} ${y}Z`} fill={top ?? stip(id, "light")} {...s} />
+      <path
+        d={`M${r2(x + w)} ${y}L${r2(x + w + dx)} ${r2(y - dy)}V${r2(y + h - dy)}L${r2(x + w)} ${r2(y + h)}Z`}
+        fill={side ?? stip(id, "dense")}
+        {...s}
+      />
+      <rect x={x} y={y} width={w} height={h} fill={front} {...s} />
+    </g>
+  );
+}
+
+/** FIG. numbering under a figure, in Caslon italic: `FIG. 2 — <concept from the slide>`. */
+export function Fig({
+  x,
+  y,
+  n,
+  children,
+  anchor = "middle",
+  size = 12,
+}: {
+  x: number;
+  y: number;
+  n: number | string;
+  children?: React.ReactNode;
+  anchor?: Anchor;
+  size?: number;
+}) {
+  return (
+    <text x={x} y={y} textAnchor={anchor} fontFamily={SERIF} fontStyle="italic" fontSize={size} fill={PAT.ink}>
+      FIG. {n}
+      {children ? <> — {children}</> : null}
+    </text>
+  );
+}
+
+/** Tracked Caslon capitals for a concept name set on or beside a drawn part. */
+export function PatentKey({
+  x,
+  y,
+  children,
+  anchor = "middle",
+  fill = PAT.ink,
+  size = 11,
+}: {
+  x: number;
+  y: number;
+  children: React.ReactNode;
+  anchor?: Anchor;
+  fill?: string;
+  size?: number;
+}) {
+  return (
+    <text x={x} y={y} textAnchor={anchor} fontFamily={SERIF} fontSize={size} letterSpacing="0.22em" fill={fill}>
+      {children}
+    </text>
+  );
+}
+
+/**
+ * Legacy palette of the earlier Isometric Tabletop style. Weeks 1–2 still use
+ * it until their plates are redrawn in patent drawing; new plates use PAT.
+ */
 export const PAL = {
   paper: "#F2F5F4",
   well: "#E5ECEA",
@@ -123,7 +260,7 @@ export function Note({
   );
 }
 
-/** Display numeral or word in Newsreader, for the few places a plate needs weight. */
+/** Display numeral or word in Libre Caslon, for the few places a plate needs weight. */
 export function Display({
   x,
   y,

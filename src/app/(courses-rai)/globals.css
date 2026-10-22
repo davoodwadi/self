@@ -4,18 +4,17 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ==========================================================================
-   ISOMETRIC TABLETOP DIORAMA — design system for Responsible AI & Governance
+   PATENT DRAWING — design system for Responsible AI & Governance
    --------------------------------------------------------------------------
-   A 3D architectural scale model on a cool mineral tabletop: cool drafting
-   paper (#F2F5F4), slate-black ink (#101820), bevelled model slabs (#E8EFED
-   top, #CEDAD7 front, #B4C4C0 side), one vermilion hazard signal (#C83E1D)
-   for algorithmic harm or rule breach, and one verdigris counterweight
-   (#1B5E4B) for the governed baseline or protected right.
+   The deck reads like a patent filing: white sheets, fine black line
+   drawings shaded with stipple, FIG. numbering in Caslon italic, and one
+   examiner's red for the finding (the harm, disparity or fault).
 
-   Ink      #101820   headings, edges, rules, the default voice
-   Signal   #C83E1D   vermilion — disparity, risk finding, intervention
-   Counter  #1B5E4B   verdigris — benchmark, protected right, baseline
-   Paper    #F2F5F4   cool mineral ground (zero yellow/sepia)
+   Ink      #141414   headings, outlines, stipple, the default voice
+   Signal   #B8321F   examiner's red: the finding, harm, disparity
+   Counter  #1F5747   rare second ink: the protected right, when a
+                      contrast must be seen
+   Paper    #FFFFFF   the sheet
    ========================================================================== */
 
 @theme inline {
@@ -33,48 +32,45 @@
   --color-background: var(--paper);
   --color-foreground: var(--ink);
 
-  --font-display: var(--font-newsreader);
-  --font-sans: var(--font-plex-sans);
-  --font-mono: var(--font-plex-sans);
-  --font-serif: var(--font-newsreader);
+  --font-display: var(--font-caslon);
+  --font-sans: var(--font-franklin);
+  --font-mono: var(--font-franklin);
+  --font-serif: var(--font-caslon);
 }
 
 @layer base {
   :root {
-    /* --- Ground (Cool Mineral — never yellow/sepia) --------------------- */
-    --paper: #f2f5f4; /* page ground */
-    --paper-2: #e5ecea; /* figure wells, bands */
-    --paper-3: #cedad7; /* filled zones, front slab face */
-    --slab-top: #e8efed;
-    --slab-left: #cedad7;
-    --slab-right: #b4c4c0;
+    /* --- Ground (the patent sheet) -------------------------------------- */
+    --paper: #ffffff; /* page ground, plates */
+    --paper-2: #f5f5f3; /* bands, figure wells */
+    --paper-3: #e9e9e6; /* filled zones */
 
     /* --- Ink ------------------------------------------------------------ */
-    --ink: #101820; /* headings, model outlines */
-    --ink-2: #2b3742; /* body */
-    --ink-3: #586773; /* captions, meta */
-    --rule: #c4d1ce; /* hairlines */
-    --rule-2: #a8bab6; /* emphasised rule */
+    --ink: #141414; /* headings, outlines, stipple */
+    --ink-2: #2b2b2b; /* body */
+    --ink-3: #666666; /* captions, meta */
+    --rule: #d9d9d5; /* hairlines */
+    --rule-2: #b5b5b0; /* emphasised rule */
 
-    /* --- Signal (vermilion) --------------------------------------------- */
-    --signal: #c83e1d;
-    --signal-deep: #962b11;
-    --signal-tint: rgba(200, 62, 29, 0.09);
-    --signal-line: rgba(200, 62, 29, 0.3);
+    /* --- Signal (examiner's red) ---------------------------------------- */
+    --signal: #b8321f;
+    --signal-deep: #8f2414;
+    --signal-tint: rgba(184, 50, 31, 0.08);
+    --signal-line: rgba(184, 50, 31, 0.3);
 
-    /* --- Counter (verdigris) -------------------------------------------- */
-    --counter: #1b5e4b;
-    --counter-deep: #124234;
-    --counter-tint: rgba(27, 94, 75, 0.09);
-    --counter-line: rgba(27, 94, 75, 0.3);
+    /* --- Counter (rare second ink) -------------------------------------- */
+    --counter: #1f5747;
+    --counter-deep: #153d32;
+    --counter-tint: rgba(31, 87, 71, 0.08);
+    --counter-line: rgba(31, 87, 71, 0.3);
 
     /* --- Status ---------------------------------------------------------- */
-    --affirm: #2e6a4a;
-    --affirm-tint: rgba(46, 106, 74, 0.08);
+    --affirm: #1f5747;
+    --affirm-tint: rgba(31, 87, 71, 0.08);
 
     /* --- Type ------------------------------------------------------------ */
-    --font-heading: var(--font-newsreader, Georgia, "Times New Roman", serif);
-    --font-body: var(--font-plex-sans, ui-sans-serif, system-ui, sans-serif);
+    --font-heading: var(--font-caslon, "Libre Caslon Text", Georgia, serif);
+    --font-body: var(--font-franklin, "Libre Franklin", ui-sans-serif, system-ui, sans-serif);
     --font-label: var(--font-body);
 
     /* --- Measure & rhythm ------------------------------------------------ */
@@ -111,7 +107,7 @@
   h4 {
     color: var(--ink);
     font-family: var(--font-heading);
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.15;
     letter-spacing: -0.015em;
   }
@@ -134,7 +130,7 @@
 .type-display {
   font-family: var(--font-heading);
   font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.02;
   letter-spacing: -0.025em;
   color: var(--ink);
@@ -143,7 +139,7 @@
 .type-h1 {
   font-family: var(--font-heading);
   font-size: clamp(2.1rem, 4.6vw, 3.75rem);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.04;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -152,7 +148,7 @@
 .type-h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.35rem, 2vw, 1.75rem);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.22;
   color: var(--ink);
 }
@@ -207,9 +203,9 @@
   color: var(--ink);
 }
 
-/* Figure wells: a tinted panel that belongs to the paper. */
+/* Figure wells: a white sheet with a hairline border, as on a patent page. */
 .figure-well {
-  background: var(--paper-2);
+  background: var(--paper);
   border: var(--rule-weight) solid var(--rule);
 }
 

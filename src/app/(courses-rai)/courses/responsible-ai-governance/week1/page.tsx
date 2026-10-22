@@ -17,43 +17,43 @@ import {
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  IsoScalingRule,
-  IsoGovernanceAuthority,
-  IsoEthicsWashing,
-  IsoThreeLenses,
-  IsoWelfareTradeoff,
-  IsoDeontologicalDuty,
-  IsoVirtueCharacter,
-  IsoFragmentedChain,
-  IsoValueChainFiveActors,
-  IsoManyHands,
-  IsoAccountabilityDossiers,
-  IsoInsuranceClaims,
-  IsoBenchmarkGap,
-  IsoProbabilisticRuns,
-  IsoBenchmarkFailures,
-  IsoSixStages,
-  IsoSharedAuthority,
-  IsoInTheLoop,
-  IsoOnTheLoop,
-  IsoAutonomous,
-  IsoOversightFailures,
-  IsoDecisionRiskRegimes,
-  IsoDelegatedExchange,
-  IsoSurrogateConsumer,
-  IsoDualAgencyRisks,
-  IsoTravelAgentHotel,
-  IsoConsequentialism,
-  IsoDeontology,
-  IsoVirtueEthics,
-  IsoLoanWide,
+  ScalingRule,
+  GovernanceAuthority,
+  EthicsWashing,
+  ThreeLenses,
+  WelfareTradeoff,
+  DeontologicalDuty,
+  VirtueCharacter,
+  FragmentedChain,
+  ValueChainFiveActors,
+  ManyHands,
+  AccountabilityDossiers,
+  InsuranceClaims,
+  BenchmarkGap,
+  ProbabilisticRuns,
+  BenchmarkFailures,
+  SixStages,
+  SharedAuthority,
+  InTheLoop,
+  OnTheLoop,
+  Autonomous,
+  OversightFailures,
+  DecisionRiskRegimes,
+  DelegatedExchange,
+  SurrogateConsumer,
+  DualAgencyRisks,
+  TravelAgentHotel,
+  Consequentialism,
+  Deontology,
+  VirtueEthics,
+  LoanWide,
 } from "./visuals";
 
 export {
-  IsoConsequentialism,
-  IsoDeontology,
-  IsoVirtueEthics,
-  IsoLoanWide,
+  Consequentialism,
+  Deontology,
+  VirtueEthics,
+  LoanWide,
 };
 
 // ============================================================================
@@ -117,7 +117,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-5">
-          <IsoScalingRule />
+          <ScalingRule />
         </Plate>
         <div className="mt-6 grid w-full gap-6 md:grid-cols-2 md:gap-10">
           <Ruled weight="thin">
@@ -169,7 +169,7 @@ export default function Week1Page() {
               model and on the basis of what evidence.
             </P>
             <Plate className="mt-4">
-              <IsoGovernanceAuthority />
+              <GovernanceAuthority />
             </Plate>
           </Ruled>
           <Ruled tone="signal" className="flex flex-col justify-between">
@@ -179,7 +179,7 @@ export default function Week1Page() {
               <Term tone="signal">ethics washing</Term>.
             </P>
             <Plate className="mt-4">
-              <IsoEthicsWashing />
+              <EthicsWashing />
             </Plate>
           </Ruled>
         </div>
@@ -214,7 +214,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-6">
-          <IsoThreeLenses />
+          <ThreeLenses />
         </Plate>
       </Slide>
 
@@ -253,7 +253,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-6">
-          <IsoWelfareTradeoff />
+          <WelfareTradeoff />
         </Plate>
       </Slide>
 
@@ -278,7 +278,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="my-5">
-          <IsoDeontologicalDuty />
+          <DeontologicalDuty />
         </Plate>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Ruled tone="signal">
@@ -334,7 +334,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-6">
-          <IsoVirtueCharacter />
+          <VirtueCharacter />
         </Plate>
       </Slide>
 
@@ -357,7 +357,7 @@ export default function Week1Page() {
               time.
             </P>
             <Plate className="mt-4">
-              <IsoConsequentialism />
+              <Consequentialism />
             </Plate>
           </Ruled>
 
@@ -368,7 +368,7 @@ export default function Week1Page() {
               duty, or treats individuals merely as instruments for revenue.
             </P>
             <Plate className="mt-4">
-              <IsoDeontology />
+              <Deontology />
             </Plate>
           </Ruled>
 
@@ -379,7 +379,7 @@ export default function Week1Page() {
               institution.
             </P>
             <Plate className="mt-4">
-              <IsoVirtueEthics />
+              <VirtueEthics />
             </Plate>
           </Ruled>
         </div>
@@ -395,7 +395,7 @@ export default function Week1Page() {
             institutional integrity require <Term tone="ink">revision or rejection</Term>.
           </P>
           <Plate className="mt-4">
-            <IsoLoanWide />
+            <LoanWide />
           </Plate>
         </div>
       </Slide>
@@ -420,7 +420,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-6">
-          <IsoFragmentedChain />
+          <FragmentedChain />
         </Plate>
       </Slide>
 
@@ -488,7 +488,7 @@ export default function Week1Page() {
           </li>
         </ol>
         <Plate className="mt-6">
-          <IsoValueChainFiveActors />
+          <ValueChainFiveActors />
         </Plate>
       </Slide>
 
@@ -525,7 +525,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-5">
-          <IsoManyHands />
+          <ManyHands />
         </Plate>
         <p className="type-quote mt-6 w-full border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-5 !max-w-none !text-[clamp(1.15rem,1.75vw,1.5rem)]">
           Accountable governance resolves the problem of many hands by
@@ -581,7 +581,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-6">
-          <IsoAccountabilityDossiers />
+          <AccountabilityDossiers />
         </Plate>
       </Slide>
 
@@ -603,7 +603,7 @@ export default function Week1Page() {
             the model vendor and the insurance firm?
           </Prompt>
           <Plate>
-            <IsoInsuranceClaims />
+            <InsuranceClaims />
           </Plate>
         </div>
       </Slide>
@@ -631,7 +631,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-6">
-          <IsoBenchmarkGap />
+          <BenchmarkGap />
         </Plate>
       </Slide>
 
@@ -676,7 +676,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-5">
-          <IsoProbabilisticRuns />
+          <ProbabilisticRuns />
         </Plate>
       </Slide>
 
@@ -723,7 +723,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-5">
-          <IsoBenchmarkFailures />
+          <BenchmarkFailures />
         </Plate>
       </Slide>
 
@@ -807,7 +807,7 @@ export default function Week1Page() {
           </li>
         </ol>
         <Plate className="mt-5">
-          <IsoSixStages />
+          <SixStages />
         </Plate>
       </Slide>
 
@@ -833,7 +833,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-6">
-          <IsoSharedAuthority />
+          <SharedAuthority />
         </Plate>
       </Slide>
 
@@ -858,7 +858,7 @@ export default function Week1Page() {
               is taken, as in high-value commercial lending or medical triage.
             </P>
             <Plate className="mt-4">
-              <IsoInTheLoop />
+              <InTheLoop />
             </Plate>
           </Ruled>
           <Ruled tone="ink" className="flex flex-col justify-between">
@@ -870,7 +870,7 @@ export default function Week1Page() {
               dynamic retail pricing or fraud blocking.
             </P>
             <Plate className="mt-4">
-              <IsoOnTheLoop />
+              <OnTheLoop />
             </Plate>
           </Ruled>
           <Ruled tone="signal" className="flex flex-col justify-between">
@@ -882,7 +882,7 @@ export default function Week1Page() {
               shopping agents.
             </P>
             <Plate className="mt-4">
-              <IsoAutonomous />
+              <Autonomous />
             </Plate>
           </Ruled>
         </div>
@@ -927,7 +927,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-5">
-          <IsoOversightFailures />
+          <OversightFailures />
         </Plate>
       </Slide>
 
@@ -974,7 +974,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-5">
-          <IsoDecisionRiskRegimes />
+          <DecisionRiskRegimes />
         </Plate>
       </Slide>
 
@@ -999,7 +999,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-6">
-          <IsoDelegatedExchange />
+          <DelegatedExchange />
         </Plate>
       </Slide>
 
@@ -1026,7 +1026,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="my-5">
-          <IsoSurrogateConsumer />
+          <SurrogateConsumer />
         </Plate>
         <div className="grid w-full gap-8 md:grid-cols-2">
           <Ruled tone="signal">
@@ -1093,7 +1093,7 @@ export default function Week1Page() {
           </Ruled>
         </div>
         <Plate className="mt-5">
-          <IsoDualAgencyRisks />
+          <DualAgencyRisks />
         </Plate>
       </Slide>
 
@@ -1116,7 +1116,7 @@ export default function Week1Page() {
             should have prevented it.
           </Prompt>
           <Plate>
-            <IsoTravelAgentHotel />
+            <TravelAgentHotel />
           </Plate>
         </div>
       </Slide>
