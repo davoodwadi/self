@@ -999,7 +999,7 @@ export default function Week2Page() {
           21 · Discussion: The Credit Scoring Trade-Off
           ================================================================ */}
       <Slide id="discussion-the-credit-scoring-trade-off" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
+        <SlideHeading>
           The Credit Scoring Trade-Off
         </SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
@@ -1252,7 +1252,7 @@ export default function Week2Page() {
           26 · Discussion: Neutral Targeting, Skewed Delivery
           ================================================================ */}
       <Slide id="discussion-neutral-targeting-skewed-delivery" border className="!py-8">
-        <SlideHeading kicker="Discussion:" tone="counter">
+        <SlideHeading>
           Neutral Targeting, Skewed Delivery
         </SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">

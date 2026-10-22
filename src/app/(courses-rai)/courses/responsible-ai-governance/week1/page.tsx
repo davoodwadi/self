@@ -589,7 +589,7 @@ export default function Week1Page() {
           13 · Discussion: When a Pricing Model Discriminates
           ================================================================ */}
       <Slide id="discussion-when-a-pricing-model-discriminates" border className="!py-8">
-        <SlideHeading kicker="Discussion:">
+        <SlideHeading>
           When a Pricing Model Discriminates
         </SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
@@ -1101,7 +1101,7 @@ export default function Week1Page() {
           25 · Discussion: The Autonomous Travel Agent
           ================================================================ */}
       <Slide id="discussion-the-autonomous-travel-agent" border className="!py-8">
-        <SlideHeading kicker="Discussion:">
+        <SlideHeading>
           The Autonomous Travel Agent
         </SlideHeading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
