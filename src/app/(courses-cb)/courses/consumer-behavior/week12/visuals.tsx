@@ -23,7 +23,7 @@
    Serve?" (my-papers/Publication_6_JBE): Study 1 Table 5 (target choice by
    principal and sponsorship, N = 500 per cell) and Study 2 Table 14 (choice
    by disclosure label and principal). The filter-bubble feed runs on
-   SIMULATED data and says so on the plate.
+   made-up data.
    ========================================================================== */
 
 import React from "react";
@@ -840,7 +840,7 @@ export function FilterBubble() {
   const kinds = inFeed.filter(Boolean).length;
   const like = (k: Kind) => setLikes((l) => [...l, k]);
   const label =
-    `A simulated recommendation feed of eight products. ${likes.length === 0 ? "No likes yet: two of each kind (sneakers, mugs, books, plants)." : `After ${likes.length} like${likes.length > 1 ? "s" : ""} (${likes.map((k) => KIND_NAMES[k]).join(", ")}), the feed shows ` + [0, 1, 2, 3].map((k) => { const n = feed.filter((f) => f.kind === k).length; return `${n} ${n === 1 ? KIND_NAMES[k].slice(0, -1) : KIND_NAMES[k]}`; }).join(", ") + "."} ` +
+    `A recommendation feed of eight products. ${likes.length === 0 ? "No likes yet: two of each kind (sneakers, mugs, books, plants)." : `After ${likes.length} like${likes.length > 1 ? "s" : ""} (${likes.map((k) => KIND_NAMES[k]).join(", ")}), the feed shows ` + [0, 1, 2, 3].map((k) => { const n = feed.filter((f) => f.kind === k).length; return `${n} ${n === 1 ? KIND_NAMES[k].slice(0, -1) : KIND_NAMES[k]}`; }).join(", ") + "."} ` +
     `Kinds of product still in the feed: ${kinds} of 4.`;
   return (
     <>
@@ -892,9 +892,6 @@ export function FilterBubble() {
         {likes.slice(-8).map((k, i) => (
           <KindItem key={i} kind={k} v={0} cx={r2(490 + i * 35)} cy={226} s={0.55} seed={1300 + i * 11} />
         ))}
-        <SketchText x={784} y={288} anchor="end" size={10} fill={SK.pencil}>
-          SIMULATED
-        </SketchText>
       </SketchFrame>
       <div className="mt-2 flex flex-wrap items-center gap-2 px-1">
         <PlateButton onClick={() => setLikes([])}>Start over</PlateButton>

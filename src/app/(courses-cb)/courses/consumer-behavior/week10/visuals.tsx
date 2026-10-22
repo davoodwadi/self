@@ -1531,16 +1531,13 @@ export function FakeReviews() {
   const g = 262;
   const cell = (i: number): Pt => [20 + (i % 3) * 110, 64 + Math.floor(i / 3) * 46];
   const label =
-    `SIMULATED. Left: the camel sneaker's reviews: eight genuine ones and ${fakes} synthetic five-star ${fakes === 1 ? "review" : "reviews"} that look the same` +
+    `Left: the camel sneaker's reviews: eight genuine ones and ${fakes} synthetic five-star ${fakes === 1 ? "review" : "reviews"} that look the same` +
     (reveal && fakes ? ", here marked with the AI sparkle" : "") +
     `. Middle: the AI summary gives the camel sneaker ${avg.toFixed(1)} stars, "${verdictFor(avg).toLowerCase()}", beside the blue rival's ${RIVAL_AVG.toFixed(1)}. Right: a shopper and an AI agent both pick the ${ours ? "camel" : "blue"} sneaker.`;
   return (
     <>
       <SketchFrame id="sk-fake-reviews" width={800} height={290} label={label}>
         <Backwash cx={400} cy={146} rx={394} ry={140} seed={6000} />
-        <SketchText x={780} y={24} anchor="end" size={10.5} fill={SK.pencil}>
-          SIMULATED
-        </SketchText>
         <Shoe x={46} y={40} s={0.7} seed={6001} />
         {/* the review grid */}
         {Array.from({ length: GENUINE.length + FAKE_SLOTS }, (_, i) => {

@@ -1307,7 +1307,7 @@ export function AskTwoModels() {
   const hOf = (share: number) => r2((share / top) * band);
   const label = `Two AI models, A and B, answer the same item on a scale from 1 (strongly disagree) to 7 (strongly agree), asked ${asked} ${asked === 1 ? "time" : "times"} each. ${data
     .map((d, i) => `${SIM_MODELS[i].name}: latest answer ${d.latest + 1}, average ${fmt1(d.mean)}, answers per point ${d.counts.join(", ")}`)
-    .join(". ")}.${probs ? ` Outlines show the probability each model assigns to each point; expected answers ${fmt1(data[0].expected)} and ${fmt1(data[1].expected)}.` : ""} The data are simulated.`;
+    .join(". ")}.${probs ? ` Outlines show the probability each model assigns to each point; expected answers ${fmt1(data[0].expected)} and ${fmt1(data[1].expected)}.` : ""}`;
   return (
     <>
       <SketchFrame id="sk-ask-two-models" width={800} height={256} label={label}>
@@ -1373,9 +1373,6 @@ export function AskTwoModels() {
             </g>
           );
         })}
-        <SketchText x={776} y={250} anchor="end" size={11} fill={SK.pencil}>
-          SIMULATED
-        </SketchText>
       </SketchFrame>
       <div className="mt-2 flex flex-wrap items-center gap-2 px-1" aria-live="polite">
         <PlateButton onClick={() => setAsked((a) => Math.min(a + 1, 999))} icon={<RotateCw className="size-3.5" aria-hidden />}>

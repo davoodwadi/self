@@ -1134,13 +1134,13 @@ export function SearchStreet() {
   );
   const visit = () => setSeen((n) => Math.min(STREET_SHOPS, n + 1));
   const awnings = [SK.camel, SK.sky, SK.blush, SK.tan, SK.earth, SK.camel, SK.sky, SK.blush];
-  const label = `SIMULATED. A street of eight shops selling the same headphones. ${seen} of 8 shops visited; prices seen: ${prices
+  const label = `A street of eight shops selling the same headphones. ${seen} of 8 shops visited; prices seen: ${prices
     .slice(0, seen)
     .map((p) => `$${p}`)
     .join(", ")}. Money saved against the first price: $${saved(seen)}; search cost at $4 a visit: $${cost(seen)}. The best place to stop so far is shop ${stop}, marked teal with the price paid there.`;
   return (
     <>
-      <SketchFrame id="sk-search-street" width={800} height={330} label={label}>
+      <SketchFrame id="sk-search-street" width={800} height={322} label={label}>
         <Backwash cx={400} cy={160} rx={394} ry={156} seed={9001} />
         <Ground x0={24} x1={776} y={104} seed={9002} />
         {xs.map((x, k) => {
@@ -1217,9 +1217,6 @@ export function SearchStreet() {
             {endLabel("SEARCH COST", cost(seen), yOf(cost(seen)), !savedOnTop, SK.tan)}
           </>
         ) : null}
-        <SketchText x={780} y={322} anchor="end" size={9.5} fill={SK.pencil}>
-          SIMULATED
-        </SketchText>
       </SketchFrame>
       <div className="mt-2 flex flex-wrap items-center gap-2 px-1" aria-live="polite">
         <PlateButton onClick={visit}>Visit the next shop</PlateButton>

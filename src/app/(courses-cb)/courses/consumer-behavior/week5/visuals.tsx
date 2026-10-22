@@ -2157,7 +2157,7 @@ export function AskAgain() {
   const barH = 118;
   const colX = (i: number) => x0 + i * (box + 4);
   const card = sharp(rp([[10, 14], [132, 14], [132, 42], [10, 42]]), true, 3);
-  const label = `The AI agent phone, asked would you buy it? ${asked} times, answers on a row of five boxes; its latest answer is box ${latest + 1}. Bars under the boxes count the answers so far: ${counts.join(", ")}. The data are simulated.`;
+  const label = `The AI agent phone, asked would you buy it? ${asked} times, answers on a row of five boxes; its latest answer is box ${latest + 1}. Bars under the boxes count the answers so far: ${counts.join(", ")}.`;
   return (
     <>
       <SketchFrame id="sk-ask-again" width={400} height={262} label={label}>
@@ -2200,9 +2200,6 @@ export function AskAgain() {
         })}
         <SketchText x={colX(0)} y={254} size={9.5}>
           ANSWERS SO FAR
-        </SketchText>
-        <SketchText x={colX(4) + box} y={254} anchor="end" size={9.5} fill={SK.pencil}>
-          SIMULATED
         </SketchText>
       </SketchFrame>
       <div className="mt-2 flex flex-wrap items-center gap-2 px-1" aria-live="polite">
