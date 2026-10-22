@@ -1995,3 +1995,96 @@ export function MarketingPipelines() {
     </Frame>
   );
 }
+
+/**
+ * Delivery skew. FIG. 1, the ad auction: one budget buys twenty impressions
+ * for a STEM careers ad, split between young women and men; the slider sets
+ * what retail bidding makes a click from young women cost. A budget-
+ * constrained algorithm buys the cheaper clicks, so young women's row empties
+ * (red). FIG. 2, relevance steering: a luxury rental listing goes to the
+ * higher-income house, a subprime credit ad to the vulnerable neighborhood
+ * (red).
+ */
+export function AdAuctionSkew() {
+  const [cost, setCost] = useState(1.5);
+  const id = "w2-auction";
+  const share = 1 / (1 + cost * cost);
+  const women = Math.round(20 * share);
+  const men = 20 - women;
+  const lanes = [
+    { y: 52, key: "YOUNG WOMEN", n: women, price: `$${cost.toFixed(2)}`, red: women < 10 },
+    { y: 134, key: "MEN", n: men, price: "$1.00", red: false },
+  ];
+  return (
+    <div>
+      <Frame
+        width={800}
+        height={200}
+        label={`Patent drawing in two figures. FIG. 1, the ad auction: one budget, a stack of coins, buys twenty impressions of a STEM careers ad. A click from young women costs ${lanes[0].price} and a click from men $1.00; the budget-constrained algorithm serves ${women} impressions to young women and ${men} to men${women < 10 ? ", leaving young women's empty slots in red" : ""}. FIG. 2, relevance steering: a luxury rental listing runs to a large higher-income house, and a subprime credit ad runs, in red, to two small houses in a vulnerable neighborhood.`}
+      >
+        <PatentDefs id={id} />
+
+        {/* FIG. 1 — one budget, two prices */}
+        <ObliqueBox id={id} x={22} y={118} w={56} h={10} dx={10} dy={6} />
+        <Coins id={id} cx={52} y={116} n={9} rx={16} ry={5} h={6} />
+        {lanes.map((l) => (
+          <g key={l.key}>
+            <path d={`M70 ${l.y < 100 ? 74 : 104}C96 ${l.y < 100 ? 74 : 104} 96 ${l.y + 16} 118 ${l.y + 16}`} fill="none" {...hair} />
+            <Tag cx={154} cy={l.y + 16} text={l.price} w={58} size={14} />
+            <PatentKey x={206} y={l.y} anchor="start" size={10} fill={l.red ? PAT.signal : PAT.ink}>
+              {l.key}
+            </PatentKey>
+            {Array.from({ length: 20 }, (_, i) => {
+              const on = i < l.n;
+              return (
+                <rect
+                  key={i}
+                  x={206 + i * 13.5}
+                  y={l.y + 10}
+                  width={10}
+                  height={13}
+                  fill={on ? stip(id, "dense") : PAT.paper}
+                  stroke={!on && l.red ? PAT.signal : PAT.ink}
+                  strokeWidth={LINE.hair}
+                  strokeDasharray={on ? undefined : "2 1.5"}
+                />
+              );
+            })}
+            <Num x={482} y={l.y + 22} size={14} anchor="start" fill={l.red ? PAT.signal : PAT.ink}>
+              {l.n}
+            </Num>
+          </g>
+        ))}
+
+        <line x1={514} y1={14} x2={514} y2={170} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+        {/* FIG. 2 — listings steered by click probability */}
+        {[
+          { y: 34, text: "LUXURY RENTAL", red: false },
+          { y: 112, text: "SUBPRIME CREDIT", red: true },
+        ].map((a) => (
+          <g key={a.text}>
+            <ObliqueBox id={id} x={528} y={a.y} w={134} h={34} dx={8} dy={5} stroke={a.red ? PAT.signal : PAT.ink} />
+            <PatentKey x={595} y={a.y + 21} size={9.5} fill={a.red ? PAT.signal : PAT.ink}>
+              {a.text}
+            </PatentKey>
+            <line x1={672} y1={a.y + 17} x2={688} y2={a.y + 17} stroke={a.red ? PAT.signal : PAT.ink} strokeWidth={a.red ? LINE.bold : LINE.outline} />
+            <path d={headAlongPath(692, a.y + 17, 1, 0, 7)} fill="none" stroke={a.red ? PAT.signal : PAT.ink} strokeWidth={a.red ? LINE.bold : LINE.outline} />
+          </g>
+        ))}
+        <House id={id} x={704} y={74} w={58} h={36} dx={12} dy={7} roof={20} />
+        {[700, 744].map((x) => (
+          <House key={x} id={id} x={x} y={152} w={34} h={34} dx={6} dy={4} roof={12} />
+        ))}
+
+        <Fig x={260} y={192} n={1} size={12}>
+          the ad auction
+        </Fig>
+        <Fig x={656} y={192} n={2} size={12}>
+          click probability
+        </Fig>
+      </Frame>
+      <Slider label="Cost per click, young women" value={cost} min={1} max={3} step={0.25} onChange={setCost} formatValue={(v) => `$${v.toFixed(2)}`} />
+    </div>
+  );
+}
