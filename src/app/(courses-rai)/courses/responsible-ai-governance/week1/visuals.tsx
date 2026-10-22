@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 
 export {
-  IsoAccountabilityDossiers as AccountabilityDossiers,
-  IsoInsuranceClaims as InsuranceClaims,
   IsoBenchmarkGap as BenchmarkGap,
   IsoProbabilisticRuns as ProbabilisticRuns,
   IsoBenchmarkFailures as BenchmarkFailures,
@@ -1234,4 +1232,190 @@ function headAlongPath(x: number, y: number, dx: number, dy: number, s = 9) {
   const bx = x - ux * s;
   const by = y - uy * s;
   return `M${r2(bx - uy * s * 0.55)} ${r2(by + ux * s * 0.55)}L${x} ${y}L${r2(bx + uy * s * 0.55)} ${r2(by - ux * s * 0.55)}`;
+}
+
+/** A round dial with a needle at `deg` (0 = straight up), on a white face. */
+function Dial({ cx, cy, r, deg }: { cx: number; cy: number; r: number; deg: number }) {
+  const ticks = [-60, -30, 0, 30, 60];
+  const a = ((deg - 90) * Math.PI) / 180;
+  return (
+    <g>
+      <circle cx={cx} cy={cy} r={r} fill={PAT.paper} {...ink} />
+      {ticks.map((t) => {
+        const ta = ((t - 90) * Math.PI) / 180;
+        return (
+          <line
+            key={t}
+            x1={r2(cx + Math.cos(ta) * (r - 2))}
+            y1={r2(cy + Math.sin(ta) * (r - 2))}
+            x2={r2(cx + Math.cos(ta) * (r - 6))}
+            y2={r2(cy + Math.sin(ta) * (r - 6))}
+            {...hair}
+          />
+        );
+      })}
+      <line x1={cx} y1={cy} x2={r2(cx + Math.cos(a) * (r - 5))} y2={r2(cy + Math.sin(a) * (r - 5))} {...ink} strokeWidth={LINE.bold} />
+      <circle cx={cx} cy={cy} r={2} fill={PAT.ink} />
+    </g>
+  );
+}
+
+/**
+ * Allocating accountability: one artefact per stakeholder. FIG. 1 the
+ * developer's tabbed model documentation; FIG. 2 the deploying firm's
+ * console with one dial per customer segment; FIG. 3 the platform's ranked
+ * listings with the sponsored slot tagged; FIG. 4 the auditor's stamp of
+ * independent verification.
+ */
+export function AccountabilityDossiers() {
+  const id = "w1-dossier";
+  return (
+    <Frame
+      width={800}
+      height={210}
+      label="Patent drawing in four figures. FIG. 1: a tabbed binder of model documentation. FIG. 2: a monitoring console with three dials, one per customer segment. FIG. 3: a panel of ranked listings whose top slot carries a sponsored tag. FIG. 4: an audit stamp lifted above a page it has marked verified."
+    >
+      <PatentDefs id={id} />
+
+      {/* FIG. 1 — model documentation */}
+      <ObliqueBox id={id} x={58} y={56} w={78} h={108} dx={14} dy={9} />
+      {[66, 98, 130].map((y) => (
+        <path key={y} d={`M136 ${y}L150 ${y - 9}V${y + 9}L136 ${y + 18}Z`} fill={PAT.paper} {...ink} />
+      ))}
+      <line x1={70} y1={76} x2={124} y2={76} {...ink} />
+      {[90, 98, 106, 114, 122, 130].map((y) => (
+        <line key={y} x1={70} y1={y} x2={y % 16 === 0 ? 112 : 124} y2={y} {...hair} />
+      ))}
+      <rect x={70} y={140} width={54} height={14} fill="none" {...hair} />
+      <Fig x={100} y={196} n={1} size={11}>
+        model documentation
+      </Fig>
+
+      {/* FIG. 2 — one dial per customer segment */}
+      <ObliqueBox id={id} x={234} y={84} w={132} h={66} dx={14} dy={9} />
+      <Dial cx={260} cy={116} r={18} deg={-35} />
+      <Dial cx={300} cy={116} r={18} deg={10} />
+      <Dial cx={340} cy={116} r={18} deg={40} />
+      {[260, 300, 340].map((x) => (
+        <line key={x} x1={x - 10} y1={142} x2={x + 10} y2={142} {...hair} />
+      ))}
+      <Fig x={300} y={196} n={2} size={11}>
+        monitoring outcomes
+      </Fig>
+
+      {/* FIG. 3 — ranked listings, the sponsored slot tagged */}
+      <ObliqueBox id={id} x={444} y={52} w={112} h={112} dx={14} dy={9} />
+      {[0, 1, 2].map((i) => (
+        <g key={i}>
+          <rect x={454} y={62 + i * 33} width={92} height={26} fill={PAT.paper} {...ink} />
+          <rect x={460} y={68 + i * 33} width={14} height={14} fill={stip(id, "light")} {...hair} />
+          <line x1={480} y1={71 + i * 33} x2={i === 0 ? 490 : 536} y2={71 + i * 33} {...hair} />
+          <line x1={480} y1={79 + i * 33} x2={524} y2={79 + i * 33} {...hair} />
+        </g>
+      ))}
+      <rect x={494} y={64} width={50} height={11} fill={PAT.paper} {...ink} />
+      <text x={519} y={72.2} textAnchor="middle" fontFamily="var(--font-body)" fontSize={6.6} letterSpacing="0.04em" fill={PAT.ink}>
+        SPONSORED
+      </text>
+      <Fig x={500} y={196} n={3} size={11}>
+        sponsorship disclosures
+      </Fig>
+
+      {/* FIG. 4 — the auditor's stamp, independent verification */}
+      <ellipse cx={700} cy={36} rx={11} ry={5} fill={PAT.paper} {...ink} />
+      <path d="M689 36C689 42 711 42 711 36V40C711 46 689 46 689 40Z" fill={stip(id, "light")} {...ink} />
+      <path d="M696 45V70H704V45" fill={PAT.paper} {...ink} />
+      <ObliqueBox id={id} x={676} y={72} w={44} h={12} dx={8} dy={5} />
+      <line x1={700} y1={88} x2={700} y2={108} {...hair} strokeDasharray={CENTRE_DASH} />
+      <Sheet id={id} x={636} y={164} w={110} d={44} sk={28} t={4} />
+      <ellipse cx={704} cy={142} rx={33} ry={14} fill="none" {...ink} />
+      <ellipse cx={704} cy={142} rx={28} ry={11} fill="none" {...hair} />
+      <text x={704} y={145} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={8} letterSpacing="0.08em" fill={PAT.ink}>
+        VERIFIED
+      </text>
+      <Fig x={700} y={196} n={4} size={11}>
+        independent verification
+      </Fig>
+    </Frame>
+  );
+}
+
+/** A pennant flag on a short pole, pole foot at (x, y). */
+function Flag({ id, x, y, red = false }: { id: string; x: number; y: number; red?: boolean }) {
+  const c = red ? PAT.signal : PAT.ink;
+  return (
+    <g>
+      <line x1={x} y1={y} x2={x} y2={y - 34} stroke={c} strokeWidth={LINE.outline} strokeLinecap="round" />
+      <path
+        d={`M${x} ${y - 34}L${x + 22} ${y - 27}L${x} ${y - 20}Z`}
+        fill={red ? stip(id, "signal") : PAT.paper}
+        stroke={c}
+        strokeWidth={red ? LINE.bold : LINE.outline}
+        strokeLinejoin="round"
+      />
+    </g>
+  );
+}
+
+/**
+ * Discussion case: two claim forms with identical loss lines, one written by
+ * a native and one by a non-native English speaker, pass through the licensed
+ * model; the native claim draws one fraud flag, the non-native claim two
+ * (red).
+ */
+export function InsuranceClaims() {
+  const id = "w1-claims";
+  const form = (y: number) => (
+    <g>
+      <ObliqueBox id={id} x={30} y={y} w={74} h={50} dx={8} dy={5} />
+      <line x1={38} y1={y + 10} x2={78} y2={y + 10} {...ink} />
+      {[18, 25, 32].map((d) => (
+        <line key={d} x1={38} y1={y + d} x2={96} y2={y + d} {...hair} />
+      ))}
+      <rect x={70} y={y + 37} width={26} height={8} fill="none" {...hair} />
+    </g>
+  );
+  return (
+    <Frame
+      width={400}
+      height={215}
+      label="Patent drawing: two claim forms with identical lines, marked native and non-native, pass through one licensed model housing; the native claim comes out with one fraud flag, the non-native claim with two red flags, twice the rate."
+    >
+      <PatentDefs id={id} />
+
+      {form(40)}
+      <PatentKey x={70} y={110} size={9}>
+        NATIVE
+      </PatentKey>
+      {form(128)}
+      <PatentKey x={70} y={198} size={9}>
+        NON-NATIVE
+      </PatentKey>
+
+      {/* Licensed model */}
+      <line x1={114} y1={64} x2={160} y2={92} {...hair} strokeDasharray={CENTRE_DASH} />
+      <line x1={114} y1={152} x2={160} y2={136} {...hair} strokeDasharray={CENTRE_DASH} />
+      <ObliqueBox id={id} x={162} y={72} w={76} h={84} dx={14} dy={9} />
+      <Gear cx={192} cy={104} r={11} n={9} />
+      <Gear cx={216} cy={128} r={9} n={8} phase={0.25} />
+      <line x1={254} y1={92} x2={292} y2={64} {...hair} strokeDasharray={CENTRE_DASH} />
+      <line x1={254} y1={136} x2={292} y2={152} {...hair} strokeDasharray={CENTRE_DASH} />
+
+      {/* Flags out */}
+      <Flag id={id} x={304} y={88} />
+      <Display1 x={372} y={80} text="1×" />
+      <Flag id={id} x={300} y={176} red />
+      <Flag id={id} x={326} y={176} red />
+      <Display1 x={372} y={168} text="2×" red />
+    </Frame>
+  );
+}
+
+/** A quantity set large in Caslon on the plate (a rate, a multiple). */
+function Display1({ x, y, text, red = false, size = 20 }: { x: number; y: number; text: string; red?: boolean; size?: number }) {
+  return (
+    <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={size} fill={red ? PAT.signal : PAT.ink}>
+      {text}
+    </text>
+  );
 }
