@@ -66,7 +66,7 @@ Interactivity lets students discover a relationship by changing something and wa
 
 For every plate, consider whether an interaction would let students discover something, and build one when it does. A static plate that makes its point clearly is the right choice for most slides, so let the content decide.
 
-An interactive plate may run on simulated data when its lesson is a mechanism, such as how answers vary from one sample to the next or how an estimate settles as samples add up. Label the plate SIMULATED where the data appear, keep the simulated numbers plausible, and keep them clearly apart from any cited study so they are never read as its results. When the lesson is a result, such as the size of an effect or the shape of a curve a study found, build the plate on that study's real data. Replace simulated data with real data as soon as it is available.
+An interactive plate may run on made-up data when its lesson is a mechanism, such as how answers vary from one sample to the next or how an estimate settles as samples add up. Every plate is read as illustrative, so the data appear as they are, with no SIMULATED, ILLUSTRATIVE or similar label on the plate, in its title or in its controls. Keep the made-up numbers plausible, and keep them clearly apart from any cited study so they are never read as its results. When the lesson is a result, such as the size of an effect or the shape of a curve a study found, build the plate on that study's real data. Replace made-up data with real data as soon as it is available.
 
 # Shared pieces
 

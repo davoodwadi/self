@@ -415,7 +415,7 @@ export function ThreeLenses() {
 }
 
 /**
- * Consequentialism and market welfare (SIMULATED). Welfare columns for four
+ * Consequentialism and market welfare. Welfare columns for four
  * segments stand on a zero datum, each as wide as its group; the aggregate
  * stands apart. Excluding the narrow minority segment from credit offers
  * lifts the three majority columns and the aggregate, while the minority
@@ -441,8 +441,8 @@ export function WelfareTradeoff() {
     <div>
       <Frame
         width={800}
-        height={206}
-        label={`Patent drawing, simulated data: four segment welfare columns on a zero datum, each as wide as its group, with its people standing on top (three on each majority column, one on the minority column), and an aggregate column apart on the right. ${excluded ? `With the minority segment excluded from credit offers, the three majority columns rise, the aggregate rises from ${offerTotal} to ${total}, and the narrow minority column hangs below zero in red.` : `With credit offered to every segment, all four columns stand above zero and the aggregate is ${total}.`}`}
+        height={190}
+        label={`Patent drawing: four segment welfare columns on a zero datum, each as wide as its group, with its people standing on top (three on each majority column, one on the minority column), and an aggregate column apart on the right. ${excluded ? `With the minority segment excluded from credit offers, the three majority columns rise, the aggregate rises from ${offerTotal} to ${total}, and the narrow minority column hangs below zero in red.` : `With credit offered to every segment, all four columns stand above zero and the aggregate is ${total}.`}`}
       >
         <PatentDefs id={id} />
 
@@ -501,10 +501,6 @@ export function WelfareTradeoff() {
         </text>
         <PatentKey x={690} y={base + 40} size={10}>
           AGGREGATE OUTCOMES
-        </PatentKey>
-
-        <PatentKey x={60} y={198} anchor="start" size={9}>
-          SIMULATED
         </PatentKey>
       </Frame>
       <Segmented
@@ -1511,7 +1507,7 @@ export function BenchmarkGap() {
 }
 
 /**
- * Probabilistic outputs (SIMULATED): a pin board drops the same prompt again
+ * Probabilistic outputs: a pin board drops the same prompt again
  * and again; each run lands one ball in a brand's bin. Students add runs and
  * flip the framing baffle; the most-chosen bin (red) reverses with framing.
  */
@@ -1540,7 +1536,7 @@ export function ProbabilisticRuns() {
       <Frame
         width={800}
         height={222}
-        label={`Patent drawing, simulated data: a hopper drops the same prompt onto a board of pins, past a framing baffle tilted ${framing === "standard" ? "left" : "right"}; after ${runs} repeated runs the balls lie in three brand bins, ${counts[0]} in brand A, ${counts[1]} in brand B and ${counts[2]} in brand C; the most-chosen bin, brand ${"ABC"[top]}, is red.`}
+        label={`Patent drawing: a hopper drops the same prompt onto a board of pins, past a framing baffle tilted ${framing === "standard" ? "left" : "right"}; after ${runs} repeated runs the balls lie in three brand bins, ${counts[0]} in brand A, ${counts[1]} in brand B and ${counts[2]} in brand C; the most-chosen bin, brand ${"ABC"[top]}, is red.`}
       >
         <PatentDefs id={id} />
 
@@ -1591,9 +1587,6 @@ export function ProbabilisticRuns() {
             </g>
           );
         })}
-        <PatentKey x={612} y={216} anchor="start" size={9}>
-          SIMULATED
-        </PatentKey>
       </Frame>
       <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
         <Slider label="Repeated runs" value={runs} min={1} max={30} onChange={setRuns} />
