@@ -1596,3 +1596,53 @@ export function CausalPipework() {
     </Frame>
   );
 }
+
+/**
+ * Part 4: the three criteria as three pins on one rigid plate, over a base
+ * with three holes. Two pins line up with their holes; the third, held by
+ * the same plate, misses its hole (red): the three cannot all be seated.
+ */
+export function IncompatibleTriad() {
+  const id = "w2-triad";
+  const pins = [
+    { x: 250, top: 78, tip: 120, hole: [250, 166], key: "INDEPENDENCE", kx: 236, ky: 104, anchor: "end" as const },
+    { x: 550, top: 78, tip: 120, hole: [550, 166], key: "SEPARATION", kx: 564, ky: 104, anchor: "start" as const },
+    { x: 430, top: 40, tip: 108, hole: [398, 134], key: "SUFFICIENCY", kx: 436, ky: 22, anchor: "middle" as const, red: true },
+  ];
+  return (
+    <Frame
+      width={800}
+      height={200}
+      label="Patent drawing: a rigid triangular plate carries three pins, independence, separation and sufficiency, held over a base with three holes. Centre lines show the independence and separation pins lining up with their holes; the sufficiency pin, fixed by the same plate, lands beside its hole, and the pin and its miss are drawn in red."
+    >
+      <PatentDefs id={id} />
+      {/* base with three holes */}
+      <path d="M150 184L222 124H692L620 184Z" fill={stip(id, "light")} {...ink} />
+      <path d="M150 184V194H620L692 134V124L620 184Z" fill={stip(id, "dense")} {...ink} />
+      <line x1={150} y1={184} x2={620} y2={184} {...ink} />
+      {pins.map((p) => (
+        <ellipse key={p.key} cx={p.hole[0]} cy={p.hole[1]} rx={14} ry={5} fill={PAT.paper} {...ink} />
+      ))}
+      {/* pins, the back one first */}
+      {[...pins].reverse().map((p) => {
+        const c = p.red ? PAT.signal : PAT.ink;
+        return (
+          <g key={p.key}>
+            <line x1={p.x} y1={p.tip + 4} x2={p.x} y2={p.hole[1] + (p.red ? 6 : -7)} stroke={c} strokeWidth={LINE.hair} strokeDasharray={CENTRE_DASH} />
+            <path d={`M${p.x - 5} ${p.top}V${p.tip - 7}L${p.x} ${p.tip}L${p.x + 5} ${p.tip - 7}V${p.top}`} fill={PAT.paper} stroke={c} strokeWidth={p.red ? LINE.bold : LINE.outline} strokeLinejoin="round" />
+            <PatentKey x={p.kx} y={p.ky} anchor={p.anchor} size={11} fill={c}>
+              {p.key}
+            </PatentKey>
+          </g>
+        );
+      })}
+      {/* the rigid plate: a triangle with thickness */}
+      <path d="M244 70L556 70V78L244 78Z" fill={PAT.paper} {...ink} />
+      <path d="M556 70L436 32V40L556 78Z" fill={stip(id, "dense")} {...ink} />
+      <path d="M244 70L436 32L556 70Z" fill={PAT.paper} />
+      <path d="M244 70L436 32L556 70Z" fill={stip(id, "light")} {...ink} />
+      {/* the miss */}
+      <path d="M398 146V154M430 146V154M398 150H430" fill="none" stroke={PAT.signal} strokeWidth={LINE.hair} />
+    </Frame>
+  );
+}
