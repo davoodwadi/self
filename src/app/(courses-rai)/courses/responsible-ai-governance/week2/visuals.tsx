@@ -1433,3 +1433,70 @@ export function GroupAverageVsIndividual() {
     </Frame>
   );
 }
+
+/**
+ * Individual fairness. FIG. 1: two consumers' profiles stand close on the
+ * profile rail; the same span, carried down by dashed lines, bounds how far
+ * apart their predictions may fall. FIG. 2, tokenism: five members of the
+ * protected group stand on steps by qualification; the model selects two
+ * arbitrary members (ticks) and passes over the most qualified (red).
+ */
+export function IndividualFairness() {
+  const id = "w2-lip";
+  const steps = [0, 1, 2, 3, 4];
+  const picked = [0, 2];
+  return (
+    <Frame
+      width={800}
+      height={200}
+      label="Patent drawing in two figures. FIG. 1, distance between predictions: two consumer profiles stand close together on a profile rail; dashed lines carry the same span down to a prediction rail, where both consumers' predictions fall inside it. FIG. 2, tokenism: five members of the protected group stand on five rising steps ordered by qualification; ticks mark the two the model selects, on the lowest and the middle step, while the most qualified member on the top step is passed over with a red cross."
+    >
+      <PatentDefs id={id} />
+
+      {/* FIG. 1 — the profile span bounds the prediction span */}
+      <ObliqueBox id={id} x={50} y={92} w={290} h={8} dx={10} dy={6} />
+      <PatentKey x={50} y={78} anchor="start" size={10}>
+        PROFILES
+      </PatentKey>
+      <Portrait id={id} x={152} y={48} w={26} h={40} />
+      <Portrait id={id} x={190} y={48} w={26} h={40} />
+      <ObliqueBox id={id} x={50} y={160} w={290} h={8} dx={10} dy={6} />
+      <PatentKey x={50} y={146} anchor="start" size={10}>
+        PREDICTIONS
+      </PatentKey>
+      <line x1={165} y1={102} x2={165} y2={152} {...hair} strokeDasharray="4 3" />
+      <line x1={203} y1={102} x2={203} y2={152} {...hair} strokeDasharray="4 3" />
+      <path d="M165 38V30H203V38" fill="none" {...ink} />
+      {[172, 194].map((x) => (
+        <path key={x} d={`M${x} 156L${x - 5} 146H${x + 5}Z`} fill={PAT.ink} />
+      ))}
+
+      <line x1={400} y1={14} x2={400} y2={180} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 2 — tokenism */}
+      {steps.map((i) => {
+        const x = 438 + i * 66;
+        const h = 14 + i * 14;
+        const top = 168 - h;
+        const chosen = picked.includes(i);
+        const passed = i === 4;
+        const c = passed ? PAT.signal : PAT.ink;
+        return (
+          <g key={i}>
+            <ObliqueBox id={id} x={x} y={top} w={56} h={h} dx={10} dy={6} />
+            <Figure id={id} x={x + 28} y={top - 2} s={0.62} coat={passed ? "signal" : "dense"} stroke={c} />
+            {chosen ? <path d={tick(x + 30, top - 66, 7)} fill="none" {...ink} strokeWidth={LINE.bold} /> : null}
+            {passed ? <path d={cross(x + 30, top - 66, 6)} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" /> : null}
+          </g>
+        );
+      })}
+
+      <Fig x={200} y={196} n={1} size={12}>
+        distance between predictions
+      </Fig>
+      <Fig x={600} y={196} n={2} size={12}>
+        tokenism
+      </Fig>
+    </Frame>
+  );
+}
