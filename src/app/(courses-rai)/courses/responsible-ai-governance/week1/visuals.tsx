@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 
 export {
-  IsoSurrogateConsumer as SurrogateConsumer,
   IsoDualAgencyRisks as DualAgencyRisks,
   IsoTravelAgentHotel as TravelAgentHotel,
 } from "./visuals-legacy";
@@ -2179,6 +2178,64 @@ export function DelegatedExchange() {
       <Fig x={600} y={206} n={2} size={11.5}>
         agent-mediated exchange
       </Fig>
+    </Frame>
+  );
+}
+
+/**
+ * The agent as surrogate consumer: the shopper hands the agent a goal card;
+ * the agent's lens, not the shopper's eyes, reads the results page, its
+ * sight lines running to each listing (the first one sponsored).
+ */
+export function SurrogateConsumer() {
+  const id = "w1-surr";
+  const rows = [
+    { y: 46, price: "$290", ad: true },
+    { y: 90, price: "$210", ad: false },
+    { y: 134, price: "$245", ad: false },
+  ];
+  return (
+    <Frame
+      width={800}
+      height={215}
+      label="Patent drawing: a shopper on the right hands a goal card to the AI agent, which holds it in its gripper; the agent's lens sends sight lines to a search results page on the left with three listings, a sponsored one at $290 first, then $210 and $245; the agent, not the shopper, reads the page."
+    >
+      <PatentDefs id={id} />
+      <line x1={40} y1={190} x2={760} y2={190} {...hair} />
+
+      {/* Results page on a stand */}
+      <ObliqueBox id={id} x={60} y={30} w={270} h={150} dx={12} dy={8} />
+      <line x1={140} y1={180} x2={140} y2={190} {...ink} />
+      <line x1={250} y1={180} x2={250} y2={190} {...ink} />
+      {rows.map((r) => (
+        <g key={r.y}>
+          <rect x={74} y={r.y} width={242} height={36} fill={PAT.paper} {...ink} />
+          <ObliqueBox id={id} x={82} y={r.y + 10} w={20} h={18} dx={5} dy={3} />
+          <line x1={112} y1={r.y + 13} x2={r.ad ? 158 : 210} y2={r.y + 13} {...hair} />
+          <line x1={112} y1={r.y + 22} x2={190} y2={r.y + 22} {...hair} />
+          <text x={306} y={r.y + 22} textAnchor="end" fontFamily="var(--font-heading)" fontSize={14} fill={PAT.ink}>
+            {r.price}
+          </text>
+          {r.ad ? (
+            <g>
+              <rect x={164} y={r.y + 6} width={58} height={13} fill={PAT.paper} {...ink} />
+              <text x={193} y={r.y + 15.6} textAnchor="middle" fontFamily="var(--font-body)" fontSize={7.4} letterSpacing="0.04em" fill={PAT.ink}>
+                SPONSORED
+              </text>
+            </g>
+          ) : null}
+        </g>
+      ))}
+
+      {/* Sight lines from the agent's lens */}
+      {rows.map((r) => (
+        <line key={r.y} x1={474} y1={164} x2={346} y2={r.y + 12} {...hair} strokeDasharray="4 3" />
+      ))}
+
+      {/* The agent takes the goal card */}
+      <Agent id={id} x={460} y={190} gx={590} gy={106} />
+      <path d="M574 108L584 100H606L596 108Z" fill={PAT.paper} {...ink} />
+      <Figure id={id} x={640} y={189} s={1.45} arm="reach" flip />
     </Frame>
   );
 }
