@@ -259,53 +259,60 @@ function Gear({ cx, cy, r, n, phase = 0 }: { cx: number; cy: number; r: number; 
 }
 
 /**
- * Ethics washing: a placard of values on its posts, its linkage rod ending
- * short of the machine's input shaft; the machine's gears run on untouched.
+ * Ethics washing. FIG. 1: the decision machine and the decisions it puts out,
+ * one of them harmful (red). FIG. 2: the same machine with a values plaque
+ * bolted over its front; the decisions coming out are exactly the same.
  */
 export function EthicsWashing() {
   const id = "w1-wash";
+  const machine = (c: number, plaque: boolean) => (
+    <g>
+      <ObliqueBox id={id} x={c - 62} y={48} w={88} h={80} dx={12} dy={8} />
+      {/* window onto the mechanism */}
+      <circle cx={c - 18} cy={86} r={24} fill={stip(id, "light")} {...ink} />
+      <Gear cx={c - 24} cy={80} r={11} n={9} />
+      <Gear cx={c - 8} cy={98} r={8} n={7} phase={0.3} />
+      {/* output slot and the decisions it puts out */}
+      <path d={`M${c - 44} 122H${c + 8}`} {...ink} strokeWidth={LINE.bold} />
+      <line x1={c - 18} y1={133} x2={c - 18} y2={150} {...hair} strokeDasharray={CENTRE_DASH} />
+      {[0, 1, 2].map((k) => (
+        <Chip key={k} id={id} x={c - 74 + k * 38} y={170} w={30} d={10} sk={12} red={k === 1} />
+      ))}
+      {plaque ? (
+        <g>
+          <ObliqueBox id={id} x={c - 68} y={58} w={94} h={56} dx={4} dy={3} />
+          <text x={c - 21} y={77} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={11} letterSpacing="0.1em" fill={PAT.ink}>
+            OUR VALUES
+          </text>
+          {[88, 96, 104].map((y) => (
+            <line key={y} x1={c - 54} y1={y} x2={c + (y === 104 ? 0 : 12)} y2={y} {...hair} />
+          ))}
+          {[
+            [c - 63, 63],
+            [c + 21, 63],
+            [c - 63, 109],
+            [c + 21, 109],
+          ].map(([x, y]) => (
+            <circle key={`${x}-${y}`} cx={x} cy={y} r={1.8} fill={PAT.paper} {...hair} />
+          ))}
+        </g>
+      ) : null}
+    </g>
+  );
   return (
     <Frame
       width={400}
       height={210}
-      label="Patent drawing: a placard reading our values stands on two posts; the rod from its back stops short of the input shaft of a machine whose cutaway shows its gears turning; the gap between rod and shaft is marked in red as ethics washing."
+      label="Patent drawing in two figures. FIG. 1: a decision machine, its gears seen through a window, puts out three decision cards, the middle one red. FIG. 2, ethics washing: the same machine with a plaque reading our values bolted over its front puts out exactly the same three cards, the middle one still red."
     >
       <PatentDefs id={id} />
-
-      {/* Placard on posts */}
-      <line x1={50} y1={104} x2={50} y2={192} {...ink} />
-      <line x1={128} y1={104} x2={128} y2={192} {...ink} />
-      <ObliqueBox id={id} x={22} y={44} w={134} h={60} dx={8} dy={5} />
-      <text x={89} y={68} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={14} letterSpacing="0.12em" fill={PAT.ink}>
-        OUR VALUES
-      </text>
-      {[80, 88, 96].map((y) => (
-        <line key={y} x1={44} y1={y} x2={134} y2={y} {...hair} />
-      ))}
-      <line x1={34} y1={192} x2={144} y2={192} {...hair} />
-
-      {/* Linkage rod from the placard, ending in free air */}
-      <path d="M164 128H214" {...ink} strokeWidth={LINE.bold} fill="none" />
-      <path d="M128 128H164" {...hair} strokeDasharray="3 2" fill="none" />
-      <circle cx={214} cy={128} r={3} fill={PAT.paper} {...ink} />
-
-      {/* The gap: the finding */}
-      <line x1={220} y1={146} x2={250} y2={146} stroke={PAT.signal} strokeWidth={LINE.outline} />
-      <line x1={220} y1={138} x2={220} y2={152} stroke={PAT.signal} strokeWidth={LINE.hair} />
-      <line x1={250} y1={138} x2={250} y2={152} stroke={PAT.signal} strokeWidth={LINE.hair} />
-      <PatentKey x={236} y={202} fill={PAT.signal} size={10}>
-        ETHICS WASHING
-      </PatentKey>
-
-      {/* Machine, front face cut away to show its gears */}
-      <path d="M250 128H262" {...ink} strokeWidth={LINE.bold} />
-      <ellipse cx={262} cy={128} rx={3} ry={7} fill={PAT.paper} {...ink} />
-      <ObliqueBox id={id} x={264} y={70} w={110} h={112} dx={14} dy={9} />
-      {/* Break line: the front face is cut away to show the gears */}
-      <path d="M278 82H354L360 90L352 98L360 106L352 114L360 122L352 130L360 138L352 146L360 154L352 162L360 170L354 176H278Z" fill={stip(id, "light")} {...ink} />
-      <Gear cx={302} cy={128} r={17} n={12} />
-      <Gear cx={331} cy={107} r={9} n={8} phase={0.2} />
-      <Gear cx={331} cy={151} r={9} n={8} phase={0.1} />
+      {machine(108, false)}
+      <line x1={200} y1={20} x2={200} y2={180} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+      {machine(306, true)}
+      <Fig x={100} y={200} n={1} size={11} />
+      <Fig x={300} y={200} n={2} size={11}>
+        ethics washing
+      </Fig>
     </Frame>
   );
 }
