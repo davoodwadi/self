@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
-import { Chip, Coins, Figure, Gear, House, cross, headAlongPath, tick } from "../_visuals/objects";
+import { Chip, Coins, Figure, Gear, House, Pan, cross, headAlongPath, tick } from "../_visuals/objects";
 
 /* ==========================================================================
    WEEK 02 PLATES: PATENT DRAWING
@@ -1257,6 +1257,108 @@ export function CalibrationTubes() {
       <PatentKey x={256} y={20} anchor="start" size={10}>
         GROUP B
       </PatentKey>
+    </Frame>
+  );
+}
+
+/**
+ * Selecting a criterion, one context per figure. FIG. 1, demographic parity:
+ * an outreach billboard reaches the same number from each group. FIG. 2,
+ * equal opportunity: a qualified applicant (certificate held up) at a
+ * screening gate. FIG. 3, equalized odds: a level balance weighs each
+ * group's fraud flags. FIG. 4, predictive parity and calibration: one risk
+ * score dial with a single cutoff mark.
+ */
+export function CriterionContexts() {
+  const id = "w2-select";
+  const g = 156;
+  const at = (deg: number, r: number) => {
+    const a = ((deg - 90) * Math.PI) / 180;
+    return [r2(700 + Math.cos(a) * r), r2(104 + Math.sin(a) * r)] as const;
+  };
+  const [n1, n2] = at(28, 30);
+  const [c1, c2] = at(6, 51);
+  const [c3, c4] = at(14, 51);
+  const [c5, c6] = at(10, 43);
+  return (
+    <Frame
+      width={800}
+      height={192}
+      label="Patent drawing in four figures. FIG. 1, demographic parity: an outreach billboard on two posts faces three people from each group. FIG. 2, equal opportunity: a qualified applicant holding up a certificate waits at a screening gate. FIG. 3, equalized odds: a balance hangs level with one fraud flag in each pan, one pan per group. FIG. 4, predictive parity and calibration: a risk score dial with a single cutoff mark on its rim and its needle just past it."
+    >
+      <PatentDefs id={id} />
+
+      {/* FIG. 1 — outreach billboard, equal reach */}
+      <line x1={18} y1={g + 1} x2={186} y2={g + 1} {...hair} />
+      <line x1={64} y1={74} x2={64} y2={g} {...ink} />
+      <line x1={136} y1={74} x2={136} y2={g} {...ink} />
+      <ObliqueBox id={id} x={40} y={26} w={120} h={48} dx={8} dy={5} />
+      {[40, 50, 60].map((y) => (
+        <line key={y} x1={52} x2={y === 60 ? 120 : 148} y1={y} y2={y} {...hair} />
+      ))}
+      {[26, 46, 66].map((x) => (
+        <Figure key={x} id={id} x={x} y={g} s={0.5} coat="paper" />
+      ))}
+      {[134, 154, 174].map((x) => (
+        <Figure key={x} id={id} x={x} y={g} s={0.5} coat="dense" flip />
+      ))}
+
+      <line x1={200} y1={16} x2={200} y2={168} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 2 — a qualified applicant at the screening gate */}
+      <line x1={218} y1={g + 1} x2={386} y2={g + 1} {...hair} />
+      <Qualified id={id} x={258} y={g} s={0.84} />
+      <ObliqueBox id={id} x={312} y={g - 70} w={12} h={70} dx={8} dy={5} />
+      <path d={`M324 ${g - 46}L370 ${g - 74}V${g - 66}L324 ${g - 38}Z`} fill={stip(id, "light")} {...ink} />
+
+      <line x1={400} y1={16} x2={400} y2={168} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 3 — a level balance, one fraud flag in each group's pan */}
+      <ObliqueBox id={id} x={466} y={g - 10} w={68} h={10} dx={10} dy={6} />
+      <path d={`M496 ${g - 10}V40H504V${g - 10}`} fill={PAT.paper} {...ink} />
+      <path d="M430 34H570V40H430Z" fill={PAT.paper} {...ink} strokeWidth={LINE.bold} />
+      <circle cx={500} cy={36} r={4} fill={PAT.paper} {...ink} />
+      <Pan id={id} cx={442} hookY={40} y={108} w={48} />
+      <Pan id={id} cx={558} hookY={40} y={108} w={48} />
+      {[438, 554].map((x) => (
+        <g key={x}>
+          <line x1={x} y1={106} x2={x} y2={84} {...ink} />
+          <path d={`M${x} 84L${x + 14} 89L${x} 94Z`} fill={PAT.paper} {...ink} />
+        </g>
+      ))}
+      <PatentKey x={442} y={134} size={10}>
+        GROUP A
+      </PatentKey>
+      <PatentKey x={558} y={134} size={10}>
+        GROUP B
+      </PatentKey>
+
+      <line x1={600} y1={16} x2={600} y2={168} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 4 — one risk score, one cutoff */}
+      <circle cx={700} cy={104} r={50} fill={stip(id, "light")} {...ink} />
+      <circle cx={700} cy={104} r={44} fill={PAT.paper} {...ink} />
+      {[-120, -90, -60, -30, 0, 30, 60, 90, 120].map((t) => {
+        const [x1, y1] = at(t, 42);
+        const [x2, y2] = at(t, 36);
+        return <line key={t} x1={x1} y1={y1} x2={x2} y2={y2} {...hair} />;
+      })}
+      <path d={`M${c1} ${c2}L${c3} ${c4}L${c5} ${c6}Z`} fill={PAT.ink} />
+      <line x1={700} y1={104} x2={n1} y2={n2} {...ink} strokeWidth={LINE.bold} />
+      <circle cx={700} cy={104} r={3} fill={PAT.ink} />
+
+      <Fig x={100} y={184} n={1} size={12}>
+        demographic parity
+      </Fig>
+      <Fig x={300} y={184} n={2} size={12}>
+        equal opportunity
+      </Fig>
+      <Fig x={500} y={184} n={3} size={12}>
+        equalized odds
+      </Fig>
+      <Fig x={700} y={184} n={4} size={12}>
+        calibration
+      </Fig>
     </Frame>
   );
 }
