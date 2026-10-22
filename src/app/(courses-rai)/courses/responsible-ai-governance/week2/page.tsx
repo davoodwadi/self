@@ -17,10 +17,6 @@ import {
 } from "../_visuals/kit";
 import exercisesData from "./exercises.json";
 import {
-  IsoMeasurementBias,
-  IsoAggregationBias,
-  IsoProxyReconstruction,
-  IsoFeedbackLoop,
   IsoDiagnosticBench,
   IsoThreeFairnessFamilies,
   IsoConfusionMatrix3D,
@@ -41,7 +37,7 @@ import {
   IsoSixStepAuditLoop,
   IsoUniversityAdSkew,
 } from "./visuals-legacy";
-import { FourFifthsRule, HistoricalBias, PipelineStages, RepresentationBias, StatisticalToMarket, TreatmentVsImpact } from "./visuals";
+import { AggregationBias, FeedbackLoop, FourFifthsRule, HistoricalBias, MeasurementBias, PipelineStages, ProxyReconstruction, RepresentationBias, StatisticalToMarket, TreatmentVsImpact } from "./visuals";
 
 // ============================================================================
 // WEEK 02 — ALGORITHMIC BIAS, FAIRNESS, AND DISCRIMINATION
@@ -308,7 +304,7 @@ export default function Week2Page() {
               </Ruled>
             </div>
             <Plate>
-              <IsoMeasurementBias />
+              <MeasurementBias />
             </Plate>
           </div>
           <div className="flex flex-col justify-between gap-4">
@@ -322,7 +318,7 @@ export default function Week2Page() {
               </p>
             </Ruled>
             <Plate>
-              <IsoAggregationBias />
+              <AggregationBias />
             </Plate>
           </div>
         </div>
@@ -354,7 +350,7 @@ export default function Week2Page() {
               </Ruled>
             </div>
             <Plate>
-              <IsoProxyReconstruction />
+              <ProxyReconstruction />
             </Plate>
           </div>
           <div className="flex flex-col justify-between gap-4">
@@ -376,7 +372,7 @@ export default function Week2Page() {
               </Ruled>
             </div>
             <Plate>
-              <IsoFeedbackLoop />
+              <FeedbackLoop />
             </Plate>
           </div>
         </div>

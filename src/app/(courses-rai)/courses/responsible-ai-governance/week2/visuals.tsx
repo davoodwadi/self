@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
-import { Chip, Coins, Figure, Gear, cross, tick } from "../_visuals/objects";
+import { Chip, Coins, Figure, Gear, House, cross, headAlongPath, tick } from "../_visuals/objects";
 
 /* ==========================================================================
    WEEK 02 PLATES: PATENT DRAWING
@@ -463,5 +463,309 @@ export function RepresentationBias() {
       </Frame>
       <Slider label="Underrepresented group in training data" value={share} min={0} max={50} step={5} onChange={setShare} formatValue={(v) => `${v}%`} />
     </div>
+  );
+}
+
+/** A thermometer standing with its bulb at (cx, bulbY), filled to `level` (y of the column's top). */
+function Thermometer({ id, cx, top, bulbY, level }: { id: string; cx: number; top: number; bulbY: number; level: number }) {
+  return (
+    <g>
+      <path d={`M${cx - 4} ${bulbY - 6}V${top + 4}A4 4 0 0 1 ${cx + 4} ${top + 4}V${bulbY - 6}`} fill={PAT.paper} {...ink} />
+      <rect x={cx - 1.6} y={level} width={3.2} height={r2(bulbY - level)} fill={stip(id, "dense")} />
+      <circle cx={cx} cy={bulbY} r={7} fill={stip(id, "dense")} {...ink} />
+      {[0.25, 0.5, 0.75].map((f) => {
+        const ty = r2(top + 8 + (bulbY - 14 - top) * f);
+        return <line key={f} x1={cx + 4} y1={ty} x2={cx + 8} y2={ty} {...hair} />;
+      })}
+    </g>
+  );
+}
+
+/** A police officer: a patent figure with a peaked cap. */
+function Officer({ id, x, y, s = 0.5 }: { id: string; x: number; y: number; s?: number }) {
+  return (
+    <g>
+      <Figure id={id} x={x} y={y} s={s} coat="paper" />
+      <path
+        d={`M${r2(x - 7 * s)} ${r2(y - 78 * s)}H${r2(x + 9 * s)}V${r2(y - 83 * s)}Q${r2(x + 1 * s)} ${r2(y - 88 * s)} ${r2(x - 7 * s)} ${r2(y - 83 * s)}ZM${r2(x + 9 * s)} ${r2(y - 78 * s)}L${r2(x + 14 * s)} ${r2(y - 76 * s)}`}
+        fill={stip(id, "dense")}
+        {...ink}
+      />
+    </g>
+  );
+}
+
+/** A pile of `n` record sheets lying flat, front-left corner at (x, y). */
+function Pile({ id, x, y, n, w = 40, red = false }: { id: string; x: number; y: number; n: number; w?: number; red?: boolean }) {
+  const c = red ? PAT.signal : PAT.ink;
+  const t = 3;
+  return (
+    <g>
+      <path d={`M${x} ${y - n * t}V${y}H${x + w}L${x + w + 10} ${y - 7}V${r2(y - 7 - n * t)}L${x + w} ${y - n * t}Z`} fill={stip(id, red ? "signal" : "dense")} stroke={c} strokeWidth={LINE.outline} strokeLinejoin="round" />
+      <path d={`M${x} ${y - n * t}V${y}H${x + w}V${y - n * t}Z`} fill={PAT.paper} stroke={c} strokeWidth={LINE.outline} />
+      {Array.from({ length: n - 1 }, (_, i) => (
+        <line key={i} x1={x} y1={y - (i + 1) * t} x2={x + w} y2={y - (i + 1) * t} stroke={c} strokeWidth={LINE.hair} />
+      ))}
+      <path d={`M${x} ${y - n * t}L${x + 10} ${r2(y - 7 - n * t)}H${x + w + 10}L${x + w} ${y - n * t}Z`} fill={PAT.paper} stroke={c} strokeWidth={LINE.outline} strokeLinejoin="round" />
+    </g>
+  );
+}
+
+/**
+ * Measurement bias, two proxies. FIG. 1: two patients equally sick (same
+ * thermometer reading), but the lower-income patient (dense coat) has spent
+ * far less on care (short coin stack, red). FIG. 2: two identical
+ * neighborhoods; the one patrolled by three officers piles up far more
+ * arrest records (red) than the one with a single officer.
+ */
+export function MeasurementBias() {
+  const id = "w2-meas";
+  const g = 170;
+  return (
+    <Frame
+      width={400}
+      height={204}
+      label="Patent drawing in two figures. FIG. 1, healthcare expenditures: two patients, a higher-income patient and a lower-income patient in a dense coat, each stand by a thermometer at the same reading, equally sick; the higher-income patient's stack of spent coins is tall, the lower-income patient's is short and drawn in red. FIG. 2, arrest records: two identical houses; three police officers stand by the first and one by the second; the first neighborhood's pile of arrest records is tall and drawn in red, the second's is short."
+    >
+      <PatentDefs id={id} />
+
+      {/* FIG. 1 — same sickness, unequal spending */}
+      <line x1={8} y1={g + 1} x2={190} y2={g + 1} {...hair} />
+      {[
+        { x: 22, coat: "paper" as const, coins: 9 },
+        { x: 112, coat: "dense" as const, coins: 2 },
+      ].map((p) => (
+        <g key={p.x}>
+          <Figure id={id} x={p.x + 12} y={g} s={0.78} coat={p.coat} />
+          <Thermometer id={id} cx={p.x + 38} top={86} bulbY={g - 8} level={102} />
+          <Coins id={id} cx={p.x + 64} y={g} n={p.coins} rx={11} ry={3.5} h={6} red={p.coins < 4} />
+        </g>
+      ))}
+      <line x1={48} y1={102} x2={162} y2={102} {...hair} strokeDasharray="4 2.5" />
+
+      <line x1={200} y1={14} x2={200} y2={178} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 2 — same neighborhoods, unequal policing */}
+      <line x1={210} y1={g + 1} x2={394} y2={g + 1} {...hair} />
+      {[
+        { x: 216, officers: 3, records: 12 },
+        { x: 308, officers: 1, records: 3 },
+      ].map((n) => (
+        <g key={n.x}>
+          <House id={id} x={n.x + 10} y={100} w={46} h={30} dx={10} dy={6} roof={18} />
+          <line x1={n.x} y1={123} x2={n.x + 80} y2={123} {...hair} />
+          {Array.from({ length: n.officers }, (_, k) => (
+            <Officer key={k} id={id} x={r2(n.x + 33 + (k - (n.officers - 1) / 2) * 19)} y={122} s={0.46} />
+          ))}
+          <Pile id={id} x={n.x + 6} y={g} n={n.records} w={46} red={n.records > 6} />
+        </g>
+      ))}
+
+      <Fig x={100} y={196} n={1} size={12}>
+        healthcare expenditures
+      </Fig>
+      <Fig x={302} y={196} n={2} size={12}>
+        arrest records
+      </Fig>
+    </Frame>
+  );
+}
+
+/**
+ * Aggregation bias on a plotted board: majority points (white) follow a
+ * gentle slope, minority points (dense) a steep one. A single pooled model
+ * lays one straightedge along the majority, and the minority's residuals
+ * (red) are long; group-specific models lay one straightedge per group.
+ */
+export function AggregationBias() {
+  const [fit, setFit] = useState<"pooled" | "specific">("pooled");
+  const pooled = fit === "pooled";
+  const id = "w2-agg";
+  const X = (v: number) => r2(64 + v * 30);
+  const Y = (v: number) => r2(150 - v * 12.6);
+  const major: [number, number][] = [
+    [0.8, 2.3], [1.6, 2.0], [2.2, 3.1], [2.9, 2.8], [3.4, 3.6], [4.1, 3.3], [4.6, 4.2], [5.3, 3.9],
+    [5.9, 4.8], [6.4, 4.4], [7.0, 5.3], [7.7, 5.0], [8.3, 5.9], [9.0, 5.6], [9.5, 6.4],
+  ];
+  const minor: [number, number][] = [[5.0, 4.4], [5.8, 5.9], [6.6, 6.6], [7.4, 8.0], [8.2, 8.8], [9.0, 9.9]];
+  const lineP = (x: number) => 1.65 + 0.5 * x;
+  const lineA = (x: number) => 1.45 + 0.5 * x;
+  const lineB = (x: number) => -2.75 + 1.4 * x;
+  return (
+    <div>
+      <Frame
+        width={400}
+        height={178}
+        label={`Patent drawing of a plotted board, predictor across and outcome up. White points of the majority group follow a gentle slope; six dense points of a minority group follow a steep slope. ${pooled ? "A single model lays one straightedge along the majority points; the minority points' residuals to it, drawn in red, are long." : "Group-specific models lay one straightedge along each group; every residual is short."}`}
+      >
+        <PatentDefs id={id} />
+        <ObliqueBox id={id} x={30} y={14} w={352} h={156} dx={10} dy={6} />
+        <path d="M54 22V146H372" fill="none" {...ink} />
+        <PatentKey x={370} y={162} anchor="end" size={11.5}>
+          PREDICTOR
+        </PatentKey>
+        <text x={44} y={86} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={11.5} letterSpacing="0.22em" fill={PAT.ink} transform="rotate(-90 44 86)">
+          OUTCOME
+        </text>
+
+        {/* residuals of the minority points */}
+        {minor.map(([x, y]) => {
+          const yy = pooled ? lineP(x) : lineB(x);
+          return (
+            <line key={x} x1={X(x)} y1={Y(y)} x2={X(x)} y2={Y(yy)} stroke={pooled ? PAT.signal : PAT.ink} strokeWidth={pooled ? LINE.bold : LINE.hair} />
+          );
+        })}
+
+        {/* straightedges */}
+        {pooled ? (
+          <line x1={X(0.2)} y1={Y(lineP(0.2))} x2={X(9.9)} y2={Y(lineP(9.9))} {...ink} strokeWidth={LINE.bold} />
+        ) : (
+          <g>
+            <line x1={X(0.2)} y1={Y(lineA(0.2))} x2={X(9.9)} y2={Y(lineA(9.9))} {...ink} strokeWidth={LINE.bold} />
+            <line x1={X(4.4)} y1={Y(lineB(4.4))} x2={X(9.4)} y2={Y(lineB(9.4))} {...ink} strokeWidth={LINE.bold} />
+          </g>
+        )}
+
+        {major.map(([x, y]) => (
+          <circle key={x} cx={X(x)} cy={Y(y)} r={3.4} fill={PAT.paper} {...ink} />
+        ))}
+        {minor.map(([x, y]) => (
+          <circle key={x} cx={X(x)} cy={Y(y)} r={4.6} fill={stip(id, "dense")} {...ink} />
+        ))}
+      </Frame>
+      <Segmented
+        label="Model"
+        options={[
+          { id: "pooled", label: "Single model" },
+          { id: "specific", label: "Group-specific" },
+        ]}
+        value={fit}
+        onChange={setFit}
+      />
+    </div>
+  );
+}
+
+/**
+ * Proxy reconstruction: the input table with its protected-attribute row
+ * deleted (dashed). The slider feeds 0 to 4 seemingly neutral behavioral
+ * features into the model; the row it rebuilds (red) matches the deleted one
+ * with a precision that climbs as features are combined.
+ */
+export function ProxyReconstruction() {
+  const [k, setK] = useState(4);
+  const id = "w2-proxy";
+  const rows = ["POSTAL CODE", "DEVICE BRAND", "BROWSER LANGUAGE", "SHOPPING SCHEDULE"];
+  const precision = [50, 64, 78, 88, 95][k];
+  const rowY = (i: number) => 20 + i * 28;
+  return (
+    <div>
+      <Frame
+        width={400}
+        height={176}
+        label={`Patent drawing: an input table lists four behavioral features, postal code, device brand, browser language and shopping schedule, above a dashed, deleted row for the protected attribute. ${k === 0 ? "No feature is fed to the model" : `The first ${k} feature${k > 1 ? "s are" : " is"} fed into the model`}, which rebuilds the deleted row, drawn in red, with ${precision}% precision.`}
+      >
+        <PatentDefs id={id} />
+        {/* the input table, its protected-attribute row cut away */}
+        <ObliqueBox id={id} x={12} y={20} w={186} h={112} dx={10} dy={6} />
+        {rows.map((r, i) => {
+          const on = i < k;
+          return (
+            <g key={r}>
+              {i > 0 ? <line x1={12} y1={rowY(i)} x2={198} y2={rowY(i)} {...hair} /> : null}
+              {on ? <rect x={14} y={rowY(i) + 2} width={182} height={24} fill="none" {...ink} strokeWidth={LINE.bold} /> : null}
+              <PatentKey x={22} y={rowY(i) + 18} anchor="start" size={9.5}>
+                {r}
+              </PatentKey>
+              {on ? <path d={`M208 ${rowY(i) + 11}C216 ${rowY(i) + 11} 216 ${r2(74 + i * 6)} 224 ${r2(74 + i * 6)}`} fill="none" {...hair} /> : null}
+            </g>
+          );
+        })}
+        <rect x={12} y={140} width={186} height={26} fill="none" {...hair} strokeDasharray="4 3" />
+        <PatentKey x={22} y={158} anchor="start" size={9.5}>
+          PROTECTED ATTRIBUTE
+        </PatentKey>
+
+        {/* the model */}
+        <ObliqueBox id={id} x={224} y={62} w={58} h={52} dx={10} dy={6} />
+        <circle cx={253} cy={88} r={17} fill={stip(id, "light")} {...ink} />
+        <Gear cx={248} cy={84} r={8} n={9} />
+        <Gear cx={261} cy={96} r={5.5} n={7} phase={0.3} />
+        <line x1={253} y1={118} x2={253} y2={136} {...hair} strokeDasharray={CENTRE_DASH} />
+
+        {/* the rebuilt row */}
+        <rect
+          x={224}
+          y={140}
+          width={164}
+          height={26}
+          fill={k === 0 ? PAT.paper : stip(id, "signal")}
+          stroke={k === 0 ? PAT.ink : PAT.signal}
+          strokeWidth={LINE.bold}
+          strokeDasharray={k === 0 ? "4 3" : undefined}
+        />
+        <Num x={344} y={90} size={28} fill={k === 0 ? PAT.ink : PAT.signal}>
+          {`${precision}%`}
+        </Num>
+        <PatentKey x={344} y={110} size={10}>
+          PRECISION
+        </PatentKey>
+      </Frame>
+      <Slider label="Behavioral features combined" value={k} min={0} max={4} onChange={setK} />
+    </div>
+  );
+}
+
+/**
+ * A runaway feedback loop. The credit model's decisions run out along the
+ * top to two neighborhoods; the one approved sends its repayment records back
+ * along the bottom into the training pile, which retrains the model. The one
+ * denied (red cross) sends nothing back: its return path is a dashed red
+ * line that never carries a record.
+ */
+export function FeedbackLoop() {
+  const id = "w2-loop";
+  const red = { stroke: PAT.signal, strokeWidth: LINE.bold, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  return (
+    <Frame
+      width={400}
+      height={186}
+      label="Patent drawing of a runaway feedback loop. A credit model's housing sends its decisions out along a line across the top to two neighborhoods of two houses each. The first neighborhood is approved, and its repayment records travel back along the bottom into the training pile below the model, which feeds the model's retraining. The second neighborhood is denied at a red cross; its return path to the training pile is a dashed red line carrying no records, never observed."
+    >
+      <PatentDefs id={id} />
+
+      {/* the model and its training pile */}
+      <ObliqueBox id={id} x={18} y={58} w={66} h={52} dx={10} dy={6} />
+      <circle cx={51} cy={84} r={17} fill={stip(id, "light")} {...ink} />
+      <Gear cx={46} cy={80} r={8} n={9} />
+      <Gear cx={59} cy={92} r={5.5} n={7} phase={0.3} />
+      <Pile id={id} x={22} y={176} n={6} w={50} />
+      <line x1={51} y1={148} x2={51} y2={118} {...ink} />
+      <path d={headAlongPath(51, 116, 0, -1, 7)} fill="none" {...ink} />
+
+      {/* decisions out along the top */}
+      <path d="M51 50V22H337V38" fill="none" {...ink} />
+      <path d="M215 22V48" fill="none" {...ink} />
+      <path d={headAlongPath(215, 52, 0, 1, 7)} fill="none" {...ink} />
+      <path d={cross(337, 46, 7)} {...red} />
+
+      {/* two neighborhoods */}
+      {[172, 218, 294, 340].map((x) => (
+        <House key={x} id={id} x={x} y={114} w={34} h={34} dx={7} dy={4} roof={14} />
+      ))}
+
+      {/* repayment records come back from the approved neighborhood */}
+      <path d="M215 120V146H84" fill="none" {...ink} />
+      <path d={headAlongPath(82, 146, -1, 0, 7)} fill="none" {...ink} />
+      {[110, 146, 182].map((x) => (
+        <Chip key={x} id={id} x={x} y={142} w={18} d={6} sk={6} />
+      ))}
+
+      {/* nothing comes back from the denied one */}
+      <path d="M337 120V166H84" {...red} strokeWidth={LINE.outline} strokeDasharray="5 3.5" />
+      <PatentKey x={208} y={182} fill={PAT.signal} size={10}>
+        NEVER OBSERVED
+      </PatentKey>
+    </Frame>
   );
 }
