@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
-import { Chip, Coins, Figure, Gear, House, Pan, cross, headAlongPath, tick } from "../_visuals/objects";
+import { Chip, Coins, Figure, Gear, House, Pan, Tag, cross, headAlongPath, tick } from "../_visuals/objects";
 
 /* ==========================================================================
    WEEK 02 PLATES: PATENT DRAWING
@@ -1754,5 +1754,100 @@ export function ImpossibilityLevels() {
         />
       </div>
     </div>
+  );
+}
+
+/** A level balance with one pan per group; `load` draws what each pan holds. */
+function Balance({ id, cx, base, load }: { id: string; cx: number; base: number; load: (x: number, y: number) => React.ReactNode }) {
+  return (
+    <g>
+      <ObliqueBox id={id} x={cx - 34} y={base - 10} w={68} h={10} dx={10} dy={6} />
+      <path d={`M${cx - 4} ${base - 10}V40H${cx + 4}V${base - 10}`} fill={PAT.paper} {...ink} />
+      <path d={`M${cx - 70} 34H${cx + 70}V40H${cx - 70}Z`} fill={PAT.paper} {...ink} strokeWidth={LINE.bold} />
+      <circle cx={cx} cy={36} r={4} fill={PAT.paper} {...ink} />
+      <Pan id={id} cx={cx - 58} hookY={40} y={108} w={48} />
+      <Pan id={id} cx={cx + 58} hookY={40} y={108} w={48} />
+      {load(cx - 58, 106)}
+      {load(cx + 58, 106)}
+    </g>
+  );
+}
+
+/**
+ * Managerial trade-offs, one domain per figure. FIG. 1, consumer credit: the
+ * same score of 700 hangs over both groups' creditworthy borrowers, but more
+ * of the disadvantaged group's are rejected (red). FIG. 2, automated resume
+ * screening: the top of the funnel lets qualified candidates from both
+ * groups through to a human interviewer. FIG. 3, medical triage or fraud
+ * intervention: a level balance carries the same errors for each group.
+ */
+export function DomainTradeoffs() {
+  const id = "w2-domain";
+  const g = 158;
+  const credit = (x0: number, rejected: number, coat: "paper" | "dense") =>
+    Array.from({ length: 5 }, (_, i) => {
+      const red = i < rejected;
+      return <Figure key={i} id={id} x={x0 + i * 20} y={g} s={0.56} coat={red ? "signal" : coat} stroke={red ? PAT.signal : PAT.ink} />;
+    });
+  return (
+    <Frame
+      width={800}
+      height={196}
+      label="Patent drawing in three figures. FIG. 1, consumer credit: a tag reading 700 hangs over two rows of five creditworthy borrowers, one row from each group; one borrower of the advantaged group and three of the disadvantaged group are rejected, drawn in red. FIG. 2, automated resume screening: résumés enter the top of a funnel, and qualified candidates from both groups come out of its neck to a human interviewer at a desk. FIG. 3, medical triage or fraud intervention: a balance hangs level, each group's pan holding one false flag and one missed case."
+    >
+      <PatentDefs id={id} />
+
+      {/* FIG. 1 — consumer credit */}
+      <line x1={14} y1={g + 1} x2={244} y2={g + 1} {...hair} />
+      <line x1={128} y1={34} x2={128} y2={58} {...hair} />
+      <Tag cx={134} cy={26} text="700" w={58} size={15} />
+      <path d="M40 76H220" fill="none" {...hair} />
+      <path d="M40 76V86M220 76V86M128 58V76" fill="none" {...hair} />
+      {credit(24, 1, "paper")}
+      {credit(140, 3, "dense")}
+
+      <line x1={264} y1={14} x2={264} y2={176} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 2 — the top of the screening funnel */}
+      {[0, 1, 2, 3].map((i) => (
+        <Chip key={i} id={id} x={300 + i * 30} y={32 - (i % 2) * 6} w={22} d={7} sk={8} />
+      ))}
+      <ellipse cx={360} cy={48} rx={58} ry={10} fill={stip(id, "dense")} {...ink} />
+      <path d="M302 48L350 88H370L418 48A58 10 0 0 1 302 48Z" fill={PAT.paper} {...ink} />
+      <path d="M350 88V96H370V88" fill={PAT.paper} {...ink} />
+      <Figure id={id} x={340} y={g} s={0.6} coat="paper" />
+      <Figure id={id} x={368} y={g} s={0.6} coat="dense" />
+      <line x1={286} y1={g + 1} x2={510} y2={g + 1} {...hair} />
+      <ObliqueBox id={id} x={420} y={120} w={60} h={6} dx={12} dy={7} />
+      <line x1={426} y1={126} x2={426} y2={g} {...ink} />
+      <line x1={474} y1={126} x2={474} y2={g} {...ink} />
+      <Figure id={id} x={496} y={g} s={0.66} flip />
+
+      <line x1={530} y1={14} x2={530} y2={176} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 3 — equal errors in each group's pan */}
+      <Balance
+        id={id}
+        cx={664}
+        base={g}
+        load={(x, y) => (
+          <g>
+            <line x1={x - 8} y1={y} x2={x - 8} y2={y - 22} {...ink} />
+            <path d={`M${x - 8} ${y - 22}L${x + 4} ${y - 18}L${x - 8} ${y - 14}Z`} fill={PAT.paper} {...ink} />
+            <path d={cross(x + 10, y - 7, 4)} fill="none" {...ink} strokeWidth={LINE.bold} />
+          </g>
+        )}
+      />
+
+      <Fig x={130} y={188} n={1} size={12}>
+        consumer credit
+      </Fig>
+      <Fig x={398} y={188} n={2} size={12}>
+        resume screening
+      </Fig>
+      <Fig x={664} y={188} n={3} size={12}>
+        triage or fraud
+      </Fig>
+    </Frame>
   );
 }
