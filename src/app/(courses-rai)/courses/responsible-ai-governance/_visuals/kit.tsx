@@ -338,6 +338,12 @@ export const head = {
  * numerals. It stays secondary to the plate it drives. The plate's
  * default value is the state the slide shows before anyone touches it.
  */
+/* Controls under a plate speak the plate's language: Caslon tracked capitals
+   in ink (as PatentKey) and hairline ink rules; the chosen option is marked
+   by a filled ring, never by a flat block of fill. */
+const CONTROL_KEY = "shrink-0 text-[11px] font-normal uppercase tracking-[0.22em] text-[var(--ink)]";
+const CONTROL_TEXT = "text-[11.5px] font-normal uppercase tracking-[0.14em] text-[var(--ink)]";
+
 export function Slider({
   label,
   value,
@@ -362,8 +368,8 @@ export function Slider({
     <div className="mt-2.5 flex items-center gap-3 px-1">
       <label
         htmlFor={id}
-        className="shrink-0 text-[10px] font-medium uppercase tracking-[0.12em] text-[var(--ink-3)]"
-        style={{ fontFamily: LABEL }}
+        className={CONTROL_KEY}
+        style={{ fontFamily: SERIF }}
       >
         {label}
       </label>
@@ -377,19 +383,19 @@ export function Slider({
         onChange={(e) => onChange(Number(e.target.value))}
         className={cn(
           "h-4 min-w-0 flex-1 cursor-pointer appearance-none bg-transparent focus-visible:outline-none",
-          "[&::-webkit-slider-runnable-track]:h-px [&::-webkit-slider-runnable-track]:bg-[var(--rule-2)]",
-          "[&::-webkit-slider-thumb]:-mt-[4.5px] [&::-webkit-slider-thumb]:size-2.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[var(--ink-3)]",
-          "[&::-moz-range-track]:h-px [&::-moz-range-track]:bg-[var(--rule-2)]",
-          "[&::-moz-range-thumb]:size-2.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[var(--ink-3)]",
-          "hover:[&::-webkit-slider-thumb]:bg-[var(--ink)] focus-visible:[&::-webkit-slider-thumb]:bg-[var(--ink)] focus-visible:[&::-webkit-slider-thumb]:ring-2 focus-visible:[&::-webkit-slider-thumb]:ring-[var(--rule-2)]",
-          "hover:[&::-moz-range-thumb]:bg-[var(--ink)] focus-visible:[&::-moz-range-thumb]:bg-[var(--ink)]",
+          "[&::-webkit-slider-runnable-track]:h-px [&::-webkit-slider-runnable-track]:bg-[var(--ink)]",
+          "[&::-webkit-slider-thumb]:-mt-[5px] [&::-webkit-slider-thumb]:size-[11px] [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-[var(--ink)] [&::-webkit-slider-thumb]:bg-[var(--paper)]",
+          "[&::-moz-range-track]:h-px [&::-moz-range-track]:bg-[var(--ink)]",
+          "[&::-moz-range-thumb]:size-[11px] [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border [&::-moz-range-thumb]:border-[var(--ink)] [&::-moz-range-thumb]:bg-[var(--paper)]",
+          "hover:[&::-webkit-slider-thumb]:border-[1.5px] focus-visible:[&::-webkit-slider-thumb]:border-[1.5px] focus-visible:[&::-webkit-slider-thumb]:ring-2 focus-visible:[&::-webkit-slider-thumb]:ring-[var(--rule-2)]",
+          "hover:[&::-moz-range-thumb]:border-[1.5px] focus-visible:[&::-moz-range-thumb]:border-[1.5px]",
         )}
       />
       {showValue ? (
         <output
           htmlFor={id}
-          className="min-w-[3.5ch] shrink-0 text-right text-[12px] font-medium text-[var(--ink-3)]"
-          style={{ fontFamily: LABEL, fontVariantNumeric: "tabular-nums" }}
+          className="min-w-[3.5ch] shrink-0 text-right text-[14px] font-normal text-[var(--ink)]"
+          style={{ fontFamily: SERIF, fontVariantNumeric: "lining-nums tabular-nums" }}
         >
           {formatValue ? formatValue(value) : value}
         </output>
@@ -418,13 +424,13 @@ export function PlateButton({
       type="button"
       onClick={onClick}
       className={cn(
-        "inline-flex items-center gap-2 border border-[var(--rule-2)] bg-[var(--paper)] px-3 py-1.5",
-        "text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--ink-2)]",
-        "transition-colors hover:border-[var(--ink-3)] hover:text-[var(--ink)] active:bg-[var(--paper-3)]",
+        "inline-flex items-center gap-2 border border-[var(--ink)] bg-[var(--paper)] px-3 py-1.5",
+        CONTROL_TEXT,
+        "transition-[border-width] hover:shadow-[inset_0_0_0_0.5px_var(--ink)]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rule-2)]",
         className,
       )}
-      style={{ fontFamily: LABEL }}
+      style={{ fontFamily: SERIF }}
     >
       {icon}
       {children}
@@ -449,13 +455,10 @@ export function Segmented<T extends string>({
 }) {
   return (
     <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-2 px-1" role="group" aria-label={label}>
-      <span
-        className="shrink-0 text-[10px] font-medium uppercase tracking-[0.12em] text-[var(--ink-3)]"
-        style={{ fontFamily: LABEL }}
-      >
+      <span className={CONTROL_KEY} style={{ fontFamily: SERIF }}>
         {label}
       </span>
-      <div className="flex flex-wrap border border-[var(--rule-2)]">
+      <div className="flex flex-wrap pl-px pt-px">
         {options.map((o) => {
           const on = o.id === value;
           return (
@@ -465,15 +468,19 @@ export function Segmented<T extends string>({
               aria-pressed={on}
               onClick={() => onChange(o.id)}
               className={cn(
-                "border-l border-[var(--rule-2)] px-3 py-1.5 first:border-l-0",
-                "text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors",
+                "-ml-px -mt-px inline-flex items-center gap-2 border border-[var(--ink)] bg-[var(--paper)] px-3 py-1.5",
+                CONTROL_TEXT,
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--rule-2)]",
-                on
-                  ? "bg-[var(--ink)] text-[var(--paper)]"
-                  : "bg-[var(--paper)] text-[var(--ink-2)] hover:bg-[var(--paper-3)]",
               )}
-              style={{ fontFamily: LABEL }}
+              style={{ fontFamily: SERIF }}
             >
+              <span
+                aria-hidden
+                className={cn(
+                  "inline-block size-[8px] shrink-0 rounded-full border border-[var(--ink)]",
+                  on ? "bg-[var(--ink)]" : "bg-[var(--paper)]",
+                )}
+              />
               {o.label}
             </button>
           );

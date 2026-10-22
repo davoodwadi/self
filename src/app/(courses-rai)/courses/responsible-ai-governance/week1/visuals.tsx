@@ -139,10 +139,10 @@ export function ScalingRule() {
         </Fig>
       </Frame>
       <Segmented
-        label="Internal decision rule"
+        label="Decision rule"
         options={[
-          { id: "biased", label: "Biased rule (scales error)" },
-          { id: "audited", label: "Verified rule (compliant)" },
+          { id: "biased", label: "Biased rule" },
+          { id: "audited", label: "Verified rule" },
         ]}
         value={mode}
         onChange={setMode}
@@ -1163,14 +1163,14 @@ export function ValueChainFiveActors() {
         {ring ? <Detail cx={ring[0]} cy={ring[1]} r={ring[2]} /> : null}
       </Frame>
       <Segmented
-        label="Inspect value-chain actor"
+        label="Value chain"
         options={[
-          { id: "all", label: "All 5 actors" },
-          { id: "1", label: "01 Developer" },
-          { id: "2", label: "02 Deploying firm" },
-          { id: "3", label: "03 Platform" },
-          { id: "4", label: "04 Consumer" },
-          { id: "5", label: "05 Regulator" },
+          { id: "all", label: "All" },
+          { id: "1", label: "1 Developers" },
+          { id: "2", label: "2 Deploying firms" },
+          { id: "3", label: "3 Platforms" },
+          { id: "4", label: "4 Consumers" },
+          { id: "5", label: "5 Regulators" },
         ]}
         value={stage}
         onChange={setStage}
@@ -1241,10 +1241,10 @@ export function ManyHands() {
         )}
       </Frame>
       <Segmented
-        label="Governance state"
+        label="Outcome"
         options={[
-          { id: "blame", label: "Problem of many hands (mutual blame)" },
-          { id: "accountable", label: "Accountable governance (deployer liable)" },
+          { id: "blame", label: "Problem of many hands" },
+          { id: "accountable", label: "Accountable governance" },
         ]}
         value={mode}
         onChange={setMode}
@@ -1593,8 +1593,8 @@ export function ProbabilisticRuns() {
         <Segmented
           label="Framing"
           options={[
-            { id: "standard", label: "Framing A (Slot 1 favored)" },
-            { id: "shifted", label: "Framing B (choice reverses)" },
+            { id: "standard", label: "Framing A" },
+            { id: "shifted", label: "Framing B" },
           ]}
           value={framing}
           onChange={setFraming}
@@ -1700,13 +1700,13 @@ export function BenchmarkFailures() {
         {focus !== "all" ? <Detail cx={rings[focus]} cy={106} r={78} /> : null}
       </Frame>
       <Segmented
-        label="Failure mode"
+        label="Failure"
         options={[
-          { id: "all", label: "All 4 modes" },
-          { id: "1", label: "1. Construct mismatch" },
-          { id: "2", label: "2. Single-sample fragility" },
-          { id: "3", label: "3. Prompt sensitivity" },
-          { id: "4", label: "4. Contamination" },
+          { id: "all", label: "All" },
+          { id: "1", label: "1 Construct mismatch" },
+          { id: "2", label: "2 Single-sample fragility" },
+          { id: "3", label: "3 Prompt and context sensitivity" },
+          { id: "4", label: "4 Benchmark contamination" },
         ]}
         value={focus}
         onChange={setFocus}
@@ -1799,15 +1799,15 @@ export function SixStages() {
         {stage !== "all" ? <Detail cx={xs[Number(stage) - 1]} cy={124} r={56} /> : null}
       </Frame>
       <Segmented
-        label="Governance stage"
+        label="Stage"
         options={[
-          { id: "all", label: "All 6 stages" },
-          { id: "1", label: "01 Scoping" },
-          { id: "2", label: "02 Data" },
-          { id: "3", label: "03 Audit" },
-          { id: "4", label: "04 Oversight" },
-          { id: "5", label: "05 Sign-off" },
-          { id: "6", label: "06 Monitor" },
+          { id: "all", label: "All" },
+          { id: "1", label: "1 Scoping" },
+          { id: "2", label: "2 Data" },
+          { id: "3", label: "3 Auditing" },
+          { id: "4", label: "4 Oversight" },
+          { id: "5", label: "5 Sign-off" },
+          { id: "6", label: "6 Monitoring" },
         ]}
         value={stage}
         onChange={setStage}
@@ -2059,7 +2059,7 @@ export function OversightFailures() {
           moral crumple zones
         </Fig>
       </Frame>
-      <Slider label="Reviewer caseload (cases / hr)" value={casesPerHour} min={10} max={120} step={10} onChange={setCasesPerHour} />
+      <Slider label="Cases per hour" value={casesPerHour} min={10} max={120} step={10} onChange={setCasesPerHour} />
     </div>
   );
 }
