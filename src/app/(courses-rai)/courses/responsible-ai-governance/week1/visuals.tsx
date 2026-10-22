@@ -4,9 +4,6 @@ import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 
 export {
-  IsoInTheLoop as InTheLoop,
-  IsoOnTheLoop as OnTheLoop,
-  IsoAutonomous as Autonomous,
   IsoOversightFailures as OversightFailures,
   IsoDecisionRiskRegimes as DecisionRiskRegimes,
   IsoDelegatedExchange as DelegatedExchange,
@@ -1854,6 +1851,97 @@ export function SharedAuthority() {
       {/* Reviewer */}
       <Figure id={id} x={540} y={189} s={1.45} arm="reach" flip />
       </g>
+    </Frame>
+  );
+}
+
+/* The three oversight regimes share one conveyor of cases, so the column
+   plates differ only in where the human stands. */
+
+/** The regime conveyor: a belt running right, cards lying on it at `at` (x positions). */
+function Belt({ id, at, x0 = 26, x1 = 356, arrow = true }: { id: string; at: number[]; x0?: number; x1?: number; arrow?: boolean }) {
+  return (
+    <g>
+      <ObliqueBox id={id} x={x0} y={166} w={x1 - x0} h={10} dx={20} dy={14} />
+      {arrow ? (
+        <g>
+          <path d={`M${x1 + 26} 160L${x1 + 36} 166L${x1 + 26} 172`} fill="none" {...hair} />
+          <line x1={x1 + 22} y1={166} x2={x1 + 34} y2={166} {...hair} />
+        </g>
+      ) : null}
+      {at.map((x) => (
+        <Chip key={x} id={id} x={x} y={162} w={26} d={9} sk={11} />
+      ))}
+    </g>
+  );
+}
+
+/** Human-in-the-loop: a gate across the belt holds each case until the reviewer lifts its lever. */
+export function InTheLoop() {
+  const id = "w1-in";
+  return (
+    <Frame
+      width={400}
+      height={210}
+      label="Patent drawing: cases on a conveyor queue at a closed gate across the belt; a reviewer standing behind the belt holds the gate's lever, so each case waits for approval before it can pass."
+    >
+      <PatentDefs id={id} />
+      <Belt id={id} at={[48, 104, 160]} x1={296} />
+      <Figure id={id} x={360} y={177} s={1.25} arm="raise" flip />
+      {/* gate across the belt, and its lever */}
+      <ObliqueBox id={id} x={206} y={104} w={10} h={62} dx={20} dy={14} />
+      <line x1={226} y1={92} x2={320} y2={74} {...ink} strokeWidth={LINE.bold} />
+      <circle cx={322} cy={73} r={5} fill={PAT.paper} {...ink} />
+    </Frame>
+  );
+}
+
+/** Human-on-the-loop: cases run on unchecked; the operator watches a dashboard with a stop switch to hand. */
+export function OnTheLoop() {
+  const id = "w1-on";
+  return (
+    <Frame
+      width={400}
+      height={210}
+      label="Patent drawing: cases run continuously along a conveyor; behind it an operator watches a dashboard screen showing a live trace and keeps one hand on a stop switch, able to intervene or shut the system down."
+    >
+      <PatentDefs id={id} />
+      {/* dashboard on a stand */}
+      <line x1={196} y1={96} x2={196} y2={150} {...ink} />
+      <ObliqueBox id={id} x={146} y={36} w={100} h={60} dx={10} dy={6} />
+      <rect x={154} y={44} width={84} height={44} fill={PAT.paper} {...hair} />
+      <path d="M158 76L172 70L184 74L196 60L208 66L220 56L234 62" fill="none" {...ink} />
+      {/* stop switch on its post */}
+      <line x1={312} y1={112} x2={312} y2={150} {...ink} />
+      <path d="M300 112A12 6 0 0 1 324 112V106A12 6 0 0 0 300 106Z" fill={stip(id, "dense")} {...ink} />
+      <ellipse cx={312} cy={106} rx={12} ry={6} fill={PAT.paper} {...ink} />
+      <Belt id={id} at={[40, 96, 152, 208, 256]} x1={296} />
+      <Figure id={id} x={362} y={177} s={1.25} arm="reach" flip />
+    </Frame>
+  );
+}
+
+/** Fully autonomous: cases run between constraint rails into a log that is audited after the fact. */
+export function Autonomous() {
+  const id = "w1-auto";
+  return (
+    <Frame
+      width={400}
+      height={210}
+      label="Patent drawing: cases run along a conveyor between two rails marked constraints, with no person present, and drop into an open log book at the end; a hand lens rests on the log for the periodic post-hoc audit."
+    >
+      <PatentDefs id={id} />
+      {/* far rail */}
+      <ObliqueBox id={id} x={46} y={146} w={234} h={8} dx={6} dy={4} />
+      <Belt id={id} at={[48, 104, 160, 216]} x0={26} x1={286} arrow={false} />
+      {/* near rail */}
+      <ObliqueBox id={id} x={26} y={168} w={260} h={14} dx={6} dy={4} />
+      <PatentKey x={156} y={179} size={8.5}>
+        CONSTRAINTS
+      </PatentKey>
+      {/* log book, audited after the fact */}
+      <Sheet id={id} x={300} y={150} w={74} d={34} sk={14} t={6} lines={4} />
+      <Lens id={id} cx={340} cy={124} r={13} a={-0.5} handle={18} />
     </Frame>
   );
 }
