@@ -1123,3 +1123,78 @@ export function DemographicParity() {
     </div>
   );
 }
+
+/**
+ * A tray of ten applicants lying flat, two rows of five discs; the first
+ * `chosen` discs are selected (dense). `red` marks unselected discs red.
+ */
+function Tray({ id, x, y, chosen, red = false }: { id: string; x: number; y: number; chosen: number; red?: boolean }) {
+  return (
+    <g>
+      <path d={`M${x} ${y}L${x + 16} ${y - 30}H${x + 112}L${x + 96} ${y}Z`} fill={PAT.paper} {...ink} />
+      <path d={`M${x} ${y}V${y + 4}H${x + 96}L${x + 112} ${y - 26}V${y - 30}L${x + 96} ${y}Z`} fill={stip(id, "dense")} {...ink} />
+      {Array.from({ length: 10 }, (_, i) => {
+        const row = Math.floor(i / 5);
+        const col = i % 5;
+        const cx = r2(x + 18 + col * 17 + (1 - row) * 7);
+        const cy = r2(y - 9 - (1 - row) * 13);
+        const on = i < chosen;
+        const hot = !on && red;
+        return <ellipse key={i} cx={cx} cy={cy} rx={6.5} ry={4} fill={on ? stip(id, "dense") : hot ? stip(id, "signal") : PAT.paper} stroke={hot ? PAT.signal : PAT.ink} strokeWidth={hot ? LINE.bold : LINE.outline} />;
+      })}
+    </g>
+  );
+}
+
+/**
+ * Separation on trays sorted by the true outcome: a Y = 1 tray and a Y = 0
+ * tray for each group, selected applicants dense. FIG. 1: without
+ * separation, Group B's qualified applicants are overlooked at a higher rate
+ * (red). FIG. 2, equal opportunity: the Y = 1 trays match. FIG. 3, equalized
+ * odds: both trays match.
+ */
+export function SeparationTrays() {
+  const id = "w2-sep";
+  const figs = [
+    { x: 76, a: [8, 3], b: [5, 1], name: "overlooked at higher rates" },
+    { x: 318, a: [8, 3], b: [8, 1], name: "equal opportunity" },
+    { x: 560, a: [8, 2], b: [8, 2], name: "equalized odds" },
+  ];
+  return (
+    <Frame
+      width={800}
+      height={196}
+      label="Patent drawing in three figures. In each, applicants lie on trays sorted by the true outcome: a Y = 1 tray of ten who would repay and a Y = 0 tray of ten who would default, for Group A and for Group B; the applicants the model selects are stippled dense. FIG. 1, overlooked at higher rates: Group A has 8 of 10 qualified selected, Group B only 5 of 10, its five overlooked qualified applicants drawn in red. FIG. 2, equal opportunity: both groups have 8 of 10 qualified selected, while 3 and 1 of 10 unqualified are selected. FIG. 3, equalized odds: 8 of 10 qualified and 2 of 10 unqualified selected in both groups."
+    >
+      <PatentDefs id={id} />
+      <Num x={50} y={70} size={13} anchor="end">
+        Y = 1
+      </Num>
+      <Num x={50} y={136} size={13} anchor="end">
+        Y = 0
+      </Num>
+      <line x1={94} y1={80} x2={94} y2={94} {...hair} />
+      <PatentKey x={84} y={106} anchor="start" size={10}>
+        SELECTED
+      </PatentKey>
+      {figs.map((f, i) => (
+        <g key={f.name}>
+          {i > 0 ? <line x1={f.x - 12} y1={10} x2={f.x - 12} y2={168} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} /> : null}
+          <PatentKey x={f.x + 56} y={22} size={10}>
+            GROUP A
+          </PatentKey>
+          <PatentKey x={f.x + 172} y={22} size={10}>
+            GROUP B
+          </PatentKey>
+          <Tray id={id} x={f.x} y={82} chosen={f.a[0]} />
+          <Tray id={id} x={f.x + 116} y={82} chosen={f.b[0]} red={i === 0} />
+          <Tray id={id} x={f.x} y={148} chosen={f.a[1]} />
+          <Tray id={id} x={f.x + 116} y={148} chosen={f.b[1]} />
+          <Fig x={f.x + 114} y={186} n={i + 1} size={12}>
+            {f.name}
+          </Fig>
+        </g>
+      ))}
+    </Frame>
+  );
+}
