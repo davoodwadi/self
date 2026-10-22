@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 
 export {
-  IsoBenchmarkFailures as BenchmarkFailures,
   IsoSixStages as SixStages,
   IsoSharedAuthority as SharedAuthority,
   IsoInTheLoop as InTheLoop,
@@ -1572,6 +1571,117 @@ export function ProbabilisticRuns() {
           onChange={setFraming}
         />
       </div>
+    </div>
+  );
+}
+
+/**
+ * Four ways benchmark accuracy fails. FIG. 1 a square peg over a round hole;
+ * FIG. 2 one sampled bar standing in front of the hidden distribution (red,
+ * dashed); FIG. 3 a commercial prompt card in the slot swings the needle into
+ * the red band; FIG. 4 test sheets leaking into the training stack. Choosing a
+ * mode rings its figure with a detail circle.
+ */
+export function BenchmarkFailures() {
+  const [focus, setFocus] = useState<"all" | "1" | "2" | "3" | "4">("all");
+  const id = "w1-fail";
+  const rings: Record<string, number> = { "1": 100, "2": 300, "3": 500, "4": 700 };
+  const redLine = { stroke: PAT.signal, strokeWidth: LINE.bold, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  const arcPt = (deg: number, r: number) => {
+    const a = ((deg - 90) * Math.PI) / 180;
+    return `${r2(500 + Math.cos(a) * r)} ${r2(130 + Math.sin(a) * r)}`;
+  };
+  return (
+    <div>
+      <Frame
+        width={800}
+        height={215}
+        label={`Patent drawing in four figures. FIG. 1, construct mismatch: a square peg marked trivia hangs over a round hole marked credit. FIG. 2, single-sample fragility: one sampled bar stands in front of a hidden distribution drawn in dashed red. FIG. 3, prompt sensitivity: a commercial prompt card in a gauge's slot swings its needle into the red band. FIG. 4, benchmark contamination: sheets from the test stack leak along a red path into the training stack.${focus === "all" ? "" : ` Figure ${focus} is ringed.`}`}
+      >
+        <PatentDefs id={id} />
+
+        {/* FIG. 1 — construct mismatch */}
+        <ObliqueBox id={id} x={74} y={50} w={46} h={34} dx={10} dy={6} />
+        <PatentKey x={98} y={70} size={7}>
+          TRIVIA
+        </PatentKey>
+        <line x1={97} y1={90} x2={97} y2={118} {...hair} strokeDasharray={CENTRE_DASH} />
+        <ObliqueBox id={id} x={46} y={140} w={104} h={14} dx={24} dy={16} top={PAT.paper} />
+        <ellipse cx={110} cy={132} rx={20} ry={5} fill={stip(id, "dense")} {...ink} />
+        <PatentKey x={98} y={172} size={8}>
+          CREDIT
+        </PatentKey>
+        <Fig x={100} y={202} n={1} size={11}>
+          construct mismatch
+        </Fig>
+
+        {/* FIG. 2 — single-sample fragility */}
+        {[
+          [252, 70],
+          [272, 92],
+          [312, 104],
+          [332, 80],
+        ].map(([x, h]) => (
+          <rect key={x} x={x} y={160 - h} width={16} height={h} fill="none" stroke={PAT.signal} strokeWidth={LINE.hair} strokeDasharray="3 2" />
+        ))}
+        <ObliqueBox id={id} x={290} y={112} w={18} h={48} dx={6} dy={4} />
+        <path d={tick(299, 98, 6)} fill="none" {...ink} strokeWidth={LINE.bold} />
+        <line x1={240} y1={160} x2={360} y2={160} {...ink} />
+        <Fig x={300} y={202} n={2} size={11}>
+          single-sample fragility
+        </Fig>
+
+        {/* FIG. 3 — prompt sensitivity */}
+        <ObliqueBox id={id} x={456} y={84} w={88} h={80} dx={12} dy={8} />
+        <path d="M486 80L496 72V44L486 52Z" fill={stip(id, "dense")} {...ink} />
+        <rect x={486} y={52} width={30} height={28} fill={PAT.paper} {...ink} />
+        {[59, 65, 71].map((y) => (
+          <line key={y} x1={490} y1={y} x2={512} y2={y} {...hair} />
+        ))}
+        <path d={`M${arcPt(-60, 30)}A30 30 0 0 1 ${arcPt(60, 30)}`} fill="none" {...hair} />
+        <path d={`M${arcPt(25, 30)}A30 30 0 0 1 ${arcPt(60, 30)}`} {...redLine} strokeWidth={3} strokeLinecap="butt" />
+        <line x1={500} y1={130} x2={r2(500 + Math.sin((45 * Math.PI) / 180) * 26)} y2={r2(130 - Math.cos((45 * Math.PI) / 180) * 26)} stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" />
+        <circle cx={500} cy={130} r={2.4} fill={PAT.ink} />
+        <Fig x={500} y={202} n={3} size={11}>
+          prompt sensitivity
+        </Fig>
+
+        {/* FIG. 4 — benchmark contamination */}
+        <ObliqueBox id={id} x={624} y={126} w={50} h={34} dx={20} dy={14} top={PAT.paper} />
+        {[134, 142, 150].map((y) => (
+          <line key={y} x1={624} y1={y} x2={674} y2={y} {...hair} />
+        ))}
+        <PatentKey x={649} y={176} size={8}>
+          TEST
+        </PatentKey>
+        <ObliqueBox id={id} x={708} y={112} w={58} h={48} dx={20} dy={14} top={PAT.paper} />
+        {[120, 128, 136, 144, 152].map((y) => (
+          <line key={y} x1={708} y1={y} x2={766} y2={y} {...hair} />
+        ))}
+        <PatentKey x={737} y={176} size={8}>
+          TRAIN
+        </PatentKey>
+        <path d="M660 112Q686 62 728 92" {...redLine} />
+        <path d={headAlongPath(728, 92, 42, 30, 8)} {...redLine} />
+        <path d="M672 84L684 78H700L688 84Z" fill={stip(id, "signal")} stroke={PAT.signal} strokeWidth={LINE.outline} strokeLinejoin="round" />
+        <Fig x={700} y={202} n={4} size={11}>
+          benchmark contamination
+        </Fig>
+
+        {focus !== "all" ? <Detail cx={rings[focus]} cy={106} r={78} /> : null}
+      </Frame>
+      <Segmented
+        label="Failure mode"
+        options={[
+          { id: "all", label: "All 4 modes" },
+          { id: "1", label: "1. Construct mismatch" },
+          { id: "2", label: "2. Single-sample fragility" },
+          { id: "3", label: "3. Prompt sensitivity" },
+          { id: "4", label: "4. Contamination" },
+        ]}
+        value={focus}
+        onChange={setFocus}
+      />
     </div>
   );
 }
