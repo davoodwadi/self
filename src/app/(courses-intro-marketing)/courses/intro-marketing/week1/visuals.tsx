@@ -1955,7 +1955,7 @@ export function RelationshipGroups() {
 
 /* ==========================================================================
    19 · FIVE TO ONE — split a year's budget between acquiring and retaining
-   SIMULATED: the 5:1 cost ratio is the one the discussion gives; the budget,
+   Made-up data: the 5:1 cost ratio is the one the discussion gives; the budget,
    customer bases and the share who would leave are plausible round numbers.
    ========================================================================== */
 
@@ -1994,12 +1994,12 @@ export function AcquireRetain() {
   const b0 = 190;
   const b1 = 690;
   const split = r2(b0 + ((BUDGET - retainSpend) / BUDGET) * (b1 - b0));
-  const by = 58;
+  const by = 30;
   const unused = retainSpend - kept * RETAIN;
   const usedW = r2(((kept * RETAIN) / BUDGET) * (b1 - b0));
   const bh = 40;
   // Year-end customers: one stacked bar.
-  const y2 = 196;
+  const y2 = 168;
   const w = (n: number) => r2((n / scaleMax) * (b1 - b0));
   const xs = r2(b0 + w(stayed));
   const xk = r2(xs + w(kept));
@@ -2008,13 +2008,9 @@ export function AcquireRetain() {
   return (
     <div>
       <Frame
-        height={270}
-        label={`SIMULATED. ${FIRMS[firm].label} with ${base} customers splits a ${money(BUDGET)} budget: acquiring a new customer costs ${money(ACQUIRE)} and retaining an existing one costs ${money(RETAIN)}, five times less. ${leaving} customers would leave this year. Now ${money(BUDGET - retainSpend)} acquires ${gained} new customers and ${money(retainSpend)} retains ${kept}, for ${total} customers at year end.`}
+        height={242}
+        label={`${FIRMS[firm].label} with ${base} customers splits a ${money(BUDGET)} budget: acquiring a new customer costs ${money(ACQUIRE)} and retaining an existing one costs ${money(RETAIN)}, five times less. ${leaving} customers would leave this year. Now ${money(BUDGET - retainSpend)} acquires ${gained} new customers and ${money(retainSpend)} retains ${kept}, for ${total} customers at year end.`}
       >
-        <Key x={790} y={18} anchor="end" fill={INK3} size={9}>
-          SIMULATED
-        </Key>
-
         {/* the budget, split by the knob */}
         <Key x={b0 - 16} y={by + 16} anchor="end" fill={INK} size={10.5}>
           {`${money(BUDGET)} BUDGET`}

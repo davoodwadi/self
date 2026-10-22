@@ -13,7 +13,7 @@
    gap), PressureOverTime (drag the month the totals are judged → find the
    crossover), SustainableCatch (yearly catch → which generations go short)
    and AgentScale (switch on a seller's tricks → when the AI agent's pick
-   flips). Simulated numbers are labelled SIMULATED on the plate.
+   flips).
 
    Conventions are Week 01's, and the type primitives are imported from it:
      · viewBox width 800 for full-width plates, 400 for plates that sit in a
@@ -388,10 +388,6 @@ export function PurchasingPower() {
       <Key x={x0} y={16} fill={INK} size={11}>
         {`MONTHLY INCOME ${money(h.income)}`}
       </Key>
-      <Key x={x1} y={16} anchor="end" fill={INK3} size={8.5}>
-        SIMULATED
-      </Key>
-
       {/* the whole month */}
       <rect x={x0} y={bar.y} width={r2(xi(essentials) - x0)} height={bar.h} fill={PAPER3} stroke={INK3} strokeWidth={1} />
       <Key x={x0 + 10} y={bar.y + 18} fill={INK} size={11}>
@@ -876,9 +872,6 @@ export function AbsorbOrPass() {
         height={344}
         label={`A competitor sells at $40 with a $12 margin over its $28 cost. The brand's 100% fair-trade materials add $8 to the same cost. How much of that cost is passed on to consumers can be dragged. At ${dollars(price)}, the brand keeps a ${dollars(margin)} margin and charges ${dollars(price - FAIR.price)} more than the competitor.`}
       >
-        <Key x={392} y={16} anchor="end" fill={INK3} size={8.5}>
-          SIMULATED
-        </Key>
         <line x1={16} y1={base} x2={384} y2={base} stroke={INK} strokeWidth={1} />
         {column(rival, false, FAIR.price)}
         {column(brand, true, price)}
@@ -1063,9 +1056,6 @@ export function PressureOverTime() {
       <Key x={16} y={16} fill={INK} size={10}>
         {`TOTAL SALES AFTER ${month} MONTHS`}
       </Key>
-      <Key x={392} y={16} anchor="end" fill={INK3} size={8.5}>
-        SIMULATED
-      </Key>
       {bars.map((b, i) => (
         <g key={b.k}>
           <Key x={16} y={44 + i * 24} fill={b.tone} size={9.5} weight={ahead === b.id ? 700 : 600}>
@@ -1235,10 +1225,6 @@ export function SustainableCatch() {
       <Key x={x0 - 4} y={top - 10} fill={COUNTER} size={9.5}>
         FISH STOCK
       </Key>
-      <Key x={392} y={16} anchor="end" fill={INK3} size={8.5}>
-        SIMULATED
-      </Key>
-
       {/* the stock, year by year */}
       <path d={`${line}L${x(YEARS)} ${axis}L${x0} ${axis}Z`} fill={COUNTER_TINT} />
       <path d={line} fill="none" stroke={COUNTER} strokeWidth={2} />
