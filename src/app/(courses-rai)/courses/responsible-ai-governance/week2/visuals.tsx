@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
-import { Chip, Coins, Figure, Gear, House, Pan, Tag, cross, headAlongPath, tick } from "../_visuals/objects";
+import { Chip, Coins, Figure, Gear, House, Lens, Numeral, Pan, Tag, cross, headAlongPath, tick } from "../_visuals/objects";
 
 /* ==========================================================================
    WEEK 02 PLATES: PATENT DRAWING
@@ -2189,5 +2189,80 @@ export function MitigationFrontier() {
       </Frame>
       <Slider label="Fairness constraint" value={k} min={0} max={100} step={10} onChange={setK} formatValue={(v) => `${v}%`} />
     </div>
+  );
+}
+
+/**
+ * The six steps of a disparate impact audit as six instruments on one bench,
+ * numbered as in the slide: (1) the scope charter with its boxes ticked,
+ * (2) the holdout drawer of labelled records, (3) the baseline cylinders,
+ * (4) a lens over the pulled-apart pipeline, (5) the frontier with its
+ * chosen operating point, (6) the audit report beside a monitor whose trace
+ * drifts past its alert line (red).
+ */
+export function AuditSteps() {
+  const id = "w2-audit";
+  const g = 140;
+  const xs = [70, 196, 322, 450, 578, 712];
+  return (
+    <Frame
+      width={800}
+      height={182}
+      label="Patent drawing of the six steps of a disparate impact audit with reference numerals: 1, a scope charter with three ticked boxes; 2, a drawer of holdout records, each card a portrait of a group member; 3, two graduated cylinders of baseline selection rates with a four-fifths line; 4, a hand lens over a pipeline pulled apart into stages; 5, an accuracy-fairness frontier with its chosen operating point; 6, a bound audit report beside a monitor whose trace drifts past its dashed alert line in red."
+    >
+      <PatentDefs id={id} />
+      <line x1={14} y1={g + 1} x2={786} y2={g + 1} {...hair} />
+
+      {/* 1 — scope charter */}
+      <ObliqueBox id={id} x={44} y={48} w={56} h={g - 48} dx={8} dy={5} />
+      <line x1={52} y1={60} x2={88} y2={60} {...ink} />
+      {[76, 96, 116].map((y) => (
+        <g key={y}>
+          <rect x={52} y={y - 6} width={9} height={9} fill={PAT.paper} {...hair} />
+          <path d={tick(56.5, y - 1.5, 3.5)} fill="none" {...ink} />
+          <line x1={66} y1={y} x2={92} y2={y} {...hair} />
+        </g>
+      ))}
+
+      {/* 2 — holdout drawer of records */}
+      <ObliqueBox id={id} x={150} y={88} w={92} h={g - 88} dx={14} dy={9} top={PAT.paper} />
+      {[0, 1, 2, 3].map((i) => (
+        <Portrait key={i} id={id} x={156 + i * 21} y={66 + (i % 2) * 4} w={18} h={26} coat={i === 1 || i === 3 ? "dense" : "paper"} />
+      ))}
+      <rect x={180} y={104} width={32} height={10} fill="none" {...hair} />
+
+      {/* 3 — baseline metrics */}
+      <Cylinder id={id} cx={304} top={56} bottom={g - 6} rx={14} ry={4} level={0.62} />
+      <Cylinder id={id} cx={340} top={56} bottom={g - 6} rx={14} ry={4} level={0.4} tone="dense" />
+      <line x1={284} y1={r2(g - 6 - (g - 62) * 0.5)} x2={360} y2={r2(g - 6 - (g - 62) * 0.5)} {...ink} strokeDasharray="4 2.5" />
+
+      {/* 4 — diagnosing the stage */}
+      {[408, 436, 464, 492].map((x) => (
+        <ObliqueBox key={x} id={id} x={x} y={112} w={20} h={g - 112} dx={6} dy={4} />
+      ))}
+      <Lens id={id} cx={446} cy={68} r={22} a={-0.6} handle={20} />
+
+      {/* 5 — the frontier and its operating point */}
+      <path d="M534 50V136H624" fill="none" {...ink} />
+      <path d="M540 62Q586 62 616 118" fill="none" {...ink} strokeWidth={LINE.bold} />
+      <circle cx={590} cy={78} r={4.5} fill={PAT.paper} {...ink} strokeWidth={LINE.bold} />
+
+      {/* 6 — audit report and the drift alert */}
+      <ObliqueBox id={id} x={650} y={70} w={44} h={g - 70} dx={8} dy={5} />
+      <line x1={658} y1={82} x2={684} y2={82} {...ink} />
+      {[94, 102, 110].map((y) => (
+        <line key={y} x1={658} y1={y} x2={686} y2={y} {...hair} />
+      ))}
+      <circle cx={680} cy={124} r={7} fill={stip(id, "light")} {...ink} />
+      <ObliqueBox id={id} x={712} y={58} w={62} h={44} dx={8} dy={5} />
+      <line x1={743} y1={102} x2={743} y2={g} {...ink} />
+      <line x1={718} y1={72} x2={768} y2={72} {...hair} strokeDasharray="4 2.5" />
+      <path d="M718 94L728 92L738 90L748 84" fill="none" {...ink} />
+      <path d="M748 84L758 74L766 66" fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinecap="round" />
+
+      {xs.map((x, i) => (
+        <Numeral key={x} n={i + 1} x={x - 16} y={174} tx={x - 4} ty={g + 4} />
+      ))}
+    </Frame>
   );
 }
