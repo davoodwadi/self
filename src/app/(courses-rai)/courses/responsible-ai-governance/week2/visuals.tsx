@@ -1646,3 +1646,113 @@ export function IncompatibleTriad() {
     </Frame>
   );
 }
+
+/**
+ * The impossibility theorem as three beam levels. Each beam rests on a Group
+ * A post and a Group B post as tall as that group's rate; a spirit level on
+ * the beam shows whether the two are equal. Positive predictive value and
+ * true positive rate are held equal; the false positive rate then follows
+ * from each group's base rate. The slider sets Group B's base rate (Group A
+ * stays at 50%), and the toggle swaps in a perfect predictor.
+ */
+export function ImpossibilityLevels() {
+  const [baseB, setBaseB] = useState(30);
+  const [predictor, setPredictor] = useState<"imperfect" | "perfect">("imperfect");
+  const id = "w2-imposs";
+  const perfect = predictor === "perfect";
+  const ppv = perfect ? 1 : 0.75;
+  const tpr = perfect ? 1 : 0.8;
+  const fpr = (p: number) => (perfect ? 0 : (p / (1 - p)) * ((1 - ppv) / ppv) * tpr);
+  const pA = 0.5;
+  const pB = baseB / 100;
+  const rows = [
+    { label: "P(Y = 1 | D = 1)", a: ppv, b: ppv },
+    { label: "P(D = 1 | Y = 1)", a: tpr, b: tpr },
+    { label: "P(D = 1 | Y = 0)", a: fpr(pA), b: fpr(pB) },
+  ];
+  const pct = (v: number) => `${Math.round(v * 100)}%`;
+  const ground = 150;
+  const H = (v: number) => r2(14 + v * 80);
+  return (
+    <div>
+      <Frame
+        width={800}
+        height={196}
+        label={`Patent drawing: Group A's base rate is 50% and Group B's is ${baseB}%, shown as trays of ten applicants with those who would repay stippled. Three beams each rest on a Group A post and a Group B post as tall as that group's rate, with a spirit level on top. With ${perfect ? "a perfect predictor" : "an imperfect predictor"}, positive predictive value reads ${pct(rows[0].a)} for both groups and true positive rate ${pct(rows[1].a)} for both; the false positive rate reads ${pct(rows[2].a)} for Group A and ${pct(rows[2].b)} for Group B${Math.round(rows[2].a * 100) !== Math.round(rows[2].b * 100) ? ", so that beam tilts and its level is red" : ", so every beam is level"}.`}
+      >
+        <PatentDefs id={id} />
+
+        {/* base rates: ten applicants per group, those who would repay dense */}
+        {[
+          { y: 58, p: pA, name: "GROUP A" },
+          { y: 128, p: pB, name: "GROUP B" },
+        ].map((g) => (
+          <g key={g.name}>
+            <PatentKey x={18} y={g.y - 30} anchor="start" size={10}>
+              {g.name}
+            </PatentKey>
+            <Num x={196} y={g.y - 29} size={13} anchor="end">
+              {`P(Y = 1) ${pct(g.p)}`}
+            </Num>
+            {Array.from({ length: 10 }, (_, i) => (
+              <ellipse key={i} cx={28 + i * 17} cy={g.y} rx={7} ry={4.5} fill={i < Math.round(g.p * 10) ? stip(id, "dense") : PAT.paper} {...ink} />
+            ))}
+          </g>
+        ))}
+        <line x1={222} y1={14} x2={222} y2={176} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+        {/* three beams */}
+        {rows.map((r, i) => {
+          const x0 = 248 + i * 186;
+          const xa = x0 + 22;
+          const xb = x0 + 146;
+          const ha = H(r.a);
+          const hb = H(r.b);
+          const tilted = Math.round(r.a * 100) !== Math.round(r.b * 100);
+          const c = tilted ? PAT.signal : PAT.ink;
+          const ya = ground - ha;
+          const yb = ground - hb;
+          const mx = (xa + xb) / 2;
+          const my = (ya + yb) / 2;
+          const ang = (Math.atan2(yb - ya, xb - xa) * 180) / Math.PI;
+          const bubble = Math.max(-16, Math.min(16, (ya - yb) * 1.2));
+          return (
+            <g key={r.label}>
+              <line x1={x0} y1={ground} x2={x0 + 168} y2={ground} {...hair} />
+              <ObliqueBox id={id} x={xa - 6} y={ya} w={12} h={ha} dx={6} dy={4} />
+              <ObliqueBox id={id} x={xb - 6} y={yb} w={12} h={hb} dx={6} dy={4} />
+              <Num x={xa} y={ground + 16} size={12}>
+                {pct(r.a)}
+              </Num>
+              <Num x={xb} y={ground + 16} size={12} fill={tilted ? PAT.signal : PAT.ink}>
+                {pct(r.b)}
+              </Num>
+              <g transform={`rotate(${r2(ang)} ${r2(mx)} ${r2(my)})`}>
+                <rect x={r2(xa - 12)} y={r2(my - 8)} width={r2(xb - xa + 24)} height={6} fill={PAT.paper} stroke={c} strokeWidth={LINE.bold} />
+                <rect x={r2(mx - 24)} y={r2(my - 20)} width={48} height={12} rx={6} fill={PAT.paper} stroke={c} strokeWidth={LINE.outline} />
+                <line x1={r2(mx - 6)} y1={r2(my - 20)} x2={r2(mx - 6)} y2={r2(my - 8)} stroke={c} strokeWidth={LINE.hair} />
+                <line x1={r2(mx + 6)} y1={r2(my - 20)} x2={r2(mx + 6)} y2={r2(my - 8)} stroke={c} strokeWidth={LINE.hair} />
+                <ellipse cx={r2(mx + bubble)} cy={r2(my - 14)} rx={5} ry={3.4} fill={tilted ? stip(id, "signal") : stip(id, "light")} stroke={c} strokeWidth={LINE.outline} />
+              </g>
+              <Num x={x0 + 84} y={188} size={12.5}>
+                {r.label}
+              </Num>
+            </g>
+          );
+        })}
+      </Frame>
+      <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+        <Slider label="Group B base rate" value={baseB} min={20} max={50} step={5} onChange={setBaseB} formatValue={(v) => `${v}%`} />
+        <Segmented
+          label="Predictor"
+          options={[
+            { id: "imperfect", label: "Imperfect predictor" },
+            { id: "perfect", label: "Perfect predictor" },
+          ]}
+          value={predictor}
+          onChange={setPredictor}
+        />
+      </div>
+    </div>
+  );
+}
