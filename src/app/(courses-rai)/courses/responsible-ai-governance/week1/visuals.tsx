@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 
 export {
-  IsoBenchmarkGap as BenchmarkGap,
-  IsoProbabilisticRuns as ProbabilisticRuns,
   IsoBenchmarkFailures as BenchmarkFailures,
   IsoSixStages as SixStages,
   IsoSharedAuthority as SharedAuthority,
@@ -1417,5 +1415,163 @@ function Display1({ x, y, text, red = false, size = 20 }: { x: number; y: number
     <text x={x} y={y} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={size} fill={red ? PAT.signal : PAT.ink}>
       {text}
     </text>
+  );
+}
+
+/**
+ * Part 3: the benchmark gap. FIG. 1: the model stands first on a leaderboard
+ * podium under a glass bell jar. FIG. 2: the same model laid as a span
+ * between two banks of a real market, cracking (red) under load.
+ */
+export function BenchmarkGap() {
+  const id = "w1-gap";
+  return (
+    <Frame
+      width={800}
+      height={215}
+      label="Patent drawing in two figures. FIG. 1: a model block stands on the first-place step of a leaderboard podium, sealed under a glass bell jar, for technical benchmark performance. FIG. 2: the same model block set on a bridge span between two banks, which cracks in red at mid-span, for a real market setting."
+    >
+      <PatentDefs id={id} />
+
+      {/* FIG. 1 — podium under a bell jar */}
+      <ellipse cx={200} cy={170} rx={118} ry={12} fill={stip(id, "light")} {...ink} />
+      <ObliqueBox id={id} x={108} y={128} w={52} h={40} dx={10} dy={6} />
+      <ObliqueBox id={id} x={232} y={140} w={52} h={28} dx={10} dy={6} />
+      <ObliqueBox id={id} x={160} y={108} w={72} h={60} dx={10} dy={6} />
+      {[
+        [134, 152, "2"],
+        [196, 146, "1"],
+        [258, 158, "3"],
+      ].map(([x, y, n]) => (
+        <text key={n} x={x} y={y} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={16} fill={PAT.ink}>
+          {n}
+        </text>
+      ))}
+      <ObliqueBox id={id} x={182} y={78} w={28} h={24} dx={8} dy={5} />
+      <path d="M94 170V78C94 20 306 20 306 78V170" fill="none" {...ink} />
+      <path d="M110 112V80C110 48 140 36 164 32" fill="none" {...hair} />
+      <ellipse cx={200} cy={34} rx={12} ry={4} fill={PAT.paper} {...ink} />
+      <Fig x={200} y={204} n={1} size={11.5}>
+        technical benchmark performance
+      </Fig>
+
+      <line x1={400} y1={20} x2={400} y2={190} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+      {/* FIG. 2 — the same model as a span over a real market, cracking */}
+      <ObliqueBox id={id} x={430} y={110} w={96} h={70} dx={18} dy={11} />
+      <ObliqueBox id={id} x={646} y={110} w={110} h={70} dx={18} dy={11} />
+      {/* span: two halves sagging at a mid-span crack */}
+      <path d="M500 104L586 112L588 124L500 116Z" fill={PAT.paper} {...ink} />
+      <path d="M500 104L508 99L594 107L586 112Z" fill={stip(id, "light")} {...ink} />
+      <path d="M592 112L676 104V116L594 124Z" fill={PAT.paper} {...ink} />
+      <path d="M598 107L684 99L676 104L592 112Z" fill={stip(id, "light")} {...ink} />
+      <path d="M586 112L590 106L588 118L592 112L590 124" fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinejoin="round" strokeLinecap="round" />
+      {/* the same model block, now carrying market load */}
+      <ObliqueBox id={id} x={542} y={84} w={28} h={24} dx={8} dy={5} />
+      <Fig x={600} y={204} n={2} size={11.5}>
+        a real market setting
+      </Fig>
+    </Frame>
+  );
+}
+
+/**
+ * Probabilistic outputs (SIMULATED): a pin board drops the same prompt again
+ * and again; each run lands one ball in a brand's bin. Students add runs and
+ * flip the framing baffle; the most-chosen bin (red) reverses with framing.
+ */
+export function ProbabilisticRuns() {
+  const [runs, setRuns] = useState(24);
+  const [framing, setFraming] = useState<"standard" | "shifted">("standard");
+  const id = "w1-runs";
+
+  // Deterministic shares for the two framings so server and client match.
+  const shares = framing === "standard" ? [0.58, 0.27, 0.15] : [0.18, 0.24, 0.58];
+  const counts = [
+    Math.max(runs === 1 ? (framing === "standard" ? 1 : 0) : Math.round(runs * shares[0]), 0),
+    runs === 1 ? 0 : Math.round(runs * shares[1]),
+    0,
+  ];
+  counts[2] = Math.max(0, runs - counts[0] - counts[1]);
+  const top = counts.indexOf(Math.max(...counts));
+  const bins = [268, 400, 532];
+  const brand = ["BRAND A", "BRAND B", "BRAND C"];
+  const pegs: [number, number][] = [];
+  for (let i = 0; i < 6; i++) for (let j = 0; j <= i; j++) pegs.push([r2(400 + (j - i / 2) * 40), 58 + i * 11]);
+  const tilt = framing === "standard" ? -1 : 1;
+
+  return (
+    <div>
+      <Frame
+        width={800}
+        height={222}
+        label={`Patent drawing, simulated data: a hopper drops the same prompt onto a board of pins, past a framing baffle tilted ${framing === "standard" ? "left" : "right"}; after ${runs} repeated runs the balls lie in three brand bins, ${counts[0]} in brand A, ${counts[1]} in brand B and ${counts[2]} in brand C; the most-chosen bin, brand ${"ABC"[top]}, is red.`}
+      >
+        <PatentDefs id={id} />
+
+        {/* Hopper and framing baffle */}
+        <path d="M372 14H428L406 34V42H394V34Z" fill={PAT.paper} {...ink} />
+        <path d="M406 34L428 14H436L412 36Z" fill={stip(id, "dense")} {...ink} />
+        <line x1={r2(400 - 14)} y1={r2(48 - 4 * tilt)} x2={r2(400 + 14)} y2={r2(48 + 4 * tilt)} {...ink} strokeWidth={LINE.bold} />
+        <circle cx={400} cy={48} r={1.8} fill={PAT.ink} />
+
+        {/* Pin board */}
+        <path d="M268 54H532L556 122H244Z" fill="none" {...hair} />
+        {pegs.map(([x, y]) => (
+          <circle key={`${x}-${y}`} cx={x} cy={y} r={2.4} fill={PAT.paper} {...ink} />
+        ))}
+
+        {/* Bins, front cut away to show the balls */}
+        {bins.map((bx, b) => {
+          const n = counts[b];
+          const hot = b === top && n > 0;
+          return (
+            <g key={bx}>
+              <line x1={bx - 32} y1={124} x2={bx - 32} y2={132} {...hair} strokeDasharray="2 2" />
+              <line x1={bx + 32} y1={124} x2={bx + 32} y2={132} {...hair} strokeDasharray="2 2" />
+              <rect x={bx - 32} y={132} width={64} height={69} fill={stip(id, "light")} />
+              <path d={`M${bx + 32} 132L${bx + 40} 127V196L${bx + 32} 201Z`} fill={stip(id, "dense")} {...ink} />
+              <path d={`M${bx - 32} 132V201H${bx + 32}V132`} fill="none" {...ink} />
+              {Array.from({ length: n }, (_, k) => {
+                const row = Math.floor(k / 5);
+                const col = k % 5;
+                return (
+                  <circle
+                    key={k}
+                    cx={bx - 24 + col * 12}
+                    cy={194 - row * 11}
+                    r={5.2}
+                    fill={hot ? stip(id, "signal") : PAT.paper}
+                    stroke={hot ? PAT.signal : PAT.ink}
+                    strokeWidth={LINE.outline}
+                  />
+                );
+              })}
+              <text x={bx + 50} y={196} fontFamily="var(--font-heading)" fontSize={13} fill={hot ? PAT.signal : PAT.ink}>
+                {n}
+              </text>
+              <PatentKey x={bx} y={216} size={9.5}>
+                {brand[b]}
+              </PatentKey>
+            </g>
+          );
+        })}
+        <PatentKey x={612} y={216} anchor="start" size={9}>
+          SIMULATED
+        </PatentKey>
+      </Frame>
+      <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+        <Slider label="Repeated runs" value={runs} min={1} max={30} onChange={setRuns} />
+        <Segmented
+          label="Framing"
+          options={[
+            { id: "standard", label: "Framing A (Slot 1 favored)" },
+            { id: "shifted", label: "Framing B (choice reverses)" },
+          ]}
+          value={framing}
+          onChange={setFraming}
+        />
+      </div>
+    </div>
   );
 }
