@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 
 export {
-  IsoDecisionRiskRegimes as DecisionRiskRegimes,
   IsoDelegatedExchange as DelegatedExchange,
   IsoSurrogateConsumer as SurrogateConsumer,
   IsoDualAgencyRisks as DualAgencyRisks,
@@ -2013,6 +2012,86 @@ export function OversightFailures() {
         </Fig>
       </Frame>
       <Slider label="Reviewer caseload (cases / hr)" value={casesPerHour} min={10} max={120} step={10} onChange={setCasesPerHour} />
+    </div>
+  );
+}
+
+/**
+ * Matching oversight to decision risk: three columns whose height is the
+ * severity of potential harm (the tallest in red), with the cases in front
+ * showing how often each decision comes; on each column sits its regime's
+ * control: the approval gate, the stop switch, the audit lens. Choosing a
+ * tier rings it.
+ */
+export function DecisionRiskRegimes() {
+  const [tier, setTier] = useState<"all" | "high" | "medium" | "low">("all");
+  const id = "w1-risk";
+  const cols = [
+    { k: "high", x: 120, h: 112, n: 1, name: "HIGH-STAKES" },
+    { k: "medium", x: 340, h: 70, n: 4, name: "MEDIUM-STAKES" },
+    { k: "low", x: 560, h: 34, n: 9, name: "LOW-STAKES" },
+  ] as const;
+  const ringed = cols.find((c) => c.k === tier);
+  return (
+    <div>
+      <Frame
+        width={800}
+        height={215}
+        label={`Patent drawing: three columns stand for decision tiers, their heights the severity of potential harm. The high-stakes column is tallest and red, with one case in front and an approval gate on top; the medium-stakes column has four cases in front and a stop switch on top; the low-stakes column is lowest, with nine cases in front and an audit lens on top.${ringed ? ` The ${ringed.name.toLowerCase()} tier is ringed.` : ""}`}
+      >
+        <PatentDefs id={id} />
+        <line x1={60} y1={176} x2={760} y2={176} {...hair} />
+        {cols.map((c, i) => {
+          const top = 166 - c.h;
+          const red = i === 0;
+          return (
+            <g key={c.k}>
+              <ObliqueBox
+                id={id}
+                x={c.x}
+                y={top}
+                w={70}
+                h={c.h}
+                dx={18}
+                dy={12}
+                front={red ? stip(id, "signal") : PAT.paper}
+                stroke={red ? PAT.signal : PAT.ink}
+              />
+              {/* cases in front: how often the decision comes */}
+              {Array.from({ length: c.n }, (_, j) => (
+                <Chip key={j} id={id} x={c.x + 82 + (j % 3) * 24} y={174 - Math.floor(j / 3) * 9} w={18} d={6} sk={6} />
+              ))}
+              <PatentKey x={c.x + 54} y={198} size={10}>
+                {c.name}
+              </PatentKey>
+            </g>
+          );
+        })}
+
+        {/* regime controls on top of each column */}
+        <ObliqueBox id={id} x={146} y={30} w={8} h={20} dx={14} dy={9} />
+        <line x1={160} y1={22} x2={186} y2={10} {...ink} strokeWidth={LINE.bold} />
+        <circle cx={188} cy={9} r={4} fill={PAT.paper} {...ink} />
+
+        <line x1={384} y1={78} x2={384} y2={88} {...ink} />
+        <path d="M374 78A10 5 0 0 1 394 78V73A10 5 0 0 0 374 73Z" fill={stip(id, "dense")} {...ink} />
+        <ellipse cx={384} cy={73} rx={10} ry={5} fill={PAT.paper} {...ink} />
+
+        <Lens id={id} cx={598} cy={108} r={12} a={-0.6} handle={14} />
+
+        {ringed ? <Detail cx={ringed.x + 54} cy={tier === "high" ? 96 : 120} r={tier === "high" ? 90 : 64} /> : null}
+      </Frame>
+      <Segmented
+        label="Inspect risk regime"
+        options={[
+          { id: "all", label: "All 3 tiers" },
+          { id: "high", label: "High stakes (in-the-loop)" },
+          { id: "medium", label: "Medium stakes (on-the-loop)" },
+          { id: "low", label: "Low stakes (autonomous)" },
+        ]}
+        value={tier}
+        onChange={setTier}
+      />
     </div>
   );
 }
