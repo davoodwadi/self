@@ -415,51 +415,45 @@ export function ThreeLenses() {
 }
 
 /**
- * Consequentialism and market welfare. FIG. 1: an objective function climbs
- * to its maximum. FIG. 2: by segment, three columns rise above the zero
- * datum and the minority column hangs below it in red; pooled into one
- * average, the column stands above the datum and the harm disappears.
+ * Consequentialism and market welfare (SIMULATED). Welfare columns for four
+ * segments stand on a zero datum, each as wide as its group; the aggregate
+ * stands apart. Excluding the narrow minority segment from credit offers
+ * lifts the three majority columns and the aggregate, while the minority
+ * column drops below zero (red).
  */
 export function WelfareTradeoff() {
-  const [view, setView] = useState<"segment" | "aggregate">("segment");
-  const bySegment = view === "segment";
+  const [policy, setPolicy] = useState<"offer" | "exclude">("offer");
+  const excluded = policy === "exclude";
   const id = "w1-welfare";
-  const base = 128;
+  const base = 138;
   const majority = [
-    { x: 330, h: 52 },
-    { x: 424, h: 70 },
-    { x: 518, h: 44 },
+    { x: 96, offer: 40, exclude: 62 },
+    { x: 206, offer: 52, exclude: 78 },
+    { x: 316, offer: 34, exclude: 56 },
   ];
+  const minority = excluded ? -30 : 18;
+  const total = majority.reduce((t, m) => t + (excluded ? m.exclude : m.offer), 0) + minority;
+  const offerTotal = majority.reduce((t, m) => t + m.offer, 0) + 18;
+  const k = 0.6;
+  const u = 1;
 
   return (
     <div>
       <Frame
         width={800}
-        height={215}
-        label={`Patent drawing in two figures. FIG. 1: a graph panel whose objective function curve rises to a marked maximum. FIG. 2: a datum plate at zero welfare; ${bySegment ? "three segment columns rise above it while a minority segment column hangs below it in red" : "all segments are pooled into one wide average column standing above it, and no column falls below"}.`}
+        height={206}
+        label={`Patent drawing, simulated data: four segment welfare columns on a zero datum, each as wide as its group, with its people standing on top (three on each majority column, one on the minority column), and an aggregate column apart on the right. ${excluded ? `With the minority segment excluded from credit offers, the three majority columns rise, the aggregate rises from ${offerTotal} to ${total}, and the narrow minority column hangs below zero in red.` : `With credit offered to every segment, all four columns stand above zero and the aggregate is ${total}.`}`}
       >
         <PatentDefs id={id} />
 
-        {/* FIG. 1 — objective function on a graph panel */}
-        <ObliqueBox id={id} x={40} y={56} w={170} h={110} dx={14} dy={9} />
-        <path d="M58 150H196M58 150V70" fill="none" {...hair} />
-        <path d="M60 146C92 142 112 120 130 96C142 80 156 76 166 80C178 86 188 104 194 116" fill="none" {...ink} strokeWidth={LINE.bold} />
-        <line x1={160} y1={80} x2={160} y2={150} {...hair} strokeDasharray={CENTRE_DASH} />
-        <circle cx={160} cy={78} r={3.2} fill={PAT.ink} />
-        <Fig x={132} y={198} n={1}>
-          objective function
-        </Fig>
-
-        <line x1={262} y1={22} x2={262} y2={186} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
-
-        {/* FIG. 2 — welfare columns on a zero datum plate */}
-        {bySegment ? (
+        {/* Segments on the zero datum */}
+        {minority < 0 ? (
           <ObliqueBox
             id={id}
-            x={632}
+            x={430}
             y={base + 8}
-            w={58}
-            h={46}
+            w={36}
+            h={r2(-minority * u)}
             dx={12}
             dy={8}
             front={stip(id, "signal")}
@@ -468,39 +462,59 @@ export function WelfareTradeoff() {
             stroke={PAT.signal}
           />
         ) : null}
-        <ObliqueBox id={id} x={300} y={base} w={430} h={8} dx={40} dy={22} />
-        <PatentKey x={292} y={base + 7} anchor="end" size={10}>
+        <ObliqueBox id={id} x={60} y={base} w={440} h={8} dx={30} dy={18} />
+        <PatentKey x={52} y={base + 7} anchor="end" size={10}>
           0
         </PatentKey>
-        {bySegment ? (
-          <>
-            {majority.map((c) => (
-              <ObliqueBox key={c.x} id={id} x={c.x} y={base - 6 - c.h} w={58} h={c.h} dx={12} dy={8} />
-            ))}
-            <PatentKey x={712} y={base + 40} anchor="start" fill={PAT.signal} size={9.5}>
-              MINORITY
-            </PatentKey>
-          </>
-        ) : (
-          <>
-            <ObliqueBox id={id} x={330} y={base - 6 - 38} w={360} h={38} dx={12} dy={8} />
-            <PatentKey x={510} y={base - 20} size={10}>
-              AVERAGE
-            </PatentKey>
-          </>
-        )}
-        <Fig x={530} y={206} n={2}>
-          {bySegment ? "severe harm on a smaller group" : "aggregate outcomes"}
-        </Fig>
+        {majority.map((m) => {
+          const h = r2((excluded ? m.exclude : m.offer) * u);
+          return (
+            <g key={m.x}>
+              <ObliqueBox id={id} x={m.x} y={r2(base - 6 - h)} w={70} h={h} dx={12} dy={8} />
+              {[18, 38, 58].map((f) => (
+                <Figure key={f} id={id} x={m.x + f} y={r2(base - 9 - h)} s={0.5} />
+              ))}
+            </g>
+          );
+        })}
+        {minority > 0 ? <ObliqueBox id={id} x={430} y={r2(base - 6 - minority * u)} w={36} h={r2(minority * u)} dx={12} dy={8} /> : null}
+        <Figure id={id} x={452} y={minority > 0 ? r2(base - 9 - minority * u) : base - 9} s={0.5} stroke={excluded ? PAT.signal : PAT.ink} />
+        <PatentKey x={422} y={base + 26} anchor="end" fill={excluded ? PAT.signal : PAT.ink} size={9.5}>
+          MINORITY SEGMENT
+        </PatentKey>
+
+        <line x1={560} y1={16} x2={560} y2={184} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
+
+        {/* The aggregate, apart */}
+        <ObliqueBox id={id} x={600} y={base} w={150} h={8} dx={30} dy={18} />
+        <ObliqueBox id={id} x={634} y={r2(base - 6 - total * k)} w={84} h={r2(total * k)} dx={12} dy={8} />
+        {excluded ? (
+          <path
+            d={`M634 ${r2(base - 6 - offerTotal * k)}H718`}
+            fill="none"
+            {...hair}
+            strokeDasharray="4 2.5"
+          />
+        ) : null}
+        <text x={676} y={r2(base - 18 - total * k)} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={18} fill={PAT.ink}>
+          {`+${total}`}
+        </text>
+        <PatentKey x={690} y={base + 40} size={10}>
+          AGGREGATE OUTCOMES
+        </PatentKey>
+
+        <PatentKey x={60} y={198} anchor="start" size={9}>
+          SIMULATED
+        </PatentKey>
       </Frame>
       <Segmented
-        label="Evaluation lens"
+        label="Credit offers"
         options={[
-          { id: "segment", label: "By segment (reveals excluded minority)" },
-          { id: "aggregate", label: "Aggregate average only (masks harm)" },
+          { id: "offer", label: "Offer credit to every segment" },
+          { id: "exclude", label: "Exclude the minority segment" },
         ]}
-        value={view}
-        onChange={setView}
+        value={policy}
+        onChange={setPolicy}
       />
     </div>
   );
