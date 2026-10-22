@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 
 export {
-  IsoManyHands as ManyHands,
   IsoAccountabilityDossiers as AccountabilityDossiers,
   IsoInsuranceClaims as InsuranceClaims,
   IsoBenchmarkGap as BenchmarkGap,
@@ -1050,7 +1049,7 @@ export function ValueChainFiveActors() {
     "1": [104, 116, 62],
     "2": [252, 122, 58],
     "3": [398, 116, 58],
-    "4": [542, 110, 58],
+    "4": [530, 106, 64],
     "5": [690, 92, 66],
   };
   const ring = stage === "all" ? null : rings[stage];
@@ -1118,8 +1117,8 @@ export function ValueChainFiveActors() {
         ))}
 
         {/* 4 — the consumer, taking the result */}
-        <Figure id={id} x={540} y={162} s={1.15} arm="reach" flip />
-        <path d="M494 104L506 98H524L512 104Z" fill={PAT.paper} {...ink} />
+        <Figure id={id} x={548} y={162} s={1.4} arm="reach" flip />
+        <path d="M486 90L498 84H516L504 90Z" fill={PAT.paper} {...ink} />
 
         {/* 5 — regulator's lens on a stand, over the chain */}
         <path d="M748 176V40H742V176" fill={PAT.paper} {...ink} />
@@ -1131,7 +1130,7 @@ export function ValueChainFiveActors() {
         <Numeral n={1} x={64} y={40} tx={84} ty={72} bold={stage === "1"} />
         <Numeral n={2} x={208} y={40} tx={234} ty={66} bold={stage === "2"} />
         <Numeral n={3} x={352} y={36} tx={368} ty={56} bold={stage === "3"} />
-        <Numeral n={4} x={588} y={52} tx={548} ty={78} bold={stage === "4"} />
+        <Numeral n={4} x={596} y={40} tx={562} ty={58} bold={stage === "4"} />
         <Numeral n={5} x={652} y={30} tx={672} ty={62} bold={stage === "5"} />
 
         {ring ? <Detail cx={ring[0]} cy={ring[1]} r={ring[2]} /> : null}
@@ -1151,4 +1150,88 @@ export function ValueChainFiveActors() {
       />
     </div>
   );
+}
+
+/**
+ * The problem of many hands. Blame: the model developer and the deploying
+ * retailer point at each other's part (the drum of weights, the prompt card)
+ * while the consumer holds the biased outcome (red). Accountable: the
+ * retailer turns to the consumer, joined by a line marked accountable.
+ */
+export function ManyHands() {
+  const [mode, setMode] = useState<"blame" | "accountable">("blame");
+  const blame = mode === "blame";
+  const id = "w1-hands";
+  const red = { stroke: PAT.signal, strokeWidth: LINE.bold, fill: "none", strokeLinecap: "round" as const };
+  return (
+    <div>
+      <Frame
+        width={800}
+        height={215}
+        label={`Patent drawing: a model developer stands by a drum of weights, a deploying retailer stands by a housing with a prompt card, and a consumer holds a red card for the biased outcome. ${blame ? "The developer points at the retailer's prompt card and the retailer points back at the developer's drum: two red arrows cross, and no one takes the outcome." : "The retailer turns to the consumer; a line marked accountable joins the retailer to the consumer's outcome."}`}
+      >
+        <PatentDefs id={id} />
+        <line x1={40} y1={190} x2={760} y2={190} {...hair} />
+
+        {/* Model developer by the drum of weights */}
+        <path d="M66 108V178A32 9 0 0 0 130 178V108Z" fill={PAT.paper} {...ink} />
+        <path d="M118 114.8V184.8A32 9 0 0 0 130 178V108A32 9 0 0 1 118 114.8Z" fill={stip(id, "dense")} />
+        {[132, 156].map((y) => (
+          <path key={y} d={`M66 ${y}A32 9 0 0 0 130 ${y}`} fill="none" {...hair} />
+        ))}
+        <ellipse cx={98} cy={108} rx={32} ry={9} fill={stip(id, "light")} {...ink} />
+        <Figure id={id} x={190} y={189} s={1.55} arm={blame ? "reach" : "down"} />
+
+        {/* Deploying retailer by the housing and its prompt card */}
+        <ObliqueBox id={id} x={312} y={124} w={86} h={65} dx={14} dy={9} />
+        <path d="M336 118L348 110V88L336 96Z" fill={stip(id, "dense")} {...ink} />
+        <rect x={336} y={96} width={38} height={24} fill={PAT.paper} {...ink} />
+        {[103, 109, 115].map((y) => (
+          <line key={y} x1={341} y1={y} x2={369} y2={y} {...hair} />
+        ))}
+        <Figure id={id} x={482} y={189} s={1.55} arm="reach" flip={blame} />
+
+        {/* Consumer holding the biased outcome */}
+        <Figure id={id} x={712} y={189} s={1.55} arm="reach" flip />
+        <path d="M628 108L642 100H664L650 108Z" fill={stip(id, "signal")} stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinejoin="round" />
+
+        {blame ? (
+          <g>
+            <path d="M240 98Q300 36 352 84" {...red} />
+            <path d={headAlongPath(352, 84, 52, 48)} {...red} />
+            <path d="M434 98Q280 -14 112 94" {...red} />
+            <path d={headAlongPath(112, 94, -168, 108)} {...red} />
+          </g>
+        ) : (
+          <g>
+            <line x1={532} y1={104} x2={630} y2={104} {...ink} strokeWidth={LINE.bold} />
+            <circle cx={532} cy={104} r={2.4} fill={PAT.ink} />
+            <circle cx={630} cy={104} r={2.4} fill={PAT.ink} />
+            <PatentKey x={581} y={92} size={10.5}>
+              ACCOUNTABLE
+            </PatentKey>
+          </g>
+        )}
+      </Frame>
+      <Segmented
+        label="Governance state"
+        options={[
+          { id: "blame", label: "Problem of many hands (mutual blame)" },
+          { id: "accountable", label: "Accountable governance (deployer liable)" },
+        ]}
+        value={mode}
+        onChange={setMode}
+      />
+    </div>
+  );
+}
+
+/** An open arrowhead at (x, y) pointing along (dx, dy). */
+function headAlongPath(x: number, y: number, dx: number, dy: number, s = 9) {
+  const len = Math.hypot(dx, dy) || 1;
+  const ux = dx / len;
+  const uy = dy / len;
+  const bx = x - ux * s;
+  const by = y - uy * s;
+  return `M${r2(bx - uy * s * 0.55)} ${r2(by + ux * s * 0.55)}L${x} ${y}L${r2(bx + uy * s * 0.55)} ${r2(by - ux * s * 0.55)}`;
 }
