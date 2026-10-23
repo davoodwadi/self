@@ -1,8 +1,8 @@
 # Responsible AI & Algorithmic Governance: plate style
 
-Every SVG plate in this course is a **patent drawing**: the algorithm, the rule or the market is drawn as an invention on file, so students can inspect how it works and where it fails. Fine black line work on white, shading by stipple, oblique projection, FIG. numbering in Caslon italic, and one examiner's red for the finding.
+Every SVG plate in this course is a **patent drawing**: the algorithm, the rule or the market is drawn as an invention on file, so students can inspect how it works and where it fails. Fine black line work on white, shading by stipple, oblique projection, Caslon type, and one examiner's red for the finding.
 
-The reference plate is the Week 1 "Why market algorithms require governance" plate as previewed in the style round (one hand stamp in FIG. 1; one rule bar pressing five cards in FIG. 2, four stippled red). Match its line weights, stipple densities and type.
+The reference plate is the Week 1 "Why market algorithms require governance" plate as previewed in the style round (one hand stamp in the first figure; one rule bar pressing five cards in the second, four stippled red). Match its line weights, stipple densities and type.
 
 The style is a medium, not a scene template: each plate is invented for its sentence, and a week mixes many kinds of drawing.
 
@@ -12,7 +12,7 @@ The style is a medium, not a scene template: each plate is invented for its sent
 - **Tone by stipple.** Shading comes only from the dot patterns in `PatentDefs`: `light` on top faces, `dense` on side faces and cast shadows, white on front faces. No grey fills, gradients or shadows.
 - **Oblique projection.** Solids are drawn with a white front face and the depth running up and to the right (`ObliqueBox`, default `dx 10, dy 6`). Flat objects lying down (cards, forms, maps) are parallelograms with a thin stippled edge. Cylinders get ellipse caps.
 - **Hidden and moving parts.** Hidden edges are dashed hairlines; a path of motion or a drop (a stamp coming down, a value flowing) is a centre line (`CENTRE_DASH`) or a short dashed hairline. Cutaways show an internal mechanism by drawing the housing's front face open with a broken edge (a zig-zag break line), as in a patent section.
-- **FIG. numbering.** When a plate has two or more figures, each carries `<Fig n={…}>` underneath with a concept or quantity from the slide (`FIG. 2 — thousands of decisions per second`). A single-figure plate needs no number. FIG. lines name a concept; they never explain the drawing (root rule 2).
+- **Figure names.** When a plate sets two or more figures side by side, each is identified by its name alone, set with `<FigureName>` underneath: a concept or quantity from the slide in Caslon italic (`thousands of decisions per second`). Figure names name a concept; they never explain the drawing (root rule 2).
 - **Keys.** Concept names set on or beside a part use `PatentKey` (Caslon capitals, tracked 0.22em). A concept name set into a solid sits on its white front face.
 - **People.** When the body carries the idea, draw people as patent figures: clean outline, no skin-tone fills, stipple for clothing shade, hands and tools drawn in the same line.
 
@@ -21,7 +21,7 @@ The style is a medium, not a scene template: each plate is invented for its sent
 | Constant | Role | Hex |
 |---|---|---|
 | `paper` | The sheet: page, plates, front faces | `#FFFFFF` |
-| `ink` | Every outline, stipple dot, key and FIG. line | `#141414` |
+| `ink` | Every outline, stipple dot, key and figure name | `#141414` |
 | `ink3` | Secondary notes on the page (not in plates) | `#666666` |
 | `signal` | Examiner's red: the finding (the harm, disparity, fault or trap), one subject per plate | `#B8321F` |
 | `counter` | Rare second ink: the protected right or fair benchmark, only when the plate shows a contrast students must see | `#1F5747` |
@@ -30,10 +30,10 @@ A red finding is drawn in red line and/or red stipple (`stip(id, "signal")`); it
 
 ## Type
 
-- Headings and display: **Libre Caslon Text** 400 (`--font-heading`), italic for FIG. lines.
+- Headings and display: **Libre Caslon Text** 400 (`--font-heading`), italic for figure names.
 - Body and labels: **Libre Franklin** (`--font-body`).
-- Inside plates and their controls everything is Caslon, weight 400: keys and any word printed on a drawn object (a badge, a sign, a stamp) are `PatentKey` capitals at 0.22em tracking; numerals and quantities are plain Caslon; FIG. lines are Caslon italic. No sans and no bold in a plate.
-- Size by what students see, not by viewBox units: measured at 1440×900 after `FitSlides` has run, keys and object words read at 11–13px, FIG. lines at 12–15px, and quantities larger. A column plate renders far smaller than a full-width one, so the same idea needs bigger units there. When a slide shrinks its plates to fit, give the slide more room (a side-by-side layout, a shorter plate) rather than smaller type.
+- Inside plates and their controls everything is Caslon, weight 400: keys and any word printed on a drawn object (a badge, a sign, a stamp) are `PatentKey` capitals at 0.22em tracking; numerals and quantities are plain Caslon; figure names are Caslon italic. No sans and no bold in a plate.
+- Size by what students see, not by viewBox units: measured at 1440×900 after `FitSlides` has run, keys and object words read at 11–13px, figure names at 12–15px, and quantities larger. A column plate renders far smaller than a full-width one, so the same idea needs bigger units there. When a slide shrinks its plates to fit, give the slide more room (a side-by-side layout, a shorter plate) rather than smaller type.
 - The controls under a plate (`Segmented`, `Slider`, `PlateButton`) use the same Caslon tracked capitals in ink; their labels are terms from the slide.
 
 ## Visual variety across a week
@@ -55,7 +55,7 @@ Vary the camera distance, subject and drawing grammar so neighbouring slides fee
 | `PatentDefs id` | The stipple patterns; render once inside each plate with an id unique on the page. |
 | `stip(id, tone)` | Fill for a stippled face: `light`, `dense`, `signal`, `counter`. |
 | `ObliqueBox` | Any rectangular solid: a housing, a rule bar, a block, a plinth, a stamp body. |
-| `Fig` | FIG. numbering under each figure of a multi-figure plate. |
+| `FigureName` | The concept under each figure of a multi-figure plate (no numbering). |
 | `PatentKey` | Concept names set on a part. |
 | `PAT`, `LINE`, `CENTRE_DASH` | Palette, line weights, centre-line dash. |
 
@@ -70,7 +70,7 @@ Render each plate, screenshot it at full size, and check:
 - **Projection:** solids share one oblique direction and depth within the plate; front faces white.
 - **One finding:** red marks one subject, as line or stipple.
 - **Variety:** a different kind of drawing from the plates before and after it.
-- **Self-evident:** the drawing and its sentence make the point without a caption; FIG. lines name, never explain.
+- **Self-evident:** the drawing and its sentence make the point without a caption; figure names name, never explain.
 
 ## Avoid
 

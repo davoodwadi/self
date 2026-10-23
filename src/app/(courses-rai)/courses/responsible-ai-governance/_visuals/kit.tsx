@@ -108,26 +108,23 @@ export function ObliqueBox({
   );
 }
 
-/** FIG. numbering under a figure, in Caslon italic: `FIG. 2 — <concept from the slide>`. */
-export function Fig({
+/** The concept a figure shows, set under it in Caslon italic (a term from the slide). */
+export function FigureName({
   x,
   y,
-  n,
   children,
   anchor = "middle",
   size = 12,
 }: {
   x: number;
   y: number;
-  n: number | string;
-  children?: React.ReactNode;
+  children: React.ReactNode;
   anchor?: Anchor;
   size?: number;
 }) {
   return (
     <text x={x} y={y} textAnchor={anchor} fontFamily={SERIF} fontStyle="italic" fontSize={size} fill={PAT.ink}>
-      FIG. {n}
-      {children ? <> — {children}</> : null}
+      {children}
     </text>
   );
 }

@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { CENTRE_DASH, Fig, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
+import { CENTRE_DASH, FigureName, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, Segmented, Slider, r2, stip } from "../_visuals/kit";
 import { Chip, Coins, Figure, Gear, House, Lens, Numeral, Pan, Tag, cross, headAlongPath, tick } from "../_visuals/objects";
 
 /* ==========================================================================
    WEEK 02 PLATES: PATENT DRAWING
    --------------------------------------------------------------------------
    Each plate is drawn as an invention on file: ink outlines at three weights,
-   stipple tone, oblique projection (depth up and to the right), FIG. lines in
+   stipple tone, oblique projection (depth up and to the right), figure names in
    Caslon italic and one examiner's red for the finding. The protected group
    keeps one mark all week: a figure in a dense-stippled coat. See the course
    CLAUDE.md.
@@ -29,8 +29,8 @@ function Num({ x, y, children, size = 14, anchor = "middle", fill = PAT.ink }: {
 /**
  * From statistical to market discrimination. Each figure is a rail of
  * predicted probability with a threshold blade standing at its middle;
- * customers stand at their scores. FIG. 1: both groups fall on both sides.
- * FIG. 2: the protected group (dense coats) falls below the blade, in red.
+ * customers stand at their scores. The first figure: both groups fall on both sides.
+ * The second figure: the protected group (dense coats) falls below the blade, in red.
  */
 export function StatisticalToMarket() {
   const id = "w2-sort";
@@ -80,7 +80,7 @@ export function StatisticalToMarket() {
     <Frame
       width={800}
       height={218}
-      label="Patent drawing in two figures. Each figure is a rail of predicted probability from 0 to 1 with a threshold blade standing at 0.5; customers stand along the rail at their scores, the low ones left of the blade and the high ones right of it. Customers of the protected group wear dense-stippled coats. FIG. 1, discriminating in the statistical sense: both groups stand on both sides of the blade. FIG. 2, market discrimination: four of the five protected-group customers stand on the low side, drawn in red."
+      label="Patent drawing in two figures. Each figure is a rail of predicted probability from 0 to 1 with a threshold blade standing at 0.5; customers stand along the rail at their scores, the low ones left of the blade and the high ones right of it. Customers of the protected group wear dense-stippled coats. The first figure, discriminating in the statistical sense: both groups stand on both sides of the blade. The second figure, market discrimination: four of the five protected-group customers stand on the low side, drawn in red."
     >
       <PatentDefs id={id} />
       {fig(26, "ABABABABAB", false)}
@@ -90,20 +90,20 @@ export function StatisticalToMarket() {
       </PatentKey>
       <line x1={400} y1={20} x2={400} y2={192} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
       {fig(430, "BBABBAABAA", true)}
-      <Fig x={204} y={208} n={1} size={12}>
+      <FigureName x={204} y={208} size={12}>
         discriminating in the statistical sense
-      </Fig>
-      <Fig x={608} y={208} n={2} size={12}>
+      </FigureName>
+      <FigureName x={608} y={208} size={12}>
         market discrimination
-      </Fig>
+      </FigureName>
     </Frame>
   );
 }
 
 /**
- * Disparate treatment and disparate impact at the same gate. FIG. 1: the
+ * Disparate treatment and disparate impact at the same gate. The first figure: the
  * gate's sign bars the protected group by name (its figure struck through);
- * the two protected-group customers are stopped. FIG. 2: the sign is a plain
+ * the two protected-group customers are stopped. The second figure: the sign is a plain
  * written policy that names no group, and the same two are still stopped.
  */
 export function TreatmentVsImpact() {
@@ -145,18 +145,18 @@ export function TreatmentVsImpact() {
     <Frame
       width={400}
       height={176}
-      label="Patent drawing in two figures of the same boom gate, its boom lowered across the path. Two customers of the protected group, in red, are stopped before the gate; two other customers have passed through. FIG. 1, disparate treatment: the gate's sign shows the protected group's figure struck through. FIG. 2, disparate impact: the sign is a plain written policy that names no group, and the same two protected-group customers are still stopped."
+      label="Patent drawing in two figures of the same boom gate, its boom lowered across the path. Two customers of the protected group, in red, are stopped before the gate; two other customers have passed through. The first figure, disparate treatment: the gate's sign shows the protected group's figure struck through. The second figure, disparate impact: the sign is a plain written policy that names no group, and the same two protected-group customers are still stopped."
     >
       <PatentDefs id={id} />
       {fig(8, true)}
       <line x1={200} y1={10} x2={200} y2={156} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
       {fig(212, false)}
-      <Fig x={100} y={172} n={1} size={12.5}>
+      <FigureName x={100} y={172} size={12.5}>
         disparate treatment
-      </Fig>
-      <Fig x={304} y={172} n={2} size={12.5}>
+      </FigureName>
+      <FigureName x={304} y={172} size={12.5}>
         disparate impact
-      </Fig>
+      </FigureName>
     </Frame>
   );
 }
@@ -509,9 +509,9 @@ function Pile({ id, x, y, n, w = 40, red = false }: { id: string; x: number; y: 
 }
 
 /**
- * Measurement bias, two proxies. FIG. 1: two patients equally sick (same
+ * Measurement bias, two proxies. The first figure: two patients equally sick (same
  * thermometer reading), but the lower-income patient (dense coat) has spent
- * far less on care (short coin stack, red). FIG. 2: two identical
+ * far less on care (short coin stack, red). The second figure: two identical
  * neighborhoods; the one under three patrol lights piles up far more
  * arrest records (red) than the one with a single light.
  */
@@ -522,11 +522,11 @@ export function MeasurementBias() {
     <Frame
       width={400}
       height={204}
-      label="Patent drawing in two figures. FIG. 1, healthcare expenditures: two patients' records, a higher-income patient and a lower-income patient in a dense coat, each stand by a thermometer at the same reading, equally sick; the higher-income patient's stack of spent coins is tall, the lower-income patient's is short and drawn in red. FIG. 2, arrest records: two identical houses; three patrol lights stand before the first and one before the second; the first neighborhood's pile of arrest records is tall and drawn in red, the second's is short."
+      label="Patent drawing in two figures. The first figure, healthcare expenditures: two patients' records, a higher-income patient and a lower-income patient in a dense coat, each stand by a thermometer at the same reading, equally sick; the higher-income patient's stack of spent coins is tall, the lower-income patient's is short and drawn in red. The second figure, arrest records: two identical houses; three patrol lights stand before the first and one before the second; the first neighborhood's pile of arrest records is tall and drawn in red, the second's is short."
     >
       <PatentDefs id={id} />
 
-      {/* FIG. 1 — same sickness, unequal spending */}
+      {/* The first figure — same sickness, unequal spending */}
       <line x1={8} y1={g + 1} x2={190} y2={g + 1} {...hair} />
       {[
         { x: 22, coat: "paper" as const, coins: 9 },
@@ -542,7 +542,7 @@ export function MeasurementBias() {
 
       <line x1={200} y1={14} x2={200} y2={178} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* FIG. 2 — same neighborhoods, unequal policing */}
+      {/* The second figure — same neighborhoods, unequal policing */}
       <line x1={210} y1={g + 1} x2={394} y2={g + 1} {...hair} />
       {[
         { x: 216, patrols: 3, records: 12 },
@@ -558,12 +558,12 @@ export function MeasurementBias() {
         </g>
       ))}
 
-      <Fig x={100} y={196} n={1} size={12}>
+      <FigureName x={100} y={196} size={12}>
         healthcare expenditures
-      </Fig>
-      <Fig x={302} y={196} n={2} size={12}>
+      </FigureName>
+      <FigureName x={302} y={196} size={12}>
         arrest records
-      </Fig>
+      </FigureName>
     </Frame>
   );
 }
@@ -769,11 +769,11 @@ export function FeedbackLoop() {
 
 /**
  * Identifying the four sources, one figure each, in the week's cast.
- * FIG. 1 historical bias: a large, cleanly kept pile of records whose label
- * tabs are red. FIG. 2 representation bias: the population's faces above a
- * sample tray whose protected-group seats are empty (red). FIG. 3
+ * The first figure historical bias: a large, cleanly kept pile of records whose label
+ * tabs are red. The second figure representation bias: the population's faces above a
+ * sample tray whose protected-group seats are empty (red). The third figure
  * measurement bias: equal thermometers, unequal coin stacks (the short one
- * red). FIG. 4 aggregation bias: one straightedge through two groups, the
+ * red). The fourth figure aggregation bias: one straightedge through two groups, the
  * minority's residuals red.
  */
 export function FourSources() {
@@ -790,11 +790,11 @@ export function FourSources() {
     <Frame
       width={800}
       height={196}
-      label="Patent drawing in four figures. FIG. 1, historical bias: a large, neat pile of records whose label tabs are all red. FIG. 2, representation bias: a row of eight faces from the population, three of the protected group, above a sample tray whose three protected-group seats are empty and outlined in red. FIG. 3, measurement bias: two thermometers at the same reading beside two coin stacks, one tall and one short in red. FIG. 4, aggregation bias: one straightedge laid through white majority points and dense minority points, the minority points' residuals drawn in red."
+      label="Patent drawing in four figures. The first figure, historical bias: a large, neat pile of records whose label tabs are all red. The second figure, representation bias: a row of eight faces from the population, three of the protected group, above a sample tray whose three protected-group seats are empty and outlined in red. The third figure, measurement bias: two thermometers at the same reading beside two coin stacks, one tall and one short in red. The fourth figure, aggregation bias: one straightedge laid through white majority points and dense minority points, the minority points' residuals drawn in red."
     >
       <PatentDefs id={id} />
 
-      {/* FIG. 1 — historical bias: the labels themselves */}
+      {/* The first figure — historical bias: the labels themselves */}
       <line x1={20} y1={g + 1} x2={182} y2={g + 1} {...hair} />
       <Pile id={id} x={60} y={g} n={30} w={86} />
       {Array.from({ length: 10 }, (_, i) => (
@@ -803,7 +803,7 @@ export function FourSources() {
 
       <line x1={200} y1={16} x2={200} y2={170} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* FIG. 2 — representation bias: seats left empty in the sample */}
+      {/* The second figure — representation bias: seats left empty in the sample */}
       {people.map((c, i) => (
         <Portrait key={i} id={id} x={224 + i * 19} y={30} w={16} h={26} coat={c} />
       ))}
@@ -820,7 +820,7 @@ export function FourSources() {
 
       <line x1={400} y1={16} x2={400} y2={170} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* FIG. 3 — measurement bias: same need, unequal spending */}
+      {/* The third figure — measurement bias: same need, unequal spending */}
       <line x1={420} y1={g + 1} x2={582} y2={g + 1} {...hair} />
       {[
         { x: 440, coins: 9 },
@@ -835,7 +835,7 @@ export function FourSources() {
 
       <line x1={600} y1={16} x2={600} y2={170} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* FIG. 4 — aggregation bias: one straightedge for two groups */}
+      {/* The fourth figure — aggregation bias: one straightedge for two groups */}
       <path d="M622 30V150H780" fill="none" {...ink} />
       {minor.map(([x, y]) => (
         <line key={x} x1={X(x)} y1={Y(y)} x2={X(x)} y2={Y(pooled(x))} {...red} />
@@ -848,18 +848,18 @@ export function FourSources() {
         <circle key={x} cx={X(x)} cy={Y(y)} r={4.4} fill={stip(id, "dense")} {...ink} />
       ))}
 
-      <Fig x={100} y={186} n={1} size={12}>
+      <FigureName x={100} y={186} size={12}>
         historical bias
-      </Fig>
-      <Fig x={300} y={186} n={2} size={12}>
+      </FigureName>
+      <FigureName x={300} y={186} size={12}>
         representation bias
-      </Fig>
-      <Fig x={500} y={186} n={3} size={12}>
+      </FigureName>
+      <FigureName x={500} y={186} size={12}>
         measurement bias
-      </Fig>
-      <Fig x={700} y={186} n={4} size={12}>
+      </FigureName>
+      <FigureName x={700} y={186} size={12}>
         aggregation bias
-      </Fig>
+      </FigureName>
     </Frame>
   );
 }
@@ -903,7 +903,7 @@ export function ThreeFamilies() {
     <Frame
       width={800}
       height={176}
-      label="Patent drawing in three figures. Each figure shows the confusion matrix of Group A beside that of Group B, columns for Y = 1 and Y = 0, rows for D = 1 and D = 0, with an equals sign between them. A bold frame rings the cells each criterion conditions on and dense stipple fills the cells it counts. FIG. 1, independence: the whole matrix is framed and the approved row is stippled. FIG. 2, separation: the Y = 1 column is framed and its approved cell is stippled. FIG. 3, sufficiency: the D = 1 row is framed and its repaid cell is stippled."
+      label="Patent drawing in three figures. Each figure shows the confusion matrix of Group A beside that of Group B, columns for Y = 1 and Y = 0, rows for D = 1 and D = 0, with an equals sign between them. A bold frame rings the cells each criterion conditions on and dense stipple fills the cells it counts. The first figure, independence: the whole matrix is framed and the approved row is stippled. The second figure, separation: the Y = 1 column is framed and its approved cell is stippled. The third figure, sufficiency: the D = 1 row is framed and its repaid cell is stippled."
     >
       <PatentDefs id={id} />
       {figs.map((f, i) => (
@@ -932,9 +932,9 @@ export function ThreeFamilies() {
           <PatentKey x={f.x + 204} y={130} size={10}>
             GROUP B
           </PatentKey>
-          <Fig x={f.x + 126} y={164} n={i + 1} size={12}>
+          <FigureName x={f.x + 126} y={164} size={12}>
             {f.name}
-          </Fig>
+          </FigureName>
         </g>
       ))}
     </Frame>
@@ -1145,9 +1145,9 @@ function Tray({ id, x, y, chosen, red = false }: { id: string; x: number; y: num
 
 /**
  * Separation on trays sorted by the true outcome: a Y = 1 tray and a Y = 0
- * tray for each group, selected applicants dense. FIG. 1: without
+ * tray for each group, selected applicants dense. The first figure: without
  * separation, Group B's qualified applicants are overlooked at a higher rate
- * (red). FIG. 2, equal opportunity: the Y = 1 trays match. FIG. 3, equalized
+ * (red). The second figure, equal opportunity: the Y = 1 trays match. The third figure, equalized
  * odds: both trays match.
  */
 export function SeparationTrays() {
@@ -1161,7 +1161,7 @@ export function SeparationTrays() {
     <Frame
       width={800}
       height={196}
-      label="Patent drawing in three figures. In each, applicants lie on trays sorted by the true outcome: a Y = 1 tray of ten who would repay and a Y = 0 tray of ten who would default, for Group A and for Group B; the applicants the model selects are stippled dense. FIG. 1, overlooked at higher rates: Group A has 8 of 10 qualified selected, Group B only 5 of 10, its five overlooked qualified applicants drawn in red. FIG. 2, equal opportunity: both groups have 8 of 10 qualified selected, while 3 and 1 of 10 unqualified are selected. FIG. 3, equalized odds: 8 of 10 qualified and 2 of 10 unqualified selected in both groups."
+      label="Patent drawing in three figures. In each, applicants lie on trays sorted by the true outcome: a Y = 1 tray of ten who would repay and a Y = 0 tray of ten who would default, for Group A and for Group B; the applicants the model selects are stippled dense. The first figure, overlooked at higher rates: Group A has 8 of 10 qualified selected, Group B only 5 of 10, its five overlooked qualified applicants drawn in red. The second figure, equal opportunity: both groups have 8 of 10 qualified selected, while 3 and 1 of 10 unqualified are selected. The third figure, equalized odds: 8 of 10 qualified and 2 of 10 unqualified selected in both groups."
     >
       <PatentDefs id={id} />
       <Num x={50} y={70} size={13} anchor="end">
@@ -1187,9 +1187,9 @@ export function SeparationTrays() {
           <Tray id={id} x={f.x + 116} y={82} chosen={f.b[0]} red={i === 0} />
           <Tray id={id} x={f.x} y={148} chosen={f.a[1]} />
           <Tray id={id} x={f.x + 116} y={148} chosen={f.b[1]} />
-          <Fig x={f.x + 114} y={186} n={i + 1} size={12}>
+          <FigureName x={f.x + 114} y={186} size={12}>
             {f.name}
-          </Fig>
+          </FigureName>
         </g>
       ))}
     </Frame>
@@ -1199,8 +1199,8 @@ export function SeparationTrays() {
 /**
  * Sufficiency: calibration read off test tubes. At each score level S, one
  * tube per group holds the share who repaid; the blade is the single cutoff.
- * FIG. 1, calibration within groups: both groups' tubes fill to the same
- * level at every score. FIG. 2: at the same scores Group B's tubes fall
+ * The first figure, calibration within groups: both groups' tubes fill to the same
+ * level at every score. The second figure: at the same scores Group B's tubes fall
  * short (red), so the one cutoff no longer means the same thing for both.
  */
 export function CalibrationTubes() {
@@ -1229,9 +1229,9 @@ export function CalibrationTubes() {
         </Num>
         {/* the single cutoff */}
         <ObliqueBox id={id} x={r2((X(0.4) + X(0.6)) / 2 - 2)} y={30} w={4} h={128} dx={6} dy={4} />
-        <Fig x={x0 + 165} y={194} n={n} size={12}>
+        <FigureName x={x0 + 165} y={194} size={12}>
           {name}
-        </Fig>
+        </FigureName>
       </g>
     );
   };
@@ -1239,7 +1239,7 @@ export function CalibrationTubes() {
     <Frame
       width={800}
       height={204}
-      label="Patent drawing in two figures. At four score levels S, 0.2, 0.4, 0.6 and 0.8, two test tubes stand side by side, Group A's lightly stippled and Group B's densely stippled, each filled to the share of applicants with that score who repaid; a blade between 0.4 and 0.6 is the single cutoff. FIG. 1, calibration within groups: both groups' tubes fill to the same level at every score. FIG. 2, a stricter predictive standard: at every score Group B's tubes, in red, fill lower than Group A's."
+      label="Patent drawing in two figures. At four score levels S, 0.2, 0.4, 0.6 and 0.8, two test tubes stand side by side, Group A's lightly stippled and Group B's densely stippled, each filled to the share of applicants with that score who repaid; a blade between 0.4 and 0.6 is the single cutoff. The first figure, calibration within groups: both groups' tubes fill to the same level at every score. The second figure, a stricter predictive standard: at every score Group B's tubes, in red, fill lower than Group A's."
     >
       <PatentDefs id={id} />
       {fig(14, true, 1, "calibration within groups")}
@@ -1258,11 +1258,11 @@ export function CalibrationTubes() {
 }
 
 /**
- * Selecting a criterion, one context per figure. FIG. 1, demographic parity:
- * an outreach billboard reaches the same number from each group. FIG. 2,
+ * Selecting a criterion, one context per figure. The first figure, demographic parity:
+ * an outreach billboard reaches the same number from each group. The second figure,
  * equal opportunity: a qualified applicant's sealed file at a screening
- * gate. FIG. 3, equalized odds: a level balance weighs each
- * group's fraud flags. FIG. 4, predictive parity and calibration: one risk
+ * gate. The third figure, equalized odds: a level balance weighs each
+ * group's fraud flags. The fourth figure, predictive parity and calibration: one risk
  * score dial with a single cutoff mark.
  */
 export function CriterionContexts() {
@@ -1280,11 +1280,11 @@ export function CriterionContexts() {
     <Frame
       width={800}
       height={192}
-      label="Patent drawing in four figures. FIG. 1, demographic parity: an outreach billboard on two posts faces three portraits from each group. FIG. 2, equal opportunity: a qualified applicant's file, sealed with a certificate, waits at a lowered screening gate. FIG. 3, equalized odds: a balance hangs level with one fraud flag in each pan, one pan per group. FIG. 4, predictive parity and calibration: a risk score dial with a single cutoff mark on its rim and its needle just past it."
+      label="Patent drawing in four figures. The first figure, demographic parity: an outreach billboard on two posts faces three portraits from each group. The second figure, equal opportunity: a qualified applicant's file, sealed with a certificate, waits at a lowered screening gate. The third figure, equalized odds: a balance hangs level with one fraud flag in each pan, one pan per group. The fourth figure, predictive parity and calibration: a risk score dial with a single cutoff mark on its rim and its needle just past it."
     >
       <PatentDefs id={id} />
 
-      {/* FIG. 1 — outreach billboard, equal reach */}
+      {/* The first figure — outreach billboard, equal reach */}
       <line x1={18} y1={g + 1} x2={186} y2={g + 1} {...hair} />
       <line x1={86} y1={74} x2={86} y2={g} {...ink} />
       <line x1={112} y1={74} x2={112} y2={g} {...ink} />
@@ -1301,7 +1301,7 @@ export function CriterionContexts() {
 
       <line x1={200} y1={16} x2={200} y2={168} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* FIG. 2 — a qualified applicant at the screening gate */}
+      {/* The second figure — a qualified applicant at the screening gate */}
       <line x1={218} y1={g + 1} x2={386} y2={g + 1} {...hair} />
       {/* the qualified applicant's file, its certificate seal on the cover */}
       <ObliqueBox id={id} x={236} y={g - 76} w={56} h={76} dx={8} dy={5} />
@@ -1316,7 +1316,7 @@ export function CriterionContexts() {
 
       <line x1={400} y1={16} x2={400} y2={168} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* FIG. 3 — a level balance, one fraud flag in each group's pan */}
+      {/* The third figure — a level balance, one fraud flag in each group's pan */}
       <ObliqueBox id={id} x={466} y={g - 10} w={68} h={10} dx={10} dy={6} />
       <path d={`M496 ${g - 10}V40H504V${g - 10}`} fill={PAT.paper} {...ink} />
       <path d="M430 34H570V40H430Z" fill={PAT.paper} {...ink} strokeWidth={LINE.bold} />
@@ -1338,7 +1338,7 @@ export function CriterionContexts() {
 
       <line x1={600} y1={16} x2={600} y2={168} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* FIG. 4 — one risk score, one cutoff */}
+      {/* The fourth figure — one risk score, one cutoff */}
       <circle cx={700} cy={104} r={50} fill={stip(id, "light")} {...ink} />
       <circle cx={700} cy={104} r={44} fill={PAT.paper} {...ink} />
       {[-120, -90, -60, -30, 0, 30, 60, 90, 120].map((t) => {
@@ -1350,26 +1350,26 @@ export function CriterionContexts() {
       <line x1={700} y1={104} x2={n1} y2={n2} {...ink} strokeWidth={LINE.bold} />
       <circle cx={700} cy={104} r={3} fill={PAT.ink} />
 
-      <Fig x={100} y={184} n={1} size={12}>
+      <FigureName x={100} y={184} size={12}>
         demographic parity
-      </Fig>
-      <Fig x={300} y={184} n={2} size={12}>
+      </FigureName>
+      <FigureName x={300} y={184} size={12}>
         equal opportunity
-      </Fig>
-      <Fig x={500} y={184} n={3} size={12}>
+      </FigureName>
+      <FigureName x={500} y={184} size={12}>
         equalized odds
-      </Fig>
-      <Fig x={700} y={184} n={4} size={12}>
+      </FigureName>
+      <FigureName x={700} y={184} size={12}>
         calibration
-      </Fig>
+      </FigureName>
     </Frame>
   );
 }
 
 /**
- * Part 3. FIG. 1, the group average: eight members of one group, a tick or
+ * Part 3. The first figure, the group average: eight members of one group, a tick or
  * a cross over each, average to 50 percent; yet two equally qualified
- * members side by side get opposite outcomes, the rejected one red. FIG. 2,
+ * members side by side get opposite outcomes, the rejected one red. The second figure,
  * the single consumer: one person under a hand lens.
  */
 export function GroupAverageVsIndividual() {
@@ -1389,11 +1389,11 @@ export function GroupAverageVsIndividual() {
     <Frame
       width={800}
       height={206}
-      label="Patent drawing in two figures. FIG. 1, the group average: eight members of one group stand in a row under a bar reading a 50% group average; a tick or a cross hangs over each. Two members side by side, both holding up the same certificate, are equally qualified, yet one has a tick and the other a cross, drawn in red. FIG. 2, the single consumer: one person stands under a large hand lens."
+      label="Patent drawing in two figures. The first figure, the group average: eight members of one group stand in a row under a bar reading a 50% group average; a tick or a cross hangs over each. Two members side by side, both holding up the same certificate, are equally qualified, yet one has a tick and the other a cross, drawn in red. The second figure, the single consumer: one person stands under a large hand lens."
     >
       <PatentDefs id={id} />
 
-      {/* FIG. 1 — the group average */}
+      {/* The first figure — the group average */}
       <line x1={20} y1={g + 1} x2={480} y2={g + 1} {...hair} />
       <ObliqueBox id={id} x={40} y={18} w={420} h={22} dx={10} dy={6} />
       <PatentKey x={250} y={34} size={11}>
@@ -1420,27 +1420,27 @@ export function GroupAverageVsIndividual() {
 
       <line x1={500} y1={14} x2={500} y2={184} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* FIG. 2 — the single consumer under the lens */}
+      {/* The second figure — the single consumer under the lens */}
       <line x1={540} y1={g + 1} x2={780} y2={g + 1} {...hair} />
       <Figure id={id} x={640} y={g} s={1.2} coat="paper" />
       {/* a hand lens held over the consumer: rim and handle, the glass clear */}
       <path d="M640 52a52 52 0 1 0 0.01 0ZM640 58a46 46 0 1 1 -0.01 0Z" fill={stip(id, "dense")} fillRule="evenodd" {...ink} />
       <path d="M676.2 67.4L704.5 39.1L711.6 46.2L683.3 74.5" fill={stip(id, "dense")} {...ink} />
 
-      <Fig x={250} y={198} n={1} size={12}>
+      <FigureName x={250} y={198} size={12}>
         the group average
-      </Fig>
-      <Fig x={640} y={198} n={2} size={12}>
+      </FigureName>
+      <FigureName x={640} y={198} size={12}>
         the single consumer
-      </Fig>
+      </FigureName>
     </Frame>
   );
 }
 
 /**
- * Individual fairness. FIG. 1: two consumers' profiles stand close on the
+ * Individual fairness. The first figure: two consumers' profiles stand close on the
  * profile rail; the same span, carried down by dashed lines, bounds how far
- * apart their predictions may fall. FIG. 2, tokenism: five members of the
+ * apart their predictions may fall. The second figure, tokenism: five members of the
  * protected group (portraits) stand on steps by qualification; the model selects two
  * arbitrary members (ticks) and passes over the most qualified (red).
  */
@@ -1452,11 +1452,11 @@ export function IndividualFairness() {
     <Frame
       width={800}
       height={200}
-      label="Patent drawing in two figures. FIG. 1, distance between predictions: two consumer profiles stand close together on a profile rail; dashed lines carry the same span down to a prediction rail, where both consumers' predictions fall inside it. FIG. 2, tokenism: five portraits of protected-group members stand on five rising steps ordered by qualification; ticks mark the two the model selects, on the lowest and the middle step, while the most qualified member on the top step is passed over with a red cross."
+      label="Patent drawing in two figures. The first figure, distance between predictions: two consumer profiles stand close together on a profile rail; dashed lines carry the same span down to a prediction rail, where both consumers' predictions fall inside it. The second figure, tokenism: five portraits of protected-group members stand on five rising steps ordered by qualification; ticks mark the two the model selects, on the lowest and the middle step, while the most qualified member on the top step is passed over with a red cross."
     >
       <PatentDefs id={id} />
 
-      {/* FIG. 1 — the profile span bounds the prediction span */}
+      {/* The first figure — the profile span bounds the prediction span */}
       <ObliqueBox id={id} x={50} y={92} w={290} h={8} dx={10} dy={6} />
       <PatentKey x={50} y={78} anchor="start" size={10}>
         PROFILES
@@ -1476,7 +1476,7 @@ export function IndividualFairness() {
 
       <line x1={400} y1={14} x2={400} y2={180} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* FIG. 2 — tokenism */}
+      {/* The second figure — tokenism */}
       {steps.map((i) => {
         const x = 438 + i * 66;
         const h = 14 + i * 14;
@@ -1494,12 +1494,12 @@ export function IndividualFairness() {
         );
       })}
 
-      <Fig x={200} y={196} n={1} size={12}>
+      <FigureName x={200} y={196} size={12}>
         distance between predictions
-      </Fig>
-      <Fig x={600} y={196} n={2} size={12}>
+      </FigureName>
+      <FigureName x={600} y={196} size={12}>
         tokenism
-      </Fig>
+      </FigureName>
     </Frame>
   );
 }
@@ -1529,9 +1529,9 @@ function Tank({ id, cx, top, h = 34, rx = 17, red = false }: { id: string; cx: n
 /**
  * Counterfactual fairness as pipework. The protected attribute's tank feeds
  * the decision directly and through a mediator (school quality) into test
- * scores. FIG. 1, fairness through unawareness: the direct pipe is blanked
+ * scores. The first figure, fairness through unawareness: the direct pipe is blanked
  * off, but the attribute still flows (red) through the mediator to the
- * decision. FIG. 2, counterfactual fairness: a closed valve removes the
+ * decision. The second figure, counterfactual fairness: a closed valve removes the
  * attribute's effect on the mediator, and only the legitimate flow remains.
  */
 export function CausalPipework() {
@@ -1584,18 +1584,18 @@ export function CausalPipework() {
     <Frame
       width={800}
       height={176}
-      label="Patent drawing in two figures of pipework: a tank for the protected attribute feeds a tank for neighborhood school quality, which feeds a tank for test scores, which feeds the decision; a second, direct pipe from the protected attribute to the decision is blanked off near the attribute. FIG. 1, fairness through unawareness: with only the direct pipe blanked off, the attribute's flow still runs in red through school quality and test scores to the decision. FIG. 2, counterfactual fairness: a closed valve on the pipe from the protected attribute to school quality removes its effect, and the remaining pipes to the decision carry no red."
+      label="Patent drawing in two figures of pipework: a tank for the protected attribute feeds a tank for neighborhood school quality, which feeds a tank for test scores, which feeds the decision; a second, direct pipe from the protected attribute to the decision is blanked off near the attribute. The first figure, fairness through unawareness: with only the direct pipe blanked off, the attribute's flow still runs in red through school quality and test scores to the decision. The second figure, counterfactual fairness: a closed valve on the pipe from the protected attribute to school quality removes its effect, and the remaining pipes to the decision carry no red."
     >
       <PatentDefs id={id} />
       {fig(14, false)}
       <line x1={400} y1={14} x2={400} y2={148} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
       {fig(414, true)}
-      <Fig x={200} y={168} n={1} size={12}>
+      <FigureName x={200} y={168} size={12}>
         fairness through unawareness
-      </Fig>
-      <Fig x={600} y={168} n={2} size={12}>
+      </FigureName>
+      <FigureName x={600} y={168} size={12}>
         counterfactual fairness
-      </Fig>
+      </FigureName>
     </Frame>
   );
 }
@@ -1777,11 +1777,11 @@ function Balance({ id, cx, base, load }: { id: string; cx: number; base: number;
 }
 
 /**
- * Managerial trade-offs, one domain per figure. FIG. 1, consumer credit: the
+ * Managerial trade-offs, one domain per figure. The first figure, consumer credit: the
  * same score of 700 hangs over both groups' creditworthy borrowers, but more
- * of the disadvantaged group's are rejected (red). FIG. 2, automated resume
+ * of the disadvantaged group's are rejected (red). The second figure, automated resume
  * screening: the top of the funnel lets qualified candidates from both
- * groups through to a human interviewer. FIG. 3, medical triage or fraud
+ * groups through to a human interviewer. The third figure, medical triage or fraud
  * intervention: a level balance carries the same errors for each group.
  */
 export function DomainTradeoffs() {
@@ -1796,11 +1796,11 @@ export function DomainTradeoffs() {
     <Frame
       width={800}
       height={196}
-      label="Patent drawing in three figures. FIG. 1, consumer credit: a tag reading 700 hangs over two rows of five creditworthy borrowers, one row from each group; one borrower of the advantaged group and three of the disadvantaged group are rejected, drawn in red. FIG. 2, automated resume screening: résumés enter the top of a funnel, and the files of qualified candidates from both groups lie on a human interviewer's desk. FIG. 3, medical triage or fraud intervention: a balance hangs level, each group's pan holding one false flag and one missed case."
+      label="Patent drawing in three figures. The first figure, consumer credit: a tag reading 700 hangs over two rows of five creditworthy borrowers, one row from each group; one borrower of the advantaged group and three of the disadvantaged group are rejected, drawn in red. The second figure, automated resume screening: résumés enter the top of a funnel, and the files of qualified candidates from both groups lie on a human interviewer's desk. The third figure, medical triage or fraud intervention: a balance hangs level, each group's pan holding one false flag and one missed case."
     >
       <PatentDefs id={id} />
 
-      {/* FIG. 1 — consumer credit */}
+      {/* The first figure — consumer credit */}
       <line x1={14} y1={g + 1} x2={244} y2={g + 1} {...hair} />
       <line x1={128} y1={34} x2={128} y2={58} {...hair} />
       <Tag cx={134} cy={26} text="700" w={58} size={15} />
@@ -1811,7 +1811,7 @@ export function DomainTradeoffs() {
 
       <line x1={264} y1={14} x2={264} y2={176} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* FIG. 2 — the top of the screening funnel, onto the interviewer's desk */}
+      {/* The second figure — the top of the screening funnel, onto the interviewer's desk */}
       {[0, 1, 2, 3].map((i) => (
         <Chip key={i} id={id} x={300 + i * 30} y={24 - (i % 2) * 6} w={22} d={7} sk={8} />
       ))}
@@ -1829,7 +1829,7 @@ export function DomainTradeoffs() {
 
       <line x1={530} y1={14} x2={530} y2={176} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* FIG. 3 — equal errors in each group's pan */}
+      {/* The third figure — equal errors in each group's pan */}
       <Balance
         id={id}
         cx={664}
@@ -1843,15 +1843,15 @@ export function DomainTradeoffs() {
         )}
       />
 
-      <Fig x={130} y={188} n={1} size={12}>
+      <FigureName x={130} y={188} size={12}>
         consumer credit
-      </Fig>
-      <Fig x={398} y={188} n={2} size={12}>
+      </FigureName>
+      <FigureName x={398} y={188} size={12}>
         resume screening
-      </Fig>
-      <Fig x={664} y={188} n={3} size={12}>
+      </FigureName>
+      <FigureName x={664} y={188} size={12}>
         triage or fraud
-      </Fig>
+      </FigureName>
     </Frame>
   );
 }
@@ -1909,8 +1909,8 @@ export function CreditAgeTradeoff() {
 }
 
 /**
- * Part 5. FIG. 1: the human marketer's brief, its exclusions box left empty.
- * FIG. 2: the platform's automated systems, each serving a customer from each
+ * Part 5. The first figure: the human marketer's brief, its exclusions box left empty.
+ * The second figure: the platform's automated systems, each serving a customer from each
  * group: ad delivery fills one screen and leaves the other blank, dynamic
  * pricing quotes a higher price, personalization sends fewer offers. The
  * protected group's side of each is red.
@@ -1937,11 +1937,11 @@ export function MarketingPipelines() {
     <Frame
       width={800}
       height={196}
-      label="Patent drawing in two figures. FIG. 1, explicit exclusions by a human marketer: a marketer's campaign brief, its exclusions box left empty. FIG. 2, automated ad delivery, dynamic pricing and personalization: a platform's housing serves two customers in each system, one from each group. Ad delivery shows the ad on one customer's screen and leaves the protected-group customer's screen blank, in red; dynamic pricing quotes $40 to one and $52, in red, to the other; personalization sends three offers to one and a single offer, in red, to the other."
+      label="Patent drawing in two figures. The first figure, explicit exclusions by a human marketer: a marketer's campaign brief, its exclusions box left empty. The second figure, automated ad delivery, dynamic pricing and personalization: a platform's housing serves two customers in each system, one from each group. Ad delivery shows the ad on one customer's screen and leaves the protected-group customer's screen blank, in red; dynamic pricing quotes $40 to one and $52, in red, to the other; personalization sends three offers to one and a single offer, in red, to the other."
     >
       <PatentDefs id={id} />
 
-      {/* FIG. 1 — the marketer's brief, no exclusions */}
+      {/* The first figure — the marketer's brief, no exclusions */}
       <line x1={20} y1={170} x2={230} y2={170} {...hair} />
       <ObliqueBox id={id} x={64} y={40} w={118} h={130} dx={8} dy={5} />
       <line x1={76} y1={58} x2={150} y2={58} {...ink} />
@@ -1955,7 +1955,7 @@ export function MarketingPipelines() {
 
       <line x1={250} y1={14} x2={250} y2={180} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* FIG. 2 — the platform's automated systems */}
+      {/* The second figure — the platform's automated systems */}
       <ObliqueBox id={id} x={272} y={58} w={72} h={72} dx={10} dy={6} />
       <circle cx={308} cy={94} r={22} fill={stip(id, "light")} {...ink} />
       <Gear cx={302} cy={88} r={10} n={9} />
@@ -1989,22 +1989,22 @@ export function MarketingPipelines() {
         </g>
       ))}
 
-      <Fig x={125} y={190} n={1} size={12}>
+      <FigureName x={125} y={190} size={12}>
         explicit exclusions
-      </Fig>
-      <Fig x={520} y={190} n={2} size={12}>
+      </FigureName>
+      <FigureName x={520} y={190} size={12}>
         automated systems
-      </Fig>
+      </FigureName>
     </Frame>
   );
 }
 
 /**
- * Delivery skew. FIG. 1, the ad auction: one budget buys twenty impressions
+ * Delivery skew. The first figure, the ad auction: one budget buys twenty impressions
  * for a STEM careers ad, split between young women and men; the slider sets
  * what retail bidding makes a click from young women cost. A budget-
  * constrained algorithm buys the cheaper clicks, so young women's row empties
- * (red). FIG. 2, relevance steering: a luxury rental listing goes to the
+ * (red). The second figure, relevance steering: a luxury rental listing goes to the
  * higher-income house, a subprime credit ad to the vulnerable neighborhood
  * (red).
  */
@@ -2023,11 +2023,11 @@ export function AdAuctionSkew() {
       <Frame
         width={800}
         height={200}
-        label={`Patent drawing in two figures. FIG. 1, the ad auction: one budget, a stack of coins, buys twenty impressions of a STEM careers ad. A click from young women costs ${lanes[0].price} and a click from men $1.00; the budget-constrained algorithm serves ${women} impressions to young women and ${men} to men${women < 10 ? ", leaving young women's empty slots in red" : ""}. FIG. 2, relevance steering: a luxury rental listing runs to a large higher-income house, and a subprime credit ad runs, in red, to two small houses in a vulnerable neighborhood.`}
+        label={`Patent drawing in two figures. The first figure, the ad auction: one budget, a stack of coins, buys twenty impressions of a STEM careers ad. A click from young women costs ${lanes[0].price} and a click from men $1.00; the budget-constrained algorithm serves ${women} impressions to young women and ${men} to men${women < 10 ? ", leaving young women's empty slots in red" : ""}. The second figure, relevance steering: a luxury rental listing runs to a large higher-income house, and a subprime credit ad runs, in red, to two small houses in a vulnerable neighborhood.`}
       >
         <PatentDefs id={id} />
 
-        {/* FIG. 1 — one budget, two prices */}
+        {/* The first figure — one budget, two prices */}
         <ObliqueBox id={id} x={22} y={118} w={56} h={10} dx={10} dy={6} />
         <Coins id={id} cx={52} y={116} n={9} rx={16} ry={5} h={6} />
         {lanes.map((l) => (
@@ -2061,7 +2061,7 @@ export function AdAuctionSkew() {
 
         <line x1={514} y1={14} x2={514} y2={170} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-        {/* FIG. 2 — listings steered by click probability */}
+        {/* The second figure — listings steered by click probability */}
         {[
           { y: 34, text: "LUXURY RENTAL", red: false },
           { y: 112, text: "SUBPRIME CREDIT", red: true },
@@ -2080,12 +2080,12 @@ export function AdAuctionSkew() {
           <House key={x} id={id} x={x} y={152} w={34} h={34} dx={6} dy={4} roof={12} />
         ))}
 
-        <Fig x={260} y={192} n={1} size={12}>
+        <FigureName x={260} y={192} size={12}>
           the ad auction
-        </Fig>
-        <Fig x={656} y={192} n={2} size={12}>
+        </FigureName>
+        <FigureName x={656} y={192} size={12}>
           click probability
-        </Fig>
+        </FigureName>
       </Frame>
       <Slider label="Cost per click, young women" value={cost} min={1} max={3} step={0.25} onChange={setCost} formatValue={(v) => `$${v.toFixed(2)}`} />
     </div>
@@ -2093,10 +2093,10 @@ export function AdAuctionSkew() {
 }
 
 /**
- * Mitigation. FIG. 1: the three points of intervention along the pipeline:
+ * Mitigation. The first figure: the three points of intervention along the pipeline:
  * a weight set on the training data (pre-processing), a penalty weight hung
  * on the learning gear (in-processing), and group-specific thresholds on the
- * output scores (post-processing). FIG. 2: the accuracy-fairness frontier;
+ * output scores (post-processing). The second figure: the accuracy-fairness frontier;
  * the slider tightens the fairness constraint and moves the operating point,
  * and the accuracy given up is dimensioned in red.
  */
@@ -2119,11 +2119,11 @@ export function MitigationFrontier() {
       <Frame
         width={800}
         height={196}
-        label={`Patent drawing in two figures. FIG. 1, three points of intervention: a weight set on the pile of training data, pre-processing; a penalty weight hung from the learning gear, in-processing; and two group-specific threshold blades on the output scores, post-processing. FIG. 2, the accuracy-fairness frontier: a curve falls slowly and then steeply as fairness rises. With the fairness constraint at ${k}%, the operating point sits at ${(a * 100).toFixed(1)}% accuracy with a disparity of ${disparity.toFixed(2)}${lost > 0.5 ? ", and the accuracy given up is dimensioned in red" : ""}.`}
+        label={`Patent drawing in two figures. The first figure, three points of intervention: a weight set on the pile of training data, pre-processing; a penalty weight hung from the learning gear, in-processing; and two group-specific threshold blades on the output scores, post-processing. The second figure, the accuracy-fairness frontier: a curve falls slowly and then steeply as fairness rises. With the fairness constraint at ${k}%, the operating point sits at ${(a * 100).toFixed(1)}% accuracy with a disparity of ${disparity.toFixed(2)}${lost > 0.5 ? ", and the accuracy given up is dimensioned in red" : ""}.`}
       >
         <PatentDefs id={id} />
 
-        {/* FIG. 1 — three points of intervention */}
+        {/* The first figure — three points of intervention */}
         <line x1={20} y1={140} x2={394} y2={140} {...hair} />
         <Pile id={id} x={36} y={140} n={9} w={56} />
         <ObliqueBox id={id} x={50} y={98} w={22} h={14} dx={5} dy={3} />
@@ -2153,7 +2153,7 @@ export function MitigationFrontier() {
 
         <line x1={414} y1={14} x2={414} y2={176} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-        {/* FIG. 2 — the accuracy-fairness frontier */}
+        {/* The second figure — the accuracy-fairness frontier */}
         <path d="M470 22V150H772" fill="none" {...ink} />
         <PatentKey x={772} y={166} anchor="end" size={10}>
           FAIRNESS
@@ -2183,12 +2183,12 @@ export function MitigationFrontier() {
           DISPARITY
         </PatentKey>
 
-        <Fig x={208} y={190} n={1} size={12}>
+        <FigureName x={208} y={190} size={12}>
           mitigation
-        </Fig>
-        <Fig x={620} y={190} n={2} size={12}>
+        </FigureName>
+        <FigureName x={620} y={190} size={12}>
           accuracy-fairness frontier
-        </Fig>
+        </FigureName>
       </Frame>
       <Slider label="Fairness constraint" value={k} min={0} max={100} step={10} onChange={setK} formatValue={(v) => `${v}%`} />
     </div>
