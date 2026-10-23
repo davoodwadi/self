@@ -5,7 +5,7 @@
    ========================================================================== */
 
 import React from "react";
-import { INK, LINE, PAPER, PAT, r2, stip } from "./kit";
+import { INK, LINE, ObliqueBox, PAPER, PAT, r2, stip } from "./kit";
 
 const ink = { stroke: PAT.ink, strokeWidth: LINE.outline, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
 const hair = { stroke: PAT.ink, strokeWidth: LINE.hair, strokeLinecap: "round" as const };
@@ -372,6 +372,17 @@ export function Chip({ id, x, y, red = false, w = 22, d = 7, sk = 8 }: { id: str
       strokeWidth={LINE.outline}
       strokeLinejoin="round"
     />
+  );
+}
+
+/** A small model housing with its two gears, (x, y) its front face's top-left. */
+export function SmallModel({ id, x, y, w = 52, h = 50 }: { id: string; x: number; y: number; w?: number; h?: number }) {
+  return (
+    <g>
+      <ObliqueBox id={id} x={x} y={y} w={w} h={h} dx={10} dy={6} />
+      <Gear cx={r2(x + w * 0.32)} cy={r2(y + h * 0.35)} r={r2(h * 0.16)} n={9} />
+      <Gear cx={r2(x + w * 0.7)} cy={r2(y + h * 0.7)} r={r2(h * 0.12)} n={8} phase={0.25} />
+    </g>
   );
 }
 

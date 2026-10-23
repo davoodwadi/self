@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CENTRE_DASH, FigureName, Frame, LINE, ObliqueBox, PAT, PatentDefs, PatentKey, PlateButton, Segmented, Slider, Toggles, r2, seeded, stip } from "../_visuals/kit";
-import { Coins, Figure, Gear, Sheet, Tag, cross, headAlongPath, star, tick } from "../_visuals/objects";
+import { Coins, Figure, Gear, Sheet, SmallModel, Tag, cross, headAlongPath, star, tick } from "../_visuals/objects";
 
 /* ==========================================================================
    WEEK 03 PLATES: PATENT DRAWING
@@ -1417,16 +1417,6 @@ export function EthnocentrismRuler() {
    18 · Part 4: Country-of-Origin Bias in AI Product Recommendations
    -------------------------------------------------------------------------- */
 
-/** A small model housing with its two gears, (x, y) its front face's top-left. */
-function SmallModel({ id, x, y, w = 52, h = 50 }: { id: string; x: number; y: number; w?: number; h?: number }) {
-  return (
-    <g>
-      <ObliqueBox id={id} x={x} y={y} w={w} h={h} dx={10} dy={6} />
-      <Gear cx={r2(x + w * 0.32)} cy={r2(y + h * 0.35)} r={r2(h * 0.16)} n={9} />
-      <Gear cx={r2(x + w * 0.7)} cy={r2(y + h * 0.7)} r={r2(h * 0.12)} n={8} phase={0.25} />
-    </g>
-  );
-}
 
 /**
  * The model in three commercial roles, each figure a model feeding its

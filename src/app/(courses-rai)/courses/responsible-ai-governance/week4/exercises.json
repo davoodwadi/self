@@ -1,0 +1,278 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "behavioral-validity-metrics-csvr-apd-and-coefficient-of-variation",
+    "prompt": "Each audit finding comes from 100 sampled answers to the same pricing prompt. Identify the validity metric that flags the problem.",
+    "options": [
+      { "id": "csvr", "label": "Common Sense Validity Rate (CSVR)" },
+      { "id": "apd", "label": "Absolute Price Deviation (APD)" },
+      { "id": "cv", "label": "Coefficient of Variation (CV)" }
+    ],
+    "cases": [
+      {
+        "id": "negative-prices",
+        "text": "Asked what it would pay for a 25-dollar phone case, a model answers with numbers such as −40, 9,000 and 'Great question!' in a fifth of its runs.",
+        "answer": "csvr",
+        "explanation": "These answers fall outside the plausible range for the product category or are not prices at all, so the validity rate drops."
+      },
+      {
+        "id": "steady-overprice",
+        "text": "A model answers 79, 81, 80 and 80 dollars across runs for a backpack whose list price is 45 dollars.",
+        "answer": "apd",
+        "explanation": "The answers are plausible and stable, but they sit far from the actual list price: the absolute deviation is large."
+      },
+      {
+        "id": "scattered-answers",
+        "text": "For the same coffee grinder prompt, a model's answers range from 12 to 140 dollars, although their average lands close to the 60-dollar list price.",
+        "answer": "cv",
+        "explanation": "The average is near the benchmark, but the spread relative to the mean is large: the model is unstable across identical runs."
+      },
+      {
+        "id": "formatting-failure",
+        "text": "When the prompt asks for a single dollar figure, a model often returns a paragraph of disclaimers with no number in it.",
+        "answer": "csvr",
+        "explanation": "Responses with no usable price are formatting failures, which the validity rate filters out and counts against the model."
+      },
+      {
+        "id": "two-camps",
+        "text": "A model gives 15 dollars on some runs and 95 dollars on others for an identical prompt about a 55-dollar desk lamp.",
+        "answer": "cv",
+        "explanation": "The same prompt yields very different answers from run to run, so the standard deviation is large relative to the mean."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "why-shannon-entropy-fails-on-ordinal-rating-scales",
+    "question_text": "An audit reads two models' token probabilities on the item 'Buying imported products is unpatriotic' (1 to 7). Model X puts 50 percent on 2 and 50 percent on 3. Model Y puts 50 percent on 2 and 50 percent on 6. A report ranks them as 'equally certain' because their Shannon entropies match. What is the strongest critique?",
+    "hint": "Ask what Shannon entropy does with the distance between 2 and 3 compared with the distance between 2 and 6.",
+    "correct_answer_citation": "Week 04 · Why Shannon Entropy Fails on Ordinal Rating Scales",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "The report is right: equal entropy means the two models hold the same attitude.",
+        "option_explanation": "Equal entropy only means the mass is split the same way across unordered categories; it says nothing about where on the scale the mass lies."
+      },
+      {
+        "option_text": "Entropy ignores how far apart the two chosen scale points are, so it misses that Model Y is split between opposite positions while Model X holds a concentrated, moderate view.",
+        "option_explanation": "Correct. Shannon entropy is invariant to the numerical distance between scale points, so adjacent and distant splits look identical."
+      },
+      {
+        "option_text": "The entropies cannot match, because Model Y's split covers more scale points than Model X's.",
+        "option_explanation": "Both models split their mass equally across exactly two tokens, so their Shannon entropies are identical."
+      },
+      {
+        "option_text": "Entropy is fine here; the problem is that the audit should have sampled text completions instead of reading token probabilities.",
+        "option_explanation": "Sampling text would only add sampling error to the same distributions; the problem lies in the uncertainty measure, not in reading the probabilities."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "the-three-layer-exact-pmf-pipeline-constraint-consensus-and-construct",
+    "prompt": "Sort each audit task into the layer of the exact-PMF pipeline that performs it.",
+    "bins": [
+      { "id": "constraint", "label": "Constraint" },
+      { "id": "consensus", "label": "Consensus" },
+      { "id": "construct", "label": "Construct" }
+    ],
+    "cards": [
+      {
+        "id": "sure-token",
+        "text": "Finding that 6 percent of a model's next-token probability goes to the word 'Sure' instead of a digit from 1 to 7.",
+        "bin": "constraint",
+        "explanation": "Mass on tokens outside the valid scale is the task failure rate, measured in the Constraint layer."
+      },
+      {
+        "id": "renormalize",
+        "text": "Rescaling the probabilities on the digits 1 to 7 so they sum to one before any further analysis.",
+        "bin": "constraint",
+        "explanation": "Renormalizing the valid mass into an exact ordinal item PMF is the last step of the Constraint layer."
+      },
+      {
+        "id": "polarized-flag",
+        "text": "Flagging a model whose probability on a brand-trust item sits half on 1 and half on 7.",
+        "bin": "consensus",
+        "explanation": "The Consensus layer penalizes spread by distance on the scale, so an extreme split scores low agreement."
+      },
+      {
+        "id": "concentrated-check",
+        "text": "Confirming that a model's probability mass on each item clusters on neighbouring scale points.",
+        "bin": "consensus",
+        "explanation": "Distinguishing concentrated agreement from polarization is the job of the Consensus layer."
+      },
+      {
+        "id": "total-score",
+        "text": "Combining the 17 item distributions of a scale into one distribution of the total score.",
+        "bin": "construct",
+        "explanation": "Combining item-level PMFs into a composite scale distribution happens in the Construct layer."
+      },
+      {
+        "id": "framing-effect",
+        "text": "Estimating how much an instruction's framing shifts the composite score, separately from the model tested.",
+        "bin": "construct",
+        "explanation": "Decomposing variance across experimental factors is the Construct layer's distributional analysis of variance."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "four-distributional-inference-metrics-mean-shift-dispersion-dpd-and-snr",
+    "prompt": "An auditor asks four questions about the effect of a 'luxury shopper' persona on a model's price-fairness score. Match each question to the metric that answers it.",
+    "term_label": "Metric",
+    "match_label": "Question the auditor asks",
+    "pairs": [
+      {
+        "id": "mean-shift",
+        "term": "Expected Effect Size (Mean Shift)",
+        "match": "By how many scale points, and in which direction, does the persona move the score?",
+        "explanation": "The expected value of the effect distribution gives its magnitude and direction."
+      },
+      {
+        "id": "dispersion",
+        "term": "Predictive Dispersion (SD)",
+        "match": "How widely does the model's own uncertainty spread around that shift?",
+        "explanation": "The standard deviation of the effect distribution captures the model's aleatoric uncertainty."
+      },
+      {
+        "id": "dpd",
+        "term": "Discrete Probability of Direction (dPD)",
+        "match": "How sure can we be that the persona lowers the score rather than raises it?",
+        "explanation": "dPD is the mass on the dominant side of zero: the certainty of the effect's sign."
+      },
+      {
+        "id": "snr",
+        "term": "Signal-to-Noise Ratio (SNR)",
+        "match": "Is the shift large compared with the model's internal noise?",
+        "explanation": "SNR divides the absolute mean shift by the predictive dispersion."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "controlling-prompt-sensitivity-order-effects-and-framing",
+    "prompt": "Each audit design change protects a finding against a different artifact. Identify the control it applies.",
+    "options": [
+      { "id": "template", "label": "Prompt template counterbalancing" },
+      { "id": "polarity", "label": "Scale direction and polarity counterbalancing" },
+      { "id": "position", "label": "Position randomization" },
+      { "id": "matching", "label": "Attribute matching" }
+    ],
+    "cases": [
+      {
+        "id": "three-wordings",
+        "text": "An audit of loan-advice tone runs every applicant profile under three instructions: 'Advise this customer', 'Give this client guidance' and 'Recommend a next step for this person'.",
+        "answer": "template",
+        "explanation": "Equivalent phrasings show the finding is not an artifact of one wording."
+      },
+      {
+        "id": "reverse-items",
+        "text": "Half of the trust items read 'I can rely on this brand' and half read 'I am wary of this brand', scored in reverse.",
+        "answer": "polarity",
+        "explanation": "Mixing positive and reverse-coded items separates real attitude from a tendency to agree with any statement."
+      },
+      {
+        "id": "shuffle-shelf",
+        "text": "In each session, the six blenders in a shopping-assistant test appear in a new random order on the results page.",
+        "answer": "position",
+        "explanation": "Shuffling listing order keeps list-position bias from inflating the weight of whatever sits first."
+      },
+      {
+        "id": "same-specs",
+        "text": "To test whether a supplier's country changes ratings, every bid shows the same price, delivery time and certification in every condition.",
+        "answer": "matching",
+        "explanation": "Holding the non-manipulated attributes constant means any change in choice can come only from the country."
+      },
+      {
+        "id": "options-reversed",
+        "text": "In half the trials the choice options run from 'Strongly agree' to 'Strongly disagree' instead of the usual order.",
+        "answer": "polarity",
+        "explanation": "Reversing the option presentation order separates attitude from first-option bias."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "pre-deployment-red-teaming-versus-behavioral-auditing",
+    "prompt": "Sort each pre-release activity by the kind of evaluation it is.",
+    "bins": [
+      { "id": "redteam", "label": "Adversarial red-teaming" },
+      { "id": "audit", "label": "Behavioral auditing" }
+    ],
+    "cards": [
+      {
+        "id": "jailbreak",
+        "text": "Specialists spend a week trying role-play jailbreaks to make a banking assistant reveal another customer's balance.",
+        "bin": "redteam",
+        "explanation": "Probing with jailbreak inputs to find a worst-case failure tests whether the system can be broken."
+      },
+      {
+        "id": "grid-4000",
+        "text": "An insurer runs 4,000 routine quote requests across a crossed grid of age, region and gender profiles and compares average premiums.",
+        "bin": "audit",
+        "explanation": "A statistically powered grid under normal operating conditions measures how segments are treated on average."
+      },
+      {
+        "id": "attacker-model",
+        "text": "An automated attacker model generates thousands of strange, unicode-laden prompts to see whether any produce instructions for fraud.",
+        "bin": "redteam",
+        "explanation": "Automated attacker models probing with edge-case inputs are still red-teaming: the goal is to find one vulnerability."
+      },
+      {
+        "id": "variance-check",
+        "text": "A retailer measures the validity rate and coefficient of variation of a pricing assistant's answers across 100 runs per product.",
+        "bin": "audit",
+        "explanation": "Measuring task adherence and variance across repeated routine runs is behavioral auditing."
+      },
+      {
+        "id": "edge-case",
+        "text": "Testers paste a 300-page contract with hidden instructions to see if a procurement agent can be tricked into approving a fake supplier.",
+        "bin": "redteam",
+        "explanation": "An extreme, adversarial input looking for a catastrophic failure is a red-team stress test."
+      },
+      {
+        "id": "dpd-gate",
+        "text": "A team checks whether the effect of a customer's dialect on refund approvals has a dPD above the release threshold.",
+        "bin": "audit",
+        "explanation": "Comparing effect sizes and dPD across a factorial grid against a release gate is behavioral auditing."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "six-steps-of-an-enterprise-behavioral-audit",
+    "prompt": "A travel platform audits its booking assistant for fairness to older customers. Put the audit's actions in the order of the six steps.",
+    "steps": [
+      {
+        "id": "define",
+        "text": "Agree that the quoted fares for customer profiles aged 25 and 70 must show parity on identical trips.",
+        "explanation": "Step 1 defines the construct, the decision context and the governance threshold."
+      },
+      {
+        "id": "grid",
+        "text": "Cross age (25, 45, 70) with trip type and booking channel, and plan to counterbalance the prompt wording.",
+        "explanation": "Step 2 builds the fully crossed grid of focal and nuisance factors."
+      },
+      {
+        "id": "protocol",
+        "text": "Because fares are open-ended dollar amounts, choose Monte-Carlo sampling with K large enough for a narrow confidence interval.",
+        "explanation": "Step 3 selects the measurement protocol that fits the output type."
+      },
+      {
+        "id": "execute",
+        "text": "Run every trial in a fresh context window and log the model snapshot, temperature and system prompt.",
+        "explanation": "Step 4 executes under strict context isolation and records the configuration."
+      },
+      {
+        "id": "validity",
+        "text": "Check the share of plausible fares and the CV of the answers before looking at any age effect.",
+        "explanation": "Step 5 checks validity and stability before interpreting main effects and interactions."
+      },
+      {
+        "id": "gate",
+        "text": "Compare the age effect's size, dPD and SNR with the release gate, record the failure in the dossier and re-test after the fix.",
+        "explanation": "Step 6 compares results against the gate, documents failures and re-tests after mitigation."
+      }
+    ]
+  }
+]
