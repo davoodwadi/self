@@ -69,7 +69,7 @@ export default function Week2Page() {
       <Slide id="title-slide" align="center">
         <Subtitle variant="hero">Week 02 · Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
-          Algorithmic <span className="text-[var(--signal)]">Bias, Fairness</span>, and Discrimination
+          Algorithmic Bias, Fairness, and Discrimination
         </Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[42ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.35rem,2.2vw,1.9rem)]">
@@ -88,15 +88,15 @@ export default function Week2Page() {
       <Slide id="from-statistical-patterns-to-market-discrimination" border className="!py-8">
         <SlideHeading>From Statistical Patterns to Market Discrimination</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-2 md:gap-10">
-          <Ruled tone="counter">
+          <Ruled>
             <P>
               Predictive models operate by{" "}
-              <Term tone="counter">discriminating in the statistical sense</Term>:
+              <Term tone="ink">discriminating in the statistical sense</Term>:
               they separate customers with high predicted probabilities of an
               outcome from customers with low predicted probabilities.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               Statistical discrimination becomes{" "}
               <Term tone="signal">unlawful or unethical market discrimination</Term>{" "}
@@ -116,11 +116,11 @@ export default function Week2Page() {
               produce discriminatory outcomes across groups.
             </P>
           </Ruled>
-          <Ruled tone="signal" weight="thin">
+          <Ruled weight="thin">
             <P>
               Whenever historical inequities, uneven sampling, or proxy variables
               enter the modeling pipeline,{" "}
-              <Term tone="signal">optimizing for predictive accuracy alone</Term>{" "}
+              <Term tone="ink">optimizing for predictive accuracy alone</Term>{" "}
               will reproduce or amplify existing disparities.
             </P>
           </Ruled>
@@ -141,7 +141,7 @@ export default function Week2Page() {
         <Lead className="!max-w-none">
           Anti-discrimination statutes in employment, credit, housing, and public
           accommodations protect specific attributes, including{" "}
-          <Term tone="counter">
+          <Term tone="ink">
             race, sex, age, religion, national origin, disability, and marital status
           </Term>
           .
@@ -155,9 +155,9 @@ export default function Week2Page() {
                 differently because of a protected characteristic.
               </P>
             </Ruled>
-            <Ruled tone="signal" weight="thin">
+            <Ruled weight="thin">
               <P>
-                <Term tone="signal">Disparate impact</Term> occurs when a
+                <Term tone="ink">Disparate impact</Term> occurs when a
                 facially neutral policy or algorithm disproportionately harms a
                 protected group without a demonstrable business necessity.
               </P>
@@ -176,10 +176,10 @@ export default function Week2Page() {
           </Plate>
         </div>
         <div className="mt-4 grid w-full items-center gap-6 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-10">
-          <Ruled tone="counter">
+          <Ruled>
             <p className="type-lead">
               A common regulatory benchmark for screening disparate impact is
-              the <Term tone="counter">four-fifths rule</Term>, under which a
+              the <Term tone="ink">four-fifths rule</Term>, under which a
               selection rate for any protected group that is{" "}
               <Term tone="signal">less than 80 percent</Term> of the rate for
               the highest-selected group signals potential adverse impact.
@@ -197,9 +197,9 @@ export default function Week2Page() {
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Sources of Algorithmic Bias Across the Pipeline" />
         <div className="mt-7 grid w-full gap-8 md:grid-cols-3">
-          <Ruled tone="signal">
+          <Ruled>
             <P>
-              <Term tone="signal">Algorithmic bias</Term> is a systematic
+              <Term tone="ink">Algorithmic bias</Term> is a systematic
               difference in a model&apos;s predictions, errors, or resource
               allocations across groups that is not justified by the legitimate
               purpose of the decision.
@@ -209,17 +209,17 @@ export default function Week2Page() {
             <P>
               Bias does not originate in a single line of code; it enters at
               distinct stages of{" "}
-              <Term tone="ink">
+              <Term tone="signal">
                 data generation, measurement, model specification, and market deployment
               </Term>
               .
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
               Diagnosing the exact stage at which bias enters is necessary
               because each source requires a{" "}
-              <Term tone="counter">different technical and managerial remedy</Term>.
+              <Term tone="ink">different technical and managerial remedy</Term>.
             </P>
           </Ruled>
         </div>
@@ -233,12 +233,12 @@ export default function Week2Page() {
           ================================================================ */}
       <Slide id="bias-in-the-data-historical-and-representation-bias" border className="!py-8">
         <SlideHeading>Bias in the Data: Historical and Representation Bias</SlideHeading>
-        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-10">
+        <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 md:gap-10">
           <div className="flex flex-col justify-between gap-4">
             <div className="grid gap-4">
-              <Ruled tone="signal">
+              <Ruled>
                 <P>
-                  <Term tone="signal">Historical bias</Term> arises when the data
+                  <Term tone="ink">Historical bias</Term> arises when the data
                   accurately record a world shaped by past structural inequality
                   or human prejudice, so that a model trained on those records
                   treats past discrimination as the target to replicate.
@@ -258,9 +258,9 @@ export default function Week2Page() {
           </div>
           <div className="flex flex-col justify-between gap-4">
             <div className="grid gap-4">
-              <Ruled tone="counter">
+              <Ruled>
                 <P>
-                  <Term tone="counter">Representation bias</Term> arises when
+                  <Term tone="ink">Representation bias</Term> arises when
                   certain segments of the population are undersampled or missing
                   from the training dataset relative to the population on which
                   the model will be deployed.
@@ -286,12 +286,12 @@ export default function Week2Page() {
           ================================================================ */}
       <Slide id="bias-in-modeling-measurement-and-aggregation-bias" border className="!py-8">
         <SlideHeading>Bias in Modeling: Measurement and Aggregation Bias</SlideHeading>
-        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-10">
+        <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 md:gap-10">
           <div className="flex flex-col justify-between gap-4">
             <div className="grid gap-3.5">
-              <Ruled tone="signal">
+              <Ruled>
                 <P>
-                  <Term tone="signal">Measurement bias</Term> arises when the
+                  <Term tone="ink">Measurement bias</Term> arises when the
                   observable proxy chosen to represent an unobservable construct
                   is measured with different accuracy or meaning across groups.
                 </P>
@@ -317,9 +317,9 @@ export default function Week2Page() {
             </Plate>
           </div>
           <div className="flex flex-col justify-between gap-4">
-            <Ruled tone="counter">
+            <Ruled>
               <p className={BIG}>
-                <Term tone="counter">Aggregation bias</Term> arises when a single
+                <Term tone="ink">Aggregation bias</Term> arises when a single
                 model is fit across distinct populations whose conditional
                 relationships between predictors and outcomes differ, producing a
                 model that fits the majority group well and minority groups
@@ -338,7 +338,7 @@ export default function Week2Page() {
           ================================================================ */}
       <Slide id="bias-in-deployment-proxy-variables-and-feedback-loops" border className="!py-8">
         <SlideHeading>Bias in Deployment: Proxy Variables and Feedback Loops</SlideHeading>
-        <div className="grid w-full gap-8 md:grid-cols-2 md:gap-10">
+        <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 md:gap-10">
           <div className="flex flex-col justify-between gap-4">
             <div className="grid gap-4">
               <Ruled>
@@ -364,9 +364,9 @@ export default function Week2Page() {
           </div>
           <div className="flex flex-col justify-between gap-4">
             <div className="grid gap-4">
-              <Ruled tone="signal">
+              <Ruled>
                 <P>
-                  <Term tone="signal">Runaway feedback loops</Term> arise when a
+                  <Term tone="ink">Runaway feedback loops</Term> arise when a
                   model&apos;s predictions determine which data are observed in
                   the next period and used to retrain the model.
                 </P>
@@ -399,10 +399,10 @@ export default function Week2Page() {
         <SlideHeading>Identifying Sources of Bias in Commercial Pipelines</SlideHeading>
         <ol className="grid w-full gap-x-6 gap-y-5 md:grid-cols-2 lg:grid-cols-4">
           <li className="min-w-0">
-            <Numbered n={1} tone="signal">
-              <Ruled tone="signal" weight="thin">
+            <Numbered n={1}>
+              <Ruled weight="thin">
                 <P>
-                  <Term tone="signal">Historical bias</Term> is present when the
+                  <Term tone="ink">Historical bias</Term> is present when the
                   labels themselves reflect past unequal treatment, even if the
                   sample is large and the variables are measured without error.
                 </P>
@@ -410,10 +410,10 @@ export default function Week2Page() {
             </Numbered>
           </li>
           <li className="min-w-0">
-            <Numbered n={2} tone="counter">
-              <Ruled tone="counter" weight="thin">
+            <Numbered n={2}>
+              <Ruled weight="thin">
                 <P>
-                  <Term tone="counter">Representation bias</Term> is present when
+                  <Term tone="ink">Representation bias</Term> is present when
                   the training sample omits or under-represents a target customer
                   segment, raising error rates for that segment even if
                   historical labels were fair.
@@ -422,10 +422,10 @@ export default function Week2Page() {
             </Numbered>
           </li>
           <li className="min-w-0">
-            <Numbered n={3} tone="signal">
-              <Ruled tone="signal" weight="thin">
+            <Numbered n={3}>
+              <Ruled weight="thin">
                 <P>
-                  <Term tone="signal">Measurement bias</Term> is present when the
+                  <Term tone="ink">Measurement bias</Term> is present when the
                   target label or feature is a flawed proxy whose relationship to
                   the true construct differs across groups.
                 </P>
@@ -455,9 +455,9 @@ export default function Week2Page() {
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Group Fairness Criteria" />
         <div className="mt-7 grid w-full gap-8 md:grid-cols-3">
-          <Ruled tone="counter">
+          <Ruled>
             <P>
-              <Term tone="counter">Group fairness criteria</Term> formalize what
+              <Term tone="ink">Group fairness criteria</Term> formalize what
               it means for a model to treat demographic groups equitably in terms
               of its predictions and error rates.
             </P>
@@ -469,11 +469,11 @@ export default function Week2Page() {
               for each demographic group.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               Three families of group fairness dominate regulatory and technical
-              practice: <Term tone="counter">independence</Term>,{" "}
-              <Term tone="signal">separation</Term>, and{" "}
+              practice: <Term tone="ink">independence</Term>,{" "}
+              <Term tone="ink">separation</Term>, and{" "}
               <Term tone="ink">sufficiency</Term>.
             </P>
           </Ruled>
@@ -492,37 +492,37 @@ export default function Week2Page() {
           <Ruled weight="thin">
             <P>
               Consider a binary decision, such as approving a credit card
-              application, where <Term tone="counter">Y equals 1</Term> if the
-              applicant would repay the loan and <Term tone="signal">Y equals 0</Term>{" "}
+              application, where <Term tone="ink">Y equals 1</Term> if the
+              applicant would repay the loan and <Term tone="ink">Y equals 0</Term>{" "}
               if the applicant would default.
             </P>
           </Ruled>
           <Ruled weight="thin">
             <P>
               The model produces a binary decision D, where{" "}
-              <Term tone="counter">D equals 1</Term> for approval and{" "}
+              <Term tone="ink">D equals 1</Term> for approval and{" "}
               <Term tone="ink">D equals 0</Term> for denial, based on whether the
               applicant&apos;s predicted probability score S exceeds a cutoff
               threshold.
             </P>
           </Ruled>
-          <Ruled tone="counter" weight="thin">
+          <Ruled weight="thin">
             <P>
               For each demographic group A, the confusion matrix records the
               selection rate <Term tone="ink">P(D = 1)</Term>, the true positive
-              rate <Term tone="counter">P(D = 1 | Y = 1)</Term>, the false
-              positive rate <Term tone="signal">P(D = 1 | Y = 0)</Term>, and the
+              rate <Term tone="ink">P(D = 1 | Y = 1)</Term>, the false
+              positive rate <Term tone="ink">P(D = 1 | Y = 0)</Term>, and the
               positive predictive value <Term tone="ink">P(Y = 1 | D = 1)</Term>.
             </P>
           </Ruled>
-          <Ruled tone="signal" weight="thin">
+          <Ruled weight="thin">
             <P>
               Different stakeholders care about different cells of this matrix:{" "}
               <Term tone="signal">
                 applicants care whether qualified members of their group are rejected
               </Term>
               , whereas{" "}
-              <Term tone="counter">
+              <Term tone="ink">
                 lenders care whether approved applicants from each group repay at the predicted rate
               </Term>
               .
@@ -540,7 +540,7 @@ export default function Week2Page() {
       <Slide id="independence-demographic-parity" border className="!py-8">
         <SlideHeading>Independence: Demographic Parity</SlideHeading>
         <Statement className="!max-w-none !text-[clamp(1.3rem,2.05vw,1.75rem)]">
-          <Term tone="counter">Independence</Term>, also called demographic
+          <Term tone="ink">Independence</Term>, also called demographic
           parity or statistical parity, requires that the probability of
           receiving a favorable decision is equal across groups:{" "}
           <Term tone="ink">P(D = 1 | A = a) equals P(D = 1 | A = b)</Term>.
@@ -554,17 +554,17 @@ export default function Week2Page() {
               historical qualification rates.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
               Demographic parity is appropriate when{" "}
-              <Term tone="counter">
+              <Term tone="ink">
                 historical labels are deeply contaminated by past exclusion
               </Term>{" "}
               or when the organization&apos;s policy goal is equal representation
               in access to an opportunity.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               Its limitation is that if underlying qualification rates differ
               between groups, enforcing demographic parity requires{" "}
@@ -593,17 +593,17 @@ export default function Week2Page() {
               depend on group membership.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
-              <Term tone="signal">Equalized odds</Term> requires that both the
+              <Term tone="ink">Equalized odds</Term> requires that both the
               true positive rate <Term tone="ink">P(D = 1 | Y = 1)</Term> and the
               false positive rate <Term tone="ink">P(D = 1 | Y = 0)</Term> are
               equal across groups.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
-              <Term tone="counter">Equal opportunity</Term> relaxes equalized
+              <Term tone="ink">Equal opportunity</Term> relaxes equalized
               odds to require only equal true positive rates across groups: among
               individuals who would genuinely succeed or repay (Y = 1), the
               probability of being selected by the model is identical regardless
@@ -613,7 +613,7 @@ export default function Week2Page() {
           <Ruled weight="thin">
             <P>
               Equal opportunity directly{" "}
-              <Term tone="counter">
+              <Term tone="signal">
                 protects qualified individuals in disadvantaged groups
               </Term>{" "}
               from being overlooked at higher rates than equally qualified
@@ -639,17 +639,17 @@ export default function Week2Page() {
               prediction or risk score means the same thing across all groups.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
-              <Term tone="counter">Predictive parity</Term> requires that the
+              <Term tone="ink">Predictive parity</Term> requires that the
               positive predictive value <Term tone="ink">P(Y = 1 | D = 1)</Term>{" "}
               is equal across groups: among applicants who are approved, the
               actual repayment rate is the same in Group A and Group B.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
-              <Term tone="signal">Calibration within groups</Term> requires that
+              <Term tone="ink">Calibration within groups</Term> requires that
               for every score level s, the proportion of individuals with score s
               who achieve the outcome Y = 1 is equal across groups:{" "}
               <Term tone="ink">
@@ -661,7 +661,7 @@ export default function Week2Page() {
           <Ruled weight="thin">
             <P>
               Calibration ensures that a{" "}
-              <Term tone="ink">single cutoff threshold applied to the score S</Term>{" "}
+              <Term tone="signal">single cutoff threshold applied to the score S</Term>{" "}
               does not explicitly judge one group by a stricter predictive
               standard than another.
             </P>
@@ -696,10 +696,10 @@ export default function Week2Page() {
             </Numbered>
           </li>
           <li className="min-w-0">
-            <Numbered n={2} tone="counter">
-              <Ruled tone="counter" weight="thin">
+            <Numbered n={2}>
+              <Ruled weight="thin">
                 <P>
-                  <Term tone="counter">Equal opportunity</Term> is selected when
+                  <Term tone="ink">Equal opportunity</Term> is selected when
                   the primary ethical harm is falsely rejecting qualified
                   individuals, as in screening job applicants or approving
                   small-business loans.
@@ -708,10 +708,10 @@ export default function Week2Page() {
             </Numbered>
           </li>
           <li className="min-w-0">
-            <Numbered n={3} tone="signal">
-              <Ruled tone="signal" weight="thin">
+            <Numbered n={3}>
+              <Ruled weight="thin">
                 <P>
-                  <Term tone="signal">Equalized odds</Term> is selected when both
+                  <Term tone="ink">Equalized odds</Term> is selected when both
                   false rejections of the qualified and false selections of the
                   unqualified carry severe group-level harms, as in fraud
                   flagging or risk assessment.
@@ -743,7 +743,7 @@ export default function Week2Page() {
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Individual and Counterfactual Fairness" />
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
-          <Ruled tone="signal">
+          <Ruled>
             <p className={BIG}>
               Group fairness averages outcomes across entire demographic
               categories, which leaves open the possibility that{" "}
@@ -753,9 +753,9 @@ export default function Week2Page() {
               .
             </p>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
-              <Term tone="counter">Individual and causal approaches</Term>{" "}
+              <Term tone="ink">Individual and causal approaches</Term>{" "}
               evaluate fairness at the level of the single consumer rather than
               the group average.
             </p>
@@ -772,7 +772,7 @@ export default function Week2Page() {
       <Slide id="individual-fairness-treating-similar-people-similarly" border className="!py-8">
         <SlideHeading>Individual Fairness: Treating Similar People Similarly</SlideHeading>
         <Lead className="!max-w-none">
-          <Term tone="counter">Individual fairness</Term>, formalized by Dwork
+          <Term tone="ink">Individual fairness</Term>, formalized by Dwork
           and colleagues, requires that any two individuals who are similar with
           respect to a particular task receive similar probability distributions
           over outcomes.
@@ -785,7 +785,7 @@ export default function Week2Page() {
               their profiles.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               Individual fairness prevents <Term tone="signal">tokenism</Term>,
               in which a model satisfies group demographic parity by selecting
@@ -793,10 +793,10 @@ export default function Week2Page() {
               qualified individuals within that group.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
               The practical challenge of individual fairness is defining a{" "}
-              <Term tone="counter">similarity metric</Term> that captures genuine
+              <Term tone="ink">similarity metric</Term> that captures genuine
               task qualification without quietly reintroducing socioeconomic
               proxies.
             </P>
@@ -818,9 +818,9 @@ export default function Week2Page() {
       >
         <SlideHeading>Counterfactual Fairness and Causal Pathways</SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-2">
-          <Ruled tone="counter">
+          <Ruled>
             <P>
-              <Term tone="counter">Counterfactual fairness</Term> defines
+              <Term tone="ink">Counterfactual fairness</Term> defines
               fairness through a causal graph: a decision is counterfactually
               fair toward an individual if the prediction would remain identical
               in a counterfactual world where the individual belonged to a
@@ -835,10 +835,10 @@ export default function Week2Page() {
               <Term tone="signal">mediating variables</Term>.
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               If a protected attribute influences a mediator, such as{" "}
-              <Term tone="signal">neighborhood school quality</Term>, which in
+              <Term tone="ink">neighborhood school quality</Term>, which in
               turn influences test scores, a counterfactually fair model adjusts
               for the downstream effect of the protected attribute on the
               mediator.
@@ -848,7 +848,7 @@ export default function Week2Page() {
             <P>
               Unlike fairness through unawareness, which merely drops the
               demographic column, counterfactual fairness{" "}
-              <Term tone="counter">
+              <Term tone="ink">
                 removes the causal influence of the protected attribute on all downstream proxy variables
               </Term>{" "}
               unless a pathway is explicitly deemed business-necessary.
@@ -875,12 +875,12 @@ export default function Week2Page() {
             <span className="text-[var(--signal)]">mutually incompatible</span> in
             almost all realistic settings.
           </Statement>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               Managers cannot instruct an engineering team to make a model
               &ldquo;completely fair&rdquo; on all metrics at once; they must
               decide{" "}
-              <Term tone="counter">
+              <Term tone="ink">
                 which type of error disparity is most harmful
               </Term>{" "}
               in the specific market context.
@@ -900,13 +900,13 @@ export default function Week2Page() {
         <Lead className="!max-w-none">
           Proven independently by Chouldechova (2017) and Kleinberg,
           Mullainathan, and Raghavan (2017), the{" "}
-          <Term tone="signal">impossibility theorem</Term> states that whenever
+          <Term tone="ink">impossibility theorem</Term> states that whenever
           two groups have different base rates of the underlying outcome P(Y = 1),
           no imperfect predictor can simultaneously satisfy{" "}
           <Term tone="ink">independence, separation, and sufficiency</Term>.
         </Lead>
         <div className="mt-6 grid w-full gap-6 md:grid-cols-3">
-          <Ruled tone="signal" weight="thin">
+          <Ruled weight="thin">
             <P>
               Specifically, if base rates differ across groups and a model is{" "}
               <Term tone="ink">calibrated within groups (sufficiency)</Term>, the
@@ -915,23 +915,23 @@ export default function Week2Page() {
               <Term tone="signal">violating equalized odds (separation)</Term>.
             </P>
           </Ruled>
-          <Ruled tone="signal" weight="thin">
+          <Ruled weight="thin">
             <P>
               Conversely, if a firm enforces{" "}
               <Term tone="ink">equalized odds</Term> across groups with unequal
               base rates, the resulting predictions{" "}
-              <Term tone="signal">
+              <Term tone="ink">
                 cannot have equal positive predictive value
               </Term>{" "}
               across groups.
             </P>
           </Ruled>
-          <Ruled tone="counter" weight="thin">
+          <Ruled weight="thin">
             <P>
               Only two degenerate conditions avoid this trade-off: a{" "}
-              <Term tone="counter">perfect predictor</Term> that makes zero
+              <Term tone="ink">perfect predictor</Term> that makes zero
               errors, or populations whose{" "}
-              <Term tone="counter">underlying base rates are identical</Term>.
+              <Term tone="ink">underlying base rates are identical</Term>.
             </P>
           </Ruled>
         </div>
@@ -955,11 +955,11 @@ export default function Week2Page() {
         <Lead className="!max-w-none">
           Because mathematical impossibility rules out satisfying every fairness
           metric simultaneously, choosing a fairness criterion is a{" "}
-          <Term tone="signal">normative governance decision</Term> rather than a
+          <Term tone="ink">normative governance decision</Term> rather than a
           purely technical optimization step.
         </Lead>
         <div className="mt-6 grid w-full gap-6 md:grid-cols-3">
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               In <Term tone="ink">consumer credit</Term>, lenders historically
               prioritized calibration so that a credit score of 700 implied the
@@ -971,9 +971,9 @@ export default function Week2Page() {
               in disadvantaged groups.
             </P>
           </Ruled>
-          <Ruled tone="counter">
+          <Ruled>
             <P>
-              In <Term tone="counter">automated resume screening</Term>,
+              In <Term tone="ink">automated resume screening</Term>,
               regulators and human-resources leaders prioritize demographic
               parity or equal opportunity at the top of the funnel so qualified
               candidates from underrepresented groups reach human interviews.
@@ -1035,10 +1035,10 @@ export default function Week2Page() {
             </span>
             .
           </Statement>
-          <Ruled tone="counter">
+          <Ruled>
             <p className={BIG}>
               Governing these pipelines requires understanding how{" "}
-              <Term tone="counter">
+              <Term tone="ink">
                 platform optimization algorithms allocate exposure
               </Term>{" "}
               and applying structured mitigation and auditing protocols.
@@ -1059,7 +1059,7 @@ export default function Week2Page() {
           <Ruled>
             <P>
               Even when an advertiser selects{" "}
-              <Term tone="counter">
+              <Term tone="ink">
                 broad, demographically neutral targeting parameters
               </Term>{" "}
               for a housing, credit, or employment advertisement, the
@@ -1067,14 +1067,14 @@ export default function Week2Page() {
               audiences (Ali et al., 2019).
             </P>
           </Ruled>
-          <Ruled tone="signal">
+          <Ruled>
             <P>
               Delivery skew occurs for two reasons:{" "}
               <Term tone="signal">
                 market-driven cost differences across demographic segments in ad auctions
               </Term>
               , and{" "}
-              <Term tone="signal">
+              <Term tone="ink">
                 relevance models that optimize predicted click-through rates based on historical stereotypes
               </Term>
               .
@@ -1114,9 +1114,9 @@ export default function Week2Page() {
           Pre-Processing, In-Processing, and Post-Processing Mitigation
         </SlideHeading>
         <div className="grid w-full gap-6 md:grid-cols-3">
-          <Ruled tone="counter" weight="thin">
+          <Ruled weight="thin">
             <P>
-              <Term tone="counter">Pre-processing interventions</Term> modify the
+              <Term tone="ink">Pre-processing interventions</Term> modify the
               training data before a model is fit, using techniques such as
               reweighting underrepresented observations, resampling, or
               transforming features to remove correlation with protected
@@ -1132,16 +1132,16 @@ export default function Week2Page() {
               internal representations.
             </P>
           </Ruled>
-          <Ruled tone="counter" weight="thin">
+          <Ruled weight="thin">
             <P>
-              <Term tone="counter">Post-processing interventions</Term> leave the
+              <Term tone="ink">Post-processing interventions</Term> leave the
               trained model unchanged and adjust its output scores or apply
               group-specific decision thresholds to satisfy a target criterion
               such as equal opportunity or demographic parity.
             </P>
           </Ruled>
         </div>
-        <Ruled tone="signal" weight="thin" className="mt-5">
+        <Ruled weight="thin" className="mt-5">
           <P className="!max-w-none">
             Every mitigation method entails an{" "}
             <Term tone="signal">accuracy-fairness frontier</Term>: tightening
@@ -1190,10 +1190,10 @@ export default function Week2Page() {
             </Numbered>
           </li>
           <li className="min-w-0">
-            <Numbered n={3} tone="signal">
-              <Ruled tone="signal" weight="thin">
+            <Numbered n={3}>
+              <Ruled weight="thin">
                 <P>
-                  <Term tone="signal">Step 3 is computing baseline group metrics</Term>,
+                  <Term tone="ink">Step 3 is computing baseline group metrics</Term>,
                   including selection rates, the four-fifths ratio, true positive
                   rates, false positive rates, and calibration curves across
                   groups.
@@ -1215,10 +1215,10 @@ export default function Week2Page() {
             </Numbered>
           </li>
           <li className="min-w-0">
-            <Numbered n={5} tone="counter">
-              <Ruled tone="counter" weight="thin">
+            <Numbered n={5}>
+              <Ruled weight="thin">
                 <P>
-                  <Term tone="counter">
+                  <Term tone="ink">
                     Step 5 is evaluating pre-processing, in-processing, or post-processing mitigations
                   </Term>{" "}
                   along the accuracy-fairness frontier and selecting the
@@ -1288,8 +1288,8 @@ export default function Week2Page() {
               key={i}
               className={i === 6 ? "min-w-0 md:col-span-2 lg:col-span-3" : "min-w-0"}
             >
-              <Numbered n={i + 1} tone={i === 6 ? "signal" : "ink"}>
-                <Ruled tone={i === 6 ? "signal" : "ink"} weight="thin">
+              <Numbered n={i + 1}>
+                <Ruled weight="thin">
                   <P className={i === 6 ? "!max-w-none" : ""}>{takeaway}</P>
                 </Ruled>
               </Numbered>

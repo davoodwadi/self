@@ -343,7 +343,7 @@ export function Slider({
     <div className="mt-2.5 flex items-center gap-3 px-1">
       <label
         htmlFor={id}
-        className={CONTROL_KEY}
+        className={cn(CONTROL_KEY, "min-w-0 shrink")}
         style={{ fontFamily: SERIF }}
       >
         {label}
