@@ -1,0 +1,240 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "tracing-cultural-bias-to-the-model-lifecycle",
+    "prompt": "Each case describes a cultural failure in a deployed language model. Identify the lifecycle stage where the bias entered.",
+    "options": [
+      { "id": "corpus", "label": "Pre-training corpus skew" },
+      { "id": "tokenization", "label": "Tokenization disparity" },
+      { "id": "alignment", "label": "Post-training alignment bias" },
+      { "id": "localization", "label": "Deployment localization bias" }
+    ],
+    "cases": [
+      {
+        "id": "yoruba-proverbs",
+        "text": "A travel assistant cannot explain common Yoruba proverbs or local market customs in Lagos, because almost no locally written Yoruba text appeared in the web scrape the model learned from.",
+        "answer": "corpus",
+        "explanation": "When web scrapes over-represent dominant languages and affluent populations, the model is starved of authentic local knowledge and idioms."
+      },
+      {
+        "id": "telugu-support-bill",
+        "text": "A telecom firm finds that each customer-support chat in Telugu costs about three times as much to process as the same chat in English, and replies arrive noticeably slower.",
+        "answer": "tokenization",
+        "explanation": "The subword vocabulary fragments a non-dominant script into many more tokens, raising latency and inference cost per interaction."
+      },
+      {
+        "id": "indirect-refusal-penalized",
+        "text": "Raters who scored responses during fine-tuning marked indirect, deferential phrasing as 'unhelpful', so the model now answers Japanese business clients with blunt, direct refusals.",
+        "answer": "alignment",
+        "explanation": "Raters applied one culture's directness norms as the universal standard for good responses, so the bias entered during post-training alignment."
+      },
+      {
+        "id": "word-for-word-prompt",
+        "text": "A retailer launching in Saudi Arabia runs its English system prompt through a translation tool word-for-word and goes live without testing how the assistant behaves with local shoppers.",
+        "answer": "localization",
+        "explanation": "Translating the system prompt without adapting its cultural framing or validating behavior in the target market is deployment localization bias."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "allocative-versus-representational-harms",
+    "prompt": "Sort each outcome by the kind of harm it describes.",
+    "bins": [
+      { "id": "allocative", "label": "Allocative harm" },
+      { "id": "representational", "label": "Representational harm" }
+    ],
+    "cards": [
+      {
+        "id": "loan-rate",
+        "text": "An automated underwriting tool quotes applicants from one immigrant community a higher interest rate for the same credit history.",
+        "bin": "allocative",
+        "explanation": "A price is distributed unequally across groups: a tangible economic outcome is withheld."
+      },
+      {
+        "id": "job-ad-hidden",
+        "text": "A recruitment platform stops showing nursing-manager job ads to older applicants.",
+        "bin": "allocative",
+        "explanation": "Hiding a job advertisement denies eligibility for an opportunity, which is allocative."
+      },
+      {
+        "id": "stock-photos",
+        "text": "An image generator asked for 'a successful entrepreneur' returns only young men in Western business suits across hundreds of images.",
+        "bin": "representational",
+        "explanation": "No transaction is denied, but the depiction reinforces a stereotype about who succeeds."
+      },
+      {
+        "id": "dialect-missing",
+        "text": "A greeting-card copywriter tool never produces wording in Scots or Appalachian English, even when asked for regional cards.",
+        "bin": "representational",
+        "explanation": "The dialect is rendered invisible in commercial depictions: erasure is a representational harm."
+      },
+      {
+        "id": "discount-codes",
+        "text": "A loyalty engine sends 15 percent discount codes far less often to customers whose browser language is Arabic.",
+        "bin": "allocative",
+        "explanation": "A price discount is distributed unequally across groups."
+      },
+      {
+        "id": "caricature-chef",
+        "text": "A food-delivery app's generated mascot for its Mexican cuisine category is a sleeping man in a sombrero.",
+        "bin": "representational",
+        "explanation": "The depiction demeans and caricatures a cultural group even though nobody is refused a service."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "sentiment-and-portrayal-disparities-in-generative-marketing-content",
+    "prompt": "Each case comes from an audit of AI-generated marketing content. Identify the disparity it shows.",
+    "options": [
+      { "id": "status", "label": "Occupational and status association disparity" },
+      { "id": "sentiment", "label": "Sentiment and tone disparity" },
+      { "id": "exoticization", "label": "Exoticization and caricature" },
+      { "id": "persona", "label": "Brand-persona mismatch" }
+    ],
+    "cases": [
+      {
+        "id": "budget-phone",
+        "text": "Asked to write an ad 'for a Nigerian customer', the tool features the brand's budget phone; 'for a Swiss customer' yields the flagship model and a boardroom setting.",
+        "answer": "status",
+        "explanation": "Naming different groups produced systematically different product tiers and settings."
+      },
+      {
+        "id": "review-summaries",
+        "text": "Product-review summaries for customers who wrote in African American English are rated noticeably less warm by independent coders than summaries of the same complaints written in standard English.",
+        "answer": "sentiment",
+        "explanation": "Descriptions generated for a minority dialect carry more negative tone and lower warmth."
+      },
+      {
+        "id": "peru-banner",
+        "text": "A banner prompt for a coffee shop 'in Lima' returns llamas, woven ponchos and adobe huts instead of a modern city café.",
+        "answer": "exoticization",
+        "explanation": "Adding a national qualifier replaced a modern everyday setting with folkloric tropes."
+      },
+      {
+        "id": "skate-copy",
+        "text": "A streetwear brand asks for copy aimed at a local skateboarding community; every draft comes back in polished, generic corporate language the skaters mock online.",
+        "answer": "persona",
+        "explanation": "A distinct subcultural voice was flattened into a uniform corporate register that alienated the community."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "baseline-ethnocentrism-and-asymmetric-in-group-favoritism-in-llms",
+    "question_text": "An analyst tests one US-developed model and sees that its CETSCALE score is higher when the statements concern Canada than when they concern China. A colleague concludes: 'This proves the model is biased in favor of North America because it was built in the United States.' Based on the findings of Wadi, Ghodrat, and Philp (2026), what is the strongest reply?",
+    "hint": "Recall what happened when the target country was China across all evaluated models, not just the North American ones.",
+    "correct_answer_citation": "Week 03 · Baseline Ethnocentrism and Asymmetric In-Group Favoritism in LLMs",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "The colleague is right, because any difference between target countries in a single model is in-group favoritism.",
+        "option_explanation": "A difference between targets in one model can come from a pattern every model shares, so it does not by itself show favoritism linked to the model's origin."
+      },
+      {
+        "option_text": "The colleague is wrong, because language models score near a neutral midpoint and have no national attitudes.",
+        "option_explanation": "Most evaluated models score near the extreme ethnocentric end of human populations, not at a neutral midpoint."
+      },
+      {
+        "option_text": "Part of the gap is expected from any model, since all models showed lower ethnocentrism when the target was China; only the shift beyond that shared pattern points to origin-linked favoritism.",
+        "option_explanation": "Correct. The study found a strong target-country effect across all models, plus an additional asymmetric shift for North American models; one model alone cannot separate the two."
+      },
+      {
+        "option_text": "The gap must come from the model's high baseline ethnocentrism, as with Aya Expanse 32B.",
+        "option_explanation": "A high baseline raises a model's scores across all conditions; it does not explain a difference between two target countries."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "separating-model-main-effects-target-effects-and-origin-interactions",
+    "question_text": "In a fully crossed audit, the grand mean is 66. Model M's main effect is +5, and the target-country main effect for Country T is −6. Model M's observed score for Country T is 70. How large is the interaction effect for this pairing, and what does it indicate?",
+    "hint": "Add the grand mean and both main effects to get the score the main effects predict, then compare it with the observed score.",
+    "correct_answer_citation": "Week 03 · Separating Model Main Effects, Target Effects, and Origin Interactions",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "+4, because the observed score is 4 points above the grand mean.",
+        "option_explanation": "That difference still contains the model main effect and the target-country main effect; the interaction is only what remains after both."
+      },
+      {
+        "option_text": "+5, a pairing-specific shift beyond what the model's disposition and the country's shared penalty predict.",
+        "option_explanation": "Correct. The main effects predict 66 + 5 − 6 = 65; the observed 70 is 5 higher, and that additional shift for this specific pairing is the interaction."
+      },
+      {
+        "option_text": "−6, because Country T is penalized by every model.",
+        "option_explanation": "−6 is the target-country main effect, a pattern shared across all models, not the pairing-specific shift."
+      },
+      {
+        "option_text": "+5, which shows Model M rates every country 5 points higher than other models do.",
+        "option_explanation": "The number is right but the reading is wrong: a uniform lift across all countries is the model main effect, not the interaction."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "mitigation-strategies-across-the-deployment-stack",
+    "prompt": "Match each mitigation strategy with the step a firm takes.",
+    "term_label": "Mitigation strategy",
+    "match_label": "What the firm does",
+    "pairs": [
+      {
+        "id": "curation",
+        "term": "Corpus and multilingual curation",
+        "match": "Licenses Swahili newspapers and radio transcripts written in Kenya for fine-tuning, replacing a set of English pages run through machine translation.",
+        "explanation": "Curation balances training data with authentic, locally authored text rather than machine-translated English."
+      },
+      {
+        "id": "pluralistic",
+        "term": "Cross-cultural alignment and pluralistic RLHF",
+        "match": "Hires response raters in Indonesia, Egypt and Brazil and lets the assistant follow the politeness norms of each user's jurisdiction.",
+        "explanation": "Pluralistic alignment recruits diverse annotators and replaces a single cultural rubric."
+      },
+      {
+        "id": "blinding",
+        "term": "Attribute blinding and counterfactual prompt normalization",
+        "match": "Removes supplier names, website domains and head-office cities from the bid comparison table before the procurement agent scores it.",
+        "explanation": "Blinding strips non-essential national cues from structured comparison tables."
+      },
+      {
+        "id": "calibration",
+        "term": "Post-deployment distributional calibration",
+        "match": "Measures how many points the live model marks down brands linked to one country, then adds that amount back in the ranking pipeline.",
+        "explanation": "Calibration measures known origin penalties on validated scales so downstream rankings can correct for them."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "auditing-global-brand-visibility-across-multilingual-models",
+    "prompt": "A sportswear brand audits how three regional AI assistants recommend it in four markets. Put the audit steps in order.",
+    "steps": [
+      {
+        "id": "grid",
+        "text": "Pair the three assistants with the four target countries, languages and two product categories.",
+        "explanation": "Step 1 builds the fully crossed factorial grid."
+      },
+      {
+        "id": "instruments",
+        "text": "Run adapted CETSCALE items and shoe-comparison vignettes with randomized origin labels.",
+        "explanation": "Step 2 administers validated cross-cultural instruments."
+      },
+      {
+        "id": "checks",
+        "text": "Confirm each assistant answers in the required format and agrees with itself across items.",
+        "explanation": "Step 3 checks the constraint and consensus layers before interpreting any scores."
+      },
+      {
+        "id": "decompose",
+        "text": "Split the scores into grand mean, assistant effects, country effects and pairings.",
+        "explanation": "Step 4 decomposes the distributions to locate where bias originates."
+      },
+      {
+        "id": "mitigate",
+        "text": "Try origin-blinded tables, then re-run the whole grid before launch.",
+        "explanation": "Step 5 tests mitigations and re-runs the factorial audit."
+      }
+    ]
+  }
+]

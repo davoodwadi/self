@@ -462,6 +462,58 @@ export function Segmented<T extends string>({
   );
 }
 
+/**
+ * A row of switches under an interactive plate, any number on at once: for
+ * plates where students add or remove ingredients (cues, checks, variables).
+ */
+export function Toggles<T extends string>({
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  label: string;
+  options: { id: T; label: string }[];
+  value: T[];
+  onChange: (value: T[]) => void;
+}) {
+  return (
+    <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-2 px-1" role="group" aria-label={label}>
+      <span className={CONTROL_KEY} style={{ fontFamily: SERIF }}>
+        {label}
+      </span>
+      <div className="flex flex-wrap pl-px pt-px">
+        {options.map((o) => {
+          const on = value.includes(o.id);
+          return (
+            <button
+              key={o.id}
+              type="button"
+              aria-pressed={on}
+              onClick={() => onChange(on ? value.filter((v) => v !== o.id) : [...value, o.id])}
+              className={cn(
+                "-ml-px -mt-px inline-flex items-center gap-2 border border-[var(--ink)] bg-[var(--paper)] px-3 py-1.5",
+                CONTROL_TEXT,
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--rule-2)]",
+              )}
+              style={{ fontFamily: SERIF }}
+            >
+              <span
+                aria-hidden
+                className={cn(
+                  "inline-block size-[9px] shrink-0 border border-[var(--ink)]",
+                  on ? "bg-[var(--ink)]" : "bg-[var(--paper)]",
+                )}
+              />
+              {o.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 /** A seeded pseudo-random stream, so a plate's first render is identical on server and client. */
 export function seeded(seed: number) {
   let t = seed >>> 0;
@@ -603,7 +655,7 @@ export function PartHead({ n, title, className = "" }: { n: number; title: strin
         >
           {String(n).padStart(2, "0")}
         </div>
-        <h2 className="type-display max-w-[22ch] !text-[clamp(2.1rem,4vw,3.4rem)]">
+        <h2 className="type-display min-w-0 max-w-[22ch] !text-[clamp(1.7rem,4vw,3.4rem)] [overflow-wrap:break-word]">
           <span className="type-label mb-3 block !text-[0.8rem]">{`Part ${n}:`}</span> {title}
         </h2>
       </div>
