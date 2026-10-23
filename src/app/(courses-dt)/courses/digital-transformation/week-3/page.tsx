@@ -382,7 +382,7 @@ export default function DigitalTransformationWeek3() {
           "What strategies might help ensure smooth transitions during change?",
           "How can leaders align people and processes during transformation?",
         ]}
-        plate={<Conversation />}
+        plate={<Conversation left={6} right={8} />}
       />
 
       <Slide id="change-management" label="DEFINITION" title="Change Management">

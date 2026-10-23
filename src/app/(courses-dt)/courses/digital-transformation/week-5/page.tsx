@@ -717,7 +717,7 @@ export default function DigitalTransformationWeek5() {
             </ol>
           </div>
           <div className="max-w-sm w-full mx-auto">
-            <Conversation />
+            <Conversation left={7} right={10} />
           </div>
         </Row>
       </Slide>

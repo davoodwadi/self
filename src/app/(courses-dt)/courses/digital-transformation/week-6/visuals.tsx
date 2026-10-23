@@ -207,7 +207,7 @@ export function IntelligenceTypesInteractive({
       <HiveCluster cx={140} cy={132} tone={t0} />
 
       {/* Panel 2: Human intelligence — person in profile + equation & music */}
-      <Person x={354} y={64} k={1.18} hair="bob" />
+      <Person x={354} y={64} k={1.18} variant={9} />
       <rect x={422} y={38} width={66} height={46} rx={4} fill={t1} />
       <text x={455} y={68} textAnchor="middle" {...HEAD} fontSize={21} fill={CREAM}>
         ∑x²
@@ -301,7 +301,7 @@ export function IntelligenceTypesTall({
             )}
             {r.idx === 1 && (
               <>
-                <Person x={222} y={r.y0 + 12} k={0.72} hair="bob" />
+                <Person x={222} y={r.y0 + 12} k={0.72} variant={9} />
                 <MusicNotes x={296} y={r.y0 + 22} size={44} weight="fill" color={tone} />
               </>
             )}
@@ -497,7 +497,7 @@ export function RulesVsMlInteractive() {
       <text x={200} y={32} textAnchor="middle" {...HEAD} fontSize={19} fill={COUNTER}>
         Rules-Based Expert Systems
       </text>
-      <Person x={68} y={56} k={0.85} hair="crop" />
+      <Person x={68} y={56} k={0.85} variant={5} />
       <Doc x={132} y={66} k={0.52} tone={COUNTER} />
       <Pointer x1={188} y1={98} x2={220} y2={98} w={4} head={12} color={COUNTER} />
       <Monitor x={228} y={48} w={138} h={96}>
@@ -1321,9 +1321,9 @@ export function SupervisedVsUnsupervisedInteractive({
       <path d="M 400 18 V 192" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
       {/* LEFT: Supervised Learning — Labeled data (Hedonic vs Utility) */}
-      <Person x={52} y={32} k={0.55} hair="bob" />
+      <Person x={52} y={32} k={0.55} variant={0} />
       <Tag x={82} y={42} size={22} weight="fill" color={supTone} />
-      <Person x={52} y={102} k={0.55} hair="crop" />
+      <Person x={52} y={102} k={0.55} variant={3} />
       <Tag x={82} y={112} size={22} weight="fill" color={COUNTER} />
       <Pointer x1={112} y1={90} x2={144} y2={90} w={3.5} head={11} color={supTone} />
 
@@ -1347,8 +1347,8 @@ export function SupervisedVsUnsupervisedInteractive({
       </Monitor>
 
       {/* RIGHT: Unsupervised Learning — Unlabeled data grouped into clusters */}
-      <Person x={436} y={32} k={0.55} hair="bun" />
-      <Person x={436} y={102} k={0.55} hair="crop" />
+      <Person x={436} y={32} k={0.55} variant={4} />
+      <Person x={436} y={102} k={0.55} variant={6} />
       <Pointer x1={484} y1={90} x2={524} y2={90} w={3.5} head={11} color={unsupTone} />
 
       <Monitor x={532} y={22} w={216} h={132}>
@@ -1741,7 +1741,7 @@ const CASE_META: {
 function CaseDomainGlyph({ n, tone }: { n: number; tone: string }) {
   switch (n) {
     case 1:
-      return <Person x={116} y={88} k={0.92} hair="bob" />;
+      return <Person x={116} y={88} k={0.92} variant={7} />;
     case 2:
       return <Dna x={88} y={102} size={58} weight="fill" color={tone} />;
     case 3:

@@ -511,9 +511,9 @@ export function NetflixTimeline({
             {i === 1 && <Calendar x={255} y={20} tone={tone} />}
             {i === 2 && (
               <g>
-                <Person x={436} y={40} k={0.75} hair="crop" />
-                <Person x={564} y={40} k={0.75} hair="bun" flip />
-                <Person x={500} y={20} k={0.95} hair="bob" gap />
+                <Person x={442} y={36} k={0.76} variant={7} />
+                <Person x={496} y={36} k={0.76} variant={0} gap />
+                <Person x={550} y={36} k={0.76} variant={3} gap />
                 <rect x={428} y={120} width={144} height={6} fill={tone} />
               </g>
             )}
@@ -713,20 +713,20 @@ export function KotterSteps1To4({
             {/* Scene perched on top of step */}
             {i === 0 && (
               <g>
-                <Person x={72} y={78} k={0.8} hair="bob" />
+                <Person x={72} y={78} k={0.8} variant={3} />
                 <Clock x={112} y={84} size={58} weight="fill" color={tone} />
               </g>
             )}
             {i === 1 && (
               <g>
-                <Person x={258} y={74} k={0.72} hair="crop" />
-                <Person x={346} y={74} k={0.72} hair="bun" flip />
-                <Person x={302} y={58} k={0.88} hair="bob" gap />
+                <Person x={254} y={70} k={0.74} variant={2} />
+                <Person x={300} y={70} k={0.74} variant={5} gap />
+                <Person x={346} y={70} k={0.74} variant={6} gap />
               </g>
             )}
             {i === 2 && (
               <g>
-                <Person x={446} y={54} k={0.8} hair="crop" />
+                <Person x={446} y={54} k={0.8} variant={3} />
                 <MiniScreen x={492} y={64}>
                   <Shop x={513.2} y={72.5} k={0.26} tone={tone} />
                 </MiniScreen>
@@ -734,10 +734,10 @@ export function KotterSteps1To4({
             )}
             {i === 3 && (
               <g>
-                <Person x={636} y={42} k={0.8} hair="bun" />
+                <Person x={636} y={42} k={0.8} variant={3} />
                 <Megaphone x={668} y={50} size={38} weight="fill" color={tone} />
-                <Person x={728} y={54} k={0.68} hair="crop" flip />
-                <Person x={758} y={54} k={0.68} hair="bob" flip gap />
+                <Person x={720} y={56} k={0.64} variant={1} flip />
+                <Person x={758} y={56} k={0.64} variant={4} flip gap />
               </g>
             )}
 
@@ -880,14 +880,14 @@ export function KotterSteps5To8({
             {/* Scene perched on top of step */}
             {i === 0 && (
               <g>
-                <Person x={58} y={78} k={0.8} hair="crop" />
-                <Person x={106} y={78} k={0.8} hair="bob" gap />
+                <Person x={58} y={78} k={0.8} variant={7} />
+                <Person x={106} y={78} k={0.8} variant={8} gap />
                 <Lightning x={136} y={90} size={56} weight="fill" color={tone} />
               </g>
             )}
             {i === 1 && (
               <g>
-                <Person x={270} y={66} k={0.8} hair="bun" />
+                <Person x={270} y={66} k={0.8} variant={4} />
                 <Trophy x={312} y={76} size={64} weight="fill" color={tone} />
               </g>
             )}
@@ -1113,9 +1113,9 @@ export function MicrosoftKotter1To4({
       {/* Step 2 scene: Guiding coalition of executives from various divisions */}
       {active === 1 && (
         <g>
-          <Person x={246} y={118} k={0.85} hair="crop" />
-          <Person x={344} y={118} k={0.85} hair="bun" flip />
-          <Person x={295} y={96} k={1.08} hair="bob" gap />
+          <Person x={242} y={114} k={0.84} variant={2} />
+          <Person x={295} y={114} k={0.84} variant={5} gap />
+          <Person x={348} y={114} k={0.84} variant={6} gap />
           <rect x={220} y={212} width={150} height={14} fill={SIGNAL} />
         </g>
       )}
@@ -1144,8 +1144,8 @@ export function MicrosoftKotter1To4({
         <g>
           <ChatCircle x={236} y={54} size={48} weight="fill" color={SIGNAL} />
           <ChatCircle x={302} y={72} size={48} weight="fill" color={INK} />
-          <Person x={256} y={142} k={0.92} hair="crop" />
-          <Person x={334} y={142} k={0.92} hair="bob" flip />
+          <Person x={244} y={146} k={0.86} variant={9} />
+          <Person x={346} y={146} k={0.86} variant={8} flip />
         </g>
       )}
     </Plate>
@@ -1232,7 +1232,7 @@ export function MicrosoftKotter5To8({
       {active === 0 && (
         <g>
           <Lightbulb x={267} y={46} size={56} weight="fill" color={SIGNAL} />
-          <Person x={295} y={118} k={1.15} hair="bob" />
+          <Person x={295} y={118} k={1.15} variant={4} />
         </g>
       )}
 
@@ -1262,8 +1262,8 @@ export function MicrosoftKotter5To8({
       {active === 3 && (
         <g>
           <Heart x={269} y={52} size={52} weight="fill" color={SIGNAL} />
-          <Person x={256} y={138} k={0.92} hair="bun" />
-          <Person x={334} y={138} k={0.92} hair="crop" flip />
+          <Person x={244} y={142} k={0.86} variant={6} />
+          <Person x={346} y={142} k={0.86} variant={7} flip />
         </g>
       )}
     </Plate>
@@ -1357,7 +1357,7 @@ export function AdkarOverview({
               <rect x={x} y={10} width={w} height={214} fill="transparent" />
               {isLit ? (
                 <g>
-                  <Person x={cx - 26} y={26} k={0.82} hair="bob" />
+                  <Person x={cx - 26} y={26} k={0.82} variant={7} />
                   <AdkarMark i={i} cx={cx + 32} y={50} tone={SIGNAL} />
                 </g>
               ) : (
@@ -1531,19 +1531,19 @@ export function AdkarFirstThree({
                 <g>
                   <Megaphone x={40} y={48} size={48} weight="fill" color={tone} />
                   <Eye x={104} y={44} size={38} weight="fill" color={tone} />
-                  <Person x={198} y={26} k={0.96} hair="bob" flip />
+                  <Person x={198} y={26} k={0.96} variant={7} flip />
                 </g>
               )}
               {i === 1 && (
                 <g>
-                  <Person x={328} y={32} k={0.9} hair="crop" />
+                  <Person x={328} y={32} k={0.9} variant={3} />
                   <Heart x={378} y={48} size={44} weight="fill" color={tone} />
-                  <Person x={472} y={32} k={0.9} hair="bun" flip />
+                  <Person x={472} y={32} k={0.9} variant={7} flip />
                 </g>
               )}
               {i === 2 && (
                 <g>
-                  <Person x={592} y={26} k={0.96} hair="bob" />
+                  <Person x={592} y={26} k={0.96} variant={7} />
                   <Doc x={648} y={34} k={0.54} tone={tone} />
                   <Gear x={712} y={50} size={46} weight="fill" color={tone} />
                 </g>
@@ -1710,7 +1710,7 @@ export function AdkarLastTwo({
             {/* Stage 4: Ability — applying skills on a digital screen to deliver results */}
             {i === 0 && (
               <g>
-                <Person x={92} y={26} k={0.96} hair="crop" />
+                <Person x={92} y={26} k={0.96} variant={7} />
                 <MiniScreen x={156} y={44}>
                   <Gear x={178} y={52} size={40} weight="fill" color={tone} />
                 </MiniScreen>
@@ -1722,9 +1722,9 @@ export function AdkarLastTwo({
             {/* Stage 5: Reinforcement — recognition, rewards, and ongoing support */}
             {i === 1 && (
               <g>
-                <Person x={496} y={26} k={0.96} hair="bun" />
+                <Person x={496} y={26} k={0.96} variant={3} />
                 <Trophy x={566} y={38} size={64} weight="fill" color={tone} />
-                <Person x={700} y={26} k={0.96} hair="bob" flip />
+                <Person x={700} y={26} k={0.96} variant={7} flip />
               </g>
             )}
 
@@ -1842,7 +1842,7 @@ export function SmallReleases() {
         <Package key={x} x={x} y={92} size={48} weight="fill" color={SIGNAL} />
       ))}
       <Arrow x1={24} x2={292} y={164} />
-      <Person x={348} y={66} k={1.2} hair="crop" flip />
+      <Person x={348} y={66} k={1.2} variant={10} flip />
     </Plate>
   );
 }
@@ -2233,9 +2233,9 @@ export function ScrumPrinciples1To3({
               <g>
                 <Gear x={346} y={16} size={38} weight="fill" color={tone} />
                 <Lightbulb x={416} y={14} size={40} weight="fill" color={tone} />
-                <Person x={332} y={72} k={0.84} hair="crop" />
-                <Person x={468} y={72} k={0.84} hair="bun" flip />
-                <Person x={400} y={56} k={1.0} hair="bob" gap />
+                <Person x={344} y={68} k={0.84} variant={4} />
+                <Person x={400} y={68} k={0.84} variant={8} gap />
+                <Person x={456} y={68} k={0.84} variant={6} gap />
               </g>
             )}
 
@@ -2244,8 +2244,8 @@ export function ScrumPrinciples1To3({
               <g>
                 <ChatCircle x={604} y={18} size={46} weight="fill" color={tone} />
                 <ChatCircle x={672} y={32} size={46} weight="fill" color={INK} />
-                <Person x={604} y={64} k={0.92} hair="bun" />
-                <Person x={720} y={64} k={0.92} hair="crop" flip />
+                <Person x={604} y={64} k={0.92} variant={2} />
+                <Person x={720} y={64} k={0.92} variant={8} flip />
               </g>
             )}
 
@@ -2397,7 +2397,7 @@ export function ScrumPrinciples4To6({
             {/* Principle 4: Value-Based Prioritization */}
             {i === 0 && (
               <g>
-                <Person x={78} y={52} k={1.04} hair="bob" />
+                <Person x={78} y={52} k={1.04} variant={2} />
                 <Backlog x={138} y={36} w={88} n={5} tone={INK} />
                 {isLit && <rect x={150} y={54} width={64} height={6} fill={SIGNAL} />}
               </g>
@@ -2790,7 +2790,7 @@ export function ScrumRolesHub({
             {/* 1. Product Owner */}
             {i === 0 && (
               <g>
-                <Person x={78} y={48} k={1.06} hair="bob" />
+                <Person x={78} y={48} k={1.06} variant={2} />
                 <Backlog x={138} y={36} w={88} n={5} tone={INK} />
                 {isLit && <rect x={150} y={54} width={64} height={6} fill={SIGNAL} />}
               </g>
@@ -2799,8 +2799,8 @@ export function ScrumRolesHub({
             {/* 2. Scrum Master */}
             {i === 1 && (
               <g>
-                <Person x={314} y={58} k={0.9} hair="bun" />
-                <Person x={364} y={58} k={0.9} hair="crop" gap />
+                <Person x={314} y={58} k={0.9} variant={7} />
+                <Person x={364} y={58} k={0.9} variant={5} gap />
                 <ShieldCheck x={406} y={48} size={66} weight="fill" color={tone} />
                 <Lightning x={472} y={58} size={46} weight="fill" color={INK} />
               </g>
@@ -2809,9 +2809,9 @@ export function ScrumRolesHub({
             {/* 3. Development Team */}
             {i === 2 && (
               <g>
-                <Person x={576} y={60} k={0.88} hair="bun" />
-                <Person x={624} y={60} k={0.88} hair="crop" gap />
-                <Person x={672} y={60} k={0.88} hair="bob" gap />
+                <Person x={576} y={60} k={0.88} variant={4} />
+                <Person x={624} y={60} k={0.88} variant={8} gap />
+                <Person x={672} y={60} k={0.88} variant={6} gap />
                 <Package x={716} y={78} size={52} weight="fill" color={tone} />
               </g>
             )}

@@ -183,12 +183,12 @@ function ExtGlyph({ n, y }: { n: number; y: number }) {
     case 1:
       return <SlidersHorizontal x={54} y={y - 16} size={32} weight="fill" color={INK} />;
     case 2:
-      return <Person x={70} y={y - 20} k={0.38} hair="bob" />;
+      return <Person x={70} y={y - 20} k={0.38} variant={0} />;
     case 3:
       return (
         <g>
-          <Person x={58} y={y - 18} k={0.34} hair="crop" />
-          <Person x={80} y={y - 18} k={0.34} hair="bun" flip gap />
+          <Person x={58} y={y - 18} k={0.34} variant={6} />
+          <Person x={80} y={y - 18} k={0.34} variant={1} gap />
         </g>
       );
     case 4:
@@ -559,7 +559,7 @@ export function BestBuyCatalogBridgePlate() {
         <Shop x={220} y={62} k={0.32} />
       </Monitor>
 
-      <Person x={344} y={54} k={0.95} hair="bob" flip />
+      <Person x={344} y={54} k={0.95} variant={9} flip />
     </Plate>
   );
 }
@@ -594,8 +594,8 @@ export function HospitalTriageFlow() {
       h={208}
       title="Two patients in profile face a triage chatbot on a framed screen; from the screen, a black arrow leads to a house labeled At home, and a red arrow leads to a medical cross labeled Urgent care"
     >
-      <Person x={68} y={54} k={1.05} hair="bun" />
-      <Person x={132} y={42} k={1.18} hair="crop" gap />
+      <Person x={68} y={54} k={1.05} variant={2} />
+      <Person x={132} y={42} k={1.18} variant={8} gap />
       <Arrow x1={194} x2={256} y={96} />
 
       <Monitor x={268} y={16} w={164} h={108}>
@@ -729,7 +729,7 @@ export function HospitalEhrIntegrationPlate() {
 
 export function IkeaKioskReturn() {
   const queueX = [60, 122, 184, 246];
-  const hairs: ("bob" | "crop" | "bun")[] = ["crop", "bob", "bun", "crop"];
+  const queueVariants = [7, 5, 6, 3] as const;
   return (
     <Plate
       w={800}
@@ -738,7 +738,7 @@ export function IkeaKioskReturn() {
     >
       {/* Left: Waiting in line */}
       {queueX.map((x, i) => (
-        <Person key={x} x={x} y={38} k={1.02} hair={hairs[i]} gap={i > 0} />
+        <Person key={x} x={x} y={38} k={1.02} variant={queueVariants[i]} gap={i > 0} />
       ))}
       <rect x={312} y={78} width={54} height={62} fill={INK} />
       <text x={200} y={184} textAnchor="middle" fontFamily="var(--font-heading)" fontWeight={700} fontSize={18} fill={INK}>
@@ -748,7 +748,7 @@ export function IkeaKioskReturn() {
       <path d="M 400 20 V 188" stroke={INK} strokeWidth={1.5} strokeDasharray="5 5" />
 
       {/* Right: Self-return kiosk */}
-      <Person x={476} y={38} k={1.02} hair="bob" />
+      <Person x={476} y={38} k={1.02} variant={4} />
       <Arrow x1={530} x2={590} y={88} color={SIGNAL} />
       <Monitor x={602} y={16} w={164} h={104}>
         <Package x={644} y={44} size={48} weight="fill" color={INK} />
@@ -796,7 +796,7 @@ export function IkeaKioskStepsPlate() {
       <path d="M 20 152 H 380" stroke={INK} strokeWidth={1.5} strokeDasharray="5 5" />
 
       {/* Bottom: Staff focus on complex issues + Cost savings */}
-      <Person x={64} y={162} k={0.84} hair="crop" />
+      <Person x={64} y={162} k={0.84} variant={10} />
       <Gear x={118} y={172} size={38} weight="fill" color={INK} />
       <Gear x={158} y={198} size={30} weight="fill" color={INK} />
       <Coins x={262} y={240} n={4} />
@@ -1044,12 +1044,12 @@ export function IkeaUtautDriversPlate() {
       </MiniScreen>
 
       {/* 3. Social Influence: observing other customers & word-of-mouth */}
-      <Person x={cx[2] - 34} y={16} k={0.72} hair="bob" />
-      <Person x={cx[2] + 34} y={16} k={0.72} hair="crop" flip gap />
+      <Person x={cx[2] - 42} y={20} k={0.68} variant={4} />
+      <Person x={cx[2] + 42} y={20} k={0.68} variant={6} flip />
       <ChatCircle x={cx[2] - 14} y={6} size={28} weight="fill" color={SIGNAL} />
 
       {/* 4. Facilitating Conditions: on-site support staff & clear guidance */}
-      <Person x={cx[3] - 26} y={16} k={0.72} hair="bun" />
+      <Person x={cx[3] - 26} y={16} k={0.72} variant={10} />
       <Doc x={cx[3] + 14} y={24} k={0.52} />
 
       {/* Shared horizontal collector bar & downward arrows to outcomes */}
@@ -1336,7 +1336,7 @@ export function IotSecurityPractices() {
       />
 
       {/* 5. Educate users on IoT security */}
-      <Person x={cx[4] - 20} y={14} k={0.82} hair="bob" />
+      <Person x={cx[4] - 20} y={14} k={0.82} variant={8} />
       <ShieldCheck x={cx[4] + 10} y={32} size={44} weight="fill" color={SIGNAL} />
 
       {/* Shared plinth rail & numerals */}
@@ -1435,8 +1435,8 @@ export function CloudComputingHub() {
       title="A central framed screen labeled Central data center holds a cloud, storage database, and processor; arrows connect it to remote people on the left and a remote business shop on the right"
     >
       {/* Left: Remote users */}
-      <Person x={72} y={48} k={1.05} hair="crop" />
-      <Person x={136} y={38} k={1.15} hair="bob" gap />
+      <Person x={72} y={48} k={1.05} variant={7} />
+      <Person x={136} y={38} k={1.15} variant={3} gap />
       <Pointer x1={276} y1={84} x2={196} y2={84} w={4} color={SIGNAL} head={13} />
       <Pointer x1={196} y1={108} x2={276} y2={108} w={3.5} head={12} />
 

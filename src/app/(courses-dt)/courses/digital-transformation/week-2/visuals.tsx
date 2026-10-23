@@ -220,7 +220,7 @@ export function UnstructuredHeap() {
 export function Volume() {
   return (
     <Plate h={230} title="A person stands beside a stack of database discs nearly twice their height">
-      <Person x={132} y={118} k={1} hair="crop" />
+      <Person x={132} y={118} k={1} variant={8} />
       <Database cx={268} bottom={218} w={124} n={9} disc={19} />
     </Plate>
   );
@@ -594,8 +594,8 @@ export function PeopleAndTechnology() {
       title="Two people (the social system) and a screen with a gear (the technical system), with arrows running both ways between them, all held inside one red frame"
     >
       <rect x={10} y={10} width={380} height={222} fill="none" stroke={SIGNAL} strokeWidth={5} />
-      <Person x={58} y={64} k={0.92} hair="bob" />
-      <Person x={142} y={64} k={0.92} hair="bun" />
+      <Person x={58} y={64} k={0.92} variant={4} />
+      <Person x={142} y={64} k={0.92} variant={9} />
       <Monitor x={244} y={54} w={112} h={84}>
         <Gear x={275} y={71} size={50} weight="fill" color={INK} />
       </Monitor>
@@ -618,7 +618,7 @@ export function SocialNetwork() {
     x: r2(200 + 142 * Math.cos((a * Math.PI) / 180)),
     y: r2(124 + 96 * Math.sin((a * Math.PI) / 180)),
   }));
-  const hair = ["bob", "crop", "crop", "bob", "bun"] as const;
+  const ringVariants = [0, 3, 5, 6, 7] as const;
   // a line between two people, stopped short of each so it never touches them
   const link = (a: { x: number; y: number }, b: { x: number; y: number }, key: string) => {
     const d = Math.hypot(b.x - a.x, b.y - a.y);
@@ -640,9 +640,9 @@ export function SocialNetwork() {
       {ring.map((p, i) => link(p, ring[(i + 1) % 5], `r${i}`))}
       {ring.map((p, i) => link(centre, p, `s${i}`))}
       {ring.map((p, i) => (
-        <Person key={i} x={p.x} y={r2(p.y - 50 * k)} k={k} hair={hair[i]} flip={p.x > 200} />
+        <Person key={i} x={p.x} y={r2(p.y - 50 * k)} k={k} variant={ringVariants[i]} flip={p.x > 200} />
       ))}
-      <Person x={centre.x} y={r2(centre.y - 50 * k)} k={k} hair="bun" />
+      <Person x={centre.x} y={r2(centre.y - 50 * k)} k={k} variant={2} />
     </Plate>
   );
 }

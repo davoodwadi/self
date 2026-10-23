@@ -77,9 +77,9 @@ export function HeroBlockchainLedger() {
       title="Two people in profile exchange a transaction document on the left; a red arrow points into a framed screen holding three chained blocks (Block 1, Block 2, and a red verified Block 3)"
     >
       {/* Two transacting parties and their transaction record on the left */}
-      <Person x={52} y={16} k={0.72} hair="bob" />
+      <Person x={52} y={16} k={0.72} variant={3} />
       <Doc x={32} y={110} k={0.46} />
-      <Person x={52} y={188} k={0.72} hair="crop" flip />
+      <Person x={52} y={188} k={0.72} variant={6} flip />
 
       <Arrow x1={98} x2={154} y={148} color={SIGNAL} />
 
@@ -175,11 +175,11 @@ export function BlockchainPillarsInteractive({
       </text>
 
       {/* Panel 2: Transparency — two participants viewing the same shared screen */}
-      <Person x={308} y={56} k={0.72} hair="bob" />
+      <Person x={308} y={56} k={0.72} variant={2} />
       <MiniScreen x={358} y={44}>
         <Eye x={383} y={55} size={34} weight="fill" color={t1} />
       </MiniScreen>
-      <Person x={492} y={56} k={0.72} hair="crop" flip />
+      <Person x={492} y={56} k={0.72} variant={8} flip />
       <text x={400} y={178} textAnchor="middle" {...BODY} fontSize={14.5} fill={t1}>
         Records transparently
       </text>
@@ -187,9 +187,9 @@ export function BlockchainPillarsInteractive({
       {/* Panel 3: Efficiency — direct peer-to-peer transfer bypassing intermediary */}
       <Bank x={642} y={24} size={36} weight="fill" color={COUNTER} />
       <path d="M 636 22 L 684 62" stroke={SIGNAL} strokeWidth={4} />
-      <Person x={574} y={62} k={0.72} hair="bun" />
+      <Person x={574} y={62} k={0.72} variant={4} />
       <Pointer x1={612} y1={104} x2={708} y2={104} w={4} head={12} color={t2} />
-      <Person x={746} y={62} k={0.72} hair="crop" flip />
+      <Person x={746} y={62} k={0.72} variant={9} flip />
       <text x={660} y={178} textAnchor="middle" {...BODY} fontSize={14.5} fill={t2}>
         Difficult to alter · No middleman
       </text>
@@ -873,7 +873,7 @@ export function AmazonSupplyChainInteractive({
       title={`Five selectable stages of Amazon's supply chain smart contract process: 1. Order Placement (buyer triggers smart contract), 2. Shipment Tracking (IoT sensors monitor truck and update blockchain), 3. Delivery Confirmation (smart contract releases payment to supplier), 4. Documentation (immutable ledger record), and 5. Post-purchase Services (support and returns); ${cur.tab} is selected in red`}
     >
       {/* 1. Order Placement */}
-      <Person x={88} y={20} k={0.62} hair="bob" />
+      <Person x={88} y={20} k={0.62} variant={7} />
       <MiniScreen x={46} y={102}>
         <FileCode x={73} y={115} size={30} weight="fill" color={toneOf(0)} />
       </MiniScreen>
@@ -1066,8 +1066,8 @@ export function NftOverviewInteractive({
             <Pointer x1={116} y1={r.y0 + 46} x2={150} y2={r.y0 + 46} w={3.5} head={9} color={tone} />
 
             {/* Middle: Physical/human counterpart */}
-            {i === 0 && <Person x={182} y={r.y0 + 16} k={0.62} hair="bob" />}
-            {i === 1 && <Person x={182} y={r.y0 + 16} k={0.62} hair="crop" />}
+            {i === 0 && <Person x={182} y={r.y0 + 16} k={0.62} variant={9} />}
+            {i === 1 && <Person x={182} y={r.y0 + 16} k={0.62} variant={10} />}
             {i === 2 && <House x={163} y={r.y0 + 27} size={38} weight="fill" color={tone} />}
 
             {/* Right: Label badge */}
@@ -1128,11 +1128,11 @@ export function RealEstateComparisonPlate({
         Traditional
       </text>
       {active === 0 && <Doc x={166} y={58} k={0.52} tone={COUNTER} />}
-      {active === 1 && <Person x={190} y={56} k={0.64} hair="crop" />}
+      {active === 1 && <Person x={190} y={56} k={0.64} variant={3} />}
       {active === 2 && (
         <>
-          <Person x={172} y={58} k={0.58} hair="bob" />
-          <Person x={212} y={58} k={0.58} hair="crop" gap />
+          <Person x={172} y={58} k={0.58} variant={2} />
+          <Person x={212} y={58} k={0.58} variant={5} gap />
         </>
       )}
       {active === 3 && <Clock x={168} y={66} size={46} weight="fill" color={COUNTER} />}
@@ -1243,7 +1243,7 @@ export function FinancialServicesInteractive({
       {/* 1. Issues of Traditional Systems (COUNTER blue contrast) */}
       <Doc x={42} y={42} k={0.5} tone={tone0} />
       <Clock x={108} y={52} size={38} weight="fill" color={tone0} />
-      <Person x={200} y={38} k={0.72} hair="crop" flip />
+      <Person x={200} y={38} k={0.72} variant={5} flip />
       <text x={140} y={176} textAnchor="middle" {...BODY} fontSize={14.5} fill={tone0}>
         {FIN_ZONES[0].sub}
       </text>
@@ -1262,7 +1262,7 @@ export function FinancialServicesInteractive({
       </text>
 
       {/* 3. Enhance Transparency */}
-      <Person x={572} y={44} k={0.68} hair="bob" />
+      <Person x={572} y={44} k={0.68} variant={6} />
       <MiniScreen x={618} y={42}>
         <Eye x={645} y={55} size={30} weight="fill" color={tone2} />
       </MiniScreen>
@@ -1377,7 +1377,7 @@ export function BankLoanSimulatorInteractive() {
       </text>
 
       {/* Step 1: Customer submits loan application */}
-      <Person x={48} y={56} k={0.64} hair="bob" />
+      <Person x={48} y={56} k={0.64} variant={4} />
       <Doc x={30} y={132} k={0.38} />
       <text x={48} y={212} textAnchor="middle" {...BODY} fontSize={12.5} fill={INK}>
         1. Apply
@@ -1647,7 +1647,7 @@ export function VotingSystemsInteractive({
       </MiniScreen>
 
       {/* 4. Transparent Validation */}
-      <Person x={556} y={14} k={0.54} hair="bob" />
+      <Person x={556} y={14} k={0.54} variant={8} />
       <MiniScreen x={514} y={76}>
         <Eye x={541} y={89} size={30} weight="fill" color={toneOf(3)} />
       </MiniScreen>
@@ -1786,7 +1786,7 @@ export function IpManagementInteractive({
       </MiniScreen>
 
       {/* 3. Immutable Records: Who Created It First */}
-      <Person x={438} y={24} k={0.62} hair="bob" />
+      <Person x={438} y={24} k={0.62} variant={2} />
       <MiniScreen x={492} y={34}>
         <LockKey x={519} y={47} size={30} weight="fill" color={toneOf(2)} />
       </MiniScreen>
@@ -1939,7 +1939,7 @@ export function OtherUseCasesInteractive({
       </text>
 
       {/* 3. Education */}
-      <Person x={578} y={32} k={0.68} hair="bob" />
+      <Person x={578} y={32} k={0.68} variant={7} />
       <Pointer x1={614} y1={64} x2={646} y2={64} w={3.5} head={8} color={toneOf(2)} />
       <MiniScreen x={650} y={36}>
         <GraduationCap x={664} y={50} size={26} weight="fill" color={toneOf(2)} />

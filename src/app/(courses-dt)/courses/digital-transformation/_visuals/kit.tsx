@@ -15,7 +15,7 @@ import type { CourseExercise } from "@/lib/course-exercise";
 
 export { DeckNav } from "./deck-nav";
 
-export const CREAM = "#EFEBE3";
+export const CREAM = "#f2f0eb";
 export const INK = "#1D1B1A";
 export const SKIN = "#DCCFB8";
 export const SIGNAL = "#A63A2C";
@@ -52,7 +52,15 @@ export function Plate({
 }
 
 /* A physical shape: solid ink, holes left as cream gaps. */
-export function Solid({ outer, holes = "", tone = INK }: { outer: string; holes?: string; tone?: string }) {
+export function Solid({
+  outer,
+  holes = "",
+  tone = INK,
+}: {
+  outer: string;
+  holes?: string;
+  tone?: string;
+}) {
   return <path d={`${outer} ${holes}`} fill={tone} fillRule="evenodd" />;
 }
 
@@ -74,7 +82,15 @@ export function Monitor({
   const cx = r2(x + w / 2);
   return (
     <g>
-      <rect x={x} y={y} width={w} height={h} fill="none" stroke={INK} strokeWidth={8} />
+      <rect
+        x={x}
+        y={y}
+        width={w}
+        height={h}
+        fill="none"
+        stroke={INK}
+        strokeWidth={8}
+      />
       <rect
         x={x + 9}
         y={y + 9}
@@ -84,8 +100,14 @@ export function Monitor({
         stroke={INK}
         strokeWidth={1.5}
       />
-      <path d={`M ${cx - 10} ${y + h + 4} H ${cx + 10} V ${y + h + 22} H ${cx - 10} Z`} fill={INK} />
-      <path d={`M ${cx - 40} ${y + h + 22} H ${cx + 40} V ${y + h + 30} H ${cx - 40} Z`} fill={INK} />
+      <path
+        d={`M ${cx - 10} ${y + h + 4} H ${cx + 10} V ${y + h + 22} H ${cx - 10} Z`}
+        fill={INK}
+      />
+      <path
+        d={`M ${cx - 40} ${y + h + 22} H ${cx + 40} V ${y + h + 30} H ${cx - 40} Z`}
+        fill={INK}
+      />
       {children}
     </g>
   );
@@ -93,11 +115,24 @@ export function Monitor({
 
 /* -- cast: Arrow ---------------------------------------------------------- */
 
-export function Arrow({ x1, x2, y, color = INK }: { x1: number; x2: number; y: number; color?: string }) {
+export function Arrow({
+  x1,
+  x2,
+  y,
+  color = INK,
+}: {
+  x1: number;
+  x2: number;
+  y: number;
+  color?: string;
+}) {
   return (
     <g>
       <path d={`M ${x1} ${y} H ${x2 - 14}`} stroke={color} strokeWidth={6} />
-      <path d={`M ${x2 - 18} ${y - 12} L ${x2} ${y} L ${x2 - 18} ${y + 12} Z`} fill={color} />
+      <path
+        d={`M ${x2 - 18} ${y - 12} L ${x2} ${y} L ${x2 - 18} ${y + 12} Z`}
+        fill={color}
+      />
     </g>
   );
 }
@@ -130,7 +165,11 @@ export function Pointer({
   const by = y2 - uy * hl;
   return (
     <g>
-      <path d={`M ${x1} ${y1} L ${r2(bx + ux * 2)} ${r2(by + uy * 2)}`} stroke={color} strokeWidth={w} />
+      <path
+        d={`M ${x1} ${y1} L ${r2(bx + ux * 2)} ${r2(by + uy * 2)}`}
+        stroke={color}
+        strokeWidth={w}
+      />
       <path
         d={`M ${x2} ${y2} L ${r2(bx - uy * hw)} ${r2(by + ux * hw)} L ${r2(bx + uy * hw)} ${r2(by - ux * hw)} Z`}
         fill={color}
@@ -141,16 +180,46 @@ export function Pointer({
 
 /* -- MiniScreen: a small screen (heavy frame, thin inner rule, short stand) holding one glyph -- */
 
-export function MiniScreen({ x, y, children }: { x: number; y: number; children: React.ReactNode }) {
+export function MiniScreen({
+  x,
+  y,
+  children,
+}: {
+  x: number;
+  y: number;
+  children: React.ReactNode;
+}) {
   const w = 84;
   const h = 56;
   const cx = x + w / 2;
   return (
     <g>
-      <rect x={x} y={y} width={w} height={h} fill="none" stroke={INK} strokeWidth={5} />
-      <rect x={x + 6} y={y + 6} width={w - 12} height={h - 12} fill="none" stroke={INK} strokeWidth={1} />
-      <path d={`M ${cx - 5} ${y + h + 2.5} H ${cx + 5} V ${y + h + 10} H ${cx - 5} Z`} fill={INK} />
-      <path d={`M ${cx - 20} ${y + h + 10} H ${cx + 20} V ${y + h + 14} H ${cx - 20} Z`} fill={INK} />
+      <rect
+        x={x}
+        y={y}
+        width={w}
+        height={h}
+        fill="none"
+        stroke={INK}
+        strokeWidth={5}
+      />
+      <rect
+        x={x + 6}
+        y={y + 6}
+        width={w - 12}
+        height={h - 12}
+        fill="none"
+        stroke={INK}
+        strokeWidth={1}
+      />
+      <path
+        d={`M ${cx - 5} ${y + h + 2.5} H ${cx + 5} V ${y + h + 10} H ${cx - 5} Z`}
+        fill={INK}
+      />
+      <path
+        d={`M ${cx - 20} ${y + h + 10} H ${cx + 20} V ${y + h + 14} H ${cx - 20} Z`}
+        fill={INK}
+      />
       {children}
     </g>
   );
@@ -219,7 +288,11 @@ export function Knob({
       aria-valuenow={value}
       aria-orientation={axis === "x" ? "horizontal" : "vertical"}
       className="outline-none"
-      style={{ cursor: axis === "x" ? "ew-resize" : "ns-resize", touchAction: "none", userSelect: "none" }}
+      style={{
+        cursor: axis === "x" ? "ew-resize" : "ns-resize",
+        touchAction: "none",
+        userSelect: "none",
+      }}
       onPointerDown={(e) => {
         e.preventDefault();
         e.currentTarget.setPointerCapture(e.pointerId);
@@ -230,14 +303,25 @@ export function Knob({
       }}
       onKeyDown={(e) => {
         const d =
-          e.key === "ArrowRight" || e.key === "ArrowUp" ? step : e.key === "ArrowLeft" || e.key === "ArrowDown" ? -step : 0;
+          e.key === "ArrowRight" || e.key === "ArrowUp"
+            ? step
+            : e.key === "ArrowLeft" || e.key === "ArrowDown"
+              ? -step
+              : 0;
         if (!d) return;
         e.preventDefault();
         onChange(clamp(value + d));
       }}
     >
       <circle cx={kx} cy={ky} r={20} fill="transparent" />
-      <circle cx={kx} cy={ky} r={11} fill={CREAM} stroke={tone} strokeWidth={3.5} />
+      <circle
+        cx={kx}
+        cy={ky}
+        r={11}
+        fill={CREAM}
+        stroke={tone}
+        strokeWidth={3.5}
+      />
       <path d={arrows[0]} fill={tone} />
       <path d={arrows[1]} fill={tone} />
     </g>
@@ -292,14 +376,23 @@ export function Diamond({ className = "" }: { className?: string }) {
   );
 }
 
-export function Kicker({ children, light }: { children: React.ReactNode; light?: boolean }) {
+export function Kicker({
+  children,
+  light,
+}: {
+  children: React.ReactNode;
+  light?: boolean;
+}) {
   return (
     <p
       className={`flex items-start gap-3 font-accent font-bold uppercase tracking-[0.25em] text-[0.7rem] ${
         light ? "text-[var(--dt-cream)]" : "text-[var(--dt-signal)]"
       }`}
     >
-      <span aria-hidden className="inline-block w-2 h-2 mt-[0.2em] rotate-45 shrink-0 bg-[var(--dt-signal)]" />
+      <span
+        aria-hidden
+        className="inline-block w-2 h-2 mt-[0.2em] rotate-45 shrink-0 bg-[var(--dt-signal)]"
+      />
       {children}
     </p>
   );
@@ -317,17 +410,22 @@ export function Frame({
   inner?: string;
 }) {
   return (
-    <div className={`relative border-[5px] border-[var(--dt-ink)] p-[6px] ${className}`}>
+    <div
+      className={`relative border-[5px] border-[var(--dt-ink)] p-[6px] ${className}`}
+    >
       <div className={`border border-[var(--dt-ink)] ${inner}`}>{children}</div>
-      {["-top-[7px] -left-[7px]", "-top-[7px] -right-[7px]", "-bottom-[7px] -left-[7px]", "-bottom-[7px] -right-[7px]"].map(
-        (pos) => (
-          <span
-            key={pos}
-            aria-hidden
-            className={`absolute ${pos} w-[9px] h-[9px] rotate-45 bg-[var(--dt-cream)] border-2 border-[var(--dt-ink)]`}
-          />
-        ),
-      )}
+      {[
+        "-top-[7px] -left-[7px]",
+        "-top-[7px] -right-[7px]",
+        "-bottom-[7px] -left-[7px]",
+        "-bottom-[7px] -right-[7px]",
+      ].map((pos) => (
+        <span
+          key={pos}
+          aria-hidden
+          className={`absolute ${pos} w-[9px] h-[9px] rotate-45 bg-[var(--dt-cream)] border-2 border-[var(--dt-ink)]`}
+        />
+      ))}
     </div>
   );
 }
@@ -363,7 +461,11 @@ export function PosterHero({
   agenda?: string[];
 }) {
   return (
-    <section data-slide id="hero" className="min-h-svh flex items-center px-4 sm:px-8 md:px-16 py-10">
+    <section
+      data-slide
+      id="hero"
+      className="min-h-svh flex items-center px-4 sm:px-8 md:px-16 py-10"
+    >
       <Frame className="w-full max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center p-6 sm:p-10 md:p-12">
           <div>
@@ -372,24 +474,42 @@ export function PosterHero({
               {title}
             </h1>
             <div className="h-[5px] w-24 bg-[var(--dt-signal)] mb-6" />
-            {subtitle && <p className="font-body text-lg md:text-xl leading-relaxed max-w-xl">{subtitle}</p>}
+            {subtitle && (
+              <p className="font-body text-lg md:text-xl leading-relaxed max-w-xl">
+                {subtitle}
+              </p>
+            )}
             {agenda && (
               <div className="mt-6 max-w-xl">
-                <p className="font-accent font-bold uppercase tracking-[0.25em] text-[0.7rem]">Agenda</p>
+                <p className="font-accent font-bold uppercase tracking-[0.25em] text-[0.7rem]">
+                  Agenda
+                </p>
                 {/* a long agenda runs down two columns, so the hero stays one screen */}
                 <ol
                   className={`mt-3 ${agenda.length > 4 ? "sm:grid sm:grid-flow-col sm:gap-x-8" : ""}`}
-                  style={agenda.length > 4 ? { gridTemplateRows: `repeat(${Math.ceil(agenda.length / 2)}, auto)` } : undefined}
+                  style={
+                    agenda.length > 4
+                      ? {
+                          gridTemplateRows: `repeat(${Math.ceil(agenda.length / 2)}, auto)`,
+                        }
+                      : undefined
+                  }
                 >
                   {agenda.map((item, i) => (
                     <li
                       key={item}
                       className={`flex items-baseline gap-4 py-2 border-t-[3px] border-[var(--dt-ink)] first:border-t-0 ${
-                        agenda.length > 4 && i === Math.ceil(agenda.length / 2) ? "sm:border-t-0" : ""
+                        agenda.length > 4 && i === Math.ceil(agenda.length / 2)
+                          ? "sm:border-t-0"
+                          : ""
                       }`}
                     >
-                      <span className="font-heading font-bold text-lg w-5 shrink-0">{i + 1}</span>
-                      <span className="font-heading font-bold text-lg leading-snug">{item}</span>
+                      <span className="font-heading font-bold text-lg w-5 shrink-0">
+                        {i + 1}
+                      </span>
+                      <span className="font-heading font-bold text-lg leading-snug">
+                        {item}
+                      </span>
                     </li>
                   ))}
                 </ol>
@@ -432,7 +552,8 @@ export function ChapterBand({
   description?: string;
 }) {
   return (
-    <section data-slide
+    <section
+      data-slide
       id={id}
       className="bg-[var(--dt-ink)] text-[var(--dt-cream)] px-4 sm:px-8 md:px-16 py-28 md:py-36 min-h-svh flex items-center"
     >
@@ -446,9 +567,13 @@ export function ChapterBand({
         <div>
           <Kicker light>CHAPTER {number}</Kicker>
           <div className="h-px w-full bg-[var(--dt-cream)] opacity-40 my-6" />
-          <h2 className="font-heading font-bold text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] mb-6">{title}</h2>
+          <h2 className="font-heading font-bold text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] mb-6">
+            {title}
+          </h2>
           {description && (
-            <p className="font-body text-lg md:text-xl leading-relaxed max-w-2xl opacity-90">{description}</p>
+            <p className="font-body text-lg md:text-xl leading-relaxed max-w-2xl opacity-90">
+              {description}
+            </p>
           )}
         </div>
       </div>
@@ -477,37 +602,40 @@ export function Slide({
 }) {
   return (
     <>
-    <section data-slide
-      id={id}
-      className="min-h-svh flex flex-col justify-center px-4 sm:px-8 md:px-16 py-10 md:py-12"
-    >
-      <div className="max-w-6xl w-full mx-auto">
-        {(label || title) && (
-          <header className="mb-6 md:mb-8">
-            {label && <Kicker>{label}</Kicker>}
-            {title && (
-              <h3 className="font-heading font-bold text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] mt-3">{title}</h3>
-            )}
-            <div className="h-[4px] w-full bg-[var(--dt-ink)] mt-5" />
-            <div className="h-px w-full bg-[var(--dt-ink)] mt-[4px]" />
-          </header>
-        )}
-        <div className="flex flex-col gap-6 md:gap-8">{children}</div>
-      </div>
-    </section>
-    {/* The exercise follows its slide on a screen of its own, from a fixed top
-        so the prompt stays put while cards move and feedback opens below. */}
-    {exercise && (
       <section
         data-slide
-        aria-label="Exercise"
-        className="min-h-svh flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-[14svh] pb-16 bg-[var(--paper-2)]"
+        id={id}
+        className="min-h-svh flex flex-col justify-center px-4 sm:px-8 md:px-16 py-10 md:py-12"
       >
         <div className="max-w-6xl w-full mx-auto">
-          <Exercise data={exercise} art={exerciseArt} />
+          {(label || title) && (
+            <header className="mb-6 md:mb-8">
+              {label && <Kicker>{label}</Kicker>}
+              {title && (
+                <h3 className="font-heading font-bold text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08] mt-3">
+                  {title}
+                </h3>
+              )}
+              <div className="h-[4px] w-full bg-[var(--dt-ink)] mt-5" />
+              <div className="h-px w-full bg-[var(--dt-ink)] mt-[4px]" />
+            </header>
+          )}
+          <div className="flex flex-col gap-6 md:gap-8">{children}</div>
         </div>
       </section>
-    )}
+      {/* The exercise follows its slide on a screen of its own, from a fixed top
+        so the prompt stays put while cards move and feedback opens below. */}
+      {exercise && (
+        <section
+          data-slide
+          aria-label="Exercise"
+          className="min-h-svh flex flex-col justify-start px-4 sm:px-8 md:px-16 pt-[14svh] pb-16 bg-[var(--paper-2)]"
+        >
+          <div className="max-w-6xl w-full mx-auto">
+            <Exercise data={exercise} art={exerciseArt} />
+          </div>
+        </section>
+      )}
     </>
   );
 }
@@ -522,7 +650,11 @@ export function Row({
   cols?: string;
   className?: string;
 }) {
-  return <div className={`grid gap-6 md:gap-8 items-center ${cols} ${className}`}>{children}</div>;
+  return (
+    <div className={`grid gap-6 md:gap-8 items-center ${cols} ${className}`}>
+      {children}
+    </div>
+  );
 }
 
 /* -- class discussion ----------------------------------------------------- */
@@ -537,9 +669,14 @@ export function DiscussionSlide({
   plate: React.ReactNode;
 }) {
   return (
-    <section data-slide className="px-4 sm:px-8 md:px-16 py-24 md:py-32 min-h-svh flex items-center">
+    <section
+      data-slide
+      className="px-4 sm:px-8 md:px-16 py-24 md:py-32 min-h-svh flex items-center"
+    >
       <div className="max-w-4xl mx-auto text-center">
-        <p className="font-heading font-bold text-[clamp(1.7rem,3.6vw,2.9rem)] leading-[1.25]">{quote}</p>
+        <p className="font-heading font-bold text-[clamp(1.7rem,3.6vw,2.9rem)] leading-[1.25]">
+          {quote}
+        </p>
         <div className="flex items-center justify-center gap-4 mt-10">
           <span className="h-[3px] w-12 bg-[var(--dt-ink)]" />
           <Kicker>{author}</Kicker>
@@ -565,12 +702,22 @@ export function Summary({
   takeaways: string[];
 }) {
   return (
-    <section data-slide id={id} className="min-h-svh flex flex-col justify-center px-4 sm:px-8 md:px-16 py-12 md:py-14">
+    <section
+      data-slide
+      id={id}
+      className="min-h-svh flex flex-col justify-center px-4 sm:px-8 md:px-16 py-12 md:py-14"
+    >
       <Frame className="w-full max-w-5xl mx-auto">
         <div className="p-6 sm:p-8 md:p-10">
           <Kicker>CONCLUSION</Kicker>
-          <h2 className="font-heading font-bold text-[clamp(2.2rem,4.5vw,3.4rem)] leading-none mt-4 mb-6">{title}</h2>
-          {summary && <p className="font-body text-lg leading-[1.7] max-w-3xl">{summary}</p>}
+          <h2 className="font-heading font-bold text-[clamp(2.2rem,4.5vw,3.4rem)] leading-none mt-4 mb-6">
+            {title}
+          </h2>
+          {summary && (
+            <p className="font-body text-lg leading-[1.7] max-w-3xl">
+              {summary}
+            </p>
+          )}
           <div className="mt-8 bg-[var(--dt-ink)] text-[var(--dt-cream)] p-6 sm:p-7 md:p-8">
             <h4 className="font-accent font-bold uppercase tracking-[0.25em] text-[0.7rem] text-[var(--dt-cream)]">
               KEY TAKEAWAYS
@@ -607,15 +754,26 @@ export function DiscussionList({
   plate: React.ReactNode;
 }) {
   return (
-    <section data-slide id={id} className="min-h-svh flex items-center px-4 sm:px-8 md:px-16 py-12">
+    <section
+      data-slide
+      id={id}
+      className="min-h-svh flex items-center px-4 sm:px-8 md:px-16 py-12"
+    >
       <div className="max-w-6xl w-full mx-auto grid lg:grid-cols-[1.5fr_1fr] gap-10 lg:gap-16 items-center">
         <div>
           <Kicker>CLASS DISCUSSION</Kicker>
           <ol className="mt-6">
             {questions.map((q, i) => (
-              <li key={q} className="flex items-start gap-5 py-5 border-t-[3px] border-[var(--dt-ink)] first:border-t-0">
-                <span className="font-heading font-bold text-4xl leading-none w-8 shrink-0">{i + 1}</span>
-                <span className="font-heading font-bold text-[clamp(1.3rem,2.3vw,1.9rem)] leading-[1.25]">{q}</span>
+              <li
+                key={q}
+                className="flex items-start gap-5 py-5 border-t-[3px] border-[var(--dt-ink)] first:border-t-0"
+              >
+                <span className="font-heading font-bold text-4xl leading-none w-8 shrink-0">
+                  {i + 1}
+                </span>
+                <span className="font-heading font-bold text-[clamp(1.3rem,2.3vw,1.9rem)] leading-[1.25]">
+                  {q}
+                </span>
               </li>
             ))}
           </ol>
@@ -628,7 +786,13 @@ export function DiscussionList({
 
 /* -- a defined term: bold ink name, then its sentence --------------------- */
 
-export function Term({ name, children }: { name: string; children: React.ReactNode }) {
+export function Term({
+  name,
+  children,
+}: {
+  name: string;
+  children: React.ReactNode;
+}) {
   return (
     <p>
       <strong className="font-heading font-bold">{name}</strong>: {children}

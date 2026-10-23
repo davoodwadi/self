@@ -143,7 +143,7 @@ export default function DigitalTransformationWeek2() {
           "How to distinguish between Structured and Unstructured Data?",
           "Why did companies focus more on Structured data vs. Unstructured data?",
         ]}
-        plate={<Conversation />}
+        plate={<Conversation left={4} right={5} />}
       />
 
       {/* ================================================================

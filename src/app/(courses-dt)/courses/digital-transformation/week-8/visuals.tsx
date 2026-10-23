@@ -76,7 +76,7 @@ export function HeroImmersivePlate() {
       title="A person in profile and an airplane silhouette on cream, an arrow, and a framed screen holding the same airplane alongside three rising gamification steps topped with a red trophy"
     >
       {/* Physical side: person and aircraft silhouette on cream */}
-      <Person x={76} y={28} k={0.96} hair="bob" />
+      <Person x={76} y={28} k={0.96} variant={10} />
       <AirplaneTilt x={38} y={144} size={76} weight="fill" color={INK} />
 
       <Arrow x1={144} x2={208} y={128} />
@@ -125,10 +125,10 @@ export function PilotTrainingInteractive() {
         Driver&apos;s license
       </text>
       <CarProfile x={30} y={80} size={42} weight="fill" color={INK} />
-      <Person x={102} y={76} k={0.48} hair="crop" />
-      <Person x={140} y={76} k={0.48} hair="bob" />
-      <Person x={178} y={76} k={0.48} hair="bun" />
-      <Person x={216} y={76} k={0.48} hair="crop" />
+      <Person x={102} y={76} k={0.48} variant={0} />
+      <Person x={140} y={76} k={0.48} variant={3} />
+      <Person x={178} y={76} k={0.48} variant={6} />
+      <Person x={216} y={76} k={0.48} variant={8} />
 
       {/* Row 2: Pilot's license — aircraft + 1 pilot + 10,000 hours */}
       <rect x={20} y={150} width={240} height={96} fill={CREAM} stroke={INK} strokeWidth={3} />
@@ -136,7 +136,7 @@ export function PilotTrainingInteractive() {
         Pilot&apos;s license
       </text>
       <AirplaneTilt x={30} y={186} size={42} weight="fill" color={INK} />
-      <Person x={102} y={182} k={0.48} hair="bob" />
+      <Person x={102} y={182} k={0.48} variant={10} />
       <rect x={132} y={192} width={114} height={32} fill={SIGNAL} />
       <text x={189} y={213} textAnchor="middle" {...HEAD} fontSize={14.5} fill={CREAM}>
         10,000 hours
@@ -234,7 +234,7 @@ export function InteractingPlate() {
       h={184}
       title="A person in profile exchanging two-way arrows with a framed screen showing a hand manipulating a red virtual cube"
     >
-      <Person x={72} y={46} k={1.16} hair="bob" />
+      <Person x={72} y={46} k={1.16} variant={4} />
       <Pointer x1={134} y1={68} x2={194} y2={68} w={4} head={12} color={SIGNAL} />
       <Pointer x1={194} y1={96} x2={134} y2={96} w={4} head={12} color={INK} />
       <Monitor x={206} y={18} w={170} h={114}>
@@ -252,7 +252,7 @@ export function BlendingPlate() {
       h={184}
       title="A person looking through a framed screen holding a red virtual cube, blended onto a physical shop in the real world"
     >
-      <Person x={56} y={46} k={1.16} hair="crop" />
+      <Person x={56} y={46} k={1.16} variant={8} />
       <MiniScreen x={132} y={76}>
         <Cube x={156} y={86} size={36} weight="fill" color={SIGNAL} />
       </MiniScreen>
@@ -277,7 +277,7 @@ export function VirtualRealityPlate() {
       h={180}
       title="A person wearing a red VR headset visor immersed in a framed computer-generated screen with visual (eye), auditory (speaker), and haptic (hand) stimuli"
     >
-      <Person x={68} y={52} k={1.1} hair="bob" />
+      <Person x={68} y={52} k={1.1} hair="bob" collar="turtleneck" />
       {/* VR headset strap & visor aligned to the eye */}
       <rect x={44} y={78} width={32} height={5} fill={SIGNAL} />
       <rect x={74} y={73} width={25} height={15} rx={3} fill={SIGNAL} stroke={CREAM} strokeWidth={1.5} />
@@ -300,7 +300,7 @@ export function AugmentedRealityPlate() {
       h={180}
       title="A person viewing a red digital cube on a framed screen that overlays onto a physical shop in the real world"
     >
-      <Person x={56} y={52} k={1.1} hair="crop" />
+      <Person x={56} y={52} k={1.1} variant={6} />
       <MiniScreen x={132} y={76}>
         <Cube x={156} y={86} size={36} weight="fill" color={SIGNAL} />
       </MiniScreen>
@@ -330,14 +330,14 @@ export function SwipeVsSweepPlate() {
       <text x={84} y={36} textAnchor="middle" {...HEAD} fontSize={20} fill={INK}>
         Sweep
       </text>
-      <Person x={52} y={90} k={1} hair="bob" />
+      <Person x={52} y={90} k={1} variant={7} />
       <Broom x={100} y={108} size={54} weight="fill" color={INK} />
 
       {/* Right: Swipe the phone (play, achievement, social interaction on a screen) */}
       <text x={284} y={36} textAnchor="middle" {...HEAD} fontSize={20} fill={SIGNAL}>
         Swipe
       </text>
-      <Person x={214} y={90} k={1} hair="crop" />
+      <Person x={214} y={90} k={1} variant={1} />
       <Monitor x={264} y={56} w={120} h={104}>
         <GameController x={280} y={70} size={34} weight="fill" color={SIGNAL} />
         <Trophy x={332} y={70} size={34} weight="fill" color={SIGNAL} />
@@ -708,7 +708,7 @@ export function ExcessiveFreedomPlate() {
       h={224}
       title="A player facing a framed open-world screen where a central compass sends four arrows outward into empty space with no destination or objective"
     >
-      <Person x={64} y={92} k={1.12} hair="bob" />
+      <Person x={64} y={92} k={1.12} variant={9} />
       <Monitor x={148} y={24} w={228} h={150}>
         <Compass x={240} y={77} size={44} weight="fill" color={SIGNAL} />
         {/* Four diverging paths into empty space with no goal target */}
@@ -1016,7 +1016,7 @@ export function ZombiesRunPlate() {
       title="Four connected stages of the Zombies, Run! gamified loop: 1. Walk or run (a runner in profile), 2. Hear your mission (headphones and music on a framed screen), 3. Collect supplies (a supply package and base building on a framed screen), and 4. Zombie chases! highlighted in red (alert lightning and sprint flag on a framed screen)"
     >
       {/* 1. Walk or run in the real world */}
-      <Person x={106} y={36} k={0.94} hair="bob" />
+      <Person x={106} y={36} k={0.94} variant={7} />
       <Pointer x1={156} y1={88} x2={248} y2={88} w={4} head={12} color={INK} />
 
       {/* 2. Hear your mission and music */}
@@ -1148,7 +1148,7 @@ function BizGlyph({ i, wx, wy }: { i: number; wx: number; wy: number }) {
     case 0:
       return (
         <g>
-          <Person x={wx + 17} y={wy + 10} k={0.44} hair="bob" />
+          <Person x={wx + 17} y={wy + 10} k={0.44} variant={6} />
           <Heart x={wx + 37} y={wy + 14} size={21} weight="fill" color={INK} />
         </g>
       );

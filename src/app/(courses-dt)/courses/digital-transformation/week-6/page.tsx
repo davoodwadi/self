@@ -137,7 +137,7 @@ export default function DigitalTransformationWeek6() {
           "Have you interacted with AI today without realizing it? Let’s brainstorm hidden AI in daily life.",
           "How is a ‘smart’ app like ChatGPT different from a basic calculator? What makes it ‘AI’?",
         ]}
-        plate={<Conversation />}
+        plate={<Conversation left={2} right={5} />}
       />
 
       <DiscussionList
@@ -147,7 +147,7 @@ export default function DigitalTransformationWeek6() {
           "What kind of topics do you post on your social media?",
           "If you trained an AI using only your social media posts, what might it ‘learn’ about people?",
         ]}
-        plate={<Conversation />}
+        plate={<Conversation left={6} right={3} />}
       />
 
       <Slide id="artificial-intelligence" label="CORE CONCEPT" title="Artificial Intelligence">

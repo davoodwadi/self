@@ -145,7 +145,7 @@ export default function DigitalTransformationWeek7() {
           "What if you could eliminate the need for intermediaries in your business dealings? How would that change the way you operate?",
           "How can we ensure that all parties involved in a transaction agree on the details and that there's no dispute later on?",
         ]}
-        plate={<Conversation />}
+        plate={<Conversation left={0} right={3} />}
       />
 
       <Slide id="blockchain-and-why-it-matters" label="CORE CONCEPT" title="Blockchain & Why Does Blockchain Matter?">
@@ -490,7 +490,7 @@ export default function DigitalTransformationWeek7() {
           "What if somebody forged a deed? What resort do you have?",
           "What are some of the challenges when you wish to sell your house?",
         ]}
-        plate={<Conversation />}
+        plate={<Conversation left={2} right={5} />}
       />
 
       <Slide
@@ -590,7 +590,7 @@ export default function DigitalTransformationWeek7() {
           "Imagine you are planning on buying a home. To secure the funds, you explore different mortgage options. What challenges you might face when researching the best mortgage option?",
           "As a car owner, you have car insurance. If a collision occurs, what are the steps necessary to receive compensation? How can these steps be simplified using blockchain?",
         ]}
-        plate={<Conversation />}
+        plate={<Conversation left={4} right={8} />}
       />
 
       <Slide
@@ -695,7 +695,7 @@ export default function DigitalTransformationWeek7() {
           "When the web dev delivers your website, what potential issues can arise?",
           "How can you dispute and resolve those issues?",
         ]}
-        plate={<Conversation />}
+        plate={<Conversation left={6} right={1} />}
       />
 
       <Slide
@@ -776,7 +776,7 @@ export default function DigitalTransformationWeek7() {
           "How are these issues usually resolved?",
           "What steps can be taken to mitigate these issues?",
         ]}
-        plate={<Conversation />}
+        plate={<Conversation left={7} right={9} />}
       />
 
       <Slide
@@ -869,7 +869,7 @@ export default function DigitalTransformationWeek7() {
           "Imagine you invented a new machine. What are some of the barriers for registering a patent?",
           "When you upload original content on YouTube, how can you ensure nobody else would steal your content and reupload it?",
         ]}
-        plate={<Conversation />}
+        plate={<Conversation left={10} right={2} />}
       />
 
       <Slide

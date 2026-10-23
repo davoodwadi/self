@@ -607,7 +607,7 @@ export function FocusOnApp() {
     >
       <Server x={14} y={114} k={1} tone={COUNTER} />
       <Server x={84} y={132.5} k={0.72} tone={COUNTER} />
-      <Person x={196} y={40} k={1.4} hair="bun" />
+      <Person x={196} y={40} k={1.4} variant={8} />
       <Monitor x={268} y={22} w={118} h={92}>
         <Code x={327 - 30} y={68 - 30} size={60} weight="bold" color={SIGNAL} />
       </Monitor>
@@ -736,9 +736,9 @@ export function LateAlert() {
       title="A patient with a smartwatch on the left sends data on a long arrow up to the cloud on a screen; the alert travels back down to a doctor on the right, marked by a red hourglass for the delay"
     >
       <CloudScreen x={150} y={12} w={100} h={66} />
-      <Person x={58} y={150} k={1.05} hair="crop" />
+      <Person x={58} y={150} k={1.05} variant={4} />
       <Watch x={104} y={170} size={50} weight="fill" color={INK} />
-      <Person x={342} y={150} k={1.05} hair="bob" flip />
+      <Person x={342} y={150} k={1.05} variant={2} flip />
       <FirstAid x={342 - 13} y={222} size={26} weight="fill" color={CREAM} />
       <Pointer x1={132} y1={164} x2={174} y2={122} w={3.5} />
       <Pointer x1={226} y1={122} x2={300} y2={172} w={3.5} color={SIGNAL} />
@@ -910,7 +910,7 @@ export function StoreEdge() {
     { x: 56, y: 132, el: <Package x={56 - 24} y={132 - 24} size={48} weight="fill" color={INK} /> },
     { x: 66, y: 236, el: <Snowflake x={66 - 24} y={236 - 24} size={48} weight="fill" color={INK} /> },
     { x: 334, y: 236, el: <Lightbulb x={334 - 24} y={236 - 24} size={48} weight="fill" color={INK} /> },
-    { x: 344, y: 132, el: <Person x={344} y={100} k={0.62} hair="bun" /> },
+    { x: 344, y: 132, el: <Person x={344} y={100} k={0.62} variant={6} /> },
   ];
   return (
     <Plate

@@ -124,7 +124,7 @@ export default function DigitalTransformationWeek4() {
           "Think of a time you adopted a new app or tool (e.g., TikTok, Zoom, ChatGPT, a fitness tracker). What specific factors convinced you to use it? Was it because it solved a problem quickly, was easy to learn, or because peers recommended it? If you avoided a tool (e.g., Twitter/X, a new software update), what turned you off?",
           "Did you care more about how intuitive it was or how much value it added? For example, did you stick with Instagram Reels because it felt familiar, or switch to TikTok for better features?",
         ]}
-        plate={<Conversation />}
+        plate={<Conversation left={1} right={6} />}
       />
 
       <Slide id="technology-acceptance-model-tam" label="THEORETICAL FRAMEWORK" title="Technology Acceptance Model (TAM)">
@@ -842,7 +842,7 @@ export default function DigitalTransformationWeek4() {
             </div>
           </div>
           <PlateWell>
-            <Conversation />
+            <Conversation left={3} right={9} />
           </PlateWell>
         </Row>
       </Slide>
@@ -859,7 +859,7 @@ export default function DigitalTransformationWeek4() {
       <DiscussionSlide
         quote="Your company recently rolled out a new collaboration platform (e.g., Slack, Asana, or a mandatory AI tool). While TAM focuses on perceived usefulness and ease of use, what one factor outside of these two do you think most influenced adoption or resistance? For example, was it pressure from leadership, lack of training, or compatibility with existing workflows? Use a real-world case to argue why this factor mattered more than pure ‘usefulness’ or ‘ease of use’."
         author="Question"
-        plate={<Conversation />}
+        plate={<Conversation left={5} right={2} />}
       />
 
       <Slide

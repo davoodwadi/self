@@ -68,7 +68,7 @@ export function DataDecision() {
       h={212}
       title="A person looks at a screen showing four bars of data; the tallest bar, the one chosen, is red"
     >
-      <Person x={84} y={66} k={1.3} hair="crop" />
+      <Person x={84} y={66} k={1.3} variant={3} glasses="round" />
       <Monitor x={170} y={26} w={200} h={140}>
         {bars.map((hgt, i) => (
           <rect
@@ -107,15 +107,15 @@ function ComponentGlyph({ i, wx, wy }: { i: number; wx: number; wy: number }) {
     case 1:
       return (
         <g>
-          <Person x={wx + 20} y={wy + 8} k={0.46} hair="bob" />
-          <Person x={wx + 44} y={wy + 8} k={0.46} hair="crop" flip gap />
+          <Person x={wx + 19} y={wy + 12} k={0.42} variant={6} />
+          <Person x={wx + 43} y={wy + 12} k={0.42} variant={1} gap />
         </g>
       );
     case 2:
       return (
         <g>
-          <Person x={wx + 20} y={wy + 8} k={0.46} hair="bun" />
-          <Heart x={wx + 36} y={wy + 16} size={22} weight="fill" color={INK} />
+          <Person x={wx + 21} y={wy + 10} k={0.44} variant={0} />
+          <Heart x={wx + 38} y={wy + 18} size={21} weight="fill" color={INK} />
         </g>
       );
     case 3:

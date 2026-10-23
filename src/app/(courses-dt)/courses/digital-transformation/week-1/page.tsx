@@ -231,7 +231,7 @@ export default function DigitalTransformationWeek1() {
       <DiscussionSlide
         quote="Which company exemplifies Digital Transformation?"
         author="Discussion Question"
-        plate={<Conversation />}
+        plate={<Conversation left={0} right={1} />}
       />
 
       {/* ================================================================
@@ -296,7 +296,7 @@ export default function DigitalTransformationWeek1() {
       <DiscussionSlide
         quote="How can organizations ensure that their digitization efforts align with their overall digital transformation strategy?"
         author="Discussion Question"
-        plate={<Conversation />}
+        plate={<Conversation left={2} right={3} />}
       />
 
       {/* ================================================================
