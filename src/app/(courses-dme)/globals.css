@@ -1,0 +1,218 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   MAIL-ORDER CATALOGUE — design system for Digital Marketing & E-Commerce
+   --------------------------------------------------------------------------
+   The deck reads like a clean catalogue page: a neutral off-white page,
+   products engraved in halftone inside double-ruled white tiles, Bodoni
+   display with Libre Franklin text, and one amber accent for the key idea.
+
+   Ink      #1E1C1A   headings, outlines, halftone, the default voice
+   Signal   #8A5A00   amber as text (the key phrase); #E0A100 is the mark
+                      colour in plates, always with an ink outline
+   Counter  #6A2C70   purple: only for a contrast students must see
+   Paper    #FBFBF9   the neutral page (never sepia or cream)
+   ========================================================================== */
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-signal: var(--signal);
+  --color-counter: var(--counter);
+  --color-affirm: var(--affirm);
+
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+
+  --font-display: var(--font-bodoni);
+  --font-sans: var(--font-franklin);
+  --font-mono: var(--font-franklin);
+  --font-serif: var(--font-bodoni);
+}
+
+@layer base {
+  :root {
+    /* --- Ground (the neutral catalogue page) ---------------------------- */
+    --paper: #fbfbf9; /* page ground, plates */
+    --paper-2: #f3f3f0; /* bands, figure wells */
+    --paper-3: #e9e8e4; /* filled zones */
+    --tile: #ffffff; /* product tiles */
+
+    /* --- Ink ------------------------------------------------------------ */
+    --ink: #1e1c1a; /* headings, outlines, halftone */
+    --ink-2: #2e2c2a; /* body */
+    --ink-3: #5f5b57; /* captions, meta */
+    --rule: #e2e1dc; /* hairlines */
+    --rule-2: #c4c2bc; /* emphasised rule */
+
+    /* --- Signal (amber: the key idea) ----------------------------------- */
+    --signal: #8a5a00; /* amber as text, 5.7:1 on the page */
+    --signal-mark: #e0a100; /* amber marks in plates, with an ink outline */
+    --signal-deep: #6b4600;
+    --signal-tint: rgba(224, 161, 0, 0.14);
+    --signal-line: rgba(138, 90, 0, 0.35);
+
+    /* --- Counter (purple: a contrast students must see) ----------------- */
+    --counter: #6a2c70;
+    --counter-deep: #4e1f53;
+    --counter-tint: rgba(106, 44, 112, 0.08);
+    --counter-line: rgba(106, 44, 112, 0.3);
+
+    /* --- Status ---------------------------------------------------------- */
+    --affirm: #6a2c70;
+    --affirm-tint: rgba(106, 44, 112, 0.08);
+
+    /* --- Type ------------------------------------------------------------ */
+    --font-heading: var(--font-bodoni, "Libre Bodoni", "Bodoni Moda", Georgia, serif);
+    --font-body: var(--font-franklin, "Libre Franklin", ui-sans-serif, system-ui, sans-serif);
+    --font-label: var(--font-body);
+
+    /* --- Measure & rhythm ------------------------------------------------ */
+    --measure: 68ch;
+    --slide-max: 78rem;
+    --slide-pad-y: 4.5rem;
+    --rule-weight: 1px;
+
+    /* --- Aliases for the shared slide components (InlineQuiz etc.) ------- */
+    --crimson: var(--signal);
+    --crimson-light: var(--signal-deep);
+    --charcoal: var(--ink);
+    --charcoal-light: var(--ink-2);
+    --gold: var(--counter);
+    --surface: var(--paper);
+    --background: var(--paper);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink-2);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--ink);
+    font-family: var(--font-heading);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background: var(--signal-mark);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+  }
+}
+
+/* ==========================================================================
+   Typographic scale
+   ========================================================================== */
+
+.type-display {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+
+.type-h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.1rem, 4.6vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.type-h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.22;
+  color: var(--ink);
+}
+
+.type-subtitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 1.9vw, 1.55rem);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  color: var(--ink-2);
+}
+
+.type-lead {
+  font-size: clamp(1.125rem, 1.6vw, 1.35rem);
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.type-body {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.type-label {
+  font-family: var(--font-label);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.type-caption {
+  font-family: var(--font-label);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-size: 0.8125rem;
+  color: var(--ink-3);
+  letter-spacing: 0.01em;
+}
+
+.type-quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3.1vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+/* Figure wells: the neutral page with a hairline border; tiles inside are white. */
+.figure-well {
+  background: var(--paper);
+  border: var(--rule-weight) solid var(--rule);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

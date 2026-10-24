@@ -1,0 +1,290 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "dynamic-pricing-versus-personalized-pricing",
+    "prompt": "Each card describes how a seller's algorithm sets a price. Sort each card by the technique it uses.",
+    "bins": [
+      { "id": "dynamic", "label": "Dynamic pricing" },
+      { "id": "personalized", "label": "Personalized pricing" }
+    ],
+    "cards": [
+      {
+        "id": "concert-tickets",
+        "text": "Concert tickets cost more for everyone as the remaining seats sell out in the week before the show.",
+        "bin": "dynamic",
+        "explanation": "The price moves over time with aggregate supply and demand; two fans buying at the same moment pay the same."
+      },
+      {
+        "id": "phone-model",
+        "text": "Two roommates open the same hotel page at 9:00 p.m.; the one on a newer, pricier phone is quoted $30 more for the identical room.",
+        "bin": "personalized",
+        "explanation": "Different prices at the exact same moment for the identical product, based on device data used to estimate willingness to pay."
+      },
+      {
+        "id": "parking-garage",
+        "text": "A downtown garage raises its hourly rate for all drivers when the lot is more than 90 percent full.",
+        "bin": "dynamic",
+        "explanation": "The rate responds to aggregate scarcity, and every driver arriving at that moment sees it."
+      },
+      {
+        "id": "loyal-customer",
+        "text": "A grocery app quotes a higher price for coffee to a shopper whose purchase history shows they never switch brands, while a new shopper sees a lower price the same minute.",
+        "bin": "personalized",
+        "explanation": "The price targets the individual's estimated willingness to pay, derived from behavioral data."
+      },
+      {
+        "id": "holiday-flights",
+        "text": "Flight prices for the whole route rise the week before a holiday as seat inventory runs low.",
+        "bin": "dynamic",
+        "explanation": "Airline seat inventory pricing over time is the textbook case of dynamic pricing."
+      },
+      {
+        "id": "postal-code",
+        "text": "An online retailer shows the same blender at $49 to visitors from one postal code and $59 to visitors from another, at the same time.",
+        "bin": "personalized",
+        "explanation": "Geographic data are used to charge different consumers different prices at the same moment."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "first-second-and-third-degree-price-discrimination",
+    "prompt": "Each case describes a pricing practice. Identify the degree of price discrimination it uses.",
+    "options": [
+      { "id": "first", "label": "First-degree (perfect)" },
+      { "id": "second", "label": "Second-degree (menu, self-selection)" },
+      { "id": "third", "label": "Third-degree (observable segments)" }
+    ],
+    "cases": [
+      {
+        "id": "museum-senior",
+        "text": "A museum charges $25 for adults and $15 for visitors over 65 who show identification.",
+        "answer": "third",
+        "explanation": "Different prices for an observable demographic segment."
+      },
+      {
+        "id": "cloud-storage",
+        "text": "A cloud storage service offers a free 5 GB plan, a $3 plan with 200 GB and a $10 plan with 2 TB; each customer picks a plan.",
+        "answer": "second",
+        "explanation": "A menu of quantities and tiers lets consumers self-select."
+      },
+      {
+        "id": "car-haggle",
+        "text": "A car dealer's software reads each buyer's financing file and quotes the highest price it predicts that particular buyer will accept, so every buyer pays close to their maximum.",
+        "answer": "first",
+        "explanation": "Charging each individual their maximum willingness to pay transfers nearly all consumer surplus to the seller."
+      },
+      {
+        "id": "regional-games",
+        "text": "A video game sells for $60 in one country and $35 in another with lower average incomes.",
+        "answer": "third",
+        "explanation": "A regional price is set for an observable geographic segment."
+      },
+      {
+        "id": "coffee-sizes",
+        "text": "A café sells small, medium and large coffees, with the large costing much less per ounce; customers choose their size.",
+        "answer": "second",
+        "explanation": "Quantity versions with different unit prices, chosen by the consumer."
+      },
+      {
+        "id": "auction-each",
+        "text": "A ticket seller runs a private auction for each seat so that every fan pays the most they were willing to bid.",
+        "answer": "first",
+        "explanation": "Each unit is sold at the individual buyer's exact reservation price."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "why-personalized-pricing-triggers-moral-outrage-and-trust-erosion",
+    "prompt": "Each card describes a shopper's discovery about a personalized price. Sort each card by the source of the outrage.",
+    "bins": [
+      { "id": "inequity", "label": "Horizontal inequity" },
+      { "id": "betrayal", "label": "Perceived privacy betrayal" },
+      { "id": "vulnerability", "label": "Vulnerability exploitation" }
+    ],
+    "cards": [
+      {
+        "id": "coworker-flight",
+        "text": "A traveler learns that a coworker booked the same flight, same seat class, the same hour, for $120 less.",
+        "bin": "inequity",
+        "explanation": "A peer paid less for the identical item at the same time."
+      },
+      {
+        "id": "gold-member",
+        "text": "A gold-tier loyalty member finds that the app quotes her higher prices than a first-time visitor, because members rarely shop elsewhere.",
+        "bin": "betrayal",
+        "explanation": "Her past loyalty was used against her rather than to reward the relationship."
+      },
+      {
+        "id": "pharmacy-night",
+        "text": "An online pharmacy raises the price of a fever medicine for parents who search for it late at night, repeatedly, with words like 'urgent'.",
+        "bin": "vulnerability",
+        "explanation": "The premium is extracted from acute distress."
+      },
+      {
+        "id": "search-history",
+        "text": "A shopper discovers that after she searched the same hotel five times, the site raised her quote, reading her repeated searches as urgency.",
+        "bin": "betrayal",
+        "explanation": "Her own search urgency and data were used to calculate a higher price."
+      },
+      {
+        "id": "neighbor-sofa",
+        "text": "Two neighbors compare receipts and find they ordered the identical sofa from the same site on the same morning at different prices.",
+        "bin": "inequity",
+        "explanation": "Equal treatment in a public retail market is violated between peers."
+      },
+      {
+        "id": "evacuation-ride",
+        "text": "During a wildfire evacuation order, a ride app charges five times the usual fare for trips leaving the threatened neighborhood.",
+        "bin": "vulnerability",
+        "explanation": "Surge pricing extracts a premium from people fleeing an emergency."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "four-pathways-to-algorithmic-price-coordination",
+    "prompt": "Each case describes how competing sellers end up with coordinated prices. Identify the pathway in Ezrachi and Stucke's (2016) classification.",
+    "options": [
+      { "id": "messenger", "label": "Messenger" },
+      { "id": "hub", "label": "Hub-and-Spoke" },
+      { "id": "predictable", "label": "Predictable Agent" },
+      { "id": "autonomous", "label": "Autonomous Machine" }
+    ],
+    "cases": [
+      {
+        "id": "poster-sellers",
+        "text": "Two online poster sellers agree by email not to undercut each other, then each programs its repricing software to hold the agreed price.",
+        "answer": "messenger",
+        "explanation": "The humans agreed to fix prices; the software only carries out and monitors the agreement."
+      },
+      {
+        "id": "hotel-vendor",
+        "text": "Most hotels in a resort town send their nightly occupancy and rates to the same revenue-management vendor, whose engine sets each hotel's room prices.",
+        "answer": "hub",
+        "explanation": "Competitors pool confidential data in, and delegate pricing to, one shared third-party engine."
+      },
+      {
+        "id": "match-floor",
+        "text": "Each of three gas stations independently installs software that matches the lowest rival price within minutes but never goes below a fixed margin.",
+        "answer": "predictable",
+        "explanation": "Unilateral rule-based algorithms (price-matching plus a margin floor) react predictably and dampen discounting."
+      },
+      {
+        "id": "rl-airlines",
+        "text": "Two airlines each train their own reinforcement-learning pricing model told only to maximize long-term profit; after months, their fares stay high and any fare cut is met by a brief fare war.",
+        "answer": "autonomous",
+        "explanation": "Independent self-learning models discover punishment-and-reward collusion without instruction or shared code."
+      },
+      {
+        "id": "shared-plugin",
+        "text": "Competing online furniture stores all license one pricing plug-in that reads every subscriber's sales data and sets their prices together.",
+        "answer": "hub",
+        "explanation": "A single shared optimization engine coordinates prices across competitors."
+      },
+      {
+        "id": "transparent-rules",
+        "text": "A bookseller publishes that its algorithm always matches any rival's price within an hour; rivals adopt the same rule, and no one cuts prices any more.",
+        "answer": "predictable",
+        "explanation": "Transparent, predictable reaction rules remove the incentive to discount."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "dual-role-gatekeepers-and-algorithmic-self-preferencing",
+    "question_text": "A marketplace runs its own delivery service. Its ranking algorithm gives the default \"Buy Box\" to a third-party seller only if that seller ships through the marketplace's delivery service, even when another seller offers the same item cheaper with equal ratings and faster independent shipping. Which practice is this?",
+    "hint": "Ask what the top placement is made contingent on.",
+    "correct_answer_citation": "Week 09 · Dual-Role Gatekeepers and Algorithmic Self-Preferencing",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Data appropriation, because the marketplace learns from the sellers' sales.",
+        "option_explanation": "Data appropriation means the retail arm uses non-public seller data to copy products; nothing here is copied."
+      },
+      {
+        "option_text": "Dynamic pricing, because the Buy Box changes over time.",
+        "option_explanation": "Dynamic pricing adjusts prices to aggregate supply and demand; this case is about placement conditions, not price."
+      },
+      {
+        "option_text": "Algorithmic tying and buy-box conditioning, because top placement is contingent on buying the platform's own fulfillment service.",
+        "option_explanation": "Correct. Making the Buy Box depend on purchasing the platform's logistics is tying."
+      },
+      {
+        "option_text": "Second-degree price discrimination, because sellers can choose between shipping options.",
+        "option_explanation": "Second-degree discrimination is a price menu for consumers; here the platform conditions sellers' ranking on its own services."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "six-steps-of-an-algorithmic-pricing-and-competition-audit",
+    "prompt": "An auditor is reviewing a retailer's pricing system. Put the six steps of the audit in order.",
+    "steps": [
+      {
+        "id": "inputs",
+        "text": "Map every input the pricing model reads and confirm none is non-public competitor data or a shared optimization hub with rivals.",
+        "explanation": "Step 1: the audit starts from what goes into the model."
+      },
+      {
+        "id": "dispersion",
+        "text": "Compare personalized prices across demographic segments and postal codes for disparate impact.",
+        "explanation": "Step 2: audit price dispersion across groups and geographic proxies."
+      },
+      {
+        "id": "presentation",
+        "text": "Check that discounts, reference prices and surge rules are shown transparently and can be verified.",
+        "explanation": "Step 3: evaluate price presentation and search steering against dual-entitlement and dark-pattern standards."
+      },
+      {
+        "id": "impulse",
+        "text": "In a sandbox, force a simulated rival to cut its price and watch whether the model punishes and then returns to a high price.",
+        "explanation": "Step 4: the counterfactual impulse-response test (Calvano et al., 2020)."
+      },
+      {
+        "id": "ranking",
+        "text": "Test whether the marketplace ranks its own private-label item above an identically rated and priced third-party listing.",
+        "explanation": "Step 5: audit ranking and Buy Box algorithms for self-preferencing."
+      },
+      {
+        "id": "guardrails",
+        "text": "Install surge caps, a human-on-the-loop circuit breaker and a Chinese wall around seller data.",
+        "explanation": "Step 6: implement hard algorithmic guardrails."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "governance-guardrails-for-ethical-and-compliant-pricing",
+    "prompt": "Match each problem with the guardrail that addresses it.",
+    "term_label": "Guardrail",
+    "match_label": "Problem it addresses",
+    "pairs": [
+      {
+        "id": "cap",
+        "term": "Emergency and vulnerability price caps",
+        "match": "During a hurricane warning, a delivery app's algorithm multiplies the price of bottled water by six.",
+        "explanation": "A hard upper bound on surge multipliers during declared emergencies."
+      },
+      {
+        "id": "framing",
+        "term": "Transparent discount framing",
+        "match": "A retailer quietly raises list prices for shoppers its model predicts will not compare prices.",
+        "explanation": "Published base prices with stated, non-discriminatory eligibility rules replace covert list-price inflation."
+      },
+      {
+        "id": "reward",
+        "term": "Collusion-resistant reward design",
+        "match": "A firm's learning pricing agent answers every rival price cut with a multi-period price war.",
+        "explanation": "It restricts agents from conditioning punishment policies on individual rivals' price deviations."
+      },
+      {
+        "id": "firewall",
+        "term": "Firewall and ranking neutrality mandates",
+        "match": "A marketplace's retail team reads third-party sellers' sales data to launch a cheaper copy and ranks it first.",
+        "explanation": "It bars use of non-public seller data and requires identical ranking weights for first- and third-party goods."
+      }
+    ]
+  }
+]

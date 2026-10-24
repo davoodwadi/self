@@ -101,3 +101,5 @@ export const MRA_DIR =
 export const RAI_DIR =
   "src/app/(courses-rai)/courses/responsible-ai-governance";
 
+export const DME_DIR =
+  "src/app/(courses-dme)/courses/digital-marketing-ecommerce";

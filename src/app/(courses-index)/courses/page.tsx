@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { CB_DIR, IM_DIR, MRA_DIR, RAI_DIR, readCurriculum } from "@/lib/curriculum";
+import { CB_DIR, DME_DIR, IM_DIR, MRA_DIR, RAI_DIR, readCurriculum } from "@/lib/curriculum";
 
 // ============================================================================
 // /courses — COURSE INDEX
 // ============================================================================
-// A junction page. Six courses, one screen, no scroll on desktop: people
+// A junction page. Seven courses, one screen, no scroll on desktop: people
 // arrive here to leave, and each course already has its own syllabus.
 // ============================================================================
 
@@ -15,7 +15,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Courses · Davood Wadi, PhD",
   description:
-    "Course websites and lecture decks by Davood Wadi, PhD: Applications of AI in Business, Consumer Behavior, Digital Transformation, Introduction to Marketing, Marketing Research & Analytics, and Responsible AI & Algorithmic Governance.",
+    "Course websites and lecture decks by Davood Wadi, PhD: Applications of AI in Business, Consumer Behavior, Digital Marketing & E-Commerce, Digital Transformation, Introduction to Marketing, Marketing Research & Analytics, and Responsible AI & Algorithmic Governance.",
 };
 
 const MICRO = "text-[10px] font-semibold uppercase tracking-[0.24em]";
@@ -30,6 +30,7 @@ type Course = {
 
 // Course text that has a curriculum.md is read from it, not written here.
 const CB = readCurriculum(CB_DIR);
+const DME = readCurriculum(DME_DIR);
 const IM = readCurriculum(IM_DIR);
 const MRA = readCurriculum(MRA_DIR);
 const RAI = readCurriculum(RAI_DIR);
@@ -48,6 +49,13 @@ const COURSES: Course[] = [
     title: CB.title,
     subtitle: CB.subtitle,
     description: CB.summary,
+  },
+  {
+    slug: "digital-marketing-ecommerce",
+    code: null,
+    title: DME.title,
+    subtitle: DME.subtitle,
+    description: DME.summary,
   },
   {
     slug: "digital-transformation",
@@ -95,7 +103,10 @@ export default function CoursesIndex() {
 
         <ul className="mt-10 grid gap-px overflow-hidden rounded-lg bg-rule md:grid-cols-2 lg:grid-cols-3">
           {COURSES.map((course) => (
-            <li key={course.slug} className="bg-paper-2 md:last:odd:col-span-2">
+            <li
+              key={course.slug}
+              className="bg-paper-2 md:last:odd:col-span-2 lg:last:odd:col-span-1 lg:[&:nth-child(3n+1):last-child]:col-span-3"
+            >
               <CourseCard course={course} />
             </li>
           ))}

@@ -232,7 +232,7 @@ export function Tag({ cx, cy, text, red = false, w = 54, size = 13 }: { cx: numb
  * A person as a patent figure, standing with feet at (x, y), facing right
  * (`flip` faces left). Clean outline, light stipple on the coat, dense on the
  * trousers. `arm`: "down" at the side, "reach" held forward, "raise" lifted,
- * "lift" both arms up. `coat` sets the coat's tone ("paper" and "dense" tell two
+ * "lift" both arms up, "head" a hand raised to the forehead. `coat` sets the coat's tone ("paper" and "dense" tell two
  * groups apart; "signal" marks the finding, trousers included).
  */
 export function Figure({
@@ -249,7 +249,7 @@ export function Figure({
   x: number;
   y: number;
   s?: number;
-  arm?: "down" | "reach" | "raise" | "lift";
+  arm?: "down" | "reach" | "raise" | "lift" | "head";
   flip?: boolean;
   stroke?: string;
   coat?: "light" | "dense" | "signal" | "paper";
@@ -260,7 +260,9 @@ export function Figure({
       ? "M10 -62L30 -54L31 -48L10 -54Z"
       : arm === "raise" || arm === "lift"
         ? "M10 -62L24 -84L29 -81L14 -56Z"
-        : "M10 -62L14 -36L9 -35L6 -56Z";
+        : arm === "head"
+          ? "M10 -63L21 -68L11 -80L7 -77L15 -69L7 -57Z"
+          : "M10 -62L14 -36L9 -35L6 -56Z";
   return (
     <g transform={`translate(${x} ${y}) scale(${flip ? -s : s} ${s})`}>
       {/* legs */}
@@ -436,3 +438,75 @@ export function AiMark1({
   return <path d={d} fill={fill} />;
 }
 
+/** A graduated cylinder filled to `rate` of `max`: a choice share or rate (red for the finding). */
+export function Cylinder({
+  id,
+  cx,
+  base,
+  h,
+  rate,
+  red = false,
+  max = 0.6,
+  rx = 22,
+}: {
+  id: string;
+  cx: number;
+  base: number;
+  h: number;
+  rate: number;
+  red?: boolean;
+  max?: number;
+  rx?: number;
+}) {
+  const ry = 6;
+  const top = base - h;
+  const fy = r2(base - (Math.min(rate, max) / max) * h);
+  const c = red ? PAT.signal : PAT.ink;
+  return (
+    <g>
+      <path d={`M${cx - rx} ${fy}V${base}A${rx} ${ry} 0 0 0 ${cx + rx} ${base}V${fy}A${rx} ${ry} 0 0 1 ${cx - rx} ${fy}Z`} fill={stip(id, red ? "signal" : "light")} stroke="none" style={{ transition: "all 400ms ease" }} />
+      <ellipse cx={cx} cy={fy} rx={rx} ry={ry} fill="none" stroke={c} strokeWidth={LINE.hair} style={{ transition: "all 400ms ease" }} />
+      <path d={`M${cx - rx} ${top}V${base}A${rx} ${ry} 0 0 0 ${cx + rx} ${base}V${top}`} fill="none" {...ink} />
+      <ellipse cx={cx} cy={top} rx={rx} ry={ry} fill="none" {...ink} />
+      {Array.from({ length: 6 }, (_, i) => {
+        const y = r2(base - ((i + 1) / 6) * h);
+        return <line key={i} x1={cx - rx} y1={y} x2={cx - rx + 7} y2={y} {...hair} />;
+      })}
+    </g>
+  );
+}
+
+/**
+ * The platform: a columned hall in oblique projection, (x, y) the bottom-left
+ * of its front step. A coin slot on the pediment marks where fees go in.
+ */
+export function Hall({ id, x, y, w = 120, h = 80, slot = false }: { id: string; x: number; y: number; w?: number; h?: number; slot?: boolean }) {
+  const dx = 14;
+  const dy = 9;
+  const top = y - h;
+  const ped = 22;
+  const cols = 4;
+  return (
+    <g>
+      {/* step */}
+      <ObliqueBox id={id} x={x - 6} y={y - 8} w={w + 12} h={8} dx={dx} dy={dy} />
+      {/* body behind the columns */}
+      <path d={`M${x + w} ${top + 10}L${x + w + dx} ${top + 10 - dy}V${y - 8 - dy}L${x + w} ${y - 8}Z`} fill={stip(id, "dense")} {...ink} />
+      <rect x={x} y={top + 10} width={w} height={h - 18} fill={PAT.paper} {...ink} />
+      {Array.from({ length: cols }, (_, i) => {
+        const cx = r2(x + 12 + (i * (w - 24)) / (cols - 1));
+        return (
+          <g key={i}>
+            <rect x={r2(cx - 5)} y={top + 16} width={10} height={h - 26} fill={PAT.paper} {...ink} />
+            <line x1={cx} y1={top + 19} x2={cx} y2={y - 13} {...hair} />
+          </g>
+        );
+      })}
+      {/* entablature and pediment */}
+      <ObliqueBox id={id} x={x - 4} y={top} w={w + 8} h={10} dx={dx} dy={dy} />
+      <path d={`M${x - 4} ${top}L${r2(x + w / 2)} ${top - ped}L${x + w + 4} ${top}Z`} fill={PAT.paper} {...ink} />
+      <path d={`M${r2(x + w / 2)} ${top - ped}L${r2(x + w / 2 + dx)} ${top - ped - dy}L${x + w + 4 + dx} ${top - dy}L${x + w + 4} ${top}Z`} fill={stip(id, "light")} {...ink} />
+      {slot ? <rect x={r2(x + w / 2 - 9)} y={top - 9} width={18} height={3.5} fill={PAT.ink} stroke="none" /> : null}
+    </g>
+  );
+}

@@ -1,0 +1,276 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "levels-of-delegation-in-agentic-commerce",
+    "prompt": "Each case describes a shopper working with an AI assistant. Identify the level of delegation.",
+    "options": [
+      { "id": "l1", "label": "Level 1: Advisory recommendation" },
+      { "id": "l2", "label": "Level 2: Delegated search and curation" },
+      { "id": "l3", "label": "Level 3: Pre-authorized selection" },
+      { "id": "l4", "label": "Level 4: Fully autonomous execution" }
+    ],
+    "cases": [
+      {
+        "id": "printer-ink",
+        "text": "A household lets its assistant reorder printer ink whenever the cartridge runs low, as long as each order stays under $40. No one looks at the orders.",
+        "answer": "l4",
+        "explanation": "The agent searches, evaluates and completes the transaction on its own, within a budget rule set in advance."
+      },
+      {
+        "id": "laptop-reviews",
+        "text": "A student asks a chatbot to summarize reviews of two laptops, then opens the store pages, compares them and buys one without further help.",
+        "answer": "l1",
+        "explanation": "The AI only summarizes; the human still searches, compares and executes the purchase."
+      },
+      {
+        "id": "three-hotels",
+        "text": "A travel app reads every hotel in Lisbon for the chosen dates and shows the traveler three it recommends. The traveler picks one.",
+        "answer": "l2",
+        "explanation": "The agent ingests the full catalog and filters it to a shortlist of two or three; the human chooses among them."
+      },
+      {
+        "id": "running-shoes",
+        "text": "An assistant picks one pair of running shoes, puts it in the cart with the shopper's size and address filled in, and shows a single 'Confirm order' button.",
+        "answer": "l3",
+        "explanation": "The agent selects a single product and prepares checkout; the human is left only a final confirmation click."
+      },
+      {
+        "id": "flight-negotiation",
+        "text": "A business traveler's assistant books flights for every conference trip, negotiating a corporate fare with the airline's agent, inside the company's travel policy.",
+        "answer": "l4",
+        "explanation": "Searching, evaluating, negotiating and completing the purchase all happen automatically within rules set in advance."
+      },
+      {
+        "id": "grocery-shortlist",
+        "text": "A grocery assistant scans 400 olive oils and presents two, one cheaper and one organic, for the shopper to choose.",
+        "answer": "l2",
+        "explanation": "Delegated search and curation: the agent narrows the full catalog to a short list, and the human makes the choice."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "evaluative-invariance-as-a-normative-standard-for-ai-advisors",
+    "prompt": "Each case describes an AI advisor run twice on the identical set of listings, once with each deployer named in its system prompt. Sort each case by whether the advisor meets or violates evaluative invariance.",
+    "bins": [
+      { "id": "meets", "label": "Meets evaluative invariance" },
+      { "id": "violates", "label": "Violates evaluative invariance" }
+    ],
+    "cards": [
+      {
+        "id": "soften-skepticism",
+        "text": "Named as working for the traveler, the advisor warns that a sponsored hotel's reviews look thin. Named as working for the booking site, it calls the same hotel 'a popular pick'.",
+        "bin": "violates",
+        "explanation": "Its skepticism toward the paid listing softens only because the platform's name appears in the system prompt."
+      },
+      {
+        "id": "same-ranking",
+        "text": "Whether its prompt names a bank or the customer, a mortgage advisor ranks the same five loans in the same order by total cost.",
+        "bin": "meets",
+        "explanation": "The identical set of alternatives is evaluated in the same way regardless of the named employer."
+      },
+      {
+        "id": "inflate-paid",
+        "text": "When its prompt names the marketplace, a shopping advisor picks the paid placement in 40 of 100 runs; when its prompt names the shopper, it picks it in 5 of 100.",
+        "bin": "violates",
+        "explanation": "A systematic shift toward the paid placement induced by platform role assignment is an algorithmic breach of loyalty."
+      },
+      {
+        "id": "skip-dominated",
+        "text": "Under either deployer, an electronics advisor declines to recommend a sponsored television that costs more than an identical unsponsored model.",
+        "bin": "meets",
+        "explanation": "An inferior sponsored listing is treated the same way no matter who is named as deployer."
+      },
+      {
+        "id": "branding-tone",
+        "text": "Named as the platform's assistant, the advisor greets users with the platform's slogan, but it recommends the same hotel it recommends when named as the traveler's agent.",
+        "bin": "meets",
+        "explanation": "Tone may change; what invariance requires is that the evaluation of the alternatives does not shift."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "platform-attribution-and-the-semantic-trigger-of-sponsorship-bias",
+    "question_text": "A furniture marketplace deploys a shopping assistant whose system prompt says it was employed by the marketplace. One sofa listing carries the label 'Promoted by ShopHaus', ShopHaus being the marketplace itself. Based on Study 2 of Wadi and Ma (2026c), what should an auditor expect compared with an assistant employed by the shopper?",
+    "hint": "Ask what happens when the label attributes the promotion to the agent's own named principal.",
+    "correct_answer_citation": "Week 08 · Platform Attribution and the Semantic Trigger of Sponsorship Bias",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Both assistants penalize the promoted sofa equally, because the label discloses a paid placement to each of them.",
+        "option_explanation": "Under platform attribution the two delegates diverge sharply; they do not treat the label equally."
+      },
+      {
+        "option_text": "The marketplace's assistant may drop the penalty altogether and favor the promoted sofa, while the shopper's assistant still discounts it.",
+        "option_explanation": "Correct. A label that names the platform reads to the platform-delegated agent as an endorsement from its own principal (74.2 percent versus 34.6 percent in the hotel study)."
+      },
+      {
+        "option_text": "The marketplace's assistant penalizes the sofa more strongly, because naming the platform makes the paid placement more explicit.",
+        "option_explanation": "Attribution widened the gap in the opposite direction: the platform-delegated agent preferred the paid listing."
+      },
+      {
+        "option_text": "Neither assistant is affected, because only the word 'Sponsored' triggers any change in an agent's choice.",
+        "option_explanation": "The unattributed 'Promoted' label already lowered selection, and attribution to the platform changed the platform-delegated agent's choices dramatically."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "explicit-disclosure-wording-versus-beneficiary-specification",
+    "prompt": "A regulator's staff list claims about two remedies for a platform-deployed hotel assistant. Sort each claim by whether the evidence of Wadi and Ma (2026c) supports it.",
+    "bins": [
+      { "id": "supported", "label": "Supported by the evidence" },
+      { "id": "unsupported", "label": "Not supported by the evidence" }
+    ],
+    "cards": [
+      {
+        "id": "sponsored-lowers",
+        "text": "Requiring 'Sponsored' instead of 'Promoted' lowers how often both kinds of agent pick paid listings.",
+        "bin": "supported",
+        "explanation": "Stricter wording reduces the overall selection rate of paid listings across agents."
+      },
+      {
+        "id": "sponsored-closes",
+        "text": "Once the label reads 'Sponsored by the platform', the platform's agent and the traveler's agent behave alike.",
+        "bin": "unsupported",
+        "explanation": "The conflict-of-duty gap between the two delegates persists under platform-attributed 'Sponsored' labels."
+      },
+      {
+        "id": "beneficiary-removes",
+        "text": "Adding one sentence telling the platform's agent to serve the traveler's best interest brings its sponsorship penalty back to the traveler's agent's level.",
+        "bin": "supported",
+        "explanation": "The fiduciary beneficiary sentence completely eliminated the attenuation of the sponsorship penalty."
+      },
+      {
+        "id": "wording-enough",
+        "text": "Because label wording works for human shoppers, a label-wording mandate alone is enough to protect consumers who shop through agents.",
+        "bin": "unsupported",
+        "explanation": "In agent-mediated commerce label-wording mandates are insufficient on their own; the principal-beneficiary instructions inside the system prompt must be regulated."
+      },
+      {
+        "id": "regulate-prompt",
+        "text": "Effective rules for agent-mediated commerce need to reach the principal and beneficiary instructions inside the agent's system prompt.",
+        "bin": "supported",
+        "explanation": "Effective governance requires regulating the principal-beneficiary instructions inside the agent's system prompt."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "search-depth-non-monotonic-inspection-and-the-no-buy-gap-in-ai-agents",
+    "prompt": "Each card describes how a shopper behaved on a 100-item hotel results page. Sort each card by who typically behaves that way.",
+    "bins": [
+      { "id": "human", "label": "Human shoppers" },
+      { "id": "agent", "label": "AI shopping agents" }
+    ],
+    "cards": [
+      {
+        "id": "one-click",
+        "text": "Opens one listing near the top of the page, then stops searching.",
+        "bin": "human",
+        "explanation": "Human sessions average 1.12 clicks, concentrated on top-ranked listings."
+      },
+      {
+        "id": "five-listings",
+        "text": "Opens five listings scattered across the page before deciding.",
+        "bin": "agent",
+        "explanation": "Agents inspect between 1.63 and 5.83 listings per session at default reasoning effort."
+      },
+      {
+        "id": "leave-no-booking",
+        "text": "Leaves the site without booking anything after looking around.",
+        "bin": "human",
+        "explanation": "Humans decline to book in roughly one-third of sessions."
+      },
+      {
+        "id": "always-books",
+        "text": "Books a hotel even though the tools allow ending the session without a purchase.",
+        "bin": "agent",
+        "explanation": "Agents complete a booking in nearly every session."
+      },
+      {
+        "id": "bottom-revisit",
+        "text": "Is more likely to open listing 98 than listing 72.",
+        "bin": "agent",
+        "explanation": "Agents' inspection probability bottoms out between ranks 62 and 81 and rises again at the very bottom."
+      },
+      {
+        "id": "never-bottom",
+        "text": "Is less likely to open each listing the further down the page it sits, so the last listing is the least likely to be seen.",
+        "bin": "human",
+        "explanation": "For humans the click probability declines monotonically with rank."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "six-steps-of-a-fiduciary-and-ranking-audit-for-shopping-assistants",
+    "prompt": "An audit team is reviewing a booking platform's shopping assistant before release. Put its six audit steps in order.",
+    "steps": [
+      {
+        "id": "prompt",
+        "text": "Read the system prompt and tool definitions for who is named as principal.",
+        "explanation": "Step 1 audits role assignments and platform branding before any testing."
+      },
+      {
+        "id": "grid",
+        "text": "Run matched organic and sponsored listings, varying label wording and attribution, under the live prompt and a consumer-beneficiary prompt.",
+        "explanation": "Step 2 tests evaluative invariance across a factorial grid."
+      },
+      {
+        "id": "traces",
+        "text": "Code the assistant's pre-choice reasoning for scrutiny of the sponsorship labels.",
+        "explanation": "Step 3 checks whether disclosures trigger critical scrutiny rather than employer deference."
+      },
+      {
+        "id": "order",
+        "text": "Shuffle the order of 100-item pages and chart which ranks the assistant inspects.",
+        "explanation": "Step 4 measures the inspection curve and any rank 62-to-81 trough."
+      },
+      {
+        "id": "nobuy",
+        "text": "Give it only overpriced hotels and count how often it books anyway.",
+        "explanation": "Step 5 measures the false-purchase rate when declining is optimal."
+      },
+      {
+        "id": "calibrate",
+        "text": "Raise reasoning effort and add the fiduciary clause until invariance and position neutrality pass the release thresholds.",
+        "explanation": "Step 6 calibrates the configuration until it meets release thresholds."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "structural-remedies-prompt-mandates-safe-harbors-and-separation",
+    "prompt": "Match each structural remedy to the rule that puts it into practice.",
+    "term_label": "Remedy",
+    "match_label": "Rule",
+    "pairs": [
+      {
+        "id": "clause",
+        "term": "Mandatory fiduciary prompt clause",
+        "match": "Every assistant sold as a shopping advisor carries a locked system instruction that it must put the shopper's interest ahead of ad revenue.",
+        "explanation": "An explicit, uneditable system-level instruction naming the consumer's best interest."
+      },
+      {
+        "id": "passthrough",
+        "term": "Disclosure pass-through and provenance tagging",
+        "match": "When the chatbot recommends a paid listing, its answer card must still show 'Sponsored' to the user.",
+        "explanation": "Paid-placement metadata is preserved and surfaced in the final recommendation card."
+      },
+      {
+        "id": "deliberation",
+        "term": "Configurable deliberation standard",
+        "match": "For purchases over $500, the assistant must run at a reasoning budget shown to make its choice position-neutral.",
+        "explanation": "Sufficient reasoning effort on high-stakes searches keeps lost-in-the-middle bias out of final recommendations."
+      },
+      {
+        "id": "separation",
+        "term": "Structural separation",
+        "match": "A dominant marketplace may not let a seller's ad budget influence which products its assistant recommends organically.",
+        "explanation": "Organic recommendations are not conditioned on seller advertising spend."
+      }
+    ]
+  }
+]

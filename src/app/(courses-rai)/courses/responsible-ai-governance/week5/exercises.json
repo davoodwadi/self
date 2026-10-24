@@ -1,0 +1,288 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "transparency-versus-explainability-versus-interpretability",
+    "prompt": "Each practice comes from a firm that uses algorithms in marketing or finance. Identify which form of visibility it provides.",
+    "options": [
+      { "id": "process", "label": "Process transparency" },
+      { "id": "intrinsic", "label": "Intrinsic interpretability" },
+      { "id": "posthoc", "label": "Post-hoc explainability" }
+    ],
+    "cases": [
+      {
+        "id": "chat-notice",
+        "text": "An online retailer adds a line to its chat window: 'You are talking to an automated assistant.'",
+        "answer": "process",
+        "explanation": "Disclosing that an automated system is in use is institutional openness about the process; it says nothing about how the model computes."
+      },
+      {
+        "id": "scorecard",
+        "text": "An insurer prices renters' policies with a five-variable scorecard; an analyst can read each variable's points straight off the table.",
+        "answer": "intrinsic",
+        "explanation": "The model's own structure is simple enough to trace how inputs combine into the price, so no secondary procedure is needed."
+      },
+      {
+        "id": "surrogate-tree",
+        "text": "After a neural network ranks loyalty-programme members, the analytics team fits a small decision tree to its outputs to summarize what it seems to do.",
+        "answer": "posthoc",
+        "explanation": "A surrogate model fitted after the fact approximates the black box; it is not the model that made the ranking."
+      },
+      {
+        "id": "audit-standard",
+        "text": "A bank publishes the auditing standard its credit models must pass and the provenance of the data they were trained on.",
+        "answer": "process",
+        "explanation": "Publishing governance and auditing standards and documenting data provenance are forms of process transparency."
+      },
+      {
+        "id": "shap-report",
+        "text": "A lender runs an attribution procedure on its gradient-boosted model to list which features pushed one applicant's score down.",
+        "answer": "posthoc",
+        "explanation": "The attribution is a secondary mathematical procedure that summarizes the black box's output after the fact."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "when-high-stakes-decisions-should-use-interpretable-models",
+    "prompt": "Following the governance reasoning on the slide, sort each task by the kind of model it should use.",
+    "bins": [
+      { "id": "interpretable", "label": "Intrinsically interpretable model" },
+      { "id": "blackbox", "label": "Black box acceptable" }
+    ],
+    "cards": [
+      {
+        "id": "mortgage",
+        "text": "Approving or declining mortgage applications from income, debt, and repayment history.",
+        "bin": "interpretable",
+        "explanation": "High-stakes consumer credit on structured tabular features: an interpretable model with monotonicity constraints avoids hidden edge-case failures."
+      },
+      {
+        "id": "readmission",
+        "text": "Scoring hospital patients' readmission risk from lab values and age to decide who gets follow-up care.",
+        "bin": "interpretable",
+        "explanation": "Medical risk scoring on tabular data carries severe human consequences, so exact interpretability is preferred."
+      },
+      {
+        "id": "photo-tagging",
+        "text": "Recognising which products appear in shoppers' uploaded photos.",
+        "bin": "blackbox",
+        "explanation": "Raw images are unstructured data, where black-box architectures provide genuine performance advantages."
+      },
+      {
+        "id": "playlist",
+        "text": "Ordering songs in a music app's 'Up next' list, after a test shows the complex model lifts listening time.",
+        "bin": "blackbox",
+        "explanation": "A lower-stakes ranking task where the accuracy gain has been verified to outweigh the loss of exact interpretability."
+      },
+      {
+        "id": "bail",
+        "text": "Recommending pretrial release from a defendant's age, prior offences, and missed court dates.",
+        "bin": "interpretable",
+        "explanation": "Criminal justice decisions on structured features are high-stakes; an approximate post-hoc explanation could hide critical failures."
+      },
+      {
+        "id": "call-transcripts",
+        "text": "Summarising the topics of thousands of free-text customer service transcripts for a weekly report.",
+        "bin": "blackbox",
+        "explanation": "Free text is unstructured language data, the domain where black-box models are reserved for use."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "limitations-and-vulnerabilities-of-post-hoc-attributions",
+    "prompt": "Each audit note describes a problem with a post-hoc attribution. Identify the limitation at work.",
+    "options": [
+      { "id": "causal", "label": "Association, not cause" },
+      { "id": "instability", "label": "Instability under perturbation" },
+      { "id": "correlated", "label": "Correlated-feature distortion" },
+      { "id": "scaffolding", "label": "Adversarial scaffolding" }
+    ],
+    "cases": [
+      {
+        "id": "seed-flip",
+        "text": "Rerunning LIME for the same insurance customer with a different random seed moves 'vehicle age' from the top driver to fourth place.",
+        "answer": "instability",
+        "explanation": "A small change in the random seed changed the ranking of drivers for the same customer."
+      },
+      {
+        "id": "zip-cause",
+        "text": "A manager reads a high SHAP value for 'postal code' and concludes that moving house would lower a customer's default risk.",
+        "answer": "causal",
+        "explanation": "The attribution reflects predictive association inside the model, not a causal mechanism in the world."
+      },
+      {
+        "id": "detector",
+        "text": "A vendor's model routes inputs that look like synthetic perturbations to a fair sub-model and real applicant profiles to a biased one.",
+        "answer": "scaffolding",
+        "explanation": "Wrapping a discriminatory model in an out-of-distribution detector fools LIME and SHAP while it keeps discriminating on real customers."
+      },
+      {
+        "id": "income-tenure",
+        "text": "To score 'job tenure', the procedure pairs a 25-year tenure with an applicant whose income and age match a first-year graduate.",
+        "answer": "correlated",
+        "explanation": "Varying one of two correlated features on its own creates an off-manifold, unrealistic customer profile."
+      },
+      {
+        "id": "background-swap",
+        "text": "Switching the SHAP background sample from last year's customers to this year's changes which feature an auditor reports as the main driver.",
+        "answer": "instability",
+        "explanation": "The background reference distribution is one of the settings whose small changes can reorder the top drivers."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "from-explanation-to-actionable-recourse",
+    "prompt": "A rejected loan applicant receives each of these suggested changes. Sort them by whether they offer actionable recourse.",
+    "bins": [
+      { "id": "actionable", "label": "Actionable recourse" },
+      { "id": "immutable", "label": "Immutable: no recourse" },
+      { "id": "direction", "label": "Infeasible direction" }
+    ],
+    "cards": [
+      {
+        "id": "pay-down",
+        "text": "Pay down your card balance so that utilization falls below 30 percent.",
+        "bin": "actionable",
+        "explanation": "Utilization is a mutable feature the applicant can change through their own actions."
+      },
+      {
+        "id": "older",
+        "text": "Be eight years older.",
+        "bin": "immutable",
+        "explanation": "Age is immutable; it can explain a score but offers zero recourse."
+      },
+      {
+        "id": "born",
+        "text": "Have been born in a different country.",
+        "bin": "immutable",
+        "explanation": "Birthplace is immutable and may also be a protected attribute."
+      },
+      {
+        "id": "less-experience",
+        "text": "Report three fewer years of work experience.",
+        "bin": "direction",
+        "explanation": "Work experience can only grow; asking it to decrease is a directionally infeasible change."
+      },
+      {
+        "id": "missed-payment",
+        "text": "Not have missed a car payment five years ago.",
+        "bin": "immutable",
+        "explanation": "Past payment history is conditionally immutable: it cannot be changed now."
+      },
+      {
+        "id": "savings",
+        "text": "Add 2,000 dollars to your savings account over the next six months.",
+        "bin": "actionable",
+        "explanation": "Savings is mutable and moves in a feasible direction (up)."
+      },
+      {
+        "id": "less-education",
+        "text": "Lower your highest completed degree from a master's to a bachelor's.",
+        "bin": "direction",
+        "explanation": "Educational attainment only moves upward, so a decrease is not a feasible direction."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "plausibility-versus-faithfulness-in-llm-explanations",
+    "question_text": "An auditor gives a language model twenty laptop comparisons in which the cheaper laptop is always listed first. The model picks the first-listed laptop 90 percent of the time, and each chain-of-thought explains the pick with battery life and build quality, never with list order. What best describes these explanations?",
+    "hint": "Separate how convincing the explanation reads from whether it names what actually drove the choice.",
+    "correct_answer_citation": "Week 05 · Plausibility Versus Faithfulness in LLM Explanations",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "Faithful but implausible: the reasons are correct but read poorly.",
+        "option_explanation": "The reasons read well, and they leave out the actual driver, so they are neither implausible nor faithful."
+      },
+      {
+        "option_text": "Both plausible and faithful, because battery life and build quality are sensible criteria.",
+        "option_explanation": "Sensible-sounding criteria make an explanation plausible; faithfulness requires naming the true causal factor, list order."
+      },
+      {
+        "option_text": "Plausible but unfaithful: the traces read as convincing while omitting the covert ordering cue that drove the choice.",
+        "option_explanation": "Correct. This matches Turpin and colleagues' finding: a covert cue biases the choice while the trace rationalizes it with neutral-sounding criteria."
+      },
+      {
+        "option_text": "Faithful, because the trace is a readout of the network's attention activations.",
+        "option_explanation": "A reasoning trace is a sequence of predicted tokens conditioned on the prompt, not a diagnostic readout of weights or activations."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "auditing-reasoning-traces-alongside-observed-choices",
+    "prompt": "Each finding pairs a controlled choice experiment with coded reasoning traces. Sort it by what the pairing shows.",
+    "bins": [
+      { "id": "convergent", "label": "Convergent process evidence" },
+      { "id": "unfaithful", "label": "Unfaithful rationalization" }
+    ],
+    "cards": [
+      {
+        "id": "eco-label",
+        "text": "Adding an eco-label raises an agent's choice of a detergent by 20 points, and coded traces mention the label in most labelled sessions.",
+        "bin": "convergent",
+        "explanation": "The manipulation shifts both the coded trace and the choice, so the trace supports the behavioral mechanism."
+      },
+      {
+        "id": "brand-silent",
+        "text": "Swapping a brand name from a domestic to a foreign one lowers choice of an identical product by 15 points, yet no trace ever mentions the brand's origin.",
+        "bin": "unfaithful",
+        "explanation": "The choice moves with the manipulated factor while the trace never names it: the divergence exposes hidden bias."
+      },
+      {
+        "id": "deadline",
+        "text": "Telling an agent the order is urgent raises its choice of next-day delivery, and coded traces state delivery speed as the goal more often.",
+        "bin": "convergent",
+        "explanation": "Stated goal and choice move together under the manipulation, giving convergent process-tracing evidence."
+      },
+      {
+        "id": "position",
+        "text": "Placing a hotel in the first slot raises its selection by 12 points across conditions, while every trace credits its reviews and location.",
+        "bin": "unfaithful",
+        "explanation": "Position drives the choice but the trace rationalizes it with neutral-sounding criteria."
+      },
+      {
+        "id": "sponsor-skeptic",
+        "text": "A sponsorship label lowers choice of a listing, and coded traces show more stated skepticism toward that listing in the same condition.",
+        "bin": "convergent",
+        "explanation": "Both the coded skepticism and the choice probability shift with the label, as in audits of sponsorship disclosure."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "tailoring-explanations-to-stakeholder-needs",
+    "prompt": "Match each person with the explanation that serves the decision they must make.",
+    "term_label": "Stakeholder",
+    "match_label": "What they should receive",
+    "pairs": [
+      {
+        "id": "engineer",
+        "term": "A data scientist investigating why a churn model fails on new customers",
+        "match": "Global feature attributions and ICE curves",
+        "explanation": "Engineers and internal auditors debug spurious correlations with global attributions and ICE curves."
+      },
+      {
+        "id": "executive",
+        "term": "A chief product officer deciding whether to launch a pricing model",
+        "match": "A model card and an accuracy-fairness trade-off frontier",
+        "explanation": "Executives authorize deployment and allocate risk from model cards and trade-off frontiers."
+      },
+      {
+        "id": "regulator",
+        "term": "A conformity assessor reviewing a high-risk hiring system",
+        "match": "A standardized audit trail with disparate-impact ratios",
+        "explanation": "Regulators need audit trails, disparate-impact ratios, and provenance sheets as evidence of compliance."
+      },
+      {
+        "id": "consumer",
+        "term": "A renter whose apartment application was declined by an automated screen",
+        "match": "A plain-language reason and a feasible step that would change the outcome",
+        "explanation": "Affected consumers need notice, plain-language reasons, and actionable counterfactual recourse."
+      }
+    ]
+  }
+]

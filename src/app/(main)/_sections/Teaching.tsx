@@ -1,8 +1,9 @@
-import { CB_DIR, IM_DIR, MRA_DIR, RAI_DIR, readCurriculum } from "@/lib/curriculum";
+import { CB_DIR, DME_DIR, IM_DIR, MRA_DIR, RAI_DIR, readCurriculum } from "@/lib/curriculum";
 import { Section } from "./Section";
 
 // Course text that has a curriculum.md is read from it, not written here.
 const CB = readCurriculum(CB_DIR);
+const DME = readCurriculum(DME_DIR);
 const IM = readCurriculum(IM_DIR);
 const MRA = readCurriculum(MRA_DIR);
 const RAI = readCurriculum(RAI_DIR);
@@ -58,6 +59,12 @@ const SITES: {
     href: "/courses/digital-transformation",
     description:
       "Covers how organizations adopt new technologies, manage the transition, and measure outcomes. Topics include platform business models, data-driven decision-making, and technology adoption frameworks.",
+  },
+  {
+    title: DME.title,
+    subtitle: DME.subtitle,
+    href: "/courses/digital-marketing-ecommerce",
+    description: DME.summary,
   },
   {
     title: CB.title,

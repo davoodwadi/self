@@ -1,0 +1,282 @@
+[
+  {
+    "type": "match",
+    "slide_id": "revenue-models-in-digital-commerce",
+    "prompt": "Each firm earns its money in one way. Match each revenue model with the firm that uses it.",
+    "term_label": "Revenue model",
+    "match_label": "Firm",
+    "pairs": [
+      {
+        "id": "markup",
+        "term": "Retail markup",
+        "match": "An online bookshop buys a novel from the publisher for 11 dollars and sells it on its own site for 18 dollars.",
+        "explanation": "The bookshop owns the copy it sells and keeps the gap between what it paid and the shelf price."
+      },
+      {
+        "id": "take-rate",
+        "term": "Commission or take rate",
+        "match": "A ticket resale site keeps 12 percent of every resold concert ticket and never owns a ticket itself.",
+        "explanation": "The site earns a percentage of each completed transaction between independent sellers and buyers."
+      },
+      {
+        "id": "subscription",
+        "term": "Subscription or membership",
+        "match": "A razor brand bills 9 dollars a month and ships fresh blades on the first of each month.",
+        "explanation": "Revenue arrives as a recurring fee, so the firm's task is to keep members from cancelling."
+      },
+      {
+        "id": "retail-media",
+        "term": "Retail media",
+        "match": "A pet-supply site charges a dog-food brand each time a shopper clicks its sponsored listing at the top of the results for 'puppy food'.",
+        "explanation": "The site sells sponsored placements to a brand inside its own shopping funnel."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "matching-commercial-scenarios-to-digital-business-models",
+    "prompt": "Name the digital business model each firm operates.",
+    "options": [
+      { "id": "d2c", "label": "Direct-to-consumer (D2C)" },
+      { "id": "b2b", "label": "B2B e-commerce" },
+      { "id": "marketplace", "label": "Two-sided 3P marketplace" },
+      { "id": "retail-media", "label": "Retail media" }
+    ],
+    "cases": [
+      {
+        "id": "mattress",
+        "text": "A mattress maker stops supplying furniture chains and ships its mattresses in boxes straight to buyers who order on its website.",
+        "answer": "d2c",
+        "explanation": "The manufacturer bypasses the retailers and sells its own brand directly to end consumers online."
+      },
+      {
+        "id": "hospital",
+        "text": "A medical-supply firm's portal lets hospital purchasing systems reorder gloves automatically at prices set in a yearly contract.",
+        "answer": "b2b",
+        "explanation": "Both sides are organizations, the catalog is negotiated, and procurement runs system to system."
+      },
+      {
+        "id": "rentals",
+        "text": "A holiday-rental site lists apartments owned by thousands of hosts and keeps a fee from each booking.",
+        "answer": "marketplace",
+        "explanation": "The site owns none of the apartments; it connects independent hosts with guests and takes a fee per transaction."
+      },
+      {
+        "id": "pharmacy",
+        "text": "A pharmacy app charges a sunscreen brand to show its bottle first whenever shoppers search for 'SPF 50'.",
+        "answer": "retail-media",
+        "explanation": "The pharmacy monetizes its shoppers' searches by selling a sponsored placement to a brand."
+      },
+      {
+        "id": "coffee",
+        "text": "A coffee roaster opens its own online shop so it can learn which blends repeat buyers reorder, instead of selling only through supermarkets.",
+        "answer": "d2c",
+        "explanation": "Selling direct gives the roaster first-party customer data that the supermarket would otherwise hold."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "the-cold-start-problem-multi-homing-and-disintermediation",
+    "prompt": "Each marketplace faces one of these situations. Name it.",
+    "options": [
+      { "id": "cold-start", "label": "Cold-start problem" },
+      { "id": "seeding", "label": "Seeding one side first" },
+      { "id": "multi-homing", "label": "Multi-homing" },
+      { "id": "leakage", "label": "Platform leakage" }
+    ],
+    "cases": [
+      {
+        "id": "tutor",
+        "text": "A parent finds a maths tutor through a tutoring app, then pays the tutor in cash for every lesson after the first.",
+        "answer": "leakage",
+        "explanation": "The two sides met on the platform once and moved repeat transactions off it to avoid the fee."
+      },
+      {
+        "id": "driver",
+        "text": "A delivery courier keeps three rival delivery apps open on the same phone and accepts whichever order pays most.",
+        "answer": "multi-homing",
+        "explanation": "One participant is active on several competing platforms at once, which weakens each platform's pricing power."
+      },
+      {
+        "id": "sneakers",
+        "text": "A new resale app for sneakers launches with no listings, and the few shoppers who visit leave and do not return.",
+        "answer": "cold-start",
+        "explanation": "Buyers will not come without listings, and sellers will not list without buyers."
+      },
+      {
+        "id": "bookshop",
+        "text": "A new used-book marketplace buys 20,000 books itself and sells them for a year before letting outside sellers join.",
+        "answer": "seeding",
+        "explanation": "The platform seeds the supply side by acting as a first-party retailer before opening to third parties."
+      },
+      {
+        "id": "chef",
+        "text": "A new food-ordering app lets the city's five best-known restaurants sell commission-free for their first six months.",
+        "answer": "seeding",
+        "explanation": "Subsidizing marquee sellers attracts the supply that will draw the first buyers."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "monolithic-suites-versus-headless-and-composable-commerce",
+    "prompt": "Sort each description into the architecture it describes.",
+    "bins": [
+      { "id": "monolithic", "label": "Monolithic" },
+      { "id": "headless", "label": "Headless" },
+      { "id": "composable", "label": "Composable" }
+    ],
+    "cards": [
+      {
+        "id": "redeploy",
+        "text": "Moving the 'add to cart' button means rebuilding and redeploying the whole store application.",
+        "bin": "monolithic",
+        "explanation": "Presentation and commerce engine are one application, so a front-end change touches the back end."
+      },
+      {
+        "id": "template",
+        "text": "A small shop goes live in an afternoon from one all-in-one template.",
+        "bin": "monolithic",
+        "explanation": "Monolithic platforms simplify initial setup for standard web stores."
+      },
+      {
+        "id": "new-app",
+        "text": "The team builds a new mobile app that reads the same cart and catalog through the existing APIs, leaving the back end untouched.",
+        "bin": "headless",
+        "explanation": "The head is decoupled from one back-end commerce engine, and the two talk only through APIs."
+      },
+      {
+        "id": "kiosk",
+        "text": "A web store and an in-store kiosk show different screens but call the same back-end commerce engine.",
+        "bin": "headless",
+        "explanation": "Several heads share one decoupled back end."
+      },
+      {
+        "id": "swap-search",
+        "text": "The retailer replaces only its search service with a specialist vendor's, while catalog, cart and payments keep running.",
+        "bin": "composable",
+        "explanation": "Composable commerce assembles separate best-of-breed services, so one can be swapped on its own."
+      },
+      {
+        "id": "best-of-breed",
+        "text": "Content comes from one vendor, payments from a second and search from a third, all orchestrated through APIs.",
+        "bin": "composable",
+        "explanation": "Each function is a separate microservice chosen from a specialist vendor."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "apis-checkout-orchestration-and-payment-gateways",
+    "prompt": "A shopper clicks the buy button for a pair of headphones. Put what happens next in order.",
+    "steps": [
+      {
+        "id": "reserve",
+        "text": "The commerce engine confirms with the OMS that a pair is in stock and asks the tax engine for the sales tax at the delivery address.",
+        "explanation": "Step 1: inventory reservation and tax calculation come before any payment."
+      },
+      {
+        "id": "tokenize",
+        "text": "The payment gateway swaps the shopper's card number for a token, so the merchant's servers never hold the number.",
+        "explanation": "Step 2: payment tokenization."
+      },
+      {
+        "id": "screen",
+        "text": "A risk model checks the device and how many orders this card placed in the last hour, then the issuing bank is asked to hold the funds.",
+        "explanation": "Step 3: fraud screening and authorization."
+      },
+      {
+        "id": "commit",
+        "text": "The order is written to the OMS for the warehouse to pick and pack, and the held funds are captured for settlement.",
+        "explanation": "Step 4: order commit and capture."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "stages-of-the-digital-commerce-funnel",
+    "prompt": "Match each funnel stage with the moment in one shopper's purchase of a tent.",
+    "term_label": "Funnel stage",
+    "match_label": "Moment",
+    "pairs": [
+      {
+        "id": "acquisition",
+        "term": "Acquisition",
+        "match": "Maya taps a link in a hiking creator's video and arrives at an outdoor store's site.",
+        "explanation": "A creator partnership brings a prospective shopper to the storefront."
+      },
+      {
+        "id": "activation",
+        "term": "Activation and engagement",
+        "match": "She opens the Tents category, searches '2-person ultralight' and reads two product pages.",
+        "explanation": "She navigates the taxonomy, queries internal search and inspects product detail pages."
+      },
+      {
+        "id": "conversion",
+        "term": "Conversion",
+        "match": "She adds a tent to her cart, enters her address and card, and submits the order.",
+        "explanation": "Cart, checkout, shipping and payment steps end in a confirmed order."
+      },
+      {
+        "id": "fulfillment",
+        "term": "Fulfillment and post-purchase experience",
+        "match": "The parcel is dispatched that evening and arrives two days later.",
+        "explanation": "Dispatch and last-mile delivery speed belong to fulfillment."
+      },
+      {
+        "id": "retention",
+        "term": "Retention and advocacy",
+        "match": "A month later she posts a five-star review and orders gas canisters without clicking an ad.",
+        "explanation": "A satisfied buyer reviews and returns without another paid acquisition click."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "how-agentic-commerce-reshapes-the-digital-funnel",
+    "prompt": "Sort each moment into the funnel it belongs to: a person shopping through pages, or an AI agent shopping on a person's behalf.",
+    "bins": [
+      { "id": "human", "label": "Human shopper on a web page" },
+      { "id": "agent", "label": "AI shopping agent" }
+    ],
+    "cards": [
+      {
+        "id": "keywords",
+        "text": "Types 'running shoes' into a search bar and scrolls the results.",
+        "bin": "human",
+        "explanation": "A short keyword query typed into a search bar is the familiar human discovery step."
+      },
+      {
+        "id": "goal",
+        "text": "Is told 'waterproof trail shoes, size 43, under 120 euros, delivered by Friday'.",
+        "bin": "agent",
+        "explanation": "A multi-constraint goal stated in conversation replaces the short keyword query."
+      },
+      {
+        "id": "parallel",
+        "text": "Reads the size charts and return policies of six shops at once before anything is shown to the person.",
+        "bin": "agent",
+        "explanation": "The agent evaluates several merchants in parallel and compresses the consideration set."
+      },
+      {
+        "id": "eye",
+        "text": "Notices the shoe with the large photo at the top of the page first.",
+        "bin": "human",
+        "explanation": "Eye movements and visual prominence shape a human's attention to rank positions."
+      },
+      {
+        "id": "api-pay",
+        "text": "Applies a promotional code and pays with delegated credentials without opening a checkout page.",
+        "bin": "agent",
+        "explanation": "Headless APIs and agent payment protocols let an authenticated agent complete checkout without a graphical page."
+      },
+      {
+        "id": "form",
+        "text": "Types a card number and address into the checkout form.",
+        "bin": "human",
+        "explanation": "A graphical checkout form is built for a human typing details."
+      }
+    ]
+  }
+]
