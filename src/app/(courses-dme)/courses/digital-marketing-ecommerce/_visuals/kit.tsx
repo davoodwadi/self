@@ -253,6 +253,16 @@ export const head = {
   up: (x: number, y: number, s = 8) => headAlong(x, y, 0, -1, s),
 };
 
+/** A straight arrow from (x1, y1) to (x2, y2), head at the end. */
+export function Arrow({ x1, y1, x2, y2, color = CAT.ink, w = LINE.outline, s = 6 }: { x1: number; y1: number; x2: number; y2: number; color?: string; w?: number; s?: number }) {
+  return (
+    <g stroke={color} strokeWidth={w} fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <line x1={x1} y1={y1} x2={x2} y2={y2} />
+      <path d={headAlong(x2, y2, x2 - x1, y2 - y1, s)} />
+    </g>
+  );
+}
+
 /**
  * A quiet control under an interactive plate: a small uppercase key, a
  * hairline track with a small ink thumb, and the current value in tabular

@@ -1,0 +1,229 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "classifying-search-queries-by-intent",
+    "prompt": "Each line is a query typed into a search bar. Name the intent behind it.",
+    "options": [
+      { "id": "informational", "label": "Informational" },
+      { "id": "navigational", "label": "Navigational" },
+      { "id": "commercial", "label": "Commercial investigation" },
+      { "id": "transactional", "label": "Transactional" }
+    ],
+    "cases": [
+      {
+        "id": "why-tent-leaks",
+        "text": "why does my tent leak at the seams",
+        "answer": "informational",
+        "explanation": "The shopper wants an explanation before any brand or product is in view: top of the funnel."
+      },
+      {
+        "id": "ikea-login",
+        "text": "ikea family login",
+        "answer": "navigational",
+        "explanation": "The shopper already has the destination in mind and uses the search bar as a shortcut for its URL."
+      },
+      {
+        "id": "kindle-vs-kobo",
+        "text": "kindle paperwhite vs kobo clara reviews",
+        "answer": "commercial",
+        "explanation": "Two named alternatives are being compared through reviews: mid-funnel evaluation."
+      },
+      {
+        "id": "order-airpods",
+        "text": "order airpods pro 2 pickup today",
+        "answer": "transactional",
+        "explanation": "The words 'order' and 'pickup today' express readiness to buy now."
+      },
+      {
+        "id": "best-carry-on",
+        "text": "best hard shell carry-on under 300",
+        "answer": "commercial",
+        "explanation": "'Best' and a price ceiling show the shopper comparing options on attributes."
+      },
+      {
+        "id": "book-table",
+        "text": "book table for 4 tonight thai downtown",
+        "answer": "transactional",
+        "explanation": "The shopper is ready to book: the query names the action, party size and time."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "crawling-indexing-and-ranking-pipelines",
+    "prompt": "A shop publishes a new product page for a pour-over kettle. Put the events in the order the page travels from publication to a ranked result.",
+    "steps": [
+      {
+        "id": "sitemap",
+        "text": "The new page's URL is added to the shop's XML sitemap.",
+        "explanation": "Sitemaps and links are how bots learn that a page exists."
+      },
+      {
+        "id": "bot-fetch",
+        "text": "A spider reads the sitemap, checks robots.txt and fetches the page.",
+        "explanation": "Stage 1, crawling: discovering and fetching the page within the crawl budget."
+      },
+      {
+        "id": "render",
+        "text": "The engine runs the page's code and extracts its text, links and Schema.org data.",
+        "explanation": "Stage 2 begins with rendering, so content built by scripts can be read."
+      },
+      {
+        "id": "store",
+        "text": "The canonical version of the page is stored in the inverted index.",
+        "explanation": "Stage 2 ends with indexing: only stored pages can be retrieved later."
+      },
+      {
+        "id": "query",
+        "text": "A shopper types 'gooseneck kettle with temperature control'.",
+        "explanation": "Stage 3 starts when a query arrives and is parsed."
+      },
+      {
+        "id": "rank",
+        "text": "Candidate pages are retrieved from the index and ordered by lexical, semantic and authority signals.",
+        "explanation": "Stage 3, ranking, places the kettle page on the results page within milliseconds."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "on-page-technical-and-off-page-seo",
+    "prompt": "A furniture retailer's SEO team has a to-do list. Sort each task into the kind of SEO it is.",
+    "bins": [
+      { "id": "on", "label": "On-page SEO" },
+      { "id": "tech", "label": "Technical SEO" },
+      { "id": "off", "label": "Off-page SEO" }
+    ],
+    "cards": [
+      {
+        "id": "title-tag",
+        "text": "Rewrite the sofa category's title tag to 'Velvet Sofas: 3-Seater and Sectional'.",
+        "bin": "on",
+        "explanation": "A descriptive title tag aligns one page with the queries it targets."
+      },
+      {
+        "id": "canonical",
+        "text": "Point the 40 colour-filter URLs of the sofa page to one canonical URL.",
+        "bin": "tech",
+        "explanation": "Canonical tags stop faceted filters from splitting one page into many duplicates."
+      },
+      {
+        "id": "magazine",
+        "text": "Get the new armchair reviewed, with a link, by a national design magazine.",
+        "bin": "off",
+        "explanation": "An earned editorial backlink builds authority outside the firm's own servers."
+      },
+      {
+        "id": "images",
+        "text": "Compress hero images so product pages load in under two seconds on phones.",
+        "bin": "tech",
+        "explanation": "Loading speed is a Core Web Vital, part of keeping the site efficient to crawl and use."
+      },
+      {
+        "id": "guide",
+        "text": "Add a sofa-sizing guide with H2 headings and links to each sofa category.",
+        "bin": "on",
+        "explanation": "Body content, heading hierarchy and internal anchor links are on-page work."
+      },
+      {
+        "id": "local",
+        "text": "List each showroom's address and hours in local business directories.",
+        "bin": "off",
+        "explanation": "Local citations are mentions of the brand on other sites."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "generalized-second-price-auctions-and-quality-score",
+    "question_text": "Three advertisers bid on \"trail running shoes\". A bids $4.00 with Quality Score 5, B bids $2.50 with Quality Score 10, C bids $3.00 with Quality Score 6. Using the simplified rules, who takes the top slot and what does it pay per click?",
+    "hint": "Compute Ad Rank as bid × Quality Score for each, order them, then divide the next Ad Rank down by the winner's own Quality Score and add one cent.",
+    "correct_answer_citation": "The actual CPC paid by a winning advertiser is the minimum amount needed to beat the Ad Rank of the next advertiser immediately below, calculated as the next advertiser's Ad Rank divided by the winner's own Quality Score, plus one cent.",
+    "options": [
+      {
+        "option_text": "B, paying $2.01 per click",
+        "option_explanation": "Correct. Ad Ranks are B 25, A 20, C 18. B wins and pays A's Ad Rank divided by B's Quality Score: 20 ÷ 10 + $0.01 = $2.01."
+      },
+      {
+        "option_text": "A, paying $4.00 per click",
+        "option_explanation": "A has the highest bid, but its Ad Rank is 4.00 × 5 = 20, below B's 25. The top slot does not go to the highest bid."
+      },
+      {
+        "option_text": "B, paying $2.50 per click",
+        "option_explanation": "B wins, but it never pays its full bid: it pays only enough to beat the next Ad Rank, 20 ÷ 10 + $0.01."
+      },
+      {
+        "option_text": "A, paying $3.61 per click",
+        "option_explanation": "That is C's Ad Rank divided by A's Quality Score plus a cent, but A ranks second, not first."
+      }
+    ],
+    "correct_answer_index": 0
+  },
+  {
+    "type": "sort",
+    "slide_id": "branded-keywords-cannibalization-and-competitive-conquesting",
+    "prompt": "A brand's search ads run in each situation below. Sort them by what the ad clicks mostly are.",
+    "bins": [
+      { "id": "cannibal", "label": "Mostly cannibalized clicks" },
+      { "id": "incremental", "label": "Mostly incremental clicks" }
+    ],
+    "cards": [
+      {
+        "id": "lego-alone",
+        "text": "A toy brand bids on its own name; it holds the top organic result and no rival advertises on that name.",
+        "bin": "cannibal",
+        "explanation": "Without the ad, searchers would click the organic link just below it."
+      },
+      {
+        "id": "rival-conquest",
+        "text": "A mattress brand bids on its own name because two rivals buy ads on that name every day.",
+        "bin": "incremental",
+        "explanation": "Rivals are conquesting the name, so pausing the ad would hand undecided shoppers to them."
+      },
+      {
+        "id": "generic",
+        "text": "A cookware brand bids on 'non-stick frying pan that lasts'.",
+        "bin": "incremental",
+        "explanation": "A non-branded query reaches shoppers who have not yet chosen a brand."
+      },
+      {
+        "id": "below-fold",
+        "text": "A hotel's own name is searched, but four booking sites and a map push its organic link below the fold.",
+        "bin": "incremental",
+        "explanation": "With the organic link out of sight, the ad brings clicks that would otherwise be lost."
+      },
+      {
+        "id": "brand-plus-product",
+        "text": "A sneaker brand with the first two organic results bids on '[brand] running shoes'; no rival ads appear.",
+        "bin": "cannibal",
+        "explanation": "A dominant brand with top organic results and no rival ads mostly pays for clicks it would get free."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "generative-engine-optimization-geo-and-the-ai-shortlist",
+    "question_text": "An AI assistant is asked \"Which robot vacuum is best for pet hair?\" Which product page is most likely to be quoted in its answer?",
+    "hint": "Retrieval favours passages that are semantically close to the question and factually specific.",
+    "correct_answer_citation": "Pages with verifiable quantitative claims, clear comparison tables, authoritative third-party citations, and structured Schema.org data are more likely to be quoted in synthesized answers than pages filled with vague promotional superlatives.",
+    "options": [
+      {
+        "option_text": "A page with a table of suction power, bin size and hair-tangle test results against two rivals, citing a consumer-testing lab, with Product markup.",
+        "option_explanation": "Correct. It combines quantitative claims, a comparison table, a third-party citation and structured data."
+      },
+      {
+        "option_text": "A page that calls the vacuum 'the ultimate, revolutionary choice every pet owner will love'.",
+        "option_explanation": "Vague promotional superlatives give the model nothing specific or verifiable to quote."
+      },
+      {
+        "option_text": "A page that repeats 'best robot vacuum for pet hair' fifteen times in its text.",
+        "option_explanation": "Repeating exact words rewarded old lexical scoring, but adds no factual specificity for a RAG pipeline."
+      },
+      {
+        "option_text": "A page whose specifications appear only in a product photo.",
+        "option_explanation": "Facts locked in an image cannot be retrieved as text passages."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]

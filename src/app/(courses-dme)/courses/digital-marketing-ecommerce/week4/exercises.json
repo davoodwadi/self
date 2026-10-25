@@ -1,0 +1,245 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "content-based-filtering-versus-collaborative-filtering",
+    "prompt": "An outdoor-gear marketplace shows each recommendation below. Sort each one by the system that most likely produced it.",
+    "bins": [
+      { "id": "content", "label": "Content-based filtering" },
+      { "id": "collab", "label": "Collaborative filtering" }
+    ],
+    "cards": [
+      {
+        "id": "tent-tents",
+        "text": "After a shopper views a two-person backpacking tent, the page suggests three other two-person backpacking tents with the same weight class.",
+        "bin": "content",
+        "explanation": "The suggestions share the viewed item's catalogue attributes: same category, capacity and weight class."
+      },
+      {
+        "id": "tent-headlamp",
+        "text": "Buyers of a two-person tent are shown a headlamp, because many past tent buyers also bought that headlamp.",
+        "bin": "collab",
+        "explanation": "Tents and headlamps share no attributes; the link comes from the purchase patterns of other shoppers."
+      },
+      {
+        "id": "new-jacket",
+        "text": "A rain jacket listed this morning, with no sales yet, is recommended to a shopper who liked other waterproof shell jackets.",
+        "bin": "content",
+        "explanation": "Only attribute matching can recommend an item with no interaction history."
+      },
+      {
+        "id": "stove-coffee",
+        "text": "Shoppers who bought a camping stove are shown a ground-coffee brand that sells unusually well among stove buyers.",
+        "bin": "collab",
+        "explanation": "An unexpected cross-category complement found in the user-item interaction matrix."
+      },
+      {
+        "id": "image-match",
+        "text": "A shopper who saved photos of green canvas backpacks is shown backpacks whose product images look most similar.",
+        "bin": "content",
+        "explanation": "Image embeddings compare the items themselves, not other shoppers' behaviour."
+      },
+      {
+        "id": "latent",
+        "text": "A model learns a short vector for every shopper and every item from millions of past clicks and purchases, and recommends the items whose vectors sit closest to the shopper's.",
+        "bin": "collab",
+        "explanation": "Matrix factorization decomposes the sparse interaction matrix into latent user and item vectors."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "cold-start-filter-bubbles-and-two-stage-retrieval-ranking-pipelines",
+    "prompt": "Each case describes a recommender running into trouble, or a design choice. Name what it shows.",
+    "options": [
+      { "id": "item", "label": "Item cold start" },
+      { "id": "user", "label": "User cold start" },
+      { "id": "bubble", "label": "Filter bubble" },
+      { "id": "twostage", "label": "Two-stage pipeline" }
+    ],
+    "cases": [
+      {
+        "id": "new-blender",
+        "text": "A brand launches a new blender on the marketplace; for weeks it never appears in 'customers also bought' rows.",
+        "answer": "item",
+        "explanation": "A new listing has no clicks or purchases, so collaborative filtering has no signal for it."
+      },
+      {
+        "id": "incognito",
+        "text": "A visitor opens the site in a private window from an airport; the homepage can only show what is trending in that city today.",
+        "answer": "user",
+        "explanation": "With no profile, the system falls back on contextual popularity."
+      },
+      {
+        "id": "phone-cases",
+        "text": "After buying one phone case, a shopper's homepage shows nothing but phone cases for a month.",
+        "answer": "bubble",
+        "explanation": "Narrow variations of a past purchase crowd out discovery and cross-selling."
+      },
+      {
+        "id": "ann-then-model",
+        "text": "Engineers use a fast vector search to pull 400 likely items out of 200 million, then run a large neural model on only those 400.",
+        "answer": "twostage",
+        "explanation": "Candidate retrieval narrows millions to a few hundred; the heavy ranking model scores only those."
+      },
+      {
+        "id": "session-clicks",
+        "text": "A first-time visitor clicks three hiking boots, and the next page reorders itself around hiking gear from those clicks alone.",
+        "answer": "user",
+        "explanation": "With no history, the system relies on session-based behaviour."
+      },
+      {
+        "id": "exploration-slot",
+        "text": "The platform reserves one slot in ten for newly listed products with zero sales, to collect their first clicks.",
+        "answer": "item",
+        "explanation": "Exploration (bandit) slots are a remedy for the item cold-start problem."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "disentangling-intrinsic-quality-from-position-bias",
+    "question_text": "Over the same 1,000 searches, Mug A sat at Position 1 and got 200 clicks; Mug B sat at Position 5 and got 60 clicks. Logged scrolling shows Position 1 is examined in 80% of searches and Position 5 in 20%. Using inverse propensity weighting, which mug is more relevant?",
+    "hint": "Divide each mug's clicks by its slot's examination probability.",
+    "correct_answer_citation": "Platforms estimate true intrinsic relevance by running randomized top-k exploration experiments, logging viewport scroll impressions, or fitting inverse propensity weighting (IPW) models that divide observed clicks by the slot's baseline examination probability.",
+    "correct_answer_index": 1,
+    "options": [
+      {
+        "option_text": "Mug A, because it received more than three times as many clicks.",
+        "option_explanation": "Raw clicks mix position with relevance. A sat where 80% of shoppers looked; B sat where only 20% did."
+      },
+      {
+        "option_text": "Mug B: 60 ÷ 0.2 = 300 against Mug A's 200 ÷ 0.8 = 250.",
+        "option_explanation": "Correct. Corrected for examination, Mug B earns more clicks per shopper who actually saw it."
+      },
+      {
+        "option_text": "They are equally relevant, because both were shown in all 1,000 searches.",
+        "option_explanation": "Being on the page is not being examined; the slots were seen at very different rates."
+      },
+      {
+        "option_text": "It cannot be known without moving Mug B to Position 1 first.",
+        "option_explanation": "A randomized swap would also work, but IPW already gives an estimate from the logged examination probabilities."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "the-platforms-three-way-trade-off-in-retail-media",
+    "prompt": "A marketplace fills the top of its results pages with low-relevance, high-bidding sponsored listings. Sort each consequence by the party that bears it most directly.",
+    "bins": [
+      { "id": "buyers", "label": "Buyers" },
+      { "id": "sellers", "label": "Third-party sellers" },
+      { "id": "platform", "label": "The platform's balance sheet" }
+    ],
+    "cards": [
+      {
+        "id": "scroll-past",
+        "text": "Shoppers searching for a specific charger must scroll past phone stands and cables to find one that fits.",
+        "bin": "buyers",
+        "explanation": "Low-relevance ads lower buyer relevance and conversion."
+      },
+      {
+        "id": "ad-revenue",
+        "text": "Quarterly retail media revenue rises sharply.",
+        "bin": "platform",
+        "explanation": "Filling slots with the highest bidders earns immediate advertising revenue."
+      },
+      {
+        "id": "defend-bids",
+        "text": "A kitchenware shop that used to rank first organically now bids every day just to keep its old sales.",
+        "bin": "sellers",
+        "explanation": "When slots become pay-to-play, sellers bid merely to defend existing sales."
+      },
+      {
+        "id": "trust",
+        "text": "Shoppers start searching for products elsewhere first, because the site's results no longer seem to match what they type.",
+        "bin": "buyers",
+        "explanation": "Buyers lose trust in the platform's search utility."
+      },
+      {
+        "id": "margins",
+        "text": "Ad costs per order climb across a category, and margins shrink for nearly every merchant in it.",
+        "bin": "sellers",
+        "explanation": "The prisoner's dilemma compresses seller margins across the ecosystem."
+      },
+      {
+        "id": "repeat-visits",
+        "text": "Next year's searches and ad impressions fall as repeat visits decline.",
+        "bin": "platform",
+        "explanation": "Lost trust eventually costs the platform its future advertising base."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "does-rank-still-matter-in-agent-mediated-shopping",
+    "question_text": "A small coffee roaster's best bag sits at Position 38 of 60 marketplace results. Its founder says: 'Shoppers now send AI agents that read every listing, so our rank no longer matters.' Based on the evidence, what is the best reply?",
+    "hint": "Think about how an agent that pays a step for each product inspection spends its steps, and what it assumes about the default order.",
+    "correct_answer_citation": "Consequently, search rank optimization remains critical in business-to-agent (B2A) commerce, although the shape of an agent's position curve differs from human visual decay.",
+    "correct_answer_index": 3,
+    "options": [
+      {
+        "option_text": "Agreed: agents give every listing equal attention, so only the product attributes count.",
+        "option_explanation": "Agents show systematic position bias rather than uniform evaluation, even with the full list in view."
+      },
+      {
+        "option_text": "Rank matters only for human shoppers, so the roaster should split its budget by shopper type.",
+        "option_explanation": "Rank also shapes which listings agents inspect, so it matters for agent-mediated sales too."
+      },
+      {
+        "option_text": "Rank matters to agents in exactly the same way it matters to humans, so nothing about the strategy changes.",
+        "option_explanation": "The agent's curve has its own shape, with primacy, recency and non-monotonic effects, unlike human visual decay."
+      },
+      {
+        "option_text": "Rank still matters: agents conserve inspection steps near the top and treat the default order as a quality signal, though their position curve has a different shape.",
+        "option_explanation": "Correct. Search rank optimization remains critical in business-to-agent commerce."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "principal-agent-conflicts-and-role-framing-in-ai-shopping-assistants",
+    "prompt": "Each line is the opening of an AI shopping assistant's system prompt. Sort each by how the assistant is likely to treat an overpriced sponsored listing at the top of the results.",
+    "bins": [
+      { "id": "resists", "label": "Likely penalizes it and searches deeper" },
+      { "id": "weakens", "label": "Resistance likely weakens" }
+    ],
+    "cards": [
+      {
+        "id": "advocate",
+        "text": "\"You are the consumer's advocate. Your only goal is the best value for the person you are shopping for.\"",
+        "bin": "resists",
+        "explanation": "A dedicated consumer-advocate role penalizes overpriced sponsored listings."
+      },
+      {
+        "id": "store",
+        "text": "\"You are the store assistant for MegaMart. Help customers find products in our catalogue.\"",
+        "bin": "weakens",
+        "explanation": "A platform store assistant role weakens resistance to sponsored top slots."
+      },
+      {
+        "id": "fiduciary",
+        "text": "\"You act as a fiduciary buyer's agent and owe your duty to the shopper alone.\"",
+        "bin": "resists",
+        "explanation": "A fiduciary buyer's-agent role searches deeper down the rankings for superior value."
+      },
+      {
+        "id": "dual",
+        "text": "\"Serve our shoppers well and support our partner brands' visibility.\"",
+        "bin": "weakens",
+        "explanation": "An ambiguous dual mandate weakens resistance to sponsored placements."
+      },
+      {
+        "id": "platform-employee",
+        "text": "\"You have been employed by a hotel booking platform to recommend hotels.\"",
+        "bin": "weakens",
+        "explanation": "Employed by the platform, the agent's sponsorship penalty shrank from 50.2 to 29.2 points."
+      },
+      {
+        "id": "family",
+        "text": "\"You shop on behalf of the Lee family; compare price, quality and fit for them.\"",
+        "bin": "resists",
+        "explanation": "The principal is the consumer, so the agent weighs price and quality on the family's behalf."
+      }
+    ]
+  }
+]

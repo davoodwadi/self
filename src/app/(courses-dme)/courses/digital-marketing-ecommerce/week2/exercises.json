@@ -1,0 +1,274 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "hierarchical-taxonomy-versus-faceted-navigation",
+    "prompt": "Each shopper wants something from an outdoor store's site. Sort each task by what serves it best.",
+    "bins": [
+      { "id": "tree", "label": "The category tree" },
+      { "id": "facets", "label": "Facet filters" }
+    ],
+    "cards": [
+      {
+        "id": "browse",
+        "text": "A first-time visitor wants to see what kinds of camping gear the store carries.",
+        "bin": "tree",
+        "explanation": "Browsing a tree of parent and child categories helps a visitor orient themselves."
+      },
+      {
+        "id": "waterproof-under",
+        "text": "A hiker wants any waterproof jacket or boot under 120 dollars, whatever its category.",
+        "bin": "facets",
+        "explanation": "Waterproof rating and price cut across categories, so independent attribute filters are needed."
+      },
+      {
+        "id": "subcategory",
+        "text": "A runner moves from Footwear to Running Shoes to Trail Running Shoes.",
+        "bin": "tree",
+        "explanation": "Each step chooses one child of a mutually exclusive parent category."
+      },
+      {
+        "id": "four-stars-wool",
+        "text": "A shopper wants merino wool items rated four stars or more, in size M.",
+        "bin": "facets",
+        "explanation": "Material, rating and size are attributes applied together to narrow the result set."
+      },
+      {
+        "id": "gift",
+        "text": "A parent narrows 3,000 kids' items to those under 30 dollars that ship this week.",
+        "bin": "facets",
+        "explanation": "Price and delivery speed are independent filters applied at the same time."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "anatomy-of-a-high-converting-product-detail-page-pdp",
+    "prompt": "Name the job each element does on the product page of a 280-dollar office chair.",
+    "options": [
+      { "id": "above", "label": "Above the fold: identity, value, action" },
+      { "id": "below", "label": "Below the fold: deeper justification" },
+      { "id": "surrogate", "label": "Digital surrogate for an experience attribute" },
+      { "id": "risk", "label": "Risk-reversal signal" }
+    ],
+    "cases": [
+      {
+        "id": "colour-picker",
+        "text": "Swatches to choose the chair's colour, next to the price and the add-to-cart button.",
+        "answer": "above",
+        "explanation": "Variant selectors belong with the title, price and call to action at the top."
+      },
+      {
+        "id": "lumbar-video",
+        "text": "A 20-second video of someone adjusting the lumbar support and leaning back.",
+        "answer": "surrogate",
+        "explanation": "How the chair feels when adjusted needs physical trial, so a demonstration video stands in for it."
+      },
+      {
+        "id": "free-returns",
+        "text": "'Arrives Thursday 14 May · Free returns for 100 days' printed just under the add-to-cart button.",
+        "answer": "risk",
+        "explanation": "An exact delivery date and a free return window near the button counter the risk of buying unseen."
+      },
+      {
+        "id": "spec-table",
+        "text": "A table of seat height range, weight capacity and foam density further down the page.",
+        "answer": "below",
+        "explanation": "Detailed technical specifications serve analytical buyers below the fold."
+      },
+      {
+        "id": "fit-scale",
+        "text": "A scale showing which seat width suits shoppers from 155 to 195 cm tall.",
+        "answer": "surrogate",
+        "explanation": "A structured fit scale translates fit on different bodies into a digital form."
+      },
+      {
+        "id": "warranty",
+        "text": "'12-year warranty' badge beside the call to action.",
+        "answer": "risk",
+        "explanation": "Warranty coverage next to the call to action reverses the buyer's risk."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "macro-conversions-micro-conversions-and-funnel-diagnostics",
+    "question_text": "A shoe store's week: 10,000 sessions, 6,000 product page views, 2,400 add-to-carts and 240 paid orders. Last month the same store had 2,300 add-to-carts and 920 orders. What is the most likely place to look first?",
+    "hint": "Compute each step's transition rate and compare which one changed.",
+    "correct_answer_citation": "Week 02 · Macro-Conversions, Micro-Conversions, and Funnel Diagnostics",
+    "correct_answer_index": 2,
+    "options": [
+      {
+        "option_text": "The product thumbnails and prices on the category pages.",
+        "option_explanation": "Category-to-product movement (60% of sessions reach a product page) is not where the change happened; add-to-carts are almost unchanged."
+      },
+      {
+        "option_text": "The ad campaigns bringing traffic, since the overall conversion rate is only 2.4%.",
+        "option_explanation": "The overall rate is low, but the step-by-step rates show the loss sits after add-to-cart, not in traffic."
+      },
+      {
+        "option_text": "The checkout: shipping fees, forced account creation or payment errors.",
+        "option_explanation": "Correct. Add-to-carts held steady while cart-to-order fell from about 40% to 10%, the pattern of checkout friction."
+      },
+      {
+        "option_text": "Nothing: micro-conversions are healthy, so the store is fine.",
+        "option_explanation": "Micro-conversions are healthy, but the macro-conversion, the paid order, has collapsed."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "reducing-checkout-friction-and-recovering-abandoned-carts",
+    "prompt": "Match each checkout problem with the fix that removes it.",
+    "term_label": "Problem",
+    "match_label": "Fix",
+    "pairs": [
+      {
+        "id": "sticker-shock",
+        "term": "A 12-dollar shipping fee appears only on the payment screen.",
+        "match": "Show estimated shipping and a free-shipping progress bar on the cart page.",
+        "explanation": "Upfront cost transparency removes sticker shock at the final step."
+      },
+      {
+        "id": "password",
+        "term": "First-time buyers must invent a password before they can pay.",
+        "match": "Offer guest checkout with only an email and an address.",
+        "explanation": "Guest checkout defers account creation to the confirmation screen."
+      },
+      {
+        "id": "typing",
+        "term": "Phone shoppers give up while typing their street, city and postcode.",
+        "match": "Use address autocomplete and a numeric keypad for the postcode.",
+        "explanation": "Form optimization cuts typing effort."
+      },
+      {
+        "id": "card-entry",
+        "term": "Mobile buyers will not fetch their wallet to type a card number.",
+        "match": "Add Apple Pay or Google Pay with fingerprint or face approval.",
+        "explanation": "Digital wallets replace manual card and address entry with biometric authentication."
+      },
+      {
+        "id": "known-abandoner",
+        "term": "A logged-in customer leaves a full cart and closes the tab.",
+        "match": "Send a reminder email within a few hours, without a discount code.",
+        "explanation": "Recovery messages recapture sales; routine discounts would teach buyers to abandon on purpose."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "deceptive-dark-patterns-in-e-commerce-interfaces",
+    "prompt": "Name the dark pattern in each storefront.",
+    "options": [
+      { "id": "drip", "label": "Drip pricing" },
+      { "id": "urgency", "label": "Fake urgency or scarcity" },
+      { "id": "sneak", "label": "Sneak into basket" },
+      { "id": "confirmshame", "label": "Confirmshaming" },
+      { "id": "roach", "label": "Roach motel" }
+    ],
+    "cases": [
+      {
+        "id": "concert",
+        "text": "Concert tickets advertised at 45 dollars reach 71 dollars after a 'service fee', a 'facility fee' and an 'order processing fee' appear one screen at a time.",
+        "answer": "drip",
+        "explanation": "Mandatory fees are added progressively after the shopper has invested time."
+      },
+      {
+        "id": "insurance",
+        "text": "A 4-dollar 'parcel protection' line is already ticked in the cart when the shopper reaches payment.",
+        "answer": "sneak",
+        "explanation": "An opt-out default slips an add-on into the order without affirmative consent."
+      },
+      {
+        "id": "gym",
+        "text": "A streaming service signs you up in one click but cancelling requires a phone call during office hours.",
+        "answer": "roach",
+        "explanation": "Easy in, hard out: a roach motel."
+      },
+      {
+        "id": "decline",
+        "text": "The pop-up's decline button reads 'No thanks, I prefer paying full price'.",
+        "answer": "confirmshame",
+        "explanation": "Emotional language on the decline button pressures the shopper."
+      },
+      {
+        "id": "timer",
+        "text": "A 'Deal ends in 09:59' timer starts again from 10:00 every time the page is reloaded.",
+        "answer": "urgency",
+        "explanation": "A countdown that resets on refresh fabricates urgency."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "schema-org-json-ld-and-merchant-product-feeds",
+    "question_text": "A kettle's page shows '$39.99 · In stock · ★ 4.7 (812)' in large type, but its JSON-LD Product block contains only the name and brand. What can an AI shopping agent reading the JSON-LD verify about this kettle?",
+    "hint": "JSON-LD states attribute-value pairs independent of the visual layout.",
+    "correct_answer_citation": "Week 02 · Schema.org, JSON-LD, and Merchant Product Feeds",
+    "correct_answer_index": 0,
+    "options": [
+      {
+        "option_text": "Only the name and the brand; the price, stock status and rating are not declared.",
+        "option_explanation": "Correct. The block would need Offer fields (price, priceCurrency, availability) and an AggregateRating to state them."
+      },
+      {
+        "option_text": "Everything shown on the page, because JSON-LD copies the visible text automatically.",
+        "option_explanation": "JSON-LD is written separately from the layout; it declares only what is put in it."
+      },
+      {
+        "option_text": "The price and stock status, because those are required in every Product block.",
+        "option_explanation": "Nothing is declared unless it is written into the block."
+      },
+      {
+        "option_text": "Nothing at all, because agents cannot read JSON-LD.",
+        "option_explanation": "Crawlers and agents read structured metadata blocks; this block simply says little."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "how-storefront-architecture-shapes-ai-agent-choice",
+    "prompt": "Sort each storefront decision by its likely effect on an AI shopping agent that stops reading early.",
+    "bins": [
+      { "id": "helps", "label": "Helps the agent compare accurately" },
+      { "id": "misleads", "label": "Misleads or hides from the agent" }
+    ],
+    "cards": [
+      {
+        "id": "card-unit-price",
+        "text": "The listing card shows price per 100 g next to the pack price.",
+        "bin": "helps",
+        "explanation": "A key attribute exposed upfront on the listing card."
+      },
+      {
+        "id": "shipping-tab",
+        "text": "A 15-dollar shipping fee appears only on the third checkout step.",
+        "bin": "misleads",
+        "explanation": "An unfavourable cost hidden behind later steps can lead an early-stopping agent to a dominated option."
+      },
+      {
+        "id": "pdf-specs",
+        "text": "The blender's superior 1,500-watt motor is listed only in a downloadable PDF manual.",
+        "bin": "misleads",
+        "explanation": "The agent may treat the missing attribute as absent and disqualify the better product."
+      },
+      {
+        "id": "jsonld-table",
+        "text": "Wattage, capacity and warranty appear in a visible table and in the page's JSON-LD.",
+        "bin": "helps",
+        "explanation": "Upfront structured attributes for both audiences."
+      },
+      {
+        "id": "restocking",
+        "text": "A 20% restocking fee is mentioned only in a collapsed 'More policies' accordion.",
+        "bin": "misleads",
+        "explanation": "A penalty behind a secondary click raises acquisition cost and may never be read."
+      },
+      {
+        "id": "summary",
+        "text": "Each product page opens with a short structured summary of size, material and returns.",
+        "bin": "helps",
+        "explanation": "A structured summary lowers the cost of comparing alternatives."
+      }
+    ]
+  }
+]
