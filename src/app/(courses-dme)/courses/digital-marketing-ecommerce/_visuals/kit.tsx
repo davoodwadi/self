@@ -218,7 +218,7 @@ export function Frame({
   children: React.ReactNode;
   width?: number;
   className?: string;
-  svgProps?: React.SVGProps<SVGSVGElement>;
+  svgProps?: React.SVGProps<SVGSVGElement> & { [key: `data-${string}`]: string | undefined };
 }) {
   return (
     <svg

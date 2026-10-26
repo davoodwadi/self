@@ -1,0 +1,164 @@
+[
+  {
+    "type": "order",
+    "slide_id": "dsps-ssps-ad-exchanges-and-the-100-millisecond-rtb-auction",
+    "prompt": "A shopper opens a recipe app with one available banner slot. Arrange the events of the real-time auction from the first impression call to the recorded impression.",
+    "steps": [
+      {
+        "id": "request",
+        "text": "The app sends the publisher's SSP an impression call with page context and user identifiers.",
+        "explanation": "The ad request starts when the user loads the publisher's page or app."
+      },
+      {
+        "id": "broadcast",
+        "text": "The SSP packages the slot and metadata into an OpenRTB bid request that the Ad Exchange broadcasts to connected DSPs.",
+        "explanation": "The sell side broadcasts the opportunity to buy-side systems."
+      },
+      {
+        "id": "valuation",
+        "text": "Each DSP evaluates the profile, estimates click or conversion probability, checks its budget and frequency cap, and returns a monetary bid.",
+        "explanation": "Buy-side valuation and bidding happen within tens of milliseconds."
+      },
+      {
+        "id": "serve",
+        "text": "The exchange and SSP clear the auction, return the winning ad markup to the app, and fire the impression-tracking pixel.",
+        "explanation": "The winning creative is served and the impression is recorded."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "open-exchanges-private-marketplaces-and-programmatic-guaranteed",
+    "prompt": "A media planner describes four buys. Name the transaction structure used in each case.",
+    "options": [
+      { "id": "open", "label": "Open Exchange" },
+      { "id": "pmp", "label": "Private Marketplace" },
+      { "id": "preferred", "label": "Preferred Deal" },
+      { "id": "guaranteed", "label": "Programmatic Guaranteed" }
+    ],
+    "cases": [
+      {
+        "id": "thousands",
+        "text": "A small mattress brand lets every approved advertiser on its buying platform compete for inexpensive placements across thousands of publishers, with little certainty about the exact page.",
+        "answer": "open",
+        "explanation": "The open exchange maximizes scale and low prices but offers less placement transparency."
+      },
+      {
+        "id": "invitation",
+        "text": "A national newspaper gives six invited travel brands a Deal ID and lets them compete for its premium travel-section inventory before other buyers see it.",
+        "answer": "pmp",
+        "explanation": "A PMP is a closed, Deal ID auction for a publisher's invited advertisers."
+      },
+      {
+        "id": "first-look",
+        "text": "A camera retailer may accept or decline each impression on a photography publisher at the agreed price. Impressions it declines are released to the auction.",
+        "answer": "preferred",
+        "explanation": "A preferred deal is a fixed-price first look, not a commitment to a fixed impression volume."
+      },
+      {
+        "id": "volume",
+        "text": "A soft-drink company reserves 2 million impressions on a streaming publisher at a price agreed in advance. The system handles trafficking and frequency caps, with no auction.",
+        "answer": "guaranteed",
+        "explanation": "Programmatic Guaranteed automates a fixed-volume, fixed-price direct agreement."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "first-party-second-party-and-third-party-data-in-ad-targeting",
+    "prompt": "Match each data classification to the new audience-data arrangement that illustrates it.",
+    "term_label": "Data classification",
+    "match_label": "Audience-data arrangement",
+    "pairs": [
+      {
+        "id": "first",
+        "term": "First-party data",
+        "match": "With consent, a cookware shop uses its own checkout history and the cart events on its website to build an audience.",
+        "explanation": "The marketer collects these records directly from its own customers and visitors."
+      },
+      {
+        "id": "second",
+        "term": "Second-party data",
+        "match": "An airline shares its own traveler-intent records directly with a trusted partner hotel chain for their joint campaign.",
+        "explanation": "One organization's first-party data is shared directly with a strategic partner."
+      },
+      {
+        "id": "third",
+        "term": "Third-party data",
+        "match": "A furniture brand buys a pre-packaged 'home movers' segment assembled by a broker from unrelated external sources it cannot inspect individually.",
+        "explanation": "The broker aggregates external sources and has no direct consumer relationship."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "viewability-invalid-traffic-ad-fraud-and-brand-safety",
+    "prompt": "A verification report flags these situations. Name the standard or control each one requires.",
+    "options": [
+      { "id": "viewability", "label": "Viewability" },
+      { "id": "fraud", "label": "Invalid traffic" },
+      { "id": "safety", "label": "Brand suitability" },
+      { "id": "frequency", "label": "Frequency capping" }
+    ],
+    "cases": [
+      {
+        "id": "threshold",
+        "text": "A display banner is 80% visible for 0.8 continuous seconds. The report must decide whether it can count as a viewable impression.",
+        "answer": "viewability",
+        "explanation": "The pixel share passes, but display needs at least 50% visible for at least one continuous second."
+      },
+      {
+        "id": "bots",
+        "text": "A supposed news site produces thousands of clicks from malware-controlled devices, while other impressions are stacked in a hidden iframe.",
+        "answer": "fraud",
+        "explanation": "Non-human traffic, hidden iframes and ad stacking generate invalid impressions and clicks."
+      },
+      {
+        "id": "airline",
+        "text": "An airline wants to prevent its sale banner from being placed immediately beside a news article about a plane crash.",
+        "answer": "safety",
+        "explanation": "Brand suitability governs inappropriate content adjacent to an advertisement."
+      },
+      {
+        "id": "wearout",
+        "text": "One person receives the same sofa advertisement 24 times in a day. The marketer wants to stop further showings after three per person per day.",
+        "answer": "frequency",
+        "explanation": "A frequency cap limits repeated exposure to the same individual over a set period."
+      },
+      {
+        "id": "video",
+        "text": "A video ad is fully visible for 1.5 continuous seconds. The report must decide whether this exposure meets the applicable MRC threshold.",
+        "answer": "viewability",
+        "explanation": "Video requires at least 50% of pixels for at least two continuous seconds; 1.5 seconds is insufficient."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "navigating-signal-loss-with-clean-rooms-conversion-apis-and-contextual-ai",
+    "prompt": "Match each response to the signal-loss problem it is designed to address.",
+    "term_label": "AdTech response",
+    "match_label": "Signal-loss problem",
+    "pairs": [
+      {
+        "id": "capi",
+        "term": "Server-Side Conversion API",
+        "match": "Browser pixels no longer report purchases reliably, so the merchant sends consented first-party purchase events from its commerce server to the ad platform.",
+        "explanation": "CAPI creates a direct server-to-server route for consented conversion events."
+      },
+      {
+        "id": "cleanroom",
+        "term": "Data Clean Room",
+        "match": "A brand and a retailer need to measure audience overlap and lift, but neither may reveal its raw customer-level records to the other.",
+        "explanation": "A clean room joins first-party datasets without exposing raw row-level identifiers to the other party."
+      },
+      {
+        "id": "contextual",
+        "term": "Modern Contextual AI",
+        "match": "A travel advertiser can no longer follow individuals across sites, but still wants relevant placements based on the meaning and tone of each article or video frame.",
+        "explanation": "Contextual AI uses content meaning, not cross-site individual histories, to select relevant placements."
+      }
+    ]
+  }
+]
+
