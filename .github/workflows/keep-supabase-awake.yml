@@ -2,7 +2,7 @@ name: Keep Supabase awake
 
 on:
   schedule:
-    - cron: "0 9 */3 * *"   # every 3 days at 09:00 UTC (free tier pauses after ~7 days idle)
+    - cron: "0 9 */2 * *"   # every 2 days at 09:00 UTC (free tier pauses after ~7 days idle)
   workflow_dispatch:         # allow manual runs from the Actions tab
 
 jobs:
