@@ -1,0 +1,1176 @@
+"use client";
+
+import React, { useState } from "react";
+import {
+  Frame,
+  Display,
+  Plate,
+  INK,
+  INK3,
+  RULE2,
+  PAPER,
+  PAPER3,
+  SIGNAL,
+  COUNTER,
+  INK2,
+  SERIF,
+  seeded,
+  r2,
+} from "@/app/(courses-mra)/courses/marketing-research-analytics/_visuals/kit";
+import {
+  Person1,
+  AiMark1,
+  Store1,
+} from "@/app/(courses-mra)/courses/marketing-research-analytics/_visuals/objects";
+
+
+/** A plain sentence-case label in the heading serif. */
+function Label({
+  x,
+  y,
+  children,
+  anchor = "start",
+  fill = INK2,
+  size = 15,
+}: {
+  x: number;
+  y: number;
+  children: React.ReactNode;
+  anchor?: "start" | "middle" | "end";
+  fill?: string;
+  size?: number;
+}) {
+  return (
+    <text
+      x={x}
+      y={y}
+      textAnchor={anchor}
+      fontFamily={SERIF}
+      fontSize={size}
+      fill={fill}
+    >
+      {children}
+    </text>
+  );
+}
+
+/** One choice at a time, under a plate, in sentence case. */
+function Choice<T extends string>({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: T;
+  options: { id: T; label: string }[];
+  onChange: (v: T) => void;
+}) {
+  return (
+    <div
+      className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 px-1"
+      role="group"
+      aria-label={label}
+    >
+      <span
+        className="shrink-0 text-[15px] text-[var(--ink-2)]"
+        style={{ fontFamily: SERIF }}
+      >
+        {label}
+      </span>
+      <div className="flex flex-wrap border border-[var(--rule-2)]">
+        {options.map((o) => {
+          const on = o.id === value;
+          return (
+            <button
+              key={o.id}
+              type="button"
+              aria-pressed={on}
+              onClick={() => onChange(o.id)}
+              className={
+                "border-l border-[var(--rule-2)] px-3 py-1.5 text-[13px] first:border-l-0 transition-colors " +
+                (on
+                  ? "bg-[var(--ink)] text-[var(--paper)]"
+                  : "bg-[var(--paper)] text-[var(--ink-2)] hover:bg-[var(--paper-3)]")
+              }
+            >
+              {o.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* --------------------------------------------------------------------------
+   Selectable data tables: each row is a condition, and choosing a row
+   redraws the plate beside it.
+   -------------------------------------------------------------------------- */
+
+const TH =
+  "border-b border-[var(--ink)] px-2 pb-2 text-left align-bottom text-[13px] font-semibold leading-snug text-[var(--ink)]";
+const TD =
+  "border-b border-[var(--rule)] px-2 py-2 align-middle text-[15px] tabular-nums";
+
+function rowClass(on: boolean) {
+  return (
+    "cursor-pointer transition-colors " +
+    (on
+      ? "bg-[var(--paper-3)] shadow-[inset_3px_0_0_var(--signal)]"
+      : "hover:bg-[var(--paper-2)]")
+  );
+}
+
+/* --------------------------------------------------------------------------
+   Study 1, Tool-Lab (Wadi & Ma 2026, Study 1, Table 1: means across eight
+   LLMs of cells opened per diagnostic row, out of 2, and choice optimality,
+   the share of sessions choosing Coffee B).
+   -------------------------------------------------------------------------- */
+
+const TOOL_LAB = [
+  {
+    goal: "Specific",
+    cost: "$0",
+    dollars: "2.00",
+    cents: "2.00",
+    weight: "2.00",
+    diag: "6.00",
+    opt: "0.94",
+  },
+  {
+    goal: "Specific",
+    cost: "$10",
+    dollars: "2.00",
+    cents: "1.72",
+    weight: "2.00",
+    diag: "5.72",
+    opt: "0.83",
+  },
+  {
+    goal: "Vague",
+    cost: "$0",
+    dollars: "2.00",
+    cents: "1.97",
+    weight: "1.90",
+    diag: "5.86",
+    opt: "0.89",
+  },
+  {
+    goal: "Vague",
+    cost: "$10",
+    dollars: "1.94",
+    cents: "0.77",
+    weight: "1.10",
+    diag: "3.81",
+    opt: "0.29",
+  },
+];
+
+/* --------------------------------------------------------------------------
+   Paper 1, a live Tool-Lab (Mouselab) board with the Study 1 stimuli: two
+   instant coffees, seven attributes each behind inspect_cell, at the cost
+   of the chosen condition, ended by submit_choice. Attribute values,
+   prompts and costs follow Wadi & Ma (2026), Study 1.
+   -------------------------------------------------------------------------- */
+
+const ATTRS = [
+  { id: "price_dollars", a: "$4", b: "$5" },
+  { id: "price_cents", a: "99 cents", b: "00 cents" },
+  { id: "weight", a: "10 oz", b: "11 oz" },
+  { id: "origin", a: "Colombia", b: "Colombia" },
+  { id: "roast_date", a: "2 weeks ago", b: "2 weeks ago" },
+  { id: "calories", a: "3", b: "3" },
+  { id: "packaging", a: "Foil bag", b: "Foil bag" },
+];
+
+const PROMPTS = {
+  Specific: "You need to find the coffee with the lowest price per ounce.",
+  Vague: "You need to find the best deal on instant coffee.",
+};
+
+type Option = "coffee_a" | "coffee_b";
+
+function Mouselab({ goal, cost }: { goal: "Specific" | "Vague"; cost: number }) {
+  const [opened, setOpened] = useState<string[]>([]);
+  const [last, setLast] = useState<string | null>(null);
+  const [chosen, setChosen] = useState<Option | null>(null);
+  const spent = opened.length * cost;
+  const done = chosen !== null;
+
+  const inspect = (opt: Option, attr: string, value: string) => {
+    const key = `${opt}.${attr}`;
+    if (done || opened.includes(key)) return;
+    setOpened((o) => [...o, key]);
+    setLast(`inspect_cell(${opt}, ${attr}) → "${value}"`);
+  };
+  const choose = (opt: Option) => {
+    if (done) return;
+    setChosen(opt);
+    setLast(`submit_choice(${opt})`);
+  };
+  const reset = () => {
+    setOpened([]);
+    setLast(null);
+    setChosen(null);
+  };
+
+  const cell = (opt: Option, attr: string, value: string) => {
+    const open = opened.includes(`${opt}.${attr}`);
+    return open ? (
+      <span className="block border border-transparent px-2 py-[3px] text-center text-[14px] font-medium text-[var(--ink)]">{value}</span>
+    ) : (
+      <button
+        type="button"
+        disabled={done}
+        onClick={() => inspect(opt, attr, value)}
+        aria-label={`Inspect ${attr} of ${opt === "coffee_a" ? "Coffee A" : "Coffee B"}, costs $${cost}`}
+        className="block w-full border border-[var(--ink-3)] bg-[var(--paper-3)] px-2 py-[3px] text-center text-[13px] text-[var(--ink-3)] transition-colors hover:border-[var(--ink)] hover:bg-[var(--rule)] hover:text-[var(--ink)] disabled:cursor-default disabled:hover:border-[var(--ink-3)] disabled:hover:bg-[var(--paper-3)]"
+      >
+        {`$${cost}`}
+      </button>
+    );
+  };
+
+  const optimal = chosen === "coffee_b";
+  return (
+    <div className="figure-well w-full px-4 py-3">
+      <p className="text-[14px] leading-snug text-[var(--ink-2)]" style={{ fontFamily: "var(--font-heading)" }}>
+        <span className="text-[var(--ink-3)]">{goal} goal prompt:</span> <em>&ldquo;{PROMPTS[goal]}&rdquo;</em>
+      </p>
+      <table className="mt-3 w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="w-[38%]" />
+            {(["coffee_a", "coffee_b"] as Option[]).map((opt) => (
+              <th key={opt} className="pb-2 text-center align-bottom">
+                <svg viewBox="0 0 60 64" className="mx-auto h-9 w-auto" aria-hidden>
+                  <rect x={6} y={2} width={48} height={8} fill={PAPER3} stroke={INK} strokeWidth={1.5} />
+                  <path d="M6 10 L54 10 L57 56 Q30 60 3 56 Z" fill={PAPER} stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
+                  <text x={30} y={43} textAnchor="middle" fontSize={20} fill={INK} fontFamily="var(--font-heading)">
+                    {opt === "coffee_a" ? "A" : "B"}
+                  </text>
+                </svg>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {ATTRS.map((r) => (
+            <tr key={r.id}>
+              <td className="py-[2px] pr-3 text-[13px] text-[var(--ink-2)]">
+                <code className="bg-[var(--paper)] px-1 py-0.5">{r.id}</code>
+              </td>
+              <td className="px-1.5 py-[2px]">{cell("coffee_a", r.id, r.a)}</td>
+              <td className="px-1.5 py-[2px]">{cell("coffee_b", r.id, r.b)}</td>
+            </tr>
+          ))}
+          <tr>
+            <td className="pt-3" />
+            {(["coffee_a", "coffee_b"] as Option[]).map((opt) => (
+              <td key={opt} className="px-1.5 pt-3">
+                <button
+                  type="button"
+                  disabled={done}
+                  onClick={() => choose(opt)}
+                  className={
+                    "block w-full border px-2 py-1.5 text-[13px] transition-colors " +
+                    (chosen === opt
+                      ? optimal
+                        ? "border-[var(--signal)] bg-[var(--signal)] text-[var(--paper)]"
+                        : "border-[var(--counter)] bg-[var(--counter)] text-[var(--paper)]"
+                      : "border-[var(--ink)] bg-[var(--paper)] text-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)] disabled:opacity-40 disabled:hover:bg-[var(--paper)] disabled:hover:text-[var(--ink)]")
+                  }
+                >
+                  submit_choice
+                </button>
+              </td>
+            ))}
+          </tr>
+        </tbody>
+      </table>
+      <div className="mt-3 flex h-[3.1rem] items-center justify-between gap-4 border-t border-[var(--rule-2)] pt-2">
+        <p
+          className={`line-clamp-2 min-w-0 text-[13px] leading-snug ${
+            done ? (optimal ? "text-[var(--signal)]" : "text-[var(--counter)]") : "text-[var(--ink-3)]"
+          }`}
+        >
+          {done
+            ? optimal
+              ? "submit_choice(coffee_b): $5.00 / 11 oz = $0.455/oz, the optimal choice"
+              : "submit_choice(coffee_a): $4.99 / 10 oz = $0.499/oz; Coffee B was $0.455/oz"
+            : (last ?? "Click a cell to call inspect_cell")}
+        </p>
+        <div className="flex shrink-0 items-center gap-3">
+          <p className="text-[13px] text-[var(--ink-3)]">
+            Charged to the consumer{" "}
+            <span className="pl-1 text-[1.35rem] leading-none text-[var(--ink)]" style={{ fontFamily: "var(--font-heading)" }}>
+              {`$${spent}`}
+            </span>
+          </p>
+          {opened.length > 0 || done ? (
+            <button
+              type="button"
+              onClick={reset}
+              className="border border-[var(--rule-2)] bg-[var(--paper)] px-2.5 py-1 text-[13px] text-[var(--ink-2)] hover:bg-[var(--paper-3)]"
+            >
+              Reset
+            </button>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Paper 1: coffee descriptions and condition table on the left; the live board on the right. Picking a row sets the board's condition. */
+export function ToolLabStudy({ intro }: { intro: React.ReactNode }) {
+  const [sel, setSel] = useState(3);
+  const head = [
+    "Goal Prompt",
+    "Cost",
+    "Cents (of 2)",
+    "Weight (of 2)",
+    "Dollars (of 2)",
+    "Diagnostic (of 6)",
+    "Choice Optimality",
+  ];
+  const row = TOOL_LAB[sel];
+  return (
+    <div className="grid w-full items-center gap-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-10">
+      <div className="flex min-w-0 flex-col gap-5">
+        {intro}
+        <table className="w-full border-collapse">
+          <thead>
+            <tr>
+              {head.map((h) => (
+                <th key={h} className={TH}>
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {TOOL_LAB.map((r, i) => (
+              <tr
+                key={i}
+                className={rowClass(i === sel)}
+                onClick={() => setSel(i)}
+                tabIndex={0}
+                onKeyDown={(e) => (e.key === "Enter" ? setSel(i) : null)}
+                aria-selected={i === sel}
+              >
+                <td className={`${TD} font-semibold text-[var(--ink)]`}>{r.goal}</td>
+                <td className={`${TD} font-semibold text-[var(--ink)]`}>{r.cost}</td>
+                <td className={TD}>{r.cents}</td>
+                <td className={TD}>{r.weight}</td>
+                <td className={TD}>{r.dollars}</td>
+                <td className={TD}>{r.diag}</td>
+                <td className={`${TD} font-semibold ${i === sel ? "text-[var(--signal)]" : "text-[var(--ink)]"}`}>
+                  {r.opt}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <Mouselab
+        key={sel}
+        goal={row.goal as "Specific" | "Vague"}
+        cost={row.cost === "$10" ? 10 : 0}
+      />
+    </div>
+  );
+}
+
+/* --------------------------------------------------------------------------
+   Study 2, sponsorship (Wadi & Ma, JBR, Study 1, Gemini 3.1 Pro: target
+   choice share when organic vs tagged "Platform sponsor", by principal).
+   -------------------------------------------------------------------------- */
+
+const SPONSOR = [
+  {
+    spec: "Role-neutral",
+    organic: "49.6%",
+    sponsored: "7.8%",
+    penalty: "41.8 pp",
+  },
+  {
+    spec: "Consumer delegation",
+    organic: "53.0%",
+    sponsored: "2.8%",
+    penalty: "50.2 pp",
+  },
+  {
+    spec: "Platform delegation",
+    organic: "54.2%",
+    sponsored: "25.0%",
+    penalty: "29.2 pp",
+  },
+  {
+    spec: "Platform with consumer beneficiary",
+    organic: "51.4%",
+    sponsored: "3.2%",
+    penalty: "48.2 pp",
+  },
+];
+
+function HotelCard({ x, y, tag }: { x: number; y: number; tag?: string }) {
+  const w = 140;
+  const h = 96;
+  const px = x + 12;
+  const py = y + 18;
+  return (
+    <g>
+      <rect
+        x={x}
+        y={y}
+        width={w}
+        height={h}
+        fill={PAPER}
+        stroke={INK}
+        strokeWidth={1.5}
+      />
+      <rect
+        x={px}
+        y={py + 8}
+        width={46}
+        height={58}
+        fill={PAPER}
+        stroke={INK}
+        strokeWidth={1.5}
+      />
+      <path
+        d={`M${px - 3} ${py + 8} L${px + 23} ${py - 4} L${px + 49} ${py + 8}`}
+        fill="none"
+        stroke={INK}
+        strokeWidth={1.5}
+        strokeLinejoin="round"
+      />
+      {[0, 1, 2].map((r) =>
+        [0, 1, 2].map((c) => (
+          <rect
+            key={`${r}${c}`}
+            x={px + 7 + c * 12}
+            y={py + 16 + r * 13}
+            width={7}
+            height={7}
+            fill={INK3}
+          />
+        )),
+      )}
+      <rect x={x + 72} y={y + 22} width={62} height={5} fill={INK3} />
+      <rect x={x + 72} y={y + 33} width={44} height={5} fill={RULE2} />
+      <text x={x + 72} y={y + 58} fill={INK} fontSize={11} letterSpacing={1}>
+        ★★★★☆
+      </text>
+      <text
+        x={x + 72}
+        y={y + 80}
+        fill={INK}
+        fontSize={15}
+        fontWeight={500}
+        style={{
+          fontFamily: "var(--font-body)",
+          fontVariantNumeric: "tabular-nums",
+        }}
+      >
+        $189
+      </text>
+      {tag ? (
+        <g>
+          <rect
+            x={x + w - 106}
+            y={y - 9}
+            width={100}
+            height={18}
+            fill={PAPER}
+            stroke={INK}
+            strokeWidth={1.25}
+          />
+          <text
+            x={x + w - 56}
+            y={y + 4}
+            textAnchor="middle"
+            fill={INK}
+            fontSize={11}
+            fontWeight={500}
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            {tag}
+          </text>
+        </g>
+      ) : null}
+    </g>
+  );
+}
+
+function HotelPair({ row }: { row: (typeof SPONSOR)[number] }) {
+  const organic = parseFloat(row.organic);
+  const sponsored = parseFloat(row.sponsored);
+  const base = 270;
+  const scale = 118 / 60;
+  return (
+    <Frame
+      width={400}
+      height={296}
+      label={`Two identical hotel listings at $189 with four stars; the right one carries a Platform sponsor tag. ${row.spec}: ${row.organic} chose the organic target and ${row.sponsored} the sponsored target, a sponsorship penalty of ${row.penalty}.`}
+    >
+      <HotelCard x={15} y={14} />
+      <HotelCard x={245} y={14} tag="Platform sponsor" />
+      {[
+        { cx: 85, v: organic, text: row.organic, fill: PAPER3, ink: INK },
+        {
+          cx: 315,
+          v: sponsored,
+          text: row.sponsored,
+          fill: SIGNAL,
+          ink: SIGNAL,
+        },
+      ].map((b) => {
+        const h = r2(b.v * scale);
+        return (
+          <g key={b.cx}>
+            <rect
+              x={b.cx - 32}
+              y={r2(base - h)}
+              width={64}
+              height={h}
+              fill={b.fill}
+              stroke={b.fill === PAPER3 ? INK : "none"}
+              strokeWidth={1.25}
+            />
+            <Display
+              x={b.cx}
+              y={r2(base - h - 8)}
+              anchor="middle"
+              fill={b.ink}
+              size={20}
+            >
+              {b.text}
+            </Display>
+          </g>
+        );
+      })}
+      <line
+        x1={20}
+        y1={base}
+        x2={380}
+        y2={base}
+        stroke={INK}
+        strokeWidth={1.5}
+      />
+      <Display x={200} y={222} anchor="middle" size={24}>
+        {row.penalty}
+      </Display>
+      <Label x={200} y={244} anchor="middle" size={14} fill={INK3}>
+        Sponsorship penalty
+      </Label>
+      <Label x={85} y={290} anchor="middle" size={14} fill={INK3}>
+        Organic target
+      </Label>
+      <Label x={315} y={290} anchor="middle" size={14} fill={INK3}>
+        Sponsored target
+      </Label>
+    </Frame>
+  );
+}
+
+export function SponsorStudy() {
+  const [sel, setSel] = useState(2);
+  const head = [
+    "Principal Specification (Study 1, Gemini 3.1 Pro)",
+    "Organic Target Choice",
+    "Sponsored Target Choice",
+    "Sponsorship Penalty (pp)",
+  ];
+  return (
+    <div className="grid w-full items-center gap-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:gap-10">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            {head.map((h) => (
+              <th key={h} className={TH}>
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {SPONSOR.map((r, i) => (
+            <tr
+              key={r.spec}
+              className={rowClass(i === sel)}
+              onClick={() => setSel(i)}
+              tabIndex={0}
+              onKeyDown={(e) => (e.key === "Enter" ? setSel(i) : null)}
+              aria-selected={i === sel}
+            >
+              <td className={`${TD} font-semibold text-[var(--ink)]`}>
+                {r.spec}
+              </td>
+              <td className={TD}>{r.organic}</td>
+              <td className={TD}>{r.sponsored}</td>
+              <td
+                className={`${TD} font-semibold ${i === sel ? "text-[var(--signal)]" : "text-[var(--ink)]"}`}
+              >
+                {r.penalty}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <Plate>
+        <HotelPair row={SPONSOR[sel]} />
+      </Plate>
+    </div>
+  );
+}
+
+/* --------------------------------------------------------------------------
+   Study 3, position effect on choice (Wadi & Ma, Marketing Letters,
+   appendix: linear probability models of choice with quadratic position,
+   position scaled to rank / 100, by LLM and reasoning effort; human
+   benchmark: linear position coefficient on choice, -0.0001 per rank, from
+   Ursu 2018, Table 2). Curves are the change in choice probability relative
+   to rank 1, controls held fixed.
+   -------------------------------------------------------------------------- */
+
+type Effort = { id: string; label: string; b1: number; b2: number };
+
+const CHOICE_CURVES: { id: string; label: string; efforts: Effort[] }[] = [
+  {
+    id: "sonnet",
+    label: "Sonnet",
+    efforts: [
+      { id: "low", label: "Low", b1: -0.1565, b2: 0.1217 },
+      { id: "high", label: "High", b1: -0.0051, b2: 0.0016 },
+    ],
+  },
+  {
+    id: "pro",
+    label: "Pro",
+    efforts: [
+      { id: "low", label: "Low", b1: -0.076, b2: 0.0638 },
+      { id: "medium", label: "Medium", b1: -0.0237, b2: 0.0179 },
+      { id: "high", label: "High", b1: -0.008, b2: 0.0071 },
+    ],
+  },
+  {
+    id: "luna",
+    label: "Luna",
+    efforts: [
+      { id: "none", label: "None", b1: -0.0729, b2: 0.0544 },
+      { id: "medium", label: "Medium", b1: -0.0652, b2: 0.0441 },
+      { id: "xhigh", label: "xHigh", b1: -0.0364, b2: 0.0202 },
+    ],
+  },
+  {
+    id: "flashlite",
+    label: "Flash Lite",
+    efforts: [
+      { id: "minimal", label: "Minimal", b1: -0.0503, b2: 0.0418 },
+      { id: "low", label: "Low", b1: -0.0276, b2: 0.0197 },
+      { id: "medium", label: "Medium", b1: -0.0095, b2: 0.0052 },
+      { id: "high", label: "High", b1: 0.0023, b2: -0.001 },
+    ],
+  },
+  {
+    id: "flash",
+    label: "Flash",
+    efforts: [
+      { id: "low", label: "Low", b1: 0.0034, b2: -0.0038 },
+      { id: "medium", label: "Medium", b1: 0.0037, b2: -0.0051 },
+    ],
+  },
+];
+
+const HUMAN_PER_RANK = -0.0001;
+
+export function PositionCurvePlate() {
+  const [modelId, setModelId] = useState("sonnet");
+  const model = CHOICE_CURVES.find((m) => m.id === modelId)!;
+  const [effortId, setEffortId] = useState(model.efforts[0].id);
+  const effort = model.efforts.find((e) => e.id === effortId) ?? model.efforts[0];
+
+  const pickModel = (id: string) => {
+    setModelId(id);
+    setEffortId(CHOICE_CURVES.find((m) => m.id === id)!.efforts[0].id);
+  };
+
+  // Change in choice probability (percentage points) relative to rank 1.
+  const agent = (rank: number) => {
+    const x = rank / 100;
+    return 100 * (effort.b1 * (x - 0.01) + effort.b2 * (x * x - 0.0001));
+  };
+  const human = (rank: number) => 100 * HUMAN_PER_RANK * (rank - 1);
+
+  const X0 = 58;
+  const X1 = 372;
+  const Y0 = 34;
+  const Y1 = 214;
+  const MIN = -6;
+  const px = (rank: number) => r2(X0 + ((rank - 1) / 99) * (X1 - X0));
+  const py = (pp: number) => r2(Y0 + (Math.min(0.5, Math.max(MIN, pp)) / MIN) * (Y1 - Y0));
+  const ranks = Array.from({ length: 100 }, (_, i) => i + 1);
+  const path = ranks.map((r, i) => `${i === 0 ? "M" : "L"}${px(r)} ${py(agent(r))}`).join("");
+
+  let low = 1;
+  ranks.forEach((r) => {
+    if (agent(r) < agent(low)) low = r;
+  });
+  const lowPp = agent(low);
+  const dips = low > 1 && low < 100 && lowPp < -0.5;
+
+  return (
+    <Plate>
+      <Frame
+        width={400}
+        height={262}
+        label={`Change in the probability that a listing is chosen, relative to the top listing, by rank from 1 to 100. Humans (Ursu 2018) decline in a straight line to ${human(100).toFixed(1)} points at rank 100. ${model.label} at ${effort.label} reasoning effort ${
+          dips
+            ? `dips to ${lowPp.toFixed(1)} points at rank ${low} and recovers to ${agent(100).toFixed(1)} at rank 100, the lost-in-the-middle shape`
+            : `stays close to flat, ${agent(100).toFixed(1)} points at rank 100`
+        }.`}
+      >
+        <Label x={X0} y={16} fill={INK3} size={14}>
+          Choice probability vs. the top listing (pp)
+        </Label>
+        {[0, -2, -4, -6].map((t) => (
+          <g key={t}>
+            <line x1={X0} y1={py(t)} x2={X1} y2={py(t)} stroke={RULE2} strokeWidth={t === 0 ? 1.25 : 0.6} />
+            <Label x={X0 - 8} y={r2(py(t) + 5)} anchor="end" fill={INK3} size={13}>
+              {t === 0 ? "0" : `${t}`}
+            </Label>
+          </g>
+        ))}
+        {[1, 25, 50, 75, 100].map((r) => (
+          <Label key={r} x={px(r)} y={Y1 + 20} anchor="middle" fill={INK3} size={13}>
+            {String(r)}
+          </Label>
+        ))}
+        <Label x={r2((X0 + X1) / 2)} y={Y1 + 40} anchor="middle" fill={INK3} size={14}>
+          Rank on the results page
+        </Label>
+        {/* humans: a straight decline */}
+        <line x1={px(1)} y1={py(human(1))} x2={px(100)} y2={py(human(100))} stroke={COUNTER} strokeWidth={2.5} />
+        <Person1 x={X1 + 12} y={r2(py(human(100)) + 10)} k={0.55} fill={COUNTER} stroke={COUNTER} />
+        {/* the agent */}
+        <path d={path} fill="none" stroke={SIGNAL} strokeWidth={3} strokeLinejoin="round" />
+        <AiMark1 cx={X1 + 12} cy={py(agent(100))} s={14} fill={SIGNAL} />
+        {dips ? (
+          <g>
+            <circle cx={px(low)} cy={py(lowPp)} r={4.5} fill={SIGNAL} />
+            <Label x={px(low)} y={r2(py(lowPp) + 22)} anchor="middle" fill={SIGNAL} size={14}>
+              {`${lowPp.toFixed(1)} pp at rank ${low}`}
+            </Label>
+          </g>
+        ) : null}
+      </Frame>
+      <Choice
+        label="AI agent"
+        value={modelId}
+        onChange={pickModel}
+        options={CHOICE_CURVES.map((m) => ({ id: m.id, label: m.label }))}
+      />
+      <Choice
+        label="Reasoning effort"
+        value={effort.id}
+        onChange={setEffortId}
+        options={model.efforts.map((e) => ({ id: e.id, label: e.label }))}
+      />
+    </Plate>
+  );
+}
+
+/* --------------------------------------------------------------------------
+   00, The agentic triad: consumer, AI agent and firm, with the agent
+   standing in for the consumer.
+   -------------------------------------------------------------------------- */
+
+/** Point `d` units from (x1, y1) toward (x2, y2). */
+const toward = (x1: number, y1: number, x2: number, y2: number, d: number) => {
+  const len = Math.hypot(x2 - x1, y2 - y1) || 1;
+  return [r2(x1 + ((x2 - x1) / len) * d), r2(y1 + ((y2 - y1) / len) * d)];
+};
+
+export function TriadPlate() {
+  const agent = { x: 200, y: 62 };
+  const consumer = { x: 70, y: 186 };
+  const firm = { x: 330, y: 186 };
+  const edges: [typeof agent, typeof agent][] = [
+    [consumer, agent],
+    [agent, firm],
+    [consumer, firm],
+  ];
+  return (
+    <Plate>
+      <Frame
+        width={400}
+        height={238}
+        label="The agentic triad: a consumer, an AI agent and a firm joined by three lines in a triangle. The AI agent, a blue four-point spark at the top, acts as a surrogate consumer between the consumer and the firm."
+      >
+        {edges.map(([a, b], i) => {
+          const [x1, y1] = toward(a.x, a.y, b.x, b.y, 38);
+          const [x2, y2] = toward(b.x, b.y, a.x, a.y, 38);
+          return (
+            <line
+              key={i}
+              x1={x1}
+              y1={y1}
+              x2={x2}
+              y2={y2}
+              stroke={INK3}
+              strokeWidth={1.5}
+            />
+          );
+        })}
+        <AiMark1 cx={agent.x} cy={agent.y} s={44} fill={SIGNAL} />
+        <Label x={agent.x} y={22} anchor="middle" fill={SIGNAL} size={16}>
+          AI agent
+        </Label>
+        <Person1 x={consumer.x} y={consumer.y + 22} k={1.35} />
+        <Label x={consumer.x} y={228} anchor="middle" fill={INK} size={16}>
+          Consumer
+        </Label>
+        <Store1 cx={firm.x} cy={firm.y + 2} k={2.6} />
+        <Label x={firm.x} y={228} anchor="middle" fill={INK} size={16}>
+          Firm
+        </Label>
+      </Frame>
+    </Plate>
+  );
+}
+
+/* --------------------------------------------------------------------------
+   06, One draw versus the distribution. An illustrative 7-point response
+   distribution for one prompt; sampled answers scatter around it, while
+   token probabilities give it exactly.
+   -------------------------------------------------------------------------- */
+
+const EXACT = [0.02, 0.05, 0.12, 0.22, 0.33, 0.19, 0.07];
+type Draws = "1" | "10" | "100" | "exact";
+
+function sample(n: number, seed: number) {
+  const rand = seeded(seed);
+  const counts = EXACT.map(() => 0);
+  for (let i = 0; i < n; i++) {
+    let u = rand();
+    let k = 0;
+    while (k < EXACT.length - 1 && u >= EXACT[k]) {
+      u -= EXACT[k];
+      k++;
+    }
+    counts[k]++;
+  }
+  return counts.map((c) => c / n);
+}
+
+export function LikertPlate() {
+  const [draws, setDraws] = useState<Draws>("1");
+  const [seed, setSeed] = useState(11);
+  const shares =
+    draws === "exact"
+      ? EXACT
+      : sample(Number(draws), seed * 101 + Number(draws));
+  const base = 196;
+  const h = 160;
+  const cx = (i: number) => 72 + i * 44;
+  const what =
+    draws === "exact"
+      ? "the exact distribution from token probabilities"
+      : `${draws} sampled ${draws === "1" ? "response" : "responses"}`;
+
+  return (
+    <Plate>
+      <Frame
+        width={400}
+        height={244}
+        label={`Share of answers at each point of a 7-point agreement scale, from ${what}. Bars show the shares: ${shares
+          .map((v, i) => `${i + 1}: ${Math.round(v * 100)}%`)
+          .join(
+            ", ",
+          )}. Blue ticks mark the exact distribution, peaking at 5 with 33%.`}
+      >
+        {[0, 0.5, 1].map((t) => (
+          <g key={t}>
+            <line
+              x1={44}
+              y1={r2(base - t * h)}
+              x2={380}
+              y2={r2(base - t * h)}
+              stroke={RULE2}
+              strokeWidth={t === 0 ? 1.5 : 0.75}
+            />
+            <Label
+              x={38}
+              y={r2(base - t * h + 5)}
+              anchor="end"
+              fill={INK3}
+              size={13}
+            >
+              {`${t * 100}%`}
+            </Label>
+          </g>
+        ))}
+        {shares.map((v, i) => {
+          const bh = r2(v * h);
+          return (
+            <g key={i}>
+              {bh > 0 ? (
+                <rect
+                  x={cx(i) - 15}
+                  y={r2(base - bh)}
+                  width={30}
+                  height={bh}
+                  fill={PAPER3}
+                  stroke={INK}
+                  strokeWidth={1.25}
+                />
+              ) : null}
+              <line
+                x1={cx(i) - 19}
+                y1={r2(base - EXACT[i] * h)}
+                x2={cx(i) + 19}
+                y2={r2(base - EXACT[i] * h)}
+                stroke={SIGNAL}
+                strokeWidth={3}
+              />
+              <Label x={cx(i)} y={214} anchor="middle" fill={INK} size={14}>
+                {String(i + 1)}
+              </Label>
+            </g>
+          );
+        })}
+        <Label
+          x={cx(4)}
+          y={r2(base - EXACT[4] * h - 9)}
+          anchor="middle"
+          fill={SIGNAL}
+          size={14}
+        >
+          exact
+        </Label>
+        <Label x={cx(0) - 15} y={236} fill={INK3} size={13}>
+          Strongly disagree
+        </Label>
+        <Label x={cx(6) + 15} y={236} anchor="end" fill={INK3} size={13}>
+          Strongly agree
+        </Label>
+      </Frame>
+      <div className="flex flex-wrap items-end gap-x-4">
+        <Choice
+          label="Responses"
+          value={draws}
+          onChange={setDraws}
+          options={[
+            { id: "1", label: "One" },
+            { id: "10", label: "10" },
+            { id: "100", label: "100" },
+            { id: "exact", label: "Exact" },
+          ]}
+        />
+        <button
+          type="button"
+          disabled={draws === "exact"}
+          onClick={() => setSeed((v) => v + 1)}
+          className="mt-3 border border-[var(--rule-2)] bg-[var(--paper)] px-3 py-1.5 text-[13px] text-[var(--ink-2)] transition-colors hover:bg-[var(--paper-3)] disabled:opacity-40"
+        >
+          Ask again
+        </button>
+      </div>
+    </Plate>
+  );
+}
+
+/* --------------------------------------------------------------------------
+   Paper 4, party opinions on unseen questions (Wadi & Ma 2026; SubPOP / US
+   GSS, Democrat and Republican subpopulations). Human shares are exact from
+   subpop_eval.jsonl; model shares are human plus the per-option errors
+   printed in political_party_mixed_diff_vs_human_subpop.png (whole points),
+   and KL values are those printed in the KDE figure. Curves use the same
+   discrete KDE (bandwidth 0.55) as political_party_mixed_kde_by_sample_subpop.
+   -------------------------------------------------------------------------- */
+
+type PartyModel = "k08" | "k08ft" | "k4" | "k4ft";
+type Party = "dem" | "rep";
+
+const PARTY_QS: {
+  id: string;
+  label: string;
+  ends: [string, string];
+  human: Record<Party, number[]>;
+  err: Record<PartyModel, Record<Party, number[]>>;
+  kl: Record<PartyModel, Record<Party, number>>;
+}[] = [
+  {
+    id: "letin1a",
+    label: "Immigration",
+    ends: ["Increased a lot", "Reduced a lot"],
+    human: { dem: [0.157, 0.2363, 0.436, 0.1005, 0.0702], rep: [0.0343, 0.0544, 0.2536, 0.2564, 0.4013] },
+    err: {
+      k08: { dem: [1, 4, -15, 6, 4], rep: [12, 20, 4, -8, -28] },
+      k08ft: { dem: [-5, -9, -10, 12, 12], rep: [-1, -1, -4, 1, 4] },
+      k4: { dem: [5, 3, -10, 2, -1], rep: [-1, -1, -10, 1, 11] },
+      k4ft: { dem: [-7, -4, -1, 9, 4], rep: [-2, -1, -7, -7, 18] },
+    },
+    kl: {
+      k08: { dem: 0.09, rep: 0.6 },
+      k08ft: { dem: 0.21, rep: 0.01 },
+      k4: { dem: 0.03, rep: 0.06 },
+      k4ft: { dem: 0.1, rep: 0.11 },
+    },
+  },
+  {
+    id: "marhomo",
+    label: "Same-sex marriage",
+    ends: ["Strongly agree", "Strongly disagree"],
+    human: { dem: [0.6455, 0.1518, 0.0982, 0.0341, 0.0704], rep: [0.2045, 0.2624, 0.1914, 0.1279, 0.2138] },
+    err: {
+      k08: { dem: [-52, -1, 36, 15, 2], rep: [-10, -14, 26, 9, -11] },
+      k08ft: { dem: [-46, 18, 9, 16, 3], rep: [-10, -1, 1, 11, -1] },
+      k4: { dem: [-31, 43, -4, -2, -6], rep: [-8, -12, 3, 17, 0] },
+      k4ft: { dem: [-14, 20, -1, 1, -5], rep: [-17, -13, -7, 21, 16] },
+    },
+    kl: {
+      k08: { dem: 1.23, rep: 0.38 },
+      k08ft: { dem: 0.77, rep: 0.1 },
+      k4: { dem: 0.62, rep: 0.19 },
+      k4ft: { dem: 0.18, rep: 0.55 },
+    },
+  },
+];
+
+/**
+ * Only the untuned and fine-tuned Kev 0.8B, on the two questions where
+ * fine-tuning visibly separated the parties toward the human curves
+ * (immigration and same-sex marriage); the paper figure's newspaper and
+ * hiring questions, and the 4B pair, are left out.
+ */
+const PARTY_MODELS: { id: PartyModel; label: string }[] = [
+  { id: "k08", label: "Kev 0.8B" },
+  { id: "k08ft", label: "Kev 0.8B FT" },
+];
+
+/** Human share plus the printed error, clipped at zero and renormalized. */
+function modelShares(human: number[], err: number[]) {
+  const raw = human.map((h, i) => Math.max(0, h + err[i] / 100));
+  const sum = raw.reduce((a, b) => a + b, 0) || 1;
+  return raw.map((v) => v / sum);
+}
+
+/** The figure's discrete KDE: a Gaussian bump (bw 0.55) on each option, in %. */
+function kdePath(probs: number[], x0: number, x1: number, base: number, scale: number) {
+  const n = probs.length;
+  const pts: string[] = [];
+  const steps = 60;
+  for (let s = 0; s <= steps; s++) {
+    const g = -0.4 + (s / steps) * (n - 0.2);
+    let v = 0;
+    probs.forEach((p, c) => {
+      v += (p * Math.exp(-0.5 * ((g - c) / 0.55) ** 2)) / (0.55 * Math.sqrt(2 * Math.PI));
+    });
+    const x = x0 + ((g + 0.4) / (n - 0.2)) * (x1 - x0);
+    pts.push(`${s === 0 ? "M" : "L"}${r2(x)} ${r2(base - v * 100 * scale)}`);
+  }
+  return pts.join("");
+}
+
+function PartyPanel({
+  x,
+  title,
+  shares,
+  kl,
+  ends,
+  tag,
+}: {
+  x: number;
+  title: string;
+  shares: Record<Party, number[]>;
+  kl?: Record<Party, number>;
+  ends: [string, string];
+  tag?: boolean;
+}) {
+  const w = 176;
+  const base = 168;
+  const scale = 2.6;
+  const party: { id: Party; name: string; color: string }[] = [
+    { id: "dem", name: "Democrat", color: SIGNAL },
+    { id: "rep", name: "Republican", color: COUNTER },
+  ];
+  return (
+    <g>
+      <Label x={x} y={18} fill={INK} size={15}>
+        {title}
+      </Label>
+      {kl ? (
+        <g>
+          <Label x={x + w} y={18} anchor="end" fill={SIGNAL} size={12}>
+            {`KL ${kl.dem.toFixed(2)}`}
+          </Label>
+          <Label x={x + w} y={34} anchor="end" fill={COUNTER} size={12}>
+            {`KL ${kl.rep.toFixed(2)}`}
+          </Label>
+        </g>
+      ) : null}
+      {party.map((p) => {
+        const d = kdePath(shares[p.id], x, x + w, base, scale);
+        return (
+          <g key={p.id}>
+            <path d={`${d}L${x + w} ${base}L${x} ${base}Z`} fill={p.color} fillOpacity={0.1} />
+            <path d={d} fill="none" stroke={p.color} strokeWidth={2.25} strokeLinejoin="round" />
+          </g>
+        );
+      })}
+      <line x1={x} y1={base} x2={x + w} y2={base} stroke={INK} strokeWidth={1.25} />
+      <Label x={x} y={base + 16} fill={INK3} size={11.5}>
+        {ends[0]}
+      </Label>
+      <Label x={x + w} y={base + 16} anchor="end" fill={INK3} size={11.5}>
+        {ends[1]}
+      </Label>
+      {tag ? (
+        <g>
+          <Label x={x} y={base + 34} fill={SIGNAL} size={13}>
+            Democrat
+          </Label>
+          <Label x={x + 70} y={base + 34} fill={COUNTER} size={13}>
+            Republican
+          </Label>
+        </g>
+      ) : null}
+    </g>
+  );
+}
+
+export function PartyPlate() {
+  const [qid, setQid] = useState("letin1a");
+  const [mid, setMid] = useState<PartyModel>("k08");
+  const q = PARTY_QS.find((x) => x.id === qid)!;
+  const model = PARTY_MODELS.find((m) => m.id === mid)!;
+  const shares = {
+    dem: modelShares(q.human.dem, q.err[mid].dem),
+    rep: modelShares(q.human.rep, q.err[mid].rep),
+  };
+  const pct = (v: number[]) => v.map((p) => `${Math.round(p * 100)}%`).join(", ");
+  return (
+    <Plate>
+      <Frame
+        width={400}
+        height={212}
+        label={`Answer distributions on the unseen GSS question about ${q.label.toLowerCase()}, from ${q.ends[0]} to ${q.ends[1]}. Humans: Democrats ${pct(q.human.dem)}; Republicans ${pct(q.human.rep)}. ${model.label}: Democrats ${pct(shares.dem)} (KL ${q.kl[mid].dem}); Republicans ${pct(shares.rep)} (KL ${q.kl[mid].rep}).`}
+      >
+        <PartyPanel x={12} title="Human" shares={q.human} ends={q.ends} tag />
+        <line x1={200} y1={8} x2={200} y2={184} stroke={RULE2} strokeWidth={1} />
+        <PartyPanel x={212} title={model.label} shares={shares} kl={q.kl[mid]} ends={q.ends} />
+      </Frame>
+      <Choice
+        label="Question"
+        value={qid}
+        onChange={setQid}
+        options={PARTY_QS.map((x) => ({ id: x.id, label: x.label }))}
+      />
+      <Choice label="Model" value={mid} onChange={setMid} options={PARTY_MODELS} />
+    </Plate>
+  );
+}
