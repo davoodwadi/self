@@ -4,15 +4,15 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ==========================================================================
-   FIELD LEDGER — design system for Marketing Research & Analytics
+   FIELD LEDGER: design system for Marketing Research & Analytics
    --------------------------------------------------------------------------
    An analyst's notebook: cool grey-white paper, graphite ink, one ink-blue
    signal and one ochre counterweight. Structure comes from hairline rules
    and tabular figures rather than boxes and shadows.
 
    Ink      #15181D   headings, rules, the default voice
-   Signal   #2C4A8C   ink blue — emphasis, the finding, the "evidence" colour
-   Counter  #A5621B   ochre — secondary category, contrast cases, discussion
+   Signal   #2C4A8C   ink blue, emphasis, the finding, the "evidence" colour
+   Counter  #A5621B   ochre, secondary category, contrast cases, discussion
    Paper    #F8F8F5   cool paper ground
    ========================================================================== */
 

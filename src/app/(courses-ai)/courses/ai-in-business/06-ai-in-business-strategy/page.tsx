@@ -27,9 +27,9 @@ import {
 } from "../_visuals/kit";
 
 // ============================================================================
-// WEEK 06 — AI IN BUSINESS STRATEGY
+// WEEK 06: AI IN BUSINESS STRATEGY
 // ============================================================================
-// Same deck grammar as Weeks 01–05: every slide is hand-composed for its own
+// Same deck grammar as Weeks 01 to 05: every slide is hand-composed for its own
 // argument, with hairlines instead of boxes and crimson marking one thing.
 //
 // Sentences are transcribed verbatim from content.md. Figures carry only words
@@ -49,8 +49,8 @@ export default function Week06BusinessStrategy() {
       <ScrollProgress label="Week 06" />
 
       {/* ==================================================================
-          01 · TITLE — masthead; artificial intelligence joined into
-          competitive advantage; implementation set beside alignment.
+          01. TITLE: masthead. Artificial intelligence joined into
+          competitive advantage. Implementation set beside alignment.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
         <span
@@ -116,7 +116,7 @@ export default function Week06BusinessStrategy() {
             <span
               className={`${MICRO} font-normal text-[var(--charcoal-light)]/60`}
             >
-              BUSI 654 · Applications of AI in Business
+              BUSI 654. Applications of AI in Business
             </span>
           </div>
         </div>
@@ -134,9 +134,9 @@ export default function Week06BusinessStrategy() {
       />
 
       {/* ==================================================================
-          03 · NEW STRATEGIC LANDSCAPE — one market drawn twice: inside a
-          fixed boundary, then with the boundary redrawn; reactive struck
-          for proactive; decisions arriving faster and faster.
+          03. NEW STRATEGIC LANDSCAPE: one market drawn twice: inside a
+          fixed boundary, then with the boundary redrawn. Reactive struck
+          for proactive. Decisions arriving faster and faster.
                                                           [quiz topic]
       ================================================================== */}
       <Slide id="strategic-landscape" border align="left">
@@ -302,8 +302,8 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          04 · AI AS A STRATEGIC ASSET — data alone stopping short of
-          advantage; unique data training the crimson capability; a moat
+          04. AI AS A STRATEGIC ASSET: data alone stopping short of
+          advantage. Unique data training the crimson capability. A moat
           ring holding outsiders off a strategic position.
                                           [quiz: strategic-landscape]
       ================================================================== */}
@@ -566,7 +566,7 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          05 · RETHINKING THE VALUE CHAIN — primary and support activities
+          05. RETHINKING THE VALUE CHAIN: primary and support activities
           side by side, then the whole chain with AI in every activity and
           the margin arrow carrying the compound benefits.
       ================================================================== */}
@@ -731,9 +731,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          06 · FALLACY OF PLUG AND PLAY — the same square tool docked on three
-          different firms; a crimson piece cut to interlock with one firm's
-          uneven edge; strategy and architecture joined at every seam.
+          06. FALLACY OF PLUG AND PLAY: the same square tool docked on three
+          different firms. A crimson piece cut to interlock with one firm's
+          uneven edge. Strategy and architecture joined at every seam.
       ================================================================== */}
       <Slide id="plug-and-play" border align="left">
         <Head1 eyebrow="Off the shelf" signal>
@@ -931,9 +931,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          07 · LEADERSHIP IMPERATIVE — strategy held at the top of the chart,
-          the hand-off to IT struck out; a spread of probabilistic outcomes;
-          initiatives lined up across functions toward business goals.
+          07. LEADERSHIP IMPERATIVE: strategy held at the top of the chart,
+          the hand-off to IT struck out. A spread of probabilistic outcomes.
+          Initiatives lined up across functions toward business goals.
       ================================================================== */}
       <Slide id="leadership" border align="left">
         <Head1 eyebrow="Who owns it">The Leadership Imperative</Head1>
@@ -1127,9 +1127,9 @@ export default function Week06BusinessStrategy() {
       />
 
       {/* ==================================================================
-          09 · DIMENSIONS OF VALUE CREATION — three numbered columns: costs
-          stepping down, revenue stepping up, a new stream branching off;
-          then the three set against strategic return.     [quiz topic]
+          09. DIMENSIONS OF VALUE CREATION: three numbered columns: costs
+          stepping down, revenue stepping up, a new stream branching off.
+          Then the three set against strategic return.     [quiz topic]
       ================================================================== */}
       <Slide id="value-dimensions" border align="left">
         <Head1 eyebrow="Three dimensions">Dimensions of Value Creation</Head1>
@@ -1311,9 +1311,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          10 · PRODUCT AND SERVICE TRANSFORMATION — a product with two
-          crimson additions; separate sales against one continuous service
-          line; static struck for learning.       [quiz: value-dimensions]
+          10. PRODUCT AND SERVICE TRANSFORMATION: a product with two
+          crimson additions. Separate sales against one continuous service
+          line. Static struck for learning.       [quiz: value-dimensions]
       ================================================================== */}
       <Slide
         id="product-service"
@@ -1444,9 +1444,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          11 · ECONOMICS OF AI — one tall step of fixed cost then a nearly flat
-          line; two falling cost curves, the network-effect one steeper;
-          returns that flatten with volume but keep rising with quality.
+          11. ECONOMICS OF AI: one tall step of fixed cost then a nearly flat
+          line. Two falling cost curves, the network-effect one steeper.
+          Returns that flatten with volume but keep rising with quality.
                                                           [quiz topic]
       ================================================================== */}
       <Slide id="ai-economics" border align="left">
@@ -1646,8 +1646,8 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          12 · CAPTURING VALUE FROM ECOSYSTEMS — one lone firm beside a
-          crimson hub wired to its partners; data passing both ways across
+          12. CAPTURING VALUE FROM ECOSYSTEMS: one lone firm beside a
+          crimson hub wired to its partners. Data passing both ways across
           an agreement.                                [quiz: ai-economics]
       ================================================================== */}
       <Slide
@@ -1808,9 +1808,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          13 · PRICING STRATEGY — a flat price beside a crimson price that
-          moves; willingness to pay as bars, the surplus above one fixed price
-          shaded, then each bar priced at its own height; the risks named.
+          13. PRICING STRATEGY: a flat price beside a crimson price that
+          moves. Willingness to pay as bars, the surplus above one fixed price
+          shaded, then each bar priced at its own height. The risks named.
       ================================================================== */}
       <Slide id="pricing" border align="left">
         <Head1 eyebrow="Price">Pricing Strategy in the AI Era</Head1>
@@ -1964,8 +1964,8 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          14 · METRICS FOR AI STRATEGY — the same rise drawn twice, financial
-          metrics lagging the leading indicators; the three new KPIs; project
+          14. METRICS FOR AI STRATEGY: the same rise drawn twice, financial
+          metrics lagging the leading indicators. The three new KPIs. Project
           arrows, some reaching the objectives and some drifting off.
       ================================================================== */}
       <Slide id="metrics" border align="left">
@@ -2134,8 +2134,8 @@ export default function Week06BusinessStrategy() {
       />
 
       {/* ==================================================================
-          16 · DATA MOAT FALLACY — a big field of grey data; the same pattern
-          turning up in datasets bought and synthesized; crimson data tethered
+          16. DATA MOAT FALLACY: a big field of grey data. The same pattern
+          turning up in datasets bought and synthesized. Crimson data tethered
           to each step of a proprietary workflow.          [quiz topic]
       ================================================================== */}
       <Slide id="data-moat" border align="left">
@@ -2321,8 +2321,8 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          17 · ALGORITHMIC NETWORK EFFECTS — the three-step cycle drawn as a
-          loop with the refining step in crimson; a challenger stopped at the
+          17. ALGORITHMIC NETWORK EFFECTS: the three-step cycle drawn as a
+          loop with the refining step in crimson. A challenger stopped at the
           edge of an established loop.                    [quiz: data-moat]
       ================================================================== */}
       <Slide
@@ -2562,9 +2562,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          18 · STRATEGIC POSITIONING — cost leadership and differentiation as
+          18. STRATEGIC POSITIONING: cost leadership and differentiation as
           axes, the traditional trade-off curve between them, and the crimson
-          point beyond it that has both; one narrow crimson segment in a row.
+          point beyond it that has both. One narrow crimson segment in a row.
       ================================================================== */}
       <Slide id="positioning" border align="left">
         <Head1 eyebrow="Positioning">Strategic Positioning</Head1>
@@ -2732,7 +2732,7 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          19 · BUILD VERSUS BUY — a plus-and-minus ledger for each side; a map
+          19. BUILD VERSUS BUY: a plus-and-minus ledger for each side. A map
           of competencies with the core ones marked crimson and built, the
           rest bought.                                     [quiz topic]
       ================================================================== */}
@@ -2852,8 +2852,8 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          20 · OPEN SOURCE STRATEGY — a firm taking from and giving back to
-          the open source commons, one column for each direction; the firm
+          20. OPEN SOURCE STRATEGY: a firm taking from and giving back to
+          the open source commons, one column for each direction. The firm
           resting on an ecosystem it does not control.      [quiz: build-buy]
       ================================================================== */}
       <Slide
@@ -3016,9 +3016,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          21 · DISRUPTIVE AI INNOVATION — a tall wall of scale drawn as a
+          21. DISRUPTIVE AI INNOVATION: a tall wall of scale drawn as a
           ghost, a low crimson wall in its place, and new competitors hopping
-          over into the market; what incumbents hold in defence.
+          over into the market. What incumbents hold in defence.
       ================================================================== */}
       <Slide id="disruption" border align="left">
         <Head1 eyebrow="New entrants">Disruptive AI Innovation</Head1>
@@ -3184,8 +3184,8 @@ export default function Week06BusinessStrategy() {
       />
 
       {/* ==================================================================
-          23 · AI OPERATING MODEL — the same people sorted into three silos,
-          then regrouped into mixed crimson squads; the three roles named; a
+          23. AI OPERATING MODEL: the same people sorted into three silos,
+          then regrouped into mixed crimson squads. The three roles named. A
           coil that loops quickly while climbing.            [quiz topic]
       ================================================================== */}
       <Slide id="operating-model" border align="left">
@@ -3377,9 +3377,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          24 · CENTRALIZED VERSUS DECENTRALIZED — one crimson hub wired to
+          24. CENTRALIZED VERSUS DECENTRALIZED: one crimson hub wired to
           every unit, against units that each hold their own crimson
-          capability; a level balance resting on the hybrid.
+          capability. A level balance resting on the hybrid.
                                               [quiz: operating-model]
       ================================================================== */}
       <Slide
@@ -3545,8 +3545,8 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          25 · TALENT STRATEGY — four crimson marks in a wide grey field;
-          upskilling set equal to hiring; a crimson bridge across the gap
+          25. TALENT STRATEGY: four crimson marks in a wide grey field.
+          Upskilling set equal to hiring. A crimson bridge across the gap
           between technical and business teams.
       ================================================================== */}
       <Slide id="talent" border align="left">
@@ -3689,9 +3689,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          26 · AGILE AI DEVELOPMENT — a fixed waterfall beside a fan of
-          uncertain paths; a quick run of prototypes, several struck, the
-          last one crimson; a small square growing to full scale.
+          26. AGILE AI DEVELOPMENT: a fixed waterfall beside a fan of
+          uncertain paths. A quick run of prototypes, several struck, the
+          last one crimson. A small square growing to full scale.
       ================================================================== */}
       <Slide id="agile" border align="left">
         <Head1 eyebrow="Method">Agile AI Development</Head1>
@@ -3921,9 +3921,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          27 · DATA GOVERNANCE AS STRATEGY — compliance set beside enabler;
-          one data asset traced back to its source, checked, and opened to
-          the organization; every asset with its own crimson owner.
+          27. DATA GOVERNANCE AS STRATEGY: compliance set beside enabler.
+          One data asset traced back to its source, checked, and opened to
+          the organization. Every asset with its own crimson owner.
       ================================================================== */}
       <Slide id="governance" border align="left">
         <Head1 eyebrow="Governance">Data Governance as Strategy</Head1>
@@ -3932,7 +3932,7 @@ export default function Week06BusinessStrategy() {
           <div className="mt-10 w-full max-w-5xl">
             <Split1 left="Just a compliance function" right="Strategic enabler" />
             <p className={`${LEAD} mt-6 max-w-4xl`}>
-              Data governance is no longer just a compliance function; it is a
+              Data governance is no longer just a compliance function. It is a
               strategic enabler.
             </p>
           </div>
@@ -4091,9 +4091,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          28 · CULTIVATING AN AI CULTURE — one certain spike against a crimson
-          spread of outcomes; a crimson mark on every tier of the hierarchy;
-          an automated decision passing through a wall of resistance.
+          28. CULTIVATING AN AI CULTURE: one certain spike against a crimson
+          spread of outcomes. A crimson mark on every tier of the hierarchy.
+          An automated decision passing through a wall of resistance.
       ================================================================== */}
       <Slide id="culture" border align="left">
         <Head1 eyebrow="Culture">Cultivating an AI Culture</Head1>
@@ -4267,9 +4267,9 @@ export default function Week06BusinessStrategy() {
       />
 
       {/* ==================================================================
-          30 · THE EXECUTION GAP — eight pilots, two arcing across to
-          production and six dropping into the gap; a deployment whose teeth
-          miss the legacy system's slots; the two things execution needs.
+          30. THE EXECUTION GAP: eight pilots, two arcing across to
+          production and six dropping into the gap. A deployment whose teeth
+          miss the legacy system's slots. The two things execution needs.
                                                           [quiz topic]
       ================================================================== */}
       <Slide id="execution-gap" border align="left">
@@ -4446,9 +4446,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          31 · MANAGING ALGORITHMIC RISK — the environment shifts and the
-          model line starts to sink; drift caught where it crosses a
-          threshold; a crimson fallback routed around a failed system.
+          31. MANAGING ALGORITHMIC RISK: the environment shifts and the
+          model line starts to sink. Drift caught where it crosses a
+          threshold. A crimson fallback routed around a failed system.
                                                 [quiz: execution-gap]
       ================================================================== */}
       <Slide
@@ -4650,9 +4650,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          32 · STRATEGIC AGILITY — a crimson course that turns sharply above
-          a quickening market; a sensing sweep catching one competitor move;
-          resources shifted from one bar to another.
+          32. STRATEGIC AGILITY: a crimson course that turns sharply above
+          a quickening market. A sensing sweep catching one competitor move.
+          Resources shifted from one bar to another.
       ================================================================== */}
       <Slide id="agility" border align="left">
         <Head1 eyebrow="Agility">Strategic Agility</Head1>
@@ -4847,9 +4847,9 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          33 · REGULATORY STRATEGY — the two things being navigated; a firm
+          33. REGULATORY STRATEGY: the two things being navigated. A firm
           engaging policymakers both ways and shaping the standard that comes
-          out; constraint struck for differentiator.
+          out. Constraint struck for differentiator.
       ================================================================== */}
       <Slide id="regulatory" border align="left">
         <Head1 eyebrow="Regulation">Regulatory Strategy</Head1>
@@ -4981,8 +4981,8 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          34 · AI AND CORPORATE SOCIAL RESPONSIBILITY — the three ethical
-          implications; the AI strategy laid across three ESG pillars; an
+          34. AI AND CORPORATE SOCIAL RESPONSIBILITY: the three ethical
+          implications. The AI strategy laid across three ESG pillars. An
           open, see-through system linked to customers and stakeholders.
       ================================================================== */}
       <Slide id="csr" border align="left">
@@ -5147,7 +5147,7 @@ export default function Week06BusinessStrategy() {
       </Slide>
 
       {/* ==================================================================
-          35 · THE FUTURE STRATEGIC HORIZON — collaboration struck for
+          35. THE FUTURE STRATEGIC HORIZON: collaboration struck for
           autonomous units, then the three closing statements in display
           weight, then the colophon.
       ================================================================== */}
@@ -5205,7 +5205,7 @@ export default function Week06BusinessStrategy() {
             <span
               className={`${MICRO} font-normal text-[var(--charcoal-light)]/55`}
             >
-              Davood Wadi, PhD · BUSI 654
+              Davood Wadi, PhD | BUSI 654
             </span>
           </div>
         </div>

@@ -13,11 +13,11 @@
         "id": "chat-notice",
         "text": "An online retailer adds a line to its chat window: 'You are talking to an automated assistant.'",
         "answer": "process",
-        "explanation": "Disclosing that an automated system is in use is institutional openness about the process; it says nothing about how the model computes."
+        "explanation": "Disclosing that an automated system is in use is institutional openness about the process. It says nothing about how the model computes."
       },
       {
         "id": "scorecard",
-        "text": "An insurer prices renters' policies with a five-variable scorecard; an analyst can read each variable's points straight off the table.",
+        "text": "An insurer prices renters' policies with a five-variable scorecard. An analyst can read each variable's points straight off the table.",
         "answer": "intrinsic",
         "explanation": "The model's own structure is simple enough to trace how inputs combine into the price, so no secondary procedure is needed."
       },
@@ -25,7 +25,7 @@
         "id": "surrogate-tree",
         "text": "After a neural network ranks loyalty-programme members, the analytics team fits a small decision tree to its outputs to summarize what it seems to do.",
         "answer": "posthoc",
-        "explanation": "A surrogate model fitted after the fact approximates the black box; it is not the model that made the ranking."
+        "explanation": "A surrogate model fitted after the fact approximates the black box. It is not the model that made the ranking."
       },
       {
         "id": "audit-standard",
@@ -78,7 +78,7 @@
         "id": "bail",
         "text": "Recommending pretrial release from a defendant's age, prior offences, and missed court dates.",
         "bin": "interpretable",
-        "explanation": "Criminal justice decisions on structured features are high-stakes; an approximate post-hoc explanation could hide critical failures."
+        "explanation": "Criminal justice decisions on structured features are high-stakes. An approximate post-hoc explanation could hide critical failures."
       },
       {
         "id": "call-transcripts",
@@ -151,7 +151,7 @@
         "id": "older",
         "text": "Be eight years older.",
         "bin": "immutable",
-        "explanation": "Age is immutable; it can explain a score but offers zero recourse."
+        "explanation": "Age is immutable. It can explain a score but offers zero recourse."
       },
       {
         "id": "born",
@@ -163,7 +163,7 @@
         "id": "less-experience",
         "text": "Report three fewer years of work experience.",
         "bin": "direction",
-        "explanation": "Work experience can only grow; asking it to decrease is a directionally infeasible change."
+        "explanation": "Work experience can only grow. Asking it to decrease is a directionally infeasible change."
       },
       {
         "id": "missed-payment",
@@ -190,7 +190,7 @@
     "slide_id": "plausibility-versus-faithfulness-in-llm-explanations",
     "question_text": "An auditor gives a language model twenty laptop comparisons in which the cheaper laptop is always listed first. The model picks the first-listed laptop 90 percent of the time, and each chain-of-thought explains the pick with battery life and build quality, never with list order. What best describes these explanations?",
     "hint": "Separate how convincing the explanation reads from whether it names what actually drove the choice.",
-    "correct_answer_citation": "Week 05 · Plausibility Versus Faithfulness in LLM Explanations",
+    "correct_answer_citation": "Week 05: Plausibility Versus Faithfulness in LLM Explanations",
     "correct_answer_index": 2,
     "options": [
       {
@@ -199,7 +199,7 @@
       },
       {
         "option_text": "Both plausible and faithful, because battery life and build quality are sensible criteria.",
-        "option_explanation": "Sensible-sounding criteria make an explanation plausible; faithfulness requires naming the true causal factor, list order."
+        "option_explanation": "Sensible-sounding criteria make an explanation plausible. Faithfulness requires naming the true causal factor, list order."
       },
       {
         "option_text": "Plausible but unfaithful: the traces read as convincing while omitting the covert ordering cue that drove the choice.",

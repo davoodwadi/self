@@ -61,7 +61,7 @@ week: week7
 - Recency measures how recently the customer made their last purchase, which is the strongest single behavioral predictor of whether they will respond to a new campaign.
 - Frequency measures how often the customer has purchased within a given period, separating one-time gift buyers from habitual repeat customers.
 - Monetary value measures the total revenue (or gross contribution margin) the customer has generated across their history with the firm.
-- Grouping customers into RFM segments (such as Champions with high R, F, and M; At-Risk Big Spenders with low R but high historical F and M; and Price-Sensitive One-Timers) allows marketers to reserve VIP early access for Champions while directing win-back interventions to At-Risk high-value buyers.
+- Grouping customers into RFM segments (such as Champions with high R, F, and M, At-Risk Big Spenders with low R but high historical F and M, and Price-Sensitive One-Timers) allows marketers to reserve VIP early access for Champions while directing win-back interventions to At-Risk high-value buyers.
 
 ## Part 4: Email and Push Deliverability, Hygiene, and Frequency [no-exercise]
 - Even the best lifecycle flow fails if inbox providers route the company's emails into the spam folder or if push notifications cause users to uninstall the mobile app.
@@ -83,7 +83,7 @@ week: week7
 ## AI-Driven Personalization Versus Customer Reactance [exercise]
 - Next-best-action models evaluate each customer's real-time CDP profile to decide which product to feature, which channel to use (email, SMS, app push, or silence), and what time of day to send.
 - Generative language models can dynamically adapt email subject lines and body explanations to highlight the specific product attributes a customer cares about (e.g., emphasizing durability for one buyer and lightweight portability for another).
-- However, personalization exhibits an inverted-U relationship with consumer response; when a message references overly granular behavioral tracking that the customer did not consciously realize they shared, it triggers perceived surveillance, eeriness, and psychological reactance (Aguirre et al., 2015).
+- However, personalization exhibits an inverted-U relationship with consumer response. When a message references overly granular behavioral tracking that the customer did not consciously realize they shared, it triggers perceived surveillance, eeriness, and psychological reactance (Aguirre et al., 2015).
 - Furthermore, as consumers begin using AI inbox filters and personal assistant agents that summarize promotional emails and manage subscriptions automatically, lifecycle messages must offer clear, structured value rather than clickbait subject lines.
 
 ## Discussion: The Personalization Creepiness Line

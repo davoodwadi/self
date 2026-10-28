@@ -10,7 +10,7 @@ const RAI = readCurriculum(RAI_DIR);
 
 const ROLES = [
   {
-    period: "2021 – present",
+    period: "2021: present",
     institution: "GreatLearning",
     role: "Instructor",
     description:

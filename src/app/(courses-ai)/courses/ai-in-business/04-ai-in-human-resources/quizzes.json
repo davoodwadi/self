@@ -3,7 +3,7 @@
     "slide_id": "decision-architecture",
     "question_text": "According to the lecture, when does AI matter in HR?",
     "hint": "The lecture names three improvements, and two things they must not weaken.",
-    "correct_answer_citation": "Week 04 — Why HR Became an AI Domain",
+    "correct_answer_citation": "Week 04: Why HR Became an AI Domain",
     "correct_answer_index": 1,
     "options": [
       {
@@ -16,7 +16,7 @@
       },
       {
         "option_text": "When digital HR systems capture enough data to remove uncertainty from people decisions.",
-        "option_explanation": "The lecture describes HR decisions as made under uncertainty; capturing data at scale does not remove it."
+        "option_explanation": "The lecture describes HR decisions as made under uncertainty. Capturing data at scale does not remove it."
       },
       {
         "option_text": "When it speeds up HR processing, whatever the effect on fairness or trust.",
@@ -28,7 +28,7 @@
     "slide_id": "human-judgment",
     "question_text": "Where does the lecture say generative systems are strongest in HR?",
     "hint": "The lecture lists what they are strongest in, then names what they should not be used for.",
-    "correct_answer_citation": "Week 04 — Matching AI Method to the HR Task",
+    "correct_answer_citation": "Week 04: Matching AI Method to the HR Task",
     "correct_answer_index": 2,
     "options": [
       {
@@ -53,7 +53,7 @@
     "slide_id": "interview-intelligence",
     "question_text": "What role does the lecture say screening tools should play in hiring?",
     "hint": "The lecture contrasts two roles and warns against one that is hidden.",
-    "correct_answer_citation": "Week 04 — Resume Screening and Candidate Matching",
+    "correct_answer_citation": "Week 04: Resume Screening and Candidate Matching",
     "correct_answer_index": 0,
     "options": [
       {
@@ -78,7 +78,7 @@
     "slide_id": "module-3",
     "question_text": "Why does the lecture say clear documentation is essential in hiring governance?",
     "hint": "Think about who supplies the model and who carries the consequences.",
-    "correct_answer_citation": "Week 04 — Fairness, Adverse Impact, and Hiring Governance",
+    "correct_answer_citation": "Week 04: Fairness, Adverse Impact, and Hiring Governance",
     "correct_answer_index": 3,
     "options": [
       {
@@ -103,7 +103,7 @@
     "slide_id": "scheduling-staffing",
     "question_text": "According to the lecture, when are skills systems useful?",
     "hint": "The lecture names three things employees and managers must trust about inferred skills.",
-    "correct_answer_citation": "Week 04 — Skills Graphs and the Internal Labor Market",
+    "correct_answer_citation": "Week 04: Skills Graphs and the Internal Labor Market",
     "correct_answer_index": 2,
     "options": [
       {
@@ -128,7 +128,7 @@
     "slide_id": "productivity-analytics",
     "question_text": "How does the lecture say AI tools change pay equity analysis?",
     "hint": "Compare how often the analysis happens before and after, and what it is tied to.",
-    "correct_answer_citation": "Week 04 — Rewards, Promotion, and Pay Equity Analytics",
+    "correct_answer_citation": "Week 04: Rewards, Promotion, and Pay Equity Analytics",
     "correct_answer_index": 1,
     "options": [
       {
@@ -153,7 +153,7 @@
     "slide_id": "case-triage",
     "question_text": "Why does the lecture say leaders need careful interpretation of DEI analytics?",
     "hint": "Finding a gap is not the same as knowing why it exists.",
-    "correct_answer_citation": "Week 04 — DEI Analytics and Representation Risk",
+    "correct_answer_citation": "Week 04: DEI Analytics and Representation Risk",
     "correct_answer_index": 3,
     "options": [
       {
@@ -178,7 +178,7 @@
     "slide_id": "build-buy-partner",
     "question_text": "When is a model inventory valuable, according to the lecture?",
     "hint": "A list of models is not enough on its own. The lecture names three things it must be linked to.",
-    "correct_answer_citation": "Week 04 — AI Governance for HR Across the Lifecycle",
+    "correct_answer_citation": "Week 04: AI Governance for HR Across the Lifecycle",
     "correct_answer_index": 0,
     "options": [
       {
@@ -187,11 +187,11 @@
       },
       {
         "option_text": "When it lists every HR model in one place, whether or not anyone reviews them.",
-        "option_explanation": "A list alone is not enough; the lecture requires links to decisions, review cadence, and documented accountability."
+        "option_explanation": "A list alone is not enough. The lecture requires links to decisions, review cadence, and documented accountability."
       },
       {
         "option_text": "When it replaces lifecycle controls from problem definition through retirement.",
-        "option_explanation": "The lecture says HR AI requires controls across the lifecycle; the inventory does not replace them."
+        "option_explanation": "The lecture says HR AI requires controls across the lifecycle. The inventory does not replace them."
       },
       {
         "option_text": "When nobody needs to be named as owner, reviewer, or authority to stop deployment.",

@@ -310,9 +310,9 @@
   {
     "type": "quiz",
     "slide_id": "measuring-the-attitudes-of-ai-models",
-    "question_text": "A brand team wants to know how a shopping assistant's AI model feels about its products. They ask the model once to rate \"This brand is trustworthy\" on a 1–7 scale, and it answers 6. Which conclusion fits the slide?",
+    "question_text": "A brand team wants to know how a shopping assistant's AI model feels about its products. They ask the model once to rate \"This brand is trustworthy\" on a 1 to 7 scale, and it answers 6. Which conclusion fits the slide?",
     "hint": "Think about how a model answers the same question more than once, and what an attitude in a model is.",
-    "correct_answer_citation": "Week 06 · Measuring the Attitudes of AI Models",
+    "correct_answer_citation": "Week 06: Measuring the Attitudes of AI Models",
     "correct_answer_index": 2,
     "options": [
       {

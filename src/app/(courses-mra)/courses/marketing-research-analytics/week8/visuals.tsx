@@ -117,7 +117,7 @@ export function ProbabilisticCause() {
    Conditions for Causality
    -------------------------------------------------------------------------- */
 
-/** Ten stores: in-store promotion and sales, both on a 0–1 scale. The five busiest-area stores come last. */
+/** Ten stores: in-store promotion and sales, both on a 0 to 1 scale. The five busiest-area stores come last. */
 const PROMO_STORES = [
   [0.08, 0.16],
   [0.2, 0.3],
@@ -245,7 +245,7 @@ function Arrow({
  * The anatomy of an experiment: eight test units are split into a treatment
  * group, which gets the price reduction, and a control group, which keeps the
  * current price. The season, an extraneous variable, reaches both groups
- * alike; the dependent variable, purchases, is measured in each.
+ * alike. The dependent variable, purchases, is measured in each.
  */
 export function ExperimentAnatomy() {
   const rowT = 96;
@@ -303,7 +303,7 @@ export function ExperimentAnatomy() {
    Random Assignment
    -------------------------------------------------------------------------- */
 
-/** Forty customers; the sixteen heavy buyers are a characteristic nobody measured. */
+/** Forty customers. The sixteen heavy buyers are a characteristic nobody measured. */
 const HEAVY = new Set([1, 3, 4, 8, 11, 13, 14, 17, 20, 22, 27, 29, 31, 34, 36, 39]);
 /** Assignments made before anyone presses the button, so the strip already reads. */
 const PRE_ASSIGNED = 29;
@@ -383,10 +383,10 @@ export function RandomBalance() {
           </g>
         ))}
         <line x1={320} y1={8} x2={320} y2={124} stroke={RULE} strokeWidth={1} />
-        <Key x={20} y={152} fill={COUNTER} size={10}>HEAVY BUYER · NOT MEASURED</Key>
+        <Key x={20} y={152} fill={COUNTER} size={10}>HEAVY BUYER | NOT MEASURED</Key>
 
         <line x1={20} y1={168} x2={620} y2={168} stroke={RULE} strokeWidth={1} />
-        <Key x={20} y={192}>{`DIFFERENCE IN HEAVY BUYERS, TREATMENT \u2212 CONTROL · ${n} ASSIGNMENTS`}</Key>
+        <Key x={20} y={192}>{`DIFFERENCE IN HEAVY BUYERS, TREATMENT \u2212 CONTROL | ${n} ASSIGNMENTS`}</Key>
         <Key x={620} y={192} anchor="end" fill={SIGNAL}>{`AVERAGE ${avg >= 0 ? "+" : "\u2212"}${Math.abs(avg).toFixed(1)}`}</Key>
         {dots.map((d, i) => (
           <circle key={i} cx={d.x} cy={d.y} r={d.last ? 4 : 3.3} fill={d.last ? SIGNAL : INK3} fillOpacity={d.last ? 1 : 0.6} />
@@ -419,11 +419,11 @@ const CONTROLS = [
 type ControlId = (typeof CONTROLS)[number]["id"];
 
 /**
- * What a before–after change in sales contains. A new promotion runs in
- * stores that volunteered; their sales change is the true effect plus a
+ * What a before-after change in sales contains. A new promotion runs in
+ * stores that volunteered. Their sales change is the true effect plus a
  * competitor's price cut (history), growing familiarity (maturation) and the
  * volunteers' own head start (selection bias). A control group cancels what
- * reaches both groups; random assignment removes the head start.
+ * reaches both groups. Random assignment removes the head start.
  */
 export function ThreatsAndControls() {
   const [on, setOn] = useState<ControlId[]>([]);
@@ -588,7 +588,7 @@ export function LabThenField() {
     <Frame
       width={640}
       height={214}
-      label="A laboratory experiment compares six package designs, A to F, in an online study on screen; B and E are promising. A field experiment then tests B and E in real stores, where B is confirmed"
+      label="A laboratory experiment compares six package designs, A to F, in an online study on screen. B and E are promising. A field experiment then tests B and E in real stores, where B is confirmed"
     >
       <Key x={scrX} y={22} fill={INK2}>LABORATORY EXPERIMENT</Key>
       {/* a monitor holding the online study */}
@@ -648,7 +648,7 @@ function Sheet({ cx, cy, tone = INK }: { cx: number; cy: number; tone?: string }
   );
 }
 
-/** Mean purchase intention (1–7) in the four conditions of the two-by-two example. */
+/** Mean purchase intention (1 to 7) in the four conditions of the two-by-two example. */
 const FACTORIAL = {
   lower: { price: 5.0, quality: 5.0 },
   higher: { price: 3.6, quality: 4.8 },
@@ -656,9 +656,9 @@ const FACTORIAL = {
 
 /**
  * Three designs. Posttest-only: two randomly assigned groups, measured once
- * after the treatment. Pretest–posttest: each group is also measured before,
+ * after the treatment. Pretest-posttest: each group is also measured before,
  * and that first questionnaire may itself change the answers. Factorial: two
- * prices crossed with two messages; the quality message helps only at the
+ * prices crossed with two messages. The quality message helps only at the
  * higher price, an interaction.
  */
 export function DesignRows() {
@@ -693,7 +693,7 @@ export function DesignRows() {
     <Frame
       width={640}
       height={372}
-      label="Three experimental designs. Posttest-only control group design: a treatment group receives a 20 percent price reduction and both groups are measured once, afterwards. Pretest-posttest control group design: both groups are also measured before the treatment, and that pretest may cause a testing effect. Factorial design, two by two: lower and higher price crossed with a price-focused and a quality-focused message. At the lower price both messages give a mean purchase intention of 5.0; at the higher price the quality-focused message gives 4.8 against 3.6, an interaction"
+      label="Three experimental designs. Posttest-only control group design: a treatment group receives a 20 percent price reduction and both groups are measured once, afterwards. Pretest-posttest control group design: both groups are also measured before the treatment, and that pretest may cause a testing effect. Factorial design, two by two: lower and higher price crossed with a price-focused and a quality-focused message. At the lower price both messages give a mean purchase intention of 5.0. At the higher price the quality-focused message gives 4.8 against 3.6, an interaction"
     >
       {/* posttest-only */}
       <Key x={20} y={22}>POSTTEST-ONLY</Key>
@@ -729,7 +729,7 @@ export function DesignRows() {
       <line x1={20} y1={186} x2={620} y2={186} stroke={RULE} strokeWidth={1} />
 
       {/* factorial */}
-      <Key x={20} y={210}>{"FACTORIAL \u00b7 2 \u00d7 2"}</Key>
+      <Key x={20} y={210}>{"FACTORIAL | 2 \u00d7 2"}</Key>
       <Key x={tx + cw / 2} y={ty - 8} anchor="middle" size={9.5}>PRICE MESSAGE</Key>
       <Key x={tx + cw * 1.5} y={ty - 8} anchor="middle" size={9.5} fill={SIGNAL}>QUALITY MESSAGE</Key>
       {(["lower", "higher"] as const).map((p, i) => {
@@ -751,7 +751,7 @@ export function DesignRows() {
           </g>
         );
       })}
-      <Key x={tx} y={ty + 2 * rh + 20} size={9.5} fill={INK3}>{"MEAN PURCHASE INTENTION, 1\u20137"}</Key>
+      <Key x={tx} y={ty + 2 * rh + 20} size={9.5} fill={INK3}>{"MEAN PURCHASE INTENTION, 1 TO 7"}</Key>
 
       {/* interaction plot */}
       <line x1={px0 - 20} y1={344} x2={px1 + 20} y2={344} stroke={INK} strokeWidth={1.25} />
@@ -782,7 +782,7 @@ export function DesignRows() {
 /**
  * A web page drawn as a browser window at (x, y), w wide: a headline bar,
  * an image and a button. `change` fills the button, the element version B
- * alters; `headline` and `image` pick among drawn variants for the
+ * alters. `headline` and `image` pick among drawn variants for the
  * multivariate grid.
  */
 function Page({
@@ -869,8 +869,8 @@ export function AbSplit() {
         <Person1 key={i} x={r2(36 + i * 37.8)} y={70} k={0.78} width={1.25} stroke={b ? SIGNAL : INK2} fill={PAPER} />
       ))}
       {[
-        { x: 60, name: "VERSION A \u00b7 CONTROL", tone: INK2, button: "plain" as const, rate: "3.1%" },
-        { x: 350, name: "VERSION B \u00b7 CHANGE", tone: SIGNAL, button: "filled" as const, rate: "3.6%" },
+        { x: 60, name: "VERSION A | CONTROL", tone: INK2, button: "plain" as const, rate: "3.1%" },
+        { x: 350, name: "VERSION B | CHANGE", tone: SIGNAL, button: "filled" as const, rate: "3.6%" },
       ].map((v) => (
         <g key={v.name}>
           <Key x={v.x} y={110} fill={v.tone}>{v.name}</Key>
@@ -905,7 +905,7 @@ function usersPerVersion(lift: number, power: PowerId) {
 
 /**
  * Planning an A/B test: the smallest lift worth detecting and the power set
- * the users needed per version; at 6,000 users a day that fixes the days, and
+ * the users needed per version. At 6,000 users a day that fixes the days, and
  * the run is extended to whole weeks so every weekday is represented. Halving
  * the smallest effect roughly quadruples the users.
  */
@@ -930,7 +930,7 @@ export function TestPlanner() {
         height={352}
         label={`Baseline conversion rate 4.0 percent, 6,000 users a day. To detect a lift of ${(tenths / 10).toFixed(1)} percentage points with ${power} percent power requires ${fmt(n)} users per version, ${days} days of traffic, so the test runs for ${weeks} complete ${weeks === 1 ? "week" : "weeks"}`}
       >
-        <Key x={20} y={22}>{`BASELINE CONVERSION 4.0% \u00b7 ${fmt(DAILY_USERS)} USERS A DAY \u00b7 ALPHA 0.05`}</Key>
+        <Key x={20} y={22}>{`BASELINE CONVERSION 4.0% | ${fmt(DAILY_USERS)} USERS A DAY | ALPHA 0.05`}</Key>
         <Key x={20} y={54} fill={INK3} size={10}>SMALLEST EFFECT WORTH DETECTING</Key>
         <Display x={20} y={88} size={28}>{`+${(tenths / 10).toFixed(1)} points`}</Display>
         <Key x={290} y={54} fill={INK3} size={10}>USERS PER VERSION</Key>
@@ -1047,7 +1047,7 @@ export function CombinationGrid() {
    Common Errors in A/B Testing
    -------------------------------------------------------------------------- */
 
-/** A seeded standard-normal stream (Box–Muller). */
+/** A seeded standard-normal stream (Box-Muller). */
 function normals(seed: number) {
   const u = seeded(seed);
   return () => {
@@ -1113,7 +1113,7 @@ export function PeekingPaths() {
           daily ? "Checked every day and stopped at the first significant result" : "Checked once at the planned end"
         }, ${fp} of 200 tests, ${Math.round((fp / PEEK_TESTS) * 100)} percent, report a difference that does not exist`}
       >
-        <Key x={20} y={22}>{"TWO IDENTICAL VERSIONS \u00b7 TEST STATISTIC AFTER EACH DAY"}</Key>
+        <Key x={20} y={22}>{"TWO IDENTICAL VERSIONS | TEST STATISTIC AFTER EACH DAY"}</Key>
         {/* the significance zones */}
         <rect x={x0} y={Y(lim)} width={x1 - x0} height={r2(Y(1.96) - Y(lim))} fill={COUNTER_TINT} />
         <rect x={x0} y={Y(-1.96)} width={x1 - x0} height={r2(Y(-lim) - Y(-1.96))} fill={COUNTER_TINT} />
@@ -1163,7 +1163,7 @@ export function PeekingPaths() {
    Quasi-Experimental Designs
    -------------------------------------------------------------------------- */
 
-/** Week-to-week wobble (thousand dollars) around each region's level; each half sums to zero. */
+/** Week-to-week wobble (thousand dollars) around each region's level. Each half sums to zero. */
 const WOBBLE_A = [0.6, -0.8, 0.4, -0.3, 0.7, -0.6, -0.5, 0.8, -0.4, 0.6, -0.9, 0.4];
 const WOBBLE_B = [-0.5, 0.6, -0.2, 0.7, -0.4, -0.2, 0.5, -0.6, 0.3, -0.3, 0.6, -0.5];
 const SALES_A = WOBBLE_A.map((w, i) => (i < 6 ? 100 : 112) + w * 0.5);
@@ -1179,8 +1179,8 @@ type QuasiId = (typeof QUASI)[number]["id"];
 /**
  * Average weekly sales per store in two regions, six weeks before and six
  * after a loyalty program starts in Region A. Each design reads a different
- * comparison from the same data: A's own before and after (+12,000); A
- * against B after the start (+7,000, taking B as comparable); and A's change
+ * comparison from the same data: A's own before and after (+12,000). A
+ * against B after the start (+7,000, taking B as comparable). And A's change
  * against B's change (+12,000 − 5,000 = +7,000).
  */
 export function QuasiDesigns() {
@@ -1279,8 +1279,8 @@ export function QuasiDesigns() {
  * The parallel-trends check. The slider sets how fast Region A's sales were
  * already growing before the program, with the averages before and after
  * unchanged, so the difference-in-differences estimate stays +$7,000. Only
- * the weeks before the program show whether the two regions moved together;
- * if A was already pulling ahead, its earlier trend explains part of the gap.
+ * the weeks before the program show whether the two regions moved together.
+ * If A was already pulling ahead, its earlier trend explains part of the gap.
  */
 export function ParallelTrends() {
   const [tenths, setTenths] = useState(0);
@@ -1306,7 +1306,7 @@ export function ParallelTrends() {
         height={318}
         label={`Average weekly sales per store in two regions. Before the program, Region A ${
           parallel ? "moves in parallel with Region B" : `grows ${Math.abs(slope).toFixed(1)} thousand dollars a week ${slope > 0 ? "faster" : "slower"} than Region B`
-        }. The difference-in-differences estimate stays 7,000 dollars; ${
+        }. The difference-in-differences estimate stays 7,000 dollars. ${
           parallel ? "the parallel trends assumption holds" : `if Region A's earlier trend had continued, the effect would be ${money(adjusted)}`
         }`}
       >
@@ -1373,7 +1373,7 @@ export function ParallelTrends() {
    Piloting Experiments With Simulated Subjects
    -------------------------------------------------------------------------- */
 
-/** Simulated subjects' purchase intention (1–7), twenty per condition, for each version of the materials. */
+/** Simulated subjects' purchase intention (1 to 7), twenty per condition, for each version of the materials. */
 const PILOT = {
   hidden: {
     control: [4, 4, 5, 4, 3, 4, 4, 5, 4, 4, 3, 4, 5, 4, 4, 4, 5, 4, 3, 4],
@@ -1396,7 +1396,7 @@ const meanOf = (v: number[]) => v.reduce((a, b) => a + b, 0) / v.length;
 /**
  * A pilot run on simulated subjects: twenty AI respondents rate a coffee
  * package with or without an eco-label. When the instructions keep the
- * hypothesis back, the label moves ratings a little; when a line of the
+ * hypothesis back, the label moves ratings a little. When a line of the
  * instructions states it, the model delivers the expected result and the
  * effect swells.
  */
@@ -1499,7 +1499,7 @@ const VERSIONS = ["A", "B", "C", "D"];
 /**
  * How a bandit allocates: each column is one day's impressions, split among
  * four ad versions. Early days spread impressions to learn about every
- * version (exploration), and a lucky start for B is corrected; as evidence
+ * version (exploration), and a lucky start for B is corrected. As evidence
  * builds, most impressions go to C, the best performer (exploitation).
  */
 export function BanditAllocation() {
@@ -1517,10 +1517,10 @@ export function BanditAllocation() {
       <Frame
         width={640}
         height={332}
-        label={`A bandit allocating 2,000 daily impressions among four ad versions over 14 days. On day 1 each version receives about a quarter; by day ${day}, version C, the best performer, receives ${shareC} percent`}
+        label={`A bandit allocating 2,000 daily impressions among four ad versions over 14 days. On day 1 each version receives about a quarter. By day ${day}, version C, the best performer, receives ${shareC} percent`}
       >
         <Key x={20} y={22}>SHARE OF EACH DAY&rsquo;S IMPRESSIONS</Key>
-        <Key x={20} y={52} fill={SIGNAL}>{`DAY ${day} \u00b7 VERSION C`}</Key>
+        <Key x={20} y={52} fill={SIGNAL}>{`DAY ${day} | VERSION C`}</Key>
         <Display x={170} y={56} size={26} fill={SIGNAL}>{`${shareC}%`}</Display>
 
         {BANDIT_DAYS.map((sh, d) => {
@@ -1576,7 +1576,7 @@ const TRUE_CTR = [0.02, 0.024, 0.03, 0.026];
 /**
  * The same 28,000 impressions and the same four versions, allocated two ways.
  * The bandit sends far fewer impressions to the weaker versions, so fewer
- * clicks are lost; but version A, rarely shown, is measured on few
+ * clicks are lost. But version A, rarely shown, is measured on few
  * impressions, and the interval around C's advantage over A is much wider.
  */
 export function CostAndPrecision() {
@@ -1800,7 +1800,7 @@ export function InformationBoard() {
 
         {/* the record of tool calls */}
         <line x1={370} y1={14} x2={370} y2={310} stroke={RULE} strokeWidth={1} />
-        <Key x={logX} y={22}>{`TOOL CALLS \u00b7 ${calls.length}`}</Key>
+        <Key x={logX} y={22}>{`TOOL CALLS | ${calls.length}`}</Key>
         <Key x={620} y={22} anchor="end" fill={COUNTER}>{`COST $${calls.length * INSPECT_COST}`}</Key>
         {shown.map((c, i) => {
           const [who, id] = c.split(":");
@@ -1822,7 +1822,7 @@ export function InformationBoard() {
           <g>
             <Display x={logX} y={238} size={26} fill={good ? SIGNAL : COUNTER}>{`Coffee ${choice}`}</Display>
             <Key x={logX} y={260} size={10} fill={INK3}>
-              {unit ? "A $0.499 \u00b7 B $0.455 PER OZ" : price ? "A $4.99 \u00b7 B $5.00" : ""}
+              {unit ? "A $0.499 | B $0.455 PER OZ" : price ? "A $4.99 | B $5.00" : ""}
             </Key>
             <Key x={logX} y={284} size={10} fill={good ? SIGNAL : COUNTER}>
               {good ? "OPTIMAL: LOWEST PRICE PER OUNCE" : "POOR CHOICE: FAILURE TO ACQUIRE"}

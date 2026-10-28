@@ -7,7 +7,7 @@ export default function ConsensusSlide() {
     <section className="p-slide" style={{ padding: "8rem 2rem", position: "relative" }}>
       <div style={{ maxWidth: "76rem", margin: "0 auto" }}>
         <div className="section-label" style={{ marginBottom: "1.5rem" }}>
-          <span>Layer 02 — Consensus: The Solution</span>
+          <span>Layer 02: Consensus: The Solution</span>
         </div>
         <h2
           className="p-heading"
@@ -30,7 +30,7 @@ export default function ConsensusSlide() {
               <InlineMath>{"d_{\\max}"}</InlineMath> is the maximum diagonal distance on the Likert scale.
             </p>
             <p className="p-body" style={{ fontSize: "0.9rem" }}>
-              This demonstrates the level of internal consistency, or polarization, a model has on our ethnocentrism scale. High consensus means probability mass is tightly concentrated; high dissension means it is spread across opposing poles.
+              This demonstrates the level of internal consistency, or polarization, a model has on our ethnocentrism scale. High consensus means probability mass is tightly concentrated. High dissension means it is spread across opposing poles.
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", alignItems: "center" }}>

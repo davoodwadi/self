@@ -45,9 +45,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 04 — BEHAVIORAL AUDITING AND STATISTICAL EVALUATION OF AI SYSTEMS
+// WEEK 04: BEHAVIORAL AUDITING AND STATISTICAL EVALUATION OF AI SYSTEMS
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md;
+// Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
 // is drawn beside it. Plates live in ./visuals.tsx.
 // ============================================================================
@@ -60,10 +60,10 @@ export default function Week4Page() {
   return (
     <SlideDeck label="Week 04">
       {/* ================================================================
-          01 · Title Slide
+          01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 04 · Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 04: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
           Behavioral Auditing and Statistical Evaluation of AI Systems
         </Title>
@@ -77,7 +77,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          02 · From Anecdotal Prompts to Scientific Behavioral Audits [no-exercise]
+          02. From Anecdotal Prompts to Scientific Behavioral Audits [no-exercise]
           ================================================================ */}
       <Slide id="from-anecdotal-prompts-to-scientific-behavioral-audits" border className="!py-8">
         <SlideHeading>From Anecdotal Prompts to Scientific Behavioral Audits</SlideHeading>
@@ -123,7 +123,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          03 · Why Single-Prompt Evaluations Fail [no-exercise]
+          03. Why Single-Prompt Evaluations Fail [no-exercise]
           ================================================================ */}
       <Slide id="why-single-prompt-evaluations-fail" border className="!py-8">
         <SlideHeading>Why Single-Prompt Evaluations Fail</SlideHeading>
@@ -169,7 +169,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          04 · Part 1: The Monte-Carlo Sampling Framework for Open-Ended Decisions [no-exercise]
+          04. Part 1: The Monte-Carlo Sampling Framework for Open-Ended Decisions [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="The Monte-Carlo Sampling Framework for Open-Ended Decisions" />
@@ -201,7 +201,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          05 · Stochastic Generation and Response Entropy [no-exercise]
+          05. Stochastic Generation and Response Entropy [no-exercise]
           ================================================================ */}
       <Slide id="stochastic-generation-and-response-entropy" border className="!py-8">
         <SlideHeading>Stochastic Generation and Response Entropy</SlideHeading>
@@ -251,7 +251,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          06 · The Monte-Carlo Estimator and Its Statistical Guarantees [no-exercise]
+          06. The Monte-Carlo Estimator and Its Statistical Guarantees [no-exercise]
           ================================================================ */}
       <Slide id="the-monte-carlo-estimator-and-its-statistical-guarantees" border className="!py-8">
         <SlideHeading>The Monte-Carlo Estimator and Its Statistical Guarantees</SlideHeading>
@@ -300,7 +300,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          07 · Behavioral Validity Metrics: CSVR, APD, and Coefficient of Variation [exercise]
+          07. Behavioral Validity Metrics: CSVR, APD, and Coefficient of Variation [exercise]
           ================================================================ */}
       <Slide
         id="behavioral-validity-metrics-csvr-apd-and-coefficient-of-variation"
@@ -363,7 +363,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          08 · Anchoring Bias and Generational Regression in LLMs [no-exercise]
+          08. Anchoring Bias and Generational Regression in LLMs [no-exercise]
           ================================================================ */}
       <Slide id="anchoring-bias-and-generational-regression-in-llms" border className="!py-8">
         <SlideHeading>Anchoring Bias and Generational Regression in LLMs</SlideHeading>
@@ -411,7 +411,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          09 · Part 2: Exact Token-Level Probability Distributions for Rating Scales [no-exercise]
+          09. Part 2: Exact Token-Level Probability Distributions for Rating Scales [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Exact Token-Level Probability Distributions for Rating Scales" />
@@ -442,7 +442,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          10 · Why Text Sampling Is Redundant When Token Probabilities Are Observable [no-exercise]
+          10. Why Text Sampling Is Redundant When Token Probabilities Are Observable [no-exercise]
           ================================================================ */}
       <Slide id="why-text-sampling-is-redundant-when-token-probabilities-are-observable" border className="!py-8">
         <SlideHeading>Why Text Sampling Is Redundant When Token Probabilities Are Observable</SlideHeading>
@@ -488,7 +488,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          11 · Why Shannon Entropy Fails on Ordinal Rating Scales [exercise]
+          11. Why Shannon Entropy Fails on Ordinal Rating Scales [exercise]
           ================================================================ */}
       <Slide
         id="why-shannon-entropy-fails-on-ordinal-rating-scales"
@@ -538,7 +538,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          12 · The Three-Layer Exact-PMF Pipeline: Constraint, Consensus, and Construct [exercise]
+          12. The Three-Layer Exact-PMF Pipeline: Constraint, Consensus, and Construct [exercise]
           ================================================================ */}
       <Slide
         id="the-three-layer-exact-pmf-pipeline-constraint-consensus-and-construct"
@@ -603,7 +603,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          13 · Discussion: Sampling Versus Exact Probabilities
+          13. Discussion: Sampling Versus Exact Probabilities
           ================================================================ */}
       <Slide id="discussion-sampling-versus-exact-probabilities" border className="!py-8">
         <SlideHeading>Sampling Versus Exact Probabilities</SlideHeading>
@@ -624,7 +624,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          14 · Part 3: Distributional ANOVA and Hoeffding Decomposition [no-exercise]
+          14. Part 3: Distributional ANOVA and Hoeffding Decomposition [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Distributional ANOVA and Hoeffding Decomposition" />
@@ -654,7 +654,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          15 · Convolving Item Distributions Into a Composite Construct Score [no-exercise]
+          15. Convolving Item Distributions Into a Composite Construct Score [no-exercise]
           ================================================================ */}
       <Slide id="convolving-item-distributions-into-a-composite-construct-score" border className="!py-8">
         <SlideHeading>Convolving Item Distributions Into a Composite Construct Score</SlideHeading>
@@ -698,7 +698,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          16 · Hoeffding Decomposition of Main Effects and Interactions [no-exercise]
+          16. Hoeffding Decomposition of Main Effects and Interactions [no-exercise]
           ================================================================ */}
       <Slide id="hoeffding-decomposition-of-main-effects-and-interactions" border className="!py-8">
         <SlideHeading>Hoeffding Decomposition of Main Effects and Interactions</SlideHeading>
@@ -738,7 +738,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          17 · Four Distributional Inference Metrics: Mean Shift, Dispersion, dPD, and SNR [exercise]
+          17. Four Distributional Inference Metrics: Mean Shift, Dispersion, dPD, and SNR [exercise]
           ================================================================ */}
       <Slide
         id="four-distributional-inference-metrics-mean-shift-dispersion-dpd-and-snr"
@@ -804,7 +804,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          18 · Part 4: Designing Controlled Factorial Choice and Rating Experiments [no-exercise]
+          18. Part 4: Designing Controlled Factorial Choice and Rating Experiments [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Designing Controlled Factorial Choice and Rating Experiments" />
@@ -832,7 +832,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          19 · Why Isolated Vignettes Cannot Isolate Causes [no-exercise]
+          19. Why Isolated Vignettes Cannot Isolate Causes [no-exercise]
           ================================================================ */}
       <Slide id="why-isolated-vignettes-cannot-isolate-causes" border className="!py-8">
         <SlideHeading>Why Isolated Vignettes Cannot Isolate Causes</SlideHeading>
@@ -865,7 +865,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          20 · Fully Crossed Factorial Designs and Context Isolation [no-exercise]
+          20. Fully Crossed Factorial Designs and Context Isolation [no-exercise]
           ================================================================ */}
       <Slide id="fully-crossed-factorial-designs-and-context-isolation" border className="!py-8">
         <SlideHeading>Fully Crossed Factorial Designs and Context Isolation</SlideHeading>
@@ -910,7 +910,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          21 · Controlling Prompt Sensitivity, Order Effects, and Framing [exercise]
+          21. Controlling Prompt Sensitivity, Order Effects, and Framing [exercise]
           ================================================================ */}
       <Slide
         id="controlling-prompt-sensitivity-order-effects-and-framing"
@@ -985,7 +985,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          22 · Part 5: Enterprise Pre-Deployment and Post-Deployment Auditing Workflows [no-exercise]
+          22. Part 5: Enterprise Pre-Deployment and Post-Deployment Auditing Workflows [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Enterprise Pre-Deployment and Post-Deployment Auditing Workflows" />
@@ -993,7 +993,7 @@ export default function Week4Page() {
           <Ruled>
             <p className={BIG}>
               In an enterprise governance system, behavioral auditing is not a
-              one-time academic exercise; it is a{" "}
+              one-time academic exercise. It is a{" "}
               <Term tone="signal">recurring gate in the model lifecycle</Term>.
             </p>
           </Ruled>
@@ -1011,7 +1011,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          23 · Pre-Deployment Red-Teaming Versus Behavioral Auditing [exercise]
+          23. Pre-Deployment Red-Teaming Versus Behavioral Auditing [exercise]
           ================================================================ */}
       <Slide
         id="pre-deployment-red-teaming-versus-behavioral-auditing"
@@ -1071,7 +1071,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          24 · Six Steps of an Enterprise Behavioral Audit [exercise]
+          24. Six Steps of an Enterprise Behavioral Audit [exercise]
           ================================================================ */}
       <Slide
         id="six-steps-of-an-enterprise-behavioral-audit"
@@ -1104,7 +1104,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          25 · Continuous Post-Deployment Drift Monitoring and Version Pinning [no-exercise]
+          25. Continuous Post-Deployment Drift Monitoring and Version Pinning [no-exercise]
           ================================================================ */}
       <Slide id="continuous-post-deployment-drift-monitoring-and-version-pinning" border className="!py-8">
         <SlideHeading>Continuous Post-Deployment Drift Monitoring and Version Pinning</SlideHeading>
@@ -1139,7 +1139,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          26 · Discussion: The Model Upgrade Regression
+          26. Discussion: The Model Upgrade Regression
           ================================================================ */}
       <Slide id="discussion-the-model-upgrade-regression" border className="!py-8">
         <SlideHeading>The Model Upgrade Regression</SlideHeading>
@@ -1161,7 +1161,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          27 · Key Takeaways
+          27. Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>
@@ -1169,7 +1169,7 @@ export default function Week4Page() {
           {[
             "Single-prompt (pass-at-one) evaluations fail as a governance standard because stochastic language models exhibit high response entropy and framing sensitivity.",
             "For open-ended numerical and text decisions, the Monte-Carlo framework (Wadi & Fredette, 2025) provides an unbiased estimator whose variance decays as 1/K and whose asymptotic normality enables exact confidence intervals.",
-            "Behavioral validity requires checking Common Sense Validity Rate (CSVR), Absolute Price Deviation (APD), and Coefficient of Variation (CV); empirical audits show that LLMs suffer strong anchoring bias and can regress across newer model generations.",
+            "Behavioral validity requires checking Common Sense Validity Rate (CSVR), Absolute Price Deviation (APD), and Coefficient of Variation (CV). Empirical audits show that LLMs suffer strong anchoring bias and can regress across newer model generations.",
             "For structured Likert scales and discrete choices with accessible log-probabilities, reading the exact token-level PMF eliminates sampling error entirely (Wadi, Ghodrat, & Philp, 2026).",
             "Because Shannon entropy ignores ordinal scale distances, exact-PMF audits use a three-layer pipeline: Constraint (task failure rate), Consensus (distance-weighted ordinal agreement), and Construct (discrete convolution and Hoeffding ANOVA decomposition).",
             "Controlled factorial experiments exploit LLM statelessness for context isolation and counterbalance prompt phrasing, scale polarity, and list position.",

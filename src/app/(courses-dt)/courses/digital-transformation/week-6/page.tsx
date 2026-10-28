@@ -54,13 +54,13 @@ const SECTIONS = [
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif; terms set bold in the display serif. */
+/* Body copy: the reading serif. Terms set bold in the display serif. */
 const BODY_BASE = "font-body leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
 const BODY = `${BODY_BASE} text-base md:text-[1.08rem]`;
 const LIST =
   "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
 const SUBLIST =
-  "list-none flex flex-col gap-1 mt-1.5 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['–'] [&>li]:before:shrink-0";
+  "list-none flex flex-col gap-1 mt-1.5 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['-'] [&>li]:before:shrink-0";
 
 function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
   return (
@@ -108,7 +108,7 @@ export default function DigitalTransformationWeek6() {
       </Link>
 
       <PosterHero
-        category="WEEK 6 — DIGITAL TRANSFORMATION"
+        category="WEEK 6: DIGITAL TRANSFORMATION"
         title="Week 6: AI/ML/DL"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
@@ -126,7 +126,7 @@ export default function DigitalTransformationWeek6() {
       />
 
       {/* ================================================================
-          CHAPTER 1 — ARTIFICIAL INTELLIGENCE
+          CHAPTER 1: ARTIFICIAL INTELLIGENCE
           ================================================================ */}
       <ChapterBand id="ch1" number="01" title="Artificial Intelligence" />
 
@@ -259,7 +259,7 @@ export default function DigitalTransformationWeek6() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 2 — MACHINE LEARNING
+          CHAPTER 2: MACHINE LEARNING
           ================================================================ */}
       <ChapterBand id="ch2" number="02" title="Machine Learning" />
 
@@ -307,7 +307,7 @@ export default function DigitalTransformationWeek6() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 3 — MACHINE LEARNING ALGORITHMS
+          CHAPTER 3: MACHINE LEARNING ALGORITHMS
           ================================================================ */}
       <ChapterBand id="ch3" number="03" title="Machine Learning Algorithms" />
 
@@ -449,7 +449,7 @@ export default function DigitalTransformationWeek6() {
             </>,
             <>
               <strong>Voting/Averaging</strong>: For classification, the most common predicted class from the trees is
-              chosen; for regression, the average prediction is taken.
+              chosen. For regression, the average prediction is taken.
             </>,
             <>
               <strong>Robustness</strong>: Reduces overfitting by averaging multiple trees, providing a more generalized
@@ -483,7 +483,7 @@ export default function DigitalTransformationWeek6() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 4 — SUPERVISED VS. UNSUPERVISED LEARNING
+          CHAPTER 4: SUPERVISED VS. UNSUPERVISED LEARNING
           ================================================================ */}
       <ChapterBand id="ch4" number="04" title="Supervised vs. Unsupervised Learning" />
 
@@ -590,7 +590,7 @@ export default function DigitalTransformationWeek6() {
             {
               title: "Challenges",
               sup: <>Requires high-quality labeled data (time-consuming/costly to acquire). Risk of overfitting.</>,
-              unsup: <>Results can be subjective; harder to evaluate without ground truth.</>,
+              unsup: <>Results can be subjective. Harder to evaluate without ground truth.</>,
             },
           ].map((item, i) => {
             const isLit = i === activeLens;
@@ -660,7 +660,7 @@ export default function DigitalTransformationWeek6() {
                   {
                     aspect: "Feedback",
                     sup: "Direct feedback (errors are corrected via labels)",
-                    unsup: "No feedback; model infers patterns autonomously",
+                    unsup: "No feedback. Model infers patterns autonomously",
                   },
                   {
                     aspect: "Common Tasks",
@@ -739,7 +739,7 @@ export default function DigitalTransformationWeek6() {
                 </em>
               ),
               answer: "Unsupervised Learning",
-              why: "No predefined labels exist; the goal is to discover hidden patterns (disease subtypes) in the data.",
+              why: "No predefined labels exist. The goal is to discover hidden patterns (disease subtypes) in the data.",
             },
             {
               n: 3,
@@ -783,7 +783,7 @@ export default function DigitalTransformationWeek6() {
                 </em>
               ),
               answer: "Unsupervised Learning",
-              why: "No labels are provided; the algorithm identifies visual patterns to cluster images.",
+              why: "No labels are provided. The algorithm identifies visual patterns to cluster images.",
             },
             {
               n: 7,

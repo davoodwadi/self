@@ -30,9 +30,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 04 — RECOMMENDER SYSTEMS, SEARCH RANKINGS, AND RETAIL MEDIA
+// WEEK 04: RECOMMENDER SYSTEMS, SEARCH RANKINGS, AND RETAIL MEDIA
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md;
+// Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and which catalogue plate
 // is drawn beside it. Plates live in ./visuals.tsx.
 // ============================================================================
@@ -45,10 +45,10 @@ export default function Week4Page() {
   return (
     <SlideDeck label="Week 04">
       {/* ================================================================
-          01 · Title Slide
+          01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 04 · Digital Marketing &amp; E-Commerce</Subtitle>
+        <Subtitle variant="hero">Week 04: Digital Marketing &amp; E-Commerce</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Recommender Systems, Search Rankings, and Retail Media</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[52ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.3rem,2.1vw,1.8rem)]">
@@ -59,7 +59,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          02 · The Algorithm as the Digital Shelf [no-exercise]
+          02. The Algorithm as the Digital Shelf [no-exercise]
           ================================================================ */}
       <Slide id="the-algorithm-as-the-digital-shelf" border className="!py-8">
         <SlideHeading>The Algorithm as the Digital Shelf</SlideHeading>
@@ -98,7 +98,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          03 · Search Versus Recommendation in E-Commerce [no-exercise]
+          03. Search Versus Recommendation in E-Commerce [no-exercise]
           ================================================================ */}
       <Slide id="search-versus-recommendation-in-e-commerce" border className="!py-8">
         <SlideHeading>Search Versus Recommendation in E-Commerce</SlideHeading>
@@ -119,7 +119,7 @@ export default function Week4Page() {
             </Ruled>
             <Ruled weight="thin">
               <P>
-                In recommendation, no explicit query is needed; the platform proactively suggests items on the
+                In recommendation, no explicit query is needed. The platform proactively suggests items on the
                 homepage, on product pages (&quot;frequently bought together&quot; or &quot;similar items&quot;), and in
                 the cart based on browsing context and purchase history.
               </P>
@@ -139,7 +139,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          04 · Part 1: Recommender System Architectures [no-exercise]
+          04. Part 1: Recommender System Architectures [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Recommender System Architectures" />
@@ -162,7 +162,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          05 · Content-Based Filtering Versus Collaborative Filtering [exercise]
+          05. Content-Based Filtering Versus Collaborative Filtering [exercise]
           ================================================================ */}
       <Slide
         id="content-based-filtering-versus-collaborative-filtering"
@@ -217,7 +217,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          06 · Cold Start, Filter Bubbles, and Two-Stage Retrieval-Ranking Pipelines [exercise]
+          06. Cold Start, Filter Bubbles, and Two-Stage Retrieval-Ranking Pipelines [exercise]
           ================================================================ */}
       <Slide
         id="cold-start-filter-bubbles-and-two-stage-retrieval-ranking-pipelines"
@@ -269,7 +269,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          07 · Part 2: Why Rank Position Shapes Sales [no-exercise]
+          07. Part 2: Why Rank Position Shapes Sales [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Why Rank Position Shapes Sales" />
@@ -295,7 +295,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          08 · Why Rank Position Shapes Sales [no-exercise]
+          08. Why Rank Position Shapes Sales [no-exercise]
           ================================================================ */}
       <Slide id="why-rank-position-shapes-sales" border className="!py-8">
         <SlideHeading>Why Rank Position Shapes Sales</SlideHeading>
@@ -332,7 +332,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          09 · Disentangling Intrinsic Quality from Position Bias [exercise]
+          09. Disentangling Intrinsic Quality from Position Bias [exercise]
           ================================================================ */}
       <Slide
         id="disentangling-intrinsic-quality-from-position-bias"
@@ -381,7 +381,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          10 · Part 3: Retail Media Networks and Sponsored Rankings [no-exercise]
+          10. Part 3: Retail Media Networks and Sponsored Rankings [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Retail Media Networks and Sponsored Rankings" />
@@ -407,7 +407,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          11 · Organic Rank Versus Sponsored Slots on the Marketplace Shelf [no-exercise]
+          11. Organic Rank Versus Sponsored Slots on the Marketplace Shelf [no-exercise]
           ================================================================ */}
       <Slide id="organic-rank-versus-sponsored-slots-on-the-marketplace-shelf" border className="!py-8">
         <SlideHeading>Organic Rank Versus Sponsored Slots on the Marketplace Shelf</SlideHeading>
@@ -456,7 +456,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          12 · The Platform's Three-Way Trade-Off in Retail Media [exercise]
+          12. The Platform's Three-Way Trade-Off in Retail Media [exercise]
           ================================================================ */}
       <Slide
         id="the-platforms-three-way-trade-off-in-retail-media"
@@ -513,7 +513,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          13 · Discussion: The Sponsored Slot Dilemma
+          13. Discussion: The Sponsored Slot Dilemma
           ================================================================ */}
       <Slide id="discussion-the-sponsored-slot-dilemma" border className="!py-8">
         <SlideHeading>The Sponsored Slot Dilemma</SlideHeading>
@@ -532,7 +532,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          14 · Part 4: Position Bias When AI Agents Shop on Our Behalf [no-exercise]
+          14. Part 4: Position Bias When AI Agents Shop on Our Behalf [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Position Bias When AI Agents Shop on Our Behalf" />
@@ -559,7 +559,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          15 · Does Rank Still Matter in Agent-Mediated Shopping? [exercise]
+          15. Does Rank Still Matter in Agent-Mediated Shopping? [exercise]
           ================================================================ */}
       <Slide
         id="does-rank-still-matter-in-agent-mediated-shopping"
@@ -616,7 +616,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          16 · Part 5: Sponsorship, Delegation, and Conflicts of Duty in Agentic Commerce [no-exercise]
+          16. Part 5: Sponsorship, Delegation, and Conflicts of Duty in Agentic Commerce [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Sponsorship, Delegation, and Conflicts of Duty in Agentic Commerce" />
@@ -644,7 +644,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          17 · Principal-Agent Conflicts and Role Framing in AI Shopping Assistants [exercise]
+          17. Principal-Agent Conflicts and Role Framing in AI Shopping Assistants [exercise]
           ================================================================ */}
       <Slide
         id="principal-agent-conflicts-and-role-framing-in-ai-shopping-assistants"
@@ -704,7 +704,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          18 · Discussion: Auditing a Marketplace Shopping Assistant
+          18. Discussion: Auditing a Marketplace Shopping Assistant
           ================================================================ */}
       <Slide id="discussion-auditing-a-marketplace-shopping-assistant" border className="!py-8">
         <SlideHeading>Auditing a Marketplace Shopping Assistant</SlideHeading>
@@ -724,7 +724,7 @@ export default function Week4Page() {
       </Slide>
 
       {/* ================================================================
-          19 · Key Takeaways
+          19. Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>
@@ -733,7 +733,7 @@ export default function Week4Page() {
             "E-commerce discovery combines \"pull\" search rankings with \"push\" recommender systems built on content-based filtering, collaborative filtering, and two-stage retrieval-ranking pipelines.",
             "Rank position exerts a steep causal effect on human sales because shoppers face visual search costs and trust the top of the list, requiring platforms to de-bias click data using exploration or inverse propensity weighting.",
             "Retail media networks monetize top shelf positions through real-time sponsored auctions, balancing high-margin ad revenue against organic buyer relevance via quality and conversion multipliers.",
-            "Autonomous AI shopping agents do not eliminate rank effects; instead, they exhibit bounded inspection patterns and non-monotonic position biases when evaluating ranked product lists.",
+            "Autonomous AI shopping agents do not eliminate rank effects. Instead, they exhibit bounded inspection patterns and non-monotonic position biases when evaluating ranked product lists.",
             "In agent-mediated commerce, an AI assistant's treatment of sponsored listings depends heavily on its system-level role assignment, creating principal-agent conflicts of duty when advertising-funded platforms deploy the assistant.",
           ].map((takeaway, i) => (
             <li key={i} className="min-w-0">

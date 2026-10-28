@@ -17,7 +17,7 @@ export default function PaperFooter() {
             color: "var(--text-faint)",
           }}
         >
-          Tool-Lab &middot; Davood Wadi.
+          Tool-Lab | Davood Wadi.
         </p>
       </div>
     </footer>

@@ -1,6 +1,5 @@
 /* ==========================================================================
-   Shared kit: the building blocks every week draws and lays out with —
-   colours and type, the plate frame and label helpers, geometry helpers
+   Shared kit: the building blocks every week draws and lays out with, colours and type, the plate frame and label helpers, geometry helpers
    and slide layout blocks. See "Shared pieces" in the root CLAUDE.md.
    ========================================================================== */
 
@@ -67,7 +66,7 @@ export function PatentDefs({ id }: { id: string }) {
 
 /**
  * A box in oblique projection: white front face, stippled top and side.
- * (x, y) is the front face's top-left; the depth runs up and right by (dx, dy).
+ * (x, y) is the front face's top-left. The depth runs up and right by (dx, dy).
  */
 export function ObliqueBox({
   id,
@@ -311,7 +310,7 @@ export const head = {
  * default value is the state the slide shows before anyone touches it.
  */
 /* Controls under a plate speak the plate's language: Caslon tracked capitals
-   in ink (as PatentKey) and hairline ink rules; the chosen option is marked
+   in ink (as PatentKey) and hairline ink rules. The chosen option is marked
    by a filled ring, never by a flat block of fill. */
 const CONTROL_KEY = "shrink-0 text-[11px] font-normal uppercase tracking-[0.22em] text-[var(--ink)]";
 const CONTROL_TEXT = "text-[11.5px] font-normal uppercase tracking-[0.14em] text-[var(--ink)]";
@@ -585,7 +584,7 @@ export function Ruled({
   );
 }
 
-/** Section heading with a hairline beneath; an optional kicker ("Discussion:") sits above the words. */
+/** Section heading with a hairline beneath. An optional kicker ("Discussion:") sits above the words. */
 export function SlideHeading({
   children,
   kicker,

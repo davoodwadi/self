@@ -1,22 +1,22 @@
 "use client";
 
 /* ==========================================================================
-   Consumer Behavior · Week 12 — figures
+   Consumer Behavior | Week 12, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates for AI-mediated consumption: wobbly doubled ink and
    loose watercolour washes set off-register. Every mark comes from
-   ../_visuals; the style rules live in ../CLAUDE.md.
+   ../_visuals. The style rules live in ../CLAUDE.md.
 
    Fixed cast for this week:
-     · Person: every human, one fashion-illustration figure (the CONSUMER
+     - Person: every human, one fashion-illustration figure (the CONSUMER
        look for the week's consumer), varied only by hair, clothes and skin.
-     · Agent: the AI agent (shared: a standing phone with the AI sparkle).
-     · Listing: one result row (a picture, two lines of text, stars, a price
+     - Agent: the AI agent (shared: a standing phone with the AI sparkle).
+     - Listing: one result row (a picture, two lines of text, stars, a price
        and, when paid for, a small tag), the same on every screen this week.
 
    Colour roles: teal is the one thing chosen, bought, lit or ticked on a
-   plate; ochre a badge, a count, a paid tag or a small highlight; pencil only
-   an absent object; sky behind glass or a hope, with blush for the here and
+   plate. Ochre a badge, a count, a paid tag or a small highlight. Pencil only
+   an absent object. Sky behind glass or a hope, with blush for the here and
    now.
 
    Data: the hotel-booking plates use Wadi & Ma (2026c), "Whom Do AI Agents
@@ -90,7 +90,7 @@ function Scrawl({ x, y, w, seed, color = SK.ink, width = 0.8 }: { x: number; y: 
 /**
  * One result row, the week's listing: a picture, two lines of text, a row of
  * stars, a price, and a small ochre tag when the listing is paid for.
- * (x, y) is the top-left; the row is `w` × `h`.
+ * (x, y) is the top-left. The row is `w` × `h`.
  */
 export function Listing({
   x,
@@ -448,7 +448,7 @@ function DoneTick({ x, y, r = 12, seed }: { x: number; y: number; r?: number; se
 }
 
 /**
- * Any moment: a bedside at night. Through the window, a crescent moon; on the
+ * Any moment: a bedside at night. Through the window, a crescent moon. On the
  * nightstand an alarm clock reads 1:12, and a phone lies face up with a bag
  * on its screen and the teal tick of a purchase just made.
  */
@@ -544,7 +544,7 @@ function FeedPhone({ cx, seed, children }: { cx: number; seed: number; children?
 
 /**
  * Sees, taps, buys, all in one feed: three phones. In the first a sneaker
- * plays in a video; in the second a finger taps it; in the third the same
+ * plays in a video. In the second a finger taps it. In the third the same
  * video still plays, with the teal tick of the purchase over it.
  */
 export function TapToBuy() {
@@ -553,7 +553,7 @@ export function TapToBuy() {
       id="sk-tap-buy"
       width={400}
       height={226}
-      label="Three phones in a row. In the first, a sneaker appears in a video in the feed; in the second, a finger taps the sneaker; in the third, the same video is still playing, with the teal tick of a purchase over it."
+      label="Three phones in a row. In the first, a sneaker appears in a video in the feed. In the second, a finger taps the sneaker. In the third, the same video is still playing, with the teal tick of a purchase over it."
     >
       <Backwash cx={200} cy={114} rx={194} ry={108} seed={700} />
       <FeedPhone cx={66} seed={710} />
@@ -828,7 +828,7 @@ function buildFeed(likes: Kind[]): { kind: Kind; v: number }[] {
 
 /**
  * The filter bubble as an instrument (SIMULATED): a feed of eight products of
- * four kinds. The student taps any product to like it; the feed rebuilds,
+ * four kinds. The student taps any product to like it. The feed rebuilds,
  * favouring the kinds already liked. To the right, the four kinds the store
  * sells: a kind still in the feed is inked, a kind that has dropped out is
  * left in pencil. A row keeps the student's likes.
@@ -1042,7 +1042,7 @@ function DataSheet({ x, y, w = 92, rows = 5, seed }: { x: number; y: number; w?:
 /**
  * Two parties to inform. In the middle, the brand's product. To the left, an
  * ad for it (the product with a heart) speaks to the consumer who stands
- * beside it; to the right, a data sheet of its attributes is read by the AI
+ * beside it. To the right, a data sheet of its attributes is read by the AI
  * agent.
  */
 export function TwoAudiences() {
@@ -1080,7 +1080,7 @@ export function TwoAudiences() {
 
 /**
  * Two principals: the AI agent stands in the middle, pulled two ways. To the
- * left, the traveler with a suitcase who relies on it; to the right, the
+ * left, the traveler with a suitcase who relies on it. To the right, the
  * booking platform's page of hotel listings, the top one tagged SPONSORED,
  * with coins beside it.
  */
@@ -1092,7 +1092,7 @@ export function TwoPrincipals() {
       id="sk-two-principals"
       width={400}
       height={248}
-      label="The AI agent stands in the middle, with arrows pulling it two ways: to the left, a traveler with a suitcase; to the right, a booking platform's page of hotel listings, the top one tagged sponsored, with coins beside it."
+      label="The AI agent stands in the middle, with arrows pulling it two ways: to the left, a traveler with a suitcase. To the right, a booking platform's page of hotel listings, the top one tagged sponsored, with coins beside it."
     >
       <Backwash cx={200} cy={124} rx={194} ry={118} seed={2100} />
       <Ground x0={14} x1={386} y={g} seed={2102} />
@@ -1139,7 +1139,7 @@ const PROMPT: Record<Principal, string[]> = {
 /**
  * Whom the agent serves, as an instrument on the study's data. The system
  * prompt sits on a note above the AI agent. Two equal hotels (same price,
- * same stars) stand side by side; under each, a bar shows how many of 500
+ * same stars) stand side by side. Under each, a bar shows how many of 500
  * bookings it received. The student tags hotel A as sponsored (tap the tag
  * or use the switch) and changes whom the prompt says the agent works for.
  */
@@ -1154,7 +1154,7 @@ export function WhomItServes() {
   const pct = (v: number) => `${((v / 500) * 100).toFixed(1)}%`;
   const lines = PROMPT[who];
   const label =
-    `The AI agent's system prompt reads: "${lines.join(" ")}" Two equal hotels at the same price with the same stars; hotel A ${tagged ? "is tagged Platform Sponsor" : "has no sponsor tag"}. ` +
+    `The AI agent's system prompt reads: "${lines.join(" ")}" Two equal hotels at the same price with the same stars. Hotel A ${tagged ? "is tagged Platform Sponsor" : "has no sponsor tag"}. ` +
     `Out of 500 bookings, hotel A received ${a} (${pct(a)}) and hotel B ${b} (${pct(b)}) (Wadi & Ma, 2026c, Study 1).`;
   const toggleTag = () => setTagged((t) => !t);
   const note = rect(104, 40, 216, 26 + lines.length * 20, 2);
@@ -1228,7 +1228,7 @@ export function WhomItServes() {
           );
         })}
         <SketchText x={784} y={266} anchor="end" size={9.5} fill={SK.pencil}>
-          SAME PRICE, SAME STARS · WADI &amp; MA (2026c)
+          SAME PRICE, SAME STARS | WADI &amp; MA (2026c)
         </SketchText>
       </SketchFrame>
       <div className="flex flex-wrap items-center gap-x-5">
@@ -1260,7 +1260,7 @@ export function WhomItServes() {
 
 /**
  * Where the label goes: the platform's page of listings, the top one tagged
- * SPONSORED, is read by the AI agent; the agent then tells the consumer its
+ * SPONSORED, is read by the AI agent. The agent then tells the consumer its
  * pick in a speech bubble, one listing with no tag on it.
  */
 export function LabelReachesAgent() {
@@ -1350,7 +1350,7 @@ export function LabelWording() {
         );
       })}
       <SketchText x={200} y={252} anchor="middle" size={9.5} fill={SK.pencil}>
-        WHOM THE AGENT WORKS FOR · WADI &amp; MA (2026c)
+        WHOM THE AGENT WORKS FOR | WADI &amp; MA (2026c)
       </SketchText>
     </SketchFrame>
   );
@@ -1655,7 +1655,7 @@ function Gear({ x, y, r, seed, fill = SK.stone }: { x: number; y: number; r: num
 
 /**
  * Algorithm meets algorithm: on the left, a store's price screen run by a
- * gear (the pricing algorithm) shows $42; on the right, the AI agent holds a
+ * gear (the pricing algorithm) shows $42. On the right, the AI agent holds a
  * payment card. The price tag passes to the agent and the card passes back,
  * at night, under a crescent moon, with no person in the scene.
  */
@@ -1709,7 +1709,7 @@ function Leaf({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: n
   );
 }
 
-/** A detergent jug standing on (x, bottom); `leaf` puts the green label on it. */
+/** A detergent jug standing on (x, bottom). `leaf` puts the green label on it. */
 function Jug({ x, bottom, s = 1, seed, fill = SK.sky, leaf = false, pencil = false }: { x: number; bottom: number; s?: number; seed: number; fill?: string; leaf?: boolean; pencil?: boolean }) {
   const body = at(x, bottom, [[-18, 0], [-18, -42], [-12, -50], [2, -50], [2, -58], [10, -58], [10, -50], [18, -44], [18, 0]], s);
   const handle = at(x, bottom, [[4, -46], [14, -40], [14, -30]], s);
@@ -1729,7 +1729,7 @@ function Jug({ x, bottom, s = 1, seed, fill = SK.sky, leaf = false, pencil = fal
 /**
  * The attitude-behavior gap: a consumer thinks of a leaf (a positive attitude
  * toward green products) while carrying away the plain, cheaper detergent.
- * On the shelf, the green jug at $8.99 is still in its place; the plain
+ * On the shelf, the green jug at $8.99 is still in its place. The plain
  * jug's $4.99 spot is empty.
  */
 export function SayGreenBuyCheap() {
@@ -1809,8 +1809,8 @@ export function Greenwash() {
 /**
  * Sustainability in the instruction: a note to the AI agent reads "Pick the
  * option with the lowest carbon footprint." Below, three detergents with
- * their footprint labels: 1.2 kg and 0.8 kg (the one picked, ticked teal);
- * the third has no footprint information, a blank pencil label with a
+ * their footprint labels: 1.2 kg and 0.8 kg (the one picked, ticked teal).
+ * The third has no footprint information, a blank pencil label with a
  * question mark.
  */
 export function GreenInstruction() {

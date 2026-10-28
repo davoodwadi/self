@@ -84,7 +84,7 @@
         "id": "ephemeral-age-check",
         "text": "A checkout terminal verifies a buyer's age token locally and immediately discards the birth date rather than saving a customer profile.",
         "bin": "minimization",
-        "explanation": "Privacy needs little data collection; discarding unnecessary attributes at the point of use embodies privacy by design."
+        "explanation": "Privacy needs little data collection. Discarding unnecessary attributes at the point of use embodies privacy by design."
       },
       {
         "id": "behavioral-feed",
@@ -154,15 +154,15 @@
     "options": [
       {
         "option_text": "The largest single training runs will exceed $1 billion by 2027, accompanied by a massive escalation in energy consumption and carbon footprint.",
-        "option_explanation": "Correct. Compounding 2x–3x per year pushes frontier training runs past $1 billion by 2027, intensifying the environmental carbon footprint of digital technologies."
+        "option_explanation": "Correct. Compounding 2x: 3x per year pushes frontier training runs past $1 billion by 2027, intensifying the environmental carbon footprint of digital technologies."
       },
       {
         "option_text": "Training costs will plateau around $100 million because staff salaries replace compute hardware as the only growing expense.",
-        "option_explanation": "Even excluding staff salaries, compute costs alone grew from $930 (2017) to $41M–$78.4M for GPT-4 and $30M–$191M for Gemini Ultra (2023)."
+        "option_explanation": "Even excluding staff salaries, compute costs alone grew from $930 (2017) to $41M, $78.4M for GPT-4 and $30M, $191M for Gemini Ultra (2023)."
       },
       {
         "option_text": "Hardware efficiency improvements reduce frontier training costs by 2x to 3x per year back toward the 2017 Transformer baseline.",
-        "option_explanation": "Total training costs have risen—not fallen—by 2x to 3x per year for the past eight years as model scale outpaces hardware efficiency."
+        "option_explanation": "Total training costs have risen, not fallen, by 2x to 3x per year for the past eight years as model scale outpaces hardware efficiency."
       },
       {
         "option_text": "Only open-source models incur carbon footprints, while proprietary models like GPT-4 and Gemini Ultra have zero environmental impact.",
@@ -176,7 +176,7 @@
     "question_text": "In 2024, a startup launching a new web application discovers that to host its site reliably at scale, it effectively must go through one of the top five cloud companies. Which economic mechanism from the lecture explains this concentration of infrastructure power?",
     "hint": "Think about how each additional customer, developer tool, and global data center makes a leading platform more valuable and harder for newcomers to rival.",
     "correct_answer_index": 0,
-    "correct_answer_citation": "Platform Power and Digital Monopolies: Network effects and winner-takes-all dynamics — In 2024, if you were to host your website, you had to go through one of top five cloud companies.",
+    "correct_answer_citation": "Platform Power and Digital Monopolies: Network effects and winner-takes-all dynamics, In 2024, if you were to host your website, you had to go through one of top five cloud companies.",
     "options": [
       {
         "option_text": "Network effects and winner-takes-all dynamics that centralize cloud computing power among a handful of dominant platforms.",

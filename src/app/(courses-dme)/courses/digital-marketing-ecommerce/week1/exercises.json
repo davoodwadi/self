@@ -59,7 +59,7 @@
         "id": "rentals",
         "text": "A holiday-rental site lists apartments owned by thousands of hosts and keeps a fee from each booking.",
         "answer": "marketplace",
-        "explanation": "The site owns none of the apartments; it connects independent hosts with guests and takes a fee per transaction."
+        "explanation": "The site owns none of the apartments. It connects independent hosts with guests and takes a fee per transaction."
       },
       {
         "id": "pharmacy",

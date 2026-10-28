@@ -30,7 +30,7 @@
       },
       {
         "id": "tip-guilt",
-        "text": "A delivery app pre-selects a 20% tip; the only other option is a small grey link reading 'No, I don't appreciate my driver'.",
+        "text": "A delivery app pre-selects a 20% tip. The only other option is a small grey link reading 'No, I don't appreciate my driver'.",
         "answer": "shame",
         "explanation": "A pre-checked add-on, asymmetrical styling and guilt-inducing copy steer the user away from declining."
       },
@@ -135,12 +135,12 @@
     "slide_id": "resource-rationality-and-the-tool-lab-paradigm",
     "question_text": "A grocery site moves package weights off its search page so that an AI shopping agent must make an extra paid tool call per product to see them. Under the resource-rational account of Wadi and Ma (2026b), what should auditors expect from a capable agent shopping with a vague goal such as 'get the best deal'?",
     "hint": "Ask what the agent does when the cost of exact information acquisition exceeds its resource budget.",
-    "correct_answer_citation": "Week 07 · Resource Rationality and the Tool-Lab Paradigm",
+    "correct_answer_citation": "Week 07: Resource Rationality and the Tool-Lab Paradigm",
     "correct_answer_index": 2,
     "options": [
       {
         "option_text": "No change, because capable language models are cold calculators immune to marketing framing.",
-        "option_explanation": "Capable models compute unit value well only when attributes are immediately visible; costly lookups change their behavior."
+        "option_explanation": "Capable models compute unit value well only when attributes are immediately visible. Costly lookups change their behavior."
       },
       {
         "option_text": "The agent will call every inspection tool regardless of cost, so only its spending rises.",
@@ -168,7 +168,7 @@
     "cards": [
       {
         "id": "fees-page3",
-        "text": "Search results show a '30% OFF' badge and a round $20 price; the mandatory $9 handling fee appears only on page three of the product details.",
+        "text": "Search results show a '30% OFF' badge and a round $20 price. The mandatory $9 handling fee appears only on page three of the product details.",
         "bin": "obfuscation",
         "explanation": "Promotional cues sit on the surface while a diagnostic attribute is buried where resource-constrained agents skip."
       },

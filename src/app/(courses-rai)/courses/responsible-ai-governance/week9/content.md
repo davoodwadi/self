@@ -13,7 +13,7 @@ week: week9
 - Price is the central coordinating signal of a market economy and the only element of the marketing mix that directly generates revenue.
 - Historically, changing prices across thousands of products required manual analysis and physical menu or shelf updates, which kept prices relatively stable and uniform across shoppers.
 - Today, automated pricing algorithms observe competitor prices, inventory levels, search traffic, and individual customer telemetry in real time, updating prices milliseconds before a page loads.
-- This speed and granularity create two major governance challenges: at the individual level, algorithms can extract consumer surplus through opaque personalized pricing; at the market level, competing algorithms can learn to sustain supra-competitive prices without an explicit human cartel.
+- This speed and granularity create two major governance challenges: at the individual level, algorithms can extract consumer surplus through opaque personalized pricing. At the market level, competing algorithms can learn to sustain supra-competitive prices without an explicit human cartel.
 
 ## Dynamic Pricing Versus Personalized Pricing [exercise]
 - Dynamic pricing adjusts the market price of a product over time in response to aggregate supply and demand conditions, so that two consumers shopping at the exact same moment see the same price, as in airline seat inventory or ride-hailing surge pricing.
@@ -84,7 +84,7 @@ week: week9
 
 ## Four Pathways to Algorithmic Price Coordination [exercise]
 - Legal scholars Ariel Ezrachi and Maurice Stucke (2016) classify algorithmic collusion into four distinct governance scenarios based on how humans and algorithms interact.
-- Messenger occurs when human executives explicitly agree to fix prices and merely use software algorithms as the operational tool to monitor compliance and update prices; this is a traditional illegal cartel.
+- Messenger occurs when human executives explicitly agree to fix prices and merely use software algorithms as the operational tool to monitor compliance and update prices. This is a traditional illegal cartel.
 - Hub-and-Spoke occurs when multiple competing firms (the spokes) all adopt the same third-party pricing algorithm or vendor (the hub), pooling confidential data or delegating pricing to a single shared optimization engine that coordinates prices across competitors instead of letting them compete.
 - Predictable Agent occurs when each firm unilaterally deploys its own rule-based pricing algorithm (such as automated price-matching plus a margin floor) designed to react predictably and transparently to rivals' moves, dampening incentives to discount.
 - Autonomous Machine occurs when each firm independently deploys a self-learning reinforcement or foundation model given only the goal "maximize long-term profit," and the models autonomously learn tacit punishment-and-reward collusion without human instruction or shared code.

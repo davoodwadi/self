@@ -1,25 +1,25 @@
 /* ==========================================================================
-   Consumer Behavior · Week 05 — figures
+   Consumer Behavior | Week 05, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates for the self-concept, personality and lifestyles:
    wobbly doubled ink and loose watercolour washes set off-register. Every
-   mark comes from ../_visuals; the style rules live in ../CLAUDE.md.
+   mark comes from ../_visuals. The style rules live in ../CLAUDE.md.
 
    Fixed cast for this week:
-     · Person: every human, one fashion-illustration figure, varied only by
+     - Person: every human, one fashion-illustration figure, varied only by
        hair, clothes and skin washes. ACTUAL_SELF (plain, muted coat) and
        IDEAL_SELF (the same shopper upgraded to a camel jacket, on a sky
-       wash) carry the self-concept; people are never drawn in pencil.
-     · BrandBadge: the brand, a small ochre badge with a star. On a Person's
+       wash) carry the self-concept. People are never drawn in pencil.
+     - BrandBadge: the brand, a small ochre badge with a star. On a Person's
        chest it is the brand as a person (brand personality,
        anthropomorphism).
-     · Bag and Box: what is bought, carrying the badge.
-     · Heart: feeling.
-     · Agent: the AI agent (shared: a phone with the AI sparkle), here the
+     - Bag and Box: what is bought, carrying the badge.
+     - Heart: feeling.
+     - Agent: the AI agent (shared: a phone with the AI sparkle), here the
        synthetic survey respondent. BreadMachine: the automated product.
 
-   Colour roles: teal is the one thing chosen, lit or ticked on a plate;
-   ochre the badge or a count; pencil only an absent object (an empty slot,
+   Colour roles: teal is the one thing chosen, lit or ticked on a plate.
+   Ochre the badge or a count. Pencil only an absent object (an empty slot,
    a thing taken away or not bought).
    ========================================================================== */
 
@@ -74,7 +74,7 @@ import {
 
 
 /* ==========================================================================
-   TITLE · a mirror that shows who they hope to become
+   TITLE | a mirror that shows who they hope to become
    ========================================================================== */
 
 /** The one shopper this week's opening plates follow. */
@@ -210,7 +210,7 @@ export function SelfJudgement() {
   );
 }
 
-/** One shelf, the familiar brand and a NEW box; the buyer has taken one. */
+/** One shelf, the familiar brand and a NEW box. The buyer has taken one. */
 function EsteemChoice({ pick, look, id, label, seed }: { pick: "brand" | "new"; look: Look; id: string; label: string; seed: number }) {
   const gy = 226;
   const sy = 150;
@@ -241,7 +241,7 @@ export function HighEsteem() {
       id="sk-high-esteem"
       seed={200}
       look={{ hair: "curly", hairTone: SK.charcoal, skin: SK.brown, skinOpacity: 0.55, wear: SK.camel, legs: SK.charcoal }}
-      label="A confident shopper has taken the unknown box marked new from a store shelf and holds it up; its empty place on the shelf is a faint pencil outline, and the familiar brand stays behind."
+      label="A confident shopper has taken the unknown box marked new from a store shelf and holds it up. Its empty place on the shelf is a faint pencil outline, and the familiar brand stays behind."
     />
   );
 }
@@ -253,7 +253,7 @@ export function LowEsteem() {
       id="sk-low-esteem"
       seed={260}
       look={{ hair: "short", hairTone: SK.tan, skin: SK.skin, wear: SK.charcoal, legs: SK.tan, outfit: "jacket" }}
-      label="The same shelf: this shopper has taken the familiar box with the brand badge; its empty place is a faint pencil outline, and the unknown box marked new stays on the shelf."
+      label="The same shelf: this shopper has taken the familiar box with the brand badge. Its empty place is a faint pencil outline, and the unknown box marked new stays on the shelf."
     />
   );
 }
@@ -337,7 +337,7 @@ function Spring({ a, b, coils = 9, amp = 10, seed }: { a: Pt; b: Pt; coils?: num
   );
 }
 
-/** 1 · The gap between the two selves, pulled taut: tension. */
+/** 1. The gap between the two selves, pulled taut: tension. */
 export function GapPanel() {
   const { w, h, low, high, ax, ix, ph } = PANEL;
   const a = handAt(ax, low, ph, "point");
@@ -362,7 +362,7 @@ export function GapPanel() {
   );
 }
 
-/** 2 · Products bought to bridge the gap: branded boxes stacked into steps. */
+/** 2. Products bought to bridge the gap: branded boxes stacked into steps. */
 export function BridgePanel() {
   const { w, h, low, high, step, ax, ix, ph } = PANEL;
   const bh = (low - high) / 3;
@@ -391,7 +391,7 @@ export function BridgePanel() {
   );
 }
 
-/** 3 · The ad shows the upgraded self, holding the product. */
+/** 3. The ad shows the upgraded self, holding the product. */
 export function AdPanel() {
   const { w, h, low, ax, ph } = PANEL;
   const board: Pt[] = [[160, 26], [388, 26], [388, 204], [160, 204]];
@@ -404,7 +404,7 @@ export function AdPanel() {
       id="sk-ad-panel"
       width={w}
       height={h}
-      label="The shopper in a plain coat, labelled actual self, looks up at a billboard. On the billboard, set on a pale sky wash, their ideal self in a sharp camel jacket holds a shopping bag with the brand badge; the brand badge also sits in the billboard's corner."
+      label="The shopper in a plain coat, labelled actual self, looks up at a billboard. On the billboard, set on a pale sky wash, their ideal self in a sharp camel jacket holds a shopping bag with the brand badge. The brand badge also sits in the billboard's corner."
     >
       <Backwash cx={112} cy={222} rx={104} ry={98} seed={501} />
       <Ground x0={16} x1={w - 12} y={low} seed={504} />
@@ -426,7 +426,7 @@ export function AdPanel() {
    THE EXTENDED SELF: POSSESSIONS AS IDENTITY
    ========================================================================== */
 
-/** A ring with a stone; (x, y) is the centre of the band. */
+/** A ring with a stone. (x, y) is the centre of the band. */
 function JewelRing({ x, y, seed, s = 1 }: { x: number; y: number; seed: number; s?: number }) {
   const band = rp(blobPts(x, y + 6 * s, 13 * s, 13 * s, seed, 14, 0.04));
   const stone = at(x, y, [[-8, -8], [-4, -15], [4, -15], [8, -8], [0, -2]], s);
@@ -452,7 +452,7 @@ function Shirt({ x, y, seed, s = 1 }: { x: number; y: number; seed: number; s?: 
   );
 }
 
-/** A house; (x, y) is the middle of its base. */
+/** A house. (x, y) is the middle of its base. */
 function House({ x, y, s = 1, seed, fill = SK.camel }: { x: number; y: number; s?: number; seed: number; fill?: string }) {
   const walls = sharp(at(x, y, [[-20, 0], [-20, -26], [20, -26], [20, 0]], s));
   const roof = at(x, y, [[-25, -24], [0, -46], [25, -24]], s);
@@ -468,7 +468,7 @@ function House({ x, y, s = 1, seed, fill = SK.camel }: { x: number; y: number; s
   );
 }
 
-/** A sofa; (x, y) is the middle of its base. */
+/** A sofa. (x, y) is the middle of its base. */
 function Sofa({ x, y, seed, s = 1 }: { x: number; y: number; seed: number; s?: number }) {
   const back = at(x, y, [[-26, -14], [-24, -34], [24, -34], [26, -14]], s);
   const seat = sharp(at(x, y, [[-34, -4], [-34, -22], [-24, -22], [-24, -12], [24, -12], [24, -22], [34, -22], [34, -4]], s));
@@ -483,7 +483,7 @@ function Sofa({ x, y, seed, s = 1 }: { x: number; y: number; seed: number; s?: n
   );
 }
 
-/** A small town skyline: one stepped silhouette; (x, y) is the middle of its base. */
+/** A small town skyline: one stepped silhouette. (x, y) is the middle of its base. */
 function Skyline({ x, y, seed, s = 1 }: { x: number; y: number; seed: number; s?: number }) {
   const outline = sharp(
     at(x, y, [[-36, 0], [-36, -30], [-22, -30], [-22, -50], [-8, -50], [-8, -36], [6, -36], [6, -60], [22, -60], [22, -26], [34, -26], [34, 0]], s),
@@ -502,7 +502,7 @@ function Skyline({ x, y, seed, s = 1 }: { x: number; y: number; seed: number; s?
   );
 }
 
-/** A team pennant on its stick; (x, y) is the foot of the stick. */
+/** A team pennant on its stick. (x, y) is the foot of the stick. */
 function Pennant({ x, y, seed, s = 1 }: { x: number; y: number; seed: number; s?: number }) {
   const flag = sharp(at(x, y, [[-18, -62], [30, -50], [-18, -38]], s));
   return (
@@ -515,7 +515,7 @@ function Pennant({ x, y, seed, s = 1 }: { x: number; y: number; seed: number; s?
   );
 }
 
-/** A raised placard, the sign of a social movement; (x, y) is the foot of the stick. */
+/** A raised placard, the sign of a social movement. (x, y) is the foot of the stick. */
 function Placard({ x, y, seed, s = 1 }: { x: number; y: number; seed: number; s?: number }) {
   const board = sharp(at(x, y, [[-26, -68], [26, -68], [26, -36], [-26, -36]], s));
   return (
@@ -552,7 +552,7 @@ export function ExtendedRings() {
       id="sk-extended-rings"
       width={800}
       height={414}
-      label="A person stands at the centre of four widening half-rings marked individual, family, community and group. The inner ring holds a jewelled ring and a shirt; the next a house and a sofa; the next a row of neighborhood houses and a town skyline; the outer ring a team pennant and a protest placard."
+      label="A person stands at the centre of four widening half-rings marked individual, family, community and group. The inner ring holds a jewelled ring and a shirt. The next a house and a sofa. The next a row of neighborhood houses and a town skyline. The outer ring a team pennant and a protest placard."
     >
       <Backwash cx={400} cy={250} rx={390} ry={170} seed={601} />
       {RADII.map((r, i) => (
@@ -985,7 +985,7 @@ export function Neuroticism() {
   );
 }
 
-/** One poster on two posts; children draw its contents. */
+/** One poster on two posts. Children draw its contents. */
 function Poster({ x0, x1, top, bottom, gy, seed, children }: { x0: number; x1: number; top: number; bottom: number; gy: number; seed: number; children?: React.ReactNode }) {
   const board: Pt[] = [[x0, top], [x1, top], [x1, bottom], [x0, bottom]];
   const w = x1 - x0;
@@ -1095,10 +1095,10 @@ export function BrandTraits() {
   );
 }
 
-/* The five dimension rows share one canvas; the brand person stands at left. */
+/* The five dimension rows share one canvas. The brand person stands at left. */
 const DIM = { w: 400, h: 220, gy: 204, ph: 176, px: 78 };
 
-/** A standing greeting card with a heart on its front; (x, y) is its base. */
+/** A standing greeting card with a heart on its front. (x, y) is its base. */
 function GreetingCard({ x, y, seed, s = 1 }: { x: number; y: number; seed: number; s?: number }) {
   const back = at(x, y, [[-4, 0], [-4, -62], [26, -58], [26, 0]], s);
   const front = at(x, y, [[-4, 0], [-4, -62], [-30, -56], [-30, 4]], s);
@@ -1206,7 +1206,7 @@ export function Sophistication() {
   );
 }
 
-/** A boxy four-by-four with a spare wheel; (x, y) is the middle of its wheelbase. */
+/** A boxy four-by-four with a spare wheel. (x, y) is the middle of its wheelbase. */
 function Jeep({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const body = sharp(at(x, y, [[-52, -12], [-52, -40], [-30, -42], [-24, -66], [30, -66], [32, -42], [50, -40], [52, -12]], s));
   const glass = sharp(at(x, y, [[-20, -44], [-16, -60], [8, -60], [8, -44]], s));
@@ -1236,7 +1236,7 @@ function Jeep({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: n
   );
 }
 
-/** A small ridge tent; (x, y) is the middle of its base. */
+/** A small ridge tent. (x, y) is the middle of its base. */
 function Tent({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const shell = sharp(at(x, y, [[-44, 0], [0, -56], [44, 0]], s));
   const door = at(x, y, [[-12, 0], [0, -34], [12, 0]], s);
@@ -1293,7 +1293,7 @@ export function FaceInObject() {
       id="sk-face-in-object"
       width={400}
       height={268}
-      label="A person looks at the front of a car. Its headlights read as eyes and its grille as a smile; the face they see, with brows, pupils and a smile, is inked over the car."
+      label="A person looks at the front of a car. Its headlights read as eyes and its grille as a smile. The face they see, with brows, pupils and a smile, is inked over the car."
     >
       <Backwash cx={214} cy={140} rx={190} ry={120} seed={3301} />
       <Ground x0={20} x1={384} y={gy} seed={3304} />
@@ -1332,7 +1332,7 @@ export function FaceInObject() {
   );
 }
 
-/** A round candy mascot wearing the brand badge, waving; a shopper waves back. */
+/** A round candy mascot wearing the brand badge, waving. A shopper waves back. */
 export function Mascot() {
   const gy = 246;
   const mx = 272;
@@ -1389,7 +1389,7 @@ export function Mascot() {
   );
 }
 
-/** A loyalty stamp card; (x, y) is its top-left corner. */
+/** A loyalty stamp card. (x, y) is its top-left corner. */
 function StampCard({ x, y, seed }: { x: number; y: number; seed: number }) {
   const card = sharp(rp([[x, y], [x + 70, y], [x + 70, y + 42], [x, y + 42]]), true, 2);
   return (
@@ -1450,7 +1450,7 @@ export function BrandPartner() {
   );
 }
 
-/** A product box with a crack through it; (x, bottom) is its base. */
+/** A product box with a crack through it. (x, bottom) is its base. */
 function CrackedBox({ x, bottom, w = 48, h = 58, seed, pencil = false, badge = true, fill = SK.camel }: { x: number; bottom: number; w?: number; h?: number; seed: number; pencil?: boolean; badge?: boolean; fill?: string }) {
   return (
     <g>
@@ -1469,7 +1469,7 @@ function CrackedBox({ x, bottom, w = 48, h = 58, seed, pencil = false, badge = t
   );
 }
 
-/** A plain product failing earns a shrug; a brand seen as a person failing, a broken heart. */
+/** A plain product failing earns a shrug. A brand seen as a person failing, a broken heart. */
 export function Betrayal() {
   const gy = 292;
   const ph = 196;
@@ -1509,7 +1509,7 @@ export function Betrayal() {
    PSYCHOGRAPHICS AND LIFESTYLES: MEASURING AIOS
    ========================================================================== */
 
-/** A mountain with a snow line; (x, y) is the middle of its base. */
+/** A mountain with a snow line. (x, y) is the middle of its base. */
 function Mountain({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const back = sharp(at(x, y, [[-10, 0], [30, -52], [70, 0]], s));
   const front = sharp(at(x, y, [[-62, 0], [-10, -70], [42, 0]], s));
@@ -1586,7 +1586,7 @@ export function WhoWhy() {
 /* The three AIO plates are paper objects on one canvas size. */
 const AIO = { w: 400, h: 340 };
 
-/** A guitar centred on (x, y), neck up and to the right; `pencil` draws its ghost. */
+/** A guitar centred on (x, y), neck up and to the right. `pencil` draws its ghost. */
 function Guitar({ x, y, s = 1, seed, pencil = false }: { x: number; y: number; s?: number; seed: number; pencil?: boolean }) {
   const lower = rp(blobPts(x - 4 * s, y + 7 * s, 12 * s, 11 * s, seed, 12, 0.04));
   const upper = rp(blobPts(x + 5 * s, y - 5 * s, 9 * s, 8.5 * s, seed + 1, 12, 0.04));
@@ -1609,7 +1609,7 @@ function Guitar({ x, y, s = 1, seed, pencil = false }: { x: number; y: number; s
   );
 }
 
-/** Two wine glasses tilted together in a toast; (x, y) is where the rims meet. */
+/** Two wine glasses tilted together in a toast. (x, y) is where the rims meet. */
 function Cheers({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const glass = (side: 1 | -1, k: number) => {
     // one upright glass in local units (rim at y 0, foot at y 34), then tilted in
@@ -1636,7 +1636,7 @@ function Cheers({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed:
   return <g>{[glass(-1, 0), glass(1, 1)]}</g>;
 }
 
-/** A striped box of popcorn; (x, y) is the middle of its base. */
+/** A striped box of popcorn. (x, y) is the middle of its base. */
 function Popcorn({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const box = sharp(at(x, y, [[-15, -34], [15, -34], [11, 0], [-11, 0]], s));
   return (
@@ -1834,7 +1834,7 @@ export function VALSMap() {
       id="sk-vals-map"
       width={800}
       height={414}
-      label="The VALS map of eight consumer segments, each with a small figure. Innovators span the top, where resources are highest; survivors span the bottom, where they are lowest. Between them, three columns by primary motivation: ideals, with thinkers above believers; achievement, with achievers above strivers; and self-expression, with experiencers above makers. An arrow on the left runs from high resources to low resources."
+      label="The VALS map of eight consumer segments, each with a small figure. Innovators span the top, where resources are highest. Survivors span the bottom, where they are lowest. Between them, three columns by primary motivation: ideals, with thinkers above believers. Achievement, with achievers above strivers. And self-expression, with experiencers above makers. An arrow on the left runs from high resources to low resources."
     >
       <Backwash cx={420} cy={206} rx={390} ry={200} seed={4601} />
       {/* resources, high to low */}
@@ -1906,7 +1906,7 @@ export function YourPossession() {
       id="sk-your-possession"
       width={800}
       height={326}
-      label="Left: a person holds their guitar close. Right: the same person in the same pose with empty arms; the guitar that was taken away is only a faint pencil outline."
+      label="Left: a person holds their guitar close. Right: the same person in the same pose with empty arms. The guitar that was taken away is only a faint pencil outline."
     >
       <Backwash cx={218} cy={170} rx={168} ry={146} seed={5001} />
       <Backwash cx={582} cy={170} rx={168} ry={146} seed={5002} />
@@ -1924,7 +1924,7 @@ export function YourPossession() {
 
 /* ==========================================================================
    IDENTITY AND AUTOMATION: THE TASKS CONSUMERS KEEP
-   The home baker (bun, camel apron coat) keeps the task; the bread machine
+   The home baker (bun, camel apron coat) keeps the task. The bread machine
    is the automation. Teal is the machine where it is chosen.
    ========================================================================== */
 
@@ -1974,7 +1974,7 @@ function BreadMachine({ x, bottom, seed, pencil = false, fill = SK.charcoal }: {
 
 /**
  * Two scenes. The home baker holds up a loaf made by hand and passes on the
- * machine (pencil, crossed out); the busy parent, a child at hand, uses it.
+ * machine (pencil, crossed out). The busy parent, a child at hand, uses it.
  */
 export function BakerVsParent() {
   const g = 208;
@@ -2039,11 +2039,11 @@ export function LeaveTheLastStep() {
 
 /* ==========================================================================
    SYNTHETIC CONSUMERS: AI AS A SURVEY RESPONDENT
-   The survey is a paper form with rows of five boxes; synthetic respondents
+   The survey is a paper form with rows of five boxes. Synthetic respondents
    are the shared Agent, each tagged with the profile it answers as.
    ========================================================================== */
 
-/** A row of five answer boxes, left edge at x; `pick` (0–4) is ticked. */
+/** A row of five answer boxes, left edge at x. `pick` (0 to 4) is ticked. */
 function Scale5({ x, y, pick, seed, box = 18 }: { x: number; y: number; pick?: number; seed: number; box?: number }) {
   return (
     <g>
@@ -2078,7 +2078,7 @@ export function RealAndSynthetic() {
       id="sk-real-synthetic"
       width={400}
       height={232}
-      label="In the middle, a paper survey with rows of five answer boxes. On the left, three real consumers; on the right, three AI agent phones, each tagged with the age of the profile it answers as: 24, 41 and 67. Arrows run from both groups to the survey."
+      label="In the middle, a paper survey with rows of five answer boxes. On the left, three real consumers. On the right, three AI agent phones, each tagged with the age of the profile it answers as: 24, 41 and 67. Arrows run from both groups to the survey."
     >
       <Backwash cx={200} cy={124} rx={194} ry={104} seed={6400} opacity={0.4} />
       <SketchText x={70} y={24} anchor="middle" size={10.5}>
@@ -2128,7 +2128,7 @@ const SIM_PMF = [0.05, 0.15, 0.3, 0.35, 0.15];
 /** The first three asks match the three rows the slide started from. */
 const FIRST_ASKS = [1, 3, 2];
 
-/** The k-th simulated answer (0–4): seeded, so server and client agree. */
+/** The k-th simulated answer (0 to 4): seeded, so server and client agree. */
 function simulatedAnswer(k: number): number {
   if (k < FIRST_ASKS.length) return FIRST_ASKS[k];
   const u = seeded(9100 + k)();
@@ -2157,7 +2157,7 @@ export function AskAgain() {
   const barH = 118;
   const colX = (i: number) => x0 + i * (box + 4);
   const card = sharp(rp([[10, 14], [132, 14], [132, 42], [10, 42]]), true, 3);
-  const label = `The AI agent phone, asked would you buy it? ${asked} times, answers on a row of five boxes; its latest answer is box ${latest + 1}. Bars under the boxes count the answers so far: ${counts.join(", ")}.`;
+  const label = `The AI agent phone, asked would you buy it? ${asked} times, answers on a row of five boxes. Its latest answer is box ${latest + 1}. Bars under the boxes count the answers so far: ${counts.join(", ")}.`;
   return (
     <>
       <SketchFrame id="sk-ask-again" width={400} height={262} label={label}>

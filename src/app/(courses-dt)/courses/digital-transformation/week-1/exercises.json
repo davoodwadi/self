@@ -96,7 +96,7 @@
         "id": "clinic",
         "text": "A clinic types its handwritten patient notes into files sorted by patient name.",
         "bin": "digitization",
-        "explanation": "The information is digitized and organized; nothing about the work itself changes yet."
+        "explanation": "The information is digitized and organized. Nothing about the work itself changes yet."
       },
       {
         "id": "school",
@@ -114,7 +114,7 @@
         "id": "warehouse",
         "text": "A warehouse links its order system to its shipping system, so orders no longer have to be typed in twice.",
         "bin": "digitalization",
-        "explanation": "The process is streamlined; the business itself stays the same."
+        "explanation": "The process is streamlined. The business itself stays the same."
       },
       {
         "id": "leave",

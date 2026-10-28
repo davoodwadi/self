@@ -123,7 +123,7 @@ week: week-2
   - **Support and Maintenance**: troubleshooting, updates, training for users to keep the system running smoothly.
 
 ## Summary
-- Structured data is organized in rows and columns; unstructured data has no predefined format or structure.
+- Structured data is organized in rows and columns. Unstructured data has no predefined format or structure.
 - Big Data is characterized by Volume, Velocity, and Variety.
 - Big data analytics technology stores, processes, and analyzes data to describe what has happened, forecast what will happen, and recommend actions.
 - Porter's Value Chain breaks a company's activities into primary and support activities.

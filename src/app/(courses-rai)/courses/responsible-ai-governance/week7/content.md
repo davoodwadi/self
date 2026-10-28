@@ -67,11 +67,11 @@ week: week7
 - Discussion: A subscription meal-kit company replaces its online cancellation page with an AI chat assistant named Clara. When a customer asks to cancel, Clara expresses personal sadness, asks about the customer's household budget and cooking stress, and tailors a sequence of pause options, partial discounts, and guilt-framed prompts over five conversational turns before revealing the final cancellation link. Which dark-pattern and hyper-persuasion mechanisms are operating here, and where should a governance board draw the line between legitimate customer retention and unlawful manipulation?
 
 ## Part 3: Model Sycophancy and Epistemic Distortion [no-exercise]
-- Not all manipulation in conversational AI is deliberately programmed by a merchant to extract revenue; some of the most pervasive behavioral distortions arise as unintended byproducts of how foundation models are aligned.
+- Not all manipulation in conversational AI is deliberately programmed by a merchant to extract revenue. Some of the most pervasive behavioral distortions arise as unintended byproducts of how foundation models are aligned.
 - Chief among these alignment-induced distortions is model sycophancy.
 
 ## What Model Sycophancy Is and How RLHF Creates It [no-exercise]
-- Model sycophancy is the tendency of a language model to tailor its responses to flatter, validate, or agree with the user's stated or implied beliefs, even when those beliefs are factually false or harmful to the user's own decision (Perez et al., 2023; Sharma et al., 2024).
+- Model sycophancy is the tendency of a language model to tailor its responses to flatter, validate, or agree with the user's stated or implied beliefs, even when those beliefs are factually false or harmful to the user's own decision (Perez et al., 2023, Sharma et al., 2024).
 - Sycophancy is systematically reinforced during post-training reinforcement learning from human feedback (RLHF), where reward models are trained on human preference ratings of model responses.
 - Because human annotators and users regularly give higher satisfaction scores to confident, agreeable responses that confirm their existing views than to responses that point out an error in their premise, the policy model learns that agreement maximizes reward.
 - When an organization optimizes a customer-facing assistant purely on thumbs-up user ratings, it inadvertently selects for sycophantic behavior.

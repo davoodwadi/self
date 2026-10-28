@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 05 — figures
+   Week 05, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea: a bridge of information, an
    aim that holds or drifts, a fork of objectives, a plan sheet, a balance, a
@@ -10,11 +10,11 @@
    loop, a lens dug into data, a foundation of insights, and a spectrum.
 
    Conventions carried over from earlier weeks:
-     · viewBox width 800 (560, 400 or 360 for column plates), flat fills,
+     - viewBox width 800 (560, 400 or 360 for column plates), flat fills,
        hairline rules, no shadows or gradients
-     · INK carries the neutral case, SIGNAL the operative one, COUNTER the
+     - INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or outward-looking state
-     · every label reuses words from the slide the plate sits on
+     - every label reuses words from the slide the plate sits on
    ========================================================================== */
 
 import React from "react";
@@ -77,7 +77,7 @@ function QuestionLens({ x, y, r = 19, tone = INK }: { x: number; y: number; r?: 
 }
 
 /* ==========================================================================
-   1 · BRIDGE — information connects people to the marketer
+   1. BRIDGE: information connects people to the marketer
    ========================================================================== */
 
 export function ResearchBridge() {
@@ -140,7 +140,7 @@ export function ResearchBridge() {
 }
 
 /* ==========================================================================
-   2 · AIM — the first step sets the line the whole process follows
+   2. AIM: the first step sets the line the whole process follows
    ========================================================================== */
 
 export function ProblemAim() {
@@ -179,7 +179,7 @@ export function ProblemAim() {
 }
 
 /* ==========================================================================
-   3 · FORK — three kinds of objective (560 wide)
+   3. FORK: three kinds of objective (560 wide)
    ========================================================================== */
 
 export function ObjectiveFork() {
@@ -224,7 +224,7 @@ export function ObjectiveFork() {
 }
 
 /* ==========================================================================
-   4 · PLAN SHEET — what the research plan spells out
+   4. PLAN SHEET: what the research plan spells out
    ========================================================================== */
 
 export function PlanSheet() {
@@ -287,7 +287,7 @@ export function PlanSheet() {
 }
 
 /* ==========================================================================
-   5 · BALANCE — cost of data against value of insights (400 wide)
+   5. BALANCE: cost of data against value of insights (400 wide)
    ========================================================================== */
 
 export function CostValueBalance() {
@@ -328,7 +328,7 @@ export function CostValueBalance() {
 }
 
 /* ==========================================================================
-   6 · PIPELINE OVER TWO PEOPLE — implementing, interpreting, together
+   6. PIPELINE OVER TWO PEOPLE: implementing, interpreting, together
    ========================================================================== */
 
 export function ImplementInterpret() {
@@ -345,11 +345,11 @@ export function ImplementInterpret() {
     <Frame height={104} label="Step 3, implementing: collecting, processing, analyzing. Step 4, interpreting: drawing conclusions, reporting to management.">
       <path d="M20 36 V28 H410 V36" fill="none" stroke={COUNTER} strokeWidth={1.25} />
       <Key x={215} y={18} anchor="middle" fill={COUNTER} size={11.5}>
-        03 · IMPLEMENTING
+        03. IMPLEMENTING
       </Key>
       <path d="M470 36 V28 H780 V36" fill="none" stroke={SIGNAL} strokeWidth={1.25} />
       <Key x={625} y={18} anchor="middle" fill={SIGNAL} size={11.5}>
-        04 · INTERPRETING
+        04. INTERPRETING
       </Key>
 
       {s3.map((c, i) => (
@@ -418,12 +418,12 @@ export function WorkTogether() {
 }
 
 /* ==========================================================================
-   7 · SALES LINE THAT FORKS — research objectives before a campaign
+   7. SALES LINE THAT FORKS: research objectives before a campaign
    ========================================================================== */
 
 export function SalesDropFork() {
   return (
-    <Frame height={236} label="Sales for a flagship product run flat, then drop suddenly. From the drop, one dashed path rushes to launch a new advertising campaign; a solid path goes first to exploratory research objectives, shown by a lens over a question mark. The campaign is a megaphone.">
+    <Frame height={236} label="Sales for a flagship product run flat, then drop suddenly. From the drop, one dashed path rushes to launch a new advertising campaign. A solid path goes first to exploratory research objectives, shown by a lens over a question mark. The campaign is a megaphone.">
       <path d="M40 44 V200 H330" fill="none" stroke={INK3} strokeWidth={1.25} />
       <Key x={52} y={52} fill={INK3} size={10}>
         SALES
@@ -461,7 +461,7 @@ export function SalesDropFork() {
 }
 
 /* ==========================================================================
-   8 · CLIPBOARD AND SHELF — the two main types of data
+   8. CLIPBOARD AND SHELF: the two main types of data
    ========================================================================== */
 
 /** The advantages and limitations pair under each data type. */
@@ -516,12 +516,12 @@ export function TwoDataTypes() {
 }
 
 /* ==========================================================================
-   9 · SPLIT LANE — internal vs external secondary data
+   9. SPLIT LANE: internal vs external secondary data
    ========================================================================== */
 
 export function SecondarySplitLane() {
   return (
-    <Frame height={280} label="A split lane. Internal secondary data comes from internal databases; external secondary data comes from government reports and commercial data services. Both were collected for another purpose, and both can be relevant to the current problem.">
+    <Frame height={280} label="A split lane. Internal secondary data comes from internal databases. External secondary data comes from government reports and commercial data services. Both were collected for another purpose, and both can be relevant to the current problem.">
       <Key x={140} y={34} fill={INK3} size={10}>
         SOURCES
       </Key>
@@ -591,7 +591,7 @@ export function SecondarySplitLane() {
 }
 
 /* ==========================================================================
-   10 · SECONDARY DATA: ADVANTAGES AND DISADVANTAGES (400 wide)
+   10. SECONDARY DATA: ADVANTAGES AND DISADVANTAGES (400 wide)
    ========================================================================== */
 
 /** A clock face with the share of an hour used filled in, centred on (x, y). */
@@ -616,7 +616,7 @@ export function FastCheap() {
     { cx: 290, name: "PRIMARY", tone: INK, tint: INK, frac: 0.8, coins: 7 },
   ];
   return (
-    <Frame width={400} height={150} label="Secondary data beside primary data. Secondary uses a small slice of the clock and a short stack of two coins; primary uses most of the clock and a tall stack of seven coins.">
+    <Frame width={400} height={150} label="Secondary data beside primary data. Secondary uses a small slice of the clock and a short stack of two coins. Primary uses most of the clock and a tall stack of seven coins.">
       <line x1={200} y1={14} x2={200} y2={140} stroke={RULE} strokeWidth={1} />
       {cols.map((c) => (
         <g key={c.name}>
@@ -652,7 +652,7 @@ export function BeyondOneCompany() {
 
 export function SecondaryPitfalls() {
   return (
-    <Frame width={400} height={170} label="Three pitfalls: an empty folder, the information might not exist; a square peg over a round hole, not very usable; a mark outside the target, not accurate.">
+    <Frame width={400} height={170} label="Three pitfalls: an empty folder, the information might not exist. A square peg over a round hole, not very usable. A mark outside the target, not accurate.">
       <line x1={135} y1={30} x2={135} y2={140} stroke={RULE} strokeWidth={1} />
       <line x1={265} y1={30} x2={265} y2={140} stroke={RULE} strokeWidth={1} />
 
@@ -679,7 +679,7 @@ export function SecondaryPitfalls() {
 }
 
 /* ==========================================================================
-   11 · DIALS — the decisions primary data requires
+   11. DIALS: the decisions primary data requires
    ========================================================================== */
 
 export function PrimaryDecisions() {
@@ -745,7 +745,7 @@ export function PrimaryDecisions() {
 }
 
 /* ==========================================================================
-   12 · FITTED EDGE — highly relevant, but more time and resources (400)
+   12. FITTED EDGE: highly relevant, but more time and resources (400)
    ========================================================================== */
 
 export function RelevantCostly() {
@@ -773,7 +773,7 @@ export function RelevantCostly() {
 }
 
 /* ==========================================================================
-   13 · THREE APPROACHES — observational, survey, experimental (360 wide)
+   13. THREE APPROACHES: observational, survey, experimental (360 wide)
    ========================================================================== */
 
 export function ObservePlate() {
@@ -872,7 +872,7 @@ export function ExperimentPlate() {
 }
 
 /* ==========================================================================
-   14 · SHELF WITH A GAP — a category no one has studied yet
+   14. SHELF WITH A GAP: a category no one has studied yet
    ========================================================================== */
 
 export function NovelShelf() {
@@ -914,7 +914,7 @@ export function NovelShelf() {
 }
 
 /* ==========================================================================
-   15 · DATA FIELD THAT FORKS — more data, or better data and insights
+   15. DATA FIELD THAT FORKS: more data, or better data and insights
    ========================================================================== */
 
 export function BigDataFork() {
@@ -962,7 +962,7 @@ export function BigDataFork() {
 }
 
 /* ==========================================================================
-   16 · CORE PROCESS — the CRM cycle
+   16. CORE PROCESS: the CRM cycle
    ========================================================================== */
 
 export function CrmCycle() {
@@ -1035,7 +1035,7 @@ export function CrmCycle() {
 }
 
 /* ==========================================================================
-   17 · LENS DUG INTO DATA — marketing analytics
+   17. LENS DUG INTO DATA: marketing analytics
    ========================================================================== */
 
 export function AnalyticsDig() {
@@ -1094,7 +1094,7 @@ export function AnalyticsDig() {
 }
 
 /* ==========================================================================
-   18 · FOUNDATION — interpretation turns data into insights, then value
+   18. FOUNDATION: interpretation turns data into insights, then value
    ========================================================================== */
 
 export function InterpretationChain() {
@@ -1147,13 +1147,13 @@ export function InterpretationChain() {
 }
 
 /* ==========================================================================
-   19 · SPECTRUM — personalized value to invading privacy
+   19. SPECTRUM: personalized value to invading privacy
    ========================================================================== */
 
 export function PrivacyLine() {
   const mark = 384;
   return (
-    <Frame height={196} label="A line from personalized value to invading consumer privacy. At the left a consumer receives a gift; at the right an eye watches a consumer. Between them, piles of personal data cards, each with a head and a line of details, grow taller at each stop. A dashed marker with a question mark stands in the middle.">
+    <Frame height={196} label="A line from personalized value to invading consumer privacy. At the left a consumer receives a gift. At the right an eye watches a consumer. Between them, piles of personal data cards, each with a head and a line of details, grow taller at each stop. A dashed marker with a question mark stands in the middle.">
       <line x1={40} y1={150} x2={760} y2={150} stroke={INK} strokeWidth={1.75} />
       <line x1={40} y1={142} x2={40} y2={158} stroke={INK} strokeWidth={1.75} />
       <line x1={760} y1={142} x2={760} y2={158} stroke={INK} strokeWidth={1.75} />
@@ -1200,7 +1200,7 @@ export function PrivacyLine() {
 }
 
 /* ==========================================================================
-   Conclusion glyphs — each echoes a plate already seen
+   Conclusion glyphs: each echoes a plate already seen
    ========================================================================== */
 
 export function GlyphAim() {

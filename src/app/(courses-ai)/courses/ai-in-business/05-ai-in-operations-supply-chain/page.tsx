@@ -27,9 +27,9 @@ import {
 } from "../_visuals/kit";
 
 // ============================================================================
-// WEEK 05 — AI IN OPERATIONS AND SUPPLY CHAIN
+// WEEK 05: AI IN OPERATIONS AND SUPPLY CHAIN
 // ============================================================================
-// Same deck grammar as Weeks 01–04: every slide is hand-composed for its own
+// Same deck grammar as Weeks 01 to 04: every slide is hand-composed for its own
 // argument, with hairlines instead of boxes and crimson marking one thing.
 //
 // Sentences are transcribed verbatim from content.md. Figures carry only words
@@ -49,7 +49,7 @@ export default function Week05OperationsSupplyChain() {
       <ScrollProgress label="Week 05" />
 
       {/* ==================================================================
-          01 · TITLE — masthead, the reactive-to-predictive subtitle, and the
+          01. TITLE: masthead, the reactive-to-predictive subtitle, and the
           three qualities of the supply networks being built.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
@@ -124,7 +124,7 @@ export default function Week05OperationsSupplyChain() {
             <span
               className={`${MICRO} font-normal text-[var(--charcoal-light)]/60`}
             >
-              BUSI 654 · Applications of AI in Business
+              BUSI 654. Applications of AI in Business
             </span>
           </div>
         </div>
@@ -142,9 +142,9 @@ export default function Week05OperationsSupplyChain() {
       />
 
       {/* ==================================================================
-          03 · COMPLEXITY OF GLOBAL OPERATIONS — a network spanning zones; a
-          small spreadsheet beside a field of variables; one disruption
-          cascading down a chain; simplified assumptions struck.
+          03. COMPLEXITY OF GLOBAL OPERATIONS: a network spanning zones. A
+          small spreadsheet beside a field of variables. One disruption
+          cascading down a chain. Simplified assumptions struck.
                                                           [quiz topic]
       ================================================================== */}
       <Slide id="global-complexity" border align="left">
@@ -382,8 +382,8 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          04 · AI VS. TRADITIONAL OPTIMIZATION — a fixed constraint line
-          beside one that re-sets with each batch of new data; a straight fit
+          04. AI VS. TRADITIONAL OPTIMIZATION: a fixed constraint line
+          beside one that re-sets with each batch of new data. A straight fit
           missing a curved pattern that deep learning follows.
                                               [quiz: global-complexity]
       ================================================================== */}
@@ -552,9 +552,9 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          05 · REACTIVE TO PREDICTIVE — one disruption on a timeline: the
+          05. REACTIVE TO PREDICTIVE: one disruption on a timeline: the
           reactive lane moves after it, the predictive lane reads leading
-          indicators and moves weeks before; crisis management struck.
+          indicators and moves weeks before. Crisis management struck.
       ================================================================== */}
       <Slide id="reactive-to-predictive" border align="left">
         <Head1 eyebrow="A change of posture">
@@ -697,8 +697,8 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          06 · DATA — the requirement in lead weight; four sources converging
-          on the models; departments walled off from each other.
+          06. DATA: the requirement in lead weight. Four sources converging
+          on the models. Departments walled off from each other.
       ================================================================== */}
       <Slide id="data-core" border align="left">
         <Head1 eyebrow="What the models run on">
@@ -803,7 +803,7 @@ export default function Week05OperationsSupplyChain() {
               aria-hidden
               className={`${MICRO} mt-3 text-[var(--crimson)]`}
             >
-              Data silos · between different departments
+              Data silos | between different departments
             </div>
             <p className={`${DISPLAY} mt-7 max-w-4xl`}>
               Data silos between different departments remain the primary
@@ -830,8 +830,8 @@ export default function Week05OperationsSupplyChain() {
       />
 
       {/* ==================================================================
-          08 · BEYOND HISTORICAL AVERAGES — the two traditional inputs set
-          against three real-time signals; a subtle shift in behaviour caught
+          08. BEYOND HISTORICAL AVERAGES: the two traditional inputs set
+          against three real-time signals. A subtle shift in behaviour caught
           long before it reaches the sales ledger.            [quiz topic]
       ================================================================== */}
       <Slide id="beyond-averages" border align="left">
@@ -973,9 +973,9 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          09 · BULLWHIP EFFECT — a small wiggle at retail swelling into large
-          swings upstream; one real-time signal reaching every tier at once;
-          short-term spikes separated from a structural shift.
+          09. BULLWHIP EFFECT: a small wiggle at retail swelling into large
+          swings upstream. One real-time signal reaching every tier at once.
+          Short-term spikes separated from a structural shift.
                                   [quiz: beyond-averages] [quiz topic]
       ================================================================== */}
       <Slide
@@ -1100,7 +1100,7 @@ export default function Week05OperationsSupplyChain() {
                 fill="var(--charcoal)"
                 fillOpacity="0.6"
               >
-                ALL TIERS · SIMULTANEOUSLY
+                ALL TIERS | SIMULTANEOUSLY
               </text>
             </svg>
           </div>
@@ -1136,7 +1136,7 @@ export default function Week05OperationsSupplyChain() {
                   fill="var(--charcoal)"
                   fillOpacity="0.6"
                 >
-                  SHORT-TERM SPIKES · NOISE
+                  SHORT-TERM SPIKES | NOISE
                 </text>
                 <text
                   {...SVG_LABEL}
@@ -1163,9 +1163,9 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          10 · DYNAMIC INVENTORY — a flat safety-stock line against demand,
-          its gaps shaded as stockouts and excess; a crimson target that
-          follows demand instead; every echelon balanced at once.
+          10. DYNAMIC INVENTORY: a flat safety-stock line against demand,
+          its gaps shaded as stockouts and excess. A crimson target that
+          follows demand instead. Every echelon balanced at once.
                                                      [quiz: bullwhip]
       ================================================================== */}
       <Slide
@@ -1330,7 +1330,7 @@ export default function Week05OperationsSupplyChain() {
                 y="10"
                 fill="var(--crimson)"
               >
-                STOCK LEVELS · ENTIRE DISTRIBUTION NETWORK
+                STOCK LEVELS | ENTIRE DISTRIBUTION NETWORK
               </text>
               {(() => {
                 const root = { x: 60, y: 95 };
@@ -1396,9 +1396,9 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          11 · DEEP LEARNING FOR TIME SERIES — a sequence and its predicted
-          continuation; two related SKUs pulling apart and moving together;
-          a fit that re-sets its slope at a structural break.
+          11. DEEP LEARNING FOR TIME SERIES: a sequence and its predicted
+          continuation. Two related SKUs pulling apart and moving together.
+          A fit that re-sets its slope at a structural break.
       ================================================================== */}
       <Slide id="time-series" border align="left">
         <Head1 eyebrow="Under the hood">Deep Learning for Time-Series Data</Head1>
@@ -1584,8 +1584,8 @@ export default function Week05OperationsSupplyChain() {
       />
 
       {/* ==================================================================
-          13 · ROUTING AT SCALE — six stops beside thousands; three inputs
-          producing routes in seconds; a route re-optimized around a road
+          13. ROUTING AT SCALE: six stops beside thousands. Three inputs
+          producing routes in seconds. A route re-optimized around a road
           closure and a new order while the vehicle is in transit.
                                                           [quiz topic]
       ================================================================== */}
@@ -1797,8 +1797,8 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          14 · LAST MILE — the supply chain as segments with the final one
-          marked; two methods enabling two kinds of vehicle; a hub serving
+          14. LAST MILE: the supply chain as segments with the final one
+          marked. Two methods enabling two kinds of vehicle. A hub serving
           its near neighbourhood continuously.     [quiz: routing-at-scale]
       ================================================================== */}
       <Slide
@@ -1979,8 +1979,8 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          15 · PREDICTIVE MAINTENANCE — evenly spaced service stops; three
-          sensor lanes, one drifting and flagged before its failure; downtime
+          15. PREDICTIVE MAINTENANCE: evenly spaced service stops. Three
+          sensor lanes, one drifting and flagged before its failure. Downtime
           struck against a longer lifespan.                   [quiz topic]
       ================================================================== */}
       <Slide id="predictive-maintenance" border align="left">
@@ -2134,8 +2134,8 @@ export default function Week05OperationsSupplyChain() {
       />
 
       {/* ==================================================================
-          17 · SUPPLIER RISK — an annual audit lane against a continuous
-          monitoring lane that flags emerging risks; unstructured text with
+          17. SUPPLIER RISK: an annual audit lane against a continuous
+          monitoring lane that flags emerging risks. Unstructured text with
           risk indicators lifted out.                         [quiz topic]
       ================================================================== */}
       <Slide id="supplier-risk" border align="left">
@@ -2279,8 +2279,8 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          18 · NLP FOR CONTRACTS AND SPEND — a scatter of unstandardized
-          contracts; one PDF yielding three extracted fields; purchasing data
+          18. NLP FOR CONTRACTS AND SPEND: a scatter of unstandardized
+          contracts. One PDF yielding three extracted fields. Purchasing data
           sorted into categories with maverick spend and a consolidation.
                                                   [quiz: supplier-risk]
       ================================================================== */}
@@ -2514,8 +2514,8 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          19 · MULTI-TIER VISIBILITY — company, three tiers, visibility ending
-          at tier one; three tier-one suppliers traced through tier two to
+          19. MULTI-TIER VISIBILITY: company, three tiers, visibility ending
+          at tier one. Three tier-one suppliers traced through tier two to
           one tier-three factory, the hidden choke point.
       ================================================================== */}
       <Slide id="multi-tier" border align="left">
@@ -2700,8 +2700,8 @@ export default function Week05OperationsSupplyChain() {
       />
 
       {/* ==================================================================
-          21 · AI-POWERED DISTRIBUTION CENTER — three lanes kept in step;
-          products ordered together slotted side by side; a loop between
+          21. AI-POWERED DISTRIBUTION CENTER: three lanes kept in step.
+          Products ordered together slotted side by side. A loop between
           order profiles and layout rules.
       ================================================================== */}
       <Slide id="distribution-center" border align="left">
@@ -2803,7 +2803,7 @@ export default function Week05OperationsSupplyChain() {
                 })}
               </div>
               <div className={`${MICRO} mt-3 text-[var(--crimson)]`}>
-                Ordered together · in proximity
+                Ordered together | in proximity
               </div>
             </div>
           </div>
@@ -2878,9 +2878,9 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          22 · COMPUTER VISION FOR QUALITY CONTROL — the three failings of
-          manual inspection struck; a conveyor under a vision frame with one
-          defect caught; three checks done in milliseconds.   [quiz topic]
+          22. COMPUTER VISION FOR QUALITY CONTROL: the three failings of
+          manual inspection struck. A conveyor under a vision frame with one
+          defect caught. Three checks done in milliseconds.   [quiz topic]
       ================================================================== */}
       <Slide id="cv-quality" border align="left">
         <Head1 eyebrow="Inspection at speed">
@@ -3019,8 +3019,8 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          23 · COLLABORATIVE ROBOTICS — replacement struck against working
-          alongside; robot and picker lanes meeting at hand-offs; strain
+          23. COLLABORATIVE ROBOTICS: replacement struck against working
+          alongside. Robot and picker lanes meeting at hand-offs. Strain
           down and efficiency up.                        [quiz: cv-quality]
       ================================================================== */}
       <Slide id="cobots" border align="left" quizData={quiz["cobots"]}>
@@ -3159,7 +3159,7 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          24 · DIGITAL TWINS — a physical floor plan and its virtual mirror
+          24. DIGITAL TWINS: a physical floor plan and its virtual mirror
           joined by real-time IoT data, the same bottleneck in both, the twin
           adding its predicted impact.                        [quiz topic]
       ================================================================== */}
@@ -3314,8 +3314,8 @@ export default function Week05OperationsSupplyChain() {
       />
 
       {/* ==================================================================
-          26 · CARBON FOOTPRINT — total emissions as one bar, supply chains
-          taking most of it; routing objective widened to fuel; sourcing
+          26. CARBON FOOTPRINT: total emissions as one bar, supply chains
+          taking most of it. Routing objective widened to fuel. Sourcing
           scenarios compared on carbon impact before the decision.
       ================================================================== */}
       <Slide id="carbon-footprint" border align="left">
@@ -3407,8 +3407,8 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          27 · REVERSE LOGISTICS — returned goods assessed for condition and
-          routed three ways; forecast return volumes with capacity set to
+          27. REVERSE LOGISTICS: returned goods assessed for condition and
+          routed three ways. Forecast return volumes with capacity set to
           meet them.                                          [quiz topic]
       ================================================================== */}
       <Slide id="reverse-logistics" border align="left">
@@ -3587,9 +3587,9 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          28 · WASTE REDUCTION — production against demand, the excess shaded
-          as overproduction; the same pair under precision forecasting with
-          little left unsold; spoilage struck.   [quiz: reverse-logistics]
+          28. WASTE REDUCTION: production against demand, the excess shaded
+          as overproduction. The same pair under precision forecasting with
+          little left unsold. Spoilage struck.   [quiz: reverse-logistics]
       ================================================================== */}
       <Slide
         id="waste-reduction"
@@ -3689,8 +3689,8 @@ export default function Week05OperationsSupplyChain() {
       />
 
       {/* ==================================================================
-          30 · BLACK BOX — inputs vanishing into an opaque model that emits a
-          recommendation; planners' hesitation; explainable AI as the bridge
+          30. BLACK BOX: inputs vanishing into an opaque model that emits a
+          recommendation. Planners' hesitation. Explainable AI as the bridge
           between operators and systems.                      [quiz topic]
       ================================================================== */}
       <Slide id="black-box" border align="left">
@@ -3825,7 +3825,7 @@ export default function Week05OperationsSupplyChain() {
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
-                EXPLAINABLE AI · TRUST
+                EXPLAINABLE AI | TRUST
               </text>
             </svg>
             <p className={`${DISPLAY} mt-6 max-w-4xl`}>
@@ -3837,8 +3837,8 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          31 · DATA SILOS AND LEGACY SYSTEMS — an ERP that cannot reach the
-          AI platform; messy records cleaned into rows; the same gap closed
+          31. DATA SILOS AND LEGACY SYSTEMS: an ERP that cannot reach the
+          AI platform. Messy records cleaned into rows. The same gap closed
           by a middleware layer.                          [quiz: black-box]
       ================================================================== */}
       <Slide
@@ -4037,8 +4037,8 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          32 · CYBERSECURITY — exposure rising as networks connect; one
-          anomalous burst caught in steady traffic; an adversarial attack
+          32. CYBERSECURITY: exposure rising as networks connect. One
+          anomalous burst caught in steady traffic. An adversarial attack
           aimed at the model itself.
       ================================================================== */}
       <Slide id="cybersecurity" border align="left">
@@ -4086,7 +4086,7 @@ export default function Week05OperationsSupplyChain() {
                   fill="var(--charcoal)"
                   fillOpacity="0.6"
                 >
-                  INTERCONNECTED · AUTOMATED
+                  INTERCONNECTED | AUTOMATED
                 </text>
               </svg>
             </figure>
@@ -4215,8 +4215,8 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          33 · HUMAN-AI TRANSITION — planner struck for algorithm manager;
-          three investments; change management weighed above technology.
+          33. HUMAN-AI TRANSITION: planner struck for algorithm manager.
+          Three investments. Change management weighed above technology.
       ================================================================== */}
       <Slide id="human-ai-transition" border align="left">
         <Head1 eyebrow="People">The Human-AI Transition in Operations</Head1>
@@ -4278,7 +4278,7 @@ export default function Week05OperationsSupplyChain() {
       </Slide>
 
       {/* ==================================================================
-          34 · CONCLUSION — the four things a self-driving supply chain does,
+          34. CONCLUSION: the four things a self-driving supply chain does,
           then the three closing statements in display weight, then the
           colophon.
       ================================================================== */}
@@ -4349,7 +4349,7 @@ export default function Week05OperationsSupplyChain() {
             <span
               className={`${MICRO} font-normal text-[var(--charcoal-light)]/55`}
             >
-              Davood Wadi, PhD · BUSI 654
+              Davood Wadi, PhD | BUSI 654
             </span>
           </div>
         </div>

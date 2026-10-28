@@ -39,7 +39,7 @@
         "id": "projection",
         "text": "A manager reports that 64% of the group's customers like the new menu, because 64% of reviews mentioning it are positive.",
         "answer": "self-selected",
-        "explanation": "Reviewers chose to post; they are not a probability sample, so the 64% cannot be projected to the customer base with a known precision."
+        "explanation": "Reviewers chose to post. They are not a probability sample, so the 64% cannot be projected to the customer base with a known precision."
       }
     ]
   },
@@ -92,7 +92,7 @@
     "prompt": "An insurer will use a language model to classify claim emails. Put the validation steps in order.",
     "steps": [
       { "id": "sample", "text": "Draw a random sample of 500 claim emails.", "explanation": "Validation starts from a random sample of the collection." },
-      { "id": "humans", "text": "Two staff code the sample independently; measure their agreement.", "explanation": "Human coding is the standard, and its own reliability is checked first." },
+      { "id": "humans", "text": "Two staff code the sample independently. Measure their agreement.", "explanation": "Human coding is the standard, and its own reliability is checked first." },
       { "id": "model", "text": "Run the language model on the same 500 emails.", "explanation": "The automated method codes the same sample the people coded." },
       { "id": "compare", "text": "Report precision and recall for each claim category.", "explanation": "The automated coding is compared with the human coding, category by category." },
       { "id": "groups", "text": "Check whether accuracy differs for French and English emails.", "explanation": "Accuracy can differ across products, customer groups or languages." },
@@ -104,12 +104,12 @@
     "slide_id": "privacy-in-text-and-social-data",
     "question_text": "A report on a pharmacy chain quotes a public forum post word for word, with the author's username removed: \"My pharmacist at the Elm Street store told everyone in line about my insulin prescription.\" What is the problem?",
     "hint": "Think about what a reader could do with the exact words.",
-    "correct_answer_citation": "Week 12 · Privacy in Text and Social Data",
+    "correct_answer_citation": "Week 12: Privacy in Text and Social Data",
     "correct_answer_index": 2,
     "options": [
       {
         "option_text": "None: the post was public, so the firm may quote it in any report it writes.",
-        "option_explanation": "Publicly accessible content is not free to use for any purpose; platform terms, law and the author's reasonable expectations limit it."
+        "option_explanation": "Publicly accessible content is not free to use for any purpose. Platform terms, law and the author's reasonable expectations limit it."
       },
       {
         "option_text": "None: once the username is removed, the quotation cannot identify anyone.",
@@ -117,7 +117,7 @@
       },
       {
         "option_text": "Its exact words can be searched to find the author, and it reveals a health condition.",
-        "option_explanation": "Correct. A verbatim quotation can be located with a search engine, and health is a special category that requires additional protection; the quotation is paraphrased or used with permission."
+        "option_explanation": "Correct. A verbatim quotation can be located with a search engine, and health is a special category that requires additional protection. The quotation is paraphrased or used with permission."
       },
       {
         "option_text": "Keep the quotation, but add the store's postal code and the author's age.",
@@ -163,7 +163,7 @@
         "id": "price-not",
         "text": "Price is not what is driving the decline in orders.",
         "answer": "conclusion",
-        "explanation": "It interprets findings about the problem; it proposes no action."
+        "explanation": "It interprets findings about the problem. It proposes no action."
       }
     ]
   },

@@ -2,14 +2,14 @@
   {
     "type": "quiz",
     "slide_id": "factor-analysis",
-    "question_text": "A smartphone survey asks for ratings on eight attributes. The factor analysis gives eigenvalues of 3.1, 2.2, 0.8, 0.6 and smaller. On the first factor, battery life, durability and repair cost load highly; on the second, camera quality, screen color and design load highly. Which conclusion follows?",
+    "question_text": "A smartphone survey asks for ratings on eight attributes. The factor analysis gives eigenvalues of 3.1, 2.2, 0.8, 0.6 and smaller. On the first factor, battery life, durability and repair cost load highly. On the second, camera quality, screen color and design load highly. Which conclusion follows?",
     "hint": "Apply the eigenvalue rule, then name each factor from its high loadings.",
-    "correct_answer_citation": "Week 10 · Factor Analysis",
+    "correct_answer_citation": "Week 10: Factor Analysis",
     "correct_answer_index": 1,
     "options": [
       {
         "option_text": "Retain eight factors, one for each attribute.",
-        "option_explanation": "Factor analysis reduces the attributes to fewer dimensions; only two eigenvalues exceed one."
+        "option_explanation": "Factor analysis reduces the attributes to fewer dimensions. Only two eigenvalues exceed one."
       },
       {
         "option_text": "Retain two factors, which might be named reliability and appearance.",
@@ -76,7 +76,7 @@
         "id": "far-ideal",
         "text": "A brand sits far from all three ideal points, closest to that of the casual-exercise segment.",
         "answer": "fit",
-        "explanation": "The distance to each ideal point shows how well the brand's perceived position matches each segment; here the match is weak."
+        "explanation": "The distance to each ideal point shows how well the brand's perceived position matches each segment. Here the match is weak."
       },
       {
         "id": "cluster3",
@@ -104,7 +104,7 @@
       {
         "id": "method",
         "text": "Choose Euclidean distance and k-means for the 200,000 cardholders.",
-        "explanation": "The distance measure and the clustering method are chosen next; k-means suits a large dataset."
+        "explanation": "The distance measure and the clustering method are chosen next. K-means suits a large dataset."
       },
       {
         "id": "number",
@@ -186,24 +186,24 @@
     "type": "quiz",
     "slide_id": "interpreting-part-worth-utilities",
     "question_text": "Headphone part-worth ranges are 0.6 for brand, 1.8 for noise cancelling and 1.6 for price, with prices tested from $150 to $250. What is the relative importance of noise cancelling, and how would testing prices from $100 to $400 change the importance of price?",
-    "hint": "Divide the attribute's range by the sum of the ranges; then ask how a wider price range changes the price part-worths.",
-    "correct_answer_citation": "Week 10 · Interpreting Part-Worth Utilities",
+    "hint": "Divide the attribute's range by the sum of the ranges. Then ask how a wider price range changes the price part-worths.",
+    "correct_answer_citation": "Week 10: Interpreting Part-Worth Utilities",
     "correct_answer_index": 2,
     "options": [
       {
-        "option_text": "33 percent; the importance of price would stay the same.",
-        "option_explanation": "Each attribute's range is divided by the total of 4.0, not shared equally; and importance depends on the levels included."
+        "option_text": "33 percent. The importance of price would stay the same.",
+        "option_explanation": "Each attribute's range is divided by the total of 4.0, not shared equally. And importance depends on the levels included."
       },
       {
-        "option_text": "45 percent; the importance of price would fall.",
+        "option_text": "45 percent. The importance of price would fall.",
         "option_explanation": "1.8 divided by 4.0 is 45 percent, but a wider range of prices increases the apparent importance of price."
       },
       {
-        "option_text": "45 percent; the importance of price would rise.",
+        "option_text": "45 percent. The importance of price would rise.",
         "option_explanation": "Correct. 1.8 / (0.6 + 1.8 + 1.6) = 45 percent, and a wider range of prices widens the range of the price part-worths."
       },
       {
-        "option_text": "1.8 percent; price is the most important attribute.",
+        "option_text": "1.8 percent. Price is the most important attribute.",
         "option_explanation": "1.8 is the range of the part-worths, not the relative importance, and noise cancelling has the largest range."
       }
     ]
@@ -213,7 +213,7 @@
     "slide_id": "conjoint-designs-for-ai-agents",
     "question_text": "A retailer gives a shopping agent choice tasks of four profiles varying in price, rating, delivery time and an \"Ad\" label. The agent is told in one condition that it serves the shopper, in another that it serves the retailer. Which approach is sound?",
     "hint": "Recall how the label is treated as an attribute, and what agents' position effects require.",
-    "correct_answer_citation": "Week 10 · Conjoint Designs for AI Agents",
+    "correct_answer_citation": "Week 10: Conjoint Designs for AI Agents",
     "correct_answer_index": 0,
     "options": [
       {
@@ -237,7 +237,7 @@
   {
     "type": "sort",
     "slide_id": "ai-generated-personas",
-    "prompt": "A language model wrote a persona from the profile of a commuter segment: 68% are aged 25–34, 81% travel by train, 59% buy coffee on the way, and the main theme of their answers is reliability. Sort each line of the persona.",
+    "prompt": "A language model wrote a persona from the profile of a commuter segment: 68% are aged 25 to 34, 81% travel by train, 59% buy coffee on the way, and the main theme of their answers is reliability. Sort each line of the persona.",
     "bins": [
       {
         "id": "supported",
@@ -253,7 +253,7 @@
         "id": "age",
         "text": "Daniel is 29.",
         "bin": "supported",
-        "explanation": "Most of the segment is aged 25–34."
+        "explanation": "Most of the segment is aged 25 to 34."
       },
       {
         "id": "train",

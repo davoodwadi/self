@@ -27,9 +27,9 @@ import {
 } from "../_visuals/kit";
 
 // ============================================================================
-// WEEK 04 — APPLICATIONS OF AI IN HUMAN RESOURCES
+// WEEK 04: APPLICATIONS OF AI IN HUMAN RESOURCES
 // ============================================================================
-// Same deck grammar as Weeks 01–03: every slide is hand-composed for its own
+// Same deck grammar as Weeks 01 to 03: every slide is hand-composed for its own
 // argument, with hairlines instead of boxes and crimson marking one thing.
 //
 // Sentences are transcribed verbatim from content.md. Figures carry only words
@@ -50,7 +50,7 @@ export default function Week04HumanResources() {
       <ScrollProgress label="Week 04" />
 
       {/* ==================================================================
-          01 · TITLE — masthead with the five things the subtitle says
+          01. TITLE: masthead with the five things the subtitle says
           intelligent systems reshape, set in a ruled row.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
@@ -119,15 +119,15 @@ export default function Week04HumanResources() {
             <span
               className={`${MICRO} font-normal text-[var(--charcoal-light)]/60`}
             >
-              BUSI 654 · Applications of AI in Business
+              BUSI 654. Applications of AI in Business
             </span>
           </div>
         </div>
       </Slide>
 
       {/* ==================================================================
-          02 · WHY HR BECAME AN AI DOMAIN — the six repeated decisions as a
-          ruled row; five digital traces drawn as dense tick lanes; the
+          02. WHY HR BECAME AN AI DOMAIN: the six repeated decisions as a
+          ruled row. Five digital traces drawn as dense tick lanes. The
           three improvements AI must bring, bounded by fairness and trust.
                                                         [quiz topic]
       ================================================================== */}
@@ -250,9 +250,9 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          03 · DECISION ARCHITECTURE — strategy fanning out through six
-          subfunctions into people decisions; fragments converted into three
-          outputs; augmentation set against human review.
+          03. DECISION ARCHITECTURE: strategy fanning out through six
+          subfunctions into people decisions. Fragments converted into three
+          outputs. Augmentation set against human review.
                                                      [quiz: why-hr-ai]
       ================================================================== */}
       <Slide
@@ -451,7 +451,7 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          04 · VALUE CREATION — value, cost and risk as three ruled rows,
+          04. VALUE CREATION: value, cost and risk as three ruled rows,
           each carrying its own sources of gain.
       ================================================================== */}
       <Slide id="value-creation" border align="left">
@@ -531,8 +531,8 @@ export default function Week04HumanResources() {
       />
 
       {/* ==================================================================
-          06 · HR DATA AND SIGNAL QUALITY — seven core inputs as a ruled
-          table; one record split across four places; context set ahead of
+          06. HR DATA AND SIGNAL QUALITY: seven core inputs as a ruled
+          table. One record split across four places. Context set ahead of
           model complexity.
       ================================================================== */}
       <Slide id="hr-data-signal" border align="left">
@@ -636,8 +636,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          07 · MATCHING METHOD TO TASK — three method families as ruled rows,
-          each with the tasks it supports; generative systems carry the one
+          07. MATCHING METHOD TO TASK: three method families as ruled rows,
+          each with the tasks it supports. Generative systems carry the one
           struck tag.                                       [quiz topic]
       ================================================================== */}
       <Slide id="method-to-task" border align="left">
@@ -712,8 +712,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          08 · HUMAN JUDGMENT — one employment decision branching into the
-          four things it affects; the three conditions for oversight; the
+          08. HUMAN JUDGMENT: one employment decision branching into the
+          four things it affects. The three conditions for oversight. The
           three design rules set against automation as the objective.
                                                   [quiz: method-to-task]
       ================================================================== */}
@@ -845,9 +845,9 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          09 · MEASURING SUCCESS — faster processing as one measure among
-          five; three ways an apparent gain turns into later cost;
-          transactional throughput set against enterprise outcomes.
+          09. MEASURING SUCCESS: faster processing as one measure among
+          five. Three ways an apparent gain turns into later cost.
+          Transactional throughput set against enterprise outcomes.
       ================================================================== */}
       <Slide id="measuring-success" border align="left">
         <Head1 eyebrow="What counts as success">
@@ -951,8 +951,8 @@ export default function Week04HumanResources() {
       />
 
       {/* ==================================================================
-          11 · SOURCING — four talent pools converging on the recruiter;
-          a candidate who sits between traditional job titles; more
+          11. SOURCING: four talent pools converging on the recruiter.
+          A candidate who sits between traditional job titles. More
           applicants set against better access.
       ================================================================== */}
       <Slide id="sourcing" border align="left">
@@ -1052,8 +1052,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          12 · RESUME SCREENING — a profile compared against four references;
-          three conditions that decide usefulness; gatekeeper set against
+          12. RESUME SCREENING: a profile compared against four references.
+          Three conditions that decide usefulness. Gatekeeper set against
           structured review.                                 [quiz topic]
       ================================================================== */}
       <Slide id="resume-screening" border align="left">
@@ -1183,8 +1183,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          13 · INTERVIEW INTELLIGENCE — three supports; scattered ratings
-          pulled into agreement by structure; evidence set against fluency,
+          13. INTERVIEW INTELLIGENCE: three supports. Scattered ratings
+          pulled into agreement by structure. Evidence set against fluency,
           confidence and polish.               [quiz: resume-screening]
       ================================================================== */}
       <Slide
@@ -1303,8 +1303,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          14 · CANDIDATE EXPERIENCE — four recruiting tasks; candidate
-          experience fanning out to three outcomes; uncertainty set against
+          14. CANDIDATE EXPERIENCE: four recruiting tasks. Candidate
+          experience fanning out to three outcomes. Uncertainty set against
           accountability.
       ================================================================== */}
       <Slide id="candidate-experience" border align="left">
@@ -1392,8 +1392,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          15 · FAIRNESS AND HIRING GOVERNANCE — the three gates a hiring model
-          influences; what governance tests for; model logic from the vendor,
+          15. FAIRNESS AND HIRING GOVERNANCE: the three gates a hiring model
+          influences. What governance tests for. Model logic from the vendor,
           employment risk kept by the employer.              [quiz topic]
       ================================================================== */}
       <Slide id="fairness-hiring" border align="left">
@@ -1517,8 +1517,8 @@ export default function Week04HumanResources() {
       />
 
       {/* ==================================================================
-          17 · WORKFORCE DEMAND FORECASTING — two inputs combining into four
-          estimates; four things a good model reflects; a forecast knocked
+          17. WORKFORCE DEMAND FORECASTING: two inputs combining into four
+          estimates. Four things a good model reflects. A forecast knocked
           off course by three shocks.
       ================================================================== */}
       <Slide id="workforce-forecasting" border align="left">
@@ -1669,8 +1669,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          18 · SKILLS GRAPHS — five kinds of evidence joined into one view of
-          capability; three strategic opportunities; the three conditions for
+          18. SKILLS GRAPHS: five kinds of evidence joined into one view of
+          capability. Three strategic opportunities. The three conditions for
           trust.                                             [quiz topic]
       ================================================================== */}
       <Slide id="skills-graphs" border align="left">
@@ -1799,8 +1799,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          19 · SCHEDULING AND STAFFING — staffing steps traced against service
-          demand; labor supply matched to customer volume; the four limits an
+          19. SCHEDULING AND STAFFING: staffing steps traced against service
+          demand. Labor supply matched to customer volume. The four limits an
           optimizer must respect.                  [quiz: skills-graphs]
       ================================================================== */}
       <Slide
@@ -1935,8 +1935,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          20 · ATTRITION RISK — the model's flag arriving before turnover is
-          visible to managers; what an intervention can change; the three
+          20. ATTRITION RISK: the model's flag arriving before turnover is
+          visible to managers. What an intervention can change. The three
           tests for a legitimate action.
       ================================================================== */}
       <Slide id="attrition-risk" border align="left">
@@ -2033,9 +2033,9 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          21 · ORGANIZATIONAL NETWORK ANALYSIS — two teams joined through one
-          overloaded connector, an isolated team and a hidden dependency;
-          four uses; visibility tipping into surveillance.
+          21. ORGANIZATIONAL NETWORK ANALYSIS: two teams joined through one
+          overloaded connector, an isolated team and a hidden dependency.
+          Four uses. Visibility tipping into surveillance.
       ================================================================== */}
       <Slide id="network-analysis" border align="left">
         <Head1 eyebrow="How work flows">
@@ -2198,8 +2198,8 @@ export default function Week04HumanResources() {
       />
 
       {/* ==================================================================
-          23 · PERSONALIZED LEARNING — four inputs shaping one pathway; a
-          flood of suggestions set against a relevant few; development
+          23. PERSONALIZED LEARNING: four inputs shaping one pathway. A
+          flood of suggestions set against a relevant few. Development
           carried through to real opportunities.
       ================================================================== */}
       <Slide id="personalized-learning" border align="left">
@@ -2339,8 +2339,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          24 · MANAGER COPILOTS — four things managers need fast; one copilot
-          serving a dispersed population; the conditions that decide value,
+          24. MANAGER COPILOTS: four things managers need fast. One copilot
+          serving a dispersed population. The conditions that decide value,
           with ambiguity escalated to people.
       ================================================================== */}
       <Slide id="manager-copilots" border align="left">
@@ -2466,8 +2466,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          25 · PERFORMANCE MANAGEMENT — three supports; a stack of reviews
-          with three kinds flagged; support set against replacing manager
+          25. PERFORMANCE MANAGEMENT: three supports. A stack of reviews
+          with three kinds flagged. Support set against replacing manager
           accountability.
       ================================================================== */}
       <Slide id="performance-management" border align="left">
@@ -2529,7 +2529,7 @@ export default function Week04HumanResources() {
                       r.flag ? "text-[var(--crimson)]" : "text-transparent"
                     }`}
                   >
-                    {r.flag || "·"}
+                    {r.flag || " | "}
                   </span>
                 </div>
               ))}
@@ -2558,9 +2558,9 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          26 · REWARDS AND PAY EQUITY — two comparable groups with an
-          unexplained gap; episodic review set against ongoing monitoring;
-          the three sensitive decisions.                     [quiz topic]
+          26. REWARDS AND PAY EQUITY: two comparable groups with an
+          unexplained gap. Episodic review set against ongoing monitoring.
+          The three sensitive decisions.                     [quiz topic]
       ================================================================== */}
       <Slide id="pay-equity" border align="left">
         <Head1 eyebrow="Rewards" signal>
@@ -2678,7 +2678,7 @@ export default function Week04HumanResources() {
               <div
                 className={`${MICRO} bg-[var(--crimson)] px-4 py-3 text-[var(--surface)]`}
               >
-                Socially sensitive · legally consequential
+                Socially sensitive | legally consequential
               </div>
             </div>
             <p className={`${DISPLAY} mt-7 max-w-4xl`}>
@@ -2696,8 +2696,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          27 · PRODUCTIVITY ANALYTICS — three data streams combined into three
-          estimates; the same tools used well and used poorly, side by side.
+          27. PRODUCTIVITY ANALYTICS: three data streams combined into three
+          estimates. The same tools used well and used poorly, side by side.
                                                      [quiz: pay-equity]
       ================================================================== */}
       <Slide
@@ -2841,9 +2841,9 @@ export default function Week04HumanResources() {
       />
 
       {/* ==================================================================
-          29 · EMPLOYEE LISTENING — four sources condensed into themes and
-          concerns; a local issue set against an enterprise-wide pattern;
-          what distorts what employees choose to say.
+          29. EMPLOYEE LISTENING: four sources condensed into themes and
+          concerns. A local issue set against an enterprise-wide pattern.
+          What distorts what employees choose to say.
       ================================================================== */}
       <Slide id="employee-listening" border align="left">
         <Head1 eyebrow="Listening at scale">
@@ -2996,8 +2996,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          30 · DEI ANALYTICS — five measures tracked across groups; a flat
-          aggregate hiding one group's drop; a gap that does not reveal its
+          30. DEI ANALYTICS: five measures tracked across groups. A flat
+          aggregate hiding one group's drop. A gap that does not reveal its
           cause or its remedy.                               [quiz topic]
       ================================================================== */}
       <Slide id="dei-analytics" border align="left">
@@ -3115,8 +3115,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          31 · CASE TRIAGE — incoming cases sorted and routed to the right
-          specialist; the four matters where delay falls; AI held to workflow
+          31. CASE TRIAGE: incoming cases sorted and routed to the right
+          specialist. The four matters where delay falls. AI held to workflow
           discipline, not final judgment.          [quiz: dei-analytics]
       ================================================================== */}
       <Slide
@@ -3264,8 +3264,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          32 · PRIVACY AND EMPLOYMENT LAW — five sensitive categories held
-          inside strict access control; five legal boundaries; acceptable
+          32. PRIVACY AND EMPLOYMENT LAW: five sensitive categories held
+          inside strict access control. Five legal boundaries. Acceptable
           analysis drawn inside what is technically possible.
       ================================================================== */}
       <Slide id="privacy-law" border align="left">
@@ -3363,8 +3363,8 @@ export default function Week04HumanResources() {
       />
 
       {/* ==================================================================
-          34 · GOVERNANCE ACROSS THE LIFECYCLE — seven stages in order; the
-          four "who" questions governance must answer; an inventory whose
+          34. GOVERNANCE ACROSS THE LIFECYCLE: seven stages in order. The
+          four "who" questions governance must answer. An inventory whose
           value lives in the columns linked to it.           [quiz topic]
       ================================================================== */}
       <Slide id="governance-lifecycle" border align="left">
@@ -3495,8 +3495,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          35 · BUILD, BUY, OR PARTNER — vendor sourcing beside internal
-          design; five decision factors; the purchase leaving the firm while
+          35. BUILD, BUY, OR PARTNER: vendor sourcing beside internal
+          design. Five decision factors. The purchase leaving the firm while
           accountability stays.             [quiz: governance-lifecycle]
       ================================================================== */}
       <Slide
@@ -3602,8 +3602,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          36 · CHANGE MANAGEMENT AND TRUST — the four groups whose trust an
-          accurate tool still needs; four adoption moves; visible governance
+          36. CHANGE MANAGEMENT AND TRUST: the four groups whose trust an
+          accurate tool still needs. Four adoption moves. Visible governance
           set against claims of objectivity.
       ================================================================== */}
       <Slide id="change-trust" border align="left">
@@ -3699,7 +3699,7 @@ export default function Week04HumanResources() {
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split1
-              left="Claims · objective or inevitable"
+              left="Claims | objective or inevitable"
               right="Visible governance"
               strikeLeft
             />
@@ -3712,8 +3712,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          37 · TALENT STRATEGY — the five capabilities in the mix; shared
-          fluency joining three groups; AI literacy moved from side project
+          37. TALENT STRATEGY: the five capabilities in the mix. Shared
+          fluency joining three groups. AI literacy moved from side project
           to managerial capability.
       ================================================================== */}
       <Slide id="talent-strategy" border align="left">
@@ -3821,7 +3821,7 @@ export default function Week04HumanResources() {
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split1
-              left="Side project · small innovation team"
+              left="Side project | small innovation team"
               right="Part of managerial capability"
               strikeLeft
             />
@@ -3835,8 +3835,8 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          38 · STRATEGIC OPERATING MODEL — five functions linked in one chain;
-          four prioritization criteria; five common standards spanning every
+          38. STRATEGIC OPERATING MODEL: five functions linked in one chain.
+          Four prioritization criteria. Five common standards spanning every
           HR domain.
       ================================================================== */}
       <Slide id="operating-model" border align="left">
@@ -3934,7 +3934,7 @@ export default function Week04HumanResources() {
               <div
                 className={`${MICRO} bg-[var(--crimson)] px-4 py-3 text-[var(--surface)]`}
               >
-                Common standards · across HR domains
+                Common standards | across HR domains
               </div>
             </div>
             <p className={`${DISPLAY} mt-7 max-w-4xl`}>
@@ -3947,7 +3947,7 @@ export default function Week04HumanResources() {
       </Slide>
 
       {/* ==================================================================
-          39 · CONCLUSION — the three things AI should strengthen, then the
+          39. CONCLUSION: the three things AI should strengthen, then the
           three closing statements in display weight, then the colophon.
       ================================================================== */}
       <Slide
@@ -4017,7 +4017,7 @@ export default function Week04HumanResources() {
             <span
               className={`${MICRO} font-normal text-[var(--charcoal-light)]/55`}
             >
-              Davood Wadi, PhD · BUSI 654
+              Davood Wadi, PhD | BUSI 654
             </span>
           </div>
         </div>

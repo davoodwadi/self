@@ -1,9 +1,9 @@
 // Row copy for the BUSI 654 landing. Order matches the teaching sequence,
 // including the Agentic AI interlude after Week 03.
 //
-// Descriptions for Weeks 02–06, 08 and 09 are the "Semester Roadmap" lines in
+// Descriptions for Weeks 02 to 06, 08 and 09 are the "Semester Roadmap" lines in
 // 01-introduction/content.md with their leading "Week NN" dropped, since each
-// row already carries its week. Week 01 uses its opening slide heading; Week 07
+// row already carries its week. Week 01 uses its opening slide heading. Week 07
 // uses its own title-slide subtitle so Indigeneity is not lost from "EDII".
 
 export type SyllabusEntry = {

@@ -38,11 +38,11 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 08 — EXPERIMENTS AND A/B TESTING
+// WEEK 08: EXPERIMENTS AND A/B TESTING
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx; the interactive ones are built around one action
+// live in ./visuals.tsx. The interactive ones are built around one action
 // each, so students can run the logic of an experiment rather than read it.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
@@ -67,7 +67,7 @@ export default function Week8() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 08 · Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 08: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
           <span className="text-[var(--signal)]">Experiments</span> and A/B Testing
         </Title>
@@ -1061,9 +1061,9 @@ export default function Week8() {
             <Ruled weight="thin">
               <P className={`${CELL} !text-[0.95em]`}>
                 The factors manipulated in such experiments include the system prompt, such as
-                the party the agent is told it serves; the consumer&rsquo;s instruction, such as
-                the specificity of the goal; the information environment, such as the cost of
-                acquiring an attribute; and the attributes of the alternatives, such as a
+                the party the agent is told it serves. The consumer&rsquo;s instruction, such as
+                the specificity of the goal. The information environment, such as the cost of
+                acquiring an attribute. And the attributes of the alternatives, such as a
                 sponsorship label.
               </P>
             </Ruled>
@@ -1163,7 +1163,7 @@ export default function Week8() {
           {[
             "Causal inference requires concomitant variation, time order, and the elimination of other possible causes.",
             "Random assignment makes treatment and control groups equivalent on average, and supports the attribution of differences to the treatment.",
-            "Internal validity concerns whether the treatment caused the effect; external validity concerns whether the effect generalizes; laboratory and field experiments trade one against the other.",
+            "Internal validity concerns whether the treatment caused the effect. External validity concerns whether the effect generalizes. Laboratory and field experiments trade one against the other.",
             "A/B and multivariate tests are randomized field experiments that require a primary metric, a planned sample size and duration, and no early stopping.",
             "Quasi-experimental designs, such as difference-in-differences, estimate causal effects when randomization is not possible, under stated assumptions.",
             "AI agents can pilot experimental materials but cannot replace real participants, and bandit algorithms optimize performance during a test at the cost of precise estimates of effect size.",

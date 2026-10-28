@@ -55,7 +55,7 @@ const SECTIONS = [
 // type that fits it, and it only tests what the slide has just taught.
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif; terms set bold in the display serif. */
+/* Body copy: the reading serif. Terms set bold in the display serif. */
 const BODY = "font-body text-base md:text-[1.06rem] leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
 const LIST = "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
 
@@ -73,7 +73,7 @@ export default function DigitalTransformationWeek2() {
       </Link>
 
       <PosterHero
-        category="WEEK 02 — DIGITAL TRANSFORMATION"
+        category="WEEK 02: DIGITAL TRANSFORMATION"
         title="Big Data, Porter's Value Chain, and Socio-Technical Systems"
         subtitle="Exploring data structures, Big Data concepts, and organizational frameworks."
         author="Dr. Davood Wadi"
@@ -82,7 +82,7 @@ export default function DigitalTransformationWeek2() {
       />
 
       {/* ================================================================
-          CHAPTER 1 — DATA STRUCTURES
+          CHAPTER 1: DATA STRUCTURES
           ================================================================ */}
       <ChapterBand id="ch1" number="01" title="Data Structures" />
 
@@ -147,7 +147,7 @@ export default function DigitalTransformationWeek2() {
       />
 
       {/* ================================================================
-          CHAPTER 2 — BIG DATA
+          CHAPTER 2: BIG DATA
           ================================================================ */}
       <ChapterBand id="ch2" number="02" title="Big Data" />
 
@@ -197,7 +197,7 @@ export default function DigitalTransformationWeek2() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 3 — BIG DATA ANALYTICS TECHNOLOGY
+          CHAPTER 3: BIG DATA ANALYTICS TECHNOLOGY
           ================================================================ */}
       <ChapterBand id="ch3" number="03" title="Big Data Analytics Technology" />
 
@@ -268,7 +268,7 @@ export default function DigitalTransformationWeek2() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 4 — PORTER'S VALUE CHAIN
+          CHAPTER 4: PORTER'S VALUE CHAIN
           ================================================================ */}
       <ChapterBand id="ch4" number="04" title="Porter's Value Chain" />
 
@@ -340,7 +340,7 @@ export default function DigitalTransformationWeek2() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 5 — DATA VALUE CHAIN
+          CHAPTER 5: DATA VALUE CHAIN
           ================================================================ */}
       <ChapterBand id="ch5" number="05" title="Data Value Chain" />
 
@@ -402,7 +402,7 @@ export default function DigitalTransformationWeek2() {
       ))}
 
       {/* ================================================================
-          CHAPTER 6 — SOCIO-TECHNICAL SYSTEMS
+          CHAPTER 6: SOCIO-TECHNICAL SYSTEMS
           ================================================================ */}
       <ChapterBand id="ch6" number="06" title="Socio-Technical Systems" />
 
@@ -505,7 +505,7 @@ export default function DigitalTransformationWeek2() {
       <Summary
         id="conclusion"
         title="Summary"
-        summary="Structured data is organized in rows and columns; unstructured data has no predefined format or structure."
+        summary="Structured data is organized in rows and columns. Unstructured data has no predefined format or structure."
         takeaways={[
           "Big Data is characterized by Volume, Velocity, and Variety.",
           "Big data analytics technology stores, processes, and analyzes data to describe what has happened, forecast what will happen, and recommend actions.",

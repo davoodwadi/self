@@ -12,7 +12,7 @@ const hair = { stroke: PAT.ink, strokeWidth: LINE.hair, strokeLinecap: "round" a
 
 /**
  * A flat sheet lying down (card, form, page): a parallelogram top face with a
- * thin stippled edge. (x, y) is the front-left corner; the far edge sits `d`
+ * thin stippled edge. (x, y) is the front-left corner. The far edge sits `d`
  * higher and `sk` to the right. `lines` sets hairline text rows on the face.
  */
 export function Sheet({
@@ -233,7 +233,7 @@ export function Tag({ cx, cy, text, red = false, w = 54, size = 13 }: { cx: numb
  * (`flip` faces left). Clean outline, light stipple on the coat, dense on the
  * trousers. `arm`: "down" at the side, "reach" held forward, "raise" lifted,
  * "lift" both arms up, "head" a hand raised to the forehead. `coat` sets the coat's tone ("paper" and "dense" tell two
- * groups apart; "signal" marks the finding, trousers included).
+ * groups apart, "signal" marks the finding, trousers included).
  */
 export function Figure({
   id,
@@ -364,7 +364,7 @@ export function Display1({ x, y, text, red = false, size = 20 }: { x: number; y:
   );
 }
 
-/** A small card lying flat at (x, y), front-left corner; red for the finding. */
+/** A small card lying flat at (x, y), front-left corner. Red for the finding. */
 export function Chip({ id, x, y, red = false, w = 22, d = 7, sk = 8 }: { id: string; x: number; y: number; red?: boolean; w?: number; d?: number; sk?: number }) {
   return (
     <path

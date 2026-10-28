@@ -112,12 +112,12 @@
     "slide_id": "interpreting-cross-tabulations",
     "question_text": "A cross-tabulation shows that 62 percent of customers who attended a store's cooking class bought premium cookware, against 21 percent of customers who did not attend. When the table is split by whether the customer already owned premium cookware before the class, the difference largely disappears within each group. What does the analysis indicate?",
     "hint": "Consider what the third variable reveals about the original association.",
-    "correct_answer_citation": "Week 06 · Interpreting Cross-Tabulations",
+    "correct_answer_citation": "Week 06: Interpreting Cross-Tabulations",
     "correct_answer_index": 2,
     "options": [
       {
         "option_text": "The class causes customers to buy premium cookware, since the original difference is large.",
-        "option_explanation": "A difference in percentages indicates an association; an association does not establish causation."
+        "option_explanation": "A difference in percentages indicates an association. An association does not establish causation."
       },
       {
         "option_text": "The third variable concealed an association that was absent from the original table.",
@@ -129,7 +129,7 @@
       },
       {
         "option_text": "The difference is statistically significant, because it exceeds 40 percentage points.",
-        "option_explanation": "The size of a difference alone does not establish significance; that is assessed with the chi-square test, introduced in Week 7."
+        "option_explanation": "The size of a difference alone does not establish significance. That is assessed with the chi-square test, introduced in Week 7."
       }
     ]
   },
@@ -224,9 +224,9 @@
   {
     "type": "quiz",
     "slide_id": "describing-model-responses",
-    "question_text": "Two AI models each rate a new product 500 times on a seven-point purchase-intention item. Half of model X's responses are 3 and half are 4; half of model Y's responses are 1 and half are 6. A report concludes that the two models hold the same view, because both have a mean of 3.5 and both have an entropy of 1 bit. Which statement is correct?",
+    "question_text": "Two AI models each rate a new product 500 times on a seven-point purchase-intention item. Half of model X's responses are 3 and half are 4. Half of model Y's responses are 1 and half are 6. A report concludes that the two models hold the same view, because both have a mean of 3.5 and both have an entropy of 1 bit. Which statement is correct?",
     "hint": "Consider which statistics take the order of the scale points into account.",
-    "correct_answer_citation": "Week 06 · Describing Model Responses",
+    "correct_answer_citation": "Week 06: Describing Model Responses",
     "correct_answer_index": 1,
     "options": [
       {
@@ -239,7 +239,7 @@
       },
       {
         "option_text": "The report is incorrect, because the coefficient of variation is the only appropriate measure of dispersion for Likert items.",
-        "option_explanation": "The coefficient of variation compares variability across measures on different scales; for ordinal responses, a consensus measure describes how concentrated the distribution is."
+        "option_explanation": "The coefficient of variation compares variability across measures on different scales. For ordinal responses, a consensus measure describes how concentrated the distribution is."
       },
       {
         "option_text": "The report cannot be evaluated without more than 500 responses per model.",

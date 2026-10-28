@@ -77,12 +77,12 @@ function Num({
 }
 
 /* --------------------------------------------------------------------------
-   02 · Why AI Transforms Data Governance
+   02. Why AI Transforms Data Governance
    -------------------------------------------------------------------------- */
 
 /**
  * Two figures. A ledger of customer rows, one of them (red) the customer
- * who asks to be deleted; beside it a model housing of weight columns, each
+ * who asks to be deleted. Beside it a model housing of weight columns, each
  * with a thin red layer: that customer's share of every weight. The button
  * deletes the record: the row leaves the ledger and the rows close up, while
  * every red layer stays in the model.
@@ -185,7 +185,7 @@ export function LifecycleStations() {
     <Frame
       width={600}
       height={160}
-      label="Patent drawing of the data lifecycle as four stations on one centre line: a blank form before collection; a model housing fed a stack of records during training; the housing issuing an output card at inference; a housing in dashed outline being rubbed out by an eraser block in retirement or unlearning. One governance rail runs above all four stations and is clamped down to each."
+      label="Patent drawing of the data lifecycle as four stations on one centre line: a blank form before collection. A model housing fed a stack of records during training. The housing issuing an output card at inference. A housing in dashed outline being rubbed out by an eraser block in retirement or unlearning. One governance rail runs above all four stations and is clamped down to each."
     >
       <PatentDefs id={id} />
       {/* the governance rail */}
@@ -242,7 +242,7 @@ export function LifecycleStations() {
 }
 
 /* --------------------------------------------------------------------------
-   03 · From Data Ownership to Contextual Integrity
+   03. From Data Ownership to Contextual Integrity
    -------------------------------------------------------------------------- */
 
 /** A shipping label: a card with address lines and a barcode. */
@@ -290,7 +290,7 @@ export function ContextFlows() {
       <Frame
         width={620}
         height={330}
-        label={`Patent drawing of one shopper sharing two details. Upper flow: an address label passes to a parcel on the doorstep of a house, to receive a package. Lower flow: a note of symptoms passes to a pharmacist behind a counter. To the right stands a model housing driving a megaphone, an advertising model. ${ads ? "Both details are now piped, in red, from the house and from the counter into the advertising model." : "Each detail stays within the context in which it was shared; nothing flows to the advertising model."}`}
+        label={`Patent drawing of one shopper sharing two details. Upper flow: an address label passes to a parcel on the doorstep of a house, to receive a package. Lower flow: a note of symptoms passes to a pharmacist behind a counter. To the right stands a model housing driving a megaphone, an advertising model. ${ads ? "Both details are now piped, in red, from the house and from the counter into the advertising model." : "Each detail stays within the context in which it was shared. Nothing flows to the advertising model."}`}
       >
         <PatentDefs id={id} />
         <line x1={14} y1={300} x2={606} y2={300} {...hair} />
@@ -341,7 +341,7 @@ export function ContextFlows() {
 }
 
 /* --------------------------------------------------------------------------
-   04 · Part 1: Data Provenance in Training and Personalization
+   04. Part 1: Data Provenance in Training and Personalization
    -------------------------------------------------------------------------- */
 
 /** A dataset drum: an upright cylinder with hairline bands and a light-stippled cap. */
@@ -421,7 +421,7 @@ export function ProvenanceTag() {
 }
 
 /* --------------------------------------------------------------------------
-   05 · A Taxonomy of Customer Data
+   05. A Taxonomy of Customer Data
    -------------------------------------------------------------------------- */
 
 /** A small upright form, front view, with hairline rows and tick boxes. */
@@ -589,7 +589,7 @@ export function DataOrigin({ kind }: { kind: "volunteered" | "observed" | "infer
 }
 
 /* --------------------------------------------------------------------------
-   06 · Purpose Limitation and Secondary Use in Foundation Models
+   06. Purpose Limitation and Secondary Use in Foundation Models
    -------------------------------------------------------------------------- */
 
 /** A tape reel seen face on: rim, hub and three spokes. */
@@ -622,7 +622,7 @@ function Reel({ cx, cy, r = 16, c = PAT.ink }: { cx: number; cy: number; r?: num
  * they were collected for, is piped toward a fine-tuning model. A sluice
  * gate in the pipe is purpose limitation: with neither fresh consent nor
  * de-identification it stays shut and the repurposed flow (red) backs up
- * against it; either one lifts the gate and the flow reaches the model.
+ * against it. Either one lifts the gate and the flow reaches the model.
  */
 export function PurposeGate() {
   const [basis, setBasis] = useState<("consent" | "deid")[]>([]);
@@ -729,7 +729,7 @@ type BenignId = (typeof BENIGN)[number]["id"];
 /**
  * Three ordinary records (a receipt, a clock face, a dotted trace) feed a
  * model whose gauge reads an inferred risk. Each record switched on pushes
- * the needle further; together they carry it past the mark into the zone
+ * the needle further. Together they carry it past the mark into the zone
  * of sensitive personal data, where the needle turns red.
  */
 export function SensitiveInference() {
@@ -752,7 +752,7 @@ export function SensitiveInference() {
       <Frame
         width={380}
         height={196}
-        label={`Patent drawing of three ordinary records, a receipt, a clock face for dwell time and a dotted location trace, feeding a model whose gauge reads an inferred risk; the top of the gauge beyond a mark is the stippled zone of sensitive personal data. ${on.length ? `With ${BENIGN.filter((b) => on.includes(b.id)).map((b) => b.label.toLowerCase()).join(" and ")} switched on,` : "With no records switched on,"} the needle reads ${Math.round(v * 100)} percent of the scale${sens ? ", in the sensitive zone, the needle turned red: the model has created sensitive personal data." : ", below the sensitive zone."}`}
+        label={`Patent drawing of three ordinary records, a receipt, a clock face for dwell time and a dotted location trace, feeding a model whose gauge reads an inferred risk. The top of the gauge beyond a mark is the stippled zone of sensitive personal data. ${on.length ? `With ${BENIGN.filter((b) => on.includes(b.id)).map((b) => b.label.toLowerCase()).join(" and ")} switched on,` : "With no records switched on,"} the needle reads ${Math.round(v * 100)} percent of the scale${sens ? ", in the sensitive zone, the needle turned red: the model has created sensitive personal data." : ", below the sensitive zone."}`}
       >
         <PatentDefs id={id} />
         {/* the three non-sensitive inputs */}
@@ -828,7 +828,7 @@ export function SensitiveInference() {
 }
 
 /* --------------------------------------------------------------------------
-   07 · Shadow Data Pipelines and Third-Party API Leakage
+   07. Shadow Data Pipelines and Third-Party API Leakage
    -------------------------------------------------------------------------- */
 
 /** A small padlock centred on (cx, cy). */
@@ -860,7 +860,7 @@ function Laptop({ x, y, w = 40 }: { x: number; y: number; w?: number }) {
  * ground floor, the governed warehouse: locked data drums. Upstairs an
  * employee pastes a record from a laptop, and a pipe breaks out through the
  * wall to the provider. Under consumer-grade terms the record (red) is
- * retained in a drawer, read by a contractor and fed into training; under
+ * retained in a drawer, read by a contractor and fed into training. Under
  * enterprise controls a DLP valve shuts the pipe, the provider keeps nothing,
  * and the employee works with a model hosted inside the building.
  */
@@ -876,7 +876,7 @@ export function ShadowPipeline() {
       <Frame
         width={640}
         height={296}
-        label={`Patent drawing of a building in section beside an external AI provider's building. On the ground floor stand locked data drums, the governed warehouse. Upstairs an employee pastes a record from a laptop into a pipe that breaks out through the wall to the provider. ${ent ? "Under enterprise controls a DLP valve on the pipe is shut; the provider's drawer, review desk and training compartment are empty under zero data retention; the employee uses a model hosted inside the building." : "Under consumer-grade terms the record, in red, is retained in the provider's drawer, read by a human contractor, and fed into a training run."}`}
+        label={`Patent drawing of a building in section beside an external AI provider's building. On the ground floor stand locked data drums, the governed warehouse. Upstairs an employee pastes a record from a laptop into a pipe that breaks out through the wall to the provider. ${ent ? "Under enterprise controls a DLP valve on the pipe is shut. The provider's drawer, review desk and training compartment are empty under zero data retention. The employee uses a model hosted inside the building." : "Under consumer-grade terms the record, in red, is retained in the provider's drawer, read by a human contractor, and fed into a training run."}`}
       >
         <PatentDefs id={id} />
         <g transform="translate(0 -46)">
@@ -983,12 +983,12 @@ export function ShadowPipeline() {
 }
 
 /* --------------------------------------------------------------------------
-   08 · Part 2: Consent, Contextual Integrity, and the Limits of Notice-and-Choice
+   08. Part 2: Consent, Contextual Integrity, and the Limits of Notice-and-Choice
    -------------------------------------------------------------------------- */
 
 /**
  * A privacy policy as a tower of printed pages, taller than the customer
- * who stands beside it; across from them, on a small console, one I AGREE
+ * who stands beside it. Across from them, on a small console, one I AGREE
  * button under a cursor.
  */
 export function PolicyScroll() {
@@ -1000,7 +1000,7 @@ export function PolicyScroll() {
     <Frame
       width={560}
       height={312}
-      label="Patent drawing of a privacy policy as a tower of printed pages more than twice the height of the customer standing beside it, page edges drawn along its side and written lines on its top page; across from them a small console with a single I agree button under a cursor."
+      label="Patent drawing of a privacy policy as a tower of printed pages more than twice the height of the customer standing beside it, page edges drawn along its side and written lines on its top page. Across from them a small console with a single I agree button under a cursor."
     >
       <PatentDefs id={id} />
       <line x1={12} y1={fy} x2={548} y2={fy} {...hair} />
@@ -1029,7 +1029,7 @@ export function PolicyScroll() {
 }
 
 /* --------------------------------------------------------------------------
-   09 · Contextual Integrity and Informational Norms
+   09. Contextual Integrity and Informational Norms
    -------------------------------------------------------------------------- */
 
 /** A classical office front (pediment and columns): the insurer. */
@@ -1051,9 +1051,9 @@ function Office({ id, x, y, w = 150, h = 120, c = PAT.ink }: { id: string; x: nu
 
 /**
  * One information flow drawn with its five parameters keyed above it: the
- * patient is the data subject and the sender; their support-group post is
- * the information type; the seal on its envelope is the transmission
- * principle; and the peers receiving it are the recipient. Switching the
+ * patient is the data subject and the sender. Their support-group post is
+ * the information type. The seal on its envelope is the transmission
+ * principle. And the peers receiving it are the recipient. Switching the
  * recipient to an insurer (an office front) or the principle to commercial
  * underwriting (a coin seal) reddens what changed and stamps the flow a
  * privacy violation.
@@ -1160,7 +1160,7 @@ export function FlowParameters() {
 }
 
 /* --------------------------------------------------------------------------
-   10 · Why Notice-and-Choice Fails in AI Ecosystems
+   10. Why Notice-and-Choice Fails in AI Ecosystems
    -------------------------------------------------------------------------- */
 
 /** Minutes to read one typical privacy policy at reading speed. */
@@ -1168,7 +1168,7 @@ const MIN_PER_POLICY = 10;
 
 /**
  * The services a consumer meets in a year set against the time their
- * policies take to read. The slider adds services; the pile of policies
+ * policies take to read. The slider adds services. The pile of policies
  * grows, and a calendar of thirty working days fills one day per eight
  * hours of reading, at ten minutes a policy.
  */
@@ -1184,7 +1184,7 @@ export function PolicyHours() {
       <Frame
         width={560}
         height={150}
-        label={`Patent drawing of a pile of privacy policies for ${n} digital services beside a calendar of thirty working days; at ten minutes a policy, reading them takes ${Math.round(hours)} hours, which fills ${Math.min(30, Math.round(days * 10) / 10)} of the working days.`}
+        label={`Patent drawing of a pile of privacy policies for ${n} digital services beside a calendar of thirty working days. At ten minutes a policy, reading them takes ${Math.round(hours)} hours, which fills ${Math.min(30, Math.round(days * 10) / 10)} of the working days.`}
       >
         <PatentDefs id={id} />
         <line x1={12} y1={by} x2={140} y2={by} {...hair} />
@@ -1229,7 +1229,7 @@ export function PolicyHours() {
 /**
  * A time line from the moment of consent: a ticked form at left, then raw
  * behavioral logs running on as dots. Partway along, an opaque screen
- * stands across the line; behind it, in hidden dashed outline, a future
+ * stands across the line. Behind it, in hidden dashed outline, a future
  * model reads the logs and turns a dial to a trait nobody saw coming.
  */
 export function HiddenFuture() {
@@ -1239,7 +1239,7 @@ export function HiddenFuture() {
     <Frame
       width={560}
       height={150}
-      label="Patent drawing of a time line starting at the moment of consent, a ticked form, with raw behavioral logs running on as dots. An opaque stippled screen stands across the line; behind it, drawn in hidden dashed outline, a future machine learning model reads the logs and sets a dial to an inferred trait."
+      label="Patent drawing of a time line starting at the moment of consent, a ticked form, with raw behavioral logs running on as dots. An opaque stippled screen stands across the line. Behind it, drawn in hidden dashed outline, a future machine learning model reads the logs and sets a dial to an inferred trait."
     >
       <PatentDefs id={id} />
       <line x1={14} y1={ty} x2={540} y2={ty} {...hair} strokeDasharray={CENTRE_DASH} />
@@ -1285,7 +1285,7 @@ export function BystanderUpload() {
     <Frame
       width={560}
       height={150}
-      label="Patent drawing of one consenting customer, a tick beside their head, holding up an open address book and uploading it to an AI assistant housing; lines run from the book to five bystanders listed in it, with no tick, who never consented."
+      label="Patent drawing of one consenting customer, a tick beside their head, holding up an open address book and uploading it to an AI assistant housing. Lines run from the book to five bystanders listed in it, with no tick, who never consented."
     >
       <PatentDefs id={id} />
       <line x1={12} y1={fy} x2={548} y2={fy} {...hair} />
@@ -1316,7 +1316,7 @@ export function BystanderUpload() {
 
 /**
  * An essential service as an office front with two doors on one console:
- * ACCEPT ALL opens into the office; DECLINE is walled up, in red. The only
+ * ACCEPT ALL opens into the office. DECLINE is walled up, in red. The only
  * way in is to accept broad AI training consent.
  */
 export function TakeItOrLeaveIt() {
@@ -1363,7 +1363,7 @@ export function TakeItOrLeaveIt() {
 }
 
 /* --------------------------------------------------------------------------
-   11 · Dark Patterns in Consent Management and Opt-Out Design
+   11. Dark Patterns in Consent Management and Opt-Out Design
    -------------------------------------------------------------------------- */
 
 type Pattern = "roach" | "shame" | "bundle" | "default";
@@ -1398,9 +1398,9 @@ export function ConsentBanner() {
   const sx = px + 14;
   const sw = pw - 28;
   const labels: Record<Pattern, string> = {
-    roach: "Asymmetric friction: the phone shows one large accept button; opting out, drawn in red, runs through five nested settings sheets pulled out beside the phone. One click to opt in, five to opt out.",
+    roach: "Asymmetric friction: the phone shows one large accept button. Opting out, drawn in red, runs through five nested settings sheets pulled out beside the phone. One click to opt in, five to opt out.",
     shame: "Confirmshaming and visual interference: a large accept button, and beneath it the decline set in faint small text, in red, reading no thanks, I don't mind worse recommendations.",
-    bundle: "Bundled consent: a single tick box with a red bracket that ties profiling and AI training to the basic service; continuing accepts all three.",
+    bundle: "Bundled consent: a single tick box with a red bracket that ties profiling and AI training to the basic service. Continuing accepts all three.",
     default: "Pre-selected defaults: four switches, all already on, the AI training switch in red and magnified, above a small note reading our policy has been updated.",
   };
   return (
@@ -1571,7 +1571,7 @@ export function ConsentBanner() {
 }
 
 /* --------------------------------------------------------------------------
-   12 · Discussion: Training on Customer Support Calls
+   12. Discussion: Training on Customer Support Calls
    -------------------------------------------------------------------------- */
 
 /**
@@ -1587,7 +1587,7 @@ export function CallArchive() {
     <Frame
       width={460}
       height={256}
-      label="Patent drawing of five canisters of call-recording reels, one each for 2021 to 2025, stacked and fed along a belt into a voice-agent housing with a headset and a speaker grille; above runs a long terms-of-service banner covered in written lines."
+      label="Patent drawing of five canisters of call-recording reels, one each for 2021 to 2025, stacked and fed along a belt into a voice-agent housing with a headset and a speaker grille. Above runs a long terms-of-service banner covered in written lines."
     >
       <PatentDefs id={id} />
       <g transform="translate(0 -56)">
@@ -1640,7 +1640,7 @@ export function CallArchive() {
 }
 
 /* --------------------------------------------------------------------------
-   13 · Part 3: Technical Privacy Risks and Safeguards
+   13. Part 3: Technical Privacy Risks and Safeguards
    -------------------------------------------------------------------------- */
 
 /**
@@ -1697,7 +1697,7 @@ export function RedactedRecord() {
 }
 
 /* --------------------------------------------------------------------------
-   14 · The Failure of Naive Anonymization and Re-Identification Attacks
+   14. The Failure of Naive Anonymization and Re-Identification Attacks
    -------------------------------------------------------------------------- */
 
 type QI = "zip" | "dob" | "sex";
@@ -1717,7 +1717,7 @@ const PEOPLE: Record<QI, string>[] = [
  * Two tables of the same eight people: "anonymized" hospital records at left
  * (quasi-identifiers kept, diagnosis stippled) and a public voter list at
  * right (names as written lines). The switches choose which quasi-identifiers
- * are compared; every hospital row that then matches exactly one voter is
+ * are compared. Every hospital row that then matches exactly one voter is
  * linked to that voter's name in red.
  */
 export function QuasiIdentifiers() {
@@ -1857,7 +1857,7 @@ export function TracePoints() {
       <Frame
         width={480}
         height={172}
-        label={`Patent drawing of a street plan with ${k} known card transactions pinned on it, at ${TRACE.slice(0, k).map((p) => p.t).join(", ") || "no times"}, beside a crowd of forty people from a de-identified trace; ${fit} of the forty still fit every known point${fit === 1 ? ", drawn in red: uniquely re-identified" : ""}.`}
+        label={`Patent drawing of a street plan with ${k} known card transactions pinned on it, at ${TRACE.slice(0, k).map((p) => p.t).join(", ") || "no times"}, beside a crowd of forty people from a de-identified trace. ${fit} of the forty still fit every known point${fit === 1 ? ", drawn in red: uniquely re-identified" : ""}.`}
       >
         <PatentDefs id={id} />
         {/* the street plan */}
@@ -1914,13 +1914,13 @@ const KROWS = [
 
 const generalize = (r: (typeof KROWS)[number], g: number) => {
   if (g === 0) return { zip: r.zip, age: `${r.age}` };
-  if (g === 1) return { zip: `${r.zip.slice(0, 4)}*`, age: `${Math.floor(r.age / 10) * 10}–${Math.floor(r.age / 10) * 10 + 9}` };
+  if (g === 1) return { zip: `${r.zip.slice(0, 4)}*`, age: `${Math.floor(r.age / 10) * 10}n/a${Math.floor(r.age / 10) * 10 + 9}` };
   return { zip: "021**", age: r.age < 40 ? "< 40" : "≥ 40" };
 };
 
 /**
  * A released table of nine patients. The slider generalizes the
- * quasi-identifiers (ZIP code digits, then age bands); rows that now look
+ * quasi-identifiers (ZIP code digits, then age bands). Rows that now look
  * alike close into groups, and the smallest group size is k. One group of
  * three shares a single diagnosis, so k-anonymity holds while anyone known to
  * be in that group has their diagnosis revealed (red).
@@ -2005,7 +2005,7 @@ export function KAnonymity() {
 }
 
 /* --------------------------------------------------------------------------
-   15 · Training Data Memorization and Membership Inference in LLMs
+   15. Training Data Memorization and Membership Inference in LLMs
    -------------------------------------------------------------------------- */
 
 /** Chance the model completes the prefix verbatim, rising with copies in training. */
@@ -2014,8 +2014,8 @@ const recall = (copies: number) => 1 - Math.exp(-copies / 14);
 /**
  * A training document carrying one person's contact line, stacked as many
  * times as it was duplicated in the corpus, feeds a model. An adversary's
- * prefix card goes in; the output strip shows the continuation. With few
- * copies the model completes it generically; past an even chance it returns
+ * prefix card goes in. The output strip shows the continuation. With few
+ * copies the model completes it generically. Past an even chance it returns
  * the phone number and address verbatim (red). The gauge below reads the
  * chance of a verbatim completion.
  */
@@ -2031,7 +2031,7 @@ export function ExtractionPrefix() {
       <Frame
         width={540}
         height={226}
-        label={`Patent drawing of a training document with one person's contact line, duplicated ${copies} times in the corpus, feeding a model. A prefix card reading Contact Jane Roe at goes in; the output strip continues it with ${verbatim ? "the phone number and address verbatim, 555-0142, 12 Elm St., in red" : "a generic phrase, the front desk"}. The chance of a verbatim completion reads ${Math.round(p * 100)} percent.`}
+        label={`Patent drawing of a training document with one person's contact line, duplicated ${copies} times in the corpus, feeding a model. A prefix card reading Contact Jane Roe at goes in. The output strip continues it with ${verbatim ? "the phone number and address verbatim, 555-0142, 12 Elm St., in red" : "a generic phrase, the front desk"}. The chance of a verbatim completion reads ${Math.round(p * 100)} percent.`}
       >
         <PatentDefs id={id} />
         {/* the duplicated training document */}
@@ -2094,7 +2094,7 @@ export function ExtractionPrefix() {
   );
 }
 
-/** Standard normal CDF (Abramowitz–Stegun). */
+/** Standard normal CDF (Abramowitz-Stegun). */
 function phi(z: number) {
   const t = 1 / (1 + 0.2316419 * Math.abs(z));
   const d = 0.3989423 * Math.exp((-z * z) / 2);
@@ -2105,7 +2105,7 @@ function phi(z: number) {
 /**
  * Two stippled distributions of the model's confidence on records: those
  * outside its training set (light) and those inside it (red). The slider
- * trains longer; the model grows more confident and more consistent on the
+ * trains longer. The model grows more confident and more consistent on the
  * records it has seen, the two hills part, and an adversary thresholding at the midpoint tells
  * members from non-members more often.
  */
@@ -2136,7 +2136,7 @@ export function MembershipGap() {
       <Frame
         width={540}
         height={226}
-        label={`Patent drawing of two distributions of a model's confidence on records, from 0 to 1: records outside the training set peak at 0.5; records inside it, drawn in red, peak at ${m1.toFixed(2)} after ${epochs} training epochs. Thresholding at their midpoint, an adversary tells members from non-members ${Math.round(acc * 100)} percent of the time.`}
+        label={`Patent drawing of two distributions of a model's confidence on records, from 0 to 1: records outside the training set peak at 0.5. Records inside it, drawn in red, peak at ${m1.toFixed(2)} after ${epochs} training epochs. Thresholding at their midpoint, an adversary tells members from non-members ${Math.round(acc * 100)} percent of the time.`}
       >
         <PatentDefs id={id} />
         <path d={curve(m0, sd)} fill={stip(id, "light")} {...ink} />
@@ -2173,7 +2173,7 @@ export function MembershipGap() {
 }
 
 /* --------------------------------------------------------------------------
-   16 · Differential Privacy, Federated Learning, and Machine Unlearning
+   16. Differential Privacy, Federated Learning, and Machine Unlearning
    -------------------------------------------------------------------------- */
 
 /**
@@ -2207,7 +2207,7 @@ export function EpsilonNoise() {
       <Frame
         width={560}
         height={150}
-        label={`Patent drawing of the output distribution of a differentially private count, on the dataset without one person's record (true count 100, stippled) and with it (101, outlined). With epsilon ${eps}, the two distributions differ by at most a factor of ${Math.exp(eps).toFixed(2)}; the noise spreads answers about ${Math.round(b * 3)} counts either side.`}
+        label={`Patent drawing of the output distribution of a differentially private count, on the dataset without one person's record (true count 100, stippled) and with it (101, outlined). With epsilon ${eps}, the two distributions differ by at most a factor of ${Math.exp(eps).toFixed(2)}. The noise spreads answers about ${Math.round(b * 3)} counts either side.`}
       >
         <PatentDefs id={id} />
         <path d={curve(100)} fill={stip(id, "light")} {...ink} />
@@ -2240,7 +2240,7 @@ export function EpsilonNoise() {
   );
 }
 
-/** Per-example gradients for one batch: direction (degrees) and length; the last is an outlier record. */
+/** Per-example gradients for one batch: direction (degrees) and length. The last is an outlier record. */
 const GRADS = [
   [-30, 84],
   [-14, 98],
@@ -2254,7 +2254,7 @@ const GRADS = [
 /**
  * One training step of DP-SGD, drawn as vectors from a common point: each
  * record's gradient, one of them an outlier (red) far longer than the rest.
- * The dashed circle is the clipping norm C; every gradient longer than C is
+ * The dashed circle is the clipping norm C. Every gradient longer than C is
  * cut back to it, and noise scaled to C (the stippled disc) is added to the
  * averaged update. The slider sets C.
  */
@@ -2288,7 +2288,7 @@ export function ClipAndNoise() {
       <Frame
         width={560}
         height={150}
-        label={`Patent drawing of one DP-SGD step: seven per-example gradients drawn from a common point, one an outlier in red. A dashed circle of radius C = ${c} clips every longer gradient back to it; at right the averaged update carries a stippled disc of noise scaled to C.`}
+        label={`Patent drawing of one DP-SGD step: seven per-example gradients drawn from a common point, one an outlier in red. A dashed circle of radius C = ${c} clips every longer gradient back to it. At right the averaged update carries a stippled disc of noise scaled to C.`}
       >
         <PatentDefs id={id} />
         <path d={arc(c)} fill="none" {...hair} strokeDasharray="4 3" />
@@ -2327,7 +2327,7 @@ export function ClipAndNoise() {
 
 /**
  * Federated learning in plan: four phones each keep their raw records
- * (sheets) locked on the device and train a local update; only the updates
+ * (sheets) locked on the device and train a local update. Only the updates
  * (small arrows) travel up, through a secure aggregation box, to the central
  * server's model.
  */
@@ -2338,7 +2338,7 @@ export function FederatedPlan() {
     <Frame
       width={560}
       height={186}
-      label="Patent drawing of federated learning: four phones along the bottom each keep their raw records behind a padlock and train a local update with a small gear; only update arrows travel up into a secure aggregation box and on to the central server's model at top."
+      label="Patent drawing of federated learning: four phones along the bottom each keep their raw records behind a padlock and train a local update with a small gear. Only update arrows travel up into a secure aggregation box and on to the central server's model at top."
     >
       <PatentDefs id={id} />
       {/* server */}
@@ -2371,7 +2371,7 @@ export function FederatedPlan() {
 /**
  * A model trained in four shards: each stack of records trains its own
  * shard model, and the four shards join into the deployed model above. The
- * erasure request strikes one customer's record (red) from shard two; only
+ * erasure request strikes one customer's record (red) from shard two. Only
  * that shard is retrained (red, with its retraining arrow), one of four,
  * rather than the whole model from scratch.
  */
@@ -2385,7 +2385,7 @@ export function ShardUnlearning() {
       <Frame
         width={560}
         height={186}
-        label={`Patent drawing of a model trained in four shards: each of four record stacks trains its own small shard model, and the four shards join into the deployed model above. ${erased ? "An erasure request has struck one customer's record, in red, from the second stack; only the second shard is retrained, drawn in red with a retraining arrow: one of four shards." : "One customer's record sits in the second stack, in red."}`}
+        label={`Patent drawing of a model trained in four shards: each of four record stacks trains its own small shard model, and the four shards join into the deployed model above. ${erased ? "An erasure request has struck one customer's record, in red, from the second stack. Only the second shard is retrained, drawn in red with a retraining arrow: one of four shards." : "One customer's record sits in the second stack, in red."}`}
       >
         <PatentDefs id={id} />
         <SmallModel id={id} x={246} y={10} w={60} h={40} />
@@ -2432,7 +2432,7 @@ export function ShardUnlearning() {
 }
 
 /* --------------------------------------------------------------------------
-   17 · Part 4: Research Ethics Board Governance for Human and AI Studies
+   17. Part 4: Research Ethics Board Governance for Human and AI Studies
    -------------------------------------------------------------------------- */
 
 /**
@@ -2448,7 +2448,7 @@ export function ProtocolDossier() {
     <Frame
       width={560}
       height={286}
-      label="Patent drawing of a study protocol lying open in its folder: a consent form with tick boxes on the left page; on the right page the written study design. Above it a hand stamp hangs on its centre line, about to stamp the protocol approved."
+      label="Patent drawing of a study protocol lying open in its folder: a consent form with tick boxes on the left page. On the right page the written study design. Above it a hand stamp hangs on its centre line, about to stamp the protocol approved."
     >
       <PatentDefs id={id} />
       <g transform="translate(0 -26)">
@@ -2489,12 +2489,12 @@ export function ProtocolDossier() {
 }
 
 /* --------------------------------------------------------------------------
-   18 · Core Principles of Human-Subjects Research Ethics
+   18. Core Principles of Human-Subjects Research Ethics
    -------------------------------------------------------------------------- */
 
 /**
  * Consent as ongoing: a participant walks a centre line past three study
- * sessions, and the consent form is ticked afresh at each one; a second
+ * sessions, and the consent form is ticked afresh at each one. A second
  * participant, with diminished autonomy, is accompanied by a guardian whose
  * hand rests on their shoulder.
  */
@@ -2505,7 +2505,7 @@ export function OngoingConsent() {
     <Frame
       width={400}
       height={190}
-      label="Patent drawing of ongoing consent: a participant at left faces three study sessions along a centre line, numbered 1 to 3, and the consent form is ticked again at each; at right a participant with diminished autonomy stands with a guardian whose hand rests on their shoulder."
+      label="Patent drawing of ongoing consent: a participant at left faces three study sessions along a centre line, numbered 1 to 3, and the consent form is ticked again at each. At right a participant with diminished autonomy stands with a guardian whose hand rests on their shoulder."
     >
       <PatentDefs id={id} />
       <line x1={10} y1={fy} x2={390} y2={fy} {...hair} />
@@ -2529,7 +2529,7 @@ export function OngoingConsent() {
 
 /**
  * A balance: on one pan, five small weights, the physical, psychological,
- * social, economic and privacy risks, each kept small; on the other, one
+ * social, economic and privacy risks, each kept small. On the other, one
  * larger weight, the expected benefit. The beam tips toward the benefit.
  */
 export function WelfareBalance() {
@@ -2546,7 +2546,7 @@ export function WelfareBalance() {
     <Frame
       width={400}
       height={190}
-      label="Patent drawing of a balance: the left pan holds five small weights, the physical, psychological, social, economic and privacy risks; the right pan holds one larger weight, the expected benefit. The beam tips toward the benefit."
+      label="Patent drawing of a balance: the left pan holds five small weights, the physical, psychological, social, economic and privacy risks. The right pan holds one larger weight, the expected benefit. The beam tips toward the benefit."
     >
       <PatentDefs id={id} />
       <path d={`M${cx - 30} 182H${cx + 30}L${cx + 6} 166V70H${cx - 6}V166Z`} fill={stip(id, "light")} {...ink} />
@@ -2588,7 +2588,7 @@ export function JusticeBurden() {
     <Frame
       width={400}
       height={190}
-      label="Patent drawing of three groups of two participants each. In the burdens row above each group stands an equal stack of study sheets; in the benefits row before each group stands an equal stack of coins. Burdens and benefits are spread evenly across the groups."
+      label="Patent drawing of three groups of two participants each. In the burdens row above each group stands an equal stack of study sheets. In the benefits row before each group stands an equal stack of coins. Burdens and benefits are spread evenly across the groups."
     >
       <PatentDefs id={id} />
       <line x1={110} y1={fy} x2={394} y2={fy} {...hair} />
@@ -2614,7 +2614,7 @@ export function JusticeBurden() {
 }
 
 /* --------------------------------------------------------------------------
-   19 · Deception, Debriefing, and Minimal Risk in Behavioral Experiments
+   19. Deception, Debriefing, and Minimal Risk in Behavioral Experiments
    -------------------------------------------------------------------------- */
 
 type Condition = "necessary" | "minimal" | "debrief";
@@ -2623,7 +2623,7 @@ type Condition = "necessary" | "minimal" | "debrief";
  * Left, the deception itself: a participant faces a partition, believing a
  * human advisor sits behind it (dashed outline) while an AI agent does
  * (solid housing). Right, the board's interlock: a bolt held by three pins.
- * Each condition switched on lifts its pin; only with all three lifted does
+ * Each condition switched on lifts its pin. Only with all three lifted does
  * the bolt slide free and the stamp read PERMITTED.
  */
 export function DeceptionInterlock() {
@@ -2651,7 +2651,7 @@ export function DeceptionInterlock() {
         <line x1={14} y1={fy} x2={290} y2={fy} {...hair} />
         <Figure id={id} x={50} y={fy} s={1.3} arm="reach" />
         <ObliqueBox id={id} x={124} y={110} w={10} h={150} dx={14} dy={9} />
-        {/* the believed human, dashed; the actual AI agent, solid */}
+        {/* the believed human, dashed. The actual AI agent, solid */}
         <g strokeDasharray="4 3">
           <circle cx={214} cy={124} r={10} fill="none" {...hair} />
           <path d="M198 186V154Q198 140 214 140Q230 140 230 154V186" fill="none" {...hair} />
@@ -2734,7 +2734,7 @@ export function DisguisedSurvey() {
 }
 
 /* --------------------------------------------------------------------------
-   20 · REB Oversight When AI Tools Process Participant Data
+   20. REB Oversight When AI Tools Process Participant Data
    -------------------------------------------------------------------------- */
 
 type Detail = "name" | "workplace" | "events" | "quote";
@@ -2755,7 +2755,7 @@ const MATCHES = (kept: Detail[]) => {
  * An interview transcript on its way to an external language model. The
  * switches strip details from it: each stripped passage is blacked out with
  * a stippled bar, and every passage still left reads in red. The count
- * beside it is how many people the remaining text could describe; stripping
+ * beside it is how many people the remaining text could describe. Stripping
  * the name alone leaves it at one.
  */
 export function TranscriptStrip() {
@@ -2770,7 +2770,7 @@ export function TranscriptStrip() {
       <Frame
         width={560}
         height={330}
-        label={`Patent drawing of an interview transcript on its way to an external language model. Stripped: ${removed.length ? removed.join(", ") : "nothing"}; those passages are blacked out with stippled bars. Still in the text, in red: ${kept.length ? kept.join(", ") : "nothing identifying"}. The remaining text could describe ${m} ${m === "1" ? "person" : "people"}.`}
+        label={`Patent drawing of an interview transcript on its way to an external language model. Stripped: ${removed.length ? removed.join(", ") : "nothing"}. Those passages are blacked out with stippled bars. Still in the text, in red: ${kept.length ? kept.join(", ") : "nothing identifying"}. The remaining text could describe ${m} ${m === "1" ? "person" : "people"}.`}
       >
         <PatentDefs id={id} />
         {/* the transcript */}
@@ -2816,7 +2816,7 @@ export function TranscriptStrip() {
 }
 
 /* --------------------------------------------------------------------------
-   21 · Part 5: Ethical and Epistemic Boundaries of Synthetic AI Respondents
+   21. Part 5: Ethical and Epistemic Boundaries of Synthetic AI Respondents
    -------------------------------------------------------------------------- */
 
 /** A persona card: a portrait outline and written attribute lines. */
@@ -2845,7 +2845,7 @@ export function PersonaPress() {
     <Frame
       width={560}
       height={310}
-      label="Patent drawing of a silicon-sampling press: a hopper of persona cards, each a portrait outline with written attributes, feeds a language model housing that prints filled questionnaires onto a tall stack at right; to the left stand three people, the human participants it replaces."
+      label="Patent drawing of a silicon-sampling press: a hopper of persona cards, each a portrait outline with written attributes, feeds a language model housing that prints filled questionnaires onto a tall stack at right. To the left stand three people, the human participants it replaces."
     >
       <PatentDefs id={id} />
       <line x1={10} y1={fy} x2={550} y2={fy} {...hair} />
@@ -2876,7 +2876,7 @@ export function PersonaPress() {
 }
 
 /* --------------------------------------------------------------------------
-   22 · Silicon Samples: Language Models as Simulated Survey Respondents
+   22. Silicon Samples: Language Models as Simulated Survey Respondents
    -------------------------------------------------------------------------- */
 
 /**
@@ -2922,14 +2922,14 @@ export function PersonaPrompt() {
   );
 }
 
-/** The model's distribution over answers on a 1–7 scale for the persona prompt. */
+/** The model's distribution over answers on a 1 to 7 scale for the persona prompt. */
 const ANSWER_PMF = [0.02, 0.05, 0.1, 0.18, 0.34, 0.22, 0.09];
 
 /**
  * Two figures. A member of the group: one person. A conditional probability
  * distribution over text: a pile of pages written about the group feeds a
  * model, whose answers form a distribution of slips over a seven-point
- * scale. The button samples one response from it; each press can land on a
+ * scale. The button samples one response from it. Each press can land on a
  * different answer.
  */
 export function PersonVsDistribution() {
@@ -3004,7 +3004,7 @@ export function PersonVsDistribution() {
 }
 
 /* --------------------------------------------------------------------------
-   23 · Epistemic and Ethical Risks of Replacing Human Panels With AI
+   23. Epistemic and Ethical Risks of Replacing Human Panels With AI
    -------------------------------------------------------------------------- */
 
 /**
@@ -3026,8 +3026,8 @@ type ModelId = (typeof CETSCALE.models)[number]["id"];
 
 /**
  * The spread of one human sample against one language model on the same
- * scale. The human scores (light stipple) spread across most of the scale;
- * the model's (red) stand in a narrow spike, its top cut by a break line
+ * scale. The human scores (light stipple) spread across most of the scale.
+ * The model's (red) stand in a narrow spike, its top cut by a break line
  * because it rises far above the plate. The choice below swaps the model.
  */
 export function VarianceCollapse() {
@@ -3096,7 +3096,7 @@ export function VarianceCollapse() {
   );
 }
 
-/** A persona's answer distribution on a 1–7 item under two wordings. */
+/** A persona's answer distribution on a 1 to 7 item under two wordings. */
 const WORDINGS = {
   a: [0.03, 0.07, 0.14, 0.22, 0.28, 0.18, 0.08],
   b: [0.08, 0.16, 0.24, 0.24, 0.16, 0.08, 0.04],
@@ -3105,7 +3105,7 @@ const WORDINGS = {
 /**
  * A simulated sample's answers to one seven-point item, as bars. The slider
  * sets the sampling temperature: the distribution sharpens toward one answer
- * as it falls and spreads as it rises; the switch rewords the persona. Mean
+ * as it falls and spreads as it rises. The switch rewords the persona. Mean
  * and standard deviation move with both.
  */
 export function TemperatureShift() {
@@ -3166,7 +3166,7 @@ export function TemperatureShift() {
 }
 
 /* --------------------------------------------------------------------------
-   24 · Governance Rules for Hybrid Human-AI Research
+   24. Governance Rules for Hybrid Human-AI Research
    -------------------------------------------------------------------------- */
 
 /**
@@ -3310,12 +3310,12 @@ export function ProxyVsActor() {
 }
 
 /* --------------------------------------------------------------------------
-   25 · Discussion: The Synthetic Consumer Pretest
+   25. Discussion: The Synthetic Consumer Pretest
    -------------------------------------------------------------------------- */
 
 /**
- * The home diagnostic kit and its instruction leaflet in the middle; on the
- * left a stack of 2,000 persona cards; on the right a rural senior with a
+ * The home diagnostic kit and its instruction leaflet in the middle. On the
+ * left a stack of 2,000 persona cards. On the right a rural senior with a
  * cane outside a farmhouse.
  */
 export function RuralPretest() {
@@ -3325,7 +3325,7 @@ export function RuralPretest() {
     <Frame
       width={460}
       height={218}
-      label="Patent drawing of a home diagnostic kit box with its instruction leaflet in the middle; on the left a tall stack of 2,000 persona cards; on the right a rural senior with a cane standing outside a farmhouse."
+      label="Patent drawing of a home diagnostic kit box with its instruction leaflet in the middle. On the left a tall stack of 2,000 persona cards. On the right a rural senior with a cane standing outside a farmhouse."
     >
       <PatentDefs id={id} />
       <g transform="translate(0 -66)">

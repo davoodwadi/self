@@ -22,7 +22,7 @@
 - Marketing ethics, consumer well-being, and dark patterns directed at consumers and at their AI agents.
 
 ### Week 2: Perception and Sensory Marketing
-**Summary**: Exposure, attention, and interpretation; sensory marketing, sensory thresholds, and Weber's law. Machine perception: product information as structured data, and position effects for consumers and AI agents.
+**Summary**: Exposure, attention, and interpretation. Sensory marketing, sensory thresholds, and Weber's law. Machine perception: product information as structured data, and position effects for consumers and AI agents.
 
 - The perception process: exposure, attention, and interpretation.
 - Sensory marketing: how vision, sound, smell, touch, and taste guide buying.
@@ -43,10 +43,10 @@
 **Summary**: Drive and expectancy theories, Maslow's hierarchy, and motivational conflicts. Intrinsic and extrinsic motives in online review writing, and consumer involvement in the delegation of purchases to AI agents.
 
 - Motivation as a psychological drive: drive theory and expectancy theory.
-- Distinguishing needs from wants; Maslow's hierarchy of needs in consumer markets.
+- Distinguishing needs from wants. Maslow's hierarchy of needs in consumer markets.
 - Motivational conflicts: approach-approach, approach-avoidance, and avoidance-avoidance.
 - Intrinsic and extrinsic motivation: the crowding-out of altruistic motives by financial incentives in online review writing.
-- Consumer involvement: product, message, and purchase situation involvement; involvement and the delegation of purchases to AI agents.
+- Consumer involvement: product, message, and purchase situation involvement. Involvement and the delegation of purchases to AI agents.
 
 ### Week 5: Personality, Self-Concept, and Lifestyles
 **Summary**: The actual and ideal self, the extended self, brand personality, and psychographics. Resistance to the automation of identity-relevant tasks, and large language models as simulated survey respondents.
@@ -101,8 +101,8 @@
 **Summary**: Reference groups, social power, word of mouth, and opinion leadership. AI-generated review summaries, synthetic reviews, virtual influencers, and the expert power attributed to AI assistants.
 
 - Reference groups: membership, aspirational, and dissociative groups.
-- Social power: referent, legitimate, expert, reward, and coercive power; the expert power attributed to AI assistants.
-- Word-of-mouth (WOM) communication and opinion leadership; AI-generated review summaries and synthetic reviews.
+- Social power: referent, legitimate, expert, reward, and coercive power. The expert power attributed to AI assistants.
+- Word-of-mouth (WOM) communication and opinion leadership. AI-generated review summaries and synthetic reviews.
 - Influencer marketing, virtual influencers, and online communities as social proof.
 
 ### Week 11: Culture, Subcultures, and Social Class

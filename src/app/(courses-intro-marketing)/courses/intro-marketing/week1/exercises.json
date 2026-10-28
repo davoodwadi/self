@@ -299,7 +299,7 @@
         "id": "gift-idea",
         "text": "Wants a birthday gift for a friend who loves hiking.",
         "bin": "consumer",
-        "explanation": "The want belongs to the consumer; the AI agent only acts on it."
+        "explanation": "The want belongs to the consumer. The AI agent only acts on it."
       },
       {
         "id": "hotel-list",
@@ -451,7 +451,7 @@
     "slide_id": "capturing-value",
     "question_text": "A shopper who has bought groceries at the same store every week for years switches to a rival. According to the lecture, what has the store lost?",
     "hint": "Think about Customer Lifetime Value.",
-    "correct_answer_citation": "Week 01 · Capturing Value from Customers",
+    "correct_answer_citation": "Week 01: Capturing Value from Customers",
     "correct_answer_index": 1,
     "options": [
       {

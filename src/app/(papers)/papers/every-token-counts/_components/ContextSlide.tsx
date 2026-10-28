@@ -35,15 +35,14 @@ export default function ContextSlide() {
             {[
               "Chinese LLMs (DeepSeek, Qwen) are now widely used in North America and beyond.",
               "Users increasingly ask: do these models carry a political or cultural agenda?",
-              "We study this through ethnocentrism — the tendency to favor one's own country.",
+              "We study this through ethnocentrism: the tendency to favor one's own country.",
             ].map((bullet, i) => (
               <div key={i} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
                 <span
                   className="p-mono"
                   style={{ color: "var(--violet-light)", fontSize: "0.75rem", marginTop: "0.3rem", flexShrink: 0 }}
                 >
-                  —
-                </span>
+                  - </span>
                 <p className="p-body" style={{ fontSize: "1.0625rem", lineHeight: "1.7" }}>
                   {bullet}
                 </p>

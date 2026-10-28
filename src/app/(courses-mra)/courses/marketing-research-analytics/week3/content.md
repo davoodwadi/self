@@ -171,7 +171,7 @@ week: week3
 
 ## Key Takeaways
 - Qualitative research examines the reasons for behavior through small, nonrepresentative samples, and complements quantitative research.
-- Focus groups and depth interviews are direct approaches; projective techniques are indirect approaches used when participants are unlikely to state their true motives.
+- Focus groups and depth interviews are direct approaches. Projective techniques are indirect approaches used when participants are unlikely to state their true motives.
 - Observation, ethnography, and netnography record behavior in its context rather than relying on participants' reports.
 - Qualitative analysis proceeds from codes to themes, and data collection continues until saturation is reached.
 - Qualitative findings are evaluated for trustworthiness, through intercoder reliability, triangulation, member checking, and an audit trail.

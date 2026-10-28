@@ -53,7 +53,7 @@ week: week5
 - Without independent verification, an advertiser can pay for millions of impressions that no human ever saw.
 
 ## Viewability, Invalid Traffic (Ad Fraud), and Brand Safety [exercise]
-- Ad viewability measures whether an ad served into the DOM actually entered the user's visible screen viewport; under Media Rating Council (MRC) standards, a display ad counts as viewable only if at least 50 percent of its pixels remain on screen for at least one continuous second (two seconds for video).
+- Ad viewability measures whether an ad served into the DOM actually entered the user's visible screen viewport. Under Media Rating Council (MRC) standards, a display ad counts as viewable only if at least 50 percent of its pixels remain on screen for at least one continuous second (two seconds for video).
 - Invalid Traffic (IVT) and ad fraud occur when non-human bots, malware hijacks, hidden 1x1 pixel iframes, ad stacking, or spoofed domain names generate fake impressions and clicks to steal advertiser budgets.
 - Brand safety and brand suitability controls prevent a company's advertisements from appearing adjacent to harmful, illegal, hate-filled, or contextually inappropriate content (such as an airline ad appearing next to news of an aviation accident).
 - Frequency capping limits the maximum number of times the same individual is shown the same advertisement within a day or week, preventing ad wear-out, budget waste, and consumer annoyance.

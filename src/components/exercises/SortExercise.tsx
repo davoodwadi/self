@@ -9,7 +9,7 @@ const COLS: Record<number, string> = { 2: "sm:grid-cols-2", 3: "md:grid-cols-3",
 
 /**
  * Sort into bins, with feedback on every move. Tap a card, then tap a group:
- * the right group locks the card in with a tick and its explanation; a wrong
+ * the right group locks the card in with a tick and its explanation. A wrong
  * group marks the card and leaves it selected in its slot, without giving the
  * answer away, so the student can try another group. Every card keeps its
  * slot in the pile, so nothing above or below it moves.
@@ -91,7 +91,7 @@ export default function SortExercise({
                 state={last && !last.right && last.card === c.id ? "wrong" : selected === c.id ? "selected" : "idle"}
                 pressed={selected === c.id}
                 onClick={() => pick(c.id)}
-                label={last && !last.right && last.card === c.id ? `${c.text} (not ${binLabel(last.bin)}; still selected, try another group)` : undefined}
+                label={last && !last.right && last.card === c.id ? `${c.text} (not ${binLabel(last.bin)}. Still selected, try another group)` : undefined}
               >
                 {cardBody(c)}
               </Card>

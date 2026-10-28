@@ -51,9 +51,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 06 — PRIVACY, CONSENT, AND DATA GOVERNANCE
+// WEEK 06: PRIVACY, CONSENT, AND DATA GOVERNANCE
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md;
+// Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
 // is drawn beside it. Plates live in ./visuals.tsx.
 // ============================================================================
@@ -66,10 +66,10 @@ export default function Week6Page() {
   return (
     <SlideDeck label="Week 06">
       {/* ================================================================
-          01 · Title Slide
+          01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 06 · Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 06: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Privacy, Consent, and Data Governance</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[52ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.25rem,2vw,1.7rem)]">
@@ -82,7 +82,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          02 · Why AI Transforms Data Governance [no-exercise]
+          02. Why AI Transforms Data Governance [no-exercise]
           ================================================================ */}
       <Slide id="why-ai-transforms-data-governance" border className="!py-8">
         <SlideHeading>Why AI Transforms Data Governance</SlideHeading>
@@ -131,7 +131,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          03 · From Data Ownership to Contextual Integrity [no-exercise]
+          03. From Data Ownership to Contextual Integrity [no-exercise]
           ================================================================ */}
       <Slide id="from-data-ownership-to-contextual-integrity" border className="!py-8">
         <SlideHeading>From Data Ownership to Contextual Integrity</SlideHeading>
@@ -166,7 +166,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          04 · Part 1: Data Provenance in Training and Personalization [no-exercise]
+          04. Part 1: Data Provenance in Training and Personalization [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Data Provenance in Training and Personalization" />
@@ -196,7 +196,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          05 · A Taxonomy of Customer Data [exercise]
+          05. A Taxonomy of Customer Data [exercise]
           ================================================================ */}
       <Slide
         id="a-taxonomy-of-customer-data-volunteered-observed-inferred-and-scraped"
@@ -262,7 +262,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          06 · Purpose Limitation and Secondary Use in Foundation Models [no-exercise]
+          06. Purpose Limitation and Secondary Use in Foundation Models [no-exercise]
           ================================================================ */}
       <Slide id="purpose-limitation-and-secondary-use-in-foundation-models" border className="!py-8">
         <SlideHeading className="!mb-5">Purpose Limitation and Secondary Use in Foundation Models</SlideHeading>
@@ -316,7 +316,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          07 · Shadow Data Pipelines and Third-Party API Leakage [no-exercise]
+          07. Shadow Data Pipelines and Third-Party API Leakage [no-exercise]
           ================================================================ */}
       <Slide id="shadow-data-pipelines-and-third-party-api-leakage" border className="!py-8">
         <SlideHeading>Shadow Data Pipelines and Third-Party API Leakage</SlideHeading>
@@ -361,7 +361,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          08 · Part 2: Consent, Contextual Integrity, and the Limits of Notice-and-Choice [no-exercise]
+          08. Part 2: Consent, Contextual Integrity, and the Limits of Notice-and-Choice [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Consent, Contextual Integrity, and the Limits of Notice-and-Choice" />
@@ -390,7 +390,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          09 · Contextual Integrity and Informational Norms [exercise]
+          09. Contextual Integrity and Informational Norms [exercise]
           ================================================================ */}
       <Slide
         id="contextual-integrity-and-informational-norms"
@@ -445,7 +445,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          10 · Why Notice-and-Choice Fails in AI Ecosystems [no-exercise]
+          10. Why Notice-and-Choice Fails in AI Ecosystems [no-exercise]
           ================================================================ */}
       <Slide id="why-notice-and-choice-fails-in-ai-ecosystems" border className="!py-6">
         <SlideHeading className="!mb-4">Why Notice-and-Choice Fails in AI Ecosystems</SlideHeading>
@@ -508,7 +508,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          11 · Dark Patterns in Consent Management and Opt-Out Design [exercise]
+          11. Dark Patterns in Consent Management and Opt-Out Design [exercise]
           ================================================================ */}
       <Slide
         id="dark-patterns-in-consent-management-and-opt-out-design"
@@ -567,7 +567,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          12 · Discussion: Training on Customer Support Calls
+          12. Discussion: Training on Customer Support Calls
           ================================================================ */}
       <Slide id="discussion-training-on-customer-support-calls" border className="!py-8">
         <SlideHeading>Training on Customer Support Calls</SlideHeading>
@@ -589,7 +589,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          13 · Part 3: Technical Privacy Risks and Safeguards [no-exercise]
+          13. Part 3: Technical Privacy Risks and Safeguards [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Technical Privacy Risks and Safeguards" />
@@ -618,7 +618,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          14 · The Failure of Naive Anonymization and Re-Identification Attacks [no-exercise]
+          14. The Failure of Naive Anonymization and Re-Identification Attacks [no-exercise]
           ================================================================ */}
       <Slide id="the-failure-of-naive-anonymization-and-re-identification-attacks" border className="!py-6">
         <SlideHeading className="!mb-4 [&_h2]:!max-w-none [&_h2]:lg:!text-[2.3rem]">The Failure of Naive Anonymization and Re-Identification Attacks</SlideHeading>
@@ -680,14 +680,14 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          15 · Training Data Memorization and Membership Inference in LLMs [no-exercise]
+          15. Training Data Memorization and Membership Inference in LLMs [no-exercise]
           ================================================================ */}
       <Slide id="training-data-memorization-and-membership-inference-in-llms" border className="!py-8">
         <SlideHeading>Training Data Memorization and Membership Inference in LLMs</SlideHeading>
         <Ruled>
           <P className="!max-w-none">
             Deep neural networks and large language models do not merely learn
-            abstract statistical rules; they can{" "}
+            abstract statistical rules. They can{" "}
             <Term tone="signal">memorize verbatim sequences</Term> from their
             training corpora, particularly sequences that appear repeatedly or
             sit in unusual outliers.
@@ -727,7 +727,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          16 · Differential Privacy, Federated Learning, and Machine Unlearning [exercise]
+          16. Differential Privacy, Federated Learning, and Machine Unlearning [exercise]
           ================================================================ */}
       <Slide
         id="differential-privacy-federated-learning-and-machine-unlearning"
@@ -801,7 +801,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          17 · Part 4: Research Ethics Board Governance for Human and AI Studies [no-exercise]
+          17. Part 4: Research Ethics Board Governance for Human and AI Studies [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Research Ethics Board Governance for Human and AI Studies" />
@@ -831,7 +831,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          18 · Core Principles of Human-Subjects Research Ethics [no-exercise]
+          18. Core Principles of Human-Subjects Research Ethics [no-exercise]
           ================================================================ */}
       <Slide id="core-principles-of-human-subjects-research-ethics" border className="!py-8">
         <SlideHeading>Core Principles of Human-Subjects Research Ethics</SlideHeading>
@@ -890,7 +890,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          19 · Deception, Debriefing, and Minimal Risk in Behavioral Experiments [exercise]
+          19. Deception, Debriefing, and Minimal Risk in Behavioral Experiments [exercise]
           ================================================================ */}
       <Slide
         id="deception-debriefing-and-minimal-risk-in-behavioral-experiments"
@@ -945,7 +945,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          20 · REB Oversight When AI Tools Process Participant Data [exercise]
+          20. REB Oversight When AI Tools Process Participant Data [exercise]
           ================================================================ */}
       <Slide
         id="reb-oversight-when-ai-tools-process-participant-data"
@@ -1009,7 +1009,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          21 · Part 5: Ethical and Epistemic Boundaries of Synthetic AI Respondents [no-exercise]
+          21. Part 5: Ethical and Epistemic Boundaries of Synthetic AI Respondents [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Ethical and Epistemic Boundaries of Synthetic AI Respondents" />
@@ -1038,7 +1038,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          22 · Silicon Samples: Language Models as Simulated Survey Respondents [no-exercise]
+          22. Silicon Samples: Language Models as Simulated Survey Respondents [no-exercise]
           ================================================================ */}
       <Slide id="silicon-samples-language-models-as-simulated-survey-respondents" border className="!py-8">
         <SlideHeading>Silicon Samples: Language Models as Simulated Survey Respondents</SlideHeading>
@@ -1069,8 +1069,8 @@ export default function Week6Page() {
             <Ruled weight="thin" className="mb-3">
               <P>
                 However, a language model conditioned on a demographic label{" "}
-                <Term tone="signal">is not a member of that demographic group</Term>;
-                it is a conditional probability distribution over text learned
+                <Term tone="signal">is not a member of that demographic group</Term>.
+                It is a conditional probability distribution over text learned
                 from how that group is written about in training corpora.
               </P>
             </Ruled>
@@ -1082,7 +1082,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          23 · Epistemic and Ethical Risks of Replacing Human Panels With AI [exercise]
+          23. Epistemic and Ethical Risks of Replacing Human Panels With AI [exercise]
           ================================================================ */}
       <Slide
         id="epistemic-and-ethical-risks-of-replacing-human-panels-with-ai"
@@ -1120,7 +1120,7 @@ export default function Week6Page() {
                 <Term tone="ink">Non-invariance to prompt and scale formatting</Term>{" "}
                 occurs when minor changes in persona wording, temperature, or
                 single-response sampling shift the simulated sample&apos;s mean and
-                variance (Wadi &amp; Fredette, 2025; Wadi, Ghodrat, &amp; Philp,
+                variance (Wadi &amp; Fredette, 2025, Wadi, Ghodrat, &amp; Philp,
                 2026).
               </P>
             </Ruled>
@@ -1140,7 +1140,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          24 · Governance Rules for Hybrid Human-AI Research [no-exercise]
+          24. Governance Rules for Hybrid Human-AI Research [no-exercise]
           ================================================================ */}
       <Slide id="governance-rules-for-hybrid-human-ai-research" border className="!py-8">
         <SlideHeading>Governance Rules for Hybrid Human-AI Research</SlideHeading>
@@ -1196,7 +1196,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          25 · Discussion: The Synthetic Consumer Pretest
+          25. Discussion: The Synthetic Consumer Pretest
           ================================================================ */}
       <Slide id="discussion-the-synthetic-consumer-pretest" border className="!py-8">
         <SlideHeading>The Synthetic Consumer Pretest</SlideHeading>
@@ -1218,7 +1218,7 @@ export default function Week6Page() {
       </Slide>
 
       {/* ================================================================
-          26 · Key Takeaways
+          26. Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>
@@ -1229,7 +1229,7 @@ export default function Week6Page() {
             "Naive anonymization fails in high-dimensional behavioral data because a handful of spatiotemporal points or quasi-identifiers uniquely re-identify individuals, while large language models can memorize and regurgitate verbatim training examples.",
             "Technical privacy governance relies on differential privacy (bounded epsilon sensitivity and calibrated noise), federated learning, and machine unlearning for statutory erasure requests.",
             "Research Ethics Board (REB) oversight enforces Respect for Persons, Concern for Welfare, and Justice, governing experimental deception, mandatory debriefing, and the disclosure of third-party AI data processing in informed consent.",
-            "Synthetic AI respondents (silicon samples) suffer from variance collapse, cultural stereotyping, and participatory erasure when used as substitutes for human panels; governance restricts them to disclosed pretesting while distinguishing fragile human simulation from direct behavioral audits of AI shopping agents.",
+            "Synthetic AI respondents (silicon samples) suffer from variance collapse, cultural stereotyping, and participatory erasure when used as substitutes for human panels. Governance restricts them to disclosed pretesting while distinguishing fragile human simulation from direct behavioral audits of AI shopping agents.",
           ].map((takeaway, i) => (
             <li key={i} className="min-w-0">
               <Numbered n={i + 1}>

@@ -17,7 +17,7 @@ export default function PaperFooter() {
             color: "var(--text-faint)",
           }}
         >
-          Every Token Counts &middot; Davood Wadi &middot; 2026
+          Every Token Counts | Davood Wadi | 2026
         </p>
       </div>
     </footer>

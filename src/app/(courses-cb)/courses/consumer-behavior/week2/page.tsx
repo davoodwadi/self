@@ -41,20 +41,20 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR · WEEK 02 — PERCEPTION AND SENSORY MARKETING
+// CONSUMER BEHAVIOR | WEEK 02: PERCEPTION AND SENSORY MARKETING
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx (Editorial Sketch, see ../CLAUDE.md).
 //
 // Colour is rare (see the root CLAUDE.md): each slide gives SIGNAL to at most
-// one phrase, its key idea; defined terms are bold ink and every rule is ink.
+// one phrase, its key idea. Defined terms are bold ink and every rule is ink.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise that tests that slide
 // and the ones before it. The three stages of perception are put in order,
 // the three look-alike Gestalt principles are named case by case (identify),
-// what an AI agent can and cannot perceive is a sort;
+// what an AI agent can and cannot perceive is a sort.
 // thresholds and Weber's law apply one idea to a case, so they are quizzes.
 // ============================================================================
 
@@ -128,7 +128,7 @@ function Ruled({
 
 /**
  * A plate in a figure well. A `wide` (800-unit) plate keeps a legible minimum
- * width on phones and scrolls inside its well there; from lg up it fits.
+ * width on phones and scrolls inside its well there. From lg up it fits.
  */
 function Plate({
   children,
@@ -226,7 +226,7 @@ export default function Week2() {
             <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
               Week 02
             </p>
-            <p className="type-caption mt-2">Consumer Behavior · Davood Wadi, PhD</p>
+            <p className="type-caption mt-2">Consumer Behavior | Davood Wadi, PhD</p>
             <Title className="mt-8 !max-w-[14ch]">Perception and Sensory Marketing</Title>
             <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
               <p className="type-quote">
@@ -780,7 +780,7 @@ export default function Week2() {
           ================================================================ */}
       <Slide className={TIGHT} id="semiotics-the-meaning-of-marketing-messages" border>
         <Heading kicker="Semiotics:">The Meaning of Marketing Messages</Heading>
-        {/* The triangle sits beside the lines it draws; on phones it follows
+        {/* The triangle sits beside the lines it draws. On phones it follows
             the definition of semiotics, before the three parts. */}
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.45fr] lg:gap-x-12">
           <div className="min-w-0 lg:col-start-1 lg:row-start-1 lg:self-end">

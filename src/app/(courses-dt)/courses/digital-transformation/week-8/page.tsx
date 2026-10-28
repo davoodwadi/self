@@ -52,13 +52,13 @@ const SECTIONS = [
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif; terms set bold in the display serif. */
+/* Body copy: the reading serif. Terms set bold in the display serif. */
 const BODY_BASE = "font-body leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
 const BODY = `${BODY_BASE} text-base md:text-[1.08rem]`;
 const LIST =
   "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
 const SUBLIST =
-  "list-none flex flex-col gap-1 mt-1.5 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['–'] [&>li]:before:shrink-0";
+  "list-none flex flex-col gap-1 mt-1.5 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['-'] [&>li]:before:shrink-0";
 
 function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
   return (
@@ -102,12 +102,12 @@ export default function DigitalTransformationWeek8() {
       </Link>
 
       <PosterHero
-        category="WEEK 8 — DIGITAL TRANSFORMATION"
+        category="WEEK 8: DIGITAL TRANSFORMATION"
         title="Week 8: Immersive Technologies"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
         agenda={[
-          "Immersive Technologies — AR, VR",
+          "Immersive Technologies: AR, VR",
           "Gamification",
           "Business Cases",
           "Ethical Concerns",
@@ -116,7 +116,7 @@ export default function DigitalTransformationWeek8() {
       />
 
       {/* ================================================================
-          CHAPTER 1 — IMMERSIVE TECHNOLOGIES
+          CHAPTER 1: IMMERSIVE TECHNOLOGIES
           ================================================================ */}
       <ChapterBand id="ch1" number="01" title="Immersive Technologies" />
 
@@ -242,7 +242,7 @@ export default function DigitalTransformationWeek8() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 2 — GAMIFICATION
+          CHAPTER 2: GAMIFICATION
           ================================================================ */}
       <ChapterBand id="ch2" number="02" title="Gamification" />
 
@@ -424,7 +424,7 @@ export default function DigitalTransformationWeek8() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 3 — BUSINESS CASES
+          CHAPTER 3: BUSINESS CASES
           ================================================================ */}
       <ChapterBand id="ch3" number="03" title="Business Cases" />
 
@@ -530,7 +530,7 @@ export default function DigitalTransformationWeek8() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 4 — ETHICAL CONCERNS & BUSINESS STRATEGY
+          CHAPTER 4: ETHICAL CONCERNS & BUSINESS STRATEGY
           ================================================================ */}
       <ChapterBand id="ch4" number="04" title="Ethical Concerns & Business Strategy" />
 

@@ -31,11 +31,11 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 12 — TEXT ANALYTICS, AI-DRIVEN INSIGHTS, AND REPORTING
+// WEEK 12: TEXT ANALYTICS, AI-DRIVEN INSIGHTS, AND REPORTING
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx; the interactive ones are built around one action
+// live in ./visuals.tsx. The interactive ones are built around one action
 // each: move a listening window, raise the pull of extreme experiences, pick
 // a review for the lexicon, choose the number of topics, reword the
 // instructions, split the validation by language, combine characteristics,
@@ -101,7 +101,7 @@ export default function Week12() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 12 · Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 12: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[26ch]">
           Text Analytics, AI-Driven Insights, and <span className="text-[var(--signal)]">Reporting</span>
         </Title>

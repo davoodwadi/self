@@ -76,9 +76,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 10 — INTEGRATED MARKETING COMMUNICATIONS (THE FOURTH P)
+// WEEK 10: INTEGRATED MARKETING COMMUNICATIONS (THE FOURTH P)
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
@@ -138,7 +138,7 @@ function Lead({
   );
 }
 
-/** A line set as a serif statement — the line a slide lands on. */
+/** A line set as a serif statement: the line a slide lands on. */
 function Statement({
   children,
   className = "",
@@ -277,7 +277,7 @@ const SECTIONS = [
   "Budget and Measurement",
 ];
 
-/** The three parts of the week as a strip; the current one is lit. */
+/** The three parts of the week as a strip. The current one is lit. */
 function SectionStrip({
   active,
   className = "",
@@ -336,7 +336,7 @@ const TOOL_NAMES = [
   "Direct and Digital",
 ];
 
-/** The five tools as glyphs; the one this slide covers is lit. */
+/** The five tools as glyphs. The one this slide covers is lit. */
 function ToolStrip({ active }: { active: number }) {
   return (
     <ol aria-hidden className="mb-10 grid w-full grid-cols-5 gap-2 sm:gap-4">
@@ -368,7 +368,7 @@ function ToolStrip({ active }: { active: number }) {
 
 const STEP_NAMES = ["Audience", "Objectives", "Message", "Media", "Source and feedback"];
 
-/** The five communication steps; the current one is lit. */
+/** The five communication steps. The current one is lit. */
 function StepStrip({ active }: { active: number }) {
   return (
     <ol aria-hidden className="mb-10 grid w-full grid-cols-5 gap-2 sm:gap-3">
@@ -401,7 +401,7 @@ function StepStrip({ active }: { active: number }) {
 
 const METHOD_NAMES = ["Affordable", "Percentage-of-Sales", "Competitive-Parity", "Objective-and-Task"];
 
-/** The four budget methods; the one in focus is lit. */
+/** The four budget methods. The one in focus is lit. */
 function MethodStrip({ active }: { active: number }) {
   return (
     <ol aria-hidden className="mb-10 grid w-full grid-cols-4 gap-2 sm:gap-4">
@@ -560,7 +560,7 @@ export default function Week10() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 10 · Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 10: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
           Integrated Marketing Communications{" "}
           <span className="text-[var(--signal)]">(The Fourth P)</span>
@@ -590,7 +590,7 @@ export default function Week10() {
       </Slide>
 
       {/* ================================================================
-          Part 1 — The Promotion Mix
+          Part 1: The Promotion Mix
           ================================================================ */}
       <TopicSlide id="the-promotion-mix" section={0} title="The Promotion Mix">
         <Lead className="!max-w-[58ch]">
@@ -905,7 +905,7 @@ export default function Week10() {
       </Slide>
 
       {/* ================================================================
-          Part 2 — Integrated Marketing Communications
+          Part 2: Integrated Marketing Communications
           ================================================================ */}
       <TopicSlide
         id="the-need-for-integrated-marketing-communications"
@@ -1095,7 +1095,7 @@ export default function Week10() {
       </TopicSlide>
 
       {/* ================================================================
-          Part 3 — Budget and Measurement
+          Part 3: Budget and Measurement
           ================================================================ */}
       <TopicSlide
         id="setting-the-promotional-budget"

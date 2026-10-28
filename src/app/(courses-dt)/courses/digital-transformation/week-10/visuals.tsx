@@ -1,22 +1,22 @@
 "use client";
 
 /* ==========================================================================
-   Week 10 — Cyber Security, Ethics and Social Issues of Digital Transformation
+   Week 10, Cyber Security, Ethics and Social Issues of Digital Transformation
    (Flat Silhouette, Interactive-First)
    --------------------------------------------------------------------------
    Bespoke visual vocabulary crafted specifically for Week 10 (deliberately
    avoiding overused Shop, Doc, Coins, Person, Conversation, and generic icon
    boxes from earlier weeks):
-     · Rotary Vault Tumbler & Bulkhead Gate   (Cybersecurity & Defense)
-     · Forensic Loupe & Signal Waveform       (Verification vs. Hallucination)
-     · Direct-Deposit Routing Switchboard     (CRA / H&R Block Case Study)
-     · 8-Blade Mechanical Camera Iris         (Privacy by Design vs. Data Models)
-     · Optical X-Ray Prism & Neural Monolith  (Algorithmic Bias & Explainability)
-     · Cantilevered Moderation Pendulum       (Misinformation vs. Censorship)
-     · Hyperboloid Cooling Towers & Racks     (AI Carbon Footprint & Costs)
-     · Five-Monolith Gravitational Funnel     (Top-5 Cloud Monopoly Dynamics)
-     · Three-Gear Feedback Escapement         (Weapons of Math Destruction)
-     · Monitor / MiniScreen                   (Digital systems, per course style)
+     - Rotary Vault Tumbler & Bulkhead Gate   (Cybersecurity & Defense)
+     - Forensic Loupe & Signal Waveform       (Verification vs. Hallucination)
+     - Direct-Deposit Routing Switchboard     (CRA / H&R Block Case Study)
+     - 8-Blade Mechanical Camera Iris         (Privacy by Design vs. Data Models)
+     - Optical X-Ray Prism & Neural Monolith  (Algorithmic Bias & Explainability)
+     - Cantilevered Moderation Pendulum       (Misinformation vs. Censorship)
+     - Hyperboloid Cooling Towers & Racks     (AI Carbon Footprint & Costs)
+     - Five-Monolith Gravitational Funnel     (Top-5 Cloud Monopoly Dynamics)
+     - Three-Gear Feedback Escapement         (Weapons of Math Destruction)
+     - Monitor / MiniScreen                   (Digital systems, per course style)
    Every coordinate is a literal or rounded with r2(), so server and client
    render identical markup.
    ========================================================================== */
@@ -78,7 +78,7 @@ function VaultWheelGlyph({
   );
 }
 
-/** Hyperboloid cooling tower silhouette (bottom-center at bx, by; scaled by k). */
+/** Hyperboloid cooling tower silhouette (bottom-center at bx, by, scaled by k). */
 function CoolingTowerGlyph({
   bx,
   by,
@@ -110,7 +110,7 @@ function CoolingTowerGlyph({
   );
 }
 
-/** Multi-blade mechanical iris aperture (center cx, cy; outer radius r; openness 0..1). */
+/** Multi-blade mechanical iris aperture (center cx, cy, outer radius r, openness 0..1). */
 function CameraIrisGlyph({
   cx,
   cy,
@@ -201,7 +201,7 @@ function GearWheelGlyph({
 }
 
 /* ==========================================================================
-   1 · Hero — Interactive 4-Pillar Responsible Governance Compass
+   1. Hero: Interactive 4-Pillar Responsible Governance Compass
    Click any of the four agenda quadrants (1. Cyber Risks, 2. Ethical AI,
    3. Social Challenges, 4. Balanced Innovation) to rotate the central
    governance needle and inspect its digital screen mechanism.
@@ -279,7 +279,7 @@ export function HeroGovernanceCompassInteractive() {
               fill={isLit ? SIGNAL : INK}
             />
             <text x={t.cx} y={34} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
-              {p.num} · {p.short}
+              {p.num} | {p.short}
             </text>
             <rect
               x={r2(t.cx - 18)}
@@ -351,7 +351,7 @@ export function HeroGovernanceCompassInteractive() {
             <CoolingTowerGlyph bx={294} by={228} k={0.72} tone={INK} />
             <rect x={332} y={146} width={138} height={24} fill={SIGNAL} />
             <text x={401} y={163} textAnchor="middle" {...BODY} fontSize={13.5} fill={CREAM}>
-              2x–3x / yr AI Cost
+              2x: 3x / yr AI Cost
             </text>
             <rect x={332} y={180} width={138} height={24} fill={COUNTER_FILL} stroke={INK} strokeWidth={2} />
             <text x={401} y={197} textAnchor="middle" {...BODY} fontSize={13.5} fill={INK}>
@@ -384,7 +384,7 @@ export function HeroGovernanceCompassInteractive() {
 }
 
 /* ==========================================================================
-   2 · Review of Last Week — 5-Station Chrono-Escapement Recall Instrument
+   2. Review of Last Week: 5-Station Chrono-Escapement Recall Instrument
    Students click any of the 5 review questions (1st, 2nd, 3rd, 4th Industrial
    Revolutions, and Expected Changes in Industry 4.0) to inspect its visual
    escapement mechanism and key takeaways from Week 9.
@@ -393,7 +393,7 @@ export function HeroGovernanceCompassInteractive() {
 const REVIEW_STATIONS = [
   {
     qNum: "Q1",
-    era: "1760–1840",
+    era: "1760 to 1840",
     short: "1st Rev",
     title: "First Industrial Revolution",
     mechanism: "Steam Power & Mechanization",
@@ -401,7 +401,7 @@ const REVIEW_STATIONS = [
   },
   {
     qNum: "Q2",
-    era: "1870–1914",
+    era: "1870 to 1914",
     short: "2nd Rev",
     title: "Second Industrial Revolution",
     mechanism: "Electricity & Mass Assembly",
@@ -409,7 +409,7 @@ const REVIEW_STATIONS = [
   },
   {
     qNum: "Q3",
-    era: "1960s–Now",
+    era: "1960s-Now",
     short: "3rd Rev",
     title: "Third Industrial Revolution",
     mechanism: "Transistors, PCs & Internet",
@@ -447,7 +447,7 @@ export function ReviewRevolutionsDialInteractive({
     <Plate
       w={800}
       h={270}
-      title={`Interactive five-station review escapement for Week 9: Q1 First Industrial Revolution (1760–1840), Q2 Second Industrial Revolution (1870–1914), Q3 Third Industrial Revolution (1960s–Present), Q4 Fourth Industrial Revolution (Industry 4.0), and Q5 Expected Changes in Industry 4.0. Currently inspecting ${current.qNum}: ${current.title}`}
+      title={`Interactive five-station review escapement for Week 9: Q1 First Industrial Revolution (1760 to 1840), Q2 Second Industrial Revolution (1870 to 1914), Q3 Third Industrial Revolution (1960s-Present), Q4 Fourth Industrial Revolution (Industry 4.0), and Q5 Expected Changes in Industry 4.0. Currently inspecting ${current.qNum}: ${current.title}`}
     >
       {/* Horizontal transmission shaft connecting the 5 stations */}
       <rect x={68} y={66} width={664} height={6} fill={INK} />
@@ -473,7 +473,7 @@ export function ReviewRevolutionsDialInteractive({
           >
             <rect x={cx - 64} y={8} width={128} height={124} fill="transparent" />
             <text x={cx} y={24} textAnchor="middle" {...HEAD} fontSize={13.5} fill={isLit ? SIGNAL : INK}>
-              {st.qNum} · {st.era}
+              {st.qNum} | {st.era}
             </text>
             <GearWheelGlyph cx={cx} cy={69} r={21} teeth={8} tone={isLit ? SIGNAL : INK} />
             <rect
@@ -527,7 +527,7 @@ export function ReviewRevolutionsDialInteractive({
 }
 
 /* ==========================================================================
-   3 · The Evolving Threat Landscape — Interactive Attack-Surface & Threat
+   3. The Evolving Threat Landscape: Interactive Attack-Surface & Threat
    Defense Dome (made-up governance posture + real lecture vectors)
    ========================================================================== */
 
@@ -709,7 +709,7 @@ export function ThreatLandscapeDefenseDomeInteractive({
       {/* Active threat detail bar */}
       <rect x={16} y={266} width={508} height={48} fill={INK} />
       <text x={270} y={287} textAnchor="middle" {...HEAD} fontSize={14} fill={SIGNAL}>
-        {current.name} · {current.surface}
+        {current.name} | {current.surface}
       </text>
       <text x={270} y={306} textAnchor="middle" {...BODY} fontSize={13} fill={CREAM}>
         {current.summary}
@@ -738,7 +738,7 @@ export function ThreatLandscapeDefenseDomeInteractive({
 }
 
 /* ==========================================================================
-   4 · Question: North America Breach Anatomy Reconstructor
+   4. Question: North America Breach Anatomy Reconstructor
    Interactive forensic board for the 3 research questions:
      1. Who caused it?
      2. What vulnerability enabled it?
@@ -905,7 +905,7 @@ export function NorthAmericaBreachLabInteractive() {
 }
 
 /* ==========================================================================
-   5 · Note on Research — Interactive GenAI Hallucination & Source Scanner
+   5. Note on Research: Interactive GenAI Hallucination & Source Scanner
    Students drag the verification loupe across articles in a "2024 in Review"
    webpage to distinguish fabricated GenAI breach claims from real filings.
    ========================================================================== */
@@ -915,14 +915,14 @@ const REPORT_CLAIMS = [
     id: "claim-1",
     headline: "Report A: '2024 Mega-Bank Vault Breach'",
     verdict: "HALLUCINATED REPORT",
-    sub: "Fabricated by GenAI — did not happen!",
+    sub: "Fabricated by GenAI: did not happen!",
     viable: false,
   },
   {
     id: "claim-2",
     headline: "Report B: '2024 National Telecom Wipeout'",
     verdict: "HALLUCINATED REPORT",
-    sub: "No regulator filing exists — fake report!",
+    sub: "No regulator filing exists: fake report!",
     viable: false,
   },
   {
@@ -950,7 +950,7 @@ export function HallucinatedReportScannerInteractive() {
         <circle cx={54} cy={44} r={5} fill={SIGNAL} />
         <circle cx={70} cy={44} r={5} fill={CREAM} />
         <text x={258} y={49} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
-          Source Viability Scanner · Click a Report
+          Source Viability Scanner | Click a Report
         </text>
 
         {REPORT_CLAIMS.map((c, i) => {
@@ -962,7 +962,7 @@ export function HallucinatedReportScannerInteractive() {
               role="button"
               tabIndex={0}
               aria-pressed={isLit}
-              aria-label={`${c.headline} — ${c.verdict}`}
+              aria-label={`${c.headline} - ${c.verdict}`}
               onClick={() => setScanIndex(i)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
@@ -997,7 +997,7 @@ export function HallucinatedReportScannerInteractive() {
                 fontSize={12.5}
                 fill={isLit && !c.viable ? CREAM : INK}
               >
-                {isLit ? `${c.verdict} — ${c.sub}` : "Click to verify source viability"}
+                {isLit ? `${c.verdict} - ${c.sub}` : "Click to verify source viability"}
               </text>
             </g>
           );
@@ -1013,14 +1013,14 @@ export function HallucinatedReportScannerInteractive() {
         fill={current.viable ? COUNTER : SIGNAL}
       />
       <text x={250} y={324} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
-        {current.verdict} · {current.viable ? "Viable Regulatory Record" : "GenAI Fake: Did Not Happen!"}
+        {current.verdict} | {current.viable ? "Viable Regulatory Record" : "GenAI Fake: Did Not Happen!"}
       </text>
     </Plate>
   );
 }
 
 /* ==========================================================================
-   6 · Case Study: Canadian Revenue Agency (CRA) Data Leak
+   6. Case Study: Canadian Revenue Agency (CRA) Data Leak
    Interactive 3-Stage Forensic Switchboard synchronized with the slide's
    three dossier columns:
      Stage 0: 2020 H&R Block Canada credential theft -> Direct deposit switch -> $6M+ stolen
@@ -1039,7 +1039,7 @@ export function CraBreachForensicTimelineInteractive({
     {
       num: "01",
       title: "H&R Block & $6M Refund Diversion (2020)",
-      badge: "H&R Block · $6M+ Stolen",
+      badge: "H&R Block | $6M+ Stolen",
     },
     {
       num: "02",
@@ -1057,7 +1057,7 @@ export function CraBreachForensicTimelineInteractive({
     <Plate
       w={800}
       h={304}
-      title={`Interactive forensic diagram of the Canadian Revenue Agency (CRA) data leak across three stages: 01 H&R Block Canada data used to alter direct deposit routing and steal over $6 million; 02 Internal error exposing over 30,000 Canadian taxpayers' SINs, tax returns, and financial details; 03 Office of the Privacy Commissioner (OPC) investigation under the Privacy Act. Currently viewing Stage 0${activeStage + 1}`}
+      title={`Interactive forensic diagram of the Canadian Revenue Agency (CRA) data leak across three stages: 01 H&R Block Canada data used to alter direct deposit routing and steal over $6 million. 02 Internal error exposing over 30,000 Canadian taxpayers' SINs, tax returns, and financial details. 03 Office of the Privacy Commissioner (OPC) investigation under the Privacy Act. Currently viewing Stage 0${activeStage + 1}`}
     >
       {/* Top stage selector bar */}
       {stages.map((st, i) => {
@@ -1087,7 +1087,7 @@ export function CraBreachForensicTimelineInteractive({
               fill={isLit ? SIGNAL : INK}
             />
             <text x={x + 124} y={35} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
-              {st.num} · {st.badge}
+              {st.num} | {st.badge}
             </text>
             <rect
               x={x + 84}
@@ -1253,7 +1253,7 @@ export function CraBreachForensicTimelineInteractive({
 }
 
 /* ==========================================================================
-   7 · Ethics in Digital Transformation — Interactive Privacy Aperture vs.
+   7. Ethics in Digital Transformation: Interactive Privacy Aperture vs.
    Personalization Instrument
    "Instead of protecting the collected data, do not collect data at all."
    ========================================================================== */
@@ -1408,7 +1408,7 @@ export function PrivacyMinimizationApertureInteractive() {
 }
 
 /* ==========================================================================
-   8 · Ethical AI and Algorithm Governance — Interactive Bias & Explainability
+   8. Ethical AI and Algorithm Governance: Interactive Bias & Explainability
    X-Ray Lens ("How is the AI model making decisions?")
    ========================================================================== */
 
@@ -1491,7 +1491,7 @@ export function AlgorithmGovernanceXrayInteractive({
       <Monitor x={20} y={60} w={500} h={216}>
         <rect x={36} y={74} width={468} height={28} fill={INK} />
         <text x={270} y={93} textAnchor="middle" {...HEAD} fontSize={13.5} fill={CREAM}>
-          How is the AI model making decisions? · {xrayOpen ? "Explainable View" : "Black-Box View"}
+          How is the AI model making decisions? | {xrayOpen ? "Explainable View" : "Black-Box View"}
         </text>
 
         {!xrayOpen ? (
@@ -1499,10 +1499,10 @@ export function AlgorithmGovernanceXrayInteractive({
           <g>
             <rect x={140} y={114} width={260} height={112} fill={INK} />
             <text x={270} y={168} textAnchor="middle" {...HEAD} fontSize={32} fill={SIGNAL}>
-              ? · BLACK BOX · ?
+              ? | BLACK BOX | ?
             </text>
             <text x={270} y={204} textAnchor="middle" {...BODY} fontSize={13} fill={CREAM}>
-              Decision weights hidden — cannot audit {current.name}
+              Decision weights hidden: cannot audit {current.name}
             </text>
           </g>
         ) : (
@@ -1568,7 +1568,7 @@ export function AlgorithmGovernanceXrayInteractive({
 }
 
 /* ==========================================================================
-   9 · Truth, Trust and Digital Information Integrity — Interactive Content
+   9. Truth, Trust and Digital Information Integrity: Interactive Content
    Moderation Balance Fulcrum
    "The balance between battling misinformation and censorship"
    ========================================================================== */
@@ -1658,7 +1658,7 @@ export function InformationIntegrityFulcrumInteractive() {
 }
 
 /* ==========================================================================
-   10 · Environmental Sustainability (Slide 1) — Frontier AI Training Cost &
+   10. Environmental Sustainability (Slide 1): Frontier AI Training Cost &
    Carbon Footprint Comparator (Real Cited Data: GPT-3, GPT-4, Gemini Ultra)
    ========================================================================== */
 
@@ -1711,7 +1711,7 @@ export function AiTrainingFootprintComparatorInteractive({
     <Plate
       w={800}
       h={316}
-      title={`Interactive frontier AI training cost and carbon footprint comparator: GPT-3 (2020, $2M–$4.6M), GPT-4 (2023, $41M–$78.4M, exceeding $100M with staff salaries), and Gemini Ultra (2023, $30M–$191M excluding staff salaries). Currently inspecting: ${current.name}`}
+      title={`Interactive frontier AI training cost and carbon footprint comparator: GPT-3 (2020, $2M, $4.6M), GPT-4 (2023, $41M, $78.4M, exceeding $100M with staff salaries), and Gemini Ultra (2023, $30M, $191M excluding staff salaries). Currently inspecting: ${current.name}`}
     >
       {/* Top model selector tabs + GPT-4 staff salary toggle */}
       {FRONTIER_MODELS.map((m, i) => {
@@ -1864,9 +1864,9 @@ export function AiTrainingFootprintComparatorInteractive({
                 fontSize={12.5}
                 fill={INK}
               >
-                {m.id === "gpt3" && "$2M–$4.6M"}
-                {m.id === "gpt4" && (includeSalaries ? ">$100M" : "$41M–$78.4M")}
-                {m.id === "gemini" && "$30M–$191M"}
+                {m.id === "gpt3" && "$2M: $4.6M"}
+                {m.id === "gpt4" && (includeSalaries ? ">$100M" : "$41M: $78.4M")}
+                {m.id === "gemini" && "$30M: $191M"}
               </text>
             </g>
           );
@@ -1883,7 +1883,7 @@ export function AiTrainingFootprintComparatorInteractive({
 }
 
 /* ==========================================================================
-   11 · Environmental Sustainability (Slide 2) — 2017–2027 Exponential AI
+   11. Environmental Sustainability (Slide 2): 2017 to 2027 Exponential AI
    Training Cost Trajectory Forecaster ($930 Transformer -> >$78M GPT-4 -> >$1B 2027)
    ========================================================================== */
 
@@ -1898,7 +1898,7 @@ export function ExponentialCostForecasterInteractive() {
 
   const milestones = [
     { year: "2017", model: "Transformer", costLabel: "$930", logH: 14, tone: INK },
-    { year: "2020", model: "GPT-3", costLabel: "$2M–$4.6M", logH: 48, tone: INK },
+    { year: "2020", model: "GPT-3", costLabel: "$2M: $4.6M", logH: 48, tone: INK },
     { year: "2023", model: "GPT-4", costLabel: "Over $78M", logH: 78, tone: SIGNAL },
     {
       year: "2027",
@@ -1913,13 +1913,13 @@ export function ExponentialCostForecasterInteractive() {
     <Plate
       w={800}
       h={304}
-      title={`Interactive 2017–2027 AI training cost growth instrument: from $930 for the 2017 Transformer model to over $78 million for GPT-4 in 2023, compounding at ${factor}x per year (between 2x and 3x per year) to exceed $1 billion (~$${projected2027B}B) by 2027`}
+      title={`Interactive 2017 to 2027 AI training cost growth instrument: from $930 for the 2017 Transformer model to over $78 million for GPT-4 in 2023, compounding at ${factor}x per year (between 2x and 3x per year) to exceed $1 billion (~$${projected2027B}B) by 2027`}
     >
       {/* Framed digital Monitor showing the logarithmic rising columns */}
       <Monitor x={20} y={14} w={760} h={212}>
         <rect x={36} y={28} width={728} height={26} fill={INK} />
         <text x={400} y={46} textAnchor="middle" {...HEAD} fontSize={14} fill={CREAM}>
-          2017–2027 Frontier Training Cost Trajectory (Log Scale · {factor}x / Year)
+          2017 to 2027 Frontier Training Cost Trajectory (Log Scale | {factor}x / Year)
         </text>
 
         {milestones.map((m, i) => {
@@ -1933,7 +1933,7 @@ export function ExponentialCostForecasterInteractive() {
                 {m.costLabel}
               </text>
               <text x={cx} y={202} textAnchor="middle" {...HEAD} fontSize={13} fill={INK}>
-                {m.year} · {m.model}
+                {m.year} | {m.model}
               </text>
               {i < milestones.length - 1 && (
                 <Pointer
@@ -1952,7 +1952,7 @@ export function ExponentialCostForecasterInteractive() {
 
       {/* Bottom Interactive Growth Factor Slider (2.0x to 3.0x per year) */}
       <text x={24} y={280} {...HEAD} fontSize={14} fill={INK}>
-        Growth Factor: {factor}x / yr (2x–3x)
+        Growth Factor: {factor}x / yr (2x: 3x)
       </text>
       <rect x={340} y={272} width={220} height={8} fill={INK} />
       <rect x={340} y={272} width={r2(((factorTenths - 20) / 10) * 220)} height={8} fill={SIGNAL} />
@@ -1976,7 +1976,7 @@ export function ExponentialCostForecasterInteractive() {
 }
 
 /* ==========================================================================
-   12 · Platform Power and Digital Monopolies — Interactive Network-Effects
+   12. Platform Power and Digital Monopolies: Interactive Network-Effects
    & Top-5 Cloud Centralization Funnel
    "In 2024, if you were to host your website, you had to go through one of
    top five cloud companies."
@@ -2065,7 +2065,7 @@ export function CloudMonopolyGravityInteractive() {
 }
 
 /* ==========================================================================
-   13 · Further Readings — Interactive Weapons of Math Destruction (O'Neil, 2016)
+   13. Further Readings: Interactive Weapons of Math Destruction (O'Neil, 2016)
    Three-Gear Inequality & Democracy Feedback Escapement
    ========================================================================== */
 
@@ -2104,7 +2104,7 @@ export function WeaponsOfMathDestructionInteractive() {
       {/* Top header */}
       <rect x={24} y={14} width={752} height={34} fill={INK} />
       <text x={400} y={36} textAnchor="middle" {...HEAD} fontSize={14.5} fill={CREAM}>
-        O&apos;Neil (2016) · How Big Data Increases Inequality and Threatens Democracy (Click a Gear)
+        O&apos;Neil (2016) | How Big Data Increases Inequality and Threatens Democracy (Click a Gear)
       </text>
 
       {/* Three meshing gears */}
@@ -2130,7 +2130,7 @@ export function WeaponsOfMathDestructionInteractive() {
             <rect x={cx - 108} y={54} width={216} height={134} fill="transparent" />
             <GearWheelGlyph cx={cx} cy={112} r={34} teeth={10} tone={isLit ? SIGNAL : INK} />
             <text x={cx} y={176} textAnchor="middle" {...HEAD} fontSize={14.5} fill={isLit ? SIGNAL : INK}>
-              {p.num} · {p.short}
+              {p.num} | {p.short}
             </text>
             {i < 2 && (
               <Pointer x1={cx + 58} y1={112} x2={gearCenters[i + 1] - 58} y2={112} w={4} color={SIGNAL} />
@@ -2142,7 +2142,7 @@ export function WeaponsOfMathDestructionInteractive() {
       {/* Bottom readout box + digital MiniScreen on cream */}
       <rect x={24} y={194} width={632} height={72} fill={COUNTER_FILL} stroke={INK} strokeWidth={3} />
       <text x={44} y={222} {...HEAD} fontSize={16} fill={SIGNAL}>
-        {current.num} · {current.name}
+        {current.num} | {current.name}
       </text>
       <text x={44} y={248} {...BODY} fontSize={13.5} fill={INK}>
         {current.desc}

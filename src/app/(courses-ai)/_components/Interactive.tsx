@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
 //    reserved for the single active thing on screen, champagne for small caps
 //    labels and numerals. No shadows, no dashes, no fills.
 //
-// Content strings are passed in verbatim from the week's content.md; these
+// Content strings are passed in verbatim from the week's content.md. These
 // components decide only how a sentence appears, never what it says.
 
 const CORRECT = "#3d5c2a";
@@ -255,7 +255,7 @@ export function BigStatement({
 /**
  * RevealGrid - Column of tiles whose body copy is revealed on click.
  *
- * The body text is always in the layout — it is only made transparent — so a
+ * The body text is always in the layout, it is only made transparent, so a
  * tile is at full height from first paint and opening one never nudges its
  * neighbours or the slides below. Tiles in a row are equal height by default.
  */
@@ -328,7 +328,7 @@ export function RevealGrid({
               {item.label}
             </h3>
 
-            {/* Always in the layout; only its opacity changes. */}
+            {/* Always in the layout. Only its opacity changes. */}
             <p
               aria-hidden={!isOpen}
               className={cn(
@@ -429,7 +429,7 @@ export function SplitCompare({
 /**
  * StepTimeline - A progression read one stop at a time.
  *
- * The rail fills to the selected stop; the detail beneath cross-fades in a
+ * The rail fills to the selected stop. The detail beneath cross-fades in a
  * fixed-height Stage.
  */
 export function StepTimeline({
@@ -445,7 +445,7 @@ export function StepTimeline({
   return (
     <div className={cn("w-full", className)}>
       {/*
-        Rail. Horizontal on desktop; on a phone four multi-word labels cannot
+        Rail. Horizontal on desktop. On a phone four multi-word labels cannot
         share a row, so it becomes a vertical list instead of being squeezed.
       */}
       <div className="relative">
@@ -802,7 +802,7 @@ export function Flywheel({
  * SortingBoard - Select an example, then place it in a category.
  *
  * A hands-on check on material presented directly above it. Correct placements
- * stick; an incorrect one is refused with a change of colour only, so the board
+ * stick. An incorrect one is refused with a change of colour only, so the board
  * never moves under the cursor.
  */
 export function SortingBoard({

@@ -4,7 +4,7 @@ export default function BarrierSamplingSlide() {
       label: "Human science",
       color: "var(--amber-light)",
       items: [
-        "Latent states are inaccessible — sampling is unavoidable",
+        "Latent states are inaccessible: sampling is unavoidable",
         "Variance reflects real individual differences across people",
         "Aggregation estimates the population distribution",
         "Sample size determines precision of that estimate",
@@ -15,7 +15,7 @@ export default function BarrierSamplingSlide() {
       color: "var(--violet-light)",
       items: [
         "Each prompt has a fixed, fully observable internal state",
-        "Token probabilities are exact — not a sample from anything",
+        "Token probabilities are exact: not a sample from anything",
         "Sampling only injects Monte Carlo noise on top of exact data",
         "We recover the exact PMF directly from the logits",
       ],

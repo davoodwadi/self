@@ -5,7 +5,7 @@ export default function ConsensusIssueSlide() {
     <section className="p-slide" style={{ padding: "8rem 2rem", position: "relative" }}>
       <div style={{ maxWidth: "76rem", margin: "0 auto" }}>
         <div className="section-label" style={{ marginBottom: "1.5rem" }}>
-          <span>Layer 02 — Consensus: The Problem</span>
+          <span>Layer 02: Consensus: The Problem</span>
         </div>
         <h2
           className="p-heading"

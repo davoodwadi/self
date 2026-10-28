@@ -45,9 +45,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 05 — MARKETING RESEARCH AND DATA ANALYTICS
+// WEEK 05: MARKETING RESEARCH AND DATA ANALYTICS
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
@@ -95,7 +95,7 @@ function Lead({
   );
 }
 
-/** A sentence set as a serif statement — the line a slide lands on. */
+/** A sentence set as a serif statement: the line a slide lands on. */
 function Statement({
   children,
   className = "",
@@ -273,7 +273,7 @@ const STEPS = [
 ];
 
 /**
- * The four steps as a strip. On the Part 1 plate it is the whole route; on
+ * The four steps as a strip. On the Part 1 plate it is the whole route. On
  * each step slide the current steps are lit and the ones behind are inked.
  */
 function StepStrip({
@@ -374,7 +374,7 @@ export default function Week5() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 05 · Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 05: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           Marketing Research and{" "}
           <span className="text-[var(--signal)]">Data Analytics</span>
@@ -431,7 +431,7 @@ export default function Week5() {
       </Slide>
 
       {/* ================================================================
-          Part 1 — The Marketing Research Process
+          Part 1: The Marketing Research Process
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <div className="flex w-full items-end gap-8 xl:gap-12">
@@ -586,7 +586,7 @@ export default function Week5() {
       </Slide>
 
       {/* ================================================================
-          Part 2 — Primary vs. Secondary Data
+          Part 2: Primary vs. Secondary Data
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <div className="grid w-full gap-8 xl:grid-cols-[minmax(0,13rem)_1fr] xl:gap-14">
@@ -804,7 +804,7 @@ export default function Week5() {
       </Slide>
 
       {/* ================================================================
-          Part 3 — Data Analytics and Customer Insights
+          Part 3: Data Analytics and Customer Insights
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <div className="flex w-full items-end gap-8 xl:gap-12">

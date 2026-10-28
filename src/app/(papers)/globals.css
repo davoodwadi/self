@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 /* ============================================================
-   PAPER PRESENTATIONS — Design System
+   PAPER PRESENTATIONS: Design System
    Academic Dark theme: deep navy, violet, cyan, amber accents
-   Fonts: Lora (display) · DM Sans (body) · JetBrains Mono (code)
+   Fonts: Lora (display) | DM Sans (body) | JetBrains Mono (code)
    ============================================================ */
 
 :root {
@@ -568,7 +568,7 @@ body::before {
 
 /* ============================================================
    THEME: Evergreen Scholar
-   Deep forest green surfaces · Emerald primary · Gold secondary
+   Deep forest green surfaces | Emerald primary | Gold secondary
    ============================================================ */
 
 html[data-theme="evergreen"] {
@@ -654,7 +654,7 @@ html[data-theme="evergreen"] .matrix-cell:hover {
 
 /* ============================================================
    THEME: Noir Scholar
-   Warm charcoal surfaces · Brass/amber primary · Crimson secondary
+   Warm charcoal surfaces | Brass/amber primary | Crimson secondary
    Academic candlelight on aged parchment aesthetic
    ============================================================ */
 

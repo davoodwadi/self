@@ -17,7 +17,7 @@ week: week1
 - Consumer behavior studies the whole chain: before, during, and after the sale.
 
 ## The Three Stages of Consumption [exercise]
-[figure: ConsumptionCycle — three stages: Prepurchase, Purchase, and Postpurchase with consumer and marketer views]
+[figure: ConsumptionCycle: three stages: Prepurchase, Purchase, and Postpurchase with consumer and marketer views]
 - Consumption happens in three distinct stages.
 - Stage 1 is Prepurchase. The consumer identifies a need and searches for information. The marketer studies how consumer attitudes form.
 - Stage 2 is Purchase. The consumer experiences the store, website, and checkout. The marketer focuses on packaging, convenience, and store atmosphere.
@@ -37,7 +37,7 @@ week: week1
 - Marketers who treat consumers as cold calculators make bad predictions.
 
 ## Needs Versus Wants
-[figure: NeedWantTrio — basic physical/psychological needs branching into cultural wants and commercial demand]
+[figure: NeedWantTrio: basic physical/psychological needs branching into cultural wants and commercial demand]
 - A need is a basic biological or psychological requirement.
 - Examples include thirst, hunger, shelter, and belonging. Needs exist before marketing.
 - A want is a specific way to satisfy that need. Culture and personality shape wants.
@@ -63,7 +63,7 @@ week: week1
 - Marketers now inform two audiences: the consumer and the AI agent that shops for the consumer.
 
 ## Market Segmentation: Who Are We Talking To? [exercise]
-[figure: SegmentationPillars — geographic, demographic, psychographic, and behavioral pillars]
+[figure: SegmentationPillars: geographic, demographic, psychographic, and behavioral pillars]
 - You cannot appeal to everyone with the same message.
 - Market segmentation divides a big market into smaller groups with shared traits.
 - Demographics group people by age, gender, income, and education.

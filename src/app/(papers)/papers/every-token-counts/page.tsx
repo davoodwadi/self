@@ -24,7 +24,7 @@ import PaperFooter from "./_components/PaperFooter";
 export const metadata: Metadata = {
   title: "Every Token Counts | Davood Wadi",
   description:
-    "Every Token Counts: Isolating Latent Behavior of LLMs via Exact Likert Distributions — Davood Wadi, ACL 2025",
+    "Every Token Counts: Isolating Latent Behavior of LLMs via Exact Likert Distributions, Davood Wadi, ACL 2025",
 };
 
 export default function Page() {

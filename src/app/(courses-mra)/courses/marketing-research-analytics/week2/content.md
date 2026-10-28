@@ -161,7 +161,7 @@ week: week2
 - For example, the same hotel listing is presented with and without a sponsorship label, and the agent's choices are compared across the two conditions.
 - The order of alternatives and attributes is randomized across sessions, to control for position effects.
 - Each condition can be repeated many times at low cost, and each session can be run independently of the others, so that no carryover occurs between conditions.
-- A descriptive audit identifies a pattern in agent behavior; a causal experiment tests whether a specific factor produces it.
+- A descriptive audit identifies a pattern in agent behavior. A causal experiment tests whether a specific factor produces it.
 
 ## Key Takeaways
 - The research design specifies how the information required by the marketing research problem is obtained and analyzed.

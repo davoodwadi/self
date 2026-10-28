@@ -223,7 +223,7 @@ function ScaleAndPropagationFigure({
       />
 
       {/* ===================================================================
-          PANEL A: HUMAN EMPLOYEE — ONE DECISION AT A TIME (x = 8..236)
+          PANEL A: HUMAN EMPLOYEE: ONE DECISION AT A TIME (x = 8..236)
       =================================================================== */}
       <text
         x="8"
@@ -341,7 +341,7 @@ function ScaleAndPropagationFigure({
       </text>
 
       {/* ===================================================================
-          PANEL B: DEPLOYED MODEL — THOUSANDS OF DECISIONS / SEC (x = 266..792)
+          PANEL B: DEPLOYED MODEL: THOUSANDS OF DECISIONS / SEC (x = 266..792)
       =================================================================== */}
       <text
         x="268"
@@ -361,7 +361,7 @@ function ScaleAndPropagationFigure({
         fontSize="10.5"
         fill="#6E695F"
       >
-        Thousands of decisions per second · same decision rule
+        Thousands of decisions per second | same decision rule
       </text>
 
       <text
@@ -1194,7 +1194,7 @@ export default function SampleSlidePage() {
             <span className="text-[12px] tracking-[0.08em] uppercase text-[#181715] font-semibold">
               Week 01
             </span>
-            <span className="text-[#181715]/30">—</span>
+            <span className="text-[#181715]/30">n/a</span>
             <span className="text-[13.5px] italic text-[#6E695F]">
               Foundations of Responsible AI in Markets
             </span>
@@ -1250,7 +1250,7 @@ export default function SampleSlidePage() {
             >
               Rule with error or bias (Δτ)
             </button>
-            <span className="text-[#181715]/25">·</span>
+            <span className="text-[#181715]/25">|</span>
             <button
               type="button"
               onClick={() => setBiasLevel("unbiased")}

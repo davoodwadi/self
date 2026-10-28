@@ -170,7 +170,7 @@
     "cards": [
       {
         "id": "lego-alone",
-        "text": "A toy brand bids on its own name; it holds the top organic result and no rival advertises on that name.",
+        "text": "A toy brand bids on its own name. It holds the top organic result and no rival advertises on that name.",
         "bin": "cannibal",
         "explanation": "Without the ad, searchers would click the organic link just below it."
       },
@@ -194,7 +194,7 @@
       },
       {
         "id": "brand-plus-product",
-        "text": "A sneaker brand with the first two organic results bids on '[brand] running shoes'; no rival ads appear.",
+        "text": "A sneaker brand with the first two organic results bids on '[brand] running shoes'. No rival ads appear.",
         "bin": "cannibal",
         "explanation": "A dominant brand with top organic results and no rival ads mostly pays for clicks it would get free."
       }

@@ -36,21 +36,21 @@ week: week11
 - Unit economics evaluates profitability at the level of a single order and a single acquired customer.
 
 ## Customer Acquisition Cost (CAC), Contribution Margin, and Customer Lifetime Value (CLV) [exercise]
-- Customer Acquisition Cost (CAC) is total sales and marketing acquisition spend divided by the number of new customers acquired in that period; managers must distinguish blended CAC (which averages paid and organic new buyers together) from paid CAC (paid spend divided by customers acquired through paid channels).
+- Customer Acquisition Cost (CAC) is total sales and marketing acquisition spend divided by the number of new customers acquired in that period. Managers must distinguish blended CAC (which averages paid and organic new buyers together) from paid CAC (paid spend divided by customers acquired through paid channels).
 - Order Contribution Margin (CM1/CM2) equals net order revenue (after discounts and expected returns) minus variable Cost of Goods Sold (COGS), packaging, warehouse pick-pack labor, outbound shipping, and payment processing fees.
 - Customer Lifetime Value (CLV or LTV) is the present value of the total net contribution margin (not gross revenue) a customer generates across all purchases before churning.
 - The LTV-to-CAC ratio and the CAC payback period (how many months of repeat contribution margin are required to recover the initial acquisition cost) govern how aggressively an e-commerce firm can scale paid media without running out of working capital.
 
 ## Return on Ad Spend (ROAS) Versus Marginal Profit [exercise]
 - Return on Ad Spend (ROAS) is defined as attributed gross revenue divided by advertising spend (e.g., spending $1,000 on ads to generate $4,000 in attributed revenue equals a 4.0x or 400 percent ROAS).
-- A common managerial error is celebrating a high ROAS number without checking the product's gross margin and return rate; on a product with a 20 percent net contribution margin after shipping and returns, a 4.0x gross revenue ROAS yields only $800 in contribution margin on $1,000 of ad spend, losing $200 before fixed overhead.
-- Furthermore, average ROAS differs sharply from marginal ROAS; as an advertiser scales daily budget in an ad auction, the algorithm exhausts the highest-intent buyers first and must bid for progressively colder prospects, causing marginal return on the last dollar spent to fall well below the campaign average.
+- A common managerial error is celebrating a high ROAS number without checking the product's gross margin and return rate. On a product with a 20 percent net contribution margin after shipping and returns, a 4.0x gross revenue ROAS yields only $800 in contribution margin on $1,000 of ad spend, losing $200 before fixed overhead.
+- Furthermore, average ROAS differs sharply from marginal ROAS. As an advertiser scales daily budget in an ad auction, the algorithm exhausts the highest-intent buyers first and must bid for progressively colder prospects, causing marginal return on the last dollar spent to fall well below the campaign average.
 
 ## Discussion: The Unprofitable 5x ROAS Campaign
 - Discussion: A Direct-to-Consumer footwear startup sells sneakers for $150 per pair. Manufacturing COGS is $52, outbound shipping and warehouse handling is $18, payment processing is $4.50, and 25 percent of orders are returned at a net reverse-logistics loss of $22 per returned order. The paid social agency reports a 4.5x gross ROAS (calculated on initial checkout revenue before returns) and asks to double the monthly ad budget. Calculate the true first-order contribution margin after returns and ad spend, and advise the CEO on whether to approve the budget increase.
 
 ## Part 3: Multi-Touch Attribution (MTA) Models [no-exercise]
-- A customer rarely buys a high-consideration product on the very first tap; instead, they may see a creator video on Monday, click a paid search ad on Wednesday, read an email on Friday, and type the brand URL directly on Sunday.
+- A customer rarely buys a high-consideration product on the very first tap. Instead, they may see a creator video on Monday, click a paid search ad on Wednesday, read an email on Friday, and type the brand URL directly on Sunday.
 - Multi-Touch Attribution (MTA) determines how to assign fractional conversion credit across that sequence of touchpoints.
 
 ## Rule-Based Heuristics Versus Data-Driven Attribution [exercise]

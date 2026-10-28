@@ -7,9 +7,9 @@ import { cn } from "@/lib/utils";
 import { ExerciseHeader, PrimaryButton, Status, TextButton } from "./parts";
 
 /**
- * Which one is it? One case at a time; the student names the concept it shows
+ * Which one is it? One case at a time. The student names the concept it shows
  * from a fixed set of buttons. A wrong concept is marked and disabled, without
- * giving the answer away; the right one is ticked, its explanation appears and
+ * giving the answer away. The right one is ticked, its explanation appears and
  * Next case opens. Nothing moves between cases: the case card and the
  * explanation area are each sized by invisible copies of every case and every
  * explanation, and the Next button is always in place.
@@ -19,7 +19,7 @@ export default function IdentifyExercise({
   art,
 }: {
   data: IdentifyData;
-  /** Optional drawings from the course, keyed by case id; shown on the case card. */
+  /** Optional drawings from the course, keyed by case id. Shown on the case card. */
   art?: Record<string, React.ReactNode>;
 }) {
   const [index, setIndex] = useState(0);

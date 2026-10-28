@@ -32,7 +32,7 @@ import { Person1, AiMark1, Store1, Tick1 } from "../_visuals/objects";
    Shared statistics for the week's plates
    -------------------------------------------------------------------------- */
 
-/** A seeded standard-normal stream (Box–Muller). */
+/** A seeded standard-normal stream (Box-Muller). */
 function normals(seed: number) {
   const u = seeded(seed);
   return () => {
@@ -42,7 +42,7 @@ function normals(seed: number) {
   };
 }
 
-/** Standard normal cumulative probability (Abramowitz–Stegun 7.1.26). */
+/** Standard normal cumulative probability (Abramowitz-Stegun 7.1.26). */
 export function phi(z: number) {
   const t = 1 / (1 + 0.3275911 * Math.abs(z) / Math.SQRT2);
   const y =
@@ -186,7 +186,7 @@ export function SameSourceDifferences() {
         label={`A population of 48 customers with a mean monthly spending of ${Math.round(POP_MEAN)} dollars. Two samples of eight are drawn from it: their means are ${now.ma} and ${now.mb} dollars, a difference of ${now.diff} dollars. After ${draws} pairs of samples, the differences between sample means scatter on both sides of zero`}
       >
         <Key x={20} y={22}>POPULATION</Key>
-        <Key x={620} y={22} anchor="end">{`MEAN $${Math.round(POP_MEAN)} · PARAMETER`}</Key>
+        <Key x={620} y={22} anchor="end">{`MEAN $${Math.round(POP_MEAN)} | PARAMETER`}</Key>
         {POPULATION.map((_, i) => (
           <Person1
             key={i}
@@ -201,15 +201,15 @@ export function SameSourceDifferences() {
 
         {/* the two sample means */}
         <line x1={20} y1={138} x2={620} y2={138} stroke={RULE} strokeWidth={1} />
-        <Key x={20} y={162} fill={INK}>SAMPLE 1 · MEAN</Key>
+        <Key x={20} y={162} fill={INK}>SAMPLE 1. MEAN</Key>
         <Display x={20} y={192} size={26}>{`$${now.ma}`}</Display>
-        <Key x={230} y={162} fill={COUNTER}>SAMPLE 2 · MEAN</Key>
+        <Key x={230} y={162} fill={COUNTER}>SAMPLE 2. MEAN</Key>
         <Display x={230} y={192} size={26} fill={COUNTER}>{`$${now.mb}`}</Display>
-        <Key x={620} y={162} anchor="end" fill={SIGNAL}>DIFFERENCE · STATISTIC</Key>
+        <Key x={620} y={162} anchor="end" fill={SIGNAL}>DIFFERENCE | STATISTIC</Key>
         <Display x={620} y={192} anchor="end" size={26} fill={SIGNAL}>{signed(now.diff)}</Display>
 
         {/* strip of differences, one dot per pair of samples */}
-        <Key x={20} y={226}>{`DIFFERENCE BETWEEN THE TWO MEANS · ${draws} PAIRS OF SAMPLES`}</Key>
+        <Key x={20} y={226}>{`DIFFERENCE BETWEEN THE TWO MEANS | ${draws} PAIRS OF SAMPLES`}</Key>
         {dots.map((d, i) => (
           <circle key={i} cx={d.x} cy={d.y} r={d.last ? 4 : 3.1} fill={d.last ? SIGNAL : INK3} fillOpacity={d.last ? 1 : 0.65} />
         ))}
@@ -239,7 +239,7 @@ export function SameSourceDifferences() {
 /**
  * Two-tailed and one-tailed alternatives on the same line: the difference in
  * mean monthly spending, members minus nonmembers. H0 is the single point of
- * no difference; a two-tailed H1 covers both directions away from it, a
+ * no difference. A two-tailed H1 covers both directions away from it, a
  * one-tailed H1 only the direction specified in advance.
  */
 export function TailDirections() {
@@ -254,7 +254,7 @@ export function TailDirections() {
     <Frame
       width={520}
       height={230}
-      label="Two lines of the difference in mean monthly spending between members and nonmembers. On each, H0 is the point of no difference. In a two-tailed test, H1 extends in both directions, members spending less or more; in a one-tailed test, H1 extends only towards members spending more"
+      label="Two lines of the difference in mean monthly spending between members and nonmembers. On each, H0 is the point of no difference. In a two-tailed test, H1 extends in both directions, members spending less or more. In a one-tailed test, H1 extends only towards members spending more"
     >
       {rows.map((r) => (
         <g key={r.name}>
@@ -310,7 +310,7 @@ function dragProps(onX: (x: number) => void): React.SVGProps<SVGSVGElement> {
   };
 }
 
-/** A left–right drag handle drawn on an axis. */
+/** A left-right drag handle drawn on an axis. */
 function DragHandle({ x, y, tone = SIGNAL }: { x: number; y: number; tone?: string }) {
   return (
     <g>
@@ -323,7 +323,7 @@ function DragHandle({ x, y, tone = SIGNAL }: { x: number; y: number; tone?: stri
 
 /**
  * The p-value as an area: the distribution of the test statistic if H0 were
- * true. The student drags the observed result; the shaded tails beyond it on
+ * true. The student drags the observed result. The shaded tails beyond it on
  * both sides are the p-value. Moving from t = 2.05 to t = 1.88 barely changes
  * the shaded area (p from 0.04 to 0.06), but crosses the 0.05 threshold.
  */
@@ -355,7 +355,7 @@ export function PValueTail() {
       <Frame
         width={640}
         height={316}
-        label={`The distribution of the test statistic if the null hypothesis were true. The observed test statistic is ${t.toFixed(2)}; the shaded tails beyond it on both sides give ${fmtP(p)}, ${reject ? "below the significance level of 0.05, so the null hypothesis is rejected" : "above the significance level of 0.05, so the null hypothesis is not rejected"}`}
+        label={`The distribution of the test statistic if the null hypothesis were true. The observed test statistic is ${t.toFixed(2)}. The shaded tails beyond it on both sides give ${fmtP(p)}, ${reject ? "below the significance level of 0.05, so the null hypothesis is rejected" : "above the significance level of 0.05, so the null hypothesis is not rejected"}`}
         className="cursor-ew-resize touch-none select-none"
         svgProps={dragProps((x) => set(tOf(x)))}
       >
@@ -405,7 +405,7 @@ export function PValueTail() {
         {/* the readout */}
         <Display x={x0} y={36} size={30} fill={SIGNAL}>{fmtP(p)}</Display>
         <Key x={x0} y={58} fill={reject ? SIGNAL : INK2}>
-          {reject ? "BELOW 0.05 \u00b7 H0 REJECTED" : "ABOVE 0.05 \u00b7 H0 NOT REJECTED"}
+          {reject ? "BELOW 0.05 | H0 REJECTED" : "ABOVE 0.05 | H0 NOT REJECTED"}
         </Key>
       </Frame>
     </div>
@@ -542,7 +542,7 @@ function standardised(z: number[], n: number) {
 /**
  * The three levers of t: members' and nonmembers' monthly spending as dots.
  * Sliders set the difference between the means, the spread within the
- * groups and the number of respondents per group; t is the difference
+ * groups and the number of respondents per group. T is the difference
  * divided by its standard error, and the p-value follows. Each lever alone
  * can carry the result across the 0.05 threshold.
  */
@@ -622,7 +622,7 @@ export function TLevers() {
    The Paired-Samples t-Test
    -------------------------------------------------------------------------- */
 
-/** Twelve respondents' ratings of a brand (0–100) before the advertisement. */
+/** Twelve respondents' ratings of a brand (0 to 100) before the advertisement. */
 const BRAND_BEFORE = [24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90];
 /** Each respondent's rise after exposure: small, but every one of them goes up. */
 const BRAND_GAIN = [4, 6, 4, 5, 7, 5, 4, 6, 4, 6, 5, 4];
@@ -668,7 +668,7 @@ export function PairedVersusIndependent() {
       <Frame
         width={640}
         height={300}
-        label={`Twelve respondents rate a brand from 0 to 100 before and after an advertisement; every rating rises by 4 to 7 points, 5 on average. ${paired ? "Analysed as pairs, each respondent is compared with themselves" : "Analysed as two independent groups, the rise is small beside the spread between respondents"}: t = ${t.toFixed(2)}, ${fmtP(p)}`}
+        label={`Twelve respondents rate a brand from 0 to 100 before and after an advertisement. Every rating rises by 4 to 7 points, 5 on average. ${paired ? "Analysed as pairs, each respondent is compared with themselves" : "Analysed as two independent groups, the rise is small beside the spread between respondents"}: t = ${t.toFixed(2)}, ${fmtP(p)}`}
       >
         <Key x={xb} y={22} anchor="middle" fill={INK}>BEFORE THE AD</Key>
         <Key x={xa} y={22} anchor="middle" fill={INK}>AFTER THE AD</Key>
@@ -725,7 +725,7 @@ function pFromF(f: number, d1: number, d2: number) {
   return incBeta(d2 / 2, d1 / 2, d2 / (d2 + d1 * f));
 }
 
-/** Mean satisfaction (0–100) online, in store and in the app: identical in both panels. */
+/** Mean satisfaction (0 to 100) online, in store and in the app: identical in both panels. */
 const CHANNEL_MEANS = [52, 60, 64];
 const CHANNEL_N = 15;
 const CHANNEL_Z = [normals(41), normals(42), normals(43)].map((z) =>
@@ -747,8 +747,8 @@ function ChannelIcon({ i, cx, cy }: { i: number; cx: number; cy: number }) {
 /**
  * The F statistic: satisfaction of fifteen customers in each of three
  * channels (online, in store, in the app). Both panels have the same three
- * group means, so the variation between them is the same; only the
- * variation within the groups differs. Tight groups give a large F; spread
+ * group means, so the variation between them is the same. Only the
+ * variation within the groups differs. Tight groups give a large F. Spread
  * groups give a small F that is not significant.
  */
 export function BetweenWithin() {
@@ -770,7 +770,7 @@ export function BetweenWithin() {
     <Frame
       width={800}
       height={256}
-      label={`Satisfaction of fifteen customers in each of three channels: online, in store and in the mobile application, with means of 52, 60 and 64 in both panels. With little variation within the groups, F is ${stats[0].f.toFixed(1)} (${fmtP(stats[0].p)}); with much variation within the groups, F is ${stats[1].f.toFixed(1)} (${fmtP(stats[1].p)})`}
+      label={`Satisfaction of fifteen customers in each of three channels: online, in store and in the mobile application, with means of 52, 60 and 64 in both panels. With little variation within the groups, F is ${stats[0].f.toFixed(1)} (${fmtP(stats[0].p)}). With much variation within the groups, F is ${stats[1].f.toFixed(1)} (${fmtP(stats[1].p)})`}
     >
       {panels.map((pn, k) => {
         const cols = [0, 1, 2].map((i) => r2(pn.x + 110 + i * 86));
@@ -830,15 +830,15 @@ export function BetweenWithin() {
 
 /** Preferred channel (online, in store, app) by age group: 100 respondents per age group. */
 const CHANNEL_BY_AGE = [
-  { age: "18\u201334", counts: [45, 25, 30] },
-  { age: "35\u201354", counts: [33, 40, 27] },
+  { age: "18 to 34", counts: [45, 25, 30] },
+  { age: "35 to 54", counts: [33, 40, 27] },
   { age: "55+", counts: [22, 55, 23] },
 ];
 
 /**
  * The chi-square test: preferred shopping channel by age group. Each cell
  * shows the observed frequency and, beneath it, the frequency expected if
- * channel and age were unrelated; the stronger a cell's tint, the larger
+ * channel and age were unrelated. The stronger a cell's tint, the larger
  * its discrepancy. The discrepancies sum to the chi-square statistic.
  */
 export function ObservedExpected() {
@@ -864,7 +864,7 @@ export function ObservedExpected() {
     <Frame
       width={548}
       height={318}
-      label={`Preferred shopping channel by age group, 100 respondents per age group. Observed and expected frequencies: ${CHANNEL_BY_AGE.map((r, i) => `aged ${r.age}, ${r.counts.map((o, j) => `${o} observed against ${cells[i][j].e.toFixed(1)} expected`).join(", ")}`).join("; ")}. Chi-square is ${chi.toFixed(1)}, ${fmtP(p)}`}
+      label={`Preferred shopping channel by age group, 100 respondents per age group. Observed and expected frequencies: ${CHANNEL_BY_AGE.map((r, i) => `aged ${r.age}, ${r.counts.map((o, j) => `${o} observed against ${cells[i][j].e.toFixed(1)} expected`).join(", ")}`).join(". ")}. Chi-square is ${chi.toFixed(1)}, ${fmtP(p)}`}
     >
       {[0, 1, 2].map((j) => (
         <ChannelIcon key={j} i={j} cx={r2(cx0 + cw * j + cw / 2)} cy={34} />
@@ -910,8 +910,8 @@ type TestKind = "independent" | "paired" | "anova" | "chisquare" | "ranks";
 
 /**
  * A small picture of each test's situation, under its sentence: two groups
- * of different people; the same people measured twice; three groups; a
- * cross-tabulation of two nominal variables; two groups placed in rank order.
+ * of different people. The same people measured twice. Three groups. A
+ * cross-tabulation of two nominal variables. Two groups placed in rank order.
  */
 export function TestGlyph({ kind }: { kind: TestKind }) {
   const base = 82;
@@ -1008,7 +1008,7 @@ const VISITORS_MIN = 50_000;
 const VISITORS_MAX = 4_000_000;
 /** The slider's stops: total visitors in the test. */
 const VISITOR_STEPS = [50_000, 100_000, 200_000, 300_000, 500_000, 750_000, 1_000_000, 1_250_000, 1_500_000, 1_750_000, 2_000_000, 2_500_000, 3_000_000, 4_000_000];
-/** Position (0–100) along the logarithmic visitors axis. */
+/** Position (0 to 100) along the logarithmic visitors axis. */
 const visitorsAt = (i: number) => VISITORS_MIN * (VISITORS_MAX / VISITORS_MIN) ** (i / 100);
 /** Two-tailed p-value for 3.05% against 3.00%, with the visitors split equally. */
 function conversionP(total: number) {
@@ -1032,7 +1032,7 @@ function PageGlyph({ cx, y, letter }: { cx: number; y: number; letter: string })
 /**
  * Significance grows with the sample, not with the difference: two versions
  * of a page convert at 3.05 and 3.00 percent, bars drawn to scale. The
- * student sets the number of visitors; the p-value slides down its curve
+ * student sets the number of visitors. The p-value slides down its curve
  * and crosses 0.05 at about 1.8 million visitors, while the difference
  * itself never changes.
  */
@@ -1125,7 +1125,7 @@ type EffectId = (typeof EFFECTS)[number]["id"];
 /**
  * Cohen's d as a picture: two groups' distributions, the difference between
  * their means set against one pooled standard deviation. The student picks
- * a small, medium or large d; even a large effect leaves the two groups
+ * a small, medium or large d. Even a large effect leaves the two groups
  * overlapping heavily.
  */
 export function EffectOverlap() {
@@ -1186,7 +1186,7 @@ const CI_HALF = 7;
 /**
  * A confidence interval and zero: the 95 percent interval for the difference
  * in mean spending, 8 to 22 dollars. The student drags the estimate along
- * the axis; the moment the interval reaches zero, p reaches 0.05, and once
+ * the axis. The moment the interval reaches zero, p reaches 0.05, and once
  * it includes zero the difference is no longer significant.
  */
 export function IntervalAndZero() {
@@ -1253,7 +1253,7 @@ export function IntervalAndZero() {
 
       <Display x={20} y={36} size={26} fill={tone}>{fmtP(p)}</Display>
       <Key x={480} y={30} anchor="end" fill={tone}>
-        {excludes ? "EXCLUDES ZERO \u00b7 SIGNIFICANT AT 0.05" : "INCLUDES ZERO \u00b7 NOT SIGNIFICANT AT 0.05"}
+        {excludes ? "EXCLUDES ZERO | SIGNIFICANT AT 0.05" : "INCLUDES ZERO | NOT SIGNIFICANT AT 0.05"}
       </Key>
     </Frame>
   );
@@ -1275,9 +1275,9 @@ type Practice = (typeof PRACTICES)[number]["id"];
  * Percentage of studies reporting p < 0.05 when no difference exists, for
  * every combination of the four practices (bit 1 outliers, 2 outcomes,
  * 4 stopping, 8 segments). Simulated with 20,000 two-group studies of 30
- * respondents per group: outliers beyond 2 SD dropped when that helps;
- * three outcomes correlated 0.5; 10 respondents per group added up to three
- * times; four segments tested alongside the whole sample.
+ * respondents per group: outliers beyond 2 SD dropped when that helps.
+ * Three outcomes correlated 0.5. 10 respondents per group added up to three
+ * times. Four segments tested alongside the whole sample.
  */
 const FALSE_POSITIVE_PCT = [5, 11.3, 11.6, 24.7, 10.6, 22.5, 22.9, 45.3, 20.5, 30.2, 42.5, 58.5, 39.9, 60.8, 69, 89.1];
 /** The order in which studies light up, so adding a practice only adds studies. */
@@ -1294,7 +1294,7 @@ const STUDY_ORDER = (() => {
 /**
  * Forking paths: a hundred studies of a difference that does not exist. With
  * one planned test, five report a significant difference. The student
- * switches on the practices; each adds chances to find p < 0.05, and all
+ * switches on the practices. Each adds chances to find p < 0.05, and all
  * four together make most of the hundred studies report a false finding.
  */
 export function ForkingPaths() {
@@ -1315,7 +1315,7 @@ export function ForkingPaths() {
         height={196}
         label={`One hundred studies of a difference that does not exist. ${on.length === 0 ? "With one planned test" : `With ${on.length} practice${on.length > 1 ? "s" : ""} applied`}, ${count} of the 100 report a statistically significant difference`}
       >
-        <Key x={20} y={22}>100 STUDIES · NO DIFFERENCE EXISTS</Key>
+        <Key x={20} y={22}>100 STUDIES | NO DIFFERENCE EXISTS</Key>
         {Array.from({ length: 100 }, (_, i) => {
           const x = 20 + (i % cols) * (w + gx);
           const y = 40 + Math.floor(i / cols) * (h + gy);
@@ -1340,7 +1340,7 @@ export function ForkingPaths() {
    Multiple Comparisons
    -------------------------------------------------------------------------- */
 
-/** p-values of 40 tests of true null hypotheses (uniform); seed 5 puts one below 0.05 among the first 20. */
+/** p-values of 40 tests of true null hypotheses (uniform). Seed 5 puts one below 0.05 among the first 20. */
 const NULL_PS = (() => {
   const u = seeded(5);
   return Array.from({ length: 40 }, () => u());
@@ -1353,7 +1353,7 @@ type Correction = (typeof CORRECTIONS)[number]["id"];
 
 /**
  * Many tests of true null hypotheses, as in comparisons across segments.
- * The student sets the number of tests; each square is one test, filled
+ * The student sets the number of tests. Each square is one test, filled
  * when it comes out significant. The curve gives the probability of at
  * least one significant result, 64 percent at 20 tests. The Bonferroni
  * correction divides 0.05 by the number of tests and holds that
@@ -1394,7 +1394,7 @@ export function ManyTests() {
         height={262}
         label={`${k} tests of true null hypotheses at a level of ${fmtLevel(level)} per test${bonf ? " after the Bonferroni correction" : ""}. In this run ${hits} of the ${k} tests ${hits === 1 ? "is" : "are"} significant. The probability of at least one significant result is ${Math.round(prob * 100)} percent`}
       >
-        <Key x={20} y={22} fill={INK}>{`${k} TEST${k > 1 ? "S" : ""} · NO REAL DIFFERENCES`}</Key>
+        <Key x={20} y={22} fill={INK}>{`${k} TEST${k > 1 ? "S" : ""} | NO REAL DIFFERENCES`}</Key>
         <Key x={20} y={42} fill={INK3}>{`LEVEL PER TEST ${fmtLevel(level)}`}</Key>
         {NULL_PS.slice(0, k).map((p, i) => {
           const x = gx0 + (i % 10) * (tile + gap);
@@ -1445,7 +1445,7 @@ export function ManyTests() {
    Preregistration and Reproducible Analysis
    -------------------------------------------------------------------------- */
 
-/** A plan document: header bar and ticked lines; small copies stand for later analyses. */
+/** A plan document: header bar and ticked lines. Small copies stand for later analyses. */
 function PlanDoc({ x, y, w, h, tone = INK, dashed = false }: { x: number; y: number; w: number; h: number; tone?: string; dashed?: boolean }) {
   return (
     <g>
@@ -1458,7 +1458,7 @@ function PlanDoc({ x, y, w, h, tone = INK, dashed = false }: { x: number; y: num
 /**
  * Preregistration: the plan (hypotheses, sample size, exclusion criteria,
  * analysis) is written before the data are collected. After collection,
- * confirmatory analyses test the planned hypotheses; exploratory analyses
+ * confirmatory analyses test the planned hypotheses. Exploratory analyses
  * produce ideas that become hypotheses for the next preregistered study.
  */
 export function PreregistrationTimeline() {
@@ -1468,7 +1468,7 @@ export function PreregistrationTimeline() {
     <Frame
       width={800}
       height={214}
-      label="Before the data are collected, a preregistration document lists the hypotheses, sample size, exclusion criteria and analysis plan. The data are then collected from respondents. Confirmatory analyses test the preregistered hypotheses; exploratory analyses generate new ideas, which become hypotheses for a future preregistered study"
+      label="Before the data are collected, a preregistration document lists the hypotheses, sample size, exclusion criteria and analysis plan. The data are then collected from respondents. Confirmatory analyses test the preregistered hypotheses. Exploratory analyses generate new ideas, which become hypotheses for a future preregistered study"
     >
       {/* the plan */}
       <Key x={20} y={22} fill={SIGNAL}>PREREGISTRATION</Key>
@@ -1528,7 +1528,7 @@ const PRODUCT_ICONS = [Mouse, Basket, Basketball, Book, Pill, TShirt];
 
 /**
  * Many models, many tests: each pair of models is compared on each of six
- * products. The student adds models; the chords between them multiply,
+ * products. The student adds models. The chords between them multiply,
  * the number of tests grows with the square of the number of models, and so
  * does the number of significant results expected by chance alone. The
  * Bonferroni level shrinks accordingly.
@@ -1554,7 +1554,7 @@ export function ModelComparisons() {
       <Frame
         width={600}
         height={300}
-        label={`${k} AI models, each pair compared on six products: ${pairs} pairs and ${tests} tests. If no model differed from any other, about ${expected.toFixed(1)} tests would still be significant at the 0.05 level; the Bonferroni level per test is ${bonf.toPrecision(2)}`}
+        label={`${k} AI models, each pair compared on six products: ${pairs} pairs and ${tests} tests. If no model differed from any other, about ${expected.toFixed(1)} tests would still be significant at the 0.05 level. The Bonferroni level per test is ${bonf.toPrecision(2)}`}
       >
         {nodes.map((a, i) =>
           nodes.slice(i + 1).map((b, j) => (
@@ -1599,7 +1599,7 @@ export function ModelComparisons() {
 const RECORD_ROWS = [
   { key: "MODEL VERSION", value: "gpt-4.1-2025-04-14" },
   { key: "DATE", value: "2025-06-12" },
-  { key: "GENERATION SETTINGS", value: "temperature 1.0 · max tokens 300" },
+  { key: "GENERATION SETTINGS", value: "temperature 1.0 | max tokens 300" },
   { key: "COMPLETE PROMPTS", value: null },
   { key: "RESPONSES PER CONDITION", value: "100" },
 ];

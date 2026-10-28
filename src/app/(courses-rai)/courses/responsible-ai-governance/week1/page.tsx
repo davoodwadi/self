@@ -57,9 +57,9 @@ export {
 };
 
 // ============================================================================
-// WEEK 01 — FOUNDATIONS OF RESPONSIBLE AI IN MARKETS
+// WEEK 01: FOUNDATIONS OF RESPONSIBLE AI IN MARKETS
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md;
+// Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent-drawing
 // plate is drawn beside it. Plates live in ./visuals.tsx.
 //
@@ -75,10 +75,10 @@ export default function Week1Page() {
   return (
     <SlideDeck label="Week 01">
       {/* ================================================================
-          01 · Title Slide
+          01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 01 · Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 01: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           Foundations of Responsible AI in Markets
         </Title>
@@ -91,7 +91,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          02 · Why Market Algorithms Require Governance [no-exercise]
+          02. Why Market Algorithms Require Governance [no-exercise]
           ================================================================ */}
       <Slide id="why-market-algorithms-require-governance" border className="!py-8">
         <SlideHeading>Why Market Algorithms Require Governance</SlideHeading>
@@ -139,7 +139,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          03 · Defining Responsible AI and Algorithmic Governance [no-exercise]
+          03. Defining Responsible AI and Algorithmic Governance [no-exercise]
           ================================================================ */}
       <Slide id="defining-responsible-ai-and-algorithmic-governance" border className="!py-8">
         <SlideHeading>Defining Responsible AI and Algorithmic Governance</SlideHeading>
@@ -186,7 +186,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          04 · Part 1: Ethical Frameworks for Automated Decisions [no-exercise]
+          04. Part 1: Ethical Frameworks for Automated Decisions [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Ethical Frameworks for Automated Decisions" />
@@ -219,7 +219,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          05 · Consequentialism and Market Welfare [no-exercise]
+          05. Consequentialism and Market Welfare [no-exercise]
           ================================================================ */}
       <Slide id="consequentialism-and-market-welfare" border className="!py-8">
         <SlideHeading>Consequentialism and Market Welfare</SlideHeading>
@@ -258,7 +258,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          06 · Deontology, Rights, and Duties [no-exercise]
+          06. Deontology, Rights, and Duties [no-exercise]
           ================================================================ */}
       <Slide id="deontology-rights-and-duties" border className="!py-8">
         <SlideHeading>Deontology, Rights, and Duties</SlideHeading>
@@ -300,7 +300,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          07 · Virtue Ethics and Institutional Character [no-exercise]
+          07. Virtue Ethics and Institutional Character [no-exercise]
           ================================================================ */}
       <Slide id="virtue-ethics-and-institutional-character" border className="!py-8">
         <SlideHeading>Virtue Ethics and Institutional Character</SlideHeading>
@@ -339,7 +339,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          08 · Applying Ethical Frameworks to Algorithmic Decisions [exercise]
+          08. Applying Ethical Frameworks to Algorithmic Decisions [exercise]
           ================================================================ */}
       <Slide
         id="applying-ethical-frameworks-to-algorithmic-decisions"
@@ -401,7 +401,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          09 · Part 2: Stakeholders and Accountability Across the AI Value Chain [no-exercise]
+          09. Part 2: Stakeholders and Accountability Across the AI Value Chain [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Stakeholders and Accountability Across the AI Value Chain" />
@@ -425,7 +425,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          10 · The AI Value Chain in Commercial Markets [no-exercise]
+          10. The AI Value Chain in Commercial Markets [no-exercise]
           ================================================================ */}
       <Slide id="the-ai-value-chain-in-commercial-markets" border className="!py-8">
         <SlideHeading>The AI Value Chain in Commercial Markets</SlideHeading>
@@ -493,7 +493,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          11 · The Problem of Many Hands [exercise]
+          11. The Problem of Many Hands [exercise]
           ================================================================ */}
       <Slide
         id="the-problem-of-many-hands"
@@ -538,7 +538,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          12 · Allocating Accountability Across Stakeholders [exercise]
+          12. Allocating Accountability Across Stakeholders [exercise]
           ================================================================ */}
       <Slide
         id="allocating-accountability-across-stakeholders"
@@ -586,7 +586,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          13 · Discussion: When a Pricing Model Discriminates
+          13. Discussion: When a Pricing Model Discriminates
           ================================================================ */}
       <Slide id="discussion-when-a-pricing-model-discriminates" border className="!py-8">
         <SlideHeading>
@@ -609,7 +609,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          14 · Part 3: The Governance Gap Between Benchmarks and Markets [no-exercise]
+          14. Part 3: The Governance Gap Between Benchmarks and Markets [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="The Governance Gap Between Benchmarks and Markets" />
@@ -636,7 +636,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          15 · Technical Benchmarks Versus Market Behavior [no-exercise]
+          15. Technical Benchmarks Versus Market Behavior [no-exercise]
           ================================================================ */}
       <Slide id="technical-benchmarks-versus-market-behavior" border className="!py-8">
         <SlideHeading>Technical Benchmarks Versus Market Behavior</SlideHeading>
@@ -681,7 +681,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          16 · Why Benchmark Accuracy Fails as a Governance Standard [exercise]
+          16. Why Benchmark Accuracy Fails as a Governance Standard [exercise]
           ================================================================ */}
       <Slide
         id="why-benchmark-accuracy-fails-as-a-governance-standard"
@@ -728,7 +728,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          17 · The Six Stages of Algorithmic Governance [exercise]
+          17. The Six Stages of Algorithmic Governance [exercise]
           ================================================================ */}
       <Slide
         id="the-six-stages-of-algorithmic-governance"
@@ -812,7 +812,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          18 · Part 4: Human Oversight and Decision Regimes [no-exercise]
+          18. Part 4: Human Oversight and Decision Regimes [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Human Oversight and Decision Regimes" />
@@ -824,7 +824,7 @@ export default function Week1Page() {
           <Ruled>
             <p className={BIG}>
               Adding a human to a workflow does not automatically make a system
-              safe; oversight must be designed around the{" "}
+              safe. Oversight must be designed around the{" "}
               <span className="text-[var(--signal)]">
                 cognitive limits of human reviewers
               </span>
@@ -838,7 +838,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          19 · Human-in-the-Loop, Human-on-the-Loop, and Autonomous Regimes [exercise]
+          19. Human-in-the-Loop, Human-on-the-Loop, and Autonomous Regimes [exercise]
           ================================================================ */}
       <Slide
         id="human-in-the-loop-human-on-the-loop-and-autonomous-regimes"
@@ -889,7 +889,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          20 · Failure Modes of Human Oversight [no-exercise]
+          20. Failure Modes of Human Oversight [no-exercise]
           ================================================================ */}
       <Slide id="failure-modes-of-human-oversight" border className="!py-8">
         <SlideHeading>Failure Modes of Human Oversight</SlideHeading>
@@ -932,7 +932,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          21 · Matching Oversight Regimes to Decision Risk [exercise]
+          21. Matching Oversight Regimes to Decision Risk [exercise]
           ================================================================ */}
       <Slide
         id="matching-oversight-regimes-to-decision-risk"
@@ -979,14 +979,14 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          22 · Part 5: Delegated Consumption and Agent-Mediated Markets [no-exercise]
+          22. Part 5: Delegated Consumption and Agent-Mediated Markets [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Delegated Consumption and Agent-Mediated Markets" />
         <div className="mt-8 grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Statement className="!max-w-none !text-[clamp(1.35rem,2.2vw,1.95rem)]">
             Artificial intelligence is no longer only a tool deployed by
-            marketers; it is increasingly an{" "}
+            marketers. It is increasingly an{" "}
             <span className="text-[var(--signal)]">autonomous actor</span> that
             searches, evaluates, and purchases on the consumer&apos;s behalf.
           </Statement>
@@ -1004,7 +1004,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          23 · The AI Agent as a Surrogate Consumer [no-exercise]
+          23. The AI Agent as a Surrogate Consumer [no-exercise]
           ================================================================ */}
       <Slide id="the-ai-agent-as-a-surrogate-consumer" border className="!py-8">
         <SlideHeading>The AI Agent as a Surrogate Consumer</SlideHeading>
@@ -1048,7 +1048,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          24 · Dual Agency and Governance Risks in Agentic Commerce [exercise]
+          24. Dual Agency and Governance Risks in Agentic Commerce [exercise]
           ================================================================ */}
       <Slide
         id="dual-agency-and-governance-risks-in-agentic-commerce"
@@ -1098,7 +1098,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          25 · Discussion: The Autonomous Travel Agent
+          25. Discussion: The Autonomous Travel Agent
           ================================================================ */}
       <Slide id="discussion-the-autonomous-travel-agent" border className="!py-8">
         <SlideHeading>
@@ -1122,7 +1122,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          26 · Key Takeaways
+          26. Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>
@@ -1130,7 +1130,7 @@ export default function Week1Page() {
           {[
             "Market algorithms scale decision rules across thousands of consumers instantly, requiring institutional governance rather than aspirational ethical principles alone.",
             "Consequentialism evaluates aggregate welfare outcomes, deontology enforces inviolable rights and duties, and virtue ethics examines institutional character and trustworthiness.",
-            "The AI value chain spans model developers, deploying firms, platforms, consumers, and regulators; governance overcomes the problem of many hands by holding deploying firms accountable for market outcomes.",
+            "The AI value chain spans model developers, deploying firms, platforms, consumers, and regulators. Governance overcomes the problem of many hands by holding deploying firms accountable for market outcomes.",
             "High scores on general technical benchmarks do not guarantee fair, consistent, or unbiased behavior in commercial tasks.",
             "The six stages of algorithmic governance run from initial risk scoping and data review through pre-deployment behavioral auditing, oversight design, launch authorization, and continuous monitoring.",
             "Human-in-the-loop, human-on-the-loop, and autonomous regimes must be matched to decision stakes and reversibility while guarding against automation bias, rubber-stamping, and moral crumple zones.",

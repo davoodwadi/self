@@ -26,10 +26,10 @@ import { Coins, Cylinder, Dial, Figure, Gear, Hall, Lens, Sheet, SmallModel, cro
    in Caslon italic and one examiner's red for the finding. See the course
    CLAUDE.md.
 
-   Week cast: the consumer is a patent Figure; the AI agent is the model
-   housing with two gears (SmallModel); the platform is a columned hall; a
-   listing is an upright card with a house; a paid placement wears a badge;
-   a system prompt is a sheet of italic lines; a choice share is a cylinder.
+   Week cast: the consumer is a patent Figure. The AI agent is the model
+   housing with two gears (SmallModel). The platform is a columned hall. A
+   listing is an upright card with a house. A paid placement wears a badge.
+   A system prompt is a sheet of italic lines. A choice share is a cylinder.
    ========================================================================== */
 
 const ink = {
@@ -220,10 +220,10 @@ function PromptSheet({
 
 /**
  * The six audit steps as six bench instruments, three under each row of
- * steps. First: the system prompt under a lens; a factorial tray of matched
- * organic and sponsored listings in two prompt conditions; a reasoning trace
+ * steps. First: the system prompt under a lens. A factorial tray of matched
+ * organic and sponsored listings in two prompt conditions. A reasoning trace
  * with coded passages. Second: a 100-rank strip with its inspection curve
- * and trough; an overpriced assortment beside an open no-buy door; the
+ * and trough. An overpriced assortment beside an open no-buy door. The
  * effort dial and fiduciary clause brought up to a release mark.
  */
 export function AuditBench({ part }: { part: "first" | "second" }) {
@@ -344,7 +344,7 @@ function Chain({ x1, y1, x2, y2, n, c = PAT.ink }: { x1: number; y1: number; x2:
 
 /**
  * The causal chain of disclosure regulation, drawn as a chain. It runs from
- * the sponsored badge on a listing to the agent housing; between the housing
+ * the sponsored badge on a listing to the agent housing. Between the housing
  * and the shopper's hand it is broken, the open link in red, and the
  * shopper's end hangs slack.
  */
@@ -355,7 +355,7 @@ export function BrokenChain() {
     <Frame
       width={880}
       height={164}
-      label="Patent drawing of a broken chain. At left a hotel listing wears a Sponsored badge; a chain runs from the badge to an AI agent housing in the middle. Between the housing and a shopper standing at right the chain is broken: an open link, drawn in red, hangs from the housing, and the shopper holds the other end, which droops slack to the floor."
+      label="Patent drawing of a broken chain. At left a hotel listing wears a Sponsored badge. A chain runs from the badge to an AI agent housing in the middle. Between the housing and a shopper standing at right the chain is broken: an open link, drawn in red, hangs from the housing, and the shopper holds the other end, which droops slack to the floor."
     >
       <PatentDefs id={id} />
       <g transform="translate(0 -40)">
@@ -379,7 +379,7 @@ export function BrokenChain() {
 /**
  * The two duties as two figures. Care: the agent works along a row of
  * listings with its lens, ticking each one it has examined. Loyalty: the
- * agent is tied by one cord to its beneficiary; a cord from a third party's
+ * agent is tied by one cord to its beneficiary. A cord from a third party's
  * coins is cut (red), because the duty forbids that pull.
  */
 export function CareAndLoyalty() {
@@ -390,7 +390,7 @@ export function CareAndLoyalty() {
     <Frame
       width={880}
       height={166}
-      label="Patent drawing in two figures. Duty of care: an AI agent housing beside a row of five hotel listings; the first two carry ticks, a hand lens rests over the third, the last two wait. Duty of loyalty: a beneficiary at left holds a cord tied to the agent housing; at right a columned hall with a stack of coins runs a second cord toward the housing, drawn in red and cut, with a red cross at the break."
+      label="Patent drawing in two figures. Duty of care: an AI agent housing beside a row of five hotel listings. The first two carry ticks, a hand lens rests over the third, the last two wait. Duty of loyalty: a beneficiary at left holds a cord tied to the agent housing. At right a columned hall with a stack of coins runs a second cord toward the housing, drawn in red and cut, with a red cross at the break."
     >
       <PatentDefs id={id} />
       <g transform="translate(0 -42)">
@@ -441,7 +441,7 @@ export function ConciergeDesk() {
     <Frame
       width={432}
       height={300}
-      label="Patent drawing of a platform's AI concierge. At left, a system prompt sheet reads: You are BookingCo's virtual travel assistant. A dashed line runs from it down into an AI agent housing. At right, a rack of three hotel listings; the first and third wear red badges reading Promoted by BookingCo."
+      label="Patent drawing of a platform's AI concierge. At left, a system prompt sheet reads: You are BookingCo's virtual travel assistant. A dashed line runs from it down into an AI agent housing. At right, a rack of three hotel listings. The first and third wear red badges reading Promoted by BookingCo."
     >
       <PatentDefs id={id} />
       <line x1={10} y1={g} x2={424} y2={g} {...hair} />
@@ -523,7 +523,7 @@ export function DelegationLevels() {
         width={880}
         height={160}
         label={`Patent drawing of five work stations in a row, suggest, search, compare, choose and purchase, each a plinth carrying its object: a summary sheet, a stack of catalog cards, two shortlisted listings, one listing with a tick, and a cart. Level ${level}: ${
-          ["the agent works only the suggest station; the shopper stands at search, compare, choose and purchase.", "the agent works suggest, search and compare; the shopper chooses from the shortlist and purchases.", "the agent works every station up to choose; the shopper stands only at purchase, for the final confirmation.", "the agent works all five stations; the shopper stands outside, holding a sheet of rules, behind a dashed fence that encloses the bench."][level - 1]
+          ["the agent works only the suggest station. The shopper stands at search, compare, choose and purchase.", "the agent works suggest, search and compare. The shopper chooses from the shortlist and purchases.", "the agent works every station up to choose. The shopper stands only at purchase, for the final confirmation.", "the agent works all five stations. The shopper stands outside, holding a sheet of rules, behind a dashed fence that encloses the bench."][level - 1]
         }`}
       >
         <PatentDefs id={id} />
@@ -613,7 +613,7 @@ export function DelegationWarrant() {
  * The dyad and the triad on one bench. In the dyad the shopper looks straight
  * at the platform's results page, sponsored badge and all. In the triad the
  * agent housing stands between them: it reads the page, and the shopper sees
- * only the single card it hands back; the badge (red) never reaches the eye.
+ * only the single card it hands back. The badge (red) never reaches the eye.
  */
 export function DyadTriad() {
   const [mode, setMode] = useState<"dyad" | "triad">("dyad");
@@ -629,7 +629,7 @@ export function DyadTriad() {
         height={292}
         label={
           triad
-            ? "Patent drawing of the agentic triad. A shopper stands at left; an AI agent, a model housing with two gears, stands between the shopper and the platform's results page, a columned hall behind three hotel listings, one wearing a Sponsored badge drawn in red. The agent's dashed sight line reads the page; the shopper's sight line ends at the single listing card the agent hands out of its slot."
+            ? "Patent drawing of the agentic triad. A shopper stands at left. An AI agent, a model housing with two gears, stands between the shopper and the platform's results page, a columned hall behind three hotel listings, one wearing a Sponsored badge drawn in red. The agent's dashed sight line reads the page. The shopper's sight line ends at the single listing card the agent hands out of its slot."
             : "Patent drawing of the dyad. A shopper stands at left and looks straight at the platform's results page: three hotel listings in front of a columned hall, one wearing a Sponsored badge. The shopper's dashed sight line reaches the page."
         }
       >
@@ -683,10 +683,10 @@ export function DyadTriad() {
  * Wadi and Ma (2026a): choice by rank at each configured reasoning effort,
  * for the four models whose choices show a middle penalty. Each bar is the
  * probability that the listing at that rank is booked, from the quadratic
- * linear probability model of choice (position and position² on rank / 100;
+ * linear probability model of choice (position and position² on rank / 100,
  * intercept set so the bars average 1 in 100, since every session books one
  * hotel). The joint Wald test of both position terms (χ²(2), 5% level)
- * decides the verdict; cost per session is at list prices. The frontier
+ * decides the verdict. Cost per session is at list prices. The frontier
  * reference is Pro at its default high effort, $0.2825 per session.
  */
 const EFFORT = {
@@ -827,7 +827,7 @@ export function EffortLever() {
 
 /**
  * A human scanning a 100-item results page from the top. The gaze cone takes
- * in only the first rows above the screen fold, one of which is clicked; the
+ * in only the first rows above the screen fold, one of which is clicked. The
  * rest of the page (dashed, below the fold) is never reached. A red bracket
  * marks the few top ranks that form the consideration set.
  */
@@ -843,7 +843,7 @@ export function HumanScan() {
     <Frame
       width={470}
       height={300}
-      label="Patent drawing of a human shopper scanning a results page of 100 listings, numbered 1 at the top and 100 at the bottom. A stippled gaze cone from the shopper's eye covers only the first three rows; a pointer clicks the second. A centre line marks the screen fold, and the rows below it are drawn dashed. A red bracket beside the first three rows is keyed consideration set; beside it, 1.12 clicks."
+      label="Patent drawing of a human shopper scanning a results page of 100 listings, numbered 1 at the top and 100 at the bottom. A stippled gaze cone from the shopper's eye covers only the first three rows. A pointer clicks the second. A centre line marks the screen fold, and the rows below it are drawn dashed. A red bracket beside the first three rows is keyed consideration set. Beside it, 1.12 clicks."
     >
       <PatentDefs id={id} />
       <line x1={10} y1={g} x2={460} y2={g} {...hair} />
@@ -970,7 +970,7 @@ export function InspectionCurve() {
         })}
         <path d={`M${X(62) - 2} ${y0 + 22}V${y0 + 26}H${X(81) + 2}V${y0 + 22}`} fill="none" stroke={R} strokeWidth={LINE.outline} />
         <Num x={r2((X(62) + X(81)) / 2)} y={y0 + 40} size={13} fill={R}>
-          62–81
+          62 to 81
         </Num>
         {[1, 25, 50, 100].map((rank) => (
           <Num key={rank} x={X(rank)} y={y0 + 32} size={12}>
@@ -1025,7 +1025,7 @@ export function InspectionCurve() {
 
 /**
  * The invariance test as a balance. The agent housing carries a beam that
- * weighs a sponsored listing against a matched organic one; the system
+ * weighs a sponsored listing against a matched organic one. The system
  * prompt pinned beside it names the employer. Swapping the employer should
  * leave the pointer where it was. Under the platform it swings toward the
  * paid listing: the shift is drawn as a red arc from the traveler reading.
@@ -1051,9 +1051,9 @@ export function InvarianceBalance() {
       <Frame
         width={560}
         height={292}
-        label={`Patent drawing of a balance standing on an AI agent housing. The beam weighs a sponsored hotel listing on the left pan against a matched organic listing on the right pan; a pointer rises from the pivot against a graduated arc. A system prompt pinned beside the housing reads: You have been employed by ${platform ? "a hotel booking platform" : "a traveler"}. ${
+        label={`Patent drawing of a balance standing on an AI agent housing. The beam weighs a sponsored hotel listing on the left pan against a matched organic listing on the right pan. A pointer rises from the pivot against a graduated arc. A system prompt pinned beside the housing reads: You have been employed by ${platform ? "a hotel booking platform" : "a traveler"}. ${
           platform
-            ? "With the platform named, the beam has swung back toward the sponsored listing; a dashed pointer marks the reading under the traveler and a red arc marks the shift between them."
+            ? "With the platform named, the beam has swung back toward the sponsored listing. A dashed pointer marks the reading under the traveler and a red arc marks the shift between them."
             : "With the traveler named, the sponsored listing's pan rides high: the paid listing is weighed down in the agent's judgment."
         }`}
       >
@@ -1154,7 +1154,7 @@ export function LabelBuilder() {
       <Frame
         width={560}
         height={268}
-        label={`Patent drawing of a hotel listing whose badge reads ${badge.toLowerCase()}, beside two graduated cylinders: the share of runs in which the consumer-delegated agent picks the listing, ${pct(cons)}, and the share for the platform-delegated agent, ${pct(plat)}, drawn in red. A dashed line marks 50 percent; a red bracket between the two levels marks a gap of ${gap.toFixed(1)} percentage points.`}
+        label={`Patent drawing of a hotel listing whose badge reads ${badge.toLowerCase()}, beside two graduated cylinders: the share of runs in which the consumer-delegated agent picks the listing, ${pct(cons)}, and the share for the platform-delegated agent, ${pct(plat)}, drawn in red. A dashed line marks 50 percent. A red bracket between the two levels marks a gap of ${gap.toFixed(1)} percentage points.`}
       >
         <PatentDefs id={id} />
         {/* the listing and its badge */}
@@ -1205,7 +1205,7 @@ export function LabelBuilder() {
 /**
  * The Persuasion Knowledge Model at a human shopper's eye. The prominence
  * slider grows the "Sponsored" label from a faint tag to a bold plate. Below
- * the noticing point the shopper's gaze lands on the listing's claim; once
+ * the noticing point the shopper's gaze lands on the listing's claim. Once
  * the label is noticed the gaze lands on it, the claim is struck through in
  * red (discounted) and a second gaze goes to the organic listing below.
  */
@@ -1227,8 +1227,8 @@ export function LabelProminence() {
         height={262}
         label={`Patent drawing of a shopper reading a sponsored hotel listing whose card claims: Best hotel in town. Its Sponsored label is drawn at prominence ${p} of 5. ${
           noticed
-            ? "The shopper's dashed gaze lands on the label; the claim is struck through in red, and a second gaze goes to the organic listing below."
-            : "The label is small and faint; the shopper's dashed gaze passes it and lands on the claim."
+            ? "The shopper's dashed gaze lands on the label. The claim is struck through in red, and a second gaze goes to the organic listing below."
+            : "The label is small and faint. The shopper's dashed gaze passes it and lands on the claim."
         }`}
       >
         <PatentDefs id={id} />
@@ -1295,7 +1295,7 @@ export function LayoutVsConfig() {
     <Frame
       width={560}
       height={252}
-      label="Patent drawing in two figures. Human visual layout: a results page of three hotel listings, the middle one wearing a Sponsored badge whose height is measured by a small rule. Agent configuration and prompt architecture: an AI agent housing cut open with a zig-zag break, showing a system prompt sheet and a reasoning-effort dial inside; a red regulator's seal is set on the prompt sheet."
+      label="Patent drawing in two figures. Human visual layout: a results page of three hotel listings, the middle one wearing a Sponsored badge whose height is measured by a small rule. Agent configuration and prompt architecture: an AI agent housing cut open with a zig-zag break, showing a system prompt sheet and a reasoning-effort dial inside. A red regulator's seal is set on the prompt sheet."
     >
       <PatentDefs id={id} />
       {/* human visual layout */}
@@ -1333,7 +1333,7 @@ export function LayoutVsConfig() {
 
 /**
  * What the principal can observe. The shopper sees one recommended listing on
- * a stand; behind a roller shutter lies everything the agent worked from: a
+ * a stand. Behind a roller shutter lies everything the agent worked from: a
  * board of one hundred listings and the system prompt. Rolling the shutter up
  * shows the pick (ticked) and, in red, a better listing it passed over.
  */
@@ -1356,7 +1356,7 @@ export function PassedOver() {
         height={300}
         label={
           open
-            ? "Patent drawing of a principal-agent relationship with the shutter rolled up. The shopper at left sees one recommended listing on a stand, handed over by the AI agent housing. Behind the raised roller shutter: a board of one hundred listings, the pick marked with a tick, and one listing the agent passed over drawn in red with more stars and a lower price; below the board, the system prompt that governed the evaluation."
+            ? "Patent drawing of a principal-agent relationship with the shutter rolled up. The shopper at left sees one recommended listing on a stand, handed over by the AI agent housing. Behind the raised roller shutter: a board of one hundred listings, the pick marked with a tick, and one listing the agent passed over drawn in red with more stars and a lower price. Below the board, the system prompt that governed the evaluation."
             : "Patent drawing of a principal-agent relationship. The shopper at left sees one recommended listing on a stand, handed over by the AI agent housing. Everything else sits behind a closed roller shutter."
         }
       >
@@ -1414,7 +1414,7 @@ export function PassedOver() {
 
 /**
  * Two plates for the dual-agency slide. "fee": a click on the sponsored
- * listing drops a coin (red) down a chute into the platform's slot; the same
+ * listing drops a coin (red) down a chute into the platform's slot. The same
  * click on an organic listing drops nothing. "prompt": the role definition
  * at the head of an enterprise system prompt, its platform name in red,
  * feeding the agent housing.
@@ -1473,8 +1473,8 @@ export function PayPerClick({ part }: { part: "fee" | "prompt" }) {
 
 /**
  * The lobbyists' rule on the discussion slide: a continuous-form data feed of
- * product rows runs into the language model's housing; one row is tagged
- * only "Promoted" (red); out of the model comes a chatbot answer bubble.
+ * product rows runs into the language model's housing. One row is tagged
+ * only "Promoted" (red). Out of the model comes a chatbot answer bubble.
  */
 export function PromotedFeed() {
   const id = "w8-feed";
@@ -1535,7 +1535,7 @@ export function RankLever() {
     <Frame
       width={560}
       height={262}
-      label="Patent drawing of rank as a lever. A results column of seven numbered slots stands at left. A long lever rests on an A-frame; its right end is weighed down with a stack of coins and its raised left end holds a listing, drawn in red, at slot 1. A dashed outline at slot 6 and a dashed red path show where the listing was lifted from."
+      label="Patent drawing of rank as a lever. A results column of seven numbered slots stands at left. A long lever rests on an A-frame. Its right end is weighed down with a stack of coins and its raised left end holds a listing, drawn in red, at slot 1. A dashed outline at slot 6 and a dashed red path show where the listing was lifted from."
     >
       <PatentDefs id={id} />
       <line x1={10} y1={g} x2={550} y2={g} {...hair} />
@@ -1585,9 +1585,9 @@ export function RankLever() {
 
 /**
  * The four structural remedies as four small instruments. A fiduciary clause
- * padlocked into the system prompt; a recommendation card that still wears
- * its Sponsored badge after leaving the agent; an effort dial turned up over
- * a level comb of choices; a wall between advertising money and the agent.
+ * padlocked into the system prompt. A recommendation card that still wears
+ * its Sponsored badge after leaving the agent. An effort dial turned up over
+ * a level comb of choices. A wall between advertising money and the agent.
  */
 export function Remedy({ kind }: { kind: "clause" | "passthrough" | "deliberation" | "separation" }) {
   const id = `w8-remedy-${kind}`;
@@ -1617,7 +1617,7 @@ export function Remedy({ kind }: { kind: "clause" | "passthrough" | "deliberatio
       <Frame
         width={260}
         height={150}
-        label="Patent drawing of disclosure pass-through: an AI agent housing at left hands a speech-bubble recommendation card to the right; the hotel in the card still wears its Sponsored badge."
+        label="Patent drawing of disclosure pass-through: an AI agent housing at left hands a speech-bubble recommendation card to the right. The hotel in the card still wears its Sponsored badge."
       >
         <PatentDefs id={id} />
         <SmallModel id={id} x={10} y={66} w={60} h={70} />
@@ -1647,7 +1647,7 @@ export function Remedy({ kind }: { kind: "clause" | "passthrough" | "deliberatio
     <Frame
       width={260}
       height={150}
-      label="Patent drawing of structural separation: a stack of coins, the sellers' advertising spend, stands at left behind a brick wall; the AI agent housing stands on the other side of the wall."
+      label="Patent drawing of structural separation: a stack of coins, the sellers' advertising spend, stands at left behind a brick wall. The AI agent housing stands on the other side of the wall."
     >
       <PatentDefs id={id} />
       <line x1={8} y1={136} x2={252} y2={136} {...hair} />
@@ -1706,7 +1706,7 @@ export function RoleAssignment() {
       <Frame
         width={560}
         height={262}
-        label={`Patent drawing of the role-assignment experiment, ${platform ? "agent employed by the booking platform" : "agent employed by the traveler"}. Left: two graduated cylinders of choice share, the organic target at ${pct(d.organic)} and the sponsored target at ${pct(d.sponsored)}; a bracket between their levels marks the sponsorship penalty of ${pen.toFixed(1)} percentage points${platform ? ", in red" : ""}. Right: a semicircular gauge of skepticism toward the sponsored listing in the agent's reasoning traces, scaled 1 to 7, its needle at ${d.skeptic.toFixed(2)}; a dashed needle marks ${other.skeptic.toFixed(2)} for the ${platform ? "traveler" : "platform"} delegate.`}
+        label={`Patent drawing of the role-assignment experiment, ${platform ? "agent employed by the booking platform" : "agent employed by the traveler"}. Left: two graduated cylinders of choice share, the organic target at ${pct(d.organic)} and the sponsored target at ${pct(d.sponsored)}. A bracket between their levels marks the sponsorship penalty of ${pen.toFixed(1)} percentage points${platform ? ", in red" : ""}. Right: a semicircular gauge of skepticism toward the sponsored listing in the agent's reasoning traces, scaled 1 to 7, its needle at ${d.skeptic.toFixed(2)}. A dashed needle marks ${other.skeptic.toFixed(2)} for the ${platform ? "traveler" : "platform"} delegate.`}
       >
         <PatentDefs id={id} />
         {/* choice share */}
@@ -1780,7 +1780,7 @@ export function RoleAssignment() {
 /**
  * The intermediation gap as an exploded view along a centre line: the
  * listing page with its Sponsored badge goes into the agent housing (cut
- * open to show its context window, where the badge stays, in red); what
+ * open to show its context window, where the badge stays, in red). What
  * comes out to the shopper is a conversational card with the same hotel and
  * no badge.
  */
@@ -1820,7 +1820,7 @@ export function StrippedBadge() {
 }
 
 /**
- * Two principals, one agent. The shopper pulls on one cord; the platform's
+ * Two principals, one agent. The shopper pulls on one cord. The platform's
  * hall, with the system prompt it wrote pegged to its cord and its stack of
  * ad revenue beside it, pulls on the other. The strain at both ends of the
  * agent housing is drawn in red.
@@ -1833,7 +1833,7 @@ export function TwoPrincipals() {
     <Frame
       width={700}
       height={184}
-      label="Patent drawing of a structural conflict of duty. An AI agent housing stands in the middle of the floor. At left a shopper pulls a taut cord tied to its left face; at right a columned hall, the platform, pulls a second taut cord tied to its right face. A system prompt sheet is pegged to the platform's cord, and a stack of coins stands beside the hall. Short red strain marks show the pull at both ends of the housing."
+      label="Patent drawing of a structural conflict of duty. An AI agent housing stands in the middle of the floor. At left a shopper pulls a taut cord tied to its left face. At right a columned hall, the platform, pulls a second taut cord tied to its right face. A system prompt sheet is pegged to the platform's cord, and a stack of coins stands beside the hall. Short red strain marks show the pull at both ends of the housing."
     >
       <PatentDefs id={id} />
       <line x1={14} y1={g} x2={686} y2={g} {...hair} />
@@ -1865,11 +1865,11 @@ export function TwoPrincipals() {
 /**
  * The two remedies of Wadi and Ma (2026c) side by side. Label wording
  * (Study 2, Table 14): with the placement attributed to the platform,
- * "Promoted" gives 34.6% vs 74.2% and "Sponsored" gives 3.6% vs 21.2%;
- * both shares fall but the red gap between the delegates stays open.
+ * "Promoted" gives 34.6% vs 74.2% and "Sponsored" gives 3.6% vs 21.2%.
+ * Both shares fall but the red gap between the delegates stays open.
  * Beneficiary specification (Study 1, Table 5): the sponsorship penalty is
- * 50.2 points for the traveler's agent and 29.2 for the platform's (red);
- * adding "Act in the traveler's best interest" restores it to 48.2.
+ * 50.2 points for the traveler's agent and 29.2 for the platform's (red).
+ * Adding "Act in the traveler's best interest" restores it to 48.2.
  */
 export function TwoRemedies() {
   const [word, setWord] = useState<"promoted" | "sponsored">("promoted");
@@ -1893,7 +1893,7 @@ export function TwoRemedies() {
       <Frame
         width={880}
         height={226}
-        label={`Patent drawing in two figures. Label wording: a badge reading ${badge.toLowerCase()} above two graduated cylinders, the consumer-delegated agent choosing the paid listing in ${pct(cons)} of runs and the platform-delegated agent in ${pct(plat)}, with a red bracket marking a gap of ${gap.toFixed(1)} points. Beneficiary specification: a system prompt reading, You have been employed by a hotel booking platform to recommend hotels${ben ? ", followed by the added sentence, Act in the traveler's best interest" : ""}; below it two bars of sponsorship penalty, 50.2 points for the consumer-delegated agent and ${pen.platform.toFixed(1)} points for the platform-delegated agent${ben ? "" : ", drawn in red"}.`}
+        label={`Patent drawing in two figures. Label wording: a badge reading ${badge.toLowerCase()} above two graduated cylinders, the consumer-delegated agent choosing the paid listing in ${pct(cons)} of runs and the platform-delegated agent in ${pct(plat)}, with a red bracket marking a gap of ${gap.toFixed(1)} points. Beneficiary specification: a system prompt reading, You have been employed by a hotel booking platform to recommend hotels${ben ? ", followed by the added sentence, Act in the traveler's best interest" : ""}. Below it two bars of sponsorship penalty, 50.2 points for the consumer-delegated agent and ${pen.platform.toFixed(1)} points for the platform-delegated agent${ben ? "" : ", drawn in red"}.`}
       >
         <PatentDefs id={id} />
         {/* label wording */}

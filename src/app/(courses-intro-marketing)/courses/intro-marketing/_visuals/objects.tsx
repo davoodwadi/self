@@ -568,7 +568,7 @@ export function Flag1({ x, y, tone = SIGNAL, k = 1 }: { x: number; y: number; to
 
 /**
  * A country: a flag on a pole standing on (x, y). The home country flies a
- * solid flag; each foreign country has its own pattern.
+ * solid flag. Each foreign country has its own pattern.
  */
 export function Flag2({
   x,
@@ -730,7 +730,7 @@ export function Head2({
   );
 }
 
-/** A head in profile inside a 200 × 220 box at (x, y); faces left unless faceRight. */
+/** A head in profile inside a 200 × 220 box at (x, y). Faces left unless faceRight. */
 export function Head3({
   x,
   y,
@@ -890,7 +890,7 @@ export function Pack1({
   tone?: string;
   fill?: string;
   kind?: number;
-  /** Fill for the mark; when set, the mark is outlined in `tone`. */
+  /** Fill for the mark. When set, the mark is outlined in `tone`. */
   markFill?: string;
 }) {
   return (
@@ -993,7 +993,7 @@ export function Person1({ x, y, s = 1, tone = INK }: { x: number; y: number; s?:
   );
 }
 
-/** A person glyph standing on (x, y). k scales it; 1 is 34 units tall. */
+/** A person glyph standing on (x, y). k scales it. 1 is 34 units tall. */
 export function Person2({
   x,
   y,
@@ -1030,7 +1030,7 @@ export function Person2({
   );
 }
 
-/** A person glyph standing on (x, y). k scales it; 1 is 34 units tall. */
+/** A person glyph standing on (x, y). k scales it. 1 is 34 units tall. */
 export function Person3({
   x,
   y,
@@ -1102,7 +1102,7 @@ export function Phone2({
   );
 }
 
-/** A phone with a screen; its centre at (x, y), k = 1 is 40 by 72. */
+/** A phone with a screen. Its centre at (x, y), k = 1 is 40 by 72. */
 export function Phone3({
   x,
   y,
@@ -1417,7 +1417,7 @@ export function Tool({
       </g>
     );
   }
-  // "dd" — a phone with a message on its screen
+  // "dd": a phone with a message on its screen
   return (
     <g strokeLinejoin="round">
       <rect x={X(-11)} y={Y(-17)} width={r2(22 * k)} height={r2(34 * k)} rx={r2(3 * k)} fill={fill} stroke={tone} strokeWidth={sw} />
@@ -1488,7 +1488,7 @@ export function Tv2({ x, y, k = 1, tone = INK }: { x: number; y: number; k?: num
   );
 }
 
-/** An arrow with a head at both ends — a two-way flow. */
+/** An arrow with a head at both ends: a two-way flow. */
 export function TwoWay1({
   x1,
   y1,
@@ -1515,7 +1515,7 @@ export function TwoWay1({
   );
 }
 
-/** An arrow with a head at both ends — a two-way exchange. */
+/** An arrow with a head at both ends: a two-way exchange. */
 export function TwoWay2({
   x1,
   y1,

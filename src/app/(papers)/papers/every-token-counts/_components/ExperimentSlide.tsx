@@ -32,8 +32,8 @@ export default function ExperimentSlide() {
               Five models.{" "}<span className="grad-violet-cyan">Four national targets.</span>
             </h2>
             <p className="p-body" style={{ maxWidth: "52ch", marginBottom: "3rem", fontSize: "1.0625rem" }}>
-              A fully crossed 5 × 4 factorial design using CETSCALE — the validated consumer
-              ethnocentrism measurement instrument — adapted for national attribution.
+              A fully crossed 5 × 4 factorial design using CETSCALE, the validated consumer
+              ethnocentrism measurement instrument, adapted for national attribution.
             </p>
             <div style={{ marginBottom: "2.5rem" }}>
               <p

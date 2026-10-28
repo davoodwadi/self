@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 12 — figures
+   Week 12: figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea. The week crosses borders, so
    a fixed cast carries it: a dashed vertical line is a national border, a
@@ -10,15 +10,15 @@
    here as it did there.
 
    Colour code for the week:
-     · entry modes: exporting INK, joint venturing COUNTER, direct
+     - entry modes: exporting INK, joint venturing COUNTER, direct
        investment SIGNAL (the deepest commitment)
-     · the mix: standardization COUNTER, adaptation SIGNAL
-     · otherwise SIGNAL marks the operative case, COUNTER the risk or cost
+     - the mix: standardization COUNTER, adaptation SIGNAL
+     - otherwise SIGNAL marks the operative case, COUNTER the risk or cost
 
    Conventions carried over from earlier weeks:
-     · viewBox width 800 (400 for column plates), flat fills, hairline rules
-     · every label reuses words from the slide the plate sits on
-     · trig results rounded, so server and client render the same markup
+     - viewBox width 800 (400 for column plates), flat fills, hairline rules
+     - every label reuses words from the slide the plate sits on
+     - trig results rounded, so server and client render the same markup
    ========================================================================== */
 
 import React from "react";
@@ -246,7 +246,7 @@ function Thought({
   );
 }
 
-/** Rising signal bars: level 1–3 of three, standing on (x, y). */
+/** Rising signal bars: level 1 to 3 of three, standing on (x, y). */
 function Level({ x, y, level, tone = INK }: { x: number; y: number; level: number; tone?: string }) {
   return (
     <g>
@@ -278,7 +278,7 @@ export const MODES: { kind: Mode; name: string; tone: string; fill: string }[] =
 
 /**
  * An entry mode, drawn across a border at x. Exporting sends goods over the
- * border; joint venturing joins a foreign company over it; direct investment
+ * border. Joint venturing joins a foreign company over it. Direct investment
  * puts the company's own plant on the far side. About 120 wide, 50 tall.
  */
 export function EntryMode({
@@ -511,7 +511,7 @@ export function TradeSystem() {
   );
 }
 
-/** Three country cards with economic charts; a lens over one of them. */
+/** Three country cards with economic charts. A lens over one of them. */
 export function AssessEconomy() {
   const cards = [28, 146, 264];
   const bars = [
@@ -553,7 +553,7 @@ export function CultureChoice() {
     <Frame
       width={400}
       height={260}
-      label="Two countries separated by a border, each with the same two products on a shelf: a jar and a box. The shopper on the left reaches for the jar; the shopper on the right reaches for the box."
+      label="Two countries separated by a border, each with the same two products on a shelf: a jar and a box. The shopper on the left reaches for the jar. The shopper on the right reaches for the box."
     >
       <Border x={200} y1={20} y2={250} />
       <Flag2 x={20} y={56} pattern="tri" />
@@ -592,7 +592,7 @@ export function TradeBarriers() {
   return (
     <Frame
       height={260}
-      label="Two panels. Tariff: a crate with a small price tag crosses a border and arrives with a longer tag, the added part marked plus. Quota: three crates have crossed the border; three more wait behind a closed barrier."
+      label="Two panels. Tariff: a crate with a small price tag crosses a border and arrives with a longer tag, the added part marked plus. Quota: three crates have crossed the border. Three more wait behind a closed barrier."
     >
       <line x1={400} y1={20} x2={400} y2={240} stroke={RULE} strokeWidth={1} />
       {/* Tariff */}
@@ -631,7 +631,7 @@ export function TradeBarriers() {
 const GDP = [62, 112, 44, 158, 86, 128];
 const GDP_FLAGS: FlagPattern[] = ["tri", "band", "cross", "disc", "diag", "home"];
 
-/** GDP bars for six countries; the tallest is circled as the market selected. */
+/** GDP bars for six countries. The tallest is circled as the market selected. */
 export function GdpSelection() {
   const base = 206;
   const top = GDP.indexOf(Math.max(...GDP));
@@ -668,7 +668,7 @@ export function Acceptance() {
     <Frame
       width={400}
       height={260}
-      label="A product with its advertising message at the top. Arrows carry it to two countries. The group on the left answers with a tick; the group on the right with a cross."
+      label="A product with its advertising message at the top. Arrows carry it to two countries. The group on the left answers with a tick. The group on the right with a cross."
     >
       <Pack4 x={176} y={82} w={36} h={40} />
       <Bubble3 x={204} y={30} w={64} h={30} tail="left" />
@@ -779,7 +779,7 @@ export function BurgerBacklash() {
    DECIDING WHETHER TO GO GLOBAL
    ========================================================================== */
 
-/** A domestic market packed full; arrows push out across its border to foreign flags. */
+/** A domestic market packed full. Arrows push out across its border to foreign flags. */
 export function Saturated() {
   const cx = 240;
   const cy = 156;
@@ -830,7 +830,7 @@ export function ScaleCurve() {
     <Frame
       width={400}
       height={260}
-      label="A curve of cost per unit falling as volume grows. A dot early on the curve is marked domestic; a dot far along it, where cost per unit is lower, is marked global."
+      label="A curve of cost per unit falling as volume grows. A dot early on the curve is marked domestic. A dot far along it, where cost per unit is lower, is marked global."
     >
       <Key x={372} y={44} anchor="end" fill={INK} size={9.5}>
         ECONOMIES OF SCALE
@@ -911,10 +911,10 @@ export function OperatingRisks() {
 }
 
 /* ==========================================================================
-   MARKET ENTRY STRATEGIES — cascading flow of risk and control
+   MARKET ENTRY STRATEGIES: cascading flow of risk and control
    ========================================================================== */
 
-/** Three entry modes cascading downward; risk, control and profit potential rise with each. */
+/** Three entry modes cascading downward. Risk, control and profit potential rise with each. */
 export function EntryCascade() {
   const w = 280;
   const h = 96;
@@ -1193,7 +1193,7 @@ export function RiskControlSplit() {
   return (
     <Frame
       height={240}
-      label="Two bars, each split in half between the home company and the foreign company. The financial risk bar is marked shared; the management control bar is marked reduced."
+      label="Two bars, each split in half between the home company and the foreign company. The financial risk bar is marked shared. The management control bar is marked reduced."
     >
       <rect x={x0} y={30} width={14} height={14} fill={INK} />
       <Key x={x0 + 22} y={42} fill={INK} size={9.5}>
@@ -1538,7 +1538,7 @@ export function ProductRow({ kind }: { kind: "extension" | "adaptation" | "inven
           ? "A pack at home crosses the border and arrives unchanged."
           : kind === "adaptation"
             ? "A pack at home crosses the border and arrives altered: the same pack, reshaped and relabelled."
-            : "A pack at home; across the border stands something new, a bottle made for that market."
+            : "A pack at home. Across the border stands something new, a bottle made for that market."
       }
     >
       <Border x={200} y1={14} y2={130} />
@@ -1577,7 +1577,7 @@ export function TastesInfrastructure() {
   return (
     <Frame
       height={270}
-      label="Two inputs on the left, local tastes (a person thinking of a bowl with chopsticks) and infrastructure (a wall socket), feed arrows into one junction. From it a solid arrow selects product adaptation; dashed lines lead to straight extension and product invention."
+      label="Two inputs on the left, local tastes (a person thinking of a bowl with chopsticks) and infrastructure (a wall socket), feed arrows into one junction. From it a solid arrow selects product adaptation. Dashed lines lead to straight extension and product invention."
     >
       <Person3 x={60} y={130} k={1.2} />
       <Thought x={92} y={30} w={76} h={40} tx={66} ty={92} />
@@ -1620,7 +1620,7 @@ export function TastesInfrastructure() {
    PROMOTION ADAPTATION
    ========================================================================== */
 
-/** An advertisement card; the layout number sets how its picture and words sit. */
+/** An advertisement card. The layout number sets how its picture and words sit. */
 function AdCard({
   x,
   y,
@@ -1678,7 +1678,7 @@ function AdCard({
   );
 }
 
-/** An advertisement above a slider from same message to fully altered; the knob is a question. */
+/** An advertisement above a slider from same message to fully altered. The knob is a question. */
 export function HowMuchToAdapt() {
   return (
     <Frame
@@ -1882,7 +1882,7 @@ export function UniformPrice() {
   return (
     <Frame
       height={280}
-      label="Cost bars for five markets under one dashed line marked uniform price. In three markets the cost sits below the line; in two the cost bar breaks through it, and the part above the line is shaded."
+      label="Cost bars for five markets under one dashed line marked uniform price. In three markets the cost sits below the line. In two the cost bar breaks through it, and the part above the line is shaded."
     >
       <rect x={96} y={20} width={14} height={14} fill={PAPER2} stroke={INK} strokeWidth={1.25} />
       <Key x={118} y={32} fill={INK} size={9.5}>
@@ -1923,7 +1923,7 @@ const FRAG = Array.from({ length: 4 }, (_, z) =>
   })),
 );
 
-/** Four countries, each with its own tangle of outlets; links across borders break. */
+/** Four countries, each with its own tangle of outlets. Links across borders break. */
 export function Fragmented() {
   return (
     <Frame
@@ -1980,7 +1980,7 @@ function Ship({ x, y, tone = INK }: { x: number; y: number; tone?: string }) {
   );
 }
 
-/** Seller to border, then border to final buyers; one half lit. */
+/** Seller to border, then border to final buyers. One half lit. */
 export function WholeChannel({ phase }: { phase: "between" | "within" }) {
   const a = phase === "between" ? SIGNAL : INK3;
   const b = phase === "within" ? SIGNAL : INK3;
@@ -2048,7 +2048,7 @@ export function PhoneRivals() {
   return (
     <Frame
       height={280}
-      label="Two phones whose screens show the same four ticked features. Beside the flagship stands a tall price bar; beside the local competitor, a price bar exactly half as tall."
+      label="Two phones whose screens show the same four ticked features. Beside the flagship stands a tall price bar. Beside the local competitor, a price bar exactly half as tall."
     >
       <FeaturePhone x={150} y={140} tone={INK} />
       <rect x={244} y={60} width={40} height={160} fill={INK} />
@@ -2225,7 +2225,7 @@ export function HyperConnected() {
 }
 
 /* ==========================================================================
-   AI IN MARKETING — hub and spoke
+   AI IN MARKETING: hub and spoke
    ========================================================================== */
 
 type AiUse = "data" | "insight" | "predict" | "chat" | "auto";
@@ -2286,7 +2286,7 @@ const AI_USES: { kind: AiUse; lines: string[] }[] = [
   { kind: "auto", lines: ["AUTOMATED", "SYSTEMS"] },
 ];
 
-/** AI at the hub; five uses in marketing around it. */
+/** AI at the hub. Five uses in marketing around it. */
 export function AiHub() {
   const cx = 400;
   const cy = 214;
@@ -2441,7 +2441,7 @@ export function RealTimeSpend() {
     <Frame
       width={400}
       height={250}
-      label="Three ads, each with its coin stack and a small results line. The middle ad's results climb; the other two stay flat. Curved arrows move coins from the top and bottom stacks into the middle one, under a live dot marked real-time."
+      label="Three ads, each with its coin stack and a small results line. The middle ad's results climb. The other two stay flat. Curved arrows move coins from the top and bottom stacks into the middle one, under a live dot marked real-time."
     >
       <Key x={20} y={24} fill={INK} size={9.5}>
         AD SPEND
@@ -2555,7 +2555,7 @@ export function AlignedGoals() {
   );
 }
 
-/** A leaf-labelled pack fronting a smoking factory; the brand's stars fall away. */
+/** A leaf-labelled pack fronting a smoking factory. The brand's stars fall away. */
 export function Greenwash() {
   return (
     <Frame
@@ -2606,7 +2606,7 @@ function Bin({ x, y, fillLevel = 0, overflow = false, tone = INK }: { x: number;
   );
 }
 
-/** Design, use and reuse around one loop; the waste bin beside it is nearly empty. */
+/** Design, use and reuse around one loop. The waste bin beside it is nearly empty. */
 export function ReuseLoop() {
   const cx = 400;
   const cy = 162;
@@ -2661,12 +2661,12 @@ export function ReuseLoop() {
   );
 }
 
-/** Take, make, dispose in a straight line; a new arrow bends the end back to the start. */
+/** Take, make, dispose in a straight line. A new arrow bends the end back to the start. */
 export function TakeMakeDispose() {
   return (
     <Frame
       height={270}
-      label="A straight line of three stations: take, shown as a tree; make, a factory; dispose, an overflowing bin. A curved arrow runs underneath from the bin back to the tree, bending the line into a loop."
+      label="A straight line of three stations: take, shown as a tree. Make, a factory. Dispose, an overflowing bin. A curved arrow runs underneath from the bin back to the tree, bending the line into a loop."
     >
       <rect x={124} y={130} width={12} height={34} fill={PAPER} stroke={INK} strokeWidth={1.5} />
       <circle cx={130} cy={108} r={28} fill={PAPER2} stroke={INK} strokeWidth={1.5} />
@@ -2866,7 +2866,7 @@ export function PhysicalDigitalBridge() {
   return (
     <Frame
       height={250}
-      label="Two cliffs with a gap between. On the left cliff stands a store, labelled physical; on the right, a phone and a computer, labelled digital. A bridge whose two spans read AR and VR crosses the gap."
+      label="Two cliffs with a gap between. On the left cliff stands a store, labelled physical. On the right, a phone and a computer, labelled digital. A bridge whose two spans read AR and VR crosses the gap."
     >
       <path d="M0 150H236L216 250H0Z" fill={PAPER2} stroke={INK} strokeWidth={1.5} />
       <path d="M800 150H564L584 250H800Z" fill={PAPER2} stroke={INK} strokeWidth={1.5} />
@@ -3043,7 +3043,7 @@ export function DataIntegration() {
    DISCUSSION: THE ETHICS OF HYPER-PERSONALIZATION
    ========================================================================== */
 
-/** A baby-bottle ad on a phone; beside it, a scale from helpful to invasive with the line unset. */
+/** A baby-bottle ad on a phone. Beside it, a scale from helpful to invasive with the line unset. */
 export function WhereTheLine() {
   return (
     <Frame
@@ -3076,7 +3076,7 @@ export function WhereTheLine() {
 }
 
 /* ==========================================================================
-   CONCLUSION — small glyphs for the three takeaways
+   CONCLUSION: small glyphs for the three takeaways
    ========================================================================== */
 
 export function GlyphGlobal() {

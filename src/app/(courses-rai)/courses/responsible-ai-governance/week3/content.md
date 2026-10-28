@@ -142,7 +142,7 @@ week: week3
 - Discussion: An electronics manufacturer based in South Korea discovers that when North American shoppers ask a leading US-developed conversational assistant for laptop recommendations under 1,200 dollars, its laptops are recommended 40 percent less often than US-branded laptops with identical specifications and user ratings. How would you design a factorial audit to determine whether this gap is driven by brand awareness, a corpus-wide target-country effect, or an in-group interaction bias in the assistant, and what remedies could the manufacturer or platform pursue?
 
 ## Key Takeaways
-- Foundation models are not culturally neutral; pre-training web scrapes, subword tokenizers, and post-training RLHF raters embed dominant linguistic and WEIRD cultural defaults.
+- Foundation models are not culturally neutral. Pre-training web scrapes, subword tokenizers, and post-training RLHF raters embed dominant linguistic and WEIRD cultural defaults.
 - Tokenization fragmentation penalizes non-dominant languages and scripts with higher inference costs, shorter effective context windows, and lower task accuracy.
 - Generative AI systems produce representational harms through stereotyping, cultural erasure, markedness defaults, and sentiment disparities across demographic groups.
 - Administering the CETSCALE via exact token-level probability distributions reveals that most language models score near the extreme ethnocentric end of human benchmarks (Wadi, Ghodrat, & Philp, 2026).

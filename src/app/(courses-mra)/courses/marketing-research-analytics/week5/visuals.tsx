@@ -52,8 +52,8 @@ const Z_FRAME = normals(357, REPEATS);
 /**
  * Sampling and nonsampling error: twenty-four repeated samples from each of
  * two frames, at the sample size the slider sets. Samples from the complete
- * customer list scatter around the true 40% and close in on it as n grows;
- * samples from the email list close in just as fast, but on 55%, so their
+ * customer list scatter around the true 40% and close in on it as n grows.
+ * Samples from the email list close in just as fast, but on 55%, so their
  * frame error stays whatever the sample size.
  */
 export function ErrorsAndSampleSize() {
@@ -78,7 +78,7 @@ export function ErrorsAndSampleSize() {
       <Frame
         width={800}
         height={268}
-        label={`Twenty-four samples of ${n} customers drawn from the complete customer list scatter around the true share of 40 percent, within about ${Math.round(196 * se)} points of it; twenty-four samples of ${n} drawn from the email subscriber list scatter around 55 percent. As the sample size grows both clusters narrow, but the email samples stay centred 15 points away from the true value`}
+        label={`Twenty-four samples of ${n} customers drawn from the complete customer list scatter around the true share of 40 percent, within about ${Math.round(196 * se)} points of it. Twenty-four samples of ${n} drawn from the email subscriber list scatter around 55 percent. As the sample size grows both clusters narrow, but the email samples stay centred 15 points away from the true value`}
       >
         <Display x={20} y={30} fill={INK} size={24}>{`n = ${n.toLocaleString("en-US")}`}</Display>
         <Key x={20} y={48} fill={INK3} size={9.5}>24 SAMPLES PER LIST</Key>
@@ -156,7 +156,7 @@ const meanOf = (picks: number[]) => picks.reduce((a, d) => a + DAILY[d], 0) / pi
  * sales laid out as a calendar, with every kth day selected from a random
  * start. At an interval of 7 every selected day falls on the same weekday,
  * so the estimate of average daily sales depends on which weekday the start
- * happens to hit; at 5, 6 or 8 the selected days spread across the week and
+ * happens to hit. At 5, 6 or 8 the selected days spread across the week and
  * every start lands close to the true average.
  */
 export function PeriodicList() {
@@ -250,7 +250,7 @@ export function PeriodicList() {
    Stratified and Cluster Sampling
    -------------------------------------------------------------------------- */
 
-/** Buyers in each block of ten; the four rows of blocks are four regions. */
+/** Buyers in each block of ten. The four rows of blocks are four regions. */
 const BLOCK_BUYERS = [
   [0, 1, 1, 0],
   [2, 2, 1, 3],
@@ -261,7 +261,7 @@ const PER_BLOCK = 10;
 const POP = 160;
 const SAMPLE_N = 20;
 const DRAWS = 24;
-/** Person p (0–159): block b = floor(p / 10), region = floor(b / 4). */
+/** Person p (0 to 159): block b = floor(p / 10), region = floor(b / 4). */
 const BUYS = (() => {
   const rnd = seeded(33);
   const out: boolean[] = [];
@@ -310,7 +310,7 @@ const shareOf = (members: number[]) => members.filter((m) => BUYS[m]).length / m
  * Stratified and cluster sampling: 160 customers in sixteen city blocks,
  * four blocks to each of four regions, and the regions differ sharply in the
  * share who would buy. A sample of twenty drawn with the chosen technique is
- * marked on the map; beside it, the estimates from twenty-four samples of
+ * marked on the map. Beside it, the estimates from twenty-four samples of
  * twenty with each technique. Stratified samples cluster tightly on the true
  * 50%, simple random samples spread wider, and samples of two whole blocks
  * spread widest.
@@ -343,9 +343,9 @@ export function StrataAndClusters() {
       <Frame
         width={800}
         height={322}
-        label={`A population of 160 customers in sixteen city blocks, four to each of four regions; the share who would buy ranges from about 5 percent in one region to about 95 percent in another, 50 percent overall. A ${tech === "random" ? "simple random" : tech} sample of twenty is marked, which estimates ${Math.round(shareOf(members) * 100)} percent. Across twenty-four samples of twenty, stratified estimates lie closest to 50 percent, simple random estimates spread wider, and cluster estimates spread widest`}
+        label={`A population of 160 customers in sixteen city blocks, four to each of four regions. The share who would buy ranges from about 5 percent in one region to about 95 percent in another, 50 percent overall. A ${tech === "random" ? "simple random" : tech} sample of twenty is marked, which estimates ${Math.round(shareOf(members) * 100)} percent. Across twenty-four samples of twenty, stratified estimates lie closest to 50 percent, simple random estimates spread wider, and cluster estimates spread widest`}
       >
-        <Key x={bx0} y={22} fill={INK3} size={10}>{`${POP} CUSTOMERS · 16 BLOCKS · 4 REGIONS`}</Key>
+        <Key x={bx0} y={22} fill={INK3} size={10}>{`${POP} CUSTOMERS | 16 BLOCKS | 4 REGIONS`}</Key>
         {BLOCK_BUYERS.map((row, r) => (
           <g key={r}>
             <rect x={bx0 - 6} y={blockY(r) - 4} width={4 * bw + 3 * bg + 12} height={bh + 8} fill="none" stroke={tech === "stratified" ? SIGNAL : RULE} strokeWidth={tech === "stratified" ? 1.25 : 1} />
@@ -436,7 +436,7 @@ const POPULATIONS = [
 ] as const;
 type PopId = (typeof POPULATIONS)[number]["id"];
 
-/** Sample size for a proportion at 95% confidence, p = 0.5, e in points; corrected for a finite population. */
+/** Sample size for a proportion at 95% confidence, p = 0.5, e in points. Corrected for a finite population. */
 function requiredN(e: number, N: number) {
   const n0 = (1.96 ** 2 * 0.25) / (e / 100) ** 2;
   return Math.ceil(n0 / (1 + (n0 - 1) / N));
@@ -447,9 +447,9 @@ const pts = (e: number) => (Number.isInteger(e) ? String(e) : e.toFixed(1));
 /**
  * Precision and sample size: the sample required to estimate a proportion at
  * 95% confidence, plotted against the margin of error. The student drags the
- * margin along the axis and reads the sample size; the open point at half the
+ * margin along the axis and reads the sample size. The open point at half the
  * margin needs about four times as many. Switching the population from 1
- * million to 100 million leaves the curve where it is; only a population as
+ * million to 100 million leaves the curve where it is. Only a population as
  * small as 1,000 or 10,000 bends it down.
  */
 export function SampleSizeCurve() {
@@ -597,7 +597,7 @@ export function ContactFunnel() {
     <Frame
       width={400}
       height={222}
-      label="Three bars drawn to scale: 1,925 people contacted; half of them, about 963, qualify at an incidence rate of 50 percent; 40 percent of those, 385, complete the questionnaire"
+      label="Three bars drawn to scale: 1,925 people contacted. Half of them, about 963, qualify at an incidence rate of 50 percent. 40 percent of those, 385, complete the questionnaire"
     >
       {rows.map((r, i) => (
         <g key={r.key}>
@@ -639,7 +639,7 @@ const CHECKS: { id: Check; label: string; tag: string }[] = [
 ];
 /**
  * Thirty completed questionnaires. Twenty come from genuine respondents, ten
- * of them satisfied; the other ten are speeders, straight-liners, an
+ * of them satisfied. The other ten are speeders, straight-liners, an
  * inconsistent respondent, two entries from one device and three bots, all
  * reporting satisfaction. Each lists the checks that would flag it.
  */
@@ -668,7 +668,7 @@ const BOT_ON_DEVICE = 22;
 
 /**
  * Data quality checks: thirty completed questionnaires, satisfied
- * respondents filled. The student switches checks on; each flags a
+ * respondents filled. The student switches checks on. Each flags a
  * different set of respondents, which are set aside and named by the check
  * that caught them, and the share satisfied among those kept falls from 67%
  * towards the 50% of the genuine respondents only when all five checks run.
@@ -698,7 +698,7 @@ export function QualityChecks() {
         label={`Thirty completed questionnaires. With ${on.length ? on.map((c) => CHECKS.find((k) => k.id === c)!.label.toLowerCase()).join(", ") : "no checks"} applied, ${removed} are removed, and ${Math.round(share * 100)} percent of the remaining respondents are satisfied, against 50 percent among the twenty genuine respondents`}
       >
         <Key x={ax0} y={16} fill={INK3} size={10}>
-          30 QUESTIONNAIRES · <tspan fill={COUNTER}>SATISFIED</tspan>
+          30 QUESTIONNAIRES | <tspan fill={COUNTER}>SATISFIED</tspan>
         </Key>
         {BATCH.map((r, i) => {
           const cx = r2(gx + (i % cols) * cw + cw / 2);
@@ -746,7 +746,7 @@ export function QualityChecks() {
    Limitations of Synthetic Respondents
    -------------------------------------------------------------------------- */
 
-/** Thirty answers on a 7-point purchase-intention scale, as counts for 1–7. */
+/** Thirty answers on a 7-point purchase-intention scale, as counts for 1 to 7. */
 const REAL_COUNTS = [2, 3, 5, 6, 6, 5, 3];
 const WORDINGS = [
   { id: "a", label: "Wording A", prompt: "\u201cYou are a 35-year-old shopper.\u201d", counts: [0, 0, 1, 5, 16, 7, 1] },
@@ -800,7 +800,7 @@ export function SyntheticSpread() {
       <Frame
         width={400}
         height={304}
-        label={`Purchase intention on a 7-point scale. Thirty real respondents spread from 1 to 7, standard deviation ${real.sd.toFixed(1)}. Thirty synthetic respondents prompted with ${wording.prompt} cluster around ${syn.mean.toFixed(1)}, standard deviation ${syn.sd.toFixed(1)}; each wording moves the cluster to a different point`}
+        label={`Purchase intention on a 7-point scale. Thirty real respondents spread from 1 to 7, standard deviation ${real.sd.toFixed(1)}. Thirty synthetic respondents prompted with ${wording.prompt} cluster around ${syn.mean.toFixed(1)}, standard deviation ${syn.sd.toFixed(1)}. Each wording moves the cluster to a different point`}
       >
         <Key x={x0 - 24} y={18} fill={COUNTER} size={10}>30 REAL RESPONDENTS</Key>
         <Key x={376} y={18} anchor="end" fill={INK} size={10}>{`SD ${real.sd.toFixed(1)}`}</Key>
@@ -851,7 +851,7 @@ const WTP_DRAWS: { v: number; j: number }[] = (() => {
 
 /**
  * Interactive: the slider sets how many responses are drawn from the same
- * model with the same prompt. Each response is a dot; below the axis, the
+ * model with the same prompt. Each response is a dot. Below the axis, the
  * mean of the responses and its 95 percent confidence interval, which
  * narrows with the square root of the number of responses. It opens at 10.
  */
@@ -872,9 +872,9 @@ export function ResponsesPerPrompt() {
       <Frame
         width={400}
         height={212}
-        label={`Willingness to pay stated by one model in ${k} ${k === 1 ? "response" : "responses"} to the same prompt${k > 1 ? `, spread from ${money(Math.min(...draws.map((d) => d.v)))} to ${money(Math.max(...draws.map((d) => d.v)))}` : ""}. The mean is ${money(mean)}${k > 1 ? `, with a 95 percent confidence interval of plus or minus ${money(half)}` : "; a single response gives no estimate of variation"}`}
+        label={`Willingness to pay stated by one model in ${k} ${k === 1 ? "response" : "responses"} to the same prompt${k > 1 ? `, spread from ${money(Math.min(...draws.map((d) => d.v)))} to ${money(Math.max(...draws.map((d) => d.v)))}` : ""}. The mean is ${money(mean)}${k > 1 ? `, with a 95 percent confidence interval of plus or minus ${money(half)}` : ". A single response gives no estimate of variation"}`}
       >
-        <Key x={16} y={20} fill={INK3} size={9.5}>{`${k} ${k === 1 ? "RESPONSE" : "RESPONSES"} · SAME PROMPT`}</Key>
+        <Key x={16} y={20} fill={INK3} size={9.5}>{`${k} ${k === 1 ? "RESPONSE" : "RESPONSES"} | SAME PROMPT`}</Key>
         {draws.map((d, i) => (
           <circle key={i} cx={sx(d.v)} cy={r2(44 + d.j * 66)} r={k > 60 ? 3 : 4} fill={PAPER3} stroke={INK} strokeWidth={1} />
         ))}
@@ -894,7 +894,7 @@ export function ResponsesPerPrompt() {
         ) : null}
         <circle cx={sx(mean)} cy={yMean} r={5} fill={SIGNAL} />
         <Key x={16} y={yMean + 34} fill={SIGNAL} size={10}>
-          {k > 1 ? `MEAN ${money(mean)} · 95% INTERVAL ± ${money(half)}` : `ONE RESPONSE ${money(mean)} · NO ESTIMATE OF VARIATION`}
+          {k > 1 ? `MEAN ${money(mean)} | 95% INTERVAL ± ${money(half)}` : `ONE RESPONSE ${money(mean)} | NO ESTIMATE OF VARIATION`}
         </Key>
       </Frame>
       <Slider label="Responses" value={k} min={1} max={WTP_MAX_K} onChange={setK} />

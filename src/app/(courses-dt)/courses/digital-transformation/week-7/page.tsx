@@ -61,13 +61,13 @@ const SECTIONS = [
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif; terms set bold in the display serif. */
+/* Body copy: the reading serif. Terms set bold in the display serif. */
 const BODY_BASE = "font-body leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
 const BODY = `${BODY_BASE} text-base md:text-[1.08rem]`;
 const LIST =
   "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
 const SUBLIST =
-  "list-none flex flex-col gap-1 mt-1.5 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['–'] [&>li]:before:shrink-0";
+  "list-none flex flex-col gap-1 mt-1.5 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['-'] [&>li]:before:shrink-0";
 
 function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
   return (
@@ -120,7 +120,7 @@ export default function DigitalTransformationWeek7() {
       </Link>
 
       <PosterHero
-        category="WEEK 7 — DIGITAL TRANSFORMATION"
+        category="WEEK 7: DIGITAL TRANSFORMATION"
         title="Week 7: Blockchain Technology"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
@@ -133,7 +133,7 @@ export default function DigitalTransformationWeek7() {
       />
 
       {/* ================================================================
-          CHAPTER 1 — BLOCKCHAIN
+          CHAPTER 1: BLOCKCHAIN
           ================================================================ */}
       <ChapterBand id="ch1" number="01" title="Blockchain" />
 
@@ -219,7 +219,7 @@ export default function DigitalTransformationWeek7() {
           {[
             <div key="decentralized">
               <p className="text-xl">
-                <strong>Decentralized</strong>: No single point of control; data is distributed across a network.
+                <strong>Decentralized</strong>: No single point of control. Data is distributed across a network.
               </p>
               <Dashes items={[<>Contrast with cloud computing</>]} />
             </div>,
@@ -250,7 +250,7 @@ export default function DigitalTransformationWeek7() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 2 — SMART CONTRACTS
+          CHAPTER 2: SMART CONTRACTS
           ================================================================ */}
       <ChapterBand id="ch2" number="02" title="Smart Contracts" />
 
@@ -314,7 +314,7 @@ export default function DigitalTransformationWeek7() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 3 — SUPPLY CHAIN MANAGEMENT
+          CHAPTER 3: SUPPLY CHAIN MANAGEMENT
           ================================================================ */}
       <ChapterBand id="ch3" number="03" title="Supply Chain Management" />
 
@@ -449,7 +449,7 @@ export default function DigitalTransformationWeek7() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 4 — REAL ESTATE & NFTS
+          CHAPTER 4: REAL ESTATE & NFTS
           ================================================================ */}
       <ChapterBand id="ch4" number="04" title="Real Estate & NFTs" />
 
@@ -519,13 +519,13 @@ export default function DigitalTransformationWeek7() {
                 {[
                   {
                     feature: "Execution",
-                    trad: "Manually executed; signed on paper or digital formats.",
+                    trad: "Manually executed. Signed on paper or digital formats.",
                     smart: "Automatically executed when predefined conditions are met.",
                   },
                   {
                     feature: "Trust Requirement",
                     trad: "Requires trust in intermediaries (e.g., brokers, attorneys).",
-                    smart: "Trust is minimized; relies on blockchain technology for security.",
+                    smart: "Trust is minimized. Relies on blockchain technology for security.",
                   },
                   {
                     feature: "Involvement of Intermediaries",
@@ -580,7 +580,7 @@ export default function DigitalTransformationWeek7() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 5 — FINANCIAL SERVICES & LEGAL CONTRACTS
+          CHAPTER 5: FINANCIAL SERVICES & LEGAL CONTRACTS
           ================================================================ */}
       <ChapterBand id="ch5" number="05" title="Financial Services & Legal Contracts" />
 
@@ -765,7 +765,7 @@ export default function DigitalTransformationWeek7() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 6 — VOTING, INTELLECTUAL PROPERTY & OTHER USE CASES
+          CHAPTER 6: VOTING, INTELLECTUAL PROPERTY & OTHER USE CASES
           ================================================================ */}
       <ChapterBand id="ch6" number="06" title="Voting, Intellectual Property & Other Use Cases" />
 

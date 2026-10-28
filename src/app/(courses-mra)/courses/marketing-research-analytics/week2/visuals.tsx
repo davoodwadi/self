@@ -103,7 +103,7 @@ export function PilotSamples() {
       <Frame
         width={400}
         height={298}
-        label={`A population of sixty people, eighteen of whom hold a view; a pilot sample of six in which ${current.holds} hold it, and the shares found by the last ${draws.length} pilot samples scattered around the population's thirty percent`}
+        label={`A population of sixty people, eighteen of whom hold a view. A pilot sample of six in which ${current.holds} hold it, and the shares found by the last ${draws.length} pilot samples scattered around the population's thirty percent`}
       >
         <Key x={30} y={18} fill={INK3}>POPULATION</Key>
         <Key x={370} y={18} anchor="end" fill={COUNTER}>{`${POP_HOLD} OF ${POP_N} HOLD THE VIEW`}</Key>
@@ -162,7 +162,7 @@ export function PilotSamples() {
    -------------------------------------------------------------------------- */
 
 type StoreGroup = "all" | "small" | "large";
-/** Advertising spend (0–10) and sales (0–100) of twenty stores. */
+/** Advertising spend (0 to 10) and sales (0 to 100) of twenty stores. */
 const SMALL_STORES: [number, number][] = [
   [0.9, 30], [1.5, 40], [1.8, 22], [2.3, 33], [2.8, 44], [3.0, 18], [3.4, 29], [3.9, 39], [4.2, 24], [4.6, 34],
 ];
@@ -218,8 +218,8 @@ export function AssociationNotCause() {
         ? { x: r2(lineEnd.x + 10), y: r2(lineEnd.y + 4), anchor: "start" as const }
         : { x: r2(X(lx0) - 10), y: r2(Y(a + b * lx0) + 4), anchor: "end" as const };
   const label = flat
-    ? `Twenty stores by advertising spend and sales; only the ${group} stores are shown in full, and among them the fitted line is flat: no association`
-    : "Twenty stores by advertising spend and sales, small stores low on both and large stores high on both; the fitted line across all stores rises steeply: the two are associated";
+    ? `Twenty stores by advertising spend and sales. Only the ${group} stores are shown in full, and among them the fitted line is flat: no association`
+    : "Twenty stores by advertising spend and sales, small stores low on both and large stores high on both. The fitted line across all stores rises steeply: the two are associated";
 
   return (
     <>
@@ -386,8 +386,8 @@ const TREND_MAX = 40;
  * both groups alike.
  *
  * Interactive: drag the unchanged stores' AFTER point up or down, which sets
- * how much sales would have moved anyway. The before–after change in the
- * reduced stores swings with it; the difference from the unchanged stores
+ * how much sales would have moved anyway. The before-after change in the
+ * reduced stores swings with it. The difference from the unchanged stores
  * stays at +20. Only the controlled comparison isolates the effect of the
  * manipulation. It opens with sales rising by 25 anyway.
  */
@@ -420,7 +420,7 @@ export function ControlledEffect() {
     <Frame
       width={400}
       height={292}
-      label={`Weekly sales before and after a price reduction. Where the price was reduced, sales changed by ${sign(change)}; where it was unchanged, by ${sign(trend)}. The difference between them, the effect of the reduction, is +${EFFECT}`}
+      label={`Weekly sales before and after a price reduction. Where the price was reduced, sales changed by ${sign(change)}. Where it was unchanged, by ${sign(trend)}. The difference between them, the effect of the reduction, is +${EFFECT}`}
       className="cursor-ns-resize touch-none select-none"
       svgProps={{
         onPointerDown: (e) => {
@@ -481,7 +481,7 @@ export function ControlledEffect() {
 
       {/* the two comparisons */}
       <line x1={L} y1={232} x2={380} y2={232} stroke={RULE} strokeWidth={1} />
-      <Key x={L} y={252} fill={INK3} size={10}>BEFORE–AFTER</Key>
+      <Key x={L} y={252} fill={INK3} size={10}>BEFORE-AFTER</Key>
       <Display x={L} y={280} fill={INK} size={28}>{sign(change)}</Display>
       <Key x={ax + 16} y={252} fill={SIGNAL} size={10}>REDUCED VS UNCHANGED</Key>
       <Display x={ax + 16} y={280} fill={SIGNAL} size={28}>{sign(EFFECT)}</Display>
@@ -624,7 +624,7 @@ const UPPER_MAX = 44;
  * Interactive: drag the edge of the band. Moving the upper age from 24 to 34
  * roughly doubles the reported share, although not one buyer has changed:
  * two sources can disagree only because they define the group differently.
- * It opens at 18–24.
+ * It opens at 18 to 24.
  */
 export function DefinitionShift() {
   const [upper, setUpper] = useState(24);
@@ -667,7 +667,7 @@ export function DefinitionShift() {
     >
       {/* the definition: a band from 18 to the upper age */}
       <rect x={band0} y={top - 8} width={r2(edge - band0)} height={axisY - top + 8} fill={SIGNAL_TINT} />
-      <Key x={band0} y={top - 28} fill={SIGNAL}>{`YOUNG ADULTS ${18}–${upper}`}</Key>
+      <Key x={band0} y={top - 28} fill={SIGNAL}>{`YOUNG ADULTS ${18}n/a${upper}`}</Key>
 
       {/* buyers at each age */}
       {BUYERS_BY_AGE.map((v, i) => {
@@ -747,7 +747,7 @@ export function InternalCoverage() {
     <Frame
       width={400}
       height={206}
-      label="A market of three groups of nine people: the firm's customers, enclosed by the firm's internal data; competitors' customers; and people who have never purchased, both outside it"
+      label="A market of three groups of nine people: the firm's customers, enclosed by the firm's internal data. Competitors' customers. And people who have never purchased, both outside it"
     >
       <rect x={20} y={10} width={104} height={146} rx={4} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
       <Key x={72} y={29} anchor="middle" fill={SIGNAL} size={10}>INTERNAL DATA</Key>

@@ -27,7 +27,7 @@ import {
 } from "../_visuals/kit";
 
 // ============================================================================
-// WEEK 03 — APPLICATIONS OF AI IN FINANCE
+// WEEK 03: APPLICATIONS OF AI IN FINANCE
 // ============================================================================
 // Same deck grammar as Weeks 01 and 02: every slide is hand-composed for its
 // own argument, with hairlines instead of boxes and crimson marking one thing.
@@ -49,7 +49,7 @@ export default function Week03Finance() {
       <ScrollProgress label="Week 03" />
 
       {/* ==================================================================
-          01 · TITLE — masthead with the five things the subtitle says
+          01. TITLE: masthead with the five things the subtitle says
           intelligent systems reshape, set in a ruled row.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
@@ -114,16 +114,16 @@ export default function Week03Finance() {
             <span
               className={`${MICRO} font-normal text-[var(--charcoal-light)]/60`}
             >
-              BUSI 654 · Applications of AI in Business
+              BUSI 654. Applications of AI in Business
             </span>
           </div>
         </div>
       </Slide>
 
       {/* ==================================================================
-          02 · WHY FINANCE BECAME AN AI DOMAIN — the six repeated decisions
-          as a ruled row; three signal sources drawn as dense tick lanes;
-          one small error fanning out to what it is linked to.
+          02. WHY FINANCE BECAME AN AI DOMAIN: the six repeated decisions
+          as a ruled row. Three signal sources drawn as dense tick lanes.
+          One small error fanning out to what it is linked to.
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="why-finance-ai" border align="left">
@@ -243,8 +243,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          03 · DECISION ARCHITECTURE — five functions, each a lane turning
-          information into decisions; three tests for AI; judgment set
+          03. DECISION ARCHITECTURE: five functions, each a lane turning
+          information into decisions. Three tests for AI. Judgment set
           against opacity.                        [quiz: why-finance-ai]
       ================================================================== */}
       <Slide
@@ -361,7 +361,7 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          04 · VALUE CREATION — revenue, cost and risk as three ruled rows,
+          04. VALUE CREATION: revenue, cost and risk as three ruled rows,
           each carrying its own sources of gain.
       ================================================================== */}
       <Slide id="value-creation" border align="left">
@@ -424,8 +424,8 @@ export default function Week03Finance() {
       />
 
       {/* ==================================================================
-          06 · DATA TYPES AND SIGNAL QUALITY — the structured table; four
-          richer forms drawn as glyphs; then the three data disciplines set
+          06. DATA TYPES AND SIGNAL QUALITY: the structured table. Four
+          richer forms drawn as glyphs. Then the three data disciplines set
           ahead of model novelty.
       ================================================================== */}
       <Slide id="data-signal-quality" border align="left">
@@ -619,8 +619,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          07 · MATCHING METHOD TO TASK — three method families as ruled rows,
-          each with the tasks it supports; generative models carry the one
+          07. MATCHING METHOD TO TASK: three method families as ruled rows,
+          each with the tasks it supports. Generative models carry the one
           struck tag.                                     [quiz topic]
       ================================================================== */}
       <Slide id="method-to-task" border align="left">
@@ -697,8 +697,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          08 · HUMAN JUDGMENT — one decision branching into its three
-          consequences; the three conditions for oversight; automation with
+          08. HUMAN JUDGMENT: one decision branching into its three
+          consequences. The three conditions for oversight. Automation with
           the escalation path drawn off it.        [quiz: method-to-task]
       ================================================================== */}
       <Slide
@@ -714,8 +714,8 @@ export default function Week03Finance() {
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
           <div>
             <p className={BODY}>
-              High-value financial decisions are rarely one-shot predictions;
-              they carry legal, reputational, and capital consequences.
+              High-value financial decisions are rarely one-shot predictions.
+              They carry legal, reputational, and capital consequences.
             </p>
           </div>
           <div>
@@ -876,9 +876,9 @@ export default function Week03Finance() {
       />
 
       {/* ==================================================================
-          10 · CREDIT SCORING — a static scorecard beside three richer
-          pattern layers; applicants ordered by risk and cut into approve,
-          review and decline; three conditions on predictive power.
+          10. CREDIT SCORING: a static scorecard beside three richer
+          pattern layers. Applicants ordered by risk and cut into approve,
+          review and decline. Three conditions on predictive power.
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="credit-scoring" border align="left">
@@ -1064,8 +1064,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          11 · UNDERWRITING — four signal sources converging on the lender;
-          the three groups broader signals can reach; three open questions
+          11. UNDERWRITING: four signal sources converging on the lender.
+          The three groups broader signals can reach. Three open questions
           about new inputs.                          [quiz: credit-scoring]
       ================================================================== */}
       <Slide
@@ -1185,8 +1185,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          12 · PRICING, LIMITS, PROFITABILITY — approval as the first stop on
-          a longer line; three quantities held on one rule; margin set
+          12. PRICING, LIMITS, PROFITABILITY: approval as the first stop on
+          a longer line. Three quantities held on one rule. Margin set
           against what it can worsen.
       ================================================================== */}
       <Slide id="pricing-limits" border align="left">
@@ -1196,7 +1196,7 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
-            Credit decisions do not end at approval; institutions also set
+            Credit decisions do not end at approval. Institutions also set
             limits, pricing, covenants, and review intensity.
           </p>
           <svg
@@ -1287,8 +1287,8 @@ export default function Week03Finance() {
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
             <Split1
-              left="Optimize · short-term margin"
-              right="Worsening · adverse selection or customer trust"
+              left="Optimize | short-term margin"
+              right="Worsening | adverse selection or customer trust"
               cols="grid-cols-[1fr_1.6fr]"
             />
             <p className={`${LEAD} mt-6 max-w-4xl`}>
@@ -1300,8 +1300,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          13 · EARLY WARNING — five signals arriving on a line ahead of formal
-          default; prediction handing on to intervention; the two things
+          13. EARLY WARNING: five signals arriving on a line ahead of formal
+          default. Prediction handing on to intervention. The two things
           response teams need.
       ================================================================== */}
       <Slide id="early-warning" border align="left">
@@ -1413,8 +1413,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          14 · COLLECTIONS — four treatment dials; the best treatment as a
-          balance point between three pulls; prioritization held inside
+          14. COLLECTIONS: four treatment dials. The best treatment as a
+          balance point between three pulls. Prioritization held inside
           policy boundaries.
       ================================================================== */}
       <Slide id="collections" border align="left">
@@ -1462,7 +1462,7 @@ export default function Week03Finance() {
         <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_22rem] md:gap-14">
             <p className={LEAD}>
-              The best treatment is not always the most aggressive; it must
+              The best treatment is not always the most aggressive. It must
               balance recovery, customer outcome, and regulatory expectations.
             </p>
             <svg
@@ -1564,8 +1564,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          15 · EXPLAINABILITY AND FAIRNESS — the three adverse outcomes; the
-          audiences an explanation must reach; the governance question held
+          15. EXPLAINABILITY AND FAIRNESS: the three adverse outcomes. The
+          audiences an explanation must reach. The governance question held
           across segments, outcomes and contexts.          [quiz topic]
       ================================================================== */}
       <Slide id="explainability-fairness" border align="left">
@@ -1675,8 +1675,8 @@ export default function Week03Finance() {
       />
 
       {/* ==================================================================
-          17 · FRAUD AS AN ADVERSARIAL PROBLEM — detection and change drawn
-          as a loop; five inputs joined; static rules decaying over time.
+          17. FRAUD AS AN ADVERSARIAL PROBLEM: detection and change drawn
+          as a loop. Five inputs joined. Static rules decaying over time.
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="fraud-adversarial" border align="left">
@@ -1828,8 +1828,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          18 · TRANSACTION MONITORING AND AML — a ledger with the rows that
-          merit investigation marked; three things AI adds; the credibility
+          18. TRANSACTION MONITORING AND AML: a ledger with the rows that
+          merit investigation marked. Three things AI adds. The credibility
           beam resting on three supports.        [quiz: fraud-adversarial]
       ================================================================== */}
       <Slide
@@ -1945,9 +1945,9 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          19 · GRAPH ANALYTICS AND ENTITY RESOLUTION — the same entities as
+          19. GRAPH ANALYTICS AND ENTITY RESOLUTION: the same entities as
           separate table rows, then connected through shared addresses and
-          phones; broken links and weak links drawn side by side.
+          phones. Broken links and weak links drawn side by side.
       ================================================================== */}
       <Slide id="graph-entity" border align="left">
         <Head1 eyebrow="Connecting the network">
@@ -2150,8 +2150,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          20 · FALSE POSITIVES AND INCLUSION — three harms of oversensitive
-          detection; the two costs set on one beam; the overlap where some
+          20. FALSE POSITIVES AND INCLUSION: three harms of oversensitive
+          detection. The two costs set on one beam. The overlap where some
           groups are caught.
       ================================================================== */}
       <Slide id="false-positives" border align="left">
@@ -2309,8 +2309,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          21 · COMPLIANCE COPILOTS — four tasks ending at the right reviewer;
-          leverage set against autonomous judgment; three controls standing
+          21. COMPLIANCE COPILOTS: four tasks ending at the right reviewer.
+          Leverage set against autonomous judgment. Three controls standing
           in front of the formal record.
       ================================================================== */}
       <Slide id="compliance-copilots" border align="left">
@@ -2398,8 +2398,8 @@ export default function Week03Finance() {
       />
 
       {/* ==================================================================
-          23 · MARKET FORECASTING — six streams converging; certainty struck
-          against signal extraction; the same points read once as structure
+          23. MARKET FORECASTING: six streams converging. Certainty struck
+          against signal extraction. The same points read once as structure
           and once as overfit noise.
       ================================================================== */}
       <Slide id="market-forecasting" border align="left">
@@ -2464,7 +2464,7 @@ export default function Week03Finance() {
               cols="grid-cols-[1fr_1.6fr]"
             />
             <p className={`${LEAD} mt-6 max-w-4xl`}>
-              The task is rarely to predict markets with certainty; it is to
+              The task is rarely to predict markets with certainty. It is to
               improve signal extraction and decision support under uncertainty.
             </p>
           </div>
@@ -2544,8 +2544,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          24 · PORTFOLIO CONSTRUCTION — four things the tools help with; the
-          assumptions drawn dashed because they are assumptions; the
+          24. PORTFOLIO CONSTRUCTION: four things the tools help with. The
+          assumptions drawn dashed because they are assumptions. The
           default route to decision support and the gated route to
           automated execution.                              [quiz topic]
       ================================================================== */}
@@ -2676,8 +2676,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          25 · MODEL RISK — three series that shift abruptly; performance
-          that holds in one regime and falls at the break; four disciplines
+          25. MODEL RISK: three series that shift abruptly. Performance
+          that holds in one regime and falls at the break. Four disciplines
           of model risk management.        [quiz: portfolio-construction]
       ================================================================== */}
       <Slide
@@ -2831,8 +2831,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          26 · STRESS TESTING — the band of severe but plausible shocks; four
-          tasks AI can accelerate; exact prediction struck against surfacing
+          26. STRESS TESTING: the band of severe but plausible shocks. Four
+          tasks AI can accelerate. Exact prediction struck against surfacing
           what matters before a crisis.
       ================================================================== */}
       <Slide id="stress-testing" border align="left">
@@ -2938,8 +2938,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          27 · TREASURY AND LIQUIDITY — five forecasts; the balance sheet as a
-          grid with one cell out of place; explicit limits drawn as a hard
+          27. TREASURY AND LIQUIDITY: five forecasts. The balance sheet as a
+          grid with one cell out of place. Explicit limits drawn as a hard
           rule over what they are intertwined with.
       ================================================================== */}
       <Slide id="treasury-liquidity" border align="left">
@@ -3022,8 +3022,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          28 · PRICING, HEDGING, LIMITS OF AUTOMATION — continuous
-          optimization set against what full automation amplifies; the
+          28. PRICING, HEDGING, LIMITS OF AUTOMATION: continuous
+          optimization set against what full automation amplifies. The
           evaluation checklist with local accuracy marked as not enough.
       ================================================================== */}
       <Slide id="pricing-hedging" border align="left">
@@ -3035,7 +3035,7 @@ export default function Week03Finance() {
           <div className="mt-10 w-full max-w-5xl">
             <Split1
               left="Optimized continuously"
-              right="Full automation · feedback loops and hidden assumptions"
+              right="Full automation | feedback loops and hidden assumptions"
               cols="grid-cols-[1fr_1.6fr]"
             />
             <p className={`${LEAD} mt-6 max-w-4xl`}>
@@ -3113,8 +3113,8 @@ export default function Week03Finance() {
       />
 
       {/* ==================================================================
-          30 · INTELLIGENT DOCUMENT PROCESSING — seven stacked document
-          types; a form with one missing field; OCR struck against the
+          30. INTELLIGENT DOCUMENT PROCESSING: seven stacked document
+          types. A form with one missing field. OCR struck against the
           benefit that matters.
       ================================================================== */}
       <Slide id="document-processing" border align="left">
@@ -3206,7 +3206,7 @@ export default function Week03Finance() {
           <div className="mt-14 w-full max-w-5xl">
             <Split1
               left="Merely optical character recognition"
-              right="Shorter cycle time · cleaner downstream data"
+              right="Shorter cycle time | cleaner downstream data"
               strikeLeft
               cols="grid-cols-[1fr_1.3fr]"
             />
@@ -3219,9 +3219,9 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          31 · RECONCILIATION AND EXCEPTIONS — records matched across two
-          systems with one break; three things machine learning adds;
-          prompts set against hidden rules.
+          31. RECONCILIATION AND EXCEPTIONS: records matched across two
+          systems with one break. Three things machine learning adds.
+          Prompts set against hidden rules.
       ================================================================== */}
       <Slide id="reconciliation" border align="left">
         <Head1 eyebrow="Control rooms">
@@ -3325,8 +3325,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          32 · CUSTOMER SERVICE AND ADVICE — three assistant jobs; three
-          sectors resting on suitability and fiduciary expectations; two
+          32. CUSTOMER SERVICE AND ADVICE: three assistant jobs. Three
+          sectors resting on suitability and fiduciary expectations. Two
           trays for interactions.
       ================================================================== */}
       <Slide id="customer-service" border align="left">
@@ -3420,9 +3420,9 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          33 · PERSONALIZATION AND CONDUCT RISK — four things firms tailor;
-          a nudge crossing from relevance into manipulation or mis-selling;
-          four guardrails drawn as rails.
+          33. PERSONALIZATION AND CONDUCT RISK: four things firms tailor.
+          A nudge crossing from relevance into manipulation or mis-selling.
+          Four guardrails drawn as rails.
       ================================================================== */}
       <Slide id="conduct-risk" border align="left">
         <Head1 eyebrow="Conduct" signal>
@@ -3572,8 +3572,8 @@ export default function Week03Finance() {
       />
 
       {/* ==================================================================
-          35 · MODEL GOVERNANCE — six lifecycle stages as a chain; four
-          questions left as blanks to fill; the inventory table with the two
+          35. MODEL GOVERNANCE: six lifecycle stages as a chain. Four
+          questions left as blanks to fill. The inventory table with the two
           columns that make it useful.                      [quiz topic]
       ================================================================== */}
       <Slide id="model-governance" border align="left">
@@ -3701,8 +3701,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          36 · DATA GOVERNANCE AND SECURITY — three properties of finance data
-          on the governance slab; six things to manage; attackers aimed at
+          36. DATA GOVERNANCE AND SECURITY: three properties of finance data
+          on the governance slab. Six things to manage. Attackers aimed at
           both the institution and the models it depends on.
                                                [quiz: model-governance]
       ================================================================== */}
@@ -3735,7 +3735,7 @@ export default function Week03Finance() {
             <div
               className={`${MICRO} bg-[var(--crimson)] px-4 py-3 text-[var(--surface)]`}
             >
-              Data governance · strategic control function
+              Data governance | strategic control function
             </div>
           </div>
         </div>
@@ -3826,8 +3826,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          37 · BUILD, BUY, OR PARTNER — vendor sourcing beside internal
-          development; five decision factors; execution leaving the firm
+          37. BUILD, BUY, OR PARTNER: vendor sourcing beside internal
+          development. Five decision factors. Execution leaving the firm
           while accountability stays.
       ================================================================== */}
       <Slide id="build-buy-partner" border align="left">
@@ -3922,8 +3922,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          38 · GENERATIVE AI: USES AND RED LINES — strongest and weakest set
-          side by side; the red line drawn before experimentation fans out
+          38. GENERATIVE AI: USES AND RED LINES: strongest and weakest set
+          side by side. The red line drawn before experimentation fans out
           across teams.                                     [quiz topic]
       ================================================================== */}
       <Slide id="genai-red-lines" border align="left">
@@ -4033,8 +4033,8 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          39 · OPERATING MODEL, TALENT, CHANGE — seven groups around durable
-          adoption; the bridge of shared fluency; the two front-line
+          39. OPERATING MODEL, TALENT, CHANGE: seven groups around durable
+          adoption. The bridge of shared fluency. The two front-line
           conditions.                              [quiz: genai-red-lines]
       ================================================================== */}
       <Slide
@@ -4180,7 +4180,7 @@ export default function Week03Finance() {
       </Slide>
 
       {/* ==================================================================
-          40 · CONCLUSION — the five areas AI is embedded into, then the
+          40. CONCLUSION: the five areas AI is embedded into, then the
           three closing statements in display weight, then the colophon.
       ================================================================== */}
       <Slide
@@ -4250,7 +4250,7 @@ export default function Week03Finance() {
             <span
               className={`${MICRO} font-normal text-[var(--charcoal-light)]/55`}
             >
-              Davood Wadi, PhD · BUSI 654
+              Davood Wadi, PhD | BUSI 654
             </span>
           </div>
         </div>

@@ -80,7 +80,7 @@ Agentic AI and Vibe Coding
 - **Discussion question (group discussion preferred):** Should we trust AI to audit its own code for security flaws, or does security review fundamentally require a human perspective?
 
 ## Slide 14: The Illusion of Competence
-- Writing reliable software is not just about typing syntax; it requires specifying edge cases, designing user experiences, and planning for scale.
+- Writing reliable software is not just about typing syntax. It requires specifying edge cases, designing user experiences, and planning for scale.
 - A high-level natural language prompt is often a "wish list" rather than a true engineering blueprint.
 - The lowered barrier to entry has flooded the market with apps that work flawlessly in ideal conditions but break under real-world strain.
 - **Discussion question (group discussion preferred):** How do we train the next generation of technologists to spot edge cases when the AI does the heavy lifting for them?

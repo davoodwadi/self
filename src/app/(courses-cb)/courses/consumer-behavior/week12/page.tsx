@@ -15,9 +15,9 @@ import exercisesData from "./exercises.json";
 import * as V from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR · WEEK 12 — AI-MEDIATED CONSUMPTION AND FUTURE TRENDS
+// CONSUMER BEHAVIOR | WEEK 12: AI-MEDIATED CONSUMPTION AND FUTURE TRENDS
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx, drawn in the course's Editorial Sketch style (see
 // ../CLAUDE.md). The week's fixed cast: the consumer (one Person look), the AI
@@ -27,9 +27,9 @@ import * as V from "./visuals";
 // phrase, its key idea. Defined terms are bold ink, and every rule is ink.
 //
 // Interactive plates (students act on the drawing itself):
-//   · The filter bubble: like products in a feed and watch it narrow
+//   - The filter bubble: like products in a feed and watch it narrow
 //     (SIMULATED recommender, labelled on the plate).
-//   · Whom the agent serves: tag a hotel as sponsored and change whom the
+//   - Whom the agent serves: tag a hotel as sponsored and change whom the
 //     system prompt says the agent works for (real data: Wadi & Ma, 2026c,
 //     Study 1, 500 bookings per setting).
 //
@@ -138,7 +138,7 @@ function Ruled({
 /**
  * A plate that lives in a column: a figure well without the 680px floor. A
  * `wide` (800-unit) plate keeps a legible minimum width on phones and scrolls
- * inside its well there, like `Figure`; from lg up the column is wide enough.
+ * inside its well there, like `Figure`. From lg up the column is wide enough.
  */
 function Plate({
   children,
@@ -288,7 +288,7 @@ export default function Week12() {
               Week 12
             </p>
             <p className="type-caption mt-2">
-              Consumer Behavior · Davood Wadi, PhD
+              Consumer Behavior | Davood Wadi, PhD
             </p>
             <Title className="mt-6 !max-w-[20ch]">
               AI-Mediated Consumption and Future Trends
@@ -545,7 +545,7 @@ export default function Week12() {
         <div className="grid w-full items-center gap-x-8 gap-y-4 md:grid-cols-2 lg:grid-cols-[1fr_1fr_0.75fr]">
           <div className="flex min-w-0 flex-col gap-3">
             <P>
-              In a <Term>principal–agent relationship</Term>, an agent acts on
+              In a <Term>principal-agent relationship</Term>, an agent acts on
               behalf of a principal and owes that principal a duty of loyalty.
             </P>
             <P>

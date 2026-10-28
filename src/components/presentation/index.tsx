@@ -89,11 +89,11 @@ export const Hero = ({ category, title, subtitle, author, date, institution }: a
           <span>{author}</span>
           {date && (
             <>
-              <span>&middot;</span>
+              <span>|</span>
               <span>{date}</span>
             </>
           )}
-          <span>&middot;</span>
+          <span>|</span>
           <span>{institution}</span>
         </div>
       </div>

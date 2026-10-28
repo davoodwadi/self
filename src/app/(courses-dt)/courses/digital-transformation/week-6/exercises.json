@@ -119,7 +119,7 @@
       },
       {
         "id": "hike-flowchart",
-        "text": "A park ranger checks trail conditions step by step—first whether there is lightning, then whether the trail is icy—to decide whether to open the hike.",
+        "text": "A park ranger checks trail conditions step by step, first whether there is lightning, then whether the trail is icy, to decide whether to open the hike.",
         "answer": "tree",
         "explanation": "Splitting a decision into sequential condition branches (like checking weather conditions to play tennis) is a Decision Tree."
       },
@@ -159,7 +159,7 @@
       {
         "id": "voting",
         "term": "Voting/Averaging",
-        "match": "To classify a parcel as Late or On-Time, the system picks whichever class most trees voted for; to estimate minutes delayed, it averages all trees' numbers.",
+        "match": "To classify a parcel as Late or On-Time, the system picks whichever class most trees voted for. To estimate minutes delayed, it averages all trees' numbers.",
         "explanation": "Classification takes the majority vote across trees, while regression takes the average prediction."
       },
       {
@@ -226,16 +226,16 @@
     "correct_answer_citation": "Supervised Learning: Algorithms learn from labeled data, where each input example is paired with a corresponding output (target). Unsupervised Learning: Algorithms analyze unlabeled data to discover hidden patterns, groupings, or structures without predefined outcomes.",
     "options": [
       {
-        "option_text": "Project A uses Supervised Learning (classification from labeled refill outcomes); Project B uses Unsupervised Learning (clustering unlabeled stores).",
+        "option_text": "Project A uses Supervised Learning (classification from labeled refill outcomes). Project B uses Unsupervised Learning (clustering unlabeled stores).",
         "option_explanation": "Correct. Project A maps inputs to a known historical target label (refilled vs. abandoned), while Project B discovers natural clusters in unlabeled store data."
       },
       {
-        "option_text": "Project A uses Unsupervised Learning because future refills have not happened yet; Project B uses Supervised Learning because store variables are numerical.",
+        "option_text": "Project A uses Unsupervised Learning because future refills have not happened yet. Project B uses Supervised Learning because store variables are numerical.",
         "option_explanation": "Predicting future outcomes from labeled historical records is Supervised Learning, and numerical inputs without target labels are still Unsupervised."
       },
       {
         "option_text": "Both projects use Supervised Learning because both rely on historical pharmacy data stored in a structured database.",
-        "option_explanation": "Having historical data in a database does not make a task supervised; what matters is whether the training data include known output labels."
+        "option_explanation": "Having historical data in a database does not make a task supervised. What matters is whether the training data include known output labels."
       },
       {
         "option_text": "Both projects use Unsupervised Learning because neither project uses a rules-based expert system.",

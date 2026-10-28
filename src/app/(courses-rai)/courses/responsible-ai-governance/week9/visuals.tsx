@@ -28,8 +28,8 @@ import { Coins, Dial, Figure, Gear, Hall, House, Lens, Sheet, SmallModel, Tag, h
    CLAUDE.md.
 
    Week cast: a pricing algorithm is the model housing with two gears
-   (SmallModel); a price is a hanging tag (Tag); a shopper is a patent
-   Figure; a buyer's willingness to pay is an upright bar; the platform is a
+   (SmallModel). A price is a hanging tag (Tag). A shopper is a patent
+   Figure. A buyer's willingness to pay is an upright bar. The platform is a
    columned hall.
    ========================================================================== */
 
@@ -105,11 +105,11 @@ function Wall({ id, x, y, w, h, stroke = PAT.ink }: { id: string; x: number; y: 
 /**
  * The six audit steps as six bench instruments, three under each row of
  * steps. First: the pricing model's inputs, with the pipe from a rival's
- * non-public data capped off (red); price dispersion across three segments,
- * one sitting higher (red); a lens over a price tag and its struck-out
+ * non-public data capped off (red). Price dispersion across three segments,
+ * one sitting higher (red). A lens over a price tag and its struck-out
  * reference price. Second: a sandbox tray holding the forced-cut test, the
- * rival's punish-and-return path in red; two identically rated and priced
- * listings, the platform's own ranked first (red); and the guardrails: a
+ * rival's punish-and-return path in red. Two identically rated and priced
+ * listings, the platform's own ranked first (red). And the guardrails: a
  * surge gauge with a stop pin, a circuit-breaker switch and a Chinese wall.
  */
 export function AuditBench({ part }: { part: "first" | "second" }) {
@@ -117,15 +117,15 @@ export function AuditBench({ part }: { part: "first" | "second" }) {
   const g = 128;
   const label =
     part === "first"
-      ? "Patent drawing of the first three audit instruments: the pricing model housing with its input pipes, the pipe from a rival's non-public data capped off in red; three columns of personalized prices for three segments, the third sitting higher in red; and a lens over a price tag with its struck-out reference price."
-      : "Patent drawing of the last three audit instruments: a sandbox tray holding a forced-cut test chart with the rival's punish-and-return price path in red; two identically rated and priced listings, the platform's own ranked first in red; and the guardrails, a surge gauge with a stop pin, a circuit-breaker switch and a brick Chinese wall.";
+      ? "Patent drawing of the first three audit instruments: the pricing model housing with its input pipes, the pipe from a rival's non-public data capped off in red. Three columns of personalized prices for three segments, the third sitting higher in red. And a lens over a price tag with its struck-out reference price."
+      : "Patent drawing of the last three audit instruments: a sandbox tray holding a forced-cut test chart with the rival's punish-and-return price path in red. Two identically rated and priced listings, the platform's own ranked first in red. And the guardrails, a surge gauge with a stop pin, a circuit-breaker switch and a brick Chinese wall.";
   return (
     <Frame width={1200} height={140} label={label}>
       <PatentDefs id={id} />
       <line x1={10} y1={g} x2={1190} y2={g} {...ink} />
       {part === "first" ? (
         <g>
-          {/* 1 · inputs */}
+          {/* 1. inputs */}
           <g transform="translate(44 0)">
           <SmallModel id={id} x={190} y={52} w={76} h={76} />
           {[64, 84, 104].map((y) => (
@@ -139,7 +139,7 @@ export function AuditBench({ part }: { part: "first" | "second" }) {
           <rect x={140} y={109} width={8} height={14} fill={stip(id, "signal")} stroke={R} strokeWidth={LINE.outline} />
           <line x1={148} y1={116} x2={188} y2={116} {...hair} strokeDasharray="3 3" />
           </g>
-          {/* 2 · dispersion */}
+          {/* 2. dispersion */}
           <g transform="translate(102 0)">
           {[0, 1, 2].map((k) => {
             const cx = 428 + k * 70;
@@ -157,7 +157,7 @@ export function AuditBench({ part }: { part: "first" | "second" }) {
           })}
           <line x1={392} y1={22} x2={392} y2={112} {...ink} />
           </g>
-          {/* 3 · presentation */}
+          {/* 3. presentation */}
           <g transform="translate(210 0)">
           <Tag cx={744} cy={70} text="$89" w={56} size={20} />
           <line x1={710} y1={80} x2={774} y2={60} {...ink} strokeWidth={LINE.bold} />
@@ -167,14 +167,14 @@ export function AuditBench({ part }: { part: "first" | "second" }) {
         </g>
       ) : (
         <g>
-          {/* 4 · sandbox impulse response */}
+          {/* 4. sandbox impulse response */}
           <g transform="translate(25 0)">
           <path d="M60 128L80 114H290L270 128Z" fill={stip(id, "light")} {...ink} />
           <rect x={100} y={28} width={160} height={93} fill={PAT.paper} {...ink} />
           <path d="M110 46H140V84H160V102H180V76H200V46H250" fill="none" {...ink} strokeWidth={LINE.bold} />
           <path d="M110 50H160V106H180V80H200V50H250" fill="none" stroke={R} strokeWidth={LINE.bold} strokeDasharray="5 3" />
           </g>
-          {/* 5 · ranking */}
+          {/* 5. ranking */}
           <g transform="translate(130 0)">
           {[0, 1].map((k) => {
             const y = 36 + k * 44;
@@ -195,7 +195,7 @@ export function AuditBench({ part }: { part: "first" | "second" }) {
             );
           })}
           </g>
-          {/* 6 · guardrails */}
+          {/* 6. guardrails */}
           <g transform="translate(204 0)">
           <path d="M660 106A38 38 0 0 1 736 106" fill={PAT.paper} {...ink} />
           <line x1={698} y1={106} x2={718} y2={78} {...ink} strokeWidth={LINE.bold} />
@@ -213,7 +213,7 @@ export function AuditBench({ part }: { part: "first" | "second" }) {
   );
 }
 
-/** A hand stamp: a knob, a neck, a body and an inked (red) face; (cx, y) the face's bottom centre. */
+/** A hand stamp: a knob, a neck, a body and an inked (red) face. (cx, y) the face's bottom centre. */
 function Stamp({ id, cx, y }: { id: string; cx: number; y: number }) {
   return (
     <g>
@@ -260,7 +260,7 @@ export function AuditorsLens() {
 
 /**
  * Pricing bot meets buying bot, on four published findings. The seller's
- * pricing algorithm (left) faces a shopper's AI agent (right); what passes
+ * pricing algorithm (left) faces a shopper's AI agent (right). What passes
  * between them changes with the tab, and the bars below give the study's
  * numbers.
  * Inspection (Wadi & Ma, 2026a): listings inspected per session, humans
@@ -296,7 +296,7 @@ export function BotMeetsBot() {
     );
   };
   const label = {
-    inspect: "AI shopping agents inspect between 1.63 and 5.83 listings per session against 1.12 for humans (Wadi and Ma, 2026a); a lens passes over a row of listing cards.",
+    inspect: "AI shopping agents inspect between 1.63 and 5.83 listings per session against 1.12 for humans (Wadi and Ma, 2026a). A lens passes over a row of listing cards.",
     anchor: "A high arbitrary reference price, drawn as a struck-out $89 tag beside a $49 tag, raised the language models' willingness to pay by $31.62 (Wadi and Fredette, 2025).",
     weights: "With unit weights buried behind a costly tool call, drawn as a lidded card, the agents' optimal choice fell from 0.89 to 0.29 in red (Wadi and Ma, 2026b).",
     tag: "With a sponsorship tag attributed to the platform, the platform-delegated agent chose the paid listing 74.2 percent of the time in red, against 39.6 percent with a plain Promoted tag (Wadi and Ma, 2026c).",
@@ -346,7 +346,7 @@ export function BotMeetsBot() {
         {t === "inspect" ? (
           <>
             {bar(140, "HUMANS", 0, 1.12, 7.5, "1.12")}
-            {bar(190, "AI AGENTS", 1.63, 5.83, 7.5, "1.63–5.83", false, true)}
+            {bar(190, "AI AGENTS", 1.63, 5.83, 7.5, "1.63 to 5.83", false, true)}
             <PatentKey x={bx0} y={240} size={12} anchor="start">
               LISTINGS INSPECTED
             </PatentKey>
@@ -485,7 +485,7 @@ function SellerMark({ cx, cy, stroke = PAT.ink }: { cx: number; cy: number; stro
   );
 }
 
-/** A delivery van in side view, (x, y) the bottom-left of its body; the platform's fulfillment service. */
+/** A delivery van in side view, (x, y) the bottom-left of its body. The platform's fulfillment service. */
 function Van({ x, y, stroke = PAT.ink }: { x: number; y: number; stroke?: string }) {
   return (
     <g>
@@ -499,10 +499,10 @@ function Van({ x, y, stroke = PAT.ink }: { x: number; y: number; stroke?: string
 
 /**
  * One product, four offers, and the "Buy Box" that takes the default sale.
- * The platform's own offer wears its emblem; a third-party offer wears a
- * shopfront; a van marks offers shipped by the platform's fulfillment
+ * The platform's own offer wears its emblem. A third-party offer wears a
+ * shopfront. A van marks offers shipped by the platform's fulfillment
  * service. Neutral ranking gives the Buy Box to the cheapest equally rated
- * offer; self-preferencing gives it to the platform's own; conditioning gives
+ * offer. Self-preferencing gives it to the platform's own. Conditioning gives
  * it to the seller that bought the platform's fulfillment. Red marks a Buy
  * Box that went to anything but the best offer.
  */
@@ -670,7 +670,7 @@ function Receipt({ x, y, total, red = false, coupon = false }: { x: number; y: n
  * list price is $80 and one shopper is charged $20 more. Personalized
  * discount targeting: the list price is $100 and one shopper, about to
  * abandon the cart, is sent a $20 coupon. Either way one pays $100 and one
- * $80; the $20 gap (red) is the same.
+ * $80. The $20 gap (red) is the same.
  */
 export function CouponDispersion() {
   const id = "w9-coupon";
@@ -766,7 +766,7 @@ export function DataAppropriation() {
 
 /**
  * Why speed sustains tacit coordination. Top: one firm cuts its price on day
- * 0 (solid); the rival (dashed) holds its price until it detects the cut,
+ * 0 (solid). The rival (dashed) holds its price until it detects the cut,
  * then retaliates, and both sit in a price war. Bottom: a balance weighs the
  * cutter's gain while the rival has not yet noticed ($10k a day, left pan)
  * against the fixed $60k cost of the price war (red, right pan). Shorten the
@@ -813,7 +813,7 @@ export function DetectionLag() {
       <Frame
         width={560}
         height={268}
-        label={`Patent drawing of tacit coordination. Top: a price path over 40 days; one firm cuts on day 0 and the rival, detecting the cut after ${LAGS[k].label}, retaliates into a 20-day price war before both return to the high price. Bottom: a balance weighing the cutter's gain before detection, $${gain}k, against the $60k cost of the price war in red; the balance tips ${gain > loss ? "toward the gain, so undercutting pays" : "toward the price war, so undercutting does not pay"}.`}
+        label={`Patent drawing of tacit coordination. Top: a price path over 40 days. One firm cuts on day 0 and the rival, detecting the cut after ${LAGS[k].label}, retaliates into a 20-day price war before both return to the high price. Bottom: a balance weighing the cutter's gain before detection, $${gain}k, against the $60k cost of the price war in red. The balance tips ${gain > loss ? "toward the gain, so undercutting pays" : "toward the price war, so undercutting does not pay"}.`}
       >
         <PatentDefs id={id} />
         <line x1={x0} y1={20} x2={x0} y2={96} {...ink} />
@@ -869,9 +869,9 @@ export function DetectionLag() {
  * (1986). Each price is drawn as a stacked column, unit cost (dense) under
  * profit (light), before and after the increase. Cost: the wholesale price
  * of lettuce rises 30 cents and the grocer passes it on, so the profit block
- * is unchanged; 79% of 101 respondents called it acceptable. Need: snow
+ * is unchanged. 79% of 101 respondents called it acceptable. Need: snow
  * shovels go from $15 to $20 the morning after a snowstorm with no change in
- * cost, so the whole rise lands on profit (red); 82% of 107 called it unfair.
+ * cost, so the whole rise lands on profit (red). 82% of 107 called it unfair.
  */
 const KKT = {
   cost: { before: [70, 30], after: [100, 30], k: 1.2, fair: 79, n: 101 },
@@ -1024,7 +1024,7 @@ export function DualRole() {
     <Frame
       width={640}
       height={206}
-      label="Patent drawing in two figures. Marketplace referee and competing merchant: the platform's columned hall with a referee's balance on its roof; beside it stands its own stall, in red and carrying the hall's pediment, beside a third-party merchant's stall. Seller algorithms and consumer shopping agents: a seller's pricing algorithm housing passes a price tag across to a shopping agent housing that holds a shopping bag."
+      label="Patent drawing in two figures. Marketplace referee and competing merchant: the platform's columned hall with a referee's balance on its roof. Beside it stands its own stall, in red and carrying the hall's pediment, beside a third-party merchant's stall. Seller algorithms and consumer shopping agents: a seller's pricing algorithm housing passes a price tag across to a shopping agent housing that holds a shopping bag."
     >
       <PatentDefs id={id} />
       <line x1={10} y1={g} x2={316} y2={g} {...ink} />
@@ -1067,8 +1067,8 @@ export function DualRole() {
 /**
  * The evidence tray of a collusion case, three compartments: communication,
  * a shared vendor, and the algorithm's own learned strategy. Messenger
- * leaves a signed agreement; Hub-and-Spoke leaves the shared vendor engine;
- * pure Autonomous Machine collusion leaves both compartments empty (red
+ * leaves a signed agreement. Hub-and-Spoke leaves the shared vendor engine.
+ * Pure Autonomous Machine collusion leaves both compartments empty (red
  * dashed, the liability gap). Auditing the algorithm fills the third
  * compartment with its forced-cut test: the punish-and-return price path.
  */
@@ -1217,10 +1217,10 @@ export function FacingMachines() {
  * The forced price cut of Calvano, Calzolari, Denicolò and Pastorello (2020),
  * run on two Q-learning pricing agents trained in their baseline market
  * (logit demand, two firms, unit cost 1, 15 prices, one-period memory,
- * learning rate 0.15, discount 0.95; this run converged after 1.37 million
+ * learning rate 0.15, discount 0.95, this run converged after 1.37 million
  * periods). LEARNED holds each agent's learned price index for every state
  * (own last price, rival last price). Before the shock both sit near the
- * monopoly price; in period 0 firm 1 is forced to the chosen price, and from
+ * monopoly price. In period 0 firm 1 is forced to the chosen price, and from
  * then on both follow their learned strategies: the rival (red) answers with
  * a price war, and both step back up to the high price.
  */
@@ -1266,7 +1266,7 @@ export function ForcedCut() {
       <Frame
         width={600}
         height={248}
-        label={`Patent drawing of a forced price cut between two learned Q-learning pricing agents. Before the shock both price near the monopoly price of ${MONOPOLY.toFixed(2)}, far above the static Nash price of ${NASH.toFixed(2)}. In period 0 firm 1 is forced down to ${PRICES[cut].toFixed(2)}. In period 1 the rival, in red, cuts its own price into a price war; both then step back up and return to the high collusive prices by period ${back - 3}.`}
+        label={`Patent drawing of a forced price cut between two learned Q-learning pricing agents. Before the shock both price near the monopoly price of ${MONOPOLY.toFixed(2)}, far above the static Nash price of ${NASH.toFixed(2)}. In period 0 firm 1 is forced down to ${PRICES[cut].toFixed(2)}. In period 1 the rival, in red, cuts its own price into a price war. Both then step back up and return to the high collusive prices by period ${back - 3}.`}
       >
         <PatentDefs id={id} />
         <line x1={x0} y1={yTop - 6} x2={x0} y2={yBot} {...ink} />
@@ -1366,7 +1366,7 @@ export function Frames() {
 
 /**
  * The surge cap: a graduated column shows the surge multiplier that demand
- * would drive the fare to; when an emergency is declared, a stop bar holds
+ * would drive the fare to. When an emergency is declared, a stop bar holds
  * it at ×1.5 and the blocked excess stands empty in red dashes.
  */
 function SurgeCap() {
@@ -1384,7 +1384,7 @@ function SurgeCap() {
       <Frame
         width={250}
         height={176}
-        label={`Patent drawing of an emergency surge cap: a graduated column of the surge multiplier. Demand would drive the fare to ×${want.toFixed(1)}; ${emergency ? `with an emergency declared, a stop bar holds it at ×${shown.toFixed(1)}${want > cap ? " and the blocked excess stands empty in red dashes" : ""}` : `with no emergency declared, it reaches ×${shown.toFixed(1)}`}.`}
+        label={`Patent drawing of an emergency surge cap: a graduated column of the surge multiplier. Demand would drive the fare to ×${want.toFixed(1)}. ${emergency ? `with an emergency declared, a stop bar holds it at ×${shown.toFixed(1)}${want > cap ? " and the blocked excess stands empty in red dashes" : ""}` : `with no emergency declared, it reaches ×${shown.toFixed(1)}`}.`}
       >
         <PatentDefs id={id} />
         <path d={`M100 ${base}V${Y(4.5)}A22 6 0 0 1 144 ${Y(4.5)}V${base}A22 6 0 0 1 100 ${base}Z`} fill={PAT.paper} {...ink} />
@@ -1515,7 +1515,7 @@ function Clock({ cx, cy, r, h, m }: { cx: number; cy: number; r: number; h: numb
 export function Outrage({ kind }: { kind: "inequity" | "betrayal" | "vulnerability" }) {
   const id = `w9-outrage-${kind}`;
   const label = {
-    inequity: "Patent drawing of horizontal inequity: two shoppers under one wall clock, each holding the identical boxed item; one is tagged $80 and the other a red $100.",
+    inequity: "Patent drawing of horizontal inequity: two shoppers under one wall clock, each holding the identical boxed item. One is tagged $80 and the other a red $100.",
     betrayal: "Patent drawing of perceived privacy betrayal: a loyalty card full of stamps fed into the pricing algorithm housing, which issues a red $112 tag instead of a reward.",
     vulnerability: "Patent drawing of vulnerability exploitation: an anxious shopper with a hand raised to the forehead before a box of medical supplies whose $12 tag is struck out and replaced by a red $24.",
   }[kind];
@@ -1569,7 +1569,7 @@ export function Outrage({ kind }: { kind: "inequity" | "betrayal" | "vulnerabili
  * lower-income (right). One price: $40, or $62 when supply is fixed at four
  * units. Personalized: each served buyer pays $2 under their willingness to
  * pay. Red stipple is surplus the higher prices take from buyers who would
- * have bought anyway; total welfare is the value of every unit sold.
+ * have bought anyway. Total welfare is the value of every unit sold.
  */
 const WTP10 = [90, 80, 70, 62, 54, 46, 40, 34, 28, 24];
 
@@ -1698,7 +1698,7 @@ function Agreement({ x, y, w = 60, h = 52, stroke = PAT.ink, signed = true }: { 
  * (red) that sets all their prices. Predictable Agent: two rule-based
  * housings, cut open to show a price slider that can fall only to a fixed
  * margin floor (red), and a window on the rival's price it matches. Autonomous Machine: two learning housings, each
- * given only its own goal sheet, with nothing shared; their prices settle
+ * given only its own goal sheet, with nothing shared. Their prices settle
  * equal and high (red).
  */
 export function Pathway({ kind }: { kind: "messenger" | "hub" | "predictable" | "autonomous" }) {
@@ -1908,9 +1908,9 @@ export function ProxyMap() {
 
 /**
  * The shared rental pricing algorithm. Twelve rival landlords' apartment
- * blocks stand in a row under a night sky; from each a line runs up to the
+ * blocks stand in a row under a night sky. From each a line runs up to the
  * one cloud-hosted revenue-management engine. Dark windows are units left
- * vacant; the engine's rent tag reads +18% (red).
+ * vacant. The engine's rent tag reads +18% (red).
  */
 export function RentHub() {
   const id = "w9-renthub";
@@ -1960,7 +1960,7 @@ export function RentHub() {
 /**
  * One shopper's reservation price ($70, the upright line under the bust)
  * and the seller's estimate of it, drawn as a red stippled bell. With a few
- * observed variables the estimate is the segment's average and wide; as the
+ * observed variables the estimate is the segment's average and wide. As the
  * variables add up it narrows onto the individual. The price is set at the
  * estimate, and the shopper keeps only the gap: the consumer surplus left.
  */
@@ -2028,7 +2028,7 @@ export function ReservationEstimate() {
 /**
  * Left: a verifiable eligibility rule, a notice pinned up for anyone to read
  * (STUDENT −20%), and a shopper holding the student card it asks for. Right:
- * an opaque algorithmic score, a sealed housing with screwed plates; its
+ * an opaque algorithmic score, a sealed housing with screwed plates. Its
  * criteria run inside as hidden (dashed, red) routes to a dial, and a price
  * comes out with nothing on the face to say why.
  */
@@ -2038,7 +2038,7 @@ export function RuleVsScore() {
     <Frame
       width={560}
       height={222}
-      label="Patent drawing in two figures. Verifiable eligibility rules: a pinned notice reading STUDENT −20% with hairline terms beneath, and a shopper holding up a student card. Opaque algorithmic scores: a sealed, screwed housing with a score dial; its criteria run inside as hidden red dashed routes, and a $93 tag comes out of it."
+      label="Patent drawing in two figures. Verifiable eligibility rules: a pinned notice reading STUDENT −20% with hairline terms beneath, and a shopper holding up a student card. Opaque algorithmic scores: a sealed, screwed housing with a score dial. Its criteria run inside as hidden red dashed routes, and a $93 tag comes out of it."
     >
       <PatentDefs id={id} />
       {/* the notice */}
@@ -2091,7 +2091,7 @@ export function RuleVsScore() {
  * The fare for the same ride across one day, for two shoppers. Dynamic: one
  * fare that rises with the morning and evening peaks, the same for both at
  * any moment. Personalized: each shopper has their own fare at every moment
- * (red, the higher one). The slider moves the moment; the tags over the two
+ * (red, the higher one). The slider moves the moment. The tags over the two
  * shoppers read the fare each sees then.
  */
 const dynFare = (t: number) =>
@@ -2209,7 +2209,7 @@ function Bust({ cx, y, s = 1, stroke = PAT.ink, fill = PAT.paper }: { cx: number
 
 /**
  * The market cut into slices, one tag per slice. Brick-and-mortar retail
- * cuts the twelve shoppers into three segments with three prices; machine
+ * cuts the twelve shoppers into three segments with three prices. Machine
  * learning and digital tracking cut them into twelve slices, one shopper
  * each, every tag (red) at that shopper's own willingness to pay.
  */
@@ -2278,8 +2278,8 @@ function HotelRow({ x, y, w, stars, price, red = false }: { x: number; y: number
 
 /**
  * Search steering. A results page lists the same five hotels at the same
- * prices for every shopper; only the order changes. For a shopper predicted
- * to be price-sensitive the cheapest rooms lead; for one predicted to be
+ * prices for every shopper. Only the order changes. For a shopper predicted
+ * to be price-sensitive the cheapest rooms lead. For one predicted to be
  * price-insensitive the costliest lead (the top slot in red). The product
  * page beside it shows the same $189 for both.
  */
@@ -2441,7 +2441,7 @@ export function StormSurge() {
  * across the bar): what they pay is the seller's revenue (dense stipple),
  * what they keep is consumer surplus (light stipple), and a buyer priced out
  * stands in dashed outline. Second degree offers an economy version worth at
- * most $45 to anyone; the part of a bar above $45 is the value forgone.
+ * most $45 to anyone. The part of a bar above $45 is the value forgone.
  */
 const WTP_BARS = [92, 84, 78, 70, 64, 58, 52, 46, 40, 34, 28, 22];
 type Degree = "uniform" | "second" | "third" | "first";
@@ -2490,7 +2490,7 @@ export function SurplusCapture() {
       <Frame
         width={560}
         height={292}
-        label={`Patent drawing of twelve buyers drawn as bars at their willingness to pay, from $92 down to $22, under ${d === "uniform" ? "one uniform price of $46" : d === "second" ? "second-degree price discrimination: a business version at $58 and an economy version at $34 worth at most $45" : d === "third" ? "third-degree price discrimination: $58 full price and a $28 student price" : "first-degree price discrimination: each buyer pays exactly their willingness to pay"}. ${served} of 12 buyers are served; consumer surplus is $${cs} and seller revenue $${rev}.`}
+        label={`Patent drawing of twelve buyers drawn as bars at their willingness to pay, from $92 down to $22, under ${d === "uniform" ? "one uniform price of $46" : d === "second" ? "second-degree price discrimination: a business version at $58 and an economy version at $34 worth at most $45" : d === "third" ? "third-degree price discrimination: $58 full price and a $28 student price" : "first-degree price discrimination: each buyer pays exactly their willingness to pay"}. ${served} of 12 buyers are served. Consumer surplus is $${cs} and seller revenue $${rev}.`}
       >
         <PatentDefs id={id} />
         <line x1={x0} y1={22} x2={x0} y2={y0} {...ink} />
@@ -2565,7 +2565,7 @@ export function SurplusCapture() {
  * out, the extra margin piles up slowly (light stipple). From the week of
  * discovery, lost sales from the drop in brand trust pull the total below
  * zero and keep pulling (red). The slider sets how many weeks have passed
- * since discovery; the line ahead of it is dashed.
+ * since discovery. The line ahead of it is dashed.
  */
 const ledger = (wk: number) => {
   if (wk <= 0) return 2 * (wk + 26);
@@ -2593,7 +2593,7 @@ export function TrustLedger() {
       <Frame
         width={640}
         height={196}
-        label={`Patent drawing of the running total of extra profit from opaque personalized pricing over 78 weeks. Before discovery it climbs slowly to $52,000 in light stipple; after discovery it falls, crossing zero about ${cross} weeks later, and keeps falling in red. ${now} weeks after discovery the total stands at ${v < 0 ? "−" : ""}$${Math.abs(v)},000.`}
+        label={`Patent drawing of the running total of extra profit from opaque personalized pricing over 78 weeks. Before discovery it climbs slowly to $52,000 in light stipple. After discovery it falls, crossing zero about ${cross} weeks later, and keeps falling in red. ${now} weeks after discovery the total stands at ${v < 0 ? "−" : ""}$${Math.abs(v)},000.`}
       >
         <PatentDefs id={id} />
         {/* gains before discovery */}

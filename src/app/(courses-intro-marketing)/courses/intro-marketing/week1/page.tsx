@@ -37,9 +37,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 01 — INTRODUCTION TO MARKETING & THE MARKETING PROCESS
+// WEEK 01: INTRODUCTION TO MARKETING & THE MARKETING PROCESS
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
@@ -84,7 +84,7 @@ function Lead({
   return <p className={cn("type-lead max-w-[46ch]", className)}>{children}</p>;
 }
 
-/** A sentence set as a serif statement — the line a slide lands on. */
+/** A sentence set as a serif statement: the line a slide lands on. */
 function Statement({
   children,
   className = "",
@@ -230,7 +230,7 @@ function PartPlate({
   );
 }
 
-/** The five philosophies as a wayfinding strip; the live ones are lit. */
+/** The five philosophies as a wayfinding strip. The live ones are lit. */
 const PHILOSOPHIES = [
   "Production",
   "Product",
@@ -323,7 +323,7 @@ function PromptKicker() {
   );
 }
 
-/** Needs / wants / demands and what marketers do to each — a quiet trio. */
+/** Needs / wants / demands and what marketers do to each: a quiet trio. */
 function InfluenceTrio() {
   const items = [
     {
@@ -564,7 +564,7 @@ function FourPs() {
   );
 }
 
-/* Tiny callback glyphs for the conclusion — each echoes a plate already seen. */
+/* Tiny callback glyphs for the conclusion: each echoes a plate already seen. */
 const glyphProps = {
   width: 64,
   height: 40,
@@ -664,7 +664,7 @@ export default function Week1() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 01 · Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 01: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[16ch]">
           Introduction to Marketing{" "}
           <span className="text-[var(--signal)]">&amp;</span> The Marketing
@@ -818,7 +818,7 @@ export default function Week1() {
                 <P>
                   <Term tone="ink">The Production Concept</Term> holds that
                   consumers favor products that are available and highly
-                  affordable; management must focus on improving production
+                  affordable. Management must focus on improving production
                   and distribution efficiency.
                 </P>
               </Ruled>
@@ -826,7 +826,7 @@ export default function Week1() {
                 <P>
                   <Term tone="ink">The Product Concept</Term> suggests
                   consumers favor products offering the most quality,
-                  performance, and innovative features; the focus is on
+                  performance, and innovative features. The focus is on
                   continuous product improvements.
                 </P>
               </Ruled>
@@ -1049,14 +1049,14 @@ export default function Week1() {
             <Ruled keyLabel="Wants" tone="counter" weight="thick">
               <P>
                 Wants are the form human needs take as they are shaped by
-                culture and individual personality; a hungry person in one
+                culture and individual personality. A hungry person in one
                 culture wants a hamburger, while in another they want rice and
                 fish.
               </P>
             </Ruled>
             <Ruled keyLabel="Demands" tone="signal" weight="thick">
               <P>
-                Demands are human wants that are backed by buying power; when
+                Demands are human wants that are backed by buying power. When
                 accompanied by purchasing ability, wants become demands.
               </P>
             </Ruled>
@@ -1096,7 +1096,7 @@ export default function Week1() {
         <div className="mt-8 grid w-full gap-10 md:grid-cols-2 md:gap-14">
           <Ruled weight="thick">
             <P>
-              Market offerings are not limited to physical products; they
+              Market offerings are not limited to physical products. They
               include services like banking, airlines, and hospitality.
             </P>
           </Ruled>
@@ -1146,7 +1146,7 @@ export default function Week1() {
               <P>
                 <Term tone="ink">Customer satisfaction</Term> depends on the
                 product&apos;s perceived performance relative to a buyer&apos;s
-                expectations; if performance falls short, the customer is
+                expectations. If performance falls short, the customer is
                 dissatisfied, and if performance matches or exceeds
                 expectations, the customer is satisfied or delighted.
               </P>
@@ -1179,7 +1179,7 @@ export default function Week1() {
             </P>
             <P>
               The need, the want, and the buying power still belong to the
-              consumer; the AI agent acts on them.
+              consumer. The AI agent acts on them.
             </P>
             <Ruled weight="thick">
               <P>
@@ -1279,7 +1279,7 @@ export default function Week1() {
         <Heading className={HEAD}>Designing a Customer-Driven Marketing Strategy</Heading>
         <div className="grid w-full items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <Statement className="!max-w-[30ch]">
-            Marketing managers cannot serve all customers in every way; they
+            Marketing managers cannot serve all customers in every way. They
             must select{" "}
             <span className="text-[var(--signal)]">which customers to serve</span>{" "}
             and <span className="text-[var(--counter)]">how</span>.
@@ -1418,7 +1418,7 @@ export default function Week1() {
             <Ruled tone="signal" weight="thick">
               <P>
                 Losing a customer means losing more than{" "}
-                <Term>a single sale</Term>; it means losing{" "}
+                <Term>a single sale</Term>. It means losing{" "}
                 <Term>the entire future income stream</Term> that customer
                 represents.
               </P>

@@ -13,7 +13,7 @@
 # IoT
 
 - []()
-- [Cloud, Fog and Edge Computing – What’s the Difference?](https://winsystems.com/cloud-fog-and-edge-computing-whats-the-difference/)
+- [Cloud, Fog and Edge Computing: What’s the Difference?](https://winsystems.com/cloud-fog-and-edge-computing-whats-the-difference/)
 - [Edge, Fog, and Cloud Computing: What’s the Difference?](https://blog.isa.org/edge-fog-and-cloud-computing-whats-the-difference)
 - []()
 

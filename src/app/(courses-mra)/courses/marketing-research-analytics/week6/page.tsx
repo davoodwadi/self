@@ -37,11 +37,11 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 06 — DATA PREPARATION AND DESCRIPTIVE ANALYSIS
+// WEEK 06: DATA PREPARATION AND DESCRIPTIVE ANALYSIS
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx; the interactive ones are built around one action
+// live in ./visuals.tsx. The interactive ones are built around one action
 // each.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
@@ -72,7 +72,7 @@ export default function Week6() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 06 · Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 06: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
           <span className="text-[var(--signal)]">Data Preparation</span> and Descriptive Analysis
         </Title>

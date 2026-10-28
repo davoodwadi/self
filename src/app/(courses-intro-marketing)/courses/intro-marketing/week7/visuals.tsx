@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 07 — figures
+   Week 07, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea: seven kinds of offering, a
    problem turned into value, the four kinds of consumer goods, a cascade and
@@ -10,11 +10,11 @@
    plane with empty seats.
 
    Conventions carried over from earlier weeks:
-     · viewBox width 800 (400 for column plates), flat fills, hairline rules,
+     - viewBox width 800 (400 for column plates), flat fills, hairline rules,
        no shadows or gradients
-     · INK carries the neutral case, SIGNAL the operative one, COUNTER the
+     - INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or outward-looking state
-     · every label reuses words from the slide the plate sits on
+     - every label reuses words from the slide the plate sits on
    ========================================================================== */
 
 import React from "react";
@@ -110,7 +110,7 @@ function PolicyGlyph({ x, y, s = 1, tone = INK, fill = PAPER }: GlyphProps) {
 }
 
 /* ==========================================================================
-   1 · SEVEN KINDS OF OFFERING — anything offered to a market
+   1. SEVEN KINDS OF OFFERING: anything offered to a market
    ========================================================================== */
 
 export function OfferingKinds() {
@@ -191,12 +191,12 @@ export function OfferingKinds() {
 }
 
 /* ==========================================================================
-   2 · PROBLEM TO VALUE — products solve problems and deliver value (400)
+   2. PROBLEM TO VALUE: products solve problems and deliver value (400)
    ========================================================================== */
 
 export function ProblemValue() {
   return (
-    <Frame width={400} height={190} label="Three figures in a row. A consumer with a tangled problem above their head; a product; the same consumer with a star above them: value.">
+    <Frame width={400} height={190} label="Three figures in a row. A consumer with a tangled problem above their head. A product. The same consumer with a star above them: value.">
       <path d="M44 52 C46 34 64 32 64 46 C64 60 48 58 52 42 C56 28 76 28 76 44 C76 60 58 58 62 42 C66 28 88 30 88 46 C88 58 72 60 72 50 M40 58 L50 50 M86 40 L98 34" fill="none" stroke={INK3} strokeWidth={1.5} strokeLinecap="round" />
       <Person3 x={70} y={140} k={1.6} stroke={INK3} />
       <Arrow1 x1={108} y1={112} x2={152} y2={112} />
@@ -218,7 +218,7 @@ export function ProblemValue() {
 }
 
 /* ==========================================================================
-   3 · CONSUMER GOODS — bought by final consumers for personal use (400)
+   3. CONSUMER GOODS: bought by final consumers for personal use (400)
    ========================================================================== */
 
 export function FinalConsumer() {
@@ -250,7 +250,7 @@ export function FinalConsumer() {
 }
 
 /* ==========================================================================
-   4 · CONVENIENCE GOODS — frequent, minimal comparison (400)
+   4. CONVENIENCE GOODS: frequent, minimal comparison (400)
    ========================================================================== */
 
 export function ConvenienceGood() {
@@ -277,7 +277,7 @@ export function ConvenienceGood() {
 }
 
 /* ==========================================================================
-   5 · SHOPPING GOODS — planning and comparison (400)
+   5. SHOPPING GOODS: planning and comparison (400)
    ========================================================================== */
 
 export function ShoppingGood() {
@@ -312,7 +312,7 @@ export function ShoppingGood() {
 }
 
 /* ==========================================================================
-   6 · SPECIALTY GOODS — a long way to one particular car (400)
+   6. SPECIALTY GOODS: a long way to one particular car (400)
    ========================================================================== */
 
 export function SpecialtyGood() {
@@ -331,7 +331,7 @@ export function SpecialtyGood() {
 }
 
 /* ==========================================================================
-   7 · UNSOUGHT GOODS — not in the buyer's thoughts (400)
+   7. UNSOUGHT GOODS: not in the buyer's thoughts (400)
    ========================================================================== */
 
 export function UnsoughtGood() {
@@ -364,7 +364,7 @@ export function UnsoughtGood() {
 }
 
 /* ==========================================================================
-   8 · FOUR CATEGORIES — each with its own marketing and pricing
+   8. FOUR CATEGORIES: each with its own marketing and pricing
    ========================================================================== */
 
 function Megaphone({ x, y, waves, tone }: { x: number; y: number; waves: number; tone: string }) {
@@ -437,7 +437,7 @@ export function FourCategories() {
 }
 
 /* ==========================================================================
-   9 · PLC CASCADE — five stages, each flowing into the next
+   9. PLC CASCADE: five stages, each flowing into the next
    ========================================================================== */
 
 export const PLC_STAGES = ["DEVELOPMENT", "INTRODUCTION", "GROWTH", "MATURITY", "DECLINE"];
@@ -471,7 +471,7 @@ export function PlcCascade() {
 }
 
 /* ==========================================================================
-   10 · PLC CURVE — sales and profits over a product's lifetime
+   10. PLC CURVE: sales and profits over a product's lifetime
    ========================================================================== */
 
 const PLC_BOUNDS = [80, 180, 300, 450, 640, 760];
@@ -513,7 +513,7 @@ export function PlcCurve() {
 }
 
 /* ==========================================================================
-   11 · NOT STRICTLY — the cycle as a framework, other shapes exist (400)
+   11. NOT STRICTLY: the cycle as a framework, other shapes exist (400)
    ========================================================================== */
 
 export function NotStrict() {
@@ -544,7 +544,7 @@ export function NotStrict() {
 }
 
 /* ==========================================================================
-   12 · STAGE WINDOW — the life cycle with one stage lit (400)
+   12. STAGE WINDOW: the life cycle with one stage lit (400)
    ========================================================================== */
 
 const STAGE_NOTES: Record<number, [string, string]> = {
@@ -617,7 +617,7 @@ export function StageWindow({ stage }: { stage: 1 | 2 | 3 | 4 }) {
 }
 
 /* ==========================================================================
-   13 · AWARENESS AND TRIAL — the introduction goal (400)
+   13. AWARENESS AND TRIAL: the introduction goal (400)
    ========================================================================== */
 
 export function AwarenessTrial() {
@@ -644,7 +644,7 @@ export function AwarenessTrial() {
 }
 
 /* ==========================================================================
-   14 · SHARE AND ENTRANTS — growth: maximize share as competitors arrive (400)
+   14. SHARE AND ENTRANTS: growth: maximize share as competitors arrive (400)
    ========================================================================== */
 
 export function ShareGrowth() {
@@ -681,7 +681,7 @@ export function ShareGrowth() {
 }
 
 /* ==========================================================================
-   15 · SHIELD — maturity: marketing outlays defend against competition (400)
+   15. SHIELD: maturity: marketing outlays defend against competition (400)
    ========================================================================== */
 
 export function DefendOutlays() {
@@ -708,7 +708,7 @@ export function DefendOutlays() {
 }
 
 /* ==========================================================================
-   16 · THREE ROUTES — maintain, harvest, or drop the declining product
+   16. THREE ROUTES: maintain, harvest, or drop the declining product
    ========================================================================== */
 
 export function MaintainHarvestDrop() {
@@ -754,7 +754,7 @@ export function MaintainHarvestDrop() {
 }
 
 /* ==========================================================================
-   17 · LEGACY DECISION — harvest or gracefully retire?
+   17. LEGACY DECISION: harvest or gracefully retire?
    ========================================================================== */
 
 export function LegacyDecision() {
@@ -816,7 +816,7 @@ export function LegacyDecision() {
 }
 
 /* ==========================================================================
-   18 · SUCCESSIVE CURVES — new products replace declining ones
+   18. SUCCESSIVE CURVES: new products replace declining ones
    ========================================================================== */
 
 export function SuccessiveCurves() {
@@ -842,7 +842,7 @@ export function SuccessiveCurves() {
 }
 
 /* ==========================================================================
-   19 · FOUR KINDS OF NEW PRODUCT
+   19. FOUR KINDS OF NEW PRODUCT
    ========================================================================== */
 
 export function NewProductKinds() {
@@ -905,7 +905,7 @@ export function NewProductKinds() {
 }
 
 /* ==========================================================================
-   20 · LAUNCH LANES — many new products fail in the marketplace (400)
+   20. LAUNCH LANES: many new products fail in the marketplace (400)
    ========================================================================== */
 
 export function LaunchRisk() {
@@ -946,7 +946,7 @@ export function LaunchRisk() {
 }
 
 /* ==========================================================================
-   21 · NPD STAIRCASE — the eight steps as a cascading flow
+   21. NPD STAIRCASE: the eight steps as a cascading flow
    ========================================================================== */
 
 export const NPD_STEPS = [
@@ -993,7 +993,7 @@ export function NpdStaircase({ active }: { active: number[] }) {
 }
 
 /* ==========================================================================
-   22 · IDEA FUNNEL — sourcing and filtering new concepts (400)
+   22. IDEA FUNNEL: sourcing and filtering new concepts (400)
    ========================================================================== */
 
 export function IdeaFunnel() {
@@ -1032,7 +1032,7 @@ export function IdeaFunnel() {
 }
 
 /* ==========================================================================
-   23 · CONCEPT TEST — the idea shown to target consumers (400)
+   23. CONCEPT TEST: the idea shown to target consumers (400)
    ========================================================================== */
 
 export function ConceptTest() {
@@ -1064,7 +1064,7 @@ export function ConceptTest() {
 }
 
 /* ==========================================================================
-   24 · STRATEGY OUTLINE — the initial marketing strategy (400)
+   24. STRATEGY OUTLINE: the initial marketing strategy (400)
    ========================================================================== */
 
 export function StrategyOutline() {
@@ -1090,7 +1090,7 @@ export function StrategyOutline() {
 }
 
 /* ==========================================================================
-   25 · GAUGE — business analysis weighs attractiveness (400)
+   25. GAUGE: business analysis weighs attractiveness (400)
    ========================================================================== */
 
 export function AttractivenessGauge() {
@@ -1115,7 +1115,7 @@ export function AttractivenessGauge() {
 }
 
 /* ==========================================================================
-   26 · SKETCH TO OBJECT — product development builds the prototype (400)
+   26. SKETCH TO OBJECT: product development builds the prototype (400)
    ========================================================================== */
 
 export function SketchToPrototype() {
@@ -1144,7 +1144,7 @@ export function SketchToPrototype() {
 }
 
 /* ==========================================================================
-   27 · A REAL SHELF — test marketing (400)
+   27. A REAL SHELF: test marketing (400)
    ========================================================================== */
 
 export function TestMarketShelf() {
@@ -1173,7 +1173,7 @@ export function TestMarketShelf() {
 }
 
 /* ==========================================================================
-   28 · LAUNCH — commercialization: into the market (400)
+   28. LAUNCH: commercialization: into the market (400)
    ========================================================================== */
 
 export function Launch() {
@@ -1212,7 +1212,7 @@ export function Launch() {
 }
 
 /* ==========================================================================
-   29 · BRAND ELEMENTS — name, term, sign, symbol, design identify the maker
+   29. BRAND ELEMENTS: name, term, sign, symbol, design identify the maker
    ========================================================================== */
 
 export function BrandElements() {
@@ -1264,7 +1264,7 @@ export function BrandElements() {
 }
 
 /* ==========================================================================
-   30 · IN THE HEAD — perceptions and feelings about the product (400)
+   30. IN THE HEAD: perceptions and feelings about the product (400)
    ========================================================================== */
 
 export function BrandPerceptions() {
@@ -1291,12 +1291,12 @@ export function BrandPerceptions() {
 }
 
 /* ==========================================================================
-   31 · BRAND EQUITY — the differential effect of knowing the name
+   31. BRAND EQUITY: the differential effect of knowing the name
    ========================================================================== */
 
 export function BrandEquity() {
   return (
-    <Frame height={256} label="A comparison. Two identical packages: one with its brand name hidden, one showing it. Beside each, a bar for customer response to the product or its marketing. The bar for the named package is longer; the gap between the bars is marked as the differential effect: brand equity.">
+    <Frame height={256} label="A comparison. Two identical packages: one with its brand name hidden, one showing it. Beside each, a bar for customer response to the product or its marketing. The bar for the named package is longer. The gap between the bars is marked as the differential effect: brand equity.">
       <Key x={150} y={30} fill={INK} size={9.5}>
         CUSTOMER RESPONSE TO THE PRODUCT OR ITS MARKETING
       </Key>
@@ -1330,7 +1330,7 @@ export function BrandEquity() {
 }
 
 /* ==========================================================================
-   32 · FLAG IN THE MIND — brand positioning (400)
+   32. FLAG IN THE MIND: brand positioning (400)
    ========================================================================== */
 
 export function BrandFlag() {
@@ -1355,7 +1355,7 @@ export function BrandFlag() {
 }
 
 /* ==========================================================================
-   33 · NAME CHECKLIST — benefits, pronounceable, distinctive (400)
+   33. NAME CHECKLIST: benefits, pronounceable, distinctive (400)
    ========================================================================== */
 
 export function NameChecklist() {
@@ -1383,7 +1383,7 @@ export function NameChecklist() {
 }
 
 /* ==========================================================================
-   34 · SPONSORSHIP — four ways to put a brand on a product (400)
+   34. SPONSORSHIP: four ways to put a brand on a product (400)
    ========================================================================== */
 
 export function SponsorshipOptions() {
@@ -1434,7 +1434,7 @@ export function SponsorshipOptions() {
 }
 
 /* ==========================================================================
-   35 · CONTAINER — the product inside its package (400)
+   35. CONTAINER: the product inside its package (400)
    ========================================================================== */
 
 export function ContainerWrapper() {
@@ -1461,7 +1461,7 @@ export function ContainerWrapper() {
 }
 
 /* ==========================================================================
-   36 · THREE PACKAGE FUNCTIONS — protect, attract, describe
+   36. THREE PACKAGE FUNCTIONS: protect, attract, describe
    ========================================================================== */
 
 export function PackageFunctions() {
@@ -1516,12 +1516,12 @@ export function PackageFunctions() {
 }
 
 /* ==========================================================================
-   37 · LABEL CALLOUTS — identifies, grades, describes, promotes
+   37. LABEL CALLOUTS: identifies, grades, describes, promotes
    ========================================================================== */
 
 export function LabelCallouts() {
   return (
-    <Frame width={400} height={244} label="A jar with a label. Four callouts: the brand name identifies the product; a grade badge grades it; lines of text describe it; an attractive graphic promotes it.">
+    <Frame width={400} height={244} label="A jar with a label. Four callouts: the brand name identifies the product. A grade badge grades it. Lines of text describe it. An attractive graphic promotes it.">
       <g transform="translate(-200 0)">
       <rect x={340} y={24} width={120} height={22} rx={3} fill={INK} />
       <rect x={326} y={46} width={148} height={184} rx={20} fill={PAPER} stroke={INK} strokeWidth={1.75} />
@@ -1559,12 +1559,12 @@ export function LabelCallouts() {
 }
 
 /* ==========================================================================
-   38 · WHAT IS SOLD — activities, benefits, satisfactions (400)
+   38. WHAT IS SOLD: activities, benefits, satisfactions (400)
    ========================================================================== */
 
 export function ServiceForms() {
   return (
-    <Frame width={400} height={170} label="Three things offered for sale, gathered by a bracket over one price tag: an activity, a person in motion; a benefit, a gift; a satisfaction, a smiling face.">
+    <Frame width={400} height={170} label="Three things offered for sale, gathered by a bracket over one price tag: an activity, a person in motion. A benefit, a gift. A satisfaction, a smiling face.">
       <g transform="translate(0 -44)">
         <path d="M40 80 H22 M44 96 H18 M40 112 H24" stroke={INK3} strokeWidth={1.5} strokeLinecap="round" />
         <Person3 x={70} y={124} k={1.8} />
@@ -1593,12 +1593,12 @@ export function ServiceForms() {
 }
 
 /* ==========================================================================
-   39 · NOTHING TO TAKE HOME — services do not result in ownership
+   39. NOTHING TO TAKE HOME: services do not result in ownership
    ========================================================================== */
 
 export function NoOwnership() {
   return (
-    <Frame width={400} height={262} label="Two rows. A physical object: a package, then a person walking away carrying it, ownership. A service, a night in a hotel bed: the person walks away with empty hands and only a dashed outline where an object would be. Intangible; no ownership.">
+    <Frame width={400} height={262} label="Two rows. A physical object: a package, then a person walking away carrying it, ownership. A service, a night in a hotel bed: the person walks away with empty hands and only a dashed outline where an object would be. Intangible. No ownership.">
       <Key x={20} y={22} fill={INK} size={9.5}>
         A PHYSICAL OBJECT
       </Key>
@@ -1636,7 +1636,7 @@ export function NoOwnership() {
 }
 
 /* ==========================================================================
-   40 · SHARE OF THE ECONOMY — services growing and dominating (400)
+   40. SHARE OF THE ECONOMY: services growing and dominating (400)
    ========================================================================== */
 
 export function ServiceEconomy() {
@@ -1673,7 +1673,7 @@ export function ServiceEconomy() {
 }
 
 /* ==========================================================================
-   41 · HUB AND SPOKES — the four characteristics of services
+   41. HUB AND SPOKES: the four characteristics of services
    ========================================================================== */
 
 export function ServiceHub() {
@@ -1683,7 +1683,7 @@ export function ServiceHub() {
     { x: 120, y: 280, name: "VARIABILITY", end: [159.35, 260.32], start: [264.55, 207.73] },
     { x: 520, y: 280, name: "PERISHABILITY", end: [480.65, 260.32], start: [375.45, 207.73] },
   ];
-  /** One service outcome as a small face; `mood` bends the mouth. */
+  /** One service outcome as a small face. `mood` bends the mouth. */
   const face = (x: number, mood: number) => (
     <g key={x}>
       <circle cx={x} cy={280} r={10} fill={PAPER} stroke={INK} strokeWidth={1.5} />
@@ -1738,7 +1738,7 @@ export function ServiceHub() {
 }
 
 /* ==========================================================================
-   42 · ACROSS THE COUNTER — customer and frontline employee (400)
+   42. ACROSS THE COUNTER: customer and frontline employee (400)
    ========================================================================== */
 
 export function FrontlineInteraction() {
@@ -1767,7 +1767,7 @@ export function FrontlineInteraction() {
 }
 
 /* ==========================================================================
-   43 · CHAIN — employee satisfaction, customer satisfaction, profits
+   43. CHAIN: employee satisfaction, customer satisfaction, profits
    ========================================================================== */
 
 export function ProfitChain() {
@@ -1798,7 +1798,7 @@ export function ProfitChain() {
 }
 
 /* ==========================================================================
-   44 · FACING INWARD FIRST — internal marketing (400)
+   44. FACING INWARD FIRST: internal marketing (400)
    ========================================================================== */
 
 export function InternalMarketing() {
@@ -1837,7 +1837,7 @@ export function InternalMarketing() {
 }
 
 /* ==========================================================================
-   45 · FIFTY EMPTY SEATS — perishable revenue on a flight
+   45. FIFTY EMPTY SEATS: perishable revenue on a flight
    ========================================================================== */
 
 export function EmptySeats() {
@@ -1898,7 +1898,7 @@ export function EmptySeats() {
 }
 
 /* ==========================================================================
-   46 · BALANCE — perishable revenue now against pricing power later
+   46. BALANCE: perishable revenue now against pricing power later
    ========================================================================== */
 
 export function PricingBalance() {
@@ -1937,7 +1937,7 @@ export function PricingBalance() {
 }
 
 /* ==========================================================================
-   Conclusion glyphs — each echoes a plate already seen
+   Conclusion glyphs: each echoes a plate already seen
    ========================================================================== */
 
 export function GlyphLifeCycle() {

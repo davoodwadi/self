@@ -1,6 +1,5 @@
 /* ==========================================================================
-   Shared kit: the building blocks every week draws and lays out with —
-   colours and type, the plate frame and label helpers, geometry helpers
+   Shared kit: the building blocks every week draws and lays out with, colours and type, the plate frame and label helpers, geometry helpers
    and slide layout blocks. See "Shared pieces" in the root CLAUDE.md.
    ========================================================================== */
 
@@ -485,7 +484,7 @@ export function Ruled({
   );
 }
 
-/** Section heading with a hairline beneath; an optional kicker ("Discussion:") sits above the words. */
+/** Section heading with a hairline beneath. An optional kicker ("Discussion:") sits above the words. */
 export function SlideHeading({
   children,
   kicker,

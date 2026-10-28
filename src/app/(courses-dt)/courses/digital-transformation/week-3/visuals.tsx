@@ -1,12 +1,12 @@
 /* ==========================================================================
-   Week 3 — plates (Flat Silhouette)
+   Week 3, plates (Flat Silhouette)
    --------------------------------------------------------------------------
    Fixed cast for the week, on top of the course kit and objects:
-     · Person   — every human (course object)
-     · Monitor / MiniScreen — anything digital (course kit)
-     · Disc     — boxed media: the rental film, traditional software
-     · Package  — a product release / increment (Phosphor, fill)
-     · Backlog  — a list of work items (ink card, cream item lines)
+     - Person, every human (course object)
+     - Monitor / MiniScreen, anything digital (course kit)
+     - Disc, boxed media: the rental film, traditional software
+     - Package, a product release / increment (Phosphor, fill)
+     - Backlog, a list of work items (ink card, cream item lines)
    Every coordinate is a literal or rounded, so server and client match.
    ========================================================================== */
 
@@ -38,7 +38,7 @@ import { Person, Shop, Doc } from "../_visuals/objects";
 /* -- the rental disc in its mailer envelope (physical film) --------------- */
 
 function Mailer({ x, y, discTone = INK }: { x: number; y: number; discTone?: string }) {
-  // a disc (r 34) half out of a 120 × 70 envelope; origin top-left of the disc's box
+  // a disc (r 34) half out of a 120 × 70 envelope. Origin top-left of the disc's box
   return (
     <g transform={`translate(${x} ${y})`}>
       <path d="M 60 0 A 34 34 0 1 0 60.01 0 Z M 60 26 A 8 8 0 1 1 59.99 26 Z" fill={discTone} fillRule="evenodd" />
@@ -50,7 +50,7 @@ function Mailer({ x, y, discTone = INK }: { x: number; y: number; discTone?: str
 }
 
 /* ==========================================================================
-   How Netflix transformed the movie industry — the disc in the post becomes
+   How Netflix transformed the movie industry: the disc in the post becomes
    a film on a screen
    ========================================================================== */
 
@@ -67,7 +67,7 @@ export function DiscToStream() {
 }
 
 /* ==========================================================================
-   Data analytics, four key types — one line of data through time: the past
+   Data analytics, four key types, one line of data through time: the past
    as it happened, a dip examined, the forecast, and the chosen next step
    ========================================================================== */
 
@@ -113,7 +113,7 @@ export function FourTypes({
     <Plate
       w={800}
       h={256}
-      title={`One timeline in four selectable zones: 1. Descriptive (past data line), 2. Diagnostic (magnifying glass over a dip), 4. Predictive (dashed forecast in a pale blue band), and 3. Prescriptive (forking path from the forecast to two courses of action, with the optimal recommended target highlighted); ${activeLabel} is highlighted in red`}
+      title={`One timeline in four selectable zones: 1. Descriptive (past data line), 2. Diagnostic (magnifying glass over a dip), 4. Predictive (dashed forecast in a pale blue band), and 3. Prescriptive (forking path from the forecast to two courses of action, with the optimal recommended target highlighted). ${activeLabel} is highlighted in red`}
     >
       <path
         d={`M 210 20 V ${base} M 400 20 V ${base} M 590 20 V ${base}`}
@@ -213,7 +213,7 @@ export function FourTypes({
 }
 
 /* ==========================================================================
-   Netflix timeline — four moments on one rail, the last one lit
+   Netflix timeline: four moments on one rail, the last one lit
    ========================================================================== */
 
 function Calendar({ x, y, tone = INK }: { x: number; y: number; tone?: string }) {
@@ -233,7 +233,7 @@ function Calendar({ x, y, tone = INK }: { x: number; y: number; tone?: string })
 }
 
 /* ==========================================================================
-   Challenges and considerations — Technology vs Business considerations
+   Challenges and considerations: Technology vs Business considerations
    feeding into Netflix's digital streaming screen
    ========================================================================== */
 
@@ -252,7 +252,7 @@ export function NetflixConsiderations({
     <Plate
       w={800}
       h={256}
-      title={`What Netflix needs to consider for digital transformation: on the left, Technology (Cloud infrastructure and Video encoding); on the right, Business (New business model, Competition and Piracy, Consumer engagement and loyalty), both feeding into a central framed streaming screen; ${activeGroup} is highlighted in red`}
+      title={`What Netflix needs to consider for digital transformation: on the left, Technology (Cloud infrastructure and Video encoding). On the right, Business (New business model, Competition and Piracy, Consumer engagement and loyalty), both feeding into a central framed streaming screen. ${activeGroup} is highlighted in red`}
     >
       {/* Central streaming screen */}
       <Monitor x={316} y={54} w={168} h={124}>
@@ -396,7 +396,7 @@ export function NetflixConsiderationsTall({
     <Plate
       w={400}
       h={228}
-      title={`What Netflix needs to consider for digital transformation: 1. Technology and 2. Business; ${activeGroup} is highlighted in red`}
+      title={`What Netflix needs to consider for digital transformation: 1. Technology and 2. Business. ${activeGroup} is highlighted in red`}
     >
       {/* Left column: 1. Technology */}
       <g
@@ -480,7 +480,7 @@ export function NetflixTimeline({
     <Plate
       w={800}
       h={204}
-      title={`A timeline with four selectable moments: 1997, a film disc in a mailer envelope; 1999, a monthly calendar; 2003, a group of three people for 1 million subscribers; 2007, a play button on a framed screen; ${activeYear} is highlighted in red`}
+      title={`A timeline with four selectable moments: 1997, a film disc in a mailer envelope. 1999, a monthly calendar. 2003, a group of three people for 1 million subscribers. 2007, a play button on a framed screen. ${activeYear} is highlighted in red`}
     >
       <path d={`M 20 ${rail} H 780`} stroke={INK} strokeWidth={4} />
       {cx.map((x, i) => {
@@ -543,7 +543,7 @@ export function NetflixTimeline({
 }
 
 /* ==========================================================================
-   Change management — people, processes and technology move in step to
+   Change management: people, processes and technology move in step to
    the digital business
    ========================================================================== */
 
@@ -590,7 +590,7 @@ export function AlignedChange() {
 }
 
 /* ==========================================================================
-   Kotter's eight steps — a staircase climbed one step at a time
+   Kotter's eight steps: a staircase climbed one step at a time
    ========================================================================== */
 
 const KOTTER: string[][] = [
@@ -652,7 +652,7 @@ export function KotterStairs() {
 }
 
 /* ==========================================================================
-   Kotter's 8 Steps: 1 to 4 (Interactive) — four rising staircase steps with
+   Kotter's 8 Steps: 1 to 4 (Interactive), four rising staircase steps with
    a silhouette scene on each step
    ========================================================================== */
 
@@ -681,7 +681,7 @@ export function KotterSteps1To4({
     <Plate
       w={800}
       h={256}
-      title={`Kotter's Steps 1 to 4 on four rising steps: 1. Create a Sense of Urgency (a person beside a clock), 2. Build a Guiding Coalition (three leaders together), 3. Form a Strategic Vision and Initiatives (a leader looking at a digital shop on a screen), and 4. Communicate the Vision (a leader with a megaphone addressing stakeholders); ${activeName} is highlighted in red`}
+      title={`Kotter's Steps 1 to 4 on four rising steps: 1. Create a Sense of Urgency (a person beside a clock), 2. Build a Guiding Coalition (three leaders together), 3. Form a Strategic Vision and Initiatives (a leader looking at a digital shop on a screen), and 4. Communicate the Vision (a leader with a megaphone addressing stakeholders). ${activeName} is highlighted in red`}
     >
       {KOTTER_1_TO_4.map((step, i) => {
         const x = x0 + i * pitch;
@@ -773,7 +773,7 @@ export function KotterSteps1To4Tall({
 }) {
   const activeName = KOTTER_1_TO_4[active]?.label ?? KOTTER_1_TO_4[0].label;
   return (
-    <Plate w={400} h={196} title={`Kotter's Steps 1 to 4; ${activeName} is highlighted in red`}>
+    <Plate w={400} h={196} title={`Kotter's Steps 1 to 4. ${activeName} is highlighted in red`}>
       {KOTTER_1_TO_4.map((step, i) => {
         const col = i % 2;
         const row = Math.floor(i / 2);
@@ -848,7 +848,7 @@ export function KotterSteps5To8({
     <Plate
       w={800}
       h={256}
-      title={`Kotter's Steps 5 to 8 on four rising steps: 5. Empower Broad-Based Action (a person moving past an opened obstacle wall), 6. Generate Short-Term Wins (a person beside a trophy), 7. Consolidate Gains and Produce More Change (three rising building blocks with an upward arrow), and 8. Anchor New Approaches in the Culture (a digital shop on a screen beside an anchor); ${activeName} is highlighted in red`}
+      title={`Kotter's Steps 5 to 8 on four rising steps: 5. Empower Broad-Based Action (a person moving past an opened obstacle wall), 6. Generate Short-Term Wins (a person beside a trophy), 7. Consolidate Gains and Produce More Change (three rising building blocks with an upward arrow), and 8. Anchor New Approaches in the Culture (a digital shop on a screen beside an anchor). ${activeName} is highlighted in red`}
     >
       {KOTTER_5_TO_8.map((step, i) => {
         const x = x0 + i * pitch;
@@ -941,7 +941,7 @@ export function KotterSteps5To8Tall({
 }) {
   const activeName = KOTTER_5_TO_8[active]?.label ?? KOTTER_5_TO_8[0].label;
   return (
-    <Plate w={400} h={196} title={`Kotter's Steps 5 to 8; ${activeName} is highlighted in red`}>
+    <Plate w={400} h={196} title={`Kotter's Steps 5 to 8. ${activeName} is highlighted in red`}>
       {KOTTER_5_TO_8.map((step, i) => {
         const col = i % 2;
         const row = Math.floor(i / 2);
@@ -992,7 +992,7 @@ export function KotterSteps5To8Tall({
 }
 
 /* ==========================================================================
-   The case of Microsoft — boxed software becomes a cloud service on a screen
+   The case of Microsoft: boxed software becomes a cloud service on a screen
    ========================================================================== */
 
 /* A software disc, radius 54, centred on (cx, cy). */
@@ -1046,7 +1046,7 @@ export function MicrosoftKotter1To4({
     <Plate
       w={400}
       h={296}
-      title={`Microsoft's transformation across Kotter's Steps 1 to 4: selectable steps on the left and a scene on the right; ${activeItem.label} is highlighted in red`}
+      title={`Microsoft's transformation across Kotter's Steps 1 to 4: selectable steps on the left and a scene on the right. ${activeItem.label} is highlighted in red`}
     >
       {MS_KOTTER_1_TO_4.map((step, i) => {
         const y = 14 + i * 70;
@@ -1177,7 +1177,7 @@ export function MicrosoftKotter5To8({
     <Plate
       w={400}
       h={296}
-      title={`Microsoft's transformation across Kotter's Steps 5 to 8: selectable steps on the left and a scene on the right; ${activeItem.label} is highlighted in red`}
+      title={`Microsoft's transformation across Kotter's Steps 5 to 8: selectable steps on the left and a scene on the right. ${activeItem.label} is highlighted in red`}
     >
       {MS_KOTTER_5_TO_8.map((step, i) => {
         const y = 14 + i * 70;
@@ -1271,7 +1271,7 @@ export function MicrosoftKotter5To8({
 }
 
 /* ==========================================================================
-   Prosci ADKAR Model Overview (Interactive, w=800 + Tall w=400) — an
+   Prosci ADKAR Model Overview (Interactive, w=800 + Tall w=400), an
    individual progresses through the five outcomes: A, D, K, A, R
    ========================================================================== */
 
@@ -1316,7 +1316,7 @@ export function AdkarOverview({
     <Plate
       w={800}
       h={234}
-      title={`The Prosci ADKAR Model as five sequential individual outcomes: Awareness (A), Desire (D), Knowledge (K), Ability (A), and Reinforcement (R); an individual stands at ${activeStage.name}, highlighted in red`}
+      title={`The Prosci ADKAR Model as five sequential individual outcomes: Awareness (A), Desire (D), Knowledge (K), Ability (A), and Reinforcement (R). An individual stands at ${activeStage.name}, highlighted in red`}
     >
       {ADKAR_STAGES.map((st, i) => {
         const x = x0 + i * pitch;
@@ -1340,7 +1340,7 @@ export function AdkarOverview({
               role={onSelect ? "button" : undefined}
               tabIndex={onSelect ? 0 : undefined}
               aria-pressed={onSelect ? isLit : undefined}
-              aria-label={onSelect ? `${st.letter} – ${st.name}` : undefined}
+              aria-label={onSelect ? `${st.letter} - ${st.name}` : undefined}
               onClick={onSelect ? () => onSelect(i) : undefined}
               onKeyDown={
                 onSelect
@@ -1406,7 +1406,7 @@ export function AdkarOverviewTall({
     <Plate
       w={400}
       h={258}
-      title={`The Prosci ADKAR Model as five individual outcomes; ${activeStage.name} is highlighted in red`}
+      title={`The Prosci ADKAR Model as five individual outcomes. ${activeStage.name} is highlighted in red`}
     >
       {ADKAR_STAGES.map((st, i) => {
         const y = 12 + i * 48;
@@ -1418,7 +1418,7 @@ export function AdkarOverviewTall({
             role={onSelect ? "button" : undefined}
             tabIndex={onSelect ? 0 : undefined}
             aria-pressed={onSelect ? isLit : undefined}
-            aria-label={onSelect ? `${st.letter} – ${st.name}` : undefined}
+            aria-label={onSelect ? `${st.letter} - ${st.name}` : undefined}
             onClick={onSelect ? () => onSelect(i) : undefined}
             onKeyDown={
               onSelect
@@ -1487,7 +1487,7 @@ export function AdkarFirstThree({
     <Plate
       w={800}
       h={236}
-      title={`ADKAR stages 1 to 3: 1. Awareness (a megaphone and eye reaching a person), 2. Desire (two engaged people with a heart of motivation), and 3. Knowledge (a person with a training document and process gear); ${activeItem.n}. ${activeItem.name} is highlighted in red`}
+      title={`ADKAR stages 1 to 3: 1. Awareness (a megaphone and eye reaching a person), 2. Desire (two engaged people with a heart of motivation), and 3. Knowledge (a person with a training document and process gear). ${activeItem.n}. ${activeItem.name} is highlighted in red`}
     >
       {ADKAR_FIRST_THREE.map((st, i) => {
         const x = xs[i];
@@ -1591,7 +1591,7 @@ export function AdkarFirstThreeTall({
 }) {
   const activeItem = ADKAR_FIRST_THREE[active] ?? ADKAR_FIRST_THREE[0];
   return (
-    <Plate w={400} h={172} title={`ADKAR stages 1 to 3; ${activeItem.n}. ${activeItem.name} is highlighted in red`}>
+    <Plate w={400} h={172} title={`ADKAR stages 1 to 3. ${activeItem.n}. ${activeItem.name} is highlighted in red`}>
       {ADKAR_FIRST_THREE.map((st, i) => {
         const y = 12 + i * 52;
         const isLit = i === active;
@@ -1670,7 +1670,7 @@ export function AdkarLastTwo({
     <Plate
       w={800}
       h={236}
-      title={`ADKAR stages 4 and 5: 4. Ability (a person practicing new skills on a digital screen to deliver a package) and 5. Reinforcement (two people celebrating sustained change with a trophy of recognition); ${activeItem.n}. ${activeItem.name} is highlighted in red`}
+      title={`ADKAR stages 4 and 5: 4. Ability (a person practicing new skills on a digital screen to deliver a package) and 5. Reinforcement (two people celebrating sustained change with a trophy of recognition). ${activeItem.n}. ${activeItem.name} is highlighted in red`}
     >
       <Pointer
         x1={384}
@@ -1707,7 +1707,7 @@ export function AdkarLastTwo({
           >
             <rect x={x} y={12} width={w} height={212} fill="transparent" />
 
-            {/* Stage 4: Ability — applying skills on a digital screen to deliver results */}
+            {/* Stage 4: Ability: applying skills on a digital screen to deliver results */}
             {i === 0 && (
               <g>
                 <Person x={92} y={26} k={0.96} variant={7} />
@@ -1719,7 +1719,7 @@ export function AdkarLastTwo({
               </g>
             )}
 
-            {/* Stage 5: Reinforcement — recognition, rewards, and ongoing support */}
+            {/* Stage 5: Reinforcement: recognition, rewards, and ongoing support */}
             {i === 1 && (
               <g>
                 <Person x={496} y={26} k={0.96} variant={3} />
@@ -1769,7 +1769,7 @@ export function AdkarLastTwoTall({
 }) {
   const activeItem = ADKAR_LAST_TWO[active] ?? ADKAR_LAST_TWO[0];
   return (
-    <Plate w={400} h={124} title={`ADKAR stages 4 and 5; ${activeItem.n}. ${activeItem.name} is highlighted in red`}>
+    <Plate w={400} h={124} title={`ADKAR stages 4 and 5. ${activeItem.n}. ${activeItem.name} is highlighted in red`}>
       {ADKAR_LAST_TWO.map((st, i) => {
         const y = 12 + i * 52;
         const isLit = i === active;
@@ -1825,7 +1825,7 @@ export function AdkarLastTwoTall({
 }
 
 /* ==========================================================================
-   Agile project management — small, rapid releases go out to the customer,
+   Agile project management: small, rapid releases go out to the customer,
    and the customer's feedback comes back
    ========================================================================== */
 
@@ -1848,7 +1848,7 @@ export function SmallReleases() {
 }
 
 /* ==========================================================================
-   Traditional vs. agile — one straight shot at a fixed target, against a
+   Traditional vs. agile: one straight shot at a fixed target, against a
    path of short iterations that adjusts on the way to it
    ========================================================================== */
 
@@ -1907,7 +1907,7 @@ export function TwoPaths() {
 
 /* ==========================================================================
    Traditional vs. Agile Project Management (Interactive, w=800 + Tall w=400)
-   — four selectable dimensions contrasting the Traditional and Agile paths
+   - four selectable dimensions contrasting the Traditional and Agile paths
    ========================================================================== */
 
 const TRAD_AGILE_STAGES = [
@@ -1933,7 +1933,7 @@ export function TradVsAgileInteractive({
     <Plate
       w={800}
       h={252}
-      title={`Traditional vs. Agile Project Management across four selectable stages: 1. Goal Setting, 2. Initial Steps, 3. Execution, and 4. Focus; ${activeStage.label} is highlighted in red, contrasting the Traditional top lane with the Agile bottom lane`}
+      title={`Traditional vs. Agile Project Management across four selectable stages: 1. Goal Setting, 2. Initial Steps, 3. Execution, and 4. Focus. ${activeStage.label} is highlighted in red, contrasting the Traditional top lane with the Agile bottom lane`}
     >
       {/* Top selector tabs */}
       {TRAD_AGILE_STAGES.map((st, i) => {
@@ -2073,7 +2073,7 @@ export function TradVsAgileTall({
 }) {
   const activeStage = TRAD_AGILE_STAGES[active] ?? TRAD_AGILE_STAGES[0];
   return (
-    <Plate w={400} h={132} title={`Traditional vs. Agile stages; ${activeStage.label} is highlighted in red`}>
+    <Plate w={400} h={132} title={`Traditional vs. Agile stages. ${activeStage.label} is highlighted in red`}>
       {TRAD_AGILE_STAGES.map((st, i) => {
         const col = i % 2;
         const row = Math.floor(i / 2);
@@ -2121,7 +2121,7 @@ export function TradVsAgileTall({
 }
 
 /* ==========================================================================
-   Scrum — the rugby scrum: two packs bent low, heads locked together,
+   Scrum, the rugby scrum: two packs bent low, heads locked together,
    contesting the ball between them
    ========================================================================== */
 
@@ -2167,7 +2167,7 @@ export function RugbyScrum() {
 }
 
 /* ==========================================================================
-   Empirical process control — three pillars carry it
+   Empirical process control: three pillars carry it
    ========================================================================== */
 
 export function ScrumPrinciples1To3({
@@ -2186,7 +2186,7 @@ export function ScrumPrinciples1To3({
     <Plate
       w={800}
       h={248}
-      title={`Principles of Scrum 1 to 3: 1. Empirical Process Control (a beam resting on three pillars: Transparency, Inspection, and Adaptation), 2. Self-Organization (a cross-functional team of three organizing their own work), and 3. Collaboration (team and stakeholders communicating in ceremonies); ${activeName} is highlighted in red`}
+      title={`Principles of Scrum 1 to 3: 1. Empirical Process Control (a beam resting on three pillars: Transparency, Inspection, and Adaptation), 2. Self-Organization (a cross-functional team of three organizing their own work), and 3. Collaboration (team and stakeholders communicating in ceremonies). ${activeName} is highlighted in red`}
     >
       {xs.map((x, i) => {
         const cx = x + w / 2;
@@ -2306,7 +2306,7 @@ export function ScrumPrinciples1To3Tall({
   const names = ["1. Empirical Process Control", "2. Self-Organization", "3. Collaboration"];
   const activeName = names[active] ?? names[0];
   return (
-    <Plate w={400} h={172} title={`Principles of Scrum 1 to 3; ${activeName} is highlighted in red`}>
+    <Plate w={400} h={172} title={`Principles of Scrum 1 to 3. ${activeName} is highlighted in red`}>
       {names.map((name, i) => {
         const y = 12 + i * 52;
         const isLit = i === active;
@@ -2366,7 +2366,7 @@ export function ScrumPrinciples4To6({
     <Plate
       w={800}
       h={248}
-      title={`Principles of Scrum 4 to 6: 4. Value-Based Prioritization (a Product Owner beside a prioritized Product Backlog), 5. Time Boxing (a clock inside a fixed boundary frame), and 6. Iterative Development (repeated small cycles producing an increment package); ${activeName} is highlighted in red`}
+      title={`Principles of Scrum 4 to 6: 4. Value-Based Prioritization (a Product Owner beside a prioritized Product Backlog), 5. Time Boxing (a clock inside a fixed boundary frame), and 6. Iterative Development (repeated small cycles producing an increment package). ${activeName} is highlighted in red`}
     >
       {xs.map((x, i) => {
         const cx = x + w / 2;
@@ -2506,7 +2506,7 @@ export function ScrumPrinciples4To6Tall({
   const names = ["4. Value-Based Prioritization", "5. Time Boxing", "6. Iterative Development"];
   const activeName = names[active] ?? names[0];
   return (
-    <Plate w={400} h={172} title={`Principles of Scrum 4 to 6; ${activeName} is highlighted in red`}>
+    <Plate w={400} h={172} title={`Principles of Scrum 4 to 6. ${activeName} is highlighted in red`}>
       {names.map((name, i) => {
         const y = 12 + i * 52;
         const isLit = i === active;
@@ -2551,7 +2551,7 @@ export function ScrumPrinciples4To6Tall({
 }
 
 /* ==========================================================================
-   Scrum methodology — product backlog, sprint backlog, the sprint loop with
+   Scrum methodology: product backlog, sprint backlog, the sprint loop with
    its daily scrum, and the increment. `lit` marks the events or artifacts.
    ========================================================================== */
 
@@ -2652,7 +2652,7 @@ export function ScrumProcess({
     <Plate
       w={800}
       h={296}
-      title={`Scrum methodology: a product backlog list feeds a shorter sprint backlog; an arrow marked sprint planning enters a large clockwise loop, the sprint of 1 to 4 weeks, with a small daily scrum loop at its top right; stops on the loop mark the sprint review and the sprint retrospective; an arrow leaves the loop to a package, the increment${
+      title={`Scrum methodology: a product backlog list feeds a shorter sprint backlog. An arrow marked sprint planning enters a large clockwise loop, the sprint of 1 to 4 weeks, with a small daily scrum loop at its top right. Stops on the loop mark the sprint review and the sprint retrospective. An arrow leaves the loop to a package, the increment${
         activeDesc ? `. ${activeDesc} is highlighted in red` : ""
       }`}
     >
@@ -2738,7 +2738,7 @@ export function ScrumProcess({
 }
 
 /* ==========================================================================
-   Roles in Scrum (Interactive, w=800 + Tall w=400) — Product Owner, Scrum
+   Roles in Scrum (Interactive, w=800 + Tall w=400): Product Owner, Scrum
    Master, and Development Team
    ========================================================================== */
 
@@ -2759,7 +2759,7 @@ export function ScrumRolesHub({
     <Plate
       w={800}
       h={248}
-      title={`Three primary roles in Scrum: 1. Product Owner (a person managing the prioritized product backlog), 2. Scrum Master (a shield between the team and external lightning interruptions), and 3. Development Team (three cross-functional members delivering the product increment package); ${activeName} is highlighted in red`}
+      title={`Three primary roles in Scrum: 1. Product Owner (a person managing the prioritized product backlog), 2. Scrum Master (a shield between the team and external lightning interruptions), and 3. Development Team (three cross-functional members delivering the product increment package). ${activeName} is highlighted in red`}
     >
       {xs.map((x, i) => {
         const cx = x + w / 2;
@@ -2845,7 +2845,7 @@ export function ScrumRolesHubTall({
 }) {
   const activeName = SCRUM_ROLES[active] ?? SCRUM_ROLES[0];
   return (
-    <Plate w={400} h={172} title={`Roles in Scrum; ${activeName} is highlighted in red`}>
+    <Plate w={400} h={172} title={`Roles in Scrum. ${activeName} is highlighted in red`}>
       {SCRUM_ROLES.map((name, i) => {
         const y = 12 + i * 52;
         const isLit = i === active;
@@ -2890,7 +2890,7 @@ export function ScrumRolesHubTall({
 }
 
 /* ==========================================================================
-   Hero — a shop climbs a staircase of change, step by step, to its place on
+   Hero: a shop climbs a staircase of change, step by step, to its place on
    a screen
    ========================================================================== */
 

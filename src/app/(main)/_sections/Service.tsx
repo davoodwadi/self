@@ -46,11 +46,11 @@ export function Service() {
               <span className="text-ink">
                 Journal of Electronic Commerce Research
               </span>{" "}
-              <span className="text-ink-3">· E-Commerce (March 2026)</span>
+              <span className="text-ink-3">| E-Commerce (March 2026)</span>
             </li>
             <li>
               <span className="text-ink">ICML 2025</span>{" "}
-              <span className="text-ink-3">· Gradient Descent Optimization</span>
+              <span className="text-ink-3">| Gradient Descent Optimization</span>
             </li>
             <li>
               <span className="text-ink">AISTATS 2025</span>
@@ -58,7 +58,7 @@ export function Service() {
             <li>
               <span className="text-ink">NeurIPS 2024 & 2022</span>{" "}
               <span className="text-ink-3">
-                · GD, LLMs, Vector Symbolic Architecture
+                - GD, LLMs, Vector Symbolic Architecture
               </span>
             </li>
           </ul>

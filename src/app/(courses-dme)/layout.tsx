@@ -25,7 +25,7 @@ const franklin = Libre_Franklin({
 export const metadata: Metadata = {
   title: {
     default: DME.title,
-    template: `%s · ${DME.title}`,
+    template: `%s | ${DME.title}`,
   },
   description: DME.summary,
   icons: {

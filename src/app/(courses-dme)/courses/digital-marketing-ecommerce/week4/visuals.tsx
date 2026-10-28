@@ -116,7 +116,7 @@ function TeaTin({ id, cx, cy, s = 1 }: { id: string; cx: number; cy: number; s?:
   );
 }
 
-/** A tick mark centred on (cx, cy); an amber tick keeps an ink outline. */
+/** A tick mark centred on (cx, cy). An amber tick keeps an ink outline. */
 function Tick({ cx, cy, amber = false }: { cx: number; cy: number; amber?: boolean }) {
   const d = `M${cx - 7} ${cy}L${cx - 2} ${cy + 5}L${cx + 8} ${cy - 6}`;
   const cap = { fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
@@ -148,9 +148,9 @@ function ShelfBox({ id, x, y, w, h }: { id: string; x: number; y: number; w: num
 }
 
 /**
- * Left: a supermarket gondola of about thirty thousand items; the brand's
+ * Left: a supermarket gondola of about thirty thousand items. The brand's
  * coins pay a slotting fee into the eye-level shelf, bracketed in amber.
- * Right: a phone's results page; the first two slots carry the same amber
+ * Right: a phone's results page. The first two slots carry the same amber
  * bracket, and the list runs on far below the screen.
  */
 export function ShelfToScreen() {
@@ -160,7 +160,7 @@ export function ShelfToScreen() {
     <Frame
       width={800}
       height={290}
-      label="Left: a supermarket shelf of about 30,000 items in four rows of boxes; a stack of coins pays a slotting fee into the eye-level shelf, bracketed in amber. Right: a phone showing a results page; the first two slots carry the same amber eye-level bracket, and the list of hundreds of millions of SKUs runs on far below the screen."
+      label="Left: a supermarket shelf of about 30,000 items in four rows of boxes. A stack of coins pays a slotting fee into the eye-level shelf, bracketed in amber. Right: a phone showing a results page. The first two slots carry the same amber eye-level bracket, and the list of hundreds of millions of SKUs runs on far below the screen."
     >
       <HalftoneDefs id={id} />
       {/* the gondola */}
@@ -240,7 +240,7 @@ export function ShelfToScreen() {
 
 /**
  * Pull: a shopper types an explicit query and the platform answers with a
- * ranked column of matching headphones. Push: no query; the platform's own
+ * ranked column of matching headphones. Push: no query. The platform's own
  * pages (homepage, a product page's "frequently bought together" row, the
  * cart) carry its suggestions. Below: the shared job, millions of items cut
  * to a handful (amber) within a few dozen milliseconds.
@@ -547,8 +547,8 @@ export function TwoRecommenders() {
         height={296}
         label={
           mode === "content"
-            ? `Content-based filtering. A shopper bought a novel tagged mystery and Scandinavian. The candidate rows show each item's catalog tags; the other Scandinavian mysteries are recommended${showNew ? ", including a novel listed today with no sales, in amber" : ""}, while the lamp, the tea and the mug are not.`
-            : `Collaborative filtering. A shopper bought a Scandinavian mystery bought by shoppers 1, 2, 3 and 5. Each candidate row shows which of six shoppers bought it: the reading lamp shares 4 buyers and the tea tin 3, so they are recommended, though they share no text attributes${showNew ? "; the novel listed today has no buyers and cannot be recommended" : ""}.`
+            ? `Content-based filtering. A shopper bought a novel tagged mystery and Scandinavian. The candidate rows show each item's catalog tags. The other Scandinavian mysteries are recommended${showNew ? ", including a novel listed today with no sales, in amber" : ""}, while the lamp, the tea and the mug are not.`
+            : `Collaborative filtering. A shopper bought a Scandinavian mystery bought by shoppers 1, 2, 3 and 5. Each candidate row shows which of six shoppers bought it: the reading lamp shares 4 buyers and the tea tin 3, so they are recommended, though they share no text attributes${showNew ? ". The novel listed today has no buyers and cannot be recommended" : ""}.`
         }
       >
         <HalftoneDefs id={id} />
@@ -690,11 +690,11 @@ export function ColdStartTrio() {
 /**
  * The two-stage pipeline as an instrument. The slider sets how many
  * candidates Stage 1 hands to Stage 2. Stage 1 (vector search) costs about
- * 12 ms whatever the catalogue size; the heavy Stage 2 model costs about
+ * 12 ms whatever the catalogue size. The heavy Stage 2 model costs about
  * 0.15 ms per candidate. The ruler shows the response time against the
- * 100 ms budget; the readout shows how often the shopper's best match
+ * 100 ms budget. The readout shows how often the shopper's best match
  * survives retrieval (n / (n + 40), a plausible recall curve). A few hundred
- * candidates keep most best matches within budget; scoring the whole
+ * candidates keep most best matches within budget. Scoring the whole
  * catalogue would take hours.
  */
 const STAGE_N = [10, 30, 100, 300, 600, 1000, 10000, 300000000];
@@ -717,7 +717,7 @@ export function TwoStage() {
       <Frame
         width={480}
         height={238}
-        label={`Two-stage pipeline. Stage 1 narrows millions of SKUs to ${nText} candidates; Stage 2 scores them and ranks three listings. Response time ${timeText} against a 100 millisecond budget${over ? ", over budget" : ", within budget"}; the shopper's best match is among the candidates ${recall}% of the time.`}
+        label={`Two-stage pipeline. Stage 1 narrows millions of SKUs to ${nText} candidates. Stage 2 scores them and ranks three listings. Response time ${timeText} against a 100 millisecond budget${over ? ", over budget" : ", within budget"}. The shopper's best match is among the candidates ${recall}% of the time.`}
       >
         <HalftoneDefs id={id} />
         {/* the catalogue */}
@@ -817,7 +817,7 @@ function Stars({ x, y, n, r = 4 }: { x: number; y: number; n: number; r?: number
 }
 
 /**
- * Five mug listings; the three-star mug sits at Position 1 and the
+ * Five mug listings. The three-star mug sits at Position 1 and the
  * five-star mug at Position 4. Each listing's cursor stack is its clicks.
  * The button swaps the two mugs: the clicks stay with the slot, not the
  * mug, so the five-star mug now takes the tall amber stack.
@@ -835,7 +835,7 @@ export function SlotSwap() {
       <Frame
         width={480}
         height={262}
-        label={`Five mug listings with stacks of clicks above them falling from 10 at Position 1 to 2 at Position 5; the top stack is amber. ${swapped ? "After the swap, the five-star mug sits at Position 1 and takes the 10 clicks, and the three-star mug at Position 4 gets 3." : "The three-star mug sits at Position 1 and takes 10 clicks; the five-star mug at Position 4 gets only 3."}`}
+        label={`Five mug listings with stacks of clicks above them falling from 10 at Position 1 to 2 at Position 5. The top stack is amber. ${swapped ? "After the swap, the five-star mug sits at Position 1 and takes the 10 clicks, and the three-star mug at Position 4 gets 3." : "The three-star mug sits at Position 1 and takes 10 clicks. The five-star mug at Position 4 gets only 3."}`}
       >
         <HalftoneDefs id={id} />
         {SLOT_CLICKS.map((c, k) => {
@@ -873,12 +873,12 @@ export function SlotSwap() {
 }
 
 /**
- * The reference plate, made an instrument. Eight mug listings; Position 1
+ * The reference plate, made an instrument. Eight mug listings. Position 1
  * is a sponsored three-star mug and Position 6 a better five-star mug.
  * A shopper inspects the next listing with probability d, which falls as
- * the effort of inspecting one more listing rises (d from 0.85 to 0.45);
- * clicks per position follow d^(k-1). Each stack holds up to twelve
- * cursors; the top stack is amber, and the readout is the top three's share
+ * the effort of inspecting one more listing rises (d from 0.85 to 0.45).
+ * Clicks per position follow d^(k-1). Each stack holds up to twelve
+ * cursors. The top stack is amber, and the readout is the top three's share
  * of all clicks.
  */
 const EFFORT = ["Very low", "Low", "Medium", "High", "Very high"];
@@ -897,7 +897,7 @@ export function SearchCost() {
       <Frame
         width={480}
         height={240}
-        label={`Eight mug listings with stacks of clicks above them; Position 1 is a sponsored three-star mug and its stack is amber, Position 6 is a five-star mug. With ${EFFORT[e].toLowerCase()} effort to inspect each listing, clicks fall from ${Math.round(12 * w[0])} cursors at Position 1 to ${Math.round(12 * w[7])} at Position 8, and the top three listings take ${top3}% of all clicks.`}
+        label={`Eight mug listings with stacks of clicks above them. Position 1 is a sponsored three-star mug and its stack is amber, Position 6 is a five-star mug. With ${EFFORT[e].toLowerCase()} effort to inspect each listing, clicks fall from ${Math.round(12 * w[0])} cursors at Position 1 to ${Math.round(12 * w[7])} at Position 8, and the top three listings take ${top3}% of all clicks.`}
       >
         <HalftoneDefs id={id} />
         {w.map((v, k) => {
@@ -940,7 +940,7 @@ export function SearchCost() {
  * Each week every slot is examined with probability 1, 0.5, 0.3, 0.2, 0.12
  * by position, the mug's clicks are examination × relevance (with seeded
  * week-to-week noise), and the list is re-ranked on cumulative scores.
- * Raw clicks keep the amber mug locked at Position 1; dividing clicks by the
+ * Raw clicks keep the amber mug locked at Position 1. Dividing clicks by the
  * slot's examination probability (IPW) recovers the true order within weeks.
  */
 const LOOP_REL = [0.3, 0.24, 0.18, 0.12, 0.08];
@@ -1112,7 +1112,7 @@ export function PointOfPurchase() {
 
 /**
  * A marketplace results grid of six mug listings. Positions 1 and 5 are
- * sponsored, interleaved with the organic ones; each looks identical to its
+ * sponsored, interleaved with the organic ones. Each looks identical to its
  * neighbours except for the small SPONSORED key in its corner.
  */
 export function LookAlikeCards() {
@@ -1122,7 +1122,7 @@ export function LookAlikeCards() {
     <Frame
       width={400}
       height={234}
-      label="A marketplace results grid of six mug listings in two rows. Positions 1 and 5 are sponsored and sit interleaved with the organic listings; they look identical to the others except for a small Sponsored key in the corner."
+      label="A marketplace results grid of six mug listings in two rows. Positions 1 and 5 are sponsored and sit interleaved with the organic listings. They look identical to the others except for a small Sponsored key in the corner."
     >
       <HalftoneDefs id={id} />
       {prices.map((p, k) => (
@@ -1137,7 +1137,7 @@ export function LookAlikeCards() {
  * follow its slot (14 × 0.8^(rank − 1), or 12 a week while it holds the
  * sponsored top slot), one in ten buyers leaves a review, and its organic
  * rank improves with cumulative sales (48 / (1 + sales / 8)). Organic only,
- * it never sells and never climbs; four sponsored weeks buy the sales and
+ * it never sells and never climbs. Four sponsored weeks buy the sales and
  * reviews that carry it into the top organic slots after the ads stop.
  */
 function launchRun(sponsor: boolean) {
@@ -1167,7 +1167,7 @@ export function LaunchClimb() {
       <Frame
         width={400}
         height={300}
-        label={`A new mug, in amber, launches at organic Position 48. ${plan === "sponsored" ? "Its maker buys the sponsored top slot for weeks 1 to 4." : "Its maker relies on organic rank alone."} At week ${week} it ${now.sponsored ? "holds the sponsored slot" : `sits at organic Position ${now.rank}`}, has ${Math.round(now.cum)} sales in total and ${reviews} reviews; weekly sales are drawn as parcel stacks, purple in sponsored weeks.`}
+        label={`A new mug, in amber, launches at organic Position 48. ${plan === "sponsored" ? "Its maker buys the sponsored top slot for weeks 1 to 4." : "Its maker relies on organic rank alone."} At week ${week} it ${now.sponsored ? "holds the sponsored slot" : `sits at organic Position ${now.rank}`}, has ${Math.round(now.cum)} sales in total and ${reviews} reviews. Weekly sales are drawn as parcel stacks, purple in sponsored weeks.`}
       >
         <HalftoneDefs id={id} />
         {/* the results page */}
@@ -1228,7 +1228,7 @@ export function LaunchClimb() {
         onChange={setPlan}
         options={[
           { id: "organic", label: "Organic only" },
-          { id: "sponsored", label: "Sponsored, weeks 1–4" },
+          { id: "sponsored", label: "Sponsored, weeks 1 to 4" },
         ]}
       />
       <Slider label="Week" value={week} min={0} max={12} onChange={setWeek} />
@@ -1240,9 +1240,9 @@ export function LaunchClimb() {
  * The platform's three-way trade-off on one results page for "coffee mug".
  * The slider fills the top of the eight slots with sponsored listings
  * (purple). Without a relevance floor the highest bidders are poorly matched
- * (a sneaker, headphones) and pay $1.20 a click; with the floor only mugs
+ * (a sneaker, headphones) and pay $1.20 a click. With the floor only mugs
  * may bid, at most three qualify, and they pay $0.80. Slots are examined
- * with probability 1, 0.6, 0.4 … 0.09; 30% of examinations click; an
+ * with probability 1, 0.6, 0.4 … 0.09. 30% of examinations click. An
  * examination of a mug converts 10% (a qualified sponsored mug 9%), of a
  * mismatch 2%. Shoppers who come back next quarter scale with orders, and
  * next quarter's ad revenue scales with them.
@@ -1280,7 +1280,7 @@ export function SponsoredSlots() {
       <Frame
         width={480}
         height={318}
-        label={`A results page for coffee mug with ${ads} sponsored listings, in purple, at the top of eight slots${hasFloor ? "; a relevance floor lets only mugs bid" : adMismatch(ads)}. Per 100 searches: ${Math.round(orders)} orders for buyers, ${back} of 10 shoppers come back next quarter, ${Math.round(organic)} orders for organic sellers, and $${Math.round(revenue)} of ad revenue now, $${next} next quarter.`}
+        label={`A results page for coffee mug with ${ads} sponsored listings, in purple, at the top of eight slots${hasFloor ? ". A relevance floor lets only mugs bid" : adMismatch(ads)}. Per 100 searches: ${Math.round(orders)} orders for buyers, ${back} of 10 shoppers come back next quarter, ${Math.round(organic)} orders for organic sellers, and $${Math.round(revenue)} of ad revenue now, $${next} next quarter.`}
       >
         <HalftoneDefs id={id} />
         <SearchBar x={10} y={6} w={160} text="coffee mug" size={11} />
@@ -1367,12 +1367,12 @@ export function SponsoredSlots() {
   );
 }
 function adMismatch(ads: number) {
-  return ads ? "; the highest bidders sell sneakers and headphones" : "";
+  return ads ? ". The highest bidders sell sneakers and headphones" : "";
 }
 
 /**
  * The sellers' prisoner's dilemma as a printed payoff sheet. Two rival
- * sellers each choose to bid for the sponsored slot or not; each cell holds
+ * sellers each choose to bid for the sponsored slot or not. Each cell holds
  * each seller's margin as a coin stack (seller A left, B right). Whatever
  * the rival does, bidding pays more, so both bid and land in the amber cell,
  * where both keep less than if neither had bid.
@@ -1445,7 +1445,7 @@ export function BidToDefend() {
 /**
  * The proposal on two phones. Today: two sponsored listings (purple) and two
  * organic listings above the fold. Proposed: four sponsored listings fill
- * the first screen and the organic results start below the fold; a tag
+ * the first screen and the organic results start below the fold. A tag
  * carries the projected +28% in retail media revenue.
  */
 export function FirstScreen() {
@@ -1547,7 +1547,7 @@ export function HypothesisPage() {
  * rank / 100), with the intercept set so the curve averages the model's
  * mean inspections per session. The human reference is Ursu (2018): click
  * probability 0.0019 lower per rank on a page of about 27 listings,
- * averaging 1.12 clicks per session; that page ends at rank 27.
+ * averaging 1.12 clicks per session. That page ends at rank 27.
  */
 const INSPECT = {
   human: { label: "Human shopper", mean: 1.12, b1: 0, b2: 0 },
@@ -1588,7 +1588,7 @@ export function AgentInspections() {
       <Frame
         width={480}
         height={306}
-        label={`Inspections per 100 sessions on a 100-listing results page, grouped in ten blocks of ten ranks, each cursor standing for 4 inspections; the top block's stack is amber. ${human ? "Human shoppers: 58, 39 and 16 in the first three blocks, and the page ends at rank 27." : `The ${m.label} agent: ${bins.map((b) => Math.round(b)).join(", ")} from ranks 1–10 to 91–100, falling and then rising again toward the end of the list.`} ${m.label} inspects ${m.mean.toFixed(2)} listings per session.`}
+        label={`Inspections per 100 sessions on a 100-listing results page, grouped in ten blocks of ten ranks, each cursor standing for 4 inspections. The top block's stack is amber. ${human ? "Human shoppers: 58, 39 and 16 in the first three blocks, and the page ends at rank 27." : `The ${m.label} agent: ${bins.map((b) => Math.round(b)).join(", ")} from ranks 1 to 10 to 91 to 100, falling and then rising again toward the end of the list.`} ${m.label} inspects ${m.mean.toFixed(2)} listings per session.`}
       >
         <HalftoneDefs id={id} />
         {human ? <Person id={id} cx={190} cy={26} s={0.62} /> : <Agent id={id} cx={190} cy={30} s={0.7} tone="purple" />}
@@ -1616,13 +1616,13 @@ export function AgentInspections() {
                 </g>
               )}
               <Price x={x + tw / 2} y={base + 70} size={10} anchor="middle">
-                {`${b * 10 + 1}–${b * 10 + 10}`}
+                {`${b * 10 + 1}n/a${b * 10 + 10}`}
               </Price>
             </g>
           );
         })}
         <CatKey x={240} y={296} size={9.5} anchor="middle">
-          {human ? "RANK ON THE PAGE · THE HUMAN PAGE ENDS AT 27" : "RANK ON THE PAGE"}
+          {human ? "RANK ON THE PAGE | THE HUMAN PAGE ENDS AT 27" : "RANK ON THE PAGE"}
         </CatKey>
       </Frame>
       <Segmented<Inspector>
@@ -1638,7 +1638,7 @@ export function AgentInspections() {
 /**
  * Two scenes. Left: a shopper reads the SPONSORED key on Position 1 and
  * recognises the payment behind it (a thought bubble holding a coin). Right:
- * an AI assistant stands between the shopper and the same page; its
+ * an AI assistant stands between the shopper and the same page. Its
  * configuration card (amber) names whom it serves, the shopper or the
  * platform, and the choice is left open.
  */
@@ -1672,7 +1672,7 @@ export function PersuasionOrDelegation() {
     <Frame
       width={480}
       height={262}
-      label="Left: a shopper reads the Sponsored key on the first listing of a results page and recognises that the seller paid for the placement, shown as a thought bubble holding a coin. Right: an AI shopping assistant stands between a shopper and the same page; its configuration card, in amber, asks whom it serves, the shopper or the platform, with neither box ticked."
+      label="Left: a shopper reads the Sponsored key on the first listing of a results page and recognises that the seller paid for the placement, shown as a thought bubble holding a coin. Right: an AI shopping assistant stands between a shopper and the same page. Its configuration card, in amber, asks whom it serves, the shopper or the platform, with neither box ticked."
     >
       <HalftoneDefs id={id} />
       {/* the shopper reads the label */}
@@ -1720,7 +1720,7 @@ export function TwoPrincipals() {
     <Frame
       width={400}
       height={226}
-      label="A shopper hands an AI agent a brief listing price, quality and fit. The agent sits inside the marketplace that deployed it and wears the platform's badge; beside it a sponsored listing pays coins to the platform."
+      label="A shopper hands an AI agent a brief listing price, quality and fit. The agent sits inside the marketplace that deployed it and wears the platform's badge. Beside it a sponsored listing pays coins to the platform."
     >
       <HalftoneDefs id={id} />
       <Person id={id} cx={34} cy={176} s={1.25} />
@@ -1762,7 +1762,7 @@ export function TwoPrincipals() {
  * per cell): the share of runs in which the agent booked the target hotel
  * when it was listed organically and when it carried a Sponsored tag, by
  * whom the system prompt said the agent was employed. Each booking slip is
- * 2% of runs; the amber bracket is the sponsorship penalty, 50.2 points for
+ * 2% of runs. The amber bracket is the sponsorship penalty, 50.2 points for
  * the traveler's agent and 29.2 for the platform's.
  */
 const ROLE_SHARE = {
@@ -1786,7 +1786,7 @@ export function RoleSwitch() {
       <Frame
         width={480}
         height={262}
-        label={`An AI agent whose system prompt says it is employed by ${role === "traveler" ? "the traveler" : "the hotel booking platform"} books the same target hotel in ${d.organic}% of runs when it is listed organically and ${d.sponsored}% when it carries a Sponsored tag, drawn as stacks of booking slips; the amber bracket marks a sponsorship penalty of ${penalty.toFixed(1)} points.`}
+        label={`An AI agent whose system prompt says it is employed by ${role === "traveler" ? "the traveler" : "the hotel booking platform"} books the same target hotel in ${d.organic}% of runs when it is listed organically and ${d.sponsored}% when it carries a Sponsored tag, drawn as stacks of booking slips. The amber bracket marks a sponsorship penalty of ${penalty.toFixed(1)} points.`}
       >
         <HalftoneDefs id={id} />
         {/* the system prompt */}
@@ -1873,7 +1873,7 @@ export function AuditGrid() {
     <Frame
       width={400}
       height={318}
-      label="An audit test sheet. A slip reads: Pick the best car seat for my toddler. Below, eight versions of the same results page for one car seat cross its rank position, 1 or 8, its label, Sponsored or none, and its price, $349 or $199; each version records the assistant's pick."
+      label="An audit test sheet. A slip reads: Pick the best car seat for my toddler. Below, eight versions of the same results page for one car seat cross its rank position, 1 or 8, its label, Sponsored or none, and its price, $349 or $199. Each version records the assistant's pick."
     >
       <HalftoneDefs id={id} />
       <rect x={10} y={8} width={380} height={30} rx={15} fill={CAT.tile} {...ink} />

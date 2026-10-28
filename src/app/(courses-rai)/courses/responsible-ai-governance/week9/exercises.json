@@ -12,11 +12,11 @@
         "id": "concert-tickets",
         "text": "Concert tickets cost more for everyone as the remaining seats sell out in the week before the show.",
         "bin": "dynamic",
-        "explanation": "The price moves over time with aggregate supply and demand; two fans buying at the same moment pay the same."
+        "explanation": "The price moves over time with aggregate supply and demand. Two fans buying at the same moment pay the same."
       },
       {
         "id": "phone-model",
-        "text": "Two roommates open the same hotel page at 9:00 p.m.; the one on a newer, pricier phone is quoted $30 more for the identical room.",
+        "text": "Two roommates open the same hotel page at 9:00 p.m.. The one on a newer, pricier phone is quoted $30 more for the identical room.",
         "bin": "personalized",
         "explanation": "Different prices at the exact same moment for the identical product, based on device data used to estimate willingness to pay."
       },
@@ -64,7 +64,7 @@
       },
       {
         "id": "cloud-storage",
-        "text": "A cloud storage service offers a free 5 GB plan, a $3 plan with 200 GB and a $10 plan with 2 TB; each customer picks a plan.",
+        "text": "A cloud storage service offers a free 5 GB plan, a $3 plan with 200 GB and a $10 plan with 2 TB. Each customer picks a plan.",
         "answer": "second",
         "explanation": "A menu of quantities and tiers lets consumers self-select."
       },
@@ -82,7 +82,7 @@
       },
       {
         "id": "coffee-sizes",
-        "text": "A café sells small, medium and large coffees, with the large costing much less per ounce; customers choose their size.",
+        "text": "A café sells small, medium and large coffees, with the large costing much less per ounce. Customers choose their size.",
         "answer": "second",
         "explanation": "Quantity versions with different unit prices, chosen by the consumer."
       },
@@ -157,7 +157,7 @@
         "id": "poster-sellers",
         "text": "Two online poster sellers agree by email not to undercut each other, then each programs its repricing software to hold the agreed price.",
         "answer": "messenger",
-        "explanation": "The humans agreed to fix prices; the software only carries out and monitors the agreement."
+        "explanation": "The humans agreed to fix prices. The software only carries out and monitors the agreement."
       },
       {
         "id": "hotel-vendor",
@@ -173,7 +173,7 @@
       },
       {
         "id": "rl-airlines",
-        "text": "Two airlines each train their own reinforcement-learning pricing model told only to maximize long-term profit; after months, their fares stay high and any fare cut is met by a brief fare war.",
+        "text": "Two airlines each train their own reinforcement-learning pricing model told only to maximize long-term profit. After months, their fares stay high and any fare cut is met by a brief fare war.",
         "answer": "autonomous",
         "explanation": "Independent self-learning models discover punishment-and-reward collusion without instruction or shared code."
       },
@@ -185,7 +185,7 @@
       },
       {
         "id": "transparent-rules",
-        "text": "A bookseller publishes that its algorithm always matches any rival's price within an hour; rivals adopt the same rule, and no one cuts prices any more.",
+        "text": "A bookseller publishes that its algorithm always matches any rival's price within an hour. Rivals adopt the same rule, and no one cuts prices any more.",
         "answer": "predictable",
         "explanation": "Transparent, predictable reaction rules remove the incentive to discount."
       }
@@ -196,16 +196,16 @@
     "slide_id": "dual-role-gatekeepers-and-algorithmic-self-preferencing",
     "question_text": "A marketplace runs its own delivery service. Its ranking algorithm gives the default \"Buy Box\" to a third-party seller only if that seller ships through the marketplace's delivery service, even when another seller offers the same item cheaper with equal ratings and faster independent shipping. Which practice is this?",
     "hint": "Ask what the top placement is made contingent on.",
-    "correct_answer_citation": "Week 09 · Dual-Role Gatekeepers and Algorithmic Self-Preferencing",
+    "correct_answer_citation": "Week 09: Dual-Role Gatekeepers and Algorithmic Self-Preferencing",
     "correct_answer_index": 2,
     "options": [
       {
         "option_text": "Data appropriation, because the marketplace learns from the sellers' sales.",
-        "option_explanation": "Data appropriation means the retail arm uses non-public seller data to copy products; nothing here is copied."
+        "option_explanation": "Data appropriation means the retail arm uses non-public seller data to copy products. Nothing here is copied."
       },
       {
         "option_text": "Dynamic pricing, because the Buy Box changes over time.",
-        "option_explanation": "Dynamic pricing adjusts prices to aggregate supply and demand; this case is about placement conditions, not price."
+        "option_explanation": "Dynamic pricing adjusts prices to aggregate supply and demand. This case is about placement conditions, not price."
       },
       {
         "option_text": "Algorithmic tying and buy-box conditioning, because top placement is contingent on buying the platform's own fulfillment service.",
@@ -213,7 +213,7 @@
       },
       {
         "option_text": "Second-degree price discrimination, because sellers can choose between shipping options.",
-        "option_explanation": "Second-degree discrimination is a price menu for consumers; here the platform conditions sellers' ranking on its own services."
+        "option_explanation": "Second-degree discrimination is a price menu for consumers. Here the platform conditions sellers' ranking on its own services."
       }
     ]
   },

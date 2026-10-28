@@ -164,7 +164,7 @@ week: week8
 ## Controlled Experiments on AI Agents [exercise]
 - When an AI agent is the subject of research rather than a proxy for consumers, its responses are direct evidence about the agent's behavior.
 - The system prompt is the set of instructions given to an agent before the consumer's request, usually by the firm or the researcher that deploys it.
-- The factors manipulated in such experiments include the system prompt, such as the party the agent is told it serves; the consumer's instruction, such as the specificity of the goal; the information environment, such as the cost of acquiring an attribute; and the attributes of the alternatives, such as a sponsorship label.
+- The factors manipulated in such experiments include the system prompt, such as the party the agent is told it serves. The consumer's instruction, such as the specificity of the goal. The information environment, such as the cost of acquiring an attribute. And the attributes of the alternatives, such as a sponsorship label.
 - Factorial designs cross these factors to estimate their main effects and interactions.
 - In one study, a 2 × 2 design crossed the cost of inspecting an attribute ($0.00 vs. $10.00) with the specificity of the goal ("find the best deal" vs. "find the coffee with the lowest price per ounce"), across eight models and 100 sessions per condition, for 3,200 sessions in total (Wadi & Ma, 2026b).
 - The order of alternatives and attributes is randomized across sessions, and the design is replicated across models, providers, and wordings of the prompt.
@@ -180,7 +180,7 @@ week: week8
 ## Key Takeaways
 - Causal inference requires concomitant variation, time order, and the elimination of other possible causes.
 - Random assignment makes treatment and control groups equivalent on average, and supports the attribution of differences to the treatment.
-- Internal validity concerns whether the treatment caused the effect; external validity concerns whether the effect generalizes; laboratory and field experiments trade one against the other.
+- Internal validity concerns whether the treatment caused the effect. External validity concerns whether the effect generalizes. Laboratory and field experiments trade one against the other.
 - A/B and multivariate tests are randomized field experiments that require a primary metric, a planned sample size and duration, and no early stopping.
 - Quasi-experimental designs, such as difference-in-differences, estimate causal effects when randomization is not possible, under stated assumptions.
 - AI agents can pilot experimental materials but cannot replace real participants, and bandit algorithms optimize performance during a test at the cost of precise estimates of effect size.

@@ -167,7 +167,7 @@ export default function DigitalTransformationLanding() {
               aria-hidden
               className="inline-block w-2 h-2 rotate-45 shrink-0 bg-[var(--dt-signal)]"
             />
-            CMPT 641 · {weeks.length} Weeks
+            CMPT 641. {weeks.length} Weeks
           </p>
 
           <h1 className="mt-5 font-heading font-bold text-[clamp(2.6rem,4.4vw,3.9rem)] leading-[1.02] tracking-[-0.02em] text-[var(--dt-ink)]">

@@ -11,10 +11,10 @@ import quizzes from "./quizzes.json";
 import { MICRO } from "../_visuals/kit";
 
 // ============================================================================
-// WEEK 01 — INTRODUCTION TO AI IN BUSINESS
+// WEEK 01: INTRODUCTION TO AI IN BUSINESS
 // ============================================================================
 // Every slide below is hand-composed. There is no shared "content block"
-// component: each section gets a layout drawn for its own argument — a ledger,
+// component: each section gets a layout drawn for its own argument, a ledger,
 // a decaying cost curve, a balance beam, a flywheel, a vault, a masthead.
 //
 // The only things shared across slides are the deck chrome (SlideDeck, Slide,
@@ -40,7 +40,7 @@ export default function Week01Introduction() {
       <ScrollProgress label="Week 01" />
 
       {/* ==================================================================
-          01 · TITLE — a broadsheet masthead. Ghost week numeral behind the
+          01. TITLE: a broadsheet masthead. Ghost week numeral behind the
           type, folio rails in both margins, the subtitle set as a standfirst
           beneath a full-measure rule.
       ================================================================== */}
@@ -86,14 +86,14 @@ export default function Week01Introduction() {
               Davood Wadi, PhD
             </span>
             <span className={`${MICRO} font-normal text-[var(--charcoal-light)]/60`}>
-              BUSI 654 · Applications of AI in Business
+              BUSI 654. Applications of AI in Business
             </span>
           </div>
         </div>
       </Slide>
 
       {/* ==================================================================
-          02 · WHY LEADERS — the argument is a subtraction, so the slide is
+          02. WHY LEADERS: the argument is a subtraction, so the slide is
           built as one: the struck line on the left, the kept line on the
           right, and the strategic goal set apart as a signed verdict.
       ================================================================== */}
@@ -152,7 +152,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          03 · BUSINESS AS DECISIONS — a decision ledger. Three functions,
+          03. BUSINESS AS DECISIONS: a decision ledger. Three functions,
           three recurring choices, ruled like an account book, converging on
           one bottom line.                                          [quiz]
       ================================================================== */}
@@ -247,7 +247,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          04 · MODULE I — the module plates are the deck's punctuation: a
+          04. MODULE I: the module plates are the deck's punctuation: a
           roman numeral set at display scale against a ruled left margin.
       ================================================================== */}
       <Slide id="module-1" border align="left" className="relative">
@@ -277,7 +277,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          05 · DEFINING AI — the definition on top; below it the two
+          05. DEFINING AI: the definition on top. Below it the two
           machines drawn as what they are. Left: literal rules, monospaced
           and rigid. Right: a scatter of data with a fitted line.
       ================================================================== */}
@@ -372,7 +372,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          06 · AI / ML / DL — containment drawn as containment: three nested
+          06. AI / ML / DL: containment drawn as containment: three nested
           frames, each label tied to its frame by a leader line.      [quiz]
       ================================================================== */}
       <Slide id="ai-ml-dl" border align="left" quizData={quiz["ai-ml-dl"]}>
@@ -500,8 +500,8 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          07 · PREDICTIVE vs GENERATIVE — one time axis. Predictive reads
-          backwards from the present; generative writes forward from it. The
+          07. PREDICTIVE vs GENERATIVE: one time axis. Predictive reads
+          backwards from the present. Generative writes forward from it. The
           closing line is placed on the axis itself, where they meet.  [quiz]
       ================================================================== */}
       <Slide
@@ -520,7 +520,7 @@ export default function Week01Introduction() {
         <div className="mt-12 grid w-full max-w-5xl gap-12 md:grid-cols-2 md:gap-0">
           <div className="md:pr-12 md:text-right">
             <div className={`${MICRO} text-[var(--charcoal-light)]/60`}>
-              Predictive AI · reads the past
+              Predictive AI | reads the past
             </div>
             <svg
               aria-hidden
@@ -547,7 +547,7 @@ export default function Week01Introduction() {
 
           <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
             <div className={`${MICRO} text-[var(--crimson)]`}>
-              Generative AI · writes something new
+              Generative AI | writes something new
             </div>
             <svg
               aria-hidden
@@ -567,11 +567,11 @@ export default function Week01Introduction() {
               className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/45"
             >
               <span>text</span>
-              <span>·</span>
+              <span>|</span>
               <span>images</span>
-              <span>·</span>
+              <span>|</span>
               <span>audio</span>
-              <span>·</span>
+              <span>|</span>
               <span>code</span>
             </div>
           </div>
@@ -589,8 +589,8 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          08 · CHATBOTS TO AGENTS — an ascending stair. Each tread steps
-          right and down the page, autonomy rising with it; the last tread
+          08. CHATBOTS TO AGENTS: an ascending stair. Each tread steps
+          right and down the page, autonomy rising with it. The last tread
           carries the warning and is the only one marked in crimson.
       ================================================================== */}
       <Slide id="chatbots-to-agents" border align="left">
@@ -681,7 +681,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          09 · MODULE II
+          09. MODULE II
       ================================================================== */}
       <Slide id="module-2" border align="left">
         <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
@@ -710,9 +710,9 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          10 · COST OF PREDICTION — a price curve falling toward zero, with
+          10. COST OF PREDICTION: a price curve falling toward zero, with
           the three cheapened inputs marked as stations along it. The chart
-          carries the argument; the prose annotates the chart.
+          carries the argument. The prose annotates the chart.
       ================================================================== */}
       <Slide id="cost-of-prediction" border align="left">
         <div>
@@ -855,8 +855,8 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          11 · PREDICTION vs JUDGMENT — a balance beam. The machine pan sinks
-          as prediction gets cheap; the human pan rises, which is precisely
+          11. PREDICTION vs JUDGMENT: a balance beam. The machine pan sinks
+          as prediction gets cheap. The human pan rises, which is precisely
           the slide's conclusion.                                     [quiz]
       ================================================================== */}
       <Slide
@@ -976,7 +976,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          12 · THREE SOURCES OF VALUE — a triptych under one bracket. Three
+          12. THREE SOURCES OF VALUE: a triptych under one bracket. Three
           equal columns, display numerals, and a rule that closes them into
           a single mandate at the foot.
       ================================================================== */}
@@ -1050,7 +1050,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          13 · PLUG AND PLAY — commoditisation shown as repetition: nine
+          13. PLUG AND PLAY: commoditisation shown as repetition: nine
           identical tiles anyone can buy, and one tile that is yours. The
           grid is the argument.
       ================================================================== */}
@@ -1115,7 +1115,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          14 · MODULE III
+          14. MODULE III
       ================================================================== */}
       <Slide id="module-3" border align="left">
         <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
@@ -1144,9 +1144,9 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          15 · FRONT OFFICE — the customer side of the counter. Content sits
+          15. FRONT OFFICE: the customer side of the counter. Content sits
           to the right of a heavy vertical rule standing in for the shop
-          window; each team is a pane in it.                          [quiz]
+          window. Each team is a pane in it.                          [quiz]
       ================================================================== */}
       <Slide
         id="front-office"
@@ -1156,7 +1156,7 @@ export default function Week01Introduction() {
       >
         <div>
           <div className={`${MICRO} text-[var(--crimson)]`}>
-            Front office · the customer sees this
+            Front office | the customer sees this
           </div>
           <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
             Front-Office Applications: Customer Engagement
@@ -1207,7 +1207,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          16 · BACK OFFICE — deliberately the mirror of slide 15: the rule
+          16. BACK OFFICE: deliberately the mirror of slide 15: the rule
           moves to the right edge, the labels align right, the palette drops
           to ink. Nobody outside the firm sees this work.
       ================================================================== */}
@@ -1215,7 +1215,7 @@ export default function Week01Introduction() {
         <div className="w-full">
           <div className="w-full max-w-5xl md:text-right">
             <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-              Back office · nobody outside sees this
+              Back office | nobody outside sees this
             </div>
             <h2 className="mt-5 font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
               Back-Office Applications: Operations and Finance
@@ -1266,8 +1266,8 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          17 · HUMAN IN THE LOOP — one continuous stakes gauge. The two
-          definitions sit above it; the two regimes are placed on the arc at
+          17. HUMAN IN THE LOOP: one continuous stakes gauge. The two
+          definitions sit above it. The two regimes are placed on the arc at
           the point where each applies.                              [quiz]
       ================================================================== */}
       <Slide
@@ -1383,7 +1383,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          18 · MODULE IV
+          18. MODULE IV
       ================================================================== */}
       <Slide id="module-4" border align="left">
         <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
@@ -1412,7 +1412,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          19 · DATA IS THE RAW MATERIAL — the two kinds of data are drawn in
+          19. DATA IS THE RAW MATERIAL: the two kinds of data are drawn in
           their own grammar. Structured: a ruled table. Unstructured: loose
           overlapping slips at broken angles.
       ================================================================== */}
@@ -1502,7 +1502,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          20 · DATA QUALITY — garbage in, garbage out, drawn as a pipe with
+          20. DATA QUALITY: garbage in, garbage out, drawn as a pipe with
           the same defect entering and leaving. The two failure modes are
           placed at the inlet.                                        [quiz]
       ================================================================== */}
@@ -1601,8 +1601,8 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          21 · THE FLYWHEEL — a closed ring, because the point is that it has
-          no end. Four stages sit on the circumference; the arrowhead shows
+          21. THE FLYWHEEL: a closed ring, because the point is that it has
+          no end. Four stages sit on the circumference. The arrowhead shows
           the direction of travel.
       ================================================================== */}
       <Slide id="flywheel" border align="left">
@@ -1718,7 +1718,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          22 · MODULE V
+          22. MODULE V
       ================================================================== */}
       <Slide id="module-5" border align="left">
         <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
@@ -1747,8 +1747,8 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          23 · WHY PROJECTS FAIL — a post-mortem sheet. Three failure causes
-          ruled in a column and struck through by a fracture line; the
+          23. WHY PROJECTS FAIL: a post-mortem sheet. Three failure causes
+          ruled in a column and struck through by a fracture line. The
           remedy is set apart and is the only unstruck panel.          [quiz]
       ================================================================== */}
       <Slide
@@ -1814,7 +1814,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          24 · HALLUCINATIONS & THE BLACK BOX — two failures of trust, drawn
+          24. HALLUCINATIONS & THE BLACK BOX: two failures of trust, drawn
           as two failures of sight. Left: confident text dissolving. Right:
           a box whose interior is genuinely opaque.                    [quiz]
       ================================================================== */}
@@ -1910,7 +1910,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          25 · PRIVACY, SECURITY, IP — three exposures held in three ruled
+          25. PRIVACY, SECURITY, IP: three exposures held in three ruled
           vault panels, each with its own tally mark. The obligation closes
           the slide as a single ruled line.
       ================================================================== */}
@@ -1978,8 +1978,8 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          26 · GOVERNANCE — an accountability sheet. The verdict sits at the
-          top in display type; the three duties are ruled beneath it like
+          26. GOVERNANCE: an accountability sheet. The verdict sits at the
+          top in display type. The three duties are ruled beneath it like
           clauses, and the slide closes on a signature line.
       ================================================================== */}
       <Slide id="governance" border align="left">
@@ -2038,7 +2038,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          27 · MODULE VI
+          27. MODULE VI
       ================================================================== */}
       <Slide id="module-6" border align="left">
         <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
@@ -2067,7 +2067,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          28 · ROADMAP — a semester timetable. Two ruled columns of weeks,
+          28. ROADMAP: a semester timetable. Two ruled columns of weeks,
           each week's numeral set large in the margin so the term can be
           read at a glance rather than scrolled.
       ================================================================== */}
@@ -2131,7 +2131,7 @@ export default function Week01Introduction() {
       </Slide>
 
       {/* ==================================================================
-          29 · SUMMARY — the colophon. Four principles set as display
+          29. SUMMARY: the colophon. Four principles set as display
           statements rather than list items, because they are what the
           student should leave holding.
       ================================================================== */}
@@ -2190,7 +2190,7 @@ export default function Week01Introduction() {
               End of Week 01
             </span>
             <span className={`${MICRO} font-normal text-[var(--charcoal-light)]/55`}>
-              Davood Wadi, PhD · BUSI 654
+              Davood Wadi, PhD | BUSI 654
             </span>
           </div>
         </div>

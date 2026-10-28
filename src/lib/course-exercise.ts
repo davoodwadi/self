@@ -54,7 +54,7 @@ export type OrderExercise = {
   type: "order";
   slide_id: string;
   prompt: string;
-  /** The steps in their correct order; students see them shuffled. */
+  /** The steps in their correct order. Students see them shuffled. */
   steps: {
     id: string;
     text: string;

@@ -16,7 +16,7 @@ week: week12
 - In this final week, we synthesize how privacy governance, marketplace regulation, and business-to-agent (B2A) architecture define the next era of digital marketing and e-commerce.
 
 ## Part 1: Privacy Regulation and Consent Architectures [no-exercise]
-- Personal data in CRM systems, CDPs, and ad networks are not unregulated corporate property; they are subject to statutory rights held by the individuals those records describe.
+- Personal data in CRM systems, CDPs, and ad networks are not unregulated corporate property. They are subject to statutory rights held by the individuals those records describe.
 - Operating an e-commerce store across jurisdictions requires translating legal privacy principles into concrete software and data-pipeline rules.
 
 ## GDPR, CCPA/CPRA, PIPEDA, and Quebec Law 25 [exercise]
@@ -86,5 +86,5 @@ week: week12
 - Platform competition laws (such as the Digital Markets Act) constrain gatekeeper self-preferencing, seller data appropriation, and anti-steering rules on dual-role marketplaces.
 - Business-to-Agent (B2A) commerce replaces adversarial bot scraping with authenticated agent delegation, machine-readable catalog and constraint APIs, and tokenized agent payment rails.
 - In agent-mediated markets, brands win by combining strong consumer brand pull in delegation prompts with verifiable product specifications, transparent all-in pricing, and authentic review consensus.
-- Statistically grounded behavioral audits using repeated sampling and factorial experiments allow firms to measure both internal algorithmic fairness and external AI agent recommendation behavior (Wadi & Fredette, 2025; Wadi & Ma, 2026a, 2026b, 2026c).
+- Statistically grounded behavioral audits using repeated sampling and factorial experiments allow firms to measure both internal algorithmic fairness and external AI agent recommendation behavior (Wadi & Fredette, 2025, Wadi & Ma, 2026a, 2026b, 2026c).
 - Sustainable advantage in digital marketing and e-commerce comes from uniting marketing strategy with information systems architecture across acquisition, conversion, retention, fulfillment, and governance.

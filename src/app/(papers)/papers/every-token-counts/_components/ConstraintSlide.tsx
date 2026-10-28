@@ -10,7 +10,7 @@ export default function ConstraintSlide() {
     >
       <div style={{ maxWidth: "76rem", margin: "0 auto" }}>
         <div className="section-label" style={{ marginBottom: "1.5rem" }}>
-          <span>Layer 01 — Constraint</span>
+          <span>Layer 01: Constraint</span>
         </div> 
         <h2
           className="p-heading"
@@ -20,7 +20,7 @@ export default function ConstraintSlide() {
         </h2>
         <p className="p-body" style={{ maxWidth: "60ch", marginBottom: "3rem", fontSize: "1.0625rem" }}>
           We define the valid token set <InlineMath>{"\\mathcal{V}_{\\mathrm{val}}"}</InlineMath> as the
-          subset of vocabulary tokens that map to the allowed Likert responses 1&ndash;7. Any probability
+          subset of vocabulary tokens that map to the allowed Likert responses 1 to 7. Any probability
           mass outside <InlineMath>{"\\mathcal{V}_{\\mathrm{val}}"}</InlineMath> means the model
           fence-sat or hallucinated out of range and cannot be used.
         </p>

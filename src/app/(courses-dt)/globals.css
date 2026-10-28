@@ -28,7 +28,7 @@
   /* Default: Warm Noir. The course's Flat Silhouette palette, turned for the
      screen: a near-neutral black ground, clean off-white text with only a
      trace of warmth (a beige cast reads as faded), and one full-strength
-     brick red. Text steps down 17:1, 12.8:1, 7.5:1; the accent is 6.2:1. */
+     brick red. Text steps down 17:1, 12.8:1, 7.5:1. The accent is 6.2:1. */
   :root,
   .theme-warm-noir {
     --background: #111010;

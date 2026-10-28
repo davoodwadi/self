@@ -149,7 +149,7 @@
         "id": "churn",
         "text": "A model flags loyalty-card members who are likely to stop shopping at the chain next month.",
         "answer": "predictive",
-        "explanation": "It forecasts future behaviour; it does not yet say what to do."
+        "explanation": "It forecasts future behaviour. It does not yet say what to do."
       },
       {
         "id": "price",

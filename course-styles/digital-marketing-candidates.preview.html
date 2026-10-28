@@ -6,7 +6,7 @@
    Geometry is shared; each skin only changes how the parts are drawn. */
 const CX=[72,196,320,444,568],N=[10,5,3,2,1],PRICE=['$19.98','$18.50','$21.00','$14.98','$17.25'];
 const CY=226,CW=104,CH=104,MY=CY+46,tip=k=>196-k*21;
-const EY='Week 4 · Recommender systems and rankings',HD='Why rank position shapes sales';
+const EY='Week 4: Recommender systems and rankings',HD='Why rank position shapes sales';
 const S1a='Shoppers rarely look past the first few results, so ',S1b='clicks fall steeply with each step down the list',S1c='.';
 const S2='A sponsored listing that buys the top slot therefore wins attention that a better product further down never receives.';
 const T=(x,y,s,f,sz,fill,o='')=>`<text x="${x}" y="${y}" font-family="${f}" font-size="${sz}" fill="${fill}" ${o}>${s}</text>`;
@@ -114,28 +114,28 @@ return plate({
 },'Standard pictograms: five ranked documents each showing the same solid mug, the first carrying a SPONSORED block; a stack of red cursors above each document falls from ten clicks at the top position to one at the fifth')};
 
 const D=[
-{k:'catalogue',n:'1 · Mail-Order Catalogue (new, neutral page)',bg:'background:#FBFBF9;color:#1E1C1A;box-shadow:inset 0 0 0 1px #E2E1DC',
+{k:'catalogue',n:'1. Mail-Order Catalogue (new, neutral page)',bg:'background:#FBFBF9;color:#1E1C1A;box-shadow:inset 0 0 0 1px #E2E1DC',
  ey:`<div style="font-family:'Libre Franklin';font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#5F5B57;border-bottom:1px solid #1E1C1A;padding-bottom:6px">${EY}</div>`,
  h:`font-family:'Libre Bodoni';font-weight:400;font-size:32px;color:#1E1C1A`,b:`font-family:'Libre Franklin';font-size:14px;color:#2E2C2A`,acc:`color:#8A5A00`,cmp:1,c2:'#6A2C70',c2n:'purple',
  note:'Mid-century department-store catalogue on a neutral off-white page: Libre Bodoni display with Libre Franklin body, products drawn as halftone engravings in double-ruled white tiles, italic position numerals and prices set as part of the listing. Amber marks the key idea, in two shades of one hue: #8A5A00 (5.7:1) for text and #E0A100 with an ink outline for marks in plates. Purple (#6A2C70, 9.2:1) is the contrast colour, used only on plates that compare two cases.'},
-{k:'shipping',n:'2 · Shipping and Packaging (new, neutral page)',bg:'background:#F7F7F5;color:#1F1B17;box-shadow:inset 0 0 0 1px #E2E1DC',
+{k:'shipping',n:'2. Shipping and Packaging (new, neutral page)',bg:'background:#F7F7F5;color:#1F1B17;box-shadow:inset 0 0 0 1px #E2E1DC',
  ey:`<div style="font-family:'Big Shoulders Stencil Display';font-weight:800;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#1F1B17">${EY}</div>`,
  h:`font-family:'Archivo';font-weight:700;font-size:31px;letter-spacing:-.01em;color:#1F1B17`,b:`font-family:'Archivo';font-size:14px;color:#2D2925`,acc:`color:#8A5A00`,cmp:1,c2:'#6E2A55',c2n:'plum',
  note:'Shipping labels on a neutral off-white page: Big Shoulders Stencil for eyebrows and numerals, Archivo for heads and body, listings drawn as white labels with a kraft header band and barcode, products as solid-ink silhouettes. Kraft appears only inside the drawings; tape amber marks the key idea, in two shades of one hue: #8A5A00 (5.5:1) for text and #E0A100 with an ink outline for marks in plates. Plum (#6E2A55, 9.2:1) is the contrast colour, used only on plates that compare two cases.'},
-{k:'riso',n:'3 · Risograph (new)',bg:'background:#F4EFE6;color:#0078BF',
+{k:'riso',n:'3. Risograph (new)',bg:'background:#F4EFE6;color:#0078BF',
  ey:`<div style="font-family:'Bricolage Grotesque';font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#0078BF">${EY}</div>`,
  h:`font-family:'Bricolage Grotesque';font-weight:800;font-size:34px;letter-spacing:-.02em;color:#0078BF`,b:`font-family:'Work Sans';font-size:14px;color:#0B4F7C`,acc:`color:#0B4F7C;background:linear-gradient(transparent 48%,rgba(255,72,176,.55) 48%)`,
  note:'Two-drum risograph zine: Bricolage Grotesque heads with Work Sans body, everything printed in teal, fluorescent pink overprinting it for the key idea, slight misregistration and paper grain. Pink type is too light to read, so in text the pink is a marker under the phrase.'},
-{k:'wire',n:'4 · Interface Wireframe (new)',bg:'background:#FFFFFF;color:#1F2328;box-shadow:inset 0 0 0 1px #D0D7DE',
+{k:'wire',n:'4. Interface Wireframe (new)',bg:'background:#FFFFFF;color:#1F2328;box-shadow:inset 0 0 0 1px #D0D7DE',
  ey:`<div style="font-family:'Inter';font-weight:600;font-size:12px;color:#57606A">${EY}</div>`,
  h:`font-family:'Inter';font-weight:700;font-size:30px;letter-spacing:-.025em;color:#1F2328`,b:`font-family:'Inter';font-size:14px;color:#424A53`,acc:`color:#1F2328;background:#FFE76A;padding:0 2px`,
  note:'Low-fidelity product wireframe: Inter throughout, interfaces drawn as grey cards, image wells and text bars, with one highlighter yellow for the key idea (as a highlight behind text, and as fills in plates).'},
-{k:'journal',n:'5 · Official Journal (approved, in reserve)',bg:'background:#FFFFFF;color:#1A1714',
- ey:`<div style="font-family:'IM Fell English SC';font-size:14px;letter-spacing:.08em;color:#4A443C">Art. 4 · Recommender systems and rankings</div>`,
+{k:'journal',n:'5. Official Journal (approved, in reserve)',bg:'background:#FFFFFF;color:#1A1714',
+ ey:`<div style="font-family:'IM Fell English SC';font-size:14px;letter-spacing:.08em;color:#4A443C">Art. 4. Recommender systems and rankings</div>`,
  h:`font-family:'IM Fell English';font-weight:400;font-size:31px;color:#1A1714`,b:`font-family:'Public Sans';font-size:14px;color:#2A2620`,acc:`color:#5B3A8C`,rule:'<div style="border-top:3px double #1A1714;margin-top:10px"></div>',
  note:'From course-styles/official-journal.md, unchanged: IM Fell English with Public Sans, copper-engraving hatching, sheets with folded corners, rubber stamps, and violet official ink for the key idea. Its eyebrow uses the spec\'s article numbering.'},
-{k:'standard',n:'6 · Technical standard (approved, in reserve)',bg:'background:#F2F2EF;color:#1B1B1B',
- ey:`<span style="font-family:'Barlow Condensed';font-weight:600;font-size:13px;letter-spacing:.12em;border:2px solid #1B1B1B;padding:1px 8px">CLAUSE 4.2 · RECOMMENDER SYSTEMS AND RANKINGS</span>`,
+{k:'standard',n:'6. Technical standard (approved, in reserve)',bg:'background:#F2F2EF;color:#1B1B1B',
+ ey:`<span style="font-family:'Barlow Condensed';font-weight:600;font-size:13px;letter-spacing:.12em;border:2px solid #1B1B1B;padding:1px 8px">CLAUSE 4.2 | RECOMMENDER SYSTEMS AND RANKINGS</span>`,
  h:`font-family:'Barlow Condensed';font-weight:600;font-size:31px;text-transform:uppercase;letter-spacing:.01em;color:#1B1B1B`,b:`font-family:'Barlow';font-size:14px;color:#222`,acc:`color:#C1272D`,
  note:'From course-styles/technical-standard.md, unchanged: Barlow Condensed and Barlow, a fixed pictogram stroke system, documents with folded corners, solid ink rule blocks, and ISO prohibition red for the key idea. Its safety-green has no job on this slide, and the red still reads as "harm".'}
 ];

@@ -1,11 +1,11 @@
 "use client";
 
 /**
- * FitSlides — keeps every slide inside the screen, for every course.
+ * FitSlides: keeps every slide inside the screen, for every course.
  *
  * Mounted once in each course layout. It works on any element marked
- * `data-slide` (the slide sections of every deck's components), from md up;
- * below that, slides stack and scroll as reading pages. Fitting the screen
+ * `data-slide` (the slide sections of every deck's components), from md up.
+ * Below that, slides stack and scroll as reading pages. Fitting the screen
  * comes before the legibility of text inside drawings. For each slide that
  * runs taller than the screen, after hydration, on every resize and once
  * late images and fonts have loaded:
@@ -17,7 +17,7 @@
  *  2. If the text alone is still taller than the screen (a short laptop
  *     window), the slide's content is zoomed down until it fits, but never
  *     below MIN_ZOOM, so body text stays readable. A slide that needs more
- *     than that holds too much for one screen and should be reworked; until
+ *     than that holds too much for one screen and should be reworked. Until
  *     then it scrolls.
  *
  * Styles are set inline after hydration, so server and client markup match.
@@ -77,7 +77,7 @@ function fitSlide(slide: HTMLElement) {
   const scale = (k: number) =>
     shrinkable.forEach((v, j) => {
       v.style.maxHeight = k < 1 ? `${Math.floor(natural[j] * k)}px` : "";
-      // An image keeps its aspect inside the shorter box; an SVG does so already.
+      // An image keeps its aspect inside the shorter box. An SVG does so already.
       if (v instanceof HTMLImageElement) v.style.objectFit = k < 1 ? "contain" : "";
     });
   let k = 1;

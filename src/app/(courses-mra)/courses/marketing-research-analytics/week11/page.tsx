@@ -39,11 +39,11 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 11 — CUSTOMER ANALYTICS AND PREDICTIVE MODELING
+// WEEK 11: CUSTOMER ANALYTICS AND PREDICTIVE MODELING
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx; the interactive ones are built around one action
+// live in ./visuals.tsx. The interactive ones are built around one action
 // each: move retention, re-rank customers, choose a split, grow a forest,
 // add a leaked variable, move a threshold, target deeper, change the
 // targeting rule, pick a customer, retrain, shift a group's threshold, raise
@@ -99,7 +99,7 @@ export default function Week11() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 11 · Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 11: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[24ch]">
           Customer Analytics and <span className="text-[var(--signal)]">Predictive Modeling</span>
         </Title>
@@ -1000,7 +1000,7 @@ export default function Week11() {
             "Customer lifetime value estimates the present value of future profits from a customer, and is particularly sensitive to the retention rate.",
             "RFM analysis ranks customers by recency, frequency, and monetary value, and different RFM profiles call for different actions.",
             "Churn and response models, including decision trees and ensemble models, are evaluated on holdout data with confusion matrices, precision, recall, and lift.",
-            "Predicting which customers will churn is not the same as identifying those whom an intervention would retain; uplift modeling addresses the second question.",
+            "Predicting which customers will churn is not the same as identifying those whom an intervention would retain. Uplift modeling addresses the second question.",
             "Recommendation systems personalize offers through content-based and collaborative methods, and are evaluated through A/B tests of business outcomes.",
             "Predictive models can be biased against groups of customers, and firms assess them against explicit fairness criteria, explain their decisions, and monitor them after deployment.",
             "Language models and AI agents are audited for position, sponsorship, and country-of-origin biases with controlled designs, and each audit applies to the specific model version deployed.",

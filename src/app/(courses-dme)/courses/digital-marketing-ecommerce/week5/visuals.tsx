@@ -66,7 +66,7 @@ export function TitleAuction() {
     <Frame
       width={800}
       height={205}
-      label="Three printed bid slips travel from advertisers toward a catalogue impression. A large auction watch reads 100 milliseconds; the winning bid is picked out in amber beside the engraved product listing."
+      label="Three printed bid slips travel from advertisers toward a catalogue impression. A large auction watch reads 100 milliseconds. The winning bid is picked out in amber beside the engraved product listing."
       svgProps={{ "data-plate": "title-auction" }}
     >
       <HalftoneDefs id={id} />
@@ -193,7 +193,7 @@ const RTB_STAGES = [
   { name: "Clear + serve", note: "Winning markup + pixels" },
 ];
 
-/** A scrubbable 100 ms auction clock; every hop is visible, while the current hop is amber. */
+/** A scrubbable 100 ms auction clock. Every hop is visible, while the current hop is amber. */
 export function AuctionClock() {
   const [ms, setMs] = useState(0);
   const id = "w5-clock";
@@ -259,9 +259,9 @@ export function AuctionClock() {
 type Deal = "open" | "pmp" | "preferred" | "guaranteed";
 const DEALS: Record<Deal, { access: number; action: string; price: string }> = {
   open: { access: 5, action: "OPEN AUCTION", price: "$2.40" },
-  pmp: { access: 2, action: "DEAL ID · CLOSED AUCTION", price: "$4.80" },
-  preferred: { access: 1, action: "FIRST LOOK · NO AUCTION", price: "$5.00 FIXED" },
-  guaranteed: { access: 1, action: "FIXED VOLUME · NO AUCTION", price: "$6.00 FIXED" },
+  pmp: { access: 2, action: "DEAL ID | CLOSED AUCTION", price: "$4.80" },
+  preferred: { access: 1, action: "FIRST LOOK | NO AUCTION", price: "$5.00 FIXED" },
+  guaranteed: { access: 1, action: "FIXED VOLUME | NO AUCTION", price: "$6.00 FIXED" },
 };
 
 /** Four buying arrangements drawn as access to one publisher's catalogue slot. */
@@ -447,7 +447,7 @@ export function TargetingScenes() {
       <Frame
         width={800}
         height={248}
-        label={mode === "context" ? "A marathon training article sits beside a running-shoe advertisement; the page topic supplies the match, without a user history." : mode === "retarget" ? "A sneaker left in a shopping cart is followed by an advertisement for exactly the same sneaker." : "A seed group of first-party customers trains a platform classifier to select new people with similar behavioural profiles; the new prospects are amber."}
+        label={mode === "context" ? "A marathon training article sits beside a running-shoe advertisement. The page topic supplies the match, without a user history." : mode === "retarget" ? "A sneaker left in a shopping cart is followed by an advertisement for exactly the same sneaker." : "A seed group of first-party customers trains a platform classifier to select new people with similar behavioural profiles. The new prospects are amber."}
         svgProps={{ "data-plate": "targeting-scenes" }}
       >
         <HalftoneDefs id={id} />
@@ -521,7 +521,7 @@ export function PaidWithoutViewer() {
     <Frame
       width={800}
       height={216}
-      label="An empty reader's chair faces a stack of concealed advertisements. Coins buy a receipt for one million impressions, but no person is present to see them; the receipt is amber."
+      label="An empty reader's chair faces a stack of concealed advertisements. Coins buy a receipt for one million impressions, but no person is present to see them. The receipt is amber."
       svgProps={{ "data-plate": "paid-without-viewer" }}
     >
       <HalftoneDefs id={id} />
@@ -549,7 +549,7 @@ export function PaidWithoutViewer() {
 
 type Verification = "viewable" | "fraud" | "safety" | "frequency";
 
-/** The MRC threshold is a two-part instrument; verification modes expose four different failures and controls. */
+/** The MRC threshold is a two-part instrument. Verification modes expose four different failures and controls. */
 export function VerificationLab() {
   const [mode, setMode] = useState<Verification>("viewable");
   const [pixels, setPixels] = useState(40);
@@ -565,7 +565,7 @@ export function VerificationLab() {
       <Frame
         width={800}
         height={290}
-        label={mode === "viewable" ? `${pixels} percent of a ${video ? "video" : "display"} ad is visible for ${seconds.toFixed(1)} continuous seconds. ${pass ? "It meets" : "It does not meet"} the MRC threshold of at least 50 percent for at least ${required} continuous ${required === 2 ? "seconds" : "second"}.` : mode === "fraud" ? "Non-human bot clicks, stacked advertisements and a hidden 1 by 1 pixel generate invalid traffic." : mode === "safety" ? "An airline advertisement is separated from unsuitable news by a brand-safety exclusion rule." : `A frequency cap of ${cap} impressions stops the same sneaker advertisement after ${cap} showings; further attempts are blocked.`}
+        label={mode === "viewable" ? `${pixels} percent of a ${video ? "video" : "display"} ad is visible for ${seconds.toFixed(1)} continuous seconds. ${pass ? "It meets" : "It does not meet"} the MRC threshold of at least 50 percent for at least ${required} continuous ${required === 2 ? "seconds" : "second"}.` : mode === "fraud" ? "Non-human bot clicks, stacked advertisements and a hidden 1 by 1 pixel generate invalid traffic." : mode === "safety" ? "An airline advertisement is separated from unsuitable news by a brand-safety exclusion rule." : `A frequency cap of ${cap} impressions stops the same sneaker advertisement after ${cap} showings. Further attempts are blocked.`}
         svgProps={{ "data-plate": "verification-lab" }}
       >
         <HalftoneDefs id={id} />
@@ -631,7 +631,7 @@ export function VerificationLab() {
                   <Tile x={x} y={42} w={108} h={148} />
                   <Sneaker id={id} cx={x + 54} cy={100} s={0.8} />
                   <NameLines x={x + 16} y={143} w={76} />
-                  <Price x={x + 16} y={173} size={13}>{on ? k + 1 : "—"}</Price>
+                  <Price x={x + 16} y={173} size={13}>{on ? k + 1 : "n/a"}</Price>
                   {!on ? <g><path d={`M${x + 10} 180L${x + 98} 52`} stroke={CAT.tile} strokeWidth={12} /><path d={`M${x + 10} 180L${x + 98} 52`} stroke={CAT.ink} strokeWidth={2} /></g> : null}
                 </g>
               );
@@ -670,7 +670,7 @@ const SUPPLY_FEES = [
   { id: "ssp", label: "SSP", fee: 6 },
 ];
 
-/** Follow one dollar through each fee; removing redundant intermediaries increases the publisher payout. */
+/** Follow one dollar through each fee. Removing redundant intermediaries increases the publisher payout. */
 export function SupplyPath() {
   const [removed, setRemoved] = useState<string[]>(["reseller"]);
   const id = "w5-supply";
@@ -711,7 +711,7 @@ export function SupplyPath() {
         <Price x={684} y={193} size={16} anchor="middle">FEES {tax}¢</Price>
         <line x1={24} y1={241} x2={776} y2={241} {...hair} />
         <CatKey x={24} y={255} size={8}>AUDIT + CONSOLIDATE</CatKey>
-        <CatKey x={776} y={255} size={8} anchor="end">DIRECT · LOWER FEE</CatKey>
+        <CatKey x={776} y={255} size={8} anchor="end">DIRECT | LOWER FEE</CatKey>
       </Frame>
       <Toggles<string>
         label="Supply path"
@@ -777,7 +777,7 @@ export function BrokenCookieTrail() {
     <Frame
       width={800}
       height={236}
-      label="A trail of cookie tags and mobile advertising identifiers once connected three websites. Browser restrictions, an opt-in prompt and privacy rules interrupt the trail; the broken link is amber."
+      label="A trail of cookie tags and mobile advertising identifiers once connected three websites. Browser restrictions, an opt-in prompt and privacy rules interrupt the trail. The broken link is amber."
       svgProps={{ "data-plate": "broken-cookie-trail" }}
     >
       <HalftoneDefs id={id} />
@@ -816,7 +816,7 @@ export function PrivacyRoutes() {
       <Frame
         width={800}
         height={270}
-        label={route === "capi" ? "A consented first-party purchase receipt travels directly from the merchant commerce server to the advertising platform server; the browser third-party pixel is bypassed." : route === "cleanroom" ? "The brand and media platform keep their raw first-party ledgers inside separate sides of a locked clean room. Only an aggregate overlap count leaves the room." : "Frame-by-frame article and video content passes through a language and vision model to select a contextually relevant product advertisement, without a cross-site user identifier."}
+        label={route === "capi" ? "A consented first-party purchase receipt travels directly from the merchant commerce server to the advertising platform server. The browser third-party pixel is bypassed." : route === "cleanroom" ? "The brand and media platform keep their raw first-party ledgers inside separate sides of a locked clean room. Only an aggregate overlap count leaves the room." : "Frame-by-frame article and video content passes through a language and vision model to select a contextually relevant product advertisement, without a cross-site user identifier."}
         svgProps={{ "data-plate": "privacy-routes" }}
       >
         <HalftoneDefs id={id} />
@@ -855,7 +855,7 @@ export function PrivacyRoutes() {
             <path d="M672 135H747" fill="none" stroke={CAT.amber} strokeWidth={3} />
             <path d={head.right(747, 135, 7)} fill="none" stroke={CAT.amber} strokeWidth={3} />
             <Price x={711} y={111} size={23} anchor="middle" fill={CAT.amberText}>OVERLAP</Price>
-            <CatKey x={400} y={258} size={10} anchor="middle">AGGREGATE RESULT · RAW ROWS STAY INSIDE</CatKey>
+            <CatKey x={400} y={258} size={10} anchor="middle">AGGREGATE RESULT | RAW ROWS STAY INSIDE</CatKey>
           </g>
         ) : (
           <g>
@@ -926,7 +926,7 @@ export function CreativeToBlackBox() {
 type CreativeContext = "commuter" | "runner";
 type CreativeFormat = "wide" | "square";
 
-/** A modular product feed is assembled for a viewer and a placement; controls change the actual advertisement. */
+/** A modular product feed is assembled for a viewer and a placement. Controls change the actual advertisement. */
 export function CreativeAssembler() {
   const [context, setContext] = useState<CreativeContext>("runner");
   const [format, setFormat] = useState<CreativeFormat>("wide");

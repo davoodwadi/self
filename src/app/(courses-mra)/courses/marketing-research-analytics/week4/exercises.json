@@ -142,7 +142,7 @@
         "id": "twenty",
         "text": "A researcher reduces a scale from twenty points to seven, because respondents cannot reliably tell point 14 from point 15.",
         "answer": "number",
-        "explanation": "Respondents can reliably distinguish only a limited number of categories; five to nine are commonly used."
+        "explanation": "Respondents can reliably distinguish only a limited number of categories. Five to nine are commonly used."
       }
     ]
   },
@@ -166,7 +166,7 @@
         "id": "leading",
         "text": "A satisfaction item worded so that it consistently encourages favorable answers, and gives the same results each time it is repeated.",
         "bin": "reliable",
-        "explanation": "Consistent results show reliability; the systematic error of the wording means the item is not valid."
+        "explanation": "Consistent results show reliability. The systematic error of the wording means the item is not valid."
       },
       {
         "id": "published",
@@ -241,7 +241,7 @@
         "id": "shampoo",
         "text": "“Which brand of shampoo did you buy in March three years ago?”",
         "answer": "unable",
-        "explanation": "Respondents cannot accurately recall a distant purchase; recent purchases are asked instead."
+        "explanation": "Respondents cannot accurately recall a distant purchase. Recent purchases are asked instead."
       }
     ]
   },
@@ -297,7 +297,7 @@
       {
         "id": "search",
         "text": "The team searches published research for an existing validated trust scale that suits the study.",
-        "explanation": "A suitable validated scale is used in its published form; items are generated only if none exists."
+        "explanation": "A suitable validated scale is used in its published form. Items are generated only if none exists."
       },
       {
         "id": "generate",
@@ -331,7 +331,7 @@
     "slide_id": "measuring-the-attitudes-of-ai-models",
     "question_text": "A research team wants to measure the price consciousness of three language models that a retailer is considering as shopping assistants. A validated eight-item price-consciousness scale exists. Which procedure follows the approach introduced on this slide?",
     "hint": "Consider the form of the scale, how the items are presented, and how the model is asked to answer.",
-    "correct_answer_citation": "Week 04 · Measuring the Attitudes of AI Models",
+    "correct_answer_citation": "Week 04: Measuring the Attitudes of AI Models",
     "correct_answer_index": 2,
     "options": [
       {

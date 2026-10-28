@@ -92,7 +92,7 @@ week: week-6
 - Random Forest is an ensemble learning algorithm that combines multiple decision trees to improve predictive accuracy and control overfitting. It is widely used for both classification and regression tasks.
 - **Ensemble Method**: Builds a "forest" of decision trees, each trained on a random subset of the data and features.
 - **Diversity**: Each tree is trained independently, leading to diverse models that capture different patterns in the data.
-- **Voting/Averaging**: For classification, the most common predicted class from the trees is chosen; for regression, the average prediction is taken.
+- **Voting/Averaging**: For classification, the most common predicted class from the trees is chosen. For regression, the average prediction is taken.
 - **Robustness**: Reduces overfitting by averaging multiple trees, providing a more generalized model.
 - **Advantages:**
   - High accuracy and performance.
@@ -126,14 +126,14 @@ week: week-6
   - **Unsupervised**: For exploratory analysis, anomaly detection, or preprocessing data (e.g., grouping genes by expression).
 - **Challenges**
   - **Supervised**: Requires high-quality labeled data (time-consuming/costly to acquire). Risk of overfitting.
-  - **Unsupervised**: Results can be subjective; harder to evaluate without ground truth.
+  - **Unsupervised**: Results can be subjective. Harder to evaluate without ground truth.
 
 ## Supervised vs. Unsupervised Learning: Comparison [exercise]
 | **Aspect** | **Supervised Learning** | **Unsupervised Learning** |
 |---|---|---|
 | **Data** | Labeled (inputs + known outputs) | Unlabeled (inputs only) |
 | **Goal** | Predict outcomes or classify new data | Explore data structure, find patterns |
-| **Feedback** | Direct feedback (errors are corrected via labels) | No feedback; model infers patterns autonomously |
+| **Feedback** | Direct feedback (errors are corrected via labels) | No feedback. Model infers patterns autonomously |
 | **Common Tasks** | Regression, Classification | Clustering, Dimensionality Reduction |
 | **Evaluation Metrics** | Accuracy, Precision, Recall, F1-Score, RMSE | Silhouette Score, Elbow Method, Reconstruction Error |
 
@@ -146,7 +146,7 @@ week: week-6
 - **Case 2**
   - *A biologist has gene expression data from 1,000 patients but no prior labels. They want to group patients into clusters to identify potential subtypes of a disease.*
   - **Answer**: Unsupervised Learning
-  - **Why?** No predefined labels exist; the goal is to discover hidden patterns (disease subtypes) in the data.
+  - **Why?** No predefined labels exist. The goal is to discover hidden patterns (disease subtypes) in the data.
 - **Case 3**
   - *A streaming service uses viewing history to recommend movies by predicting how users will rate films they haven’t seen yet. They use past user ratings as training data.*
   - **Answer**: Supervised Learning
@@ -162,7 +162,7 @@ week: week-6
 - **Case 6**
   - *A photographer uses an algorithm to organize 10,000 unlabeled images into groups of similar landscapes (e.g., beaches, forests, mountains).*
   - **Answer**: Unsupervised Learning
-  - **Why?** No labels are provided; the algorithm identifies visual patterns to cluster images.
+  - **Why?** No labels are provided. The algorithm identifies visual patterns to cluster images.
 - **Case 7**
   - *A bank trains a model to approve or reject loan applications using historical data on applicant income, credit score, and past loan defaults.*
   - **Answer**: Supervised Learning

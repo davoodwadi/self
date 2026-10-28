@@ -36,7 +36,7 @@ week: week9
 - Digital storefronts deploy behavioral pricing cues that interact with human cognitive heuristics.
 
 ## Reference Prices, Just-Below Pricing, Flash Sales, and Free-Shipping Thresholds [exercise]
-- Strike-through reference pricing displays an anchor price (e.g., "Was $120, Now $89") next to the current selling price to create transaction utility, the psychological satisfaction of getting a deal; under deceptive pricing laws, the strike-through anchor must be a bona fide price at which the item was genuinely offered for a reasonable period.
+- Strike-through reference pricing displays an anchor price (e.g., "Was $120, Now $89") next to the current selling price to create transaction utility, the psychological satisfaction of getting a deal. Under deceptive pricing laws, the strike-through anchor must be a bona fide price at which the item was genuinely offered for a reasonable period.
 - Just-below (or charm) pricing sets prices at $19.99 or $49.95 rather than $20.00 or $50.00, exploiting left-digit anchoring in which shoppers disproportionately weight the leftmost digit when encoding price magnitude.
 - Partitioned pricing separates the base product price from mandatory surcharges (such as shipping and handling), which can lower initial price perception on the listing card but triggers cart abandonment at checkout if fees feel excessive.
 - Minimum-spend thresholds (e.g., "Add $14 more to unlock Free Shipping" or "Spend $100, Get $20 Off") incentivize shoppers to add an extra item to their basket, lifting Average Order Value above the merchant's shipping cost threshold.
@@ -47,7 +47,7 @@ week: week9
 
 ## Margin Erosion, Deal-Waiting, and Promotional Guardrails [exercise]
 - Consider a product that sells for $100 with a variable cost of goods sold and fulfillment of $60, yielding a $40 gross contribution margin (40 percent margin).
-- If the marketer runs a 20 percent sitewide discount, the selling price drops to $80 while the unit cost remains $60, cutting the contribution margin per unit in half from $40 to $20; the store must now sell twice as many units just to earn the same total dollar contribution.
+- If the marketer runs a 20 percent sitewide discount, the selling price drops to $80 while the unit cost remains $60, cutting the contribution margin per unit in half from $40 to $20. The store must now sell twice as many units just to earn the same total dollar contribution.
 - Furthermore, frequent sitewide sales train customers in forward-buying (stockpiling during sales) and strategic deal-waiting, where loyal buyers delay full-price purchases until the next holiday code arrives.
 - Browser coupon-extension scrapers (which automatically test leaked promo codes at checkout) further erode margin when merchants use generic, shareable codes like `WELCOME20` instead of single-use cryptographic codes generated per CRM recipient.
 - High-performing e-commerce brands protect brand equity by limiting sitewide markdowns, using value-added gifts-with-purchase instead of percentage cuts, and targeting single-use retention incentives only to high-churn-risk cohorts.
@@ -73,7 +73,7 @@ week: week9
 ## Price Heuristics, Anchoring, and Attribute Trade-Offs in AI Agents [exercise]
 - When all price components (item price, shipping fee, and unit quantity) are visible in structured text, an AI shopping agent can compute total landed unit price accurately, reducing the effectiveness of simple partitioned-pricing tricks.
 - However, because foundation models are trained on vast corpora of human commercial text, they internalize human-like decision heuristics and respond to reference-price anchors, promotional badges, and just-below pricing cues when evaluating options under ambiguity (Wadi & Ma, 2026a).
-- Moreover, the specificity of the consumer's delegation prompt strongly moderates how the agent weights price against quality; a vague prompt ("Buy me a good toaster") leaves the agent susceptible to framing and rank cues, whereas a constraint-specific prompt ("Find a two-slice stainless toaster under $60 with at least a 2-year warranty") anchors the agent on verifiable attribute cutoffs.
+- Moreover, the specificity of the consumer's delegation prompt strongly moderates how the agent weights price against quality. A vague prompt ("Buy me a good toaster") leaves the agent susceptible to framing and rank cues, whereas a constraint-specific prompt ("Find a two-slice stainless toaster under $60 with at least a 2-year warranty") anchors the agent on verifiable attribute cutoffs.
 - In business-to-agent (B2A) pricing, transparent all-in pricing, clear unit-price metrics, and verifiable value-tier differentiation outperform deceptive drip fees that cause an agent's checkout validation step to abort the purchase.
 
 ## Discussion: Pricing for Human Eyes and Algorithmic Filters

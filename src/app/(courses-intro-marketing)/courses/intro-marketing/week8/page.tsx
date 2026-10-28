@@ -73,9 +73,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 08 — PRICING STRATEGIES (THE SECOND P)
+// WEEK 08: PRICING STRATEGIES (THE SECOND P)
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
@@ -135,7 +135,7 @@ function Lead({
   );
 }
 
-/** A sentence set as a serif statement — the line a slide lands on. */
+/** A sentence set as a serif statement: the line a slide lands on. */
 function Statement({
   children,
   className = "",
@@ -539,7 +539,7 @@ export default function Week8() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 08 · Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 08: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
           Pricing Strategies{" "}
           <span className="text-[var(--signal)]">(The Second P)</span>
@@ -585,7 +585,7 @@ export default function Week8() {
         exercise={exercise["the-paradigm-of-price"]}
       >
         <Heading>The Paradigm of Price</Heading>
-        {/* The claim and its counterpart beside the zero line; flexibility
+        {/* The claim and its counterpart beside the zero line. Flexibility
             and choice in two columns underneath. */}
         <Beside
           text={
@@ -629,7 +629,7 @@ export default function Week8() {
       </Slide>
 
       {/* ================================================================
-          Part 1 — Factors Affecting Pricing Decisions
+          Part 1: Factors Affecting Pricing Decisions
           ================================================================ */}
       <PartPlate id="part-1" n={1} title="Factors Affecting Pricing Decisions">
         <Beside
@@ -665,7 +665,7 @@ export default function Week8() {
         kicker="Internal Factors:"
         title="Marketing Objectives"
       >
-        {/* Alignment and the four objectives in three columns; the pricing
+        {/* Alignment and the four objectives in three columns. The pricing
             range across the foot. */}
         <div className="grid w-full items-start gap-8 lg:grid-cols-3 lg:gap-10">
           <Col
@@ -845,7 +845,7 @@ export default function Week8() {
       </TopicSlide>
 
       {/* ================================================================
-          Part 2 — Core Pricing Approaches
+          Part 2: Core Pricing Approaches
           ================================================================ */}
       <PartPlate id="part-2" n={2} title="Core Pricing Approaches">
         <Beside
@@ -923,7 +923,7 @@ export default function Week8() {
         section={1}
         title="Good-Value Pricing vs. Value-Added Pricing"
       >
-        {/* Good value on the left, value added on the right; each sentence
+        {/* Good value on the left, value added on the right. Each sentence
             beside its plate. */}
         <div className="grid w-full gap-x-10 gap-y-5 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-2">
           <Row
@@ -1095,7 +1095,7 @@ export default function Week8() {
       </Slide>
 
       {/* ================================================================
-          Part 3 — Pricing Strategies for New Products
+          Part 3: Pricing Strategies for New Products
           ================================================================ */}
       <PartPlate id="part-3" n={3} title="Pricing Strategies for New Products">
         <Beside

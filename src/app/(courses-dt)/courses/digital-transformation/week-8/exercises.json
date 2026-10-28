@@ -96,13 +96,13 @@
     "cases": [
       {
         "id": "reading-vouchers",
-        "text": "A library pays children $2 in gift vouchers for every book they finish during the summer; once the voucher campaign ends in September, the children read fewer books than they did before the program started.",
+        "text": "A library pays children $2 in gift vouchers for every book they finish during the summer. Once the voucher campaign ends in September, the children read fewer books than they did before the program started.",
         "answer": "overjustification",
         "explanation": "Relying too heavily on extrinsic rewards (vouchers) undermined the children's intrinsic enjoyment of reading for its own sake."
       },
       {
         "id": "onboarding-sandbox",
-        "text": "A company launches a 3D virtual campus for new hires to explore freely, but provides no missions, checklists, or goals—within ten minutes, new hires wander aimlessly and close the app out of boredom.",
+        "text": "A company launches a 3D virtual campus for new hires to explore freely, but provides no missions, checklists, or goals: within ten minutes, new hires wander aimlessly and close the app out of boredom.",
         "answer": "excessive-freedom",
         "explanation": "An open-world environment with no clear objectives creates excessive freedom, leaving users bored and disengaged."
       },
@@ -128,7 +128,7 @@
       {
         "id": "walk-or-run",
         "text": "Step outside to walk, jog, or run anywhere in the real world while wearing headphones.",
-        "explanation": "The experience begins with physical exercise in the real world—walking or running at your own pace."
+        "explanation": "The experience begins with physical exercise in the real world: walking or running at your own pace."
       },
       {
         "id": "hear-mission",
@@ -156,7 +156,7 @@
     "correct_answer_citation": "“For RADBO, the operators are generally a much younger audience... utilizing a PlayStation or Xbox type of controller such as the FMCU seems to be a natural transition for the gaming generation.” Younger soldiers with gaming experience adapt quickly, raising ethical concerns about using play interfaces for advanced weapon systems.",
     "options": [
       {
-        "option_text": "Younger operators already have thousands of hours of console gaming experience (such as Halo), making the controller a natural transition that drastically cuts training time—while ethically blurring the boundary between playing a video game and operating real-world weapons.",
+        "option_text": "Younger operators already have thousands of hours of console gaming experience (such as Halo), making the controller a natural transition that drastically cuts training time: while ethically blurring the boundary between playing a video game and operating real-world weapons.",
         "option_explanation": "Correct. Familiar console controllers capitalize on prior gaming fluency so young soldiers adapt quickly, which raises serious ethical questions when the same tactile interface is used for lethal or high-stakes military systems."
       },
       {
@@ -169,7 +169,7 @@
       },
       {
         "option_text": "Commercial controllers eliminate all ethical concerns because they turn real-world operations into harmless virtual reality games.",
-        "option_explanation": "The operations take place in the real world with real consequences; using a gaming controller raises—rather than eliminates—ethical concerns."
+        "option_explanation": "The operations take place in the real world with real consequences. Using a gaming controller raises, rather than eliminates, ethical concerns."
       }
     ]
   },

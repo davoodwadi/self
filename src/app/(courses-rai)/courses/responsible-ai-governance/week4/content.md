@@ -117,7 +117,7 @@ week: week4
 - Attribute matching holds all non-manipulated product attributes, such as price, warranty, and star rating, constant across conditions so that any change in choice probability is attributable solely to the manipulated factor.
 
 ## Part 5: Enterprise Pre-Deployment and Post-Deployment Auditing Workflows [no-exercise]
-- In an enterprise governance system, behavioral auditing is not a one-time academic exercise; it is a recurring gate in the model lifecycle.
+- In an enterprise governance system, behavioral auditing is not a one-time academic exercise. It is a recurring gate in the model lifecycle.
 - Organizations distinguish exploratory red-teaming from systematic behavioral auditing and maintain continuous monitoring after launch.
 
 ## Pre-Deployment Red-Teaming Versus Behavioral Auditing [exercise]
@@ -145,7 +145,7 @@ week: week4
 ## Key Takeaways
 - Single-prompt (pass-at-one) evaluations fail as a governance standard because stochastic language models exhibit high response entropy and framing sensitivity.
 - For open-ended numerical and text decisions, the Monte-Carlo framework (Wadi & Fredette, 2025) provides an unbiased estimator whose variance decays as 1/K and whose asymptotic normality enables exact confidence intervals.
-- Behavioral validity requires checking Common Sense Validity Rate (CSVR), Absolute Price Deviation (APD), and Coefficient of Variation (CV); empirical audits show that LLMs suffer strong anchoring bias and can regress across newer model generations.
+- Behavioral validity requires checking Common Sense Validity Rate (CSVR), Absolute Price Deviation (APD), and Coefficient of Variation (CV). Empirical audits show that LLMs suffer strong anchoring bias and can regress across newer model generations.
 - For structured Likert scales and discrete choices with accessible log-probabilities, reading the exact token-level PMF eliminates sampling error entirely (Wadi, Ghodrat, & Philp, 2026).
 - Because Shannon entropy ignores ordinal scale distances, exact-PMF audits use a three-layer pipeline: Constraint (task failure rate), Consensus (distance-weighted ordinal agreement), and Construct (discrete convolution and Hoeffding ANOVA decomposition).
 - Controlled factorial experiments exploit LLM statelessness for context isolation and counterbalance prompt phrasing, scale polarity, and list position.

@@ -73,7 +73,7 @@ week: week10
 ## The Three Levels of the AI Digital Divide [exercise]
 - The first-level divide is the access divide: inequalities in broadband connectivity, computing hardware, and the ability to pay subscription fees for frontier AI models versus relying on ad-funded or lower-capability free tiers.
 - The second-level divide is the capability and epistemic literacy divide: differences in users' ability to formulate effective prompts, configure reasoning effort, recognize hallucinations, and critically verify sycophantic or biased model outputs.
-- The third-level divide is the outcome and agency divide: even when basic access is widespread, users and firms with advanced AI agents capture disproportionate market surplus (securing better prices, faster dispute resolution, and position-neutral search; Wadi & Ma, 2026a, 2026b), while less equipped consumers pay higher all-in prices and absorb algorithmic sludges.
+- The third-level divide is the outcome and agency divide: even when basic access is widespread, users and firms with advanced AI agents capture disproportionate market surplus (securing better prices, faster dispute resolution, and position-neutral search, Wadi & Ma, 2026a, 2026b), while less equipped consumers pay higher all-in prices and absorb algorithmic sludges.
 
 ## Linguistic, Register, and Health/Financial Literacy Barriers [no-exercise]
 - Customer-service, healthcare, and banking chatbots frequently perform best when addressed in formal, standard metropolitan dialects and degrade when users write in regional dialects, African American Vernacular English, Indigenous languages, or code-switched multilingual text.
@@ -128,7 +128,7 @@ week: week10
 - Discussion: A provincial government agency plans to deploy a conversational AI assistant to help residents apply for disability and low-income housing benefits, replacing several paper forms and telephone intake lines. Using the social model of disability, the three levels of the digital divide, privacy safeguards for inferred disability data, and cognitive forcing functions for caseworkers, design a governance charter for this system that ensures equitable access without turning the assistant into a barrier or surveillance tool.
 
 ## Key Takeaways
-- The social model of disability locates accessibility barriers in the design of digital and algorithmic environments rather than in individual deficits; universal design and the curb-cut effect improve robustness for all users.
+- The social model of disability locates accessibility barriers in the design of digital and algorithmic environments rather than in individual deficits. Universal design and the curb-cut effect improve robustness for all users.
 - Accessible AI interfaces satisfy the four WCAG POUR principles (Perceivable, Operable, Understandable, Robust) while auditing underlying biometric, speech, and video models against outlier bias toward atypical bodies, voices, and neurotypes.
 - Multimodal AI and formative support architectures such as AILSS provide immediate, stigma-free cognitive scaffolding for learners and consumers with disabilities, provided assistive telemetry is strictly walled off from commercial profiling and paternalistic overrides.
 - The AI digital divide operates across three levels: hardware and frontier-model access (Level 1), prompt and epistemic verification literacy (Level 2), and unequal market outcomes in agent-mediated exchange (Level 3).

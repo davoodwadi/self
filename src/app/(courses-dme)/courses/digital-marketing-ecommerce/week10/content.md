@@ -12,7 +12,7 @@ week: week10
 ## Where Digital Atoms Meet Physical Boxes [no-exercise]
 - In pure digital services (such as streaming video or cloud software), fulfilling an order requires only provisioning a database credential at near-zero marginal cost.
 - In physical e-commerce, clicking the checkout button initiates an expensive chain of warehouse picking, protective packing, parcel carrier sorting, last-mile van delivery, and potential return processing.
-- Logistics and fulfillment are not merely back-office cost centers; delivery speed, shipping fees, and return convenience sit directly on the Product Detail Page and heavily drive upfront conversion rates.
+- Logistics and fulfillment are not merely back-office cost centers. Delivery speed, shipping fees, and return convenience sit directly on the Product Detail Page and heavily drive upfront conversion rates.
 - Conversely, promising fast, free delivery and unconditional free returns without the underlying inventory and warehouse economics can bankrupt a high-growth e-commerce brand.
 
 ## Part 1: Omnichannel Retailing and Information Systems Integration [no-exercise]
@@ -23,7 +23,7 @@ week: week10
 - Buy-Online-Pick-Up-in-Store (BOPIS), including curbside pickup, allows a shopper to lock in stock and pay online while picking up the item at a local store within hours, eliminating last-mile parcel shipping fees for the retailer and generating incremental in-store impulse purchases when the customer walks inside.
 - Ship-from-Store (SFS) turns physical retail locations into micro-fulfillment nodes, allowing the Order Management System (OMS) to fulfill an online order from a store five miles away from the buyer rather than a central warehouse two thousand miles away.
 - Endless-aisle kiosks inside physical stores allow sales associates to order out-of-stock sizes or colors from the central warehouse for direct home delivery before the shopper walks out empty-handed.
-- Every omnichannel fulfillment model depends on real-time inventory accuracy across the OMS and Point-of-Sale (POS) systems; if store inventory records lag or ignore theft and shelf misplacement, a store will accept a BOPIS order for an item that is not actually on the shelf, causing a high-friction cancellation.
+- Every omnichannel fulfillment model depends on real-time inventory accuracy across the OMS and Point-of-Sale (POS) systems. If store inventory records lag or ignore theft and shelf misplacement, a store will accept a BOPIS order for an item that is not actually on the shelf, causing a high-friction cancellation.
 
 ## Showrooming, Webrooming, and Channel Incentive Alignment [exercise]
 - Showrooming occurs when a shopper visits a physical retail store to inspect, touch, or try on a product in person, and then pulls out a smartphone to buy the exact item at a lower price from an online-only competitor.

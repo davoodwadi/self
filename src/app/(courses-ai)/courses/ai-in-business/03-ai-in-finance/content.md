@@ -40,7 +40,7 @@ week: "03-ai-in-finance"
 - Generative models support summarization, drafting, extraction, scenario narration, and analyst copilots rather than final authority.
 
 ## Human Judgment in High-Stakes Finance
-- High-value financial decisions are rarely one-shot predictions; they carry legal, reputational, and capital consequences.
+- High-value financial decisions are rarely one-shot predictions. They carry legal, reputational, and capital consequences.
 - Human oversight is most important when exceptions are novel, customers are vulnerable, or adverse outcomes are hard to reverse.
 - Effective design clarifies escalation paths instead of assuming automation is the objective.
 
@@ -59,7 +59,7 @@ week: "03-ai-in-finance"
 - New inputs also raise questions about relevance, stability, and whether the model is learning structural disadvantage rather than true risk.
 
 ## Pricing, Limit Setting, and Profitability
-- Credit decisions do not end at approval; institutions also set limits, pricing, covenants, and review intensity.
+- Credit decisions do not end at approval. Institutions also set limits, pricing, covenants, and review intensity.
 - AI can help align expected loss, expected revenue, and capital usage at a more granular level.
 - Poorly governed pricing models can optimize short-term margin while worsening adverse selection or customer trust.
 
@@ -70,7 +70,7 @@ week: "03-ai-in-finance"
 
 ## Collections Strategy and Treatment Design
 - Collections systems estimate which account, channel, timing, or hardship option is most likely to recover value.
-- The best treatment is not always the most aggressive; it must balance recovery, customer outcome, and regulatory expectations.
+- The best treatment is not always the most aggressive. It must balance recovery, customer outcome, and regulatory expectations.
 - AI can improve prioritization, but firms still need policy boundaries for hardship, vulnerability, and escalation.
 - Discussion: When should a lender optimize for recovery efficiency, and when should it prioritize longer-term relationship preservation even at lower near-term cash recovery?
 
@@ -116,7 +116,7 @@ week: "03-ai-in-finance"
 
 ## Market Forecasting and Signal Extraction
 - AI can process prices, volumes, news, filings, macro releases, and alternative text streams faster than human analysts.
-- The task is rarely to predict markets with certainty; it is to improve signal extraction and decision support under uncertainty.
+- The task is rarely to predict markets with certainty. It is to improve signal extraction and decision support under uncertainty.
 - Leaders should distinguish between models that identify persistent structure and models that overfit recent noise.
 
 ## Portfolio Construction and Decision Support [exercise]

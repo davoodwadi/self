@@ -78,7 +78,7 @@ week: week6
 - Syntactic privacy models such as k-anonymity require that every combination of quasi-identifiers appear at least k times in a released table, but they remain vulnerable when sensitive attributes lack diversity within a group or when an attacker possesses high-dimensional auxiliary data.
 
 ## Training Data Memorization and Membership Inference in LLMs [no-exercise]
-- Deep neural networks and large language models do not merely learn abstract statistical rules; they can memorize verbatim sequences from their training corpora, particularly sequences that appear repeatedly or sit in unusual outliers.
+- Deep neural networks and large language models do not merely learn abstract statistical rules. They can memorize verbatim sequences from their training corpora, particularly sequences that appear repeatedly or sit in unusual outliers.
 - In a training data extraction attack, an adversary prompts a language model with a prefix and recovers verbatim personal names, phone numbers, physical addresses, or proprietary code that appeared in the pre-training or fine-tuning data (Carlini et al., 2021).
 - In a membership inference attack, an adversary inspects a model's output probabilities on a target record to determine whether that specific individual's record was included in the model's training set, which is itself a severe privacy breach when the training set comes from a sensitive cohort such as a disease registry or a high-risk credit list.
 
@@ -117,12 +117,12 @@ week: week6
 ## Silicon Samples: Language Models as Simulated Survey Respondents [no-exercise]
 - In a silicon-sampling workflow, a researcher constructs a prompt specifying demographic and psychographic attributes (such as age, income, region, and political orientation) and asks a language model to complete a questionnaire or choice task as that persona.
 - Proponents argue that synthetic panels reduce data collection costs to pennies, return results in minutes, allow pretesting of fragile survey instruments, and avoid burdening human respondents during early design iterations.
-- However, a language model conditioned on a demographic label is not a member of that demographic group; it is a conditional probability distribution over text learned from how that group is written about in training corpora.
+- However, a language model conditioned on a demographic label is not a member of that demographic group. It is a conditional probability distribution over text learned from how that group is written about in training corpora.
 
 ## Epistemic and Ethical Risks of Replacing Human Panels With AI [exercise]
 - Variance collapse and hyper-consistency occur when language models produce artificially tight, stereotyped distributions that understate true within-group human heterogeneity and fail to capture idiosyncratic consumer preferences.
 - Historical and WEIRD bias projection occurs when the model fills gaps in underrepresented personas by falling back to dominant Western cultural norms or caricatured demographic stereotypes, as examined in Week 3.
-- Non-invariance to prompt and scale formatting occurs when minor changes in persona wording, temperature, or single-response sampling shift the simulated sample's mean and variance (Wadi & Fredette, 2025; Wadi, Ghodrat, & Philp, 2026).
+- Non-invariance to prompt and scale formatting occurs when minor changes in persona wording, temperature, or single-response sampling shift the simulated sample's mean and variance (Wadi & Fredette, 2025, Wadi, Ghodrat, & Philp, 2026).
 - Democratic and participatory erasure occurs when an organization uses synthetic personas to claim it consulted marginalized or disabled communities without ever speaking to or compensating real members of those communities.
 
 ## Governance Rules for Hybrid Human-AI Research [no-exercise]
@@ -139,4 +139,4 @@ week: week6
 - Naive anonymization fails in high-dimensional behavioral data because a handful of spatiotemporal points or quasi-identifiers uniquely re-identify individuals, while large language models can memorize and regurgitate verbatim training examples.
 - Technical privacy governance relies on differential privacy (bounded epsilon sensitivity and calibrated noise), federated learning, and machine unlearning for statutory erasure requests.
 - Research Ethics Board (REB) oversight enforces Respect for Persons, Concern for Welfare, and Justice, governing experimental deception, mandatory debriefing, and the disclosure of third-party AI data processing in informed consent.
-- Synthetic AI respondents (silicon samples) suffer from variance collapse, cultural stereotyping, and participatory erasure when used as substitutes for human panels; governance restricts them to disclosed pretesting while distinguishing fragile human simulation from direct behavioral audits of AI shopping agents.
+- Synthetic AI respondents (silicon samples) suffer from variance collapse, cultural stereotyping, and participatory erasure when used as substitutes for human panels. Governance restricts them to disclosed pretesting while distinguishing fragile human simulation from direct behavioral audits of AI shopping agents.

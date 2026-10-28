@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 04 — figures
+   Week 04, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea: a forked flow of what
    organizations do with what they buy, a split lane that demand crosses, a
@@ -11,11 +11,11 @@
    process loop, share bars, and three small benefit plates.
 
    Conventions carried over from earlier weeks:
-     · viewBox width 800 (400 or 360 for column plates), flat fills,
+     - viewBox width 800 (400 or 360 for column plates), flat fills,
        hairline rules, no shadows or gradients
-     · INK carries the neutral case, SIGNAL the operative one, COUNTER the
+     - INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or outward-looking state
-     · every label reuses words from the slide the plate sits on
+     - every label reuses words from the slide the plate sits on
    ========================================================================== */
 
 import React from "react";
@@ -57,12 +57,12 @@ import {
 } from "@phosphor-icons/react";
 
 /* ==========================================================================
-   1 · FORKED FLOW — what organizations do with what they buy
+   1. FORKED FLOW: what organizations do with what they buy
    ========================================================================== */
 
 export function TwoUses() {
   return (
-    <Frame height={260} label="A selling company ships a package of products and services to another organization, lit. From there one path leads to a factory turning out three packed goods, labelled produce other goods; the other leads to an office desk with a computer and printer, labelled own operations.">
+    <Frame height={260} label="A selling company ships a package of products and services to another organization, lit. From there one path leads to a factory turning out three packed goods, labelled produce other goods. The other leads to an office desk with a computer and printer, labelled own operations.">
       {/* the seller */}
       <Company1 cx={80} base={170} w={84} h={64} tone={INK} />
       <line x1={132} y1={140} x2={250} y2={140} stroke={INK} strokeWidth={1.5} />
@@ -107,7 +107,7 @@ export function TwoUses() {
 }
 
 /* ==========================================================================
-   2 · SPLIT LANE — B2B vs B2C market characteristics
+   2. SPLIT LANE: B2B vs B2C market characteristics
    ========================================================================== */
 
 export function MarketSplitLane() {
@@ -167,7 +167,7 @@ export function MarketSplitLane() {
 }
 
 /* ==========================================================================
-   3 · SIGN-OFF SHEET — more participants, a formal purchasing effort
+   3. SIGN-OFF SHEET: more participants, a formal purchasing effort
    ========================================================================== */
 
 export function SignOffSheet() {
@@ -212,7 +212,7 @@ export function SignOffSheet() {
 }
 
 /* ==========================================================================
-   4a · DECISION TREE — more complex purchasing decisions (360 wide)
+   4a | DECISION TREE: more complex purchasing decisions (360 wide)
    ========================================================================== */
 
 export function DecisionTree() {
@@ -254,7 +254,7 @@ export function DecisionTree() {
 }
 
 /* ==========================================================================
-   4b · CHECKLIST AND STAMP — a highly formalized process (360 wide)
+   4b | CHECKLIST AND STAMP: a highly formalized process (360 wide)
    ========================================================================== */
 
 export function FormalChecklist() {
@@ -286,7 +286,7 @@ export function FormalChecklist() {
 }
 
 /* ==========================================================================
-   4c · INTERLOCKING RINGS — buyers and sellers depend on each other (360)
+   4c | INTERLOCKING RINGS: buyers and sellers depend on each other (360)
    ========================================================================== */
 
 export function Interlock() {
@@ -307,7 +307,7 @@ export function Interlock() {
 }
 
 /* ==========================================================================
-   5 · CASCADE — a drop in consumer demand steps down the supply chain
+   5. CASCADE: a drop in consumer demand steps down the supply chain
    ========================================================================== */
 
 export function EvCascade() {
@@ -386,7 +386,7 @@ export function EvCascade() {
 }
 
 /* ==========================================================================
-   6 · ORG CHART — a buying center pulled across departments
+   6. ORG CHART: a buying center pulled across departments
    ========================================================================== */
 
 export function BuyingCenterOrg() {
@@ -440,7 +440,7 @@ export function BuyingCenterOrg() {
 }
 
 /* ==========================================================================
-   7 · RADIATING — roles within the buying center
+   7. RADIATING: roles within the buying center
    ========================================================================== */
 
 type RoleIcon = "user" | "influencer" | "buyer" | "decider" | "gatekeeper";
@@ -464,7 +464,7 @@ export function RadiatingRoles({ phase }: { phase: "first" | "second" }) {
   const label =
     phase === "first"
       ? "Five spokes radiate from the buying center. Three are lit, each a circle with its icon: users (a wrench), influencers (a pencil and ruler) and buyers (a signature). Two more circles on the right are empty and dashed, still to come."
-      : "Five spokes radiate from the buying center. Users (a wrench), influencers (a pencil and ruler) and buyers (a signature) are drawn in grey; deciders (a seal with a check) and gatekeepers (a funnel) are lit.";
+      : "Five spokes radiate from the buying center. Users (a wrench), influencers (a pencil and ruler) and buyers (a signature) are drawn in grey. Deciders (a seal with a check) and gatekeepers (a funnel) are lit.";
   return (
     <Frame height={300} label={label}>
       {roles.map((r, i) => {
@@ -525,7 +525,7 @@ export function RadiatingRoles({ phase }: { phase: "first" | "second" }) {
 }
 
 /* ==========================================================================
-   8 · ROLE MAP — one person, many roles; many people, one role
+   8. ROLE MAP: one person, many roles. Many people, one role
    ========================================================================== */
 
 /** A role on the role map: its circle and icon, with the role's name beside it. */
@@ -573,7 +573,7 @@ export function RoleMapping() {
 }
 
 /* ==========================================================================
-   9 · THREE LOOPS — straight rebuy, modified rebuy, new task
+   9. THREE LOOPS: straight rebuy, modified rebuy, new task
    ========================================================================== */
 
 export function BuyingSituations() {
@@ -620,7 +620,7 @@ export function BuyingSituations() {
 }
 
 /* ==========================================================================
-   10 · PODIUM — which role wields the most actual power?
+   10. PODIUM: which role wields the most actual power?
    ========================================================================== */
 
 export function PowerPodium() {
@@ -672,7 +672,7 @@ export function PowerPodium() {
 }
 
 /* ==========================================================================
-   11 · ROPE ON A FOUNDATION — a transaction thickens into a partnership
+   11. ROPE ON A FOUNDATION: a transaction thickens into a partnership
    ========================================================================== */
 
 export function RelationshipRope() {
@@ -717,14 +717,14 @@ export function RelationshipRope() {
 }
 
 /* ==========================================================================
-   12 · BARS UNDER A BRACKET — one transaction, or lifetime value
+   12. BARS UNDER A BRACKET: one transaction, or lifetime value
    ========================================================================== */
 
 export function LifetimeBracket() {
   const hs = [60, 52, 70, 64, 78, 72, 86, 80, 92, 88, 98, 104];
   const base = 190;
   return (
-    <Frame height={230} label="A row of purchases over time. One bar alone is a single transaction; a bracket over all of them is customer lifetime value.">
+    <Frame height={230} label="A row of purchases over time. One bar alone is a single transaction. A bracket over all of them is customer lifetime value.">
       <line x1={80} y1={56} x2={726} y2={56} stroke={SIGNAL} strokeWidth={1.5} />
       <line x1={80} y1={56} x2={80} y2={66} stroke={SIGNAL} strokeWidth={1.5} />
       <line x1={726} y1={56} x2={726} y2={66} stroke={SIGNAL} strokeWidth={1.5} />
@@ -756,7 +756,7 @@ export function LifetimeBracket() {
 }
 
 /* ==========================================================================
-   13 · MERGING CIRCLES — from seller to strategic partner (400 wide)
+   13. MERGING CIRCLES: from seller to strategic partner (400 wide)
    ========================================================================== */
 
 export function StrategicPartners() {
@@ -782,7 +782,7 @@ export function StrategicPartners() {
 }
 
 /* ==========================================================================
-   14 · LENS — deep understanding of the customer's business (400 wide)
+   14. LENS: deep understanding of the customer's business (400 wide)
    ========================================================================== */
 
 export function DeepUnderstanding() {
@@ -821,7 +821,7 @@ export function DeepUnderstanding() {
 }
 
 /* ==========================================================================
-   15 · CORE PROCESS — the Key Account Management process
+   15. CORE PROCESS: the Key Account Management process
    ========================================================================== */
 
 export function KamCore() {
@@ -878,7 +878,7 @@ export function KamCore() {
 }
 
 /* ==========================================================================
-   16 · SHARE BARS — key accounts contribute disproportionately (400 wide)
+   16. SHARE BARS: key accounts contribute disproportionately (400 wide)
    ========================================================================== */
 
 export function KeyAccountShare() {
@@ -903,13 +903,13 @@ export function KeyAccountShare() {
 }
 
 /* ==========================================================================
-   17 · BENEFIT PLATES — retention, barriers, joint innovation (400 wide)
+   17. BENEFIT PLATES: retention, barriers, joint innovation (400 wide)
    ========================================================================== */
 
 /**
  * The week's supplier and business customer in a strong relationship: the
  * seller's building (lit) beside the customer's, a handshake above them.
- * Centred on cx, standing on base; about 150 wide and 106 tall.
+ * Centred on cx, standing on base. About 150 wide and 106 tall.
  */
 function Partners({ cx, base }: { cx: number; base: number }) {
   return (
@@ -985,7 +985,7 @@ export function JointInnovation() {
 }
 
 /* ==========================================================================
-   18 · PILLARS — resting on one key account
+   18. PILLARS: resting on one key account
    ========================================================================== */
 
 export function DependenceRisk() {
@@ -1024,7 +1024,7 @@ export function DependenceRisk() {
 }
 
 /* ==========================================================================
-   Conclusion glyphs — each echoes a plate already seen
+   Conclusion glyphs: each echoes a plate already seen
    ========================================================================== */
 
 export function GlyphSplitLane() {

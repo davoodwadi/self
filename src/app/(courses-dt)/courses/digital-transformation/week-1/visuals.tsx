@@ -1,12 +1,12 @@
 /* ==========================================================================
-   Week 1 — plates (Flat Silhouette)
+   Week 1: plates (Flat Silhouette)
    --------------------------------------------------------------------------
-   A solid black silhouette on cream is the physical business; the same
+   A solid black silhouette on cream is the physical business. The same
    silhouette on a framed screen is its digital version. Fixed cast:
-     · Shop     — the business
-     · Doc      — information (a paper page)
-     · Monitor / MiniScreen — the digital place
-     · Person   — every human (bust in profile)
+     - Shop, the business
+     - Doc, information (a paper page)
+     - Monitor / MiniScreen, the digital place
+     - Person, every human (bust in profile)
    Every coordinate is a literal or rounded, so server and client match.
    ========================================================================== */
 
@@ -16,7 +16,7 @@ import { CREAM, INK, SIGNAL, r2, Plate, Monitor, MiniScreen, Arrow, Pointer } fr
 import { Shop, Doc, Person } from "../_visuals/objects";
 
 /* ==========================================================================
-   Hero — a physical shop and the same shop on a screen
+   Hero: a physical shop and the same shop on a screen
    ========================================================================== */
 
 export function HeroShopScreen() {
@@ -36,7 +36,7 @@ export function HeroShopScreen() {
 }
 
 /* ==========================================================================
-   Technology, people and processes — equally important
+   Technology, people and processes: equally important
    ========================================================================== */
 
 export function EqualFooting() {
@@ -66,7 +66,7 @@ export function DataDecision() {
   return (
     <Plate
       h={212}
-      title="A person looks at a screen showing four bars of data; the tallest bar, the one chosen, is red"
+      title="A person looks at a screen showing four bars of data. The tallest bar, the one chosen, is red"
     >
       <Person x={84} y={66} k={1.3} variant={3} glasses="round" />
       <Monitor x={170} y={26} w={200} h={140}>
@@ -87,7 +87,7 @@ export function DataDecision() {
 }
 
 /* ==========================================================================
-   Six key components of digital transformation — six stations flanking and
+   Six key components of digital transformation: six stations flanking and
    feeding into the central digital business (a Shop on a framed Monitor)
    ========================================================================== */
 
@@ -153,7 +153,7 @@ export function KeyComponentsHub({
   const cardH = 76;
   const targetYs = [104, 134, 164];
   const activeName = COMPONENT_NODES[active]?.name ?? "1. Technology integration";
-  const title = `Six key components of digital transformation feeding into a central framed screen holding a business shop: 1. Technology integration, 2. Cultural change, 3. Customer-centric approach, 4. Process optimization, 5. Data-driven decisions, and 6. Agility and flexibility; ${activeName} is highlighted in red`;
+  const title = `Six key components of digital transformation feeding into a central framed screen holding a business shop: 1. Technology integration, 2. Cultural change, 3. Customer-centric approach, 4. Process optimization, 5. Data-driven decisions, and 6. Agility and flexibility. ${activeName} is highlighted in red`;
 
   return (
     <Plate w={800} h={292} title={title}>
@@ -237,7 +237,7 @@ export function KeyComponentsHubTall({
   const cardW = 180;
   const cardH = 76;
   const activeName = COMPONENT_NODES[active]?.name ?? "1. Technology integration";
-  const title = `Six key components of digital transformation: 1. Technology integration, 2. Cultural change, 3. Customer-centric approach, 4. Process optimization, 5. Data-driven decisions, and 6. Agility and flexibility; ${activeName} is highlighted in red`;
+  const title = `Six key components of digital transformation: 1. Technology integration, 2. Cultural change, 3. Customer-centric approach, 4. Process optimization, 5. Data-driven decisions, and 6. Agility and flexibility. ${activeName} is highlighted in red`;
 
   return (
     <Plate w={400} h={276} title={title}>
@@ -386,7 +386,7 @@ export function TransformationSteps({
   const sx = (i: number) => x0 + i * pitch + (w - 84) / 2;
   const sy = (i: number) => tops[i] - 6 - 70;
   const activeGroup = STEP_GROUPS[active]?.name ?? "Digitization";
-  const title = `Five rising steps, each with a small screen: digitize information (a page), organize information (three pages), automate processes (a gear), streamline processes (two gears), and transform the institution (a shop). Steps 1–2 are grouped as 1. Digitization, 3–4 as 2. Digitalization, and 5 as 3. Digital transformation; ${activeGroup} is highlighted in red`;
+  const title = `Five rising steps, each with a small screen: digitize information (a page), organize information (three pages), automate processes (a gear), streamline processes (two gears), and transform the institution (a shop). Steps 1 to 2 are grouped as 1. Digitization, 3 to 4 as 2. Digitalization, and 5 as 3. Digital transformation. ${activeGroup} is highlighted in red`;
 
   return (
     <Plate w={800} h={320} title={title}>
@@ -489,7 +489,7 @@ export function TransformationStepsTall({
     y += 8;
   });
   const activeGroup = STEP_GROUPS[active]?.name ?? "Digitization";
-  const title = `Five rising steps grouped as 1. Digitization, 2. Digitalization, and 3. Digital transformation; ${activeGroup} is highlighted in red`;
+  const title = `Five rising steps grouped as 1. Digitization, 2. Digitalization, and 3. Digital transformation. ${activeGroup} is highlighted in red`;
 
   return (
     <Plate w={400} h={y - 4} title={title}>
@@ -555,7 +555,7 @@ export function TransformationStepsTall({
 }
 
 /* ==========================================================================
-   The Digital Transformation Pyramid — five solid layers from the
+   The Digital Transformation Pyramid: five solid layers from the
    foundation up, and the optional innovation layer as an open outline
    ========================================================================== */
 
@@ -584,7 +584,7 @@ export function Pyramid({
   return (
     <Plate
       h={bottom + 8}
-      title={`A stepped pyramid of six numbered layers from the bottom up: 1. Foundation, 2. Data, 3. Process, 4. Customer experience, 5. Culture and leadership, and 6. Innovation on top as an open outline because it is optional; ${activeName} is highlighted in red`}
+      title={`A stepped pyramid of six numbered layers from the bottom up: 1. Foundation, 2. Data, 3. Process, 4. Customer experience, 5. Culture and leadership, and 6. Innovation on top as an open outline because it is optional. ${activeName} is highlighted in red`}
     >
       {LAYERS.map((lines, i) => {
         const w = widths[i];

@@ -32,7 +32,7 @@ week: "02-ai-in-marketing"
 ## Segmentation Beyond Static Demographics [exercise]
 - AI-based segmentation groups customers using behavior, value, needs, responsiveness, or risk instead of relying only on age or income.
 - Useful segments are stable enough to act on, distinct enough to prioritize, and explainable enough for managers to deploy.
-- More segments are not always better; excessive granularity can raise complexity without improving decisions.
+- More segments are not always better. Excessive granularity can raise complexity without improving decisions.
 
 ## Targeting and Next-Best-Audience Decisions
 - Targeting systems estimate which audience is most likely to respond under a given objective such as reach, conversion, or retention.
@@ -42,14 +42,14 @@ week: "02-ai-in-marketing"
 ## Positioning Intelligence and Message-Market Fit
 - AI can surface which claims, benefits, or proof points resonate across segments, channels, and contexts.
 - This supports faster refinement of value propositions, creative briefs, and channel-specific narratives.
-- Positioning remains a strategic choice; models can detect patterns, but leadership must decide what the brand should stand for.
+- Positioning remains a strategic choice. Models can detect patterns, but leadership must decide what the brand should stand for.
 
 ## Module II: Personalization and Commercial Engines [no-exercise]
 - This section moves from insight generation to individual-level treatment decisions in commerce and promotion.
 - The central issue is balancing relevance, revenue, and brand coherence across millions of interactions.
 
 ## Personalization as a Managed Policy
-- Personalization is not just inserting a name into a message; it is choosing which offer, content, timing, and channel best fit a customer state.
+- Personalization is not just inserting a name into a message. It is choosing which offer, content, timing, and channel best fit a customer state.
 - Effective personalization requires rules for when not to personalize, especially when data is sparse, sensitive, or likely to overfit recent behavior.
 - Over-personalization can feel intrusive, narrow exploration, and erode trust if consumers perceive manipulation.
 - Discussion: Where should a firm draw the line between helpful relevance and surveillance-like personalization in its category?
@@ -81,7 +81,7 @@ week: "02-ai-in-marketing"
 
 ## Campaign Optimization Across Channels
 - AI can coordinate campaign timing, sequencing, audience exposure, and creative rotation across email, search, social, retail media, and direct channels.
-- Optimization works best when channel objectives are aligned; otherwise one system can improve its local metric while hurting total performance.
+- Optimization works best when channel objectives are aligned. Otherwise one system can improve its local metric while hurting total performance.
 - Cross-channel orchestration requires governance over frequency, exclusions, and diminishing returns.
 
 ## Budget Allocation, Bidding, and Pacing
@@ -123,7 +123,7 @@ week: "02-ai-in-marketing"
 ## Conversational Commerce and Service Automation
 - Conversational systems now support discovery, service triage, order updates, and guided selling across chat, voice, and messaging channels.
 - Their value comes from reducing friction while preserving a coherent brand voice and reliable escalation path.
-- Full automation is rarely the objective; the better design question is which intents can be resolved safely and which require human judgment.
+- Full automation is rarely the objective. The better design question is which intents can be resolved safely and which require human judgment.
 - Discussion: Which customer moments in your organization should remain human-led even if conversational AI becomes fast and accurate?
 
 ## Privacy, Consent, and Trust Architecture [exercise]
@@ -133,7 +133,7 @@ week: "02-ai-in-marketing"
 
 ## Manipulation, Bias, and Consumer Welfare
 - AI systems can unintentionally reinforce exclusion, price discrimination, dark patterns, or exploitative targeting of vulnerable consumers.
-- Bias in marketing is not limited to training data; it can also arise from objectives that reward short-term conversion without regard for downstream harm.
+- Bias in marketing is not limited to training data. It can also arise from objectives that reward short-term conversion without regard for downstream harm.
 - Responsible marketing requires explicit guardrails on objectives, audience exclusions, escalation, and review.
 - Discussion: Should a model be considered successful if it increases conversion by exploiting behavioral vulnerability that a human marketer would judge inappropriate?
 

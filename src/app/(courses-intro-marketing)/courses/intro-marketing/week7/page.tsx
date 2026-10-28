@@ -65,9 +65,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 07 — PRODUCT AND SERVICE STRATEGIES (THE FIRST P)
+// WEEK 07: PRODUCT AND SERVICE STRATEGIES (THE FIRST P)
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
@@ -123,7 +123,7 @@ function Lead({
   );
 }
 
-/** A sentence set as a serif statement — the line a slide lands on. */
+/** A sentence set as a serif statement: the line a slide lands on. */
 function Statement({
   children,
   className = "",
@@ -450,7 +450,7 @@ export default function Week7() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 07 · Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 07: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
           Product and Service Strategies{" "}
           <span className="text-[var(--signal)]">(The First P)</span>
@@ -627,7 +627,7 @@ export default function Week7() {
         kicker="The Concept:"
         title="The Product Life Cycle"
       >
-        {/* The definition beside the curve it defines; the stages and the
+        {/* The definition beside the curve it defines. The stages and the
             caveat side by side underneath. */}
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-10">
           <Lead className="!max-w-none">

@@ -28,33 +28,33 @@ format:
 ## The First Industrial Revolution
 
 1. Mechanization of Production 
-    – Introduction of machines to replace human and animal labor, significantly increasing productivity.
+    - Introduction of machines to replace human and animal labor, significantly increasing productivity.
 2. Steam Power 
-    – The development of the steam engine revolutionized transportation and manufacturing.
+    - The development of the steam engine revolutionized transportation and manufacturing.
 3. Factory System 
-    – Large-scale production in **centralized** factories replaced cottage industries and small workshops.
+    - Large-scale production in **centralized** factories replaced cottage industries and small workshops.
 
 ## The First Industrial Revolution
 
 4. Textile Industry Boom 
-    – The invention of machines like the spinning jenny and power loom transformed textile manufacturing.
+    - The invention of machines like the spinning jenny and power loom transformed textile manufacturing.
 5. Iron and Coal Production 
-    – Growth in ironworks and coal mining provided the raw materials for machinery and transportation.
+    - Growth in ironworks and coal mining provided the raw materials for machinery and transportation.
 6. Railroads and Canals 
-    – Improved transportation networks enabled faster movement of goods and people.
+    - Improved transportation networks enabled faster movement of goods and people.
 
 ## Impact on Society
 
 1. Urbanization 
-    – People moved to cities for factory jobs, leading to rapid urban growth.
+    - People moved to cities for factory jobs, leading to rapid urban growth.
 2. Rise of the Working Class 
-    – A new class of industrial workers emerged, often working in harsh conditions.
+    - A new class of industrial workers emerged, often working in harsh conditions.
 3. Improved Transportation 
-    – Railways and steamships facilitated faster trade and mobility.
+    - Railways and steamships facilitated faster trade and mobility.
 4. Increased Production and Trade 
-    – Widespread availability of goods improved standards of living for some.
+    - Widespread availability of goods improved standards of living for some.
 5. Environmental Effects 
-    – Increased pollution and deforestation due to industrial activity.
+    - Increased pollution and deforestation due to industrial activity.
 
 ## Question
 
@@ -108,12 +108,12 @@ format:
 
 - Key inventions
     1. Electric Light Bulb 
-        – Thomas Edison (1879) enabled **night-time work** and extended productivity.
+        - Thomas Edison (1879) enabled **night-time work** and extended productivity.
     2. Internal Combustion Engine 
-        – Powered automobiles and transformed transportation.
+        - Powered automobiles and transformed transportation.
     3. Radio Waves 
-        – Guglielmo Marconi transmitted the first wireless communication (1895).
-    4. Automobile Production Line – 
+        - Guglielmo Marconi transmitted the first wireless communication (1895).
+    4. Automobile Production Line
         Henry Ford’s innovation made cars affordable for the masses.
 
 
@@ -121,20 +121,20 @@ format:
 ## Impact on Society
 
 1. Urban Growth & Megacities 
-    – Expansion of cities, improved sanitation, and the rise of skyscrapers.
+    - Expansion of cities, improved sanitation, and the rise of skyscrapers.
 2. Rise of Consumer Culture 
-    – Increased production led to greater product variety and advertising growth.
+    - Increased production led to greater product variety and advertising growth.
 3. New Job Opportunities 
-    – The rise of industrial corporations required a larger workforce, including in business management.
+    - The rise of industrial corporations required a larger workforce, including in business management.
 
 ## Impact on Society
 
 4. Improved Living Standards 
-    – Advancements in medicine, sanitation, and food production extended life expectancy.
+    - Advancements in medicine, sanitation, and food production extended life expectancy.
 5. Worker Exploitation and Inequality 
-    – Long hours, low wages, and unsafe working conditions sparked labor movements.
+    - Long hours, low wages, and unsafe working conditions sparked labor movements.
 6. Environmental Consequences 
-    – Increased pollution from coal, steel, and chemical industries.
+    - Increased pollution from coal, steel, and chemical industries.
 
 ## Questions 
 
@@ -181,19 +181,19 @@ format:
 - Innovation replaces invention
 
 1. Personal Computers (1970s-1980s) 
-    – Enabled businesses and individuals access to computers (democratization).
+    - Enabled businesses and individuals access to computers (democratization).
 
 2. The Internet (1990s-Present) 
-    – Changed communication, commerce, and social interactions globally.
+    - Changed communication, commerce, and social interactions globally.
 
 ## Key Innovations
 
 3. Mobile Technology (2000s-Present) 
-    – Smartphones and wireless networks revolutionized accessibility.
+    - Smartphones and wireless networks revolutionized accessibility.
 4. E-Commerce (1990s-Present) 
-    – Platforms like Amazon and Alibaba transformed global trade.
+    - Platforms like Amazon and Alibaba transformed global trade.
 5. Artificial Intelligence & Machine Learning (2010s-Present) 
-    – Automation of decision-making and business processes.
+    - Automation of decision-making and business processes.
 
 
 ## Question
@@ -248,22 +248,22 @@ format:
 ## Impact on Society and Business
 
 1. Hyper-Personalized Products & Services   
-    – AI enables better customization.
+    - AI enables better customization.
 2. Smart Cities & Digital Governance    
-    – Urban management improves with IoT-enabled infrastructure.
+    - Urban management improves with IoT-enabled infrastructure.
 3. Increased Productivity & Efficiency 
-    – AI and automation reduce waste and costs.
+    - AI and automation reduce waste and costs.
 4. New Business Models 
-    – Growth of platform economies (Uber, Airbnb) and subscription-based services (Netflix, SaaS).
+    - Growth of platform economies (Uber, Airbnb) and subscription-based services (Netflix, SaaS).
 
 ## Impact on Society and Business
 
 5. Job Disruption & Reskilling Needs 
-    – AI and automation may replace millions of jobs.
+    - AI and automation may replace millions of jobs.
 6. Cybersecurity & Privacy Concerns 
-    – Increased reliance on digital tech poses risks of cyberattacks.
+    - Increased reliance on digital tech poses risks of cyberattacks.
 7. Ethical Challenges 
-    – AI bias, surveillance, and job displacement concerns.
+    - AI bias, surveillance, and job displacement concerns.
 
 ## Impact on Society and Business
 

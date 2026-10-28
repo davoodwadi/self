@@ -172,7 +172,7 @@ export type Look = {
   wear?: string;
   legs?: string;
   outfit?: Outfit;
-  /** Shoe wash; leather by default. */
+  /** Shoe wash. Leather by default. */
   shoes?: string;
 };
 
@@ -360,7 +360,7 @@ export function BrandBadge({ x, y, r = 10, seed = 900, pencil = false }: { x: nu
   );
 }
 
-/** A shopping bag hanging from a hand at (x, y); `w` is the bag's width. */
+/** A shopping bag hanging from a hand at (x, y). `w` is the bag's width. */
 export function Bag({
   x,
   y,
@@ -566,7 +566,7 @@ export function SketchArrow({
   );
 }
 
-/** A five-point star; `filled` lays an ochre wash under it (a rating, a best pick). */
+/** A five-point star. `filled` lays an ochre wash under it (a rating, a best pick). */
 export function Star({ x, y, r = 10, seed, filled = true }: { x: number; y: number; r?: number; seed: number; filled?: boolean }) {
   const pts = rp(
     Array.from({ length: 10 }, (_, i) => {
@@ -747,7 +747,7 @@ export function Cart({ x, y, s = 1, seed }: { x: number; y: number; s?: number; 
 
 /** A map pin with its tip at (x, y). */
 export function MapPin({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
-  // round head from lower left, over the top, to lower right; tip below
+  // round head from lower left, over the top, to lower right. Tip below
   const head = Array.from({ length: 13 }, (_, i) => {
     const a = ((215 - (i / 12) * 250) * Math.PI) / 180;
     return [Math.cos(a) * 17, -34 - Math.sin(a) * 17] as Pt;
@@ -766,7 +766,7 @@ export function MapPin({ x, y, s = 1, seed }: { x: number; y: number; s?: number
 
 /**
  * A seated baby, upper body only (for a high chair, a lap, a pram). (x, y) is
- * the seat point; the baby faces −x, reaching one chubby arm to `hand`.
+ * the seat point. The baby faces −x, reaching one chubby arm to `hand`.
  */
 export function Baby({
   x,
@@ -880,7 +880,7 @@ export function ShapedBottle({ x, bottom, seed }: { x: number; bottom: number; s
 
 /* -- shared objects (first drawn for Week 3) ------------------------------ */
 
-/** A running shoe in side view, toe to +x; (x, y) is the middle of the sole. */
+/** A running shoe in side view, toe to +x. (x, y) is the middle of the sole. */
 export function Shoe({ x, y, s = 1, seed, fill = SK.camel, pencil = false }: { x: number; y: number; s?: number; seed: number; fill?: string; pencil?: boolean }) {
   const upper = at(x, y, [[-26, -5], [-25, -20], [-19, -20], [-13, -15], [-8, -25], [-3, -24], [4, -16], [14, -11], [24, -9], [28, -5]], s);
   const sole = at(x, y, [[-27, -5], [28, -5], [29, 0], [26, 3], [-26, 3], [-28, -1]], s);
@@ -904,7 +904,7 @@ export function Shoe({ x, y, s = 1, seed, fill = SK.camel, pencil = false }: { x
   );
 }
 
-/** A wall screen, top-left (x, y); `children` draw on the glass. */
+/** A wall screen, top-left (x, y). `children` draw on the glass. */
 export function Screen({ x, y, w, h, seed, children }: { x: number; y: number; w: number; h: number; seed: number; children?: React.ReactNode }) {
   const body = sharp([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], true, 3);
   const glass = rp([[x + 5, y + 5], [x + w - 5, y + 5], [x + w - 5, y + h - 5], [x + 5, y + h - 5]]);
@@ -919,7 +919,7 @@ export function Screen({ x, y, w, h, seed, children }: { x: number; y: number; w
   );
 }
 
-/** A soda can; (x, y) is the base centre. */
+/** A soda can. (x, y) is the base centre. */
 export function Can1({ x, y, seed }: { x: number; y: number; seed: number }) {
   const rim = (cy: number, half: "top" | "bottom" | "all") =>
     rp(
@@ -980,7 +980,7 @@ export function Can3({ x, bottom, h = 50, seed, pencil = false }: { x: number; b
   );
 }
 
-/** A can; (x, y) is the middle of its base. `label` colours the band. */
+/** A can. (x, y) is the middle of its base. `label` colours the band. */
 export function Can4({ x, y, w = 34, h = 50, label = SK.camel, seed, bolt = false }: { x: number; y: number; w?: number; h?: number; label?: string; seed: number; bolt?: boolean }) {
   const top = y - h;
   const hw = w / 2;
@@ -1041,7 +1041,7 @@ export function Car1({ x, y, seed }: { x: number; y: number; seed: number }) {
   );
 }
 
-/** A car in side view; (x, y) is the ground under its middle, `s` its scale (160 wide at 1). */
+/** A car in side view. (x, y) is the ground under its middle, `s` its scale (160 wide at 1). */
 export function Car2({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const body = at(x, y, [[-78, -14], [-78, -32], [-70, -40], [-42, -44], [-22, -66], [28, -66], [50, -44], [72, -40], [80, -30], [80, -14]], s);
   const win1 = at(x, y, [[-34, -46], [-18, -60], [-2, -60], [-2, -46]], s);
@@ -1069,7 +1069,7 @@ export function Car2({ x, y, s = 1, seed }: { x: number; y: number; s?: number; 
   );
 }
 
-/** A car, side on; (x, y) is the middle of its wheelbase on the ground. */
+/** A car, side on. (x, y) is the middle of its wheelbase on the ground. */
 export function Car3({ x, y, s = 1, seed, fill = SK.leather }: { x: number; y: number; s?: number; seed: number; fill?: string }) {
   const body = at(x, y, [[-60, -10], [-60, -28], [-44, -32], [-26, -52], [22, -52], [40, -32], [60, -28], [62, -10]], s);
   const glass = at(x, y, [[-22, -34], [-16, -47], [16, -47], [30, -34]], s);
@@ -1092,7 +1092,7 @@ export function Car3({ x, y, s = 1, seed, fill = SK.leather }: { x: number; y: n
   );
 }
 
-/** A tall glass of cold water; (x, y) is the base centre. */
+/** A tall glass of cold water. (x, y) is the base centre. */
 export function Glass1({ x, y, seed }: { x: number; y: number; seed: number }) {
   const glass = at(x, y, [[-17, -62], [17, -62], [13, 0], [-13, 0]]);
   const water = at(x, y, [[-15.5, -42], [15.5, -42], [13, 0], [-13, 0]]);
@@ -1140,7 +1140,7 @@ export function Laptop1({ x, y, seed }: { x: number; y: number; seed: number }) 
   );
 }
 
-/** A laptop showing a search box; (x, y) is the middle of its base. */
+/** A laptop showing a search box. (x, y) is the middle of its base. */
 export function Laptop2({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const lid = sharp(at(x, y, [[-32, -8], [-30, -58], [30, -58], [32, -8]], s));
   const base = sharp(at(x, y, [[-40, 0], [-32, -8], [32, -8], [40, 0]], s));
@@ -1284,7 +1284,7 @@ export function shelf1Pos(i: number) {
 
 const SHELF1_WASH = [SK.camel, SK.earth, SK.sky, SK.tan];
 
-/** Three wooden planks of twelve small products; `lit` is washed teal (the pick). */
+/** Three wooden planks of twelve small products. `lit` is washed teal (the pick). */
 export function Shelf1({ lit, faded = false }: { lit: number; faded?: boolean }) {
   return (
     <g>
@@ -1320,7 +1320,7 @@ export function Shelf2({ x0, x1, y, gy, seed }: { x0: number; x1: number; y: num
   );
 }
 
-/** A suitcase centred on (x, y); about 90 × 64 at s = 1. */
+/** A suitcase centred on (x, y). About 90 × 64 at s = 1. */
 export function Suitcase1({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const body = sharp(at(x, y, [[-45, -30], [45, -30], [45, 32], [-45, 32]], s), true, 5 * s);
   return (
@@ -1338,7 +1338,7 @@ export function Suitcase1({ x, y, s = 1, seed }: { x: number; y: number; s?: num
   );
 }
 
-/** An upright suitcase with a tag; (x, y) is the middle of its base. */
+/** An upright suitcase with a tag. (x, y) is the middle of its base. */
 export function Suitcase2({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const body = sharp(at(x, y, [[-14, -4], [-14, -38], [14, -38], [14, -4]], s), true, 2.5);
   return (
@@ -1439,7 +1439,7 @@ export function Watch1({ x, y, s = 1, seed }: { x: number; y: number; s?: number
   );
 }
 
-/** A wristwatch standing upright; (x, y) is the foot of its strap. */
+/** A wristwatch standing upright. (x, y) is the foot of its strap. */
 export function Watch2({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const cy = y - 38 * s;
   const face = rp(blobPts(x, cy, 18 * s, 18 * s, seed, 16, 0.02));
@@ -1489,7 +1489,7 @@ export function Agent({ x, y, s = 1, seed }: { x: number; y: number; s?: number;
   );
 }
 
-/* -- the instant-coffee jar (Weeks 7–8) ----------------------------------- */
+/* -- the instant-coffee jar (Weeks 7 to 8) ----------------------------------- */
 
 /**
  * An instant-coffee jar standing on (x, bottom): glass with a dark lid, a paper
@@ -1515,7 +1515,7 @@ export function Jar({ x, bottom, w = 44, h = 64, level = 1, seed, lit = false }:
   );
 }
 
-/* -- the review card (Weeks 9–10) ---------------------------------------- */
+/* -- the review card (Weeks 9 to 10) ---------------------------------------- */
 
 /**
  * A written review: a paper card, `w` wide with its top-left at (x, y), a

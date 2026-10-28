@@ -4,7 +4,7 @@
     "slide_id": "correlation",
     "question_text": "Across 40 cafés, the correlation between the hours of live music per evening and evening sales is 0.02. A scatter plot shows sales rising up to about three hours of music and falling beyond that. What can the analyst conclude?",
     "hint": "Ask what kind of relationship r measures.",
-    "correct_answer_citation": "Week 09 · Correlation",
+    "correct_answer_citation": "Week 09: Correlation",
     "correct_answer_index": 2,
     "options": [
       {
@@ -13,7 +13,7 @@
       },
       {
         "option_text": "Live music causes sales to rise and then fall.",
-        "option_explanation": "A correlation, or a pattern in a scatter plot, does not establish causation; other causes have not been ruled out."
+        "option_explanation": "A correlation, or a pattern in a scatter plot, does not establish causation. Other causes have not been ruled out."
       },
       {
         "option_text": "The relationship is strong but not linear, so r understates it.",
@@ -93,7 +93,7 @@
       },
       {
         "id": "income",
-        "text": "Regions with more premium-brand advertising buy more premium products, and advertisers target high-income regions; income is not in the model.",
+        "text": "Regions with more premium-brand advertising buy more premium products, and advertisers target high-income regions. Income is not in the model.",
         "answer": "omitted",
         "explanation": "Income affects purchases and is correlated with advertising, so leaving it out overstates the effect of advertising."
       },
@@ -116,7 +116,7 @@
     "slide_id": "interpreting-logistic-regression",
     "question_text": "Without a loyalty discount, 20 percent of customers renew their subscription. A logistic regression gives the discount an odds ratio of 2.0, holding other variables constant. What is the predicted probability of renewal with the discount?",
     "hint": "Convert the probability to odds, apply the odds ratio, and convert back.",
-    "correct_answer_citation": "Week 09 · Interpreting Logistic Regression",
+    "correct_answer_citation": "Week 09: Interpreting Logistic Regression",
     "correct_answer_index": 1,
     "options": [
       {
@@ -125,11 +125,11 @@
       },
       {
         "option_text": "About 33 percent",
-        "option_explanation": "Correct. The odds are 0.20 / 0.80 = 0.25; doubled, they are 0.50, which corresponds to a probability of 0.50 / 1.50 ≈ 33 percent."
+        "option_explanation": "Correct. The odds are 0.20 / 0.80 = 0.25. Doubled, they are 0.50, which corresponds to a probability of 0.50 / 1.50 ≈ 33 percent."
       },
       {
         "option_text": "22 percent",
-        "option_explanation": "This adds 2 percentage points; an odds ratio multiplies the odds."
+        "option_explanation": "This adds 2 percentage points. An odds ratio multiplies the odds."
       },
       {
         "option_text": "50 percent",
@@ -256,7 +256,7 @@
     "slide_id": "estimating-how-ai-agents-weight-attributes",
     "question_text": "A conditional logit model of an AI agent's choices between laundry detergents gives a ratio of 0.40 between the cent and the whole-dollar price coefficients, with a confidence interval from 0.25 to 0.55. What does this indicate?",
     "hint": "Compare the interval with the normative value.",
-    "correct_answer_citation": "Week 09 · Estimating How AI Agents Weight Attributes",
+    "correct_answer_citation": "Week 09: Estimating How AI Agents Weight Attributes",
     "correct_answer_index": 3,
     "options": [
       {
@@ -265,7 +265,7 @@
       },
       {
         "option_text": "The agent weights cents more heavily than whole dollars.",
-        "option_explanation": "A ratio above 1 would indicate that; a ratio of 0.40 indicates the opposite."
+        "option_explanation": "A ratio above 1 would indicate that. A ratio of 0.40 indicates the opposite."
       },
       {
         "option_text": "The agent cannot calculate prices.",
@@ -306,7 +306,7 @@
         "id": "popularity",
         "text": "The popularity the agent attributes to the backpack in its reasoning trace, coded on a seven-point scale.",
         "answer": "mediator",
-        "explanation": "The intermediate variable through which the badge is expected to act; it is measured, not manipulated."
+        "explanation": "The intermediate variable through which the badge is expected to act. It is measured, not manipulated."
       },
       {
         "id": "choice",

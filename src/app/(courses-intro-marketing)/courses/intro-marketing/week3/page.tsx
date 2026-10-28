@@ -39,9 +39,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 03 — CONSUMER BEHAVIOR
+// WEEK 03: CONSUMER BEHAVIOR
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
@@ -89,7 +89,7 @@ function Lead({
   );
 }
 
-/** A sentence set as a serif statement — the line a slide lands on. */
+/** A sentence set as a serif statement: the line a slide lands on. */
 function Statement({
   children,
   className = "",
@@ -274,7 +274,7 @@ function PromptKicker() {
 
 /**
  * Text rail beside a plate. The rail comes first in the DOM (text leads its
- * plate, on phones too); `side` decides which side the plate sits on.
+ * plate, on phones too). `side` decides which side the plate sits on.
  */
 function Split({
   rail,
@@ -326,7 +326,7 @@ const STAGES = [
 ];
 
 /**
- * The five steps as a strip. On the Part 1 plate it is the whole route; on
+ * The five steps as a strip. On the Part 1 plate it is the whole route. On
  * each step slide the current step is lit and the ones behind it are inked.
  */
 function StageStrip({
@@ -450,7 +450,7 @@ export default function Week3() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 03 · Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 03: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           Consumer <span className="text-[var(--signal)]">Behavior</span>
         </Title>
@@ -512,7 +512,7 @@ export default function Week3() {
       </Slide>
 
       {/* ================================================================
-          Part 1 — The Consumer Decision-Making Process
+          Part 1: The Consumer Decision-Making Process
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         {/* Split screen: the definitions and the market on the left, the
@@ -749,7 +749,7 @@ export default function Week3() {
       </Slide>
 
       {/* ================================================================
-          Part 2 — Influences on Buying Behavior
+          Part 2: Influences on Buying Behavior
           ================================================================ */}
       <PartPlate id="part-2" n={2} title="Influences on Buying Behavior" className="!py-8">
         <div className="mt-8 w-full flow-root">
@@ -865,7 +865,7 @@ export default function Week3() {
         <Tag>Four factors</Tag>
         <Heading>Psychological Factors</Heading>
         {/* Stacked bands: the four factors as a row of tiles, the one this
-            slide defines lit; then its definition; then the drawing. */}
+            slide defines lit. Then its definition. Then the drawing. */}
         <div className="grid w-full items-end gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)] lg:gap-10">
           <Lead className="!max-w-none">
             A person&apos;s buying choices are further influenced by four major
@@ -937,7 +937,7 @@ export default function Week3() {
       </Slide>
 
       {/* ================================================================
-          Part 3 — B2C vs B2B Purchasing
+          Part 3: B2C vs B2B Purchasing
           ================================================================ */}
       <PartPlate id="part-3" n={3} title="B2C vs B2B Purchasing" layout="stacked" className="!py-8">
         <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
@@ -985,7 +985,7 @@ export default function Week3() {
           </Ruled>
           <Ruled tone="counter">
             <P>
-              Business demand is <Term tone="counter">derived demand</Term>; it
+              Business demand is <Term tone="counter">derived demand</Term>. It
               ultimately derives from the demand for consumer goods.
             </P>
           </Ruled>

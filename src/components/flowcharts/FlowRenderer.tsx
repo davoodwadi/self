@@ -40,7 +40,7 @@ interface AIFlowRendererProps {
   aiGeneratedEdges: Edge[];
   /**
    * Node style applied to nodes that do not declare their own `type`.
-   * Defaults to `"omni"` so existing decks are unaffected; the Introduction to
+   * Defaults to `"omni"` so existing decks are unaffected. The Introduction to
    * Marketing course passes `"broadsheet"` to match its editorial system.
    */
   variant?: "omni" | "broadsheet";

@@ -76,7 +76,7 @@ function Num({
 
 /**
  * A model housing in oblique projection. Closed, it is a black box with an
- * output slot; open, its front face is broken away (zig-zag) to show the two
+ * output slot. Open, its front face is broken away (zig-zag) to show the two
  * weight gears inside. (x, y) is the front face's top-left.
  */
 function Housing({ id, x, y, w, h, open = false }: { id: string; x: number; y: number; w: number; h: number; open?: boolean }) {
@@ -103,7 +103,7 @@ function Housing({ id, x, y, w, h, open = false }: { id: string; x: number; y: n
 }
 
 /* --------------------------------------------------------------------------
-   02 · From Anecdotal Prompts to Scientific Behavioral Audits
+   02. From Anecdotal Prompts to Scientific Behavioral Audits
    -------------------------------------------------------------------------- */
 
 const SLIP_PILE = [1, 3, 6, 8, 5, 3, 1];
@@ -166,7 +166,7 @@ export function AuditBench() {
 }
 
 /* --------------------------------------------------------------------------
-   03 · Why Single-Prompt Evaluations Fail
+   03. Why Single-Prompt Evaluations Fail
    -------------------------------------------------------------------------- */
 
 /** A wide, two-humped response density over 0..1 (unnormalised). */
@@ -232,7 +232,7 @@ export function OneDraw() {
 }
 
 /* --------------------------------------------------------------------------
-   04 · Part 1: The Monte-Carlo Sampling Framework for Open-Ended Decisions
+   04. Part 1: The Monte-Carlo Sampling Framework for Open-Ended Decisions
    -------------------------------------------------------------------------- */
 
 const BOARD_PILE = [1, 4, 7, 9, 6, 3, 1];
@@ -243,7 +243,7 @@ const BOARD_PATH = [1, -1, 1, 1];
  * A Galton board in a framed case: each row of pegs is one token chosen in
  * turn, so the dollar answer only exists once a draw has fallen through every
  * row. The bins below hold the answers drawn so far, piled into the output
- * distribution; one more draw, in red, is still falling.
+ * distribution. One more draw, in red, is still falling.
  */
 export function SampleDispenser() {
   const id = "w4-galton";
@@ -266,7 +266,7 @@ export function SampleDispenser() {
     <Frame
       width={440}
       height={362}
-      label="Patent drawing of a Galton board in a framed case. A hopper at the top feeds six rows of pegs, one row per token chosen in turn; seven bins at the bottom, marked 25 to 85 dollars, hold 31 sampled answers piled into a hump-shaped distribution. One more answer, in red, is partway down its path through the pegs."
+      label="Patent drawing of a Galton board in a framed case. A hopper at the top feeds six rows of pegs, one row per token chosen in turn. Seven bins at the bottom, marked 25 to 85 dollars, hold 31 sampled answers piled into a hump-shaped distribution. One more answer, in red, is partway down its path through the pegs."
     >
       <PatentDefs id={id} />
       <g transform="translate(-60 0)">
@@ -305,10 +305,10 @@ export function SampleDispenser() {
 }
 
 /* --------------------------------------------------------------------------
-   05 · Stochastic Generation and Response Entropy
+   05. Stochastic Generation and Response Entropy
    -------------------------------------------------------------------------- */
 
-/** Standard normal draws from a seeded stream (Box–Muller). */
+/** Standard normal draws from a seeded stream (Box-Muller). */
 function normals(seed: number, n: number) {
   const rnd = seeded(seed);
   return Array.from({ length: n }, () => {
@@ -410,7 +410,7 @@ export function TwoModelsOneDraw() {
           );
         })}
         <Num x={22} y={304} anchor="start" size={14}>
-          {`${n} ${n === 1 ? "draw" : "draws"} · `}
+          {`${n} ${n === 1 ? "draw" : "draws"} | `}
           <tspan fill={PAT.signal}>{`${reversed} reversed`}</tspan>
         </Num>
       </Frame>
@@ -424,7 +424,7 @@ export function TwoModelsOneDraw() {
 }
 
 /* --------------------------------------------------------------------------
-   06 · The Monte-Carlo Estimator and Its Statistical Guarantees
+   06. The Monte-Carlo Estimator and Its Statistical Guarantees
    -------------------------------------------------------------------------- */
 
 const MC = { mean: 58, sd: 15 };
@@ -481,7 +481,7 @@ export function EstimatorConverges() {
       <Frame
         width={560}
         height={378}
-        label={`Patent drawing of the Monte-Carlo estimator with K = ${K} responses per audit. Thirty repeated audits' sample means are stacked as dots over a dollar scale from 28 to 88 around the true expected value of $${MC.mean}, under a normal sampling distribution; the 95% confidence interval, in red, is plus or minus $${half.toFixed(2)}. A small chart beside it plots the standard error against K, falling steeply and then flattening, with the current K marked: standard error $${se.toFixed(2)}.`}
+        label={`Patent drawing of the Monte-Carlo estimator with K = ${K} responses per audit. Thirty repeated audits' sample means are stacked as dots over a dollar scale from 28 to 88 around the true expected value of $${MC.mean}, under a normal sampling distribution. The 95% confidence interval, in red, is plus or minus $${half.toFixed(2)}. A small chart beside it plots the standard error against K, falling steeply and then flattening, with the current K marked: standard error $${se.toFixed(2)}.`}
       >
         <PatentDefs id={id} />
         <path d={`M${curve.join("L")}`} fill="none" {...hair} />
@@ -527,7 +527,7 @@ export function EstimatorConverges() {
 }
 
 /* --------------------------------------------------------------------------
-   07 · Behavioral Validity Metrics: CSVR, APD, and Coefficient of Variation
+   07. Behavioral Validity Metrics: CSVR, APD, and Coefficient of Variation
    -------------------------------------------------------------------------- */
 
 const LIST_PRICE = 55;
@@ -588,7 +588,7 @@ export function ValidityMetrics() {
       <Frame
         width={800}
         height={196}
-        label={`Patent drawing of Model ${m}'s 100 sampled willingness-to-pay answers stacked over a dollar ruler from 0 to 150, with the valid range from $${VALID[0]} to $${VALID[1]} stippled and the list price tag at $${LIST_PRICE}; ${a.low + a.high} answers fall off the scale. Readout: CSVR ${metrics[0].text}${metrics[0].ok ? "" : " (fails)"}, APD ${metrics[1].text}${metrics[1].ok ? "" : " (fails)"}, CV ${metrics[2].text}${metrics[2].ok ? "" : " (fails)"}.`}
+        label={`Patent drawing of Model ${m}'s 100 sampled willingness-to-pay answers stacked over a dollar ruler from 0 to 150, with the valid range from $${VALID[0]} to $${VALID[1]} stippled and the list price tag at $${LIST_PRICE}. ${a.low + a.high} answers fall off the scale. Readout: CSVR ${metrics[0].text}${metrics[0].ok ? "" : " (fails)"}, APD ${metrics[1].text}${metrics[1].ok ? "" : " (fails)"}, CV ${metrics[2].text}${metrics[2].ok ? "" : " (fails)"}.`}
       >
         <PatentDefs id={id} />
         {/* valid range */}
@@ -663,10 +663,10 @@ export function ValidityMetrics() {
 }
 
 /* --------------------------------------------------------------------------
-   08 · Anchoring Bias and Generational Regression in LLMs
+   08. Anchoring Bias and Generational Regression in LLMs
    -------------------------------------------------------------------------- */
 
-/** A graduated cylinder filled to `p` (0–1) of its height `h`; the fill is dense stipple. */
+/** A graduated cylinder filled to `p` (0 to 1) of its height `h`. The fill is dense stipple. */
 function Cylinder({ id, cx, base, h, p, w = 34 }: { id: string; cx: number; base: number; h: number; p: number; w?: number }) {
   const rx = w / 2;
   const top = base - h;
@@ -687,7 +687,7 @@ function Cylinder({ id, cx, base, h, p, w = 34 }: { id: string; cx: number; base
 /**
  * Wadi & Fredette (2025), three findings. Anchoring: mean willingness to pay
  * shifted +$31.62 by a high anchor and −$15.70 by a low one, drawn as bars
- * either side of the no-anchor line. Anchor–response correlation: the
+ * either side of the no-anchor line. Anchor-response correlation: the
  * models' 0.697 against the human benchmark's 0.388, as two graduated
  * cylinders over a model housing and a person. Generational regression:
  * Llama 3 70B's absolute price deviation 89% above Llama 2 70B's, in red.
@@ -771,7 +771,7 @@ export function AnchoringFindings() {
 }
 
 /* --------------------------------------------------------------------------
-   09 · Part 2: Exact Token-Level Probability Distributions for Rating Scales
+   09. Part 2: Exact Token-Level Probability Distributions for Rating Scales
    -------------------------------------------------------------------------- */
 
 const LIKERT_PMF = [0.03, 0.05, 0.08, 0.14, 0.27, 0.29, 0.14];
@@ -823,11 +823,11 @@ export function LikertLogprobs() {
 }
 
 /* --------------------------------------------------------------------------
-   10 · Why Text Sampling Is Redundant When Token Probabilities Are Observable
+   10. Why Text Sampling Is Redundant When Token Probabilities Are Observable
    -------------------------------------------------------------------------- */
 
 /**
- * Two vessels. Left: a human population as an opaque urn; its attitudes
+ * Two vessels. Left: a human population as an opaque urn. Its attitudes
  * cannot be seen, so a few respondents' answers are drawn out of the mouth.
  * Right: the language model as a glass case of seven graduated tubes, one per
  * scale point, each filled to the model's exact probability for that digit,
@@ -892,7 +892,7 @@ export function SampleVsRead() {
 }
 
 /* --------------------------------------------------------------------------
-   11 · Why Shannon Entropy Fails on Ordinal Rating Scales
+   11. Why Shannon Entropy Fails on Ordinal Rating Scales
    -------------------------------------------------------------------------- */
 
 type Split = "17" | "26" | "35" | "34" | "4";
@@ -905,17 +905,17 @@ const SPLITS: Record<Split, number[]> = {
 };
 const splitPmf = (s: Split) => [1, 2, 3, 4, 5, 6, 7].map((k) => (SPLITS[s].includes(k) ? 1 / SPLITS[s].length : 0));
 const shannon = (p: number[]) => -p.reduce((t, q) => (q > 0 ? t + q * Math.log2(q) : t), 0);
-/** Tastle & Wierman (2007) consensus on a 1–7 scale. */
+/** Tastle & Wierman (2007) consensus on a 1 to 7 scale. */
 const consensus = (p: number[]) => {
   const mu = p.reduce((t, q, i) => t + q * (i + 1), 0);
   return 1 + p.reduce((t, q, i) => (q > 0 ? t + q * Math.log2(1 - Math.abs(i + 1 - mu) / 6) : t), 0);
 };
 
 /**
- * The model's probability split across the 1–7 scale, chosen below, as two
+ * The model's probability split across the 1 to 7 scale, chosen below, as two
  * columns (or one). Under it, two linear gauges: Shannon entropy (bits), in
  * red, which reads 1 bit for every two-way split however far apart the
- * points are; and ordinal consensus, which falls to 0 as the split moves to
+ * points are. And ordinal consensus, which falls to 0 as the split moves to
  * the extremes.
  */
 export function EntropyVsConsensus() {
@@ -937,7 +937,7 @@ export function EntropyVsConsensus() {
       <Frame
         width={560}
         height={352}
-        label={`Patent drawing of a model's probability over a 1 to 7 rating scale, split equally on ${SPLITS[s].join(" and ")}. Two gauges below: Shannon entropy reads ${H.toFixed(2)} bits, in red; ordinal consensus reads ${C.toFixed(2)}.`}
+        label={`Patent drawing of a model's probability over a 1 to 7 rating scale, split equally on ${SPLITS[s].join(" and ")}. Two gauges below: Shannon entropy reads ${H.toFixed(2)} bits, in red. Ordinal consensus reads ${C.toFixed(2)}.`}
       >
         <PatentDefs id={id} />
         {p.map((q, i) =>
@@ -1001,7 +1001,7 @@ export function EntropyVsConsensus() {
 }
 
 /* --------------------------------------------------------------------------
-   12 · The Three-Layer Exact-PMF Pipeline
+   12. The Three-Layer Exact-PMF Pipeline
    -------------------------------------------------------------------------- */
 
 /** Discrete convolution of two PMFs. */
@@ -1121,7 +1121,7 @@ export function ThreeLayerExploded() {
 }
 
 /* --------------------------------------------------------------------------
-   13 · Discussion: Sampling Versus Exact Probabilities
+   13. Discussion: Sampling Versus Exact Probabilities
    -------------------------------------------------------------------------- */
 
 /**
@@ -1171,10 +1171,10 @@ export function TwoInterfaces() {
 }
 
 /* --------------------------------------------------------------------------
-   14 · Part 3: Distributional ANOVA and Hoeffding Decomposition
+   14. Part 3: Distributional ANOVA and Hoeffding Decomposition
    -------------------------------------------------------------------------- */
 
-/** Seventeen item PMFs over 1–7, each a peaked distribution around its own centre. */
+/** Seventeen item PMFs over 1 to 7, each a peaked distribution around its own centre. */
 const SCALE_ITEMS = (() => {
   const rnd = seeded(71);
   return Array.from({ length: 17 }, () => {
@@ -1237,7 +1237,7 @@ export function ItemStack() {
 }
 
 /* --------------------------------------------------------------------------
-   15 · Convolving Item Distributions Into a Composite Construct Score
+   15. Convolving Item Distributions Into a Composite Construct Score
    -------------------------------------------------------------------------- */
 
 /**
@@ -1305,7 +1305,7 @@ export function ConvolutionBuild() {
 }
 
 /* --------------------------------------------------------------------------
-   16 · Hoeffding Decomposition of Main Effects and Interactions
+   16. Hoeffding Decomposition of Main Effects and Interactions
    -------------------------------------------------------------------------- */
 
 /**
@@ -1393,7 +1393,7 @@ export function HoeffdingStack() {
 }
 
 /* --------------------------------------------------------------------------
-   17 · Four Distributional Inference Metrics
+   17. Four Distributional Inference Metrics
    -------------------------------------------------------------------------- */
 
 /**
@@ -1497,7 +1497,7 @@ export function EffectInstrument() {
 }
 
 /* --------------------------------------------------------------------------
-   18 · Part 4: Designing Controlled Factorial Choice and Rating Experiments
+   18. Part 4: Designing Controlled Factorial Choice and Rating Experiments
    -------------------------------------------------------------------------- */
 
 /** A lever standing in a slot on a top face: pivot (px, py), tilted `deg` from upright (positive = right). */
@@ -1582,7 +1582,7 @@ export function WeldedLevers() {
 }
 
 /* --------------------------------------------------------------------------
-   19 · Why Isolated Vignettes Cannot Isolate Causes
+   19. Why Isolated Vignettes Cannot Isolate Causes
    -------------------------------------------------------------------------- */
 
 /** A handwritten-story card standing upright: folded corner, two lines of story, then its three fields. */
@@ -1630,7 +1630,7 @@ export function ConfoundedVignettes() {
     <Frame
       width={800}
       height={210}
-      label="Patent drawing of two story vignettes side by side: John, software engineer, Boston; and Maria, nurse, Miami. A dial under each card reads the model's response, the two needles at different angles. Between the cards, four attributes in red, gender, ethnicity, occupation and city, are each led to the field that carries it on both cards: all four differ at once."
+      label="Patent drawing of two story vignettes side by side: John, software engineer, Boston. And Maria, nurse, Miami. A dial under each card reads the model's response, the two needles at different angles. Between the cards, four attributes in red, gender, ethnicity, occupation and city, are each led to the field that carries it on both cards: all four differ at once."
     >
       <VignetteCard x={lx} y={top} name="John" job="Software engineer" city="Boston" />
       <VignetteCard x={rx} y={top} name="Maria" job="Nurse" city="Miami" />
@@ -1650,7 +1650,7 @@ export function ConfoundedVignettes() {
 }
 
 /* --------------------------------------------------------------------------
-   20 · Fully Crossed Factorial Designs and Context Isolation
+   20. Fully Crossed Factorial Designs and Context Isolation
    -------------------------------------------------------------------------- */
 
 /**
@@ -1749,7 +1749,7 @@ export function CrossedGrid() {
 }
 
 /* --------------------------------------------------------------------------
-   21 · Controlling Prompt Sensitivity, Order Effects, and Framing
+   21. Controlling Prompt Sensitivity, Order Effects, and Framing
    -------------------------------------------------------------------------- */
 
 /** A small product glyph for list rows: one shape per product. */
@@ -1891,7 +1891,7 @@ export function FourControls({ kind }: { kind: "template" | "polarity" | "positi
 }
 
 /* --------------------------------------------------------------------------
-   22 · Part 5: Enterprise Pre-Deployment and Post-Deployment Auditing Workflows
+   22. Part 5: Enterprise Pre-Deployment and Post-Deployment Auditing Workflows
    -------------------------------------------------------------------------- */
 
 /** A barrier gate: a post with a striped boom, raised or lowered across the track to its left. */
@@ -1940,7 +1940,7 @@ function ModelCar({ id, x, ground, v }: { id: string; x: number; ground: number;
 
 /**
  * The model lifecycle as a track in side elevation. Version 1 has passed the
- * first audit gate (boom raised) and runs past monitoring dials; version 2
+ * first audit gate (boom raised) and runs past monitoring dials. Version 2
  * waits at the next gate, its boom lowered. Each gate is red: the audit
  * recurs with every version.
  */
@@ -1975,7 +1975,7 @@ export function LifecycleGates() {
 }
 
 /* --------------------------------------------------------------------------
-   23 · Pre-Deployment Red-Teaming Versus Behavioral Auditing
+   23. Pre-Deployment Red-Teaming Versus Behavioral Auditing
    -------------------------------------------------------------------------- */
 
 /** A probe: a slim tool with a handle, its tip at (tx, ty), coming in along (dx, dy). */
@@ -2004,7 +2004,7 @@ function Probe({ tx, ty, dx, dy, len = 92 }: { tx: number; ty: number; dx: numbe
 
 /**
  * Red-teaming: a model housing probed at single points by three tools from
- * different sides; two meet a sound surface, the third finds a seam and the
+ * different sides. Two meet a sound surface, the third finds a seam and the
  * crack it opens is red. Behavioral auditing: a factorial grid of routine
  * requests from three customer segments, each row feeding the housing, and
  * the housing's answers measured as one distribution per segment.
@@ -2018,7 +2018,7 @@ export function ProbeVsGrid({ kind }: { kind: "probe" | "grid" }) {
       <Frame
         width={480}
         height={204}
-        label="Patent drawing of adversarial red-teaming: a model housing probed at single points by three slim tools from the left, top and right. Two tips rest on a sound surface; the third, coming from below, has opened a crack in the front face, drawn in red."
+        label="Patent drawing of adversarial red-teaming: a model housing probed at single points by three slim tools from the left, top and right. Two tips rest on a sound surface. The third, coming from below, has opened a crack in the front face, drawn in red."
       >
         <PatentDefs id={id} />
         <Housing id={id} x={hx} y={hy} w={130} h={104} />
@@ -2046,7 +2046,7 @@ export function ProbeVsGrid({ kind }: { kind: "probe" | "grid" }) {
     <Frame
       width={480}
       height={196}
-      label="Patent drawing of behavioral auditing: three customer segments, each a person figure with a row of eight routine request sheets, feed a closed model housing; on its right, the answers are measured as one distribution per segment, with each segment's mean marked."
+      label="Patent drawing of behavioral auditing: three customer segments, each a person figure with a row of eight routine request sheets, feed a closed model housing. On its right, the answers are measured as one distribution per segment, with each segment's mean marked."
     >
       <PatentDefs id={id} />
       {segs.map((sg, r) => {
@@ -2074,13 +2074,13 @@ export function ProbeVsGrid({ kind }: { kind: "probe" | "grid" }) {
 }
 
 /* --------------------------------------------------------------------------
-   24 · Six Steps of an Enterprise Behavioral Audit
+   24. Six Steps of an Enterprise Behavioral Audit
    -------------------------------------------------------------------------- */
 
 /**
  * The model dossier lying open, six numbered index tabs along its far edge,
- * one per step. Its page holds hairline entries and a red RE-TEST imprint;
- * the stamp that made it stands beside the dossier.
+ * one per step. Its page holds hairline entries and a red RE-TEST imprint.
+ * The stamp that made it stands beside the dossier.
  */
 export function AuditDossier() {
   const id = "w4-dossier";
@@ -2095,7 +2095,7 @@ export function AuditDossier() {
     <Frame
       width={360}
       height={180}
-      label="Patent drawing of a model dossier lying open, with six numbered index tabs, 1 to 6, along its far edge. Its page carries hairline entries and a red RE-TEST stamp imprint; the stamp that made it stands on the table beside the dossier."
+      label="Patent drawing of a model dossier lying open, with six numbered index tabs, 1 to 6, along its far edge. Its page carries hairline entries and a red RE-TEST stamp imprint. The stamp that made it stands on the table beside the dossier."
     >
       <PatentDefs id={id} />
       {/* index tabs, behind the page */}
@@ -2135,7 +2135,7 @@ export function AuditDossier() {
 }
 
 /* --------------------------------------------------------------------------
-   25 · Continuous Post-Deployment Drift Monitoring and Version Pinning
+   25. Continuous Post-Deployment Drift Monitoring and Version Pinning
    -------------------------------------------------------------------------- */
 
 /**
@@ -2209,12 +2209,12 @@ export function PinnedVsLatest() {
 }
 
 /* --------------------------------------------------------------------------
-   26 · Discussion: The Model Upgrade Regression
+   26. Discussion: The Model Upgrade Regression
    -------------------------------------------------------------------------- */
 
 /**
  * The proposed switch. Last year's 30-billion-parameter model in service on
- * the left; the larger 70-billion-parameter model waits on the right behind
+ * the left. The larger 70-billion-parameter model waits on the right behind
  * the release gate, its red boom lowered.
  */
 export function UpgradeGate() {

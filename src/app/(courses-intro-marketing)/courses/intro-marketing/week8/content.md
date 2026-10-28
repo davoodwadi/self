@@ -81,7 +81,7 @@ week: week8
 - Dynamic pricing changes the price of the same product over time, such as ride fares that rise when demand is high.
 - Personalized pricing offers different customers different prices based on data about them, which raises questions of fairness and can damage trust when customers find out.
 - On the buying side, AI agents can now compare prices on a consumer's behalf.
-- In one study, one coffee cost $4.99 for 10 ounces and another cost $5.00 for 11 ounces; the $5.00 coffee was cheaper per ounce (Wadi & Ma, 2026b).
+- In one study, one coffee cost $4.99 for 10 ounces and another cost $5.00 for 11 ounces. The $5.00 coffee was cheaper per ounce (Wadi & Ma, 2026b).
 - When looking up details had a cost and the goal was vague, AI agents often skipped the package size and chose the $4.99 coffee, but with a specific goal they compared price per ounce and chose better (Wadi & Ma, 2026b).
 - Competition-based pricing must therefore consider how competing offers look both to consumers and to the AI agents that compare them.
 

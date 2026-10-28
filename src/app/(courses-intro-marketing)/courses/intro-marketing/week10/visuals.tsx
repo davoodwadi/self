@@ -1,23 +1,23 @@
 /* ==========================================================================
-   Week 10 — figures
+   Week 10: figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea. The week is about sending one
    message through many tools, so a fixed cast of five glyphs stands for the
-   five tools on every plate — a megaphone is advertising, a newspaper public
+   five tools on every plate, a megaphone is advertising, a newspaper public
    relations, a coupon sales promotion, two people face to face personal
-   selling, a phone direct and digital marketing — and a small seal (a ring
+   selling, a phone direct and digital marketing, and a small seal (a ring
    with a diamond) stands for the brand message itself. When the seal looks
-   the same everywhere, the message is consistent; when the shapes differ,
+   the same everywhere, the message is consistent. When the shapes differ,
    the message is in conflict.
 
    Conventions carried over from earlier weeks:
-     · viewBox width 800 (400 for column plates), flat fills, hairline rules,
+     - viewBox width 800 (400 for column plates), flat fills, hairline rules,
        no shadows or gradients
-     · SIGNAL marks the operative case (the tool's strength, the consistent
-       message, the step in focus); COUNTER the limit, the conflict or the
-       competitor; INK the neutral case
-     · every label reuses words from the slide the plate sits on
-     · integer coordinates only, so server and client render the same markup
+     - SIGNAL marks the operative case (the tool's strength, the consistent
+       message, the step in focus). COUNTER the limit, the conflict or the
+       competitor. INK the neutral case
+     - every label reuses words from the slide the plate sits on
+     - integer coordinates only, so server and client render the same markup
    ========================================================================== */
 
 import React from "react";
@@ -160,7 +160,7 @@ export function EngageRelate() {
     <Frame
       width={400}
       height={268}
-      label="Three rows, one after another. In each a brand seal on the left and a consumer on the right. In the first row they are far apart with a thin dashed link; in the last they stand close with a thick two-way link."
+      label="Three rows, one after another. In each a brand seal on the left and a consumer on the right. In the first row they are far apart with a thin dashed link. In the last they stand close with a thick two-way link."
     >
       {rows.map((r, i) => {
         const left = 200 - r.gap / 2;
@@ -241,7 +241,7 @@ export function CoreOfComms() {
 }
 
 /* ==========================================================================
-   ELEMENTS OF THE PROMOTION MIX — hub and spoke
+   ELEMENTS OF THE PROMOTION MIX: hub and spoke
    ========================================================================== */
 
 export function MessageHub() {
@@ -533,7 +533,7 @@ export function Underused() {
   return (
     <Frame
       height={180}
-      label="Public relations, shown by a newspaper, beside one long bar labelled strong potential. Only a short stretch at the start of the bar is filled; the long remainder is empty and marked underused."
+      label="Public relations, shown by a newspaper, beside one long bar labelled strong potential. Only a short stretch at the start of the bar is filled. The long remainder is empty and marked underused."
     >
       <Tool kind="pr" x={60} y={86} k={1.25} tone={SIGNAL} />
       <Key x={110} y={48} fill={INK} size={10.5}>
@@ -638,7 +638,7 @@ export function AttentionIncentive() {
   );
 }
 
-/** Buyers before the deadline get a gift; buyers after it do not. */
+/** Buyers before the deadline get a gift. Buyers after it do not. */
 export function QuickResponse() {
   const early = [56, 110, 164];
   const late = [296, 350];
@@ -675,7 +675,7 @@ export function QuickResponse() {
   );
 }
 
-/** Sales jump during the promotion and fall back; preference stays flat. */
+/** Sales jump during the promotion and fall back. Preference stays flat. */
 export function ShortLived() {
   return (
     <Frame
@@ -791,7 +791,7 @@ export function Commitment() {
   );
 }
 
-/** Five coin stacks, one per tool; personal selling towers over the rest. */
+/** Five coin stacks, one per tool. Personal selling towers over the rest. */
 export function MostExpensive() {
   const xs = [48, 124, 200, 276, 352];
   return (
@@ -954,7 +954,7 @@ export function Bullseye() {
 }
 
 /* ==========================================================================
-   DISCUSSION — selecting promotional tools
+   DISCUSSION: selecting promotional tools
    ========================================================================== */
 
 /** A budget on a balance between mass advertising and personal selling. */
@@ -962,7 +962,7 @@ export function BudgetScale() {
   return (
     <Frame
       height={300}
-      label="A balance. On its left pan a megaphone, mass advertising; on its right pan two people, personal selling. On top of the beam a stack of coins, the budget, with a question mark above it."
+      label="A balance. On its left pan a megaphone, mass advertising. On its right pan two people, personal selling. On top of the beam a stack of coins, the budget, with a question mark above it."
     >
       <Key x={400} y={36} anchor="middle" fill={INK} size={10.5}>
         THE BUDGET
@@ -1085,7 +1085,7 @@ export function ConfusedImage() {
   );
 }
 
-/** Media broken into many pieces; the route to the consumer winds through them. */
+/** Media broken into many pieces. The route to the consumer winds through them. */
 export function Fragmented() {
   const cells = [
     { x: 30, y: 44, kind: "ad" as const },
@@ -1234,7 +1234,7 @@ export function Coordinated() {
   );
 }
 
-/** Clear, consistent, compelling — one tile each. */
+/** Clear, consistent, compelling: one tile each. */
 export function ClearConsistentCompelling() {
   const corner = (x: number, y: number, sx: number, sy: number) =>
     `M${x} ${y + sy * 14}V${y}H${x + sx * 14}`;
@@ -1322,7 +1322,7 @@ export function Disconnect() {
   );
 }
 
-/** Store, billboard, app, package, salesperson — the same seal on each. */
+/** Store, billboard, app, package, salesperson: the same seal on each. */
 export function Touchpoints() {
   return (
     <Frame
@@ -1360,7 +1360,7 @@ export function Touchpoints() {
 }
 
 /* ==========================================================================
-   STEPS IN DEVELOPING EFFECTIVE COMMUNICATION — cascading flow
+   STEPS IN DEVELOPING EFFECTIVE COMMUNICATION: cascading flow
    ========================================================================== */
 
 export const STEPS = [
@@ -1605,7 +1605,7 @@ export function ThreeAppeals() {
   );
 }
 
-/** One message states its conclusion; the other leaves it to the listener. */
+/** One message states its conclusion. The other leaves it to the listener. */
 export function ConcludeOrLeave() {
   return (
     <Frame
@@ -1683,7 +1683,7 @@ export function AdFormat() {
 }
 
 /* ==========================================================================
-   SETTING THE PROMOTIONAL BUDGET — four methods, one plate each
+   SETTING THE PROMOTIONAL BUDGET: four methods, one plate each
    ========================================================================== */
 
 /** What is left once everything else is paid for. */
@@ -1692,7 +1692,7 @@ export function Affordable() {
     <Frame
       width={400}
       height={176}
-      label="One bar of company funds. Most of it goes to everything else; only the small piece left over at the end goes to promotion."
+      label="One bar of company funds. Most of it goes to everything else. Only the small piece left over at the end goes to promotion."
     >
       <Key x={30} y={44} fill={INK} size={9.5}>
         WHAT THE COMPANY CAN AFFORD
@@ -1951,7 +1951,7 @@ export function Roi() {
   );
 }
 
-/** An interviewer asks; the audience member pictures the message. */
+/** An interviewer asks. The audience member pictures the message. */
 export function Remember() {
   return (
     <Frame
@@ -1978,7 +1978,7 @@ export function Remember() {
   );
 }
 
-/** A tally of times seen; a checklist of points recalled. */
+/** A tally of times seen. A checklist of points recalled. */
 export function SeenRecall() {
   const tally = (x0: number) =>
     `M${x0} 116V156M${x0 + 10} 116V156M${x0 + 20} 116V156M${x0 + 30} 116V156M${x0 - 6} 150L${x0 + 36} 122`;
@@ -2016,7 +2016,7 @@ export function SeenRecall() {
   );
 }
 
-/** Sales before and after the campaign; market share before and after. */
+/** Sales before and after the campaign. Market share before and after. */
 export function SalesShare() {
   const heights = [60, 64, 58, 62, 92, 104, 112, 110];
   const donut = (cx: number, p: number) => {
@@ -2078,7 +2078,7 @@ export function SalesShare() {
 }
 
 /* ==========================================================================
-   DISCUSSION — budgeting strategies
+   DISCUSSION: budgeting strategies
    ========================================================================== */
 
 /** A fixed share of small first-year sales leaves a tiny budget. */
@@ -2123,7 +2123,7 @@ export function StartupSlice() {
 }
 
 /* ==========================================================================
-   CONCLUSION — small glyphs
+   CONCLUSION: small glyphs
    ========================================================================== */
 
 export function GlyphMix() {

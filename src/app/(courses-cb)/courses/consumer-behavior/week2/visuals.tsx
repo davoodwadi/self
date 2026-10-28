@@ -1,19 +1,19 @@
 /* ==========================================================================
-   Consumer Behavior · Week 02 — plates (Editorial Sketch)
+   Consumer Behavior | Week 02: plates (Editorial Sketch)
    --------------------------------------------------------------------------
    Perception and sensory marketing, drawn in ink and watercolour with the
    shared kit in ../_visuals (see ../CLAUDE.md for the style rules).
 
    Fixed cast for this week:
-     · SenseGlyph: the five sense organs, always the same drawing: an eye
+     - SenseGlyph: the five sense organs, always the same drawing: an eye
        (sight), an ear (sound), a nose (smell), an open hand (touch) and lips
        (taste).
-     · Person: every human (the shared fashion figure).
-     · Heart: a feeling. BrandBadge: the brand.
-     · Agent: the AI agent (shared: a phone with the AI sparkle). It
+     - Person: every human (the shared fashion figure).
+     - Heart: a feeling. BrandBadge: the brand.
+     - Agent: the AI agent (shared: a phone with the AI sparkle). It
        perceives products only as data sheets and results pages.
    Teal is the one thing that gets through (noticed, detected, chosen) on a
-   plate; pencil is only for something absent (the old, bigger pack, the
+   plate. Pencil is only for something absent (the old, bigger pack, the
    details missing from a product's data sheet).
    ========================================================================== */
 
@@ -129,7 +129,7 @@ export function SenseGlyph({ kind, x, y, s = 1, seed }: { kind: Sense; x: number
 /* -- small objects ------------------------------------------------------------ */
 
 /* ==========================================================================
-   TITLE · the same cup, before and after the filters
+   TITLE | the same cup, before and after the filters
    ========================================================================== */
 
 export function Filters() {
@@ -411,7 +411,7 @@ export function SameAdTwoImpressions() {
       id="sk-same-ad"
       width={400}
       height={300}
-      label="One billboard advertisement in the middle, showing a product box with the brand badge. Two people look up at it from either side. One thinks of a whole heart; the other thinks of a broken heart."
+      label="One billboard advertisement in the middle, showing a product box with the brand badge. Two people look up at it from either side. One thinks of a whole heart. The other thinks of a broken heart."
     >
       <Wash seed={800} fill={SK.stone} opacity={0.4} dx={0} dy={0} pts={blobPts(200, 170, 194, 128, 800, 16, 0.1)} />
       <Ground x0={30} x1={370} y={g} seed={805} />
@@ -509,18 +509,18 @@ export function PerceptionFunnel() {
 }
 
 /* ==========================================================================
-   SENSORY MARKETING · one small scene per sense (all 300 × 220, ground 196)
+   SENSORY MARKETING | one small scene per sense (all 300 × 220, ground 196)
    ========================================================================== */
 
 const VG = 196;
 
 
-/** Sight: plain packs on a shelf; one is picked out by its colour. */
+/** Sight: plain packs on a shelf. One is picked out by its colour. */
 export function SightVignette() {
   const xs = [118, 156, 194, 232, 270];
   const lit = 3;
   return (
-    <SketchFrame id="sk-sight" width={300} height={220} label="An eye on the left looks along a shelf of five packs. Four are plain cream; the eye's line of sight lands on the one teal pack with the brand badge.">
+    <SketchFrame id="sk-sight" width={300} height={220} label="An eye on the left looks along a shelf of five packs. Four are plain cream. The eye's line of sight lands on the one teal pack with the brand badge.">
       <Backwash cx={156} cy={122} rx={136} ry={90} seed={1200} />
       <SenseGlyph kind="sight" x={42} y={82} s={1.3} seed={1205} />
       {xs.map((x, i) => (
@@ -567,7 +567,7 @@ export function SoundVignette() {
 
 /** Smell: the scent goes straight in, to the limbic system and a feeling. */
 export function SmellVignette() {
-  // a head in profile, facing −x: forehead, brow, nose, lips, chin, neck; then the back of the skull
+  // a head in profile, facing −x: forehead, brow, nose, lips, chin, neck. Then the back of the skull
   const face: Pt[] = rp([
     [204, 38], [182, 52], [174, 72], [172, 84], [160, 100], [150, 110], [160, 116], [158, 124],
     [164, 128], [159, 134], [166, 146], [182, 158], [194, 162], [196, 200],
@@ -650,7 +650,7 @@ function Bar({ x, base, h, w, seed, lit = false }: { x: number; base: number; h:
   );
 }
 
-/** Eight stimuli of rising strength; only those above the line are detected. */
+/** Eight stimuli of rising strength. Only those above the line are detected. */
 export function AbsoluteThreshold() {
   const base = 206;
   const line = 124;
@@ -661,7 +661,7 @@ export function AbsoluteThreshold() {
       id="sk-absolute"
       width={400}
       height={262}
-      label="Eight bars of stimulation rising in height from left to right. A line across them is the absolute threshold. The four bars that stop below the line are left cream, marked not detected; the four that cross it are washed teal, marked detected."
+      label="Eight bars of stimulation rising in height from left to right. A line across them is the absolute threshold. The four bars that stop below the line are left cream, marked not detected. The four that cross it are washed teal, marked detected."
     >
       <Backwash cx={210} cy={130} rx={196} ry={124} seed={1800} />
       <SketchArrow pts={[[48, base], [48, 34]]} seed={1805} width={1.1} head={7} />
@@ -753,7 +753,7 @@ export function JndLadder() {
       id="sk-jnd"
       width={400}
       height={262}
-      label="Four rows, each comparing two bars. The top bar of each pair is always the same length; the bottom bar is longer by a small piece that grows from row to row. The first two rows are marked same; the last two are marked different. The piece in the first row marked different is washed teal and bracketed as the JND."
+      label="Four rows, each comparing two bars. The top bar of each pair is always the same length. The bottom bar is longer by a small piece that grows from row to row. The first two rows are marked same. The last two are marked different. The piece in the first row marked different is washed teal and bracketed as the JND."
     >
       <Backwash cx={200} cy={132} rx={194} ry={122} seed={2000} />
       {diffs.map((d, i) => {
@@ -905,7 +905,7 @@ export function LaptopSliver() {
   );
 }
 
-/** The JND on a meter: past the mark is noticed (teal); the pointer sits at `at`. */
+/** The JND on a meter: past the mark is noticed (teal). The pointer sits at `at`. */
 function JndMeter({ y, at: px, seed }: { y: number; at: number; seed: number }) {
   const track = sharp([[40, y], [360, y], [360, y + 10], [40, y + 10]], true, 2);
   return (
@@ -922,7 +922,7 @@ function JndMeter({ y, at: px, seed }: { y: number; at: number; seed: number }) 
   );
 }
 
-/** Staying below: the pack shrinks inside its old outline; the price creeps up. */
+/** Staying below: the pack shrinks inside its old outline. The price creeps up. */
 export function StayBelow() {
   const old = sharp([[58, 30], [128, 30], [128, 160], [58, 160]], true, 2);
   const now = sharp([[66, 46], [120, 46], [120, 160], [66, 160]], true, 2);
@@ -1315,7 +1315,7 @@ export function Similarity() {
 
 /** Figure-ground: a dark vase, or two pale faces looking at each other. */
 export function FigureGround() {
-  // the right-hand profile (a face looking left); the left side mirrors it
+  // the right-hand profile (a face looking left). The left side mirrors it
   const edge: Pt[] = [
     [70, 20], [64, 50], [56, 80], [62, 94], [22, 120], [40, 130], [32, 142],
     [42, 152], [32, 162], [50, 178], [36, 196], [60, 214], [70, 230],
@@ -1343,7 +1343,7 @@ export function FigureGround() {
    SEMIOTICS
    ========================================================================== */
 
-/** A bald eagle, wings spread wide, head turned in profile; (x, y) is its body centre. */
+/** A bald eagle, wings spread wide, head turned in profile. (x, y) is its body centre. */
 function Eagle({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const wingR: Pt[] = [[6, -10], [30, -22], [56, -28], [78, -26], [90, -18], [82, -14], [90, -9], [80, -6], [86, -1], [74, 0], [78, 5], [62, 4], [40, 6], [12, 10]];
   const wingL: Pt[] = wingR.map(([px, py]) => [-px, py] as Pt).reverse();
@@ -1468,7 +1468,7 @@ export function SensorySignatures() {
 /* ==========================================================================
    MACHINE PERCEPTION
    The AI agent is the shared Agent (a phone with the AI sparkle). A product
-   reaches it only as a data sheet; teal is the product that gets through.
+   reaches it only as a data sheet. Teal is the product that gets through.
    ========================================================================== */
 
 type Field = { name: string; value?: string; stars?: number };
@@ -1526,7 +1526,7 @@ function DataSheet({ x, y, fields, seed }: { x: number; y: number; fields: Field
 
 /**
  * The agent perceives products only as data: the cereal with a complete
- * sheet reaches it; the one with missing details does not.
+ * sheet reaches it. The one with missing details does not.
  */
 export function DataSheets() {
   const g = 230;
@@ -1535,7 +1535,7 @@ export function DataSheets() {
       id="sk-data-sheets"
       width={800}
       height={262}
-      label="The AI agent phone stands between two product data sheets. On the left, a teal cereal box and its complete sheet: price $4.99, size 500 g, ingredients oats and honey, four stars, 1,240 reviews; an arrow runs from the sheet to the agent. On the right, a camel cereal box and a sheet with only a price of $5.49; its other details are empty pencil dashes, and no arrow reaches the agent."
+      label="The AI agent phone stands between two product data sheets. On the left, a teal cereal box and its complete sheet: price $4.99, size 500 g, ingredients oats and honey, four stars, 1,240 reviews. An arrow runs from the sheet to the agent. On the right, a camel cereal box and a sheet with only a price of $5.49. Its other details are empty pencil dashes, and no arrow reaches the agent."
     >
       <Backwash cx={400} cy={138} rx={390} ry={118} seed={4000} opacity={0.4} />
       <Ground x0={24} x1={776} y={g} seed={4001} />
@@ -1581,7 +1581,7 @@ function ResultsList({ x, y, w, seed }: { x: number; y: number; w: number; seed:
 
 /**
  * Where shoppers look: the eye-level shelf, and the top of a results page.
- * Two small scenes; the product that gets noticed is teal in each.
+ * Two small scenes. The product that gets noticed is teal in each.
  */
 export function EyeLevelTopResult() {
   const g = 214;
@@ -1624,7 +1624,7 @@ export function AgentTopResult() {
       id="sk-agent-top"
       width={400}
       height={232}
-      label="The AI agent phone beside a page of search results; an arrow runs from the agent to the first result, whose thumbnail is teal."
+      label="The AI agent phone beside a page of search results. An arrow runs from the agent to the first result, whose thumbnail is teal."
     >
       <Backwash cx={210} cy={126} rx={190} ry={100} seed={4400} opacity={0.4} />
       <Ground x0={20} x1={130} y={g} seed={4401} />

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 01 — figures
+   Week 01, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea, so the deck changes shape as
    the argument does: an iceberg, an exchange loop, two lanes, a triangle, a
@@ -8,11 +8,11 @@
    quadrant.
 
    Conventions, so the set reads as one system:
-     · viewBox width 800, flat fills, hairline rules, no shadows or gradients
-     · INK carries the neutral case, SIGNAL the operative one, COUNTER the
+     - viewBox width 800, flat fills, hairline rules, no shadows or gradients
+     - INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or the outward-looking state
-     · every label reuses words from the slide the plate sits on
-     · keys are set in the body grotesque, uppercase and tracked (no mono)
+     - every label reuses words from the slide the plate sits on
+     - keys are set in the body grotesque, uppercase and tracked (no mono)
    ========================================================================== */
 
 import React from "react";
@@ -47,7 +47,7 @@ import { Chip1, Chip2, Person1 } from "../_visuals/objects";
 /* -- small typographic helpers ------------------------------------------- */
 
 /* ==========================================================================
-   1 · ICEBERG — selling is the visible tip
+   1. ICEBERG: selling is the visible tip
    ========================================================================== */
 
 export function MarketingIceberg() {
@@ -118,7 +118,7 @@ export function MarketingIceberg() {
 }
 
 /* ==========================================================================
-   2 · EXCHANGE LOOP — create value, capture value in return
+   2. EXCHANGE LOOP: create value, capture value in return
    ========================================================================== */
 
 export function ValueExchange() {
@@ -164,7 +164,7 @@ export function ValueExchange() {
 }
 
 /* ==========================================================================
-   3 · ATTRACT / KEEP — the dual goal
+   3. ATTRACT / KEEP: the dual goal
    ========================================================================== */
 
 export function AttractKeep() {
@@ -219,7 +219,7 @@ export function AttractKeep() {
 }
 
 /* ==========================================================================
-   4 · INWARD / OUTWARD — the danger shared by production and product
+   4. INWARD / OUTWARD: the danger shared by production and product
    ========================================================================== */
 
 export function InwardOutward() {
@@ -324,7 +324,7 @@ export function InwardOutward() {
 }
 
 /* ==========================================================================
-   5 · TWO LANES — inside-out selling, outside-in marketing
+   5. TWO LANES: inside-out selling, outside-in marketing
    ========================================================================== */
 
 function DirectionGlyph({
@@ -487,7 +487,7 @@ export function SellingVersusMarketing() {
 }
 
 /* ==========================================================================
-   6 · TRIANGLE — the three considerations in balance
+   6. TRIANGLE: the three considerations in balance
    ========================================================================== */
 
 export function SocietalTriangle() {
@@ -533,7 +533,7 @@ export function SocietalTriangle() {
 }
 
 /* ==========================================================================
-   7 · FIELD OF VIEW — myopia is a narrow beam
+   7. FIELD OF VIEW: myopia is a narrow beam
    ========================================================================== */
 
 export function MyopiaView() {
@@ -579,9 +579,9 @@ export function MyopiaView() {
 }
 
 /* ==========================================================================
-   8 · SPLIT LANE — comparing needs, wants, and demands
+   8. SPLIT LANE: comparing needs, wants, and demands
    Three lanes stacked in the order one becomes the next. The spine on the
-   left says what each is; the lane to the right shows it happening.
+   left says what each is. The lane to the right shows it happening.
    ========================================================================== */
 
 export function NeedsWantsDemandsLanes() {
@@ -737,7 +737,7 @@ export function NeedsWantsDemandsLanes() {
 }
 
 /* ==========================================================================
-   9 · ROSETTE — an offering is a combination
+   9. ROSETTE: an offering is a combination
    ========================================================================== */
 
 export function OfferingRosette() {
@@ -829,13 +829,13 @@ export function OfferingRosette() {
 }
 
 /* ==========================================================================
-   10 · BENEFITS LESS COSTS — perceived value, relative to competing offers
+   10. BENEFITS LESS COSTS: perceived value, relative to competing offers
    ========================================================================== */
 
 export function PerceivedValueBars() {
   const x0 = 10;
   const h = 18;
-  // This offer's benefits and costs are the student's to move; the two
+  // This offer's benefits and costs are the student's to move. The two
   // competing offers stay put. Lengths are in plate units from x0.
   const [b, setB] = React.useState(240);
   const [c, setC] = React.useState(124);
@@ -851,7 +851,7 @@ export function PerceivedValueBars() {
     <Frame
       width={400}
       height={224}
-      label={`Three offers, each drawn as a benefits bar above a costs bar; the stretch of benefits beyond the costs is perceived value. The benefits and costs of this offer can be dragged. ${best === 0 ? "This offer" : best === 1 ? "The competing offer with the most benefits" : "The cheaper competing offer"} now has the highest perceived value.`}
+      label={`Three offers, each drawn as a benefits bar above a costs bar. The stretch of benefits beyond the costs is perceived value. The benefits and costs of this offer can be dragged. ${best === 0 ? "This offer" : best === 1 ? "The competing offer with the most benefits" : "The cheaper competing offer"} now has the highest perceived value.`}
     >
       {offers.map((o, i) => {
         const by = o.top + 16;
@@ -945,11 +945,11 @@ export function PerceivedValueBars() {
 }
 
 /* ==========================================================================
-   11 · GAUGE — performance measured against expectations
+   11. GAUGE: performance measured against expectations
    ========================================================================== */
 
 export function SatisfactionGauge() {
-  // The product's perceived performance is fixed; the student moves the
+  // The product's perceived performance is fixed. The student moves the
   // buyer's expectations and watches the same performance change verdict.
   const perf = 262;
   const half = 36;
@@ -995,7 +995,7 @@ export function SatisfactionGauge() {
     <Frame
       width={400}
       height={176}
-      label={`Perceived performance is fixed on an arrow; the buyer's expectations can be dragged along it. Performance that falls short of expectations is dissatisfied, that matches is satisfied, that exceeds is delighted. With expectations where they are now, the same performance leaves the customer ${verdict.v.toLowerCase()}.`}
+      label={`Perceived performance is fixed on an arrow. The buyer's expectations can be dragged along it. Performance that falls short of expectations is dissatisfied, that matches is satisfied, that exceeds is delighted. With expectations where they are now, the same performance leaves the customer ${verdict.v.toLowerCase()}.`}
     >
       {/* the verdict for this product's performance */}
       <verdict.Face x={perf - s / 2} y={2} size={s} weight="duotone" color={verdict.tone} />
@@ -1053,9 +1053,9 @@ export function SatisfactionGauge() {
 }
 
 /* ==========================================================================
-   11b · WHAT THE AI AGENT CAN READ — two listings, one comparison
-   The student chooses which of jacket A's facts its seller states as text;
-   the rest sit inside a product photo, which people see and the AI agent
+   11b | WHAT THE AI AGENT CAN READ: two listings, one comparison
+   The student chooses which of jacket A's facts its seller states as text.
+   The rest sit inside a product photo, which people see and the AI agent
    cannot read. The agent compares only what it can read.
    ========================================================================== */
 
@@ -1107,7 +1107,7 @@ export function AgentReads() {
     <div>
       <Frame
         height={336}
-        label={`A consumer wants a rain jacket under $150, and an AI agent compares two listings. Jacket A costs $139, is waterproof to 20,000 mm and has reviews of 4.8 out of 5; jacket B costs $149, 10,000 mm and 4.2. Jacket B states every fact as text. Jacket A states ${readable.length ? readable.map((f) => f).join(" and ") : "nothing"} as text and shows the rest only inside a product photo, which the AI agent cannot read. Comparing only what it can read, the AI agent picks jacket ${pick.toUpperCase()}.`}
+        label={`A consumer wants a rain jacket under $150, and an AI agent compares two listings. Jacket A costs $139, is waterproof to 20,000 mm and has reviews of 4.8 out of 5. Jacket B costs $149, 10,000 mm and 4.2. Jacket B states every fact as text. Jacket A states ${readable.length ? readable.map((f) => f).join(" and ") : "nothing"} as text and shows the rest only inside a product photo, which the AI agent cannot read. Comparing only what it can read, the AI agent picks jacket ${pick.toUpperCase()}.`}
       >
         {/* the want, handed to the AI agent */}
         <Person1 x={40} y={58} s={1.1} />
@@ -1225,7 +1225,7 @@ export function AgentReads() {
 }
 
 /* ==========================================================================
-   12 · FOUR PLUS ONE — create, create, create, create, capture
+   12. FOUR PLUS ONE: create, create, create, create, capture
    ========================================================================== */
 
 export function FourPlusOne() {
@@ -1238,7 +1238,7 @@ export function FourPlusOne() {
     <Frame
       width={400}
       height={176}
-      label="Five numbered steps along an arrow from research to value capture. A bracket under steps one to four reads create value for customers; a bracket under step five reads capture value in return."
+      label="Five numbered steps along an arrow from research to value capture. A bracket under steps one to four reads create value for customers. A bracket under step five reads capture value in return."
     >
       <Key x={x0} y={24} fill={INK3} size={9}>
         RESEARCH
@@ -1308,7 +1308,7 @@ export function FourPlusOne() {
 }
 
 /* ==========================================================================
-   13 · PARTITIONED FIELD — segmentation, then targeting
+   13. PARTITIONED FIELD: segmentation, then targeting
    ========================================================================== */
 
 export function SegmentTarget() {
@@ -1318,7 +1318,7 @@ export function SegmentTarget() {
   const hy1 = 66 + 88;
   const hy2 = 66 + 98;
 
-  // Which of five regions a point falls in; region 3 is the target.
+  // Which of five regions a point falls in. Region 3 is the target.
   const region = (px: number, py: number) => {
     if (px < vx1) return py < hy1 ? 0 : 1;
     if (py >= hy2) return 4;
@@ -1416,7 +1416,7 @@ export function SegmentTarget() {
   return (
     <Frame
       height={270}
-      label="Two panels of the same market. Segmentation divides the dots into five segments; targeting selects one segment to enter and fades the rest."
+      label="Two panels of the same market. Segmentation divides the dots into five segments. Targeting selects one segment to enter and fades the rest."
     >
       <Key x={field.x} y={26} fill={INK} size={13}>
         SEGMENTATION
@@ -1453,7 +1453,7 @@ export function SegmentTarget() {
 }
 
 /* ==========================================================================
-   14 · CYCLE + NETWORK — relationships, managed two ways
+   14. CYCLE + NETWORK: relationships, managed two ways
    ========================================================================== */
 
 export function RelationshipCycle() {
@@ -1606,7 +1606,7 @@ export function RelationshipCycle() {
 }
 
 /* ==========================================================================
-   15 · INCOME STREAM — a single sale versus a lifetime of patronage
+   15. INCOME STREAM: a single sale versus a lifetime of patronage
    ========================================================================== */
 
 export function LifetimeStream() {
@@ -1622,7 +1622,7 @@ export function LifetimeStream() {
   return (
     <Frame
       height={214}
-      label="One customer's purchases as a row of bars over a lifetime of patronage. At the point the customer is lost, one bar is a single sale; every bar after it is the entire future income stream."
+      label="One customer's purchases as a row of bars over a lifetime of patronage. At the point the customer is lost, one bar is a single sale. Every bar after it is the entire future income stream."
     >
       <line x1={50} y1={base} x2={762} y2={base} stroke={INK} strokeWidth={1} />
       <path
@@ -1706,7 +1706,7 @@ export function LifetimeStream() {
 }
 
 /* ==========================================================================
-   16 · ONE BAR — share of customer
+   16. ONE BAR: share of customer
    ========================================================================== */
 
 export function ShareOfCustomer() {
@@ -1740,7 +1740,7 @@ export function ShareOfCustomer() {
 }
 
 /* ==========================================================================
-   17 · LEDGER ACROSS "NOW" — the past, and the future value of the firm
+   17. LEDGER ACROSS "NOW": the past, and the future value of the firm
    ========================================================================== */
 
 export function EquityLedger() {
@@ -1834,7 +1834,7 @@ export function EquityLedger() {
 }
 
 /* ==========================================================================
-   18 · QUADRANT — strangers, butterflies, true friends, barnacles
+   18. QUADRANT: strangers, butterflies, true friends, barnacles
    ========================================================================== */
 
 export function RelationshipGroups() {
@@ -1954,8 +1954,8 @@ export function RelationshipGroups() {
 }
 
 /* ==========================================================================
-   19 · FIVE TO ONE — split a year's budget between acquiring and retaining
-   Made-up data: the 5:1 cost ratio is the one the discussion gives; the budget,
+   19. FIVE TO ONE: split a year's budget between acquiring and retaining
+   Made-up data: the 5:1 cost ratio is the one the discussion gives. The budget,
    customer bases and the share who would leave are plausible round numbers.
    ========================================================================== */
 
@@ -1990,7 +1990,7 @@ export function AcquireRetain() {
   );
   const scaleMax = Math.max(best, base) * 1.04;
 
-  // Budget bar: x from b0 to b1; the divider is the knob.
+  // Budget bar: x from b0 to b1. The divider is the knob.
   const b0 = 190;
   const b1 = 690;
   const split = r2(b0 + ((BUDGET - retainSpend) / BUDGET) * (b1 - b0));

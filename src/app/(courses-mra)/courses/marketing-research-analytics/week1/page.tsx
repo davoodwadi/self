@@ -20,9 +20,9 @@ import exercisesData from "./exercises.json";
 import { UncertaintyNarrowing, EvidenceLanes, ShareTracking, ChooseAmongAlternatives, JustifiedQuadrant, SymptomAndCauses, CancellationsDoubled, ResearchProcess, SimulatedVersusReal, EffortShift, Stakeholders, PreciseWrongTarget, AgentMediatedPurchase, SamePromptResponses } from "./visuals";
 
 // ============================================================================
-// WEEK 01 — RESEARCH FOR MARKETING DECISIONS
+// WEEK 01: RESEARCH FOR MARKETING DECISIONS
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx.
 //
@@ -42,7 +42,7 @@ export default function Week1() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 01 · Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 01: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[16ch]">
           Research for <span className="text-[var(--signal)]">Marketing Decisions</span>
         </Title>
@@ -222,7 +222,7 @@ export default function Week1() {
           </div>
         </div>
         <p className="type-quote mt-8 w-full border-t-2 border-[var(--ink)] pt-6 !max-w-none !text-[clamp(1.25rem,2vw,1.7rem)]">
-          A single project may combine both types; identifying the type
+          A single project may combine both types. Identifying the type
           required determines the design of the study.
         </p>
       </Slide>
@@ -405,7 +405,7 @@ export default function Week1() {
           <SymptomAndCauses />
         </Plate>
         <p className="type-quote mt-6 w-full border-t-2 border-[var(--ink)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
-          Each cause requires a different decision; the researcher must
+          Each cause requires a different decision. The researcher must
           therefore identify the underlying cause before designing the study.
         </p>
       </Slide>

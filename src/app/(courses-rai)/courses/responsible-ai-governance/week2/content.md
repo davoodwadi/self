@@ -24,7 +24,7 @@ week: week2
 
 ## Part 1: Sources of Algorithmic Bias Across the Pipeline [no-exercise]
 - Algorithmic bias is a systematic difference in a model's predictions, errors, or resource allocations across groups that is not justified by the legitimate purpose of the decision.
-- Bias does not originate in a single line of code; it enters at distinct stages of data generation, measurement, model specification, and market deployment.
+- Bias does not originate in a single line of code. It enters at distinct stages of data generation, measurement, model specification, and market deployment.
 - Diagnosing the exact stage at which bias enters is necessary because each source requires a different technical and managerial remedy.
 
 ## Bias in the Data: Historical and Representation Bias [no-exercise]
@@ -104,7 +104,7 @@ week: week2
 
 ## Part 4: The Fairness Impossibility Theorem and Managerial Trade-Offs [no-exercise]
 - A central mathematical result in algorithmic governance is that the major criteria of group fairness are mutually incompatible in almost all realistic settings.
-- Managers cannot instruct an engineering team to make a model "completely fair" on all metrics at once; they must decide which type of error disparity is most harmful in the specific market context.
+- Managers cannot instruct an engineering team to make a model "completely fair" on all metrics at once. They must decide which type of error disparity is most harmful in the specific market context.
 
 ## The Fairness Impossibility Theorem [no-exercise]
 - Proven independently by Chouldechova (2017) and Kleinberg, Mullainathan, and Raghavan (2017), the impossibility theorem states that whenever two groups have different base rates of the underlying outcome P(Y = 1), no imperfect predictor can simultaneously satisfy independence, separation, and sufficiency.

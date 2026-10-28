@@ -45,13 +45,13 @@ const SECTIONS = [
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif; terms set bold in the display serif. */
+/* Body copy: the reading serif. Terms set bold in the display serif. */
 const BODY_BASE = "font-body leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
 const BODY = `${BODY_BASE} text-base md:text-[1.12rem]`;
 const LIST =
   "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
 const SUBLIST =
-  "list-none flex flex-col gap-0.5 mt-1 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['–'] [&>li]:before:shrink-0";
+  "list-none flex flex-col gap-0.5 mt-1 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['-'] [&>li]:before:shrink-0";
 const SUB = "font-accent font-bold uppercase tracking-[0.2em] text-[0.68rem]";
 
 function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
@@ -123,7 +123,7 @@ export default function DigitalTransformationWeek5() {
       </Link>
 
       <PosterHero
-        category="WEEK 5 — DIGITAL TRANSFORMATION"
+        category="WEEK 5: DIGITAL TRANSFORMATION"
         title={
           <>
             <span className="text-[0.84em]">Cloud/Fog/Edge Computing</span>
@@ -145,7 +145,7 @@ export default function DigitalTransformationWeek5() {
       />
 
       {/* ================================================================
-          CHAPTER 1 — CLOUD COMPUTING
+          CHAPTER 1: CLOUD COMPUTING
           ================================================================ */}
       <ChapterBand id="ch1" number="01" title="Cloud Computing" />
 
@@ -291,7 +291,7 @@ export default function DigitalTransformationWeek5() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 2 — CLOUD SERVICE MODELS
+          CHAPTER 2: CLOUD SERVICE MODELS
           ================================================================ */}
       <ChapterBand id="ch2" number="02" title="Cloud Service Models" />
 
@@ -642,7 +642,7 @@ export default function DigitalTransformationWeek5() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 3 — EDGE COMPUTING
+          CHAPTER 3: EDGE COMPUTING
           ================================================================ */}
       <ChapterBand id="ch3" number="03" title="Edge Computing" />
 
@@ -865,7 +865,7 @@ export default function DigitalTransformationWeek5() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 4 — FOG COMPUTING
+          CHAPTER 4: FOG COMPUTING
           ================================================================ */}
       <ChapterBand id="ch4" number="04" title="Fog Computing" />
 

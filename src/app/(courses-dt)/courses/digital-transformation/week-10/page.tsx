@@ -51,7 +51,7 @@ const BODY = `${BODY_BASE} text-base md:text-[1.06rem]`;
 const LIST =
   "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
 const SUBLIST =
-  "list-none flex flex-col gap-1 mt-1 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['–'] [&>li]:before:shrink-0";
+  "list-none flex flex-col gap-1 mt-1 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['-'] [&>li]:before:shrink-0";
 
 function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
   return (
@@ -97,7 +97,7 @@ export default function DigitalTransformationWeek10() {
       </Link>
 
       <PosterHero
-        category="WEEK 10 — DIGITAL TRANSFORMATION"
+        category="WEEK 10: DIGITAL TRANSFORMATION"
         title={
           <span className="block text-[clamp(1.95rem,3.3vw,2.95rem)] leading-[1.06]">
             Week 10: Cyber Security, Ethics and Social Issues of Digital Transformation
@@ -117,7 +117,7 @@ export default function DigitalTransformationWeek10() {
       {/* ================================================================
           REVIEW OF LAST WEEK
           ================================================================ */}
-      <Slide id="review-of-last-week" label="RECAP · INDUSTRY 4.0" title="Review of Last Week">
+      <Slide id="review-of-last-week" label="RECAP | INDUSTRY 4.0" title="Review of Last Week">
         <ol className={`${BODY} grid sm:grid-cols-2 lg:grid-cols-5 gap-3`}>
           {[
             "What was the First Industrial Revolution?",
@@ -151,7 +151,7 @@ export default function DigitalTransformationWeek10() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 1 — THE EVOLVING THREAT LANDSCAPE
+          CHAPTER 1: THE EVOLVING THREAT LANDSCAPE
           ================================================================ */}
       <ChapterBand id="ch1" number="01" title="The Evolving Threat Landscape" />
 
@@ -278,7 +278,7 @@ export default function DigitalTransformationWeek10() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 2 — CASE STUDY: CANADIAN REVENUE AGENCY (CRA) DATA LEAK
+          CHAPTER 2: CASE STUDY: CANADIAN REVENUE AGENCY (CRA) DATA LEAK
           ================================================================ */}
       <ChapterBand
         id="ch2"
@@ -366,7 +366,7 @@ export default function DigitalTransformationWeek10() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 3 — ETHICS IN DIGITAL TRANSFORMATION
+          CHAPTER 3: ETHICS IN DIGITAL TRANSFORMATION
           ================================================================ */}
       <ChapterBand id="ch3" number="03" title="Ethics in Digital Transformation" />
 
@@ -435,7 +435,7 @@ export default function DigitalTransformationWeek10() {
                                   : "border-[var(--dt-ink)] hover:bg-[var(--paper-2)]/50"
                               }`}
                             >
-                              – {b}
+                              - {b}
                             </button>
                           </li>
                         );
@@ -510,7 +510,7 @@ export default function DigitalTransformationWeek10() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 4 — SUSTAINABILITY & PLATFORM POWER
+          CHAPTER 4: SUSTAINABILITY & PLATFORM POWER
           ================================================================ */}
       <ChapterBand id="ch4" number="04" title="Environmental Sustainability & Platform Power" />
 

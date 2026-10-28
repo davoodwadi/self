@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 11 — figures
+   Week 11: figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea. The week moves from broadcast
    to conversation, so a fixed cast of glyphs carries it: a person is a
@@ -8,14 +8,14 @@
    speech bubble is social conversation, and a phone is the digital device.
 
    Colour code for the week:
-     · SIGNAL  — paid (ads, SEM, bids) and the operative case
-     · COUNTER — earned and organic (SEO, shares, reviews), or the risk
-     · INK     — owned media and the neutral case
+     - SIGNAL, paid (ads, SEM, bids) and the operative case
+     - COUNTER, earned and organic (SEO, shares, reviews), or the risk
+     - INK, owned media and the neutral case
 
    Conventions carried over from earlier weeks:
-     · viewBox width 800 (400 for column plates), flat fills, hairline rules
-     · every label reuses words from the slide the plate sits on
-     · trig results rounded, so server and client render the same markup
+     - viewBox width 800 (400 for column plates), flat fills, hairline rules
+     - every label reuses words from the slide the plate sits on
+     - trig results rounded, so server and client render the same markup
    ========================================================================== */
 
 import React from "react";
@@ -362,7 +362,7 @@ export function ChannelGlyph({
 }
 
 /* ==========================================================================
-   TITLE — from broadcast to ecosystem
+   TITLE: from broadcast to ecosystem
    ========================================================================== */
 
 /** Left, one tower talking at a row of people. Right, the same people linked. */
@@ -426,7 +426,7 @@ export function Transition() {
    THE EVOLUTION
    ========================================================================== */
 
-/** Print, radio and TV talk one way; the phone talks both ways. */
+/** Print, radio and TV talk one way. The phone talks both ways. */
 export function MediaTimeline() {
   const eras = [
     { x: 110, kind: "print" as const, key: "PRINT" },
@@ -674,7 +674,7 @@ export function ToolPile() {
   );
 }
 
-/** A customer asks; the brand answers at once, by name. */
+/** A customer asks. The brand answers at once, by name. */
 export function Expectation() {
   return (
     <Frame
@@ -807,12 +807,12 @@ export function ChannelsConnect() {
   );
 }
 
-/** A campaign line tracked live; feedback arrives; the course turns. */
+/** A campaign line tracked live. Feedback arrives. The course turns. */
 export function TrackAdjust() {
   return (
     <Frame
       height={280}
-      label="A chart with a campaign line tracked over time. It dips; at the low point a feedback bubble appears right away; a turning arrow marks the adjustment, and the line climbs again. A dashed line shows where the unchanged campaign would have gone."
+      label="A chart with a campaign line tracked over time. It dips. At the low point a feedback bubble appears right away. A turning arrow marks the adjustment, and the line climbs again. A dashed line shows where the unchanged campaign would have gone."
     >
       <g>
         <path d="M60 40V230H770" fill="none" stroke={INK} strokeWidth={1.25} />
@@ -873,7 +873,7 @@ export function Broadcast() {
         </g>
       ))}
       <Key x={200} y={276} anchor="middle" fill={INK} size={9.5}>
-        UNIFORM MESSAGE · BROAD AUDIENCE
+        UNIFORM MESSAGE | BROAD AUDIENCE
       </Key>
     </Frame>
   );
@@ -979,7 +979,7 @@ export function CoCreators() {
     <Frame
       width={400}
       height={290}
-      label="A large brand seal cut into four slices like a pie. One slice, drawn in the brand colour, comes from the brand; the other three are each pushed in by a consumer standing around it."
+      label="A large brand seal cut into four slices like a pie. One slice, drawn in the brand colour, comes from the brand. The other three are each pushed in by a consumer standing around it."
     >
       <path d={seg(-150, -60, 70)} fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} />
       {[
@@ -1018,10 +1018,10 @@ export function CoCreators() {
 }
 
 /* ==========================================================================
-   THE DIGITAL MARKETING ECOSYSTEM — hub and spoke
+   THE DIGITAL MARKETING ECOSYSTEM: hub and spoke
    ========================================================================== */
 
-/** Data analytics at the hub; seven channels round it, linked to each other. */
+/** Data analytics at the hub. Seven channels round it, linked to each other. */
 export function EcosystemHub() {
   const cx = 400;
   const cy = 206;
@@ -1153,7 +1153,7 @@ export function Foundation() {
     <Frame
       width={400}
       height={290}
-      label="A small building. A roof spans three pillars labelled owned, paid and earned. The pillars stand on a wide slab marked with a bar chart and labelled data analytics; arrows rise from the slab up through each pillar."
+      label="A small building. A roof spans three pillars labelled owned, paid and earned. The pillars stand on a wide slab marked with a bar chart and labelled data analytics. Arrows rise from the slab up through each pillar."
     >
       <path d="M40 70L200 22L360 70Z" fill={PAPER2} stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
       <Key x={200} y={60} anchor="middle" fill={INK} size={9}>
@@ -1183,12 +1183,12 @@ export function Foundation() {
 }
 
 /* ==========================================================================
-   SEO AND SEM — one results page, two ways to the top
+   SEO AND SEM: one results page, two ways to the top
    ========================================================================== */
 
 /**
  * A search engine results page. `organic` lights the organic list and shows
- * one page climbing it; `paid` lights the ad slots bought at the top.
+ * one page climbing it. `paid` lights the ad slots bought at the top.
  */
 export function Serp({ mode }: { mode: "organic" | "paid" }) {
   const paid = mode === "paid";
@@ -1200,7 +1200,7 @@ export function Serp({ mode }: { mode: "organic" | "paid" }) {
       label={
         paid
           ? "A search results page. Under the search bar, the two top slots are ads, marked AD and drawn in the paid colour. The organic results below them are greyed out."
-          : "A search results page. The two ad slots at the top are greyed out. Below them, four organic results; one page climbs from the bottom of the list to the top of the organic results."
+          : "A search results page. The two ad slots at the top are greyed out. Below them, four organic results. One page climbs from the bottom of the list to the top of the organic results."
       }
     >
       <rect x={20} y={10} width={360} height={300} rx={6} fill={PAPER} stroke={INK} strokeWidth={1.5} />
@@ -1292,7 +1292,7 @@ export function SeoThree() {
 }
 
 /**
- * One plot, one time axis. Traffic builds and holds; direct advertising cost
+ * One plot, one time axis. Traffic builds and holds. Direct advertising cost
  * lies flat on zero. The axis is offset a few units below zero so the cost
  * line reads as its own line instead of merging with the axis. Both lines are
  * labelled at their ends.
@@ -1354,7 +1354,7 @@ export function SeoTraffic() {
   );
 }
 
-/** Three signals feed the algorithm; the page that meets all three ranks first. */
+/** Three signals feed the algorithm. The page that meets all three ranks first. */
 export function AlgorithmSieve() {
   const ins = [
     { y: 60, key: "USER INTENT" },
@@ -1422,7 +1422,7 @@ export function AlgorithmSieve() {
   );
 }
 
-/** Three advertisers bid on one keyword; the tallest bid wins the top slot. */
+/** Three advertisers bid on one keyword. The tallest bid wins the top slot. */
 export function KeywordAuction() {
   const bids = [
     { x: 110, n: 5, rank: 2 },
@@ -1663,7 +1663,7 @@ export function AttractRetainAct() {
   );
 }
 
-/** Two content cards lit (a bulb, a smile); a hard-sell price tag set aside. */
+/** Two content cards lit (a bulb, a smile). A hard-sell price tag set aside. */
 export function EducateEntertain() {
   return (
     <Frame
@@ -1779,7 +1779,7 @@ export function Retention() {
   );
 }
 
-/** People sorted by what they did; each segment gets its own email. */
+/** People sorted by what they did. Each segment gets its own email. */
 export function Segmented() {
   const segs = [
     { y: 60, key: "BROWSED", tone: INK, glyph: "eye" },
@@ -1827,7 +1827,7 @@ export function Segmented() {
   );
 }
 
-/** A journey line; at the critical points, a gear fires an email. */
+/** A journey line. At the critical points, a gear fires an email. */
 export function JourneyTriggers() {
   const stops = [
     { x: 80, glyph: "join", crit: true },
@@ -1923,7 +1923,7 @@ export function ValueOrFlood() {
 }
 
 /* ==========================================================================
-   DISCUSSION — SEO vs SEM
+   DISCUSSION: SEO vs SEM
    ========================================================================== */
 
 /** Limited funds at a fork: a short quick road, or a long rising one. */
@@ -1941,14 +1941,14 @@ export function SeoSemFork() {
       <path d="M110 144C220 150 320 210 480 196C600 186 680 110 740 90" fill="none" stroke={COUNTER} strokeWidth={3} />
       <path d="M372 44H400L404 76H368Z" fill={SIGNAL_TINT} stroke={SIGNAL} strokeWidth={1.5} strokeLinejoin="round" />
       <Key x={280} y={36} anchor="middle" fill={SIGNAL} size={10}>
-        IMMEDIATE SEM · QUICK SALES
+        IMMEDIATE SEM | QUICK SALES
       </Key>
       {/* plant */}
       <path d="M756 90V50" stroke={COUNTER} strokeWidth={2} />
       <path d="M756 66Q736 60 734 44Q752 46 756 62" fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
       <path d="M756 58Q772 48 780 34Q762 34 756 54" fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
       <Key x={560} y={236} anchor="middle" fill={COUNTER} size={10}>
-        LONG-TERM SEO · SUSTAINABLE GROWTH
+        LONG-TERM SEO | SUSTAINABLE GROWTH
       </Key>
     </Frame>
   );
@@ -2082,7 +2082,7 @@ export function Humanize() {
     <Frame
       width={400}
       height={250}
-      label="On the left the brand seal alone. An arrow leads to a person wearing the same seal, who faces a user; the two exchange speech bubbles."
+      label="On the left the brand seal alone. An arrow leads to a person wearing the same seal, who faces a user. The two exchange speech bubbles."
     >
       <Mark2 x={50} y={120} r={26} tone={INK} />
       <Arrow3 x1={86} y1={120} x2={126} y2={120} tone={SIGNAL} width={1.5} />
@@ -2213,7 +2213,7 @@ export function PlatformAudiences() {
         </g>
       ))}
       <Key x={400} y={298} anchor="middle" fill={INK} size={10}>
-        DISTINCT USER DEMOGRAPHICS · TAILORED CONTENT STRATEGIES
+        DISTINCT USER DEMOGRAPHICS | TAILORED CONTENT STRATEGIES
       </Key>
     </Frame>
   );
@@ -2304,7 +2304,7 @@ export function ProfessionalNetwork() {
       <PlatformScreen kind="pro" x={200} y={80} />
       <Mark2 x={174} y={110} r={8} />
       <Key x={200} y={240} anchor="middle" fill={INK} size={9.5}>
-        B2B MARKETING · CORPORATE BRANDING
+        B2B MARKETING | CORPORATE BRANDING
       </Key>
     </Frame>
   );
@@ -2498,7 +2498,7 @@ export function UgcAmplify() {
    SOCIAL LISTENING
    ========================================================================== */
 
-/** A field of conversations; a listener picks out the ones about the brand. */
+/** A field of conversations. A listener picks out the ones about the brand. */
 export function Listening() {
   const bubbles = Array.from({ length: 15 }, (_, i) => ({
     x: 250 + (i % 5) * 104 + (Math.floor(i / 5) % 2) * 30,
@@ -2509,7 +2509,7 @@ export function Listening() {
   return (
     <Frame
       height={270}
-      label="A person wearing headphones on the left listens across a wide field of fifteen conversation bubbles. Three bubbles contain the brand seal and are lit; two contain a small shop, the industry; the rest are plain chatter. Dashed listening lines run to the lit ones."
+      label="A person wearing headphones on the left listens across a wide field of fifteen conversation bubbles. Three bubbles contain the brand seal and are lit. Two contain a small shop, the industry. The rest are plain chatter. Dashed listening lines run to the lit ones."
     >
       <Person3 x={80} y={200} k={2.2} stroke={INK} />
       <path d="M62 128Q62 106 80 106Q98 106 98 128" fill="none" stroke={SIGNAL} strokeWidth={3} />
@@ -2585,7 +2585,7 @@ export function UnfilteredInsights() {
   );
 }
 
-/** Complaints building toward a crisis; the brand steps in early and it flattens. */
+/** Complaints building toward a crisis. The brand steps in early and it flattens. */
 export function Escalation() {
   return (
     <Frame
@@ -2611,7 +2611,7 @@ export function Escalation() {
   );
 }
 
-/** Bubbles into a lightbulb; the lightbulb into a product and a plan. */
+/** Bubbles into a lightbulb. The lightbulb into a product and a plan. */
 export function InsightToProduct() {
   return (
     <Frame
@@ -2716,7 +2716,7 @@ export function TrustRelay() {
   );
 }
 
-/** A celebrity's big crowd with a few engaged; a micro-influencer's small one, many engaged. */
+/** A celebrity's big crowd with a few engaged. A micro-influencer's small one, many engaged. */
 export function MicroVsCeleb() {
   const celeb: { x: number; y: number; on: boolean }[] = [];
   for (let r = 0; r < 6; r++) for (let c = 0; c < 10; c++) celeb.push({ x: 60 + c * 30, y: 110 + r * 26, on: (r * 10 + c) % 17 === 5 });
@@ -2789,7 +2789,7 @@ export function Alignment() {
    THE CHALLENGE: MEASURING ROI
    ========================================================================== */
 
-/** Money goes in; the path to the return is a tangle; the exact return is a question. */
+/** Money goes in. The path to the return is a tangle. The exact return is a question. */
 export function TangledReturn() {
   return (
     <Frame
@@ -2938,7 +2938,7 @@ export function EngagementToRevenue() {
   );
 }
 
-/** A big heart count going nowhere; a smaller metric aimed at the objective. */
+/** A big heart count going nowhere. A smaller metric aimed at the objective. */
 export function VanityVsObjective() {
   return (
     <Frame
@@ -3010,13 +3010,13 @@ export function DataBoundaries() {
         </g>
       ))}
       <Key x={780} y={262} anchor="end" fill={COUNTER} size={10}>
-        ETHICAL BOUNDARIES · CONSUMER DATA
+        ETHICAL BOUNDARIES | CONSUMER DATA
       </Key>
     </Frame>
   );
 }
 
-/** Rules pile higher each year; the data sits in a clear jar for all to see. */
+/** Rules pile higher each year. The data sits in a clear jar for all to see. */
 export function Regulations() {
   return (
     <Frame
@@ -3068,7 +3068,7 @@ export function Protective() {
   );
 }
 
-/** A balance tipped toward privacy; trust grows on that side. */
+/** A balance tipped toward privacy. Trust grows on that side. */
 export function PrivacyScale() {
   return (
     <Frame
@@ -3107,7 +3107,7 @@ export function PrivacyScale() {
 }
 
 /* ==========================================================================
-   DISCUSSION — DATA PRIVACY
+   DISCUSSION: DATA PRIVACY
    ========================================================================== */
 
 /** Two bars: third-party data doubles conversions, under a watching eye. */
@@ -3146,7 +3146,7 @@ export function DataDilemma() {
 }
 
 /* ==========================================================================
-   CONCLUSION — small glyphs
+   CONCLUSION: small glyphs
    ========================================================================== */
 
 export function GlyphTransformed() {

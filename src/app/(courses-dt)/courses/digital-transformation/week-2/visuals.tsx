@@ -1,14 +1,14 @@
 /* ==========================================================================
-   Week 2 — plates (Flat Silhouette)
+   Week 2, plates (Flat Silhouette)
    --------------------------------------------------------------------------
    Fixed cast for the week, on top of the course kit and objects:
-     · Table    — a structured record set: rows and columns, ink header row
-     · the unstructured kinds, one icon each, always the same weight:
+     - Table, a structured record set: rows and columns, ink header row
+     - the unstructured kinds, one icon each, always the same weight:
        Image (photo), Envelope (email), FilmStrip (video),
        ChatCircle (social post), Globe (web page), Pulse (raw sensor signal)
-     · Database — stored data (hand-drawn cylinder)
-     · Person   — every human (course object)
-     · Coins    — value gained (course object, SIGNAL)
+     - Database, stored data (hand-drawn cylinder)
+     - Person, every human (course object)
+     - Coins, value gained (course object, SIGNAL)
    Every coordinate is a literal or rounded, so server and client match.
    ========================================================================== */
 
@@ -53,7 +53,7 @@ export function Table({
   /** a body row (0-based) whose cells are filled SIGNAL: the record found */
   lit?: number;
 }) {
-  // a solid block; body cells cut out as cream, header row left solid
+  // a solid block. Body cells cut out as cream, header row left solid
   const g = Math.max(2, r2(w / 40));
   const head = r2(h / (rows + 1));
   const cw = r2((w - g * (cols + 1)) / cols);
@@ -111,7 +111,7 @@ export function Unit({
   );
 }
 
-/* -- cast: Database — a stack of n discs, bottom-centre at (cx, bottom) -- */
+/* -- cast: Database: a stack of n discs, bottom-centre at (cx, bottom) -- */
 
 export function Database({
   cx,
@@ -156,7 +156,7 @@ export function Database({
 }
 
 /* ==========================================================================
-   Hero — structured and unstructured data, turned into value
+   Hero: structured and unstructured data, turned into value
    ========================================================================== */
 
 export function HeroDataToValue() {
@@ -164,7 +164,7 @@ export function HeroDataToValue() {
     <Plate
       w={500}
       h={250}
-      title="A heap of data — a table, a photo, an email, a video and a social post — with an arrow pointing to a red stack of coins"
+      title="A heap of data, a table, a photo, an email, a video and a social post, with an arrow pointing to a red stack of coins"
     >
       <Table x={34} y={30} w={118} h={88} rows={4} cols={3} />
       <Unit kind="photo" cx={214} cy={66} s={84} rot={-8} />
@@ -178,14 +178,14 @@ export function HeroDataToValue() {
 }
 
 /* ==========================================================================
-   Structured data — rows and columns, easily searched
+   Structured data: rows and columns, easily searched
    ========================================================================== */
 
 export function StructuredTable() {
   return (
     <Plate
       h={180}
-      title="A table of rows and columns with a dark header row; a magnifying glass beside it finds one row, which is red"
+      title="A table of rows and columns with a dark header row. A magnifying glass beside it finds one row, which is red"
     >
       <Table x={34} y={24} w={262} h={132} rows={5} cols={4} lit={2} />
       <MagnifyingGlass x={310} y={72} size={68} weight="fill" color={INK} />
@@ -194,7 +194,7 @@ export function StructuredTable() {
 }
 
 /* ==========================================================================
-   Unstructured data — no predefined format: kinds scattered, no grid
+   Unstructured data, no predefined format: kinds scattered, no grid
    ========================================================================== */
 
 export function UnstructuredHeap() {
@@ -214,7 +214,7 @@ export function UnstructuredHeap() {
 }
 
 /* ==========================================================================
-   Volume — an enormous amount: a tower of storage beside a person
+   Volume, an enormous amount: a tower of storage beside a person
    ========================================================================== */
 
 export function Volume() {
@@ -227,7 +227,7 @@ export function Volume() {
 }
 
 /* ==========================================================================
-   Velocity — data generated and processed at speed, in real time
+   Velocity: data generated and processed at speed, in real time
    ========================================================================== */
 
 function Streak({ x, y }: { x: number; y: number }) {
@@ -265,7 +265,7 @@ export function Velocity() {
 }
 
 /* ==========================================================================
-   Variety — various formats side by side
+   Variety: various formats side by side
    ========================================================================== */
 
 export function Variety() {
@@ -286,7 +286,7 @@ export function Variety() {
 }
 
 /* ==========================================================================
-   Data lake — raw data kept in its native format until it is needed
+   Data lake: raw data kept in its native format until it is needed
    ========================================================================== */
 
 export function DataLake() {
@@ -310,11 +310,11 @@ export function DataLake() {
 }
 
 /* ==========================================================================
-   Data warehouse — structured data from several sources, shelved in order
+   Data warehouse: structured data from several sources, shelved in order
    ========================================================================== */
 
 export function DataWarehouse() {
-  // building: gable roof over walls; the front is cut away to show shelves
+  // building: gable roof over walls. The front is cut away to show shelves
   const L = 140;
   const R = 380;
   const top = 74;
@@ -325,7 +325,7 @@ export function DataWarehouse() {
   return (
     <Plate
       h={230}
-      title="Three sources — a shop, a web page and a sensor signal — each send an arrow into a warehouse whose shelves hold identical tables in neat rows"
+      title="Three sources, a shop, a web page and a sensor signal, each send an arrow into a warehouse whose shelves hold identical tables in neat rows"
     >
       <path
         d={`M ${L - 10} ${top} L ${(L + R) / 2} 22 L ${R + 10} ${top} Z M ${L} ${top + 6} H ${R} V ${base} H ${L} Z M ${L + 10} ${top + 16} H ${R - 10} V ${base} H ${L + 10} Z`}
@@ -351,7 +351,7 @@ export function DataWarehouse() {
 }
 
 /* ==========================================================================
-   Processing frameworks — the same gear and screen; only the arrival differs
+   Processing frameworks: the same gear and screen. Only the arrival differs
    ========================================================================== */
 
 /* gear (processing) then a screen with the result, shared by both plates */
@@ -373,7 +373,7 @@ export function BatchProcessing() {
     <Plate
       w={540}
       h={160}
-      title="A large block of twelve tables enters a gear all at once; an arrow leads from the gear to a screen showing a lightbulb, the insight"
+      title="A large block of twelve tables enters a gear all at once. An arrow leads from the gear to a screen showing a lightbulb, the insight"
     >
       {[0, 1, 2].map((r) =>
         [0, 1, 2, 3].map((c) => (
@@ -393,7 +393,7 @@ export function StreamProcessing() {
     <Plate
       w={540}
       h={160}
-      title="Single tables arrive one after another, with speed lines behind each, into the same gear; an arrow leads to the same screen showing a lightbulb, the insight"
+      title="Single tables arrive one after another, with speed lines behind each, into the same gear. An arrow leads to the same screen showing a lightbulb, the insight"
     >
       {xs.map((x) => (
         <g key={x}>
@@ -408,7 +408,7 @@ export function StreamProcessing() {
 }
 
 /* ==========================================================================
-   Analytics tools — one timeline in three zones under the three columns:
+   Analytics tools, one timeline in three zones under the three columns:
    what has happened, what will happen, what to do
    ========================================================================== */
 
@@ -453,7 +453,7 @@ export function AnalyticsTimeline() {
 }
 
 /* ==========================================================================
-   Porter's value chain — support activities span the top, primary
+   Porter's value chain: support activities span the top, primary
    activities stand below, and the chain points to the value delivered
    ========================================================================== */
 
@@ -484,7 +484,7 @@ export function ValueChain() {
     <Plate
       w={800}
       h={226}
-      title="Porter's value chain: four pale blue support bars (firm infrastructure, human resource management, technology development, procurement) span the top; five black primary columns (inbound logistics, operations, outbound logistics, marketing and sales, service) stand below; the whole chain ends in a red point marked value"
+      title="Porter's value chain: four pale blue support bars (firm infrastructure, human resource management, technology development, procurement) span the top. Five black primary columns (inbound logistics, operations, outbound logistics, marketing and sales, service) stand below. The whole chain ends in a red point marked value"
     >
       {SUPPORT.map((s, i) => {
         const y = top + i * (bh + gap);
@@ -575,7 +575,7 @@ export function DataChainTall({ active }: { active: number }) {
 }
 
 /* ==========================================================================
-   Socio-technical systems — people and technology interact, and one red
+   Socio-technical systems, people and technology interact, and one red
    frame holds both: they are considered together
    ========================================================================== */
 
@@ -608,7 +608,7 @@ export function PeopleAndTechnology() {
 }
 
 /* ==========================================================================
-   Social system — a network of relationships among people
+   Social system: a network of relationships among people
    ========================================================================== */
 
 export function SocialNetwork() {
@@ -648,8 +648,8 @@ export function SocialNetwork() {
 }
 
 /* ==========================================================================
-   Data value chain — eight stages in a row and the feedback loop back to the
-   start; the three stages a slide teaches are lit red
+   Data value chain: eight stages in a row and the feedback loop back to the
+   start. The three stages a slide teaches are lit red
    ========================================================================== */
 
 const CHAIN = [

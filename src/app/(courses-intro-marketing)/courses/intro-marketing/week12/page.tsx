@@ -85,9 +85,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 12 — GLOBAL MARKETING AND THE FUTURE OF MARKETING
+// WEEK 12: GLOBAL MARKETING AND THE FUTURE OF MARKETING
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
@@ -148,7 +148,7 @@ function Lead({
   );
 }
 
-/** A line set as a serif statement — the line a slide lands on. */
+/** A line set as a serif statement: the line a slide lands on. */
 function Statement({
   children,
   className = "",
@@ -350,7 +350,7 @@ const SECTIONS = [
   "The Future of Marketing",
 ];
 
-/** The four parts of the week as a strip; the current one is lit. */
+/** The four parts of the week as a strip. The current one is lit. */
 function SectionStrip({
   active,
   className = "",
@@ -413,7 +413,7 @@ const MODE_BORDER = [
   "border-[var(--signal)]",
 ];
 
-/** The three entry modes as glyphs; the one this slide covers is lit. */
+/** The three entry modes as glyphs. The one this slide covers is lit. */
 function ModeStrip({ active }: { active: number }) {
   return (
     <ol aria-hidden className="mb-10 grid w-full grid-cols-3 gap-3 sm:gap-5">
@@ -443,7 +443,7 @@ function ModeStrip({ active }: { active: number }) {
   );
 }
 
-/** The four Ps, in the order the week adapts them; the current one is lit. */
+/** The four Ps, in the order the week adapts them. The current one is lit. */
 function MixStrip({ active }: { active: number }) {
   return (
     <ol aria-hidden className="mb-10 grid w-full grid-cols-4 gap-2 sm:gap-4">
@@ -465,7 +465,7 @@ function MixStrip({ active }: { active: number }) {
   );
 }
 
-/** The twelve weeks of the course; this, the last, is lit. */
+/** The twelve weeks of the course. This, the last, is lit. */
 function WeekStrip() {
   return (
     <ol
@@ -586,7 +586,7 @@ export default function Week12() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 12 · Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 12: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
           Global Marketing and{" "}
           <span className="text-[var(--signal)]">the Future of Marketing</span>
@@ -614,7 +614,7 @@ export default function Week12() {
       </Slide>
 
       {/* ================================================================
-          Part 1 — The Global Environment
+          Part 1: The Global Environment
           ================================================================ */}
       <TopicSlide
         id="what-is-global-marketing"
@@ -763,7 +763,7 @@ export default function Week12() {
       </Slide>
 
       {/* ================================================================
-          Part 2 — Going Global and Market Entry
+          Part 2: Going Global and Market Entry
           ================================================================ */}
       <TopicSlide
         id="deciding-whether-to-go-global"
@@ -990,7 +990,7 @@ export default function Week12() {
       </Slide>
 
       {/* ================================================================
-          Part 3 — The Global Marketing Mix
+          Part 3: The Global Marketing Mix
           ================================================================ */}
       <TopicSlide
         id="standardized-vs-adapted-marketing-mix"
@@ -1185,7 +1185,7 @@ export default function Week12() {
       </Slide>
 
       {/* ================================================================
-          Part 4 — The Future of Marketing
+          Part 4: The Future of Marketing
           ================================================================ */}
       <TopicSlide
         id="emerging-trends-in-marketing"

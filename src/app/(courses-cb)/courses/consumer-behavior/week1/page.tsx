@@ -33,14 +33,14 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR · WEEK 01 — INTRODUCTION TO CONSUMER BEHAVIOR
+// CONSUMER BEHAVIOR | WEEK 01: INTRODUCTION TO CONSUMER BEHAVIOR
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
 // Colour is rare (see the root CLAUDE.md): each slide gives SIGNAL to at most
-// one phrase, its key idea; defined terms are bold ink and every rule is ink.
+// one phrase, its key idea. Defined terms are bold ink and every rule is ink.
 // The consumer/customer slide keeps COUNTER for the one contrast it teaches.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
@@ -123,7 +123,7 @@ function Ruled({
 /**
  * A plate that lives in a column: a figure well without the 680px floor. A
  * `wide` (800-unit) plate keeps a legible minimum width on phones and scrolls
- * inside its well there, like `Figure`; from lg up the column is wide enough.
+ * inside its well there, like `Figure`. From lg up the column is wide enough.
  */
 function Plate({
   children,
@@ -293,7 +293,7 @@ export default function Week1() {
             <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
               Week 01
             </p>
-            <p className="type-caption mt-2">Consumer Behavior · Davood Wadi, PhD</p>
+            <p className="type-caption mt-2">Consumer Behavior | Davood Wadi, PhD</p>
             <Title className="mt-8 !max-w-[14ch]">Introduction to Consumer Behavior</Title>
             <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
               <p className="type-quote">
@@ -319,7 +319,7 @@ export default function Week1() {
           ================================================================ */}
       <Slide className={TIGHT} id="the-tip-of-the-iceberg" border>
         <Heading>The Tip of the Iceberg</Heading>
-        {/* The iceberg sits beside the two opening lines; before, after and
+        {/* The iceberg sits beside the two opening lines. Before, after and
             the whole-chain line share the row beneath it. */}
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.3fr] lg:gap-x-12">
           <Statement className="!max-w-[26ch] lg:col-start-1 lg:row-start-1 lg:self-end">
@@ -409,8 +409,8 @@ export default function Week1() {
           ================================================================ */}
       <Slide className={TIGHT} id="consumers-versus-customers" border>
         <Heading>Consumers Versus Customers</Heading>
-        {/* The two definitions sit beside the parent and baby they describe;
-            what each of them cares about closes the slide. */}
+        {/* The two definitions sit beside the parent and baby they describe.
+            What each of them cares about closes the slide. */}
         <div className="grid w-full items-center gap-10 lg:grid-cols-[1fr_1.25fr] lg:gap-12">
           <div className="min-w-0">
             <Lead>
@@ -476,7 +476,7 @@ export default function Week1() {
         exercise={exercise["why-consumers-are-not-calculators"]}
       >
         <Heading>Why Consumers Are Not Calculators</Heading>
-        {/* The old model and the real one side by side on the left; the four
+        {/* The old model and the real one side by side on the left. The four
             pulls on real decisions on the right. */}
         <div className="grid w-full items-start gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
           <div className="min-w-0">
@@ -550,7 +550,7 @@ export default function Week1() {
             </P>
           </Ruled>
         </div>
-        {/* The Montreal example leads the trio; the two closing lines sit
+        {/* The Montreal example leads the trio. The two closing lines sit
             under it, beside the plate. */}
         <div className="mt-10 grid w-full items-center gap-8 lg:grid-cols-[1fr_1.35fr] lg:gap-x-12">
           <P className="!max-w-[62ch] lg:col-start-1 lg:row-start-1 lg:self-end">
@@ -646,7 +646,7 @@ export default function Week1() {
             </Ruled>
           </div>
         </div>
-        {/* The three lines sit over the three panels they describe; the
+        {/* The three lines sit over the three panels they describe. The
             roles line and the two audiences follow beside the plate. */}
         <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[1.9fr_1fr] lg:gap-10">
           <div className="min-w-0">
@@ -775,8 +775,8 @@ export default function Week1() {
         <Statement className="!max-w-[48ch] !text-[clamp(1.3rem,2vw,1.7rem)]">
           Understanding consumers gives firms <Tint>great power</Tint> over everyday choices.
         </Statement>
-        {/* Helping and manipulating side by side, each line beside its plate;
-            then the trickery aimed at shoppers and at their agents, and its
+        {/* Helping and manipulating side by side, each line beside its plate.
+            Then the trickery aimed at shoppers and at their agents, and its
             price, each line over its plate. */}
         <ol className="mt-6 grid w-full gap-8 md:grid-cols-2 md:gap-10">
           {ETHICS.slice(0, 2).map((c) => (

@@ -50,7 +50,7 @@ const BODY = `${BODY_BASE} text-base md:text-[1.06rem]`;
 const LIST =
   "list-none flex flex-col gap-1.5 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
 const SUBLIST =
-  "list-none flex flex-col gap-1 mt-1 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['–'] [&>li]:before:shrink-0";
+  "list-none flex flex-col gap-1 mt-1 pl-4 [&>li]:flex [&>li]:gap-2.5 [&>li]:before:content-['-'] [&>li]:before:shrink-0";
 
 function Bullets({ items, className = "" }: { items: React.ReactNode[]; className?: string }) {
   return (
@@ -100,7 +100,7 @@ export default function DigitalTransformationWeek9() {
       </Link>
 
       <PosterHero
-        category="WEEK 9 — DIGITAL TRANSFORMATION"
+        category="WEEK 9: DIGITAL TRANSFORMATION"
         title="Week 9: Industry 4.0"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
@@ -115,7 +115,7 @@ export default function DigitalTransformationWeek9() {
       />
 
       {/* ================================================================
-          CHAPTER 1 — THE FIRST INDUSTRIAL REVOLUTION
+          CHAPTER 1: THE FIRST INDUSTRIAL REVOLUTION
           ================================================================ */}
       <ChapterBand id="ch1" number="01" title="The First Industrial Revolution" />
 
@@ -141,7 +141,7 @@ export default function DigitalTransformationWeek9() {
 
       <Slide
         id="the-first-industrial-revolution"
-        label="18TH–19TH CENTURY"
+        label="18TH: 19TH CENTURY"
         title="The First Industrial Revolution"
         exercise={exercise["the-first-industrial-revolution"]}
       >
@@ -256,7 +256,7 @@ export default function DigitalTransformationWeek9() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 2 — THE SECOND INDUSTRIAL REVOLUTION
+          CHAPTER 2: THE SECOND INDUSTRIAL REVOLUTION
           ================================================================ */}
       <ChapterBand id="ch2" number="02" title="The Second Industrial Revolution" />
 
@@ -331,8 +331,8 @@ export default function DigitalTransformationWeek9() {
             {
               title: "5. Revolution in Transportation & Communication",
               items: [
-                "Automobiles & Airplanes — Karl Benz (1885) and the Wright Brothers (1903) transformed personal and commercial travel.",
-                "Telegraph & Telephone — Samuel Morse (telegraph, 1830s) and Alexander Graham Bell (telephone, 1876) accelerated global communication.",
+                "Automobiles & Airplanes: Karl Benz (1885) and the Wright Brothers (1903) transformed personal and commercial travel.",
+                "Telegraph & Telephone: Samuel Morse (telegraph, 1830s) and Alexander Graham Bell (telephone, 1876) accelerated global communication.",
               ],
             },
           ].map((it, i) => {
@@ -458,7 +458,7 @@ export default function DigitalTransformationWeek9() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 3 — THE THIRD INDUSTRIAL REVOLUTION (DIGITAL REVOLUTION)
+          CHAPTER 3: THE THIRD INDUSTRIAL REVOLUTION (DIGITAL REVOLUTION)
           ================================================================ */}
       <ChapterBand id="ch3" number="03" title="The Third Industrial Revolution (Digital Revolution)" />
 
@@ -603,7 +603,7 @@ export default function DigitalTransformationWeek9() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 4 — THE FOURTH INDUSTRIAL REVOLUTION (INDUSTRY 4.0)
+          CHAPTER 4: THE FOURTH INDUSTRIAL REVOLUTION (INDUSTRY 4.0)
           ================================================================ */}
       <ChapterBand id="ch4" number="04" title="The Fourth Industrial Revolution (Industry 4.0)" />
 

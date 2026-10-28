@@ -32,9 +32,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 08 — FIDUCIARY DUTY AND CONFLICTS OF INTEREST IN AGENTIC COMMERCE
+// WEEK 08: FIDUCIARY DUTY AND CONFLICTS OF INTEREST IN AGENTIC COMMERCE
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md;
+// Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
 // is drawn beside it. Plates live in ./visuals.tsx.
 // ============================================================================
@@ -47,10 +47,10 @@ export default function Week8Page() {
   return (
     <SlideDeck label="Week 08">
       {/* ================================================================
-          01 · Title Slide
+          01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 08 · Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 08: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[24ch]">Fiduciary Duty and Conflicts of Interest in Agentic Commerce</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[58ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.2rem,1.9vw,1.6rem)]">
@@ -64,7 +64,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          02 · From Dyadic Exchange to the Agentic Triad [no-exercise]
+          02. From Dyadic Exchange to the Agentic Triad [no-exercise]
           ================================================================ */}
       <Slide id="from-dyadic-exchange-to-the-agentic-triad" border className="!py-8">
         <SlideHeading className="!mb-5">From Dyadic Exchange to the Agentic Triad</SlideHeading>
@@ -113,7 +113,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          03 · Levels of Delegation in Agentic Commerce [exercise]
+          03. Levels of Delegation in Agentic Commerce [exercise]
           ================================================================ */}
       <Slide
         id="levels-of-delegation-in-agentic-commerce"
@@ -161,7 +161,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          04 · Part 1: Fiduciary Duty and Evaluative Invariance in Digital Markets [no-exercise]
+          04. Part 1: Fiduciary Duty and Evaluative Invariance in Digital Markets [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Fiduciary Duty and Evaluative Invariance in Digital Markets" />
@@ -182,7 +182,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          05 · Principal-Agent Theory and Information Asymmetry [no-exercise]
+          05. Principal-Agent Theory and Information Asymmetry [no-exercise]
           ================================================================ */}
       <Slide id="principal-agent-theory-and-information-asymmetry" border className="!py-8">
         <SlideHeading className="!mb-5">Principal-Agent Theory and Information Asymmetry</SlideHeading>
@@ -225,7 +225,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          06 · Fiduciary Duties: The Duty of Care and the Duty of Loyalty [no-exercise]
+          06. Fiduciary Duties: The Duty of Care and the Duty of Loyalty [no-exercise]
           ================================================================ */}
       <Slide id="fiduciary-duties-the-duty-of-care-and-the-duty-of-loyalty" border className="!py-8">
         <SlideHeading className="!mb-5">Fiduciary Duties: The Duty of Care and the Duty of Loyalty</SlideHeading>
@@ -270,7 +270,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          07 · Evaluative Invariance as a Normative Standard for AI Advisors [exercise]
+          07. Evaluative Invariance as a Normative Standard for AI Advisors [exercise]
           ================================================================ */}
       <Slide
         id="evaluative-invariance-as-a-normative-standard-for-ai-advisors"
@@ -324,7 +324,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          08 · Part 2: Conflicts of Duty When Platforms Deploy Shopping Assistants [no-exercise]
+          08. Part 2: Conflicts of Duty When Platforms Deploy Shopping Assistants [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Conflicts of Duty When Platforms Deploy Shopping Assistants" />
@@ -332,7 +332,7 @@ export default function Week8Page() {
           <Ruled>
             <p className={BIG}>
               In practice, most conversational shopping assistants are not paid
-              for directly by consumers through subscription fees; they are
+              for directly by consumers through subscription fees. They are
               deployed free of charge by retail marketplaces, search engines, and
               booking platforms that earn high-margin revenue from sponsored
               advertising.
@@ -353,7 +353,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          09 · The Structural Conflict of Dual Agency on Ad-Funded Platforms [no-exercise]
+          09. The Structural Conflict of Dual Agency on Ad-Funded Platforms [no-exercise]
           ================================================================ */}
       <Slide id="the-structural-conflict-of-dual-agency-on-ad-funded-platforms" border className="!py-8">
         <SlideHeading className="!mb-5">The Structural Conflict of Dual Agency on Ad-Funded Platforms</SlideHeading>
@@ -407,7 +407,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          10 · How Role Assignment Induces Sponsorship Bias in LLM Recommenders [no-exercise]
+          10. How Role Assignment Induces Sponsorship Bias in LLM Recommenders [no-exercise]
           ================================================================ */}
       <Slide id="how-role-assignment-induces-sponsorship-bias-in-llm-recommenders" border className="!py-8">
         <SlideHeading className="!mb-5">How Role Assignment Induces Sponsorship Bias in LLM Recommenders</SlideHeading>
@@ -464,7 +464,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          11 · Platform Attribution and the Semantic Trigger of Sponsorship Bias [exercise]
+          11. Platform Attribution and the Semantic Trigger of Sponsorship Bias [exercise]
           ================================================================ */}
       <Slide
         id="platform-attribution-and-the-semantic-trigger-of-sponsorship-bias"
@@ -523,7 +523,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          12 · Discussion: The Platform's Concierge
+          12. Discussion: The Platform's Concierge
           ================================================================ */}
       <Slide id="discussion-the-platforms-concierge" border className="!py-8">
         <SlideHeading>The Platform&apos;s Concierge</SlideHeading>
@@ -546,7 +546,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          13 · Part 3: Why Human-Centric Disclosure Mandates Fail in Agentic Markets [no-exercise]
+          13. Part 3: Why Human-Centric Disclosure Mandates Fail in Agentic Markets [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Why Human-Centric Disclosure Mandates Fail in Agentic Markets" />
@@ -573,7 +573,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          14 · How Sponsorship Disclosures Work for Human Shoppers [no-exercise]
+          14. How Sponsorship Disclosures Work for Human Shoppers [no-exercise]
           ================================================================ */}
       <Slide id="how-sponsorship-disclosures-work-for-human-shoppers" border className="!py-8">
         <SlideHeading className="!mb-5">How Sponsorship Disclosures Work for Human Shoppers</SlideHeading>
@@ -613,7 +613,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          15 · The Intermediation Gap [no-exercise]
+          15. The Intermediation Gap [no-exercise]
           ================================================================ */}
       <Slide
         id="the-intermediation-gap-when-disclosures-reach-the-agent-instead-of-the-consumer"
@@ -652,7 +652,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          16 · Explicit Disclosure Wording Versus Beneficiary Specification [exercise]
+          16. Explicit Disclosure Wording Versus Beneficiary Specification [exercise]
           ================================================================ */}
       <Slide
         id="explicit-disclosure-wording-versus-beneficiary-specification"
@@ -697,7 +697,7 @@ export default function Week8Page() {
           <Ruled>
             <P>
               In agent-mediated commerce, therefore, traditional label-wording
-              mandates are insufficient on their own;{" "}
+              mandates are insufficient on their own.{" "}
               <Term tone="signal">
                 effective governance requires regulating the principal-beneficiary
                 instructions inside the agent&apos;s system prompt
@@ -709,7 +709,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          17 · Part 4: Search Rankings and Position Bias When AI Agents Shop [no-exercise]
+          17. Part 4: Search Rankings and Position Bias When AI Agents Shop [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Search Rankings and Position Bias When AI Agents Shop" />
@@ -738,7 +738,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          18 · Why Human Search Rankings Command a Premium [no-exercise]
+          18. Why Human Search Rankings Command a Premium [no-exercise]
           ================================================================ */}
       <Slide id="why-human-search-rankings-command-a-premium" border className="!py-8">
         <SlideHeading className="!mb-5">Why Human Search Rankings Command a Premium</SlideHeading>
@@ -755,7 +755,7 @@ export default function Week8Page() {
               <P>
                 A human shopper scans from the top of the page downward, faces
                 physical and cognitive scrolling costs, and typically terminates
-                search after inspecting very few options; in hotel search field
+                search after inspecting very few options. In hotel search field
                 data, the average human session produces only 1.12 clicks (Ursu,
                 2018).
               </P>
@@ -775,7 +775,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          19 · Search Depth, Non-Monotonic Inspection, and the No-Buy Gap in AI Agents [exercise]
+          19. Search Depth, Non-Monotonic Inspection, and the No-Buy Gap in AI Agents [exercise]
           ================================================================ */}
       <Slide
         id="search-depth-non-monotonic-inspection-and-the-no-buy-gap-in-ai-agents"
@@ -816,7 +816,7 @@ export default function Week8Page() {
                 <Term tone="signal">inspection probability reaches its minimum between ranks 62 and 81</Term>{" "}
                 and rises again at the very bottom, consistent with the
                 lost-in-the-middle attention limitation of transformer models (Liu
-                et al., 2024; Wadi &amp; Ma, 2026a).
+                et al., 2024, Wadi &amp; Ma, 2026a).
               </P>
             </Ruled>
             <Ruled weight="thin">
@@ -833,7 +833,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          20 · Reasoning Effort as a Configurable Governance Lever [no-exercise]
+          20. Reasoning Effort as a Configurable Governance Lever [no-exercise]
           ================================================================ */}
       <Slide id="reasoning-effort-as-a-configurable-governance-lever" border className="!py-8">
         <SlideHeading className="!mb-5">Reasoning Effort as a Configurable Governance Lever</SlideHeading>
@@ -882,7 +882,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          21 · Part 5: Governing Agent-Mediated Marketplaces [no-exercise]
+          21. Part 5: Governing Agent-Mediated Marketplaces [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Governing Agent-Mediated Marketplaces" />
@@ -905,7 +905,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          22 · Six Steps of a Fiduciary and Ranking Audit for Shopping Assistants [exercise]
+          22. Six Steps of a Fiduciary and Ranking Audit for Shopping Assistants [exercise]
           ================================================================ */}
       <Slide
         id="six-steps-of-a-fiduciary-and-ranking-audit-for-shopping-assistants"
@@ -949,7 +949,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          23 · Structural Remedies: Prompt Mandates, Safe Harbors, and Separation [exercise]
+          23. Structural Remedies: Prompt Mandates, Safe Harbors, and Separation [exercise]
           ================================================================ */}
       <Slide
         id="structural-remedies-prompt-mandates-safe-harbors-and-separation"
@@ -1017,7 +1017,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          24 · Discussion: Regulating Sponsored Recommendations in Chatbots
+          24. Discussion: Regulating Sponsored Recommendations in Chatbots
           ================================================================ */}
       <Slide id="discussion-regulating-sponsored-recommendations-in-chatbots" border className="!py-8">
         <SlideHeading>Regulating Sponsored Recommendations in Chatbots</SlideHeading>
@@ -1040,7 +1040,7 @@ export default function Week8Page() {
       </Slide>
 
       {/* ================================================================
-          25 · Key Takeaways
+          25. Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>
@@ -1049,7 +1049,7 @@ export default function Week8Page() {
             "Agentic commerce transforms the buyer-seller dyad into a triad across four levels of delegation, shifting product inspection and disclosure processing from the human consumer to the AI agent.",
             "Under fiduciary ethics, an AI shopping advisor owes the consumer duties of care and loyalty, operationalized through the standard of evaluative invariance (Wadi & Ma, 2026c).",
             "Naming the deploying platform as the agent's principal in the system prompt induces sponsorship bias, attenuating the penalty applied to sponsored listings from 50.2 to 29.2 percentage points and weakening skepticism in the agent's reasoning traces (Wadi & Ma, 2026c).",
-            "When paid listings carry platform-attributed labels (\"Promoted by the platform\"), platform-delegated agents reverse the penalty and favor paid listings (74.2 percent versus 34.6 percent); stricter label wording (\"Sponsored\") lowers overall selection but fails to close this delegation gap, whereas adding a single consumer-beneficiary sentence to the system prompt eliminates the attenuation (Wadi & Ma, 2026c).",
+            "When paid listings carry platform-attributed labels (\"Promoted by the platform\"), platform-delegated agents reverse the penalty and favor paid listings (74.2 percent versus 34.6 percent). Stricter label wording (\"Sponsored\") lowers overall selection but fails to close this delegation gap, whereas adding a single consumer-beneficiary sentence to the system prompt eliminates the attenuation (Wadi & Ma, 2026c).",
             "Across 100-item search pages, AI agents inspect more listings than humans (1.63 to 5.83 versus 1.12 clicks), rarely exercise the no-buy option, and exhibit a non-monotonic lost-in-the-middle inspection trough between ranks 62 and 81 (Wadi & Ma, 2026a).",
             "Position bias at the choice stage is moderated by reasoning effort rather than raw model size, enabling position-neutral choices at roughly 4 percent of frontier model cost when deliberation effort is properly configured (Wadi & Ma, 2026a).",
             "Governing agentic marketplaces requires fiduciary beneficiary prompt mandates, disclosure pass-through to the human user, calibrated reasoning effort, and factorial evaluative-invariance audits.",

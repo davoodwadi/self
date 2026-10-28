@@ -26,9 +26,9 @@ week: week8
 - Shoppers and marketplace algorithms evaluate a product's review profile across four distinct statistical dimensions.
 
 ## Volume, Valence, Variance, and Recency of Reviews [exercise]
-- Review volume is the total count of posted reviews, which serves as a cue for product popularity and statistical reliability; a 4.7 average rating across 800 reviews carries far more persuasive weight than a 5.0 average across two reviews.
+- Review volume is the total count of posted reviews, which serves as a cue for product popularity and statistical reliability. A 4.7 average rating across 800 reviews carries far more persuasive weight than a 5.0 average across two reviews.
 - Review valence is the average numerical star rating or overall sentiment polarity (positive versus negative) expressed across reviews.
-- Review variance (or dispersion) measures how spread out individual ratings are around the average; a 3.5 star average formed by bimodal 5-star and 1-star ratings signals a polarizing niche product that fits some buyers well and others poorly, whereas unimodal 3.5-star ratings signal mediocre quality for everyone.
+- Review variance (or dispersion) measures how spread out individual ratings are around the average. A 3.5 star average formed by bimodal 5-star and 1-star ratings signals a polarizing niche product that fits some buyers well and others poorly, whereas unimodal 3.5-star ratings signal mediocre quality for everyone.
 - Review recency tracks how fresh the latest reviews are, alerting buyers when a once-reliable product has suffered a recent manufacturing change or software bug.
 - Paradoxically, products with a 4.6 to 4.8 star average and a few constructive critical reviews often convert better than products with a spotless 5.0 average across dozens of reviews, because shoppers suspect that a flawless profile has been censored or fabricated.
 
@@ -57,7 +57,7 @@ week: week8
 - Flat (non-contingent) incentives offer a modest reward merely for completing an honest review regardless of its rating or popularity, primarily increasing submission participation rates.
 - Performance-contingent incentives tie the payout to downstream metrics of review performance, such as word count, media attachments, or helpfulness votes cast by readers (Wadi, Fredette, Sénécal, & Legoux, 2026).
 - Empirical analysis shows that performance-contingent incentives alter how reviewers construct their text, encouraging strategic effort inflation (e.g., padding length or adopting exaggerated stylistic tropes designed to win votes) and shifting expressed sentiment compared with unincentivized organic reviews.
-- Furthermore, never condition an incentive on the review being positive (e.g., offering a rebate only for a 5-star rating); conditioned-positivity incentives severely bias rating valence and are explicitly illegal under FTC, Canadian Competition Bureau, and EU consumer protection rules.
+- Furthermore, never condition an incentive on the review being positive (e.g., offering a rebate only for a 5-star rating). Conditioned-positivity incentives severely bias rating valence and are explicitly illegal under FTC, Canadian Competition Bureau, and EU consumer protection rules.
 - Even when an unconditional incentive is offered, ethics and advertising law require disclosing inside the review that the reviewer received an incentive in exchange for their post.
 
 ## Discussion: Designing a Post-Purchase Review Program
@@ -87,7 +87,7 @@ week: week8
 - Major marketplaces now display AI-generated review summaries at the top of the review section, using large language models to synthesize recurring pros and cons (e.g., "Customers praise the battery life and quiet motor, but several mention the lid latch feels fragile") with clickable attribute chips.
 - These summaries shift shopper attention from the raw star average toward specific recurring attribute themes mentioned in the text body.
 - At the same time, bad actors attempt to use generative AI to write fluent, varied fake reviews at near-zero cost, forcing platform detection models to look beyond text fluency toward verified transaction graphs and reviewer histories.
-- When consumers delegate shopping to an AI agent, the agent evaluates both the structured `AggregateRating` schema and sample review passages; however, under bounded algorithmic rationality, agents can over-weight salient summary statistics or vivid extreme reviews unless prompted to evaluate rating distributions and verified sample sizes systematically (Wadi & Ma, 2026a).
+- When consumers delegate shopping to an AI agent, the agent evaluates both the structured `AggregateRating` schema and sample review passages. However, under bounded algorithmic rationality, agents can over-weight salient summary statistics or vivid extreme reviews unless prompted to evaluate rating distributions and verified sample sizes systematically (Wadi & Ma, 2026a).
 
 ## Discussion: When the AI Summary Highlights a Flaw
 - Discussion: A travel backpack brand maintains a strong 4.6-star average across 1,400 reviews on a major marketplace. However, after the marketplace introduces an LLM-generated review summary paragraph above the reviews, the summary's final sentence states, "Several customers note that the water-bottle pocket is too tight for 32-ounce bottles," and conversion drops by 14 percent. How should the brand respond across product engineering, PDP expectation setting, and review management without violating platform manipulation rules?

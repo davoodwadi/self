@@ -46,7 +46,7 @@ export default function BarrierOrdinalSlide() {
         </h2>
         <p className="p-body" style={{ maxWidth: "60ch", marginBottom: "3rem", fontSize: "1.0625rem" }}>
           Entropy treats all categories as unordered. It cannot distinguish a model split between
-          adjacent responses from one split between the extremes — even when the two distributions
+          adjacent responses from one split between the extremes: even when the two distributions
           have identical <InlineMath>{"H"}</InlineMath>.
         </p>
 

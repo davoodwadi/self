@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 03 — figures
+   Week 03, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea: a census of the consumer
    market, a body receiving stimuli, a fork into information sources, a
@@ -10,10 +10,10 @@
    a matched pair, and two documents for one product.
 
    Conventions carried over from Week 01/02/04:
-     · viewBox width 800 (400 for column plates), flat fills, hairline rules
-     · INK carries the neutral case, SIGNAL the operative one, COUNTER the
+     - viewBox width 800 (400 for column plates), flat fills, hairline rules
+     - INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or outward-looking state
-     · every label reuses words from the slide the plate sits on
+     - every label reuses words from the slide the plate sits on
    ========================================================================== */
 
 import React from "react";
@@ -41,7 +41,7 @@ import { Person2 } from "../_visuals/objects";
 import { ChatCircleText, HandGrabbing, Newspaper, Storefront } from "@phosphor-icons/react";
 
 /* ==========================================================================
-   1 · CENSUS — the consumer market is individuals and households
+   1. CENSUS: the consumer market is individuals and households
    ========================================================================== */
 
 export function ConsumerMarket() {
@@ -101,7 +101,7 @@ export function ConsumerMarket() {
 }
 
 /* ==========================================================================
-   2 · STIMULI — a need triggered from inside or from outside
+   2. STIMULI: a need triggered from inside or from outside
    ========================================================================== */
 
 export function NeedStimuli() {
@@ -144,7 +144,7 @@ export function NeedStimuli() {
 }
 
 /* ==========================================================================
-   3 · FORK — may or may not search; four sources, personal the strongest
+   3. FORK: may or may not search. Four sources, personal the strongest
    ========================================================================== */
 
 export function SearchFork() {
@@ -167,7 +167,7 @@ export function SearchFork() {
     );
   };
   return (
-    <Frame height={256} label="Once a need is triggered, a consumer may search or may not. Searching fans out to four sources: two people (personal), a storefront (commercial), a newspaper (public), and a hand holding the product (experiential); the line to personal is the heaviest, marked most effective.">
+    <Frame height={256} label="Once a need is triggered, a consumer may search or may not. Searching fans out to four sources: two people (personal), a storefront (commercial), a newspaper (public), and a hand holding the product (experiential). The line to personal is the heaviest, marked most effective.">
       <circle cx={56} cy={150} r={10} fill={SIGNAL} />
       <Key x={56} y={178} anchor="middle" fill={SIGNAL} size={10}>
         NEED
@@ -224,7 +224,7 @@ export function SearchFork() {
 }
 
 /* ==========================================================================
-   4 · SLOPEGRAPH — one choice set, evaluated differently
+   4. SLOPEGRAPH: one choice set, evaluated differently
    ========================================================================== */
 
 export function ChoiceSetSlope() {
@@ -287,7 +287,7 @@ export function ChoiceSetSlope() {
 }
 
 /* ==========================================================================
-   5 · INTERRUPTED LANE — intention to decision, with two forces between
+   5. INTERRUPTED LANE: intention to decision, with two forces between
    ========================================================================== */
 
 export function IntentionToDecision() {
@@ -297,7 +297,7 @@ export function IntentionToDecision() {
     { y: 165, n: "3", name: "BRAND D", top: false },
   ];
   return (
-    <Frame height={236} label="The consumer ranks brands, forms a purchase intention for the most preferred one, and moves toward a purchase decision; attitudes of others and unexpected situational factors come in between.">
+    <Frame height={236} label="The consumer ranks brands, forms a purchase intention for the most preferred one, and moves toward a purchase decision. Attitudes of others and unexpected situational factors come in between.">
       <Key x={125} y={48} anchor="middle" fill={INK3} size={10}>
         RANKS BRANDS
       </Key>
@@ -352,7 +352,7 @@ export function IntentionToDecision() {
 }
 
 /* ==========================================================================
-   6 · TIMELINE — the marketer's job runs past the purchase
+   6. TIMELINE: the marketer's job runs past the purchase
    ========================================================================== */
 
 export function PostpurchaseTimeline() {
@@ -394,7 +394,7 @@ export function PostpurchaseTimeline() {
 }
 
 /* ==========================================================================
-   7 · CALMING WAVE — what could the brand say to settle it?
+   7. CALMING WAVE: what could the brand say to settle it?
    ========================================================================== */
 
 export function DissonanceCalm() {
@@ -421,7 +421,7 @@ export function DissonanceCalm() {
 }
 
 /* ==========================================================================
-   8 · NESTED RINGS — four kinds of influence around the buyer
+   8. NESTED RINGS: four kinds of influence around the buyer
    ========================================================================== */
 
 export function InfluenceRings({ compact = false }: { compact?: boolean } = {}) {
@@ -488,7 +488,7 @@ export function InfluenceRings({ compact = false }: { compact?: boolean } = {}) 
 }
 
 /* ==========================================================================
-   9 · LEARNING COLUMN — what a person learns from society (400 wide)
+   9. LEARNING COLUMN: what a person learns from society (400 wide)
    ========================================================================== */
 
 export function LearnedFromSociety() {
@@ -518,7 +518,7 @@ export function LearnedFromSociety() {
 }
 
 /* ==========================================================================
-   10 · FIELD OF SUBCULTURES — groups with shared values inside a culture
+   10. FIELD OF SUBCULTURES: groups with shared values inside a culture
    ========================================================================== */
 
 export function SubcultureField() {
@@ -569,7 +569,7 @@ export function SubcultureField() {
 }
 
 /* ==========================================================================
-   11 · SOCIOGRAM — groups around the consumer, direct and indirect
+   11. SOCIOGRAM: groups around the consumer, direct and indirect
    ========================================================================== */
 
 export function SocialWeb() {
@@ -653,7 +653,7 @@ export function SocialWeb() {
 }
 
 /* ==========================================================================
-   12 · PERCEPTION SEQUENCE — select, organize, interpret
+   12. PERCEPTION SEQUENCE: select, organize, interpret
    ========================================================================== */
 
 export function PerceptionSequence() {
@@ -728,7 +728,7 @@ export function PerceptionSequence() {
 }
 
 /* ==========================================================================
-   13 · SPECTRUM — expertise or lifestyle?
+   13. SPECTRUM: expertise or lifestyle?
    ========================================================================== */
 
 export function ExpertiseLifestyle() {
@@ -760,7 +760,7 @@ export function ExpertiseLifestyle() {
 }
 
 /* ==========================================================================
-   14 · TWO LANES — selling to final consumers, or to organizations
+   14. TWO LANES: selling to final consumers, or to organizations
    ========================================================================== */
 
 export function ConsumerAndBusinessLanes() {
@@ -818,7 +818,7 @@ export function ConsumerAndBusinessLanes() {
 }
 
 /* ==========================================================================
-   15 · TRIPTYCH — buyers, derived demand, and fluctuation
+   15. TRIPTYCH: buyers, derived demand, and fluctuation
    ========================================================================== */
 
 export function MarketStructureTriptych() {
@@ -885,7 +885,7 @@ export function MarketStructureTriptych() {
 }
 
 /* ==========================================================================
-   16 · ROUND TABLE — five roles around one purchase decision
+   16. ROUND TABLE: five roles around one purchase decision
    ========================================================================== */
 
 export function BuyingCenterTable({ round = false }: { round?: boolean } = {}) {
@@ -960,7 +960,7 @@ export function BuyingCenterTable({ round = false }: { round?: boolean } = {}) {
 }
 
 /* ==========================================================================
-   17 · MATCHED PAIR — trained salesperson, trained purchasing agent
+   17. MATCHED PAIR: trained salesperson, trained purchasing agent
    ========================================================================== */
 
 function Badge({ x, y }: { x: number; y: number }) {
@@ -1014,7 +1014,7 @@ export function MatchedExperts() {
 }
 
 /* ==========================================================================
-   18 · TWO DOCUMENTS — one product, different materials per role
+   18. TWO DOCUMENTS: one product, different materials per role
    ========================================================================== */
 
 export function TwoBrochures({ column = false }: { column?: boolean } = {}) {
@@ -1134,7 +1134,7 @@ export function TwoBrochures({ column = false }: { column?: boolean } = {}) {
 }
 
 /* ==========================================================================
-   Conclusion glyphs — each echoes a plate already seen
+   Conclusion glyphs: each echoes a plate already seen
    ========================================================================== */
 
 export function GlyphRoute() {

@@ -17,7 +17,7 @@ week: week2
 - Two people exposed to the exact same advertisement often walk away with completely different impressions.
 
 ## The Three Stages of Perception [exercise]
-[figure: PerceptionFunnel — the three sequential stages: Exposure, Attention, and Interpretation]
+[figure: PerceptionFunnel: the three sequential stages: Exposure, Attention, and Interpretation]
 - Perception occurs in three sequential stages.
 - Stage 1 is Exposure. Sensory stimuli come within the range of a person's sensory receptors.
 - Stage 2 is Attention. The mind allocates mental processing capacity to a specific stimulus.
@@ -25,7 +25,7 @@ week: week2
 - Most stimuli get filtered out during exposure and attention before reaching interpretation.
 
 ## Sensory Marketing: Beyond Sight and Sound
-[figure: SensoryWheel — the five sensory modalities in marketing: vision, audition, olfaction, haptics, and gustation]
+[figure: SensoryWheel: the five sensory modalities in marketing: vision, audition, olfaction, haptics, and gustation]
 - Sensory marketing engages the consumer's senses to influence their feelings and choices.
 - Sight creates visual identity, package recognition, and color associations.
 - Sound shapes shopping tempo and brand memory through musical jingles.
@@ -41,7 +41,7 @@ week: week2
 - The minimum difference between two stimuli needed for detection is called the Just Noticeable Difference, or JND.
 
 ## Weber's Law: When Differences Matter [exercise]
-[figure: WebersLawScale — Weber's Law demonstrating proportional change needed for detection in package updates vs price increases]
+[figure: WebersLawScale: Weber's Law demonstrating proportional change needed for detection in package updates vs price increases]
 - Weber's Law states that the stronger the initial stimulus, the greater the change must be for people to notice it.
 - The needed change is not a fixed amount. It is a constant proportion of the initial intensity.
 - A ten-cent price increase on a one-dollar candy bar is noticeable right away because it is a ten percent jump.
@@ -67,7 +67,7 @@ week: week2
 - Sensory marketing still matters, because the consumer uses the product with all five senses after the sale.
 
 ## Interpretation and Gestalt Principles [exercise]
-[figure: GestaltPrinciples — Closure, Similarity, and Figure-Ground visual examples in brand design]
+[figure: GestaltPrinciples: Closure, Similarity, and Figure-Ground visual examples in brand design]
 - People do not interpret stimuli in isolation. They organize them into patterns.
 - Gestalt psychology explains how people construct whole meanings from individual elements.
 - The Closure principle means people fill in missing pieces to perceive a complete picture, such as an incomplete brand logo.

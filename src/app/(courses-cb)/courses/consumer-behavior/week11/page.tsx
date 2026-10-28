@@ -15,9 +15,9 @@ import exercisesData from "./exercises.json";
 import * as V from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR · WEEK 11 — CULTURE, SUBCULTURES, AND SOCIAL CLASS
+// CONSUMER BEHAVIOR | WEEK 11: CULTURE, SUBCULTURES, AND SOCIAL CLASS
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx, drawn in the course's Editorial Sketch style (see
 // ../CLAUDE.md). The week's fixed cast: the consumer (one Person look), the
@@ -27,9 +27,9 @@ import * as V from "./visuals";
 // phrase, its key idea. Defined terms are bold ink, and every rule is ink.
 //
 // Interactive plates (students act on the drawing itself), both on real data:
-//   · Hofstede's dimensions: pick two countries and compare them on five
+//   - Hofstede's dimensions: pick two countries and compare them on five
 //     rails (Hofstede's published scores).
-//   · Ethnocentrism in AI models: pick a model and see its CETSCALE scores
+//   - Ethnocentrism in AI models: pick a model and see its CETSCALE scores
 //     for statements about four countries, or only the country-pairing shift
 //     (Wadi, Ghodrat & Philp, 2026).
 //
@@ -138,7 +138,7 @@ function Ruled({
 /**
  * A plate that lives in a column: a figure well without the 680px floor. A
  * `wide` (800-unit) plate keeps a legible minimum width on phones and scrolls
- * inside its well there, like `Figure`; from lg up the column is wide enough.
+ * inside its well there, like `Figure`. From lg up the column is wide enough.
  */
 function Plate({
   children,
@@ -288,7 +288,7 @@ export default function Week11() {
               Week 11
             </p>
             <p className="type-caption mt-2">
-              Consumer Behavior · Davood Wadi, PhD
+              Consumer Behavior | Davood Wadi, PhD
             </p>
             <Title className="mt-6 !max-w-[20ch]">
               Culture, Subcultures, and Social Class

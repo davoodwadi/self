@@ -19,11 +19,11 @@ import exercisesData from "./exercises.json";
 import { PilotSamples, AssociationNotCause, SwitchingPanel, ControlledEffect, DesignSequence, InquiriesToPurchases, DefinitionShift, InternalCoverage, DataRelationships, AuditLog, ListingExperiment } from "./visuals";
 
 // ============================================================================
-// WEEK 02 — RESEARCH DESIGN AND SECONDARY DATA
+// WEEK 02: RESEARCH DESIGN AND SECONDARY DATA
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx; the interactive ones are built around one action
+// live in ./visuals.tsx. The interactive ones are built around one action
 // each (draw a sample, hold a variable fixed, add switchers, move what
 // happens anyway, widen a definition).
 //
@@ -46,7 +46,7 @@ export default function Week2() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 02 · Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 02: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           Research Design and <span className="text-[var(--signal)]">Secondary Data</span>
         </Title>
@@ -966,7 +966,7 @@ export default function Week2() {
           </Plate>
         </div>
         <p className="type-quote mt-7 w-full border-t-2 border-[var(--ink)] pt-5 !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]">
-          A descriptive audit identifies a pattern in agent behavior; a causal experiment tests whether a specific
+          A descriptive audit identifies a pattern in agent behavior. A causal experiment tests whether a specific
           factor produces it.
         </p>
       </Slide>

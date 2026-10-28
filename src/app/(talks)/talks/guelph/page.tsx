@@ -4,9 +4,9 @@ import { Slide } from "@/components/slide-components/SlideComponents";
 import { Ruled } from "@/app/(courses-mra)/courses/marketing-research-analytics/_visuals/kit";
 import DeckKeys from "./_components/DeckKeys";
 import {
+  LikertPlate,
   PartyPlate,
   PositionCurvePlate,
-  LikertPlate,
   SponsorStudy,
   ToolLabStudy,
   TriadPlate,
@@ -105,101 +105,173 @@ export default function Page() {
     <Deck>
       {/* 1. Title */}
       <Slide id="title">
-        <div className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-14">
-          <div className="min-w-0">
-            <Kicker>
-              Candidate for Assistant Professor in AI and Business, Department of Marketing and Consumer Studies, Lang
-              School
-            </Kicker>
-            <h1 className="type-display !text-[clamp(2.8rem,5.6vw,4.9rem)]">
-              When <span className={KEY}>AI Agents</span> Shop for Us
-            </h1>
-            <p
-              className="mt-6 max-w-[40ch] text-[clamp(1.2rem,1.8vw,1.5rem)] italic leading-snug text-[var(--ink-2)]"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              Large language models and agentic AI as surrogate consumers
+        <div className="w-full">
+          <Kicker>
+            Candidate for Assistant Professor in AI and Business, Department of Marketing and Consumer Studies, Lang
+            School
+          </Kicker>
+          <h1 className="type-display max-w-[20ch] !text-[clamp(2.8rem,5.4vw,4.8rem)]">
+            Decision-Making in Digital and <span className={KEY}>AI-Mediated</span> Marketplaces
+          </h1>
+          <p
+            className="mt-6 max-w-[50ch] text-[clamp(1.2rem,1.9vw,1.6rem)] italic leading-snug text-[var(--ink-2)]"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            From human e-commerce behavior to large language models as surrogate consumers
+          </p>
+          <div className="mt-12 grid max-w-[64rem] gap-6 border-t border-[var(--ink)] pt-5 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+            <p className="text-[1.15rem] text-[var(--ink-2)]">
+              <strong className="font-semibold text-[var(--ink)]">Davood Wadi, PhD</strong> (Marketing, AI specialization,
+              HEC Montréal)
             </p>
-            <div className="mt-10 max-w-[52ch] border-t border-[var(--ink)] pt-5">
-              <p className="text-[1.1rem] text-[var(--ink-2)]">
-                <strong className="font-semibold text-[var(--ink)]">Davood Wadi, PhD</strong> (Marketing &amp; AI, HEC
-                Montréal)
-              </p>
-              <ul className="mt-2 space-y-1 text-[1rem] text-[var(--ink-3)]">
-                <li>Researcher, McGill Centre for the Convergence of Health and Economics</li>
-                <li>AI Research Scientist, General Motors R&amp;D</li>
-              </ul>
-            </div>
+            <ul className="space-y-1 text-[1rem] text-[var(--ink-3)]">
+              <li>Researcher, McGill Centre for the Convergence of Health and Economics</li>
+              <li>AI Research Scientist, General Motors R&amp;D</li>
+            </ul>
           </div>
-          <TriadPlate />
         </div>
       </Slide>
 
-      {/* 2. Research program */}
-      <Slide id="program" border className="!py-8">
-        <Kicker>Research Program</Kicker>
-        <Heading>How do AI agents make purchasing decisions as surrogate consumers?</Heading>
-        <ul className="grid w-full gap-6 md:grid-cols-4 md:gap-8">
-          <li className="border-t border-[var(--ink)] pt-3 text-[1.02rem] leading-relaxed">
-            <Fig>38%</Fig> of U.S. consumers have used generative AI for online shopping
-          </li>
-          <li className="border-t border-[var(--ink)] pt-3 text-[1.02rem] leading-relaxed">
-            AI referral traffic to retail sites grew <Fig>10x</Fig> from mid-2024 to mid-2025
-          </li>
-          <li className="border-t border-[var(--rule-2)] pt-3 text-[1.02rem] leading-relaxed">
-            Marketing theory assumes a human consumer processes price cues, search rankings, and sponsorship
-            disclosures
-          </li>
-          <li className="border-t-2 border-[var(--signal)] pt-3 text-[1.02rem] leading-relaxed">
-            Increasingly, an autonomous AI agent acts as a{" "}
-            <strong className={`font-semibold ${KEY}`}>surrogate consumer</strong>
-          </li>
-        </ul>
-        <div className="mt-9 w-full">
-          <div className="grid grid-cols-[3rem_minmax(0,4fr)_minmax(0,6fr)_minmax(0,4fr)] gap-x-5 border-b border-[var(--ink)] pb-2 text-[13px] font-semibold text-[var(--ink)]">
-            <span />
-            <span>Research Stream</span>
+      {/* 2. Published foundation */}
+      <Slide id="foundation" border className="!py-8">
+        <Kicker>Published Foundation: Digital Marketing &amp; E-Commerce</Kicker>
+        <Heading wide>How platform incentives and beneficiary framing shape online product reviews</Heading>
+        <p className="type-quote mb-8 max-w-[52ch] !text-[clamp(1.25rem,2vw,1.65rem)]">
+          My dissertation examined how e-commerce platforms motivate human consumers to contribute online product reviews
+          without crowding out intrinsic motivation or review quality.
+        </p>
+        <div className="grid w-full gap-8 lg:grid-cols-2 lg:gap-10">
+          {[
+            {
+              study: "Beneficiary of Altruism & Financial Incentives",
+              design: (
+                <>
+                  Quasi-experimental field study with a major North American online retailer and controlled experiment
+                  showing that framing review requests around <strong>helping the company</strong> (vs.{" "}
+                  <strong>helping other customers</strong>) crowds out intrinsic motivation when paired with financial
+                  incentives
+                </>
+              ),
+              pub: (
+                <>
+                  <strong>Journal of Electronic Commerce Research</strong> (Published, 2026, with Legoux, Fredette &amp;
+                  Sénécal)
+                </>
+              ),
+            },
+            {
+              study: "Performance-Contingent Incentives & Reviewer Experience",
+              design: (
+                <>
+                  Retailer field experiment showing that performance-contingent rewards reinforce{" "}
+                  <strong>reciprocal exchange</strong>, increasing review decisions and length among first-time reviewers
+                  while reducing review propensity when paired with reciprocal-exchange messaging
+                </>
+              ),
+              pub: (
+                <>
+                  <strong>Journal of Research in Interactive Marketing</strong> (Published, 2026, with Fredette, Sénécal
+                  &amp; Legoux)
+                </>
+              ),
+            },
+          ].map((c) => (
+            <div key={c.study} className="flex flex-col border-t-2 border-[var(--ink)] bg-[var(--paper-2)] px-6 py-5">
+              <p className="text-[12px] font-semibold text-[var(--ink-3)]">Study</p>
+              <h3 className="type-h2 mt-1 !text-[1.35rem]">{c.study}</h3>
+              <p className="mt-4 text-[12px] font-semibold text-[var(--ink-3)]">Design &amp; Mechanism</p>
+              <p className={`${BODY} mt-1 !text-[0.98rem]`}>{c.design}</p>
+              <p className="mt-4 text-[12px] font-semibold text-[var(--ink-3)]">Publication</p>
+              <p className={`${BODY} mt-1 !text-[0.98rem]`}>{c.pub}</p>
+            </div>
+          ))}
+        </div>
+      </Slide>
+
+      {/* 3. The transformation */}
+      <Slide id="transformation" border className="!py-8">
+        <Kicker>The Transformation: When AI Agents Shop on Our Behalf</Kicker>
+        <Heading wide>What happens when consumers delegate marketplace decisions to AI agents?</Heading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:gap-12">
+          <ul className="flex min-w-0 flex-col gap-3">
+            <li className="border-t border-[var(--ink)] pt-2.5 text-[1rem] leading-relaxed">
+              <Fig>38%</Fig> of U.S. consumers have used generative AI for online shopping, and retail AI referral
+              traffic grew <Fig>10x</Fig> from mid-2024 to mid-2025 (Pandya 2025)
+            </li>
+            <li className="border-t border-[var(--rule-2)] pt-2.5 text-[1rem] leading-relaxed">
+              Digital marketplaces (product reviews, price cues, search rankings, and sponsorship disclosures) were
+              designed for <strong className="font-semibold text-[var(--ink)]">human shoppers</strong>
+            </li>
+            <li className="border-t-2 border-[var(--signal)] pt-2.5 text-[1rem] leading-relaxed">
+              Increasingly, an autonomous AI agent acts as a{" "}
+              <strong className={`font-semibold ${KEY}`}>surrogate consumer</strong> at the center of the{" "}
+              <strong className="font-semibold text-[var(--ink)]">Consumer, AI Agent, Firm</strong> triad
+            </li>
+          </ul>
+          <TriadPlate />
+        </div>
+        <div className="mt-6 w-full">
+          <div className="grid grid-cols-[minmax(0,4fr)_minmax(0,7fr)_minmax(0,5fr)] gap-x-6 border-b border-[var(--ink)] pb-2 text-[13px] font-semibold text-[var(--ink)]">
+            <span>AI Research Stream</span>
             <span>Core Question</span>
-            <span>Manuscript</span>
+            <span>Manuscripts</span>
           </div>
           {[
             {
-              stream: "Bounded Rationality & Search",
-              q: "How do acquisition costs and prompt specificity affect susceptibility to pricing cues?",
-              title: "Shopping by Algorithm",
-              venue: "JAMS",
-              status: "(Major Revision)",
+              stream: "1. Bounded Rationality & Search",
+              q: <>How do acquisition costs and prompt specificity affect an AI agent&apos;s susceptibility to pricing cues?</>,
+              ms: (
+                <>
+                  <em>Shopping by Algorithm</em>, <strong>JAMS</strong> (Major Revision)
+                </>
+              ),
             },
             {
-              stream: "Principal-Agent Conflicts",
-              q: "Does an AI agent's evaluation of sponsored listings depend on who deploys the AI agent?",
-              title: "Whom Do AI Agents Serve?",
-              venue: "JBR",
-              status: "(In Preparation)",
+              stream: "2. Principal-Agent Conflicts",
+              q: (
+                <>
+                  Extending beneficiary framing (<em>JECR</em> 2026): does an AI agent&apos;s evaluation of sponsored
+                  listings depend on who deploys it?
+                </>
+              ),
+              ms: (
+                <>
+                  <em>Whom Do AI Agents Serve?</em>, <strong>JBR</strong> (In Preparation)
+                </>
+              ),
             },
             {
-              stream: "Position Bias & Consideration",
-              q: "Does search rank affect choice when search is delegated to AI agents?",
-              title: "Does Rank Still Matter?",
-              venue: "Marketing Letters",
-              status: "(Under Review)",
+              stream: "3. Position Bias & Consideration",
+              q: <>Does search rank still govern inspection and choice when an AI agent reads the entire results page?</>,
+              ms: (
+                <>
+                  <em>Does Rank Still Matter?</em>, <strong>Marketing Letters</strong> (Under Review)
+                </>
+              ),
             },
-          ].map((r, i) => (
+            {
+              stream: "4. Methods & Distributional Models",
+              q: (
+                <>
+                  How do we measure LLM response distributions and train decision models to sample human subpopulations?
+                </>
+              ),
+              ms: (
+                <>
+                  <strong>Findings of EMNLP</strong> (Published, 2025). <em>Every Token Counts</em> (
+                  <strong>ACL 2027</strong> sub.). <em>Decision Models</em> (<strong>Marketing Science</strong>, In Prep)
+                </>
+              ),
+            },
+          ].map((r) => (
             <div
               key={r.stream}
-              className="grid grid-cols-[3rem_minmax(0,4fr)_minmax(0,6fr)_minmax(0,4fr)] items-baseline gap-x-5 border-b border-[var(--rule)] py-4"
+              className="grid grid-cols-[minmax(0,4fr)_minmax(0,7fr)_minmax(0,5fr)] items-baseline gap-x-6 border-b border-[var(--rule)] py-2.5"
             >
-              <span
-                aria-hidden
-                className="text-[2rem] leading-none text-transparent [-webkit-text-stroke:1.2px_var(--ink-3)]"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                {i + 1}
-              </span>
-              <span className="type-h2 !text-[1.3rem]">{r.stream}</span>
-              <span className="text-[1rem] leading-relaxed">{r.q}</span>
-              <span className="text-[1rem] leading-relaxed">
-                <em>{r.title}</em>, <strong className="font-semibold text-[var(--ink)]">{r.venue}</strong> {r.status}
+              <span className="type-h2 !text-[1.1rem] !leading-snug">{r.stream}</span>
+              <span className="text-[0.95rem] leading-snug">{r.q}</span>
+              <span className="text-[0.95rem] leading-snug [&_strong]:font-semibold [&_strong]:text-[var(--ink)]">
+                {r.ms}
               </span>
             </div>
           ))}
@@ -252,7 +324,7 @@ export default function Page() {
           <Ruled weight="thin">
             <p className={`${BODY} !text-[0.97rem]`}>
               <strong>Multilevel Moderated Mediation:</strong> Acquisition cost × vague goal prompt reduces choice
-              optimality via diagnostic acquisition truncation (Index = -0.451* in Study 1; -0.228* in Study 2)
+              optimality via diagnostic acquisition truncation (Index = -0.451* in Study 1, -0.228* in Study 2)
             </p>
           </Ruled>
         </div>
@@ -277,22 +349,25 @@ export default function Page() {
           <Ruled tone="signal" weight="thin">
             <p className={`${BODY} !text-[0.95rem]`}>
               <strong>Moderated Mediation (PROCESS Model 8):</strong> Platform delegation reduces pre-choice
-              skepticism toward sponsored listings (<em>M</em> = 4.80 vs. 6.19 on a 1–7 scale), attenuating the
+              skepticism toward sponsored listings (<em>M</em> = 4.80 vs. 6.19 on a 1 to 7 scale), attenuating the
               sponsorship penalty (interaction <em>b</em> = 3.99, <em>p</em> &lt; .001)
             </p>
           </Ruled>
           <Ruled weight="thin">
             <p className={`${BODY} !text-[0.95rem]`}>
-              <strong>Study 2 (System-One Decision Models):</strong> Replicates on exact log-odds across{" "}
-              <strong>6 non-generative decision models</strong> in a single forward pass (<em>N</em> = 8,640; 360
-              position-balanced Latin-square stimuli)
+              <strong>
+                Beneficiary Remedy (extending <em>JECR</em> 2026 beneficiary framing):
+              </strong>{" "}
+              Naming the traveler as the beneficiary (<Code>Platform with consumer beneficiary</Code>) restores the
+              sponsorship penalty to <strong>48.2 pp</strong>, whereas stricter disclosure wording (
+              <em>&quot;Sponsored&quot;</em> vs. <em>&quot;Promoted&quot;</em>, Study 3) does not close the gap
             </p>
           </Ruled>
           <Ruled weight="thin">
             <p className={`${BODY} !text-[0.95rem]`}>
-              <strong>Study 3 (Disclosure Decomposition):</strong> Attributing the placement to the platform (
-              <em>&quot;by the platform&quot;</em>), rather than disclosure wording (<em>&quot;Sponsored&quot;</em> vs.{" "}
-              <em>&quot;Promoted&quot;</em>), drives the divergence between principals
+              <strong>Study 2 (System-One Decision Models):</strong> Replicates on exact log-odds across{" "}
+              <strong>6 non-generative decision models</strong> in a single forward pass (<em>N</em> = 8,640. 360
+              position-balanced Latin-square stimuli)
             </p>
           </Ruled>
         </div>
@@ -309,9 +384,9 @@ export default function Page() {
         </Kicker>
         <Heading wide>AI agents search deeper than humans but exhibit a lost-in-the-middle position effect</Heading>
         <p className={`${BODY} mb-5 max-w-[110ch]`}>
-          100-listing Expedia hotel results page in randomized order: <strong>7,000 main experiment sessions</strong> (5
-          proprietary LLMs across 2 to 4 reasoning-effort levels) + <strong>2,000 open-weight LLM sessions</strong> +{" "}
-          <strong>1,500 robustness sessions</strong> vs. <strong>166,036 human impressions</strong> (Ursu 2018)
+          100-listing Expedia hotel results page in randomized order: <em>7,000 main experiment sessions</em> (5
+          proprietary LLMs across 2 to 4 reasoning-effort levels) + <em>2,000 open-weight LLM sessions</em> +{" "}
+          <em>1,500 robustness sessions</em> vs. <em>166,036 human impressions</em> (Ursu 2018)
         </p>
         <div className="grid w-full items-center gap-6 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-10">
           <div className="flex min-w-0 flex-col gap-4">
@@ -342,16 +417,16 @@ export default function Page() {
                   <>
                     U-shaped middle penalty{" "}
                     <span className="font-normal text-[var(--ink-2)]">
-                      (minimum at <strong className="font-semibold text-[var(--ink)]">ranks 62 to 81</strong>,
+                      (minimum at ranks 62 to 81,
                       significant in 12 of 14 conditions)
                     </span>
                   </>,
                 ],
               ].map(([m, h, a]) => (
                 <tr key={m as string}>
-                  <td className={`${TD} font-semibold text-[var(--ink)]`}>{m}</td>
+                  <td className={TD}>{m}</td>
                   <td className={`${TD} text-[var(--counter)]`}>{h}</td>
-                  <td className={`${TD} font-semibold text-[var(--ink)]`}>{a}</td>
+                  <td className={TD}>{a}</td>
                 </tr>
               ))}
             </tbody>
@@ -370,6 +445,49 @@ export default function Page() {
         <p className={`${CITE} mt-4`}>
           Wadi &amp; Ma (2026), <em>N</em> = 10,500 total agent sessions vs. <em>N</em> = 166,036 human sessions
         </p>
+      </Slide>
+
+      {/* 7. AI methodology */}
+      <Slide id="methodology" border className="!py-8">
+        <Kicker>AI Methodology: Distributional Evaluation of LLMs</Kicker>
+        <Heading>Measuring LLM decisions as probability distributions rather than single outputs</Heading>
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
+          <p className="type-quote !text-[clamp(1.3rem,2.1vw,1.8rem)]">
+            A single LLM response is one draw from a probability distribution. Valid behavioral inference requires{" "}
+            <span className={KEY}>estimating the underlying distribution</span> across controlled experimental designs.
+          </p>
+          <LikertPlate />
+        </div>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-2 md:gap-10">
+          <Ruled weight="thin">
+            <h3 className="type-h2 !text-[1.15rem]">
+              Monte-Carlo Behavioral Evaluation of LLMs (<em>Findings of EMNLP 2025</em>, with Marc Fredette)
+            </h3>
+            <ul className="mt-2 space-y-1.5">
+              <li className={`${BODY} !text-[0.95rem]`}>
+                Repeated independent sampling across factorial stimulus designs for non-parametric confidence intervals
+              </li>
+              <li className={`${BODY} !text-[0.95rem]`}>
+                Demonstrates that LLMs exhibit systematic cognitive biases under prompt framing
+              </li>
+            </ul>
+          </Ruled>
+          <Ruled weight="thin">
+            <h3 className="type-h2 !text-[1.15rem]">
+              Exact Token-Level Likert Distributions (<em>Every Token Counts</em>, <em>arXiv:2608.10503</em>, for{" "}
+              <em>ACL 2027</em>, with Mohsen Ghodrat &amp; Matthew Philp)
+            </h3>
+            <ul className="mt-2 space-y-1.5">
+              <li className={`${BODY} !text-[0.95rem]`}>
+                Extracts exact discrete probability distributions directly from single-pass token log-probabilities with{" "}
+                <strong>zero sampling error</strong>
+              </li>
+              <li className={`${BODY} !text-[0.95rem]`}>
+                Demonstrated on consumer ethnocentrism and country-of-origin bias in fully crossed factorial designs
+              </li>
+            </ul>
+          </Ruled>
+        </div>
       </Slide>
 
       {/* 5b. Paper 4 */}
@@ -442,7 +560,7 @@ export default function Page() {
           </h3>
           <ul className="mt-2 grid gap-x-10 gap-y-1.5 md:grid-cols-2">
             <li className={`${BODY} !text-[0.93rem]`}>
-              <em>Unseen nutrition-specific human data</em> (6 labeling arms × 21 product-choice and Likert items; 5,060
+              <em>Unseen nutrition-specific human data</em> (6 labeling arms × 21 product-choice and Likert items, 5,060
               subpopulation targets): fine-tuning on general ISSP data lowers KL at every scale.
             </li>
             <li className={`${BODY} !text-[0.93rem]`}>
@@ -455,82 +573,6 @@ export default function Page() {
           Wadi &amp; Ma (2026), 767,484 ISSP responses, 2,926 SubPOP GSS targets, and 5,060 Grummon (2025) nutrition RCT
           subpopulation targets
         </p>
-      </Slide>
-
-      {/* 6. Methods */}
-      <Slide id="methods" border className="!py-8">
-        <Kicker>Methodological Foundations</Kicker>
-        <Heading>Measuring LLM decisions as probability distributions rather than single outputs</Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
-          <p className="type-quote !text-[clamp(1.3rem,2.1vw,1.8rem)]">
-            A single LLM response is one draw from a probability distribution. Valid behavioral inference requires{" "}
-            <span className={KEY}>estimating the underlying distribution</span> across controlled experimental designs.
-          </p>
-          <LikertPlate />
-        </div>
-        <div className="mt-6 grid w-full gap-6 md:grid-cols-3 md:gap-8">
-          {[
-            {
-              head: <>Monte-Carlo Behavioral Sampling</>,
-              items: [
-                <>Repeated independent sampling across factorial stimulus designs for non-parametric confidence intervals</>,
-                <>
-                  <em>Findings of EMNLP 2025</em> (Wadi &amp; Fredette)
-                </>,
-              ],
-            },
-            {
-              head: (
-                <>
-                  Exact Likert-Scale Distributions (<em>Every Token Counts</em>)
-                </>
-              ),
-              items: [
-                <>
-                  Extracts exact discrete probability distributions directly from single-pass token log-probabilities
-                  with <strong>zero sampling error</strong>
-                </>,
-                <>
-                  Demonstrated on consumer ethnocentrism and country-of-origin bias (<em>arXiv:2608.10503</em>, in
-                  preparation for <em>ACL 2027</em>, with Ghodrat &amp; Philp)
-                </>,
-              ],
-            },
-            {
-              head: <>Information-Board Process Tracing &amp; Human Digital-Market Studies</>,
-              items: [
-                <>
-                  <strong>Tool-Lab</strong> stateful attribute-acquisition tracing (<em>JAMS</em>)
-                </>,
-                <>
-                  Altruistic messaging and performance-contingent financial incentives in online product reviews:{" "}
-                  <strong>
-                    <em>JRIM</em> (2026)
-                  </strong>{" "}
-                  and{" "}
-                  <strong>
-                    <em>JECR</em> (2026)
-                  </strong>{" "}
-                  (with Sénécal, Fredette &amp; Legoux)
-                </>,
-              ],
-            },
-          ].map((m, i) => (
-            <Ruled key={i} weight="thin">
-              <h3 className="type-h2 !text-[1.2rem]">{m.head}</h3>
-              <ul className="mt-2 space-y-1.5">
-                {m.items.map((it, k) => (
-                  <li
-                    key={k}
-                    className={`${BODY} !text-[0.93rem] ${k === m.items.length - 1 ? "!text-[var(--ink-3)]" : ""}`}
-                  >
-                    {it}
-                  </li>
-                ))}
-              </ul>
-            </Ruled>
-          ))}
-        </div>
       </Slide>
 
       {/* 7. Future research */}
@@ -669,11 +711,11 @@ export default function Page() {
               prior: (
                 <>
                   <span className="block">
-                    <em>MIT Applied AI and Data Science Program</em>;
+                    <em>MIT Applied AI and Data Science Program</em>.
                   </span>
                   <span className="mt-1 block">
                     Johns Hopkins <em>Advanced Agentic AI</em> &amp;{" "}
-                    <em>Designing and Building Agentic Systems</em>;
+                    <em>Designing and Building Agentic Systems</em>.
                   </span>
                   <span className="mt-1 block">
                     UT Austin <em>Advanced Agentic AI Solutions</em> &amp;{" "}
@@ -739,8 +781,19 @@ export default function Page() {
             </strong>{" "}
             (formative quizzing), <strong>AILSS</strong>{" "}
             (accessible learning support for students with disabilities, UCW
-            Explore Grant), <strong>Behavioral-LLM</strong> &amp;{" "}
-            <strong>Spreed.dev</strong> (no-code classroom LLM experiments), BC
+            Explore Grant),{" "}
+            <strong>
+              <a className={LINK} href="https://www.behavioral-llm.com/">
+                Behavioral-LLM
+              </a>
+            </strong>{" "}
+            &amp;{" "}
+            <strong>
+              <a className={LINK} href="https://spreed.dev/">
+                Spreed.dev
+              </a>
+            </strong>{" "}
+            (no-code classroom LLM experiments), BC
             DQAB program review board
           </p>
         </div>

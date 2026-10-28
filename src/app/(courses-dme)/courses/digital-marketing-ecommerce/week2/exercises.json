@@ -65,7 +65,7 @@
       },
       {
         "id": "free-returns",
-        "text": "'Arrives Thursday 14 May · Free returns for 100 days' printed just under the add-to-cart button.",
+        "text": "'Arrives Thursday 14 May | Free returns for 100 days' printed just under the add-to-cart button.",
         "answer": "risk",
         "explanation": "An exact delivery date and a free return window near the button counter the risk of buying unseen."
       },
@@ -94,12 +94,12 @@
     "slide_id": "macro-conversions-micro-conversions-and-funnel-diagnostics",
     "question_text": "A shoe store's week: 10,000 sessions, 6,000 product page views, 2,400 add-to-carts and 240 paid orders. Last month the same store had 2,300 add-to-carts and 920 orders. What is the most likely place to look first?",
     "hint": "Compute each step's transition rate and compare which one changed.",
-    "correct_answer_citation": "Week 02 · Macro-Conversions, Micro-Conversions, and Funnel Diagnostics",
+    "correct_answer_citation": "Week 02: Macro-Conversions, Micro-Conversions, and Funnel Diagnostics",
     "correct_answer_index": 2,
     "options": [
       {
         "option_text": "The product thumbnails and prices on the category pages.",
-        "option_explanation": "Category-to-product movement (60% of sessions reach a product page) is not where the change happened; add-to-carts are almost unchanged."
+        "option_explanation": "Category-to-product movement (60% of sessions reach a product page) is not where the change happened. Add-to-carts are almost unchanged."
       },
       {
         "option_text": "The ad campaigns bringing traffic, since the overall conversion rate is only 2.4%.",
@@ -150,7 +150,7 @@
         "id": "known-abandoner",
         "term": "A logged-in customer leaves a full cart and closes the tab.",
         "match": "Send a reminder email within a few hours, without a discount code.",
-        "explanation": "Recovery messages recapture sales; routine discounts would teach buyers to abandon on purpose."
+        "explanation": "Recovery messages recapture sales. Routine discounts would teach buyers to abandon on purpose."
       }
     ]
   },
@@ -201,18 +201,18 @@
   {
     "type": "quiz",
     "slide_id": "schema-org-json-ld-and-merchant-product-feeds",
-    "question_text": "A kettle's page shows '$39.99 · In stock · ★ 4.7 (812)' in large type, but its JSON-LD Product block contains only the name and brand. What can an AI shopping agent reading the JSON-LD verify about this kettle?",
+    "question_text": "A kettle's page shows '$39.99 | In stock | ★ 4.7 (812)' in large type, but its JSON-LD Product block contains only the name and brand. What can an AI shopping agent reading the JSON-LD verify about this kettle?",
     "hint": "JSON-LD states attribute-value pairs independent of the visual layout.",
-    "correct_answer_citation": "Week 02 · Schema.org, JSON-LD, and Merchant Product Feeds",
+    "correct_answer_citation": "Week 02: Schema.org, JSON-LD, and Merchant Product Feeds",
     "correct_answer_index": 0,
     "options": [
       {
-        "option_text": "Only the name and the brand; the price, stock status and rating are not declared.",
+        "option_text": "Only the name and the brand. The price, stock status and rating are not declared.",
         "option_explanation": "Correct. The block would need Offer fields (price, priceCurrency, availability) and an AggregateRating to state them."
       },
       {
         "option_text": "Everything shown on the page, because JSON-LD copies the visible text automatically.",
-        "option_explanation": "JSON-LD is written separately from the layout; it declares only what is put in it."
+        "option_explanation": "JSON-LD is written separately from the layout. It declares only what is put in it."
       },
       {
         "option_text": "The price and stock status, because those are required in every Product block.",
@@ -220,7 +220,7 @@
       },
       {
         "option_text": "Nothing at all, because agents cannot read JSON-LD.",
-        "option_explanation": "Crawlers and agents read structured metadata blocks; this block simply says little."
+        "option_explanation": "Crawlers and agents read structured metadata blocks. This block simply says little."
       }
     ]
   },

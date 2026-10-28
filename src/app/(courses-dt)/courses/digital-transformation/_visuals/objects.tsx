@@ -1,11 +1,11 @@
 /* ==========================================================================
-   Digital Transformation — objects (Flat Silhouette)
+   Digital Transformation, objects (Flat Silhouette)
    --------------------------------------------------------------------------
    The course's fixed cast, built on ./kit:
-     · Shop     — the business
-     · Doc      — information (a paper page)
-     · Person   — every human (bust in profile)
-     · Coins    — revenue (SIGNAL: what is gained)
+     - Shop, the business
+     - Doc, information (a paper page)
+     - Person, every human (bust in profile)
+     - Coins, revenue (SIGNAL: what is gained)
    ========================================================================== */
 
 import React from "react";
@@ -98,7 +98,7 @@ export function Coins({ x, y, n = 4 }: { x: number; y: number; n?: number }) {
   );
 }
 
-/* -- cast: Person (bust in profile, facing right; 100 tall, bottom-centre) -- */
+/* -- cast: Person (bust in profile, facing right, 100 tall, bottom-centre) -- */
 
 export type Hair =
   | "bob"
@@ -541,7 +541,7 @@ export function Person({
 }
 
 /* ==========================================================================
-   Class discussion — two people face each other
+   Class discussion: two people face each other
    ========================================================================== */
 
 export function Conversation({

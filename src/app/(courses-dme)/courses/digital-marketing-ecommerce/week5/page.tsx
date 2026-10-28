@@ -14,7 +14,7 @@ export default function Week5Page() {
   return (
     <SlideDeck label="Week 05">
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 05 · Digital Marketing &amp; E-Commerce</Subtitle>
+        <Subtitle variant="hero">Week 05: Digital Marketing &amp; E-Commerce</Subtitle>
         <Title className="mt-6 !max-w-[25ch]">Programmatic Advertising and AdTech Infrastructure</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <Plate className="mt-8 !max-w-4xl !p-2 sm:!p-3">
@@ -139,7 +139,7 @@ export default function Week5Page() {
         <SlideHeading>Viewability, Invalid Traffic (Ad Fraud), and Brand Safety</SlideHeading>
         <div className="grid w-full items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid content-start gap-3">
-            <Ruled weight="thin"><P><Term tone="ink">Ad viewability</Term> measures whether an ad served into the DOM actually entered the user&apos;s visible screen viewport; under Media Rating Council (MRC) standards, a display ad counts as viewable only if <Term>at least 50 percent of its pixels remain on screen for at least one continuous second</Term> (two seconds for video).</P></Ruled>
+            <Ruled weight="thin"><P><Term tone="ink">Ad viewability</Term> measures whether an ad served into the DOM actually entered the user&apos;s visible screen viewport. Under Media Rating Council (MRC) standards, a display ad counts as viewable only if <Term>at least 50 percent of its pixels remain on screen for at least one continuous second</Term> (two seconds for video).</P></Ruled>
             <Ruled weight="thin"><P><Term tone="ink">Invalid Traffic (IVT) and ad fraud</Term> occur when non-human bots, malware hijacks, hidden 1x1 pixel iframes, ad stacking, or spoofed domain names generate fake impressions and clicks to steal advertiser budgets.</P></Ruled>
           </div>
           <div className="grid content-start gap-3">

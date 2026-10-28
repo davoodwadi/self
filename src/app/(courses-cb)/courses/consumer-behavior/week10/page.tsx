@@ -15,10 +15,10 @@ import exercisesData from "./exercises.json";
 import * as V from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR · WEEK 10 — SOCIAL INFLUENCES, REFERENCE GROUPS, AND
+// CONSUMER BEHAVIOR | WEEK 10: SOCIAL INFLUENCES, REFERENCE GROUPS, AND
 // WORD OF MOUTH
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx, drawn in the course's Editorial Sketch style (see
 // ../CLAUDE.md). The week's fixed cast: the shopper (one Person look), the
@@ -29,11 +29,11 @@ import * as V from "./visuals";
 // phrase, its key idea. Defined terms are bold ink, and every rule is ink.
 //
 // Interactive plates (students act on the drawing itself):
-//   · Asch's room: answer the line test, then switch the room (alone, the
+//   - Asch's room: answer the line test, then switch the room (alone, the
 //     group answering first, writing the answer down) on Asch's (1956) data.
-//   · Who asks whom: switch the product category and watch whose advice
+//   - Who asks whom: switch the product category and watch whose advice
 //     spreads: each opinion leader in one category, the market maven in all.
-//   · Fake reviews: add synthetic five-star reviews (SIMULATED) and watch the
+//   - Fake reviews: add synthetic five-star reviews (SIMULATED) and watch the
 //     AI summary, the shopper and the AI agent change their pick.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
@@ -152,7 +152,7 @@ function Ruled({
 /**
  * A plate that lives in a column: a figure well without the 680px floor. A
  * `wide` (800-unit) plate keeps a legible minimum width on phones and scrolls
- * inside its well there, like `Figure`; from lg up the column is wide enough.
+ * inside its well there, like `Figure`. From lg up the column is wide enough.
  */
 function Plate({
   children,
@@ -302,7 +302,7 @@ export default function Week10() {
               Week 10
             </p>
             <p className="type-caption mt-2">
-              Consumer Behavior · Davood Wadi, PhD
+              Consumer Behavior | Davood Wadi, PhD
             </p>
             <Title className="mt-6 !max-w-[20ch]">
               Social Influences, Reference Groups, and Word of Mouth

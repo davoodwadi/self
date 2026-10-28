@@ -225,7 +225,7 @@
     "slide_id": "saturation",
     "question_text": "A researcher records the new codes that each interview produces. Interviews 1 to 8 produced 9, 6, 4, 3, 2, 1, 1 and 0 new codes, and interviews 9 to 11 produced none. The research question is narrow and the participants are similar. What should the researcher do?",
     "hint": "Think about the definition of saturation.",
-    "correct_answer_citation": "Week 03 · Saturation",
+    "correct_answer_citation": "Week 03: Saturation",
     "correct_answer_index": 2,
     "options": [
       {
@@ -334,7 +334,7 @@
       },
       {
         "id": "paid",
-        "text": "This listing is marked as sponsored; its high position may reflect payment rather than quality.",
+        "text": "This listing is marked as sponsored. Its high position may reflect payment rather than quality.",
         "answer": "skeptic",
         "explanation": "The agent questions the listing because the sponsorship label indicates a paid placement."
       }

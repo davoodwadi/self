@@ -4,7 +4,7 @@ A deck that reads like an industrial standard: DIN-style condensed type, clause 
 
 ## Look
 
-- **One stroke system.** Every pictogram is built from a few fixed weights: 11 (torso), 8 (legs), 7 (arms), 6 (shafts), 5 (ground lines), 4 (object outlines), 3.5 (text lines on objects). Round caps and joins everywhere. Heads are solid circles of r 9. This consistency is what keeps the pictograms from looking like clip art; never mix in a stroke weight outside the system.
+- **One stroke system.** Every pictogram is built from a few fixed weights: 11 (torso), 8 (legs), 7 (arms), 6 (shafts), 5 (ground lines), 4 (object outlines), 3.5 (text lines on objects). Round caps and joins everywhere. Heads are solid circles of r 9. This consistency is what keeps the pictograms from looking like clip art. Never mix in a stroke weight outside the system.
 - **Solid black for machines and rules.** A system or rule is a solid ink block with rounded corners (r 6) and its name reversed out in white condensed caps.
 - **Documents** are white with a folded corner and two rounded text lines.
 - **Signs carry the verdict.** Outcomes are ISO sign forms placed at the lower-right of the object they judge: a red prohibition circle with diagonal bar for harm or refusal, a green rounded square with a white check for the safe or protected outcome.
@@ -17,10 +17,10 @@ A deck that reads like an industrial standard: DIN-style condensed type, clause 
 | paper | page | `#F2F2EF` |
 | ink | pictograms, headings, rule blocks | `#1B1B1B` |
 | ink-2 | body | `#222222` |
-| red (prohibition) | harm, refusal, violation; the slide's key idea | `#C1272D` |
+| red (prohibition) | harm, refusal, violation. The slide's key idea | `#C1272D` |
 | green (safe condition) | protected right, compliant outcome | `#00804A` |
 
-The two colours always keep their sign meanings; never use them decoratively.
+The two colours always keep their sign meanings. Never use them decoratively.
 
 ## Type
 

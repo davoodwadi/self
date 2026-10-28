@@ -37,9 +37,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 05 — TRANSPARENCY, EXPLAINABILITY, AND REASONING TRACES
+// WEEK 05: TRANSPARENCY, EXPLAINABILITY, AND REASONING TRACES
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md;
+// Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
 // is drawn beside it. Plates live in ./visuals.tsx.
 // ============================================================================
@@ -52,10 +52,10 @@ export default function Week5Page() {
   return (
     <SlideDeck label="Week 05">
       {/* ================================================================
-          01 · Title Slide
+          01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 05 · Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 05: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Transparency, Explainability, and Reasoning Traces</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[52ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.25rem,2vw,1.7rem)]">
@@ -68,7 +68,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          02 · Why Opacity Is a Governance Problem [no-exercise]
+          02. Why Opacity Is a Governance Problem [no-exercise]
           ================================================================ */}
       <Slide id="why-opacity-is-a-governance-problem" border className="!py-8">
         <SlideHeading>Why Opacity Is a Governance Problem</SlideHeading>
@@ -106,7 +106,7 @@ export default function Week5Page() {
           </Ruled>
           <Ruled weight="thin">
             <P>
-              Yet not every stakeholder needs the same form of visibility; an
+              Yet not every stakeholder needs the same form of visibility. An
               explanation that helps a machine learning engineer diagnose
               overfitting is rarely useful to a rejected credit applicant.
             </P>
@@ -115,7 +115,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          03 · Transparency Versus Explainability Versus Interpretability [exercise]
+          03. Transparency Versus Explainability Versus Interpretability [exercise]
           ================================================================ */}
       <Slide
         id="transparency-versus-explainability-versus-interpretability"
@@ -179,7 +179,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          04 · Part 1: Intrinsic Interpretability Versus Black-Box Complexity [no-exercise]
+          04. Part 1: Intrinsic Interpretability Versus Black-Box Complexity [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Intrinsic Interpretability Versus Black-Box Complexity" />
@@ -210,7 +210,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          05 · Intrinsically Interpretable Models [no-exercise]
+          05. Intrinsically Interpretable Models [no-exercise]
           ================================================================ */}
       <Slide id="intrinsically-interpretable-models-linear-models-generalized-additive-models-and-rule-lists" border className="!py-8">
         <SlideHeading className="[&_h2]:!max-w-none">Intrinsically Interpretable Models: Linear Models, Generalized Additive Models, and Rule Lists</SlideHeading>
@@ -261,7 +261,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          06 · Black-Box Models [no-exercise]
+          06. Black-Box Models [no-exercise]
           ================================================================ */}
       <Slide id="black-box-models-ensembles-deep-neural-networks-and-foundation-models" border className="!py-8">
         <SlideHeading>Black-Box Models: Ensembles, Deep Neural Networks, and Foundation Models</SlideHeading>
@@ -305,7 +305,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          07 · When High-Stakes Decisions Should Use Interpretable Models [exercise]
+          07. When High-Stakes Decisions Should Use Interpretable Models [exercise]
           ================================================================ */}
       <Slide
         id="when-high-stakes-decisions-should-use-interpretable-models"
@@ -354,7 +354,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          08 · Part 2: Post-Hoc Feature Attribution Methods [no-exercise]
+          08. Part 2: Post-Hoc Feature Attribution Methods [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Post-Hoc Feature Attribution Methods" />
@@ -383,7 +383,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          09 · Global Versus Local Explanations [no-exercise]
+          09. Global Versus Local Explanations [no-exercise]
           ================================================================ */}
       <Slide id="global-versus-local-explanations" border className="!py-8">
         <SlideHeading>Global Versus Local Explanations</SlideHeading>
@@ -428,7 +428,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          10 · Permutation Feature Importance and Partial Dependence [no-exercise]
+          10. Permutation Feature Importance and Partial Dependence [no-exercise]
           ================================================================ */}
       <Slide id="permutation-feature-importance-and-partial-dependence" border className="!py-8">
         <SlideHeading>Permutation Feature Importance and Partial Dependence</SlideHeading>
@@ -480,7 +480,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          11 · Local Surrogates and Game-Theoretic Attributions: LIME and SHAP [no-exercise]
+          11. Local Surrogates and Game-Theoretic Attributions: LIME and SHAP [no-exercise]
           ================================================================ */}
       <Slide id="local-surrogates-and-game-theoretic-attributions-lime-and-shap" border className="!py-8">
         <SlideHeading>Local Surrogates and Game-Theoretic Attributions: LIME and SHAP</SlideHeading>
@@ -535,7 +535,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          12 · Limitations and Vulnerabilities of Post-Hoc Attributions [exercise]
+          12. Limitations and Vulnerabilities of Post-Hoc Attributions [exercise]
           ================================================================ */}
       <Slide
         id="limitations-and-vulnerabilities-of-post-hoc-attributions"
@@ -550,7 +550,7 @@ export default function Week5Page() {
               <Ruled weight="thin" className="mb-2 !pt-3">
                 <P>
                   Feature attributions describe how the model uses its inputs,
-                  not the causal effect of those variables in the real world; a
+                  not the causal effect of those variables in the real world. A
                   high SHAP value for a proxy variable reflects predictive
                   association inside the model rather than a causal mechanism.
                 </P>
@@ -612,7 +612,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          13 · Discussion: The Disputed Credit Denial
+          13. Discussion: The Disputed Credit Denial
           ================================================================ */}
       <Slide id="discussion-the-disputed-credit-denial" border className="!py-8">
         <SlideHeading>The Disputed Credit Denial</SlideHeading>
@@ -635,7 +635,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          14 · Part 3: Counterfactual Explanations and Actionable Recourse [no-exercise]
+          14. Part 3: Counterfactual Explanations and Actionable Recourse [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Counterfactual Explanations and Actionable Recourse" />
@@ -662,7 +662,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          15 · Counterfactual Explanations: What Would Have Changed the Decision [no-exercise]
+          15. Counterfactual Explanations: What Would Have Changed the Decision [no-exercise]
           ================================================================ */}
       <Slide id="counterfactual-explanations-what-would-have-changed-the-decision" border className="!py-8">
         <SlideHeading>Counterfactual Explanations: What Would Have Changed the Decision</SlideHeading>
@@ -681,7 +681,7 @@ export default function Week5Page() {
               <P>
                 Rather than opening the black box or approximating gradients, a
                 counterfactual explanation takes the form: &ldquo;Your loan
-                application was denied; if your annual income had been 4,000
+                application was denied. If your annual income had been 4,000
                 dollars higher or your credit card utilization had been below 30
                 percent, your application would have been approved.&rdquo;
               </P>
@@ -710,7 +710,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          16 · From Explanation to Actionable Recourse [exercise]
+          16. From Explanation to Actionable Recourse [exercise]
           ================================================================ */}
       <Slide
         id="from-explanation-to-actionable-recourse"
@@ -753,7 +753,7 @@ export default function Week5Page() {
             <Ruled weight="thin" className="mb-3">
               <P>
                 Recourse audits also test whether the cost and difficulty of
-                achieving recourse are equal across demographic groups; a model
+                achieving recourse are equal across demographic groups. A model
                 that satisfies group prediction parity can still impose a much
                 larger recourse burden on one group by placing its rejected
                 members farther from the decision boundary.
@@ -776,7 +776,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          17 · Part 4: Reasoning Traces in Large Language Models as Verbal Protocols [no-exercise]
+          17. Part 4: Reasoning Traces in Large Language Models as Verbal Protocols [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Reasoning Traces in Large Language Models as Verbal Protocols" />
@@ -807,7 +807,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          18 · Chain-of-Thought and Reasoning Traces as Verbal Protocols [no-exercise]
+          18. Chain-of-Thought and Reasoning Traces as Verbal Protocols [no-exercise]
           ================================================================ */}
       <Slide id="chain-of-thought-and-reasoning-traces-as-verbal-protocols" border className="!py-8">
         <SlideHeading>Chain-of-Thought and Reasoning Traces as Verbal Protocols</SlideHeading>
@@ -855,7 +855,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          19 · Plausibility Versus Faithfulness in LLM Explanations [exercise]
+          19. Plausibility Versus Faithfulness in LLM Explanations [exercise]
           ================================================================ */}
       <Slide
         id="plausibility-versus-faithfulness-in-llm-explanations"
@@ -916,7 +916,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          20 · Auditing Reasoning Traces Alongside Observed Choices [exercise]
+          20. Auditing Reasoning Traces Alongside Observed Choices [exercise]
           ================================================================ */}
       <Slide
         id="auditing-reasoning-traces-alongside-observed-choices"
@@ -929,8 +929,8 @@ export default function Week5Page() {
           <P className="!max-w-none">
             Because reasoning traces can omit true drivers or rationalize biased
             outputs, behavioral governance{" "}
-            <Term tone="ink">never relies on reasoning traces in isolation</Term>;
-            it pairs coded verbal protocols with controlled factorial choice
+            <Term tone="ink">never relies on reasoning traces in isolation</Term>.
+            It pairs coded verbal protocols with controlled factorial choice
             experiments.
           </P>
         </Ruled>
@@ -987,7 +987,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          21 · Part 5: Designing Disclosures and Documentation for Stakeholders [no-exercise]
+          21. Part 5: Designing Disclosures and Documentation for Stakeholders [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Designing Disclosures and Documentation for Stakeholders" />
@@ -1007,7 +1007,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          22 · Tailoring Explanations to Stakeholder Needs [exercise]
+          22. Tailoring Explanations to Stakeholder Needs [exercise]
           ================================================================ */}
       <Slide
         id="tailoring-explanations-to-stakeholder-needs"
@@ -1052,7 +1052,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          23 · Model Cards, Datasheets, and System Transparency Notes [no-exercise]
+          23. Model Cards, Datasheets, and System Transparency Notes [no-exercise]
           ================================================================ */}
       <Slide id="model-cards-datasheets-and-system-transparency-notes" border className="!py-8">
         <SlideHeading>Model Cards, Datasheets, and System Transparency Notes</SlideHeading>
@@ -1110,7 +1110,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          24 · Dark Transparency and Disclosure Overload [no-exercise]
+          24. Dark Transparency and Disclosure Overload [no-exercise]
           ================================================================ */}
       <Slide id="dark-transparency-and-disclosure-overload" border className="!py-8">
         <SlideHeading>Dark Transparency and Disclosure Overload</SlideHeading>
@@ -1156,7 +1156,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          25 · Discussion: When the Reasoning Trace Looks Clean
+          25. Discussion: When the Reasoning Trace Looks Clean
           ================================================================ */}
       <Slide id="discussion-when-the-reasoning-trace-looks-clean" border className="!py-8">
         <SlideHeading>When the Reasoning Trace Looks Clean</SlideHeading>
@@ -1180,7 +1180,7 @@ export default function Week5Page() {
       </Slide>
 
       {/* ================================================================
-          26 · Key Takeaways
+          26. Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>
@@ -1188,7 +1188,7 @@ export default function Week5Page() {
           {[
             "Process transparency discloses how a system is governed, intrinsic interpretability builds models whose structure is directly readable, and post-hoc explainability approximates complex black-box models after training.",
             "On high-stakes structured tabular decisions, constrained interpretable models (such as sparse regressions, GAMs, and rule lists) frequently match black-box accuracy while avoiding approximation gaps (Rudin, 2019).",
-            "Global post-hoc methods (permutation importance, PDPs) summarize overall model behavior, whereas local methods (LIME, SHAP) attribute individual predictions; both describe model correlations rather than real-world causation and can be fooled by correlated features or adversarial scaffolding.",
+            "Global post-hoc methods (permutation importance, PDPs) summarize overall model behavior, whereas local methods (LIME, SHAP) attribute individual predictions. Both describe model correlations rather than real-world causation and can be fooled by correlated features or adversarial scaffolding.",
             "Counterfactual explanations identify the smallest change that flips a decision, while actionable recourse requires that those changes involve mutable, feasible features with equitable effort across demographic groups.",
             "Reasoning traces in large language models can be coded as verbal protocols using validated codebooks (Wadi & Ma, 2026b, 2026c), but a plausible trace is not guaranteed to be a faithful record of the model's internal computation.",
             "Pairing coded reasoning traces with controlled factorial choice experiments separates genuine process mechanisms from unfaithful post-hoc rationalization.",

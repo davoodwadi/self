@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CB_DIR, DME_DIR, IM_DIR, MRA_DIR, RAI_DIR, readCurriculum } from "@/lib/curriculum";
 
 // ============================================================================
-// /courses — COURSE INDEX
+// /courses: COURSE INDEX
 // ============================================================================
 // A junction page. Seven courses, one screen, no scroll on desktop: people
 // arrive here to leave, and each course already has its own syllabus.
@@ -13,7 +13,7 @@ import { CB_DIR, DME_DIR, IM_DIR, MRA_DIR, RAI_DIR, readCurriculum } from "@/lib
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Courses · Davood Wadi, PhD",
+  title: "Courses | Davood Wadi, PhD",
   description:
     "Course websites and lecture decks by Davood Wadi, PhD: Applications of AI in Business, Consumer Behavior, Digital Marketing & E-Commerce, Digital Transformation, Introduction to Marketing, Marketing Research & Analytics, and Responsible AI & Algorithmic Governance.",
 };
@@ -125,7 +125,7 @@ export default function CoursesIndex() {
 }
 
 /* ==========================================================================
-   MASTHEAD — the title and a rule.
+   MASTHEAD: the title and a rule.
    ========================================================================== */
 
 function Masthead() {
@@ -147,7 +147,7 @@ function Masthead() {
 }
 
 /* ==========================================================================
-   COURSE CARD — the whole card is the link.
+   COURSE CARD: the whole card is the link.
    ========================================================================== */
 
 function CourseCard({ course }: { course: Course }) {

@@ -16,7 +16,7 @@ export default function BarrierDesignSlide() {
       items: [
         "Fully crossed factorial design",
         "5 models × 4 national targets",
-        "All cells filled — main effects isolated",
+        "All cells filled: main effects isolated",
         "Interaction effects visible",
       ],
     },

@@ -171,13 +171,13 @@ function Entry({ p }: { p: Paper }) {
           <Authors names={p.authors} />
           {p.venue && (
             <>
-              <span className="text-ink-3"> · </span>
+              <span className="text-ink-3">|</span>
               <em className="text-ink-3">{p.venue}</em>
             </>
           )}
           {p.links.map((l) => (
             <span key={l.href}>
-              <span className="text-ink-3"> · </span>
+              <span className="text-ink-3">|</span>
               <a href={l.href} className="link">
                 {l.label}
               </a>

@@ -45,22 +45,22 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR · WEEK 04 — MOTIVATION, NEEDS, AND VALUES
+// CONSUMER BEHAVIOR | WEEK 04: MOTIVATION, NEEDS, AND VALUES
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx (Editorial Sketch, see ../CLAUDE.md).
 //
 // Colour is rare (see the root CLAUDE.md): each slide gives SIGNAL to at most
-// one phrase, its key idea; defined terms are bold ink and every rule is ink.
+// one phrase, its key idea. Defined terms are bold ink and every rule is ink.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise that tests that slide
 // and the ones before it. Drive theory is a process, so its moments are put
-// in order; the three expectancy beliefs, intrinsic and extrinsic motives and
+// in order. The three expectancy beliefs, intrinsic and extrinsic motives and
 // crowding out, and the three motivational conflicts are told apart case by
-// case (identify); needs, wants and demand, and the
-// three kinds of value, are sorted into groups; Maslow's levels are matched to
+// case (identify). Needs, wants and demand, and the
+// three kinds of value, are sorted into groups. Maslow's levels are matched to
 // purchases.
 // ============================================================================
 
@@ -137,7 +137,7 @@ function Ruled({
 
 /**
  * A plate in a figure well. A `wide` (800-unit) plate keeps a legible minimum
- * width on phones and scrolls inside its well there; from lg up it fits.
+ * width on phones and scrolls inside its well there. From lg up it fits.
  */
 function Plate({
   children,
@@ -190,7 +190,7 @@ function Heading({
   );
 }
 
-/** Lines on the left, a plate on the right; on phones the plate follows the lines. */
+/** Lines on the left, a plate on the right. On phones the plate follows the lines. */
 function Lede({
   children,
   plate,
@@ -275,7 +275,7 @@ export default function Week4() {
             <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
               Week 04
             </p>
-            <p className="type-caption mt-2">Consumer Behavior · Davood Wadi, PhD</p>
+            <p className="type-caption mt-2">Consumer Behavior | Davood Wadi, PhD</p>
             <Title className="mt-8 !max-w-[14ch]">Motivation, Needs, and Values</Title>
             <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
               <p className="type-quote">
@@ -486,7 +486,7 @@ export default function Week4() {
         exercise={exercise["intrinsic-and-extrinsic-motivation-why-consumers-write-reviews"]}
       >
         <Heading kicker="Intrinsic and Extrinsic Motivation:">Why Consumers Write Reviews</Heading>
-        {/* The definitions lead the two-panel plate; the reward and its risk
+        {/* The definitions lead the two-panel plate. The reward and its risk
             follow beneath them, beside the plate. */}
         <div className="grid w-full items-center gap-6 lg:grid-cols-[1fr_minmax(0,400px)] lg:gap-x-12">
           <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:col-start-1 lg:row-start-1 lg:self-end">
@@ -792,7 +792,7 @@ export default function Week4() {
             },
           ]}
         />
-        {/* High and low involvement lead their plate; the delegation line
+        {/* High and low involvement lead their plate. The delegation line
             sits beneath them and leads its own plate on the right. */}
         <div className={cn("grid w-full items-center gap-6 lg:grid-cols-[1.6fr_1.1fr_0.8fr] lg:gap-x-8", GAP)}>
           <Ruled tone="ink" className="!pt-4 lg:col-start-1 lg:row-start-1 lg:self-end">

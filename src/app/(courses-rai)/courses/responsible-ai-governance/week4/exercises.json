@@ -46,12 +46,12 @@
     "slide_id": "why-shannon-entropy-fails-on-ordinal-rating-scales",
     "question_text": "An audit reads two models' token probabilities on the item 'Buying imported products is unpatriotic' (1 to 7). Model X puts 50 percent on 2 and 50 percent on 3. Model Y puts 50 percent on 2 and 50 percent on 6. A report ranks them as 'equally certain' because their Shannon entropies match. What is the strongest critique?",
     "hint": "Ask what Shannon entropy does with the distance between 2 and 3 compared with the distance between 2 and 6.",
-    "correct_answer_citation": "Week 04 · Why Shannon Entropy Fails on Ordinal Rating Scales",
+    "correct_answer_citation": "Week 04: Why Shannon Entropy Fails on Ordinal Rating Scales",
     "correct_answer_index": 1,
     "options": [
       {
         "option_text": "The report is right: equal entropy means the two models hold the same attitude.",
-        "option_explanation": "Equal entropy only means the mass is split the same way across unordered categories; it says nothing about where on the scale the mass lies."
+        "option_explanation": "Equal entropy only means the mass is split the same way across unordered categories. It says nothing about where on the scale the mass lies."
       },
       {
         "option_text": "Entropy ignores how far apart the two chosen scale points are, so it misses that Model Y is split between opposite positions while Model X holds a concentrated, moderate view.",
@@ -62,8 +62,8 @@
         "option_explanation": "Both models split their mass equally across exactly two tokens, so their Shannon entropies are identical."
       },
       {
-        "option_text": "Entropy is fine here; the problem is that the audit should have sampled text completions instead of reading token probabilities.",
-        "option_explanation": "Sampling text would only add sampling error to the same distributions; the problem lies in the uncertainty measure, not in reading the probabilities."
+        "option_text": "Entropy is fine here. The problem is that the audit should have sampled text completions instead of reading token probabilities.",
+        "option_explanation": "Sampling text would only add sampling error to the same distributions. The problem lies in the uncertainty measure, not in reading the probabilities."
       }
     ]
   },

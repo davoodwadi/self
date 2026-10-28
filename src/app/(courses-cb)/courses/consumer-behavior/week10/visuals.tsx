@@ -1,21 +1,21 @@
 /* ==========================================================================
-   Consumer Behavior · Week 10 — figures
+   Consumer Behavior | Week 10, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates for social influence, reference groups and word
    of mouth: wobbly doubled ink and loose watercolour washes set off-register.
-   Every mark comes from ../_visuals; the style rules live in ../CLAUDE.md.
+   Every mark comes from ../_visuals. The style rules live in ../CLAUDE.md.
 
    Fixed cast for this week:
-     · Person: every human, one fashion-illustration figure (the SHOPPER
+     - Person: every human, one fashion-illustration figure (the SHOPPER
        look for the consumer being influenced), varied only by hair,
        clothes and skin washes.
-     · Shoe: the sneaker the week's consumer weighs up.
-     · SpeechBubble: every piece of advice or word of mouth.
-     · ReviewCard: every online review.
-     · Agent: the AI assistant (shared: a phone with the AI sparkle).
+     - Shoe: the sneaker the week's consumer weighs up.
+     - SpeechBubble: every piece of advice or word of mouth.
+     - ReviewCard: every online review.
+     - Agent: the AI assistant (shared: a phone with the AI sparkle).
 
    Colour roles: teal is the one thing chosen, bought, lit or ticked on a
-   plate; ochre a badge, a count or a small highlight; pencil only an absent
+   plate. Ochre a badge, a count or a small highlight. Pencil only an absent
    object (an empty chair, a product put back).
    ========================================================================== */
 
@@ -172,7 +172,7 @@ function Pram({ x, y, s = 1, seed, flip = false }: { x: number; y: number; s?: n
 }
 
 /**
- * A new parent, a baby in arms, asks a parent pushing a pram; the question
+ * A new parent, a baby in arms, asks a parent pushing a pram. The question
  * bubble holds the pram with a question mark.
  */
 export function AskOtherParents() {
@@ -206,7 +206,7 @@ export function AskOtherParents() {
 
 /**
  * Seen or not: on the street, a jacket, a car and a phone are in view of
- * passers-by (open eyes); behind the closed front door, toothpaste by the
+ * passers-by (open eyes). Behind the closed front door, toothpaste by the
  * basin and a mattress on the bed are seen by no one.
  */
 export function SeenOrNot() {
@@ -331,7 +331,7 @@ function Bed({ x, y, seed }: { x: number; y: number; seed: number }) {
    Reference Groups: Membership, Aspirational, and Dissociative
    ========================================================================== */
 
-/** A team jersey's number on a Person's chest (feet at x, y; height h). */
+/** A team jersey's number on a Person's chest (feet at x, y, height h). */
 function JerseyNo({ x, y, h, n, flip = false }: { x: number; y: number; h: number; n: string; flip?: boolean }) {
   const s = h / 200;
   return (
@@ -343,7 +343,7 @@ function JerseyNo({ x, y, h, n, flip = false }: { x: number; y: number; h: numbe
 
 /**
  * A baseball cap on a Person's head: (x, y) are the Person's feet, `h` its
- * height; the brim points the way the Person faces.
+ * height. The brim points the way the Person faces.
  */
 function Cap({ x, y, h, flip = false, seed, fill = SK.charcoal, pencil = false }: { x: number; y: number; h: number; flip?: boolean; seed: number; fill?: string; pencil?: boolean }) {
   const s = h / 200;
@@ -431,7 +431,7 @@ function Medal({ x, y, h, seed }: { x: number; y: number; h: number; seed: numbe
 
 /**
  * An aspirational group: elite athletes with medals on a podium, set on a
- * sky wash (the hope); the shopper stands below on a blush wash (the here
+ * sky wash (the hope). The shopper stands below on a blush wash (the here
  * and now) and looks up at them.
  */
 export function LookingUp() {
@@ -461,7 +461,7 @@ export function LookingUp() {
 }
 
 /**
- * A dissociative group: three people in the same loud ochre caps; the shopper
+ * A dissociative group: three people in the same loud ochre caps. The shopper
  * turns away from them, the same cap left on the hat stand, in pencil and
  * crossed out.
  */
@@ -517,7 +517,7 @@ function Table({ x0, x1, y, g, seed }: { x0: number; x1: number; y: number; g: n
 
 /**
  * Informational influence: a friend who works in IT points at a laptop on a
- * table and recommends it; the shopper listens, hand to chin. The friend's
+ * table and recommends it. The shopper listens, hand to chin. The friend's
  * bubble holds the laptop and a teal tick.
  */
 export function AskTheExpertFriend() {
@@ -544,7 +544,7 @@ export function AskTheExpertFriend() {
 
 /**
  * Utilitarian influence: at the office, two coworkers in dark blazers nod a
- * teal tick at the shopper, who has come in a matching blazer; the hoodie
+ * teal tick at the shopper, who has come in a matching blazer. The hoodie
  * the shopper did not wear hangs on the coat stand in pencil.
  */
 export function DressForTheOffice() {
@@ -555,7 +555,7 @@ export function DressForTheOffice() {
       id="sk-dress-office"
       width={400}
       height={260}
-      label="At the office, the shopper arrives in a dark blazer that matches two coworkers' blazers; a coworker's speech bubble holds a teal tick of approval. A hoodie the shopper did not wear hangs on the coat stand, drawn in pencil."
+      label="At the office, the shopper arrives in a dark blazer that matches two coworkers' blazers. A coworker's speech bubble holds a teal tick of approval. A hoodie the shopper did not wear hangs on the coat stand, drawn in pencil."
     >
       <Backwash cx={200} cy={146} rx={192} ry={108} seed={1800} />
       <Ground x0={24} x1={376} y={g} seed={1801} />
@@ -578,7 +578,7 @@ export function DressForTheOffice() {
 
 /**
  * Value-expressive influence: a store poster shows an athlete wearing the
- * brand badge; below it, an open shoebox with the same badge and a teal
+ * brand badge. Below it, an open shoebox with the same badge and a teal
  * sneaker, the one the shopper buys.
  */
 export function AthletesBrand() {
@@ -618,8 +618,8 @@ type Room = "alone" | "aloud" | "written";
 
 /**
  * Asch (1956), share of critical answers that went with the wrong majority:
- * control, judging alone (N = 37): 0.7%; Experiment 1, answering aloud after
- * the group (N = 123): 36.8%; Experiment 4, writing the answer while the
+ * control, judging alone (N = 37): 0.7%. Experiment 1, answering aloud after
+ * the group (N = 123): 36.8%. Experiment 4, writing the answer while the
  * group answered aloud (N = 14): 12.5%.
  */
 const ASCH: Record<Room, { pct: number; of100: number; text: string }> = {
@@ -628,7 +628,7 @@ const ASCH: Record<Room, { pct: number; of100: number; text: string }> = {
   written: { pct: 12.5, of100: 13, text: "13 IN 100 ANSWERS WENT WITH THE GROUP" },
 };
 
-/** Comparison lines on the right-hand card: x, length; line 2 matches the standard. */
+/** Comparison lines on the right-hand card: x, length. Line 2 matches the standard. */
 const ASCH_LINES: [number, number][] = [
   [152, 116],
   [202, 100],
@@ -656,7 +656,7 @@ export function AschRoom() {
   const hand = handAt(youX, g, 150, "hug", 1);
   const choose = (i: number) => setPick(i);
   const label =
-    `Asch's line test. Left: a card with one standard line, and a card with three comparison lines numbered 1 to 3; line 2 matches the standard. ` +
+    `Asch's line test. Left: a card with one standard line, and a card with three comparison lines numbered 1 to 3. Line 2 matches the standard. ` +
     (room === "alone"
       ? "Right: the student judges alone. "
       : `Right: six other people in a row answer "1" aloud before the student's turn. ` + (room === "written" ? "The student writes the answer on a slip of paper. " : "The student answers aloud. ")) +
@@ -780,7 +780,7 @@ const UNSURE: [string, number, number][] = [
 
 /**
  * Uncertainty and conformity: three pairs of lines, the standard beside the
- * majority's wrong line, closer in length from left to right; under each, an
+ * majority's wrong line, closer in length from left to right. Under each, an
  * ochre bar for the share of answers that went with the group (Asch, 1956).
  */
 export function HarderToTell() {
@@ -838,7 +838,7 @@ export function BestsellerShelf() {
       id="sk-bestseller-shelf"
       width={400}
       height={250}
-      label="A store shelf of three products. The middle product has a BESTSELLER tag and only one box left; pencil outlines show the boxes other shoppers took. The products on either side are fully stocked."
+      label="A store shelf of three products. The middle product has a BESTSELLER tag and only one box left. Pencil outlines show the boxes other shoppers took. The products on either side are fully stocked."
     >
       <Backwash cx={200} cy={130} rx={194} ry={116} seed={2900} />
       {stacks.map(([x, fill, left], i) =>
@@ -876,7 +876,7 @@ export function CopyTheAthlete() {
       id="sk-copy-athlete"
       width={300}
       height={270}
-      label="A fan stands in front of a poster of a favourite athlete with a medal, wearing the same jersey and copying the athlete's raised-arm pose; a heart beside the fan."
+      label="A fan stands in front of a poster of a favourite athlete with a medal, wearing the same jersey and copying the athlete's raised-arm pose. A heart beside the fan."
     >
       <Backwash cx={150} cy={140} rx={144} ry={124} seed={3100} />
       <Paper pts={poster} seed={3110} />
@@ -927,7 +927,7 @@ export function OfficerStop() {
   );
 }
 
-/** A sunscreen tube lying on its side; (x, y) the middle, `s` its scale (about 80 long at 1). */
+/** A sunscreen tube lying on its side. (x, y) the middle, `s` its scale (about 80 long at 1). */
 function Sunscreen({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const tube = sharp(at(x, y, [[-40, -12], [26, -10], [26, 10], [-40, 12], [-44, 0]], s), true, 2);
   const cap = sharp(at(x, y, [[26, -8], [40, -8], [40, 8], [26, 8]], s), true, 1.5);
@@ -1080,7 +1080,7 @@ function Scribble({ x, y, w, n, gap = 11, last = 0.6, seed }: { x: number; y: nu
   );
 }
 
-/** A small laptop thumbnail on a card, centred on (x, y); `lit` = the pick. */
+/** A small laptop thumbnail on a card, centred on (x, y). `lit` = the pick. */
 function PickCard({ x, y, seed, lit = false }: { x: number; y: number; seed: number; lit?: boolean }) {
   const card = sharp(rp([[x - 22, y - 20], [x + 22, y - 20], [x + 22, y + 20], [x - 22, y + 20]]), true, 2);
   return (
@@ -1095,7 +1095,7 @@ function PickCard({ x, y, seed, lit = false }: { x: number; y: number; seed: num
 
 /**
  * Asking an AI assistant: on a phone, the consumer's bubble asks which laptop
- * to buy; the assistant's reply is long and detailed and offers three
+ * to buy. The assistant's reply is long and detailed and offers three
  * laptops, the first lit teal and ticked as the one to buy.
  */
 export function AskTheAssistant() {
@@ -1157,7 +1157,7 @@ function AnswerCard({ x, y, text, seed }: { x: number; y: number; text: string; 
 
 /**
  * The same confidence, right or wrong: two assistant answers, laid out alike,
- * quote the battery life of the same laptop. The box says 10 hours; the
+ * quote the battery life of the same laptop. The box says 10 hours. The
  * answer that says 10 is ticked, the one that says 16 is crossed out.
  */
 export function SameConfidence() {
@@ -1166,7 +1166,7 @@ export function SameConfidence() {
       id="sk-same-confidence"
       width={400}
       height={270}
-      label="Two AI assistant answers, written in the same fluent style, give the battery life of one laptop. The laptop's box says 10 hours. The answer that says 10 hours is ticked; the one that says 16 hours, just as confident, is wrong and crossed."
+      label="Two AI assistant answers, written in the same fluent style, give the battery life of one laptop. The laptop's box says 10 hours. The answer that says 10 hours is ticked. The one that says 16 hours, just as confident, is wrong and crossed."
     >
       <Backwash cx={200} cy={136} rx={194} ry={128} seed={4100} />
       <AnswerCard x={96} y={20} text="BATTERY 10 H" seed={4110} />
@@ -1189,7 +1189,7 @@ export function SameConfidence() {
 
 /**
  * Independence: left, a skin expert recommends a sunscreen while the other hand
- * takes coins; right, the AI
+ * takes coins. Right, the AI
  * assistant stands in a platform's storefront and recommends a laptop, and
  * an arrow from the laptop ends at a coin with a question mark: does the
  * platform profit?
@@ -1205,7 +1205,7 @@ export function WhoPaysTheExpert() {
       id="sk-who-pays"
       width={400}
       height={260}
-      label="Left: a skin expert in a white coat holds out a sunscreen with one hand while the other hand, stretched out behind, takes coins. Right: the AI assistant stands in a storefront and recommends a laptop; an arrow from the laptop ends at a coin with a question mark."
+      label="Left: a skin expert in a white coat holds out a sunscreen with one hand while the other hand, stretched out behind, takes coins. Right: the AI assistant stands in a storefront and recommends a laptop. An arrow from the laptop ends at a coin with a question mark."
     >
       <Backwash cx={200} cy={146} rx={194} ry={110} seed={4200} />
       <Ground x0={18} x1={382} y={g} seed={4201} />
@@ -1243,7 +1243,7 @@ export function WhoPaysTheExpert() {
 
 /**
  * Word of mouth beside advertising: left, a friend tells the shopper about a
- * sneaker (speech bubble with the shoe and a heart); right, a billboard ad
+ * sneaker (speech bubble with the shoe and a heart). Right, a billboard ad
  * for the same sneaker with a price tag: the seller has money in the sale.
  */
 export function FriendOrAd() {
@@ -1254,7 +1254,7 @@ export function FriendOrAd() {
       id="sk-friend-or-ad"
       width={400}
       height={260}
-      label="Left: a friend tells the shopper about a sneaker; the friend's speech bubble shows the sneaker and a heart. Right: a billboard advertises the same sneaker with a price tag."
+      label="Left: a friend tells the shopper about a sneaker. The friend's speech bubble shows the sneaker and a heart. Right: a billboard advertises the same sneaker with a price tag."
     >
       <Backwash cx={200} cy={146} rx={194} ry={110} seed={4400} />
       <Ground x0={18} x1={382} y={g} seed={4401} />
@@ -1293,7 +1293,7 @@ export function OneComplaint() {
       id="sk-one-complaint"
       width={400}
       height={260}
-      label="A balance: on the lower pan, one review with one star; on the higher pan, three reviews with five stars each. The single complaint outweighs the praise."
+      label="A balance: on the lower pan, one review with one star. On the higher pan, three reviews with five stars each. The single complaint outweighs the praise."
     >
       <Backwash cx={200} cy={140} rx={194} ry={114} seed={4600} />
       {/* stand */}
@@ -1340,7 +1340,7 @@ export function EWomForms() {
       {/* a star rating */}
       <Stars x={42} y={196} n={4} r={12} gap={32} seed={4730} />
       <SketchText x={108} y={234} anchor="middle" size={12}>
-        4.3 · 812 RATINGS
+        4.3 | 812 RATINGS
       </SketchText>
       {/* the forum thread */}
       <Paper pts={thread} seed={4740} />
@@ -1413,7 +1413,7 @@ function slab(o: Pt, u: Pt, n: NetNode): [number, number] {
 }
 
 /**
- * Opinion leaders and the market maven as an instrument. Twelve people; the
+ * Opinion leaders and the market maven as an instrument. Twelve people. The
  * student picks a product category and arrows show whose advice reaches whom.
  * A sneaker stands by the fashion leader and a laptop by the technology
  * leader: each one's arrows appear only in that category (the leader's coat
@@ -1515,7 +1515,7 @@ const verdictFor = (avg: number) => (avg >= 3.7 ? "MOST BUYERS LOVE IT" : avg >=
 
 /**
  * Synthetic reviews and the AI summary, as an instrument (SIMULATED data).
- * Left, the camel sneaker's eight genuine reviews and four empty slots; the
+ * Left, the camel sneaker's eight genuine reviews and four empty slots. The
  * student taps a slot to add a synthetic five-star review, which looks just
  * like the others. Middle, the AI summaries of the camel sneaker and a rival
  * blue one. Right, a shopper and an AI agent each pick the sneaker with the
@@ -1608,7 +1608,7 @@ export function FakeReviews() {
 }
 
 /**
- * The 2024 rule: a printed rule with an official seal; a review card with
+ * The 2024 rule: a printed rule with an official seal. A review card with
  * the AI sparkle and no real reviewer is stamped out beside it.
  */
 export function FakeReviewBan() {
@@ -1651,7 +1651,7 @@ export function FakeReviewBan() {
    Influencers, Virtual Influencers, and Online Communities
    ========================================================================== */
 
-/** A follower: the week's Person, small; `heart` puts a heart above the head. */
+/** A follower: the week's Person, small. `heart` puts a heart above the head. */
 function Follower({ x, y, h, look, seed, heart = false, flip = false }: { x: number; y: number; h: number; look: Look; seed: number; heart?: boolean; flip?: boolean }) {
   return (
     <g>
@@ -1661,7 +1661,7 @@ function Follower({ x, y, h, look, seed, heart = false, flip = false }: { x: num
   );
 }
 
-/** A phone on a stand showing a person talking to camera; base centre (x, y). */
+/** A phone on a stand showing a person talking to camera. Base centre (x, y). */
 function CreatorPhone({ x, y, s = 1, seed, look = FRIEND, sparkle = false }: { x: number; y: number; s?: number; seed: number; look?: Look; sparkle?: boolean }) {
   const body = sharp(at(x, y, [[-26, -96], [26, -96], [26, 0], [-26, 0]], s), true, 5 * s);
   const glass = rp(at(x, y, [[-21, -88], [21, -88], [21, -8], [-21, -8]], s));
@@ -1680,7 +1680,7 @@ const CROWD_LOOKS: Look[] = [SHOPPER, FRIEND, FRIEND2, ELDER, { ...FRIEND, wear:
 
 /**
  * Macro- and micro-influencers: left, a creator's phone faces a crowd of
- * thirty small followers, a few of them with hearts; right, another creator's
+ * thirty small followers, a few of them with hearts. Right, another creator's
  * phone faces six followers, nearly all with hearts.
  */
 export function MacroMicro() {
@@ -1721,7 +1721,7 @@ export function MacroMicro() {
 
 /**
  * A parasocial relationship: a follower at home waves at a large phone and
- * holds a heart up to it; on the screen, the influencer waves at the camera,
+ * holds a heart up to it. On the screen, the influencer waves at the camera,
  * not at the follower.
  */
 export function OneSided() {
@@ -1731,7 +1731,7 @@ export function OneSided() {
       id="sk-one-sided"
       width={400}
       height={260}
-      label="A follower at home waves at a large phone with a heart above, as if to a friend; on the screen, the influencer waves at the camera and cannot see the follower."
+      label="A follower at home waves at a large phone with a heart above, as if to a friend. On the screen, the influencer waves at the camera and cannot see the follower."
     >
       <Backwash cx={200} cy={140} rx={194} ry={116} seed={7400} />
       <Ground x0={20} x1={380} y={g} seed={7401} />
@@ -1747,7 +1747,7 @@ export function OneSided() {
 /**
  * A virtual influencer: a social post in which a smooth, computer-generated
  * character (no face, the AI sparkle at the shoulder) holds up a sneaker it
- * has never worn; hearts pile up under the post.
+ * has never worn. Hearts pile up under the post.
  */
 export function VirtualInfluencer() {
   const card = sharp(rp([[96, 12], [304, 12], [304, 248], [96, 248]]), true, 3);
@@ -1849,7 +1849,7 @@ export function PaidPost() {
       id="sk-paid-post"
       width={400}
       height={260}
-      label="An influencer's post: the influencer holds up the sneaker; the post is labelled PAID PARTNERSHIP at the top and #AD under the photo."
+      label="An influencer's post: the influencer holds up the sneaker. The post is labelled PAID PARTNERSHIP at the top and #AD under the photo."
     >
       <Backwash cx={200} cy={130} rx={194} ry={124} seed={7800} />
       <Paper pts={card} seed={7810} />

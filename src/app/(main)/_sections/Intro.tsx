@@ -10,7 +10,7 @@ export function Intro() {
       className="grid gap-10 pt-14 pb-16 md:grid-cols-[1fr_15rem] md:gap-16 md:pt-24 md:pb-24"
     >
       <div className="max-w-[40rem]">
-        <p className="meta mb-5">AI Research · Marketing Science</p>
+        <p className="meta mb-5">AI Research | Marketing Science</p>
         <div className="flex items-center gap-5">
           {/* Phones: a small portrait beside the name, like a byline. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}

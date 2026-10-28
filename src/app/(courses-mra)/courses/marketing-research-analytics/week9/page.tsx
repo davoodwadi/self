@@ -39,11 +39,11 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 09 — REGRESSION AND MARKETING RESPONSE MODELS
+// WEEK 09: REGRESSION AND MARKETING RESPONSE MODELS
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx; the interactive ones are built around one action
+// live in ./visuals.tsx. The interactive ones are built around one action
 // each, so students can move a value and watch an estimate respond.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
@@ -68,7 +68,7 @@ export default function Week9() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 09 · Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 09: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
           <span className="text-[var(--signal)]">Regression</span> and Marketing Response Models
         </Title>
@@ -984,7 +984,7 @@ export default function Week9() {
           </div>
         </div>
         <p className={`${CLOSE} mt-6 border-t border-[var(--rule)] pt-4 !text-[clamp(1.05rem,1.6vw,1.35rem)]`}>
-          AI assistants can generate the code for both regression and machine learning models; the
+          AI assistants can generate the code for both regression and machine learning models. The
           procedures for verifying AI-assisted analysis introduced in Week 6 apply to that code.
         </p>
       </Slide>
@@ -1182,7 +1182,7 @@ export default function Week9() {
         <SlideHeading>Key Takeaways</SlideHeading>
         <ol className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
           {[
-            "Correlation measures the strength and direction of a linear relationship; regression estimates the expected change in an outcome associated with each independent variable.",
+            "Correlation measures the strength and direction of a linear relationship. Regression estimates the expected change in an outcome associated with each independent variable.",
             "Multiple regression coefficients are partial effects, interpreted holding the other variables constant, and are assessed together with model fit and diagnostics.",
             "Multicollinearity, omitted variables, and reverse causality limit the causal interpretation of regression estimated from observational data.",
             "Logistic regression models binary outcomes, and its coefficients are interpreted as odds ratios and predicted probabilities.",

@@ -15,9 +15,9 @@ import exercisesData from "./exercises.json";
 import * as V from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR · WEEK 09 — POST-PURCHASE BEHAVIOR, SATISFACTION, AND LOYALTY
+// CONSUMER BEHAVIOR | WEEK 09: POST-PURCHASE BEHAVIOR, SATISFACTION, AND LOYALTY
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx, drawn in the course's Editorial Sketch style (see
 // ../CLAUDE.md). The week's fixed cast: the owner (one Person look), the
@@ -28,11 +28,11 @@ import * as V from "./visuals";
 // phrase, its key idea. Defined terms are bold ink, and every rule is ink.
 //
 // Interactive plates (students act on the drawing itself):
-//   · Disconfirmation: drag the ad's promise and the product's performance;
+//   - Disconfirmation: drag the ad's promise and the product's performance.
 //     the face reports the verdict. Overpromising flips it.
-//   · Review requests: switch reviewer, incentive and message on the
+//   - Review requests: switch reviewer, incentive and message on the
 //     retailer's field data (Wadi et al., 2026b, Table II).
-//   · Delegated repurchase: drag a rival coffee along the price scale and
+//   - Delegated repurchase: drag a rival coffee along the price scale and
 //     watch which bag each instruction's agent reorders.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
@@ -151,7 +151,7 @@ function Ruled({
 /**
  * A plate that lives in a column: a figure well without the 680px floor. A
  * `wide` (800-unit) plate keeps a legible minimum width on phones and scrolls
- * inside its well there, like `Figure`; from lg up the column is wide enough.
+ * inside its well there, like `Figure`. From lg up the column is wide enough.
  */
 function Plate({
   children,
@@ -300,7 +300,7 @@ export default function Week9() {
               Week 09
             </p>
             <p className="type-caption mt-2">
-              Consumer Behavior · Davood Wadi, PhD
+              Consumer Behavior | Davood Wadi, PhD
             </p>
             <Title className="mt-6 !max-w-[20ch]">
               Post-Purchase Behavior, Satisfaction, and Loyalty

@@ -161,7 +161,7 @@ week: week5
 
 ## Key Takeaways
 - A sample is selected from a sampling frame to draw conclusions about a defined target population.
-- Sampling error decreases as the sample size increases; nonsampling errors, such as frame, nonresponse, and response errors, do not.
+- Sampling error decreases as the sample size increases. Nonsampling errors, such as frame, nonresponse, and response errors, do not.
 - Only probability samples permit the estimation of sampling error, while nonprobability samples are appropriate for exploratory research and pretesting.
 - The sample size depends on the desired precision and confidence, and the number of contacts depends on the incidence and completion rates.
 - Online panels require data quality checks for speeders, straight-liners, fraudulent respondents, and bots, with criteria specified in advance.

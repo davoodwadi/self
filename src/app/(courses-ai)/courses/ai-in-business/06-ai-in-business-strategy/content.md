@@ -142,7 +142,7 @@ week: 06-ai-in-business-strategy
 - Managing the lifecycle from proof of concept to enterprise scale deployment.
 
 ## Data Governance as Strategy
-- Data governance is no longer just a compliance function; it is a strategic enabler.
+- Data governance is no longer just a compliance function. It is a strategic enabler.
 - Ensuring data quality, lineage, and accessibility across the organization.
 - Establishing clear ownership and accountability for data assets.
 

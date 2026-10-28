@@ -80,9 +80,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 09 — SUPPLY CHAIN AND DISTRIBUTION CHANNELS (THE THIRD P)
+// WEEK 09: SUPPLY CHAIN AND DISTRIBUTION CHANNELS (THE THIRD P)
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
@@ -142,7 +142,7 @@ function Lead({
   );
 }
 
-/** A sentence set as a serif statement — the line a slide lands on. */
+/** A sentence set as a serif statement: the line a slide lands on. */
 function Statement({
   children,
   className = "",
@@ -506,7 +506,7 @@ export default function Week9() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 09 · Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 09: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
           Supply Chain and Distribution Channels{" "}
           <span className="text-[var(--signal)]">(The Third P)</span>
@@ -541,7 +541,7 @@ export default function Week9() {
       </Slide>
 
       {/* ================================================================
-          Module 1 — The Nature of Marketing Channels
+          Module 1: The Nature of Marketing Channels
           ================================================================ */}
       <ModulePlate id="module-1" n={1} title="The Nature of Marketing Channels">
         <div className="mt-10 grid w-full items-start gap-12 lg:grid-cols-2 lg:gap-14">
@@ -772,7 +772,7 @@ export default function Week9() {
       </Slide>
 
       {/* ================================================================
-          Module 2 — Channel Behavior and Organization
+          Module 2: Channel Behavior and Organization
           ================================================================ */}
       <ModulePlate id="module-2" n={2} title="Channel Behavior and Organization">
         <Lead className="mt-10 !max-w-[56ch]">
@@ -997,7 +997,7 @@ export default function Week9() {
       </Slide>
 
       {/* ================================================================
-          Module 3 — Retailing, Wholesaling, and Logistics
+          Module 3: Retailing, Wholesaling, and Logistics
           ================================================================ */}
       <ModulePlate
         id="module-3"

@@ -9,7 +9,7 @@ import OrderExercise from "./OrderExercise";
 import IdentifyExercise from "./IdentifyExercise";
 
 /**
- * One exercise, of any type. The mechanics are shared by every course; the
+ * One exercise, of any type. The mechanics are shared by every course. The
  * look comes from the course's theme tokens, and any drawings come from the
  * course through `art` (keyed by card or pair id), so no course's drawing
  * style ends up in another's.

@@ -18,7 +18,7 @@
         "id": "tent-headlamp",
         "text": "Buyers of a two-person tent are shown a headlamp, because many past tent buyers also bought that headlamp.",
         "bin": "collab",
-        "explanation": "Tents and headlamps share no attributes; the link comes from the purchase patterns of other shoppers."
+        "explanation": "Tents and headlamps share no attributes. The link comes from the purchase patterns of other shoppers."
       },
       {
         "id": "new-jacket",
@@ -59,13 +59,13 @@
     "cases": [
       {
         "id": "new-blender",
-        "text": "A brand launches a new blender on the marketplace; for weeks it never appears in 'customers also bought' rows.",
+        "text": "A brand launches a new blender on the marketplace. For weeks it never appears in 'customers also bought' rows.",
         "answer": "item",
         "explanation": "A new listing has no clicks or purchases, so collaborative filtering has no signal for it."
       },
       {
         "id": "incognito",
-        "text": "A visitor opens the site in a private window from an airport; the homepage can only show what is trending in that city today.",
+        "text": "A visitor opens the site in a private window from an airport. The homepage can only show what is trending in that city today.",
         "answer": "user",
         "explanation": "With no profile, the system falls back on contextual popularity."
       },
@@ -79,7 +79,7 @@
         "id": "ann-then-model",
         "text": "Engineers use a fast vector search to pull 400 likely items out of 200 million, then run a large neural model on only those 400.",
         "answer": "twostage",
-        "explanation": "Candidate retrieval narrows millions to a few hundred; the heavy ranking model scores only those."
+        "explanation": "Candidate retrieval narrows millions to a few hundred. The heavy ranking model scores only those."
       },
       {
         "id": "session-clicks",
@@ -98,14 +98,14 @@
   {
     "type": "quiz",
     "slide_id": "disentangling-intrinsic-quality-from-position-bias",
-    "question_text": "Over the same 1,000 searches, Mug A sat at Position 1 and got 200 clicks; Mug B sat at Position 5 and got 60 clicks. Logged scrolling shows Position 1 is examined in 80% of searches and Position 5 in 20%. Using inverse propensity weighting, which mug is more relevant?",
+    "question_text": "Over the same 1,000 searches, Mug A sat at Position 1 and got 200 clicks. Mug B sat at Position 5 and got 60 clicks. Logged scrolling shows Position 1 is examined in 80% of searches and Position 5 in 20%. Using inverse propensity weighting, which mug is more relevant?",
     "hint": "Divide each mug's clicks by its slot's examination probability.",
     "correct_answer_citation": "Platforms estimate true intrinsic relevance by running randomized top-k exploration experiments, logging viewport scroll impressions, or fitting inverse propensity weighting (IPW) models that divide observed clicks by the slot's baseline examination probability.",
     "correct_answer_index": 1,
     "options": [
       {
         "option_text": "Mug A, because it received more than three times as many clicks.",
-        "option_explanation": "Raw clicks mix position with relevance. A sat where 80% of shoppers looked; B sat where only 20% did."
+        "option_explanation": "Raw clicks mix position with relevance. A sat where 80% of shoppers looked. B sat where only 20% did."
       },
       {
         "option_text": "Mug B: 60 ÷ 0.2 = 300 against Mug A's 200 ÷ 0.8 = 250.",
@@ -113,7 +113,7 @@
       },
       {
         "option_text": "They are equally relevant, because both were shown in all 1,000 searches.",
-        "option_explanation": "Being on the page is not being examined; the slots were seen at very different rates."
+        "option_explanation": "Being on the page is not being examined. The slots were seen at very different rates."
       },
       {
         "option_text": "It cannot be known without moving Mug B to Position 1 first.",
@@ -236,7 +236,7 @@
       },
       {
         "id": "family",
-        "text": "\"You shop on behalf of the Lee family; compare price, quality and fit for them.\"",
+        "text": "\"You shop on behalf of the Lee family. Compare price, quality and fit for them.\"",
         "bin": "resists",
         "explanation": "The principal is the consumer, so the agent weighs price and quality on the family's behalf."
       }

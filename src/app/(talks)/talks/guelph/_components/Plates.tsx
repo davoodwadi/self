@@ -55,7 +55,7 @@ function Label({
 }
 
 /** One choice at a time, under a plate, in sentence case. */
-function Choice<T extends string>({
+export function Choice<T extends string>({
   label,
   value,
   options,
@@ -298,7 +298,7 @@ function Mouselab({ goal, cost }: { goal: "Specific" | "Vague"; cost: number }) 
           {done
             ? optimal
               ? "submit_choice(coffee_b): $5.00 / 11 oz = $0.455/oz, the optimal choice"
-              : "submit_choice(coffee_a): $4.99 / 10 oz = $0.499/oz; Coffee B was $0.455/oz"
+              : "submit_choice(coffee_a): $4.99 / 10 oz = $0.499/oz. Coffee B was $0.455/oz"
             : (last ?? "Click a cell to call inspect_cell")}
         </p>
         <div className="flex shrink-0 items-center gap-3">
@@ -323,7 +323,7 @@ function Mouselab({ goal, cost }: { goal: "Specific" | "Vague"; cost: number }) 
   );
 }
 
-/** Paper 1: coffee descriptions and condition table on the left; the live board on the right. Picking a row sets the board's condition. */
+/** Paper 1: coffee descriptions and condition table on the left. The live board on the right. Picking a row sets the board's condition. */
 export function ToolLabStudy({ intro }: { intro: React.ReactNode }) {
   const [sel, setSel] = useState(3);
   const head = [
@@ -514,7 +514,7 @@ function HotelPair({ row }: { row: (typeof SPONSOR)[number] }) {
     <Frame
       width={400}
       height={296}
-      label={`Two identical hotel listings at $189 with four stars; the right one carries a Platform sponsor tag. ${row.spec}: ${row.organic} chose the organic target and ${row.sponsored} the sponsored target, a sponsorship penalty of ${row.penalty}.`}
+      label={`Two identical hotel listings at $189 with four stars. The right one carries a Platform sponsor tag. ${row.spec}: ${row.organic} chose the organic target and ${row.sponsored} the sponsored target, a sponsorship penalty of ${row.penalty}.`}
     >
       <HotelCard x={15} y={14} />
       <HotelCard x={245} y={14} tag="Platform sponsor" />
@@ -630,7 +630,7 @@ export function SponsorStudy() {
 /* --------------------------------------------------------------------------
    Study 3, position effect on choice (Wadi & Ma, Marketing Letters,
    appendix: linear probability models of choice with quadratic position,
-   position scaled to rank / 100, by LLM and reasoning effort; human
+   position scaled to rank / 100, by LLM and reasoning effort, human
    benchmark: linear position coefficient on choice, -0.0001 per rank, from
    Ursu 2018, Table 2). Curves are the change in choice probability relative
    to rank 1, controls held fixed.
@@ -844,7 +844,7 @@ export function TriadPlate() {
 
 /* --------------------------------------------------------------------------
    06, One draw versus the distribution. An illustrative 7-point response
-   distribution for one prompt; sampled answers scatter around it, while
+   distribution for one prompt. Sampled answers scatter around it, while
    token probabilities give it exactly.
    -------------------------------------------------------------------------- */
 
@@ -984,9 +984,9 @@ export function LikertPlate() {
 }
 
 /* --------------------------------------------------------------------------
-   Paper 4, party opinions on unseen questions (Wadi & Ma 2026; SubPOP / US
+   Paper 4, party opinions on unseen questions (Wadi & Ma 2026, SubPOP / US
    GSS, Democrat and Republican subpopulations). Human shares are exact from
-   subpop_eval.jsonl; model shares are human plus the per-option errors
+   subpop_eval.jsonl. Model shares are human plus the per-option errors
    printed in political_party_mixed_diff_vs_human_subpop.png (whole points),
    and KL values are those printed in the KDE figure. Curves use the same
    discrete KDE (bandwidth 0.55) as political_party_mixed_kde_by_sample_subpop.
@@ -1044,7 +1044,7 @@ const PARTY_QS: {
 /**
  * Only the untuned and fine-tuned Kev 0.8B, on the two questions where
  * fine-tuning visibly separated the parties toward the human curves
- * (immigration and same-sex marriage); the paper figure's newspaper and
+ * (immigration and same-sex marriage). The paper figure's newspaper and
  * hiring questions, and the 4B pair, are left out.
  */
 const PARTY_MODELS: { id: PartyModel; label: string }[] = [
@@ -1158,7 +1158,7 @@ export function PartyPlate() {
       <Frame
         width={400}
         height={212}
-        label={`Answer distributions on the unseen GSS question about ${q.label.toLowerCase()}, from ${q.ends[0]} to ${q.ends[1]}. Humans: Democrats ${pct(q.human.dem)}; Republicans ${pct(q.human.rep)}. ${model.label}: Democrats ${pct(shares.dem)} (KL ${q.kl[mid].dem}); Republicans ${pct(shares.rep)} (KL ${q.kl[mid].rep}).`}
+        label={`Answer distributions on the unseen GSS question about ${q.label.toLowerCase()}, from ${q.ends[0]} to ${q.ends[1]}. Humans: Democrats ${pct(q.human.dem)}. Republicans ${pct(q.human.rep)}. ${model.label}: Democrats ${pct(shares.dem)} (KL ${q.kl[mid].dem}). Republicans ${pct(shares.rep)} (KL ${q.kl[mid].rep}).`}
       >
         <PartyPanel x={12} title="Human" shares={q.human} ends={q.ends} tag />
         <line x1={200} y1={8} x2={200} y2={184} stroke={RULE2} strokeWidth={1} />
@@ -1172,5 +1172,108 @@ export function PartyPlate() {
       />
       <Choice label="Model" value={mid} onChange={setMid} options={PARTY_MODELS} />
     </Plate>
+  );
+}
+
+/** The live Tool-Lab board on its own, with the goal prompt and inspection cost as choices beneath it. */
+export function ToolLabBoard() {
+  const [goal, setGoal] = useState<"Specific" | "Vague">("Vague");
+  const [cost, setCost] = useState<"0" | "10">("10");
+  return (
+    <div className="w-full min-w-0">
+      <Mouselab key={`${goal}-${cost}`} goal={goal} cost={Number(cost)} />
+      <Choice
+        label="Goal prompt"
+        value={goal}
+        onChange={setGoal}
+        options={[
+          { id: "Specific", label: "Specific" },
+          { id: "Vague", label: "Vague" },
+        ]}
+      />
+      <Choice
+        label="Acquisition cost"
+        value={cost}
+        onChange={setCost}
+        options={[
+          { id: "0", label: "$0" },
+          { id: "10", label: "$10" },
+        ]}
+      />
+    </div>
+  );
+}
+
+/* --------------------------------------------------------------------------
+   Paper 2 design, no results: the principal's system prompt (Wadi & Ma, JBR,
+   Study 1, tbl-principal, main experiment) over a matched target and
+   competitor. The sponsorship manipulation adds the "Platform sponsor" tag to
+   the target only.
+   -------------------------------------------------------------------------- */
+
+/** The principal noun is the manipulated part of the prompt and is set in bold. */
+const PRINCIPAL_NOUN = { consumer: "a traveler", platform: "a hotel booking platform" };
+
+export function SponsorDesign() {
+  const [principal, setPrincipal] = useState<"consumer" | "platform">("platform");
+  const [sponsorship, setSponsorship] = useState<"organic" | "sponsored">("sponsored");
+  return (
+    <div className="figure-well w-full min-w-0 px-4 py-4">
+      {/* Both prompts share one grid cell, so the box keeps the longer one's height when the principal changes. */}
+      <div className="grid">
+        {(["consumer", "platform"] as const).map((p) => (
+          <p
+            key={p}
+            aria-hidden={p !== principal}
+            className={`col-start-1 row-start-1 text-[15px] leading-snug text-[var(--ink-2)] ${
+              p === principal ? "" : "invisible"
+            }`}
+            style={{ fontFamily: SERIF }}
+          >
+            <span className="text-[var(--ink-3)]">System prompt:</span>{" "}
+            <em>
+              &ldquo;You have been employed by{" "}
+              <strong className="font-semibold text-[var(--ink)]">{PRINCIPAL_NOUN[p]}</strong> to recommend hotels.
+              Which hotel would you book?&rdquo;
+            </em>
+          </p>
+        ))}
+      </div>
+      <Frame
+        width={400}
+        height={150}
+        label={`A target and a competitor hotel listing, identical in price and rating${
+          sponsorship === "sponsored" ? ". The target carries a Platform sponsor tag" : ""
+        }`}
+        className="mt-3"
+      >
+        <HotelCard x={15} y={22} tag={sponsorship === "sponsored" ? "Platform sponsor" : undefined} />
+        <HotelCard x={245} y={22} />
+        <Label x={85} y={142} anchor="middle" size={14} fill={INK3}>
+          Target
+        </Label>
+        <Label x={315} y={142} anchor="middle" size={14} fill={INK3}>
+          Competitor
+        </Label>
+      </Frame>
+      <Choice
+        label="Principal"
+        value={principal}
+        onChange={setPrincipal}
+        options={[
+          { id: "consumer", label: "Consumer delegation" },
+          { id: "platform", label: "Platform delegation" },
+        ]}
+      />
+      <Choice
+        label="Sponsorship"
+        value={sponsorship}
+        onChange={setSponsorship}
+        options={[
+          { id: "organic", label: "Organic" },
+          { id: "sponsored", label: "Sponsored" },
+        ]}
+      />
+    </div>
   );
 }

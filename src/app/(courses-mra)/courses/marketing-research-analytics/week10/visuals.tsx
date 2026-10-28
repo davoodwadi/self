@@ -82,7 +82,7 @@ const BANK_ITEMS = [
 const EIGEN = [2.85, 1.66, 0.5, 0.39, 0.35, 0.25];
 
 /**
- * Varimax-rotated loadings for 1–4 retained factors, from a principal-factor
+ * Varimax-rotated loadings for 1 to 4 retained factors, from a principal-factor
  * solution of the same simulated correlation matrix (columns signed positive).
  */
 const LOADINGS: Record<number, number[][]> = {
@@ -157,7 +157,7 @@ export function FactorRetention() {
       <Frame
         width={760}
         height={330}
-        label={`Scree plot of six bank ratings with eigenvalues 2.85, 1.66, 0.50, 0.39, 0.35 and 0.25; two lie above the eigenvalue of one. ${k} factor${k > 1 ? "s" : ""} retained; the loadings table names ${Array.from(
+        label={`Scree plot of six bank ratings with eigenvalues 2.85, 1.66, 0.50, 0.39, 0.35 and 0.25. Two lie above the eigenvalue of one. ${k} factor${k > 1 ? "s" : ""} retained. The loadings table names ${Array.from(
           { length: k },
           (_, c) => factorName(L.map((r) => r[c])).join(" "),
         ).join(", ")}`}
@@ -323,7 +323,7 @@ function IdealMark({ x, y, color = INK }: { x: number; y: number; color?: string
 /**
  * A perceptual map of five banks on the two factors from the factor
  * analysis. C and D sit close together, perceived as similar and so in
- * direct competition (the finding, ringed); a segment's ideal point sits
+ * direct competition (the finding, ringed). A segment's ideal point sits
  * nearest C, which that segment is expected to prefer.
  */
 export function BankMap() {
@@ -387,7 +387,7 @@ export function BankMap() {
    Interpreting a Perceptual Map
    -------------------------------------------------------------------------- */
 
-/** Standard normal draws from a seeded stream (Box–Muller). */
+/** Standard normal draws from a seeded stream (Box-Muller). */
 function normals(seed: number, n: number) {
   const rnd = seeded(seed);
   return Array.from({ length: n }, () => {
@@ -443,11 +443,11 @@ function nearest(p: { x: number; y: number }, list: { x: number; y: number }[]) 
 }
 
 /**
- * A new bank enters the map. Sixty consumers stand at their ideal points;
- * each is expected to prefer the nearest bank. Students drag the new bank:
+ * A new bank enters the map. Sixty consumers stand at their ideal points.
+ * Each is expected to prefer the nearest bank. Students drag the new bank:
  * placed in an empty region where nobody's ideal point lies (the starting
- * state) it wins no one; moved under the unserved group at the top it wins
- * that segment; moved beside C and D it takes their customers, the
+ * state) it wins no one. Moved under the unserved group at the top it wins
+ * that segment. Moved beside C and D it takes their customers, the
  * competition their proximity predicts.
  */
 export function NewEntrant() {
@@ -479,7 +479,7 @@ export function NewEntrant() {
     <Frame
       width={680}
       height={456}
-      label={`Perceptual map of banks A to E and sixty consumers standing at their ideal points; a new bank, which can be dragged, sits at service ${fmt(pos.x)} and value ${fmt(pos.y)} and is nearest the ideal points of ${won} of the 60 consumers${
+      label={`Perceptual map of banks A to E and sixty consumers standing at their ideal points. A new bank, which can be dragged, sits at service ${fmt(pos.x)} and value ${fmt(pos.y)} and is nearest the ideal points of ${won} of the 60 consumers${
         lost.length ? `, taken from ${lost.map((l) => `${l.id} (${l.n})`).join(", ")}` : ""
       }`}
     >
@@ -576,7 +576,7 @@ type Scaling = keyof typeof KMEANS;
  * month, split into two clusters by k-means. Students switch the distance
  * between raw and standardized values. On raw values spending, measured in
  * hundreds of dollars, carries 99.99% of the distance, and the clusters cut
- * the customers by spending alone, through the two visible groups; on
+ * the customers by spending alone, through the two visible groups. On
  * standardized values both variables count equally and the clusters find
  * the frequent and the occasional visitors.
  */
@@ -728,7 +728,7 @@ function clustersAt(h: number) {
 
 /**
  * Cutting the dendrogram: twelve customers merged by average linkage.
- * Students drag the cut line up and down the tree; the number of clusters
+ * Students drag the cut line up and down the tree. The number of clusters
  * is the number of branches it crosses, and the customers below are
  * bracketed by cluster. Three clusters hold across the widest band of
  * heights, the long branches that statistical criteria look for.
@@ -750,7 +750,7 @@ export function DendrogramCut() {
     <Frame
       width={760}
       height={340}
-      label={`Dendrogram of twelve customers merged by average linkage; a cut line, which can be dragged, crosses the tree at a distance of ${fmt(cut)} and gives ${groups.length} cluster${groups.length > 1 ? "s" : ""}`}
+      label={`Dendrogram of twelve customers merged by average linkage. A cut line, which can be dragged, crosses the tree at a distance of ${fmt(cut)} and gives ${groups.length} cluster${groups.length > 1 ? "s" : ""}`}
     >
       <Key x={L - 70} y={22}>DENDROGRAM</Key>
 
@@ -828,7 +828,7 @@ export function DendrogramCut() {
 
 type Pt = [number, number];
 
-/** Sixty customers on two clustering variables (0–1): three real groups, or an even spread with none. */
+/** Sixty customers on two clustering variables (0 to 1): three real groups, or an even spread with none. */
 const SPREADS: Record<"groups" | "none", Pt[]> = {
   groups: (() => {
     // three groups, drawn from a seeded stream with every glyph standing free
@@ -861,7 +861,7 @@ const SPREADS: Record<"groups" | "none", Pt[]> = {
 
 const sq = (a: Pt, b: Pt) => (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2;
 
-/** k-means (k = 3) on a half-sample, seeded k-means++ start; returns the centroids. */
+/** k-means (k = 3) on a half-sample, seeded k-means++ start. Returns the centroids. */
 function kmeans3(points: Pt[], seed: number): Pt[] {
   const rnd = seeded(seed);
   const half = points.filter(() => rnd() < 0.5);
@@ -895,7 +895,7 @@ const PERMS = [
   [2, 1, 0],
 ];
 
-/** Relabel `next` to agree best with `prev`; returns the relabelled clusters and the share that agree. */
+/** Relabel `next` to agree best with `prev`. Returns the relabelled clusters and the share that agree. */
 function matchLabels(prev: number[], next: number[]) {
   let best = { lab: next, agree: -1 };
   for (const p of PERMS) {
@@ -911,7 +911,7 @@ function matchLabels(prev: number[], next: number[]) {
  * k-means, each time on a fresh random half of the sample. On data with no
  * group structure (the starting state) k-means still returns three tidy
  * clusters, but each new half moves the boundaries and customers change
- * segment; on data with three real groups the solution repeats.
+ * segment. On data with three real groups the solution repeats.
  */
 export function ClustersFromNothing() {
   const [data, setData] = useState<"none" | "groups">("none");
@@ -938,7 +938,7 @@ export function ClustersFromNothing() {
       <Frame
         width={660}
         height={330}
-        label={`Sixty customers ${data === "none" ? "with no group structure" : "in three real groups"}, clustered into three segments by k-means on half-sample ${draw}; ${share}% of customers stay in the same segment as on the previous half-sample`}
+        label={`Sixty customers ${data === "none" ? "with no group structure" : "in three real groups"}, clustered into three segments by k-means on half-sample ${draw}. ${share}% of customers stay in the same segment as on the previous half-sample`}
       >
         <Key x={L} y={22}>{`THREE CLUSTERS FROM HALF-SAMPLE ${draw}`}</Key>
         <rect x={L - 10} y={T - 14} width={W + 20} height={H + 28} fill="none" stroke={RULE2} strokeWidth={1} />
@@ -985,7 +985,7 @@ export function ClustersFromNothing() {
    Conjoint Analysis
    -------------------------------------------------------------------------- */
 
-/** A laptop of brand `brand`, the brand's letter on its screen, centred on (cx, cy); s is its width. */
+/** A laptop of brand `brand`, the brand's letter on its screen, centred on (cx, cy). S is its width. */
 function LaptopOf({ cx, cy, brand, s = 44, color = INK }: { cx: number; cy: number; brand: string; s?: number; color?: string }) {
   const w = s * 0.78;
   const h = s * 0.5;
@@ -1032,7 +1032,7 @@ function TagOf({ x, y, price, color = INK }: { x: number; y: number; price: numb
   );
 }
 
-/** One choice task: three profiles, each one level of every attribute; the respondent picks the third. */
+/** One choice task: three profiles, each one level of every attribute. The respondent picks the third. */
 const TASK = [
   { brand: "A", hours: 8, price: 900 },
   { brand: "B", hours: 16, price: 1300 },
@@ -1058,7 +1058,7 @@ export function ChoiceTask() {
     <Frame
       width={680}
       height={340}
-      label="Conjoint design for a laptop: brand with levels A, B and C; battery life of 8, 12 or 16 hours; price of $900, $1,100 or $1,300. One choice task shows three profiles (A, 8 hours, $900; B, 16 hours, $1,300; C, 12 hours, $1,100) and the option to choose none; the respondent chooses brand C with 12 hours at $1,100"
+      label="Conjoint design for a laptop: brand with levels A, B and C. Battery life of 8, 12 or 16 hours. Price of $900, $1,100 or $1,300. One choice task shows three profiles (A, 8 hours, $900, B, 16 hours, $1,300, C, 12 hours, $1,100) and the option to choose none. The respondent chooses brand C with 12 hours at $1,100"
     >
       {/* attributes and levels */}
       <Key x={30} y={22}>ATTRIBUTES AND LEVELS</Key>
@@ -1114,7 +1114,7 @@ type ExtraId = (typeof EXTRA)[number]["id"];
 
 /**
  * Smallest standard orthogonal array that estimates every main effect:
- * L9 holds up to four three-level attributes; L18 holds one two-level and
+ * L9 holds up to four three-level attributes. L18 holds one two-level and
  * up to seven three-level attributes.
  */
 const fractionalSize = (n3: number, n2: number) => (n2 === 0 && n3 <= 4 ? 9 : 18);
@@ -1124,7 +1124,7 @@ const fractionalSize = (n3: number, n2: number) => (n2 === 0 && n3 <= 4 ? 9 : 18
  * profiles of a fractional factorial design in signal. Students add
  * attributes to the brand, battery and price of the example: the possible
  * profiles multiply from 27 to 1,458 while the fractional design needs 9
- * or 18; a seventh attribute passes the six that respondents can weigh.
+ * or 18. A seventh attribute passes the six that respondents can weigh.
  */
 export function ProfileCount() {
   const [extra, setExtra] = useState<ExtraId[]>([]);
@@ -1158,8 +1158,8 @@ export function ProfileCount() {
       <Frame
         width={800}
         height={242}
-        label={`${nAttr} attributes with ${levels.join(", ")} levels give ${full.toLocaleString("en-US")} possible profiles; a fractional factorial design of ${frac} profiles estimates every part-worth${
-          nAttr > 6 ? "; with seven attributes the profiles exceed the six that respondents can weigh" : ""
+        label={`${nAttr} attributes with ${levels.join(", ")} levels give ${full.toLocaleString("en-US")} possible profiles. A fractional factorial design of ${frac} profiles estimates every part-worth${
+          nAttr > 6 ? ". With seven attributes the profiles exceed the six that respondents can weigh" : ""
         }`}
       >
         <Key x={20} y={26}>{`${nAttr} ATTRIBUTES`}</Key>
@@ -1229,7 +1229,7 @@ const PER_DOLLAR = 3 / 400;
  * Relative importance depends on the levels: the respondent's part-worths
  * for the laptop's brand, battery life and price, with each attribute's
  * range bracketed and the relative importances beneath. Students move the
- * highest price tested; the respondent's preferences stay the same, but a
+ * highest price tested. The respondent's preferences stay the same, but a
  * wider price range lengthens the price range bracket and raises the
  * importance of price from 50% (the example, $900 to $1,300) to 67% at
  * $1,700, or lowers it to 33% at $1,100.
@@ -1359,7 +1359,7 @@ function apportion(shares: number[], n: number) {
 
 /**
  * A market simulator: three laptops, the firm's own (A: 12 hours, $1,100)
- * and two competitors; shares of preference follow from the part-worths of
+ * and two competitors. Shares of preference follow from the part-worths of
  * the example by the logit rule. Students change competitor B's price
  * (8 hours, starting at $1,100) and watch the shares move: A and B tie when
  * B is $30 cheaper, the willingness to pay for the four extra hours.
@@ -1387,7 +1387,7 @@ export function MarketSimulator() {
         height={322}
         label={`Market simulation: laptop A (12 hours, $1,100) has a ${pct[0]}% share of preference, competitor B (8 hours, $${pb.toLocaleString(
           "en-US",
-        )}) ${pct[1]}%, and C (16 hours, $1,150) ${pct[2]}%${gap === 30 ? "; A and B tie when B is $30 cheaper, the willingness to pay for four more hours" : ""}`}
+        )}) ${pct[1]}%, and C (16 hours, $1,150) ${pct[2]}%${gap === 30 ? ". A and B tie when B is $30 cheaper, the willingness to pay for four more hours" : ""}`}
       >
         <Key x={20} y={22}>SHARES OF PREFERENCE</Key>
         {items.map((it, i) => {
@@ -1438,7 +1438,7 @@ export function MarketSimulator() {
    -------------------------------------------------------------------------- */
 
 /**
- * Wadi & Ma (2026c), Study 1, Table 4 (N = 2,000; Gemini 3.1 Pro): the
+ * Wadi & Ma (2026c), Study 1, Table 4 (N = 2,000, Gemini 3.1 Pro): the
  * sponsorship coefficient under each principal, from the fixed-effects logit
  * on target choice.
  */
@@ -1474,7 +1474,7 @@ function LabelBadge({ x, y, text }: { x: number; y: number; text: string }) {
  * The sponsorship label as a conjoint attribute for AI agents (real data):
  * above, the part-worth of the label for agents told they serve the
  * traveler or the booking platform (−6.49 and −2.50: the platform's agent
- * penalizes paid listings less); below, the share of tasks in which each
+ * penalizes paid listings less). Below, the share of tasks in which each
  * agent chose the paid listing under the labels "Promoted" and "Sponsored".
  */
 export function SponsorPartWorths() {
@@ -1487,7 +1487,7 @@ export function SponsorPartWorths() {
     <Frame
       width={680}
       height={348}
-      label="Part-worth of a sponsorship label for AI agents in hotel booking (Wadi & Ma, 2026c): −6.49 for agents told they serve the traveler and −2.50 for agents told they serve the booking platform. Share of tasks in which the agent chose the paid listing: with the label Promoted, 28.8% (traveler) and 39.6% (platform); with the label Sponsored, 0.8% and 1.4%"
+      label="Part-worth of a sponsorship label for AI agents in hotel booking (Wadi & Ma, 2026c): −6.49 for agents told they serve the traveler and −2.50 for agents told they serve the booking platform. Share of tasks in which the agent chose the paid listing: with the label Promoted, 28.8% (traveler) and 39.6% (platform). With the label Sponsored, 0.8% and 1.4%"
     >
       <Key x={20} y={22}>PART-WORTH OF A SPONSORSHIP LABEL</Key>
       {SPONSOR_PW.map((r, i) => {
@@ -1728,7 +1728,7 @@ const TEXT_POINTS: { x: number; y: number; c: number }[] = (() => {
 
 /**
  * Reading the clusters: customers clustered by k-means on the embeddings of
- * their answers (the step a model does, marked with the AI spark); the
+ * their answers (the step a model does, marked with the AI spark). The
  * projection's dimensions carry no names, so each cluster is named by
  * reading a sample of its texts (the eye).
  */
@@ -1748,7 +1748,7 @@ export function TextClusters() {
     <Frame
       width={680}
       height={318}
-      label="Thirty-six customers clustered by k-means on the embeddings of their answers into three clusters. A person reads a sample of each cluster's texts and names it: SPEED (Grab-and-go on my way to the office; I eat in the car most mornings), HEALTH (More protein after the gym; Less sugar in the pastries, please) and PRICE (Prices went up again this year; A meal deal would bring me back)"
+      label="Thirty-six customers clustered by k-means on the embeddings of their answers into three clusters. A person reads a sample of each cluster's texts and names it: SPEED (Grab-and-go on my way to the office, I eat in the car most mornings), HEALTH (More protein after the gym, Less sugar in the pastries, please) and PRICE (Prices went up again this year, A meal deal would bring me back)"
     >
       <AiMark1 cx={L + 7} cy={18} s={16} fill={SIGNAL} />
       <Key x={L + 22} y={22}>CLUSTERED ON EMBEDDINGS</Key>
@@ -1793,9 +1793,9 @@ const PERSONA = [
 ];
 
 /**
- * Tracing a persona: on the left, the data describing a segment; on the
+ * Tracing a persona: on the left, the data describing a segment. On the
  * right, the persona a language model generated from it. Each supported
- * line is linked to the row it rests on; the occupation, the family
+ * line is linked to the row it rests on. The occupation, the family
  * situation and the quotation rest on no data and are flagged.
  */
 export function PersonaTrace() {
@@ -1808,7 +1808,7 @@ export function PersonaTrace() {
     <Frame
       width={680}
       height={322}
-      label="A segment's data (median age 31; 72% visit before 8 a.m.; 64% order in the app; main answer theme speed) beside the persona a language model generated from it. Four persona lines trace to the data; the occupation (works as a nurse), the family situation (mother of two) and the quotation are not supported by any data"
+      label="A segment's data (median age 31, 72% visit before 8 a.m., 64% order in the app, main answer theme speed) beside the persona a language model generated from it. Four persona lines trace to the data. The occupation (works as a nurse), the family situation (mother of two) and the quotation are not supported by any data"
     >
       <Key x={lx} y={26}>SEGMENT DATA</Key>
       <AiMark1 cx={rx + 8} cy={21} s={16} fill={INK} />

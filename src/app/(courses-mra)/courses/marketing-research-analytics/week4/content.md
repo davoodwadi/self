@@ -202,7 +202,7 @@ week: week4
 ## Key Takeaways
 - Measurement assigns numbers to characteristics of objects according to rules, and constructs are measured through operational definitions.
 - The level of measurement, whether nominal, ordinal, interval, or ratio, determines which statistical analyses are permissible.
-- Comparative scales compare objects directly; noncomparative scales, such as Likert and semantic differential scales, evaluate each object independently.
+- Comparative scales compare objects directly. Noncomparative scales, such as Likert and semantic differential scales, evaluate each object independently.
 - Reliability is the consistency of a measure, validity is the extent to which it measures the intended construct, and a measure can be reliable without being valid.
 - Question wording, question order, and response bias affect the accuracy of responses, and every questionnaire is pretested before data collection.
 - AI accelerates item development and review, but AI-generated items must be assessed for content validity and pretested with real respondents.

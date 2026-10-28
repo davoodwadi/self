@@ -8,7 +8,7 @@ import { Key, INK, INK3, RULE2, PAPER, r2 } from "./kit";
 
 /**
  * Person1: the course's one glyph for a human (respondent, member, manager).
- * Stands on (x, y); k scales it, and 1 is 34 units tall. Repeated to show
+ * Stands on (x, y). K scales it, and 1 is 34 units tall. Repeated to show
  * counts, so it stays a plain outline that takes a fill for a group.
  */
 export function Person1({
@@ -65,7 +65,7 @@ export function AiMark1({
 }
 
 /**
- * Cup1: a takeaway coffee cup standing on (x, y); k scales it, and 1 is 22
+ * Cup1: a takeaway coffee cup standing on (x, y). K scales it, and 1 is 22
  * units tall. Repeated in rows to count coffee sold.
  */
 export function Cup1({
@@ -100,7 +100,7 @@ export function Cup1({
 }
 
 /**
- * Store1: a shop front (awning, walls, door) centred on (cx, cy); k scales
+ * Store1: a shop front (awning, walls, door) centred on (cx, cy). K scales
  * it, and 1 is 18 units wide and 16 tall. Drawn at two sizes to show small
  * and large stores, so the size of the glyph carries the size of the store.
  */
@@ -139,7 +139,7 @@ export function Store1({
 }
 
 /**
- * RatingRow1: a row of rating boxes from 1 to n, the chosen one filled; the item's
+ * RatingRow1: a row of rating boxes from 1 to n, the chosen one filled. The item's
  * wording above it is drawn as a hairline bar, since the procedure, not the
  * words, is the point.
  */

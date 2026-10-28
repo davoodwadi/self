@@ -120,7 +120,7 @@
     "correct_answer_citation": "Process: Customer submits loan application. Smart contract verifies identity, credit score, and other conditions. Automatic loan disbursement upon confirmation. Outcomes: Reduced processing time from days to minutes. Lower operational costs and less human error.",
     "options": [
       {
-        "option_text": "The smart contract automatically verifies the applicant's identity, credit score, and required conditions, then disburses the funds upon confirmation—cutting processing time from days to minutes and lowering operational costs and human error.",
+        "option_text": "The smart contract automatically verifies the applicant's identity, credit score, and required conditions, then disburses the funds upon confirmation: cutting processing time from days to minutes and lowering operational costs and human error.",
         "option_explanation": "Correct. The smart contract verifies predefined criteria (identity, credit score, documents) and automatically disburses the loan, reducing time from days to minutes and minimizing manual errors."
       },
       {
@@ -160,7 +160,7 @@
         "id": "automated-conditions",
         "term": "Automated Transactions & Conditions",
         "match": "The agreement is coded so that 50% of the fee releases automatically when the staging site passes automated load tests and delivery is confirmed.",
-        "explanation": "Smart contracts execute transactions automatically once predefined conditions—such as performance milestones or delivery confirmation—are met."
+        "explanation": "Smart contracts execute transactions automatically once predefined conditions, such as performance milestones or delivery confirmation, are met."
       },
       {
         "id": "builtin-mechanisms",
@@ -227,7 +227,7 @@
     "cases": [
       {
         "id": "hardware-milestones",
-        "text": "Backers fund a clean-energy startup; the smart contract holds the pool and releases each tranche of capital only when the team completes a verified prototype milestone.",
+        "text": "Backers fund a clean-energy startup. The smart contract holds the pool and releases each tranche of capital only when the team completes a verified prototype milestone.",
         "answer": "crowdfunding",
         "explanation": "In Crowdfunding, smart contracts automatically release funds to projects upon reaching specified milestones."
       },

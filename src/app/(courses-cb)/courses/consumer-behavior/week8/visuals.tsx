@@ -1,19 +1,19 @@
 /* ==========================================================================
-   Consumer Behavior · Week 08 — figures
+   Consumer Behavior | Week 08, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates for behavioral economics, heuristics and biases:
    wobbly doubled ink and loose watercolour washes set off-register. Every
-   mark comes from ../_visuals; the style rules live in ../CLAUDE.md.
+   mark comes from ../_visuals. The style rules live in ../CLAUDE.md.
 
    Fixed cast for this week:
-     · Person: every human, one fashion-illustration figure (the SHOPPER look),
+     - Person: every human, one fashion-illustration figure (the SHOPPER look),
        varied only by hair, clothes and skin washes.
-     · Agent: the AI agent (shared: a phone with the AI sparkle).
-     · Jar: the instant-coffee jar, the week's running product for prices.
-     · Tag: the paper price tag, for every price a shopper reads.
+     - Agent: the AI agent (shared: a phone with the AI sparkle).
+     - Jar: the instant-coffee jar, the week's running product for prices.
+     - Tag: the paper price tag, for every price a shopper reads.
 
    Colour roles: teal is the one thing chosen, bought, lit or ticked on a
-   plate; ochre a badge, a count or a small highlight; pencil only an absent
+   plate. Ochre a badge, a count or a small highlight. Pencil only an absent
    object (a struck price, an unopened detail, a placeholder).
    ========================================================================== */
 
@@ -62,7 +62,7 @@ const SHOPPER: Look = { hair: "curly", hairTone: SK.brown, wear: SK.camel, legs:
 
 /**
  * A paper price tag hanging from a string, centred on (x, y), `w` wide. The
- * price is set in the serif; `big` sets the leftmost digit larger.
+ * price is set in the serif. `big` sets the leftmost digit larger.
  */
 function PriceTag({ x, y, w = 92, h = 46, seed, children, size = 22, lit = false }: { x: number; y: number; w?: number; h?: number; seed: number; children?: React.ReactNode; size?: number; lit?: boolean }) {
   const l = x - w / 2;
@@ -143,7 +143,7 @@ const ROW_H = [52, 60, 48, 56, 62, 50, 58];
 
 /**
  * A shelf of seven coffee jars, with the shopper's search drawn as hops from
- * jar to jar over their lids. `looked` jars are visited in order; `pick` is
+ * jar to jar over their lids. `looked` jars are visited in order. `pick` is
  * the jar bought (teal, with a tick).
  */
 function JarRow({ id, looked, pick, label, seed }: { id: string; looked: number; pick: number; label: string; seed: number }) {
@@ -182,7 +182,7 @@ export function CompareEvery() {
       looked={7}
       pick={4}
       seed={8100}
-      label="Seven coffee jars on a shelf. Hops over the lids show the shopper looking at every jar in turn, from the first to the seventh; the fifth jar, the best, is the one bought, lit teal and ticked."
+      label="Seven coffee jars on a shelf. Hops over the lids show the shopper looking at every jar in turn, from the first to the seventh. The fifth jar, the best, is the one bought, lit teal and ticked."
     />
   );
 }
@@ -195,7 +195,7 @@ export function GoodEnough() {
       looked={3}
       pick={2}
       seed={8200}
-      label="The same seven coffee jars. Hops show the shopper looking at only the first three jars; the third, good enough, is bought, lit teal and ticked, and the other four are never looked at."
+      label="The same seven coffee jars. Hops show the shopper looking at only the first three jars. The third, good enough, is bought, lit teal and ticked, and the other four are never looked at."
     />
   );
 }
@@ -272,7 +272,7 @@ function Pencil({ x, y, len = 96, deg = -20, seed }: { x: number; y: number; len
 
 /**
  * System 2: two coffee jars with their prices and weights, and a notepad on
- * which the price per ounce of each has been worked out; the cheaper one per
+ * which the price per ounce of each has been worked out. The cheaper one per
  * ounce, the $5.00 jar, is ticked and lit.
  */
 export function SlowCompare() {
@@ -403,7 +403,7 @@ function curvePtsLocal(p0: Pt, c: Pt, p1: Pt, n = 10): Pt[] {
 
 /**
  * Representativeness: the market leader's box and a store brand in packaging
- * like it stand side by side; both carry the same five stars of quality.
+ * like it stand side by side. Both carry the same five stars of quality.
  */
 export function LookAlike() {
   return (
@@ -460,7 +460,7 @@ export function WinePrice() {
       id="sk-wine-price"
       width={400}
       height={230}
-      label="Two wine bottles that look alike, priced $9 and $40. Above the $9 bottle, two of five quality stars; above the $40 bottle, five of five. The $40 bottle is lit teal as the one chosen: the higher price is read as higher quality."
+      label="Two wine bottles that look alike, priced $9 and $40. Above the $9 bottle, two of five quality stars. Above the $40 bottle, five of five. The $40 bottle is lit teal as the one chosen: the higher price is read as higher quality."
     >
       <Backwash cx={200} cy={118} rx={186} ry={104} seed={8701} />
       <Ground x0={40} x1={360} y={196} seed={8702} />
@@ -677,7 +677,7 @@ export function CompareAt() {
       id="sk-compare-at"
       width={400}
       height={230}
-      label="Two swing tags with the same price, $79. The first shows only $79. The second shows COMPARE AT $120 above the $79, which makes the same price look lower; it is lit teal."
+      label="Two swing tags with the same price, $79. The first shows only $79. The second shows COMPARE AT $120 above the $79, which makes the same price look lower. It is lit teal."
     >
       <Backwash cx={200} cy={124} rx={186} ry={102} seed={9001} />
       <SwingTag x={110} y={136} seed={9010}>
@@ -703,8 +703,8 @@ export function CompareAt() {
 
 /**
  * Three anchors marketers set, one per scene: a shelf label with a higher
- * regular price above the price paid; a LIMIT 12 PER CUSTOMER sign over a
- * stack of soup cans; and a menu whose first, highest-priced dish sets the
+ * regular price above the price paid. A LIMIT 12 PER CUSTOMER sign over a
+ * stack of soup cans. And a menu whose first, highest-priced dish sets the
  * scale for the rest.
  */
 export function MarketerAnchors() {
@@ -808,7 +808,7 @@ const BALANCE_AT = 40;
 
 /**
  * Loss aversion as a balance. On the left pan lies a lost $20 (in pencil: the
- * money is gone); on the right, the money found. With $20 found the beam
+ * money is gone). On the right, the money found. With $20 found the beam
  * still tips toward the loss. Add $10 at a time: it levels only at about
  * twice the loss, $40.
  */
@@ -835,7 +835,7 @@ export function LossBalance() {
     );
   };
   const bills = found / 10;
-  const label = `A balance scale. On the left pan lies a lost $20 bill, drawn in pencil because it is gone; on the right pan, $${found} found in $10 bills. ${
+  const label = `A balance scale. On the left pan lies a lost $20 bill, drawn in pencil because it is gone. On the right pan, $${found} found in $10 bills. ${
     level ? "The beam is level: finding about twice the amount, $40, makes up for losing $20." : found < BALANCE_AT ? "The beam tips toward the loss: the lost $20 still weighs more." : "The beam tips toward the money found."
   }`;
   return (
@@ -965,7 +965,7 @@ export function SameProvider() {
       id="sk-same-provider"
       width={400}
       height={230}
-      label="A fanned stack of monthly bills, all from the same provider with the same ochre badge; the top bill is paid again, with a teal tick. Beside them lies a sealed envelope from a rival provider marked 30% LESS, unopened."
+      label="A fanned stack of monthly bills, all from the same provider with the same ochre badge. The top bill is paid again, with a teal tick. Beside them lies a sealed envelope from a rival provider marked 30% LESS, unopened."
     >
       <Backwash cx={204} cy={120} rx={192} ry={104} seed={9401} />
       {bills.map((i) => {
@@ -1024,7 +1024,7 @@ function BeefTray({ x, y, seed, children, lit = false }: { x: number; y: number;
 
 /**
  * Framing: two identical trays of ground beef. One label says 75% LEAN, the
- * other 25% FAT. Same facts; the lean frame is the one rated more favourably
+ * other 25% FAT. Same facts. The lean frame is the one rated more favourably
  * and lit teal.
  */
 export function LeanFat() {
@@ -1134,7 +1134,7 @@ export function LeftDigit() {
 /**
  * Promotional framing and transaction utility: a bought bag (teal: the
  * product) with its swing tag, $25 struck through, an ochre 20% OFF sticker
- * and $20; above the tag, a heart for the good-deal feeling that comes on top
+ * and $20. Above the tag, a heart for the good-deal feeling that comes on top
  * of the product.
  */
 export function DealTag() {
@@ -1192,7 +1192,7 @@ const OPT_OUT = [
   { c: "SWEDEN", v: 85.9, t: "85.9%" },
 ];
 
-/** A licence form with one checkbox, centred on (x, y); `ticked` pre-ticks it (teal). */
+/** A licence form with one checkbox, centred on (x, y). `ticked` pre-ticks it (teal). */
 function DonorForm({ x, y, ticked, seed }: { x: number; y: number; ticked: boolean; seed: number }) {
   const card = sharp(rp([[x - 60, y - 22], [x + 60, y - 22], [x + 60, y + 22], [x - 60, y + 22]]), true, 2);
   const box = sharp(rp([[x - 48, y - 8], [x - 32, y - 8], [x - 32, y + 8], [x - 48, y + 8]]), true, 1);
@@ -1262,7 +1262,7 @@ export function OrganDefaults() {
   );
 }
 
-/** An apple centred on (x, y), radius r; `lit` washes it teal (the one taken). */
+/** An apple centred on (x, y), radius r. `lit` washes it teal (the one taken). */
 function Apple({ x, y, r = 11, seed, lit = false }: { x: number; y: number; r?: number; seed: number; lit?: boolean }) {
   const body = rp(blobPts(x, y, r, r * 0.92, seed, 12, 0.08));
   return (
@@ -1300,7 +1300,7 @@ export function FruitEyeLevel() {
       id="sk-fruit-eye-level"
       width={400}
       height={230}
-      label="A cafeteria shelf with a row of apples at eye level and slices of cake still available on the shelf below. A diner stands beside it; her eye line meets the fruit, and she reaches for an apple, which is lit teal."
+      label="A cafeteria shelf with a row of apples at eye level and slices of cake still available on the shelf below. A diner stands beside it. Her eye line meets the fruit, and she reaches for an apple, which is lit teal."
     >
       <Backwash cx={204} cy={120} rx={192} ry={104} seed={10201} />
       <Ground x0={20} x1={384} y={212} seed={10202} />
@@ -1363,7 +1363,7 @@ export function AnchorByGeneration() {
       id="sk-anchor-by-generation"
       width={604}
       height={318}
-      label="A slope chart of how closely an AI model's stated price followed an anchor number, from 0 (not at all) to 1 (exactly). Llama 2 70B 0.02 rises to Llama 4 Maverick 0.93; Claude 3.5 Haiku 0.48 rises to Claude 3.7 Sonnet 0.98; GPT-3.5 Turbo 0.80 rises to GPT-4.1 0.83. A thin line marks people, in the 2003 study by Ariely and colleagues, at 0.39. The newer models are lit teal."
+      label="A slope chart of how closely an AI model's stated price followed an anchor number, from 0 (not at all) to 1 (exactly). Llama 2 70B 0.02 rises to Llama 4 Maverick 0.93. Claude 3.5 Haiku 0.48 rises to Claude 3.7 Sonnet 0.98. GPT-3.5 Turbo 0.80 rises to GPT-4.1 0.83. A thin line marks people, in the 2003 study by Ariely and colleagues, at 0.39. The newer models are lit teal."
     >
       <Backwash cx={302} cy={160} rx={296} ry={152} seed={10301} />
       <SketchText x={300} y={top - 24} anchor="middle" size={12}>
@@ -1526,7 +1526,7 @@ export function StorefrontLab() {
     { x: 320, price: "$4.99", h: 50 },
     { x: 460, price: "$5.00", h: 56 },
   ];
-  const label = `An AI agent's shopping task. The instruction card reads ${GOAL_TEXT[goal].join(" ")} The storefront lists two coffees, $4.99 and $5.00, whose details are hidden; each look-up costs ${coin}. In the study, the agents looked up ${cell.details.toFixed(2)} of 6 details and chose the coffee cheaper per ounce in ${Math.round(cell.best * 100)}% of sessions.`;
+  const label = `An AI agent's shopping task. The instruction card reads ${GOAL_TEXT[goal].join(" ")} The storefront lists two coffees, $4.99 and $5.00, whose details are hidden. Each look-up costs ${coin}. In the study, the agents looked up ${cell.details.toFixed(2)} of 6 details and chose the coffee cheaper per ounce in ${Math.round(cell.best * 100)}% of sessions.`;
   return (
     <>
       <SketchFrame id="sk-storefront-lab" width={800} height={300} label={label}>

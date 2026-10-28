@@ -39,9 +39,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 09 — ALGORITHMIC PRICING, COLLUSION, AND FAIR COMPETITION
+// WEEK 09: ALGORITHMIC PRICING, COLLUSION, AND FAIR COMPETITION
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md;
+// Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
 // is drawn beside it. Plates live in ./visuals.tsx.
 // ============================================================================
@@ -54,10 +54,10 @@ export default function Week9Page() {
   return (
     <SlideDeck label="Week 09">
       {/* ================================================================
-          01 · Title Slide
+          01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 09 · Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 09: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[24ch]">Algorithmic Pricing, Collusion, and Fair Competition</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[58ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.2rem,1.9vw,1.6rem)]">
@@ -70,7 +70,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          02 · When Algorithms Set Market Prices [no-exercise]
+          02. When Algorithms Set Market Prices [no-exercise]
           ================================================================ */}
       <Slide id="when-algorithms-set-market-prices" border className="!py-8">
         <SlideHeading className="!mb-5">When Algorithms Set Market Prices</SlideHeading>
@@ -101,7 +101,7 @@ export default function Week9Page() {
           <P className="!max-w-none">
             This speed and granularity create two major governance challenges: at
             the individual level, algorithms can extract consumer surplus through
-            opaque personalized pricing; at the market level,{" "}
+            opaque personalized pricing. At the market level,{" "}
             <Term tone="signal">
               competing algorithms can learn to sustain supra-competitive prices
               without an explicit human cartel
@@ -112,7 +112,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          03 · Dynamic Pricing Versus Personalized Pricing [exercise]
+          03. Dynamic Pricing Versus Personalized Pricing [exercise]
           ================================================================ */}
       <Slide
         id="dynamic-pricing-versus-personalized-pricing"
@@ -159,7 +159,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          04 · Part 1: Algorithmic Price Discrimination and Consumer Welfare [no-exercise]
+          04. Part 1: Algorithmic Price Discrimination and Consumer Welfare [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Algorithmic Price Discrimination and Consumer Welfare" />
@@ -188,7 +188,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          05 · First-, Second-, and Third-Degree Price Discrimination [exercise]
+          05. First-, Second-, and Third-Degree Price Discrimination [exercise]
           ================================================================ */}
       <Slide
         id="first-second-and-third-degree-price-discrimination"
@@ -245,7 +245,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          06 · Welfare Effects of Granular Price Discrimination [no-exercise]
+          06. Welfare Effects of Granular Price Discrimination [no-exercise]
           ================================================================ */}
       <Slide id="welfare-effects-of-granular-price-discrimination" border className="!py-8">
         <SlideHeading className="!mb-5">Welfare Effects of Granular Price Discrimination</SlideHeading>
@@ -294,7 +294,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          07 · Search Steering and Price Discrimination by Proxy [no-exercise]
+          07. Search Steering and Price Discrimination by Proxy [no-exercise]
           ================================================================ */}
       <Slide id="search-steering-and-price-discrimination-by-proxy" border className="!py-8">
         <SlideHeading className="!mb-5">Search Steering and Price Discrimination by Proxy</SlideHeading>
@@ -349,7 +349,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          08 · Part 2: Consumer Fairness Perceptions and Dual Entitlement [no-exercise]
+          08. Part 2: Consumer Fairness Perceptions and Dual Entitlement [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Consumer Fairness Perceptions and Dual Entitlement" />
@@ -377,7 +377,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          09 · Dual Entitlement and Reference Transactions [no-exercise]
+          09. Dual Entitlement and Reference Transactions [no-exercise]
           ================================================================ */}
       <Slide id="dual-entitlement-and-reference-transactions" border className="!py-8">
         <SlideHeading className="!mb-5">Dual Entitlement and Reference Transactions</SlideHeading>
@@ -421,7 +421,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          10 · Why Personalized Pricing Triggers Moral Outrage and Trust Erosion [exercise]
+          10. Why Personalized Pricing Triggers Moral Outrage and Trust Erosion [exercise]
           ================================================================ */}
       <Slide
         id="why-personalized-pricing-triggers-moral-outrage-and-trust-erosion"
@@ -489,7 +489,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          11 · Framing and Transparency in Algorithmic Pricing [no-exercise]
+          11. Framing and Transparency in Algorithmic Pricing [no-exercise]
           ================================================================ */}
       <Slide id="framing-and-transparency-in-algorithmic-pricing" border className="!py-8">
         <SlideHeading className="!mb-5">Framing and Transparency in Algorithmic Pricing</SlideHeading>
@@ -535,7 +535,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          12 · Discussion: Surge Pricing During an Emergency
+          12. Discussion: Surge Pricing During an Emergency
           ================================================================ */}
       <Slide id="discussion-surge-pricing-during-an-emergency" border className="!py-8">
         <SlideHeading>Surge Pricing During an Emergency</SlideHeading>
@@ -558,7 +558,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          13 · Part 3: Tacit Algorithmic Collusion in Automated Markets [no-exercise]
+          13. Part 3: Tacit Algorithmic Collusion in Automated Markets [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Tacit Algorithmic Collusion in Automated Markets" />
@@ -587,7 +587,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          14 · Explicit Cartels Versus Tacit Coordination [no-exercise]
+          14. Explicit Cartels Versus Tacit Coordination [no-exercise]
           ================================================================ */}
       <Slide id="explicit-cartels-versus-tacit-coordination" border className="!py-8">
         <SlideHeading className="!mb-5">Explicit Cartels Versus Tacit Coordination</SlideHeading>
@@ -639,7 +639,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          15 · How Reinforcement-Learning Pricing Agents Learn to Collude [no-exercise]
+          15. How Reinforcement-Learning Pricing Agents Learn to Collude [no-exercise]
           ================================================================ */}
       <Slide id="how-reinforcement-learning-pricing-agents-learn-to-collude" border className="!py-8">
         <SlideHeading className="!mb-5">How Reinforcement-Learning Pricing Agents Learn to Collude</SlideHeading>
@@ -700,7 +700,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          16 · Four Pathways to Algorithmic Price Coordination [exercise]
+          16. Four Pathways to Algorithmic Price Coordination [exercise]
           ================================================================ */}
       <Slide
         id="four-pathways-to-algorithmic-price-coordination"
@@ -722,8 +722,8 @@ export default function Week9Page() {
                 <>
                   <Term tone="ink">Messenger</Term> occurs when human executives
                   explicitly agree to fix prices and merely use software algorithms
-                  as the operational tool to monitor compliance and update prices;
-                  this is a traditional illegal cartel.
+                  as the operational tool to monitor compliance and update prices.
+                  This is a traditional illegal cartel.
                 </>,
               ],
               [
@@ -772,7 +772,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          17 · Part 4: Self-Preferencing, Gatekeeper Power, and Selling to Buying Bots [no-exercise]
+          17. Part 4: Self-Preferencing, Gatekeeper Power, and Selling to Buying Bots [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Self-Preferencing, Gatekeeper Power, and Selling to Buying Bots" />
@@ -794,7 +794,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          18 · Dual-Role Gatekeepers and Algorithmic Self-Preferencing [exercise]
+          18. Dual-Role Gatekeepers and Algorithmic Self-Preferencing [exercise]
           ================================================================ */}
       <Slide
         id="dual-role-gatekeepers-and-algorithmic-self-preferencing"
@@ -854,7 +854,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          19 · When Pricing Algorithms Meet AI Shopping Agents [no-exercise]
+          19. When Pricing Algorithms Meet AI Shopping Agents [no-exercise]
           ================================================================ */}
       <Slide id="when-pricing-algorithms-meet-ai-shopping-agents" border className="!py-8">
         <SlideHeading className="!mb-5">When Pricing Algorithms Meet AI Shopping Agents</SlideHeading>
@@ -904,7 +904,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          20 · Part 5: Antitrust Enforcement and Auditing Pricing Algorithms [no-exercise]
+          20. Part 5: Antitrust Enforcement and Auditing Pricing Algorithms [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Antitrust Enforcement and Auditing Pricing Algorithms" />
@@ -928,7 +928,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          21 · The Liability Gap in Competition Law [no-exercise]
+          21. The Liability Gap in Competition Law [no-exercise]
           ================================================================ */}
       <Slide id="the-liability-gap-in-competition-law" border className="!py-8">
         <SlideHeading className="!mb-5">The Liability Gap in Competition Law</SlideHeading>
@@ -973,7 +973,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          22 · Six Steps of an Algorithmic Pricing and Competition Audit [exercise]
+          22. Six Steps of an Algorithmic Pricing and Competition Audit [exercise]
           ================================================================ */}
       <Slide
         id="six-steps-of-an-algorithmic-pricing-and-competition-audit"
@@ -1017,7 +1017,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          23 · Governance Guardrails for Ethical and Compliant Pricing [exercise]
+          23. Governance Guardrails for Ethical and Compliant Pricing [exercise]
           ================================================================ */}
       <Slide
         id="governance-guardrails-for-ethical-and-compliant-pricing"
@@ -1081,7 +1081,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          24 · Discussion: The Shared Rental Pricing Algorithm
+          24. Discussion: The Shared Rental Pricing Algorithm
           ================================================================ */}
       <Slide id="discussion-the-shared-rental-pricing-algorithm" border className="!py-8">
         <SlideHeading>The Shared Rental Pricing Algorithm</SlideHeading>
@@ -1106,7 +1106,7 @@ export default function Week9Page() {
       </Slide>
 
       {/* ================================================================
-          25 · Key Takeaways
+          25. Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>

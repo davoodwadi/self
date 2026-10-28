@@ -8,7 +8,7 @@ import { SYLLABUS, type SyllabusEntry } from "./_landing/syllabus";
 import s from "./_landing/landing.module.css";
 
 // ============================================================================
-// BUSI 654 — COURSE LANDING
+// BUSI 654: COURSE LANDING
 // ============================================================================
 // The course masthead stays in view on the left while the curriculum scrolls
 // on the right, the same layout as the other course landings.
@@ -22,7 +22,7 @@ import s from "./_landing/landing.module.css";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Applications of AI in Business · BUSI 654",
+  title: "Applications of AI in Business | BUSI 654",
   description:
     "Course index and lecture decks for BUSI 654, Applications of AI in Business, with Davood Wadi, PhD.",
 };
@@ -93,7 +93,7 @@ export default function CourseLanding() {
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
             <span className="h-px w-10 bg-[var(--crimson)]" aria-hidden />
-            BUSI 654 · {weeks} weeks
+            BUSI 654. {weeks} weeks
           </p>
 
           <h1 className={s.title}>

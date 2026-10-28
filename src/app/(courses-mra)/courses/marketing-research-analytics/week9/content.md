@@ -145,7 +145,7 @@ week: week9
 - A model may achieve accurate predictions through variables that are correlated with the outcome but not causally related to it.
 - For example, a model may predict that customers who receive discounts are more likely to purchase because discounts were previously offered to the most loyal customers. The prediction does not establish that offering discounts to other customers would increase their purchases.
 - Predictive accuracy on historical data does not ensure accuracy when conditions change, as when the firm changes its pricing or a new competitor enters the market.
-- AI assistants can generate the code for both regression and machine learning models; the procedures for verifying AI-assisted analysis introduced in Week 6 apply to that code.
+- AI assistants can generate the code for both regression and machine learning models. The procedures for verifying AI-assisted analysis introduced in Week 6 apply to that code.
 
 ## Selecting a Modeling Approach [exercise]
 - Linear or logistic regression is appropriate when the decision requires an interpretable estimate of the effect of specific variables, such as the effect of price on unit sales.
@@ -175,7 +175,7 @@ week: week9
 - The mediator is measured rather than manipulated, so that the analysis provides evidence consistent with a mechanism rather than proof of it.
 
 ## Key Takeaways
-- Correlation measures the strength and direction of a linear relationship; regression estimates the expected change in an outcome associated with each independent variable.
+- Correlation measures the strength and direction of a linear relationship. Regression estimates the expected change in an outcome associated with each independent variable.
 - Multiple regression coefficients are partial effects, interpreted holding the other variables constant, and are assessed together with model fit and diagnostics.
 - Multicollinearity, omitted variables, and reverse causality limit the causal interpretation of regression estimated from observational data.
 - Logistic regression models binary outcomes, and its coefficients are interpreted as odds ratios and predicted probabilities.

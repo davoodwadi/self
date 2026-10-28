@@ -3,7 +3,7 @@
     "slide_id": "business-decisions",
     "question_text": "What does this course identify as the primary strategic goal for business leaders working with AI?",
     "hint": "Leaders are not being asked to build the systems themselves.",
-    "correct_answer_citation": "Week 01 — Why Business Leaders Must Understand AI",
+    "correct_answer_citation": "Week 01: Why Business Leaders Must Understand AI",
     "correct_answer_index": 1,
     "options": [
       {
@@ -28,7 +28,7 @@
     "slide_id": "ai-ml-dl",
     "question_text": "How does the lecture distinguish modern AI systems from traditional software?",
     "hint": "Think about where the rules come from in each case.",
-    "correct_answer_citation": "Week 01 — Defining Artificial Intelligence",
+    "correct_answer_citation": "Week 01: Defining Artificial Intelligence",
     "correct_answer_index": 2,
     "options": [
       {
@@ -53,7 +53,7 @@
     "slide_id": "predictive-generative",
     "question_text": "Which statement correctly describes how artificial intelligence, machine learning, and deep learning relate to each other?",
     "hint": "One of the three is the umbrella that contains the other two.",
-    "correct_answer_citation": "Week 01 — Artificial Intelligence, Machine Learning, and Deep Learning",
+    "correct_answer_citation": "Week 01: Artificial Intelligence, Machine Learning, and Deep Learning",
     "correct_answer_index": 0,
     "options": [
       {
@@ -78,7 +78,7 @@
     "slide_id": "prediction-judgment",
     "question_text": "Following the economic pattern described in the lecture, what does modern machine learning make cheap and abundant?",
     "hint": "Each breakthrough in the list makes one specific input cheap.",
-    "correct_answer_citation": "Week 01 — The Cost of Prediction Drops to Zero",
+    "correct_answer_citation": "Week 01: The Cost of Prediction Drops to Zero",
     "correct_answer_index": 3,
     "options": [
       {
@@ -103,7 +103,7 @@
     "slide_id": "front-office",
     "question_text": "Why does buying an off-the-shelf AI tool fail to guarantee a lasting competitive edge?",
     "hint": "Consider what your competitors can buy on the same day you do.",
-    "correct_answer_citation": "Week 01 — The Fallacy of Plug and Play",
+    "correct_answer_citation": "Week 01: The Fallacy of Plug and Play",
     "correct_answer_index": 2,
     "options": [
       {
@@ -128,7 +128,7 @@
     "slide_id": "human-in-the-loop",
     "question_text": "Which of these is described as a back-office application of machine learning?",
     "hint": "Back-office work is internal rather than customer-facing.",
-    "correct_answer_citation": "Week 01 — Back-Office Applications: Operations and Finance",
+    "correct_answer_citation": "Week 01: Back-Office Applications: Operations and Finance",
     "correct_answer_index": 1,
     "options": [
       {
@@ -153,7 +153,7 @@
     "slide_id": "data-quality",
     "question_text": "Which of the following is an example of unstructured data?",
     "hint": "Ask whether the data would fit neatly into rows and columns.",
-    "correct_answer_citation": "Week 01 — Data Is the Raw Material of AI",
+    "correct_answer_citation": "Week 01: Data Is the Raw Material of AI",
     "correct_answer_index": 3,
     "options": [
       {
@@ -178,7 +178,7 @@
     "slide_id": "why-projects-fail",
     "question_text": "What keeps the data flywheel turning in a successful AI deployment?",
     "hint": "Something the customers themselves produce keeps the cycle going.",
-    "correct_answer_citation": "Week 01 — The Feedback Loop and Data Flywheel",
+    "correct_answer_citation": "Week 01: The Feedback Loop and Data Flywheel",
     "correct_answer_index": 0,
     "options": [
       {
@@ -203,7 +203,7 @@
     "slide_id": "hallucinations",
     "question_text": "Which of these is given as a common reason business AI projects fail?",
     "hint": "Think about where a failing project tends to start.",
-    "correct_answer_citation": "Week 01 — Why Business AI Projects Fail",
+    "correct_answer_citation": "Week 01: Why Business AI Projects Fail",
     "correct_answer_index": 2,
     "options": [
       {

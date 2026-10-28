@@ -50,7 +50,7 @@ import { Person1, Cup1, AiMark1, Tick1 } from "../_visuals/objects";
  * evidence (a narrow one).
  *
  * Interactive: the slider sets how many respondents the study hears from.
- * With none it would be the assumptions curve (so the slider starts at 20); each added
+ * With none it would be the assumptions curve (so the slider starts at 20). Each added
  * respondent narrows it, quickly at first and then with diminishing returns
  * (the spread falls with the square root of the sample). It opens at 400,
  * the state the slide shows before anyone touches it.
@@ -62,7 +62,7 @@ export function UncertaintyNarrowing() {
   const x1 = 380;
   const wide = { x0, x1: 370, base, mean: 200, sd: 68, peak: 46 };
   // Spread and centre move from the assumptions curve (the n = 0 limit) towards the
-  // evidence; the peak rises as the spread narrows, capped inside the frame.
+  // evidence. The peak rises as the spread narrows, capped inside the frame.
   const sd = r2(wide.sd / Math.sqrt(1 + n / 20));
   const t = (wide.sd - sd) / (wide.sd - 12);
   const mean = r2(wide.mean + 22 * t);
@@ -101,18 +101,18 @@ export function UncertaintyNarrowing() {
 /**
  * Research, Analytics, and Intelligence: one lane per activity over the same
  * stretch of time. Research is a bounded project that asks one question of
- * new respondents; analytics is a continuous series of the firm's own data,
- * run forward as a forecast; intelligence is a steady run of observations of
+ * new respondents. Analytics is a continuous series of the firm's own data,
+ * run forward as a forecast. Intelligence is a steady run of observations of
  * the outside world (competitor prices, regulation, industry news).
  *
  * Interactive: `now` is the latest tick on the shared axis, with a cursor
- * just after it through every lane. Before the project starts, research is only an empty outline;
- * its respondents arrive one per tick and the answer lands at its close.
- * Analytics is solid up to now and a dashed forecast after it; intelligence
+ * just after it through every lane. Before the project starts, research is only an empty outline.
+ * Its respondents arrive one per tick and the answer lands at its close.
+ * Analytics is solid up to now and a dashed forecast after it. Intelligence
  * holds the observations made so far.
  */
 const LANE_TICKS = Array.from({ length: 12 }, (_, i) => 36 + i * 46);
-/** Research runs from this tick to that one; the lanes open at NOW_DEFAULT. */
+/** Research runs from this tick to that one. The lanes open at NOW_DEFAULT. */
 const PROJECT_START = 4;
 const PROJECT_END = 8;
 const NOW_DEFAULT = 9;
@@ -280,7 +280,7 @@ export function EvidenceLanes({ texts }: { texts: [React.ReactNode, React.ReactN
 
 /**
  * Problem-identification research: a tracked market share line that was
- * flat and has begun to fall; the turn is caught before it is obvious.
+ * flat and has begun to fall. The turn is caught before it is obvious.
  */
 export function ShareTracking() {
   const axisY = 150;
@@ -293,7 +293,7 @@ export function ShareTracking() {
     <Frame
       width={400}
       height={176}
-      label="A tracked market share line, flat for months and then starting to fall; the start of the fall is circled"
+      label="A tracked market share line, flat for months and then starting to fall. The start of the fall is circled"
     >
       <line x1={24} y1={axisY} x2={388} y2={axisY} stroke={INK} strokeWidth={1.25} />
       <path d={head.right(388, axisY, 7)} fill="none" stroke={INK} strokeWidth={1.25} />
@@ -329,7 +329,7 @@ export function ChooseAmongAlternatives() {
     <Frame
       width={400}
       height={176}
-      label="One known problem branching to three alternative prices, eight, ten and twelve dollars; the ten-dollar price is chosen"
+      label="One known problem branching to three alternative prices, eight, ten and twelve dollars. The ten-dollar price is chosen"
     >
       <circle cx={sx} cy={sy} r={16} fill={PAPER} stroke={INK} strokeWidth={1.5} />
       <text x={sx} y={sy + 6} textAnchor="middle" fontFamily="var(--font-heading)" fontSize={18} fontWeight={600} fill={INK}>!</text>
@@ -368,7 +368,7 @@ export function ChooseAmongAlternatives() {
 
 /**
  * When Research Is Justified: decisions placed by how consequential they are
- * and how uncertain the right action is; research is justified only where
+ * and how uncertain the right action is. Research is justified only where
  * both are high.
  *
  * Interactive: each quadrant is clickable. The chosen one fills and states
@@ -397,7 +397,7 @@ export function JustifiedQuadrant() {
     <Frame
       width={400}
       height={240}
-      label={`A two-by-two grid: how consequential the decision is against how uncertain the right action is; the ${cells[picked].place} quadrant is selected and marked ${justified ? "justified" : "not justified"}`}
+      label={`A two-by-two grid: how consequential the decision is against how uncertain the right action is. The ${cells[picked].place} quadrant is selected and marked ${justified ? "justified" : "not justified"}`}
     >
       {cells.map((c, i) => {
         const on = i === picked;
@@ -519,8 +519,8 @@ export function SymptomAndCauses() {
 }
 
 /**
- * Discussion: Symptom or Problem? Ten new members joining in each year;
- * the ones who cancel within three months are filled. Last year two, this
+ * Discussion: Symptom or Problem? Ten new members joining in each year.
+ * The ones who cancel within three months are filled. Last year two, this
  * year four: twice the rate.
  */
 export function CancellationsDoubled() {
@@ -532,7 +532,7 @@ export function CancellationsDoubled() {
     <Frame
       width={400}
       height={196}
-      label="Ten new members last year, two of them cancelling within three months; ten new members this year, four of them cancelling: twice the rate"
+      label="Ten new members last year, two of them cancelling within three months. Ten new members this year, four of them cancelling: twice the rate"
     >
       <Key x={392} y={22} anchor="end" fill={COUNTER} size={10}>CANCEL WITHIN 3 MONTHS</Key>
       {rows.map(({ year, cancelled, y }) => (
@@ -621,7 +621,7 @@ export function ResearchProcess({ ai = false }: { ai?: boolean }) {
 }
 
 /**
- * Limitations of AI: answers to the same 1–7 question from real people and
+ * Limitations of AI: answers to the same 1 to 7 question from real people and
  * from AI-simulated consumers. The simulated answers look like a plausible
  * distribution, but they sit higher and spread less: a systematic difference.
  */
@@ -636,7 +636,7 @@ export function SimulatedVersusReal() {
     <Frame
       width={400}
       height={186}
-      label="Answers to the same one-to-seven question: real people spread widely around the middle; AI-simulated consumers cluster higher and tighter"
+      label="Answers to the same one-to-seven question: real people spread widely around the middle. AI-simulated consumers cluster higher and tighter"
     >
       <path d={bellPath({ ...real, close: true })} fill={PAPER3} />
       <path d={bellPath(real)} fill="none" stroke={INK} strokeWidth={1.5} />
@@ -672,7 +672,7 @@ export function EffortShift() {
     <Frame
       width={400}
       height={172}
-      label="Two bars of the researcher's effort on one study: without AI, mostly producing and a little verifying; with AI, a shorter bar that is mostly verifying"
+      label="Two bars of the researcher's effort on one study: without AI, mostly producing and a little verifying. With AI, a shorter bar that is mostly verifying"
     >
       {rows.map((r) => {
         const pw = r2(r.produce * unit);
@@ -854,7 +854,7 @@ export function SamePromptResponses() {
       height={160}
       label="Twenty responses from one model to one prompt, stacked on a one-to-seven scale: they spread from 2 to 7, most at 4 and 5. A single response, at 6, is highlighted"
     >
-      <Key x={16} y={22} fill={INK3} size={10}>20 RESPONSES · SAME MODEL · SAME PROMPT</Key>
+      <Key x={16} y={22} fill={INK3} size={10}>20 RESPONSES | SAME MODEL | SAME PROMPT</Key>
       {counts.map((c, k) =>
         Array.from({ length: c }, (_, i) => {
           const hit = k + 1 === one.v && i === one.i;

@@ -1,12 +1,12 @@
 "use client";
 
 /* ==========================================================================
-   Week 4 — plates (Flat Silhouette)
+   Week 4, plates (Flat Silhouette)
    --------------------------------------------------------------------------
    Fixed cast for the week, built on ../_visuals/kit and ../_visuals/objects:
-     · Person   — every human (bust in profile)
-     · Shop     — the business (BestBuy, IKEA)
-     · Monitor / MiniScreen — anything digital (virtual assistant, chatbot,
+     - Person, every human (bust in profile)
+     - Shop, the business (BestBuy, IKEA)
+     - Monitor / MiniScreen, anything digital (virtual assistant, chatbot,
                               self-return kiosk, cloud/fog/edge screens)
    Every coordinate is a literal or rounded with r2(), so server and client
    render identical markup.
@@ -52,7 +52,7 @@ import {
 import { Person, Shop, Doc, Coins } from "../_visuals/objects";
 
 /* ==========================================================================
-   1 · Hero — A user in profile accepts and uses a connected digital system
+   1. Hero: A user in profile accepts and uses a connected digital system
    on a framed screen
    ========================================================================== */
 
@@ -73,7 +73,7 @@ export function HeroAcceptance() {
 }
 
 /* ==========================================================================
-   2 · TAM Flow Diagram — Fred Davis (1986) Technology Acceptance Model
+   2. TAM Flow Diagram: Fred Davis (1986) Technology Acceptance Model
    ========================================================================== */
 
 function BoxLines({
@@ -116,7 +116,7 @@ export function TamFlowDiagram() {
     <Plate
       w={800}
       h={224}
-      title="The Technology Acceptance Model: External Variables point to Perceived Usefulness (U) and Perceived Ease of Use (E); Perceived Ease of Use points up to Perceived Usefulness; both point to Attitude Toward Using (A), which together with Perceived Usefulness points to Behavioral Intention to Use, leading to Actual System Use in red"
+      title="The Technology Acceptance Model: External Variables point to Perceived Usefulness (U) and Perceived Ease of Use (E). Perceived Ease of Use points up to Perceived Usefulness. Both point to Attitude Toward Using (A), which together with Perceived Usefulness points to Behavioral Intention to Use, leading to Actual System Use in red"
     >
       {/* External Variables */}
       <rect x={12} y={66} width={116} height={92} fill={INK} />
@@ -159,7 +159,7 @@ export function TamFlowDiagram() {
 }
 
 /* ==========================================================================
-   2b · External Variables Interactive (Column Plate, w=400) — five distinct
+   2b | External Variables Interactive (Column Plate, w=400): five distinct
    external factors (screen interface, individual user, peer group, training
    manual, task gear) that students can select to see how each influences
    Perceived Usefulness (U) and Perceived Ease of Use (E)
@@ -208,7 +208,7 @@ export function ExternalVariablesInteractive() {
     <Plate
       w={400}
       h={284}
-      title={`Five external variables on the left (1 System Features, 2 User Characteristics, 3 Social Influence, 4 Training and Support, 5 Task Characteristics) point to Perceived Usefulness (U) and Perceived Ease of Use (E) on the right; ${active.name} is selected in red, setting U to ${active.u}% and E to ${active.e}%`}
+      title={`Five external variables on the left (1 System Features, 2 User Characteristics, 3 Social Influence, 4 Training and Support, 5 Task Characteristics) point to Perceived Usefulness (U) and Perceived Ease of Use (E) on the right. ${active.name} is selected in red, setting U to ${active.u}% and E to ${active.e}%`}
     >
       {/* Five selectable external variable rows with distinct silhouettes */}
       {EXT_VARS.map((v, i) => {
@@ -307,7 +307,7 @@ export function ExternalVariablesInteractive() {
 }
 
 /* ==========================================================================
-   3 · Interactive TAM Beliefs Simulator — drag Perceived Usefulness (PU) and
+   3. Interactive TAM Beliefs Simulator: drag Perceived Usefulness (PU) and
    Perceived Ease of Use (PEOU) to watch Attitude Toward Use and Behavioral
    Intention to Use respond
    ========================================================================== */
@@ -316,7 +316,7 @@ export function TamBeliefsInteractive() {
   const [pu, setPu] = React.useState(75);
   const [peou, setPeou] = React.useState(70);
 
-  // In TAM, PEOU also bolsters PU; both drive Attitude, and Attitude + PU drive Intention.
+  // In TAM, PEOU also bolsters PU. Both drive Attitude, and Attitude + PU drive Intention.
   const effPu = Math.min(100, Math.round(pu * 0.78 + peou * 0.22));
   const attitude = Math.round(effPu * 0.55 + peou * 0.45);
   const intention = Math.round(attitude * 0.65 + effPu * 0.35);
@@ -400,7 +400,7 @@ export function TamBeliefsInteractive() {
 }
 
 /* ==========================================================================
-   3b · BestBuy External Variables Plate (Column Plate, w=400) — four external
+   3b | BestBuy External Variables Plate (Column Plate, w=400): four external
    variables (system features, tech-savvy user, review stars, tutorial doc)
    feeding BestBuy's AI-powered virtual shopping assistant on a framed screen
    ========================================================================== */
@@ -445,7 +445,7 @@ export function BestBuyAssistantPlate() {
 }
 
 /* ==========================================================================
-   4 · BestBuy Feature Trade-Off (Interactive) — "How is adding more features
+   4. BestBuy Feature Trade-Off (Interactive): "How is adding more features
    reducing the ease of use?"
    ========================================================================== */
 
@@ -538,7 +538,7 @@ export function BestBuyFeatureTradeoff() {
 }
 
 /* ==========================================================================
-   4b · BestBuy Catalog & Manuals Bridge (Column Plate, w=400) — product
+   4b | BestBuy Catalog & Manuals Bridge (Column Plate, w=400): product
    catalog database and manuals feed into the AI chatbot on a framed screen
    ========================================================================== */
 
@@ -565,7 +565,7 @@ export function BestBuyCatalogBridgePlate() {
 }
 
 /* ==========================================================================
-   5 · Hospital Triage Chatbot — patients consult a chatbot on a framed screen,
+   5. Hospital Triage Chatbot: patients consult a chatbot on a framed screen,
    which routes non-urgent cases to care at home and critical cases to urgent care
    ========================================================================== */
 
@@ -592,7 +592,7 @@ export function HospitalTriageFlow() {
     <Plate
       w={800}
       h={208}
-      title="Two patients in profile face a triage chatbot on a framed screen; from the screen, a black arrow leads to a house labeled At home, and a red arrow leads to a medical cross labeled Urgent care"
+      title="Two patients in profile face a triage chatbot on a framed screen. From the screen, a black arrow leads to a house labeled At home, and a red arrow leads to a medical cross labeled Urgent care"
     >
       <Person x={68} y={54} k={1.05} variant={2} />
       <Person x={132} y={42} k={1.18} variant={8} gap />
@@ -622,7 +622,7 @@ export function HospitalTriageFlow() {
 }
 
 /* ==========================================================================
-   5b · Hospital Peak-Hours Triage Simulator (Column Plate, w=400) — drag how
+   5b | Hospital Peak-Hours Triage Simulator (Column Plate, w=400): drag how
    many non-urgent cases the chatbot filters to see Waiting times fall and
    Staff focus on critical patients rise
    ========================================================================== */
@@ -693,7 +693,7 @@ export function HospitalPeakSimulator() {
 }
 
 /* ==========================================================================
-   5c · Hospital EHR Integration Plate (Column Plate, w=400) — an Electronic
+   5c | Hospital EHR Integration Plate (Column Plate, w=400): an Electronic
    Health Record (EHR) screen on the left links via a red arrow into the
    hospital chatbot screen on the right
    ========================================================================== */
@@ -723,7 +723,7 @@ export function HospitalEhrIntegrationPlate() {
 }
 
 /* ==========================================================================
-   6 · IKEA Self-Return Kiosk — contrasts waiting in a queue of customers with
+   6. IKEA Self-Return Kiosk: contrasts waiting in a queue of customers with
    processing a return directly at a framed self-return kiosk
    ========================================================================== */
 
@@ -770,8 +770,8 @@ export function IkeaKioskReturn() {
 }
 
 /* ==========================================================================
-   6b · IKEA Kiosk Benefits Plate (Column Plate, w=400) — top row shows fast
-   barcode return on a framed kiosk screen; bottom row shows staff freed for
+   6b | IKEA Kiosk Benefits Plate (Column Plate, w=400): top row shows fast
+   barcode return on a framed kiosk screen. Bottom row shows staff freed for
    complex issues and cost savings
    ========================================================================== */
 
@@ -811,7 +811,7 @@ export function IkeaKioskStepsPlate() {
 }
 
 /* ==========================================================================
-   6c · UTAUT Synthesis Plate (Column Plate, w=400) — TAM, TPB, and the
+   6c | UTAUT Synthesis Plate (Column Plate, w=400): TAM, TPB, and the
    Motivational Model converge into UTAUT (2003), which branches into its four
    primary constructs (1 to 4)
    ========================================================================== */
@@ -865,7 +865,7 @@ export function UtautSynthesisPlate() {
 }
 
 /* ==========================================================================
-   7 · Interactive UTAUT Model (Venkatesh et al., 2003) — click any of the four
+   7. Interactive UTAUT Model (Venkatesh et al., 2003): click any of the four
    moderating variables at the bottom to highlight the exact relationships it
    moderates
    ========================================================================== */
@@ -901,7 +901,7 @@ export function UtautModelInteractive() {
     <Plate
       w={800}
       h={284}
-      title={`The UTAUT model (Venkatesh et al., 2003): Performance Expectancy, Effort Expectancy, and Social Influence point to Behavioral Intention, which together with Facilitating Conditions points to Use Behavior. Bottom row shows four moderating variables (Gender, Age, Experience, Voluntariness of Use); ${active.label} is selected in red, highlighting the ${active.paths.length} paths it moderates`}
+      title={`The UTAUT model (Venkatesh et al., 2003): Performance Expectancy, Effort Expectancy, and Social Influence point to Behavioral Intention, which together with Facilitating Conditions points to Use Behavior. Bottom row shows four moderating variables (Gender, Age, Experience, Voluntariness of Use). ${active.label} is selected in red, highlighting the ${active.paths.length} paths it moderates`}
     >
       {/* Four primary constructs */}
       {constructs.map((c) => {
@@ -1020,7 +1020,7 @@ export function UtautModelInteractive() {
 }
 
 /* ==========================================================================
-   7b · IKEA UTAUT Drivers Plate (Full-width, w=800) — four visual scenes
+   7b | IKEA UTAUT Drivers Plate (Full-width, w=800): four visual scenes
    aligned with the four UTAUT constructs above (1 clock for saving time,
    2 touch screen for ease of use, 3 two shoppers with word-of-mouth bubble,
    4 support staff with guidance doc), pointing down to Behavioral Intention
@@ -1033,7 +1033,7 @@ export function IkeaUtautDriversPlate() {
     <Plate
       w={800}
       h={168}
-      title="Four visual stations for IKEA's kiosk under the four UTAUT constructs: 1 a clock for saving time, 2 a framed touch screen for ease of use, 3 two shoppers talking for word-of-mouth social influence, and 4 a support staff member with a guidance document for facilitating conditions; arrows point down to the outcomes below"
+      title="Four visual stations for IKEA's kiosk under the four UTAUT constructs: 1 a clock for saving time, 2 a framed touch screen for ease of use, 3 two shoppers talking for word-of-mouth social influence, and 4 a support staff member with a guidance document for facilitating conditions. Arrows point down to the outcomes below"
     >
       {/* 1. Performance Expectancy: saving time */}
       <Clock x={cx[0] - 28} y={20} size={56} weight="fill" color={INK} />
@@ -1064,7 +1064,7 @@ export function IkeaUtautDriversPlate() {
 }
 
 /* ==========================================================================
-   7c · IKEA Moderating Variables Interactive (Column Plate, w=400) — select any
+   7c | IKEA Moderating Variables Interactive (Column Plate, w=400): select any
    of the five moderators (1 Age, 2 Gender, 3 Experience, 4 Voluntariness of
    Use, 5 Cultural Context) to compare kiosk adoption across customer segments
    ========================================================================== */
@@ -1169,7 +1169,7 @@ export function IkeaModeratorsInteractive() {
 }
 
 /* ==========================================================================
-   8 · Interactive IoT Loop (Collect, Share, Act) — switch between smart
+   8. Interactive IoT Loop (Collect, Share, Act): switch between smart
    thermostats, wearable fitness trackers, and connected cars
    ========================================================================== */
 
@@ -1281,7 +1281,7 @@ export function IotLoopInteractive() {
 }
 
 /* ==========================================================================
-   9 · IoT Privacy and Security — five visual stations aligned under the five
+   9. IoT Privacy and Security: five visual stations aligned under the five
    best practices
    ========================================================================== */
 
@@ -1291,7 +1291,7 @@ export function IotSecurityPractices() {
     <Plate
       w={800}
       h={184}
-      title="Five numbered security stations aligned across a rail: 1, a key inside a framed screen for device authentication; 2, a lock on a network link for secure communications; 3, an update cycle on a framed screen for firmware updates; 4, one kept data block beside two crossed-out blocks for limiting data collection; 5, a person with a red shield for educating users"
+      title="Five numbered security stations aligned across a rail: 1, a key inside a framed screen for device authentication. 2, a lock on a network link for secure communications. 3, an update cycle on a framed screen for firmware updates. 4, one kept data block beside two crossed-out blocks for limiting data collection. 5, a person with a red shield for educating users"
     >
       {/* 1. Strong device authentication */}
       <MiniScreen x={cx[0] - 42} y={24}>
@@ -1362,7 +1362,7 @@ export function IotSecurityPractices() {
 }
 
 /* ==========================================================================
-   10 · IoT Device Management Process — five connected lifecycle stages
+   10. IoT Device Management Process: five connected lifecycle stages
    ========================================================================== */
 
 export function IotDeviceLifecycle() {
@@ -1423,7 +1423,7 @@ export function IotDeviceLifecycle() {
 }
 
 /* ==========================================================================
-   11 · Cloud Computing Hub — a central data center on a framed screen delivers
+   11. Cloud Computing Hub: a central data center on a framed screen delivers
    storage, processing, and software over the internet to remote users and shops
    ========================================================================== */
 
@@ -1432,7 +1432,7 @@ export function CloudComputingHub() {
     <Plate
       w={800}
       h={216}
-      title="A central framed screen labeled Central data center holds a cloud, storage database, and processor; arrows connect it to remote people on the left and a remote business shop on the right"
+      title="A central framed screen labeled Central data center holds a cloud, storage database, and processor. Arrows connect it to remote people on the left and a remote business shop on the right"
     >
       {/* Left: Remote users */}
       <Person x={72} y={48} k={1.05} variant={7} />
@@ -1467,7 +1467,7 @@ export function CloudComputingHub() {
 }
 
 /* ==========================================================================
-   12 · Interactive Edge, Fog, and Cloud Simulator — select where data is
+   12. Interactive Edge, Fog, and Cloud Simulator: select where data is
    processed (Edge, Fog, or Cloud) to see the distance traveled and its effect
    on Latency and Bandwidth usage
    ========================================================================== */
@@ -1582,7 +1582,7 @@ export function EdgeFogCloudInteractive() {
 }
 
 /* ==========================================================================
-   13 · Interactive 4-Layer Architecture Stack (Column Plate, w=400) — click
+   13. Interactive 4-Layer Architecture Stack (Column Plate, w=400): click
    Cloud, Fog, Edge, or IoT in the vertical stack to view its use case on the
    framed screen beside it
    ========================================================================== */
@@ -1604,7 +1604,7 @@ export function ArchitectureStackInteractive() {
     <Plate
       w={400}
       h={260}
-      title={`Interactive four-layer architecture stack (Cloud, Fog, Edge, IoT) on the left; ${active.name} is selected in red, pointing to a framed screen on the right showing its use case: ${active.useCase.join(" ")}`}
+      title={`Interactive four-layer architecture stack (Cloud, Fog, Edge, IoT) on the left. ${active.name} is selected in red, pointing to a framed screen on the right showing its use case: ${active.useCase.join(" ")}`}
     >
       {/* Vertical backbone connecting Cloud <-> Fog <-> Edge <-> IoT */}
       <path d="M 84 44 V 224" stroke={INK} strokeWidth={4} />

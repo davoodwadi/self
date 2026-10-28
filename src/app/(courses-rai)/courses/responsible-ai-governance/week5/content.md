@@ -13,7 +13,7 @@ week: week5
 - Modern marketing and financial pipelines rely on gradient-boosted ensembles, deep neural networks, and billion-parameter language models whose internal computations cannot be inspected by reading a short formula.
 - When an opaque model denies a loan, raises an insurance premium, or excludes a supplier from a procurement shortlist, neither the customer nor the manager can immediately see which variables drove the outcome.
 - Opacity undermines three pillars of algorithmic governance: internal debugging of spurious correlations, regulatory verification of non-discrimination compliance, and a consumer's ability to contest an erroneous decision.
-- Yet not every stakeholder needs the same form of visibility; an explanation that helps a machine learning engineer diagnose overfitting is rarely useful to a rejected credit applicant.
+- Yet not every stakeholder needs the same form of visibility. An explanation that helps a machine learning engineer diagnose overfitting is rarely useful to a rejected credit applicant.
 
 ## Transparency Versus Explainability Versus Interpretability [exercise]
 - Process transparency concerns institutional and procedural openness: disclosing that an automated system is in use, documenting its training data provenance, and publishing its governance and auditing standards.
@@ -66,7 +66,7 @@ week: week5
 - Aggregating absolute SHAP values across a holdout dataset also provides a consistent global summary of feature importance alongside local case-by-case explanations.
 
 ## Limitations and Vulnerabilities of Post-Hoc Attributions [exercise]
-- Feature attributions describe how the model uses its inputs, not the causal effect of those variables in the real world; a high SHAP value for a proxy variable reflects predictive association inside the model rather than a causal mechanism.
+- Feature attributions describe how the model uses its inputs, not the causal effect of those variables in the real world. A high SHAP value for a proxy variable reflects predictive association inside the model rather than a causal mechanism.
 - Instability under perturbation occurs when small changes in the background reference distribution, neighborhood kernel width, or random seed cause LIME or empirical SHAP estimates to rank different features as the top driver for the same customer.
 - Correlated-feature distortion occurs when marginal attribution procedures evaluate off-manifold combinations of correlated variables, such as pairing a twenty-year credit history with an age of nineteen.
 - Adversarial scaffolding, demonstrated by Slack and colleagues (2020), shows that a malicious or non-compliant developer can wrap a discriminatory model in an out-of-distribution detector that returns fair behavior on synthetic LIME/SHAP perturbations while continuing to discriminate on real customer profiles.
@@ -80,7 +80,7 @@ week: week5
 
 ## Counterfactual Explanations: What Would Have Changed the Decision [no-exercise]
 - Introduced to algorithmic governance by Wachter, Mittelstadt, and Russell (2017), a counterfactual explanation states the smallest modification to an individual's input profile that alters the model's prediction to a desired target outcome.
-- Rather than opening the black box or approximating gradients, a counterfactual explanation takes the form: "Your loan application was denied; if your annual income had been 4,000 dollars higher or your credit card utilization had been below 30 percent, your application would have been approved."
+- Rather than opening the black box or approximating gradients, a counterfactual explanation takes the form: "Your loan application was denied. If your annual income had been 4,000 dollars higher or your credit card utilization had been below 30 percent, your application would have been approved."
 - Because counterfactual explanations specify an exact point on the other side of the model's decision boundary, they are fully faithful to the model's actual decision rule at that boundary point.
 - Multiple valid counterfactuals typically exist for the same individual, requiring an optimization criterion that balances proximity to the current profile, sparsity of changed features, and plausibility within the data manifold.
 
@@ -88,7 +88,7 @@ week: week5
 - Actionable recourse, formalized by Ustun, Spangher, and Liu (2019), requires that a counterfactual explanation alter only mutable features that the individual can realistically change through their own actions.
 - Immutable features, such as age, birthplace, or protected demographic attributes, and conditionally immutable history, such as "never having missed a payment five years ago," can explain a model's score but provide zero actionable recourse.
 - Directionally constrained features must only move in feasible directions, such as increasing educational attainment or savings rather than decreasing years of work experience.
-- Recourse audits also test whether the cost and difficulty of achieving recourse are equal across demographic groups; a model that satisfies group prediction parity can still impose a much larger recourse burden on one group by placing its rejected members farther from the decision boundary.
+- Recourse audits also test whether the cost and difficulty of achieving recourse are equal across demographic groups. A model that satisfies group prediction parity can still impose a much larger recourse burden on one group by placing its rejected members farther from the decision boundary.
 - Finally, publishing exact decision thresholds creates a strategic gaming trade-off (Goodhart's Law): when applicants manipulate easily altered surface proxies to cross the boundary without changing their underlying risk, the proxy loses its predictive validity.
 
 ## Part 4: Reasoning Traces in Large Language Models as Verbal Protocols [no-exercise]
@@ -109,7 +109,7 @@ week: week5
 - Post-hoc rationalization is even more severe when a model is asked to explain its choice after outputting the decision, as the model simply generates a story consistent with the token it already committed to.
 
 ## Auditing Reasoning Traces Alongside Observed Choices [exercise]
-- Because reasoning traces can omit true drivers or rationalize biased outputs, behavioral governance never relies on reasoning traces in isolation; it pairs coded verbal protocols with controlled factorial choice experiments.
+- Because reasoning traces can omit true drivers or rationalize biased outputs, behavioral governance never relies on reasoning traces in isolation. It pairs coded verbal protocols with controlled factorial choice experiments.
 - In audits of resource rationality in AI shopping agents, coding the reasoning trace identifies whether the agent explicitly states unit-price minimization versus total-price minimization as its goal, which precedes how many product details the agent acquires and whether it selects the dominated option (Wadi & Ma, 2026b).
 - In audits of sponsorship disclosure in agentic commerce, coding the reasoning trace measures whether the agent expresses explicit skepticism toward paid placements when the system prompt assigns the platform versus the traveler as the agent's principal (Wadi & Ma, 2026c).
 - When a manipulation shifts both the coded reasoning trace (such as attenuating stated skepticism toward sponsored listings) and the final choice probability in a controlled experiment, the trace provides convergent process-tracing evidence for the behavioral mechanism.
@@ -142,7 +142,7 @@ week: week5
 ## Key Takeaways
 - Process transparency discloses how a system is governed, intrinsic interpretability builds models whose structure is directly readable, and post-hoc explainability approximates complex black-box models after training.
 - On high-stakes structured tabular decisions, constrained interpretable models (such as sparse regressions, GAMs, and rule lists) frequently match black-box accuracy while avoiding approximation gaps (Rudin, 2019).
-- Global post-hoc methods (permutation importance, PDPs) summarize overall model behavior, whereas local methods (LIME, SHAP) attribute individual predictions; both describe model correlations rather than real-world causation and can be fooled by correlated features or adversarial scaffolding.
+- Global post-hoc methods (permutation importance, PDPs) summarize overall model behavior, whereas local methods (LIME, SHAP) attribute individual predictions. Both describe model correlations rather than real-world causation and can be fooled by correlated features or adversarial scaffolding.
 - Counterfactual explanations identify the smallest change that flips a decision, while actionable recourse requires that those changes involve mutable, feasible features with equitable effort across demographic groups.
 - Reasoning traces in large language models can be coded as verbal protocols using validated codebooks (Wadi & Ma, 2026b, 2026c), but a plausible trace is not guaranteed to be a faithful record of the model's internal computation.
 - Pairing coded reasoning traces with controlled factorial choice experiments separates genuine process mechanisms from unfaithful post-hoc rationalization.

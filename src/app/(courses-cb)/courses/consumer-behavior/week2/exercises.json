@@ -26,12 +26,12 @@
     "slide_id": "sensory-thresholds-the-limits-of-awareness",
     "question_text": "A juice brand changes the orange on its label to a very slightly darker shade. Shoppers compare the old and new bottles side by side and cannot tell them apart. What does this tell the brand?",
     "hint": "Shoppers can see both bottles perfectly well. The question is whether they can tell the two apart.",
-    "correct_answer_citation": "Week 02 · Sensory Thresholds: The Limits of Awareness",
+    "correct_answer_citation": "Week 02: Sensory Thresholds: The Limits of Awareness",
     "correct_answer_index": 2,
     "options": [
       {
         "option_text": "The label is below the absolute threshold",
-        "option_explanation": "The absolute threshold is about detecting a stimulus at all. Shoppers can clearly see both labels; they just cannot tell them apart."
+        "option_explanation": "The absolute threshold is about detecting a stimulus at all. Shoppers can clearly see both labels. They just cannot tell them apart."
       },
       {
         "option_text": "The change is above the differential threshold",
@@ -52,7 +52,7 @@
     "slide_id": "webers-law-when-differences-matter",
     "question_text": "Four stores each raise one price by exactly one dollar. According to Weber's Law, which increase are shoppers most likely to notice?",
     "hint": "The needed change is a proportion of the starting price, not a fixed amount.",
-    "correct_answer_citation": "Week 02 · Weber's Law: When Differences Matter",
+    "correct_answer_citation": "Week 02: Weber's Law: When Differences Matter",
     "correct_answer_index": 1,
     "options": [
       {
@@ -92,7 +92,7 @@
         "id": "scent",
         "text": "The warm vanilla smell when the candle burns.",
         "bin": "person",
-        "explanation": "An AI agent does not smell a product; the consumer does."
+        "explanation": "An AI agent does not smell a product. The consumer does."
       },
       {
         "id": "rating",
@@ -104,7 +104,7 @@
         "id": "glass",
         "text": "The smooth, heavy feel of the glass jar in the hand.",
         "bin": "person",
-        "explanation": "An AI agent does not touch a product; the consumer feels it after the sale."
+        "explanation": "An AI agent does not touch a product. The consumer feels it after the sale."
       },
       {
         "id": "burn",
@@ -116,7 +116,7 @@
         "id": "flicker",
         "text": "The soft flicker of the flame in a dark room.",
         "bin": "person",
-        "explanation": "An AI agent does not see a product; the consumer uses it with the senses."
+        "explanation": "An AI agent does not see a product. The consumer uses it with the senses."
       }
     ]
   },

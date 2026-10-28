@@ -1,6 +1,5 @@
 /* ==========================================================================
-   Shared kit: the building blocks every week draws and lays out with —
-   colours and type, the plate frame and label helpers, geometry helpers
+   Shared kit: the building blocks every week draws and lays out with, colours and type, the plate frame and label helpers, geometry helpers
    and slide layout blocks. See "Shared pieces" in the root CLAUDE.md.
    ========================================================================== */
 
@@ -181,7 +180,7 @@ export function headAlong1(x: number, y: number, dx: number, dy: number, s = 8) 
 }
 
 
-/** Deterministic 0–1 hash, so scattered marks match on server and client. */
+/** Deterministic 0 to 1 hash, so scattered marks match on server and client. */
 export const hash1 = (n: number) => {
   const v = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
   return v - Math.floor(v);
@@ -203,7 +202,7 @@ export const glyphProps = {
 } as const;
 
 /**
- * Deterministic 0–1 hash, so scattered marks match on server and client.
+ * Deterministic 0 to 1 hash, so scattered marks match on server and client.
  * Rounded to four places: Node and the browser disagree on Math.sin in the
  * last few digits, which the big multiplier would push into the attributes.
  */
@@ -229,7 +228,7 @@ export function headAlong2(x: number, y: number, dx: number, dy: number, s = 8) 
 /* --------------------------------------------------------------------------
    Interactive plates
    A plate's untouched state is the complete picture the slide shows on a
-   projector; these pieces let students move one thing and watch the result.
+   projector. These pieces let students move one thing and watch the result.
    -------------------------------------------------------------------------- */
 
 /**

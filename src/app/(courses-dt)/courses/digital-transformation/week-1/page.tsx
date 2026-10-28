@@ -43,7 +43,7 @@ const SECTIONS = [
 // type that fits it, and it only tests what the slide has just taught.
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif; terms set bold in the display serif. */
+/* Body copy: the reading serif. Terms set bold in the display serif. */
 const BODY = "font-body text-base md:text-[1.06rem] leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
 
 const COMPONENTS: [string, React.ReactNode][] = [
@@ -133,7 +133,7 @@ export default function DigitalTransformationWeek1() {
       </Link>
 
       <PosterHero
-        category="WEEK 01 — DIGITAL TRANSFORMATION"
+        category="WEEK 01: DIGITAL TRANSFORMATION"
         title="Introduction to digital transformation"
         subtitle="Foundations of Digital Transformation"
         author="Dr. Davood Wadi"
@@ -147,7 +147,7 @@ export default function DigitalTransformationWeek1() {
       />
 
       {/* ================================================================
-          CHAPTER 1 — INTRODUCTION TO DIGITAL TRANSFORMATION
+          CHAPTER 1: INTRODUCTION TO DIGITAL TRANSFORMATION
           ================================================================ */}
       <ChapterBand id="ch1" number="01" title="Introduction to Digital Transformation" />
 
@@ -235,7 +235,7 @@ export default function DigitalTransformationWeek1() {
       />
 
       {/* ================================================================
-          CHAPTER 2 — DIGITIZATION, DIGITALIZATION, AND DIGITAL TRANSFORMATION
+          CHAPTER 2: DIGITIZATION, DIGITALIZATION, AND DIGITAL TRANSFORMATION
           ================================================================ */}
       <ChapterBand id="ch2" number="02" title="Digitization, Digitalization, and Digital Transformation" />
 
@@ -300,7 +300,7 @@ export default function DigitalTransformationWeek1() {
       />
 
       {/* ================================================================
-          CHAPTER 3 — THE DIGITAL TRANSFORMATION PYRAMID
+          CHAPTER 3: THE DIGITAL TRANSFORMATION PYRAMID
           ================================================================ */}
       <ChapterBand id="ch3" number="03" title="The Digital Transformation Pyramid" />
 

@@ -4,7 +4,7 @@
     "slide_id": "drivers-of-customer-lifetime-value",
     "question_text": "A streaming service earns an annual margin of $60 per subscriber, retains 70% of subscribers each year, and uses a discount rate of 10%, so its CLV is 60 × 0.7 / 0.4, or $105. Which single change raises CLV the most?",
     "hint": "Recompute m × r / (1 + d − r) for each change.",
-    "correct_answer_citation": "Week 11 · Drivers of Customer Lifetime Value",
+    "correct_answer_citation": "Week 11: Drivers of Customer Lifetime Value",
     "correct_answer_index": 1,
     "options": [
       {
@@ -21,7 +21,7 @@
       },
       {
         "option_text": "All three raise CLV by the same amount.",
-        "option_explanation": "The three drivers enter the formula differently; the retention rate appears in both the numerator and the denominator."
+        "option_explanation": "The three drivers enter the formula differently. The retention rate appears in both the numerator and the denominator."
       }
     ]
   },
@@ -90,8 +90,8 @@
     "type": "quiz",
     "slide_id": "the-confusion-matrix",
     "question_text": "In a bank's holdout sample of 2,000 customers, 200 close their accounts. A churn model flags 100 customers as likely to close, and 80 of them do. What are the model's precision and recall?",
-    "hint": "Precision divides by the customers flagged; recall divides by the customers who actually closed.",
-    "correct_answer_citation": "Week 11 · The Confusion Matrix",
+    "hint": "Precision divides by the customers flagged. Recall divides by the customers who actually closed.",
+    "correct_answer_citation": "Week 11: The Confusion Matrix",
     "correct_answer_index": 0,
     "options": [
       {
@@ -108,7 +108,7 @@
       },
       {
         "option_text": "Accuracy is 93%, so the model finds most of the customers who close.",
-        "option_explanation": "Accuracy is high because most customers stay; the model still misses 120 of the 200 who close, a recall of 40%."
+        "option_explanation": "Accuracy is high because most customers stay. The model still misses 120 of the 200 who close, a recall of 40%."
       }
     ]
   },
@@ -155,7 +155,7 @@
       },
       {
         "id": "reminded",
-        "text": "Had forgotten the contract was ending and would have rolled over automatically; the call reminds them to cancel.",
+        "text": "Had forgotten the contract was ending and would have rolled over automatically. The call reminds them to cancel.",
         "answer": "dog",
         "explanation": "Would stay without contact but is prompted to leave by it."
       },
@@ -213,7 +213,7 @@
       {
         "id": "abtest",
         "term": "A/B test",
-        "match": "Half of new subscribers get the new recommender; cancellations are compared.",
+        "match": "Half of new subscribers get the new recommender. Cancellations are compared.",
         "explanation": "A/B tests evaluate a recommender's effect on business outcomes such as retention."
       }
     ]

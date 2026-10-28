@@ -1,6 +1,5 @@
 /* ==========================================================================
-   Shared kit: the building blocks every week draws and lays out with —
-   colours and type, the plate frame and label helpers, geometry helpers
+   Shared kit: the building blocks every week draws and lays out with, colours and type, the plate frame and label helpers, geometry helpers
    and slide layout blocks. See "Shared pieces" in the root CLAUDE.md.
    ========================================================================== */
 
@@ -39,7 +38,7 @@ export const TAG = "font-mono text-[10px] uppercase tracking-[0.1em]";
 
 export const pad = (n: number) => String(n).padStart(2, "0");
 
-/** Deterministic 0–1 hash, so scattered marks match between server and client. */
+/** Deterministic 0 to 1 hash, so scattered marks match between server and client. */
 export const hash = (n: number) => {
   const v = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
   return v - Math.floor(v);
@@ -328,7 +327,7 @@ export function ModulePlate2({
 
 /**
  * Part divider: display numeral against a ruled margin. The visible label and
- * numeral are decorative; the h2 carries the full "Part N: Title" heading for
+ * numeral are decorative. The h2 carries the full "Part N: Title" heading for
  * assistive technology.
  */
 export function PartPlate1({
@@ -380,7 +379,7 @@ export function PartPlate1({
 
 /**
  * Part divider: display numeral against a ruled margin, then the part's own
- * discussion prompt. The visible label and numeral are decorative; the h2
+ * discussion prompt. The visible label and numeral are decorative. The h2
  * carries the full "Part N: Title" heading for assistive technology.
  */
 export function PartPlate2({
@@ -438,7 +437,7 @@ export function PartPlate2({
 
 /**
  * Part divider: display numeral against a ruled margin, then the part's own
- * discussion prompt. The visible label and numeral are decorative; the h2
+ * discussion prompt. The visible label and numeral are decorative. The h2
  * carries the full "Part N: Title" heading for assistive technology.
  */
 export function PartPlate3({
@@ -495,7 +494,7 @@ export function PartPlate3({
 }
 
 
-/** Two labels set against each other across one rule; the right one is marked. */
+/** Two labels set against each other across one rule. The right one is marked. */
 export function Split1({
   left,
   right,
@@ -528,7 +527,7 @@ export function Split1({
   );
 }
 
-/** Two labels set against each other across one rule; the right one is marked. */
+/** Two labels set against each other across one rule. The right one is marked. */
 export function Split2({
   left,
   right,
@@ -578,7 +577,7 @@ export function Stat1({
     <div aria-hidden className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
       <span
         // Headings take their family from globals.css, which Tailwind's
-        // font-serif does not match; borrow it so figures echo the h2s.
+        // font-serif does not match. Borrow it so figures echo the h2s.
         style={{ fontFamily: "var(--font-serif), serif" }}
         className={`font-black leading-none tracking-[-0.04em] ${
           size === "lg"
@@ -610,7 +609,7 @@ export function Stat2({
     <div aria-hidden className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
       <span
         // Headings take their family from globals.css, which Tailwind's
-        // font-serif does not match; borrow it so figures echo the h2s.
+        // font-serif does not match. Borrow it so figures echo the h2s.
         style={{ fontFamily: "var(--font-serif), serif" }}
         className={`text-[3.5rem] font-black leading-none tracking-[-0.04em] md:text-[4.75rem] ${
           mark ? "text-[var(--crimson)]" : "text-[var(--charcoal)]"
@@ -625,7 +624,7 @@ export function Stat2({
 
 /**
  * Numbered cells in a hairline grid. `cols` carries the responsive column
- * classes; `mark` turns one cell crimson.
+ * classes. `mark` turns one cell crimson.
  */
 export function Steps({
   items,
@@ -682,7 +681,7 @@ export function Terms({
     >
       {items.map((item, i) => (
         <React.Fragment key={item}>
-          {i > 0 && <span>·</span>}
+          {i > 0 && <span>|</span>}
           <span>{item}</span>
         </React.Fragment>
       ))}

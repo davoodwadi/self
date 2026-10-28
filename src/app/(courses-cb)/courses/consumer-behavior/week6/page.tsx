@@ -15,9 +15,9 @@ import exercisesData from "./exercises.json";
 import * as V from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR · WEEK 06 — ATTITUDES AND PERSUASION
+// CONSUMER BEHAVIOR | WEEK 06: ATTITUDES AND PERSUASION
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx, drawn in the course's Editorial Sketch style (see
 // ../CLAUDE.md). The week's marks stay fixed: heart = affect, thought cloud =
@@ -146,7 +146,7 @@ function Ruled({
 /**
  * A plate that lives in a column: a figure well without the 680px floor. A
  * `wide` (800-unit) plate keeps a legible minimum width on phones and scrolls
- * inside its well there, like `Figure`; from lg up the column is wide enough.
+ * inside its well there, like `Figure`. From lg up the column is wide enough.
  */
 function Plate({
   children,
@@ -293,7 +293,7 @@ export default function Week6() {
               Week 06
             </p>
             <p className="type-caption mt-2">
-              Consumer Behavior · Davood Wadi, PhD
+              Consumer Behavior | Davood Wadi, PhD
             </p>
             <Title className="mt-6 !max-w-[18ch]">
               Attitudes and Persuasion
@@ -316,7 +316,7 @@ export default function Week6() {
           ================================================================ */}
       <Slide className={TIGHT} id="what-are-consumer-attitudes" border>
         <Heading>What Are Consumer Attitudes?</Heading>
-        {/* Split screen: the definition and its range on the left; what an
+        {/* Split screen: the definition and its range on the left. What an
             attitude does, for and against the consumer, stacked on the right. */}
         <div className="grid w-full items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-12">
           <div className="flex min-w-0 flex-col gap-5">
@@ -486,7 +486,7 @@ export default function Week6() {
       >
         <Heading kicker="How Attitudes Form:">Three Hierarchies</Heading>
         {/* Three rows, one per hierarchy: the line, then its order drawn with
-            the week's marks; the slide lands on what decides between them. */}
+            the week's marks. The slide lands on what decides between them. */}
         <ol className="flex w-full flex-col gap-3">
           {[
             {
@@ -549,7 +549,7 @@ export default function Week6() {
         <Heading className="!max-w-none !text-[clamp(2rem,3.2vw,2.9rem)]">
           Who Delivers the Message Changes Its Impact
         </Heading>
-        {/* Credibility and its two parts across the top; attractiveness and
+        {/* Credibility and its two parts across the top. Attractiveness and
             its three scenes across the bottom. */}
         <div className="grid w-full items-center gap-8 lg:grid-cols-[0.6fr_2.4fr] lg:gap-10">
           <Statement className="!max-w-[22ch] !text-[clamp(1.4rem,2.2vw,1.9rem)]">
@@ -600,8 +600,8 @@ export default function Week6() {
         <Lead className="!max-w-none">
           Consumers now receive advice from AI systems as well as from people.
         </Lead>
-        {/* Aversion and appreciation, the opposite tendencies, side by side;
-            then what decides between them, and what credibility still needs. */}
+        {/* Aversion and appreciation, the opposite tendencies, side by side.
+            Then what decides between them, and what credibility still needs. */}
         <div className="mt-4 grid w-full gap-x-10 gap-y-5 lg:grid-cols-2">
           <SideCell plate={<V.SameMistake />}>
             <Term>Algorithm aversion</Term> is the tendency to trust an
@@ -694,8 +694,8 @@ export default function Week6() {
           </P>
         </div>
         {/* The three lines the instrument lets students test (one answer
-            varies, many answers settle, models differ) run across the slide;
-            the instrument follows them, and the closing line sits beside it. */}
+            varies, many answers settle, models differ) run across the slide.
+            The instrument follows them, and the closing line sits beside it. */}
         <div className="mt-5 grid w-full gap-6 border-t-2 border-[var(--ink)] pt-3 md:grid-cols-3 md:gap-8">
           <P>
             A model does not give one fixed answer. Asked the same question many

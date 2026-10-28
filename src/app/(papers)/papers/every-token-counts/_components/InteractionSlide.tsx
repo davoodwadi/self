@@ -16,7 +16,7 @@ const FINDINGS = [
   {
     color: "var(--amber-light)",
     title: "Interactions are isolated from baseline behavior",
-    body: "The framework mathematically isolates interaction effects from main effects. The country-of-origin bias is a true Model × Target interaction — not an artifact of a model's overall ethnocentrism level.",
+    body: "The framework mathematically isolates interaction effects from main effects. The country-of-origin bias is a true Model × Target interaction: not an artifact of a model's overall ethnocentrism level.",
   },
 ];
 

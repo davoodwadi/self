@@ -15,7 +15,7 @@ const instrumentSans = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Courses · Davood Wadi, PhD",
+  title: "Courses | Davood Wadi, PhD",
   description:
     "Course websites and lecture decks by Davood Wadi, PhD: Applications of AI in Business, Consumer Behavior, Digital Transformation, and Introduction to Marketing.",
   icons: {

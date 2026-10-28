@@ -1,14 +1,14 @@
 "use client";
 
 /* ==========================================================================
-   Week 7 — plates (Flat Silhouette)
+   Week 7, plates (Flat Silhouette)
    --------------------------------------------------------------------------
    Fixed cast for the week, built on ../_visuals/kit and ../_visuals/objects:
-     · Person                — every human (bust in profile)
-     · Shop                  — the business / supplier / merchant
-     · Doc                   — paper record, deed, contract, or documentation
-     · Coins                 — payment / funds / loan disbursement / royalties
-     · Monitor / MiniScreen  — anything digital (blockchain node, smart contract)
+     - Person, every human (bust in profile)
+     - Shop, the business / supplier / merchant
+     - Doc, paper record, deed, contract, or documentation
+     - Coins, payment / funds / loan disbursement / royalties
+     - Monitor / MiniScreen, anything digital (blockchain node, smart contract)
    Every coordinate is a literal or rounded with r2(), so server and client
    render identical markup.
    ========================================================================== */
@@ -65,7 +65,7 @@ const HEAD = { fontFamily: "var(--font-heading)", fontWeight: 700 } as const;
 const BODY = { fontFamily: "var(--font-body)", fontWeight: 600 } as const;
 
 /* ==========================================================================
-   1 · Hero — Peer-to-peer digital transaction recorded on a framed screen
+   1. Hero: Peer-to-peer digital transaction recorded on a framed screen
    holding a chain of cryptographically linked blocks
    ========================================================================== */
 
@@ -74,7 +74,7 @@ export function HeroBlockchainLedger() {
     <Plate
       w={520}
       h={340}
-      title="Two people in profile exchange a transaction document on the left; a red arrow points into a framed screen holding three chained blocks (Block 1, Block 2, and a red verified Block 3)"
+      title="Two people in profile exchange a transaction document on the left. A red arrow points into a framed screen holding three chained blocks (Block 1, Block 2, and a red verified Block 3)"
     >
       {/* Two transacting parties and their transaction record on the left */}
       <Person x={52} y={16} k={0.72} variant={3} />
@@ -124,7 +124,7 @@ export function HeroBlockchainLedger() {
 
         {/* Footer caption inside monitor */}
         <text x={333} y={238} textAnchor="middle" {...BODY} fontSize={15} fill={INK}>
-          Secure · Transparent · Immutable
+          Secure | Transparent | Immutable
         </text>
       </Monitor>
     </Plate>
@@ -132,7 +132,7 @@ export function HeroBlockchainLedger() {
 }
 
 /* ==========================================================================
-   2 · Blockchain and Why It Matters — Three selectable pillars:
+   2. Blockchain and Why It Matters: Three selectable pillars:
    1. Security (securely), 2. Transparency (transparently),
    3. Efficiency (difficult to alter / no intermediaries)
    ========================================================================== */
@@ -159,11 +159,11 @@ export function BlockchainPillarsInteractive({
     <Plate
       w={800}
       h={252}
-      title={`Three selectable panels showing why blockchain matters: 1. Security (a transaction document entering a framed screen guarded by a cryptographic shield and lock), 2. Transparency (two participants viewing the same shared ledger screen), and 3. Efficiency (two participants transacting directly on a locked ledger while bypassing a crossed-out intermediary bank); ${activeName} is selected in red`}
+      title={`Three selectable panels showing why blockchain matters: 1. Security (a transaction document entering a framed screen guarded by a cryptographic shield and lock), 2. Transparency (two participants viewing the same shared ledger screen), and 3. Efficiency (two participants transacting directly on a locked ledger while bypassing a crossed-out intermediary bank). ${activeName} is selected in red`}
     >
       <path d="M 270 18 V 192 M 530 18 V 192" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
-      {/* Panel 1: Security — transaction document -> framed screen with shield & lock */}
+      {/* Panel 1: Security: transaction document -> framed screen with shield & lock */}
       <Doc x={38} y={56} k={0.52} tone={t0} />
       <Pointer x1={94} y1={86} x2={132} y2={86} w={3.5} head={10} color={t0} />
       <Monitor x={138} y={36} w={112} h={84}>
@@ -174,7 +174,7 @@ export function BlockchainPillarsInteractive({
         Records securely
       </text>
 
-      {/* Panel 2: Transparency — two participants viewing the same shared screen */}
+      {/* Panel 2: Transparency: two participants viewing the same shared screen */}
       <Person x={308} y={56} k={0.72} variant={2} />
       <MiniScreen x={358} y={44}>
         <Eye x={383} y={55} size={34} weight="fill" color={t1} />
@@ -184,14 +184,14 @@ export function BlockchainPillarsInteractive({
         Records transparently
       </text>
 
-      {/* Panel 3: Efficiency — direct peer-to-peer transfer bypassing intermediary */}
+      {/* Panel 3: Efficiency: direct peer-to-peer transfer bypassing intermediary */}
       <Bank x={642} y={24} size={36} weight="fill" color={COUNTER} />
       <path d="M 636 22 L 684 62" stroke={SIGNAL} strokeWidth={4} />
       <Person x={574} y={62} k={0.72} variant={4} />
       <Pointer x1={612} y1={104} x2={708} y2={104} w={4} head={12} color={t2} />
       <Person x={746} y={62} k={0.72} variant={9} flip />
       <text x={660} y={178} textAnchor="middle" {...BODY} fontSize={14.5} fill={t2}>
-        Difficult to alter · No middleman
+        Difficult to alter | No middleman
       </text>
 
       {/* Interactive selector tabs at bottom */}
@@ -246,7 +246,7 @@ export function BlockchainPillarsTall({
     <Plate
       w={400}
       h={308}
-      title={`Three stacked selectable rows for 1. Security, 2. Transparency, and 3. Efficiency; ${rows[active]?.label ?? "1. Security"} is selected in red`}
+      title={`Three stacked selectable rows for 1. Security, 2. Transparency, and 3. Efficiency. ${rows[active]?.label ?? "1. Security"} is selected in red`}
     >
       {rows.map((r) => {
         const isLit = r.idx === active;
@@ -280,7 +280,7 @@ export function BlockchainPillarsTall({
 }
 
 /* ==========================================================================
-   3 · Features of Blockchain — Four selectable features:
+   3. Features of Blockchain: Four selectable features:
    1. Decentralized (contrasted with cloud computing), 2. Immutable,
    3. Consensus, 4. Programmable
    ========================================================================== */
@@ -306,7 +306,7 @@ export function BlockchainFeaturesInteractive({
     <Plate
       w={800}
       h={262}
-      title={`Four selectable panels for Features of Blockchain: 1. Decentralized (a blue centralized cloud hub contrasted with a peer-to-peer mesh of four nodes), 2. Immutable (chained blocks locked inside a framed screen), 3. Consensus (three network nodes with check marks agreeing on a transaction block), and 4. Programmable (a framed screen executing coded conditions); ${current.tab} is selected in red`}
+      title={`Four selectable panels for Features of Blockchain: 1. Decentralized (a blue centralized cloud hub contrasted with a peer-to-peer mesh of four nodes), 2. Immutable (chained blocks locked inside a framed screen), 3. Consensus (three network nodes with check marks agreeing on a transaction block), and 4. Programmable (a framed screen executing coded conditions). ${current.tab} is selected in red`}
     >
       <path d="M 205 18 V 198 M 400 18 V 198 M 595 18 V 198" stroke={INK} strokeWidth={1.8} strokeDasharray="4 5" />
 
@@ -416,7 +416,7 @@ export function BlockchainFeaturesTall({
     <Plate
       w={400}
       h={384}
-      title={`Four stacked selectable rows for Features of Blockchain: 1. Decentralized, 2. Immutable, 3. Consensus, and 4. Programmable; ${FEATURE_ZONES[active]?.tab ?? "1. Decentralized"} is selected`}
+      title={`Four stacked selectable rows for Features of Blockchain: 1. Decentralized, 2. Immutable, 3. Consensus, and 4. Programmable. ${FEATURE_ZONES[active]?.tab ?? "1. Decentralized"} is selected`}
     >
       {FEATURE_ZONES.map((z, i) => {
         const y0 = 12 + i * 92;
@@ -454,14 +454,14 @@ export function BlockchainFeaturesTall({
 }
 
 /* ==========================================================================
-   4 · Smart Contracts — Interactive 3-stage pipeline:
+   4. Smart Contracts: Interactive 3-stage pipeline:
    1. Agreement in Code, 2. Stored & Replicated (Ethereum, Solana),
    3. Self-Executing Program
    ========================================================================== */
 
 const SC_STAGE_ZONES = [
   { idx: 0, x0: 20, x1: 256, cx: 138, tab: "1. Terms in Code", sub: "Agreement → Code" },
-  { idx: 1, x0: 282, x1: 518, cx: 400, tab: "2. On Blockchain", sub: "Solana · Ethereum" },
+  { idx: 1, x0: 282, x1: 518, cx: 400, tab: "2. On Blockchain", sub: "Solana | Ethereum" },
   { idx: 2, x0: 544, x1: 780, cx: 662, tab: "3. Self-Executing", sub: "Auto-Executes" },
 ];
 
@@ -474,7 +474,7 @@ export function SmartContractMechanismInteractive() {
     <Plate
       w={800}
       h={256}
-      title={`Three selectable stages of a Smart Contract: 1. Terms in Code (a written agreement translated into lines of code), 2. On Blockchain (replicated across nodes on networks such as Solana and Ethereum), and 3. Self-Executing (automatically executing payment when conditions are met); ${cur.tab} is selected in red`}
+      title={`Three selectable stages of a Smart Contract: 1. Terms in Code (a written agreement translated into lines of code), 2. On Blockchain (replicated across nodes on networks such as Solana and Ethereum), and 3. Self-Executing (automatically executing payment when conditions are met). ${cur.tab} is selected in red`}
     >
       <path d="M 269 18 V 192 M 531 18 V 192" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
@@ -550,8 +550,8 @@ export function SmartContractMechanismInteractive() {
 }
 
 /* ==========================================================================
-   5 · Question: Use Cases for Immutability and Programmability of Smart
-   Contracts — Interactive 7-domain explorer
+   5. Question: Use Cases for Immutability and Programmability of Smart
+   Contracts, Interactive 7-domain explorer
    ========================================================================== */
 
 const USE_CASES_META = [
@@ -623,7 +623,7 @@ export function SmartContractUseCasesInteractive({
       {/* Center: Framed Smart Contract Monitor */}
       <Monitor x={276} y={70} w={232} h={118}>
         <text x={392} y={104} textAnchor="middle" {...BODY} fontSize={14} fill={INK}>
-          Immutable · Programmable
+          Immutable | Programmable
         </text>
         <rect x={304} y={118} width={176} height={38} fill={SIGNAL} />
         <text x={392} y={142} textAnchor="middle" {...HEAD} fontSize={15.5} fill={CREAM}>
@@ -657,7 +657,7 @@ export function SmartContractUseCasesTall({
     <Plate
       w={400}
       h={232}
-      title={`Interactive 7-domain selector for smart contract use cases; ${cur.name} is selected`}
+      title={`Interactive 7-domain selector for smart contract use cases. ${cur.name} is selected`}
     >
       {USE_CASES_META.map((u, i) => {
         const col = i % 4;
@@ -694,7 +694,7 @@ export function SmartContractUseCasesTall({
 }
 
 /* ==========================================================================
-   6 · Smart Contracts in Supply Chain Management — Three selectable columns
+   6. Smart Contracts in Supply Chain Management, Three selectable columns
    contrasting Traditional Issues (blue) with Smart Contract Solutions (red):
    1. Automation (vs. Manual delays), 2. Transparency (vs. Tracking gaps),
    3. Trust (vs. Mistrust)
@@ -720,7 +720,7 @@ export function SupplyChainComparisonInteractive({
     <Plate
       w={800}
       h={258}
-      title={`Three selectable columns contrasting Traditional Supply Chain Issues (top, in blue) with Smart Contract Solutions (bottom): 1. Automation (replacing manual payment delays with automated delivery payout), 2. Transparency (replacing tracking inefficiencies with real-time sensor monitoring), and 3. Trust (replacing supplier-buyer mistrust with direct verified terms); ${cur.tab} is selected in red`}
+      title={`Three selectable columns contrasting Traditional Supply Chain Issues (top, in blue) with Smart Contract Solutions (bottom): 1. Automation (replacing manual payment delays with automated delivery payout), 2. Transparency (replacing tracking inefficiencies with real-time sensor monitoring), and 3. Trust (replacing supplier-buyer mistrust with direct verified terms). ${cur.tab} is selected in red`}
     >
       <path d="M 270 18 V 196 M 530 18 V 196" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
@@ -807,7 +807,7 @@ export function SupplyChainComparisonTall({
     <Plate
       w={400}
       h={296}
-      title={`Three stacked selectable rows for Supply Chain Smart Contracts: 1. Automation, 2. Transparency, and 3. Trust; ${SC_SUPPLY_ZONES[active]?.tab ?? "1. Automation"} is selected`}
+      title={`Three stacked selectable rows for Supply Chain Smart Contracts: 1. Automation, 2. Transparency, and 3. Trust. ${SC_SUPPLY_ZONES[active]?.tab ?? "1. Automation"} is selected`}
     >
       {SC_SUPPLY_ZONES.map((z, i) => {
         const y0 = 14 + i * 92;
@@ -842,7 +842,7 @@ export function SupplyChainComparisonTall({
 }
 
 /* ==========================================================================
-   7 · Case Study: Amazon — Five selectable process stages integrating Smart
+   7. Case Study: Amazon: Five selectable process stages integrating Smart
    Contracts with IoT sensors:
    1. Order Placement, 2. Shipment Tracking, 3. Delivery Confirmation,
    4. Documentation, 5. Post-purchase Services
@@ -870,7 +870,7 @@ export function AmazonSupplyChainInteractive({
     <Plate
       w={800}
       h={258}
-      title={`Five selectable stages of Amazon's supply chain smart contract process: 1. Order Placement (buyer triggers smart contract), 2. Shipment Tracking (IoT sensors monitor truck and update blockchain), 3. Delivery Confirmation (smart contract releases payment to supplier), 4. Documentation (immutable ledger record), and 5. Post-purchase Services (support and returns); ${cur.tab} is selected in red`}
+      title={`Five selectable stages of Amazon's supply chain smart contract process: 1. Order Placement (buyer triggers smart contract), 2. Shipment Tracking (IoT sensors monitor truck and update blockchain), 3. Delivery Confirmation (smart contract releases payment to supplier), 4. Documentation (immutable ledger record), and 5. Post-purchase Services (support and returns). ${cur.tab} is selected in red`}
     >
       {/* 1. Order Placement */}
       <Person x={88} y={20} k={0.62} variant={7} />
@@ -965,7 +965,7 @@ export function AmazonSupplyChainTall({
     <Plate
       w={400}
       h={340}
-      title={`Five stacked selectable rows for Amazon's supply chain smart contract process; ${AMAZON_STEPS[active]?.tab ?? "1. Order"} is selected`}
+      title={`Five stacked selectable rows for Amazon's supply chain smart contract process. ${AMAZON_STEPS[active]?.tab ?? "1. Order"} is selected`}
     >
       {AMAZON_STEPS.map((z, i) => {
         const y0 = 14 + i * 63;
@@ -999,7 +999,7 @@ export function AmazonSupplyChainTall({
 }
 
 /* ==========================================================================
-   8 · NFTs (Non-Fungible Tokens) — Three selectable rows:
+   8. NFTs (Non-Fungible Tokens): Three selectable rows:
    1. 2021 Surge & Celebrity Adoption, 2. Status Signaling,
    3. Verifiable Certificate of Ownership
    ========================================================================== */
@@ -1023,7 +1023,7 @@ export function NftOverviewInteractive({
     <Plate
       w={400}
       h={334}
-      title={`Three selectable rows illustrating Non-Fungible Tokens (NFTs): 1. 2021 Surge (rising adoption bars on a screen with celebrity adoption), 2. Status Signaling (a crown badge on a screen linked to a person), and 3. Ownership (a digital certificate on a screen verifying asset ownership); ${NFT_ROWS[active]?.label ?? "1. 2021 Surge"} is selected in red`}
+      title={`Three selectable rows illustrating Non-Fungible Tokens (NFTs): 1. 2021 Surge (rising adoption bars on a screen with celebrity adoption), 2. Status Signaling (a crown badge on a screen linked to a person), and 3. Ownership (a digital certificate on a screen verifying asset ownership). ${NFT_ROWS[active]?.label ?? "1. 2021 Surge"} is selected in red`}
     >
       {NFT_ROWS.map((r, i) => {
         const isLit = i === active;
@@ -1086,7 +1086,7 @@ export function NftOverviewInteractive({
 }
 
 /* ==========================================================================
-   9 · Smart Contracts in Real Estate — Companion plate for the 7-feature
+   9. Smart Contracts in Real Estate: Companion plate for the 7-feature
    comparison table (Execution, Trust Requirement, Involvement of
    Intermediaries, Timeframe for Transactions, Cost, Dispute Resolution,
    Data Security)
@@ -1148,12 +1148,12 @@ export function RealEstateComparisonPlate({
       {active === 6 && <Warning x={168} y={66} size={46} weight="fill" color={COUNTER} />}
 
       <text x={252} y={96} {...BODY} fontSize={13.5} fill={COUNTER}>
-        {active === 0 && "Manual · Paper"}
-        {active === 1 && "Brokers · Lawyers"}
+        {active === 0 && "Manual | Paper"}
+        {active === 1 && "Brokers | Lawyers"}
         {active === 2 && "Multiple Parties"}
         {active === 3 && "Weeks to Months"}
         {active === 4 && "High 3rd-Party Fees"}
-        {active === 5 && "Court · Mediation"}
+        {active === 5 && "Court | Mediation"}
         {active === 6 && "Forgery Risk"}
       </text>
 
@@ -1209,13 +1209,13 @@ export function RealEstateComparisonPlate({
 }
 
 /* ==========================================================================
-   10 · Smart Contracts in Financial Services — Three selectable panels:
+   10. Smart Contracts in Financial Services: Three selectable panels:
    1. Issues of Traditional Systems, 2. Automate Loans & Claims,
    3. Enhance Transparency
    ========================================================================== */
 
 const FIN_ZONES = [
-  { idx: 0, x0: 20, x1: 260, cx: 140, tab: "1. Traditional Issues", sub: "Costly · Lengthy" },
+  { idx: 0, x0: 20, x1: 260, cx: 140, tab: "1. Traditional Issues", sub: "Costly | Lengthy" },
   { idx: 1, x0: 280, x1: 520, cx: 400, tab: "2. Auto-Disbursement", sub: "Loans & Claims" },
   { idx: 2, x0: 540, x1: 780, cx: 660, tab: "3. Transparency", sub: "Reduces Disputes" },
 ];
@@ -1236,7 +1236,7 @@ export function FinancialServicesInteractive({
     <Plate
       w={800}
       h={256}
-      title={`Three selectable panels for Smart Contracts in Financial Services: 1. Traditional Issues (costly manual paperwork and lengthy processing times), 2. Auto-Disbursement (credit score and claim verification triggering automated payout on a framed screen), and 3. Transparency (customer and bank viewing the same shared ledger screen to reduce disputes); ${cur.tab} is selected`}
+      title={`Three selectable panels for Smart Contracts in Financial Services: 1. Traditional Issues (costly manual paperwork and lengthy processing times), 2. Auto-Disbursement (credit score and claim verification triggering automated payout on a framed screen), and 3. Transparency (customer and bank viewing the same shared ledger screen to reduce disputes). ${cur.tab} is selected`}
     >
       <path d="M 270 18 V 192 M 530 18 V 192" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
@@ -1318,7 +1318,7 @@ export function FinancialServicesTall({
     <Plate
       w={400}
       h={296}
-      title={`Three stacked selectable rows for Smart Contracts in Financial Services; ${FIN_ZONES[active]?.tab ?? "1. Traditional Issues"} is selected`}
+      title={`Three stacked selectable rows for Smart Contracts in Financial Services. ${FIN_ZONES[active]?.tab ?? "1. Traditional Issues"} is selected`}
     >
       {FIN_ZONES.map((z, i) => {
         const y0 = 14 + i * 92;
@@ -1353,7 +1353,7 @@ export function FinancialServicesTall({
 }
 
 /* ==========================================================================
-   11 · Bank Loan Approval Process — Interactive Credit Score & Smart Contract
+   11. Bank Loan Approval Process: Interactive Credit Score & Smart Contract
    Loan Disbursement Simulator
    ========================================================================== */
 
@@ -1440,7 +1440,7 @@ export function BankLoanSimulatorInteractive() {
 }
 
 /* ==========================================================================
-   12 · Smart Contracts in Legal Contracts — Three selectable columns pairing
+   12. Smart Contracts in Legal Contracts: Three selectable columns pairing
    Traditional Legal Issues (top, in blue) with Smart Contract Enforcement
    (bottom):
    1. Complexity & Length -> Automated Transactions,
@@ -1468,7 +1468,7 @@ export function LegalContractsInteractive({
     <Plate
       w={800}
       h={258}
-      title={`Three selectable columns contrasting Traditional Legal Contracts (top, in blue) with Smart Contracts (bottom): 1. Auto Execution (replacing lengthy convoluted paper terms with automated execution), 2. Coded Conditions (replacing costly court intervention with verified payment and delivery milestones), and 3. Built-In Rules (replacing ambiguous disputes with algorithmic dispute resolution); ${cur.tab} is selected in red`}
+      title={`Three selectable columns contrasting Traditional Legal Contracts (top, in blue) with Smart Contracts (bottom): 1. Auto Execution (replacing lengthy convoluted paper terms with automated execution), 2. Coded Conditions (replacing costly court intervention with verified payment and delivery milestones), and 3. Built-In Rules (replacing ambiguous disputes with algorithmic dispute resolution). ${cur.tab} is selected in red`}
     >
       <path d="M 270 18 V 196 M 530 18 V 196" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
@@ -1553,7 +1553,7 @@ export function LegalContractsTall({
     <Plate
       w={400}
       h={296}
-      title={`Three stacked selectable rows for Smart Contracts in Legal Contracts; ${LEGAL_ZONES[active]?.tab ?? "1. Auto Execution"} is selected`}
+      title={`Three stacked selectable rows for Smart Contracts in Legal Contracts. ${LEGAL_ZONES[active]?.tab ?? "1. Auto Execution"} is selected`}
     >
       {LEGAL_ZONES.map((z, i) => {
         const y0 = 14 + i * 92;
@@ -1588,7 +1588,7 @@ export function LegalContractsTall({
 }
 
 /* ==========================================================================
-   13 · Smart Contracts in Voting Systems — Five selectable mechanisms:
+   13. Smart Contracts in Voting Systems: Five selectable mechanisms:
    1. Immutable Ledger, 2. Decentralization, 3. Automated Vote Counting,
    4. Transparent Validation, 5. Condition-Based Execution
    ========================================================================== */
@@ -1615,7 +1615,7 @@ export function VotingSystemsInteractive({
     <Plate
       w={800}
       h={258}
-      title={`Five selectable panels for Smart Contracts in Voting Systems: 1. Immutable Ledger (ballots locked on a screen), 2. Decentralization (distributed across multiple nodes), 3. Automated Vote Counting (real-time smart contract tally), 4. Transparent Validation (stakeholders verifying the count), and 5. Condition-Based Execution (voter eligibility verification); ${cur.tab} is selected in red`}
+      title={`Five selectable panels for Smart Contracts in Voting Systems: 1. Immutable Ledger (ballots locked on a screen), 2. Decentralization (distributed across multiple nodes), 3. Automated Vote Counting (real-time smart contract tally), 4. Transparent Validation (stakeholders verifying the count), and 5. Condition-Based Execution (voter eligibility verification). ${cur.tab} is selected in red`}
     >
       <path
         d="M 166 18 V 194 M 322 18 V 194 M 478 18 V 194 M 634 18 V 194"
@@ -1708,7 +1708,7 @@ export function VotingSystemsTall({
     <Plate
       w={400}
       h={340}
-      title={`Five stacked selectable rows for Smart Contracts in Voting Systems; ${VOTING_ZONES[active]?.tab ?? "1. Immutable"} is selected`}
+      title={`Five stacked selectable rows for Smart Contracts in Voting Systems. ${VOTING_ZONES[active]?.tab ?? "1. Immutable"} is selected`}
     >
       {VOTING_ZONES.map((z, i) => {
         const y0 = 14 + i * 63;
@@ -1742,7 +1742,7 @@ export function VotingSystemsTall({
 }
 
 /* ==========================================================================
-   14 · Smart Contracts in Intellectual Property Management — Four selectable
+   14. Smart Contracts in Intellectual Property Management, Four selectable
    panels: 1. Traditional IP Challenges, 2. Self-Executing Terms,
    3. Immutable First-Creator Record, 4. Automated Licensing & Royalties
    ========================================================================== */
@@ -1769,7 +1769,7 @@ export function IpManagementInteractive({
     <Plate
       w={800}
       h={258}
-      title={`Four selectable panels for Smart Contracts in Intellectual Property Management: 1. IP Barriers (complex contracts, infringement risks, and slow legal enforcement), 2. Coded Terms (invention coded into a self-executing smart contract), 3. Created First (immutable timestamp proving who created the IP-protected content first), and 4. Auto Royalties (automated licensing and royalty payouts); ${cur.tab} is selected`}
+      title={`Four selectable panels for Smart Contracts in Intellectual Property Management: 1. IP Barriers (complex contracts, infringement risks, and slow legal enforcement), 2. Coded Terms (invention coded into a self-executing smart contract), 3. Created First (immutable timestamp proving who created the IP-protected content first), and 4. Auto Royalties (automated licensing and royalty payouts). ${cur.tab} is selected`}
     >
       <path d="M 205 18 V 196 M 400 18 V 196 M 595 18 V 196" stroke={INK} strokeWidth={1.8} strokeDasharray="4 5" />
 
@@ -1849,7 +1849,7 @@ export function IpManagementTall({
     <Plate
       w={400}
       h={340}
-      title={`Four stacked selectable rows for Smart Contracts in Intellectual Property Management; ${IP_ZONES[active]?.tab ?? "1. IP Barriers"} is selected`}
+      title={`Four stacked selectable rows for Smart Contracts in Intellectual Property Management. ${IP_ZONES[active]?.tab ?? "1. IP Barriers"} is selected`}
     >
       {IP_ZONES.map((z, i) => {
         const y0 = 14 + i * 80;
@@ -1885,7 +1885,7 @@ export function IpManagementTall({
 }
 
 /* ==========================================================================
-   15 · Other Use Cases of Smart Contracts — Three selectable panels:
+   15. Other Use Cases of Smart Contracts: Three selectable panels:
    1. Crowdfunding (milestone fund release),
    2. Donations and Charity (Bitcoin disaster relief purchase tracking),
    3. Education (automatic certificate issuance upon course completion)
@@ -1911,7 +1911,7 @@ export function OtherUseCasesInteractive({
     <Plate
       w={800}
       h={256}
-      title={`Three selectable panels for Other Use Cases of Smart Contracts: 1. Crowdfunding (backers funding a milestone on a framed screen that releases coins), 2. Donations and Charity (Bitcoin sent through a transparent blockchain screen to track disaster relief supplies), and 3. Education (a student completing a course and receiving an automatically issued certificate on a framed screen); ${cur.tab} is selected in red`}
+      title={`Three selectable panels for Other Use Cases of Smart Contracts: 1. Crowdfunding (backers funding a milestone on a framed screen that releases coins), 2. Donations and Charity (Bitcoin sent through a transparent blockchain screen to track disaster relief supplies), and 3. Education (a student completing a course and receiving an automatically issued certificate on a framed screen). ${cur.tab} is selected in red`}
     >
       <path d="M 270 18 V 192 M 530 18 V 192" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
@@ -1996,7 +1996,7 @@ export function OtherUseCasesTall({
     <Plate
       w={400}
       h={296}
-      title={`Three stacked selectable rows for Other Use Cases of Smart Contracts: 1. Crowdfunding, 2. Charity, and 3. Education; ${OTHER_ZONES[active]?.tab ?? "1. Crowdfunding"} is selected`}
+      title={`Three stacked selectable rows for Other Use Cases of Smart Contracts: 1. Crowdfunding, 2. Charity, and 3. Education. ${OTHER_ZONES[active]?.tab ?? "1. Crowdfunding"} is selected`}
     >
       {OTHER_ZONES.map((z, i) => {
         const y0 = 14 + i * 92;

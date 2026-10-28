@@ -37,11 +37,11 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 07 — HYPOTHESIS TESTING AND GROUP DIFFERENCES
+// WEEK 07: HYPOTHESIS TESTING AND GROUP DIFFERENCES
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx; the interactive ones are built around one action
+// live in ./visuals.tsx. The interactive ones are built around one action
 // each, so students can try the logic of a test rather than read about it.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
@@ -63,7 +63,7 @@ export default function Week7() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 07 · Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 07: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
           <span className="text-[var(--signal)]">Hypothesis Testing</span> and Group Differences
         </Title>
@@ -149,7 +149,7 @@ export default function Week7() {
           <div className="flex min-w-0 flex-col gap-5">
             <p className="type-quote !text-[clamp(1.2rem,1.9vw,1.55rem)]">
               The test assesses the evidence against the null hypothesis. The null
-              hypothesis is either rejected or not rejected; it is{" "}
+              hypothesis is either rejected or not rejected. It is{" "}
               <span className="text-[var(--counter)]">never proven true</span>.
             </p>
             <Ruled weight="thin">
@@ -1020,7 +1020,7 @@ export default function Week7() {
           {[
             "Hypothesis testing assesses whether a sample result provides sufficient evidence against the null hypothesis of no difference or no association.",
             "The p-value is the probability of a result at least as extreme as the one observed if the null hypothesis were true, and not the probability that the null hypothesis is true.",
-            "Type I errors report differences that do not exist; Type II errors fail to detect differences that do exist.",
+            "Type I errors report differences that do not exist. Type II errors fail to detect differences that do exist.",
             "The t-test compares two means, analysis of variance compares three or more means, and the chi-square test assesses the association between two nominal variables.",
             "Statistical significance does not establish practical significance, and effect sizes and confidence intervals are reported together with p-values.",
             "p-Hacking, selective reporting, and uncorrected multiple comparisons increase false findings, while preregistration and reproducible analysis protect against them.",

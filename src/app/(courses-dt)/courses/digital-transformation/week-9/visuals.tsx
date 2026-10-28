@@ -1,18 +1,18 @@
 "use client";
 
 /* ==========================================================================
-   Week 9 — Industry 4.0 (Flat Silhouette, Interactive-First)
+   Week 9, Industry 4.0 (Flat Silhouette, Interactive-First)
    --------------------------------------------------------------------------
    Custom industrial silhouette vocabulary crafted specifically for Week 9
    (avoiding overused Shop/Doc/Coins/Conversation tropes from earlier weeks):
-     · Steam Flywheel & Beam Engine    (First Industrial Revolution)
-     · Lattice Pylon, Bessemer Vessel,
+     - Steam Flywheel & Beam Engine    (First Industrial Revolution)
+     - Lattice Pylon, Bessemer Vessel,
        Conveyor & Filament Bulb        (Second Industrial Revolution)
-     · Transistor, Silicon Wafer Die,
+     - Transistor, Silicon Wafer Die,
        ARPANET Mesh & Robotic Arm      (Third Industrial Revolution)
-     · Cyber-Physical Digital Twin,
+     - Cyber-Physical Digital Twin,
        Bioprinter & Quantum Chandelier (Fourth Industrial Revolution / 4.0)
-     · Monitor / MiniScreen            (all digital systems, per course style)
+     - Monitor / MiniScreen            (all digital systems, per course style)
    Every coordinate is a literal or rounded with r2(), so server and client
    render identical markup.
    ========================================================================== */
@@ -142,7 +142,7 @@ function SiliconChipGlyph({
 }
 
 /* ==========================================================================
-   1 · Hero — Interactive Four-Revolution Chrono-Transmission
+   1. Hero: Interactive Four-Revolution Chrono-Transmission
    Click any of the four industrial epochs (1st Steam, 2nd Electricity,
    3rd Digital Computing, 4th Cyber-Physical Systems) to engage its power
    train and inspect the shift from muscle & steam to smart autonomy.
@@ -151,19 +151,19 @@ function SiliconChipGlyph({
 const HERO_EPOCHS = [
   {
     num: "1st",
-    era: "1760–1840",
+    era: "1760 to 1840",
     title: "Steam & Mechanization",
     sub: "Water, coal & iron factories",
   },
   {
     num: "2nd",
-    era: "1870–1914",
+    era: "1870 to 1914",
     title: "Electricity & Mass Line",
     sub: "Steel, chemicals & assembly",
   },
   {
     num: "3rd",
-    era: "1960s–Present",
+    era: "1960s-Present",
     title: "Digital & Internet",
     sub: "Transistors, PCs & automation",
   },
@@ -190,7 +190,7 @@ export function HeroFourRevolutionsEngine() {
     <Plate
       w={520}
       h={330}
-      title={`Interactive four-epoch industrial transmission rising from left to right: 1st (Steam cylinder, beam, and spoked flywheel), 2nd (High-voltage electric lattice pylon and spark), 3rd (Framed screen holding a silicon microprocessor chip), and 4.0 (Framed cyber-physical screen holding an autonomous robotic arm). Currently engaged: ${current.num} — ${current.title}`}
+      title={`Interactive four-epoch industrial transmission rising from left to right: 1st (Steam cylinder, beam, and spoked flywheel), 2nd (High-voltage electric lattice pylon and spark), 3rd (Framed screen holding a silicon microprocessor chip), and 4.0 (Framed cyber-physical screen holding an autonomous robotic arm). Currently engaged: ${current.num} - ${current.title}`}
     >
       {/* Top readout banner showing the engaged Industrial Revolution */}
       <rect x={16} y={12} width={488} height={46} fill={INK} />
@@ -202,7 +202,7 @@ export function HeroFourRevolutionsEngine() {
         {current.title}
       </text>
       <text x={102} y={50} {...BODY} fontSize={12.5} fill={CREAM}>
-        {current.era} · {current.sub}
+        {current.era} | {current.sub}
       </text>
 
       {cols.map((c, i) => {
@@ -291,7 +291,7 @@ export function HeroFourRevolutionsEngine() {
 }
 
 /* ==========================================================================
-   2 · Question: 1759 Canada — Interactive Pre-Industrial River-Valley
+   2. Question: 1759 Canada: Interactive Pre-Industrial River-Valley
    Livelihood Selector & Muscle-Power Workday Instrument
    ========================================================================== */
 
@@ -507,7 +507,7 @@ export function Canada1759Interactive() {
 }
 
 /* ==========================================================================
-   3 · The First Industrial Revolution — Connected 6-Station Industrial
+   3. The First Industrial Revolution: Connected 6-Station Industrial
    Valley & Steam Mill Cross-Section (Interactive)
    ========================================================================== */
 
@@ -572,7 +572,7 @@ export function SteamMillCrossSectionInteractive({
     <Plate
       w={800}
       h={234}
-      title={`Interactive 18th–19th century industrial landscape with six connected stations: 1. Mechanization (meshing drive gears and belt), 2. Steam Power (Watt beam engine and flywheel), 3. Factory System (centralized sawtooth-roof mill with smokestack), 4. Textile Boom (multi-spindle power loom frame), 5. Iron and Coal (coal mine cart and iron crucible), and 6. Railroads and Canals (steam locomotive on stone viaduct over canal barge). Active: ${current.full}`}
+      title={`Interactive 18th: 19th century industrial landscape with six connected stations: 1. Mechanization (meshing drive gears and belt), 2. Steam Power (Watt beam engine and flywheel), 3. Factory System (centralized sawtooth-roof mill with smokestack), 4. Textile Boom (multi-spindle power loom frame), 5. Iron and Coal (coal mine cart and iron crucible), and 6. Railroads and Canals (steam locomotive on stone viaduct over canal barge). Active: ${current.full}`}
     >
       {/* Overhead line-shaft & ground rail linking the 6 stations */}
       <path d="M 16 36 H 778" stroke={INK} strokeWidth={2.5} strokeDasharray="6 4" />
@@ -719,8 +719,8 @@ export function SteamMillCrossSectionInteractive({
 }
 
 /* ==========================================================================
-   4 · First Revolution Impact on Society — Panoramic Valley Transformation
-   & Interactive 1760–1850 Time Scrubber
+   4. First Revolution Impact on Society: Panoramic Valley Transformation
+   & Interactive 1760 to 1850 Time Scrubber
    ========================================================================== */
 
 const FIRST_SOCIETY_IMPACTS = [
@@ -923,7 +923,7 @@ export function FirstRevSocietySimulatorInteractive({
 
       {/* Year slider Knob */}
       <text x={556} y={190} {...BODY} fontSize={13.5} fill={INK}>
-        Drag timeline (1760–1850):
+        Drag timeline (1760 to 1850):
       </text>
       <path d="M 568 212 H 768" stroke={INK} strokeWidth={5} />
       <Knob
@@ -949,7 +949,7 @@ export function FirstRevSocietySimulatorInteractive({
 }
 
 /* ==========================================================================
-   5 · Question: 1890 — The 1890 Schoolhouse Reskilling Bridge & Career
+   5. Question: 1890: The 1890 Schoolhouse Reskilling Bridge & Career
    Switchyard (Interactive)
    ========================================================================== */
 
@@ -990,7 +990,7 @@ export function Transition1890BridgeInteractive() {
     <Plate
       w={800}
       h={252}
-      title={`Interactive 1890 career transition diagram: on the left, displaced pre-industrial craft work (${current.from}); in the center, an 1890 schoolhouse with bell cupola teaching ${current.skill}; on the right, four selectable 1890 industrial career paths with ${current.label} highlighted in red`}
+      title={`Interactive 1890 career transition diagram: on the left, displaced pre-industrial craft work (${current.from}). In the center, an 1890 schoolhouse with bell cupola teaching ${current.skill}. On the right, four selectable 1890 industrial career paths with ${current.label} highlighted in red`}
     >
       {/* Left panel: Prior Pre-Industrial / Craft Job */}
       <rect x={16} y={20} width={192} height={214} fill={COUNTER_FILL} stroke={INK} strokeWidth={3} />
@@ -1125,7 +1125,7 @@ export function Transition1890BridgeInteractive() {
 }
 
 /* ==========================================================================
-   6 · The Second Industrial Revolution — High-Voltage Power Grid & 5-Station
+   6. The Second Industrial Revolution: High-Voltage Power Grid & 5-Station
    Mass Production Circuit (Interactive)
    ========================================================================== */
 
@@ -1311,7 +1311,7 @@ export function SecondRevolutionPowerGridInteractive({
 }
 
 /* ==========================================================================
-   7 · Second Revolution: Key Inventions — Interactive Patent Grid & Live
+   7. Second Revolution: Key Inventions: Interactive Patent Grid & Live
    Mechanism Chamber (Edison 1879, Combustion Engine, Marconi 1895, Ford 1913)
    ========================================================================== */
 
@@ -1368,10 +1368,10 @@ export function InventionsWorkbenchInteractive({
     <Plate
       w={800}
       h={256}
-      title={`Interactive Second Industrial Revolution Key Inventions workbench: on the left, four selectable patent plates (1879 Electric Light Bulb, Internal Combustion Engine, 1895 Radio Waves, 1913 Automobile Production Line); on the right, an interactive mechanism chamber demonstrating ${current.title} at ${power}% intensity`}
+      title={`Interactive Second Industrial Revolution Key Inventions workbench: on the left, four selectable patent plates (1879 Electric Light Bulb, Internal Combustion Engine, 1895 Radio Waves, 1913 Automobile Production Line). On the right, an interactive mechanism chamber demonstrating ${current.title} at ${power}% intensity`}
     >
       <text x={18} y={26} {...HEAD} fontSize={17} fill={INK}>
-        Select Key Invention (1–4)
+        Select Key Invention (1 to 4)
       </text>
 
       {cards.map((c, i) => {
@@ -1610,7 +1610,7 @@ export function InventionsWorkbenchInteractive({
 }
 
 /* ==========================================================================
-   8 · Second Revolution Impact on Society — Panoramic 6-Zone Metropolis
+   8. Second Revolution Impact on Society: Panoramic 6-Zone Metropolis
    Skyline & Underground Cutaway (Interactive)
    ========================================================================== */
 
@@ -1700,7 +1700,7 @@ export function MegacitySkylineInteractive({
                 <path d="M 172 78 V 94 M 238 78 V 94" stroke={tone} strokeWidth={4} />
                 {/* Street-level showcase window with 3 distinct product silhouettes */}
                 <rect x={156} y={94} width={98} height={74} fill="none" stroke={tone} strokeWidth={4} />
-                {/* Product 1: bottle; Product 2: bowler hat; Product 3: radio/appliance */}
+                {/* Product 1: bottle. Product 2: bowler hat. Product 3: radio/appliance */}
                 <path d="M 170 156 V 126 H 174 V 114 H 180 V 126 H 184 V 156 Z" fill={tone} />
                 <path d="M 192 146 H 220 V 152 H 192 Z M 196 146 C 196 130 216 130 216 146 Z" fill={tone} />
                 <rect x={226} y={124} width={18} height={32} rx={3} fill={tone} />
@@ -1799,7 +1799,7 @@ export function MegacitySkylineInteractive({
 }
 
 /* ==========================================================================
-   9 · Questions: 1932 — Riveted Steel Skyscraper Girder Balance (How Work
+   9. Questions: 1932: Riveted Steel Skyscraper Girder Balance (How Work
    Improved vs. How Work Worsened by 1932)
    ========================================================================== */
 
@@ -1957,7 +1957,7 @@ export function WorkerBalance1932Interactive() {
 }
 
 /* ==========================================================================
-   10 · The Third Industrial Revolution (Digital Revolution) — Silicon Wafer
+   10. The Third Industrial Revolution (Digital Revolution): Silicon Wafer
    & Printed-Circuit Bus Connecting the 5 Digital Pillars (Interactive)
    ========================================================================== */
 
@@ -2121,12 +2121,12 @@ export function SiliconWaferCircuitInteractive({
 }
 
 /* ==========================================================================
-   11 · Key Innovations ("Innovation Replaces Invention") — Interactive
-   Compounding Platform Wave from Silicon Hardware to AI/ML (1970s–Present)
+   11. Key Innovations ("Innovation Replaces Invention"): Interactive
+   Compounding Platform Wave from Silicon Hardware to AI/ML (1970s-Present)
    ========================================================================== */
 
 const THIRD_INNOVATIONS = [
-  { num: "1", era: "1970s–80s", short: "1. Personal PCs", full: "1. Personal Computers (1970s-1980s)" },
+  { num: "1", era: "1970s: 80s", short: "1. Personal PCs", full: "1. Personal Computers (1970s-1980s)" },
   { num: "2", era: "1990s+", short: "2. The Internet", full: "2. The Internet (1990s-Present)" },
   { num: "3", era: "2000s+", short: "3. Mobile Tech", full: "3. Mobile Technology (2000s-Present)" },
   { num: "4", era: "1990s+", short: "4. E-Commerce", full: "4. E-Commerce (1990s-Present)" },
@@ -2148,7 +2148,7 @@ export function InnovationWaveInteractive({
     <Plate
       w={800}
       h={244}
-      title={`Interactive diagram showing how innovation replaces physical invention: on the left, the physical transistor and microprocessor base (Invention); to the right, five ascending digital platform innovations on framed screens (1. Personal Computers, 2. The Internet, 3. Mobile Technology, 4. E-Commerce, and 5. Artificial Intelligence and Machine Learning). Active: ${current.full}`}
+      title={`Interactive diagram showing how innovation replaces physical invention: on the left, the physical transistor and microprocessor base (Invention). To the right, five ascending digital platform innovations on framed screens (1. Personal Computers, 2. The Internet, 3. Mobile Technology, 4. E-Commerce, and 5. Artificial Intelligence and Machine Learning). Active: ${current.full}`}
     >
       {/* Left Foundation Block: Hardware Invention (Transistor / Chip) */}
       <rect x={16} y={38} width={116} height={192} fill={COUNTER_FILL} stroke={INK} strokeWidth={3} />
@@ -2169,7 +2169,7 @@ export function InnovationWaveInteractive({
 
       {/* Top banner over the 5 Platform Innovations */}
       <text x={472} y={26} textAnchor="middle" {...HEAD} fontSize={17} fill={INK}>
-        Platform Innovations Built on Digital Foundations (Click 1–5)
+        Platform Innovations Built on Digital Foundations (Click 1 to 5)
       </text>
 
       {xs.map((x, i) => {
@@ -2291,7 +2291,7 @@ export function InnovationWaveInteractive({
 }
 
 /* ==========================================================================
-   12 · Question: 2006 — Workplace Analog-to-Digital Adaptation Switchboard
+   12. Question: 2006: Workplace Analog-to-Digital Adaptation Switchboard
    (Interactive)
    ========================================================================== */
 
@@ -2332,12 +2332,12 @@ export function Workflow2006AdapterInteractive() {
     <Plate
       w={800}
       h={256}
-      title={`Interactive 2006 workplace adaptation switchboard with four job domains converting from physical tools on top to framed digital screens below: 1. Records and Data (filing cabinet to database screen), 2. Communication (paper post to web/email screen), 3. Commerce (cash register to e-commerce screen), and 4. Field Work (clipboard to wireless mobile screen). Active: ${current.short} — ${current.analog} to ${current.digital}`}
+      title={`Interactive 2006 workplace adaptation switchboard with four job domains converting from physical tools on top to framed digital screens below: 1. Records and Data (filing cabinet to database screen), 2. Communication (paper post to web/email screen), 3. Commerce (cash register to e-commerce screen), and 4. Field Work (clipboard to wireless mobile screen). Active: ${current.short} - ${current.analog} to ${current.digital}`}
     >
       {/* Top interactive status header */}
       <rect x={18} y={12} width={764} height={36} fill={INK} />
       <text x={32} y={35} {...HEAD} fontSize={14.5} fill={CREAM}>
-        2006 Job Adaptation — {current.short}:
+        2006 Job Adaptation{current.short}:
       </text>
       <text x={768} y={35} textAnchor="end" {...BODY} fontSize={13.5} fill={CREAM}>
         {current.analog} → {current.digital}
@@ -2460,7 +2460,7 @@ export function Workflow2006AdapterInteractive() {
 }
 
 /* ==========================================================================
-   13 · The Fourth Industrial Revolution (Industry 4.0) — 7-Pillar
+   13. The Fourth Industrial Revolution (Industry 4.0): 7-Pillar
    Cyber-Physical Matrix & Live Digital Twin Monitor (Interactive)
    ========================================================================== */
 
@@ -2533,7 +2533,7 @@ export function CyberPhysicalConvergenceInteractive({
     <Plate
       w={800}
       h={240}
-      title={`Interactive Industry 4.0 cyber-physical convergence diagram: on the left, seven selectable technology modules (1. AI and ML, 2. IoT and Cyber-Physical Systems, 3. Big Data and Cloud, 4. Blockchain, 5. Advanced Robotics, 6. Biotechnology and 3D Printing, 7. Quantum Computing and 5G); on the right, a framed Digital Twin monitor displaying ${current.example}`}
+      title={`Interactive Industry 4.0 cyber-physical convergence diagram: on the left, seven selectable technology modules (1. AI and ML, 2. IoT and Cyber-Physical Systems, 3. Big Data and Cloud, 4. Blockchain, 5. Advanced Robotics, 6. Biotechnology and 3D Printing, 7. Quantum Computing and 5G). On the right, a framed Digital Twin monitor displaying ${current.example}`}
     >
       {nodes.map((n, i) => {
         const isLit = i === active;
@@ -2663,7 +2663,7 @@ export function CyberPhysicalConvergenceInteractive({
           {current.example}
         </text>
 
-        {/* Scene 0: AI & ML — Chatbot + Recommendation Engine matching items */}
+        {/* Scene 0: AI & ML: Chatbot + Recommendation Engine matching items */}
         {active === 0 && (
           <g>
             {/* User query bubble on left */}
@@ -2691,7 +2691,7 @@ export function CyberPhysicalConvergenceInteractive({
           </g>
         )}
 
-        {/* Scene 1: IoT & Cyber-Physical Systems — Smart Factory Self-Diagnosis */}
+        {/* Scene 1: IoT & Cyber-Physical Systems: Smart Factory Self-Diagnosis */}
         {active === 1 && (
           <g>
             <GearWheelGlyph cx={538} cy={104} r={24} tone={SIGNAL} />
@@ -2711,7 +2711,7 @@ export function CyberPhysicalConvergenceInteractive({
           </g>
         )}
 
-        {/* Scene 2: Big Data & Cloud — Real-Time Supply Chain Optimization */}
+        {/* Scene 2: Big Data & Cloud: Real-Time Supply Chain Optimization */}
         {active === 2 && (
           <g>
             {/* Central Cloud Optimizer */}
@@ -2752,7 +2752,7 @@ export function CyberPhysicalConvergenceInteractive({
           </g>
         )}
 
-        {/* Scene 4: Advanced Robotics & Automation — Warehouse Fulfillment Bots */}
+        {/* Scene 4: Advanced Robotics & Automation: Warehouse Fulfillment Bots */}
         {active === 4 && (
           <g>
             <path d="M 500 144 H 762" stroke={INK} strokeWidth={3} strokeDasharray="6 4" />
@@ -2832,8 +2832,8 @@ export function CyberPhysicalConvergenceInteractive({
 }
 
 /* ==========================================================================
-   14 · Impact on Society and Business (Industry 4.0) — Dual-Wing Control
-   Console: Opportunities (1–4) vs. Risks & Governance (5–7) Around a Central
+   14. Impact on Society and Business (Industry 4.0), Dual-Wing Control
+   Console: Opportunities (1 to 4) vs. Risks & Governance (5 to 7) Around a Central
    Interactive Impact Stage
    ========================================================================== */
 
@@ -2866,7 +2866,7 @@ const FOURTH_IMPACTS = [
     num: "5",
     short: "5. Job Disruption",
     full: "5. Job Disruption & Reskilling Needs",
-    caption: "Automation displaces routine roles; workforce reskills",
+    caption: "Automation displaces routine roles. Workforce reskills",
   },
   {
     num: "6",
@@ -2897,11 +2897,11 @@ export function Industry4ImpactDialInteractive({
     <Plate
       w={800}
       h={242}
-      title={`Interactive Industry 4.0 societal and business impact console: on the left wing, four value and business model shifts (1. Hyper-Personalized, 2. Smart Cities, 3. Productivity, 4. Business Models); on the right wing, three disruption and governance challenges (5. Job Disruption, 6. Cybersecurity, 7. Ethical Challenges); in the center stage, a scene illustrating ${current.full}`}
+      title={`Interactive Industry 4.0 societal and business impact console: on the left wing, four value and business model shifts (1. Hyper-Personalized, 2. Smart Cities, 3. Productivity, 4. Business Models). On the right wing, three disruption and governance challenges (5. Job Disruption, 6. Cybersecurity, 7. Ethical Challenges). In the center stage, a scene illustrating ${current.full}`}
     >
-      {/* Left Wing Header: Value & Business Shifts (1–4) */}
+      {/* Left Wing Header: Value & Business Shifts (1 to 4) */}
       <text x={110} y={26} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
-        Value &amp; Business (1–4)
+        Value &amp; Business (1 to 4)
       </text>
 
       {leftYs.map((ly, i) => {
@@ -2936,9 +2936,9 @@ export function Industry4ImpactDialInteractive({
         );
       })}
 
-      {/* Right Wing Header: Risks & Ethics (5–7) */}
+      {/* Right Wing Header: Risks & Ethics (5 to 7) */}
       <text x={690} y={26} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
-        Risks &amp; Ethics (5–7)
+        Risks &amp; Ethics (5 to 7)
       </text>
 
       {rightYs.map((ry, idx) => {

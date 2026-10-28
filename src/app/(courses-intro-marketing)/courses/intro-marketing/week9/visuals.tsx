@@ -1,21 +1,21 @@
 /* ==========================================================================
-   Week 09 — figures
+   Week 09: figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea. The week is about movement,
    so most plates read left to right along a chain: a factory at one end, a
    buyer at the other, and whatever sits between them as the subject of the
-   slide. Where the idea is not a chain the grammar changes on purpose — a
+   slide. Where the idea is not a chain the grammar changes on purpose: a
    bridge over a gap, a hub with spokes, nested rings of goals, two crossed
    lines for control against complexity, a sorting table for assortments, a
    balance for service against cost.
 
    Conventions carried over from earlier weeks:
-     · viewBox width 800 (400 for column plates), flat fills, hairline rules,
+     - viewBox width 800 (400 for column plates), flat fills, hairline rules,
        no shadows or gradients
-     · INK carries the neutral case, SIGNAL the operative one, COUNTER the
+     - INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or the outward-looking state
-     · every label reuses words from the slide the plate sits on
-     · integer coordinates only, so server and client render the same markup
+     - every label reuses words from the slide the plate sits on
+     - integer coordinates only, so server and client render the same markup
    ========================================================================== */
 
 import React from "react";
@@ -90,7 +90,7 @@ export function Under({
 }
 
 /* ==========================================================================
-   0 · TITLE — from production to consumption (600)
+   0. TITLE: from production to consumption (600)
    ========================================================================== */
 
 export function ProductionToConsumption() {
@@ -120,7 +120,7 @@ export function ProductionToConsumption() {
 }
 
 /* ==========================================================================
-   1 · INTERDEPENDENT — a channel is a set of organizations, linked (400)
+   1. INTERDEPENDENT: a channel is a set of organizations, linked (400)
    ========================================================================== */
 
 export function Interdependent() {
@@ -157,7 +157,7 @@ export function Interdependent() {
 }
 
 /* ==========================================================================
-   2 · AVAILABLE FOR USE — the product within reach of the buyer (400)
+   2. AVAILABLE FOR USE: the product within reach of the buyer (400)
    ========================================================================== */
 
 export function MakeAvailable() {
@@ -202,7 +202,7 @@ export function MakeAvailable() {
 }
 
 /* ==========================================================================
-   3 · THE BRIDGE — the gap between producers and users, in three spans
+   3. THE BRIDGE: the gap between producers and users, in three spans
    ========================================================================== */
 
 export function ChannelSpan() {
@@ -255,7 +255,7 @@ export function ChannelSpan() {
 }
 
 /* ==========================================================================
-   4 · THE LARGER NETWORK — the channel is one part of a bigger whole
+   4. THE LARGER NETWORK: the channel is one part of a bigger whole
    ========================================================================== */
 
 export function LargerNetwork() {
@@ -293,7 +293,7 @@ export function LargerNetwork() {
 }
 
 /* ==========================================================================
-   5 · WHO IS IN THE NETWORK — company, suppliers, distributors, customers
+   5. WHO IS IN THE NETWORK: company, suppliers, distributors, customers
    ========================================================================== */
 
 export function NetworkMembers() {
@@ -342,7 +342,7 @@ export function NetworkMembers() {
 }
 
 /* ==========================================================================
-   6 · WHOLE-SYSTEM PERFORMANCE — partnering lifts the system, not one part
+   6. WHOLE-SYSTEM PERFORMANCE: partnering lifts the system, not one part
    ========================================================================== */
 
 export function SystemPerformance() {
@@ -373,7 +373,7 @@ export function SystemPerformance() {
 }
 
 /* ==========================================================================
-   7 · HUB AND SPOKE — information flowing through the channel
+   7. HUB AND SPOKE: information flowing through the channel
    [diagram: hub-and-spoke]
    ========================================================================== */
 
@@ -426,7 +426,7 @@ export function InformationHub() {
 }
 
 /* ==========================================================================
-   8 · ALONE OR WITH INTERMEDIARIES — how far the firm reaches (400)
+   8. ALONE OR WITH INTERMEDIARIES: how far the firm reaches (400)
    ========================================================================== */
 
 export function MoreThanAlone() {
@@ -473,7 +473,7 @@ export function MoreThanAlone() {
 }
 
 /* ==========================================================================
-   9 · WHAT INTERMEDIARIES BRING — contacts, experience, specialization, scale
+   9. WHAT INTERMEDIARIES BRING: contacts, experience, specialization, scale
    ========================================================================== */
 
 export function FourResources() {
@@ -566,7 +566,7 @@ export function FourResources() {
 }
 
 /* ==========================================================================
-   10 · ASSORTMENTS — what producers make, sorted into what consumers want
+   10. ASSORTMENTS: what producers make, sorted into what consumers want
    ========================================================================== */
 
 export function AssortmentTransform() {
@@ -644,7 +644,7 @@ export function AssortmentTransform() {
 }
 
 /* ==========================================================================
-   11–16 · THE SIX CHANNEL FUNCTIONS — one column plate each (400)
+   11 to 16 | THE SIX CHANNEL FUNCTIONS: one column plate each (400)
    The six share a frame height so the two rows of three sit level.
    ========================================================================== */
 
@@ -852,7 +852,7 @@ export function FnFinancing() {
 }
 
 /* ==========================================================================
-   17 · ONE LEVEL — a layer of intermediaries brings the product closer
+   17. ONE LEVEL: a layer of intermediaries brings the product closer
    ========================================================================== */
 
 export function LevelLayer() {
@@ -893,7 +893,7 @@ export function LevelLayer() {
 }
 
 /* ==========================================================================
-   18 · LENGTH — the number of levels is the length of the channel
+   18. LENGTH: the number of levels is the length of the channel
    ========================================================================== */
 
 export function ChannelLength() {
@@ -951,7 +951,7 @@ export function ChannelLength() {
 }
 
 /* ==========================================================================
-   19 · NO LEVELS — the direct marketing channel (400)
+   19. NO LEVELS: the direct marketing channel (400)
    ========================================================================== */
 
 export function DirectChannel() {
@@ -982,7 +982,7 @@ export function DirectChannel() {
 }
 
 /* ==========================================================================
-   20 · ONE OR MORE — wholesalers, jobbers, retailers
+   20. ONE OR MORE: wholesalers, jobbers, retailers
    ========================================================================== */
 
 export function IndirectLevels() {
@@ -1038,7 +1038,7 @@ export function IndirectLevels() {
 }
 
 /* ==========================================================================
-   21 · CONTROL AND COMPLEXITY — they move opposite ways (400)
+   21. CONTROL AND COMPLEXITY: they move opposite ways (400)
    ========================================================================== */
 
 export function ControlComplexity() {
@@ -1070,7 +1070,7 @@ export function ControlComplexity() {
 }
 
 /* ==========================================================================
-   22 · TWO ROUTES — the discussion fork for a new organic snack brand
+   22. TWO ROUTES: the discussion fork for a new organic snack brand
    ========================================================================== */
 
 export function TwoRoutes() {
@@ -1117,7 +1117,7 @@ export function TwoRoutes() {
 }
 
 /* ==========================================================================
-   23 · A BEHAVIORAL SYSTEM — people and companies, not boxes and pipes
+   23. A BEHAVIORAL SYSTEM: people and companies, not boxes and pipes
    ========================================================================== */
 
 export function BehavioralSystem() {
@@ -1160,7 +1160,7 @@ export function BehavioralSystem() {
 }
 
 /* ==========================================================================
-   24 · THREE SETS OF GOALS — individual, company, channel
+   24. THREE SETS OF GOALS: individual, company, channel
    ========================================================================== */
 
 export function ThreeGoals() {
@@ -1196,7 +1196,7 @@ export function ThreeGoals() {
 }
 
 /* ==========================================================================
-   25 · WORKING TOGETHER — the joint pull decides success (400)
+   25. WORKING TOGETHER: the joint pull decides success (400)
    ========================================================================== */
 
 export function WorkTogether() {
@@ -1226,7 +1226,7 @@ export function WorkTogether() {
 }
 
 /* ==========================================================================
-   26 · THE THREE DISPUTES — goals, roles, rewards
+   26. THE THREE DISPUTES: goals, roles, rewards
    ========================================================================== */
 
 export function GoalsRolesRewards() {
@@ -1270,7 +1270,7 @@ export function GoalsRolesRewards() {
 }
 
 /* ==========================================================================
-   27 · HORIZONTAL CONFLICT — among firms at the same level (400)
+   27. HORIZONTAL CONFLICT: among firms at the same level (400)
    ========================================================================== */
 
 export function HorizontalConflict() {
@@ -1301,7 +1301,7 @@ export function HorizontalConflict() {
 }
 
 /* ==========================================================================
-   28 · VERTICAL CONFLICT — between different levels of the same channel (400)
+   28. VERTICAL CONFLICT: between different levels of the same channel (400)
    ========================================================================== */
 
 export function VerticalConflict() {
@@ -1340,7 +1340,7 @@ export function VerticalConflict() {
 }
 
 /* ==========================================================================
-   29 · SEPARATE BUSINESSES — the conventional distribution system
+   29. SEPARATE BUSINESSES: the conventional distribution system
    ========================================================================== */
 
 export function SeparateBusinesses() {
@@ -1389,7 +1389,7 @@ export function SeparateBusinesses() {
 }
 
 /* ==========================================================================
-   30 · THE VMS CASCADE — one unified system [diagram: cascading flow]
+   30. THE VMS CASCADE: one unified system [diagram: cascading flow]
    ========================================================================== */
 
 export function VmsCascade() {
@@ -1442,7 +1442,7 @@ export function VmsCascade() {
 }
 
 /* ==========================================================================
-   31 · THREE WAYS ONE MEMBER HOLDS THE CHANNEL TOGETHER
+   31. THREE WAYS ONE MEMBER HOLDS THE CHANNEL TOGETHER
    ========================================================================== */
 
 export function ThreePowers() {
@@ -1506,7 +1506,7 @@ export function ThreePowers() {
 }
 
 /* ==========================================================================
-   32 · WHAT THE DESIGN IS FOR — economies down, impact up (400)
+   32. WHAT THE DESIGN IS FOR: economies down, impact up (400)
    ========================================================================== */
 
 export function EconomiesImpact() {
@@ -1548,7 +1548,7 @@ export function EconomiesImpact() {
 }
 
 /* ==========================================================================
-   33–35 · THE THREE TYPES OF VMS — one column plate each (400)
+   33 to 35 | THE THREE TYPES OF VMS: one column plate each (400)
    ========================================================================== */
 
 const VMS_H = 220;
@@ -1644,7 +1644,7 @@ export function AdministeredVms() {
 }
 
 /* ==========================================================================
-   36 · TWO OR MORE CHANNELS — the multichannel distribution system
+   36. TWO OR MORE CHANNELS: the multichannel distribution system
    ========================================================================== */
 
 export function MultiChannels() {
@@ -1701,7 +1701,7 @@ export function MultiChannels() {
 }
 
 /* ==========================================================================
-   37 · LARGE AND COMPLEX MARKETS — where the advantage lies (400)
+   37. LARGE AND COMPLEX MARKETS: where the advantage lies (400)
    ========================================================================== */
 
 export function ComplexMarkets() {
@@ -1745,7 +1745,7 @@ export function ComplexMarkets() {
 }
 
 /* ==========================================================================
-   38 · WHAT IT BUYS AND WHAT IT COSTS — coverage against conflict
+   38. WHAT IT BUYS AND WHAT IT COSTS: coverage against conflict
    ========================================================================== */
 
 export function CoverageAndConflict() {
@@ -1789,7 +1789,7 @@ export function CoverageAndConflict() {
 }
 
 /* ==========================================================================
-   39 · CUTTING OUT THE MIDDLE — producers go directly to final buyers
+   39. CUTTING OUT THE MIDDLE: producers go directly to final buyers
    ========================================================================== */
 
 export function CutOut() {
@@ -1829,7 +1829,7 @@ export function CutOut() {
 }
 
 /* ==========================================================================
-   40 · A NEW KIND OF INTERMEDIARY TAKES THE PLACE (400)
+   40. A NEW KIND OF INTERMEDIARY TAKES THE PLACE (400)
    ========================================================================== */
 
 export function NewIntermediaries() {
@@ -1837,7 +1837,7 @@ export function NewIntermediaries() {
     <Frame
       width={400}
       height={224}
-      label="A line from the producer to the buyer with one place on it. The traditional reseller that used to stand there is drawn faded and grey, lifted clear of the line; the place it left is now held by a new type of intermediary."
+      label="A line from the producer to the buyer with one place on it. The traditional reseller that used to stand there is drawn faded and grey, lifted clear of the line. The place it left is now held by a new type of intermediary."
     >
       <g opacity={0.5}>
         <Key x={200} y={34} anchor="middle" fill={INK3} size={9.5}>
@@ -1867,7 +1867,7 @@ export function NewIntermediaries() {
 }
 
 /* ==========================================================================
-   41 · TWO FACES — an opportunity and a strategic threat (400)
+   41. TWO FACES: an opportunity and a strategic threat (400)
    ========================================================================== */
 
 export function OpportunityThreat() {
@@ -1902,7 +1902,7 @@ export function OpportunityThreat() {
 }
 
 /* ==========================================================================
-   42 · THE BYPASS — streaming services and the cable provider
+   42. THE BYPASS: streaming services and the cable provider
    ========================================================================== */
 
 export function StreamingBypass() {
@@ -1948,7 +1948,7 @@ export function StreamingBypass() {
 }
 
 /* ==========================================================================
-   43 · THE LAST THREE SUBJECTS — where each one sits on the chain
+   43. THE LAST THREE SUBJECTS: where each one sits on the chain
    ========================================================================== */
 
 export function ThreeDomains() {
@@ -1988,7 +1988,7 @@ export function ThreeDomains() {
 }
 
 /* ==========================================================================
-   44 · SOLD TO WHOM — final consumers, or resale and business use (400)
+   44. SOLD TO WHOM: final consumers, or resale and business use (400)
    ========================================================================== */
 
 export function SoldToWhom({ side }: { side: "retail" | "wholesale" }) {
@@ -2044,7 +2044,7 @@ export function SoldToWhom({ side }: { side: "retail" | "wholesale" }) {
 }
 
 /* ==========================================================================
-   45 · THE EFFICIENT FLOW — materials in, final goods out (400)
+   45. THE EFFICIENT FLOW: materials in, final goods out (400)
    ========================================================================== */
 
 export function EfficientFlow() {
@@ -2076,7 +2076,7 @@ export function EfficientFlow() {
 }
 
 /* ==========================================================================
-   46 · THE LAST STEPS — where the retailer stands
+   46. THE LAST STEPS: where the retailer stands
    ========================================================================== */
 
 export function FinalSteps() {
@@ -2120,7 +2120,7 @@ export function FinalSteps() {
 }
 
 /* ==========================================================================
-   47 · SHOPPER TO BUYER — the whole process narrowed on the point of sale
+   47. SHOPPER TO BUYER: the whole process narrowed on the point of sale
    ========================================================================== */
 
 export function ShopperToBuyer() {
@@ -2173,7 +2173,7 @@ export function ShopperToBuyer() {
 }
 
 /* ==========================================================================
-   48 · TARGET AND POSITION — the two things a retailer must define (400)
+   48. TARGET AND POSITION: the two things a retailer must define (400)
    ========================================================================== */
 
 export function TargetAndPositioning() {
@@ -2222,7 +2222,7 @@ export function TargetAndPositioning() {
 }
 
 /* ==========================================================================
-   49 · BETTER OR CHEAPER — who should perform the channel function
+   49. BETTER OR CHEAPER: who should perform the channel function
    ========================================================================== */
 
 export function BetterOrCheaper() {
@@ -2264,7 +2264,7 @@ export function BetterOrCheaper() {
 }
 
 /* ==========================================================================
-   50 · MANY SMALL CUSTOMERS — with and without a wholesaler
+   50. MANY SMALL CUSTOMERS: with and without a wholesaler
    ========================================================================== */
 
 export function ManySmallCustomers() {
@@ -2315,7 +2315,7 @@ export function ManySmallCustomers() {
 }
 
 /* ==========================================================================
-   51 · WHO HOLDS THE STOCK — inventory moved off supplier and customer
+   51. WHO HOLDS THE STOCK: inventory moved off supplier and customer
    ========================================================================== */
 
 export function HoldInventory() {
@@ -2372,7 +2372,7 @@ export function HoldInventory() {
 }
 
 /* ==========================================================================
-   52 · PLAN, IMPLEMENT, CONTROL — the loop over the physical flow
+   52. PLAN, IMPLEMENT, CONTROL: the loop over the physical flow
    ========================================================================== */
 
 export function PlanImplementControl() {
@@ -2413,7 +2413,7 @@ export function PlanImplementControl() {
 }
 
 /* ==========================================================================
-   53 · FOUR RIGHTS — product, customer, place, time, all at once
+   53. FOUR RIGHTS: product, customer, place, time, all at once
    ========================================================================== */
 
 export function FourRights() {
@@ -2453,7 +2453,7 @@ export function FourRights() {
 }
 
 /* ==========================================================================
-   54 · THREE DISTRIBUTIONS — inbound, outbound, reverse
+   54. THREE DISTRIBUTIONS: inbound, outbound, reverse
    ========================================================================== */
 
 export function ThreeDistributions() {
@@ -2491,7 +2491,7 @@ export function ThreeDistributions() {
 }
 
 /* ==========================================================================
-   55 · UPSTREAM AND DOWNSTREAM — value added along the way
+   55. UPSTREAM AND DOWNSTREAM: value added along the way
    ========================================================================== */
 
 export function UpstreamDownstream() {
@@ -2546,7 +2546,7 @@ export function UpstreamDownstream() {
 }
 
 /* ==========================================================================
-   56 · SERVICE UP, COST DOWN — the two ends of the same decision (400)
+   56. SERVICE UP, COST DOWN: the two ends of the same decision (400)
    ========================================================================== */
 
 export function ServiceAndCost() {
@@ -2585,7 +2585,7 @@ export function ServiceAndCost() {
 }
 
 /* ==========================================================================
-   57 · THE MAJOR FUNCTIONS — the four things supply chains manage
+   57. THE MAJOR FUNCTIONS: the four things supply chains manage
    ========================================================================== */
 
 export function SupplyFunctions() {
@@ -2639,7 +2639,7 @@ export function SupplyFunctions() {
 }
 
 /* ==========================================================================
-   58 · OUTSOURCED — the logistics functions move to a provider
+   58. OUTSOURCED: the logistics functions move to a provider
    ========================================================================== */
 
 export function OutsourceLogistics() {
@@ -2686,7 +2686,7 @@ export function OutsourceLogistics() {
 }
 
 /* ==========================================================================
-   59 · WHAT THE COMPANY GETS BACK — money, service, focus
+   59. WHAT THE COMPANY GETS BACK: money, service, focus
    ========================================================================== */
 
 export function ThreeGains() {
@@ -2737,7 +2737,7 @@ export function ThreeGains() {
 }
 
 /* ==========================================================================
-   60 · A COMPLEX ENVIRONMENT — many routes, rules and modes at once (400)
+   60. A COMPLEX ENVIRONMENT: many routes, rules and modes at once (400)
    ========================================================================== */
 
 export function ComplexEnvironment() {
@@ -2799,7 +2799,7 @@ export function ComplexEnvironment() {
 }
 
 /* ==========================================================================
-   61–63 · CONCLUSION GLYPHS
+   61 to 63 | CONCLUSION GLYPHS
    ========================================================================== */
 
 export function GlyphLink() {

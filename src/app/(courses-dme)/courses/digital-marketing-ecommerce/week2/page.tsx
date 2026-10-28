@@ -34,9 +34,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 02 — STOREFRONT DESIGN, INFORMATION ARCHITECTURE, AND CONVERSION
+// WEEK 02: STOREFRONT DESIGN, INFORMATION ARCHITECTURE, AND CONVERSION
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md;
+// Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and which catalogue plate
 // is drawn beside it. Plates live in ./visuals.tsx.
 // ============================================================================
@@ -49,10 +49,10 @@ export default function Week2Page() {
   return (
     <SlideDeck label="Week 02">
       {/* ================================================================
-          01 · Title Slide
+          01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 02 · Digital Marketing &amp; E-Commerce</Subtitle>
+        <Subtitle variant="hero">Week 02: Digital Marketing &amp; E-Commerce</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Storefront Design, Information Architecture, and Conversion</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[50ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.3rem,2.1vw,1.8rem)]">
@@ -63,7 +63,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          02 · The Storefront as a Decision Environment [no-exercise]
+          02. The Storefront as a Decision Environment [no-exercise]
           ================================================================ */}
       <Slide id="the-storefront-as-a-decision-environment" border className="!py-8">
         <SlideHeading>The Storefront as a Decision Environment</SlideHeading>
@@ -107,7 +107,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          03 · Information Architecture in E-Commerce [no-exercise]
+          03. Information Architecture in E-Commerce [no-exercise]
           ================================================================ */}
       <Slide id="information-architecture-in-e-commerce" border className="!py-8">
         <SlideHeading>Information Architecture in E-Commerce</SlideHeading>
@@ -144,7 +144,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          04 · Part 1: Storefront Taxonomy, Navigation, and Product Page Design [no-exercise]
+          04. Part 1: Storefront Taxonomy, Navigation, and Product Page Design [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Storefront Taxonomy, Navigation, and Product Page Design" />
@@ -168,7 +168,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          05 · Hierarchical Taxonomy Versus Faceted Navigation [exercise]
+          05. Hierarchical Taxonomy Versus Faceted Navigation [exercise]
           ================================================================ */}
       <Slide
         id="hierarchical-taxonomy-versus-faceted-navigation"
@@ -221,7 +221,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          06 · On-Site Search and Query Understanding [no-exercise]
+          06. On-Site Search and Query Understanding [no-exercise]
           ================================================================ */}
       <Slide id="on-site-search-and-query-understanding" border className="!py-8">
         <SlideHeading>On-Site Search and Query Understanding</SlideHeading>
@@ -260,7 +260,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          07 · Anatomy of a High-Converting Product Detail Page (PDP) [exercise]
+          07. Anatomy of a High-Converting Product Detail Page (PDP) [exercise]
           ================================================================ */}
       <Slide
         id="anatomy-of-a-high-converting-product-detail-page-pdp"
@@ -306,7 +306,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          08 · Part 2: Conversion Rate Optimization and Checkout Friction [no-exercise]
+          08. Part 2: Conversion Rate Optimization and Checkout Friction [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Conversion Rate Optimization and Checkout Friction" />
@@ -332,7 +332,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          09 · Macro-Conversions, Micro-Conversions, and Funnel Diagnostics [exercise]
+          09. Macro-Conversions, Micro-Conversions, and Funnel Diagnostics [exercise]
           ================================================================ */}
       <Slide
         id="macro-conversions-micro-conversions-and-funnel-diagnostics"
@@ -385,7 +385,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          10 · Sources of Shopping Cart Abandonment [no-exercise]
+          10. Sources of Shopping Cart Abandonment [no-exercise]
           ================================================================ */}
       <Slide id="sources-of-shopping-cart-abandonment" border className="!py-8">
         <SlideHeading>Sources of Shopping Cart Abandonment</SlideHeading>
@@ -430,7 +430,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          11 · Reducing Checkout Friction and Recovering Abandoned Carts [exercise]
+          11. Reducing Checkout Friction and Recovering Abandoned Carts [exercise]
           ================================================================ */}
       <Slide
         id="reducing-checkout-friction-and-recovering-abandoned-carts"
@@ -490,7 +490,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          12 · Discussion: Diagnosing a Leaky Mobile Funnel
+          12. Discussion: Diagnosing a Leaky Mobile Funnel
           ================================================================ */}
       <Slide id="discussion-diagnosing-a-leaky-mobile-funnel" border className="!py-8">
         <SlideHeading>Diagnosing a Leaky Mobile Funnel</SlideHeading>
@@ -509,7 +509,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          13 · Part 3: Digital Choice Architecture and Dark Patterns [no-exercise]
+          13. Part 3: Digital Choice Architecture and Dark Patterns [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Digital Choice Architecture and Dark Patterns" />
@@ -536,7 +536,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          14 · Persuasive Choice Architecture on the Storefront [no-exercise]
+          14. Persuasive Choice Architecture on the Storefront [no-exercise]
           ================================================================ */}
       <Slide id="persuasive-choice-architecture-on-the-storefront" border className="!py-8">
         <SlideHeading>Persuasive Choice Architecture on the Storefront</SlideHeading>
@@ -586,7 +586,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          15 · Deceptive Dark Patterns in E-Commerce Interfaces [exercise]
+          15. Deceptive Dark Patterns in E-Commerce Interfaces [exercise]
           ================================================================ */}
       <Slide
         id="deceptive-dark-patterns-in-e-commerce-interfaces"
@@ -643,7 +643,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          16 · Part 4: Machine-Readable Storefronts and Structured Data [no-exercise]
+          16. Part 4: Machine-Readable Storefronts and Structured Data [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Machine-Readable Storefronts and Structured Data" />
@@ -670,7 +670,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          17 · How Machines Read a Storefront [no-exercise]
+          17. How Machines Read a Storefront [no-exercise]
           ================================================================ */}
       <Slide id="how-machines-read-a-storefront" border className="!py-8">
         <SlideHeading>How Machines Read a Storefront</SlideHeading>
@@ -712,7 +712,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          18 · Schema.org, JSON-LD, and Merchant Product Feeds [exercise]
+          18. Schema.org, JSON-LD, and Merchant Product Feeds [exercise]
           ================================================================ */}
       <Slide
         id="schema-org-json-ld-and-merchant-product-feeds"
@@ -759,7 +759,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          19 · Part 5: Information Acquisition Costs in Agentic Shopping [no-exercise]
+          19. Part 5: Information Acquisition Costs in Agentic Shopping [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Information Acquisition Costs in Agentic Shopping" />
@@ -785,7 +785,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          20 · Bounded Algorithmic Rationality and Inspection Costs [no-exercise]
+          20. Bounded Algorithmic Rationality and Inspection Costs [no-exercise]
           ================================================================ */}
       <Slide id="bounded-algorithmic-rationality-and-inspection-costs" border className="!py-8">
         <SlideHeading>Bounded Algorithmic Rationality and Inspection Costs</SlideHeading>
@@ -831,7 +831,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          21 · How Storefront Architecture Shapes AI Agent Choice [exercise]
+          21. How Storefront Architecture Shapes AI Agent Choice [exercise]
           ================================================================ */}
       <Slide
         id="how-storefront-architecture-shapes-ai-agent-choice"
@@ -876,7 +876,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          22 · Discussion: When a Redesign Hurts Agentic Sales
+          22. Discussion: When a Redesign Hurts Agentic Sales
           ================================================================ */}
       <Slide id="discussion-when-a-redesign-hurts-agentic-sales" border className="!py-8">
         <SlideHeading>When a Redesign Hurts Agentic Sales</SlideHeading>
@@ -896,7 +896,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          23 · Key Takeaways
+          23. Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>

@@ -80,12 +80,12 @@
     "slide_id": "counterfactual-fairness-and-causal-pathways",
     "question_text": "A graduate fellowship committee removes applicant race and gender columns from its scoring model, but keeps standardized test scores that are strongly shaped by disparities in neighborhood high-school funding associated with protected attributes. Why does this model satisfy fairness through unawareness yet fail counterfactual fairness?",
     "hint": "Trace how the protected attribute influences the prediction through mediating variables in the causal graph.",
-    "correct_answer_citation": "Week 02 · Counterfactual Fairness and Causal Pathways",
+    "correct_answer_citation": "Week 02: Counterfactual Fairness and Causal Pathways",
     "correct_answer_index": 1,
     "options": [
       {
         "option_text": "Because counterfactual fairness requires that every applicant receive the exact same fellowship score regardless of academic preparation.",
-        "option_explanation": "Counterfactual fairness does not assign identical scores to everyone; it adjusts for causal pathways transmitting protected-attribute disparities."
+        "option_explanation": "Counterfactual fairness does not assign identical scores to everyone. It adjusts for causal pathways transmitting protected-attribute disparities."
       },
       {
         "option_text": "Because dropping the demographic column leaves intact the causal pathway from the protected attribute through the mediating variable (school quality) to the test score, so the prediction would still change in a counterfactual world where the applicant's group changed.",

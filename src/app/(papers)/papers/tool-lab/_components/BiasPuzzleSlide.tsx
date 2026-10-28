@@ -88,7 +88,7 @@ export default function BiasPuzzleSlide() {
                   letterSpacing: "0.02em",
                 }}
               >
-                &mdash; Macmillan-Scott & Musolesi (2024).{" "}
+                Macmillan-Scott & Musolesi (2024).{" "}
                 <span style={{ opacity: 0.8 }}>
                   (Ir)rationality and cognitive biases in large language models.
                 </span>

@@ -14,12 +14,12 @@ Deep, muted poster inks on warm cream, like colours printed on paper: calm to lo
 
 | Constant | Colour | Use | Hex | Contrast on cream |
 |---|---|---|---|---|
-| `CREAM` | Soft warm white | plate and page background, gaps between shapes, badges, text on a coloured shape | `#EFEBE3` | — |
+| `CREAM` | Soft warm white | plate and page background, gaps between shapes, badges, text on a coloured shape | `#EFEBE3` |: |
 | `INK` | Warm black | silhouettes, frames, rules, text | `#1D1B1A` | 14.4:1 |
-| `SKIN` | Pale beige | visible skin | `#DCCFB8` | — |
+| `SKIN` | Pale beige | visible skin | `#DCCFB8` |: |
 | `SIGNAL` | Brick red | what is learned, lit or chosen (rule 10) | `#A63A2C` | 5.4:1 |
 | `COUNTER` | Deep blue | the contrast (rule 10) | `#1F5FAF` | 5.3:1 |
-| `COUNTER_FILL` | Pale blue | fill for a contrast zone | `#CFDDF0` | — |
+| `COUNTER_FILL` | Pale blue | fill for a contrast zone | `#CFDDF0` |: |
 
 When a new colour value is needed, choose a deep, slightly muted tone in the same family and check it reaches 5:1 on cream before using it.
 
@@ -43,7 +43,7 @@ No gradients, shading, shadows, highlights, textures, grain, halftone or noise a
 
 - Hair, clothing and limbs are solid black.
 - Visible skin (face, neck) is flat pale beige, edged with one thin black line so the profile stays sharp.
-- Faces are minimal: an almond-shaped eye at most; the nose and lips exist only as the profile edge. No mouths, cheeks or shading.
+- Faces are minimal: an almond-shaped eye at most. The nose and lips exist only as the profile edge. No mouths, cheeks or shading.
 - Hair is one bold shape (a bob, a bun, a crop) that helps identify the person.
 - Show a range of people through silhouette alone: hairstyles, head coverings, body shapes, posture, clothing outlines.
 
@@ -51,10 +51,10 @@ No gradients, shading, shadows, highlights, textures, grain, halftone or noise a
 
 Anything digital (a digitized record, an online business, a digital initiative, a system) is shown **on a screen**:
 
-- the thing itself is the same **solid black silhouette** used for the physical version (same path, same glyph), so the viewer connects the two at once;
-- it sits inside a **framed screen**: a heavy black rule, a thin inner rule set just inside, and a short black stand (neck and base). The screen is what says "digital";
-- centre the glyph in the screen's inner area with clear cream on every side (rule 13); scale the glyph and keep the frame's rule weights fixed, so every screen in a plate reads as the same object (rule 11);
-- several digital things are several identical screens, one glyph each (rule 7), with clear space between one screen's stand and the next screen;
+- the thing itself is the same **solid black silhouette** used for the physical version (same path, same glyph), so the viewer connects the two at once.
+- it sits inside a **framed screen**: a heavy black rule, a thin inner rule set just inside, and a short black stand (neck and base). The screen is what says "digital".
+- centre the glyph in the screen's inner area with clear cream on every side (rule 13). Scale the glyph and keep the frame's rule weights fixed, so every screen in a plate reads as the same object (rule 11).
+- several digital things are several identical screens, one glyph each (rule 7), with clear space between one screen's stand and the next screen.
 - a physical-to-digital change is the black silhouette on cream, an arrow, then the same silhouette on a screen.
 
 Solid black on cream (physical) against the same solid black on a screen (digital) is the core of the look. Keep it identical on every plate.
@@ -70,11 +70,11 @@ Solid black on cream (physical) against the same solid black on a screen (digita
 
 Text inside a plate follows rule 3. When text is allowed, write it in sentence case, as it appears in the source ("Digital transformation", "Digitize information"), in INK or SIGNAL, or CREAM on a coloured shape:
 
-- headings and stage or group names: bold display serif (`var(--font-heading)`, weight 700), about 20 units;
-- names set on a shape (a step, a bar, a block): the reading serif (`var(--font-body)`, weight 600), about 15–17 units;
+- headings and stage or group names: bold display serif (`var(--font-heading)`, weight 700), about 20 units.
+- names set on a shape (a step, a bar, a block): the reading serif (`var(--font-body)`, weight 600), about 15 to 17 units.
 - lines of a two-line label about 1.4× the font size apart, so descenders clear the line below.
 
-**Avoid using `SIGNAL` red to highlight slide text.** Build hierarchy on the slide with type and space: font size, bold `INK` (`<strong>` in `var(--font-heading)`), rules and white space. Keep headings, subheadings, defined terms, list numerals, borders and body copy in `INK`. When a plate already uses `SIGNAL` red for its focal or active element, the text beside it stays in `INK` so it never competes with the visual. At most one short key phrase on a text-only slide may take `SIGNAL`; a slide with no red body text at all is preferred.
+**Avoid using `SIGNAL` red to highlight slide text.** Build hierarchy on the slide with type and space: font size, bold `INK` (`<strong>` in `var(--font-heading)`), rules and white space. Keep headings, subheadings, defined terms, list numerals, borders and body copy in `INK`. When a plate already uses `SIGNAL` red for its focal or active element, the text beside it stays in `INK` so it never competes with the visual. At most one short key phrase on a text-only slide may take `SIGNAL`. A slide with no red body text at all is preferred.
 
 ### Avoid
 
@@ -85,7 +85,7 @@ Text inside a plate follows rule 3. When text is allowed, write it in sentence c
 - Overusing `SIGNAL` red on slide text, headings, numerals or rules.
 - Busy backgrounds, decorative clutter, real logos or brand names.
 
-### Look checklist (with rules 22–24)
+### Look checklist (with rules 22 to 24)
 
 - Can you recognise every person and object from its silhouette alone?
 - Are all fills flat, with no texture or gradient anywhere?

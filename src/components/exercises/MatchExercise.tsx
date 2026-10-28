@@ -8,8 +8,8 @@ import { Card, Explanation, ExerciseHeader, Status, TextButton } from "./parts";
  * Match-up, with feedback on every pair. Tap a term, then the example it goes
  * with (either order works). A right pair locks both cards with a tick and the
  * same number, and its explanation shows in the status line (all of them sit
- * under their terms once every pair is done, so nothing moves mid-exercise);
- * a wrong pair marks both cards and
+ * under their terms once every pair is done, so nothing moves mid-exercise).
+ * A wrong pair marks both cards and
  * leaves the first one selected, without giving the answer away, so the
  * student only has to tap a different partner.
  */
@@ -18,7 +18,7 @@ export default function MatchExercise({
   art,
 }: {
   data: MatchData;
-  /** Optional drawings from the course, keyed by pair id; shown with the term. */
+  /** Optional drawings from the course, keyed by pair id. Shown with the term. */
   art?: Record<string, React.ReactNode>;
 }) {
   // Deal in a stable, shuffled order with nothing opposite its own answer.

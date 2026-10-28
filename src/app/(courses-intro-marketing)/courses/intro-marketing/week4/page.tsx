@@ -43,9 +43,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 04 — BUSINESS-TO-BUSINESS (B2B) MARKETING
+// WEEK 04: BUSINESS-TO-BUSINESS (B2B) MARKETING
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
@@ -93,7 +93,7 @@ function Lead({
   );
 }
 
-/** A sentence set as a serif statement — the line a slide lands on. */
+/** A sentence set as a serif statement: the line a slide lands on. */
 function Statement({
   children,
   className = "",
@@ -277,7 +277,7 @@ export default function Week4() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 04 · Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 04: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           Business-to-Business{" "}
           <span className="text-[var(--signal)]">(B2B)</span> Marketing
@@ -334,7 +334,7 @@ export default function Week4() {
       </Slide>
 
       {/* ================================================================
-          Part 1 — Characteristics of B2B Markets
+          Part 1: Characteristics of B2B Markets
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <div className="flex w-full items-end gap-8 xl:gap-12">
@@ -512,7 +512,7 @@ export default function Week4() {
       </Slide>
 
       {/* ================================================================
-          Part 2 — The Organizational Buying Center
+          Part 2: The Organizational Buying Center
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <div className="grid w-full gap-8 xl:grid-cols-[minmax(0,13rem)_1fr] xl:gap-14">
@@ -703,7 +703,7 @@ export default function Week4() {
       </Slide>
 
       {/* ================================================================
-          Part 3 — Relationship Marketing and Key Account Management
+          Part 3: Relationship Marketing and Key Account Management
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         {/* A statement across the top, the two sentences as columns, the
@@ -797,7 +797,7 @@ export default function Week4() {
       >
         <Tag>The most valuable customers</Tag>
         <Heading>Key Account Management (KAM)</Heading>
-        {/* The definition and its process loop on the left; the numbers and
+        {/* The definition and its process loop on the left. The numbers and
             the teams in a rail on the right. */}
         <div className="grid w-full items-center gap-8 lg:grid-cols-[minmax(0,8fr)_minmax(0,4fr)] lg:gap-10">
           <div className="flex min-w-0 flex-col gap-5">

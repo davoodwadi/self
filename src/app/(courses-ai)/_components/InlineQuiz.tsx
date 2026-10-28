@@ -56,7 +56,7 @@ export default function InlineQuiz({
         {quizData.question_text}
       </p>
 
-      {/* Options — fixed geometry, state carried in colour only */}
+      {/* Options: fixed geometry, state carried in colour only */}
       <ul className="mt-6 border-t border-[var(--charcoal)]/10">
         {quizData.options.map((option, index) => {
           const isSelected = selectedOption === index;
@@ -204,7 +204,7 @@ export default function InlineQuiz({
                   >
                     {isAnswer
                       ? "Correct"
-                      : `Answer \u2014 ${optionLetters[quizData.correct_answer_index]}`}
+                      : `Answer: ${optionLetters[quizData.correct_answer_index]}`}
                   </span>
                   <p className="text-[0.875rem] font-light leading-[1.6] text-[var(--charcoal-light)]">
                     {answer.option_explanation}

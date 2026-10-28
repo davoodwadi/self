@@ -76,11 +76,11 @@ function Num({
 }
 
 /* --------------------------------------------------------------------------
-   02 · Why Opacity Is a Governance Problem
+   02. Why Opacity Is a Governance Problem
    -------------------------------------------------------------------------- */
 
 /**
- * A sealed model housing. Six input cards feed its left face; three decisions
+ * A sealed model housing. Six input cards feed its left face. Three decisions
  * leave its right face: a loan letter stamped DENIED, a premium tag raised,
  * a supplier shortlist with one name crossed off. Inside, the routes from the
  * inputs to the decisions are hidden lines, drawn dashed in red: which
@@ -166,7 +166,7 @@ export function OpaqueDecisions() {
 }
 
 /* --------------------------------------------------------------------------
-   03 · Transparency Versus Explainability Versus Interpretability
+   03. Transparency Versus Explainability Versus Interpretability
    -------------------------------------------------------------------------- */
 
 type Form = "process" | "intrinsic" | "posthoc";
@@ -175,8 +175,8 @@ type Form = "process" | "intrinsic" | "posthoc";
  * One deployed model and the three forms of visibility, each switched on or
  * off on its own. Process transparency puts up a notice board with its
  * documents beside the model. Intrinsic interpretability turns the housing's
- * front to glass, showing a weighted beam whose weights can be read directly;
- * without it, the housing is sealed and its routes are hidden (dashed red).
+ * front to glass, showing a weighted beam whose weights can be read directly.
+ * Without it, the housing is sealed and its routes are hidden (dashed red).
  * Post-hoc explainability clamps a small surrogate model to the output, which
  * prints an approximate summary. Any combination can be set.
  */
@@ -297,7 +297,7 @@ export function ThreeForms() {
 }
 
 /* --------------------------------------------------------------------------
-   04 · Part 1: Intrinsic Interpretability Versus Black-Box Complexity
+   04. Part 1: Intrinsic Interpretability Versus Black-Box Complexity
    -------------------------------------------------------------------------- */
 
 /** A small decision tree: a root, two branches and four leaves, centred on (cx, y). */
@@ -329,7 +329,7 @@ export function LevelBalance() {
     <Frame
       width={540}
       height={330}
-      label="Patent drawing of a platform balance whose base reads out-of-sample accuracy. On the left platform lies a single card carrying a three-line rule list, the constrained interpretable model; on the right platform stands a crate packed with fifteen small decision trees, the black-box ensemble. The beam rests level and the needle, in red, points straight up at the centre of its dial."
+      label="Patent drawing of a platform balance whose base reads out-of-sample accuracy. On the left platform lies a single card carrying a three-line rule list, the constrained interpretable model. On the right platform stands a crate packed with fifteen small decision trees, the black-box ensemble. The beam rests level and the needle, in red, points straight up at the centre of its dial."
     >
       <PatentDefs id={id} />
       {/* base with its key */}
@@ -382,7 +382,7 @@ export function LevelBalance() {
 }
 
 /* --------------------------------------------------------------------------
-   05 · Intrinsically Interpretable Models
+   05. Intrinsically Interpretable Models
    -------------------------------------------------------------------------- */
 
 const LIN = { b: -2, v: 0.6, a: -0.15 };
@@ -518,7 +518,7 @@ export function ReadableModels() {
 }
 
 /* --------------------------------------------------------------------------
-   06 · Black-Box Models
+   06. Black-Box Models
    -------------------------------------------------------------------------- */
 
 /** A binary decision tree `depth` levels deep, root at (cx, y), spread `w` wide. */
@@ -613,7 +613,7 @@ export function BlackBoxes() {
 }
 
 /* --------------------------------------------------------------------------
-   07 · When High-Stakes Decisions Should Use Interpretable Models
+   07. When High-Stakes Decisions Should Use Interpretable Models
    -------------------------------------------------------------------------- */
 
 /** The black box's decision boundary over the applicant plane (both axes 0..1). */
@@ -630,7 +630,7 @@ const APPLICANTS = (() => {
 /**
  * Applicants scattered over a two-feature plane, split by the black box's
  * wiggly decision boundary. A post-hoc surrogate approximates that boundary
- * with straight pieces; the slider sets how many. Applicants who fall between
+ * with straight pieces. The slider sets how many. Applicants who fall between
  * the two lines are explained wrongly (red). Beside the plane, the surrogate's
  * rule card grows one line per piece: only a card as long as the model itself
  * closes the gap.
@@ -685,7 +685,7 @@ export function SurrogateGap() {
       <Frame
         width={560}
         height={312}
-        label={`Patent drawing of 160 applicants scattered over a two-feature plane, split by a black box's wiggly decision boundary. A post-hoc surrogate approximates the boundary with ${k} straight ${k === 1 ? "piece" : "pieces"}; the slivers between the two lines are stippled red, and ${wrong.length} applicants fall in them, explained wrongly. Beside the plane, the surrogate's rule card holds ${k} ${k === 1 ? "line" : "lines"}.`}
+        label={`Patent drawing of 160 applicants scattered over a two-feature plane, split by a black box's wiggly decision boundary. A post-hoc surrogate approximates the boundary with ${k} straight ${k === 1 ? "piece" : "pieces"}. The slivers between the two lines are stippled red, and ${wrong.length} applicants fall in them, explained wrongly. Beside the plane, the surrogate's rule card holds ${k} ${k === 1 ? "line" : "lines"}.`}
       >
         <PatentDefs id={id} />
         <rect x={x0} y={y0} width={x1 - x0} height={y1 - y0} fill={PAT.paper} {...ink} />
@@ -734,7 +734,7 @@ export function SurrogateGap() {
 }
 
 /* --------------------------------------------------------------------------
-   08 · Part 2: Post-Hoc Feature Attribution Methods
+   08. Part 2: Post-Hoc Feature Attribution Methods
    -------------------------------------------------------------------------- */
 
 /**
@@ -750,7 +750,7 @@ export function ClampOnMeter() {
     <Frame
       width={560}
       height={300}
-      label="Patent drawing of a sealed model housing whose predictions leave along a shaft as small slips. An attribution meter is clamped onto the shaft after the model; its face shows four feature bars of different lengths, and a selector knob on it switches between GLOBAL and LOCAL scope."
+      label="Patent drawing of a sealed model housing whose predictions leave along a shaft as small slips. An attribution meter is clamped onto the shaft after the model. Its face shows four feature bars of different lengths, and a selector knob on it switches between GLOBAL and LOCAL scope."
     >
       <PatentDefs id={id} />
       {/* the deployed model */}
@@ -791,7 +791,7 @@ export function ClampOnMeter() {
 }
 
 /* --------------------------------------------------------------------------
-   09 · Global Versus Local Explanations
+   09. Global Versus Local Explanations
    -------------------------------------------------------------------------- */
 
 const GL_FEATURES = ["UTILIZATION", "INQUIRIES", "INCOME", "TENURE"];
@@ -883,7 +883,7 @@ export function GlobalLocal() {
 
         {/* local: this customer's signed contributions */}
         <Num x={lx} y={32} size={15} fill={PAT.signal}>
-          {`Applicant ${c.id} · ${c.p.toFixed(2)}`}
+          {`Applicant ${c.id} | ${c.p.toFixed(2)}`}
         </Num>
         <line x1={lx + 0.5} y1={44} x2={lx + 0.5} y2={rowY(3) + 16} {...ink} />
         {c.a.map((v, j) => (
@@ -918,7 +918,7 @@ export function GlobalLocal() {
 }
 
 /* --------------------------------------------------------------------------
-   10 · Permutation Feature Importance and Partial Dependence
+   10. Permutation Feature Importance and Partial Dependence
    -------------------------------------------------------------------------- */
 
 type ShuffleCol = "none" | "income" | "util";
@@ -943,7 +943,7 @@ const SH_PERM = [5, 3, 7, 0, 6, 1, 4, 2];
 /**
  * A holdout table: eight customers, two feature columns drawn as value bars
  * and an outcome column (filled = defaulted). Choosing a feature shuffles its
- * column across the rows (red), breaking its link to the outcome; the gauge
+ * column across the rows (red), breaking its link to the outcome. The gauge
  * beside the table shows how far the model's holdout error rises.
  */
 export function ShuffleColumn() {
@@ -965,7 +965,7 @@ export function ShuffleColumn() {
       <Frame
         width={488}
         height={226}
-        label={`Patent drawing of a holdout table of eight customers with income and utilization columns and a default outcome column. ${col === "none" ? "No column is shuffled" : `The ${SH_COLS.find((c) => c.id === col)?.key.toLowerCase()} column is shuffled across rows, in red`}; a gauge beside the table reads the model's holdout error: ${err.toFixed(2)}, against ${SH_ERROR.none.toFixed(2)} unshuffled.`}
+        label={`Patent drawing of a holdout table of eight customers with income and utilization columns and a default outcome column. ${col === "none" ? "No column is shuffled" : `The ${SH_COLS.find((c) => c.id === col)?.key.toLowerCase()} column is shuffled across rows, in red`}. A gauge beside the table reads the model's holdout error: ${err.toFixed(2)}, against ${SH_ERROR.none.toFixed(2)} unshuffled.`}
       >
         <PatentDefs id={id} />
         {/* table frame */}
@@ -1112,7 +1112,7 @@ export function IceCurves() {
 }
 
 /* --------------------------------------------------------------------------
-   11 · Local Surrogates and Game-Theoretic Attributions: LIME and SHAP
+   11. Local Surrogates and Game-Theoretic Attributions: LIME and SHAP
    -------------------------------------------------------------------------- */
 
 /** The black box's curved boundary over the plane (0..1 each way): above it, denied. */
@@ -1130,7 +1130,7 @@ const LIME_PTS = (() => {
 /**
  * LIME around one customer. The black box splits the plane along a curve
  * (the denied side stippled). Around the customer (the cross), perturbed
- * profiles are scattered; each is answered by the black box (filled = denied)
+ * profiles are scattered. Each is answered by the black box (filled = denied)
  * and weighted by closeness (larger = heavier). A straight local line fitted
  * to those answers (red) stands in for the curve near the customer only.
  */
@@ -1154,7 +1154,7 @@ export function LimeFit() {
     <Frame
       width={440}
       height={252}
-      label="Patent drawing of LIME around one customer. A black-box model divides a two-feature plane along a curved boundary, the denied side stippled. Around the customer, marked by a cross, 46 perturbed profiles are scattered inside a dashed neighbourhood; each is filled if the black box denies it, and drawn larger the closer it lies. A straight local line, in red, is fitted to them and follows the curve only near the customer."
+      label="Patent drawing of LIME around one customer. A black-box model divides a two-feature plane along a curved boundary, the denied side stippled. Around the customer, marked by a cross, 46 perturbed profiles are scattered inside a dashed neighbourhood. Each is filled if the black box denies it, and drawn larger the closer it lies. A straight local line, in red, is fitted to them and follows the curve only near the customer."
     >
       <PatentDefs id={id} />
       <defs>
@@ -1223,7 +1223,7 @@ const SHAPLEY = (() => {
 /**
  * One applicant's prediction (0.42) built up from the baseline mean (0.18) as
  * three features join the coalition. Left: the stack for one joining order,
- * chosen below; each feature's block is its marginal contribution in that
+ * chosen below. Each feature's block is its marginal contribution in that
  * order, and the same feature adds different amounts in different orders.
  * Right: the Shapley stack, each block the average over all six orders.
  * Both stacks always reach the prediction line (red): local accuracy.
@@ -1289,7 +1289,7 @@ export function ShapleyOrders() {
 }
 
 /* --------------------------------------------------------------------------
-   12 · Limitations and Vulnerabilities of Post-Hoc Attributions
+   12. Limitations and Vulnerabilities of Post-Hoc Attributions
    -------------------------------------------------------------------------- */
 
 /** Four reruns of the same explanation: each feature's attribution under a new random seed. */
@@ -1308,7 +1308,7 @@ const AGE_HISTORY = (() => {
   });
 })();
 
-/** A model housing, (x, y) its front face's top-left; red for the biased one. */
+/** A model housing, (x, y) its front face's top-left. Red for the biased one. */
 function Box({ id, x, y, w, h, red = false }: { id: string; x: number; y: number; w: number; h: number; red?: boolean }) {
   return <ObliqueBox id={id} x={x} y={y} w={w} h={h} dx={8} dy={5} stroke={red ? PAT.signal : PAT.ink} side={red ? stip(id, "signal") : undefined} />;
 }
@@ -1317,7 +1317,7 @@ function Box({ id, x, y, w, h, red = false }: { id: string; x: number; y: number
  * One strip per limitation. Causal: inside the model a proxy's attribution
  * bar runs long (red), while in the real world moving house leaves the
  * default-risk dial where it was. Instability: one customer's three
- * attributions, rerun with a new seed; the top driver (red) changes.
+ * attributions, rerun with a new seed. The top driver (red) changes.
  * Correlated features: age against credit history, where real customers fill
  * a wedge and the off-manifold pairing (nineteen, twenty years) sits outside
  * it (red). Scaffolding: a detector routes synthetic perturbations to a fair
@@ -1331,7 +1331,7 @@ export function FourLimits({ kind }: { kind: "causal" | "instability" | "correla
       <Frame
         width={560}
         height={160}
-        label="Patent drawing of two figures. Inside the model: a long attribution bar, in red, for the postal code feature, above a short one for income. In the real world: a house with an arrow to a second house, each with a default-risk dial beneath it; the needle reads the same after the move."
+        label="Patent drawing of two figures. Inside the model: a long attribution bar, in red, for the postal code feature, above a short one for income. In the real world: a house with an arrow to a second house, each with a default-risk dial beneath it. The needle reads the same after the move."
       >
         <PatentDefs id={id} />
         <rect x={10} y={12} width={256} height={124} fill={PAT.paper} {...hair} strokeDasharray="5 3" />
@@ -1483,7 +1483,7 @@ export function FourLimits({ kind }: { kind: "causal" | "instability" | "correla
 }
 
 /* --------------------------------------------------------------------------
-   13 · Discussion: The Disputed Credit Denial
+   13. Discussion: The Disputed Credit Denial
    -------------------------------------------------------------------------- */
 
 /**
@@ -1503,7 +1503,7 @@ export function PortalLetter() {
     <Frame
       width={400}
       height={318}
-      label="Patent drawing of the bank's customer portal page for a working-capital application, stamped DECLINED. It lists the top three negative SHAP values as bars running left from a zero line: number of recent credit inquiries, the longest; postal code commercial density, in red; and average monthly balance volatility."
+      label="Patent drawing of the bank's customer portal page for a working-capital application, stamped DECLINED. It lists the top three negative SHAP values as bars running left from a zero line: number of recent credit inquiries, the longest. Postal code commercial density, in red. And average monthly balance volatility."
     >
       <PatentDefs id={id} />
       <ObliqueBox id={id} x={14} y={22} w={362} h={286} dx={10} dy={6} />
@@ -1540,7 +1540,7 @@ export function PortalLetter() {
 }
 
 /* --------------------------------------------------------------------------
-   14 · Part 3: Counterfactual Explanations and Actionable Recourse
+   14. Part 3: Counterfactual Explanations and Actionable Recourse
    -------------------------------------------------------------------------- */
 
 /**
@@ -1606,7 +1606,7 @@ export function BoundaryFence() {
 }
 
 /* --------------------------------------------------------------------------
-   15 · Counterfactual Explanations: What Would Have Changed the Decision
+   15. Counterfactual Explanations: What Would Have Changed the Decision
    -------------------------------------------------------------------------- */
 
 const CF_ME = { inc: 52, util: 42 };
@@ -1617,7 +1617,7 @@ const cfApproved = (inc: number, util: number) => util <= cfLine(inc) + 1e-9;
 /**
  * The applicant on the model's decision plane: annual income across,
  * credit card utilization up. The denied side of the boundary is stippled.
- * The two sliders move the applicant's profile; the ring stays at the
+ * The two sliders move the applicant's profile. The ring stays at the
  * original. Two counterfactuals sit on the boundary: income 4,000 dollars
  * higher, or utilization down to 30 percent. The stamp shows the decision at
  * the moved profile, read off the model's own rule.
@@ -1643,7 +1643,7 @@ export function CounterfactualPlane() {
       <Frame
         width={500}
         height={318}
-        label={`Patent drawing of a decision plane with annual income from 40,000 to 70,000 dollars across and credit card utilization from 10 to 70 percent up; the denied side of the model's boundary is stippled. The applicant's original profile, 52,000 dollars and 42 percent, is ringed. Two counterfactuals sit on the boundary: 56,000 dollars at 42 percent, and 52,000 dollars at 30 percent. The profile now shown is ${inc},000 dollars and ${util} percent: ${ok ? "approved" : "denied"}.`}
+        label={`Patent drawing of a decision plane with annual income from 40,000 to 70,000 dollars across and credit card utilization from 10 to 70 percent up. The denied side of the model's boundary is stippled. The applicant's original profile, 52,000 dollars and 42 percent, is ringed. Two counterfactuals sit on the boundary: 56,000 dollars at 42 percent, and 52,000 dollars at 30 percent. The profile now shown is ${inc},000 dollars and ${util} percent: ${ok ? "approved" : "denied"}.`}
       >
         <PatentDefs id={id} />
         <path d={`M${X(b0[0])} ${Y(b0[1])}L${X(b1[0])} ${Y(b1[1])}L${X(40)} ${Y(70)}L${X(40)} ${Y(10)}Z`} fill={stip(id, "light")} stroke="none" />
@@ -1700,7 +1700,7 @@ export function CounterfactualPlane() {
 }
 
 /* --------------------------------------------------------------------------
-   16 · From Explanation to Actionable Recourse
+   16. From Explanation to Actionable Recourse
    -------------------------------------------------------------------------- */
 
 type LeverKind = "mutable" | "oneway" | "locked";
@@ -1730,8 +1730,8 @@ function Padlock({ cx, cy }: { cx: number; cy: number }) {
 
 /**
  * The applicant's profile as a control panel of five levers. Mutable
- * features slide either way; a directionally constrained one carries a
- * one-way ratchet; immutable ones are padlocked. The choice below sets what
+ * features slide either way. A directionally constrained one carries a
+ * one-way ratchet. Immutable ones are padlocked. The choice below sets what
  * the counterfactual search may move: over all features it moves padlocked
  * levers (red), over actionable features only it moves only those the
  * applicant can change.
@@ -1748,7 +1748,7 @@ export function RecourseLevers() {
       <Frame
         width={512}
         height={186}
-        label={`Patent drawing of a control panel of five levers: savings and utilization slide either way, education has a one-way ratchet, age and birthplace are padlocked. ${mode === "all" ? "Searching over all features, the counterfactual moves the padlocked age lever by six years and birthplace, in red, and utilization by 3 points." : "Searching over actionable features only, the counterfactual moves savings by 3,000 dollars, utilization down 10 points and education up by one certificate; the padlocked levers stay put."}`}
+        label={`Patent drawing of a control panel of five levers: savings and utilization slide either way, education has a one-way ratchet, age and birthplace are padlocked. ${mode === "all" ? "Searching over all features, the counterfactual moves the padlocked age lever by six years and birthplace, in red, and utilization by 3 points." : "Searching over actionable features only, the counterfactual moves savings by 3,000 dollars, utilization down 10 points and education up by one certificate. The padlocked levers stay put."}`}
       >
         <PatentDefs id={id} />
         <ObliqueBox id={id} x={6} y={20} w={494} h={160} dx={10} dy={6} />
@@ -1808,7 +1808,7 @@ const BURDEN = {
  * boundary as a shared vertical line. Both groups have six approved members
  * to its right: prediction parity holds. Their four rejected members sit at
  * different distances to its left: close for group A, far for group B. A
- * caliper measures each group's mean distance; group B's (red) is the larger
+ * caliper measures each group's mean distance. Group B's (red) is the larger
  * recourse burden.
  */
 export function RecourseBurden() {
@@ -1822,7 +1822,7 @@ export function RecourseBurden() {
     <Frame
       width={500}
       height={190}
-      label="Patent drawing of two groups of ten applicants on score tracks either side of one decision boundary. In both groups six applicants are approved, to the right. Group A's four rejected applicants sit close to the boundary, a mean of 38 units away; group B's sit far from it, a mean of 131 units away, marked by a red caliper: a larger recourse burden."
+      label="Patent drawing of two groups of ten applicants on score tracks either side of one decision boundary. In both groups six applicants are approved, to the right. Group A's four rejected applicants sit close to the boundary, a mean of 38 units away. Group B's sit far from it, a mean of 131 units away, marked by a red caliper: a larger recourse burden."
     >
       <PatentDefs id={id} />
       <line x1={bx} y1={18} x2={bx} y2={172} {...ink} strokeWidth={LINE.bold} />
@@ -1863,13 +1863,13 @@ export function RecourseBurden() {
 }
 
 /* --------------------------------------------------------------------------
-   17 · Part 4: Reasoning Traces in Large Language Models as Verbal Protocols
+   17. Part 4: Reasoning Traces in Large Language Models as Verbal Protocols
    -------------------------------------------------------------------------- */
 
 /**
  * A language model's housing, its gears seen through an inspection window,
- * prints a long strip of reasoning text that runs out across the table;
- * a single choice card, ticked, drops from a slot on its front.
+ * prints a long strip of reasoning text that runs out across the table.
+ * A single choice card, ticked, drops from a slot on its front.
  */
 export function TraceScroll() {
   const id = "w5-scroll";
@@ -1923,7 +1923,7 @@ export function TraceScroll() {
 }
 
 /* --------------------------------------------------------------------------
-   18 · Chain-of-Thought and Reasoning Traces as Verbal Protocols
+   18. Chain-of-Thought and Reasoning Traces as Verbal Protocols
    -------------------------------------------------------------------------- */
 
 type Code = "goal" | "attributes" | "disclosure";
@@ -1937,7 +1937,7 @@ const HUMAN: Span[][] = [
 ];
 const AGENT: Span[][] = [
   [["Goal: the "], ["lowest price per ounce", "goal"], ["."]],
-  [["Coffee A is "], ["$4.99 for 10 oz", "attributes"], ["; Coffee B"]],
+  [["Coffee A is "], ["$4.99 for 10 oz", "attributes"], [". Coffee B"]],
   [["is "], ["$5.00 for 11 oz", "attributes"], [". B carries a"]],
   [["Sponsored label", "disclosure"], [", but its unit price"]],
   [["is lower. I choose Coffee B."]],
@@ -1946,7 +1946,7 @@ const AGENT: Span[][] = [
 /**
  * Two transcripts side by side: a shopper's think-aloud protocol at the
  * shelf and an AI shopping agent's reasoning trace for the same choice. The
- * codebook below picks one decision construct; its spans are marked in red
+ * codebook below picks one decision construct. Its spans are marked in red
  * in both transcripts at once, by the same rule.
  */
 export function CodedProtocols() {
@@ -1971,13 +1971,13 @@ export function CodedProtocols() {
       .flat()
       .filter(([, c]) => c === code)
       .map(([t]) => t)
-      .join("; ");
+      .join(". ");
   return (
     <div>
       <Frame
         width={800}
         height={184}
-        label={`Patent drawing of two transcripts. Left, a shopper at a shelf speaks a think-aloud protocol; right, an AI shopping agent writes a reasoning trace for the same coffee choice. The codebook construct ${code} is marked in red in both: shopper, ${coded(HUMAN)}; agent, ${coded(AGENT)}.`}
+        label={`Patent drawing of two transcripts. Left, a shopper at a shelf speaks a think-aloud protocol. Right, an AI shopping agent writes a reasoning trace for the same coffee choice. The codebook construct ${code} is marked in red in both: shopper, ${coded(HUMAN)}. Agent, ${coded(AGENT)}.`}
       >
         <PatentDefs id={id} />
         <Figure id={id} x={34} y={146} s={1.2} arm="reach" />
@@ -2008,7 +2008,7 @@ export function CodedProtocols() {
 }
 
 /* --------------------------------------------------------------------------
-   19 · Plausibility Versus Faithfulness in LLM Explanations
+   19. Plausibility Versus Faithfulness in LLM Explanations
    -------------------------------------------------------------------------- */
 
 const CUE_TRACE = {
@@ -2019,10 +2019,10 @@ const CUE_TRACE = {
 /**
  * A few-shot prompt and the model's reply. The prompt's three worked
  * examples sit on the left with their marked answers, the new question
- * beneath them. With the covert cue on, every worked answer is (A); the
+ * beneath them. With the covert cue on, every worked answer is (A). The
  * model then answers (A) and writes a reason about build quality that never
  * mentions the pattern (red). Two meters read the reply: plausibility stays
- * high either way; faithfulness falls when the cue drives the answer.
+ * high either way. Faithfulness falls when the cue drives the answer.
  */
 export function CoveredCue() {
   const [cue, setCue] = useState(false);
@@ -2044,7 +2044,7 @@ export function CoveredCue() {
       <Frame
         width={580}
         height={300}
-        label={`Patent drawing of a few-shot prompt and a model's reply. The three worked examples are answered ${answers.join(", ")}${cue ? ": the covert cue, every answer (A)" : ""}. The model replies: “${trace.join(" ")}” Meters below: plausibility high; faithfulness ${cue ? "low, since the reason never mentions the answer pattern that drove the choice" : "high"}.`}
+        label={`Patent drawing of a few-shot prompt and a model's reply. The three worked examples are answered ${answers.join(", ")}${cue ? ": the covert cue, every answer (A)" : ""}. The model replies: “${trace.join(" ")}” Meters below: plausibility high. Faithfulness ${cue ? "low, since the reason never mentions the answer pattern that drove the choice" : "high"}.`}
       >
         <PatentDefs id={id} />
         {/* worked examples */}
@@ -2099,7 +2099,7 @@ export function CoveredCue() {
 }
 
 /* --------------------------------------------------------------------------
-   20 · Auditing Reasoning Traces Alongside Observed Choices
+   20. Auditing Reasoning Traces Alongside Observed Choices
    -------------------------------------------------------------------------- */
 
 /**
@@ -2132,7 +2132,7 @@ export function VolumeObjective() {
       <Frame
         width={500}
         height={160}
-        label={`Chart from Wadi and Ma (2026b), Gemini 3.1 Pro buying ${v.bags} ${v.bags === 1 ? "bag" : "bags"} of coffee: ${Math.round(v.total * 100)} percent of reasoning traces state total-price minimization as the goal (red) and ${Math.round(v.unit * 100)} percent unit-price minimization; the agent acquired ${v.diag} of 6 diagnostic details; ${Math.round(v.opt * 100)} percent chose the unit-price optimal coffee.`}
+        label={`Chart from Wadi and Ma (2026b), Gemini 3.1 Pro buying ${v.bags} ${v.bags === 1 ? "bag" : "bags"} of coffee: ${Math.round(v.total * 100)} percent of reasoning traces state total-price minimization as the goal (red) and ${Math.round(v.unit * 100)} percent unit-price minimization. The agent acquired ${v.diag} of 6 diagnostic details. ${Math.round(v.opt * 100)} percent chose the unit-price optimal coffee.`}
       >
         <PatentDefs id={id} />
         {/* coded traces */}
@@ -2197,7 +2197,7 @@ export function VolumeObjective() {
 }
 
 /**
- * Wadi & Ma (2026c), Study 1, Gemini 3.1 Pro (Tables 5 and 6; 500 runs per
+ * Wadi & Ma (2026c), Study 1, Gemini 3.1 Pro (Tables 5 and 6, 500 runs per
  * cell): mean skepticism coded from the pre-choice reasoning trace (1 to 7)
  * and the share of runs booking the target hotel, by the principal named in
  * the system prompt and whether the hotel carries the sponsor tag.
@@ -2230,7 +2230,7 @@ export function PrincipalSkepticism() {
         label={`Chart from Wadi and Ma (2026c), Gemini 3.1 Pro, target hotel ${tag ? "tagged as sponsored" : "untagged"}. ${PRINCIPAL.map((p) => {
           const v = tag ? p.sponsored : p.organic;
           return `${p.key.toLowerCase()} as principal: skepticism coded from the reasoning trace ${v.skep.toFixed(2)} of 7, in red, and ${(v.booked * 100).toFixed(1)} percent of 500 runs booked the hotel`;
-        }).join("; ")}.`}
+        }).join(". ")}.`}
       >
         <PatentDefs id={id} />
         {/* the listing */}
@@ -2293,7 +2293,7 @@ export function PrincipalSkepticism() {
 }
 
 /* --------------------------------------------------------------------------
-   21 · Part 5: Designing Disclosures and Documentation for Stakeholders
+   21. Part 5: Designing Disclosures and Documentation for Stakeholders
    -------------------------------------------------------------------------- */
 
 /**
@@ -2361,7 +2361,7 @@ export function EvidenceBinder() {
     <Frame
       width={560}
       height={318}
-      label="Patent drawing in exploded view. Four sheets of technical evidence hang one above another along centre lines: an interpretable model's weighted beam, attribution bars, a counterfactual crossing a boundary, and an audit tally of ticks and one cross. Below them lies a documentation folder; from it one slim document, outlined in red, is handed to a person who must act on it."
+      label="Patent drawing in exploded view. Four sheets of technical evidence hang one above another along centre lines: an interpretable model's weighted beam, attribution bars, a counterfactual crossing a boundary, and an audit tally of ticks and one cross. Below them lies a documentation folder. From it one slim document, outlined in red, is handed to a person who must act on it."
     >
       <PatentDefs id={id} />
       {/* centre lines through the stack */}
@@ -2394,7 +2394,7 @@ export function EvidenceBinder() {
 }
 
 /* --------------------------------------------------------------------------
-   22 · Tailoring Explanations to Stakeholder Needs
+   22. Tailoring Explanations to Stakeholder Needs
    -------------------------------------------------------------------------- */
 
 /** A standing document: white front with a thin stippled edge, (x, y) its top-left. */
@@ -2509,7 +2509,7 @@ export function FourAudiences({ kind }: { kind: "engineer" | "executive" | "regu
 }
 
 /* --------------------------------------------------------------------------
-   23 · Model Cards, Datasheets, and System Transparency Notes
+   23. Model Cards, Datasheets, and System Transparency Notes
    -------------------------------------------------------------------------- */
 
 /** A chain of oval links from (x0, y) to (x1, y). */
@@ -2550,7 +2550,7 @@ export function ChainOfCustody() {
     <Frame
       width={800}
       height={170}
-      label="Patent drawing of three standing documents joined by red chains: a datasheet with a table of rows; a model card with rows and four bars of performance by group; and a system transparency note with rows and a dated audit stamp. The chains form the chain of custody."
+      label="Patent drawing of three standing documents joined by red chains: a datasheet with a table of rows. A model card with rows and four bars of performance by group. And a system transparency note with rows and a dated audit stamp. The chains form the chain of custody."
     >
       <PatentDefs id={id} />
       {docs.map((d, i) => (
@@ -2599,7 +2599,7 @@ export function ChainOfCustody() {
 }
 
 /* --------------------------------------------------------------------------
-   24 · Dark Transparency and Disclosure Overload
+   24. Dark Transparency and Disclosure Overload
    -------------------------------------------------------------------------- */
 
 /** Share of readers who get as far as page k: most stop after the first few pages. */
@@ -2608,7 +2608,7 @@ const reachPage = (k: number) => Math.exp(-(k - 1) / 4);
 /**
  * A disclosure as a stack of pages seen edge-on in oblique projection. The
  * page carrying the adverse error rate (red) sits about two-thirds of the
- * way down. The slider adds pages; the readout gives the share of readers who reach the red
+ * way down. The slider adds pages. The readout gives the share of readers who reach the red
  * page, which falls as the stack grows.
  */
 export function BuriedDisclosure() {
@@ -2629,7 +2629,7 @@ export function BuriedDisclosure() {
       <Frame
         width={560}
         height={300}
-        label={`Patent drawing of a disclosure of ${n} pages stacked in oblique projection, with the page carrying the adverse error rate, in red, at page ${red}. A reader stands beside the stack; ${pct} of readers reach the red page.`}
+        label={`Patent drawing of a disclosure of ${n} pages stacked in oblique projection, with the page carrying the adverse error rate, in red, at page ${red}. A reader stands beside the stack. ${pct} of readers reach the red page.`}
       >
         <PatentDefs id={id} />
         {/* page edges, bottom to top */}
@@ -2661,7 +2661,7 @@ export function BuriedDisclosure() {
           {`error rate, page ${red}`}
         </Num>
         <Num x={20} y={292} anchor="start" size={15}>
-          {`${n} pages · `}
+          {`${n} pages | `}
           <tspan fill={PAT.signal}>{`${pct} of readers reach page ${red}`}</tspan>
         </Num>
       </Frame>
@@ -2671,7 +2671,7 @@ export function BuriedDisclosure() {
 }
 
 /* --------------------------------------------------------------------------
-   25 · Discussion: When the Reasoning Trace Looks Clean
+   25. Discussion: When the Reasoning Trace Looks Clean
    -------------------------------------------------------------------------- */
 
 /**
@@ -2703,7 +2703,7 @@ export function CleanTrace() {
     <Frame
       width={400}
       height={330}
-      label="Patent drawing of an AI shopping assistant's pick. Two boxed products sit side by side with identical four-star ratings: the private-label box, at 24 dollars, is ticked and drawn in red; the third-party brand, at 19 dollars, is not. Above them, the open “Why I picked this product” panel praises the private-label product's build quality."
+      label="Patent drawing of an AI shopping assistant's pick. Two boxed products sit side by side with identical four-star ratings: the private-label box, at 24 dollars, is ticked and drawn in red. The third-party brand, at 19 dollars, is not. Above them, the open “Why I picked this product” panel praises the private-label product's build quality."
     >
       <PatentDefs id={id} />
       {/* the trace panel */}

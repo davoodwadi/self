@@ -14,7 +14,7 @@ const CURSOR = "M0 0V13L3.5 9.8L6 15L8 14L5.6 9H10Z";
 
 /**
  * A click: a solid ink cursor, tip at (x, y). `tone="amber"` marks the key
- * idea (amber with an ink outline); `tone="purple"` is the contrast case.
+ * idea (amber with an ink outline). `tone="purple"` is the contrast case.
  */
 export function Cursor({
   x,
@@ -118,7 +118,7 @@ export function Listing({
 
 /**
  * The AI shopping agent: a rounded console head with an antenna, two square
- * eyes and a halftone face, centred on (cx, cy); about 40 × 44 at s = 1.
+ * eyes and a halftone face, centred on (cx, cy). About 40 × 44 at s = 1.
  */
 export function Agent({ id, cx, cy, s = 1, tone = "ink" }: { id: string; cx: number; cy: number; s?: number; tone?: "ink" | "purple" }) {
   const c = tone === "purple" ? CAT.purple : CAT.ink;
@@ -246,7 +246,7 @@ export function Receipt({ x, y, w, h }: { x: number; y: number; w: number; h: nu
   );
 }
 
-/** A coin in a stack, edge-on; `amber` fills its face in the accent, with the ink outline kept. */
+/** A coin in a stack, edge-on. `amber` fills its face in the accent, with the ink outline kept. */
 export function AmberCoin({ id, cx, cy, amber = false }: { id: string; cx: number; cy: number; amber?: boolean }) {
   const rx = 22;
   const ry = 4.2;
@@ -317,7 +317,7 @@ export function Parcel({ id, x, y, w, h, tone = "ink" }: { id: string; x: number
   );
 }
 
-/** A stopwatch centred on (cx, cy); its hand sweeps t seconds of an 8-second dial. */
+/** A stopwatch centred on (cx, cy). Its hand sweeps t seconds of an 8-second dial. */
 export function Stopwatch({ cx, cy, r, t }: { cx: number; cy: number; r: number; t: number }) {
   const a = -Math.PI / 2 + (t / 8) * 2 * Math.PI;
   const sweep = t >= 8 ? "" : `M${cx} ${cy}L${cx} ${r2(cy - r + 2.5)}A${r - 2.5} ${r - 2.5} 0 ${t > 4 ? 1 : 0} 1 ${r2(cx + (r - 2.5) * Math.cos(a))} ${r2(cy + (r - 2.5) * Math.sin(a))}Z`;

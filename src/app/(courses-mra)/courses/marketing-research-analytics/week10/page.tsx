@@ -33,11 +33,11 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 10 — SEGMENTATION, POSITIONING, AND PREFERENCE ANALYSIS
+// WEEK 10: SEGMENTATION, POSITIONING, AND PREFERENCE ANALYSIS
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx; the interactive ones are built around one action
+// live in ./visuals.tsx. The interactive ones are built around one action
 // each: retain factors, place a brand, standardize, cut a tree, redraw a
 // sample, add attributes, widen a price range, reprice a rival, pick a text.
 //
@@ -74,7 +74,7 @@ export default function Week10() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 10 · Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 10: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[24ch]">
           Segmentation, Positioning, and <span className="text-[var(--signal)]">Preference Analysis</span>
         </Title>

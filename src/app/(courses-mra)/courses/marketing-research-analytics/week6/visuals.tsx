@@ -54,7 +54,7 @@ const MATRIX_COLS = [
  * Coding and the data matrix: respondent 3's questionnaire, with a rating
  * coded 1 to 5 and a multiple-response question whose options become three
  * 0/1 variables, entered as the third row of the matrix. Each row is a
- * respondent; each column is a variable.
+ * respondent. Each column is a variable.
  */
 export function CodedMatrix() {
   const fx = 10;
@@ -79,7 +79,7 @@ export function CodedMatrix() {
     <Frame
       width={560}
       height={252}
-      label="Respondent 3's questionnaire: a rating of 4 on a five-point scale, and a multiple-response question with Website and Store selected and App not selected. In the data matrix, row 3 reads ID 3, Q1 4, Q2_WEB 1, Q2_APP 0, Q2_STORE 1; each row is a respondent and each column a variable"
+      label="Respondent 3's questionnaire: a rating of 4 on a five-point scale, and a multiple-response question with Website and Store selected and App not selected. In the data matrix, row 3 reads ID 3, Q1 4, Q2_WEB 1, Q2_APP 0, Q2_STORE 1. Each row is a respondent and each column a variable"
     >
       {/* the questionnaire */}
       <rect x={fx} y={fy} width={fw} height={fh} fill={PAPER} stroke={INK} strokeWidth={1.25} />
@@ -144,7 +144,7 @@ export function CodedMatrix() {
    Data Cleaning
    -------------------------------------------------------------------------- */
 
-/** Satisfaction (1–5), used support (0/1), support rating (1–5), monthly spending. */
+/** Satisfaction (1 to 5), used support (0/1), support rating (1 to 5), monthly spending. */
 const CLEAN_ROWS = [
   [1, 4, 1, 4, 32],
   [2, 7, 1, 3, 18],
@@ -155,9 +155,9 @@ const CLEAN_ROWS = [
 ];
 const CLEAN_COLS = [
   { key: "ID", code: "", w: 70 },
-  { key: "SATISFACTION", code: "CODES 1\u20135", w: 150 },
-  { key: "USED SUPPORT", code: "0 NEVER \u00b7 1 YES", w: 160 },
-  { key: "SUPPORT RATING", code: "CODES 1\u20135", w: 160 },
+  { key: "SATISFACTION", code: "CODES 1 TO 5", w: 150 },
+  { key: "USED SUPPORT", code: "0 NEVER | 1 YES", w: 160 },
+  { key: "SUPPORT RATING", code: "CODES 1 TO 5", w: 160 },
   { key: "MONTHLY SPENDING", code: "DOLLARS", w: 170 },
 ];
 /** Flagged cells: [row, column]. */
@@ -169,8 +169,8 @@ const FLAGS = [
 
 /**
  * Data cleaning: six rows of a data matrix under their codebook entries.
- * A 7 where the codebook allows 1 to 5; a respondent who never used support
- * but rates it; and a monthly spending of 90,000 dollars among values in
+ * A 7 where the codebook allows 1 to 5. A respondent who never used support
+ * but rates it. And a monthly spending of 90,000 dollars among values in
  * the tens. Each error is marked in its row.
  */
 export function CleaningMatrix() {
@@ -188,7 +188,7 @@ export function CleaningMatrix() {
     <Frame
       width={1000}
       height={top + CLEAN_ROWS.length * rh + 10}
-      label="Six rows of a data matrix under the codebook's permitted codes. Respondent 2 has a satisfaction of 7 where the codes run from 1 to 5, an out-of-range value; respondent 4 reports never having used support but rates it 4, a logical inconsistency; respondent 5 reports monthly spending of 90,000 dollars while the others report 12 to 41, an extreme value"
+      label="Six rows of a data matrix under the codebook's permitted codes. Respondent 2 has a satisfaction of 7 where the codes run from 1 to 5, an out-of-range value. Respondent 4 reports never having used support but rates it 4, a logical inconsistency. Respondent 5 reports monthly spending of 90,000 dollars while the others report 12 to 41, an extreme value"
     >
       {CLEAN_COLS.map((c, j) => (
         <g key={c.key}>
@@ -242,7 +242,7 @@ export function CleaningMatrix() {
    Missing Values
    -------------------------------------------------------------------------- */
 
-/** Twenty respondents: income ($ thousands), age, satisfaction (1–5), visits; null = no answer. */
+/** Twenty respondents: income ($ thousands), age, satisfaction (1 to 5), visits. Null = no answer. */
 const SURVEY: (number | null)[][] = [
   [42, 31, 4, 6],
   [55, 45, 3, 4],
@@ -294,10 +294,10 @@ const describe = (v: number[]) => {
 /**
  * Missing values: twenty respondents, twelve blank cells. The student
  * chooses a treatment. Casewise deletion drops every row with a blank, so
- * each statistic rests on 9 respondents; pairwise deletion keeps a different
- * n in every column; mean substitution fills every blank in a column with
+ * each statistic rests on 9 respondents. Pairwise deletion keeps a different
+ * n in every column. Mean substitution fills every blank in a column with
  * one value, piling income at its mean and narrowing its standard
- * deviation; imputation fills each blank with its own estimate.
+ * deviation. Imputation fills each blank with its own estimate.
  */
 export function MissingTreatments() {
   const [t, setT] = useState<Treatment>("casewise");
@@ -436,8 +436,8 @@ const moe = (n: number) => 196 * Math.sqrt(0.25 / n);
 /**
  * Weighting: women are 51% of the population. The student sets their share
  * of a sample of 500. Twenty respondents stand for the sample, each drawn at
- * the height of its weight, so under-represented women grow and men shrink;
- * the margin of error, computed on the weighted sample, widens slowly near
+ * the height of its weight, so under-represented women grow and men shrink.
+ * The margin of error, computed on the weighted sample, widens slowly near
  * 51% and quickly as the sample drifts far from it.
  */
 export function WeightedSample() {
@@ -529,7 +529,7 @@ export function WeightedSample() {
    Frequency Distributions
    -------------------------------------------------------------------------- */
 
-/** Store visits in the past month by 200 customers; 10 did not answer. */
+/** Store visits in the past month by 200 customers. 10 did not answer. */
 const VISITS = [
   { v: 0, n: 14 },
   { v: 1, n: 38 },
@@ -655,14 +655,14 @@ export function FrequencyTable() {
 
 /** Monthly spending of seventeen ordinary customers, in dollars. */
 const REGULAR_SPEND = [12, 15, 18, 20, 22, 25, 28, 30, 32, 35, 35, 38, 40, 45, 50, 55, 60];
-/** Three heavy spenders; with them the mean is 80 and the median 35. */
+/** Three heavy spenders. With them the mean is 80 and the median 35. */
 const HEAVY_SPEND = [280, 340, 420];
 const SHIFT_MIN = -170;
 const SHIFT_MAX = 140;
 
 /**
  * Mean and median in a skewed distribution: twenty customers' monthly
- * spending. The student drags the three heavy spenders along the axis; the
+ * spending. The student drags the three heavy spenders along the axis. The
  * mean follows them, from about $55 to $101, while the median stays at $35,
  * among the customers who spend ordinary amounts.
  */
@@ -767,7 +767,7 @@ export function MeanMedian() {
    Measures of Dispersion
    -------------------------------------------------------------------------- */
 
-/** Twenty-four customers' ratings of each brand, as counts for 1–5. */
+/** Twenty-four customers' ratings of each brand, as counts for 1 to 5. */
 const BRAND_RATINGS = [
   { counts: [0, 0, 3, 18, 3], tone: SIGNAL },
   { counts: [3, 2, 1, 4, 14], tone: COUNTER },
@@ -775,7 +775,7 @@ const BRAND_RATINGS = [
 
 /**
  * Dispersion: twenty-four customers rate each of two brands. Both average
- * 4.0; the first brand's ratings sit almost all at 4, standard deviation
+ * 4.0. The first brand's ratings sit almost all at 4, standard deviation
  * 0.5, while the second's run from 1 to 5, standard deviation 1.5. The
  * bracket under each spans one standard deviation either side of the mean.
  */
@@ -792,7 +792,7 @@ export function TwoBrandsSpread() {
     <Frame
       width={560}
       height={292}
-      label={`Twenty-four customers rate two brands from 1 to 5. Both have a mean of 4.0. The first brand's ratings are almost all 4, with a standard deviation of ${panels[0].sd.toFixed(1)}; the second brand's run from 1 to 5, with a standard deviation of ${panels[1].sd.toFixed(1)}`}
+      label={`Twenty-four customers rate two brands from 1 to 5. Both have a mean of 4.0. The first brand's ratings are almost all 4, with a standard deviation of ${panels[0].sd.toFixed(1)}. The second brand's run from 1 to 5, with a standard deviation of ${panels[1].sd.toFixed(1)}`}
     >
       {panels.map((b, i) => (
         <g key={i}>
@@ -841,7 +841,7 @@ function describeCounts(counts: number[]) {
    Constructing a Cross-Tabulation
    -------------------------------------------------------------------------- */
 
-const AGES = ["18\u201334", "35\u201354", "55+"];
+const AGES = ["18 to 34", "35 to 54", "55+"];
 const CHANNELS = ["ONLINE", "IN-STORE", "MOBILE"];
 /** Respondents by age group (rows) and preferred channel (columns). */
 const CHANNEL_COUNTS = [
@@ -883,7 +883,7 @@ export function CrossTabDirection() {
       <Frame
         width={560}
         height={by + 56}
-        label={`Cross-tabulation of 600 respondents by age group and preferred shopping channel, with percentages calculated within each ${dir === "age" ? "age group" : "channel"}. ${AGES.map((a, i) => `${a}: ${CHANNELS.map((c, j) => `${c.toLowerCase()} ${Math.round(pct(i, j))}%`).join(", ")}`).join("; ")}`}
+        label={`Cross-tabulation of 600 respondents by age group and preferred shopping channel, with percentages calculated within each ${dir === "age" ? "age group" : "channel"}. ${AGES.map((a, i) => `${a}: ${CHANNELS.map((c, j) => `${c.toLowerCase()} ${Math.round(pct(i, j))}%`).join(", ")}`).join(". ")}`}
       >
         {CHANNELS.map((c, j) => (
           <Key key={c} x={r2(cellX(j) + cw / 2)} y={hy} anchor="middle" fill={INK} size={10}>{c}</Key>
@@ -936,7 +936,7 @@ export function CrossTabDirection() {
    Interpreting Cross-Tabulations
    -------------------------------------------------------------------------- */
 
-/** Twenty customers per group, by income; `high` of them are high spenders. */
+/** Twenty customers per group, by income. `high` of them are high spenders. */
 const APP_GROUPS = [
   { key: "APP USERS", strata: [{ n: 15, high: 9 }, { n: 5, high: 1 }] },
   { key: "OTHER CUSTOMERS", strata: [{ n: 5, high: 3 }, { n: 15, high: 3 }] },
@@ -1237,7 +1237,7 @@ function HistogramThumb() {
   );
 }
 
-/** Twelve regions: advertising expenditure and sales, on 0–1 scales. */
+/** Twelve regions: advertising expenditure and sales, on 0 to 1 scales. */
 const REGION_AD_SALES = [
   [0.08, 0.16], [0.14, 0.3], [0.2, 0.22], [0.27, 0.38], [0.33, 0.33], [0.4, 0.5],
   [0.47, 0.44], [0.55, 0.6], [0.62, 0.55], [0.7, 0.72], [0.8, 0.7], [0.9, 0.86],
@@ -1344,8 +1344,8 @@ const BASE_MAX = 3.8;
 /**
  * A truncated value axis: satisfaction scores of 3.9, 4.0 and 4.3. A ruler
  * from 0 to 5 beside the chart shows the part of the scale the chart
- * displays; the student drags its lower edge up. From zero the bars differ
- * by a tenth; from 3.8, bar C is five times as long as bar A, although its
+ * displays. The student drags its lower edge up. From zero the bars differ
+ * by a tenth. From 3.8, bar C is five times as long as bar A, although its
  * score is only 1.1 times as high.
  */
 export function TruncatedAxis() {
@@ -1452,16 +1452,16 @@ export function TruncatedAxis() {
 const AD_SPEND = [20, 20.5, 21, 21.2, 21.8, 22, 22.5, 22.9, 23.2, 23.6, 23.8, 24.2];
 const SITE_VISITS = [50.1, 50.0, 50.3, 50.2, 50.5, 50.4, 50.7, 50.6, 50.9, 51.0, 50.9, 51.2];
 const RIGHT_AXES = [
-  { id: "wide", label: "0\u2013100", lo: 0, hi: 100, ticks: [0, 50, 100] },
-  { id: "mid", label: "45\u201355", lo: 45, hi: 55, ticks: [45, 50, 55] },
-  { id: "tight", label: "49\u201351.5", lo: 49, hi: 51.5, ticks: [49, 50, 51] },
+  { id: "wide", label: "0 to 100", lo: 0, hi: 100, ticks: [0, 50, 100] },
+  { id: "mid", label: "45 to 55", lo: 45, hi: 55, ticks: [45, 50, 55] },
+  { id: "tight", label: "49 to 51.5", lo: 49, hi: 51.5, ticks: [49, 50, 51] },
 ] as const;
 type RightAxis = (typeof RIGHT_AXES)[number]["id"];
 
 /**
  * Two value axes: advertising spending rises by a fifth over a year while
  * website visits rise by 2%. The student rescales the right axis. From 0 to
- * 100 thousand, visits are flat; from 49 to 51.5 thousand, the visits line
+ * 100 thousand, visits are flat. From 49 to 51.5 thousand, the visits line
  * climbs alongside spending and suggests that one drives the other, from
  * the same data.
  */
@@ -1540,7 +1540,7 @@ export function TwoChartsOneDataset() {
     <Frame
       width={800}
       height={190}
-      label="The same satisfaction scores for four regions, North 4.2, East 4.0, South 3.9 and West 4.1, charted twice: on an axis from zero to five the bars look nearly equal; on an axis from 3.5 to 4.5 North's bar looks almost twice as long as South's"
+      label="The same satisfaction scores for four regions, North 4.2, East 4.0, South 3.9 and West 4.1, charted twice: on an axis from zero to five the bars look nearly equal. On an axis from 3.5 to 4.5 North's bar looks almost twice as long as South's"
     >
       {panels.map((p) => {
         const Y = (v: number) => r2(y0 - ((v - p.lo) / (p.hi - p.lo)) * (y0 - y1));
@@ -1574,7 +1574,7 @@ export function TwoChartsOneDataset() {
    Sources of Error in AI-Assisted Analysis
    -------------------------------------------------------------------------- */
 
-/** Twenty respondents per region: ratings 1–5, and how many were coded 99 for no answer. */
+/** Twenty respondents per region: ratings 1 to 5, and how many were coded 99 for no answer. */
 const REGION_ANSWERS = [
   { r: "North", valid: 20, sum: 82, missing: 0 },
   { r: "East", valid: 18, sum: 64.8, missing: 2 },
@@ -1667,7 +1667,7 @@ function entropy(pmf: number[]) {
 /**
  * Two models' responses to the same seven-point item: one splits between two
  * adjacent points, the other between the two extremes. Entropy is the same
- * for both; the ordinal consensus separates them.
+ * for both. The ordinal consensus separates them.
  */
 export function ConsensusVersusEntropy() {
   const rows = [
@@ -1684,7 +1684,7 @@ export function ConsensusVersusEntropy() {
     <Frame
       width={400}
       height={234}
-      label={`Responses of two models to the same seven-point item. Model A splits its responses equally between 4 and 5; model B splits them equally between 1 and 7. Entropy is ${entropy(rows[0].pmf).toFixed(2)} bits for both, while consensus is ${consensus(rows[0].pmf).toFixed(2)} for model A and ${consensus(rows[1].pmf).toFixed(2)} for model B`}
+      label={`Responses of two models to the same seven-point item. Model A splits its responses equally between 4 and 5. Model B splits them equally between 1 and 7. Entropy is ${entropy(rows[0].pmf).toFixed(2)} bits for both, while consensus is ${consensus(rows[0].pmf).toFixed(2)} for model A and ${consensus(rows[1].pmf).toFixed(2)} for model B`}
     >
       {rows.map((r) => (
         <g key={r.key}>

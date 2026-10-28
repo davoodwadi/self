@@ -15,9 +15,9 @@ import exercisesData from "./exercises.json";
 import * as V from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR · WEEK 08 — BEHAVIORAL ECONOMICS, HEURISTICS, AND BIASES
+// CONSUMER BEHAVIOR | WEEK 08: BEHAVIORAL ECONOMICS, HEURISTICS, AND BIASES
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx, drawn in the course's Editorial Sketch style (see
 // ../CLAUDE.md). The week's fixed cast: the shopper (one Person look), the AI
@@ -27,10 +27,10 @@ import * as V from "./visuals";
 // phrase, its key idea. Defined terms are bold ink, and every rule is ink.
 //
 // Interactive plates (students act on the drawing itself, all on real data):
-//   · Anchoring: drag the last two digits of a social security number and
+//   - Anchoring: drag the last two digits of a social security number and
 //     watch what the class would pay for a keyboard (Ariely et al., 2003).
-//   · Loss aversion: add found money until it balances a lost $20.
-//   · Storefront design: switch the agent's goal and the cost of a look-up
+//   - Loss aversion: add found money until it balances a lost $20.
+//   - Storefront design: switch the agent's goal and the cost of a look-up
 //     and see how often agents chose the better coffee (Wadi & Ma, 2026b).
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
@@ -149,7 +149,7 @@ function Ruled({
 /**
  * A plate that lives in a column: a figure well without the 680px floor. A
  * `wide` (800-unit) plate keeps a legible minimum width on phones and scrolls
- * inside its well there, like `Figure`; from lg up the column is wide enough.
+ * inside its well there, like `Figure`. From lg up the column is wide enough.
  */
 function Plate({
   children,
@@ -299,7 +299,7 @@ export default function Week8() {
               Week 08
             </p>
             <p className="type-caption mt-2">
-              Consumer Behavior · Davood Wadi, PhD
+              Consumer Behavior | Davood Wadi, PhD
             </p>
             <Title className="mt-6 !max-w-[18ch]">
               Behavioral Economics, Heuristics, and Biases
@@ -323,7 +323,7 @@ export default function Week8() {
       <Slide className={TIGHT} id="beyond-the-rational-consumer" border>
         <Heading>Beyond the Rational Consumer</Heading>
         {/* The same shelf twice: the rational model looks at every jar and
-            buys the best; the satisficer stops at the first good enough. */}
+            buys the best. The satisficer stops at the first good enough. */}
         <div className="grid w-full gap-8 lg:grid-cols-2 lg:gap-12">
           <div className="flex min-w-0 flex-col gap-3">
             <Ruled tone="ink" className="!pt-3">
@@ -535,7 +535,7 @@ export default function Week8() {
         <Heading className="!max-w-none !text-[clamp(1.9rem,3.1vw,2.9rem)]">
           Loss Aversion and the Endowment Effect
         </Heading>
-        {/* Prospect theory and its balance on the left two thirds; the
+        {/* Prospect theory and its balance on the left two thirds. The
             endowment effect and the free trial on the right. */}
         <div className="grid w-full gap-8 lg:grid-cols-[0.9fr_1fr_1fr] lg:gap-8">
           <div className="flex min-w-0 flex-col gap-4">
@@ -644,7 +644,7 @@ export default function Week8() {
           Just-Below Prices and Discount Frames
         </Heading>
         <div className="grid w-full gap-8 lg:grid-cols-[1.25fr_1fr] lg:gap-12">
-          {/* The text runs around the tag's outline, magazine style; on
+          {/* The text runs around the tag's outline, magazine style. On
               phones the tag follows the first sentence. */}
           <div className="min-w-0">
             <Ruled tone="ink" className="!pt-3">

@@ -78,13 +78,13 @@ function NameLines({ x, y, w, gap = 5 }: { x: number; y: number; w: number; gap?
 }
 
 /* --------------------------------------------------------------------------
-   02 · Search as the Engine of Commercial Intent
+   02. Search as the Engine of Commercial Intent
    -------------------------------------------------------------------------- */
 
 /**
  * Two moments. Left: a shopper watching a feed on a phone, with a sneaker
  * ad wedged between the video and the news. Right: the same shopper types
- * a query and the results page answers it with matching sneakers; the
+ * a query and the results page answers it with matching sneakers. The
  * search button, the act the user starts, is amber.
  */
 export function FeedVsQuery() {
@@ -93,7 +93,7 @@ export function FeedVsQuery() {
     <Frame
       width={560}
       height={262}
-      label="Left: a shopper watches a video feed on a phone and a sponsored sneaker ad is pushed in between the video and the news. Right: the same shopper types the query trail running shoes size 9 and presses search, shown in amber; the results page shows two matching trail shoes at $129 and $139."
+      label="Left: a shopper watches a video feed on a phone and a sponsored sneaker ad is pushed in between the video and the news. Right: the same shopper types the query trail running shoes size 9 and presses search, shown in amber. The results page shows two matching trail shoes at $129 and $139."
     >
       <HalftoneDefs id={id} />
       {/* Left: the feed, interrupted */}
@@ -144,7 +144,7 @@ export function FeedVsQuery() {
 }
 
 /* --------------------------------------------------------------------------
-   03 · Classifying Search Queries by Intent
+   03. Classifying Search Queries by Intent
    -------------------------------------------------------------------------- */
 
 const INTENTS: { key: string; q: [string, string]; cpc: string; coins: number }[] = [
@@ -169,7 +169,7 @@ export function IntentLadder() {
     <Frame
       width={800}
       height={240}
-      label={`Four search queries in funnel order, each with the page it lands on and a coin stack for the cost of one click: ${INTENTS.map((t) => `${t.key.toLowerCase()} query "${t.q.join(" ")}", ${t.cpc} per click`).join("; ")}. Informational lands on a how-to article, navigational on the brand's own shop, commercial investigation on a comparison table, transactional on a product with a cart. The transactional coin stack is amber.`}
+      label={`Four search queries in funnel order, each with the page it lands on and a coin stack for the cost of one click: ${INTENTS.map((t) => `${t.key.toLowerCase()} query "${t.q.join(" ")}", ${t.cpc} per click`).join(". ")}. Informational lands on a how-to article, navigational on the brand's own shop, commercial investigation on a comparison table, transactional on a product with a cart. The transactional coin stack is amber.`}
     >
       <HalftoneDefs id={id} />
       {INTENTS.map((t, k) => {
@@ -270,7 +270,7 @@ export function IntentLadder() {
 }
 
 /* --------------------------------------------------------------------------
-   04 · Part 1: How Search Engines Crawl, Index, and Rank
+   04. Part 1: How Search Engines Crawl, Index, and Rank
    -------------------------------------------------------------------------- */
 
 /** An engraved gooseneck kettle centred on (cx, cy): halftone body, dense side, white lid, long spout. About 50 × 34 at s = 1. */
@@ -316,7 +316,7 @@ export function OvernightDrop() {
         label={
           shipped
             ? "Tuesday, after a site update with a noindex tag: the results page for gooseneck kettle no longer shows the brand's $149 kettle. The other kettles moved up, and the brand gets no clicks."
-            : "Monday: the results page for gooseneck kettle shows five kettles; the brand's $149 kettle ranks second and takes six clicks, drawn as amber cursors."
+            : "Monday: the results page for gooseneck kettle shows five kettles. The brand's $149 kettle ranks second and takes six clicks, drawn as amber cursors."
         }
       >
         <HalftoneDefs id={id} />
@@ -355,7 +355,7 @@ export function OvernightDrop() {
 }
 
 /* --------------------------------------------------------------------------
-   05 · Crawling, Indexing, and Ranking Pipelines
+   05. Crawling, Indexing, and Ranking Pipelines
    -------------------------------------------------------------------------- */
 
 /** The kettle's product page as a small document at (x, y), 46 × 58: amber kettle and five stars for its quality. */
@@ -398,7 +398,7 @@ const FAULT_CODE: Record<Fault, { stage: 1 | 2; code: string }> = {
 /**
  * The three stages as three stations: a spider fetching linked pages, a
  * card-index cabinet, and the ranked list. Under the first two sits the
- * slot the five-star kettle page reaches; the list's top row is its third.
+ * slot the five-star kettle page reaches. The list's top row is its third.
  * Each fault stops the page at its stage, with the offending line printed
  * on the stop bar, and every slot after it stays empty.
  */
@@ -423,7 +423,7 @@ export function CrawlPipeline() {
         }
       >
         <HalftoneDefs id={id} />
-        {["1 · CRAWL", "2 · RENDER + INDEX", "3 · RANK"].map((k, i) => (
+        {["1. CRAWL", "2. RENDER + INDEX", "3. RANK"].map((k, i) => (
           <CatKey key={k} x={cx[i]} y={16} size={10} anchor="middle">
             {k}
           </CatKey>
@@ -514,12 +514,12 @@ export function CrawlPipeline() {
 }
 
 /* --------------------------------------------------------------------------
-   06 · Lexical Matching, Semantic Embeddings, and Authority Signals
+   06. Lexical Matching, Semantic Embeddings, and Authority Signals
    -------------------------------------------------------------------------- */
 
 type Signal = "lexical" | "semantic" | "authority" | "pogo";
 
-/** Five result titles for "waterproof rain jacket"; bold parts repeat the query's exact words. */
+/** Five result titles for "waterproof rain jacket". Bold parts repeat the query's exact words. */
 const DOCS: { id: string; title: [string, boolean][]; links: number; pogo: boolean }[] = [
   { id: "A", title: [["Waterproof Rain Jacket", true], [" | ", false], ["Waterproof Rain Jacket", true], [" Sale", false]], links: 1, pogo: true },
   { id: "B", title: [["Storm shell, fully seam-taped, 20,000 mm", false]], links: 4, pogo: false },
@@ -537,10 +537,10 @@ const SIGNALS: Signal[] = ["lexical", "semantic", "authority", "pogo"];
 
 /**
  * One query, five pages, re-ranked as each family of signals is switched
- * on. Lexical scoring rewards the page that repeats the exact words (bold);
- * embeddings lift the storm shell (amber), which matches the meaning with
- * none of the words; the link column breaks ties for the magazine test;
- * and the stuffed page, whose visitors bounce straight back, falls last.
+ * on. Lexical scoring rewards the page that repeats the exact words (bold).
+ * Embeddings lift the storm shell (amber), which matches the meaning with
+ * none of the words. The link column breaks ties for the magazine test.
+ * And the stuffed page, whose visitors bounce straight back, falls last.
  */
 export function RankSignals() {
   const [sig, setSig] = useState<Signal>("lexical");
@@ -555,7 +555,7 @@ export function RankSignals() {
         height={290}
         label={`Results for waterproof rain jacket ranked by ${["lexical matching only", "lexical plus semantic embeddings", "lexical, semantic and link authority", "all signals including pogo-sticking"][level]}: ${order
           .map((d, i) => `${i + 1}. ${DOCS.find((x) => x.id === d)!.title.map((t) => t[0]).join("")}`)
-          .join("; ")}. The storm shell page, which shares the meaning but not the words of the query, is amber.`}
+          .join(". ")}. The storm shell page, which shares the meaning but not the words of the query, is amber.`}
       >
         <HalftoneDefs id={id} />
         <SearchBar x={14} y={8} w={300} text="waterproof rain jacket" size={13} go="ink" />
@@ -627,7 +627,7 @@ export function RankSignals() {
 }
 
 /* --------------------------------------------------------------------------
-   07 · Part 2: Search Engine Optimization (SEO) Strategy
+   07. Part 2: Search Engine Optimization (SEO) Strategy
    -------------------------------------------------------------------------- */
 
 const ORGANIC = [0, 0, 0, 1, 1, 2, 2, 3, 4, 5, 6, 7];
@@ -636,7 +636,7 @@ const ORGANIC = [0, 0, 0, 1, 1, 2, 2, 3, 4, 5, 6, 7];
  * A year of clicks, month by month, one cursor per thousand. Upper row:
  * paid clicks, four a month, each month bought with a coin. Lower row:
  * organic clicks (amber), nothing for three months and then climbing, at
- * no cost per click. Stop paying and the paid row ends that month; the
+ * no cost per click. Stop paying and the paid row ends that month. The
  * organic row keeps growing.
  */
 export function CompoundingClicks() {
@@ -695,7 +695,7 @@ export function CompoundingClicks() {
 }
 
 /* --------------------------------------------------------------------------
-   08 · On-Page, Technical, and Off-Page SEO
+   08. On-Page, Technical, and Off-Page SEO
    -------------------------------------------------------------------------- */
 
 /** A folded newspaper at (x, y), 44 × 34: masthead bar, a halftone photo and columns of copy. */
@@ -729,9 +729,9 @@ type Lever = "on" | "tech" | "off" | "black";
 /**
  * One kettle page and where it ranks. Left: the results ladder, positions
  * 1 to 10, with the page's listing in amber. Right: the page itself. On-page
- * work prints its title tag, headings and internal links; technical work
- * turns the slow stopwatch fast, shuts the HTTPS lock and adds a sitemap;
- * off-page work brings three newspapers linking in. Each lifts the listing.
+ * work prints its title tag, headings and internal links. Technical work
+ * turns the slow stopwatch fast, shuts the HTTPS lock and adds a sitemap.
+ * Off-page work brings three newspapers linking in. Each lifts the listing.
  * A link farm on the right gets the page de-indexed: its listing leaves the
  * ladder.
  */
@@ -857,7 +857,7 @@ export function SeoLevers() {
 }
 
 /* --------------------------------------------------------------------------
-   09 · The Long Tail of E-Commerce Search
+   09. The Long Tail of E-Commerce Search
    -------------------------------------------------------------------------- */
 
 const TAIL_N = 80;
@@ -949,7 +949,7 @@ export function LongTail() {
 }
 
 /* --------------------------------------------------------------------------
-   10 · Part 3: Paid Search (SEM) and Auction Mechanics
+   10. Part 3: Paid Search (SEM) and Auction Mechanics
    -------------------------------------------------------------------------- */
 
 /** A hang-tag price tag pointing left, its hole at (x, y): the bid an advertiser offers per click. */
@@ -968,7 +968,7 @@ function BidTag({ x, y, bid, amber = false }: { x: number; y: number; bid: strin
 /**
  * The paid slots above the results for "trail running shoes", each with its
  * advertiser's bid per click on a hang-tag. The top slot carries the lowest
- * bid ($2.50, amber); the highest bid ($4.00) sits in the third slot.
+ * bid ($2.50, amber). The highest bid ($4.00) sits in the third slot.
  */
 export function HighBidLoses() {
   const id = "w3-highbid";
@@ -981,7 +981,7 @@ export function HighBidLoses() {
     <Frame
       width={800}
       height={214}
-      label="The three paid slots for the query trail running shoes, each with its advertiser's bid per click on a hang-tag: slot 1, a trail shoe ad with eight clicks, bid $2.50, in amber; slot 2, a kettle ad with three clicks, bid $3.00; slot 3, a mug ad with one click, bid $4.00. The highest bid does not take the top slot."
+      label="The three paid slots for the query trail running shoes, each with its advertiser's bid per click on a hang-tag: slot 1, a trail shoe ad with eight clicks, bid $2.50, in amber. Slot 2, a kettle ad with three clicks, bid $3.00. Slot 3, a mug ad with one click, bid $4.00. The highest bid does not take the top slot."
     >
       <HalftoneDefs id={id} />
       <SearchBar x={16} y={8} w={330} text="trail running shoes" size={13} go="ink" />
@@ -1020,7 +1020,7 @@ export function HighBidLoses() {
 }
 
 /* --------------------------------------------------------------------------
-   11 · Generalized Second-Price Auctions and Quality Score
+   11. Generalized Second-Price Auctions and Quality Score
    -------------------------------------------------------------------------- */
 
 const RIVALS = [
@@ -1056,7 +1056,7 @@ export function AuctionDesk() {
         height={238}
         label={`Ad auction for gooseneck kettle. ${all
           .map((a, i) => `${i < 3 ? `Slot ${i + 1}` : "No slot"}: ${a.id === "you" ? "your kettle (amber)" : "a rival kettle"}, bid ${money(a.bid)}, Quality Score ${a.qs}, Ad Rank ${a.rank.toFixed(1)}${i < 3 ? `, pays ${money(all[i + 1].rank / a.qs + 0.01)} per click` : ""}`)
-          .join("; ")}.`}
+          .join(". ")}.`}
       >
         <HalftoneDefs id={id} />
         <CatKey x={22} y={16} size={9.5}>SLOT</CatKey>
@@ -1116,7 +1116,7 @@ export function AuctionDesk() {
 }
 
 /* --------------------------------------------------------------------------
-   12 · Keyword Match Types, Negative Keywords, and Automated Bidding
+   12. Keyword Match Types, Negative Keywords, and Automated Bidding
    -------------------------------------------------------------------------- */
 
 type Match = "exact" | "phrase" | "broad";
@@ -1137,9 +1137,9 @@ const SEARCHES: { q: string; needs: Match; neg?: Negative; order: boolean }[] = 
 
 /**
  * One keyword, eight searches. Each search the ad shows on costs a click
- * (a coin); clicks that end in an order earn a parcel, and clicks that never
+ * (a coin). Clicks that end in an order earn a parcel, and clicks that never
  * could are amber coins, the wasted spend. Loosen the match type and the ad
- * reaches more searches; add negative keywords and the unprofitable ones are
+ * reaches more searches. Add negative keywords and the unprofitable ones are
  * struck out.
  */
 export function MatchTypes() {
@@ -1158,7 +1158,7 @@ export function MatchTypes() {
         height={318}
         label={`Keyword ${KEYWORD_AS[match]} as ${match} match${negs.length ? `, with negative keywords ${negs.join(", ")}` : ""}. The ad shows on ${clicks} of 8 searches: ${SEARCHES.filter((_, i) => shown[i])
           .map((q) => q.q)
-          .join("; ")}. ${orders} clicks lead to orders and ${wasted} are wasted spend, drawn as amber coins.`}
+          .join(". ")}. ${orders} clicks lead to orders and ${wasted} are wasted spend, drawn as amber coins.`}
       >
         <HalftoneDefs id={id} />
         <CatKey x={10} y={23} size={10.5}>
@@ -1234,7 +1234,7 @@ export function MatchTypes() {
 }
 
 /* --------------------------------------------------------------------------
-   13 · Part 4: Search Cannibalization and Incrementality
+   13. Part 4: Search Cannibalization and Incrementality
    -------------------------------------------------------------------------- */
 
 /**
@@ -1293,7 +1293,7 @@ export function SameShopTwice() {
 }
 
 /* --------------------------------------------------------------------------
-   14 · Branded Keywords, Cannibalization, and Competitive Conquesting
+   14. Branded Keywords, Cannibalization, and Competitive Conquesting
    -------------------------------------------------------------------------- */
 
 type Rivals = "none" | "conquest";
@@ -1348,7 +1348,7 @@ export function PauseBrandAds() {
         label={
           paused
             ? `Brand ad paused${rivals === "conquest" ? ", with a rival advertising on the brand's name" : ", with no rival ads"}, and the brand's organic link ${organic === "top" ? "at the top" : "pushed below the fold"}. Of 20 former ad clicks, ${after.organic} go to the brand's organic link (amber), ${after.rival} to the rival's ad (purple) and ${after.lost} leave the page. The ad added ${added} of 20 clicks.`
-            : `The brand's own ad runs on the query patagonia fleece and takes 20 clicks${rivals === "conquest" ? ", above a rival's ad on the same name" : ""}; the brand's organic link is ${organic === "top" ? "right below" : "below the fold"}.`
+            : `The brand's own ad runs on the query patagonia fleece and takes 20 clicks${rivals === "conquest" ? ", above a rival's ad on the same name" : ""}. The brand's organic link is ${organic === "top" ? "right below" : "below the fold"}.`
         }
       >
         <HalftoneDefs id={id} />
@@ -1441,7 +1441,7 @@ export function PauseBrandAds() {
 }
 
 /* --------------------------------------------------------------------------
-   15 · Discussion: Auditing a High-ROAS Search Agency Report
+   15. Discussion: Auditing a High-ROAS Search Agency Report
    -------------------------------------------------------------------------- */
 
 /** A hard-shell suitcase centred on (cx, cy): halftone shell with ribs, dense side, handle and wheels. */
@@ -1473,7 +1473,7 @@ export function AgencyReport() {
     <Frame
       width={400}
       height={300}
-      label="A printed agency report for a luggage brand after sixty days: return on ad spend 900 percent, printed large. Below, the search term report: of the budget, 85 percent was spent on exact-match searches for the brand's own name, drawn as 17 amber coins of 20; the other 15 percent, 3 coins, went to all other searches."
+      label="A printed agency report for a luggage brand after sixty days: return on ad spend 900 percent, printed large. Below, the search term report: of the budget, 85 percent was spent on exact-match searches for the brand's own name, drawn as 17 amber coins of 20. The other 15 percent, 3 coins, went to all other searches."
     >
       <HalftoneDefs id={id} />
       <rect x={30} y={8} width={340} height={284} fill={CAT.tile} {...ink} />
@@ -1490,7 +1490,7 @@ export function AgencyReport() {
       </Price>
       <line x1={46} y1={142} x2={354} y2={142} {...hair} />
       <CatKey x={46} y={164} size={10.5}>
-        SEARCH TERMS · SHARE OF BUDGET
+        SEARCH TERMS | SHARE OF BUDGET
       </CatKey>
       {Array.from({ length: 20 }, (_, k) => (
         <g key={k}>
@@ -1516,7 +1516,7 @@ export function AgencyReport() {
 }
 
 /* --------------------------------------------------------------------------
-   16 · Part 5: From Search Engines to AI Answer Engines
+   16. Part 5: From Search Engines to AI Answer Engines
    -------------------------------------------------------------------------- */
 
 /** A web page at (x, y), 52 × 64: a kettle photo and lines of copy. */
@@ -1631,7 +1631,7 @@ export function WhoReads() {
 }
 
 /* --------------------------------------------------------------------------
-   17 · Generative Engine Optimization (GEO) and the AI Shortlist
+   17. Generative Engine Optimization (GEO) and the AI Shortlist
    -------------------------------------------------------------------------- */
 
 type Evidence = "numbers" | "table" | "citations" | "schema";
@@ -1645,7 +1645,7 @@ const SERP_CLICKS = [28, 15, 10, 7, 5, 4, 3, 2];
  * vague superlatives until evidence is added (figures, a comparison table,
  * third-party citations, JSON-LD). Middle: eight candidate pages by
  * retrieval rank, the brand's in amber. Right: what that rank earns. On
- * ten blue links even fifth place gets a trickle of clicks; the AI answer
+ * ten blue links even fifth place gets a trickle of clicks. The AI answer
  * names only three kettles, so the brand is in the answer or out of it.
  */
 export function ShortlistEvidence() {
@@ -1661,7 +1661,7 @@ export function ShortlistEvidence() {
       <Frame
         width={560}
         height={262}
-        label={`The brand's kettle page ${ev.length ? `carries ${ev.map((e) => ({ numbers: "verifiable figures", table: "a comparison table", citations: "third-party citations", schema: "Schema.org JSON-LD" })[e]).join(", ")}` : "carries only vague superlatives"} and ranks ${rank} of 8 in retrieval. On ten blue links it earns ${clicks} clicks per 100 searches; the AI answer cites three kettles and ${inAnswer ? `includes the brand at number ${rank}` : "leaves the brand out"}.`}
+        label={`The brand's kettle page ${ev.length ? `carries ${ev.map((e) => ({ numbers: "verifiable figures", table: "a comparison table", citations: "third-party citations", schema: "Schema.org JSON-LD" })[e]).join(", ")}` : "carries only vague superlatives"} and ranks ${rank} of 8 in retrieval. On ten blue links it earns ${clicks} clicks per 100 searches. The AI answer cites three kettles and ${inAnswer ? `includes the brand at number ${rank}` : "leaves the brand out"}.`}
       >
         <HalftoneDefs id={id} />
         {/* the page */}
@@ -1676,7 +1676,7 @@ export function ShortlistEvidence() {
         ) : null}
         {has("numbers") ? (
           <text x={px + 12} y={88} fontFamily="ui-monospace, monospace" fontSize={11} fill={CAT.ink}>
-            <tspan x={px + 12}>1.0 L · 1,200 W</tspan>
+            <tspan x={px + 12}>1.0 L | 1,200 W</tspan>
             <tspan x={px + 12} dy={13}>boils in 3 min</tspan>
           </text>
         ) : null}
@@ -1807,7 +1807,7 @@ export function SponsoredInAnswer() {
       <Frame
         width={400}
         height={332}
-        label={`An AI agent's answer recommends three hotels; the second, in amber, is a paid insertion labelled ${label}. Share of 500 bookings that went to the paid hotel (Wadi & Ma, 2026c, Study 2): ${share.traveler}% for an agent told it serves the traveler and ${share.platform}% for an agent told it serves the platform, shown as amber squares out of 100.`}
+        label={`An AI agent's answer recommends three hotels. The second, in amber, is a paid insertion labelled ${label}. Share of 500 bookings that went to the paid hotel (Wadi & Ma, 2026c, Study 2): ${share.traveler}% for an agent told it serves the traveler and ${share.platform}% for an agent told it serves the platform, shown as amber squares out of 100.`}
       >
         <HalftoneDefs id={id} />
         <rect x={10} y={8} width={380} height={112} fill={CAT.tile} {...ink} />
@@ -1877,7 +1877,7 @@ export function SponsoredInAnswer() {
 }
 
 /* --------------------------------------------------------------------------
-   18 · Discussion: Winning the Conversational Shortlist
+   18. Discussion: Winning the Conversational Shortlist
    -------------------------------------------------------------------------- */
 
 /**

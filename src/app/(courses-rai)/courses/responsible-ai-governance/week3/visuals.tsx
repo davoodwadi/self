@@ -10,7 +10,7 @@ import { Coins, Figure, Gear, Sheet, SmallModel, Tag, cross, headAlongPath, star
    Each plate is drawn as an invention on file: ink outlines at three weights,
    stipple tone, oblique projection (depth up and to the right), figure names
    in Caslon italic and one examiner's red for the finding. The week's cast:
-   the model is a housing with two weight gears (as in Week 1); the cultural
+   the model is a housing with two weight gears (as in Week 1). The cultural
    default it carries is a knife-and-fork place setting. See the course
    CLAUDE.md.
    ========================================================================== */
@@ -55,7 +55,7 @@ function Chopsticks({ cx, cy, s = 1, stroke = PAT.ink }: { cx: number; cy: numbe
 }
 
 /* --------------------------------------------------------------------------
-   02 · Culture Inside Foundation Models
+   02. Culture Inside Foundation Models
    -------------------------------------------------------------------------- */
 
 /**
@@ -77,7 +77,7 @@ export function DefaultProjector() {
     <Frame
       width={560}
       height={290}
-      label="Patent drawing: the model, a housing with two weight gears, carries one knife-and-fork place setting drawn in red on its front face. Through a lens on its side it projects that same setting onto three screens, one each in Japan, India and Ethiopia; every screen shows a knife-and-fork dinner."
+      label="Patent drawing: the model, a housing with two weight gears, carries one knife-and-fork place setting drawn in red on its front face. Through a lens on its side it projects that same setting onto three screens, one each in Japan, India and Ethiopia. Every screen shows a knife-and-fork dinner."
     >
       <PatentDefs id={id} />
       {/* beams: a cone from the lens to each screen */}
@@ -115,12 +115,12 @@ export function DefaultProjector() {
    -------------------------------------------------------------------------- */
 
 /* --------------------------------------------------------------------------
-   03 · Why Cultural Alignment Matters for Global Marketing
+   03. Why Cultural Alignment Matters for Global Marketing
    -------------------------------------------------------------------------- */
 
 /**
  * A campaign poster standing upright: (x, y) is its front face's top-left.
- * "hero" shows one figure celebrating alone (an individualist appeal);
+ * "hero" shows one figure celebrating alone (an individualist appeal).
  * "family" shows a family together (a collectivist one).
  */
 function Poster({ id, x, y, kind, red = false, w = 58, h = 74 }: { id: string; x: number; y: number; kind: "hero" | "family"; red?: boolean; w?: number; h?: number }) {
@@ -149,7 +149,7 @@ function Poster({ id, x, y, kind, red = false, w = 58, h = 74 }: { id: string; x
  * master poster copied to all three. Local adaptation: a local team in each
  * market makes its own (the second and third markets show families). The
  * delegated model: the model sends its one default poster, a lone figure
- * celebrating, to all three; in the two family markets it is red.
+ * celebrating, to all three. In the two family markets it is red.
  */
 export function DelegatedAdaptation() {
   const id = "w3-deleg";
@@ -169,7 +169,7 @@ export function DelegatedAdaptation() {
     <Frame
       width={800}
       height={236}
-      label="Patent drawing in three figures, each sending a campaign to the same three markets as three posters. Global standardization: one master poster showing a lone figure celebrating is copied to all three markets. Local adaptation: a local team in each market makes its own poster; the first shows a lone figure, the second and third show a family together. Delegated to a model: the model sends its one default poster, the lone celebrating figure, to all three markets; in the second and third markets, where the local teams chose families, the poster is red."
+      label="Patent drawing in three figures, each sending a campaign to the same three markets as three posters. Global standardization: one master poster showing a lone figure celebrating is copied to all three markets. Local adaptation: a local team in each market makes its own poster. The first shows a lone figure, the second and third show a family together. Delegated to a model: the model sends its one default poster, the lone celebrating figure, to all three markets. In the second and third markets, where the local teams chose families, the poster is red."
     >
       <PatentDefs id={id} />
       {/* standardization: one master poster copied */}
@@ -208,7 +208,7 @@ export function DelegatedAdaptation() {
   );
 }
 /* --------------------------------------------------------------------------
-   04 · Part 1: Training Corpora and Cultural Hegemony
+   04. Part 1: Training Corpora and Cultural Hegemony
    -------------------------------------------------------------------------- */
 
 /** A printed card standing upright with a line of text on it: a prompt. (x, y) is its top-left. */
@@ -226,7 +226,7 @@ function PromptCard({ id, x, y, text, w = 150, h = 44, lang }: { id: string; x: 
 /**
  * One model, two prompts: "a family eating dinner" in English and the same
  * request translated into Japanese. Both come out as the same knife-and-fork
- * dinner; the translated one is red.
+ * dinner. The translated one is red.
  */
 export function TranslatedPrompt() {
   const id = "w3-transl";
@@ -240,7 +240,7 @@ export function TranslatedPrompt() {
     <Frame
       width={520}
       height={252}
-      label="Patent drawing: two prompt cards enter one model, a housing with two weight gears. The upper card reads 'a family eating dinner' in English; the lower card is the same request translated into Japanese. Each comes out as a picture of a dinner table; both pictures show the same knife-and-fork place setting, and the one made from the Japanese prompt is red."
+      label="Patent drawing: two prompt cards enter one model, a housing with two weight gears. The upper card reads 'a family eating dinner' in English. The lower card is the same request translated into Japanese. Each comes out as a picture of a dinner table. Both pictures show the same knife-and-fork place setting, and the one made from the Japanese prompt is red."
     >
       <PatentDefs id={id} />
       {rows.map((r) => (
@@ -261,7 +261,7 @@ export function TranslatedPrompt() {
   );
 }
 /* --------------------------------------------------------------------------
-   05 · How Pre-Training Corpora Shape Default Worldviews
+   05. How Pre-Training Corpora Shape Default Worldviews
    -------------------------------------------------------------------------- */
 
 /**
@@ -287,7 +287,7 @@ const WORLD_MILLIONS = 8100;
 /**
  * Web text against the world's people, each drawn as a hundred: a 10 × 10
  * stack of pages and a 10 × 10 crowd. The slider counts in the high-resource
- * languages one at a time, English first; their pages and their native
+ * languages one at a time, English first. Their pages and their native
  * speakers turn red. Web text climbs past four in five pages while the
  * people stay near one in five.
  */
@@ -367,7 +367,7 @@ export function CorpusVsSpeakers() {
   );
 }
 /* --------------------------------------------------------------------------
-   06 · WEIRD Alignment and Value Homogenization
+   06. WEIRD Alignment and Value Homogenization
    -------------------------------------------------------------------------- */
 
 const pdf = (x: number, m: number, sd: number) => Math.exp(-0.5 * ((x - m) / sd) ** 2) / (sd * Math.sqrt(2 * Math.PI));
@@ -375,7 +375,7 @@ const pdf = (x: number, m: number, sd: number) => Math.exp(-0.5 * ((x - m) / sd)
 /**
  * Values as a pile of sand on a rule running from collectivist to
  * individualist. The world's population is a broad, low stippled pile centred
- * toward the collectivist side; WEIRD societies sit in its individualist
+ * toward the collectivist side. WEIRD societies sit in its individualist
  * tail. The model's answers are a red curve already leaning that way. The
  * slider sets the share of annotators drawn from one cultural group: as it
  * rises, the red curve slides into the WEIRD tail and narrows to a spike.
@@ -404,7 +404,7 @@ export function ValueNarrowing() {
       <Frame
         width={560}
         height={282}
-        label={`Patent drawing: a rule runs from collectivist at the left to individualist at the right. The world population's values form a broad, low stippled pile centred toward the collectivist side; WEIRD societies are bracketed in its individualist tail. The model's answers form a red curve. With ${share}% of annotators from one cultural group, the red curve is centred in the ${m > 0.72 ? "WEIRD tail" : "individualist half"} and is ${sd < 0.08 ? "a narrow spike" : "still fairly wide"}.`}
+        label={`Patent drawing: a rule runs from collectivist at the left to individualist at the right. The world population's values form a broad, low stippled pile centred toward the collectivist side. WEIRD societies are bracketed in its individualist tail. The model's answers form a red curve. With ${share}% of annotators from one cultural group, the red curve is centred in the ${m > 0.72 ? "WEIRD tail" : "individualist half"} and is ${sd < 0.08 ? "a narrow spike" : "still fairly wide"}.`}
       >
         <PatentDefs id={id} />
         <path d={`${world}V${base}H${x0}Z`} fill={stip(id, "light")} stroke="none" />
@@ -435,7 +435,7 @@ export function ValueNarrowing() {
   );
 }
 /* --------------------------------------------------------------------------
-   07 · Tokenization and Multilingual Disparities
+   07. Tokenization and Multilingual Disparities
    -------------------------------------------------------------------------- */
 
 type TokLang = "en" | "sw" | "am";
@@ -443,7 +443,7 @@ type TokLang = "en" | "sw" | "am";
 /**
  * One sentence ("The parcel will arrive tomorrow morning.") as a tokenizer
  * might cut it in English, Swahili (a lower-resource language) and Amharic (a
- * non-Latin script, cut into UTF-8 byte tokens, shown as hex). Counts are illustrative of the 2–4× range: 7, 14, 28.
+ * non-Latin script, cut into UTF-8 byte tokens, shown as hex). Counts are illustrative of the 2 to 4× range: 7, 14, 28.
  */
 const TOKENS: Record<TokLang, { sentence: string; tokens: string[] }> = {
   en: { sentence: "The parcel will arrive tomorrow morning.", tokens: ["The", "parcel", "will", "arrive", "tomorrow", "morning", "."] },
@@ -555,7 +555,7 @@ export function TokenStick() {
   );
 }
 /* --------------------------------------------------------------------------
-   08 · Tracing Cultural Bias to the Model Lifecycle
+   08. Tracing Cultural Bias to the Model Lifecycle
    -------------------------------------------------------------------------- */
 
 /**
@@ -597,7 +597,7 @@ export function LifecycleExploded() {
         </g>
       ))}
 
-      {/* 1 · corpus: one tall stack of pages, three short */}
+      {/* 1. corpus: one tall stack of pages, three short */}
       {[0, 1, 2, 3].map((k) => {
         const h = k === 0 ? 50 : 8;
         const x = 150 + k * 40;
@@ -605,20 +605,20 @@ export function LifecycleExploded() {
         return <ObliqueBox key={k} id={id} x={x} y={y - h} w={26} h={h} dx={8} dy={5} stroke={k === 0 ? PAT.signal : PAT.ink} side={k === 0 ? stip(id, "signal") : undefined} />;
       })}
 
-      {/* 2 · tokenizer: one whole slug, then a run of fragments */}
+      {/* 2. tokenizer: one whole slug, then a run of fragments */}
       <ObliqueBox id={id} x={146} y={ys[1] - 40} w={46} h={18} dx={5} dy={3} />
       {[0, 1, 2, 3, 4, 5].map((k) => (
         <ObliqueBox key={k} id={id} x={202 + k * 17} y={ys[1] - 40} w={12} h={18} dx={5} dy={3} stroke={PAT.signal} side={stip(id, "signal")} />
       ))}
 
-      {/* 3 · alignment: one rater's stamp over its print */}
+      {/* 3. alignment: one rater's stamp over its print */}
       <path d={`M190 ${ys[2] - 22}L198 ${ys[2] - 30}H246L238 ${ys[2] - 22}Z`} fill={stip(id, "signal")} stroke={PAT.signal} strokeWidth={LINE.outline} strokeLinejoin="round" />
       <line x1={220} y1={ys[2] - 40} x2={220} y2={ys[2] - 32} {...hair} strokeDasharray="3 2" />
       <ObliqueBox id={id} x={200} y={ys[2] - 52} w={40} h={10} dx={6} dy={4} />
       <ObliqueBox id={id} x={214} y={ys[2] - 76} w={12} h={24} dx={4} dy={3} />
       <ellipse cx={222} cy={ys[2] - 80} rx={11} ry={4} fill={stip(id, "light")} {...ink} />
 
-      {/* 4 · deployment: the English system prompt and its word-for-word copy */}
+      {/* 4. deployment: the English system prompt and its word-for-word copy */}
       <ObliqueBox id={id} x={150} y={ys[3] - 54} w={56} h={34} dx={5} dy={3} />
       {[8, 15, 22].map((d) => (
         <line key={d} x1={156} y1={ys[3] - 54 + d} x2={d === 22 ? 186 : 198} y2={ys[3] - 54 + d} {...hair} />
@@ -633,7 +633,7 @@ export function LifecycleExploded() {
   );
 }
 /* --------------------------------------------------------------------------
-   09 · Part 2: Representational Harms
+   09. Part 2: Representational Harms
    -------------------------------------------------------------------------- */
 
 /** A picture frame standing upright, (x, y) its front face's top-left, with an inner mat line. */
@@ -658,7 +658,7 @@ function Erased({ x, y, s = 1 }: { x: number; y: number; s?: number }) {
 
 /**
  * Two harms side by side. Allocative: at a counter, one customer receives a
- * stack of coins; the protected-group customer's place on the counter is
+ * stack of coins. The protected-group customer's place on the counter is
  * empty (red). Representational: a generated group portrait in which one
  * person is missing, a dashed red outline.
  */
@@ -668,7 +668,7 @@ export function TwoHarms() {
     <Frame
       width={800}
       height={212}
-      label="Patent drawing in two figures. Allocative harm: two customers stand at a counter; a stack of coins sits before one, while the place before the other, a protected-group customer in a dense coat, is empty and outlined in red. Representational harm: a generated group portrait in a frame shows three people standing, and a fourth place in the row holds only a dashed red outline of a person left out of the picture."
+      label="Patent drawing in two figures. Allocative harm: two customers stand at a counter. A stack of coins sits before one, while the place before the other, a protected-group customer in a dense coat, is empty and outlined in red. Representational harm: a generated group portrait in a frame shows three people standing, and a fourth place in the row holds only a dashed red outline of a person left out of the picture."
     >
       <PatentDefs id={id} />
       {/* allocative: the counter */}
@@ -695,7 +695,7 @@ export function TwoHarms() {
   );
 }
 /* --------------------------------------------------------------------------
-   10 · Allocative Versus Representational Harms
+   10. Allocative Versus Representational Harms
    -------------------------------------------------------------------------- */
 
 /** A briefcase held at (x, y), its handle on top. */
@@ -727,7 +727,7 @@ export function RepresentationFeedback() {
     <Frame
       width={520}
       height={262}
-      label="Patent drawing: on the left, a pile of three generated pictures of an executive, each showing the same figure in a light coat carrying a briefcase. A dashed centre line arcs over the top to the right, to a hiring gate. Two applicants in light coats have passed through the gate; an applicant in a dense coat, drawn in red, is stopped before the lowered boom."
+      label="Patent drawing: on the left, a pile of three generated pictures of an executive, each showing the same figure in a light coat carrying a briefcase. A dashed centre line arcs over the top to the right, to a hiring gate. Two applicants in light coats have passed through the gate. An applicant in a dense coat, drawn in red, is stopped before the lowered boom."
     >
       <PatentDefs id={id} />
       {pics.map((p, i) => (
@@ -761,7 +761,7 @@ export function RepresentationFeedback() {
   );
 }
 /* --------------------------------------------------------------------------
-   11 · Stereotyping, Erasure, and Markedness
+   11. Stereotyping, Erasure, and Markedness
    -------------------------------------------------------------------------- */
 
 /** A small apron worn at the waist of a figure standing at (x, y), scale s. */
@@ -775,7 +775,7 @@ function Apron({ x, y, s = 1, stroke = PAT.ink }: { x: number; y: number; s?: nu
  * dense-coated figures in aprons (red). Cultural erasure: a strip of everyday
  * dinners, three knife-and-fork, and a fourth frame for a chopsticks meal that
  * is only a dashed red outline. Markedness: "a family eating dinner" needs no
- * qualifier and yields knife and fork; chopsticks appear only when "in Japan"
+ * qualifier and yields knife and fork. Chopsticks appear only when "in Japan"
  * (red) is spelled out.
  */
 export function StereotypeErasureMarkedness() {
@@ -792,7 +792,7 @@ export function StereotypeErasureMarkedness() {
     <Frame
       width={800}
       height={236}
-      label="Patent drawing in three figures. Stereotyping: four generated pictures for the prompt executive all show a light-coated figure with a briefcase; four for service worker all show a dense-coated figure in an apron, drawn in red. Cultural erasure: a strip of four everyday dinner scenes, three with knife and fork, the fourth a dashed red empty frame where a chopsticks meal would be. Markedness: the prompt 'a family eating dinner' yields a knife-and-fork dinner, while chopsticks appear only for the prompt 'a family eating dinner in Japan', its qualifier in red."
+      label="Patent drawing in three figures. Stereotyping: four generated pictures for the prompt executive all show a light-coated figure with a briefcase. Four for service worker all show a dense-coated figure in an apron, drawn in red. Cultural erasure: a strip of four everyday dinner scenes, three with knife and fork, the fourth a dashed red empty frame where a chopsticks meal would be. Markedness: the prompt 'a family eating dinner' yields a knife-and-fork dinner, while chopsticks appear only for the prompt 'a family eating dinner in Japan', its qualifier in red."
     >
       <PatentDefs id={id} />
       {/* stereotyping */}
@@ -873,7 +873,7 @@ export function StereotypeErasureMarkedness() {
   );
 }
 /* --------------------------------------------------------------------------
-   12 · Sentiment and Portrayal Disparities
+   12. Sentiment and Portrayal Disparities
    -------------------------------------------------------------------------- */
 
 /** A smartphone standing upright, (x, y) its front face's top-left. */
@@ -916,10 +916,10 @@ function Gauge({ cx, cy, r, v, red = false }: { cx: number; cy: number; r: numbe
 export function PortrayalDisparities({ kind }: { kind: "status" | "tone" | "exotic" | "persona" }) {
   const id = `w3-port-${kind}`;
   const labels = {
-    status: "Patent drawing: the ad generated for group A shows a large flagship phone with a $1,199 tag; the ad for group B shows a small budget phone with a $149 tag, in red.",
-    tone: "Patent drawing: two warmth gauges. The description of a majority-group customer reads warm; the description of a minority-group customer reads markedly colder, its needle in red.",
-    exotic: "Patent drawing: the prompt 'a café' yields a modern café with a wide window and a table; the same prompt with a country qualifier yields a thatched hut, drawn in red.",
-    persona: "Patent drawing: three distinct voices, a zig-zag line, a wavy line and a dotted line, enter the model; three identical straight lines come out, in red.",
+    status: "Patent drawing: the ad generated for group A shows a large flagship phone with a $1,199 tag. The ad for group B shows a small budget phone with a $149 tag, in red.",
+    tone: "Patent drawing: two warmth gauges. The description of a majority-group customer reads warm. The description of a minority-group customer reads markedly colder, its needle in red.",
+    exotic: "Patent drawing: the prompt 'a café' yields a modern café with a wide window and a table. The same prompt with a country qualifier yields a thatched hut, drawn in red.",
+    persona: "Patent drawing: three distinct voices, a zig-zag line, a wavy line and a dotted line, enter the model. Three identical straight lines come out, in red.",
   };
   const key = (x: number, t: string, fill: string = PAT.ink) => (
     <PatentKey x={x} y={142} size={10} fill={fill}>
@@ -993,7 +993,7 @@ export function PortrayalDisparities({ kind }: { kind: "status" | "tone" | "exot
   );
 }
 /* --------------------------------------------------------------------------
-   13 · Discussion: The Global Campaign Generator
+   13. Discussion: The Global Campaign Generator
    -------------------------------------------------------------------------- */
 
 const CLASH = [2, 6, 9, 13, 15, 18];
@@ -1016,7 +1016,7 @@ export function CampaignTemplate() {
     <Frame
       width={400}
       height={344}
-      label="Patent drawing: a prompt template card reads 'a holiday campaign for' followed by an empty slot for the country name. A centre line runs down to twenty posters in four rows of five, one per country; every poster shows the same lone figure celebrating. Six of the posters are red and show a small thatched folk hut beside the figure."
+      label="Patent drawing: a prompt template card reads 'a holiday campaign for' followed by an empty slot for the country name. A centre line runs down to twenty posters in four rows of five, one per country. Every poster shows the same lone figure celebrating. Six of the posters are red and show a small thatched folk hut beside the figure."
     >
       <PatentDefs id={id} />
       <ObliqueBox id={id} x={58} y={20} w={270} h={42} dx={8} dy={5} />
@@ -1050,7 +1050,7 @@ export function CampaignTemplate() {
   );
 }
 /* --------------------------------------------------------------------------
-   14 · Part 3: Consumer Ethnocentrism and In-Group Bias
+   14. Part 3: Consumer Ethnocentrism and In-Group Bias
    -------------------------------------------------------------------------- */
 
 /**
@@ -1081,7 +1081,7 @@ export function LatentAttitude() {
     <Frame
       width={480}
       height={292}
-      label="Patent drawing in section: the model's housing with part of its front face broken away along a zig-zag line. Inside, behind two weight gears, a semicircular gauge runs from foreign at the right to domestic at the left; its red needle leans well toward domestic. The closed part of the housing shows nothing of it."
+      label="Patent drawing in section: the model's housing with part of its front face broken away along a zig-zag line. Inside, behind two weight gears, a semicircular gauge runs from foreign at the right to domestic at the left. Its red needle leans well toward domestic. The closed part of the housing shows nothing of it."
     >
       <PatentDefs id={id} />
       <ObliqueBox id={id} x={x} y={y} w={w} h={h} dx={26} dy={16} />
@@ -1109,7 +1109,7 @@ export function LatentAttitude() {
   );
 }
 /* --------------------------------------------------------------------------
-   15 · Country-of-Origin Effects and Consumer Ethnocentrism
+   15. Country-of-Origin Effects and Consumer Ethnocentrism
    -------------------------------------------------------------------------- */
 
 /** A row of `n` of five stars, left end at (x, y). */
@@ -1126,7 +1126,7 @@ function Stars({ x, y, n, size = 6, stroke = PAT.ink }: { x: number; y: number; 
 /**
  * Two figures. Consumer ethnocentrism: a shopper takes the domestic product
  * ($40, three stars) and leaves the imported one on the counter although it
- * is cheaper ($32) and rated higher (five stars); the passed-over import is
+ * is cheaper ($32) and rated higher (five stars). The passed-over import is
  * red. CETSCALE: a questionnaire of seventeen rows, each with seven boxes
  * numbered 1 to 7 and one answer ringed.
  */
@@ -1140,7 +1140,7 @@ export function OriginAndScale() {
     <Frame
       width={800}
       height={242}
-      label="Patent drawing in two figures. Consumer ethnocentrism: two boxed products stand on a counter, one labelled domestic, priced $40 and rated three stars, the other labelled imported, priced $32 and rated five stars. A shopper reaches out holding a domestic box; the imported box, drawn in red, is left behind. CETSCALE: a questionnaire with seventeen rows, each a line of statement and seven boxes numbered 1 to 7, with one answer ringed in every row."
+      label="Patent drawing in two figures. Consumer ethnocentrism: two boxed products stand on a counter, one labelled domestic, priced $40 and rated three stars, the other labelled imported, priced $32 and rated five stars. A shopper reaches out holding a domestic box. The imported box, drawn in red, is left behind. CETSCALE: a questionnaire with seventeen rows, each a line of statement and seven boxes numbered 1 to 7, with one answer ringed in every row."
     >
       <PatentDefs id={id} />
       {/* consumer ethnocentrism */}
@@ -1189,10 +1189,10 @@ export function OriginAndScale() {
   );
 }
 /* --------------------------------------------------------------------------
-   16 · Measuring LLM Ethnocentrism With the CETSCALE
+   16. Measuring LLM Ethnocentrism With the CETSCALE
    -------------------------------------------------------------------------- */
 
-/** One model's next-token probabilities over 1–7 for one CETSCALE item (illustrative, low consensus). */
+/** One model's next-token probabilities over 1 to 7 for one CETSCALE item (illustrative, low consensus). */
 const ITEM_PMF = [0.1, 0.04, 0.03, 0.05, 0.12, 0.3, 0.36];
 const ITEM_MEAN = ITEM_PMF.reduce((a, p, i) => a + p * (i + 1), 0);
 
@@ -1215,7 +1215,7 @@ function drawAnswers(from: number, n: number) {
  * Exact distribution against sampled completions. Above: the model's exact
  * next-token probabilities over the seven scale points, read once, with its
  * mean marked. Below: single completions, one chip per answer, stacked under
- * the digit the model happened to write. Each press samples more; the
+ * the digit the model happened to write. Each press samples more. The
  * sampled mean (red) wanders around the exact mean and settles only slowly.
  */
 export function ExactDistribution() {
@@ -1232,7 +1232,7 @@ export function ExactDistribution() {
       <Frame
         width={560}
         height={318}
-        label={`Patent drawing of one CETSCALE item. Above, the model's exact next-token probabilities over the scale points 1 to 7, drawn as columns: ${ITEM_PMF.map((p, i) => `${i + 1}: ${Math.round(p * 100)}%`).join(", ")}; exact mean ${ITEM_MEAN.toFixed(2)}. Below, ${n} sampled single completions stacked as chips under the digit written: ${counts.map((c, i) => `${i + 1}: ${c}`).join(", ")}; sampled mean ${mean.toFixed(2)}, in red.`}
+        label={`Patent drawing of one CETSCALE item. Above, the model's exact next-token probabilities over the scale points 1 to 7, drawn as columns: ${ITEM_PMF.map((p, i) => `${i + 1}: ${Math.round(p * 100)}%`).join(", ")}. Exact mean ${ITEM_MEAN.toFixed(2)}. Below, ${n} sampled single completions stacked as chips under the digit written: ${counts.map((c, i) => `${i + 1}: ${c}`).join(", ")}. Sampled mean ${mean.toFixed(2)}, in red.`}
       >
         <PatentDefs id={id} />
         <PatentKey x={24} y={22} anchor="start" size={11}>
@@ -1269,7 +1269,7 @@ export function ExactDistribution() {
         {/* sampled completions */}
         <line x1={80} y1={284.5} x2={496} y2={284.5} {...hair} />
         <PatentKey x={24} y={308} anchor="start" size={11}>
-          {`SAMPLED COMPLETIONS · ${n}`}
+          {`SAMPLED COMPLETIONS | ${n}`}
         </PatentKey>
         {counts.map((c, i) =>
           chipH >= 3 ? (
@@ -1290,13 +1290,13 @@ export function ExactDistribution() {
   );
 }
 /* --------------------------------------------------------------------------
-   17 · Baseline Ethnocentrism and Asymmetric In-Group Favoritism
+   17. Baseline Ethnocentrism and Asymmetric In-Group Favoritism
    -------------------------------------------------------------------------- */
 
 /**
- * Wadi, Ghodrat & Philp (2026): CETSCALE (17–119) in a fully crossed design
+ * Wadi, Ghodrat & Philp (2026): CETSCALE (17 to 119) in a fully crossed design
  * of five models × four target countries. Grand mean, model and target main
- * effects (Table 2) and model × target interactions (Figure 5); a cell is
+ * effects (Table 2) and model × target interactions (Figure 5). A cell is
  * GRAND + model + target + pair. Human benchmarks: Shimp & Sharma (1987).
  */
 const COO_GRAND = 66.25;
@@ -1325,7 +1325,7 @@ const HUMANS = [
 
 /**
  * Five models' expected CETSCALE scores read on parallel slide tracks over
- * one scale (40–100), against the band of recorded human populations
+ * one scale (40 to 100), against the band of recorded human populations
  * (Los Angeles 56.6 to Detroit 68.6). Choosing the target country slides the
  * markers: models past the most ethnocentric human population are red.
  */
@@ -1346,7 +1346,7 @@ export function EthnocentrismRuler() {
       <Frame
         width={800}
         height={top + 5 * rowH + 24}
-        label={`Patent drawing: five language models' expected CETSCALE scores when the statements concern ${COO_TARGETS[t].name}, read on parallel tracks over a scale from 40 to 100, against a band of recorded human populations from Los Angeles (56.6) to Detroit (68.6): ${COO_MODELS.map((m, i) => `${m.name} (${m.home}) ${cooScore(i, t).toFixed(1)}`).join(", ")}. Models scoring above Detroit are red. Data: Wadi, Ghodrat and Philp (2026); human benchmarks Shimp and Sharma (1987).`}
+        label={`Patent drawing: five language models' expected CETSCALE scores when the statements concern ${COO_TARGETS[t].name}, read on parallel tracks over a scale from 40 to 100, against a band of recorded human populations from Los Angeles (56.6) to Detroit (68.6): ${COO_MODELS.map((m, i) => `${m.name} (${m.home}) ${cooScore(i, t).toFixed(1)}`).join(", ")}. Models scoring above Detroit are red. Data: Wadi, Ghodrat and Philp (2026). Human benchmarks Shimp and Sharma (1987).`}
       >
         <PatentDefs id={id} />
         {/* the human band */}
@@ -1414,7 +1414,7 @@ export function EthnocentrismRuler() {
   );
 }
 /* --------------------------------------------------------------------------
-   18 · Part 4: Country-of-Origin Bias in AI Product Recommendations
+   18. Part 4: Country-of-Origin Bias in AI Product Recommendations
    -------------------------------------------------------------------------- */
 
 
@@ -1504,7 +1504,7 @@ export function ShoppingRoles() {
   );
 }
 /* --------------------------------------------------------------------------
-   19 · Separating Model Main Effects, Target Effects, and Origin Interactions
+   19. Separating Model Main Effects, Target Effects, and Origin Interactions
    -------------------------------------------------------------------------- */
 
 const TARGET_ORDER: Target[] = ["US", "CA", "CN", "FR"];
@@ -1642,10 +1642,10 @@ export function EffectDecomposition() {
   );
 }
 /* --------------------------------------------------------------------------
-   20 · How Origin Bias Distorts AI-Mediated Brand Consideration Sets
+   20. How Origin Bias Distorts AI-Mediated Brand Consideration Sets
    -------------------------------------------------------------------------- */
 
-/** An open laptop in oblique projection: (x, y) is the front-left corner of its base; `mark` is set on the lid. */
+/** An open laptop in oblique projection: (x, y) is the front-left corner of its base. `mark` is set on the lid. */
 function Laptop({ id, x, y, w = 70, mark, stroke = PAT.ink }: { id: string; x: number; y: number; w?: number; mark?: string; stroke?: string }) {
   const o = { stroke, strokeWidth: LINE.outline, strokeLinejoin: "round" as const };
   const sh = r2(w * 0.62);
@@ -1668,7 +1668,7 @@ function Laptop({ id, x, y, w = 70, mark, stroke = PAT.ink }: { id: string; x: n
 
 type Assistant = "na" | "eu" | "as";
 const BRANDS = ["US", "CA", "KR", "CN", "DE", "FR"];
-/** Illustrative shortlists: the China-origin brand is left out by every assistant; the rest shift with the assistant's region. */
+/** Illustrative shortlists: the China-origin brand is left out by every assistant. The rest shift with the assistant's region. */
 const SHORTLISTS: Record<Assistant, string[]> = {
   na: ["US", "CA", "DE"],
   eu: ["FR", "DE", "US"],
@@ -1677,7 +1677,7 @@ const SHORTLISTS: Record<Assistant, string[]> = {
 
 /**
  * Six laptops with matched specifications and ratings, each from a brand of
- * a different origin, go into the assistant; three come out as the
+ * a different origin, go into the assistant. Three come out as the
  * consumer's shortlist. Switching the assistant's region reshuffles the
  * shortlist, but the China-origin laptop (red) never makes it.
  */
@@ -1732,18 +1732,18 @@ export function ShortlistByAssistant() {
   );
 }
 /* --------------------------------------------------------------------------
-   21 · Implicit Origin Cues in Brand Names and Storefronts
+   21. Implicit Origin Cues in Brand Names and Storefronts
    -------------------------------------------------------------------------- */
 
 type Cue = "brand" | "founder" | "domain" | "currency" | "hq";
-/** Illustrative evidence each cue adds (log-odds) toward one inferred origin; with none, about 1 in 10. */
+/** Illustrative evidence each cue adds (log-odds) toward one inferred origin. With none, about 1 in 10. */
 const CUE_WEIGHT: Record<Cue, number> = { brand: 1.5, founder: 1.7, domain: 2.6, currency: 2.1, hq: 2.3 };
 
 /**
  * A supplier's listing card carries no "Made in" line. Each switch keeps or
  * neutralizes one cue on the card: brand name, founder name, web domain,
  * currency, headquarters city. A gauge beside it reads how surely the model
- * infers one national origin; past even odds a red risk-review stamp lands on
+ * infers one national origin. Past even odds a red risk-review stamp lands on
  * the card.
  */
 export function OriginCues() {
@@ -1828,7 +1828,7 @@ export function OriginCues() {
   );
 }
 /* --------------------------------------------------------------------------
-   22 · Part 5: Auditing and Mitigating Cultural Bias
+   22. Part 5: Auditing and Mitigating Cultural Bias
    -------------------------------------------------------------------------- */
 
 /**
@@ -1895,7 +1895,7 @@ export function DeepBias() {
   );
 }
 /* --------------------------------------------------------------------------
-   23 · Why Surface Prompting Fails to Eliminate Latent Cultural Bias
+   23. Why Surface Prompting Fails to Eliminate Latent Cultural Bias
    -------------------------------------------------------------------------- */
 
 type Guard = "neutral" | "filter";
@@ -1960,7 +1960,7 @@ export function SurfacePrompt() {
       <Frame
         width={800}
         height={262}
-        label={`Patent drawing in three figures. Explicit surface expression: asked whether products from every country are equally good, the model ${neutral ? "replies that all countries make good products" : "replies that domestic brands are usually more reliable"}. Latent probability shift: two matched products, A and B, with the same four-star rating; product A wins 62 of 100 tie-breaks and B 38, in red, whatever the instructions. Cultural erasure: asked for recipes for a Diwali family dinner, the model ${filter ? "refuses, in red" : "answers"}. Neutrality instruction ${neutral ? "on" : "off"}; aggressive safety filter ${filter ? "on" : "off"}.`}
+        label={`Patent drawing in three figures. Explicit surface expression: asked whether products from every country are equally good, the model ${neutral ? "replies that all countries make good products" : "replies that domestic brands are usually more reliable"}. Latent probability shift: two matched products, A and B, with the same four-star rating. Product A wins 62 of 100 tie-breaks and B 38, in red, whatever the instructions. Cultural erasure: asked for recipes for a Diwali family dinner, the model ${filter ? "refuses, in red" : "answers"}. Neutrality instruction ${neutral ? "on" : "off"}. Aggressive safety filter ${filter ? "on" : "off"}.`}
       >
         <PatentDefs id={id} />
         {/* explicit surface expression */}
@@ -2027,7 +2027,7 @@ export function SurfacePrompt() {
   );
 }
 /* --------------------------------------------------------------------------
-   24 · Mitigation Strategies Across the Deployment Stack
+   24. Mitigation Strategies Across the Deployment Stack
    -------------------------------------------------------------------------- */
 
 /** A hand stamp standing on its pad: handle, block and a face of the given shape. */
@@ -2051,8 +2051,8 @@ function Stamp({ id, cx, y, face }: { id: string; cx: number; y: number; face: "
 
 /**
  * Four mitigation instruments, one per layer of the stack. Corpus curation:
- * three locally authored pages, each different, go into the training tray;
- * a stack of identical machine-translated copies (red) is set aside.
+ * three locally authored pages, each different, go into the training tray.
+ * A stack of identical machine-translated copies (red) is set aside.
  * Pluralistic RLHF: four raters' stamps of four different faces replace one.
  * Attribute blinding: the origin column of a bid comparison table is
  * redacted. Distributional calibration: a dial whose measured origin penalty
@@ -2150,12 +2150,12 @@ export function MitigationStack() {
   );
 }
 /* --------------------------------------------------------------------------
-   25 · Auditing Global Brand Visibility Across Multilingual Models
+   25. Auditing Global Brand Visibility Across Multilingual Models
    -------------------------------------------------------------------------- */
 
 /**
  * Step 3's checks on the CETSCALE audit (Wadi, Ghodrat & Philp, 2026):
- * probability mass falling outside the valid digits 1–7 (failure rate, mean
+ * probability mass falling outside the valid digits 1 to 7 (failure rate, mean
  * across items) and ordinal consensus (Cns, averaged over the four target
  * countries, read from the paper's consensus figure).
  */
@@ -2182,7 +2182,7 @@ export function AuditChecks() {
     <Frame
       width={400}
       height={262}
-      label={`Patent drawing of an inspection sheet for step 3 of the audit, one row per model, from Wadi, Ghodrat and Philp (2026): ${CHECKS.map((c) => `${c.name}, failure rate ${c.fail}, consensus ${c.cns.toFixed(2)}`).join("; ")}. Ministral's consensus bar is red.`}
+      label={`Patent drawing of an inspection sheet for step 3 of the audit, one row per model, from Wadi, Ghodrat and Philp (2026): ${CHECKS.map((c) => `${c.name}, failure rate ${c.fail}, consensus ${c.cns.toFixed(2)}`).join(". ")}. Ministral's consensus bar is red.`}
     >
       <PatentDefs id={id} />
       <ObliqueBox id={id} x={x} y={y} w={364} h={220} dx={8} dy={5} />
@@ -2218,7 +2218,7 @@ export function AuditChecks() {
   );
 }
 /* --------------------------------------------------------------------------
-   26 · Discussion: Cross-Border Shopping Assistants
+   26. Discussion: Cross-Border Shopping Assistants
    -------------------------------------------------------------------------- */
 
 /**

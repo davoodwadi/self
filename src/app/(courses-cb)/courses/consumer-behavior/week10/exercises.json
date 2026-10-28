@@ -151,7 +151,7 @@
     "slide_id": "expert-power-and-ai-assistants",
     "question_text": "Jade asks a shopping site's AI assistant which blender to buy. It answers quickly, in fluent detail, and recommends three models sold on that site. What should Jade check before she treats it as an expert?",
     "hint": "Expert power rests on two things beyond how fluent the answer sounds.",
-    "correct_answer_citation": "Week 10 · Expert Power and AI Assistants",
+    "correct_answer_citation": "Week 10: Expert Power and AI Assistants",
     "correct_answer_index": 2,
     "options": [
       {
@@ -160,7 +160,7 @@
       },
       {
         "option_text": "Whether the answer arrived within a few seconds",
-        "option_explanation": "Speed adds to the impression of expertise; it says nothing about knowledge or independence."
+        "option_explanation": "Speed adds to the impression of expertise. It says nothing about knowledge or independence."
       },
       {
         "option_text": "Whether the facts are correct, and whether the site that runs the assistant profits from the models it recommends",
@@ -183,7 +183,7 @@
     "cases": [
       {
         "id": "camera",
-        "text": "Friends ask Leo which camera lens to buy; he follows photography closely but has little to say about other products.",
+        "text": "Friends ask Leo which camera lens to buy. He follows photography closely but has little to say about other products.",
         "answer": "leader",
         "explanation": "His influence is limited to one category he is involved in."
       },
@@ -224,7 +224,7 @@
     "slide_id": "ai-generated-review-summaries-and-synthetic-reviews",
     "question_text": "A seller offers buyers a free gift for every five-star review, and the site's AI summary now reads \"Customers love it.\" A shopper and her AI agent both rely on that summary. What follows?",
     "hint": "Think about what a summary draws on, and who reads it.",
-    "correct_answer_citation": "Week 10 · AI-Generated Review Summaries and Synthetic Reviews",
+    "correct_answer_citation": "Week 10: AI-Generated Review Summaries and Synthetic Reviews",
     "correct_answer_index": 1,
     "options": [
       {

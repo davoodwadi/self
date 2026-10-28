@@ -36,7 +36,7 @@ export default function HeroSlide() {
         <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "2rem" }}>
           <span className="tag tag-violet">Research Manuscript</span>
           {/* <span className="tag tag-amber">EMNLP 2026</span> */}
-          <span className="tag tag-muted">NLP · LLM Evaluation · Psychometrics</span>
+          <span className="tag tag-muted">NLP | LLM Evaluation | Psychometrics</span>
         </div>
         <h1
           className="p-display"
@@ -56,8 +56,8 @@ export default function HeroSlide() {
           <span style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", color: "var(--text-dim)" }}>
             Davood Wadi
           </span>
-          <span style={{ color: "var(--border-mid)" }}>·</span>
-          <span className="p-small">HEC Montréal · 2026</span>
+          <span style={{ color: "var(--border-mid)" }}>|</span>
+          <span className="p-small">HEC Montréal | 2026</span>
         </div>
         <blockquote
           style={{

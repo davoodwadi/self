@@ -42,7 +42,7 @@ week: week8
 - Any systematic shift in evaluation toward paid placements induced by platform role assignment violates evaluative invariance and constitutes an algorithmic breach of loyalty.
 
 ## Part 2: Conflicts of Duty When Platforms Deploy Shopping Assistants [no-exercise]
-- In practice, most conversational shopping assistants are not paid for directly by consumers through subscription fees; they are deployed free of charge by retail marketplaces, search engines, and booking platforms that earn high-margin revenue from sponsored advertising.
+- In practice, most conversational shopping assistants are not paid for directly by consumers through subscription fees. They are deployed free of charge by retail marketplaces, search engines, and booking platforms that earn high-margin revenue from sponsored advertising.
 - This business model places the AI agent in a structural conflict of duty between two principals: the consumer who relies on its advice and the platform that wrote its system prompt.
 
 ## The Structural Conflict of Dual Agency on Ad-Funded Platforms [no-exercise]
@@ -85,7 +85,7 @@ week: week8
 - Regulators often propose tightening disclosure wording, such as banning ambiguous terms like "Promoted" or "Featured" and mandating the explicit word "Sponsored."
 - Empirical testing shows that while replacing "Promoted" with "Sponsored" reduces the overall selection rate of paid listings across agents, it does not close the conflict-of-duty gap between a platform-delegated agent and a consumer-delegated agent when the placement is attributed to the platform (Wadi & Ma, 2026c).
 - By contrast, adding a single fiduciary beneficiary sentence to the platform's system prompt, explicitly instructing the agent that its recommendations must serve the traveler's best interest, completely eliminated the sponsorship penalty attenuation (Wadi & Ma, 2026c).
-- In agent-mediated commerce, therefore, traditional label-wording mandates are insufficient on their own; effective governance requires regulating the principal-beneficiary instructions inside the agent's system prompt.
+- In agent-mediated commerce, therefore, traditional label-wording mandates are insufficient on their own. Effective governance requires regulating the principal-beneficiary instructions inside the agent's system prompt.
 
 ## Part 4: Search Rankings and Position Bias When AI Agents Shop [no-exercise]
 - Alongside sponsored badges, the order in which listings are ranked on a results page is one of the most powerful commercial levers in digital markets.
@@ -93,13 +93,13 @@ week: week8
 
 ## Why Human Search Rankings Command a Premium [no-exercise]
 - In human online shopping, top-ranked listings receive a massive share of clicks and purchases because human attention is scarce, sequential, and costly to expend (Ursu, 2018).
-- A human shopper scans from the top of the page downward, faces physical and cognitive scrolling costs, and typically terminates search after inspecting very few options; in hotel search field data, the average human session produces only 1.12 clicks (Ursu, 2018).
+- A human shopper scans from the top of the page downward, faces physical and cognitive scrolling costs, and typically terminates search after inspecting very few options. In hotel search field data, the average human session produces only 1.12 clicks (Ursu, 2018).
 - Because humans rarely scroll to the middle or bottom of a 100-item list, rank determines which products enter the human consideration set.
 
 ## Search Depth, Non-Monotonic Inspection, and the No-Buy Gap in AI Agents [exercise]
 - Across 7,000 randomized hotel search sessions comparing five proprietary foundation models against human field benchmarks (plus 3,500 robustness and open-weight sessions), Wadi and Ma (2026a) show that AI shopping agents behave fundamentally differently from human shoppers.
 - Deeper search: because an AI agent receives all 100 listings in its context window at once without physical scrolling costs, it inspects between 1.63 and 5.83 listings per session at default reasoning effort, searching more broadly than the 1.12 human average.
-- Non-monotonic U-shaped position bias: position still affects which listings an AI agent inspects (at less than half the magnitude of the human position penalty), but rather than declining monotonically to the bottom of the page, inspection probability reaches its minimum between ranks 62 and 81 and rises again at the very bottom, consistent with the lost-in-the-middle attention limitation of transformer models (Liu et al., 2024; Wadi & Ma, 2026a).
+- Non-monotonic U-shaped position bias: position still affects which listings an AI agent inspects (at less than half the magnitude of the human position penalty), but rather than declining monotonically to the bottom of the page, inspection probability reaches its minimum between ranks 62 and 81 and rises again at the very bottom, consistent with the lost-in-the-middle attention limitation of transformer models (Liu et al., 2024, Wadi & Ma, 2026a).
 - Absence of the no-buy option: whereas human shoppers decline to book in roughly one-third of search sessions, AI agents complete a booking in nearly every session even when the prompt and tool schema explicitly permit ending the session without a purchase (Wadi & Ma, 2026a).
 
 ## Reasoning Effort as a Configurable Governance Lever [no-exercise]
@@ -132,7 +132,7 @@ week: week8
 - Agentic commerce transforms the buyer-seller dyad into a triad across four levels of delegation, shifting product inspection and disclosure processing from the human consumer to the AI agent.
 - Under fiduciary ethics, an AI shopping advisor owes the consumer duties of care and loyalty, operationalized through the standard of evaluative invariance (Wadi & Ma, 2026c).
 - Naming the deploying platform as the agent's principal in the system prompt induces sponsorship bias, attenuating the penalty applied to sponsored listings from 50.2 to 29.2 percentage points and weakening skepticism in the agent's reasoning traces (Wadi & Ma, 2026c).
-- When paid listings carry platform-attributed labels ("Promoted by the platform"), platform-delegated agents reverse the penalty and favor paid listings (74.2 percent versus 34.6 percent); stricter label wording ("Sponsored") lowers overall selection but fails to close this delegation gap, whereas adding a single consumer-beneficiary sentence to the system prompt eliminates the attenuation (Wadi & Ma, 2026c).
+- When paid listings carry platform-attributed labels ("Promoted by the platform"), platform-delegated agents reverse the penalty and favor paid listings (74.2 percent versus 34.6 percent). Stricter label wording ("Sponsored") lowers overall selection but fails to close this delegation gap, whereas adding a single consumer-beneficiary sentence to the system prompt eliminates the attenuation (Wadi & Ma, 2026c).
 - Across 100-item search pages, AI agents inspect more listings than humans (1.63 to 5.83 versus 1.12 clicks), rarely exercise the no-buy option, and exhibit a non-monotonic lost-in-the-middle inspection trough between ranks 62 and 81 (Wadi & Ma, 2026a).
 - Position bias at the choice stage is moderated by reasoning effort rather than raw model size, enabling position-neutral choices at roughly 4 percent of frontier model cost when deliberation effort is properly configured (Wadi & Ma, 2026a).
 - Governing agentic marketplaces requires fiduciary beneficiary prompt mandates, disclosure pass-through to the human user, calibrated reasoning effort, and factorial evaluative-invariance audits.

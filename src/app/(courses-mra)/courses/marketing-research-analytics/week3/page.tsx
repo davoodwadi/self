@@ -31,11 +31,11 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 03 — QUALITATIVE RESEARCH
+// WEEK 03: QUALITATIVE RESEARCH
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx; the interactive ones are built around one action
+// live in ./visuals.tsx. The interactive ones are built around one action
 // each (seat more participants, conduct the next interview, add a data
 // source).
 //
@@ -58,7 +58,7 @@ export default function Week3() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 03 · Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 03: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           <span className="text-[var(--signal)]">Qualitative</span> Research
         </Title>
@@ -1038,7 +1038,7 @@ export default function Week3() {
         <ol className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
           {[
             "Qualitative research examines the reasons for behavior through small, nonrepresentative samples, and complements quantitative research.",
-            "Focus groups and depth interviews are direct approaches; projective techniques are indirect approaches used when participants are unlikely to state their true motives.",
+            "Focus groups and depth interviews are direct approaches. Projective techniques are indirect approaches used when participants are unlikely to state their true motives.",
             "Observation, ethnography, and netnography record behavior in its context rather than relying on participants' reports.",
             "Qualitative analysis proceeds from codes to themes, and data collection continues until saturation is reached.",
             "Qualitative findings are evaluated for trustworthiness, through intercoder reliability, triangulation, member checking, and an audit trail.",

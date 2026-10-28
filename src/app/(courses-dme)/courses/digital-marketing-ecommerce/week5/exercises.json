@@ -129,7 +129,7 @@
         "id": "video",
         "text": "A video ad is fully visible for 1.5 continuous seconds. The report must decide whether this exposure meets the applicable MRC threshold.",
         "answer": "viewability",
-        "explanation": "Video requires at least 50% of pixels for at least two continuous seconds; 1.5 seconds is insufficient."
+        "explanation": "Video requires at least 50% of pixels for at least two continuous seconds. 1.5 seconds is insufficient."
       }
     ]
   },

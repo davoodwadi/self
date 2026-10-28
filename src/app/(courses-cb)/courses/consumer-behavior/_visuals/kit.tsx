@@ -1,12 +1,11 @@
 /* ==========================================================================
-   Shared kit: the building blocks every week draws and lays out with —
-   colours and type, the plate frame and label helpers, geometry helpers
+   Shared kit: the building blocks every week draws and lays out with, colours and type, the plate frame and label helpers, geometry helpers
    and slide layout blocks. See "Shared pieces" in the root CLAUDE.md.
    ========================================================================== */
 
 import React, { createContext, useContext } from "react";
 
-/** The palette. Use about five per plate; never anything outside it. */
+/** The palette. Use about five per plate. Never anything outside it. */
 export const SK = {
   paper: "#FBF7F0", // warm cream: paper objects, the sheet
   ink: "#2E2624", // all lines and all text
@@ -19,7 +18,7 @@ export const SK = {
   ochre: "#E8B84A", // small highlights, badges, logos
   charcoal: "#3E3A4A", // trousers, dark fabric
   stone: "#D0C7B5", // the default background wash: a quiet warm neutral
-  blush: "#F2C9B0", // the here and now, set against a sky wash; warm details
+  blush: "#F2C9B0", // the here and now, set against a sky wash. Warm details
   sky: "#BFD6DF", // glass, background wash
   earth: "#C9B8A6", // ground wash
   pencil: "#6F7785", // anything unreal, imagined, dashed
@@ -118,7 +117,7 @@ export function SketchFrame({
   id: string;
   width: number;
   height: number;
-  /** What is drawn; unused (and hidden from readers) when `decorative`. */
+  /** What is drawn. Unused (and hidden from readers) when `decorative`. */
   label: string;
   children: React.ReactNode;
   className?: string;

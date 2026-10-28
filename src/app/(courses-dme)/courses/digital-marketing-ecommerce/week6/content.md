@@ -55,7 +55,7 @@ week: week6
 - Mega- and macro-influencers (hundreds of thousands to millions of followers) deliver broad top-of-funnel reach and cultural signaling, but command high flat fees and lower average engagement rates.
 - Micro- and nano-influencers (roughly one thousand to one hundred thousand followers) operate within tight niche communities (e.g., ultralight backpacking, specialty baking, or mechanical keyboards), typically generating higher engagement rates and stronger conversion per dollar spent.
 - Creators build persuasive power through parasocial interaction, the one-sided sense of familiarity and friendship that audience members develop when watching a creator talk directly to the camera over time.
-- Selecting creator partners by follower count alone is a classic digital marketing error, because follower totals can be inflated by inactive accounts or bots; marketers instead audit audience demographic fit, comment quality, average view-to-follower ratios, and past conversion performance.
+- Selecting creator partners by follower count alone is a classic digital marketing error, because follower totals can be inflated by inactive accounts or bots. Marketers instead audit audience demographic fit, comment quality, average view-to-follower ratios, and past conversion performance.
 - In creator licensing (or whitelisting), a brand pays to run paid social ads directly through the creator's handle rather than the brand's corporate handle, combining the credibility of a creator's voice with the targeting control of paid media.
 
 ## Contracting, Compensation, and Disclosure Compliance [no-exercise]

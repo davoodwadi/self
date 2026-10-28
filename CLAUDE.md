@@ -4,9 +4,13 @@ You should never change the words or sentences of the content.md
 The content should be preserved.
 You only can create the slides **using** the content. 
 
+# No middle dots, semicolons, em dashes or en dashes
+
+Never use the middle dot (Unicode U+00B7), a semicolon, an em dash (U+2014) or an en dash (U+2013) in any writing in this repo: slide text, content.md and slides.md files, exercises and quizzes, kickers, labels, navigation, metadata, SVG text, string literals or comments. Separate items with a colon ("Paper 1: Shopping by Algorithm"), a comma or a vertical bar ("email | website"), end the sentence with a period and start a new one, set an aside in commas or parentheses, write ranges with "to" ("2015 to 2024"), write negative numbers with the minus sign (−), and write multiplication as "×". Write an empty table cell as "n/a". This rule covers writing only. Semicolons that are code syntax (ending a statement, inside a `for` header or CSS declaration) and the ones that close HTML entities (`&ldquo;`) stay. It applies to new writing and to any line you edit.
+
 # Exercise rules
 
-A topic tagged `[exercise]` in content.md gets one exercise; a topic tagged `[no-exercise]` gets none.
+A topic tagged `[exercise]` in content.md gets one exercise. A topic tagged `[no-exercise]` gets none.
 
 Exercises come after the topic they test has been introduced in the content.
 
@@ -28,7 +32,7 @@ These types are planned but not built yet, so leave them for now: **spot it in t
 
 ## Where exercises live
 
-Each week keeps its exercises in `exercises.json` beside its `page.tsx`, one entry per `[exercise]` topic, keyed by the slide's `id`. The data shape of every type is defined in `src/lib/course-exercise.ts`, and the shared components in `src/components/exercises/` render them. A slide shows its exercise with `exercise={exercise["<slide-id>"]}`, and it appears on its own screen right after that slide. These components serve every course through the shared `Slide`; courses with their own slide components keep their quizzes until they move to the shared ones.
+Each week keeps its exercises in `exercises.json` beside its `page.tsx`, one entry per `[exercise]` topic, keyed by the slide's `id`. The data shape of every type is defined in `src/lib/course-exercise.ts`, and the shared components in `src/components/exercises/` render them. A slide shows its exercise with `exercise={exercise["<slide-id>"]}`, and it appears on its own screen right after that slide. These components serve every course through the shared `Slide`. Courses with their own slide components keep their quizzes until they move to the shared ones.
 
 # Slide density
 
@@ -46,7 +50,7 @@ Give each week a varied mix of pictures as well as layouts. For each plate, star
 
 ## Colour on slides
 
-Build hierarchy with type and space: size, weight, rules and white space. Save colour for the one thing on each slide the eye should land on, the slide's key idea; a slide with no colour at all is fine. Defined terms read clearly in bold ink. Structure (rules, tabs, labels, borders, numbering) stays in ink or grey, so colour on content has nothing competing with it. Each course's accent has one meaning across the deck. A second accent earns its place only where it marks a contrast students must see.
+Build hierarchy with type and space: size, weight, rules and white space. Save colour for the one thing on each slide the eye should land on, the slide's key idea. A slide with no colour at all is fine. Defined terms read clearly in bold ink. Structure (rules, tabs, labels, borders, numbering) stays in ink or grey, so colour on content has nothing competing with it. Each course's accent has one meaning across the deck. A second accent earns its place only where it marks a contrast students must see.
 
 Test: glance at a slide for two seconds. The coloured part should be the thing you want students to remember.
 
@@ -77,20 +81,20 @@ Every course keeps the pieces its weeks build with in a `_visuals/` folder insid
 
 Every piece in `_visuals/` is one the course has already paid for. Weeks import from their course's `_visuals/` and never from another week's folder, and pieces stay within their course, like its style.
 
-Draw what the plate needs. If `_visuals/` already has a piece that fits, use it or extend it with an optional prop; otherwise write a new one. A new version of an existing object takes the next number (`Car3`). A piece moves into `_visuals/` the moment a second week needs it, and a week keeps only its own slides and plates.
+Draw what the plate needs. If `_visuals/` already has a piece that fits, use it or extend it with an optional prop. Otherwise write a new one. A new version of an existing object takes the next number (`Car3`). A piece moves into `_visuals/` the moment a second week needs it, and a week keeps only its own slides and plates.
 
 # SVG rules
 
-These rules cover every SVG plate or figure in every course. Each course's `CLAUDE.md` adds its look, its palette and its notes on particular rules (by number); where a course note is more specific, follow it.
+These rules cover every SVG plate or figure in every course. Each course's `CLAUDE.md` adds its look, its palette and its notes on particular rules (by number). Where a course note is more specific, follow it.
 
 ## Meaning
 
 1. **No drawing beats a bad drawing.** If a plate does not work after an honest attempt to fix it, remove it. A slide with only its text is better than a slide with a confusing picture.
 2. **Self-evident, or redraw it.** A student must understand the plate from the drawing and the sentence beside it. If it needs a caption, legend or explanation, it has failed (see rule 1).
 3. **Never label an object with its own name.** No BELL, DOG, AD, MUSIC beside the thing drawn. Text inside an SVG is allowed only for:
-   - a concept or stage name from the slide (WEAR-OUT, CONDITIONED RESPONSE);
-   - a quantity or time span (ABOUT 20 SECONDS);
-   - a distinction the picture cannot make (NATIONAL BRAND vs STORE BRAND on look-alike boxes);
+   - a concept or stage name from the slide (WEAR-OUT, CONDITIONED RESPONSE).
+   - a quantity or time span (ABOUT 20 SECONDS).
+   - a distinction the picture cannot make (NATIONAL BRAND vs STORE BRAND on look-alike boxes).
    - text that is part of the object (a price tag's −10%, a wordmark on a package).
 4. **Label in place, not in a legend.** Put a label next to an example of the thing, not in a key row the eye has to decode.
 5. **Draw the thing, not an abstraction of it.** If a chart shows what people bought, draw the products, not grey dots.
@@ -136,13 +140,13 @@ The Browser pane can't zoom into a region: to see a plate at full size, clone it
 `@phosphor-icons/react` is installed for use **inside** SVG plates. Lucide (`lucide-react`) stays for UI chrome (buttons, navigation) and is never used in plates.
 
 25. **An icon is a noun, never the plate.** Use a Phosphor icon only to stand for a single, recognisable object inside a hand-built diagram: a megaphone, share arrow, chat bubbles, envelope, gear, lightbulb, eye, lock, shield, shopping bag or cart, clock, graduation cap, globe, buildings, TV, radio, newspaper, a product (mug, sneaker, watch), sentiment faces, a cursor, a check badge. The structure of the diagram (hubs, spokes, Venns, stairs, forks, timelines, arrows) is always drawn by hand.
-26. **Reach for an icon when a hand-drawn glyph is hard to recognise.** If the object is a standard symbol and your drawing could be mistaken for something else (a "wrench" that reads as a magnifier, a "guitar" that reads as a stick), use the icon. If a simple hand-drawn shape already reads clearly, keep it; don't swap for the sake of it.
+26. **Reach for an icon when a hand-drawn glyph is hard to recognise.** If the object is a standard symbol and your drawing could be mistaken for something else (a "wrench" that reads as a magnifier, a "guitar" that reads as a stick), use the icon. If a simple hand-drawn shape already reads clearly, keep it. Don't swap for the sake of it.
 27. **Never use an icon for:**
-    - the week's **Person** glyph: people are repeated to show counts, scaled and tinted by segment (Isotype), so they stay our own glyph;
-    - the **brand badge** or any other course-specific symbol that carries a taught meaning;
-    - anything whose **shape encodes data**: coin stacks, bars, curves, axes, dot fields, gauges, scales;
-    - **containers that hold other marks**: speech bubbles with text lines, browser windows or phones showing content, results pages, posts, inboxes;
+    - the week's **Person** glyph: people are repeated to show counts, scaled and tinted by segment (Isotype), so they stay our own glyph.
+    - the **brand badge** or any other course-specific symbol that carries a taught meaning.
+    - anything whose **shape encodes data**: coin stacks, bars, curves, axes, dot fields, gauges, scales.
+    - **containers that hold other marks**: speech bubbles with text lines, browser windows or phones showing content, results pages, posts, inboxes.
     - **labels**: text stays live SVG text from the slide.
 28. **How to place one.** Import named icons from `@phosphor-icons/react` and render them as nested SVGs, centred on a point: `<Megaphone x={cx - s / 2} y={cy - s / 2} size={s} weight={…} color={…} />`. Colour comes only from the course palette, so rule 10 still applies, and the course's `CLAUDE.md` sets the weight. Keep icons at 20 units or more.
 29. **One style per object across the week.** If an object is an icon on one plate, it is the same icon (same weight) on every plate of that week. Never show the same object as an icon in one place and a hand drawing in another inside one plate.
-30. **Icons follow every rule above.** An icon still has to depict the sentence (rules 5–6), sit clear of lines and labels (rules 12–13) and be named in the plate's `<title>`/`aria-label` (rule 21). Include nested icon `<svg>`s in the collision checks.
+30. **Icons follow every rule above.** An icon still has to depict the sentence (rules 5 to 6), sit clear of lines and labels (rules 12 to 13) and be named in the plate's `<title>`/`aria-label` (rule 21). Include nested icon `<svg>`s in the collision checks.

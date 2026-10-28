@@ -3,7 +3,7 @@
     "slide_id": "three-shifts",
     "question_text": "According to the lecture, how is product development changing?",
     "hint": "Think about whether the change touches single tasks or the whole lifecycle.",
-    "correct_answer_citation": "Week 09 — The Paradigm Shift",
+    "correct_answer_citation": "Week 09: The Paradigm Shift",
     "correct_answer_index": 2,
     "options": [
       {
@@ -28,7 +28,7 @@
     "slide_id": "persona-simulation",
     "question_text": "According to the lecture, which kind of ideas are LLMs better at generating?",
     "hint": "The lecture contrasts incremental ideas with paradigm shifts.",
-    "correct_answer_citation": "Week 09 — Divergent vs. Convergent Thinking",
+    "correct_answer_citation": "Week 09: Divergent vs. Convergent Thinking",
     "correct_answer_index": 1,
     "options": [
       {

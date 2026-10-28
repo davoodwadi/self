@@ -1,14 +1,14 @@
 "use client";
 
 /* ==========================================================================
-   Week 8 — plates (Flat Silhouette)
+   Week 8, plates (Flat Silhouette)
    --------------------------------------------------------------------------
    Fixed cast for the week, built on ../_visuals/kit and ../_visuals/objects:
-     · Person                — every human (bust in profile)
-     · Shop                  — physical building / home base
-     · Doc                   — training log / proposal / record
-     · Coins                 — extrinsic reward / cost
-     · Monitor / MiniScreen  — anything digital (VR/AR environment, simulator,
+     - Person, every human (bust in profile)
+     - Shop, physical building / home base
+     - Doc, training log / proposal / record
+     - Coins, extrinsic reward / cost
+     - Monitor / MiniScreen, anything digital (VR/AR environment, simulator,
                                gamified app screen)
    Every coordinate is a literal or rounded with r2(), so server and client
    render identical markup.
@@ -64,7 +64,7 @@ const HEAD = { fontFamily: "var(--font-heading)", fontWeight: 700 } as const;
 const BODY = { fontFamily: "var(--font-body)", fontWeight: 600 } as const;
 
 /* ==========================================================================
-   1 · Hero — Physical trainee & aircraft on the left; red arrow into a
+   1. Hero: Physical trainee & aircraft on the left. Red arrow into a
    framed digital screen showing an immersive simulation and gamified milestones
    ========================================================================== */
 
@@ -95,7 +95,7 @@ export function HeroImmersivePlate() {
 }
 
 /* ==========================================================================
-   2 · Question: Becoming a Pilot — Driver's license vs. Pilot's 10,000 hours,
+   2. Question: Becoming a Pilot: Driver's license vs. Pilot's 10,000 hours,
    and an interactive simulator slider showing how immersive simulation solves
    the 10,000-hour training bottleneck
    ========================================================================== */
@@ -112,14 +112,14 @@ export function PilotTrainingInteractive() {
     <Plate
       w={800}
       h={276}
-      title={`On the left, four people beside a car silhouette for a driver's license versus one person and a 10,000-hour requirement beside an airplane for a pilot's license; on the right, an interactive slider (currently ${simPct}% simulator share, ${simHours.toLocaleString()} simulator hours and ${airHours.toLocaleString()} aircraft hours) shifts training from a physical aircraft into a framed flight-simulator screen`}
+      title={`On the left, four people beside a car silhouette for a driver's license versus one person and a 10,000-hour requirement beside an airplane for a pilot's license. On the right, an interactive slider (currently ${simPct}% simulator share, ${simHours.toLocaleString()} simulator hours and ${airHours.toLocaleString()} aircraft hours) shifts training from a physical aircraft into a framed flight-simulator screen`}
     >
       {/* Left comparison: Driver's license (many people) vs. Pilot's license (1 person, 10,000 hours) */}
       <text x={140} y={32} textAnchor="middle" {...HEAD} fontSize={18} fill={INK}>
         Driver&apos;s vs. Pilot&apos;s License
       </text>
 
-      {/* Row 1: Driver's license — car + 4 drivers */}
+      {/* Row 1: Driver's license: car + 4 drivers */}
       <rect x={20} y={48} width={240} height={88} fill={COUNTER_FILL} stroke={INK} strokeWidth={2.5} />
       <text x={32} y={68} {...HEAD} fontSize={14} fill={INK}>
         Driver&apos;s license
@@ -130,7 +130,7 @@ export function PilotTrainingInteractive() {
       <Person x={178} y={76} k={0.48} variant={6} />
       <Person x={216} y={76} k={0.48} variant={8} />
 
-      {/* Row 2: Pilot's license — aircraft + 1 pilot + 10,000 hours */}
+      {/* Row 2: Pilot's license: aircraft + 1 pilot + 10,000 hours */}
       <rect x={20} y={150} width={240} height={96} fill={CREAM} stroke={INK} strokeWidth={3} />
       <text x={32} y={172} {...HEAD} fontSize={14} fill={INK}>
         Pilot&apos;s license
@@ -144,7 +144,7 @@ export function PilotTrainingInteractive() {
 
       <path d="M 276 18 V 256" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
-      {/* Right instrument: Solution — shifting 10,000 hours into Flight Simulator */}
+      {/* Right instrument: Solution: shifting 10,000 hours into Flight Simulator */}
       <text x={296} y={32} {...HEAD} fontSize={18} fill={INK}>
         Solution: Flight Simulator
       </text>
@@ -206,7 +206,7 @@ export function PilotTrainingInteractive() {
 }
 
 /* ==========================================================================
-   3 · Immersive Technologies — Three selectable pillars:
+   3. Immersive Technologies: Three selectable pillars:
    1. Simulating realistic environments, 2. Interacting with virtual elements,
    3. Blending digital content with the physical world
    ========================================================================== */
@@ -263,7 +263,7 @@ export function BlendingPlate() {
 }
 
 /* ==========================================================================
-   4 · Virtual Reality (VR) and Augmented Reality (AR) — Two selectable panels:
+   4. Virtual Reality (VR) and Augmented Reality (AR), Two selectable panels:
    1. Virtual Reality (VR): headset -> fully computer-generated world (visual,
       auditory, haptic)
    2. Augmented Reality (AR): smartphone/tablet/AR glasses overlaying digital
@@ -311,7 +311,7 @@ export function AugmentedRealityPlate() {
 }
 
 /* ==========================================================================
-   5 · Gamification: Swipe vs. Sweep — Three selectable panels:
+   5. Gamification: Swipe vs. Sweep: Three selectable panels:
    1. Sweep the Floor (mundane physical chore with no feedback loop)
    2. Swipe the Phone (play, achievement, and social interaction on a screen)
    3. Gamify the Task (applying game-design mechanics to non-game goals)
@@ -348,7 +348,7 @@ export function SwipeVsSweepPlate() {
 }
 
 /* ==========================================================================
-   6 · Elements of Gamification — Five selectable columns:
+   6. Elements of Gamification: Five selectable columns:
    1. Points, 2. Badges, 3. Leaderboards, 4. Challenges and Quests,
    5. Levels and Progression
    ========================================================================== */
@@ -420,7 +420,7 @@ export function GamificationElementsInteractive({
     <Plate
       w={800}
       h={248}
-      title={`Five rising gamification steps, each with a small framed screen above it: 1. Points (+100 score), 2. Badges (medal), 3. Leaderboards (podium), 4. Challenges & quests (sword and banner), and 5. Levels & progression (ascending bars); ${activeName} is highlighted in red`}
+      title={`Five rising gamification steps, each with a small framed screen above it: 1. Points (+100 score), 2. Badges (medal), 3. Leaderboards (podium), 4. Challenges & quests (sword and banner), and 5. Levels & progression (ascending bars). ${activeName} is highlighted in red`}
     >
       {ELEMENT_STEPS.map((step, i) => {
         const isLit = i === active;
@@ -485,7 +485,7 @@ export function GamificationElementsTall({
     <Plate
       w={400}
       h={410}
-      title={`Five stacked gamification steps with small screens: 1. Points, 2. Badges, 3. Leaderboards, 4. Challenges and Quests, and 5. Levels and Progression; ${ELEMENT_STEPS[active]?.name ?? "1. Points"} is highlighted in red`}
+      title={`Five stacked gamification steps with small screens: 1. Points, 2. Badges, 3. Leaderboards, 4. Challenges and Quests, and 5. Levels and Progression. ${ELEMENT_STEPS[active]?.name ?? "1. Points"} is highlighted in red`}
     >
       {ELEMENT_STEPS.map((step, i) => {
         const isLit = i === active;
@@ -528,7 +528,7 @@ export function GamificationElementsTall({
 }
 
 /* ==========================================================================
-   7 · Progress Bar & MBA Progression — Interactive comparison of an
+   7. Progress Bar & MBA Progression: Interactive comparison of an
    unsegmented progress bar vs. a 5-milestone progress bar across a two-year
    (24-month) timeline
    ========================================================================== */
@@ -544,7 +544,7 @@ export function ProgressBarComparisonInteractive() {
     <Plate
       w={800}
       h={262}
-      title={`A framed screen comparing two 5-step progress bars at Step ${step} of 5: the top bar has milestone circles that grow larger from step 1 to step 5, while the bottom bar has five milestone circles of identical size; a draggable slider below steps from 1 to 5`}
+      title={`A framed screen comparing two 5-step progress bars at Step ${step} of 5: the top bar has milestone circles that grow larger from step 1 to step 5, while the bottom bar has five milestone circles of identical size. A draggable slider below steps from 1 to 5`}
     >
       <Monitor x={110} y={14} w={580} h={168}>
         {/* Top progress bar: growing milestone circles (1 -> 5) */}
@@ -643,7 +643,7 @@ export function ProgressBarComparisonInteractive() {
 }
 
 /* ==========================================================================
-   8 · Challenges of Gamification — Two selectable panels + interactive
+   8. Challenges of Gamification: Two selectable panels + interactive
    extrinsic reward slider:
    1. Overjustification Effect (extrinsic rewards crowd out intrinsic enjoyment)
    2. Excessive Freedom (open-world game with no objectives -> boredom)
@@ -722,7 +722,7 @@ export function ExcessiveFreedomPlate() {
 }
 
 /* ==========================================================================
-   9 · The Case of Microsoft Flight Simulator — Five selectable simulator
+   9. The Case of Microsoft Flight Simulator: Five selectable simulator
    capabilities:
    1. Realistic Environments, 2. Virtual Cockpit, 3. VR Support,
    4. Weather & Traffic, 5. Multiplayer
@@ -780,7 +780,7 @@ export function FlightSimCaseInteractive({
     <Plate
       w={800}
       h={284}
-      title={`Five capabilities of Microsoft Flight Simulator feeding into a central framed flight-simulator screen showing an aircraft flying above mountains: 1. Simulated environments, 2. Virtual cockpit, 3. VR support, 4. Weather & air traffic, and 5. Community & multiplayer; ${activeName} is highlighted in red`}
+      title={`Five capabilities of Microsoft Flight Simulator feeding into a central framed flight-simulator screen showing an aircraft flying above mountains: 1. Simulated environments, 2. Virtual cockpit, 3. VR support, 4. Weather & air traffic, and 5. Community & multiplayer. ${activeName} is highlighted in red`}
     >
       {/* Central Flight Simulator screen */}
       <Monitor x={304} y={56} w={192} h={144}>
@@ -867,7 +867,7 @@ export function FlightSimCaseTall({
     <Plate
       w={400}
       h={418}
-      title={`Five selectable Microsoft Flight Simulator features; ${FLIGHT_NODES[active]?.name ?? FLIGHT_NODES[0].name} is highlighted in red`}
+      title={`Five selectable Microsoft Flight Simulator features. ${FLIGHT_NODES[active]?.name ?? FLIGHT_NODES[0].name} is highlighted in red`}
     >
       {FLIGHT_NODES.map((node, i) => {
         const y = 12 + i * 80;
@@ -900,7 +900,7 @@ export function FlightSimCaseTall({
 }
 
 /* ==========================================================================
-   10 · Guitar Hero — Interactive learning-curve plate (w = 400) comparing
+   10. Guitar Hero: Interactive learning-curve plate (w = 400) comparing
    perceived progression in the first few months of a traditional musical
    instrument vs. Guitar Hero
    ========================================================================== */
@@ -971,7 +971,7 @@ export function GuitarHeroCurveInteractive() {
       {/* Readout band */}
       <rect x={24} y={200} width={352} height={42} fill={CREAM} stroke={INK} strokeWidth={2.5} />
       <text x={200} y={226} textAnchor="middle" {...HEAD} fontSize={14.5} fill={INK}>
-        Month {month}: Guitar Hero {ghVal}% · Instrument {instVal}%
+        Month {month}: Guitar Hero {ghVal}% | Instrument {instVal}%
       </text>
 
       {/* Draggable month knob */}
@@ -996,7 +996,7 @@ export function GuitarHeroCurveInteractive() {
 }
 
 /* ==========================================================================
-   11 · Zombies, Run! — Four selectable stages of the audio-gamified running
+   11. Zombies, Run! - Four selectable stages of the audio-gamified running
    experience:
    1. Walk or Run, 2. Mission & Music, 3. Collect Supplies, 4. Zombie Chases!
    ========================================================================== */
@@ -1080,7 +1080,7 @@ export function ZombiesRunTall() {
 }
 
 /* ==========================================================================
-   12 · Ethical Concerns — Three selectable panels showing the military
+   12. Ethical Concerns: Three selectable panels showing the military
    adoption of Xbox/PlayStation controllers:
    1. Why Controllers?, 2. Air Force RADBO, 3. iRobot PackBot
    ========================================================================== */
@@ -1090,7 +1090,7 @@ export function MilitaryControllerPlate() {
     <Plate
       w={800}
       h={194}
-      title="On the left, a young person uses a game controller with a framed gaming screen; a red arrow points to the right, where the same person uses the same red game controller to operate two framed military screens: Air Force RADBO (crosshair) and iRobot PackBot (robot)"
+      title="On the left, a young person uses a game controller with a framed gaming screen. A red arrow points to the right, where the same person uses the same red game controller to operate two framed military screens: Air Force RADBO (crosshair) and iRobot PackBot (robot)"
     >
       {/* Left: Gaming generation (console fluency) */}
       <Person x={60} y={40} k={0.96} hair="crop" />
@@ -1131,7 +1131,7 @@ export function MilitaryControllerPlate() {
 }
 
 /* ==========================================================================
-   13 · Can Immersive Technology and Gamification Help My Business? — Four
+   13. Can Immersive Technology and Gamification Help My Business? - Four
    selectable strategic questions:
    1. Intrinsic Gap?, 2. Use a Story, 3. Balance Both, 4. Do No Harm
    ========================================================================== */
@@ -1176,7 +1176,7 @@ export function BusinessQuestionsPlate({
     <Plate
       w={400}
       h={252}
-      title={`Four selectable business evaluation cards for gamification: 1. Intrinsic motivation?, 2. Induce with a story, 3. Balance both, and 4. Protect the person; ${activeName} is highlighted in red`}
+      title={`Four selectable business evaluation cards for gamification: 1. Intrinsic motivation?, 2. Induce with a story, 3. Balance both, and 4. Protect the person. ${activeName} is highlighted in red`}
     >
       {BIZ_CARDS.map((card, i) => {
         const col = i % 2;

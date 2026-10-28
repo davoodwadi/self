@@ -87,9 +87,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 11 — DIGITAL AND SOCIAL MEDIA MARKETING
+// WEEK 11: DIGITAL AND SOCIAL MEDIA MARKETING
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
@@ -292,7 +292,7 @@ const SECTIONS = [
   "ROI, Ethics and Privacy",
 ];
 
-/** The four parts of the week as a strip; the current one is lit. */
+/** The four parts of the week as a strip. The current one is lit. */
 function SectionStrip({
   active,
   className = "",
@@ -350,7 +350,7 @@ const STRATEGIES: { kind: ChannelKind; name: string }[] = [
   { kind: "email", name: "Email Marketing" },
 ];
 
-/** The four digital strategies as glyphs; the one this slide covers is lit. */
+/** The four digital strategies as glyphs. The one this slide covers is lit. */
 function StrategyStrip({ active }: { active: number }) {
   return (
     <ol aria-hidden className="mb-10 grid w-full grid-cols-4 gap-2 sm:gap-4">
@@ -514,7 +514,7 @@ export default function Week11() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 11 · Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 11: Introduction to Marketing</Subtitle>
         <p className="type-lead mt-6 !text-[var(--ink)]">
           Welcome to Week 11
         </p>
@@ -536,7 +536,7 @@ export default function Week11() {
       </Slide>
 
       {/* ================================================================
-          Part 1 — Traditional to Digital
+          Part 1: Traditional to Digital
           ================================================================ */}
       <TopicSlide
         id="the-evolution-traditional-to-digital"
@@ -746,7 +746,7 @@ export default function Week11() {
       </TopicSlide>
 
       {/* ================================================================
-          Part 2 — SEO, SEM, Content, Email
+          Part 2: SEO, SEM, Content, Email
           ================================================================ */}
       <TopicSlide
         id="strategy-search-engine-optimization-seo"
@@ -929,7 +929,7 @@ export default function Week11() {
       </Slide>
 
       {/* ================================================================
-          Part 3 — Social Media Marketing
+          Part 3: Social Media Marketing
           ================================================================ */}
       <TopicSlide
         id="the-power-of-social-media-marketing"
@@ -1151,7 +1151,7 @@ export default function Week11() {
       </TopicSlide>
 
       {/* ================================================================
-          Part 4 — ROI, Ethics and Privacy
+          Part 4: ROI, Ethics and Privacy
           ================================================================ */}
       <TopicSlide
         id="the-challenge-measuring-roi"

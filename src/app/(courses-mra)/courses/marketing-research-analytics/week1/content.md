@@ -34,7 +34,7 @@ week: week1
 - Examples include market potential studies, market share tracking, and brand image research.
 - Problem-solving research informs the choice among alternative courses of action for a known problem.
 - Examples include pricing research, advertising testing, and product concept tests.
-- A single project may combine both types; identifying the type required determines the design of the study.
+- A single project may combine both types. Identifying the type required determines the design of the study.
 
 ## When Research Is Justified [exercise]
 - Research requires financial resources and time, and its expected benefit must therefore exceed its cost.
@@ -61,7 +61,7 @@ week: week1
 - A symptom is an observable change, such as declining sales, increasing complaints, or fewer repeat visits.
 - A problem is the underlying cause that produces the symptom.
 - Declining sales at a coffee chain may result from a new competitor, a price increase, slower service, or a change in commuting patterns.
-- Each cause requires a different decision; the researcher must therefore identify the underlying cause before designing the study.
+- Each cause requires a different decision. The researcher must therefore identify the underlying cause before designing the study.
 
 ## The Problem Audit [no-exercise]
 - A problem audit is a structured examination of the decision situation, conducted by the researcher together with the decision maker.
@@ -94,7 +94,7 @@ week: week1
 - The steps are presented in sequence, although in practice researchers return to earlier steps when new evidence changes the question.
 
 ## The Six Steps of the Research Process [exercise]
-[figure: ResearchProcess — six steps from problem definition to report, with a loop back to the start]
+[figure: ResearchProcess: six steps from problem definition to report, with a loop back to the start]
 - Step 1 is defining the problem, through the problem audit and discussions with decision makers.
 - Step 2 is developing an approach to the problem, including the theoretical framework, research questions, and hypotheses.
 - Step 3 is formulating the research design, which specifies the type of study, the measures, and the sample.

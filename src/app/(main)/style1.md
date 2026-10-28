@@ -5,7 +5,7 @@ This portfolio utilizes a meticulously crafted visual identity aimed at conveyin
 ## Core Design Aspirations
 
 ### 1. The "Obsidian & Champagne" Palette
-Instead of standard digital dark modes (which often use flat dark grays like `#111` or `#1a1a1a`), the design uses a deep "Obsidian" base (`#030303`, `#08080a`). This almost-pitch-black canvas creates a sense of infinite depth. To complement this, the accent color is shifted to a sophisticated "Champagne Gold" (`#8c7349`). This specific gold avoids looking gaudy; it feels like the foil stamping on a high-quality academic journal or a premium hardcover book, adding an immediate sense of prestige and authority.
+Instead of standard digital dark modes (which often use flat dark grays like `#111` or `#1a1a1a`), the design uses a deep "Obsidian" base (`#030303`, `#08080a`). This almost-pitch-black canvas creates a sense of infinite depth. To complement this, the accent color is shifted to a sophisticated "Champagne Gold" (`#8c7349`). This specific gold avoids looking gaudy. It feels like the foil stamping on a high-quality academic journal or a premium hardcover book, adding an immediate sense of prestige and authority.
 
 ### 2. Editorial Typography
 The typography scale and spacing have been refined to mimic high-end editorial layouts:

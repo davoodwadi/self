@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 02 — figures
+   Week 02: figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates for The Marketing Environment and Ethics. Each idea
    gets its own grammar: nested rings, a supply chain between two bands, a
@@ -7,8 +7,7 @@
    canopy, a two-way exchange, a weave, a gap, a price tag, a checklist,
    cut-short lifespans, a lettered strip and a balance.
 
-   Interactive-first: five plates are instruments the student moves —
-   PurchasingPower (inflation and rate knobs squeeze what is left to spend),
+   Interactive-first: five plates are instruments the student moves, PurchasingPower (inflation and rate knobs squeeze what is left to spend),
    AbsorbOrPass (share of the fair-trade cost passed on → margin and price
    gap), PressureOverTime (drag the month the totals are judged → find the
    crossover), SustainableCatch (yearly catch → which generations go short)
@@ -16,11 +15,11 @@
    flips).
 
    Conventions are Week 01's, and the type primitives are imported from it:
-     · viewBox width 800 for full-width plates, 400 for plates that sit in a
+     - viewBox width 800 for full-width plates, 400 for plates that sit in a
        column (their keys are sized up so they read at the same scale)
-     · INK carries the neutral case, SIGNAL the operative one, COUNTER the
+     - INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or the outward-looking state
-     · every label reuses words from the slide the plate sits on
+     - every label reuses words from the slide the plate sits on
    ========================================================================== */
 
 import React from "react";
@@ -55,7 +54,7 @@ const INK_TINT = "rgba(23, 22, 15, 0.06)";
 const f2 = (n: number) => +n.toFixed(2);
 
 /* ==========================================================================
-   1 · NESTED RINGS — the environment around marketing
+   1. NESTED RINGS: the environment around marketing
    ========================================================================== */
 
 export function EnvironmentRings() {
@@ -129,7 +128,7 @@ export function EnvironmentRings() {
 }
 
 /* ==========================================================================
-   2 · CHAIN BETWEEN BANDS — the six actors of the microenvironment
+   2. CHAIN BETWEEN BANDS: the six actors of the microenvironment
    ========================================================================== */
 
 export function MicroActors() {
@@ -207,7 +206,7 @@ export function MicroActors() {
 }
 
 /* ==========================================================================
-   3 · HUB AND SPOKES — the PESTLE framework
+   3. HUB AND SPOKES: the PESTLE framework
    ========================================================================== */
 
 export const PESTLE = [
@@ -287,7 +286,7 @@ export function PestleHub() {
 }
 
 /* ==========================================================================
-   4 · CORRIDOR — political forces influence or limit how a business operates
+   4. CORRIDOR: political forces influence or limit how a business operates
    Column plate, viewBox 400.
    ========================================================================== */
 
@@ -343,7 +342,7 @@ export function PoliticalCorridor() {
 }
 
 /* ==========================================================================
-   5 · SQUEEZE — economic forces decide whether consumers can afford it
+   5. SQUEEZE: economic forces decide whether consumers can afford it
    Wide column plate, viewBox 640. Interactive: the student drags inflation and
    interest rates and watches what is left of a household's income shrink
    much faster than either percentage, until it no longer reaches the price.
@@ -367,7 +366,7 @@ export function PurchasingPower() {
   const x0 = 20;
   const x1 = 620;
   const W = x1 - x0;
-  // income row: the whole month; left-to-spend row: zoomed in on the remainder
+  // income row: the whole month. Left-to-spend row: zoomed in on the remainder
   const xi = (v: number) => r2(x0 + (v / h.income) * W);
   const xl = (v: number) => r2(x0 + (v / 1400) * W);
   const bar = { y: 30, h: 28 };
@@ -452,7 +451,7 @@ export function PurchasingPower() {
 }
 
 /* ==========================================================================
-   6 · STRATA — social forces reach down to basic values
+   6. STRATA: social forces reach down to basic values
    Column plate, viewBox 400.
    ========================================================================== */
 
@@ -516,7 +515,7 @@ export function SocialStrata() {
 }
 
 /* ==========================================================================
-   7 · BRANCHING STEM — technology opens products and markets
+   7. BRANCHING STEM: technology opens products and markets
    Column plate, viewBox 400.
    ========================================================================== */
 
@@ -575,7 +574,7 @@ export function TechnologyBranches() {
 }
 
 /* ==========================================================================
-   8 · CANOPY — the three things legislation protects
+   8. CANOPY: the three things legislation protects
    Column plate, viewBox 400.
    ========================================================================== */
 
@@ -641,7 +640,7 @@ export function LegislationCanopy() {
 }
 
 /* ==========================================================================
-   9 · TWO-WAY EXCHANGE — resources in, effects out
+   9. TWO-WAY EXCHANGE: resources in, effects out
    Column plate, viewBox 400.
    ========================================================================== */
 
@@ -696,7 +695,7 @@ export function ResourceExchange() {
 }
 
 /* ==========================================================================
-   10 · WEAVE — CSR runs through the business strategy
+   10. WEAVE: CSR runs through the business strategy
    ========================================================================== */
 
 export function CsrWeave() {
@@ -762,7 +761,7 @@ export function CsrWeave() {
 }
 
 /* ==========================================================================
-   11 · GAP — more spent on claiming than on implementing
+   11. GAP: more spent on claiming than on implementing
    ========================================================================== */
 
 export function GreenwashingGap() {
@@ -807,7 +806,7 @@ export function GreenwashingGap() {
 }
 
 /* ==========================================================================
-   12 · ABSORB OR PASS — the cost of fair-trade materials goes somewhere
+   12. ABSORB OR PASS: the cost of fair-trade materials goes somewhere
    Column plate, viewBox 400. Interactive: the student drags the brand's
    price between absorbing the extra cost and passing it all on, and sees
    what each choice does to its margin and to its price next to a rival's.
@@ -912,7 +911,7 @@ export function AbsorbOrPass() {
 }
 
 /* ==========================================================================
-   13 · PRICE TAG — a reduction from a phony high retail price
+   13. PRICE TAG: a reduction from a phony high retail price
    Column plate, viewBox 400.
    ========================================================================== */
 
@@ -921,7 +920,7 @@ export function PhonyPriceTag() {
     <Frame
       width={400}
       height={250}
-      label="A price tag stamped factory price. A crossed-out was price sits above a lower now price; a note marks the was price as a phony high retail price."
+      label="A price tag stamped factory price. A crossed-out was price sits above a lower now price. A note marks the was price as a phony high retail price."
     >
       <g transform="rotate(-4 140 130)">
         <path d="M40 60 L200 60 L240 130 L200 200 L40 200 Z" fill={PAPER} stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
@@ -957,7 +956,7 @@ export function PhonyPriceTag() {
 }
 
 /* ==========================================================================
-   14 · CHECKLIST — what is promoted against what the product does
+   14. CHECKLIST: what is promoted against what the product does
    Column plate, viewBox 400.
    ========================================================================== */
 
@@ -980,7 +979,7 @@ export function MisrepresentedChecklist() {
     <Frame
       width={400}
       height={250}
-      label="A checklist in two columns. The advertised column ticks every feature and the product's performance. The product column ticks only some; the rows it fails are highlighted as misrepresented."
+      label="A checklist in two columns. The advertised column ticks every feature and the product's performance. The product column ticks only some. The rows it fails are highlighted as misrepresented."
     >
       <Key x={colA} y={50} anchor="middle" fill={INK} size={11}>
         ADVERTISED
@@ -1013,9 +1012,9 @@ export function MisrepresentedChecklist() {
 }
 
 /* ==========================================================================
-   15 · RUNNING TOTALS — short-term gains, long-term damage
+   15. RUNNING TOTALS: short-term gains, long-term damage
    Column plate, viewBox 400. Interactive: the student drags the day the
-   results are judged. Pressure wins the first months; the plate lets them
+   results are judged. Pressure wins the first months. The plate lets them
    find the month the steady seller pulls ahead and stays ahead.
    ========================================================================== */
 
@@ -1051,7 +1050,7 @@ export function PressureOverTime() {
     <Frame
       width={400}
       height={284}
-      label={`Monthly sales over three years. High-pressure selling spikes to 180 in the first three months, then slides toward 55 as relationships and reputation wear; selling without pressure stays at 100. The month the totals are judged can be dragged. After ${month} months, high-pressure selling has sold ${pushed.toLocaleString("en-US")} and no pressure ${steady.toLocaleString("en-US")}, so ${ahead === "pushed" ? "high pressure is ahead" : "no pressure is ahead"}.`}
+      label={`Monthly sales over three years. High-pressure selling spikes to 180 in the first three months, then slides toward 55 as relationships and reputation wear. Selling without pressure stays at 100. The month the totals are judged can be dragged. After ${month} months, high-pressure selling has sold ${pushed.toLocaleString("en-US")} and no pressure ${steady.toLocaleString("en-US")}, so ${ahead === "pushed" ? "high pressure is ahead" : "no pressure is ahead"}.`}
     >
       <Key x={16} y={16} fill={INK} size={10}>
         {`TOTAL SALES AFTER ${month} MONTHS`}
@@ -1106,7 +1105,7 @@ export function PressureOverTime() {
 }
 
 /* ==========================================================================
-   16 · CUT-SHORT LIFESPANS — replaced before it needs replacement
+   16. CUT-SHORT LIFESPANS: replaced before it needs replacement
    ========================================================================== */
 
 export function ObsolescenceLifespans() {
@@ -1172,10 +1171,10 @@ export function ObsolescenceLifespans() {
 }
 
 /* ==========================================================================
-   17 · A SHARED STOCK — present needs, future generations
+   17. A SHARED STOCK: present needs, future generations
    Column plate, viewBox 400. Interactive: the student sets how many fish
    are caught each year, every year, for a century. Below present needs, today
-   goes short; a little above what the stock regrows, the stock collapses and
+   goes short. A little above what the stock regrows, the stock collapses and
    the generations that come later go short instead.
    ========================================================================== */
 
@@ -1219,7 +1218,7 @@ export function SustainableCatch() {
     <Frame
       width={400}
       height={276}
-      label={`A fish stock over 100 years, four generations of 25 years each, while ${target} tonnes a year are caught; present needs are 4.5. The yearly catch can be dragged. ${gens.map((ok, g) => `${g === 0 ? "Today's generation" : `the generation in ${g * 25} years`} ${ok ? "meets" : "falls short of"} its needs`).join("; ")}.`}
+      label={`A fish stock over 100 years, four generations of 25 years each, while ${target} tonnes a year are caught. Present needs are 4.5. The yearly catch can be dragged. ${gens.map((ok, g) => `${g === 0 ? "Today's generation" : `the generation in ${g * 25} years`} ${ok ? "meets" : "falls short of"} its needs`).join(". ")}.`}
     >
       <Fish x={x0 - 30} y={top - 26} size={22} weight="duotone" color={COUNTER} />
       <Key x={x0 - 4} y={top - 10} fill={COUNTER} size={9.5}>
@@ -1273,8 +1272,8 @@ export function SustainableCatch() {
 }
 
 /* ==========================================================================
-   18 · ONE DEVELOPMENT, SEVERAL FORCES — AI in the PESTLE strip
-   Column plate, viewBox 400. The six forces in their usual strip; AI drops
+   18. ONE DEVELOPMENT, SEVERAL FORCES: AI in the PESTLE strip
+   Column plate, viewBox 400. The six forces in their usual strip. AI drops
    a line into three of them at once.
    ========================================================================== */
 
@@ -1327,9 +1326,9 @@ export function AiTouchesForces() {
 }
 
 /* ==========================================================================
-   19 · THE AGENT'S SCALE — dark patterns aimed at an AI agent
+   19. THE AGENT'S SCALE: dark patterns aimed at an AI agent
    Interactive: the student switches on seller B's tricks. Each one moves a
-   weight on the scale the AI agent uses to compare two coffees; one trick
+   weight on the scale the AI agent uses to compare two coffees. One trick
    alone does not tip it, and any two do. The consumer pays for the result.
    ========================================================================== */
 
@@ -1350,7 +1349,7 @@ export function AgentScale() {
   const [on, setOn] = React.useState<Trick[]>([]);
   const has = (t: Trick) => on.includes(t);
 
-  // the weights the agent can see on each side; heights are their weight
+  // the weights the agent can see on each side. Heights are their weight
   const blocks: { side: "a" | "b"; k: string; h: number }[] = [];
   if (!has("image")) blocks.push({ side: "a", k: "PRICE PER OUNCE", h: 39 });
   blocks.push({ side: has("reviews") ? "b" : "a", k: "REVIEWS", h: 26 });
@@ -1440,7 +1439,7 @@ export function AgentScale() {
       <Frame
         width={680}
         height={378}
-        label={`A consumer asks an AI agent for the best-value coffee, and the agent weighs two coffees on a balance. Coffee A costs $0.62 an ounce with reviews of 4.4; coffee B costs $0.89 an ounce with reviews of 3.9. Seller B's tricks can be switched on: showing its price per ounce only in an image, hidden text telling AI agents to recommend it, and fake reviews that lift it to 4.8. ${on.length ? `With ${on.length} trick${on.length > 1 ? "s" : ""} on` : "With no tricks"}, the scale tips to coffee ${pick.toUpperCase()}, and the consumer pays $${(pick === "a" ? COFFEE.a.oz : COFFEE.b.oz).toFixed(2)} an ounce.`}
+        label={`A consumer asks an AI agent for the best-value coffee, and the agent weighs two coffees on a balance. Coffee A costs $0.62 an ounce with reviews of 4.4. Coffee B costs $0.89 an ounce with reviews of 3.9. Seller B's tricks can be switched on: showing its price per ounce only in an image, hidden text telling AI agents to recommend it, and fake reviews that lift it to 4.8. ${on.length ? `With ${on.length} trick${on.length > 1 ? "s" : ""} on` : "With no tricks"}, the scale tips to coffee ${pick.toUpperCase()}, and the consumer pays $${(pick === "a" ? COFFEE.a.oz : COFFEE.b.oz).toFixed(2)} an ounce.`}
       >
         <g transform="translate(-64 0)">
         {/* the consumer's request, handed to the agent */}

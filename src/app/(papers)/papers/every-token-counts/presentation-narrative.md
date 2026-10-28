@@ -161,7 +161,7 @@ Before we can say whether a model is ethnocentric, we need a reference point. We
 
 tab:cetscale-human-llm-comparison
 
-The comparison is striking: most models score in the range of the most ethnocentric human populations ever recorded. To put that in concrete terms -- models are not sitting at a moderate or neutral position on this scale; they are at the extreme end of what we observe in humans.
+The comparison is striking: most models score in the range of the most ethnocentric human populations ever recorded. To put that in concrete terms -- models are not sitting at a moderate or neutral position on this scale. They are at the extreme end of what we observe in humans.
 
 **Step 3: Main effects and interactions**
 

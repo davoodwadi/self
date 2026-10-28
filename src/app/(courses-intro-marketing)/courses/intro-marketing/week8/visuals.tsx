@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 08 — figures
+   Week 08, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea: bars above and below a zero
    line for revenue and costs, a company wall with the price tag set into it,
@@ -10,12 +10,12 @@
    and a fork for the coffee-pod dilemma.
 
    Conventions carried over from earlier weeks:
-     · viewBox width 800 (400 for column plates), flat fills, hairline rules,
+     - viewBox width 800 (400 for column plates), flat fills, hairline rules,
        no shadows or gradients
-     · INK carries the neutral case, SIGNAL the operative one, COUNTER the
+     - INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or outward-looking state
-     · every label reuses words from the slide the plate sits on
-     · integer coordinates only, so server and client render the same markup
+     - every label reuses words from the slide the plate sits on
+     - integer coordinates only, so server and client render the same markup
    ========================================================================== */
 
 import React from "react";
@@ -71,7 +71,7 @@ function Bell({ x, y, tone = INK }: { x: number; y: number; tone?: string }) {
 }
 
 /* ==========================================================================
-   0 · TITLE — price, the bottom line, and customer perception (600)
+   0. TITLE: price, the bottom line, and customer perception (600)
    ========================================================================== */
 
 export function BottomLinePerception() {
@@ -96,7 +96,7 @@ export function BottomLinePerception() {
 }
 
 /* ==========================================================================
-   1 · REVENUE AND COSTS — the only element of the mix that produces revenue
+   1. REVENUE AND COSTS: the only element of the mix that produces revenue
    ========================================================================== */
 
 export function RevenueAndCosts() {
@@ -145,7 +145,7 @@ export function RevenueAndCosts() {
 }
 
 /* ==========================================================================
-   2 · TIME TO CHANGE — price changes quickly, features and channels do not
+   2. TIME TO CHANGE: price changes quickly, features and channels do not
    ========================================================================== */
 
 export function ChangeSpeed() {
@@ -182,7 +182,7 @@ export function ChangeSpeed() {
 }
 
 /* ==========================================================================
-   3 · CHOICE AND SHARE — price decides buyer choice and market share (400)
+   3. CHOICE AND SHARE: price decides buyer choice and market share (400)
    ========================================================================== */
 
 export function ChoiceShare() {
@@ -208,7 +208,7 @@ export function ChoiceShare() {
 }
 
 /* ==========================================================================
-   4 · THE COMPANY WALL — internal capabilities, external realities
+   4. THE COMPANY WALL: internal capabilities, external realities
    ========================================================================== */
 
 export function InsideOutside() {
@@ -255,7 +255,7 @@ export function InsideOutside() {
 }
 
 /* ==========================================================================
-   5 · ALIGNMENT — pricing strategies line up with company goals (400)
+   5. ALIGNMENT: pricing strategies line up with company goals (400)
    ========================================================================== */
 
 export function AlignGoals() {
@@ -277,7 +277,7 @@ export function AlignGoals() {
 }
 
 /* ==========================================================================
-   6 · FOUR OBJECTIVES — shown two at a time (400)
+   6. FOUR OBJECTIVES: shown two at a time (400)
    ========================================================================== */
 
 function ObjectiveCard({ cx, lines, children }: { cx: number; lines: string[]; children: React.ReactNode }) {
@@ -332,7 +332,7 @@ export function Objectives({ pair }: { pair: "first" | "second" }) {
 }
 
 /* ==========================================================================
-   7 · SPOTLIGHT — a clear objective guides the initial pricing range
+   7. SPOTLIGHT: a clear objective guides the initial pricing range
    ========================================================================== */
 
 export function ObjectiveRange() {
@@ -368,7 +368,7 @@ export function ObjectiveRange() {
 }
 
 /* ==========================================================================
-   8 · THE FLOOR — costs set the absolute floor for price (400)
+   8. THE FLOOR: costs set the absolute floor for price (400)
    ========================================================================== */
 
 export function CostFloor() {
@@ -381,7 +381,7 @@ export function CostFloor() {
       <Tag1 x={220} y={128} w={96} h={40} tone={SIGNAL} fill={SIGNAL_TINT} label="$$" size={10.5} width={2} />
       <rect x={20} y={150} width={360} height={34} fill={INK} />
       <Key x={36} y={172} fill={PAPER} size={10.5}>
-        COSTS · THE ABSOLUTE FLOOR
+        COSTS | THE ABSOLUTE FLOOR
       </Key>
       {Array.from({ length: 11 }, (_, i) => (
         <line key={i} x1={20 + i * 32} y1={240} x2={52 + i * 32} y2={190} stroke={RULE} strokeWidth={1} />
@@ -392,7 +392,7 @@ export function CostFloor() {
 }
 
 /* ==========================================================================
-   9 · FIXED AND VARIABLE — two cost lines against production level (400)
+   9. FIXED AND VARIABLE: two cost lines against production level (400)
    ========================================================================== */
 
 export function CostLine({ kind }: { kind: "fixed" | "variable" }) {
@@ -437,7 +437,7 @@ export function CostLine({ kind }: { kind: "fixed" | "variable" }) {
 }
 
 /* ==========================================================================
-   10 · TOTAL COSTS — fixed plus variable, and revenue that covers them
+   10. TOTAL COSTS: fixed plus variable, and revenue that covers them
    ========================================================================== */
 
 export function TotalCosts() {
@@ -491,7 +491,7 @@ export function TotalCosts() {
 }
 
 /* ==========================================================================
-   11 · FLOOR AND CEILING — costs below, the market above
+   11. FLOOR AND CEILING: costs below, the market above
    ========================================================================== */
 
 export function FloorCeiling() {
@@ -499,7 +499,7 @@ export function FloorCeiling() {
     <Frame height={270} label="A room for price. The ceiling is the market, the upper limit. The floor is costs, the lower limit. A price tag floats between them, free to move up or down.">
       <rect x={20} y={16} width={760} height={34} fill={COUNTER} />
       <Key x={40} y={38} fill={PAPER} size={10.5}>
-        THE MARKET · UPPER LIMIT
+        THE MARKET | UPPER LIMIT
       </Key>
       {[560, 600, 640, 680, 720].map((x) => (
         <Person3 key={x} x={x} y={46} k={0.75} stroke={PAPER} fill={COUNTER} />
@@ -507,7 +507,7 @@ export function FloorCeiling() {
       <rect x={20} y={50} width={760} height={170} fill={PAPER3} />
       <rect x={20} y={220} width={760} height={34} fill={INK} />
       <Key x={40} y={242} fill={PAPER} size={10.5}>
-        COSTS · LOWER LIMIT
+        COSTS | LOWER LIMIT
       </Key>
       <Tag1 x={400} y={135} w={110} h={48} tone={SIGNAL} fill={PAPER} label="$$" size={12} width={2.25} />
       <line x1={500} y1={64} x2={500} y2={206} stroke={INK3} strokeWidth={1.25} strokeDasharray="4 4" />
@@ -518,7 +518,7 @@ export function FloorCeiling() {
 }
 
 /* ==========================================================================
-   12 · DEMAND CURVE — the relationship between price and demand (400)
+   12. DEMAND CURVE: the relationship between price and demand (400)
    ========================================================================== */
 
 export function DemandCurve() {
@@ -550,7 +550,7 @@ export function DemandCurve() {
 }
 
 /* ==========================================================================
-   13 · FOUR MARKETS — sellers and pricing freedom
+   13. FOUR MARKETS: sellers and pricing freedom
    ========================================================================== */
 
 export function MarketStructures() {
@@ -598,7 +598,7 @@ export function MarketStructures() {
 }
 
 /* ==========================================================================
-   14 · ELASTICITY — the same price change, two demand responses (400)
+   14. ELASTICITY: the same price change, two demand responses (400)
    ========================================================================== */
 
 export function Elasticity({ kind, title }: { kind: "inelastic" | "elastic"; title?: string }) {
@@ -656,7 +656,7 @@ export function Elasticity({ kind, title }: { kind: "inelastic" | "elastic"; tit
 }
 
 /* ==========================================================================
-   15 · FORECAST — the same price increase, two revenue forecasts
+   15. FORECAST: the same price increase, two revenue forecasts
    ========================================================================== */
 
 export function RevenueForecast() {
@@ -694,7 +694,7 @@ export function RevenueForecast() {
 }
 
 /* ==========================================================================
-   16 · THREE LANES — the three core pricing approaches (split lane)
+   16. THREE LANES: the three core pricing approaches (split lane)
    ========================================================================== */
 
 export function ApproachLanes() {
@@ -734,7 +734,7 @@ export function ApproachLanes() {
 }
 
 /* ==========================================================================
-   17 · THE KEY TO PRICING — buyers' perceptions of value (400)
+   17. THE KEY TO PRICING: buyers' perceptions of value (400)
    ========================================================================== */
 
 export function ValueKey() {
@@ -755,7 +755,7 @@ export function ValueKey() {
 }
 
 /* ==========================================================================
-   18 · ALL AT ONCE — price with the other mix variables, then the program
+   18. ALL AT ONCE: price with the other mix variables, then the program
    ========================================================================== */
 
 export function MixTogether() {
@@ -793,7 +793,7 @@ export function MixTogether() {
 }
 
 /* ==========================================================================
-   19 · REVERSED CHAINS — value-based runs the cost-based chain backwards
+   19. REVERSED CHAINS: value-based runs the cost-based chain backwards
    ========================================================================== */
 
 export function ReverseChains() {
@@ -836,7 +836,7 @@ export function ReverseChains() {
 }
 
 /* ==========================================================================
-   20 · GOOD VALUE — quality and good service balanced by a fair price (400)
+   20. GOOD VALUE: quality and good service balanced by a fair price (400)
    ========================================================================== */
 
 export function GoodValueBalance() {
@@ -862,7 +862,7 @@ export function GoodValueBalance() {
 }
 
 /* ==========================================================================
-   21 · A CHEAPER VERSION — of an established brand-name product (400)
+   21. A CHEAPER VERSION: of an established brand-name product (400)
    ========================================================================== */
 
 export function LessExpensiveVersion() {
@@ -892,7 +892,7 @@ export function LessExpensiveVersion() {
 }
 
 /* ==========================================================================
-   22 · VALUE ADDED — features attached to differentiate the offer (400)
+   22. VALUE ADDED: features attached to differentiate the offer (400)
    ========================================================================== */
 
 export function ValueAddedFeatures() {
@@ -925,7 +925,7 @@ export function ValueAddedFeatures() {
 }
 
 /* ==========================================================================
-   23 · UP, NOT DOWN — charge more instead of cutting to match (400)
+   23. UP, NOT DOWN: charge more instead of cutting to match (400)
    ========================================================================== */
 
 export function HigherNotCut() {
@@ -950,7 +950,7 @@ export function HigherNotCut() {
 }
 
 /* ==========================================================================
-   24 · COST BUILD-UP — producing, distributing, selling, plus a fair return
+   24. COST BUILD-UP: producing, distributing, selling, plus a fair return
    ========================================================================== */
 
 export function CostBuildUp() {
@@ -991,12 +991,12 @@ export function CostBuildUp() {
 }
 
 /* ==========================================================================
-   25 · TWO TYPES — cost-plus pricing beside break-even pricing
+   25. TWO TYPES: cost-plus pricing beside break-even pricing
    ========================================================================== */
 
 export function CostTypes() {
   return (
-    <Frame height={250} label="Two panels. Cost-plus pricing: a block of cost with a small block added on, which together make the price tag. Break-even pricing: a total costs line that starts above zero and a revenue line that starts at zero and rises faster; they cross at the break-even point.">
+    <Frame height={250} label="Two panels. Cost-plus pricing: a block of cost with a small block added on, which together make the price tag. Break-even pricing: a total costs line that starts above zero and a revenue line that starts at zero and rises faster. They cross at the break-even point.">
       <Key x={30} y={32} fill={INK} size={13.8}>
         COST-PLUS PRICING
       </Key>
@@ -1041,7 +1041,7 @@ export function CostTypes() {
 }
 
 /* ==========================================================================
-   27 · FIELD OF VIEW — cost-based pricing sees costs, not demand or rivals
+   27. FIELD OF VIEW: cost-based pricing sees costs, not demand or rivals
    ========================================================================== */
 
 export function Blinkers() {
@@ -1076,7 +1076,7 @@ export function Blinkers() {
 }
 
 /* ==========================================================================
-   28 · THE RIVAL FILE — strategies, prices, costs, and market offerings
+   28. THE RIVAL FILE: strategies, prices, costs, and market offerings
    ========================================================================== */
 
 export function CompetitorReadings() {
@@ -1115,7 +1115,7 @@ export function CompetitorReadings() {
 }
 
 /* ==========================================================================
-   29 · THE SHELF — consumers judge value by competitors' prices
+   29. THE SHELF: consumers judge value by competitors' prices
    ========================================================================== */
 
 export function ValueJudged() {
@@ -1144,7 +1144,7 @@ export function ValueJudged() {
 }
 
 /* ==========================================================================
-   30 · GREATER VALUE, HIGHER PRICE — comparing the offer to competitors (400)
+   30. GREATER VALUE, HIGHER PRICE: comparing the offer to competitors (400)
    ========================================================================== */
 
 export function ValueJustifies() {
@@ -1184,7 +1184,7 @@ export function ValueJustifies() {
 }
 
 /* ==========================================================================
-   31 · A CROWDED MARKET — giants with big libraries, a newcomer with an edge
+   31. A CROWDED MARKET: giants with big libraries, a newcomer with an edge
    ========================================================================== */
 
 export function StreamingMarket() {
@@ -1237,7 +1237,7 @@ export function StreamingMarket() {
 }
 
 /* ==========================================================================
-   32 · CASCADE — from skimming to penetration across the life cycle
+   32. CASCADE: from skimming to penetration across the life cycle
    ========================================================================== */
 
 export function SkimToPenetrate() {
@@ -1291,7 +1291,7 @@ export function SkimToPenetrate() {
 }
 
 /* ==========================================================================
-   33 · THE LAYERED MARKET — skimming layer by layer, or penetrating deeply
+   33. THE LAYERED MARKET: skimming layer by layer, or penetrating deeply
    ========================================================================== */
 
 export function MarketLayers({ mode }: { mode: "skim" | "penetrate" }) {
@@ -1368,7 +1368,7 @@ export function MarketLayers({ mode }: { mode: "skim" | "penetrate" }) {
 }
 
 /* ==========================================================================
-   34 · FEWER, BUT MORE PROFITABLE — three sales, each with a tall stack (400)
+   34. FEWER, BUT MORE PROFITABLE: three sales, each with a tall stack (400)
    ========================================================================== */
 
 export function FewerProfitable() {
@@ -1389,7 +1389,7 @@ export function FewerProfitable() {
 }
 
 /* ==========================================================================
-   35 · PILLARS — product quality and image hold up the high price (400)
+   35. PILLARS: product quality and image hold up the high price (400)
    ========================================================================== */
 
 export function QualityImagePillars() {
@@ -1417,7 +1417,7 @@ export function QualityImagePillars() {
 }
 
 /* ==========================================================================
-   36 · THE WALL — competitors cannot easily enter and undercut (400)
+   36. THE WALL: competitors cannot easily enter and undercut (400)
    ========================================================================== */
 
 export function NoUndercut() {
@@ -1444,7 +1444,7 @@ export function NoUndercut() {
 }
 
 /* ==========================================================================
-   37 · MANY BUYERS, QUICKLY — a crowd, a stopwatch, a large share (400)
+   37. MANY BUYERS, QUICKLY: a crowd, a stopwatch, a large share (400)
    ========================================================================== */
 
 export function ManyBuyersShare() {
@@ -1472,7 +1472,7 @@ export function ManyBuyersShare() {
 }
 
 /* ==========================================================================
-   38 · COSTS FALL — production and distribution costs with volume (400)
+   38. COSTS FALL: production and distribution costs with volume (400)
    ========================================================================== */
 
 export function CostsFall() {
@@ -1500,7 +1500,7 @@ export function CostsFall() {
 }
 
 /* ==========================================================================
-   39 · PART OF A MIX — one product, then the same product among others (400)
+   39. PART OF A MIX: one product, then the same product among others (400)
    ========================================================================== */
 
 export function AloneVsMix() {
@@ -1530,7 +1530,7 @@ export function AloneVsMix() {
 }
 
 /* ==========================================================================
-   40 · THE TOTAL MIX — a set of prices, profits summed across products
+   40. THE TOTAL MIX: a set of prices, profits summed across products
    ========================================================================== */
 
 export function TotalMixProfit() {
@@ -1574,7 +1574,7 @@ export function TotalMixProfit() {
 }
 
 /* ==========================================================================
-   41 · RELATED DEMAND — change one price and the others move too (400)
+   41. RELATED DEMAND: change one price and the others move too (400)
    ========================================================================== */
 
 export function RelatedDemand() {
@@ -1612,7 +1612,7 @@ export function RelatedDemand() {
 }
 
 /* ==========================================================================
-   42 · PRICE STEPS — products in a line, priced on a staircase
+   42. PRICE STEPS: products in a line, priced on a staircase
    ========================================================================== */
 
 export function PriceSteps() {
@@ -1654,12 +1654,12 @@ export function PriceSteps() {
 }
 
 /* ==========================================================================
-   43 · WHAT SETS A STEP — costs, feature evaluations, competitors' prices
+   43. WHAT SETS A STEP: costs, feature evaluations, competitors' prices
    ========================================================================== */
 
 export function StepInputs() {
   return (
-    <Frame height={226} label="Three inputs feed into the price steps: cost differences, shown as two coin stacks of different heights; customer evaluations of features, shown as a customer with a star rating; and competitors' prices, shown as their price tags.">
+    <Frame height={226} label="Three inputs feed into the price steps: cost differences, shown as two coin stacks of different heights. Customer evaluations of features, shown as a customer with a star rating. And competitors' prices, shown as their price tags.">
       {[140, 400, 660].map((cx) => (
         <rect key={cx} x={cx - 115} y={16} width={230} height={108} fill={PAPER} stroke={INK} strokeWidth={1.25} />
       ))}
@@ -1698,7 +1698,7 @@ export function StepInputs() {
 }
 
 /* ==========================================================================
-   44 · OPTIONS — a main product with accessories priced alongside (400)
+   44. OPTIONS: a main product with accessories priced alongside (400)
    ========================================================================== */
 
 function Mouse({ x, y, tone = INK, dash }: { x: number; y: number; tone?: string; dash?: string }) {
@@ -1753,7 +1753,7 @@ export function OptionalProducts() {
 }
 
 /* ==========================================================================
-   45 · BASE OR OPTION — sorting items into the base price or the options (400)
+   45. BASE OR OPTION: sorting items into the base price or the options (400)
    ========================================================================== */
 
 export function BaseOrOptions() {
@@ -1782,7 +1782,7 @@ export function BaseOrOptions() {
 }
 
 /* ==========================================================================
-   46 · THE FIT — a captive product must be used with the main product (400)
+   46. THE FIT: a captive product must be used with the main product (400)
    ========================================================================== */
 
 export function CaptiveFit() {
@@ -1802,7 +1802,7 @@ export function CaptiveFit() {
 }
 
 /* ==========================================================================
-   47 · EXAMPLES — a razor and its blades, a console and its games
+   47. EXAMPLES: a razor and its blades, a console and its games
    ========================================================================== */
 
 /** A double-edge razor blade, centred on (x, y). */
@@ -1839,7 +1839,7 @@ export function CaptiveExamples() {
 }
 
 /* ==========================================================================
-   48 · MARKUPS — main product priced low, captive supplies marked up high
+   48. MARKUPS: main product priced low, captive supplies marked up high
    ========================================================================== */
 
 export function CaptiveMarkups() {
@@ -1883,7 +1883,7 @@ export function CaptiveMarkups() {
 }
 
 /* ==========================================================================
-   49 · THE STREAM — one purchase, then revenue that keeps coming
+   49. THE STREAM: one purchase, then revenue that keeps coming
    ========================================================================== */
 
 export function OngoingStream() {
@@ -1917,7 +1917,7 @@ export function OngoingStream() {
 }
 
 /* ==========================================================================
-   50 · THE BUNDLE — several products for less than their separate prices
+   50. THE BUNDLE: several products for less than their separate prices
    ========================================================================== */
 
 export function BundleReduced() {
@@ -1953,7 +1953,7 @@ export function BundleReduced() {
 }
 
 /* ==========================================================================
-   51 · ALONG FOR THE RIDE — a product consumers might not otherwise buy (400)
+   51. ALONG FOR THE RIDE: a product consumers might not otherwise buy (400)
    ========================================================================== */
 
 export function BundleRideAlong() {
@@ -1977,7 +1977,7 @@ export function BundleRideAlong() {
 }
 
 /* ==========================================================================
-   52 · LOW ENOUGH — the combined price under the line that gets a purchase (400)
+   52. LOW ENOUGH: the combined price under the line that gets a purchase (400)
    ========================================================================== */
 
 export function BundleThreshold() {
@@ -2007,7 +2007,7 @@ export function BundleThreshold() {
 }
 
 /* ==========================================================================
-   53 · CLEARING STOCK — excess inventory leaves as bundles that give value (400)
+   53. CLEARING STOCK: excess inventory leaves as bundles that give value (400)
    ========================================================================== */
 
 export function ClearInventory() {
@@ -2047,7 +2047,7 @@ export function ClearInventory() {
 }
 
 /* ==========================================================================
-   54 · THE POD DILEMMA — price the machine low, or keep it premium
+   54. THE POD DILEMMA: price the machine low, or keep it premium
    ========================================================================== */
 
 function Pod({ x, y, tone = SIGNAL }: { x: number; y: number; tone?: string }) {
@@ -2115,7 +2115,7 @@ export function PodDilemma() {
 }
 
 /* ==========================================================================
-   Conclusion glyphs — each echoes a plate already seen
+   Conclusion glyphs: each echoes a plate already seen
    ========================================================================== */
 
 export function GlyphRevenue() {

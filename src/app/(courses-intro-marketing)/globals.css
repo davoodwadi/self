@@ -4,15 +4,15 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ==========================================================================
-   BROADSHEET — design system for Introduction to Marketing
+   BROADSHEET: design system for Introduction to Marketing
    --------------------------------------------------------------------------
    An editorial system: warm paper, near-black ink, one hot signal colour and
    one cool counterweight. Structure is carried by hairline rules and generous
    measure rather than by boxes and shadows.
 
    Ink      #17160F   headings, rules, the default voice
-   Signal   #B23A15   persimmon — emphasis, the "attention" colour of the course
-   Counter  #22575B   deep teal — secondary category, discussion, contrast cases
+   Signal   #B23A15   persimmon, emphasis, the "attention" colour of the course
+   Counter  #22575B   deep teal, secondary category, discussion, contrast cases
    Paper    #FBFAF7   warm bone ground
    ========================================================================== */
 
@@ -71,7 +71,7 @@
     --font-heading: var(--font-fraunces, Georgia, "Times New Roman", serif);
     --font-body:    var(--font-instrument-sans, ui-sans-serif, system-ui, sans-serif);
     /* Meta (eyebrows, captions, numerals) is set in the body grotesque.
-       A monospace here read as a code editor beside Fraunces; tracked
+       A monospace here read as a code editor beside Fraunces. Tracked
        caps and tabular figures carry the "meta" signal instead. */
     --font-label:   var(--font-body);
 
@@ -85,9 +85,9 @@
        Compatibility aliases.
        Weeks 2-12 and the flowchart files still reference the older token
        names. Previously those tokens were undefined in this route group, so
-       every rule using them was invalid CSS — borders fell back to
+       every rule using them was invalid CSS: borders fell back to
        currentColor and tinted backgrounds vanished. Mapping them onto the
-       Broadsheet palette repairs all twelve weeks at once; they can be
+       Broadsheet palette repairs all twelve weeks at once. They can be
        deleted once every week is migrated to the semantic names above.
        ------------------------------------------------------------------ */
     --crimson:        var(--signal);
@@ -149,7 +149,7 @@
 /* ==========================================================================
    Typographic scale
    Display sizes use Fraunces at a low optical size for tighter, more
-   newspaper-like fitting; body copy stays in Instrument Sans for legibility
+   newspaper-like fitting. Body copy stays in Instrument Sans for legibility
    at projection distance.
    ========================================================================== */
 
@@ -246,7 +246,7 @@
   text-indent: -0.42em;
 }
 
-/* Figure wells — a tinted panel that belongs to the paper rather than
+/* Figure wells: a tinted panel that belongs to the paper rather than
    a white card floating on top of it. */
 .figure-well {
   background: var(--paper-2);

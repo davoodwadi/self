@@ -1,7 +1,7 @@
 /* ============================================================================
    BUSI 654 landing. The masthead holds the left column while the curriculum
    scrolls on the right. Headings are typeset here rather than with utilities:
-   globals.css sets h1–h6 colour, family and weight outside any cascade layer,
+   globals.css sets h1, h6 colour, family and weight outside any cascade layer,
    and that beats Tailwind's layered classes.
    ============================================================================ */
 

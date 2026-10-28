@@ -18,7 +18,7 @@ week: week4
 ## Search Versus Recommendation in E-Commerce [no-exercise]
 - E-commerce discovery relies on two complementary algorithmic systems, namely search ranking ("pull" discovery) and recommender systems ("push" discovery).
 - In search ranking, the shopper provides an explicit query (e.g., "wireless noise-canceling headphones"), and the platform orders matching items from its catalog.
-- In recommendation, no explicit query is needed; the platform proactively suggests items on the homepage, on product pages ("frequently bought together" or "similar items"), and in the cart based on browsing context and purchase history.
+- In recommendation, no explicit query is needed. The platform proactively suggests items on the homepage, on product pages ("frequently bought together" or "similar items"), and in the cart based on browsing context and purchase history.
 - Both systems share the same engineering objective, which is to select a handful of high-probability candidates from millions of items within a few dozen milliseconds.
 
 ## Part 1: Recommender System Architectures [no-exercise]
@@ -103,5 +103,5 @@ week: week4
 - E-commerce discovery combines "pull" search rankings with "push" recommender systems built on content-based filtering, collaborative filtering, and two-stage retrieval-ranking pipelines.
 - Rank position exerts a steep causal effect on human sales because shoppers face visual search costs and trust the top of the list, requiring platforms to de-bias click data using exploration or inverse propensity weighting.
 - Retail media networks monetize top shelf positions through real-time sponsored auctions, balancing high-margin ad revenue against organic buyer relevance via quality and conversion multipliers.
-- Autonomous AI shopping agents do not eliminate rank effects; instead, they exhibit bounded inspection patterns and non-monotonic position biases when evaluating ranked product lists.
+- Autonomous AI shopping agents do not eliminate rank effects. Instead, they exhibit bounded inspection patterns and non-monotonic position biases when evaluating ranked product lists.
 - In agent-mediated commerce, an AI assistant's treatment of sponsored listings depends heavily on its system-level role assignment, creating principal-agent conflicts of duty when advertising-funded platforms deploy the assistant.

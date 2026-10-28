@@ -20,11 +20,11 @@ import exercisesData from "./exercises.json";
 import { ErrorsAndSampleSize, PeriodicList, StrataAndClusters, SampleSizeCurve, ContactFunnel, QualityChecks, SyntheticSpread, ResponsesPerPrompt } from "./visuals";
 
 // ============================================================================
-// WEEK 05 — SAMPLING AND DATA COLLECTION
+// WEEK 05: SAMPLING AND DATA COLLECTION
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx; the interactive ones are built around one action
+// live in ./visuals.tsx. The interactive ones are built around one action
 // each.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
@@ -55,7 +55,7 @@ export default function Week5() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 05 · Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 05: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
           <span className="text-[var(--signal)]">Sampling</span> and Data Collection
         </Title>
@@ -969,7 +969,7 @@ export default function Week5() {
         <ol className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
           {[
             "A sample is selected from a sampling frame to draw conclusions about a defined target population.",
-            "Sampling error decreases as the sample size increases; nonsampling errors, such as frame, nonresponse, and response errors, do not.",
+            "Sampling error decreases as the sample size increases. Nonsampling errors, such as frame, nonresponse, and response errors, do not.",
             "Only probability samples permit the estimation of sampling error, while nonprobability samples are appropriate for exploratory research and pretesting.",
             "The sample size depends on the desired precision and confidence, and the number of contacts depends on the incidence and completion rates.",
             "Online panels require data quality checks for speeders, straight-liners, fraudulent respondents, and bots, with criteria specified in advance.",

@@ -9,7 +9,7 @@ export default function ConstructSlide() {
     >
       <div style={{ maxWidth: "76rem", margin: "0 auto" }}>
         <div className="section-label" style={{ marginBottom: "1.5rem" }}>
-          <span>Layer 03 — Construct</span>
+          <span>Layer 03: Construct</span>
         </div>
         <h2
           className="p-heading"

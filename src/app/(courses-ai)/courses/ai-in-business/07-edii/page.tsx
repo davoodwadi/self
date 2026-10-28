@@ -26,9 +26,9 @@ import {
 } from "../_visuals/kit";
 
 // ============================================================================
-// WEEK 07 — EDII IN AI
+// WEEK 07: EDII IN AI
 // ============================================================================
-// Same deck grammar as Weeks 01–06: every slide is hand-composed for its own
+// Same deck grammar as Weeks 01 to 06: every slide is hand-composed for its own
 // argument, with hairlines instead of boxes and crimson marking one thing.
 //
 // Sentences are transcribed verbatim from content.md. Figures carry only words
@@ -37,7 +37,7 @@ import {
 // Quizzes: `Slide` renders `quizData` BEFORE its section. content.md for this
 // week carries no [quiz] tags and has five topics, so each topic gets one quiz.
 // Each quiz is attached to the slide that FOLLOWS its topic and only tests
-// material the student has already passed; the last one sits on the closing
+// material the student has already passed. The last one sits on the closing
 // plate, which adds no new content.
 // ============================================================================
 
@@ -126,7 +126,7 @@ export default function Week07Edii() {
       <ScrollProgress label="Week 07" />
 
       {/* ==================================================================
-          01 · TITLE — masthead; the four words behind the acronym spelled
+          01. TITLE: masthead. The four words behind the acronym spelled
           out under it.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
@@ -168,16 +168,16 @@ export default function Week07Edii() {
             <span
               className={`${MICRO} font-normal text-[var(--charcoal-light)]/60`}
             >
-              BUSI 654 · Applications of AI in Business
+              BUSI 654. Applications of AI in Business
             </span>
           </div>
         </div>
       </Slide>
 
       {/* ==================================================================
-          02 · THE PROBLEM — the vacuum struck for historical data; one
+          02. THE PROBLEM: the vacuum struck for historical data. One
           unequal pattern carried through AI: replicated, amplified, then
-          repeated at scale; the four risks.                  [quiz topic]
+          repeated at scale. The four risks.                  [quiz topic]
       ================================================================== */}
       <Slide id="mirror" border align="left">
         <Head2 eyebrow="01 / 05" kicker="The Problem:">
@@ -284,10 +284,10 @@ export default function Week07Edii() {
       </Slide>
 
       {/* ==================================================================
-          03 · HOW ALGORITHMS LEARN BIAS — three ways in, the loop drawn
-          back into the input; records teaching a model that group means
-          success; a fit that serves the aggregate and misses the edge
-          cases; the two fairness concepts; 99 of 100 against 4 of 10.
+          03. HOW ALGORITHMS LEARN BIAS: three ways in, the loop drawn
+          back into the input. Records teaching a model that group means
+          success. A fit that serves the aggregate and misses the edge
+          cases. The two fairness concepts. 99 of 100 against 4 of 10.
                                           [quiz: mirror] [quiz topic]
       ================================================================== */}
       <Slide
@@ -500,8 +500,8 @@ export default function Week07Edii() {
       </Slide>
 
       {/* ==================================================================
-          04 · THE ROI OF INCLUSIVE AI — checkbox set against advantage; a
-          ledger of costs and returns; a steady audited line through
+          04. THE ROI OF INCLUSIVE AI: checkbox set against advantage. A
+          ledger of costs and returns. A steady audited line through
           real-world conditions beside an erratic one.
                                      [quiz: learn-bias] [quiz topic]
       ================================================================== */}
@@ -606,9 +606,9 @@ export default function Week07Edii() {
       </Slide>
 
       {/* ==================================================================
-          05 · INDIGENEITY AND DATA SOVEREIGNTY — the last I of EDII marked;
-          data carried one way out of a community with the return struck;
-          OCAP spelled out; raw fuel set against people.
+          05. INDIGENEITY AND DATA SOVEREIGNTY: the last I of EDII marked.
+          Data carried one way out of a community with the return struck.
+          OCAP spelled out. Raw fuel set against people.
                                             [quiz: roi] [quiz topic]
       ================================================================== */}
       <Slide
@@ -728,9 +728,9 @@ export default function Week07Edii() {
       </Slide>
 
       {/* ==================================================================
-          06 · MITIGATION FOR BUSINESS LEADERS — four numbered measures, each
-          with its own figure: an edge case caught before release; review
-          ticked as fully as the books; a human on the decision loop; an
+          06. MITIGATION FOR BUSINESS LEADERS: four numbered measures, each
+          with its own figure: an edge case caught before release. Review
+          ticked as fully as the books. A human on the decision loop. An
           escalation path. The vendor's black box closes the slide.
                                 [quiz: data-sovereignty] [quiz topic]
       ================================================================== */}
@@ -893,7 +893,7 @@ export default function Week07Edii() {
       </Slide>
 
       {/* ==================================================================
-          07 · CLOSE — the title and its acronym again, then the colophon.
+          07. CLOSE: the title and its acronym again, then the colophon.
           Holds the quiz on the mitigation strategies.  [quiz: mitigation]
       ================================================================== */}
       <Slide
@@ -923,7 +923,7 @@ export default function Week07Edii() {
           <p
             aria-hidden
             // Headings take their family from globals.css, which Tailwind's
-            // font-serif does not match; borrow it so this echoes the h1.
+            // font-serif does not match. Borrow it so this echoes the h1.
             style={{ fontFamily: "var(--font-serif), serif" }}
             className="mt-10 text-[clamp(2.5rem,7vw,5rem)] font-black leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]"
           >
@@ -943,7 +943,7 @@ export default function Week07Edii() {
             <span
               className={`${MICRO} font-normal text-[var(--charcoal-light)]/55`}
             >
-              BUSI 654 · Applications of AI in Business
+              BUSI 654. Applications of AI in Business
             </span>
           </div>
         </div>

@@ -42,7 +42,7 @@ import { Tag, Megaphone, Television, MonitorPlay, Browser, ShareNetwork, Envelop
    Shared helpers
    -------------------------------------------------------------------------- */
 
-/** Standard normal draws from a seeded stream (Box–Muller). */
+/** Standard normal draws from a seeded stream (Box-Muller). */
 function normals(seed: number, n: number) {
   const rnd = seeded(seed);
   return Array.from({ length: n }, () => {
@@ -108,7 +108,7 @@ const SHELF_NOISE = [0.05, -0.06, 0.04, 0.07, -0.03, 0.02, -0.05, 0.03, -0.04, 0
 /**
  * Correlation: thirty stores' price against weekly unit sales. Students drag
  * the marker along the r scale from −1 to +1 and watch the cloud of stores
- * tighten into a line or dissolve into a blob; −0.6 is the starting state.
+ * tighten into a line or dissolve into a blob. −0.6 is the starting state.
  * Beside it, stores whose units rise and then fall with shelf height, a
  * strong relationship whose r is 0.00.
  */
@@ -143,7 +143,7 @@ export function CorrelationStrength() {
       height={350}
       label={`Thirty stores plotted by price and weekly unit sales with a correlation of r = ${fmt(r, 1)}${
         r === 0 ? ", no linear relationship" : Math.abs(r) === 1 ? `, a perfect ${r < 0 ? "negative" : "positive"} relationship` : ""
-      }; a scale from −1 to +1 can be dragged to change r. Beside it, stores whose weekly units rise and then fall with shelf height: a strong nonlinear relationship with r = 0.00`}
+      }. A scale from −1 to +1 can be dragged to change r. Beside it, stores whose weekly units rise and then fall with shelf height: a strong nonlinear relationship with r = 0.00`}
     >
       <Key x={L} y={22}>WEEKLY UNITS BY PRICE</Key>
       <Display x={R} y={50} anchor="end" size={26} fill={SIGNAL}>{`r = ${fmt(r, 2)}`}</Display>
@@ -243,7 +243,7 @@ const ADS_MIN = sse(ADS_OLS.a, ADS_OLS.b);
  * Ordinary least squares: ten stores' advertising and weekly sales with a
  * line through them. Each store's difference from the line is drawn as a
  * square, and the bar adds the squares up. Students drag either end of the
- * line; any move away from the least squares line makes the total grow.
+ * line. Any move away from the least squares line makes the total grow.
  */
 export function LeastSquares() {
   const xa = 0;
@@ -272,7 +272,7 @@ export function LeastSquares() {
   const bx0 = L;
   const bx1 = 490;
   const BX = (v: number) => r2(bx0 + (Math.min(v, barMax) / barMax) * (bx1 - bx0));
-  // bars past 6× the minimum are capped; the number then sits at the cap
+  // bars past 6× the minimum are capped. The number then sits at the cap
 
   const handle = (which: "ya" | "yb", xv: number) => {
     const cy = Y(ends[which]);
@@ -309,7 +309,7 @@ export function LeastSquares() {
     <Frame
       width={560}
       height={410}
-      label={`Ten stores plotted by advertising and weekly sales, with a line Sales = ${a.toFixed(1)} ${b < 0 ? "−" : "+"} ${Math.abs(b).toFixed(2)} × Advertising. Each store's difference from the line is drawn as a square; the squares sum to ${Math.round(total)}${
+      label={`Ten stores plotted by advertising and weekly sales, with a line Sales = ${a.toFixed(1)} ${b < 0 ? "−" : "+"} ${Math.abs(b).toFixed(2)} × Advertising. Each store's difference from the line is drawn as a square. The squares sum to ${Math.round(total)}${
         atMin ? ", the minimum: this is the least squares line" : `, against a minimum of ${Math.round(ADS_MIN)} for the least squares line`
       }. Either end of the line can be dragged`}
     >
@@ -379,7 +379,7 @@ const COEFS: Record<UnitView, { price: number; ads: number; priceUnit: string; a
 
 /**
  * Standardized coefficients: the two coefficients of the sales model drawn
- * as bars from zero. As estimated, price dwarfs advertising; restating price
+ * as bars from zero. As estimated, price dwarfs advertising. Restating price
  * in cents shrinks its bar a hundredfold without changing anything about the
  * stores. In standard deviation units, advertising carries the larger effect.
  */
@@ -426,7 +426,7 @@ export function CoefficientUnits() {
           );
         })}
         {std ? (
-          <Key x={300} y={266} anchor="middle" size={9}>SD OF PRICE $0.50 · SD OF ADVERTISING $20,000 · SD OF SALES 1,000 UNITS</Key>
+          <Key x={300} y={266} anchor="middle" size={9}>SD OF PRICE $0.50 | SD OF ADVERTISING $20,000 | SD OF SALES 1,000 UNITS</Key>
         ) : null}
       </Frame>
       <Segmented label="Coefficients" options={[...UNIT_VIEWS]} value={view} onChange={setView} />
@@ -438,7 +438,7 @@ export function CoefficientUnits() {
    Model Fit and Diagnostics
    -------------------------------------------------------------------------- */
 
-/** OLS coefficients of y on the columns, intercept first, by Gauss–Jordan elimination. */
+/** OLS coefficients of y on the columns, intercept first, by Gauss-Jordan elimination. */
 function olsCoefs(cols: number[][], y: number[]) {
   const X = y.map((_, i) => [1, ...cols.map((c) => c[i])]);
   const p = X[0].length;
@@ -488,7 +488,7 @@ const FIT_STEPS = (() => {
 /**
  * Adjusted R²: a model of forty weeks of sales on price and advertising.
  * Each press adds a column of random numbers to the model. R² rises with
- * every one; adjusted R² falls, since the added variables explain nothing.
+ * every one. Adjusted R² falls, since the added variables explain nothing.
  */
 export function AddedVariables() {
   const [added, setAdded] = useState(0);
@@ -562,7 +562,7 @@ const RESID = (() => {
 /**
  * Residual plots: residuals against predicted values (or, for dependence,
  * against the order of the weeks). With no pattern they scatter evenly
- * around zero; a curve, a fan and long runs above and below zero each name
+ * around zero. A curve, a fan and long runs above and below zero each name
  * a problem the residuals reveal.
  */
 export function ResidualPatterns() {
@@ -578,7 +578,7 @@ export function ResidualPatterns() {
     <Frame
       width={400}
       height={330}
-      label="Four residual plots. With no pattern, residuals scatter evenly around zero. A curved band indicates a nonlinear relationship; a fan that widens indicates unequal variance; long runs above and below zero across weeks indicate dependence between observations"
+      label="Four residual plots. With no pattern, residuals scatter evenly around zero. A curved band indicates a nonlinear relationship. A fan that widens indicates unequal variance. Long runs above and below zero across weeks indicate dependence between observations"
     >
       <Key x={12} y={14} size={10}>RESIDUALS</Key>
       {panels.map((p, k) => {
@@ -618,7 +618,7 @@ const VIDEO_TRUE = 1.5;
 /**
  * Multicollinearity: the same sales model estimated on twenty samples,
  * each estimate of the television and online video coefficients a dot.
- * Students raise the correlation between the two expenditures; the dots
+ * Students raise the correlation between the two expenditures. The dots
  * spread, the variance inflation factor climbs past 5 and 10, and some
  * estimates take the implausible negative sign.
  */
@@ -654,7 +654,7 @@ export function CollinearEstimates() {
       <Frame
         width={600}
         height={292}
-        label={`Coefficients of television and online video expenditure estimated on twenty samples, when the two expenditures correlate at ${rho.toFixed(2)}. The variance inflation factor is ${vif.toFixed(1)}; ${
+        label={`Coefficients of television and online video expenditure estimated on twenty samples, when the two expenditures correlate at ${rho.toFixed(2)}. The variance inflation factor is ${vif.toFixed(1)}. ${
           wrong ? `${wrong} of the 40 estimates take a negative sign` : "every estimate has the expected positive sign"
         }`}
       >
@@ -749,7 +749,7 @@ export function OmittedHoliday() {
       <Frame
         width={600}
         height={286}
-        label={`Fifty-two weeks of sales plotted against advertising; one week in five is a holiday week with more advertising and higher sales. ${
+        label={`Fifty-two weeks of sales plotted against advertising. One week in five is a holiday week with more advertising and higher sales. ${
           withHol
             ? `With a holiday variable in the model, holiday weeks are marked and the advertising coefficient is ${slope.toFixed(1)} units per thousand dollars`
             : `With advertising alone, the coefficient is ${slope.toFixed(1)} units per thousand dollars, which includes the holiday lift`
@@ -866,9 +866,9 @@ export function LinearProbability() {
 
 /**
  * Log odds and probability: on the left, the model as a straight line in
- * the log odds of purchase against pages viewed; on the right, the same
- * model as a probability. Students drag either end of the straight line;
- * however steep or high they make it, the probability curve bends into an
+ * the log odds of purchase against pages viewed. On the right, the same
+ * model as a probability. Students drag either end of the straight line.
+ * However steep or high they make it, the probability curve bends into an
  * S and stays between zero and one.
  */
 export function LogOddsCurve() {
@@ -932,7 +932,7 @@ export function LogOddsCurve() {
     <Frame
       width={720}
       height={316}
-      label={`The model drawn twice. In log odds, a straight line from ${fmt(ends.ya, 2)} at 0 pages to ${fmt(ends.yb, 2)} at 30 pages; either end can be dragged. In probability, the same model is an S-shaped curve from ${pct(prob(0)).toLowerCase()} to ${pct(prob(30)).toLowerCase()}, always between zero and one`}
+      label={`The model drawn twice. In log odds, a straight line from ${fmt(ends.ya, 2)} at 0 pages to ${fmt(ends.yb, 2)} at 30 pages. Either end can be dragged. In probability, the same model is an S-shaped curve from ${pct(prob(0)).toLowerCase()} to ${pct(prob(30)).toLowerCase()}, always between zero and one`}
     >
       {/* left: log odds */}
       <Key x={L1} y={20}>LOG ODDS OF PURCHASE</Key>
@@ -983,7 +983,7 @@ export function LogOddsCurve() {
 /**
  * The same odds ratio, different changes in probability: a hundred customers
  * without the email and a hundred with it, buyers filled. Students set the
- * probability of purchase without the email; the odds ratio of 1.5 adds
+ * probability of purchase without the email. The odds ratio of 1.5 adds
  * about 4 buyers at 10 percent, 10 at 50 percent and 3 at 90 percent.
  */
 export function OddsToProbability() {
@@ -1013,7 +1013,7 @@ export function OddsToProbability() {
       <Frame
         width={600}
         height={300}
-        label={`A hundred customers without the email and a hundred with it. Without the email, ${n0} buy (odds ${odds0.toFixed(2)}); with an odds ratio of 1.5, the odds become ${odds1.toFixed(2)} and ${n1} buy, a change of ${gain.toFixed(1)} percentage points`}
+        label={`A hundred customers without the email and a hundred with it. Without the email, ${n0} buy (odds ${odds0.toFixed(2)}). With an odds ratio of 1.5, the odds become ${odds1.toFixed(2)} and ${n1} buy, a change of ${gain.toFixed(1)} percentage points`}
       >
         <Key x={20} y={18}>WITHOUT THE EMAIL</Key>
         {grid(48, n0, 0)}
@@ -1194,7 +1194,7 @@ const totalAt = (share: number) => resp(CURVES.tv, BUDGET * (1 - share)) + resp(
 
 /**
  * Marginal and average return: a budget of $1 million split between two
- * channels with diminishing returns. Students move the split; each channel
+ * channels with diminishing returns. Students move the split. Each channel
  * shows its average return (the dashed line from the origin) and its
  * marginal return (the tangent). Total sales peak where the two marginal
  * returns are equal, not where the average return is highest.
@@ -1279,7 +1279,7 @@ export function BudgetSplit() {
         <Key x={620} y={36} anchor="end" size={9} fill={SIGNAL}>RETURN</Key>
         {rows.map((r, i) => (
           <g key={r.id}>
-            <Key x={420} y={64 + i * 60} size={9.5}>{`${r.c.key} \u00b7 $${Math.round(r.x)}K`}</Key>
+            <Key x={420} y={64 + i * 60} size={9.5}>{`${r.c.key} | $${Math.round(r.x)}K`}</Key>
             <Display x={500} y={92 + i * 60} anchor="end" size={22}>{`$${r.avg.toFixed(2)}`}</Display>
             <Display x={620} y={92 + i * 60} anchor="end" size={22} fill={SIGNAL}>{`$${r.m.toFixed(2)}`}</Display>
           </g>
@@ -1326,7 +1326,7 @@ const RULES = [
 ] as const;
 type RuleId = (typeof RULES)[number]["id"];
 
-/** Credit for each touchpoint in a path of n under a rule; time decay halves the credit at each step back. */
+/** Credit for each touchpoint in a path of n under a rule. Time decay halves the credit at each step back. */
 function credits(n: number, rule: RuleId) {
   if (rule === "last") return Array.from({ length: n }, (_, i) => (i === n - 1 ? 1 : 0));
   if (rule === "first") return Array.from({ length: n }, (_, i) => (i === 0 ? 1 : 0));
@@ -1338,7 +1338,7 @@ function credits(n: number, rule: RuleId) {
 
 /**
  * Attribution rules: four customers' paths to purchase, each touchpoint with
- * a bar for the credit it receives. Students switch the rule; the credit
+ * a bar for the credit it receives. Students switch the rule. The credit
  * moves along the paths, and the channel totals at the right change which
  * channel appears to drive conversions.
  */
@@ -1422,7 +1422,7 @@ export function AttributionRules() {
 /**
  * Brand search and incrementality: twenty purchases that followed a click on
  * an advertisement for the brand's own name. Last-click attribution credits
- * all twenty to the advertisement; a holdout test that withholds the
+ * all twenty to the advertisement. A holdout test that withholds the
  * advertisement finds that seventeen of the purchases occur anyway.
  */
 export function BrandSearchHoldout() {
@@ -1482,7 +1482,7 @@ const OVER = (() => {
  * Overfitting: a model estimated on fourteen weeks (filled) and checked on
  * fourteen held-out weeks (open). As students raise the model's flexibility,
  * the curve bends to pass through the estimation data and its error there
- * keeps falling; the error on the holdout data falls once and then climbs.
+ * keeps falling. The error on the holdout data falls once and then climbs.
  */
 export function Overfitting() {
   const [d, setD] = useState(2);
@@ -1513,7 +1513,7 @@ export function Overfitting() {
       <Frame
         width={640}
         height={300}
-        label={`A model with flexibility ${d} of 10 fitted to fourteen weeks of estimation data and checked on fourteen held-out weeks. Error on the estimation data ${fit.train.toFixed(2)}; error on the holdout data ${fit.hold.toFixed(2)}. Estimation error falls as flexibility rises, while holdout error is lowest at flexibility 2 and rises after it`}
+        label={`A model with flexibility ${d} of 10 fitted to fourteen weeks of estimation data and checked on fourteen held-out weeks. Error on the estimation data ${fit.train.toFixed(2)}. Error on the holdout data ${fit.hold.toFixed(2)}. Estimation error falls as flexibility rises, while holdout error is lowest at flexibility 2 and rises after it`}
       >
         <defs>
           <clipPath id="over-clip">
@@ -1583,7 +1583,7 @@ const TREE = (() => {
 /**
  * A tree ensemble against linear regression: forty stores whose weekly units
  * hold steady and then fall once the price passes about $4.50. The straight
- * line summarizes them with one slope; the ensemble follows the bend without
+ * line summarizes them with one slope. The ensemble follows the bend without
  * being told where it is, and has no coefficient to report.
  */
 export function TreeVersusLine() {
@@ -1713,7 +1713,7 @@ const CENT_NORMATIVE = { r: 1.11, lo: 0.94, hi: 1.27 };
 /**
  * The cent-to-dollar ratio for eight AI agents choosing coffee: each estimate
  * with its 95% confidence interval against the normative value of 1. Seven
- * intervals include 1; Flash's lies below it, where cents are discounted.
+ * intervals include 1. Flash's lies below it, where cents are discounted.
  */
 export function CentDollarRatio() {
   const lx = 196;
@@ -1729,7 +1729,7 @@ export function CentDollarRatio() {
       height={346}
       label={`Ratio of the cent to the whole-dollar price coefficient for eight AI agents, with 95% confidence intervals, against the normative value of 1: ${CENT_RATIO.map(
         (m) => `${m.key} ${m.r.toFixed(2)} [${m.lo.toFixed(2)}, ${m.hi.toFixed(2)}]`,
-      ).join("; ")}. Seven intervals include 1; Flash's lies below 1. The normative optimizer's own estimate is 1.11 [0.94, 1.27]`}
+      ).join(". ")}. Seven intervals include 1. Flash's lies below 1. The normative optimizer's own estimate is 1.11 [0.94, 1.27]`}
     >
       <Key x={20} y={20}>CENT COEFFICIENT ÷ DOLLAR COEFFICIENT</Key>
       <rect x={lx} y={34} width={r2(X(1) - lx)} height={bottom + 30 - 34} fill={COUNTER_TINT} />
@@ -1786,7 +1786,7 @@ export function CentDollarRatio() {
    -------------------------------------------------------------------------- */
 
 /**
- * Wadi & Ma (2026c), Study 1, Tables 7 and 8 (N = 2,000; PROCESS Model 8):
+ * Wadi & Ma (2026c), Study 1, Tables 7 and 8 (N = 2,000, PROCESS Model 8):
  * the a path (sponsorship → skepticism) for each principal, the b path
  * (skepticism → choice, log odds), the conditional indirect effect a × b and
  * the conditional direct effect of sponsorship on choice.
@@ -1805,7 +1805,7 @@ type PrincipalId = (typeof PRINCIPALS)[number]["id"];
  * Mediation of a sponsorship label through skepticism: the label raises the
  * skepticism an agent expresses (a), skepticism lowers its choice of the
  * listing (b), and the product a × b is the indirect effect. Students switch
- * whom the agent is told it serves; the a path and the indirect effect
+ * whom the agent is told it serves. The a path and the indirect effect
  * weaken when it serves the platform.
  */
 export function SkepticismMediation() {
@@ -1835,7 +1835,7 @@ export function SkepticismMediation() {
       <Frame
         width={620}
         height={318}
-        label={`Mediation when the agent is told it serves ${who === "traveler" ? "the traveler" : "the platform"}: the sponsorship label raises skepticism by ${m.a.toFixed(2)} points (a); each point of skepticism changes the log odds of choosing the listing by ${fmt(m.b, 3)} (b); the indirect effect a × b is ${fmt(m.ab, 2)}; the direct effect is ${fmt(m.direct, 2)}${m.directSig ? "" : ", not significant"}`}
+        label={`Mediation when the agent is told it serves ${who === "traveler" ? "the traveler" : "the platform"}: the sponsorship label raises skepticism by ${m.a.toFixed(2)} points (a). Each point of skepticism changes the log odds of choosing the listing by ${fmt(m.b, 3)} (b). The indirect effect a × b is ${fmt(m.ab, 2)}. The direct effect is ${fmt(m.direct, 2)}${m.directSig ? "" : ", not significant"}`}
       >
         {box(X0.x, X0.y, ["SPONSORSHIP", "LABEL"])}
         <g>
@@ -1861,7 +1861,7 @@ export function SkepticismMediation() {
         <Key x={20} y={270} size={10} fill={SIGNAL}>INDIRECT EFFECT a × b</Key>
         <Display x={20} y={302} size={30} fill={SIGNAL}>{fmt(m.ab, 2)}</Display>
         <Key x={130} y={298} size={9.5}>LOG ODDS</Key>
-        <Key x={600} y={270} anchor="end" size={9.5} fill={INK3}>{`TRAVELER ${fmt(MEDIATION.traveler.ab, 2)} \u00b7 PLATFORM ${fmt(MEDIATION.platform.ab, 2)}`}</Key>
+        <Key x={600} y={270} anchor="end" size={9.5} fill={INK3}>{`TRAVELER ${fmt(MEDIATION.traveler.ab, 2)} | PLATFORM ${fmt(MEDIATION.platform.ab, 2)}`}</Key>
         <Key x={600} y={298} anchor="end" size={9} fill={INK3}>N = 2,000 SESSIONS</Key>
       </Frame>
       <Segmented label="The agent is told it serves" options={[...PRINCIPALS]} value={who} onChange={setWho} />

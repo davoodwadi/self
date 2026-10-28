@@ -32,20 +32,20 @@ import {
 } from "../_visuals/kit";
 
 // ============================================================================
-// WEEK 09 — AI IN PRODUCT DEVELOPMENT
+// WEEK 09: AI IN PRODUCT DEVELOPMENT
 // ============================================================================
-// Same deck grammar as Weeks 01–08: every slide is hand-composed for its own
+// Same deck grammar as Weeks 01 to 08: every slide is hand-composed for its own
 // argument, with hairlines instead of boxes and crimson marking one thing.
 //
 // Sentences are transcribed verbatim from content.md, and each topic closes on
 // its own Discussion prompt. The [cite: N] markers are set as superscript
 // source numbers. content.md lists no sources for them (its References slide
 // points to deepResearch.md), so they are not linked. Figures carry only words
-// that already appear on their slide; where content.md gives the number ("up to 12
+// that already appear on their slide. Where content.md gives the number ("up to 12
 // months"), the figure is drawn to it.
 //
 // Quizzes: `Slide` renders `quizData` BEFORE its section. content.md tags two
-// topics [quiz] (The Paradigm Shift; Divergent vs. Convergent Thinking), so
+// topics [quiz] (The Paradigm Shift, Divergent vs. Convergent Thinking), so
 // each quiz is attached to the slide that FOLLOWS its topic and only tests
 // material the student has already passed.
 // ============================================================================
@@ -78,7 +78,7 @@ function Labelled({
 /**
  * Title-slide ground: a rounded product form, turned toward the viewer, drawn
  * as bare wireframe on its left that fills in to a shaded solid on its right.
- * It drifts very slowly. Texture only; nothing to read.
+ * It drifts very slowly. Texture only. Nothing to read.
  */
 function Wireframe() {
   const N = 10;
@@ -88,7 +88,7 @@ function Wireframe() {
   const dims = [1.3, 0.46, 0.9];
 
   // A cube's face grids pushed out onto a rounded box (the unit ball of the
-  // 4-norm), so the mesh has no poles; then turned toward the viewer.
+  // 4-norm), so the mesh has no poles. Then turned toward the viewer.
   const vertex = (face: number, i: number, j: number) => {
     const axis = face % 3;
     const c = [0, 0, 0];
@@ -184,8 +184,8 @@ export default function Week09ProductDevelopment() {
       <ScrollProgress label="Week 09" />
 
       {/* ==================================================================
-          01 · TITLE — masthead over a faint wireframe that fills in to a
-          solid; the arrival term of the subtitle marked.
+          01. TITLE: masthead over a faint wireframe that fills in to a
+          solid. The arrival term of the subtitle marked.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
         <Wireframe />
@@ -223,15 +223,15 @@ export default function Week09ProductDevelopment() {
             <span
               className={`${MICRO} font-normal text-[var(--charcoal-light)]/60`}
             >
-              BUSI 654 · Applications of AI in Business
+              BUSI 654. Applications of AI in Business
             </span>
           </div>
         </div>
       </Slide>
 
       {/* ==================================================================
-          02 · THE PARADIGM SHIFT — isolated tasks gathered onto one
-          lifecycle loop; a band that starts as a scatter at ideation and
+          02. THE PARADIGM SHIFT: isolated tasks gathered onto one
+          lifecycle loop. A band that starts as a scatter at ideation and
           firms up toward regulatory compliance.              [quiz topic]
       ================================================================== */}
       <Slide id="paradigm-shift" border align="left">
@@ -346,9 +346,9 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          03 · THREE TRANSFORMATIVE SHIFTS — three columns: a model that
-          feeds back into itself; mainstream reaching past the additive edge;
-          code lines each checked.                  [quiz: paradigm shift]
+          03. THREE TRANSFORMATIVE SHIFTS: three columns: a model that
+          feeds back into itself. Mainstream reaching past the additive edge.
+          Code lines each checked.                  [quiz: paradigm shift]
       ================================================================== */}
       <Slide
         id="three-shifts"
@@ -472,13 +472,13 @@ export default function Week09ProductDevelopment() {
       />
 
       {/* ==================================================================
-          05 · DIVERGENT VS. CONVERGENT THINKING — one point fanning out to
-          the solution space and back in, the divergent half marked; small
-          ideas held, the big one dashed; a worn loop broken out of.
+          05. DIVERGENT VS. CONVERGENT THINKING: one point fanning out to
+          the solution space and back in, the divergent half marked. Small
+          ideas held, the big one dashed. A worn loop broken out of.
                                                               [quiz topic]
       ================================================================== */}
       <Slide id="divergent-convergent" border align="left">
-        <Head3 eyebrow="Part 1 · 01 / 05">Divergent vs. Convergent Thinking</Head3>
+        <Head3 eyebrow="Part 1: 01 / 05">Divergent vs. Convergent Thinking</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -581,9 +581,9 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          06 · PERSONA SIMULATION — six personas pressing on one concept,
-          the skeptical CTO marked; a live web app passed into stacked
-          memory; an interface laid on its design-system grid.
+          06. PERSONA SIMULATION: six personas pressing on one concept,
+          the skeptical CTO marked. A live web app passed into stacked
+          memory. An interface laid on its design-system grid.
                                             [quiz: divergent vs. convergent]
       ================================================================== */}
       <Slide
@@ -592,7 +592,7 @@ export default function Week09ProductDevelopment() {
         align="left"
         quizData={quiz["persona-simulation"]}
       >
-        <Head3 eyebrow="Part 1 · 02 / 05">Persona Simulation</Head3>
+        <Head3 eyebrow="Part 1: 02 / 05">Persona Simulation</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -718,12 +718,12 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          07 · PREDICTIVE MARKET TRENDS — a record that runs up to one
-          point and continues as a dashed forecast; a scatter of data with
-          one open region ringed; twelve months set large.
+          07. PREDICTIVE MARKET TRENDS: a record that runs up to one
+          point and continues as a dashed forecast. A scatter of data with
+          one open region ringed. Twelve months set large.
       ================================================================== */}
       <Slide id="market-trends" border align="left">
-        <Head3 eyebrow="Part 1 · 03 / 05">Predictive Market Trends</Head3>
+        <Head3 eyebrow="Part 1: 03 / 05">Predictive Market Trends</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -813,12 +813,12 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          08 · UNCOVERING LATENT NEEDS — a dense field of conversations
-          read onto one sentiment scale; a preference line that turns after
-          the last focus group; product and market cut to fit.
+          08. UNCOVERING LATENT NEEDS: a dense field of conversations
+          read onto one sentiment scale. A preference line that turns after
+          the last focus group. Product and market cut to fit.
       ================================================================== */}
       <Slide id="latent-needs" border align="left">
-        <Head3 eyebrow="Part 1 · 04 / 05">Uncovering Latent Needs</Head3>
+        <Head3 eyebrow="Part 1: 04 / 05">Uncovering Latent Needs</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -936,12 +936,12 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          09 · AUTOMATED COMPETITOR ANALYSIS — manual battlecards struck for
-          autonomous agents; three sources scraped as broken lines that
+          09. AUTOMATED COMPETITOR ANALYSIS: manual battlecards struck for
+          autonomous agents. Three sources scraped as broken lines that
           gather into one marked block of intelligence.
       ================================================================== */}
       <Slide id="competitor-analysis" border align="left">
-        <Head3 eyebrow="Part 1 · 05 / 05">Automated Competitor Analysis</Head3>
+        <Head3 eyebrow="Part 1: 05 / 05">Automated Competitor Analysis</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -1031,12 +1031,12 @@ export default function Week09ProductDevelopment() {
       />
 
       {/* ==================================================================
-          11 · MAINSTREAM MANUFACTURABILITY — four processes in a row: the
+          11. MAINSTREAM MANUFACTURABILITY: four processes in a row: the
           additive cell bracketed above, all four bracketed and marked
           below.
       ================================================================== */}
       <Slide id="manufacturability" border align="left">
-        <Head3 eyebrow="Part 2 · 01 / 04">Mainstream Manufacturability</Head3>
+        <Head3 eyebrow="Part 2: 01 / 04">Mainstream Manufacturability</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -1100,12 +1100,12 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          12 · PHYSICS-INFORMED NEURAL NETWORKS (PINNs) — a network held
-          inside a frame of physical laws; one smooth prediction through
-          four sparse points; the solver's long wait against real time.
+          12. PHYSICS-INFORMED NEURAL NETWORKS (PINNs): a network held
+          inside a frame of physical laws. One smooth prediction through
+          four sparse points. The solver's long wait against real time.
       ================================================================== */}
       <Slide id="pinns" border align="left">
-        <Head3 eyebrow="Part 2 · 02 / 04">
+        <Head3 eyebrow="Part 2: 02 / 04">
           Physics-Informed Neural Networks (PINNs)
         </Head3>
 
@@ -1232,12 +1232,12 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          13 · SYNTHETIC DATA FOR ENGINEERING — collection set against
-          generation; generated points filling a distribution's outline;
-          the same outline with both tails marked.
+          13. SYNTHETIC DATA FOR ENGINEERING: collection set against
+          generation. Generated points filling a distribution's outline.
+          The same outline with both tails marked.
       ================================================================== */}
       <Slide id="synthetic-engineering" border align="left">
-        <Head3 eyebrow="Part 2 · 03 / 04">Synthetic Data for Engineering</Head3>
+        <Head3 eyebrow="Part 2: 03 / 04">Synthetic Data for Engineering</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -1324,12 +1324,12 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          14 · DATA PRIVACY AND SPEED — a dataset crossing a border while the
-          locked IP stays behind; GDPR on its document; development cycles
+          14. DATA PRIVACY AND SPEED: a dataset crossing a border while the
+          locked IP stays behind. GDPR on its document. Development cycles
           shortening one after another.
       ================================================================== */}
       <Slide id="privacy-speed" border align="left">
-        <Head3 eyebrow="Part 2 · 04 / 04">Data Privacy and Speed</Head3>
+        <Head3 eyebrow="Part 2: 04 / 04">Data Privacy and Speed</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1450,12 +1450,12 @@ export default function Week09ProductDevelopment() {
       />
 
       {/* ==================================================================
-          16 · PARAMETER OPTIMIZATION — a log of past prints passed to a
-          bank of sliders set at their optimum; failed attempts struck
-          through before one clean part; one mark repeated at every site.
+          16. PARAMETER OPTIMIZATION: a log of past prints passed to a
+          bank of sliders set at their optimum. Failed attempts struck
+          through before one clean part. One mark repeated at every site.
       ================================================================== */}
       <Slide id="parameter-optimization" border align="left">
-        <Head3 eyebrow="Part 3 · 01 / 03">Parameter Optimization</Head3>
+        <Head3 eyebrow="Part 3: 01 / 03">Parameter Optimization</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1556,13 +1556,13 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          17 · COGNITIVE DIGITAL TWINS — an object and its dashed replica,
-          then the same pair with a reasoning network inside the twin; a
-          network growing along time; a declining line caught before its
+          17. COGNITIVE DIGITAL TWINS: an object and its dashed replica,
+          then the same pair with a reasoning network inside the twin. A
+          network growing along time. A declining line caught before its
           failure line.
       ================================================================== */}
       <Slide id="cognitive-twins" border align="left">
-        <Head3 eyebrow="Part 3 · 02 / 03">Cognitive Digital Twins</Head3>
+        <Head3 eyebrow="Part 3: 02 / 03">Cognitive Digital Twins</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -1687,12 +1687,12 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          18 · VR AND AI-ASSISTED UX — a dashed stand-in user in a marked
-          headset reaching into an interface; a gaze path beside a pulse
-          trace; testing placed on the line before physical prototyping.
+          18. VR AND AI-ASSISTED UX: a dashed stand-in user in a marked
+          headset reaching into an interface. A gaze path beside a pulse
+          trace. Testing placed on the line before physical prototyping.
       ================================================================== */}
       <Slide id="vr-ux" border align="left">
-        <Head3 eyebrow="Part 3 · 03 / 03">VR and AI-Assisted UX</Head3>
+        <Head3 eyebrow="Part 3: 03 / 03">VR and AI-Assisted UX</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1809,12 +1809,12 @@ export default function Week09ProductDevelopment() {
       />
 
       {/* ==================================================================
-          20 · SUSTAINABLE MATERIAL SELECTION — a field of candidate cells
-          with a few marked; emission bars with one dropping below the
-          line; an LCA store feeding a shorter footprint.
+          20. SUSTAINABLE MATERIAL SELECTION: a field of candidate cells
+          with a few marked. Emission bars with one dropping below the
+          line. An LCA store feeding a shorter footprint.
       ================================================================== */}
       <Slide id="sustainable-materials" border align="left">
-        <Head3 eyebrow="Part 4 · 01 / 02">Sustainable Material Selection</Head3>
+        <Head3 eyebrow="Part 4: 01 / 02">Sustainable Material Selection</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -1901,12 +1901,12 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          21 · SUPPLY CHAIN RESILIENCE — three tiers mapped back from one
-          node, a flagged supplier's path marked through to it; two
-          warnings; a price record running on into a forecast.
+          21. SUPPLY CHAIN RESILIENCE: three tiers mapped back from one
+          node, a flagged supplier's path marked through to it. Two
+          warnings. A price record running on into a forecast.
       ================================================================== */}
       <Slide id="supply-resilience" border align="left">
-        <Head3 eyebrow="Part 4 · 02 / 02">Supply Chain Resilience</Head3>
+        <Head3 eyebrow="Part 4: 02 / 02">Supply Chain Resilience</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -2038,12 +2038,12 @@ export default function Week09ProductDevelopment() {
       />
 
       {/* ==================================================================
-          23 · GENERATIVE CUSTOMIZATION — six soles, each with its own
-          pattern, one marked; designs held inside a dashed boundary, a
-          stray one brought back in; one person in the process, then many.
+          23. GENERATIVE CUSTOMIZATION: six soles, each with its own
+          pattern, one marked. Designs held inside a dashed boundary, a
+          stray one brought back in. One person in the process, then many.
       ================================================================== */}
       <Slide id="generative-customization" border align="left">
-        <Head3 eyebrow="Part 5 · 01 / 02">Generative Customization</Head3>
+        <Head3 eyebrow="Part 5: 01 / 02">Generative Customization</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -2182,13 +2182,13 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          24 · IOT FEEDBACK LOOPS (VERSION 2.0) — one loop through usage
-          telemetry, R&D and Version 2.0, the telemetry-to-R&D arc marked;
-          usage patterns feeding an iteration ring; a friction snag marked
+          24. IOT FEEDBACK LOOPS (VERSION 2.0): one loop through usage
+          telemetry, R&D and Version 2.0, the telemetry-to-R&D arc marked.
+          Usage patterns feeding an iteration ring. A friction snag marked
           on an otherwise straight path.
       ================================================================== */}
       <Slide id="iot-loops" border align="left">
-        <Head3 eyebrow="Part 5 · 02 / 02">IoT Feedback Loops (Version 2.0)</Head3>
+        <Head3 eyebrow="Part 5: 02 / 02">IoT Feedback Loops (Version 2.0)</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -2296,11 +2296,11 @@ export default function Week09ProductDevelopment() {
       />
 
       {/* ==================================================================
-          26 · MITIGATION TOOLS — a lens over a lopsided dataset; a level
-          balance; a checklist whose last line is algorithmic fairness.
+          26. MITIGATION TOOLS: a lens over a lopsided dataset. A level
+          balance. A checklist whose last line is algorithmic fairness.
       ================================================================== */}
       <Slide id="mitigation-tools" border align="left">
-        <Head3 eyebrow="Part 6 · 01 / 02">Mitigation Tools</Head3>
+        <Head3 eyebrow="Part 6: 01 / 02">Mitigation Tools</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -2397,12 +2397,12 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          27 · COMPLIANCE AUTOMATION — the Act's scale with its high-risk end
-          marked; two documents filling themselves in; one lineage traced
+          27. COMPLIANCE AUTOMATION: the Act's scale with its high-risk end
+          marked. Two documents filling themselves in. One lineage traced
           back through a graph to ISO/IEC 42001.
       ================================================================== */}
       <Slide id="compliance-automation" border align="left">
-        <Head3 eyebrow="Part 6 · 02 / 02">Compliance Automation</Head3>
+        <Head3 eyebrow="Part 6: 02 / 02">Compliance Automation</Head3>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -2510,12 +2510,12 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          28 · SUMMARY OF FINDINGS — three findings as numbered measures: a
-          scribble straightened; AI set inside CAD and PLM; a floating,
+          28. SUMMARY OF FINDINGS: three findings as numbered measures: a
+          scribble straightened. AI set inside CAD and PLM. A floating,
           unbuildable piece struck from a design.
       ================================================================== */}
       <Slide id="summary" border align="left">
-        <Head3 eyebrow="Closing · 01 / 04">Summary of Findings</Head3>
+        <Head3 eyebrow="Closing | 01 / 04">Summary of Findings</Head3>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -2607,12 +2607,12 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          29 · SPEED + SAFETY — simulation and compliance converging into
-          one marked line; checks running the length of a timeline; the
+          29. SPEED + SAFETY: simulation and compliance converging into
+          one marked line. Checks running the length of a timeline. The
           conjunction set at display weight and marked.
       ================================================================== */}
       <Slide id="speed-safety" border align="left">
-        <Head3 eyebrow="Closing · 02 / 04">Speed + Safety</Head3>
+        <Head3 eyebrow="Closing | 02 / 04">Speed + Safety</Head3>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -2675,12 +2675,12 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          30 · FUTURE DIRECTIONS — three measures: a detect-and-fix loop;
-          different tools joined by one identical format; a grid with only
+          30. FUTURE DIRECTIONS: three measures: a detect-and-fix loop.
+          Different tools joined by one identical format. A grid with only
           three failure cells.
       ================================================================== */}
       <Slide id="future" border align="left">
-        <Head3 eyebrow="Closing · 03 / 04">Future Directions</Head3>
+        <Head3 eyebrow="Closing | 03 / 04">Future Directions</Head3>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -2768,12 +2768,12 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          31 · ACTIONABLE INSIGHTS — three measures: a document marked up in
-          review; compliance placed at the start of the line; a small
+          31. ACTIONABLE INSIGHTS: three measures: a document marked up in
+          review. Compliance placed at the start of the line. A small
           network held inside its physics frame.
       ================================================================== */}
       <Slide id="insights" border align="left">
-        <Head3 eyebrow="Closing · 04 / 04">Actionable Insights</Head3>
+        <Head3 eyebrow="Closing | 04 / 04">Actionable Insights</Head3>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -2873,7 +2873,7 @@ export default function Week09ProductDevelopment() {
       </Slide>
 
       {/* ==================================================================
-          32 · REFERENCES — the forty-eight citation numbers the deck's
+          32. REFERENCES: the forty-eight citation numbers the deck's
           superscripts point to, set as a quiet grid.
       ================================================================== */}
       <Slide id="references" border align="left">

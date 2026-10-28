@@ -1,19 +1,19 @@
 /* ==========================================================================
-   Consumer Behavior · Week 04 — plates (Editorial Sketch)
+   Consumer Behavior | Week 04: plates (Editorial Sketch)
    --------------------------------------------------------------------------
    Motivation, needs and values, drawn in ink and watercolour with the shared
    kit in ../_visuals (see ../CLAUDE.md for the style rules).
 
    Fixed cast for this week:
-     · Gauge: a glass tube that fills with a tan wash. It is tension, the
+     - Gauge: a glass tube that fills with a tan wash. It is tension, the
        drive, hunger or thirst, conflict: whatever pushes the buyer to act.
-     · Person: every human. A desired or better state is the same Person,
+     - Person: every human. A desired or better state is the same Person,
        upgraded (upright, a sharper coat, the product in hand) on a sky wash.
-     · BrandBadge: the brand and its offer, on a pack or a card.
-     · Heart: a feeling or what matters to the consumer.
-     · Agent: the AI agent (shared: a phone with the AI sparkle).
-     · ReviewCard: a star-rated review, the week's sign for a written review.
-   Teal is the one thing chosen, reached or ticked on a plate; pencil is only
+     - BrandBadge: the brand and its offer, on a pack or a card.
+     - Heart: a feeling or what matters to the consumer.
+     - Agent: the AI agent (shared: a phone with the AI sparkle).
+     - ReviewCard: a star-rated review, the week's sign for a written review.
+   Teal is the one thing chosen, reached or ticked on a plate. Pencil is only
    for something absent (an option not taken, a product not yet chosen).
    ========================================================================== */
 
@@ -81,7 +81,7 @@ function capsule(x: number, top: number, w: number, h: number): Pt[] {
 
 /**
  * The tension tube: a glass gauge filled from the bottom with a tan wash to
- * `level` (0–1). Everything that pushes a buyer to act is drawn as this.
+ * `level` (0 to 1). Everything that pushes a buyer to act is drawn as this.
  */
 function Gauge({
   x,
@@ -175,7 +175,7 @@ function Dot({ x, y, r = 3.4, seed, fill = SK.ink }: { x: number; y: number; r?:
   return <Wash pts={rp(blobPts(x, y, r, r, seed, 8, 0.1))} seed={seed} fill={fill} opacity={1} dx={0} dy={0} />;
 }
 
-/** A bowl of hot food; (x, y) is the middle of its rim, `w` its width. */
+/** A bowl of hot food. (x, y) is the middle of its rim, `w` its width. */
 function FoodBowl({ x, y, w = 80, seed, steam = true }: { x: number; y: number; w?: number; seed: number; steam?: boolean }) {
   const h = w / 2;
   const bowl = rp([
@@ -210,7 +210,7 @@ function FoodBowl({ x, y, w = 80, seed, steam = true }: { x: number; y: number; 
   );
 }
 
-/** A trophy; (x, y) is the middle of the cup's rim, `s` its scale. */
+/** A trophy. (x, y) is the middle of the cup's rim, `s` its scale. */
 function Trophy({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const cup = at(x, y, [[-30, 0], [30, 0], [28, 22], [18, 40], [6, 48], [-6, 48], [-18, 40], [-28, 22]], s);
   const base = sharp(at(x, y, [[-24, 66], [24, 66], [24, 76], [-24, 76]], s), true, 1.5);
@@ -238,7 +238,7 @@ function Cross({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: 
   );
 }
 
-/** A burger in side view, centred on (x, y); about 60 units wide at s = 1. */
+/** A burger in side view, centred on (x, y). About 60 units wide at s = 1. */
 function Burger({ x, y, s = 1, seed, pencil = false }: { x: number; y: number; s?: number; seed: number; pencil?: boolean }) {
   const bun = at(x, y, [[-30, -6], [-28, -18], [-16, -28], [0, -31], [16, -28], [28, -18], [30, -6]], s);
   const patty = sharp(at(x, y, [[-31, 0], [31, 0], [31, 9], [-31, 9]], s), true, 3);
@@ -266,7 +266,7 @@ function Burger({ x, y, s = 1, seed, pencil = false }: { x: number; y: number; s
   );
 }
 
-/** A bowl of rice with chopsticks; (x, y) is the middle of the rim. */
+/** A bowl of rice with chopsticks. (x, y) is the middle of the rim. */
 function RiceBowl({ x, y, s = 1, seed, pencil = false }: { x: number; y: number; s?: number; seed: number; pencil?: boolean }) {
   const bowl = at(x, y, Array.from({ length: 9 }, (_, i) => {
     const a = (i / 8) * Math.PI;
@@ -294,7 +294,7 @@ function RiceBowl({ x, y, s = 1, seed, pencil = false }: { x: number; y: number;
   );
 }
 
-/** A slice of pizza pointing down; (x, y) is the middle of the crust. */
+/** A slice of pizza pointing down. (x, y) is the middle of the crust. */
 function Pizza({ x, y, s = 1, seed, pencil = false, upright = false }: { x: number; y: number; s?: number; seed: number; pencil?: boolean; upright?: boolean }) {
   const k = upright ? -1 : 1;
   const P = (pts: Pt[]) => at(x, y, pts.map(([px, py]) => [px * k, py * k] as Pt), s);
@@ -354,7 +354,7 @@ function Bottle({ x, bottom, h = 80, seed, pencil = false }: { x: number; bottom
 
 /**
  * A five-tier pyramid, apex at (x, top), base at `base`, `half` = half the
- * base width. `fills` washes each tier from the bottom (0) up; `lit` tiers
+ * base width. `fills` washes each tier from the bottom (0) up. `lit` tiers
  * take the teal wash instead.
  */
 function Pyramid({
@@ -480,7 +480,7 @@ function Gum({ x, bottom, s = 1, seed }: { x: number; bottom: number; s?: number
   );
 }
 
-/** A LOW–HIGH track with a marker at `level`. */
+/** A LOW-HIGH track with a marker at `level`. */
 function Meter({ x1, x2, y, level, seed }: { x1: number; x2: number; y: number; level: number; seed: number }) {
   const mx = r2(x1 + (x2 - x1) * level);
   const track = sharp([[x1, y - 4], [x2, y - 4], [x2, y + 4], [x1, y + 4]], true, 3);
@@ -502,7 +502,7 @@ function Meter({ x1, x2, y, level, seed }: { x1: number; x2: number; y: number; 
 }
 
 /* ==========================================================================
-   TITLE · from a current state to a better one
+   TITLE | from a current state to a better one
    ========================================================================== */
 
 export function CurrentToBetter() {
@@ -590,7 +590,7 @@ export function MotivationGap() {
   );
 }
 
-/** A need fills the tube; acting empties it. */
+/** A need fills the tube. Acting empties it. */
 export function TensionAction() {
   return (
     <SketchFrame
@@ -626,7 +626,7 @@ export function GymMotives() {
       id="sk-gym-motives"
       width={400}
       height={330}
-      label="One gym membership card with a dumbbell on it, at the top. Lines run from it to three people below. Above the first person is a heart, marked health; above the second, a small group of friends, marked belonging; above the third, a gold star, marked status."
+      label="One gym membership card with a dumbbell on it, at the top. Lines run from it to three people below. Above the first person is a heart, marked health. Above the second, a small group of friends, marked belonging. Above the third, a gold star, marked status."
     >
       <Backwash cx={200} cy={190} rx={190} ry={130} seed={600} />
       <Paper pts={card} seed={601} />
@@ -820,7 +820,7 @@ export function ExpectancyChain() {
       id="sk-expectancy-chain"
       width={800}
       height={290}
-      label="Three stations left to right. Effort: a person lifting a dumbbell overhead. Performance: three rising bars. Outcome: a gold trophy with three hearts above it, marked valence. The arrow from effort to performance is marked expectancy; the arrow from performance to outcome is marked instrumentality."
+      label="Three stations left to right. Effort: a person lifting a dumbbell overhead. Performance: three rising bars. Outcome: a gold trophy with three hearts above it, marked valence. The arrow from effort to performance is marked expectancy. The arrow from performance to outcome is marked instrumentality."
     >
       <Backwash cx={400} cy={140} rx={380} ry={130} seed={1300} />
       <Ground x0={40} x1={760} y={232} seed={1301} />
@@ -877,7 +877,7 @@ export function MoreMotivated() {
       id="sk-more-motivated"
       width={800}
       height={290}
-      label="Three conditions side by side, each ticked in teal: a small hill with a flag on top, marked goal seems possible; the brand's product pack, marked product seems useful; a gold trophy, marked result feels valuable. Arrows run down from each into one bar, filling a third of it each, marked more motivated."
+      label="Three conditions side by side, each ticked in teal: a small hill with a flag on top, marked goal seems possible. The brand's product pack, marked product seems useful. A gold trophy, marked result feels valuable. Arrows run down from each into one bar, filling a third of it each, marked more motivated."
     >
       <Backwash cx={400} cy={140} rx={380} ry={132} seed={1400} />
       {/* possible: a hill with a flag on top */}
@@ -1006,7 +1006,7 @@ export function DemandTest() {
       id="sk-demand-test"
       width={400}
       height={300}
-      label="Three people each thinking of the same phone. Two rows below them: ability to pay and willingness to pay. The first person is willing but not able; the second is able but not willing; the third is both, holds out a payment card, and only that column is marked demand. The other two are marked want."
+      label="Three people each thinking of the same phone. Two rows below them: ability to pay and willingness to pay. The first person is willing but not able. The second is able but not willing. The third is both, holds out a payment card, and only that column is marked demand. The other two are marked want."
     >
       <Backwash cx={290} cy={120} rx={120} ry={116} seed={1800} />
       <SketchText x={10} y={226} size={10.5}>
@@ -1039,7 +1039,7 @@ export function DemandTest() {
   );
 }
 
-/** Marketers shape the want above ground; the need beneath is not theirs to make. */
+/** Marketers shape the want above ground. The need beneath is not theirs to make. */
 export function ShapeNotCreate() {
   const band = rp([[16, 196], [384, 194], [384, 262], [16, 262]]);
   return (
@@ -1194,7 +1194,7 @@ export function SeveralLevels() {
 function ConflictPlate({ kind }: { kind: "aa" | "av" | "vv" }) {
   const labels = {
     aa: "A person stands between two attractive options, each marked plus, arms stretched toward both. Arrows lead from the person to each option.",
-    av: "A person reaches toward one option that is half plus and half minus. One arrow leads toward it; another pushes back from it.",
+    av: "A person reaches toward one option that is half plus and half minus. One arrow leads toward it. Another pushes back from it.",
     vv: "A person stands between two unwanted options, each marked minus, shrugging. Arrows push toward the person from both sides.",
   };
   const look: Look = { hair: "long", hairTone: SK.brown, wear: SK.camel, outfit: "jacket" };
@@ -1243,7 +1243,7 @@ export function AvoidanceAvoidance() {
   return <ConflictPlate kind="vv" />;
 }
 
-/** Two attractive options; the budget allows one. */
+/** Two attractive options. The budget allows one. */
 export function PhoneOrTrip() {
   return (
     <SketchFrame
@@ -1272,7 +1272,7 @@ export function PhoneOrTrip() {
   );
 }
 
-/** A strong brand spells out benefits and cost; the conflict gauge drops. */
+/** A strong brand spells out benefits and cost. The conflict gauge drops. */
 export function ClearerChoice() {
   const card = (x0: number) => sharp([[x0, 34], [x0 + 108, 34], [x0 + 108, 214], [x0, 214]], true, 4);
   return (
@@ -1459,7 +1459,7 @@ export function SituationInvolvement() {
   );
 }
 
-/** High involvement compares carefully; low involvement grabs the familiar pack. */
+/** High involvement compares carefully. Low involvement grabs the familiar pack. */
 export function HighVsLow() {
   const [mx, my] = handAt(334, 262, 160, "reach", 1, true);
   return (
@@ -1508,7 +1508,7 @@ export function HighVsLow() {
         </g>
       ))}
       <SketchText x={200} y={296} anchor="middle" size={10.5}>
-        MORE EFFORT · CAREFUL COMPARISON
+        MORE EFFORT | CAREFUL COMPARISON
       </SketchText>
 
       {/* low: habit and simple cues */}
@@ -1528,7 +1528,7 @@ export function HighVsLow() {
       <Ground x0={424} x1={780} y={262} seed={3240} />
       <Person x={528} y={262} h={160} look={PLAIN} arms={["down", "reach"]} seed={3250} />
       <SketchText x={600} y={296} anchor="middle" size={10.5}>
-        HABIT · SIMPLE CUES
+        HABIT | SIMPLE CUES
       </SketchText>
     </SketchFrame>
   );
@@ -1629,7 +1629,7 @@ export function FitsValues() {
       id="sk-fits-values"
       width={800}
       height={300}
-      label="A consumer thinks of a heart. Two products: one with a long list of eight ticked features, marked most features; one with four teal ticks and the same heart on it, marked fits their values. An arrow runs from the heart in the consumer's thought to the heart on the second product."
+      label="A consumer thinks of a heart. Two products: one with a long list of eight ticked features, marked most features. One with four teal ticks and the same heart on it, marked fits their values. An arrow runs from the heart in the consumer's thought to the heart on the second product."
     >
       <Backwash cx={180} cy={160} rx={170} ry={136} seed={3600} />
       <Backwash cx={560} cy={150} rx={230} ry={138} seed={3602} />
@@ -1671,7 +1671,7 @@ export function FitsValues() {
 }
 
 /* ==========================================================================
-   DISCUSSION · find the motive
+   DISCUSSION | find the motive
    ========================================================================== */
 
 /** The four theories in miniature, each as it was drawn on its own slide. */
@@ -1735,7 +1735,7 @@ export function FindTheMotive() {
       id="sk-find-the-motive"
       width={800}
       height={330}
-      label="A receipt for a recent purchase with a large question mark on it. Lines run from it to four small drawings: a nearly empty tension gauge with a falling arrow, marked drive reduction; a dumbbell leading to rising bars and a trophy, marked expectancy; the needs pyramid, marked hierarchy of needs; and a person reaching for two attractive options, marked motivational conflict."
+      label="A receipt for a recent purchase with a large question mark on it. Lines run from it to four small drawings: a nearly empty tension gauge with a falling arrow, marked drive reduction. A dumbbell leading to rising bars and a trophy, marked expectancy. The needs pyramid, marked hierarchy of needs. And a person reaching for two attractive options, marked motivational conflict."
     >
       <Backwash cx={400} cy={160} rx={380} ry={150} seed={3760} />
       {spots.map((sp, i) => (
@@ -1763,7 +1763,7 @@ export function FindTheMotive() {
 
 /* ==========================================================================
    INTRINSIC AND EXTRINSIC MOTIVATION: WHY CONSUMERS WRITE REVIEWS
-   The reviewer is the week's Person with a phone; the Heart is the wish to
+   The reviewer is the week's Person with a phone. The Heart is the wish to
    help (intrinsic), the credit tag the outside reward (extrinsic).
    ========================================================================== */
 
@@ -1835,14 +1835,14 @@ export function WhyReview() {
   );
 }
 
-/** Review intention (1–5) by message, without and with a $10 credit (Wadi et al., 2026a, Study 2). */
+/** Review intention (1 to 5) by message, without and with a $10 credit (Wadi et al., 2026a, Study 2). */
 const INTENTION = [
   { label: ["HELP OTHER", "SHOPPERS"], none: 2.75, credit: 4.32 },
   { label: ["HELP THE", "COMPANY"], none: 2.95, credit: 3.95 },
 ];
 
 /**
- * One bar per message on the 1–5 intention scale: the lower part is intention
+ * One bar per message on the 1 to 5 intention scale: the lower part is intention
  * with no credit, the upper part what the $10 credit adds. The larger gain is
  * teal.
  */
@@ -1936,7 +1936,7 @@ function Jug({ x, bottom, seed }: { x: number; bottom: number; seed: number }) {
 }
 
 /**
- * Delegation follows involvement: the agent reorders detergent (low); the
+ * Delegation follows involvement: the agent reorders detergent (low). The
  * consumer holds up an engagement ring to choose it in person (high).
  */
 export function DelegateByInvolvement() {

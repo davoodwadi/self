@@ -230,7 +230,7 @@ export function ProfitStream() {
         <rect key={i} x={r2(sx + starts[i] * sk)} y={220} width={r2(Math.max(0.6, v * sk - 1.5))} height={16} fill={SIGNAL} />
       ))}
       <Display x={r2(sx + total * sk + 12)} y={236} size={24} fill={SIGNAL}>{`CLV ≈ ${usd(total)}`}</Display>
-      <Key x={20} y={254} size={9} fill={INK3}>{"m = $100 · r = 80% · d = 10%"}</Key>
+      <Key x={20} y={254} size={9} fill={INK3}>{"m = $100 | r = 80% | d = 10%"}</Key>
     </Frame>
   );
 }
@@ -253,7 +253,7 @@ function BagMark({ x, y, s = 12, color = INK, fill = PAPER }: { x: number; y: nu
 
 /**
  * Observed and unobserved ends: a subscriber's monthly payments stop at a
- * cancellation the firm records; two retail customers have both been silent
+ * cancellation the firm records. Two retail customers have both been silent
  * for three months, but the one who used to buy every two weeks is probably
  * gone while the one who buys every four months is probably still active.
  */
@@ -268,7 +268,7 @@ export function ObservedEnd() {
     <Frame
       width={680}
       height={214}
-      label="Contractual: a subscriber pays every month and cancels in month 8, so the end of the relationship is observed. Noncontractual: two retail customers have both made no purchase for three months. One used to buy every two weeks, so the probability that this customer is still active is low (15%); the other buys every four months, so the probability is high (80%)"
+      label="Contractual: a subscriber pays every month and cancels in month 8, so the end of the relationship is observed. Noncontractual: two retail customers have both made no purchase for three months. One used to buy every two weeks, so the probability that this customer is still active is low (15%). The other buys every four months, so the probability is high (80%)"
     >
       {/* today */}
       <line x1={X(12)} y1={86} x2={X(12)} y2={196} stroke={INK3} strokeWidth={1} strokeDasharray="3 3" />
@@ -341,7 +341,7 @@ export function RetentionLever() {
     <Frame
       width={680}
       height={330}
-      label={`CLV against the retention rate, for a $100 margin and a 10% discount rate. At ${Math.round(r * 100)}% retention, CLV is ${usd(now)}. Raising the margin by 10% adds ${usd(now * 0.1)}; raising retention by ten points adds ${usd(up - now)}`}
+      label={`CLV against the retention rate, for a $100 margin and a 10% discount rate. At ${Math.round(r * 100)}% retention, CLV is ${usd(now)}. Raising the margin by 10% adds ${usd(now * 0.1)}. Raising retention by ten points adds ${usd(up - now)}`}
       svgProps={{ style: { touchAction: "none" } }}
     >
       {/* axes */}
@@ -392,7 +392,7 @@ export function RetentionLever() {
           </g>
         );
       })}
-      <Key x={660} y={324} anchor="end" size={9} fill={INK3}>{"m = $100 · d = 10%"}</Key>
+      <Key x={660} y={324} anchor="end" size={9} fill={INK3}>{"m = $100 | d = 10%"}</Key>
     </Frame>
   );
 }
@@ -430,7 +430,7 @@ const RFM_CUSTOMERS: { p: [number, number][]; resp: boolean }[] = [
 
 type Rfm = "R" | "F" | "M";
 
-/** Quintile scores 1–5 for one measure: the top four customers score 5. */
+/** Quintile scores 1 to 5 for one measure: the top four customers score 5. */
 function quintileScores(values: number[], higherIsBetter: boolean) {
   const order = values.map((_, i) => i).sort((a, b) => (higherIsBetter ? values[b] - values[a] : values[a] - values[b]) || a - b);
   const score = new Array<number>(values.length);
@@ -448,11 +448,11 @@ const RFM_STATS = (() => {
 })();
 
 /**
- * Re-rank the customer base: twenty purchase histories, scored 1–5 on
+ * Re-rank the customer base: twenty purchase histories, scored 1 to 5 on
  * recency, frequency and monetary value. Students rank the rows by one
- * measure; the ticks show who responded to the next offer, and each
+ * measure. The ticks show who responded to the next offer, and each
  * quintile's count sits beside it. Ranked by recency, all four in the top
- * quintile responded and responses fall away below; ranked by frequency or
+ * quintile responded and responses fall away below. Ranked by frequency or
  * monetary value they are spread across the list.
  */
 export function RfmRanking() {
@@ -572,7 +572,7 @@ export function RfmProfiles() {
           <g key={c.name}>
             <rect x={x} y={y} width={cw} height={ch} fill={PAPER} stroke={RULE2} strokeWidth={1} />
             <Key x={x + 16} y={y + 24} size={10.5} weight={700} fill={INK}>{c.name}</Key>
-            <Key x={x + cw - 16} y={y + 24} anchor="end" size={10} fill={INK3}>{`R ${c.s[0]} · F ${c.s[1]} · M ${c.s[2]}`}</Key>
+            <Key x={x + cw - 16} y={y + 24} anchor="end" size={10} fill={INK3}>{`R ${c.s[0]} | F ${c.s[1]} | M ${c.s[2]}`}</Key>
             <line x1={t0} y1={ty} x2={t1} y2={ty} stroke={RULE2} strokeWidth={1} />
             <line x1={t1} y1={ty - 9} x2={t1} y2={ty + 9} stroke={INK3} strokeWidth={1} />
             {c.buys.map(([mo, amt], j) => (
@@ -594,7 +594,7 @@ export function RfmProfiles() {
 
 /**
  * Twelve subscribers ranked by their predicted probability of churning in
- * the next quarter (simulated); the four highest scores receive the
+ * the next quarter (simulated). The four highest scores receive the
  * retention offer.
  */
 export function ChurnRanking() {
@@ -691,7 +691,7 @@ const separation = (kids: [TreeNode, TreeNode]) =>
 /**
  * Choose the first split: the tree's root holds 1,000 customers with 10%
  * churn, drawn as a bar whose churners are shaded. Students choose the first
- * variable; the subgroups' bars show how far churners are pulled into one
+ * variable. The subgroups' bars show how far churners are pulled into one
  * branch, the meter compares the three candidates, and contract wins. Under
  * the monthly branch, a second split on 30 days without use gives the rule
  * "monthly contract, no use in 30 days: 45% churn".
@@ -727,7 +727,7 @@ export function FirstSplit() {
       <Frame
         width={680}
         height={334}
-        label={`A decision tree on 1,000 customers with 10% churn, first split on ${s.name.toLowerCase()}: ${s.kids[0].label.toLowerCase()} ${s.kids[0].n} customers, ${Math.round((s.kids[0].churn / s.kids[0].n) * 100)}% churn; ${s.kids[1].label.toLowerCase()} ${s.kids[1].n}, ${Math.round((s.kids[1].churn / s.kids[1].n) * 100)}% churn. Then no use in 30 days: ${Math.round((s.grand[0].churn / s.grand[0].n) * 100)}% churn. Contract separates churners best`}
+        label={`A decision tree on 1,000 customers with 10% churn, first split on ${s.name.toLowerCase()}: ${s.kids[0].label.toLowerCase()} ${s.kids[0].n} customers, ${Math.round((s.kids[0].churn / s.kids[0].n) * 100)}% churn. ${s.kids[1].label.toLowerCase()} ${s.kids[1].n}, ${Math.round((s.kids[1].churn / s.kids[1].n) * 100)}% churn. Then no use in 30 days: ${Math.round((s.grand[0].churn / s.grand[0].n) * 100)}% churn. Contract separates churners best`}
       >
         {node({ n: 1000, churn: 100, label: "" }, pos.root.x, pos.root.y)}
         <Key x={r2(pos.root.x - 120)} y={pos.root.y - 7} size={9.5} weight={700} fill={COUNTER}>CHURNERS</Key>
@@ -801,7 +801,7 @@ const forestError = (n: number) => 0.19 + 0.09 / n ** 0.6;
 
 /**
  * Grow the forest: above, each tree's prediction for one customer as a dot,
- * and the forest's average in --signal; below, the forest's error on holdout
+ * and the forest's average in --signal. Below, the forest's error on holdout
  * customers. Students add trees: a single tree's answer could be anything
  * from 10% to 70%, the average settles near 38%, and the holdout error falls
  * quickly and then flattens, so the gains from more trees taper.
@@ -955,7 +955,7 @@ export function DataSplits() {
 }
 /**
  * Leakage: a churner's record over time, with the date on which the model
- * must predict. Usage records before that date are available; the request
+ * must predict. Usage records before that date are available. The request
  * for a cancellation form comes after it. Students add the request to the
  * model's variables: holdout accuracy jumps from 74% to 96%, while the
  * accuracy the model can achieve at the time of prediction stays at 74%.
@@ -1057,10 +1057,10 @@ const CUM_CHURN = RANKED.reduce<number[]>((acc, r, i) => {
 /**
  * Move the threshold: the curve shows each holdout customer's predicted
  * probability, ranked from highest to lowest, with the churners marked
- * beneath. Students drag the threshold line; everyone above it is predicted
+ * beneath. Students drag the threshold line. Everyone above it is predicted
  * to churn, and the confusion matrix, precision, recall and accuracy follow.
  * At 25% it reproduces the example (150 flagged, 60 churners: precision 40%,
- * recall 60%); above the highest score no one is flagged, accuracy is 90%
+ * recall 60%). Above the highest score no one is flagged, accuracy is 90%
  * and recall is zero.
  */
 export function ThresholdMatrix() {
@@ -1156,7 +1156,7 @@ export function ThresholdMatrix() {
             <Key x={430} y={y + 23} size={8.5} fill={INK3}>{m.sub}</Key>
             <rect x={bx} y={y} width={90} height={16} fill="none" stroke={RULE2} strokeWidth={1} />
             <rect x={bx} y={y} width={r2(m.v * 90)} height={16} fill={m.c} />
-            <Key x={bx + 96} y={y + 12.5} size={10.5} weight={700} fill={m.c}>{m.k === "PRECISION" && !flagged ? "\u2014" : pct(m.v)}</Key>
+            <Key x={bx + 96} y={y + 12.5} size={10.5} weight={700} fill={m.c}>{m.k === "PRECISION" && !flagged ? "n/a" : pct(m.v)}</Key>
           </g>
         );
       })}
@@ -1209,7 +1209,7 @@ export function GainsChart() {
       <Frame
         width={680}
         height={334}
-        label={`Gains chart and lift for 10,000 customers ranked by a churn model. Targeting the top ${depth} decile${depth > 1 ? "s" : ""} (${depth * 10}% of customers) captures ${cum[depth - 1]}% of churners. The top decile's lift is 3.5. Each decile costs $10,000 to contact; the expected benefit exceeds the cost through the third decile. Net expected benefit of this campaign: ${signed(net)}`}
+        label={`Gains chart and lift for 10,000 customers ranked by a churn model. Targeting the top ${depth} decile${depth > 1 ? "s" : ""} (${depth * 10}% of customers) captures ${cum[depth - 1]}% of churners. The top decile's lift is 3.5. Each decile costs $10,000 to contact. The expected benefit exceeds the cost through the third decile. Net expected benefit of this campaign: ${signed(net)}`}
       >
         {/* gains chart */}
         <Key x={20} y={26} size={10}>GAINS CHART</Key>
@@ -1291,9 +1291,9 @@ const UPLIFT_GROUPS = [
 /**
  * Whom to call: forty customers in four cells, by whether they would leave
  * without a retention call (columns) and with it (rows). Students choose
- * whom to call. Calling everyone keeps 7 but loses the 5 sleeping dogs; the
+ * whom to call. Calling everyone keeps 7 but loses the 5 sleeping dogs. The
  * ten highest churn scores fall among those who would leave anyway, half of
- * them lost causes; the ten highest uplift estimates reach every persuadable.
+ * them lost causes. The ten highest uplift estimates reach every persuadable.
  */
 export function UpliftTargeting() {
   const [by, setBy] = useState<Target>("churn");
@@ -1313,7 +1313,7 @@ export function UpliftTargeting() {
         height={350}
         label={`Forty customers by what they would do without and with a retention call: 7 persuadables, 20 sure things, 8 lost causes, 5 sleeping dogs. ${
           by === "all" ? "Calling everyone" : by === "churn" ? "Calling the ten highest churn scores" : "Calling the ten highest uplift estimates"
-        }: ${called} calls, ${kept} customers kept by the call, ${lost} lost because of it, ${wasted} calls with no effect; net ${net >= 0 ? "+" : "−"}${Math.abs(net)}`}
+        }: ${called} calls, ${kept} customers kept by the call, ${lost} lost because of it, ${wasted} calls with no effect. Net ${net >= 0 ? "+" : "−"}${Math.abs(net)}`}
       >
         <Key x={r2(gx[0] + cw)} y={20} anchor="middle" size={9.5} fill={INK3}>WITHOUT A CALL, THE CUSTOMER</Key>
         <Key x={r2(gx[0] + cw / 2)} y={42} anchor="middle" size={10} weight={700} fill={INK}>LEAVES</Key>
@@ -1380,7 +1380,7 @@ export function UpliftTargeting() {
 
 type Method = "content" | "collab";
 
-/** Nine products with one attribute each; the bicycle is new and has no purchases yet. */
+/** Nine products with one attribute each. The bicycle is new and has no purchases yet. */
 const PRODUCTS: { icon: Icon; name: string; tag: string; isNew?: boolean }[] = [
   { icon: Sneaker, name: "running shoes", tag: "SPORT" },
   { icon: Watch, name: "sports watch", tag: "SPORT" },
@@ -1393,7 +1393,7 @@ const PRODUCTS: { icon: Icon; name: string; tag: string; isNew?: boolean }[] = [
   { icon: Book, name: "book", tag: "READING" },
 ];
 
-/** Who bought what (product indexes); the last customer is new. */
+/** Who bought what (product indexes). The last customer is new. */
 const BOUGHT: { id: string; items: number[] }[] = [
   { id: "A", items: [0, 1, 5] },
   { id: "B", items: [0, 3, 4, 5] },
@@ -1426,7 +1426,7 @@ function recommend(ci: number, method: Method) {
  * products, each product with one attribute. Students pick a customer and a
  * method. Content-based recommendation finds unbought products with the
  * same attribute as the customer's purchases (for D: the bicycle and the
- * backpack); collaborative filtering finds what customers with overlapping
+ * backpack). Collaborative filtering finds what customers with overlapping
  * purchases bought (for D, from A and B: the headphones and the backpack).
  * The new bicycle never appears through collaborative filtering, and the new
  * customer gets nothing from either: the cold-start problem.
@@ -1523,7 +1523,7 @@ export function Recommender() {
 
 /**
  * The model's estimated response rate for each group after t retrainings
- * (simulated). Both groups truly respond at 20%; the first model, trained on
+ * (simulated). Both groups truly respond at 20%. The first model, trained on
  * old data, puts group A at 22% and group B at 14%, below the 18% offer
  * threshold. A group's estimate moves toward the truth only through
  * responses to offers it receives.
@@ -1660,7 +1660,7 @@ function fairRates(w: number[], shift: number) {
  * response rates differ (32% and 20%), and one rule, an offer to everyone
  * scoring 40% or more. Students raise group B's scores. At zero the model is
  * calibrated but B receives fewer offers (parity fails) and fewer of B's
- * would-be responders are reached (equal opportunity fails); about +12
+ * would-be responders are reached (equal opportunity fails). About +12
  * points equalizes the share of responders reached and about +15 the offer
  * rates, but by then B's scores overstate its actual rate. No setting meets
  * all three.
@@ -1695,7 +1695,7 @@ export function FairnessThresholds() {
       <Frame
         width={680}
         height={318}
-        label={`Calibrated scores for two groups with true response rates of 32% (A) and 20% (B); an offer goes to every score of 40% or more. Group B's scores raised by ${shift} points. Offer rate: A ${pc(a.offer)}, B ${pc(b.offer)}. Responders who get the offer: A ${pc(a.tpr)}, B ${pc(b.tpr)}. Criteria met: ${met} of 3`}
+        label={`Calibrated scores for two groups with true response rates of 32% (A) and 20% (B). An offer goes to every score of 40% or more. Group B's scores raised by ${shift} points. Offer rate: A ${pc(a.offer)}, B ${pc(b.offer)}. Responders who get the offer: A ${pc(a.tpr)}, B ${pc(b.tpr)}. Criteria met: ${met} of 3`}
       >
         {panels.map((p) => (
           <g key={p.k}>
@@ -1762,7 +1762,7 @@ const balanceShap = (b: number) => (b - 1200) / 50;
 
 /**
  * Global, local and counterfactual: left, how much each variable moves the
- * model's predictions on average; right, why the model gave one customer a
+ * model's predictions on average. Right, why the model gave one customer a
  * 35% probability of responding, below the 40% needed for an offer, as
  * contributions added to the average prediction of 30%. Students raise the
  * customer's account balance: at $1,050 the prediction reaches 40% and the
@@ -1793,7 +1793,7 @@ export function ExplainOffer() {
       <Frame
         width={680}
         height={318}
-        label={`Global explanation: average contribution of each variable, purchases in the last 90 days 9.1 points, account balance 6.4, tenure 4.2, support calls 2.7, email opens 1.6. Local explanation for one customer with an account balance of ${usd(bal)}: average prediction 30%, purchases +12, balance ${signed(parts[1].v)}, tenure +5, support calls −4, prediction ${Math.round(pred)}%; ${
+        label={`Global explanation: average contribution of each variable, purchases in the last 90 days 9.1 points, account balance 6.4, tenure 4.2, support calls 2.7, email opens 1.6. Local explanation for one customer with an account balance of ${usd(bal)}: average prediction 30%, purchases +12, balance ${signed(parts[1].v)}, tenure +5, support calls −4, prediction ${Math.round(pred)}%. ${
           qualifies ? "the customer qualifies for the offer" : "below the 40% needed for an offer"
         }. Counterfactual: a balance of ${usd(cfBalance)} or more would qualify the customer`}
       >
@@ -1862,7 +1862,7 @@ export function ExplainOffer() {
 type PairView = "score" | "noModel" | "pairing";
 
 /**
- * Wadi, Ghodrat & Philp (2026), CETSCALE (17–119) in a fully crossed 5 × 4
+ * Wadi, Ghodrat & Philp (2026), CETSCALE (17 to 119) in a fully crossed 5 × 4
  * design: grand mean and model and target main effects (Table 2), and the
  * model × target interactions (Figure 5).
  */
@@ -1885,9 +1885,9 @@ const COO_TARGETS = [
  * Separate the bias from the baseline (real data): each cell is one model's
  * expected consumer-ethnocentrism score when the statements concern one
  * country. Students strip the baselines away. The raw scores mostly show
- * which model is high or low everywhere (Aya Expanse ~87, Qwen3 ~52); after
+ * which model is high or low everywhere (Aya Expanse ~87, Qwen3 ~52). After
  * removing each model's baseline, what remains is the target country's
- * effect plus the pairing; with both baselines removed, only the
+ * effect plus the pairing. With both baselines removed, only the
  * country-of-origin interaction remains: the two U.S.-developed models rate
  * higher when the statements concern the USA and Canada and lower when they
  * concern China.
@@ -1916,7 +1916,7 @@ export function CountryPairing() {
   const text = (v: number) => (view === "score" ? v.toFixed(1) : `${v >= 0 ? "+" : "−"}${Math.abs(v).toFixed(1)}`);
   const dark = (v: number) => (view === "score" ? v > 72 : Math.abs(v) > 6.5);
   const title = {
-    score: "EXPECTED CETSCALE SCORE (17–119)",
+    score: "EXPECTED CETSCALE SCORE (17 to 119)",
     noModel: "SCORE MINUS THE MODEL’S BASELINE",
     pairing: "PAIRING EFFECT ONLY: COUNTRY-OF-ORIGIN BIAS",
   }[view];
@@ -1927,7 +1927,7 @@ export function CountryPairing() {
         height={322}
         label={`Consumer-ethnocentrism (CETSCALE) of five language models when the statements concern the USA, Canada, China or France (Wadi, Ghodrat & Philp, 2026). View: ${title.toLowerCase()}. ${COO_TARGETS.map(
           (t, ti) => `${t.name}: ${COO_MODELS.map((m, mi) => `${m.name} ${text(value(mi, ti))}`).join(", ")}`,
-        ).join("; ")}. Outlined cells pair a model with its own country of development`}
+        ).join(". ")}. Outlined cells pair a model with its own country of development`}
       >
         <Key x={20} y={22} size={10} weight={700} fill={view === "pairing" ? SIGNAL : INK}>{title}</Key>
         <Key x={20} y={r2(ry0 - 12)} size={9} fill={INK3}>STATEMENTS ABOUT</Key>
@@ -1985,7 +1985,7 @@ export function CountryPairing() {
 
 type OrderMode = "fixed" | "random";
 
-/** Four listings at the same price; C has the best rating, so the standard says C. */
+/** Four listings at the same price. C has the best rating, so the standard says C. */
 const LISTINGS = [
   { id: "A", rating: 4.1 },
   { id: "B", rating: 3.9 },
@@ -1995,7 +1995,7 @@ const LISTINGS = [
 /**
  * An agent's choice shares over 400 tasks (simulated: choice ∝ exp(quality +
  * position), with a strong pull toward the first slot). With a fixed order A
- * is always first; with randomized orders every listing appears in every slot.
+ * is always first. With randomized orders every listing appears in every slot.
  */
 const ORDER_SHARES = {
   fixed: { byListing: [43, 14, 35, 8] },
@@ -2033,10 +2033,10 @@ export function OrderRandomization() {
       <Frame
         width={680}
         height={316}
-        label={`An AI agent chooses among four listings at the same price; C has the best rating. ${
+        label={`An AI agent chooses among four listings at the same price. C has the best rating. ${
           mode === "fixed"
             ? "With the listings always in the order A, B, C, D, the agent chooses A in 43% of 400 tasks, B 14%, C 35%, D 8%"
-            : "With the order randomized in every task, the agent chooses A in 20% of 400 tasks, B 16%, C 48%, D 16%; by position, 46% of choices go to the first listing, 23% the second, 17% the third, 14% the fourth"
+            : "With the order randomized in every task, the agent chooses A in 20% of 400 tasks, B 16%, C 48%, D 16%. By position, 46% of choices go to the first listing, 23% the second, 17% the third, 14% the fourth"
         }`}
       >
         <Key x={20} y={22} size={10}>THREE OF THE TASKS</Key>

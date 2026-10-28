@@ -26,7 +26,7 @@ const instrumentSans = Instrument_Sans({
 export const metadata: Metadata = {
   title: {
     default: IM.title,
-    template: `%s · ${IM.title}`,
+    template: `%s | ${IM.title}`,
   },
   description: IM.summary,
   icons: {

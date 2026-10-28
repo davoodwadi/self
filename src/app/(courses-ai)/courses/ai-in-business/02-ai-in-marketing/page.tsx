@@ -19,7 +19,7 @@ import {
 } from "../_visuals/kit";
 
 // ============================================================================
-// WEEK 02 — APPLICATIONS OF AI IN MARKETING AND CONSUMER BEHAVIOR
+// WEEK 02: APPLICATIONS OF AI IN MARKETING AND CONSUMER BEHAVIOR
 // ============================================================================
 // Same deck grammar as Week 01: every slide is hand-composed for its own
 // argument, with hairlines instead of boxes and crimson marking one thing.
@@ -40,7 +40,7 @@ export default function Week02Marketing() {
       <ScrollProgress label="Week 02" />
 
       {/* ==================================================================
-          01 · TITLE — masthead with the four verbs of the framing sentence
+          01. TITLE: masthead with the four verbs of the framing sentence
           set as a closed loop beneath the standfirst.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
@@ -95,15 +95,15 @@ export default function Week02Marketing() {
             <span
               className={`${MICRO} font-normal text-[var(--charcoal-light)]/60`}
             >
-              BUSI 654 · Applications of AI in Business
+              BUSI 654. Applications of AI in Business
             </span>
           </div>
         </div>
       </Slide>
 
       {/* ==================================================================
-          02 · WHY MARKETING BECAME AN ML DOMAIN — six data sources converge
-          on one rule; the four machine methods sit in a ruled row; the
+          02. WHY MARKETING BECAME AN ML DOMAIN: six data sources converge
+          on one rule. The four machine methods sit in a ruled row. The
           strategic question closes as a signed verdict.
       ================================================================== */}
       <Slide id="why-marketing-ml" border align="left">
@@ -197,7 +197,7 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          03 · CUSTOMER LIFECYCLE — six stages as a numbered chain, then the
+          03. CUSTOMER LIFECYCLE: six stages as a numbered chain, then the
           four things a firm must define before AI can help at any stage.
                                           [quiz: why-marketing-ml]
       ================================================================== */}
@@ -288,9 +288,9 @@ export default function Week02Marketing() {
       />
 
       {/* ==================================================================
-          05 · CONSUMER INSIGHT — the survey form beside the loose slips of
-          what firms now read; then noise passing through a lens into four
-          clean readings; then the say/do gap as two unequal rules.
+          05. CONSUMER INSIGHT: the survey form beside the loose slips of
+          what firms now read. Then noise passing through a lens into four
+          clean readings. Then the say/do gap as two unequal rules.
       ================================================================== */}
       <Slide id="consumer-insight" border align="left">
         <Head1 eyebrow="Listening at scale">
@@ -429,7 +429,7 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          06 · SEGMENTATION — the same customers cut two ways. Left: even
+          06. SEGMENTATION: the same customers cut two ways. Left: even
           demographic bands that ignore where people actually sit. Right:
           clusters drawn around the people.            [quiz topic]
       ================================================================== */}
@@ -529,7 +529,7 @@ export default function Week02Marketing() {
         <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_20rem] md:gap-12">
             <p className="font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
-              More segments are not always better; excessive granularity can
+              More segments are not always better. Excessive granularity can
               raise complexity without improving decisions.
             </p>
             <figure aria-hidden>
@@ -547,8 +547,8 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          07 · TARGETING — one audience pool ranked three times, once per
-          objective, so the ranking visibly changes with the goal; then the
+          07. TARGETING: one audience pool ranked three times, once per
+          objective, so the ranking visibly changes with the goal. Then the
           rule revised along a signal timeline.     [quiz: segmentation]
       ================================================================== */}
       <Slide
@@ -645,8 +645,8 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          08 · POSITIONING — a resonance grid of claims, benefits and proof
-          points; then the line between what models detect and what
+          08. POSITIONING: a resonance grid of claims, benefits and proof
+          points. Then the line between what models detect and what
           leadership decides.
       ================================================================== */}
       <Slide id="positioning" border align="left">
@@ -664,7 +664,7 @@ export default function Week02Marketing() {
           <div>
             <figure aria-hidden>
               <div className={`${MICRO} mb-3 pl-[7.5rem] text-[var(--charcoal-light)]/45`}>
-                Segments · channels · contexts
+                Segments | channels | contexts
               </div>
               {[
                 { row: "Claims", cells: [0.15, 0.7, 0.3, 0.1, 0.55, 0.2] },
@@ -699,9 +699,9 @@ export default function Week02Marketing() {
               className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/50"
             >
               <span>value propositions</span>
-              <span>·</span>
+              <span>|</span>
               <span>creative briefs</span>
-              <span>·</span>
+              <span>|</span>
               <span>channel-specific narratives</span>
             </div>
           </div>
@@ -711,14 +711,14 @@ export default function Week02Marketing() {
           <div className="mt-14 w-full max-w-5xl">
             <div aria-hidden className="grid grid-cols-2 border-b border-[var(--charcoal)]/15 pb-3">
               <span className={`${MICRO} text-[var(--charcoal-light)]/50`}>
-                Models · detect patterns
+                Models | detect patterns
               </span>
               <span className={`${MICRO} border-l border-[var(--crimson)]/40 pl-6 text-[var(--crimson)]`}>
-                Leadership · must decide
+                Leadership | must decide
               </span>
             </div>
             <p className="mt-6 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
-              Positioning remains a strategic choice; models can detect
+              Positioning remains a strategic choice. Models can detect
               patterns, but leadership must decide what the brand should stand
               for.
             </p>
@@ -737,9 +737,9 @@ export default function Week02Marketing() {
       />
 
       {/* ==================================================================
-          10 · PERSONALIZATION AS POLICY — the merge-field greeting set faint
-          and struck, against four policy dials; the stop conditions as a
-          rule list; the trust curve that rises and then turns over.
+          10. PERSONALIZATION AS POLICY: the merge-field greeting set faint
+          and struck, against four policy dials. The stop conditions as a
+          rule list. The trust curve that rises and then turns over.
       ================================================================== */}
       <Slide id="personalization" border align="left">
         <Head1 eyebrow="A policy, not a mail merge">
@@ -748,7 +748,7 @@ export default function Week02Marketing() {
 
         <div className="w-full">
           <p className={`${BODY} mt-9 max-w-4xl`}>
-            Personalization is not just inserting a name into a message; it is
+            Personalization is not just inserting a name into a message. It is
             choosing which offer, content, timing, and channel best fit a
             customer state.
           </p>
@@ -851,9 +851,9 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          11 · RECOMMENDATION SYSTEMS — a ranked shelf where constraints
-          reorder the list; the objective left as an open choice for
-          leaders; three failure modes struck through.   [quiz topic]
+          11. RECOMMENDATION SYSTEMS: a ranked shelf where constraints
+          reorder the list. The objective left as an open choice for
+          leaders. Three failure modes struck through.   [quiz topic]
       ================================================================== */}
       <Slide id="recommendation-systems" border align="left">
         <Head1 eyebrow="Ranking under constraints">
@@ -950,7 +950,7 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          12 · CREATIVE SYSTEMS — one master fanning into variants; then the
+          12. CREATIVE SYSTEMS: one master fanning into variants. Then the
           same generator drawn twice: isolated on the left, tethered to its
           three anchors on the right.    [quiz: recommendation-systems]
       ================================================================== */}
@@ -1039,8 +1039,8 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          13 · PRICING AND PROMOTION — the tradeoff drawn as a triangle with
-          the chosen point inside it; four promotional levers; three effects
+          13. PRICING AND PROMOTION: the tradeoff drawn as a triangle with
+          the chosen point inside it. Four promotional levers. Three effects
           set on one time ruler because they differ in horizon.
       ================================================================== */}
       <Slide id="pricing-promotion" border align="left">
@@ -1122,8 +1122,8 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          14 · DYNAMIC PRICING — a stepped price line, each step pinned to
-          the condition that moved it; then the two readings of the same
+          14. DYNAMIC PRICING: a stepped price line, each step pinned to
+          the condition that moved it. Then the two readings of the same
           variation, set against each other across one rule.
       ================================================================== */}
       <Slide id="dynamic-pricing" border align="left">
@@ -1208,8 +1208,8 @@ export default function Week02Marketing() {
       />
 
       {/* ==================================================================
-          16 · CAMPAIGN OPTIMIZATION — five channel lanes on one clock, so
-          timing and sequencing read as a score; then the local-versus-total
+          16. CAMPAIGN OPTIMIZATION: five channel lanes on one clock, so
+          timing and sequencing read as a score. Then the local-versus-total
           conflict as two opposed arrows.
       ================================================================== */}
       <Slide id="campaign-optimization" border align="left">
@@ -1258,8 +1258,8 @@ export default function Week02Marketing() {
         <div className="w-full">
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_15rem] md:gap-12">
             <p className={BODY}>
-              Optimization works best when channel objectives are aligned;
-              otherwise one system can improve its local metric while hurting
+              Optimization works best when channel objectives are aligned.
+              Otherwise one system can improve its local metric while hurting
               total performance.
             </p>
             <div aria-hidden className="space-y-4">
@@ -1282,9 +1282,9 @@ export default function Week02Marketing() {
               className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--charcoal-light)]/55"
             >
               <span>frequency</span>
-              <span>·</span>
+              <span>|</span>
               <span>exclusions</span>
-              <span>·</span>
+              <span>|</span>
               <span>diminishing returns</span>
             </div>
             <p className="mt-4 font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
@@ -1296,9 +1296,9 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          17 · BUDGET, BIDDING, PACING — a spend curve against even pacing;
-          then the visibility trade drawn literally: readable rules beside a
-          sealed box; then the three conditions for the control model.
+          17. BUDGET, BIDDING, PACING: a spend curve against even pacing.
+          Then the visibility trade drawn literally: readable rules beside a
+          sealed box. Then the three conditions for the control model.
       ================================================================== */}
       <Slide id="budget-bidding" border align="left">
         <Head1 eyebrow="Spend decisions">Budget Allocation, Bidding, and Pacing</Head1>
@@ -1314,9 +1314,9 @@ export default function Week02Marketing() {
               className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/50"
             >
               <span>how much</span>
-              <span>·</span>
+              <span>|</span>
               <span>where</span>
-              <span>·</span>
+              <span>|</span>
               <span>how quickly</span>
             </div>
           </div>
@@ -1386,8 +1386,8 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          18 · EXPERIMENTATION — control and treatment stood side by side;
-          only the crimson increment is what the campaign caused. [quiz topic]
+          18. EXPERIMENTATION: control and treatment stood side by side.
+          Only the crimson increment is what the campaign caused. [quiz topic]
       ================================================================== */}
       <Slide id="experimentation" border align="left">
         <Head1 eyebrow="What actually caused it">
@@ -1455,8 +1455,8 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          19 · CAUSAL INFERENCE — the three reasons a clean test is blocked;
-          then the observed series against its dashed counterfactual, the
+          19. CAUSAL INFERENCE: the three reasons a clean test is blocked.
+          Then the observed series against its dashed counterfactual, the
           gap between them being the lift.        [quiz: experimentation]
       ================================================================== */}
       <Slide
@@ -1531,9 +1531,9 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          20 · ATTRIBUTION AND MMM — two instruments drawn side by side: a
+          20. ATTRIBUTION AND MMM: two instruments drawn side by side: a
           touchpoint path with credit split along it, and an aggregate series
-          over time; closed by three overlapping lenses.
+          over time. Closed by three overlapping lenses.
       ================================================================== */}
       <Slide id="attribution-mmm" border align="left">
         <Head1 eyebrow="Two instruments">
@@ -1636,9 +1636,9 @@ export default function Week02Marketing() {
       />
 
       {/* ==================================================================
-          22 · CRM ORCHESTRATION — four decisions; then the same customer
+          22. CRM ORCHESTRATION: four decisions. Then the same customer
           journey drawn twice, once broken into campaigns and once as one
-          line; then the three foundations holding up the beam.
+          line. Then the three foundations holding up the beam.
       ================================================================== */}
       <Slide id="crm-orchestration" border align="left">
         <Head1 eyebrow="Across the journey">CRM Orchestration Across the Journey</Head1>
@@ -1724,8 +1724,8 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          23 · RETENTION AND CLV — risk against worth, with one quadrant
-          marked; then a prediction drawn dashed and flat with the path it
+          23. RETENTION AND CLV: risk against worth, with one quadrant
+          marked. Then a prediction drawn dashed and flat with the path it
           can still take, because the danger is reading it as fixed.
                                                         [quiz topic]
       ================================================================== */}
@@ -1815,8 +1815,8 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          24 · CONVERSATIONAL COMMERCE — a conversation column carrying the
-          four jobs; the escalation path drawn as a handoff; then two trays
+          24. CONVERSATIONAL COMMERCE: a conversation column carrying the
+          four jobs. The escalation path drawn as a handoff. Then two trays
           for intents, one for the machine and one for people.
                                                    [quiz: retention-clv]
       ================================================================== */}
@@ -1842,9 +1842,9 @@ export default function Week02Marketing() {
               className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/50"
             >
               <span>chat</span>
-              <span>·</span>
+              <span>|</span>
               <span>voice</span>
-              <span>·</span>
+              <span>|</span>
               <span>messaging</span>
             </div>
           </div>
@@ -1907,7 +1907,7 @@ export default function Week02Marketing() {
               ))}
             </div>
             <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
-              Full automation is rarely the objective; the better design question
+              Full automation is rarely the objective. The better design question
               is which intents can be resolved safely and which require human
               judgment.
             </p>
@@ -1921,9 +1921,9 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          25 · PRIVACY AND TRUST ARCHITECTURE — governance drawn as the slab
-          the three data dependencies stand on; the four decisions as ruled
-          clauses; three strategic capabilities.          [quiz topic]
+          25. PRIVACY AND TRUST ARCHITECTURE: governance drawn as the slab
+          the three data dependencies stand on. The four decisions as ruled
+          clauses. Three strategic capabilities.          [quiz topic]
       ================================================================== */}
       <Slide id="privacy-consent" border align="left">
         <Head1 eyebrow="Trust architecture">
@@ -1951,7 +1951,7 @@ export default function Week02Marketing() {
               ))}
             </div>
             <div className={`${MICRO} bg-[var(--crimson)] px-4 py-3 text-[var(--surface)]`}>
-              Governance · core design requirement
+              Governance | core design requirement
             </div>
           </div>
         </div>
@@ -2004,9 +2004,9 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          26 · MANIPULATION AND BIAS — four harms struck in crimson; the
+          26. MANIPULATION AND BIAS: four harms struck in crimson. The
           pipeline with two entry points for bias, the data and the
-          objective; guardrails drawn as rails.  [quiz: privacy-consent]
+          objective. Guardrails drawn as rails.  [quiz: privacy-consent]
       ================================================================== */}
       <Slide
         id="manipulation-bias"
@@ -2077,7 +2077,7 @@ export default function Week02Marketing() {
               ))}
             </svg>
             <p className={`${BODY} mt-6 max-w-4xl`}>
-              Bias in marketing is not limited to training data; it can also
+              Bias in marketing is not limited to training data. It can also
               arise from objectives that reward short-term conversion without
               regard for downstream harm.
             </p>
@@ -2123,8 +2123,8 @@ export default function Week02Marketing() {
       />
 
       {/* ==================================================================
-          28 · OPERATING MODEL — six teams arranged around one shared centre;
-          then decisions placed along the centralized–decentralized axis.
+          28. OPERATING MODEL: six teams arranged around one shared centre.
+          Then decisions placed along the centralized-decentralized axis.
                                                         [quiz topic]
       ================================================================== */}
       <Slide id="operating-model" border align="left">
@@ -2177,10 +2177,10 @@ export default function Week02Marketing() {
             <div aria-hidden className="max-w-3xl">
               <div className="flex justify-between">
                 <span className={`${MICRO} text-[var(--charcoal-light)]/60`}>
-                  Centralized · governance
+                  Centralized | governance
                 </span>
                 <span className={`${MICRO} text-right text-[var(--crimson)]`}>
-                  Decentralized · speed and domain expertise
+                  Decentralized | speed and domain expertise
                 </span>
               </div>
               <div className="relative mt-4 h-4">
@@ -2211,9 +2211,9 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          29 · BUILD, BUY, OR PARTNER — the stack as three tiers narrowing
-          toward the few capabilities worth building; five decision factors;
-          the vendor trade set as one gain against three losses.
+          29. BUILD, BUY, OR PARTNER: the stack as three tiers narrowing
+          toward the few capabilities worth building. Five decision factors.
+          The vendor trade set as one gain against three losses.
                                                   [quiz: operating-model]
       ================================================================== */}
       <Slide
@@ -2287,7 +2287,7 @@ export default function Week02Marketing() {
                 ↑ Adoption
               </span>
               <span className={`${MICRO} border-l border-[var(--crimson)]/40 pl-6 text-[var(--crimson)]`}>
-                ↓ Transparency · portability · bargaining power
+                ↓ Transparency | portability | bargaining power
               </span>
             </div>
             <p className="mt-6 max-w-4xl font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
@@ -2304,7 +2304,7 @@ export default function Week02Marketing() {
       </Slide>
 
       {/* ==================================================================
-          30 · SYNTHESIS — the six parts of the week joined into one chain,
+          30. SYNTHESIS: the six parts of the week joined into one chain,
           then the three actions set as display statements, then the
           colophon.
       ================================================================== */}
@@ -2368,7 +2368,7 @@ export default function Week02Marketing() {
               End of Week 02
             </span>
             <span className={`${MICRO} font-normal text-[var(--charcoal-light)]/55`}>
-              Davood Wadi, PhD · BUSI 654
+              Davood Wadi, PhD | BUSI 654
             </span>
           </div>
         </div>

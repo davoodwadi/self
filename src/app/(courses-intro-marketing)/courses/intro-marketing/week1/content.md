@@ -24,8 +24,8 @@ week: week1
 
 ## The Evolution of Marketing Philosophies [exercise]
 - Organizations have approached the marketplace through five distinct philosophies over time.
-- The Production Concept holds that consumers favor products that are available and highly affordable; management must focus on improving production and distribution efficiency.
-- The Product Concept suggests consumers favor products offering the most quality, performance, and innovative features; the focus is on continuous product improvements.
+- The Production Concept holds that consumers favor products that are available and highly affordable. Management must focus on improving production and distribution efficiency.
+- The Product Concept suggests consumers favor products offering the most quality, performance, and innovative features. The focus is on continuous product improvements.
 - Both orientations carry the danger of focusing too inward on operations rather than outward on customer needs.
 
 ## The Selling and Marketing Concepts [exercise]
@@ -57,26 +57,26 @@ week: week1
 ## Needs, Wants, and Demands Defined [exercise]
 [diagram: split-lane - Comparing Needs, Wants, and Demands]
 - Human needs are states of felt deprivation, including basic physical needs (food, clothing, warmth), social needs (belonging, affection), and individual needs (knowledge, self-expression).
-- Wants are the form human needs take as they are shaped by culture and individual personality; a hungry person in one culture wants a hamburger, while in another they want rice and fish.
-- Demands are human wants that are backed by buying power; when accompanied by purchasing ability, wants become demands.
+- Wants are the form human needs take as they are shaped by culture and individual personality. A hungry person in one culture wants a hamburger, while in another they want rice and fish.
+- Demands are human wants that are backed by buying power. When accompanied by purchasing ability, wants become demands.
 - Marketers conduct extensive research to identify unmet needs and formulate products that translate wants into actual demand.
 
 ## Market Offerings: Goods, Services, and Experiences
 - Consumers satisfy their needs and wants through market offerings.
 - A market offering is a combination of products, services, information, or experiences offered to a market to satisfy a need or want.
-- Market offerings are not limited to physical products; they include services like banking, airlines, and hospitality.
+- Market offerings are not limited to physical products. They include services like banking, airlines, and hospitality.
 - Increasingly, companies orchestrate memorable customer experiences that engage consumers emotionally beyond the physical commodity.
 
 ## Customer Value and Satisfaction [exercise]
 - Consumers usually face a broad array of products and services that might satisfy a given need.
 - Customers form expectations about the value and satisfaction that various market offerings will deliver.
 - Customer perceived value is the customer's evaluation of the difference between all the benefits and all the costs of a marketing offer relative to competing offers.
-- Customer satisfaction depends on the product's perceived performance relative to a buyer's expectations; if performance falls short, the customer is dissatisfied, and if performance matches or exceeds expectations, the customer is satisfied or delighted.
+- Customer satisfaction depends on the product's perceived performance relative to a buyer's expectations. If performance falls short, the customer is dissatisfied, and if performance matches or exceeds expectations, the customer is satisfied or delighted.
 
 ## Marketing to AI Agents [exercise]
 - Consumers are beginning to delegate part of their buying to AI agents: software that can search for, compare, and purchase products on a person's behalf.
 - The consumer states a want, such as "a rain jacket under $150," and the AI agent turns that want into a search, a comparison, and sometimes a purchase.
-- The need, the want, and the buying power still belong to the consumer; the AI agent acts on them.
+- The need, the want, and the buying power still belong to the consumer. The AI agent acts on them.
 - The AI agent judges an offer only from the information it can read, such as prices, specifications, and reviews.
 - The consumer still uses the product and decides after the purchase whether it met their expectations.
 - Marketers therefore communicate value to two audiences: the consumer who uses the offering and the AI agent that evaluates it.
@@ -98,7 +98,7 @@ week: week1
 - Step 5: Capture value from customers to create profits and customer equity.
 
 ## Designing a Customer-Driven Marketing Strategy [exercise]
-- Marketing managers cannot serve all customers in every way; they must select which customers to serve and how.
+- Marketing managers cannot serve all customers in every way. They must select which customers to serve and how.
 - Selecting target customers involves market segmentation (dividing the market) and targeting (selecting segments to enter).
 - Choosing a value proposition defines the set of benefits or values a company promises to deliver to satisfy consumer needs.
 - A strong value proposition differentiates the brand and gives customers a compelling reason to choose it over competitors.
@@ -120,7 +120,7 @@ week: week1
 ## Capturing Value from Customers [exercise]
 - By creating superior value for customers, the firm captures value from customers in return in the form of sales, profits, and long-term customer equity.
 - Customer Lifetime Value (CLV) is the value of the entire stream of purchases a customer makes over a lifetime of patronage.
-- Losing a customer means losing more than a single sale; it means losing the entire future income stream that customer represents.
+- Losing a customer means losing more than a single sale. It means losing the entire future income stream that customer represents.
 - Share of customer is the portion of the customer's purchasing that a company gets in its product categories.
 
 ## Customer Equity [exercise]

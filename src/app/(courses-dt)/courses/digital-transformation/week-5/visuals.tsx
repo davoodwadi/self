@@ -1,16 +1,16 @@
 "use client";
 
 /* ==========================================================================
-   Week 5 — plates (Flat Silhouette)
+   Week 5, plates (Flat Silhouette)
    --------------------------------------------------------------------------
    Fixed cast for the week, built on ../_visuals/kit and ../_visuals/objects:
-     · Server   — a physical server rack (on-premise hardware)
-     · Cloud    — the cloud, always on a framed screen (Phosphor Cloud)
-     · Router   — a fog node (router or gateway)
-     · Chip     — processing done on the spot (Phosphor Cpu)
-     · Machine  — a gear sending sensor data (a factory machine)
-     · Person, Shop — people, the business
-   SIGNAL marks the one thing each plate is about; COUNTER marks the
+     - Server, a physical server rack (on-premise hardware)
+     - Cloud, the cloud, always on a framed screen (Phosphor Cloud)
+     - Router, a fog node (router or gateway)
+     - Chip, processing done on the spot (Phosphor Cpu)
+     - Machine, a gear sending sensor data (a factory machine)
+     - Person, Shop, people, the business
+   SIGNAL marks the one thing each plate is about. COUNTER marks the
    contrast. Every coordinate is a literal or rounded with r2(), so server
    and client render identical markup.
    ========================================================================== */
@@ -61,7 +61,7 @@ import { Person, Shop } from "../_visuals/objects";
 const HEAD = { fontFamily: "var(--font-heading)", fontWeight: 700 } as const;
 const BODY = { fontFamily: "var(--font-body)", fontWeight: 600 } as const;
 
-/* -- cast: Server (a rack of three units; 60 × 66, origin top-left) -------- */
+/* -- cast: Server (a rack of three units, 60 × 66, origin top-left) -------- */
 
 export function Server({ x, y, k = 1, tone = INK }: { x: number; y: number; k?: number; tone?: string }) {
   return (
@@ -77,7 +77,7 @@ export function Server({ x, y, k = 1, tone = INK }: { x: number; y: number; k?: 
   );
 }
 
-/* -- cast: Router (a fog node; 80 × 50, origin top-left) ----------------- */
+/* -- cast: Router (a fog node, 80 × 50, origin top-left) ----------------- */
 
 export function Router({ x, y, k = 1, tone = INK }: { x: number; y: number; k?: number; tone?: string }) {
   return (
@@ -116,7 +116,7 @@ export function CloudScreen({
 }
 
 /* ==========================================================================
-   Hero — Edge devices send data up to a fog router, and the router up to
+   Hero: Edge devices send data up to a fog router, and the router up to
    the cloud on a screen
    ========================================================================== */
 
@@ -157,7 +157,7 @@ export function HeroTiers() {
 }
 
 /* ==========================================================================
-   FreshBake — ten stores all lean on one aging on-premise server
+   FreshBake: ten stores all lean on one aging on-premise server
    ========================================================================== */
 
 export function TenStoresOneServer() {
@@ -194,7 +194,7 @@ export function TenStoresOneServer() {
 }
 
 /* ==========================================================================
-   What is cloud computing — instead of owning a server, the business rents
+   What is cloud computing: instead of owning a server, the business rents
    storage, software and processing power over the internet
    ========================================================================== */
 
@@ -242,14 +242,14 @@ export function OwnVsRent() {
 }
 
 /* ==========================================================================
-   Key characteristics — INTERACTIVE. A year of weekly demand for an online
-   store. On-premise: drag one fixed server capacity; any week
+   Key characteristics: INTERACTIVE. A year of weekly demand for an online
+   store. On-premise: drag one fixed server capacity. Any week
    above it crashes, any room below it is paid for and idle. Cloud: capacity
    scales up and down with demand, so both shrink at once.
    ========================================================================== */
 
 const WEEKS = 52;
-/* SIMULATED weekly demand, 0–100: a quiet year with a summer bump and a
+/* SIMULATED weekly demand, 0 to 100: a quiet year with a summer bump and a
    holiday-sale spike in late November and December. */
 const DEMAND = Array.from({ length: WEEKS }, (_, w) => {
   const base = 30 + 5 * Math.sin((2 * Math.PI * (w - 8)) / WEEKS);
@@ -446,7 +446,7 @@ export function CapacityPlanner() {
 }
 
 /* ==========================================================================
-   Airbnb — server capacity rented month by month: a steady base, and extra
+   Airbnb, server capacity rented month by month: a steady base, and extra
    servers added only in the peak travel seasons
    ========================================================================== */
 
@@ -500,9 +500,9 @@ export function SeasonalServers() {
 }
 
 /* ==========================================================================
-   Cloud service models — who runs each layer. One row per model, built up
+   Cloud service models: who runs each layer. One row per model, built up
    across the three slides: On-premise, then IaaS, PaaS and SaaS. Red blocks
-   are rented from the provider; ink blocks the business runs itself.
+   are rented from the provider. Ink blocks the business runs itself.
    ========================================================================== */
 
 const LAYERS = [["Servers,", "storage"], ["Tools and", "platforms"], ["Applications"]];
@@ -530,7 +530,7 @@ export function ServiceStack({ upTo = 3 }: { upTo?: 1 | 2 | 3 }) {
             ? `${m.name}: the business runs servers and storage, tools and platforms, and applications itself`
             : `${m.name}: the provider supplies the bottom ${m.rented === 3 ? "three layers" : m.rented === 1 ? "layer" : "two layers"}`,
         )
-        .join("; ")}. Red blocks are rented from the provider; black blocks the business runs itself.`}
+        .join(". ")}. Red blocks are rented from the provider. Black blocks the business runs itself.`}
     >
       {LAYERS.map((lines, j) => (
         <text
@@ -595,7 +595,7 @@ export function ServiceStackPaaS() {
 }
 
 /* ==========================================================================
-   Snapchat — the engineer faces the app code and turns their back on the
+   Snapchat: the engineer faces the app code and turns their back on the
    servers, which the platform runs for them
    ========================================================================== */
 
@@ -642,7 +642,7 @@ function Laptop({ x, y, children }: { x: number; y: number; children?: React.Rea
 }
 
 /* ==========================================================================
-   Coca-Cola — one customer record in the cloud, open in real time on a
+   Coca-Cola: one customer record in the cloud, open in real time on a
    phone, a laptop and a desktop screen
    ========================================================================== */
 
@@ -674,7 +674,7 @@ export function AnyDevice() {
 }
 
 /* ==========================================================================
-   IaaS discussion — an on-premise server moves to the cloud; four industries
+   IaaS discussion: an on-premise server moves to the cloud. Four industries
    ========================================================================== */
 
 export function MigrateIndustries() {
@@ -682,7 +682,7 @@ export function MigrateIndustries() {
   return (
     <Plate
       h={262}
-      title="An on-premise server rack moves along a red arrow to the cloud on a screen; below, four industry badges: healthcare, e-commerce, government and education"
+      title="An on-premise server rack moves along a red arrow to the cloud on a screen. Below, four industry badges: healthcare, e-commerce, government and education"
     >
       <Server x={56} y={30} />
       <Pointer x1={136} y1={63} x2={232} y2={63} w={5} color={SIGNAL} />
@@ -701,7 +701,7 @@ export function MigrateIndustries() {
 }
 
 /* ==========================================================================
-   Netflix discussion — one streaming service, played on screens around the
+   Netflix discussion: one streaming service, played on screens around the
    world
    ========================================================================== */
 
@@ -725,7 +725,7 @@ export function GlobalStreaming() {
 }
 
 /* ==========================================================================
-   HealthGuard — a patient's wearable sends every reading on the long trip to
+   HealthGuard: a patient's wearable sends every reading on the long trip to
    the cloud, and the alert reaches the doctor late
    ========================================================================== */
 
@@ -733,7 +733,7 @@ export function LateAlert() {
   return (
     <Plate
       h={262}
-      title="A patient with a smartwatch on the left sends data on a long arrow up to the cloud on a screen; the alert travels back down to a doctor on the right, marked by a red hourglass for the delay"
+      title="A patient with a smartwatch on the left sends data on a long arrow up to the cloud on a screen. The alert travels back down to a doctor on the right, marked by a red hourglass for the delay"
     >
       <CloudScreen x={150} y={12} w={100} h={66} />
       <Person x={58} y={150} k={1.05} variant={4} />
@@ -748,9 +748,9 @@ export function LateAlert() {
 }
 
 /* ==========================================================================
-   What is edge computing — INTERACTIVE. Drag the network traffic from quiet
+   What is edge computing: INTERACTIVE. Drag the network traffic from quiet
    to peak hours. The cloud lane's alert waits behind more and more data on
-   the network, and its delay climbs ever faster; the edge lane decides on
+   the network, and its delay climbs ever faster. The edge lane decides on
    the spot and barely moves. (SIMULATED delays.)
    ========================================================================== */
 
@@ -838,7 +838,7 @@ export function AlertDelay() {
 }
 
 /* ==========================================================================
-   Edge computing, four characteristics — one scene for all four: a car (the
+   Edge computing, four characteristics, one scene for all four: a car (the
    data source), a chip right beside it (the edge) and the cloud far off.
    Each plate lights the part its characteristic is about.
    ========================================================================== */
@@ -848,9 +848,9 @@ type EdgeTrait = "proximity" | "latency" | "bandwidth" | "reliability";
 function EdgeScene({ trait }: { trait: EdgeTrait }) {
   const chipTone = trait === "proximity" || trait === "reliability" ? SIGNAL : INK;
   const titles: Record<EdgeTrait, string> = {
-    proximity: "A car with a red processing chip right beside it; the cloud on a screen sits far off and unused",
+    proximity: "A car with a red processing chip right beside it. The cloud on a screen sits far off and unused",
     latency:
-      "A car sends data a short way to a chip beside it, marked by a red lightning bolt for speed; the cloud sits far off",
+      "A car sends data a short way to a chip beside it, marked by a red lightning bolt for speed. The cloud sits far off",
     bandwidth:
       "Many data packets go from a car into the chip beside it, and only one red packet goes on up to the cloud",
     reliability:
@@ -899,7 +899,7 @@ export function EdgeReliability() {
 }
 
 /* ==========================================================================
-   Walmart — inside the store, one edge chip handles the shelves' inventory,
+   Walmart: inside the store, one edge chip handles the shelves' inventory,
    the refrigeration and lighting, and the shopper's data, all on site
    ========================================================================== */
 
@@ -915,7 +915,7 @@ export function StoreEdge() {
   return (
     <Plate
       h={274}
-      title="A store at the top; beneath it a red processing chip in the store links to the shelves' packages, a snowflake for refrigeration, a light bulb for lighting and a shopper"
+      title="A store at the top. Beneath it a red processing chip in the store links to the shelves' packages, a snowflake for refrigeration, a light bulb for lighting and a shopper"
     >
       <Shop x={152} y={8} k={0.6} />
       <path d={`M ${cx} 102 V ${cy - 34}`} stroke={INK} strokeWidth={3} />
@@ -938,7 +938,7 @@ export function StoreEdge() {
 }
 
 /* ==========================================================================
-   Running a factory — dozens of machines, each sending out its own sensor
+   Running a factory: dozens of machines, each sending out its own sensor
    data at the same time
    ========================================================================== */
 
@@ -1012,7 +1012,7 @@ export function FactoryFloor() {
 }
 
 /* ==========================================================================
-   Fog computing — a bridge: localized edge machines on the left, fog nodes
+   Fog computing, a bridge: localized edge machines on the left, fog nodes
    in the middle, the centralized cloud on the right
    ========================================================================== */
 
@@ -1059,10 +1059,10 @@ export function FogBridge() {
 }
 
 /* ==========================================================================
-   Key characteristics of fog — INTERACTIVE. Drag the number of IoT devices.
+   Key characteristics of fog: INTERACTIVE. Drag the number of IoT devices.
    Every twelve machines share one fog node, which sends only summaries on
    to the cloud. Raw data sent straight to the cloud grows with every device
-   and passes the cloud's capacity; data through fog nodes barely grows.
+   and passes the cloud's capacity. Data through fog nodes barely grows.
    (SIMULATED loads.)
    ========================================================================== */
 
@@ -1084,7 +1084,7 @@ export function FogLoad() {
       h={290}
       title={`${n} IoT devices share ${nodes} fog node${nodes > 1 ? "s" : ""}. Sent straight to the cloud, their raw data is ${raw} units against a cloud capacity of ${CLOUD_LIMIT}${
         over ? ", overwhelming the cloud" : ""
-      }; through the fog nodes, only ${viaFog} units reach the cloud.`}
+      }. Through the fog nodes, only ${viaFog} units reach the cloud.`}
     >
       {/* the one input: how many devices */}
       <text x={20} y={40} {...HEAD} fontSize={18} fill={INK}>
@@ -1151,7 +1151,7 @@ export function FogLoad() {
 }
 
 /* ==========================================================================
-   Cisco smart city — a traffic light, a surveillance camera and a utility
+   Cisco smart city: a traffic light, a surveillance camera and a utility
    meter send their data to one fog node on the street, which passes on only
    what the cloud needs
    ========================================================================== */

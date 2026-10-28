@@ -1,13 +1,13 @@
 "use client";
 
 /* ==========================================================================
-   Week 6 — plates (Flat Silhouette)
+   Week 6, plates (Flat Silhouette)
    --------------------------------------------------------------------------
    Fixed cast for the week, built on ../_visuals/kit and ../_visuals/objects:
-     · Person                — every human (bust in profile)
-     · Shop                  — the business (retail store, company)
-     · Doc                   — recorded data / historical records
-     · Monitor / MiniScreen  — anything digital (AI system, ML model, app)
+     - Person, every human (bust in profile)
+     - Shop, the business (retail store, company)
+     - Doc, recorded data / historical records
+     - Monitor / MiniScreen, anything digital (AI system, ML model, app)
    Every coordinate is a literal or rounded with r2(), so server and client
    render identical markup.
    ========================================================================== */
@@ -66,7 +66,7 @@ const HEAD = { fontFamily: "var(--font-heading)", fontWeight: 700 } as const;
 const BODY = { fontFamily: "var(--font-body)", fontWeight: 600 } as const;
 
 /* ==========================================================================
-   1 · Hero — Data documents feed into a framed screen holding nested realms
+   1. Hero: Data documents feed into a framed screen holding nested realms
    of Artificial Intelligence, Machine Learning, and Deep Learning
    ========================================================================== */
 
@@ -139,7 +139,7 @@ export function HeroAiLayers() {
 }
 
 /* ==========================================================================
-   2 · Artificial Intelligence — Three forms of intelligence (Animal, Human,
+   2. Artificial Intelligence: Three forms of intelligence (Animal, Human,
    Artificial) as interactive selectable zones
    ========================================================================== */
 
@@ -195,18 +195,18 @@ export function IntelligenceTypesInteractive({
     <Plate
       w={800}
       h={252}
-      title={`Three selectable panels comparing forms of intelligence: 1. Animal (migrating birds in V-formation and a honeycomb hive), 2. Human (a person in profile with mathematical and musical creations), and 3. Artificial (a framed screen performing pattern recognition, language translation, and object detection); ${activeName} is selected in red`}
+      title={`Three selectable panels comparing forms of intelligence: 1. Animal (migrating birds in V-formation and a honeycomb hive), 2. Human (a person in profile with mathematical and musical creations), and 3. Artificial (a framed screen performing pattern recognition, language translation, and object detection). ${activeName} is selected in red`}
     >
       {/* Vertical dividers */}
       <path d="M 270 18 V 192 M 530 18 V 192" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
-      {/* Panel 1: Animal intelligence — migrating birds + honeycomb hive */}
+      {/* Panel 1: Animal intelligence: migrating birds + honeycomb hive */}
       <BirdGlyph x={88} y={54} k={0.95} tone={t0} />
       <BirdGlyph x={136} y={38} k={1.05} tone={t0} />
       <BirdGlyph x={184} y={54} k={0.95} tone={t0} />
       <HiveCluster cx={140} cy={132} tone={t0} />
 
-      {/* Panel 2: Human intelligence — person in profile + equation & music */}
+      {/* Panel 2: Human intelligence: person in profile + equation & music */}
       <Person x={354} y={64} k={1.18} variant={9} />
       <rect x={422} y={38} width={66} height={46} rx={4} fill={t1} />
       <text x={455} y={68} textAnchor="middle" {...HEAD} fontSize={21} fill={CREAM}>
@@ -214,7 +214,7 @@ export function IntelligenceTypesInteractive({
       </text>
       <MusicNotes x={430} y={106} size={50} weight="fill" color={t1} />
 
-      {/* Panel 3: Artificial intelligence — framed Monitor with 3 AI domains */}
+      {/* Panel 3: Artificial intelligence: framed Monitor with 3 AI domains */}
       <Monitor x={568} y={28} w={184} h={124}>
         <Sparkle x={586} y={69} size={42} weight="fill" color={t2} />
         <ChatCircleText x={639} y={69} size={42} weight="fill" color={t2} />
@@ -273,7 +273,7 @@ export function IntelligenceTypesTall({
     <Plate
       w={400}
       h={326}
-      title={`Three stacked selectable rows comparing 1. Animal, 2. Human, and 3. Artificial intelligence; ${rows[active]?.label ?? "1. Animal"} is selected in red`}
+      title={`Three stacked selectable rows comparing 1. Animal, 2. Human, and 3. Artificial intelligence. ${rows[active]?.label ?? "1. Animal"} is selected in red`}
     >
       {rows.map((r) => {
         const isLit = r.idx === active;
@@ -324,7 +324,7 @@ export function IntelligenceTypesTall({
 }
 
 /* ==========================================================================
-   3 · Which one is AI? — Four candidate digital systems inspected side by
+   3. Which one is AI? - Four candidate digital systems inspected side by
    side (1. Rules-based chess, 2. Music recommender, 3. Dictionary spell-check,
    4. Text-to-speech synthesis)
    ========================================================================== */
@@ -353,7 +353,7 @@ export function WhichOneIsAiInteractive({
     <Plate
       w={800}
       h={262}
-      title={`Four selectable framed screens answering Which one is AI: 1. Chess Game (Rules-Based AI), 2. Music Recs (Machine Learning), 3. Spell-Check (Dictionary Lookup), and 4. ElevenLabs (Deep Learning AI); ${current.tab} (${current.badge}) is selected`}
+      title={`Four selectable framed screens answering Which one is AI: 1. Chess Game (Rules-Based AI), 2. Music Recs (Machine Learning), 3. Spell-Check (Dictionary Lookup), and 4. ElevenLabs (Deep Learning AI). ${current.tab} (${current.badge}) is selected`}
     >
       {/* Dividers */}
       <path d="M 205 18 V 202 M 400 18 V 202 M 595 18 V 202" stroke={INK} strokeWidth={1.8} strokeDasharray="4 5" />
@@ -435,7 +435,7 @@ export function WhichOneIsAiTall({
     <Plate
       w={400}
       h={384}
-      title={`Four stacked selectable rows for Which one is AI: 1. Chess Game, 2. Music Recs, 3. Spell-Check, and 4. ElevenLabs; ${AI_CANDIDATES[active]?.tab ?? "1. Chess Game"} is selected`}
+      title={`Four stacked selectable rows for Which one is AI: 1. Chess Game, 2. Music Recs, 3. Spell-Check, and 4. ElevenLabs. ${AI_CANDIDATES[active]?.tab ?? "1. Chess Game"} is selected`}
     >
       {AI_CANDIDATES.map((c, i) => {
         const y0 = 12 + i * 92;
@@ -473,13 +473,13 @@ export function WhichOneIsAiTall({
 }
 
 /* ==========================================================================
-   4 · Machine Learning — Contrasted with Rules-Based Expert Systems; uses
+   4. Machine Learning: Contrasted with Rules-Based Expert Systems. Uses
    Data and Performance Metric to automatically find how to solve a Task
    ========================================================================== */
 
 export function RulesVsMlInteractive() {
   const [dataPct, setDataPct] = React.useState(75);
-  // Simulated performance metric: ML improves as data increases; Rules-based stays flat
+  // Simulated performance metric: ML improves as data increases. Rules-based stays flat
   const mlScore = Math.round(50 + 46 * (1 - Math.exp(-dataPct / 34)));
   const rulesScore = 62;
   const barW = r2((mlScore / 100) * 144);
@@ -488,7 +488,7 @@ export function RulesVsMlInteractive() {
     <Plate
       w={800}
       h={242}
-      title={`Left: Rules-Based Expert Systems in blue, where a person writes explicit rules for a screen and performance stays flat at ${rulesScore}%. Right: Machine Learning in red, where Data and a Performance Metric automatically train the model on a screen; dragging the Data slider to ${dataPct}% raises the Performance Metric to ${mlScore}%`}
+      title={`Left: Rules-Based Expert Systems in blue, where a person writes explicit rules for a screen and performance stays flat at ${rulesScore}%. Right: Machine Learning in red, where Data and a Performance Metric automatically train the model on a screen. Dragging the Data slider to ${dataPct}% raises the Performance Metric to ${mlScore}%`}
     >
       {/* Center divider */}
       <path d="M 392 18 V 226" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
@@ -550,7 +550,7 @@ export function RulesVsMlInteractive() {
 }
 
 /* ==========================================================================
-   5 · Rise of Machine Learning — Increase in Compute Power, Increase in Data
+   5. Rise of Machine Learning: Increase in Compute Power, Increase in Data
    (Big Data), and Decrease in Storage Costs across the 21st century
    ========================================================================== */
 
@@ -631,23 +631,23 @@ export function RiseOfMlInteractive({
         onChange={setYear}
       />
       <text x={672} y={241} {...BODY} fontSize={14.5} fill={INK}>
-        2000–2025
+        2000 to 2025
       </text>
     </Plate>
   );
 }
 
 /* ==========================================================================
-   6 · Decision Trees — Mentally formed Decision Tree to decide whether to go
+   6. Decision Trees: Mentally formed Decision Tree to decide whether to go
    outside to play tennis (Outlook -> Humidity / Overcast / Wind -> Yes / No)
    ========================================================================== */
 
 const TENNIS_PATHS = [
-  { idx: 0, label: "Sunny · High", outlook: "Sunny", sub: "High", play: false, leafX: 88 },
-  { idx: 1, label: "Sunny · Normal", outlook: "Sunny", sub: "Normal", play: true, leafX: 232 },
+  { idx: 0, label: "Sunny | High", outlook: "Sunny", sub: "High", play: false, leafX: 88 },
+  { idx: 1, label: "Sunny | Normal", outlook: "Sunny", sub: "Normal", play: true, leafX: 232 },
   { idx: 2, label: "Overcast", outlook: "Overcast", sub: "", play: true, leafX: 400 },
-  { idx: 3, label: "Rain · Strong", outlook: "Rain", sub: "Strong", play: false, leafX: 568 },
-  { idx: 4, label: "Rain · Weak", outlook: "Rain", sub: "Weak", play: true, leafX: 712 },
+  { idx: 3, label: "Rain | Strong", outlook: "Rain", sub: "Strong", play: false, leafX: 568 },
+  { idx: 4, label: "Rain | Weak", outlook: "Rain", sub: "Weak", play: true, leafX: 712 },
 ];
 
 export function DecisionTreeInteractive() {
@@ -802,7 +802,7 @@ export function DecisionTreeInteractive() {
 }
 
 /* ==========================================================================
-   7 · Linear Regression — Retail transaction data (Price of items and their
+   7. Linear Regression: Retail transaction data (Price of items and their
    Sales) with a fitted regression line predicting continuous Sales from Price
    ========================================================================== */
 
@@ -833,7 +833,7 @@ export function LinearRegressionInteractive() {
     <Plate
       w={400}
       h={308}
-      title={`Linear Regression scatter plot of retail store transactions with Price on the horizontal axis and Sales on the vertical axis; at Price $${price}, the red regression line predicts Sales of ${predSales} units`}
+      title={`Linear Regression scatter plot of retail store transactions with Price on the horizontal axis and Sales on the vertical axis. At Price $${price}, the red regression line predicts Sales of ${predSales} units`}
     >
       {/* Prediction readout badge above plot */}
       <rect x={68} y={10} width={196} height={30} fill={SIGNAL} />
@@ -877,7 +877,7 @@ export function LinearRegressionInteractive() {
 
       {/* Interactive Price slider */}
       <text x={68} y={232} {...BODY} fontSize={14.5} fill={INK}>
-        Price ($10–$50)
+        Price ($10: $50)
       </text>
       <path d="M 68 262 H 372" stroke={INK} strokeWidth={4} />
       <Knob
@@ -897,7 +897,7 @@ export function LinearRegressionInteractive() {
 }
 
 /* ==========================================================================
-   8 · Logistic Regression — Historical click data for a retail website
+   8. Logistic Regression: Historical click data for a retail website
    predicting binary outcome (Click = 1 vs No Click = 0) along a sigmoid curve
    ========================================================================== */
 
@@ -932,7 +932,7 @@ export function LogisticRegressionInteractive() {
       {/* Binary prediction badge above plot */}
       <rect x={68} y={10} width={196} height={30} fill={activeTone} />
       <text x={166} y={30} textAnchor="middle" {...BODY} fontSize={14} fill={CREAM}>
-        {willClick ? `Click (1) · ${pct}%` : `No Click (0) · ${pct}%`}
+        {willClick ? `Click (1) | ${pct}%` : `No Click (0) | ${pct}%`}
       </text>
 
       {/* Axes */}
@@ -987,7 +987,7 @@ export function LogisticRegressionInteractive() {
 }
 
 /* ==========================================================================
-   9 · Ensemble Learning — Three independent weather apps (Apple Weather,
+   9. Ensemble Learning: Three independent weather apps (Apple Weather,
    AccuWeather, Google Weather, each 70% accuracy) combine by majority vote
    ========================================================================== */
 
@@ -1095,7 +1095,7 @@ export function EnsembleWeatherInteractive() {
 }
 
 /* ==========================================================================
-   10 · Random Forest — Five selectable stages: 1. Ensemble Method,
+   10. Random Forest: Five selectable stages: 1. Ensemble Method,
    2. Diversity, 3. Voting/Averaging, 4. Robustness, 5. Advantages
    ========================================================================== */
 
@@ -1135,7 +1135,7 @@ export function RandomForestInteractive({
     <Plate
       w={800}
       h={256}
-      title={`Five selectable stages of Random Forest: 1. Ensemble (random data subsets), 2. Diversity (independent trees), 3. Voting (majority class or average prediction), 4. Robustness (reduced overfitting), and 5. Advantages (accuracy and feature importance); ${current.tab} is selected in red`}
+      title={`Five selectable stages of Random Forest: 1. Ensemble (random data subsets), 2. Diversity (independent trees), 3. Voting (majority class or average prediction), 4. Robustness (reduced overfitting), and 5. Advantages (accuracy and feature importance). ${current.tab} is selected in red`}
     >
       <path
         d="M 166 18 V 192 M 322 18 V 192 M 478 18 V 192 M 634 18 V 192"
@@ -1264,7 +1264,7 @@ export function RandomForestTall({
     <Plate
       w={400}
       h={340}
-      title={`Five stacked selectable rows for Random Forest stages; ${RF_ZONES[active]?.tab ?? "1. Ensemble"} is selected in red`}
+      title={`Five stacked selectable rows for Random Forest stages. ${RF_ZONES[active]?.tab ?? "1. Ensemble"} is selected in red`}
     >
       {RF_ZONES.map((z, i) => {
         const y0 = 14 + i * 63;
@@ -1298,7 +1298,7 @@ export function RandomForestTall({
 }
 
 /* ==========================================================================
-   11 · Supervised vs. Unsupervised Learning — Labeled data mapped to
+   11. Supervised vs. Unsupervised Learning: Labeled data mapped to
    known targets (Hedonic vs Utility) vs Unlabeled data grouped into clusters
    ========================================================================== */
 
@@ -1316,11 +1316,11 @@ export function SupervisedVsUnsupervisedInteractive({
     <Plate
       w={800}
       h={256}
-      title={`Two selectable learning paradigms: 1. Supervised Learning (labeled customer data classified into Hedonic vs. Utility on a framed screen) and 2. Unsupervised Learning (unlabeled customer data grouped into natural clusters on a framed screen); ${active === 0 ? "1. Supervised Learning" : "2. Unsupervised Learning"} is selected in red`}
+      title={`Two selectable learning paradigms: 1. Supervised Learning (labeled customer data classified into Hedonic vs. Utility on a framed screen) and 2. Unsupervised Learning (unlabeled customer data grouped into natural clusters on a framed screen). ${active === 0 ? "1. Supervised Learning" : "2. Unsupervised Learning"} is selected in red`}
     >
       <path d="M 400 18 V 192" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
-      {/* LEFT: Supervised Learning — Labeled data (Hedonic vs Utility) */}
+      {/* LEFT: Supervised Learning: Labeled data (Hedonic vs Utility) */}
       <Person x={52} y={32} k={0.55} variant={0} />
       <Tag x={82} y={42} size={22} weight="fill" color={supTone} />
       <Person x={52} y={102} k={0.55} variant={3} />
@@ -1346,7 +1346,7 @@ export function SupervisedVsUnsupervisedInteractive({
         <rect x={298} y={106} width={11} height={11} fill={COUNTER} />
       </Monitor>
 
-      {/* RIGHT: Unsupervised Learning — Unlabeled data grouped into clusters */}
+      {/* RIGHT: Unsupervised Learning: Unlabeled data grouped into clusters */}
       <Person x={436} y={32} k={0.55} variant={4} />
       <Person x={436} y={102} k={0.55} variant={6} />
       <Pointer x1={484} y1={90} x2={524} y2={90} w={3.5} head={11} color={unsupTone} />
@@ -1419,7 +1419,7 @@ export function SupervisedVsUnsupervisedTall({
     <Plate
       w={400}
       h={244}
-      title={`Two stacked selectable rows comparing 1. Supervised Learning (Labeled Data) and 2. Unsupervised Learning (Unlabeled Data); ${rows[active]?.label ?? "1. Supervised Learning"} is selected`}
+      title={`Two stacked selectable rows comparing 1. Supervised Learning (Labeled Data) and 2. Unsupervised Learning (Unlabeled Data). ${rows[active]?.label ?? "1. Supervised Learning"} is selected`}
     >
       {rows.map((r) => {
         const isLit = r.idx === active;
@@ -1455,7 +1455,7 @@ export function SupervisedVsUnsupervisedTall({
 }
 
 /* ==========================================================================
-   12 · Popular Algorithms, When to Use, and Challenges — Three selectable
+   12. Popular Algorithms, When to Use, and Challenges: Three selectable
    lenses comparing Supervised and Unsupervised learning
    ========================================================================== */
 
@@ -1479,7 +1479,7 @@ export function ParadigmLensInteractive({
     <Plate
       w={800}
       h={252}
-      title={`Three selectable lenses comparing Supervised and Unsupervised learning: 1. Popular Algorithms (SVM and Neural Networks vs K-Means and PCA), 2. When to Use (Sales forecasting vs Gene grouping and anomaly detection), and 3. Challenges (Costly labeling and overfitting vs Subjective evaluation); ${cur.tab} is selected in red`}
+      title={`Three selectable lenses comparing Supervised and Unsupervised learning: 1. Popular Algorithms (SVM and Neural Networks vs K-Means and PCA), 2. When to Use (Sales forecasting vs Gene grouping and anomaly detection), and 3. Challenges (Costly labeling and overfitting vs Subjective evaluation). ${cur.tab} is selected in red`}
     >
       <path d="M 270 18 V 192 M 530 18 V 192" stroke={INK} strokeWidth={2} strokeDasharray="5 5" />
 
@@ -1490,7 +1490,7 @@ export function ParadigmLensInteractive({
         <circle cx={96} cy={72} r={4.5} fill={COUNTER} />
       </MiniScreen>
       <text x={80} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={toneOf(0)}>
-        SVM · Trees
+        SVM | Trees
       </text>
 
       <MiniScreen x={158} y={34}>
@@ -1500,7 +1500,7 @@ export function ParadigmLensInteractive({
         <circle cx={214} cy={62} r={3.5} fill={COUNTER} />
       </MiniScreen>
       <text x={200} y={132} textAnchor="middle" {...BODY} fontSize={13} fill={COUNTER}>
-        K-Means · PCA
+        K-Means | PCA
       </text>
 
       {/* 2. When to Use: Forecasting sales vs Grouping genes */}
@@ -1581,7 +1581,7 @@ export function ParadigmLensTall({
     <Plate
       w={400}
       h={278}
-      title={`Three stacked selectable rows for 1. Popular Algorithms, 2. When to Use, and 3. Challenges; ${LENS_ZONES[active]?.tab ?? "1. Popular Algorithms"} is selected`}
+      title={`Three stacked selectable rows for 1. Popular Algorithms, 2. When to Use, and 3. Challenges. ${LENS_ZONES[active]?.tab ?? "1. Popular Algorithms"} is selected`}
     >
       {LENS_ZONES.map((z, i) => {
         const y0 = 14 + i * 86;
@@ -1613,7 +1613,7 @@ export function ParadigmLensTall({
 }
 
 /* ==========================================================================
-   13 · Comparison Table Companion Plate — Visualizes the selected Aspect row
+   13. Comparison Table Companion Plate: Visualizes the selected Aspect row
    (1. Data, 2. Goal, 3. Feedback, 4. Common Tasks, 5. Evaluation Metrics)
    for Supervised vs. Unsupervised Learning
    ========================================================================== */
@@ -1652,7 +1652,7 @@ export function ComparisonAspectPlate({
         {active === 3 && <path d="M 178 100 L 234 72" stroke={SIGNAL} strokeWidth={4} />}
         {active === 4 && (
           <text x={206} y={92} textAnchor="middle" {...HEAD} fontSize={16} fill={SIGNAL}>
-            F1 · RMSE
+            F1 | RMSE
           </text>
         )}
       </MiniScreen>
@@ -1661,7 +1661,7 @@ export function ComparisonAspectPlate({
         {active === 1 && "Predict / Classify"}
         {active === 2 && "Direct Feedback"}
         {active === 3 && "Reg. / Classif."}
-        {active === 4 && "Accuracy · F1"}
+        {active === 4 && "Accuracy | F1"}
       </text>
 
       <path d="M 20 144 H 380" stroke={INK} strokeWidth={1.8} strokeDasharray="4 4" />
@@ -1686,8 +1686,8 @@ export function ComparisonAspectPlate({
         {active === 0 && "Inputs Only"}
         {active === 1 && "Find Patterns"}
         {active === 2 && "No Feedback"}
-        {active === 3 && "Cluster · PCA"}
-        {active === 4 && "Elbow · Silh."}
+        {active === 3 && "Cluster | PCA"}
+        {active === 4 && "Elbow | Silh."}
       </text>
 
       {/* Five Aspect selector buttons */}
@@ -1716,7 +1716,7 @@ export function ComparisonAspectPlate({
 }
 
 /* ==========================================================================
-   14 · Case Studies 1–10: Supervised vs. Unsupervised Learning — Interactive
+   14. Case Studies 1 to 10: Supervised vs. Unsupervised Learning: Interactive
    10-case selector and classifier
    ========================================================================== */
 
@@ -1922,7 +1922,7 @@ export function CaseStudiesTall({
         Case {c.n}: {c.short}
       </text>
       <text x={200} y={184} textAnchor="middle" {...BODY} fontSize={15.5} fill={CREAM}>
-        {c.supervised ? "Supervised Learning" : "Unsupervised Learning"} · {c.task}
+        {c.supervised ? "Supervised Learning" : "Unsupervised Learning"} | {c.task}
       </text>
     </Plate>
   );

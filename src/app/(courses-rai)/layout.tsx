@@ -25,7 +25,7 @@ const franklin = Libre_Franklin({
 export const metadata: Metadata = {
   title: {
     default: RAI.title,
-    template: `%s · ${RAI.title}`,
+    template: `%s | ${RAI.title}`,
   },
   description: RAI.summary,
   icons: {

@@ -1,9 +1,9 @@
 import InlineMath from "@/app/(papers)/_components/InlineMath";
 import { Flag } from "./Flag";
 
-// Grand mean μ∅ = 66.25 (composite CETSCALE, range 17–119)
-// Effects are Hoeffding decomposition components — deviations from grand mean
-// SNR = E/SD (signal-to-noise ratio); dPD = directional probability of difference
+// Grand mean μ∅ = 66.25 (composite CETSCALE, range 17 to 119)
+// Effects are Hoeffding decomposition components: deviations from grand mean
+// SNR = E/SD (signal-to-noise ratio). DPD = directional probability of difference
 
 const MODEL_EFFECTS = [
   { label: "Aya Expanse 32B",  flag: "CA", e: 21.19,  sd: 13.01, snr: 1.63, dpd: ">0.99", robust: true  },
@@ -31,11 +31,11 @@ export default function MainEffectsSlide() {
           className="p-heading"
           style={{ fontSize: "clamp(1.8rem, 4vw, 2.75rem)", maxWidth: "52rem", marginBottom: "1rem" }}
         >
-          Aya far exceeds human ethnocentrism; China is the most{" "}<span className="grad-amber">disfavored country</span>
+          Aya far exceeds human ethnocentrism. China is the most{" "}<span className="grad-amber">disfavored country</span>
         </h2>
         <p className="p-body" style={{ maxWidth: "60ch", marginBottom: "3rem", fontSize: "1.0625rem" }}>
           The exact-PMF Hoeffding decomposition isolates model and country main effects as distributions
-          centered on the grand mean (<InlineMath>{"\\mu_\\emptyset = 66.25"}</InlineMath>). Robustness is assessed via SNR and dPD — no p-values,
+          centered on the grand mean (<InlineMath>{"\\mu_\\emptyset = 66.25"}</InlineMath>). Robustness is assessed via SNR and dPD: no p-values,
           no sampling assumptions.
         </p>
         <div

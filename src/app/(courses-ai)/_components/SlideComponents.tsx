@@ -1114,7 +1114,7 @@ export function Quote({
       </p>
       {author && (
         <footer className="text-lg md:text-xl text-[var(--charcoal-light)] font-medium">
-          — {author}
+          - {author}
           {role && (
             <span className="block text-base md:text-lg text-[var(--charcoal-light)]/70 font-light mt-1">
               {role}

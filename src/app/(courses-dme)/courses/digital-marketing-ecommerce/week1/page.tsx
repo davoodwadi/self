@@ -39,9 +39,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 01 — DIGITAL BUSINESS MODELS AND E-COMMERCE ARCHITECTURE
+// WEEK 01: DIGITAL BUSINESS MODELS AND E-COMMERCE ARCHITECTURE
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md;
+// Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and which catalogue plate
 // is drawn beside it. Plates live in ./visuals.tsx.
 // ============================================================================
@@ -54,10 +54,10 @@ export default function Week1Page() {
   return (
     <SlideDeck label="Week 01">
       {/* ================================================================
-          01 · Title Slide
+          01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 01 · Digital Marketing &amp; E-Commerce</Subtitle>
+        <Subtitle variant="hero">Week 01: Digital Marketing &amp; E-Commerce</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Digital Business Models and E-Commerce Architecture</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[50ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.3rem,2.1vw,1.8rem)]">
@@ -68,7 +68,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          02 · Why Digital Marketing and E-Commerce Are Inseparable [no-exercise]
+          02. Why Digital Marketing and E-Commerce Are Inseparable [no-exercise]
           ================================================================ */}
       <Slide id="why-digital-marketing-and-e-commerce-are-inseparable" border className="!py-8">
         <SlideHeading>Why Digital Marketing and E-Commerce Are Inseparable</SlideHeading>
@@ -118,7 +118,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          03 · Defining Digital Marketing and E-Commerce [no-exercise]
+          03. Defining Digital Marketing and E-Commerce [no-exercise]
           ================================================================ */}
       <Slide id="defining-digital-marketing-and-e-commerce" border className="!py-8">
         <SlideHeading>Defining Digital Marketing and E-Commerce</SlideHeading>
@@ -157,7 +157,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          04 · Part 1: Digital Commerce Models [no-exercise]
+          04. Part 1: Digital Commerce Models [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Digital Commerce Models" />
@@ -183,7 +183,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          05 · B2C, B2B, and Direct-to-Consumer (D2C) Commerce [no-exercise]
+          05. B2C, B2B, and Direct-to-Consumer (D2C) Commerce [no-exercise]
           ================================================================ */}
       <Slide id="b2c-b2b-and-direct-to-consumer-d2c-commerce" border className="!py-8">
         <SlideHeading>B2C, B2B, and Direct-to-Consumer (D2C) Commerce</SlideHeading>
@@ -228,7 +228,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          06 · First-Party Retailers Versus Two-Sided Marketplaces [no-exercise]
+          06. First-Party Retailers Versus Two-Sided Marketplaces [no-exercise]
           ================================================================ */}
       <Slide id="first-party-retailers-versus-two-sided-marketplaces" border className="!py-8">
         <SlideHeading>First-Party Retailers Versus Two-Sided Marketplaces</SlideHeading>
@@ -243,8 +243,8 @@ export default function Week1Page() {
             </Ruled>
             <Ruled weight="thin">
               <P>
-                A <Term tone="ink">third-party (3P) two-sided marketplace</Term> does not own the goods it lists;
-                instead, it provides the discovery, ranking, checkout, and trust infrastructure that connects
+                A <Term tone="ink">third-party (3P) two-sided marketplace</Term> does not own the goods it lists.
+                Instead, it provides the discovery, ranking, checkout, and trust infrastructure that connects
                 independent sellers with buyers.
               </P>
             </Ruled>
@@ -276,7 +276,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          07 · Revenue Models in Digital Commerce [exercise]
+          07. Revenue Models in Digital Commerce [exercise]
           ================================================================ */}
       <Slide
         id="revenue-models-in-digital-commerce"
@@ -330,7 +330,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          08 · Matching Commercial Scenarios to Digital Business Models [exercise]
+          08. Matching Commercial Scenarios to Digital Business Models [exercise]
           ================================================================ */}
       <Slide
         id="matching-commercial-scenarios-to-digital-business-models"
@@ -375,7 +375,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          09 · Part 2: Multi-Sided Platform Economics [no-exercise]
+          09. Part 2: Multi-Sided Platform Economics [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Multi-Sided Platform Economics" />
@@ -402,7 +402,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          10 · Same-Side and Cross-Side Network Effects [no-exercise]
+          10. Same-Side and Cross-Side Network Effects [no-exercise]
           ================================================================ */}
       <Slide id="same-side-and-cross-side-network-effects" border className="!py-8">
         <SlideHeading>Same-Side and Cross-Side Network Effects</SlideHeading>
@@ -446,7 +446,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          11 · The Cold-Start Problem, Multi-Homing, and Disintermediation [exercise]
+          11. The Cold-Start Problem, Multi-Homing, and Disintermediation [exercise]
           ================================================================ */}
       <Slide
         id="the-cold-start-problem-multi-homing-and-disintermediation"
@@ -505,7 +505,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          12 · Why Retail Media Networks Emerged Inside Marketplaces [no-exercise]
+          12. Why Retail Media Networks Emerged Inside Marketplaces [no-exercise]
           ================================================================ */}
       <Slide id="why-retail-media-networks-emerged-inside-marketplaces" border className="!py-8">
         <SlideHeading>Why Retail Media Networks Emerged Inside Marketplaces</SlideHeading>
@@ -545,7 +545,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          13 · Part 3: The E-Commerce Information Systems Stack [no-exercise]
+          13. Part 3: The E-Commerce Information Systems Stack [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="The E-Commerce Information Systems Stack" />
@@ -571,7 +571,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          14 · Monolithic Suites Versus Headless and Composable Commerce [exercise]
+          14. Monolithic Suites Versus Headless and Composable Commerce [exercise]
           ================================================================ */}
       <Slide
         id="monolithic-suites-versus-headless-and-composable-commerce"
@@ -624,7 +624,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          15 · Core Systems of Record in E-Commerce [no-exercise]
+          15. Core Systems of Record in E-Commerce [no-exercise]
           ================================================================ */}
       <Slide id="core-systems-of-record-in-e-commerce" border className="!py-8">
         <SlideHeading>Core Systems of Record in E-Commerce</SlideHeading>
@@ -679,7 +679,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          16 · APIs, Checkout Orchestration, and Payment Gateways [exercise]
+          16. APIs, Checkout Orchestration, and Payment Gateways [exercise]
           ================================================================ */}
       <Slide
         id="apis-checkout-orchestration-and-payment-gateways"
@@ -690,7 +690,7 @@ export default function Week1Page() {
         <SlideHeading>APIs, Checkout Orchestration, and Payment Gateways</SlideHeading>
         <Lead className="!max-w-none">
           When a shopper clicks the buy button,{" "}
-          <Term tone="signal">the storefront does not move money directly</Term>; it initiates a sequence of
+          <Term tone="signal">the storefront does not move money directly</Term>. It initiates a sequence of
           synchronous API calls across specialized financial and operational services.
         </Lead>
         <ol className="mt-5 grid w-full gap-x-6 gap-y-4 md:grid-cols-2 xl:grid-cols-4">
@@ -736,7 +736,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          17 · Discussion: Monolithic or Headless?
+          17. Discussion: Monolithic or Headless?
           ================================================================ */}
       <Slide id="discussion-monolithic-or-headless" border className="!py-8">
         <SlideHeading>Monolithic or Headless?</SlideHeading>
@@ -756,7 +756,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          18 · Part 4: The Digital Customer Funnel and Channel Strategy [no-exercise]
+          18. Part 4: The Digital Customer Funnel and Channel Strategy [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="The Digital Customer Funnel and Channel Strategy" />
@@ -782,7 +782,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          19 · Stages of the Digital Commerce Funnel [exercise]
+          19. Stages of the Digital Commerce Funnel [exercise]
           ================================================================ */}
       <Slide
         id="stages-of-the-digital-commerce-funnel"
@@ -795,7 +795,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          20 · Channel Conflict and Omnichannel Integration [no-exercise]
+          20. Channel Conflict and Omnichannel Integration [no-exercise]
           ================================================================ */}
       <Slide id="channel-conflict-and-omnichannel-integration" border className="!py-8">
         <SlideHeading>Channel Conflict and Omnichannel Integration</SlideHeading>
@@ -837,7 +837,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          21 · Part 5: From Web Browsers to Autonomous Shopping Agents [no-exercise]
+          21. Part 5: From Web Browsers to Autonomous Shopping Agents [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="From Web Browsers to Autonomous Shopping Agents" />
@@ -864,7 +864,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          22 · The AI Shopping Agent as a Surrogate Consumer [no-exercise]
+          22. The AI Shopping Agent as a Surrogate Consumer [no-exercise]
           ================================================================ */}
       <Slide id="the-ai-shopping-agent-as-a-surrogate-consumer" border className="!py-8">
         <SlideHeading>The AI Shopping Agent as a Surrogate Consumer</SlideHeading>
@@ -907,7 +907,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          23 · How Agentic Commerce Reshapes the Digital Funnel [exercise]
+          23. How Agentic Commerce Reshapes the Digital Funnel [exercise]
           ================================================================ */}
       <Slide
         id="how-agentic-commerce-reshapes-the-digital-funnel"
@@ -962,7 +962,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          24 · Discussion: Designing for Two Audiences at Once
+          24. Discussion: Designing for Two Audiences at Once
           ================================================================ */}
       <Slide id="discussion-designing-for-two-audiences-at-once" border className="!py-8">
         <SlideHeading>Designing for Two Audiences at Once</SlideHeading>
@@ -982,7 +982,7 @@ export default function Week1Page() {
       </Slide>
 
       {/* ================================================================
-          25 · Key Takeaways
+          25. Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>

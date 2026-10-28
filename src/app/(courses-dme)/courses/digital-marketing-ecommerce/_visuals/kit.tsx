@@ -1,6 +1,5 @@
 /* ==========================================================================
-   Shared kit: the building blocks every week draws and lays out with —
-   colours and type, the plate frame and label helpers, geometry helpers
+   Shared kit: the building blocks every week draws and lays out with, colours and type, the plate frame and label helpers, geometry helpers
    and slide layout blocks. See "Shared pieces" in the root CLAUDE.md.
    ========================================================================== */
 
@@ -270,7 +269,7 @@ export function Arrow({ x1, y1, x2, y2, color = CAT.ink, w = LINE.outline, s = 6
  * default value is the state the slide shows before anyone touches it.
  */
 /* Controls under a plate speak the plate's language: Franklin tracked capitals
-   in ink (as CatKey) and hairline ink rules; the chosen option is marked
+   in ink (as CatKey) and hairline ink rules. The chosen option is marked
    by a filled ring, never by a flat block of fill. */
 const CONTROL_KEY = "shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--ink)]";
 const CONTROL_TEXT = "text-[11.5px] font-medium uppercase tracking-[0.1em] text-[var(--ink)]";
@@ -544,7 +543,7 @@ export function Ruled({
   );
 }
 
-/** Section heading with a hairline beneath; an optional kicker ("Discussion:") sits above the words. */
+/** Section heading with a hairline beneath. An optional kicker ("Discussion:") sits above the words. */
 export function SlideHeading({
   children,
   kicker,

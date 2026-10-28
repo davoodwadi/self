@@ -1,22 +1,22 @@
 /* ==========================================================================
-   Consumer Behavior · Week 06 — figures
+   Consumer Behavior | Week 06, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates for attitudes and persuasion: wobbly doubled ink
    and loose watercolour washes set off-register. Every mark comes from
-   ../_visuals; the style rules live in ../CLAUDE.md.
+   ../_visuals. The style rules live in ../CLAUDE.md.
 
    Fixed cast for this week:
-     · Person: every human, one fashion-illustration figure, varied only by
+     - Person: every human, one fashion-illustration figure, varied only by
        hair, clothes and skin washes.
-     · The ABC of an attitude, the same three marks on every plate:
+     - The ABC of an attitude, the same three marks on every plate:
        Heart = affect (feeling), Thought cloud = cognition (belief),
        Bag = behavior (buying).
-     · BrandBadge: the brand (the attitude object), on a Box, Pack or Bag.
-     · Agent: the AI system (shared: a phone with the AI sparkle).
-     · Mortarboard: expertise, on a person or on the Agent.
+     - BrandBadge: the brand (the attitude object), on a Box, Pack or Bag.
+     - Agent: the AI system (shared: a phone with the AI sparkle).
+     - Mortarboard: expertise, on a person or on the Agent.
 
    Colour roles: teal is the one thing chosen, bought, lit or ticked on a
-   plate; ochre the badge or a count; pencil only an absent object (an empty
+   plate. Ochre the badge or a count. Pencil only an absent object (an empty
    slot, a placeholder line, a feeling that is not there).
    ========================================================================== */
 
@@ -121,7 +121,7 @@ function Pen({ x0, y0, x1, y1, seed }: { x0: number; y0: number; x1: number; y1:
 /**
  * The week's opening still life, seen from above: a magazine open at the
  * brand's ad. In pen, the reader has doodled a heart beside it (feel) and a
- * cloud of ticked thoughts in the margin (think); the coupon has been cut out
+ * cloud of ticked thoughts in the margin (think). The coupon has been cut out
  * and lies by the scissors, its bag washed teal (act). The empty hole it left
  * is pencil.
  */
@@ -136,7 +136,7 @@ export function AdOnTheDesk() {
       id="sk-ad-on-the-desk"
       width={420}
       height={360}
-      label="Seen from above: a magazine lies open at an advertisement for the brand's box. In pen, a reader has drawn a heart beside the ad and a thought cloud with two ticks in the margin. A coupon has been cut from the corner of the page, leaving a pencil outline of the gap; the coupon, showing a teal shopping bag, lies beside a pair of scissors and a pen."
+      label="Seen from above: a magazine lies open at an advertisement for the brand's box. In pen, a reader has drawn a heart beside the ad and a thought cloud with two ticks in the margin. A coupon has been cut from the corner of the page, leaving a pencil outline of the gap. The coupon, showing a teal shopping bag, lies beside a pair of scissors and a pen."
     >
       <Backwash cx={210} cy={180} rx={204} ry={170} seed={100} opacity={0.45} />
       <g transform={`rotate(${tilt} 206 155)`}>
@@ -539,7 +539,7 @@ export function UtilitarianPlate() {
   );
 }
 
-/** A leaf, stem at (x, y), pointing up-right; `s` scales it (about 20 tall). */
+/** A leaf, stem at (x, y), pointing up-right. `s` scales it (about 20 tall). */
 function Leaf({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const blade = at(x, y, [[0, 0], [-6, -8], [-5, -16], [2, -21], [9, -19], [8, -10], [3, -3]], s);
   return (
@@ -867,7 +867,7 @@ export function ExpertSource() {
       id="sk-expert"
       width={300}
       height={214}
-      label="The brand's pack with a large rosette seal pinned to it; in the middle of the seal is a graduation cap, the mark of expertise."
+      label="The brand's pack with a large rosette seal pinned to it. In the middle of the seal is a graduation cap, the mark of expertise."
     >
       <Backwash cx={150} cy={110} rx={140} ry={98} seed={1900} />
       <Wash pts={pack} seed={1901} fill={SK.camel} opacity={0.6} />
@@ -992,7 +992,7 @@ function WrongAdvice({ x, y, tx, ty, seed }: { x: number; y: number; tx: number;
 
 /**
  * The same mistake, two advisers. The AI's wrong advice sends the shopper
- * away; the person's wrong advice is forgiven, and the shopper stays.
+ * away. The person's wrong advice is forgiven, and the shopper stays.
  */
 export function SameMistake() {
   const g = 188;
@@ -1033,7 +1033,7 @@ function Estimate({ x, y, tx, ty, n, seed }: { x: number; y: number; tx: number;
   );
 }
 
-/** Two estimates, one from a person and one from an AI; the shopper follows the AI's. */
+/** Two estimates, one from a person and one from an AI. The shopper follows the AI's. */
 export function FollowTheEstimate() {
   const g = 188;
   const h = 132;
@@ -1044,7 +1044,7 @@ export function FollowTheEstimate() {
       id="sk-follow-estimate"
       width={400}
       height={206}
-      label="A person on the left gives an estimate of 120; an AI agent on the right gives an estimate of 140. The shopper between them faces the AI agent and holds a card with 140 written on it, underlined in teal."
+      label="A person on the left gives an estimate of 120. An AI agent on the right gives an estimate of 140. The shopper between them faces the AI agent and holds a card with 140 written on it, underlined in teal."
     >
       <Backwash cx={200} cy={106} rx={194} ry={92} seed={2500} />
       <Ground x0={20} x1={380} y={g} seed={2501} />
@@ -1105,7 +1105,7 @@ export function ObjectiveSubjective() {
       id="sk-objective-subjective"
       width={400}
       height={206}
-      label="Two scenes. OBJECTIVE: a loan statement showing $412 a month, with an AI agent and a person below it; the AI agent is ticked. SUBJECTIVE: a wrapped gift, with an AI agent and a person below it; the person is ticked."
+      label="Two scenes. OBJECTIVE: a loan statement showing $412 a month, with an AI agent and a person below it. The AI agent is ticked. SUBJECTIVE: a wrapped gift, with an AI agent and a person below it. The person is ticked."
     >
       <Backwash cx={100} cy={102} rx={96} ry={94} seed={2600} />
       <Backwash cx={300} cy={102} rx={96} ry={94} seed={2601} />
@@ -1161,7 +1161,7 @@ function Storefront({ x, bottom, w = 96, h = 92, seed }: { x: number; bottom: nu
 
 /**
  * An expert AI, but whose side is it on? The agent in a graduation cap
- * stands between the shopper and the store; its arrows point both ways.
+ * stands between the shopper and the store. Its arrows point both ways.
  */
 export function WhoseInterests() {
   const g = 188;
@@ -1261,7 +1261,7 @@ const SIM_MODELS = [
   { name: "MODEL B", pmf: [0.04, 0.12, 0.25, 0.3, 0.18, 0.08, 0.03], first: 4, seed: 12000 },
 ];
 
-/** The k-th simulated answer (0–6) of model m: seeded, so server and client agree. */
+/** The k-th simulated answer (0 to 6) of model m: seeded, so server and client agree. */
 function modelAnswer(m: number, k: number): number {
   const { pmf, first, seed } = SIM_MODELS[m];
   if (k === 0) return first;
@@ -1278,7 +1278,7 @@ const fmt1 = (n: number) => (Math.round(n * 10) / 10).toFixed(1);
 
 /**
  * Ask two models the same seven-point item, once or many times. After one
- * ask, the answers can rank the models the wrong way round; as the asks add
+ * ask, the answers can rank the models the wrong way round. As the asks add
  * up, each model's spread of answers settles toward the probabilities it
  * assigns, which "Read probabilities" lays over the bars.
  */
@@ -1307,7 +1307,7 @@ export function AskTwoModels() {
   const hOf = (share: number) => r2((share / top) * band);
   const label = `Two AI models, A and B, answer the same item on a scale from 1 (strongly disagree) to 7 (strongly agree), asked ${asked} ${asked === 1 ? "time" : "times"} each. ${data
     .map((d, i) => `${SIM_MODELS[i].name}: latest answer ${d.latest + 1}, average ${fmt1(d.mean)}, answers per point ${d.counts.join(", ")}`)
-    .join(". ")}.${probs ? ` Outlines show the probability each model assigns to each point; expected answers ${fmt1(data[0].expected)} and ${fmt1(data[1].expected)}.` : ""}`;
+    .join(". ")}.${probs ? ` Outlines show the probability each model assigns to each point. Expected answers ${fmt1(data[0].expected)} and ${fmt1(data[1].expected)}.` : ""}`;
   return (
     <>
       <SketchFrame id="sk-ask-two-models" width={800} height={256} label={label}>

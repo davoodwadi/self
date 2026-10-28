@@ -220,12 +220,12 @@
     "slide_id": "quasi-experimental-designs",
     "question_text": "A coffee chain renovates its stores in City X but not in City Y. Average daily customers per store rise from 400 to 460 in City X and from 420 to 440 in City Y over the same period. What is the difference-in-differences estimate of the renovation's effect?",
     "hint": "Compute each city's change first, then compare the two changes.",
-    "correct_answer_citation": "Week 08 · Quasi-Experimental Designs",
+    "correct_answer_citation": "Week 08: Quasi-Experimental Designs",
     "correct_answer_index": 2,
     "options": [
       {
         "option_text": "60 customers per store per day",
-        "option_explanation": "This is City X's change alone (460 − 400), a before–after comparison that ignores what happened in City Y over the same period."
+        "option_explanation": "This is City X's change alone (460 − 400), a before-after comparison that ignores what happened in City Y over the same period."
       },
       {
         "option_text": "20 customers per store per day",
@@ -233,7 +233,7 @@
       },
       {
         "option_text": "40 customers per store per day",
-        "option_explanation": "Correct. City X changed by 60 and City Y by 20; the difference between the two changes is 60 − 20 = 40."
+        "option_explanation": "Correct. City X changed by 60 and City Y by 20. The difference between the two changes is 60 − 20 = 40."
       },
       {
         "option_text": "80 customers per store per day",
@@ -399,7 +399,7 @@
         "id": "detergent",
         "text": "The agent opens only the prices of two detergents, never the number of loads, and picks the cheaper bottle, which costs more per load.",
         "answer": "acquire",
-        "explanation": "The information needed for the right choice was never acquired; given what it saw, picking the cheaper bottle was consistent."
+        "explanation": "The information needed for the right choice was never acquired. Given what it saw, picking the cheaper bottle was consistent."
       },
       {
         "id": "cereal",
@@ -429,7 +429,7 @@
         "id": "laptop",
         "text": "The agent opens every attribute of three laptops and then chooses the one that is worst on the goal it was given.",
         "answer": "use",
-        "explanation": "All the information was acquired; the poor choice arose from how it was used."
+        "explanation": "All the information was acquired. The poor choice arose from how it was used."
       }
     ]
   }

@@ -50,20 +50,20 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR · WEEK 03 — LEARNING AND MEMORY
+// CONSUMER BEHAVIOR | WEEK 03: LEARNING AND MEMORY
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx (Editorial Sketch, see ../CLAUDE.md).
 //
 // Colour is rare (see the root CLAUDE.md): each slide gives SIGNAL to at most
-// one phrase, its key idea; defined terms are bold ink and every rule is ink.
+// one phrase, its key idea. Defined terms are bold ink and every rule is ink.
 //
 // Exercises: `Slide` renders `exercise` AFTER its section, on its own screen,
 // so each [exercise]-tagged topic carries one exercise that tests that slide
 // and the ones before it. The parts of classical conditioning are matched to
-// a new campaign; repetition, wear-out, generalization and discrimination are
-// told apart case by case (identify), as are the three memory stores; the
+// a new campaign. Repetition, wear-out, generalization and discrimination are
+// told apart case by case (identify), as are the three memory stores. The
 // moments of observational learning are sorted into its three steps.
 // ============================================================================
 
@@ -137,7 +137,7 @@ function Ruled({
 
 /**
  * A plate in a figure well. A `wide` (800-unit) plate keeps a legible minimum
- * width on phones and scrolls inside its well there; from lg up it fits.
+ * width on phones and scrolls inside its well there. From lg up it fits.
  */
 function Plate({
   children,
@@ -190,7 +190,7 @@ function Heading({
   );
 }
 
-/** Lines on the left, a plate on the right; on phones the plate follows the lines. */
+/** Lines on the left, a plate on the right. On phones the plate follows the lines. */
 function Lede({
   children,
   plate,
@@ -260,7 +260,7 @@ export default function Week3() {
             <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
               Week 03
             </p>
-            <p className="type-caption mt-2">Consumer Behavior · Davood Wadi, PhD</p>
+            <p className="type-caption mt-2">Consumer Behavior | Davood Wadi, PhD</p>
             <Title className="mt-8 !max-w-[14ch]">Learning and Memory</Title>
             <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
               <p className="type-quote">

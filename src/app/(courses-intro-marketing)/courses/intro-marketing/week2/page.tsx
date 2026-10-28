@@ -37,9 +37,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 02 — THE MARKETING ENVIRONMENT AND ETHICS
+// WEEK 02: THE MARKETING ENVIRONMENT AND ETHICS
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
@@ -97,7 +97,7 @@ function Lead({
   );
 }
 
-/** A sentence set as a serif statement — the line a slide lands on. */
+/** A sentence set as a serif statement: the line a slide lands on. */
 function Statement({
   children,
   className = "",
@@ -275,7 +275,7 @@ const FORCES = [
   "Environmental",
 ];
 
-/** The six letters as a strip; the pair on this slide is lit. */
+/** The six letters as a strip. The pair on this slide is lit. */
 function PestleStrip({ active }: { active: number[] }) {
   return (
     <div aria-hidden className="w-full mb-8">
@@ -355,11 +355,11 @@ function Force({
 /**
  * The three PESTLE pairs share a heading and the letter strip, and each
  * sets its two forces and closing line in its own arrangement:
- *  · "columns": the forces side by side, the closing line underneath;
- *  · "rows": the forces stacked, each with its plate beside it, the closing
- *    line in a column at the right;
- *  · "triple": the two forces and the closing line as three columns;
- *  · "wide": as "columns", with the wider column for an interactive plate.
+ *  - "columns": the forces side by side, the closing line underneath.
+ *  - "rows": the forces stacked, each with its plate beside it, the closing
+ *    line in a column at the right.
+ *  - "triple": the two forces and the closing line as three columns.
+ *  - "wide": as "columns", with the wider column for an interactive plate.
  */
 function PestlePair({
   id,
@@ -426,7 +426,7 @@ function CsrTemple() {
   ];
   return (
     // The side padding is room for the base steps, which widen past the
-    // shafts; without it they poke out of the slide on a phone.
+    // shafts. Without it they poke out of the slide on a phone.
     <div className="w-full px-6">
       <div aria-hidden className="relative">
         <svg
@@ -633,7 +633,7 @@ function ConceptStep() {
   );
 }
 
-/* Tiny callback glyphs for the conclusion — each echoes a plate already seen. */
+/* Tiny callback glyphs for the conclusion: each echoes a plate already seen. */
 function GlyphRings() {
   return (
     <svg {...glyphProps}>
@@ -696,7 +696,7 @@ export default function Week2() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 02 · Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 02: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[15ch]">
           The Marketing Environment{" "}
           <span className="text-[var(--signal)]">and</span> Ethics

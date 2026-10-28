@@ -20,19 +20,19 @@
         "id": "laptop-reviews",
         "text": "A student asks a chatbot to summarize reviews of two laptops, then opens the store pages, compares them and buys one without further help.",
         "answer": "l1",
-        "explanation": "The AI only summarizes; the human still searches, compares and executes the purchase."
+        "explanation": "The AI only summarizes. The human still searches, compares and executes the purchase."
       },
       {
         "id": "three-hotels",
         "text": "A travel app reads every hotel in Lisbon for the chosen dates and shows the traveler three it recommends. The traveler picks one.",
         "answer": "l2",
-        "explanation": "The agent ingests the full catalog and filters it to a shortlist of two or three; the human chooses among them."
+        "explanation": "The agent ingests the full catalog and filters it to a shortlist of two or three. The human chooses among them."
       },
       {
         "id": "running-shoes",
         "text": "An assistant picks one pair of running shoes, puts it in the cart with the shopper's size and address filled in, and shows a single 'Confirm order' button.",
         "answer": "l3",
-        "explanation": "The agent selects a single product and prepares checkout; the human is left only a final confirmation click."
+        "explanation": "The agent selects a single product and prepares checkout. The human is left only a final confirmation click."
       },
       {
         "id": "flight-negotiation",
@@ -71,7 +71,7 @@
       },
       {
         "id": "inflate-paid",
-        "text": "When its prompt names the marketplace, a shopping advisor picks the paid placement in 40 of 100 runs; when its prompt names the shopper, it picks it in 5 of 100.",
+        "text": "When its prompt names the marketplace, a shopping advisor picks the paid placement in 40 of 100 runs. When its prompt names the shopper, it picks it in 5 of 100.",
         "bin": "violates",
         "explanation": "A systematic shift toward the paid placement induced by platform role assignment is an algorithmic breach of loyalty."
       },
@@ -85,7 +85,7 @@
         "id": "branding-tone",
         "text": "Named as the platform's assistant, the advisor greets users with the platform's slogan, but it recommends the same hotel it recommends when named as the traveler's agent.",
         "bin": "meets",
-        "explanation": "Tone may change; what invariance requires is that the evaluation of the alternatives does not shift."
+        "explanation": "Tone may change. What invariance requires is that the evaluation of the alternatives does not shift."
       }
     ]
   },
@@ -94,12 +94,12 @@
     "slide_id": "platform-attribution-and-the-semantic-trigger-of-sponsorship-bias",
     "question_text": "A furniture marketplace deploys a shopping assistant whose system prompt says it was employed by the marketplace. One sofa listing carries the label 'Promoted by ShopHaus', ShopHaus being the marketplace itself. Based on Study 2 of Wadi and Ma (2026c), what should an auditor expect compared with an assistant employed by the shopper?",
     "hint": "Ask what happens when the label attributes the promotion to the agent's own named principal.",
-    "correct_answer_citation": "Week 08 · Platform Attribution and the Semantic Trigger of Sponsorship Bias",
+    "correct_answer_citation": "Week 08: Platform Attribution and the Semantic Trigger of Sponsorship Bias",
     "correct_answer_index": 1,
     "options": [
       {
         "option_text": "Both assistants penalize the promoted sofa equally, because the label discloses a paid placement to each of them.",
-        "option_explanation": "Under platform attribution the two delegates diverge sharply; they do not treat the label equally."
+        "option_explanation": "Under platform attribution the two delegates diverge sharply. They do not treat the label equally."
       },
       {
         "option_text": "The marketplace's assistant may drop the penalty altogether and favor the promoted sofa, while the shopper's assistant still discounts it.",
@@ -146,7 +146,7 @@
         "id": "wording-enough",
         "text": "Because label wording works for human shoppers, a label-wording mandate alone is enough to protect consumers who shop through agents.",
         "bin": "unsupported",
-        "explanation": "In agent-mediated commerce label-wording mandates are insufficient on their own; the principal-beneficiary instructions inside the system prompt must be regulated."
+        "explanation": "In agent-mediated commerce label-wording mandates are insufficient on their own. The principal-beneficiary instructions inside the system prompt must be regulated."
       },
       {
         "id": "regulate-prompt",

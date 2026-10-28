@@ -8,7 +8,7 @@ Every line, wash and label in a plate comes from these primitives, so the whole 
 
 | Piece | Use it for |
 |---|---|
-| `SketchFrame id="sk-<plate>"` | The `<svg>` of every plate. `id` must be unique on the page; it prefixes the bleed and grain filters. Gives `<title>` + `aria-label`. |
+| `SketchFrame id="sk-<plate>"` | The `<svg>` of every plate. `id` must be unique on the page. It prefixes the bleed and grain filters. Gives `<title>` + `aria-label`. |
 | `InkLine pts seed` | Every real line and outline: wobbly, drawn twice so the edge looks faintly doubled. Use `closed` for shapes. |
 | `PencilLine pts seed` | Absent objects and placeholders only: an empty slot, a thing taken away or not bought, a diagram placeholder. Never a person or a scene. |
 | `Wash pts seed fill` | Each colour area: ragged edge, set off-register from the line (`dx`/`dy`). |
@@ -65,7 +65,7 @@ Muted, earthy and warm, with one cool accent. About five colours per plate.
 | `ochre` | small highlights, badges, logos | `#E8B84A` |
 | `charcoal` | trousers, dark fabric | `#3E3A4A` |
 | `stone` | the default background wash | `#D0C7B5` |
-| `blush` | the here and now beside a `sky` wash; warm details | `#F2C9B0` |
+| `blush` | the here and now beside a `sky` wash. Warm details | `#F2C9B0` |
 | `sky` | glass, background wash | `#BFD6DF` |
 | `earth` | ground wash | `#C9B8A6` |
 | `pencil` | absent objects and placeholders | `#6F7785` |
@@ -85,8 +85,8 @@ No saturated brights, no neons, no pure black, no CSS variables (`var(--signal)`
 
 Pencil (`PencilLine`, `SketchText fill={SK.pencil}`: light grey, dashed, uncoloured, the same drawing as the real thing, broken up) is kept for **objects that are absent or placeholders**, never for a person or a whole scene:
 
-- the empty spot a product was taken from, or something taken away (the outline of a missing guitar);
-- a thing not bought or not chosen (the unbought bag, the receipt's PRODUCT line);
+- the empty spot a product was taken from, or something taken away (the outline of a missing guitar).
+- a thing not bought or not chosen (the unbought bag, the receipt's PRODUCT line).
 - a placeholder in a diagram.
 
 A real action on an unreal thing stays in ink (the strike-through over the pencil PRODUCT line, the X over an unbought bag).
@@ -99,7 +99,7 @@ A real action on an unreal thing stays in ink (the strike-through over the penci
 - Hair is expressive: loops, curls or sweeping strokes with a single wash.
 - Clothing reads through a few key lines (lapels, a belt, a hem) rather than full detail.
 - Show a range of people: different ages, builds, skin tones and hair types. Vary skin by mixing `skin` with `camel`/`tan`/`brown` washes at different opacities.
-- When people are counted or grouped (Isotype), they stay one consistent figure per week, repeated; the variety comes from hair, clothing wash and skin wash, not a new drawing each time.
+- When people are counted or grouped (Isotype), they stay one consistent figure per week, repeated. The variety comes from hair, clothing wash and skin wash, not a new drawing each time.
 
 ## Objects and settings
 
@@ -136,13 +136,13 @@ The SVG rules in the root `CLAUDE.md` apply. In this course:
 
 - **Rule 8:** the one background wash, and a ground line when something stands, are part of the style and are exempt.
 - **Rule 10:** follow the colour roles above: `teal` is what is learned, lit or chosen (one subject per plate), `ochre` is a highlight, count or badge, `pencil` is an absent object, `stone` is the quiet background wash behind every subject, `blush` beside `sky` sets the here and now against a hope, and the other washes describe the object itself. Never use teal for decoration.
-- **Rule 16:** empty paper *around* the subject is part of the look; trim only canvas that holds nothing at all.
+- **Rule 16:** empty paper *around* the subject is part of the look. Trim only canvas that holds nothing at all.
 - **Rule 19:** plates bring their own palette: never use `--paper-2`/`--paper-3` or any CSS variable inside a plate. A plate in a `figure-well` must still read, so give it a background wash, and never draw cream detail on a cream fill.
-- **Rule 20:** `wobble` already rounds; round anything else yourself, and never use `Math.random()`.
+- **Rule 20:** `wobble` already rounds. Round anything else yourself, and never use `Math.random()`.
 - **Rule 22:** check each plate against the style checklist below as well.
-- **Rule 28:** prefer drawing the object by hand with `InkLine` + `Wash`; the style depends on it. Use an icon only when a hand drawing would be misread, with `weight="light"` and `color={SK.ink}`, plus a `Wash` behind it for colour. Never `duotone`. Colour comes only from `SK`.
+- **Rule 28:** prefer drawing the object by hand with `InkLine` + `Wash`. The style depends on it. Use an icon only when a hand drawing would be misread, with `weight="light"` and `color={SK.ink}`, plus a `Wash` behind it for colour. Never `duotone`. Colour comes only from `SK`.
 
-## Style checklist (with rules 22–24)
+## Style checklist (with rules 22 to 24)
 
 Render it, screenshot it at full size one plate at a time, and ask:
 

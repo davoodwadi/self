@@ -49,9 +49,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 02 — ALGORITHMIC BIAS, FAIRNESS, AND DISCRIMINATION
+// WEEK 02: ALGORITHMIC BIAS, FAIRNESS, AND DISCRIMINATION
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md;
+// Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
 // is drawn beside it. Plates live in ./visuals.tsx.
 // ============================================================================
@@ -64,10 +64,10 @@ export default function Week2Page() {
   return (
     <SlideDeck label="Week 02">
       {/* ================================================================
-          01 · Title Slide
+          01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 02 · Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 02: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           Algorithmic Bias, Fairness, and Discrimination
         </Title>
@@ -83,7 +83,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          02 · From Statistical Patterns to Market Discrimination [no-exercise]
+          02. From Statistical Patterns to Market Discrimination [no-exercise]
           ================================================================ */}
       <Slide id="from-statistical-patterns-to-market-discrimination" border className="!py-8">
         <SlideHeading>From Statistical Patterns to Market Discrimination</SlideHeading>
@@ -128,7 +128,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          03 · Protected Characteristics and Legal Standards of Discrimination [no-exercise]
+          03. Protected Characteristics and Legal Standards of Discrimination [no-exercise]
           ================================================================ */}
       <Slide
         id="protected-characteristics-and-legal-standards-of-discrimination"
@@ -192,7 +192,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          04 · Part 1: Sources of Algorithmic Bias Across the Pipeline [no-exercise]
+          04. Part 1: Sources of Algorithmic Bias Across the Pipeline [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Sources of Algorithmic Bias Across the Pipeline" />
@@ -207,7 +207,7 @@ export default function Week2Page() {
           </Ruled>
           <Ruled>
             <P>
-              Bias does not originate in a single line of code; it enters at
+              Bias does not originate in a single line of code. It enters at
               distinct stages of{" "}
               <Term tone="signal">
                 data generation, measurement, model specification, and market deployment
@@ -229,7 +229,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          05 · Bias in the Data: Historical and Representation Bias [no-exercise]
+          05. Bias in the Data: Historical and Representation Bias [no-exercise]
           ================================================================ */}
       <Slide id="bias-in-the-data-historical-and-representation-bias" border className="!py-8">
         <SlideHeading>Bias in the Data: Historical and Representation Bias</SlideHeading>
@@ -282,7 +282,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          06 · Bias in Modeling: Measurement and Aggregation Bias [no-exercise]
+          06. Bias in Modeling: Measurement and Aggregation Bias [no-exercise]
           ================================================================ */}
       <Slide id="bias-in-modeling-measurement-and-aggregation-bias" border className="!py-8">
         <SlideHeading>Bias in Modeling: Measurement and Aggregation Bias</SlideHeading>
@@ -334,7 +334,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          07 · Bias in Deployment: Proxy Variables and Feedback Loops [no-exercise]
+          07. Bias in Deployment: Proxy Variables and Feedback Loops [no-exercise]
           ================================================================ */}
       <Slide id="bias-in-deployment-proxy-variables-and-feedback-loops" border className="!py-8">
         <SlideHeading>Bias in Deployment: Proxy Variables and Feedback Loops</SlideHeading>
@@ -388,7 +388,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          08 · Identifying Sources of Bias in Commercial Pipelines [exercise]
+          08. Identifying Sources of Bias in Commercial Pipelines [exercise]
           ================================================================ */}
       <Slide
         id="identifying-sources-of-bias-in-commercial-pipelines"
@@ -450,7 +450,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          09 · Part 2: Group Fairness Criteria [no-exercise]
+          09. Part 2: Group Fairness Criteria [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Group Fairness Criteria" />
@@ -484,7 +484,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          10 · Confusion Matrices Across Demographic Groups [no-exercise]
+          10. Confusion Matrices Across Demographic Groups [no-exercise]
           ================================================================ */}
       <Slide id="confusion-matrices-across-demographic-groups" border className="!py-8">
         <SlideHeading>Confusion Matrices Across Demographic Groups</SlideHeading>
@@ -535,7 +535,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          11 · Independence: Demographic Parity [no-exercise]
+          11. Independence: Demographic Parity [no-exercise]
           ================================================================ */}
       <Slide id="independence-demographic-parity" border className="!py-8">
         <SlideHeading>Independence: Demographic Parity</SlideHeading>
@@ -581,7 +581,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          12 · Separation: Equal Opportunity and Equalized Odds [no-exercise]
+          12. Separation: Equal Opportunity and Equalized Odds [no-exercise]
           ================================================================ */}
       <Slide id="separation-equal-opportunity-and-equalized-odds" border className="!py-8">
         <SlideHeading>Separation: Equal Opportunity and Equalized Odds</SlideHeading>
@@ -627,7 +627,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          13 · Sufficiency: Predictive Parity and Calibration [no-exercise]
+          13. Sufficiency: Predictive Parity and Calibration [no-exercise]
           ================================================================ */}
       <Slide id="sufficiency-predictive-parity-and-calibration" border className="!py-8">
         <SlideHeading>Sufficiency: Predictive Parity and Calibration</SlideHeading>
@@ -673,7 +673,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          14 · Selecting a Group Fairness Criterion [exercise]
+          14. Selecting a Group Fairness Criterion [exercise]
           ================================================================ */}
       <Slide
         id="selecting-a-group-fairness-criterion"
@@ -738,7 +738,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          15 · Part 3: Individual and Counterfactual Fairness [no-exercise]
+          15. Part 3: Individual and Counterfactual Fairness [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Individual and Counterfactual Fairness" />
@@ -767,7 +767,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          16 · Individual Fairness: Treating Similar People Similarly [no-exercise]
+          16. Individual Fairness: Treating Similar People Similarly [no-exercise]
           ================================================================ */}
       <Slide id="individual-fairness-treating-similar-people-similarly" border className="!py-8">
         <SlideHeading>Individual Fairness: Treating Similar People Similarly</SlideHeading>
@@ -808,7 +808,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          17 · Counterfactual Fairness and Causal Pathways [exercise]
+          17. Counterfactual Fairness and Causal Pathways [exercise]
           ================================================================ */}
       <Slide
         id="counterfactual-fairness-and-causal-pathways"
@@ -861,7 +861,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          18 · Part 4: The Fairness Impossibility Theorem and Managerial Trade-Offs [no-exercise]
+          18. Part 4: The Fairness Impossibility Theorem and Managerial Trade-Offs [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead
@@ -878,7 +878,7 @@ export default function Week2Page() {
           <Ruled>
             <p className={BIG}>
               Managers cannot instruct an engineering team to make a model
-              &ldquo;completely fair&rdquo; on all metrics at once; they must
+              &ldquo;completely fair&rdquo; on all metrics at once. They must
               decide{" "}
               <Term tone="ink">
                 which type of error disparity is most harmful
@@ -893,7 +893,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          19 · The Fairness Impossibility Theorem [no-exercise]
+          19. The Fairness Impossibility Theorem [no-exercise]
           ================================================================ */}
       <Slide id="the-fairness-impossibility-theorem" border className="!py-8">
         <SlideHeading>The Fairness Impossibility Theorem</SlideHeading>
@@ -941,7 +941,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          20 · Managerial Trade-Offs in Credit, Hiring, and Ad Delivery [exercise]
+          20. Managerial Trade-Offs in Credit, Hiring, and Ad Delivery [exercise]
           ================================================================ */}
       <Slide
         id="managerial-trade-offs-in-credit-hiring-and-ad-delivery"
@@ -994,7 +994,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          21 · Discussion: The Credit Scoring Trade-Off
+          21. Discussion: The Credit Scoring Trade-Off
           ================================================================ */}
       <Slide id="discussion-the-credit-scoring-trade-off" border className="!py-8">
         <SlideHeading>
@@ -1019,7 +1019,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          22 · Part 5: Auditing and Mitigating Disparate Impact in Marketing Pipelines [no-exercise]
+          22. Part 5: Auditing and Mitigating Disparate Impact in Marketing Pipelines [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead
@@ -1051,7 +1051,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          23 · Bias in Ad Delivery and Algorithmic Targeting [no-exercise]
+          23. Bias in Ad Delivery and Algorithmic Targeting [no-exercise]
           ================================================================ */}
       <Slide id="bias-in-ad-delivery-and-algorithmic-targeting" border className="!py-8">
         <SlideHeading>Bias in Ad Delivery and Algorithmic Targeting</SlideHeading>
@@ -1102,7 +1102,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          24 · Pre-Processing, In-Processing, and Post-Processing Mitigation [exercise]
+          24. Pre-Processing, In-Processing, and Post-Processing Mitigation [exercise]
           ================================================================ */}
       <Slide
         id="pre-processing-in-processing-and-post-processing-mitigation"
@@ -1156,7 +1156,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          25 · Six Steps of a Disparate Impact Audit [exercise]
+          25. Six Steps of a Disparate Impact Audit [exercise]
           ================================================================ */}
       <Slide
         id="six-steps-of-a-disparate-impact-audit"
@@ -1247,7 +1247,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          26 · Discussion: Neutral Targeting, Skewed Delivery
+          26. Discussion: Neutral Targeting, Skewed Delivery
           ================================================================ */}
       <Slide id="discussion-neutral-targeting-skewed-delivery" border className="!py-8">
         <SlideHeading>
@@ -1270,7 +1270,7 @@ export default function Week2Page() {
       </Slide>
 
       {/* ================================================================
-          27 · Key Takeaways
+          27. Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>

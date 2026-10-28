@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 06 — figures
+   Week 06, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea: a mixed crowd sorted into
    groups, five criteria glyphs, a nested map zoom, a profile card, twins with
@@ -11,11 +11,11 @@
    phones seen by one consumer.
 
    Conventions carried over from earlier weeks:
-     · viewBox width 800 (400 or 360 for column plates), flat fills, hairline
+     - viewBox width 800 (400 or 360 for column plates), flat fills, hairline
        rules, no shadows or gradients
-     · INK carries the neutral case, SIGNAL the operative one, COUNTER the
+     - INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or outward-looking state
-     · every label reuses words from the slide the plate sits on
+     - every label reuses words from the slide the plate sits on
    ========================================================================== */
 
 import React from "react";
@@ -101,7 +101,7 @@ function Tub({ x, y, s = 1, tone = INK, fill = PAPER }: { x: number; y: number; 
 }
 
 /* ==========================================================================
-   1 · SORTED CROWD — a market divided into distinct groups of buyers
+   1. SORTED CROWD: a market divided into distinct groups of buyers
    ========================================================================== */
 
 export function MarketDivided() {
@@ -152,7 +152,7 @@ export function MarketDivided() {
 }
 
 /* ==========================================================================
-   2 · FIVE CRITERIA GLYPHS — measurable, accessible, substantial,
+   2. FIVE CRITERIA GLYPHS: measurable, accessible, substantial,
        differentiable, actionable
    ========================================================================== */
 
@@ -230,7 +230,7 @@ export function GlyphActionable() {
 }
 
 /* ==========================================================================
-   3 · NESTED ZOOM — geographic units, nations down to neighborhoods (400)
+   3. NESTED ZOOM: geographic units, nations down to neighborhoods (400)
    ========================================================================== */
 
 export function GeographicZoom() {
@@ -265,7 +265,7 @@ export function GeographicZoom() {
 }
 
 /* ==========================================================================
-   4 · PROFILE CARD — demographic variables (400)
+   4. PROFILE CARD: demographic variables (400)
    ========================================================================== */
 
 export function DemographicCard() {
@@ -305,7 +305,7 @@ export function DemographicCard() {
 }
 
 /* ==========================================================================
-   5 · TWINS — same demographic group, very different psychographics
+   5. TWINS: same demographic group, very different psychographics
    ========================================================================== */
 
 /** An outdoor life: sun, mountains, and a tent. Box origin top-left. */
@@ -339,7 +339,7 @@ function HomeScene({ x, y }: { x: number; y: number }) {
 
 export function PsychographicTwins() {
   return (
-    <Frame height={318} label="Two identical people stand on one bracket: the same demographic group. Above one, an outdoor life of mountains and a tent; above the other, a quiet life of an armchair, a lamp, and a book. Very different psychographic characteristics.">
+    <Frame height={318} label="Two identical people stand on one bracket: the same demographic group. Above one, an outdoor life of mountains and a tent. Above the other, a quiet life of an armchair, a lamp, and a book. Very different psychographic characteristics.">
       <Key x={400} y={22} anchor="middle" fill={SIGNAL} size={10.5}>
         VERY DIFFERENT PSYCHOGRAPHIC CHARACTERISTICS
       </Key>
@@ -370,7 +370,7 @@ export function PsychographicTwins() {
 }
 
 /* ==========================================================================
-   6 · LIFESTYLE TO PRODUCT — offerings that align (400)
+   6. LIFESTYLE TO PRODUCT: offerings that align (400)
    ========================================================================== */
 
 /** The armchair from HomeScene, drawn small, centred on (x, y). */
@@ -387,7 +387,7 @@ function Armchair({ x, y, k = 0.5, tone = INK }: { x: number; y: number; k?: num
 
 export function LifestyleProducts() {
   return (
-    <Frame width={400} height={176} label="Two rows. An outdoor lifestyle of mountains aligns with a tent for sale; a quiet lifestyle at home, an armchair, aligns with a reading lamp for sale.">
+    <Frame width={400} height={176} label="Two rows. An outdoor lifestyle of mountains aligns with a tent for sale. A quiet lifestyle at home, an armchair, aligns with a reading lamp for sale.">
       {/* outdoor → tent */}
       <circle cx={60} cy={48} r={36} fill={COUNTER_TINT} stroke={COUNTER} strokeWidth={1.5} />
       <path d="M34 66 L54 38 L66 52 L74 42 L88 66 Z" fill="none" stroke={COUNTER} strokeWidth={1.5} strokeLinejoin="round" />
@@ -415,13 +415,13 @@ export function LifestyleProducts() {
 }
 
 /* ==========================================================================
-   7 · BEHAVIOUR ICONS — the five behavioral variables
+   7. BEHAVIOUR ICONS: the five behavioral variables
    ========================================================================== */
 
 export function BehavioralVariables() {
   const cols = [80, 240, 400, 560, 720];
   return (
-    <Frame height={196} label="Five behavioral variables as icons: occasions, a calendar with one day circled; benefits sought, a magnifier over a star; user status, three people from dashed to filled; usage rate, three bars from short to tall; loyalty status, a heart inside a returning arrow.">
+    <Frame height={196} label="Five behavioral variables as icons: occasions, a calendar with one day circled. Benefits sought, a magnifier over a star. User status, three people from dashed to filled. Usage rate, three bars from short to tall. Loyalty status, a heart inside a returning arrow.">
       {cols.slice(1).map((x) => (
         <line key={x} x1={x - 80} y1={24} x2={x - 80} y2={176} stroke={RULE} strokeWidth={1} />
       ))}
@@ -487,7 +487,7 @@ export function BehavioralVariables() {
 }
 
 /* ==========================================================================
-   8 · BENEFIT MAPPING — benefits, the people who seek each, the brands
+   8. BENEFIT MAPPING: benefits, the people who seek each, the brands
    ========================================================================== */
 
 export function BenefitMapping() {
@@ -536,7 +536,7 @@ export function BenefitMapping() {
 }
 
 /* ==========================================================================
-   9 · TWO TOWERS — business marketers add variables on top
+   9. TWO TOWERS: business marketers add variables on top
    ========================================================================== */
 
 export function BusinessTowers() {
@@ -592,7 +592,7 @@ export function BusinessTowers() {
 }
 
 /* ==========================================================================
-   10 · THREE-WAY OVERLAP — combining variables for athletic shoes
+   10. THREE-WAY OVERLAP: combining variables for athletic shoes
    ========================================================================== */
 
 export function ShoeOverlap() {
@@ -641,7 +641,7 @@ export function ShoeOverlap() {
 }
 
 /* ==========================================================================
-   11 · METER AND SELECT — evaluate each segment, select one or more
+   11. METER AND SELECT: evaluate each segment, select one or more
    ========================================================================== */
 
 export function EvaluateSelect() {
@@ -689,12 +689,12 @@ export function EvaluateSelect() {
 }
 
 /* ==========================================================================
-   12 · THREE FACTOR PANELS — size and growth, structure, objectives
+   12. THREE FACTOR PANELS: size and growth, structure, objectives
    ========================================================================== */
 
 export function ThreeFactors() {
   return (
-    <Frame height={216} label="Three factors in three panels: segment size and growth, rising bars; segment structural attractiveness, a segment pressed on from every side; company objectives and resources, a target and a stack of coins.">
+    <Frame height={216} label="Three factors in three panels: segment size and growth, rising bars. Segment structural attractiveness, a segment pressed on from every side. Company objectives and resources, a target and a stack of coins.">
       <line x1={270} y1={20} x2={270} y2={200} stroke={RULE} strokeWidth={1} />
       <line x1={530} y1={20} x2={530} y2={200} stroke={RULE} strokeWidth={1} />
       {[20, 280, 540].map((x, i) => (
@@ -751,7 +751,7 @@ export function ThreeFactors() {
 }
 
 /* ==========================================================================
-   13 · OPEN ENCLOSURE — competitors inside, entrants at the gap (400)
+   13. OPEN ENCLOSURE: competitors inside, entrants at the gap (400)
    ========================================================================== */
 
 export function CrowdedSegment() {
@@ -791,7 +791,7 @@ export function CrowdedSegment() {
 }
 
 /* ==========================================================================
-   14 · JIGSAW — skills and resources fit what the segment needs (400)
+   14. JIGSAW: skills and resources fit what the segment needs (400)
    ========================================================================== */
 
 export function SkillsFit() {
@@ -822,7 +822,7 @@ export function SkillsFit() {
 }
 
 /* ==========================================================================
-   15 · FOUR TARGETING PANELS — the same market, targeted four ways (360)
+   15. FOUR TARGETING PANELS: the same market, targeted four ways (360)
    ========================================================================== */
 
 /* Buyers' feet, relative to their cluster's centre: two rows of three. */
@@ -953,14 +953,14 @@ export function TargetMicro() {
 }
 
 /* ==========================================================================
-   16 · PROTEIN POWDER FORK — differentiated or concentrated?
+   16. PROTEIN POWDER FORK: differentiated or concentrated?
    ========================================================================== */
 
 export function ProteinFork() {
   return (
     <Frame height={276} label="A tub of premium, organic, plant-based protein powder with two routes. Up: differentiated marketing, three segments of buyers each with its own tub. Down: concentrated marketing, one niche of buyers with one tub, the other segments left empty.">
       <Key x={110} y={56} anchor="middle" fill={INK} size={9.5}>
-        PREMIUM · ORGANIC
+        PREMIUM | ORGANIC
       </Key>
       <Key x={110} y={72} anchor="middle" fill={INK} size={9.5}>
         PLANT-BASED
@@ -1016,7 +1016,7 @@ export function ProteinFork() {
 }
 
 /* ==========================================================================
-   17 · PRODUCT AND MIND — differentiation, then positioning
+   17. PRODUCT AND MIND: differentiation, then positioning
    ========================================================================== */
 
 export function OfferingAndMind() {
@@ -1075,7 +1075,7 @@ export function OfferingAndMind() {
 }
 
 /* ==========================================================================
-   18 · PERCEPTUAL MAP — perceived positioning and relative share
+   18. PERCEPTUAL MAP: perceived positioning and relative share
    ========================================================================== */
 
 export function PerceptualMap() {
@@ -1118,7 +1118,7 @@ export function PerceptualMap() {
 }
 
 /* ==========================================================================
-   19 · SIEVE — seven screens a difference must pass to be promoted
+   19. SIEVE: seven screens a difference must pass to be promoted
    ========================================================================== */
 
 export function DifferenceSieve() {
@@ -1128,7 +1128,7 @@ export function DifferenceSieve() {
   const bandY = (k: number) => 44 + k * 36;
   const screenY = (i: number) => 62 + i * 36;
   return (
-    <Frame height={316} label="A sieve with seven screens: important, distinctive, superior, communicable, preemptive, affordable, profitable. Fourteen possible differences enter at the top; fewer pass each screen, and the one that passes all seven is promoted.">
+    <Frame height={316} label="A sieve with seven screens: important, distinctive, superior, communicable, preemptive, affordable, profitable. Fourteen possible differences enter at the top. Fewer pass each screen, and the one that passes all seven is promoted.">
       <Key x={cx} y={22} anchor="middle" fill={INK} size={9.5}>
         DIFFERENCES
       </Key>
@@ -1162,7 +1162,7 @@ export function DifferenceSieve() {
 }
 
 /* ==========================================================================
-   20 · VALUE GRID — the five value propositions
+   20. VALUE GRID: the five value propositions
    ========================================================================== */
 
 export function ValueGrid() {
@@ -1226,7 +1226,7 @@ export function ValueGrid() {
 }
 
 /* ==========================================================================
-   21 · COLONNADE — the 4 Ps hold up the positioning strategy (400)
+   21. COLONNADE: the 4 Ps hold up the positioning strategy (400)
    ========================================================================== */
 
 export function FourPsColonnade() {
@@ -1259,7 +1259,7 @@ export function FourPsColonnade() {
 }
 
 /* ==========================================================================
-   22 · SLOW CURVE THAT HOLDS — establishing takes long, maintaining is steady
+   22. SLOW CURVE THAT HOLDS: establishing takes long, maintaining is steady
    ========================================================================== */
 
 export function EstablishMaintain() {
@@ -1301,7 +1301,7 @@ export function EstablishMaintain() {
 }
 
 /* ==========================================================================
-   23 · TWO PHONES, ONE MIND — value proposition and differentiation
+   23. TWO PHONES, ONE MIND: value proposition and differentiation
    ========================================================================== */
 
 export function PhonesInMind() {
@@ -1346,7 +1346,7 @@ export function PhonesInMind() {
 }
 
 /* ==========================================================================
-   Conclusion glyphs — each echoes a plate already seen
+   Conclusion glyphs: each echoes a plate already seen
    ========================================================================== */
 
 export function GlyphSegment() {

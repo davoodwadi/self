@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Consumer Behavior · Week 01 — figures
+   Consumer Behavior | Week 01, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates (ink and loose watercolour on warm paper): a
    receipt, an iceberg, a chain, a consumption cycle, a parent and a baby,
@@ -7,24 +7,24 @@
    need, one shopper in four roles, a family car, a crowd sorted into
    groups, a temple of segments, an AI agent shopping for the shopper, and the
    ethical border, including a dark pattern aimed at the agent. The style rules
-   live in ../CLAUDE.md; shared marks come from ../_visuals.
+   live in ../CLAUDE.md. Shared marks come from ../_visuals.
 
    Fixed cast for this week:
-     · Person: every human, one fashion-illustration figure. SHOPPER (bob,
+     - Person: every human, one fashion-illustration figure. SHOPPER (bob,
        camel coat) is the one shopper who follows the week: the real buyer,
-       every role, the marionette. Children use `headScale`; the baby in the
+       every role, the marionette. Children use `headScale`. The baby in the
        high chair is the shared Baby.
-     · Crowds are Isotype: the same figure in four looks (KINDS), drawn at
+     - Crowds are Isotype: the same figure in four looks (KINDS), drawn at
        full size and scaled down (Figure) so the washes read.
-     · StageGlyph: magnifier (prepurchase), bag (purchase), star rating
+     - StageGlyph: magnifier (prepurchase), bag (purchase), star rating
        (postpurchase), on the cycle and again on the discussion plate.
-     · Agent: the AI agent, a phone with the AI sparkle (shared, reused in
+     - Agent: the AI agent, a phone with the AI sparkle (shared, reused in
        later weeks). The running shoes it buys for the shopper are teal.
 
    Colour roles: teal is the one thing chosen, lit or ticked on a plate (the
    Receipt ticks, the lit link, the best pick, the family car, the
-   pre-ticked box, the box the agent picks); ochre a highlight or count;
-   pencil only the Receipt's PRODUCT line, the thing not bought, and the
+   pre-ticked box, the box the agent picks). Ochre a highlight or count.
+   Pencil only the Receipt's PRODUCT line, the thing not bought, and the
    unit prices a store hides from the agent.
    ========================================================================== */
 
@@ -79,7 +79,7 @@ import {
 } from "../_visuals/objects";
 
 /* ==========================================================================
-   TITLE · a receipt that did not sell a product
+   TITLE | a receipt that did not sell a product
    Drawn in the editorial-sketch style: wobbly doubled ink, loose watercolour
    washes set off-register, and faint dashed pencil for what was not bought.
    ========================================================================== */
@@ -321,7 +321,7 @@ export function Iceberg() {
       id="sk-iceberg"
       width={800}
       height={460}
-      label="A sketched iceberg in pale water. Above the waterline, a small tip marked just shopping, one second at the register. Below it, a far larger mass: before the sale, noticing problems, searching options and asking friends; after the sale, using the item, feeling happy or regretful and telling others. A bracket down the whole iceberg reads consumer behavior."
+      label="A sketched iceberg in pale water. Above the waterline, a small tip marked just shopping, one second at the register. Below it, a far larger mass: before the sale, noticing problems, searching options and asking friends. After the sale, using the item, feeling happy or regretful and telling others. A bracket down the whole iceberg reads consumer behavior."
     >
       {/* the sea, then the ice below the surface: paper under a thin veil of water */}
       <Wash pts={sea} seed={102} fill={SK.sky} opacity={0.6} dx={0} dy={0} />
@@ -394,7 +394,7 @@ export function OneSecondChain() {
       id="sk-one-second"
       width={400}
       height={170}
-      label="A sketched chain of links running off both edges; one link in the middle is washed teal, under the words the register and one second."
+      label="A sketched chain of links running off both edges. One link in the middle is washed teal, under the words the register and one second."
     >
       <Backwash cx={200} cy={92} rx={150} ry={56} seed={130} />
       <SketchText x={200} y={32} anchor="middle" size={12}>
@@ -606,13 +606,13 @@ export function BuysUses() {
         CUSTOMER
       </SketchText>
       <SketchText x={170} y={228} anchor="middle" size={12}>
-        price · nutrition
+        price | nutrition
       </SketchText>
       <SketchText x={641} y={206} anchor="middle" size={12}>
         CONSUMER
       </SketchText>
       <SketchText x={641} y={228} anchor="middle" size={12}>
-        taste · texture
+        taste | texture
       </SketchText>
     </SketchFrame>
   );
@@ -657,7 +657,7 @@ export function CalculatorWalk() {
       })}
       <Star x={b.x} y={b.y + 3} r={9} seed={496} />
       <SketchText x={20} y={262} size={12}>
-        COMPARE ALL · CALCULATE · PICK THE BEST
+        COMPARE ALL | CALCULATE | PICK THE BEST
       </SketchText>
       <SketchText x={20} y={284} size={12}>
         every option, every cost
@@ -699,7 +699,7 @@ export function ShortcutWalk() {
       <Battery x={80} y={46} seed={524} />
       <SketchArrow pts={curvePts([r2(hand[0] + 5), r2(hand[1] + 3)], [r2(hand[0] + 30), r2(hand[1] - 2)], [p.x - 21, p.y - 2], 8)} seed={530} width={1.6} head={8} />
       <SketchText x={20} y={262} size={12}>
-        LIMITED TIME · LIMITED ENERGY
+        LIMITED TIME | LIMITED ENERGY
       </SketchText>
       <SketchText x={20} y={284} size={12}>
         a mental shortcut
@@ -811,7 +811,7 @@ export function CalculatorError() {
    NEEDS VERSUS WANTS
    ========================================================================== */
 
-/** A cup of hot tea on its saucer, steam rising; (x, y) is the base centre. */
+/** A cup of hot tea on its saucer, steam rising. (x, y) is the base centre. */
 function TeaCup({ x, y, seed }: { x: number; y: number; seed: number }) {
   const cup = at(x, y, [[-24, -40], [18, -40], [16, -16], [6, -2], [-14, -2], [-22, -16]]);
   const tea = at(x, y, [[-23, -40], [17, -40], [16, -35], [-22, -35]]);
@@ -845,7 +845,7 @@ export function NeedWantTrio() {
       id="sk-need-want"
       width={800}
       height={350}
-      label="Needs on the left as four hand-drawn pills: thirst, highlighted, then hunger, shelter and belonging. Thirst branches into two wants: in Montreal, a glass of cold water with ice or a soda can; in another country, a steaming cup of hot tea."
+      label="Needs on the left as four hand-drawn pills: thirst, highlighted, then hunger, shelter and belonging. Thirst branches into two wants: in Montreal, a glass of cold water with ice or a soda can. In another country, a steaming cup of hot tea."
     >
       <Backwash cx={420} cy={180} rx={380} ry={160} seed={700} opacity={0.35} />
       <SketchText x={40} y={34} size={12}>
@@ -1076,7 +1076,7 @@ export function OneMessage() {
       id="sk-one-message"
       width={400}
       height={270}
-      label="A megaphone sends the same camel-coloured message to a mixed crowd of twenty people in four different looks. Only the people in camel coats turn toward it and wave; the others, in dark suits, pale dresses and earth coats, face away."
+      label="A megaphone sends the same camel-coloured message to a mixed crowd of twenty people in four different looks. Only the people in camel coats turn toward it and wave. The others, in dark suits, pale dresses and earth coats, face away."
     >
       <Backwash cx={250} cy={140} rx={150} ry={128} seed={1400} opacity={0.4} />
       <Megaphone x={44} y={140} seed={1402} />
@@ -1152,7 +1152,7 @@ export function SortedGroups() {
         );
       })}
       <SketchText x={200} y={264} anchor="middle" size={12}>
-        SMALLER GROUPS · SHARED TRAITS
+        SMALLER GROUPS | SHARED TRAITS
       </SketchText>
     </SketchFrame>
   );
@@ -1250,7 +1250,7 @@ export function Informs() {
       id="sk-informs"
       width={400}
       height={220}
-      label="A seller in a leather jacket hands the shopper a camel box; both hold it, and its paper label plainly shows an information mark."
+      label="A seller in a leather jacket hands the shopper a camel box. Both hold it, and its paper label plainly shows an information mark."
     >
       <Backwash cx={200} cy={120} rx={176} ry={92} seed={2000} opacity={0.45} />
       <Ground x0={50} x1={350} y={g} seed={2002} />
@@ -1310,7 +1310,7 @@ export function DarkPattern() {
       id="sk-dark-pattern"
       width={400}
       height={320}
-      label="A sketched website pop-up: a huge camel button reading yes, sign me up; a countdown timer; a box to send offers already ticked in teal; and a tiny, faint no thanks link."
+      label="A sketched website pop-up: a huge camel button reading yes, sign me up. A countdown timer. A box to send offers already ticked in teal. And a tiny, faint no thanks link."
     >
       <Backwash cx={200} cy={160} rx={196} ry={158} seed={2400} opacity={0.4} />
       <Paper pts={win} seed={2401} />
@@ -1418,7 +1418,7 @@ export function RegretCheck() {
       id="sk-regret-check"
       width={800}
       height={250}
-      label="The three stages of consumption, Prepurchase (a magnifier), Purchase (a bag) and Postpurchase (a star rating), each in a round medallion marked with a question mark; beside them a wooden balance scale weighing need against impulsive want, a question mark above it."
+      label="The three stages of consumption, Prepurchase (a magnifier), Purchase (a bag) and Postpurchase (a star rating), each in a round medallion marked with a question mark. Beside them a wooden balance scale weighing need against impulsive want, a question mark above it."
     >
       <Backwash cx={400} cy={128} rx={384} ry={112} seed={2600} opacity={0.35} />
       {xs.map((x, i) => (
@@ -1477,7 +1477,7 @@ const SHOD: Look = { ...SHOPPER, shoes: SK.teal };
 
 /**
  * Three panels under the three lines: the consumer states the goal to the
- * agent; the agent searches, compares and pays; the consumer wears and rates.
+ * agent. The agent searches, compares and pays. The consumer wears and rates.
  */
 export function DelegatedPurchase() {
   const g = 206;
@@ -1497,7 +1497,7 @@ export function DelegatedPurchase() {
         <Ground key={x0} x0={x0} x1={x1} y={g} seed={3110 + i} />
       ))}
 
-      {/* 1 · the consumer states the goal */}
+      {/* 1. the consumer states the goal */}
       <Person x={92} y={g} h={160} look={SHOPPER} arms={["hip", "hold"]} seed={3120} />
       <Agent x={r2(hand[0] + 4)} y={r2(hand[1] + 10)} s={0.5} seed={3140} />
       <SpeechBubble x={194} y={60} w={136} h={80} tx={112} ty={54} seed={3150} />
@@ -1506,7 +1506,7 @@ export function DelegatedPurchase() {
         UNDER $120
       </SketchText>
 
-      {/* 2 · the agent searches, compares and pays */}
+      {/* 2. the agent searches, compares and pays */}
       <Agent x={322} y={g} s={1.5} seed={3160} />
       {[74, 134, 194].map((y, i) => (
         <Shoe key={y} x={430} y={y} s={0.95} seed={3170 + i * 10} fill={i === 1 ? SK.teal : SK.camel} />
@@ -1515,7 +1515,7 @@ export function DelegatedPurchase() {
       <SketchArrow pts={[[358, 124], [396, 124]]} seed={3210} />
       <PayCard x={492} y={124} w={30} tilt={-8} seed={3212} />
 
-      {/* 3 · the consumer uses and judges */}
+      {/* 3. the consumer uses and judges */}
       <Person x={624} y={g} h={160} look={SHOD} arms={["hip", "reach"]} seed={3220} />
       <Shoe x={r2(held[0] + 22)} y={r2(held[1] + 4)} s={0.95} seed={3230} fill={SK.teal} />
       <Stars x={690} y={58} n={2} of={3} r={11} gap={24} seed={3240} />

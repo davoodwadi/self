@@ -153,14 +153,14 @@ export function QualQuantData() {
    Focus Groups
    -------------------------------------------------------------------------- */
 
-/** How much each seat at the table tends to talk, fixed per seat; seat 0 dominates. */
+/** How much each seat at the table tends to talk, fixed per seat. Seat 0 dominates. */
 const TALK = [1.3, 0.34, 0.58, 0.22, 0.42, 0.28, 0.17, 0.25, 0.19, 0.15, 0.31, 0.13];
 const SESSION = 90;
 const MODERATOR = 20;
 
 /**
  * Focus Groups: how a 90-minute session divides among its speakers. The
- * moderator speaks for 20 minutes; the other 70 are shared by the
+ * moderator speaks for 20 minutes. The other 70 are shared by the
  * participants, unevenly, as in a real group: each seat keeps the same
  * tendency to talk, and one participant dominates.
  *
@@ -244,7 +244,7 @@ export function FocusGroupAirtime() {
 /**
  * Depth Interviews: laddering drawn as a ladder. Each rung is one answer in
  * the running-shoe example, climbing from the attribute at the foot to the
- * personal value at the top; the value is the finding, in the accent.
+ * personal value at the top. The value is the finding, in the accent.
  */
 export function Laddering() {
   const rungs = [
@@ -296,7 +296,7 @@ export function Laddering() {
    Discussion: Choosing the Method
    -------------------------------------------------------------------------- */
 
-/** A leaf, the mark for environmentally friendly, centred on (cx, cy); s is its span. */
+/** A leaf, the mark for environmentally friendly, centred on (cx, cy). S is its span. */
 function LeafMark({ cx, cy, s = 14, fill = SIGNAL }: { cx: number; cy: number; s?: number; fill?: string }) {
   const h = s / 2;
   return (
@@ -310,7 +310,7 @@ function LeafMark({ cx, cy, s = 14, fill = SIGNAL }: { cx: number; cy: number; s
   );
 }
 
-/** A trigger spray bottle of cleaner standing on (x, y), 44 units tall; eco carries a leaf on its label. */
+/** A trigger spray bottle of cleaner standing on (x, y), 44 units tall. Eco carries a leaf on its label. */
 function SprayBottle1({ x, y, eco = false }: { x: number; y: number; eco?: boolean }) {
   return (
     <g>
@@ -326,7 +326,7 @@ function SprayBottle1({ x, y, eco = false }: { x: number; y: number; eco?: boole
 /**
  * Discussion: Choosing the Method: ten consumers, each above the cleaner
  * they bought. Eight state a preference for environmentally friendly
- * products (the leaf beside them); only three of the bottles carry the leaf.
+ * products (the leaf beside them). Only three of the bottles carry the leaf.
  */
 export function SayDoGap() {
   const prefers = [true, true, true, false, true, true, true, false, true, true];
@@ -338,7 +338,7 @@ export function SayDoGap() {
     <Frame
       width={400}
       height={222}
-      label="Ten consumers. Eight state a preference for environmentally friendly products, marked with a leaf; beneath each one is the cleaner they purchased, and only three of those ten bottles are environmentally friendly"
+      label="Ten consumers. Eight state a preference for environmentally friendly products, marked with a leaf. Beneath each one is the cleaner they purchased, and only three of those ten bottles are environmentally friendly"
     >
       <Key x={20} y={18} fill={INK3}>STATED PREFERENCE</Key>
       <Key x={380} y={18} anchor="end" fill={SIGNAL}>8 OF 10</Key>
@@ -375,7 +375,7 @@ export function SayDoGap() {
 
 /**
  * Coding: a page of interview transcript with three segments coded in the
- * margin. Two codes come from the codebook (deductive, ink); the third
+ * margin. Two codes come from the codebook (deductive, ink). The third
  * idea was not in the codebook and gets a new code developed from the data
  * (inductive, in the accent).
  */
@@ -454,7 +454,7 @@ export function CodedTranscript() {
 /**
  * From Codes to Themes: the three codes of the example converge on the
  * theme of price vigilance (the finding, in the accent). A representative
- * quotation supports the theme; a participant whose case does not fit it
+ * quotation supports the theme. A participant whose case does not fit it
  * is reported beside it, in the contrast colour.
  */
 export function CodesToThemes() {
@@ -469,7 +469,7 @@ export function CodesToThemes() {
     <Frame
       width={800}
       height={176}
-      label="Three codes, compares prices online, waits for promotions, and buys store brands, converge on one theme, price vigilance. A participant's quotation supports the theme; another participant's quotation does not fit it"
+      label="Three codes, compares prices online, waits for promotions, and buys store brands, converge on one theme, price vigilance. A participant's quotation supports the theme. Another participant's quotation does not fit it"
     >
       <Key x={20} y={18} fill={INK3}>CODES</Key>
       {codes.map((c, i) => (
@@ -538,7 +538,7 @@ const CONFIRM = 3;
 
 /**
  * Saturation: each bar is one interview, as tall as the number of distinct
- * codes found so far; the codes that interview added sit on top in the
+ * codes found so far. The codes that interview added sit on top in the
  * accent. Once three interviews in a row add nothing, the plate marks
  * saturation after the last interview that did.
  *
@@ -566,7 +566,7 @@ export function SaturationCurve() {
   const current = done - 1;
   const plural = (n: number) => (n === 1 ? "1 NEW CODE" : `${n} NEW CODES`);
   const status = saturated
-    ? `NO NEW CODES IN INTERVIEWS ${lastNew + 2}–${lastNew + 1 + CONFIRM}`
+    ? `NO NEW CODES IN INTERVIEWS ${lastNew + 2}n/a${lastNew + 1 + CONFIRM}`
     : `INTERVIEW ${done}: ${plural(seq[current])}`;
   const satX = r2(bx(lastNew) + bw + (slot - bw) / 2);
 
@@ -677,7 +677,7 @@ const EVIDENCE: { theme: string; by: Record<Source, boolean> }[] = [
 
 /**
  * Trustworthiness: triangulation of three themes from a grocery shopping
- * study. Each column is a data source; a filled dot means the source
+ * study. Each column is a data source. A filled dot means the source
  * supports the theme, a cross that it contradicts it.
  *
  * Interactive: SOURCES adds or removes a source. From interviews alone,
@@ -696,7 +696,7 @@ export function Triangulation() {
     if (used.length === 1) return { text: "ONE SOURCE ONLY", fill: INK3 };
     return { text: `CORROBORATED BY ${used.length} SOURCES`, fill: SIGNAL };
   };
-  const summary = EVIDENCE.map((e) => `${e.theme}: ${verdict(e.by).text.toLowerCase()}`).join("; ");
+  const summary = EVIDENCE.map((e) => `${e.theme}: ${verdict(e.by).text.toLowerCase()}`).join(". ");
 
   return (
     <>
@@ -763,7 +763,7 @@ export function Triangulation() {
 /**
  * Validating AI Coding: agreement on the same sample of segments. Two human
  * coders agree on 84%, the benchmark carried down as a dashed line. The AI
- * tool with its first instructions agrees with them on 67%, well short; after
+ * tool with its first instructions agrees with them on 67%, well short. After
  * the codebook and instructions are revised, on 81%, comparable to the
  * humans, so it may code the full dataset.
  */
@@ -774,15 +774,15 @@ export function AgreementCheck() {
   const bench = 84;
   const rows = [
     { y: 62, value: 84, key: "HUMAN vs HUMAN", tone: INK, tint: PAPER3, ai: false },
-    { y: 142, value: 67, key: "AI vs HUMANS · FIRST", tone: COUNTER, tint: COUNTER_TINT, ai: true },
-    { y: 222, value: 81, key: "AI vs HUMANS · REVISED", tone: SIGNAL, tint: SIGNAL_TINT, ai: true },
+    { y: 142, value: 67, key: "AI vs HUMANS | FIRST", tone: COUNTER, tint: COUNTER_TINT, ai: true },
+    { y: 222, value: 81, key: "AI vs HUMANS | REVISED", tone: SIGNAL, tint: SIGNAL_TINT, ai: true },
   ];
   const bh = 26;
   return (
     <Frame
       width={400}
       height={278}
-      label="Agreement on the same sample of coded segments: two human coders agree on 84 percent; the AI tool agrees with them on 67 percent with its first instructions, and on 81 percent after the codebook and instructions are revised, comparable to the human coders"
+      label="Agreement on the same sample of coded segments: two human coders agree on 84 percent. The AI tool agrees with them on 67 percent with its first instructions, and on 81 percent after the codebook and instructions are revised, comparable to the human coders"
     >
       <Key x={x0} y={16} fill={INK3}>AGREEMENT</Key>
 
@@ -847,7 +847,7 @@ export function CommunityVoices() {
     <Frame
       width={800}
       height={176}
-      label="Sixty customers stacked by satisfaction, from low to high, most of them in the middle. The twelve who post in the online community are filled; most of them are at the two extremes, very dissatisfied or very satisfied"
+      label="Sixty customers stacked by satisfaction, from low to high, most of them in the middle. The twelve who post in the online community are filled. Most of them are at the two extremes, very dissatisfied or very satisfied"
     >
       <Key x={20} y={16} fill={INK3}>CUSTOMERS</Key>
       <Key x={780} y={16} anchor="end" fill={COUNTER}>POST IN THE COMMUNITY: 12 OF 60</Key>
@@ -913,7 +913,7 @@ export function CodedTrace() {
     <Frame
       width={400}
       height={212}
-      label="A page of an AI agent's reasoning trace with two highlighted segments, coded from a codebook: the first states the objective, the lowest total price; the second expresses skepticism about a paid placement"
+      label="A page of an AI agent's reasoning trace with two highlighted segments, coded from a codebook: the first states the objective, the lowest total price. The second expresses skepticism about a paid placement"
     >
       <rect x={sx} y={10} width={sw} height={192} fill={PAPER} stroke={RULE2} strokeWidth={1} />
       <AiMark1 cx={sx + 16} cy={27} s={14} fill={SIGNAL} />

@@ -25,7 +25,7 @@
       },
       {
         "id": "winner",
-        "text": "Car ads in one market show the driver beating rivals and finishing first; in another they show a calm family enjoying a weekend away.",
+        "text": "Car ads in one market show the driver beating rivals and finishing first. In another they show a calm family enjoying a weekend away.",
         "answer": "mas",
         "explanation": "Achievement and competition versus care and quality of life."
       },
@@ -211,14 +211,14 @@
   {
     "type": "quiz",
     "slide_id": "social-class-and-status-symbols",
-    "question_text": "Two shoppers buy expensive coats from the same luxury label. One chooses a plain coat whose only mark is a small stitched label inside; the other chooses a coat with the brand's name printed across the back. Which description fits the slide?",
+    "question_text": "Two shoppers buy expensive coats from the same luxury label. One chooses a plain coat whose only mark is a small stitched label inside. The other chooses a coat with the brand's name printed across the back. Which description fits the slide?",
     "hint": "Think about how old money and new money tend to signal status.",
-    "correct_answer_citation": "Week 11 · Social Class and Status Symbols",
+    "correct_answer_citation": "Week 11: Social Class and Status Symbols",
     "correct_answer_index": 3,
     "options": [
       {
         "option_text": "Both shoppers signal status in the same way, because they paid the same price",
-        "option_explanation": "Price alone does not decide how status is signalled; the visibility of the brand differs."
+        "option_explanation": "Price alone does not decide how status is signalled. The visibility of the brand differs."
       },
       {
         "option_text": "The plain coat is not a status symbol, because no one can see the brand",
@@ -229,7 +229,7 @@
         "option_explanation": "Visible brands and logos are the typical signal of new money."
       },
       {
-        "option_text": "The plain coat fits how old money often signals status; the printed coat fits how new money often does",
+        "option_text": "The plain coat fits how old money often signals status. The printed coat fits how new money often does",
         "option_explanation": "Correct. Old money tends to signal quietly through understated quality, new money through visible brands and logos."
       }
     ]
@@ -286,7 +286,7 @@
     "slide_id": "cultural-bias-in-ai-models",
     "question_text": "A global coffee brand from China asks an AI assistant to describe Chinese coffee brands to shoppers in Canada. Based on the study of AI models and the CETSCALE, what should the brand do?",
     "hint": "Recall what the study found about statements concerning China, and what the slide says global brands need to do.",
-    "correct_answer_citation": "Week 11 · Cultural Bias in AI Models",
+    "correct_answer_citation": "Week 11: Cultural Bias in AI Models",
     "correct_answer_index": 2,
     "options": [
       {

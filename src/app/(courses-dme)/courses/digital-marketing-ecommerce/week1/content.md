@@ -34,7 +34,7 @@ week: week1
 
 ## First-Party Retailers Versus Two-Sided Marketplaces [no-exercise]
 - A first-party (1P) online retailer takes wholesale title to inventory, holds stock in its own fulfillment network, sets the retail price, and sells to the shopper as the merchant of record.
-- A third-party (3P) two-sided marketplace does not own the goods it lists; instead, it provides the discovery, ranking, checkout, and trust infrastructure that connects independent sellers with buyers.
+- A third-party (3P) two-sided marketplace does not own the goods it lists. Instead, it provides the discovery, ranking, checkout, and trust infrastructure that connects independent sellers with buyers.
 - Hybrid platforms combine both models within the same storefront, operating as a first-party retailer in high-velocity categories while hosting third-party merchants to expand assortment breadth.
 - Managing a hybrid platform creates structural tension whenever the platform's own private-label or first-party inventory competes for rank position against third-party sellers on the same results page.
 
@@ -90,7 +90,7 @@ week: week1
 - A Customer Data Platform (CDP) and Customer Relationship Management (CRM) system unify behavioral events and transaction histories into persistent customer profiles for segmentation and lifecycle messaging.
 
 ## APIs, Checkout Orchestration, and Payment Gateways [exercise]
-- When a shopper clicks the buy button, the storefront does not move money directly; it initiates a sequence of synchronous API calls across specialized financial and operational services.
+- When a shopper clicks the buy button, the storefront does not move money directly. It initiates a sequence of synchronous API calls across specialized financial and operational services.
 - Step 1 is inventory reservation and tax calculation, in which the commerce engine verifies stock availability in the OMS and queries a tax engine for jurisdiction-specific duties and sales tax.
 - Step 2 is payment tokenization, in which the payment gateway replaces sensitive card or wallet credentials with a cryptographic token so raw card numbers never touch the merchant's servers.
 - Step 3 is fraud screening and authorization, in which a risk model evaluates transaction velocity and device signals before requesting a funds hold from the issuing bank via the card network.

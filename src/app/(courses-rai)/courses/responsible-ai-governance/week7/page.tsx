@@ -38,9 +38,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 07 — MANIPULATION, DARK PATTERNS, AND CONSUMER AUTONOMY
+// WEEK 07: MANIPULATION, DARK PATTERNS, AND CONSUMER AUTONOMY
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md;
+// Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
 // is drawn beside it. Plates live in ./visuals.tsx.
 // ============================================================================
@@ -53,10 +53,10 @@ export default function Week7Page() {
   return (
     <SlideDeck label="Week 07">
       {/* ================================================================
-          01 · Title Slide
+          01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 07 · Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 07: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Manipulation, Dark Patterns, and Consumer Autonomy</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[56ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.2rem,1.9vw,1.6rem)]">
@@ -71,7 +71,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          02 · Persuasion Versus Manipulation in Digital Markets [no-exercise]
+          02. Persuasion Versus Manipulation in Digital Markets [no-exercise]
           ================================================================ */}
       <Slide id="persuasion-versus-manipulation-in-digital-markets" border className="!py-8">
         <SlideHeading>Persuasion Versus Manipulation in Digital Markets</SlideHeading>
@@ -112,7 +112,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          03 · Consumer Autonomy as a Governance Standard [no-exercise]
+          03. Consumer Autonomy as a Governance Standard [no-exercise]
           ================================================================ */}
       <Slide id="consumer-autonomy-as-a-governance-standard" border className="!py-8">
         <SlideHeading>Consumer Autonomy as a Governance Standard</SlideHeading>
@@ -154,7 +154,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          04 · Part 1: Choice Architecture, Nudges, Sludges, and Dark Patterns [no-exercise]
+          04. Part 1: Choice Architecture, Nudges, Sludges, and Dark Patterns [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Choice Architecture, Nudges, Sludges, and Dark Patterns" />
@@ -184,7 +184,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          05 · Choice Architecture: Nudges Versus Sludges [no-exercise]
+          05. Choice Architecture: Nudges Versus Sludges [no-exercise]
           ================================================================ */}
       <Slide id="choice-architecture-nudges-versus-sludges" border className="!py-8">
         <SlideHeading className="!mb-5">Choice Architecture: Nudges Versus Sludges</SlideHeading>
@@ -236,7 +236,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          06 · A Taxonomy of Storefront Dark Patterns [exercise]
+          06. A Taxonomy of Storefront Dark Patterns [exercise]
           ================================================================ */}
       <Slide
         id="a-taxonomy-of-storefront-dark-patterns"
@@ -301,7 +301,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          07 · Why Dark Patterns Persist and How Regulators Test Them [no-exercise]
+          07. Why Dark Patterns Persist and How Regulators Test Them [no-exercise]
           ================================================================ */}
       <Slide id="why-dark-patterns-persist-and-how-regulators-test-them" border className="!py-8">
         <SlideHeading className="!mb-5">Why Dark Patterns Persist and How Regulators Test Them</SlideHeading>
@@ -352,7 +352,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          08 · Part 2: Algorithmic Hyper-Persuasion and Anthropomorphic Design [no-exercise]
+          08. Part 2: Algorithmic Hyper-Persuasion and Anthropomorphic Design [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Algorithmic Hyper-Persuasion and Anthropomorphic Design" />
@@ -379,7 +379,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          09 · From Static Dark Patterns to Adaptive Hyper-Persuasion [no-exercise]
+          09. From Static Dark Patterns to Adaptive Hyper-Persuasion [no-exercise]
           ================================================================ */}
       <Slide id="from-static-dark-patterns-to-adaptive-hyper-persuasion" border className="!py-8">
         <SlideHeading className="!mb-5">From Static Dark Patterns to Adaptive Hyper-Persuasion</SlideHeading>
@@ -424,7 +424,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          10 · Emotional Targeting and Vulnerability Exploitation [exercise]
+          10. Emotional Targeting and Vulnerability Exploitation [exercise]
           ================================================================ */}
       <Slide
         id="emotional-targeting-and-vulnerability-exploitation"
@@ -492,7 +492,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          11 · Anthropomorphism and Parasocial Trust in Conversational Interfaces [no-exercise]
+          11. Anthropomorphism and Parasocial Trust in Conversational Interfaces [no-exercise]
           ================================================================ */}
       <Slide id="anthropomorphism-and-parasocial-trust-in-conversational-interfaces" border className="!py-8">
         <SlideHeading className="!mb-5">Anthropomorphism and Parasocial Trust in Conversational Interfaces</SlideHeading>
@@ -540,7 +540,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          12 · Discussion: The Empathetic Retention Bot
+          12. Discussion: The Empathetic Retention Bot
           ================================================================ */}
       <Slide id="discussion-the-empathetic-retention-bot" border className="!py-8">
         <SlideHeading>The Empathetic Retention Bot</SlideHeading>
@@ -563,7 +563,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          13 · Part 3: Model Sycophancy and Epistemic Distortion [no-exercise]
+          13. Part 3: Model Sycophancy and Epistemic Distortion [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Model Sycophancy and Epistemic Distortion" />
@@ -575,7 +575,7 @@ export default function Week7Page() {
             <Ruled>
               <p className={BIG}>
                 Not all manipulation in conversational AI is deliberately
-                programmed by a merchant to extract revenue; some of the most
+                programmed by a merchant to extract revenue. Some of the most
                 pervasive behavioral distortions arise as{" "}
                 <Term tone="signal">unintended byproducts of how foundation models are aligned</Term>.
               </p>
@@ -591,7 +591,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          14 · What Model Sycophancy Is and How RLHF Creates It [no-exercise]
+          14. What Model Sycophancy Is and How RLHF Creates It [no-exercise]
           ================================================================ */}
       <Slide id="what-model-sycophancy-is-and-how-rlhf-creates-it" border className="!py-8">
         <SlideHeading className="!mb-5">What Model Sycophancy Is and How RLHF Creates It</SlideHeading>
@@ -600,7 +600,7 @@ export default function Week7Page() {
           tendency of a language model to tailor its responses to flatter,
           validate, or agree with the user&apos;s stated or implied beliefs, even
           when those beliefs are factually false or harmful to the user&apos;s own
-          decision (Perez et al., 2023; Sharma et al., 2024).
+          decision (Perez et al., 2023, Sharma et al., 2024).
         </Statement>
         <div className="grid w-full gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
           <div className="grid content-start gap-4">
@@ -635,7 +635,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          15 · Forms of Sycophancy in Consumer and Managerial Assistants [exercise]
+          15. Forms of Sycophancy in Consumer and Managerial Assistants [exercise]
           ================================================================ */}
       <Slide
         id="forms-of-sycophancy-in-consumer-and-managerial-assistants"
@@ -701,7 +701,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          16 · Auditing and Mitigating Sycophancy in Decision Support [no-exercise]
+          16. Auditing and Mitigating Sycophancy in Decision Support [no-exercise]
           ================================================================ */}
       <Slide id="auditing-and-mitigating-sycophancy-in-decision-support" border className="!py-8">
         <SlideHeading className="!mb-5">Auditing and Mitigating Sycophancy in Decision Support</SlideHeading>
@@ -743,7 +743,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          17 · Part 4: Manipulating the Surrogate Consumer [no-exercise]
+          17. Part 4: Manipulating the Surrogate Consumer [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Manipulating the Surrogate Consumer: Heuristics and Storefront Architecture" />
@@ -772,7 +772,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          18 · Do AI Shopping Agents Fall for Human Marketing Heuristics? [no-exercise]
+          18. Do AI Shopping Agents Fall for Human Marketing Heuristics? [no-exercise]
           ================================================================ */}
       <Slide id="do-ai-shopping-agents-fall-for-human-marketing-heuristics" border className="!py-8">
         <SlideHeading className="!mb-5">Do AI Shopping Agents Fall for Human Marketing Heuristics?</SlideHeading>
@@ -825,7 +825,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          19 · Resource Rationality and the Tool-Lab Paradigm [exercise]
+          19. Resource Rationality and the Tool-Lab Paradigm [exercise]
           ================================================================ */}
       <Slide
         id="resource-rationality-and-the-tool-lab-paradigm"
@@ -880,7 +880,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          20 · Adversarial Storefront Manipulation and Indirect Prompt Injection [exercise]
+          20. Adversarial Storefront Manipulation and Indirect Prompt Injection [exercise]
           ================================================================ */}
       <Slide
         id="adversarial-storefront-manipulation-and-indirect-prompt-injection"
@@ -940,7 +940,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          21 · Part 5: Measuring Consumer Autonomy and Welfare Losses [no-exercise]
+          21. Part 5: Measuring Consumer Autonomy and Welfare Losses [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Measuring Consumer Autonomy and Welfare Losses" />
@@ -959,7 +959,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          22 · Quantifying Welfare Losses From Deceptive Choice Architecture [no-exercise]
+          22. Quantifying Welfare Losses From Deceptive Choice Architecture [no-exercise]
           ================================================================ */}
       <Slide id="quantifying-welfare-losses-from-deceptive-choice-architecture" border className="!py-8">
         <SlideHeading className="!mb-5">Quantifying Welfare Losses From Deceptive Choice Architecture</SlideHeading>
@@ -1019,7 +1019,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          23 · Six Steps of a Choice-Architecture and Autonomy Audit [exercise]
+          23. Six Steps of a Choice-Architecture and Autonomy Audit [exercise]
           ================================================================ */}
       <Slide
         id="six-steps-of-a-choice-architecture-and-autonomy-audit"
@@ -1063,7 +1063,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          24 · Designing Agent-Ready and Autonomy-Preserving Storefronts [exercise]
+          24. Designing Agent-Ready and Autonomy-Preserving Storefronts [exercise]
           ================================================================ */}
       <Slide
         id="designing-agent-ready-and-autonomy-preserving-storefronts"
@@ -1132,7 +1132,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          25 · Discussion: Hiding the Unit Price From the Agent
+          25. Discussion: Hiding the Unit Price From the Agent
           ================================================================ */}
       <Slide id="discussion-hiding-the-unit-price-from-the-agent" border className="!py-8">
         <SlideHeading>Hiding the Unit Price From the Agent</SlideHeading>
@@ -1154,7 +1154,7 @@ export default function Week7Page() {
       </Slide>
 
       {/* ================================================================
-          26 · Key Takeaways
+          26. Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>

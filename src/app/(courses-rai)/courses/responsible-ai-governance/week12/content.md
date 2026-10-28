@@ -24,7 +24,7 @@ week: week12
 - Two complementary mechanisms anchor this structure: the Three Lines of Defense model and the cross-functional RACI matrix.
 
 ## The Three Lines of Defense in Enterprise AI Governance [exercise]
-- The First Line of Defense consists of the business units, product owners, data scientists, and marketing engineers who build, prompt, and operate AI systems; they own day-to-day quality control, initial dataset documentation, and baseline testing.
+- The First Line of Defense consists of the business units, product owners, data scientists, and marketing engineers who build, prompt, and operate AI systems. They own day-to-day quality control, initial dataset documentation, and baseline testing.
 - The Second Line of Defense consists of an independent AI Risk, Compliance, and Ethics Review function (including legal, privacy, and behavioral auditing specialists) that sets governance standards, defines risk tiers, conducts pre-launch behavioral audits, and holds binding sign-off authority over high-risk deployments.
 - The Third Line of Defense consists of internal audit and external independent conformity assessors who periodically evaluate whether both the First and Second Lines are following the governance charter accurately and without conflicts of interest.
 - Separating these three lines ensures that the team whose bonus depends on shipping a feature is never the sole judge of whether that feature is fair, safe, and compliant.
@@ -32,7 +32,7 @@ week: week12
 ## Cross-Functional Accountability: The RACI Matrix for AI Launches [exercise]
 - To prevent the problem of many hands introduced in Week 1, a governance charter assigns four explicit roles for every milestone in the AI lifecycle using a RACI matrix: Responsible, Accountable, Consulted, and Informed.
 - Responsible (R) designates the practitioners who execute the task, such as the ML engineering team running the exact-PMF fairness audit or drafting the model card.
-- Accountable (A) designates the single executive or governance officer who owns final approval and bears institutional liability for the decision; crucially, each governance gate must have exactly one Accountable owner so responsibility cannot be diffused.
+- Accountable (A) designates the single executive or governance officer who owns final approval and bears institutional liability for the decision. Crucially, each governance gate must have exactly one Accountable owner so responsibility cannot be diffused.
 - Consulted (C) designates domain experts, legal counsel, Research Ethics Board members, and participatory stakeholder representatives whose input must be solicited and recorded before the gate closes.
 - Informed (I) designates downstream teams, such as customer support, public relations, and executive leadership, who receive structured updates once the decision is logged.
 
@@ -51,7 +51,7 @@ week: week12
 - Every artifact in the dossier is version-locked to the exact model checkpoint, prompt hash, and evaluation script so that any production decision can be reconstructed forensically.
 
 ## Auditing Third-Party Vendors and Foundation Model Supply Chains [exercise]
-- Most commercial organizations do not pre-train foundation models from scratch; they procure models, APIs, or turnkey software from external vendors.
+- Most commercial organizations do not pre-train foundation models from scratch. They procure models, APIs, or turnkey software from external vendors.
 - As established in Week 1, outsourcing model development never outsources legal or ethical accountability to the firm's customers.
 - Procurement governance requires vendors to disclose training data provenance and indemnification against copyright or algorithmic-disgorgement claims (Week 11), expose model version pinning and log-probability access for behavioral auditing (Week 4), guarantee zero retention of enterprise customer data for vendor training (Week 6), and submit to independent disparate-impact and evaluative-invariance audits on the buyer's actual domain tasks.
 - A vendor that refuses to disclose disaggregated performance or blocks independent black-box behavioral auditing fails procurement qualification for high-risk or customer-facing deployments.
@@ -99,7 +99,7 @@ week: week12
 
 ## Resource Rationality in Agentic Inference and Tool Use [exercise]
 - At inference time, deploying the largest available frontier model with unconstrained reasoning and exhaustive tool calls for every routine query wastes energy, increases latency, and inflates operational cost.
-- Grounded in resource-rational planning (Callaway et al., 2022; Lieder & Griffiths, 2020), the Tool-Lab framework formulates an AI agent's sequential information search and tool calling as a cost-constrained Markov Decision Process (Wadi, 2026; Wadi & Ma, 2026b).
+- Grounded in resource-rational planning (Callaway et al., 2022, Lieder & Griffiths, 2020), the Tool-Lab framework formulates an AI agent's sequential information search and tool calling as a cost-constrained Markov Decision Process (Wadi, 2026, Wadi & Ma, 2026b).
 - Rather than evaluating an agent solely on whether its final answer is correct, Tool-Lab evaluates the optimality of the agent's planning policy: whether the sequence of tools it calls maximizes expected decision utility net of token, API, and latency costs.
 - Conversely, as shown in Week 7, imposing blind resource cuts on an uncalibrated agent causes premature search truncation and heuristic errors (Wadi & Ma, 2026b), whereas configuring targeted reasoning effort on a lightweight model eliminates position bias at roughly 4 percent of frontier model cost (Wadi & Ma, 2026a).
 - Sustainable, resource-rational governance therefore matches model size and deliberation effort to the complexity and stakes of the decision, and trains agents via reinforcement learning to execute optimal, parsimonious tool-calling policies.
@@ -128,5 +128,5 @@ week: week12
 - Pre-launch governance dossiers combine version-locked Datasheets for Datasets, Model Cards, and System Impact Assessments, and hold third-party AI vendors to the same behavioral audit and data-provenance standards as internal models.
 - Adversarial red-teaming probes worst-case jailbreaks, indirect prompt injections, and tool escalations prior to launch, while a six-step incident response playbook ensures rapid kill-switch containment, forensic root-cause analysis, and consumer restitution.
 - Sustainable "Green AI" addresses training emissions, cumulative inference energy, water cooling, and hardware e-waste across the model lifecycle.
-- Optimization innovations such as ActiveLR eliminate wasteful hyperparameter grid searches during training (Wadi, Fredette, & Senecal, 2023), while Tool-Lab evaluates and trains agentic tool use as a resource-rational Markov Decision Process (Wadi, 2026; Wadi & Ma, 2026b) and calibrated reasoning effort achieves position-neutral choice at a fraction of frontier model cost (Wadi & Ma, 2026a).
+- Optimization innovations such as ActiveLR eliminate wasteful hyperparameter grid searches during training (Wadi, Fredette, & Senecal, 2023), while Tool-Lab evaluates and trains agentic tool use as a resource-rational Markov Decision Process (Wadi, 2026, Wadi & Ma, 2026b) and calibrated reasoning effort achieves position-neutral choice at a fraction of frontier model cost (Wadi & Ma, 2026a).
 - A comprehensive governance charter unites ethical principles, statistical behavioral auditing, human-centered design, and fiduciary integrity across both human and agent-mediated markets.

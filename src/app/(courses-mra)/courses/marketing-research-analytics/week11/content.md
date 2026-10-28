@@ -175,7 +175,7 @@ week: week11
 - Customer lifetime value estimates the present value of future profits from a customer, and is particularly sensitive to the retention rate.
 - RFM analysis ranks customers by recency, frequency, and monetary value, and different RFM profiles call for different actions.
 - Churn and response models, including decision trees and ensemble models, are evaluated on holdout data with confusion matrices, precision, recall, and lift.
-- Predicting which customers will churn is not the same as identifying those whom an intervention would retain; uplift modeling addresses the second question.
+- Predicting which customers will churn is not the same as identifying those whom an intervention would retain. Uplift modeling addresses the second question.
 - Recommendation systems personalize offers through content-based and collaborative methods, and are evaluated through A/B tests of business outcomes.
 - Predictive models can be biased against groups of customers, and firms assess them against explicit fairness criteria, explain their decisions, and monitor them after deployment.
 - Language models and AI agents are audited for position, sponsorship, and country-of-origin biases with controlled designs, and each audit applies to the specific model version deployed.

@@ -17,7 +17,7 @@ week: week3
 - Marketers study learning so that brand names become automatic habits in the mind of the buyer.
 
 ## Classical Conditioning: Pairing Stimuli [exercise]
-[figure: ConditioningFlow — pairing unconditioned and conditioned stimuli to produce a conditioned response]
+[figure: ConditioningFlow: pairing unconditioned and conditioned stimuli to produce a conditioned response]
 - Classical conditioning happens when a stimulus that brings a natural response pairs with a neutral stimulus.
 - Ivan Pavlov first demonstrated this with dogs, meat powder, and a bell.
 - In marketing, an unconditioned stimulus like upbeat music naturally triggers positive feelings.
@@ -25,7 +25,7 @@ week: week3
 - Over time, seeing the brand alone produces the positive feeling. This is a conditioned response.
 
 ## Repetition and Stimulus Generalization [exercise]
-[figure: GeneralizationChart — stimulus generalization and discrimination in packaging design]
+[figure: GeneralizationChart: stimulus generalization and discrimination in packaging design]
 - Conditioning needs repetition. Repeated exposures prevent memory decay and strengthen the link.
 - Too much repetition causes advertising wear-out. Consumers tune out or get annoyed.
 - Stimulus generalization happens when similar stimuli trigger the same learned response.
@@ -33,7 +33,7 @@ week: week3
 - Stimulus discrimination occurs when a brand teaches consumers to spot unique differences between products.
 
 ## Instrumental Conditioning: Rewards and Punishments
-[figure: InstrumentalMatrix — positive reinforcement, negative reinforcement, and punishment]
+[figure: InstrumentalMatrix: positive reinforcement, negative reinforcement, and punishment]
 - Instrumental conditioning is also called operant conditioning.
 - People learn to perform behaviors that produce positive outcomes and avoid negative outcomes.
 - Positive reinforcement rewards good behavior. Loyalty points and thank-you discounts encourage repeat visits.
@@ -48,7 +48,7 @@ week: week3
 - Third, the consumer converts this memory into action by purchasing the same clothing, phone, or car.
 
 ## The Memory System: Three Stores [exercise]
-[figure: MemoryStorageFlow — sensory memory, short-term memory, and long-term memory stages]
+[figure: MemoryStorageFlow: sensory memory, short-term memory, and long-term memory stages]
 - Memory is the process of acquiring information and storing it over time for later use.
 - Sensory memory holds brief sensory inputs for a few seconds. If an ad gets attention, it moves forward.
 - Short-term memory holds a small amount of information in active consciousness for about twenty seconds.
@@ -56,7 +56,7 @@ week: week3
 - Long-term memory retains information for days, months, or years through elaborative rehearsal.
 
 ## Associative Networks and Brand Nodes
-[figure: BrandAssociativeNetwork — central brand node surrounded by interconnected attribute and emotion nodes]
+[figure: BrandAssociativeNetwork: central brand node surrounded by interconnected attribute and emotion nodes]
 - Long-term memory stores knowledge as an associative network.
 - Think of memory as a spider web of connected nodes. Each node represents a concept, brand, or feeling.
 - When you think of a brand like Nike, related nodes light up: running, sneakers, athletes, and Just Do It.

@@ -3,7 +3,7 @@
     "slide_id": "ai-vs-traditional",
     "question_text": "According to the lecture, why do disruptions cascade rapidly through modern supply chains?",
     "hint": "Think about how much stock the system holds in reserve and when parts arrive.",
-    "correct_answer_citation": "Week 05 — The Complexity of Global Operations",
+    "correct_answer_citation": "Week 05: The Complexity of Global Operations",
     "correct_answer_index": 2,
     "options": [
       {
@@ -28,7 +28,7 @@
     "slide_id": "bullwhip",
     "question_text": "According to the lecture, what does AI-driven demand sensing incorporate?",
     "hint": "Traditional forecasting looks back at past sales. Demand sensing adds signals from what is happening now.",
-    "correct_answer_citation": "Week 05 — Beyond Historical Averages",
+    "correct_answer_citation": "Week 05: Beyond Historical Averages",
     "correct_answer_index": 0,
     "options": [
       {
@@ -53,7 +53,7 @@
     "slide_id": "dynamic-inventory",
     "question_text": "According to the lecture, what is the bullwhip effect?",
     "hint": "Compare the size of the fluctuations at the retail end with those further upstream.",
-    "correct_answer_citation": "Week 05 — Mitigating the Bullwhip Effect",
+    "correct_answer_citation": "Week 05: Mitigating the Bullwhip Effect",
     "correct_answer_index": 3,
     "options": [
       {
@@ -66,7 +66,7 @@
       },
       {
         "option_text": "Manufacturers ignoring short-term spikes in favor of structural shifts.",
-        "option_explanation": "Separating noise from structural shifts is how predictive analytics prevent overreaction; it is part of the remedy."
+        "option_explanation": "Separating noise from structural shifts is how predictive analytics prevent overreaction. It is part of the remedy."
       },
       {
         "option_text": "Small retail demand fluctuations growing larger upstream.",
@@ -78,12 +78,12 @@
     "slide_id": "last-mile",
     "question_text": "What does continuous re-optimization allow fleets to do, according to the lecture?",
     "hint": "Think about what can change after the vehicles have already left.",
-    "correct_answer_citation": "Week 05 — Solving Complex Routing at Scale",
+    "correct_answer_citation": "Week 05: Solving Complex Routing at Scale",
     "correct_answer_index": 1,
     "options": [
       {
         "option_text": "Plan every route once per day and keep it fixed until delivery ends.",
-        "option_explanation": "Continuous re-optimization is the opposite of a fixed daily plan; it lets fleets adapt while vehicles are in transit."
+        "option_explanation": "Continuous re-optimization is the opposite of a fixed daily plan. It lets fleets adapt while vehicles are in transit."
       },
       {
         "option_text": "Adapt to new orders or road closures while vehicles are in transit.",
@@ -103,7 +103,7 @@
     "slide_id": "part-4",
     "question_text": "How does AI-based predictive maintenance differ from traditional fleet maintenance?",
     "hint": "One approach follows the calendar or the odometer. The other reads the vehicle itself.",
-    "correct_answer_citation": "Week 05 — Predictive Maintenance in Fleet Management",
+    "correct_answer_citation": "Week 05: Predictive Maintenance in Fleet Management",
     "correct_answer_index": 2,
     "options": [
       {
@@ -128,7 +128,7 @@
     "slide_id": "nlp-contracts",
     "question_text": "According to the lecture, what role does Natural Language Processing play in supplier risk management?",
     "hint": "Consider what kind of data news reports and filings are, and how many languages they come in.",
-    "correct_answer_citation": "Week 05 — Proactive Supplier Risk Management",
+    "correct_answer_citation": "Week 05: Proactive Supplier Risk Management",
     "correct_answer_index": 0,
     "options": [
       {
@@ -137,7 +137,7 @@
       },
       {
         "option_text": "It replaces continuous monitoring with a thorough annual audit.",
-        "option_explanation": "Annual audits are the traditional approach; AI systems continuously monitor global news, geopolitical events, and financial filings."
+        "option_explanation": "Annual audits are the traditional approach. AI systems continuously monitor global news, geopolitical events, and financial filings."
       },
       {
         "option_text": "It reads only structured financial reviews in the buyer's own language.",
@@ -153,7 +153,7 @@
     "slide_id": "cobots",
     "question_text": "What limitations of manual quality inspection does the lecture identify?",
     "hint": "The lecture names three drawbacks, one of them about the people doing the work.",
-    "correct_answer_citation": "Week 05 — Computer Vision for Quality Control",
+    "correct_answer_citation": "Week 05: Computer Vision for Quality Control",
     "correct_answer_index": 3,
     "options": [
       {
@@ -162,11 +162,11 @@
       },
       {
         "option_text": "It cannot check labeling compliance or packaging integrity at all.",
-        "option_explanation": "The lecture does not say manual inspection cannot do these checks; it describes computer vision systems doing them in milliseconds."
+        "option_explanation": "The lecture does not say manual inspection cannot do these checks. It describes computer vision systems doing them in milliseconds."
       },
       {
         "option_text": "It only works on high-speed conveyors, not on slower production lines.",
-        "option_explanation": "High-speed conveyors are where computer vision models inspect products; the lecture does not describe them as a limit of manual inspection."
+        "option_explanation": "High-speed conveyors are where computer vision models inspect products. The lecture does not describe them as a limit of manual inspection."
       },
       {
         "option_text": "It is slow, expensive, and prone to human fatigue.",
@@ -178,7 +178,7 @@
     "slide_id": "part-6",
     "question_text": "What does the lecture say a digital twin allows operations managers to do?",
     "hint": "Think about where a new layout gets tried out first.",
-    "correct_answer_citation": "Week 05 — Digital Twins for Facility Layouts",
+    "correct_answer_citation": "Week 05: Digital Twins for Facility Layouts",
     "correct_answer_index": 1,
     "options": [
       {
@@ -195,7 +195,7 @@
       },
       {
         "option_text": "Remove bottlenecks automatically without needing any simulation.",
-        "option_explanation": "The twin is itself a simulation that predicts the impact of bottlenecks; the lecture does not say bottlenecks are removed automatically."
+        "option_explanation": "The twin is itself a simulation that predicts the impact of bottlenecks. The lecture does not say bottlenecks are removed automatically."
       }
     ]
   },
@@ -203,7 +203,7 @@
     "slide_id": "waste-reduction",
     "question_text": "How are computer vision systems used in reverse logistics, according to the lecture?",
     "hint": "A returned item can go one of three ways. Something has to decide which.",
-    "correct_answer_citation": "Week 05 — AI in Reverse Logistics and Returns",
+    "correct_answer_citation": "Week 05: AI in Reverse Logistics and Returns",
     "correct_answer_index": 2,
     "options": [
       {
@@ -212,7 +212,7 @@
       },
       {
         "option_text": "To send every returned item straight to recycling without inspection.",
-        "option_explanation": "Recycling is one of three outcomes; the systems first assess condition to decide between restocking, refurbishing, or recycling."
+        "option_explanation": "Recycling is one of three outcomes. The systems first assess condition to decide between restocking, refurbishing, or recycling."
       },
       {
         "option_text": "To assess condition and decide to restock, refurbish, or recycle.",
@@ -220,7 +220,7 @@
       },
       {
         "option_text": "To remove the returns process entirely so no labor is needed.",
-        "option_explanation": "The lecture describes returns processing as a complex, labor-intensive challenge; it does not say AI removes the process."
+        "option_explanation": "The lecture describes returns processing as a complex, labor-intensive challenge. It does not say AI removes the process."
       }
     ]
   },
@@ -228,7 +228,7 @@
     "slide_id": "legacy-systems",
     "question_text": "According to the lecture, why are Explainable AI techniques critical in operations?",
     "hint": "Planners hesitate when they cannot see the reasoning behind a recommendation.",
-    "correct_answer_citation": "Week 05 — The Black Box Problem in Operations",
+    "correct_answer_citation": "Week 05: The Black Box Problem in Operations",
     "correct_answer_index": 0,
     "options": [
       {
@@ -245,7 +245,7 @@
       },
       {
         "option_text": "They keep how deep learning models reach recommendations hidden.",
-        "option_explanation": "The problem is that deep learning models often lack transparency; explainability addresses that rather than hiding it."
+        "option_explanation": "The problem is that deep learning models often lack transparency. Explainability addresses that rather than hiding it."
       }
     ]
   }

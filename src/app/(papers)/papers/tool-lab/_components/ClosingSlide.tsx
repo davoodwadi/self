@@ -27,7 +27,7 @@ export default function ClosingSlide() {
             className="p-body"
             style={{ fontSize: "1.5rem", color: "var(--text-muted)" }}
           >
-            Davood Wadi · davood.wadi@hec.ca
+            Davood Wadi | davood.wadi@hec.ca
           </p>
         </div>
       </div>

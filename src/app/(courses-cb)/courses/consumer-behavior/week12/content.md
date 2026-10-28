@@ -42,7 +42,7 @@ week: week12
 - Marketers then inform two parties: the consumer who sets the goal and the agent that carries it out.
 
 ## Conflicts of Duty: Whom Does the AI Agent Serve? [exercise]
-- In a principal–agent relationship, an agent acts on behalf of a principal and owes that principal a duty of loyalty.
+- In a principal-agent relationship, an agent acts on behalf of a principal and owes that principal a duty of loyalty.
 - A consumer who relies on an AI shopping assistant expects to be its principal.
 - The platform that deploys the assistant may also profit when the assistant recommends sponsored listings, which are products whose sellers paid for placement.
 - The AI agent then faces a conflict of duty between two principals: the consumer and the platform.

@@ -154,11 +154,11 @@ week: week-3
 - Developed by Prosci, a research and training organization focused on change management practices.
 - The model is designed to help organizations **manage change effectively** by focusing on the **individual aspects of change**.
 - ADKAR is an *acronym* that stands for the *five key outcomes* that **individuals** need to achieve for successful change.
-- Awareness – Of the need for change
-- Desire – To participate and support the change
-- Knowledge – On how to change
-- Ability – To implement required skills and behaviors
-- Reinforcement – To sustain the change
+- Awareness: Of the need for change
+- Desire: To participate and support the change
+- Knowledge: On how to change
+- Ability: To implement required skills and behaviors
+- Reinforcement: To sustain the change
 
 ## ADKAR: Awareness, Desire, Knowledge [no-exercise]
 1. **Awareness**:

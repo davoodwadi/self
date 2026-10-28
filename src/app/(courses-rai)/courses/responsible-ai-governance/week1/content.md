@@ -103,7 +103,7 @@ week: week1
 
 ## Part 4: Human Oversight and Decision Regimes [no-exercise]
 - Governance frameworks classify automated systems by how authority is shared between the algorithm and human decision makers.
-- Adding a human to a workflow does not automatically make a system safe; oversight must be designed around the cognitive limits of human reviewers.
+- Adding a human to a workflow does not automatically make a system safe. Oversight must be designed around the cognitive limits of human reviewers.
 
 ## Human-in-the-Loop, Human-on-the-Loop, and Autonomous Regimes [exercise]
 - In a human-in-the-loop regime, the algorithm generates a recommendation or score, but a human must actively review and approve each individual case before any action is taken, as in high-value commercial lending or medical triage.
@@ -123,7 +123,7 @@ week: week1
 - Low-stakes, high-velocity decisions where errors are easily corrected, such as reordering a webpage carousel, can operate autonomously under periodic statistical auditing.
 
 ## Part 5: Delegated Consumption and Agent-Mediated Markets [no-exercise]
-- Artificial intelligence is no longer only a tool deployed by marketers; it is increasingly an autonomous actor that searches, evaluates, and purchases on the consumer's behalf.
+- Artificial intelligence is no longer only a tool deployed by marketers. It is increasingly an autonomous actor that searches, evaluates, and purchases on the consumer's behalf.
 - This shift from human-mediated to agent-mediated exchange introduces a new class of governance problems that spans every week of this course.
 
 ## The AI Agent as a Surrogate Consumer [no-exercise]
@@ -144,7 +144,7 @@ week: week1
 ## Key Takeaways
 - Market algorithms scale decision rules across thousands of consumers instantly, requiring institutional governance rather than aspirational ethical principles alone.
 - Consequentialism evaluates aggregate welfare outcomes, deontology enforces inviolable rights and duties, and virtue ethics examines institutional character and trustworthiness.
-- The AI value chain spans model developers, deploying firms, platforms, consumers, and regulators; governance overcomes the problem of many hands by holding deploying firms accountable for market outcomes.
+- The AI value chain spans model developers, deploying firms, platforms, consumers, and regulators. Governance overcomes the problem of many hands by holding deploying firms accountable for market outcomes.
 - High scores on general technical benchmarks do not guarantee fair, consistent, or unbiased behavior in commercial tasks.
 - The six stages of algorithmic governance run from initial risk scoping and data review through pre-deployment behavioral auditing, oversight design, launch authorization, and continuous monitoring.
 - Human-in-the-loop, human-on-the-loop, and autonomous regimes must be matched to decision stakes and reversibility while guarding against automation bias, rubber-stamping, and moral crumple zones.

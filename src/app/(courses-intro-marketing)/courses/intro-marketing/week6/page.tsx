@@ -50,9 +50,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 06 — SEGMENTATION, TARGETING, AND POSITIONING (STP)
+// WEEK 06: SEGMENTATION, TARGETING, AND POSITIONING (STP)
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx and reuse the words of the slide they illustrate.
 //
@@ -100,7 +100,7 @@ function Lead({
   );
 }
 
-/** A sentence set as a serif statement — the line a slide lands on. */
+/** A sentence set as a serif statement: the line a slide lands on. */
 function Statement({
   children,
   className = "",
@@ -377,7 +377,7 @@ export default function Week6() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 06 · Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 06: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
           <span className="text-[var(--counter)]">Segmentation</span>,{" "}
           <span className="text-[var(--ink)]">Targeting</span>, and{" "}
@@ -436,7 +436,7 @@ export default function Week6() {
       </Slide>
 
       {/* ================================================================
-          Part 1 — Market Segmentation
+          Part 1: Market Segmentation
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Market Segmentation" />
@@ -660,7 +660,7 @@ export default function Week6() {
       </Slide>
 
       {/* ================================================================
-          Part 2 — Market Targeting
+          Part 2: Market Targeting
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Market Targeting" />
@@ -818,7 +818,7 @@ export default function Week6() {
       </Slide>
 
       {/* ================================================================
-          Part 3 — Differentiation and Positioning
+          Part 3: Differentiation and Positioning
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Differentiation and Positioning" />

@@ -31,7 +31,7 @@ week: week-7
 - **Efficiency**: Streamlines processes by eliminating intermediaries and reducing fraud.
 
 ## Features of Blockchain [exercise]
-- **Decentralized**: No single point of control; data is distributed across a network.
+- **Decentralized**: No single point of control. Data is distributed across a network.
   - Contrast with cloud computing
 - **Immutable**: Transactions are permanent and cannot be altered.
 - **Consensus**: All parties agree on the validity of transactions.
@@ -93,8 +93,8 @@ week: week-7
 ## Smart Contracts in Real Estate [exercise]
 | **Feature** | **Traditional Contracts** | **Smart Contracts** |
 |---|---|---|
-| **Execution** | Manually executed; signed on paper or digital formats. | Automatically executed when predefined conditions are met. |
-| **Trust Requirement** | Requires trust in intermediaries (e.g., brokers, attorneys). | Trust is minimized; relies on blockchain technology for security. |
+| **Execution** | Manually executed. Signed on paper or digital formats. | Automatically executed when predefined conditions are met. |
+| **Trust Requirement** | Requires trust in intermediaries (e.g., brokers, attorneys). | Trust is minimized. Relies on blockchain technology for security. |
 | **Involvement of Intermediaries** | Often requires multiple intermediaries (lawyers, notaries). | Reduces or eliminates need for intermediaries, speeding up processes. |
 | **Timeframe for Transactions** | Can take weeks or months to complete due to manual processing. | Can be completed in minutes to hours through automation. |
 | **Cost** | Often associated with higher costs due to intermediary fees. | Lowers costs by minimizing fees related to third parties. |

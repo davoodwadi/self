@@ -925,7 +925,7 @@ Create `/papers/tool-lab/mouselab-to-toollab.png`.
 
 Figure description:
 
-Side-by-side comparison: human reveals information in MouseLab MDP; LLM reveals information through tool calls in Tool-Lab.
+Side-by-side comparison: human reveals information in MouseLab MDP. LLM reveals information through tool calls in Tool-Lab.
 
 ## Implementation Checklist
 

@@ -102,7 +102,7 @@
   {
     "type": "sort",
     "slide_id": "observational-learning-watching-others",
-    "prompt": "Lena watches a fitness coach online; Sami watches a star striker. Sort each moment into the step of observational learning it belongs to.",
+    "prompt": "Lena watches a fitness coach online. Sami watches a star striker. Sort each moment into the step of observational learning it belongs to.",
     "bins": [
       { "id": "attention", "label": "First: attention to the model" },
       { "id": "memory", "label": "Second: remembering the model" },
@@ -183,7 +183,7 @@
       },
       {
         "id": "pizza-number",
-        "text": "A pizza ad reads its number as \"514 · 555 · 0199\", so you can hold it in mind while you dial.",
+        "text": "A pizza ad reads its number as \"514. 555 | 0199\", so you can hold it in mind while you dial.",
         "answer": "short-term",
         "explanation": "Chunking helps short-term memory: three chunks fit where ten separate digits would not."
       },

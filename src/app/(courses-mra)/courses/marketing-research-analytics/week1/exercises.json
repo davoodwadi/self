@@ -66,7 +66,7 @@
         "id": "potential",
         "text": "A study estimates the size of an untapped market for electric bicycles in suburban areas.",
         "bin": "identification",
-        "explanation": "A market potential study identifies an opportunity or problem; no choice among actions is being tested yet."
+        "explanation": "A market potential study identifies an opportunity or problem. No choice among actions is being tested yet."
       },
       {
         "id": "image",
@@ -115,7 +115,7 @@
         "id": "logo",
         "text": "The chief executive has already signed off a new logo and asks for a survey to show the board that customers like it.",
         "answer": "made",
-        "explanation": "The decision has been made; the study would serve only to legitimize it."
+        "explanation": "The decision has been made. The study would serve only to legitimize it."
       },
       {
         "id": "muffin",
@@ -125,7 +125,7 @@
       },
       {
         "id": "response",
-        "text": "A competitor launches tomorrow and the firm must set its response price tonight; a pricing study would take six weeks.",
+        "text": "A competitor launches tomorrow and the firm must set its response price tonight. A pricing study would take six weeks.",
         "answer": "late",
         "explanation": "The findings would arrive only after the decision must be made."
       },
@@ -139,7 +139,7 @@
         "id": "confirm",
         "text": "A manager requests research to confirm a price increase that took effect last month.",
         "answer": "made",
-        "explanation": "The price has already changed; the research would only legitimize a decision already taken."
+        "explanation": "The price has already changed. The research would only legitimize a decision already taken."
       }
     ]
   },
@@ -201,25 +201,25 @@
         "id": "branches",
         "term": "Should the bank close some of its branches?",
         "match": "How often do customers of each branch use in-branch services, and which of them would move to digital channels?",
-        "explanation": "The action is closing branches; the information required is branch use and willingness to switch."
+        "explanation": "The action is closing branches. The information required is branch use and willingness to switch."
       },
       {
         "id": "seats",
         "term": "Should the airline introduce a fee for seat selection?",
         "match": "What proportion of passengers would pay to choose a seat, and how would the fee affect their choice of airline?",
-        "explanation": "The action is a new fee; the information required is willingness to pay and its effect on airline choice."
+        "explanation": "The action is a new fee. The information required is willingness to pay and its effect on airline choice."
       },
       {
         "id": "hours",
         "term": "Should the gym extend its opening hours?",
         "match": "At what times do current and prospective members prefer to train, and how many would visit during the additional hours?",
-        "explanation": "The action is longer hours; the information required is preferred training times and expected visits."
+        "explanation": "The action is longer hours. The information required is preferred training times and expected visits."
       },
       {
         "id": "cereal",
         "term": "Should the cereal brand launch a low-sugar line?",
         "match": "How large is the segment that prefers low-sugar cereal, and what taste and price does that segment expect?",
-        "explanation": "The action is a launch; the information required is the segment's size and its expectations."
+        "explanation": "The action is a launch. The information required is the segment's size and its expectations."
       }
     ]
   },
@@ -348,7 +348,7 @@
     "slide_id": "evaluating-ai-systems-as-a-research-task",
     "question_text": "A retailer plans to deploy an AI shopping assistant on its website. The vendor reports that the underlying model scores 91 percent on a widely used benchmark of general knowledge and reasoning. A manager also asked the assistant once which of two coffees offered better value, and the answer was correct. Which conclusion does this evidence support?",
     "hint": "Consider what each piece of evidence measures, and how many responses it rests on.",
-    "correct_answer_citation": "Week 01 · Evaluating AI Systems as a Research Task",
+    "correct_answer_citation": "Week 01: Evaluating AI Systems as a Research Task",
     "correct_answer_index": 1,
     "options": [
       {
@@ -356,7 +356,7 @@
         "option_explanation": "The benchmark measures general capabilities, not behavior in the retailer's task, and the manager's test rests on a single response."
       },
       {
-        "option_text": "Neither result establishes how the assistant behaves in this task; a behavioral evaluation should measure its choices in the retailer's task, across many responses, under controlled conditions.",
+        "option_text": "Neither result establishes how the assistant behaves in this task. A behavioral evaluation should measure its choices in the retailer's task, across many responses, under controlled conditions.",
         "option_explanation": "Correct. A benchmark does not establish behavior in a specific marketing task, and a single response is not a reliable basis for conclusions, because the same model can respond differently to the same prompt."
       },
       {
@@ -365,7 +365,7 @@
       },
       {
         "option_text": "The manager's test is sufficient, because unlike the benchmark it measured the specific marketing task.",
-        "option_explanation": "The task is the right one, but one response is a single draw; the same prompt can yield a different answer the next time."
+        "option_explanation": "The task is the right one, but one response is a single draw. The same prompt can yield a different answer the next time."
       }
     ]
   },

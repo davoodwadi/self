@@ -38,11 +38,11 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 04 — MEASUREMENT AND QUESTIONNAIRE DESIGN
+// WEEK 04: MEASUREMENT AND QUESTIONNAIRE DESIGN
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md; the
+// Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
-// live in ./visuals.tsx; the interactive ones are built around one action
+// live in ./visuals.tsx. The interactive ones are built around one action
 // each (drag the zero point, renumber the regions, flip the adjective pairs,
 // add a midpoint or a "no opinion" option, add items to a scale).
 //
@@ -74,7 +74,7 @@ export default function Week4() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 04 · Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 04: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
           <span className="text-[var(--signal)]">Measurement</span> and Questionnaire Design
         </Title>
@@ -1217,7 +1217,7 @@ export default function Week4() {
           {[
             "Measurement assigns numbers to characteristics of objects according to rules, and constructs are measured through operational definitions.",
             "The level of measurement, whether nominal, ordinal, interval, or ratio, determines which statistical analyses are permissible.",
-            "Comparative scales compare objects directly; noncomparative scales, such as Likert and semantic differential scales, evaluate each object independently.",
+            "Comparative scales compare objects directly. Noncomparative scales, such as Likert and semantic differential scales, evaluate each object independently.",
             "Reliability is the consistency of a measure, validity is the extent to which it measures the intended construct, and a measure can be reliable without being valid.",
             "Question wording, question order, and response bias affect the accuracy of responses, and every questionnaire is pretested before data collection.",
             "AI accelerates item development and review, but AI-generated items must be assessed for content validity and pretested with real respondents.",

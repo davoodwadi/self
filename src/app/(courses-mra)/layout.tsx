@@ -26,7 +26,7 @@ const plexSans = IBM_Plex_Sans({
 export const metadata: Metadata = {
   title: {
     default: MRA.title,
-    template: `%s · ${MRA.title}`,
+    template: `%s | ${MRA.title}`,
   },
   description: MRA.summary,
   icons: {

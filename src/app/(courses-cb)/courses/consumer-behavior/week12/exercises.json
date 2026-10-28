@@ -35,7 +35,7 @@
       },
       {
         "id": "friend-post",
-        "text": "A friend's post shows a pair of sunglasses with a shop button; a few seconds later the sunglasses are in the viewer's cart inside the same app.",
+        "text": "A friend's post shows a pair of sunglasses with a shop button. A few seconds later the sunglasses are in the viewer's cart inside the same app.",
         "answer": "social",
         "explanation": "Social influence and the purchase meet in a single moment inside the platform."
       },
@@ -60,11 +60,11 @@
       },
       {
         "option_text": "Social commerce: the viewer is buying inside a social media platform.",
-        "option_explanation": "Nothing is bought inside a social media feed here; the issue is what the recommender shows."
+        "option_explanation": "Nothing is bought inside a social media feed here. The issue is what the recommender shows."
       },
       {
         "option_text": "The assortment is too small: the app does not offer other kinds of titles.",
-        "option_explanation": "The app has thousands of other titles; the viewer simply never sees them."
+        "option_explanation": "The app has thousands of other titles. The viewer simply never sees them."
       },
       {
         "option_text": "Impulse buying: the viewer chooses quickly because the app is always available.",
@@ -94,19 +94,19 @@
         "id": "hiking-boots",
         "text": "An assistant lists five hiking boots worth considering. The consumer then searches the shops and buys a pair.",
         "answer": "l1",
-        "explanation": "The AI only recommends; the consumer searches and buys."
+        "explanation": "The AI only recommends. The consumer searches and buys."
       },
       {
         "id": "flights",
         "text": "An agent checks twenty airlines and returns a table of the three best flights. The consumer picks one and pays.",
         "answer": "l2",
-        "explanation": "The AI searches and compares; the consumer chooses and buys."
+        "explanation": "The AI searches and compares. The consumer chooses and buys."
       },
       {
         "id": "groceries",
         "text": "An agent fills a grocery cart for the week and sends a message: tap to confirm the order.",
         "answer": "l3",
-        "explanation": "The AI selects and prepares the purchase; the consumer approves it."
+        "explanation": "The AI selects and prepares the purchase. The consumer approves it."
       },
       {
         "id": "gift",
@@ -118,7 +118,7 @@
         "id": "laptops",
         "text": "An assistant reads hundreds of laptop specifications and reviews and shows a side-by-side comparison of four models.",
         "answer": "l2",
-        "explanation": "Searching and comparing are handed over; choosing and buying are not."
+        "explanation": "Searching and comparing are handed over. Choosing and buying are not."
       }
     ]
   },
@@ -139,11 +139,11 @@
       },
       {
         "option_text": "Raise the prices of the sponsored hotels.",
-        "option_explanation": "Prices were held equal in the experiments; the difference came from whom the agent was told it served."
+        "option_explanation": "Prices were held equal in the experiments. The difference came from whom the agent was told it served."
       },
       {
         "option_text": "Remove all reviews from the listings.",
-        "option_explanation": "Reviews were not what produced the difference; the agent's principal was."
+        "option_explanation": "Reviews were not what produced the difference. The agent's principal was."
       }
     ],
     "correct_answer_index": 0

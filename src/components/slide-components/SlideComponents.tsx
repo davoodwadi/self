@@ -60,7 +60,7 @@ export function CitationProvider({
  * Provides the reading rail (progress rule + slide index), the return control,
  * and the slides themselves.
  *
- * Children are expected to be <Slide> elements; each is handed its position in
+ * Children are expected to be <Slide> elements. Each is handed its position in
  * the deck so it can print its own folio number.
  */
 export function SlideDeck({
@@ -147,7 +147,7 @@ interface SlideProps {
   exercise?: CourseExercise;
   /** Drawings for the exercise's cards, keyed by card or pair id. */
   exerciseArt?: Record<string, React.ReactNode>;
-  /** Vertical centring. Title slides use "center"; content slides read better left. */
+  /** Vertical centring. Title slides use "center". Content slides read better left. */
   align?: "left" | "center";
   /** Injected by SlideDeck. */
   __index?: number;
@@ -185,7 +185,7 @@ export function Slide({
           className,
         )}
       >
-        {/* Folio — sits in the outer margin on large screens only. */}
+        {/* Folio: sits in the outer margin on large screens only. */}
         {__index && __index > 1 ? (
           <span
             aria-hidden
@@ -211,7 +211,7 @@ export function Slide({
 
       {/* The quiz follows its slide. It is labelled "Knowledge Check" and every
           week's questions are written against the content of the slide they are
-          attached to — week 3 even opens one with "according to the context on
+          attached to: week 3 even opens one with "according to the context on
           Information Search". Rendering it ahead of that section asked all
           twelve weeks of students to answer before they had been taught. */}
       {quizData && (
@@ -361,7 +361,7 @@ export function Title({
  * Heading - Section heading.
  *
  * Sets a hairline rule beneath itself, which is what actually separates
- * sections in this system — not boxes, not shadows.
+ * sections in this system: not boxes, not shadows.
  */
 export function Heading({
   children,
@@ -568,7 +568,7 @@ export function Citation({
  * Card - A bounded block of related content.
  *
  * Flat on the paper: hairline border, tinted ground, a single signal rule at
- * the top edge. No drop shadows — nothing in this system floats.
+ * the top edge. No drop shadows: nothing in this system floats.
  */
 export function Card({
   title,
@@ -619,7 +619,7 @@ export function ContentDescription({
 /**
  * Callout - Emphasised aside.
  *
- * "primary" carries the signal colour for the argument being made;
+ * "primary" carries the signal colour for the argument being made.
  * "secondary" uses the cool counterweight for caveats and contrasts.
  */
 export function Callout({
@@ -688,7 +688,7 @@ export function DiscussionCard({
         className,
       )}
     >
-      {/* The prompt is always in the document; it is blurred rather than
+      {/* The prompt is always in the document. It is blurred rather than
           removed, so the panel is sized by its real content and the reader can
           see that a question is waiting. */}
       <div
@@ -738,7 +738,7 @@ export function Figure({
 }: {
   children: React.ReactNode;
   caption?: string;
-  /** "auto" lets the child set its own height — use it for scaling SVG. */
+  /** "auto" lets the child set its own height: use it for scaling SVG. */
   height?: "sm" | "md" | "lg" | "auto";
   /** With "auto": trims the well's padding and the figure's margin, for slides that share a screen. */
   dense?: boolean;

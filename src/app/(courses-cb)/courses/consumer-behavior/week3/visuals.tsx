@@ -1,19 +1,19 @@
 /* ==========================================================================
-   Consumer Behavior · Week 03 — plates (Editorial Sketch)
+   Consumer Behavior | Week 03: plates (Editorial Sketch)
    --------------------------------------------------------------------------
    Learning and memory, drawn in ink and watercolour with the shared kit in
    ../_visuals (see ../CLAUDE.md for the style rules).
 
    Fixed cast for this week:
-     · BrandBadge: the brand, on every plate, from the conditioning panels
+     - BrandBadge: the brand, on every plate, from the conditioning panels
        to the shelf to the forgetting curve.
-     · Heart: the positive feeling a brand is paired with (broken: a bad one).
-     · Node: a knot in the memory web; a lit node takes the teal wash.
-     · Head: one profile, wherever memory sits inside the buyer.
-     · Person: every human (the shared fashion figure).
-     · Agent: the AI assistant (shared: a phone with the AI sparkle). Its
+     - Heart: the positive feeling a brand is paired with (broken: a bad one).
+     - Node: a knot in the memory web. A lit node takes the teal wash.
+     - Head: one profile, wherever memory sits inside the buyer.
+     - Person: every human (the shared fashion figure).
+     - Agent: the AI assistant (shared: a phone with the AI sparkle). Its
        memory is AttributeWeb: running-shoe brands linked to word nodes.
-   Teal is the one thing learned, lit or recalled on a plate; pencil is only
+   Teal is the one thing learned, lit or recalled on a plate. Pencil is only
    for something absent (an empty slot, a forgotten or displaced message, a
    brand missing from the assistant's answer).
    ========================================================================== */
@@ -72,7 +72,7 @@ function Node({ x, y, r = 7, seed, lit = false }: { x: number; y: number; r?: nu
   );
 }
 
-/** A link in the memory web; lit links are teal and heavier. */
+/** A link in the memory web. Lit links are teal and heavier. */
 function Link({ a, b, seed, lit = false }: { a: Pt; b: Pt; seed: number; lit?: boolean }) {
   return <InkLine pts={rp([a, b])} seed={seed} width={lit ? 2 : 0.9} color={lit ? SK.teal : SK.ink} amp={0.5} />;
 }
@@ -123,7 +123,7 @@ function Head({ x = 0, y = 0, s = 1, seed }: { x?: number; y?: number; s?: numbe
 }
 
 /* ==========================================================================
-   TITLE · the brand lives in the head
+   TITLE | the brand lives in the head
    ========================================================================== */
 
 const TITLE_NODES: Pt[] = [
@@ -203,7 +203,7 @@ export function DirectTry() {
   const bite = handAt(x, g, 176, "chin");
   const chip = rp(blobPts(bite[0] + 3, bite[1] - 1, 3.6, 2.6, 486, 8, 0.2));
   return (
-    <SketchFrame id="sk-direct-try" width={400} height={220} label="A person holds a new snack packet in one hand and lifts a chip to their mouth with the other; a heart floats beside their face: they like the taste.">
+    <SketchFrame id="sk-direct-try" width={400} height={220} label="A person holds a new snack packet in one hand and lifts a chip to their mouth with the other. A heart floats beside their face: they like the taste.">
       <Backwash cx={200} cy={122} rx={150} ry={96} seed={400} />
       <Ground x0={80} x1={320} y={g} seed={405} />
       <Snack x={bag[0] - 10} y={bag[1] - 4} s={1.05} seed={470} />
@@ -336,7 +336,7 @@ function Bowl({ x, y, seed }: { x: number; y: number; seed: number }) {
   );
 }
 
-/** A seated dog in profile, facing −x; (x, y) is where it sits on the ground. */
+/** A seated dog in profile, facing −x. (x, y) is where it sits on the ground. */
 function SitDog({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
   const body = at(x, y, [
     [-52, -100], [-38, -107], [-27, -115], [-12, -122], [1, -117], [9, -97], [26, -62], [40, -42], [43, -20], [35, 0],
@@ -387,7 +387,7 @@ export function Pavlov() {
   const mouth: Pt = [r2(dog.x - 44 * dog.s), r2(g - 92 * dog.s)];
   const drops: Pt[] = [[mouth[0], mouth[1] + 12], [mouth[0] + 3, mouth[1] + 28]];
   return (
-    <SketchFrame id="sk-pavlov" width={400} height={230} label="Pavlov's set-up: a bell rings above a bowl of meat powder; a seated dog faces them, drooling.">
+    <SketchFrame id="sk-pavlov" width={400} height={230} label="Pavlov's set-up: a bell rings above a bowl of meat powder. A seated dog faces them, drooling.">
       <Backwash cx={200} cy={124} rx={188} ry={100} seed={1000} />
       <Ground x0={30} x1={370} y={g} seed={1005} />
       <Bell x={96} y={96} s={1.05} seed={1010} />
@@ -468,7 +468,7 @@ export function BrandAlone() {
    REPETITION AND STIMULUS GENERALIZATION
    ========================================================================== */
 
-/** A small ad card with the brand badge and two lines of copy; centre (x, y). */
+/** A small ad card with the brand badge and two lines of copy. Centre (x, y). */
 function AdCard({ x, y, w = 60, seed, pencil = false, badge = true, lit = false, logo }: { x: number; y: number; w?: number; seed: number; pencil?: boolean; badge?: boolean; lit?: boolean; logo?: string }) {
   const h = w * 0.68;
   const pts = sharp([[x - w / 2, y - h / 2], [x + w / 2, y - h / 2], [x + w / 2, y + h / 2], [x - w / 2, y + h / 2]], true, 2);
@@ -1026,13 +1026,13 @@ export function MemoryStorageFlow() {
       id="sk-memory-stores"
       width={800}
       height={320}
-      label="Three memory stores from left to right. Sensory memory: many ads scattered loosely, held for a few seconds; the brand's ad, lit teal, gets attention and moves on. Short-term memory: a small tray with room for only four ads, held for about twenty seconds, two more falling out. Elaborative rehearsal moves the brand's ad on to long-term memory: a large cabinet of many filed ads, kept for days, months or years."
+      label="Three memory stores from left to right. Sensory memory: many ads scattered loosely, held for a few seconds. The brand's ad, lit teal, gets attention and moves on. Short-term memory: a small tray with room for only four ads, held for about twenty seconds, two more falling out. Elaborative rehearsal moves the brand's ad on to long-term memory: a large cabinet of many filed ads, kept for days, months or years."
     >
       <Wash pts={field} seed={2500} fill={SK.earth} opacity={0.4} dx={0} dy={0} />
       {[
         { x: 134, t: "Sensory", time: "A FEW SECONDS" },
         { x: 400, t: "Short-term", time: "ABOUT 20 SECONDS" },
-        { x: 683, t: "Long-term", time: "DAYS · MONTHS · YEARS" },
+        { x: 683, t: "Long-term", time: "DAYS | MONTHS | YEARS" },
       ].map((h) => (
         <g key={h.t}>
           <SketchText x={h.x} y={42} anchor="middle" size={24} serif>
@@ -1295,7 +1295,7 @@ export function StrongLinks() {
       id="sk-strong-links"
       width={400}
       height={230}
-      label="A shopper in a store aisle faces a shelf. A thick teal link, carrying a heart, runs from the shopper's head straight to the brand's pack; only a thin link reaches a plain pack on the lower shelf."
+      label="A shopper in a store aisle faces a shelf. A thick teal link, carrying a heart, runs from the shopper's head straight to the brand's pack. Only a thin link reaches a plain pack on the lower shelf."
     >
       <Backwash cx={200} cy={120} rx={190} ry={104} seed={3500} />
       <Ground x0={24} x1={210} y={g} seed={3505} />
@@ -1410,7 +1410,7 @@ export function GreenBox() {
       id="sk-green-box"
       width={400}
       height={250}
-      label="Top left: an ad on a screen showing one distinct teal box. Right: a crowded two-row shelf of boxes in many muted colours; exactly one is the same teal box, and an arrow runs to it from the ad."
+      label="Top left: an ad on a screen showing one distinct teal box. Right: a crowded two-row shelf of boxes in many muted colours. Exactly one is the same teal box, and an arrow runs to it from the ad."
     >
       <Backwash cx={200} cy={130} rx={192} ry={112} seed={4000} />
       <Screen x={16} y={24} w={112} h={88} seed={4010}>
@@ -1444,7 +1444,7 @@ export function MoodMatch() {
       id="sk-mood-match"
       width={400}
       height={264}
-      label="Two buyers watch the same upbeat ad, which shows a heart and the brand badge. Left: a buyer in a happy mood, a whole heart beside them, arms up; their thought cloud holds the brand clearly. Right: a buyer in a sad mood, a broken heart beside them, arms down; their thought cloud holds only a faint pencil outline of the brand."
+      label="Two buyers watch the same upbeat ad, which shows a heart and the brand badge. Left: a buyer in a happy mood, a whole heart beside them, arms up. Their thought cloud holds the brand clearly. Right: a buyer in a sad mood, a broken heart beside them, arms down. Their thought cloud holds only a faint pencil outline of the brand."
     >
       <Backwash cx={100} cy={150} rx={96} ry={110} seed={4190} />
       <Backwash cx={300} cy={150} rx={96} ry={110} seed={4195} fill={SK.earth} opacity={0.4} />
@@ -1666,7 +1666,7 @@ export function FightForgetting() {
 }
 
 /* ==========================================================================
-   DISCUSSION · your brand web
+   DISCUSSION | your brand web
    ========================================================================== */
 
 export function YourBrandWeb() {
@@ -1736,14 +1736,14 @@ export function YourBrandWeb() {
 /* ==========================================================================
    BRAND RETRIEVAL IN CONVERSATIONAL SEARCH
    The assistant is the shared Agent (a phone with the AI sparkle). Brands
-   are running shoes told apart by colour; the one missing from its answer is
+   are running shoes told apart by colour. The one missing from its answer is
    pencil. Its memory is the week's web: Node links and WordNode attributes.
    ========================================================================== */
 
 /** The three brands the assistant names, and the one it leaves out. */
 const LISTED = [SK.camel, SK.charcoal, SK.sky];
 
-/** The consumer asks; the assistant answers with a short list of three brands. */
+/** The consumer asks. The assistant answers with a short list of three brands. */
 export function AssistantShortList() {
   const g = 222;
   return (
@@ -1869,7 +1869,7 @@ export function CueInQuestion() {
       id="sk-cue-question"
       width={400}
       height={244}
-      label="A shopper asks, in a speech bubble, durable running shoes? An arrow runs from the bubble to the word durable in the AI agent's web, which lights teal along with its link to the camel shoe; the charcoal shoe, linked only to light and cheap, stays unlit."
+      label="A shopper asks, in a speech bubble, durable running shoes? An arrow runs from the bubble to the word durable in the AI agent's web, which lights teal along with its link to the camel shoe. The charcoal shoe, linked only to light and cheap, stays unlit."
     >
       <Backwash cx={200} cy={128} rx={194} ry={112} seed={5400} opacity={0.4} />
       <Ground x0={10} x1={120} y={g} seed={5401} />

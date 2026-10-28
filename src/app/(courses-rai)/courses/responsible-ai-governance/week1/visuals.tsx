@@ -38,7 +38,7 @@ const hair = { stroke: PAT.ink, strokeWidth: LINE.hair, strokeLinecap: "round" a
 /**
  * Why market algorithms require governance (reference plate).
  * The first figure: a hand stamp over one card. The second figure: one rule bar drives five
- * plungers onto five cards; with the biased rule four cards take the red.
+ * plungers onto five cards. With the biased rule four cards take the red.
  */
 export function ScalingRule() {
   const [mode, setMode] = useState<"biased" | "audited">("biased");
@@ -51,11 +51,11 @@ export function ScalingRule() {
       <Frame
         width={800}
         height={236}
-        label={`Patent drawing in two figures. The first figure: a hand stamp comes down on one card, one decision at a time. The second figure: one bar labelled same decision rule drives five plungers down onto five cards at once, thousands of decisions per second; ${biased ? "with the biased rule, four of the five cards are marked in red" : "with the verified rule, all five cards stay plain"}.`}
+        label={`Patent drawing in two figures. The first figure: a hand stamp comes down on one card, one decision at a time. The second figure: one bar labelled same decision rule drives five plungers down onto five cards at once, thousands of decisions per second. ${biased ? "with the biased rule, four of the five cards are marked in red" : "with the verified rule, all five cards stay plain"}.`}
       >
         <PatentDefs id={id} />
 
-        {/* The first figure — hand stamp over one card */}
+        {/* The first figure: hand stamp over one card */}
         <ellipse cx={121} cy={52} rx={14} ry={6} fill={PAT.paper} {...ink} />
         <path d="M107 52C107 60 135 60 135 52V57C135 65 107 65 107 57Z" fill={stip(id, "light")} {...ink} />
         <path d="M116 63V102H126V63" fill={PAT.paper} {...ink} />
@@ -69,7 +69,7 @@ export function ScalingRule() {
 
         <line x1={236} y1={22} x2={236} y2={206} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-        {/* The second figure — one rule bar pressing five cards */}
+        {/* The second figure: one rule bar pressing five cards */}
         <ObliqueBox id={id} x={270} y={58} w={490} h={32} dx={15} dy={10} />
         <PatentKey x={515} y={78.5} size={13}>
           SAME DECISION RULE
@@ -118,7 +118,7 @@ export function ScalingRule() {
 
 /**
  * Governance authority: a key switch with three positions (approve, restrict,
- * halt) on the model's housing; it turns only with the evidence dossier
+ * halt) on the model's housing. It turns only with the evidence dossier
  * standing in the slot beside it. The key stands at approve.
  */
 export function GovernanceAuthority() {
@@ -138,7 +138,7 @@ export function GovernanceAuthority() {
     <Frame
       width={400}
       height={210}
-      label="Patent drawing: a key switch on a housing has three positions, approve, restrict and halt; the key is turned to approve. An evidence dossier stands in a slot in the top of the housing, and a hidden interlock, drawn dashed, runs from the slot to the switch."
+      label="Patent drawing: a key switch on a housing has three positions, approve, restrict and halt. The key is turned to approve. An evidence dossier stands in a slot in the top of the housing, and a hidden interlock, drawn dashed, runs from the slot to the switch."
     >
       <PatentDefs id={id} />
 
@@ -198,7 +198,7 @@ export function GovernanceAuthority() {
 /**
  * Ethics washing. The first figure: the decision machine and the decisions it puts out,
  * one of them harmful (red). The second figure: the same machine with a values plaque
- * bolted over its front; the decisions coming out are exactly the same.
+ * bolted over its front. The decisions coming out are exactly the same.
  */
 export function EthicsWashing() {
   const id = "w1-wash";
@@ -255,7 +255,7 @@ export function EthicsWashing() {
 
 /**
  * Three lenses on the same deployment: consequentialism reads a pass,
- * deontology and virtue ethics read a fail; the conflicting verdicts are red.
+ * deontology and virtue ethics read a fail. The conflicting verdicts are red.
  */
 export function ThreeLenses() {
   const id = "w1-lens";
@@ -263,7 +263,7 @@ export function ThreeLenses() {
     <Frame
       width={800}
       height={210}
-      label="Patent drawing: three hand lenses look at the same deployment, drawn as one housing; the consequentialism lens shows a tick, while the deontology and virtue ethics lenses show red crosses, conflicting conclusions about the same system."
+      label="Patent drawing: three hand lenses look at the same deployment, drawn as one housing. The consequentialism lens shows a tick, while the deontology and virtue ethics lenses show red crosses, conflicting conclusions about the same system."
     >
       <PatentDefs id={id} />
 
@@ -307,7 +307,7 @@ export function ThreeLenses() {
 
 /**
  * Consequentialism and market welfare. Welfare columns for four
- * segments stand on a zero datum, each as wide as its group; the aggregate
+ * segments stand on a zero datum, each as wide as its group. The aggregate
  * stands apart. Excluding the narrow minority segment from credit offers
  * lifts the three majority columns and the aggregate, while the minority
  * column drops below zero (red).
@@ -417,7 +417,7 @@ const spring = (x0: number, x1: number, y: number, n: number, amp: number) => {
 
 /**
  * Deontology: a spring drives a rod carrying a fabricated five-star review
- * (red) toward the buyer; a deadbolt dropped into the rail stops it. Past the
+ * (red) toward the buyer. A deadbolt dropped into the rail stops it. Past the
  * bolt, a plain disclosure lies open for an informed choice.
  */
 export function DeontologicalDuty() {
@@ -426,7 +426,7 @@ export function DeontologicalDuty() {
     <Frame
       width={800}
       height={215}
-      label="Patent drawing: on a rail, a compressed spring drives a rod whose head carries a fabricated five-star review card in red; a deadbolt marked inviolable constraint is dropped into the rail and stops the card; beyond the bolt, a plain disclosure sheet lies open, marked informed consent."
+      label="Patent drawing: on a rail, a compressed spring drives a rod whose head carries a fabricated five-star review card in red. A deadbolt marked inviolable constraint is dropped into the rail and stops the card. Beyond the bolt, a plain disclosure sheet lies open, marked informed consent."
     >
       <PatentDefs id={id} />
 
@@ -515,7 +515,7 @@ export function VirtueCharacter() {
     >
       <PatentDefs id={id} />
 
-      {/* The first figure — a hook threaded through the gap between two rules */}
+      {/* The first figure: a hook threaded through the gap between two rules */}
       {pier(56)}
       {pier(222)}
       <path
@@ -533,7 +533,7 @@ export function VirtueCharacter() {
 
       <line x1={400} y1={22} x2={400} y2={186} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* The second figure — the same piers joined by an arch, a plumb line hanging true */}
+      {/* The second figure: the same piers joined by an arch, a plumb line hanging true */}
       {pier(456)}
       {pier(622)}
       {/* Arch over the gap, keystone at its crown */}
@@ -551,7 +551,7 @@ export function VirtueCharacter() {
 }
 
 /**
- * Consequentialist evaluation: a beam balance; coins of benefit weigh the
+ * Consequentialist evaluation: a beam balance. Coins of benefit weigh the
  * left pan down, the harm (red) rides up on the right.
  */
 export function Consequentialism() {
@@ -562,7 +562,7 @@ export function Consequentialism() {
     <Frame
       width={400}
       height={210}
-      label="Patent drawing: a beam balance on a stand; two stacks of coins marked benefits weigh the left pan down, while a small red weight marked harms rides up on the right pan."
+      label="Patent drawing: a beam balance on a stand. Two stacks of coins marked benefits weigh the left pan down, while a small red weight marked harms rides up on the right pan."
     >
       <PatentDefs id={id} />
 
@@ -595,7 +595,7 @@ export function Consequentialism() {
 }
 
 /**
- * Deontological evaluation: a signed and sealed agreement torn in two; the
+ * Deontological evaluation: a signed and sealed agreement torn in two. The
  * tear (the breached duty) is red.
  */
 export function Deontology() {
@@ -616,7 +616,7 @@ export function Deontology() {
     <Frame
       width={400}
       height={210}
-      label="Patent drawing: a signed agreement with a seal, its text in rows, torn top to bottom into two halves that have pulled apart; the torn edges are red."
+      label="Patent drawing: a signed agreement with a seal, its text in rows, torn top to bottom into two halves that have pulled apart. The torn edges are red."
     >
       <PatentDefs id={id} />
 
@@ -655,7 +655,7 @@ export function VirtueEthics() {
     <Frame
       width={400}
       height={210}
-      label="Patent drawing: a classical institution front with pediment, entablature and four fluted columns on two steps; the entablature reads trustworthy, the upper step honest and the lower step responsible."
+      label="Patent drawing: a classical institution front with pediment, entablature and four fluted columns on two steps. The entablature reads trustworthy, the upper step honest and the lower step responsible."
     >
       <PatentDefs id={id} />
 
@@ -695,7 +695,7 @@ export function VirtueEthics() {
 
 /**
  * The loan-pricing case: identical houses on either side of a postal-code
- * boundary; the same loan is quoted 6.2% on one side and 11.8% (red) on the
+ * boundary. The same loan is quoted 6.2% on one side and 11.8% (red) on the
  * other.
  */
 export function LoanWide() {
@@ -706,7 +706,7 @@ export function LoanWide() {
     <Frame
       width={800}
       height={178}
-      label="Patent drawing in plan view: a strip of ground divided by a postal-code boundary line; three identical houses on each side; each house on the postal code A side carries a 6.2% rate tag, each house on the postal code B side carries an 11.8% rate tag in red."
+      label="Patent drawing in plan view: a strip of ground divided by a postal-code boundary line. Three identical houses on each side. Each house on the postal code A side carries a 6.2% rate tag, each house on the postal code B side carries an 11.8% rate tag in red."
     >
       <PatentDefs id={id} />
       <g transform="translate(0 -40)">
@@ -743,7 +743,7 @@ export function LoanWide() {
 
 /**
  * Part 2: an exploded view of one AI system pulled apart into the four
- * stages different organizations own (built, trained, deployed, used); a
+ * stages different organizations own (built, trained, deployed, used). A
  * red fault runs through every layer, owned by none.
  */
 export function FragmentedChain() {
@@ -775,7 +775,7 @@ export function FragmentedChain() {
     <Frame
       width={800}
       height={214}
-      label="Patent drawing, exploded view: one AI system pulled apart along centre lines into four stacked layers, labelled from bottom to top built, trained, deployed and used; each layer carries a different maker's mark, and a red crack runs through the same place in every layer."
+      label="Patent drawing, exploded view: one AI system pulled apart along centre lines into four stacked layers, labelled from bottom to top built, trained, deployed and used. Each layer carries a different maker's mark, and a red crack runs through the same place in every layer."
     >
       <PatentDefs id={id} />
 
@@ -831,7 +831,7 @@ export function ValueChainFiveActors() {
       <Frame
         width={800}
         height={210}
-        label={`Patent drawing of the AI value chain with reference numerals: 1, a drum of model weights; 2, a deploying firm's housing with a prompt card in its slot; 3, a platform rack holding ranked listings; 4, a consumer receiving the result; 5, a regulator's lens on a stand looking over the chain.${names[stage]}`}
+        label={`Patent drawing of the AI value chain with reference numerals: 1, a drum of model weights. 2, a deploying firm's housing with a prompt card in its slot. 3, a platform rack holding ranked listings. 4, a consumer receiving the result. 5, a regulator's lens on a stand looking over the chain.${names[stage]}`}
       >
         <PatentDefs id={id} />
 
@@ -850,7 +850,7 @@ export function ValueChainFiveActors() {
           </g>
         ))}
 
-        {/* 1 — weight drum */}
+        {/* 1: weight drum */}
         <path d="M66 82V150A38 11 0 0 0 142 150V82Z" fill={PAT.paper} {...ink} />
         <path d="M128 90.3V158.3A38 11 0 0 0 142 150V82A38 11 0 0 1 128 90.3Z" fill={stip(id, "dense")} />
         {[104, 126].map((y) => (
@@ -859,7 +859,7 @@ export function ValueChainFiveActors() {
         <ellipse cx={104} cy={82} rx={38} ry={11} fill={stip(id, "light")} {...ink} />
         <ellipse cx={104} cy={82} rx={12} ry={3.5} fill={PAT.paper} {...ink} />
 
-        {/* 2 — deploying firm's housing with a prompt card in its slot */}
+        {/* 2: deploying firm's housing with a prompt card in its slot */}
         <ObliqueBox id={id} x={206} y={98} w={92} h={66} dx={14} dy={9} />
         <path d="M232 92L244 84V60L232 68Z" fill={stip(id, "dense")} {...ink} />
         <rect x={232} y={68} width={40} height={26} fill={PAT.paper} {...ink} />
@@ -868,7 +868,7 @@ export function ValueChainFiveActors() {
         ))}
         <path d="M228 94H276" {...ink} strokeWidth={LINE.bold} />
 
-        {/* 3 — platform rack of ranked listings */}
+        {/* 3: platform rack of ranked listings */}
         <ObliqueBox id={id} x={350} y={62} w={96} h={102} dx={14} dy={9} />
         {[0, 1, 2].map((i) => (
           <g key={i}>
@@ -881,11 +881,11 @@ export function ValueChainFiveActors() {
           </g>
         ))}
 
-        {/* 4 — the consumer, taking the result */}
+        {/* 4: the consumer, taking the result */}
         <Figure id={id} x={548} y={162} s={1.4} arm="reach" flip />
         <path d="M486 90L498 84H516L504 90Z" fill={PAT.paper} {...ink} />
 
-        {/* 5 — regulator's lens on a stand, over the chain */}
+        {/* 5: regulator's lens on a stand, over the chain */}
         <path d="M748 176V40H742V176" fill={PAT.paper} {...ink} />
         <ObliqueBox id={id} x={724} y={176} w={44} h={10} dx={10} dy={6} />
         <line x1={742} y1={46} x2={706} y2={64} {...ink} strokeWidth={LINE.bold} />
@@ -933,7 +933,7 @@ export function ManyHands() {
       <Frame
         width={800}
         height={215}
-        label={`Patent drawing: a model developer stands by a drum of weights, a deploying retailer stands by a housing with a prompt card, and a consumer holds a red card for the biased outcome. ${blame ? "The developer points at the retailer's prompt card and the retailer points back at the developer's drum: two red arrows cross, and no one takes the outcome." : "The retailer turns to the consumer; a line marked accountable joins the retailer to the consumer's outcome."}`}
+        label={`Patent drawing: a model developer stands by a drum of weights, a deploying retailer stands by a housing with a prompt card, and a consumer holds a red card for the biased outcome. ${blame ? "The developer points at the retailer's prompt card and the retailer points back at the developer's drum: two red arrows cross, and no one takes the outcome." : "The retailer turns to the consumer. A line marked accountable joins the retailer to the consumer's outcome."}`}
       >
         <PatentDefs id={id} />
         <line x1={40} y1={190} x2={760} y2={190} {...hair} />
@@ -993,9 +993,9 @@ export function ManyHands() {
 
 /**
  * Allocating accountability: one artefact per stakeholder. The first figure the
- * developer's tabbed model documentation; the second figure the deploying firm's
- * console with one dial per customer segment; the third figure the platform's ranked
- * listings with the sponsored slot tagged; the fourth figure the auditor's stamp of
+ * developer's tabbed model documentation. The second figure the deploying firm's
+ * console with one dial per customer segment. The third figure the platform's ranked
+ * listings with the sponsored slot tagged. The fourth figure the auditor's stamp of
  * independent verification.
  */
 export function AccountabilityDossiers() {
@@ -1008,7 +1008,7 @@ export function AccountabilityDossiers() {
     >
       <PatentDefs id={id} />
 
-      {/* The first figure — model documentation */}
+      {/* The first figure: model documentation */}
       <ObliqueBox id={id} x={58} y={56} w={78} h={108} dx={14} dy={9} />
       {[66, 98, 130].map((y) => (
         <path key={y} d={`M136 ${y}L150 ${y - 9}V${y + 9}L136 ${y + 18}Z`} fill={PAT.paper} {...ink} />
@@ -1022,7 +1022,7 @@ export function AccountabilityDossiers() {
         model documentation
       </FigureName>
 
-      {/* The second figure — one dial per customer segment */}
+      {/* The second figure: one dial per customer segment */}
       <ObliqueBox id={id} x={234} y={84} w={132} h={66} dx={14} dy={9} />
       <Dial cx={260} cy={116} r={18} deg={-35} />
       <Dial cx={300} cy={116} r={18} deg={10} />
@@ -1034,7 +1034,7 @@ export function AccountabilityDossiers() {
         monitoring outcomes
       </FigureName>
 
-      {/* The third figure — ranked listings, the sponsored slot tagged */}
+      {/* The third figure: ranked listings, the sponsored slot tagged */}
       <ObliqueBox id={id} x={440} y={52} w={128} h={112} dx={14} dy={9} />
       {[0, 1, 2].map((i) => (
         <g key={i}>
@@ -1052,7 +1052,7 @@ export function AccountabilityDossiers() {
         sponsorship disclosures
       </FigureName>
 
-      {/* The fourth figure — the auditor's stamp, independent verification */}
+      {/* The fourth figure: the auditor's stamp, independent verification */}
       <ellipse cx={700} cy={36} rx={11} ry={5} fill={PAT.paper} {...ink} />
       <path d="M689 36C689 42 711 42 711 36V40C711 46 689 46 689 40Z" fill={stip(id, "light")} {...ink} />
       <path d="M696 45V70H704V45" fill={PAT.paper} {...ink} />
@@ -1074,7 +1074,7 @@ export function AccountabilityDossiers() {
 /**
  * Discussion case: two claim forms with identical loss lines, one written by
  * a native and one by a non-native English speaker, pass through the licensed
- * model; the native claim draws one fraud flag, the non-native claim two
+ * model. The native claim draws one fraud flag, the non-native claim two
  * (red).
  */
 export function InsuranceClaims() {
@@ -1093,7 +1093,7 @@ export function InsuranceClaims() {
     <Frame
       width={400}
       height={215}
-      label="Patent drawing: two claim forms with identical lines, marked native and non-native, pass through one licensed model housing; the native claim comes out with one fraud flag, the non-native claim with two red flags, twice the rate."
+      label="Patent drawing: two claim forms with identical lines, marked native and non-native, pass through one licensed model housing. The native claim comes out with one fraud flag, the non-native claim with two red flags, twice the rate."
     >
       <PatentDefs id={id} />
 
@@ -1140,7 +1140,7 @@ export function BenchmarkGap() {
     >
       <PatentDefs id={id} />
 
-      {/* The first figure — podium under a bell jar */}
+      {/* The first figure: podium under a bell jar */}
       <ellipse cx={200} cy={170} rx={118} ry={12} fill={stip(id, "light")} {...ink} />
       <ObliqueBox id={id} x={108} y={128} w={52} h={40} dx={10} dy={6} />
       <ObliqueBox id={id} x={232} y={140} w={52} h={28} dx={10} dy={6} />
@@ -1164,7 +1164,7 @@ export function BenchmarkGap() {
 
       <line x1={400} y1={20} x2={400} y2={190} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* The second figure — the same model as a span over a real market, cracking */}
+      {/* The second figure: the same model as a span over a real market, cracking */}
       <ObliqueBox id={id} x={430} y={110} w={96} h={70} dx={18} dy={11} />
       <ObliqueBox id={id} x={646} y={110} w={110} h={70} dx={18} dy={11} />
       {/* span: two halves sagging at a mid-span crack */}
@@ -1184,8 +1184,8 @@ export function BenchmarkGap() {
 
 /**
  * Probabilistic outputs: a pin board drops the same prompt again
- * and again; each run lands one ball in a brand's bin. Students add runs and
- * flip the framing baffle; the most-chosen bin (red) reverses with framing.
+ * and again. Each run lands one ball in a brand's bin. Students add runs and
+ * flip the framing baffle. The most-chosen bin (red) reverses with framing.
  */
 export function ProbabilisticRuns() {
   const [runs, setRuns] = useState(24);
@@ -1212,7 +1212,7 @@ export function ProbabilisticRuns() {
       <Frame
         width={800}
         height={222}
-        label={`Patent drawing: a hopper drops the same prompt onto a board of pins, past a framing baffle tilted ${framing === "standard" ? "left" : "right"}; after ${runs} repeated runs the balls lie in three brand bins, ${counts[0]} in brand A, ${counts[1]} in brand B and ${counts[2]} in brand C; the most-chosen bin, brand ${"ABC"[top]}, is red.`}
+        label={`Patent drawing: a hopper drops the same prompt onto a board of pins, past a framing baffle tilted ${framing === "standard" ? "left" : "right"}. After ${runs} repeated runs the balls lie in three brand bins, ${counts[0]} in brand A, ${counts[1]} in brand B and ${counts[2]} in brand C. The most-chosen bin, brand ${"ABC"[top]}, is red.`}
       >
         <PatentDefs id={id} />
 
@@ -1281,10 +1281,10 @@ export function ProbabilisticRuns() {
 }
 
 /**
- * Four ways benchmark accuracy fails. The first figure a square peg over a round hole;
+ * Four ways benchmark accuracy fails. The first figure a square peg over a round hole.
  * The second figure one sampled bar standing in front of the hidden distribution (red,
- * dashed); the third figure a commercial prompt card in the slot swings the needle into
- * the red band; the fourth figure test sheets leaking into the training stack. Choosing a
+ * dashed). The third figure a commercial prompt card in the slot swings the needle into
+ * the red band. The fourth figure test sheets leaking into the training stack. Choosing a
  * mode rings its figure with a detail circle.
  */
 export function BenchmarkFailures() {
@@ -1305,7 +1305,7 @@ export function BenchmarkFailures() {
       >
         <PatentDefs id={id} />
 
-        {/* The first figure — construct mismatch */}
+        {/* The first figure: construct mismatch */}
         <ObliqueBox id={id} x={62} y={50} w={70} h={34} dx={10} dy={6} />
         <PatentKey x={97} y={71} size={10}>
           TRIVIA
@@ -1320,7 +1320,7 @@ export function BenchmarkFailures() {
           construct mismatch
         </FigureName>
 
-        {/* The second figure — single-sample fragility */}
+        {/* The second figure: single-sample fragility */}
         {[
           [252, 70],
           [272, 92],
@@ -1336,7 +1336,7 @@ export function BenchmarkFailures() {
           single-sample fragility
         </FigureName>
 
-        {/* The third figure — prompt sensitivity */}
+        {/* The third figure: prompt sensitivity */}
         <ObliqueBox id={id} x={456} y={84} w={88} h={80} dx={12} dy={8} />
         <path d="M486 80L496 72V44L486 52Z" fill={stip(id, "dense")} {...ink} />
         <rect x={486} y={52} width={30} height={28} fill={PAT.paper} {...ink} />
@@ -1351,7 +1351,7 @@ export function BenchmarkFailures() {
           prompt sensitivity
         </FigureName>
 
-        {/* The fourth figure — benchmark contamination */}
+        {/* The fourth figure: benchmark contamination */}
         <ObliqueBox id={id} x={624} y={126} w={50} h={34} dx={20} dy={14} top={PAT.paper} />
         {[134, 142, 150].map((y) => (
           <line key={y} x1={624} y1={y} x2={674} y2={y} {...hair} />
@@ -1411,7 +1411,7 @@ export function SixStages() {
       <Frame
         width={800}
         height={215}
-        label={`Patent drawing of the six stages as one pipeline with reference numerals: 1, a stepped risk-tier gauge; 2, a sieve drum the data passes through; 3, a test chamber with an inspection window; 4, a gate valve with a hand wheel; 5, a stamp over a seal pad for sign-off; 6, a strip-chart monitor whose trace spikes over the threshold in red, sending a rollback line back to stage 3.${stage === "all" ? "" : ` Stage ${stage} is ringed.`}`}
+        label={`Patent drawing of the six stages as one pipeline with reference numerals: 1, a stepped risk-tier gauge. 2, a sieve drum the data passes through. 3, a test chamber with an inspection window. 4, a gate valve with a hand wheel. 5, a stamp over a seal pad for sign-off. 6, a strip-chart monitor whose trace spikes over the threshold in red, sending a rollback line back to stage 3.${stage === "all" ? "" : ` Stage ${stage} is ringed.`}`}
       >
         <PatentDefs id={id} />
 
@@ -1419,40 +1419,40 @@ export function SixStages() {
         <path d="M24 135H776M24 145H776" fill="none" {...ink} />
         <path d="M776 135L784 140L776 145" fill="none" {...ink} />
 
-        {/* 1 — stepped risk-tier gauge */}
+        {/* 1: stepped risk-tier gauge */}
         <ObliqueBox id={id} x={60} y={130} w={20} h={30} dx={8} dy={5} />
         <ObliqueBox id={id} x={80} y={110} w={20} h={50} dx={8} dy={5} />
         <ObliqueBox id={id} x={100} y={90} w={20} h={70} dx={8} dy={5} />
         <path d="M90 92L86 84H94Z" fill={PAT.ink} />
         <line x1={90} y1={76} x2={90} y2={84} {...hair} />
 
-        {/* 2 — sieve drum */}
+        {/* 2: sieve drum */}
         <path d="M188 112H234A8 28 0 0 1 234 168H188" fill={PAT.paper} {...ink} />
         <ellipse cx={188} cy={140} rx={8} ry={28} fill={stip(id, "light")} {...ink} />
         {holes.map(([x, y]) => (
           <circle key={`${x}-${y}`} cx={x} cy={y} r={1.6} fill={PAT.paper} {...hair} />
         ))}
 
-        {/* 3 — test chamber with window */}
+        {/* 3: test chamber with window */}
         <ObliqueBox id={id} x={298} y={96} w={64} h={64} dx={12} dy={8} />
         <circle cx={330} cy={128} r={16} fill={stip(id, "light")} {...ink} />
         <circle cx={330} cy={128} r={11} fill={PAT.paper} {...hair} />
 
-        {/* 4 — gate valve and hand wheel */}
+        {/* 4: gate valve and hand wheel */}
         <ObliqueBox id={id} x={430} y={114} w={40} h={46} dx={10} dy={6} />
         <line x1={450} y1={108} x2={450} y2={78} {...ink} strokeWidth={LINE.bold} />
         <ellipse cx={450} cy={74} rx={20} ry={6} fill="none" {...ink} />
         <line x1={430} y1={74} x2={470} y2={74} {...hair} />
         <line x1={450} y1={68} x2={450} y2={80} {...hair} />
 
-        {/* 5 — sign-off stamp over a seal pad */}
+        {/* 5: sign-off stamp over a seal pad */}
         <ellipse cx={570} cy={74} rx={9} ry={4} fill={PAT.paper} {...ink} />
         <path d="M566 78V98H574V78" fill={PAT.paper} {...ink} />
         <ObliqueBox id={id} x={552} y={100} w={36} h={10} dx={7} dy={4} />
         <line x1={570} y1={113} x2={570} y2={124} {...hair} strokeDasharray={CENTRE_DASH} />
         <ObliqueBox id={id} x={548} y={130} w={44} h={18} dx={8} dy={5} />
 
-        {/* 6 — strip-chart monitor; the trace breaks the threshold */}
+        {/* 6: strip-chart monitor. The trace breaks the threshold */}
         <ObliqueBox id={id} x={652} y={88} w={76} h={72} dx={12} dy={8} />
         <rect x={658} y={96} width={64} height={52} fill={PAT.paper} {...hair} />
         <line x1={658} y1={112} x2={722} y2={112} {...hair} strokeDasharray="4 2" />
@@ -1495,7 +1495,7 @@ export function SixStages() {
 /**
  * Part 4: authority shared between the algorithm and a human reviewer. The
  * algorithm's housing sends a stream of cases up a conveyor into a funnel
- * over the reviewer's desk; the funnel's neck passes one case at a time, and
+ * over the reviewer's desk. The funnel's neck passes one case at a time, and
  * the excess spills over the rim (red): the cognitive limits of the reviewer.
  */
 export function SharedAuthority() {
@@ -1505,7 +1505,7 @@ export function SharedAuthority() {
     <Frame
       width={800}
       height={210}
-      label="Patent drawing: an algorithm's housing, its gears shown in a cutaway, sends a stream of case cards up a conveyor into a funnel over a reviewer's desk; the funnel's narrow neck passes one card at a time to the reviewer standing at the desk, while excess cards spill over the rim in red, marked cognitive limits."
+      label="Patent drawing: an algorithm's housing, its gears shown in a cutaway, sends a stream of case cards up a conveyor into a funnel over a reviewer's desk. The funnel's narrow neck passes one card at a time to the reviewer standing at the desk, while excess cards spill over the rim in red, marked cognitive limits."
     >
       <PatentDefs id={id} />
       <g transform="translate(76 0)">
@@ -1579,7 +1579,7 @@ export function InTheLoop() {
     <Frame
       width={400}
       height={210}
-      label="Patent drawing: cases on a conveyor queue at a closed gate across the belt; a reviewer standing behind the belt holds the gate's lever, so each case waits for approval before it can pass."
+      label="Patent drawing: cases on a conveyor queue at a closed gate across the belt. A reviewer standing behind the belt holds the gate's lever, so each case waits for approval before it can pass."
     >
       <PatentDefs id={id} />
       <Belt id={id} at={[48, 104, 160]} x1={296} />
@@ -1592,14 +1592,14 @@ export function InTheLoop() {
   );
 }
 
-/** Human-on-the-loop: cases run on unchecked; the operator watches a dashboard with a stop switch to hand. */
+/** Human-on-the-loop: cases run on unchecked. The operator watches a dashboard with a stop switch to hand. */
 export function OnTheLoop() {
   const id = "w1-on";
   return (
     <Frame
       width={400}
       height={210}
-      label="Patent drawing: cases run continuously along a conveyor; behind it an operator watches a dashboard screen showing a live trace and keeps one hand on a stop switch, able to intervene or shut the system down."
+      label="Patent drawing: cases run continuously along a conveyor. Behind it an operator watches a dashboard screen showing a live trace and keeps one hand on a stop switch, able to intervene or shut the system down."
     >
       <PatentDefs id={id} />
       {/* dashboard on a stand */}
@@ -1619,7 +1619,7 @@ export function OnTheLoop() {
 
 /**
  * Fully autonomous: cases run on between two guard rails (the pre-programmed
- * constraints) with no one at the belt; their record lands in a log on a
+ * constraints) with no one at the belt. Their record lands in a log on a
  * lectern, read later through a hand lens (the periodic post-hoc audit).
  */
 export function Autonomous() {
@@ -1629,7 +1629,7 @@ export function Autonomous() {
     <Frame
       width={400}
       height={210}
-      label="Patent drawing: cases run continuously along a conveyor between two guard rails, the pre-programmed constraints, with no person at the belt; past the end of the belt an open log book lies on a lectern under a hand lens, for the periodic post-hoc audit."
+      label="Patent drawing: cases run continuously along a conveyor between two guard rails, the pre-programmed constraints, with no person at the belt. Past the end of the belt an open log book lies on a lectern under a hand lens, for the periodic post-hoc audit."
     >
       <PatentDefs id={id} />
       {/* far guard rail on posts */}
@@ -1658,7 +1658,7 @@ export function Autonomous() {
 
 /**
  * Failure modes of human oversight. The first figure: the reviewer's case stack grows
- * with the caseload; at a light load a lens sits over the top case, past 30
+ * with the caseload. At a light load a lens sits over the top case, past 30
  * cases an hour the stamp comes down on cases unread (red). The second figure: a person
  * holds up the whole automated system, a moral crumple zone (red).
  */
@@ -1674,11 +1674,11 @@ export function OversightFailures() {
       <Frame
         width={800}
         height={215}
-        label={`Patent drawing in two figures. The first figure, rubber-stamping: at ${casesPerHour} cases an hour the reviewer's stack is ${sheets} cases high; ${overloaded ? "a stamp comes down on the top case unread, and the stamped case is red" : "a hand lens sits over the top case for careful review, the stamp set aside"}. The second figure, moral crumple zones: a single person in red holds up a large automated system above their head.`}
+        label={`Patent drawing in two figures. The first figure, rubber-stamping: at ${casesPerHour} cases an hour the reviewer's stack is ${sheets} cases high. ${overloaded ? "a stamp comes down on the top case unread, and the stamped case is red" : "a hand lens sits over the top case for careful review, the stamp set aside"}. The second figure, moral crumple zones: a single person in red holds up a large automated system above their head.`}
       >
         <PatentDefs id={id} />
 
-        {/* The first figure — case stack, lens or stamp */}
+        {/* The first figure: case stack, lens or stamp */}
         <line x1={50} y1={176} x2={340} y2={176} {...hair} />
         <ObliqueBox id={id} x={90} y={top} w={110} h={h} dx={34} dy={22} top={overloaded ? stip(id, "signal") : PAT.paper} stroke={PAT.ink} />
         {overloaded ? <path d={`M${90} ${top}L124 ${top - 22}H234L200 ${top}Z`} fill="none" stroke={PAT.signal} strokeWidth={LINE.bold} strokeLinejoin="round" /> : null}
@@ -1709,7 +1709,7 @@ export function OversightFailures() {
 
         <line x1={400} y1={20} x2={400} y2={190} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-        {/* The second figure — one person holding up the whole system */}
+        {/* The second figure: one person holding up the whole system */}
         <line x1={440} y1={176} x2={770} y2={176} {...hair} />
         <ObliqueBox id={id} x={494} y={34} w={196} h={64} dx={22} dy={14} />
         <path d="M506 44H676L682 52L674 60L682 68L674 76L682 84L676 90H506Z" fill={stip(id, "light")} {...ink} />
@@ -1745,7 +1745,7 @@ export function DecisionRiskRegimes() {
       <PatentDefs id={id} />
       <g transform="translate(0 -34)">
 
-      {/* The first figure — one mortgage held at the reviewer's gate */}
+      {/* The first figure: one mortgage held at the reviewer's gate */}
       <line x1={24} y1={176} x2={256} y2={176} {...hair} />
       <Sheet id={id} x={34} y={170} w={84} d={26} sk={22} t={4} fill={stip(id, "signal")} stroke={PAT.signal} sw={LINE.bold} />
       <House id={id} x={64} y={160} w={40} h={28} roof={16} dx={10} dy={6} />
@@ -1759,7 +1759,7 @@ export function DecisionRiskRegimes() {
 
       <line x1={272} y1={20} x2={272} y2={190} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* The second figure — a stream of transactions, a monitor over it, a breaker at its end */}
+      {/* The second figure: a stream of transactions, a monitor over it, a breaker at its end */}
       <line x1={384} y1={124} x2={384} y2={152} {...ink} />
       <ObliqueBox id={id} x={334} y={64} w={100} h={60} dx={10} dy={6} />
       <rect x={342} y={72} width={84} height={44} fill={PAT.paper} {...hair} />
@@ -1779,7 +1779,7 @@ export function DecisionRiskRegimes() {
 
       <line x1={548} y1={20} x2={548} y2={190} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* The third figure — a webpage carousel reordering itself, a lens over it */}
+      {/* The third figure: a webpage carousel reordering itself, a lens over it */}
       <ObliqueBox id={id} x={576} y={74} w={176} h={96} dx={10} dy={6} />
       <line x1={576} y1={88} x2={752} y2={88} {...ink} />
       {[584, 590, 596].map((x) => (
@@ -1836,7 +1836,7 @@ function Agent({ id, x, y, gx, gy, stroke = PAT.ink }: { id: string; x: number; 
   );
 }
 
-/** A shop shelf with goods on two shelves; (x, y) is the front face's top-left. */
+/** A shop shelf with goods on two shelves. (x, y) is the front face's top-left. */
 function Shelf({ id, x, y, w = 120, h = 116 }: { id: string; x: number; y: number; w?: number; h?: number }) {
   const rows = [y + h * 0.42, y + h * 0.82];
   return (
@@ -1893,8 +1893,8 @@ export function DelegatedExchange() {
 }
 
 /**
- * The agent as surrogate consumer: the shopper hands the agent a goal card;
- * the agent's lens, not the shopper's eyes, reads the results page, its
+ * The agent as surrogate consumer: the shopper hands the agent a goal card.
+ * The agent's lens, not the shopper's eyes, reads the results page, its
  * sight lines running to each listing (the first one sponsored).
  */
 export function SurrogateConsumer() {
@@ -1908,7 +1908,7 @@ export function SurrogateConsumer() {
     <Frame
       width={800}
       height={215}
-      label="Patent drawing: a shopper on the right hands a goal card to the AI agent, which holds it in its gripper; the agent's lens sends sight lines to a search results page on the left with three listings, a sponsored one at $290 first, then $210 and $245; the agent, not the shopper, reads the page."
+      label="Patent drawing: a shopper on the right hands a goal card to the AI agent, which holds it in its gripper. The agent's lens sends sight lines to a search results page on the left with three listings, a sponsored one at $290 first, then $210 and $245. The agent, not the shopper, reads the page."
     >
       <PatentDefs id={id} />
       <line x1={40} y1={190} x2={760} y2={190} {...hair} />
@@ -1970,7 +1970,7 @@ export function DualAgencyRisks() {
     >
       <PatentDefs id={id} />
 
-      {/* The first figure — principal-agent conflicts */}
+      {/* The first figure: principal-agent conflicts */}
       <line x1={14} y1={168} x2={188} y2={168} {...hair} />
       <Figure id={id} x={34} y={167} s={1.12} arm="reach" />
       <path d="M68 109Q80 126 84 140" fill="none" {...ink} />
@@ -1983,7 +1983,7 @@ export function DualAgencyRisks() {
 
       <line x1={200} y1={16} x2={200} y2={180} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* The second figure — heuristic and position biases */}
+      {/* The second figure: heuristic and position biases */}
       <line x1={212} y1={168} x2={388} y2={168} {...hair} />
       <ObliqueBox id={id} x={300} y={36} w={76} h={132} dx={8} dy={5} />
       {[0, 1, 2, 3, 4, 5].map((i) => (
@@ -2011,7 +2011,7 @@ export function DualAgencyRisks() {
 
       <line x1={400} y1={16} x2={400} y2={180} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* The third figure — adversarial storefront manipulation */}
+      {/* The third figure: adversarial storefront manipulation */}
       <line x1={412} y1={168} x2={588} y2={168} {...hair} />
       <ObliqueBox id={id} x={494} y={40} w={84} h={128} dx={8} dy={5} />
       <ObliqueBox id={id} x={504} y={52} w={34} h={30} dx={5} dy={3} />
@@ -2033,7 +2033,7 @@ export function DualAgencyRisks() {
 
       <line x1={600} y1={16} x2={600} y2={180} {...hair} strokeWidth={0.5} strokeDasharray={CENTRE_DASH} />
 
-      {/* The fourth figure — liability ambiguity */}
+      {/* The fourth figure: liability ambiguity */}
       <path d="M622 36H680V140L673 134L666 140L659 134L652 140L645 134L638 140L631 134L622 140Z" fill={PAT.paper} {...ink} />
       {[50, 60, 70, 80, 90].map((y) => (
         <line key={y} x1={630} y1={y} x2={y === 90 ? 656 : 672} y2={y} {...hair} />
@@ -2059,7 +2059,7 @@ export function DualAgencyRisks() {
   );
 }
 
-/** A hotel block with a grid of windows; (x, y) is the front face's top-left. */
+/** A hotel block with a grid of windows. (x, y) is the front face's top-left. */
 function Hotel({ id, x, y, w = 84, h = 112 }: { id: string; x: number; y: number; w?: number; h?: number }) {
   const cols = 3;
   const rows = 5;
@@ -2078,7 +2078,7 @@ function Hotel({ id, x, y, w = 84, h = 112 }: { id: string; x: number; y: number
 
 /**
  * Discussion case: the agent pins the first-ranked, sponsored hotel, which
- * lets the street noise in (red); the quiet four-star hotel beside it is
+ * lets the street noise in (red). The quiet four-star hotel beside it is
  * passed over.
  */
 export function TravelAgentHotel() {
@@ -2088,7 +2088,7 @@ export function TravelAgentHotel() {
     <Frame
       width={400}
       height={215}
-      label="Patent drawing: two hotel blocks; the left one carries a sponsored sign on its roof and red noise waves at its side, and the AI agent beside it takes hold of it; the right one, with four stars on its roof sign, is quiet and passed over."
+      label="Patent drawing: two hotel blocks. The left one carries a sponsored sign on its roof and red noise waves at its side, and the AI agent beside it takes hold of it. The right one, with four stars on its roof sign, is quiet and passed over."
     >
       <PatentDefs id={id} />
       <line x1={20} y1={190} x2={380} y2={190} {...hair} />

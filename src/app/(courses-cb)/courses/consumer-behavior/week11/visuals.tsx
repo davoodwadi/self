@@ -1,22 +1,22 @@
 /* ==========================================================================
-   Consumer Behavior · Week 11 — figures
+   Consumer Behavior | Week 11, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates for culture, subcultures and social class: wobbly
    doubled ink and loose watercolour washes set off-register. Every mark
-   comes from ../_visuals; the style rules live in ../CLAUDE.md.
+   comes from ../_visuals. The style rules live in ../CLAUDE.md.
 
    Fixed cast for this week:
-     · Person: every human, one fashion-illustration figure (the CONSUMER
+     - Person: every human, one fashion-illustration figure (the CONSUMER
        look for the week's consumer), varied only by hair, clothes and skin.
-     · Gift: the wrapped present, the week's sign of exchange and ritual.
-     · Agent: the AI assistant (shared: a phone with the AI sparkle).
+     - Gift: the wrapped present, the week's sign of exchange and ritual.
+     - Agent: the AI assistant (shared: a phone with the AI sparkle).
 
    Colour roles: teal is the one thing chosen, bought, lit or ticked on a
-   plate; ochre a badge, a count or a small highlight; pencil only an absent
-   object; sky behind a hope, with blush for the here and now.
+   plate. Ochre a badge, a count or a small highlight. Pencil only an absent
+   object. Sky behind a hope, with blush for the here and now.
 
    Data: Hofstede's country scores come from his published dataset
-   (geerthofstede.com, "6 dimensions for website", 2015 release; long-term
+   (geerthofstede.com, "6 dimensions for website", 2015 release, long-term
    orientation from the World Values Survey version). The AI ethnocentrism
    scores come from Wadi, Ghodrat & Philp (2026), Table 2: grand mean plus
    model, target-country and interaction effects.
@@ -148,7 +148,7 @@ function Books({ x, bottom, n, seed }: { x: number; bottom: number; n: number; s
 
 /**
  * Culture in things: on a sideboard, a teapot and cups, a wrapped present and
- * a cake with candles, a paper lantern hanging above; the AI assistant stands
+ * a cake with candles, a paper lantern hanging above. The AI assistant stands
  * among them beside a tall stack of books, the text it learned from.
  */
 export function CultureShelf() {
@@ -202,8 +202,8 @@ export function CultureShelf() {
 
 /**
  * What people eat and how: two place settings seen from above on two
- * tablecloths. Left, a rice bowl with chopsticks on a rest and a tea cup;
- * right, a dinner plate with a knife, a fork and a glass.
+ * tablecloths. Left, a rice bowl with chopsticks on a rest and a tea cup.
+ * Right, a dinner plate with a knife, a fork and a glass.
  */
 export function TwoTables() {
   const cloth = (x0: number, seed: number, fill: string) => (
@@ -270,7 +270,7 @@ function DeskClock({ x, y, r = 16, seed }: { x: number; y: number; r?: number; s
 
 /**
  * One gift, two meanings: in two scenes a giver offers the same desk clock.
- * On the left the receiver smiles, a heart above; on the right the receiver
+ * On the left the receiver smiles, a heart above. On the right the receiver
  * shrugs it away with both hands, a broken heart above.
  */
 export function SameGiftTwoMeanings() {
@@ -337,7 +337,7 @@ const COUNTRY_OPTIONS = (Object.keys(HOFSTEDE) as Country[]).map((id) => ({ id, 
 
 /**
  * Hofstede's dimensions as an instrument: five rails from 0 to 100. The
- * student picks two countries; a teal and an ochre marker place each country
+ * student picks two countries. A teal and an ochre marker place each country
  * on every rail, and an ink bar spans the gap between them.
  */
 export function HofstedeCompare() {
@@ -350,7 +350,7 @@ export function HofstedeCompare() {
   const B = HOFSTEDE[b];
   const label =
     `Hofstede's five dimensions as rails from 0 to 100, comparing ${A.name} (teal) with ${B.name} (ochre): ` +
-    DIMS.map(([d], i) => `${d.toLowerCase()} ${A.s[i]} and ${B.s[i]}`).join("; ") +
+    DIMS.map(([d], i) => `${d.toLowerCase()} ${A.s[i]} and ${B.s[i]}`).join(". ") +
     ".";
   return (
     <>
@@ -470,7 +470,7 @@ export function MorningRoutine() {
       id="sk-morning-routine"
       width={300}
       height={250}
-      label="A bathroom mirror above a basin; on the shelf, three skin-care products in a row: a cleanser, a serum with a dropper and a jar of cream."
+      label="A bathroom mirror above a basin. On the shelf, three skin-care products in a row: a cleanser, a serum with a dropper and a jar of cream."
     >
       <Backwash cx={150} cy={126} rx={144} ry={118} seed={1700} />
       <Wash pts={rp(blobPts(150, 66, 50, 50, 1701, 16, 0.03))} seed={1701} fill={SK.sky} opacity={0.65} />
@@ -559,7 +559,7 @@ function Scribble({ x, y, w, n, gap = 11, last = 0.6, seed }: { x: number; y: nu
 
 /**
  * Holiday rituals, two small scenes: left, a roast turkey on a platter for a
- * Thanksgiving dinner; right, a fan of Lunar New Year envelopes with gold
+ * Thanksgiving dinner. Right, a fan of Lunar New Year envelopes with gold
  * marks under a hanging paper lantern.
  */
 export function Holidays() {
@@ -612,7 +612,7 @@ export function Holidays() {
 
 /**
  * Rites of passage, two small scenes: left, a graduation cap on a rolled
- * diploma tied with a ribbon; right, two wedding rings in an open box.
+ * diploma tied with a ribbon. Right, two wedding rings in an open box.
  */
 export function RitesOfPassage() {
   const board = rp([[22, 92], [80, 66], [138, 92], [80, 118]]);
@@ -695,7 +695,7 @@ export function HeroAd() {
 
 /**
  * Sacred and profane: left, a grandparent's watch set apart on velvet in a
- * glass case on a stand (SACRED); right, an open kitchen drawer of everyday
+ * glass case on a stand (SACRED). Right, an open kitchen drawer of everyday
  * spoons, a pen and a tape roll jumbled together (PROFANE).
  */
 export function SacredProfane() {
@@ -936,10 +936,10 @@ export function NotForSale() {
 
 /** Generation boundaries by birth year (Pew Research Center). */
 const GENERATIONS: [string, string][] = [
-  ["BABY BOOMERS", "1946–1964"],
-  ["GENERATION X", "1965–1980"],
-  ["MILLENNIALS", "1981–1996"],
-  ["GENERATION Z", "1997–2012"],
+  ["BABY BOOMERS", "1946 to 1964"],
+  ["GENERATION X", "1965 to 1980"],
+  ["MILLENNIALS", "1981 to 1996"],
+  ["GENERATION Z", "1997 to 2012"],
 ];
 
 /**
@@ -954,7 +954,7 @@ export function GenerationScreens() {
       id="sk-generation-screens"
       width={800}
       height={220}
-      label="Four generations with their birth years and the screen each grew up with: Baby Boomers, 1946 to 1964, a television set with an aerial; Generation X, 1965 to 1980, a boxy desktop computer; Millennials, 1981 to 1996, a laptop; Generation Z, 1997 to 2012, a smartphone."
+      label="Four generations with their birth years and the screen each grew up with: Baby Boomers, 1946 to 1964, a television set with an aerial. Generation X, 1965 to 1980, a boxy desktop computer. Millennials, 1981 to 1996, a laptop. Generation Z, 1997 to 2012, a smartphone."
     >
       <Backwash cx={400} cy={110} rx={394} ry={104} seed={2800} />
       <InkLine pts={rp([[20, g + 1], [780, g]])} seed={2801} width={1} />
@@ -1136,7 +1136,7 @@ export function DietSeals() {
    ========================================================================== */
 
 /**
- * A structured handbag standing on (x, bottom), `w` wide; `logos` covers it
+ * A structured handbag standing on (x, bottom), `w` wide. `logos` covers it
  * in large monogram badges, otherwise it carries one small clasp.
  */
 function Handbag({ x, bottom, w = 90, seed, fill = SK.leather, logos = false }: { x: number; bottom: number; w?: number; seed: number; fill?: string; logos?: boolean }) {
@@ -1185,7 +1185,7 @@ export function StatusSymbols() {
 
 /**
  * Old money and new money: left, a person in a plain camel jacket carries a
- * small bag with no visible logo (OLD MONEY); right, a person whose coat is
+ * small bag with no visible logo (OLD MONEY). Right, a person whose coat is
  * covered in large brand badges carries a bag stamped with them and wears dark
  * glasses (NEW MONEY).
  */
@@ -1250,7 +1250,7 @@ function Sweater({ x, y, s = 1, seed, fill }: { x: number; y: number; s?: number
 
 /**
  * Loud and quiet: two sweaters laid flat. The left one carries a huge brand
- * badge across the chest; the right one, in a finer knit, only a tiny badge
+ * badge across the chest. The right one, in a finer knit, only a tiny badge
  * stitched near the hem.
  */
 export function LoudQuiet() {
@@ -1290,8 +1290,8 @@ function Shopfront({ x, w, g, seed, awning, sign }: { x: number; w: number; g: n
 
 /**
  * Both ends grow, the middle shrinks: three shops in a row. Left, a luxury
- * boutique with two shoppers leaving with bags; middle, a mid-priced store
- * with an empty window and a CLOSING DOWN sign; right, a discount store with
+ * boutique with two shoppers leaving with bags. Middle, a mid-priced store
+ * with an empty window and a CLOSING DOWN sign. Right, a discount store with
  * a −50% banner and two shoppers with bags.
  */
 export function ThreeStores() {
@@ -1488,7 +1488,7 @@ export function MadeIn() {
   );
 }
 
-/** A jar of jam standing on (x, bottom); `flag` puts the home flag on its label. */
+/** A jar of jam standing on (x, bottom). `flag` puts the home flag on its label. */
 function JamJar({ x, bottom, seed, lit = false, flag = false }: { x: number; bottom: number; seed: number; lit?: boolean; flag?: boolean }) {
   const body = sharp(rp([[x - 24, bottom - 62], [x + 24, bottom - 62], [x + 26, bottom], [x - 26, bottom]]), true, 4);
   const lid = sharp(rp([[x - 26, bottom - 74], [x + 26, bottom - 74], [x + 26, bottom - 62], [x - 26, bottom - 62]]), true, 2);
@@ -1538,7 +1538,7 @@ export function HomeJar() {
 
 /**
  * The CETSCALE as a questionnaire: a printed sheet with item lines, each
- * answered on a 1-to-7 row of boxes from DISAGREE to AGREE; one row is
+ * answered on a 1-to-7 row of boxes from DISAGREE to AGREE. One row is
  * ticked at 6.
  */
 export function ScaleSheet() {
@@ -1550,7 +1550,7 @@ export function ScaleSheet() {
       id="sk-scale-sheet"
       width={400}
       height={240}
-      label="A printed questionnaire sheet with three statements, each answered on a row of seven boxes numbered 1 to 7 from DISAGREE to AGREE; the answers ticked are 6, 4 and 7."
+      label="A printed questionnaire sheet with three statements, each answered on a row of seven boxes numbered 1 to 7 from DISAGREE to AGREE. The answers ticked are 6, 4 and 7."
     >
       <Backwash cx={200} cy={120} rx={194} ry={114} seed={4400} />
       <Paper pts={sheet} seed={4401} />
@@ -1626,7 +1626,7 @@ const scoreOf = (m: ModelId, t: Target) => GRAND + MODELS[m].effect + TARGETS.fi
 
 /**
  * Consumer ethnocentrism in AI models as an instrument (real data). The
- * student picks one of five models; four bars give its expected CETSCALE
+ * student picks one of five models. Four bars give its expected CETSCALE
  * score when the statements are about each country, the bar for the model's
  * home country lit teal. A second view keeps only the country-pairing shift.
  */
@@ -1642,7 +1642,7 @@ export function ModelEthnocentrism() {
   const rowY = (i: number) => 92 + i * 52;
   const label =
     view === "scores"
-      ? `${model.label}: expected CETSCALE scores (17 to 119; higher is more ethnocentric) when the statements are about each country: ` +
+      ? `${model.label}: expected CETSCALE scores (17 to 119, higher is more ethnocentric) when the statements are about each country: ` +
         TARGETS.map((t) => `${t.id.toLowerCase()} ${scoreOf(m, t.id).toFixed(1)}`).join(", ") +
         ` (Wadi, Ghodrat & Philp, 2026). The home-country bar is lit teal.`
       : `${model.label}: country-pairing shift in CETSCALE points, after removing the model's overall level and each country's overall level: ` +

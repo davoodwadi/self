@@ -12,9 +12,9 @@ import exercisesData from "./exercises.json";
 import * as V from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR · WEEK 05 — PERSONALITY, SELF-CONCEPT, AND LIFESTYLES
+// CONSUMER BEHAVIOR | WEEK 05: PERSONALITY, SELF-CONCEPT, AND LIFESTYLES
 // ============================================================================
-// Every line on these slides is transcribed verbatim from content.md; the
+// Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
 // live in ./visuals.tsx, drawn in the course's Editorial Sketch style (see
 // ../CLAUDE.md), and reuse the words of the slide they illustrate.
@@ -158,7 +158,7 @@ function Ruled({
 /**
  * A plate that lives in a column: a figure well without the 680px floor. A
  * `wide` (800-unit) plate keeps a legible minimum width on phones and scrolls
- * inside its well there, like `Figure`; from lg up the column is wide enough.
+ * inside its well there, like `Figure`. From lg up the column is wide enough.
  */
 function Plate({
   children,
@@ -294,7 +294,7 @@ export default function Week5() {
               Week 05
             </p>
             <p className="type-caption mt-2">
-              Consumer Behavior · Davood Wadi, PhD
+              Consumer Behavior | Davood Wadi, PhD
             </p>
             <Title className="mt-6 !max-w-[18ch]">
               Personality, Self-Concept, and Lifestyles
@@ -320,7 +320,7 @@ export default function Week5() {
       <Slide className={TIGHT} id="what-is-the-self-concept" border>
         <Heading>What Is the Self-Concept?</Heading>
         {/* The definition and the four things it covers sit beside their
-            plate; self-esteem and its two poles share the row below. */}
+            plate. Self-esteem and its two poles share the row below. */}
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1.25fr_1fr] lg:gap-12">
           <div className="min-w-0">
             <Statement className="!max-w-[26ch] !text-[clamp(1.5rem,2.5vw,2.1rem)]">
@@ -465,7 +465,7 @@ export default function Week5() {
             External objects often become part of who we are.
           </span>
         </Statement>
-        {/* The definition and its four levels read down the left; the rings
+        {/* The definition and its four levels read down the left. The rings
             they walk through sit beside them, each level keyed by its mark. */}
         <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
           <div className="min-w-0">
@@ -904,7 +904,7 @@ export default function Week5() {
             <V.WhoWhy />
           </Plate>
         </div>
-        {/* Lifestyle and the method lead the row; the three AIOs follow. */}
+        {/* Lifestyle and the method lead the row. The three AIOs follow. */}
         <div className="mt-5 grid w-full gap-10 lg:grid-cols-[0.95fr_3fr] lg:gap-8">
           <div className="min-w-0 border-t-2 border-[var(--ink)] pt-4">
             <P>
@@ -970,7 +970,7 @@ export default function Week5() {
           <Tint>eight consumer segments</Tint> based on psychological traits and
           resources.
         </Statement>
-        {/* The map sits beside its five lines; each line's mark lights its
+        {/* The map sits beside its five lines. Each line's mark lights its
             own cells on the map. */}
         <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[1.25fr_1fr] lg:gap-10">
           <Plate wide>
@@ -1032,7 +1032,7 @@ export default function Week5() {
             <V.RealAndSynthetic />
           </Plate>
         </div>
-        {/* The first limit leads its plate; the others follow beneath it. */}
+        {/* The first limit leads its plate. The others follow beneath it. */}
         <div className="mt-8 grid w-full items-center gap-6 lg:grid-cols-[1fr_minmax(0,400px)] lg:gap-x-12">
           <Ruled tone="ink" className="!pt-3 lg:col-start-1 lg:row-start-1 lg:self-end">
             <P>

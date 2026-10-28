@@ -4,14 +4,14 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ==========================================================================
-   MAIL-ORDER CATALOGUE — design system for Digital Marketing & E-Commerce
+   MAIL-ORDER CATALOGUE: design system for Digital Marketing & E-Commerce
    --------------------------------------------------------------------------
    The deck reads like a clean catalogue page: a neutral off-white page,
    products engraved in halftone inside double-ruled white tiles, Bodoni
    display with Libre Franklin text, and one amber accent for the key idea.
 
    Ink      #1E1C1A   headings, outlines, halftone, the default voice
-   Signal   #8A5A00   amber as text (the key phrase); #E0A100 is the mark
+   Signal   #8A5A00   amber as text (the key phrase). #E0A100 is the mark
                       colour in plates, always with an ink outline
    Counter  #6A2C70   purple: only for a contrast students must see
    Paper    #FBFBF9   the neutral page (never sepia or cream)
@@ -205,7 +205,7 @@
   color: var(--ink);
 }
 
-/* Figure wells: the neutral page with a hairline border; tiles inside are white. */
+/* Figure wells: the neutral page with a hairline border. Tiles inside are white. */
 .figure-well {
   background: var(--paper);
   border: var(--rule-weight) solid var(--rule);

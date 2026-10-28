@@ -1,33 +1,46 @@
-# When AI Agents Shop for Us
+# Decision-Making in Digital and AI-Mediated Marketplaces
 
 ---
 
 Candidate for Assistant Professor in AI and Business, Department of Marketing and Consumer Studies, Lang School
 
-# When AI Agents Shop for Us
+# Decision-Making in Digital and AI-Mediated Marketplaces
 
-Large language models and agentic AI as surrogate consumers
+From human e-commerce behavior to large language models as surrogate consumers
 
-**Davood Wadi, PhD** (Marketing & AI, HEC Montréal)
+**Davood Wadi, PhD** (Marketing, AI specialization, HEC Montréal)
 - Researcher, McGill Centre for the Convergence of Health and Economics
 - AI Research Scientist, General Motors R&D
 
 ---
 
-Research Program
+Published Foundation: Digital Marketing & E-Commerce
 
-# How do AI agents make purchasing decisions as surrogate consumers?
+# How platform incentives and beneficiary framing shape online product reviews
 
-- **38%** of U.S. consumers have used generative AI for online shopping
-- AI referral traffic to retail sites grew **10x** from mid-2024 to mid-2025
-- Marketing theory assumes a human consumer processes price cues, search rankings, and sponsorship disclosures
-- Increasingly, an autonomous AI agent acts as a **surrogate consumer**
+My dissertation examined how e-commerce platforms motivate human consumers to contribute online product reviews without crowding out intrinsic motivation or review quality.
 
-| Research Stream | Core Question | Manuscript |
+| Study | Design & Mechanism | Publication |
 | :--- | :--- | :--- |
-| **Bounded Rationality & Search** | How do acquisition costs and prompt specificity affect susceptibility to pricing cues? | *Shopping by Algorithm*, **JAMS** (Major Revision) |
-| **Principal-Agent Conflicts** | Does an AI agent's evaluation of sponsored listings depend on who deploys the AI agent? | *Whom Do AI Agents Serve?*, **JBR** (In Preparation) |
-| **Position Bias & Consideration** | Does search rank affect choice when search is delegated to AI agents? | *Does Rank Still Matter?*, **Marketing Letters** (Under Review) |
+| **Beneficiary of Altruism & Financial Incentives** | Quasi-experimental field study with a major North American online retailer and controlled experiment showing that framing review requests around **helping the company** (vs. **helping other customers**) crowds out intrinsic motivation when paired with financial incentives | **Journal of Electronic Commerce Research** (Published, 2026, with Legoux, Fredette & Sénécal) |
+| **Performance-Contingent Incentives & Reviewer Experience** | Retailer field experiment showing that performance-contingent rewards reinforce **reciprocal exchange**, increasing review decisions and length among first-time reviewers while reducing review propensity when paired with reciprocal-exchange messaging | **Journal of Research in Interactive Marketing** (Published, 2026, with Fredette, Sénécal & Legoux) |
+
+---
+
+The Transformation: When AI Agents Shop on Our Behalf
+
+# What happens when consumers delegate marketplace decisions to AI agents?
+
+- **38%** of U.S. consumers have used generative AI for online shopping, and retail AI referral traffic grew **10x** from mid-2024 to mid-2025 (Pandya 2025)
+- Digital marketplaces (product reviews, price cues, search rankings, and sponsorship disclosures) were designed for **human shoppers**
+- Increasingly, an autonomous AI agent acts as a **surrogate consumer** at the center of the **Consumer, AI Agent, Firm** triad
+
+| AI Research Stream | Core Question | Manuscripts |
+| :--- | :--- | :--- |
+| **1. Bounded Rationality & Search** | How do acquisition costs and prompt specificity affect an AI agent's susceptibility to pricing cues? | *Shopping by Algorithm*, **JAMS** (Major Revision) |
+| **2. Principal-Agent Conflicts** | Extending beneficiary framing (*JECR* 2026): does an AI agent's evaluation of sponsored listings depend on who deploys it? | *Whom Do AI Agents Serve?*, **JBR** (In Preparation) |
+| **3. Position Bias & Consideration** | Does search rank still govern inspection and choice when an AI agent reads the entire results page? | *Does Rank Still Matter?*, **Marketing Letters** (Under Review) |
+| **4. Methods & Distributional Models** | How do we measure LLM response distributions and train decision models to sample human subpopulations? | **Findings of EMNLP** (Published, 2025). *Every Token Counts* (**ACL 2027** sub.). *Decision Models* (**Marketing Science**, In Prep) |
 
 ---
 
@@ -49,7 +62,7 @@ Paper 1: *Shopping by Algorithm* (*JAMS*, Major Revision)
 | **Vague** | **$10** | `0.77` | `1.10` | `1.94` | `3.81` | **0.29** |
 
 - **Study 2 (Promotional Discount Framing, $0 vs. $50 cost, 3 alternatives):** Under a vague goal prompt and $50 cost, diagnostic acquisition drops from `9.00` to `4.82` (of 9) and choice optimality drops from `0.86` to `0.48` (vs. `0.88` under a specific goal prompt)
-- **Multilevel Moderated Mediation:** Acquisition cost × vague goal prompt reduces choice optimality via diagnostic acquisition truncation (Index = `-0.451*` in Study 1; `-0.228*` in Study 2)
+- **Multilevel Moderated Mediation:** Acquisition cost × vague goal prompt reduces choice optimality via diagnostic acquisition truncation (Index = `-0.451*` in Study 1. `-0.228*` in Study 2)
 
 Wadi & Ma (2026), *N* = 33,704 trials across 8 commercial LLMs (Google, OpenAI, Anthropic)
 
@@ -68,9 +81,9 @@ Paper 2: *Whom Do AI Agents Serve?* (*JBR*, In Preparation)
 | **Platform delegation** | `54.2%` | `25.0%` | **29.2 pp** |
 | **Platform with consumer beneficiary** | `51.4%` | `3.2%` | **48.2 pp** |
 
-- **Moderated Mediation (PROCESS Model 8):** Platform delegation reduces pre-choice skepticism toward sponsored listings (*M* = `4.80` vs. `6.19` on a 1–7 scale), attenuating the sponsorship penalty (interaction *b* = `3.99`, *p* < .001)
-- **Study 2 (System-One Decision Models):** Replicates on exact log-odds across **6 non-generative decision models** in a single forward pass (*N* = 8,640; 360 position-balanced Latin-square stimuli)
-- **Study 3 (Disclosure Decomposition):** Attributing the placement to the platform (*"by the platform"*), rather than disclosure wording (*"Sponsored"* vs. *"Promoted"*), drives the divergence between principals
+- **Moderated Mediation (PROCESS Model 8):** Platform delegation reduces pre-choice skepticism toward sponsored listings (*M* = `4.80` vs. `6.19` on a 1 to 7 scale), attenuating the sponsorship penalty (interaction *b* = `3.99`, *p* < .001)
+- **Beneficiary Remedy (extending *JECR* 2026 beneficiary framing):** Naming the traveler as the beneficiary (`Platform with consumer beneficiary`) restores the sponsorship penalty to **48.2 pp**, whereas stricter disclosure wording (*"Sponsored"* vs. *"Promoted"*, Study 3) does not close the gap
+- **Study 2 (System-One Decision Models):** Replicates on exact log-odds across **6 non-generative decision models** in a single forward pass (*N* = 8,640, 360 position-balanced Latin-square stimuli)
 
 Wadi & Ma (2026), replicated across Claude Sonnet 5, GPT 5.6 Terra, Gemini 3.1 Pro / Flash series, and 6 System-One decision models
 
@@ -97,6 +110,21 @@ Wadi & Ma (2026), *N* = 10,500 total agent sessions vs. *N* = 166,036 human sess
 
 ---
 
+AI Methodology: Distributional Evaluation of LLMs
+
+# Measuring LLM decisions as probability distributions rather than single outputs
+
+A single LLM response is one draw from a probability distribution. Valid behavioral inference requires estimating the underlying distribution across controlled experimental designs.
+
+- **Monte-Carlo Behavioral Evaluation of LLMs (*Findings of EMNLP 2025*, with Marc Fredette)**
+  - Repeated independent sampling across factorial stimulus designs for non-parametric confidence intervals
+  - Demonstrates that LLMs exhibit systematic cognitive biases under prompt framing
+- **Exact Token-Level Likert Distributions (*Every Token Counts*, *arXiv:2608.10503*, for *ACL 2027*, with Mohsen Ghodrat & Matthew Philp)**
+  - Extracts exact discrete probability distributions directly from single-pass token log-probabilities with **zero sampling error**
+  - Demonstrated on consumer ethnocentrism and country-of-origin bias in fully crossed factorial designs
+
+---
+
 Paper 4: *Can Decision Models Sample Human Behavior?* (*Marketing Science*, In Preparation)
 
 # Fine-tuning decision models on human respondent data aligns their predictions with human subpopulations
@@ -112,28 +140,10 @@ Off-the-shelf LLMs and System-One decision models are trained for single-label a
   - Evaluated via *KL / JS divergence*, *ordinal 1-Wasserstein transport distance ($W_1$)*, *ordinal consensus ($\Delta\text{Cns}$)*, and *inter-group Wasserstein contrast gaps*
   - On unseen political party subpopulations (Democrat vs. Republican), a fine-tuned **Kev 0.8B FT** (`KL = 0.3254`) outperforms both untuned **Kev 0.8B** (`KL = 0.5433`) and 5x larger untuned **Kev 4B** (`KL = 0.5168`)
 - Marketing Generalization (Grummon et al. 2025 Front-of-Package Nutrition RCT, *N* = 5,636 shoppers, 114,899 responses):
-  - *Unseen nutrition-specific human data* (6 labeling arms × 21 product-choice and Likert items; 5,060 subpopulation targets): fine-tuning on general ISSP data lowers KL at every scale.
+  - *Unseen nutrition-specific human data* (6 labeling arms × 21 product-choice and Likert items, 5,060 subpopulation targets): fine-tuning on general ISSP data lowers KL at every scale.
   - *6 unseen persona attributes* absent from ISSP training (e.g., `SNAP`, `Nutrition Facts usage`, `Online grocery share`, `Nutrition literacy`)
 
 Wadi & Ma (2026), 767,484 ISSP responses, 2,926 SubPOP GSS targets, and 5,060 Grummon (2025) nutrition RCT subpopulation targets
-
----
-
-Methodological Foundations
-
-# Measuring LLM decisions as probability distributions rather than single outputs
-
-A single LLM response is one draw from a probability distribution. Valid behavioral inference requires estimating the underlying distribution across controlled experimental designs.
-
-- **Monte-Carlo Behavioral Sampling**
-  - Repeated independent sampling across factorial stimulus designs for non-parametric confidence intervals
-  - *Findings of EMNLP 2025* (Wadi & Fredette)
-- **Exact Likert-Scale Distributions (*Every Token Counts*)**
-  - Extracts exact discrete probability distributions directly from single-pass token log-probabilities with **zero sampling error**
-  - Demonstrated on consumer ethnocentrism and country-of-origin bias (*arXiv:2608.10503*, in preparation for *ACL 2027*, with Ghodrat & Philp)
-- **Information-Board Process Tracing & Human Digital-Market Studies**
-  - **Tool-Lab** stateful attribute-acquisition tracing (*JAMS*)
-  - Altruistic messaging and performance-contingent financial incentives in online product reviews: ***JRIM* (2026)** and ***JECR* (2026)** (with Sénécal, Fredette & Legoux)
 
 ---
 
@@ -161,7 +171,7 @@ Teaching
 | **AI Applications in Business** | `/courses/ai-in-business` | MBA *BUSI 654* (University Canada West) |
 | **Impact of AI on Business & Society** | `/courses/responsible-ai-governance` | Lead course developer, *Responsible AI* curriculum |
 | **Business & Marketing Analytics** | `/courses/marketing-research-analytics` | Graduate *Machine Learning I* (HEC Montréal) |
-| **Digital Transformation & Core Marketing** | `/courses/digital-transformation`, `/courses/consumer-behavior`, `/courses/intro-marketing` | *MIT Applied AI and Data Science Program*; Johns Hopkins *Advanced Agentic AI* & *Designing and Building Agentic Systems*; UT Austin *Advanced Agentic AI Solutions* & *Business Applications with Agentic AI* |
+| **Digital Transformation & Core Marketing** | `/courses/digital-transformation`, `/courses/consumer-behavior`, `/courses/intro-marketing` | *MIT Applied AI and Data Science Program*. Johns Hopkins *Advanced Agentic AI* & *Designing and Building Agentic Systems*. UT Austin *Advanced Agentic AI Solutions* & *Business Applications with Agentic AI* |
 
 **Software Built for Students:** **[Anchor](https://anchor.davoodwadi.com/)** (formative quizzing), **AILSS** (accessible learning support for students with disabilities, UCW Explore Grant), **[Behavioral-LLM](https://www.behavioral-llm.com/)** & **[Spreed.dev](https://spreed.dev/)** (no-code classroom LLM experiments), BC DQAB program review board
 

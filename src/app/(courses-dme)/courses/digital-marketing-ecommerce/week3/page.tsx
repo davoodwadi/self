@@ -27,9 +27,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 03 — SEARCH ENGINE MARKETING, ORGANIC SEARCH, AND PAID SEARCH
+// WEEK 03: SEARCH ENGINE MARKETING, ORGANIC SEARCH, AND PAID SEARCH
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md;
+// Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and which catalogue plate
 // is drawn beside it. Plates live in ./visuals.tsx.
 // ============================================================================
@@ -42,10 +42,10 @@ export default function Week3Page() {
   return (
     <SlideDeck label="Week 03">
       {/* ================================================================
-          01 · Title Slide
+          01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 03 · Digital Marketing &amp; E-Commerce</Subtitle>
+        <Subtitle variant="hero">Week 03: Digital Marketing &amp; E-Commerce</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Search Engine Marketing, Organic Search, and Paid Search</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[50ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.3rem,2.1vw,1.8rem)]">
@@ -55,7 +55,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          02 · Search as the Engine of Commercial Intent [no-exercise]
+          02. Search as the Engine of Commercial Intent [no-exercise]
           ================================================================ */}
       <Slide id="search-as-the-engine-of-commercial-intent" border className="!py-8">
         <SlideHeading>Search as the Engine of Commercial Intent</SlideHeading>
@@ -102,7 +102,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          03 · Classifying Search Queries by Intent [exercise]
+          03. Classifying Search Queries by Intent [exercise]
           ================================================================ */}
       <Slide
         id="classifying-search-queries-by-intent"
@@ -147,7 +147,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          04 · Part 1: How Search Engines Crawl, Index, and Rank [no-exercise]
+          04. Part 1: How Search Engines Crawl, Index, and Rank [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="How Search Engines Crawl, Index, and Rank" />
@@ -174,7 +174,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          05 · Crawling, Indexing, and Ranking Pipelines [exercise]
+          05. Crawling, Indexing, and Ranking Pipelines [exercise]
           ================================================================ */}
       <Slide
         id="crawling-indexing-and-ranking-pipelines"
@@ -221,7 +221,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          06 · Lexical Matching, Semantic Embeddings, and Authority Signals [no-exercise]
+          06. Lexical Matching, Semantic Embeddings, and Authority Signals [no-exercise]
           ================================================================ */}
       <Slide id="lexical-matching-semantic-embeddings-and-authority-signals" border className="!py-8">
         <SlideHeading>Lexical Matching, Semantic Embeddings, and Authority Signals</SlideHeading>
@@ -263,7 +263,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          07 · Part 2: Search Engine Optimization (SEO) Strategy [no-exercise]
+          07. Part 2: Search Engine Optimization (SEO) Strategy [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Search Engine Optimization (SEO) Strategy" />
@@ -290,7 +290,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          08 · On-Page, Technical, and Off-Page SEO [exercise]
+          08. On-Page, Technical, and Off-Page SEO [exercise]
           ================================================================ */}
       <Slide
         id="on-page-technical-and-off-page-seo"
@@ -338,7 +338,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          09 · The Long Tail of E-Commerce Search [no-exercise]
+          09. The Long Tail of E-Commerce Search [no-exercise]
           ================================================================ */}
       <Slide id="the-long-tail-of-e-commerce-search" border className="!py-8">
         <SlideHeading>The Long Tail of E-Commerce Search</SlideHeading>
@@ -375,7 +375,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          10 · Part 3: Paid Search (SEM) and Auction Mechanics [no-exercise]
+          10. Part 3: Paid Search (SEM) and Auction Mechanics [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Paid Search (SEM) and Auction Mechanics" />
@@ -400,7 +400,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          11 · Generalized Second-Price Auctions and Quality Score [exercise]
+          11. Generalized Second-Price Auctions and Quality Score [exercise]
           ================================================================ */}
       <Slide
         id="generalized-second-price-auctions-and-quality-score"
@@ -454,7 +454,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          12 · Keyword Match Types, Negative Keywords, and Automated Bidding [no-exercise]
+          12. Keyword Match Types, Negative Keywords, and Automated Bidding [no-exercise]
           ================================================================ */}
       <Slide id="keyword-match-types-negative-keywords-and-automated-bidding" border className="!py-8">
         <SlideHeading>Keyword Match Types, Negative Keywords, and Automated Bidding</SlideHeading>
@@ -503,7 +503,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          13 · Part 4: Search Cannibalization and Incrementality [no-exercise]
+          13. Part 4: Search Cannibalization and Incrementality [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Search Cannibalization and Incrementality" />
@@ -528,7 +528,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          14 · Branded Keywords, Cannibalization, and Competitive Conquesting [exercise]
+          14. Branded Keywords, Cannibalization, and Competitive Conquesting [exercise]
           ================================================================ */}
       <Slide
         id="branded-keywords-cannibalization-and-competitive-conquesting"
@@ -583,7 +583,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          15 · Discussion: Auditing a High-ROAS Search Agency Report
+          15. Discussion: Auditing a High-ROAS Search Agency Report
           ================================================================ */}
       <Slide id="discussion-auditing-a-high-roas-search-agency-report" border className="!py-8">
         <SlideHeading>Auditing a High-ROAS Search Agency Report</SlideHeading>
@@ -602,7 +602,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          16 · Part 5: From Search Engines to AI Answer Engines [no-exercise]
+          16. Part 5: From Search Engines to AI Answer Engines [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="From Search Engines to AI Answer Engines" />
@@ -630,7 +630,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          17 · Generative Engine Optimization (GEO) and the AI Shortlist [exercise]
+          17. Generative Engine Optimization (GEO) and the AI Shortlist [exercise]
           ================================================================ */}
       <Slide
         id="generative-engine-optimization-geo-and-the-ai-shortlist"
@@ -690,7 +690,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          18 · Discussion: Winning the Conversational Shortlist
+          18. Discussion: Winning the Conversational Shortlist
           ================================================================ */}
       <Slide id="discussion-winning-the-conversational-shortlist" border className="!py-8">
         <SlideHeading>Winning the Conversational Shortlist</SlideHeading>
@@ -710,7 +710,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          19 · Key Takeaways
+          19. Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>

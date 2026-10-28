@@ -96,7 +96,7 @@
     "cases": [
       {
         "id": "budget-phone",
-        "text": "Asked to write an ad 'for a Nigerian customer', the tool features the brand's budget phone; 'for a Swiss customer' yields the flagship model and a boardroom setting.",
+        "text": "Asked to write an ad 'for a Nigerian customer', the tool features the brand's budget phone. 'for a Swiss customer' yields the flagship model and a boardroom setting.",
         "answer": "status",
         "explanation": "Naming different groups produced systematically different product tiers and settings."
       },
@@ -114,7 +114,7 @@
       },
       {
         "id": "skate-copy",
-        "text": "A streetwear brand asks for copy aimed at a local skateboarding community; every draft comes back in polished, generic corporate language the skaters mock online.",
+        "text": "A streetwear brand asks for copy aimed at a local skateboarding community. Every draft comes back in polished, generic corporate language the skaters mock online.",
         "answer": "persona",
         "explanation": "A distinct subcultural voice was flattened into a uniform corporate register that alienated the community."
       }
@@ -125,7 +125,7 @@
     "slide_id": "baseline-ethnocentrism-and-asymmetric-in-group-favoritism-in-llms",
     "question_text": "An analyst tests one US-developed model and sees that its CETSCALE score is higher when the statements concern Canada than when they concern China. A colleague concludes: 'This proves the model is biased in favor of North America because it was built in the United States.' Based on the findings of Wadi, Ghodrat, and Philp (2026), what is the strongest reply?",
     "hint": "Recall what happened when the target country was China across all evaluated models, not just the North American ones.",
-    "correct_answer_citation": "Week 03 · Baseline Ethnocentrism and Asymmetric In-Group Favoritism in LLMs",
+    "correct_answer_citation": "Week 03: Baseline Ethnocentrism and Asymmetric In-Group Favoritism in LLMs",
     "correct_answer_index": 2,
     "options": [
       {
@@ -137,12 +137,12 @@
         "option_explanation": "Most evaluated models score near the extreme ethnocentric end of human populations, not at a neutral midpoint."
       },
       {
-        "option_text": "Part of the gap is expected from any model, since all models showed lower ethnocentrism when the target was China; only the shift beyond that shared pattern points to origin-linked favoritism.",
-        "option_explanation": "Correct. The study found a strong target-country effect across all models, plus an additional asymmetric shift for North American models; one model alone cannot separate the two."
+        "option_text": "Part of the gap is expected from any model, since all models showed lower ethnocentrism when the target was China. Only the shift beyond that shared pattern points to origin-linked favoritism.",
+        "option_explanation": "Correct. The study found a strong target-country effect across all models, plus an additional asymmetric shift for North American models. One model alone cannot separate the two."
       },
       {
         "option_text": "The gap must come from the model's high baseline ethnocentrism, as with Aya Expanse 32B.",
-        "option_explanation": "A high baseline raises a model's scores across all conditions; it does not explain a difference between two target countries."
+        "option_explanation": "A high baseline raises a model's scores across all conditions. It does not explain a difference between two target countries."
       }
     ]
   },
@@ -151,16 +151,16 @@
     "slide_id": "separating-model-main-effects-target-effects-and-origin-interactions",
     "question_text": "In a fully crossed audit, the grand mean is 66. Model M's main effect is +5, and the target-country main effect for Country T is −6. Model M's observed score for Country T is 70. How large is the interaction effect for this pairing, and what does it indicate?",
     "hint": "Add the grand mean and both main effects to get the score the main effects predict, then compare it with the observed score.",
-    "correct_answer_citation": "Week 03 · Separating Model Main Effects, Target Effects, and Origin Interactions",
+    "correct_answer_citation": "Week 03: Separating Model Main Effects, Target Effects, and Origin Interactions",
     "correct_answer_index": 1,
     "options": [
       {
         "option_text": "+4, because the observed score is 4 points above the grand mean.",
-        "option_explanation": "That difference still contains the model main effect and the target-country main effect; the interaction is only what remains after both."
+        "option_explanation": "That difference still contains the model main effect and the target-country main effect. The interaction is only what remains after both."
       },
       {
         "option_text": "+5, a pairing-specific shift beyond what the model's disposition and the country's shared penalty predict.",
-        "option_explanation": "Correct. The main effects predict 66 + 5 − 6 = 65; the observed 70 is 5 higher, and that additional shift for this specific pairing is the interaction."
+        "option_explanation": "Correct. The main effects predict 66 + 5 − 6 = 65. The observed 70 is 5 higher, and that additional shift for this specific pairing is the interaction."
       },
       {
         "option_text": "−6, because Country T is penalized by every model.",

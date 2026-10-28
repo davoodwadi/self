@@ -50,10 +50,10 @@
 - Measuring the attitudes of AI models: administering validated scales to models, and response distributions in place of single answers.
 
 ### Week 5: Sampling and Data Collection
-**Summary**: Populations, sampling frames, and sampling error; probability and non-probability designs; and the determination of sample size. The session considers data quality in online panels, the validity of AI-generated synthetic respondents, and the number of model responses that a reliable AI evaluation requires.
+**Summary**: Populations, sampling frames, and sampling error. Probability and non-probability designs. And the determination of sample size. The session considers data quality in online panels, the validity of AI-generated synthetic respondents, and the number of model responses that a reliable AI evaluation requires.
 
 - Populations, sampling frames, and sampling error.
-- Probability and non-probability sampling; determining sample size.
+- Probability and non-probability sampling. Determining sample size.
 - Online panels and data quality: speeders, straight-liners, bots, and attention checks.
 - Synthetic respondents: using AI to simulate consumers, and the limits of silicon samples.
 - Sampling in AI evaluation: why a single model response is not a measurement, and how many responses a reliable estimate requires.
@@ -80,7 +80,7 @@
 **Summary**: The conditions for causal inference and the design of laboratory, field, and online experiments. Students assess internal and external validity, consider quasi-experimental alternatives, examine simulated AI subjects and adaptive testing, and design controlled experiments and process-tracing studies of AI agents.
 
 - Causality and the conditions for inferring it.
-- Laboratory and field experiments; internal and external validity.
+- Laboratory and field experiments. Internal and external validity.
 - A/B and multivariate testing in digital marketing.
 - Quasi-experiments when randomization is not possible.
 - AI in experimentation: piloting designs with AI agents as simulated subjects, and adaptive testing with multi-armed bandits.

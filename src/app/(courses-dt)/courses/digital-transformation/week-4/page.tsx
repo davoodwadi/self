@@ -55,7 +55,7 @@ const SECTIONS = [
 
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif; terms set bold in the display serif. */
+/* Body copy: the reading serif. Terms set bold in the display serif. */
 const BODY = "font-body text-base md:text-[1.06rem] leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
 const SMALL = "font-body text-[0.95rem] leading-[1.5] [&_strong]:font-heading [&_strong]:font-bold";
 const LIST =
@@ -100,7 +100,7 @@ export default function DigitalTransformationWeek4() {
       </Link>
 
       <PosterHero
-        category="WEEK 04 — DIGITAL TRANSFORMATION"
+        category="WEEK 04: DIGITAL TRANSFORMATION"
         title="TAM, UTAUT, IoT, Cloud, Edge, Fog"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
@@ -114,7 +114,7 @@ export default function DigitalTransformationWeek4() {
       />
 
       {/* ================================================================
-          CHAPTER 1 — TECHNOLOGY ACCEPTANCE MODEL (TAM)
+          CHAPTER 1: TECHNOLOGY ACCEPTANCE MODEL (TAM)
           ================================================================ */}
       <ChapterBand id="ch1" number="01" title="Technology Acceptance Model (TAM)" />
 
@@ -288,13 +288,13 @@ export default function DigitalTransformationWeek4() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 2 — APPLICATIONS OF TAM
+          CHAPTER 2: APPLICATIONS OF TAM
           ================================================================ */}
       <ChapterBand id="ch2" number="02" title="Applications of TAM" />
 
       <Slide
         id="example-application-of-tam-in-e-commerce"
-        label="CASE STUDY 01 — E-COMMERCE"
+        label="CASE STUDY 01: E-COMMERCE"
         title="Example: Application of TAM in E-Commerce"
       >
         <div className={`${BODY} text-lg grid md:grid-cols-2 gap-6 border-b-[4px] border-[var(--dt-ink)] pb-4`}>
@@ -432,7 +432,7 @@ export default function DigitalTransformationWeek4() {
 
       <Slide
         id="bestbuy-discussion-and-research-questions"
-        label="CLASS DISCUSSION — BESTBUY"
+        label="CLASS DISCUSSION: BESTBUY"
         title="Discussion & Research Questions"
       >
         <Row cols="lg:grid-cols-[1.4fr_1fr]">
@@ -483,7 +483,7 @@ export default function DigitalTransformationWeek4() {
 
       <Slide
         id="example-tam-for-ai-chatbots-in-a-hospital"
-        label="CASE STUDY 02 — HEALTHCARE"
+        label="CASE STUDY 02: HEALTHCARE"
         title="Example: TAM for AI Chatbots in a Hospital"
       >
         <div className={`${SMALL} grid sm:grid-cols-2 lg:grid-cols-4 gap-4`}>
@@ -627,7 +627,7 @@ export default function DigitalTransformationWeek4() {
 
       <Slide
         id="hospital-discussion-and-research-questions"
-        label="CLASS DISCUSSION — HOSPITAL CHATBOT"
+        label="CLASS DISCUSSION: HOSPITAL CHATBOT"
         title="Discussion & Research Questions"
       >
         <Row cols="lg:grid-cols-[1fr_1.4fr]">
@@ -670,7 +670,7 @@ export default function DigitalTransformationWeek4() {
 
       <Slide
         id="example-tam-for-ikeas-self-return-kiosk"
-        label="CASE STUDY 03 — RETAIL SELF-SERVICE"
+        label="CASE STUDY 03: RETAIL SELF-SERVICE"
         title="Example: TAM for IKEA’s Self-Return Kiosk"
       >
         <div className={`${BODY} grid md:grid-cols-3 gap-5`}>
@@ -802,7 +802,7 @@ export default function DigitalTransformationWeek4() {
 
       <Slide
         id="ikea-apprehension-and-discussion-questions"
-        label="CLASS DISCUSSION — IKEA SELF-RETURN KIOSK"
+        label="CLASS DISCUSSION: IKEA SELF-RETURN KIOSK"
         title="Apprehensions & Discussion Questions"
       >
         <Row cols="lg:grid-cols-[1.4fr_1fr]">
@@ -848,7 +848,7 @@ export default function DigitalTransformationWeek4() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 3 — THE UNIFIED THEORY OF ACCEPTANCE AND USE OF TECHNOLOGY (UTAUT)
+          CHAPTER 3: THE UNIFIED THEORY OF ACCEPTANCE AND USE OF TECHNOLOGY (UTAUT)
           ================================================================ */}
       <ChapterBand
         id="ch3"
@@ -945,7 +945,7 @@ export default function DigitalTransformationWeek4() {
         </PlateWell>
       </Slide>
 
-      <Slide id="utaut-for-ikeas-self-return-kiosk" label="CASE STUDY — UTAUT" title="UTAUT for IKEA's Self-Return Kiosk">
+      <Slide id="utaut-for-ikeas-self-return-kiosk" label="CASE STUDY: UTAUT" title="UTAUT for IKEA's Self-Return Kiosk">
         <div className={`${SMALL} grid sm:grid-cols-2 lg:grid-cols-4 gap-5`}>
           <div className="border-t-[4px] border-[var(--dt-ink)] pt-2.5">
             <p className="font-heading font-bold text-base mb-1.5">Performance Expectancy</p>
@@ -1076,7 +1076,7 @@ export default function DigitalTransformationWeek4() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 4 — INTRODUCTION TO IOT, CLOUD, EDGE, AND FOG COMPUTING
+          CHAPTER 4: INTRODUCTION TO IOT, CLOUD, EDGE, AND FOG COMPUTING
           ================================================================ */}
       <ChapterBand id="ch4" number="04" title="Introduction to IoT, Cloud, Edge, and Fog Computing" />
 

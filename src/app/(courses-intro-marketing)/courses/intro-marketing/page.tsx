@@ -4,7 +4,7 @@ import { IM_DIR, readCurriculum } from "@/lib/curriculum";
 import CourseIndex from "./_landing/CourseIndex";
 
 // Every word on this page comes from curriculum.md. A week links out only once
-// its deck has been built; the rest are listed in the contents but marked in
+// its deck has been built. The rest are listed in the contents but marked in
 // preparation and left unclickable.
 
 export const dynamic = "force-static";

@@ -45,9 +45,9 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 03 — CULTURAL BIAS AND REPRESENTATION IN LANGUAGE MODELS
+// WEEK 03: CULTURAL BIAS AND REPRESENTATION IN LANGUAGE MODELS
 // ============================================================================
-// Every sentence on these slides is transcribed verbatim from content.md;
+// Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
 // is drawn beside it. Plates live in ./visuals.tsx.
 // ============================================================================
@@ -60,10 +60,10 @@ export default function Week3Page() {
   return (
     <SlideDeck label="Week 03">
       {/* ================================================================
-          01 · Title Slide
+          01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 03 · Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 03: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
           Cultural Bias and Representation in Language Models
         </Title>
@@ -79,7 +79,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          02 · Culture Inside Foundation Models [no-exercise]
+          02. Culture Inside Foundation Models [no-exercise]
           ================================================================ */}
       <Slide id="culture-inside-foundation-models" border className="!py-8">
         <SlideHeading>Culture Inside Foundation Models</SlideHeading>
@@ -125,7 +125,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          03 · Why Cultural Alignment Matters for Global Marketing [no-exercise]
+          03. Why Cultural Alignment Matters for Global Marketing [no-exercise]
           ================================================================ */}
       <Slide id="why-cultural-alignment-matters-for-global-marketing" border className="!py-8">
         <SlideHeading>Why Cultural Alignment Matters for Global Marketing</SlideHeading>
@@ -169,7 +169,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          04 · Part 1: Training Corpora and Cultural Hegemony in Foundation Models [no-exercise]
+          04. Part 1: Training Corpora and Cultural Hegemony in Foundation Models [no-exercise]
           ================================================================ */}
       <Slide id="part-1" border className="!py-8">
         <PartHead n={1} title="Training Corpora and Cultural Hegemony in Foundation Models" />
@@ -200,7 +200,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          05 · How Pre-Training Corpora Shape Default Worldviews [no-exercise]
+          05. How Pre-Training Corpora Shape Default Worldviews [no-exercise]
           ================================================================ */}
       <Slide id="how-pre-training-corpora-shape-default-worldviews" border className="!py-8">
         <SlideHeading>How Pre-Training Corpora Shape Default Worldviews</SlideHeading>
@@ -246,7 +246,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          06 · WEIRD Alignment and Value Homogenization [no-exercise]
+          06. WEIRD Alignment and Value Homogenization [no-exercise]
           ================================================================ */}
       <Slide id="weird-alignment-and-value-homogenization" border className="!py-8">
         <SlideHeading>WEIRD Alignment and Value Homogenization</SlideHeading>
@@ -291,7 +291,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          07 · Tokenization and Multilingual Disparities [no-exercise]
+          07. Tokenization and Multilingual Disparities [no-exercise]
           ================================================================ */}
       <Slide id="tokenization-and-multilingual-disparities" border className="!py-8">
         <SlideHeading>Tokenization and Multilingual Disparities</SlideHeading>
@@ -338,7 +338,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          08 · Tracing Cultural Bias to the Model Lifecycle [exercise]
+          08. Tracing Cultural Bias to the Model Lifecycle [exercise]
           ================================================================ */}
       <Slide
         id="tracing-cultural-bias-to-the-model-lifecycle"
@@ -405,7 +405,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          09 · Part 2: Representational Harms in Generative Text and Imagery [no-exercise]
+          09. Part 2: Representational Harms in Generative Text and Imagery [no-exercise]
           ================================================================ */}
       <Slide id="part-2" border className="!py-8">
         <PartHead n={2} title="Representational Harms in Generative Text and Imagery" />
@@ -432,7 +432,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          10 · Allocative Versus Representational Harms [exercise]
+          10. Allocative Versus Representational Harms [exercise]
           ================================================================ */}
       <Slide
         id="allocative-versus-representational-harms"
@@ -477,7 +477,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          11 · Stereotyping, Erasure, and Markedness [no-exercise]
+          11. Stereotyping, Erasure, and Markedness [no-exercise]
           ================================================================ */}
       <Slide id="stereotyping-erasure-and-markedness" border className="!py-8">
         <SlideHeading>Stereotyping, Erasure, and Markedness</SlideHeading>
@@ -522,7 +522,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          12 · Sentiment and Portrayal Disparities in Generative Marketing Content [exercise]
+          12. Sentiment and Portrayal Disparities in Generative Marketing Content [exercise]
           ================================================================ */}
       <Slide
         id="sentiment-and-portrayal-disparities-in-generative-marketing-content"
@@ -596,7 +596,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          13 · Discussion: The Global Campaign Generator
+          13. Discussion: The Global Campaign Generator
           ================================================================ */}
       <Slide id="discussion-the-global-campaign-generator" border className="!py-8">
         <SlideHeading>The Global Campaign Generator</SlideHeading>
@@ -618,7 +618,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          14 · Part 3: Consumer Ethnocentrism and In-Group Bias in Large Language Models [no-exercise]
+          14. Part 3: Consumer Ethnocentrism and In-Group Bias in Large Language Models [no-exercise]
           ================================================================ */}
       <Slide id="part-3" border className="!py-8">
         <PartHead n={3} title="Consumer Ethnocentrism and In-Group Bias in Large Language Models" />
@@ -648,7 +648,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          15 · Country-of-Origin Effects and Consumer Ethnocentrism [no-exercise]
+          15. Country-of-Origin Effects and Consumer Ethnocentrism [no-exercise]
           ================================================================ */}
       <Slide id="country-of-origin-effects-and-consumer-ethnocentrism" border className="!py-8">
         <SlideHeading>Country-of-Origin Effects and Consumer Ethnocentrism</SlideHeading>
@@ -694,7 +694,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          16 · Measuring LLM Ethnocentrism With the CETSCALE [no-exercise]
+          16. Measuring LLM Ethnocentrism With the CETSCALE [no-exercise]
           ================================================================ */}
       <Slide id="measuring-llm-ethnocentrism-with-the-cetscale" border className="!py-8">
         <SlideHeading>Measuring LLM Ethnocentrism With the CETSCALE</SlideHeading>
@@ -741,7 +741,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          17 · Baseline Ethnocentrism and Asymmetric In-Group Favoritism in LLMs [exercise]
+          17. Baseline Ethnocentrism and Asymmetric In-Group Favoritism in LLMs [exercise]
           ================================================================ */}
       <Slide
         id="baseline-ethnocentrism-and-asymmetric-in-group-favoritism-in-llms"
@@ -797,7 +797,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          18 · Part 4: Country-of-Origin Bias in AI Product Recommendations [no-exercise]
+          18. Part 4: Country-of-Origin Bias in AI Product Recommendations [no-exercise]
           ================================================================ */}
       <Slide id="part-4" border className="!py-8">
         <PartHead n={4} title="Country-of-Origin Bias in AI Product Recommendations" />
@@ -825,7 +825,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          19 · Separating Model Main Effects, Target Effects, and Origin Interactions [exercise]
+          19. Separating Model Main Effects, Target Effects, and Origin Interactions [exercise]
           ================================================================ */}
       <Slide
         id="separating-model-main-effects-target-effects-and-origin-interactions"
@@ -877,7 +877,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          20 · How Origin Bias Distorts AI-Mediated Brand Consideration Sets [no-exercise]
+          20. How Origin Bias Distorts AI-Mediated Brand Consideration Sets [no-exercise]
           ================================================================ */}
       <Slide id="how-origin-bias-distorts-ai-mediated-brand-consideration-sets" border className="!py-8">
         <SlideHeading>How Origin Bias Distorts AI-Mediated Brand Consideration Sets</SlideHeading>
@@ -922,7 +922,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          21 · Implicit Origin Cues in Brand Names and Storefronts [no-exercise]
+          21. Implicit Origin Cues in Brand Names and Storefronts [no-exercise]
           ================================================================ */}
       <Slide id="implicit-origin-cues-in-brand-names-and-storefronts" border className="!py-8">
         <SlideHeading>Implicit Origin Cues in Brand Names and Storefronts</SlideHeading>
@@ -965,7 +965,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          22 · Part 5: Auditing and Mitigating Cultural Bias in Global Deployments [no-exercise]
+          22. Part 5: Auditing and Mitigating Cultural Bias in Global Deployments [no-exercise]
           ================================================================ */}
       <Slide id="part-5" border className="!py-8">
         <PartHead n={5} title="Auditing and Mitigating Cultural Bias in Global Deployments" />
@@ -995,7 +995,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          23 · Why Surface Prompting Fails to Eliminate Latent Cultural Bias [no-exercise]
+          23. Why Surface Prompting Fails to Eliminate Latent Cultural Bias [no-exercise]
           ================================================================ */}
       <Slide id="why-surface-prompting-fails-to-eliminate-latent-cultural-bias" border className="!py-8">
         <SlideHeading>Why Surface Prompting Fails to Eliminate Latent Cultural Bias</SlideHeading>
@@ -1031,7 +1031,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          24 · Mitigation Strategies Across the Deployment Stack [exercise]
+          24. Mitigation Strategies Across the Deployment Stack [exercise]
           ================================================================ */}
       <Slide
         id="mitigation-strategies-across-the-deployment-stack"
@@ -1097,7 +1097,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          25 · Auditing Global Brand Visibility Across Multilingual Models [exercise]
+          25. Auditing Global Brand Visibility Across Multilingual Models [exercise]
           ================================================================ */}
       <Slide
         id="auditing-global-brand-visibility-across-multilingual-models"
@@ -1129,7 +1129,7 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          26 · Discussion: Cross-Border Shopping Assistants
+          26. Discussion: Cross-Border Shopping Assistants
           ================================================================ */}
       <Slide id="discussion-cross-border-shopping-assistants" border className="!py-8">
         <SlideHeading>Cross-Border Shopping Assistants</SlideHeading>
@@ -1152,13 +1152,13 @@ export default function Week3Page() {
       </Slide>
 
       {/* ================================================================
-          27 · Key Takeaways
+          27. Key Takeaways
           ================================================================ */}
       <Slide id="key-takeaways" border className="!py-8">
         <SlideHeading>Key Takeaways</SlideHeading>
         <ol className="grid w-full gap-x-10 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
           {[
-            "Foundation models are not culturally neutral; pre-training web scrapes, subword tokenizers, and post-training RLHF raters embed dominant linguistic and WEIRD cultural defaults.",
+            "Foundation models are not culturally neutral. Pre-training web scrapes, subword tokenizers, and post-training RLHF raters embed dominant linguistic and WEIRD cultural defaults.",
             "Tokenization fragmentation penalizes non-dominant languages and scripts with higher inference costs, shorter effective context windows, and lower task accuracy.",
             "Generative AI systems produce representational harms through stereotyping, cultural erasure, markedness defaults, and sentiment disparities across demographic groups.",
             "Administering the CETSCALE via exact token-level probability distributions reveals that most language models score near the extreme ethnocentric end of human benchmarks (Wadi, Ghodrat, & Philp, 2026).",

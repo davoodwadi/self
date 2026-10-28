@@ -18,7 +18,7 @@
       },
       {
         "id": "monthly-bill",
-        "text": "A start-up never buys a server room; it pays a monthly bill for the hours its rented servers ran.",
+        "text": "A start-up never buys a server room. It pays a monthly bill for the hours its rented servers ran.",
         "answer": "cost",
         "explanation": "No in-house hardware to buy, and it pays only for what it uses: pay-as-you-go."
       },

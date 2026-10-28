@@ -40,7 +40,7 @@ import { Person1, Cup1, RatingRow1 as RatingRow, Tick1 as Tick, AiMark1 } from "
 /**
  * Measurement and Scaling: three coffee brands located on a continuum from
  * 1 to 7 of perceived quality, each at the average rating consumers gave it.
- * The brands are the objects; perceived quality is the characteristic; the
+ * The brands are the objects. Perceived quality is the characteristic. The
  * scale is the continuum on which they sit.
  */
 export function BrandsOnScale() {
@@ -137,8 +137,8 @@ export function OperationalDefinition() {
 /**
  * Nominal and Ordinal Scales: one consumer's ranking of three coffee brands
  * (top row, equal steps: first, second, third) against the strength of that
- * consumer's preference (bottom continuum). The first brand is far ahead;
- * the second and third are close. The ranks keep the order and lose the gaps.
+ * consumer's preference (bottom continuum). The first brand is far ahead.
+ * The second and third are close. The ranks keep the order and lose the gaps.
  */
 export function RanksHideGaps() {
   const top = [
@@ -351,7 +351,7 @@ const NUMBERINGS = [
 
 /**
  * Permissible Statistics: twenty respondents by region of residence, each
- * region carrying a code. The mode is North; the "average region code" is
+ * region carrying a code. The mode is North. The "average region code" is
  * computed beside it, with the region whose code it lies nearest.
  *
  * Interactive: "Renumber the regions" assigns the codes differently, which a
@@ -375,7 +375,7 @@ export function RegionCodes() {
       <Frame
         width={400}
         height={208}
-        label={`Twenty respondents by region, coded ${REGIONS.map((r, i) => `${r.name.toLowerCase()} ${codes[i]}`).join(", ")}. The mode is North; the average region code is ${mean.toFixed(2)}, nearest the code for ${nearest.toLowerCase()}`}
+        label={`Twenty respondents by region, coded ${REGIONS.map((r, i) => `${r.name.toLowerCase()} ${codes[i]}`).join(", ")}. The mode is North. The average region code is ${mean.toFixed(2)}, nearest the code for ${nearest.toLowerCase()}`}
       >
         {REGIONS.map((r, i) => {
           const x = bx(i);
@@ -581,7 +581,7 @@ const FAV_LEFT: Record<Layout, boolean[]> = {
  * Interactive: FAVORABLE ADJECTIVE switches the form between the favorable
  * adjective always on the left and on the left for some pairs and the right
  * for others. With every favorable adjective on the left, the two forms are
- * identical, and the habit passes for delight; once the pairs alternate, the
+ * identical, and the habit passes for delight. Once the pairs alternate, the
  * guest's marks follow the words while the habitual marks stay in the left
  * column, landing on "old-fashioned" and "expensive". It opens with every
  * favorable adjective on the left.
@@ -606,7 +606,7 @@ export function HabitProfile() {
       <Frame
         width={400}
         height={256}
-        label={`A hotel rated on three semantic differential pairs, with the favorable adjective ${layout === "left" ? "always on the left" : "on the left for some pairs and on the right for others"}. A delighted guest marks the favorable end of every pair; a respondent answering by habit marks the left-hand box every time. ${differ === 0 ? "The two forms are identical." : `The forms differ on ${differ} of 3 pairs: the habitual marks fall on old-fashioned and expensive.`}`}
+        label={`A hotel rated on three semantic differential pairs, with the favorable adjective ${layout === "left" ? "always on the left" : "on the left for some pairs and on the right for others"}. A delighted guest marks the favorable end of every pair. A respondent answering by habit marks the left-hand box every time. ${differ === 0 ? "The two forms are identical." : `The forms differ on ${differ} of 3 pairs: the habitual marks fall on old-fashioned and expensive.`}`}
       >
         {forms.map((f, fi) => (
           <g key={fi}>
@@ -658,7 +658,7 @@ export function HabitProfile() {
 
 type Option = "midpoint" | "noopinion";
 /**
- * Forty customers rate a new feature of an app. 28 have used it; 12 have
+ * Forty customers rate a new feature of an app. 28 have used it. 12 have
  * not. Counts per category, least to most favorable, for each design:
  * informed answers, then the answers of those who have not used it.
  */
@@ -673,13 +673,13 @@ const UNINFORMED = 12;
 /**
  * Decisions in Constructing Rating Scales: forty customers' ratings of a new
  * app feature, one figure per customer, stacked over the category chosen.
- * Customers who have used the feature are ink; the twelve who have not are
+ * Customers who have used the feature are ink. The twelve who have not are
  * ochre. The share favorable among those who rated is read off beside it.
  *
  * Interactive: SCALE toggles a neutral midpoint and a "no opinion" option.
  * With a midpoint and no way out, the uninformed pile onto the middle and
- * the share favorable reads 40%; without a midpoint they must lean, and it
- * reads 57%; with a "no opinion" option they leave the scale and it reads
+ * the share favorable reads 40%. Without a midpoint they must lean, and it
+ * reads 57%. With a "no opinion" option they leave the scale and it reads
  * 50% or 61%. The same forty opinions yield four findings. It opens with a
  * midpoint and no "no opinion" option.
  */
@@ -819,7 +819,7 @@ const R_BY_ITEMS = Array.from({ length: MAX_ITEMS }, (_, i) => correlation(TRUE,
  * items.
  *
  * Interactive: ITEMS sets how many items are combined into the score. With
- * one item the respondents scatter far from the diagonal; each added item
+ * one item the respondents scatter far from the diagonal. Each added item
  * pulls them in, quickly at first and then by less and less, as the curve
  * beside it shows. It opens with a single item.
  */
@@ -848,7 +848,7 @@ export function MultiItemAccuracy() {
       <Frame
         width={800}
         height={246}
-        label={`Forty respondents placed by their satisfaction and by the score a scale of ${k} item${k > 1 ? "s" : ""} gives them. The correlation between score and satisfaction is ${r.toFixed(2)}; across one to eight items it rises from ${R_BY_ITEMS[0].toFixed(2)} to ${R_BY_ITEMS[MAX_ITEMS - 1].toFixed(2)}, by less with each added item`}
+        label={`Forty respondents placed by their satisfaction and by the score a scale of ${k} item${k > 1 ? "s" : ""} gives them. The correlation between score and satisfaction is ${r.toFixed(2)}. Across one to eight items it rises from ${R_BY_ITEMS[0].toFixed(2)} to ${R_BY_ITEMS[MAX_ITEMS - 1].toFixed(2)}, by less with each added item`}
       >
         {/* ---------------- the respondents ---------------- */}
         <line x1={sx0} y1={sy0} x2={sx1 + 14} y2={sy0} stroke={INK} strokeWidth={1.25} />
@@ -1157,7 +1157,7 @@ export function QuestionForms() {
     <Frame
       width={800}
       height={140}
-      label="One answered question of each type: an open-ended answer written in the respondent's own words; a multiple-choice question with two of four options selected; a dichotomous question answered yes; and a scaled question answered 4 on a scale of 5"
+      label="One answered question of each type: an open-ended answer written in the respondent's own words. A multiple-choice question with two of four options selected. A dichotomous question answered yes. And a scaled question answered 4 on a scale of 5"
     >
       {cols.map((x) => (
         <rect key={x} x={x + 0.75} y={8} width={w - 1.5} height={124} fill={PAPER} stroke={RULE2} strokeWidth={1} />
@@ -1292,7 +1292,7 @@ export function ScaleForModel() {
     <Frame
       width={400}
       height={210}
-      label="A consumer ethnocentrism item put to an AI model: the country in the wording is varied across four conditions, the United States, China, Canada and France; here it reads Canadians should always buy Canadian-made products instead of imports. A fixed instruction asks for only the digit, and the model answers with one point on a seven-point scale"
+      label="A consumer ethnocentrism item put to an AI model: the country in the wording is varied across four conditions, the United States, China, Canada and France. Here it reads Canadians should always buy Canadian-made products instead of imports. A fixed instruction asks for only the digit, and the model answers with one point on a seven-point scale"
     >
       <Key x={16} y={22} fill={INK3} size={9.5}>CONDITION</Key>
       {countries.map((c, i) => {
@@ -1360,7 +1360,7 @@ export function ResponseDraws() {
       <Frame
         width={400}
         height={226}
-        label={`Probabilities a model assigns to the seven points of one Likert item: 2, 5, 12, 30, 33, 14 and 4 percent. The latest generated answer is ${last}; answers so far: ${shown.join(", ")}`}
+        label={`Probabilities a model assigns to the seven points of one Likert item: 2, 5, 12, 30, 33, 14 and 4 percent. The latest generated answer is ${last}. Answers so far: ${shown.join(", ")}`}
       >
         <Key x={16} y={20} fill={INK3} size={9.5}>PROBABILITY OF EACH POINT</Key>
         {ITEM_PMF.map((p, i) => {

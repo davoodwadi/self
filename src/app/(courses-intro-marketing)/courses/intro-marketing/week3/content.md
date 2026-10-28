@@ -47,7 +47,7 @@ week: week3
 - Information search and evaluation of alternatives are the steps most often delegated: the AI agent gathers product details and compares the options.
 - The purchase decision may be made by the AI agent or returned to the consumer for approval.
 - Postpurchase behavior stays with the consumer, who uses the product and decides whether it met their expectations.
-- The instruction matters. In one study, when each product look-up had a cost and the goal was vague, AI agents often skipped the package size and chose a coffee that cost more per ounce; with a specific goal, they checked the details and chose better (Wadi & Ma, 2026b).
+- The instruction matters. In one study, when each product look-up had a cost and the goal was vague, AI agents often skipped the package size and chose a coffee that cost more per ounce. With a specific goal, they checked the details and chose better (Wadi & Ma, 2026b).
 - Consumers also keep some tasks for themselves by choice: people who see an activity, such as cooking, as part of who they are tend to resist handing it to a machine (Leung, Paolacci, & Puntoni, 2018).
 
 ## Discussion: Postpurchase Dissonance
@@ -83,7 +83,7 @@ week: week3
 
 ## Market Structure and Demand [exercise]
 - The business marketer normally deals with far fewer but far larger buyers than the consumer marketer does.
-- Business demand is derived demand; it ultimately derives from the demand for consumer goods.
+- Business demand is derived demand. It ultimately derives from the demand for consumer goods.
 - B2B demand is also more inelastic and fluctuating compared to B2C.
 
 ## The Buying Center [exercise]

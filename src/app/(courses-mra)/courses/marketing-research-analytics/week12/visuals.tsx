@@ -107,7 +107,7 @@ function Avatar({ cx, cy, r = 11, stroke = INK }: { cx: number; cy: number; r?: 
   );
 }
 
-/** A speech bubble with lines of text inside; the tail sits on the speaker's side. */
+/** A speech bubble with lines of text inside. The tail sits on the speaker's side. */
 function Bubble({ x, y, w, h, side, lines, fill = PAPER, stroke = INK3 }: { x: number; y: number; w: number; h: number; side: "left" | "right"; lines: number[]; fill?: string; stroke?: string }) {
   // The tail leaves the bottom edge near the speaker's side and points down and out.
   const t0 = side === "left" ? x + 16 : x + w - 16;
@@ -139,7 +139,7 @@ function Bubble({ x, y, w, h, side, lines, fill = PAPER, stroke = INK3 }: { x: n
  * Two kinds of customer text: what consumers publish (a review, a post, a
  * forum thread) and what the firm's own channels collect (a chat log, a
  * service call transcript, an open-ended survey answer). Drawn as the
- * documents themselves; the words are hairlines.
+ * documents themselves. The words are hairlines.
  */
 export function TextSources() {
   const card = (x: number, y: number, w = 300, h = 72) => (
@@ -232,7 +232,7 @@ const SOV_WEEKS = (() => {
 /**
  * Social listening as an instrument: drag the window along the weeks and
  * read our brand's share of voice and the negative share of its mentions
- * for those weeks. Over the quiet weeks the share sits near a third; over
+ * for those weeks. Over the quiet weeks the share sits near a third. Over
  * the surge it climbs, but most of the added conversation is negative.
  */
 export function ShareOfVoice() {
@@ -321,7 +321,7 @@ export function ShareOfVoice() {
         </g>
 
         <line x1={20} y1={272} x2={660} y2={272} stroke={RULE} strokeWidth={1} />
-        <Key x={rb0} y={294} size={10}>{`SHARE OF VOICE, WEEKS ${start + 1}–${start + span}`}</Key>
+        <Key x={rb0} y={294} size={10}>{`SHARE OF VOICE, WEEKS ${start + 1}n/a${start + span}`}</Key>
         {shares.map((f, i) => {
           const a = shares.slice(0, i).reduce((p, q) => p + q, 0);
           return (
@@ -381,7 +381,7 @@ function RatingBars({ x, shares, fill, stroke, keyText, mean, keyFill = INK3 }: 
  * Who posts: every customer's rating of a stay beside the ratings that get
  * posted. Slide how much more often guests with 1- or 5-star experiences
  * post than guests with moderate ones. At 1× the posted reviews mirror the
- * customers; as the multiplier grows the posted ratings pile up at the ends.
+ * customers. As the multiplier grows the posted ratings pile up at the ends.
  */
 export function WhoPosts() {
   const [k, setK] = useState(5);
@@ -395,7 +395,7 @@ export function WhoPosts() {
       <Frame
         width={680}
         height={322}
-        label={`Ratings of 1 to 5 stars. All customers: 4%, 8%, 22%, 41% and 25%, a mean of 3.75. Posted reviews, when extreme experiences are ${k} times as likely to be posted: ${shares.map(pct).join(", ")}, a mean of ${mean(shares).toFixed(2)}; ${pct(ends)} of posted reviews are 1 or 5 stars, against 29% of customers`}
+        label={`Ratings of 1 to 5 stars. All customers: 4%, 8%, 22%, 41% and 25%, a mean of 3.75. Posted reviews, when extreme experiences are ${k} times as likely to be posted: ${shares.map(pct).join(", ")}, a mean of ${mean(shares).toFixed(2)}. ${pct(ends)} of posted reviews are 1 or 5 stars, against 29% of customers`}
       >
         <RatingBars x={36} shares={EXPERIENCE} fill={PAPER3} stroke={INK3} keyText="ALL 1,000 CUSTOMERS" mean={mean(EXPERIENCE)} />
         <RatingBars x={388} shares={shares} fill={SIGNAL_TINT} stroke={SIGNAL} keyText={`THE ${Math.round(posted * 1000)} WHO POST A REVIEW`} mean={mean(shares)} keyFill={SIGNAL} />
@@ -415,8 +415,8 @@ type ReviewId = "phone" | "hotel" | "flight" | "film" | "car";
 
 /**
  * Five short reviews scored by a word list. Each word is a piece of the
- * review; `score` marks the words the lexicon knows. `reading` is the
- * polarity a person assigns; `aspects` splits it by attribute.
+ * review. `score` marks the words the lexicon knows. `reading` is the
+ * polarity a person assigns. `aspects` splits it by attribute.
  */
 const REVIEWS: Record<
   ReviewId,
@@ -465,11 +465,11 @@ const REVIEWS: Record<
 const polarityOf = (score: number): Polarity => (score > 0 ? "POSITIVE" : score < 0 ? "NEGATIVE" : "NEUTRAL");
 
 /**
- * A lexicon against a reader: choose a review; the words the lexicon knows
+ * A lexicon against a reader: choose a review. The words the lexicon knows
  * are underlined and tallied on the left, a person's reading sits on the
- * right. The phone review splits by aspect; the hotel, airline and film
+ * right. The phone review splits by aspect. The hotel, airline and film
  * reviews show negation, sarcasm and domain-specific meaning fooling the
- * word count; the car review, with the same word as the film, is scored
+ * word count. The car review, with the same word as the film, is scored
  * correctly.
  */
 export function LexiconReader() {
@@ -487,7 +487,7 @@ export function LexiconReader() {
       <Frame
         width={680}
         height={300}
-        label={`A review of ${r.domain.toLowerCase()}: "${r.words.map((w) => w.w).join("")}" The lexicon finds ${known.map((w) => `${w.w} (${sign(w.score ?? 0)})`).join(" and ")}, a score of ${sign(total)}, ${lex.toLowerCase()}. A person reads it as ${r.aspects ? r.aspects.map((a) => `${a.polarity.toLowerCase()} about the ${a.name.toLowerCase()}`).join(" and ") : r.reading.toLowerCase()}${r.missed ? `; the lexicon misses the ${r.missed.toLowerCase()}` : ""}`}
+        label={`A review of ${r.domain.toLowerCase()}: "${r.words.map((w) => w.w).join("")}" The lexicon finds ${known.map((w) => `${w.w} (${sign(w.score ?? 0)})`).join(" and ")}, a score of ${sign(total)}, ${lex.toLowerCase()}. A person reads it as ${r.aspects ? r.aspects.map((a) => `${a.polarity.toLowerCase()} about the ${a.name.toLowerCase()}`).join(" and ") : r.reading.toLowerCase()}${r.missed ? `. The lexicon misses the ${r.missed.toLowerCase()}` : ""}`}
       >
         <Key x={L} y={30} size={10}>{`A REVIEW OF ${r.domain}`}</Key>
         <text x={L} y={74} fontFamily="var(--font-heading)" fontSize={25} fill={INK}>
@@ -599,16 +599,16 @@ const COMMENTS: { text: string; mix: [Theme, number][] }[] = [
   { text: "My series ended and I cannot justify the money any more.", mix: [["series", 0.6], ["budget", 0.4]] },
 ];
 
-/** One grey per topic, darkest first; the number on each mark names it. */
+/** One grey per topic, darkest first. The number on each mark names it. */
 const TOPIC_FILL = [INK, INK2, INK3, RULE2, PAPER3, PAPER];
 const TOPIC_TEXT = [PAPER, PAPER, PAPER, INK, INK, INK];
 
 /**
  * The analyst chooses the number of topics: each topic is a column of its
- * most probable words, in order, labelled as an analyst would;
- * each comment below is a bar split into the topics it mixes. At 2 and 3
- * the model merges unrelated themes (marked MIXED); at 4 each topic reads
- * as one reason; at 5 and 6 topics split into finer reasons.
+ * most probable words, in order, labelled as an analyst would.
+ * Each comment below is a bar split into the topics it mixes. At 2 and 3
+ * the model merges unrelated themes (marked MIXED). At 4 each topic reads
+ * as one reason. At 5 and 6 topics split into finer reasons.
  */
 export function TopicCount() {
   const [k, setK] = useState(4);
@@ -625,7 +625,7 @@ export function TopicCount() {
       <Frame
         width={680}
         height={374}
-        label={`Topics found in 8,400 cancellation comments with ${k} topics: ${topics.map((t, i) => `topic ${i + 1}, ${t.label ?? "mixed"} (${t.words.map((w) => w[0]).join(", ")})`).join("; ")}. Three comments are shown as mixtures of these topics`}
+        label={`Topics found in 8,400 cancellation comments with ${k} topics: ${topics.map((t, i) => `topic ${i + 1}, ${t.label ?? "mixed"} (${t.words.map((w) => w[0]).join(", ")})`).join(". ")}. Three comments are shown as mixtures of these topics`}
       >
         <Key x={20} y={22} size={10}>{`${k} TOPICS IN 8,400 CANCELLATION COMMENTS`}</Key>
         {topics.map((t, i) => {
@@ -657,7 +657,7 @@ export function TopicCount() {
                 <g key={ti}>
                   <rect x={r2(20 + starts[j] * 640)} y={y + 7} width={r2(v * 640 - 2)} height={14} fill={TOPIC_FILL[ti]} stroke={INK3} strokeWidth={ti === 5 ? 1 : 0} />
                   <Key x={r2(20 + (starts[j] + v / 2) * 640)} y={y + 18} anchor="middle" size={9.5} weight={700} fill={TOPIC_TEXT[ti]}>
-                    {`${ti + 1} \u00B7 ${pct(v)}`}
+                    {`${ti + 1} | ${pct(v)}`}
                   </Key>
                 </g>
               ))}
@@ -696,16 +696,16 @@ const MESSAGES: { text: string; a: number; b: number; c: number }[] = [
   { text: "Wrong size sent, and now a return fee.", a: 0, b: 0, c: 0 },
   { text: "The box was crushed and the lamp cracked.", a: 2, b: 0, c: 0 },
   { text: "My account shows an order I did not place.", a: 3, b: 3, c: 3 },
-  { text: "Left in the rain; the speaker is ruined.", a: 0, b: 2, c: 2 },
+  { text: "Left in the rain. The speaker is ruined.", a: 0, b: 2, c: 2 },
   { text: "The app bills me in the wrong currency.", a: 1, b: 1, c: 1 },
 ];
 
 /**
  * One model, three versions of the instructions: zero-shot wording A,
  * zero-shot wording B, and B with three coded examples (few-shot). Each
- * row is a message and its dot the category assigned; rows that land
+ * row is a message and its dot the category assigned. Rows that land
  * somewhere other than under wording A are marked, with a ring where A put
- * them. The clear messages never move; the ambiguous ones do.
+ * them. The clear messages never move. The ambiguous ones do.
  */
 export function WordingFlips() {
   const [v, setV] = useState<Wording>("b");
@@ -787,7 +787,7 @@ const VALIDATION: Record<Lang, { n: number; rows: [number, number][] }> = {
 /**
  * Validation, split: the model's precision and recall for each category
  * on a random sample coded by two people. Across all 600 texts every
- * figure looks acceptable; split by language, the Spanish texts show the
+ * figure looks acceptable. Split by language, the Spanish texts show the
  * model missing half of the billing complaints.
  */
 export function ValidationByLanguage() {
@@ -803,7 +803,7 @@ export function ValidationByLanguage() {
       <Frame
         width={680}
         height={356}
-        label={`Precision and recall of an automated classification against human coding of ${d.n} ${lang === "all" ? "sampled texts in all languages" : `${{ en: "English", es: "Spanish", fr: "French" }[lang]} texts`}: ${cats.map((c, i) => `${c.toLowerCase()} ${pct(d.rows[i][0])} and ${pct(d.rows[i][1])}`).join("; ")}`}
+        label={`Precision and recall of an automated classification against human coding of ${d.n} ${lang === "all" ? "sampled texts in all languages" : `${{ en: "English", es: "Spanish", fr: "French" }[lang]} texts`}: ${cats.map((c, i) => `${c.toLowerCase()} ${pct(d.rows[i][0])} and ${pct(d.rows[i][1])}`).join(". ")}`}
       >
         <Key x={20} y={22} size={10}>{`${d.n} SAMPLED TEXTS${lang === "all" ? "" : `, ${{ en: "ENGLISH", es: "SPANISH", fr: "FRENCH" }[lang]}`}`}</Key>
         <Person1 x={34} y={66} k={0.75} />
@@ -878,7 +878,7 @@ function matching(on: Quasi[]) {
 /**
  * Re-identification: a respondent's record with the name removed, and the
  * residents of the city who share whichever characteristics stay in it.
- * Each characteristic alone matches hundreds of people; together they
+ * Each characteristic alone matches hundreds of people. Together they
  * match one. The people drawn are the matches, up to 30.
  */
 export function ReIdentification() {
@@ -1040,7 +1040,7 @@ const REASONS: [string, number][] = [
  * uncertainty supports: the bars carry 95% confidence intervals for the
  * number of cancelled customers interviewed. With few interviews the
  * price and service intervals overlap and the title can claim only that
- * the two are not yet separable; with more, the title names price as the
+ * the two are not yet separable. With more, the title names price as the
  * main reason.
  */
 export function StoryChart() {
@@ -1101,9 +1101,9 @@ export function StoryChart() {
 
 /** Rows of a report's AI disclosure: the step, whether an AI tool did it, and how it was checked. */
 const DISCLOSURE: { step: string[]; ai: boolean; check: string[]; lit?: boolean }[] = [
-  { step: ["Drafting the", "questionnaire"], ai: true, check: ["Revised by the research team;", "pretested with 12 customers."] },
+  { step: ["Drafting the", "questionnaire"], ai: true, check: ["Revised by the research team.", "pretested with 12 customers."] },
   { step: ["Coding 2,400 open-", "ended responses"], ai: true, check: ["Agreement with two human coders", "on 300 responses: 89%."], lit: true },
-  { step: ["Synthetic", "respondents"], ai: true, check: ["Used to pilot the questionnaire;", "not the source of any finding."] },
+  { step: ["Synthetic", "respondents"], ai: true, check: ["Used to pilot the questionnaire.", "not the source of any finding."] },
   { step: ["Limitations"], ai: false, check: ["Coding agreement is lower for", "Spanish responses (78%)."] },
 ];
 
@@ -1121,7 +1121,7 @@ export function AiDisclosure() {
       label="A page from a research report, section 3.4, Use of AI tools: a table of steps and how each was verified. Drafting the questionnaire: revised by the research team and pretested with 12 customers. Coding 2,400 open-ended responses: agreement with two human coders on 300 responses, 89%. Synthetic respondents: used to pilot the questionnaire, not the source of any finding. Limitations: coding agreement is lower for Spanish responses, 78%"
     >
       <rect x={20} y={10} width={560} height={340} fill={PAPER} stroke={INK3} strokeWidth={1} />
-      <Key x={44} y={40} size={9.5}>3 · METHOD</Key>
+      <Key x={44} y={40} size={9.5}>3. METHOD</Key>
       <Display x={44} y={70} size={21}>3.4 Use of AI tools</Display>
       <Key x={44} y={102} size={9}>STEP</Key>
       <Key x={290} y={102} size={9}>VERIFICATION AND LIMITS</Key>
@@ -1174,7 +1174,7 @@ const TOOL_LAB: Record<Goal, Record<Cost, { dollars: number; cents: number; weig
  * storefront where each attribute is hidden until inspected. Coffee A costs
  * $4.99 for 10 oz, Coffee B $5.00 for 11 oz, so B is cheaper per ounce.
  * Set the cost of each inspection and the goal in the consumer's prompt:
- * either change alone leaves search and choice nearly intact; together,
+ * either change alone leaves search and choice nearly intact. Together,
  * the agents skip the cents and the weight, and most choose Coffee A.
  */
 export function AgentSearch() {
@@ -1194,7 +1194,7 @@ export function AgentSearch() {
       <Frame
         width={680}
         height={372}
-        label={`An AI agent shops for instant coffee; each inspection of an attribute costs the user $${cost}, and the prompt says: ${goal === "vague" ? "find the best deal" : "find the coffee with the lowest price per ounce"}. Across eight models, sessions opened the dollars in ${pct(rows[0].v)}, the cents in ${pct(rows[1].v)} and the weight in ${pct(rows[2].v)} of cases, and ${pct(d.optimal)} chose Coffee B, the lower price per ounce. Data: Wadi and Ma 2026b, Table 1`}
+        label={`An AI agent shops for instant coffee. Each inspection of an attribute costs the user $${cost}, and the prompt says: ${goal === "vague" ? "find the best deal" : "find the coffee with the lowest price per ounce"}. Across eight models, sessions opened the dollars in ${pct(rows[0].v)}, the cents in ${pct(rows[1].v)} and the weight in ${pct(rows[2].v)} of cases, and ${pct(d.optimal)} chose Coffee B, the lower price per ounce. Data: Wadi and Ma 2026b, Table 1`}
       >
         <AiMark1 cx={32} cy={30} s={22} fill={SIGNAL} />
         <Note x={52} y={35} size={14} italic fill={INK}>
@@ -1228,7 +1228,7 @@ export function AgentSearch() {
         <rect x={40} y={318} width={400} height={18} fill={PAPER3} />
         <rect x={40} y={318} width={r2(400 * d.optimal)} height={18} fill={SIGNAL} />
         <Display x={456} y={336} size={28} fill={SIGNAL}>{pct(d.optimal)}</Display>
-        <Key x={660} y={364} anchor="end" size={9} fill={INK3}>{"WADI & MA (2026B), TABLE 1 · 3,200 SESSIONS, 8 MODELS"}</Key>
+        <Key x={660} y={364} anchor="end" size={9} fill={INK3}>{"WADI & MA (2026B), TABLE 1. 3,200 SESSIONS, 8 MODELS"}</Key>
       </Frame>
       <div className="flex flex-wrap gap-x-6">
         <Segmented<Cost>

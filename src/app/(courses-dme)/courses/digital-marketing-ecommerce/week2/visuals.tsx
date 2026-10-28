@@ -68,7 +68,7 @@ export function AgentCostReal() {
     <Frame
       width={400}
       height={214}
-      label={`Input tokens read and cost per booking session, by AI agent at default reasoning effort: ${AGENT_COST.map((a) => `${a.key.toLowerCase()} ${a.tokens.toLocaleString("en-US")} tokens, ${a.cost} cents`).join("; ")}. Each sheet is 10,000 tokens.`}
+      label={`Input tokens read and cost per booking session, by AI agent at default reasoning effort: ${AGENT_COST.map((a) => `${a.key.toLowerCase()} ${a.tokens.toLocaleString("en-US")} tokens, ${a.cost} cents`).join(". ")}. Each sheet is 10,000 tokens.`}
     >
       <HalftoneDefs id={id} />
       <defs>
@@ -79,7 +79,7 @@ export function AgentCostReal() {
         ))}
       </defs>
       <CatKey x={x0} y={16} size={10}>
-        TOKENS READ · 1 SHEET = 10,000
+        TOKENS READ | 1 SHEET = 10,000
       </CatKey>
       <CatKey x={392} y={16} anchor="end" size={10}>
         COST
@@ -114,7 +114,7 @@ export function AgentCostReal() {
 
 /**
  * Grow the catalogue from ten items to half a million. A flat menu makes the
- * shopper scan every item; a category tree of ten branches per level adds
+ * shopper scan every item. A category tree of ten branches per level adds
  * one click each time the catalogue grows tenfold. The amber path is the
  * route to one product through the tree.
  */
@@ -190,7 +190,7 @@ export function CatalogDepth() {
 
 /**
  * The order summary as the shopper sees it on each checkout screen. The
- * cart and address screens show $48.00; only the payment screen adds
+ * cart and address screens show $48.00. Only the payment screen adds
  * shipping, tax and handling (amber), and the total jumps to $64.55.
  */
 export function CheckoutFriction() {
@@ -435,7 +435,7 @@ export function ConversionMultiplier() {
       <Frame
         width={480}
         height={262}
-        label={`Three channels at a ${cr}% conversion rate. ${CHANNELS.map((c) => `${c.key.toLowerCase()}: $${c.spend} for ${c.visits} visitors, ${Math.round((c.visits * cr) / 100)} orders, $${Math.round(c.spend / ((c.visits * cr) / 100))} per order`).join("; ")}.`}
+        label={`Three channels at a ${cr}% conversion rate. ${CHANNELS.map((c) => `${c.key.toLowerCase()}: $${c.spend} for ${c.visits} visitors, ${Math.round((c.visits * cr) / 100)} orders, $${Math.round(c.spend / ((c.visits * cr) / 100))} per order`).join(". ")}.`}
       >
         <HalftoneDefs id={id} />
         {["SPEND", "VISITORS", "ORDERS", "PER ORDER"].map((h, k) => (
@@ -497,7 +497,7 @@ export function ConversionMultiplier() {
 }
 
 /**
- * One storefront, four tricks; the deceptive element is amber. Drip
+ * One storefront, four tricks. The deceptive element is amber. Drip
  * pricing: the same ticket grows across three screens. Fake urgency: a
  * countdown that starts over when the page is reloaded, beside a warehouse
  * full of stock. Sneak into basket: add-ons already ticked. Roach motel and
@@ -512,9 +512,9 @@ export function DarkCheckout() {
   const id = "w2-dark";
   const label = {
     drip: "Drip pricing: a $45 headline price grows to $58 then $71 as service, facility and processing fees appear screen by screen, in amber.",
-    urgency: `Fake urgency: a 'Deal ends in 09:59' timer and an 'Only 1 left!' tag in amber beside a warehouse stacked with parcels; the page has been loaded ${loads} ${loads === 1 ? "time" : "times"} and the timer still reads 09:59.`,
+    urgency: `Fake urgency: a 'Deal ends in 09:59' timer and an 'Only 1 left!' tag in amber beside a warehouse stacked with parcels. The page has been loaded ${loads} ${loads === 1 ? "time" : "times"} and the timer still reads 09:59.`,
     sneak: "Sneak into basket: a cart with parcel protection and an extended warranty already ticked, in amber, raising the total from $60 to $83.",
-    roach: "Roach motel and confirmshaming: subscribing takes one click; cancelling takes seven screens and a phone call. The decline button reads 'No thanks, I like paying full price', in amber.",
+    roach: "Roach motel and confirmshaming: subscribing takes one click. Cancelling takes seven screens and a phone call. The decline button reads 'No thanks, I like paying full price', in amber.",
   }[trick];
   const amberBox = (x: number, y: number, w: number, h: number) => <rect x={x} y={y} width={w} height={h} fill={CAT.amber} stroke={CAT.ink} strokeWidth={0.8} />;
   const T = (x: number, y: number, s: string, size = 11, anchor: "start" | "middle" | "end" = "start") => (
@@ -715,13 +715,13 @@ export function FacetFilter() {
       <Frame
         width={560}
         height={266}
-        label={`A footwear listing page. Breadcrumb: ${crumbs.join(" › ")}${facets.length ? `, filtered by ${facets.map((f) => facetText[f]).join(", ")}` : ""}. ${shownCount} of 8 listings shown.${lostToBlank ? " The waterproof boot in slot 4 is hidden because its waterproof field is blank; its faded outline and amber blank field mark the empty slot." : ""}`}
+        label={`A footwear listing page. Breadcrumb: ${crumbs.join(" › ")}${facets.length ? `, filtered by ${facets.map((f) => facetText[f]).join(", ")}` : ""}. ${shownCount} of 8 listings shown.${lostToBlank ? " The waterproof boot in slot 4 is hidden because its waterproof field is blank. Its faded outline and amber blank field mark the empty slot." : ""}`}
       >
         <HalftoneDefs id={id} />
         {/* breadcrumb */}
         <text x={14} y={22} fontFamily={BODY_FONT} fontSize={12} fill={CAT.ink}>
           {crumbs.join("  ›  ")}
-          {facets.map((f) => `   ·   ${facetText[f]}`).join("")}
+          {facets.map((f) => `   |   ${facetText[f]}`).join("")}
         </text>
         <line x1={14} y1={32.5} x2={546} y2={32.5} {...hair} />
         {/* tree */}
@@ -928,9 +928,9 @@ export function FrictionFixes() {
 /**
  * An agent asked for "a blender of 1,000 W or more, lowest total cost"
  * reads two product pages but not what sits behind later checkout steps or
- * inside PDFs. Blender A hides a $25 shipping fee until checkout; blender B
+ * inside PDFs. Blender A hides a $25 shipping fee until checkout. Blender B
  * puts its 1,500 W motor only in a PDF manual. Expose either attribute and
- * see which one the agent buys; with both hidden it buys the dominated A.
+ * see which one the agent buys. With both hidden it buys the dominated A.
  */
 type Expose = "shipping" | "specs";
 
@@ -1063,7 +1063,7 @@ function Blender({ id, cx, cy }: { id: string; cx: number; cy: number }) {
 /**
  * A hundred carts filled in one day. Two-thirds of them (ink carts) are left
  * before payment, up to three-quarters counting the open carts at the edge
- * of the range; the rest end as paid parcels.
+ * of the range. The rest end as paid parcels.
  */
 export function HundredCarts() {
   const id = "w2-carts";
@@ -1083,7 +1083,7 @@ export function HundredCarts() {
       })}
       <line x1={10} y1={140.5} x2={390} y2={140.5} {...hair} />
       <Price x={10} y={162} size={16}>
-        67–75
+        67 to 75
       </Price>
       <CatKey x={66} y={160} size={10}>
         OF 100 CARTS ABANDONED BEFORE PAYMENT
@@ -1094,7 +1094,7 @@ export function HundredCarts() {
 
 /**
  * Four bags of coffee on a results page. The cheapest-looking bag is the
- * smallest; the best value per 100 g is bag 2. Choose where the store puts
+ * smallest. The best value per 100 g is bag 2. Choose where the store puts
  * the unit price, and how many clicks the agent can afford. It reads the
  * bags in rank order until its clicks run out, then picks the best unit
  * price it has read, or, having read none, the lowest sticker price.
@@ -1130,7 +1130,7 @@ export function InspectionBudget() {
       <Frame
         width={480}
         height={232}
-        label={`Four coffee bags; the unit price is ${depth === 0 ? "on the card" : depth === 1 ? "one click away" : "two clicks away"} and the agent can afford ${budget} clicks. It reads the unit price of ${read.filter(Boolean).length} bags and picks bag ${pick + 1}${pick === best ? ", the best value" : `; the best value is bag ${best + 1}`}.`}
+        label={`Four coffee bags. The unit price is ${depth === 0 ? "on the card" : depth === 1 ? "one click away" : "two clicks away"} and the agent can afford ${budget} clicks. It reads the unit price of ${read.filter(Boolean).length} bags and picks bag ${pick + 1}${pick === best ? ", the best value" : `. The best value is bag ${best + 1}`}.`}
       >
         <HalftoneDefs id={id} />
         {BAGS.map((b, k) => {
@@ -1222,7 +1222,7 @@ export function MobileShare() {
     <Frame
       width={400}
       height={262}
-      label="Three rows of fifty marks, each two percent: sessions 72% phones, add-to-cart events 68% phones, completed orders 34% phones; phones in purple, desktop screens in ink."
+      label="Three rows of fifty marks, each two percent: sessions 72% phones, add-to-cart events 68% phones, completed orders 34% phones. Phones in purple, desktop screens in ink."
     >
       {rows.map((r, i) => {
         const y = 14 + i * 84;
@@ -1555,7 +1555,7 @@ export function RecoveryDiscount() {
       <Frame
         width={440}
         height={176}
-        label={`Six months of recovery emails, ${policy === "plain" ? "reminder only" : "reminder with a 10% code"}. Recovered orders per month: ${months.map((m) => m.recovered).join(", ")}. Buyers abandoning on purpose: ${months.map((m) => m.strategic).join(", ")}; ${lost} full-price orders turned into discounted ones.`}
+        label={`Six months of recovery emails, ${policy === "plain" ? "reminder only" : "reminder with a 10% code"}. Recovered orders per month: ${months.map((m) => m.recovered).join(", ")}. Buyers abandoning on purpose: ${months.map((m) => m.strategic).join(", ")}. ${lost} full-price orders turned into discounted ones.`}
       >
         <HalftoneDefs id={id} />
         <g transform="translate(0 -36)">
@@ -1607,8 +1607,8 @@ export function RecoveryDiscount() {
 /**
  * The coffee brand's product page before and after the minimalist redesign,
  * and orders before and after. The redesign drops the spec table for a PDF
- * and hides shipping behind three clicks. Orders from people stay level;
- * orders from AI assistants (purple) fall by 45 percent.
+ * and hides shipping behind three clicks. Orders from people stay level.
+ * Orders from AI assistants (purple) fall by 45 percent.
  */
 export function RedesignDrop() {
   const id = "w2-redesign";
@@ -1658,7 +1658,7 @@ export function RedesignDrop() {
     <Frame
       width={400}
       height={262}
-      label="Left, the old product page with a visible spec table and a shipping line; right, the redesign with a PDF icon and three click steps before shipping is shown. Below, orders before and after: people's orders stay at ten parcels; AI assistants' orders, in purple, fall from ten parcels to five and a half, minus 45 percent."
+      label="Left, the old product page with a visible spec table and a shipping line. Right, the redesign with a PDF icon and three click steps before shipping is shown. Below, orders before and after: people's orders stay at ten parcels. AI assistants' orders, in purple, fall from ten parcels to five and a half, minus 45 percent."
     >
       <HalftoneDefs id={id} />
       {page(10, false)}
@@ -1700,7 +1700,7 @@ export function RedesignDrop() {
  * agent reads and count the facts it gets.
  */
 type Render = "csr" | "ssr";
-const FACTS = ['<h1>Barista One</h1>', '<span itemprop="price">349</span>', '<meta itemprop="priceCurrency" content="USD">', '<link itemprop="availability" href="InStock">', "<table> boiler · 58 dB · 1,450 W </table>"];
+const FACTS = ['<h1>Barista One</h1>', '<span itemprop="price">349</span>', '<meta itemprop="priceCurrency" content="USD">', '<link itemprop="availability" href="InStock">', "<table> boiler | 58 dB | 1,450 W </table>"];
 
 export function RenderTiming() {
   const [mode, setMode] = useState<Render>("csr");
@@ -1797,7 +1797,7 @@ export function RenderTiming() {
 }
 
 /**
- * Left, a product page's JSON-LD block; right, the search result built from
+ * Left, a product page's JSON-LD block. Right, the search result built from
  * it. Switch fields on in the block and the result gains what each declares
  * (amber): the price, the stock status, the stars and review count. Below,
  * the merchant feed pushes the same catalogue to search, social and AI
@@ -1945,7 +1945,7 @@ export function RichResult() {
  * the last column the paid order. Under each gap, the transition rate from
  * the step before. Switch the week: a blurry new thumbnail set cuts the
  * category-to-product rate, a shipping fee shown only at payment cuts the
- * cart-to-order rate; the weakest rate is marked in amber.
+ * cart-to-order rate. The weakest rate is marked in amber.
  */
 type Week = "normal" | "thumbs" | "fees";
 const STEPS = ["CATEGORY", "PRODUCT PAGE", "SIZE", "ADD TO CART", "ORDER"];
@@ -1969,7 +1969,7 @@ export function SessionLog() {
       <Frame
         width={560}
         height={300}
-        label={`A log of 20 sessions across five steps: category, product page, size, add to cart, order. Sessions reaching each: ${reach.join(", ")}. Transition rates: ${rates.map((r) => `${r}%`).join(", ")}; the weakest, ${rates[worst]}% into ${STEPS[worst + 1].toLowerCase()}, in amber. Overall conversion ${Math.round((100 * reach[4]) / 20)}%.`}
+        label={`A log of 20 sessions across five steps: category, product page, size, add to cart, order. Sessions reaching each: ${reach.join(", ")}. Transition rates: ${rates.map((r) => `${r}%`).join(", ")}. The weakest, ${rates[worst]}% into ${STEPS[worst + 1].toLowerCase()}, in amber. Overall conversion ${Math.round((100 * reach[4]) / 20)}%.`}
       >
         <HalftoneDefs id={id} />
         {STEPS.map((s, k) => (
@@ -2154,7 +2154,7 @@ export function ThreeTemplates() {
     <Frame
       width={800}
       height={192}
-      label="Three catalogue pages joined by arrows: a listing page with a filter column and a grid of twelve mug tiles, one clicked; a product detail page with a large mug, price and add-to-cart button, clicked; a shopping cart with the mug as a line item, a total and a checkout button."
+      label="Three catalogue pages joined by arrows: a listing page with a filter column and a grid of twelve mug tiles, one clicked. A product detail page with a large mug, price and add-to-cart button, clicked. A shopping cart with the mug as a line item, a total and a checkout button."
     >
       <HalftoneDefs id={id} />
       {/* listing page */}
@@ -2263,7 +2263,7 @@ export function TierFraming() {
       <Frame
         width={560}
         height={300}
-        label={`A plan page shown as ${menu === "twenty" ? "twenty near-identical variants" : menu === "two" ? "Basic and Pro tiers" : "Basic, Pro and Enterprise tiers"}. Of 100 shoppers, ${chosen} choose a plan${many ? "" : `: ${m.tiers.map((t) => `${t.name} ${t.n}`).join(", ")}`}; ${m.left} walk away.`}
+        label={`A plan page shown as ${menu === "twenty" ? "twenty near-identical variants" : menu === "two" ? "Basic and Pro tiers" : "Basic, Pro and Enterprise tiers"}. Of 100 shoppers, ${chosen} choose a plan${many ? "" : `: ${m.tiers.map((t) => `${t.name} ${t.n}`).join(", ")}`}. ${m.left} walk away.`}
       >
         <HalftoneDefs id={id} />
         {m.tiers.map((t, k) => {
@@ -2331,10 +2331,10 @@ export function TierFraming() {
 
 /**
  * The dark-pattern variant against the honest control, month by month,
- * per thousand visitors. Above the line: extra orders won (ink parcels);
- * below: extra returns and chargebacks (amber), and lost orders once trust
+ * per thousand visitors. Above the line: extra orders won (ink parcels).
+ * Below: extra returns and chargebacks (amber), and lost orders once trust
  * wears off (dashed). Slide the months on: the A/B test's first month looks
- * like a win; the ledger turns against it.
+ * like a win. The ledger turns against it.
  */
 function trustMonth(m: number) {
   const lift = Math.round(8 - 14 * Math.pow(m / 12, 0.8));
@@ -2354,7 +2354,7 @@ export function TrustLedger() {
       <Frame
         width={400}
         height={218}
-        label={`The dark-pattern variant against the control over ${months} ${months === 1 ? "month" : "months"}, per thousand visitors: extra orders ${ms.map((m) => m.lift).join(", ")}; extra returns and chargebacks ${ms.map((m) => m.refunds).join(", ")}. Net: ${net >= 0 ? "+" : ""}${net} orders.`}
+        label={`The dark-pattern variant against the control over ${months} ${months === 1 ? "month" : "months"}, per thousand visitors: extra orders ${ms.map((m) => m.lift).join(", ")}. Extra returns and chargebacks ${ms.map((m) => m.refunds).join(", ")}. Net: ${net >= 0 ? "+" : ""}${net} orders.`}
       >
         <HalftoneDefs id={id} />
         <line x1={118} y1={base + 0.5} x2={390} y2={base + 0.5} {...ink} />

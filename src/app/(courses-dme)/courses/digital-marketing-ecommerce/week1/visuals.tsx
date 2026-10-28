@@ -59,9 +59,9 @@ const hair = { stroke: CAT.ink, strokeWidth: LINE.hair, strokeLinecap: "round" a
 
 /**
  * Growth by addition against growth by connection. Each step, the retailer
- * opens one more warehouse; the marketplace gains one more buyer and one
+ * opens one more warehouse. The marketplace gains one more buyer and one
  * more seller, and every buyer can now trade with every seller. Warehouses
- * grow in a line; possible matches grow as a square.
+ * grow in a line. Possible matches grow as a square.
  */
 export function AddOneAtATime() {
   const [n, setN] = useState(4);
@@ -154,7 +154,7 @@ export function AgentShare() {
  * The same store built three ways, and one change to make. Pick the
  * architecture and the change: every part that has to be modified and
  * redeployed turns amber. In the monolith every change reaches the whole
- * block; headless confines a page change to its head; composable confines
+ * block. Headless confines a page change to its head. Composable confines
  * a search swap to the search service.
  */
 type Arch = "mono" | "headless" | "composable";
@@ -193,7 +193,7 @@ export function ArchitectureChange() {
       <Frame
         width={480}
         height={262}
-        label={`${{ mono: "Monolithic", headless: "Headless", composable: "Composable" }[arch]} store; change: ${{ page: "redesign the web page", agent: "add an AI agent channel", search: "swap the search engine" }[change]}. ${lit} of ${total} parts must be modified and redeployed, shown in amber.`}
+        label={`${{ mono: "Monolithic", headless: "Headless", composable: "Composable" }[arch]} store. Change: ${{ page: "redesign the web page", agent: "add an AI agent channel", search: "swap the search engine" }[change]}. ${lit} of ${total} parts must be modified and redeployed, shown in amber.`}
       >
         <HalftoneDefs id={id} />
         {/* the monolith's single block wraps the web head and the engine */}
@@ -317,7 +317,7 @@ function HeadGlyph({ id, kind, cx, cy }: { id: string; kind: Head; cx: number; c
 
 /**
  * What one click on the buy button sets off: four stations in order. Switch
- * on a failure and the run stops at the station that catches it; the
+ * on a failure and the run stops at the station that catches it. The
  * stations after it are never reached (dashed), and no money moves. Only a
  * clean run reaches the last station, where the funds are captured (amber).
  */
@@ -337,7 +337,7 @@ export function CheckoutRun() {
       <Frame
         width={800}
         height={228}
-        label={`A buy button starts four stations: inventory and tax, tokenization, fraud and authorization, commit and capture. ${stopAt === 4 ? "Every station passes and the funds are captured." : `The run stops at ${keys[stopAt].toLowerCase()}; later stations are never reached and no money moves.`}`}
+        label={`A buy button starts four stations: inventory and tax, tokenization, fraud and authorization, commit and capture. ${stopAt === 4 ? "Every station passes and the funds are captured." : `The run stops at ${keys[stopAt].toLowerCase()}. Later stations are never reached and no money moves.`}`}
       >
         <HalftoneDefs id={id} />
         {/* buy button */}
@@ -518,7 +518,7 @@ export function ColdStartSeed() {
       <Frame
         width={560}
         height={192}
-        label={`Six monthly pages of a new marketplace. ${seeding === "none" ? "Unseeded: every page stays empty and no shopper cursors appear." : `Seeded with ${seeding === "own" ? "the platform's own stock" : "zero-commission marquee sellers"} (amber listings): shopper cursors grow, then third-party listings fill the pages; by month 6, ${Math.round(months[5].s / 11)} seller listings and ${Math.round(months[5].b / 10)} cursors.`}`}
+        label={`Six monthly pages of a new marketplace. ${seeding === "none" ? "Unseeded: every page stays empty and no shopper cursors appear." : `Seeded with ${seeding === "own" ? "the platform's own stock" : "zero-commission marquee sellers"} (amber listings): shopper cursors grow, then third-party listings fill the pages. By month 6, ${Math.round(months[5].s / 11)} seller listings and ${Math.round(months[5].b / 10)} cursors.`}`}
       >
         <HalftoneDefs id={id} />
         {months.map((m, t) => {
@@ -608,7 +608,7 @@ export function ConstraintFilter() {
       <Frame
         width={480}
         height={292}
-        label={`Twelve espresso machine listings with price, noise in decibels and boiler type. Constraints on: ${on.length ? on.join(", ") : "none"}. ${kept} of 12 listings pass and stay drawn${on.length ? " in amber" : ""}; the rest are dashed outlines.`}
+        label={`Twelve espresso machine listings with price, noise in decibels and boiler type. Constraints on: ${on.length ? on.join(", ") : "none"}. ${kept} of 12 listings pass and stay drawn${on.length ? " in amber" : ""}. The rest are dashed outlines.`}
       >
         <HalftoneDefs id={id} />
         {MACHINES.map((m, k) => {
@@ -831,7 +831,7 @@ export function DoubleMarkup() {
 /**
  * A busy marketplace loses some of its shoppers in month 1. Each month after,
  * sellers respond to the buyers they saw and buyers to the sellers they
- * found. Above the line, shoppers; below, shops. Set the size of the loss:
+ * found. Above the line, shoppers. Below, shops. Set the size of the loss:
  * a small dip recovers, but past a tipping point the same loop runs in
  * reverse and both sides drain away.
  */
@@ -911,7 +911,7 @@ export function FourQuestions() {
     <Frame
       width={400}
       height={300}
-      label="An order form with four ruled fields: who sells, beside a shop front; who buys, beside a shopper; who owns the inventory, beside stacked parcels; and how revenue is earned, beside a stack of coins."
+      label="An order form with four ruled fields: who sells, beside a shop front. Who buys, beside a shopper. Who owns the inventory, beside stacked parcels. And how revenue is earned, beside a stack of coins."
     >
       <HalftoneDefs id={id} />
       <rect x={20} y={10} width={360} height={280} fill={CAT.tile} {...ink} />
@@ -963,7 +963,7 @@ export function FourScenarios() {
       {[1, 2, 3].map((k) => (
         <line key={k} x1={px(k) - 6} y1={10} x2={px(k) - 6} y2={158} {...hair} />
       ))}
-      {/* 1 · D2C shoe store with email capture */}
+      {/* 1. D2C shoe store with email capture */}
       <Factory id={id} x={px(0) + 6} y={70} w={56} h={42} />
       <Arrow x1={px(0) + 68} y1={100} x2={px(0) + 96} y2={100} s={5} />
       <Tile x={px(0) + 102} y={52} w={82} h={80} />
@@ -974,7 +974,7 @@ export function FourScenarios() {
       <path d={`M${px(0) + 140} 46Q${px(0) + 100} 18 ${px(0) + 48} 52`} fill="none" {...ink} />
       <path d={headAlong(px(0) + 48, 52, -40, 26, 5)} fill="none" {...ink} />
       <Envelope id={id} x={px(0) + 78} y={16} w={30} h={19} />
-      {/* 2 · B2B fastener portal */}
+      {/* 2. B2B fastener portal */}
       <Warehouse id={id} x={px(1) + 6} y={58} w={58} h={52} />
       <g>
         <rect x={px(1) + 78} y={92} width={42} height={22} fill={ht(id, "light")} {...ink} />
@@ -992,7 +992,7 @@ export function FourScenarios() {
           NET 30
         </CatKey>
       </g>
-      {/* 3 · craft marketplace */}
+      {/* 3. craft marketplace */}
       {[0, 1, 2].map((j) => (
         <g key={j}>
           <Shop id={id} x={px(2) + 2} y={30 + j * 40} w={32} h={26} />
@@ -1008,7 +1008,7 @@ export function FourScenarios() {
       <CatKey x={px(2) + 121} y={149} size={10}>
         6.5%
       </CatKey>
-      {/* 4 · grocery retail media */}
+      {/* 4. grocery retail media */}
       <g>
         <rect x={px(3) + 8} y={14} width={176} height={142} fill={CAT.tile} {...ink} />
         <rect x={px(3) + 16} y={22} width={160} height={18} rx={9} fill="none" {...ink} />
@@ -1054,8 +1054,8 @@ function Bolt({ x, y }: { x: number; y: number }) {
 
 /**
  * Five scenes, one under each stage. A creator's video sends a shopper into
- * the store; the shopper searches and opens a product page; the cart becomes
- * a signed order; the van carries the parcel home; the buyer leaves five
+ * the store. The shopper searches and opens a product page. The cart becomes
+ * a signed order. The van carries the parcel home. The buyer leaves five
  * stars and the next parcel arrives on its own loop (amber), with no ad.
  */
 export function FunnelStages() {
@@ -1115,7 +1115,7 @@ export function FunnelStages() {
  * Real data: Wadi & Ma (2026a), hotel search over a 100-listing results page.
  * Mean listings inspected per session, drawn as a row of listing tiles (the
  * last tile cut to the fraction): human shoppers (Ursu, 2018, benchmark)
- * open about one; AI agents at their default reasoning effort open two to six.
+ * open about one. AI agents at their default reasoning effort open two to six.
  */
 const INSPECTIONS = [
   { key: "HUMAN SHOPPERS", n: 1.12, human: true },
@@ -1226,7 +1226,7 @@ export function Leakage() {
 }
 
 /**
- * A thousand visitors pour through four handoffs; at each, some leave (the
+ * A thousand visitors pour through four handoffs. At each, some leave (the
  * figure in the gap). Fix one handoff or several and watch how many repeat
  * buyers come out of the bottom (amber). Each fix adds a few points at one
  * handoff, but its effect carries through every stage below it.
@@ -1322,7 +1322,7 @@ export function MultiHoming() {
   );
 }
 
-/** Three rival platforms' marks: 0 is the course's ringed star; 1 a ringed square; 2 a ringed triangle. */
+/** Three rival platforms' marks: 0 is the course's ringed star. 1 a ringed square. 2 a ringed triangle. */
 function PlatformMark({ kind, cx, cy, r = 8 }: { kind: number; cx: number; cy: number; r?: number }) {
   if (kind === 0) return <Badge cx={cx} cy={cy} r={r} />;
   return (
@@ -1349,7 +1349,7 @@ export function OneVsThree() {
     <Frame
       width={400}
       height={258}
-      label="Above, 1P: the platform's own warehouse, stamped with its badge, holds ink parcels and feeds the platform's results page, which sells to a shopper. Below, 3P: three independent sellers' shops each hold purple parcels; arrows run from them to their listings on the platform's results page, and on to a shopper."
+      label="Above, 1P: the platform's own warehouse, stamped with its badge, holds ink parcels and feeds the platform's results page, which sells to a shopper. Below, 3P: three independent sellers' shops each hold purple parcels. Arrows run from them to their listings on the platform's results page, and on to a shopper."
     >
       <HalftoneDefs id={id} />
       <CatKey x={14} y={24} size={13}>
@@ -1443,7 +1443,7 @@ export function OwnListingRank() {
       <Frame
         width={480}
         height={262}
-        label={`A results page of five mugs with clicks falling from 10 at rank 1 to 1 at rank 5. The platform's own mug, marked with its badge and amber clicks, sits at rank ${pos}. The platform earns $${earns}; third-party sellers get ${sellerClicks} sales.`}
+        label={`A results page of five mugs with clicks falling from 10 at rank 1 to 1 at rank 5. The platform's own mug, marked with its badge and amber clicks, sits at rank ${pos}. The platform earns $${earns}. Third-party sellers get ${sellerClicks} sales.`}
       >
         <HalftoneDefs id={id} />
         {CLICKS.map((c, k) => {
@@ -1497,7 +1497,7 @@ export function RecordCabinet() {
     <Frame
       width={400}
       height={282}
-      label="A shop front on the left joined by lines to a five-drawer filing cabinet on the right; the drawer labels show a catalogue, a parcel, a price tag, a shopping cart and a payment card."
+      label="A shop front on the left joined by lines to a five-drawer filing cabinet on the right. The drawer labels show a catalogue, a parcel, a price tag, a shopping cart and a payment card."
     >
       <HalftoneDefs id={id} />
       <Shop id={id} x={16} y={90} w={128} h={110} />
@@ -1543,7 +1543,7 @@ function Catalogue({ id, cx, cy }: { id: string; cx: number; cy: number }) {
  * Left, outside the store: a web page's display ad aimed by a crumbled
  * third-party cookie, its clicks scattered off target. Right, inside the
  * marketplace: a pile of SKUs competes for four first-page slots, the top
- * two sold as sponsored; the shopper's query and the receipt it ends in
+ * two sold as sponsored. The shopper's query and the receipt it ends in
  * close one loop (amber) that the store alone can see.
  */
 export function RetailMediaLoop() {
@@ -1553,7 +1553,7 @@ export function RetailMediaLoop() {
     <Frame
       width={800}
       height={262}
-      label="Left: a printed web page with a display ad box, a crumbled third-party cookie beside it, and cursors scattered around the ad rather than on it. Right: a pile of many small parcels marked millions of SKUs points at a results page with only four slots under the query sparkling water; the top two are sponsored. A cursor clicks the first, an arrow leads to a receipt, and a thick amber loop marked closed-loop, first-party intent data runs from the receipt back to the query."
+      label="Left: a printed web page with a display ad box, a crumbled third-party cookie beside it, and cursors scattered around the ad rather than on it. Right: a pile of many small parcels marked millions of SKUs points at a results page with only four slots under the query sparkling water. The top two are sponsored. A cursor clicks the first, an arrow leads to a receipt, and a thick amber loop marked closed-loop, first-party intent data runs from the receipt back to the query."
     >
       <HalftoneDefs id={id} />
       {/* outside: display network */}
@@ -1653,7 +1653,7 @@ function CrumbledCookie({ id, cx, cy }: { id: string; cx: number; cy: number }) 
  * Four firms, one month. Each earns by its own model, drawn under its stack
  * of coins: a price tag (markup), a seller statement (take rate), a
  * membership card (subscription) and a sponsored listing (retail media).
- * Move shopper traffic and three stacks move with it; only the members who
+ * Move shopper traffic and three stacks move with it. Only the members who
  * renew move the subscription stack.
  */
 export function RevenueDrivers() {
@@ -1787,7 +1787,7 @@ export function ScreenAssumption() {
 
 /**
  * Shoppers on the left, sellers on the right. Inside each side, the
- * same-side effect: one shopper's review helps the next; one seller's lower
+ * same-side effect: one shopper's review helps the next. One seller's lower
  * tag pressures the other. Between the sides, the cross-side arcs: more
  * buyers draw more merchants, and more merchants draw more buyers.
  */
@@ -1797,7 +1797,7 @@ export function SidesDiagram() {
     <Frame
       width={400}
       height={250}
-      label="Three shoppers on the left pass a five-star review card between them, marked same-side; three shops on the right show price tags of $14 and $12, marked same-side. Two arcs, marked cross-side, run from the shoppers to the shops above and from the shops back to the shoppers below."
+      label="Three shoppers on the left pass a five-star review card between them, marked same-side. Three shops on the right show price tags of $14 and $12, marked same-side. Two arcs, marked cross-side, run from the shoppers to the shops above and from the shops back to the shoppers below."
     >
       <HalftoneDefs id={id} />
       {/* buyers */}
@@ -1846,9 +1846,9 @@ export function SidesDiagram() {
 }
 
 /**
- * Four records, one under each system. The PIM's product sheet; the OMS's
- * routing map, splitting one order between a warehouse and a store; the
- * ERP's ledger page; the CDP's customer profile with its trail of events.
+ * Four records, one under each system. The PIM's product sheet. The OMS's
+ * routing map, splitting one order between a warehouse and a store. The
+ * ERP's ledger page. The CDP's customer profile with its trail of events.
  */
 export function SystemsOfRecord() {
   const id = "w1-sor";
@@ -1863,7 +1863,7 @@ export function SystemsOfRecord() {
       {[1, 2, 3].map((k) => (
         <line key={k} x1={px(k) - 8} y1={10} x2={px(k) - 8} y2={148} {...hair} />
       ))}
-      {/* 1 · product sheet */}
+      {/* 1. product sheet */}
       <g>
         <rect x={px(0) + 20} y={12} width={140} height={132} fill={CAT.tile} {...ink} />
         <rect x={px(0) + 30} y={22} width={52} height={50} fill={CAT.tile} {...hair} />
@@ -1884,7 +1884,7 @@ export function SystemsOfRecord() {
           <rect key={k} x={px(0) + 30 + k * 26} y={108} width={20} height={20} fill={k === 0 ? ht(id, "light") : ht(id, "dense")} {...hair} />
         ))}
       </g>
-      {/* 2 · routing map */}
+      {/* 2. routing map */}
       <g>
         <rect x={px(1) + 8} y={12} width={176} height={132} fill={CAT.tile} {...ink} />
         {[40, 78, 116].map((y) => (
@@ -1901,7 +1901,7 @@ export function SystemsOfRecord() {
         <Parcel id={id} x={px(1) + 42} y={84} w={14} h={10} />
         <Parcel id={id} x={px(1) + 136} y={84} w={14} h={10} />
       </g>
-      {/* 3 · ledger */}
+      {/* 3. ledger */}
       <g>
         <rect x={px(2) + 14} y={12} width={164} height={132} fill={CAT.tile} {...ink} />
         <line x1={px(2) + 96} y1={12} x2={px(2) + 96} y2={144} {...hair} />
@@ -1915,7 +1915,7 @@ export function SystemsOfRecord() {
           </g>
         ))}
       </g>
-      {/* 4 · customer profile */}
+      {/* 4. customer profile */}
       <g>
         <rect x={px(3) + 12} y={12} width={168} height={132} rx={4} fill={CAT.tile} {...ink} />
         <Person id={id} cx={px(3) + 44} cy={48} s={0.8} />
@@ -1991,7 +1991,7 @@ export function ThreeRoutes() {
 
 
 /**
- * Ad spend buys visitors; a slow page loses them before they order. Coins
+ * Ad spend buys visitors. A slow page loses them before they order. Coins
  * on the left, a grid of visitor cursors, the product page with its load
  * time, and the parcels that leave. The cost of each order is the one amber
  * figure. With no spend, even a fast page ships nothing.
@@ -2012,7 +2012,7 @@ export function TrafficTimesStore() {
       <Frame
         width={400}
         height={240}
-        label={`Ad spend of $${spend} as ${coins} coins buys ${visitors} visitors, drawn as ${cursors} cursors, who reach a product page that loads in ${load} seconds; ${orders} orders leave as ${parcels} parcels. Cost per order: ${cpo === null ? "no orders" : `$${cpo}`}.`}
+        label={`Ad spend of $${spend} as ${coins} coins buys ${visitors} visitors, drawn as ${cursors} cursors, who reach a product page that loads in ${load} seconds. ${orders} orders leave as ${parcels} parcels. Cost per order: ${cpo === null ? "no orders" : `$${cpo}`}.`}
       >
         <HalftoneDefs id={id} />
         {/* coins */}

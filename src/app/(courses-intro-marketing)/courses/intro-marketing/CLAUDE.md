@@ -4,7 +4,7 @@ These rules cover every SVG plate in this course (all weeks, the landing page, a
 
 ## Design system: Broadsheet
 
-- **Palette** (defined in `(courses-intro-marketing)/globals.css`): warm bone paper `--paper` #FBFAF7, figure wells `--paper-2` #F4F1E9, filled zones `--paper-3` #ECE7DB; ink `--ink` / `--ink-2` / `--ink-3`; hairlines `--rule` / `--rule-2`; persimmon `--signal` #B23A15; teal `--counter` #22575B.
+- **Palette** (defined in `(courses-intro-marketing)/globals.css`): warm bone paper `--paper` #FBFAF7, figure wells `--paper-2` #F4F1E9, filled zones `--paper-3` #ECE7DB. Ink `--ink` / `--ink-2` / `--ink-3`. Hairlines `--rule` / `--rule-2`. Persimmon `--signal` #B23A15. Teal `--counter` #22575B.
 - **Type:** Fraunces for display, Instrument Sans for body and keys. No monospace anywhere.
 - **Plate helpers:** every plate is built with `Frame`, `Key`, `Note`, `Display` and the palette constants (`INK`, `SIGNAL`, `COUNTER`, …).
 - **Look:** hand-built SVG, flat fills, hairline rules, no shadows or gradients. Keys are uppercase and tracked in `var(--font-label)`.

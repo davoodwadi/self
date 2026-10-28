@@ -72,7 +72,7 @@ const SECTIONS = [
 // type that fits it, and it only tests what the slide has just taught.
 const exercise = createExerciseLookup(exercisesData as ExerciseInput[]);
 
-/* Body copy: the reading serif; terms set bold in the display serif. */
+/* Body copy: the reading serif. Terms set bold in the display serif. */
 const BODY = "font-body text-base md:text-[1.06rem] leading-[1.6] [&_strong]:font-heading [&_strong]:font-bold";
 const LIST =
   "list-none flex flex-col gap-1 [&>li]:flex [&>li]:gap-3 [&>li]:before:content-[''] [&>li]:before:mt-[0.6em] [&>li]:before:w-1.5 [&>li]:before:h-1.5 [&>li]:before:rotate-45 [&>li]:before:shrink-0 [&>li]:before:bg-[var(--dt-ink)]";
@@ -143,7 +143,7 @@ export default function DigitalTransformationWeek3() {
       </Link>
 
       <PosterHero
-        category="WEEK 03 — DIGITAL TRANSFORMATION"
+        category="WEEK 03: DIGITAL TRANSFORMATION"
         title="Change Management, Project Management"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
@@ -160,7 +160,7 @@ export default function DigitalTransformationWeek3() {
       />
 
       {/* ================================================================
-          CHAPTER 1 — THE CASE OF NETFLIX
+          CHAPTER 1: THE CASE OF NETFLIX
           ================================================================ */}
       <ChapterBand id="ch1" number="01" title="The Case of Netflix" />
 
@@ -371,7 +371,7 @@ export default function DigitalTransformationWeek3() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 2 — CHANGE MANAGEMENT
+          CHAPTER 2: CHANGE MANAGEMENT
           ================================================================ */}
       <ChapterBand id="ch2" number="02" title="Change Management" />
 
@@ -881,7 +881,7 @@ export default function DigitalTransformationWeek3() {
               >
                 <Letter l={l} size="w-14 h-14 text-4xl" />
                 <p className="font-body text-xl md:text-2xl leading-snug pr-4">
-                  <strong className="font-heading font-bold">{name}</strong> – {text}
+                  <strong className="font-heading font-bold">{name}</strong> - {text}
                 </p>
               </li>
             );
@@ -1062,7 +1062,7 @@ export default function DigitalTransformationWeek3() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 3 — AGILE PROJECT MANAGEMENT
+          CHAPTER 3: AGILE PROJECT MANAGEMENT
           ================================================================ */}
       <ChapterBand id="ch3" number="03" title="Agile Project Management" />
 
@@ -1242,7 +1242,7 @@ export default function DigitalTransformationWeek3() {
       </Slide>
 
       {/* ================================================================
-          CHAPTER 4 — SCRUM
+          CHAPTER 4: SCRUM
           ================================================================ */}
       <ChapterBand id="ch4" number="04" title="Scrum" />
 

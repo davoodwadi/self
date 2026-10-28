@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Digital Transformation — kit (Flat Silhouette)
+   Digital Transformation, kit (Flat Silhouette)
    --------------------------------------------------------------------------
    What every week builds with: the palette, the plate frame, drawing
    primitives (solid shapes, framed screens, arrows) and the deck's slide
@@ -153,7 +153,7 @@ export function Pointer({
   y2: number;
   w?: number;
   color?: string;
-  /** arrowhead length; its half-width is a little over half of it */
+  /** arrowhead length. Its half-width is a little over half of it */
   head?: number;
 }) {
   const len = Math.hypot(x2 - x1, y2 - y1);
@@ -640,7 +640,7 @@ export function Slide({
   );
 }
 
-/* A row of cells; `cols` sets the wide-screen split. Phones stack in order. */
+/* A row of cells. `cols` sets the wide-screen split. Phones stack in order. */
 export function Row({
   children,
   cols = "lg:grid-cols-2",

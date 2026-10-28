@@ -20,7 +20,7 @@ week: week7
 - The null hypothesis, denoted H0, states that there is no difference or no association in the population.
 - The alternative hypothesis, denoted H1, states that a difference or association exists.
 - For example, H0 states that loyalty program members and nonmembers have the same mean monthly spending. H1 states that their mean monthly spending differs.
-- The test assesses the evidence against the null hypothesis. The null hypothesis is either rejected or not rejected; it is never proven true.
+- The test assesses the evidence against the null hypothesis. The null hypothesis is either rejected or not rejected. It is never proven true.
 - A two-tailed test examines a difference in either direction. A one-tailed test examines a difference in a direction specified in advance, such as members spending more than nonmembers.
 
 ## The Hypothesis Testing Procedure [exercise]
@@ -159,7 +159,7 @@ week: week7
 ## Key Takeaways
 - Hypothesis testing assesses whether a sample result provides sufficient evidence against the null hypothesis of no difference or no association.
 - The p-value is the probability of a result at least as extreme as the one observed if the null hypothesis were true, and not the probability that the null hypothesis is true.
-- Type I errors report differences that do not exist; Type II errors fail to detect differences that do exist.
+- Type I errors report differences that do not exist. Type II errors fail to detect differences that do exist.
 - The t-test compares two means, analysis of variance compares three or more means, and the chi-square test assesses the association between two nominal variables.
 - Statistical significance does not establish practical significance, and effect sizes and confidence intervals are reported together with p-values.
 - p-Hacking, selective reporting, and uncorrected multiple comparisons increase false findings, while preregistration and reproducible analysis protect against them.

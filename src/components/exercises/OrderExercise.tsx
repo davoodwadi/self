@@ -7,7 +7,7 @@ import { Card, Explanation, ExerciseHeader, Status, TextButton } from "./parts";
 
 /**
  * Put it in order, with feedback on every move. Tap a step, then the numbered
- * slot it belongs in: the right slot locks it in with a tick; a wrong slot
+ * slot it belongs in: the right slot locks it in with a tick. A wrong slot
  * marks the step and leaves it selected in its place, without giving the
  * answer away. Nothing moves while students work: the pile keeps a slot for
  * every step, and every numbered slot is as tall as the tallest step, so no
@@ -89,7 +89,7 @@ export default function OrderExercise({
                 state={missedNow(s.id) ? "wrong" : selected === s.id ? "selected" : "idle"}
                 pressed={selected === s.id}
                 onClick={() => pick(s.id)}
-                label={missedNow(s.id) && last ? `${s.text} (not step ${last.slot + 1}; still selected, try another slot)` : undefined}
+                label={missedNow(s.id) && last ? `${s.text} (not step ${last.slot + 1}. Still selected, try another slot)` : undefined}
               >
                 {body(s)}
               </Card>
@@ -98,7 +98,7 @@ export default function OrderExercise({
         )}
       </ul>
 
-      {/* the sequence: numbered slots, each as tall as the tallest step; a
+      {/* the sequence: numbered slots, each as tall as the tallest step. A
           long sequence runs down two columns on wide screens, so it fits
           one screen */}
       <ol

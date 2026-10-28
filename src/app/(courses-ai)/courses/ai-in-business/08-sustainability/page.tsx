@@ -34,9 +34,9 @@ import {
 } from "../_visuals/kit";
 
 // ============================================================================
-// WEEK 08 — SUSTAINABILITY IN AI
+// WEEK 08: SUSTAINABILITY IN AI
 // ============================================================================
-// Same deck grammar as Weeks 01–07: every slide is hand-composed for its own
+// Same deck grammar as Weeks 01 to 07: every slide is hand-composed for its own
 // argument, with hairlines instead of boxes and crimson marking one thing.
 //
 // Sentences are transcribed verbatim from content.md. Its [cite: N] markers
@@ -74,7 +74,7 @@ function Question({
 
 /**
  * Title-slide ground: a faint net of nodes, each joined by a soft curve to its
- * nearest neighbours, drifting very slowly. Texture only; nothing to read.
+ * nearest neighbours, drifting very slowly. Texture only. Nothing to read.
  */
 function Mesh() {
   const nodes = Array.from({ length: 42 }, (_, i) => [
@@ -200,7 +200,7 @@ export default function Week08Sustainability() {
       <ScrollProgress label="Week 08" />
 
       {/* ==================================================================
-          01 · TITLE — masthead over a faint drifting mesh; carbon
+          01. TITLE: masthead over a faint drifting mesh. Carbon
           footprints carried across to climate solutions.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
@@ -265,15 +265,15 @@ export default function Week08Sustainability() {
             <span
               className={`${MICRO} font-normal text-[var(--charcoal-light)]/60`}
             >
-              BUSI 654 · Applications of AI in Business
+              BUSI 654. Applications of AI in Business
             </span>
           </div>
         </div>
       </Slide>
 
       {/* ==================================================================
-          02 · THE AI SUSTAINABILITY PARADOX — AI held between savior and
-          burden; grids optimized set against resources consumed; the
+          02. THE AI SUSTAINABILITY PARADOX: AI held between savior and
+          burden. Grids optimized set against resources consumed. The
           industry's road forking at a pivot point.          [quiz topic]
       ================================================================== */}
       <Slide id="paradox" border align="left">
@@ -377,12 +377,12 @@ export default function Week08Sustainability() {
       />
 
       {/* ==================================================================
-          04 · THE HIDDEN COST OF COMPUTE — operational carbon forking into
-          training and inference; 550 set large; squares growing by orders
+          04. THE HIDDEN COST OF COMPUTE: operational carbon forking into
+          training and inference. 550 set large. Squares growing by orders
           of magnitude, dashed because "likely".
       ================================================================== */}
       <Slide id="hidden-cost" border align="left">
-        <Head2 eyebrow="Part 1 · 01 / 08">The Hidden Cost of Compute</Head2>
+        <Head2 eyebrow="Part 1: 01 / 08">The Hidden Cost of Compute</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -453,12 +453,12 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          05 · INFERENCE: THE SLEEPING GIANT — lifecycle emissions with
-          inference taking the majority; 29 Wh against 0.4 Wh drawn to the
+          05. INFERENCE: THE SLEEPING GIANT: lifecycle emissions with
+          inference taking the majority. 29 Wh against 0.4 Wh drawn to the
           same scale.                                         [quiz topic]
       ================================================================== */}
       <Slide id="inference" border align="left">
-        <Head2 eyebrow="Part 1 · 02 / 08" kicker="Inference:">
+        <Head2 eyebrow="Part 1: 02 / 08" kicker="Inference:">
           The Sleeping Giant
         </Head2>
 
@@ -526,8 +526,8 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          06 · CASE STUDY: GOOGLE'S 2025 REPORT — two figures from the report
-          set large; a 60W bulb beside a stopwatch with 14 of its 60 seconds
+          06. CASE STUDY: GOOGLE'S 2025 REPORT: two figures from the report
+          set large. A 60W bulb beside a stopwatch with 14 of its 60 seconds
           marked.                                     [quiz: inference]
       ================================================================== */}
       <Slide
@@ -536,7 +536,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["google-report"]}
       >
-        <Head2 eyebrow="Part 1 · 03 / 08" kicker="Case Study:">
+        <Head2 eyebrow="Part 1: 03 / 08" kicker="Case Study:">
           Google&apos;s 2025 Report
         </Head2>
 
@@ -607,11 +607,11 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          07 · WATER CONSUMPTION: A CRITICAL METRIC — a rack inside its
-          cooling loop; the GPT-3 estimate and the 2027 demand set large.
+          07. WATER CONSUMPTION: A CRITICAL METRIC: a rack inside its
+          cooling loop. The GPT-3 estimate and the 2027 demand set large.
       ================================================================== */}
       <Slide id="water" border align="left">
-        <Head2 eyebrow="Part 1 · 04 / 08" kicker="Water Consumption:">
+        <Head2 eyebrow="Part 1: 04 / 08" kicker="Water Consumption:">
           A Critical Metric
         </Head2>
 
@@ -674,12 +674,12 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          08 · THE "BOTTLES OF WATER" DEBATE — a dashed bottle for the
-          debated metric beside five drops for the reported one; efficiency
+          08. THE "BOTTLES OF WATER" DEBATE: a dashed bottle for the
+          debated metric beside five drops for the reported one. Efficiency
           and scale pulling against each other.            [quiz: water]
       ================================================================== */}
       <Slide id="bottles" border align="left" quizData={quiz["bottles"]}>
-        <Head2 eyebrow="Part 1 · 05 / 08">
+        <Head2 eyebrow="Part 1: 05 / 08">
           The &quot;Bottles of Water&quot; Debate
         </Head2>
 
@@ -765,12 +765,12 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          09 · HARDWARE LIFECYCLE AND EMBODIED CARBON — the embodied
-          footprint bracketed over three stations, manufacturing marked;
+          09. HARDWARE LIFECYCLE AND EMBODIED CARBON: the embodied
+          footprint bracketed over three stations, manufacturing marked.
           Compute Carbon Intensity cut to a third.
       ================================================================== */}
       <Slide id="hardware" border align="left">
-        <Head2 eyebrow="Part 1 · 06 / 08">
+        <Head2 eyebrow="Part 1: 06 / 08">
           Hardware Lifecycle and Embodied Carbon
         </Head2>
 
@@ -848,7 +848,7 @@ export default function Week08Sustainability() {
               <rect x="0" y="64" width="198" height="24" fill="var(--crimson)" />
               <path d="M202 76H598" stroke="var(--charcoal)" strokeOpacity="0.3" strokeDasharray="3 4" />
               <text {...SVG_LABEL} x="612" y="81" fill="var(--crimson)">
-                3x · EFFICIENCY GAINS
+                3x | EFFICIENCY GAINS
               </text>
             </svg>
           </div>
@@ -860,12 +860,12 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          10 · THE E-WASTE CHALLENGE — two service lives from one start, the
-          AI hardware line ending first; 62 million tonnes set large; a chip
+          10. THE E-WASTE CHALLENGE: two service lives from one start, the
+          AI hardware line ending first. 62 million tonnes set large. A chip
           with its hazardous contents named.
       ================================================================== */}
       <Slide id="e-waste" border align="left">
-        <Head2 eyebrow="Part 1 · 07 / 08">The E-Waste Challenge</Head2>
+        <Head2 eyebrow="Part 1: 07 / 08">The E-Waste Challenge</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -944,12 +944,12 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          11 · DATA CENTER INNOVATION — the two liquid-cooling forms drawn
-          side by side; cooling energy with up to 40% cut away, to scale;
+          11. DATA CENTER INNOVATION: the two liquid-cooling forms drawn
+          side by side. Cooling energy with up to 40% cut away, to scale.
           WUE and PUE on one balance.                        [quiz topic]
       ================================================================== */}
       <Slide id="data-center" border align="left">
-        <Head2 eyebrow="Part 1 · 08 / 08">Data Center Innovation</Head2>
+        <Head2 eyebrow="Part 1: 08 / 08">Data Center Innovation</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -998,7 +998,7 @@ export default function Week08Sustainability() {
               className="mt-8 w-full"
               fill="none"
             >
-              {/* the whole bar is cooling energy; 40% of 800 is 320 */}
+              {/* the whole bar is cooling energy. 40% of 800 is 320 */}
               <text {...SVG_LABEL} x="0" y="12" fill="var(--charcoal)" fillOpacity="0.65">
                 COOLING ENERGY
               </text>
@@ -1077,12 +1077,12 @@ export default function Week08Sustainability() {
       />
 
       {/* ==================================================================
-          13 · REVOLUTIONIZING WEATHER PREDICTION — NWP set against AI; ten
-          day cells under one arrow; a 0.25-degree lattice whose nodes are
+          13. REVOLUTIONIZING WEATHER PREDICTION: NWP set against AI. Ten
+          day cells under one arrow. A 0.25-degree lattice whose nodes are
           joined as a graph.                                 [quiz topic]
       ================================================================== */}
       <Slide id="weather" border align="left">
-        <Head2 eyebrow="Part 2 · 01 / 04">Revolutionizing Weather Prediction</Head2>
+        <Head2 eyebrow="Part 2: 01 / 04">Revolutionizing Weather Prediction</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1186,9 +1186,9 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          14 · FOURCASTNET AND GEOMETRIC ML — waves wrapped on a sphere; an
+          14. FOURCASTNET AND GEOMETRIC ML: waves wrapped on a sphere. An
           ensemble of forecast paths, the few that cross into extreme weather
-          marked; supercomputers struck for a few GPUs.  [quiz: weather]
+          marked. Supercomputers struck for a few GPUs.  [quiz: weather]
       ================================================================== */}
       <Slide
         id="fourcastnet"
@@ -1196,7 +1196,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["fourcastnet"]}
       >
-        <Head2 eyebrow="Part 2 · 02 / 04">FourCastNet and Geometric ML</Head2>
+        <Head2 eyebrow="Part 2: 02 / 04">FourCastNet and Geometric ML</Head2>
 
         <div className="w-full">
           <div className="mt-10 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_12rem] md:gap-14">
@@ -1297,12 +1297,12 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          15 · OPTIMIZING RENEWABLE ENERGY — uneven solar and wind lines fed
-          into one steady grid line; a forecast tracing the irradiance it
-          predicts; one learner managing two unlike stores.  [quiz topic]
+          15. OPTIMIZING RENEWABLE ENERGY: uneven solar and wind lines fed
+          into one steady grid line. A forecast tracing the irradiance it
+          predicts. One learner managing two unlike stores.  [quiz topic]
       ================================================================== */}
       <Slide id="renewable" border align="left">
-        <Head2 eyebrow="Part 2 · 03 / 04">Optimizing Renewable Energy</Head2>
+        <Head2 eyebrow="Part 2: 03 / 04">Optimizing Renewable Energy</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1418,9 +1418,9 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          16 · PRECISION AGRICULTURE — yield up, inputs and water down; a
+          16. PRECISION AGRICULTURE: yield up, inputs and water down. A
           satellite over a field whose cells take different rates, sensors
-          set in the soil; emitters each giving their own measure.
+          set in the soil. Emitters each giving their own measure.
                                                     [quiz: renewable]
       ================================================================== */}
       <Slide
@@ -1429,7 +1429,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["agriculture"]}
       >
-        <Head2 eyebrow="Part 2 · 04 / 04">Precision Agriculture</Head2>
+        <Head2 eyebrow="Part 2: 04 / 04">Precision Agriculture</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1560,12 +1560,12 @@ export default function Week08Sustainability() {
       />
 
       {/* ==================================================================
-          18 · RED AI VS. GREEN AI — performance bought step by step along a
-          flattening cost curve; an evaluation table where carbon efficiency
-          is primary; progress and consumption untied.       [quiz topic]
+          18. RED AI VS. GREEN AI: performance bought step by step along a
+          flattening cost curve. An evaluation table where carbon efficiency
+          is primary. Progress and consumption untied.       [quiz topic]
       ================================================================== */}
       <Slide id="red-green" border align="left">
-        <Head2 eyebrow="Part 3 · 01 / 05">Red AI vs. Green AI</Head2>
+        <Head2 eyebrow="Part 3: 01 / 05">Red AI vs. Green AI</Head2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -1675,9 +1675,9 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          19 · MODEL COMPRESSION TECHNIQUES — three measures, each with its
-          own figure: 32 cells cut to 4; a network thinned to a sparse one;
-          a large teacher passing to a small student.
+          19. MODEL COMPRESSION TECHNIQUES: three measures, each with its
+          own figure: 32 cells cut to 4. A network thinned to a sparse one.
+          A large teacher passing to a small student.
                                                     [quiz: red-green]
       ================================================================== */}
       <Slide
@@ -1686,7 +1686,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["compression"]}
       >
-        <Head2 eyebrow="Part 3 · 02 / 05">Model Compression Techniques</Head2>
+        <Head2 eyebrow="Part 3: 02 / 05">Model Compression Techniques</Head2>
 
         <ol className="mt-10 w-full max-w-5xl">
           <Measure
@@ -1798,13 +1798,13 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          20 · SMALL LANGUAGE MODELS (SLMS) — the trend set at display size;
-          28% of global AI electricity to scale; a simple query routed past
+          20. SMALL LANGUAGE MODELS (SLMS): the trend set at display size.
+          28% of global AI electricity to scale. A simple query routed past
           the massive generalist to a task-specific model.
                                                [quiz: compression]
       ================================================================== */}
       <Slide id="slms" border align="left" quizData={quiz["slms"]}>
-        <Head2 eyebrow="Part 3 · 03 / 05">Small Language Models (SLMs)</Head2>
+        <Head2 eyebrow="Part 3: 03 / 05">Small Language Models (SLMs)</Head2>
 
         <div className="w-full">
           <p className={`${DISPLAY} mt-9 max-w-4xl`}>
@@ -1826,7 +1826,7 @@ export default function Week08Sustainability() {
               className="mt-8 w-full"
               fill="none"
             >
-              {/* the whole bar is global AI electricity; 28% of 800 is 224 */}
+              {/* the whole bar is global AI electricity. 28% of 800 is 224 */}
               <text {...SVG_LABEL} x="0" y="12" fill="var(--charcoal)" fillOpacity="0.65">
                 GLOBAL AI ELECTRICITY
               </text>
@@ -1876,12 +1876,12 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          21 · NEUROMORPHIC COMPUTING — brain's architecture carried across
-          to hardware; a spike train with energy drawn only under each spike;
-          the memory–processor shuttle struck out.           [quiz topic]
+          21. NEUROMORPHIC COMPUTING: brain's architecture carried across
+          to hardware. A spike train with energy drawn only under each spike.
+          The memory-processor shuttle struck out.           [quiz topic]
       ================================================================== */}
       <Slide id="neuromorphic" border align="left">
-        <Head2 eyebrow="Part 3 · 04 / 05">Neuromorphic Computing</Head2>
+        <Head2 eyebrow="Part 3: 04 / 05">Neuromorphic Computing</Head2>
 
         <div className="w-full">
           <p className={`${LEAD} mt-9 max-w-4xl`}>
@@ -1966,8 +1966,8 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          22 · NEUROMORPHIC EFFICIENCY GAINS — the two chips named; one cell
-          in a hundred and one in a thousand; edge AI and sensory
+          22. NEUROMORPHIC EFFICIENCY GAINS: the two chips named. One cell
+          in a hundred and one in a thousand. Edge AI and sensory
           processing listed.                       [quiz: neuromorphic]
       ================================================================== */}
       <Slide
@@ -1976,7 +1976,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["neuromorphic-gains"]}
       >
-        <Head2 eyebrow="Part 3 · 05 / 05">Neuromorphic Efficiency Gains</Head2>
+        <Head2 eyebrow="Part 3: 05 / 05">Neuromorphic Efficiency Gains</Head2>
 
         <div className="w-full">
           <div
@@ -2072,12 +2072,12 @@ export default function Week08Sustainability() {
       />
 
       {/* ==================================================================
-          24 · AI AND THE CIRCULAR ECONOMY — waste carried round a loop until
-          it returns as a resource; mixed items on a belt sorted into three
-          bins; a passport tracing recovered materials.
+          24. AI AND THE CIRCULAR ECONOMY: waste carried round a loop until
+          it returns as a resource. Mixed items on a belt sorted into three
+          bins. A passport tracing recovered materials.
       ================================================================== */}
       <Slide id="circular" border align="left">
-        <Head2 eyebrow="Part 4 · 01 / 08">AI and the Circular Economy</Head2>
+        <Head2 eyebrow="Part 4: 01 / 08">AI and the Circular Economy</Head2>
 
         <div className="w-full">
           <div className="mt-10 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_18rem] md:gap-14">
@@ -2228,12 +2228,12 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          25 · BIODIVERSITY MONITORING — a soundscape with the calls marked;
-          a camera-trap frame boxing the animal it identifies; the three
+          25. BIODIVERSITY MONITORING: a soundscape with the calls marked.
+          A camera-trap frame boxing the animal it identifies. The three
           words of the last line listed.
       ================================================================== */}
       <Slide id="biodiversity" border align="left">
-        <Head2 eyebrow="Part 4 · 02 / 08">Biodiversity Monitoring</Head2>
+        <Head2 eyebrow="Part 4: 02 / 08">Biodiversity Monitoring</Head2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -2323,12 +2323,12 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          26 · THE EU AI ACT: ARTICLE 40 — the mandate at display size; a
-          published page of energy data; models placed on a FLOPs line with
+          26. THE EU AI ACT: ARTICLE 40: the mandate at display size. A
+          published page of energy data. Models placed on a FLOPs line with
           those past 10^23 inside the rule.                   [quiz topic]
       ================================================================== */}
       <Slide id="eu-ai-act" border align="left">
-        <Head2 eyebrow="Part 4 · 03 / 08" kicker="The EU AI Act:">
+        <Head2 eyebrow="Part 4: 03 / 08" kicker="The EU AI Act:">
           Article 40
         </Head2>
 
@@ -2414,12 +2414,12 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          27 · ISO STANDARDS AND FRAMEWORKS — the two standard numbers set
-          large over their sentences; greenwashing struck for compliance.
+          27. ISO STANDARDS AND FRAMEWORKS: the two standard numbers set
+          large over their sentences. Greenwashing struck for compliance.
                                                     [quiz: eu-ai-act]
       ================================================================== */}
       <Slide id="iso" border align="left" quizData={quiz["iso"]}>
-        <Head2 eyebrow="Part 4 · 04 / 08">ISO Standards and Frameworks</Head2>
+        <Head2 eyebrow="Part 4: 04 / 08">ISO Standards and Frameworks</Head2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -2480,12 +2480,12 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          28 · MEASUREMENT TOOLS — the two tools named; carbon over a unit of
-          work, equal to CCI; an estimate bar short of true usage by the
+          28. MEASUREMENT TOOLS: the two tools named. Carbon over a unit of
+          work, equal to CCI. An estimate bar short of true usage by the
           overheads it misses.                               [quiz topic]
       ================================================================== */}
       <Slide id="measurement" border align="left">
-        <Head2 eyebrow="Part 4 · 05 / 08">Measurement Tools</Head2>
+        <Head2 eyebrow="Part 4: 05 / 08">Measurement Tools</Head2>
 
         <div className="w-full">
           <div
@@ -2570,9 +2570,9 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          29 · ACTIONABLE INSIGHTS: DEVELOPERS — three measures: a tracking
-          stage added to the pipeline; the default arrow pointing at the
-          small model; a training run placed in the low-carbon trough.
+          29. ACTIONABLE INSIGHTS: DEVELOPERS: three measures: a tracking
+          stage added to the pipeline. The default arrow pointing at the
+          small model. A training run placed in the low-carbon trough.
                                                   [quiz: measurement]
       ================================================================== */}
       <Slide
@@ -2581,7 +2581,7 @@ export default function Week08Sustainability() {
         align="left"
         quizData={quiz["developers"]}
       >
-        <Head2 eyebrow="Part 4 · 06 / 08" kicker="Actionable Insights:">
+        <Head2 eyebrow="Part 4: 06 / 08" kicker="Actionable Insights:">
           Developers
         </Head2>
 
@@ -2668,12 +2668,12 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          30 · ACTIONABLE INSIGHTS: ORGANIZATIONS — three measures: an LCA
-          passed from hardware vendors; water carried round a loop; three
+          30. ACTIONABLE INSIGHTS: ORGANIZATIONS: three measures: an LCA
+          passed from hardware vendors. Water carried round a loop. Three
           reports held to one edge.
       ================================================================== */}
       <Slide id="organizations" border align="left">
-        <Head2 eyebrow="Part 4 · 07 / 08" kicker="Actionable Insights:">
+        <Head2 eyebrow="Part 4: 07 / 08" kicker="Actionable Insights:">
           Organizations
         </Head2>
 
@@ -2773,12 +2773,12 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          31 · FUTURE DIRECTIONS — water washing struck for water reporting;
-          hardware and software cut to fit one another; efficiency and total
+          31. FUTURE DIRECTIONS: water washing struck for water reporting.
+          Hardware and software cut to fit one another. Efficiency and total
           consumption both climbing.                         [quiz topic]
       ================================================================== */}
       <Slide id="future" border align="left">
-        <Head2 eyebrow="Part 4 · 08 / 08">Future Directions</Head2>
+        <Head2 eyebrow="Part 4: 08 / 08">Future Directions</Head2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-14">
           <div>
@@ -2847,7 +2847,7 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          32 · CONCLUSION — the three findings numbered; the fourth set at
+          32. CONCLUSION: the three findings numbered. The fourth set at
           display weight with its last words marked.            [quiz: future]
       ================================================================== */}
       <Slide
@@ -2893,8 +2893,8 @@ export default function Week08Sustainability() {
       </Slide>
 
       {/* ==================================================================
-          33 · SOURCES — the numbered list from content.md, each site linked;
-          superscript citations across the deck jump here.
+          33. SOURCES: the numbered list from content.md, each site linked.
+          Superscript citations across the deck jump here.
       ================================================================== */}
       <Slide id="sources" border align="left">
         <Head2 eyebrow="References">Sources</Head2>

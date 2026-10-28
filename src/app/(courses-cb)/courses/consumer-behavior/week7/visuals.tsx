@@ -1,20 +1,20 @@
 /* ==========================================================================
-   Consumer Behavior · Week 07 — figures
+   Consumer Behavior | Week 07, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates for the consumer decision-making process: wobbly
    doubled ink and loose watercolour washes set off-register. Every mark comes
-   from ../_visuals; the style rules live in ../CLAUDE.md.
+   from ../_visuals. The style rules live in ../CLAUDE.md.
 
    Fixed cast for this week:
-     · Person: every human, one fashion-illustration figure (the SHOPPER look),
+     - Person: every human, one fashion-illustration figure (the SHOPPER look),
        varied only by hair, clothes and skin washes.
-     · Agent: the AI agent (shared: a phone with the AI sparkle).
-     · Jar: the instant-coffee jar, the week's one running product for the
+     - Agent: the AI agent (shared: a phone with the AI sparkle).
+     - Jar: the instant-coffee jar, the week's one running product for the
        delegated-search plates.
-     · Sheets: a stack of pages, the amount of information gathered.
+     - Sheets: a stack of pages, the amount of information gathered.
 
    Colour roles: teal is the one thing chosen, bought, lit or ticked on a
-   plate; ochre a badge, a count or a small highlight; pencil only an absent
+   plate. Ochre a badge, a count or a small highlight. Pencil only an absent
    object (an empty slot, an unopened look-up, a placeholder).
    ========================================================================== */
 
@@ -98,7 +98,7 @@ function ribbon(c: Pt[], w: number): [Pt[], Pt[]] {
 
 /**
  * The week's opening: a decision as a long walk. A shopper stands at her
- * open, nearly empty fridge; a path winds past a laptop to the counter at the
+ * open, nearly empty fridge. A path winds past a laptop to the counter at the
  * far end, where the bag (teal) is the only part that is the purchase.
  */
 export function DecisionPath() {
@@ -250,7 +250,7 @@ function Carton({ x, bottom, w = 36, h = 70, fill = SK.sky, seed }: { x: number;
 /**
  * A decision that takes under a second: a close-up of the fridge door, where
  * a hand lifts the usual carton (teal) out of a row of cartons without a
- * pause; a stopwatch marks the time span.
+ * pause. A stopwatch marks the time span.
  */
 export function SecondDecision() {
   const door = sharp(rp([[20, 24], [252, 24], [252, 226], [20, 226]]), true, 3);
@@ -301,7 +301,7 @@ export function AgentHandsOff() {
       id="sk-agent-hands-off"
       width={400}
       height={230}
-      label="A shopper speaks a goal, shown as a short list in a speech bubble, to her AI agent, a phone with a sparkle. An arrow runs from the agent to a shelf of three coffee jars under a magnifier; the agent has picked one, washed teal."
+      label="A shopper speaks a goal, shown as a short list in a speech bubble, to her AI agent, a phone with a sparkle. An arrow runs from the agent to a shelf of three coffee jars under a magnifier. The agent has picked one, washed teal."
     >
       <Backwash cx={200} cy={118} rx={192} ry={100} seed={7301} />
       <Ground x0={24} x1={380} y={216} seed={7302} />
@@ -395,7 +395,7 @@ export function StageChoose() {
       id="sk-stage-choose"
       width={240}
       height={190}
-      label="Stage 4, product choice: a teal shopping bag stands beside a payment card; the choice has been made and paid for."
+      label="Stage 4, product choice: a teal shopping bag stands beside a payment card. The choice has been made and paid for."
     >
       <Backwash cx={120} cy={96} rx={112} ry={82} seed={7801} />
       <Ground x0={34} x1={206} y={158} seed={7802} />
@@ -407,7 +407,7 @@ export function StageChoose() {
 
 /**
  * Stage 5: the new phone in use, held in the hand, set against the phone she
- * expected (in her thought cloud); the teal tick between them is the verdict:
+ * expected (in her thought cloud). The teal tick between them is the verdict:
  * it met expectations.
  */
 export function StagePost() {
@@ -439,8 +439,8 @@ export function StagePost() {
 /**
  * The model against real consumers: three crossings of the same stream on
  * five stepping stones, one stone per stage. The first consumer jumps from
- * stone 1 to stone 4 (stones 2 and 3, never touched, are pencil); the second
- * steps back from 3 to 2 and crosses it again; the third treads the stones in
+ * stone 1 to stone 4 (stones 2 and 3, never touched, are pencil). The second
+ * steps back from 3 to 2 and crosses it again. The third treads the stones in
  * a different order, 1, 2, 4, 3, 5.
  */
 export function SkipRepeat() {
@@ -488,7 +488,7 @@ export function SkipRepeat() {
       id="sk-skip-repeat"
       width={W}
       height={268}
-      label="Three consumers cross the same stream on five stepping stones, one numbered stone for each stage. The first jumps from stone 1 to stone 4; stones 2 and 3, never touched, are drawn in pencil. The second steps back from stone 3 to stone 2 and crosses it again. The third treads the stones in a different order, 1, 2, 4, 3, 5."
+      label="Three consumers cross the same stream on five stepping stones, one numbered stone for each stage. The first jumps from stone 1 to stone 4. Stones 2 and 3, never touched, are drawn in pencil. The second steps back from stone 3 to stone 2 and crosses it again. The third treads the stones in a different order, 1, 2, 4, 3, 5."
     >
       {rows.map((y, r) => (
         <g key={r}>{stream(y, 8001 + r * 10)}</g>
@@ -569,7 +569,7 @@ function Lenses({ x, y, s, n, seed }: { x: number; y: number; s: number; n: numb
  * left, in the blush of the here and now, the phone the consumer has: the
  * actual state. On the right, in a sky-washed cloud, the phone she would like:
  * the ideal state. Both start level and identical. Drag the actual phone down
- * and its glass cracks further the lower it goes; drag the ideal phone up and
+ * and its glass cracks further the lower it goes. Drag the ideal phone up and
  * it gains camera lenses. A bracket measures the gap between the two levels.
  * Only when the gap passes the significance mark does a problem register,
  * and which phone moved names it: need or opportunity recognition.
@@ -759,7 +759,7 @@ export function MarketerNeed() {
       id="sk-marketer-need"
       width={400}
       height={200}
-      label="Two scenes in which a megaphone calls out a reminder. On the left, toward an almost empty coffee jar; on the right, toward a shoe worn through at the sole."
+      label="Two scenes in which a megaphone calls out a reminder. On the left, toward an almost empty coffee jar. On the right, toward a shoe worn through at the sole."
     >
       <Backwash cx={200} cy={102} rx={192} ry={88} seed={8401} />
       <Ground x0={24} x1={176} y={172} seed={8402} />
@@ -835,7 +835,7 @@ function Sheets({ x, bottom, w = 52, n = 5, ph = 6, seed }: { x: number; bottom:
   );
 }
 
-/** A small house seen from the front, standing on (x, bottom); `lit` washes its walls teal. */
+/** A small house seen from the front, standing on (x, bottom). `lit` washes its walls teal. */
 function House({ x, bottom, w = 100, h = 76, seed, lit = false }: { x: number; bottom: number; w?: number; h?: number; seed: number; lit?: boolean }) {
   const dw = r2(w * 0.08);
   const ww = r2(w * 0.09);
@@ -1091,7 +1091,7 @@ function streetPrices(street: number): number[] {
 }
 
 /**
- * Search has costs, as an instrument. Eight shops line a street; the price of
+ * Search has costs, as an instrument. Eight shops line a street. The price of
  * the same headphones in each is unknown (a pencil tag) until the shopper
  * walks in. Each visit reveals one more price and costs $4 of time and fares.
  * Under the street, aligned with the shops, two running totals: the money
@@ -1134,10 +1134,10 @@ export function SearchStreet() {
   );
   const visit = () => setSeen((n) => Math.min(STREET_SHOPS, n + 1));
   const awnings = [SK.camel, SK.sky, SK.blush, SK.tan, SK.earth, SK.camel, SK.sky, SK.blush];
-  const label = `A street of eight shops selling the same headphones. ${seen} of 8 shops visited; prices seen: ${prices
+  const label = `A street of eight shops selling the same headphones. ${seen} of 8 shops visited. Prices seen: ${prices
     .slice(0, seen)
     .map((p) => `$${p}`)
-    .join(", ")}. Money saved against the first price: $${saved(seen)}; search cost at $4 a visit: $${cost(seen)}. The best place to stop so far is shop ${stop}, marked teal with the price paid there.`;
+    .join(", ")}. Money saved against the first price: $${saved(seen)}. Search cost at $4 a visit: $${cost(seen)}. The best place to stop so far is shop ${stop}, marked teal with the price paid there.`;
   return (
     <>
       <SketchFrame id="sk-search-street" width={800} height={322} label={label}>
@@ -1295,7 +1295,7 @@ export function FunctionalRisk() {
       id="sk-functional-risk"
       width={240}
       height={190}
-      label="Functional risk: a mug with a crack down its side drips drops of coffee onto the table; the product does not perform as expected."
+      label="Functional risk: a mug with a crack down its side drips drops of coffee onto the table. The product does not perform as expected."
     >
       <Backwash cx={120} cy={96} rx={112} ry={82} seed={9201} />
       <Ground x0={30} x1={210} y={150} seed={9202} />
@@ -1427,7 +1427,7 @@ const DETAILS = ["DOLLARS", "CENTS", "WEIGHT"];
 /**
  * The look-up board, played by the class. Two coffee jars head two columns of
  * hidden details (dollars, cents, weight), as in the study. Tap a pencil card
- * to look it up; when look-ups cost, each one adds $10 to the bill. Tap a jar
+ * to look it up. When look-ups cost, each one adds $10 to the bill. Tap a jar
  * to choose it: the board opens, and the price per ounce shows whether the
  * choice was the better deal. Beside it, what the AI agents in the study did
  * under the same cost: how many of the six details they looked up, and how
@@ -1469,7 +1469,7 @@ export function InformationBoard() {
     style: { cursor: "pointer", outline: "none" },
   });
   const label = `A look-up board of two instant coffees, each with three hidden details: dollars, cents and weight. Look-ups are ${isCostly ? "$10 each" : "free"}. ${looked} of 6 details looked up${isCostly ? `, $${looked * 10} spent` : ""}. ${
-    done ? `The ${choice === 0 ? "left" : "right"} coffee was chosen; it is ${choice === better ? "" : "not "}the one cheaper per ounce (${cents(per[0])} against ${cents(per[1])}).` : "No coffee chosen yet."
+    done ? `The ${choice === 0 ? "left" : "right"} coffee was chosen. It is ${choice === better ? "" : "not "}the one cheaper per ounce (${cents(per[0])} against ${cents(per[1])}).` : "No coffee chosen yet."
   } AI agents in the study, with look-ups ${isCostly ? "at $10" : "free"}, looked up ${study.details} of 6 details on average and chose the coffee cheaper per ounce in about ${lit} of 10 sessions.`;
   return (
     <>
@@ -1536,7 +1536,7 @@ export function InformationBoard() {
           </g>
         ) : (
           <SketchText x={285} y={300} anchor="middle" size={11} fill={SK.pencil}>
-            {isCostly ? `${looked} LOOK-UPS · $${looked * 10} SPENT` : `${looked} LOOK-UPS`}
+            {isCostly ? `${looked} LOOK-UPS | $${looked * 10} SPENT` : `${looked} LOOK-UPS`}
           </SketchText>
         )}
         {isCostly && done ? (
@@ -1613,9 +1613,9 @@ const GOAL_LINES: Record<Goal, string[]> = {
  * The delegation instruction as the switch. Tap one of the two instruction
  * cards (a vague goal or a specific one) and the AI agents in the study go to
  * work with every look-up costing $10. Three gauges fill to how often they
- * looked up each detail; under the study's two coffees, ten small jars split
+ * looked up each detail. Under the study's two coffees, ten small jars split
  * to show how many in ten chose each one. With the vague goal the weight
- * gauge drops to about half and most choices go to the $4.99 coffee; with the
+ * gauge drops to about half and most choices go to the $4.99 coffee. With the
  * specific goal the agents look up the weight and most choose the $5.00
  * coffee, cheaper per ounce (teal). Real data.
  */
@@ -1637,7 +1637,7 @@ export function GoalBoard() {
     { id: "vague", y: 30, h: 86 },
     { id: "specific", y: 140, h: 102 },
   ];
-  const label = `Two instruction cards: a vague goal, find the best deal on instant coffee, and a specific goal, find the coffee with the lowest price per ounce. The ${goal} goal is selected and passed to an AI agent; every look-up costs $10. Gauges show how often the AI agents in the study looked up each detail: dollars ${pct(d.dollars / 2)}, cents ${pct(d.cents / 2)}, weight ${pct(d.weight / 2)}. Of ten choices, ${10 - better} went to the $4.99 coffee for 10 ounces and ${better} to the $5.00 coffee for 11 ounces, the one cheaper per ounce, marked teal. Real data.`;
+  const label = `Two instruction cards: a vague goal, find the best deal on instant coffee, and a specific goal, find the coffee with the lowest price per ounce. The ${goal} goal is selected and passed to an AI agent. Every look-up costs $10. Gauges show how often the AI agents in the study looked up each detail: dollars ${pct(d.dollars / 2)}, cents ${pct(d.cents / 2)}, weight ${pct(d.weight / 2)}. Of ten choices, ${10 - better} went to the $4.99 coffee for 10 ounces and ${better} to the $5.00 coffee for 11 ounces, the one cheaper per ounce, marked teal. Real data.`;
   return (
     <>
       <SketchFrame id="sk-goal-board" width={800} height={360} label={label}>
@@ -1746,7 +1746,7 @@ export function GoalBoard() {
 
 /**
  * The brands a consumer knows, as nested sets. The awareness set holds every
- * brand known; inside it the evoked set (the brands recalled) holds the
+ * brand known. Inside it the evoked set (the brands recalled) holds the
  * consideration set (teal: seriously considered), the inept set (rejected,
  * crossed out) and the inert set (indifferent). Switch the source of the
  * consideration set: recalled from memory, or the list an AI agent returns.
@@ -1763,7 +1763,7 @@ export function ConsiderationSets() {
   const considerBlob = blob(232, 188, 86, 66, 10303);
   const inept = blob(388, 150, 48, 40, 10304);
   const inert = blob(388, 242, 48, 34, 10305);
-  const label = `Nested sets of brands, each a blob of product packs. The awareness set holds all brands known; inside it the evoked set holds the brands recalled; inside that, the consideration set (teal) holds three brands, the inept set two crossed-out brands and the inert set two plain brands. ${
+  const label = `Nested sets of brands, each a blob of product packs. The awareness set holds all brands known. Inside it the evoked set holds the brands recalled. Inside that, the consideration set (teal) holds three brands, the inept set two crossed-out brands and the inert set two plain brands. ${
     agent ? "The three brands in the consideration set come from the list an AI agent returned, next to the consumer." : "The three brands in the consideration set were recalled by the consumer from memory."
   }`;
   const arrow = agent ? rp(curvePts([620, 292], [560, 200], [326, 196], 10)) : rp([[596, 196], [326, 196]]);
@@ -1858,7 +1858,7 @@ const ATTRS = ["PRICE", "BATTERY", "SCREEN"];
 type RuleId = "compensatory" | "lexicographic" | "aspects" | "conjunctive" | "both";
 
 type Verdict = {
-  /** For each laptop: the attribute (0–2) that knocked it out, or null if it stayed. */
+  /** For each laptop: the attribute (0 to 2) that knocked it out, or null if it stayed. */
   out: (number | null)[];
   /** Laptops left standing. */
   left: number[];
@@ -1932,7 +1932,7 @@ export function DecisionRules() {
   const rowY = (i: number) => 92 + i * 56;
   const names = v.left.map((i) => LAPTOPS[i].id).join(" and ");
   const label = `Five laptops, A to E, scored on price, battery and screen with up to five pips each. Rule: ${RULES.find((r) => r.id === rule)!.label}. ${
-    final ? `The rule picks laptop ${names}.` : `Laptops ${names} remain; the rule alone does not choose between them.`
+    final ? `The rule picks laptop ${names}.` : `Laptops ${names} remain. The rule alone does not choose between them.`
   }`;
   return (
     <>

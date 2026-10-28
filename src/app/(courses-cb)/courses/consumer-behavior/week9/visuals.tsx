@@ -1,22 +1,22 @@
 /* ==========================================================================
-   Consumer Behavior · Week 09 — figures
+   Consumer Behavior | Week 09, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates for postpurchase behavior, satisfaction and
    loyalty: wobbly doubled ink and loose watercolour washes set off-register.
-   Every mark comes from ../_visuals; the style rules live in ../CLAUDE.md.
+   Every mark comes from ../_visuals. The style rules live in ../CLAUDE.md.
 
    Fixed cast for this week:
-     · Person: every human, one fashion-illustration figure (the OWNER look
+     - Person: every human, one fashion-illustration figure (the OWNER look
        for the week's buyer), varied only by hair, clothes and skin washes.
-     · Headphones: the purchase the week follows, from unboxing to disposal.
-     · Face: the one mark for how satisfied a consumer feels.
-     · ReviewCard: every online review.
-     · CoffeeBag: the routine product an agent reorders; the brand badge
+     - Headphones: the purchase the week follows, from unboxing to disposal.
+     - Face: the one mark for how satisfied a consumer feels.
+     - ReviewCard: every online review.
+     - CoffeeBag: the routine product an agent reorders. The brand badge
        marks the consumer's usual brand.
-     · Agent: the AI agent (shared: a phone with the AI sparkle).
+     - Agent: the AI agent (shared: a phone with the AI sparkle).
 
    Colour roles: teal is the one thing chosen, bought, lit or ticked on a
-   plate; ochre a badge, a count or a small highlight; pencil only an absent
+   plate. Ochre a badge, a count or a small highlight. Pencil only an absent
    object (a review not written, an option not chosen).
    ========================================================================== */
 
@@ -373,7 +373,7 @@ function Coins({ x, bottom, n, w = 34, seed }: { x: number; bottom: number; n: n
 
 /**
  * The cost of keeping against the cost of winning: an existing customer, back
- * with the brand's bag, beside a short stack of coins; a new customer beside
+ * with the brand's bag, beside a short stack of coins. A new customer beside
  * a tall one.
  */
 export function KeepVsWin() {
@@ -432,7 +432,7 @@ function AdPoster({ x, y, seed }: { x: number; y: number; seed: number }) {
 
 /**
  * The disconfirmation model as an instrument. Two rails share one scale: on
- * the left, the ad that set the consumer's expectations; on the right, the
+ * the left, the ad that set the consumer's expectations. On the right, the
  * headphones as they performed in use. Drag either one. A bracket measures
  * the gap, and the face on the right reports the verdict: positive
  * disconfirmation, confirmation or negative disconfirmation.
@@ -587,7 +587,7 @@ export function Disconfirmation() {
 
 /**
  * Equity as a balance: on one pan, what the consumer gave (coins and the time
- * and effort of a clock); on the other, what the consumer received (the
+ * and effort of a clock). On the other, what the consumer received (the
  * headphones). The beam hangs level: a fair exchange.
  */
 export function EquityScale() {
@@ -649,7 +649,7 @@ export function BlameCompany() {
       id="sk-blame-company"
       width={400}
       height={250}
-      label="An owner points at the brand's box on the counter; between them lie the headphones with the band snapped at the hinge. A thought cloud above the owner holds a deeply unhappy face."
+      label="An owner points at the brand's box on the counter. Between them lie the headphones with the band snapped at the hinge. A thought cloud above the owner holds a deeply unhappy face."
     >
       <Backwash cx={200} cy={140} rx={194} ry={106} seed={1600} />
       <Ground x0={30} x1={370} y={g} seed={1601} />
@@ -736,7 +736,7 @@ export function SecondThoughts() {
 
 /**
  * A receipt for an expensive purchase that cannot be undone: a large total
- * and a FINAL SALE · NO RETURNS line.
+ * and a FINAL SALE | NO RETURNS line.
  */
 export function FinalSale() {
   const x0 = 120;
@@ -756,7 +756,7 @@ export function FinalSale() {
       id="sk-final-sale"
       width={400}
       height={262}
-      label="A long receipt with one item line, a large total of $349, and a stamped line FINAL SALE · NO RETURNS."
+      label="A long receipt with one item line, a large total of $349, and a stamped line FINAL SALE | NO RETURNS."
     >
       <Backwash cx={200} cy={134} rx={190} ry={118} seed={1900} />
       <Paper pts={slip} seed={1901} />
@@ -992,7 +992,7 @@ export function QuickReply() {
       id="sk-quick-reply"
       width={400}
       height={236}
-      label="A phone chat. The owner's message shows the broken headphones; under the time 2 MIN, the company's reply arrives with a teal tick."
+      label="A phone chat. The owner's message shows the broken headphones. Under the time 2 MIN, the company's reply arrives with a teal tick."
     >
       <Backwash cx={200} cy={118} rx={190} ry={110} seed={2700} />
       <Wash pts={body} seed={2701} fill={SK.charcoal} opacity={0.75} />
@@ -1072,7 +1072,7 @@ export function PrivateResponse() {
       id="sk-private-response"
       width={400}
       height={250}
-      label="An owner carrying a plain shopping bag from another brand warns a friend; the speech bubble shows the broken headphones crossed out."
+      label="An owner carrying a plain shopping bag from another brand warns a friend. The speech bubble shows the broken headphones crossed out."
     >
       <Backwash cx={200} cy={138} rx={194} ry={108} seed={2900} />
       <Ground x0={24} x1={376} y={g} seed={2901} />
@@ -1156,7 +1156,7 @@ export function SilentMajority() {
       id="sk-silent-majority"
       width={800}
       height={184}
-      label="A row of twelve unhappy faces. Eleven say nothing; only the last one, nearest the shop, speaks to it, its speech bubble washed teal."
+      label="A row of twelve unhappy faces. Eleven say nothing. Only the last one, nearest the shop, speaks to it, its speech bubble washed teal."
     >
       <Backwash cx={400} cy={96} rx={396} ry={84} seed={3100} />
       <Ground x0={630} x1={790} y={g} seed={3101} />
@@ -1177,8 +1177,8 @@ export function SilentMajority() {
    ========================================================================== */
 
 /**
- * Three ways out, from the headphones at the top: kept inside the home; lent
- * to a friend on a round trip that brings them back; or let go for good, one
+ * Three ways out, from the headphones at the top: kept inside the home. Lent
+ * to a friend on a round trip that brings them back. Or let go for good, one
  * way, to a bin, a gift, a swap or a sale.
  */
 export function DisposalPaths() {
@@ -1288,7 +1288,7 @@ const CREDIT_REQUESTS = [
 /**
  * Two review requests that both offer a credit, differing only in whom the
  * review is said to help. Under each, a bar shows how willing customers were
- * to write the review; the request to help other shoppers wins (teal).
+ * to write the review. The request to help other shoppers wins (teal).
  */
 export function HelpWhom() {
   const base = 218;
@@ -1298,7 +1298,7 @@ export function HelpWhom() {
       id="sk-help-whom"
       width={400}
       height={236}
-      label="Two review request emails, each offering a $10 credit. One asks the customer to help other shoppers; the other asks them to help the company. Under each, a bar of review intention on a 1 to 5 scale: 4.32 for helping other shoppers, washed teal, and 3.95 for helping the company."
+      label="Two review request emails, each offering a $10 credit. One asks the customer to help other shoppers. The other asks them to help the company. Under each, a bar of review intention on a 1 to 5 scale: 4.32 for helping other shoppers, washed teal, and 3.95 for helping the company."
     >
       <Backwash cx={200} cy={120} rx={194} ry={112} seed={3700} />
       {CREDIT_REQUESTS.map((m, i) => {
@@ -1334,7 +1334,7 @@ export function HelpWhom() {
       })}
       <InkLine pts={rp([[40, base], [360, base]])} seed={3760} width={1} />
       <SketchText x={200} y={134} anchor="middle" size={9.5}>
-        REVIEW INTENTION, 1–5
+        REVIEW INTENTION, 1 to 5
       </SketchText>
     </SketchFrame>
   );
@@ -1342,7 +1342,7 @@ export function HelpWhom() {
 
 /* -- a quiet labelled switch under an interactive plate --------------------- */
 
-/** One row of outlined buttons, one of them on; `label` names the group for screen readers. */
+/** One row of outlined buttons, one of them on. `label` names the group for screen readers. */
 function PlateChoice<T extends string>({
   label,
   options,
@@ -1389,7 +1389,7 @@ type Appeal = "shoppers" | "company";
  * who wrote a review after a request, and the mean review length in
  * characters, by reviewer experience, incentive scheme (paid for completing
  * any review vs paid only when the review is voted helpful) and the request's
- * message (help other shoppers = social exchange; help the company =
+ * message (help other shoppers = social exchange, help the company =
  * reciprocal exchange). Wadi et al. (2026b), Table II.
  */
 const REVIEW_FIELD: Record<Reviewer, Record<Incentive, Record<Appeal, { rate: number; chars: number }>>> = {
@@ -1410,7 +1410,7 @@ const CHARS_PER_LINE = 24;
  * The review request as an instrument, on the retailer's field data. Set who
  * is asked, how the reward is paid and whom the message says the review will
  * help. The middle shows how many of 100 customers asked wrote a review
- * (teal cards; pencil for reviews not written); the right shows how long the
+ * (teal cards, pencil for reviews not written). The right shows how long the
  * average review ran.
  */
 export function ReviewRequests() {
@@ -1443,7 +1443,7 @@ export function ReviewRequests() {
   const rnd = seeded(4300);
   const wobbleOf = Array.from({ length: 9 }, () => 0.84 + rnd() * 0.12);
 
-  const label = `A review request ${who === "first" ? "to a first-time reviewer" : "to an experienced reviewer"}, paid ${pay === "any" ? "for any review" : "only if the review is voted helpful"}, asking the customer to ${msg === "shoppers" ? "help other shoppers" : "help the company"}. ${n} of 100 customers asked wrote a review; the average review ran ${chars} characters.`;
+  const label = `A review request ${who === "first" ? "to a first-time reviewer" : "to an experienced reviewer"}, paid ${pay === "any" ? "for any review" : "only if the review is voted helpful"}, asking the customer to ${msg === "shoppers" ? "help other shoppers" : "help the company"}. ${n} of 100 customers asked wrote a review. The average review ran ${chars} characters.`;
 
   return (
     <>
@@ -1648,7 +1648,7 @@ export function BetterDeal() {
       id="sk-better-deal"
       width={400}
       height={262}
-      label="A customer walks away from the usual brand's shop toward a rival's sign offering 30% off; her thought cloud holds a smiling face."
+      label="A customer walks away from the usual brand's shop toward a rival's sign offering 30% off. Her thought cloud holds a smiling face."
     >
       <Backwash cx={200} cy={146} rx={194} ry={112} seed={4700} />
       <Ground x0={20} x1={380} y={g} seed={4701} />
@@ -1688,11 +1688,11 @@ const ppoOfX = (x: number) => {
 
 /**
  * Delegated repurchase as an instrument. The usual coffee (brand badge)
- * stands at its price per ounce on the upper rail; a rival coffee stands on
+ * stands at its price per ounce on the upper rail. A rival coffee stands on
  * the lower rail, and the student drags it along the same price scale. Two
  * agents reorder at once: one told "reorder my usual coffee", one told "buy
  * coffee at the best price". Whatever each agent puts in its basket is teal.
- * The instruction that names the brand keeps it; the instruction that states
+ * The instruction that names the brand keeps it. The instruction that states
  * only a goal switches as soon as the rival is cheaper.
  */
 export function UsualOrBest() {
