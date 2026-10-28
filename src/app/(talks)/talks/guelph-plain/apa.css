@@ -1,0 +1,47 @@
+/* Plain APA look for this deck only: white page, black text, greys for
+   structure and fills, Times New Roman for text and Arial inside figures
+   (APA 7 recommends a sans serif font in figures). No accent colour. */
+.apa {
+  --paper: #ffffff;
+  --paper-2: #ffffff;
+  --paper-3: #d9d9d9;
+  --ink: #000000;
+  --ink-2: #000000;
+  --ink-3: #404040;
+  --rule: #bfbfbf;
+  --rule-2: #808080;
+  --signal: #000000;
+  --signal-deep: #000000;
+  --signal-tint: rgba(0, 0, 0, 0.04);
+  --signal-line: rgba(0, 0, 0, 0.25);
+  --counter: #000000;
+  --counter-deep: #000000;
+  --counter-tint: rgba(0, 0, 0, 0.04);
+  --counter-line: rgba(0, 0, 0, 0.25);
+  --font-heading: "Times New Roman", Times, serif;
+  --font-body: "Times New Roman", Times, serif;
+  --font-label: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+}
+
+.apa .type-display,
+.apa .type-h1,
+.apa .type-h2,
+.apa .type-quote {
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.apa .type-quote {
+  font-weight: 400;
+}
+
+.apa .figure-well {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.apa svg[role="img"] text {
+  font-family: Arial, Helvetica, sans-serif;
+}

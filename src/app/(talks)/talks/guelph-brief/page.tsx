@@ -18,7 +18,10 @@ import {
 } from "./_components/Bars";
 import { CoffeeShelf } from "./_components/Coffee";
 import { NutritionPlate } from "./_components/NutritionPlate";
-import { ExactPlate, PassAtOnePlate, PeoplePlate } from "./_components/Methods";
+import {
+  ExactPlate,
+  PassAtOnePlate /* , PeoplePlate */,
+} from "./_components/Methods";
 
 // The brief deck: every word comes verbatim from slides.md. The detailed
 // slides live at /talks/guelph and serve as backup for questions.
@@ -46,7 +49,7 @@ const SECTIONS: DeckSection[] = [
     label: "Methods: LLMs as subjects of analysis",
     ids: [
       "methods-standard",
-      "methods-subjects",
+      // "methods-subjects",
       "methods-emnlp",
       "methods-etc",
     ],
@@ -58,6 +61,7 @@ const SECTIONS: DeckSection[] = [
   {
     label: "Whom Do AI Agents Serve?",
     ids: [
+      "sponsorship-question",
       "sponsorship-method",
       "sponsorship",
       "sponsorship-process",
@@ -297,27 +301,6 @@ export default function Page() {
         </Split>
       </Slide>
 
-      {/* Methods 2: an LLM is not a sample of respondents */}
-      <Slide id="methods-subjects" border>
-        <Kicker>Methods: Why one response is not enough</Kicker>
-        <Heading>
-          An LLM is <span className={KEY}>not a sample</span> of respondents
-        </Heading>
-        <Split plate={<PeoplePlate />}>
-          <ul className="flex flex-col gap-4">
-            <li className={`${BODY} border-t border-[var(--ink)] pt-3`}>
-              <strong>Human respondents:</strong> variance comes from
-              differences between participants and from variability within each
-              participant.
-            </li>
-            <li className={`${BODY} border-t border-[var(--rule-2)] pt-3`}>
-              <strong>LLMs:</strong> for a given model and prompt, every
-              response is a draw from a single probability distribution.
-            </li>
-          </ul>
-        </Split>
-      </Slide>
-
       {/* Methods 3: the EMNLP framework */}
       <Slide id="methods-emnlp" border>
         <Kicker>Findings of EMNLP 2025</Kicker>
@@ -354,7 +337,7 @@ export default function Page() {
                 t: "Corollary",
                 d: (
                   <>
-                    it is asymptotically normal, which yields confidence
+                    the Monte-Carlo mean is asymptotically normal, which yields confidence
                     intervals for model behavior.
                   </>
                 ),
@@ -535,20 +518,74 @@ export default function Page() {
         </Split>
       </Slide>
 
-      {/* Paper 2, research question and method */}
-      <Slide id="sponsorship-method" border>
+      {/* Paper 2, research question and problem setup */}
+      <Slide id="sponsorship-question" border>
         <Kicker>
           Whom Do AI Agents Serve? (<em>JBR</em>, in preparation)
         </Kicker>
         <Heading>
           Does the <span className={KEY}>delegating principal</span> change how
-          an AI agent evaluates sponsored listings?
+          AI agents evaluate sponsored listings?
         </Heading>
         <Split plate={<SponsorDesign />}>
+          <ul className="flex flex-col gap-3">
+            <li
+              className={`${BODY} border-t border-[var(--ink)] pt-2.5 !text-[1.1rem]`}
+            >
+              <strong>Persuasion knowledge:</strong> consumers recognize a
+              sponsored tag as paid placement, become skeptical of the
+              listing&apos;s value, and penalize it.
+            </li>
+            <li
+              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.1rem]`}
+            >
+              <strong>Context-dependent role adoption:</strong> conditioning an
+              LLM on a principal shifts its perspective toward that party&apos;s
+              interest in training corpora (a warning for the traveler vs.
+              retail media revenue for the platform).
+            </li>
+            <li
+              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.1rem]`}
+            >
+              <strong>Hypotheses:</strong> platform delegation weakens
+              pre-choice skepticism toward sponsored listings and attenuates the
+              sponsorship penalty.
+            </li>
+          </ul>
+        </Split>
+      </Slide>
+
+      {/* Paper 2, experimental design, measures, and conceptual model */}
+      <Slide id="sponsorship-method" border>
+        <Kicker>
+          Whom Do AI Agents Serve? (<em>JBR</em>, in preparation)
+        </Kicker>
+        <Heading>
+          Manipulating sponsorship and the delegating principal with{" "}
+          <span className={KEY}>no instruction</span> to favor advertisers
+        </Heading>
+        <Split plate={<MediationPlate results={false} />}>
           <p className={BODY}>
             2 (Sponsorship: organic vs. sponsored) × 2 (Principal: consumer vs.
             platform delegation)
           </p>
+          <ul className="flex flex-col gap-3">
+            <li
+              className={`${BODY} border-t border-[var(--ink)] pt-2.5 !text-[1.05rem]`}
+            >
+              <strong>Target choice:</strong> binary choice between the target
+              listing and an objectively matched organic competitor.
+            </li>
+            <li
+              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.05rem]`}
+            >
+              <strong>Pre-choice skepticism:</strong> a judge model (Kev 9B)
+              scores each pre-choice reasoning trace on one item: &ldquo;The
+              sponsorship status of the target made the agent skeptical of its
+              true value to the traveler.&rdquo; (ICC(2,1) = .959 against human
+              ratings)
+            </li>
+          </ul>
         </Split>
       </Slide>
 
@@ -562,12 +599,12 @@ export default function Page() {
           sponsorship penalty
         </Heading>
         <Split plate={<SponsorBars />}>
-          <p className={BODY}>
-            Principal × Sponsorship: <em>β</em> = 3.99, <em>p</em> &lt; .001
-          </p>
+          <p className={BODY}>Principal × Sponsorship: β = 3.99, p &lt; .001</p>
 
           <p className={BODY}>
-            Replicates across 5 additional LLMs and 6 decision models
+            <strong>Beneficiary mitigation:</strong> adding &ldquo;Act in the
+            traveler&apos;s best interest&rdquo; to the platform prompt restores
+            the sponsorship penalty to 48.2 pp (3.2% sponsored target choice).
           </p>
         </Split>
       </Slide>
@@ -596,15 +633,6 @@ export default function Page() {
             <li
               className={`${BODY} border-t border-[var(--ink)] pt-2.5 !text-[1.05rem]`}
             >
-              <strong>Process tracing:</strong> a judge model (Kev 9B) scores
-              each pre-choice reasoning trace on one item: &ldquo;The
-              sponsorship status of the target made the agent skeptical of its
-              true value to the traveler.&rdquo; (ICC(2,1) = .959 against human
-              ratings)
-            </li>
-            <li
-              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.05rem]`}
-            >
               <strong>Skepticism toward a sponsored target:</strong> 6.19 under
               consumer delegation vs. 4.80 under platform delegation (1 to 7
               scale)
@@ -615,6 +643,13 @@ export default function Page() {
               <strong>Conditional indirect effects:</strong> consumer delegation
               −8.06, 95% CI [−10.64, −7.31]. Platform delegation −5.79, 95% CI
               [−7.66, −5.20].
+            </li>
+            <li
+              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.05rem]`}
+            >
+              <strong>Cross-LLM replication:</strong> the choice interaction
+              replicates across 5 additional LLMs, and the moderated mediation
+              replicates across all 3 Gemini Flash generations.
             </li>
           </ul>
         </Split>
@@ -628,6 +663,11 @@ export default function Page() {
           Principal × Sponsorship interaction on held-out stimuli
         </Heading>
         <Split plate={<DebiasBars />}>
+          <p className={BODY}>
+            <strong>Study 2 (6 non-generative decision models):</strong> the
+            Principal × Sponsorship interaction replicates in a single forward
+            pass across 360 Latin-square hotel stimuli.
+          </p>
           <p className={BODY}>
             Kev 9B, distilled on retail categories only. Tested on the 360 Study
             2 hotel stimuli
@@ -824,20 +864,20 @@ export default function Page() {
         </Heading>
         <ul className="grid w-full max-w-[64rem] gap-x-10 md:grid-cols-2">
           {[
-            ["AI Applications in Business", "/courses/ai-in-business"],
+            ["Applications of AI in Business", "/courses/ai-in-business"],
             [
               "Responsible AI & Algorithmic Governance",
               "/courses/responsible-ai-governance",
             ],
             [
-              "Marketing Research & Analytics",
+              "Marketing Research and Analytics",
               "/courses/marketing-research-analytics",
             ],
             ["Digital Transformation", "/courses/digital-transformation"],
             ["Consumer Behaviour", "/courses/consumer-behavior"],
-            ["Intro Marketing", "/courses/intro-marketing"],
+            ["Introduction to Marketing", "/courses/intro-marketing"],
             [
-              "Digital Marketing & E-commerce",
+              "Digital Marketing and E-commerce",
               "/courses/digital-marketing-ecommerce",
             ],
           ].map(([name, href]) => (

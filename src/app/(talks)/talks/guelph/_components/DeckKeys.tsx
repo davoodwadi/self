@@ -15,6 +15,7 @@ export default function DeckKeys({ sections }: { sections?: DeckSection[] }) {
   const [titles, setTitles] = useState<string[]>([]);
   const [ids, setIds] = useState<string[]>([]);
   const [current, setCurrent] = useState(0);
+  const [activeId, setActiveId] = useState("");
 
   useEffect(() => {
     const slides = () => [...document.querySelectorAll<HTMLElement>("[data-slide]")];
@@ -30,7 +31,14 @@ export default function DeckKeys({ sections }: { sections?: DeckSection[] }) {
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       setProgress(max > 0 ? Math.min(1, window.scrollY / max) : 0);
-      setCurrent(index());
+      const list = slides();
+      const idx = index();
+      setCurrent(idx);
+      setActiveId(list[idx]?.id ?? "");
+      setIds((prev) => {
+        const next = list.map((s) => s.id);
+        return prev.length === next.length && prev.every((v, i) => v === next[i]) ? prev : next;
+      });
     };
 
     const onKey = (e: KeyboardEvent) => {
@@ -48,8 +56,9 @@ export default function DeckKeys({ sections }: { sections?: DeckSection[] }) {
 
     // A timer, not an animation frame: hidden tabs pause animation frames, which left the dots empty there.
     const timer = setTimeout(() => {
-      setTitles(slides().map((s) => s.querySelector("h1, h2")?.textContent?.trim() ?? ""));
-      setIds(slides().map((s) => s.id));
+      const list = slides();
+      setTitles(list.map((s) => s.querySelector("h1, h2")?.textContent?.trim() ?? ""));
+      setIds(list.map((s) => s.id));
       onScroll();
     }, 0);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -59,19 +68,24 @@ export default function DeckKeys({ sections }: { sections?: DeckSection[] }) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("keydown", onKey);
     };
-  }, []);
+  }, [sections]);
 
-  const go = (i: number) =>
-    document.querySelectorAll<HTMLElement>("[data-slide]")[i]?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const go = (i: number, id?: string) => {
+    const el =
+      (id ? document.getElementById(id) : null) ??
+      document.querySelectorAll<HTMLElement>("[data-slide]")[i];
+    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   // One dot per section when sections are given, otherwise one per slide.
   const dots = sections
     ? sections.map((s) => ({
         label: s.label,
+        id: s.ids[0],
         first: ids.indexOf(s.ids[0]),
-        on: s.ids.includes(ids[current]),
+        on: s.ids.includes(activeId || ids[current]),
       }))
-    : titles.map((t, i) => ({ label: t, first: i, on: i === current }));
+    : titles.map((t, i) => ({ label: t, id: ids[i], first: i, on: i === current }));
 
   return (
     <>
@@ -87,7 +101,7 @@ export default function DeckKeys({ sections }: { sections?: DeckSection[] }) {
             <button
               key={i}
               type="button"
-              onClick={() => go(d.first)}
+              onClick={() => go(d.first, d.id)}
               aria-label={`${sections ? "Section" : "Slide"} ${i + 1}: ${d.label}`}
               aria-current={d.on ? "step" : undefined}
               className="group relative flex h-5 w-5 items-center justify-center"

@@ -51,14 +51,14 @@ Methods: A Monte-Carlo Sampling Framework For Reliable Evaluation of Large Langu
 
 ---
 
-Methods: Why one response is not enough
+<!-- Methods: Why one response is not enough
 
 # An LLM is not a sample of respondents
 
 - **Human respondents:** variance comes from differences between participants and from variability within each participant.
 - **LLMs:** for a given model and prompt, every response is a draw from a single probability distribution.
 
-[different participants, each answering once, vs. one LLM answering the same prompt many times, on the same axis]
+[different participants, each answering once, vs. one LLM answering the same prompt many times, on the same axis] -->
 
 ---
 
@@ -69,7 +69,7 @@ Findings of EMNLP 2025
 - **Estimand:** the model's behavior is the expected score of its response to a prompt, over its response distribution.
 - **Theorem 1:** the Monte-Carlo mean of K independent responses is an unbiased estimator of the model's behavior.
 - **Theorem 2:** its variance decays to zero as K grows.
-- **Corollary:** it is asymptotically normal, which yields confidence intervals for model behavior.
+- **Corollary:** the Monte-Carlo mean is asymptotically normal, which yields confidence intervals for model behavior.
 - **Choosing K:** the smallest K with the power to detect small effects (Cohen's *f* ≤ 0.10) across conditions.
 - **Application in marketing research:** applies to LLM evaluation in general, as well as to the social sciences and business research on LLM behavior.
 
@@ -129,12 +129,26 @@ Shopping by Algorithm (*JAMS*, major revision)
 
 Whom Do AI Agents Serve? (*JBR*, in preparation)
 
-# Does the delegating principal change how an AI agent evaluates sponsored listings?
+# Does the delegating principal change how AI agents evaluate sponsored listings?
+
+- **Persuasion knowledge:** consumers recognize a sponsored tag as paid placement, become skeptical of the listing's value, and penalize it.
+- **Context-dependent role adoption:** conditioning an LLM on a principal shifts its perspective toward that party's interest in training corpora (a warning for the traveler vs. retail media revenue for the platform).
+- **Hypotheses:** platform delegation weakens pre-choice skepticism toward sponsored listings and attenuates the sponsorship penalty.
+
+[interactive design plate: system prompt by principal, target and competitor listings, "Platform sponsor" tag on the target when sponsored]
+
+---
+
+Whom Do AI Agents Serve? (*JBR*, in preparation)
+
+# Manipulating sponsorship and the delegating principal with no instruction to favor advertisers
 
 2 (Sponsorship: organic vs. sponsored) × 2 (Principal: consumer vs. platform delegation)
 
+- **Target choice:** binary choice between the target listing and an objectively matched organic competitor.
+- **Pre-choice skepticism:** a judge model (Kev 9B) scores each pre-choice reasoning trace on one item: "The sponsorship status of the target made the agent skeptical of its true value to the traveler." (ICC(2,1) = .959 against human ratings)
 
-[interactive design plate: system prompt by principal, target and competitor listings, "Platform sponsor" tag on the target when sponsored]
+[conceptual model, Figure 1: sponsorship → pre-choice skepticism → target choice, moderated by principal on the first path and direct path]
 
 ---
 
@@ -146,7 +160,7 @@ Whom Do AI Agents Serve? (*JBR*, in preparation)
 
 Principal × Sponsorship: β = 3.99, p < .001
 
-Replicates across 5 additional LLMs and 6 decision models
+**Beneficiary mitigation:** adding "Act in the traveler's best interest" to the platform prompt restores the sponsorship penalty to 48.2 pp (3.2% sponsored target choice).
 
 ---
 
@@ -154,9 +168,9 @@ Whom Do AI Agents Serve? (*JBR*, in preparation)
 
 # Platform delegation weakens pre-choice skepticism toward sponsored listings
 
-- **Process tracing:** a judge model (Kev 9B) scores each pre-choice reasoning trace on one item: "The sponsorship status of the target made the agent skeptical of its true value to the traveler." (ICC(2,1) = .959 against human ratings)
 - **Skepticism toward a sponsored target:** 6.19 under consumer delegation vs. 4.80 under platform delegation (1 to 7 scale)
 - **Conditional indirect effects:** consumer delegation −8.06, 95% CI [−10.64, −7.31]. Platform delegation −5.79, 95% CI [−7.66, −5.20].
+- **Cross-LLM replication:** the choice interaction replicates across 5 additional LLMs, and the moderated mediation replicates across all 3 Gemini Flash generations.
 
 [moderated mediation diagram, PROCESS Model 8: sponsorship → pre-choice skepticism (b = 4.83) → target choice (β = −1.67), principal × sponsorship on the first path (b = −1.36), direct path from sponsorship to target choice]
 
@@ -169,6 +183,8 @@ Principal-invariance context distillation (preliminary)
 # Context distillation removes the Principal × Sponsorship interaction on held-out stimuli
 
 [bars: Kev 9B sponsorship penalty (pp) under consumer and platform delegation, baseline: 2.8 and −1.2, Principal × Sponsorship β = +0.193, p < .001, context distillation: 1.5 and 1.5, β = −0.001, p = .85]
+
+**Study 2 (6 non-generative decision models):** the Principal × Sponsorship interaction replicates in a single forward pass across 360 Latin-square hotel stimuli.
 
 Kev 9B, distilled on retail categories only. Tested on the 360 Study 2 hotel stimuli
 

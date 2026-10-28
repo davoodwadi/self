@@ -9,6 +9,7 @@ import {
   SIGNAL,
   LABEL,
   SERIF,
+  PAPER,
   PAPER3,
   r2,
   headAlong,
@@ -648,54 +649,142 @@ function Arrow({
   );
 }
 
-export function MediationPlate() {
-  const sk = { cx: 200, cy: 46 };
-  const sp = { cx: 66, cy: 206 };
-  const tc = { cx: 334, cy: 206 };
-  // The first path runs from Sponsorship to Skepticism. Principal points at its midpoint.
-  const a1 = { x: 92, y: 187 };
-  const a2 = { x: 160, y: 72 };
-  const mid = { x: r2((a1.x + a2.x) / 2), y: r2((a1.y + a2.y) / 2) };
+export function MediationPlate({ results = true }: { results?: boolean }) {
+  const sk = { cx: 200, cy: 32 };
+  const sp = { cx: 52, cy: 126 };
+  const tc = { cx: 346, cy: 126 };
+  const pr = { cx: 192, cy: 214 };
   return (
     <Frame
       width={400}
-      height={240}
-      label="Moderated mediation, PROCESS Model 8 (Study 1, Gemini 3.1 Pro). Sponsorship raises pre-choice skepticism, b = 4.83. Principal times sponsorship weakens that path, b = −1.36. Skepticism lowers target choice, β = −1.67. A direct path also runs from sponsorship to target choice."
+      height={246}
+      label={
+        results
+          ? "Moderated mediation, PROCESS Model 8 (Study 1, Gemini 3.1 Pro). Sponsorship raises pre-choice skepticism, b = 4.83. Principal times sponsorship weakens that path, b = −1.36. Skepticism lowers target choice, β = −1.67. A direct path also runs from sponsorship to target choice."
+          : "Conceptual model (Figure 1). Sponsorship reduces target choice (H1), attenuated by principal (H2). Pre-choice skepticism mediates the effect of sponsorship on target choice (H3), and principal moderates the first path from sponsorship to pre-choice skepticism (H4)."
+      }
     >
       <Node
         cx={sk.cx}
         cy={sk.cy}
-        w={150}
+        w={136}
         lines={["Pre-choice", "skepticism"]}
       />
-      <Node cx={sp.cx} cy={sp.cy} w={116} lines={["Sponsorship"]} />
-      <Node cx={tc.cx} cy={tc.cy} w={116} lines={["Target choice"]} />
-      <Node cx={40} cy={112} w={76} lines={["Principal"]} />
-      <Arrow x1={a1.x} y1={a1.y} x2={a2.x} y2={a2.y} />
-      <Arrow x1={240} y1={72} x2={308} y2={187} />
-      <Arrow x1={126} y1={206} x2={274} y2={206} color={INK} dash="5 4" />
+      <Node cx={sp.cx} cy={sp.cy} w={92} lines={["Sponsorship"]} />
+      <Node cx={tc.cx} cy={tc.cy} w={100} lines={["Target choice"]} />
+      <Node
+        cx={pr.cx}
+        cy={pr.cy}
+        w={188}
+        lines={["Principal", "(Platform vs. Consumer)"]}
+      />
+      {/* Sponsorship -> Pre-choice skepticism */}
+      <Arrow x1={98} y1={114} x2={148} y2={57} />
+      {/* Pre-choice skepticism -> Target choice */}
+      <Arrow x1={252} y1={57} x2={296} y2={114} />
+      {/* Sponsorship -> Target choice */}
       <Arrow
-        x1={78}
-        y1={118}
-        x2={r2(mid.x - 4)}
-        y2={r2(mid.y - 1)}
+        x1={98}
+        y1={134}
+        x2={296}
+        y2={134}
+        color={INK}
+        dash={results ? "5 4" : undefined}
+      />
+      {/* Principal -> first path (H4) */}
+      <Arrow
+        x1={158}
+        y1={189}
+        x2={125}
+        y2={86}
         color={SIGNAL}
       />
-      <text
-        x={132}
-        y={150}
-        fontFamily={SERIF}
-        fontSize={15}
-        fill={INK}
-      >
-        b = 4.83***
-      </text>
-      <text x={8} y={82} fontFamily={SERIF} fontSize={15} fill={SIGNAL}>
-        b = −1.36***
-      </text>
-      <text x={286} y={118} fontFamily={SERIF} fontSize={15} fill={INK}>
-        β = −1.67***
-      </text>
+      {/* Principal -> direct path (H2) */}
+      <Arrow
+        x1={226}
+        y1={189}
+        x2={226}
+        y2={136}
+        color={results ? INK : SIGNAL}
+      />
+      {!results ? (
+        <>
+          <text
+            x={sk.cx}
+            y={74}
+            textAnchor="middle"
+            fontFamily={SERIF}
+            fontSize={15}
+            fill={INK}
+          >
+            H3
+          </text>
+          <text
+            x={118}
+            y={154}
+            textAnchor="middle"
+            fontFamily={SERIF}
+            fontSize={15}
+            fill={INK}
+          >
+            H1 (−)
+          </text>
+          <rect x={126} y={95} width={16} height={18} fill={PAPER} />
+          <text
+            x={138}
+            y={110}
+            textAnchor="middle"
+            fontFamily={SERIF}
+            fontSize={15}
+            fill={SIGNAL}
+          >
+            H4 (−)
+          </text>
+          <rect x={218} y={153} width={16} height={18} fill={PAPER} />
+          <text
+            x={226}
+            y={168}
+            textAnchor="middle"
+            fontFamily={SERIF}
+            fontSize={15}
+            fill={SIGNAL}
+          >
+            H2 (+)
+          </text>
+        </>
+      ) : (
+        <>
+          <text
+            x={110}
+            y={72}
+            textAnchor="end"
+            fontFamily={SERIF}
+            fontSize={15}
+            fill={INK}
+          >
+            b = 4.83***
+          </text>
+          <rect x={126} y={95} width={16} height={18} fill={PAPER} />
+          <text
+            x={122}
+            y={110}
+            fontFamily={SERIF}
+            fontSize={15}
+            fill={SIGNAL}
+          >
+            b = −1.36***
+          </text>
+          <text
+            x={284}
+            y={72}
+            fontFamily={SERIF}
+            fontSize={15}
+            fill={INK}
+          >
+            β = −1.67***
+          </text>
+        </>
+      )}
     </Frame>
   );
 }
