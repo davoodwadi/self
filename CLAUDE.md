@@ -64,6 +64,8 @@ Lay each slide out to fit a 1440×900 screen at full size. `FitSlides` (`src/com
 
 Each course keeps its own drawing and style rules in a `CLAUDE.md` inside its folder (for example `src/app/(courses-cb)/courses/consumer-behavior/CLAUDE.md`). Follow the file for the course you are working on, and never carry one course's style into another.
 
+Research and job talks follow `src/app/(talks)/CLAUDE.md`: a talk makes an argument to faculty, so its slides follow different rules from course slides.
+
 # Interactive visuals
 
 Interactivity lets students discover a relationship by changing something and watching the result. Their input shows something that only emerges when a value moves: how quickly uncertainty narrows as the sample grows, and how the gains taper off. Design the visual around that one action from the start. The student acts directly on the thing drawn, what to do is obvious at a glance, and the untouched state reads as a complete plate on a projector. Interactivity is most useful for quantitative ideas, where students' intuitions are weakest and gain the most from testing: sampling and margin of error, statistical significance, regression and fit, conjoint trade-offs, and the value of information. These plates become small instruments that students and lecturers can explore together in class.

@@ -10,7 +10,7 @@ From human e-commerce behavior to large language models as surrogate consumers
 
 **Davood Wadi, PhD** (Marketing, AI specialization, HEC Montréal)
 - Researcher, McGill Centre for the Convergence of Health and Economics
-- AI Research Scientist, General Motors R&D
+- Research Collaborator, General Motors R&D
 
 ---
 
@@ -181,7 +181,7 @@ Conclusion
 
 # Studying AI as a surrogate consumer
 
-- **Research Program:** *JAMS* (Major Revision), *Marketing Letters* (Under Review), *Marketing Science* (In Preparation), *JBR* (In Preparation), *JRIM* (2026), *JECR* (2026), *Findings of EMNLP* (2025), *ACL* (2027 submission)
+- **Research Program:** *JAMS* (Major Revision), *Marketing Letters* (Under Review), *Marketing Science* (In Preparation), *JBR* (In Preparation), *JRIM* (2026), *JECR* (2026), *Findings of EMNLP* (2025), *ACL* (2027)
 - **Experimental Methods:** *Tool-Lab*, *Behavioral-LLM*, fine-tuned System-One decision models, and exact token-probability measurement
 - **Teaching:** Interactive courses across AI in business, AI governance, and marketing analytics (B.Comm., M.Sc., MBA, and PhD)
 - **Collaborations:** McGill University, Toronto Metropolitan University, HEC Montreal, IVADO, and General Motors R&D

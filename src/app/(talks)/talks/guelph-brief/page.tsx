@@ -4,15 +4,21 @@ import { Slide } from "@/components/slide-components/SlideComponents";
 import { Ruled } from "@/app/(courses-mra)/courses/marketing-research-analytics/_visuals/kit";
 import DeckKeys, { type DeckSection } from "../guelph/_components/DeckKeys";
 import {
-  LikertPlate,
   PartyPlate,
   PositionCurvePlate,
   SponsorDesign,
   ToolLabBoard,
   TriadPlate,
 } from "../guelph/_components/Plates";
-import { DebiasBars, SponsorBars, ToolLabBars } from "./_components/Bars";
+import {
+  DebiasBars,
+  MediationPlate,
+  SponsorBars,
+  ToolLabBars,
+} from "./_components/Bars";
+import { CoffeeShelf } from "./_components/Coffee";
 import { NutritionPlate } from "./_components/NutritionPlate";
+import { ExactPlate, PassAtOnePlate, PeoplePlate } from "./_components/Methods";
 
 // The brief deck: every word comes verbatim from slides.md. The detailed
 // slides live at /talks/guelph and serve as backup for questions.
@@ -34,17 +40,33 @@ const CITE = "text-[1rem] leading-relaxed text-[var(--ink-3)]";
 /** The navigator's dots: one per section, so a paper's method and results slides share a dot. */
 const SECTIONS: DeckSection[] = [
   { label: "Title", ids: ["title"] },
-  { label: "Where I come from", ids: ["foundation"] },
-  { label: "Why AI agents", ids: ["shift"] },
-  { label: "Paper 1: Shopping by Algorithm", ids: ["tool-lab", "pricing"] },
+  { label: "Prosocial behavior in digital markets", ids: ["foundation"] },
+  { label: "AI mediated digital markets", ids: ["shift"] },
   {
-    label: "Paper 2: Whom Do AI Agents Serve?",
-    ids: ["sponsorship-method", "sponsorship", "sponsorship-fix"],
+    label: "Methods: LLMs as subjects of analysis",
+    ids: [
+      "methods-standard",
+      "methods-subjects",
+      "methods-emnlp",
+      "methods-etc",
+    ],
   },
-  { label: "Paper 3: Does Rank Still Matter?", ids: ["rank-method", "rank"] },
-  { label: "Methods", ids: ["methods"] },
   {
-    label: "Paper 4: Can Decision Models Sample Human Behavior?",
+    label: "Shopping by Algorithm",
+    ids: ["shopping-question", "tool-lab", "pricing"],
+  },
+  {
+    label: "Whom Do AI Agents Serve?",
+    ids: [
+      "sponsorship-method",
+      "sponsorship",
+      "sponsorship-process",
+      "sponsorship-fix",
+    ],
+  },
+  { label: "Does Rank Still Matter?", ids: ["rank-method", "rank"] },
+  {
+    label: "Can Decision Models Sample Human Behavior?",
     ids: ["silicon-sampling-method", "silicon-sampling"],
   },
   { label: "Future research", ids: ["future"] },
@@ -92,18 +114,6 @@ function Heading({ children }: { children: React.ReactNode }) {
   );
 }
 
-/** A figure set in the serif inside a sentence. */
-function Fig({ children }: { children: React.ReactNode }) {
-  return (
-    <strong
-      className="!font-medium !text-[var(--ink)] text-[1.6em] leading-none"
-      style={{ fontFamily: "var(--font-heading)" }}
-    >
-      {children}
-    </strong>
-  );
-}
-
 /** A tool name from the code, set as a quiet chip. */
 function Code({ children }: { children: React.ReactNode }) {
   return (
@@ -144,13 +154,6 @@ export default function Page() {
             Decision-Making in Digital and{" "}
             <span className={KEY}>AI-Mediated</span> Marketplaces
           </h1>
-          <p
-            className="mt-6 max-w-[50ch] text-[clamp(1.25rem,2vw,1.7rem)] italic leading-snug text-[var(--ink-2)]"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            From human e-commerce behavior to large language models as surrogate
-            consumers
-          </p>
           <div className="mt-12 grid max-w-[64rem] gap-6 border-t border-[var(--ink)] pt-5 md:grid-cols-2">
             <p className="text-[1.15rem] text-[var(--ink-2)]">
               <strong className="font-semibold text-[var(--ink)]">
@@ -163,25 +166,23 @@ export default function Page() {
                 Researcher, McGill Centre for the Convergence of Health and
                 Economics
               </li>
-              <li>AI Research Scientist, General Motors R&amp;D</li>
+              <li>Research Collaborator, General Motors R&amp;D</li>
             </ul>
           </div>
         </div>
       </Slide>
 
-      {/* 2. Where I come from */}
+      {/* 2. Research stream 1: prosocial behavior */}
       <Slide id="foundation" border>
-        <Kicker>Where I come from</Kicker>
-        <Heading>
-          Prosocial behavior and financial incentives in digital markets
-        </Heading>
+        <Kicker>Research stream 1</Kicker>
+        <Heading>Prosocial behavior in digital markets</Heading>
         <div className="grid w-full max-w-[72rem] gap-10 md:grid-cols-2">
           {[
             {
               finding: (
                 <>
-                  Asking for reviews &ldquo;to help the company&rdquo; backfires
-                  when paired with payment. &ldquo;to help other
+                  Asking reviewers &ldquo;help the company&rdquo; backfires when
+                  paired with financial incentives, while &ldquo;help other
                   customers&rdquo; does not.
                 </>
               ),
@@ -194,7 +195,7 @@ export default function Page() {
                 <>
                   Performance-contingent incentives motivate first-time (vs.
                   experienced) reviewers more strongly to write a review and to
-                  put more effort.
+                  exert more effort.
                 </>
               ),
               title:
@@ -206,65 +207,53 @@ export default function Page() {
               <p className="type-quote !text-[clamp(1.25rem,1.9vw,1.6rem)]">
                 {p.finding}
               </p>
-              <p className="mt-6 text-[1.05rem] font-semibold leading-snug text-[var(--ink)]">
-                {p.title}
-              </p>
-              <p className={`${CITE} mt-1`}>
-                <em>{p.venue}</em>
+              <p className="mt-6 text-[1.05rem] leading-snug text-[var(--ink)]">
+                <em>{p.title}</em>, {p.venue}
               </p>
             </Ruled>
           ))}
         </div>
       </Slide>
 
-      {/* 3. Why AI agents: the shift and the pipeline */}
+      {/* 3. AI mediated digital markets: the shift and the pipeline */}
       <Slide id="shift" border>
-        <Kicker>Why AI agents</Kicker>
+        <Kicker>Research stream 2</Kicker>
         <Heading>
-          Storefronts were built for humans.{" "}
-          <span className={KEY}>AI agents now act as surrogate consumers.</span>
+          <span className={KEY}>AI mediated</span> digital markets
         </Heading>
-        <Split plate={<TriadPlate />}>
-          <ul className="flex flex-col gap-4">
-            <li className={`${BODY} border-t border-[var(--ink)] pt-3`}>
-              <Fig>38%</Fig> of U.S. consumers have shopped with generative AI
-            </li>
-            <li className={`${BODY} border-t border-[var(--rule-2)] pt-3`}>
-              AI referral traffic to retailers grew <Fig>10x</Fig> in one year
-              (Pandya 2025)
-            </li>
-          </ul>
-        </Split>
+        <div className="mx-auto w-full max-w-[34rem]">
+          <TriadPlate />
+        </div>
         <div className="mt-8 grid w-full grid-cols-2 gap-x-8 gap-y-4 border-t-2 border-[var(--ink)] pt-4 lg:grid-cols-4">
           {[
             [
-              "Bounded Rationality & Search",
+              "Pricing Cues and Information Search",
               <>
-                <em>JAMS</em>, major revision
+                (<em>JAMS</em>, major revision).
               </>,
             ],
             [
               "Principal-Agent Conflicts",
               <>
-                <em>JBR</em>, in preparation
+                (<em>JBR</em>, in preparation).
               </>,
             ],
             [
-              "Position Bias & Consideration",
+              "Ranking and Consideration Sets",
               <>
-                <em>Marketing Letters</em>, under review
+                (<em>Marketing Letters</em>, under review).
               </>,
             ],
             [
-              "Methods & Distributional Models",
+              "Methods and Distributional Models",
               <>
-                <em>EMNLP</em> 2025, <em>ACL</em>, <em>Marketing Science</em>
+                (<em>EMNLP</em> 2025, <em>ACL</em>, <em>Marketing Science</em>)
               </>,
             ],
           ].map(([t, v], i) => (
             <div key={i}>
               <p className="type-h2 !text-[1.3rem]">
-                <span className="mr-2 text-[var(--ink-3)]">{i + 1}</span>
+                <span className="mr-2 text-[var(--ink-3)]">{i + 1}.</span>
                 {t}
               </p>
               <p className={`${CITE} mt-1`}>{v}</p>
@@ -273,11 +262,239 @@ export default function Page() {
         </div>
       </Slide>
 
+      {/* Methods 1: the standard single-response test */}
+      <Slide id="methods-standard" border>
+        <Kicker>
+          Methods: A Monte-Carlo Sampling Framework For Reliable Evaluation of
+          Large Language Models Using Behavioral Analysis (EMNLP 2025)
+        </Kicker>
+        <Heading>
+          <span className={KEY}>Behavioral evaluation</span> of Large Language
+          Models
+        </Heading>
+        <Split plate={<PassAtOnePlate />}>
+          <ul className="flex flex-col gap-4">
+            <li
+              className={`${BODY} border-t border-[var(--ink)] pt-3 !text-[1.1rem]`}
+            >
+              <strong>The standard practice:</strong> LLMs are evaluated by
+              pass@1, a single response per prompt, as in the GPT, Gemini, and
+              Claude reports.
+            </li>
+            <li
+              className={`${BODY} border-t border-[var(--rule-2)] pt-3 !text-[1.1rem]`}
+            >
+              <strong>LLM behavior research:</strong> Studies of LLM behavior
+              typically evaluate one response per prompt (e.g., Jones &amp;
+              Steinhardt, 2022).
+            </li>
+            <li
+              className={`${BODY} border-t border-[var(--rule-2)] pt-3 !text-[1.1rem]`}
+            >
+              One response per condition, obscures the true behavior of the LLM.
+            </li>
+          </ul>
+        </Split>
+      </Slide>
+
+      {/* Methods 2: an LLM is not a sample of respondents */}
+      <Slide id="methods-subjects" border>
+        <Kicker>Methods: Why one response is not enough</Kicker>
+        <Heading>
+          An LLM is <span className={KEY}>not a sample</span> of respondents
+        </Heading>
+        <Split plate={<PeoplePlate />}>
+          <ul className="flex flex-col gap-4">
+            <li className={`${BODY} border-t border-[var(--ink)] pt-3`}>
+              <strong>Human respondents:</strong> variance comes from
+              differences between participants and from variability within each
+              participant.
+            </li>
+            <li className={`${BODY} border-t border-[var(--rule-2)] pt-3`}>
+              <strong>LLMs:</strong> for a given model and prompt, every
+              response is a draw from a single probability distribution.
+            </li>
+          </ul>
+        </Split>
+      </Slide>
+
+      {/* Methods 3: the EMNLP framework */}
+      <Slide id="methods-emnlp" border>
+        <Kicker>Findings of EMNLP 2025</Kicker>
+        <Heading>
+          A <span className={KEY}>Monte-Carlo framework</span> for behavioral
+          evaluation of LLMs
+        </Heading>
+        <Split plate={<PassAtOnePlate sampling />}>
+          <ul className="flex flex-col gap-2">
+            {[
+              {
+                t: "Estimand",
+                d: (
+                  <>
+                    the model&apos;s behavior is the expected score of its
+                    response to a prompt, over its response distribution.
+                  </>
+                ),
+              },
+              {
+                t: "Theorem 1",
+                d: (
+                  <>
+                    the Monte-Carlo mean of K independent responses is an
+                    unbiased estimator of the model&apos;s behavior.
+                  </>
+                ),
+              },
+              {
+                t: "Theorem 2",
+                d: <>its variance decays to zero as K grows.</>,
+              },
+              {
+                t: "Corollary",
+                d: (
+                  <>
+                    it is asymptotically normal, which yields confidence
+                    intervals for model behavior.
+                  </>
+                ),
+              },
+              {
+                t: "Choosing K",
+                d: (
+                  <>
+                    the smallest K with the power to detect small effects
+                    (Cohen&apos;s <em>f</em> ≤ 0.10) across conditions.
+                  </>
+                ),
+              },
+              {
+                t: "Application in marketing research",
+                d: (
+                  <>
+                    applies to LLM evaluation in general, as well as to the
+                    social sciences and business research on LLM behavior.
+                  </>
+                ),
+              },
+            ].map((c, i) => (
+              <li
+                key={c.t}
+                className={`${BODY} border-t pt-2 !text-[1rem] ${i === 0 ? "border-[var(--ink)]" : "border-[var(--rule-2)]"}`}
+              >
+                <strong>{c.t}:</strong> {c.d}
+              </li>
+            ))}
+          </ul>
+        </Split>
+      </Slide>
+
+      {/* Methods 4: Every Token Counts */}
+      <Slide id="methods-etc" border>
+        <Kicker>
+          Every Token Counts (<em>ACL</em> 2027, with Mohsen Ghodrat &amp;
+          Matthew Philp)
+        </Kicker>
+        <Heading>
+          <span className={KEY}>Exact</span> Likert-scale distributions from a
+          single forward pass
+        </Heading>
+        <Split plate={<ExactPlate />}>
+          <ul className="flex flex-col gap-2.5">
+            <li
+              className={`${BODY} border-t border-[var(--ink)] pt-2.5 !text-[1.02rem]`}
+            >
+              <strong>The limit of sampling:</strong> for a given prompt, an
+              LLM&apos;s response distribution is fixed and observable.
+              Monte-Carlo sampling takes repeated noisy draws from it, so finite
+              K leaves sampling error.
+            </li>
+            <li
+              className={`${BODY} border-t-2 border-[var(--signal)] pt-2.5 !text-[1.02rem] !text-[var(--ink)]`}
+            >
+              Token log-probabilities give the exact response distribution, with
+              zero sampling error.
+            </li>
+            <li
+              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.02rem]`}
+            >
+              <strong>Constraint:</strong> the failure rate is the probability
+              mass outside the valid answers.
+            </li>
+            <li
+              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.02rem]`}
+            >
+              <strong>Consensus:</strong> an ordinal consensus metric separates
+              polarized answers (1 and 7) from concentrated ones (4), which
+              entropy cannot.
+            </li>
+            <li
+              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.02rem]`}
+            >
+              <strong>Construct:</strong> convolving item distributions gives
+              the exact distribution of the scale score, and a distributional
+              ANOVA isolates main and interaction effects.
+            </li>
+          </ul>
+        </Split>
+      </Slide>
+
+      {/* 4. Paper 1, the research question */}
+      <Slide id="shopping-question" border>
+        <Kicker>
+          Shopping by Algorithm (<em>JAMS</em>, major revision)
+        </Kicker>
+        <Heading>
+          Do pricing cues built for human bounded rationality{" "}
+          <span className={KEY}>still</span> work when the buyer is an{" "}
+          <span className={KEY}>AI agent</span>?
+        </Heading>
+        <Split
+          plate={
+            <div className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-1.5">
+                <li className={`${BODY} !text-[1.05rem]`}>
+                  <strong>Coffee A:</strong> $4.99 for 10 oz (just-below price)
+                </li>
+                <li className={`${BODY} !text-[1.05rem]`}>
+                  <strong>Coffee B:</strong> $5.00 for 11 oz (normatively
+                  optimal choice)
+                </li>
+              </ul>
+              <CoffeeShelf />
+            </div>
+          }
+        >
+          <ul className="flex flex-col gap-3">
+            <li
+              className={`${BODY} border-t border-[var(--ink)] pt-2.5 !text-[1.1rem]`}
+            >
+              <strong>Pricing cues:</strong> just-below pricing and promotional
+              framing were engineered to exploit human bounded rationality.
+            </li>
+            <li
+              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.1rem]`}
+            >
+              <strong>Prior work:</strong> LLMs behave both rationally and
+              heuristically, and heuristic-like behavior is treated as a static
+              defect learned in training.
+            </li>
+            <li
+              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.1rem]`}
+            >
+              <strong>Our proposal:</strong> heuristic-like choice depends on
+              the information the AI agent holds when it chooses, shaped by
+              retailers (the cost of retrieving product attributes) and by
+              consumers (the goal prompt).
+            </li>
+          </ul>
+        </Split>
+      </Slide>
+
       {/* 4. Paper 1, the method */}
       <Slide id="tool-lab" border>
         <Kicker>
-          Paper 1: <em>Shopping by Algorithm</em> (<em>JAMS</em>, major
-          revision)
+          Shopping by Algorithm (<em>JAMS</em>, major revision)
         </Kicker>
         <Heading>
           <span className={KEY}>Tool-Lab</span>: information-board process
@@ -293,29 +510,18 @@ export default function Page() {
             2 (Acquisition cost: $0 vs. $10) × 2 (Goal prompt: specific vs.
             vague), across 8 LLMs
           </p>
-          <ul className="flex flex-col gap-3">
-            <li className={`${BODY} border-t border-[var(--rule-2)] pt-3`}>
-              <strong>Coffee A:</strong> $4.99 for 10 oz (just-below price)
-            </li>
-            <li className={`${BODY} border-t-2 border-[var(--signal)] pt-3`}>
-              <strong>Coffee B:</strong> $5.00 for 11 oz{" "}
-              <span className={KEY}>(normatively optimal choice)</span>
-            </li>
-          </ul>
         </Split>
       </Slide>
 
       {/* 5. Paper 1, the result */}
       <Slide id="pricing" border>
         <Kicker>
-          Paper 1: <em>Shopping by Algorithm</em> (<em>JAMS</em>, major
-          revision)
+          Shopping by Algorithm (<em>JAMS</em>, major revision)
         </Kicker>
         <Heading>
           Under acquisition costs and a vague goal prompt, AI agents{" "}
-          <span className={KEY}>
-            fall for just-below pricing and promotional framing
-          </span>
+          <span className={KEY}>fall for</span> just-below pricing and
+          promotional framing
         </Heading>
         <Split plate={<ToolLabBars />}>
           <p className={BODY}>
@@ -332,8 +538,7 @@ export default function Page() {
       {/* Paper 2, research question and method */}
       <Slide id="sponsorship-method" border>
         <Kicker>
-          Paper 2: <em>Whom Do AI Agents Serve?</em> (<em>JBR</em>, in
-          preparation)
+          Whom Do AI Agents Serve? (<em>JBR</em>, in preparation)
         </Kicker>
         <Heading>
           Does the <span className={KEY}>delegating principal</span> change how
@@ -344,48 +549,83 @@ export default function Page() {
             2 (Sponsorship: organic vs. sponsored) × 2 (Principal: consumer vs.
             platform delegation)
           </p>
-          <p className={BODY}>
-            <strong>DV:</strong> target choice. <strong>Mediator:</strong>{" "}
-            pre-choice skepticism (Kev 9B judge, ICC(2,1) = .959)
-          </p>
         </Split>
       </Slide>
 
       {/* Paper 2, results */}
       <Slide id="sponsorship" border>
         <Kicker>
-          Paper 2: <em>Whom Do AI Agents Serve?</em> (<em>JBR</em>, in
-          preparation)
+          Whom Do AI Agents Serve? (<em>JBR</em>, in preparation)
         </Kicker>
         <Heading>
-          Platform delegation{" "}
-          <span className={KEY}>attenuates the sponsorship penalty</span>
+          Platform delegation <span className={KEY}>attenuates</span> the
+          sponsorship penalty
         </Heading>
         <Split plate={<SponsorBars />}>
           <p className={BODY}>
             Principal × Sponsorship: <em>β</em> = 3.99, <em>p</em> &lt; .001
           </p>
-          <p className={BODY}>
-            Index of moderated mediation via pre-choice skepticism = 2.27, 95%
-            CI [1.92, 3.14]
-          </p>
+
           <p className={BODY}>
             Replicates across 5 additional LLMs and 6 decision models
           </p>
         </Split>
       </Slide>
 
-      {/* Paper 2, principal-invariance context distillation (preliminary) */}
-      <Slide id="sponsorship-fix" border>
+      {/* Paper 2, process: moderated mediation via pre-choice skepticism */}
+      <Slide id="sponsorship-process" border>
         <Kicker>
-          Paper 2: Principal-invariance context distillation (preliminary)
+          Whom Do AI Agents Serve? (<em>JBR</em>, in preparation)
         </Kicker>
         <Heading>
-          Context distillation{" "}
-          <span className={KEY}>
-            removes the Principal × Sponsorship interaction
-          </span>{" "}
-          on held-out stimuli
+          Platform delegation <span className={KEY}>weakens</span> pre-choice
+          skepticism toward sponsored listings
+        </Heading>
+        <Split
+          plate={
+            <div className="flex flex-col gap-3">
+              <MediationPlate />
+              <p className={`${BODY} !text-[1.05rem]`}>
+                Index of moderated mediation via pre-choice skepticism = 2.27,
+                95% CI [1.92, 3.14]
+              </p>
+            </div>
+          }
+        >
+          <ul className="flex flex-col gap-3">
+            <li
+              className={`${BODY} border-t border-[var(--ink)] pt-2.5 !text-[1.05rem]`}
+            >
+              <strong>Process tracing:</strong> a judge model (Kev 9B) scores
+              each pre-choice reasoning trace on one item: &ldquo;The
+              sponsorship status of the target made the agent skeptical of its
+              true value to the traveler.&rdquo; (ICC(2,1) = .959 against human
+              ratings)
+            </li>
+            <li
+              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.05rem]`}
+            >
+              <strong>Skepticism toward a sponsored target:</strong> 6.19 under
+              consumer delegation vs. 4.80 under platform delegation (1 to 7
+              scale)
+            </li>
+            <li
+              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.05rem]`}
+            >
+              <strong>Conditional indirect effects:</strong> consumer delegation
+              −8.06, 95% CI [−10.64, −7.31]. Platform delegation −5.79, 95% CI
+              [−7.66, −5.20].
+            </li>
+          </ul>
+        </Split>
+      </Slide>
+
+      {/* Paper 2, principal-invariance context distillation (preliminary) */}
+      <Slide id="sponsorship-fix" border>
+        <Kicker>Principal-invariance context distillation (preliminary)</Kicker>
+        <Heading>
+          Context distillation <span className={KEY}>removes</span> the
+          Principal × Sponsorship interaction on held-out stimuli
         </Heading>
         <Split plate={<DebiasBars />}>
           <p className={BODY}>
@@ -401,12 +641,11 @@ export default function Page() {
       {/* Paper 3, research question and method */}
       <Slide id="rank-method" border>
         <Kicker>
-          Paper 3: <em>Does Rank Still Matter?</em> (<em>Marketing Letters</em>,
-          under review)
+          Does Rank Still Matter? (<em>Marketing Letters</em>, under review)
         </Kicker>
         <Heading>
           When shopping is delegated to AI agents, does the{" "}
-          <span className={KEY}>ranking advantage documented for humans</span>{" "}
+          <span className={KEY}>ranking advantage</span> documented for humans
           persist?
         </Heading>
         <div className="grid w-full gap-8 md:grid-cols-3">
@@ -440,7 +679,9 @@ export default function Page() {
             },
           ].map((c, i) => (
             <Ruled key={c.t} tone={i === 0 ? "signal" : undefined}>
-              <p className="type-h2 !text-[1.5rem]">{c.t}</p>
+              <p className="type-h2 !text-[1.5rem]">
+                <strong className="font-semibold">{c.t}:</strong>
+              </p>
               <p className={`${BODY} mt-2`}>{c.d}</p>
             </Ruled>
           ))}
@@ -450,12 +691,11 @@ export default function Page() {
       {/* Paper 3, results */}
       <Slide id="rank" border>
         <Kicker>
-          Paper 3: <em>Does Rank Still Matter?</em> (<em>Marketing Letters</em>,
-          under review)
+          Does Rank Still Matter? (<em>Marketing Letters</em>, under review)
         </Kicker>
         <Heading>
           Unlike humans, AI agents show a{" "}
-          <span className={KEY}>lost-in-the-middle effect</span>
+          <span className={KEY}>lost-in-the-middle</span> effect
         </Heading>
         <Split plate={<PositionCurvePlate />}>
           <ul className="flex flex-col gap-4">
@@ -475,37 +715,16 @@ export default function Page() {
         </Split>
       </Slide>
 
-      {/* 7. Methods */}
-      <Slide id="methods" border>
-        <Kicker>Methods</Kicker>
-        <Heading>
-          A single LLM response is{" "}
-          <span className={KEY}>one draw from a probability distribution</span>
-        </Heading>
-        <Split plate={<LikertPlate />}>
-          <ul className="flex flex-col gap-4">
-            <li className={`${BODY} border-t border-[var(--ink)] pt-3`}>
-              Monte-Carlo behavioral evaluation of LLMs (
-              <em>Findings of EMNLP</em> 2025)
-            </li>
-            <li className={`${BODY} border-t border-[var(--rule-2)] pt-3`}>
-              Exact token-level Likert distributions (<em>ACL</em> 2027
-              submission)
-            </li>
-          </ul>
-        </Split>
-      </Slide>
-
       {/* Paper 4, positioning */}
       <Slide id="silicon-sampling-method" border>
         <Kicker>
-          Paper 4: <em>Can Decision Models Sample Human Behavior?</em> (
-          <em>Marketing Science</em>, in preparation)
+          Can Decision Models Sample Human Behavior? (<em>Marketing Science</em>
+          , in preparation)
         </Kicker>
         <Heading>
-          Can decision models approximate{" "}
-          <span className={KEY}>empirical human response distributions</span>{" "}
-          across demographic subpopulations?
+          Can decision models approximate empirical human{" "}
+          <span className={KEY}>response distributions</span> across demographic
+          subpopulations?
         </Heading>
         <div className="grid w-full gap-8 md:grid-cols-3">
           {[
@@ -523,7 +742,9 @@ export default function Page() {
             },
           ].map((c, i) => (
             <Ruled key={c.t} tone={i === 2 ? "signal" : undefined}>
-              <p className="type-h2 !text-[1.5rem]">{c.t}</p>
+              <p className="type-h2 !text-[1.5rem]">
+                <strong className="font-semibold">{c.t}:</strong>
+              </p>
               <p className={`${BODY} mt-2`}>{c.d}</p>
             </Ruled>
           ))}
@@ -533,12 +754,12 @@ export default function Page() {
       {/* Paper 4, results on unseen data */}
       <Slide id="silicon-sampling" border>
         <Kicker>
-          Paper 4: <em>Can Decision Models Sample Human Behavior?</em> (
-          <em>Marketing Science</em>, in preparation)
+          Can Decision Models Sample Human Behavior? (<em>Marketing Science</em>
+          , in preparation)
         </Kicker>
         <Heading>
           Fine-tuned decision models approximate human subpopulation response
-          distributions <span className={KEY}>on unseen data</span>
+          distributions on <span className={KEY}>unseen data</span>
         </Heading>
         <div className="grid w-full gap-10 lg:grid-cols-2">
           <div className="flex min-w-0 flex-col gap-4">
@@ -566,8 +787,8 @@ export default function Page() {
       <Slide id="future" border>
         <Kicker>Future research</Kicker>
         <Heading>
-          <span className={KEY}>Human and AI consumers</span> on the same
-          storefronts
+          Human and AI consumers on the{" "}
+          <span className={KEY}>same storefronts</span>
         </Heading>
         <div className="grid w-full gap-8 md:grid-cols-3">
           {[
@@ -585,7 +806,9 @@ export default function Page() {
             },
           ].map((c, i) => (
             <Ruled key={c.t} tone={i === 0 ? "signal" : undefined}>
-              <p className="type-h2 !text-[1.5rem]">{c.t}</p>
+              <p className="type-h2 !text-[1.5rem]">
+                <strong className="font-semibold">{c.t}:</strong>
+              </p>
               <p className={`${BODY} mt-2`}>{c.d}</p>
             </Ruled>
           ))}
@@ -596,8 +819,8 @@ export default function Page() {
       <Slide id="teaching" border>
         <Kicker>Teaching</Kicker>
         <Heading>
-          Students learn AI by{" "}
-          <span className={KEY}>testing models and data in class</span>
+          Students learn AI by <span className={KEY}>testing</span> models and
+          data in class
         </Heading>
         <ul className="grid w-full max-w-[64rem] gap-x-10 md:grid-cols-2">
           {[
@@ -637,9 +860,7 @@ export default function Page() {
       <Slide id="thanks" border>
         <div className="grid w-full items-end gap-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-20">
           <h2 className="type-display !text-[clamp(3.6rem,8vw,7.2rem)] !leading-[0.95]">
-            <strong className="font-medium">
-              Thank you<span className={KEY}>.</span>
-            </strong>
+            Thank you.
           </h2>
           <div className="min-w-0">
             <div className="border-t-2 border-[var(--ink)] pt-5">
@@ -658,9 +879,7 @@ export default function Page() {
                     key={k}
                     className="grid grid-cols-[7rem_minmax(0,1fr)] items-baseline gap-x-6 border-b border-[var(--rule)] py-3"
                   >
-                    <dt className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--ink-3)]">
-                      {k}
-                    </dt>
+                    <dt className="text-[1rem] text-[var(--ink-3)]">{k}:</dt>
                     <dd className="min-w-0 truncate">
                       <a
                         className={`text-[clamp(1.15rem,1.6vw,1.45rem)] text-[var(--ink)] ${LINK}`}
@@ -682,23 +901,25 @@ export default function Page() {
       <Slide id="backup" border>
         <Kicker>Backup</Kicker>
         <Heading>Detailed results</Heading>
-        <ul className="grid w-full max-w-[64rem] gap-x-10 md:grid-cols-2">
+        <p className={`${BODY} max-w-[60rem]`}>
+          Links to each slide of /talks/guelph:{" "}
           {[
             ["Tool-Lab study", "study-1"],
-            ["Sponsorship study", "study-2"],
-            ["Search-rank study", "study-3"],
-            ["Methods", "methodology"],
-            ["Decision models", "study-4"],
-            ["Future research", "future"],
-            ["Teaching", "teaching"],
-          ].map(([name, id]) => (
-            <li key={id} className="border-b border-[var(--rule)] py-3">
-              <a className={`text-[1.15rem] ${LINK}`} href={`${FULL}#${id}`}>
+            ["sponsorship study", "study-2"],
+            ["search-rank study", "study-3"],
+            ["methods", "methodology"],
+            ["decision models", "study-4"],
+            ["future research", "future"],
+            ["teaching", "teaching"],
+          ].map(([name, id], i, all) => (
+            <React.Fragment key={id}>
+              <a className={LINK} href={`${FULL}#${id}`}>
                 {name}
               </a>
-            </li>
+              {i < all.length - 1 ? ", " : "."}
+            </React.Fragment>
           ))}
-        </ul>
+        </p>
       </Slide>
     </Deck>
   );

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Newsreader, IBM_Plex_Sans } from "next/font/google";
 // Talks borrow the Marketing Research & Analytics look ("Field Ledger").
 import "../(courses-mra)/globals.css";
+import "./talks.css";
 import { FitSlides } from "@/components/slide-components/FitSlides";
 
 const newsreader = Newsreader({

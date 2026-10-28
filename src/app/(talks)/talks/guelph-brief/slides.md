@@ -8,42 +8,103 @@ Candidate for Assistant Professor in AI and Business, Lang School
 
 # Decision-Making in Digital and AI-Mediated Marketplaces
 
-From human e-commerce behavior to large language models as surrogate consumers
-
 **Davood Wadi, PhD** (Marketing, AI specialization, HEC Montréal)
 - Researcher, McGill Centre for the Convergence of Health and Economics
-- AI Research Scientist, General Motors R&D
+- Research Collaborator, General Motors R&D
 
 ---
 
-Where I come from
+Research stream 1
 
-# Prosocial behavior and financial incentives in digital markets
+# Prosocial behavior in digital markets
 
-- Asking for reviews "to help the company" backfires when paired with payment. "to help other customers" does not.
-- Performance-contingent incentives motivate first-time (vs. experienced) reviewers more strongly to write a review and to put more effort.
+- Asking reviewers "help the company" backfires when paired with financial incentives, while "help other customers" does not.
+- Performance-contingent incentives motivate first-time (vs. experienced) reviewers more strongly to write a review and to exert more effort.
 
 - *The interplay of altruism and financial incentives: Maximizing online reviews through effective messaging*, Journal of Electronic Commerce Research, 2026
 - *Be careful what you pay for: The effect of performance-contingent incentives on online product reviews*, Journal of Research in Interactive Marketing, 2026
 
-<!-- **Next: what happens when the shopper is an AI agent?** -->
-
 ---
 
-Why AI agents
+Research stream 2
 
-# Storefronts were built for humans. AI agents now act as surrogate consumers.
-
-- **38%** of U.S. consumers have shopped with generative AI
-- AI referral traffic to retailers grew **10x** in one year (Pandya 2025)
+# AI mediated digital markets
 
 [consumer, AI agent, firm triad]
 
-1 Bounded Rationality & Search (*JAMS*, major revision). 2 Principal-Agent Conflicts (*JBR*, in preparation). 3 Position Bias & Consideration (*Marketing Letters*, under review). 4 Methods & Distributional Models (*EMNLP* 2025, *ACL*, *Marketing Science*)
+1. Pricing Cues and Information Search (*JAMS*, major revision). 
+2. Principal-Agent Conflicts (*JBR*, in preparation). 
+3. Ranking and Consideration Sets (*Marketing Letters*, under review). 
+4. Methods and Distributional Models (*EMNLP* 2025, *ACL*, *Marketing Science*)
 
 ---
 
-Paper 1: *Shopping by Algorithm* (*JAMS*, major revision)
+Methods: A Monte-Carlo Sampling Framework For Reliable Evaluation of Large Language Models Using Behavioral Analysis (EMNLP 2025)
+
+# Behavioral evaluation of Large Language Models
+
+- **The standard practice:** LLMs are evaluated by pass@1, a single response per prompt, as in the GPT, Gemini, and Claude reports.
+- **LLM behavior research:** Studies of LLM behavior typically evaluate one response per prompt (e.g., Jones & Steinhardt, 2022).
+- One response per condition, obscures the true behavior of the LLM.
+
+[interactive: the anchoring prompt, one response per condition, then 10 and 100 responses with 95% CIs]
+
+---
+
+Methods: Why one response is not enough
+
+# An LLM is not a sample of respondents
+
+- **Human respondents:** variance comes from differences between participants and from variability within each participant.
+- **LLMs:** for a given model and prompt, every response is a draw from a single probability distribution.
+
+[different participants, each answering once, vs. one LLM answering the same prompt many times, on the same axis]
+
+---
+
+Findings of EMNLP 2025
+
+# A Monte-Carlo framework for behavioral evaluation of LLMs
+
+- **Estimand:** the model's behavior is the expected score of its response to a prompt, over its response distribution.
+- **Theorem 1:** the Monte-Carlo mean of K independent responses is an unbiased estimator of the model's behavior.
+- **Theorem 2:** its variance decays to zero as K grows.
+- **Corollary:** it is asymptotically normal, which yields confidence intervals for model behavior.
+- **Choosing K:** the smallest K with the power to detect small effects (Cohen's *f* ≤ 0.10) across conditions.
+- **Application in marketing research:** applies to LLM evaluation in general, as well as to the social sciences and business research on LLM behavior.
+
+---
+
+Every Token Counts (*ACL* 2027, with Mohsen Ghodrat & Matthew Philp)
+
+# Exact Likert-scale distributions from a single forward pass
+
+[interactive: one Likert item, 10 and 100 sampled responses against the exact distribution, then the exact distribution]
+
+- **The limit of sampling:** for a given prompt, an LLM's response distribution is fixed and observable. Monte-Carlo sampling takes repeated noisy draws from it, so finite K leaves sampling error.
+- Token log-probabilities give the exact response distribution, with zero sampling error.
+- **Constraint:** the failure rate is the probability mass outside the valid answers.
+- **Consensus:** an ordinal consensus metric separates polarized answers (1 and 7) from concentrated ones (4), which entropy cannot.
+- **Construct:** convolving item distributions gives the exact distribution of the scale score, and a distributional ANOVA isolates main and interaction effects.
+
+---
+
+Shopping by Algorithm (*JAMS*, major revision)
+
+# Do pricing cues built for human bounded rationality still work when the buyer is an AI agent?
+
+- **Pricing cues:** just-below pricing and promotional framing were engineered to exploit human bounded rationality.
+- **Prior work:** LLMs behave both rationally and heuristically, and heuristic-like behavior is treated as a static defect learned in training.
+- **Our proposal:** heuristic-like choice depends on the information the AI agent holds when it chooses, shaped by retailers (the cost of retrieving product attributes) and by consumers (the goal prompt).
+
+[two coffees on a shelf, full information: Coffee A $4.99 for 10 oz, Coffee B $5.00 for 11 oz]
+
+- **Coffee A:** $4.99 for 10 oz (just-below price)
+- **Coffee B:** $5.00 for 11 oz (normatively optimal choice)
+
+---
+
+Shopping by Algorithm (*JAMS*, major revision)
 
 # Tool-Lab: information-board process tracing for AI shopping agents
 
@@ -51,14 +112,11 @@ Product attributes are placed behind costly tool calls (`inspect_cell`) until th
 
 2 (Acquisition cost: $0 vs. $10) × 2 (Goal prompt: specific vs. vague), across 8 LLMs
 
-- **Coffee A:** $4.99 for 10 oz (just-below price)
-- **Coffee B:** $5.00 for 11 oz (normatively optimal choice)
-
 [interactive Tool-Lab board, with goal prompt and acquisition cost as choices]
 
 ---
 
-Paper 1: *Shopping by Algorithm* (*JAMS*, major revision)
+Shopping by Algorithm (*JAMS*, major revision)
 
 # Under acquisition costs and a vague goal prompt, AI agents fall for just-below pricing and promotional framing
 
@@ -69,34 +127,44 @@ Paper 1: *Shopping by Algorithm* (*JAMS*, major revision)
 
 ---
 
-Paper 2: *Whom Do AI Agents Serve?* (*JBR*, in preparation)
+Whom Do AI Agents Serve? (*JBR*, in preparation)
 
 # Does the delegating principal change how an AI agent evaluates sponsored listings?
 
 2 (Sponsorship: organic vs. sponsored) × 2 (Principal: consumer vs. platform delegation)
 
 
-**DV:** target choice. **Mediator:** pre-choice skepticism (Kev 9B judge, ICC(2,1) = .959)
-
 [interactive design plate: system prompt by principal, target and competitor listings, "Platform sponsor" tag on the target when sponsored]
 
 ---
 
-Paper 2: *Whom Do AI Agents Serve?* (*JBR*, in preparation)
+Whom Do AI Agents Serve? (*JBR*, in preparation)
 
 # Platform delegation attenuates the sponsorship penalty
 
-[bars: sponsored target choice share by principal specification: role-neutral 7.8%, consumer delegation 2.8%, platform delegation 25.0%, platform with consumer beneficiary 3.2%]
+[bars: target choice share in the 2 × 2 (Study 1, Gemini 3.1 Pro): organic 53.0% consumer and 54.2% platform, sponsored 2.8% consumer and 25.0% platform, with 95% CIs]
 
 Principal × Sponsorship: β = 3.99, p < .001
-
-Index of moderated mediation via pre-choice skepticism = 2.27, 95% CI [1.92, 3.14]
 
 Replicates across 5 additional LLMs and 6 decision models
 
 ---
 
-Paper 2: Principal-invariance context distillation (preliminary)
+Whom Do AI Agents Serve? (*JBR*, in preparation)
+
+# Platform delegation weakens pre-choice skepticism toward sponsored listings
+
+- **Process tracing:** a judge model (Kev 9B) scores each pre-choice reasoning trace on one item: "The sponsorship status of the target made the agent skeptical of its true value to the traveler." (ICC(2,1) = .959 against human ratings)
+- **Skepticism toward a sponsored target:** 6.19 under consumer delegation vs. 4.80 under platform delegation (1 to 7 scale)
+- **Conditional indirect effects:** consumer delegation −8.06, 95% CI [−10.64, −7.31]. Platform delegation −5.79, 95% CI [−7.66, −5.20].
+
+[moderated mediation diagram, PROCESS Model 8: sponsorship → pre-choice skepticism (b = 4.83) → target choice (β = −1.67), principal × sponsorship on the first path (b = −1.36), direct path from sponsorship to target choice]
+
+Index of moderated mediation via pre-choice skepticism = 2.27, 95% CI [1.92, 3.14]
+
+---
+
+Principal-invariance context distillation (preliminary)
 
 # Context distillation removes the Principal × Sponsorship interaction on held-out stimuli
 
@@ -108,7 +176,7 @@ The sponsorship penalty under consumer delegation is preserved.
 
 ---
 
-Paper 3: *Does Rank Still Matter?* (*Marketing Letters*, under review)
+Does Rank Still Matter? (*Marketing Letters*, under review)
 
 # When shopping is delegated to AI agents, does the ranking advantage documented for humans persist?
 
@@ -118,7 +186,7 @@ Paper 3: *Does Rank Still Matter?* (*Marketing Letters*, under review)
 
 ---
 
-Paper 3: *Does Rank Still Matter?* (*Marketing Letters*, under review)
+Does Rank Still Matter? (*Marketing Letters*, under review)
 
 # Unlike humans, AI agents show a lost-in-the-middle effect
 
@@ -130,18 +198,7 @@ Paper 3: *Does Rank Still Matter?* (*Marketing Letters*, under review)
 
 ---
 
-Methods
-
-# A single LLM response is one draw from a probability distribution
-
-[interactive Likert plate]
-
-- Monte-Carlo behavioral evaluation of LLMs (*Findings of EMNLP* 2025)
-- Exact token-level Likert distributions (*ACL* 2027 submission)
-
----
-
-Paper 4: *Can Decision Models Sample Human Behavior?* (*Marketing Science*, in preparation)
+Can Decision Models Sample Human Behavior? (*Marketing Science*, in preparation)
 
 # Can decision models approximate empirical human response distributions across demographic subpopulations?
 
@@ -151,7 +208,7 @@ Paper 4: *Can Decision Models Sample Human Behavior?* (*Marketing Science*, in p
 
 ---
 
-Paper 4: *Can Decision Models Sample Human Behavior?* (*Marketing Science*, in preparation)
+Can Decision Models Sample Human Behavior? (*Marketing Science*, in preparation)
 
 # Fine-tuned decision models approximate human subpopulation response distributions on unseen data
 

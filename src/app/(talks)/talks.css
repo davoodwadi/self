@@ -1,0 +1,12 @@
+/* Talks: a light selection tint that keeps each text colour readable. */
+::selection {
+  background: var(--signal-line);
+  color: inherit;
+}
+
+/* Plates take no pointer events, so hovering a drawing never pops up its
+   description as a tooltip. Screen readers still read its label, and every
+   control in a talk sits outside the drawing. */
+svg[role="img"] {
+  pointer-events: none;
+}
