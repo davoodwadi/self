@@ -975,8 +975,8 @@ export default function Page() {
       <Slide id="teaching" border>
         <Kicker>Teaching</Kicker>
         <Heading>
-          Students learn AI by <span className={KEY}>testing</span> models and
-          data in class
+          Open-access course repositories for{" "}
+          <span className={KEY}>experiential learning</span>
         </Heading>
         <ul className="grid w-full max-w-[64rem] gap-x-10 md:grid-cols-2">
           {[
