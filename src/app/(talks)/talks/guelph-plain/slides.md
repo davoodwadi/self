@@ -4,11 +4,11 @@ Condensed version of /talks/guelph: one message per slide, about 40 words or few
 
 ---
 
+Interview for the position of Assistant Professor in AI and Business, Lang School of Business and Economics
+
 # Decision-Making in Digital and AI-Mediated Marketplaces
 
 **Davood Wadi, PhD** (Marketing, AI specialization, HEC Montréal)
-
-Candidate for Assistant Professor in AI and Business, Lang School
 
 - Researcher, McGill Centre for the Convergence of Health and Economics
 - Research Collaborator, General Motors R&D
@@ -125,6 +125,7 @@ Shopping by Algorithm (*JAMS*, major revision)
 
 **For firms:** price cues are still effective for AI as shoppers.
 **For consumers:** a specific goal prompt preserves diagnostic acquisition and choice optimality.
+**For retailers:** the information architecture of online marketplaces should be designed in a way that reduces friction in information acquisition. 
 
 ---
 
@@ -246,6 +247,22 @@ Future research
 - **Human vs. Surrogate Consumers:** Parallel human Mouselab and LLM Tool-Lab experiments (Consumer Behaviour Laboratory, Marketing Analytics Centre)
 - **Distributional Decision Models:** Fine-tuning decision models to replicate consumer survey distributions and treatment effects (Advanced Computing Laboratory)
 - **Algorithmic Audits:** Process-level audits of principal-agent conflicts and disclosure remedies in retail media
+
+---
+
+Teaching, 2025 to 2026
+
+# Courses taught and student evaluations
+
+| Institution | Courses | Period | Units | Responses | Mean |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Johns Hopkins University** | [Certificate Program in Applied Generative AI](https://online.lifelonglearning.jhu.edu/jhu-certificate-program-applied-generative-ai), [Certificate Program in Agentic AI](https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai) | Jan 2025 to Sep 2026 | 194 sessions | 2,970 | **4.76** |
+| **UT Austin** | [Post Graduate Program in AI Agents for Business Applications](https://onlineexeced.mccombs.utexas.edu/ai-agents-for-business-applications-online-course), [Post Graduate Program in AI Agents and Generative AI for Business Applications](https://onlineexeced.mccombs.utexas.edu/post-graduate-program-in-ai-agents-and-generative-ai-for-business-applications) | Feb 2026 to Aug 2026 | 15 sessions | 318 | **4.60** |
+| **Microsoft** | [Generative AI for Business with Microsoft Azure OpenAI](https://www.mygreatlearning.com/gen-ai-microsoft-azure-open-ai-online), Microsoft AI Professional Program (AI to OpenAI) | Jan 2025 to Sep 2025 | 48 sessions | 546 | **4.80** |
+| **Great Learning** | Data Science on Cloud, Advanced Python, Generative AI and NLP, Generative AI on AWS, [Generative AI for Practitioners](https://www.mygreatlearning.com/generative-ai-for-practitioners-online), [AI-Native Professional: Workflows & Agents for Productivity](https://www.mygreatlearning.com/ai-native-professional) | Jan 2025 to Sep 2026 | 101 sessions | 895 | **4.84** |
+| **University Canada West** | Cloud Computing Technologies (BUSI 653), [Digital Transformation](/courses/digital-transformation) (CMPT 641), [Application of AI in Business](/courses/ai-in-business) (BUSI 654) | Jan 2025 to Mar 2026 | 9 MBA sections | n/a | **4.16** |
+
+*Note.* Ratings are on a 5-point scale (unweighted mean across units). Across 4,729 responses in executive programs, 80.5% were 5 stars and 15.4% were 4 stars. For University Canada West, values are the mean score across all 16 evaluation questions (83.1% overall across 9 MBA sections) normalized to a 5-point scale.
 
 ---
 

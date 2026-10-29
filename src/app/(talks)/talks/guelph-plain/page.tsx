@@ -76,9 +76,9 @@ const SECTIONS: DeckSection[] = [
     ids: ["silicon-sampling-method", "silicon-sampling"],
   },
   { label: "Future research", ids: ["future"] },
-  { label: "Teaching", ids: ["teaching"] },
+  { label: "Teaching", ids: ["teaching-evaluations", "teaching"] },
   { label: "Thank you", ids: ["thanks"] },
-  { label: "Backup", ids: ["backup"] },
+  // { label: "Backup", ids: ["backup"] },
 ];
 
 /** Numbers each slide's folio, as the full deck does. */
@@ -98,11 +98,7 @@ function Deck({ children }: { children: React.ReactNode }) {
 
 /** The small line above a heading. */
 function Kicker({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="mb-3 text-[1.1rem] text-[var(--ink-3)]">
-      {children}
-    </p>
-  );
+  return <p className="mb-3 text-[1.1rem] text-[var(--ink-3)]">{children}</p>;
 }
 
 /** The slide's claim in bold. */
@@ -117,9 +113,7 @@ function Heading({ children }: { children: React.ReactNode }) {
 /** A tool name from the code, set as a quiet chip. */
 function Code({ children }: { children: React.ReactNode }) {
   return (
-    <code className="font-mono text-[0.9em] text-[var(--ink)]">
-      {children}
-    </code>
+    <code className="font-mono text-[0.9em] text-[var(--ink)]">{children}</code>
   );
 }
 
@@ -147,6 +141,10 @@ export default function Page() {
       {/* 1. Title */}
       <Slide id="title" align="center">
         <div className="mx-auto w-full max-w-[64rem]">
+          <p className="mb-10 text-[1.05rem] text-[var(--ink-2)]">
+            Interview for the position of Assistant Professor in AI and
+            Business, Lang School of Business and Economics
+          </p>
           <h1 className="type-display mx-auto max-w-[24ch] !text-[clamp(2.6rem,4.6vw,4rem)] !leading-[1.15]">
             Decision-Making in Digital and{" "}
             <span className={KEY}>AI-Mediated</span> Marketplaces
@@ -157,9 +155,6 @@ export default function Page() {
                 Davood Wadi, PhD
               </strong>{" "}
               (Marketing, AI specialization, HEC Montréal)
-            </p>
-            <p className="text-[1.15rem] text-[var(--ink-2)]">
-              Candidate for Assistant Professor in AI and Business, Lang School
             </p>
             <ul className="mt-4 space-y-1 text-[1.05rem] text-[var(--ink-2)]">
               <li>
@@ -333,8 +328,8 @@ export default function Page() {
                 t: "Corollary",
                 d: (
                   <>
-                    the Monte-Carlo mean is asymptotically normal, which yields confidence
-                    intervals for model behavior.
+                    the Monte-Carlo mean is asymptotically normal, which yields
+                    confidence intervals for model behavior.
                   </>
                 ),
               },
@@ -496,6 +491,11 @@ export default function Page() {
             <strong>For consumers:</strong> a specific goal prompt preserves
             diagnostic acquisition and choice optimality.
           </p>
+          <p className={BODY}>
+            <strong>For retailer:</strong> the information architecture of
+            online marketplaces should be designed in a way that reduces
+            friction in information acquisition.
+          </p>
         </Split>
       </Slide>
 
@@ -587,52 +587,6 @@ export default function Page() {
             traveler&apos;s best interest&rdquo; to the platform prompt restores
             the sponsorship penalty to 48.2 pp (3.2% sponsored target choice).
           </p>
-        </Split>
-      </Slide>
-
-      {/* Paper 2, process: moderated mediation via pre-choice skepticism */}
-      <Slide id="sponsorship-process" border>
-        <Kicker>
-          Whom Do AI Agents Serve? (<em>JBR</em>, in preparation)
-        </Kicker>
-        <Heading>
-          Platform delegation <span className={KEY}>weakens</span> pre-choice
-          skepticism toward sponsored listings
-        </Heading>
-        <Split
-          plate={
-            <div className="flex flex-col gap-3">
-              <MediationPlate />
-              <p className={`${BODY} !text-[1.05rem]`}>
-                Index of moderated mediation via pre-choice skepticism = 2.27,
-                95% CI [1.92, 3.14]
-              </p>
-            </div>
-          }
-        >
-          <ul className="flex flex-col gap-3">
-            <li
-              className={`${BODY} border-t border-[var(--ink)] pt-2.5 !text-[1.05rem]`}
-            >
-              <strong>Skepticism toward a sponsored target:</strong> 6.19 under
-              consumer delegation vs. 4.80 under platform delegation (1 to 7
-              scale)
-            </li>
-            <li
-              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.05rem]`}
-            >
-              <strong>Conditional indirect effects:</strong> consumer delegation
-              −8.06, 95% CI [−10.64, −7.31]. Platform delegation −5.79, 95% CI
-              [−7.66, −5.20].
-            </li>
-            <li
-              className={`${BODY} border-t border-[var(--rule-2)] pt-2.5 !text-[1.05rem]`}
-            >
-              <strong>Cross-LLM replication:</strong> the choice interaction
-              replicates across 5 additional LLMs, and the moderated mediation
-              replicates across all 3 Gemini Flash generations.
-            </li>
-          </ul>
         </Split>
       </Slide>
 
@@ -836,7 +790,188 @@ export default function Page() {
         </div>
       </Slide>
 
-      {/* 10. Teaching */}
+      {/* 10. Teaching: courses taught and evaluations */}
+      <Slide id="teaching-evaluations" border>
+        <Kicker>Teaching, 2025 to 2026</Kicker>
+        <Heading>
+          Courses taught and <span className={KEY}>student evaluations</span>
+        </Heading>
+        <div className="w-full">
+          <table className="w-full table-fixed border-collapse text-left text-[0.95rem] leading-snug text-[var(--ink-2)] md:text-[1.08rem]">
+            <colgroup>
+              <col className="w-[18%]" />
+              <col className="w-[44%]" />
+              <col className="w-[14%]" />
+              <col className="w-[10%]" />
+              <col className="w-[8%]" />
+              <col className="w-[6%]" />
+            </colgroup>
+            <thead>
+              <tr className="border-y-2 border-[var(--ink)] text-[var(--ink)]">
+                <th className="py-2.5 pr-4 font-semibold">Institution</th>
+                <th className="py-2.5 pr-4 font-semibold">Courses</th>
+                <th className="py-2.5 pr-4 font-semibold">Period</th>
+                <th className="py-2.5 pr-4 text-right font-semibold">Units</th>
+                <th className="py-2.5 pr-4 text-right font-semibold">
+                  Responses
+                </th>
+                <th className="py-2.5 text-right font-semibold">Mean</th>
+              </tr>
+            </thead>
+            <tbody className="border-b-2 border-[var(--ink)]">
+              {[
+                {
+                  institution: "Johns Hopkins University",
+                  courses: (
+                    <>
+                      <a
+                        className={LINK}
+                        href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-applied-generative-ai"
+                      >
+                        Certificate Program in Applied Generative AI
+                      </a>
+                      ,{" "}
+                      <a
+                        className={LINK}
+                        href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai"
+                      >
+                        Certificate Program in Agentic AI
+                      </a>
+                    </>
+                  ),
+                  period: "Jan 2025 to Sep 2026",
+                  units: "194 sessions",
+                  responses: "2,970",
+                  mean: "4.76",
+                },
+                {
+                  institution: "UT Austin",
+                  courses: (
+                    <>
+                      <a
+                        className={LINK}
+                        href="https://onlineexeced.mccombs.utexas.edu/ai-agents-for-business-applications-online-course"
+                      >
+                        Post Graduate Program in AI Agents for Business
+                        Applications
+                      </a>
+                      ,{" "}
+                      <a
+                        className={LINK}
+                        href="https://onlineexeced.mccombs.utexas.edu/post-graduate-program-in-ai-agents-and-generative-ai-for-business-applications"
+                      >
+                        Post Graduate Program in AI Agents and Generative AI for
+                        Business Applications
+                      </a>
+                    </>
+                  ),
+                  period: "Feb 2026 to Aug 2026",
+                  units: "15 sessions",
+                  responses: "318",
+                  mean: "4.60",
+                },
+                {
+                  institution: "Microsoft",
+                  courses: (
+                    <>
+                      <a
+                        className={LINK}
+                        href="https://www.mygreatlearning.com/gen-ai-microsoft-azure-open-ai-online"
+                      >
+                        Generative AI for Business with Microsoft Azure OpenAI
+                      </a>
+                      , Microsoft AI Professional Program (AI to OpenAI)
+                    </>
+                  ),
+                  period: "Jan 2025 to Sep 2025",
+                  units: "48 sessions",
+                  responses: "546",
+                  mean: "4.80",
+                },
+                {
+                  institution: "Great Learning",
+                  courses: (
+                    <>
+                      Data Science on Cloud, Advanced Python, Generative AI and
+                      NLP, Generative AI on AWS,{" "}
+                      <a
+                        className={LINK}
+                        href="https://www.mygreatlearning.com/generative-ai-for-practitioners-online"
+                      >
+                        Generative AI for Practitioners
+                      </a>
+                      ,{" "}
+                      <a
+                        className={LINK}
+                        href="https://www.mygreatlearning.com/ai-native-professional"
+                      >
+                        AI-Native Professional: Workflows &amp; Agents for
+                        Productivity
+                      </a>
+                    </>
+                  ),
+                  period: "Jan 2025 to Sep 2026",
+                  units: "101 sessions",
+                  responses: "895",
+                  mean: "4.84",
+                },
+                {
+                  institution: "University Canada West",
+                  courses: (
+                    <>
+                      Cloud Computing Technologies (BUSI 653),{" "}
+                      <a
+                        className={LINK}
+                        href="/courses/digital-transformation"
+                      >
+                        Digital Transformation
+                      </a>{" "}
+                      (CMPT 641),{" "}
+                      <a className={LINK} href="/courses/ai-in-business">
+                        Application of AI in Business
+                      </a>{" "}
+                      (BUSI 654)
+                    </>
+                  ),
+                  period: "Jan 2025 to Mar 2026",
+                  units: "9 MBA sections",
+                  responses: "n/a",
+                  mean: "4.16",
+                },
+              ].map((row) => (
+                <tr
+                  key={row.institution}
+                  className="border-b border-[var(--rule)] align-baseline last:border-b-0"
+                >
+                  <td className="py-3.5 pr-4 font-semibold text-[var(--ink)]">
+                    {row.institution}
+                  </td>
+                  <td className="py-3.5 pr-4">{row.courses}</td>
+                  <td className="py-3.5 pr-4">{row.period}</td>
+                  <td className="py-3.5 pr-4 text-right tabular-nums">
+                    {row.units}
+                  </td>
+                  <td className="py-3.5 pr-4 text-right tabular-nums">
+                    {row.responses}
+                  </td>
+                  <td className="py-3.5 text-right font-semibold tabular-nums text-[var(--ink)]">
+                    {row.mean}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className={`${CITE} mt-4`}>
+          <em>Note.</em> Ratings are on a 5-point scale (unweighted mean across
+          units). Across 4,729 responses in executive programs, 80.5% were 5
+          stars and 15.4% were 4 stars. For University Canada West, values are
+          the mean score across all 16 evaluation questions (83.1% overall
+          across 9 MBA sections) normalized to a 5-point scale.
+        </p>
+      </Slide>
+
+      {/* 11. Teaching: interactive course sites */}
       <Slide id="teaching" border>
         <Kicker>Teaching</Kicker>
         <Heading>
@@ -919,7 +1054,7 @@ export default function Page() {
       </Slide>
 
       {/* 12. Backup */}
-      <Slide id="backup" border>
+      {/* <Slide id="backup" border>
         <Kicker>Backup</Kicker>
         <Heading>Detailed results</Heading>
         <p className={`${BODY} max-w-[60rem]`}>
@@ -941,7 +1076,7 @@ export default function Page() {
             </React.Fragment>
           ))}
         </p>
-      </Slide>
+      </Slide> */}
     </Deck>
   );
 }
