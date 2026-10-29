@@ -761,10 +761,7 @@ export default function Page() {
       {/* 9. Future research */}
       <Slide id="future" border>
         <Kicker>Future research</Kicker>
-        <Heading>
-          Human and AI consumers on the{" "}
-          <span className={KEY}>same storefronts</span>
-        </Heading>
+        <Heading>Human and AI alignment in consumption</Heading>
         <div className="grid w-full gap-8 md:grid-cols-3">
           {[
             {
