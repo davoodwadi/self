@@ -766,7 +766,7 @@ export default function Page() {
           {[
             {
               t: "Human vs. Surrogate Consumers",
-              d: "Parallel human Mouselab and LLM Tool-Lab experiments (Consumer Behaviour Laboratory, Marketing Analytics Centre)",
+              d: "Parallel human Mouselab and LLM Tool-Lab experiments (Consumer Behaviour Laboratory)",
             },
             {
               t: "Distributional Decision Models",
@@ -774,7 +774,7 @@ export default function Page() {
             },
             {
               t: "Algorithmic Audits",
-              d: "Process-level audits of principal-agent conflicts and disclosure remedies in retail media",
+              d: "Process-level audits of principal-agent conflicts and disclosure remedies in retail media (Marketing Analytics Centre)",
             },
           ].map((c, i) => (
             <Ruled key={c.t} tone={i === 0 ? "signal" : undefined}>
