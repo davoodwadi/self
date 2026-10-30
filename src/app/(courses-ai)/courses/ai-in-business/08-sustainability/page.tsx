@@ -216,7 +216,7 @@ export default function Week08Sustainability() {
         </div>
 
         <div className="relative">
-          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.25rem,6.2vw,4.75rem)] font-black leading-[0.95] tracking-[-0.035em] text-[var(--charcoal)]">
+          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.25rem,6.2vw,4.75rem)] font-semibold leading-[0.95] tracking-[-0.035em] text-[var(--charcoal)]">
             The Dual Nature of Artificial Intelligence:{" "}
             <span className="mt-5 block text-[0.6em] font-normal italic leading-[1.1] tracking-[-0.02em] text-[var(--crimson)]">
               Environmental Costs and Sustainable Solutions

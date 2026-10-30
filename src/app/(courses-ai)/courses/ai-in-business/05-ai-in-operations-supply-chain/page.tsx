@@ -70,7 +70,7 @@ export default function Week05OperationsSupplyChain() {
         </div>
 
         <div>
-          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-black leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
+          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-semibold leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
             AI in Operations and{" "}
             <span className="text-[var(--crimson)]">Supply Chain</span>
           </h1>
@@ -156,71 +156,144 @@ export default function Week05OperationsSupplyChain() {
             multiple continents and regulatory zones.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 150"
+            role="img"
+            aria-label="Highly interconnected supply chain networks spanning three continents and regulatory zones separated by dashed borders."
+            viewBox="0 0 800 148"
             className="mt-7 w-full max-w-5xl"
             fill="none"
           >
-            <text
-              {...SVG_LABEL}
-              x="0"
-              y="10"
-              fill="var(--charcoal)"
-              fillOpacity="0.5"
-            >
-              MULTIPLE CONTINENTS AND REGULATORY ZONES
-            </text>
-            {[270, 530].map((x) => (
-              <path
+            <title>
+              Highly interconnected supply chain networks spanning three
+              continents and regulatory zones separated by dashed borders.
+            </title>
+            {/* Three continents / regulatory zones */}
+            {[16, 282, 548].map((x) => (
+              <rect
                 key={x}
-                d={`M${x} 26V146`}
+                x={x}
+                y="24"
+                width="236"
+                height="98"
+                fill="var(--charcoal)"
+                fillOpacity="0.02"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.25"
-                strokeDasharray="3 5"
+                strokeOpacity="0.24"
+                strokeDasharray="4 4"
               />
             ))}
+            <text
+              {...SVG_LABEL}
+              x="16"
+              y="16"
+              fill="var(--charcoal)"
+              fillOpacity="0.6"
+            >
+              MULTIPLE CONTINENTS
+            </text>
+            <text
+              {...SVG_LABEL}
+              x="400"
+              y="16"
+              textAnchor="middle"
+              fill="var(--charcoal)"
+              fillOpacity="0.6"
+            >
+              REGULATORY ZONES
+            </text>
+            <text
+              {...SVG_LABEL}
+              x="784"
+              y="140"
+              textAnchor="end"
+              fill="var(--crimson)"
+            >
+              HIGHLY INTERCONNECTED NETWORKS
+            </text>
             {(() => {
               const nodes = [
-                [50, 70],
-                [120, 124],
-                [170, 50],
-                [230, 104],
-                [320, 60],
-                [380, 124],
-                [440, 42],
-                [490, 96],
-                [580, 72],
-                [640, 126],
-                [700, 46],
-                [760, 102],
+                [56, 52],
+                [56, 94],
+                [148, 46],
+                [148, 100],
+                [216, 73],
+                [322, 48],
+                [322, 98],
+                [400, 73],
+                [478, 48],
+                [478, 98],
+                [584, 73],
+                [652, 46],
+                [652, 100],
+                [744, 52],
+                [744, 94],
               ];
-              const links = [
-                [0, 1], [0, 2], [2, 3], [1, 3],
-                [4, 5], [4, 6], [6, 7], [5, 7],
-                [8, 9], [8, 10], [10, 11], [9, 11],
-                [3, 4], [2, 6], [7, 8], [1, 5], [5, 9], [6, 10], [3, 8],
+              const localLinks = [
+                [0, 1],
+                [0, 2],
+                [1, 3],
+                [2, 4],
+                [3, 4],
+                [5, 6],
+                [5, 7],
+                [6, 7],
+                [7, 8],
+                [7, 9],
+                [8, 9],
+                [10, 11],
+                [10, 12],
+                [11, 13],
+                [12, 14],
+                [13, 14],
+              ];
+              const crossZoneLinks = [
+                [2, 5],
+                [4, 5],
+                [4, 6],
+                [3, 6],
+                [8, 11],
+                [8, 10],
+                [9, 10],
+                [9, 12],
               ];
               return (
                 <g>
-                  {links.map(([a, b]) => (
+                  {localLinks.map(([a, b]) => (
                     <path
-                      key={`${a}-${b}`}
+                      key={`l-${a}-${b}`}
                       d={`M${nodes[a][0]} ${nodes[a][1]}L${nodes[b][0]} ${nodes[b][1]}`}
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.2"
+                      strokeOpacity="0.3"
+                      strokeWidth="1.25"
                     />
                   ))}
-                  {nodes.map(([x, y]) => (
-                    <circle
-                      key={`${x}-${y}`}
-                      cx={x}
-                      cy={y}
-                      r="5"
-                      fill="var(--surface)"
-                      stroke="var(--charcoal)"
-                      strokeOpacity="0.55"
+                  {crossZoneLinks.map(([a, b]) => (
+                    <path
+                      key={`c-${a}-${b}`}
+                      d={`M${nodes[a][0]} ${nodes[a][1]}L${nodes[b][0]} ${nodes[b][1]}`}
+                      stroke="var(--crimson)"
+                      strokeOpacity="0.7"
+                      strokeWidth="1.5"
                     />
                   ))}
+                  {nodes.map(([x, y], idx) => {
+                    const isBorderNode = [
+                      2, 3, 4, 5, 6, 8, 9, 10, 11, 12,
+                    ].includes(idx);
+                    return (
+                      <circle
+                        key={`${x}-${y}`}
+                        cx={x}
+                        cy={y}
+                        r="5"
+                        fill="var(--surface)"
+                        stroke={
+                          isBorderNode ? "var(--crimson)" : "var(--charcoal)"
+                        }
+                        strokeOpacity={isBorderNode ? "0.95" : "0.6"}
+                        strokeWidth="1.5"
+                      />
+                    );
+                  })}
                 </g>
               );
             })()}
@@ -235,62 +308,94 @@ export default function Week05OperationsSupplyChain() {
                 volume of variables required for global optimization.
               </p>
               <svg
-                aria-hidden
-                viewBox="0 0 400 150"
+                role="img"
+                aria-label="Rigid spreadsheet-based planning grid blocked from processing a large volume of variables required for global optimization."
+                viewBox="0 0 400 154"
                 className="mt-6 w-full"
                 fill="none"
               >
+                <title>
+                  Rigid spreadsheet-based planning grid blocked from processing
+                  a large volume of variables required for global optimization.
+                </title>
+                <text
+                  {...SVG_LABEL}
+                  x="146"
+                  y="18"
+                  textAnchor="middle"
+                  fill="var(--crimson)"
+                >
+                  CANNOT PROCESS
+                </text>
                 <rect
-                  x="2"
-                  y="30"
-                  width="84"
+                  x="14"
+                  y="32"
+                  width="96"
                   height="72"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.6"
+                  strokeOpacity="0.55"
                 />
-                {[48, 66, 84].map((y) => (
+                {[50, 68, 86].map((y) => (
                   <path
                     key={y}
-                    d={`M2 ${y}H86`}
+                    d={`M14 ${y}H110`}
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.3"
+                    strokeOpacity="0.25"
                   />
                 ))}
-                {[30, 58].map((x) => (
+                {[46, 78].map((x) => (
                   <path
                     key={x}
-                    d={`M${x} 30V102`}
+                    d={`M${x} 32V104`}
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.3"
+                    strokeOpacity="0.25"
                   />
                 ))}
-                {Array.from({ length: 22 * 9 }).map((_, k) => {
-                  const col = k % 22;
-                  const row = Math.floor(k / 22);
+                {/* Bottleneck / cannot process barrier */}
+                <path
+                  d="M118 68H168"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.5"
+                  strokeDasharray="3 3"
+                />
+                <path
+                  d="M138 60L150 76M150 60L138 76"
+                  stroke="var(--crimson)"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M176 28V108"
+                  stroke="var(--crimson)"
+                  strokeOpacity="0.55"
+                  strokeWidth="1.5"
+                />
+                {Array.from({ length: 16 * 7 }).map((_, k) => {
+                  const col = k % 16;
+                  const row = Math.floor(k / 16);
                   return (
                     <circle
                       key={k}
-                      cx={124 + col * 12.5}
-                      cy={14 + row * 12}
-                      r="1.8"
+                      cx={192 + col * 12.5}
+                      cy={32 + row * 12}
+                      r="2.2"
                       fill="var(--charcoal)"
-                      fillOpacity={0.18 + ((col * 7 + row * 5) % 5) * 0.08}
+                      fillOpacity={+(0.22 + ((col * 7 + row * 5) % 4) * 0.08).toFixed(2)}
                     />
                   );
                 })}
                 <text
                   {...SVG_LABEL}
-                  x="0"
-                  y="124"
+                  x="14"
+                  y="134"
                   fill="var(--charcoal)"
-                  fillOpacity="0.55"
+                  fillOpacity="0.6"
                 >
-                  SPREADSHEET
+                  SPREADSHEET-BASED PLANNING
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="398"
-                  y="124"
+                  x="386"
+                  y="134"
                   textAnchor="end"
                   fill="var(--crimson)"
                 >
@@ -305,58 +410,69 @@ export default function Week05OperationsSupplyChain() {
                 inventory practices and just-in-time manufacturing.
               </p>
               <svg
-                aria-hidden
-                viewBox="0 0 400 90"
+                role="img"
+                aria-label="A disruption at the first stage cascading rapidly across five tightly coupled supply chain stages with lean inventory."
+                viewBox="0 0 400 108"
                 className="mt-6 w-full"
                 fill="none"
               >
+                <title>
+                  A disruption at the first stage cascading rapidly across five
+                  tightly coupled supply chain stages with lean inventory.
+                </title>
                 {[0, 1, 2, 3, 4].map((i) => {
-                  const x = 20 + i * 90;
+                  const x = 32 + i * 84;
                   return (
                     <g key={i}>
                       {i < 4 && (
                         <>
                           <path
-                            d={`M${x + 12} 36H${x + 76}`}
+                            d={`M${x + 11} 42H${x + 73}`}
                             stroke="var(--crimson)"
-                            strokeOpacity="0.55"
+                            strokeOpacity="0.65"
+                            strokeWidth="1.5"
                           />
                           <path
-                            d={`M${x + 70} 32l6 4l-6 4`}
+                            d={`M${x + 66} 37l7 5l-7 5`}
                             stroke="var(--crimson)"
-                            strokeOpacity="0.7"
+                            strokeOpacity="0.8"
+                            strokeWidth="1.5"
                           />
                         </>
                       )}
                       <circle
                         cx={x}
-                        cy="36"
-                        r="8"
+                        cy="42"
+                        r="11"
                         fill={i === 0 ? "var(--crimson)" : "var(--surface)"}
                         stroke="var(--crimson)"
-                        strokeOpacity={1 - i * 0.12}
+                        strokeOpacity={+(1 - i * 0.12).toFixed(2)}
                         strokeWidth="2"
                       />
+                      {i > 0 && (
+                        <circle
+                          cx={x}
+                          cy="42"
+                          r="4"
+                          fill="var(--crimson)"
+                          fillOpacity={+(0.85 - i * 0.15).toFixed(2)}
+                        />
+                      )}
                     </g>
                   );
                 })}
-                <text
-                  {...SVG_LABEL}
-                  x="12"
-                  y="74"
-                  fill="var(--crimson)"
-                >
+                <text {...SVG_LABEL} x="20" y="86" fill="var(--crimson)">
                   DISRUPTIONS
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="392"
-                  y="74"
+                  x="380"
+                  y="86"
                   textAnchor="end"
                   fill="var(--charcoal)"
-                  fillOpacity="0.55"
+                  fillOpacity="0.6"
                 >
-                  CASCADE
+                  CASCADE RAPIDLY
                 </text>
               </svg>
               <Terms
@@ -368,15 +484,17 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Simplified assumptions"
-              right="Model this complexity"
-              strikeLeft
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+            <p className={`${DISPLAY} max-w-4xl`}>
               Machine learning provides the capability to model this complexity
               without relying on simplified assumptions.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Simplified assumptions"
+                right="Model this complexity"
+                strikeLeft
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -407,31 +525,54 @@ export default function Week05OperationsSupplyChain() {
               linear programming models.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 360 110"
+              role="img"
+              aria-label="Static linear programming constraints bounding a fixed feasible region across time."
+              viewBox="0 0 400 120"
               className="mt-6 w-full"
               fill="none"
             >
+              <title>
+                Static linear programming constraints bounding a fixed feasible
+                region across time.
+              </title>
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="18"
+                x="24"
+                y="20"
                 fill="var(--charcoal)"
-                fillOpacity="0.55"
+                fillOpacity="0.6"
               >
                 STATIC CONSTRAINTS
               </text>
+              <rect
+                x="24"
+                y="44"
+                width="360"
+                height="46"
+                fill="var(--charcoal)"
+                fillOpacity="0.05"
+              />
               <path
-                d="M0 44H360"
+                d="M24 44H384"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.65"
+                strokeOpacity="0.7"
                 strokeWidth="2"
               />
               <path
-                d="M0 86H360"
+                d="M24 28V90H384"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.15"
+                strokeOpacity="0.25"
               />
+              <text
+                {...SVG_LABEL}
+                x="384"
+                y="110"
+                textAnchor="end"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+              >
+                LINEAR PROGRAMMING MODELS
+              </text>
             </svg>
           </div>
 
@@ -442,39 +583,50 @@ export default function Week05OperationsSupplyChain() {
               operational constraints in real time.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 360 114"
+              role="img"
+              aria-label="Operational constraints dynamically adjusting in real time at each arrival of new data."
+              viewBox="0 0 400 120"
               className="mt-6 w-full"
               fill="none"
             >
-              <text {...SVG_LABEL} x="0" y="18" fill="var(--crimson)">
+              <title>
+                Operational constraints dynamically adjusting in real time at
+                each arrival of new data.
+              </title>
+              <text {...SVG_LABEL} x="24" y="20" fill="var(--crimson)">
                 ADJUSTING IN REAL TIME
               </text>
               <path
-                d="M0 50H40V36H100V58H160V42H220V30H280V52H340V40H360"
+                d="M24 54H74V38H134V62H194V44H254V32H314V56H384V90H24Z"
+                fill="var(--crimson)"
+                fillOpacity="0.06"
+              />
+              <path
+                d="M24 54H74V38H134V62H194V44H254V32H314V56H384"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
               <path
-                d="M0 86H360"
+                d="M24 28V90H384"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.15"
+                strokeOpacity="0.25"
               />
-              {[40, 100, 160, 220, 280, 340].map((x) => (
+              {[74, 134, 194, 254, 314].map((x) => (
                 <path
                   key={x}
-                  d={`M${x} 80V92`}
-                  stroke="var(--charcoal)"
-                  strokeOpacity="0.5"
+                  d={`M${x} 84V96`}
+                  stroke="var(--crimson)"
+                  strokeOpacity="0.7"
+                  strokeWidth="1.5"
                 />
               ))}
               <text
                 {...SVG_LABEL}
-                x="360"
-                y="108"
+                x="384"
+                y="110"
                 textAnchor="end"
                 fill="var(--charcoal)"
-                fillOpacity="0.5"
+                fillOpacity="0.6"
               >
                 NEW DATA
               </text>
@@ -483,33 +635,50 @@ export default function Week05OperationsSupplyChain() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_30rem] md:gap-14">
+          <div className="mt-12 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_25rem] md:gap-14">
             <p className={LEAD}>
               Deep learning handles non-linear relationships that traditional
               statistical models often miss.
             </p>
-            <figure aria-hidden className="w-full">
-              <svg viewBox="0 0 460 180" className="w-full" fill="none">
+            <figure className="w-full">
+              <svg
+                role="img"
+                aria-label="Comparison of a dashed linear fit from traditional statistical models missing a curved non-linear relationship captured by deep learning."
+                viewBox="0 0 400 180"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Comparison of a dashed linear fit from traditional statistical
+                  models missing a curved non-linear relationship captured by
+                  deep learning.
+                </title>
+                <path
+                  d="M20 14V162H384"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.22"
+                />
                 {(() => {
                   const f = (x: number) =>
-                    166 - 136 / (1 + Math.exp(-(x - 240) / 36));
-                  const jitter = [5, -6, 2, -4, 6, -2];
-                  const points = Array.from({ length: 16 }).map((_, i) => {
-                    const x = 24 + i * 28;
-                    return [x, f(x) + jitter[i % jitter.length]];
+                    150 - 116 / (1 + Math.exp(-(x - 200) / 32));
+                  const jitter = [4, -5, 2, -4, 5, -2];
+                  const points = Array.from({ length: 14 }).map((_, i) => {
+                    const x = 34 + i * 25;
+                    return [x, +(f(x) + jitter[i % jitter.length]).toFixed(2)];
                   });
-                  const curve = Array.from({ length: 45 })
+                  const curve = Array.from({ length: 36 })
                     .map((_, i) => {
-                      const x = 10 + i * 10;
-                      return `${i === 0 ? "M" : "L"}${x} ${f(x).toFixed(1)}`;
+                      const x = 28 + i * 10;
+                      return `${i === 0 ? "M" : "L"}${x} ${f(x).toFixed(2)}`;
                     })
                     .join("");
                   return (
                     <g>
                       <path
-                        d="M10 156L450 40"
+                        d="M28 140L378 44"
                         stroke="var(--charcoal)"
-                        strokeOpacity="0.5"
+                        strokeOpacity="0.45"
+                        strokeWidth="1.5"
                         strokeDasharray="5 5"
                       />
                       <path d={curve} stroke="var(--crimson)" strokeWidth="2" />
@@ -517,7 +686,7 @@ export default function Week05OperationsSupplyChain() {
                         <circle
                           key={x}
                           cx={x}
-                          cy={y.toFixed(1)}
+                          cy={y}
                           r="3"
                           fill="var(--charcoal)"
                           fillOpacity="0.45"
@@ -526,24 +695,30 @@ export default function Week05OperationsSupplyChain() {
                     </g>
                   );
                 })()}
+                <text
+                  {...SVG_LABEL}
+                  x="290"
+                  y="24"
+                  textAnchor="middle"
+                  fill="var(--crimson)"
+                >
+                  DEEP LEARNING
+                </text>
                 <path
-                  d="M0 10H24"
+                  d="M320 62V124"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.5"
-                  strokeDasharray="5 5"
+                  strokeOpacity="0.3"
+                  strokeDasharray="2 3"
                 />
                 <text
                   {...SVG_LABEL}
-                  x="34"
-                  y="13"
+                  x="378"
+                  y="140"
+                  textAnchor="end"
                   fill="var(--charcoal)"
                   fillOpacity="0.6"
                 >
                   TRADITIONAL STATISTICAL MODELS
-                </text>
-                <path d="M0 30H24" stroke="var(--crimson)" strokeWidth="2" />
-                <text {...SVG_LABEL} x="34" y="33" fill="var(--crimson)">
-                  DEEP LEARNING
                 </text>
               </svg>
             </figure>
@@ -579,53 +754,65 @@ export default function Week05OperationsSupplyChain() {
         </div>
 
         <div className="w-full">
-          <figure aria-hidden className="mt-10 w-full max-w-5xl">
-            <svg viewBox="0 0 800 160" className="w-full" fill="none">
+          <figure className="mt-10 w-full max-w-5xl">
+            <svg
+              role="img"
+              aria-label="Timeline comparing historical supply chains reacting to disruptions after they occurred versus predictive models analyzing leading indicators to forecast disruptions weeks before."
+              viewBox="0 0 800 164"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Timeline comparing historical supply chains reacting to
+                disruptions after they occurred versus predictive models
+                analyzing leading indicators to forecast disruptions weeks
+                before.
+              </title>
               <path
-                d="M530 8V134"
+                d="M540 12V132"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
               <text
                 {...SVG_LABEL}
-                x="530"
-                y="154"
+                x="540"
+                y="152"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
-                DISRUPTION
+                DISRUPTIONS
               </text>
 
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="47"
+                x="14"
+                y="48"
                 fill="var(--charcoal)"
-                fillOpacity="0.55"
+                fillOpacity="0.6"
               >
-                REACTIVE
+                HISTORICAL SUPPLY CHAINS
               </text>
               <path
-                d="M120 44H520"
+                d="M214 44H530"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.15"
+                strokeOpacity="0.2"
                 strokeDasharray="3 5"
               />
               <path
-                d="M542 44H716"
+                d="M552 44H746"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.65"
                 strokeWidth="2"
               />
               <path
-                d="M708 38l8 6l-8 6"
+                d="M738 38l8 6l-8 6"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.65"
                 strokeWidth="2"
               />
               <text
                 {...SVG_LABEL}
-                x="544"
+                x="554"
                 y="30"
                 fill="var(--charcoal)"
                 fillOpacity="0.6"
@@ -635,23 +822,24 @@ export default function Week05OperationsSupplyChain() {
 
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="107"
+                x="14"
+                y="108"
                 fill="var(--crimson)"
               >
-                PREDICTIVE
+                PREDICTIVE MODELS
               </text>
               {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
                 <path
                   key={i}
-                  d={`M${160 + i * 12} ${104 - (i % 3) * 3 - 4}V${104 + (i % 3) * 3 + 4}`}
+                  d={`M${214 + i * 12} ${104 - (i % 3) * 3 - 4}V${104 + (i % 3) * 3 + 4}`}
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.5"
+                  strokeOpacity="0.55"
+                  strokeWidth="1.5"
                 />
               ))}
               <text
                 {...SVG_LABEL}
-                x="156"
+                x="214"
                 y="84"
                 fill="var(--charcoal)"
                 fillOpacity="0.6"
@@ -659,18 +847,18 @@ export default function Week05OperationsSupplyChain() {
                 LEADING INDICATORS
               </text>
               <path
-                d="M262 104H518"
+                d="M312 104H528"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
               <path
-                d="M510 98l8 6l-8 6"
+                d="M520 98l8 6l-8 6"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
               <text
                 {...SVG_LABEL}
-                x="420"
+                x="442"
                 y="84"
                 textAnchor="middle"
                 fill="var(--crimson)"
@@ -683,15 +871,17 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <Split1
-              left="Crisis management"
-              right="Strategic scenario planning"
-              strikeLeft
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+            <p className={`${DISPLAY} max-w-4xl`}>
               Operations teams are transitioning from crisis management to
               strategic scenario planning.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Crisis management"
+                right="Strategic scenario planning"
+                strikeLeft
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -719,59 +909,71 @@ export default function Week05OperationsSupplyChain() {
               external market signals.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 150"
+              role="img"
+              aria-label="Four operational data sources (IoT sensors, ERP systems, supplier portals, and external market signals) converging into machine learning models."
+              viewBox="0 0 800 156"
               className="mt-6 w-full max-w-5xl"
               fill="none"
             >
+              <title>
+                Four operational data sources (IoT sensors, ERP systems,
+                supplier portals, and external market signals) converging into
+                machine learning models.
+              </title>
               {[
-                { y: 18, label: "IOT SENSORS" },
-                { y: 56, label: "ERP SYSTEMS" },
+                { y: 22, label: "IOT SENSORS" },
+                { y: 58, label: "ERP SYSTEMS" },
                 { y: 94, label: "SUPPLIER PORTALS" },
-                { y: 132, label: "EXTERNAL MARKET SIGNALS" },
+                { y: 130, label: "EXTERNAL MARKET SIGNALS" },
               ].map((s) => (
                 <g key={s.label}>
                   <text
                     {...SVG_LABEL}
-                    x="0"
+                    x="14"
                     y={s.y + 3}
                     fill="var(--charcoal)"
-                    fillOpacity="0.6"
+                    fillOpacity="0.65"
                   >
                     {s.label}
                   </text>
                   <circle
-                    cx="226"
+                    cx="236"
                     cy={s.y}
                     r="4"
+                    fill="var(--surface)"
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.5"
+                    strokeOpacity="0.55"
+                    strokeWidth="1.5"
                   />
                   <path
-                    d={`M232 ${s.y} C 360 ${s.y}, 420 75, 540 75`}
+                    d={`M240 ${s.y} C 368 ${s.y}, 424 76, 548 76`}
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.25"
+                    strokeOpacity="0.3"
+                    strokeWidth="1.25"
                   />
                 </g>
               ))}
               <path
-                d="M533 71l7 4l-7 4"
-                stroke="var(--charcoal)"
-                strokeOpacity="0.5"
+                d="M541 71l7 5l-7 5"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
               />
               <rect
                 x="548"
-                y="63"
-                width="24"
-                height="24"
+                y="48"
+                width="236"
+                height="56"
                 fill="var(--crimson)"
+                fillOpacity="0.05"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
               />
               <text
                 {...SVG_LABEL}
-                x="586"
-                y="78"
-                fill="var(--charcoal)"
-                fillOpacity="0.7"
+                x="666"
+                y="79"
+                textAnchor="middle"
+                fill="var(--crimson)"
               >
                 MACHINE LEARNING MODELS
               </text>
@@ -781,34 +983,77 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <div aria-hidden className="grid max-w-4xl grid-cols-4">
-              {[0, 1, 2, 3].map((d) => (
-                <div
-                  key={d}
-                  className={`flex h-16 flex-wrap content-center gap-1.5 border-y border-[var(--charcoal)]/15 px-4 ${
-                    d > 0 ? "border-l-[3px] border-l-[var(--crimson)]" : ""
-                  }`}
-                >
-                  {Array.from({ length: 10 }).map((_, k) => (
-                    <span
-                      key={k}
-                      className="block h-1.5 w-1.5 rounded-full bg-[var(--charcoal)]"
-                      style={{ opacity: 0.2 + ((k * 3 + d * 5) % 4) * 0.1 }}
-                    />
-                  ))}
-                </div>
-              ))}
-            </div>
-            <div
-              aria-hidden
-              className={`${MICRO} mt-3 text-[var(--crimson)]`}
-            >
-              Data silos | between different departments
-            </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
+            <p className={`${DISPLAY} max-w-4xl`}>
               Data silos between different departments remain the primary
               barrier to successful AI implementation.
             </p>
+            <svg
+              role="img"
+              aria-label="Four departments walled off by crimson data silos that block horizontal data flow as the primary barrier to AI implementation."
+              viewBox="0 0 800 108"
+              className="mt-6 w-full max-w-4xl"
+              fill="none"
+            >
+              <title>
+                Four departments walled off by crimson data silos that block
+                horizontal data flow as the primary barrier to AI
+                implementation.
+              </title>
+              {[0, 1, 2, 3].map((d) => {
+                const x = 14 + d * 196;
+                return (
+                  <g key={d}>
+                    <rect
+                      x={x}
+                      y="18"
+                      width="180"
+                      height="56"
+                      fill="var(--charcoal)"
+                      fillOpacity="0.025"
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.22"
+                    />
+                    {[0, 1, 2, 3, 4].map((c) =>
+                      [0, 1].map((r) => (
+                        <circle
+                          key={`${c}-${r}`}
+                          cx={x + 36 + c * 27}
+                          cy={38 + r * 16}
+                          r="2.5"
+                          fill="var(--charcoal)"
+                          fillOpacity={+(0.25 + ((c * 3 + d * 5 + r) % 4) * 0.1).toFixed(2)}
+                        />
+                      )),
+                    )}
+                    {d < 3 && (
+                      <path
+                        d={`M${x + 188} 10V82`}
+                        stroke="var(--crimson)"
+                        strokeWidth="3"
+                      />
+                    )}
+                  </g>
+                );
+              })}
+              <text
+                {...SVG_LABEL}
+                x="14"
+                y="98"
+                fill="var(--charcoal)"
+                fillOpacity="0.6"
+              >
+                DIFFERENT DEPARTMENTS
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="782"
+                y="98"
+                textAnchor="end"
+                fill="var(--crimson)"
+              >
+                DATA SILOS | PRIMARY BARRIER
+              </text>
+            </svg>
           </div>
         </div>
 
@@ -874,34 +1119,57 @@ export default function Week05OperationsSupplyChain() {
               that indicate a shift in demand long before it hits the sales
               ledger.
             </p>
-            <figure aria-hidden className="mt-7 w-full">
-              <svg viewBox="0 0 800 160" className="w-full" fill="none">
+            <figure className="mt-7 w-full max-w-5xl">
+              <svg
+                role="img"
+                aria-label="Timeline showing subtle patterns in consumer behavior detected by neural networks long before the shift in demand hits the sales ledger."
+                viewBox="0 0 800 164"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Timeline showing subtle patterns in consumer behavior detected
+                  by neural networks long before the shift in demand hits the
+                  sales ledger.
+                </title>
                 <text
                   {...SVG_LABEL}
-                  x="0"
-                  y="51"
+                  x="14"
+                  y="55"
                   fill="var(--charcoal)"
-                  fillOpacity="0.55"
+                  fillOpacity="0.6"
                 >
                   CONSUMER BEHAVIOR
                 </text>
                 <path
-                  d={Array.from({ length: 63 })
+                  d={Array.from({ length: 24 })
                     .map((_, i) => {
-                      const x = 170 + i * 10;
-                      const drift = x > 400 ? (x - 400) * 0.05 : 0;
-                      const y = 48 - drift + Math.sin(x / 13) * 2;
-                      return `${i === 0 ? "M" : "L"}${x} ${y.toFixed(1)}`;
+                      const x = 180 + i * 10;
+                      const y = +(52 + Math.sin(x / 13) * 2).toFixed(2);
+                      return `${i === 0 ? "M" : "L"}${x} ${y}`;
                     })
                     .join("")}
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.55"
+                  strokeOpacity="0.5"
+                  strokeWidth="1.5"
                 />
-                <circle cx="404" cy="48" r="5" fill="var(--crimson)" />
+                <path
+                  d={Array.from({ length: 38 })
+                    .map((_, i) => {
+                      const x = 410 + i * 10;
+                      const drift = (x - 410) * 0.055;
+                      const y = +(52 - drift + Math.sin(x / 13) * 2).toFixed(2);
+                      return `${i === 0 ? "M" : "L"}${x} ${y}`;
+                    })
+                    .join("")}
+                  stroke="var(--crimson)"
+                  strokeWidth="2"
+                />
+                <circle cx="410" cy="52" r="5" fill="var(--crimson)" />
                 <text
                   {...SVG_LABEL}
-                  x="404"
-                  y="22"
+                  x="410"
+                  y="24"
                   textAnchor="middle"
                   fill="var(--crimson)"
                 >
@@ -910,57 +1178,61 @@ export default function Week05OperationsSupplyChain() {
 
                 <text
                   {...SVG_LABEL}
-                  x="0"
-                  y="121"
+                  x="14"
+                  y="125"
                   fill="var(--charcoal)"
-                  fillOpacity="0.55"
+                  fillOpacity="0.6"
                 >
                   SALES LEDGER
                 </text>
                 <path
-                  d="M170 118H640V100H790"
+                  d="M180 122H640V102H780"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.55"
+                  strokeOpacity="0.6"
+                  strokeWidth="1.5"
                 />
                 <circle
                   cx="640"
-                  cy="109"
+                  cy="112"
                   r="5"
                   fill="var(--surface)"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.7"
+                  strokeOpacity="0.75"
+                  strokeWidth="1.5"
                 />
                 <text
                   {...SVG_LABEL}
                   x="640"
-                  y="148"
+                  y="150"
                   textAnchor="middle"
                   fill="var(--charcoal)"
-                  fillOpacity="0.6"
+                  fillOpacity="0.65"
                 >
                   SHIFT IN DEMAND
                 </text>
 
                 <path
-                  d="M404 58V76M640 76V94"
+                  d="M410 64V94M640 64V94"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.25"
+                  strokeOpacity="0.3"
                   strokeDasharray="2 3"
                 />
                 <path
-                  d="M408 76H636"
+                  d="M410 78H640"
                   stroke="var(--crimson)"
-                  strokeOpacity="0.7"
+                  strokeOpacity="0.8"
+                  strokeWidth="1.5"
                 />
                 <path
-                  d="M416 71l-8 5l8 5"
+                  d="M418 73l-8 5l8 5M632 73l8 5l-8 5"
                   stroke="var(--crimson)"
-                  strokeOpacity="0.7"
+                  strokeOpacity="0.8"
+                  strokeWidth="1.5"
                 />
                 <text
                   {...SVG_LABEL}
-                  x="522"
-                  y="94"
+                  x="525"
+                  y="96"
                   textAnchor="middle"
                   fill="var(--crimson)"
                 >
@@ -993,43 +1265,44 @@ export default function Week05OperationsSupplyChain() {
             The bullwhip effect occurs when small fluctuations in retail demand
             cause progressively larger fluctuations upstream.
           </p>
-          <figure aria-hidden className="mt-7 w-full max-w-5xl">
-            <svg viewBox="0 0 800 146" className="w-full" fill="none">
+          <figure className="mt-7 w-full max-w-5xl">
+            <svg
+              role="img"
+              aria-label="Four supply chain stages showing small fluctuations in retail demand amplifying into progressively larger fluctuations upstream."
+              viewBox="0 0 800 152"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Four supply chain stages showing small fluctuations in retail
+                demand amplifying into progressively larger fluctuations
+                upstream.
+              </title>
               <path
-                d="M0 14H784"
+                d="M16 20H784"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.35"
               />
               <path
-                d="M776 9l8 5l-8 5"
+                d="M776 15l8 5l-8 5"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.5"
               />
-              <text
-                {...SVG_LABEL}
-                x="790"
-                y="34"
-                textAnchor="end"
-                fill="var(--charcoal)"
-                fillOpacity="0.6"
-              >
-                UPSTREAM
-              </text>
               {[4, 11, 21, 34].map((amp, p) => {
-                const x0 = p * 206;
-                const d = Array.from({ length: 46 })
+                const x0 = 16 + p * 198;
+                const d = Array.from({ length: 44 })
                   .map((_, i) => {
-                    const x = x0 + i * 4;
-                    const y = 80 - amp * Math.sin((i / 45) * Math.PI * 5);
-                    return `${i === 0 ? "M" : "L"}${x} ${y.toFixed(1)}`;
+                    const x = +(x0 + i * 4).toFixed(2);
+                    const y = +(80 - amp * Math.sin((i / 43) * Math.PI * 5)).toFixed(2);
+                    return `${i === 0 ? "M" : "L"}${x} ${y}`;
                   })
                   .join("");
                 return (
                   <g key={amp}>
                     <path
-                      d={`M${x0} 80H${x0 + 180}`}
+                      d={`M${x0} 80H${x0 + 172}`}
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.1"
+                      strokeOpacity="0.12"
                     />
                     <path
                       d={d}
@@ -1042,12 +1315,21 @@ export default function Week05OperationsSupplyChain() {
               })}
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="140"
+                x="16"
+                y="138"
                 fill="var(--charcoal)"
                 fillOpacity="0.6"
               >
-                RETAIL DEMAND
+                SMALL FLUCTUATIONS IN RETAIL DEMAND
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="784"
+                y="138"
+                textAnchor="end"
+                fill="var(--crimson)"
+              >
+                LARGER FLUCTUATIONS UPSTREAM
               </text>
             </svg>
           </figure>
@@ -1060,47 +1342,62 @@ export default function Week05OperationsSupplyChain() {
               of the supply network simultaneously.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 100"
+              role="img"
+              aria-label="A single real-time demand signal broadcast simultaneously across all four tiers of the supply network."
+              viewBox="0 0 800 118"
               className="mt-6 w-full max-w-5xl"
               fill="none"
             >
-              <text {...SVG_LABEL} x="0" y="10" fill="var(--crimson)">
+              <title>
+                A single real-time demand signal broadcast simultaneously across
+                all four tiers of the supply network.
+              </title>
+              <text {...SVG_LABEL} x="16" y="20" fill="var(--crimson)">
                 REAL-TIME DEMAND SIGNALS
               </text>
-              <path d="M0 24H800" stroke="var(--crimson)" strokeWidth="2" />
-              {[100, 300, 500, 700].map((x) => (
+              <path d="M16 34H784" stroke="var(--crimson)" strokeWidth="2" />
+              {[110, 304, 496, 690].map((x, idx) => (
                 <g key={x}>
+                  {idx < 3 && (
+                    <path
+                      d={`M${x + 12} 74H${[110, 304, 496, 690][idx + 1] - 12}`}
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.2"
+                      strokeDasharray="3 4"
+                    />
+                  )}
                   <path
-                    d={`M${x} 24V54`}
+                    d={`M${x} 34V64`}
                     stroke="var(--crimson)"
-                    strokeOpacity="0.6"
+                    strokeOpacity="0.7"
+                    strokeWidth="1.5"
                   />
                   <path
-                    d={`M${x - 4} 48l4 6l4 -6`}
+                    d={`M${x - 4} 58l4 6l4 -6`}
                     stroke="var(--crimson)"
-                    strokeOpacity="0.8"
+                    strokeWidth="1.5"
                   />
                   <rect
-                    x={x - 9}
-                    y="58"
-                    width="18"
-                    height="18"
+                    x={x - 12}
+                    y="64"
+                    width="24"
+                    height="20"
                     fill="var(--surface)"
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.6"
+                    strokeOpacity="0.65"
+                    strokeWidth="1.5"
                   />
                 </g>
               ))}
               <text
                 {...SVG_LABEL}
                 x="400"
-                y="96"
+                y="106"
                 textAnchor="middle"
                 fill="var(--charcoal)"
                 fillOpacity="0.6"
               >
-                ALL TIERS | SIMULTANEOUSLY
+                ALL TIERS OF THE SUPPLY NETWORK | SIMULTANEOUSLY
               </text>
             </svg>
           </div>
@@ -1108,31 +1405,46 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <figure aria-hidden className="w-full">
-              <svg viewBox="0 0 800 100" className="w-full" fill="none">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Predictive analytics prevent manufacturers from overreacting to
+              short-term spikes by separating noise from structural shifts.
+            </p>
+            <figure className="mt-6 w-full">
+              <svg
+                role="img"
+                aria-label="Time series separating noisy short-term spikes in charcoal from the underlying crimson step of a structural shift."
+                viewBox="0 0 800 112"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Time series separating noisy short-term spikes in charcoal
+                  from the underlying crimson step of a structural shift.
+                </title>
                 <path
-                  d={Array.from({ length: 101 })
+                  d={Array.from({ length: 97 })
                     .map((_, i) => {
-                      const x = i * 8;
-                      const base = x < 500 ? 72 : 44;
+                      const x = 16 + i * 8;
+                      const base = x < 504 ? 80 : 50;
                       const spike =
-                        x === 216 ? -50 : x === 208 || x === 224 ? -22 : 0;
-                      const y = base + ((i * 37) % 7) * 1.4 - 4 + spike;
-                      return `${i === 0 ? "M" : "L"}${x} ${y.toFixed(1)}`;
+                        x === 224 ? -52 : x === 216 || x === 232 ? -22 : 0;
+                      const y = +(base + ((i * 37) % 7) * 1.4 - 4 + spike).toFixed(2);
+                      return `${i === 0 ? "M" : "L"}${x} ${y}`;
                     })
                     .join("")}
                   stroke="var(--charcoal)"
                   strokeOpacity="0.45"
+                  strokeWidth="1.25"
                 />
                 <path
-                  d="M0 72H500V44H800"
+                  d="M16 80H504V50H784"
                   stroke="var(--crimson)"
                   strokeWidth="2"
                 />
                 <text
                   {...SVG_LABEL}
-                  x="232"
-                  y="22"
+                  x="244"
+                  y="26"
                   fill="var(--charcoal)"
                   fillOpacity="0.6"
                 >
@@ -1140,8 +1452,8 @@ export default function Week05OperationsSupplyChain() {
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="790"
-                  y="20"
+                  x="784"
+                  y="32"
                   textAnchor="end"
                   fill="var(--crimson)"
                 >
@@ -1149,10 +1461,6 @@ export default function Week05OperationsSupplyChain() {
                 </text>
               </svg>
             </figure>
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
-              Predictive analytics prevent manufacturers from overreacting to
-              short-term spikes by separating noise from structural shifts.
-            </p>
           </div>
         </div>
 
@@ -1183,41 +1491,68 @@ export default function Week05OperationsSupplyChain() {
               Maintaining static safety stock levels leads to either excess
               holding costs or stockouts.
             </p>
-            <figure aria-hidden className="mt-6 w-full">
-              <svg viewBox="0 0 400 156" className="w-full" fill="none">
+            <figure className="mt-6 w-full">
+              <svg
+                role="img"
+                aria-label="Flat static safety stock line against fluctuating demand, creating crimson stockouts when demand exceeds stock and excess holding costs when demand falls below."
+                viewBox="0 0 400 156"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Flat static safety stock line against fluctuating demand,
+                  creating crimson stockouts when demand exceeds stock and
+                  excess holding costs when demand falls below.
+                </title>
                 {(() => {
                   const y = (x: number) =>
-                    75 - 36 * Math.sin((2 * Math.PI * x) / 400);
+                    80 - 34 * Math.sin((2 * Math.PI * (x - 16)) / 368);
                   const half = (from: number) =>
-                    `M${from} 75` +
-                    Array.from({ length: 21 })
+                    `M${from} 80` +
+                    Array.from({ length: 19 })
                       .map((_, i) => {
-                        const x = from + i * 10;
-                        return `L${x} ${y(x).toFixed(1)}`;
+                        const x = +(from + (i * 184) / 18).toFixed(2);
+                        return `L${x} ${y(x).toFixed(2)}`;
                       })
                       .join("") +
-                    `L${from + 200} 75Z`;
-                  const curve = Array.from({ length: 41 })
-                    .map((_, i) => `${i === 0 ? "M" : "L"}${i * 10} ${y(i * 10).toFixed(1)}`)
+                    `L${from + 184} 80Z`;
+                  const curve = Array.from({ length: 37 })
+                    .map((_, i) => {
+                      const x = +(16 + (i * 368) / 36).toFixed(2);
+                      return `${i === 0 ? "M" : "L"}${x} ${y(x).toFixed(2)}`;
+                    })
                     .join("");
                   return (
                     <g>
-                      <path d={half(0)} fill="var(--crimson)" fillOpacity="0.12" />
-                      <path d={half(200)} fill="var(--charcoal)" fillOpacity="0.08" />
                       <path
-                        d="M0 75H400"
+                        d={half(16)}
+                        fill="var(--crimson)"
+                        fillOpacity="0.12"
+                      />
+                      <path
+                        d={half(200)}
+                        fill="var(--charcoal)"
+                        fillOpacity="0.08"
+                      />
+                      <path
+                        d="M16 80H384"
                         stroke="var(--charcoal)"
                         strokeOpacity="0.7"
                         strokeWidth="2"
                       />
-                      <path d={curve} stroke="var(--charcoal)" strokeOpacity="0.5" />
+                      <path
+                        d={curve}
+                        stroke="var(--charcoal)"
+                        strokeOpacity="0.5"
+                        strokeWidth="1.5"
+                      />
                     </g>
                   );
                 })()}
                 <text
                   {...SVG_LABEL}
-                  x="100"
-                  y="26"
+                  x="108"
+                  y="34"
                   textAnchor="middle"
                   fill="var(--charcoal)"
                   fillOpacity="0.55"
@@ -1226,8 +1561,8 @@ export default function Week05OperationsSupplyChain() {
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="100"
-                  y="67"
+                  x="108"
+                  y="72"
                   textAnchor="middle"
                   fill="var(--crimson)"
                 >
@@ -1235,8 +1570,8 @@ export default function Week05OperationsSupplyChain() {
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="398"
-                  y="66"
+                  x="384"
+                  y="70"
                   textAnchor="end"
                   fill="var(--charcoal)"
                   fillOpacity="0.7"
@@ -1245,8 +1580,8 @@ export default function Week05OperationsSupplyChain() {
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="300"
-                  y="146"
+                  x="292"
+                  y="142"
                   textAnchor="middle"
                   fill="var(--charcoal)"
                   fillOpacity="0.6"
@@ -1263,26 +1598,44 @@ export default function Week05OperationsSupplyChain() {
               AI dynamically adjusts optimal inventory targets based on
               real-time demand probabilities and supplier lead times.
             </p>
-            <figure aria-hidden className="mt-6 w-full">
-              <svg viewBox="0 0 400 156" className="w-full" fill="none">
+            <figure className="mt-6 w-full">
+              <svg
+                role="img"
+                aria-label="Crimson optimal inventory targets stepping dynamically above the demand curve in real time."
+                viewBox="0 0 400 156"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Crimson optimal inventory targets stepping dynamically above
+                  the demand curve in real time.
+                </title>
                 {(() => {
                   const y = (x: number) =>
-                    75 - 36 * Math.sin((2 * Math.PI * x) / 400);
-                  const curve = Array.from({ length: 41 })
-                    .map((_, i) => `${i === 0 ? "M" : "L"}${i * 10} ${y(i * 10).toFixed(1)}`)
+                    80 - 34 * Math.sin((2 * Math.PI * (x - 16)) / 368);
+                  const curve = Array.from({ length: 37 })
+                    .map((_, i) => {
+                      const x = +(16 + (i * 368) / 36).toFixed(2);
+                      return `${i === 0 ? "M" : "L"}${x} ${y(x).toFixed(2)}`;
+                    })
                     .join("");
                   const target = Array.from({ length: 16 })
                     .map((_, i) => {
-                      const x = i * 25;
-                      const t = (y(x + 12.5) - 10).toFixed(1);
+                      const x = +(16 + i * 23).toFixed(2);
+                      const t = (y(x + 11.5) - 10).toFixed(2);
                       return `${i === 0 ? "M" : "H"}${x}${i === 0 ? ` ${t}` : `V${t}`}`;
                     })
                     .join("");
                   return (
                     <g>
-                      <path d={curve} stroke="var(--charcoal)" strokeOpacity="0.5" />
                       <path
-                        d={`${target}H400`}
+                        d={curve}
+                        stroke="var(--charcoal)"
+                        strokeOpacity="0.5"
+                        strokeWidth="1.5"
+                      />
+                      <path
+                        d={`${target}H384`}
                         stroke="var(--crimson)"
                         strokeWidth="2"
                       />
@@ -1291,22 +1644,22 @@ export default function Week05OperationsSupplyChain() {
                 })()}
                 <text
                   {...SVG_LABEL}
-                  x="100"
-                  y="16"
+                  x="108"
+                  y="22"
                   textAnchor="middle"
-                  fill="var(--charcoal)"
-                  fillOpacity="0.55"
-                >
-                  DEMAND
-                </text>
-                <text
-                  {...SVG_LABEL}
-                  x="398"
-                  y="146"
-                  textAnchor="end"
                   fill="var(--crimson)"
                 >
                   OPTIMAL INVENTORY TARGETS
+                </text>
+                <text
+                  {...SVG_LABEL}
+                  x="292"
+                  y="142"
+                  textAnchor="middle"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.6"
+                >
+                  REAL-TIME DEMAND
                 </text>
               </svg>
             </figure>
@@ -1318,25 +1671,29 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className={RULED}>
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Multi-echelon inventory optimization models balance stock levels
+              across the entire distribution network simultaneously.
+            </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 170"
-              className="w-full max-w-5xl"
+              role="img"
+              aria-label="Multi-echelon distribution network with balanced stock level gauges across central, regional, and local nodes."
+              viewBox="0 0 800 176"
+              className="mt-7 w-full max-w-5xl"
               fill="none"
             >
-              <text
-                {...SVG_LABEL}
-                x="0"
-                y="10"
-                fill="var(--crimson)"
-              >
+              <title>
+                Multi-echelon distribution network with balanced stock level
+                gauges across central, regional, and local nodes.
+              </title>
+              <text {...SVG_LABEL} x="16" y="20" fill="var(--crimson)">
                 STOCK LEVELS | ENTIRE DISTRIBUTION NETWORK
               </text>
               {(() => {
-                const root = { x: 60, y: 95 };
-                const mid = [50, 95, 140].map((y) => ({ x: 330, y }));
-                const leaves = [34, 58, 82, 108, 132, 156].map((y) => ({
-                  x: 620,
+                const root = { x: 60, y: 100 };
+                const mid = [56, 100, 144].map((y) => ({ x: 340, y }));
+                const leaves = [40, 64, 88, 112, 136, 160].map((y) => ({
+                  x: 640,
                   y,
                 }));
                 const gauge = (n: { x: number; y: number }, k: string) => (
@@ -1348,7 +1705,7 @@ export default function Week05OperationsSupplyChain() {
                       height="12"
                       fill="var(--surface)"
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.5"
+                      strokeOpacity="0.55"
                     />
                     <rect
                       x={n.x + 2}
@@ -1364,9 +1721,10 @@ export default function Week05OperationsSupplyChain() {
                     {mid.map((m) => (
                       <path
                         key={`r-${m.y}`}
-                        d={`M${root.x + 48} ${root.y} C 220 ${root.y}, 230 ${m.y}, ${m.x} ${m.y}`}
+                        d={`M${root.x + 48} ${root.y} C 224 ${root.y}, 236 ${m.y}, ${m.x} ${m.y}`}
                         stroke="var(--charcoal)"
-                        strokeOpacity="0.22"
+                        strokeOpacity="0.25"
+                        strokeWidth="1.25"
                       />
                     ))}
                     {leaves.map((l, i) => {
@@ -1374,9 +1732,10 @@ export default function Week05OperationsSupplyChain() {
                       return (
                         <path
                           key={`m-${l.y}`}
-                          d={`M${m.x + 48} ${m.y} C 500 ${m.y}, 510 ${l.y}, ${l.x} ${l.y}`}
+                          d={`M${m.x + 48} ${m.y} C 510 ${m.y}, 524 ${l.y}, ${l.x} ${l.y}`}
                           stroke="var(--charcoal)"
-                          strokeOpacity="0.22"
+                          strokeOpacity="0.25"
+                          strokeWidth="1.25"
                         />
                       );
                     })}
@@ -1387,10 +1746,6 @@ export default function Week05OperationsSupplyChain() {
                 );
               })()}
             </svg>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Multi-echelon inventory optimization models balance stock levels
-              across the entire distribution network simultaneously.
-            </p>
           </div>
         </div>
       </Slide>
@@ -1411,44 +1766,62 @@ export default function Week05OperationsSupplyChain() {
           <Terms
             items={["Recurrent Neural Networks", "Transformer architectures"]}
           />
-          <figure aria-hidden className="mt-6 w-full max-w-5xl">
-            <svg viewBox="0 0 800 120" className="w-full" fill="none">
+          <figure className="mt-6 w-full max-w-5xl">
+            <svg
+              role="img"
+              aria-label="Bar chart of sequential time-series data in charcoal followed by dashed crimson bars predicting future sequence values."
+              viewBox="0 0 800 132"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Bar chart of sequential time-series data in charcoal followed by
+                dashed crimson bars predicting future sequence values.
+              </title>
               {Array.from({ length: 34 }).map((_, i) => {
                 const forecast = i >= 27;
-                const h =
-                  34 + 22 * Math.sin(i / 2.2) + ((i * 17) % 9) + i * 0.6;
+                const h = +(
+                  34 +
+                  22 * Math.sin(i / 2.2) +
+                  ((i * 17) % 9) +
+                  i * 0.6
+                ).toFixed(2);
+                const x = +(16 + i * 22.4).toFixed(2);
+                const y = +(94 - h).toFixed(2);
                 return (
                   <rect
                     key={i}
-                    x={i * 23.5}
-                    y={96 - h}
+                    x={x}
+                    y={y}
                     width="13"
                     height={h}
                     fill={forecast ? "var(--surface)" : "var(--charcoal)"}
                     fillOpacity={forecast ? 1 : 0.28}
                     stroke={forecast ? "var(--crimson)" : "none"}
+                    strokeWidth={forecast ? 1.5 : 0}
                     strokeDasharray={forecast ? "3 2" : undefined}
                   />
                 );
               })}
               <path
-                d="M628 6V100"
+                d="M616 10V98"
                 stroke="var(--crimson)"
-                strokeOpacity="0.4"
+                strokeOpacity="0.45"
+                strokeDasharray="3 3"
               />
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="116"
+                x="16"
+                y="118"
                 fill="var(--charcoal)"
-                fillOpacity="0.55"
+                fillOpacity="0.6"
               >
                 SEQUENTIAL TIME-SERIES DATA
               </text>
               <text
                 {...SVG_LABEL}
-                x="800"
-                y="116"
+                x="784"
+                y="118"
                 textAnchor="end"
                 fill="var(--crimson)"
               >
@@ -1464,57 +1837,60 @@ export default function Week05OperationsSupplyChain() {
               These models can forecast multiple related SKUs simultaneously,
               capturing cannibalization and halo effects between products.
             </p>
-            <div
-              aria-hidden
-              className="mt-7 grid max-w-4xl gap-8 md:grid-cols-2 md:gap-12"
-            >
+            <div className="mt-7 grid max-w-4xl gap-8 md:grid-cols-2 md:gap-12">
               {[
                 {
                   label: "Cannibalization",
-                  b: "M0 40C120 40 150 40 190 42S280 80 340 84",
+                  a: "M16 48C126 48 156 48 196 44S280 22 336 18",
+                  b: "M16 62C126 62 156 62 196 66S280 86 336 90",
+                  yA: 22,
+                  yB: 93,
+                  desc: "Two related SKUs diverging as one rises and cannibalizes the other.",
                 },
                 {
                   label: "Halo effects",
-                  b: "M0 84C120 84 150 84 190 80S280 52 340 50",
+                  a: "M16 52C126 52 156 52 196 48S280 22 336 18",
+                  b: "M16 84C126 84 156 84 196 80S280 56 336 52",
+                  yA: 22,
+                  yB: 56,
+                  desc: "Two related SKUs rising together through halo effects between products.",
                 },
               ].map((panel) => (
                 <figure key={panel.label}>
                   <div className={`${MICRO} text-[var(--champagne)]`}>
                     {panel.label}
                   </div>
-                  <svg viewBox="0 0 400 110" className="mt-3 w-full" fill="none">
-                    <path
-                      d="M0 70C120 70 150 70 190 66S280 22 340 18"
-                      stroke="var(--crimson)"
-                      strokeWidth="2"
-                    />
+                  <svg
+                    role="img"
+                    aria-label={panel.desc}
+                    viewBox="0 0 400 112"
+                    className="mt-3 w-full"
+                    fill="none"
+                  >
+                    <title>{panel.desc}</title>
+                    <path d={panel.a} stroke="var(--crimson)" strokeWidth="2" />
                     <path
                       d={panel.b}
                       stroke="var(--charcoal)"
                       strokeOpacity="0.6"
                       strokeWidth="1.5"
                     />
-                    <text
-                      {...SVG_LABEL}
-                      x="350"
-                      y={21}
-                      fill="var(--crimson)"
-                    >
+                    <text {...SVG_LABEL} x="348" y={panel.yA} fill="var(--crimson)">
                       SKU
                     </text>
                     <text
                       {...SVG_LABEL}
-                      x="350"
-                      y={panel.label === "Cannibalization" ? 87 : 58}
+                      x="348"
+                      y={panel.yB}
                       fill="var(--charcoal)"
                       fillOpacity="0.6"
                     >
                       SKU
                     </text>
                     <path
-                      d="M0 104H400"
+                      d="M16 102H384"
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.12"
+                      strokeOpacity="0.15"
                     />
                   </svg>
                 </figure>
@@ -1525,17 +1901,32 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <figure aria-hidden className="w-full">
-              <svg viewBox="0 0 800 120" className="w-full" fill="none">
-                {Array.from({ length: 40 }).map((_, i) => {
-                  const x = 10 + i * 20;
-                  const trend = x < 440 ? 90 - x * 0.08 : 55 + (x - 440) * 0.12;
-                  const y = trend + ((i * 29) % 11) - 5;
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Advanced models automatically adjust their parameters when
+              structural market breaks occur.
+            </p>
+            <figure className="mt-6 w-full">
+              <svg
+                role="img"
+                aria-label="Piecewise trend line automatically adjusting its slope at a dashed structural market break."
+                viewBox="0 0 800 132"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Piecewise trend line automatically adjusting its slope at a
+                  dashed structural market break.
+                </title>
+                {Array.from({ length: 39 }).map((_, i) => {
+                  const x = 20 + i * 20;
+                  const trend =
+                    x < 440 ? 96 - x * 0.08 : 60.8 + (x - 440) * 0.12;
+                  const y = +(trend + ((i * 29) % 11) - 5).toFixed(2);
                   return (
                     <circle
                       key={i}
                       cx={x}
-                      cy={y.toFixed(1)}
+                      cy={y}
                       r="2.5"
                       fill="var(--charcoal)"
                       fillOpacity="0.4"
@@ -1543,31 +1934,36 @@ export default function Week05OperationsSupplyChain() {
                   );
                 })}
                 <path
-                  d="M440 4V116"
+                  d="M440 12V118"
                   stroke="var(--charcoal)"
                   strokeOpacity="0.4"
                   strokeDasharray="3 4"
                 />
                 <text
                   {...SVG_LABEL}
-                  x="452"
-                  y="14"
+                  x="454"
+                  y="24"
                   fill="var(--charcoal)"
                   fillOpacity="0.6"
                 >
-                  STRUCTURAL MARKET BREAK
+                  STRUCTURAL MARKET BREAKS
+                </text>
+                <text
+                  {...SVG_LABEL}
+                  x="784"
+                  y="118"
+                  textAnchor="end"
+                  fill="var(--crimson)"
+                >
+                  ADJUST THEIR PARAMETERS
                 </text>
                 <path
-                  d="M10 89.2L440 54.8L790 96.8"
+                  d="M20 94.4L440 60.8L780 101.6"
                   stroke="var(--crimson)"
                   strokeWidth="2"
                 />
               </svg>
             </figure>
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
-              Advanced models automatically adjust their parameters when
-              structural market breaks occur.
-            </p>
           </div>
         </div>
       </Slide>
@@ -1597,16 +1993,27 @@ export default function Week05OperationsSupplyChain() {
             The Traveling Salesperson Problem becomes exponentially harder with
             thousands of deliveries and dynamic constraints.
           </p>
-          <figure aria-hidden className="mt-7 w-full max-w-5xl">
-            <svg viewBox="0 0 800 166" className="w-full" fill="none">
+          <figure className="mt-7 w-full max-w-5xl">
+            <svg
+              role="img"
+              aria-label="A simple six-stop Traveling Salesperson Problem loop contrasted with a dense field of thousands of deliveries where routing becomes exponentially harder."
+              viewBox="0 0 800 172"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                A simple six-stop Traveling Salesperson Problem loop contrasted
+                with a dense field of thousands of deliveries where routing
+                becomes exponentially harder.
+              </title>
               {(() => {
                 const stops = [
-                  [30, 40],
-                  [110, 22],
-                  [170, 70],
-                  [140, 128],
-                  [60, 136],
-                  [18, 92],
+                  [34, 40],
+                  [114, 22],
+                  [174, 70],
+                  [144, 124],
+                  [64, 132],
+                  [22, 88],
                 ];
                 const loop =
                   stops
@@ -1614,7 +2021,12 @@ export default function Week05OperationsSupplyChain() {
                     .join("") + "Z";
                 return (
                   <g>
-                    <path d={loop} stroke="var(--charcoal)" strokeOpacity="0.55" />
+                    <path
+                      d={loop}
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.55"
+                      strokeWidth="1.5"
+                    />
                     {stops.map(([x, y]) => (
                       <circle
                         key={`${x}-${y}`}
@@ -1624,25 +2036,26 @@ export default function Week05OperationsSupplyChain() {
                         fill="var(--surface)"
                         stroke="var(--charcoal)"
                         strokeOpacity="0.7"
+                        strokeWidth="1.5"
                       />
                     ))}
                   </g>
                 );
               })()}
               <path
-                d="M214 80H330"
+                d="M214 78H330"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
               <path
-                d="M322 74l8 6l-8 6"
+                d="M322 72l8 6l-8 6"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
               <text
                 {...SVG_LABEL}
                 x="272"
-                y="66"
+                y="62"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
@@ -1651,7 +2064,7 @@ export default function Week05OperationsSupplyChain() {
               <text
                 {...SVG_LABEL}
                 x="272"
-                y="100"
+                y="98"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
@@ -1660,8 +2073,8 @@ export default function Week05OperationsSupplyChain() {
               {Array.from({ length: 340 }).map((_, i) => (
                 <circle
                   key={i}
-                  cx={(372 + hash(i) * 420).toFixed(1)}
-                  cy={(12 + hash(i + 1000) * 124).toFixed(1)}
+                  cx={(372 + hash(i) * 410).toFixed(2)}
+                  cy={(14 + hash(i + 1000) * 118).toFixed(2)}
                   r="1.8"
                   fill="var(--charcoal)"
                   fillOpacity="0.35"
@@ -1669,20 +2082,20 @@ export default function Week05OperationsSupplyChain() {
               ))}
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="162"
+                x="16"
+                y="156"
                 fill="var(--charcoal)"
-                fillOpacity="0.55"
+                fillOpacity="0.6"
               >
                 TRAVELING SALESPERSON PROBLEM
               </text>
               <text
                 {...SVG_LABEL}
-                x="792"
-                y="162"
+                x="784"
+                y="156"
                 textAnchor="end"
                 fill="var(--charcoal)"
-                fillOpacity="0.55"
+                fillOpacity="0.6"
               >
                 THOUSANDS OF DELIVERIES
               </text>
@@ -1712,29 +2125,38 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Continuous re-optimization allows fleets to adapt to new orders or
+              road closures while vehicles are already in transit.
+            </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 140"
-              className="w-full"
+              role="img"
+              aria-label="A vehicle already in transit dynamically re-optimizing its route around road closures to serve new orders."
+              viewBox="0 0 800 148"
+              className="mt-6 w-full"
               fill="none"
             >
+              <title>
+                A vehicle already in transit dynamically re-optimizing its route
+                around road closures to serve new orders.
+              </title>
               <path
-                d="M60 70L220 30L380 30L540 30L740 70"
+                d="M60 80L220 40L380 40L540 40L740 80"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.3"
                 strokeDasharray="4 5"
               />
               <path
-                d="M140 50L220 30L380 30L460 110L540 30L740 70"
+                d="M140 60L220 40L380 40L460 118L540 40L740 80"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
               {[
-                [60, 70],
-                [220, 30],
-                [380, 30],
-                [540, 30],
-                [740, 70],
+                [60, 80],
+                [220, 40],
+                [380, 40],
+                [540, 40],
+                [740, 80],
               ].map(([x, y]) => (
                 <circle
                   key={x}
@@ -1744,43 +2166,39 @@ export default function Week05OperationsSupplyChain() {
                   fill="var(--surface)"
                   stroke="var(--charcoal)"
                   strokeOpacity="0.7"
+                  strokeWidth="1.5"
                 />
               ))}
               <path
-                d="M452 22l16 16M468 22l-16 16"
+                d="M452 32l16 16M468 32l-16 16"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
               <text
                 {...SVG_LABEL}
                 x="460"
-                y="12"
+                y="20"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
                 ROAD CLOSURES
               </text>
-              <circle cx="460" cy="110" r="6" fill="var(--crimson)" />
-              <text
-                {...SVG_LABEL}
-                x="476"
-                y="114"
-                fill="var(--crimson)"
-              >
+              <circle cx="460" cy="118" r="6" fill="var(--crimson)" />
+              <text {...SVG_LABEL} x="478" y="122" fill="var(--crimson)">
                 NEW ORDERS
               </text>
               <rect
                 x="132"
-                y="42"
+                y="52"
                 width="16"
                 height="16"
                 fill="var(--charcoal)"
-                fillOpacity="0.8"
+                fillOpacity="0.85"
               />
               <text
                 {...SVG_LABEL}
                 x="140"
-                y="82"
+                y="92"
                 textAnchor="middle"
                 fill="var(--charcoal)"
                 fillOpacity="0.6"
@@ -1788,10 +2206,6 @@ export default function Week05OperationsSupplyChain() {
                 IN TRANSIT
               </text>
             </svg>
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
-              Continuous re-optimization allows fleets to adapt to new orders or
-              road closures while vehicles are already in transit.
-            </p>
           </div>
         </div>
       </Slide>
@@ -1817,50 +2231,48 @@ export default function Week05OperationsSupplyChain() {
             inefficient segment of the supply chain.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 70"
+            role="img"
+            aria-label="Five supply chain segments where the final last-mile segment is highlighted as a heavy crimson bar."
+            viewBox="0 0 800 78"
             className="mt-7 w-full max-w-5xl"
             fill="none"
           >
-            {[0, 1, 2, 3].map((i) => (
-              <path
-                key={i}
-                d={`M${20 + i * 150} 24H${160 + i * 150}`}
-                stroke="var(--charcoal)"
-                strokeOpacity="0.4"
-                strokeWidth="2"
-              />
-            ))}
+            <title>
+              Five supply chain segments where the final last-mile segment is
+              highlighted as a heavy crimson bar.
+            </title>
             <path
-              d="M620 24H780"
-              stroke="var(--crimson)"
-              strokeWidth="8"
+              d="M24 28H620"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.4"
+              strokeWidth="2"
             />
-            {[20, 170, 320, 470, 620, 780].map((x, i) => (
+            <path d="M620 28H776" stroke="var(--crimson)" strokeWidth="8" />
+            {[24, 173, 322, 471, 620, 776].map((x, i) => (
               <circle
                 key={x}
                 cx={x}
-                cy="24"
+                cy="28"
                 r="6"
                 fill="var(--surface)"
                 stroke={i >= 4 ? "var(--crimson)" : "var(--charcoal)"}
-                strokeOpacity={i >= 4 ? 1 : 0.6}
+                strokeOpacity={i >= 4 ? 1 : 0.65}
                 strokeWidth="2"
               />
             ))}
             <text
               {...SVG_LABEL}
-              x="20"
-              y="60"
+              x="24"
+              y="64"
               fill="var(--charcoal)"
-              fillOpacity="0.55"
+              fillOpacity="0.6"
             >
               SUPPLY CHAIN
             </text>
             <text
               {...SVG_LABEL}
-              x="700"
-              y="60"
+              x="698"
+              y="64"
               textAnchor="middle"
               fill="var(--crimson)"
             >
@@ -1904,8 +2316,12 @@ export default function Week05OperationsSupplyChain() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
+          <div className="mt-12 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_25rem] md:gap-14">
             <div>
+              <p className={DISPLAY}>
+                These technologies promise to reduce labor costs and enable
+                hyper-local, continuous delivery networks.
+              </p>
               <Steps
                 items={[
                   "reduce labor costs",
@@ -1913,65 +2329,67 @@ export default function Week05OperationsSupplyChain() {
                   "continuous delivery networks",
                 ]}
                 cols="grid-cols-3"
-                className=""
+                className="mt-6"
               />
-              <p className={`${DISPLAY} mt-6`}>
-                These technologies promise to reduce labor costs and enable
-                hyper-local, continuous delivery networks.
-              </p>
             </div>
             <svg
-              aria-hidden
-              viewBox="0 0 320 220"
+              role="img"
+              aria-label="A central crimson hub radiating spokes to nearby neighborhood delivery points within a dashed hyper-local radius."
+              viewBox="0 0 400 228"
               className="w-full"
               fill="none"
             >
+              <title>
+                A central crimson hub radiating spokes to nearby neighborhood
+                delivery points within a dashed hyper-local radius.
+              </title>
               <circle
-                cx="160"
-                cy="104"
-                r="86"
+                cx="200"
+                cy="102"
+                r="82"
                 stroke="var(--crimson)"
                 strokeOpacity="0.5"
                 strokeDasharray="4 6"
               />
               {Array.from({ length: 10 }).map((_, i) => {
                 const a = (i / 10) * Math.PI * 2;
-                const r = 46 + ((i * 7) % 3) * 12;
-                const x = 160 + r * Math.cos(a);
-                const y = 104 + r * Math.sin(a);
+                const r = 44 + ((i * 7) % 3) * 12;
+                const x = +(200 + r * Math.cos(a)).toFixed(2);
+                const y = +(102 + r * Math.sin(a)).toFixed(2);
                 return (
                   <g key={i}>
                     <path
-                      d={`M160 104L${x.toFixed(1)} ${y.toFixed(1)}`}
+                      d={`M200 102L${x} ${y}`}
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.25"
+                      strokeOpacity="0.28"
                     />
                     <circle
-                      cx={x.toFixed(1)}
-                      cy={y.toFixed(1)}
+                      cx={x}
+                      cy={y}
                       r="4"
                       fill="var(--surface)"
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.6"
+                      strokeOpacity="0.65"
+                      strokeWidth="1.5"
                     />
                   </g>
                 );
               })}
               <rect
-                x="151"
-                y="95"
+                x="191"
+                y="93"
                 width="18"
                 height="18"
                 fill="var(--crimson)"
               />
               <text
                 {...SVG_LABEL}
-                x="160"
-                y="214"
+                x="200"
+                y="210"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
-                HYPER-LOCAL
+                HYPER-LOCAL | CONTINUOUS DELIVERY NETWORKS
               </text>
             </svg>
           </div>
@@ -1994,39 +2412,44 @@ export default function Week05OperationsSupplyChain() {
             mileage or time.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 64"
+            role="img"
+            aria-label="Timeline of evenly spaced service stops on fixed schedules based on mileage or time."
+            viewBox="0 0 800 80"
             className="mt-6 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Timeline of evenly spaced service stops on fixed schedules based
+              on mileage or time.
+            </title>
             <text
               {...SVG_LABEL}
-              x="0"
-              y="10"
+              x="16"
+              y="20"
               fill="var(--charcoal)"
-              fillOpacity="0.55"
+              fillOpacity="0.6"
             >
               FIXED SCHEDULES
             </text>
-            <path d="M0 34H800" stroke="var(--charcoal)" strokeOpacity="0.2" />
-            {[40, 200, 360, 520, 680].map((x) => (
+            <path d="M16 44H784" stroke="var(--charcoal)" strokeOpacity="0.22" />
+            {[80, 240, 400, 560, 720].map((x) => (
               <rect
                 key={x}
                 x={x - 6}
-                y="28"
+                y="38"
                 width="12"
                 height="12"
                 fill="var(--charcoal)"
-                fillOpacity="0.5"
+                fillOpacity="0.55"
               />
             ))}
             <text
               {...SVG_LABEL}
-              x="800"
-              y="60"
+              x="784"
+              y="70"
               textAnchor="end"
               fill="var(--charcoal)"
-              fillOpacity="0.5"
+              fillOpacity="0.55"
             >
               MILEAGE OR TIME
             </text>
@@ -2039,28 +2462,54 @@ export default function Week05OperationsSupplyChain() {
               AI analyzes IoT sensor data from engines, brakes, and transmissions
               to predict component failures before they happen.
             </p>
-            <figure aria-hidden className="mt-6 w-full max-w-5xl">
-              <svg viewBox="0 0 800 170" className="w-full" fill="none">
+            <figure className="mt-6 w-full max-w-5xl">
+              <svg
+                role="img"
+                aria-label="Three IoT sensor streams for engines, brakes, and transmissions where a drift in the brakes stream is flagged in crimson before component failures happen."
+                viewBox="0 0 800 176"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Three IoT sensor streams for engines, brakes, and
+                  transmissions where a drift in the brakes stream is flagged in
+                  crimson before component failures happen.
+                </title>
                 {[
-                  { y: 30, label: "ENGINES", drift: false },
+                  { y: 34, label: "ENGINES", drift: false },
                   { y: 90, label: "BRAKES", drift: true },
-                  { y: 140, label: "TRANSMISSIONS", drift: false },
+                  { y: 146, label: "TRANSMISSIONS", drift: false },
                 ].map((lane, l) => {
-                  const d = Array.from({ length: 65 })
+                  const pt = (i: number) => {
+                    const x = 160 + i * 10;
+                    const up =
+                      lane.drift && x > 450 ? Math.min(x, 740) - 450 : 0;
+                    const y = +(
+                      lane.y -
+                      up * 0.06 +
+                      (((i * 31 + l * 7) % 7) - 3)
+                    ).toFixed(2);
+                    return [x, y] as const;
+                  };
+                  const fullPath = Array.from({ length: 63 })
                     .map((_, i) => {
-                      const x = 150 + i * 10;
-                      const up =
-                        lane.drift && x > 450 ? Math.min(x, 740) - 450 : 0;
-                      const y =
-                        lane.y - up * 0.06 + (((i * 31 + l * 7) % 7) - 3);
-                      return `${i === 0 ? "M" : "L"}${x} ${y.toFixed(1)}`;
+                      const [x, y] = pt(i);
+                      return `${i === 0 ? "M" : "L"}${x} ${y}`;
                     })
                     .join("");
+                  const crimsonDrift = lane.drift
+                    ? Array.from({ length: 16 })
+                        .map((_, idx) => {
+                          const [x, y] = pt(29 + idx);
+                          return `${idx === 0 ? "M" : "L"}${x} ${y}`;
+                        })
+                        .join("")
+                    : "";
                   return (
                     <g key={lane.label}>
                       <text
                         {...SVG_LABEL}
-                        x="0"
+                        x="16"
                         y={lane.y + 3}
                         fill="var(--charcoal)"
                         fillOpacity="0.6"
@@ -2068,18 +2517,26 @@ export default function Week05OperationsSupplyChain() {
                         {lane.label}
                       </text>
                       <path
-                        d={d}
+                        d={fullPath}
                         stroke="var(--charcoal)"
-                        strokeOpacity={lane.drift ? 0.7 : 0.35}
+                        strokeOpacity={lane.drift ? 0.45 : 0.35}
+                        strokeWidth="1.25"
                       />
+                      {lane.drift && (
+                        <path
+                          d={crimsonDrift}
+                          stroke="var(--crimson)"
+                          strokeWidth="2"
+                        />
+                      )}
                     </g>
                   );
                 })}
                 <circle cx="600" cy="81" r="6" fill="var(--crimson)" />
                 <text
                   {...SVG_LABEL}
-                  x="600"
-                  y="116"
+                  x="590"
+                  y="62"
                   textAnchor="middle"
                   fill="var(--crimson)"
                 >
@@ -2093,9 +2550,9 @@ export default function Week05OperationsSupplyChain() {
                 />
                 <text
                   {...SVG_LABEL}
-                  x="790"
-                  y="56"
-                  textAnchor="end"
+                  x="732"
+                  y="104"
+                  textAnchor="middle"
                   fill="var(--charcoal)"
                   fillOpacity="0.6"
                 >
@@ -2108,15 +2565,17 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <Split1
-              left="Unplanned downtime"
-              right="Operational lifespan"
-              strikeLeft
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+            <p className={`${DISPLAY} max-w-4xl`}>
               This approach minimizes unplanned downtime and extends the
               operational lifespan of expensive capital assets.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Unplanned downtime"
+                right="Operational lifespan"
+                strikeLeft
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -2169,26 +2628,32 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <svg
-            aria-hidden
-            viewBox="0 0 800 120"
+            role="img"
+            aria-label="Comparison of two sparse annual audits on the top timeline versus continuous monitoring ticks on the bottom timeline that flag emerging supplier risks in crimson."
+            viewBox="0 0 800 132"
             className="mt-10 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Comparison of two sparse annual audits on the top timeline versus
+              continuous monitoring ticks on the bottom timeline that flag
+              emerging supplier risks in crimson.
+            </title>
             <text
               {...SVG_LABEL}
-              x="0"
-              y="12"
+              x="16"
+              y="20"
               fill="var(--charcoal)"
-              fillOpacity="0.55"
+              fillOpacity="0.6"
             >
               ANNUAL AUDITS
             </text>
-            <path d="M0 32H800" stroke="var(--charcoal)" strokeOpacity="0.2" />
-            {[40, 760].map((x) => (
+            <path d="M16 40H784" stroke="var(--charcoal)" strokeOpacity="0.22" />
+            {[48, 752].map((x) => (
               <rect
                 key={x}
                 x={x - 6}
-                y="24"
+                y="32"
                 width="12"
                 height="16"
                 fill="var(--charcoal)"
@@ -2196,26 +2661,30 @@ export default function Week05OperationsSupplyChain() {
               />
             ))}
 
-            <text {...SVG_LABEL} x="0" y="74" fill="var(--crimson)">
+            <text {...SVG_LABEL} x="16" y="82" fill="var(--crimson)">
               CONTINUOUSLY MONITOR
             </text>
             <text
               {...SVG_LABEL}
-              x="800"
-              y="74"
+              x="784"
+              y="82"
               textAnchor="end"
               fill="var(--crimson)"
             >
               EMERGING SUPPLIER RISKS
             </text>
-            <path d="M0 100H800" stroke="var(--charcoal)" strokeOpacity="0.2" />
-            {Array.from({ length: 100 }).map((_, i) => {
-              const x = 4 + i * 8;
-              const flag = i === 38 || i === 64 || i === 81;
+            <path
+              d="M16 106H784"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.22"
+            />
+            {Array.from({ length: 96 }).map((_, i) => {
+              const x = 20 + i * 8;
+              const flag = i === 36 || i === 62 || i === 80;
               return (
                 <path
                   key={i}
-                  d={`M${x} ${flag ? 84 : 94}V${flag ? 116 : 106}`}
+                  d={`M${x} ${flag ? 90 : 100}V${flag ? 120 : 112}`}
                   stroke={flag ? "var(--crimson)" : "var(--charcoal)"}
                   strokeOpacity={flag ? 1 : 0.35}
                   strokeWidth={flag ? 2.5 : 1}
@@ -2227,53 +2696,92 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className={RULED}>
-            <div
-              aria-hidden
-              className="grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3"
-            >
-              {[0, 1, 2].map((doc) => (
-                <div
-                  key={doc}
-                  className="space-y-2 border-t border-[var(--charcoal)]/15 pt-4"
-                >
-                  {[0, 1, 2, 3, 4].map((line) => {
-                    const hit = (doc * 3 + line * 2) % 7 === 1;
-                    return (
-                      <div key={line} className="flex gap-1.5">
-                        {[0, 1, 2, 3].map((w) => (
-                          <span
-                            key={w}
-                            className={`block h-1.5 ${
-                              hit && w === 1
-                                ? "bg-[var(--crimson)]"
-                                : "bg-[var(--charcoal)]/20"
-                            }`}
-                            style={{
-                              width: `${14 + ((doc * 5 + line * 7 + w * 11) % 5) * 6}%`,
-                            }}
-                          />
-                        ))}
-                      </div>
-                    );
-                  })}
-                </div>
-              ))}
-            </div>
-            <div
-              aria-hidden
-              className="mt-4 flex max-w-4xl flex-wrap justify-between gap-3"
-            >
-              <span className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-                Unstructured data sources
-              </span>
-              <span className={`${MICRO} text-[var(--crimson)]`}>
-                Risk indicators
-              </span>
-            </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
+            <p className={`${DISPLAY} max-w-4xl`}>
               Natural Language Processing extracts risk indicators from
               unstructured data sources across multiple languages.
             </p>
+            <svg
+              role="img"
+              aria-label="Three unstructured text documents across multiple languages with crimson risk indicators highlighted and extracted."
+              viewBox="0 0 800 116"
+              className="mt-7 w-full max-w-4xl"
+              fill="none"
+            >
+              <title>
+                Three unstructured text documents across multiple languages with
+                crimson risk indicators highlighted and extracted.
+              </title>
+              {[0, 1, 2].map((doc) => {
+                const x0 = 16 + doc * 264;
+                return (
+                  <g key={doc}>
+                    <rect
+                      x={x0}
+                      y="14"
+                      width="240"
+                      height="68"
+                      fill="var(--charcoal)"
+                      fillOpacity="0.02"
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.22"
+                    />
+                    {[0, 1, 2, 3].map((line) => {
+                      const hit = line === (doc + 1) % 3;
+                      const y = 26 + line * 13;
+                      const w1 = 36 + ((doc * 11 + line * 7) % 3) * 10;
+                      const w2 = 48 + ((doc * 5 + line * 13) % 3) * 12;
+                      const w3 = 36 + ((doc * 7 + line * 3) % 3) * 10;
+                      return (
+                        <g key={line}>
+                          <rect
+                            x={x0 + 14}
+                            y={y}
+                            width={w1}
+                            height="5"
+                            fill="var(--charcoal)"
+                            fillOpacity="0.22"
+                          />
+                          <rect
+                            x={x0 + 22 + w1}
+                            y={y}
+                            width={w2}
+                            height="5"
+                            fill={hit ? "var(--crimson)" : "var(--charcoal)"}
+                            fillOpacity={hit ? 0.9 : 0.22}
+                          />
+                          <rect
+                            x={x0 + 30 + w1 + w2}
+                            y={y}
+                            width={w3}
+                            height="5"
+                            fill="var(--charcoal)"
+                            fillOpacity="0.22"
+                          />
+                        </g>
+                      );
+                    })}
+                  </g>
+                );
+              })}
+              <text
+                {...SVG_LABEL}
+                x="16"
+                y="102"
+                fill="var(--charcoal)"
+                fillOpacity="0.6"
+              >
+                UNSTRUCTURED DATA SOURCES | MULTIPLE LANGUAGES
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="784"
+                y="102"
+                textAnchor="end"
+                fill="var(--crimson)"
+              >
+                RISK INDICATORS
+              </text>
+            </svg>
           </div>
         </div>
       </Slide>
@@ -2300,30 +2808,70 @@ export default function Week05OperationsSupplyChain() {
             contracts spread across different regions.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 96"
+            role="img"
+            aria-label="Unstandardized supplier contract sheets of varying proportions and angles spread across three regional zones."
+            viewBox="0 0 800 116"
             className="mt-6 w-full max-w-5xl"
             fill="none"
           >
-            {Array.from({ length: 46 }).map((_, i) => {
-              const x = +(8 + hash(i + 2000) * 764).toFixed(1);
-              const y = +(6 + hash(i + 3000) * 62).toFixed(1);
-              const w = 12 + ((i * 7) % 4) * 3;
-              const r = ((i * 23) % 31) - 15;
+            <title>
+              Unstandardized supplier contract sheets of varying proportions and
+              angles spread across three regional zones.
+            </title>
+            {[268, 532].map((x) => (
+              <path
+                key={x}
+                d={`M${x} 10V86`}
+                stroke="var(--charcoal)"
+                strokeOpacity="0.22"
+                strokeDasharray="3 4"
+              />
+            ))}
+            {Array.from({ length: 24 }).map((_, i) => {
+              const region = Math.floor(i / 8);
+              const idx = i % 8;
+              const col = idx % 4;
+              const row = Math.floor(idx / 4);
+              const x0 = 26 + region * 266 + col * 56 + (row % 2) * 8;
+              const y0 = 12 + row * 38;
+              const w = 15 + ((i * 7) % 3) * 2.5;
+              const h = +(w * 1.3).toFixed(2);
+              const r = ((i * 19) % 21) - 10;
+              const cx = +(x0 + w / 2).toFixed(2);
+              const cy = +(y0 + h / 2).toFixed(2);
               return (
                 <rect
                   key={i}
-                  x={x}
-                  y={y}
+                  x={x0}
+                  y={y0}
                   width={w}
-                  height={w * 1.3}
-                  transform={`rotate(${r} ${x + w / 2} ${y + w * 0.65})`}
+                  height={h}
+                  transform={`rotate(${r} ${cx} ${cy})`}
                   fill="var(--surface)"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.4"
+                  strokeOpacity="0.45"
                 />
               );
             })}
+            <text
+              {...SVG_LABEL}
+              x="16"
+              y="104"
+              fill="var(--charcoal)"
+              fillOpacity="0.6"
+            >
+              UNSTANDARDIZED SUPPLIER CONTRACTS
+            </text>
+            <text
+              {...SVG_LABEL}
+              x="784"
+              y="104"
+              textAnchor="end"
+              fill="var(--charcoal)"
+              fillOpacity="0.6"
+            >
+              DIFFERENT REGIONS
+            </text>
           </svg>
         </div>
 
@@ -2334,51 +2882,63 @@ export default function Week05OperationsSupplyChain() {
               from PDF contracts automatically.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 130"
+              role="img"
+              aria-label="A PDF contract on the left with three highlighted lines extracted into structured rows for key terms, compliance clauses, and pricing structures."
+              viewBox="0 0 800 132"
               className="mt-6 w-full max-w-5xl"
               fill="none"
             >
+              <title>
+                A PDF contract on the left with three highlighted lines
+                extracted into structured rows for key terms, compliance
+                clauses, and pricing structures.
+              </title>
               <path
                 d="M20 10H96L116 30V122H20Z"
                 fill="var(--surface)"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.6"
+                strokeWidth="1.5"
               />
               <path
                 d="M96 10V30H116"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.6"
+                strokeWidth="1.5"
               />
-              {[44, 58, 72, 86, 100].map((y, i) => (
-                <path
-                  key={y}
-                  d={`M32 ${y}H${i % 2 ? 90 : 104}`}
-                  stroke={i === 1 || i === 3 ? "var(--crimson)" : "var(--charcoal)"}
-                  strokeOpacity={i === 1 || i === 3 ? 0.8 : 0.25}
-                  strokeWidth="3"
-                />
-              ))}
+              {[44, 58, 72, 86, 100].map((y, i) => {
+                const isExtracted = i === 0 || i === 2 || i === 4;
+                return (
+                  <path
+                    key={y}
+                    d={`M32 ${y}H${i % 2 ? 90 : 104}`}
+                    stroke={isExtracted ? "var(--crimson)" : "var(--charcoal)"}
+                    strokeOpacity={isExtracted ? 0.85 : 0.25}
+                    strokeWidth="3"
+                  />
+                );
+              })}
               <text
                 {...SVG_LABEL}
-                x="68"
-                y="24"
+                x="58"
+                y="26"
                 textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.6"
+                fillOpacity="0.65"
               >
                 PDF
               </text>
               {[
-                { y: 26, label: "KEY TERMS" },
-                { y: 66, label: "COMPLIANCE CLAUSES" },
-                { y: 106, label: "PRICING STRUCTURES" },
+                { sy: 44, y: 26, label: "KEY TERMS" },
+                { sy: 72, y: 66, label: "COMPLIANCE CLAUSES" },
+                { sy: 100, y: 106, label: "PRICING STRUCTURES" },
               ].map((f) => (
                 <g key={f.label}>
                   <path
-                    d={`M132 66 C 220 66, 240 ${f.y}, 330 ${f.y}`}
+                    d={`M116 ${f.sy} C 216 ${f.sy}, 236 ${f.y}, 338 ${f.y}`}
                     stroke="var(--crimson)"
-                    strokeOpacity="0.5"
+                    strokeOpacity="0.55"
+                    strokeWidth="1.5"
                   />
                   <rect
                     x="338"
@@ -2387,7 +2947,7 @@ export default function Week05OperationsSupplyChain() {
                     height="24"
                     fill="var(--surface)"
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.2"
+                    strokeOpacity="0.22"
                   />
                   <rect
                     x="338"
@@ -2401,7 +2961,7 @@ export default function Week05OperationsSupplyChain() {
                     x="356"
                     y={f.y + 3}
                     fill="var(--charcoal)"
-                    fillOpacity="0.7"
+                    fillOpacity="0.75"
                   >
                     {f.label}
                   </text>
@@ -2413,52 +2973,64 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Automated spend analysis categorizes purchasing data to identify
+              maverick spend and consolidation opportunities.
+            </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 150"
-              className="w-full"
+              role="img"
+              aria-label="Scattered purchasing data categorized into aligned rows, highlighting consolidation opportunities across categories and an outlier maverick spend in crimson."
+              viewBox="0 0 800 156"
+              className="mt-6 w-full"
               fill="none"
             >
-              {Array.from({ length: 30 }).map((_, i) => (
+              <title>
+                Scattered purchasing data categorized into aligned rows,
+                highlighting consolidation opportunities across categories and
+                an outlier maverick spend in crimson.
+              </title>
+              {Array.from({ length: 28 }).map((_, i) => (
                 <circle
                   key={i}
-                  cx={10 + ((i * 41) % 170)}
-                  cy={18 + ((i * 67) % 104)}
+                  cx={+(20 + hash(i + 500) * 156).toFixed(2)}
+                  cy={+(20 + hash(i + 600) * 92).toFixed(2)}
                   r="3"
                   fill="var(--charcoal)"
-                  fillOpacity="0.35"
+                  fillOpacity="0.4"
                 />
               ))}
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="146"
+                x="16"
+                y="142"
                 fill="var(--charcoal)"
-                fillOpacity="0.55"
+                fillOpacity="0.6"
               >
                 PURCHASING DATA
               </text>
               <path
                 d="M204 70H300"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.35"
+                strokeOpacity="0.4"
+                strokeWidth="1.5"
               />
               <path
                 d="M293 65l7 5l-7 5"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.5"
+                strokeOpacity="0.55"
+                strokeWidth="1.5"
               />
-              {[24, 58, 92].map((y, r) => (
+              {[28, 62, 96].map((y, r) => (
                 <g key={y}>
                   <path
-                    d={`M330 ${y}H620`}
+                    d={`M324 ${y}H576`}
                     stroke="var(--charcoal)"
                     strokeOpacity="0.15"
                   />
                   {Array.from({ length: 9 - r * 2 }).map((_, k) => (
                     <circle
                       key={k}
-                      cx={344 + k * 28}
+                      cx={338 + k * 26}
                       cy={y}
                       r="3"
                       fill="var(--charcoal)"
@@ -2468,42 +3040,25 @@ export default function Week05OperationsSupplyChain() {
                 </g>
               ))}
               <path
-                d="M632 58V92"
+                d="M582 62H590V96H582"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.55"
-              />
-              <path
-                d="M626 58H632M626 92H632"
-                stroke="var(--charcoal)"
-                strokeOpacity="0.55"
+                strokeWidth="1.5"
               />
               <text
                 {...SVG_LABEL}
-                x="644"
-                y="72"
+                x="604"
+                y="82"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
               >
-                CONSOLIDATION
+                CONSOLIDATION OPPORTUNITIES
               </text>
-              <text
-                {...SVG_LABEL}
-                x="644"
-                y="86"
-                fill="var(--charcoal)"
-                fillOpacity="0.65"
-              >
-                OPPORTUNITIES
-              </text>
-              <circle cx="480" cy="128" r="5" fill="var(--crimson)" />
-              <text {...SVG_LABEL} x="496" y="132" fill="var(--crimson)">
+              <circle cx="442" cy="134" r="5" fill="var(--crimson)" />
+              <text {...SVG_LABEL} x="458" y="138" fill="var(--crimson)">
                 MAVERICK SPEND
               </text>
             </svg>
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
-              Automated spend analysis categorizes purchasing data to identify
-              maverick spend and consolidation opportunities.
-            </p>
           </div>
         </div>
 
@@ -2529,64 +3084,70 @@ export default function Week05OperationsSupplyChain() {
             suppliers.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 240"
+            role="img"
+            aria-label="Multi-tier supply network where direct visibility ends at tier-one suppliers and graph neural networks trace sub-tier links to a hidden choke point at a single tier-three component factory."
+            viewBox="0 0 800 248"
             className="mt-7 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Multi-tier supply network where direct visibility ends at tier-one
+              suppliers and graph neural networks trace sub-tier links to a
+              hidden choke point at a single tier-three component factory.
+            </title>
             {(() => {
-              const t1 = [54, 101, 148, 195].map((y) => [290, y]);
-              const t2 = [44, 84, 124, 164, 204].map((y) => [520, y]);
-              const t3 = [64, 124, 188].map((y) => [740, y]);
-              const curve = (a: number[], b: number[]) =>
-                `M${a[0] + 8} ${a[1]} C ${(a[0] + b[0]) / 2} ${a[1]}, ${(a[0] + b[0]) / 2} ${b[1]}, ${b[0] - 8} ${b[1]}`;
+              const t1 = [60, 106, 152, 198].map((y) => [280, y]);
+              const t2 = [48, 88, 128, 168, 208].map((y) => [504, y]);
+              const t3 = [64, 128, 192].map((y) => [716, y]);
+              const curve = (a: number[], b: number[], rB = 7) =>
+                `M${a[0] + 7} ${a[1]} C ${(a[0] + b[0]) / 2} ${a[1]}, ${(a[0] + b[0]) / 2} ${b[1]}, ${b[0] - rB} ${b[1]}`;
               const faint: [number[], number[]][] = [
-                [t1[1], t2[1]],
-                [t1[2], t2[3]],
-                [t1[3], t2[3]],
-                [t1[1], t2[0]],
-                [t2[1], t3[0]],
-                [t2[0], t3[0]],
-                [t2[3], t3[2]],
-              ];
-              const hot: [number[], number[]][] = [
                 [t1[0], t2[0]],
-                [t1[2], t2[2]],
+                [t2[0], t3[0]],
                 [t1[3], t2[4]],
-                [t2[0], t3[1]],
-                [t2[2], t3[1]],
-                [t2[4], t3[1]],
+                [t2[4], t3[2]],
+              ];
+              const hot: [number[], number[], number][] = [
+                [t1[0], t2[1], 7],
+                [t1[1], t2[2], 7],
+                [t1[2], t2[3], 7],
+                [t2[1], t3[1], 10],
+                [t2[2], t3[1], 10],
+                [t2[3], t3[1], 10],
               ];
               return (
                 <g>
                   <rect
-                    x="0"
-                    y="26"
-                    width="382"
-                    height="214"
+                    x="14"
+                    y="30"
+                    width="354"
+                    height="204"
                     fill="var(--charcoal)"
                     fillOpacity="0.035"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.18"
+                    strokeDasharray="4 4"
                   />
                   <text
                     {...SVG_LABEL}
-                    x="10"
-                    y="232"
+                    x="28"
+                    y="222"
                     fill="var(--charcoal)"
-                    fillOpacity="0.5"
+                    fillOpacity="0.55"
                   >
                     VISIBILITY
                   </text>
                   {[
-                    { x: 60, label: "COMPANY" },
-                    { x: 290, label: "TIER ONE" },
-                    { x: 520, label: "TIER TWO" },
-                    { x: 740, label: "TIER THREE" },
+                    { x: 68, label: "COMPANIES" },
+                    { x: 280, label: "TIER-ONE SUPPLIERS" },
+                    { x: 504, label: "SUB-TIER" },
+                    { x: 716, label: "TIER-THREE" },
                   ].map((h) => (
                     <text
                       key={h.label}
                       {...SVG_LABEL}
                       x={h.x}
-                      y="14"
+                      y="20"
                       textAnchor="middle"
                       fill="var(--charcoal)"
                       fillOpacity="0.6"
@@ -2597,9 +3158,10 @@ export default function Week05OperationsSupplyChain() {
                   {t1.map(([x, y]) => (
                     <path
                       key={`c-${y}`}
-                      d={`M72 124 C 180 124, 180 ${y}, ${x - 8} ${y}`}
+                      d={`M76 128 C 178 128, 178 ${y}, ${x - 7} ${y}`}
                       stroke="var(--charcoal)"
                       strokeOpacity="0.4"
+                      strokeWidth="1.25"
                     />
                   ))}
                   {faint.map(([a, b]) => (
@@ -2607,36 +3169,36 @@ export default function Week05OperationsSupplyChain() {
                       key={`f-${a.join()}-${b.join()}`}
                       d={curve(a, b)}
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.2"
+                      strokeOpacity="0.25"
                       strokeDasharray="3 4"
                     />
                   ))}
-                  {hot.map(([a, b]) => (
+                  {hot.map(([a, b, rB]) => (
                     <path
                       key={`h-${a.join()}-${b.join()}`}
-                      d={curve(a, b)}
+                      d={curve(a, b, rB)}
                       stroke="var(--crimson)"
-                      strokeOpacity="0.75"
+                      strokeOpacity="0.8"
                       strokeWidth="1.5"
                     />
                   ))}
                   <rect
-                    x="52"
-                    y="116"
+                    x="60"
+                    y="120"
                     width="16"
                     height="16"
                     fill="var(--charcoal)"
-                    fillOpacity="0.8"
+                    fillOpacity="0.85"
                   />
-                  {t1.map(([x, y]) => (
+                  {t1.map(([x, y], idx) => (
                     <circle
                       key={`t1-${y}`}
                       cx={x}
                       cy={y}
                       r="7"
                       fill="var(--surface)"
-                      stroke="var(--charcoal)"
-                      strokeOpacity="0.7"
+                      stroke={idx < 3 ? "var(--crimson)" : "var(--charcoal)"}
+                      strokeOpacity={idx < 3 ? 0.85 : 0.65}
                       strokeWidth="1.5"
                     />
                   ))}
@@ -2648,19 +3210,19 @@ export default function Week05OperationsSupplyChain() {
                       r="7"
                       fill="var(--surface)"
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.4"
+                      strokeOpacity="0.45"
                       strokeDasharray="2 2"
                     />
                   ))}
-                  <circle cx="740" cy="124" r="10" fill="var(--crimson)" />
+                  <circle cx="716" cy="128" r="10" fill="var(--crimson)" />
                   <text
                     {...SVG_LABEL}
-                    x="740"
-                    y="152"
+                    x="716"
+                    y="156"
                     textAnchor="middle"
                     fill="var(--crimson)"
                   >
-                    CHOKE POINT
+                    HIDDEN CHOKE POINTS
                   </text>
                 </g>
               );
@@ -2715,20 +3277,26 @@ export default function Week05OperationsSupplyChain() {
             robots, and human workers simultaneously.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 130"
+            role="img"
+            aria-label="Three parallel warehouse movement lanes for goods, robots, and human workers orchestrated simultaneously at crimson synchronization points."
+            viewBox="0 0 800 138"
             className="mt-7 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Three parallel warehouse movement lanes for goods, robots, and
+              human workers orchestrated simultaneously at crimson
+              synchronization points.
+            </title>
             {[
-              { y: 20, label: "GOODS" },
-              { y: 56, label: "ROBOTS" },
-              { y: 92, label: "HUMAN WORKERS" },
+              { y: 24, label: "GOODS" },
+              { y: 60, label: "ROBOTS" },
+              { y: 96, label: "HUMAN WORKERS" },
             ].map((lane, l) => (
               <g key={lane.label}>
                 <text
                   {...SVG_LABEL}
-                  x="0"
+                  x="16"
                   y={lane.y + 3}
                   fill="var(--charcoal)"
                   fillOpacity="0.6"
@@ -2736,12 +3304,12 @@ export default function Week05OperationsSupplyChain() {
                   {lane.label}
                 </text>
                 <path
-                  d={`M150 ${lane.y}H800`}
+                  d={`M164 ${lane.y}H784`}
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.15"
+                  strokeOpacity="0.16"
                 />
-                {Array.from({ length: 11 }).map((_, i) => {
-                  const x = 170 + i * 60 + ((i * 13 + l * 17) % 20);
+                {[200, 260, 380, 440, 580, 640, 756].map((baseX, i) => {
+                  const x = baseX + ((i * 5 + l * 7) % 3) * 4 - 4;
                   return (
                     <rect
                       key={i}
@@ -2756,21 +3324,22 @@ export default function Week05OperationsSupplyChain() {
                 })}
               </g>
             ))}
-            {[320, 520, 720].map((x) => (
+            {[320, 510, 700].map((x) => (
               <g key={x}>
                 <path
-                  d={`M${x} 8V104`}
+                  d={`M${x} 12V108`}
                   stroke="var(--crimson)"
                   strokeOpacity="0.7"
+                  strokeWidth="1.5"
                 />
-                {[20, 56, 92].map((y) => (
-                  <circle key={y} cx={x} cy={y} r="4" fill="var(--crimson)" />
+                {[24, 60, 96].map((y) => (
+                  <circle key={y} cx={x} cy={y} r="4.5" fill="var(--crimson)" />
                 ))}
               </g>
             ))}
             <text
               {...SVG_LABEL}
-              x="800"
+              x="784"
               y="126"
               textAnchor="end"
               fill="var(--crimson)"
@@ -2786,66 +3355,87 @@ export default function Week05OperationsSupplyChain() {
               Algorithms optimize slotting by predicting which products will be
               ordered together and placing them in proximity.
             </p>
-            <div aria-hidden className="mt-6 max-w-4xl">
-              <div className="grid grid-cols-12 gap-1">
-                {Array.from({ length: 36 }).map((_, i) => {
-                  const pair = [13, 14, 27, 28].includes(i);
-                  return (
-                    <span
-                      key={i}
-                      className={`block h-7 ${
-                        pair
-                          ? "bg-[var(--crimson)]"
-                          : "border border-[var(--charcoal)]/15"
-                      }`}
-                    />
-                  );
-                })}
-              </div>
-              <div className={`${MICRO} mt-3 text-[var(--crimson)]`}>
-                Ordered together | in proximity
-              </div>
-            </div>
+            <svg
+              role="img"
+              aria-label="Warehouse slotting grid of thirty-six bays where pairs of products predicted to be ordered together are placed side by side in crimson."
+              viewBox="0 0 800 118"
+              className="mt-6 w-full max-w-4xl"
+              fill="none"
+            >
+              <title>
+                Warehouse slotting grid of thirty-six bays where pairs of
+                products predicted to be ordered together are placed side by
+                side in crimson.
+              </title>
+              {Array.from({ length: 36 }).map((_, i) => {
+                const col = i % 12;
+                const row = Math.floor(i / 12);
+                const x = 16 + col * 64.5;
+                const y = 12 + row * 26;
+                const pair = [13, 14, 27, 28].includes(i);
+                return (
+                  <rect
+                    key={i}
+                    x={x}
+                    y={y}
+                    width="58.5"
+                    height="20"
+                    fill={pair ? "var(--crimson)" : "var(--surface)"}
+                    stroke={pair ? "var(--crimson)" : "var(--charcoal)"}
+                    strokeOpacity={pair ? 1 : 0.2}
+                  />
+                );
+              })}
+              <text {...SVG_LABEL} x="16" y="106" fill="var(--crimson)">
+                ORDERED TOGETHER | IN PROXIMITY
+              </text>
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
+          <div className="mt-12 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_25rem] md:gap-14">
             <p className={DISPLAY}>
               Reinforcement learning models continuously refine warehouse layout
               rules based on evolving order profiles.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 320 210"
+              role="img"
+              aria-label="Continuous reinforcement learning feedback loop between evolving order profiles at the top and warehouse layout rules at the bottom."
+              viewBox="0 0 400 216"
               className="w-full"
               fill="none"
             >
+              <title>
+                Continuous reinforcement learning feedback loop between evolving
+                order profiles at the top and warehouse layout rules at the
+                bottom.
+              </title>
               <path
-                d="M90 100A70 70 0 0 1 230 100"
+                d="M130 102A70 70 0 0 1 270 102"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.45"
                 strokeWidth="1.5"
               />
               <path
-                d="M224 91l6 9l6 -9"
+                d="M264 93l6 9l6 -9"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.6"
                 strokeWidth="1.5"
               />
               <path
-                d="M230 112A70 70 0 0 1 90 112"
+                d="M270 114A70 70 0 0 1 130 114"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
               <path
-                d="M84 121l6 -9l6 9"
+                d="M124 123l6 -9l6 9"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
               <text
                 {...SVG_LABEL}
-                x="160"
+                x="200"
                 y="20"
                 textAnchor="middle"
                 fill="var(--charcoal)"
@@ -2855,8 +3445,8 @@ export default function Week05OperationsSupplyChain() {
               </text>
               <text
                 {...SVG_LABEL}
-                x="160"
-                y="200"
+                x="200"
+                y="202"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
@@ -2864,11 +3454,11 @@ export default function Week05OperationsSupplyChain() {
               </text>
               <text
                 {...SVG_LABEL}
-                x="160"
-                y="108"
+                x="200"
+                y="111"
                 textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.45"
+                fillOpacity="0.5"
               >
                 CONTINUOUSLY
               </text>
@@ -2911,48 +3501,49 @@ export default function Week05OperationsSupplyChain() {
               conveyors with sub-millimeter precision.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 150"
+              role="img"
+              aria-label="Overhead computer vision sensor inspecting six evenly spaced products on a high-speed conveyor and framing a microscopic defect in crimson."
+              viewBox="0 0 800 154"
               className="mt-6 w-full max-w-5xl"
               fill="none"
             >
+              <title>
+                Overhead computer vision sensor inspecting six evenly spaced
+                products on a high-speed conveyor and framing a microscopic
+                defect in crimson.
+              </title>
               <path
-                d="M470 20H530M500 20V34"
+                d="M422 20H482M452 20V34"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.6"
+                strokeOpacity="0.65"
                 strokeWidth="1.5"
               />
               <path
-                d="M500 36L466 72M500 36L534 72"
+                d="M452 36L418 72M452 36L486 72"
                 stroke="var(--crimson)"
-                strokeOpacity="0.35"
+                strokeOpacity="0.4"
                 strokeDasharray="3 3"
               />
-              <text
-                {...SVG_LABEL}
-                x="545"
-                y="24"
-                fill="var(--crimson)"
-              >
-                COMPUTER VISION
+              <text {...SVG_LABEL} x="498" y="24" fill="var(--crimson)">
+                COMPUTER VISION MODELS
               </text>
               <path
-                d="M0 108H800M0 116H800"
+                d="M16 108H784M16 116H784"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.4"
               />
-              {Array.from({ length: 21 }).map((_, i) => (
+              {Array.from({ length: 19 }).map((_, i) => (
                 <circle
                   key={i}
-                  cx={i * 40}
+                  cx={32 + i * 40}
                   cy="112"
                   r="3"
                   stroke="var(--charcoal)"
                   strokeOpacity="0.35"
                 />
               ))}
-              {[60, 180, 300, 500, 620, 740].map((x) => {
-                const defect = x === 500;
+              {[80, 204, 328, 452, 576, 700].map((x) => {
+                const defect = x === 452;
                 return (
                   <g key={x}>
                     <rect
@@ -2963,7 +3554,7 @@ export default function Week05OperationsSupplyChain() {
                       fill="var(--surface)"
                       stroke={defect ? "var(--crimson)" : "var(--charcoal)"}
                       strokeOpacity={defect ? 1 : 0.55}
-                      strokeWidth={defect ? 2 : 1}
+                      strokeWidth={defect ? 2 : 1.25}
                     />
                     {defect && (
                       <circle cx={x + 8} cy="92" r="2.5" fill="var(--crimson)" />
@@ -2972,26 +3563,27 @@ export default function Week05OperationsSupplyChain() {
                 );
               })}
               <path
-                d="M466 72H474M466 72V80M534 72H526M534 72V80"
+                d="M418 72H426M418 72V80M486 72H478M486 72V80"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
-              {[0, 1, 2].map((i) => (
-                <path
-                  key={i}
-                  d={`M${120 + i * 14} 66l8 4l-8 4`}
-                  stroke="var(--charcoal)"
-                  strokeOpacity={0.25 + i * 0.2}
-                />
-              ))}
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="142"
+                x="16"
+                y="140"
                 fill="var(--charcoal)"
-                fillOpacity="0.55"
+                fillOpacity="0.6"
               >
                 HIGH-SPEED CONVEYORS
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="784"
+                y="140"
+                textAnchor="end"
+                fill="var(--crimson)"
+              >
+                SUB-MILLIMETER PRECISION
               </text>
             </svg>
           </div>
@@ -2999,6 +3591,10 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              These systems detect microscopic defects, verify labeling
+              compliance, and ensure packaging integrity in milliseconds.
+            </p>
             <Steps
               items={[
                 "microscopic defects",
@@ -3008,12 +3604,8 @@ export default function Week05OperationsSupplyChain() {
               ]}
               cols="md:grid-cols-4"
               mark={3}
-              className="max-w-4xl"
+              className="mt-7 max-w-4xl"
             />
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              These systems detect microscopic defects, verify labeling
-              compliance, and ensure packaging integrity in milliseconds.
-            </p>
           </div>
         </div>
       </Slide>
@@ -3030,15 +3622,17 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-10 w-full max-w-5xl">
-            <Split1
-              left="Replacing them entirely"
-              right="Alongside human warehouse associates"
-              strikeLeft
-            />
-            <p className={`${BODY} mt-6 max-w-4xl`}>
+            <p className={`${BODY} max-w-4xl`}>
               Cobots are designed to work safely alongside human warehouse
               associates rather than replacing them entirely.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Replacing them entirely"
+                right="Alongside human warehouse associates"
+                strikeLeft
+              />
+            </div>
           </div>
         </div>
 
@@ -3049,66 +3643,93 @@ export default function Week05OperationsSupplyChain() {
               human pickers to maximize throughput.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 130"
+              role="img"
+              aria-label="Parallel lanes for autonomous mobile robots and human pickers connected by three synchronized crimson hand-off transfers that maximize throughput."
+              viewBox="0 0 800 136"
               className="mt-6 w-full max-w-5xl"
               fill="none"
             >
+              <title>
+                Parallel lanes for autonomous mobile robots and human pickers
+                connected by three synchronized crimson hand-off transfers that
+                maximize throughput.
+              </title>
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="22"
+                x="16"
+                y="43"
                 fill="var(--charcoal)"
-                fillOpacity="0.6"
+                fillOpacity="0.65"
               >
                 AUTONOMOUS MOBILE ROBOTS
               </text>
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="108"
+                x="16"
+                y="101"
                 fill="var(--charcoal)"
-                fillOpacity="0.6"
+                fillOpacity="0.65"
               >
                 HUMAN PICKERS
               </text>
               <path
-                d="M220 40H760M220 90H760"
+                d="M236 40H672M236 98H672"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.3"
               />
               <path
-                d="M752 35l8 5l-8 5M752 85l8 5l-8 5"
+                d="M664 35l8 5l-8 5M664 93l8 5l-8 5"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.5"
               />
-              {[320, 480, 640].map((x) => (
+              {[320, 460, 600].map((x) => (
                 <g key={x}>
+                  <rect
+                    x={x - 10}
+                    y="28"
+                    width="20"
+                    height="9"
+                    fill="var(--surface)"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.65"
+                  />
+                  <circle cx={x - 5} cy="40" r="2.5" fill="var(--charcoal)" />
+                  <circle cx={x + 5} cy="40" r="2.5" fill="var(--charcoal)" />
                   <path
-                    d={`M${x} 40V90`}
+                    d={`M${x} 46V86`}
                     stroke="var(--crimson)"
                     strokeWidth="2"
                   />
-                  <circle cx={x} cy="40" r="5" fill="var(--crimson)" />
-                  <circle cx={x} cy="90" r="5" fill="var(--crimson)" />
+                  <path
+                    d={`M${x - 4} 80l4 6l4-6`}
+                    stroke="var(--crimson)"
+                    strokeWidth="1.8"
+                  />
+                  <circle
+                    cx={x}
+                    cy="98"
+                    r="5.5"
+                    fill="var(--surface)"
+                    stroke="var(--crimson)"
+                    strokeWidth="2"
+                  />
                 </g>
               ))}
               <text
                 {...SVG_LABEL}
-                x="480"
-                y="68"
-                dx="10"
+                x="472"
+                y="72"
                 fill="var(--crimson)"
               >
                 HAND-OFF
               </text>
               <text
                 {...SVG_LABEL}
-                x="800"
-                y="126"
+                x="784"
+                y="72"
                 textAnchor="end"
                 fill="var(--charcoal)"
-                fillOpacity="0.55"
+                fillOpacity="0.65"
               >
                 THROUGHPUT
               </text>
@@ -3118,9 +3739,13 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Wearable devices and algorithmic task assignment reduce physical
+              strain on workers while improving efficiency.
+            </p>
             <div
               aria-hidden
-              className="grid max-w-md grid-cols-2 border-y border-[var(--charcoal)]/15"
+              className="mt-7 grid max-w-md grid-cols-2 border-y border-[var(--charcoal)]/15"
             >
               {[
                 { label: "Physical strain", glyph: "↓" },
@@ -3141,10 +3766,6 @@ export default function Week05OperationsSupplyChain() {
                 </div>
               ))}
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Wearable devices and algorithmic task assignment reduce physical
-              strain on workers while improving efficiency.
-            </p>
             <Terms
               items={["wearable devices", "algorithmic task assignment"]}
             />
@@ -3174,24 +3795,30 @@ export default function Week05OperationsSupplyChain() {
             factory.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 226"
+            role="img"
+            aria-label="Physical warehouse floor plan connected by real-time IoT data to its virtual simulation mirror, isolating aisle bottlenecks before layout changes."
+            viewBox="0 0 800 228"
             className="mt-8 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Physical warehouse floor plan connected by real-time IoT data to
+              its virtual simulation mirror, isolating aisle bottlenecks before
+              layout changes.
+            </title>
             {[
-              { x0: 0, label: "PHYSICAL WAREHOUSE", virtual: false },
-              { x0: 500, label: "VIRTUAL SIMULATION", virtual: true },
+              { x0: 16, label: "PHYSICAL WAREHOUSE", virtual: false },
+              { x0: 504, label: "VIRTUAL SIMULATION", virtual: true },
             ].map((plan) => {
               const tone = plan.virtual ? "var(--crimson)" : "var(--charcoal)";
               const dash = plan.virtual ? "4 3" : undefined;
-              const bx = plan.x0 + 197.5;
+              const bx = plan.x0 + 183.5;
               return (
                 <g key={plan.label}>
                   <text
                     {...SVG_LABEL}
-                    x={plan.x0 + 150}
-                    y="16"
+                    x={plan.x0 + 140}
+                    y="18"
                     textAnchor="middle"
                     fill={tone}
                     fillOpacity={plan.virtual ? 1 : 0.65}
@@ -3199,16 +3826,16 @@ export default function Week05OperationsSupplyChain() {
                     {plan.label}
                   </text>
                   <rect
-                    x={plan.x0 + 2}
+                    x={plan.x0}
                     y="30"
-                    width="296"
+                    width="280"
                     height="140"
                     stroke={tone}
                     strokeOpacity={plan.virtual ? 0.7 : 0.55}
                     strokeDasharray={dash}
                   />
-                  {[48, 84, 120, 146].map((y) =>
-                    [20, 115, 210].map((x) => (
+                  {[46, 76, 122, 148].map((y) =>
+                    [18, 105, 192].map((x) => (
                       <rect
                         key={`${x}-${y}`}
                         x={plan.x0 + x}
@@ -3224,16 +3851,16 @@ export default function Week05OperationsSupplyChain() {
                     )),
                   )}
                   {[
-                    [-6, -3],
-                    [4, -4],
+                    [-5, -3],
+                    [4, -3],
                     [-2, 3],
-                    [7, 2],
+                    [5, 2],
                     [0, 0],
                   ].map(([dx, dy], k) => (
                     <circle
                       key={k}
                       cx={bx + dx}
-                      cy={109 + dy}
+                      cy={105 + dy}
                       r="2.2"
                       fill="var(--crimson)"
                     />
@@ -3241,21 +3868,21 @@ export default function Week05OperationsSupplyChain() {
                   {plan.virtual && (
                     <circle
                       cx={bx}
-                      cy="109"
-                      r="20"
+                      cy="105"
+                      r="12"
                       stroke="var(--crimson)"
                       strokeDasharray="2 3"
                     />
                   )}
                   <path
-                    d={`M${bx} ${plan.virtual ? 131 : 116}V198`}
+                    d={`M${bx} ${plan.virtual ? 119 : 112}V194`}
                     stroke="var(--crimson)"
                     strokeOpacity="0.45"
                   />
                   <text
                     {...SVG_LABEL}
                     x={bx}
-                    y="214"
+                    y="210"
                     textAnchor="middle"
                     fill="var(--crimson)"
                   >
@@ -3264,11 +3891,11 @@ export default function Week05OperationsSupplyChain() {
                 </g>
               );
             })}
-            <path d="M318 100H478" stroke="var(--crimson)" strokeWidth="2" />
-            <path d="M470 94l8 6l-8 6" stroke="var(--crimson)" strokeWidth="2" />
+            <path d="M312 100H488" stroke="var(--crimson)" strokeWidth="2" />
+            <path d="M480 94l8 6l-8 6" stroke="var(--crimson)" strokeWidth="2" />
             <text
               {...SVG_LABEL}
-              x="398"
+              x="400"
               y="86"
               textAnchor="middle"
               fill="var(--charcoal)"
@@ -3281,15 +3908,17 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className={RULED}>
-            <Split1
-              left="Disrupting actual operations"
-              right="Test new layouts and processes"
-              strikeLeft
-            />
-            <p className={`${BODY} mt-6 max-w-4xl`}>
+            <p className={`${BODY} max-w-4xl`}>
               Operations managers use these AI-driven simulations to test new
               layouts and processes without disrupting actual operations.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Disrupting actual operations"
+                right="Test new layouts and processes"
+                strikeLeft
+              />
+            </div>
           </div>
         </div>
 
@@ -3326,18 +3955,59 @@ export default function Week05OperationsSupplyChain() {
             Supply chains account for the vast majority of a modern
             corporation&apos;s total carbon emissions.
           </p>
-          <figure aria-hidden className="mt-7 w-full max-w-4xl">
-            <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-              Total carbon emissions
-            </div>
-            <div className="mt-3 flex h-10 w-full border border-[var(--charcoal)]/20">
-              <div className="flex h-full w-[82%] items-center bg-[var(--crimson)] px-4">
-                <span className={`${MICRO} text-[var(--surface)]`}>
-                  Supply chains
-                </span>
-              </div>
-              <div className="h-full flex-1 bg-[var(--charcoal)]/10" />
-            </div>
+          <figure className="mt-7 w-full max-w-4xl">
+            <svg
+              role="img"
+              aria-label="Proportion bar showing supply chains accounting for the vast majority of a modern corporation's total carbon emissions."
+              viewBox="0 0 800 84"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Proportion bar showing supply chains accounting for the vast
+                majority of a modern corporation&apos;s total carbon emissions.
+              </title>
+              <text
+                {...SVG_LABEL}
+                x="16"
+                y="20"
+                fill="var(--charcoal)"
+                fillOpacity="0.6"
+              >
+                TOTAL CARBON EMISSIONS
+              </text>
+              <rect
+                x="16"
+                y="32"
+                width="768"
+                height="36"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.25"
+              />
+              <rect
+                x="16"
+                y="32"
+                width="630"
+                height="36"
+                fill="var(--crimson)"
+              />
+              <rect
+                x="646"
+                y="32"
+                width="138"
+                height="36"
+                fill="var(--charcoal)"
+                fillOpacity="0.1"
+              />
+              <text
+                {...SVG_LABEL}
+                x="32"
+                y="54"
+                fill="var(--surface)"
+              >
+                SUPPLY CHAINS
+              </text>
+            </svg>
           </figure>
         </div>
 
@@ -3355,53 +4025,81 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <figure aria-hidden className="max-w-4xl">
-              <div className="grid grid-cols-[8rem_1fr] items-end gap-4 border-b border-[var(--charcoal)]/15 pb-2">
-                <span className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-                  Sourcing scenarios
-                </span>
-                <span className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-                  Carbon impact
-                </span>
-              </div>
-              {[
-                { w: "78%", pick: false },
-                { w: "36%", pick: true },
-                { w: "58%", pick: false },
-              ].map((s, i) => (
-                <div
-                  key={s.w}
-                  className="grid grid-cols-[8rem_1fr] items-center gap-4 border-b border-[var(--charcoal)]/8 py-3"
-                >
-                  <span
-                    className={`${MICRO} ${
-                      s.pick
-                        ? "text-[var(--crimson)]"
-                        : "text-[var(--champagne)]"
-                    }`}
-                  >
-                    {pad(i + 1)}
-                  </span>
-                  <span
-                    className={`block h-3 ${
-                      s.pick
-                        ? "bg-[var(--crimson)]"
-                        : "bg-[var(--charcoal)]/25"
-                    }`}
-                    style={{ width: s.w }}
-                  />
-                </div>
-              ))}
-              <div className="mt-3 flex items-center justify-end gap-3">
-                <span className={`${MICRO} text-[var(--crimson)]`}>
-                  Before making purchasing decisions
-                </span>
-              </div>
-            </figure>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
+            <p className={`${DISPLAY} max-w-4xl`}>
               AI models help procurement teams evaluate the carbon impact of
               different sourcing scenarios before making purchasing decisions.
             </p>
+            <figure className="mt-7 w-full max-w-4xl">
+              <svg
+                role="img"
+                aria-label="Comparison of three sourcing scenarios evaluated by carbon impact before making purchasing decisions, highlighting the lowest-carbon option in crimson."
+                viewBox="0 0 800 136"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Comparison of three sourcing scenarios evaluated by carbon
+                  impact before making purchasing decisions, highlighting the
+                  lowest-carbon option in crimson.
+                </title>
+                <text
+                  {...SVG_LABEL}
+                  x="16"
+                  y="20"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.6"
+                >
+                  SOURCING SCENARIOS
+                </text>
+                <text
+                  {...SVG_LABEL}
+                  x="220"
+                  y="20"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.6"
+                >
+                  CARBON IMPACT
+                </text>
+                <path
+                  d="M16 30H784"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.18"
+                />
+                {[
+                  { num: "01", w: 440, pick: false, y: 48 },
+                  { num: "02", w: 204, pick: true, y: 74 },
+                  { num: "03", w: 328, pick: false, y: 100 },
+                ].map((s) => (
+                  <g key={s.num}>
+                    <text
+                      {...SVG_LABEL}
+                      x="16"
+                      y={s.y + 9}
+                      fill={s.pick ? "var(--crimson)" : "var(--champagne)"}
+                    >
+                      {s.num}
+                    </text>
+                    <rect
+                      x="220"
+                      y={s.y}
+                      width={s.w}
+                      height="12"
+                      fill={s.pick ? "var(--crimson)" : "var(--charcoal)"}
+                      fillOpacity={s.pick ? 1 : 0.25}
+                    />
+                  </g>
+                ))}
+                <text
+                  {...SVG_LABEL}
+                  x="784"
+                  y="83"
+                  textAnchor="end"
+                  fill="var(--crimson)"
+                >
+                  BEFORE MAKING PURCHASING DECISIONS
+                </text>
+              </svg>
+            </figure>
           </div>
         </div>
       </Slide>
@@ -3431,16 +4129,22 @@ export default function Week05OperationsSupplyChain() {
               refurbished, or recycled.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 140"
+              role="img"
+              aria-label="Returned goods inspected inside a crimson computer vision reticle to assess condition and routed into restocked, refurbished, or recycled streams."
+              viewBox="0 0 800 148"
               className="mt-6 w-full max-w-5xl"
               fill="none"
             >
+              <title>
+                Returned goods inspected inside a crimson computer vision
+                reticle to assess condition and routed into restocked,
+                refurbished, or recycled streams.
+              </title>
               {[0, 1, 2].map((i) => (
                 <rect
                   key={i}
-                  x={10 + i * 30}
-                  y={58 - (i % 2) * 8}
+                  x={24 + i * 32}
+                  y={60 - (i % 2) * 8}
                   width="24"
                   height="24"
                   fill="var(--surface)"
@@ -3450,31 +4154,31 @@ export default function Week05OperationsSupplyChain() {
               ))}
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="112"
+                x="24"
+                y="116"
                 fill="var(--charcoal)"
-                fillOpacity="0.55"
+                fillOpacity="0.6"
               >
                 RETURNED GOODS
               </text>
               <path
-                d="M120 70H268"
+                d="M136 72H276"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.35"
               />
               <path
-                d="M261 65l7 5l-7 5"
+                d="M269 67l7 5l-7 5"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.5"
               />
               <path
-                d="M284 50H294M284 50V60M340 50H330M340 50V60M284 90H294M284 90V80M340 90H330M340 90V80"
+                d="M292 52H302M292 52V62M348 52H338M348 52V62M292 92H302M292 92V82M348 92H338M348 92V82"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
               <rect
-                x="300"
-                y="58"
+                x="308"
+                y="60"
                 width="24"
                 height="24"
                 fill="var(--surface)"
@@ -3483,26 +4187,26 @@ export default function Week05OperationsSupplyChain() {
               />
               <text
                 {...SVG_LABEL}
-                x="312"
-                y="112"
+                x="320"
+                y="116"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
                 CONDITION
               </text>
               {[
-                { y: 24, label: "RESTOCKED" },
-                { y: 70, label: "REFURBISHED" },
-                { y: 116, label: "RECYCLED" },
+                { y: 26, label: "RESTOCKED" },
+                { y: 72, label: "REFURBISHED" },
+                { y: 118, label: "RECYCLED" },
               ].map((b) => (
                 <g key={b.label}>
                   <path
-                    d={`M356 70 C 440 70, 460 ${b.y}, 560 ${b.y}`}
+                    d={`M360 72 C 448 72, 472 ${b.y}, 584 ${b.y}`}
                     stroke="var(--crimson)"
                     strokeOpacity="0.55"
                   />
                   <rect
-                    x="568"
+                    x="584"
                     y={b.y - 6}
                     width="12"
                     height="12"
@@ -3510,7 +4214,7 @@ export default function Week05OperationsSupplyChain() {
                   />
                   <text
                     {...SVG_LABEL}
-                    x="594"
+                    x="608"
                     y={b.y + 3}
                     fill="var(--charcoal)"
                     fillOpacity="0.7"
@@ -3525,16 +4229,38 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <figure aria-hidden className="w-full">
-              <svg viewBox="0 0 800 130" className="w-full" fill="none">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Predictive models anticipate return volumes based on product
+              characteristics and seasonal trends, optimizing reverse network
+              capacity.
+            </p>
+            <figure className="mt-7 w-full">
+              <svg
+                role="img"
+                aria-label="Bar chart of historical and forecasted return volumes paired with a stepped crimson line showing optimized reverse network capacity."
+                viewBox="0 0 800 140"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Bar chart of historical and forecasted return volumes paired
+                  with a stepped crimson line showing optimized reverse network
+                  capacity.
+                </title>
                 {Array.from({ length: 24 }).map((_, i) => {
-                  const h = 30 + 34 * Math.max(0, Math.sin((i / 23) * Math.PI * 2 - 0.6)) + ((i * 13) % 7);
+                  const h = Number(
+                    (
+                      30 +
+                      34 * Math.max(0, Math.sin((i / 23) * Math.PI * 2 - 0.6)) +
+                      ((i * 13) % 7)
+                    ).toFixed(2),
+                  );
                   const forecast = i >= 18;
                   return (
                     <rect
                       key={i}
-                      x={i * 33 + 4}
-                      y={106 - h}
+                      x={24 + i * 32}
+                      y={Number((102 - h).toFixed(2))}
                       width="20"
                       height={h}
                       fill={forecast ? "var(--surface)" : "var(--charcoal)"}
@@ -3546,28 +4272,38 @@ export default function Week05OperationsSupplyChain() {
                   );
                 })}
                 <path
-                  d={Array.from({ length: 24 })
-                    .map((_, i) => {
-                      const h = 30 + 34 * Math.max(0, Math.sin((i / 23) * Math.PI * 2 - 0.6)) + ((i * 13) % 7);
-                      const y = (106 - h - 8).toFixed(1);
-                      return `${i === 0 ? "M" : "H"}${i * 33}${i === 0 ? ` ${y}` : `V${y}`}`;
-                    })
-                    .join("") + "H800"}
+                  d={
+                    Array.from({ length: 24 })
+                      .map((_, i) => {
+                        const h =
+                          30 +
+                          34 *
+                            Math.max(
+                              0,
+                              Math.sin((i / 23) * Math.PI * 2 - 0.6),
+                            ) +
+                          ((i * 13) % 7);
+                        const y = (102 - h - 8).toFixed(1);
+                        const x = 20 + i * 32;
+                        return `${i === 0 ? "M" : "H"}${x}${i === 0 ? ` ${y}` : `V${y}`}`;
+                      })
+                      .join("") + "H780"
+                  }
                   stroke="var(--crimson)"
                   strokeWidth="2"
                 />
                 <text
                   {...SVG_LABEL}
-                  x="0"
+                  x="24"
                   y="124"
                   fill="var(--charcoal)"
-                  fillOpacity="0.55"
+                  fillOpacity="0.6"
                 >
                   RETURN VOLUMES
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="800"
+                  x="780"
                   y="124"
                   textAnchor="end"
                   fill="var(--crimson)"
@@ -3577,11 +4313,6 @@ export default function Week05OperationsSupplyChain() {
               </svg>
             </figure>
             <Terms items={["product characteristics", "seasonal trends"]} />
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Predictive models anticipate return volumes based on product
-              characteristics and seasonal trends, optimizing reverse network
-              capacity.
-            </p>
           </div>
         </div>
       </Slide>
@@ -3605,57 +4336,96 @@ export default function Week05OperationsSupplyChain() {
           {[
             {
               line: "Overproduction in manufacturing leads to significant material waste and energy consumption.",
-              excess: "38%",
-              excessLabel: "Overproduction",
+              kicker: "MANUFACTURING",
+              kickerTone: "var(--champagne)",
+              excessWidth: 100,
+              excessLabel: "OVERPRODUCTION",
+              aria: "Manufacturing production bar exceeding demand by a wide crimson-shaded overproduction margin.",
               terms: ["material waste", "energy consumption"],
             },
             {
               line: "Precision demand forecasting directly reduces the amount of unsold inventory that ends up in landfills.",
-              excess: "8%",
-              excessLabel: "Unsold inventory",
+              kicker: "PRECISION DEMAND FORECASTING",
+              kickerTone: "var(--crimson)",
+              excessWidth: 22,
+              excessLabel: "UNSOLD INVENTORY",
+              aria: "Precision demand forecasting aligning production closely with demand, leaving only a thin sliver of unsold inventory.",
               terms: ["landfills"],
             },
-          ].map((panel, p) => (
+          ].map((panel) => (
             <div key={panel.excessLabel}>
               <p className={BODY}>{panel.line}</p>
-              <figure aria-hidden className="mt-6">
-                {p === 1 && (
-                  <div className={`${MICRO} mb-3 text-[var(--crimson)]`}>
-                    Precision demand forecasting
-                  </div>
-                )}
-                {p === 0 && (
-                  <div className={`${MICRO} mb-3 text-[var(--champagne)]`}>
-                    Manufacturing
-                  </div>
-                )}
-                <div className="grid grid-cols-[6.5rem_1fr] items-center gap-x-3 gap-y-2">
-                  <span className={`${MICRO} text-[var(--charcoal-light)]/60`}>
-                    Production
-                  </span>
-                  <div className="flex h-5 w-full">
-                    <span
-                      className="block h-full bg-[var(--charcoal)]/30"
-                      style={{ width: "54%" }}
-                    />
-                    <span
-                      className="block h-full border border-[var(--crimson)] bg-[repeating-linear-gradient(135deg,var(--crimson)_0_2px,transparent_2px_7px)] opacity-80"
-                      style={{ width: panel.excess }}
-                    />
-                  </div>
-                  <span className={`${MICRO} text-[var(--charcoal-light)]/60`}>
-                    Demand
-                  </span>
-                  <div className="flex h-5 w-full">
-                    <span
-                      className="block h-full bg-[var(--charcoal)]/30"
-                      style={{ width: "54%" }}
-                    />
-                  </div>
-                </div>
-                <div className={`${MICRO} mt-3 text-right text-[var(--crimson)]`}>
-                  {panel.excessLabel}
-                </div>
+              <figure className="mt-6 w-full">
+                <svg
+                  role="img"
+                  aria-label={panel.aria}
+                  viewBox="0 0 400 124"
+                  className="w-full"
+                  fill="none"
+                >
+                  <title>{panel.aria}</title>
+                  <text
+                    {...SVG_LABEL}
+                    x="16"
+                    y="20"
+                    fill={panel.kickerTone}
+                  >
+                    {panel.kicker}
+                  </text>
+                  <text
+                    {...SVG_LABEL}
+                    x="16"
+                    y="52"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.6"
+                  >
+                    PRODUCTION
+                  </text>
+                  <rect
+                    x="116"
+                    y="38"
+                    width="148"
+                    height="18"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.3"
+                  />
+                  <rect
+                    x="264"
+                    y="38"
+                    width={panel.excessWidth}
+                    height="18"
+                    fill="var(--crimson)"
+                    fillOpacity="0.22"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.5"
+                  />
+                  <text
+                    {...SVG_LABEL}
+                    x="16"
+                    y="82"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.6"
+                  >
+                    DEMAND
+                  </text>
+                  <rect
+                    x="116"
+                    y="68"
+                    width="148"
+                    height="18"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.3"
+                  />
+                  <text
+                    {...SVG_LABEL}
+                    x={264 + panel.excessWidth}
+                    y="108"
+                    textAnchor="end"
+                    fill="var(--crimson)"
+                  >
+                    {panel.excessLabel}
+                  </text>
+                </svg>
               </figure>
               <Terms items={panel.terms} />
             </div>
@@ -3664,15 +4434,17 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Spoilage"
-              right="Flow of perishable goods"
-              strikeLeft
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+            <p className={`${DISPLAY} max-w-4xl`}>
               In the food and beverage industry, AI tracking algorithms minimize
               spoilage by optimizing the flow of perishable goods.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Spoilage"
+                right="Flow of perishable goods"
+                strikeLeft
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -3704,15 +4476,21 @@ export default function Week05OperationsSupplyChain() {
             specific operational recommendations.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 130"
+            role="img"
+            aria-label="Multiple input streams converging into an opaque charcoal deep learning block that emits a single crimson operational recommendation without showing internal logic."
+            viewBox="0 0 800 142"
             className="mt-7 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Multiple input streams converging into an opaque charcoal deep
+              learning block that emits a single crimson operational
+              recommendation without showing internal logic.
+            </title>
             {[20, 50, 80, 110].map((y) => (
               <path
                 key={y}
-                d={`M0 ${y} C 150 ${y}, 200 65, 310 65`}
+                d={`M24 ${y} C 160 ${y}, 210 65, 310 65`}
                 stroke="var(--charcoal)"
                 strokeOpacity="0.25"
               />
@@ -3728,20 +4506,20 @@ export default function Week05OperationsSupplyChain() {
             <text
               {...SVG_LABEL}
               x="400"
-              y="126"
+              y="128"
               textAnchor="middle"
               fill="var(--charcoal)"
               fillOpacity="0.6"
             >
               DEEP LEARNING MODELS
             </text>
-            <path d="M490 65H570" stroke="var(--charcoal)" strokeOpacity="0.45" />
+            <path d="M490 65H576" stroke="var(--charcoal)" strokeOpacity="0.45" />
             <path
-              d="M563 60l7 5l-7 5"
+              d="M569 60l7 5l-7 5"
               stroke="var(--charcoal)"
               strokeOpacity="0.6"
             />
-            <rect x="580" y="57" width="16" height="16" fill="var(--crimson)" />
+            <rect x="578" y="57" width="16" height="16" fill="var(--crimson)" />
             <text
               {...SVG_LABEL}
               x="608"
@@ -3775,15 +4553,24 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Explainable AI techniques are critical for building trust between
+              human operators and algorithmic systems.
+            </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 70"
-              className="w-full"
+              role="img"
+              aria-label="Crimson explainable AI and trust bridge connecting human operators on the left to algorithmic systems on the right."
+              viewBox="0 0 800 84"
+              className="mt-6 w-full"
               fill="none"
             >
+              <title>
+                Crimson explainable AI and trust bridge connecting human
+                operators on the left to algorithmic systems on the right.
+              </title>
               <circle
-                cx="60"
-                cy="30"
+                cx="84"
+                cy="34"
                 r="10"
                 fill="var(--surface)"
                 stroke="var(--charcoal)"
@@ -3792,16 +4579,17 @@ export default function Week05OperationsSupplyChain() {
               />
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="64"
+                x="84"
+                y="66"
+                textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.6"
+                fillOpacity="0.65"
               >
                 HUMAN OPERATORS
               </text>
               <rect
-                x="730"
-                y="20"
+                x="706"
+                y="24"
                 width="20"
                 height="20"
                 fill="var(--charcoal)"
@@ -3809,29 +4597,25 @@ export default function Week05OperationsSupplyChain() {
               />
               <text
                 {...SVG_LABEL}
-                x="800"
-                y="64"
-                textAnchor="end"
+                x="716"
+                y="66"
+                textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.6"
+                fillOpacity="0.65"
               >
                 ALGORITHMIC SYSTEMS
               </text>
-              <path d="M76 30H724" stroke="var(--crimson)" strokeWidth="2" />
+              <path d="M94 34H706" stroke="var(--crimson)" strokeWidth="2" />
               <text
                 {...SVG_LABEL}
                 x="400"
-                y="18"
+                y="20"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
                 EXPLAINABLE AI | TRUST
               </text>
             </svg>
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
-              Explainable AI techniques are critical for building trust between
-              human operators and algorithmic systems.
-            </p>
           </div>
         </div>
       </Slide>
@@ -3857,14 +4641,19 @@ export default function Week05OperationsSupplyChain() {
             integrate easily with modern AI platforms.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 60"
+            role="img"
+            aria-label="Decades-old ERP systems separated from modern AI platforms by a broken dashed link marked with a crimson cross."
+            viewBox="0 0 800 72"
             className="mt-6 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Decades-old ERP systems separated from modern AI platforms by a
+              broken dashed link marked with a crimson cross.
+            </title>
             <rect
-              x="1"
-              y="8"
+              x="16"
+              y="14"
               width="230"
               height="44"
               stroke="var(--charcoal)"
@@ -3872,8 +4661,8 @@ export default function Week05OperationsSupplyChain() {
             />
             <text
               {...SVG_LABEL}
-              x="116"
-              y="34"
+              x="131"
+              y="40"
               textAnchor="middle"
               fill="var(--charcoal)"
               fillOpacity="0.7"
@@ -3881,8 +4670,8 @@ export default function Week05OperationsSupplyChain() {
               DECADES-OLD ERP SYSTEMS
             </text>
             <rect
-              x="569"
-              y="8"
+              x="554"
+              y="14"
               width="230"
               height="44"
               stroke="var(--charcoal)"
@@ -3890,8 +4679,8 @@ export default function Week05OperationsSupplyChain() {
             />
             <text
               {...SVG_LABEL}
-              x="684"
-              y="34"
+              x="669"
+              y="40"
               textAnchor="middle"
               fill="var(--charcoal)"
               fillOpacity="0.7"
@@ -3899,13 +4688,13 @@ export default function Week05OperationsSupplyChain() {
               MODERN AI PLATFORMS
             </text>
             <path
-              d="M240 30H370M430 30H560"
+              d="M246 36H376M424 36H554"
               stroke="var(--charcoal)"
               strokeOpacity="0.35"
               strokeDasharray="4 4"
             />
             <path
-              d="M390 20l20 20M410 20l-20 20"
+              d="M390 26l20 20M410 26l-20 20"
               stroke="var(--crimson)"
               strokeWidth="2"
             />
@@ -3918,104 +4707,154 @@ export default function Week05OperationsSupplyChain() {
               Master data management is a prerequisite for AI, requiring massive
               efforts to clean and standardize supply chain records.
             </p>
-            <div
-              aria-hidden
-              className="mt-6 grid max-w-3xl grid-cols-[1fr_auto_1fr] items-center gap-6"
+            <svg
+              role="img"
+              aria-label="Fragmented, misaligned supply chain records on the left transformed into clean and standardized tabular rows on the right."
+              viewBox="0 0 800 124"
+              className="mt-6 w-full max-w-4xl"
+              fill="none"
             >
-              <div className="space-y-2">
-                {[
-                  [8, 62],
-                  [0, 40],
-                  [22, 70],
-                  [4, 30],
-                  [14, 55],
-                ].map(([offset, width], i) => (
-                  <span
-                    key={i}
-                    className="block h-2 bg-[var(--charcoal)]/25"
-                    style={{ marginLeft: `${offset}%`, width: `${width}%` }}
-                  />
-                ))}
-              </div>
-              <span className="font-serif text-3xl font-light text-[var(--crimson)]">
-                →
-              </span>
-              <div className="space-y-2">
-                {[0, 1, 2, 3, 4].map((i) => (
-                  <span
-                    key={i}
-                    className="flex h-2 gap-1"
-                  >
-                    <span className="block h-full w-1/4 bg-[var(--crimson)]/70" />
-                    <span className="block h-full w-1/2 bg-[var(--charcoal)]/25" />
-                    <span className="block h-full w-1/4 bg-[var(--charcoal)]/15" />
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div
-              aria-hidden
-              className="mt-3 grid max-w-3xl grid-cols-[1fr_auto_1fr] gap-6"
-            >
-              <span className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-                Supply chain records
-              </span>
-              <span className="w-[1.5ch]" />
-              <span className={`${MICRO} text-[var(--crimson)]`}>
-                Clean and standardize
-              </span>
-            </div>
+              <title>
+                Fragmented, misaligned supply chain records on the left
+                transformed into clean and standardized tabular rows on the
+                right.
+              </title>
+              {[
+                [24, 190],
+                [0, 128],
+                [64, 210],
+                [14, 96],
+                [42, 172],
+              ].map(([offset, width], i) => (
+                <rect
+                  key={i}
+                  x={16 + offset}
+                  y={16 + i * 15}
+                  width={width}
+                  height="7"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.25"
+                />
+              ))}
+              <path
+                d="M356 50H424"
+                stroke="var(--crimson)"
+                strokeWidth="2"
+              />
+              <path
+                d="M416 44l8 6l-8 6"
+                stroke="var(--crimson)"
+                strokeWidth="2"
+              />
+              {[0, 1, 2, 3, 4].map((i) => {
+                const y = 16 + i * 15;
+                return (
+                  <g key={i}>
+                    <rect
+                      x="468"
+                      y={y}
+                      width="72"
+                      height="7"
+                      fill="var(--crimson)"
+                      fillOpacity="0.75"
+                    />
+                    <rect
+                      x="546"
+                      y={y}
+                      width="148"
+                      height="7"
+                      fill="var(--charcoal)"
+                      fillOpacity="0.25"
+                    />
+                    <rect
+                      x="700"
+                      y={y}
+                      width="84"
+                      height="7"
+                      fill="var(--charcoal)"
+                      fillOpacity="0.15"
+                    />
+                  </g>
+                );
+              })}
+              <text
+                {...SVG_LABEL}
+                x="16"
+                y="108"
+                fill="var(--charcoal)"
+                fillOpacity="0.6"
+              >
+                SUPPLY CHAIN RECORDS
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="468"
+                y="108"
+                fill="var(--crimson)"
+              >
+                CLEAN AND STANDARDIZE
+              </text>
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Successful implementations often require a middleware layer to
+              bridge the gap between legacy databases and cloud-based AI.
+            </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 60"
-              className="w-full"
+              role="img"
+              aria-label="A crimson middleware layer bridging legacy databases on the left and cloud-based AI on the right."
+              viewBox="0 0 800 72"
+              className="mt-6 w-full"
               fill="none"
             >
+              <title>
+                A crimson middleware layer bridging legacy databases on the left
+                and cloud-based AI on the right.
+              </title>
               <rect
-                x="1"
-                y="8"
-                width="230"
+                x="16"
+                y="14"
+                width="220"
                 height="44"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.5"
               />
               <text
                 {...SVG_LABEL}
-                x="116"
-                y="34"
+                x="126"
+                y="40"
                 textAnchor="middle"
                 fill="var(--charcoal)"
                 fillOpacity="0.7"
               >
                 LEGACY DATABASES
               </text>
-              <rect x="285" y="8" width="230" height="44" fill="var(--crimson)" />
+              <rect x="290" y="14" width="220" height="44" fill="var(--crimson)" />
               <text
                 {...SVG_LABEL}
                 x="400"
-                y="34"
+                y="40"
                 textAnchor="middle"
                 fill="var(--surface)"
               >
                 MIDDLEWARE LAYER
               </text>
               <rect
-                x="569"
-                y="8"
-                width="230"
+                x="564"
+                y="14"
+                width="220"
                 height="44"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.5"
               />
               <text
                 {...SVG_LABEL}
-                x="684"
-                y="34"
+                x="674"
+                y="40"
                 textAnchor="middle"
                 fill="var(--charcoal)"
                 fillOpacity="0.7"
@@ -4023,15 +4862,11 @@ export default function Week05OperationsSupplyChain() {
                 CLOUD-BASED AI
               </text>
               <path
-                d="M231 30H285M515 30H569"
+                d="M236 36H290M510 36H564"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
             </svg>
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
-              Successful implementations often require a middleware layer to
-              bridge the gap between legacy databases and cloud-based AI.
-            </p>
           </div>
         </div>
       </Slide>
@@ -4052,18 +4887,29 @@ export default function Week05OperationsSupplyChain() {
               As supply chains become more interconnected and automated, their
               vulnerability to cyberattacks increases exponentially.
             </p>
-            <figure aria-hidden className="w-full">
-              <svg viewBox="0 0 360 190" className="w-full" fill="none">
+            <figure className="w-full">
+              <svg
+                role="img"
+                aria-label="Exponentially rising crimson curve showing vulnerability increasing as supply chains become more interconnected and automated."
+                viewBox="0 0 400 200"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Exponentially rising crimson curve showing vulnerability
+                  increasing as supply chains become more interconnected and
+                  automated.
+                </title>
                 <path
-                  d="M20 20V160H350"
+                  d="M28 28V160H380"
                   stroke="var(--charcoal)"
                   strokeOpacity="0.35"
                 />
                 <path
-                  d={Array.from({ length: 34 })
+                  d={Array.from({ length: 36 })
                     .map((_, i) => {
-                      const x = 20 + i * 10;
-                      const y = 158 - 3 * (Math.exp((i / 33) * 3.8) - 1);
+                      const x = 28 + i * 10;
+                      const y = 158 - 3 * (Math.exp((i / 35) * 3.8) - 1);
                       return `${i === 0 ? "M" : "L"}${x} ${y.toFixed(1)}`;
                     })
                     .join("")}
@@ -4072,15 +4918,15 @@ export default function Week05OperationsSupplyChain() {
                 />
                 <text
                   {...SVG_LABEL}
-                  x="30"
-                  y="14"
+                  x="40"
+                  y="22"
                   fill="var(--crimson)"
                 >
                   VULNERABILITY
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="350"
+                  x="380"
                   y="182"
                   textAnchor="end"
                   fill="var(--charcoal)"
@@ -4100,20 +4946,25 @@ export default function Week05OperationsSupplyChain() {
               prevent supply chain ransomware attacks.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 90"
+              role="img"
+              aria-label="Steady network traffic waveform with a sharp crimson burst circled as anomalous network traffic."
+              viewBox="0 0 800 112"
               className="mt-6 w-full max-w-5xl"
               fill="none"
             >
-              <path d="M0 56H800" stroke="var(--charcoal)" strokeOpacity="0.15" />
-              {Array.from({ length: 100 }).map((_, i) => {
-                const x = 4 + i * 8;
-                const burst = i >= 58 && i <= 62;
-                const h = burst ? 22 + ((i * 5) % 3) * 6 : 3 + ((i * 7) % 5);
+              <title>
+                Steady network traffic waveform with a sharp crimson burst
+                circled as anomalous network traffic.
+              </title>
+              <path d="M24 58H776" stroke="var(--charcoal)" strokeOpacity="0.15" />
+              {Array.from({ length: 95 }).map((_, i) => {
+                const x = 24 + i * 8;
+                const burst = i >= 56 && i <= 60;
+                const h = burst ? 20 + ((i * 5) % 3) * 5 : 3 + ((i * 7) % 5);
                 return (
                   <path
                     key={i}
-                    d={`M${x} ${56 - h}V${56 + h}`}
+                    d={`M${x} ${58 - h}V${58 + h}`}
                     stroke={burst ? "var(--crimson)" : "var(--charcoal)"}
                     strokeOpacity={burst ? 1 : 0.35}
                     strokeWidth={burst ? 2 : 1}
@@ -4121,16 +4972,16 @@ export default function Week05OperationsSupplyChain() {
                 );
               })}
               <circle
-                cx="484"
-                cy="56"
-                r="34"
+                cx="488"
+                cy="58"
+                r="32"
                 stroke="var(--crimson)"
                 strokeDasharray="3 3"
               />
               <text
                 {...SVG_LABEL}
-                x="530"
-                y="16"
+                x="532"
+                y="24"
                 fill="var(--crimson)"
               >
                 ANOMALOUS NETWORK TRAFFIC
@@ -4141,28 +4992,37 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              However, the AI models themselves can be targeted by adversarial
+              attacks designed to manipulate forecasting or routing data.
+            </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 110"
-              className="w-full"
+              role="img"
+              aria-label="Adversarial attacks striking the AI models block and distorting downstream forecasting and routing data."
+              viewBox="0 0 800 116"
+              className="mt-6 w-full"
               fill="none"
             >
-              <text {...SVG_LABEL} x="0" y="59" fill="var(--crimson)">
+              <title>
+                Adversarial attacks striking the AI models block and distorting
+                downstream forecasting and routing data.
+              </title>
+              <text {...SVG_LABEL} x="16" y="61" fill="var(--crimson)">
                 ADVERSARIAL ATTACKS
               </text>
               <path
-                d="M170 55H300"
+                d="M188 58H308"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
               <path
-                d="M292 49l8 6l-8 6"
+                d="M300 52l8 6l-8 6"
                 stroke="var(--crimson)"
                 strokeWidth="2"
               />
               <rect
                 x="310"
-                y="25"
+                y="28"
                 width="160"
                 height="60"
                 stroke="var(--crimson)"
@@ -4171,7 +5031,7 @@ export default function Week05OperationsSupplyChain() {
               <text
                 {...SVG_LABEL}
                 x="390"
-                y="59"
+                y="62"
                 textAnchor="middle"
                 fill="var(--charcoal)"
                 fillOpacity="0.75"
@@ -4179,12 +5039,12 @@ export default function Week05OperationsSupplyChain() {
                 AI MODELS
               </text>
               {[
-                { y: 28, label: "FORECASTING" },
-                { y: 82, label: "ROUTING DATA" },
+                { y: 30, label: "FORECASTING" },
+                { y: 86, label: "ROUTING DATA" },
               ].map((o) => (
                 <g key={o.label}>
                   <path
-                    d={`M470 55 C 520 55, 540 ${o.y}, 590 ${o.y}`}
+                    d={`M470 58 C 520 58, 540 ${o.y}, 590 ${o.y}`}
                     stroke="var(--crimson)"
                     strokeOpacity="0.6"
                     strokeDasharray="4 4"
@@ -4201,10 +5061,6 @@ export default function Week05OperationsSupplyChain() {
                 </g>
               ))}
             </svg>
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
-              However, the AI models themselves can be targeted by adversarial
-              attacks designed to manipulate forecasting or routing data.
-            </p>
           </div>
         </div>
 
@@ -4223,15 +5079,17 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-10 w-full max-w-5xl">
-            <Split1
-              left="Manual planner"
-              right="Algorithm manager"
-              strikeLeft
-            />
-            <p className={`${LEAD} mt-6 max-w-4xl`}>
+            <p className={`${LEAD} max-w-4xl`}>
               The role of the supply chain professional is shifting from manual
               planner to algorithm manager.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Manual planner"
+                right="Algorithm manager"
+                strikeLeft
+              />
+            </div>
           </div>
         </div>
 
@@ -4255,24 +5113,24 @@ export default function Week05OperationsSupplyChain() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Change management is often a larger barrier to AI success than the
+              underlying technology itself.
+            </p>
             <div
               aria-hidden
-              className="flex flex-wrap items-center gap-x-8 gap-y-3"
+              className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-3"
             >
-              <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--crimson)]">
+              <span className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--crimson)]">
                 change management
               </span>
               <span className="font-serif text-4xl font-light text-[var(--charcoal)]/35">
                 &gt;
               </span>
-              <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--charcoal-light)]/45">
+              <span className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/45">
                 underlying technology
               </span>
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Change management is often a larger barrier to AI success than the
-              underlying technology itself.
-            </p>
           </div>
         </div>
       </Slide>
@@ -4299,29 +5157,6 @@ export default function Week05OperationsSupplyChain() {
           Conclusion: The Autonomous Supply Chain
         </Head1>
 
-        <div className="w-full">
-          <ol
-            aria-hidden
-            className="mt-11 grid w-full max-w-3xl grid-cols-2 gap-y-5 sm:grid-cols-4"
-          >
-            {["forecast", "procure", "manufacture", "deliver"].map(
-              (step, i) => (
-                <li
-                  key={step}
-                  className="relative border-t-2 border-[var(--crimson)]/70 pr-3 pt-3"
-                >
-                  <span className={`${MICRO} block text-[var(--champagne)]`}>
-                    {pad(i + 1)}
-                  </span>
-                  <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.08em] text-[var(--charcoal-light)]/70">
-                    {step}
-                  </span>
-                </li>
-              ),
-            )}
-          </ol>
-        </div>
-
         <ol className="mt-10 w-full max-w-4xl">
           {[
             "The ultimate goal is a self-driving supply chain that can forecast, procure, manufacture, and deliver with minimal human intervention.",
@@ -4333,9 +5168,35 @@ export default function Week05OperationsSupplyChain() {
                 <span className={`${MICRO} pt-3 text-[var(--crimson)]`}>
                   {pad(i + 1)}
                 </span>
-                <p className="font-serif text-xl font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
-                  {line}
-                </p>
+                <div>
+                  <p className="font-serif text-xl font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+                    {line}
+                  </p>
+                  {i === 0 && (
+                    <ol
+                      aria-hidden
+                      className="mt-6 grid w-full max-w-3xl grid-cols-2 gap-y-5 sm:grid-cols-4"
+                    >
+                      {["forecast", "procure", "manufacture", "deliver"].map(
+                        (step, k) => (
+                          <li
+                            key={step}
+                            className="relative border-t-2 border-[var(--crimson)]/70 pr-3 pt-3"
+                          >
+                            <span
+                              className={`${MICRO} block text-[var(--champagne)]`}
+                            >
+                              {pad(k + 1)}
+                            </span>
+                            <span className="mt-1 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
+                              {step}
+                            </span>
+                          </li>
+                        ),
+                      )}
+                    </ol>
+                  )}
+                </div>
               </div>
             </li>
           ))}

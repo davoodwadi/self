@@ -43,10 +43,10 @@ export default function InlineQuiz({
     <div className="mx-auto w-full max-w-3xl text-left">
       {/* Masthead */}
       <div className="flex items-baseline justify-between border-b border-[var(--charcoal)]/12 pb-4">
-        <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--champagne)]">
+        <span className="font-serif text-[0.9375rem] italic text-[var(--champagne)]">
           Knowledge Check
         </span>
-        <span className="font-sans text-[10px] uppercase tracking-[0.18em] text-[var(--charcoal-light)]/70">
+        <span className="font-serif text-[0.875rem] italic text-[var(--charcoal-light)]/70">
           {hasSubmitted ? (isCorrect ? "Correct" : "Incorrect") : "Unanswered"}
         </span>
       </div>
@@ -107,13 +107,13 @@ export default function InlineQuiz({
                 }
               >
                 <span
-                  className={`w-4 flex-shrink-0 font-sans text-[11px] font-semibold tracking-[0.14em] transition-colors duration-150 ${letter}`}
+                  className={`w-4 flex-shrink-0 font-serif text-[0.9375rem] font-medium transition-colors duration-150 ${letter}`}
                   style={answerColour}
                 >
                   {optionLetters[index]}
                 </span>
                 <span
-                  className={`text-base font-light leading-relaxed transition-colors duration-150 md:text-lg ${body}`}
+                  className={`font-serif text-base leading-relaxed transition-colors duration-150 md:text-lg ${body}`}
                   style={answerColour}
                 >
                   {option.option_text}
@@ -130,7 +130,7 @@ export default function InlineQuiz({
           type="button"
           onClick={() => selectedOption !== null && setHasSubmitted(true)}
           disabled={selectedOption === null || hasSubmitted}
-          className="border-b border-[var(--charcoal)] pb-1.5 font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--charcoal)] transition-colors duration-150 hover:border-[var(--crimson)] hover:text-[var(--crimson)] disabled:cursor-not-allowed disabled:border-[var(--charcoal)]/15 disabled:text-[var(--charcoal-light)]/70"
+          className="border-b border-[var(--charcoal)] pb-1.5 font-serif text-[0.9375rem] font-medium text-[var(--charcoal)] transition-colors duration-150 hover:border-[var(--crimson)] hover:text-[var(--crimson)] disabled:cursor-not-allowed disabled:border-[var(--charcoal)]/15 disabled:text-[var(--charcoal-light)]/70"
         >
           {hasSubmitted ? "Submitted" : "Submit"}
         </button>
@@ -139,7 +139,7 @@ export default function InlineQuiz({
           <button
             type="button"
             onClick={() => setShowHint(!showHint)}
-            className="font-sans text-[11px] uppercase tracking-[0.22em] text-[var(--charcoal-light)]/70 transition-colors duration-150 hover:text-[var(--champagne)]"
+            className="font-serif text-[0.9375rem] italic text-[var(--charcoal-light)]/70 transition-colors duration-150 hover:text-[var(--champagne)]"
           >
             {showHint ? "Hide hint" : "Hint"}
           </button>
@@ -153,7 +153,7 @@ export default function InlineQuiz({
       <div className="mt-6 grid border-t border-[var(--charcoal)]/12 pt-5">
         {/* idle */}
         <div aria-hidden={stage !== "idle"} className={layer(stage === "idle")}>
-          <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-[var(--charcoal-light)]/70">
+          <p className="font-serif text-[0.9375rem] italic text-[var(--charcoal-light)]/70">
             Choose an answer to continue
           </p>
         </div>
@@ -161,7 +161,7 @@ export default function InlineQuiz({
         {/* hint */}
         {quizData.hint && (
           <div aria-hidden={stage !== "hint"} className={layer(stage === "hint")}>
-            <span className="mb-3 block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--champagne)]">
+            <span className="mb-3 block font-serif text-[0.9375rem] italic text-[var(--champagne)]">
               Hint
             </span>
             <p className="font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)]">
@@ -187,10 +187,10 @@ export default function InlineQuiz({
               <div className="grid gap-5 md:grid-cols-2 md:gap-8">
               {!isAnswer && option.option_explanation && (
                 <div className="border-l border-[var(--crimson)] pl-6">
-                  <span className="mb-2.5 block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--crimson)]">
+                  <span className="mb-2.5 block font-serif text-[0.9375rem] italic text-[var(--crimson)]">
                     Your answer
                   </span>
-                  <p className="text-[0.875rem] font-light leading-[1.6] text-[var(--charcoal-light)]">
+                  <p className="font-serif text-[0.9375rem] leading-[1.6] text-[var(--charcoal-light)]">
                     {option.option_explanation}
                   </p>
                 </div>
@@ -199,14 +199,14 @@ export default function InlineQuiz({
               {answer.option_explanation && (
                 <div className="border-l pl-6" style={{ borderColor: CORRECT }}>
                   <span
-                    className="mb-2.5 block font-sans text-[10px] font-semibold uppercase tracking-[0.22em]"
+                    className="mb-2.5 block font-serif text-[0.9375rem] italic"
                     style={{ color: CORRECT }}
                   >
                     {isAnswer
                       ? "Correct"
                       : `Answer: ${optionLetters[quizData.correct_answer_index]}`}
                   </span>
-                  <p className="text-[0.875rem] font-light leading-[1.6] text-[var(--charcoal-light)]">
+                  <p className="font-serif text-[0.9375rem] leading-[1.6] text-[var(--charcoal-light)]">
                     {answer.option_explanation}
                   </p>
                 </div>
@@ -215,7 +215,7 @@ export default function InlineQuiz({
               </div>
 
               {quizData.correct_answer_citation && (
-                <p className="mt-5 font-sans text-[11px] uppercase tracking-[0.18em] text-[var(--charcoal-light)]/70">
+                <p className="mt-5 font-serif text-[0.875rem] italic text-[var(--charcoal-light)]/70">
                   {quizData.correct_answer_citation}
                 </p>
               )}

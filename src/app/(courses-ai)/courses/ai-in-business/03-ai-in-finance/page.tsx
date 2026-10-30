@@ -70,7 +70,7 @@ export default function Week03Finance() {
         </div>
 
         <div>
-          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-black leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
+          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-semibold leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
             Applications of AI in{" "}
             <span className="text-[var(--crimson)]">Finance</span>
           </h1>
@@ -147,95 +147,190 @@ export default function Week03Finance() {
               Digital channels, machine-readable records, and high-frequency
               workflows create dense operational signals.
             </p>
-            <figure aria-hidden className="mt-6 w-full">
-              <svg viewBox="0 0 800 104" className="w-full" fill="none">
+            <figure className="mt-6 w-full">
+              <svg
+                role="img"
+                aria-label="Digital channels, machine-readable records, and high-frequency workflows generating dense operational signals."
+                viewBox="0 0 800 116"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Digital channels, machine-readable records, and high-frequency
+                  workflows generating dense operational signals.
+                </title>
                 {[
                   "DIGITAL CHANNELS",
                   "MACHINE-READABLE RECORDS",
                   "HIGH-FREQUENCY WORKFLOWS",
                 ].map((lane, l) => {
-                  const y = 18 + l * 34;
+                  const y = 24 + l * 34;
                   return (
                     <g key={lane}>
                       <text
                         {...SVG_LABEL}
-                        x="0"
-                        y={y + 3}
+                        x="4"
+                        y={y + 3.5}
                         fill="var(--charcoal)"
-                        fillOpacity="0.5"
+                        fillOpacity="0.6"
                       >
                         {lane}
                       </text>
                       <path
-                        d={`M236 ${y}H790`}
+                        d={`M228 ${y}H594`}
                         stroke="var(--charcoal)"
-                        strokeOpacity="0.1"
+                        strokeOpacity="0.14"
                       />
-                      {Array.from({ length: 70 }).map((_, i) => {
-                        const x = 240 + i * 7.8 + ((i * 7 + l * 3) % 4);
-                        const h = 2 + (((i * 37 + l * 11) ^ (i * 5)) % 9);
+                      {Array.from({ length: 46 }).map((_, i) => {
+                        const x = +(232 + i * 7.8).toFixed(2);
+                        const h = [4, 8, 3, 9, 5, 7, 4, 6][(i + l * 3) % 8];
+                        const active = i >= 38;
                         return (
                           <path
                             key={i}
-                            d={`M${x.toFixed(1)} ${y - h}v${h * 2}`}
-                            stroke="var(--charcoal)"
-                            strokeOpacity="0.35"
+                            d={`M${x} ${y - h}v${h * 2}`}
+                            stroke={active ? "var(--crimson)" : "var(--charcoal)"}
+                            strokeOpacity={active ? "0.8" : "0.35"}
+                            strokeWidth={active ? "1.25" : "1"}
                           />
                         );
                       })}
+                      <path
+                        d={`M594 ${y} C 614 ${y}, 618 58, 636 58`}
+                        stroke="var(--crimson)"
+                        strokeOpacity="0.55"
+                      />
                     </g>
                   );
                 })}
+                <path
+                  d="M636 58H656"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.5"
+                />
+                <path
+                  d="M648 53L656 58L648 63"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.5"
+                />
+                <rect
+                  x="656"
+                  y="30"
+                  width="140"
+                  height="56"
+                  fill="var(--crimson)"
+                  fillOpacity="0.06"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.25"
+                />
+                <text
+                  {...SVG_LABEL}
+                  x="726"
+                  y="54"
+                  textAnchor="middle"
+                  fill="var(--crimson)"
+                >
+                  DENSE OPERATIONAL
+                </text>
+                <text
+                  {...SVG_LABEL}
+                  x="726"
+                  y="69"
+                  textAnchor="middle"
+                  fill="var(--crimson)"
+                >
+                  SIGNALS
+                </text>
               </svg>
             </figure>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_20rem] md:gap-12">
+          <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_24rem] md:gap-12">
             <p className={DISPLAY}>
               Small model errors can scale quickly because financial systems
               are linked to capital, compliance, and customer trust.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 320 140"
-              className="w-full max-w-[20rem]"
+              role="img"
+              aria-label="Small model errors scaling quickly across financial systems linked to capital, compliance, and customer trust."
+              viewBox="0 0 400 148"
+              className="w-full max-w-[24rem]"
               fill="none"
             >
+              <title>
+                Small model errors scaling quickly across financial systems
+                linked to capital, compliance, and customer trust.
+              </title>
+              <path
+                d="M62 74 C 124 74, 156 28, 224 28 V120 C 156 120, 124 74, 62 74 Z"
+                fill="var(--crimson)"
+                fillOpacity="0.05"
+              />
               {[
-                { y: 24, label: "CAPITAL" },
-                { y: 70, label: "COMPLIANCE" },
-                { y: 116, label: "CUSTOMER TRUST" },
+                { y: 28, label: "CAPITAL" },
+                { y: 74, label: "COMPLIANCE" },
+                { y: 120, label: "CUSTOMER TRUST" },
               ].map((n) => (
                 <g key={n.label}>
                   <path
-                    d={`M30 70L166 ${n.y}`}
+                    d={`M62 74 C 124 74, 156 ${n.y}, 224 ${n.y}`}
                     stroke="var(--crimson)"
-                    strokeOpacity="0.5"
+                    strokeOpacity="0.65"
+                    strokeWidth="1.25"
+                  />
+                  <path
+                    d={`M217 ${n.y - 4}L224 ${n.y}L217 ${n.y + 4}`}
+                    stroke="var(--crimson)"
+                    strokeWidth="1.25"
                   />
                   <circle
-                    cx="172"
+                    cx="234"
                     cy={n.y}
-                    r="5"
-                    fill="var(--surface)"
-                    stroke="var(--charcoal)"
-                    strokeOpacity="0.55"
+                    r="8"
+                    fill="var(--crimson)"
+                    fillOpacity="0.12"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.5"
                   />
                   <text
                     {...SVG_LABEL}
-                    x="186"
-                    y={n.y + 3}
+                    x="252"
+                    y={n.y + 3.5}
                     fill="var(--charcoal)"
-                    fillOpacity="0.65"
+                    fillOpacity="0.75"
                   >
                     {n.label}
                   </text>
                 </g>
               ))}
-              <circle cx="26" cy="70" r="3" fill="var(--crimson)" />
-              <text {...SVG_LABEL} x="0" y="134" fill="var(--crimson)">
-                SMALL MODEL ERRORS
+              <circle
+                cx="54"
+                cy="74"
+                r="8"
+                stroke="var(--crimson)"
+                strokeOpacity="0.4"
+                strokeDasharray="2 2"
+              />
+              <circle cx="54" cy="74" r="3.5" fill="var(--crimson)" />
+              <text
+                {...SVG_LABEL}
+                x="54"
+                y="102"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                SMALL MODEL
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="54"
+                y="116"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                ERRORS
               </text>
             </svg>
           </div>
@@ -263,25 +358,40 @@ export default function Week03Finance() {
             transform information into decisions.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 196"
+            role="img"
+            aria-label="Front office, risk, operations, compliance, and finance each transforming incoming information into decisions."
+            viewBox="0 0 800 204"
             className="mt-7 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Front office, risk, operations, compliance, and finance each
+              transforming incoming information into decisions.
+            </title>
             <text
               {...SVG_LABEL}
-              x="260"
-              y="12"
+              x="84"
+              y="14"
               textAnchor="middle"
               fill="var(--charcoal)"
-              fillOpacity="0.45"
+              fillOpacity="0.5"
             >
               INFORMATION
             </text>
             <text
               {...SVG_LABEL}
-              x="720"
-              y="12"
+              x="400"
+              y="14"
+              textAnchor="middle"
+              fill="var(--charcoal)"
+              fillOpacity="0.5"
+            >
+              TRANSFORM
+            </text>
+            <text
+              {...SVG_LABEL}
+              x="706"
+              y="14"
               textAnchor="middle"
               fill="var(--crimson)"
             >
@@ -289,40 +399,67 @@ export default function Week03Finance() {
             </text>
             {["FRONT OFFICE", "RISK", "OPERATIONS", "COMPLIANCE", "FINANCE"].map(
               (fn, i) => {
-                const y = 40 + i * 36;
+                const y = 44 + i * 36;
                 return (
                   <g key={fn}>
-                    <text
-                      {...SVG_LABEL}
-                      x="0"
-                      y={y + 3}
-                      fill="var(--charcoal)"
-                      fillOpacity="0.6"
-                    >
-                      {fn}
-                    </text>
-                    <circle
-                      cx="260"
-                      cy={y}
-                      r="4"
+                    {/* Incoming information signals */}
+                    {[0, 1, 2].map((d) => (
+                      <circle
+                        key={d}
+                        cx={52 + d * 16}
+                        cy={y}
+                        r="3"
+                        fill="var(--charcoal)"
+                        fillOpacity={0.25 + d * 0.15}
+                      />
+                    ))}
+                    <path
+                      d={`M100 ${y}H296`}
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.25"
+                    />
+                    <path
+                      d={`M289 ${y - 4}L296 ${y}L289 ${y + 4}`}
                       stroke="var(--charcoal)"
                       strokeOpacity="0.45"
                     />
-                    <path
-                      d={`M268 ${y}H706`}
+                    {/* Function node */}
+                    <rect
+                      x="296"
+                      y={y - 13}
+                      width="208"
+                      height="26"
+                      fill="var(--surface)"
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.18"
+                      strokeOpacity="0.35"
+                    />
+                    <text
+                      {...SVG_LABEL}
+                      x="400"
+                      y={y + 3.5}
+                      textAnchor="middle"
+                      fill="var(--charcoal)"
+                      fillOpacity="0.8"
+                    >
+                      {fn}
+                    </text>
+                    {/* Transformed into decision */}
+                    <path
+                      d={`M504 ${y}H698`}
+                      stroke="var(--crimson)"
+                      strokeOpacity="0.55"
+                      strokeWidth="1.25"
                     />
                     <path
-                      d={`M699 ${y - 4}l7 4l-7 4`}
-                      stroke="var(--charcoal)"
-                      strokeOpacity="0.4"
+                      d={`M691 ${y - 4}L698 ${y}L691 ${y + 4}`}
+                      stroke="var(--crimson)"
+                      strokeWidth="1.25"
                     />
                     <rect
-                      x="714"
-                      y={y - 6}
-                      width="12"
-                      height="12"
+                      x="698"
+                      y={y - 7}
+                      width="14"
+                      height="14"
                       fill="var(--crimson)"
                     />
                   </g>
@@ -348,14 +485,16 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Strengthens judgment"
-              right="Unacceptable opacity"
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+            <p className={`${DISPLAY} max-w-4xl`}>
               The strategic question is where machine assistance strengthens
               judgment and where it creates unacceptable opacity.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Strengthens judgment"
+                right="Unacceptable opacity"
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -438,40 +577,35 @@ export default function Week03Finance() {
             Structured records such as transactions, bureau files, contracts,
             claims, and market data remain foundational.
           </p>
-          <div aria-hidden className="mt-7 w-full max-w-5xl overflow-x-auto">
-            <div className="min-w-[34rem] border-t border-[var(--charcoal)]/30">
-              <div className="grid grid-cols-5 border-b border-[var(--charcoal)]/15">
-                {[
-                  "transactions",
-                  "bureau files",
-                  "contracts",
-                  "claims",
-                  "market data",
-                ].map((col) => (
-                  <span
-                    key={col}
-                    className={`${TAG} px-3 py-2.5 text-[var(--charcoal-light)]/75`}
-                  >
-                    {col}
-                  </span>
-                ))}
-              </div>
-              {[0, 1, 2].map((r) => (
-                <div
-                  key={r}
-                  className="grid grid-cols-5 border-b border-[var(--charcoal)]/8"
-                >
-                  {[0, 1, 2, 3, 4].map((c) => (
-                    <span key={c} className="px-3 py-3">
-                      <span
-                        className="block h-1.5 bg-[var(--charcoal)]/15"
-                        style={{ width: `${40 + ((r * 3 + c * 5) % 6) * 10}%` }}
-                      />
-                    </span>
+          <div
+            aria-hidden
+            className="mt-7 grid w-full max-w-5xl grid-cols-2 border-l border-t border-[var(--charcoal)]/20 sm:grid-cols-3 md:grid-cols-5"
+          >
+            {[
+              "transactions",
+              "bureau files",
+              "contracts",
+              "claims",
+              "market data",
+            ].map((col, c) => (
+              <div
+                key={col}
+                className="border-b border-r border-[var(--charcoal)]/15 px-3.5 py-3"
+              >
+                <span className={`${TAG} block text-[var(--charcoal-light)]/80`}>
+                  {col}
+                </span>
+                <div className="mt-3 space-y-2">
+                  {[0, 1, 2].map((r) => (
+                    <span
+                      key={r}
+                      className="block h-1.5 bg-[var(--charcoal)]/15"
+                      style={{ width: `${45 + ((r * 3 + c * 5) % 5) * 11}%` }}
+                    />
                   ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -481,122 +615,223 @@ export default function Week03Finance() {
               Text, voice, document images, and relationship graphs expand what
               firms can monitor and automate.
             </p>
-            <div
-              aria-hidden
-              className="mt-7 grid max-w-4xl grid-cols-2 gap-6 md:grid-cols-4"
-            >
-              {[
-                {
-                  label: "text",
-                  glyph: [52, 44, 58, 30].map((w, i) => (
-                    <path
-                      key={i}
-                      d={`M4 ${7 + i * 9}H${w}`}
-                      stroke="var(--charcoal)"
-                      strokeOpacity="0.5"
-                    />
-                  )),
-                },
-                {
-                  label: "voice",
-                  glyph: [6, 14, 24, 10, 30, 18, 8, 26, 32, 12, 20, 6, 16, 8].map(
-                    (h, i) => (
+            <figure className="mt-7 w-full max-w-5xl">
+              <svg
+                role="img"
+                aria-label="Text, voice, document images, and relationship graphs expanding what financial firms can monitor and automate."
+                viewBox="0 0 800 132"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Text, voice, document images, and relationship graphs
+                  expanding what financial firms can monitor and automate.
+                </title>
+                {/* Panel 1: Text */}
+                <rect
+                  x="8"
+                  y="14"
+                  width="124"
+                  height="74"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.25"
+                />
+                {[88, 72, 96, 56].map((w, i) => (
+                  <path
+                    key={i}
+                    d={`M22 ${30 + i * 13}H${22 + w}`}
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.55"
+                    strokeWidth="1.25"
+                  />
+                ))}
+                <text
+                  {...SVG_LABEL}
+                  x="70"
+                  y="112"
+                  textAnchor="middle"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.7"
+                >
+                  TEXT
+                </text>
+
+                {/* Panel 2: Voice */}
+                <rect
+                  x="152"
+                  y="14"
+                  width="124"
+                  height="74"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.25"
+                />
+                {[8, 16, 28, 12, 36, 22, 10, 30, 38, 14, 24, 10, 18, 8].map(
+                  (h, i) => {
+                    const x = +(168 + i * 6.8).toFixed(2);
+                    return (
                       <path
                         key={i}
-                        d={`M${4 + i * 4.2} ${20 - h / 2}v${h}`}
-                        stroke="var(--crimson)"
-                        strokeOpacity="0.75"
-                      />
-                    ),
-                  ),
-                },
-                {
-                  label: "document images",
-                  glyph: (
-                    <>
-                      <rect
-                        x="14"
-                        y="2"
-                        width="36"
-                        height="36"
+                        d={`M${x} ${51 - h / 2}v${h}`}
                         stroke="var(--charcoal)"
-                        strokeOpacity="0.5"
+                        strokeOpacity="0.6"
+                        strokeWidth="1.25"
                       />
-                      <rect
-                        x="19"
-                        y="7"
-                        width="26"
-                        height="14"
-                        fill="var(--charcoal)"
-                        fillOpacity="0.2"
-                      />
-                      <path
-                        d="M19 27H45M19 32H37"
-                        stroke="var(--charcoal)"
-                        strokeOpacity="0.4"
-                      />
-                    </>
-                  ),
-                },
-                {
-                  label: "relationship graphs",
-                  glyph: (
-                    <>
-                      <path
-                        d="M8 30L28 8L54 22L34 34L8 30M28 8L34 34"
-                        stroke="var(--charcoal)"
-                        strokeOpacity="0.4"
-                      />
-                      {[
-                        [8, 30],
-                        [28, 8],
-                        [54, 22],
-                        [34, 34],
-                      ].map(([x, y]) => (
-                        <circle
-                          key={`${x}-${y}`}
-                          cx={x}
-                          cy={y}
-                          r="3.5"
-                          fill="var(--surface)"
-                          stroke="var(--charcoal)"
-                          strokeOpacity="0.6"
-                        />
-                      ))}
-                    </>
-                  ),
-                },
-              ].map((form) => (
-                <div
-                  key={form.label}
-                  className="border-t border-[var(--charcoal)]/15 pt-4"
+                    );
+                  },
+                )}
+                <text
+                  {...SVG_LABEL}
+                  x="214"
+                  y="112"
+                  textAnchor="middle"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.7"
                 >
-                  <svg viewBox="0 0 64 40" className="h-10 w-16" fill="none">
-                    {form.glyph}
-                  </svg>
-                  <span
-                    className={`${TAG} mt-3 block text-[var(--charcoal-light)]/70`}
-                  >
-                    {form.label}
-                  </span>
-                </div>
-              ))}
-            </div>
+                  VOICE
+                </text>
+
+                {/* Panel 3: Document images */}
+                <rect
+                  x="296"
+                  y="14"
+                  width="124"
+                  height="74"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.25"
+                />
+                <rect
+                  x="332"
+                  y="24"
+                  width="52"
+                  height="54"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.55"
+                />
+                <rect
+                  x="339"
+                  y="31"
+                  width="38"
+                  height="20"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.18"
+                />
+                <path
+                  d="M339 59H377M339 67H366"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.45"
+                />
+                <text
+                  {...SVG_LABEL}
+                  x="358"
+                  y="112"
+                  textAnchor="middle"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.7"
+                >
+                  DOCUMENT IMAGES
+                </text>
+
+                {/* Panel 4: Relationship graphs */}
+                <rect
+                  x="440"
+                  y="14"
+                  width="124"
+                  height="74"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.25"
+                />
+                <path
+                  d="M466 66L496 30L538 48L510 70L466 66M496 30L510 70"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.45"
+                />
+                {[
+                  [466, 66],
+                  [496, 30],
+                  [538, 48],
+                  [510, 70],
+                ].map(([x, y]) => (
+                  <circle
+                    key={`${x}-${y}`}
+                    cx={x}
+                    cy={y}
+                    r="4"
+                    fill="var(--surface)"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.65"
+                  />
+                ))}
+                <text
+                  {...SVG_LABEL}
+                  x="502"
+                  y="112"
+                  textAnchor="middle"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.7"
+                >
+                  RELATIONSHIP GRAPHS
+                </text>
+
+                {/* Expansion arrow into Monitor and Automate */}
+                <path
+                  d="M578 24H590V78H578M590 51H632"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.5"
+                />
+                <path
+                  d="M625 46L632 51L625 56"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.5"
+                />
+                <rect
+                  x="632"
+                  y="20"
+                  width="160"
+                  height="62"
+                  fill="var(--crimson)"
+                  fillOpacity="0.06"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.5"
+                />
+                <text
+                  {...SVG_LABEL}
+                  x="712"
+                  y="47"
+                  textAnchor="middle"
+                  fill="var(--crimson)"
+                >
+                  MONITOR AND
+                </text>
+                <text
+                  {...SVG_LABEL}
+                  x="712"
+                  y="63"
+                  textAnchor="middle"
+                  fill="var(--crimson)"
+                >
+                  AUTOMATE
+                </text>
+              </svg>
+            </figure>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-14 w-full max-w-5xl">
+          <div className="mt-12 w-full max-w-5xl">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              In finance, data lineage, timestamp quality, and entity
+              resolution often matter more than model novelty.
+            </p>
             <div
               aria-hidden
-              className="flex flex-wrap items-center gap-x-8 gap-y-3"
+              className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-3"
             >
               <div className="space-y-1.5">
                 {["data lineage", "timestamp quality", "entity resolution"].map(
                   (d) => (
                     <div
                       key={d}
-                      className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--crimson)]"
+                      className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--crimson)]"
                     >
                       {d}
                     </div>
@@ -606,14 +841,10 @@ export default function Week03Finance() {
               <span className="font-serif text-4xl font-light text-[var(--charcoal)]/35">
                 &gt;
               </span>
-              <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--charcoal-light)]/45">
+              <span className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/45">
                 model novelty
               </span>
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              In finance, data lineage, timestamp quality, and entity
-              resolution often matter more than model novelty.
-            </p>
           </div>
         </div>
       </Slide>
@@ -720,60 +951,82 @@ export default function Week03Finance() {
           </div>
           <div>
             <svg
-              aria-hidden
-              viewBox="0 0 400 104"
+              role="img"
+              aria-label="High-value financial decisions branching into legal, reputational, and capital consequences."
+              viewBox="0 0 400 120"
               className="w-full"
               fill="none"
             >
+              <title>
+                High-value financial decisions branching into legal,
+                reputational, and capital consequences.
+              </title>
               <text
                 {...SVG_LABEL}
-                x="290"
-                y="12"
+                x="284"
+                y="16"
                 fill="var(--charcoal)"
-                fillOpacity="0.45"
+                fillOpacity="0.5"
               >
                 CONSEQUENCES
               </text>
               {[
-                { y: 36, label: "LEGAL" },
-                { y: 66, label: "REPUTATIONAL" },
-                { y: 96, label: "CAPITAL" },
+                { y: 40, label: "LEGAL" },
+                { y: 72, label: "REPUTATIONAL" },
+                { y: 104, label: "CAPITAL" },
               ].map((c) => (
                 <g key={c.label}>
                   <path
-                    d={`M62 66 C 150 66, 180 ${c.y}, 270 ${c.y}`}
+                    d={`M108 72 C 168 72, 196 ${c.y}, 264 ${c.y}`}
                     stroke="var(--crimson)"
-                    strokeOpacity="0.45"
+                    strokeOpacity="0.6"
+                    strokeWidth="1.25"
                   />
-                  <circle cx="276" cy={c.y} r="4" fill="var(--crimson)" />
+                  <path
+                    d={`M257 ${c.y - 4}L264 ${c.y}L257 ${c.y + 4}`}
+                    stroke="var(--crimson)"
+                    strokeWidth="1.25"
+                  />
+                  <circle cx="270" cy={c.y} r="5" fill="var(--crimson)" />
                   <text
                     {...SVG_LABEL}
-                    x="290"
-                    y={c.y + 3}
+                    x="284"
+                    y={c.y + 3.5}
                     fill="var(--charcoal)"
-                    fillOpacity="0.7"
+                    fillOpacity="0.75"
                   >
                     {c.label}
                   </text>
                 </g>
               ))}
               <rect
-                x="44"
-                y="58"
-                width="16"
-                height="16"
-                fill="var(--charcoal)"
-                fillOpacity="0.75"
+                x="12"
+                y="52"
+                width="96"
+                height="40"
+                fill="var(--surface)"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.55"
               />
               <text
                 {...SVG_LABEL}
-                x="52"
-                y="96"
+                x="60"
+                y="69"
                 textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.5"
+                fillOpacity="0.75"
               >
-                DECISION
+                HIGH-VALUE
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="60"
+                y="83"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.75"
+              >
+                DECISIONS
               </text>
             </svg>
           </div>
@@ -791,7 +1044,7 @@ export default function Week03Finance() {
             </p>
             <ul
               aria-hidden
-              className="mt-5 grid gap-3 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/70 md:grid-cols-3"
+              className="mt-5 grid gap-3 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70 md:grid-cols-3"
             >
               {[
                 "exceptions are novel",
@@ -812,55 +1065,78 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <svg aria-hidden viewBox="0 0 800 76" className="w-full" fill="none">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Effective design clarifies escalation paths instead of assuming
+              automation is the objective.
+            </p>
+            <svg
+              role="img"
+              aria-label="Effective design clarifying crimson escalation paths branching from a routine automation lane."
+              viewBox="0 0 800 96"
+              className="mt-7 w-full"
+              fill="none"
+            >
+              <title>
+                Effective design clarifying crimson escalation paths branching
+                from a routine automation lane.
+              </title>
               <circle
                 cx="30"
-                cy="52"
+                cy="64"
                 r="6"
                 fill="var(--charcoal)"
-                fillOpacity="0.55"
+                fillOpacity="0.6"
               />
               <path
-                d="M42 52H740"
+                d="M36 64H746"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.28"
+                strokeOpacity="0.3"
+                strokeDasharray="4 4"
               />
               <path
-                d="M360 52 C 410 52, 420 18, 480 18 H740"
+                d="M739 59L746 64L739 69"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.45"
+              />
+              <circle
+                cx="752"
+                cy="64"
+                r="6"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.55"
+              />
+              <circle cx="340" cy="64" r="4" fill="var(--crimson)" />
+              <path
+                d="M340 64 C 396 64, 412 28, 468 28 H744"
                 stroke="var(--crimson)"
                 strokeWidth="1.5"
               />
-              <circle cx="752" cy="18" r="7" fill="var(--crimson)" />
-              <circle
-                cx="752"
-                cy="52"
-                r="5"
-                stroke="var(--charcoal)"
-                strokeOpacity="0.5"
+              <path
+                d="M737 23L744 28L737 33"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
               />
+              <circle cx="752" cy="28" r="7" fill="var(--crimson)" />
               <text
                 {...SVG_LABEL}
-                x="100"
-                y="72"
+                x="180"
+                y="84"
+                textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.5"
+                fillOpacity="0.55"
               >
                 AUTOMATION
               </text>
               <text
                 {...SVG_LABEL}
-                x="600"
-                y="10"
+                x="596"
+                y="18"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
                 ESCALATION PATHS
               </text>
             </svg>
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
-              Effective design clarifies escalation paths instead of assuming
-              automation is the objective.
-            </p>
           </div>
         </div>
       </Slide>
@@ -894,11 +1170,8 @@ export default function Week03Finance() {
           </p>
         </div>
 
-        <div
-          aria-hidden
-          className="mt-9 grid w-full max-w-5xl gap-10 md:grid-cols-[16rem_1fr] md:gap-0"
-        >
-          <div className="md:pr-12">
+        <div className="mt-9 grid w-full max-w-5xl gap-10 md:grid-cols-[16rem_1fr] md:gap-0">
+          <div aria-hidden className="md:pr-12">
             <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
               Traditional scorecards
             </div>
@@ -921,54 +1194,67 @@ export default function Week03Finance() {
             <div className={`${MICRO} text-[var(--crimson)]`}>
               Modern scoring systems
             </div>
-            <svg viewBox="0 0 320 120" className="mt-4 w-full" fill="none">
+            <svg
+              role="img"
+              aria-label="Modern scoring systems incorporating behavioral, transactional, and application-level patterns."
+              viewBox="0 0 400 124"
+              className="mt-4 w-full"
+              fill="none"
+            >
+              <title>
+                Modern scoring systems incorporating behavioral, transactional,
+                and application-level patterns.
+              </title>
               {["BEHAVIORAL", "TRANSACTIONAL", "APPLICATION-LEVEL"].map(
                 (layer, l) => {
-                  const y = 20 + l * 40;
+                  const y = 22 + l * 40;
                   return (
                     <g key={layer}>
                       <text
                         {...SVG_LABEL}
-                        x="0"
-                        y={y + 3}
+                        x="4"
+                        y={y + 3.5}
                         fill="var(--charcoal)"
-                        fillOpacity="0.6"
+                        fillOpacity="0.65"
                       >
                         {layer}
                       </text>
                       {l === 0 && (
                         <path
-                          d={`M160 ${y}${[0, 1, 2, 3, 4, 5]
+                          d={`M180 ${y}${[0, 1, 2, 3, 4, 5, 6]
                             .map(
                               (k) =>
-                                ` Q ${173 + k * 26} ${y + (k % 2 ? 10 : -10)}, ${186 + k * 26} ${y}`,
+                                ` Q ${194 + k * 28} ${y + (k % 2 ? 11 : -11)}, ${208 + k * 28} ${y}`,
                             )
                             .join("")}`}
                           stroke="var(--crimson)"
-                          strokeWidth="1.25"
+                          strokeWidth="1.5"
                         />
                       )}
                       {l === 1 &&
-                        Array.from({ length: 22 }).map((_, i) => {
-                          const h = 3 + ((i * 29) % 7);
+                        Array.from({ length: 26 }).map((_, i) => {
+                          const x = +(180 + i * 7.8).toFixed(2);
+                          const h = [4, 8, 3, 9, 5, 7, 4, 6][i % 8];
                           return (
                             <path
                               key={i}
-                              d={`M${162 + i * 7} ${y - h}v${h * 2}`}
+                              d={`M${x} ${y - h}v${h * 2}`}
                               stroke="var(--crimson)"
-                              strokeOpacity="0.7"
+                              strokeOpacity="0.75"
+                              strokeWidth="1.25"
                             />
                           );
                         })}
                       {l === 2 &&
-                        Array.from({ length: 8 }).map((_, i) => {
+                        Array.from({ length: 9 }).map((_, i) => {
                           const h = 6 + ((i * 5) % 9);
+                          const yTop = +(y - h / 2).toFixed(2);
                           return (
                             <rect
                               key={i}
-                              x={160 + i * 20}
-                              y={y - h / 2}
-                              width="14"
+                              x={180 + i * 22}
+                              y={yTop}
+                              width="15"
                               height={h}
                               fill="var(--crimson)"
                               fillOpacity="0.45"
@@ -989,23 +1275,34 @@ export default function Week03Finance() {
               Their value lies in better rank ordering of risk and better
               segmentation of approve, review, and decline decisions.
             </p>
-            <figure aria-hidden className="mt-6">
-              <svg viewBox="0 0 800 108" className="w-full" fill="none">
+            <figure className="mt-6">
+              <svg
+                role="img"
+                aria-label="Rank ordering of risk across applicants segmented into approve, review, and decline decisions."
+                viewBox="0 0 800 112"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Rank ordering of risk across applicants segmented into
+                  approve, review, and decline decisions.
+                </title>
                 {[
-                  { a: 20, b: 380, label: "APPROVE", tone: 0.5 },
-                  { a: 400, b: 580, label: "REVIEW", tone: 0.7 },
-                  { a: 600, b: 780, label: "DECLINE", tone: 1 },
+                  { a: 24, b: 376, label: "APPROVE", tone: 0.55 },
+                  { a: 404, b: 576, label: "REVIEW", tone: 0.75 },
+                  { a: 604, b: 776, label: "DECLINE", tone: 1 },
                 ].map((s, i) => (
                   <g key={s.label}>
                     <path
-                      d={`M${s.a} 36V28H${s.b}V36`}
+                      d={`M${s.a} 38V28H${s.b}V38`}
                       stroke={i === 2 ? "var(--crimson)" : "var(--charcoal)"}
-                      strokeOpacity={i === 2 ? 1 : 0.35}
+                      strokeOpacity={i === 2 ? 1 : 0.4}
+                      strokeWidth={i === 2 ? "1.5" : "1"}
                     />
                     <text
                       {...SVG_LABEL}
                       x={(s.a + s.b) / 2}
-                      y="16"
+                      y="18"
                       textAnchor="middle"
                       fill={i === 2 ? "var(--crimson)" : "var(--charcoal)"}
                       fillOpacity={s.tone}
@@ -1014,34 +1311,54 @@ export default function Week03Finance() {
                     </text>
                   </g>
                 ))}
-                {Array.from({ length: 26 }).map((_, i) => {
-                  const x = 30 + i * 29.2;
-                  const zone = x < 390 ? 0 : x < 590 ? 1 : 2;
-                  return (
-                    <circle
-                      key={i}
-                      cx={x.toFixed(1)}
-                      cy="58"
-                      r="4"
-                      fill={zone === 2 ? "var(--crimson)" : "var(--charcoal)"}
-                      fillOpacity={zone === 0 ? 0.25 : zone === 1 ? 0.5 : 1}
-                    />
-                  );
-                })}
                 <path
-                  d="M20 80H780"
+                  d="M390 28V76M590 28V76"
                   stroke="var(--charcoal)"
                   strokeOpacity="0.25"
+                  strokeDasharray="3 3"
+                />
+                {[
+                  ...Array.from({ length: 12 }, (_, i) => ({
+                    x: +(36 + i * 29.82).toFixed(2),
+                    zone: 0,
+                  })),
+                  ...Array.from({ length: 6 }, (_, i) => ({
+                    x: +(416 + i * 29.6).toFixed(2),
+                    zone: 1,
+                  })),
+                  ...Array.from({ length: 6 }, (_, i) => ({
+                    x: +(616 + i * 29.6).toFixed(2),
+                    zone: 2,
+                  })),
+                ].map((d) => (
+                  <circle
+                    key={d.x}
+                    cx={d.x}
+                    cy="58"
+                    r="4.5"
+                    fill={d.zone === 2 ? "var(--crimson)" : "var(--charcoal)"}
+                    fillOpacity={d.zone === 0 ? 0.25 : d.zone === 1 ? 0.55 : 0.9}
+                  />
+                ))}
+                <path
+                  d="M24 82H776"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.3"
+                />
+                <path
+                  d="M769 77L776 82L769 87"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.45"
                 />
                 <text
                   {...SVG_LABEL}
-                  x="780"
-                  y="100"
-                  textAnchor="end"
+                  x="400"
+                  y="102"
+                  textAnchor="middle"
                   fill="var(--charcoal)"
-                  fillOpacity="0.5"
+                  fillOpacity="0.55"
                 >
-                  RISK →
+                  RANK ORDERING OF RISK
                 </text>
               </svg>
             </figure>
@@ -1050,15 +1367,15 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <Steps
-              items={["explain", "govern", "operationalize"]}
-              cols="grid-cols-3"
-              className="max-w-2xl"
-            />
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
+            <p className={`${DISPLAY} max-w-4xl`}>
               More predictive power is useful only if the institution can
               explain, govern, and operationalize the result.
             </p>
+            <Steps
+              items={["explain", "govern", "operationalize"]}
+              cols="grid-cols-3"
+              className="mt-6 max-w-2xl"
+            />
           </div>
         </div>
       </Slide>
@@ -1076,7 +1393,7 @@ export default function Week03Finance() {
       >
         <Head1 eyebrow="Broader signals">Underwriting with Broader Signals</Head1>
 
-        <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_20rem] md:gap-14">
+        <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_24rem] md:gap-14">
           <div>
             <p className={BODY}>
               Lenders increasingly combine internal history, verified cash
@@ -1085,39 +1402,75 @@ export default function Week03Finance() {
           </div>
           <div>
             <svg
-              aria-hidden
-              viewBox="0 0 320 104"
-              className="w-full max-w-[20rem]"
+              role="img"
+              aria-label="Lenders combining internal history, verified cash flow, collateral information, and contextual business data."
+              viewBox="0 0 400 124"
+              className="w-full max-w-[24rem]"
               fill="none"
             >
+              <title>
+                Lenders combining internal history, verified cash flow,
+                collateral information, and contextual business data.
+              </title>
               {[
                 "INTERNAL HISTORY",
                 "VERIFIED CASH FLOW",
                 "COLLATERAL INFORMATION",
                 "CONTEXTUAL BUSINESS DATA",
               ].map((src, i) => {
-                const y = 12 + i * 26;
+                const y = 18 + i * 28;
                 return (
                   <g key={src}>
                     <text
                       {...SVG_LABEL}
-                      x="0"
-                      y={y + 3}
+                      x="200"
+                      y={y + 3.5}
+                      textAnchor="end"
                       fill="var(--charcoal)"
-                      fillOpacity="0.55"
+                      fillOpacity="0.65"
                     >
                       {src}
                     </text>
+                    <circle
+                      cx="210"
+                      cy={y}
+                      r="3"
+                      fill="var(--charcoal)"
+                      fillOpacity="0.45"
+                    />
                     <path
-                      d={`M220 ${y} C 250 ${y}, 256 51, 280 51`}
+                      d={`M213 ${y} C 244 ${y}, 252 60, 278 60`}
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.22"
+                      strokeOpacity="0.3"
                     />
                   </g>
                 );
               })}
-              <path d="M280 51h30" stroke="var(--crimson)" strokeWidth="1.5" />
-              <circle cx="313" cy="51" r="3" fill="var(--crimson)" />
+              <path d="M278 60H300" stroke="var(--crimson)" strokeWidth="1.5" />
+              <path
+                d="M293 55L300 60L293 65"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <rect
+                x="300"
+                y="40"
+                width="92"
+                height="40"
+                fill="var(--crimson)"
+                fillOpacity="0.06"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <text
+                {...SVG_LABEL}
+                x="346"
+                y="63.5"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                LENDERS
+              </text>
             </svg>
           </div>
         </div>
@@ -1150,7 +1503,15 @@ export default function Week03Finance() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 grid w-full max-w-5xl gap-8 md:grid-cols-[16rem_1fr] md:gap-12">
+          <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_18rem] md:gap-12">
+            <div className="border border-[var(--crimson)]/45 p-7 md:p-8">
+              <div className={`${MICRO} text-[var(--crimson)]`}>New inputs</div>
+              <p className={`${LEAD} mt-4`}>
+                New inputs also raise questions about relevance, stability, and
+                whether the model is learning structural disadvantage rather
+                than true risk.
+              </p>
+            </div>
             <ul aria-hidden className="border-t border-[var(--charcoal)]/15">
               {[
                 "relevance",
@@ -1172,14 +1533,6 @@ export default function Week03Finance() {
                 </li>
               ))}
             </ul>
-            <div className="border border-[var(--crimson)]/45 p-7 md:p-8">
-              <div className={`${MICRO} text-[var(--crimson)]`}>New inputs</div>
-              <p className={`${LEAD} mt-4`}>
-                New inputs also raise questions about relevance, stability, and
-                whether the model is learning structural disadvantage rather
-                than true risk.
-              </p>
-            </div>
           </div>
         </div>
       </Slide>
@@ -1200,47 +1553,76 @@ export default function Week03Finance() {
             limits, pricing, covenants, and review intensity.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 84"
+            role="img"
+            aria-label="Credit decisions continuing after approval to set limits, pricing, covenants, and review intensity."
+            viewBox="0 0 800 96"
             className="mt-7 w-full max-w-5xl"
             fill="none"
           >
-            <path d="M40 30H720" stroke="var(--charcoal)" strokeOpacity="0.25" />
+            <title>
+              Credit decisions continuing after approval to set limits, pricing,
+              covenants, and review intensity.
+            </title>
             <circle
-              cx="40"
-              cy="30"
-              r="8"
-              fill="var(--charcoal)"
-              fillOpacity="0.7"
+              cx="68"
+              cy="44"
+              r="7"
+              fill="var(--surface)"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.65"
+              strokeWidth="1.5"
             />
             <text
               {...SVG_LABEL}
-              x="40"
-              y="66"
+              x="68"
+              y="78"
               textAnchor="middle"
               fill="var(--charcoal)"
-              fillOpacity="0.6"
+              fillOpacity="0.65"
             >
               APPROVAL
             </text>
             {[
-              { x: 220, label: "LIMITS" },
-              { x: 380, label: "PRICING" },
-              { x: 540, label: "COVENANTS" },
-              { x: 710, label: "REVIEW INTENSITY" },
+              [75, 227],
+              [243, 392],
+              [408, 557],
+              [573, 712],
+            ].map(([x1, x2]) => (
+              <g key={x1}>
+                <path
+                  d={`M${x1} 44H${x2}`}
+                  stroke="var(--crimson)"
+                  strokeOpacity="0.55"
+                  strokeWidth="1.25"
+                />
+                <path
+                  d={`M${x2 - 6} 40L${x2} 44L${x2 - 6} 48`}
+                  stroke="var(--crimson)"
+                  strokeWidth="1.25"
+                />
+              </g>
+            ))}
+            {[
+              { x: 235, label: "LIMITS" },
+              { x: 400, label: "PRICING" },
+              { x: 565, label: "COVENANTS" },
+              { x: 720, label: "REVIEW INTENSITY" },
             ].map((s) => (
               <g key={s.label}>
                 <rect
-                  x={s.x - 6}
-                  y="24"
-                  width="12"
-                  height="12"
+                  x={s.x - 8}
+                  y="36"
+                  width="16"
+                  height="16"
                   fill="var(--crimson)"
+                  fillOpacity="0.12"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.5"
                 />
                 <text
                   {...SVG_LABEL}
                   x={s.x}
-                  y="66"
+                  y="78"
                   textAnchor="middle"
                   fill="var(--crimson)"
                 >
@@ -1286,15 +1668,17 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Optimize | short-term margin"
-              right="Worsening | adverse selection or customer trust"
-              cols="grid-cols-[1fr_1.6fr]"
-            />
-            <p className={`${LEAD} mt-6 max-w-4xl`}>
+            <p className={`${LEAD} max-w-4xl`}>
               Poorly governed pricing models can optimize short-term margin
               while worsening adverse selection or customer trust.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Optimize | short-term margin"
+                right="Worsening | adverse selection or customer trust"
+                cols="grid-cols-[1fr_1.6fr]"
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -1316,49 +1700,62 @@ export default function Week03Finance() {
             formal default.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 112"
+            role="img"
+            aria-label="Portfolio models monitoring delinquency signals, payment behavior, sector weakness, covenant breaches, and utilization changes on a timeline before formal default."
+            viewBox="0 0 800 120"
             className="mt-7 w-full max-w-5xl"
             fill="none"
           >
-            <path d="M20 56H700" stroke="var(--charcoal)" strokeOpacity="0.25" />
+            <title>
+              Portfolio models monitoring delinquency signals, payment behavior,
+              sector weakness, covenant breaches, and utilization changes on a
+              timeline before formal default.
+            </title>
+            <path d="M24 58H716" stroke="var(--charcoal)" strokeOpacity="0.3" />
+            <path
+              d="M709 53L716 58L709 63"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.45"
+            />
             {[
               { x: 100, label: "DELINQUENCY SIGNALS", up: true },
-              { x: 240, label: "PAYMENT BEHAVIOR", up: false },
-              { x: 380, label: "SECTOR WEAKNESS", up: true },
-              { x: 500, label: "COVENANT BREACHES", up: false },
-              { x: 600, label: "UTILIZATION CHANGES", up: true },
+              { x: 228, label: "PAYMENT BEHAVIOR", up: false },
+              { x: 356, label: "SECTOR WEAKNESS", up: true },
+              { x: 484, label: "COVENANT BREACHES", up: false },
+              { x: 606, label: "UTILIZATION CHANGES", up: true },
             ].map((s) => (
               <g key={s.label}>
                 <path
-                  d={s.up ? `M${s.x} 36V56` : `M${s.x} 56V76`}
+                  d={s.up ? `M${s.x} 34V54` : `M${s.x} 62V82`}
                   stroke="var(--charcoal)"
                   strokeOpacity="0.45"
                 />
                 <circle
                   cx={s.x}
-                  cy="56"
-                  r="3.5"
-                  fill="var(--charcoal)"
-                  fillOpacity="0.6"
+                  cy="58"
+                  r="4"
+                  fill="var(--surface)"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.7"
+                  strokeWidth="1.25"
                 />
                 <text
                   {...SVG_LABEL}
                   x={s.x}
-                  y={s.up ? 26 : 94}
+                  y={s.up ? 24 : 98}
                   textAnchor="middle"
                   fill="var(--charcoal)"
-                  fillOpacity="0.6"
+                  fillOpacity="0.7"
                 >
                   {s.label}
                 </text>
               </g>
             ))}
-            <path d="M720 30V82" stroke="var(--crimson)" strokeWidth="3" />
+            <path d="M718 28V88" stroke="var(--crimson)" strokeWidth="3" />
             <text
               {...SVG_LABEL}
-              x="720"
-              y="104"
+              x="718"
+              y="108"
               textAnchor="middle"
               fill="var(--crimson)"
             >
@@ -1399,15 +1796,15 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <Steps
-              items={["clear playbooks", "authority to act"]}
-              cols="grid-cols-2"
-              className="max-w-md"
-            />
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
+            <p className={`${DISPLAY} max-w-4xl`}>
               Early warning is only valuable when response teams have clear
               playbooks and authority to act.
             </p>
+            <Steps
+              items={["clear playbooks", "authority to act"]}
+              cols="grid-cols-2"
+              className="mt-6 max-w-md"
+            />
           </div>
         </div>
       </Slide>
@@ -1466,48 +1863,85 @@ export default function Week03Finance() {
               balance recovery, customer outcome, and regulatory expectations.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 400 200"
+              role="img"
+              aria-label="The best treatment balancing recovery, customer outcome, and regulatory expectations at the center of a triangle."
+              viewBox="0 0 400 204"
               className="w-full"
               fill="none"
             >
+              <title>
+                The best treatment balancing recovery, customer outcome, and
+                regulatory expectations at the center of a triangle.
+              </title>
               <path
-                d="M200 26L50 172H350Z"
+                d="M200 30L56 168H344Z"
+                fill="var(--charcoal)"
+                fillOpacity="0.02"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.25"
+                strokeOpacity="0.28"
               />
               <path
-                d="M200 26L200 123M50 172L200 123M350 172L200 123"
+                d="M200 34V108M60 166L194 116M340 166L206 116"
                 stroke="var(--crimson)"
-                strokeOpacity="0.3"
+                strokeOpacity="0.45"
+                strokeDasharray="3 3"
               />
-              <circle cx="200" cy="123" r="5" fill="var(--crimson)" />
+              {[
+                [200, 30],
+                [56, 168],
+                [344, 168],
+              ].map(([cx, cy]) => (
+                <circle
+                  key={`${cx}-${cy}`}
+                  cx={cx}
+                  cy={cy}
+                  r="4"
+                  fill="var(--surface)"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.65"
+                />
+              ))}
+              <circle
+                cx="200"
+                cy="114"
+                r="6"
+                fill="var(--crimson)"
+              />
               <text
                 {...SVG_LABEL}
                 x="200"
-                y="14"
+                y="156"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                BEST TREATMENT
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="200"
+                y="16"
                 textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.6"
+                fillOpacity="0.7"
               >
                 RECOVERY
               </text>
               <text
                 {...SVG_LABEL}
-                x="10"
+                x="12"
                 y="192"
                 fill="var(--charcoal)"
-                fillOpacity="0.6"
+                fillOpacity="0.7"
               >
                 CUSTOMER OUTCOME
               </text>
               <text
                 {...SVG_LABEL}
-                x="390"
+                x="388"
                 y="192"
                 textAnchor="end"
                 fill="var(--charcoal)"
-                fillOpacity="0.6"
+                fillOpacity="0.7"
               >
                 REGULATORY EXPECTATIONS
               </text>
@@ -1517,9 +1951,13 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
+            <p className={`${BODY} max-w-4xl`}>
+              AI can improve prioritization, but firms still need policy
+              boundaries for hardship, vulnerability, and escalation.
+            </p>
             <div
               aria-hidden
-              className="grid max-w-4xl gap-6 md:grid-cols-[12rem_1fr] md:items-end"
+              className="mt-6 grid max-w-4xl gap-6 md:grid-cols-[12rem_1fr] md:items-end"
             >
               <div>
                 <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
@@ -1549,10 +1987,6 @@ export default function Week03Finance() {
                 </div>
               </div>
             </div>
-            <p className={`${BODY} mt-7 max-w-4xl`}>
-              AI can improve prioritization, but firms still need policy
-              boundaries for hardship, vulnerability, and escalation.
-            </p>
           </div>
         </div>
 
@@ -1645,15 +2079,15 @@ export default function Week03Finance() {
             <div className={`${MICRO} text-[var(--champagne)]`}>
               The core governance question
             </div>
-            <Terms
-              items={["segments", "outcomes", "decision contexts"]}
-              className="mt-3"
-            />
             <blockquote className={`${DISPLAY} mt-4`}>
               The core governance question is whether a model&apos;s
               performance is acceptable across segments, outcomes, and decision
               contexts.
             </blockquote>
+            <Terms
+              items={["segments", "outcomes", "decision contexts"]}
+              className="mt-4"
+            />
           </figure>
         </div>
 
@@ -1684,7 +2118,7 @@ export default function Week03Finance() {
           Fraud Detection as an Adversarial Problem
         </Head1>
 
-        <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_18rem] md:gap-14">
+        <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_24rem] md:gap-14">
           <div>
             <p className={BODY}>
               Fraud is adaptive: once a pattern is detected, attackers change
@@ -1696,47 +2130,81 @@ export default function Week03Finance() {
           </div>
           <div>
             <svg
-              aria-hidden
-              viewBox="0 0 280 150"
-              className="w-full max-w-[18rem]"
+              role="img"
+              aria-label="Adversarial loop where once a pattern is detected, attackers change their behavior."
+              viewBox="0 0 400 152"
+              className="w-full max-w-[24rem]"
               fill="none"
             >
-              <path
-                d="M70 25 A50 50 0 0 1 70 125"
+              <title>
+                Adversarial loop where once a pattern is detected, attackers
+                change their behavior.
+              </title>
+              <rect
+                x="104"
+                y="16"
+                width="192"
+                height="34"
+                fill="var(--surface)"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.35"
+                strokeOpacity="0.45"
               />
-              <path
-                d="M70 125 A50 50 0 0 1 70 25"
-                stroke="var(--crimson)"
-                strokeOpacity="0.6"
-              />
-              <path
-                d="M115 69l5 7l5 -7"
-                stroke="var(--charcoal)"
-                strokeOpacity="0.5"
-              />
-              <path d="M15 81l5 -7l5 7" stroke="var(--crimson)" />
-              <circle
-                cx="70"
-                cy="25"
-                r="6"
-                fill="var(--charcoal)"
-                fillOpacity="0.7"
-              />
-              <circle cx="70" cy="125" r="6" fill="var(--crimson)" />
               <text
                 {...SVG_LABEL}
-                x="136"
-                y="29"
+                x="200"
+                y="36.5"
+                textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.65"
+                fillOpacity="0.75"
               >
                 PATTERN DETECTED
               </text>
-              <text {...SVG_LABEL} x="136" y="129" fill="var(--crimson)">
+
+              <rect
+                x="104"
+                y="102"
+                width="192"
+                height="34"
+                fill="var(--crimson)"
+                fillOpacity="0.06"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                {...SVG_LABEL}
+                x="200"
+                y="122.5"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
                 ATTACKERS CHANGE
               </text>
+
+              {/* Right arc: Pattern detected -> Attackers change */}
+              <path
+                d="M296 33 C 352 33, 352 119, 296 119"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M303 114L296 119L303 124"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+
+              {/* Left arc: Attackers change -> Pattern detected */}
+              <path
+                d="M104 119 C 48 119, 48 33, 104 33"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.45"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M97 28L104 33L97 38"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.55"
+                strokeWidth="1.25"
+              />
             </svg>
           </div>
         </div>
@@ -1781,45 +2249,74 @@ export default function Week03Finance() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_20rem] md:gap-12">
+          <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_24rem] md:gap-12">
             <p className={DISPLAY}>
               Static rules remain useful, but they degrade quickly when
               adversaries learn the thresholds.
             </p>
-            <figure aria-hidden>
-              <svg viewBox="0 0 320 130" className="w-full" fill="none">
+            <figure>
+              <svg
+                role="img"
+                aria-label="Static rules remaining useful initially before degrading quickly once adversaries learn the thresholds."
+                viewBox="0 0 400 140"
+                className="w-full max-w-[24rem]"
+                fill="none"
+              >
+                <title>
+                  Static rules remaining useful initially before degrading
+                  quickly once adversaries learn the thresholds.
+                </title>
                 <path
-                  d="M24 8v100h280"
+                  d="M28 16V118H384"
                   stroke="var(--charcoal)"
                   strokeOpacity="0.25"
                 />
                 <path
-                  d="M24 24 C 70 24, 110 30, 150 62 C 190 94, 240 100, 300 102"
-                  stroke="var(--crimson)"
+                  d="M172 20V118"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.35"
+                  strokeDasharray="3 3"
+                />
+                <text
+                  {...SVG_LABEL}
+                  x="172"
+                  y="134"
+                  textAnchor="middle"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.6"
+                >
+                  LEARN THE THRESHOLDS
+                </text>
+                <path
+                  d="M28 38H172"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.65"
                   strokeWidth="1.5"
                 />
-                <text {...SVG_LABEL} x="34" y="16" fill="var(--crimson)">
-                  STATIC RULES
+                <path
+                  d="M172 38 C 204 38, 224 104, 372 108"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.75"
+                />
+                <circle cx="172" cy="38" r="4" fill="var(--crimson)" />
+                <text
+                  {...SVG_LABEL}
+                  x="100"
+                  y="28"
+                  textAnchor="middle"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.65"
+                >
+                  STATIC RULES | USEFUL
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="0"
-                  y="0"
-                  transform="translate(14 108) rotate(-90)"
-                  fill="var(--charcoal)"
-                  fillOpacity="0.45"
+                  x="308"
+                  y="64"
+                  textAnchor="middle"
+                  fill="var(--crimson)"
                 >
-                  USEFUL →
-                </text>
-                <text
-                  {...SVG_LABEL}
-                  x="304"
-                  y="124"
-                  textAnchor="end"
-                  fill="var(--charcoal)"
-                  fillOpacity="0.45"
-                >
-                  TIME →
+                  DEGRADE QUICKLY
                 </text>
               </svg>
             </figure>
@@ -1856,7 +2353,7 @@ export default function Week03Finance() {
                   (c) => (
                     <span
                       key={c}
-                      className="px-2 py-2 font-mono text-[9px] uppercase leading-snug tracking-[0.08em] text-[var(--charcoal-light)]/70"
+                      className="px-2 py-2 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70"
                     >
                       {c}
                     </span>
@@ -1915,7 +2412,11 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <div aria-hidden className="md:max-w-2xl">
+            <p className={`${LEAD} max-w-4xl`}>
+              The system is only as credible as its documentation, investigator
+              workflow, and escalation discipline.
+            </p>
+            <div aria-hidden className="mt-6 md:max-w-2xl">
               <div className="h-[3px] w-full bg-[var(--crimson)]" />
               <div className="grid grid-cols-3 gap-3">
                 {[
@@ -1936,10 +2437,6 @@ export default function Week03Finance() {
                 ))}
               </div>
             </div>
-            <p className={`${LEAD} mt-7 max-w-4xl`}>
-              The system is only as credible as its documentation, investigator
-              workflow, and escalation discipline.
-            </p>
           </div>
         </div>
       </Slide>
@@ -1997,70 +2494,88 @@ export default function Week03Finance() {
               Graph methods help connect shared addresses, phones,
               counterparties, and transaction paths into investigable networks.
             </p>
-            <div aria-hidden className="mt-6">
+            <div className="mt-6">
               <div className={`${MICRO} text-[var(--crimson)]`}>
                 Investigable networks
               </div>
-              <svg viewBox="0 28 520 142" className="mt-3 w-full" fill="none">
+              <svg
+                role="img"
+                aria-label="Graph methods connecting accounts, shell entities, synthetic identities, merchants, and devices through shared addresses and phones into investigable networks."
+                viewBox="0 0 400 184"
+                className="mt-3 w-full"
+                fill="none"
+              >
+                <title>
+                  Graph methods connecting accounts, shell entities, synthetic
+                  identities, merchants, and devices through shared addresses
+                  and phones into investigable networks.
+                </title>
                 {[
-                  [260, 60, 170, 40],
-                  [260, 60, 170, 100],
-                  [260, 60, 350, 60],
-                  [260, 60, 350, 140],
-                  [260, 140, 170, 100],
-                  [260, 140, 170, 160],
-                  [260, 140, 350, 140],
+                  [216, 62, 146, 36],
+                  [216, 62, 146, 92],
+                  [216, 62, 286, 62],
+                  [216, 122, 146, 92],
+                  [216, 122, 146, 148],
+                  [216, 122, 286, 122],
                 ].map(([x1, y1, x2, y2]) => (
                   <path
                     key={`${x1}-${y1}-${x2}-${y2}`}
                     d={`M${x1} ${y1}L${x2} ${y2}`}
                     stroke="var(--crimson)"
-                    strokeOpacity="0.45"
+                    strokeOpacity="0.55"
+                    strokeWidth="1.25"
                   />
                 ))}
                 {[
-                  { x: 170, y: 40, label: "ACCOUNT", side: "end" as const },
-                  { x: 170, y: 100, label: "SHELL ENTITY", side: "end" as const },
-                  { x: 170, y: 160, label: "SYNTHETIC IDENTITY", side: "end" as const },
-                  { x: 350, y: 60, label: "MERCHANT", side: "start" as const },
-                  { x: 350, y: 140, label: "DEVICE", side: "start" as const },
+                  { x: 146, y: 36, label: "ACCOUNTS", side: "end" as const },
+                  { x: 146, y: 92, label: "SHELL ENTITIES", side: "end" as const },
+                  { x: 146, y: 148, label: "SYNTHETIC IDENTITIES", side: "end" as const },
+                  { x: 286, y: 62, label: "MERCHANTS", side: "start" as const },
+                  { x: 286, y: 122, label: "DEVICES", side: "start" as const },
                 ].map((n) => (
                   <g key={n.label}>
                     <circle
                       cx={n.x}
                       cy={n.y}
-                      r="6"
+                      r="5.5"
                       fill="var(--surface)"
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.6"
+                      strokeOpacity="0.65"
+                      strokeWidth="1.25"
                     />
                     <text
                       {...SVG_LABEL}
-                      x={n.side === "end" ? n.x - 14 : n.x + 14}
-                      y={n.y + 3}
+                      x={n.side === "end" ? n.x - 12 : n.x + 12}
+                      y={n.y + 3.5}
                       textAnchor={n.side}
                       fill="var(--charcoal)"
-                      fillOpacity="0.65"
+                      fillOpacity="0.7"
                     >
                       {n.label}
                     </text>
                   </g>
                 ))}
                 {[
-                  { y: 60, label: "ADDRESS", ly: 44 },
-                  { y: 140, label: "PHONE", ly: 164 },
+                  { y: 62, label: "SHARED ADDRESSES", ly: 18, l1: 24, l2: 55 },
+                  { y: 122, label: "PHONES", ly: 172, l1: 129, l2: 158 },
                 ].map((s) => (
                   <g key={s.label}>
+                    <path
+                      d={`M216 ${s.l1}V${s.l2}`}
+                      stroke="var(--crimson)"
+                      strokeOpacity="0.4"
+                      strokeDasharray="2 2"
+                    />
                     <rect
-                      x="254"
-                      y={s.y - 6}
-                      width="12"
-                      height="12"
+                      x="209"
+                      y={s.y - 7}
+                      width="14"
+                      height="14"
                       fill="var(--crimson)"
                     />
                     <text
                       {...SVG_LABEL}
-                      x="260"
+                      x="216"
                       y={s.ly}
                       textAnchor="middle"
                       fill="var(--crimson)"
@@ -2076,18 +2591,32 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className={RULED}>
-            <svg aria-hidden viewBox="0 0 800 84" className="w-full" fill="none">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Entity resolution quality is a control issue because broken
+              links can hide risk and weak links can create noise.
+            </p>
+            <svg
+              role="img"
+              aria-label="Comparison showing how broken links between entities hide risk while weak links create noise."
+              viewBox="0 0 800 92"
+              className="mt-7 w-full"
+              fill="none"
+            >
+              <title>
+                Comparison showing how broken links between entities hide risk
+                while weak links create noise.
+              </title>
               {[
-                { y: 24, label: "BROKEN LINKS", result: "HIDE RISK", broken: true },
-                { y: 64, label: "WEAK LINKS", result: "CREATE NOISE", broken: false },
+                { y: 28, label: "BROKEN LINKS", result: "HIDE RISK", broken: true },
+                { y: 68, label: "WEAK LINKS", result: "CREATE NOISE", broken: false },
               ].map((row) => (
                 <g key={row.label}>
                   <text
                     {...SVG_LABEL}
-                    x="0"
-                    y={row.y + 3}
+                    x="4"
+                    y={row.y + 3.5}
                     fill={row.broken ? "var(--crimson)" : "var(--charcoal)"}
-                    fillOpacity={row.broken ? 1 : 0.55}
+                    fillOpacity={row.broken ? 1 : 0.65}
                   >
                     {row.label}
                   </text>
@@ -2096,7 +2625,7 @@ export default function Week03Finance() {
                       <path
                         d={`M176 ${row.y}H390M430 ${row.y}H644`}
                         stroke="var(--charcoal)"
-                        strokeOpacity="0.5"
+                        strokeOpacity="0.55"
                         strokeWidth="1.5"
                       />
                       <path
@@ -2110,7 +2639,8 @@ export default function Week03Finance() {
                       d={`M176 ${row.y}H644`}
                       stroke="var(--charcoal)"
                       strokeOpacity="0.45"
-                      strokeDasharray="1 5"
+                      strokeDasharray="2 5"
+                      strokeWidth="1.25"
                     />
                   )}
                   <circle
@@ -2119,7 +2649,7 @@ export default function Week03Finance() {
                     r="5"
                     fill="var(--surface)"
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.6"
+                    strokeOpacity="0.65"
                   />
                   <circle
                     cx="650"
@@ -2127,24 +2657,20 @@ export default function Week03Finance() {
                     r="5"
                     fill="var(--surface)"
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.6"
+                    strokeOpacity="0.65"
                   />
                   <text
                     {...SVG_LABEL}
-                    x="676"
-                    y={row.y + 3}
+                    x="674"
+                    y={row.y + 3.5}
                     fill={row.broken ? "var(--crimson)" : "var(--charcoal)"}
-                    fillOpacity={row.broken ? 1 : 0.55}
+                    fillOpacity={row.broken ? 1 : 0.65}
                   >
                     {row.result}
                   </text>
                 </g>
               ))}
             </svg>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Entity resolution quality is a control issue because broken
-              links can hide risk and weak links can create noise.
-            </p>
           </div>
         </div>
       </Slide>
@@ -2197,108 +2723,123 @@ export default function Week03Finance() {
                 <span className="absolute -top-[5px] left-0 h-3 w-3 bg-[var(--charcoal)]/40" />
                 <span className="absolute -top-[5px] right-0 h-3 w-3 bg-[var(--crimson)]" />
               </div>
-              <svg viewBox="0 0 20 16" className="mx-auto h-4 w-5">
-                <path d="M10 0L20 16H0Z" fill="var(--charcoal)" fillOpacity="0.4" />
-              </svg>
+              <span className="mx-auto block h-0 w-0 border-x-[9px] border-b-[14px] border-x-transparent border-b-[var(--charcoal)]/40" />
             </div>
           </div>
         </div>
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <figure aria-hidden className="max-w-3xl">
-              <svg viewBox="0 0 640 172" className="w-full" fill="none">
+            <p className={`${LEAD} max-w-4xl`}>
+              Some groups may be disproportionately affected when proxies for
+              unusual behavior overlap with non-standard but legitimate
+              financial lives.
+            </p>
+            <figure className="mt-6 max-w-4xl">
+              <svg
+                role="img"
+                aria-label="Venn diagram showing proxies for unusual behavior overlapping with non-standard but legitimate financial lives, disproportionately affecting some groups."
+                viewBox="0 0 800 184"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Venn diagram showing proxies for unusual behavior overlapping
+                  with non-standard but legitimate financial lives,
+                  disproportionately affecting some groups.
+                </title>
                 <defs>
                   <clipPath id="w3-proxy-circle">
-                    <circle cx="280" cy="84" r="64" />
+                    <circle cx="352" cy="80" r="64" />
                   </clipPath>
                 </defs>
                 <circle
-                  cx="360"
-                  cy="84"
+                  cx="448"
+                  cy="80"
                   r="64"
                   fill="var(--crimson)"
-                  fillOpacity="0.7"
+                  fillOpacity="0.22"
                   clipPath="url(#w3-proxy-circle)"
                 />
                 <circle
-                  cx="280"
-                  cy="84"
+                  cx="352"
+                  cy="80"
                   r="64"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.45"
+                  strokeOpacity="0.5"
+                  strokeWidth="1.25"
                 />
                 <circle
-                  cx="360"
-                  cy="84"
+                  cx="448"
+                  cy="80"
                   r="64"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.45"
+                  strokeOpacity="0.5"
+                  strokeWidth="1.25"
                 />
                 <text
                   {...SVG_LABEL}
-                  x="204"
-                  y="80"
+                  x="272"
+                  y="76"
                   textAnchor="end"
                   fill="var(--charcoal)"
-                  fillOpacity="0.6"
+                  fillOpacity="0.7"
                 >
                   PROXIES FOR
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="204"
-                  y="94"
+                  x="272"
+                  y="92"
                   textAnchor="end"
                   fill="var(--charcoal)"
-                  fillOpacity="0.6"
+                  fillOpacity="0.7"
                 >
                   UNUSUAL BEHAVIOR
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="436"
-                  y="72"
+                  x="528"
+                  y="68"
                   fill="var(--charcoal)"
-                  fillOpacity="0.6"
+                  fillOpacity="0.7"
                 >
                   NON-STANDARD BUT
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="436"
-                  y="86"
+                  x="528"
+                  y="84"
                   fill="var(--charcoal)"
-                  fillOpacity="0.6"
+                  fillOpacity="0.7"
                 >
                   LEGITIMATE
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="436"
+                  x="528"
                   y="100"
                   fill="var(--charcoal)"
-                  fillOpacity="0.6"
+                  fillOpacity="0.7"
                 >
                   FINANCIAL LIVES
                 </text>
-                <path d="M320 138V150" stroke="var(--crimson)" />
+                <path
+                  d="M400 124V148"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.25"
+                />
                 <text
                   {...SVG_LABEL}
-                  x="320"
-                  y="166"
+                  x="400"
+                  y="164"
                   textAnchor="middle"
                   fill="var(--crimson)"
                 >
-                  SOME GROUPS
+                  SOME GROUPS | DISPROPORTIONATELY AFFECTED
                 </text>
               </svg>
             </figure>
-            <p className={`${LEAD} mt-6 max-w-4xl`}>
-              Some groups may be disproportionately affected when proxies for
-              unusual behavior overlap with non-standard but legitimate
-              financial lives.
-            </p>
           </div>
         </div>
 
@@ -2339,22 +2880,28 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Operational leverage for investigators"
-              right="Not autonomous compliance judgment"
-            />
-            <p className={`${LEAD} mt-6 max-w-4xl`}>
+            <p className={`${LEAD} max-w-4xl`}>
               Their value is operational leverage for investigators, not
               autonomous compliance judgment.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Operational leverage for investigators"
+                right="Not autonomous compliance judgment"
+              />
+            </div>
           </div>
         </div>
 
         <div className="w-full">
           <div className={RULED}>
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Firms need controls over hallucination, source traceability, and
+              what content can enter the formal record.
+            </p>
             <div
               aria-hidden
-              className="grid max-w-4xl items-center gap-4 md:grid-cols-[1fr_auto_12rem]"
+              className="mt-7 grid max-w-4xl items-center gap-4 md:grid-cols-[1fr_auto_12rem]"
             >
               <div className="space-y-2">
                 {[
@@ -2379,10 +2926,6 @@ export default function Week03Finance() {
                 The formal record
               </div>
             </div>
-            <p className={`${DISPLAY} mt-8 max-w-4xl`}>
-              Firms need controls over hallucination, source traceability, and
-              what content can enter the formal record.
-            </p>
           </div>
         </div>
       </Slide>
@@ -2407,7 +2950,7 @@ export default function Week03Finance() {
           Market Forecasting and Signal Extraction
         </Head1>
 
-        <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_19rem] md:gap-14">
+        <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_24rem] md:gap-14">
           <div>
             <p className={BODY}>
               AI can process prices, volumes, news, filings, macro releases,
@@ -2416,11 +2959,16 @@ export default function Week03Finance() {
           </div>
           <div>
             <svg
-              aria-hidden
-              viewBox="0 0 300 140"
-              className="w-full max-w-[19rem]"
+              role="img"
+              aria-label="AI processing prices, volumes, news, filings, macro releases, and alternative text streams in parallel."
+              viewBox="0 0 400 148"
+              className="w-full max-w-[24rem]"
               fill="none"
             >
+              <title>
+                AI processing prices, volumes, news, filings, macro releases,
+                and alternative text streams in parallel.
+              </title>
               {[
                 "PRICES",
                 "VOLUMES",
@@ -2429,44 +2977,77 @@ export default function Week03Finance() {
                 "MACRO RELEASES",
                 "ALTERNATIVE TEXT STREAMS",
               ].map((src, i) => {
-                const y = 10 + i * 24;
+                const y = 14 + i * 24;
                 return (
                   <g key={src}>
                     <text
                       {...SVG_LABEL}
-                      x="0"
-                      y={y + 3}
+                      x="212"
+                      y={y + 3.5}
+                      textAnchor="end"
                       fill="var(--charcoal)"
-                      fillOpacity="0.5"
+                      fillOpacity="0.65"
                     >
                       {src}
                     </text>
+                    <circle
+                      cx="222"
+                      cy={y}
+                      r="2.5"
+                      fill="var(--charcoal)"
+                      fillOpacity="0.45"
+                    />
                     <path
-                      d={`M214 ${y} C 244 ${y}, 250 70, 270 70`}
+                      d={`M225 ${y} C 258 ${y}, 266 74, 290 74`}
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.2"
+                      strokeOpacity="0.28"
                     />
                   </g>
                 );
               })}
-              <path d="M270 70h22" stroke="var(--crimson)" strokeWidth="1.5" />
-              <circle cx="295" cy="70" r="3" fill="var(--crimson)" />
+              <path d="M290 74H312" stroke="var(--crimson)" strokeWidth="1.5" />
+              <path
+                d="M305 69L312 74L305 79"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <rect
+                x="312"
+                y="54"
+                width="76"
+                height="40"
+                fill="var(--crimson)"
+                fillOpacity="0.06"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <text
+                {...SVG_LABEL}
+                x="350"
+                y="77.5"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                AI
+              </text>
             </svg>
           </div>
         </div>
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Predict markets with certainty"
-              right="Signal extraction and decision support under uncertainty"
-              strikeLeft
-              cols="grid-cols-[1fr_1.6fr]"
-            />
-            <p className={`${LEAD} mt-6 max-w-4xl`}>
+            <p className={`${LEAD} max-w-4xl`}>
               The task is rarely to predict markets with certainty. It is to
               improve signal extraction and decision support under uncertainty.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Predict markets with certainty"
+                right="Signal extraction and decision support under uncertainty"
+                strikeLeft
+                cols="grid-cols-[1fr_1.6fr]"
+              />
+            </div>
           </div>
         </div>
 
@@ -2476,14 +3057,22 @@ export default function Week03Finance() {
               Leaders should distinguish between models that identify
               persistent structure and models that overfit recent noise.
             </p>
-            <figure aria-hidden className="mt-7">
+            <figure className="mt-7">
               <div className="grid gap-10 md:grid-cols-2 md:gap-0">
                 {[
-                  { label: "Persistent structure", fit: "line" },
-                  { label: "Overfit recent noise", fit: "trace" },
+                  {
+                    label: "Persistent structure",
+                    fit: "line",
+                    aria: "Model fitting a smooth line to identify persistent structure across market observations.",
+                  },
+                  {
+                    label: "Overfit recent noise",
+                    fit: "trace",
+                    aria: "Model zig-zagging through every point to overfit recent noise.",
+                  },
                 ].map((panel, p) => {
-                  const points = [100, 80, 89, 74, 85, 60, 66, 47, 61, 42, 46].map(
-                    (y, i) => [20 + i * 28, y] as const,
+                  const points = [104, 82, 92, 76, 88, 62, 68, 48, 63, 43, 47].map(
+                    (y, i) => [+(28 + i * 34.4).toFixed(2), y] as const,
                   );
                   return (
                     <div
@@ -2503,17 +3092,24 @@ export default function Week03Finance() {
                       >
                         {panel.label}
                       </div>
-                      <svg viewBox="0 0 320 120" className="mt-4 w-full" fill="none">
+                      <svg
+                        role="img"
+                        aria-label={panel.aria}
+                        viewBox="0 0 400 132"
+                        className="mt-4 w-full"
+                        fill="none"
+                      >
+                        <title>{panel.aria}</title>
                         <path
-                          d="M10 114H310"
+                          d="M16 16V118H384"
                           stroke="var(--charcoal)"
-                          strokeOpacity="0.2"
+                          strokeOpacity="0.22"
                         />
                         {panel.fit === "line" ? (
                           <path
-                            d="M20 96L300 44"
+                            d="M28 98L372 44"
                             stroke="var(--charcoal)"
-                            strokeOpacity="0.7"
+                            strokeOpacity="0.75"
                             strokeWidth="1.5"
                           />
                         ) : (
@@ -2528,9 +3124,9 @@ export default function Week03Finance() {
                             key={x}
                             cx={x}
                             cy={y}
-                            r="3"
+                            r="3.5"
                             fill="var(--charcoal)"
-                            fillOpacity="0.4"
+                            fillOpacity="0.45"
                           />
                         ))}
                       </svg>
@@ -2599,78 +3195,107 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <svg aria-hidden viewBox="0 0 800 124" className="w-full" fill="none">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Portfolio recommendations should be treated as decision support
+              unless governance explicitly permits automated execution.
+            </p>
+            <svg
+              role="img"
+              aria-label="Portfolio recommendations routed by default to decision support, with a governance gate controlling the branch to automated execution."
+              viewBox="0 0 800 136"
+              className="mt-7 w-full"
+              fill="none"
+            >
+              <title>
+                Portfolio recommendations routed by default to decision support,
+                with a governance gate controlling the branch to automated
+                execution.
+              </title>
               <circle
                 cx="30"
-                cy="40"
+                cy="42"
                 r="6"
                 fill="var(--charcoal)"
-                fillOpacity="0.6"
+                fillOpacity="0.65"
               />
               <text
                 {...SVG_LABEL}
-                x="20"
-                y="18"
+                x="24"
+                y="22"
                 fill="var(--charcoal)"
-                fillOpacity="0.55"
+                fillOpacity="0.65"
               >
                 PORTFOLIO RECOMMENDATIONS
               </text>
               <path
-                d="M36 40H732"
-                stroke="var(--charcoal)"
-                strokeOpacity="0.55"
+                d="M36 42H732"
+                stroke="var(--crimson)"
                 strokeWidth="1.5"
               />
-              <rect x="734" y="33" width="14" height="14" fill="var(--crimson)" />
+              <path
+                d="M725 37L732 42L725 47"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <rect x="732" y="35" width="14" height="14" fill="var(--crimson)" />
               <text
                 {...SVG_LABEL}
-                x="720"
-                y="26"
+                x="716"
+                y="28"
                 textAnchor="end"
                 fill="var(--crimson)"
               >
                 DECISION SUPPORT
               </text>
               <path
-                d="M220 40 C 260 40, 260 92, 300 92 H732"
+                d="M220 42 C 260 42, 260 92, 300 92 H428M452 92H732"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.4"
+                strokeOpacity="0.45"
                 strokeDasharray="5 5"
               />
+              <path
+                d="M725 87L732 92L725 97"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.55"
+              />
               <rect
-                x="734"
+                x="732"
                 y="85"
                 width="14"
                 height="14"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.5"
+                strokeOpacity="0.55"
               />
               <text
                 {...SVG_LABEL}
-                x="720"
-                y="80"
+                x="716"
+                y="78"
                 textAnchor="end"
                 fill="var(--charcoal)"
-                fillOpacity="0.55"
+                fillOpacity="0.6"
               >
                 AUTOMATED EXECUTION
               </text>
-              <path d="M440 78V106" stroke="var(--crimson)" strokeWidth="3" />
+              <rect
+                x="434"
+                y="76"
+                width="12"
+                height="32"
+                fill="var(--crimson)"
+                fillOpacity="0.12"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
               <text
                 {...SVG_LABEL}
                 x="440"
-                y="120"
+                y="124"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
                 GOVERNANCE
               </text>
             </svg>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Portfolio recommendations should be treated as decision support
-              unless governance explicitly permits automated execution.
-            </p>
           </div>
         </div>
       </Slide>
@@ -2695,14 +3320,24 @@ export default function Week03Finance() {
             Financial markets, customer behavior, and macro conditions change,
             sometimes abruptly.
           </p>
-          <figure aria-hidden className="mt-6 w-full max-w-5xl">
-            <svg viewBox="0 0 800 136" className="w-full" fill="none">
+          <figure className="mt-6 w-full max-w-5xl">
+            <svg
+              role="img"
+              aria-label="Time series for financial markets, customer behavior, and macro conditions shifting abruptly at crimson step points."
+              viewBox="0 0 800 144"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Time series for financial markets, customer behavior, and macro
+                conditions shifting abruptly at crimson step points.
+              </title>
               {[
                 { label: "FINANCIAL MARKETS", at: 460, dy: 14 },
                 { label: "CUSTOMER BEHAVIOR", at: 610, dy: -16 },
                 { label: "MACRO CONDITIONS", at: 370, dy: -16 },
               ].map((lane, i) => {
-                const y = 24 + i * 48;
+                const y = 32 + i * 44;
                 const jitter = (k: number) => ((k * 7 + i * 3) % 5) - 2;
                 const stepK = (lane.at - 190) / 30;
                 const d = Array.from({ length: 21 }, (_, k) => {
@@ -2711,14 +3346,15 @@ export default function Week03Finance() {
                   if (x === lane.at) return `${x} ${base} L${x} ${base + lane.dy}`;
                   return `${x} ${x > lane.at ? base + lane.dy : base}`;
                 }).join(" L");
+                const jumpY = y + jitter(stepK);
                 return (
                   <g key={lane.label}>
                     <text
                       {...SVG_LABEL}
-                      x="0"
-                      y={y + 3}
+                      x="4"
+                      y={y + 3.5}
                       fill="var(--charcoal)"
-                      fillOpacity="0.55"
+                      fillOpacity="0.65"
                     >
                       {lane.label}
                     </text>
@@ -2726,11 +3362,18 @@ export default function Week03Finance() {
                       d={`M${d}`}
                       stroke="var(--charcoal)"
                       strokeOpacity="0.45"
+                      strokeWidth="1.25"
                     />
                     <path
-                      d={`M${lane.at} ${y + jitter(stepK)}v${lane.dy}`}
+                      d={`M${lane.at} ${jumpY}v${lane.dy}`}
                       stroke="var(--crimson)"
                       strokeWidth="2.5"
+                    />
+                    <circle
+                      cx={lane.at}
+                      cy={jumpY + lane.dy}
+                      r="3.5"
+                      fill="var(--crimson)"
                     />
                   </g>
                 );
@@ -2745,62 +3388,75 @@ export default function Week03Finance() {
               A model that performs well in one regime can fail precisely when
               volatility or structural breaks matter most.
             </p>
-            <figure aria-hidden className="mt-6">
-              <svg viewBox="0 0 800 124" className="w-full" fill="none">
+            <figure className="mt-6">
+              <svg
+                role="img"
+                aria-label="A model performing well in one regime and failing after structural breaks."
+                viewBox="0 0 800 132"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  A model performing well in one regime and failing after
+                  structural breaks.
+                </title>
                 <rect
                   x="20"
-                  y="24"
+                  y="28"
                   width="440"
-                  height="88"
+                  height="90"
                   fill="var(--charcoal)"
                   fillOpacity="0.04"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.12"
                 />
                 <path
-                  d="M460 20V112"
-                  stroke="var(--charcoal)"
-                  strokeOpacity="0.4"
-                  strokeDasharray="3 4"
+                  d="M460 24V120"
+                  stroke="var(--crimson)"
+                  strokeOpacity="0.55"
+                  strokeDasharray="4 4"
+                  strokeWidth="1.25"
                 />
                 <text
                   {...SVG_LABEL}
                   x="460"
-                  y="12"
+                  y="16"
                   textAnchor="middle"
-                  fill="var(--charcoal)"
-                  fillOpacity="0.6"
+                  fill="var(--crimson)"
                 >
-                  STRUCTURAL BREAK
+                  STRUCTURAL BREAKS
                 </text>
                 <path
-                  d="M20 50 C 120 46, 300 54, 460 48"
+                  d="M20 56 C 120 52, 300 60, 460 54"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.65"
+                  strokeOpacity="0.7"
                   strokeWidth="1.5"
                 />
                 <path
-                  d="M460 48 C 520 50, 560 94, 640 102"
+                  d="M460 54 C 520 56, 560 100, 640 108"
                   stroke="var(--crimson)"
-                  strokeWidth="1.5"
+                  strokeWidth="1.75"
                 />
+                <circle cx="460" cy="54" r="4" fill="var(--crimson)" />
                 <text
                   {...SVG_LABEL}
-                  x="32"
-                  y="38"
+                  x="34"
+                  y="44"
                   fill="var(--charcoal)"
-                  fillOpacity="0.55"
+                  fillOpacity="0.65"
                 >
                   PERFORMS WELL
                 </text>
                 <text
                   {...SVG_LABEL}
-                  x="32"
-                  y="102"
+                  x="34"
+                  y="106"
                   fill="var(--charcoal)"
-                  fillOpacity="0.45"
+                  fillOpacity="0.55"
                 >
                   ONE REGIME
                 </text>
-                <text {...SVG_LABEL} x="652" y="106" fill="var(--crimson)">
+                <text {...SVG_LABEL} x="654" y="111" fill="var(--crimson)">
                   FAIL
                 </text>
               </svg>
@@ -2810,6 +3466,11 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Model risk management requires monitoring drift, challenger
+              models, override policies, and disciplined retirement of stale
+              systems.
+            </p>
             <Steps
               items={[
                 "monitoring drift",
@@ -2819,13 +3480,8 @@ export default function Week03Finance() {
               ]}
               cols="md:grid-cols-4"
               mark={3}
-              className="max-w-5xl"
+              className="mt-6 max-w-5xl"
             />
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Model risk management requires monitoring drift, challenger
-              models, override policies, and disciplined retirement of stale
-              systems.
-            </p>
           </div>
         </div>
       </Slide>
@@ -2845,14 +3501,29 @@ export default function Week03Finance() {
             Stress testing asks how portfolios and business lines behave under
             severe but plausible shocks.
           </p>
-          <figure aria-hidden className="mt-6 w-full max-w-5xl">
-            <svg viewBox="0 0 800 84" className="w-full" fill="none">
+          <figure className="mt-6 w-full max-w-5xl">
+            <svg
+              role="img"
+              aria-label="Shock severity scale highlighting the crimson band of severe but plausible shocks."
+              viewBox="0 0 800 96"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Shock severity scale highlighting the crimson band of severe but
+                plausible shocks.
+              </title>
               <path d="M20 52H700" stroke="var(--charcoal)" strokeOpacity="0.3" />
               <path
                 d="M700 52H780"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.25"
+                strokeOpacity="0.28"
                 strokeDasharray="3 4"
+              />
+              <path
+                d="M773 47L780 52L773 57"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.45"
               />
               {Array.from({ length: 18 }).map((_, i) => (
                 <path
@@ -2864,21 +3535,23 @@ export default function Week03Finance() {
               ))}
               <rect
                 x="520"
-                y="47"
+                y="46"
                 width="180"
-                height="10"
+                height="12"
                 fill="var(--crimson)"
-                fillOpacity="0.25"
+                fillOpacity="0.22"
+                stroke="var(--crimson)"
+                strokeOpacity="0.55"
               />
               <path
-                d="M520 40V32H700V40"
+                d="M520 38V30H700V38"
                 stroke="var(--crimson)"
                 strokeWidth="1.5"
               />
               <text
                 {...SVG_LABEL}
                 x="610"
-                y="22"
+                y="20"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
@@ -2886,13 +3559,13 @@ export default function Week03Finance() {
               </text>
               <text
                 {...SVG_LABEL}
-                x="780"
-                y="78"
-                textAnchor="end"
+                x="400"
+                y="82"
+                textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.5"
+                fillOpacity="0.55"
               >
-                SHOCKS →
+                SHOCKS
               </text>
             </svg>
           </figure>
@@ -2919,20 +3592,22 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Predict the future exactly"
-              right="Before crisis conditions emerge"
-              strikeLeft
-            />
-            <Terms
-              items={["concentrations", "vulnerabilities", "management actions"]}
-              className="mt-4"
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+            <p className={`${DISPLAY} max-w-4xl`}>
               The point is not to predict the future exactly, but to surface
               concentrations, vulnerabilities, and management actions before
               crisis conditions emerge.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Predict the future exactly"
+                right="Before crisis conditions emerge"
+                strikeLeft
+              />
+            </div>
+            <Terms
+              items={["concentrations", "vulnerabilities", "management actions"]}
+              className="mt-4"
+            />
           </div>
         </div>
       </Slide>
@@ -3001,7 +3676,11 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <div aria-hidden className="max-w-3xl">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Managers still need explicit limits because liquidity decisions
+              are intertwined with regulation, confidence, and market access.
+            </p>
+            <div aria-hidden className="mt-6 max-w-3xl">
               <div className="flex items-center gap-4">
                 <span className={`${MICRO} shrink-0 text-[var(--crimson)]`}>
                   Explicit limits
@@ -3013,10 +3692,6 @@ export default function Week03Finance() {
                 className="mt-4"
               />
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Managers still need explicit limits because liquidity decisions
-              are intertwined with regulation, confidence, and market access.
-            </p>
           </div>
         </div>
       </Slide>
@@ -3033,15 +3708,17 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-10 w-full max-w-5xl">
-            <Split1
-              left="Optimized continuously"
-              right="Full automation | feedback loops and hidden assumptions"
-              cols="grid-cols-[1fr_1.6fr]"
-            />
-            <p className={`${LEAD} mt-6 max-w-4xl`}>
+            <p className={`${LEAD} max-w-4xl`}>
               Some financial decisions can be optimized continuously, but full
               automation can amplify feedback loops and hidden assumptions.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Optimized continuously"
+                right="Full automation | feedback loops and hidden assumptions"
+                cols="grid-cols-[1fr_1.6fr]"
+              />
+            </div>
           </div>
         </div>
 
@@ -3149,7 +3826,7 @@ export default function Week03Finance() {
                     ))}
                   </span>
                 </div>
-                <span className="mt-4 block font-mono text-[9px] uppercase leading-snug tracking-[0.08em] text-[var(--charcoal-light)]/70">
+                <span className="mt-4 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
                   {doc}
                 </span>
               </div>
@@ -3158,7 +3835,23 @@ export default function Week03Finance() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[11rem_1fr] md:gap-12">
+          <div className="mt-12 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_11rem] md:gap-12">
+            <div>
+              <p className={BODY}>
+                AI can extract fields, compare documents, identify missing
+                items, and route exceptions for review.
+              </p>
+              <Steps
+                items={[
+                  "extract fields",
+                  "compare documents",
+                  "identify missing items",
+                  "route exceptions",
+                ]}
+                cols="md:grid-cols-4"
+                mark={2}
+              />
+            </div>
             <div
               aria-hidden
               className="w-40 border border-[var(--charcoal)]/35 bg-[var(--surface)] p-4"
@@ -3183,37 +3876,23 @@ export default function Week03Finance() {
                 </div>
               ))}
             </div>
-            <div>
-              <p className={BODY}>
-                AI can extract fields, compare documents, identify missing
-                items, and route exceptions for review.
-              </p>
-              <Steps
-                items={[
-                  "extract fields",
-                  "compare documents",
-                  "identify missing items",
-                  "route exceptions",
-                ]}
-                cols="md:grid-cols-4"
-                mark={2}
-              />
-            </div>
           </div>
         </div>
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Merely optical character recognition"
-              right="Shorter cycle time | cleaner downstream data"
-              strikeLeft
-              cols="grid-cols-[1fr_1.3fr]"
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+            <p className={`${DISPLAY} max-w-4xl`}>
               The managerial benefit is shorter cycle time and cleaner
               downstream data, not merely optical character recognition.
             </p>
+            <div className="mt-6">
+              <Split1
+                left="Merely optical character recognition"
+                right="Shorter cycle time | cleaner downstream data"
+                strikeLeft
+                cols="grid-cols-[1fr_1.3fr]"
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -3234,52 +3913,112 @@ export default function Week03Finance() {
             systems, identifying breaks, and resolving root causes quickly.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 140"
+            role="img"
+            aria-label="Matching records across two systems with four matched rows and one crimson row identifying breaks."
+            viewBox="0 0 800 156"
             className="mt-7 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Matching records across two systems with four matched rows and one
+              crimson row identifying breaks.
+            </title>
+            <text
+              {...SVG_LABEL}
+              x="152"
+              y="16"
+              textAnchor="middle"
+              fill="var(--charcoal)"
+              fillOpacity="0.55"
+            >
+              RECORDS
+            </text>
+            <text
+              {...SVG_LABEL}
+              x="400"
+              y="16"
+              textAnchor="middle"
+              fill="var(--charcoal)"
+              fillOpacity="0.55"
+            >
+              MATCHING RECORDS ACROSS SYSTEMS
+            </text>
+            <text
+              {...SVG_LABEL}
+              x="648"
+              y="16"
+              textAnchor="middle"
+              fill="var(--charcoal)"
+              fillOpacity="0.55"
+            >
+              SYSTEMS
+            </text>
             {[0, 1, 2, 3, 4].map((i) => {
-              const y = 18 + i * 26;
+              const y = 38 + i * 26;
               const broken = i === 2;
               return (
                 <g key={i}>
                   <rect
-                    x="40"
-                    y={y - 5}
-                    width={200 + ((i * 37) % 40)}
-                    height="10"
+                    x="32"
+                    y={y - 7}
+                    width="240"
+                    height="14"
                     fill={broken ? "var(--crimson)" : "var(--charcoal)"}
-                    fillOpacity={broken ? 0.3 : 0.12}
+                    fillOpacity={broken ? 0.08 : 0.04}
+                    stroke={broken ? "var(--crimson)" : "var(--charcoal)"}
+                    strokeOpacity={broken ? 0.7 : 0.25}
                   />
                   <rect
-                    x="520"
-                    y={y - 5}
-                    width={200 + ((i * 23) % 40)}
-                    height="10"
+                    x="42"
+                    y={y - 2}
+                    width={130 + ((i * 37) % 60)}
+                    height="4"
                     fill={broken ? "var(--crimson)" : "var(--charcoal)"}
-                    fillOpacity={broken ? 0.3 : 0.12}
+                    fillOpacity={broken ? 0.55 : 0.25}
+                  />
+                  <rect
+                    x="528"
+                    y={y - 7}
+                    width="240"
+                    height="14"
+                    fill={broken ? "var(--crimson)" : "var(--charcoal)"}
+                    fillOpacity={broken ? 0.08 : 0.04}
+                    stroke={broken ? "var(--crimson)" : "var(--charcoal)"}
+                    strokeOpacity={broken ? 0.7 : 0.25}
+                  />
+                  <rect
+                    x="538"
+                    y={y - 2}
+                    width={130 + ((i * 23) % 60)}
+                    height="4"
+                    fill={broken ? "var(--crimson)" : "var(--charcoal)"}
+                    fillOpacity={broken ? 0.55 : 0.25}
                   />
                   {broken ? (
                     <>
                       <path
-                        d={`M284 ${y}H368M432 ${y}H516`}
+                        d={`M272 ${y}H352M448 ${y}H528`}
+                        stroke="var(--crimson)"
+                        strokeWidth="1.5"
+                      />
+                      <path
+                        d={`M348 ${y - 5}l8 10M444 ${y - 5}l8 10`}
                         stroke="var(--crimson)"
                         strokeWidth="1.5"
                       />
                       <text
                         {...SVG_LABEL}
                         x="400"
-                        y={y + 3}
+                        y={y + 3.5}
                         textAnchor="middle"
                         fill="var(--crimson)"
                       >
-                        BREAK
+                        BREAKS
                       </text>
                     </>
                   ) : (
                     <path
-                      d={`M284 ${y}H516`}
+                      d={`M272 ${y}H528`}
                       stroke="var(--charcoal)"
                       strokeOpacity="0.3"
                     />
@@ -3310,16 +4049,18 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-14 w-full max-w-5xl">
-            <Split1 left="AI outputs as prompts" right="Hidden rules" />
-            <Terms
-              items={["audit trails", "override reason codes"]}
-              className="mt-4"
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+            <p className={`${DISPLAY} max-w-4xl`}>
               Control quality depends on audit trails, override reason codes,
               and whether teams use AI outputs as prompts rather than hidden
               rules.
             </p>
+            <div className="mt-6">
+              <Split1 left="AI outputs as prompts" right="Hidden rules" />
+            </div>
+            <Terms
+              items={["audit trails", "override reason codes"]}
+              className="mt-4"
+            />
           </div>
         </div>
       </Slide>
@@ -3378,7 +4119,11 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <div aria-hidden className="grid max-w-2xl grid-cols-2 gap-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              The right design question is which interactions benefit from
+              speed and consistency, and which require contextual human trust.
+            </p>
+            <div aria-hidden className="mt-6 grid max-w-2xl grid-cols-2 gap-6">
               {[
                 {
                   tray: "Speed and consistency",
@@ -3402,19 +4147,15 @@ export default function Week03Finance() {
                     {Array.from({ length: t.n }).map((_, i) => (
                       <span
                         key={i}
-                        className={`border px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] ${t.tone}`}
+                        className={`border px-2 py-1 font-serif text-[0.9375rem] italic tracking-normal ${t.tone}`}
                       >
-                        interaction
+                        interactions
                       </span>
                     ))}
                   </div>
                 </div>
               ))}
             </div>
-            <p className={`${DISPLAY} mt-8 max-w-4xl`}>
-              The right design question is which interactions benefit from
-              speed and consistency, and which require contextual human trust.
-            </p>
           </div>
         </div>
       </Slide>
@@ -3462,63 +4203,109 @@ export default function Week03Finance() {
               cross into manipulation or mis-selling.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 96"
+              role="img"
+              aria-label="Personalization improving relevance within bounds while unsuitable nudges cross the boundary into manipulation or mis-selling."
+              viewBox="0 0 800 108"
               className="mt-6 w-full"
               fill="none"
             >
+              <title>
+                Personalization improving relevance within bounds while
+                unsuitable nudges cross the boundary into manipulation or
+                mis-selling.
+              </title>
               <rect
-                x="520"
-                y="10"
-                width="270"
-                height="60"
-                fill="var(--crimson)"
-                fillOpacity="0.07"
-              />
-              <path
-                d="M520 6V74"
-                stroke="var(--crimson)"
-                strokeOpacity="0.6"
-                strokeDasharray="4 4"
-              />
-              <path
-                d="M20 50H500"
+                x="20"
+                y="14"
+                width="480"
+                height="62"
+                fill="var(--charcoal)"
+                fillOpacity="0.03"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.2"
+                strokeOpacity="0.15"
+              />
+              <rect
+                x="500"
+                y="14"
+                width="280"
+                height="62"
+                fill="var(--crimson)"
+                fillOpacity="0.06"
+                stroke="var(--crimson)"
+                strokeOpacity="0.35"
               />
               <path
-                d="M360 50H660"
+                d="M500 8V82"
                 stroke="var(--crimson)"
+                strokeOpacity="0.7"
+                strokeDasharray="4 4"
                 strokeWidth="1.5"
               />
-              <path d="M652 44l8 6l-8 6" stroke="var(--crimson)" strokeWidth="1.5" />
               <circle
-                cx="360"
-                cy="50"
+                cx="64"
+                cy="48"
                 r="4"
                 fill="var(--charcoal)"
-                fillOpacity="0.6"
+                fillOpacity="0.55"
+              />
+              <path
+                d="M68 48H340"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.45"
+                strokeWidth="1.25"
+              />
+              <circle
+                cx="340"
+                cy="48"
+                r="4.5"
+                fill="var(--crimson)"
+              />
+              <path
+                d="M344.5 48H664"
+                stroke="var(--crimson)"
+                strokeWidth="1.75"
+              />
+              <path
+                d="M656 42L664 48L656 54"
+                stroke="var(--crimson)"
+                strokeWidth="1.75"
               />
               <text
                 {...SVG_LABEL}
-                x="440"
+                x="204"
                 y="36"
                 textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.65"
+                fillOpacity="0.6"
+              >
+                PERSONALIZATION
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="420"
+                y="36"
+                textAnchor="middle"
+                fill="var(--crimson)"
               >
                 UNSUITABLE NUDGES
               </text>
               <text
                 {...SVG_LABEL}
-                x="20"
-                y="90"
+                x="260"
+                y="96"
+                textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.5"
+                fillOpacity="0.6"
               >
                 RELEVANCE
               </text>
-              <text {...SVG_LABEL} x="540" y="90" fill="var(--crimson)">
+              <text
+                {...SVG_LABEL}
+                x="640"
+                y="96"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
                 MANIPULATION OR MIS-SELLING
               </text>
             </svg>
@@ -3527,9 +4314,14 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Managers need guardrails on objectives, product eligibility,
+              vulnerability signals, and escalation when AI-generated guidance
+              becomes too prescriptive.
+            </p>
             <div
               aria-hidden
-              className="grid grid-cols-2 border-y-2 border-[var(--crimson)] md:grid-cols-4"
+              className="mt-6 grid grid-cols-2 border-y-2 border-[var(--crimson)] md:grid-cols-4"
             >
               {[
                 "objectives",
@@ -3547,11 +4339,6 @@ export default function Week03Finance() {
                 </span>
               ))}
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Managers need guardrails on objectives, product eligibility,
-              vulnerability signals, and escalation when AI-generated guidance
-              becomes too prescriptive.
-            </p>
           </div>
         </div>
 
@@ -3606,7 +4393,7 @@ export default function Week03Finance() {
                 <span className={`${MICRO} block text-[var(--champagne)]`}>
                   {pad(i + 1)}
                 </span>
-                <span className="mt-2 block font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--charcoal)]">
+                <span className="mt-2 block font-serif text-[1rem] font-medium tracking-normal text-[var(--charcoal)]">
                   {stage}
                 </span>
               </div>
@@ -3646,9 +4433,13 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              A model inventory is useful only if it is tied to actual decision
+              rights and review cadence.
+            </p>
             <div
               aria-hidden
-              className="max-w-3xl border-t border-[var(--charcoal)]/30"
+              className="mt-6 max-w-3xl border-t border-[var(--charcoal)]/30"
             >
               <div className="grid grid-cols-3 border-b border-[var(--charcoal)]/15">
                 <span
@@ -3692,10 +4483,6 @@ export default function Week03Finance() {
                 </div>
               ))}
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              A model inventory is useful only if it is tied to actual decision
-              rights and review cadence.
-            </p>
           </div>
         </div>
       </Slide>
@@ -3763,23 +4550,25 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <svg aria-hidden viewBox="0 0 800 112" className="w-full" fill="none">
-              <path
-                d="M72 56L406 31"
-                stroke="var(--crimson)"
-                strokeOpacity="0.6"
-              />
-              <path
-                d="M72 64L406 89"
-                stroke="var(--crimson)"
-                strokeOpacity="0.6"
-              />
-              <path d="M395 27L407 31L396 37" stroke="var(--crimson)" />
-              <path d="M396 83L407 89L395 93" stroke="var(--crimson)" />
-              <circle cx="60" cy="60" r="9" fill="var(--crimson)" />
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Security design is part of AI strategy because attackers may
+              target both the institution and the models it depends on.
+            </p>
+            <svg
+              role="img"
+              aria-label="Attackers targeting both the institution and the models it depends on."
+              viewBox="0 0 800 124"
+              className="mt-7 w-full"
+              fill="none"
+            >
+              <title>
+                Attackers targeting both the institution and the models it
+                depends on.
+              </title>
+              <circle cx="64" cy="62" r="8" fill="var(--crimson)" />
               <text
                 {...SVG_LABEL}
-                x="60"
+                x="64"
                 y="94"
                 textAnchor="middle"
                 fill="var(--crimson)"
@@ -3787,40 +4576,59 @@ export default function Week03Finance() {
                 ATTACKERS
               </text>
               <path
-                d="M420 38V82"
+                d="M72 62 C 196 62, 272 34, 412 34"
+                stroke="var(--crimson)"
+                strokeOpacity="0.7"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M405 29L412 34L405 39"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M72 62 C 196 62, 272 90, 412 90"
+                stroke="var(--crimson)"
+                strokeOpacity="0.7"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M405 85L412 90L405 95"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M420 42V82"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.4"
                 strokeDasharray="3 3"
               />
               {[
-                { y: 30, label: "THE INSTITUTION" },
+                { y: 34, label: "THE INSTITUTION" },
                 { y: 90, label: "THE MODELS IT DEPENDS ON" },
               ].map((t) => (
                 <g key={t.label}>
                   <circle
                     cx="420"
                     cy={t.y}
-                    r="7"
+                    r="8"
                     fill="var(--surface)"
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.6"
+                    strokeOpacity="0.65"
+                    strokeWidth="1.5"
                   />
                   <text
                     {...SVG_LABEL}
-                    x="440"
-                    y={t.y + 3}
+                    x="442"
+                    y={t.y + 3.5}
                     fill="var(--charcoal)"
-                    fillOpacity="0.7"
+                    fillOpacity="0.75"
                   >
                     {t.label}
                   </text>
                 </g>
               ))}
             </svg>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Security design is part of AI strategy because attackers may
-              target both the institution and the models it depends on.
-            </p>
           </div>
         </div>
       </Slide>
@@ -3880,7 +4688,11 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
-            <div aria-hidden className="max-w-3xl space-y-4">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Outsourcing execution does not outsource accountability for
+              customer outcomes or control failures.
+            </p>
+            <div aria-hidden className="mt-7 max-w-3xl space-y-4">
               <div className="grid grid-cols-[8rem_1fr] items-center gap-4 md:grid-cols-[10rem_1fr]">
                 <span className={`${MICRO} text-[var(--charcoal-light)]/55`}>
                   Execution
@@ -3908,10 +4720,6 @@ export default function Week03Finance() {
                 </span>
               </div>
             </div>
-            <p className={`${DISPLAY} mt-8 max-w-4xl`}>
-              Outsourcing execution does not outsource accountability for
-              customer outcomes or control failures.
-            </p>
           </div>
         </div>
 
@@ -3978,36 +4786,35 @@ export default function Week03Finance() {
 
         <div className="w-full">
           <div className={RULED}>
-            <svg aria-hidden viewBox="0 0 800 120" className="w-full" fill="none">
-              <text
-                {...SVG_LABEL}
-                x="20"
-                y="61"
-                fill="var(--charcoal)"
-                fillOpacity="0.5"
-              >
-                AUTONOMOUS USE
-              </text>
-              {[24, 40, 56, 72, 88].map((y) => (
-                <path
-                  key={y}
-                  d={`M270 56 C 400 56, 500 ${y}, 780 ${y}`}
-                  stroke="var(--charcoal)"
-                  strokeOpacity="0.25"
-                />
-              ))}
-              <circle
-                cx="270"
-                cy="56"
-                r="4"
-                fill="var(--charcoal)"
-                fillOpacity="0.5"
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Institutions should define explicit red lines for autonomous use
+              before experimentation spreads across teams.
+            </p>
+            <svg
+              role="img"
+              aria-label="Defining explicit red lines for autonomous use first, before experimentation spreads across teams."
+              viewBox="0 0 800 136"
+              className="mt-7 w-full"
+              fill="none"
+            >
+              <title>
+                Defining explicit red lines for autonomous use first, before
+                experimentation spreads across teams.
+              </title>
+              <rect
+                x="24"
+                y="46"
+                width="176"
+                height="40"
+                fill="var(--crimson)"
+                fillOpacity="0.06"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
               />
-              <path d="M240 20V96" stroke="var(--crimson)" strokeWidth="4" />
               <text
                 {...SVG_LABEL}
-                x="240"
-                y="12"
+                x="112"
+                y="63"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
@@ -4015,19 +4822,66 @@ export default function Week03Finance() {
               </text>
               <text
                 {...SVG_LABEL}
-                x="780"
-                y="114"
-                textAnchor="end"
+                x="112"
+                y="77"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                AUTONOMOUS USE
+              </text>
+
+              <path
+                d="M244 22V110"
+                stroke="var(--crimson)"
+                strokeWidth="3"
+              />
+              <path
+                d="M200 66H242"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+
+              <circle
+                cx="276"
+                cy="66"
+                r="4.5"
                 fill="var(--charcoal)"
-                fillOpacity="0.5"
+                fillOpacity="0.65"
+              />
+              {[28, 47, 66, 85, 104].map((y) => (
+                <g key={y}>
+                  <path
+                    d={`M280.5 66 C 400 66, 480 ${y}, 756 ${y}`}
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.32"
+                    strokeWidth="1.25"
+                  />
+                  <path
+                    d={`M749 ${y - 4}L756 ${y}L749 ${y + 4}`}
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.45"
+                  />
+                  <circle
+                    cx="762"
+                    cy={y}
+                    r="3.5"
+                    fill="var(--surface)"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.55"
+                  />
+                </g>
+              ))}
+              <text
+                {...SVG_LABEL}
+                x="520"
+                y="124"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.6"
               >
                 EXPERIMENTATION SPREADS ACROSS TEAMS
               </text>
             </svg>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Institutions should define explicit red lines for autonomous use
-              before experimentation spreads across teams.
-            </p>
           </div>
         </div>
       </Slide>
@@ -4047,9 +4901,9 @@ export default function Week03Finance() {
           Operating Model, Talent, and Change Management
         </Head1>
 
-        <div className="mt-9 w-full max-w-5xl">
+        <div className="mt-9 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_25rem] md:gap-14">
           <div>
-            <p className={`${BODY} max-w-4xl`}>
+            <p className={BODY}>
               Durable adoption requires collaboration among business leaders,
               risk, compliance, operations, data teams, model validators, and
               legal partners.
@@ -4057,35 +4911,51 @@ export default function Week03Finance() {
           </div>
           <div>
             <svg
-              aria-hidden
-              viewBox="12 22 448 226"
-              className="mt-6 w-full max-w-xl"
+              role="img"
+              aria-label="Collaboration wheel uniting business leaders, risk, compliance, operations, data teams, model validators, and legal partners around durable adoption."
+              viewBox="0 0 400 200"
+              className="w-full max-w-[25rem]"
               fill="none"
             >
+              <title>
+                Collaboration wheel uniting business leaders, risk, compliance,
+                operations, data teams, model validators, and legal partners
+                around durable adoption.
+              </title>
+              <circle
+                cx="208"
+                cy="104"
+                r="38"
+                fill="var(--crimson)"
+                fillOpacity="0.06"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
               {[
-                { label: "BUSINESS LEADERS", lx: 260, ly: 36, anchor: "middle" as const },
-                { label: "RISK", lx: 344, ly: 80, anchor: "start" as const },
-                { label: "COMPLIANCE", lx: 362, ly: 164, anchor: "start" as const },
-                { label: "OPERATIONS", lx: 312, ly: 240, anchor: "start" as const },
-                { label: "DATA TEAMS", lx: 208, ly: 240, anchor: "end" as const },
-                { label: "MODEL VALIDATORS", lx: 158, ly: 164, anchor: "end" as const },
-                { label: "LEGAL PARTNERS", lx: 176, ly: 80, anchor: "end" as const },
+                { label: "BUSINESS LEADERS", lx: 208, ly: 20, anchor: "middle" as const },
+                { label: "RISK", lx: 278, ly: 58, anchor: "start" as const },
+                { label: "COMPLIANCE", lx: 292, ly: 122, anchor: "start" as const },
+                { label: "OPERATIONS", lx: 254, ly: 186, anchor: "start" as const },
+                { label: "DATA TEAMS", lx: 162, ly: 186, anchor: "end" as const },
+                { label: "MODEL VALIDATORS", lx: 124, ly: 122, anchor: "end" as const },
+                { label: "LEGAL PARTNERS", lx: 138, ly: 58, anchor: "end" as const },
               ].map((g, i) => {
                 const rad = ((-90 + (i * 360) / 7) * Math.PI) / 180;
                 const at = (r: number) =>
                   [
-                    (260 + r * Math.cos(rad)).toFixed(2),
-                    (140 + r * Math.sin(rad)).toFixed(2),
+                    +(208 + r * Math.cos(rad)).toFixed(2),
+                    +(104 + r * Math.sin(rad)).toFixed(2),
                   ] as const;
-                const [x, y] = at(90);
-                const [sx, sy] = at(46);
-                const [ex, ey] = at(82);
+                const [x, y] = at(68);
+                const [sx, sy] = at(38);
+                const [ex, ey] = at(62);
                 return (
                   <g key={g.label}>
                     <path
                       d={`M${sx} ${sy}L${ex} ${ey}`}
                       stroke="var(--crimson)"
-                      strokeOpacity="0.4"
+                      strokeOpacity="0.55"
+                      strokeWidth="1.25"
                     />
                     <circle
                       cx={x}
@@ -4093,7 +4963,8 @@ export default function Week03Finance() {
                       r="6"
                       fill="var(--surface)"
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.5"
+                      strokeOpacity="0.65"
+                      strokeWidth="1.25"
                     />
                     <text
                       {...SVG_LABEL}
@@ -4101,7 +4972,7 @@ export default function Week03Finance() {
                       y={g.ly}
                       textAnchor={g.anchor}
                       fill="var(--charcoal)"
-                      fillOpacity="0.6"
+                      fillOpacity="0.7"
                     >
                       {g.label}
                     </text>
@@ -4110,8 +4981,8 @@ export default function Week03Finance() {
               })}
               <text
                 {...SVG_LABEL}
-                x="260"
-                y="138"
+                x="208"
+                y="101"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
@@ -4119,8 +4990,8 @@ export default function Week03Finance() {
               </text>
               <text
                 {...SVG_LABEL}
-                x="260"
-                y="151"
+                x="208"
+                y="114"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
@@ -4167,16 +5038,16 @@ export default function Week03Finance() {
           </div>
         </div>
 
-        <div className="w-full">
-          <Terms
-            items={["trust the workflow", "understand escalation"]}
-            className="mt-14"
-          />
-        </div>
         <Verdict>
           Change management matters because even accurate models fail when
           front-line staff do not trust the workflow or understand escalation.
         </Verdict>
+        <div className="w-full">
+          <Terms
+            items={["trust the workflow", "understand escalation"]}
+            className="mt-5"
+          />
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -4200,29 +5071,6 @@ export default function Week03Finance() {
           Conclusion: AI in Finance as Institutional Capability
         </Head1>
 
-        <div className="w-full">
-          <ol
-            aria-hidden
-            className="mt-11 grid w-full max-w-4xl grid-cols-2 gap-y-5 sm:grid-cols-3 md:grid-cols-5"
-          >
-            {["credit", "control", "markets", "service", "operations"].map(
-              (area, i) => (
-                <li
-                  key={area}
-                  className="relative border-t-2 border-[var(--crimson)]/70 pr-3 pt-3"
-                >
-                  <span className={`${MICRO} block text-[var(--champagne)]`}>
-                    {pad(i + 1)}
-                  </span>
-                  <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.08em] text-[var(--charcoal-light)]/70">
-                    {area}
-                  </span>
-                </li>
-              ),
-            )}
-          </ol>
-        </div>
-
         <ol className="mt-10 w-full max-w-4xl">
           {[
             "The strongest finance applications combine prediction, automation, and governance around clearly owned decisions.",
@@ -4234,9 +5082,39 @@ export default function Week03Finance() {
                 <span className={`${MICRO} pt-3 text-[var(--crimson)]`}>
                   {pad(i + 1)}
                 </span>
-                <p className="font-serif text-xl font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
-                  {line}
-                </p>
+                <div>
+                  <p className="font-serif text-xl font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+                    {line}
+                  </p>
+                  {i === 1 && (
+                    <ol
+                      aria-hidden
+                      className="mt-6 grid w-full grid-cols-2 gap-y-4 sm:grid-cols-3 md:grid-cols-5"
+                    >
+                      {[
+                        "credit",
+                        "control",
+                        "markets",
+                        "service",
+                        "operations",
+                      ].map((area, j) => (
+                        <li
+                          key={area}
+                          className="relative border-t-2 border-[var(--crimson)]/70 pr-3 pt-3"
+                        >
+                          <span
+                            className={`${MICRO} block text-[var(--champagne)]`}
+                          >
+                            {pad(j + 1)}
+                          </span>
+                          <span className="mt-1 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
+                            {area}
+                          </span>
+                        </li>
+                      ))}
+                    </ol>
+                  )}
+                </div>
               </div>
             </li>
           ))}

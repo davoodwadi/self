@@ -45,27 +45,22 @@ export default function Week01Introduction() {
           beneath a full-measure rule.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -right-6 top-1/2 -translate-y-1/2 select-none font-serif text-[36vw] font-black leading-none text-[var(--charcoal)]/[0.035] md:text-[28vw]"
-        >
-          01
-        </span>
-
         <div
           aria-hidden
           className="pointer-events-none absolute left-0 top-0 hidden h-full w-px bg-[var(--charcoal)]/8 lg:block"
         />
 
         <div>
-          <div className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}>
+          <div
+            className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
+          >
             <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 01: Course Overview and Foundations
           </div>
         </div>
 
         <div>
-          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.75rem,9vw,6.5rem)] font-black leading-[0.9] tracking-[-0.035em] text-[var(--charcoal)]">
+          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.75rem,9vw,6.5rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-[var(--charcoal)]">
             Applications of
             <br />
             AI in <span className="text-[var(--crimson)]">Business</span>
@@ -85,7 +80,9 @@ export default function Week01Introduction() {
             <span className={`${MICRO} text-[var(--champagne)]`}>
               Davood Wadi, PhD
             </span>
-            <span className={`${MICRO} font-normal text-[var(--charcoal-light)]/60`}>
+            <span
+              className={`${MICRO} font-normal text-[var(--charcoal-light)]/60`}
+            >
               BUSI 654. Applications of AI in Business
             </span>
           </div>
@@ -100,50 +97,203 @@ export default function Week01Introduction() {
       <Slide id="why-leaders" border align="left">
         <div>
           <div className={`${MICRO} text-[var(--champagne)]`}>Opening</div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
             Why Business Leaders Must Understand AI
           </h2>
         </div>
 
         <div className="w-full">
-          <div className="mt-10 grid gap-x-14 gap-y-6 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2">
-            <p className="font-serif text-lg leading-[1.65] text-[var(--charcoal)] md:text-[1.375rem]">
-              Artificial intelligence has moved from research labs into core
-              business operations.
-            </p>
-            <p className="font-serif text-lg leading-[1.65] text-[var(--charcoal-light)] md:text-[1.375rem]">
-              Modern companies process massive volumes of customer, transaction,
-              and operational data every second.
-            </p>
+          <div className="mt-8 grid max-w-5xl gap-x-14 gap-y-8 border-t border-[var(--charcoal)]/10 pt-7 md:grid-cols-2">
+            <div className="flex flex-col justify-between">
+              <p className="font-serif text-lg leading-[1.6] text-[var(--charcoal)] md:text-[1.3125rem]">
+                Artificial intelligence has moved from research labs into core
+                business operations.
+              </p>
+              <svg
+                role="img"
+                aria-label="Artificial intelligence moving from dashed research labs into solid core business operations."
+                viewBox="0 0 400 88"
+                className="mt-5 w-full"
+                fill="none"
+              >
+                <title>
+                  Artificial intelligence moving from dashed research labs into
+                  solid core business operations.
+                </title>
+                <rect
+                  x="4"
+                  y="12"
+                  width="148"
+                  height="64"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.28"
+                  strokeDasharray="3 3"
+                />
+                <text
+                  x="78"
+                  y="41"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.5"
+                  fontSize="9"
+                  letterSpacing="0.4"
+                  textAnchor="middle"
+                  fontFamily="var(--font-serif), Georgia, serif"
+                  fontWeight="600"
+                >
+                  RESEARCH
+                </text>
+                <text
+                  x="78"
+                  y="55"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.5"
+                  fontSize="9"
+                  letterSpacing="0.4"
+                  textAnchor="middle"
+                  fontFamily="var(--font-serif), Georgia, serif"
+                  fontWeight="600"
+                >
+                  LABS
+                </text>
+                <path
+                  d="M152 44H224"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.25"
+                />
+                <path
+                  d="M216 39L224 44L216 49"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.25"
+                />
+                <rect
+                  x="224"
+                  y="12"
+                  width="172"
+                  height="64"
+                  fill="var(--crimson)"
+                  fillOpacity="0.05"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.5"
+                />
+                <text
+                  x="310"
+                  y="41"
+                  fill="var(--crimson)"
+                  fontSize="9"
+                  letterSpacing="0.4"
+                  textAnchor="middle"
+                  fontFamily="var(--font-serif), Georgia, serif"
+                  fontWeight="600"
+                >
+                  CORE BUSINESS
+                </text>
+                <text
+                  x="310"
+                  y="55"
+                  fill="var(--crimson)"
+                  fontSize="9"
+                  letterSpacing="0.4"
+                  textAnchor="middle"
+                  fontFamily="var(--font-serif), Georgia, serif"
+                  fontWeight="600"
+                >
+                  OPERATIONS
+                </text>
+              </svg>
+            </div>
+
+            <div className="flex flex-col justify-between">
+              <p className="font-serif text-lg leading-[1.6] text-[var(--charcoal-light)] md:text-[1.3125rem]">
+                Modern companies process massive volumes of customer,
+                transaction, and operational data every second.
+              </p>
+              <svg
+                role="img"
+                aria-label="Three high-frequency pulse streams for customer, transaction, and operational data processed every second."
+                viewBox="0 0 400 88"
+                className="mt-5 w-full"
+                fill="none"
+              >
+                <title>
+                  Three high-frequency pulse streams for customer, transaction,
+                  and operational data processed every second.
+                </title>
+                {[
+                  { label: "CUSTOMER", y: 18, seed: 1 },
+                  { label: "TRANSACTION", y: 40, seed: 2 },
+                  { label: "OPERATIONAL", y: 62, seed: 3 },
+                ].map((lane) => (
+                  <g key={lane.label}>
+                    <text
+                      x="4"
+                      y={lane.y + 3}
+                      fill="var(--charcoal)"
+                      fillOpacity="0.6"
+                      fontSize="9"
+                      letterSpacing="0.4"
+                      fontFamily="var(--font-serif), Georgia, serif"
+                      fontWeight="600"
+                    >
+                      {lane.label}
+                    </text>
+                    <path
+                      d={`M124 ${lane.y}H396`}
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.14"
+                    />
+                    {Array.from({ length: 34 }).map((_, i) => {
+                      const x = +(128 + i * 7.8).toFixed(2);
+                      const h = 3 + ((i * 7 + lane.seed * 5) % 5);
+                      const recent = i >= 29;
+                      return (
+                        <path
+                          key={i}
+                          d={`M${x} ${lane.y - h}v${h * 2}`}
+                          stroke={recent ? "var(--crimson)" : "var(--charcoal)"}
+                          strokeOpacity={recent ? "0.85" : "0.38"}
+                          strokeWidth={recent ? "1.25" : "1"}
+                        />
+                      );
+                    })}
+                  </g>
+                ))}
+                <text
+                  x="396"
+                  y="82"
+                  fill="var(--champagne)"
+                  fontSize="9"
+                  letterSpacing="0.4"
+                  textAnchor="end"
+                  fontFamily="var(--font-serif), Georgia, serif"
+                  fontWeight="600"
+                >
+                  EVERY SECOND →
+                </text>
+              </svg>
+            </div>
           </div>
         </div>
 
-        <div className="mt-14 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-0">
+        <div className="mt-10 grid w-full max-w-5xl gap-8 md:grid-cols-2 md:gap-0">
           <div className="md:pr-12">
-            <div className={`${MICRO} text-[var(--charcoal-light)]/45`}>
-              Leaders do not need
-            </div>
-            <p className="mt-4 font-serif text-xl leading-[1.5] text-[var(--charcoal-light)]/45 [text-decoration-line:line-through] [text-decoration-thickness:1px] md:text-[1.625rem]">
+            <p className="mt-3 font-serif text-xl leading-[1.5] [text-decoration-thickness:1px] md:text-[1.5rem]">
               Leaders do not need to write raw code.
             </p>
           </div>
 
           <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              Leaders do need
-            </div>
-            <p className="mt-4 font-serif text-xl leading-[1.5] text-[var(--charcoal)] md:text-[1.625rem]">
+            <p className="mt-3 font-serif text-xl leading-[1.5] text-[var(--charcoal)] md:text-[1.5rem]">
               Leaders do need to understand what AI can and cannot do well.
             </p>
           </div>
         </div>
 
         <div className="w-full">
-          <figure className="mt-16 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
+          <figure className="mt-10 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
             <div className={`${MICRO} text-[var(--champagne)]`}>
               The strategic goal
             </div>
-            <blockquote className="mt-3 font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
+            <blockquote className="mt-2 font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               The primary strategic goal is knowing which business decisions can
               be improved with machine assistance.
             </blockquote>
@@ -166,7 +316,7 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--champagne)]`}>
             The unit of value
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
             Business as a Series of Decisions
           </h2>
           <p className="mt-7 max-w-3xl font-serif text-xl leading-[1.6] text-[var(--charcoal-light)] md:text-[1.5rem]">
@@ -174,13 +324,14 @@ export default function Week01Introduction() {
           </p>
         </div>
 
-        <div className="mt-12 w-full max-w-5xl">
+        <div className="mt-10 w-full max-w-5xl">
           <div>
             <div
-              className={`${MICRO} grid grid-cols-1 gap-2 border-b border-[var(--charcoal)]/15 pb-3 text-[var(--charcoal-light)]/45 md:grid-cols-[12rem_1fr] md:gap-10`}
+              className={`${MICRO} grid grid-cols-1 gap-2 border-b border-[var(--charcoal)]/15 pb-3 text-[var(--charcoal-light)]/45 md:grid-cols-[10rem_1fr_19rem] md:gap-8`}
             >
               <span>Function</span>
               <span>The choice, made again and again</span>
+              <span className="hidden md:block">Operational choice</span>
             </div>
           </div>
 
@@ -189,20 +340,285 @@ export default function Week01Introduction() {
               n: "01",
               who: "Marketers",
               line: "Marketers choose which audience to target and which message to show.",
+              figure: (
+                <svg
+                  role="img"
+                  aria-label="Three audience segments where one target audience is selected in crimson and matched to a message."
+                  viewBox="0 0 400 104"
+                  className="w-full"
+                  fill="none"
+                >
+                  <title>
+                    Three audience segments where one target audience is
+                    selected in crimson and matched to a message.
+                  </title>
+                  <text
+                    x="8"
+                    y="16"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.55"
+                    fontSize="10"
+                    letterSpacing="0.4"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    AUDIENCE
+                  </text>
+                  {[
+                    { y: 34, target: false },
+                    { y: 58, target: true },
+                    { y: 82, target: false },
+                  ].map((seg, i) => (
+                    <g key={i}>
+                      {[0, 1, 2].map((p) => (
+                        <circle
+                          key={p}
+                          cx={18 + p * 18}
+                          cy={seg.y}
+                          r="5"
+                          fill={
+                            seg.target ? "var(--crimson)" : "var(--charcoal)"
+                          }
+                          fillOpacity={seg.target ? "0.2" : "0.12"}
+                          stroke={
+                            seg.target ? "var(--crimson)" : "var(--charcoal)"
+                          }
+                          strokeOpacity={seg.target ? "1" : "0.35"}
+                          strokeWidth={seg.target ? "1.5" : "1"}
+                        />
+                      ))}
+                    </g>
+                  ))}
+                  <text
+                    x="74"
+                    y="61"
+                    fill="var(--crimson)"
+                    fontSize="10"
+                    letterSpacing="0.4"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    TARGET
+                  </text>
+                  <path
+                    d="M146 58H246"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.25"
+                  />
+                  <path
+                    d="M238 53L246 58L238 63"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.25"
+                  />
+                  <rect
+                    x="246"
+                    y="28"
+                    width="146"
+                    height="60"
+                    fill="var(--crimson)"
+                    fillOpacity="0.05"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.5"
+                  />
+                  <text
+                    x="319"
+                    y="54"
+                    fill="var(--crimson)"
+                    fontSize="10"
+                    letterSpacing="0.4"
+                    textAnchor="middle"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    MESSAGE
+                  </text>
+                  <path
+                    d="M272 68H366M286 76H352"
+                    stroke="var(--crimson)"
+                    strokeOpacity="0.45"
+                  />
+                </svg>
+              ),
             },
             {
               n: "02",
               who: "Financial managers",
               line: "Financial managers decide which loans to approve and which transactions to review for fraud.",
+              figure: (
+                <svg
+                  role="img"
+                  aria-label="Loans routed to approve and flagged transactions routed to review for fraud."
+                  viewBox="0 0 400 104"
+                  className="w-full"
+                  fill="none"
+                >
+                  <title>
+                    Loans routed to approve and flagged transactions routed to
+                    review for fraud.
+                  </title>
+                  <rect
+                    x="8"
+                    y="16"
+                    width="128"
+                    height="30"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.35"
+                  />
+                  <text
+                    x="72"
+                    y="35"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.65"
+                    fontSize="10"
+                    letterSpacing="0.4"
+                    textAnchor="middle"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    LOANS
+                  </text>
+                  <path
+                    d="M136 31H224"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.4"
+                  />
+                  <path
+                    d="M216 26L224 31L216 36"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.5"
+                  />
+                  <text
+                    x="236"
+                    y="35"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.65"
+                    fontSize="10"
+                    letterSpacing="0.4"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    APPROVE
+                  </text>
+
+                  <rect
+                    x="8"
+                    y="58"
+                    width="128"
+                    height="30"
+                    fill="var(--crimson)"
+                    fillOpacity="0.05"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.25"
+                  />
+                  <text
+                    x="72"
+                    y="77"
+                    fill="var(--crimson)"
+                    fontSize="10"
+                    letterSpacing="0.4"
+                    textAnchor="middle"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    TRANSACTIONS
+                  </text>
+                  <path
+                    d="M136 73H224"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.5"
+                  />
+                  <path
+                    d="M216 68L224 73L216 78"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.5"
+                  />
+                  <text
+                    x="236"
+                    y="77"
+                    fill="var(--crimson)"
+                    fontSize="10"
+                    letterSpacing="0.4"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    REVIEW FOR FRAUD
+                  </text>
+                </svg>
+              ),
             },
             {
               n: "03",
               who: "Supply chain teams",
               line: "Supply chain teams estimate how much inventory to order and when to replenish stock.",
+              figure: (
+                <svg
+                  role="img"
+                  aria-label="Inventory level falling to a threshold and triggering an order to replenish stock."
+                  viewBox="0 0 400 104"
+                  className="w-full"
+                  fill="none"
+                >
+                  <title>
+                    Inventory level falling to a threshold and triggering an
+                    order to replenish stock.
+                  </title>
+                  <text
+                    x="8"
+                    y="16"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.55"
+                    fontSize="10"
+                    letterSpacing="0.4"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    INVENTORY
+                  </text>
+                  <path
+                    d="M8 92H392"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.2"
+                  />
+                  <path
+                    d="M8 72H392"
+                    stroke="var(--crimson)"
+                    strokeOpacity="0.35"
+                    strokeDasharray="3 3"
+                  />
+                  <path
+                    d="M12 28L128 72V28L244 72"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.45"
+                    strokeWidth="1.25"
+                  />
+                  <path
+                    d="M244 72V26"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.75"
+                  />
+                  <path
+                    d="M239 34L244 26L249 34"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.5"
+                  />
+                  <circle cx="244" cy="72" r="3.5" fill="var(--crimson)" />
+                  <text
+                    x="258"
+                    y="54"
+                    fill="var(--crimson)"
+                    fontSize="10"
+                    letterSpacing="0.4"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    REPLENISH STOCK
+                  </text>
+                </svg>
+              ),
             },
           ].map((row) => (
             <div key={row.n}>
-              <div className="grid grid-cols-1 items-baseline gap-2 border-b border-[var(--charcoal)]/8 py-6 md:grid-cols-[12rem_1fr] md:gap-10">
+              <div className="grid grid-cols-1 items-center gap-4 border-b border-[var(--charcoal)]/8 py-5 md:grid-cols-[10rem_1fr_19rem] md:gap-8">
                 <div className="flex items-baseline gap-3 md:block">
                   <span
                     className={`${MICRO} text-[var(--champagne)] md:block`}
@@ -210,34 +626,21 @@ export default function Week01Introduction() {
                   >
                     {row.n}
                   </span>
-                  <span className="font-sans text-xs font-semibold uppercase leading-[1.4] tracking-[0.14em] text-[var(--charcoal)] md:mt-2 md:block">
+                  <span className="font-serif text-[1rem] font-medium tracking-normal text-[var(--charcoal)] md:mt-2 md:block">
                     {row.who}
                   </span>
                 </div>
-                <p className="font-serif text-lg leading-[1.6] text-[var(--charcoal)] md:text-[1.375rem]">
+                <p className="font-serif text-lg leading-[1.6] text-[var(--charcoal)] md:text-[1.3125rem]">
                   {row.line}
                 </p>
+                <div className="w-full max-w-[19rem]">{row.figure}</div>
               </div>
             </div>
           ))}
 
           <div>
-            <div className="mt-10">
-              <svg
-                aria-hidden
-                viewBox="0 0 160 34"
-                className="h-[34px] w-[160px] text-[var(--crimson)]"
-                fill="none"
-              >
-                <path
-                  d="M4 2v8c0 6 5 8 12 8h60M80 2v16M156 2v8c0 6-5 8-12 8H80M80 18v12"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  strokeOpacity="0.4"
-                />
-                <circle cx="80" cy="31" r="3" fill="currentColor" />
-              </svg>
-              <p className="mt-5 max-w-3xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
+            <div className="mt-8">
+              <p className="max-w-3xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
                 AI creates business value by improving the speed, accuracy, and
                 consistency of these operational choices.
               </p>
@@ -260,7 +663,7 @@ export default function Week01Introduction() {
           </div>
 
           <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-            <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
+            <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
               What Is Artificial Intelligence?
             </h2>
             <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
@@ -284,7 +687,7 @@ export default function Week01Introduction() {
       <Slide id="defining-ai" border align="left">
         <div>
           <div className={`${MICRO} text-[var(--champagne)]`}>Definition</div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
             Defining Artificial Intelligence
           </h2>
         </div>
@@ -300,73 +703,168 @@ export default function Week01Introduction() {
           </p>
         </div>
 
-        <div className="mt-14 grid w-full max-w-5xl gap-12 border-t border-[var(--charcoal)]/10 pt-10 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-14">
-            <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-              Traditional software
-            </div>
-            <div
-              aria-hidden
-              className="mt-6 space-y-1.5 font-mono text-[11px] leading-relaxed text-[var(--charcoal-light)]/50"
-            >
-              <div className="border-l border-[var(--charcoal)]/20 pl-3">
-                IF score &lt; 600 THEN decline
+        <div className="mt-12 grid w-full max-w-5xl gap-12 border-t border-[var(--charcoal)]/10 pt-10 md:grid-cols-2 md:gap-0">
+          <div className="flex flex-col justify-between md:pr-14">
+            <div>
+              <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
+                Traditional software
               </div>
-              <div className="border-l border-[var(--charcoal)]/20 pl-3">
-                IF amount &gt; 5000 THEN review
-              </div>
-              <div className="border-l border-[var(--charcoal)]/20 pl-3">
-                ELSE approve
-              </div>
-            </div>
-            <p className="mt-7 font-serif text-lg leading-[1.55] text-[var(--charcoal-light)] md:text-[1.375rem]">
-              Traditional software follows rigid rules written directly by human
-              programmers.
-            </p>
-          </div>
-
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-14">
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              Modern AI systems
+              <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal-light)] md:text-[1.375rem]">
+                Traditional software follows rigid rules written directly by
+                human programmers.
+              </p>
             </div>
             <svg
-              aria-hidden
-              viewBox="0 0 220 74"
-              className="mt-6 w-full max-w-[220px] text-[var(--crimson)]"
+              role="img"
+              aria-label="Human programmers writing rigid step-function rules for traditional software."
+              viewBox="0 0 400 124"
+              className="mt-7 w-full"
               fill="none"
             >
+              <title>
+                Human programmers writing rigid step-function rules for
+                traditional software.
+              </title>
+              <path
+                d="M16 12V98H388"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.22"
+              />
+              {/* Rigid orthogonal step rules */}
+              <path
+                d="M28 84H116V58H208V34H304V20H376"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.65"
+                strokeWidth="1.5"
+              />
               {[
-                [12, 58],
-                [34, 50],
-                [46, 61],
-                [62, 41],
-                [80, 46],
-                [96, 33],
-                [112, 38],
-                [130, 24],
-                [148, 30],
-                [166, 18],
-                [186, 22],
-                [206, 11],
+                [116, 84],
+                [116, 58],
+                [208, 58],
+                [208, 34],
+                [304, 34],
+                [304, 20],
+              ].map(([x, y], i) => (
+                <rect
+                  key={i}
+                  x={x - 2.5}
+                  y={y - 2.5}
+                  width="5"
+                  height="5"
+                  fill="var(--surface)"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.65"
+                />
+              ))}
+              <text
+                x="32"
+                y="26"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+                fontSize="10"
+                letterSpacing="0.4"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                RIGID RULES
+              </text>
+              <text
+                x="384"
+                y="115"
+                fill="var(--charcoal)"
+                fillOpacity="0.45"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="end"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                HUMAN PROGRAMMERS
+              </text>
+            </svg>
+          </div>
+
+          <div className="flex flex-col justify-between md:border-l md:border-[var(--charcoal)]/12 md:pl-14">
+            <div>
+              <div className={`${MICRO} text-[var(--crimson)]`}>
+                Modern AI systems
+              </div>
+              <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.375rem]">
+                Modern AI systems learn patterns directly from historical data.
+              </p>
+            </div>
+            <svg
+              role="img"
+              aria-label="Modern AI systems fitting a smooth crimson pattern curve directly through scattered historical data points."
+              viewBox="0 0 400 124"
+              className="mt-7 w-full"
+              fill="none"
+            >
+              <title>
+                Modern AI systems fitting a smooth crimson pattern curve
+                directly through scattered historical data points.
+              </title>
+              <path
+                d="M16 12V98H388"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.22"
+              />
+              {[
+                [36, 86],
+                [58, 78],
+                [76, 88],
+                [98, 70],
+                [122, 76],
+                [146, 60],
+                [168, 66],
+                [194, 50],
+                [218, 56],
+                [242, 40],
+                [268, 46],
+                [294, 30],
+                [320, 36],
+                [346, 22],
+                [370, 26],
               ].map(([x, y]) => (
                 <circle
                   key={`${x}-${y}`}
                   cx={x}
                   cy={y}
-                  r="2.5"
-                  fill="currentColor"
-                  fillOpacity="0.45"
+                  r="3"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.38"
                 />
               ))}
               <path
-                d="M8 62 C 70 54, 150 28, 212 10"
-                stroke="currentColor"
-                strokeWidth="1.25"
+                d="M28 88 C 128 78, 244 44, 378 18"
+                stroke="var(--crimson)"
+                strokeWidth="1.75"
               />
+              <text
+                x="32"
+                y="26"
+                fill="var(--crimson)"
+                fontSize="10"
+                letterSpacing="0.4"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                PATTERNS
+              </text>
+              <text
+                x="384"
+                y="115"
+                fill="var(--charcoal)"
+                fillOpacity="0.5"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="end"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                HISTORICAL DATA
+              </text>
             </svg>
-            <p className="mt-7 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.375rem]">
-              Modern AI systems learn patterns directly from historical data.
-            </p>
           </div>
         </div>
       </Slide>
@@ -380,81 +878,13 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--champagne)]`}>
             Three nested terms
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[1.75rem] font-bold leading-[1.06] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.75rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[1.75rem] font-semibold leading-[1.06] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.75rem]">
             Artificial Intelligence, Machine Learning, and Deep Learning
           </h2>
         </div>
 
-        <div className="mt-12 grid w-full max-w-5xl items-center gap-12 md:grid-cols-[minmax(0,20rem)_1fr] md:gap-16">
-          <div>
-            <svg
-              aria-hidden
-              viewBox="0 0 260 260"
-              className="w-full max-w-[20rem]"
-              fill="none"
-            >
-              <rect
-                x="1"
-                y="1"
-                width="258"
-                height="258"
-                stroke="var(--charcoal)"
-                strokeOpacity="0.22"
-              />
-              <rect
-                x="41"
-                y="41"
-                width="178"
-                height="178"
-                stroke="var(--champagne)"
-                strokeOpacity="0.6"
-              />
-              <rect
-                x="86"
-                y="86"
-                width="88"
-                height="88"
-                stroke="var(--crimson)"
-                strokeWidth="1.5"
-              />
-              <text
-                x="12"
-                y="24"
-                fill="var(--charcoal)"
-                fillOpacity="0.5"
-                fontSize="9"
-                letterSpacing="2.4"
-                fontFamily="var(--font-sans), sans-serif"
-                fontWeight="600"
-              >
-                AI
-              </text>
-              <text
-                x="52"
-                y="64"
-                fill="var(--champagne)"
-                fontSize="9"
-                letterSpacing="2.4"
-                fontFamily="var(--font-sans), sans-serif"
-                fontWeight="600"
-              >
-                ML
-              </text>
-              <text
-                x="97"
-                y="109"
-                fill="var(--crimson)"
-                fontSize="9"
-                letterSpacing="2.4"
-                fontFamily="var(--font-sans), sans-serif"
-                fontWeight="600"
-              >
-                DL
-              </text>
-            </svg>
-          </div>
-
-          <div className="space-y-8">
+        <div className="mt-10 grid w-full max-w-5xl items-center gap-12 md:grid-cols-[1fr_minmax(0,23rem)] md:gap-14">
+          <div className="space-y-7">
             {[
               {
                 tag: "Artificial Intelligence",
@@ -480,17 +910,171 @@ export default function Week01Introduction() {
                   <span className={`h-px w-8 shrink-0 ${layer.rule}`} />
                   <span className={`${MICRO} ${layer.tone}`}>{layer.tag}</span>
                 </div>
-                <p className="mt-3 max-w-xl font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+                <p className="mt-2.5 max-w-xl font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
                   {layer.line}
                 </p>
               </div>
             ))}
           </div>
+
+          <div>
+            <svg
+              role="img"
+              aria-label="Three nested frames showing Artificial Intelligence containing Machine Learning, which contains Deep Learning with a multi-layered neural network inside."
+              viewBox="0 0 400 280"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Three nested frames showing Artificial Intelligence containing
+                Machine Learning, which contains Deep Learning with a
+                multi-layered neural network inside.
+              </title>
+              {/* Outer frame: Artificial Intelligence */}
+              <rect
+                x="4"
+                y="4"
+                width="392"
+                height="272"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.28"
+              />
+              <text
+                x="18"
+                y="24"
+                fill="var(--charcoal)"
+                fillOpacity="0.6"
+                fontSize="10"
+                letterSpacing="0.4"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                ARTIFICIAL INTELLIGENCE
+              </text>
+
+              {/* Middle frame: Machine Learning */}
+              <rect
+                x="32"
+                y="40"
+                width="336"
+                height="216"
+                stroke="var(--champagne)"
+                strokeOpacity="0.65"
+              />
+              <text
+                x="46"
+                y="60"
+                fill="var(--champagne)"
+                fontSize="10"
+                letterSpacing="0.4"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                MACHINE LEARNING
+              </text>
+
+              {/* Inner frame: Deep Learning */}
+              <rect
+                x="64"
+                y="76"
+                width="272"
+                height="160"
+                fill="var(--crimson)"
+                fillOpacity="0.04"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                x="78"
+                y="96"
+                fill="var(--crimson)"
+                fontSize="10"
+                letterSpacing="0.4"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                DEEP LEARNING
+              </text>
+
+              {/* Multi-layered neural network inside Deep Learning */}
+              {[124, 156, 188].map((y1) =>
+                [116, 142, 168, 194].map((y2) => (
+                  <line
+                    key={`l1-${y1}-${y2}`}
+                    x1="126"
+                    y1={y1}
+                    x2="200"
+                    y2={y2}
+                    stroke="var(--crimson)"
+                    strokeOpacity="0.28"
+                  />
+                )),
+              )}
+              {[116, 142, 168, 194].map((y1) =>
+                [140, 172].map((y2) => (
+                  <line
+                    key={`l2-${y1}-${y2}`}
+                    x1="200"
+                    y1={y1}
+                    x2="274"
+                    y2={y2}
+                    stroke="var(--crimson)"
+                    strokeOpacity="0.28"
+                  />
+                )),
+              )}
+              {[124, 156, 188].map((y) => (
+                <circle
+                  key={`in-${y}`}
+                  cx="126"
+                  cy={y}
+                  r="4.5"
+                  fill="var(--surface)"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.5"
+                />
+              ))}
+              {[116, 142, 168, 194].map((y) => (
+                <circle
+                  key={`hid-${y}`}
+                  cx="200"
+                  cy={y}
+                  r="4.5"
+                  fill="var(--crimson)"
+                />
+              ))}
+              {[140, 172].map((y) => (
+                <circle
+                  key={`out-${y}`}
+                  cx="274"
+                  cy={y}
+                  r="4.5"
+                  fill="var(--surface)"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.5"
+                />
+              ))}
+              <text
+                x="200"
+                y="222"
+                fill="var(--crimson)"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                MULTI-LAYERED NEURAL NETWORKS
+              </text>
+            </svg>
+          </div>
         </div>
 
         <div className="w-full">
           <div className="mt-14 max-w-4xl border-t border-[var(--crimson)]/40 pt-6">
-            <div className={`${MICRO} text-[var(--crimson)]`}>Why it matters</div>
+            <div className={`${MICRO} text-[var(--crimson)]`}>
+              Why it matters
+            </div>
             <p className="mt-3 font-serif text-xl leading-[1.45] text-[var(--charcoal)] md:text-[1.625rem]">
               Deep learning works exceptionally well on complex data such as
               images, audio, and free-form text.
@@ -512,75 +1096,247 @@ export default function Week01Introduction() {
       >
         <div>
           <div className={`${MICRO} text-[var(--champagne)]`}>Two families</div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
             Predictive AI Versus Generative AI
           </h2>
         </div>
 
-        <div className="mt-12 grid w-full max-w-5xl gap-12 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-12 md:text-right">
-            <div className={`${MICRO} text-[var(--charcoal-light)]/60`}>
-              Predictive AI | reads the past
+        <div className="mt-10 grid w-full max-w-5xl gap-12 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-0">
+          <div className="flex flex-col justify-between md:pr-12">
+            <div>
+              <div className={`${MICRO} text-[var(--charcoal-light)]/60`}>
+                Predictive AI
+              </div>
+              <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+                Predictive AI analyzes past data to forecast future events,
+                estimate numbers, or classify items into categories.
+              </p>
+              <p className="mt-4 font-serif text-base leading-[1.6] text-[var(--charcoal-light)] md:text-lg">
+                Common predictive examples include credit risk scoring, fraud
+                detection, and customer churn forecasting.
+              </p>
             </div>
+
             <svg
-              aria-hidden
-              viewBox="0 0 200 16"
-              className="mt-5 ml-auto w-full max-w-[200px] text-[var(--charcoal)]"
+              role="img"
+              aria-label="Predictive AI reading a solid series of past data to project a forecast fan of future events."
+              viewBox="0 0 400 128"
+              className="mt-7 w-full"
               fill="none"
             >
-              <path d="M196 8H10" stroke="currentColor" strokeOpacity="0.3" />
+              <title>
+                Predictive AI reading a solid series of past data to project a
+                forecast fan of future events.
+              </title>
               <path
-                d="M10 8l7-4M10 8l7 4"
-                stroke="currentColor"
-                strokeOpacity="0.55"
+                d="M16 12V98H388"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.22"
               />
+              {/* Divider between past data and future events */}
+              <path
+                d="M220 12V98"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.28"
+                strokeDasharray="3 3"
+              />
+              {/* Past data trajectory */}
+              <path
+                d="M28 82L68 72L106 78L144 58L182 64L220 44"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.7"
+                strokeWidth="1.5"
+              />
+              {[
+                [28, 82],
+                [68, 72],
+                [106, 78],
+                [144, 58],
+                [182, 64],
+                [220, 44],
+              ].map(([x, y]) => (
+                <circle
+                  key={`${x}-${y}`}
+                  cx={x}
+                  cy={y}
+                  r="3"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.65"
+                />
+              ))}
+              {/* Forecast fan */}
+              <path
+                d="M220 44L372 18L372 64Z"
+                fill="var(--crimson)"
+                fillOpacity="0.08"
+              />
+              <path
+                d="M220 44L372 18M220 44L372 64"
+                stroke="var(--crimson)"
+                strokeOpacity="0.35"
+                strokeDasharray="3 3"
+              />
+              <path
+                d="M220 44L372 38"
+                stroke="var(--crimson)"
+                strokeWidth="1.75"
+                strokeDasharray="5 3"
+              />
+              <circle cx="372" cy="38" r="3.5" fill="var(--crimson)" />
+              <text
+                x="118"
+                y="116"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                PAST DATA
+              </text>
+              <text
+                x="304"
+                y="116"
+                fill="var(--crimson)"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                FUTURE EVENTS
+              </text>
             </svg>
-            <p className="mt-6 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
-              Predictive AI analyzes past data to forecast future events,
-              estimate numbers, or classify items into categories.
-            </p>
-            <p className="mt-5 font-serif text-base leading-[1.6] text-[var(--charcoal-light)] md:text-lg">
-              Common predictive examples include credit risk scoring, fraud
-              detection, and customer churn forecasting.
-            </p>
           </div>
 
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              Generative AI | writes something new
+          <div className="flex flex-col justify-between md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+            <div>
+              <div className={`${MICRO} text-[var(--crimson)]`}>
+                Generative AI
+              </div>
+              <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+                Generative AI creates new content such as text, images, audio,
+                or computer code based on learned patterns.
+              </p>
             </div>
+
             <svg
-              aria-hidden
-              viewBox="0 0 200 16"
-              className="mt-5 w-full max-w-[200px] text-[var(--crimson)]"
+              role="img"
+              aria-label="Generative AI transforming learned patterns into new content: text, images, audio, and computer code."
+              viewBox="0 0 400 128"
+              className="mt-7 w-full"
               fill="none"
             >
-              <path d="M4 8h186" stroke="currentColor" strokeOpacity="0.4" />
-              <path d="M190 8l-7-4M190 8l-7 4" stroke="currentColor" />
+              <title>
+                Generative AI transforming learned patterns into new content:
+                text, images, audio, and computer code.
+              </title>
+              {/* Learned patterns block on the left */}
+              <rect
+                x="12"
+                y="22"
+                width="108"
+                height="68"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.32"
+              />
+              {[36, 66, 96].map((cx) =>
+                [40, 56, 72].map((cy) => (
+                  <circle
+                    key={`${cx}-${cy}`}
+                    cx={cx}
+                    cy={cy}
+                    r="2.5"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.45"
+                  />
+                )),
+              )}
+              <path
+                d="M36 40L66 56L96 40M36 72L66 56L96 72"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.28"
+              />
+              <text
+                x="66"
+                y="116"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                LEARNED PATTERNS
+              </text>
+
+              {/* Branching to new content */}
+              <path
+                d="M120 56H146M146 32V80M146 32H174M146 80H174"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M166 27L174 32L166 37M166 75L174 80L166 85"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+
+              {/* 2x2 grid of created new content */}
+              {[
+                { label: "TEXT", x: 174, y: 14, w: 102 },
+                { label: "IMAGES", x: 284, y: 14, w: 108 },
+                { label: "AUDIO", x: 174, y: 62, w: 102 },
+                { label: "CODE", x: 284, y: 62, w: 108 },
+              ].map((card) => (
+                <g key={card.label}>
+                  <rect
+                    x={card.x}
+                    y={card.y}
+                    width={card.w}
+                    height="36"
+                    fill="var(--crimson)"
+                    fillOpacity="0.05"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.25"
+                  />
+                  <text
+                    x={card.x + card.w / 2}
+                    y={card.y + 22}
+                    fill="var(--crimson)"
+                    fontSize="9"
+                    letterSpacing="0.4"
+                    textAnchor="middle"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    {card.label}
+                  </text>
+                </g>
+              ))}
+              <text
+                x="283"
+                y="116"
+                fill="var(--crimson)"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                NEW CONTENT
+              </text>
             </svg>
-            <p className="mt-6 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
-              Generative AI creates new content such as text, images, audio, or
-              computer code based on learned patterns.
-            </p>
-            <div
-              aria-hidden
-              className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/45"
-            >
-              <span>text</span>
-              <span>|</span>
-              <span>images</span>
-              <span>|</span>
-              <span>audio</span>
-              <span>|</span>
-              <span>code</span>
-            </div>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-16 w-full max-w-5xl">
+          <div className="mt-12 w-full max-w-5xl">
             <div className="h-px w-full bg-[var(--charcoal)]/15" />
-            <p className="mt-7 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
+            <p className="mt-6 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               Most business value comes from combining predictive analysis with
               generative capabilities.
             </p>
@@ -598,80 +1354,307 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--champagne)]`}>
             The autonomy staircase
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <h2 className="mt-4 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.75rem]">
             From Chatbots to Autonomous Agents
           </h2>
         </div>
 
-        <ol className="mt-12 w-full max-w-5xl">
-          {[
-            {
-              n: "01",
-              tag: "Chatbots",
-              line: "Early AI assistants acted like simple conversational chatbots that answered one prompt at a time.",
-              warn: false,
-            },
-            {
-              n: "02",
-              tag: "Agentic AI",
-              line: "The latest frontier is agentic AI, where systems can pursue multi-step goals with minimal human supervision.",
-              warn: false,
-            },
-            {
-              n: "03",
-              tag: "An AI agent",
-              line: "An AI agent can plan steps, query databases, use software tools, and review its own output for errors.",
-              warn: false,
-            },
-            {
-              n: "04",
-              tag: "Autonomous execution",
-              line: "Autonomous execution increases operating speed, but it also demands clear safety boundaries.",
-              warn: true,
-            },
-          ].map((step, i) => (
-            <li key={step.n} className="block">
-              <div
-                className="border-t py-7 md:py-8"
-                style={{
-                  marginLeft: `calc(${i} * 3.5vw)`,
-                  borderColor: step.warn
-                    ? "var(--crimson)"
-                    : "rgba(26,26,29,0.12)",
-                }}
-              >
-                <div className="flex items-baseline gap-4">
-                  <span
-                    className={`${MICRO} ${
-                      step.warn
-                        ? "text-[var(--crimson)]"
-                        : "text-[var(--champagne)]"
-                    }`}
-                  >
-                    {step.n}
-                  </span>
-                  <span
-                    className={`${MICRO} ${
-                      step.warn
-                        ? "text-[var(--crimson)]"
-                        : "text-[var(--charcoal-light)]/60"
-                    }`}
-                  >
-                    {step.tag}
-                  </span>
+        <div className="mt-6 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_minmax(0,24rem)] md:gap-12">
+          <ol className="w-full">
+            {[
+              {
+                n: "01",
+                tag: "Chatbots",
+                line: "Early AI assistants acted like simple conversational chatbots that answered one prompt at a time.",
+                warn: false,
+              },
+              {
+                n: "02",
+                tag: "Agentic AI",
+                line: "The latest frontier is agentic AI, where systems can pursue multi-step goals with minimal human supervision.",
+                warn: false,
+              },
+              {
+                n: "03",
+                tag: "An AI agent",
+                line: "An AI agent can plan steps, query databases, use software tools, and review its own output for errors.",
+                warn: false,
+              },
+              {
+                n: "04",
+                tag: "Autonomous execution",
+                line: "Autonomous execution increases operating speed, but it also demands clear safety boundaries.",
+                warn: true,
+              },
+            ].map((step) => (
+              <li key={step.n} className="block">
+                <div
+                  className="border-t py-2.5"
+                  style={{
+                    borderColor: step.warn
+                      ? "var(--crimson)"
+                      : "rgba(26,26,29,0.12)",
+                  }}
+                >
+                  <div className="flex items-baseline gap-4">
+                    <span
+                      className={`${MICRO} ${
+                        step.warn
+                          ? "text-[var(--crimson)]"
+                          : "text-[var(--champagne)]"
+                      }`}
+                    >
+                      {step.n}
+                    </span>
+                    <span
+                      className={`${MICRO} ${
+                        step.warn
+                          ? "text-[var(--crimson)]"
+                          : "text-[var(--charcoal-light)]/60"
+                      }`}
+                    >
+                      {step.tag}
+                    </span>
+                  </div>
+                  <p className="mt-1 max-w-2xl font-serif text-base leading-[1.5] text-[var(--charcoal)] md:text-[1.0625rem]">
+                    {step.line}
+                  </p>
                 </div>
-                <p className="mt-3 max-w-3xl font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.4375rem]">
-                  {step.line}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
+              </li>
+            ))}
+          </ol>
+
+          <div>
+            <svg
+              role="img"
+              aria-label="Comparison between chatbots answering one prompt at a time and agentic AI executing a multi-step loop of planning steps, querying databases, using software tools, and reviewing output inside safety boundaries."
+              viewBox="0 0 400 284"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Comparison between chatbots answering one prompt at a time and
+                agentic AI executing a multi-step loop of planning steps,
+                querying databases, using software tools, and reviewing output
+                inside safety boundaries.
+              </title>
+              {/* Top: Chatbots: one prompt at a time */}
+              <text
+                x="12"
+                y="18"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+                fontSize="9"
+                letterSpacing="0.4"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                ONE PROMPT AT A TIME
+              </text>
+              <rect
+                x="12"
+                y="28"
+                width="104"
+                height="34"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.32"
+              />
+              <text
+                x="64"
+                y="49"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                PROMPT
+              </text>
+              <path
+                d="M116 45H156"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.4"
+              />
+              <path
+                d="M148 40L156 45L148 50"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.5"
+              />
+              <rect
+                x="156"
+                y="28"
+                width="108"
+                height="34"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.4"
+              />
+              <text
+                x="210"
+                y="49"
+                fill="var(--charcoal)"
+                fillOpacity="0.7"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                CHATBOTS
+              </text>
+              <path
+                d="M264 45H304"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.4"
+              />
+              <path
+                d="M296 40L304 45L296 50"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.5"
+              />
+              <rect
+                x="304"
+                y="28"
+                width="84"
+                height="34"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.32"
+              />
+              <text
+                x="346"
+                y="49"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                OUTPUT
+              </text>
+
+              {/* Bottom: Agentic AI multi-step loop inside safety boundaries */}
+              <rect
+                x="12"
+                y="84"
+                width="376"
+                height="192"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+                strokeDasharray="5 4"
+              />
+              <text
+                x="26"
+                y="104"
+                fill="var(--crimson)"
+                fontSize="9"
+                letterSpacing="0.4"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                AGENTIC AI
+              </text>
+              <text
+                x="374"
+                y="104"
+                fill="var(--crimson)"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="end"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                SAFETY BOUNDARIES
+              </text>
+
+              {/* 4 steps of the agent loop */}
+              {[
+                { label: "PLAN STEPS", x: 28, y: 120, w: 146 },
+                { label: "QUERY DATABASES", x: 226, y: 120, w: 146 },
+                { label: "REVIEW OUTPUT", x: 28, y: 204, w: 146 },
+                { label: "SOFTWARE TOOLS", x: 226, y: 204, w: 146 },
+              ].map((box) => (
+                <g key={box.label}>
+                  <rect
+                    x={box.x}
+                    y={box.y}
+                    width={box.w}
+                    height="44"
+                    fill="var(--crimson)"
+                    fillOpacity="0.04"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.25"
+                  />
+                  <text
+                    x={box.x + box.w / 2}
+                    y={box.y + 26}
+                    fill="var(--charcoal)"
+                    fontSize="9"
+                    letterSpacing="0.4"
+                    textAnchor="middle"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    {box.label}
+                  </text>
+                </g>
+              ))}
+
+              {/* Clockwise arrows connecting the 4 agent boxes */}
+              {/* Top: PLAN STEPS -> QUERY DATABASES */}
+              <path
+                d="M174 142H226"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M218 137L226 142L218 147"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              {/* Right: QUERY DATABASES -> SOFTWARE TOOLS */}
+              <path
+                d="M299 164V204"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M294 196L299 204L304 196"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              {/* Bottom: SOFTWARE TOOLS -> REVIEW OUTPUT */}
+              <path
+                d="M226 226H174"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M182 221L174 226L182 231"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              {/* Left: REVIEW OUTPUT -> PLAN STEPS */}
+              <path
+                d="M101 204V164"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M96 172L101 164L106 172"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+            </svg>
+          </div>
+        </div>
 
         <div className="w-full">
-          <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
+          <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
             <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
+            <p className="mt-1.5 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
               Think of a multi-step task you do regularly. What risks might
               arise if an autonomous software agent did that task without your
               supervision?
@@ -693,7 +1676,7 @@ export default function Week01Introduction() {
           </div>
 
           <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-            <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
+            <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
               The Economics of Prediction
             </h2>
             <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
@@ -719,7 +1702,7 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--champagne)]`}>
             A familiar economic pattern
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
             The Cost of Prediction Drops to Zero
           </h2>
           <p className="mt-7 max-w-3xl font-serif text-lg leading-[1.6] text-[var(--charcoal-light)] md:text-[1.3125rem]">
@@ -728,84 +1711,7 @@ export default function Week01Introduction() {
           </p>
         </div>
 
-        <div className="w-full">
-          <figure className="mt-12 w-full max-w-5xl">
-            <svg
-              aria-hidden
-              viewBox="0 0 640 220"
-              className="w-full"
-              fill="none"
-            >
-              {/* axes */}
-              <path
-                d="M56 8v182h568"
-                stroke="var(--charcoal)"
-                strokeOpacity="0.25"
-              />
-              {/* decay curve */}
-              <path
-                d="M56 26 C 190 40, 250 128, 360 158 C 456 182, 540 188, 624 189"
-                stroke="var(--crimson)"
-                strokeWidth="1.5"
-              />
-              {/* stations */}
-              {[
-                { x: 140, y: 58, label: "Arithmetic" },
-                { x: 340, y: 152, label: "Information" },
-                { x: 556, y: 189, label: "Prediction" },
-              ].map((s) => (
-                <g key={s.label}>
-                  <path
-                    d={`M${s.x} ${s.y}V190`}
-                    stroke="var(--charcoal)"
-                    strokeOpacity="0.14"
-                  />
-                  <circle cx={s.x} cy={s.y} r="3.5" fill="var(--crimson)" />
-                  <text
-                    x={s.x}
-                    y={s.y - 12}
-                    fill="var(--champagne)"
-                    fontSize="9"
-                    letterSpacing="2.2"
-                    textAnchor="middle"
-                    fontFamily="var(--font-sans), sans-serif"
-                    fontWeight="600"
-                  >
-                    {s.label.toUpperCase()}
-                  </text>
-                </g>
-              ))}
-              <text
-                x="46"
-                y="22"
-                fill="var(--charcoal)"
-                fillOpacity="0.45"
-                fontSize="9"
-                letterSpacing="2.2"
-                textAnchor="end"
-                fontFamily="var(--font-sans), sans-serif"
-                fontWeight="600"
-              >
-                COST
-              </text>
-              <text
-                x="46"
-                y="193"
-                fill="var(--charcoal)"
-                fillOpacity="0.45"
-                fontSize="9"
-                letterSpacing="2.2"
-                textAnchor="end"
-                fontFamily="var(--font-sans), sans-serif"
-                fontWeight="600"
-              >
-                ZERO
-              </text>
-            </svg>
-          </figure>
-        </div>
-
-        <div className="mt-10 grid w-full max-w-5xl gap-8 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-3 md:gap-10">
+        <div className="mt-8 grid w-full max-w-5xl gap-8 border-t border-[var(--charcoal)]/10 pt-7 md:grid-cols-3 md:gap-10">
           {[
             {
               tag: "Computers",
@@ -847,7 +1753,109 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <p className="mt-14 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
+          <figure className="mt-7 w-full max-w-5xl">
+            <svg
+              role="img"
+              aria-label="Three parallel cost curves showing computers making arithmetic cheap, the internet making information distribution cheap, and machine learning making prediction cheap."
+              viewBox="0 0 800 148"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Three parallel cost curves showing computers making arithmetic
+                cheap, the internet making information distribution cheap, and
+                machine learning making prediction cheap.
+              </title>
+              {[
+                {
+                  x0: 4,
+                  label: "ARITHMETIC",
+                  now: false,
+                },
+                {
+                  x0: 280,
+                  label: "INFORMATION DISTRIBUTION",
+                  now: false,
+                },
+                {
+                  x0: 556,
+                  label: "PREDICTION",
+                  now: true,
+                },
+              ].map((panel, idx) => {
+                const x1 = panel.x0 + 236;
+                const stroke = panel.now ? "var(--crimson)" : "var(--charcoal)";
+                return (
+                  <g key={panel.label}>
+                    <text
+                      x={panel.x0}
+                      y="16"
+                      fill={panel.now ? "var(--crimson)" : "var(--charcoal)"}
+                      fillOpacity={panel.now ? "1" : "0.55"}
+                      fontSize="9"
+                      letterSpacing="0.4"
+                      fontFamily="var(--font-serif), Georgia, serif"
+                      fontWeight="600"
+                    >
+                      {panel.label}
+                    </text>
+                    <path
+                      d={`M${panel.x0} 26V124H${x1}`}
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.22"
+                    />
+                    {idx === 0 && (
+                      <>
+                        <text
+                          x={panel.x0 + 10}
+                          y="40"
+                          fill="var(--charcoal)"
+                          fillOpacity="0.45"
+                          fontSize="9"
+                          letterSpacing="0.4"
+                          fontFamily="var(--font-serif), Georgia, serif"
+                          fontWeight="600"
+                        >
+                          COST
+                        </text>
+                        <text
+                          x={panel.x0 + 10}
+                          y="116"
+                          fill="var(--charcoal)"
+                          fillOpacity="0.45"
+                          fontSize="9"
+                          letterSpacing="0.4"
+                          fontFamily="var(--font-serif), Georgia, serif"
+                          fontWeight="600"
+                        >
+                          CHEAP
+                        </text>
+                      </>
+                    )}
+                    <path
+                      d={`M${panel.x0 + 10} 48 C ${panel.x0 + 64} 52, ${
+                        panel.x0 + 104
+                      } 112, ${x1 - 8} 120`}
+                      stroke={stroke}
+                      strokeOpacity={panel.now ? "1" : "0.5"}
+                      strokeWidth={panel.now ? "1.75" : "1.25"}
+                    />
+                    <circle
+                      cx={x1 - 8}
+                      cy="120"
+                      r={panel.now ? "3.5" : "3"}
+                      fill={stroke}
+                      fillOpacity={panel.now ? "1" : "0.5"}
+                    />
+                  </g>
+                );
+              })}
+            </svg>
+          </figure>
+        </div>
+
+        <div className="w-full">
+          <p className="mt-10 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
             When prediction becomes cheap, companies start applying it to
             problems that were never treated as prediction tasks before.
           </p>
@@ -869,86 +1877,24 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--champagne)]`}>
             What machines cannot do
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
             Prediction Versus Judgment
           </h2>
         </div>
 
-        <div className="w-full">
-          <svg
-            aria-hidden
-            viewBox="0 0 620 120"
-            className="mt-12 w-full max-w-4xl"
-            fill="none"
-          >
-            {/* beam, tilted: machine side low, human side high */}
-            <path
-              d="M70 76 L550 40"
-              stroke="var(--charcoal)"
-              strokeOpacity="0.3"
-              strokeWidth="1.25"
-            />
-            <path d="M310 58V104" stroke="var(--charcoal)" strokeOpacity="0.3" />
-            <path
-              d="M286 106h48"
-              stroke="var(--charcoal)"
-              strokeOpacity="0.3"
-            />
-            {/* machine pan */}
-            <path d="M70 76v14" stroke="var(--charcoal)" strokeOpacity="0.25" />
-            <path
-              d="M40 90h60"
-              stroke="var(--charcoal)"
-              strokeOpacity="0.35"
-            />
-            {/* human pan, crimson: the rising side */}
-            <path d="M550 40v14" stroke="var(--crimson)" strokeOpacity="0.5" />
-            <path d="M520 54h60" stroke="var(--crimson)" strokeWidth="1.5" />
-            <path
-              d="M550 26l-5 7h10z"
-              fill="var(--crimson)"
-            />
-            <text
-              x="70"
-              y="112"
-              fill="var(--charcoal)"
-              fillOpacity="0.45"
-              fontSize="9"
-              letterSpacing="2.2"
-              textAnchor="middle"
-              fontFamily="var(--font-sans), sans-serif"
-              fontWeight="600"
-            >
-              MACHINE
-            </text>
-            <text
-              x="550"
-              y="76"
-              fill="var(--crimson)"
-              fontSize="9"
-              letterSpacing="2.2"
-              textAnchor="middle"
-              fontFamily="var(--font-sans), sans-serif"
-              fontWeight="600"
-            >
-              HUMAN
-            </text>
-          </svg>
-        </div>
-
-        <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-0">
+        <div className="mt-8 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-7 md:grid-cols-2 md:gap-0">
           <div className="md:pr-12">
             <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
               Prediction
             </div>
-            <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.4375rem]">
+            <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
               A prediction is an estimate of what is likely to happen when
               information is incomplete.
             </p>
           </div>
           <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
             <div className={`${MICRO} text-[var(--crimson)]`}>Judgment</div>
-            <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.4375rem]">
+            <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
               A judgment is an evaluation of what outcome matters most, what is
               fair, and what risk is acceptable.
             </p>
@@ -956,11 +1902,11 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 max-w-4xl border-l border-[var(--charcoal)]/25 pl-6">
+          <div className="mt-8 max-w-4xl border-l border-[var(--charcoal)]/25 pl-6">
             <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
               The limit
             </div>
-            <p className="mt-3 font-serif text-lg leading-[1.6] text-[var(--charcoal-light)] md:text-[1.25rem]">
+            <p className="mt-2 font-serif text-lg leading-[1.55] text-[var(--charcoal-light)] md:text-[1.1875rem]">
               Machines handle prediction at scale, but they do not possess moral
               principles, business ethics, or context.
             </p>
@@ -968,10 +1914,163 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <p className="mt-12 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
+          <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
             As machine prediction becomes cheaper and faster, the economic value
             of human judgment goes up.
           </p>
+
+          <figure className="mt-6 w-full max-w-5xl">
+            <svg
+              role="img"
+              aria-label="Prediction estimating what is likely to happen before human judgment evaluates what is fair and acceptable, while falling machine prediction cost drives the economic value of human judgment up."
+              viewBox="0 0 800 132"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Prediction estimating what is likely to happen before human
+                judgment evaluates what is fair and acceptable, while falling
+                machine prediction cost drives the economic value of human
+                judgment up.
+              </title>
+              {/* Left panel: Prediction -> Judgment handoff */}
+              <rect
+                x="8"
+                y="24"
+                width="164"
+                height="84"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.32"
+              />
+              <text
+                x="90"
+                y="54"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="10"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                PREDICTION
+              </text>
+              <text
+                x="90"
+                y="76"
+                fill="var(--charcoal)"
+                fillOpacity="0.5"
+                fontSize="8.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                WHAT IS LIKELY
+              </text>
+
+              <path
+                d="M172 66H216"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M208 61L216 66L208 71"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+
+              <rect
+                x="216"
+                y="24"
+                width="172"
+                height="84"
+                fill="var(--crimson)"
+                fillOpacity="0.05"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                x="302"
+                y="54"
+                fill="var(--crimson)"
+                fontSize="10"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                JUDGMENT
+              </text>
+              <text
+                x="302"
+                y="76"
+                fill="var(--crimson)"
+                fontSize="8.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                WHAT IS FAIR
+              </text>
+
+              {/* Right panel: Diverging curves (prediction cost down, judgment value up) */}
+              <path
+                d="M436 16V116H788"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.22"
+              />
+              {/* Falling curve: machine prediction cost */}
+              <path
+                d="M448 34 C 488 38, 512 106, 776 106"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.45"
+                strokeWidth="1.25"
+                strokeDasharray="4 3"
+              />
+              <circle
+                cx="776"
+                cy="106"
+                r="3"
+                fill="var(--charcoal)"
+                fillOpacity="0.5"
+              />
+              <text
+                x="764"
+                y="88"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="end"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                MACHINE PREDICTION ↓
+              </text>
+
+              {/* Rising curve: economic value of human judgment */}
+              <path
+                d="M448 102 C 528 96, 612 38, 776 26"
+                stroke="var(--crimson)"
+                strokeWidth="1.75"
+              />
+              <circle cx="776" cy="26" r="3.5" fill="var(--crimson)" />
+              <text
+                x="764"
+                y="20"
+                fill="var(--crimson)"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="end"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                VALUE OF HUMAN JUDGMENT ↑
+              </text>
+            </svg>
+          </figure>
         </div>
       </Slide>
 
@@ -985,12 +2084,12 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--champagne)]`}>
             Where the money is
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
             The Three Sources of Business Value
           </h2>
         </div>
 
-        <div className="mt-14 grid w-full max-w-5xl gap-12 md:grid-cols-3 md:gap-0">
+        <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-3 md:gap-0">
           {[
             {
               n: "01",
@@ -1008,18 +2107,21 @@ export default function Week01Introduction() {
               line: "Risk management comes from catching fraud early, forecasting cash shortfalls, and monitoring compliance gaps.",
             },
           ].map((col, i) => (
-            <div key={col.n} className={
+            <div
+              key={col.n}
+              className={
                 i === 0
                   ? "md:pr-10"
                   : "md:border-l md:border-[var(--charcoal)]/12 md:px-10"
-              }>
-              <div className="font-serif text-[3.5rem] font-black leading-none tracking-[-0.04em] text-[var(--charcoal)]/12 md:text-[4.5rem]">
+              }
+            >
+              <div className="font-serif text-[2.75rem] font-black leading-none tracking-[-0.04em] text-[var(--charcoal)]/12 md:text-[3.5rem]">
                 {col.n}
               </div>
-              <div className={`${MICRO} mt-5 text-[var(--crimson)]`}>
+              <div className={`${MICRO} mt-4 text-[var(--champagne)]`}>
                 {col.tag}
               </div>
-              <p className="mt-4 font-serif text-base leading-[1.6] text-[var(--charcoal)] md:text-[1.125rem]">
+              <p className="mt-3 font-serif text-base leading-[1.6] text-[var(--charcoal)] md:text-[1.0625rem]">
                 {col.line}
               </p>
             </div>
@@ -1027,23 +2129,167 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <div className="mt-14 w-full max-w-5xl">
-            <svg
-              aria-hidden
-              viewBox="0 0 600 22"
-              className="w-full text-[var(--charcoal)]"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M2 2v8h296v10M598 2v8H302v10"
-                stroke="currentColor"
-                strokeOpacity="0.2"
-              />
-            </svg>
-            <p className="mt-6 max-w-4xl font-serif text-xl leading-[1.45] text-[var(--charcoal)] md:text-[1.625rem]">
-              Successful firms target all three areas instead of focusing on
-              headcount reduction alone.
+          <div className="mt-8 w-full max-w-5xl">
+            <figure className="w-full">
+              <svg
+                role="img"
+                aria-label="Three panels showing cost reduction dropping operating costs, revenue growth lifting sales, and risk management capping exposure, united under one crimson bracket for all three areas."
+                viewBox="0 0 800 132"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Three panels showing cost reduction dropping operating costs,
+                  revenue growth lifting sales, and risk management capping
+                  exposure, united under one crimson bracket for all three
+                  areas.
+                </title>
+                {/* 01 Cost reduction: step down */}
+                <path
+                  d="M4 14V88H236"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.22"
+                />
+                <rect
+                  x="28"
+                  y="28"
+                  width="56"
+                  height="60"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.35"
+                  strokeDasharray="3 3"
+                />
+                <rect
+                  x="136"
+                  y="56"
+                  width="56"
+                  height="32"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.08"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.65"
+                />
+                <path
+                  d="M84 36H164V56"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.5"
+                />
+                <path
+                  d="M159 48L164 56L169 48"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.6"
+                />
+                <text
+                  x="120"
+                  y="18"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.6"
+                  fontSize="9"
+                  letterSpacing="0.4"
+                  textAnchor="middle"
+                  fontFamily="var(--font-serif), Georgia, serif"
+                  fontWeight="600"
+                >
+                  COST REDUCTION ↓
+                </text>
+
+                {/* 02 Revenue growth: ascending steps */}
+                <path
+                  d="M282 14V88H514"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.22"
+                />
+                {[
+                  { x: 306, y: 62, h: 26 },
+                  { x: 374, y: 46, h: 42 },
+                  { x: 442, y: 28, h: 60 },
+                ].map((b, idx) => (
+                  <rect
+                    key={idx}
+                    x={b.x}
+                    y={b.y}
+                    width="44"
+                    height={b.h}
+                    fill="var(--charcoal)"
+                    fillOpacity="0.08"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.65"
+                  />
+                ))}
+                <text
+                  x="398"
+                  y="18"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.6"
+                  fontSize="9"
+                  letterSpacing="0.4"
+                  textAnchor="middle"
+                  fontFamily="var(--font-serif), Georgia, serif"
+                  fontWeight="600"
+                >
+                  REVENUE GROWTH ↑
+                </text>
+
+                {/* 03 Risk management: spikes caught at threshold */}
+                <path
+                  d="M560 14V88H792"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.22"
+                />
+                <path
+                  d="M560 44H792"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.4"
+                  strokeDasharray="3 3"
+                />
+                <path
+                  d="M572 74L604 72L624 44L644 74L684 70L704 44L724 72L776 72"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.65"
+                  strokeWidth="1.25"
+                />
+                <circle cx="624" cy="44" r="3" fill="var(--charcoal)" />
+                <circle cx="704" cy="44" r="3" fill="var(--charcoal)" />
+                <text
+                  x="676"
+                  y="18"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.6"
+                  fontSize="9"
+                  letterSpacing="0.4"
+                  textAnchor="middle"
+                  fontFamily="var(--font-serif), Georgia, serif"
+                  fontWeight="600"
+                >
+                  RISK MANAGEMENT
+                </text>
+
+                {/* Unifying crimson bracket: target all three areas */}
+                <path
+                  d="M4 98V108H792V98"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.5"
+                />
+                <text
+                  x="398"
+                  y="124"
+                  fill="var(--crimson)"
+                  fontSize="9"
+                  letterSpacing="0.4"
+                  textAnchor="middle"
+                  fontFamily="var(--font-serif), Georgia, serif"
+                  fontWeight="600"
+                >
+                  TARGET ALL THREE AREAS
+                </text>
+              </svg>
+            </figure>
+            <p className="mt-6 max-w-4xl font-serif text-xl font-medium leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
+              Successful firms{" "}
+              <span className="text-[var(--crimson)]">
+                target all three areas
+              </span>{" "}
+              instead of focusing on headcount reduction alone.
             </p>
           </div>
         </div>
@@ -1059,54 +2305,250 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--champagne)]`}>
             The commoditisation trap
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <h2 className="mt-4 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
             The Fallacy of Plug and Play
           </h2>
-          <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
+          <p className="mt-6 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
             Buying an off-the-shelf AI tool does not guarantee a lasting
             competitive edge.
           </p>
         </div>
 
-        <div className="mt-14 grid w-full max-w-5xl gap-12 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-12">
-            <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
-              Public models and subscriptions
+        <div className="mt-8 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-7 md:grid-cols-2 md:gap-0">
+          <div className="flex flex-col justify-between md:pr-12">
+            <div>
+              <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
+                Public models and subscriptions
+              </div>
+              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal-light)] md:text-[1.25rem]">
+                Anyone can purchase the same public models and software
+                subscriptions.
+              </p>
             </div>
-            <div aria-hidden className="mt-6 grid max-w-[240px] grid-cols-3 gap-2">
-              {Array.from({ length: 9 }).map((_, i) => (
-                <span
-                  key={i}
-                  className="block h-12 border border-[var(--charcoal)]/15"
-                />
+            <svg
+              role="img"
+              aria-label="Three identical public model subscription boxes available to anyone, offering no differentiation."
+              viewBox="0 0 400 112"
+              className="mt-6 w-full"
+              fill="none"
+            >
+              <title>
+                Three identical public model subscription boxes available to
+                anyone, offering no differentiation.
+              </title>
+              {[12, 146, 280].map((x) => (
+                <g key={x}>
+                  <rect
+                    x={x}
+                    y="16"
+                    width="108"
+                    height="64"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.32"
+                  />
+                  <text
+                    x={x + 54}
+                    y="44"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.55"
+                    fontSize="8.5"
+                    letterSpacing="2"
+                    textAnchor="middle"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    PUBLIC
+                  </text>
+                  <text
+                    x={x + 54}
+                    y="58"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.55"
+                    fontSize="8.5"
+                    letterSpacing="2"
+                    textAnchor="middle"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    MODELS
+                  </text>
+                </g>
               ))}
-            </div>
-            <p className="mt-7 font-serif text-lg leading-[1.55] text-[var(--charcoal-light)] md:text-[1.3125rem]">
-              Anyone can purchase the same public models and software
-              subscriptions.
-            </p>
+              <text
+                x="200"
+                y="102"
+                fill="var(--charcoal)"
+                fillOpacity="0.5"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                SOFTWARE SUBSCRIPTIONS
+              </text>
+            </svg>
           </div>
 
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              Unique workflows and proprietary data
+          <div className="flex flex-col justify-between md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+            <div>
+              <div className={`${MICRO} text-[var(--crimson)]`}>
+                Unique workflows and proprietary data
+              </div>
+              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+                Real business advantage comes from connecting AI directly to
+                unique business workflows and high-quality proprietary data.
+              </p>
             </div>
-            <div aria-hidden className="mt-6 grid max-w-[240px] grid-cols-3 gap-2">
-              <span className="col-span-2 row-span-2 block h-[104px] border-[1.5px] border-[var(--crimson)]" />
-              <span className="block h-12 border border-[var(--charcoal)]/10" />
-              <span className="block h-12 border border-[var(--charcoal)]/10" />
-            </div>
-            <p className="mt-7 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
-              Real business advantage comes from connecting AI directly to
-              unique business workflows and high-quality proprietary data.
-            </p>
+            <svg
+              role="img"
+              aria-label="AI connected directly to proprietary data and unique workflows to create real business advantage."
+              viewBox="0 0 400 112"
+              className="mt-6 w-full"
+              fill="none"
+            >
+              <title>
+                AI connected directly to proprietary data and unique workflows
+                to create real business advantage.
+              </title>
+              {/* Left: Proprietary data */}
+              <rect
+                x="8"
+                y="16"
+                width="124"
+                height="64"
+                fill="var(--crimson)"
+                fillOpacity="0.04"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <text
+                x="70"
+                y="44"
+                fill="var(--crimson)"
+                fontSize="8.5"
+                letterSpacing="2"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                PROPRIETARY
+              </text>
+              <text
+                x="70"
+                y="58"
+                fill="var(--crimson)"
+                fontSize="8.5"
+                letterSpacing="2"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                DATA
+              </text>
+
+              <path
+                d="M132 48H164"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M156 43L164 48L156 53"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+
+              {/* Center: AI */}
+              <rect
+                x="164"
+                y="24"
+                width="72"
+                height="48"
+                fill="var(--crimson)"
+                fillOpacity="0.08"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                x="200"
+                y="52"
+                fill="var(--crimson)"
+                fontSize="10"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                AI
+              </text>
+
+              <path
+                d="M236 48H268"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M260 43L268 48L260 53"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+
+              {/* Right: Unique workflows */}
+              <rect
+                x="268"
+                y="16"
+                width="124"
+                height="64"
+                fill="var(--crimson)"
+                fillOpacity="0.04"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <text
+                x="330"
+                y="44"
+                fill="var(--crimson)"
+                fontSize="8.5"
+                letterSpacing="2"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                UNIQUE
+              </text>
+              <text
+                x="330"
+                y="58"
+                fill="var(--crimson)"
+                fontSize="8.5"
+                letterSpacing="2"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                WORKFLOWS
+              </text>
+
+              <text
+                x="200"
+                y="102"
+                fill="var(--crimson)"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                REAL BUSINESS ADVANTAGE
+              </text>
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
+          <aside className="mt-8 max-w-3xl border border-[var(--charcoal)]/12 p-6 md:p-7">
             <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
+            <p className="mt-3 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.25rem]">
               If every firm in your industry uses the same commercial AI models,
               where will your competitive advantage come from?
             </p>
@@ -1127,7 +2569,7 @@ export default function Week01Introduction() {
           </div>
 
           <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-            <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
+            <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
               How Companies Apply AI
             </h2>
             <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
@@ -1158,41 +2600,302 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--crimson)]`}>
             Front office | the customer sees this
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
             Front-Office Applications: Customer Engagement
           </h2>
         </div>
 
-        <div className="mt-12 w-full max-w-5xl border-l-2 border-[var(--crimson)]/70 pl-7 md:pl-12">
-          {[
-            {
-              tag: "Customer service teams",
-              line: "Customer service teams use AI to answer common questions and route complex issues to human agents.",
-            },
-            {
-              tag: "Marketing teams",
-              line: "Marketing teams use machine learning to segment audiences and personalize promotional messages.",
-            },
-            {
-              tag: "E-commerce platforms",
-              line: "E-commerce platforms use recommendation engines to suggest products that match individual shopper interests.",
-            },
-          ].map((pane, i) => (
-            <div key={pane.tag}>
-              <div
-                className={`py-7 ${
-                  i > 0 ? "border-t border-[var(--charcoal)]/8" : "pt-0"
-                }`}
-              >
-                <div className={`${MICRO} text-[var(--champagne)]`}>
-                  {pane.tag}
+        <div className="mt-10 grid w-full max-w-5xl items-center gap-10 border-l-2 border-[var(--crimson)]/70 pl-7 md:grid-cols-[1fr_minmax(0,23rem)] md:gap-12 md:pl-10">
+          <div>
+            {[
+              {
+                tag: "Customer service teams",
+                line: "Customer service teams use AI to answer common questions and route complex issues to human agents.",
+              },
+              {
+                tag: "Marketing teams",
+                line: "Marketing teams use machine learning to segment audiences and personalize promotional messages.",
+              },
+              {
+                tag: "E-commerce platforms",
+                line: "E-commerce platforms use recommendation engines to suggest products that match individual shopper interests.",
+              },
+            ].map((pane, i) => (
+              <div key={pane.tag}>
+                <div
+                  className={`py-5 ${
+                    i > 0 ? "border-t border-[var(--charcoal)]/8" : "pt-0"
+                  }`}
+                >
+                  <div className={`${MICRO} text-[var(--champagne)]`}>
+                    {pane.tag}
+                  </div>
+                  <p className="mt-2.5 max-w-2xl font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+                    {pane.line}
+                  </p>
                 </div>
-                <p className="mt-3 max-w-3xl font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.4375rem]">
-                  {pane.line}
-                </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          <div>
+            <svg
+              role="img"
+              aria-label="Front-office customer engagement workflows: answering common questions or routing complex issues to human agents, segmenting audiences for promotional messages, and recommendation engines suggesting products."
+              viewBox="0 0 400 244"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Front-office customer engagement workflows: answering common
+                questions or routing complex issues to human agents, segmenting
+                audiences for promotional messages, and recommendation engines
+                suggesting products.
+              </title>
+              {/* Lane 1: Customer service teams */}
+              <rect
+                x="8"
+                y="12"
+                width="148"
+                height="28"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.32"
+              />
+              <text
+                x="82"
+                y="30"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="8.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                COMMON QUESTIONS
+              </text>
+              <path
+                d="M156 26H216"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M208 21L216 26L208 31"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <rect
+                x="216"
+                y="12"
+                width="176"
+                height="28"
+                fill="var(--crimson)"
+                fillOpacity="0.05"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <text
+                x="304"
+                y="30"
+                fill="var(--crimson)"
+                fontSize="8.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                AI: ANSWER
+              </text>
+
+              <rect
+                x="8"
+                y="48"
+                width="148"
+                height="28"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.32"
+              />
+              <text
+                x="82"
+                y="66"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="8.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                COMPLEX ISSUES
+              </text>
+              <path
+                d="M156 62H216"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.45"
+              />
+              <path
+                d="M208 57L216 62L208 67"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.55"
+              />
+              <rect
+                x="216"
+                y="48"
+                width="176"
+                height="28"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
+              <text
+                x="304"
+                y="66"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="8.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                HUMAN AGENTS
+              </text>
+
+              <path
+                d="M8 92H392"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.12"
+              />
+
+              {/* Lane 2: Marketing teams */}
+              <rect
+                x="8"
+                y="108"
+                width="148"
+                height="34"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.32"
+              />
+              <text
+                x="82"
+                y="129"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="8.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                SEGMENT AUDIENCES
+              </text>
+              <path
+                d="M156 125H216"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M208 120L216 125L208 130"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <rect
+                x="216"
+                y="108"
+                width="176"
+                height="34"
+                fill="var(--crimson)"
+                fillOpacity="0.05"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <text
+                x="304"
+                y="129"
+                fill="var(--crimson)"
+                fontSize="8.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                PROMOTIONAL MESSAGES
+              </text>
+
+              <path
+                d="M8 158H392"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.12"
+              />
+
+              {/* Lane 3: E-commerce platforms */}
+              <rect
+                x="8"
+                y="174"
+                width="148"
+                height="34"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.32"
+              />
+              <text
+                x="82"
+                y="195"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="8.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                SHOPPER INTERESTS
+              </text>
+              <path
+                d="M156 191H216"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M208 186L216 191L208 196"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <rect
+                x="216"
+                y="174"
+                width="176"
+                height="34"
+                fill="var(--crimson)"
+                fillOpacity="0.05"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <text
+                x="304"
+                y="195"
+                fill="var(--crimson)"
+                fontSize="8.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                SUGGEST PRODUCTS
+              </text>
+
+              <text
+                x="200"
+                y="234"
+                fill="var(--crimson)"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                REDUCING CUSTOMER FRICTION
+              </text>
+            </svg>
+          </div>
         </div>
 
         <div className="w-full">
@@ -1212,54 +2915,166 @@ export default function Week01Introduction() {
           to ink. Nobody outside the firm sees this work.
       ================================================================== */}
       <Slide id="back-office" border align="left">
-        <div className="w-full">
-          <div className="w-full max-w-5xl md:text-right">
-            <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-              Back office | nobody outside sees this
-            </div>
-            <h2 className="mt-5 font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
-              Back-Office Applications: Operations and Finance
-            </h2>
+        <div>
+          <div className={`${MICRO} text-[var(--champagne)]`}>
+            Back office | internal workflows
+          </div>
+          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
+            Back-Office Applications: Operations and Finance
+          </h2>
+        </div>
+
+        <div className="mt-10 grid w-full max-w-5xl items-center gap-10 border-l border-[var(--charcoal)]/25 pl-7 md:grid-cols-[1fr_minmax(0,24rem)] md:gap-12 md:pl-10">
+          <div>
+            {[
+              {
+                tag: "Operations teams",
+                line: "Operations teams use predictive models to forecast demand, prevent factory breakdowns, and plan delivery routes.",
+              },
+              {
+                tag: "Finance teams",
+                line: "Finance teams use machine learning to score loan applications, detect fraudulent charges, and reconcile records.",
+              },
+              {
+                tag: "Human resources teams",
+                line: "Human resources teams use AI to draft job descriptions, sort resumes, and match employees with training programs.",
+              },
+            ].map((row, i) => (
+              <div key={row.tag}>
+                <div
+                  className={`py-5 ${
+                    i > 0 ? "border-t border-[var(--charcoal)]/8" : "pt-0"
+                  }`}
+                >
+                  <div className={`${MICRO} text-[var(--champagne)]`}>
+                    {row.tag}
+                  </div>
+                  <p className="mt-2.5 max-w-2xl font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+                    {row.line}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div>
+            <svg
+              role="img"
+              aria-label="Back-office internal workflows across operations, finance, and human resources converging to cut operating costs."
+              viewBox="0 0 400 244"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Back-office internal workflows across operations, finance, and
+                human resources converging to cut operating costs.
+              </title>
+              {[
+                {
+                  team: "OPERATIONS TEAMS",
+                  y: 12,
+                  tasks: [
+                    "FORECAST DEMAND",
+                    "PREVENT BREAKDOWNS",
+                    "DELIVERY ROUTES",
+                  ],
+                },
+                {
+                  team: "FINANCE TEAMS",
+                  y: 78,
+                  tasks: ["SCORE LOANS", "DETECT FRAUD", "RECONCILE RECORDS"],
+                },
+                {
+                  team: "HUMAN RESOURCES TEAMS",
+                  y: 144,
+                  tasks: [
+                    "JOB DESCRIPTIONS",
+                    "SORT RESUMES",
+                    "TRAINING PROGRAMS",
+                  ],
+                },
+              ].map((unit) => (
+                <g key={unit.team}>
+                  <text
+                    x="8"
+                    y={unit.y + 10}
+                    fill="var(--charcoal)"
+                    fillOpacity="0.55"
+                    fontSize="8.5"
+                    letterSpacing="2"
+                    fontFamily="var(--font-serif), Georgia, serif"
+                    fontWeight="600"
+                  >
+                    {unit.team}
+                  </text>
+                  {unit.tasks.map((task, idx) => {
+                    const x = 8 + idx * 130;
+                    return (
+                      <g key={task}>
+                        <rect
+                          x={x}
+                          y={unit.y + 18}
+                          width="124"
+                          height="32"
+                          stroke="var(--charcoal)"
+                          strokeOpacity="0.32"
+                        />
+                        {idx < 2 && (
+                          <path
+                            d={`M${x + 124} ${unit.y + 34}H${x + 130}`}
+                            stroke="var(--charcoal)"
+                            strokeOpacity="0.35"
+                          />
+                        )}
+                        <text
+                          x={x + 62}
+                          y={unit.y + 37}
+                          fill="var(--charcoal)"
+                          fillOpacity="0.7"
+                          fontSize="7.5"
+                          letterSpacing="1.4"
+                          textAnchor="middle"
+                          fontFamily="var(--font-serif), Georgia, serif"
+                          fontWeight="600"
+                        >
+                          {task}
+                        </text>
+                      </g>
+                    );
+                  })}
+                </g>
+              ))}
+
+              {/* Unifying crimson bracket at the bottom */}
+              <path
+                d="M8 206V216H392V206"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                x="200"
+                y="234"
+                fill="var(--crimson)"
+                fontSize="9"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                CUTS OPERATING COSTS
+              </text>
+            </svg>
           </div>
         </div>
 
-        <div className="mt-12 w-full max-w-5xl border-[var(--charcoal)]/25 pr-0 md:border-r-2 md:pr-12 md:text-right">
-          {[
-            {
-              tag: "Operations teams",
-              line: "Operations teams use predictive models to forecast demand, prevent factory breakdowns, and plan delivery routes.",
-            },
-            {
-              tag: "Finance teams",
-              line: "Finance teams use machine learning to score loan applications, detect fraudulent charges, and reconcile records.",
-            },
-            {
-              tag: "Human resources teams",
-              line: "Human resources teams use AI to draft job descriptions, sort resumes, and match employees with training programs.",
-            },
-          ].map((row, i) => (
-            <div key={row.tag}>
-              <div
-                className={`py-7 ${
-                  i > 0 ? "border-t border-[var(--charcoal)]/8" : "pt-0"
-                }`}
-              >
-                <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
-                  {row.tag}
-                </div>
-                <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:ml-auto md:max-w-3xl md:text-[1.4375rem]">
-                  {row.line}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
         <div className="w-full">
-          <div className="w-full max-w-5xl md:text-right">
-            <p className="mt-12 font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:ml-auto md:max-w-3xl md:text-[2rem]">
-              Back-office automation cuts operating costs and speeds up internal
-              workflows.
+          <div className="mt-10 max-w-4xl border-t border-[var(--crimson)]/40 pt-6">
+            <p className="font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+              Back-office automation{" "}
+              <span className="text-[var(--crimson)]">
+                cuts operating costs
+              </span>{" "}
+              and speeds up internal workflows.
             </p>
           </div>
         </div>
@@ -1280,101 +3095,327 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--champagne)]`}>
             Where the human sits
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <h2 className="mt-4 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
             Human in the Loop Versus Full Autonomy
           </h2>
         </div>
 
-        <div className="mt-11 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-12">
-            <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-              Full autonomy
+        <div className="mt-8 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-7 md:grid-cols-2 md:gap-0">
+          <div className="flex flex-col justify-between md:pr-12">
+            <div>
+              <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
+                Full autonomy
+              </div>
+              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+                Full autonomy means the computer makes the decision and takes
+                action without waiting for human approval.
+              </p>
+              <p className="mt-3 font-serif text-base leading-[1.6] text-[var(--charcoal-light)] md:text-[1.0625rem]">
+                Low-stakes decisions with low cost of error can be automated
+                safely, such as product recommendations.
+              </p>
             </div>
-            <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
-              Full autonomy means the computer makes the decision and takes
-              action without waiting for human approval.
-            </p>
-          </div>
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              Human-in-the-loop
-            </div>
-            <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
-              Human-in-the-loop means a person must review and approve the
-              machine recommendation before it takes effect.
-            </p>
-          </div>
-        </div>
-
-        <div className="w-full">
-          <figure className="mt-14 w-full max-w-4xl">
-            <svg aria-hidden viewBox="0 0 560 150" className="w-full" fill="none">
-              <path
-                d="M40 138 A 240 240 0 0 1 520 138"
+            <svg
+              role="img"
+              aria-label="Full autonomy pipeline where the computer makes the decision and takes action directly for low-stakes decisions with low cost of error."
+              viewBox="0 0 400 104"
+              className="mt-6 w-full"
+              fill="none"
+            >
+              <title>
+                Full autonomy pipeline where the computer makes the decision and
+                takes action directly for low-stakes decisions with low cost of
+                error.
+              </title>
+              <rect
+                x="8"
+                y="18"
+                width="108"
+                height="48"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.32"
-                strokeWidth="1.25"
+                strokeOpacity="0.35"
+              />
+              <text
+                x="62"
+                y="46"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="8.5"
+                letterSpacing="2"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                COMPUTER
+              </text>
+              <path
+                d="M116 42H148"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.4"
               />
               <path
-                d="M300 44 A 240 240 0 0 1 520 138"
-                stroke="var(--crimson)"
-                strokeWidth="1.75"
+                d="M140 37L148 42L140 47"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.5"
               />
-              <circle cx="40" cy="138" r="3" fill="var(--charcoal)" fillOpacity="0.4" />
-              <circle cx="520" cy="138" r="3.5" fill="var(--crimson)" />
+
+              <rect
+                x="148"
+                y="18"
+                width="104"
+                height="48"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
               <text
-                x="40"
-                y="150"
+                x="200"
+                y="46"
                 fill="var(--charcoal)"
-                fillOpacity="0.45"
+                fillOpacity="0.65"
+                fontSize="8.5"
+                letterSpacing="2"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                DECISION
+              </text>
+              <path
+                d="M252 42H284"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.4"
+              />
+              <path
+                d="M276 37L284 42L276 47"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.5"
+              />
+
+              <rect
+                x="284"
+                y="18"
+                width="108"
+                height="48"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
+              <text
+                x="338"
+                y="40"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="8.5"
+                letterSpacing="2"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                TAKES
+              </text>
+              <text
+                x="338"
+                y="54"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="8.5"
+                letterSpacing="2"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                ACTION
+              </text>
+
+              <text
+                x="200"
+                y="92"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
                 fontSize="9"
-                letterSpacing="2.2"
-                fontFamily="var(--font-sans), sans-serif"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
                 fontWeight="600"
               >
                 LOW COST OF ERROR
               </text>
+            </svg>
+          </div>
+
+          <div className="flex flex-col justify-between md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+            <div>
+              <div className={`${MICRO} text-[var(--crimson)]`}>
+                Human-in-the-loop
+              </div>
+              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+                Human-in-the-loop means a person must review and approve the
+                machine recommendation before it takes effect.
+              </p>
+              <p className="mt-3 font-serif text-base leading-[1.6] text-[var(--charcoal-light)] md:text-[1.0625rem]">
+                High-stakes decisions that affect jobs, credit, health, or legal
+                liability require human sign-off and review.
+              </p>
+            </div>
+            <svg
+              role="img"
+              aria-label="Human-in-the-loop pipeline where a machine recommendation must pass through a crimson human sign-off and review checkpoint before it takes effect."
+              viewBox="0 0 400 104"
+              className="mt-6 w-full"
+              fill="none"
+            >
+              <title>
+                Human-in-the-loop pipeline where a machine recommendation must
+                pass through a crimson human sign-off and review checkpoint
+                before it takes effect.
+              </title>
+              <rect
+                x="8"
+                y="18"
+                width="108"
+                height="48"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
               <text
-                x="520"
-                y="150"
+                x="62"
+                y="40"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="8.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                MACHINE
+              </text>
+              <text
+                x="62"
+                y="54"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="7.5"
+                letterSpacing="1.2"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                RECOMMENDATION
+              </text>
+
+              <path
+                d="M116 42H142"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M134 37L142 42L134 47"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+
+              {/* Human sign-off gate */}
+              <rect
+                x="142"
+                y="14"
+                width="116"
+                height="56"
+                fill="var(--crimson)"
+                fillOpacity="0.06"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                x="200"
+                y="38"
+                fill="var(--crimson)"
+                fontSize="8.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                HUMAN SIGN-OFF
+              </text>
+              <text
+                x="200"
+                y="52"
+                fill="var(--crimson)"
+                fontSize="8.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                AND REVIEW
+              </text>
+
+              <path
+                d="M258 42H284"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M276 37L284 42L276 47"
+                stroke="var(--crimson)"
+                strokeWidth="1.25"
+              />
+
+              <rect
+                x="284"
+                y="18"
+                width="108"
+                height="48"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
+              <text
+                x="338"
+                y="40"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="8.5"
+                letterSpacing="2"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                TAKES
+              </text>
+              <text
+                x="338"
+                y="54"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="8.5"
+                letterSpacing="2"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                EFFECT
+              </text>
+
+              <text
+                x="200"
+                y="92"
                 fill="var(--crimson)"
                 fontSize="9"
-                letterSpacing="2.2"
-                textAnchor="end"
-                fontFamily="var(--font-sans), sans-serif"
+                letterSpacing="0.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
                 fontWeight="600"
               >
                 HIGH COST OF ERROR
               </text>
             </svg>
-
-            <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-14">
-              <div>
-                <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
-                  Automate safely
-                </div>
-                <p className="mt-3 font-serif text-base leading-[1.6] text-[var(--charcoal-light)] md:text-[1.0625rem]">
-                  Low-stakes decisions with low cost of error can be automated
-                  safely, such as product recommendations.
-                </p>
-              </div>
-              <div className="md:border-l md:border-[var(--crimson)]/30 md:pl-10">
-                <div className={`${MICRO} text-[var(--crimson)]`}>
-                  Human sign-off
-                </div>
-                <p className="mt-3 font-serif text-base leading-[1.6] text-[var(--charcoal)] md:text-[1.0625rem]">
-                  High-stakes decisions that affect jobs, credit, health, or
-                  legal liability require human sign-off and review.
-                </p>
-              </div>
-            </div>
-          </figure>
+          </div>
         </div>
 
         <div className="w-full">
-          <aside className="mt-14 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
+          <aside className="mt-8 max-w-3xl border border-[var(--charcoal)]/12 p-6 md:p-7">
             <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
+            <p className="mt-3 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.25rem]">
               In your view, which business decisions should always require human
               approval, even if an algorithm is 99 percent accurate?
             </p>
@@ -1395,7 +3436,7 @@ export default function Week01Introduction() {
           </div>
 
           <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-            <h2 className="font-serif text-[2rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.25rem]">
+            <h2 className="font-serif text-[2rem] font-semibold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.25rem]">
               Data and the Machine Learning Pipeline
             </h2>
             <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
@@ -1419,80 +3460,195 @@ export default function Week01Introduction() {
       <Slide id="data-raw-material" border align="left">
         <div>
           <div className={`${MICRO} text-[var(--champagne)]`}>Raw material</div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
             Data Is the Raw Material of AI
           </h2>
-          <p className="mt-8 font-serif text-[1.5rem] font-black leading-[1.2] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.5rem]">
+          <p className="mt-8 font-serif text-[1.5rem] font-medium leading-[1.2] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.5rem]">
             An algorithm cannot learn without data.
           </p>
         </div>
 
-        <div className="mt-14 grid w-full max-w-5xl gap-14 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-12">
-            <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-              Structured data
+        <div className="mt-10 grid w-full max-w-5xl gap-12 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-0">
+          <div className="flex flex-col justify-between md:pr-12">
+            <div>
+              <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
+                Structured data
+              </div>
+              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+                Structured data includes numbers, dates, and clear tables like
+                spreadsheet rows or SQL databases.
+              </p>
             </div>
-            <div
-              aria-hidden
-              className="mt-6 max-w-[300px] border border-[var(--charcoal)]/15 font-mono text-[10px] text-[var(--charcoal-light)]/60"
+            <svg
+              role="img"
+              aria-label="Structured data organized into clear table columns for dates and numbers across spreadsheet rows in SQL databases."
+              viewBox="0 0 400 124"
+              className="mt-6 w-full"
+              fill="none"
             >
-              {[
-                ["2024-01-08", "1,482"],
-                ["2024-01-09", "1,399"],
-                ["2024-01-10", "1,610"],
-              ].map(([d, v]) => (
-                <div
-                  key={d}
-                  className="flex items-center justify-between border-b border-[var(--charcoal)]/10 px-3 py-2 last:border-b-0"
-                >
-                  <span>{d}</span>
-                  <span className="border-l border-[var(--charcoal)]/10 pl-3 tabular-nums">
-                    {v}
-                  </span>
-                </div>
+              <title>
+                Structured data organized into clear table columns for dates and
+                numbers across spreadsheet rows in SQL databases.
+              </title>
+              <rect
+                x="12"
+                y="12"
+                width="376"
+                height="84"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.32"
+              />
+              <path
+                d="M12 36H388M12 56H388M12 76H388M136 12V96M262 12V96"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.2"
+              />
+              <text
+                x="74"
+                y="28"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="9"
+                letterSpacing="1.6"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                DATES
+              </text>
+              <text
+                x="199"
+                y="28"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="9"
+                letterSpacing="1.6"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                NUMBERS
+              </text>
+              <text
+                x="325"
+                y="28"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="9"
+                letterSpacing="1.6"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                CLEAR TABLES
+              </text>
+              {[46, 66, 86].map((y, rIdx) => (
+                <g key={y}>
+                  <path
+                    d={`M36 ${y}H112M162 ${y}H236M288 ${y}H362`}
+                    stroke="var(--charcoal)"
+                    strokeOpacity={rIdx === 0 ? "0.45" : "0.28"}
+                    strokeWidth="1.5"
+                  />
+                </g>
               ))}
-            </div>
-            <p className="mt-7 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
-              Structured data includes numbers, dates, and clear tables like
-              spreadsheet rows or SQL databases.
-            </p>
+              <text
+                x="200"
+                y="115"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+                fontSize="9.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                SPREADSHEET ROWS | SQL DATABASES
+              </text>
+            </svg>
           </div>
 
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div className={`${MICRO} text-[var(--crimson)]`}>
-              Unstructured data
+          <div className="flex flex-col justify-between md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+            <div>
+              <div className={`${MICRO} text-[var(--crimson)]`}>
+                Unstructured data
+              </div>
+              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+                Unstructured data includes emails, video footage, audio
+                recordings, customer reviews, and scanned PDFs.
+              </p>
             </div>
-            <div aria-hidden className="relative mt-6 h-[124px] max-w-[320px]">
+            <svg
+              role="img"
+              aria-label="Unstructured data slips for emails, video footage, audio recordings, customer reviews, and scanned PDFs."
+              viewBox="0 0 400 124"
+              className="mt-6 w-full"
+              fill="none"
+            >
+              <title>
+                Unstructured data slips for emails, video footage, audio
+                recordings, customer reviews, and scanned PDFs.
+              </title>
               {[
-                { t: "emails", x: 0, y: 2, r: -3 },
-                { t: "video footage", x: 78, y: 6, r: 2.5 },
-                { t: "audio recordings", x: 4, y: 46, r: 1.5 },
-                { t: "customer reviews", x: 152, y: 52, r: -2 },
-                { t: "scanned PDFs", x: 46, y: 92, r: 3 },
-              ].map((slip) => (
-                <span
-                  key={slip.t}
-                  className="absolute whitespace-nowrap border border-[var(--crimson)]/35 bg-[var(--surface)] px-2 py-1 font-mono text-[10px] text-[var(--charcoal-light)]/70"
-                  style={{
-                    left: slip.x,
-                    top: slip.y,
-                    transform: `rotate(${slip.r}deg)`,
-                  }}
-                >
-                  {slip.t}
-                </span>
-              ))}
-            </div>
-            <p className="mt-7 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
-              Unstructured data includes emails, video footage, audio
-              recordings, customer reviews, and scanned PDFs.
-            </p>
+                { label: "EMAILS", x: 14, y: 14, w: 96, rot: -2.5 },
+                { label: "VIDEO FOOTAGE", x: 126, y: 12, w: 132, rot: 2 },
+                { label: "SCANNED PDFS", x: 274, y: 16, w: 112, rot: -1.8 },
+                { label: "AUDIO RECORDINGS", x: 32, y: 58, w: 154, rot: 1.8 },
+                { label: "CUSTOMER REVIEWS", x: 206, y: 56, w: 162, rot: -2 },
+              ].map((slip) => {
+                const cx = slip.x + slip.w / 2;
+                const cy = slip.y + 15;
+                return (
+                  <g
+                    key={slip.label}
+                    transform={`rotate(${slip.rot} ${cx} ${cy})`}
+                  >
+                    <rect
+                      x={slip.x}
+                      y={slip.y}
+                      width={slip.w}
+                      height="30"
+                      fill="var(--crimson)"
+                      fillOpacity="0.04"
+                      stroke="var(--crimson)"
+                      strokeWidth="1.25"
+                    />
+                    <text
+                      x={cx}
+                      y={slip.y + 19}
+                      fill="var(--crimson)"
+                      fontSize="8.5"
+                      letterSpacing="1.6"
+                      textAnchor="middle"
+                      fontFamily="var(--font-serif), Georgia, serif"
+                      fontWeight="600"
+                    >
+                      {slip.label}
+                    </text>
+                  </g>
+                );
+              })}
+              <text
+                x="200"
+                y="115"
+                fill="var(--crimson)"
+                fontSize="9.5"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                UNSTRUCTURED DATA
+              </text>
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
           <div className="mt-14 max-w-4xl border-t border-[var(--crimson)]/40 pt-6">
-            <div className={`${MICRO} text-[var(--crimson)]`}>Why it matters</div>
+            <div className={`${MICRO} text-[var(--crimson)]`}>
+              Why it matters
+            </div>
             <p className="mt-3 font-serif text-xl leading-[1.45] text-[var(--charcoal)] md:text-[1.625rem]">
               Modern deep learning allows companies to extract clear business
               insights from unstructured data for the first time.
@@ -1516,83 +3672,265 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--champagne)]`}>
             Garbage in, garbage out
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
             Data Quality, Bias, and the Garbage-In Principle
           </h2>
-          <p className="mt-8 font-serif text-[1.5rem] font-black leading-[1.2] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.5rem]">
+          <p className="mt-6 font-serif text-[1.375rem] font-medium leading-[1.2] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2rem]">
             A model is only as good as the data used to train it.
           </p>
         </div>
 
-        <div className="w-full">
-          <svg
-            aria-hidden
-            viewBox="0 0 600 96"
-            className="mt-12 w-full max-w-4xl"
-            fill="none"
-          >
-            {/* inlet stream */}
-            <path
-              d="M6 30h190M6 48h190M6 66h190"
-              stroke="var(--crimson)"
-              strokeOpacity="0.35"
-            />
-            {/* the model, a plain box that changes nothing about quality */}
-            <rect
-              x="216"
-              y="18"
-              width="168"
-              height="60"
-              stroke="var(--charcoal)"
-              strokeOpacity="0.3"
-            />
-            <text
-              x="300"
-              y="53"
-              fill="var(--charcoal)"
-              fillOpacity="0.5"
-              fontSize="9"
-              letterSpacing="2.4"
-              textAnchor="middle"
-              fontFamily="var(--font-sans), sans-serif"
-              fontWeight="600"
-            >
-              MODEL
-            </text>
-            {/* outlet stream, identical defects */}
-            <path
-              d="M404 30h188M404 48h188M404 66h188"
-              stroke="var(--crimson)"
-              strokeOpacity="0.35"
-            />
-            <path d="M592 48l-8-4v8z" fill="var(--crimson)" />
-          </svg>
-        </div>
-
-        <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-0">
+        <div className="mt-8 grid w-full max-w-5xl gap-8 md:grid-cols-2 md:gap-0">
           <div className="md:pr-12">
-            <div className={`${MICRO} text-[var(--crimson)]`}>
+            <div className={`${MICRO} text-[var(--champagne)]`}>
               Past human biases
             </div>
-            <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+            <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
               If historical data contains past human biases or missing records,
               the model will learn and repeat those errors.
             </p>
           </div>
           <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div className={`${MICRO} text-[var(--crimson)]`}>
+            <div className={`${MICRO} text-[var(--champagne)]`}>
               Incomplete records and bad labels
             </div>
-            <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+            <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
               Incomplete records and bad labels create noisy forecasts that
               mislead decision makers.
             </p>
           </div>
         </div>
 
+        <div className="mt-8 w-full max-w-5xl">
+          <svg
+            role="img"
+            aria-label="Diagram showing past human biases and missing records or incomplete records and bad labels entering a model and producing repeated errors and noisy forecasts."
+            viewBox="0 0 800 128"
+            className="w-full"
+            fill="none"
+          >
+            <title>
+              Diagram showing past human biases and missing records or
+              incomplete records and bad labels entering a model and producing
+              repeated errors and noisy forecasts.
+            </title>
+            {/* Top inlet: Past human biases / missing records */}
+            <rect
+              x="16"
+              y="14"
+              width="244"
+              height="42"
+              fill="var(--crimson)"
+              fillOpacity="0.04"
+              stroke="var(--crimson)"
+              strokeWidth="1.25"
+            />
+            <text
+              x="138"
+              y="32"
+              fill="var(--crimson)"
+              fontSize="8.5"
+              letterSpacing="1.5"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              PAST HUMAN BIASES
+            </text>
+            <text
+              x="138"
+              y="46"
+              fill="var(--charcoal)"
+              fillOpacity="0.65"
+              fontSize="7.5"
+              letterSpacing="1.3"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              MISSING RECORDS
+            </text>
+
+            {/* Bottom inlet: Incomplete records / bad labels */}
+            <rect
+              x="16"
+              y="72"
+              width="244"
+              height="42"
+              fill="var(--crimson)"
+              fillOpacity="0.04"
+              stroke="var(--crimson)"
+              strokeWidth="1.25"
+            />
+            <text
+              x="138"
+              y="90"
+              fill="var(--crimson)"
+              fontSize="8.5"
+              letterSpacing="1.5"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              INCOMPLETE RECORDS
+            </text>
+            <text
+              x="138"
+              y="104"
+              fill="var(--charcoal)"
+              fillOpacity="0.65"
+              fontSize="7.5"
+              letterSpacing="1.3"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              BAD LABELS
+            </text>
+
+            {/* Inlet arrows to MODEL */}
+            <path d="M260 35h54" stroke="var(--crimson)" strokeWidth="1.25" />
+            <path d="M320 35l-6-3.5v7z" fill="var(--crimson)" />
+            <path
+              d="M260 93h54"
+              stroke="var(--crimson)"
+              strokeWidth="1.25"
+              strokeDasharray="4 3"
+            />
+            <path d="M320 93l-6-3.5v7z" fill="var(--crimson)" />
+
+            {/* Center: MODEL */}
+            <rect
+              x="320"
+              y="14"
+              width="160"
+              height="100"
+              fill="var(--surface)"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.45"
+              strokeWidth="1.25"
+            />
+            <text
+              x="400"
+              y="58"
+              fill="var(--charcoal)"
+              fontSize="10"
+              letterSpacing="2"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              MODEL
+            </text>
+            <text
+              x="400"
+              y="76"
+              fill="var(--charcoal)"
+              fillOpacity="0.55"
+              fontSize="7.5"
+              letterSpacing="1.4"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              HISTORICAL DATA
+            </text>
+            <line
+              x1="336"
+              y1="35"
+              x2="464"
+              y2="35"
+              stroke="var(--crimson)"
+              strokeOpacity="0.25"
+              strokeDasharray="3 3"
+            />
+            <line
+              x1="336"
+              y1="93"
+              x2="464"
+              y2="93"
+              stroke="var(--crimson)"
+              strokeOpacity="0.25"
+              strokeDasharray="3 3"
+            />
+
+            {/* Outlet arrows from MODEL */}
+            <path d="M480 35h54" stroke="var(--crimson)" strokeWidth="1.25" />
+            <path d="M540 35l-6-3.5v7z" fill="var(--crimson)" />
+            <path
+              d="M480 93h54"
+              stroke="var(--crimson)"
+              strokeWidth="1.25"
+              strokeDasharray="4 3"
+            />
+            <path d="M540 93l-6-3.5v7z" fill="var(--crimson)" />
+
+            {/* Top outlet: Repeat those errors */}
+            <rect
+              x="540"
+              y="14"
+              width="244"
+              height="42"
+              fill="var(--crimson)"
+              fillOpacity="0.06"
+              stroke="var(--crimson)"
+              strokeWidth="1.5"
+            />
+            <text
+              x="662"
+              y="39"
+              fill="var(--crimson)"
+              fontSize="8.5"
+              letterSpacing="1.5"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              REPEAT THOSE ERRORS
+            </text>
+
+            {/* Bottom outlet: Noisy forecasts / Mislead decision makers */}
+            <rect
+              x="540"
+              y="72"
+              width="244"
+              height="42"
+              fill="var(--crimson)"
+              fillOpacity="0.06"
+              stroke="var(--crimson)"
+              strokeWidth="1.5"
+            />
+            <text
+              x="662"
+              y="90"
+              fill="var(--crimson)"
+              fontSize="8.5"
+              letterSpacing="1.5"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              NOISY FORECASTS
+            </text>
+            <text
+              x="662"
+              y="104"
+              fill="var(--charcoal)"
+              fillOpacity="0.65"
+              fontSize="7.5"
+              letterSpacing="1.3"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              MISLEAD DECISION MAKERS
+            </text>
+          </svg>
+        </div>
+
         <div className="w-full">
-          <figure className="mt-14 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
-            <blockquote className="font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.75rem]">
+          <figure className="mt-8 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
+            <blockquote className="font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.5rem]">
               High data quality and careful verification matter far more than
               using a trendy model architecture.
             </blockquote>
@@ -1610,71 +3948,13 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--champagne)]`}>
             A cycle, not a launch
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
             The Feedback Loop and Data Flywheel
           </h2>
         </div>
 
-        <div className="mt-12 grid w-full max-w-5xl items-center gap-12 md:grid-cols-[minmax(0,17rem)_1fr] md:gap-16">
-          <div>
-            <svg
-              aria-hidden
-              viewBox="0 0 220 220"
-              className="w-full max-w-[17rem]"
-              fill="none"
-            >
-              <circle
-                cx="110"
-                cy="110"
-                r="88"
-                stroke="var(--charcoal)"
-                strokeOpacity="0.18"
-              />
-              <circle
-                cx="110"
-                cy="110"
-                r="60"
-                stroke="var(--charcoal)"
-                strokeOpacity="0.08"
-              />
-              <path
-                d="M110 22 A 88 88 0 0 1 198 110"
-                stroke="var(--crimson)"
-                strokeWidth="1.75"
-              />
-              <path d="M198 110l-4.5-8h9z" fill="var(--crimson)" />
-              {[
-                { x: 110, y: 22, n: "01", tx: 110, ty: 10, anchor: "middle" as const },
-                { x: 198, y: 110, n: "02", tx: 212, ty: 113, anchor: "end" as const },
-                { x: 110, y: 198, n: "03", tx: 110, ty: 215, anchor: "middle" as const },
-                { x: 22, y: 110, n: "04", tx: 8, ty: 113, anchor: "start" as const },
-              ].map((p) => (
-                <g key={p.n}>
-                  <circle
-                    cx={p.x}
-                    cy={p.y}
-                    r="4"
-                    fill="var(--surface)"
-                    stroke="var(--champagne)"
-                  />
-                  <text
-                    x={p.tx}
-                    y={p.ty}
-                    fill="var(--champagne)"
-                    fontSize="9"
-                    letterSpacing="2.2"
-                    textAnchor={p.anchor}
-                    fontFamily="var(--font-sans), sans-serif"
-                    fontWeight="600"
-                  >
-                    {p.n}
-                  </text>
-                </g>
-              ))}
-            </svg>
-          </div>
-
-          <ol className="space-y-8">
+        <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_minmax(0,25rem)] md:gap-12">
+          <ol className="space-y-6">
             {[
               {
                 n: "01",
@@ -1706,7 +3986,7 @@ export default function Week01Introduction() {
                     <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
                       {stage.tag}
                     </div>
-                    <p className="mt-2 max-w-xl font-serif text-base leading-[1.6] text-[var(--charcoal)] md:text-[1.1875rem]">
+                    <p className="mt-1.5 max-w-xl font-serif text-base leading-[1.55] text-[var(--charcoal)] md:text-[1.1875rem]">
                       {stage.line}
                     </p>
                   </div>
@@ -1714,6 +3994,294 @@ export default function Week01Introduction() {
               </li>
             ))}
           </ol>
+
+          <div>
+            <svg
+              role="img"
+              aria-label="Four-stage virtuous learning cycle connecting deployment, customer actions, retraining, and better predictions."
+              viewBox="0 0 400 260"
+              className="w-full max-w-[25rem]"
+              fill="none"
+            >
+              <title>
+                Four-stage virtuous learning cycle connecting deployment,
+                customer actions, retraining, and better predictions.
+              </title>
+              {/* Outer guide ring */}
+              <circle
+                cx="200"
+                cy="130"
+                r="64"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.18"
+                strokeWidth="1.25"
+              />
+
+              {/* Clockwise arcs along r=64 */}
+              {/* Q1: Top (200,66) to Right (264,130) */}
+              <path
+                d="M214 67.5 A 64 64 0 0 1 262.5 116"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.45"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M262.8 118l-4-6.5 6.8-1.2z"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+              />
+
+              {/* Q2: Right (264,130) to Bottom (200,194) */}
+              <path
+                d="M262.5 144 A 64 64 0 0 1 214 192.5"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.45"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M212 192.8l6.5-4 1.2 6.8z"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+              />
+
+              {/* Q3: Bottom (200,194) to Left (136,130) */}
+              <path
+                d="M186 192.5 A 64 64 0 0 1 137.5 144"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <path d="M137.2 142l4 6.5-6.8 1.2z" fill="var(--crimson)" />
+
+              {/* Q4: Left (136,130) to Top (200,66) */}
+              <path
+                d="M137.5 116 A 64 64 0 0 1 186 67.5"
+                stroke="var(--crimson)"
+                strokeWidth="1.75"
+              />
+              <path d="M188 67.2l-6.5 4-1.2-6.8z" fill="var(--crimson)" />
+
+              {/* Four cardinal nodes on the ring */}
+              <circle
+                cx="200"
+                cy="66"
+                r="4"
+                fill="var(--surface)"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.55"
+                strokeWidth="1.25"
+              />
+              <circle
+                cx="264"
+                cy="130"
+                r="4"
+                fill="var(--surface)"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.55"
+                strokeWidth="1.25"
+              />
+              <circle
+                cx="200"
+                cy="194"
+                r="4"
+                fill="var(--surface)"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.55"
+                strokeWidth="1.25"
+              />
+              <circle cx="136" cy="130" r="4.5" fill="var(--crimson)" />
+
+              {/* Center label */}
+              <text
+                x="200"
+                y="126"
+                fill="var(--crimson)"
+                fontSize="8"
+                letterSpacing="1.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                VIRTUOUS
+              </text>
+              <text
+                x="200"
+                y="139"
+                fill="var(--crimson)"
+                fontSize="8"
+                letterSpacing="1.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                LEARNING CYCLE
+              </text>
+
+              {/* 01 Top: DEPLOYMENT */}
+              <rect
+                x="126"
+                y="12"
+                width="148"
+                height="36"
+                fill="var(--surface)"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.3"
+              />
+              <text
+                x="200"
+                y="27"
+                fill="var(--champagne)"
+                fontSize="7.5"
+                letterSpacing="1.5"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                01
+              </text>
+              <text
+                x="200"
+                y="40"
+                fill="var(--charcoal)"
+                fontSize="8.5"
+                letterSpacing="1.5"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                DEPLOYMENT
+              </text>
+
+              {/* 02 Right: CUSTOMER ACTIONS */}
+              <rect
+                x="278"
+                y="108"
+                width="114"
+                height="44"
+                fill="var(--surface)"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.3"
+              />
+              <text
+                x="335"
+                y="121"
+                fill="var(--champagne)"
+                fontSize="7.5"
+                letterSpacing="1.5"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                02
+              </text>
+              <text
+                x="335"
+                y="133"
+                fill="var(--charcoal)"
+                fontSize="8"
+                letterSpacing="1.3"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                CUSTOMER
+              </text>
+              <text
+                x="335"
+                y="144"
+                fill="var(--charcoal)"
+                fontSize="8"
+                letterSpacing="1.3"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                ACTIONS
+              </text>
+
+              {/* 03 Bottom: RETRAINING */}
+              <rect
+                x="126"
+                y="212"
+                width="148"
+                height="36"
+                fill="var(--surface)"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.3"
+              />
+              <text
+                x="200"
+                y="227"
+                fill="var(--champagne)"
+                fontSize="7.5"
+                letterSpacing="1.5"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                03
+              </text>
+              <text
+                x="200"
+                y="240"
+                fill="var(--charcoal)"
+                fontSize="8.5"
+                letterSpacing="1.5"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                RETRAINING
+              </text>
+
+              {/* 04 Left: BETTER PREDICTIONS (highlighted in crimson) */}
+              <rect
+                x="8"
+                y="108"
+                width="114"
+                height="44"
+                fill="var(--crimson)"
+                fillOpacity="0.05"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                x="65"
+                y="121"
+                fill="var(--crimson)"
+                fontSize="7.5"
+                letterSpacing="1.5"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                04
+              </text>
+              <text
+                x="65"
+                y="133"
+                fill="var(--crimson)"
+                fontSize="8"
+                letterSpacing="1.3"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                BETTER
+              </text>
+              <text
+                x="65"
+                y="144"
+                fill="var(--crimson)"
+                fontSize="8"
+                letterSpacing="1.3"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                PREDICTIONS
+              </text>
+            </svg>
+          </div>
         </div>
       </Slide>
 
@@ -1730,7 +4298,7 @@ export default function Week01Introduction() {
           </div>
 
           <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-            <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
+            <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
               Risks, Ethics, and Governance
             </h2>
             <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
@@ -1758,13 +4326,13 @@ export default function Week01Introduction() {
         quizData={quiz["why-projects-fail"]}
       >
         <div>
-          <div className={`${MICRO} text-[var(--crimson)]`}>Post-mortem</div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <div className={`${MICRO} text-[var(--champagne)]`}>Post-mortem</div>
+          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
             Why Business AI Projects Fail
           </h2>
         </div>
 
-        <div className="mt-12 w-full max-w-5xl">
+        <div className="mt-8 grid w-full max-w-5xl gap-8 md:grid-cols-3 md:gap-8">
           {[
             {
               n: "01",
@@ -1782,34 +4350,291 @@ export default function Week01Introduction() {
               line: "Employees often resist new tools if they do not trust the recommendations or fear losing their jobs.",
             },
           ].map((cause) => (
-            <div key={cause.n}>
-              <div className="grid grid-cols-[3ch_1fr] gap-5 border-t border-[var(--charcoal)]/10 py-7 md:grid-cols-[4ch_1fr] md:gap-8">
-                <span className={`${MICRO} pt-2 text-[var(--crimson)]`}>
+            <div
+              key={cause.n}
+              className="border-t border-[var(--charcoal)]/15 pt-5"
+            >
+              <div className="flex items-baseline gap-3">
+                <span className={`${MICRO} text-[var(--champagne)]`}>
                   {cause.n}
                 </span>
-                <div>
-                  <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
-                    {cause.tag}
-                  </div>
-                  <p className="mt-3 max-w-3xl font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.375rem]">
-                    {cause.line}
-                  </p>
-                </div>
+                <span className={`${MICRO} text-[var(--charcoal-light)]/60`}>
+                  {cause.tag}
+                </span>
               </div>
-            </div>
-          ))}
-
-          <div>
-            <div className="mt-10 border border-[var(--crimson)]/45 p-7 md:p-9">
-              <div className={`${MICRO} text-[var(--crimson)]`}>
-                What adoption actually requires
-              </div>
-              <p className="mt-4 max-w-3xl font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.75rem]">
-                Clear executive sponsorship, realistic timelines, and change
-                management are essential for adoption.
+              <p className="mt-3 font-serif text-base leading-[1.55] text-[var(--charcoal)] md:text-[1.125rem]">
+                {cause.line}
               </p>
             </div>
+          ))}
+        </div>
+
+        <div className="mt-7 w-full max-w-5xl border-l-2 border-[var(--crimson)] pl-6">
+          <div className={`${MICRO} text-[var(--crimson)]`}>
+            What adoption actually requires
           </div>
+          <p className="mt-2 max-w-4xl font-serif text-lg leading-[1.45] text-[var(--charcoal)] md:text-[1.4375rem]">
+            Clear executive sponsorship, realistic timelines, and change
+            management are essential for adoption.
+          </p>
+        </div>
+
+        <div className="mt-7 w-full max-w-5xl">
+          <svg
+            role="img"
+            aria-label="Diagram contrasting the three causes why AI projects fail against the foundations required for adoption."
+            viewBox="0 0 800 120"
+            className="w-full"
+            fill="none"
+          >
+            <title>
+              Diagram contrasting the three causes why AI projects fail against
+              the foundations required for adoption.
+            </title>
+            {/* Top row: Three fractured links leading to PROJECTS FAIL */}
+            <rect
+              x="16"
+              y="12"
+              width="172"
+              height="36"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.28"
+              strokeDasharray="4 3"
+            />
+            <text
+              x="102"
+              y="33"
+              fill="var(--charcoal)"
+              fillOpacity="0.65"
+              fontSize="8"
+              letterSpacing="1.3"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              EXCITING TECHNOLOGY
+            </text>
+
+            <rect
+              x="212"
+              y="12"
+              width="172"
+              height="36"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.28"
+              strokeDasharray="4 3"
+            />
+            <text
+              x="298"
+              y="33"
+              fill="var(--charcoal)"
+              fillOpacity="0.65"
+              fontSize="8"
+              letterSpacing="1.3"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              POOR DATA QUALITY
+            </text>
+
+            <rect
+              x="408"
+              y="12"
+              width="172"
+              height="36"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.28"
+              strokeDasharray="4 3"
+            />
+            <text
+              x="494"
+              y="33"
+              fill="var(--charcoal)"
+              fillOpacity="0.65"
+              fontSize="8"
+              letterSpacing="1.3"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              EMPLOYEE RESISTANCE
+            </text>
+
+            {/* Broken connectors between top boxes */}
+            <line
+              x1="188"
+              y1="30"
+              x2="212"
+              y2="30"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.3"
+              strokeDasharray="2 2"
+            />
+            <line
+              x1="384"
+              y1="30"
+              x2="408"
+              y2="30"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.3"
+              strokeDasharray="2 2"
+            />
+            <line
+              x1="580"
+              y1="30"
+              x2="626"
+              y2="30"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.35"
+              strokeDasharray="3 3"
+            />
+            {/* Terminal stop bar */}
+            <line
+              x1="626"
+              y1="21"
+              x2="626"
+              y2="39"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.55"
+              strokeWidth="1.5"
+            />
+
+            <rect
+              x="636"
+              y="12"
+              width="148"
+              height="36"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.35"
+            />
+            <text
+              x="710"
+              y="33"
+              fill="var(--charcoal)"
+              fillOpacity="0.65"
+              fontSize="8"
+              letterSpacing="1.4"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              PROJECTS FAIL
+            </text>
+
+            {/* Bottom row: Connected path to ADOPTION */}
+            <rect
+              x="16"
+              y="72"
+              width="172"
+              height="36"
+              fill="var(--crimson)"
+              fillOpacity="0.04"
+              stroke="var(--crimson)"
+              strokeWidth="1.25"
+            />
+            <text
+              x="102"
+              y="93"
+              fill="var(--crimson)"
+              fontSize="7.5"
+              letterSpacing="1.2"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              EXECUTIVE SPONSORSHIP
+            </text>
+
+            <rect
+              x="212"
+              y="72"
+              width="172"
+              height="36"
+              fill="var(--crimson)"
+              fillOpacity="0.04"
+              stroke="var(--crimson)"
+              strokeWidth="1.25"
+            />
+            <text
+              x="298"
+              y="93"
+              fill="var(--crimson)"
+              fontSize="7.5"
+              letterSpacing="1.2"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              REALISTIC TIMELINES
+            </text>
+
+            <rect
+              x="408"
+              y="72"
+              width="172"
+              height="36"
+              fill="var(--crimson)"
+              fillOpacity="0.04"
+              stroke="var(--crimson)"
+              strokeWidth="1.25"
+            />
+            <text
+              x="494"
+              y="93"
+              fill="var(--crimson)"
+              fontSize="7.5"
+              letterSpacing="1.2"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              CHANGE MANAGEMENT
+            </text>
+
+            {/* Solid crimson connectors to ADOPTION */}
+            <line
+              x1="188"
+              y1="90"
+              x2="212"
+              y2="90"
+              stroke="var(--crimson)"
+              strokeWidth="1.25"
+            />
+            <line
+              x1="384"
+              y1="90"
+              x2="408"
+              y2="90"
+              stroke="var(--crimson)"
+              strokeWidth="1.25"
+            />
+            <path d="M580 90h50" stroke="var(--crimson)" strokeWidth="1.5" />
+            <path d="M636 90l-6-3.5v7z" fill="var(--crimson)" />
+
+            <rect
+              x="636"
+              y="72"
+              width="148"
+              height="36"
+              fill="var(--crimson)"
+              fillOpacity="0.08"
+              stroke="var(--crimson)"
+              strokeWidth="1.5"
+            />
+            <text
+              x="710"
+              y="93"
+              fill="var(--crimson)"
+              fontSize="8.5"
+              letterSpacing="1.6"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              ADOPTION
+            </text>
+          </svg>
         </div>
       </Slide>
 
@@ -1828,73 +4653,278 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--champagne)]`}>
             Two failures of trust
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
             Hallucinations, Accuracy, and the Black Box Problem
           </h2>
         </div>
 
-        <div className="mt-12 grid w-full max-w-5xl gap-12 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-12">
-            <div className={`${MICRO} text-[var(--crimson)]`}>Hallucinations</div>
-            <div aria-hidden className="mt-6 max-w-[280px] space-y-2">
-              {[1, 0.6, 0.34, 0.16, 0.07].map((o, i) => (
-                <span
-                  key={i}
-                  className="block h-1.5 bg-[var(--charcoal)]"
-                  style={{ opacity: o, width: `${100 - i * 9}%` }}
-                />
-              ))}
-            </div>
-            <p className="mt-7 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
-              Generative models can produce convincing answers that are
-              factually wrong, known as hallucinations.
-            </p>
-          </div>
-
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-              Black boxes
+        <div className="mt-8 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-0">
+          <div className="flex flex-col justify-between md:pr-12">
+            <div>
+              <div className={`${MICRO} text-[var(--crimson)]`}>
+                Hallucinations
+              </div>
+              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+                Generative models can produce convincing answers that are
+                factually wrong, known as hallucinations.
+              </p>
             </div>
             <svg
-              aria-hidden
-              viewBox="0 0 280 92"
-              className="mt-6 w-full max-w-[280px]"
+              role="img"
+              aria-label="Generative models producing convincing answers that are factually wrong, known as hallucinations."
+              viewBox="0 0 400 112"
+              className="mt-6 w-full max-w-[400px]"
               fill="none"
             >
-              <path d="M2 46h44" stroke="var(--charcoal)" strokeOpacity="0.35" />
-              <path d="M46 46l-7-4v8z" fill="var(--charcoal)" fillOpacity="0.45" />
-              <rect x="54" y="6" width="172" height="80" fill="var(--charcoal)" />
-              <path
-                d="M234 46h44"
+              <title>
+                Generative models producing convincing answers that are
+                factually wrong, known as hallucinations.
+              </title>
+              <rect
+                x="12"
+                y="18"
+                width="144"
+                height="48"
+                fill="var(--surface)"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.35"
               />
-              <path d="M278 46l-7-4v8z" fill="var(--charcoal)" fillOpacity="0.45" />
               <text
-                x="140"
-                y="54"
-                fill="var(--surface)"
-                fillOpacity="0.6"
-                fontSize="24"
+                x="84"
+                y="39"
+                fill="var(--charcoal)"
+                fontSize="8"
+                letterSpacing="1.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), serif"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
               >
-                ?
+                GENERATIVE
+              </text>
+              <text
+                x="84"
+                y="52"
+                fill="var(--charcoal)"
+                fontSize="8"
+                letterSpacing="1.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                MODELS
+              </text>
+
+              <path d="M156 42h34" stroke="var(--crimson)" strokeWidth="1.25" />
+              <path d="M196 42l-6-3.5v7z" fill="var(--crimson)" />
+
+              <rect
+                x="196"
+                y="12"
+                width="192"
+                height="60"
+                fill="var(--crimson)"
+                fillOpacity="0.05"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                x="292"
+                y="31"
+                fill="var(--charcoal)"
+                fontSize="8"
+                letterSpacing="1.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                CONVINCING ANSWERS
+              </text>
+              <line
+                x1="216"
+                y1="41"
+                x2="368"
+                y2="41"
+                stroke="var(--crimson)"
+                strokeOpacity="0.3"
+                strokeDasharray="3 3"
+              />
+              <text
+                x="292"
+                y="58"
+                fill="var(--crimson)"
+                fontSize="8.5"
+                letterSpacing="1.5"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                FACTUALLY WRONG
+              </text>
+
+              <text
+                x="200"
+                y="98"
+                fill="var(--crimson)"
+                fontSize="9"
+                letterSpacing="1.8"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                HALLUCINATIONS
               </text>
             </svg>
-            <p className="mt-7 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
-              Many deep learning models are black boxes, meaning humans cannot
-              easily trace how the system reached a conclusion.
-            </p>
+          </div>
+
+          <div className="flex flex-col justify-between md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+            <div>
+              <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
+                Black boxes
+              </div>
+              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+                Many deep learning models are black boxes, meaning humans cannot
+                easily trace how the system reached a conclusion.
+              </p>
+            </div>
+            <svg
+              role="img"
+              aria-label="Black box deep learning model where humans cannot easily trace how the system reached a conclusion."
+              viewBox="0 0 400 112"
+              className="mt-6 w-full max-w-[400px]"
+              fill="none"
+            >
+              <title>
+                Black box deep learning model where humans cannot easily trace
+                how the system reached a conclusion.
+              </title>
+              {/* Input arrow into black box */}
+              <path
+                d="M12 42h30"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.45"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M48 42l-6-3.5v7z"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+              />
+
+              {/* Opaque/veiled Black Box frame */}
+              <rect
+                x="48"
+                y="12"
+                width="184"
+                height="60"
+                fill="var(--charcoal)"
+                fillOpacity="0.06"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.55"
+                strokeWidth="1.5"
+              />
+              {/* Broken internal trace lines */}
+              <line
+                x1="64"
+                y1="24"
+                x2="216"
+                y2="24"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.22"
+                strokeDasharray="4 4"
+              />
+              <line
+                x1="64"
+                y1="60"
+                x2="216"
+                y2="60"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.22"
+                strokeDasharray="4 4"
+              />
+              <text
+                x="140"
+                y="38"
+                fill="var(--charcoal)"
+                fontSize="8.5"
+                letterSpacing="1.6"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                BLACK BOXES
+              </text>
+              <text
+                x="140"
+                y="52"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="7.5"
+                letterSpacing="1.2"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                CANNOT EASILY TRACE
+              </text>
+
+              {/* Output arrow to CONCLUSION */}
+              <path
+                d="M232 42h30"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.45"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M268 42l-6-3.5v7z"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+              />
+
+              <rect
+                x="268"
+                y="18"
+                width="120"
+                height="48"
+                fill="var(--surface)"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
+              <text
+                x="328"
+                y="45"
+                fill="var(--charcoal)"
+                fontSize="8"
+                letterSpacing="1.4"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                CONCLUSION
+              </text>
+
+              <text
+                x="200"
+                y="98"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="9"
+                letterSpacing="1.6"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                EXPLAIN THE EXACT LOGIC
+              </text>
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 max-w-4xl border-l border-[var(--charcoal)]/25 pl-6">
+          <div className="mt-8 max-w-4xl border-l border-[var(--charcoal)]/25 pl-6">
             <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
               Regulated industries
             </div>
-            <p className="mt-3 font-serif text-lg leading-[1.6] text-[var(--charcoal-light)] md:text-[1.25rem]">
+            <p className="mt-2 font-serif text-lg leading-[1.55] text-[var(--charcoal-light)] md:text-[1.1875rem]">
               In regulated fields like banking and healthcare, companies must be
               able to explain the exact logic behind their decisions.
             </p>
@@ -1902,7 +4932,7 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <p className="mt-12 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
+          <p className="mt-8 max-w-4xl font-serif text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
             Leaders must test system outputs and build guardrails before
             deploying customer-facing AI.
           </p>
@@ -1916,13 +4946,15 @@ export default function Week01Introduction() {
       ================================================================== */}
       <Slide id="privacy-security-ip" border align="left">
         <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>Three exposures</div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
+          <div className={`${MICRO} text-[var(--champagne)]`}>
+            Three exposures
+          </div>
+          <h2 className="mt-4 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.75rem]">
             Privacy, Security, and Intellectual Property
           </h2>
         </div>
 
-        <div className="mt-12 grid w-full max-w-5xl gap-8 md:grid-cols-3 md:gap-6">
+        <div className="mt-7 grid w-full max-w-5xl gap-6 md:grid-cols-3 md:gap-6">
           {[
             {
               n: "I",
@@ -1941,14 +4973,16 @@ export default function Week01Introduction() {
             },
           ].map((panel) => (
             <div key={panel.n}>
-              <div className="h-full border-t-2 border-[var(--crimson)]/50 pt-6">
-                <div className="font-serif text-[1.75rem] font-black leading-none text-[var(--charcoal)]/15">
-                  {panel.n}
+              <div className="h-full border-t border-[var(--charcoal)]/20 pt-4">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-serif text-[1.25rem] font-black leading-none text-[var(--champagne)]">
+                    {panel.n}
+                  </span>
+                  <span className={`${MICRO} text-[var(--charcoal-light)]/60`}>
+                    {panel.tag}
+                  </span>
                 </div>
-                <div className={`${MICRO} mt-4 text-[var(--charcoal-light)]/55`}>
-                  {panel.tag}
-                </div>
-                <p className="mt-3 font-serif text-base leading-[1.6] text-[var(--charcoal)] md:text-[1.0625rem]">
+                <p className="mt-2.5 font-serif text-base leading-[1.55] text-[var(--charcoal)] md:text-[1.0625rem]">
                   {panel.line}
                 </p>
               </div>
@@ -1956,19 +4990,190 @@ export default function Week01Introduction() {
           ))}
         </div>
 
-        <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/15 pt-6">
-            <p className="max-w-4xl font-serif text-xl leading-[1.45] text-[var(--charcoal)] md:text-[1.625rem]">
-              Organizations need strict data handling policies and secure
-              infrastructure to protect sensitive information.
-            </p>
-          </div>
+        <div className="mt-6 w-full max-w-5xl border-l-2 border-[var(--crimson)] pl-6">
+          <p className="max-w-4xl font-serif text-lg leading-[1.45] text-[var(--charcoal)] md:text-[1.375rem]">
+            Organizations need strict data handling policies and secure
+            infrastructure to protect sensitive information.
+          </p>
+        </div>
+
+        <div className="mt-6 w-full max-w-5xl">
+          <svg
+            role="img"
+            aria-label="Secure infrastructure and strict data handling policies protecting customer records, financial figures, and trade secrets from exposure to public AI tools."
+            viewBox="0 0 800 96"
+            className="w-full"
+            fill="none"
+          >
+            <title>
+              Secure infrastructure and strict data handling policies protecting
+              customer records, financial figures, and trade secrets from
+              exposure to public AI tools.
+            </title>
+            {/* Protected perimeter: SECURE INFRASTRUCTURE | STRICT DATA HANDLING POLICIES */}
+            <rect
+              x="16"
+              y="10"
+              width="484"
+              height="76"
+              fill="var(--crimson)"
+              fillOpacity="0.04"
+              stroke="var(--crimson)"
+              strokeWidth="1.5"
+            />
+            <text
+              x="258"
+              y="26"
+              fill="var(--crimson)"
+              fontSize="8"
+              letterSpacing="1.5"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              SECURE INFRASTRUCTURE | STRICT DATA HANDLING POLICIES
+            </text>
+
+            {/* Three protected assets inside */}
+            <rect
+              x="32"
+              y="38"
+              width="140"
+              height="34"
+              fill="var(--surface)"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.3"
+            />
+            <text
+              x="102"
+              y="58"
+              fill="var(--charcoal)"
+              fontSize="7.5"
+              letterSpacing="1.2"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              CUSTOMER RECORDS
+            </text>
+
+            <rect
+              x="188"
+              y="38"
+              width="140"
+              height="34"
+              fill="var(--surface)"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.3"
+            />
+            <text
+              x="258"
+              y="58"
+              fill="var(--charcoal)"
+              fontSize="7.5"
+              letterSpacing="1.2"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              FINANCIAL FIGURES
+            </text>
+
+            <rect
+              x="344"
+              y="38"
+              width="140"
+              height="34"
+              fill="var(--surface)"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.3"
+            />
+            <text
+              x="414"
+              y="58"
+              fill="var(--charcoal)"
+              fontSize="7.5"
+              letterSpacing="1.2"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              TRADE SECRETS
+            </text>
+
+            {/* Blocked exposure to PUBLIC AI TOOLS */}
+            <line
+              x1="500"
+              y1="48"
+              x2="556"
+              y2="48"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.4"
+              strokeDasharray="4 3"
+            />
+            {/* Gate block bar */}
+            <line
+              x1="556"
+              y1="34"
+              x2="556"
+              y2="62"
+              stroke="var(--crimson)"
+              strokeWidth="2"
+            />
+
+            {/* Outside: PUBLIC AI TOOLS & LEGAL AND FINANCIAL LIABILITY */}
+            <rect
+              x="576"
+              y="14"
+              width="208"
+              height="30"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.3"
+              strokeDasharray="4 3"
+            />
+            <text
+              x="680"
+              y="32"
+              fill="var(--charcoal)"
+              fillOpacity="0.65"
+              fontSize="7.5"
+              letterSpacing="1.3"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              PUBLIC AI TOOLS
+            </text>
+
+            <rect
+              x="576"
+              y="52"
+              width="208"
+              height="30"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.3"
+              strokeDasharray="4 3"
+            />
+            <text
+              x="680"
+              y="70"
+              fill="var(--charcoal)"
+              fillOpacity="0.65"
+              fontSize="7.5"
+              letterSpacing="1.3"
+              textAnchor="middle"
+              fontFamily="var(--font-serif), Georgia, serif"
+              fontWeight="600"
+            >
+              LEGAL AND FINANCIAL LIABILITY
+            </text>
+          </svg>
         </div>
 
         <div className="w-full">
-          <aside className="mt-12 max-w-3xl border border-[var(--charcoal)]/12 p-7 md:p-9">
+          <aside className="mt-6 max-w-4xl border border-[var(--charcoal)]/12 p-5 md:p-6">
             <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-4 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
+            <p className="mt-2 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.25rem]">
               How should a company respond if an employee accidentally uploads
               confidential client data into a public chatbot to save time on a
               report?
@@ -1987,52 +5192,323 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--champagne)]`}>
             Who is answerable
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-bold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
             Governance and Executive Accountability
           </h2>
         </div>
 
         <div className="w-full">
-          <p className="mt-9 max-w-4xl font-serif text-[1.5rem] font-black leading-[1.2] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.5rem]">
+          <p className="mt-6 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.25] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.125rem]">
             Business executives, not data scientists alone, are legally and
             ethically responsible for automated decisions.
           </p>
         </div>
 
-        <div className="mt-14 w-full max-w-5xl">
-          {[
-            {
-              n: "i",
-              line: "Leaders must set clear rules for who approves model deployment, who monitors accuracy, and who handles customer complaints.",
-            },
-            {
-              n: "ii",
-              line: "Regular audits are needed to check for algorithmic bias, performance decline, and compliance issues over time.",
-            },
-            {
-              n: "iii",
-              line: "Good governance protects customer trust and preserves the long-term reputation of the enterprise.",
-            },
-          ].map((clause) => (
-            <div key={clause.n}>
-              <div className="grid grid-cols-[3ch_1fr] gap-5 border-t border-[var(--charcoal)]/10 py-7 md:grid-cols-[4ch_1fr] md:gap-8">
-                <span className="pt-1 font-serif text-sm lowercase tracking-[0.1em] text-[var(--champagne)]">
-                  {clause.n}
-                </span>
-                <p className="max-w-3xl font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.375rem]">
-                  {clause.line}
-                </p>
+        <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_minmax(0,25rem)] md:gap-12">
+          <div>
+            {[
+              {
+                n: "i",
+                line: "Leaders must set clear rules for who approves model deployment, who monitors accuracy, and who handles customer complaints.",
+              },
+              {
+                n: "ii",
+                line: "Regular audits are needed to check for algorithmic bias, performance decline, and compliance issues over time.",
+              },
+              {
+                n: "iii",
+                line: "Good governance protects customer trust and preserves the long-term reputation of the enterprise.",
+              },
+            ].map((clause) => (
+              <div key={clause.n}>
+                <div className="grid grid-cols-[3ch_1fr] gap-4 border-t border-[var(--charcoal)]/12 py-5">
+                  <span className="pt-1 font-serif text-sm lowercase tracking-[0.1em] text-[var(--champagne)]">
+                    {clause.n}
+                  </span>
+                  <p className="font-serif text-base leading-[1.55] text-[var(--charcoal)] md:text-[1.1875rem]">
+                    {clause.line}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
 
           <div>
-            <div className="mt-10 flex max-w-sm flex-col gap-2">
-              <span className="h-px w-full bg-[var(--charcoal)]/25" />
-              <span className={`${MICRO} text-[var(--charcoal-light)]/40`}>
-                Accountable executive
-              </span>
-            </div>
+            <svg
+              role="img"
+              aria-label="Governance hierarchy showing business executives responsible for model deployment approval, accuracy monitoring, customer complaints, and regular audits that protect customer trust."
+              viewBox="0 0 400 240"
+              className="w-full max-w-[25rem]"
+              fill="none"
+            >
+              <title>
+                Governance hierarchy showing business executives responsible for
+                model deployment approval, accuracy monitoring, customer
+                complaints, and regular audits that protect customer trust.
+              </title>
+              {/* Top: BUSINESS EXECUTIVES */}
+              <rect
+                x="12"
+                y="10"
+                width="376"
+                height="44"
+                fill="var(--crimson)"
+                fillOpacity="0.05"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                x="200"
+                y="28"
+                fill="var(--crimson)"
+                fontSize="8.5"
+                letterSpacing="1.6"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                BUSINESS EXECUTIVES
+              </text>
+              <text
+                x="200"
+                y="42"
+                fill="var(--crimson)"
+                fontSize="7.5"
+                letterSpacing="1.2"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                LEGALLY AND ETHICALLY RESPONSIBLE
+              </text>
+
+              {/* Connectors to three governance roles */}
+              <line
+                x1="72"
+                y1="54"
+                x2="72"
+                y2="74"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
+              <line
+                x1="200"
+                y1="54"
+                x2="200"
+                y2="74"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
+              <line
+                x1="328"
+                y1="54"
+                x2="328"
+                y2="74"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
+
+              {/* Three clear rules */}
+              <rect
+                x="12"
+                y="74"
+                width="120"
+                height="42"
+                fill="var(--surface)"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.3"
+              />
+              <text
+                x="72"
+                y="92"
+                fill="var(--charcoal)"
+                fontSize="7"
+                letterSpacing="1.1"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                APPROVES MODEL
+              </text>
+              <text
+                x="72"
+                y="104"
+                fill="var(--charcoal)"
+                fontSize="7"
+                letterSpacing="1.1"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                DEPLOYMENT
+              </text>
+
+              <rect
+                x="140"
+                y="74"
+                width="120"
+                height="42"
+                fill="var(--surface)"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.3"
+              />
+              <text
+                x="200"
+                y="92"
+                fill="var(--charcoal)"
+                fontSize="7"
+                letterSpacing="1.1"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                MONITORS
+              </text>
+              <text
+                x="200"
+                y="104"
+                fill="var(--charcoal)"
+                fontSize="7"
+                letterSpacing="1.1"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                ACCURACY
+              </text>
+
+              <rect
+                x="268"
+                y="74"
+                width="120"
+                height="42"
+                fill="var(--surface)"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.3"
+              />
+              <text
+                x="328"
+                y="92"
+                fill="var(--charcoal)"
+                fontSize="7"
+                letterSpacing="1.1"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                HANDLES CUSTOMER
+              </text>
+              <text
+                x="328"
+                y="104"
+                fill="var(--charcoal)"
+                fontSize="7"
+                letterSpacing="1.1"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                COMPLAINTS
+              </text>
+
+              {/* Connectors to REGULAR AUDITS */}
+              <line
+                x1="72"
+                y1="116"
+                x2="72"
+                y2="136"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
+              <line
+                x1="200"
+                y1="116"
+                x2="200"
+                y2="136"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
+              <line
+                x1="328"
+                y1="116"
+                x2="328"
+                y2="136"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
+
+              {/* Regular audits bar */}
+              <rect
+                x="12"
+                y="136"
+                width="376"
+                height="42"
+                fill="var(--surface)"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
+              <text
+                x="200"
+                y="153"
+                fill="var(--charcoal)"
+                fontSize="8"
+                letterSpacing="1.5"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                REGULAR AUDITS
+              </text>
+              <text
+                x="200"
+                y="167"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+                fontSize="6.75"
+                letterSpacing="0.9"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                ALGORITHMIC BIAS | PERFORMANCE DECLINE | COMPLIANCE ISSUES
+              </text>
+
+              {/* Connector to bottom outcome */}
+              <path
+                d="M200 178v14"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.45"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M200 196l-3.5-5h7z"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+              />
+
+              {/* Bottom outcome */}
+              <rect
+                x="12"
+                y="196"
+                width="376"
+                height="34"
+                fill="var(--surface)"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+              />
+              <text
+                x="200"
+                y="216"
+                fill="var(--charcoal)"
+                fontSize="8"
+                letterSpacing="1.3"
+                textAnchor="middle"
+                fontFamily="var(--font-serif), Georgia, serif"
+                fontWeight="600"
+              >
+                PROTECTS CUSTOMER TRUST | LONG-TERM REPUTATION
+              </text>
+            </svg>
           </div>
         </div>
       </Slide>
@@ -2050,7 +5526,7 @@ export default function Week01Introduction() {
           </div>
 
           <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-            <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
+            <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
               The Course Roadmap
             </h2>
             <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
@@ -2076,7 +5552,7 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--champagne)]`}>
             Eight weeks ahead
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
+          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
             Semester Roadmap: Applications of AI in Business
           </h2>
         </div>
@@ -2135,24 +5611,17 @@ export default function Week01Introduction() {
           statements rather than list items, because they are what the
           student should leave holding.
       ================================================================== */}
-      <Slide id="summary" border align="left" className="relative overflow-hidden">
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -bottom-10 right-0 select-none font-serif text-[24vw] font-black leading-none text-[var(--charcoal)]/[0.03]"
-        >
-          01
-        </span>
-
+      <Slide id="summary" border align="left">
         <div>
           <div className={`${MICRO} text-[var(--champagne)]`}>
             Four things to carry forward
           </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
+          <h2 className="mt-4 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.75rem]">
             Summary and Core Principles for Leaders
           </h2>
         </div>
 
-        <ol className="mt-14 w-full max-w-4xl">
+        <ol className="mt-8 w-full max-w-4xl">
           {[
             {
               n: "01",
@@ -2172,11 +5641,11 @@ export default function Week01Introduction() {
             },
           ].map((p) => (
             <li key={p.n} className="block">
-              <div className="grid grid-cols-[4ch_1fr] gap-6 border-t border-[var(--charcoal)]/12 py-8 md:grid-cols-[5ch_1fr] md:gap-10">
-                <span className={`${MICRO} pt-3 text-[var(--crimson)]`}>
+              <div className="grid grid-cols-[4ch_1fr] gap-6 border-t border-[var(--charcoal)]/12 py-5 md:grid-cols-[5ch_1fr] md:gap-8">
+                <span className={`${MICRO} pt-2 text-[var(--champagne)]`}>
                   {p.n}
                 </span>
-                <p className="font-serif text-xl font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+                <p className="font-serif text-lg font-medium leading-[1.35] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.5rem]">
                   {p.line}
                 </p>
               </div>
@@ -2185,11 +5654,13 @@ export default function Week01Introduction() {
         </ol>
 
         <div className="w-full">
-          <div className="mt-14 flex w-full max-w-4xl flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
+          <div className="mt-8 flex w-full max-w-4xl flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               End of Week 01
             </span>
-            <span className={`${MICRO} font-normal text-[var(--charcoal-light)]/55`}>
+            <span
+              className={`${MICRO} font-normal text-[var(--charcoal-light)]/55`}
+            >
               Davood Wadi, PhD | BUSI 654
             </span>
           </div>

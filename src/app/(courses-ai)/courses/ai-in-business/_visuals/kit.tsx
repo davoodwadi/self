@@ -7,15 +7,16 @@ import React from "react";
 import { Slide } from "@/app/(courses-ai)/_components/SlideComponents";
 import { type CourseQuiz } from "@/lib/course-quiz";
 
-/** Small-caps label treatment used for every eyebrow, axis tick and numeral. */
-export const MICRO = "font-sans text-[10px] font-semibold uppercase tracking-[0.22em]";
+/** Academic rubric label treatment used for every eyebrow, axis tick and numeral. */
+export const MICRO =
+  "font-serif text-[0.9375rem] italic font-normal tracking-normal [font-variant-numeric:lining-nums_tabular-nums]";
 
-/** The same small-caps treatment for SVG <text>. */
+/** The academic label treatment for SVG <text>. */
 export const SVG_LABEL = {
-  fontSize: 9,
-  letterSpacing: 2.2,
-  fontFamily: "var(--font-sans), sans-serif",
-  fontWeight: 600,
+  fontSize: 10.5,
+  letterSpacing: 0.4,
+  fontFamily: "var(--font-serif), Georgia, serif",
+  fontWeight: 500,
 } as const;
 
 /** Body sentence at the deck's reading size. */
@@ -24,7 +25,7 @@ export const BODY =
 
 /** A sentence promoted to display weight inside a block. */
 export const DISPLAY =
-  "font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]";
+  "font-serif text-[1.375rem] font-medium leading-[1.35] tracking-[-0.01em] text-[var(--charcoal)] md:text-[1.875rem]";
 
 /** A sentence one step below display, used inside rules and frames. */
 export const LEAD =
@@ -33,8 +34,8 @@ export const LEAD =
 /** Hairline that opens each later block of a slide. */
 export const RULED = "mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8";
 
-/** Mono tag treatment for words lifted out of a sentence. */
-export const TAG = "font-mono text-[10px] uppercase tracking-[0.1em]";
+/** Academic tag treatment for words lifted out of a sentence. */
+export const TAG = "font-serif text-[0.875rem] italic tracking-normal";
 
 export const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -66,7 +67,7 @@ export const headUp = (x: number, y: number) => `M${x - 5} ${y + 8}l5-8l5 8`;
 /** A [cite: N] marker from content.md, set as superscript source numbers. */
 export function Cite1({ n }: { n: number[] }) {
   return (
-    <sup className="ml-1 whitespace-nowrap font-mono text-[0.5em] font-normal not-italic tracking-normal text-[var(--champagne)]">
+    <sup className="ml-1 whitespace-nowrap font-serif text-[0.55em] font-normal not-italic tracking-normal text-[var(--champagne)] [font-variant-numeric:lining-nums_tabular-nums]">
       {n.map((k, i) => (
         <React.Fragment key={k}>
           {i > 0 && ", "}
@@ -89,7 +90,7 @@ export function Cite1({ n }: { n: number[] }) {
 /** A [cite: N] marker from content.md, set as superscript source numbers. */
 export function Cite2({ n }: { n: number[] }) {
   return (
-    <sup className="ml-1 whitespace-nowrap font-mono text-[0.5em] font-normal not-italic tracking-normal text-[var(--champagne)]">
+    <sup className="ml-1 whitespace-nowrap font-serif text-[0.55em] font-normal not-italic tracking-normal text-[var(--champagne)] [font-variant-numeric:lining-nums_tabular-nums]">
       {n.join(", ")}
     </sup>
   );
@@ -156,7 +157,7 @@ export function Head1({
       >
         {eyebrow}
       </div>
-      <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
+      <h2 className="mt-4 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.08] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2.875rem]">
         {children}
       </h2>
     </div>
@@ -180,7 +181,7 @@ export function Head2({
   return (
     <div>
       <div className={`${MICRO} text-[var(--champagne)]`}>{eyebrow}</div>
-      <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
+      <h2 className="mt-4 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.08] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2.875rem]">
         {kicker && (
           <>
             <span className="mb-2 block font-serif text-[1.25rem] font-normal italic leading-tight tracking-[-0.01em] text-[var(--crimson)] md:text-[1.625rem]">
@@ -205,7 +206,7 @@ export function Head3({
   return (
     <div>
       <div className={`${MICRO} text-[var(--champagne)]`}>{eyebrow}</div>
-      <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
+      <h2 className="mt-4 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.08] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2.875rem]">
         {children}
       </h2>
     </div>
@@ -254,13 +255,13 @@ export function ModulePlate1({
       <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
         <div>
           <div className={`${MICRO} text-[var(--champagne)]`}>Module</div>
-          <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
+          <div className="font-serif text-[6rem] font-semibold leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
             {numeral}
           </div>
         </div>
 
         <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-          <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
+          <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3.5rem]">
             {title}
           </h2>
           <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
@@ -299,13 +300,13 @@ export function ModulePlate2({
       <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
         <div>
           <div className={`${MICRO} text-[var(--champagne)]`}>Module</div>
-          <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
+          <div className="font-serif text-[6rem] font-semibold leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
             {numeral}
           </div>
         </div>
 
         <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-          <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
+          <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3.5rem]">
             {title}
           </h2>
           <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
@@ -349,14 +350,14 @@ export function PartPlate1({
         <div>
           <div aria-hidden>
             <div className={`${MICRO} text-[var(--champagne)]`}>Part</div>
-            <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
+            <div className="font-serif text-[6rem] font-semibold leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
               {numeral}
             </div>
           </div>
         </div>
 
         <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-          <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
+          <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3.5rem]">
             <span className="sr-only">{`Part ${numeral}: `}</span>
             {title}
           </h2>
@@ -403,14 +404,14 @@ export function PartPlate2({
         <div>
           <div aria-hidden>
             <div className={`${MICRO} text-[var(--champagne)]`}>Part</div>
-            <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
+            <div className="font-serif text-[6rem] font-semibold leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
               {numeral}
             </div>
           </div>
         </div>
 
         <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-          <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
+          <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3.5rem]">
             <span className="sr-only">{`Part ${numeral}: `}</span>
             {title}
           </h2>
@@ -461,14 +462,14 @@ export function PartPlate3({
         <div>
           <div aria-hidden>
             <div className={`${MICRO} text-[var(--champagne)]`}>Part</div>
-            <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
+            <div className="font-serif text-[6rem] font-semibold leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
               {numeral}
             </div>
           </div>
         </div>
 
         <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-          <h2 className="font-serif text-[2.25rem] font-bold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.5rem]">
+          <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3.5rem]">
             <span className="sr-only">{`Part ${numeral}: `}</span>
             {title}
           </h2>
@@ -576,10 +577,8 @@ export function Stat1({
   return (
     <div aria-hidden className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
       <span
-        // Headings take their family from globals.css, which Tailwind's
-        // font-serif does not match. Borrow it so figures echo the h2s.
         style={{ fontFamily: "var(--font-serif), serif" }}
-        className={`font-black leading-none tracking-[-0.04em] ${
+        className={`font-semibold leading-none tracking-[-0.03em] ${
           size === "lg"
             ? "text-[3.5rem] md:text-[4.75rem]"
             : "text-[2.75rem] md:text-[3.5rem]"
@@ -608,10 +607,8 @@ export function Stat2({
   return (
     <div aria-hidden className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
       <span
-        // Headings take their family from globals.css, which Tailwind's
-        // font-serif does not match. Borrow it so figures echo the h2s.
         style={{ fontFamily: "var(--font-serif), serif" }}
-        className={`text-[3.5rem] font-black leading-none tracking-[-0.04em] md:text-[4.75rem] ${
+        className={`text-[3.5rem] font-semibold leading-none tracking-[-0.03em] md:text-[4.75rem] ${
           mark ? "text-[var(--crimson)]" : "text-[var(--charcoal)]"
         }`}
       >
@@ -652,10 +649,10 @@ export function Steps({
             {pad(i + 1)}
           </span>
           <span
-            className={`mt-2 block font-mono text-[11px] uppercase tracking-[0.1em] ${
+            className={`mt-2 block font-serif text-[0.9375rem] leading-snug ${
               i === mark
                 ? "text-[var(--crimson)]"
-                : "text-[var(--charcoal-light)]/70"
+                : "text-[var(--charcoal-light)]/80"
             }`}
           >
             {item}
@@ -666,7 +663,7 @@ export function Steps({
   );
 }
 
-/** A sentence's own list, set as middot-separated mono words. */
+/** A sentence's own list, set as vertical-bar-separated academic terms. */
 export function Terms({
   items,
   className = "mt-5",
@@ -677,7 +674,7 @@ export function Terms({
   return (
     <div
       aria-hidden
-      className={`${className} flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/55`}
+      className={`${className} flex flex-wrap gap-x-3 gap-y-2 font-serif text-[0.9375rem] italic text-[var(--charcoal-light)]/65`}
     >
       {items.map((item, i) => (
         <React.Fragment key={item}>
@@ -697,7 +694,7 @@ export function Verdict({
 }) {
   return (
     <div className="w-full">
-      <p className="mt-14 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
+      <p className="mt-14 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.35] tracking-[-0.01em] text-[var(--charcoal)] md:text-[2rem]">
         {children}
       </p>
     </div>

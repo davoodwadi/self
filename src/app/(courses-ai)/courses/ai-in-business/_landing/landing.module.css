@@ -1,148 +1,128 @@
 /* ============================================================================
    BUSI 654 landing. The masthead holds the left column while the curriculum
-   scrolls on the right. Headings are typeset here rather than with utilities:
-   globals.css sets h1, h6 colour, family and weight outside any cascade layer,
-   and that beats Tailwind's layered classes.
+   scrolls on the right. Headings are typeset here rather than with utilities
+   because globals.css sets h1 to h6 colour, family and weight outside any
+   cascade layer, and that beats Tailwind's layered classes.
    ============================================================================ */
 
 .page {
-  --display: var(--font-display), var(--font-merriweather), Georgia, serif;
-  --ease-film: cubic-bezier(0.19, 1, 0.22, 1);
+  --sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
   overflow-x: clip;
   background: var(--background);
   color: var(--charcoal);
+  font-family: var(--sans);
 }
 
 /* ---- Masthead ---------------------------------------------------------- */
 
-.title {
-  margin: 1.75rem 0 0;
-}
-
-.titleLead {
-  font-family: var(--display);
-  font-size: clamp(1.4rem, 2.4vw, 2.2rem);
-  font-style: italic;
-  font-weight: 300;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+.courseMeta {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
   color: var(--charcoal-light);
+  font-variant-numeric: tabular-nums;
 }
 
-.titleMain {
-  font-family: var(--display);
-  font-size: clamp(2.9rem, 5.6vw, 5.4rem);
-  font-weight: 800;
-  font-stretch: 87%;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
+.title {
+  margin: 0.75rem 0 0;
+  font-family: var(--sans);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
   color: var(--charcoal);
 }
 
 .standfirst {
-  font-family: var(--display);
-  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
-  font-style: italic;
-  font-weight: 300;
-  line-height: 1.5;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
   color: var(--charcoal-light);
-  text-wrap: pretty;
 }
 
 .credit {
-  font-family: var(--display);
-  font-size: 1.0625rem;
-  line-height: 1.35;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
   color: var(--charcoal);
 }
 
 /* ---- Curriculum -------------------------------------------------------- */
 
-.row {
-  position: relative;
+.sectionHeading {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--charcoal-light);
 }
 
-/* A crimson rule draws along the row's baseline on hover. */
-.row::before {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  bottom: -1px;
-  height: 1px;
-  background: var(--crimson);
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.8s var(--ease-film);
+.row {
+  position: relative;
 }
 
 .numeral {
   display: block;
   padding-top: 0.15rem;
-  font-family: var(--display);
-  font-size: 1.35rem;
-  font-weight: 300;
-  font-stretch: 87%;
-  line-height: 1;
-  font-variant-numeric: lining-nums tabular-nums;
-  color: color-mix(in oklab, var(--charcoal) 35%, transparent);
-  transition: color 0.4s ease;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in oklab, var(--charcoal-light) 65%, transparent);
+  transition: color 0.15s ease;
+}
+
+.interludeLabel {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--charcoal-light);
 }
 
 .rowTitle {
-  font-family: var(--display);
-  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.012em;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: normal;
   color: var(--charcoal);
-  text-wrap: balance;
-  transition: color 0.4s ease;
+  transition: color 0.15s ease;
 }
 
 .rowText {
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: color-mix(in oklab, var(--charcoal-light) 85%, transparent);
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--charcoal-light);
 }
 
-.moduleName {
-  font-family: var(--display);
-  font-size: 0.85rem;
-  font-style: italic;
-  font-weight: 300;
-  line-height: 1.5;
-  color: color-mix(in oklab, var(--charcoal-light) 85%, transparent);
-}
-
-.moduleNumber {
-  margin-right: 0.4rem;
-  font-family: var(--font-open-sans), sans-serif;
-  font-size: 10px;
+.statusNote {
+  font-family: var(--sans);
+  font-size: 0.75rem;
   font-style: normal;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: var(--champagne);
+  font-weight: 400;
+  color: color-mix(in oklab, var(--charcoal-light) 65%, transparent);
 }
 
 .arrow {
-  color: color-mix(in oklab, var(--charcoal) 45%, transparent);
+  color: color-mix(in oklab, var(--charcoal) 40%, transparent);
   transition:
-    color 0.4s ease,
-    transform 0.5s var(--ease-film);
+    color 0.15s ease,
+    transform 0.15s ease;
 }
 
 .rowMuted .rowTitle {
   color: color-mix(in oklab, var(--charcoal) 55%, transparent);
 }
 
-.rowMuted .rowText,
-.rowMuted .moduleName {
+.rowMuted .rowText {
   opacity: 0.75;
-}
-
-.rowLink:hover .row::before,
-.rowLink:focus-visible .row::before {
-  transform: none;
 }
 
 .rowLink:hover .numeral,
@@ -156,7 +136,7 @@
 
 .rowLink:hover .arrow,
 .rowLink:focus-visible .arrow {
-  transform: translateX(4px);
+  transform: translateX(2px);
 }
 
 .rowLink:focus-visible {
@@ -165,7 +145,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .row::before,
   .numeral,
   .rowTitle,
   .arrow {

@@ -32,9 +32,9 @@ function ordinal(index: number) {
   return String(index + 1).padStart(2, "0");
 }
 
-/** Shared small-caps label styling. */
+/** Shared academic rubric label styling. */
 const MICRO =
-  "font-sans text-[10px] font-semibold uppercase tracking-[0.22em]";
+  "font-serif text-[0.9375rem] italic font-normal tracking-normal [font-variant-numeric:lining-nums_tabular-nums]";
 
 /**
  * Stage - Cross-fades between variants without ever changing height.

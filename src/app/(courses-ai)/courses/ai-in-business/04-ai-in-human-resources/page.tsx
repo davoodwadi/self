@@ -71,7 +71,7 @@ export default function Week04HumanResources() {
         </div>
 
         <div>
-          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-black leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
+          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-semibold leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
             Applications of AI in{" "}
             <span className="text-[var(--crimson)]">Human Resources</span>
           </h1>
@@ -83,32 +83,6 @@ export default function Week04HumanResources() {
             How intelligent systems reshape talent acquisition, workforce
             planning, development, governance, and employee experience
           </p>
-          <div
-            aria-hidden
-            className="mt-8 grid max-w-4xl grid-cols-2 border-l border-[var(--charcoal)]/12 sm:grid-cols-3 md:grid-cols-5"
-          >
-            {[
-              "talent acquisition",
-              "workforce planning",
-              "development",
-              "governance",
-              "employee experience",
-            ].map((domain, i) => (
-              <span
-                key={domain}
-                className="border-b border-r border-[var(--charcoal)]/12 px-4 py-3"
-              >
-                <span className={`${MICRO} block text-[var(--crimson)]`}>
-                  {pad(i + 1)}
-                </span>
-                <span
-                  className={`${TAG} mt-1 block text-[var(--charcoal-light)]/65`}
-                >
-                  {domain}
-                </span>
-              </span>
-            ))}
-          </div>
         </div>
 
         <div className="w-full">
@@ -135,7 +109,7 @@ export default function Week04HumanResources() {
         <Head1 eyebrow="Opening">Why HR Became an AI Domain</Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-7 max-w-4xl`}>
             Human resources manages repeated decisions about hiring, staffing,
             development, performance, retention, and compliance under
             uncertainty.
@@ -150,19 +124,30 @@ export default function Week04HumanResources() {
               "compliance",
             ]}
             cols="sm:grid-cols-3 md:grid-cols-6"
-            className="mt-6 max-w-5xl"
+            className="mt-4 max-w-5xl"
           />
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-4xl`}>
               Digital HR systems now capture recruiting activity, learning
               records, collaboration traces, employee feedback, and workflow
               histories at scale.
             </p>
-            <figure aria-hidden className="mt-6 w-full">
-              <svg viewBox="0 0 800 170" className="w-full" fill="none">
+            <figure className="mt-5 w-full max-w-5xl">
+              <svg
+                role="img"
+                aria-label="Five parallel digital trace streams for recruiting activity, learning records, collaboration traces, employee feedback, and workflow histories captured at scale."
+                viewBox="0 0 800 164"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Five parallel digital trace streams for recruiting activity,
+                  learning records, collaboration traces, employee feedback, and
+                  workflow histories captured at scale.
+                </title>
                 {[
                   "RECRUITING ACTIVITY",
                   "LEARNING RECORDS",
@@ -170,48 +155,69 @@ export default function Week04HumanResources() {
                   "EMPLOYEE FEEDBACK",
                   "WORKFLOW HISTORIES",
                 ].map((lane, l) => {
-                  const y = 16 + l * 34;
+                  const y = 20 + l * 30;
                   return (
                     <g key={lane}>
                       <text
                         {...SVG_LABEL}
-                        x="0"
+                        x="12"
                         y={y + 3}
                         fill="var(--charcoal)"
-                        fillOpacity="0.5"
+                        fillOpacity="0.6"
                       >
                         {lane}
                       </text>
                       <path
-                        d={`M236 ${y}H790`}
+                        d={`M204 ${y}H688`}
                         stroke="var(--charcoal)"
-                        strokeOpacity="0.1"
+                        strokeOpacity="0.12"
                       />
-                      {Array.from({ length: 70 }).map((_, i) => {
-                        const x = 240 + i * 7.8 + ((i * 7 + l * 3) % 4);
-                        const h = 2 + (((i * 37 + l * 11) ^ (i * 5)) % 9);
+                      {Array.from({ length: 62 }).map((_, i) => {
+                        const x = +(208 + i * 7.8).toFixed(2);
+                        const heights = [3, 7, 4, 9, 2, 6, 8, 3, 5, 9, 4, 7, 3];
+                        const h = heights[(i * 3 + l * 5) % heights.length];
+                        const active = i >= 52;
                         return (
                           <path
                             key={i}
-                            d={`M${x.toFixed(1)} ${y - h}v${h * 2}`}
-                            stroke="var(--charcoal)"
-                            strokeOpacity="0.35"
+                            d={`M${x} ${y - h}v${h * 2}`}
+                            stroke={active ? "var(--crimson)" : "var(--charcoal)"}
+                            strokeOpacity={active ? "0.85" : "0.35"}
+                            strokeWidth={active ? "1.25" : "1"}
                           />
                         );
                       })}
                     </g>
                   );
                 })}
+                <path
+                  d="M706 12H714V148H706"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.5"
+                />
+                <text
+                  {...SVG_LABEL}
+                  x="724"
+                  y="84"
+                  fill="var(--crimson)"
+                >
+                  AT SCALE
+                </text>
               </svg>
             </figure>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              AI matters in HR when it improves judgment quality, operating
+              speed, or organizational consistency without weakening fairness
+              or trust.
+            </p>
             <div
               aria-hidden
-              className="grid max-w-4xl gap-6 md:grid-cols-[1fr_14rem] md:items-end"
+              className="mt-5 grid max-w-4xl gap-6 md:grid-cols-[1fr_14rem] md:items-end"
             >
               <Steps
                 items={[
@@ -226,11 +232,11 @@ export default function Week04HumanResources() {
                 <div className={`${MICRO} text-[var(--crimson)]`}>
                   Without weakening
                 </div>
-                <div className="mt-3 grid grid-cols-2 border-y-2 border-[var(--crimson)]">
+                <div className="mt-2 grid grid-cols-2 border-y-2 border-[var(--crimson)]">
                   {["fairness", "trust"].map((b, i) => (
                     <span
                       key={b}
-                      className={`${TAG} px-4 py-3 text-[var(--charcoal-light)]/70 ${
+                      className={`${TAG} px-4 py-2.5 text-[var(--charcoal-light)]/70 ${
                         i > 0 ? "border-l border-[var(--crimson)]/30" : ""
                       }`}
                     >
@@ -240,11 +246,6 @@ export default function Week04HumanResources() {
                 </div>
               </div>
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              AI matters in HR when it improves judgment quality, operating
-              speed, or organizational consistency without weakening fairness
-              or trust.
-            </p>
           </div>
         </div>
       </Slide>
@@ -272,32 +273,41 @@ export default function Week04HumanResources() {
             culture.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 232"
-            className="mt-7 w-full max-w-5xl"
+            role="img"
+            aria-label="HR connecting strategy to people decisions across recruiting, workforce design, development, rewards, employee relations, and culture."
+            viewBox="0 0 800 220"
+            className="mt-5 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              HR connecting strategy to people decisions across recruiting,
+              workforce design, development, rewards, employee relations, and
+              culture.
+            </title>
             <rect
-              x="20"
-              y="108"
-              width="16"
-              height="16"
+              x="16"
+              y="98"
+              width="96"
+              height="36"
               fill="var(--charcoal)"
-              fillOpacity="0.75"
+              fillOpacity="0.06"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.55"
             />
             <text
               {...SVG_LABEL}
-              x="0"
-              y="148"
+              x="64"
+              y="120"
+              textAnchor="middle"
               fill="var(--charcoal)"
-              fillOpacity="0.55"
+              fillOpacity="0.8"
             >
               STRATEGY
             </text>
             <text
               {...SVG_LABEL}
-              x="720"
-              y="12"
+              x="712"
+              y="16"
               textAnchor="middle"
               fill="var(--crimson)"
             >
@@ -311,42 +321,44 @@ export default function Week04HumanResources() {
               "EMPLOYEE RELATIONS",
               "CULTURE",
             ].map((fn, i) => {
-              const y = 36 + i * 36;
+              const y = 36 + i * 32;
               return (
                 <g key={fn}>
                   <path
-                    d={`M40 116 C 120 116, 150 ${y}, 236 ${y}`}
+                    d={`M112 116 C 176 116, 196 ${y}, 256 ${y}`}
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.22"
+                    strokeOpacity="0.28"
                   />
-                  <circle
-                    cx="244"
-                    cy={y}
-                    r="4"
+                  <rect
+                    x="256"
+                    y={y - 12}
+                    width="216"
+                    height="24"
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.45"
+                    strokeOpacity="0.28"
                   />
                   <text
                     {...SVG_LABEL}
-                    x="260"
-                    y={y + 3}
+                    x="364"
+                    y={y + 3.5}
+                    textAnchor="middle"
                     fill="var(--charcoal)"
-                    fillOpacity="0.6"
+                    fillOpacity="0.75"
                   >
                     {fn}
                   </text>
                   <path
-                    d={`M450 ${y}H706`}
-                    stroke="var(--charcoal)"
-                    strokeOpacity="0.18"
+                    d={`M472 ${y}H704`}
+                    stroke="var(--crimson)"
+                    strokeOpacity="0.45"
                   />
                   <path
-                    d={`M699 ${y - 4}l7 4l-7 4`}
-                    stroke="var(--charcoal)"
-                    strokeOpacity="0.4"
+                    d={`M697 ${y - 4}l7 4l-7 4`}
+                    stroke="var(--crimson)"
+                    strokeOpacity="0.65"
                   />
                   <rect
-                    x="714"
+                    x="706"
                     y={y - 6}
                     width="12"
                     height="12"
@@ -359,62 +371,94 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-4xl`}>
               Each subfunction converts fragmented workforce information into
               recommendations, approvals, or interventions.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 -8 800 118"
-              className="mt-6 w-full max-w-5xl"
+              role="img"
+              aria-label="Fragmented workforce information converging into a subfunction and converting into recommendations, approvals, or interventions."
+              viewBox="0 0 800 116"
+              className="mt-5 w-full max-w-5xl"
               fill="none"
             >
-              {[
-                [30, 22],
-                [74, 60],
-                [22, 88],
-                [120, 30],
-                [150, 84],
-                [96, 100],
-                [180, 50],
-                [60, 14],
-                [200, 96],
-              ].map(([x, y], i) => (
-                <rect
-                  key={i}
-                  x={x}
-                  y={y}
-                  width={10 + ((i * 7) % 12)}
-                  height="4"
-                  fill="var(--charcoal)"
-                  fillOpacity="0.28"
-                />
-              ))}
+              <title>
+                Fragmented workforce information converging into a subfunction
+                and converting into recommendations, approvals, or
+                interventions.
+              </title>
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="6"
+                x="16"
+                y="16"
                 fill="var(--charcoal)"
-                fillOpacity="0.45"
+                fillOpacity="0.55"
               >
                 FRAGMENTED WORKFORCE INFORMATION
               </text>
-              <path d="M250 58H420" stroke="var(--charcoal)" strokeOpacity="0.3" />
-              <path d="M413 54l7 4l-7 4" stroke="var(--charcoal)" strokeOpacity="0.5" />
               {[
-                { y: 22, label: "RECOMMENDATIONS" },
-                { y: 58, label: "APPROVALS" },
-                { y: 94, label: "INTERVENTIONS" },
+                [24, 28, 28],
+                [136, 39, 22],
+                [56, 51, 24],
+                [148, 62, 26],
+                [32, 75, 22],
+                [116, 88, 28],
+              ].map(([x, y, w], i) => {
+                const ty = 48 + i * 5;
+                return (
+                  <g key={i}>
+                    <rect
+                      x={x}
+                      y={y}
+                      width={w}
+                      height="6"
+                      fill="var(--charcoal)"
+                      fillOpacity="0.22"
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.45"
+                    />
+                    <path
+                      d={`M${x + w} ${y + 3} C 228 ${y + 3}, 256 ${ty}, 296 ${ty}`}
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.22"
+                    />
+                  </g>
+                );
+              })}
+              <rect
+                x="296"
+                y="42"
+                width="148"
+                height="38"
+                fill="var(--charcoal)"
+                fillOpacity="0.05"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.55"
+              />
+              <text
+                {...SVG_LABEL}
+                x="370"
+                y="65.5"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.8"
+              >
+                SUBFUNCTION
+              </text>
+              {[
+                { y: 28, label: "RECOMMENDATIONS" },
+                { y: 62, label: "APPROVALS" },
+                { y: 96, label: "INTERVENTIONS" },
               ].map((o) => (
                 <g key={o.label}>
                   <path
-                    d={`M430 58 C 470 58, 480 ${o.y}, 520 ${o.y}`}
+                    d={`M444 62 C 492 62, 508 ${o.y}, 556 ${o.y}`}
                     stroke="var(--crimson)"
-                    strokeOpacity="0.5"
+                    strokeOpacity="0.55"
                   />
                   <rect
-                    x="526"
+                    x="556"
                     y={o.y - 5}
                     width="10"
                     height="10"
@@ -422,10 +466,10 @@ export default function Week04HumanResources() {
                   />
                   <text
                     {...SVG_LABEL}
-                    x="548"
-                    y={o.y + 3}
+                    x="578"
+                    y={o.y + 3.5}
                     fill="var(--charcoal)"
-                    fillOpacity="0.7"
+                    fillOpacity="0.75"
                   >
                     {o.label}
                   </text>
@@ -436,16 +480,18 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Augmented reliably"
-              right="Require human review"
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
               The managerial issue is deciding which judgments can be augmented
               reliably and which require human review because the social cost
               of error is high.
             </p>
+            <div className="mt-5 max-w-4xl">
+              <Split1
+                left="Augmented reliably"
+                right="Require human review | social cost of error is high"
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -541,7 +587,7 @@ export default function Week04HumanResources() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-6 max-w-4xl`}>
             Core inputs include applicant records, job histories, skills
             inventories, learning activity, engagement data, compensation
             records, and policy cases.
@@ -556,81 +602,101 @@ export default function Week04HumanResources() {
               "compensation records",
               "policy cases",
             ]}
-            className="mt-6 max-w-5xl"
+            className="mt-4 max-w-5xl"
           />
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-7 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-5">
             <p className={`${BODY} max-w-4xl`}>
               Useful signals are rarely complete because HR data is fragmented
               across systems, managers, vendors, and informal work practices.
             </p>
-            <div
-              aria-hidden
-              className="mt-7 grid max-w-4xl grid-cols-2 gap-6 md:grid-cols-4"
+            <svg
+              role="img"
+              aria-label="A six-part workforce record fragmented across systems, managers, vendors, and informal work practices, with missing dashed slots in each source."
+              viewBox="0 0 800 108"
+              className="mt-5 w-full max-w-5xl"
+              fill="none"
             >
+              <title>
+                A six-part workforce record fragmented across systems, managers,
+                vendors, and informal work practices, with missing dashed slots
+                in each source.
+              </title>
               {[
-                { label: "systems", have: [0, 1] },
-                { label: "managers", have: [2] },
-                { label: "vendors", have: [3, 4] },
-                { label: "informal work practices", have: [5] },
+                { label: "SYSTEMS", x0: 16, have: [0, 1] },
+                { label: "MANAGERS", x0: 214, have: [2] },
+                { label: "VENDORS", x0: 412, have: [3, 4] },
+                { label: "INFORMAL WORK PRACTICES", x0: 610, have: [5] },
               ].map((part) => (
-                <div
-                  key={part.label}
-                  className="border-t border-[var(--charcoal)]/15 pt-4"
-                >
-                  <div className="flex gap-1">
-                    {[0, 1, 2, 3, 4, 5].map((k) => (
-                      <span
+                <g key={part.label}>
+                  <path
+                    d={`M${part.x0} 18H${part.x0 + 174}`}
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.22"
+                  />
+                  {[0, 1, 2, 3, 4, 5].map((k) => {
+                    const bx = part.x0 + k * 29.6;
+                    const present = part.have.includes(k);
+                    return (
+                      <rect
                         key={k}
-                        className={`block h-5 flex-1 ${
-                          part.have.includes(k)
-                            ? "bg-[var(--charcoal)]/35"
-                            : "border border-dashed border-[var(--charcoal)]/15"
-                        }`}
+                        x={bx.toFixed(2)}
+                        y="32"
+                        width="25"
+                        height="22"
+                        fill={present ? "var(--crimson)" : "none"}
+                        fillOpacity={present ? "0.18" : undefined}
+                        stroke={present ? "var(--crimson)" : "var(--charcoal)"}
+                        strokeOpacity={present ? "0.85" : "0.25"}
+                        strokeDasharray={present ? undefined : "3 3"}
                       />
-                    ))}
-                  </div>
-                  <span
-                    className={`${TAG} mt-3 block text-[var(--charcoal-light)]/70`}
+                    );
+                  })}
+                  <text
+                    {...SVG_LABEL}
+                    x={part.x0}
+                    y="78"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.7"
                   >
                     {part.label}
-                  </span>
-                </div>
+                  </text>
+                </g>
               ))}
-            </div>
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-14 w-full max-w-5xl">
+          <div className="mt-7 grid w-full max-w-5xl items-center gap-8 border-t border-[var(--charcoal)]/10 pt-5 md:grid-cols-[1fr_18rem]">
+            <p className={DISPLAY}>
+              In people decisions, definitions, data lineage, and context often
+              matter more than model complexity because labels are noisy and
+              outcomes evolve over time.
+            </p>
             <div
               aria-hidden
-              className="flex flex-wrap items-center gap-x-8 gap-y-3"
+              className="flex flex-wrap items-center gap-x-6 gap-y-2 border-l border-[var(--crimson)]/35 pl-6"
             >
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 {["definitions", "data lineage", "context"].map((d) => (
                   <div
                     key={d}
-                    className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--crimson)]"
+                    className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--crimson)]"
                   >
                     {d}
                   </div>
                 ))}
               </div>
-              <span className="font-serif text-4xl font-light text-[var(--charcoal)]/35">
+              <span className="font-serif text-3xl font-light text-[var(--charcoal)]/35">
                 &gt;
               </span>
-              <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--charcoal-light)]/45">
+              <span className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/45">
                 model complexity
               </span>
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              In people decisions, definitions, data lineage, and context often
-              matter more than model complexity because labels are noisy and
-              outcomes evolve over time.
-            </p>
           </div>
         </div>
       </Slide>
@@ -727,7 +793,7 @@ export default function Week04HumanResources() {
           Human Judgment in High-Stakes People Decisions
         </Head1>
 
-        <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_32rem] md:gap-14">
+        <div className="mt-9 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_25rem] md:gap-14">
           <div>
             <p className={BODY}>
               Employment decisions affect livelihoods, legal exposure,
@@ -736,70 +802,87 @@ export default function Week04HumanResources() {
           </div>
           <div>
             <svg
-              aria-hidden
-              viewBox="0 0 520 136"
+              role="img"
+              aria-label="Employment decisions branching into livelihoods, legal exposure, managerial legitimacy, and the credibility of the HR function."
+              viewBox="0 0 400 144"
               className="w-full"
               fill="none"
             >
+              <title>
+                Employment decisions branching into livelihoods, legal exposure,
+                managerial legitimacy, and the credibility of the HR function.
+              </title>
+              <rect
+                x="8"
+                y="48"
+                width="104"
+                height="48"
+                fill="var(--charcoal)"
+                fillOpacity="0.05"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.55"
+              />
+              <text
+                {...SVG_LABEL}
+                x="60"
+                y="68"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.8"
+              >
+                EMPLOYMENT
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="60"
+                y="83"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.8"
+              >
+                DECISIONS
+              </text>
               {[
-                { y: 16, label: "LIVELIHOODS" },
-                { y: 50, label: "LEGAL EXPOSURE" },
-                { y: 84, label: "MANAGERIAL LEGITIMACY" },
-                { y: 118, label: "CREDIBILITY OF THE HR FUNCTION" },
+                { y: 20, label: "LIVELIHOODS" },
+                { y: 55, label: "LEGAL EXPOSURE" },
+                { y: 90, label: "MANAGERIAL LEGITIMACY" },
+                { y: 125, label: "CREDIBILITY OF THE HR FUNCTION" },
               ].map((c) => (
                 <g key={c.label}>
                   <path
-                    d={`M62 67 C 140 67, 160 ${c.y}, 230 ${c.y}`}
+                    d={`M112 72 C 136 72, 142 ${c.y}, 164 ${c.y}`}
                     stroke="var(--crimson)"
-                    strokeOpacity="0.45"
+                    strokeOpacity="0.5"
                   />
-                  <circle cx="236" cy={c.y} r="4" fill="var(--crimson)" />
+                  <circle cx="168" cy={c.y} r="4" fill="var(--crimson)" />
                   <text
                     {...SVG_LABEL}
-                    x="250"
-                    y={c.y + 3}
+                    x="180"
+                    y={c.y + 3.5}
                     fill="var(--charcoal)"
-                    fillOpacity="0.7"
+                    fillOpacity="0.75"
                   >
                     {c.label}
                   </text>
                 </g>
               ))}
-              <rect
-                x="44"
-                y="59"
-                width="16"
-                height="16"
-                fill="var(--charcoal)"
-                fillOpacity="0.75"
-              />
-              <text
-                {...SVG_LABEL}
-                x="52"
-                y="98"
-                textAnchor="middle"
-                fill="var(--charcoal)"
-                fillOpacity="0.5"
-              >
-                DECISION
-              </text>
             </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <div className={`${MICRO} text-[var(--crimson)]`}>
               Human oversight
             </div>
-            <p className={`${BODY} mt-4 max-w-4xl`}>
+            <p className={`${BODY} mt-3 max-w-4xl`}>
               Human oversight is most important when evidence is incomplete,
               context is sensitive, or the decision can materially alter a
               person&apos;s trajectory.
             </p>
             <ul
               aria-hidden
-              className="mt-5 grid gap-3 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/70 md:grid-cols-3"
+              className="mt-5 grid gap-3 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70 md:grid-cols-3"
             >
               {[
                 "evidence is incomplete",
@@ -819,10 +902,14 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Good system design clarifies escalation, documentation, and
+              override rules instead of assuming automation is the objective.
+            </p>
             <div
               aria-hidden
-              className="flex flex-wrap items-center gap-x-6 gap-y-4"
+              className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-4"
             >
               <Steps
                 items={["escalation", "documentation", "override rules"]}
@@ -836,10 +923,6 @@ export default function Week04HumanResources() {
                 automation is the objective
               </span>
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Good system design clarifies escalation, documentation, and
-              override rules instead of assuming automation is the objective.
-            </p>
           </div>
         </div>
       </Slide>
@@ -926,16 +1009,18 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Transactional throughput"
-              right="Enterprise outcomes"
-              strikeLeft
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+          <div className="mt-10 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
               Executives need metrics that connect HR automation to enterprise
               outcomes rather than only transactional throughput.
             </p>
+            <div className="mt-5 max-w-4xl">
+              <Split1
+                left="Transactional throughput"
+                right="Enterprise outcomes"
+                strikeLeft
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -958,7 +1043,7 @@ export default function Week04HumanResources() {
       <Slide id="sourcing" border align="left">
         <Head1 eyebrow="Finding talent">Sourcing and Candidate Discovery</Head1>
 
-        <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
+        <div className="mt-9 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_25rem] md:gap-14">
           <div>
             <p className={BODY}>
               AI can help identify likely candidates across internal databases,
@@ -967,51 +1052,102 @@ export default function Week04HumanResources() {
           </div>
           <div>
             <svg
-              aria-hidden
-              viewBox="0 0 352 104"
-              className="w-full max-w-[22rem]"
+              role="img"
+              aria-label="Four sources (internal databases, external platforms, alumni networks, and adjacent talent pools) converging to identify likely candidates."
+              viewBox="0 0 400 140"
+              className="w-full"
               fill="none"
             >
+              <title>
+                Four sources (internal databases, external platforms, alumni
+                networks, and adjacent talent pools) converging to identify
+                likely candidates.
+              </title>
               {[
                 "INTERNAL DATABASES",
                 "EXTERNAL PLATFORMS",
                 "ALUMNI NETWORKS",
                 "ADJACENT TALENT POOLS",
               ].map((src, i) => {
-                const y = 12 + i * 26;
+                const y = 20 + i * 33;
                 return (
                   <g key={src}>
+                    <rect
+                      x="8"
+                      y={y - 11}
+                      width="176"
+                      height="22"
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.28"
+                    />
                     <text
                       {...SVG_LABEL}
-                      x="0"
-                      y={y + 3}
+                      x="96"
+                      y={y + 3.5}
+                      textAnchor="middle"
                       fill="var(--charcoal)"
-                      fillOpacity="0.55"
+                      fillOpacity="0.7"
                     >
                       {src}
                     </text>
                     <path
-                      d={`M220 ${y} C 262 ${y}, 270 51, 300 51`}
+                      d={`M184 ${y} C 224 ${y}, 236 69.5, 268 69.5`}
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.22"
+                      strokeOpacity="0.28"
                     />
                   </g>
                 );
               })}
-              <path d="M300 51h36" stroke="var(--crimson)" strokeWidth="1.5" />
-              <circle cx="340" cy="51" r="4" fill="var(--crimson)" />
+              <path
+                d="M268 69.5H284"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M277 65.5L284 69.5L277 73.5"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <rect
+                x="286"
+                y="45.5"
+                width="106"
+                height="48"
+                fill="var(--crimson)"
+                fillOpacity="0.05"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                {...SVG_LABEL}
+                x="339"
+                y="66"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                LIKELY
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="339"
+                y="81"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                CANDIDATES
+              </text>
             </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-4xl`}>
               Better discovery expands recruiter reach and helps surface
               candidates whose experience does not map neatly to traditional
               job titles.
             </p>
-            <div aria-hidden className="mt-7 max-w-4xl">
+            <div aria-hidden className="mt-6 max-w-4xl">
               <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
                 Traditional job titles
               </div>
@@ -1019,7 +1155,7 @@ export default function Week04HumanResources() {
                 {[0, 1, 2, 3].map((k) => (
                   <span
                     key={k}
-                    className="block h-12 border border-[var(--charcoal)]/20"
+                    className="block h-11 border border-[var(--charcoal)]/20"
                   />
                 ))}
                 <span className="absolute left-[37.5%] top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center">
@@ -1037,16 +1173,18 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="More applicants"
-              right="Better access to relevant talent"
-              strikeLeft
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
               The strategic gain is not merely more applicants, but better
               access to relevant talent in constrained labor markets.
             </p>
+            <div className="mt-5 max-w-4xl">
+              <Split1
+                left="More applicants"
+                right="Better access to relevant talent"
+                strikeLeft
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -1060,81 +1198,146 @@ export default function Week04HumanResources() {
         <Head1 eyebrow="Matching">Resume Screening and Candidate Matching</Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-7 max-w-4xl`}>
             Matching systems compare applicant profiles to role requirements,
             inferred skills, prior outcomes, and hiring patterns.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 120"
-            className="mt-7 w-full max-w-5xl"
+            role="img"
+            aria-label="Matching systems comparing applicant profiles to role requirements, inferred skills, prior outcomes, and hiring patterns."
+            viewBox="0 0 800 132"
+            className="mt-5 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Matching systems comparing applicant profiles to role
+              requirements, inferred skills, prior outcomes, and hiring
+              patterns.
+            </title>
+            {/* Applicant profile document on the left */}
             <rect
-              x="20"
-              y="34"
-              width="44"
-              height="52"
+              x="28"
+              y="18"
+              width="124"
+              height="76"
+              fill="var(--charcoal)"
+              fillOpacity="0.03"
               stroke="var(--charcoal)"
-              strokeOpacity="0.5"
+              strokeOpacity="0.55"
             />
             <path
-              d="M28 46H56M28 56H50M28 66H54M28 76H44"
+              d="M44 36H120M44 50H136M44 64H112M44 78H128"
               stroke="var(--charcoal)"
-              strokeOpacity="0.35"
+              strokeOpacity="0.4"
+              strokeWidth="1.5"
             />
             <text
               {...SVG_LABEL}
-              x="0"
-              y="108"
+              x="90"
+              y="114"
+              textAnchor="middle"
               fill="var(--charcoal)"
-              fillOpacity="0.55"
+              fillOpacity="0.65"
             >
               APPLICANT PROFILES
             </text>
-            {[
-              { x: 290, label: "ROLE REQUIREMENTS" },
-              { x: 450, label: "INFERRED SKILLS" },
-              { x: 600, label: "PRIOR OUTCOMES" },
-              { x: 740, label: "HIRING PATTERNS" },
-            ].map((r) => (
-              <g key={r.label}>
-                <path
-                  d={`M74 60 C 160 60, 200 60, ${r.x - 10} 60`}
-                  stroke="var(--charcoal)"
-                  strokeOpacity="0.12"
-                />
-                <path
-                  d={`M${r.x} 44V76`}
-                  stroke="var(--crimson)"
-                  strokeWidth="2"
-                />
-                <text
-                  {...SVG_LABEL}
-                  x={r.x}
-                  y="30"
-                  textAnchor="middle"
-                  fill="var(--charcoal)"
-                  fillOpacity="0.65"
-                >
-                  {r.label}
-                </text>
-              </g>
-            ))}
+
+            {/* Connector into Matching Systems / Compare */}
+            <path
+              d="M152 56H248"
+              stroke="var(--crimson)"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M241 52L248 56L241 60"
+              stroke="var(--crimson)"
+              strokeWidth="1.5"
+            />
+
+            {/* Central comparator */}
+            <rect
+              x="250"
+              y="34"
+              width="148"
+              height="44"
+              fill="var(--crimson)"
+              fillOpacity="0.05"
+              stroke="var(--crimson)"
+              strokeWidth="1.5"
+            />
             <text
               {...SVG_LABEL}
-              x="520"
-              y="104"
+              x="324"
+              y="53"
+              textAnchor="middle"
+              fill="var(--crimson)"
+            >
+              MATCHING SYSTEMS
+            </text>
+            <text
+              {...SVG_LABEL}
+              x="324"
+              y="68"
               textAnchor="middle"
               fill="var(--crimson)"
             >
               COMPARE
             </text>
+
+            {/* Four reference criteria on the right */}
+            {[
+              { y: 20, label: "ROLE REQUIREMENTS", bar: 82 },
+              { y: 48, label: "INFERRED SKILLS", bar: 68 },
+              { y: 76, label: "PRIOR OUTCOMES", bar: 74 },
+              { y: 104, label: "HIRING PATTERNS", bar: 58 },
+            ].map((r) => (
+              <g key={r.label}>
+                <path
+                  d={`M398 56 C 444 56, 460 ${r.y}, 504 ${r.y}`}
+                  stroke="var(--crimson)"
+                  strokeOpacity="0.45"
+                />
+                <rect
+                  x="504"
+                  y={r.y - 10}
+                  width="268"
+                  height="20"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.24"
+                />
+                <rect
+                  x="504"
+                  y={r.y - 10}
+                  width="6"
+                  height="20"
+                  fill="var(--crimson)"
+                />
+                <text
+                  {...SVG_LABEL}
+                  x="522"
+                  y={r.y + 3.5}
+                  fill="var(--charcoal)"
+                  fillOpacity="0.75"
+                >
+                  {r.label}
+                </text>
+              </g>
+            ))}
           </svg>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 grid w-full max-w-5xl gap-8 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[18rem_1fr] md:gap-12">
+          <div className="mt-8 grid w-full max-w-5xl items-center gap-8 border-t border-[var(--charcoal)]/10 pt-6 md:grid-cols-[1fr_20rem] md:gap-12">
+            <div className="border border-[var(--crimson)]/45 p-6 md:p-7">
+              <div className={`${MICRO} text-[var(--crimson)]`}>
+                Usefulness depends on
+              </div>
+              <p className={`${LEAD} mt-3`}>
+                Their usefulness depends on whether job requirements are
+                current, outcome labels are reliable, and the model is not
+                simply replicating historical preference.
+              </p>
+            </div>
             <ul aria-hidden className="border-t border-[var(--charcoal)]/15">
               {[
                 "job requirements are current",
@@ -1154,30 +1357,22 @@ export default function Week04HumanResources() {
                 </li>
               ))}
             </ul>
-            <div className="border border-[var(--crimson)]/45 p-7 md:p-8">
-              <div className={`${MICRO} text-[var(--crimson)]`}>
-                Usefulness depends on
-              </div>
-              <p className={`${LEAD} mt-4`}>
-                Their usefulness depends on whether job requirements are
-                current, outcome labels are reliable, and the model is not
-                simply replicating historical preference.
-              </p>
-            </div>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Hidden gatekeepers"
-              right="Prioritization and structured review"
-              strikeLeft
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
               Screening tools should support prioritization and structured
               review rather than serving as hidden gatekeepers.
             </p>
+            <div className="mt-5 max-w-4xl">
+              <Split1
+                left="Hidden gatekeepers"
+                right="Prioritization and structured review"
+                strikeLeft
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -1215,58 +1410,98 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-4xl`}>
               Structured evaluation is often more valuable than prediction
               alone because it reduces noise across interviewers and hiring
               teams.
             </p>
-            <figure aria-hidden className="mt-6 max-w-4xl">
-              <svg viewBox="0 0 800 132" className="w-full" fill="none">
+            <figure className="mt-5 max-w-4xl">
+              <svg
+                role="img"
+                aria-label="Two panels comparing wide rating noise across interviewers with tightly aligned structured evaluation."
+                viewBox="0 0 800 144"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Two panels comparing wide rating noise across interviewers
+                  with tightly aligned structured evaluation.
+                </title>
                 {[
-                  { x0: 40, label: "NOISE ACROSS INTERVIEWERS", spread: 1 },
-                  { x0: 440, label: "STRUCTURED EVALUATION", spread: 0 },
-                ].map((panel) => (
-                  <g key={panel.label}>
-                    <text
-                      {...SVG_LABEL}
-                      x={panel.x0}
-                      y="12"
-                      fill={panel.spread ? "var(--charcoal)" : "var(--crimson)"}
-                      fillOpacity={panel.spread ? 0.5 : 1}
-                    >
-                      {panel.label}
-                    </text>
-                    {[0, 1, 2, 3].map((row) => {
-                      const y = 36 + row * 24;
-                      const offsets = [-110, 60, -40, 130];
-                      const cx =
-                        panel.x0 +
-                        160 +
-                        (panel.spread ? offsets[row] : (row % 2 ? 6 : -6));
-                      return (
-                        <g key={row}>
-                          <path
-                            d={`M${panel.x0} ${y}H${panel.x0 + 320}`}
-                            stroke="var(--charcoal)"
-                            strokeOpacity="0.12"
-                          />
-                          <circle
-                            cx={cx}
-                            cy={y}
-                            r="5"
-                            fill={panel.spread ? "var(--charcoal)" : "var(--crimson)"}
-                            fillOpacity={panel.spread ? 0.45 : 1}
-                          />
-                        </g>
-                      );
-                    })}
-                  </g>
-                ))}
+                  { x0: 32, label: "NOISE ACROSS INTERVIEWERS", spread: 1 },
+                  { x0: 448, label: "STRUCTURED EVALUATION", spread: 0 },
+                ].map((panel) => {
+                  const offsets = [-110, 60, -40, 120];
+                  const xs = [0, 1, 2, 3].map(
+                    (row) =>
+                      panel.x0 +
+                      160 +
+                      (panel.spread ? offsets[row] : row % 2 ? 6 : -6),
+                  );
+                  const minX = Math.min(...xs);
+                  const maxX = Math.max(...xs);
+                  return (
+                    <g key={panel.label}>
+                      <text
+                        {...SVG_LABEL}
+                        x={panel.x0}
+                        y="18"
+                        fill={
+                          panel.spread ? "var(--charcoal)" : "var(--crimson)"
+                        }
+                        fillOpacity={panel.spread ? 0.6 : 1}
+                      >
+                        {panel.label}
+                      </text>
+                      <rect
+                        x={minX}
+                        y="32"
+                        width={maxX - minX}
+                        height="90"
+                        fill={
+                          panel.spread ? "var(--charcoal)" : "var(--crimson)"
+                        }
+                        fillOpacity={panel.spread ? 0.04 : 0.08}
+                      />
+                      {[0, 1, 2, 3].map((row) => {
+                        const y = 42 + row * 24;
+                        const cx = xs[row];
+                        return (
+                          <g key={row}>
+                            <path
+                              d={`M${panel.x0} ${y}H${panel.x0 + 320}`}
+                              stroke="var(--charcoal)"
+                              strokeOpacity="0.14"
+                            />
+                            <circle
+                              cx={cx}
+                              cy={y}
+                              r="5"
+                              fill={
+                                panel.spread
+                                  ? "var(--charcoal)"
+                                  : "var(--crimson)"
+                              }
+                              fillOpacity={panel.spread ? 0.5 : 1}
+                            />
+                          </g>
+                        );
+                      })}
+                      <path
+                        d={`M${minX} 126V132H${maxX}V126`}
+                        stroke={
+                          panel.spread ? "var(--charcoal)" : "var(--crimson)"
+                        }
+                        strokeOpacity={panel.spread ? 0.35 : 0.85}
+                      />
+                    </g>
+                  );
+                })}
                 <path
-                  d="M400 24V120"
+                  d="M400 20V132"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.12"
+                  strokeOpacity="0.14"
                 />
               </svg>
             </figure>
@@ -1274,10 +1509,15 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Systems should reinforce evidence-based assessment rather than
+              reward fluency, confidence, or résumé polish unrelated to job
+              performance.
+            </p>
             <div
               aria-hidden
-              className="flex flex-wrap items-center gap-x-4 gap-y-3"
+              className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3"
             >
               <span
                 className={`${TAG} bg-[var(--crimson)] px-3 py-2 text-[var(--surface)]`}
@@ -1293,11 +1533,6 @@ export default function Week04HumanResources() {
                 </span>
               ))}
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Systems should reinforce evidence-based assessment rather than
-              reward fluency, confidence, or résumé polish unrelated to job
-              performance.
-            </p>
           </div>
         </div>
       </Slide>
@@ -1331,62 +1566,98 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_24rem] md:gap-14">
+          <div className="mt-8 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-6 md:grid-cols-[1fr_25rem] md:gap-14">
             <p className={LEAD}>
               Operational improvements matter because candidate experience
               affects acceptance rates, employer brand, and recruiter
               productivity.
             </p>
-            <svg aria-hidden viewBox="0 0 400 128" className="w-full" fill="none">
+            <svg
+              role="img"
+              aria-label="Candidate experience branching to affect acceptance rates, employer brand, and recruiter productivity."
+              viewBox="0 0 400 120"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Candidate experience branching to affect acceptance rates,
+                employer brand, and recruiter productivity.
+              </title>
+              <rect
+                x="8"
+                y="36"
+                width="108"
+                height="48"
+                fill="var(--crimson)"
+                fillOpacity="0.05"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                {...SVG_LABEL}
+                x="62"
+                y="56"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                CANDIDATE
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="62"
+                y="71"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                EXPERIENCE
+              </text>
               {[
-                { y: 16, label: "ACCEPTANCE RATES" },
-                { y: 56, label: "EMPLOYER BRAND" },
-                { y: 96, label: "RECRUITER PRODUCTIVITY" },
+                { y: 22, label: "ACCEPTANCE RATES" },
+                { y: 60, label: "EMPLOYER BRAND" },
+                { y: 98, label: "RECRUITER PRODUCTIVITY" },
               ].map((n) => (
                 <g key={n.label}>
                   <path
-                    d={`M30 56L166 ${n.y}`}
+                    d={`M116 60 C 146 60, 154 ${n.y}, 182 ${n.y}`}
                     stroke="var(--crimson)"
                     strokeOpacity="0.5"
                   />
                   <circle
-                    cx="172"
+                    cx="188"
                     cy={n.y}
                     r="5"
                     fill="var(--surface)"
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.55"
+                    strokeOpacity="0.6"
                   />
                   <text
                     {...SVG_LABEL}
-                    x="186"
-                    y={n.y + 3}
+                    x="202"
+                    y={n.y + 3.5}
                     fill="var(--charcoal)"
-                    fillOpacity="0.65"
+                    fillOpacity="0.75"
                   >
                     {n.label}
                   </text>
                 </g>
               ))}
-              <circle cx="24" cy="56" r="6" fill="var(--crimson)" />
-              <text {...SVG_LABEL} x="0" y="124" fill="var(--crimson)">
-                CANDIDATE EXPERIENCE
-              </text>
             </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
-            <Split1
-              left="Nobody is accountable"
-              right="Reduce uncertainty for candidates"
-              strikeLeft
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
               Automation should reduce uncertainty for candidates, not increase
               the sense that nobody is accountable for the process.
             </p>
+            <div className="mt-5 max-w-4xl">
+              <Split1
+                left="Nobody is accountable"
+                right="Reduce uncertainty for candidates"
+                strikeLeft
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -1402,50 +1673,60 @@ export default function Week04HumanResources() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-6 max-w-4xl`}>
             Hiring models require scrutiny because they influence who gets
             seen, who advances, and which qualifications are treated as signals
             of merit.
           </p>
-          <figure aria-hidden className="mt-7 max-w-4xl space-y-3">
+          <svg
+            role="img"
+            aria-label="Hiring funnel narrowing from sixteen candidates who get seen, to eight who advance, to three treated as signals of merit."
+            viewBox="0 0 800 108"
+            className="mt-4 w-full max-w-5xl"
+            fill="none"
+          >
+            <title>
+              Hiring funnel narrowing from sixteen candidates who get seen, to
+              eight who advance, to three treated as signals of merit.
+            </title>
             {[
-              { label: "who gets seen", n: 16 },
-              { label: "who advances", n: 8 },
-              { label: "signals of merit", n: 3 },
-            ].map((stage, i) => (
-              <div
-                key={stage.label}
-                className="grid grid-cols-[9rem_1fr] items-center gap-4 md:grid-cols-[11rem_1fr]"
-              >
-                <span
-                  className={`${TAG} ${
-                    i === 2
-                      ? "text-[var(--crimson)]"
-                      : "text-[var(--charcoal-light)]/70"
-                  }`}
+              { label: "WHO GETS SEEN", y: 22, n: 16, mark: false },
+              { label: "WHO ADVANCES", y: 54, n: 8, mark: false },
+              { label: "SIGNALS OF MERIT", y: 86, n: 3, mark: true },
+            ].map((stage) => (
+              <g key={stage.label}>
+                <text
+                  {...SVG_LABEL}
+                  x="16"
+                  y={stage.y + 3.5}
+                  fill={stage.mark ? "var(--crimson)" : "var(--charcoal)"}
+                  fillOpacity={stage.mark ? 1 : 0.65}
                 >
                   {stage.label}
-                </span>
-                <span className="flex gap-1.5 border-l border-[var(--charcoal)]/20 pl-4">
-                  {Array.from({ length: stage.n }).map((_, k) => (
-                    <span
-                      key={k}
-                      className={`block h-3 w-3 rounded-full ${
-                        i === 2
-                          ? "bg-[var(--crimson)]"
-                          : "bg-[var(--charcoal)]/30"
-                      }`}
-                    />
-                  ))}
-                </span>
-              </div>
+                </text>
+                <path
+                  d={`M184 ${stage.y - 10}V${stage.y + 10}`}
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.22"
+                />
+                {Array.from({ length: stage.n }).map((_, k) => (
+                  <circle
+                    key={k}
+                    cx={210 + k * 24}
+                    cy={stage.y}
+                    r="6"
+                    fill={stage.mark ? "var(--crimson)" : "var(--charcoal)"}
+                    fillOpacity={stage.mark ? 0.9 : 0.32}
+                  />
+                ))}
+              </g>
             ))}
-          </figure>
+          </svg>
         </div>
 
-        <div className="w-full">
-          <div className={RULED}>
-            <p className={`${BODY} max-w-4xl`}>
+        <div className="mt-6 grid w-full max-w-5xl gap-8 border-t border-[var(--charcoal)]/10 pt-5 md:grid-cols-2 md:gap-12">
+          <div>
+            <p className={BODY}>
               Governance should test for disparate outcomes, unstable proxies,
               and role-specific assumptions that no longer fit the labor
               market.
@@ -1457,15 +1738,16 @@ export default function Week04HumanResources() {
                 "role-specific assumptions",
               ]}
               cols="grid-cols-3"
-              className="mt-6 max-w-3xl"
+              className="mt-4"
             />
           </div>
-        </div>
-
-        <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
-            <div aria-hidden className="max-w-3xl space-y-4">
-              <div className="grid grid-cols-[8rem_1fr] items-center gap-4 md:grid-cols-[10rem_1fr]">
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+            <p className={BODY}>
+              Clear documentation is essential when vendors supply the model
+              logic but the employer carries the employment risk.
+            </p>
+            <div aria-hidden className="mt-4 space-y-2.5">
+              <div className="grid grid-cols-[6.5rem_1fr] items-center gap-3">
                 <span className={`${MICRO} text-[var(--charcoal-light)]/55`}>
                   Vendors
                 </span>
@@ -1473,13 +1755,13 @@ export default function Week04HumanResources() {
                   <span className="h-px flex-1 bg-[var(--charcoal)]/30" />
                   <span className="text-[var(--charcoal)]/40">→</span>
                   <span
-                    className={`${TAG} border border-[var(--charcoal)]/15 px-3 py-2 text-[var(--charcoal-light)]/60`}
+                    className={`${TAG} border border-[var(--charcoal)]/15 px-3 py-1.5 text-[var(--charcoal-light)]/60`}
                   >
                     model logic
                   </span>
                 </span>
               </div>
-              <div className="grid grid-cols-[8rem_1fr] items-center gap-4 md:grid-cols-[10rem_1fr]">
+              <div className="grid grid-cols-[6.5rem_1fr] items-center gap-3">
                 <span className={`${MICRO} text-[var(--crimson)]`}>
                   Employer
                 </span>
@@ -1491,18 +1773,19 @@ export default function Week04HumanResources() {
                 </span>
               </div>
             </div>
-            <p className={`${LEAD} mt-8 max-w-4xl`}>
-              Clear documentation is essential when vendors supply the model
-              logic but the employer carries the employment risk.
-            </p>
           </div>
         </div>
 
-        <Discussion1>
-          Should an employer accept a materially faster recruiting process if
-          the scoring logic remains only partially explainable to candidates,
-          managers, and legal reviewers?
-        </Discussion1>
+        <div className="w-full">
+          <aside className="mt-6 max-w-4xl border border-[var(--charcoal)]/12 p-5 md:p-6">
+            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
+            <p className="mt-2 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+              Should an employer accept a materially faster recruiting process
+              if the scoring logic remains only partially explainable to
+              candidates, managers, and legal reviewers?
+            </p>
+          </aside>
+        </div>
       </Slide>
 
       <ModulePlate2
@@ -1531,27 +1814,42 @@ export default function Week04HumanResources() {
             patterns.
           </p>
           <svg
-            aria-hidden
+            role="img"
+            aria-label="Business forecasts and historical labor patterns combining to estimate hiring needs, overtime pressure, capacity gaps, and role demand."
             viewBox="0 0 800 136"
-            className="mt-7 w-full max-w-5xl"
+            className="mt-5 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Business forecasts and historical labor patterns combining to
+              estimate hiring needs, overtime pressure, capacity gaps, and role
+              demand.
+            </title>
             {[
               { y: 40, label: "BUSINESS FORECASTS" },
               { y: 96, label: "HISTORICAL LABOR PATTERNS" },
             ].map((src) => (
               <g key={src.label}>
+                <rect
+                  x="16"
+                  y={src.y - 14}
+                  width="216"
+                  height="28"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.28"
+                />
                 <text
                   {...SVG_LABEL}
-                  x="0"
-                  y={src.y + 3}
+                  x="124"
+                  y={src.y + 3.5}
+                  textAnchor="middle"
                   fill="var(--charcoal)"
-                  fillOpacity="0.6"
+                  fillOpacity="0.7"
                 >
                   {src.label}
                 </text>
                 <path
-                  d={`M236 ${src.y} C 290 ${src.y}, 300 68, 350 68`}
+                  d={`M232 ${src.y} C 290 ${src.y}, 306 68, 351 68`}
                   stroke="var(--charcoal)"
                   strokeOpacity="0.3"
                 />
@@ -1559,19 +1857,19 @@ export default function Week04HumanResources() {
             ))}
             <circle cx="358" cy="68" r="7" fill="var(--crimson)" />
             {[
-              { y: 14, label: "HIRING NEEDS" },
-              { y: 50, label: "OVERTIME PRESSURE" },
+              { y: 18, label: "HIRING NEEDS" },
+              { y: 52, label: "OVERTIME PRESSURE" },
               { y: 86, label: "CAPACITY GAPS" },
-              { y: 122, label: "ROLE DEMAND" },
+              { y: 120, label: "ROLE DEMAND" },
             ].map((o) => (
               <g key={o.label}>
                 <path
-                  d={`M366 68 C 430 68, 440 ${o.y}, 500 ${o.y}`}
+                  d={`M365 68 C 430 68, 442 ${o.y}, 500 ${o.y}`}
                   stroke="var(--crimson)"
-                  strokeOpacity="0.45"
+                  strokeOpacity="0.5"
                 />
                 <rect
-                  x="506"
+                  x="500"
                   y={o.y - 5}
                   width="10"
                   height="10"
@@ -1579,10 +1877,10 @@ export default function Week04HumanResources() {
                 />
                 <text
                   {...SVG_LABEL}
-                  x="528"
-                  y={o.y + 3}
+                  x="522"
+                  y={o.y + 3.5}
                   fill="var(--charcoal)"
-                  fillOpacity="0.7"
+                  fillOpacity="0.75"
                 >
                   {o.label}
                 </text>
@@ -1612,35 +1910,54 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
-            <figure aria-hidden>
-              <svg viewBox="0 0 800 126" className="w-full" fill="none">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Leaders should treat workforce forecasts as decision support
+              because restructuring, policy shifts, and macro shocks can quickly
+              change the picture.
+            </p>
+            <figure className="mt-5 w-full">
+              <svg
+                role="img"
+                aria-label="Dashed workforce forecasts baseline disrupted at three vertical shock markers for restructuring, policy shifts, and macro shocks."
+                viewBox="0 0 800 132"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Dashed workforce forecasts baseline disrupted at three
+                  vertical shock markers for restructuring, policy shifts, and
+                  macro shocks.
+                </title>
                 <path
                   d="M20 70 C 120 60, 180 78, 260 66 S 420 58, 520 64 S 700 60, 780 62"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.4"
+                  strokeOpacity="0.45"
                   strokeDasharray="4 4"
-                />
-                <path
-                  d="M20 70 C 120 60, 180 78, 230 68 L 250 34 C 300 40, 330 30, 400 36 L 420 92 C 480 96, 540 84, 600 90 L 620 20 C 680 26, 730 16, 780 22"
-                  stroke="var(--crimson)"
                   strokeWidth="1.5"
                 />
+                <path
+                  d="M20 70 C 120 60, 180 78, 240 68 V 34 C 296 40, 336 30, 410 36 V 92 C 476 96, 540 84, 610 90 V 20 C 676 26, 730 16, 780 22"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.75"
+                />
                 {[
-                  { x: 240, label: "RESTRUCTURING" },
-                  { x: 410, label: "POLICY SHIFTS" },
-                  { x: 610, label: "MACRO SHOCKS" },
+                  { x: 240, cy: 34, label: "RESTRUCTURING" },
+                  { x: 410, cy: 92, label: "POLICY SHIFTS" },
+                  { x: 610, cy: 20, label: "MACRO SHOCKS" },
                 ].map((s) => (
                   <g key={s.label}>
                     <path
-                      d={`M${s.x} 8V104`}
-                      stroke="var(--charcoal)"
-                      strokeOpacity="0.15"
+                      d={`M${s.x} 10V104`}
+                      stroke="var(--crimson)"
+                      strokeOpacity="0.28"
+                      strokeDasharray="3 3"
                     />
+                    <circle cx={s.x} cy={s.cy} r="4" fill="var(--crimson)" />
                     <text
                       {...SVG_LABEL}
                       x={s.x}
-                      y="118"
+                      y="120"
                       textAnchor="middle"
                       fill="var(--crimson)"
                     >
@@ -1650,20 +1967,16 @@ export default function Week04HumanResources() {
                 ))}
                 <text
                   {...SVG_LABEL}
-                  x="20"
-                  y="96"
+                  x="780"
+                  y="82"
+                  textAnchor="end"
                   fill="var(--charcoal)"
-                  fillOpacity="0.45"
+                  fillOpacity="0.6"
                 >
                   WORKFORCE FORECASTS
                 </text>
               </svg>
             </figure>
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
-              Leaders should treat workforce forecasts as decision support
-              because restructuring, policy shifts, and macro shocks can quickly
-              change the picture.
-            </p>
           </div>
         </div>
       </Slide>
@@ -1679,63 +1992,93 @@ export default function Week04HumanResources() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-7 max-w-4xl`}>
             Skills inference systems connect roles, experiences, credentials,
             projects, and learning history into a dynamic view of
             organizational capability.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 190"
-            className="mt-7 w-full max-w-4xl"
+            role="img"
+            aria-label="Skills inference graph connecting roles, experiences, credentials, projects, and learning history into a central view of organizational capability."
+            viewBox="0 0 800 184"
+            className="mt-5 w-full max-w-4xl"
             fill="none"
           >
+            <title>
+              Skills inference graph connecting roles, experiences, credentials,
+              projects, and learning history into a central view of
+              organizational capability.
+            </title>
             {(() => {
               const nodes = [
-                { x: 90, y: 40, label: "ROLES", anchor: "middle" as const, ly: 22 },
-                { x: 250, y: 150, label: "EXPERIENCES", anchor: "middle" as const, ly: 178 },
-                { x: 400, y: 46, label: "CREDENTIALS", anchor: "middle" as const, ly: 26 },
-                { x: 550, y: 150, label: "PROJECTS", anchor: "middle" as const, ly: 178 },
-                { x: 710, y: 40, label: "LEARNING HISTORY", anchor: "middle" as const, ly: 22 },
+                { x: 140, y: 34, label: "ROLES", ly: 17, hx: 304, hy: 86 },
+                { x: 400, y: 34, label: "CREDENTIALS", ly: 17, hx: 400, hy: 76 },
+                { x: 660, y: 34, label: "LEARNING HISTORY", ly: 17, hx: 496, hy: 86 },
+                { x: 560, y: 150, label: "PROJECTS", ly: 172, hx: 496, hy: 102 },
+                { x: 240, y: 150, label: "EXPERIENCES", ly: 172, hx: 304, hy: 102 },
               ];
-              const edges = [
+              const ring = [
                 [0, 1],
-                [0, 2],
                 [1, 2],
-                [1, 3],
                 [2, 3],
-                [2, 4],
                 [3, 4],
-                [0, 3],
-                [1, 4],
+                [4, 0],
               ];
               return (
                 <>
-                  {edges.map(([a, b]) => (
+                  {ring.map(([a, b]) => (
                     <path
                       key={`${a}-${b}`}
                       d={`M${nodes[a].x} ${nodes[a].y}L${nodes[b].x} ${nodes[b].y}`}
-                      stroke="var(--crimson)"
-                      strokeOpacity="0.3"
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.2"
                     />
                   ))}
+                  {nodes.map((n) => (
+                    <path
+                      key={`spoke-${n.label}`}
+                      d={`M${n.x} ${n.y}L${n.hx} ${n.hy}`}
+                      stroke="var(--crimson)"
+                      strokeOpacity="0.45"
+                    />
+                  ))}
+                  <rect
+                    x="304"
+                    y="76"
+                    width="192"
+                    height="36"
+                    fill="var(--crimson)"
+                    fillOpacity="0.05"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.5"
+                  />
+                  <text
+                    {...SVG_LABEL}
+                    x="400"
+                    y="97.5"
+                    textAnchor="middle"
+                    fill="var(--crimson)"
+                  >
+                    ORGANIZATIONAL CAPABILITY
+                  </text>
                   {nodes.map((n) => (
                     <g key={n.label}>
                       <circle
                         cx={n.x}
                         cy={n.y}
-                        r="8"
+                        r="7"
                         fill="var(--surface)"
                         stroke="var(--charcoal)"
-                        strokeOpacity="0.6"
+                        strokeOpacity="0.65"
+                        strokeWidth="1.25"
                       />
                       <text
                         {...SVG_LABEL}
                         x={n.x}
                         y={n.ly}
-                        textAnchor={n.anchor}
+                        textAnchor="middle"
                         fill="var(--charcoal)"
-                        fillOpacity="0.65"
+                        fillOpacity="0.7"
                       >
                         {n.label}
                       </text>
@@ -1747,9 +2090,9 @@ export default function Week04HumanResources() {
           </svg>
         </div>
 
-        <div className="w-full">
-          <div className={RULED}>
-            <p className={`${BODY} max-w-4xl`}>
+        <div className="mt-5 grid w-full max-w-5xl gap-8 border-t border-[var(--charcoal)]/10 pt-5 md:grid-cols-2 md:gap-12">
+          <div>
+            <p className={BODY}>
               The strategic opportunity is better internal mobility, smarter
               succession planning, and reduced dependence on external hiring for
               every capability gap.
@@ -1761,41 +2104,46 @@ export default function Week04HumanResources() {
                 "reduced dependence on external hiring",
               ]}
               cols="grid-cols-3"
-              className="mt-6 max-w-4xl"
+              className="mt-4"
             />
           </div>
-        </div>
 
-        <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
-            <div className={`${MICRO} text-[var(--crimson)]`}>Trust that inferred skills are</div>
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+            <p className={BODY}>
+              Skills systems are only useful when employees and managers trust
+              that inferred skills are current, relevant, and not silently
+              punitive.
+            </p>
+            <div className={`${MICRO} mt-4 text-[var(--crimson)]`}>
+              Trust that inferred skills are
+            </div>
             <ul
               aria-hidden
-              className="mt-4 grid max-w-3xl gap-3 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/70 md:grid-cols-3"
+              className="mt-2.5 grid gap-3 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70 sm:grid-cols-3"
             >
               {["current", "relevant", "not silently punitive"].map((c) => (
                 <li
                   key={c}
-                  className="flex items-start gap-3 border-t border-[var(--charcoal)]/12 pt-3"
+                  className="flex items-start gap-2.5 border-t border-[var(--charcoal)]/12 pt-2"
                 >
                   <span className="mt-[3px] h-2.5 w-2.5 shrink-0 bg-[var(--crimson)]" />
                   {c}
                 </li>
               ))}
             </ul>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Skills systems are only useful when employees and managers trust
-              that inferred skills are current, relevant, and not silently
-              punitive.
-            </p>
           </div>
         </div>
 
-        <Discussion1>
-          Should firms rely on inferred skills data to shape promotion and
-          mobility opportunities when many high-value capabilities are still
-          informal, relational, or poorly documented?
-        </Discussion1>
+        <div className="w-full">
+          <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
+            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
+            <p className="mt-1.5 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+              Should firms rely on inferred skills data to shape promotion and
+              mobility opportunities when many high-value capabilities are still
+              informal, relational, or poorly documented?
+            </p>
+          </aside>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -1819,14 +2167,34 @@ export default function Week04HumanResources() {
             coverage, location staffing, and contingency plans against service
             demand.
           </p>
-          <figure aria-hidden className="mt-7 w-full max-w-5xl">
-            <svg viewBox="0 0 800 130" className="w-full" fill="none">
-              <path d="M20 110H780" stroke="var(--charcoal)" strokeOpacity="0.25" />
+          <figure className="mt-6 w-full max-w-5xl">
+            <svg
+              role="img"
+              aria-label="Stepped shift coverage blocks tracking a continuous service demand curve across the day."
+              viewBox="0 0 800 132"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Stepped shift coverage blocks tracking a continuous service
+                demand curve across the day.
+              </title>
+              <path
+                d="M20 94H110V52H160V32H250V58H320V74H400V44H460V24H600V56H680V84H780V110H20Z"
+                fill="var(--crimson)"
+                fillOpacity="0.05"
+              />
+              <path
+                d="M20 110H780"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.25"
+              />
               <path
                 d="M20 96 C 90 90, 130 40, 200 36 S 300 80, 360 76 S 470 20, 560 26 S 700 88, 780 92"
                 stroke="var(--charcoal)"
-                strokeOpacity="0.45"
+                strokeOpacity="0.55"
                 strokeWidth="1.5"
+                strokeDasharray="4 4"
               />
               <path
                 d="M20 94H110V52H160V32H250V58H320V74H400V44H460V24H600V56H680V84H780"
@@ -1835,18 +2203,18 @@ export default function Week04HumanResources() {
               />
               <text
                 {...SVG_LABEL}
-                x="200"
-                y="18"
+                x="360"
+                y="96"
                 textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.55"
+                fillOpacity="0.65"
               >
                 SERVICE DEMAND
               </text>
               <text
                 {...SVG_LABEL}
                 x="530"
-                y="14"
+                y="16"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
@@ -1857,7 +2225,7 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-4xl`}>
               Operational gains come from matching labor supply to customer
               volume while reducing understaffing, overtime, and avoidable
@@ -1865,7 +2233,7 @@ export default function Week04HumanResources() {
             </p>
             <div
               aria-hidden
-              className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3"
+              className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3"
             >
               <span
                 className={`${TAG} border border-[var(--charcoal)]/15 px-3 py-2 text-[var(--charcoal-light)]/70`}
@@ -1892,44 +2260,47 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${LEAD} max-w-4xl`}>
+              Optimization should respect legal constraints, fatigue, fairness,
+              and employee autonomy rather than treating labor as a purely
+              mathematical input.
+            </p>
             <div
               aria-hidden
-              className="grid max-w-4xl gap-6 md:grid-cols-[14rem_1fr] md:items-end"
+              className="mt-5 grid max-w-4xl gap-6 md:grid-cols-[14rem_1fr] md:items-end"
             >
               <div>
                 <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
                   Not
                 </div>
                 <div
-                  className={`${TAG} mt-3 border border-[var(--charcoal)]/15 px-4 py-3 text-[var(--charcoal-light)]/45 [text-decoration-line:line-through]`}
+                  className={`${TAG} mt-2 border border-[var(--charcoal)]/15 px-4 py-2.5 text-[var(--charcoal-light)]/45 [text-decoration-line:line-through]`}
                 >
                   purely mathematical input
                 </div>
               </div>
               <div>
                 <div className={`${MICRO} text-[var(--crimson)]`}>Respect</div>
-                <div className="mt-3 grid grid-cols-2 border-y-2 border-[var(--crimson)] sm:grid-cols-4">
-                  {["legal constraints", "fatigue", "fairness", "employee autonomy"].map(
-                    (b, i) => (
-                      <span
-                        key={b}
-                        className={`${TAG} px-4 py-3 text-[var(--charcoal-light)]/70 ${
-                          i > 0 ? "sm:border-l sm:border-[var(--crimson)]/30" : ""
-                        }`}
-                      >
-                        {b}
-                      </span>
-                    ),
-                  )}
+                <div className="mt-2 grid grid-cols-2 border-y-2 border-[var(--crimson)] sm:grid-cols-4">
+                  {[
+                    "legal constraints",
+                    "fatigue",
+                    "fairness",
+                    "employee autonomy",
+                  ].map((b, i) => (
+                    <span
+                      key={b}
+                      className={`${TAG} px-4 py-2.5 text-[var(--charcoal-light)]/70 ${
+                        i > 0 ? "sm:border-l sm:border-[var(--crimson)]/30" : ""
+                      }`}
+                    >
+                      {b}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
-            <p className={`${LEAD} mt-7 max-w-4xl`}>
-              Optimization should respect legal constraints, fatigue, fairness,
-              and employee autonomy rather than treating labor as a purely
-              mathematical input.
-            </p>
           </div>
         </div>
       </Slide>
@@ -1943,61 +2314,103 @@ export default function Week04HumanResources() {
         <Head1 eyebrow="Before exit">Attrition Risk and Retention Intervention</Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-7 max-w-4xl`}>
             Retention models aim to identify employees or segments with
             elevated exit risk before turnover becomes visible in manager
             reporting.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 96"
-            className="mt-7 w-full max-w-5xl"
+            role="img"
+            aria-label="Timeline showing retention models identifying elevated exit risk well before turnover becomes visible in manager reporting."
+            viewBox="0 0 800 112"
+            className="mt-5 w-full max-w-5xl"
             fill="none"
           >
-            <path d="M20 48H780" stroke="var(--charcoal)" strokeOpacity="0.25" />
-            <path d="M771 44l9 4l-9 4" stroke="var(--charcoal)" strokeOpacity="0.4" />
-            <circle cx="260" cy="48" r="8" fill="var(--crimson)" />
+            <title>
+              Timeline showing retention models identifying elevated exit risk
+              well before turnover becomes visible in manager reporting.
+            </title>
+            {/* Shaded lead-time window between model flag and manager reporting */}
+            <path
+              d="M260 48 C 380 34, 520 30, 640 26 V 78 H 260 Z"
+              fill="var(--crimson)"
+              fillOpacity="0.06"
+            />
+            {/* Time axis */}
+            <path
+              d="M24 78H776"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.25"
+            />
+            <path
+              d="M768 74L776 78L768 82"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.45"
+            />
+            {/* Rising exit-risk trajectory */}
+            <path
+              d="M32 72 C 130 70, 200 56, 260 48 C 380 34, 520 30, 640 26 L 756 24"
+              stroke="var(--crimson)"
+              strokeWidth="1.75"
+            />
+            {/* Early flag: Elevated Exit Risk */}
+            <path
+              d="M260 26V78"
+              stroke="var(--crimson)"
+              strokeWidth="1.5"
+              strokeDasharray="3 3"
+            />
+            <circle cx="260" cy="48" r="6" fill="var(--crimson)" />
             <text
               {...SVG_LABEL}
               x="260"
-              y="26"
+              y="17"
               textAnchor="middle"
               fill="var(--crimson)"
             >
               ELEVATED EXIT RISK
             </text>
+            {/* Late threshold: Visible in Manager Reporting */}
             <path
-              d="M268 48H600"
-              stroke="var(--crimson)"
-              strokeWidth="3"
-              strokeOpacity="0.25"
+              d="M640 20V84"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.65"
+              strokeWidth="2"
             />
-            <path d="M640 32V64" stroke="var(--charcoal)" strokeOpacity="0.6" strokeWidth="2" />
+            <circle
+              cx="640"
+              cy="26"
+              r="5"
+              fill="var(--surface)"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.75"
+              strokeWidth="1.5"
+            />
             <text
               {...SVG_LABEL}
               x="640"
-              y="84"
+              y="100"
               textAnchor="middle"
               fill="var(--charcoal)"
-              fillOpacity="0.55"
+              fillOpacity="0.65"
             >
               VISIBLE IN MANAGER REPORTING
             </text>
           </svg>
         </div>
 
-        <div className="w-full">
-          <div className={RULED}>
-            <p className={`${BODY} max-w-4xl`}>
+        <div className="mt-5 grid w-full max-w-5xl gap-8 border-t border-[var(--charcoal)]/10 pt-5 md:grid-cols-2 md:gap-12">
+          <div>
+            <p className={BODY}>
               High-performing systems still require care because the
               intervention may change behavior, expectations, or employee trust.
             </p>
             <div
               aria-hidden
-              className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3"
+              className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2.5"
             >
               <span
-                className={`${TAG} bg-[var(--crimson)] px-3 py-2 text-[var(--surface)]`}
+                className={`${TAG} bg-[var(--crimson)] px-3 py-1.5 text-[var(--surface)]`}
               >
                 the intervention
               </span>
@@ -2008,28 +2421,33 @@ export default function Week04HumanResources() {
               />
             </div>
           </div>
-        </div>
 
-        <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
-            <Split1 left="Who may leave" right="Which actions" />
-            <Steps
-              items={["legitimate", "effective", "ethically defensible"]}
-              cols="grid-cols-3"
-              className="mt-5 max-w-2xl"
-            />
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+            <p className={BODY}>
               The relevant question is not only who may leave, but which
               actions are legitimate, effective, and ethically defensible.
             </p>
+            <div className="mt-4">
+              <Split1 left="Who may leave" right="Which actions" />
+              <Steps
+                items={["legitimate", "effective", "ethically defensible"]}
+                cols="grid-cols-3"
+                className="mt-3"
+              />
+            </div>
           </div>
         </div>
 
-        <Discussion1>
-          When does predictive retention become a strategic advantage, and when
-          does it become an intrusive practice that changes the employment
-          relationship for the worse?
-        </Discussion1>
+        <div className="w-full">
+          <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
+            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
+            <p className="mt-1.5 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+              When does predictive retention become a strategic advantage, and
+              when does it become an intrusive practice that changes the
+              employment relationship for the worse?
+            </p>
+          </aside>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2043,66 +2461,93 @@ export default function Week04HumanResources() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-7 max-w-4xl`}>
             Digital collaboration traces can reveal bottlenecks, overloaded
             connectors, isolated teams, and hidden dependencies across the
             organization.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 200"
-            className="mt-7 w-full max-w-5xl"
+            role="img"
+            aria-label="Organizational network showing two team clusters funneled through one overloaded connector hub, a dashed hidden dependency arc below, and an isolated team cluster on the right."
+            viewBox="0 0 800 196"
+            className="mt-5 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Organizational network showing two team clusters funneled through
+              one overloaded connector hub, a dashed hidden dependency arc
+              below, and an isolated team cluster on the right.
+            </title>
             {(() => {
               const left = [
-                [60, 70],
-                [110, 40],
-                [140, 100],
-                [80, 130],
-                [180, 60],
+                [140, 32],
+                [68, 56],
+                [168, 78],
+                [68, 104],
+                [148, 130],
               ];
               const right = [
-                [460, 60],
-                [520, 40],
-                [540, 110],
-                [480, 130],
-                [590, 80],
+                [500, 32],
+                [572, 56],
+                [472, 78],
+                [572, 104],
+                [492, 130],
               ];
               const isolated = [
-                [720, 150],
-                [760, 130],
-                [750, 175],
+                [692, 122],
+                [752, 122],
+                [722, 164],
               ];
               const hub = [320, 90];
-              const mesh = (pts: number[][], key: string) =>
-                pts.flatMap((a, i) =>
-                  pts.slice(i + 1).map((b, j) => (
-                    <path
-                      key={`${key}-${i}-${j}`}
-                      d={`M${a[0]} ${a[1]}L${b[0]} ${b[1]}`}
-                      stroke="var(--charcoal)"
-                      strokeOpacity="0.14"
-                    />
-                  )),
-                );
+              const clusterEdges = [
+                [0, 1],
+                [1, 3],
+                [3, 4],
+                [4, 2],
+                [2, 0],
+                [1, 2],
+                [2, 3],
+              ];
               return (
                 <>
-                  {mesh(left, "l")}
-                  {mesh(right, "r")}
-                  {mesh(isolated, "i")}
+                  {clusterEdges.map(([a, b], i) => (
+                    <React.Fragment key={`ce-${i}`}>
+                      <path
+                        d={`M${left[a][0]} ${left[a][1]}L${left[b][0]} ${left[b][1]}`}
+                        stroke="var(--charcoal)"
+                        strokeOpacity="0.18"
+                      />
+                      <path
+                        d={`M${right[a][0]} ${right[a][1]}L${right[b][0]} ${right[b][1]}`}
+                        stroke="var(--charcoal)"
+                        strokeOpacity="0.18"
+                      />
+                    </React.Fragment>
+                  ))}
+                  {[
+                    [0, 1],
+                    [1, 2],
+                    [2, 0],
+                  ].map(([a, b], i) => (
+                    <path
+                      key={`iso-${i}`}
+                      d={`M${isolated[a][0]} ${isolated[a][1]}L${isolated[b][0]} ${isolated[b][1]}`}
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.22"
+                    />
+                  ))}
                   {[...left, ...right].map(([x, y], i) => (
                     <path
                       key={`h-${i}`}
                       d={`M${hub[0]} ${hub[1]}L${x} ${y}`}
                       stroke="var(--crimson)"
-                      strokeOpacity="0.35"
+                      strokeOpacity="0.4"
                     />
                   ))}
                   <path
-                    d="M80 130 C 220 200, 420 200, 540 110"
+                    d="M148 130 C 236 178, 404 178, 492 130"
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.45"
+                    strokeOpacity="0.5"
                     strokeDasharray="4 4"
                   />
                   {[...left, ...right, ...isolated].map(([x, y], i) => (
@@ -2113,14 +2558,15 @@ export default function Week04HumanResources() {
                       r="6"
                       fill="var(--surface)"
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.55"
+                      strokeOpacity="0.6"
+                      strokeWidth="1.25"
                     />
                   ))}
                   <circle cx={hub[0]} cy={hub[1]} r="11" fill="var(--crimson)" />
                   <text
                     {...SVG_LABEL}
                     x={hub[0]}
-                    y="22"
+                    y="38"
                     textAnchor="middle"
                     fill="var(--crimson)"
                   >
@@ -2128,21 +2574,21 @@ export default function Week04HumanResources() {
                   </text>
                   <text
                     {...SVG_LABEL}
-                    x="310"
-                    y="196"
+                    x={hub[0]}
+                    y="184"
                     textAnchor="middle"
                     fill="var(--charcoal)"
-                    fillOpacity="0.55"
+                    fillOpacity="0.6"
                   >
                     HIDDEN DEPENDENCIES
                   </text>
                   <text
                     {...SVG_LABEL}
-                    x="780"
-                    y="108"
-                    textAnchor="end"
+                    x="722"
+                    y="102"
+                    textAnchor="middle"
                     fill="var(--charcoal)"
-                    fillOpacity="0.55"
+                    fillOpacity="0.6"
                   >
                     ISOLATED TEAMS
                   </text>
@@ -2153,7 +2599,7 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-4xl`}>
               These insights can improve succession planning, team design,
               integration after restructuring, and leadership visibility into
@@ -2167,22 +2613,24 @@ export default function Week04HumanResources() {
                 "leadership visibility",
               ]}
               cols="md:grid-cols-4"
-              className="mt-6 max-w-4xl"
+              className="mt-5 max-w-4xl"
             />
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Behavioral visibility"
-              right="Perceived as surveillance"
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
               Network analytics must be handled carefully because behavioral
               visibility can quickly be perceived as surveillance if governance
               is weak.
             </p>
+            <div className="mt-5 max-w-4xl">
+              <Split1
+                left="Behavioral visibility"
+                right="Perceived as surveillance"
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -2208,59 +2656,78 @@ export default function Week04HumanResources() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-7 max-w-4xl`}>
             AI can recommend learning pathways based on role requirements,
             career goals, adjacent skills, and current performance gaps.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 112"
-            className="mt-7 w-full max-w-5xl"
+            role="img"
+            aria-label="Role requirements, career goals, adjacent skills, and current performance gaps converging into a stepped progression of learning pathways."
+            viewBox="0 0 800 132"
+            className="mt-5 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Role requirements, career goals, adjacent skills, and current
+              performance gaps converging into a stepped progression of learning
+              pathways.
+            </title>
             {[
               "ROLE REQUIREMENTS",
               "CAREER GOALS",
               "ADJACENT SKILLS",
               "CURRENT PERFORMANCE GAPS",
             ].map((src, i) => {
-              const y = 14 + i * 28;
+              const y = 20 + i * 30;
               return (
                 <g key={src}>
+                  <rect
+                    x="16"
+                    y={y - 11}
+                    width="224"
+                    height="22"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.28"
+                  />
                   <text
                     {...SVG_LABEL}
-                    x="0"
-                    y={y + 3}
+                    x="128"
+                    y={y + 3.5}
+                    textAnchor="middle"
                     fill="var(--charcoal)"
-                    fillOpacity="0.55"
+                    fillOpacity="0.7"
                   >
                     {src}
                   </text>
                   <path
-                    d={`M236 ${y} C 290 ${y}, 300 56, 350 56`}
+                    d={`M240 ${y} C 296 ${y}, 312 80, 356 80`}
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.22"
+                    strokeOpacity="0.28"
                   />
                 </g>
               );
             })}
             <path
-              d="M350 56H440V36H540V56H630V30H760"
+              d="M356 80H444V60H544V40H644V22H752"
               stroke="var(--crimson)"
               strokeWidth="2"
             />
             {[
-              [440, 36],
-              [540, 56],
-              [630, 30],
+              [444, 60],
+              [544, 40],
+              [644, 22],
             ].map(([x, y]) => (
-              <circle key={x} cx={x} cy={y} r="4" fill="var(--crimson)" />
+              <circle key={x} cx={x} cy={y} r="4.5" fill="var(--crimson)" />
             ))}
-            <path d="M752 25l9 5l-9 5" stroke="var(--crimson)" strokeWidth="2" />
+            <path
+              d="M744 17l9 5l-9 5"
+              stroke="var(--crimson)"
+              strokeWidth="2"
+            />
             <text
               {...SVG_LABEL}
               x="560"
-              y="96"
+              y="108"
               textAnchor="middle"
               fill="var(--crimson)"
             >
@@ -2270,10 +2737,15 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${BODY} max-w-4xl`}>
+              Personalization is useful when it increases relevance and
+              completion, not when it overwhelms employees with automated
+              content suggestions.
+            </p>
             <div
               aria-hidden
-              className="grid max-w-4xl gap-8 md:grid-cols-2 md:gap-0"
+              className="mt-5 grid max-w-4xl gap-8 md:grid-cols-2 md:gap-0"
             >
               <div className="md:pr-10">
                 <div
@@ -2281,11 +2753,11 @@ export default function Week04HumanResources() {
                 >
                   Overwhelms employees
                 </div>
-                <div className="mt-4 grid grid-cols-9 gap-1.5">
+                <div className="mt-3 grid grid-cols-9 gap-1.5">
                   {Array.from({ length: 27 }).map((_, k) => (
                     <span
                       key={k}
-                      className="block h-4 border border-[var(--charcoal)]/15 bg-[var(--charcoal)]/[0.04]"
+                      className="block h-3.5 border border-[var(--charcoal)]/15 bg-[var(--charcoal)]/[0.04]"
                     />
                   ))}
                 </div>
@@ -2294,26 +2766,29 @@ export default function Week04HumanResources() {
                 <div className={`${MICRO} text-[var(--crimson)]`}>
                   Relevance and completion
                 </div>
-                <div className="mt-4 flex gap-1.5">
+                <div className="mt-3 flex gap-1.5">
                   {[0, 1, 2].map((k) => (
-                    <span key={k} className="block h-4 w-12 bg-[var(--crimson)]" />
+                    <span
+                      key={k}
+                      className="block h-3.5 w-12 bg-[var(--crimson)]"
+                    />
                   ))}
                 </div>
               </div>
             </div>
-            <p className={`${BODY} mt-7 max-w-4xl`}>
-              Personalization is useful when it increases relevance and
-              completion, not when it overwhelms employees with automated
-              content suggestions.
-            </p>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Learning systems should connect development activity to real
+              internal opportunities so capability building is tied to mobility
+              and business need.
+            </p>
             <div
               aria-hidden
-              className="flex flex-wrap items-center gap-x-4 gap-y-3"
+              className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3"
             >
               <span
                 className={`${TAG} border border-[var(--charcoal)]/15 px-3 py-2 text-[var(--charcoal-light)]/60`}
@@ -2329,11 +2804,6 @@ export default function Week04HumanResources() {
               <span className="text-[var(--crimson)]">→</span>
               <Terms items={["mobility", "business need"]} className="" />
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Learning systems should connect development activity to real
-              internal opportunities so capability building is tied to mobility
-              and business need.
-            </p>
           </div>
         </div>
       </Slide>
@@ -2366,51 +2836,64 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-4xl`}>
               Retrieval-based copilots can improve consistency and reduce
               routine administrative burden across dispersed management
               populations.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 150"
-              className="mt-6 w-full max-w-5xl"
+              role="img"
+              aria-label="Central retrieval-based copilots hub serving dispersed management populations across the organization."
+              viewBox="0 0 800 152"
+              className="mt-5 w-full max-w-5xl"
               fill="none"
             >
+              <title>
+                Central retrieval-based copilots hub serving dispersed
+                management populations across the organization.
+              </title>
               {[
-                [80, 40],
-                [150, 110],
-                [230, 30],
-                [300, 120],
-                [520, 28],
-                [580, 118],
-                [660, 50],
-                [730, 110],
-                [60, 120],
-                [740, 30],
-              ].map(([x, y], i) => (
+                { x: 140, y: 24, hx: 304, hy: 60 },
+                { x: 64, y: 54, hx: 304, hy: 68 },
+                { x: 156, y: 88, hx: 304, hy: 76 },
+                { x: 84, y: 118, hx: 304, hy: 84 },
+                { x: 660, y: 24, hx: 496, hy: 60 },
+                { x: 736, y: 54, hx: 496, hy: 68 },
+                { x: 644, y: 88, hx: 496, hy: 76 },
+                { x: 716, y: 118, hx: 496, hy: 84 },
+              ].map((pt, i) => (
                 <g key={i}>
                   <path
-                    d={`M400 76L${x} ${y}`}
+                    d={`M${pt.hx} ${pt.hy}L${pt.x} ${pt.y}`}
                     stroke="var(--crimson)"
-                    strokeOpacity="0.3"
+                    strokeOpacity="0.4"
                   />
                   <circle
-                    cx={x}
-                    cy={y}
-                    r="5"
+                    cx={pt.x}
+                    cy={pt.y}
+                    r="5.5"
                     fill="var(--surface)"
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.55"
+                    strokeOpacity="0.65"
+                    strokeWidth="1.25"
                   />
                 </g>
               ))}
-              <rect x="388" y="64" width="24" height="24" fill="var(--crimson)" />
+              <rect
+                x="304"
+                y="54"
+                width="192"
+                height="36"
+                fill="var(--crimson)"
+                fillOpacity="0.05"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
               <text
                 {...SVG_LABEL}
                 x="400"
-                y="110"
+                y="75.5"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
@@ -2419,10 +2902,10 @@ export default function Week04HumanResources() {
               <text
                 {...SVG_LABEL}
                 x="400"
-                y="146"
+                y="138"
                 textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.5"
+                fillOpacity="0.6"
               >
                 DISPERSED MANAGEMENT POPULATIONS
               </text>
@@ -2431,10 +2914,14 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Their value depends on source quality, access controls, and
+              whether ambiguous issues are escalated to qualified HR partners.
+            </p>
             <div
               aria-hidden
-              className="flex flex-wrap items-center gap-x-4 gap-y-3"
+              className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3"
             >
               {["source quality", "access controls"].map((c) => (
                 <span
@@ -2457,10 +2944,6 @@ export default function Week04HumanResources() {
                 qualified HR partners
               </span>
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Their value depends on source quality, access controls, and
-              whether ambiguous issues are escalated to qualified HR partners.
-            </p>
           </div>
         </div>
       </Slide>
@@ -2476,7 +2959,7 @@ export default function Week04HumanResources() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-6 max-w-4xl`}>
             AI can help summarize feedback, detect inconsistency in manager
             narratives, and compare evaluation patterns across teams or job
             families.
@@ -2488,71 +2971,111 @@ export default function Week04HumanResources() {
               "compare evaluation patterns",
             ]}
             cols="grid-cols-3"
-            className="mt-6 max-w-4xl"
+            className="mt-4 max-w-4xl"
           />
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-7 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-5">
             <p className={`${BODY} max-w-4xl`}>
               The benefit is stronger calibration and earlier identification of
               inflated, missing, or weakly evidenced reviews.
             </p>
-            <div
-              aria-hidden
-              className="mt-6 max-w-3xl border-t border-[var(--charcoal)]/25"
+            <svg
+              role="img"
+              aria-label="Review calibration chart comparing evaluation bars against a stronger calibration benchmark and flagging inflated, missing, and weakly evidenced reviews."
+              viewBox="0 0 800 136"
+              className="mt-4 w-full max-w-4xl"
+              fill="none"
             >
+              <title>
+                Review calibration chart comparing evaluation bars against a
+                stronger calibration benchmark and flagging inflated, missing,
+                and weakly evidenced reviews.
+              </title>
+              <path
+                d="M360 12V114"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+                strokeDasharray="4 3"
+              />
+              <text
+                {...SVG_LABEL}
+                x="360"
+                y="128"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+              >
+                STRONGER CALIBRATION
+              </text>
               {[
-                { w: 64, flag: "" },
-                { w: 96, flag: "inflated" },
-                { w: 58, flag: "" },
-                { w: 0, flag: "missing" },
-                { w: 70, flag: "" },
-                { w: 22, flag: "weakly evidenced" },
+                { y: 20, w: 324, flag: "" },
+                { y: 40, w: 500, flag: "INFLATED" },
+                { y: 60, w: 332, flag: "" },
+                { y: 80, w: 0, flag: "MISSING" },
+                { y: 100, w: 112, flag: "WEAKLY EVIDENCED" },
               ].map((r, i) => (
-                <div
-                  key={i}
-                  className="grid grid-cols-[1fr_10rem] items-center gap-4 border-b border-[var(--charcoal)]/8 py-2"
-                >
+                <g key={i}>
+                  <path
+                    d={`M24 ${r.y + 13}H776`}
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.08"
+                  />
                   {r.w > 0 ? (
-                    <span
-                      className={`block h-1.5 ${
-                        r.flag ? "bg-[var(--crimson)]/60" : "bg-[var(--charcoal)]/15"
-                      }`}
-                      style={{ width: `${r.w}%` }}
+                    <rect
+                      x="24"
+                      y={r.y}
+                      width={r.w}
+                      height="8"
+                      fill={r.flag ? "var(--crimson)" : "var(--charcoal)"}
+                      fillOpacity={r.flag ? 0.75 : 0.25}
                     />
                   ) : (
-                    <span className="block h-1.5 w-full border border-dashed border-[var(--crimson)]/50" />
+                    <rect
+                      x="24"
+                      y={r.y}
+                      width="336"
+                      height="8"
+                      stroke="var(--crimson)"
+                      strokeOpacity="0.65"
+                      strokeDasharray="4 3"
+                    />
                   )}
-                  <span
-                    className={`${TAG} ${
-                      r.flag ? "text-[var(--crimson)]" : "text-transparent"
-                    }`}
-                  >
-                    {r.flag || " | "}
-                  </span>
-                </div>
+                  {r.flag && (
+                    <text
+                      {...SVG_LABEL}
+                      x="556"
+                      y={r.y + 7.5}
+                      fill="var(--crimson)"
+                    >
+                      {r.flag}
+                    </text>
+                  )}
+                </g>
               ))}
-            </div>
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
-            <Split1
-              left="Replace manager accountability"
-              right="Support better judgment"
-              strikeLeft
-            />
-            <Terms
-              items={["coaching", "context", "difficult conversations"]}
-              className="mt-4"
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+          <div className="mt-7 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-5">
+            <p className={`${DISPLAY} max-w-4xl`}>
               Performance systems should support better judgment, not replace
               manager accountability for coaching, context, and difficult
               conversations.
             </p>
+            <div className="mt-4 max-w-4xl">
+              <Split1
+                left="Replace manager accountability"
+                right="Support better judgment"
+                strikeLeft
+              />
+              <Terms
+                items={["coaching", "context", "difficult conversations"]}
+                className="mt-3"
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -2568,131 +3091,177 @@ export default function Week04HumanResources() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-7 max-w-4xl`}>
             AI can surface unexplained pay variation, promotion bottlenecks, and
             inconsistent reward outcomes across comparable employee groups.
           </p>
-          <figure aria-hidden className="mt-7 w-full max-w-5xl">
-            <svg viewBox="0 0 800 126" className="w-full" fill="none">
+          <figure className="mt-5 w-full max-w-5xl">
+            <svg
+              role="img"
+              aria-label="Two comparable employee groups plotted on parallel pay scales with an unexplained pay variation gap between their group medians."
+              viewBox="0 0 800 132"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Two comparable employee groups plotted on parallel pay scales
+                with an unexplained pay variation gap between their group
+                medians.
+              </title>
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="12"
+                x="20"
+                y="18"
                 fill="var(--charcoal)"
-                fillOpacity="0.45"
+                fillOpacity="0.55"
               >
                 COMPARABLE EMPLOYEE GROUPS
               </text>
               {[
-                { y: 44, shift: 0, tone: "var(--charcoal)" },
-                { y: 84, shift: -120, tone: "var(--crimson)" },
+                { y: 44, center: 560, tone: "var(--charcoal)" },
+                { y: 78, center: 430, tone: "var(--crimson)" },
               ].map((g, gi) => (
                 <g key={gi}>
                   <path
                     d={`M20 ${g.y}H780`}
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.1"
+                    strokeOpacity="0.12"
                   />
-                  {[0, 1, 2, 3, 4, 5, 6, 7].map((k) => (
+                  {[-105, -75, -45, -15, 15, 45, 75, 105].map((dx, k) => (
                     <circle
                       key={k}
-                      cx={440 + g.shift + k * 30 + ((k * 13) % 9)}
+                      cx={g.center + dx}
                       cy={g.y}
                       r="5"
                       fill={g.tone}
-                      fillOpacity={gi === 0 ? 0.35 : 0.85}
+                      fillOpacity={gi === 0 ? 0.4 : 0.85}
                     />
                   ))}
+                  <path
+                    d={`M${g.center} ${g.y - 10}V${g.y + 10}`}
+                    stroke={g.tone}
+                    strokeWidth="2"
+                  />
                 </g>
               ))}
               <path
-                d="M560 58V70M440 58V70M440 64H560"
+                d="M430 92V102H560V92"
                 stroke="var(--crimson)"
+                strokeWidth="1.5"
               />
               <text
                 {...SVG_LABEL}
-                x="600"
-                y="118"
+                x="495"
+                y="120"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
                 UNEXPLAINED PAY VARIATION
               </text>
-              <path d="M500 64V102" stroke="var(--crimson)" strokeOpacity="0.3" strokeDasharray="2 3" />
             </svg>
           </figure>
         </div>
 
-        <div className="w-full">
-          <div className={RULED}>
-            <p className={`${BODY} max-w-4xl`}>
+        <div className="mt-5 grid w-full max-w-5xl gap-8 border-t border-[var(--charcoal)]/10 pt-5 md:grid-cols-2 md:gap-12">
+          <div>
+            <p className={BODY}>
               These tools help move equity analysis from episodic review to
               ongoing monitoring tied to actual decision processes.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 84"
-              className="mt-6 w-full max-w-5xl"
+              role="img"
+              aria-label="Comparison between sparse episodic review ticks and continuous ongoing monitoring tied to actual decision processes."
+              viewBox="0 0 400 84"
+              className="mt-4 w-full"
               fill="none"
             >
+              <title>
+                Comparison between sparse episodic review ticks and continuous
+                ongoing monitoring tied to actual decision processes.
+              </title>
               <text
                 {...SVG_LABEL}
-                x="0"
-                y="23"
+                x="8"
+                y="24"
                 fill="var(--charcoal)"
-                fillOpacity="0.5"
+                fillOpacity="0.55"
               >
                 EPISODIC REVIEW
               </text>
-              <path d="M220 20H780" stroke="var(--charcoal)" strokeOpacity="0.1" />
-              {[260, 520, 770].map((x) => (
+              <path
+                d="M172 20H392"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.14"
+              />
+              {[204, 294, 384].map((x) => (
                 <path
                   key={x}
                   d={`M${x} 10V30`}
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.5"
+                  strokeOpacity="0.55"
                   strokeWidth="2"
                 />
               ))}
-              <text {...SVG_LABEL} x="0" y="67" fill="var(--crimson)">
+              <text {...SVG_LABEL} x="8" y="64" fill="var(--crimson)">
                 ONGOING MONITORING
               </text>
-              <path d="M220 64H780" stroke="var(--crimson)" strokeWidth="3" />
+              <path
+                d="M172 60H392"
+                stroke="var(--crimson)"
+                strokeWidth="2.5"
+              />
+              {Array.from({ length: 12 }).map((_, i) => {
+                const x = +(180 + i * 18.5).toFixed(2);
+                return (
+                  <circle
+                    key={i}
+                    cx={x}
+                    cy="60"
+                    r="2.75"
+                    fill="var(--surface)"
+                    stroke="var(--crimson)"
+                    strokeWidth="1.5"
+                  />
+                );
+              })}
             </svg>
           </div>
-        </div>
 
-        <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
-            <div aria-hidden className="max-w-3xl">
-              <div className="grid grid-cols-3 gap-3">
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+            <p className={BODY}>
+              Governance is essential because salary, promotion, and bonus
+              decisions are socially sensitive and legally consequential.
+            </p>
+            <div aria-hidden className="mt-4">
+              <div className="grid grid-cols-3 gap-2">
                 {["salary", "promotion", "bonus"].map((p) => (
                   <div
                     key={p}
-                    className={`${TAG} border border-b-0 border-[var(--charcoal)]/15 px-3 py-5 text-[var(--charcoal-light)]/70`}
+                    className={`${TAG} border border-b-0 border-[var(--charcoal)]/15 px-2.5 py-2.5 text-[var(--charcoal-light)]/70`}
                   >
                     {p}
                   </div>
                 ))}
               </div>
               <div
-                className={`${MICRO} bg-[var(--crimson)] px-4 py-3 text-[var(--surface)]`}
+                className={`${MICRO} bg-[var(--crimson)] px-3 py-2 text-[var(--surface)]`}
               >
                 Socially sensitive | legally consequential
               </div>
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Governance is essential because salary, promotion, and bonus
-              decisions are socially sensitive and legally consequential.
-            </p>
           </div>
         </div>
 
-        <Discussion1>
-          Should firms use algorithmic recommendations in promotion and
-          compensation cycles if doing so improves consistency but may narrow
-          managerial discretion and contextual judgment?
-        </Discussion1>
+        <div className="w-full">
+          <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
+            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
+            <p className="mt-1.5 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+              Should firms use algorithmic recommendations in promotion and
+              compensation cycles if doing so improves consistency but may
+              narrow managerial discretion and contextual judgment?
+            </p>
+          </aside>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -2717,27 +3286,42 @@ export default function Week04HumanResources() {
             patterns, and process bottlenecks.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 104"
-            className="mt-7 w-full max-w-5xl"
+            role="img"
+            aria-label="Workflow data, output data, and collaboration data combining to estimate capacity constraints, workload patterns, and process bottlenecks."
+            viewBox="0 0 800 112"
+            className="mt-5 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Workflow data, output data, and collaboration data combining to
+              estimate capacity constraints, workload patterns, and process
+              bottlenecks.
+            </title>
             {["WORKFLOW DATA", "OUTPUT DATA", "COLLABORATION DATA"].map(
               (src, i) => {
-                const y = 16 + i * 36;
+                const y = 20 + i * 36;
                 return (
                   <g key={src}>
+                    <rect
+                      x="16"
+                      y={y - 12}
+                      width="192"
+                      height="24"
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.28"
+                    />
                     <text
                       {...SVG_LABEL}
-                      x="0"
-                      y={y + 3}
+                      x="112"
+                      y={y + 3.5}
+                      textAnchor="middle"
                       fill="var(--charcoal)"
-                      fillOpacity="0.6"
+                      fillOpacity="0.7"
                     >
                       {src}
                     </text>
                     <path
-                      d={`M200 ${y} C 260 ${y}, 270 52, 330 52`}
+                      d={`M208 ${y} C 266 ${y}, 280 56, 331 56`}
                       stroke="var(--charcoal)"
                       strokeOpacity="0.3"
                     />
@@ -2745,49 +3329,51 @@ export default function Week04HumanResources() {
                 );
               },
             )}
-            <circle cx="338" cy="52" r="7" fill="var(--crimson)" />
-            {["CAPACITY CONSTRAINTS", "WORKLOAD PATTERNS", "PROCESS BOTTLENECKS"].map(
-              (o, i) => {
-                const y = 16 + i * 36;
-                return (
-                  <g key={o}>
-                    <path
-                      d={`M346 52 C 400 52, 410 ${y}, 470 ${y}`}
-                      stroke="var(--crimson)"
-                      strokeOpacity="0.45"
-                    />
-                    <rect
-                      x="476"
-                      y={y - 5}
-                      width="10"
-                      height="10"
-                      fill="var(--crimson)"
-                    />
-                    <text
-                      {...SVG_LABEL}
-                      x="498"
-                      y={y + 3}
-                      fill="var(--charcoal)"
-                      fillOpacity="0.7"
-                    >
-                      {o}
-                    </text>
-                  </g>
-                );
-              },
-            )}
+            <circle cx="338" cy="56" r="7" fill="var(--crimson)" />
+            {[
+              "CAPACITY CONSTRAINTS",
+              "WORKLOAD PATTERNS",
+              "PROCESS BOTTLENECKS",
+            ].map((o, i) => {
+              const y = 20 + i * 36;
+              return (
+                <g key={o}>
+                  <path
+                    d={`M345 56 C 402 56, 416 ${y}, 474 ${y}`}
+                    stroke="var(--crimson)"
+                    strokeOpacity="0.5"
+                  />
+                  <rect
+                    x="474"
+                    y={y - 5}
+                    width="10"
+                    height="10"
+                    fill="var(--crimson)"
+                  />
+                  <text
+                    {...SVG_LABEL}
+                    x="496"
+                    y={y + 3.5}
+                    fill="var(--charcoal)"
+                    fillOpacity="0.75"
+                  >
+                    {o}
+                  </text>
+                </g>
+              );
+            })}
           </svg>
         </div>
 
-        <div className="mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-12">
+        <div className="mt-6 grid w-full max-w-5xl gap-8 border-t border-[var(--charcoal)]/10 pt-5 md:grid-cols-2 md:gap-0">
+          <div className="md:pr-10">
             <div className={`${MICRO} text-[var(--champagne)]`}>Used well</div>
-            <p className={`${BODY} mt-4`}>
+            <p className={`${BODY} mt-2.5`}>
               Used well, productivity analytics can support redesign of work,
               team staffing, and manager coaching rather than individual
               policing.
             </p>
-            <div aria-hidden className="mt-5 flex flex-wrap gap-2">
+            <div aria-hidden className="mt-4 flex flex-wrap gap-2">
               {["redesign of work", "team staffing", "manager coaching"].map(
                 (u) => (
                   <span
@@ -2805,13 +3391,13 @@ export default function Week04HumanResources() {
               </span>
             </div>
           </div>
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-10">
             <div className={`${MICRO} text-[var(--crimson)]`}>Used poorly</div>
-            <p className={`${BODY} mt-4`}>
+            <p className={`${BODY} mt-2.5`}>
               Used poorly, the same tools can create fear, gaming behavior, and
               degraded trust across the workforce.
             </p>
-            <div aria-hidden className="mt-5 flex flex-wrap gap-2">
+            <div aria-hidden className="mt-4 flex flex-wrap gap-2">
               {["fear", "gaming behavior", "degraded trust"].map((u) => (
                 <span
                   key={u}
@@ -2824,10 +3410,15 @@ export default function Week04HumanResources() {
           </div>
         </div>
 
-        <Discussion1>
-          Where is the boundary between legitimate operational analytics and
-          unacceptable employee surveillance in knowledge-intensive work?
-        </Discussion1>
+        <div className="w-full">
+          <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
+            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
+            <p className="mt-1.5 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+              Where is the boundary between legitimate operational analytics and
+              unacceptable employee surveillance in knowledge-intensive work?
+            </p>
+          </aside>
+        </div>
       </Slide>
 
       <ModulePlate2
@@ -2851,56 +3442,71 @@ export default function Week04HumanResources() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-7 max-w-4xl`}>
             AI can summarize survey comments, open-text feedback, exit
             interviews, and service-center narratives into recurring themes and
             emerging concerns.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 112"
-            className="mt-7 w-full max-w-5xl"
+            role="img"
+            aria-label="Survey comments, open-text feedback, exit interviews, and service-center narratives summarized into recurring themes and emerging concerns."
+            viewBox="0 0 800 132"
+            className="mt-5 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Survey comments, open-text feedback, exit interviews, and
+              service-center narratives summarized into recurring themes and
+              emerging concerns.
+            </title>
             {[
               "SURVEY COMMENTS",
               "OPEN-TEXT FEEDBACK",
               "EXIT INTERVIEWS",
               "SERVICE-CENTER NARRATIVES",
             ].map((src, i) => {
-              const y = 14 + i * 28;
+              const y = 20 + i * 30;
               return (
                 <g key={src}>
+                  <rect
+                    x="16"
+                    y={y - 11}
+                    width="224"
+                    height="22"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.28"
+                  />
                   <text
                     {...SVG_LABEL}
-                    x="0"
-                    y={y + 3}
+                    x="128"
+                    y={y + 3.5}
+                    textAnchor="middle"
                     fill="var(--charcoal)"
-                    fillOpacity="0.55"
+                    fillOpacity="0.7"
                   >
                     {src}
                   </text>
                   <path
-                    d={`M236 ${y} C 300 ${y}, 310 56, 380 56`}
+                    d={`M240 ${y} C 300 ${y}, 316 65, 373 65`}
                     stroke="var(--charcoal)"
-                    strokeOpacity="0.22"
+                    strokeOpacity="0.28"
                   />
                 </g>
               );
             })}
-            <path d="M380 56H440" stroke="var(--crimson)" strokeWidth="1.5" />
+            <circle cx="380" cy="65" r="7" fill="var(--crimson)" />
             {[
-              { y: 34, label: "RECURRING THEMES" },
-              { y: 78, label: "EMERGING CONCERNS" },
+              { y: 42, label: "RECURRING THEMES" },
+              { y: 88, label: "EMERGING CONCERNS" },
             ].map((o) => (
               <g key={o.label}>
                 <path
-                  d={`M440 56 C 480 56, 490 ${o.y}, 530 ${o.y}`}
+                  d={`M387 65 C 446 65, 464 ${o.y}, 524 ${o.y}`}
                   stroke="var(--crimson)"
                   strokeOpacity="0.5"
                 />
                 <rect
-                  x="536"
+                  x="524"
                   y={o.y - 5}
                   width="10"
                   height="10"
@@ -2908,10 +3514,10 @@ export default function Week04HumanResources() {
                 />
                 <text
                   {...SVG_LABEL}
-                  x="558"
-                  y={o.y + 3}
+                  x="546"
+                  y={o.y + 3.5}
                   fill="var(--charcoal)"
-                  fillOpacity="0.7"
+                  fillOpacity="0.75"
                 >
                   {o.label}
                 </text>
@@ -2921,7 +3527,7 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-4xl`}>
               The value lies in scale and speed, especially when leaders need to
               distinguish local operational issues from enterprise-wide cultural
@@ -2929,7 +3535,7 @@ export default function Week04HumanResources() {
             </p>
             <div
               aria-hidden
-              className="mt-7 grid max-w-4xl gap-8 md:grid-cols-2 md:gap-12"
+              className="mt-6 grid max-w-4xl gap-8 md:grid-cols-2 md:gap-12"
             >
               {[
                 { label: "Local operational issues", lit: [5] },
@@ -2946,7 +3552,7 @@ export default function Week04HumanResources() {
                     {Array.from({ length: 12 }).map((_, k) => (
                       <span
                         key={k}
-                        className={`block h-7 ${
+                        className={`block h-6 ${
                           panel.lit.includes(k)
                             ? "bg-[var(--crimson)]/70"
                             : "border border-[var(--charcoal)]/15"
@@ -2961,10 +3567,15 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Sentiment outputs should be treated as directional evidence
+              because silence, fear, and context can distort what employees
+              choose to say.
+            </p>
             <div
               aria-hidden
-              className="flex flex-wrap items-center gap-x-4 gap-y-3"
+              className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3"
             >
               <span
                 className={`${TAG} border border-[var(--charcoal)]/15 px-3 py-2 text-[var(--charcoal-light)]/60`}
@@ -2986,11 +3597,6 @@ export default function Week04HumanResources() {
                 directional evidence
               </span>
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Sentiment outputs should be treated as directional evidence
-              because silence, fear, and context can distort what employees
-              choose to say.
-            </p>
           </div>
         </div>
       </Slide>
@@ -3025,53 +3631,84 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-4xl`}>
               These analyses help identify structural barriers that may not be
               visible in aggregate workforce dashboards.
             </p>
-            <figure aria-hidden className="mt-6 w-full max-w-5xl">
-              <svg viewBox="0 0 800 130" className="w-full" fill="none">
+            <figure className="mt-5 w-full max-w-5xl">
+              <svg
+                role="img"
+                aria-label="Comparison showing a flat trend in aggregate workforce dashboards versus disaggregated trajectories across groups revealing structural barriers."
+                viewBox="0 0 800 136"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Comparison showing a flat trend in aggregate workforce
+                  dashboards versus disaggregated trajectories across groups
+                  revealing structural barriers.
+                </title>
                 <text
                   {...SVG_LABEL}
-                  x="0"
-                  y="12"
+                  x="24"
+                  y="18"
                   fill="var(--charcoal)"
-                  fillOpacity="0.5"
+                  fillOpacity="0.6"
                 >
                   AGGREGATE WORKFORCE DASHBOARDS
                 </text>
-                <path d="M0 110H340" stroke="var(--charcoal)" strokeOpacity="0.2" />
                 <path
-                  d="M10 50 C 100 54, 200 58, 330 64"
+                  d="M24 30V108H364"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.6"
+                  strokeOpacity="0.22"
+                />
+                <path
+                  d="M36 52 C 120 55, 220 58, 356 62"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.65"
                   strokeWidth="2"
                 />
-                <path d="M400 20V120" stroke="var(--charcoal)" strokeOpacity="0.1" />
-                <text {...SVG_LABEL} x="440" y="12" fill="var(--crimson)">
+
+                <path
+                  d="M400 16V122"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.14"
+                />
+
+                <text {...SVG_LABEL} x="436" y="18" fill="var(--crimson)">
                   ACROSS GROUPS
                 </text>
-                <path d="M440 110H790" stroke="var(--charcoal)" strokeOpacity="0.2" />
                 <path
-                  d="M450 44 C 560 44, 660 46, 780 50"
+                  d="M436 30V108H776"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.22"
+                />
+                <path
+                  d="M448 56 C 556 56, 656 58, 768 60 L 768 98 C 604 94, 556 62, 448 56 Z"
+                  fill="var(--crimson)"
+                  fillOpacity="0.06"
+                />
+                <path
+                  d="M448 46 C 556 46, 656 48, 768 50"
                   stroke="var(--charcoal)"
                   strokeOpacity="0.45"
                 />
                 <path
-                  d="M450 52 C 560 52, 660 54, 780 58"
+                  d="M448 54 C 556 54, 656 56, 768 58"
                   stroke="var(--charcoal)"
                   strokeOpacity="0.45"
                 />
                 <path
-                  d="M450 56 C 560 62, 600 96, 780 100"
+                  d="M448 56 C 556 62, 604 94, 768 98"
                   stroke="var(--crimson)"
                   strokeWidth="2"
                 />
+                <circle cx="768" cy="98" r="3.5" fill="var(--crimson)" />
                 <text
                   {...SVG_LABEL}
-                  x="780"
-                  y="124"
+                  x="776"
+                  y="126"
                   textAnchor="end"
                   fill="var(--crimson)"
                 >
@@ -3083,10 +3720,15 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Leaders still need careful interpretation because representation
+              gaps do not automatically reveal causality or the right
+              intervention.
+            </p>
             <div
               aria-hidden
-              className="flex flex-wrap items-center gap-x-4 gap-y-3"
+              className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3"
             >
               <span
                 className={`${TAG} bg-[var(--crimson)] px-3 py-2 text-[var(--surface)]`}
@@ -3105,11 +3747,6 @@ export default function Week04HumanResources() {
                 </span>
               ))}
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Leaders still need careful interpretation because representation
-              gaps do not automatically reveal causality or the right
-              intervention.
-            </p>
           </div>
         </div>
       </Slide>
@@ -3130,95 +3767,116 @@ export default function Week04HumanResources() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-7 max-w-4xl`}>
             HR teams can use AI to classify cases, summarize documents, surface
             policy precedents, and route matters to the right specialist more
             quickly.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 130"
-            className="mt-7 w-full max-w-5xl"
+            role="img"
+            aria-label="Incoming HR cases classified and routed across three specialist lanes to reach the right specialist."
+            viewBox="0 0 800 136"
+            className="mt-5 w-full max-w-5xl"
             fill="none"
           >
-            {[
-              [20, 30],
-              [50, 64],
-              [30, 98],
-              [80, 44],
-              [96, 86],
-              [130, 60],
-            ].map(([x, y], i) => (
-              <g key={i}>
-                <rect
-                  x={x}
-                  y={y - 7}
-                  width="18"
-                  height="14"
-                  stroke="var(--charcoal)"
-                  strokeOpacity="0.5"
-                />
-                <path
-                  d={`M${x + 18} ${y} C ${x + 120} ${y}, 230 65, 300 65`}
-                  stroke="var(--charcoal)"
-                  strokeOpacity="0.15"
-                />
-              </g>
-            ))}
+            <title>
+              Incoming HR cases classified and routed across three specialist
+              lanes to reach the right specialist.
+            </title>
             <text
               {...SVG_LABEL}
-              x="0"
-              y="126"
+              x="24"
+              y="16"
               fill="var(--charcoal)"
-              fillOpacity="0.5"
+              fillOpacity="0.55"
             >
               CASES
             </text>
-            <rect x="300" y="49" width="32" height="32" fill="var(--crimson)" />
             {[
-              { y: 22, on: false },
-              { y: 65, on: true },
-              { y: 108, on: false },
+              [28, 30],
+              [92, 48],
+              [40, 68],
+              [104, 88],
+              [32, 108],
+            ].map(([x, y], i) => {
+              const ty = 54 + i * 6;
+              return (
+                <g key={i}>
+                  <rect
+                    x={x}
+                    y={y - 7}
+                    width="22"
+                    height="14"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.04"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.55"
+                  />
+                  <path
+                    d={`M${x + 22} ${y} C 196 ${y}, 236 ${ty}, 288 ${ty}`}
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.22"
+                  />
+                </g>
+              );
+            })}
+            <rect
+              x="288"
+              y="46"
+              width="136"
+              height="40"
+              fill="var(--crimson)"
+              fillOpacity="0.05"
+              stroke="var(--crimson)"
+              strokeWidth="1.5"
+            />
+            <text
+              {...SVG_LABEL}
+              x="356"
+              y="69.5"
+              textAnchor="middle"
+              fill="var(--crimson)"
+            >
+              CLASSIFY CASES
+            </text>
+            {[
+              { y: 26, on: false },
+              { y: 66, on: true },
+              { y: 106, on: false },
             ].map((lane) => (
               <g key={lane.y}>
                 <path
-                  d={`M332 65 C 400 65, 420 ${lane.y}, 520 ${lane.y}H640`}
+                  d={`M424 66 C 476 66, 496 ${lane.y}, 556 ${lane.y}H604`}
                   stroke={lane.on ? "var(--crimson)" : "var(--charcoal)"}
-                  strokeOpacity={lane.on ? 1 : 0.2}
-                  strokeWidth={lane.on ? 1.5 : 1}
+                  strokeOpacity={lane.on ? 1 : 0.22}
+                  strokeWidth={lane.on ? 1.75 : 1}
                 />
+                {lane.on && (
+                  <path
+                    d={`M597 ${lane.y - 4}L604 ${lane.y}L597 ${lane.y + 4}`}
+                    stroke="var(--crimson)"
+                    strokeWidth="1.5"
+                  />
+                )}
                 <circle
-                  cx="652"
+                  cx="618"
                   cy={lane.y}
                   r="7"
                   fill={lane.on ? "var(--crimson)" : "var(--surface)"}
                   stroke="var(--charcoal)"
-                  strokeOpacity={lane.on ? 0 : 0.4}
+                  strokeOpacity={lane.on ? 0 : 0.45}
                 />
               </g>
             ))}
-            <text
-              {...SVG_LABEL}
-              x="672"
-              y="68"
-              fill="var(--crimson)"
-            >
-              THE RIGHT
-            </text>
-            <text
-              {...SVG_LABEL}
-              x="672"
-              y="81"
-              fill="var(--crimson)"
-            >
-              SPECIALIST
+            <text {...SVG_LABEL} x="638" y="69.5" fill="var(--crimson)">
+              THE RIGHT SPECIALIST
             </text>
           </svg>
         </div>
 
-        <div className="w-full">
-          <div className={RULED}>
-            <p className={`${BODY} max-w-4xl`}>
+        <div className="mt-7 grid w-full max-w-5xl grid-cols-1 gap-8 border-t border-[var(--charcoal)]/10 pt-6 md:grid-cols-2">
+          <div>
+            <p className={BODY}>
               This can reduce administrative delay in investigations, leave
               management, accommodation requests, and misconduct response.
             </p>
@@ -3229,36 +3887,34 @@ export default function Week04HumanResources() {
                 "accommodation requests",
                 "misconduct response",
               ]}
-              cols="md:grid-cols-4"
-              className="mt-6 max-w-4xl"
+              cols="grid-cols-2"
+              className="mt-4"
             />
           </div>
-        </div>
 
-        <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
-            <div aria-hidden className="flex flex-wrap gap-3">
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-8">
+            <p className={DISPLAY}>
+              Because cases may involve trauma, legal exposure, or power
+              imbalance, AI should support workflow discipline rather than final
+              judgment.
+            </p>
+            <div aria-hidden className="mt-4 flex flex-wrap gap-2">
               {["trauma", "legal exposure", "power imbalance"].map((o) => (
                 <span
                   key={o}
-                  className={`${TAG} border border-[var(--crimson)]/40 px-3 py-2 text-[var(--crimson)]`}
+                  className={`${TAG} border border-[var(--crimson)]/40 px-2.5 py-1.5 text-[var(--crimson)]`}
                 >
                   {o}
                 </span>
               ))}
             </div>
-            <div className="mt-8">
+            <div className="mt-4">
               <Split1
                 left="Final judgment"
                 right="Workflow discipline"
                 strikeLeft
               />
             </div>
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
-              Because cases may involve trauma, legal exposure, or power
-              imbalance, AI should support workflow discipline rather than final
-              judgment.
-            </p>
           </div>
         </div>
       </Slide>
@@ -3273,43 +3929,40 @@ export default function Week04HumanResources() {
           Privacy, Consent, and Employment Law Boundaries
         </Head1>
 
-        <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
-            HR data often includes health information, compensation details,
-            identity attributes, grievances, and performance records that
-            require strict access control.
-          </p>
-          <div aria-hidden className="mt-7 max-w-4xl border-2 border-[var(--crimson)] p-3">
-            <div className={`${MICRO} px-1 pb-3 text-[var(--crimson)]`}>
-              Strict access control
-            </div>
-            <div className="grid grid-cols-2 gap-px bg-[var(--charcoal)]/10 sm:grid-cols-3 md:grid-cols-5">
-              {[
-                "health information",
-                "compensation details",
-                "identity attributes",
-                "grievances",
-                "performance records",
-              ].map((c) => (
-                <span
-                  key={c}
-                  className={`${TAG} bg-[var(--background)] px-3 py-4 text-[var(--charcoal-light)]/70`}
-                >
-                  {c}
-                </span>
-              ))}
+        <div className="mt-6 grid w-full max-w-5xl gap-8 md:grid-cols-2 md:gap-12">
+          <div>
+            <p className={BODY}>
+              HR data often includes health information, compensation details,
+              identity attributes, grievances, and performance records that
+              require strict access control.
+            </p>
+            <div
+              aria-hidden
+              className="mt-4 border-2 border-[var(--crimson)] p-2.5"
+            >
+              <div className={`${MICRO} px-1 pb-2 text-[var(--crimson)]`}>
+                Strict access control
+              </div>
+              <Terms
+                items={[
+                  "health information",
+                  "compensation details",
+                  "identity attributes",
+                  "grievances",
+                  "performance records",
+                ]}
+                className="mt-0 px-1"
+              />
             </div>
           </div>
-        </div>
 
-        <div className="w-full">
-          <div className={RULED}>
-            <p className={`${BODY} max-w-4xl`}>
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+            <p className={BODY}>
               AI programs must be designed around employment law, labor
               standards, privacy obligations, records retention, and
               cross-border data handling rules.
             </p>
-            <Steps
+            <Terms
               items={[
                 "employment law",
                 "labor standards",
@@ -3317,39 +3970,87 @@ export default function Week04HumanResources() {
                 "records retention",
                 "cross-border data handling rules",
               ]}
-              cols="sm:grid-cols-3 md:grid-cols-5"
-              className="mt-6 max-w-5xl"
+              className="mt-4"
             />
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[22rem_1fr] md:gap-14">
-            <div
-              aria-hidden
-              className="border border-dashed border-[var(--charcoal)]/30 p-4 pb-5"
-            >
-              <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
-                Technically possible analysis
-              </div>
-              <div className="mt-6 w-3/5 border-2 border-[var(--crimson)] p-3">
-                <div className={`${MICRO} text-[var(--crimson)]`}>
-                  Legally or ethically acceptable analysis
-                </div>
-              </div>
-            </div>
+          <div className="mt-6 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-5 md:grid-cols-[1fr_25rem] md:gap-14">
             <p className={DISPLAY}>
               Leaders should assume that technically possible analysis is often
               broader than legally or ethically acceptable analysis.
             </p>
+            <svg
+              role="img"
+              aria-label="A broad dashed rectangle for technically possible analysis containing a smaller crimson-bordered boundary for legally or ethically acceptable analysis."
+              viewBox="0 0 400 116"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                A broad dashed rectangle for technically possible analysis
+                containing a smaller crimson-bordered boundary for legally or
+                ethically acceptable analysis.
+              </title>
+              <rect
+                x="8"
+                y="8"
+                width="384"
+                height="100"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.35"
+                strokeDasharray="4 4"
+              />
+              <text
+                {...SVG_LABEL}
+                x="24"
+                y="28"
+                fill="var(--charcoal)"
+                fillOpacity="0.6"
+              >
+                TECHNICALLY POSSIBLE ANALYSIS
+              </text>
+              <rect
+                x="24"
+                y="42"
+                width="264"
+                height="52"
+                fill="var(--crimson)"
+                fillOpacity="0.05"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                {...SVG_LABEL}
+                x="38"
+                y="64"
+                fill="var(--crimson)"
+              >
+                LEGALLY OR ETHICALLY
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="38"
+                y="79"
+                fill="var(--crimson)"
+              >
+                ACCEPTABLE ANALYSIS
+              </text>
+            </svg>
           </div>
         </div>
 
-        <Discussion1>
-          Which categories of workforce data should remain off-limits for
-          predictive modeling even if they would improve forecast accuracy or
-          managerial control?
-        </Discussion1>
+        <div className="w-full">
+          <aside className="mt-6 max-w-4xl border border-[var(--charcoal)]/12 p-5 md:p-6">
+            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
+            <p className="mt-2 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+              Which categories of workforce data should remain off-limits for
+              predictive modeling even if they would improve forecast accuracy
+              or managerial control?
+            </p>
+          </aside>
+        </div>
       </Slide>
 
       <ModulePlate2
@@ -3391,14 +4092,14 @@ export default function Week04HumanResources() {
           />
         </div>
 
-        <div className="w-full">
-          <div className={RULED}>
-            <p className={`${BODY} max-w-4xl`}>
+        <div className="mt-6 grid w-full max-w-5xl gap-8 border-t border-[var(--charcoal)]/10 pt-5 md:grid-cols-2 md:gap-12">
+          <div>
+            <p className={BODY}>
               Governance should clarify who owns the use case, who reviews legal
               risk, who validates outcomes, and who has authority to stop
               deployment.
             </p>
-            <ul aria-hidden className="mt-6 max-w-3xl border-t border-[var(--charcoal)]/15">
+            <ul aria-hidden className="mt-4 border-t border-[var(--charcoal)]/15">
               {[
                 "owns the use case",
                 "reviews legal risk",
@@ -3407,11 +4108,13 @@ export default function Week04HumanResources() {
               ].map((q, i) => (
                 <li
                   key={q}
-                  className="grid grid-cols-[4rem_1fr_2rem] items-baseline gap-4 border-b border-[var(--charcoal)]/10 py-2.5"
+                  className="grid grid-cols-[3.5rem_1fr_1.5rem] items-baseline gap-3 border-b border-[var(--charcoal)]/10 py-2"
                 >
                   <span
                     className={`${MICRO} ${
-                      i === 3 ? "text-[var(--crimson)]" : "text-[var(--champagne)]"
+                      i === 3
+                        ? "text-[var(--crimson)]"
+                        : "text-[var(--champagne)]"
                     }`}
                   >
                     Who
@@ -3432,31 +4135,35 @@ export default function Week04HumanResources() {
               ))}
             </ul>
           </div>
-        </div>
 
-        <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+            <p className={BODY}>
+              A model inventory is valuable only when it is linked to decisions,
+              review cadence, and documented accountability.
+            </p>
             <div
               aria-hidden
-              className="max-w-3xl overflow-x-auto border-t border-[var(--charcoal)]/30"
+              className="mt-4 overflow-x-auto border-t border-[var(--charcoal)]/30"
             >
-              <div className="min-w-[30rem]">
+              <div>
                 <div className="grid grid-cols-4 border-b border-[var(--charcoal)]/15">
                   <span
-                    className={`${TAG} px-3 py-2.5 text-[var(--charcoal-light)]/60`}
+                    className={`${TAG} px-2.5 py-2 text-[var(--charcoal-light)]/60`}
                   >
                     model inventory
                   </span>
-                  {["decisions", "review cadence", "documented accountability"].map(
-                    (h) => (
-                      <span
-                        key={h}
-                        className={`${TAG} border-l border-[var(--crimson)]/30 px-3 py-2.5 text-[var(--crimson)]`}
-                      >
-                        {h}
-                      </span>
-                    ),
-                  )}
+                  {[
+                    "decisions",
+                    "review cadence",
+                    "documented accountability",
+                  ].map((h) => (
+                    <span
+                      key={h}
+                      className={`${TAG} border-l border-[var(--crimson)]/30 px-2.5 py-2 text-[var(--crimson)]`}
+                    >
+                      {h}
+                    </span>
+                  ))}
                 </div>
                 {[0, 1, 2].map((r) => (
                   <div
@@ -3466,7 +4173,7 @@ export default function Week04HumanResources() {
                     {[0, 1, 2, 3].map((c) => (
                       <span
                         key={c}
-                        className={`px-3 py-3 ${
+                        className={`px-2.5 py-2.5 ${
                           c > 0
                             ? "border-l border-[var(--crimson)]/20 bg-[var(--crimson)]/[0.04]"
                             : ""
@@ -3478,7 +4185,9 @@ export default function Week04HumanResources() {
                               ? "bg-[var(--crimson)]/40"
                               : "bg-[var(--charcoal)]/15"
                           }`}
-                          style={{ width: `${45 + ((r * 4 + c * 3) % 5) * 11}%` }}
+                          style={{
+                            width: `${45 + ((r * 4 + c * 3) % 5) * 11}%`,
+                          }}
                         />
                       </span>
                     ))}
@@ -3486,10 +4195,6 @@ export default function Week04HumanResources() {
                 ))}
               </div>
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              A model inventory is valuable only when it is linked to decisions,
-              review cadence, and documented accountability.
-            </p>
           </div>
         </div>
       </Slide>
@@ -3509,37 +4214,37 @@ export default function Week04HumanResources() {
           Build, Buy, or Partner in the HR Technology Stack
         </Head1>
 
-        <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
-            Some capabilities can be sourced from established HR vendors, while
-            others require internal design because workflows, labor strategy, or
-            risk tolerance are distinctive.
-          </p>
-          <div aria-hidden className="mt-7 grid max-w-4xl gap-6 md:grid-cols-2">
-            <div className="border-t border-[var(--charcoal)]/25 pt-4">
-              <div className={`${MICRO} text-[var(--charcoal-light)]/60`}>
-                Established HR vendors
+        <div className="mt-6 grid w-full max-w-5xl gap-8 md:grid-cols-2 md:gap-12">
+          <div>
+            <p className={BODY}>
+              Some capabilities can be sourced from established HR vendors,
+              while others require internal design because workflows, labor
+              strategy, or risk tolerance are distinctive.
+            </p>
+            <div aria-hidden className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="border-t border-[var(--charcoal)]/25 pt-3">
+                <div className={`${MICRO} text-[var(--charcoal-light)]/60`}>
+                  Established HR vendors
+                </div>
               </div>
-            </div>
-            <div className="border-t-2 border-[var(--crimson)] pt-4">
-              <div className={`${MICRO} text-[var(--crimson)]`}>
-                Internal design
+              <div className="border-t-2 border-[var(--crimson)] pt-3">
+                <div className={`${MICRO} text-[var(--crimson)]`}>
+                  Internal design
+                </div>
+                <Terms
+                  items={["workflows", "labor strategy", "risk tolerance"]}
+                  className="mt-2"
+                />
               </div>
-              <Terms
-                items={["workflows", "labor strategy", "risk tolerance"]}
-                className="mt-3"
-              />
             </div>
           </div>
-        </div>
 
-        <div className="w-full">
-          <div className={RULED}>
-            <p className={`${BODY} max-w-4xl`}>
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+            <p className={BODY}>
               The choice depends on integration burden, vendor transparency,
               configurability, data portability, and internal capability.
             </p>
-            <Steps
+            <Terms
               items={[
                 "integration burden",
                 "vendor transparency",
@@ -3547,35 +4252,38 @@ export default function Week04HumanResources() {
                 "data portability",
                 "internal capability",
               ]}
-              cols="sm:grid-cols-3 md:grid-cols-5"
-              className="mt-6 max-w-5xl"
+              className="mt-4"
             />
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
-            <div aria-hidden className="max-w-3xl space-y-4">
-              <div className="grid grid-cols-[8rem_1fr] items-center gap-4 md:grid-cols-[10rem_1fr]">
+          <div className="mt-6 grid w-full max-w-5xl items-center gap-8 border-t border-[var(--charcoal)]/10 pt-5 md:grid-cols-[1fr_22rem]">
+            <p className={DISPLAY}>
+              Purchasing software does not transfer accountability for
+              employment outcomes, fairness concerns, or regulatory exposure.
+            </p>
+            <div aria-hidden className="space-y-2.5">
+              <div className="grid grid-cols-[6.5rem_1fr] items-center gap-3">
                 <span className={`${MICRO} text-[var(--charcoal-light)]/55`}>
                   Software
                 </span>
-                <span className="flex items-center gap-3">
+                <span className="flex items-center gap-2.5">
                   <span className="h-px flex-1 bg-[var(--charcoal)]/30" />
                   <span className="text-[var(--charcoal)]/40">→</span>
                   <span
-                    className={`${TAG} border border-[var(--charcoal)]/15 px-3 py-2 text-[var(--charcoal-light)]/60`}
+                    className={`${TAG} border border-[var(--charcoal)]/15 px-2.5 py-1 text-[var(--charcoal-light)]/60`}
                   >
                     purchasing
                   </span>
                 </span>
               </div>
-              <div className="grid grid-cols-[8rem_1fr] items-center gap-4 md:grid-cols-[10rem_1fr]">
+              <div className="grid grid-cols-[6.5rem_1fr] items-center gap-3">
                 <span className={`${MICRO} text-[var(--crimson)]`}>
                   Accountability
                 </span>
-                <span className="flex items-center gap-3">
-                  <span className="h-3 w-3 shrink-0 bg-[var(--crimson)]" />
+                <span className="flex items-center gap-2.5">
+                  <span className="h-2.5 w-2.5 shrink-0 bg-[var(--crimson)]" />
                   <Terms
                     items={[
                       "employment outcomes",
@@ -3587,18 +4295,19 @@ export default function Week04HumanResources() {
                 </span>
               </div>
             </div>
-            <p className={`${DISPLAY} mt-8 max-w-4xl`}>
-              Purchasing software does not transfer accountability for
-              employment outcomes, fairness concerns, or regulatory exposure.
-            </p>
           </div>
         </div>
 
-        <Discussion1>
-          Which HR AI capabilities should be treated as strategic internal
-          assets, and which are mature enough to buy as standardized
-          infrastructure?
-        </Discussion1>
+        <div className="w-full">
+          <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
+            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
+            <p className="mt-1.5 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+              Which HR AI capabilities should be treated as strategic internal
+              assets, and which are mature enough to buy as standardized
+              infrastructure?
+            </p>
+          </aside>
+        </div>
       </Slide>
 
       {/* ==================================================================
@@ -3610,65 +4319,89 @@ export default function Week04HumanResources() {
         <Head1 eyebrow="Adoption">Change Management and Workforce Trust</Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-7 max-w-4xl`}>
             Even accurate tools fail when employees, managers, works councils,
             or HR partners do not trust how the system is used.
           </p>
           <svg
-            aria-hidden
-            viewBox="0 0 800 120"
-            className="mt-7 w-full max-w-5xl"
+            role="img"
+            aria-label="Accurate tools disconnected by a severed trust gap from employees, managers, works councils, and HR partners."
+            viewBox="0 0 800 136"
+            className="mt-5 w-full max-w-5xl"
             fill="none"
           >
+            <title>
+              Accurate tools disconnected by a severed trust gap from employees,
+              managers, works councils, and HR partners.
+            </title>
             <rect
-              x="20"
-              y="44"
-              width="24"
-              height="24"
+              x="24"
+              y="50"
+              width="148"
+              height="36"
               fill="var(--charcoal)"
-              fillOpacity="0.7"
+              fillOpacity="0.05"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.55"
             />
             <text
               {...SVG_LABEL}
-              x="0"
-              y="92"
+              x="98"
+              y="71.5"
+              textAnchor="middle"
               fill="var(--charcoal)"
-              fillOpacity="0.55"
+              fillOpacity="0.8"
             >
               ACCURATE TOOLS
             </text>
+            <text
+              {...SVG_LABEL}
+              x="376"
+              y="14"
+              textAnchor="middle"
+              fill="var(--crimson)"
+            >
+              DO NOT TRUST
+            </text>
             {[
-              { y: 14, label: "EMPLOYEES" },
-              { y: 42, label: "MANAGERS" },
-              { y: 70, label: "WORKS COUNCILS" },
-              { y: 98, label: "HR PARTNERS" },
+              { y: 32, label: "EMPLOYEES" },
+              { y: 56, label: "MANAGERS" },
+              { y: 80, label: "WORKS COUNCILS" },
+              { y: 104, label: "HR PARTNERS" },
             ].map((g) => (
               <g key={g.label}>
                 <path
-                  d={`M52 56 C 200 56, 260 ${g.y}, 420 ${g.y}`}
+                  d={`M172 68 C 244 68, 272 ${g.y}, 352 ${g.y}`}
                   stroke="var(--crimson)"
-                  strokeOpacity="0.5"
-                  strokeDasharray="4 5"
+                  strokeOpacity="0.55"
+                  strokeDasharray="4 4"
                 />
                 <path
-                  d={`M370 ${g.y - 5}l10 10M380 ${g.y - 5}l-10 10`}
+                  d={`M352 ${g.y - 5}V${g.y + 5}M400 ${g.y - 5}V${g.y + 5}`}
                   stroke="var(--crimson)"
                   strokeWidth="1.5"
                 />
+                <path
+                  d={`M400 ${g.y}H436`}
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.3"
+                  strokeDasharray="3 3"
+                />
                 <circle
-                  cx="432"
+                  cx="444"
                   cy={g.y}
-                  r="6"
+                  r="5.5"
                   fill="var(--surface)"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.55"
+                  strokeOpacity="0.6"
+                  strokeWidth="1.25"
                 />
                 <text
                   {...SVG_LABEL}
-                  x="450"
-                  y={g.y + 3}
+                  x="462"
+                  y={g.y + 3.5}
                   fill="var(--charcoal)"
-                  fillOpacity="0.7"
+                  fillOpacity="0.75"
                 >
                   {g.label}
                 </text>
@@ -3678,7 +4411,7 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-4xl`}>
               Adoption improves when organizations explain use cases clearly,
               define limits, train managers, and create credible appeal paths.
@@ -3691,24 +4424,26 @@ export default function Week04HumanResources() {
                 "create credible appeal paths",
               ]}
               cols="md:grid-cols-4"
-              className="mt-6 max-w-4xl"
+              className="mt-5 max-w-4xl"
             />
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Claims | objective or inevitable"
-              right="Visible governance"
-              strikeLeft
-            />
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Trust is built through visible governance, not through claims that
+              the technology is objective or inevitable.
+            </p>
+            <div className="mt-5 max-w-4xl">
+              <Split1
+                left="Claims | objective or inevitable"
+                right="Visible governance"
+                strikeLeft
+              />
+            </div>
           </div>
         </div>
-        <Verdict>
-          Trust is built through visible governance, not through claims that the
-          technology is objective or inevitable.
-        </Verdict>
       </Slide>
 
       {/* ==================================================================
@@ -3740,75 +4475,89 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-12 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[1fr_24rem] md:gap-14">
+          <div className="mt-8 grid w-full max-w-5xl items-center gap-10 border-t border-[var(--charcoal)]/10 pt-6 md:grid-cols-[1fr_24rem] md:gap-14">
             <div>
-              <div
-                aria-hidden
-                className={`${TAG} text-[var(--charcoal-light)]/45 [text-decoration-line:line-through]`}
-              >
-                hiring a few specialists alone
-              </div>
-              <p className={`${LEAD} mt-4`}>
+              <p className={LEAD}>
                 The capability challenge is not hiring a few specialists alone,
                 but building shared fluency between HR practitioners, business
                 leaders, and technical teams.
               </p>
+              <div
+                aria-hidden
+                className={`${TAG} mt-4 inline-block border border-[var(--charcoal)]/15 px-3 py-1.5 text-[var(--charcoal-light)]/45 [text-decoration-line:line-through]`}
+              >
+                hiring a few specialists alone
+              </div>
             </div>
-            <svg aria-hidden viewBox="0 0 400 210" className="w-full" fill="none">
+            <svg
+              role="img"
+              aria-label="Triangle of shared fluency connecting HR practitioners, business leaders, and technical teams."
+              viewBox="0 0 400 204"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Triangle of shared fluency connecting HR practitioners, business
+                leaders, and technical teams.
+              </title>
               <path
-                d="M200 34L60 170H340Z"
+                d="M200 36L68 162H332Z"
+                fill="var(--crimson)"
+                fillOpacity="0.04"
                 stroke="var(--crimson)"
-                strokeWidth="2"
-                strokeOpacity="0.8"
+                strokeWidth="1.75"
+                strokeOpacity="0.85"
               />
               {[
-                { x: 200, y: 34 },
-                { x: 60, y: 170 },
-                { x: 340, y: 170 },
+                { x: 200, y: 36 },
+                { x: 68, y: 162 },
+                { x: 332, y: 162 },
               ].map((p) => (
                 <circle
                   key={`${p.x}-${p.y}`}
                   cx={p.x}
                   cy={p.y}
-                  r="8"
+                  r="7.5"
                   fill="var(--surface)"
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.6"
+                  strokeOpacity="0.65"
+                  strokeWidth="1.25"
                 />
               ))}
               <text
                 {...SVG_LABEL}
                 x="200"
-                y="16"
+                y="18"
                 textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.65"
+                fillOpacity="0.7"
               >
                 HR PRACTITIONERS
               </text>
               <text
                 {...SVG_LABEL}
-                x="10"
-                y="200"
+                x="68"
+                y="188"
+                textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.65"
+                fillOpacity="0.7"
               >
                 BUSINESS LEADERS
               </text>
               <text
                 {...SVG_LABEL}
-                x="390"
-                y="200"
-                textAnchor="end"
+                x="332"
+                y="188"
+                textAnchor="middle"
                 fill="var(--charcoal)"
-                fillOpacity="0.65"
+                fillOpacity="0.7"
               >
                 TECHNICAL TEAMS
               </text>
               <text
                 {...SVG_LABEL}
                 x="200"
-                y="130"
+                y="124"
                 textAnchor="middle"
                 fill="var(--crimson)"
               >
@@ -3819,17 +4568,19 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className="mt-14 w-full max-w-5xl">
-            <Split1
-              left="Side project | small innovation team"
-              right="Part of managerial capability"
-              strikeLeft
-            />
-            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
               A mature HR function treats AI literacy as part of managerial
               capability, not as a side project owned by a small innovation
               team.
             </p>
+            <div className="mt-5 max-w-4xl">
+              <Split1
+                left="Side project | small innovation team"
+                right="Part of managerial capability"
+                strikeLeft
+              />
+            </div>
           </div>
         </div>
       </Slide>
@@ -3845,33 +4596,39 @@ export default function Week04HumanResources() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-7 max-w-4xl`}>
             The most durable model links business priorities, HR process
             ownership, data governance, legal review, and product management.
           </p>
           <svg
-            aria-hidden
+            role="img"
+            aria-label="Five linked stations in a durable operating model: business priorities, HR process ownership, data governance, legal review, and product management."
             viewBox="0 0 800 84"
-            className="mt-7 w-full max-w-5xl"
+            className="mt-5 w-full max-w-5xl"
             fill="none"
           >
-            <path d="M80 30H720" stroke="var(--crimson)" strokeWidth="2" />
+            <title>
+              Five linked stations in a durable operating model: business
+              priorities, HR process ownership, data governance, legal review,
+              and product management.
+            </title>
+            <path d="M84 28H716" stroke="var(--crimson)" strokeWidth="2" />
             {[
-              { x: 80, label: "BUSINESS PRIORITIES", y: 62 },
-              { x: 240, label: "HR PROCESS OWNERSHIP", y: 78 },
-              { x: 400, label: "DATA GOVERNANCE", y: 62 },
-              { x: 560, label: "LEGAL REVIEW", y: 78 },
-              { x: 720, label: "PRODUCT MANAGEMENT", y: 62 },
+              { x: 84, label: "BUSINESS PRIORITIES" },
+              { x: 242, label: "HR PROCESS OWNERSHIP" },
+              { x: 400, label: "DATA GOVERNANCE" },
+              { x: 558, label: "LEGAL REVIEW" },
+              { x: 716, label: "PRODUCT MANAGEMENT" },
             ].map((n) => (
               <g key={n.label}>
                 <path
-                  d={`M${n.x} 40V${n.y - 12}`}
+                  d={`M${n.x} 36V50`}
                   stroke="var(--charcoal)"
-                  strokeOpacity="0.2"
+                  strokeOpacity="0.22"
                 />
                 <rect
                   x={n.x - 8}
-                  y="22"
+                  y="20"
                   width="16"
                   height="16"
                   fill="var(--surface)"
@@ -3881,10 +4638,10 @@ export default function Week04HumanResources() {
                 <text
                   {...SVG_LABEL}
                   x={n.x}
-                  y={n.y}
+                  y="64"
                   textAnchor="middle"
                   fill="var(--charcoal)"
-                  fillOpacity="0.65"
+                  fillOpacity="0.7"
                 >
                   {n.label}
                 </text>
@@ -3894,7 +4651,7 @@ export default function Week04HumanResources() {
         </div>
 
         <div className="w-full">
-          <div className={RULED}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-4xl`}>
               Use cases should be prioritized by business value, implementation
               readiness, workforce impact, and governance complexity.
@@ -3907,14 +4664,19 @@ export default function Week04HumanResources() {
                 "governance complexity",
               ]}
               cols="md:grid-cols-4"
-              className="mt-6 max-w-4xl"
+              className="mt-5 max-w-4xl"
             />
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl">
-            <div aria-hidden className="max-w-4xl">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${DISPLAY} max-w-4xl`}>
+              Enterprise scale requires common standards for data, evaluation,
+              monitoring, vendor review, and exception handling across HR
+              domains.
+            </p>
+            <div aria-hidden className="mt-5 max-w-4xl">
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
                 {[
                   "data",
@@ -3925,30 +4687,25 @@ export default function Week04HumanResources() {
                 ].map((p) => (
                   <div
                     key={p}
-                    className={`${TAG} border border-b-0 border-[var(--charcoal)]/15 px-3 py-5 text-[var(--charcoal-light)]/70`}
+                    className={`${TAG} border border-b-0 border-[var(--charcoal)]/15 px-3 py-3.5 text-[var(--charcoal-light)]/70`}
                   >
                     {p}
                   </div>
                 ))}
               </div>
               <div
-                className={`${MICRO} bg-[var(--crimson)] px-4 py-3 text-[var(--surface)]`}
+                className={`${MICRO} bg-[var(--crimson)] px-4 py-2.5 text-[var(--surface)]`}
               >
                 Common standards | across HR domains
               </div>
             </div>
-            <p className={`${DISPLAY} mt-7 max-w-4xl`}>
-              Enterprise scale requires common standards for data, evaluation,
-              monitoring, vendor review, and exception handling across HR
-              domains.
-            </p>
           </div>
         </div>
       </Slide>
 
       {/* ==================================================================
-          39. CONCLUSION: the three things AI should strengthen, then the
-          three closing statements in display weight, then the colophon.
+          39. CONCLUSION: the three closing statements in display weight,
+          the three things AI should strengthen, then the colophon.
       ================================================================== */}
       <Slide
         id="conclusion"
@@ -3967,10 +4724,29 @@ export default function Week04HumanResources() {
           Conclusion: HR as a Strategic Intelligence Function
         </Head1>
 
+        <ol className="mt-8 w-full max-w-4xl">
+          {[
+            "The strongest HR applications combine prediction, automation, and human judgment around clearly owned people decisions.",
+            "Competitive advantage comes from using AI to improve talent quality, workforce resilience, and managerial consistency without weakening legitimacy.",
+            "The executive task is not to automate HR wholesale, but to decide where intelligent systems strengthen capability, fairness, and organizational trust.",
+          ].map((line, i) => (
+            <li key={line} className="block">
+              <div className="grid grid-cols-[4ch_1fr] gap-6 border-t border-[var(--charcoal)]/12 py-5 md:grid-cols-[5ch_1fr] md:gap-10">
+                <span className={`${MICRO} pt-2 text-[var(--crimson)]`}>
+                  {pad(i + 1)}
+                </span>
+                <p className="font-serif text-xl font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+                  {line}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+
         <div className="w-full">
           <ol
             aria-hidden
-            className="mt-11 grid w-full max-w-3xl grid-cols-3 gap-y-5"
+            className="mt-6 grid w-full max-w-3xl grid-cols-3 gap-y-4"
           >
             {["capability", "fairness", "organizational trust"].map(
               (area, i) => (
@@ -3981,7 +4757,7 @@ export default function Week04HumanResources() {
                   <span className={`${MICRO} block text-[var(--champagne)]`}>
                     {pad(i + 1)}
                   </span>
-                  <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.08em] text-[var(--charcoal-light)]/70">
+                  <span className="mt-1 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
                     {area}
                   </span>
                 </li>
@@ -3990,27 +4766,8 @@ export default function Week04HumanResources() {
           </ol>
         </div>
 
-        <ol className="mt-10 w-full max-w-4xl">
-          {[
-            "The strongest HR applications combine prediction, automation, and human judgment around clearly owned people decisions.",
-            "Competitive advantage comes from using AI to improve talent quality, workforce resilience, and managerial consistency without weakening legitimacy.",
-            "The executive task is not to automate HR wholesale, but to decide where intelligent systems strengthen capability, fairness, and organizational trust.",
-          ].map((line, i) => (
-            <li key={line} className="block">
-              <div className="grid grid-cols-[4ch_1fr] gap-6 border-t border-[var(--charcoal)]/12 py-7 md:grid-cols-[5ch_1fr] md:gap-10">
-                <span className={`${MICRO} pt-3 text-[var(--crimson)]`}>
-                  {pad(i + 1)}
-                </span>
-                <p className="font-serif text-xl font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
-                  {line}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
-
         <div className="w-full">
-          <div className="mt-12 flex w-full max-w-4xl flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
+          <div className="mt-8 flex w-full max-w-4xl flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               End of Week 04
             </span>

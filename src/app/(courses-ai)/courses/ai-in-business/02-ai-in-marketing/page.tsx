@@ -44,13 +44,6 @@ export default function Week02Marketing() {
           set as a closed loop beneath the standfirst.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -right-6 top-1/2 -translate-y-1/2 select-none font-serif text-[36vw] font-black leading-none text-[var(--charcoal)]/[0.035] md:text-[28vw]"
-        >
-          02
-        </span>
-
         <div>
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
@@ -61,34 +54,90 @@ export default function Week02Marketing() {
         </div>
 
         <div>
-          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-black leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
-            Applications of AI in Marketing and{" "}
+          <h1 className="mt-6 max-w-5xl font-serif text-[clamp(2.25rem,5.5vw,4.5rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-[var(--charcoal)]">
+            Applications of AI in Marketing and
+            <br />
             <span className="text-[var(--crimson)]">Consumer Behavior</span>
           </h1>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
-          <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
+          <div className="mt-7 h-px w-full bg-[var(--charcoal)]/15" />
+          <p className="mt-5 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.625rem]">
             Framing marketing as a coordinated system of sensing, deciding,
             acting, and learning
           </p>
-          <div
-            aria-hidden
-            className={`${MICRO} mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-[var(--charcoal-light)]/55`}
+          <svg
+            role="img"
+            aria-label="Coordinated system loop linking sensing, deciding, acting, and learning, with a feedback arrow returning from learning to sensing."
+            viewBox="0 0 800 84"
+            className="mt-6 w-full max-w-4xl"
+            fill="none"
           >
-            {["sensing", "deciding", "acting", "learning"].map((verb) => (
-              <React.Fragment key={verb}>
-                <span>{verb}</span>
-                <span className="text-[var(--crimson)]">→</span>
-              </React.Fragment>
+            <title>
+              Coordinated system loop linking sensing, deciding, acting, and
+              learning, with a feedback arrow returning from learning to
+              sensing.
+            </title>
+            {[
+              { x: 16, label: "SENSING", active: false },
+              { x: 224, label: "DECIDING", active: false },
+              { x: 432, label: "ACTING", active: false },
+              { x: 640, label: "LEARNING", active: true },
+            ].map((stage, i) => (
+              <g key={stage.label}>
+                <rect
+                  x={stage.x}
+                  y="10"
+                  width="144"
+                  height="38"
+                  fill={stage.active ? "var(--crimson)" : "none"}
+                  fillOpacity={stage.active ? "0.06" : undefined}
+                  stroke={stage.active ? "var(--crimson)" : "var(--charcoal)"}
+                  strokeOpacity={stage.active ? "1" : "0.28"}
+                  strokeWidth={stage.active ? "1.5" : "1"}
+                />
+                <text
+                  {...SVG_LABEL}
+                  x={stage.x + 72}
+                  y="33"
+                  textAnchor="middle"
+                  fill={stage.active ? "var(--crimson)" : "var(--charcoal)"}
+                  fillOpacity={stage.active ? "1" : "0.75"}
+                >
+                  {stage.label}
+                </text>
+                {i < 3 && (
+                  <g>
+                    <path
+                      d={`M${stage.x + 144} 29H${stage.x + 208}`}
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.35"
+                    />
+                    <path
+                      d={`M${stage.x + 201} 24L${stage.x + 208} 29L${stage.x + 201} 34`}
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.5"
+                    />
+                  </g>
+                )}
+              </g>
             ))}
-            <span className="text-[var(--crimson)]">↺</span>
-          </div>
+            <path
+              d="M712 48V72H88V48"
+              stroke="var(--crimson)"
+              strokeWidth="1.25"
+            />
+            <path
+              d="M83 55L88 48L93 55"
+              stroke="var(--crimson)"
+              strokeWidth="1.25"
+            />
+          </svg>
         </div>
 
         <div className="w-full">
-          <div className="mt-14 flex w-full flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
+          <div className="mt-8 flex w-full flex-wrap items-baseline justify-between gap-4 border-t border-[var(--charcoal)]/12 pt-5">
             <span className={`${MICRO} text-[var(--champagne)]`}>
               Davood Wadi, PhD
             </span>
@@ -112,17 +161,22 @@ export default function Week02Marketing() {
         </Head1>
 
         <div className="w-full">
-          <div className="mt-11 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_minmax(0,18rem)] md:gap-14">
+          <div className="mt-8 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_minmax(0,22rem)] md:gap-12">
             <p className={BODY}>
               Modern marketing generates granular data from search, commerce,
               media, CRM, service, and product usage.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 280 132"
-              className="w-full max-w-[18rem]"
+              role="img"
+              aria-label="Six marketing streams from search, commerce, media, CRM, service, and product usage converging into granular data."
+              viewBox="0 0 400 140"
+              className="w-full"
               fill="none"
             >
+              <title>
+                Six marketing streams from search, commerce, media, CRM,
+                service, and product usage converging into granular data.
+              </title>
               {[
                 "SEARCH",
                 "COMMERCE",
@@ -131,63 +185,276 @@ export default function Week02Marketing() {
                 "SERVICE",
                 "PRODUCT USAGE",
               ].map((src, i) => {
-                const y = 10 + i * 22;
+                const y = 15 + i * 22;
                 return (
                   <g key={src}>
                     <text
                       {...SVG_LABEL}
-                      x="0"
-                      y={y + 3}
+                      x="118"
+                      y={y + 3.5}
+                      textAnchor="end"
                       fill="var(--charcoal)"
-                      fillOpacity="0.5"
+                      fillOpacity="0.65"
                     >
                       {src}
                     </text>
                     <path
-                      d={`M122 ${y} C 180 ${y}, 196 66, 244 66`}
+                      d={`M126 ${y}H196`}
                       stroke="var(--charcoal)"
                       strokeOpacity="0.2"
+                    />
+                    {[0, 1, 2, 3, 4].map((t) => {
+                      const tx = 134 + t * 13 + ((i * 3 + t * 2) % 4);
+                      return (
+                        <path
+                          key={t}
+                          d={`M${tx} ${y - 3}v6`}
+                          stroke="var(--charcoal)"
+                          strokeOpacity="0.45"
+                        />
+                      );
+                    })}
+                    <path
+                      d={`M196 ${y} C 232 ${y}, 244 70, 276 70`}
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.28"
                     />
                   </g>
                 );
               })}
-              <path d="M244 66h30" stroke="var(--crimson)" strokeWidth="1.5" />
-              <circle cx="276" cy="66" r="3" fill="var(--crimson)" />
+              <path
+                d="M276 70H292"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M286 65L292 70L286 75"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <rect
+                x="292"
+                y="44"
+                width="104"
+                height="52"
+                fill="var(--crimson)"
+                fillOpacity="0.06"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                {...SVG_LABEL}
+                x="344"
+                y="67"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                GRANULAR
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="344"
+                y="81"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                DATA
+              </text>
             </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-3xl`}>
               Many marketing choices are repeated allocation decisions, making
               them suitable for prediction, ranking, optimization, and
               experimentation.
             </p>
-            <div
-              aria-hidden
-              className="mt-6 grid grid-cols-2 border-l border-[var(--charcoal)]/12 md:grid-cols-4"
+            <svg
+              role="img"
+              aria-label="Four panels showing prediction, ranking, optimization, and experimentation applied to repeated allocation decisions."
+              viewBox="0 0 800 104"
+              className="mt-5 w-full"
+              fill="none"
             >
-              {["prediction", "ranking", "optimization", "experimentation"].map(
-                (m) => (
-                  <span
-                    key={m}
-                    className="border-b border-r border-[var(--charcoal)]/12 px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--charcoal-light)]/65"
-                  >
-                    {m}
-                  </span>
-                ),
-              )}
-            </div>
+              <title>
+                Four panels showing prediction, ranking, optimization, and
+                experimentation applied to repeated allocation decisions.
+              </title>
+              {/* Panel 1: Prediction */}
+              <path
+                d="M16 26V72H176"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.22"
+              />
+              {[
+                [30, 62],
+                [52, 54],
+                [74, 58],
+                [96, 46],
+                [118, 40],
+              ].map(([x, y]) => (
+                <circle
+                  key={`${x}-${y}`}
+                  cx={x}
+                  cy={y}
+                  r="2.5"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.45"
+                />
+              ))}
+              <path
+                d="M30 62L118 40"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.45"
+              />
+              <path
+                d="M118 40L158 28"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+                strokeDasharray="3 3"
+              />
+              <circle cx="158" cy="28" r="3.5" fill="var(--crimson)" />
+              <text
+                {...SVG_LABEL}
+                x="96"
+                y="94"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+              >
+                PREDICTION
+              </text>
+
+              {/* Divider 1 */}
+              <path
+                d="M200 16V96"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.12"
+              />
+
+              {/* Panel 2: Ranking */}
+              {[
+                { y: 28, w: 124, top: true },
+                { y: 42, w: 94, top: false },
+                { y: 56, w: 66, top: false },
+                { y: 70, w: 40, top: false },
+              ].map((b) => (
+                <rect
+                  key={b.y}
+                  x="228"
+                  y={b.y - 4}
+                  width={b.w}
+                  height="7"
+                  fill={b.top ? "var(--crimson)" : "var(--charcoal)"}
+                  fillOpacity={b.top ? "0.85" : "0.22"}
+                />
+              ))}
+              <text
+                {...SVG_LABEL}
+                x="300"
+                y="94"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+              >
+                RANKING
+              </text>
+
+              {/* Divider 2 */}
+              <path
+                d="M400 16V96"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.12"
+              />
+
+              {/* Panel 3: Optimization */}
+              <path
+                d="M424 72H576"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.22"
+              />
+              <path
+                d="M432 68 C 464 22, 512 22, 568 68"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.45"
+                strokeWidth="1.25"
+              />
+              <path
+                d="M494 33V72"
+                stroke="var(--crimson)"
+                strokeOpacity="0.45"
+                strokeDasharray="2 3"
+              />
+              <circle cx="494" cy="33" r="4" fill="var(--crimson)" />
+              <text
+                {...SVG_LABEL}
+                x="500"
+                y="94"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+              >
+                OPTIMIZATION
+              </text>
+
+              {/* Divider 3 */}
+              <path
+                d="M600 16V96"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.12"
+              />
+
+              {/* Panel 4: Experimentation */}
+              <path
+                d="M636 72H764"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.22"
+              />
+              <rect
+                x="658"
+                y="44"
+                width="32"
+                height="28"
+                fill="var(--charcoal)"
+                fillOpacity="0.2"
+              />
+              <rect
+                x="710"
+                y="44"
+                width="32"
+                height="28"
+                fill="var(--charcoal)"
+                fillOpacity="0.2"
+              />
+              <rect
+                x="710"
+                y="26"
+                width="32"
+                height="18"
+                fill="var(--crimson)"
+              />
+              <text
+                {...SVG_LABEL}
+                x="700"
+                y="94"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.65"
+              >
+                EXPERIMENTATION
+              </text>
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <figure className="mt-14 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
+          <figure className="mt-8 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
             <div className={`${MICRO} text-[var(--champagne)]`}>
               The strategic question
             </div>
-            <blockquote className="mt-3 font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
+            <blockquote className="mt-2 font-serif text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
               The strategic question is not where to &quot;use AI&quot; in
               isolation, but which customer and budget decisions should be
               machine-assisted.
@@ -212,62 +479,143 @@ export default function Week02Marketing() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-3xl`}>
+          <p className={`${BODY} mt-8 max-w-3xl`}>
             Marketing spans awareness, consideration, conversion, retention,
             expansion, and advocacy.
           </p>
+          <svg
+            role="img"
+            aria-label="Six connected lifecycle stages from awareness, consideration, conversion, retention, expansion, to advocacy."
+            viewBox="0 0 800 84"
+            className="mt-6 w-full max-w-5xl"
+            fill="none"
+          >
+            <title>
+              Six connected lifecycle stages from awareness, consideration,
+              conversion, retention, expansion, to advocacy.
+            </title>
+            {[
+              "AWARENESS",
+              "CONSIDERATION",
+              "CONVERSION",
+              "RETENTION",
+              "EXPANSION",
+              "ADVOCACY",
+            ].map((stage, i) => {
+              const x = +(8 + i * 133).toFixed(2);
+              const mark = i === 2;
+              return (
+                <g key={stage}>
+                  <rect
+                    x={x}
+                    y="16"
+                    width="116"
+                    height="48"
+                    fill={mark ? "var(--crimson)" : "none"}
+                    fillOpacity={mark ? "0.06" : undefined}
+                    stroke={mark ? "var(--crimson)" : "var(--charcoal)"}
+                    strokeOpacity={mark ? "1" : "0.28"}
+                    strokeWidth={mark ? "1.5" : "1"}
+                  />
+                  <text
+                    {...SVG_LABEL}
+                    x={+(x + 10).toFixed(2)}
+                    y="33"
+                    fill={mark ? "var(--crimson)" : "var(--champagne)"}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </text>
+                  <text
+                    {...SVG_LABEL}
+                    x={+(x + 10).toFixed(2)}
+                    y="51"
+                    fill={mark ? "var(--crimson)" : "var(--charcoal)"}
+                    fillOpacity={mark ? "1" : "0.8"}
+                  >
+                    {stage}
+                  </text>
+                  {i < 5 && (
+                    <g>
+                      <path
+                        d={`M${+(x + 116).toFixed(2)} 40H${+(x + 133).toFixed(2)}`}
+                        stroke="var(--charcoal)"
+                        strokeOpacity="0.35"
+                      />
+                      <path
+                        d={`M${+(x + 128).toFixed(2)} 36L${+(x + 133).toFixed(2)} 40L${+(x + 128).toFixed(2)} 44`}
+                        stroke="var(--charcoal)"
+                        strokeOpacity="0.5"
+                      />
+                    </g>
+                  )}
+                </g>
+              );
+            })}
+          </svg>
         </div>
 
-        <ol
-          aria-hidden
-          className="mt-8 grid w-full max-w-5xl grid-cols-2 gap-y-6 sm:grid-cols-3 md:grid-cols-6"
-        >
-          {[
-            "Awareness",
-            "Consideration",
-            "Conversion",
-            "Retention",
-            "Expansion",
-            "Advocacy",
-          ].map((stage, i) => (
-            <li key={stage} className="block">
-              <div className="relative border-t border-[var(--charcoal)]/20 pr-3 pt-4">
-                <span className="absolute -top-[4px] left-0 h-[7px] w-[7px] rounded-full bg-[var(--crimson)]" />
-                <span className={`${MICRO} block text-[var(--champagne)]`}>
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="mt-2 block font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--charcoal)]">
-                  {stage}
-                </span>
-              </div>
-            </li>
-          ))}
-        </ol>
-
         <div className="w-full">
-          <div className="mt-14 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
+          <div className="mt-10 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-7">
             <p className={`${BODY} max-w-3xl`}>
               AI can support each stage only when firms define the decision, the
               data, the action, and the success metric.
             </p>
-            <div
-              aria-hidden
-              className="mt-6 grid grid-cols-2 gap-px bg-[var(--charcoal)]/10 md:grid-cols-4"
+            <svg
+              role="img"
+              aria-label="Four definitions required at each stage: the decision, the data, the action, and the success metric."
+              viewBox="0 0 800 76"
+              className="mt-5 w-full"
+              fill="none"
             >
-              {["the decision", "the data", "the action", "the success metric"].map(
-                (item) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-3 bg-[var(--background)] px-4 py-4"
+              <title>
+                Four definitions required at each stage: the decision, the data,
+                the action, and the success metric.
+              </title>
+              {[
+                { label: "THE DECISION", x: 8, mark: false },
+                { label: "THE DATA", x: 210, mark: false },
+                { label: "THE ACTION", x: 412, mark: false },
+                { label: "THE SUCCESS METRIC", x: 614, mark: true },
+              ].map((item, i) => (
+                <g key={item.label}>
+                  <rect
+                    x={item.x}
+                    y="14"
+                    width="178"
+                    height="46"
+                    fill={item.mark ? "var(--crimson)" : "none"}
+                    fillOpacity={item.mark ? "0.06" : undefined}
+                    stroke={item.mark ? "var(--crimson)" : "var(--charcoal)"}
+                    strokeOpacity={item.mark ? "1" : "0.28"}
+                    strokeWidth={item.mark ? "1.5" : "1"}
+                  />
+                  <text
+                    {...SVG_LABEL}
+                    x={item.x + 89}
+                    y="41"
+                    textAnchor="middle"
+                    fill={item.mark ? "var(--crimson)" : "var(--charcoal)"}
+                    fillOpacity={item.mark ? "1" : "0.75"}
                   >
-                    <span className="h-3 w-3 shrink-0 border border-[var(--crimson)]" />
-                    <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/70">
-                      {item}
-                    </span>
-                  </div>
-                ),
-              )}
-            </div>
+                    {item.label}
+                  </text>
+                  {i < 3 && (
+                    <g>
+                      <path
+                        d={`M${item.x + 178} 37H${item.x + 202}`}
+                        stroke="var(--charcoal)"
+                        strokeOpacity="0.35"
+                      />
+                      <path
+                        d={`M${item.x + 196} 33L${item.x + 202} 37L${item.x + 196} 41`}
+                        stroke="var(--charcoal)"
+                        strokeOpacity="0.5"
+                      />
+                    </g>
+                  )}
+                </g>
+              ))}
+            </svg>
           </div>
         </div>
 
@@ -298,132 +646,275 @@ export default function Week02Marketing() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-8 max-w-4xl`}>
             Firms now learn from reviews, search queries, clickstreams, call
             transcripts, chat logs, and social conversation rather than only
             from surveys.
           </p>
-        </div>
-
-        <div className="w-full">
-          <div
-            aria-hidden
-            className="mt-8 grid w-full max-w-5xl gap-8 md:grid-cols-[10rem_1fr] md:gap-12"
+          <svg
+            role="img"
+            aria-label="Comparison between structured surveys on the left and six unstructured signal sources on the right: reviews, search queries, clickstreams, call transcripts, chat logs, and social conversation."
+            viewBox="0 0 800 108"
+            className="mt-5 w-full max-w-5xl"
+            fill="none"
           >
-            <div>
-              <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
-                Surveys
-              </div>
-              <div className="mt-4 space-y-2.5 border border-[var(--charcoal)]/15 p-3">
-                {[0, 1, 2].map((i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <span className="h-2.5 w-2.5 border border-[var(--charcoal)]/30" />
-                    <span className="h-px flex-1 bg-[var(--charcoal)]/20" />
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-              <div className={`${MICRO} text-[var(--crimson)]`}>
-                Unstructured signals
-              </div>
-              <div className="relative mt-4 h-[96px] max-w-[440px]">
-                {[
-                  { t: "reviews", x: 0, y: 0, r: -3 },
-                  { t: "search queries", x: 84, y: 4, r: 2 },
-                  { t: "clickstreams", x: 214, y: 0, r: -1.5 },
-                  { t: "call transcripts", x: 18, y: 38, r: 1.5 },
-                  { t: "chat logs", x: 164, y: 44, r: -2.5 },
-                  { t: "social conversation", x: 90, y: 70, r: 2.5 },
-                ].map((slip) => (
-                  <span
-                    key={slip.t}
-                    className="absolute whitespace-nowrap border border-[var(--crimson)]/35 bg-[var(--surface)] px-2 py-1 font-mono text-[10px] text-[var(--charcoal-light)]/70"
-                    style={{
-                      left: slip.x,
-                      top: slip.y,
-                      transform: `rotate(${slip.r}deg)`,
-                    }}
+            <title>
+              Comparison between structured surveys on the left and six
+              unstructured signal sources on the right: reviews, search queries,
+              clickstreams, call transcripts, chat logs, and social
+              conversation.
+            </title>
+            {/* Left: Surveys */}
+            <text
+              {...SVG_LABEL}
+              x="16"
+              y="18"
+              fill="var(--charcoal)"
+              fillOpacity="0.55"
+            >
+              SURVEYS
+            </text>
+            <rect
+              x="16"
+              y="28"
+              width="176"
+              height="68"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.25"
+            />
+            {[42, 62, 82].map((y) => (
+              <g key={y}>
+                <rect
+                  x="30"
+                  y={y - 4}
+                  width="8"
+                  height="8"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.4"
+                />
+                <path
+                  d={`M48 ${y}H172`}
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.22"
+                />
+              </g>
+            ))}
+
+            {/* Divider */}
+            <path
+              d="M228 10V98"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.14"
+            />
+
+            {/* Right: Unstructured signal sources */}
+            {[
+              { label: "REVIEWS", x: 260, y: 28 },
+              { label: "SEARCH QUERIES", x: 524, y: 28 },
+              { label: "CLICKSTREAMS", x: 260, y: 54 },
+              { label: "CALL TRANSCRIPTS", x: 524, y: 54 },
+              { label: "CHAT LOGS", x: 260, y: 80 },
+              { label: "SOCIAL CONVERSATION", x: 524, y: 80 },
+            ].map((item, idx) => {
+              const mark = idx === 0;
+              return (
+                <g key={item.label}>
+                  <rect
+                    x={item.x}
+                    y={item.y - 12}
+                    width="244"
+                    height="20"
+                    fill={mark ? "var(--crimson)" : "none"}
+                    fillOpacity={mark ? "0.06" : undefined}
+                    stroke={mark ? "var(--crimson)" : "var(--charcoal)"}
+                    strokeOpacity={mark ? "1" : "0.28"}
+                    strokeWidth={mark ? "1.25" : "1"}
+                  />
+                  <text
+                    {...SVG_LABEL}
+                    x={item.x + 12}
+                    y={item.y + 2}
+                    fill={mark ? "var(--crimson)" : "var(--charcoal)"}
+                    fillOpacity={mark ? "1" : "0.75"}
                   >
-                    {slip.t}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+                    {item.label}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-3xl`}>
               AI helps convert noisy text, image, and behavioral data into
               themes, sentiment patterns, emerging needs, and friction points.
             </p>
             <svg
-              aria-hidden
-              viewBox="0 0 800 140"
-              className="mt-6 w-full"
+              role="img"
+              aria-label="Noisy text, image, and behavioral data converging through AI into themes, sentiment patterns, emerging needs, and friction points."
+              viewBox="0 0 800 132"
+              className="mt-5 w-full"
               fill="none"
             >
+              <title>
+                Noisy text, image, and behavioral data converging through AI
+                into themes, sentiment patterns, emerging needs, and friction
+                points.
+              </title>
               {[
-                [14, 22], [48, 64], [30, 108], [76, 36], [96, 96], [122, 14],
-                [140, 70], [168, 118], [184, 42], [210, 88], [232, 20],
-                [252, 60], [270, 112], [58, 128], [110, 50], [196, 132],
-              ].map(([x, y], i) => (
-                <path
-                  key={`${x}-${y}`}
-                  d={`M${x} ${y}l${i % 2 ? 9 : 7} ${i % 3 ? -4 : 5}`}
-                  stroke="var(--charcoal)"
-                  strokeOpacity="0.3"
-                />
+                { label: "TEXT", y: 30 },
+                { label: "IMAGE", y: 66 },
+                { label: "BEHAVIORAL DATA", y: 102 },
+              ].map((inp) => (
+                <g key={inp.label}>
+                  <text
+                    {...SVG_LABEL}
+                    x="140"
+                    y={inp.y + 3.5}
+                    textAnchor="end"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.6"
+                  >
+                    {inp.label}
+                  </text>
+                  <path
+                    d={`M150 ${inp.y}L168 ${inp.y - 6}L184 ${inp.y + 5}L202 ${inp.y - 4}L220 ${inp.y + 6}L238 ${inp.y - 5}L256 ${inp.y}`}
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.38"
+                  />
+                  <path
+                    d={`M256 ${inp.y} C 296 ${inp.y}, 316 66, 352 66`}
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.25"
+                  />
+                </g>
               ))}
-              <path
-                d="M300 8 C 340 8, 360 62, 400 70 M300 132 C 340 132, 360 78, 400 70"
-                stroke="var(--charcoal)"
-                strokeOpacity="0.2"
+              <rect
+                x="352"
+                y="46"
+                width="64"
+                height="40"
+                fill="var(--crimson)"
+                fillOpacity="0.06"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
               />
-              <circle cx="410" cy="70" r="10" stroke="var(--crimson)" strokeWidth="1.5" />
-              {["THEMES", "SENTIMENT PATTERNS", "EMERGING NEEDS", "FRICTION POINTS"].map(
-                (label, i) => {
-                  const y = 22 + i * 32;
-                  return (
-                    <g key={label}>
-                      <path
-                        d={`M420 70 C 450 70, 450 ${y}, 480 ${y}`}
-                        stroke="var(--crimson)"
-                        strokeOpacity="0.35"
-                      />
-                      <path d={`M480 ${y}h36`} stroke="var(--crimson)" strokeWidth="1.25" />
-                      <text {...SVG_LABEL} x="528" y={y + 3} fill="var(--charcoal)">
-                        {label}
-                      </text>
-                    </g>
-                  );
-                },
-              )}
+              <text
+                {...SVG_LABEL}
+                x="384"
+                y="70"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                AI
+              </text>
+              {[
+                "THEMES",
+                "SENTIMENT PATTERNS",
+                "EMERGING NEEDS",
+                "FRICTION POINTS",
+              ].map((label, i) => {
+                const y = 21 + i * 30;
+                const mark = i === 3;
+                return (
+                  <g key={label}>
+                    <path
+                      d={`M416 66 C 456 66, 468 ${y}, 508 ${y}`}
+                      stroke={mark ? "var(--crimson)" : "var(--charcoal)"}
+                      strokeOpacity={mark ? "0.7" : "0.28"}
+                    />
+                    <path
+                      d={`M508 ${y}H548`}
+                      stroke={mark ? "var(--crimson)" : "var(--charcoal)"}
+                      strokeWidth={mark ? "1.5" : "1"}
+                      strokeOpacity={mark ? "1" : "0.45"}
+                    />
+                    <text
+                      {...SVG_LABEL}
+                      x="558"
+                      y={y + 3.5}
+                      fill={mark ? "var(--crimson)" : "var(--charcoal)"}
+                      fillOpacity={mark ? "1" : "0.7"}
+                    >
+                      {label}
+                    </text>
+                  </g>
+                );
+              })}
             </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 grid w-full max-w-5xl items-center gap-8 border-l border-[var(--charcoal)]/25 pl-6 md:grid-cols-[1fr_14rem] md:gap-12">
+          <div className="mt-8 grid w-full max-w-5xl items-center gap-8 border-l border-[var(--charcoal)]/25 pl-6 md:grid-cols-[1fr_22rem] md:gap-12">
             <p className="font-serif text-lg leading-[1.6] text-[var(--charcoal-light)] md:text-[1.25rem]">
               Insight quality still depends on sampling logic, data provenance,
               and the difference between what consumers say and what they
               actually do.
             </p>
-            <div aria-hidden className="space-y-3">
-              <div className="flex items-center gap-3">
-                <span className={`${MICRO} w-8 text-[var(--charcoal-light)]/50`}>
-                  Say
-                </span>
-                <span className="h-[3px] w-[85%] bg-[var(--charcoal)]/30" />
-              </div>
-              <div className="flex items-center gap-3">
-                <span className={`${MICRO} w-8 text-[var(--crimson)]`}>Do</span>
-                <span className="h-[3px] w-[48%] bg-[var(--crimson)]" />
-              </div>
-            </div>
+            <svg
+              role="img"
+              aria-label="Bar comparison showing the difference between what consumers say and what they actually do."
+              viewBox="0 0 400 84"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Bar comparison showing the difference between what consumers say
+                and what they actually do.
+              </title>
+              <text
+                {...SVG_LABEL}
+                x="164"
+                y="29"
+                textAnchor="end"
+                fill="var(--charcoal)"
+                fillOpacity="0.6"
+              >
+                WHAT CONSUMERS SAY
+              </text>
+              <rect
+                x="174"
+                y="19"
+                width="210"
+                height="12"
+                fill="var(--charcoal)"
+                fillOpacity="0.22"
+              />
+              <text
+                {...SVG_LABEL}
+                x="164"
+                y="59"
+                textAnchor="end"
+                fill="var(--crimson)"
+              >
+                WHAT THEY ACTUALLY DO
+              </text>
+              <rect
+                x="174"
+                y="49"
+                width="116"
+                height="12"
+                fill="var(--crimson)"
+              />
+              <path
+                d="M290 49H384V61H290"
+                stroke="var(--crimson)"
+                strokeOpacity="0.5"
+                strokeDasharray="3 3"
+              />
+              <text
+                {...SVG_LABEL}
+                x="337"
+                y="76"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                DIFFERENCE
+              </text>
+            </svg>
           </div>
         </div>
       </Slide>
@@ -439,107 +930,206 @@ export default function Week02Marketing() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-8 max-w-4xl`}>
             AI-based segmentation groups customers using behavior, value, needs,
             responsiveness, or risk instead of relying only on age or income.
           </p>
         </div>
 
-        <div
-          aria-hidden
-          className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-0"
-        >
+        <div className="mt-6 grid w-full max-w-5xl gap-8 md:grid-cols-2 md:gap-0">
           {[
             {
               key: "static",
               label: "Age or income",
               tone: "text-[var(--charcoal-light)]/50",
               pad: "md:pr-12",
+              title:
+                "Static demographic bands cutting through natural customer clusters along age or income.",
             },
             {
               key: "behavioral",
               label: "Behavior, value, needs, responsiveness, or risk",
               tone: "text-[var(--crimson)]",
               pad: "md:border-l md:border-[var(--charcoal)]/12 md:pl-12",
+              title:
+                "AI-based segmentation grouping customers into three natural clusters with one high-priority cluster marked in crimson.",
             },
           ].map((panel, p) => (
             <div key={panel.key} className={panel.pad}>
               <div className={`${MICRO} ${panel.tone}`}>{panel.label}</div>
-              <svg viewBox="0 0 320 160" className="mt-5 w-full" fill="none">
+              <svg
+                role="img"
+                aria-label={panel.title}
+                viewBox="0 0 400 148"
+                className="mt-4 w-full"
+                fill="none"
+              >
+                <title>{panel.title}</title>
+                <rect
+                  x="8"
+                  y="8"
+                  width="384"
+                  height="132"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.18"
+                />
                 {p === 0 ? (
-                  [80, 160, 240].map((x) => (
+                  [104, 200, 296].map((x) => (
                     <path
                       key={x}
-                      d={`M${x} 4V156`}
+                      d={`M${x} 8V140`}
                       stroke="var(--charcoal)"
-                      strokeOpacity="0.22"
+                      strokeOpacity="0.28"
                       strokeDasharray="3 4"
                     />
                   ))
                 ) : (
                   <>
-                    <ellipse cx="70" cy="52" rx="52" ry="38" stroke="var(--crimson)" strokeOpacity="0.6" />
-                    <ellipse cx="226" cy="44" rx="62" ry="34" stroke="var(--crimson)" strokeOpacity="0.6" />
-                    <ellipse cx="160" cy="120" rx="70" ry="30" stroke="var(--crimson)" strokeOpacity="0.6" />
+                    <ellipse
+                      cx="92"
+                      cy="50"
+                      rx="60"
+                      ry="32"
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.45"
+                    />
+                    <ellipse
+                      cx="286"
+                      cy="46"
+                      rx="68"
+                      ry="30"
+                      fill="var(--crimson)"
+                      fillOpacity="0.06"
+                      stroke="var(--crimson)"
+                      strokeWidth="1.5"
+                    />
+                    <ellipse
+                      cx="196"
+                      cy="108"
+                      rx="70"
+                      ry="24"
+                      stroke="var(--charcoal)"
+                      strokeOpacity="0.45"
+                    />
                   </>
                 )}
                 {[
-                  [44, 40], [62, 70], [86, 34], [96, 60], [52, 58], [78, 48],
-                  [190, 40], [212, 28], [238, 52], [262, 38], [224, 60], [250, 24],
-                  [110, 120], [140, 110], [166, 132], [196, 118], [214, 128], [150, 128],
-                ].map(([x, y]) => (
-                  <circle
-                    key={`${x}-${y}`}
-                    cx={x}
-                    cy={y}
-                    r="3.5"
-                    fill={p === 0 ? "var(--charcoal)" : "var(--crimson)"}
-                    fillOpacity={p === 0 ? 0.35 : 0.75}
-                  />
-                ))}
+                  [52, 42, 0],
+                  [72, 64, 0],
+                  [84, 34, 0],
+                  [124, 56, 0],
+                  [64, 52, 0],
+                  [134, 42, 0],
+                  [238, 42, 1],
+                  [262, 30, 1],
+                  [278, 54, 1],
+                  [318, 40, 1],
+                  [334, 56, 1],
+                  [312, 28, 1],
+                  [146, 108, 2],
+                  [172, 100, 2],
+                  [184, 118, 2],
+                  [220, 106, 2],
+                  [242, 114, 2],
+                  [216, 118, 2],
+                ].map(([x, y, c]) => {
+                  const mark = p === 1 && c === 1;
+                  return (
+                    <circle
+                      key={`${x}-${y}`}
+                      cx={x}
+                      cy={y}
+                      r="3.5"
+                      fill={mark ? "var(--crimson)" : "var(--charcoal)"}
+                      fillOpacity={mark ? 0.9 : 0.4}
+                    />
+                  );
+                })}
               </svg>
             </div>
           ))}
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
-            <div
-              aria-hidden
-              className="grid grid-cols-3 gap-4 md:max-w-xl"
-            >
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${BODY} max-w-3xl`}>
+              Useful segments are stable enough to act on, distinct enough to
+              prioritize, and explainable enough for managers to deploy.
+            </p>
+            <div className="mt-5 grid grid-cols-3 gap-4 md:max-w-xl">
               {["Stable", "Distinct", "Explainable"].map((test, i) => (
-                <div key={test} className="border-t-2 border-[var(--crimson)]/60 pt-3">
+                <div
+                  key={test}
+                  className="border-t-2 border-[var(--crimson)]/60 pt-3"
+                >
                   <span className={`${MICRO} text-[var(--champagne)]`}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="mt-1 block font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--charcoal)]">
+                  <span className="mt-1 block font-serif text-[1rem] font-medium tracking-normal text-[var(--charcoal)]">
                     {test}
                   </span>
                 </div>
               ))}
             </div>
-            <p className={`${BODY} mt-6 max-w-3xl`}>
-              Useful segments are stable enough to act on, distinct enough to
-              prioritize, and explainable enough for managers to deploy.
-            </p>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_20rem] md:gap-12">
-            <p className="font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+          <div className="mt-8 grid w-full max-w-5xl items-center gap-8 border-t border-[var(--charcoal)]/10 pt-6 md:grid-cols-[1fr_22rem] md:gap-12">
+            <p className="font-serif text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.625rem]">
               More segments are not always better. Excessive granularity can
               raise complexity without improving decisions.
             </p>
-            <figure aria-hidden>
-              <svg viewBox="0 0 320 124" className="w-full" fill="none">
-                <path d="M10 6v100h210" stroke="var(--charcoal)" strokeOpacity="0.25" />
-                <path d="M10 100 C 90 96, 170 70, 216 14" stroke="var(--crimson)" strokeWidth="1.5" />
-                <path d="M10 100 C 50 62, 110 56, 216 54" stroke="var(--charcoal)" strokeOpacity="0.55" strokeWidth="1.25" />
-                <text {...SVG_LABEL} x="226" y="17" fill="var(--crimson)">COMPLEXITY</text>
-                <text {...SVG_LABEL} x="226" y="57" fill="var(--charcoal)" fillOpacity="0.6">DECISIONS</text>
-                <text {...SVG_LABEL} x="220" y="120" textAnchor="end" fill="var(--charcoal)" fillOpacity="0.45">MORE SEGMENTS →</text>
+            <figure>
+              <svg
+                role="img"
+                aria-label="Chart showing complexity rising steeply in crimson while decision quality plateaus as more segments are added."
+                viewBox="0 0 400 124"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Chart showing complexity rising steeply in crimson while
+                  decision quality plateaus as more segments are added.
+                </title>
+                <path
+                  d="M16 10v90h256"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.25"
+                />
+                <path
+                  d="M16 96 C 112 92, 200 66, 264 16"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.5"
+                />
+                <path
+                  d="M16 96 C 64 58, 136 52, 264 50"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.55"
+                  strokeWidth="1.25"
+                />
+                <text {...SVG_LABEL} x="276" y="20" fill="var(--crimson)">
+                  COMPLEXITY
+                </text>
+                <text
+                  {...SVG_LABEL}
+                  x="276"
+                  y="54"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.65"
+                >
+                  DECISIONS
+                </text>
+                <text
+                  {...SVG_LABEL}
+                  x="272"
+                  y="116"
+                  textAnchor="end"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.5"
+                >
+                  MORE SEGMENTS →
+                </text>
               </svg>
             </figure>
           </div>
@@ -562,80 +1152,178 @@ export default function Week02Marketing() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-8 max-w-4xl`}>
             Targeting systems estimate which audience is most likely to respond
             under a given objective such as reach, conversion, or retention.
           </p>
-        </div>
-
-        <div
-          aria-hidden
-          className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-3 md:gap-0"
-        >
-          {[
-            { objective: "Reach", ranks: [["A", 92], ["B", 70], ["C", 46], ["D", 28]] },
-            { objective: "Conversion", ranks: [["C", 86], ["A", 60], ["D", 42], ["B", 24]] },
-            { objective: "Retention", ranks: [["D", 80], ["C", 58], ["B", 38], ["A", 20]] },
-          ].map((col, i) => (
-            <div key={col.objective} className={
-                i === 0 ? "md:pr-10" : "md:border-l md:border-[var(--charcoal)]/12 md:px-10"
-              }>
-              <div className={`${MICRO} text-[var(--champagne)]`}>
-                {col.objective}
-              </div>
-              <div className="mt-4 space-y-2.5">
-                {col.ranks.map(([aud, w], r) => (
-                  <div key={aud} className="flex items-center gap-3">
-                    <span className="w-3 font-mono text-[11px] text-[var(--charcoal-light)]/60">
-                      {aud}
-                    </span>
-                    <span
-                      className={`h-2 ${
-                        r === 0 ? "bg-[var(--crimson)]" : "bg-[var(--charcoal)]/20"
-                      }`}
-                      style={{ width: `${w}%` }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+          <svg
+            role="img"
+            aria-label="Three panels showing audience response rankings under reach, conversion, and retention objectives, with the top audience marked in crimson."
+            viewBox="0 0 800 112"
+            className="mt-5 w-full max-w-5xl"
+            fill="none"
+          >
+            <title>
+              Three panels showing audience response rankings under reach,
+              conversion, and retention objectives, with the top audience marked
+              in crimson.
+            </title>
+            {[
+              {
+                objective: "REACH",
+                x: 16,
+                bars: [188, 136, 92, 54],
+                winner: 0,
+                mark: false,
+              },
+              {
+                objective: "CONVERSION",
+                x: 292,
+                bars: [108, 64, 180, 84],
+                winner: 2,
+                mark: true,
+              },
+              {
+                objective: "RETENTION",
+                x: 568,
+                bars: [48, 88, 124, 176],
+                winner: 3,
+                mark: false,
+              },
+            ].map((col, idx) => (
+              <g key={col.objective}>
+                {idx > 0 && (
+                  <path
+                    d={`M${col.x - 24} 12V100`}
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.14"
+                  />
+                )}
+                <text
+                  {...SVG_LABEL}
+                  x={col.x}
+                  y="20"
+                  fill={col.mark ? "var(--crimson)" : "var(--champagne)"}
+                >
+                  {col.objective}
+                </text>
+                {col.bars.map((w, r) => {
+                  const y = 36 + r * 18;
+                  const top = r === col.winner;
+                  const lit = top && col.mark;
+                  return (
+                    <g key={r}>
+                      <text
+                        {...SVG_LABEL}
+                        x={col.x}
+                        y={y + 6}
+                        fill={lit ? "var(--crimson)" : "var(--charcoal)"}
+                        fillOpacity={lit ? "1" : top ? "0.8" : "0.45"}
+                      >
+                        {String(r + 1).padStart(2, "0")}
+                      </text>
+                      <rect
+                        x={col.x + 26}
+                        y={y - 2}
+                        width={w}
+                        height="8"
+                        fill={lit ? "var(--crimson)" : "var(--charcoal)"}
+                        fillOpacity={lit ? "0.9" : top ? "0.55" : "0.18"}
+                      />
+                    </g>
+                  );
+                })}
+              </g>
+            ))}
+          </svg>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-3xl`}>
               The practical output is often a next-best-audience rule that
               updates as new signals arrive.
             </p>
-            <svg aria-hidden viewBox="0 0 800 72" className="mt-6 w-full" fill="none">
-              <path d="M8 34h784" stroke="var(--charcoal)" strokeOpacity="0.2" />
-              {[70, 110, 150, 230, 290, 330, 410, 470, 520, 610, 660, 700].map((x) => (
-                <path key={x} d={`M${x} 28v12`} stroke="var(--charcoal)" strokeOpacity="0.35" />
+            <svg
+              role="img"
+              aria-label="Timeline showing a next-best-audience rule that updates as new signals arrive."
+              viewBox="0 0 800 84"
+              className="mt-5 w-full"
+              fill="none"
+            >
+              <title>
+                Timeline showing a next-best-audience rule that updates as new
+                signals arrive.
+              </title>
+              <path
+                d="M16 42H784"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.22"
+              />
+              {[180, 220, 260, 460, 500, 540].map((x) => (
+                <path
+                  key={x}
+                  d={`M${x} 34v16`}
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.4"
+                />
               ))}
+              <text
+                {...SVG_LABEL}
+                x="220"
+                y="22"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+              >
+                NEW SIGNALS
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="500"
+                y="22"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+              >
+                NEW SIGNALS
+              </text>
               {[
-                { x: 30, label: "RULE V1" },
-                { x: 360, label: "RULE V2" },
-                { x: 740, label: "RULE V3" },
+                { x: 80, label: "RULE", active: false },
+                { x: 360, label: "UPDATES", active: false },
+                { x: 660, label: "NEXT-BEST-AUDIENCE RULE", active: true },
               ].map((r) => (
-                <g key={r.label}>
-                  <rect x={r.x - 5} y="29" width="10" height="10" fill="var(--crimson)" />
-                  <text {...SVG_LABEL} x={r.x} y="60" textAnchor="middle" fill="var(--crimson)">
+                <g key={r.x}>
+                  <rect
+                    x={r.x - 6}
+                    y="36"
+                    width="12"
+                    height="12"
+                    fill={r.active ? "var(--crimson)" : "var(--surface)"}
+                    stroke={r.active ? "var(--crimson)" : "var(--charcoal)"}
+                    strokeOpacity={r.active ? "1" : "0.55"}
+                    strokeWidth="1.5"
+                  />
+                  <text
+                    {...SVG_LABEL}
+                    x={r.x}
+                    y="70"
+                    textAnchor="middle"
+                    fill={r.active ? "var(--crimson)" : "var(--charcoal)"}
+                    fillOpacity={r.active ? "1" : "0.65"}
+                  >
                     {r.label}
                   </text>
                 </g>
               ))}
-              <text {...SVG_LABEL} x="190" y="16" textAnchor="middle" fill="var(--charcoal)" fillOpacity="0.45">
-                NEW SIGNALS
-              </text>
             </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 max-w-4xl border border-[var(--crimson)]/45 p-7 md:p-9">
+          <div className="mt-8 max-w-4xl border border-[var(--crimson)]/45 p-6 md:p-8">
             <div className={`${MICRO} text-[var(--crimson)]`}>Test it</div>
-            <p className="mt-4 font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
+            <p className="mt-3 font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.5rem]">
               Managers should test whether algorithmic targeting improves
               business value or merely shifts exposure toward already active
               customers.
@@ -654,7 +1342,7 @@ export default function Week02Marketing() {
           Positioning Intelligence and Message-Market Fit
         </Head1>
 
-        <div className="mt-10 grid w-full max-w-5xl items-start gap-10 md:grid-cols-[1fr_1fr] md:gap-14">
+        <div className="mt-8 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
           <div>
             <p className={BODY}>
               AI can surface which claims, benefits, or proof points resonate
@@ -662,66 +1350,158 @@ export default function Week02Marketing() {
             </p>
           </div>
           <div>
-            <figure aria-hidden>
-              <div className={`${MICRO} mb-3 pl-[7.5rem] text-[var(--charcoal-light)]/45`}>
-                Segments | channels | contexts
-              </div>
+            <svg
+              role="img"
+              aria-label="Resonance matrix of claims, benefits, and proof points across segments, channels, and contexts, with the strongest cell marked in crimson."
+              viewBox="0 0 400 136"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Resonance matrix of claims, benefits, and proof points across
+                segments, channels, and contexts, with the strongest cell marked
+                in crimson.
+              </title>
               {[
-                { row: "Claims", cells: [0.15, 0.7, 0.3, 0.1, 0.55, 0.2] },
-                { row: "Benefits", cells: [0.6, 0.2, 0.9, 0.35, 0.15, 0.5] },
-                { row: "Proof points", cells: [0.25, 0.45, 0.1, 0.8, 0.4, 0.65] },
-              ].map((r) => (
-                <div key={r.row} className="flex items-center gap-2 py-1">
-                  <span className={`${MICRO} w-[7rem] shrink-0 text-[var(--charcoal-light)]/60`}>
-                    {r.row}
-                  </span>
-                  {r.cells.map((o, c) => (
-                    <span
-                      key={c}
-                      className="block h-7 flex-1 border border-[var(--charcoal)]/8"
-                      style={{ backgroundColor: `rgba(139, 0, 0, ${o})` }}
-                    />
-                  ))}
-                </div>
+                { label: "SEGMENTS", x: 168 },
+                { label: "CHANNELS", x: 258 },
+                { label: "CONTEXTS", x: 348 },
+              ].map((col) => (
+                <text
+                  key={col.label}
+                  {...SVG_LABEL}
+                  x={col.x}
+                  y="20"
+                  textAnchor="middle"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.55"
+                >
+                  {col.label}
+                </text>
               ))}
-            </figure>
+              {[
+                { row: "CLAIMS", y: 32, cells: [0.14, 0.38, 0.22] },
+                { row: "BENEFITS", y: 66, cells: [0.28, 1, 0.18] },
+                { row: "PROOF POINTS", y: 100, cells: [0.2, 0.12, 0.44] },
+              ].map((r, ri) => (
+                <g key={r.row}>
+                  <text
+                    {...SVG_LABEL}
+                    x="114"
+                    y={r.y + 16}
+                    textAnchor="end"
+                    fill={ri === 1 ? "var(--crimson)" : "var(--charcoal)"}
+                    fillOpacity={ri === 1 ? "1" : "0.65"}
+                  >
+                    {r.row}
+                  </text>
+                  {r.cells.map((v, ci) => {
+                    const cx = 128 + ci * 90;
+                    const mark = ri === 1 && ci === 1;
+                    return (
+                      <rect
+                        key={ci}
+                        x={cx}
+                        y={r.y}
+                        width="80"
+                        height="24"
+                        fill={mark ? "var(--crimson)" : "var(--charcoal)"}
+                        fillOpacity={mark ? 0.85 : v}
+                        stroke={mark ? "var(--crimson)" : "var(--charcoal)"}
+                        strokeOpacity={mark ? 1 : 0.2}
+                      />
+                    );
+                  })}
+                </g>
+              ))}
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-3xl`}>
               This supports faster refinement of value propositions, creative
               briefs, and channel-specific narratives.
             </p>
-            <div
-              aria-hidden
-              className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/50"
+            <svg
+              role="img"
+              aria-label="Refinement chain linking value propositions, creative briefs, and channel-specific narratives."
+              viewBox="0 0 800 76"
+              className="mt-5 w-full"
+              fill="none"
             >
-              <span>value propositions</span>
-              <span>|</span>
-              <span>creative briefs</span>
-              <span>|</span>
-              <span>channel-specific narratives</span>
-            </div>
+              <title>
+                Refinement chain linking value propositions, creative briefs,
+                and channel-specific narratives.
+              </title>
+              {[
+                { label: "VALUE PROPOSITIONS", x: 16, mark: false },
+                { label: "CREATIVE BRIEFS", x: 288, mark: false },
+                { label: "CHANNEL-SPECIFIC NARRATIVES", x: 560, mark: true },
+              ].map((box, i) => (
+                <g key={box.label}>
+                  <rect
+                    x={box.x}
+                    y="16"
+                    width="224"
+                    height="44"
+                    fill={box.mark ? "var(--crimson)" : "none"}
+                    fillOpacity={box.mark ? "0.06" : undefined}
+                    stroke={box.mark ? "var(--crimson)" : "var(--charcoal)"}
+                    strokeOpacity={box.mark ? "1" : "0.28"}
+                    strokeWidth={box.mark ? "1.5" : "1"}
+                  />
+                  <text
+                    {...SVG_LABEL}
+                    x={box.x + 112}
+                    y="42"
+                    textAnchor="middle"
+                    fill={box.mark ? "var(--crimson)" : "var(--charcoal)"}
+                    fillOpacity={box.mark ? "1" : "0.75"}
+                  >
+                    {box.label}
+                  </text>
+                  {i < 2 && (
+                    <g>
+                      <path
+                        d={`M${box.x + 224} 38H${box.x + 272}`}
+                        stroke="var(--charcoal)"
+                        strokeOpacity="0.35"
+                      />
+                      <path
+                        d={`M${box.x + 266} 34L${box.x + 272} 38L${box.x + 266} 42`}
+                        stroke="var(--charcoal)"
+                        strokeOpacity="0.5"
+                      />
+                    </g>
+                  )}
+                </g>
+              ))}
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-14 w-full max-w-5xl">
-            <div aria-hidden className="grid grid-cols-2 border-b border-[var(--charcoal)]/15 pb-3">
-              <span className={`${MICRO} text-[var(--charcoal-light)]/50`}>
-                Models | detect patterns
-              </span>
-              <span className={`${MICRO} border-l border-[var(--crimson)]/40 pl-6 text-[var(--crimson)]`}>
-                Leadership | must decide
-              </span>
-            </div>
-            <p className="mt-6 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className="max-w-4xl font-serif text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
               Positioning remains a strategic choice. Models can detect
               patterns, but leadership must decide what the brand should stand
               for.
             </p>
+            <div
+              aria-hidden
+              className="mt-5 grid max-w-3xl grid-cols-2 border-b border-[var(--charcoal)]/15 pb-3"
+            >
+              <span className={`${MICRO} text-[var(--charcoal-light)]/55`}>
+                Models | detect patterns
+              </span>
+              <span
+                className={`${MICRO} border-l border-[var(--crimson)]/40 pl-6 text-[var(--crimson)]`}
+              >
+                Leadership | must decide
+              </span>
+            </div>
           </div>
         </div>
       </Slide>
@@ -747,97 +1527,257 @@ export default function Week02Marketing() {
         </Head1>
 
         <div className="w-full">
-          <p className={`${BODY} mt-9 max-w-4xl`}>
+          <p className={`${BODY} mt-7 max-w-4xl`}>
             Personalization is not just inserting a name into a message. It is
             choosing which offer, content, timing, and channel best fit a
             customer state.
           </p>
-        </div>
-
-        <div className="w-full">
-          <div
-            aria-hidden
-            className="mt-9 grid w-full max-w-5xl items-end gap-8 md:grid-cols-[12rem_1fr] md:gap-12"
+          <svg
+            role="img"
+            aria-label="Struck-through name into a message contrasted with choosing offer, content, timing, and channel to fit a customer state."
+            viewBox="0 0 800 84"
+            className="mt-4 w-full max-w-5xl"
+            fill="none"
           >
-            <div className="font-mono text-[12px] text-[var(--charcoal-light)]/40 [text-decoration-line:line-through]">
-              Hi {"{name}"}, …
-            </div>
-            <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-              {[
-                { dial: "Offer", pick: 1 },
-                { dial: "Content", pick: 2 },
-                { dial: "Timing", pick: 0 },
-                { dial: "Channel", pick: 1 },
-              ].map((d) => (
-                <div key={d.dial}>
-                  <div className={`${MICRO} text-[var(--champagne)]`}>{d.dial}</div>
-                  <div className="mt-3 flex gap-1.5">
-                    {[0, 1, 2].map((o) => (
-                      <span
-                        key={o}
-                        className={`block h-6 flex-1 border ${
-                          o === d.pick
-                            ? "border-[var(--crimson)] bg-[var(--crimson)]"
-                            : "border-[var(--charcoal)]/15"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+            <title>
+              Struck-through name into a message contrasted with choosing offer,
+              content, timing, and channel to fit a customer state.
+            </title>
+            {/* Left: dashed box for name into a message */}
+            <rect
+              x="16"
+              y="18"
+              width="196"
+              height="48"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.22"
+              strokeDasharray="3 3"
+            />
+            <text
+              {...SVG_LABEL}
+              x="114"
+              y="46"
+              textAnchor="middle"
+              fill="var(--charcoal)"
+              fillOpacity="0.45"
+            >
+              NAME INTO A MESSAGE
+            </text>
+
+            <path
+              d="M236 10V74"
+              stroke="var(--charcoal)"
+              strokeOpacity="0.14"
+            />
+
+            {/* Right: Customer state -> Offer, Content, Timing, Channel */}
+            <rect
+              x="260"
+              y="18"
+              width="140"
+              height="48"
+              fill="var(--crimson)"
+              fillOpacity="0.06"
+              stroke="var(--crimson)"
+              strokeWidth="1.5"
+            />
+            <text
+              {...SVG_LABEL}
+              x="330"
+              y="46"
+              textAnchor="middle"
+              fill="var(--crimson)"
+            >
+              CUSTOMER STATE
+            </text>
+            <path
+              d="M400 42H436"
+              stroke="var(--crimson)"
+              strokeWidth="1.25"
+            />
+            <path
+              d="M430 38L436 42L430 46"
+              stroke="var(--crimson)"
+              strokeWidth="1.25"
+            />
+            {[
+              { dial: "OFFER", x: 444, pick: 1 },
+              { dial: "CONTENT", x: 532, pick: 2 },
+              { dial: "TIMING", x: 620, pick: 0 },
+              { dial: "CHANNEL", x: 708, pick: 1 },
+            ].map((d) => (
+              <g key={d.dial}>
+                <text
+                  {...SVG_LABEL}
+                  x={d.x + 38}
+                  y="24"
+                  textAnchor="middle"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.65"
+                >
+                  {d.dial}
+                </text>
+                {[0, 1, 2].map((o) => {
+                  const bx = d.x + o * 26;
+                  const chosen = o === d.pick;
+                  return (
+                    <rect
+                      key={o}
+                      x={bx}
+                      y="34"
+                      width="22"
+                      height="24"
+                      fill={chosen ? "var(--charcoal)" : "none"}
+                      fillOpacity={chosen ? "0.7" : undefined}
+                      stroke="var(--charcoal)"
+                      strokeOpacity={chosen ? "0.8" : "0.25"}
+                    />
+                  );
+                })}
+              </g>
+            ))}
+          </svg>
         </div>
 
-        <div className="mt-12 grid w-full max-w-5xl gap-12 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-12">
+        <div className="mt-7 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-6 md:grid-cols-2 md:gap-0">
+          <div className="md:pr-10">
             <div className={`${MICRO} text-[var(--crimson)]`}>
               When not to personalize
             </div>
-            <p className={`${BODY} mt-4`}>
+            <p className={`${BODY} mt-3`}>
               Effective personalization requires rules for when not to
               personalize, especially when data is sparse, sensitive, or likely
               to overfit recent behavior.
             </p>
-            <ul
-              aria-hidden
-              className="mt-5 space-y-2 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/60"
+            <svg
+              role="img"
+              aria-label="Three stop rules blocking personalization when data is sparse, sensitive, or likely to overfit recent behavior."
+              viewBox="0 0 400 96"
+              className="mt-4 w-full"
+              fill="none"
             >
-              {["sparse", "sensitive", "overfit recent behavior"].map((c) => (
-                <li key={c} className="flex items-center gap-3">
-                  <span className="relative h-3 w-3 border border-[var(--crimson)]">
-                    <span className="absolute left-1/2 top-[-2px] h-[15px] w-px -translate-x-1/2 rotate-45 bg-[var(--crimson)]" />
-                  </span>
-                  {c}
-                </li>
+              <title>
+                Three stop rules blocking personalization when data is sparse,
+                sensitive, or likely to overfit recent behavior.
+              </title>
+              {[
+                { label: "SPARSE", y: 20 },
+                { label: "SENSITIVE", y: 48 },
+                { label: "OVERFIT RECENT BEHAVIOR", y: 76 },
+              ].map((c) => (
+                <g key={c.label}>
+                  <text
+                    {...SVG_LABEL}
+                    x="204"
+                    y={c.y + 4}
+                    textAnchor="end"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.7"
+                  >
+                    {c.label}
+                  </text>
+                  <path
+                    d={`M214 ${c.y}H268`}
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.3"
+                    strokeDasharray="3 3"
+                  />
+                </g>
               ))}
-            </ul>
+              <path
+                d="M268 10V86"
+                stroke="var(--crimson)"
+                strokeWidth="2"
+              />
+              <text
+                {...SVG_LABEL}
+                x="282"
+                y="45"
+                fill="var(--crimson)"
+              >
+                WHEN NOT TO
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="282"
+                y="59"
+                fill="var(--crimson)"
+              >
+                PERSONALIZE
+              </text>
+            </svg>
           </div>
 
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
+          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-10">
             <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
               Over-personalization
             </div>
-            <p className={`${BODY} mt-4`}>
+            <p className={`${BODY} mt-3`}>
               Over-personalization can feel intrusive, narrow exploration, and
               erode trust if consumers perceive manipulation.
             </p>
-            <figure aria-hidden className="mt-5">
-              <svg viewBox="0 0 320 118" className="w-full max-w-[20rem]" fill="none">
-                <path d="M10 6v84h300" stroke="var(--charcoal)" strokeOpacity="0.22" />
+            <figure className="mt-4">
+              <svg
+                role="img"
+                aria-label="Curve showing trust rising with helpful personalization and then eroding in crimson when over-personalization feels intrusive."
+                viewBox="0 0 400 96"
+                className="w-full"
+                fill="none"
+              >
+                <title>
+                  Curve showing trust rising with helpful personalization and
+                  then eroding in crimson when over-personalization feels
+                  intrusive.
+                </title>
                 <path
-                  d="M10 84 C 70 30, 130 18, 170 22 C 220 28, 260 60, 300 86"
-                  stroke="var(--crimson)"
+                  d="M16 10v64h368"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.22"
+                />
+                <path
+                  d="M16 68 C 84 26, 148 16, 200 20"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.55"
                   strokeWidth="1.5"
                 />
-                <text {...SVG_LABEL} x="18" y="106" fill="var(--charcoal)" fillOpacity="0.45">
-                  RELEVANCE
+                <path
+                  d="M200 20 C 264 26, 316 54, 372 70"
+                  stroke="var(--crimson)"
+                  strokeWidth="1.75"
+                />
+                <path
+                  d="M200 12V74"
+                  stroke="var(--charcoal)"
+                  strokeOpacity="0.22"
+                  strokeDasharray="2 3"
+                />
+                <text
+                  {...SVG_LABEL}
+                  x="28"
+                  y="24"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.55"
+                >
+                  TRUST
                 </text>
-                <text {...SVG_LABEL} x="306" y="106" textAnchor="end" fill="var(--crimson)">
+                <text
+                  {...SVG_LABEL}
+                  x="372"
+                  y="32"
+                  textAnchor="end"
+                  fill="var(--crimson)"
+                >
                   INTRUSIVE
                 </text>
-                <text {...SVG_LABEL} x="178" y="12" textAnchor="middle" fill="var(--charcoal)" fillOpacity="0.45">
-                  TRUST
+                <text
+                  {...SVG_LABEL}
+                  x="384"
+                  y="90"
+                  textAnchor="end"
+                  fill="var(--charcoal)"
+                  fillOpacity="0.5"
+                >
+                  OVER-PERSONALIZATION →
                 </text>
               </svg>
             </figure>
@@ -860,7 +1800,7 @@ export default function Week02Marketing() {
           Recommendation Systems in Commerce
         </Head1>
 
-        <div className="mt-10 grid w-full max-w-5xl items-start gap-10 md:grid-cols-2 md:gap-14">
+        <div className="mt-8 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
           <div>
             <p className={BODY}>
               Recommendation systems rank products, services, or content by
@@ -869,82 +1809,204 @@ export default function Week02Marketing() {
             </p>
           </div>
           <div>
-            <ol aria-hidden className="border-t border-[var(--charcoal)]/15">
+            <svg
+              role="img"
+              aria-label="Ranked list of products, services, and content by expected relevance adjusted for inventory, margin, and strategic assortment constraints."
+              viewBox="0 0 400 140"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Ranked list of products, services, and content by expected
+                relevance adjusted for inventory, margin, and strategic
+                assortment constraints.
+              </title>
+              <text
+                {...SVG_LABEL}
+                x="12"
+                y="18"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+              >
+                EXPECTED RELEVANCE
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="388"
+                y="18"
+                textAnchor="end"
+                fill="var(--charcoal)"
+                fillOpacity="0.55"
+              >
+                BUSINESS CONSTRAINTS
+              </text>
               {[
-                { item: "product", rel: 94, tag: "inventory", blocked: true },
-                { item: "service", rel: 88, tag: "", blocked: false },
-                { item: "content", rel: 81, tag: "", blocked: false },
-                { item: "product", rel: 74, tag: "margin", blocked: false },
-                { item: "product", rel: 52, tag: "strategic assortment", blocked: false },
-              ].map((row, i) => (
-                <li
-                  key={i}
-                  className={`grid grid-cols-[2ch_5rem_1fr] items-center gap-4 border-b border-[var(--charcoal)]/8 py-2.5 ${
-                    row.blocked ? "opacity-40" : ""
-                  }`}
-                >
-                  <span className={`${MICRO} text-[var(--champagne)]`}>{i + 1}</span>
-                  <span
-                    className={`font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/70 ${
-                      row.blocked ? "[text-decoration-line:line-through]" : ""
-                    }`}
-                  >
-                    {row.item}
-                  </span>
-                  <span className="flex items-center gap-3">
-                    <span
-                      className="h-1.5 bg-[var(--charcoal)]/25"
-                      style={{ width: `${row.rel * 0.6}%` }}
+                {
+                  rank: "01",
+                  item: "PRODUCTS",
+                  w: 120,
+                  constraint: "INVENTORY",
+                  blocked: true,
+                  chosen: false,
+                },
+                {
+                  rank: "02",
+                  item: "SERVICES",
+                  w: 102,
+                  constraint: "MARGIN",
+                  blocked: false,
+                  chosen: true,
+                },
+                {
+                  rank: "03",
+                  item: "CONTENT",
+                  w: 84,
+                  constraint: "",
+                  blocked: false,
+                  chosen: false,
+                },
+                {
+                  rank: "04",
+                  item: "PRODUCTS",
+                  w: 62,
+                  constraint: "STRATEGIC ASSORTMENT",
+                  blocked: false,
+                  chosen: false,
+                },
+              ].map((row, i) => {
+                const y = 38 + i * 26;
+                return (
+                  <g key={row.rank}>
+                    <text
+                      {...SVG_LABEL}
+                      x="12"
+                      y={y + 4}
+                      fill={
+                        row.chosen ? "var(--crimson)" : "var(--champagne)"
+                      }
+                      fillOpacity={row.blocked ? "0.4" : "1"}
+                    >
+                      {row.rank}
+                    </text>
+                    <text
+                      {...SVG_LABEL}
+                      x="38"
+                      y={y + 4}
+                      fill={row.chosen ? "var(--crimson)" : "var(--charcoal)"}
+                      fillOpacity={
+                        row.blocked ? "0.35" : row.chosen ? "1" : "0.7"
+                      }
+                    >
+                      {row.item}
+                    </text>
+                    <rect
+                      x="118"
+                      y={y - 4}
+                      width={row.w}
+                      height="8"
+                      fill={
+                        row.blocked
+                          ? "none"
+                          : row.chosen
+                            ? "var(--crimson)"
+                            : "var(--charcoal)"
+                      }
+                      fillOpacity={row.chosen ? "0.9" : "0.22"}
+                      stroke={row.blocked ? "var(--charcoal)" : "none"}
+                      strokeOpacity={row.blocked ? "0.3" : undefined}
+                      strokeDasharray={row.blocked ? "2 2" : undefined}
                     />
-                    {row.tag && (
-                      <span className="whitespace-nowrap font-mono text-[9px] uppercase tracking-[0.1em] text-[var(--crimson)]">
-                        {row.tag}
-                      </span>
+                    {row.constraint && (
+                      <text
+                        {...SVG_LABEL}
+                        x="388"
+                        y={y + 4}
+                        textAnchor="end"
+                        fill={
+                          row.chosen ? "var(--crimson)" : "var(--charcoal)"
+                        }
+                        fillOpacity={
+                          row.blocked ? "0.4" : row.chosen ? "1" : "0.6"
+                        }
+                      >
+                        {row.constraint}
+                      </text>
                     )}
-                  </span>
-                </li>
-              ))}
-            </ol>
+                  </g>
+                );
+              })}
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
             <p className={`${BODY} max-w-3xl`}>
               In practice, leaders must decide whether the system should
               maximize immediate conversion, long-term value, basket size, or
               discovery.
             </p>
-            <div aria-hidden className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
-              {["immediate conversion", "long-term value", "basket size", "discovery"].map(
-                (obj) => (
-                  <span
-                    key={obj}
-                    className="flex items-center gap-3 border border-[var(--charcoal)]/15 px-3 py-3 font-mono text-[10px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/70"
+            <svg
+              role="img"
+              aria-label="Four candidate recommender objectives: immediate conversion, long-term value selected in crimson, basket size, and discovery."
+              viewBox="0 0 800 72"
+              className="mt-5 w-full"
+              fill="none"
+            >
+              <title>
+                Four candidate recommender objectives: immediate conversion,
+                long-term value selected in crimson, basket size, and discovery.
+              </title>
+              {[
+                { label: "IMMEDIATE CONVERSION", x: 8, mark: false },
+                { label: "LONG-TERM VALUE", x: 210, mark: true },
+                { label: "BASKET SIZE", x: 412, mark: false },
+                { label: "DISCOVERY", x: 614, mark: false },
+              ].map((obj) => (
+                <g key={obj.label}>
+                  <rect
+                    x={obj.x}
+                    y="14"
+                    width="178"
+                    height="44"
+                    fill={obj.mark ? "var(--crimson)" : "none"}
+                    fillOpacity={obj.mark ? "0.06" : undefined}
+                    stroke={obj.mark ? "var(--crimson)" : "var(--charcoal)"}
+                    strokeOpacity={obj.mark ? "1" : "0.28"}
+                    strokeWidth={obj.mark ? "1.5" : "1"}
+                  />
+                  <text
+                    {...SVG_LABEL}
+                    x={obj.x + 89}
+                    y="40"
+                    textAnchor="middle"
+                    fill={obj.mark ? "var(--crimson)" : "var(--charcoal)"}
+                    fillOpacity={obj.mark ? "1" : "0.7"}
                   >
-                    <span className="h-3 w-3 shrink-0 rounded-full border border-[var(--crimson)]" />
-                    {obj}
-                  </span>
-                ),
-              )}
-            </div>
+                    {obj.label}
+                  </text>
+                </g>
+              ))}
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
-            <div
-              aria-hidden
-              className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--crimson)]"
-            >
-              <span>filter bubbles</span>
-              <span>over-promote familiar items</span>
-              <span>suppress strategic new offerings</span>
-            </div>
-            <p className="mt-4 font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
+          <div className="mt-8 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
+            <p className="font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.5rem]">
               Poorly designed recommenders can create filter bubbles,
               over-promote familiar items, and suppress strategic new offerings.
             </p>
+            <div
+              aria-hidden
+              className="mt-4 flex flex-wrap gap-x-5 gap-y-2 font-serif text-[0.9375rem] italic tracking-normal text-[var(--crimson)]"
+            >
+              <span>filter bubbles</span>
+              <span>|</span>
+              <span>over-promote familiar items</span>
+              <span>|</span>
+              <span>suppress strategic new offerings</span>
+            </div>
           </div>
         </div>
       </Slide>
@@ -964,7 +2026,7 @@ export default function Week02Marketing() {
           Creative Systems and Content Operations
         </Head1>
 
-        <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_16rem] md:gap-14">
+        <div className="mt-8 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_22rem] md:gap-14">
           <div>
             <p className={BODY}>
               Generative tools can accelerate variant creation, copy testing,
@@ -972,65 +2034,207 @@ export default function Week02Marketing() {
             </p>
           </div>
           <div>
-            <div aria-hidden className="flex items-center gap-4">
-              <span className="block h-20 w-16 shrink-0 border-[1.5px] border-[var(--crimson)]" />
-              <span className="h-px w-6 bg-[var(--charcoal)]/25" />
-              <div className="grid grid-cols-4 gap-1.5">
-                {Array.from({ length: 12 }).map((_, i) => (
-                  <span
-                    key={i}
-                    className="block h-7 w-6 border border-[var(--charcoal)]/20"
-                    style={{ opacity: 1 - (i % 4) * 0.18 }}
+            <svg
+              role="img"
+              aria-label="Generative tools fanning out into variant creation, copy testing, image adaptation, and localization."
+              viewBox="0 0 400 124"
+              className="w-full"
+              fill="none"
+            >
+              <title>
+                Generative tools fanning out into variant creation, copy
+                testing, image adaptation, and localization.
+              </title>
+              <rect
+                x="12"
+                y="42"
+                width="132"
+                height="40"
+                fill="var(--crimson)"
+                fillOpacity="0.06"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                {...SVG_LABEL}
+                x="78"
+                y="60"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                GENERATIVE
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="78"
+                y="73"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                TOOLS
+              </text>
+              {[
+                { label: "VARIANT CREATION", y: 20 },
+                { label: "COPY TESTING", y: 48 },
+                { label: "IMAGE ADAPTATION", y: 76 },
+                { label: "LOCALIZATION", y: 104 },
+              ].map((item) => (
+                <g key={item.label}>
+                  <path
+                    d={`M144 62 C 180 62, 188 ${item.y}, 220 ${item.y}`}
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.32"
                   />
-                ))}
-              </div>
-            </div>
+                  <circle
+                    cx="220"
+                    cy={item.y}
+                    r="2.5"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.55"
+                  />
+                  <text
+                    {...SVG_LABEL}
+                    x="232"
+                    y={item.y + 3.5}
+                    fill="var(--charcoal)"
+                    fillOpacity="0.75"
+                  >
+                    {item.label}
+                  </text>
+                </g>
+              ))}
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-8">
-            <svg aria-hidden viewBox="0 0 800 164" className="w-full" fill="none">
-              <circle cx="100" cy="72" r="8" stroke="var(--charcoal)" strokeOpacity="0.4" />
-              <text {...SVG_LABEL} x="100" y="108" textAnchor="middle" fill="var(--charcoal)" fillOpacity="0.45">
-                ISOLATED
-              </text>
-              <text {...SVG_LABEL} x="100" y="122" textAnchor="middle" fill="var(--charcoal)" fillOpacity="0.45">
-                PRODUCTION TOOL
-              </text>
-              <path d="M250 6v152" stroke="var(--charcoal)" strokeOpacity="0.15" strokeDasharray="3 4" />
-              {[
-                { x: 380, y: 30, label: "RESPONSE DATA", ly: 16 },
-                { x: 680, y: 30, label: "BRAND GUIDELINES", ly: 16 },
-                { x: 520, y: 140, label: "WORKFLOW REVIEW", ly: 159 },
-              ].map((a) => (
-                <g key={a.label}>
-                  <path d={`M520 80L${a.x} ${a.y}`} stroke="var(--crimson)" strokeOpacity="0.45" />
-                  <rect x={a.x - 4} y={a.y - 4} width="8" height="8" fill="var(--charcoal)" fillOpacity="0.6" />
-                  <text {...SVG_LABEL} x={a.x} y={a.ly} textAnchor="middle" fill="var(--charcoal)" fillOpacity="0.6">
-                    {a.label}
-                  </text>
-                </g>
-              ))}
-              <circle cx="520" cy="80" r="8" fill="var(--crimson)" />
-              <text {...SVG_LABEL} x="540" y="104" fill="var(--crimson)">
-                CREATIVE GENERATION
-              </text>
-            </svg>
-            <p className={`${BODY} mt-6 max-w-4xl`}>
+          <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
+            <p className={`${BODY} max-w-4xl`}>
               The real value comes when creative generation is tied to response
               data, brand guidelines, and workflow review rather than treated as
               an isolated production tool.
             </p>
+            <svg
+              role="img"
+              aria-label="Isolated production tool on the left contrasted with creative generation tied to response data, brand guidelines, and workflow review on the right."
+              viewBox="0 0 800 116"
+              className="mt-5 w-full"
+              fill="none"
+            >
+              <title>
+                Isolated production tool on the left contrasted with creative
+                generation tied to response data, brand guidelines, and workflow
+                review on the right.
+              </title>
+              {/* Left: Isolated production tool */}
+              <rect
+                x="24"
+                y="34"
+                width="176"
+                height="48"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.25"
+                strokeDasharray="3 3"
+              />
+              <text
+                {...SVG_LABEL}
+                x="112"
+                y="55"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.45"
+              >
+                ISOLATED
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="112"
+                y="69"
+                textAnchor="middle"
+                fill="var(--charcoal)"
+                fillOpacity="0.45"
+              >
+                PRODUCTION TOOL
+              </text>
+
+              <path
+                d="M236 12V104"
+                stroke="var(--charcoal)"
+                strokeOpacity="0.14"
+              />
+
+              {/* Right: Creative generation tied to three anchors */}
+              <rect
+                x="268"
+                y="34"
+                width="184"
+                height="48"
+                fill="var(--crimson)"
+                fillOpacity="0.06"
+                stroke="var(--crimson)"
+                strokeWidth="1.5"
+              />
+              <text
+                {...SVG_LABEL}
+                x="360"
+                y="55"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                CREATIVE
+              </text>
+              <text
+                {...SVG_LABEL}
+                x="360"
+                y="69"
+                textAnchor="middle"
+                fill="var(--crimson)"
+              >
+                GENERATION
+              </text>
+
+              {[
+                { label: "RESPONSE DATA", y: 24 },
+                { label: "BRAND GUIDELINES", y: 58 },
+                { label: "WORKFLOW REVIEW", y: 92 },
+              ].map((anchor) => (
+                <g key={anchor.label}>
+                  <path
+                    d={`M452 58 C 496 58, 508 ${anchor.y}, 548 ${anchor.y}`}
+                    stroke="var(--crimson)"
+                    strokeOpacity="0.55"
+                    strokeWidth="1.25"
+                  />
+                  <rect
+                    x="548"
+                    y={anchor.y - 13}
+                    width="220"
+                    height="26"
+                    stroke="var(--charcoal)"
+                    strokeOpacity="0.32"
+                  />
+                  <text
+                    {...SVG_LABEL}
+                    x="658"
+                    y={anchor.y + 3.5}
+                    textAnchor="middle"
+                    fill="var(--charcoal)"
+                    fillOpacity="0.75"
+                  >
+                    {anchor.label}
+                  </text>
+                </g>
+              ))}
+            </svg>
           </div>
         </div>
 
         <div className="w-full">
-          <figure className="mt-14 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
+          <figure className="mt-8 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
             <div className={`${MICRO} text-[var(--champagne)]`}>
               Marketing leadership owns
             </div>
-            <blockquote className="mt-3 font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[2rem]">
+            <blockquote className="mt-2 font-serif text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
               Marketing leadership still owns taste, positioning discipline, and
               the decision about which ideas deserve distribution.
             </blockquote>
@@ -1084,7 +2288,7 @@ export default function Week02Marketing() {
                     <span className={`${MICRO} text-[var(--champagne)]`}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="mt-2 block font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/70">
+                    <span className="mt-2 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
                       {lever}
                     </span>
                   </div>
@@ -1113,7 +2317,7 @@ export default function Week02Marketing() {
                 Time →
               </div>
             </div>
-            <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               These systems are most useful when firms distinguish between
               short-term lift, long-term willingness to pay, and brand effects.
             </p>
@@ -1279,7 +2483,7 @@ export default function Week02Marketing() {
           <div className="mt-12 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
             <div
               aria-hidden
-              className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--charcoal-light)]/55"
+              className="flex flex-wrap gap-x-5 gap-y-2 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/55"
             >
               <span>frequency</span>
               <span>|</span>
@@ -1311,7 +2515,7 @@ export default function Week02Marketing() {
             </p>
             <div
               aria-hidden
-              className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/50"
+              className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/50"
             >
               <span>how much</span>
               <span>|</span>
@@ -1371,13 +2575,13 @@ export default function Week02Marketing() {
                   <span className={`${MICRO} text-[var(--champagne)]`}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="mt-1 block font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--charcoal)]">
+                  <span className="mt-1 block font-serif text-[1rem] font-medium tracking-normal text-[var(--charcoal)]">
                     {f}
                   </span>
                 </div>
               ))}
             </div>
-            <p className="mt-6 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className="mt-6 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               The right control model depends on market speed, data quality, and
               the cost of overspending on weak signals.
             </p>
@@ -1430,7 +2634,7 @@ export default function Week02Marketing() {
                   <span className={`${MICRO} text-[var(--champagne)]`}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="mt-1 block font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--charcoal)]">
+                  <span className="mt-1 block font-serif text-[1rem] font-medium tracking-normal text-[var(--charcoal)]">
                     {q}
                   </span>
                 </div>
@@ -1478,7 +2682,7 @@ export default function Week02Marketing() {
             {["cost", "channel constraints", "operational disruption"].map((b) => (
               <span
                 key={b}
-                className="border-l-2 border-[var(--crimson)] bg-[var(--charcoal)]/[0.03] px-3 py-3 font-mono text-[10px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/70"
+                className="border-l-2 border-[var(--crimson)] bg-[var(--charcoal)]/[0.03] px-3 py-3 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70"
               >
                 {b}
               </span>
@@ -1522,7 +2726,7 @@ export default function Week02Marketing() {
             <div className={`${MICRO} text-[var(--champagne)]`}>
               What managers need to ask
             </div>
-            <blockquote className="mt-3 font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <blockquote className="mt-3 font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               Managers do not need to master the statistics, but they do need to
               ask what assumptions make the estimated lift believable.
             </blockquote>
@@ -1594,7 +2798,7 @@ export default function Week02Marketing() {
               {["biases", "time horizons", "data requirements"].map((row) => (
                 <div
                   key={row}
-                  className="grid grid-cols-[1fr_2rem_1fr] items-center border-b border-[var(--charcoal)]/8 py-2 font-mono text-[10px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/60"
+                  className="grid grid-cols-[1fr_2rem_1fr] items-center border-b border-[var(--charcoal)]/8 py-2 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/60"
                 >
                   <span>{row}</span>
                   <span className="text-center text-[var(--crimson)]">≠</span>
@@ -1612,7 +2816,7 @@ export default function Week02Marketing() {
               <circle cx="102" cy="44" r="36" stroke="var(--charcoal)" strokeOpacity="0.35" />
               <circle cx="80" cy="72" r="36" stroke="var(--crimson)" strokeWidth="1.5" />
             </svg>
-            <p className="font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className="font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               Mature organizations use measurement as a portfolio of lenses
               rather than insisting that one model resolve every disagreement.
             </p>
@@ -1658,7 +2862,7 @@ export default function Week02Marketing() {
                     <span className={`${MICRO} text-[var(--champagne)]`}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="mt-2 block font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/70">
+                    <span className="mt-2 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
                       {d}
                     </span>
                   </div>
@@ -1706,7 +2910,7 @@ export default function Week02Marketing() {
                 {["clean event data", "identity resolution", "explicit business priorities"].map(
                   (f) => (
                     <div key={f} className="border-x border-b border-[var(--charcoal)]/15 px-3 pb-3 pt-6">
-                      <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/70">
+                      <span className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
                         {f}
                       </span>
                     </div>
@@ -1770,7 +2974,7 @@ export default function Week02Marketing() {
         <div className="mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[14rem_1fr] md:gap-12">
           <div>
             <div aria-hidden className="flex items-center gap-4">
-              <span className="border border-[var(--charcoal)]/15 px-3 py-4 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/35 [text-decoration-line:line-through]">
+              <span className="border border-[var(--charcoal)]/15 px-3 py-4 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/35 [text-decoration-line:line-through]">
                 CLV
               </span>
               <span className="text-[var(--crimson)]">→</span>
@@ -1839,7 +3043,7 @@ export default function Week02Marketing() {
             </p>
             <div
               aria-hidden
-              className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--charcoal-light)]/50"
+              className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/50"
             >
               <span>chat</span>
               <span>|</span>
@@ -1854,7 +3058,7 @@ export default function Week02Marketing() {
                 (job, i) => (
                   <div key={job} className={`flex ${i % 2 ? "justify-end" : "justify-start"}`}>
                     <span
-                      className={`rounded-[10px] border px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] ${
+                      className={`rounded-[10px] border px-3 py-2 font-serif text-[0.9375rem] italic tracking-normal ${
                         i % 2
                           ? "rounded-br-none border-[var(--crimson)]/40 text-[var(--crimson)]"
                           : "rounded-bl-none border-[var(--charcoal)]/20 text-[var(--charcoal-light)]/70"
@@ -1898,7 +3102,7 @@ export default function Week02Marketing() {
                   <div className={`${MICRO} ${t.head}`}>{t.tray}</div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {Array.from({ length: t.n }).map((_, i) => (
-                      <span key={i} className={`border px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] ${t.tone}`}>
+                      <span key={i} className={`border px-2 py-1 font-serif text-[0.9375rem] italic tracking-normal ${t.tone}`}>
                         intent
                       </span>
                     ))}
@@ -1906,7 +3110,7 @@ export default function Week02Marketing() {
                 </div>
               ))}
             </div>
-            <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               Full automation is rarely the objective. The better design question
               is which intents can be resolved safely and which require human
               judgment.
@@ -1944,7 +3148,7 @@ export default function Week02Marketing() {
               {["customer data", "identity linkage", "behavioral inference"].map((b) => (
                 <div
                   key={b}
-                  className="border border-b-0 border-[var(--charcoal)]/15 px-3 py-5 font-mono text-[10px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/70"
+                  className="border border-b-0 border-[var(--charcoal)]/15 px-3 py-5 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70"
                 >
                   {b}
                 </div>
@@ -1972,7 +3176,7 @@ export default function Week02Marketing() {
                   <span className="font-serif text-sm lowercase tracking-[0.1em] text-[var(--champagne)]">
                     {["i", "ii", "iii", "iv"][i]}
                   </span>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/65">
+                  <span className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/65">
                     {c}
                   </span>
                 </div>
@@ -1995,7 +3199,7 @@ export default function Week02Marketing() {
                 ),
               )}
             </div>
-            <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               Privacy-preserving measurement, data minimization, and transparent
               value exchange are increasingly strategic capabilities.
             </p>
@@ -2029,7 +3233,7 @@ export default function Week02Marketing() {
               (h) => (
                 <span
                   key={h}
-                  className="border border-[var(--crimson)]/40 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] text-[var(--crimson)]"
+                  className="border border-[var(--crimson)]/40 px-3 py-2 font-serif text-[0.9375rem] italic tracking-normal text-[var(--crimson)]"
                 >
                   {h}
                 </span>
@@ -2090,7 +3294,7 @@ export default function Week02Marketing() {
               {["objectives", "audience exclusions", "escalation", "review"].map((g, i) => (
                 <span
                   key={g}
-                  className={`px-4 py-3 font-mono text-[10px] uppercase tracking-[0.1em] text-[var(--charcoal-light)]/70 ${
+                  className={`px-4 py-3 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70 ${
                     i > 0 ? "md:border-l md:border-[var(--crimson)]/30" : ""
                   }`}
                 >
@@ -2098,7 +3302,7 @@ export default function Week02Marketing() {
                 </span>
               ))}
             </div>
-            <p className="mt-7 max-w-4xl font-serif text-[1.375rem] font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className="mt-7 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               Responsible marketing requires explicit guardrails on objectives,
               audience exclusions, escalation, and review.
             </p>
@@ -2271,7 +3475,7 @@ export default function Week02Marketing() {
                   <span className={`${MICRO} text-[var(--champagne)]`}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="mt-2 block font-mono text-[10px] uppercase tracking-[0.08em] text-[var(--charcoal-light)]/70">
+                  <span className="mt-2 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
                     {f}
                   </span>
                 </div>
@@ -2335,7 +3539,7 @@ export default function Week02Marketing() {
                 <span className={`${MICRO} block text-[var(--champagne)]`}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.08em] text-[var(--charcoal-light)]/70">
+                <span className="mt-1 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
                   {part}
                 </span>
               </li>
@@ -2354,7 +3558,7 @@ export default function Week02Marketing() {
                 <span className={`${MICRO} pt-3 text-[var(--crimson)]`}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="font-serif text-xl font-bold leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+                <p className="font-serif text-xl font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
                   {line}
                 </p>
               </div>

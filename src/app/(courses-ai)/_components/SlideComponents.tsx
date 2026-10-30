@@ -76,7 +76,7 @@ export function SlideDeck({
   background?: React.ReactNode;
 }) {
   return (
-    <div className="relative bg-[var(--background)] text-[var(--charcoal-light)] font-sans tracking-wide overflow-hidden min-h-screen selection:bg-[var(--crimson)] selection:text-[var(--surface)]">
+    <div className="relative bg-[var(--background)] text-[var(--charcoal-light)] font-sans overflow-hidden min-h-screen selection:bg-[var(--crimson)] selection:text-[var(--surface)]">
       {/* Navigation */}
       <Link
         href="/courses/ai-in-business"

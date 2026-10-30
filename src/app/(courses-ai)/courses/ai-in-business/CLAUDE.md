@@ -6,7 +6,7 @@ These rules cover every SVG figure in this course (all weeks, the landing page, 
 
 - **Palette** (defined in `(courses-ai)/globals.css`): ink `--charcoal` #1A1A1D, body `--charcoal-light` #2D2D32, the one accent `--crimson` #8B0000, a quiet secondary `--champagne` #8C7349, the ground `--surface` / `--background` (white).
 - **Look:** hairlines instead of boxes, flat fills, no shadows or gradients. Crimson marks one thing per figure.
-- **Type:** the `MICRO` small-caps label (`font-sans text-[10px] font-semibold uppercase tracking-[0.22em]`) for every eyebrow, axis tick and numeral. `var(--font-serif)` for display.
+- **Type:** the `MICRO` academic rubric label (`font-serif text-[0.9375rem] italic font-normal tracking-normal [font-variant-numeric:lining-nums_tabular-nums]`) for every eyebrow, axis tick and numeral. `var(--font-serif)` (`EB Garamond`) for display and body prose, paired with `var(--font-sans)` (`Source Sans 3`).
 - **Where figures live:** inline in each week's `page.tsx`, next to the slide they illustrate. There is no `visuals.tsx`.
 - **Words:** figures carry only words that already appear in the slide's sentences.
 - **Headings:** `(courses-ai)/globals.css` sets h1: h6 outside any cascade layer, so Tailwind utilities on headings lose. Set heading type through CSS-module classes.

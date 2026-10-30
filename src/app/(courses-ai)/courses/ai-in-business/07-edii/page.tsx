@@ -110,7 +110,7 @@ function Ledger({
             {gain ? "+" : "−"}
           </span>
           <span
-            className={`font-mono text-[11px] uppercase tracking-[0.1em] ${tone}`}
+            className={`font-serif text-[0.9375rem] italic tracking-normal ${tone}`}
           >
             {item}
           </span>
@@ -138,7 +138,7 @@ export default function Week07Edii() {
         </span>
 
         <div>
-          <h1 className="max-w-5xl font-serif text-[clamp(2.75rem,9vw,6.5rem)] font-black leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
+          <h1 className="max-w-5xl font-serif text-[clamp(2.75rem,9vw,6.5rem)] font-semibold leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
             <span
               className={`${MICRO} mb-10 flex items-center gap-4 font-sans tracking-[0.22em] text-[var(--champagne)]`}
             >
