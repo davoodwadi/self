@@ -13,7 +13,6 @@ week: "01-introduction"
 ## Why Business Leaders Must Understand AI
 - Artificial intelligence has moved from research labs into core business operations.
 - Modern companies process massive volumes of customer, transaction, and operational data every second.
-- Leaders do not need to write raw code. Leaders do need to understand what AI can and cannot do well.
 - The primary strategic goal is knowing which business decisions can be improved with machine assistance.
 
 ## Business as a Series of Decisions [exercise]

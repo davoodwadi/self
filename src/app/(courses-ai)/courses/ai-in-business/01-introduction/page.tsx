@@ -274,20 +274,6 @@ export default function Week01Introduction() {
           </div>
         </div>
 
-        <div className="mt-10 grid w-full max-w-5xl gap-8 md:grid-cols-2 md:gap-0">
-          <div className="md:pr-12">
-            <p className="mt-3 font-serif text-xl leading-[1.5] [text-decoration-thickness:1px] md:text-[1.5rem]">
-              Leaders do not need to write raw code.
-            </p>
-          </div>
-
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-            <p className="mt-3 font-serif text-xl leading-[1.5] text-[var(--charcoal)] md:text-[1.5rem]">
-              Leaders do need to understand what AI can and cannot do well.
-            </p>
-          </div>
-        </div>
-
         <div className="w-full">
           <figure className="mt-10 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
             <div className={`${MICRO} text-[var(--champagne)]`}>
