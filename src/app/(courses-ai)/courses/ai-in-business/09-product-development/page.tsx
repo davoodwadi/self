@@ -53,7 +53,7 @@ import {
 const quiz = createCourseQuizLookup(quizzes as CourseQuiz[]);
 
 /**
- * A bullet written as "Label: sentence". The label is set as a crimson italic
+ * A bullet written as "Label: sentence". The label is set as a crimson
  * kicker on its own line, inside the same paragraph so it still reads as one.
  */
 function Labelled({
@@ -67,114 +67,11 @@ function Labelled({
 }) {
   return (
     <p className={className}>
-      <span className="mb-1.5 block font-serif text-[1.125rem] italic leading-snug text-[var(--crimson)] md:text-[1.3125rem]">
+      <span className="mb-1.5 block font-sans text-[1.125rem] leading-snug text-[var(--crimson)] md:text-[1.3125rem]">
         {label}
       </span>{" "}
       {children}
     </p>
-  );
-}
-
-/**
- * Title-slide ground: a rounded product form, turned toward the viewer, drawn
- * as bare wireframe on its left that fills in to a shaded solid on its right.
- * It drifts very slowly. Texture only. Nothing to read.
- */
-function Wireframe() {
-  const N = 10;
-  const yaw = (36 * Math.PI) / 180;
-  const pitch = (26 * Math.PI) / 180;
-  const light = [-0.35, 0.8, 0.48];
-  const dims = [1.3, 0.46, 0.9];
-
-  // A cube's face grids pushed out onto a rounded box (the unit ball of the
-  // 4-norm), so the mesh has no poles. Then turned toward the viewer.
-  const vertex = (face: number, i: number, j: number) => {
-    const axis = face % 3;
-    const c = [0, 0, 0];
-    c[axis] = face < 3 ? 1 : -1;
-    c[(axis + 1) % 3] = -1 + (2 * i) / N;
-    c[(axis + 2) % 3] = -1 + (2 * j) / N;
-    const norm = (c[0] ** 4 + c[1] ** 4 + c[2] ** 4) ** 0.25;
-    const [x0, y0, z0] = c.map((k, a) => (k / norm) * dims[a]);
-    const z1 = -x0 * Math.sin(yaw) + z0 * Math.cos(yaw);
-    return [
-      x0 * Math.cos(yaw) + z0 * Math.sin(yaw),
-      y0 * Math.cos(pitch) - z1 * Math.sin(pitch),
-      y0 * Math.sin(pitch) + z1 * Math.cos(pitch),
-    ];
-  };
-  const sx = (p: number[]) => 600 + p[0] * 180;
-  const sy = (p: number[]) => 380 - p[1] * 180;
-  const pt = (p: number[]) => `${sx(p).toFixed(1)} ${sy(p).toFixed(1)}`;
-
-  const faces: { z: number; d: string; fill: number; stroke: number }[] = [];
-  for (let face = 0; face < 6; face++) {
-    for (let i = 0; i < N; i++) {
-      for (let j = 0; j < N; j++) {
-        const a = vertex(face, i, j);
-        const b = vertex(face, i + 1, j);
-        const c = vertex(face, i + 1, j + 1);
-        const d = vertex(face, i, j + 1);
-        const p = [c[0] - a[0], c[1] - a[1], c[2] - a[2]];
-        const q = [d[0] - b[0], d[1] - b[1], d[2] - b[2]];
-        let n = [
-          p[1] * q[2] - p[2] * q[1],
-          p[2] * q[0] - p[0] * q[2],
-          p[0] * q[1] - p[1] * q[0],
-        ];
-        const len = Math.hypot(n[0], n[1], n[2]);
-        const m = [0, 1, 2].map((k) => (a[k] + b[k] + c[k] + d[k]) / 4);
-        n = n.map((k) => k / len);
-        if (n[0] * m[0] + n[1] * m[1] + n[2] * m[2] < 0) n = n.map((k) => -k);
-        if (n[2] <= 0) continue;
-
-        const along = Math.min(1, Math.max(0, (sx(m) - 380) / 440));
-        const t = along * along * (3 - 2 * along);
-        const lambert = Math.max(
-          0,
-          n[0] * light[0] + n[1] * light[1] + n[2] * light[2],
-        );
-        faces.push({
-          z: m[2],
-          d: `M${pt(a)}L${pt(b)}L${pt(c)}L${pt(d)}Z`,
-          fill: t * (0.012 + 0.07 * (1 - lambert)),
-          stroke: 0.12 * (1 - 0.8 * t),
-        });
-      }
-    }
-  }
-  faces.sort((f, g) => f.z - g.z);
-
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_right,transparent_20%,black_65%)]"
-    >
-      <style>
-        {
-          "@keyframes w9-drift{from{transform:translate3d(0,0,0) rotate(0deg)}to{transform:translate3d(-2%,1.2%,0) rotate(-1.2deg)}}"
-        }
-      </style>
-      <svg
-        viewBox="0 0 1000 720"
-        preserveAspectRatio="xMidYMid slice"
-        className="h-full w-full motion-safe:[animation:w9-drift_52s_ease-in-out_infinite_alternate]"
-      >
-        {faces.map((f, k) => (
-          <path
-            key={k}
-            d={f.d}
-            fill="var(--charcoal)"
-            fillOpacity={f.fill.toFixed(3)}
-            stroke="var(--charcoal)"
-            strokeOpacity={f.stroke.toFixed(3)}
-            strokeWidth="0.8"
-            strokeLinejoin="round"
-          />
-        ))}
-      </svg>
-    </div>
   );
 }
 
@@ -188,30 +85,26 @@ export default function Week09ProductDevelopment() {
           solid. The arrival term of the subtitle marked.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
-        <Wireframe />
 
         <div className="relative">
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
-            <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 09
           </div>
         </div>
 
         <div className="relative">
-          <h1 className="mt-10 max-w-4xl font-serif text-[clamp(2.25rem,6.2vw,4.75rem)] font-semibold leading-[0.95] tracking-[-0.035em] text-[var(--charcoal)]">
+          <h1 className="mt-4 max-w-4xl font-sans text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.015em] text-[var(--charcoal)]">
             The Evolution of Product Development
           </h1>
         </div>
 
         <div className="relative w-full">
-          <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
-          <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
+          <div className="mt-6 h-px w-full bg-[var(--charcoal)]/15" />
+          <p className="mt-6 max-w-3xl font-sans text-lg font-normal leading-relaxed text-[var(--charcoal-light)] md:text-[1.375rem]">
             From Computer-Aided Design to{" "}
-            <span className="text-[var(--crimson)]">
-              Computer-Augmented Invention
-            </span>
+            Computer-Augmented Invention
           </p>
         </div>
 
@@ -388,7 +281,7 @@ export default function Week09ProductDevelopment() {
             </svg>
             <Labelled
               label="From Simulation to Emulation:"
-              className="mt-6 font-serif text-lg leading-[1.55] text-[var(--charcoal)]"
+              className="mt-6 font-sans text-lg leading-[1.55] text-[var(--charcoal)]"
             >
               Dynamic, self-learning models.
             </Labelled>
@@ -414,7 +307,7 @@ export default function Week09ProductDevelopment() {
             </figure>
             <Labelled
               label="From Additive to Mainstream Generative Engineering:"
-              className="mt-6 font-serif text-lg leading-[1.55] text-[var(--charcoal)]"
+              className="mt-6 font-sans text-lg leading-[1.55] text-[var(--charcoal)]"
             >
               Beyond 3D printing.
             </Labelled>
@@ -446,7 +339,7 @@ export default function Week09ProductDevelopment() {
             </svg>
             <Labelled
               label="The Rise of Autonomous Compliance:"
-              className="mt-6 font-serif text-lg leading-[1.55] text-[var(--charcoal)]"
+              className="mt-6 font-sans text-lg leading-[1.55] text-[var(--charcoal)]"
             >
               Automated, code-level governance.
             </Labelled>
@@ -844,10 +737,10 @@ export default function Week09ProductDevelopment() {
               {[530, 590, 650, 710].map((x) => (
                 <path key={x} d={`M${x} 58V66`} stroke="var(--charcoal)" strokeOpacity="0.25" />
               ))}
-              <text x="470" y="96" textAnchor="middle" fontSize="18" fontFamily="var(--font-serif), serif" fill="var(--charcoal)" fillOpacity="0.6">
+              <text x="470" y="96" textAnchor="middle" fontSize="18" fontFamily="var(--font-sans), serif" fill="var(--charcoal)" fillOpacity="0.6">
                 −
               </text>
-              <text x="770" y="96" textAnchor="middle" fontSize="18" fontFamily="var(--font-serif), serif" fill="var(--charcoal)" fillOpacity="0.6">
+              <text x="770" y="96" textAnchor="middle" fontSize="18" fontFamily="var(--font-sans), serif" fill="var(--charcoal)" fillOpacity="0.6">
                 +
               </text>
               <path d="M683 40H697L690 52Z" fill="var(--crimson)" />
@@ -1388,7 +1281,7 @@ export default function Week09ProductDevelopment() {
             >
               <path d="M0.5 6.5H70L84.5 21V97.5H0.5Z" stroke="var(--charcoal)" strokeOpacity="0.6" />
               <path d="M70 6.5V21H84.5" stroke="var(--charcoal)" strokeOpacity="0.4" />
-              <text x="42.5" y="60" textAnchor="middle" fontSize="16" fontFamily="var(--font-serif), serif" fontWeight="700" fill="var(--crimson)">
+              <text x="42.5" y="60" textAnchor="middle" fontSize="16" fontFamily="var(--font-sans), serif" fontWeight="700" fill="var(--crimson)">
                 GDPR
               </text>
               <text {...SVG_LABEL} x="112" y="56" fill="var(--charcoal)" fillOpacity="0.65">
@@ -1877,7 +1770,7 @@ export default function Week09ProductDevelopment() {
               <svg viewBox="0 0 400 118" className="w-full" fill="none">
                 <ellipse cx="50" cy="20" rx="40" ry="10" stroke="var(--charcoal)" strokeOpacity="0.6" />
                 <path d="M10 20V84A40 10 0 0 0 90 84V20" stroke="var(--charcoal)" strokeOpacity="0.6" />
-                <text x="50" y="62" textAnchor="middle" fontSize="16" fontFamily="var(--font-serif), serif" fontWeight="700" fill="var(--crimson)">
+                <text x="50" y="62" textAnchor="middle" fontSize="16" fontFamily="var(--font-sans), serif" fontWeight="700" fill="var(--crimson)">
                   LCA
                 </text>
                 <text {...SVG_LABEL} x="10" y="112" fill="var(--charcoal)" fillOpacity="0.65">

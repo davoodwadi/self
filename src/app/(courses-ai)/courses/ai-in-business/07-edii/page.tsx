@@ -66,7 +66,7 @@ function Unfold({
       {words.map((word, i) => (
         <div key={word} className="bg-[var(--background)] px-4 pb-4 pt-3">
           <div
-            className={`font-serif text-[2.75rem] font-black leading-none tracking-[-0.04em] md:text-[3.75rem] ${
+            className={`font-sans text-[2.75rem] font-black leading-none tracking-[-0.04em] md:text-[3.75rem] ${
               i === mark ? "text-[var(--crimson)]" : "text-[var(--charcoal)]"
             }`}
           >
@@ -110,7 +110,7 @@ function Ledger({
             {gain ? "+" : "−"}
           </span>
           <span
-            className={`font-serif text-[0.9375rem] italic tracking-normal ${tone}`}
+            className={`font-sans text-[0.9375rem] tracking-normal ${tone}`}
           >
             {item}
           </span>
@@ -130,28 +130,21 @@ export default function Week07Edii() {
           out under it.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -right-6 top-1/2 -translate-y-1/2 select-none font-serif text-[36vw] font-black leading-none text-[var(--charcoal)]/[0.035] md:text-[28vw]"
-        >
-          07
-        </span>
 
         <div>
-          <h1 className="max-w-5xl font-serif text-[clamp(2.75rem,9vw,6.5rem)] font-semibold leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
+          <h1 className="mt-4 max-w-4xl font-sans text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.015em] text-[var(--charcoal)]">
             <span
-              className={`${MICRO} mb-10 flex items-center gap-4 font-sans tracking-[0.22em] text-[var(--champagne)]`}
+              className={`${MICRO} mb-3 block font-sans tracking-normal text-[var(--champagne)]`}
             >
-              <span aria-hidden className="h-px w-10 bg-[var(--crimson)]" />
               Week 7:
             </span>{" "}
-            <span className="text-[var(--crimson)]">EDII</span> in AI
+            EDII in AI
           </h1>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
-          <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
+          <div className="mt-6 h-px w-full bg-[var(--charcoal)]/15" />
+          <p className="mt-6 max-w-3xl font-sans text-lg font-normal leading-relaxed text-[var(--charcoal-light)] md:text-[1.375rem]">
             Equity, Diversity, Inclusion, and Indigeneity in AI systems
           </p>
         </div>
@@ -871,7 +864,7 @@ export default function Week07Edii() {
                 y="52"
                 textAnchor="middle"
                 fontSize="38"
-                fontFamily="var(--font-serif), serif"
+                fontFamily="var(--font-sans), serif"
                 fontWeight="700"
                 fill="var(--crimson)"
               >
@@ -903,18 +896,11 @@ export default function Week07Edii() {
         className="relative overflow-hidden"
         quizData={quiz["close"]}
       >
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -bottom-10 right-0 select-none font-serif text-[24vw] font-black leading-none text-[var(--charcoal)]/[0.03]"
-        >
-          07
-        </span>
 
         <div>
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
-            <span className="h-px w-10 bg-[var(--crimson)]" />
             End of Week 07
           </div>
         </div>
@@ -923,11 +909,11 @@ export default function Week07Edii() {
           <p
             aria-hidden
             // Headings take their family from globals.css, which Tailwind's
-            // font-serif does not match. Borrow it so this echoes the h1.
-            style={{ fontFamily: "var(--font-serif), serif" }}
+            // font-sans does not match. Borrow it so this echoes the h1.
+            style={{ fontFamily: "var(--font-sans), serif" }}
             className="mt-10 text-[clamp(2.5rem,7vw,5rem)] font-black leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]"
           >
-            <span className="text-[var(--crimson)]">EDII</span> in AI
+            EDII in AI
           </p>
         </div>
 

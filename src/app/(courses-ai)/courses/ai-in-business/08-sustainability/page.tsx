@@ -64,73 +64,10 @@ function Question({
     <div className="w-full">
       <div className="mt-14 grid w-full max-w-4xl gap-3 border-t border-[var(--charcoal)]/20 pt-6 md:grid-cols-[7rem_1fr] md:gap-8">
         <div className={`${MICRO} pt-2 text-[var(--champagne)]`}>Question</div>
-        <p className="font-serif text-lg italic leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
+        <p className="font-sans text-lg leading-relaxed text-[var(--charcoal)] md:text-[1.375rem]">
           {children}
         </p>
       </div>
-    </div>
-  );
-}
-
-/**
- * Title-slide ground: a faint net of nodes, each joined by a soft curve to its
- * nearest neighbours, drifting very slowly. Texture only. Nothing to read.
- */
-function Mesh() {
-  const nodes = Array.from({ length: 42 }, (_, i) => [
-    hash(i + 801) * 1000,
-    hash(i + 907) * 720,
-  ]);
-  const seen = new Set<string>();
-  const curves: string[] = [];
-  nodes.forEach(([ax, ay], i) => {
-    nodes
-      .map(([bx, by], j) => [j, (ax - bx) ** 2 + (ay - by) ** 2] as const)
-      .filter(([j]) => j !== i)
-      .sort((p, q) => p[1] - q[1])
-      .slice(0, 3)
-      .forEach(([j]) => {
-        const key = i < j ? `${i}-${j}` : `${j}-${i}`;
-        if (seen.has(key)) return;
-        seen.add(key);
-        const [bx, by] = nodes[j];
-        const bend = (hash(i * 53 + j) - 0.5) * 0.6;
-        const cx = (ax + bx) / 2 - (by - ay) * bend;
-        const cy = (ay + by) / 2 + (bx - ax) * bend;
-        curves.push(
-          `M${ax.toFixed(1)} ${ay.toFixed(1)}Q${cx.toFixed(1)} ${cy.toFixed(1)} ${bx.toFixed(1)} ${by.toFixed(1)}`,
-        );
-      });
-  });
-
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_right,transparent_15%,black_70%)]"
-    >
-      <style>
-        {
-          "@keyframes w8-drift{from{transform:translate3d(0,0,0) rotate(0deg)}to{transform:translate3d(-2.5%,1.5%,0) rotate(1.5deg)}}"
-        }
-      </style>
-      <svg
-        viewBox="0 0 1000 720"
-        preserveAspectRatio="xMidYMid slice"
-        className="h-full w-full motion-safe:[animation:w8-drift_48s_ease-in-out_infinite_alternate]"
-        fill="none"
-      >
-        <path d={curves.join("")} stroke="var(--charcoal)" strokeOpacity="0.08" />
-        {nodes.map(([x, y], i) => (
-          <circle
-            key={i}
-            cx={x.toFixed(1)}
-            cy={y.toFixed(1)}
-            r="2"
-            fill="var(--charcoal)"
-            fillOpacity="0.13"
-          />
-        ))}
-      </svg>
     </div>
   );
 }
@@ -204,29 +141,25 @@ export default function Week08Sustainability() {
           footprints carried across to climate solutions.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
-        <Mesh />
 
         <div className="relative">
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
-            <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 08
           </div>
         </div>
 
         <div className="relative">
-          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.25rem,6.2vw,4.75rem)] font-semibold leading-[0.95] tracking-[-0.035em] text-[var(--charcoal)]">
+          <h1 className="mt-4 max-w-4xl font-sans text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.015em] text-[var(--charcoal)]">
             The Dual Nature of Artificial Intelligence:{" "}
-            <span className="mt-5 block text-[0.6em] font-normal italic leading-[1.1] tracking-[-0.02em] text-[var(--crimson)]">
-              Environmental Costs and Sustainable Solutions
-            </span>
+            Environmental Costs and Sustainable Solutions
           </h1>
         </div>
 
         <div className="relative w-full">
-          <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
-          <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
+          <div className="mt-6 h-px w-full bg-[var(--charcoal)]/15" />
+          <p className="mt-6 max-w-3xl font-sans text-lg font-normal leading-relaxed text-[var(--charcoal-light)] md:text-[1.375rem]">
             Exploring the complex relationship between AI and environmental
             sustainability
           </p>
@@ -235,7 +168,7 @@ export default function Week08Sustainability() {
         <div className="relative w-full">
           <div className="mt-10 grid max-w-4xl gap-8 md:grid-cols-2 md:gap-12">
             <div>
-              <p className="font-serif text-lg leading-relaxed text-[var(--charcoal)] md:text-xl">
+              <p className="font-sans text-lg leading-relaxed text-[var(--charcoal)] md:text-xl">
                 From carbon footprints to climate solutions
               </p>
               <div aria-hidden className="mt-4 flex items-center gap-3">
@@ -250,7 +183,7 @@ export default function Week08Sustainability() {
               </div>
             </div>
             <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
-              <p className="font-serif text-lg leading-relaxed text-[var(--charcoal)] md:text-xl">
+              <p className="font-sans text-lg leading-relaxed text-[var(--charcoal)] md:text-xl">
                 Strategies for a sustainable AI ecosystem
               </p>
             </div>
@@ -1042,7 +975,7 @@ export default function Week08Sustainability() {
                     y="80"
                     textAnchor="middle"
                     fontSize="17"
-                    fontFamily="var(--font-serif), serif"
+                    fontFamily="var(--font-sans), serif"
                     fontWeight="700"
                     fill="var(--charcoal)"
                   >
@@ -1986,7 +1919,7 @@ export default function Week08Sustainability() {
             {["Intel Loihi 2", "BrainChip Akida"].map((name) => (
               <div key={name} className="bg-[var(--background)] px-5 py-5">
                 <span
-                  style={{ fontFamily: "var(--font-serif), serif" }}
+                  style={{ fontFamily: "var(--font-sans), serif" }}
                   className="text-[1.5rem] font-bold leading-none tracking-[-0.02em] text-[var(--charcoal)] md:text-[2rem]"
                 >
                   {name}
@@ -2426,7 +2359,7 @@ export default function Week08Sustainability() {
             <div aria-hidden className="border-t-2 border-[var(--charcoal)] pt-4">
               <div className={`${MICRO} text-[var(--champagne)]`}>ISO/IEC</div>
               <div
-                style={{ fontFamily: "var(--font-serif), serif" }}
+                style={{ fontFamily: "var(--font-sans), serif" }}
                 className="mt-2 text-[3rem] font-black leading-none tracking-[-0.03em] text-[var(--charcoal)] md:text-[4rem]"
               >
                 42001
@@ -2445,7 +2378,7 @@ export default function Week08Sustainability() {
                 ISO/IEC TR
               </div>
               <div
-                style={{ fontFamily: "var(--font-serif), serif" }}
+                style={{ fontFamily: "var(--font-sans), serif" }}
                 className="mt-2 text-[3rem] font-black leading-none tracking-[-0.03em] text-[var(--crimson)] md:text-[4rem]"
               >
                 20226
@@ -2495,7 +2428,7 @@ export default function Week08Sustainability() {
             {["CodeCarbon", "Green Algorithms"].map((name) => (
               <div key={name} className="bg-[var(--background)] px-5 py-5">
                 <span
-                  style={{ fontFamily: "var(--font-serif), serif" }}
+                  style={{ fontFamily: "var(--font-sans), serif" }}
                   className="text-[1.5rem] font-bold leading-none tracking-[-0.02em] text-[var(--charcoal)] md:text-[2rem]"
                 >
                   {name}
@@ -2529,10 +2462,10 @@ export default function Week08Sustainability() {
               <text {...SVG_LABEL} x="130" y="74" textAnchor="middle" fill="var(--charcoal)" fillOpacity="0.75">
                 UNIT OF WORK
               </text>
-              <text x="256" y="59" fontSize="24" fontFamily="var(--font-serif), serif" fill="var(--charcoal)" fillOpacity="0.55">
+              <text x="256" y="59" fontSize="24" fontFamily="var(--font-sans), serif" fill="var(--charcoal)" fillOpacity="0.55">
                 =
               </text>
-              <text x="292" y="61" fontSize="28" fontFamily="var(--font-serif), serif" fontWeight="700" fill="var(--crimson)">
+              <text x="292" y="61" fontSize="28" fontFamily="var(--font-sans), serif" fontWeight="700" fill="var(--crimson)">
                 CCI
               </text>
             </svg>
@@ -2688,7 +2621,7 @@ export default function Week08Sustainability() {
                 <path d="M146 46H186" stroke="var(--charcoal)" strokeOpacity="0.45" />
                 <path d={headRight(194, 46)} stroke="var(--charcoal)" strokeOpacity="0.6" />
                 <path d="M204.5 6.5H258L272 20V86H204.5Z" stroke="var(--charcoal)" strokeOpacity="0.6" />
-                <text x="238" y="54" textAnchor="middle" fontSize="16" fontFamily="var(--font-serif), serif" fontWeight="700" fill="var(--crimson)">
+                <text x="238" y="54" textAnchor="middle" fontSize="16" fontFamily="var(--font-sans), serif" fontWeight="700" fill="var(--crimson)">
                   LCA
                 </text>
               </svg>
@@ -2918,7 +2851,7 @@ export default function Week08Sustainability() {
                 >
                   {s.site}
                 </a>
-                <span className="col-start-2 font-serif text-lg text-[var(--charcoal-light)] md:col-start-auto">
+                <span className="col-start-2 font-sans text-lg text-[var(--charcoal-light)] md:col-start-auto">
                   <span className="text-[var(--charcoal)]/30">-</span>{" "}
                   {s.label}
                 </span>

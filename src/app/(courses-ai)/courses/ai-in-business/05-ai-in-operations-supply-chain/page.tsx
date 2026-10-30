@@ -53,32 +53,25 @@ export default function Week05OperationsSupplyChain() {
           three qualities of the supply networks being built.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -right-6 top-1/2 -translate-y-1/2 select-none font-serif text-[36vw] font-black leading-none text-[var(--charcoal)]/[0.035] md:text-[28vw]"
-        >
-          05
-        </span>
 
         <div>
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
-            <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 05
           </div>
         </div>
 
         <div>
-          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-semibold leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
+          <h1 className="mt-4 max-w-4xl font-sans text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.015em] text-[var(--charcoal)]">
             AI in Operations and{" "}
-            <span className="text-[var(--crimson)]">Supply Chain</span>
+            Supply Chain
           </h1>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
-          <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
+          <div className="mt-6 h-px w-full bg-[var(--charcoal)]/15" />
+          <p className="mt-6 max-w-3xl font-sans text-lg font-normal leading-relaxed text-[var(--charcoal-light)] md:text-[1.375rem]">
             Moving from reactive logistics to predictive network optimization.
           </p>
           <div aria-hidden className="mt-6 max-w-3xl">
@@ -91,7 +84,7 @@ export default function Week05OperationsSupplyChain() {
         </div>
 
         <div className="w-full">
-          <p className="mt-10 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
+          <p className="mt-10 max-w-3xl font-sans text-lg font-normal leading-relaxed text-[var(--charcoal-light)] md:text-[1.375rem]">
             Building resilient, efficient, and autonomous supply networks.
           </p>
           <div
@@ -2301,7 +2294,7 @@ export default function Week05OperationsSupplyChain() {
                   </div>
                 ))}
               </div>
-              <span className="font-serif text-3xl font-light text-[var(--crimson)]">
+              <span className="font-sans text-3xl font-light text-[var(--crimson)]">
                 →
               </span>
               <div className="space-y-2 border-l border-[var(--crimson)]/40 pl-4">
@@ -3757,7 +3750,7 @@ export default function Week05OperationsSupplyChain() {
                     i > 0 ? "border-l border-[var(--charcoal)]/15" : ""
                   }`}
                 >
-                  <span className="font-serif text-3xl text-[var(--crimson)]">
+                  <span className="font-sans text-3xl text-[var(--crimson)]">
                     {m.glyph}
                   </span>
                   <span className={`${MICRO} text-[var(--charcoal-light)]/70`}>
@@ -5121,13 +5114,13 @@ export default function Week05OperationsSupplyChain() {
               aria-hidden
               className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-3"
             >
-              <span className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--crimson)]">
+              <span className="font-sans text-[0.9375rem] tracking-normal text-[var(--crimson)]">
                 change management
               </span>
-              <span className="font-serif text-4xl font-light text-[var(--charcoal)]/35">
+              <span className="font-sans text-4xl font-light text-[var(--charcoal)]/35">
                 &gt;
               </span>
-              <span className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/45">
+              <span className="font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/45">
                 underlying technology
               </span>
             </div>
@@ -5146,12 +5139,6 @@ export default function Week05OperationsSupplyChain() {
         align="left"
         className="relative overflow-hidden"
       >
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -bottom-10 right-0 select-none font-serif text-[24vw] font-black leading-none text-[var(--charcoal)]/[0.03]"
-        >
-          05
-        </span>
 
         <Head1 eyebrow="What to carry forward">
           Conclusion: The Autonomous Supply Chain
@@ -5169,7 +5156,7 @@ export default function Week05OperationsSupplyChain() {
                   {pad(i + 1)}
                 </span>
                 <div>
-                  <p className="font-serif text-xl font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+                  <p className="font-sans text-xl font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
                     {line}
                   </p>
                   {i === 0 && (
@@ -5188,7 +5175,7 @@ export default function Week05OperationsSupplyChain() {
                             >
                               {pad(k + 1)}
                             </span>
-                            <span className="mt-1 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
+                            <span className="mt-1 block font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/70">
                               {step}
                             </span>
                           </li>

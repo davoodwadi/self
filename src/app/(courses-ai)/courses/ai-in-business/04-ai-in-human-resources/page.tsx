@@ -54,32 +54,25 @@ export default function Week04HumanResources() {
           intelligent systems reshape, set in a ruled row.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -right-6 top-1/2 -translate-y-1/2 select-none font-serif text-[36vw] font-black leading-none text-[var(--charcoal)]/[0.035] md:text-[28vw]"
-        >
-          04
-        </span>
 
         <div>
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
-            <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 04 in Applications of AI in Business
           </div>
         </div>
 
         <div>
-          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-semibold leading-[0.92] tracking-[-0.035em] text-[var(--charcoal)]">
+          <h1 className="mt-4 max-w-4xl font-sans text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.015em] text-[var(--charcoal)]">
             Applications of AI in{" "}
-            <span className="text-[var(--crimson)]">Human Resources</span>
+            Human Resources
           </h1>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
-          <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
+          <div className="mt-6 h-px w-full bg-[var(--charcoal)]/15" />
+          <p className="mt-6 max-w-3xl font-sans text-lg font-normal leading-relaxed text-[var(--charcoal-light)] md:text-[1.375rem]">
             How intelligent systems reshape talent acquisition, workforce
             planning, development, governance, and employee experience
           </p>
@@ -547,7 +540,7 @@ export default function Week04HumanResources() {
                     {pad(i + 1)}
                   </span>
                   <span
-                    className={`mt-2 block font-serif text-[2.25rem] font-black leading-none tracking-[-0.03em] ${
+                    className={`mt-2 block font-sans text-[2.25rem] font-black leading-none tracking-[-0.03em] ${
                       i === 2
                         ? "text-[var(--crimson)]"
                         : "text-[var(--charcoal)]"
@@ -684,16 +677,16 @@ export default function Week04HumanResources() {
                 {["definitions", "data lineage", "context"].map((d) => (
                   <div
                     key={d}
-                    className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--crimson)]"
+                    className="font-sans text-[0.9375rem] tracking-normal text-[var(--crimson)]"
                   >
                     {d}
                   </div>
                 ))}
               </div>
-              <span className="font-serif text-3xl font-light text-[var(--charcoal)]/35">
+              <span className="font-sans text-3xl font-light text-[var(--charcoal)]/35">
                 &gt;
               </span>
-              <span className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/45">
+              <span className="font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/45">
                 model complexity
               </span>
             </div>
@@ -747,7 +740,7 @@ export default function Week04HumanResources() {
                   <span className={`${MICRO} block text-[var(--champagne)]`}>
                     {pad(i + 1)}
                   </span>
-                  <span className="mt-2 block font-serif text-2xl font-bold leading-tight tracking-[-0.015em] text-[var(--charcoal)]">
+                  <span className="mt-2 block font-sans text-2xl font-bold leading-tight tracking-[-0.015em] text-[var(--charcoal)]">
                     {row.method}
                   </span>
                 </div>
@@ -882,7 +875,7 @@ export default function Week04HumanResources() {
             </p>
             <ul
               aria-hidden
-              className="mt-5 grid gap-3 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70 md:grid-cols-3"
+              className="mt-5 grid gap-3 font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/70 md:grid-cols-3"
             >
               {[
                 "evidence is incomplete",
@@ -1351,7 +1344,7 @@ export default function Week04HumanResources() {
                   <span className={`${TAG} text-[var(--charcoal-light)]/70`}>
                     {q}
                   </span>
-                  <span className="font-serif text-lg text-[var(--crimson)]">
+                  <span className="font-sans text-lg text-[var(--crimson)]">
                     ?
                   </span>
                 </li>
@@ -1779,7 +1772,7 @@ export default function Week04HumanResources() {
         <div className="w-full">
           <aside className="mt-6 max-w-4xl border border-[var(--charcoal)]/12 p-5 md:p-6">
             <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-2 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+            <p className="mt-2 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
               Should an employer accept a materially faster recruiting process
               if the scoring logic remains only partially explainable to
               candidates, managers, and legal reviewers?
@@ -2119,7 +2112,7 @@ export default function Week04HumanResources() {
             </div>
             <ul
               aria-hidden
-              className="mt-2.5 grid gap-3 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70 sm:grid-cols-3"
+              className="mt-2.5 grid gap-3 font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/70 sm:grid-cols-3"
             >
               {["current", "relevant", "not silently punitive"].map((c) => (
                 <li
@@ -2137,7 +2130,7 @@ export default function Week04HumanResources() {
         <div className="w-full">
           <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
             <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-1.5 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+            <p className="mt-1.5 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
               Should firms rely on inferred skills data to shape promotion and
               mobility opportunities when many high-value capabilities are still
               informal, relational, or poorly documented?
@@ -2441,7 +2434,7 @@ export default function Week04HumanResources() {
         <div className="w-full">
           <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
             <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-1.5 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+            <p className="mt-1.5 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
               When does predictive retention become a strategic advantage, and
               when does it become an intrusive practice that changes the
               employment relationship for the worse?
@@ -3255,7 +3248,7 @@ export default function Week04HumanResources() {
         <div className="w-full">
           <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
             <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-1.5 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+            <p className="mt-1.5 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
               Should firms use algorithmic recommendations in promotion and
               compensation cycles if doing so improves consistency but may
               narrow managerial discretion and contextual judgment?
@@ -3413,7 +3406,7 @@ export default function Week04HumanResources() {
         <div className="w-full">
           <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
             <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-1.5 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+            <p className="mt-1.5 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
               Where is the boundary between legitimate operational analytics and
               unacceptable employee surveillance in knowledge-intensive work?
             </p>
@@ -3735,7 +3728,7 @@ export default function Week04HumanResources() {
               >
                 representation gaps
               </span>
-              <span className="font-serif text-2xl text-[var(--charcoal)]/40">
+              <span className="font-sans text-2xl text-[var(--charcoal)]/40">
                 ≠
               </span>
               {["causality", "the right intervention"].map((c) => (
@@ -4044,7 +4037,7 @@ export default function Week04HumanResources() {
         <div className="w-full">
           <aside className="mt-6 max-w-4xl border border-[var(--charcoal)]/12 p-5 md:p-6">
             <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-2 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+            <p className="mt-2 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
               Which categories of workforce data should remain off-limits for
               predictive modeling even if they would improve forecast accuracy
               or managerial control?
@@ -4128,7 +4121,7 @@ export default function Week04HumanResources() {
                   >
                     {q}
                   </span>
-                  <span className="text-right font-serif text-lg text-[var(--crimson)]">
+                  <span className="text-right font-sans text-lg text-[var(--crimson)]">
                     ?
                   </span>
                 </li>
@@ -4301,7 +4294,7 @@ export default function Week04HumanResources() {
         <div className="w-full">
           <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
             <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-1.5 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
+            <p className="mt-1.5 font-sans text-base font-normal leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
               Which HR AI capabilities should be treated as strategic internal
               assets, and which are mature enough to buy as standardized
               infrastructure?
@@ -4713,12 +4706,6 @@ export default function Week04HumanResources() {
         align="left"
         className="relative overflow-hidden"
       >
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -bottom-10 right-0 select-none font-serif text-[24vw] font-black leading-none text-[var(--charcoal)]/[0.03]"
-        >
-          04
-        </span>
 
         <Head1 eyebrow="What to carry forward">
           Conclusion: HR as a Strategic Intelligence Function
@@ -4735,7 +4722,7 @@ export default function Week04HumanResources() {
                 <span className={`${MICRO} pt-2 text-[var(--crimson)]`}>
                   {pad(i + 1)}
                 </span>
-                <p className="font-serif text-xl font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+                <p className="font-sans text-xl font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
                   {line}
                 </p>
               </div>
@@ -4757,7 +4744,7 @@ export default function Week04HumanResources() {
                   <span className={`${MICRO} block text-[var(--champagne)]`}>
                     {pad(i + 1)}
                   </span>
-                  <span className="mt-1 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
+                  <span className="mt-1 block font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/70">
                     {area}
                   </span>
                 </li>

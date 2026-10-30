@@ -55,18 +55,18 @@
 }
 
 :root {
-  /* Colors */ /* Cream/Off-White */
+  /* Colors */
   --surface: #ffffff;
   --crimson: #8b0000;
   --crimson-light: #a52a2a;
   --charcoal: #1a1a1d; /* Primary text color (Headings) */
   --charcoal-light: #2d2d32; /* Body text color */
-  --gold: #d4af37;
-  --champagne: #8c7349;
+  --gold: #55555a;
+  --champagne: #55555a;
 
   /* Fonts */
-  --font-serif: var(--font-merriweather), Georgia, Cambria, "Times New Roman", serif;
-  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-open-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
 
   /* Spacing */
   --space-sm: 0.5rem;
@@ -157,7 +157,7 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-serif), serif;
+    font-family: var(--font-sans), sans-serif;
     color: var(--charcoal);
   }
   h1 {

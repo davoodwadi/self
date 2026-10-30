@@ -48,22 +48,20 @@ export default function Week02Marketing() {
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
-            <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 02 in Applications of AI in Business
           </div>
         </div>
 
         <div>
-          <h1 className="mt-6 max-w-5xl font-serif text-[clamp(2.25rem,5.5vw,4.5rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-[var(--charcoal)]">
+          <h1 className="mt-4 max-w-4xl font-sans text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.015em] text-[var(--charcoal)]">
             Applications of AI in Marketing and
-            <br />
-            <span className="text-[var(--crimson)]">Consumer Behavior</span>
+             Consumer Behavior
           </h1>
         </div>
 
         <div className="w-full">
           <div className="mt-7 h-px w-full bg-[var(--charcoal)]/15" />
-          <p className="mt-5 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.625rem]">
+          <p className="mt-5 max-w-3xl font-sans text-lg font-normal leading-relaxed text-[var(--charcoal-light)] md:text-[1.375rem]">
             Framing marketing as a coordinated system of sensing, deciding,
             acting, and learning
           </p>
@@ -454,7 +452,7 @@ export default function Week02Marketing() {
             <div className={`${MICRO} text-[var(--champagne)]`}>
               The strategic question
             </div>
-            <blockquote className="mt-2 font-serif text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+            <blockquote className="mt-2 font-sans text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
               The strategic question is not where to &quot;use AI&quot; in
               isolation, but which customer and budget decisions should be
               machine-assisted.
@@ -849,7 +847,7 @@ export default function Week02Marketing() {
 
         <div className="w-full">
           <div className="mt-8 grid w-full max-w-5xl items-center gap-8 border-l border-[var(--charcoal)]/25 pl-6 md:grid-cols-[1fr_22rem] md:gap-12">
-            <p className="font-serif text-lg leading-[1.6] text-[var(--charcoal-light)] md:text-[1.25rem]">
+            <p className="font-sans text-lg leading-[1.6] text-[var(--charcoal-light)] md:text-[1.25rem]">
               Insight quality still depends on sampling logic, data provenance,
               and the difference between what consumers say and what they
               actually do.
@@ -1065,7 +1063,7 @@ export default function Week02Marketing() {
                   <span className={`${MICRO} text-[var(--champagne)]`}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="mt-1 block font-serif text-[1rem] font-medium tracking-normal text-[var(--charcoal)]">
+                  <span className="mt-1 block font-sans text-[1rem] font-medium tracking-normal text-[var(--charcoal)]">
                     {test}
                   </span>
                 </div>
@@ -1076,7 +1074,7 @@ export default function Week02Marketing() {
 
         <div className="w-full">
           <div className="mt-8 grid w-full max-w-5xl items-center gap-8 border-t border-[var(--charcoal)]/10 pt-6 md:grid-cols-[1fr_22rem] md:gap-12">
-            <p className="font-serif text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.625rem]">
+            <p className="font-sans text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.625rem]">
               More segments are not always better. Excessive granularity can
               raise complexity without improving decisions.
             </p>
@@ -1323,7 +1321,7 @@ export default function Week02Marketing() {
         <div className="w-full">
           <div className="mt-8 max-w-4xl border border-[var(--crimson)]/45 p-6 md:p-8">
             <div className={`${MICRO} text-[var(--crimson)]`}>Test it</div>
-            <p className="mt-3 font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.5rem]">
+            <p className="mt-3 font-sans text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.5rem]">
               Managers should test whether algorithmic targeting improves
               business value or merely shifts exposure toward already active
               customers.
@@ -1484,7 +1482,7 @@ export default function Week02Marketing() {
 
         <div className="w-full">
           <div className="mt-8 w-full max-w-5xl border-t border-[var(--charcoal)]/10 pt-6">
-            <p className="max-w-4xl font-serif text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+            <p className="max-w-4xl font-sans text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
               Positioning remains a strategic choice. Models can detect
               patterns, but leadership must decide what the brand should stand
               for.
@@ -1993,13 +1991,13 @@ export default function Week02Marketing() {
 
         <div className="w-full">
           <div className="mt-8 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
-            <p className="font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.5rem]">
+            <p className="font-sans text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.5rem]">
               Poorly designed recommenders can create filter bubbles,
               over-promote familiar items, and suppress strategic new offerings.
             </p>
             <div
               aria-hidden
-              className="mt-4 flex flex-wrap gap-x-5 gap-y-2 font-serif text-[0.9375rem] italic tracking-normal text-[var(--crimson)]"
+              className="mt-4 flex flex-wrap gap-x-5 gap-y-2 font-sans text-[0.9375rem] tracking-normal text-[var(--crimson)]"
             >
               <span>filter bubbles</span>
               <span>|</span>
@@ -2234,7 +2232,7 @@ export default function Week02Marketing() {
             <div className={`${MICRO} text-[var(--champagne)]`}>
               Marketing leadership owns
             </div>
-            <blockquote className="mt-2 font-serif text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+            <blockquote className="mt-2 font-sans text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
               Marketing leadership still owns taste, positioning discipline, and
               the decision about which ideas deserve distribution.
             </blockquote>
@@ -2288,7 +2286,7 @@ export default function Week02Marketing() {
                     <span className={`${MICRO} text-[var(--champagne)]`}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="mt-2 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
+                    <span className="mt-2 block font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/70">
                       {lever}
                     </span>
                   </div>
@@ -2317,7 +2315,7 @@ export default function Week02Marketing() {
                 Time →
               </div>
             </div>
-            <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className="mt-8 max-w-4xl font-sans text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               These systems are most useful when firms distinguish between
               short-term lift, long-term willingness to pay, and brand effects.
             </p>
@@ -2387,7 +2385,7 @@ export default function Week02Marketing() {
             <div className={`${MICRO} text-[var(--crimson)]`}>
               The managerial challenge
             </div>
-            <p className="mt-4 font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
+            <p className="mt-4 font-sans text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
               The managerial challenge is to separate economically rational price
               adaptation from practices that damage trust or invite regulatory
               scrutiny.
@@ -2469,11 +2467,11 @@ export default function Week02Marketing() {
             <div aria-hidden className="space-y-4">
               <div className="flex items-center justify-between border-b border-[var(--charcoal)]/10 pb-3">
                 <span className={`${MICRO} text-[var(--charcoal-light)]/55`}>Local metric</span>
-                <span className="font-serif text-2xl text-[var(--charcoal)]/50">↑</span>
+                <span className="font-sans text-2xl text-[var(--charcoal)]/50">↑</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className={`${MICRO} text-[var(--crimson)]`}>Total performance</span>
-                <span className="font-serif text-2xl text-[var(--crimson)]">↓</span>
+                <span className="font-sans text-2xl text-[var(--crimson)]">↓</span>
               </div>
             </div>
           </div>
@@ -2483,7 +2481,7 @@ export default function Week02Marketing() {
           <div className="mt-12 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
             <div
               aria-hidden
-              className="flex flex-wrap gap-x-5 gap-y-2 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/55"
+              className="flex flex-wrap gap-x-5 gap-y-2 font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/55"
             >
               <span>frequency</span>
               <span>|</span>
@@ -2491,7 +2489,7 @@ export default function Week02Marketing() {
               <span>|</span>
               <span>diminishing returns</span>
             </div>
-            <p className="mt-4 font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
+            <p className="mt-4 font-sans text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
               Cross-channel orchestration requires governance over frequency,
               exclusions, and diminishing returns.
             </p>
@@ -2515,7 +2513,7 @@ export default function Week02Marketing() {
             </p>
             <div
               aria-hidden
-              className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/50"
+              className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/50"
             >
               <span>how much</span>
               <span>|</span>
@@ -2575,13 +2573,13 @@ export default function Week02Marketing() {
                   <span className={`${MICRO} text-[var(--champagne)]`}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="mt-1 block font-serif text-[1rem] font-medium tracking-normal text-[var(--charcoal)]">
+                  <span className="mt-1 block font-sans text-[1rem] font-medium tracking-normal text-[var(--charcoal)]">
                     {f}
                   </span>
                 </div>
               ))}
             </div>
-            <p className="mt-6 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className="mt-6 max-w-4xl font-sans text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               The right control model depends on market speed, data quality, and
               the cost of overspending on weak signals.
             </p>
@@ -2634,7 +2632,7 @@ export default function Week02Marketing() {
                   <span className={`${MICRO} text-[var(--champagne)]`}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="mt-1 block font-serif text-[1rem] font-medium tracking-normal text-[var(--charcoal)]">
+                  <span className="mt-1 block font-sans text-[1rem] font-medium tracking-normal text-[var(--charcoal)]">
                     {q}
                   </span>
                 </div>
@@ -2682,7 +2680,7 @@ export default function Week02Marketing() {
             {["cost", "channel constraints", "operational disruption"].map((b) => (
               <span
                 key={b}
-                className="border-l-2 border-[var(--crimson)] bg-[var(--charcoal)]/[0.03] px-3 py-3 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70"
+                className="border-l-2 border-[var(--crimson)] bg-[var(--charcoal)]/[0.03] px-3 py-3 font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/70"
               >
                 {b}
               </span>
@@ -2726,7 +2724,7 @@ export default function Week02Marketing() {
             <div className={`${MICRO} text-[var(--champagne)]`}>
               What managers need to ask
             </div>
-            <blockquote className="mt-3 font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <blockquote className="mt-3 font-sans text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               Managers do not need to master the statistics, but they do need to
               ask what assumptions make the estimated lift believable.
             </blockquote>
@@ -2798,7 +2796,7 @@ export default function Week02Marketing() {
               {["biases", "time horizons", "data requirements"].map((row) => (
                 <div
                   key={row}
-                  className="grid grid-cols-[1fr_2rem_1fr] items-center border-b border-[var(--charcoal)]/8 py-2 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/60"
+                  className="grid grid-cols-[1fr_2rem_1fr] items-center border-b border-[var(--charcoal)]/8 py-2 font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/60"
                 >
                   <span>{row}</span>
                   <span className="text-center text-[var(--crimson)]">≠</span>
@@ -2816,7 +2814,7 @@ export default function Week02Marketing() {
               <circle cx="102" cy="44" r="36" stroke="var(--charcoal)" strokeOpacity="0.35" />
               <circle cx="80" cy="72" r="36" stroke="var(--crimson)" strokeWidth="1.5" />
             </svg>
-            <p className="font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className="font-sans text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               Mature organizations use measurement as a portfolio of lenses
               rather than insisting that one model resolve every disagreement.
             </p>
@@ -2862,7 +2860,7 @@ export default function Week02Marketing() {
                     <span className={`${MICRO} text-[var(--champagne)]`}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="mt-2 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
+                    <span className="mt-2 block font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/70">
                       {d}
                     </span>
                   </div>
@@ -2910,7 +2908,7 @@ export default function Week02Marketing() {
                 {["clean event data", "identity resolution", "explicit business priorities"].map(
                   (f) => (
                     <div key={f} className="border-x border-b border-[var(--charcoal)]/15 px-3 pb-3 pt-6">
-                      <span className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
+                      <span className="font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/70">
                         {f}
                       </span>
                     </div>
@@ -2974,7 +2972,7 @@ export default function Week02Marketing() {
         <div className="mt-12 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-[14rem_1fr] md:gap-12">
           <div>
             <div aria-hidden className="flex items-center gap-4">
-              <span className="border border-[var(--charcoal)]/15 px-3 py-4 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/35 [text-decoration-line:line-through]">
+              <span className="border border-[var(--charcoal)]/15 px-3 py-4 font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/35 [text-decoration-line:line-through]">
                 CLV
               </span>
               <span className="text-[var(--crimson)]">→</span>
@@ -2997,7 +2995,7 @@ export default function Week02Marketing() {
           <div className="mt-12 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_20rem] md:gap-12">
             <div className="border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
               <div className={`${MICRO} text-[var(--crimson)]`}>The managerial danger</div>
-              <p className="mt-3 font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
+              <p className="mt-3 font-sans text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
                 The managerial danger is treating predicted value as destiny and
                 underinvesting in customers whose future potential can still be
                 shaped.
@@ -3043,7 +3041,7 @@ export default function Week02Marketing() {
             </p>
             <div
               aria-hidden
-              className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/50"
+              className="mt-5 flex flex-wrap gap-x-3 gap-y-2 font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/50"
             >
               <span>chat</span>
               <span>|</span>
@@ -3058,7 +3056,7 @@ export default function Week02Marketing() {
                 (job, i) => (
                   <div key={job} className={`flex ${i % 2 ? "justify-end" : "justify-start"}`}>
                     <span
-                      className={`rounded-[10px] border px-3 py-2 font-serif text-[0.9375rem] italic tracking-normal ${
+                      className={`rounded-[10px] border px-3 py-2 font-sans text-[0.9375rem] tracking-normal ${
                         i % 2
                           ? "rounded-br-none border-[var(--crimson)]/40 text-[var(--crimson)]"
                           : "rounded-bl-none border-[var(--charcoal)]/20 text-[var(--charcoal-light)]/70"
@@ -3102,7 +3100,7 @@ export default function Week02Marketing() {
                   <div className={`${MICRO} ${t.head}`}>{t.tray}</div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {Array.from({ length: t.n }).map((_, i) => (
-                      <span key={i} className={`border px-2 py-1 font-serif text-[0.9375rem] italic tracking-normal ${t.tone}`}>
+                      <span key={i} className={`border px-2 py-1 font-sans text-[0.9375rem] tracking-normal ${t.tone}`}>
                         intent
                       </span>
                     ))}
@@ -3110,7 +3108,7 @@ export default function Week02Marketing() {
                 </div>
               ))}
             </div>
-            <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className="mt-8 max-w-4xl font-sans text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               Full automation is rarely the objective. The better design question
               is which intents can be resolved safely and which require human
               judgment.
@@ -3148,7 +3146,7 @@ export default function Week02Marketing() {
               {["customer data", "identity linkage", "behavioral inference"].map((b) => (
                 <div
                   key={b}
-                  className="border border-b-0 border-[var(--charcoal)]/15 px-3 py-5 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70"
+                  className="border border-b-0 border-[var(--charcoal)]/15 px-3 py-5 font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/70"
                 >
                   {b}
                 </div>
@@ -3173,10 +3171,10 @@ export default function Week02Marketing() {
                   key={c}
                   className={`flex items-baseline gap-3 py-3 ${i > 0 ? "md:border-l md:border-[var(--charcoal)]/12 md:pl-5" : ""}`}
                 >
-                  <span className="font-serif text-sm lowercase tracking-[0.1em] text-[var(--champagne)]">
+                  <span className="font-sans text-sm lowercase tracking-[0.1em] text-[var(--champagne)]">
                     {["i", "ii", "iii", "iv"][i]}
                   </span>
-                  <span className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/65">
+                  <span className="font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/65">
                     {c}
                   </span>
                 </div>
@@ -3191,7 +3189,7 @@ export default function Week02Marketing() {
               {["Privacy-preserving measurement", "Data minimization", "Transparent value exchange"].map(
                 (cap, i) => (
                   <div key={cap} className="border-t-2 border-[var(--crimson)]/50 pt-4">
-                    <div className="font-serif text-[1.75rem] font-black leading-none text-[var(--charcoal)]/15">
+                    <div className="font-sans text-[1.75rem] font-black leading-none text-[var(--charcoal)]/15">
                       {["I", "II", "III"][i]}
                     </div>
                     <div className={`${MICRO} mt-3 text-[var(--charcoal-light)]/60`}>{cap}</div>
@@ -3199,7 +3197,7 @@ export default function Week02Marketing() {
                 ),
               )}
             </div>
-            <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className="mt-8 max-w-4xl font-sans text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               Privacy-preserving measurement, data minimization, and transparent
               value exchange are increasingly strategic capabilities.
             </p>
@@ -3233,7 +3231,7 @@ export default function Week02Marketing() {
               (h) => (
                 <span
                   key={h}
-                  className="border border-[var(--crimson)]/40 px-3 py-2 font-serif text-[0.9375rem] italic tracking-normal text-[var(--crimson)]"
+                  className="border border-[var(--crimson)]/40 px-3 py-2 font-sans text-[0.9375rem] tracking-normal text-[var(--crimson)]"
                 >
                   {h}
                 </span>
@@ -3294,7 +3292,7 @@ export default function Week02Marketing() {
               {["objectives", "audience exclusions", "escalation", "review"].map((g, i) => (
                 <span
                   key={g}
-                  className={`px-4 py-3 font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70 ${
+                  className={`px-4 py-3 font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/70 ${
                     i > 0 ? "md:border-l md:border-[var(--crimson)]/30" : ""
                   }`}
                 >
@@ -3302,7 +3300,7 @@ export default function Week02Marketing() {
                 </span>
               ))}
             </div>
-            <p className="mt-7 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className="mt-7 max-w-4xl font-sans text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
               Responsible marketing requires explicit guardrails on objectives,
               audience exclusions, escalation, and review.
             </p>
@@ -3475,7 +3473,7 @@ export default function Week02Marketing() {
                   <span className={`${MICRO} text-[var(--champagne)]`}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="mt-2 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
+                  <span className="mt-2 block font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/70">
                     {f}
                   </span>
                 </div>
@@ -3494,7 +3492,7 @@ export default function Week02Marketing() {
                 ↓ Transparency | portability | bargaining power
               </span>
             </div>
-            <p className="mt-6 max-w-4xl font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
+            <p className="mt-6 max-w-4xl font-sans text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
               Vendor dependence can accelerate adoption, but it may also reduce
               transparency, portability, and bargaining power.
             </p>
@@ -3513,12 +3511,6 @@ export default function Week02Marketing() {
           colophon.
       ================================================================== */}
       <Slide id="synthesis" border align="left" className="relative overflow-hidden">
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -bottom-10 right-0 select-none font-serif text-[24vw] font-black leading-none text-[var(--charcoal)]/[0.03]"
-        >
-          02
-        </span>
 
         <Head1 eyebrow="What to carry forward">Synthesis and Managerial Action</Head1>
 
@@ -3539,7 +3531,7 @@ export default function Week02Marketing() {
                 <span className={`${MICRO} block text-[var(--champagne)]`}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="mt-1 block font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/70">
+                <span className="mt-1 block font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/70">
                   {part}
                 </span>
               </li>
@@ -3558,7 +3550,7 @@ export default function Week02Marketing() {
                 <span className={`${MICRO} pt-3 text-[var(--crimson)]`}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="font-serif text-xl font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+                <p className="font-sans text-xl font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
                   {line}
                 </p>
               </div>

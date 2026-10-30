@@ -57,21 +57,20 @@ export default function Week06BusinessStrategy() {
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
-            <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 06
           </div>
         </div>
 
         <div>
-          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,7.5vw,5.75rem)] font-semibold leading-[1.04] tracking-[-0.035em] text-[var(--charcoal)]">
+          <h1 className="mt-4 max-w-4xl font-sans text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.015em] text-[var(--charcoal)]">
             AI in Business{" "}
-            <span className="text-[var(--crimson)]">Strategy</span>
+            Strategy
           </h1>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
-          <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
+          <div className="mt-6 h-px w-full bg-[var(--charcoal)]/15" />
+          <p className="mt-6 max-w-3xl font-sans text-lg font-normal leading-relaxed text-[var(--charcoal-light)] md:text-[1.375rem]">
             Integrating Artificial Intelligence into Competitive Advantage
           </p>
           <div
@@ -90,7 +89,7 @@ export default function Week06BusinessStrategy() {
         </div>
 
         <div className="w-full">
-          <p className="mt-10 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
+          <p className="mt-10 max-w-3xl font-sans text-lg font-normal leading-relaxed text-[var(--charcoal-light)] md:text-[1.375rem]">
             Moving beyond technological implementation to strategic alignment
           </p>
           <div aria-hidden className="mt-6 max-w-3xl">
@@ -4344,13 +4343,13 @@ export default function Week06BusinessStrategy() {
               aria-hidden
               className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-3"
             >
-              <span className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--crimson)]">
+              <span className="font-sans text-[0.9375rem] tracking-normal text-[var(--crimson)]">
                 upskilling the existing workforce
               </span>
-              <span className="font-serif text-4xl font-light text-[var(--charcoal)]/35">
+              <span className="font-sans text-4xl font-light text-[var(--charcoal)]/35">
                 =
               </span>
-              <span className="font-serif text-[0.9375rem] italic tracking-normal text-[var(--charcoal-light)]/60">
+              <span className="font-sans text-[0.9375rem] tracking-normal text-[var(--charcoal-light)]/60">
                 hiring new experts
               </span>
             </div>
@@ -6250,7 +6249,7 @@ export default function Week06BusinessStrategy() {
                   {pad(i + 1)}
                 </span>
                 <div>
-                  <p className="font-serif text-xl font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+                  <p className="font-sans text-xl font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
                     {line}
                   </p>
                   {i === 1 && (

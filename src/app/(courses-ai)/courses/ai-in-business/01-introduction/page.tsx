@@ -8,7 +8,16 @@ import {
 import { ScrollProgress } from "@/app/(courses-ai)/_components/Interactive";
 import { createCourseQuizLookup, type CourseQuiz } from "@/lib/course-quiz";
 import quizzes from "./quizzes.json";
-import { MICRO } from "../_visuals/kit";
+import {
+  BODY,
+  Discussion1,
+  DISPLAY,
+  Head1,
+  LEAD,
+  MICRO,
+  ModulePlate1,
+  SVG_LABEL,
+} from "../_visuals/kit";
 
 // ============================================================================
 // WEEK 01: INTRODUCTION TO AI IN BUSINESS
@@ -45,31 +54,25 @@ export default function Week01Introduction() {
           beneath a full-measure rule.
       ================================================================== */}
       <Slide id="title" align="left" className="relative overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-0 top-0 hidden h-full w-px bg-[var(--charcoal)]/8 lg:block"
-        />
 
         <div>
           <div
             className={`${MICRO} flex items-center gap-4 text-[var(--champagne)]`}
           >
-            <span className="h-px w-10 bg-[var(--crimson)]" />
             Week 01: Course Overview and Foundations
           </div>
         </div>
 
         <div>
-          <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.75rem,9vw,6.5rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-[var(--charcoal)]">
+          <h1 className="mt-4 max-w-4xl font-sans text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.015em] text-[var(--charcoal)]">
             Applications of
-            <br />
-            AI in <span className="text-[var(--crimson)]">Business</span>
+             AI in Business
           </h1>
         </div>
 
         <div className="w-full">
-          <div className="mt-12 h-px w-full bg-[var(--charcoal)]/15" />
-          <p className="mt-6 max-w-3xl font-serif text-xl font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-[1.75rem]">
+          <div className="mt-6 h-px w-full bg-[var(--charcoal)]/15" />
+          <p className="mt-6 max-w-3xl font-sans text-lg font-normal leading-relaxed text-[var(--charcoal-light)] md:text-[1.375rem]">
             Understanding how modern intelligent systems create value, change
             decisions, and require human leadership
           </p>
@@ -95,17 +98,14 @@ export default function Week01Introduction() {
           right, and the strategic goal set apart as a signed verdict.
       ================================================================== */}
       <Slide id="why-leaders" border align="left">
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>Opening</div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
-            Why Business Leaders Must Understand AI
-          </h2>
-        </div>
+        <Head1 eyebrow="Opening">
+          Why Business Leaders Must Understand AI
+        </Head1>
 
         <div className="w-full">
           <div className="mt-8 grid max-w-5xl gap-x-14 gap-y-8 border-t border-[var(--charcoal)]/10 pt-7 md:grid-cols-2">
             <div className="flex flex-col justify-between">
-              <p className="font-serif text-lg leading-[1.6] text-[var(--charcoal)] md:text-[1.3125rem]">
+              <p className={BODY}>
                 Artificial intelligence has moved from research labs into core
                 business operations.
               </p>
@@ -129,29 +129,21 @@ export default function Week01Introduction() {
                   strokeOpacity="0.28"
                   strokeDasharray="3 3"
                 />
-                <text
+                <text {...SVG_LABEL}
                   x="78"
                   y="41"
                   fill="var(--charcoal)"
                   fillOpacity="0.5"
-                  fontSize="9"
-                  letterSpacing="0.4"
                   textAnchor="middle"
-                  fontFamily="var(--font-serif), Georgia, serif"
-                  fontWeight="600"
                 >
                   RESEARCH
                 </text>
-                <text
+                <text {...SVG_LABEL}
                   x="78"
                   y="55"
                   fill="var(--charcoal)"
                   fillOpacity="0.5"
-                  fontSize="9"
-                  letterSpacing="0.4"
                   textAnchor="middle"
-                  fontFamily="var(--font-serif), Georgia, serif"
-                  fontWeight="600"
                 >
                   LABS
                 </text>
@@ -175,27 +167,19 @@ export default function Week01Introduction() {
                   stroke="var(--crimson)"
                   strokeWidth="1.5"
                 />
-                <text
+                <text {...SVG_LABEL}
                   x="310"
                   y="41"
                   fill="var(--crimson)"
-                  fontSize="9"
-                  letterSpacing="0.4"
                   textAnchor="middle"
-                  fontFamily="var(--font-serif), Georgia, serif"
-                  fontWeight="600"
                 >
                   CORE BUSINESS
                 </text>
-                <text
+                <text {...SVG_LABEL}
                   x="310"
                   y="55"
                   fill="var(--crimson)"
-                  fontSize="9"
-                  letterSpacing="0.4"
                   textAnchor="middle"
-                  fontFamily="var(--font-serif), Georgia, serif"
-                  fontWeight="600"
                 >
                   OPERATIONS
                 </text>
@@ -203,7 +187,7 @@ export default function Week01Introduction() {
             </div>
 
             <div className="flex flex-col justify-between">
-              <p className="font-serif text-lg leading-[1.6] text-[var(--charcoal-light)] md:text-[1.3125rem]">
+              <p className={`${BODY} !text-[var(--charcoal-light)]`}>
                 Modern companies process massive volumes of customer,
                 transaction, and operational data every second.
               </p>
@@ -224,15 +208,11 @@ export default function Week01Introduction() {
                   { label: "OPERATIONAL", y: 62, seed: 3 },
                 ].map((lane) => (
                   <g key={lane.label}>
-                    <text
+                    <text {...SVG_LABEL}
                       x="4"
                       y={lane.y + 3}
                       fill="var(--charcoal)"
                       fillOpacity="0.6"
-                      fontSize="9"
-                      letterSpacing="0.4"
-                      fontFamily="var(--font-serif), Georgia, serif"
-                      fontWeight="600"
                     >
                       {lane.label}
                     </text>
@@ -257,15 +237,11 @@ export default function Week01Introduction() {
                     })}
                   </g>
                 ))}
-                <text
+                <text {...SVG_LABEL}
                   x="396"
                   y="82"
                   fill="var(--champagne)"
-                  fontSize="9"
-                  letterSpacing="0.4"
                   textAnchor="end"
-                  fontFamily="var(--font-serif), Georgia, serif"
-                  fontWeight="600"
                 >
                   EVERY SECOND →
                 </text>
@@ -279,7 +255,7 @@ export default function Week01Introduction() {
             <div className={`${MICRO} text-[var(--champagne)]`}>
               The strategic goal
             </div>
-            <blockquote className="mt-2 font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <blockquote className={`${DISPLAY} mt-2`}>
               The primary strategic goal is knowing which business decisions can
               be improved with machine assistance.
             </blockquote>
@@ -299,13 +275,10 @@ export default function Week01Introduction() {
         quizData={quiz["business-decisions"]}
       >
         <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            The unit of value
-          </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <Head1 eyebrow="The unit of value">
             Business as a Series of Decisions
-          </h2>
-          <p className="mt-7 max-w-3xl font-serif text-xl leading-[1.6] text-[var(--charcoal-light)] md:text-[1.5rem]">
+          </Head1>
+          <p className={`${LEAD} mt-7 max-w-3xl !text-[var(--charcoal-light)]`}>
             Every business runs on repeated decisions made under uncertainty.
           </p>
         </div>
@@ -338,15 +311,11 @@ export default function Week01Introduction() {
                     Three audience segments where one target audience is
                     selected in crimson and matched to a message.
                   </title>
-                  <text
+                  <text {...SVG_LABEL}
                     x="8"
                     y="16"
                     fill="var(--charcoal)"
                     fillOpacity="0.55"
-                    fontSize="10"
-                    letterSpacing="0.4"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     AUDIENCE
                   </text>
@@ -375,14 +344,10 @@ export default function Week01Introduction() {
                       ))}
                     </g>
                   ))}
-                  <text
+                  <text {...SVG_LABEL}
                     x="74"
                     y="61"
                     fill="var(--crimson)"
-                    fontSize="10"
-                    letterSpacing="0.4"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     TARGET
                   </text>
@@ -406,15 +371,11 @@ export default function Week01Introduction() {
                     stroke="var(--crimson)"
                     strokeWidth="1.5"
                   />
-                  <text
+                  <text {...SVG_LABEL}
                     x="319"
                     y="54"
                     fill="var(--crimson)"
-                    fontSize="10"
-                    letterSpacing="0.4"
                     textAnchor="middle"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     MESSAGE
                   </text>
@@ -450,16 +411,12 @@ export default function Week01Introduction() {
                     stroke="var(--charcoal)"
                     strokeOpacity="0.35"
                   />
-                  <text
+                  <text {...SVG_LABEL}
                     x="72"
                     y="35"
                     fill="var(--charcoal)"
                     fillOpacity="0.65"
-                    fontSize="10"
-                    letterSpacing="0.4"
                     textAnchor="middle"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     LOANS
                   </text>
@@ -473,15 +430,11 @@ export default function Week01Introduction() {
                     stroke="var(--charcoal)"
                     strokeOpacity="0.5"
                   />
-                  <text
+                  <text {...SVG_LABEL}
                     x="236"
                     y="35"
                     fill="var(--charcoal)"
                     fillOpacity="0.65"
-                    fontSize="10"
-                    letterSpacing="0.4"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     APPROVE
                   </text>
@@ -496,15 +449,11 @@ export default function Week01Introduction() {
                     stroke="var(--crimson)"
                     strokeWidth="1.25"
                   />
-                  <text
+                  <text {...SVG_LABEL}
                     x="72"
                     y="77"
                     fill="var(--crimson)"
-                    fontSize="10"
-                    letterSpacing="0.4"
                     textAnchor="middle"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     TRANSACTIONS
                   </text>
@@ -518,14 +467,10 @@ export default function Week01Introduction() {
                     stroke="var(--crimson)"
                     strokeWidth="1.5"
                   />
-                  <text
+                  <text {...SVG_LABEL}
                     x="236"
                     y="77"
                     fill="var(--crimson)"
-                    fontSize="10"
-                    letterSpacing="0.4"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     REVIEW FOR FRAUD
                   </text>
@@ -548,15 +493,11 @@ export default function Week01Introduction() {
                     Inventory level falling to a threshold and triggering an
                     order to replenish stock.
                   </title>
-                  <text
+                  <text {...SVG_LABEL}
                     x="8"
                     y="16"
                     fill="var(--charcoal)"
                     fillOpacity="0.55"
-                    fontSize="10"
-                    letterSpacing="0.4"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     INVENTORY
                   </text>
@@ -588,14 +529,10 @@ export default function Week01Introduction() {
                     strokeWidth="1.5"
                   />
                   <circle cx="244" cy="72" r="3.5" fill="var(--crimson)" />
-                  <text
+                  <text {...SVG_LABEL}
                     x="258"
                     y="54"
                     fill="var(--crimson)"
-                    fontSize="10"
-                    letterSpacing="0.4"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     REPLENISH STOCK
                   </text>
@@ -612,11 +549,11 @@ export default function Week01Introduction() {
                   >
                     {row.n}
                   </span>
-                  <span className="font-serif text-[1rem] font-medium tracking-normal text-[var(--charcoal)] md:mt-2 md:block">
+                  <span className="font-sans text-[1rem] font-medium tracking-normal text-[var(--charcoal)] md:mt-2 md:block">
                     {row.who}
                   </span>
                 </div>
-                <p className="font-serif text-lg leading-[1.6] text-[var(--charcoal)] md:text-[1.3125rem]">
+                <p className={BODY}>
                   {row.line}
                 </p>
                 <div className="w-full max-w-[19rem]">{row.figure}</div>
@@ -626,7 +563,7 @@ export default function Week01Introduction() {
 
           <div>
             <div className="mt-8">
-              <p className="max-w-3xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+              <p className={`${DISPLAY} max-w-3xl`}>
                 AI creates business value by improving the speed, accuracy, and
                 consistency of these operational choices.
               </p>
@@ -639,31 +576,15 @@ export default function Week01Introduction() {
           04. MODULE I: the module plates are the deck's punctuation: a
           roman numeral set at display scale against a ruled left margin.
       ================================================================== */}
-      <Slide id="module-1" border align="left" className="relative">
-        <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Module</div>
-            <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
-              I
-            </div>
-          </div>
-
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-            <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
-              What Is Artificial Intelligence?
-            </h2>
-            <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
-            <p className="mt-8 max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl">
-              This section defines the core ideas behind artificial intelligence
-              in simple terms.
-            </p>
-            <p className="mt-4 max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl">
-              We will look at the differences between artificial intelligence,
-              machine learning, and deep learning.
-            </p>
-          </div>
-        </div>
-      </Slide>
+      <ModulePlate1
+        id="module-1"
+        numeral="I"
+        title="What Is Artificial Intelligence?"
+        lines={[
+          "This section defines the core ideas behind artificial intelligence in simple terms.",
+          "We will look at the differences between artificial intelligence, machine learning, and deep learning.",
+        ]}
+      />
 
       {/* ==================================================================
           05. DEFINING AI: the definition on top. Below it the two
@@ -671,19 +592,16 @@ export default function Week01Introduction() {
           and rigid. Right: a scatter of data with a fitted line.
       ================================================================== */}
       <Slide id="defining-ai" border align="left">
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>Definition</div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
-            Defining Artificial Intelligence
-          </h2>
-        </div>
+        <Head1 eyebrow="Definition">
+          Defining Artificial Intelligence
+        </Head1>
 
         <div className="w-full">
-          <p className="mt-9 max-w-4xl font-serif text-xl leading-[1.55] text-[var(--charcoal)] md:text-[1.75rem]">
+          <p className={`${LEAD} mt-9 max-w-4xl`}>
             Artificial intelligence refers to computer systems designed to
             perform tasks that once required human intelligence.
           </p>
-          <p className="mt-5 max-w-3xl font-serif text-lg leading-[1.6] text-[var(--charcoal-light)] md:text-[1.25rem]">
+          <p className={`${BODY} mt-5 max-w-3xl !text-[var(--charcoal-light)]`}>
             These tasks include recognizing patterns, understanding text, making
             forecasts, and solving problems.
           </p>
@@ -695,7 +613,7 @@ export default function Week01Introduction() {
               <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
                 Traditional software
               </div>
-              <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal-light)] md:text-[1.375rem]">
+              <p className={`${BODY} mt-4 !text-[var(--charcoal-light)]`}>
                 Traditional software follows rigid rules written directly by
                 human programmers.
               </p>
@@ -742,28 +660,20 @@ export default function Week01Introduction() {
                   strokeOpacity="0.65"
                 />
               ))}
-              <text
+              <text {...SVG_LABEL}
                 x="32"
                 y="26"
                 fill="var(--charcoal)"
                 fillOpacity="0.55"
-                fontSize="10"
-                letterSpacing="0.4"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 RIGID RULES
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="384"
                 y="115"
                 fill="var(--charcoal)"
                 fillOpacity="0.45"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="end"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 HUMAN PROGRAMMERS
               </text>
@@ -775,7 +685,7 @@ export default function Week01Introduction() {
               <div className={`${MICRO} text-[var(--crimson)]`}>
                 Modern AI systems
               </div>
-              <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.375rem]">
+              <p className={`${BODY} mt-4`}>
                 Modern AI systems learn patterns directly from historical data.
               </p>
             </div>
@@ -826,27 +736,19 @@ export default function Week01Introduction() {
                 stroke="var(--crimson)"
                 strokeWidth="1.75"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="32"
                 y="26"
                 fill="var(--crimson)"
-                fontSize="10"
-                letterSpacing="0.4"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 PATTERNS
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="384"
                 y="115"
                 fill="var(--charcoal)"
                 fillOpacity="0.5"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="end"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 HISTORICAL DATA
               </text>
@@ -860,14 +762,9 @@ export default function Week01Introduction() {
           frames, each label tied to its frame by a leader line.      [quiz]
       ================================================================== */}
       <Slide id="ai-ml-dl" border align="left" quizData={quiz["ai-ml-dl"]}>
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            Three nested terms
-          </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[1.75rem] font-semibold leading-[1.06] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.75rem]">
-            Artificial Intelligence, Machine Learning, and Deep Learning
-          </h2>
-        </div>
+        <Head1 eyebrow="Three nested terms">
+          Artificial Intelligence, Machine Learning, and Deep Learning
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-12 md:grid-cols-[1fr_minmax(0,23rem)] md:gap-14">
           <div className="space-y-7">
@@ -896,7 +793,7 @@ export default function Week01Introduction() {
                   <span className={`h-px w-8 shrink-0 ${layer.rule}`} />
                   <span className={`${MICRO} ${layer.tone}`}>{layer.tag}</span>
                 </div>
-                <p className="mt-2.5 max-w-xl font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+                <p className={`${BODY} mt-2.5 max-w-xl`}>
                   {layer.line}
                 </p>
               </div>
@@ -925,15 +822,11 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.28"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="18"
                 y="24"
                 fill="var(--charcoal)"
                 fillOpacity="0.6"
-                fontSize="10"
-                letterSpacing="0.4"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 ARTIFICIAL INTELLIGENCE
               </text>
@@ -947,14 +840,10 @@ export default function Week01Introduction() {
                 stroke="var(--champagne)"
                 strokeOpacity="0.65"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="46"
                 y="60"
                 fill="var(--champagne)"
-                fontSize="10"
-                letterSpacing="0.4"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 MACHINE LEARNING
               </text>
@@ -970,14 +859,10 @@ export default function Week01Introduction() {
                 stroke="var(--crimson)"
                 strokeWidth="1.5"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="78"
                 y="96"
                 fill="var(--crimson)"
-                fontSize="10"
-                letterSpacing="0.4"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 DEEP LEARNING
               </text>
@@ -1040,15 +925,11 @@ export default function Week01Introduction() {
                   strokeWidth="1.5"
                 />
               ))}
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="222"
                 fill="var(--crimson)"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 MULTI-LAYERED NEURAL NETWORKS
               </text>
@@ -1061,7 +942,7 @@ export default function Week01Introduction() {
             <div className={`${MICRO} text-[var(--crimson)]`}>
               Why it matters
             </div>
-            <p className="mt-3 font-serif text-xl leading-[1.45] text-[var(--charcoal)] md:text-[1.625rem]">
+            <p className={`${LEAD} mt-3`}>
               Deep learning works exceptionally well on complex data such as
               images, audio, and free-form text.
             </p>
@@ -1080,12 +961,9 @@ export default function Week01Introduction() {
         align="left"
         quizData={quiz["predictive-generative"]}
       >
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>Two families</div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
-            Predictive AI Versus Generative AI
-          </h2>
-        </div>
+        <Head1 eyebrow="Two families">
+          Predictive AI Versus Generative AI
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-12 border-t border-[var(--charcoal)]/10 pt-8 md:grid-cols-2 md:gap-0">
           <div className="flex flex-col justify-between md:pr-12">
@@ -1093,11 +971,11 @@ export default function Week01Introduction() {
               <div className={`${MICRO} text-[var(--charcoal-light)]/60`}>
                 Predictive AI
               </div>
-              <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+              <p className={`${BODY} mt-4`}>
                 Predictive AI analyzes past data to forecast future events,
                 estimate numbers, or classify items into categories.
               </p>
-              <p className="mt-4 font-serif text-base leading-[1.6] text-[var(--charcoal-light)] md:text-lg">
+              <p className={`${BODY} mt-4 !text-[var(--charcoal-light)]`}>
                 Common predictive examples include credit risk scoring, fraud
                 detection, and customer churn forecasting.
               </p>
@@ -1169,28 +1047,20 @@ export default function Week01Introduction() {
                 strokeDasharray="5 3"
               />
               <circle cx="372" cy="38" r="3.5" fill="var(--crimson)" />
-              <text
+              <text {...SVG_LABEL}
                 x="118"
                 y="116"
                 fill="var(--charcoal)"
                 fillOpacity="0.55"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 PAST DATA
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="304"
                 y="116"
                 fill="var(--crimson)"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 FUTURE EVENTS
               </text>
@@ -1202,7 +1072,7 @@ export default function Week01Introduction() {
               <div className={`${MICRO} text-[var(--crimson)]`}>
                 Generative AI
               </div>
-              <p className="mt-4 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+              <p className={`${BODY} mt-4`}>
                 Generative AI creates new content such as text, images, audio,
                 or computer code based on learned patterns.
               </p>
@@ -1245,16 +1115,12 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.28"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="66"
                 y="116"
                 fill="var(--charcoal)"
                 fillOpacity="0.55"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 LEARNED PATTERNS
               </text>
@@ -1289,29 +1155,21 @@ export default function Week01Introduction() {
                     stroke="var(--crimson)"
                     strokeWidth="1.25"
                   />
-                  <text
+                  <text {...SVG_LABEL}
                     x={card.x + card.w / 2}
                     y={card.y + 22}
                     fill="var(--crimson)"
-                    fontSize="9"
-                    letterSpacing="0.4"
                     textAnchor="middle"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     {card.label}
                   </text>
                 </g>
               ))}
-              <text
+              <text {...SVG_LABEL}
                 x="283"
                 y="116"
                 fill="var(--crimson)"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 NEW CONTENT
               </text>
@@ -1322,7 +1180,7 @@ export default function Week01Introduction() {
         <div className="w-full">
           <div className="mt-12 w-full max-w-5xl">
             <div className="h-px w-full bg-[var(--charcoal)]/15" />
-            <p className="mt-6 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className={`${DISPLAY} mt-6 max-w-4xl`}>
               Most business value comes from combining predictive analysis with
               generative capabilities.
             </p>
@@ -1336,14 +1194,9 @@ export default function Week01Introduction() {
           carries the warning and is the only one marked in crimson.
       ================================================================== */}
       <Slide id="chatbots-to-agents" border align="left">
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            The autonomy staircase
-          </div>
-          <h2 className="mt-4 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.75rem]">
-            From Chatbots to Autonomous Agents
-          </h2>
-        </div>
+        <Head1 eyebrow="The autonomy staircase">
+          From Chatbots to Autonomous Agents
+        </Head1>
 
         <div className="mt-6 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1fr_minmax(0,24rem)] md:gap-12">
           <ol className="w-full">
@@ -1402,7 +1255,7 @@ export default function Week01Introduction() {
                       {step.tag}
                     </span>
                   </div>
-                  <p className="mt-1 max-w-2xl font-serif text-base leading-[1.5] text-[var(--charcoal)] md:text-[1.0625rem]">
+                  <p className={`${BODY} mt-1 max-w-2xl`}>
                     {step.line}
                   </p>
                 </div>
@@ -1425,15 +1278,11 @@ export default function Week01Introduction() {
                 inside safety boundaries.
               </title>
               {/* Top: Chatbots: one prompt at a time */}
-              <text
+              <text {...SVG_LABEL}
                 x="12"
                 y="18"
                 fill="var(--charcoal)"
                 fillOpacity="0.55"
-                fontSize="9"
-                letterSpacing="0.4"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 ONE PROMPT AT A TIME
               </text>
@@ -1445,16 +1294,12 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.32"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="64"
                 y="49"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 PROMPT
               </text>
@@ -1476,16 +1321,12 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.4"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="210"
                 y="49"
                 fill="var(--charcoal)"
                 fillOpacity="0.7"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 CHATBOTS
               </text>
@@ -1507,16 +1348,12 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.32"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="346"
                 y="49"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 OUTPUT
               </text>
@@ -1531,26 +1368,18 @@ export default function Week01Introduction() {
                 strokeWidth="1.5"
                 strokeDasharray="5 4"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="26"
                 y="104"
                 fill="var(--crimson)"
-                fontSize="9"
-                letterSpacing="0.4"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 AGENTIC AI
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="374"
                 y="104"
                 fill="var(--crimson)"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="end"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 SAFETY BOUNDARIES
               </text>
@@ -1573,15 +1402,11 @@ export default function Week01Introduction() {
                     stroke="var(--crimson)"
                     strokeWidth="1.25"
                   />
-                  <text
+                  <text {...SVG_LABEL}
                     x={box.x + box.w / 2}
                     y={box.y + 26}
                     fill="var(--charcoal)"
-                    fontSize="9"
-                    letterSpacing="0.4"
                     textAnchor="middle"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     {box.label}
                   </text>
@@ -1637,46 +1462,23 @@ export default function Week01Introduction() {
           </div>
         </div>
 
-        <div className="w-full">
-          <aside className="mt-5 max-w-4xl border border-[var(--charcoal)]/12 p-4 md:p-5">
-            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-1.5 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.1875rem]">
-              Think of a multi-step task you do regularly. What risks might
-              arise if an autonomous software agent did that task without your
-              supervision?
-            </p>
-          </aside>
-        </div>
+        <Discussion1>
+          Think of a multi-step task you do regularly. What risks might arise if an autonomous software agent did that task without your supervision?
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
           09. MODULE II
       ================================================================== */}
-      <Slide id="module-2" border align="left">
-        <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Module</div>
-            <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
-              II
-            </div>
-          </div>
-
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-            <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
-              The Economics of Prediction
-            </h2>
-            <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
-            <p className="mt-8 max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl">
-              This section explains how artificial intelligence affects business
-              economics and operational costs.
-            </p>
-            <p className="mt-4 max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl">
-              We examine how falling prediction costs change the value of human
-              judgment.
-            </p>
-          </div>
-        </div>
-      </Slide>
+      <ModulePlate1
+        id="module-2"
+        numeral="II"
+        title="The Economics of Prediction"
+        lines={[
+          "This section explains how artificial intelligence affects business economics and operational costs.",
+          "We examine how falling prediction costs change the value of human judgment.",
+        ]}
+      />
 
       {/* ==================================================================
           10. COST OF PREDICTION: a price curve falling toward zero, with
@@ -1685,13 +1487,10 @@ export default function Week01Introduction() {
       ================================================================== */}
       <Slide id="cost-of-prediction" border align="left">
         <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            A familiar economic pattern
-          </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <Head1 eyebrow="A familiar economic pattern">
             The Cost of Prediction Drops to Zero
-          </h2>
-          <p className="mt-7 max-w-3xl font-serif text-lg leading-[1.6] text-[var(--charcoal-light)] md:text-[1.3125rem]">
+          </Head1>
+          <p className={`${BODY} mt-7 max-w-3xl !text-[var(--charcoal-light)]`}>
             In economics, technological breakthroughs often make a specific,
             valuable input cheap and abundant.
           </p>
@@ -1726,10 +1525,8 @@ export default function Week01Introduction() {
                 {era.tag}
               </div>
               <p
-                className={`mt-3 font-serif leading-[1.55] ${
-                  era.now
-                    ? "text-[1.125rem] text-[var(--charcoal)] md:text-[1.25rem]"
-                    : "text-base text-[var(--charcoal-light)] md:text-[1.0625rem]"
+                className={`${BODY} mt-3 ${
+                  era.now ? "" : "!text-[var(--charcoal-light)]"
                 }`}
               >
                 {era.line}
@@ -1773,15 +1570,11 @@ export default function Week01Introduction() {
                 const stroke = panel.now ? "var(--crimson)" : "var(--charcoal)";
                 return (
                   <g key={panel.label}>
-                    <text
+                    <text {...SVG_LABEL}
                       x={panel.x0}
                       y="16"
                       fill={panel.now ? "var(--crimson)" : "var(--charcoal)"}
                       fillOpacity={panel.now ? "1" : "0.55"}
-                      fontSize="9"
-                      letterSpacing="0.4"
-                      fontFamily="var(--font-serif), Georgia, serif"
-                      fontWeight="600"
                     >
                       {panel.label}
                     </text>
@@ -1792,27 +1585,19 @@ export default function Week01Introduction() {
                     />
                     {idx === 0 && (
                       <>
-                        <text
+                        <text {...SVG_LABEL}
                           x={panel.x0 + 10}
                           y="40"
                           fill="var(--charcoal)"
                           fillOpacity="0.45"
-                          fontSize="9"
-                          letterSpacing="0.4"
-                          fontFamily="var(--font-serif), Georgia, serif"
-                          fontWeight="600"
                         >
                           COST
                         </text>
-                        <text
+                        <text {...SVG_LABEL}
                           x={panel.x0 + 10}
                           y="116"
                           fill="var(--charcoal)"
                           fillOpacity="0.45"
-                          fontSize="9"
-                          letterSpacing="0.4"
-                          fontFamily="var(--font-serif), Georgia, serif"
-                          fontWeight="600"
                         >
                           CHEAP
                         </text>
@@ -1841,7 +1626,7 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <p className="mt-10 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+          <p className={`${DISPLAY} mt-10 max-w-4xl`}>
             When prediction becomes cheap, companies start applying it to
             problems that were never treated as prediction tasks before.
           </p>
@@ -1859,28 +1644,23 @@ export default function Week01Introduction() {
         align="left"
         quizData={quiz["prediction-judgment"]}
       >
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            What machines cannot do
-          </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
-            Prediction Versus Judgment
-          </h2>
-        </div>
+        <Head1 eyebrow="What machines cannot do">
+          Prediction Versus Judgment
+        </Head1>
 
         <div className="mt-8 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-7 md:grid-cols-2 md:gap-0">
           <div className="md:pr-12">
             <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
               Prediction
             </div>
-            <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+            <p className={`${BODY} mt-3`}>
               A prediction is an estimate of what is likely to happen when
               information is incomplete.
             </p>
           </div>
           <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-12">
             <div className={`${MICRO} text-[var(--crimson)]`}>Judgment</div>
-            <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+            <p className={`${BODY} mt-3`}>
               A judgment is an evaluation of what outcome matters most, what is
               fair, and what risk is acceptable.
             </p>
@@ -1892,7 +1672,7 @@ export default function Week01Introduction() {
             <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
               The limit
             </div>
-            <p className="mt-2 font-serif text-lg leading-[1.55] text-[var(--charcoal-light)] md:text-[1.1875rem]">
+            <p className={`${BODY} mt-2 !text-[var(--charcoal-light)]`}>
               Machines handle prediction at scale, but they do not possess moral
               principles, business ethics, or context.
             </p>
@@ -1900,7 +1680,7 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <p className="mt-8 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+          <p className={`${DISPLAY} mt-8 max-w-4xl`}>
             As machine prediction becomes cheaper and faster, the economic value
             of human judgment goes up.
           </p>
@@ -1928,29 +1708,21 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.32"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="90"
                 y="54"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="10"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 PREDICTION
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="90"
                 y="76"
                 fill="var(--charcoal)"
                 fillOpacity="0.5"
-                fontSize="8.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 WHAT IS LIKELY
               </text>
@@ -1976,27 +1748,19 @@ export default function Week01Introduction() {
                 stroke="var(--crimson)"
                 strokeWidth="1.5"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="302"
                 y="54"
                 fill="var(--crimson)"
-                fontSize="10"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 JUDGMENT
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="302"
                 y="76"
                 fill="var(--crimson)"
-                fontSize="8.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 WHAT IS FAIR
               </text>
@@ -2022,16 +1786,12 @@ export default function Week01Introduction() {
                 fill="var(--charcoal)"
                 fillOpacity="0.5"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="764"
                 y="88"
                 fill="var(--charcoal)"
                 fillOpacity="0.55"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="end"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 MACHINE PREDICTION ↓
               </text>
@@ -2043,15 +1803,11 @@ export default function Week01Introduction() {
                 strokeWidth="1.75"
               />
               <circle cx="776" cy="26" r="3.5" fill="var(--crimson)" />
-              <text
+              <text {...SVG_LABEL}
                 x="764"
                 y="20"
                 fill="var(--crimson)"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="end"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 VALUE OF HUMAN JUDGMENT ↑
               </text>
@@ -2066,14 +1822,9 @@ export default function Week01Introduction() {
           a single mandate at the foot.
       ================================================================== */}
       <Slide id="three-sources-of-value" border align="left">
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            Where the money is
-          </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
-            The Three Sources of Business Value
-          </h2>
-        </div>
+        <Head1 eyebrow="Where the money is">
+          The Three Sources of Business Value
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl gap-10 md:grid-cols-3 md:gap-0">
           {[
@@ -2101,13 +1852,13 @@ export default function Week01Introduction() {
                   : "md:border-l md:border-[var(--charcoal)]/12 md:px-10"
               }
             >
-              <div className="font-serif text-[2.75rem] font-black leading-none tracking-[-0.04em] text-[var(--charcoal)]/12 md:text-[3.5rem]">
+              <div className="font-sans text-[2.75rem] font-black leading-none tracking-[-0.04em] text-[var(--charcoal)]/12 md:text-[3.5rem]">
                 {col.n}
               </div>
               <div className={`${MICRO} mt-4 text-[var(--champagne)]`}>
                 {col.tag}
               </div>
-              <p className="mt-3 font-serif text-base leading-[1.6] text-[var(--charcoal)] md:text-[1.0625rem]">
+              <p className={`${BODY} mt-3`}>
                 {col.line}
               </p>
             </div>
@@ -2165,16 +1916,12 @@ export default function Week01Introduction() {
                   stroke="var(--charcoal)"
                   strokeOpacity="0.6"
                 />
-                <text
+                <text {...SVG_LABEL}
                   x="120"
                   y="18"
                   fill="var(--charcoal)"
                   fillOpacity="0.6"
-                  fontSize="9"
-                  letterSpacing="0.4"
                   textAnchor="middle"
-                  fontFamily="var(--font-serif), Georgia, serif"
-                  fontWeight="600"
                 >
                   COST REDUCTION ↓
                 </text>
@@ -2202,16 +1949,12 @@ export default function Week01Introduction() {
                     strokeOpacity="0.65"
                   />
                 ))}
-                <text
+                <text {...SVG_LABEL}
                   x="398"
                   y="18"
                   fill="var(--charcoal)"
                   fillOpacity="0.6"
-                  fontSize="9"
-                  letterSpacing="0.4"
                   textAnchor="middle"
-                  fontFamily="var(--font-serif), Georgia, serif"
-                  fontWeight="600"
                 >
                   REVENUE GROWTH ↑
                 </text>
@@ -2236,16 +1979,12 @@ export default function Week01Introduction() {
                 />
                 <circle cx="624" cy="44" r="3" fill="var(--charcoal)" />
                 <circle cx="704" cy="44" r="3" fill="var(--charcoal)" />
-                <text
+                <text {...SVG_LABEL}
                   x="676"
                   y="18"
                   fill="var(--charcoal)"
                   fillOpacity="0.6"
-                  fontSize="9"
-                  letterSpacing="0.4"
                   textAnchor="middle"
-                  fontFamily="var(--font-serif), Georgia, serif"
-                  fontWeight="600"
                 >
                   RISK MANAGEMENT
                 </text>
@@ -2256,21 +1995,17 @@ export default function Week01Introduction() {
                   stroke="var(--crimson)"
                   strokeWidth="1.5"
                 />
-                <text
+                <text {...SVG_LABEL}
                   x="398"
                   y="124"
                   fill="var(--crimson)"
-                  fontSize="9"
-                  letterSpacing="0.4"
                   textAnchor="middle"
-                  fontFamily="var(--font-serif), Georgia, serif"
-                  fontWeight="600"
                 >
                   TARGET ALL THREE AREAS
                 </text>
               </svg>
             </figure>
-            <p className="mt-6 max-w-4xl font-serif text-xl font-medium leading-[1.4] text-[var(--charcoal)] md:text-[1.625rem]">
+            <p className={`${LEAD} mt-6 max-w-4xl font-medium`}>
               Successful firms{" "}
               <span className="text-[var(--crimson)]">
                 target all three areas
@@ -2288,13 +2023,10 @@ export default function Week01Introduction() {
       ================================================================== */}
       <Slide id="plug-and-play" border align="left">
         <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            The commoditisation trap
-          </div>
-          <h2 className="mt-4 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
+          <Head1 eyebrow="The commoditisation trap">
             The Fallacy of Plug and Play
-          </h2>
-          <p className="mt-6 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+          </Head1>
+          <p className={`${DISPLAY} mt-6 max-w-4xl`}>
             Buying an off-the-shelf AI tool does not guarantee a lasting
             competitive edge.
           </p>
@@ -2306,7 +2038,7 @@ export default function Week01Introduction() {
               <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
                 Public models and subscriptions
               </div>
-              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal-light)] md:text-[1.25rem]">
+              <p className={`${BODY} mt-3 !text-[var(--charcoal-light)]`}>
                 Anyone can purchase the same public models and software
                 subscriptions.
               </p>
@@ -2332,44 +2064,32 @@ export default function Week01Introduction() {
                     stroke="var(--charcoal)"
                     strokeOpacity="0.32"
                   />
-                  <text
+                  <text {...SVG_LABEL}
                     x={x + 54}
                     y="44"
                     fill="var(--charcoal)"
                     fillOpacity="0.55"
-                    fontSize="8.5"
-                    letterSpacing="2"
                     textAnchor="middle"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     PUBLIC
                   </text>
-                  <text
+                  <text {...SVG_LABEL}
                     x={x + 54}
                     y="58"
                     fill="var(--charcoal)"
                     fillOpacity="0.55"
-                    fontSize="8.5"
-                    letterSpacing="2"
                     textAnchor="middle"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     MODELS
                   </text>
                 </g>
               ))}
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="102"
                 fill="var(--charcoal)"
                 fillOpacity="0.5"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 SOFTWARE SUBSCRIPTIONS
               </text>
@@ -2381,7 +2101,7 @@ export default function Week01Introduction() {
               <div className={`${MICRO} text-[var(--crimson)]`}>
                 Unique workflows and proprietary data
               </div>
-              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+              <p className={`${BODY} mt-3`}>
                 Real business advantage comes from connecting AI directly to
                 unique business workflows and high-quality proprietary data.
               </p>
@@ -2408,27 +2128,19 @@ export default function Week01Introduction() {
                 stroke="var(--crimson)"
                 strokeWidth="1.25"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="70"
                 y="44"
                 fill="var(--crimson)"
-                fontSize="8.5"
-                letterSpacing="2"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 PROPRIETARY
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="70"
                 y="58"
                 fill="var(--crimson)"
-                fontSize="8.5"
-                letterSpacing="2"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 DATA
               </text>
@@ -2455,15 +2167,11 @@ export default function Week01Introduction() {
                 stroke="var(--crimson)"
                 strokeWidth="1.5"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="52"
                 fill="var(--crimson)"
-                fontSize="10"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 AI
               </text>
@@ -2490,40 +2198,28 @@ export default function Week01Introduction() {
                 stroke="var(--crimson)"
                 strokeWidth="1.25"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="330"
                 y="44"
                 fill="var(--crimson)"
-                fontSize="8.5"
-                letterSpacing="2"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 UNIQUE
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="330"
                 y="58"
                 fill="var(--crimson)"
-                fontSize="8.5"
-                letterSpacing="2"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 WORKFLOWS
               </text>
 
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="102"
                 fill="var(--crimson)"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 REAL BUSINESS ADVANTAGE
               </text>
@@ -2531,45 +2227,23 @@ export default function Week01Introduction() {
           </div>
         </div>
 
-        <div className="w-full">
-          <aside className="mt-8 max-w-3xl border border-[var(--charcoal)]/12 p-6 md:p-7">
-            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-3 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.25rem]">
-              If every firm in your industry uses the same commercial AI models,
-              where will your competitive advantage come from?
-            </p>
-          </aside>
-        </div>
+        <Discussion1>
+          If every firm in your industry uses the same commercial AI models, where will your competitive advantage come from?
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
           14. MODULE III
       ================================================================== */}
-      <Slide id="module-3" border align="left">
-        <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Module</div>
-            <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
-              III
-            </div>
-          </div>
-
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-            <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
-              How Companies Apply AI
-            </h2>
-            <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
-            <p className="mt-8 max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl">
-              This section maps the main ways companies deploy machine learning
-              across business units.
-            </p>
-            <p className="mt-4 max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl">
-              We divide applications into customer-facing front office tasks and
-              internal back office workflows.
-            </p>
-          </div>
-        </div>
-      </Slide>
+      <ModulePlate1
+        id="module-3"
+        numeral="III"
+        title="How Companies Apply AI"
+        lines={[
+          "This section maps the main ways companies deploy machine learning across business units.",
+          "We divide applications into customer-facing front office tasks and internal back office workflows.",
+        ]}
+      />
 
       {/* ==================================================================
           15. FRONT OFFICE: the customer side of the counter. Content sits
@@ -2582,14 +2256,9 @@ export default function Week01Introduction() {
         align="left"
         quizData={quiz["front-office"]}
       >
-        <div>
-          <div className={`${MICRO} text-[var(--crimson)]`}>
-            Front office | the customer sees this
-          </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
-            Front-Office Applications: Customer Engagement
-          </h2>
-        </div>
+        <Head1 eyebrow="Front office | the customer sees this" signal>
+          Front-Office Applications: Customer Engagement
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 border-l-2 border-[var(--crimson)]/70 pl-7 md:grid-cols-[1fr_minmax(0,23rem)] md:gap-12 md:pl-10">
           <div>
@@ -2616,7 +2285,7 @@ export default function Week01Introduction() {
                   <div className={`${MICRO} text-[var(--champagne)]`}>
                     {pane.tag}
                   </div>
-                  <p className="mt-2.5 max-w-2xl font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+                  <p className={`${BODY} mt-2.5 max-w-2xl`}>
                     {pane.line}
                   </p>
                 </div>
@@ -2647,16 +2316,12 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.32"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="82"
                 y="30"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="8.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 COMMON QUESTIONS
               </text>
@@ -2680,15 +2345,11 @@ export default function Week01Introduction() {
                 stroke="var(--crimson)"
                 strokeWidth="1.25"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="304"
                 y="30"
                 fill="var(--crimson)"
-                fontSize="8.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 AI: ANSWER
               </text>
@@ -2701,16 +2362,12 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.32"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="82"
                 y="66"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="8.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 COMPLEX ISSUES
               </text>
@@ -2732,16 +2389,12 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.35"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="304"
                 y="66"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="8.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 HUMAN AGENTS
               </text>
@@ -2761,16 +2414,12 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.32"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="82"
                 y="129"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="8.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 SEGMENT AUDIENCES
               </text>
@@ -2794,15 +2443,11 @@ export default function Week01Introduction() {
                 stroke="var(--crimson)"
                 strokeWidth="1.25"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="304"
                 y="129"
                 fill="var(--crimson)"
-                fontSize="8.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 PROMOTIONAL MESSAGES
               </text>
@@ -2822,16 +2467,12 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.32"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="82"
                 y="195"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="8.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 SHOPPER INTERESTS
               </text>
@@ -2855,28 +2496,20 @@ export default function Week01Introduction() {
                 stroke="var(--crimson)"
                 strokeWidth="1.25"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="304"
                 y="195"
                 fill="var(--crimson)"
-                fontSize="8.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 SUGGEST PRODUCTS
               </text>
 
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="234"
                 fill="var(--crimson)"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 REDUCING CUSTOMER FRICTION
               </text>
@@ -2887,7 +2520,7 @@ export default function Week01Introduction() {
         <div className="w-full">
           <div className="mt-12 max-w-4xl border-t border-[var(--crimson)]/40 pt-6">
             <div className={`${MICRO} text-[var(--crimson)]`}>The goal</div>
-            <p className="mt-3 font-serif text-xl leading-[1.45] text-[var(--charcoal)] md:text-[1.625rem]">
+            <p className={`${LEAD} mt-3`}>
               The goal is reducing customer friction while maintaining a
               consistent and trustworthy brand image.
             </p>
@@ -2901,14 +2534,9 @@ export default function Week01Introduction() {
           to ink. Nobody outside the firm sees this work.
       ================================================================== */}
       <Slide id="back-office" border align="left">
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            Back office | internal workflows
-          </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
-            Back-Office Applications: Operations and Finance
-          </h2>
-        </div>
+        <Head1 eyebrow="Back office | internal workflows">
+          Back-Office Applications: Operations and Finance
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 border-l border-[var(--charcoal)]/25 pl-7 md:grid-cols-[1fr_minmax(0,24rem)] md:gap-12 md:pl-10">
           <div>
@@ -2935,7 +2563,7 @@ export default function Week01Introduction() {
                   <div className={`${MICRO} text-[var(--champagne)]`}>
                     {row.tag}
                   </div>
-                  <p className="mt-2.5 max-w-2xl font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+                  <p className={`${BODY} mt-2.5 max-w-2xl`}>
                     {row.line}
                   </p>
                 </div>
@@ -2981,15 +2609,11 @@ export default function Week01Introduction() {
                 },
               ].map((unit) => (
                 <g key={unit.team}>
-                  <text
+                  <text {...SVG_LABEL}
                     x="8"
                     y={unit.y + 10}
                     fill="var(--charcoal)"
                     fillOpacity="0.55"
-                    fontSize="8.5"
-                    letterSpacing="2"
-                    fontFamily="var(--font-serif), Georgia, serif"
-                    fontWeight="600"
                   >
                     {unit.team}
                   </text>
@@ -3012,16 +2636,13 @@ export default function Week01Introduction() {
                             strokeOpacity="0.35"
                           />
                         )}
-                        <text
+                        <text {...SVG_LABEL}
+                          fontSize={9.5}
                           x={x + 62}
                           y={unit.y + 37}
                           fill="var(--charcoal)"
                           fillOpacity="0.7"
-                          fontSize="7.5"
-                          letterSpacing="1.4"
                           textAnchor="middle"
-                          fontFamily="var(--font-serif), Georgia, serif"
-                          fontWeight="600"
                         >
                           {task}
                         </text>
@@ -3037,15 +2658,11 @@ export default function Week01Introduction() {
                 stroke="var(--crimson)"
                 strokeWidth="1.5"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="234"
                 fill="var(--crimson)"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 CUTS OPERATING COSTS
               </text>
@@ -3055,7 +2672,7 @@ export default function Week01Introduction() {
 
         <div className="w-full">
           <div className="mt-10 max-w-4xl border-t border-[var(--crimson)]/40 pt-6">
-            <p className="font-serif text-[1.375rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.875rem]">
+            <p className={DISPLAY}>
               Back-office automation{" "}
               <span className="text-[var(--crimson)]">
                 cuts operating costs
@@ -3077,14 +2694,9 @@ export default function Week01Introduction() {
         align="left"
         quizData={quiz["human-in-the-loop"]}
       >
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            Where the human sits
-          </div>
-          <h2 className="mt-4 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
-            Human in the Loop Versus Full Autonomy
-          </h2>
-        </div>
+        <Head1 eyebrow="Where the human sits">
+          Human in the Loop Versus Full Autonomy
+        </Head1>
 
         <div className="mt-8 grid w-full max-w-5xl gap-10 border-t border-[var(--charcoal)]/10 pt-7 md:grid-cols-2 md:gap-0">
           <div className="flex flex-col justify-between md:pr-12">
@@ -3092,11 +2704,11 @@ export default function Week01Introduction() {
               <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
                 Full autonomy
               </div>
-              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+              <p className={`${BODY} mt-3`}>
                 Full autonomy means the computer makes the decision and takes
                 action without waiting for human approval.
               </p>
-              <p className="mt-3 font-serif text-base leading-[1.6] text-[var(--charcoal-light)] md:text-[1.0625rem]">
+              <p className={`${BODY} mt-3 !text-[var(--charcoal-light)]`}>
                 Low-stakes decisions with low cost of error can be automated
                 safely, such as product recommendations.
               </p>
@@ -3121,16 +2733,12 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.35"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="62"
                 y="46"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="8.5"
-                letterSpacing="2"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 COMPUTER
               </text>
@@ -3153,16 +2761,12 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.35"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="46"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="8.5"
-                letterSpacing="2"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 DECISION
               </text>
@@ -3185,43 +2789,31 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.35"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="338"
                 y="40"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="8.5"
-                letterSpacing="2"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 TAKES
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="338"
                 y="54"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="8.5"
-                letterSpacing="2"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 ACTION
               </text>
 
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="92"
                 fill="var(--charcoal)"
                 fillOpacity="0.55"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 LOW COST OF ERROR
               </text>
@@ -3233,11 +2825,11 @@ export default function Week01Introduction() {
               <div className={`${MICRO} text-[var(--crimson)]`}>
                 Human-in-the-loop
               </div>
-              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+              <p className={`${BODY} mt-3`}>
                 Human-in-the-loop means a person must review and approve the
                 machine recommendation before it takes effect.
               </p>
-              <p className="mt-3 font-serif text-base leading-[1.6] text-[var(--charcoal-light)] md:text-[1.0625rem]">
+              <p className={`${BODY} mt-3 !text-[var(--charcoal-light)]`}>
                 High-stakes decisions that affect jobs, credit, health, or legal
                 liability require human sign-off and review.
               </p>
@@ -3255,42 +2847,34 @@ export default function Week01Introduction() {
                 before it takes effect.
               </title>
               <rect
-                x="8"
+                x="4"
                 y="18"
-                width="108"
+                width="118"
                 height="48"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.35"
               />
-              <text
-                x="62"
+              <text {...SVG_LABEL}
+                x="63"
                 y="40"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="8.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 MACHINE
               </text>
-              <text
-                x="62"
+              <text {...SVG_LABEL}
+                x="63"
                 y="54"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="7.5"
-                letterSpacing="1.2"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 RECOMMENDATION
               </text>
 
               <path
-                d="M116 42H142"
+                d="M122 42H142"
                 stroke="var(--crimson)"
                 strokeWidth="1.25"
               />
@@ -3311,27 +2895,19 @@ export default function Week01Introduction() {
                 stroke="var(--crimson)"
                 strokeWidth="1.5"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="38"
                 fill="var(--crimson)"
-                fontSize="8.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 HUMAN SIGN-OFF
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="52"
                 fill="var(--crimson)"
-                fontSize="8.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 AND REVIEW
               </text>
@@ -3355,42 +2931,30 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.35"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="338"
                 y="40"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="8.5"
-                letterSpacing="2"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 TAKES
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="338"
                 y="54"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="8.5"
-                letterSpacing="2"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 EFFECT
               </text>
 
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="92"
                 fill="var(--crimson)"
-                fontSize="9"
-                letterSpacing="0.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 HIGH COST OF ERROR
               </text>
@@ -3398,45 +2962,23 @@ export default function Week01Introduction() {
           </div>
         </div>
 
-        <div className="w-full">
-          <aside className="mt-8 max-w-3xl border border-[var(--charcoal)]/12 p-6 md:p-7">
-            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-3 font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.25rem]">
-              In your view, which business decisions should always require human
-              approval, even if an algorithm is 99 percent accurate?
-            </p>
-          </aside>
-        </div>
+        <Discussion1>
+          In your view, which business decisions should always require human approval, even if an algorithm is 99 percent accurate?
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
           18. MODULE IV
       ================================================================== */}
-      <Slide id="module-4" border align="left">
-        <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Module</div>
-            <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
-              IV
-            </div>
-          </div>
-
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-            <h2 className="font-serif text-[2rem] font-semibold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.25rem]">
-              Data and the Machine Learning Pipeline
-            </h2>
-            <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
-            <p className="mt-8 max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl">
-              This section covers the raw material of artificial intelligence:
-              organizational data.
-            </p>
-            <p className="mt-4 max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl">
-              We will look at how data is collected, cleaned, and used to
-              continuously improve business models.
-            </p>
-          </div>
-        </div>
-      </Slide>
+      <ModulePlate1
+        id="module-4"
+        numeral="IV"
+        title="Data and the Machine Learning Pipeline"
+        lines={[
+          "This section covers the raw material of artificial intelligence: organizational data.",
+          "We will look at how data is collected, cleaned, and used to continuously improve business models.",
+        ]}
+      />
 
       {/* ==================================================================
           19. DATA IS THE RAW MATERIAL: the two kinds of data are drawn in
@@ -3445,11 +2987,10 @@ export default function Week01Introduction() {
       ================================================================== */}
       <Slide id="data-raw-material" border align="left">
         <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>Raw material</div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
+          <Head1 eyebrow="Raw material">
             Data Is the Raw Material of AI
-          </h2>
-          <p className="mt-8 font-serif text-[1.5rem] font-medium leading-[1.2] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.5rem]">
+          </Head1>
+          <p className={`${DISPLAY} mt-8`}>
             An algorithm cannot learn without data.
           </p>
         </div>
@@ -3460,7 +3001,7 @@ export default function Week01Introduction() {
               <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
                 Structured data
               </div>
-              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+              <p className={`${BODY} mt-3`}>
                 Structured data includes numbers, dates, and clear tables like
                 spreadsheet rows or SQL databases.
               </p>
@@ -3489,42 +3030,30 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.2"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="74"
                 y="28"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="9"
-                letterSpacing="1.6"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 DATES
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="199"
                 y="28"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="9"
-                letterSpacing="1.6"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 NUMBERS
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="325"
                 y="28"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="9"
-                letterSpacing="1.6"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 CLEAR TABLES
               </text>
@@ -3538,16 +3067,12 @@ export default function Week01Introduction() {
                   />
                 </g>
               ))}
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="115"
                 fill="var(--charcoal)"
                 fillOpacity="0.55"
-                fontSize="9.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 SPREADSHEET ROWS | SQL DATABASES
               </text>
@@ -3559,7 +3084,7 @@ export default function Week01Introduction() {
               <div className={`${MICRO} text-[var(--crimson)]`}>
                 Unstructured data
               </div>
-              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.3125rem]">
+              <p className={`${BODY} mt-3`}>
                 Unstructured data includes emails, video footage, audio
                 recordings, customer reviews, and scanned PDFs.
               </p>
@@ -3599,30 +3124,22 @@ export default function Week01Introduction() {
                       stroke="var(--crimson)"
                       strokeWidth="1.25"
                     />
-                    <text
+                    <text {...SVG_LABEL}
                       x={cx}
                       y={slip.y + 19}
                       fill="var(--crimson)"
-                      fontSize="8.5"
-                      letterSpacing="1.6"
                       textAnchor="middle"
-                      fontFamily="var(--font-serif), Georgia, serif"
-                      fontWeight="600"
                     >
                       {slip.label}
                     </text>
                   </g>
                 );
               })}
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="115"
                 fill="var(--crimson)"
-                fontSize="9.5"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 UNSTRUCTURED DATA
               </text>
@@ -3635,7 +3152,7 @@ export default function Week01Introduction() {
             <div className={`${MICRO} text-[var(--crimson)]`}>
               Why it matters
             </div>
-            <p className="mt-3 font-serif text-xl leading-[1.45] text-[var(--charcoal)] md:text-[1.625rem]">
+            <p className={`${LEAD} mt-3`}>
               Modern deep learning allows companies to extract clear business
               insights from unstructured data for the first time.
             </p>
@@ -3655,13 +3172,10 @@ export default function Week01Introduction() {
         quizData={quiz["data-quality"]}
       >
         <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            Garbage in, garbage out
-          </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
+          <Head1 eyebrow="Garbage in, garbage out">
             Data Quality, Bias, and the Garbage-In Principle
-          </h2>
-          <p className="mt-6 font-serif text-[1.375rem] font-medium leading-[1.2] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2rem]">
+          </Head1>
+          <p className={`${DISPLAY} mt-6`}>
             A model is only as good as the data used to train it.
           </p>
         </div>
@@ -3671,7 +3185,7 @@ export default function Week01Introduction() {
             <div className={`${MICRO} text-[var(--champagne)]`}>
               Past human biases
             </div>
-            <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+            <p className={`${BODY} mt-3`}>
               If historical data contains past human biases or missing records,
               the model will learn and repeat those errors.
             </p>
@@ -3680,7 +3194,7 @@ export default function Week01Introduction() {
             <div className={`${MICRO} text-[var(--champagne)]`}>
               Incomplete records and bad labels
             </div>
-            <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+            <p className={`${BODY} mt-3`}>
               Incomplete records and bad labels create noisy forecasts that
               mislead decision makers.
             </p>
@@ -3711,28 +3225,20 @@ export default function Week01Introduction() {
               stroke="var(--crimson)"
               strokeWidth="1.25"
             />
-            <text
+            <text {...SVG_LABEL}
               x="138"
               y="32"
               fill="var(--crimson)"
-              fontSize="8.5"
-              letterSpacing="1.5"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               PAST HUMAN BIASES
             </text>
-            <text
+            <text {...SVG_LABEL}
               x="138"
               y="46"
               fill="var(--charcoal)"
               fillOpacity="0.65"
-              fontSize="7.5"
-              letterSpacing="1.3"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               MISSING RECORDS
             </text>
@@ -3748,28 +3254,20 @@ export default function Week01Introduction() {
               stroke="var(--crimson)"
               strokeWidth="1.25"
             />
-            <text
+            <text {...SVG_LABEL}
               x="138"
               y="90"
               fill="var(--crimson)"
-              fontSize="8.5"
-              letterSpacing="1.5"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               INCOMPLETE RECORDS
             </text>
-            <text
+            <text {...SVG_LABEL}
               x="138"
               y="104"
               fill="var(--charcoal)"
               fillOpacity="0.65"
-              fontSize="7.5"
-              letterSpacing="1.3"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               BAD LABELS
             </text>
@@ -3796,28 +3294,20 @@ export default function Week01Introduction() {
               strokeOpacity="0.45"
               strokeWidth="1.25"
             />
-            <text
+            <text {...SVG_LABEL}
               x="400"
               y="58"
               fill="var(--charcoal)"
-              fontSize="10"
-              letterSpacing="2"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               MODEL
             </text>
-            <text
+            <text {...SVG_LABEL}
               x="400"
               y="76"
               fill="var(--charcoal)"
               fillOpacity="0.55"
-              fontSize="7.5"
-              letterSpacing="1.4"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               HISTORICAL DATA
             </text>
@@ -3862,15 +3352,11 @@ export default function Week01Introduction() {
               stroke="var(--crimson)"
               strokeWidth="1.5"
             />
-            <text
+            <text {...SVG_LABEL}
               x="662"
               y="39"
               fill="var(--crimson)"
-              fontSize="8.5"
-              letterSpacing="1.5"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               REPEAT THOSE ERRORS
             </text>
@@ -3886,28 +3372,20 @@ export default function Week01Introduction() {
               stroke="var(--crimson)"
               strokeWidth="1.5"
             />
-            <text
+            <text {...SVG_LABEL}
               x="662"
               y="90"
               fill="var(--crimson)"
-              fontSize="8.5"
-              letterSpacing="1.5"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               NOISY FORECASTS
             </text>
-            <text
+            <text {...SVG_LABEL}
               x="662"
               y="104"
               fill="var(--charcoal)"
               fillOpacity="0.65"
-              fontSize="7.5"
-              letterSpacing="1.3"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               MISLEAD DECISION MAKERS
             </text>
@@ -3916,7 +3394,7 @@ export default function Week01Introduction() {
 
         <div className="w-full">
           <figure className="mt-8 max-w-4xl border-l-2 border-[var(--crimson)] pl-6 md:pl-8">
-            <blockquote className="font-serif text-xl leading-[1.4] text-[var(--charcoal)] md:text-[1.5rem]">
+            <blockquote className={LEAD}>
               High data quality and careful verification matter far more than
               using a trendy model architecture.
             </blockquote>
@@ -3930,14 +3408,9 @@ export default function Week01Introduction() {
           the direction of travel.
       ================================================================== */}
       <Slide id="flywheel" border align="left">
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            A cycle, not a launch
-          </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
-            The Feedback Loop and Data Flywheel
-          </h2>
-        </div>
+        <Head1 eyebrow="A cycle, not a launch">
+          The Feedback Loop and Data Flywheel
+        </Head1>
 
         <div className="mt-10 grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_minmax(0,25rem)] md:gap-12">
           <ol className="space-y-6">
@@ -3972,7 +3445,7 @@ export default function Week01Introduction() {
                     <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
                       {stage.tag}
                     </div>
-                    <p className="mt-1.5 max-w-xl font-serif text-base leading-[1.55] text-[var(--charcoal)] md:text-[1.1875rem]">
+                    <p className={`${BODY} mt-1.5 max-w-xl`}>
                       {stage.line}
                     </p>
                   </div>
@@ -4077,27 +3550,19 @@ export default function Week01Introduction() {
               <circle cx="136" cy="130" r="4.5" fill="var(--crimson)" />
 
               {/* Center label */}
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="126"
                 fill="var(--crimson)"
-                fontSize="8"
-                letterSpacing="1.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 VIRTUOUS
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="139"
                 fill="var(--crimson)"
-                fontSize="8"
-                letterSpacing="1.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 LEARNING CYCLE
               </text>
@@ -4112,27 +3577,19 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.3"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="27"
                 fill="var(--champagne)"
-                fontSize="7.5"
-                letterSpacing="1.5"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 01
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="40"
                 fill="var(--charcoal)"
-                fontSize="8.5"
-                letterSpacing="1.5"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 DEPLOYMENT
               </text>
@@ -4140,46 +3597,34 @@ export default function Week01Introduction() {
               {/* 02 Right: CUSTOMER ACTIONS */}
               <rect
                 x="278"
-                y="108"
+                y="105"
                 width="114"
-                height="44"
+                height="50"
                 fill="var(--surface)"
                 stroke="var(--charcoal)"
                 strokeOpacity="0.3"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="335"
-                y="121"
+                y="119"
                 fill="var(--champagne)"
-                fontSize="7.5"
-                letterSpacing="1.5"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 02
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="335"
                 y="133"
                 fill="var(--charcoal)"
-                fontSize="8"
-                letterSpacing="1.3"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 CUSTOMER
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="335"
-                y="144"
+                y="147"
                 fill="var(--charcoal)"
-                fontSize="8"
-                letterSpacing="1.3"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 ACTIONS
               </text>
@@ -4194,27 +3639,19 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.3"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="227"
                 fill="var(--champagne)"
-                fontSize="7.5"
-                letterSpacing="1.5"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 03
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="240"
                 fill="var(--charcoal)"
-                fontSize="8.5"
-                letterSpacing="1.5"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 RETRAINING
               </text>
@@ -4222,47 +3659,35 @@ export default function Week01Introduction() {
               {/* 04 Left: BETTER PREDICTIONS (highlighted in crimson) */}
               <rect
                 x="8"
-                y="108"
+                y="105"
                 width="114"
-                height="44"
+                height="50"
                 fill="var(--crimson)"
                 fillOpacity="0.05"
                 stroke="var(--crimson)"
                 strokeWidth="1.5"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="65"
-                y="121"
+                y="119"
                 fill="var(--crimson)"
-                fontSize="7.5"
-                letterSpacing="1.5"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 04
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="65"
                 y="133"
                 fill="var(--crimson)"
-                fontSize="8"
-                letterSpacing="1.3"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 BETTER
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="65"
-                y="144"
+                y="147"
                 fill="var(--crimson)"
-                fontSize="8"
-                letterSpacing="1.3"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 PREDICTIONS
               </text>
@@ -4274,31 +3699,15 @@ export default function Week01Introduction() {
       {/* ==================================================================
           22. MODULE V
       ================================================================== */}
-      <Slide id="module-5" border align="left">
-        <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Module</div>
-            <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
-              V
-            </div>
-          </div>
-
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-            <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
-              Risks, Ethics, and Governance
-            </h2>
-            <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
-            <p className="mt-8 max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl">
-              This section examines the operational, legal, and reputational
-              risks of deploying AI.
-            </p>
-            <p className="mt-4 max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl">
-              We review why AI initiatives fail and how business leaders can
-              manage these risks.
-            </p>
-          </div>
-        </div>
-      </Slide>
+      <ModulePlate1
+        id="module-5"
+        numeral="V"
+        title="Risks, Ethics, and Governance"
+        lines={[
+          "This section examines the operational, legal, and reputational risks of deploying AI.",
+          "We review why AI initiatives fail and how business leaders can manage these risks.",
+        ]}
+      />
 
       {/* ==================================================================
           23. WHY PROJECTS FAIL: a post-mortem sheet. Three failure causes
@@ -4311,12 +3720,9 @@ export default function Week01Introduction() {
         align="left"
         quizData={quiz["why-projects-fail"]}
       >
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>Post-mortem</div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
-            Why Business AI Projects Fail
-          </h2>
-        </div>
+        <Head1 eyebrow="Post-mortem">
+          Why Business AI Projects Fail
+        </Head1>
 
         <div className="mt-8 grid w-full max-w-5xl gap-8 md:grid-cols-3 md:gap-8">
           {[
@@ -4348,7 +3754,7 @@ export default function Week01Introduction() {
                   {cause.tag}
                 </span>
               </div>
-              <p className="mt-3 font-serif text-base leading-[1.55] text-[var(--charcoal)] md:text-[1.125rem]">
+              <p className={`${BODY} mt-3`}>
                 {cause.line}
               </p>
             </div>
@@ -4359,7 +3765,7 @@ export default function Week01Introduction() {
           <div className={`${MICRO} text-[var(--crimson)]`}>
             What adoption actually requires
           </div>
-          <p className="mt-2 max-w-4xl font-serif text-lg leading-[1.45] text-[var(--charcoal)] md:text-[1.4375rem]">
+          <p className={`${LEAD} mt-2 max-w-4xl`}>
             Clear executive sponsorship, realistic timelines, and change
             management are essential for adoption.
           </p>
@@ -4387,16 +3793,12 @@ export default function Week01Introduction() {
               strokeOpacity="0.28"
               strokeDasharray="4 3"
             />
-            <text
+            <text {...SVG_LABEL}
               x="102"
               y="33"
               fill="var(--charcoal)"
               fillOpacity="0.65"
-              fontSize="8"
-              letterSpacing="1.3"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               EXCITING TECHNOLOGY
             </text>
@@ -4410,16 +3812,12 @@ export default function Week01Introduction() {
               strokeOpacity="0.28"
               strokeDasharray="4 3"
             />
-            <text
+            <text {...SVG_LABEL}
               x="298"
               y="33"
               fill="var(--charcoal)"
               fillOpacity="0.65"
-              fontSize="8"
-              letterSpacing="1.3"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               POOR DATA QUALITY
             </text>
@@ -4433,16 +3831,12 @@ export default function Week01Introduction() {
               strokeOpacity="0.28"
               strokeDasharray="4 3"
             />
-            <text
+            <text {...SVG_LABEL}
               x="494"
               y="33"
               fill="var(--charcoal)"
               fillOpacity="0.65"
-              fontSize="8"
-              letterSpacing="1.3"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               EMPLOYEE RESISTANCE
             </text>
@@ -4494,16 +3888,12 @@ export default function Week01Introduction() {
               stroke="var(--charcoal)"
               strokeOpacity="0.35"
             />
-            <text
+            <text {...SVG_LABEL}
               x="710"
               y="33"
               fill="var(--charcoal)"
               fillOpacity="0.65"
-              fontSize="8"
-              letterSpacing="1.4"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               PROJECTS FAIL
             </text>
@@ -4519,15 +3909,11 @@ export default function Week01Introduction() {
               stroke="var(--crimson)"
               strokeWidth="1.25"
             />
-            <text
+            <text {...SVG_LABEL}
               x="102"
               y="93"
               fill="var(--crimson)"
-              fontSize="7.5"
-              letterSpacing="1.2"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               EXECUTIVE SPONSORSHIP
             </text>
@@ -4542,15 +3928,11 @@ export default function Week01Introduction() {
               stroke="var(--crimson)"
               strokeWidth="1.25"
             />
-            <text
+            <text {...SVG_LABEL}
               x="298"
               y="93"
               fill="var(--crimson)"
-              fontSize="7.5"
-              letterSpacing="1.2"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               REALISTIC TIMELINES
             </text>
@@ -4565,15 +3947,11 @@ export default function Week01Introduction() {
               stroke="var(--crimson)"
               strokeWidth="1.25"
             />
-            <text
+            <text {...SVG_LABEL}
               x="494"
               y="93"
               fill="var(--crimson)"
-              fontSize="7.5"
-              letterSpacing="1.2"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               CHANGE MANAGEMENT
             </text>
@@ -4608,15 +3986,11 @@ export default function Week01Introduction() {
               stroke="var(--crimson)"
               strokeWidth="1.5"
             />
-            <text
+            <text {...SVG_LABEL}
               x="710"
               y="93"
               fill="var(--crimson)"
-              fontSize="8.5"
-              letterSpacing="1.6"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               ADOPTION
             </text>
@@ -4635,14 +4009,9 @@ export default function Week01Introduction() {
         align="left"
         quizData={quiz["hallucinations"]}
       >
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            Two failures of trust
-          </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
-            Hallucinations, Accuracy, and the Black Box Problem
-          </h2>
-        </div>
+        <Head1 eyebrow="Two failures of trust">
+          Hallucinations, Accuracy, and the Black Box Problem
+        </Head1>
 
         <div className="mt-8 grid w-full max-w-5xl gap-10 md:grid-cols-2 md:gap-0">
           <div className="flex flex-col justify-between md:pr-12">
@@ -4650,7 +4019,7 @@ export default function Week01Introduction() {
               <div className={`${MICRO} text-[var(--crimson)]`}>
                 Hallucinations
               </div>
-              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+              <p className={`${BODY} mt-3`}>
                 Generative models can produce convincing answers that are
                 factually wrong, known as hallucinations.
               </p>
@@ -4675,27 +4044,19 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.35"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="84"
                 y="39"
                 fill="var(--charcoal)"
-                fontSize="8"
-                letterSpacing="1.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 GENERATIVE
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="84"
                 y="52"
                 fill="var(--charcoal)"
-                fontSize="8"
-                letterSpacing="1.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 MODELS
               </text>
@@ -4713,15 +4074,11 @@ export default function Week01Introduction() {
                 stroke="var(--crimson)"
                 strokeWidth="1.5"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="292"
                 y="31"
                 fill="var(--charcoal)"
-                fontSize="8"
-                letterSpacing="1.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 CONVINCING ANSWERS
               </text>
@@ -4734,28 +4091,20 @@ export default function Week01Introduction() {
                 strokeOpacity="0.3"
                 strokeDasharray="3 3"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="292"
                 y="58"
                 fill="var(--crimson)"
-                fontSize="8.5"
-                letterSpacing="1.5"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 FACTUALLY WRONG
               </text>
 
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="98"
                 fill="var(--crimson)"
-                fontSize="9"
-                letterSpacing="1.8"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 HALLUCINATIONS
               </text>
@@ -4767,7 +4116,7 @@ export default function Week01Introduction() {
               <div className={`${MICRO} text-[var(--charcoal-light)]/55`}>
                 Black boxes
               </div>
-              <p className="mt-3 font-serif text-lg leading-[1.55] text-[var(--charcoal)] md:text-[1.25rem]">
+              <p className={`${BODY} mt-3`}>
                 Many deep learning models are black boxes, meaning humans cannot
                 easily trace how the system reached a conclusion.
               </p>
@@ -4827,28 +4176,20 @@ export default function Week01Introduction() {
                 strokeOpacity="0.22"
                 strokeDasharray="4 4"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="140"
                 y="38"
                 fill="var(--charcoal)"
-                fontSize="8.5"
-                letterSpacing="1.6"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 BLACK BOXES
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="140"
                 y="52"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="7.5"
-                letterSpacing="1.2"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 CANNOT EASILY TRACE
               </text>
@@ -4875,29 +4216,21 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.35"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="328"
                 y="45"
                 fill="var(--charcoal)"
-                fontSize="8"
-                letterSpacing="1.4"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 CONCLUSION
               </text>
 
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="98"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="9"
-                letterSpacing="1.6"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 EXPLAIN THE EXACT LOGIC
               </text>
@@ -4910,7 +4243,7 @@ export default function Week01Introduction() {
             <div className={`${MICRO} text-[var(--charcoal-light)]/50`}>
               Regulated industries
             </div>
-            <p className="mt-2 font-serif text-lg leading-[1.55] text-[var(--charcoal-light)] md:text-[1.1875rem]">
+            <p className={`${BODY} mt-2 !text-[var(--charcoal-light)]`}>
               In regulated fields like banking and healthcare, companies must be
               able to explain the exact logic behind their decisions.
             </p>
@@ -4918,7 +4251,7 @@ export default function Week01Introduction() {
         </div>
 
         <div className="w-full">
-          <p className="mt-8 max-w-4xl font-serif text-[1.25rem] font-medium leading-[1.3] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.75rem]">
+          <p className={`${DISPLAY} mt-8 max-w-4xl`}>
             Leaders must test system outputs and build guardrails before
             deploying customer-facing AI.
           </p>
@@ -4931,14 +4264,9 @@ export default function Week01Introduction() {
           the slide as a single ruled line.
       ================================================================== */}
       <Slide id="privacy-security-ip" border align="left">
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            Three exposures
-          </div>
-          <h2 className="mt-4 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.75rem]">
-            Privacy, Security, and Intellectual Property
-          </h2>
-        </div>
+        <Head1 eyebrow="Three exposures">
+          Privacy, Security, and Intellectual Property
+        </Head1>
 
         <div className="mt-7 grid w-full max-w-5xl gap-6 md:grid-cols-3 md:gap-6">
           {[
@@ -4961,14 +4289,14 @@ export default function Week01Introduction() {
             <div key={panel.n}>
               <div className="h-full border-t border-[var(--charcoal)]/20 pt-4">
                 <div className="flex items-baseline gap-3">
-                  <span className="font-serif text-[1.25rem] font-black leading-none text-[var(--champagne)]">
+                  <span className="font-sans text-[1.25rem] font-black leading-none text-[var(--champagne)]">
                     {panel.n}
                   </span>
                   <span className={`${MICRO} text-[var(--charcoal-light)]/60`}>
                     {panel.tag}
                   </span>
                 </div>
-                <p className="mt-2.5 font-serif text-base leading-[1.55] text-[var(--charcoal)] md:text-[1.0625rem]">
+                <p className={`${BODY} mt-2.5`}>
                   {panel.line}
                 </p>
               </div>
@@ -4977,7 +4305,7 @@ export default function Week01Introduction() {
         </div>
 
         <div className="mt-6 w-full max-w-5xl border-l-2 border-[var(--crimson)] pl-6">
-          <p className="max-w-4xl font-serif text-lg leading-[1.45] text-[var(--charcoal)] md:text-[1.375rem]">
+          <p className={`${BODY} max-w-4xl`}>
             Organizations need strict data handling policies and secure
             infrastructure to protect sensitive information.
           </p>
@@ -5007,15 +4335,11 @@ export default function Week01Introduction() {
               stroke="var(--crimson)"
               strokeWidth="1.5"
             />
-            <text
+            <text {...SVG_LABEL}
               x="258"
               y="26"
               fill="var(--crimson)"
-              fontSize="8"
-              letterSpacing="1.5"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               SECURE INFRASTRUCTURE | STRICT DATA HANDLING POLICIES
             </text>
@@ -5030,15 +4354,11 @@ export default function Week01Introduction() {
               stroke="var(--charcoal)"
               strokeOpacity="0.3"
             />
-            <text
+            <text {...SVG_LABEL}
               x="102"
               y="58"
               fill="var(--charcoal)"
-              fontSize="7.5"
-              letterSpacing="1.2"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               CUSTOMER RECORDS
             </text>
@@ -5052,15 +4372,11 @@ export default function Week01Introduction() {
               stroke="var(--charcoal)"
               strokeOpacity="0.3"
             />
-            <text
+            <text {...SVG_LABEL}
               x="258"
               y="58"
               fill="var(--charcoal)"
-              fontSize="7.5"
-              letterSpacing="1.2"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               FINANCIAL FIGURES
             </text>
@@ -5074,15 +4390,11 @@ export default function Week01Introduction() {
               stroke="var(--charcoal)"
               strokeOpacity="0.3"
             />
-            <text
+            <text {...SVG_LABEL}
               x="414"
               y="58"
               fill="var(--charcoal)"
-              fontSize="7.5"
-              letterSpacing="1.2"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               TRADE SECRETS
             </text>
@@ -5117,16 +4429,12 @@ export default function Week01Introduction() {
               strokeOpacity="0.3"
               strokeDasharray="4 3"
             />
-            <text
+            <text {...SVG_LABEL}
               x="680"
               y="32"
               fill="var(--charcoal)"
               fillOpacity="0.65"
-              fontSize="7.5"
-              letterSpacing="1.3"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               PUBLIC AI TOOLS
             </text>
@@ -5140,32 +4448,21 @@ export default function Week01Introduction() {
               strokeOpacity="0.3"
               strokeDasharray="4 3"
             />
-            <text
+            <text {...SVG_LABEL}
               x="680"
               y="70"
               fill="var(--charcoal)"
               fillOpacity="0.65"
-              fontSize="7.5"
-              letterSpacing="1.3"
               textAnchor="middle"
-              fontFamily="var(--font-serif), Georgia, serif"
-              fontWeight="600"
             >
               LEGAL AND FINANCIAL LIABILITY
             </text>
           </svg>
         </div>
 
-        <div className="w-full">
-          <aside className="mt-6 max-w-4xl border border-[var(--charcoal)]/12 p-5 md:p-6">
-            <div className={`${MICRO} text-[var(--champagne)]`}>Discussion</div>
-            <p className="mt-2 font-serif text-base font-light italic leading-relaxed text-[var(--charcoal)] md:text-[1.25rem]">
-              How should a company respond if an employee accidentally uploads
-              confidential client data into a public chatbot to save time on a
-              report?
-            </p>
-          </aside>
-        </div>
+        <Discussion1>
+          How should a company respond if an employee accidentally uploads confidential client data into a public chatbot to save time on a report?
+        </Discussion1>
       </Slide>
 
       {/* ==================================================================
@@ -5174,17 +4471,12 @@ export default function Week01Introduction() {
           clauses, and the slide closes on a signature line.
       ================================================================== */}
       <Slide id="governance" border align="left">
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            Who is answerable
-          </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[2rem] font-semibold leading-[1.04] tracking-[-0.02em] text-[var(--charcoal)] md:text-[3rem]">
-            Governance and Executive Accountability
-          </h2>
-        </div>
+        <Head1 eyebrow="Who is answerable">
+          Governance and Executive Accountability
+        </Head1>
 
         <div className="w-full">
-          <p className="mt-6 max-w-4xl font-serif text-[1.375rem] font-medium leading-[1.25] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.125rem]">
+          <p className={`${DISPLAY} mt-6 max-w-4xl`}>
             Business executives, not data scientists alone, are legally and
             ethically responsible for automated decisions.
           </p>
@@ -5208,10 +4500,10 @@ export default function Week01Introduction() {
             ].map((clause) => (
               <div key={clause.n}>
                 <div className="grid grid-cols-[3ch_1fr] gap-4 border-t border-[var(--charcoal)]/12 py-5">
-                  <span className="pt-1 font-serif text-sm lowercase tracking-[0.1em] text-[var(--champagne)]">
+                  <span className="pt-1 font-sans text-sm lowercase tracking-[0.1em] text-[var(--champagne)]">
                     {clause.n}
                   </span>
-                  <p className="font-serif text-base leading-[1.55] text-[var(--charcoal)] md:text-[1.1875rem]">
+                  <p className={BODY}>
                     {clause.line}
                   </p>
                 </div>
@@ -5243,27 +4535,19 @@ export default function Week01Introduction() {
                 stroke="var(--crimson)"
                 strokeWidth="1.5"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="28"
                 fill="var(--crimson)"
-                fontSize="8.5"
-                letterSpacing="1.6"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 BUSINESS EXECUTIVES
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="42"
                 fill="var(--crimson)"
-                fontSize="7.5"
-                letterSpacing="1.2"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 LEGALLY AND ETHICALLY RESPONSIBLE
               </text>
@@ -5304,27 +4588,19 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.3"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="72"
-                y="92"
+                y="91"
                 fill="var(--charcoal)"
-                fontSize="7"
-                letterSpacing="1.1"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 APPROVES MODEL
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="72"
-                y="104"
+                y="105"
                 fill="var(--charcoal)"
-                fontSize="7"
-                letterSpacing="1.1"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 DEPLOYMENT
               </text>
@@ -5338,27 +4614,19 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.3"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="200"
-                y="92"
+                y="91"
                 fill="var(--charcoal)"
-                fontSize="7"
-                letterSpacing="1.1"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 MONITORS
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="200"
-                y="104"
+                y="105"
                 fill="var(--charcoal)"
-                fontSize="7"
-                letterSpacing="1.1"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 ACCURACY
               </text>
@@ -5372,27 +4640,19 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.3"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="328"
-                y="92"
+                y="91"
                 fill="var(--charcoal)"
-                fontSize="7"
-                letterSpacing="1.1"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 HANDLES CUSTOMER
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="328"
-                y="104"
+                y="105"
                 fill="var(--charcoal)"
-                fontSize="7"
-                letterSpacing="1.1"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 COMPLAINTS
               </text>
@@ -5433,28 +4693,20 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.35"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="153"
                 fill="var(--charcoal)"
-                fontSize="8"
-                letterSpacing="1.5"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 REGULAR AUDITS
               </text>
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="167"
                 fill="var(--charcoal)"
                 fillOpacity="0.65"
-                fontSize="6.75"
-                letterSpacing="0.9"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 ALGORITHMIC BIAS | PERFORMANCE DECLINE | COMPLIANCE ISSUES
               </text>
@@ -5482,15 +4734,11 @@ export default function Week01Introduction() {
                 stroke="var(--charcoal)"
                 strokeOpacity="0.35"
               />
-              <text
+              <text {...SVG_LABEL}
                 x="200"
                 y="216"
                 fill="var(--charcoal)"
-                fontSize="8"
-                letterSpacing="1.3"
                 textAnchor="middle"
-                fontFamily="var(--font-serif), Georgia, serif"
-                fontWeight="600"
               >
                 PROTECTS CUSTOMER TRUST | LONG-TERM REPUTATION
               </text>
@@ -5502,31 +4750,15 @@ export default function Week01Introduction() {
       {/* ==================================================================
           27. MODULE VI
       ================================================================== */}
-      <Slide id="module-6" border align="left">
-        <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-16">
-          <div>
-            <div className={`${MICRO} text-[var(--champagne)]`}>Module</div>
-            <div className="font-serif text-[6rem] font-black leading-[0.8] tracking-[-0.04em] text-[var(--crimson)] md:text-[9rem]">
-              VI
-            </div>
-          </div>
-
-          <div className="md:border-l md:border-[var(--charcoal)]/12 md:pl-16">
-            <h2 className="font-serif text-[2.25rem] font-semibold leading-[1.02] tracking-[-0.025em] text-[var(--charcoal)] md:text-[3.75rem]">
-              The Course Roadmap
-            </h2>
-            <div className="mt-8 h-px w-24 bg-[var(--charcoal)]/20" />
-            <p className="mt-8 max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl">
-              This final section outlines the upcoming weeks of the semester in
-              BUSI 654.
-            </p>
-            <p className="mt-4 max-w-2xl font-serif text-lg font-light italic leading-relaxed text-[var(--charcoal-light)] md:text-2xl">
-              We will explore how AI applies across each major business
-              discipline.
-            </p>
-          </div>
-        </div>
-      </Slide>
+      <ModulePlate1
+        id="module-6"
+        numeral="VI"
+        title="The Course Roadmap"
+        lines={[
+          "This final section outlines the upcoming weeks of the semester in BUSI 654.",
+          "We will explore how AI applies across each major business discipline.",
+        ]}
+      />
 
       {/* ==================================================================
           28. ROADMAP: a semester timetable. Two ruled columns of weeks,
@@ -5534,14 +4766,9 @@ export default function Week01Introduction() {
           read at a glance rather than scrolled.
       ================================================================== */}
       <Slide id="roadmap" border align="left">
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            Eight weeks ahead
-          </div>
-          <h2 className="mt-5 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.875rem]">
-            Semester Roadmap: Applications of AI in Business
-          </h2>
-        </div>
+        <Head1 eyebrow="Eight weeks ahead">
+          Semester Roadmap: Applications of AI in Business
+        </Head1>
 
         <div className="mt-12 grid w-full max-w-5xl gap-x-14 md:grid-cols-2">
           {[
@@ -5580,10 +4807,10 @@ export default function Week01Introduction() {
           ].map((stop) => (
             <div key={stop.n}>
               <div className="grid grid-cols-[3.5rem_1fr] items-baseline gap-5 border-t border-[var(--charcoal)]/10 py-6">
-                <span className="font-serif text-[1.75rem] font-black leading-none tracking-[-0.03em] text-[var(--charcoal)]/18">
+                <span className="font-sans text-[1.75rem] font-black leading-none tracking-[-0.03em] text-[var(--charcoal)]/18">
                   {stop.n}
                 </span>
-                <p className="font-serif text-base leading-[1.55] text-[var(--charcoal)] md:text-[1.0625rem]">
+                <p className={BODY}>
                   {stop.line}
                 </p>
               </div>
@@ -5598,14 +4825,9 @@ export default function Week01Introduction() {
           student should leave holding.
       ================================================================== */}
       <Slide id="summary" border align="left">
-        <div>
-          <div className={`${MICRO} text-[var(--champagne)]`}>
-            Four things to carry forward
-          </div>
-          <h2 className="mt-4 max-w-4xl font-serif text-[1.875rem] font-semibold leading-[1.05] tracking-[-0.02em] text-[var(--charcoal)] md:text-[2.75rem]">
-            Summary and Core Principles for Leaders
-          </h2>
-        </div>
+        <Head1 eyebrow="Four things to carry forward">
+          Summary and Core Principles for Leaders
+        </Head1>
 
         <ol className="mt-8 w-full max-w-4xl">
           {[
@@ -5631,7 +4853,7 @@ export default function Week01Introduction() {
                 <span className={`${MICRO} pt-2 text-[var(--champagne)]`}>
                   {p.n}
                 </span>
-                <p className="font-serif text-lg font-medium leading-[1.35] tracking-[-0.015em] text-[var(--charcoal)] md:text-[1.5rem]">
+                <p className={LEAD}>
                   {p.line}
                 </p>
               </div>

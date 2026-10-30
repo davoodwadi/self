@@ -34,7 +34,7 @@ function ordinal(index: number) {
 
 /** Shared academic rubric label styling. */
 const MICRO =
-  "font-serif text-[0.9375rem] italic font-normal tracking-normal [font-variant-numeric:lining-nums_tabular-nums]";
+  "font-sans text-[0.875rem] font-medium tracking-normal [font-variant-numeric:tabular-nums]";
 
 /**
  * Stage - Cross-fades between variants without ever changing height.
