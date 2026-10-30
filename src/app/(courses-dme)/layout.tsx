@@ -10,7 +10,6 @@ const DME = readCurriculum(DME_DIR);
 const bodoni = Libre_Bodoni({
   variable: "--font-bodoni",
   subsets: ["latin"],
-  weight: ["400", "600"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -18,7 +17,6 @@ const bodoni = Libre_Bodoni({
 const franklin = Libre_Franklin({
   variable: "--font-franklin",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 

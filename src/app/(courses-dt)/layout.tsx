@@ -13,14 +13,12 @@ const fraunces = Fraunces({
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
 
 const libreBaskerville = Libre_Baskerville({
   variable: "--font-libre-baskerville",
   subsets: ["latin"],
-  weight: ["400", "700"],
   style: ["normal", "italic"],
 });
 

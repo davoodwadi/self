@@ -7,7 +7,6 @@ import { FitSlides } from "@/components/slide-components/FitSlides";
 const sourceSans = Source_Sans_3({
   variable: "--font-open-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });
