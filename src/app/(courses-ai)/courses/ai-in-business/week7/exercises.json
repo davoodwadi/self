@@ -1,0 +1,257 @@
+[
+  {
+    "type": "quiz",
+    "slide_id": "bottleneck",
+    "question_text": "An insurer's claims-portal team used to spend 5 days specifying a feature, 20 days writing the code and 10 days testing and reviewing it. A coding model now writes the code 10 times faster, but nothing else changes. Where will further investment shorten delivery the most?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "A model that writes the code 20 times faster instead of 10",
+        "option_explanation": "Coding now takes 2 days of a 17-day total. Halving it again saves only 1 day."
+      },
+      {
+        "option_text": "Clearer acceptance criteria up front and faster automated testing afterwards",
+        "option_explanation": "Correct. Specification and verification now take 15 of the 17 days, so that is where the binding constraint sits."
+      },
+      {
+        "option_text": "Asking the model to generate several versions of each feature",
+        "option_explanation": "More generated code means more to verify. Generating the wrong feature faster adds maintenance burden, not value."
+      },
+      {
+        "option_text": "Hiring more developers to type code",
+        "option_explanation": "Typing code is no longer the bottleneck. The extra developers would wait on specification and testing."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "type": "identify",
+    "slide_id": "validating-hypotheses",
+    "prompt": "A food-delivery app is considering a group-ordering feature. For each concern, name the product risk it raises.",
+    "options": [
+      { "id": "value", "label": "Value risk" },
+      { "id": "usability", "label": "Usability risk" },
+      { "id": "feasibility", "label": "Feasibility risk" },
+      { "id": "viability", "label": "Viability risk" }
+    ],
+    "cases": [
+      {
+        "id": "want",
+        "text": "Will office workers actually order lunch together, or do they prefer to order alone?",
+        "answer": "value",
+        "explanation": "Whether customers truly want the capability is value risk. Only real user behavior can settle it."
+      },
+      {
+        "id": "split",
+        "text": "In testing, people could not find where to split the bill among the group.",
+        "answer": "usability",
+        "explanation": "Users failing to navigate the interface is usability risk, which a quick prototype session can reveal."
+      },
+      {
+        "id": "sync",
+        "text": "Can the system keep twenty people's carts in sync in real time without dropping items?",
+        "answer": "feasibility",
+        "explanation": "Whether the system can be built reliably within technical constraints is feasibility risk."
+      },
+      {
+        "id": "fees",
+        "text": "Splitting one payment across many cards may raise card fees above the delivery margin.",
+        "answer": "viability",
+        "explanation": "Unit economics that may not work is business viability risk."
+      },
+      {
+        "id": "alcohol",
+        "text": "Group orders could let one adult buy alcohol for colleagues without checking their age.",
+        "answer": "viability",
+        "explanation": "Compliance with legal rules is part of viability risk."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "vibe-coding",
+    "prompt": "Sort each way of working into vibe coding or AI-assisted software engineering.",
+    "bins": [
+      { "id": "vibe", "label": "Vibe coding" },
+      { "id": "assisted", "label": "AI-assisted software engineering" }
+    ],
+    "cards": [
+      {
+        "id": "budget",
+        "text": "A finance analyst asks a model for a budget tracker, clicks through the result in the browser and pastes each error back until it works",
+        "bin": "vibe",
+        "explanation": "The analyst judges only the running app and never reads the code."
+      },
+      {
+        "id": "refactor",
+        "text": "A developer asks a model to rename a function across a module, then reads each changed line before committing",
+        "bin": "assisted",
+        "explanation": "The developer uses the model to speed up refactoring but inspects and owns the code."
+      },
+      {
+        "id": "landing",
+        "text": "A marketer describes an event sign-up page in plain English and keeps adjusting the prompt until the layout looks right",
+        "bin": "vibe",
+        "explanation": "The work is steered by prompts and visual checks, not by editing the source."
+      },
+      {
+        "id": "review",
+        "text": "An engineer accepts a model's suggested database query only after checking it against the schema and running the tests",
+        "bin": "assisted",
+        "explanation": "Inspecting every line before it goes in is professional engineering with a model's help."
+      },
+      {
+        "id": "quiz",
+        "text": "A teacher builds a classroom quiz game in an afternoon without ever opening the code files",
+        "bin": "vibe",
+        "explanation": "Building a working tool without reading or editing the code is vibe coding."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "coding-agents",
+    "prompt": "An autonomous coding agent is assigned a bug report: customers in Quebec are charged the wrong sales tax. Put its work in order.",
+    "steps": [
+      {
+        "id": "read",
+        "text": "The agent searches the repository and reads the modules that calculate tax",
+        "explanation": "The agent first finds and reads the relevant code."
+      },
+      {
+        "id": "edit",
+        "text": "It edits the tax rule in the files involved",
+        "explanation": "With the cause located, the agent changes the code."
+      },
+      {
+        "id": "run",
+        "text": "It runs the test suite from the terminal",
+        "explanation": "The tests give objective feedback on the change."
+      },
+      {
+        "id": "failure",
+        "text": "It reads the output of one failing test about rounding",
+        "explanation": "The failure output tells the agent what is still wrong."
+      },
+      {
+        "id": "iterate",
+        "text": "It fixes the rounding and reruns the suite until every check passes",
+        "explanation": "The agent iterates until all checks pass."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "technical-debt",
+    "question_text": "A retailer let a coding model generate its loyalty-points system quickly. A year later, the points rate must change. Engineers find the calculation pasted into nine separate files, and nobody on the team can explain how two of them work. What has the team accumulated?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Specification bloat",
+        "option_explanation": "Specification bloat is an overlong requirements document. The problem here is in the code itself."
+      },
+      {
+        "option_text": "A security vulnerability",
+        "option_explanation": "Nothing here exposes the system to attack. The cost is slower, riskier change."
+      },
+      {
+        "option_text": "Technical debt from duplicated code, plus comprehension debt",
+        "option_explanation": "Correct. Copied blocks make one rule change nine changes, and code nobody understands is comprehension debt."
+      },
+      {
+        "option_text": "Nothing yet, because the system still works",
+        "option_explanation": "Debt is the future rework cost. It shows up exactly when a change like this one is needed."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "type": "match",
+    "slide_id": "security-vulnerabilities",
+    "prompt": "Match each security flaw to the case that shows it.",
+    "term_label": "Flaw",
+    "match_label": "Case",
+    "pairs": [
+      {
+        "id": "injection",
+        "term": "SQL injection",
+        "match": "A search box puts the visitor's typed text straight into a database query",
+        "explanation": "Building a query from unvalidated user text lets an attacker rewrite the query."
+      },
+      {
+        "id": "secret",
+        "term": "Hardcoded secret",
+        "match": "A map app's JavaScript file contains the company's cloud storage password",
+        "explanation": "Any browser user can open the client-side code and read the credential."
+      },
+      {
+        "id": "authz",
+        "term": "Missing authorization check",
+        "match": "Changing the number in /orders/1043 to /orders/1044 shows a stranger's order",
+        "explanation": "The app never checks that the record belongs to the signed-in user."
+      },
+      {
+        "id": "hallucination",
+        "term": "Package hallucination",
+        "match": "Generated code imports a library called pdf-merge-turbo that no one has ever published",
+        "explanation": "The model invented a plausible-sounding name that does not exist."
+      },
+      {
+        "id": "slopsquat",
+        "term": "Slopsquatting",
+        "match": "Someone publishes a package under a name models often invent, with malware inside",
+        "explanation": "Attackers register commonly hallucinated names so the malware runs on install."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "tiered-governance",
+    "prompt": "A hospital network is setting up tiered governance. Place each tool in its tier.",
+    "bins": [
+      { "id": "t1", "label": "Tier 1" },
+      { "id": "t2", "label": "Tier 2" },
+      { "id": "t3", "label": "Tier 3" }
+    ],
+    "cards": [
+      {
+        "id": "rename",
+        "text": "A nurse manager's script that renames shift-roster files on a personal laptop",
+        "bin": "t1",
+        "explanation": "A personal utility on non-sensitive data can be built freely in a sandbox."
+      },
+      {
+        "id": "mockup",
+        "text": "A clickable prototype of a new visitor check-in screen, filled with made-up names",
+        "bin": "t1",
+        "explanation": "A UI prototype on synthetic data is Tier 1."
+      },
+      {
+        "id": "beds",
+        "text": "A bed-occupancy dashboard shared across the surgical department",
+        "bin": "t2",
+        "explanation": "A shared departmental dashboard needs IT hosting, single sign-on, role-based permissions and peer review."
+      },
+      {
+        "id": "supplies",
+        "text": "A supply-request tracker used by every ward's administrators",
+        "bin": "t2",
+        "explanation": "An internal tool shared across teams sits in Tier 2."
+      },
+      {
+        "id": "billing",
+        "text": "The system that bills patients and their insurers",
+        "bin": "t3",
+        "explanation": "Financial transaction systems require full engineering, security audits and formal change control."
+      },
+      {
+        "id": "triage",
+        "text": "A model that ranks emergency patients for triage",
+        "bin": "t3",
+        "explanation": "A regulated decision pipeline about patients is Tier 3."
+      }
+    ]
+  }
+]
