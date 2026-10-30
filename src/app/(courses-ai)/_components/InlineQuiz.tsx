@@ -42,29 +42,29 @@ export default function InlineQuiz({
   return (
     <div className="mx-auto w-full max-w-3xl text-left">
       {/* Masthead */}
-      <div className="flex items-baseline justify-between border-b border-[var(--charcoal)]/12 pb-3">
-        <span className="font-sans text-sm font-semibold text-[var(--charcoal-light)]">
+      <div className="flex items-baseline justify-between border-b border-[var(--ink)]/12 pb-3">
+        <span className="font-sans text-sm font-semibold text-[var(--ink-2)]">
           Knowledge Check
         </span>
-        <span className="font-sans text-sm font-medium text-[var(--charcoal-light)]/70">
+        <span className="font-sans text-sm font-medium text-[var(--ink-2)]/70">
           {hasSubmitted ? (isCorrect ? "Correct" : "Incorrect") : "Unanswered"}
         </span>
       </div>
 
       {/* Question */}
-      <p className="mt-5 font-sans text-xl font-semibold leading-snug text-[var(--charcoal)] md:text-2xl">
+      <p className="mt-5 font-sans text-xl font-semibold leading-snug text-[var(--ink)] md:text-2xl">
         {quizData.question_text}
       </p>
 
       {/* Options: fixed geometry, state carried in colour only */}
-      <ul className="mt-6 border-t border-[var(--charcoal)]/10">
+      <ul className="mt-6 border-t border-[var(--ink)]/10">
         {quizData.options.map((option, index) => {
           const isSelected = selectedOption === index;
           const isAnswer = index === quizData.correct_answer_index;
 
-          let letter = "text-[var(--charcoal-light)]/70";
-          let body = "text-[var(--charcoal-light)]";
-          let row = "border-[var(--charcoal)]/10";
+          let letter = "text-[var(--ink-2)]/70";
+          let body = "text-[var(--ink-2)]";
+          let row = "border-[var(--ink)]/10";
 
           if (hasSubmitted) {
             if (isAnswer) {
@@ -72,17 +72,17 @@ export default function InlineQuiz({
               body = "";
               row = "";
             } else if (isSelected) {
-              letter = "text-[var(--crimson)]";
-              body = "text-[var(--crimson)]";
-              row = "border-[var(--crimson)]/30";
+              letter = "text-[var(--accent)]";
+              body = "text-[var(--accent)]";
+              row = "border-[var(--accent)]/30";
             } else {
-              letter = "text-[var(--charcoal-light)]/70";
-              body = "text-[var(--charcoal-light)]/70";
+              letter = "text-[var(--ink-2)]/70";
+              body = "text-[var(--ink-2)]/70";
             }
           } else if (isSelected) {
-            letter = "text-[var(--crimson)]";
-            body = "text-[var(--charcoal)]";
-            row = "border-[var(--crimson)]/30";
+            letter = "text-[var(--accent)]";
+            body = "text-[var(--ink)]";
+            row = "border-[var(--accent)]/30";
           }
 
           const answerColour =
@@ -98,7 +98,7 @@ export default function InlineQuiz({
                 className={`flex w-full items-baseline gap-5 border-b py-3.5 text-left transition-colors duration-150 ${row} ${
                   hasSubmitted
                     ? "cursor-default"
-                    : "cursor-pointer hover:bg-[var(--charcoal)]/[0.02]"
+                    : "cursor-pointer hover:bg-[var(--ink)]/[0.02]"
                 }`}
                 style={
                   hasSubmitted && isAnswer
@@ -130,7 +130,7 @@ export default function InlineQuiz({
           type="button"
           onClick={() => selectedOption !== null && setHasSubmitted(true)}
           disabled={selectedOption === null || hasSubmitted}
-          className="border-b border-[var(--charcoal)] pb-1 font-sans text-sm font-semibold text-[var(--charcoal)] transition-colors duration-150 hover:border-[var(--crimson)] hover:text-[var(--crimson)] disabled:cursor-not-allowed disabled:border-[var(--charcoal)]/15 disabled:text-[var(--charcoal-light)]/70"
+          className="border-b border-[var(--ink)] pb-1 font-sans text-sm font-semibold text-[var(--ink)] transition-colors duration-150 hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:cursor-not-allowed disabled:border-[var(--ink)]/15 disabled:text-[var(--ink-2)]/70"
         >
           {hasSubmitted ? "Submitted" : "Submit"}
         </button>
@@ -139,7 +139,7 @@ export default function InlineQuiz({
           <button
             type="button"
             onClick={() => setShowHint(!showHint)}
-            className="font-sans text-sm font-medium text-[var(--charcoal-light)]/75 transition-colors duration-150 hover:text-[var(--charcoal)]"
+            className="font-sans text-sm font-medium text-[var(--ink-2)]/75 transition-colors duration-150 hover:text-[var(--ink)]"
           >
             {showHint ? "Hide hint" : "Hint"}
           </button>
@@ -150,10 +150,10 @@ export default function InlineQuiz({
         Reserved feedback region. Every variant lives in the same grid cell, so
         the tallest one fixes the height before anything is clicked.
       */}
-      <div className="mt-6 grid border-t border-[var(--charcoal)]/12 pt-5">
+      <div className="mt-6 grid border-t border-[var(--ink)]/12 pt-5">
         {/* idle */}
         <div aria-hidden={stage !== "idle"} className={layer(stage === "idle")}>
-          <p className="font-sans text-sm text-[var(--charcoal-light)]/70">
+          <p className="font-sans text-sm text-[var(--ink-2)]/70">
             Choose an answer to continue
           </p>
         </div>
@@ -161,10 +161,10 @@ export default function InlineQuiz({
         {/* hint */}
         {quizData.hint && (
           <div aria-hidden={stage !== "hint"} className={layer(stage === "hint")}>
-            <span className="mb-2 block font-sans text-sm font-semibold text-[var(--charcoal-light)]">
+            <span className="mb-2 block font-sans text-sm font-semibold text-[var(--ink-2)]">
               Hint
             </span>
-            <p className="font-sans text-base leading-relaxed text-[var(--charcoal-light)]">
+            <p className="font-sans text-base leading-relaxed text-[var(--ink-2)]">
               {quizData.hint}
             </p>
           </div>
@@ -186,11 +186,11 @@ export default function InlineQuiz({
             >
               <div className="grid gap-5 md:grid-cols-2 md:gap-8">
               {!isAnswer && option.option_explanation && (
-                <div className="border-l border-[var(--crimson)] pl-5">
-                  <span className="mb-1.5 block font-sans text-sm font-semibold text-[var(--crimson)]">
+                <div className="border-l border-[var(--accent)] pl-5">
+                  <span className="mb-1.5 block font-sans text-sm font-semibold text-[var(--accent)]">
                     Your answer
                   </span>
-                  <p className="font-sans text-[0.9375rem] leading-[1.6] text-[var(--charcoal-light)]">
+                  <p className="font-sans text-[0.9375rem] leading-[1.6] text-[var(--ink-2)]">
                     {option.option_explanation}
                   </p>
                 </div>
@@ -206,7 +206,7 @@ export default function InlineQuiz({
                       ? "Correct"
                       : `Answer: ${optionLetters[quizData.correct_answer_index]}`}
                   </span>
-                  <p className="font-sans text-[0.9375rem] leading-[1.6] text-[var(--charcoal-light)]">
+                  <p className="font-sans text-[0.9375rem] leading-[1.6] text-[var(--ink-2)]">
                     {answer.option_explanation}
                   </p>
                 </div>
@@ -215,7 +215,7 @@ export default function InlineQuiz({
               </div>
 
               {quizData.correct_answer_citation && (
-                <p className="mt-4 font-sans text-sm text-[var(--charcoal-light)]/75">
+                <p className="mt-4 font-sans text-sm text-[var(--ink-2)]/75">
                   {quizData.correct_answer_citation}
                 </p>
               )}

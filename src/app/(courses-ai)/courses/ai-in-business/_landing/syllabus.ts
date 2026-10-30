@@ -1,10 +1,5 @@
-// Row copy for the BUSI 654 landing. Order matches the teaching sequence,
-// including the Agentic AI interlude after Week 03.
-//
-// Descriptions for Weeks 02 to 06, 08 and 09 are the "Semester Roadmap" lines in
-// 01-introduction/content.md with their leading "Week NN" dropped, since each
-// row already carries its week. Week 01 uses its opening slide heading. Week 07
-// uses its own title-slide subtitle so Indigeneity is not lost from "EDII".
+// Row copy for the BUSI 654 landing. Ten-week teaching sequence from
+// technical foundations to functional applications, strategy, and governance.
 
 export type SyllabusEntry = {
   slug: string;
@@ -17,91 +12,93 @@ export type SyllabusEntry = {
 
 export const SYLLABUS: SyllabusEntry[] = [
   {
-    slug: "01-introduction",
+    slug: "week1",
     kind: "week",
-    label: "Week 01",
-    numeral: "01",
-    title: "Course Overview and Foundations",
-    description: "Why business leaders must understand AI.",
+    label: "Week 1",
+    numeral: "1",
+    title: "Foundations of AI and Machine Learning in Business",
+    description:
+      "Framing business decisions as prediction problems, predictive versus generative AI, and deep learning for unstructured data.",
   },
   {
-    slug: "02-ai-in-marketing",
+    slug: "week2",
     kind: "week",
-    label: "Week 02",
-    numeral: "02",
+    label: "Week 2",
+    numeral: "2",
+    title: "Large Language Models, Prompting, and Agentic AI",
+    description:
+      "Foundation models, prompt engineering, retrieval-augmented generation, tool use, and autonomous multi-agent workflows.",
+  },
+  {
+    slug: "week3",
+    kind: "week",
+    label: "Week 3",
+    numeral: "3",
     title: "AI in Marketing and Consumer Behavior",
     description:
-      "Explores marketing, demand sensing, dynamic personalization, and consumer behavior.",
+      "Demand sensing, dynamic personalization, recommender systems, and AI shopping agents acting on consumers' behalf.",
   },
   {
-    slug: "03-ai-in-finance",
+    slug: "week4",
     kind: "week",
-    label: "Week 03",
-    numeral: "03",
+    label: "Week 4",
+    numeral: "4",
     title: "AI in Finance",
     description:
-      "Covers finance, credit scoring, algorithmic risk management, and fraud prevention.",
+      "Credit scoring, algorithmic risk management, financial forecasting, and automated fraud detection.",
   },
   {
-    slug: "agentic-ai",
-    kind: "interlude",
-    label: "New Paradigm",
-    numeral: "",
-    title: "Agentic AI and Vibe Coding",
-    description:
-      "Moving away from manual coding to autonomous agents and orchestration.",
-  },
-  {
-    slug: "04-ai-in-human-resources",
+    slug: "week5",
     kind: "week",
-    label: "Week 04",
-    numeral: "04",
+    label: "Week 5",
+    numeral: "5",
     title: "AI in Human Resources",
     description:
-      "Examines human resources, talent acquisition, workforce planning, and organizational analytics.",
+      "Talent acquisition, resume screening audits, workforce planning, skill augmentation, and organizational analytics.",
   },
   {
-    slug: "05-ai-in-operations-supply-chain",
+    slug: "week6",
     kind: "week",
-    label: "Week 05",
-    numeral: "05",
+    label: "Week 6",
+    numeral: "6",
     title: "AI in Operations and Supply Chain",
     description:
-      "Focuses on operations, logistics, demand forecasting, and supply chain visibility.",
+      "Demand forecasting, inventory optimization, logistics routing, predictive maintenance, and supply chain visibility.",
   },
   {
-    slug: "06-ai-in-business-strategy",
+    slug: "week7",
     kind: "week",
-    label: "Week 06",
-    numeral: "06",
+    label: "Week 7",
+    numeral: "7",
+    title: "AI in Product Development and Software Engineering",
+    description:
+      "Rapid prototyping, vibe coding, agentic software engineering workflows, and AI-assisted product discovery.",
+  },
+  {
+    slug: "week8",
+    kind: "week",
+    label: "Week 8",
+    numeral: "8",
     title: "AI in Business Strategy",
     description:
-      "Analyzes corporate strategy, competitive advantage, and data moats.",
+      "Corporate strategy, competitive advantage, data moats, build-versus-buy decisions, and evaluating AI return on investment.",
   },
   {
-    slug: "07-edii",
+    slug: "week9",
     kind: "week",
-    label: "Week 07",
-    numeral: "07",
-    title: "EDII in AI",
-    description: "Equity, Diversity, Inclusion, and Indigeneity in AI systems.",
-  },
-  {
-    slug: "08-sustainability",
-    kind: "week",
-    label: "Week 08",
-    numeral: "08",
-    title: "Sustainability in AI",
+    label: "Week 9",
+    numeral: "9",
+    title: "EDII, Fairness, and Responsible AI",
     description:
-      "Covers sustainability and the environmental footprint of computing.",
+      "Equity, Diversity, Inclusion, and Indigeneity in AI systems, algorithmic bias, behavioral auditing, and governance.",
   },
   {
-    slug: "09-product-development",
+    slug: "week10",
     kind: "week",
-    label: "Week 09",
-    numeral: "09",
-    title: "AI in Product Development",
+    label: "Week 10",
+    numeral: "10",
+    title: "Sustainability and the Future of AI",
     description:
-      "Examines product development and modern agentic engineering workflows.",
+      "Environmental footprint of compute, energy and water trade-offs, green AI practices, and long-term organizational readiness.",
   },
 ];

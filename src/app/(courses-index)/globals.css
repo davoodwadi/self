@@ -3,19 +3,19 @@
 /* ==========================================================================
    COURSES INDEX: design system
    --------------------------------------------------------------------------
-   A junction page, not a syllabus. Deliberately neutral: each course landing
-   carries its own strong identity, so the hub stays quiet and lets the four
-   titles do the work.
+   A junction page, not a syllabus. Clean white ground, 1px hairlines, and
+   upright Source Sans 3 typography aligned with the course decks.
    ========================================================================== */
 
 :root {
-  --paper: #faf9f6;
-  --paper-2: #ffffff;
-  --ink: #17161a;
-  --ink-2: #3a383f;
-  --ink-3: #6f6c76;
-  --rule: #e0dcd2;
+  --paper: #ffffff;
+  --paper-2: #f5f4f0;
+  --ink: #1a1a1d;
+  --ink-2: #2d2d32;
+  --ink-3: #55555a;
+  --rule: #e2dfd9;
   --signal: #8b1c1c;
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
 @theme inline {
@@ -26,8 +26,7 @@
   --color-ink-3: var(--ink-3);
   --color-rule: var(--rule);
   --color-signal: var(--signal);
-  --font-display: var(--font-fraunces), Georgia, serif;
-  --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
+  --font-sans: var(--font-sans);
 }
 
 body {

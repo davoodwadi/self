@@ -73,7 +73,7 @@ export default function SortExercise({
 
   return (
     <div className="w-full">
-      <ExerciseHeader kind="Sort into groups" prompt={data.prompt} />
+      <ExerciseHeader prompt={data.prompt} />
 
       {/* the pile: every card keeps its slot, so taking one out never reflows the rest */}
       <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" aria-label="Cards to sort">

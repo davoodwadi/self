@@ -6,7 +6,7 @@ week: week6
 ---
 
 ## Title Slide
-- Week 06
+- Week 6
 - Social platforms blend algorithmic entertainment feeds, creator trust, and native checkout to turn passive discovery into immediate purchase.
 
 ## From Social Networks to Algorithmic Discovery Engines [no-exercise]

@@ -6,7 +6,7 @@ week: week9
 ---
 
 ## Title Slide
-- Week 09
+- Week 9
 - The sale is not the end of the relationship. What happens after the purchase decides whether the consumer returns.
 
 ## After the Purchase [no-exercise]

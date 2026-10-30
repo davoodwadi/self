@@ -4,7 +4,7 @@
     "slide_id": "correlation",
     "question_text": "Across 40 cafés, the correlation between the hours of live music per evening and evening sales is 0.02. A scatter plot shows sales rising up to about three hours of music and falling beyond that. What can the analyst conclude?",
     "hint": "Ask what kind of relationship r measures.",
-    "correct_answer_citation": "Week 09: Correlation",
+    "correct_answer_citation": "Week 9: Correlation",
     "correct_answer_index": 2,
     "options": [
       {
@@ -116,7 +116,7 @@
     "slide_id": "interpreting-logistic-regression",
     "question_text": "Without a loyalty discount, 20 percent of customers renew their subscription. A logistic regression gives the discount an odds ratio of 2.0, holding other variables constant. What is the predicted probability of renewal with the discount?",
     "hint": "Convert the probability to odds, apply the odds ratio, and convert back.",
-    "correct_answer_citation": "Week 09: Interpreting Logistic Regression",
+    "correct_answer_citation": "Week 9: Interpreting Logistic Regression",
     "correct_answer_index": 1,
     "options": [
       {
@@ -256,7 +256,7 @@
     "slide_id": "estimating-how-ai-agents-weight-attributes",
     "question_text": "A conditional logit model of an AI agent's choices between laundry detergents gives a ratio of 0.40 between the cent and the whole-dollar price coefficients, with a confidence interval from 0.25 to 0.55. What does this indicate?",
     "hint": "Compare the interval with the normative value.",
-    "correct_answer_citation": "Week 09: Estimating How AI Agents Weight Attributes",
+    "correct_answer_citation": "Week 9: Estimating How AI Agents Weight Attributes",
     "correct_answer_index": 3,
     "options": [
       {

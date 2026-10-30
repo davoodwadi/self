@@ -23,7 +23,7 @@ function RowBody({ week, n }: { week: Row; n: number }) {
         }
         style={{ fontFamily: "var(--font-heading)", fontWeight: 500 }}
       >
-        {String(n).padStart(2, "0")}
+        {n}
       </span>
       <div className="min-w-0">
         <h3

@@ -6,7 +6,7 @@ week: week-2
 ---
 
 ## Title Slide
-- Week 02
+- Week 2
 - Big Data, Porter's Value Chain, and Socio-Technical Systems
 - Exploring data structures, Big Data concepts, and organizational frameworks.
 

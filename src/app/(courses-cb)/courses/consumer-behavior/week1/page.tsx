@@ -1,39 +1,28 @@
 "use client";
 
 import React from "react";
-import { SlideDeck, Slide, Title } from "@/components/slide-components/SlideComponents";
+import {
+  SlideDeck,
+  Slide,
+  Title,
+} from "@/components/slide-components/SlideComponents";
 import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
 import exercisesData from "./exercises.json";
 import {
-  Receipt,
   Iceberg,
-  OneSecondChain,
   ConsumptionCycle,
-  ConsumerMark,
-  MarketerMark,
   BuysUses,
-  CalculatorWalk,
-  ShortcutWalk,
   FourPulls,
-  CalculatorError,
   NeedWantTrio,
-  RoleGlyph,
   FamilyCar,
-  OneMessage,
-  SortedGroups,
   SegmentationPillars,
-  Informs,
-  Marionette,
-  DarkPattern,
-  Punished,
-  RegretCheck,
   DelegatedPurchase,
   HiddenUnitPrice,
 } from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR | WEEK 01: INTRODUCTION TO CONSUMER BEHAVIOR
+// CONSUMER BEHAVIOR | WEEK 1: INTRODUCTION TO CONSUMER BEHAVIOR
 // ============================================================================
 // Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -60,14 +49,14 @@ const SERIF = { fontFamily: "var(--font-heading)", fontWeight: 500 } as const;
 type Tone = "signal" | "counter" | "ink";
 
 const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
+  signal: "border-[var(--rule)]",
+  counter: "border-[var(--rule)]",
+  ink: "border-[var(--rule)]",
 };
 
 const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--signal)]",
-  counter: "text-[var(--counter)]",
+  signal: "text-[var(--ink)]",
+  counter: "text-[var(--ink)]",
   ink: "text-[var(--ink)]",
 };
 
@@ -98,9 +87,9 @@ function Term({ children, tone = "ink" }: { children: React.ReactNode; tone?: To
   return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
-/** Inline colour for a phrase inside a serif line. */
+/** Inline emphasis for a phrase inside a line. */
 function Tint({ children, tone = "signal" }: { children: React.ReactNode; tone?: Tone }) {
-  return <span className={TEXT[tone]}>{children}</span>;
+  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
 /** Hairline-topped block. */
@@ -114,7 +103,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
+    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -182,48 +171,14 @@ function Heading({
   );
 }
 
-/** Two ruled columns, each a line with its plate beneath. */
-function PlateColumn({
-  tone = "ink",
-  text,
-  plate,
-}: {
-  tone?: Tone;
-  text: React.ReactNode;
-  plate: React.ReactNode;
-}) {
-  return (
-    <div className="flex min-w-0 flex-col gap-4">
-      <Ruled tone={tone} className="!pt-4">
-        <P className="!text-[clamp(1.05rem,1.5vw,1.3rem)]">{text}</P>
-      </Ruled>
-      <Plate className="mt-auto">{plate}</Plate>
-    </div>
-  );
-}
-
-function Columns({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <div className={cn("grid w-full items-stretch gap-12 lg:grid-cols-2 lg:gap-14", className)}>
-      {children}
-    </div>
-  );
-}
-
 /** The ethical border: helping, manipulating, the trickery aimed at shoppers
- *  and at their agents, and its price, each line with its plate. */
+ *  and at their agents, and its price. */
 const ETHICS: {
   key: string;
-  tone: Tone;
-  label?: string;
-  plate: React.ReactNode;
   text: React.ReactNode;
 }[] = [
   {
     key: "helping",
-    tone: "counter",
-    label: "Helping",
-    plate: <Informs />,
     text: (
       <>
         <Tint tone="counter">Ethical marketing</Tint> informs buyers and delivers genuine
@@ -233,9 +188,6 @@ const ETHICS: {
   },
   {
     key: "manipulating",
-    tone: "signal",
-    label: "Manipulating",
-    plate: <Marionette />,
     text: (
       <>
         <Tint>Manipulative marketing</Tint> takes unfair advantage of human cognitive
@@ -245,8 +197,6 @@ const ETHICS: {
   },
   {
     key: "dark",
-    tone: "signal",
-    plate: <DarkPattern />,
     text: (
       <>
         <Tint>Dark patterns</Tint> are deceptive website designs that trick shoppers into
@@ -256,8 +206,6 @@ const ETHICS: {
   },
   {
     key: "agents",
-    tone: "signal",
-    plate: <HiddenUnitPrice />,
     text: (
       <>
         Dark patterns can also target the <Tint>AI agents</Tint> that shop for consumers.
@@ -268,8 +216,6 @@ const ETHICS: {
   },
   {
     key: "punish",
-    tone: "ink",
-    plate: <Punished />,
     text: (
       <>
         Regulators and consumers increasingly <Tint>punish</Tint> companies that rely on
@@ -283,33 +229,28 @@ const numerals = `.step-n::before { content: attr(data-n); }`;
 
 export default function Week1() {
   return (
-    <SlideDeck label="Week 01">
+    <SlideDeck label="Week 1">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
-          <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
-              Week 01
+        <div className="w-full max-w-4xl">
+          <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
+            Week 1
+          </p>
+          <p className="type-caption mt-2">Consumer Behavior | Davood Wadi, PhD</p>
+          <Title className="mt-6">Introduction to Consumer Behavior</Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote">
+              People do not buy products.{" "}
+              {"They buy solutions to "}
+              <Tint>feelings</Tint>
+              {", "}
+              <Tint>problems</Tint>
+              {", and "}
+              <Tint>social needs</Tint>
+              .
             </p>
-            <p className="type-caption mt-2">Consumer Behavior | Davood Wadi, PhD</p>
-            <Title className="mt-8 !max-w-[14ch]">Introduction to Consumer Behavior</Title>
-            <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
-              <p className="type-quote">
-                People do not buy products.{" "}
-                {"They buy solutions to "}
-                <Tint>feelings</Tint>
-                {", "}
-                <Tint>problems</Tint>
-                {", and "}
-                <Tint>social needs</Tint>
-                .
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto w-full max-w-[380px] -rotate-2">
-            <Receipt />
           </div>
         </div>
       </Slide>
@@ -319,31 +260,24 @@ export default function Week1() {
           ================================================================ */}
       <Slide className={TIGHT} id="the-tip-of-the-iceberg" border>
         <Heading>The Tip of the Iceberg</Heading>
-        {/* The iceberg sits beside the two opening lines. Before, after and
-            the whole-chain line share the row beneath it. */}
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1.3fr] lg:gap-x-12">
-          <Statement className="!max-w-[26ch] lg:col-start-1 lg:row-start-1 lg:self-end">
-            Most people think consumer behavior is just shopping.
-          </Statement>
-          <Plate wide className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
-            <Iceberg />
-          </Plate>
-          <div className="min-w-0 lg:col-start-1 lg:row-start-2 lg:self-start">
+          <div className="flex min-w-0 flex-col gap-5">
+            <Statement className="!max-w-[26ch]">
+              Most people think consumer behavior is just shopping.
+            </Statement>
             <Big className="!text-[clamp(1.3rem,2vw,1.7rem)]">
               The purchase at the register is only one second in a long chain.
             </Big>
-            <Plate className="mt-5 max-w-[400px]">
-              <OneSecondChain />
-            </Plate>
           </div>
+          <Plate wide>
+            <Iceberg />
+          </Plate>
         </div>
         <div className="mt-10 grid w-full gap-8 md:grid-cols-3">
           <Ruled tone="ink">
-            <p className="type-label mb-3 !text-[var(--ink)]">Before</p>
             <P>People spend weeks noticing problems, searching options, and asking friends.</P>
           </Ruled>
           <Ruled tone="ink">
-            <p className="type-label mb-3 !text-[var(--ink)]">After</p>
             <P>After the sale, they use the item, feel happy or regretful, and tell others.</P>
           </Ruled>
           <Ruled tone="ink">
@@ -389,16 +323,12 @@ export default function Week1() {
               marketer: "The marketer monitors satisfaction, returns, and repeat purchases.",
             },
           ].map((s) => (
-            <li key={s.stage} className="min-w-0 border-t-2 border-[var(--ink)] pt-4">
+            <li key={s.stage} className="min-w-0 border-t border-[var(--rule)] pt-4">
               <p className="type-h2 !font-normal">{s.stage}</p>{" "}
-              <div className="mt-4 flex items-start gap-3">
-                <ConsumerMark />
-                <p className="type-body">{s.consumer}</p>
-              </div>{" "}
-              <div className="mt-3 flex items-start gap-3 border-t border-[var(--rule)] pt-3">
-                <MarketerMark />
-                <p className="type-body">{s.marketer}</p>
-              </div>
+              <p className="type-body mt-4">{s.consumer}</p>{" "}
+              <p className="type-body mt-3 border-t border-[var(--rule)] pt-3">
+                {s.marketer}
+              </p>
             </li>
           ))}
         </ol>
@@ -416,18 +346,6 @@ export default function Week1() {
             <Lead>
               In common speech, people use consumer and customer to mean the same thing.
             </Lead>
-            <div
-              aria-hidden
-              className="mt-4 flex items-baseline gap-5 text-[clamp(1.4rem,2.4vw,2rem)]"
-              style={SERIF}
-            >
-              <span className="text-[var(--counter)]">consumer</span>
-              <span className="relative text-[var(--ink-3)]">
-                =
-                <span className="absolute left-1/2 top-1/2 h-[1.2em] w-[2px] -translate-x-1/2 -translate-y-1/2 rotate-[24deg] bg-[var(--signal)]" />
-              </span>
-              <span className="text-[var(--signal)]">customer</span>
-            </div>
             <div className="mt-8 grid w-full gap-6 sm:grid-cols-2">
               <Ruled tone="ink">
                 <Big>
@@ -476,30 +394,26 @@ export default function Week1() {
         exercise={exercise["why-consumers-are-not-calculators"]}
       >
         <Heading>Why Consumers Are Not Calculators</Heading>
-        {/* The old model and the real one side by side on the left. The four
-            pulls on real decisions on the right. */}
-        <div className="grid w-full items-start gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
-          <div className="min-w-0">
+        <div className="grid w-full items-start gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
             <Lead>
               Old economics assumed buyers were <Term>perfectly rational</Term>.
             </Lead>
-            <Columns className="mt-6 !gap-6 sm:grid-cols-2">
-              <PlateColumn
-                tone="ink"
-                text="This model assumed buyers compare all choices, calculate costs, and pick the best option."
-                plate={<CalculatorWalk />}
-              />
-              <PlateColumn
-                tone="ink"
-                text={
-                  <>
-                    Real people have <Term>limited time and energy</Term>. They use{" "}
-                    <Term>mental shortcuts</Term> instead.
-                  </>
-                }
-                plate={<ShortcutWalk />}
-              />
-            </Columns>
+            <Ruled tone="ink">
+              <P>This model assumed buyers compare all choices, calculate costs, and pick the best option.</P>
+            </Ruled>
+            <Ruled tone="ink">
+              <P>
+                Real people have <Term>limited time and energy</Term>. They use{" "}
+                <Term>mental shortcuts</Term> instead.
+              </P>
+            </Ruled>
+            <Ruled tone="ink">
+              <Statement className="!text-[clamp(1.25rem,1.8vw,1.55rem)]">
+                Marketers who treat consumers as cold calculators{" "}
+                make bad predictions.
+              </Statement>
+            </Ruled>
           </div>
           <div className="min-w-0">
             <Ruled tone="ink">
@@ -511,15 +425,6 @@ export default function Week1() {
             <Plate wide className="mt-5">
               <FourPulls />
             </Plate>
-            <div className="mt-8 grid w-full items-center gap-6 sm:grid-cols-[1fr_minmax(0,220px)]">
-              <Statement className="!text-[clamp(1.3rem,2vw,1.7rem)]">
-                Marketers who treat consumers as cold calculators{" "}
-                make bad predictions.
-              </Statement>
-              <Plate className="max-w-[220px]">
-                <CalculatorError />
-              </Plate>
-            </div>
           </div>
         </div>
       </Slide>
@@ -531,7 +436,6 @@ export default function Week1() {
         <Heading>Needs Versus Wants</Heading>
         <div className="grid w-full gap-8 md:grid-cols-2 md:gap-12">
           <Ruled tone="ink">
-            <p className="type-label mb-3 !text-[var(--ink)]">Need</p>
             <Big>
               A need is a basic biological or psychological requirement.
             </Big>{" "}
@@ -541,7 +445,6 @@ export default function Week1() {
             </P>
           </Ruled>{" "}
           <Ruled tone="ink">
-            <p className="type-label mb-3">Want</p>
             <Big>
               A want is a specific way to satisfy that need.
             </Big>{" "}
@@ -590,12 +493,12 @@ export default function Week1() {
           ].map((r, i) => (
             <li
               key={r.role}
-              className="flex min-w-0 flex-col border-t-2 border-[var(--ink)] pt-4"
+              className="flex min-w-0 flex-col border-t border-[var(--rule)] pt-4"
             >
               <div className="flex items-start gap-4">
                 <span
                   aria-hidden
-                  data-n={String(i + 1).padStart(2, "0")}
+                  data-n={String(i + 1)}
                   className="step-n block shrink-0 text-[1.6rem] leading-none text-[var(--ink)]"
                   style={SERIF}
                 />
@@ -603,9 +506,6 @@ export default function Week1() {
                   {" "}
                   The <Term>{r.role}</Term> {r.rest}
                 </p>
-              </div>
-              <div className="mt-auto pt-4">
-                <RoleGlyph role={i as 0 | 1 | 2 | 3} />
               </div>
             </li>
           ))}
@@ -670,7 +570,7 @@ export default function Week1() {
                   text: <>The consumer still uses the product and judges its quality after the sale.</>,
                 },
               ].map((c, i) => (
-                <li key={i} className={cn("min-w-0 border-t-2 pt-3", BORDER[c.tone])}>
+                <li key={i} className={cn("min-w-0 border-t pt-3", BORDER[c.tone])}>
                   <p className="type-body">{c.text}</p>
                 </li>
               ))}
@@ -704,42 +604,18 @@ export default function Week1() {
         exercise={exercise["market-segmentation-who-are-we-talking-to"]}
       >
         <Heading kicker="Market Segmentation:">Who Are We Talking To?</Heading>
-        {/* Each opening line sits beside its own plate. */}
         <div className="grid w-full gap-8 md:grid-cols-2">
-          {[
-            {
-              key: "one",
-              tone: "ink" as Tone,
-              plate: <OneMessage />,
-              text: (
-                <>
-                  You cannot appeal to everyone with the <Term>same message</Term>.
-                </>
-              ),
-            },
-            {
-              key: "groups",
-              tone: "ink" as Tone,
-              plate: <SortedGroups />,
-              text: (
-                <>
-                  <Term>Market segmentation</Term> divides a big market into smaller groups with
-                  shared traits.
-                </>
-              ),
-            },
-          ].map((c) => (
-            <div
-              key={c.key}
-              className={cn(
-                "grid min-w-0 items-start gap-4 border-t-2 pt-4 sm:grid-cols-[0.8fr_1.2fr]",
-                BORDER[c.tone],
-              )}
-            >
-              <P className="!text-[clamp(1.05rem,1.5vw,1.3rem)]">{c.text}</P>
-              <div className="figure-well w-full min-w-0 p-3">{c.plate}</div>
-            </div>
-          ))}
+          <Ruled tone="ink">
+            <P className="!text-[clamp(1.05rem,1.5vw,1.3rem)]">
+              You cannot appeal to everyone with the <Term>same message</Term>.
+            </P>
+          </Ruled>
+          <Ruled tone="ink">
+            <P className="!text-[clamp(1.05rem,1.5vw,1.3rem)]">
+              <Term>Market segmentation</Term> divides a big market into smaller groups with
+              shared traits.
+            </P>
+          </Ruled>
         </div>
         {/* The four bases lead the pillars they stand for. */}
         <div className="mt-10 grid w-full items-center gap-8 lg:grid-cols-[1fr_1.3fr] lg:gap-12">
@@ -752,7 +628,7 @@ export default function Week1() {
             ].map((t) => {
               const [head, ...rest] = t.split(" group people by ");
               return (
-                <li key={t} className="min-w-0 border-t-2 border-[var(--ink)] pt-4">
+                <li key={t} className="min-w-0 border-t border-[var(--rule)] pt-4">
                   <p className="type-body">
                     {" "}
                     <Term>{head}</Term> group people by {rest.join(" group people by ")}
@@ -775,38 +651,18 @@ export default function Week1() {
         <Statement className="!max-w-[48ch] !text-[clamp(1.3rem,2vw,1.7rem)]">
           Understanding consumers gives firms <Tint>great power</Tint> over everyday choices.
         </Statement>
-        {/* Helping and manipulating side by side, each line beside its plate.
-            Then the trickery aimed at shoppers and at their agents, and its
-            price, each line over its plate. */}
-        <ol className="mt-6 grid w-full gap-8 md:grid-cols-2 md:gap-10">
-          {ETHICS.slice(0, 2).map((c) => (
-            <li
-              key={c.key}
-              className={cn(
-                "grid min-w-0 items-center gap-4 border-t-2 pt-4 sm:grid-cols-[1fr_minmax(0,240px)]",
-                BORDER[c.tone],
-              )}
-            >
-              <div className="min-w-0">
-                {c.label ? <p className={cn("type-label mb-2", TEXT[c.tone])}>{c.label}</p> : null}
-                <p className="type-body !text-[clamp(1rem,1.2vw,1.1rem)]">{c.text}</p>
-              </div>
-              <div className="figure-well w-full min-w-0 p-3">{c.plate}</div>
-            </li>
-          ))}
-        </ol>
-        <ol className="mt-8 grid w-full gap-10 md:grid-cols-3 md:gap-8">
-          {ETHICS.slice(2).map((c) => (
-            <li key={c.key} className="flex min-w-0 flex-col gap-4">
-              <div className={cn("border-t-2 pt-4", BORDER[c.tone])}>
-                <p className="type-body !text-[clamp(1rem,1.2vw,1.1rem)]">{c.text}</p>
-              </div>
-              <div className="figure-well mx-auto mt-auto w-full min-w-0 max-w-[300px] p-3">
-                {c.plate}
-              </div>
-            </li>
-          ))}
-        </ol>
+        <div className="mt-8 grid w-full items-center gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <ol className="grid w-full gap-6 sm:grid-cols-2">
+            {ETHICS.map((c) => (
+              <li key={c.key} className="min-w-0 border-t border-[var(--rule)] pt-4">
+                <p className="type-body">{c.text}</p>
+              </li>
+            ))}
+          </ol>
+          <Plate>
+            <HiddenUnitPrice />
+          </Plate>
+        </div>
       </Slide>
 
       {/* ================================================================
@@ -816,20 +672,15 @@ export default function Week1() {
         <Heading kicker="Discussion:" tone="counter">
           Your Last Regretful Purchase
         </Heading>
-        <div className="grid w-full items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
-          <div className="relative w-full border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-12 md:py-14">
-            <p className="type-quote !text-[clamp(1.35rem,2.3vw,2rem)] max-w-[46ch]">
-              <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
-                Discussion:
-              </span>{" "}
-              Think of an item you bought recently that you now regret buying.{" "}
-              Which stage of consumption failed you? Did you buy it for
-              a need or an impulsive want?
-            </p>
-          </div>
-          <Plate wide>
-            <RegretCheck />
-          </Plate>
+        <div className="relative w-full max-w-4xl border-l border-[var(--rule-2)] pl-6 py-2">
+          <p className="type-quote !text-[clamp(1.35rem,2.3vw,2rem)] max-w-[46ch]">
+            <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--ink-3)]">
+              Discussion:
+            </span>{" "}
+            Think of an item you bought recently that you now regret buying.{" "}
+            Which stage of consumption failed you? Did you buy it for
+            a need or an impulsive want?
+          </p>
         </div>
       </Slide>
     </SlideDeck>

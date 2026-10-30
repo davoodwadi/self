@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 07 plates: Hypothesis Testing and Group Differences.
+   Week 7 plates: Hypothesis Testing and Group Differences.
    Built on ../_visuals/kit and ../_visuals/objects. Every plate follows the
    sentence it illustrates on the slide.
    ========================================================================== */

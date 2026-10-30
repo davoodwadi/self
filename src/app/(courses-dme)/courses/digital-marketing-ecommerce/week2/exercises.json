@@ -94,7 +94,7 @@
     "slide_id": "macro-conversions-micro-conversions-and-funnel-diagnostics",
     "question_text": "A shoe store's week: 10,000 sessions, 6,000 product page views, 2,400 add-to-carts and 240 paid orders. Last month the same store had 2,300 add-to-carts and 920 orders. What is the most likely place to look first?",
     "hint": "Compute each step's transition rate and compare which one changed.",
-    "correct_answer_citation": "Week 02: Macro-Conversions, Micro-Conversions, and Funnel Diagnostics",
+    "correct_answer_citation": "Week 2: Macro-Conversions, Micro-Conversions, and Funnel Diagnostics",
     "correct_answer_index": 2,
     "options": [
       {
@@ -203,7 +203,7 @@
     "slide_id": "schema-org-json-ld-and-merchant-product-feeds",
     "question_text": "A kettle's page shows '$39.99 | In stock | ★ 4.7 (812)' in large type, but its JSON-LD Product block contains only the name and brand. What can an AI shopping agent reading the JSON-LD verify about this kettle?",
     "hint": "JSON-LD states attribute-value pairs independent of the visual layout.",
-    "correct_answer_citation": "Week 02: Schema.org, JSON-LD, and Merchant Product Feeds",
+    "correct_answer_citation": "Week 2: Schema.org, JSON-LD, and Merchant Product Feeds",
     "correct_answer_index": 0,
     "options": [
       {

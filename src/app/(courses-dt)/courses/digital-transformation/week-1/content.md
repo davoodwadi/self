@@ -6,7 +6,7 @@ week: week-1
 ---
 
 ## Title Slide
-- Week 01
+- Week 1
 - Introduction to digital transformation
 - Foundations of Digital Transformation
 

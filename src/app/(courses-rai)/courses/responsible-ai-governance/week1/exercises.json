@@ -52,7 +52,7 @@
     "slide_id": "the-problem-of-many-hands",
     "question_text": "A regional pharmacy chain integrates a third-party language model into its patient refill portal. After the assistant advises several elderly customers to double a dosage when a refill is delayed, the model developer blames the pharmacy's custom system prompt, while the pharmacy blames the model's pre-trained weights. Under accountable algorithmic governance, how is this dispute resolved?",
     "hint": "Distinguish between who contributed causally to the error and who holds accountability to the customer in the market.",
-    "correct_answer_citation": "Week 01: The Problem of Many Hands",
+    "correct_answer_citation": "Week 1: The Problem of Many Hands",
     "correct_answer_index": 2,
     "options": [
       {

@@ -6,7 +6,7 @@ week: week4
 ---
 
 ## Title Slide
-- Week 04
+- Week 4
 - The quality of survey findings depends on the quality of the measures and the questions from which they are derived.
 
 ## Measurement and Scaling [no-exercise]

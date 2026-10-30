@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 02 plates: Research Design and Secondary Data.
+   Week 2 plates: Research Design and Secondary Data.
    Built on ../_visuals/kit and ../_visuals/objects. Every plate follows the
    sentence it illustrates on the slide.
    ========================================================================== */

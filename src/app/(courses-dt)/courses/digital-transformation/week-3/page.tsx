@@ -133,7 +133,7 @@ export default function DigitalTransformationWeek3() {
       </Link>
 
       <PosterHero
-        category="Week 03: Digital Transformation"
+        category="Week 3: Digital Transformation"
         title="Change Management, Project Management"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"

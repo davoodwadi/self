@@ -6,7 +6,7 @@ week: week7
 ---
 
 ## Title Slide
-- Week 07
+- Week 7
 - Owned content and CRM data systems transform expensive one-time clicks into compounding customer relationships and automated repeat sales.
 
 ## The Economics of Renting Attention Versus Owning Relationships [no-exercise]

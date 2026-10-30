@@ -15,7 +15,7 @@ import exercisesData from "./exercises.json";
 import * as V from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR | WEEK 08: BEHAVIORAL ECONOMICS, HEURISTICS, AND BIASES
+// CONSUMER BEHAVIOR | WEEK 8: BEHAVIORAL ECONOMICS, HEURISTICS, AND BIASES
 // ============================================================================
 // Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -46,14 +46,14 @@ const TIGHT = "md:!py-16";
 type Tone = "signal" | "counter" | "ink";
 
 const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
+  signal: "border-[var(--rule)]",
+  counter: "border-[var(--rule)]",
+  ink: "border-[var(--rule)]",
 };
 
 const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--signal)]",
-  counter: "text-[var(--counter)]",
+  signal: "text-[var(--ink)]",
+  counter: "text-[var(--ink)]",
   ink: "text-[var(--ink)]",
 };
 
@@ -118,7 +118,7 @@ function Term({
   );
 }
 
-/** Inline colour for a phrase inside a serif line. */
+/** Inline emphasis for a phrase inside a line. */
 function Tint({
   children,
   tone = "signal",
@@ -126,7 +126,7 @@ function Tint({
   children: React.ReactNode;
   tone?: Tone;
 }) {
-  return <span className={TEXT[tone]}>{children}</span>;
+  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
 /** Hairline-topped block. */
@@ -140,7 +140,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
+    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -244,28 +244,21 @@ function Cells({
     >
       {items.map((s) => (
         <li key={s.key} className="flex min-w-0 flex-col gap-3">
-          <div className={cn("border-t-2 pt-3", BORDER[s.tone])}>
+          <div className={cn("border-t pt-3", BORDER[s.tone])}>
             <p className="type-body">{s.text}</p>
           </div>
-          {s.plate ? (
-            <div className="figure-well mt-auto w-full min-w-0 p-3">
-              {s.plate}
-            </div>
-          ) : null}
         </li>
       ))}
     </ol>
   );
 }
 
-/** A ruled line with its plate beside it, for rows of text-and-picture pairs. */
+/** A ruled line for rows of text. */
 function SideCell({
-  plate,
   children,
-  plateClass = "",
   className = "",
 }: {
-  plate: React.ReactNode;
+  plate?: React.ReactNode;
   children: React.ReactNode;
   plateClass?: string;
   className?: string;
@@ -273,14 +266,11 @@ function SideCell({
   return (
     <div
       className={cn(
-        "grid min-w-0 items-center gap-4 border-t-2 border-[var(--ink)] pt-3 sm:grid-cols-[1fr_1.15fr]",
+        "min-w-0 border-t border-[var(--rule)] pt-3",
         className,
       )}
     >
       <p className="type-body min-w-0">{children}</p>
-      <div className={cn("figure-well w-full min-w-0 p-2", plateClass)}>
-        {plate}
-      </div>
     </div>
   );
 }
@@ -288,31 +278,26 @@ function SideCell({
 
 export default function Week8() {
   return (
-    <SlideDeck label="Week 08">
+    <SlideDeck label="Week 8">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-          <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
-              Week 08
+        <div className="w-full max-w-4xl">
+          <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
+            Week 8
+          </p>
+          <p className="type-caption mt-2">
+            Consumer Behavior | Davood Wadi, PhD
+          </p>
+          <Title className="mt-6">
+            Behavioral Economics, Heuristics, and Biases
+          </Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
+              Consumers follow predictable mental shortcuts. In some
+              conditions, <Tint>so do the AI agents that shop for them</Tint>.
             </p>
-            <p className="type-caption mt-2">
-              Consumer Behavior | Davood Wadi, PhD
-            </p>
-            <Title className="mt-6 !max-w-[18ch]">
-              Behavioral Economics, Heuristics, and Biases
-            </Title>
-            <div className="mt-8 max-w-[40ch] border-t-2 border-[var(--ink)] pt-6">
-              <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
-                Consumers follow predictable mental shortcuts. In some
-                conditions, <Tint>so do the AI agents that shop for them</Tint>.
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto w-full max-w-[560px]">
-            <V.ShortcutShelf />
           </div>
         </div>
       </Slide>
@@ -332,9 +317,6 @@ export default function Week8() {
                 and choose the one with the highest value.
               </P>
             </Ruled>
-            <Plate className="mt-auto">
-              <V.CompareEvery />
-            </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-3">
             <Ruled tone="ink" className="!pt-3">
@@ -381,12 +363,12 @@ export default function Week8() {
             when each mode works sit to the right. */}
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1.7fr_1fr] lg:gap-10">
           <div className="flex min-w-0 flex-col gap-5">
-            <SideCell plate={<V.SaleGlance />} className="sm:grid-cols-[1fr_1.1fr]">
+            <SideCell className="sm:grid-cols-[1fr_1.1fr]">
               <Term>System 1</Term> is fast, automatic, and effortless. It
               recognizes a familiar logo or reacts to a red &quot;SALE&quot; sign
               in an instant.
             </SideCell>
-            <SideCell plate={<V.SlowCompare />} className="sm:grid-cols-[1fr_1.1fr]">
+            <SideCell className="sm:grid-cols-[1fr_1.1fr]">
               <Term>System 2</Term> is slow, deliberate, and effortful. It
               compares the price per unit of two packages or reads the terms of
               a phone contract.
@@ -427,7 +409,6 @@ export default function Week8() {
             {
               key: "availability",
               tone: "ink",
-              plate: <V.RecallPaper />,
               text: (
                 <>
                   The <Term>availability heuristic</Term> judges how likely
@@ -440,7 +421,6 @@ export default function Week8() {
             {
               key: "representativeness",
               tone: "ink",
-              plate: <V.LookAlike />,
               text: (
                 <>
                   The <Term>representativeness heuristic</Term> judges an item
@@ -453,7 +433,6 @@ export default function Week8() {
             {
               key: "price-quality",
               tone: "ink",
-              plate: <V.WinePrice />,
               text: (
                 <>
                   The <Term>price-quality inference</Term> assumes that a higher
@@ -494,9 +473,6 @@ export default function Week8() {
                 than it would appear on its own.
               </P>
             </Ruled>
-            <Plate>
-              <V.CompareAt />
-            </Plate>
           </div>
           {/* The instrument: drag the digits, read the price the class gave. */}
           <div className="flex min-w-0 flex-col gap-3">
@@ -514,7 +490,6 @@ export default function Week8() {
           </div>
         </div>
         <SideCell
-          plate={<V.MarketerAnchors />}
           className="mt-6 w-full sm:grid-cols-[1fr_2fr]"
         >
           Marketers use anchors in reference prices, suggested quantities such
@@ -569,9 +544,6 @@ export default function Week8() {
               consumer has used a product for a month, giving it up feels like a
               loss.
             </P>
-            <Plate className="mt-auto">
-              <V.FreeTrial />
-            </Plate>
           </div>
         </div>
       </Slide>
@@ -592,7 +564,6 @@ export default function Week8() {
             {
               key: "status-quo",
               tone: "ink",
-              plate: <V.SameProvider />,
               text: (
                 <>
                   <Term>Status quo bias</Term> is the preference for keeping
@@ -604,7 +575,6 @@ export default function Week8() {
             {
               key: "framing",
               tone: "ink",
-              plate: <V.LeanFat />,
               text: (
                 <>
                   A <Term>framing effect</Term> occurs when the way information
@@ -618,7 +588,6 @@ export default function Week8() {
             {
               key: "surcharge",
               tone: "ink",
-              plate: <V.SurchargeDiscount />,
               text: (
                 <>
                   A surcharge for paying by card and a discount for paying in
@@ -684,9 +653,6 @@ export default function Week8() {
               <Term>transaction utility</Term>, on top of the value of the
               product itself (Thaler, 1985).
             </P>
-            <Plate className="mt-auto">
-              <V.DealTag />
-            </Plate>
           </div>
         </div>
         <Statement className="clear-both mt-6 !max-w-[64ch] !text-[clamp(1.25rem,1.9vw,1.6rem)]">
@@ -731,7 +697,7 @@ export default function Week8() {
           </Plate>
         </div>
         <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[1.5fr_1fr] lg:gap-10">
-          <SideCell plate={<V.FruitEyeLevel />} className="sm:grid-cols-[1fr_1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1fr]">
             A <Term>nudge</Term> is a change in choice architecture that steers
             behavior without removing any option or changing its price. Placing
             fruit at eye level in a cafeteria is a nudge.
@@ -796,9 +762,6 @@ export default function Week8() {
               discount the same weight as a dollar of list price (Wadi &amp; Ma,
               2026b).
             </P>
-            <Plate className="mt-auto">
-              <V.EightAgents />
-            </Plate>
           </div>
         </div>
         <Statement className="mt-5 !max-w-[60ch] !text-[clamp(1.25rem,1.9vw,1.6rem)]">
@@ -845,7 +808,7 @@ export default function Week8() {
             <V.StorefrontLab />
           </Plate>
         </div>
-        <div className="mt-4 grid w-full gap-6 border-t-2 border-[var(--ink)] pt-3 md:grid-cols-3 md:gap-8">
+        <div className="mt-4 grid w-full gap-6 border-t border-[var(--rule)] pt-3 md:grid-cols-3 md:gap-8">
           <P>
             Their choices then looked like human heuristics. They chose the
             lower whole-dollar price or the lower list price, even when it was
@@ -877,21 +840,16 @@ export default function Week8() {
         <Heading kicker="Discussion:" tone="counter">
           Spot the Shortcut
         </Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1fr] lg:gap-10">
-          <div className="relative w-full min-w-0 border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-10 md:py-12">
-            <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
-              Discussion:
-            </span>
-            <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)]">
-              Find an online product page or a store shelf. Which heuristics,
-              anchors, or frames does it use? Would an AI agent shopping for you
-              be affected by the same cues, and which details would it need to
-              see to avoid them?
-            </p>
-          </div>
-          <Plate>
-            <V.ProductPage />
-          </Plate>
+        <div className="relative w-full max-w-5xl border-l border-[var(--rule-2)] pl-6 py-2">
+          <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--ink-3)]">
+            Discussion:
+          </span>
+          <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)] max-w-[52ch]">
+            Find an online product page or a store shelf. Which heuristics,
+            anchors, or frames does it use? Would an AI agent shopping for you
+            be affected by the same cues, and which details would it need to
+            see to avoid them?
+          </p>
         </div>
       </Slide>
     </SlideDeck>

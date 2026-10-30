@@ -131,7 +131,7 @@ export default function DigitalTransformationWeek1() {
       </Link>
 
       <PosterHero
-        category="Week 01: Digital Transformation"
+        category="Week 1: Digital Transformation"
         title="Introduction to digital transformation"
         subtitle="Foundations of Digital Transformation"
         author="Dr. Davood Wadi"

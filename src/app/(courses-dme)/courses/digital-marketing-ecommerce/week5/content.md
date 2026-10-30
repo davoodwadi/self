@@ -6,7 +6,7 @@ week: week5
 ---
 
 ## Title Slide
-- Week 05
+- Week 5
 - Programmatic advertising replaces human media negotiation with millisecond auctions across interconnected demand, supply, and customer data platforms.
 
 ## From Manual Insertion Orders to Programmatic Exchanges [no-exercise]

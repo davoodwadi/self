@@ -80,7 +80,7 @@ export default function MatchExercise({
 
   return (
     <div className="w-full">
-      <ExerciseHeader kind="Match up" prompt={data.prompt} />
+      <ExerciseHeader prompt={data.prompt} />
 
       <div className="grid gap-8 md:grid-cols-2 md:gap-10">
         <div className="min-w-0">

@@ -37,7 +37,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 06: DATA PREPARATION AND DESCRIPTIVE ANALYSIS
+// WEEK 6: DATA PREPARATION AND DESCRIPTIVE ANALYSIS
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -67,12 +67,12 @@ function AiStep() {
 
 export default function Week6() {
   return (
-    <SlideDeck label="Week 06">
+    <SlideDeck label="Week 6">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 06: Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 6: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
           <span className="text-[var(--signal)]">Data Preparation</span> and Descriptive Analysis
         </Title>

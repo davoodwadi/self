@@ -65,7 +65,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 07: PRODUCT AND SERVICE STRATEGIES (THE FIRST P)
+// WEEK 7: PRODUCT AND SERVICE STRATEGIES (THE FIRST P)
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -444,13 +444,13 @@ function MixStrip() {
 export default function Week7() {
   return (
     <SlideDeck
-      label="Week 07"
+      label="Week 7"
     >
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 07: Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 7: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
           Product and Service Strategies{" "}
           <span className="text-[var(--signal)]">(The First P)</span>

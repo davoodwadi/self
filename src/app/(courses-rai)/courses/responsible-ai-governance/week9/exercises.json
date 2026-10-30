@@ -196,7 +196,7 @@
     "slide_id": "dual-role-gatekeepers-and-algorithmic-self-preferencing",
     "question_text": "A marketplace runs its own delivery service. Its ranking algorithm gives the default \"Buy Box\" to a third-party seller only if that seller ships through the marketplace's delivery service, even when another seller offers the same item cheaper with equal ratings and faster independent shipping. Which practice is this?",
     "hint": "Ask what the top placement is made contingent on.",
-    "correct_answer_citation": "Week 09: Dual-Role Gatekeepers and Algorithmic Self-Preferencing",
+    "correct_answer_citation": "Week 9: Dual-Role Gatekeepers and Algorithmic Self-Preferencing",
     "correct_answer_index": 2,
     "options": [
       {

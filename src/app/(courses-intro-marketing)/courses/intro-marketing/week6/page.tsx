@@ -50,7 +50,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 06: SEGMENTATION, TARGETING, AND POSITIONING (STP)
+// WEEK 6: SEGMENTATION, TARGETING, AND POSITIONING (STP)
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -371,13 +371,13 @@ function TopicSlide({
 export default function Week6() {
   return (
     <SlideDeck
-      label="Week 06"
+      label="Week 6"
     >
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 06: Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 6: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
           <span className="text-[var(--counter)]">Segmentation</span>,{" "}
           <span className="text-[var(--ink)]">Targeting</span>, and{" "}

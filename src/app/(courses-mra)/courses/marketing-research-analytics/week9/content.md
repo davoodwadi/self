@@ -6,7 +6,7 @@ week: week9
 ---
 
 ## Title Slide
-- Week 09
+- Week 9
 - Marketing response models estimate how sales and other outcomes respond to the actions of the firm.
 
 ## Marketing Response Models [no-exercise]

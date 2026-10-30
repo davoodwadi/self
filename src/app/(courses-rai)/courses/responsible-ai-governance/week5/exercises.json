@@ -190,7 +190,7 @@
     "slide_id": "plausibility-versus-faithfulness-in-llm-explanations",
     "question_text": "An auditor gives a language model twenty laptop comparisons in which the cheaper laptop is always listed first. The model picks the first-listed laptop 90 percent of the time, and each chain-of-thought explains the pick with battery life and build quality, never with list order. What best describes these explanations?",
     "hint": "Separate how convincing the explanation reads from whether it names what actually drove the choice.",
-    "correct_answer_citation": "Week 05: Plausibility Versus Faithfulness in LLM Explanations",
+    "correct_answer_citation": "Week 5: Plausibility Versus Faithfulness in LLM Explanations",
     "correct_answer_index": 2,
     "options": [
       {

@@ -6,7 +6,7 @@ week: week6
 ---
 
 ## Title Slide
-- Week 06
+- Week 6
 - Governing data in the age of artificial intelligence requires tracking provenance from collection to model weights, enforcing contextual integrity beyond checkbox consent, and upholding research ethics for both human participants and synthetic respondents.
 
 ## Why AI Transforms Data Governance [no-exercise]

@@ -20,7 +20,7 @@ import {
 import { Chip, Detail, Dial, Figure, Gear, Sheet, SmallModel, Tag, cross, headAlongPath, star, tick } from "../_visuals/objects";
 
 /* ==========================================================================
-   WEEK 04 PLATES: PATENT DRAWING
+   WEEK 4 PLATES: PATENT DRAWING
    --------------------------------------------------------------------------
    Each plate is drawn as an invention on file: ink outlines at three weights,
    stipple tone, oblique projection (depth up and to the right), figure names

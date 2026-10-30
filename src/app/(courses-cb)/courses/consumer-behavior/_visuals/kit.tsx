@@ -285,7 +285,6 @@ export function SketchText({
       fontFamily={serif ? SERIF : LABEL}
       fontSize={size}
       fontWeight={500}
-      letterSpacing={serif ? undefined : "0.14em"}
       fill={fill}
     >
       {children}
@@ -311,7 +310,7 @@ export function PlateButton({
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex items-center gap-2 border border-[var(--rule-2)] bg-[var(--paper)] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--ink-2)] transition-colors hover:border-[var(--ink-3)] hover:text-[var(--ink)] active:bg-[var(--paper-3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rule-2)]"
+      className="inline-flex items-center gap-2 border border-[var(--rule-2)] bg-[var(--paper)] px-3 py-1.5 text-xs font-medium text-[var(--ink-2)] transition-colors hover:border-[var(--ink-3)] hover:text-[var(--ink)] active:bg-[var(--paper-3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rule-2)]"
       style={{ fontFamily: LABEL }}
     >
       {icon}
@@ -335,7 +334,7 @@ export function PlateToggle<T extends string>({ options, value, onChange }: { op
             aria-pressed={on}
             onClick={() => onChange(o.id)}
             className={
-              "inline-flex items-center border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rule-2)] " +
+              "inline-flex items-center border px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rule-2)] " +
               (on
                 ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)]"
                 : "border-[var(--rule-2)] bg-[var(--paper)] text-[var(--ink-2)] hover:border-[var(--ink-3)] hover:text-[var(--ink)]")

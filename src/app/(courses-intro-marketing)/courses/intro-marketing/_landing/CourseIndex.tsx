@@ -20,7 +20,7 @@ function RowBody({ week }: { week: Row }) {
             : "type-caption tabular-nums pt-1 opacity-55"
         }
       >
-        {String(week.n).padStart(2, "0")}
+        {week.n}
       </span>
       <div className="min-w-0">
         <h3

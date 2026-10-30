@@ -5,7 +5,7 @@ import { CENTRE_DASH, FigureName, Frame, LINE, ObliqueBox, PAT, PatentDefs, Pate
 import { Chip, Coins, Figure, Gear, House, Lens, Numeral, Pan, Tag, cross, headAlongPath, tick } from "../_visuals/objects";
 
 /* ==========================================================================
-   WEEK 02 PLATES: PATENT DRAWING
+   WEEK 2 PLATES: PATENT DRAWING
    --------------------------------------------------------------------------
    Each plate is drawn as an invention on file: ink outlines at three weights,
    stipple tone, oblique projection (depth up and to the right), figure names in

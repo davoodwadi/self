@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 07, figures
+   Week 7, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea: seven kinds of offering, a
    problem turned into value, the four kinds of consumer goods, a cascade and

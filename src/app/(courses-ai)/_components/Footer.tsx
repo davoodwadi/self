@@ -9,7 +9,7 @@ export function Footer() {
           href="https://davoodwadi.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-[var(--crimson)] transition-colors duration-300"
+          className="hover:text-[var(--accent)] transition-colors duration-300"
         >
           Davood Wadi
         </a>

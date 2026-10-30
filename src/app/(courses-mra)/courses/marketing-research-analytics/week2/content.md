@@ -6,7 +6,7 @@ week: week2
 ---
 
 ## Title Slide
-- Week 02
+- Week 2
 - The research design specifies the procedures by which the information required for a decision is obtained.
 
 ## The Research Design [no-exercise]

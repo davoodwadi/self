@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 04, figures
+   Week 4, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea: a forked flow of what
    organizations do with what they buy, a split lane that demand crosses, a

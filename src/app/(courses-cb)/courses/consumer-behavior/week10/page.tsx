@@ -49,14 +49,14 @@ const TIGHT = "md:!py-16";
 type Tone = "signal" | "counter" | "ink";
 
 const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
+  signal: "border-[var(--rule)]",
+  counter: "border-[var(--rule)]",
+  ink: "border-[var(--rule)]",
 };
 
 const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--signal)]",
-  counter: "text-[var(--counter)]",
+  signal: "text-[var(--ink)]",
+  counter: "text-[var(--ink)]",
   ink: "text-[var(--ink)]",
 };
 
@@ -121,7 +121,7 @@ function Term({
   );
 }
 
-/** Inline colour for a phrase inside a serif line. */
+/** Inline emphasis for a phrase inside a line. */
 function Tint({
   children,
   tone = "signal",
@@ -129,7 +129,7 @@ function Tint({
   children: React.ReactNode;
   tone?: Tone;
 }) {
-  return <span className={TEXT[tone]}>{children}</span>;
+  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
 /** Hairline-topped block. */
@@ -143,7 +143,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
+    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -247,28 +247,21 @@ function Cells({
     >
       {items.map((s) => (
         <li key={s.key} className="flex min-w-0 flex-col gap-3">
-          <div className={cn("border-t-2 pt-3", BORDER[s.tone])}>
+          <div className={cn("border-t pt-3", BORDER[s.tone])}>
             <p className="type-body">{s.text}</p>
           </div>
-          {s.plate ? (
-            <div className="figure-well mt-auto w-full min-w-0 p-3">
-              {s.plate}
-            </div>
-          ) : null}
         </li>
       ))}
     </ol>
   );
 }
 
-/** A ruled line with its plate beside it, for rows of text-and-picture pairs. */
+/** A ruled line for rows of text. */
 function SideCell({
-  plate,
   children,
-  plateClass = "",
   className = "",
 }: {
-  plate: React.ReactNode;
+  plate?: React.ReactNode;
   children: React.ReactNode;
   plateClass?: string;
   className?: string;
@@ -276,14 +269,11 @@ function SideCell({
   return (
     <div
       className={cn(
-        "grid min-w-0 items-center gap-4 border-t-2 border-[var(--ink)] pt-3 sm:grid-cols-[1fr_1.15fr]",
+        "min-w-0 border-t border-[var(--rule)] pt-3",
         className,
       )}
     >
       <p className="type-body min-w-0">{children}</p>
-      <div className={cn("figure-well w-full min-w-0 p-2", plateClass)}>
-        {plate}
-      </div>
     </div>
   );
 }
@@ -296,26 +286,21 @@ export default function Week10() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-          <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
-              Week 10
+        <div className="w-full max-w-4xl">
+          <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
+            Week 10
+          </p>
+          <p className="type-caption mt-2">
+            Consumer Behavior | Davood Wadi, PhD
+          </p>
+          <Title className="mt-6">
+            Social Influences, Reference Groups, and Word of Mouth
+          </Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
+              Consumers rarely choose alone. Other people, and now AI
+              assistants, <Tint>shape what they buy</Tint>.
             </p>
-            <p className="type-caption mt-2">
-              Consumer Behavior | Davood Wadi, PhD
-            </p>
-            <Title className="mt-6 !max-w-[20ch]">
-              Social Influences, Reference Groups, and Word of Mouth
-            </Title>
-            <div className="mt-8 max-w-[42ch] border-t-2 border-[var(--ink)] pt-6">
-              <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
-                Consumers rarely choose alone. Other people, and now AI
-                assistants, <Tint>shape what they buy</Tint>.
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto w-full max-w-[580px]">
-            <V.NotAlone />
           </div>
         </div>
       </Slide>
@@ -337,13 +322,11 @@ export default function Week10() {
               {
                 key: "teen",
                 tone: "ink",
-                plate: <V.AdmiredSneakers />,
                 text: <>A teenager chooses sneakers that friends will admire.</>,
               },
               {
                 key: "parent",
                 tone: "ink",
-                plate: <V.AskOtherParents />,
                 text: <>A new parent asks other parents which stroller to buy.</>,
               },
             ]}
@@ -399,7 +382,6 @@ export default function Week10() {
             {
               key: "membership",
               tone: "ink",
-              plate: <V.TeamPhoto />,
               text: (
                 <>
                   A <Term>membership group</Term> is a group the consumer
@@ -411,7 +393,6 @@ export default function Week10() {
             {
               key: "aspirational",
               tone: "ink",
-              plate: <V.LookingUp />,
               text: (
                 <>
                   An <Term>aspirational group</Term> is a group the consumer
@@ -423,7 +404,6 @@ export default function Week10() {
             {
               key: "dissociative",
               tone: "ink",
-              plate: <V.TurnAway />,
               text: (
                 <>
                   A <Term>dissociative group</Term> is a group the consumer
@@ -456,17 +436,17 @@ export default function Week10() {
             <Tint>three ways</Tint> (Park &amp; Lessig, 1977).
           </Statement>
           <div className="flex min-w-0 flex-col gap-4">
-            <SideCell plate={<V.AskTheExpertFriend />} className="sm:grid-cols-[1.2fr_1fr]" plateClass="lg:max-w-[240px] lg:justify-self-end">
+            <SideCell className="sm:grid-cols-[1.2fr_1fr]">
               <Term>Informational influence</Term> occurs when a consumer
               seeks advice from people with expertise, such as asking a friend
               who works in IT which laptop to buy.
             </SideCell>
-            <SideCell plate={<V.DressForTheOffice />} className="sm:grid-cols-[1.2fr_1fr]" plateClass="lg:max-w-[240px] lg:justify-self-end">
+            <SideCell className="sm:grid-cols-[1.2fr_1fr]">
               <Term>Utilitarian influence</Term> occurs when a consumer
               conforms to gain rewards or avoid disapproval, such as dressing
               to meet the expectations of coworkers.
             </SideCell>
-            <SideCell plate={<V.AthletesBrand />} className="sm:grid-cols-[1.2fr_1fr]" plateClass="lg:max-w-[240px] lg:justify-self-end">
+            <SideCell className="sm:grid-cols-[1.2fr_1fr]">
               <Term>Value-expressive influence</Term> occurs when a consumer
               buys a product to express a desired identity, such as buying the
               brand that athletes wear.
@@ -506,11 +486,11 @@ export default function Week10() {
           </Plate>
         </div>
         <div className="mt-6 grid w-full gap-x-10 gap-y-5 lg:grid-cols-2">
-          <SideCell plate={<V.HarderToTell />} className="sm:grid-cols-[1fr_1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1fr]">
             Conformity is stronger when the group is cohesive, when the
             consumer is uncertain, and when the choice is public.
           </SideCell>
-          <SideCell plate={<V.BestsellerShelf />} className="sm:grid-cols-[1fr_1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1fr]">
             Labels such as &quot;bestseller&quot; and &quot;most popular&quot;
             use conformity by showing what other consumers chose.
           </SideCell>
@@ -539,7 +519,6 @@ export default function Week10() {
             {
               key: "referent",
               tone: "ink",
-              plate: <V.CopyTheAthlete />,
               text: (
                 <>
                   <Term>Referent power</Term> comes from admiration. Consumers
@@ -551,7 +530,6 @@ export default function Week10() {
             {
               key: "legitimate",
               tone: "ink",
-              plate: <V.OfficerStop />,
               text: (
                 <>
                   <Term>Legitimate power</Term> comes from a recognized
@@ -562,7 +540,6 @@ export default function Week10() {
             {
               key: "expert",
               tone: "ink",
-              plate: <V.DermatologistAdvice />,
               text: (
                 <>
                   <Term>Expert power</Term> comes from knowledge or skill, such
@@ -573,7 +550,6 @@ export default function Week10() {
             {
               key: "reward",
               tone: "ink",
-              plate: <V.Rewards />,
               text: (
                 <>
                   <Term>Reward power</Term> comes from the ability to give
@@ -584,7 +560,6 @@ export default function Week10() {
             {
               key: "coercive",
               tone: "ink",
-              plate: <V.ParkingFine />,
               text: (
                 <>
                   <Term>Coercive power</Term> comes from the ability to punish,
@@ -631,11 +606,11 @@ export default function Week10() {
           </Plate>
         </div>
         <div className="mt-6 grid w-full gap-x-10 gap-y-5 lg:grid-cols-2">
-          <SideCell plate={<V.SameConfidence />} className="sm:grid-cols-[1fr_1.1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1.1fr]">
             Expert power depends on actual knowledge. An AI assistant can state
             wrong facts with the same confidence as correct ones.
           </SideCell>
-          <SideCell plate={<V.WhoPaysTheExpert />} className="sm:grid-cols-[1fr_1.1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1.1fr]">
             Expert power also depends on independence. Consumers trust a human
             expert less when the expert is paid to recommend a product.{" "}
             The same question applies to an AI assistant: consumers need to
@@ -656,20 +631,20 @@ export default function Week10() {
       >
         <Heading>Word of Mouth and Opinion Leaders</Heading>
         <div className="grid w-full gap-x-10 gap-y-5 lg:grid-cols-2">
-          <SideCell plate={<V.FriendOrAd />} className="sm:grid-cols-[1fr_230px]">
+          <SideCell className="sm:grid-cols-[1fr_230px]">
             <Term>Word of mouth (WOM)</Term> is product information passed
             from one consumer to another.{" "}
             WOM is more credible than advertising, because the speaker usually
             has no financial interest in the sale.
           </SideCell>
-          <SideCell plate={<V.OneComplaint />} className="sm:grid-cols-[1fr_230px]">
+          <SideCell className="sm:grid-cols-[1fr_230px]">
             <Tint>Negative WOM carries more weight than positive WOM.</Tint>{" "}
             Consumers pay more attention to a complaint than to praise.
           </SideCell>
         </div>
         <div className="mt-6 grid w-full items-center gap-8 lg:grid-cols-[1.3fr_1.5fr] lg:gap-10">
           <div className="flex min-w-0 flex-col gap-3">
-            <SideCell plate={<V.EWomForms />} className="sm:grid-cols-[1fr_190px]">
+            <SideCell className="sm:grid-cols-[1fr_190px]">
               <Term>Electronic word of mouth (eWOM)</Term> includes online
               reviews, ratings, forum posts, and social media comments.
             </SideCell>
@@ -744,7 +719,7 @@ export default function Week10() {
               mouth powerful.
             </P>
           </Ruled>
-          <SideCell plate={<V.FakeReviewBan />} className="sm:grid-cols-[1.15fr_1fr]">
+          <SideCell className="sm:grid-cols-[1.15fr_1fr]">
             In 2024, the U.S. Federal Trade Commission adopted a rule that bans
             fake reviews, including reviews attributed to people who do not
             exist, such as reviews generated by AI.
@@ -790,24 +765,24 @@ export default function Week10() {
           </Plate>
         </div>
         <div className="mt-6 grid w-full gap-x-10 gap-y-5 lg:grid-cols-2">
-          <SideCell plate={<V.OneSided />} className="sm:grid-cols-[1fr_220px]">
+          <SideCell className="sm:grid-cols-[1fr_220px]">
             Followers can form a <Term>parasocial relationship</Term> with an
             influencer: a one-sided feeling of friendship with someone they
             have never met.
           </SideCell>
-          <SideCell plate={<V.VirtualInfluencer />} className="sm:grid-cols-[1fr_220px]">
+          <SideCell className="sm:grid-cols-[1fr_220px]">
             A <Term>virtual influencer</Term> is a computer-generated character
             that posts and promotes products like a human influencer, such as
             Lil Miquela.{" "}
             A virtual influencer has no lived experience of the product it
             promotes, which raises questions about its credibility and honesty.
           </SideCell>
-          <SideCell plate={<V.BrandForum />} className="sm:grid-cols-[1fr_220px]">
+          <SideCell className="sm:grid-cols-[1fr_220px]">
             Online communities, such as brand forums and fan groups, act as
             social proof. Members see how others use a product and adopt the
             group&apos;s norms.
           </SideCell>
-          <SideCell plate={<V.PaidPost />} className="sm:grid-cols-[1fr_220px]">
+          <SideCell className="sm:grid-cols-[1fr_220px]">
             Paid endorsements must be disclosed, so that followers can judge
             the message as advertising.
           </SideCell>
@@ -821,20 +796,15 @@ export default function Week10() {
         <Heading kicker="Discussion:" tone="counter">
           Who Influenced Your Last Purchase?
         </Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-10">
-          <div className="relative w-full min-w-0 border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-10 md:py-12">
-            <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
-              Discussion:
-            </span>{" "}
-            <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)]">
-              Think of a recent purchase. Which person, group, influencer, or
-              AI assistant influenced it? Which base of social power did that
-              source have over you?
-            </p>
-          </div>
-          <Plate className="mx-auto lg:max-w-[440px]">
-            <V.WhoInfluenced />
-          </Plate>
+        <div className="relative w-full max-w-5xl border-l border-[var(--rule-2)] pl-6 py-2">
+          <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--ink-3)]">
+            Discussion:
+          </span>{" "}
+          <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)] max-w-[52ch]">
+            Think of a recent purchase. Which person, group, influencer, or
+            AI assistant influenced it? Which base of social power did that
+            source have over you?
+          </p>
         </div>
       </Slide>
     </SlideDeck>

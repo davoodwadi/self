@@ -99,7 +99,7 @@
     "slide_id": "anchoring-the-first-number-counts",
     "question_text": "A furniture store places a $2,400 sofa at the entrance, beside the $1,100 sofa it most wants to sell. Which explanation fits what the slide describes?",
     "hint": "Think about what an initial number does to a later judgment.",
-    "correct_answer_citation": "Week 08: Anchoring: The First Number Counts",
+    "correct_answer_citation": "Week 8: Anchoring: The First Number Counts",
     "correct_answer_index": 2,
     "options": [
       {
@@ -267,7 +267,7 @@
     "slide_id": "do-ai-agents-use-heuristics",
     "question_text": "A company upgrades its shopping agent to the newest AI model, expecting it to be immune to pricing tricks. Based on the studies on the slide, what should the company expect?",
     "hint": "The studies found both heuristic-like and rational choices. What did the slide say a bias depends on?",
-    "correct_answer_citation": "Week 08: Do AI Agents Use Heuristics?",
+    "correct_answer_citation": "Week 8: Do AI Agents Use Heuristics?",
     "correct_answer_index": 3,
     "options": [
       {
@@ -293,7 +293,7 @@
     "slide_id": "information-costs-and-storefront-design",
     "question_text": "An online grocer finds that AI agents shopping on its site often pick the bag of rice with the lower price even when it costs more per kilogram. Each product's weight appears only on its product page. Which change fits what the slide describes?",
     "hint": "Where did the heuristic-like choices come from: the agents' reasoning or the information they held?",
-    "correct_answer_citation": "Week 08: Information Costs and Storefront Design",
+    "correct_answer_citation": "Week 8: Information Costs and Storefront Design",
     "correct_answer_index": 0,
     "options": [
       {

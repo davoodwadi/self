@@ -39,7 +39,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 01: DIGITAL BUSINESS MODELS AND E-COMMERCE ARCHITECTURE
+// WEEK 1: DIGITAL BUSINESS MODELS AND E-COMMERCE ARCHITECTURE
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and which catalogue plate
@@ -52,12 +52,12 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading
 
 export default function Week1Page() {
   return (
-    <SlideDeck label="Week 01">
+    <SlideDeck label="Week 1">
       {/* ================================================================
           01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 01: Digital Marketing &amp; E-Commerce</Subtitle>
+        <Subtitle variant="hero">Week 1: Digital Marketing &amp; E-Commerce</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Digital Business Models and E-Commerce Architecture</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[50ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.3rem,2.1vw,1.8rem)]">

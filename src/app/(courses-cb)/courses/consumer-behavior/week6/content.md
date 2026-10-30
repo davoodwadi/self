@@ -6,7 +6,7 @@ week: week6
 ---
 
 ## Title Slide
-- Week 06
+- Week 6
 - Consumers do not just evaluate products. They feel, think, and act toward them.
 
 ## What Are Consumer Attitudes? [no-exercise]

@@ -6,7 +6,7 @@ week: week4
 ---
 
 ## Title Slide
-- Week 04
+- Week 4
 - Reliable algorithmic governance replaces single-prompt anecdotes with statistically grounded behavioral audits using Monte-Carlo sampling, exact token-level distributions, and controlled factorial experiments.
 
 ## From Anecdotal Prompts to Scientific Behavioral Audits [no-exercise]

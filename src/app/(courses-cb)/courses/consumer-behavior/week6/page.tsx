@@ -15,7 +15,7 @@ import exercisesData from "./exercises.json";
 import * as V from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR | WEEK 06: ATTITUDES AND PERSUASION
+// CONSUMER BEHAVIOR | WEEK 6: ATTITUDES AND PERSUASION
 // ============================================================================
 // Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -43,14 +43,14 @@ const TIGHT = "md:!py-16";
 type Tone = "signal" | "counter" | "ink";
 
 const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
+  signal: "border-[var(--rule)]",
+  counter: "border-[var(--rule)]",
+  ink: "border-[var(--rule)]",
 };
 
 const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--signal)]",
-  counter: "text-[var(--counter)]",
+  signal: "text-[var(--ink)]",
+  counter: "text-[var(--ink)]",
   ink: "text-[var(--ink)]",
 };
 
@@ -115,7 +115,7 @@ function Term({
   );
 }
 
-/** Inline colour for a phrase inside a serif line. */
+/** Inline emphasis for a phrase inside a line. */
 function Tint({
   children,
   tone = "signal",
@@ -123,7 +123,7 @@ function Tint({
   children: React.ReactNode;
   tone?: Tone;
 }) {
-  return <span className={TEXT[tone]}>{children}</span>;
+  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
 /** Hairline-topped block. */
@@ -137,7 +137,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
+    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -221,7 +221,7 @@ function Cells({
   items: {
     key: string;
     tone: Tone;
-    plate: React.ReactNode;
+    plate?: React.ReactNode;
     text: React.ReactNode;
   }[];
   className?: string;
@@ -241,11 +241,8 @@ function Cells({
     >
       {items.map((s) => (
         <li key={s.key} className="flex min-w-0 flex-col gap-3">
-          <div className={cn("border-t-2 pt-3", BORDER[s.tone])}>
+          <div className={cn("border-t pt-3", BORDER[s.tone])}>
             <p className="type-body">{s.text}</p>
-          </div>
-          <div className="figure-well mt-auto w-full min-w-0 p-3">
-            {s.plate}
           </div>
         </li>
       ))}
@@ -253,14 +250,12 @@ function Cells({
   );
 }
 
-/** A ruled line with its plate beside it, for rows of text-and-picture pairs. */
+/** A ruled line for rows of text. */
 function SideCell({
-  plate,
   children,
-  plateClass = "",
   className = "",
 }: {
-  plate: React.ReactNode;
+  plate?: React.ReactNode;
   children: React.ReactNode;
   plateClass?: string;
   className?: string;
@@ -268,45 +263,37 @@ function SideCell({
   return (
     <div
       className={cn(
-        "grid min-w-0 items-center gap-4 border-t-2 border-[var(--ink)] pt-3 sm:grid-cols-[1fr_1.15fr]",
+        "min-w-0 border-t border-[var(--rule)] pt-3",
         className,
       )}
     >
       <p className="type-body min-w-0">{children}</p>
-      <div className={cn("figure-well w-full min-w-0 p-2", plateClass)}>
-        {plate}
-      </div>
     </div>
   );
 }
 
 export default function Week6() {
   return (
-    <SlideDeck label="Week 06">
+    <SlideDeck label="Week 6">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
-          <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
-              Week 06
+        <div className="w-full max-w-4xl">
+          <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
+            Week 6
+          </p>
+          <p className="type-caption mt-2">
+            Consumer Behavior | Davood Wadi, PhD
+          </p>
+          <Title className="mt-6">
+            Attitudes and Persuasion
+          </Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
+              Consumers do not just evaluate products.{" "}
+              They <Tint>feel, think, and act</Tint> toward them.
             </p>
-            <p className="type-caption mt-2">
-              Consumer Behavior | Davood Wadi, PhD
-            </p>
-            <Title className="mt-6 !max-w-[18ch]">
-              Attitudes and Persuasion
-            </Title>
-            <div className="mt-8 max-w-[40ch] border-t-2 border-[var(--ink)] pt-6">
-              <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
-                Consumers do not just evaluate products.{" "}
-                They <Tint>feel, think, and act</Tint> toward them.
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto w-full max-w-[520px]">
-            <V.AdOnTheDesk />
           </div>
         </div>
       </Slide>
@@ -337,13 +324,11 @@ export default function Week6() {
           <div className="flex min-w-0 flex-col gap-8">
             <SideCell
               className="sm:grid-cols-[0.62fr_1.6fr]"
-              plate={<V.SameBrandEveryWeek />}
             >
               They help consumers <Term>simplify repeated choices</Term>.
             </SideCell>
             <SideCell
               className="sm:grid-cols-[0.62fr_1.6fr]"
-              plate={<V.ResistNew />}
             >
               They can also make consumers <Term>resist new information</Term>.
             </SideCell>
@@ -367,7 +352,6 @@ export default function Week6() {
             {
               key: "affect",
               tone: "ink",
-              plate: <V.AffectPlate />,
               text: (
                 <>
                   <Term>Affect</Term> means feelings and emotions toward an
@@ -378,7 +362,6 @@ export default function Week6() {
             {
               key: "behavior",
               tone: "ink",
-              plate: <V.BehaviorPlate />,
               text: (
                 <>
                   <Term>Behavior</Term> means actions or intentions, such as
@@ -389,7 +372,6 @@ export default function Week6() {
             {
               key: "cognition",
               tone: "ink",
-              plate: <V.CognitionPlate />,
               text: (
                 <>
                   <Term>Cognition</Term> means beliefs and thoughts about an
@@ -430,7 +412,6 @@ export default function Week6() {
             {
               key: "utilitarian",
               tone: "ink",
-              plate: <V.UtilitarianPlate />,
               text: (
                 <>
                   The <Term>utilitarian function</Term> helps consumers gain
@@ -441,7 +422,6 @@ export default function Week6() {
             {
               key: "value-expressive",
               tone: "ink",
-              plate: <V.ValueExpressivePlate />,
               text: (
                 <>
                   The <Term>value-expressive function</Term> communicates
@@ -452,7 +432,6 @@ export default function Week6() {
             {
               key: "ego-defensive",
               tone: "ink",
-              plate: <V.EgoDefensivePlate />,
               text: (
                 <>
                   The <Term>ego-defensive function</Term> protects self-esteem
@@ -463,7 +442,6 @@ export default function Week6() {
             {
               key: "knowledge",
               tone: "ink",
-              plate: <V.KnowledgePlate />,
               text: (
                 <>
                   The <Term>knowledge function</Term> organizes information and
@@ -487,11 +465,10 @@ export default function Week6() {
         <Heading kicker="How Attitudes Form:">Three Hierarchies</Heading>
         {/* Three rows, one per hierarchy: the line, then its order drawn with
             the week's marks. The slide lands on what decides between them. */}
-        <ol className="flex w-full flex-col gap-3">
+        <ol className="flex w-full flex-col gap-4">
           {[
             {
               key: "standard",
-              plate: <V.StandardHierarchy />,
               text: (
                 <>
                   The <Term>standard learning hierarchy</Term> is think, feel,
@@ -501,7 +478,6 @@ export default function Week6() {
             },
             {
               key: "low",
-              plate: <V.LowInvolvementHierarchy />,
               text: (
                 <>
                   The <Term>low-involvement hierarchy</Term> is think briefly,
@@ -511,7 +487,6 @@ export default function Week6() {
             },
             {
               key: "experiential",
-              plate: <V.ExperientialHierarchy />,
               text: (
                 <>
                   The <Term>experiential hierarchy</Term> is feel, act, then
@@ -522,10 +497,9 @@ export default function Week6() {
           ].map((row) => (
             <li
               key={row.key}
-              className="grid min-w-0 items-center gap-4 border-t border-[var(--ink)] pt-3 md:grid-cols-[1fr_1.5fr] md:gap-10"
+              className="min-w-0 border-t border-[var(--rule)] pt-3"
             >
               <p className="type-lead min-w-0">{row.text}</p>
-              <div className="figure-well w-full min-w-0 p-2">{row.plate}</div>
             </li>
           ))}
         </ol>
@@ -559,13 +533,11 @@ export default function Week6() {
           <div className="grid min-w-0 gap-6 md:grid-cols-2">
             <SideCell
               className="sm:grid-cols-[0.75fr_1.5fr]"
-              plate={<V.ExpertSource />}
             >
               <Term>Expertise</Term> makes a source seem knowledgeable.
             </SideCell>
             <SideCell
               className="sm:grid-cols-[0.75fr_1.5fr]"
-              plate={<V.TrustworthySource />}
             >
               <Term>Trustworthiness</Term> makes a source seem honest and
               dependable.
@@ -603,25 +575,25 @@ export default function Week6() {
         {/* Aversion and appreciation, the opposite tendencies, side by side.
             Then what decides between them, and what credibility still needs. */}
         <div className="mt-4 grid w-full gap-x-10 gap-y-5 lg:grid-cols-2">
-          <SideCell plate={<V.SameMistake />}>
+          <SideCell>
             <Term>Algorithm aversion</Term> is the tendency to trust an
             algorithm less than a person. After people see an algorithm make a
             mistake, they lose confidence in it faster than in a person who
             makes the same mistake (Dietvorst, Simmons, &amp; Massey, 2015).
           </SideCell>
-          <SideCell plate={<V.FollowTheEstimate />}>
+          <SideCell>
             <Term>Algorithm appreciation</Term> is the opposite tendency. In
             some tasks, such as numerical estimates, people follow advice more
             when they are told it comes from an algorithm than from a person
             (Logg, Minson, &amp; Moore, 2019).
           </SideCell>
-          <SideCell plate={<V.ObjectiveSubjective />}>
+          <SideCell>
             <Term tone="signal">The task matters.</Term> Consumers trust
             algorithms more for tasks that seem objective, such as calculating a
             loan payment, than for tasks that seem subjective, such as choosing
             a gift (Castelo, Bos, &amp; Lehmann, 2019).
           </SideCell>
-          <SideCell plate={<V.WhoseInterests />}>
+          <SideCell>
             Credibility still rests on{" "}
             <Term>expertise and trustworthiness</Term>. An AI source can seem
             expert but not trustworthy when consumers do not know whose
@@ -660,9 +632,6 @@ export default function Week6() {
                 problem that may follow inaction.
               </Lead>
             </Ruled>
-            <Plate>
-              <V.NegativeFrame />
-            </Plate>
           </div>
         </div>
         <Statement className="mt-8 !max-w-[56ch] !text-[clamp(1.3rem,2vw,1.7rem)]">
@@ -696,7 +665,7 @@ export default function Week6() {
         {/* The three lines the instrument lets students test (one answer
             varies, many answers settle, models differ) run across the slide.
             The instrument follows them, and the closing line sits beside it. */}
-        <div className="mt-5 grid w-full gap-6 border-t-2 border-[var(--ink)] pt-3 md:grid-cols-3 md:gap-8">
+        <div className="mt-5 grid w-full gap-6 border-t border-[var(--rule)] pt-3 md:grid-cols-3 md:gap-8">
           <P>
             A model does not give one fixed answer. Asked the same question many
             times, it can give a different rating each time (Wadi &amp;
@@ -725,9 +694,6 @@ export default function Week6() {
                 It is not a feeling that the model experiences.
               </P>
             </Ruled>
-            <Plate>
-              <V.PatternNotFeeling />
-            </Plate>
           </div>
         </div>
       </Slide>
@@ -743,32 +709,27 @@ export default function Week6() {
         <Heading kicker="Discussion:" tone="counter">
           Audit a Persuasive Message
         </Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1fr] lg:gap-10">
-          <div className="relative w-full min-w-0 border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-10 md:py-12">
-            <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
-              Discussion:
-            </span>
-            <ol className="flex flex-col gap-4">
-              {[
-                "Choose an advertisement or product recommendation.",
-                "Identify its affect, behavior, and cognition elements.",
-                "Identify the source and the message frame.",
-                "Discuss whether a different audience would be persuaded by the same message.",
-              ].map((line, i) => (
-                <li key={i} className="flex gap-4">
-                  <span className="type-label pt-1 !text-[0.8rem] !text-[var(--ink-3)]">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)]">
-                    {line}
-                  </p>
-                </li>
-              ))}
-            </ol>
-          </div>
-          <Plate wide>
-            <V.AuditAd />
-          </Plate>
+        <div className="relative w-full max-w-5xl border-l border-[var(--rule-2)] pl-6 py-2">
+          <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--ink-3)]">
+            Discussion:
+          </span>
+          <ol className="flex flex-col gap-4">
+            {[
+              "Choose an advertisement or product recommendation.",
+              "Identify its affect, behavior, and cognition elements.",
+              "Identify the source and the message frame.",
+              "Discuss whether a different audience would be persuaded by the same message.",
+            ].map((line, i) => (
+              <li key={i} className="flex gap-4">
+                <span className="type-label pt-1 !text-[0.8rem] !text-[var(--ink-3)]">
+                  {String(i + 1)}
+                </span>
+                <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)]">
+                  {line}
+                </p>
+              </li>
+            ))}
+          </ol>
         </div>
       </Slide>
     </SlideDeck>

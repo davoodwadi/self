@@ -1041,35 +1041,33 @@ function DataSheet({ x, y, w = 92, rows = 5, seed }: { x: number; y: number; w?:
 
 /**
  * Two parties to inform. In the middle, the brand's product. To the left, an
- * ad for it (the product with a heart) speaks to the consumer who stands
- * beside it. To the right, a data sheet of its attributes is read by the AI
- * agent.
+ * ad for it (the product with a heart) built for human shoppers. To the right,
+ * a data sheet of its attributes read by the AI agent.
  */
 export function TwoAudiences() {
-  const g = 222;
-  const ad = rect(70, 40, 92, 116, 2);
+  const g = 216;
+  const ad = rect(32, 38, 104, 124, 2);
   return (
     <SketchFrame
       id="sk-two-audiences"
       width={400}
-      height={248}
-      label="Two parties to inform. In the middle stands the brand's product. To the left, an ad for it, showing the product and a heart, faces the consumer standing beside it. To the right, a data sheet listing the product's attributes faces the AI agent."
+      height={240}
+      label="Two parties to inform. In the middle stands the brand's product. To the left is an ad showing the product and a heart. To the right is a structured data sheet of attributes beside an AI agent."
     >
-      <Backwash cx={200} cy={124} rx={194} ry={118} seed={1900} />
-      <Ground x0={14} x1={386} y={g} seed={1902} />
-      <Person x={34} y={g} h={168} look={CONSUMER} arms={["hip", "down"]} seed={1910} />
+      <Backwash cx={200} cy={122} rx={192} ry={110} seed={1900} />
+      <Ground x0={140} x1={386} y={g} seed={1902} />
       {/* the ad */}
       <Paper pts={ad} seed={1940} />
       <InkLine pts={ad} seed={1941} closed />
-      <Product x={116} bottom={112} w={40} h={52} seed={1944} />
-      <Heart x={116} y={134} s={0.8} seed={1950} />
+      <Product x={84} bottom={114} w={42} h={54} seed={1944} />
+      <Heart x={84} y={138} s={0.85} seed={1950} />
       {/* the product */}
-      <Product x={200} bottom={g} w={50} h={66} seed={1960} />
+      <Product x={190} bottom={g} w={50} h={66} seed={1960} />
       {/* the data sheet and the agent */}
-      <DataSheet x={242} y={40} w={92} rows={6} seed={1970} />
-      <Agent x={366} y={g - 2} s={1.1} seed={2000} />
-      <SketchArrow pts={curvePts([182, 162], [164, 180], [146, 160])} seed={2010} head={7} />
-      <SketchArrow pts={curvePts([218, 162], [236, 180], [254, 158])} seed={2012} head={7} />
+      <DataSheet x={238} y={38} w={92} rows={6} seed={1970} />
+      <Agent x={362} y={g - 2} s={1.15} seed={2000} />
+      <SketchArrow pts={curvePts([164, 168], [134, 184], [104, 168])} seed={2010} head={7} />
+      <SketchArrow pts={curvePts([216, 168], [242, 184], [268, 162])} seed={2012} head={7} />
     </SketchFrame>
   );
 }
@@ -1260,32 +1258,30 @@ export function WhomItServes() {
 
 /**
  * Where the label goes: the platform's page of listings, the top one tagged
- * SPONSORED, is read by the AI agent. The agent then tells the consumer its
- * pick in a speech bubble, one listing with no tag on it.
+ * SPONSORED, is read by the AI agent, which passes along its chosen listing
+ * card with no tag on it.
  */
 export function LabelReachesAgent() {
-  const g = 214;
-  const page = rect(14, 40, 136, 150, 2);
+  const g = 188;
+  const page = rect(18, 36, 136, 150, 2);
   return (
     <SketchFrame
       id="sk-label-agent"
       width={400}
-      height={236}
-      label="The platform's page of three hotel listings, the top one tagged sponsored, is read by the AI agent. The agent then tells the consumer its pick in a speech bubble: one listing with no tag on it."
+      height={220}
+      label="The platform's page of three hotel listings, the top one tagged sponsored, is read by the AI agent, which outputs the chosen listing card on the right with no sponsored tag on it."
     >
-      <Backwash cx={200} cy={118} rx={194} ry={112} seed={2500} />
-      <Ground x0={170} x1={392} y={g} seed={2504} />
+      <Backwash cx={200} cy={112} rx={192} ry={102} seed={2500} />
+      <Ground x0={176} x1={264} y={g} seed={2504} />
       <Paper pts={page} seed={2502} />
       <InkLine pts={page} seed={2503} closed />
-      <Listing x={22} y={50} w={120} h={40} seed={2510} tag="SPONSORED" size={6.5} thumb={SK.sky} stars={0} />
-      <Listing x={22} y={96} w={120} h={40} seed={2530} thumb={SK.earth} stars={0} />
-      <Listing x={22} y={142} w={120} h={40} seed={2550} thumb={SK.camel} stars={0} />
-      <SketchArrow pts={rp([[156, 150], [178, 150]])} seed={2570} head={7} />
-      <Agent x={210} y={g - 2} s={1.05} seed={2580} />
-      {/* the agent's pick, told to the consumer */}
-      <SpeechBubble x={266} y={62} w={108} h={60} tx={222} ty={126} seed={2600} />
-      <Listing x={220} y={44} w={92} h={36} seed={2610} thumb={SK.sky} stars={0} lit />
-      <Person x={360} y={g} h={164} look={CONSUMER} arms={["hip", "down"]} flip seed={2620} />
+      <Listing x={26} y={46} w={120} h={40} seed={2510} tag="SPONSORED" size={6.5} thumb={SK.sky} stars={0} />
+      <Listing x={26} y={92} w={120} h={40} seed={2530} thumb={SK.earth} stars={0} />
+      <Listing x={26} y={138} w={120} h={40} seed={2550} thumb={SK.camel} stars={0} />
+      <SketchArrow pts={rp([[162, 126], [186, 126]])} seed={2570} head={7} />
+      <Agent x={220} y={g - 2} s={1.2} seed={2580} />
+      <SketchArrow pts={rp([[254, 126], [276, 126]])} seed={2590} head={7} />
+      <Listing x={284} y={103} w={102} h={46} seed={2610} thumb={SK.sky} stars={0} lit />
     </SketchFrame>
   );
 }

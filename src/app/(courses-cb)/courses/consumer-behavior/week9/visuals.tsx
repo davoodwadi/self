@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Consumer Behavior | Week 09, figures
+   Consumer Behavior | Week 9, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates for postpurchase behavior, satisfaction and
    loyalty: wobbly doubled ink and loose watercolour washes set off-register.
@@ -1365,7 +1365,7 @@ function PlateChoice<T extends string>({
             aria-pressed={on}
             onClick={() => onChange(o.id)}
             className={
-              "inline-flex items-center border px-2 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.1em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rule-2)] " +
+              "inline-flex items-center border px-2.5 py-1 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rule-2)] " +
               (on
                 ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)]"
                 : "border-[var(--rule-2)] bg-[var(--paper)] text-[var(--ink-2)] hover:border-[var(--ink-3)] hover:text-[var(--ink)]")
@@ -1541,23 +1541,23 @@ export function ReviewRequests() {
 }
 
 /**
- * Two audiences for one review: a shopper on one side and an AI agent on
- * the other, both turned to the same review card.
+ * Two audiences for one review: a review card on the left and an AI agent
+ * reading it on the right.
  */
 export function TwoAudiences() {
-  const g = 238;
+  const g = 216;
   return (
     <SketchFrame
       id="sk-two-audiences"
       width={400}
-      height={262}
-      label="One review card with four stars stands between a shopper, who reads it, and an AI agent, which reads it too."
+      height={240}
+      label="A four-star review card on the left with an arrow leading to an AI agent on the right that reads it on a shopper's behalf."
     >
-      <Backwash cx={200} cy={146} rx={194} ry={112} seed={4500} />
-      <Ground x0={24} x1={376} y={g} seed={4501} />
-      <Person x={70} y={g} h={182} look={BUYER} arms={["hip", "chin"]} seed={4510} />
-      <ReviewCard x={128} y={72} w={144} stars={4} lines={4} last={0.55} seed={4540} r={8} />
-      <Agent x={326} y={g} s={1.45} seed={4560} />
+      <Backwash cx={200} cy={126} rx={188} ry={100} seed={4500} />
+      <Ground x0={240} x1={370} y={g} seed={4501} />
+      <ReviewCard x={36} y={62} w={162} stars={4} lines={4} last={0.55} seed={4540} r={9} />
+      <SketchArrow pts={rp([[214, 134], [254, 134]])} seed={4550} width={1.2} head={7} />
+      <Agent x={306} y={g} s={1.55} seed={4560} />
     </SketchFrame>
   );
 }

@@ -6,7 +6,7 @@ week: week1
 ---
 
 ## Title Slide
-- Week 01
+- Week 1
 - Marketing research provides evidence that reduces uncertainty in managerial decisions.
 
 ## The Purpose of Marketing Research [no-exercise]

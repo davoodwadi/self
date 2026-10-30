@@ -1,0 +1,248 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "constraints",
+    "prompt": "A credit union is reviewing problems with its AI systems. Name the constraint each problem illustrates.",
+    "options": [
+      { "id": "asymmetry", "label": "Error cost asymmetry" },
+      { "id": "latency", "label": "Latency budget" },
+      { "id": "explain", "label": "Explainability and validation" },
+      { "id": "nonstationary", "label": "Non-stationary markets" }
+    ],
+    "cases": [
+      {
+        "id": "car-loan",
+        "text": "One car loan that defaults wipes out the profit from a whole branch's month of repaid car loans.",
+        "answer": "asymmetry",
+        "explanation": "A single principal loss outweighs many small interest margins, so the two kinds of error do not cost the same."
+      },
+      {
+        "id": "tap",
+        "text": "A new fraud model is accurate but takes two seconds per card tap, so the payment network times out.",
+        "answer": "latency",
+        "explanation": "Payment decisions must return within milliseconds, so a slow model cannot be used at the point of sale."
+      },
+      {
+        "id": "letter",
+        "text": "A declined applicant asks why, and the credit union cannot name the specific reasons the model used.",
+        "answer": "explain",
+        "explanation": "Regulators require the specific reasons behind an adverse credit decision."
+      },
+      {
+        "id": "scam",
+        "text": "Scammers notice which purchase sizes get blocked and start splitting their charges just under that size.",
+        "answer": "nonstationary",
+        "explanation": "Fraudsters adapt to the model, so the patterns it learned from history shift."
+      },
+      {
+        "id": "validation",
+        "text": "A vendor model cannot go live until a separate team inside the credit union has checked it.",
+        "answer": "explain",
+        "explanation": "Independent validation before deployment is part of the regulatory requirement alongside explaining decisions."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "scorecards-vs-ml",
+    "prompt": "A lender is comparing two underwriting models. Sort each statement by the model it describes.",
+    "bins": [
+      { "id": "scorecard", "label": "Logistic regression scorecard" },
+      { "id": "trees", "label": "Gradient-boosted trees" }
+    ],
+    "cards": [
+      {
+        "id": "points",
+        "text": "Gives an applicant 35 points for having held an account more than five years",
+        "bin": "scorecard",
+        "explanation": "Scorecards assign fixed point values to buckets of a small set of bureau variables."
+      },
+      {
+        "id": "interaction",
+        "text": "Treats frequent travel spending as safe for one applicant and risky for another, depending on their savings balance",
+        "bin": "trees",
+        "explanation": "Capturing how one variable's effect depends on another is an interaction effect, which tree ensembles learn."
+      },
+      {
+        "id": "audit",
+        "text": "An auditor can read off every variable's weight and direction from a one-page table",
+        "bin": "scorecard",
+        "explanation": "Linear scorecards are transparent and easy to audit."
+      },
+      {
+        "id": "hundreds",
+        "text": "Uses 400 attributes drawn from transaction histories",
+        "bin": "trees",
+        "explanation": "Tree ensembles work across hundreds of borrower attributes, while scorecards use a small set."
+      },
+      {
+        "id": "attribution",
+        "text": "Needs a separate attribution tool to tell a declined applicant why",
+        "bin": "trees",
+        "explanation": "Tree ensembles require post-hoc attribution tools to explain individual decisions."
+      },
+      {
+        "id": "independent",
+        "text": "Assumes a higher utilization always adds the same amount of risk, whatever else is true of the applicant",
+        "bin": "scorecard",
+        "explanation": "Linear scorecards assume each variable affects risk independently and monotonically."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "class-imbalance",
+    "question_text": "An insurer's claims model flags 200 claims as fraudulent. Investigators confirm 50 of them, and the insurer knows there were 100 fraudulent claims in total that month. What are the model's precision and recall?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Precision 50 percent, recall 25 percent",
+        "option_explanation": "These are reversed. Precision divides by the 200 flagged claims, and recall divides by the 100 actual frauds."
+      },
+      {
+        "option_text": "Precision 25 percent, recall 50 percent",
+        "option_explanation": "Correct. 50 of 200 flagged claims are fraud (precision 25 percent), and 50 of the 100 actual frauds were caught (recall 50 percent)."
+      },
+      {
+        "option_text": "Precision 50 percent, recall 50 percent",
+        "option_explanation": "Precision uses the 200 flagged claims as its denominator, not the 100 actual frauds."
+      },
+      {
+        "option_text": "Accuracy is the better measure here, so precision and recall do not matter",
+        "option_explanation": "With fraud this rare, accuracy stays high even for a model that catches nothing, so it is uninformative."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "type": "identify",
+    "slide_id": "fraud-models",
+    "prompt": "A digital bank runs three layers of fraud models. Name the layer that catches each case.",
+    "options": [
+      { "id": "supervised", "label": "Supervised classifier" },
+      { "id": "unsupervised", "label": "Unsupervised anomaly detection" },
+      { "id": "graph", "label": "Graph model" }
+    ],
+    "cases": [
+      {
+        "id": "gift-cards",
+        "text": "A stolen card is used for a burst of small gift-card purchases, a pattern seen in thousands of past confirmed chargebacks.",
+        "answer": "supervised",
+        "explanation": "A known fraud pattern with labelled past examples is what a supervised model learns to recognize."
+      },
+      {
+        "id": "night",
+        "text": "A retiree who always shops in Halifax by day suddenly buys jewellery in another country at 3 a.m., using a method no one has reported before.",
+        "answer": "unsupervised",
+        "explanation": "The purchase deviates sharply from this cardholder's own baseline, which anomaly detection flags without needing past labels."
+      },
+      {
+        "id": "laptop",
+        "text": "Twelve new accounts with different names were all opened from the same laptop and all send money to one account.",
+        "answer": "graph",
+        "explanation": "Each account looks normal alone. The shared device and money transfers only show up as links in a graph."
+      },
+      {
+        "id": "address",
+        "text": "Thirty loan applicants with clean records list the same mailing address and share two phone numbers among them.",
+        "answer": "graph",
+        "explanation": "Shared attributes across many accounts point to a synthetic-identity ring, which graph models detect."
+      },
+      {
+        "id": "category",
+        "text": "A student card that only ever buys groceries and transit fares is suddenly charged at an online casino.",
+        "answer": "unsupervised",
+        "explanation": "A sharp break from the cardholder's usual merchant categories is an anomaly against their own baseline."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "backtest-overfitting",
+    "question_text": "A junior analyst tests 150 versions of a currency trading rule on ten years of data and proposes the one with a 19 percent annual backtest return. What should the team do before trusting it?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Deploy it, since ten years of data is a long history",
+        "option_explanation": "A long history does not help when the best of 150 tries is chosen. The winner can look strong purely by chance."
+      },
+      {
+        "option_text": "Test 150 more versions and keep whichever is best",
+        "option_explanation": "Testing more versions makes the best-looking backtest even more likely to be a chance result."
+      },
+      {
+        "option_text": "Retrain the rule on all ten years so it has more data",
+        "option_explanation": "Using all the data leaves nothing held out to check the rule on, which makes overfitting harder to detect."
+      },
+      {
+        "option_text": "Check it on a held-out period it never saw, and adjust for the 150 versions tested",
+        "option_explanation": "Correct. Out-of-sample testing and an adjustment for the number of strategies tried guard against backtest overfitting."
+      }
+    ],
+    "correct_answer_index": 3
+  },
+  {
+    "type": "identify",
+    "slide_id": "proxy-discrimination",
+    "prompt": "A fair lending team reviews four mortgage underwriting practices. Name the problem in each.",
+    "options": [
+      { "id": "treatment", "label": "Disparate treatment" },
+      { "id": "proxy", "label": "Proxy discrimination" },
+      { "id": "notice", "label": "Inadequate adverse action notice" }
+    ],
+    "cases": [
+      {
+        "id": "marital",
+        "text": "The model includes the applicant's marital status as an input and lowers scores for divorced applicants.",
+        "answer": "treatment",
+        "explanation": "Marital status is a protected attribute, and using it explicitly is disparate treatment."
+      },
+      {
+        "id": "school",
+        "text": "Religion is not in the data, but the model leans heavily on which high school the applicant attended, which closely tracks religion in this city.",
+        "answer": "proxy",
+        "explanation": "The school variable acts as a statistical stand-in for a protected group."
+      },
+      {
+        "id": "generic",
+        "text": "Every declined applicant receives the same letter saying only that they did not meet internal criteria.",
+        "answer": "notice",
+        "explanation": "An adverse action notice must state the specific, accurate principal reasons for the decision."
+      },
+      {
+        "id": "grocery",
+        "text": "Sex is excluded, but the model uses the mix of stores where the applicant shops, which closely tracks sex, and approval rates differ sharply.",
+        "answer": "proxy",
+        "explanation": "A merchant-mix variable correlated with a protected attribute creates a proxy effect."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "regime-shifts",
+    "question_text": "A credit card issuer has data from 2005 to 2025 but trains its loss model on 2017 to 2019 and checks it with a random 20 percent split of those same years. What is the main weakness?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "The random split comes from a single calm period, so the check never tests a recession or rate shock",
+        "option_explanation": "Correct. A random split of one expansion assumes the future looks like that period, so the model is never evaluated across economic cycles."
+      },
+      {
+        "option_text": "A 20 percent holdout is too small to measure accuracy",
+        "option_explanation": "The size of the holdout is not the core problem. Even a large random split from the same calm years would miss a regime shift."
+      },
+      {
+        "option_text": "Card losses do not depend on interest rates or unemployment",
+        "option_explanation": "Credit losses do shift with monetary policy and recessions, which is why regime shifts matter."
+      },
+      {
+        "option_text": "The model should be checked on 2019 alone, the most recent year",
+        "option_explanation": "One more calm year still leaves the model untested across multiple economic cycles."
+      }
+    ],
+    "correct_answer_index": 0
+  }
+]

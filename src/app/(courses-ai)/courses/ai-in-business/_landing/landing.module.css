@@ -8,8 +8,8 @@
 .page {
   --sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
   overflow-x: clip;
-  background: var(--background);
-  color: var(--charcoal);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--sans);
 }
 
@@ -20,7 +20,7 @@
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.4;
-  color: var(--charcoal-light);
+  color: var(--ink-3);
   font-variant-numeric: tabular-nums;
 }
 
@@ -31,7 +31,7 @@
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.015em;
-  color: var(--charcoal);
+  color: var(--ink);
 }
 
 .standfirst {
@@ -40,7 +40,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
-  color: var(--charcoal-light);
+  color: var(--ink-2);
 }
 
 .credit {
@@ -48,7 +48,7 @@
   font-size: 0.9375rem;
   font-weight: 500;
   line-height: 1.4;
-  color: var(--charcoal);
+  color: var(--ink);
 }
 
 /* ---- Curriculum -------------------------------------------------------- */
@@ -58,7 +58,7 @@
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.4;
-  color: var(--charcoal-light);
+  color: var(--ink-3);
 }
 
 .row {
@@ -73,7 +73,7 @@
   font-weight: 500;
   line-height: 1.4;
   font-variant-numeric: tabular-nums;
-  color: color-mix(in oklab, var(--charcoal-light) 65%, transparent);
+  color: var(--ink-3);
   transition: color 0.15s ease;
 }
 
@@ -82,7 +82,7 @@
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1.4;
-  color: var(--charcoal-light);
+  color: var(--ink-3);
 }
 
 .rowTitle {
@@ -91,7 +91,7 @@
   font-weight: 600;
   line-height: 1.35;
   letter-spacing: normal;
-  color: var(--charcoal);
+  color: var(--ink);
   transition: color 0.15s ease;
 }
 
@@ -99,7 +99,7 @@
   font-family: var(--sans);
   font-size: 0.9375rem;
   line-height: 1.55;
-  color: var(--charcoal-light);
+  color: var(--ink-2);
 }
 
 .statusNote {
@@ -107,18 +107,18 @@
   font-size: 0.75rem;
   font-style: normal;
   font-weight: 400;
-  color: color-mix(in oklab, var(--charcoal-light) 65%, transparent);
+  color: var(--ink-3);
 }
 
 .arrow {
-  color: color-mix(in oklab, var(--charcoal) 40%, transparent);
+  color: color-mix(in oklab, var(--ink) 40%, transparent);
   transition:
     color 0.15s ease,
     transform 0.15s ease;
 }
 
 .rowMuted .rowTitle {
-  color: color-mix(in oklab, var(--charcoal) 55%, transparent);
+  color: color-mix(in oklab, var(--ink) 55%, transparent);
 }
 
 .rowMuted .rowText {
@@ -131,7 +131,7 @@
 .rowLink:focus-visible .rowTitle,
 .rowLink:hover .arrow,
 .rowLink:focus-visible .arrow {
-  color: var(--crimson);
+  color: var(--accent);
 }
 
 .rowLink:hover .arrow,
@@ -140,7 +140,7 @@
 }
 
 .rowLink:focus-visible {
-  outline: 2px solid var(--crimson);
+  outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
 

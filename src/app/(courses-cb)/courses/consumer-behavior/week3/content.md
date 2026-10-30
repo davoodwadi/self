@@ -6,7 +6,7 @@ week: week3
 ---
 
 ## Title Slide
-- Week 03
+- Week 3
 - Brands live in the brain. How people learn, remember, and forget shapes every purchase.
 
 ## What Is Consumer Learning? [no-exercise]

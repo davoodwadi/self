@@ -6,7 +6,7 @@ week: week3
 ---
 
 ## Title Slide
-- Week 03
+- Week 3
 - Foundation models inherit the linguistic, cultural, and geopolitical asymmetries of their training corpora and post-training alignment, shaping how global brands and consumers are represented.
 
 ## Culture Inside Foundation Models [no-exercise]

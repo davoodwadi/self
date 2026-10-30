@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 03, figures
+   Week 3, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea: a census of the consumer
    market, a body receiving stimuli, a fork into information sources, a
@@ -9,7 +9,7 @@
    spectrum, two market lanes, a three-panel market structure, a round table,
    a matched pair, and two documents for one product.
 
-   Conventions carried over from Week 01/02/04:
+   Conventions carried over from Week 1/02/04:
      - viewBox width 800 (400 for column plates), flat fills, hairline rules
      - INK carries the neutral case, SIGNAL the operative one, COUNTER the
        contrast or outward-looking state

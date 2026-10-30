@@ -6,7 +6,7 @@ week: week1
 ---
 
 ## Title Slide
-- Week 01
+- Week 1
 - Digital marketing and e-commerce unite demand generation with the information systems that catalog, rank, price, and fulfill every transaction across human and agent-mediated markets.
 
 ## Why Digital Marketing and E-Commerce Are Inseparable [no-exercise]

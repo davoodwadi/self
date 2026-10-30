@@ -39,7 +39,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 09: REGRESSION AND MARKETING RESPONSE MODELS
+// WEEK 9: REGRESSION AND MARKETING RESPONSE MODELS
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -63,12 +63,12 @@ const CELL = "!max-w-none !leading-snug";
 
 export default function Week9() {
   return (
-    <SlideDeck label="Week 09">
+    <SlideDeck label="Week 9">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 09: Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 9: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
           <span className="text-[var(--signal)]">Regression</span> and Marketing Response Models
         </Title>

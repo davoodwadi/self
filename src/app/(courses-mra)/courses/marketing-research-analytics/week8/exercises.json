@@ -220,7 +220,7 @@
     "slide_id": "quasi-experimental-designs",
     "question_text": "A coffee chain renovates its stores in City X but not in City Y. Average daily customers per store rise from 400 to 460 in City X and from 420 to 440 in City Y over the same period. What is the difference-in-differences estimate of the renovation's effect?",
     "hint": "Compute each city's change first, then compare the two changes.",
-    "correct_answer_citation": "Week 08: Quasi-Experimental Designs",
+    "correct_answer_citation": "Week 8: Quasi-Experimental Designs",
     "correct_answer_index": 2,
     "options": [
       {

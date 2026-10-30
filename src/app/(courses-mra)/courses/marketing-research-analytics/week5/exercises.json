@@ -118,7 +118,7 @@
     "slide_id": "precision-and-confidence",
     "question_text": "A survey of 385 customers estimates a proportion with a margin of error of plus or minus five percentage points at 95 percent confidence. The marketing director asks for a margin of plus or minus 2.5 points, at the same confidence level. Approximately how many completed questionnaires are required?",
     "hint": "Consider what happens to the sample size when the margin of error is halved.",
-    "correct_answer_citation": "Week 05: Precision and Confidence",
+    "correct_answer_citation": "Week 5: Precision and Confidence",
     "correct_answer_index": 2,
     "options": [
       {
@@ -188,7 +188,7 @@
     "slide_id": "limitations-of-synthetic-respondents",
     "question_text": "A vendor's synthetic panel of 5,000 respondents rates a proposed plant-based cheese at 5.1 on a 7-point purchase-intention scale, with a standard deviation of 0.4, and reports a margin of error of ±0.01. What is the most serious problem with this result?",
     "hint": "Consider what connects a sample to the population it describes.",
-    "correct_answer_citation": "Week 05: Limitations of Synthetic Respondents",
+    "correct_answer_citation": "Week 5: Limitations of Synthetic Respondents",
     "correct_answer_index": 1,
     "options": [
       {
@@ -214,7 +214,7 @@
     "slide_id": "sampling-in-ai-evaluation",
     "question_text": "An analyst asks a language model once how much it would pay for a one-kilogram bag of coffee, and it answers $14. The analyst reports that the model values the product at $14. A colleague submits the same prompt 100 times and obtains a mean of $11.40 with a standard deviation of $4.10. Which statement is correct?",
     "hint": "Consider what each response represents, and what the mean of many responses estimates.",
-    "correct_answer_citation": "Week 05: Sampling in AI Evaluation",
+    "correct_answer_citation": "Week 5: Sampling in AI Evaluation",
     "correct_answer_index": 1,
     "options": [
       {

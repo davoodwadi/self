@@ -7,7 +7,7 @@ backgroundShape: "A layered field of consumer drives, goals, conflicts, and invo
 ---
 
 ## Title Slide
-- Week 04
+- Week 4
 - Every purchase is an attempt to move from a current state to a better one.
 
 ## What Is Consumer Motivation? [no-exercise]

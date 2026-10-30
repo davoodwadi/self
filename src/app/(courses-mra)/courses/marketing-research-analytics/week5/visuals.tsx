@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 05 plates: Sampling and Data Collection.
+   Week 5 plates: Sampling and Data Collection.
    Built on ../_visuals/kit and ../_visuals/objects. Every plate follows the
    sentence it illustrates on the slide.
    ========================================================================== */

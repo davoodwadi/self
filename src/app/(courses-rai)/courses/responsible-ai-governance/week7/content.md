@@ -6,7 +6,7 @@ week: week7
 ---
 
 ## Title Slide
-- Week 07
+- Week 7
 - Governing manipulation in digital markets requires distinguishing transparent persuasion from deceptive choice architecture, auditing conversational systems for sycophancy and emotional exploitation, and protecting both human shoppers and their AI agents from adversarial storefront design.
 
 ## Persuasion Versus Manipulation in Digital Markets [no-exercise]

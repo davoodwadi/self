@@ -80,7 +80,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 09: SUPPLY CHAIN AND DISTRIBUTION CHANNELS (THE THIRD P)
+// WEEK 9: SUPPLY CHAIN AND DISTRIBUTION CHANNELS (THE THIRD P)
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -500,13 +500,13 @@ function MixStrip() {
 export default function Week9() {
   return (
     <SlideDeck
-      label="Week 09"
+      label="Week 9"
     >
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 09: Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 9: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
           Supply Chain and Distribution Channels{" "}
           <span className="text-[var(--signal)]">(The Third P)</span>

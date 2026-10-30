@@ -23,7 +23,7 @@ import {
 import { Agent, Badge, Cart, Coin, Cursor, Hotel, Listing, Mug, Parcel, Person, Shop, Sneaker, Star, Stopwatch } from "../_visuals/objects";
 
 /* ==========================================================================
-   WEEK 04 PLATES: MAIL-ORDER CATALOGUE
+   WEEK 4 PLATES: MAIL-ORDER CATALOGUE
    --------------------------------------------------------------------------
    Products engraved in halftone inside double-ruled white tiles, ink marks,
    and one amber mark for the slide's key idea. See the course CLAUDE.md.

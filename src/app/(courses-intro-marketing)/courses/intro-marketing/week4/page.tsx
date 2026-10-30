@@ -43,7 +43,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 04: BUSINESS-TO-BUSINESS (B2B) MARKETING
+// WEEK 4: BUSINESS-TO-BUSINESS (B2B) MARKETING
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -271,13 +271,13 @@ function PromptKicker() {
 export default function Week4() {
   return (
     <SlideDeck
-      label="Week 04"
+      label="Week 4"
     >
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 04: Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 4: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           Business-to-Business{" "}
           <span className="text-[var(--signal)]">(B2B)</span> Marketing

@@ -11,14 +11,10 @@ import React from "react";
 import { Check, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/** The exercise heading: a kicker naming the activity, then the prompt. */
-export function ExerciseHeader({ kind, prompt }: { kind: string; prompt: string }) {
+/** The exercise heading: the prompt alone. */
+export function ExerciseHeader({ prompt }: { prompt: string }) {
   return (
     <div className="mb-8">
-      <div className="mb-5 flex items-center gap-3">
-        <span className="h-px w-7 bg-[var(--signal)]" aria-hidden />
-        <span className="type-label">Exercise | {kind}</span>
-      </div>
       <p className="type-h2 max-w-[40ch] !text-[1.35rem] md:!text-[1.7rem]">{prompt}</p>
     </div>
   );

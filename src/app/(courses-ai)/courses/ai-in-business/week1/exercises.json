@@ -1,0 +1,281 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "prediction-judgment",
+    "prompt": "A hospital is deciding how many nurses to schedule for next weekend. Sort each element of the decision into prediction or judgment.",
+    "bins": [
+      {
+        "id": "prediction",
+        "label": "Prediction"
+      },
+      {
+        "id": "judgment",
+        "label": "Judgment"
+      }
+    ],
+    "cards": [
+      {
+        "id": "visits",
+        "text": "Estimating that about 340 patients will arrive at the emergency department on Saturday",
+        "bin": "prediction",
+        "explanation": "This estimates an unknown future event from past arrival records."
+      },
+      {
+        "id": "flu",
+        "text": "Estimating how likely a flu outbreak is to raise arrivals next week",
+        "bin": "prediction",
+        "explanation": "The likelihood of a future event is a prediction made from available data."
+      },
+      {
+        "id": "wait",
+        "text": "Deciding that a long patient wait is worse than paying for one idle nurse",
+        "bin": "judgment",
+        "explanation": "This assigns value to the possible outcomes, including the cost of each type of error."
+      },
+      {
+        "id": "budget",
+        "text": "Setting how much overtime cost the hospital is willing to accept on busy days",
+        "bin": "judgment",
+        "explanation": "Choosing an acceptable cost is a statement of values, not an estimate of a fact."
+      },
+      {
+        "id": "noshow",
+        "text": "Estimating the share of booked patients who will miss their appointments",
+        "bin": "prediction",
+        "explanation": "The share is an unknown fact estimated from historical records."
+      },
+      {
+        "id": "safety",
+        "text": "Ruling that patient safety comes before staffing cost when the two conflict",
+        "bin": "judgment",
+        "explanation": "Ranking outcomes by importance is judgment, which the manager supplies."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "rules-vs-learning",
+    "prompt": "For each business task, decide whether rule-based software or machine learning is the better fit.",
+    "options": [
+      {
+        "id": "rules",
+        "label": "Rule-based software"
+      },
+      {
+        "id": "ml",
+        "label": "Machine learning"
+      }
+    ],
+    "cases": [
+      {
+        "id": "vacation",
+        "text": "Calculating each employee's vacation days from their years of service under the company policy",
+        "answer": "rules",
+        "explanation": "The policy states the formula in advance, so a programmer can write it down exactly."
+      },
+      {
+        "id": "spam",
+        "text": "Flagging customer emails that are likely to be spam from millions of past messages marked as spam or not",
+        "answer": "ml",
+        "explanation": "No short list of rules captures every spam message, but past labeled examples are available."
+      },
+      {
+        "id": "shipping",
+        "text": "Charging a flat 9 dollar shipping fee on orders under 50 dollars and free shipping above",
+        "answer": "rules",
+        "explanation": "The condition and the output are known exactly, so explicit rules suffice."
+      },
+      {
+        "id": "photos",
+        "text": "Recognizing which product appears in a photo a shopper uploads",
+        "answer": "ml",
+        "explanation": "The relationship between pixels and products is too complex to state as rules."
+      },
+      {
+        "id": "resale",
+        "text": "Estimating the resale price of a used car from the prices of thousands of past sales",
+        "answer": "ml",
+        "explanation": "The system estimates the relationship between car attributes and price from historical outcomes."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "thresholds",
+    "question_text": "A streaming service flags accounts it suspects of password sharing and blocks them. Wrongly blocking a paying household loses about 180 dollars a year in subscriptions, while missing a sharer loses about 20 dollars. How should the service set its threshold?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Set a low threshold, so most suspected accounts are blocked quickly",
+        "option_explanation": "A low threshold blocks many paying households, which is the expensive error here."
+      },
+      {
+        "option_text": "Set the threshold at 0.5, because that is where the model is most accurate",
+        "option_explanation": "0.5 ignores the costs of the two errors. The best threshold depends on what each error costs."
+      },
+      {
+        "option_text": "Set a high threshold, blocking only accounts it is very sure about",
+        "option_explanation": "Correct. A wrongly blocked household costs nine times as much as a missed sharer, so the service blocks only when it is very confident."
+      },
+      {
+        "option_text": "Block every account, so no sharer is ever missed",
+        "option_explanation": "Blocking everyone removes every false negative but makes every paying household a false positive."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "type": "identify",
+    "slide_id": "supervised",
+    "prompt": "Each case is a supervised learning task. Decide whether it is regression or classification.",
+    "options": [
+      {
+        "id": "regression",
+        "label": "Regression"
+      },
+      {
+        "id": "classification",
+        "label": "Classification"
+      }
+    ],
+    "cases": [
+      {
+        "id": "minutes",
+        "text": "Estimating how many minutes a food delivery will take to arrive",
+        "answer": "regression",
+        "explanation": "The target is a continuous number of minutes."
+      },
+      {
+        "id": "review",
+        "text": "Deciding whether a product review is positive, neutral, or negative",
+        "answer": "classification",
+        "explanation": "The target is one of three discrete categories."
+      },
+      {
+        "id": "salary",
+        "text": "Estimating the starting salary a job candidate will accept",
+        "answer": "regression",
+        "explanation": "Salary is a continuous dollar amount."
+      },
+      {
+        "id": "claim",
+        "text": "Deciding whether a warranty claim should go to manual review",
+        "answer": "classification",
+        "explanation": "The target is a yes or no category."
+      },
+      {
+        "id": "kwh",
+        "text": "Estimating the electricity a factory will use tomorrow in kilowatt hours",
+        "answer": "regression",
+        "explanation": "The target is a continuous quantity of energy."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "selecting-paradigm",
+    "prompt": "Match each business problem with the learning paradigm that suits it.",
+    "term_label": "Business problem",
+    "match_label": "Learning paradigm",
+    "pairs": [
+      {
+        "id": "loan",
+        "term": "A bank has ten years of loan records showing which borrowers repaid and wants to score new applicants.",
+        "match": "Supervised learning",
+        "explanation": "The target outcome is well defined and recorded in reliable historical data."
+      },
+      {
+        "id": "gym",
+        "term": "A gym chain has visit logs for its members but no categories and wants to find groups with similar habits.",
+        "match": "Unsupervised learning",
+        "explanation": "The records have no target, and the goal is to discover groupings."
+      },
+      {
+        "id": "elevator",
+        "term": "A building wants to decide, minute by minute, where each elevator should wait so that total waiting time over the day is lowest.",
+        "match": "Reinforcement learning",
+        "explanation": "Each decision changes where the elevators are next, and performance is a cumulative reward over the day."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "generalization",
+    "question_text": "An analyst builds a model of store sales that explains 99 percent of the variation in last year's data, but its forecasts for this quarter are far off. Which explanation fits best?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "The model is underfitted: it is too simple to capture last year's pattern",
+        "option_explanation": "An underfitted model would also fit last year's data poorly, not explain 99 percent of it."
+      },
+      {
+        "option_text": "The model is overfitted to last year's sample",
+        "option_explanation": "Correct. A near-perfect fit to last year with poor forecasts for new periods is the signature of overfitting."
+      },
+      {
+        "option_text": "The model generalizes well, because its fit to the training data is high",
+        "option_explanation": "A high fit to training data says little about accuracy on new periods."
+      },
+      {
+        "option_text": "The model needs more training data from last year to reach 100 percent",
+        "option_explanation": "The problem is fit to noise, not too little fit to last year."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "type": "sort",
+    "slide_id": "predictive-generative",
+    "prompt": "A bank is planning several AI tools. Sort each into predictive AI or generative AI.",
+    "bins": [
+      {
+        "id": "predictive",
+        "label": "Predictive AI"
+      },
+      {
+        "id": "generative",
+        "label": "Generative AI"
+      }
+    ],
+    "cards": [
+      {
+        "id": "atm",
+        "text": "Forecasting how much cash each ATM will need next week",
+        "bin": "predictive",
+        "explanation": "The output is a numerical forecast."
+      },
+      {
+        "id": "summary",
+        "text": "Writing a plain-language summary of a new mortgage regulation for staff",
+        "bin": "generative",
+        "explanation": "The output is new text produced in response to a request."
+      },
+      {
+        "id": "card",
+        "text": "Scoring each card payment for the likelihood that it is fraudulent",
+        "bin": "predictive",
+        "explanation": "The output is a score for a single input record."
+      },
+      {
+        "id": "reply",
+        "text": "Drafting replies to customer complaints for an agent to edit",
+        "bin": "generative",
+        "explanation": "The output is drafted correspondence, which a person reviews."
+      },
+      {
+        "id": "tier",
+        "text": "Assigning each new customer to a low, medium, or high risk tier",
+        "bin": "predictive",
+        "explanation": "The output is a category."
+      },
+      {
+        "id": "script",
+        "text": "Writing code that converts an old report into a new format",
+        "bin": "generative",
+        "explanation": "Generating software code is a generative task."
+      }
+    ]
+  }
+]

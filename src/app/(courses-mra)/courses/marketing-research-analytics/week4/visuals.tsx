@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 04 plates: Measurement and Questionnaire Design.
+   Week 4 plates: Measurement and Questionnaire Design.
    Built on ../_visuals/kit and ../_visuals/objects. Every plate follows the
    sentence it illustrates on the slide.
    ========================================================================== */

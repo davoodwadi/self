@@ -37,7 +37,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 02: THE MARKETING ENVIRONMENT AND ETHICS
+// WEEK 2: THE MARKETING ENVIRONMENT AND ETHICS
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -609,7 +609,7 @@ function StrategyGlyph({ kind }: { kind: "break" | "styles" | "delay" }) {
   );
 }
 
-/** The five philosophies from Week 01, reduced to the step this slide names. */
+/** The five philosophies from Week 1, reduced to the step this slide names. */
 function ConceptStep() {
   return (
     <div aria-hidden className="grid w-full grid-cols-[1fr_auto_1fr] items-stretch gap-4 md:gap-6">
@@ -690,13 +690,13 @@ function GlyphAgent() {
 export default function Week2() {
   return (
     <SlideDeck
-      label="Week 02"
+      label="Week 2"
     >
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 02: Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 2: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[15ch]">
           The Marketing Environment{" "}
           <span className="text-[var(--signal)]">and</span> Ethics

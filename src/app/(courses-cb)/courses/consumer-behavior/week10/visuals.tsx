@@ -1254,15 +1254,14 @@ export function FriendOrAd() {
       id="sk-friend-or-ad"
       width={400}
       height={260}
-      label="Left: a friend tells the shopper about a sneaker. The friend's speech bubble shows the sneaker and a heart. Right: a billboard advertises the same sneaker with a price tag."
+      label="Left: a friend tells the shopper about a sneaker in a speech bubble. Right: a billboard advertises the same sneaker with a price tag."
     >
       <Backwash cx={200} cy={146} rx={194} ry={110} seed={4400} />
       <Ground x0={18} x1={382} y={g} seed={4401} />
       <Person x={52} y={g} h={168} look={FRIEND} arms={["hip", "reach"]} seed={4410} />
       <Person x={150} y={g} h={172} look={SHOPPER} arms={["down", "hip"]} flip seed={4450} />
       <SpeechBubble x={92} y={40} w={92} h={50} tx={64} ty={70} seed={4490} />
-      <Shoe x={84} y={46} s={0.8} seed={4495} />
-      <Heart x={118} y={34} s={0.6} seed={4499} />
+      <Shoe x={92} y={48} s={0.92} seed={4495} />
       {/* the billboard */}
       <InkLine pts={rp([[270, 140], [268, g]])} seed={4500} width={1.4} />
       <InkLine pts={rp([[340, 140], [342, g]])} seed={4501} width={1.4} />
@@ -1780,8 +1779,8 @@ export function VirtualInfluencer() {
 
 /**
  * An online brand community: a forum page under the brand badge, where three
- * members each post a photo of themselves in the brand's sneakers (outdoors, a
- * walk in the rain, a sunny day out), with replies beneath.
+ * members each post a photo of the brand's sneakers in use (outdoors, in the
+ * rain, on a sunny day), with replies beneath.
  */
 export function BrandForum() {
   const page = sharp(rp([[24, 16], [376, 16], [376, 244], [24, 244]]), true, 3);
@@ -1795,7 +1794,7 @@ export function BrandForum() {
       id="sk-brand-forum"
       width={400}
       height={260}
-      label="A brand forum page under the brand badge: three members each post a photo of themselves wearing the brand's camel sneakers: pointing the way outdoors, in the rain and on a sunny day out, with replies and hearts beneath."
+      label="A brand forum page under the brand badge: three members each post a photo of the brand's camel sneakers in use outdoors, in the rain, and on a sunny day, with discussion replies beneath."
     >
       <Backwash cx={200} cy={130} rx={194} ry={124} seed={7600} />
       <Paper pts={page} seed={7601} />
@@ -1806,7 +1805,6 @@ export function BrandForum() {
       {uses.map(([kind, i]) => {
         const x = 36 + i * 114;
         const photo = rp([[x, 92], [x + 100, 92], [x + 100, 192], [x, 192]]);
-        const look: Look = [{ ...FRIEND, shoes: SK.camel }, { ...FRIEND2, wear: SK.charcoal, shoes: SK.camel }, { ...ELDER, wear: SK.blush, shoes: SK.camel }][i];
         return (
           <g key={kind}>
             <InkLine pts={rp(blobPts(x + 8, 76, 7, 7, 7610 + i * 20, 10, 0.05))} seed={7610 + i * 20} closed width={1} />
@@ -1817,18 +1815,8 @@ export function BrandForum() {
               ? [0, 1, 2, 3, 4].map((k) => <InkLine key={k} pts={rp([[x + 12 + k * 19, 100 + (k % 2) * 8], [x + 8 + k * 19, 112 + (k % 2) * 8]])} seed={7630 + k} width={0.8} />)
               : null}
             {kind === "day" ? <InkLine pts={rp(blobPts(x + 82, 110, 9, 9, 7650, 10, 0.05))} seed={7650} closed width={0.9} /> : null}
-            <Person
-              x={x + (kind === "day" ? 44 : 50)}
-              y={184}
-              h={80}
-              look={look}
-              arms={kind === "run" ? ["hip", "reach"] : kind === "rain" ? ["hip", "hip"] : ["hip", "wave"]}
-              seed={7660 + i * 100}
-            />
-            <Shoe x={x + (kind === "day" ? 40 : 46)} y={182} s={0.42} seed={7900 + i * 20} />
-            <Shoe x={x + (kind === "day" ? 52 : 58)} y={184} s={0.42} seed={7910 + i * 20} />
-            <Heart x={x + 10} y={216} s={0.6} seed={7690 + i * 5} />
-            <Scribble x={x + 24} y={214} w={70} n={2} gap={10} last={0.5} seed={7700 + i * 5} />
+            <Shoe x={x + 50} y={172} s={0.98} seed={7900 + i * 20} />
+            <Scribble x={x + 8} y={210} w={84} n={2} gap={11} last={0.6} seed={7700 + i * 5} />
           </g>
         );
       })}

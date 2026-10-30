@@ -12,9 +12,9 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading
 
 export default function Week5Page() {
   return (
-    <SlideDeck label="Week 05">
+    <SlideDeck label="Week 5">
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 05: Digital Marketing &amp; E-Commerce</Subtitle>
+        <Subtitle variant="hero">Week 5: Digital Marketing &amp; E-Commerce</Subtitle>
         <Title className="mt-6 !max-w-[25ch]">Programmatic Advertising and AdTech Infrastructure</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <Plate className="mt-8 !max-w-4xl !p-2 sm:!p-3">

@@ -125,7 +125,7 @@
     "slide_id": "baseline-ethnocentrism-and-asymmetric-in-group-favoritism-in-llms",
     "question_text": "An analyst tests one US-developed model and sees that its CETSCALE score is higher when the statements concern Canada than when they concern China. A colleague concludes: 'This proves the model is biased in favor of North America because it was built in the United States.' Based on the findings of Wadi, Ghodrat, and Philp (2026), what is the strongest reply?",
     "hint": "Recall what happened when the target country was China across all evaluated models, not just the North American ones.",
-    "correct_answer_citation": "Week 03: Baseline Ethnocentrism and Asymmetric In-Group Favoritism in LLMs",
+    "correct_answer_citation": "Week 3: Baseline Ethnocentrism and Asymmetric In-Group Favoritism in LLMs",
     "correct_answer_index": 2,
     "options": [
       {
@@ -151,7 +151,7 @@
     "slide_id": "separating-model-main-effects-target-effects-and-origin-interactions",
     "question_text": "In a fully crossed audit, the grand mean is 66. Model M's main effect is +5, and the target-country main effect for Country T is −6. Model M's observed score for Country T is 70. How large is the interaction effect for this pairing, and what does it indicate?",
     "hint": "Add the grand mean and both main effects to get the score the main effects predict, then compare it with the observed score.",
-    "correct_answer_citation": "Week 03: Separating Model Main Effects, Target Effects, and Origin Interactions",
+    "correct_answer_citation": "Week 3: Separating Model Main Effects, Target Effects, and Origin Interactions",
     "correct_answer_index": 1,
     "options": [
       {

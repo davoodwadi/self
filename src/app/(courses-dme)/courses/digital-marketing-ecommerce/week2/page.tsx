@@ -34,7 +34,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 02: STOREFRONT DESIGN, INFORMATION ARCHITECTURE, AND CONVERSION
+// WEEK 2: STOREFRONT DESIGN, INFORMATION ARCHITECTURE, AND CONVERSION
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and which catalogue plate
@@ -47,12 +47,12 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading
 
 export default function Week2Page() {
   return (
-    <SlideDeck label="Week 02">
+    <SlideDeck label="Week 2">
       {/* ================================================================
           01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 02: Digital Marketing &amp; E-Commerce</Subtitle>
+        <Subtitle variant="hero">Week 2: Digital Marketing &amp; E-Commerce</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Storefront Design, Information Architecture, and Conversion</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[50ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.3rem,2.1vw,1.8rem)]">

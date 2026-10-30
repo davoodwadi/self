@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 01 plates: Research for Marketing Decisions.
+   Week 1 plates: Research for Marketing Decisions.
    Built on ../_visuals/kit and ../_visuals/objects. Every plate follows the
    sentence it illustrates on the slide.
    ========================================================================== */

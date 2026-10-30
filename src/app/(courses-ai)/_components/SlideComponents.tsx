@@ -6,6 +6,8 @@ import { ArrowLeft, CircleSmall } from "lucide-react";
 export { default as Diagram } from "./MermaidDiagram";
 import InlineQuiz from "./InlineQuiz";
 import type { CourseQuiz } from "@/lib/course-quiz";
+import type { CourseExercise } from "@/lib/course-exercise";
+import Exercise from "@/components/exercises/Exercise";
 import { cn } from "@/lib/utils";
 
 export interface CourseCitation {
@@ -76,11 +78,11 @@ export function SlideDeck({
   background?: React.ReactNode;
 }) {
   return (
-    <div className="relative bg-[var(--background)] text-[var(--charcoal-light)] font-sans overflow-hidden min-h-screen selection:bg-[var(--crimson)] selection:text-[var(--surface)]">
+    <div className="relative bg-[var(--background)] text-[var(--ink-2)] font-sans overflow-hidden min-h-screen selection:bg-[var(--accent)] selection:text-[var(--surface)]">
       {/* Navigation */}
       <Link
         href="/courses/ai-in-business"
-        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--charcoal-light)] hover:text-[var(--crimson)] hover:border-[var(--crimson)] hover:bg-[var(--crimson)]/5 transition-colors duration-300 group "
+        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-[var(--ink-2)] hover:text-[var(--accent)] hover:border-[var(--accent)] hover:bg-[var(--accent)]/5 transition-colors duration-300 group "
         aria-label="Back to Course Hub"
       >
         <ArrowLeft className="w-5 h-5" />
@@ -126,6 +128,7 @@ export function Slide({
   border = false,
   id,
   quizData,
+  exercise,
   align = "center",
 }: {
   children: React.ReactNode;
@@ -133,6 +136,8 @@ export function Slide({
   border?: boolean;
   id?: string;
   quizData?: CourseQuiz;
+  /** The exercise that follows this slide, on a screen of its own. */
+  exercise?: CourseExercise;
   /** "left" gives the editorial masthead layout used by content slides. */
   align?: "center" | "left";
 }) {
@@ -149,10 +154,15 @@ export function Slide({
           align === "left"
             ? "items-start text-left"
             : "items-center text-center"
-        } ${border ? "border-t border-[var(--charcoal)]/8" : ""} ${className}`}
+        } ${border ? "border-t border-[var(--ink)]/8" : ""} ${className}`}
       >
         {children}
       </section>
+      {exercise && (
+        <div className="mx-auto flex min-h-svh w-full max-w-5xl flex-col justify-start pt-[14svh] pb-16 md:pb-24">
+          <Exercise data={exercise} />
+        </div>
+      )}
     </div>
   );
 }
@@ -351,7 +361,7 @@ export function Title({
   return (
     <h1
       className={cn(
-        "block mb-6 text-4xl md:text-6xl lg:text-[5rem] font-black tracking-[-0.03em] leading-[0.94] text-[var(--charcoal)] font-serif",
+        "block mb-6 text-4xl md:text-6xl lg:text-[5rem] font-black tracking-[-0.03em] leading-[0.94] text-[var(--ink)] font-serif",
         className,
       )}
     >
@@ -449,7 +459,7 @@ export function Citation({
         return (
           <sup
             key={index}
-            className="text-[var(--crimson)] font-bold ml-0.5 opacity-80 hover:opacity-100 transition-opacity"
+            className="text-[var(--accent)] font-bold ml-0.5 opacity-80 hover:opacity-100 transition-opacity"
           >
             <a
               href={url}
@@ -503,7 +513,7 @@ export function Heading({
   return (
     <h2
       className={cn(
-        "block text-[2rem] md:text-[2.75rem] lg:text-[3.25rem] font-bold tracking-[-0.02em] leading-[1.02] text-[var(--charcoal)] font-serif",
+        "block text-[2rem] md:text-[2.75rem] lg:text-[3.25rem] font-bold tracking-[-0.02em] leading-[1.02] text-[var(--ink)] font-serif",
         className,
       )}
     >
@@ -517,7 +527,7 @@ export function Heading({
  *
  * PURPOSE:
  * - Draw attention to critical terms or concepts
- * - Inline or block-level emphasis with crimson color/gradient
+ * - Inline or block-level emphasis with accent color/gradient
  * - Improve content readability and focus
  *
  * WHEN TO USE:
@@ -527,12 +537,12 @@ export function Heading({
  * - In prose text for emphasis
  *
  * STYLING:
- * - Inline: Gradient background (crimson to crimson-light) with text-clip
- * - Block: Solid crimson text color
+ * - Inline: Gradient background (accent to accent-light) with text-clip
+ * - Block: Solid accent text color
  *
  * PROPS:
  * @param children - Text to highlight
- * @param block - If true: solid crimson text (block-level), if false: gradient fill with text-clip
+ * @param block - If true: solid accent text (block-level), if false: gradient fill with text-clip
  * @param className - Additional Tailwind classes
  *
  * EXAMPLE:
@@ -557,7 +567,7 @@ export function Highlight({
     <>
       {block && <br />}
       <span
-        className={`${block ? "text-[var(--crimson)]" : "text-transparent bg-clip-text bg-gradient-to-r from-[var(--crimson)] to-[var(--crimson-light)]"} ${className}`}
+        className={`${block ? "text-[var(--accent)]" : "text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent)] to-[var(--accent)]"} ${className}`}
       >
         {children}
       </span>
@@ -604,7 +614,7 @@ export function Subtitle({
   variant?: "hero" | "section";
 }) {
   const baseClass =
-    "text-[var(--charcoal-light)] font-light italic leading-relaxed max-w-4xl";
+    "text-[var(--ink-2)] font-light italic leading-relaxed max-w-4xl";
   const variantClass =
     variant === "hero"
       ? "text-xl md:text-3xl"
@@ -632,12 +642,12 @@ export function Subtitle({
  *
  * LAYOUT VARIANTS:
  * - "prose": Standard readable body text (default)
- *   * Bold text automatically crimson colored
- *   * Bullet points with crimson dots
+ *   * Bold text automatically accent colored
+ *   * Bullet points with accent dots
  *   * Space between paragraphs
  *
  * - "base": Highlighted callout style
- *   * Left border in crimson
+ *   * Left border in accent
  *   * Indented with padding
  *   * Good for important statements
  *
@@ -671,8 +681,8 @@ export function ContentText({
 }) {
   const layoutClass =
     layout === "prose"
-      ? "mt-8 font-light leading-relaxed space-y-6 [&>p>strong]:text-[var(--crimson)] [&>p>strong]:font-semibold [&>ul]:list-disc [&>ul]:pl-6 [&>ul>li::marker]:text-[var(--crimson)]"
-      : "text-[var(--charcoal-light)] font-light leading-relaxed mb-4 border-l-4 border-[var(--crimson)]/20 pl-6 py-2";
+      ? "mt-8 font-light leading-relaxed space-y-6 [&>p>strong]:text-[var(--accent)] [&>p>strong]:font-semibold [&>ul]:list-disc [&>ul]:pl-6 [&>ul>li::marker]:text-[var(--accent)]"
+      : "text-[var(--ink-2)] font-light leading-relaxed mb-4 border-l-4 border-[var(--accent)]/20 pl-6 py-2";
   const finalClass = cn(`text-left w-full ${layoutClass}`, className);
   return <div className={finalClass}>{children}</div>;
 }
@@ -693,7 +703,7 @@ export function ContentText({
  * STYLING:
  * - Uppercase, bold, tracking-widest
  * - Positioned absolutely at top center
- * - Light charcoal color
+ * - Light ink color
  *
  * PROPS:
  * @param children - Label text (e.g., "SECTION 2", "CASE STUDY")
@@ -714,7 +724,7 @@ export function Tag({
 }) {
   return (
     <div
-      className={`absolute top-12 left-1/2 -translate-x-1/2 text-[var(--charcoal-light)] text-xs md:text-sm font-bold tracking-[0.2em] uppercase ${className}`}
+      className={`absolute top-12 left-1/2 -translate-x-1/2 text-[var(--ink-2)] text-xs md:text-sm font-bold tracking-[0.2em] uppercase ${className}`}
     >
       {children}
     </div>
@@ -732,7 +742,7 @@ export function Tag({
  * PURPOSE:
  * - Frame related content as a distinct block
  * - Add crisp visual structure with border and shadow
- * - Optional title bar (small-capped, crimson)
+ * - Optional title bar (small-capped, accent)
  * - For grouping related information
  *
  * WHEN TO USE:
@@ -743,7 +753,7 @@ export function Tag({
  * - NOT for callouts (use Callout instead)
  *
  * STYLING:
- * - Top border in crimson
+ * - Top border in accent
  * - Subtle shadow
  * - White background (surface color)
  * - Padding on all sides
@@ -776,18 +786,18 @@ export function Card({
 }) {
   return (
     <div
-      className={`p-8 my-8 shadow-sm border-t-2 border-t-[var(--crimson)] ${className}`}
+      className={`p-8 my-8 shadow-sm border-t-2 border-t-[var(--accent)] ${className}`}
     >
       {title ? (
-        <h4 className="font-bold text-[var(--crimson)] mb-2 uppercase tracking-wider text-sm">
+        <h4 className="font-bold text-[var(--accent)] mb-2 uppercase tracking-wider text-sm">
           {title}
         </h4>
       ) : null}
 
       {subtitle ? (
-        <p className="text-[var(--charcoal-light)] text-sm mb-4">{subtitle}</p>
+        <p className="text-[var(--ink-2)] text-sm mb-4">{subtitle}</p>
       ) : null}
-      <div className="text-xl text-[var(--charcoal)] font-medium leading-relaxed">
+      <div className="text-xl text-[var(--ink)] font-medium leading-relaxed">
         {children}
       </div>
     </div>
@@ -809,7 +819,7 @@ export function Card({
  *
  * STYLING:
  * - Medium size (2xl)
- * - Bold, charcoal color
+ * - Bold, ink color
  * - Tight spacing
  *
  * PROPS:
@@ -831,7 +841,7 @@ export function ContentTitle({
   return (
     <h3
       className={cn(
-        "text-2xl font-bold mb-3 text-[var(--charcoal)]",
+        "text-2xl font-bold mb-3 text-[var(--ink)]",
         className,
       )}
     >
@@ -877,7 +887,7 @@ export function ContentDescription({
   children: React.ReactNode;
 }) {
   return (
-    <div className="text-[var(--charcoal-light)] font-light leading-relaxed text-lg">
+    <div className="text-[var(--ink-2)] font-light leading-relaxed text-lg">
       {children}
     </div>
   );
@@ -889,7 +899,7 @@ export function ContentDescription({
  * PURPOSE:
  * - Engage learners with reflective questions
  * - Click-to-reveal interaction hides answer until engaged
- * - Visual distinction with gold-colored border and icon
+ * - Visual distinction with muted border and icon
  * - Maintains slide height while transitioning between states
  *
  * BEHAVIOR:
@@ -905,7 +915,7 @@ export function ContentDescription({
  * - To encourage critical thinking
  *
  * STYLING:
- * - Gold color scheme (distinct from crimson)
+ * - Gold color scheme (distinct from accent)
  * - Large clickable area (min-h-500px)
  * - Subtle shadow
  * - Pulse animation on icon
@@ -949,8 +959,8 @@ export function DiscussionCard({
       className={cn(
         "group grid w-full border-t text-left transition-colors duration-150",
         isRevealed
-          ? "border-t-[var(--champagne)]"
-          : "border-t-[var(--charcoal)]/15 hover:border-t-[var(--champagne)]/60",
+          ? "border-t-[var(--ink-3)]"
+          : "border-t-[var(--ink)]/15 hover:border-t-[var(--ink-3)]/60",
         className,
       )}
     >
@@ -962,10 +972,10 @@ export function DiscussionCard({
           isRevealed ? "opacity-100" : "opacity-0",
         )}
       >
-        <span className="mb-4 block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--champagne)]">
+        <span className="mb-4 block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-3)]">
           {title}
         </span>
-        <div className="font-serif text-lg md:text-[1.45rem] font-light leading-[1.35] text-[var(--charcoal)]">
+        <div className="font-serif text-lg md:text-[1.45rem] font-light leading-[1.35] text-[var(--ink)]">
           {children}
         </div>
       </div>
@@ -978,10 +988,10 @@ export function DiscussionCard({
           isRevealed ? "pointer-events-none opacity-0" : "opacity-100",
         )}
       >
-        <span className="mb-4 block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--champagne)]">
+        <span className="mb-4 block font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-3)]">
           {title}
         </span>
-        <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-[var(--charcoal-light)]/70 transition-colors duration-150 group-hover:text-[var(--charcoal)]">
+        <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-[var(--ink-2)]/70 transition-colors duration-150 group-hover:text-[var(--ink)]">
           Reveal
         </span>
       </div>
@@ -1039,9 +1049,9 @@ export function MediaBlock({
 }) {
   return (
     <figure
-      className={`w-full overflow-hidden shadow-lg border border-[var(--charcoal)]/5 bg-[var(--surface)] ${className}`}
+      className={`w-full overflow-hidden shadow-lg border border-[var(--ink)]/5 bg-[var(--surface)] ${className}`}
     >
-      <div className="relative w-full aspect-video bg-[var(--charcoal)]/5">
+      <div className="relative w-full aspect-video bg-[var(--ink)]/5">
         <img
           src={src}
           alt={alt}
@@ -1050,7 +1060,7 @@ export function MediaBlock({
         />
       </div>
       {caption && (
-        <figcaption className="p-4 text-center text-sm md:text-base text-[var(--charcoal-light)]/80 italic border-t border-[var(--charcoal)]/5">
+        <figcaption className="p-4 text-center text-sm md:text-base text-[var(--ink-2)]/80 italic border-t border-[var(--ink)]/5">
           {caption}
         </figcaption>
       )}
@@ -1074,7 +1084,7 @@ export function MediaBlock({
  * - Sparingly for maximum impact
  *
  * STYLING:
- * - Left crimson border
+ * - Left accent border
  * - Italic serif text
  * - Large size (3xl base, 5xl on lg)
  * - Author attribution in smaller text below
@@ -1107,16 +1117,16 @@ export function Quote({
 }) {
   return (
     <blockquote
-      className={`my-12 border-l-4 border-[var(--crimson)] pl-8 py-2 ${className}`}
+      className={`my-12 border-l-4 border-[var(--accent)] pl-8 py-2 ${className}`}
     >
-      <p className="text-3xl md:text-4xl lg:text-5xl font-serif text-[var(--charcoal)] leading-snug italic mb-6">
+      <p className="text-3xl md:text-4xl lg:text-5xl font-serif text-[var(--ink)] leading-snug italic mb-6">
         "{children}"
       </p>
       {author && (
-        <footer className="text-lg md:text-xl text-[var(--charcoal-light)] font-medium">
+        <footer className="text-lg md:text-xl text-[var(--ink-2)] font-medium">
           - {author}
           {role && (
-            <span className="block text-base md:text-lg text-[var(--charcoal-light)]/70 font-light mt-1">
+            <span className="block text-base md:text-lg text-[var(--ink-2)]/70 font-light mt-1">
               {role}
             </span>
           )}
@@ -1176,12 +1186,12 @@ export function Metric({
 }) {
   return (
     <div
-      className={`flex flex-col items-center justify-center p-8 border border-[var(--gold)]/20 bg-[var(--gold)]/5 ${className}`}
+      className={`flex flex-col items-center justify-center p-8 border border-[var(--ink-3)]/20 bg-[var(--ink-3)]/5 ${className}`}
     >
-      <div className="text-2xl md:text-4xl font-black font-serif text-[var(--crimson)] mb-4 tracking-tighter">
+      <div className="text-2xl md:text-4xl font-black font-serif text-[var(--accent)] mb-4 tracking-tighter">
         {value}
       </div>
-      <div className="text-xl md:text-xl font-medium tracking-wide text-[var(--charcoal)] text-center uppercase">
+      <div className="text-xl md:text-xl font-medium tracking-wide text-[var(--ink)] text-center uppercase">
         {label}
       </div>
     </div>
@@ -1193,7 +1203,7 @@ export function Metric({
  *
  * PURPOSE:
  * - Emphasize critical information, warnings, or key points
- * - Two variants: primary (crimson) and secondary (charcoal)
+ * - Two variants: primary (accent) and secondary (ink)
  * - Left border design for visual hierarchy
  *
  * WHEN TO USE:
@@ -1204,15 +1214,15 @@ export function Metric({
  * - Use primary for most cases, secondary for warnings/alternate notes
  *
  * STYLING:
- * - Primary: Crimson border + light crimson background
- * - Secondary: Charcoal border + light charcoal background
+ * - Primary: Crimson border + light accent background
+ * - Secondary: Charcoal border + light ink background
  * - Left-aligned border accent
  * - Padding and spacing for readability
  *
  * PROPS:
  * @param title - Label for callout (default: "Key Takeaway")
  * @param children - Callout content
- * @param variant - "primary" (crimson) | "secondary" (charcoal)
+ * @param variant - "primary" (accent) | "secondary" (ink)
  * @param className - Additional Tailwind classes
  *
  * EXAMPLE:
@@ -1239,11 +1249,11 @@ export function Callout({
 }) {
   const isPrimary = variant === "primary";
   const borderClass = isPrimary
-    ? "border-l-[var(--crimson)]"
-    : "border-l-[var(--charcoal)]/25";
+    ? "border-l-[var(--accent)]"
+    : "border-l-[var(--ink)]/25";
   const titleColor = isPrimary
-    ? "text-[var(--crimson)]"
-    : "text-[var(--charcoal-light)]/75";
+    ? "text-[var(--accent)]"
+    : "text-[var(--ink-2)]/75";
 
   return (
     <div
@@ -1261,7 +1271,7 @@ export function Callout({
       >
         {title}
       </h4>
-      <div className="text-base md:text-[1.25rem] font-light leading-[1.5] text-[var(--charcoal)]">
+      <div className="text-base md:text-[1.25rem] font-light leading-[1.5] text-[var(--ink)]">
         {children}
       </div>
     </div>
@@ -1278,7 +1288,7 @@ export function Callout({
  *
  * PURPOSE:
  * - Display bulleted lists with staggered animations
- * - Left border accent in crimson
+ * - Left border accent in accent
  * - Paired with ListItem children for proper styling
  *
  * WHEN TO USE:
@@ -1288,7 +1298,7 @@ export function Callout({
  * - NOT for inline lists (use ContentText with <ul> instead)
  *
  * STYLING:
- * - Left crimson border
+ * - Left accent border
  * - Space between items (space-y-6)
  * - Left-aligned
  * - Children are ListItem components
@@ -1313,7 +1323,7 @@ export function AnimatedList({
 }) {
   return (
     <ul
-      className={`text-left w-full space-y-6 p-4 border-l-2 border-l-[var(--crimson)] ${className}`}
+      className={`text-left w-full space-y-6 p-4 border-l-2 border-l-[var(--accent)] ${className}`}
     >
       {children}
     </ul>
@@ -1325,7 +1335,7 @@ export function AnimatedList({
  *
  * PURPOSE:
  * - Child component of AnimatedList
- * - Renders with crimson bullet point
+ * - Renders with accent bullet point
  * - Semantic <li> element
  *
  * BEHAVIOR:
@@ -1341,7 +1351,7 @@ export function AnimatedList({
  *
  * STYLING:
  * - Crimson bullet (CircleSmall icon) on left
- * - Light charcoal text
+ * - Light ink text
  * - Flex layout for bullet + content alignment
  *
  * PROPS:
@@ -1368,9 +1378,9 @@ export function ListItem({
 }) {
   return (
     <li
-      className={`flex items-start text-xl md:text-2xl text-[var(--charcoal-light)] font-light leading-relaxed ${className}`}
+      className={`flex items-start text-xl md:text-2xl text-[var(--ink-2)] font-light leading-relaxed ${className}`}
     >
-      <span className="text-[var(--crimson)] mr-4 mt-2.5 flex-shrink-0">
+      <span className="text-[var(--accent)] mr-4 mt-2.5 flex-shrink-0">
         <CircleSmall />
       </span>
       <div>{children}</div>
@@ -1427,9 +1437,9 @@ export function PieChart({
   className?: string;
 }) {
   const colors = [
-    "var(--crimson)",
-    "var(--gold)",
-    "var(--charcoal)",
+    "var(--accent)",
+    "var(--ink-3)",
+    "var(--ink)",
     "#8b4513",
     "#2f4f4f",
     "#556b2f",
@@ -1475,7 +1485,7 @@ export function PieChart({
   return (
     <div className={`w-full flex flex-col items-center ${className}`}>
       {title && (
-        <h4 className="text-xl font-serif font-bold text-[var(--charcoal)] mb-6">
+        <h4 className="text-xl font-serif font-bold text-[var(--ink)] mb-6">
           {title}
         </h4>
       )}
@@ -1510,14 +1520,14 @@ export function PieChart({
               style={{ animationDelay: `${index * 0.1 + 0.2}s` }}
             >
               <div
-                className="w-6 h-6 rounded border-2 border-[var(--charcoal)]/10"
+                className="w-6 h-6 rounded border-2 border-[var(--ink)]/10"
                 style={{ backgroundColor: segment.color }}
               />
               <div className="flex flex-col">
-                <span className="text-sm font-semibold text-[var(--charcoal)]">
+                <span className="text-sm font-semibold text-[var(--ink)]">
                   {segment.label}
                 </span>
-                <span className="text-xs text-[var(--charcoal-light)]">
+                <span className="text-xs text-[var(--ink-2)]">
                   {segment.percentage.toFixed(1)}% ({segment.value})
                 </span>
               </div>
@@ -1527,7 +1537,7 @@ export function PieChart({
       </div>
 
       {caption && (
-        <p className="text-sm text-[var(--charcoal-light)]/70 italic text-center mt-6 font-serif">
+        <p className="text-sm text-[var(--ink-2)]/70 italic text-center mt-6 font-serif">
           {caption}
         </p>
       )}

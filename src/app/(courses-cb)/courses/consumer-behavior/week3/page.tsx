@@ -1,56 +1,29 @@
 "use client";
 
 import React from "react";
-import { SlideDeck, Slide, Title } from "@/components/slide-components/SlideComponents";
+import {
+  SlideDeck,
+  Slide,
+  Title,
+} from "@/components/slide-components/SlideComponents";
 import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
 import exercisesData from "./exercises.json";
 import {
-  BrainBrands,
   ExperienceChanges,
-  DirectTry,
-  IndirectWatch,
-  UpdateLoop,
-  HabitWeek,
   Pavlov,
-  MusicFeeling,
-  PairedRepeatedly,
-  BrandAlone,
   RepetitionCurve,
-  GeneralizationChart,
-  CopyCat,
-  SpotTheDifference,
   InstrumentalMatrix,
-  LoyaltyPoints,
-  HeadacheGone,
-  LateFee,
   LearnByWatching,
-  AttendModel,
-  RememberModel,
-  CopyPurchase,
   MemoryStorageFlow,
-  Chunking,
-  SpiderWeb,
   BrandAssociativeNetwork,
-  SpreadingActivation,
-  StrongLinks,
   Retrieve,
-  RetrievalCues,
-  GreenBox,
-  MoodMatch,
   ForgettingCurve,
-  Interference,
-  Retroactive,
-  Proactive,
-  FightForgetting,
-  YourBrandWeb,
   AssistantShortList,
-  WebFromReviews,
-  CueInQuestion,
 } from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR | WEEK 03: LEARNING AND MEMORY
+// CONSUMER BEHAVIOR | WEEK 3: LEARNING AND MEMORY
 // ============================================================================
 // Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -75,14 +48,14 @@ const TIGHT = "md:!py-16";
 type Tone = "signal" | "counter" | "ink";
 
 const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
+  signal: "border-[var(--rule)]",
+  counter: "border-[var(--rule)]",
+  ink: "border-[var(--rule)]",
 };
 
 const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--signal)]",
-  counter: "text-[var(--counter)]",
+  signal: "text-[var(--ink)]",
+  counter: "text-[var(--ink)]",
   ink: "text-[var(--ink)]",
 };
 
@@ -113,9 +86,9 @@ function Term({ children, tone = "ink" }: { children: React.ReactNode; tone?: To
   return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
-/** Inline colour for a phrase inside a serif line. */
+/** Inline emphasis for a phrase inside a line. */
 function Tint({ children, tone = "signal" }: { children: React.ReactNode; tone?: Tone }) {
-  return <span className={TEXT[tone]}>{children}</span>;
+  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
 /** Hairline-topped block. */
@@ -129,7 +102,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
+    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -198,7 +171,7 @@ function Lede({
   cols = "lg:grid-cols-[1fr_1.9fr]",
 }: {
   children: React.ReactNode;
-  plate: React.ReactNode;
+  plate?: React.ReactNode;
   wide?: boolean;
   cols?: string;
 }) {
@@ -235,10 +208,9 @@ function Cells({
     >
       {items.map((s) => (
         <li key={s.key} className="flex min-w-0 flex-col gap-4">
-          <div className={cn("border-t-2 pt-4", BORDER[s.tone])}>
+          <div className={cn("border-t pt-4", BORDER[s.tone])}>
             <p className="type-body">{s.text}</p>
           </div>
-          {s.plate ? <Plate className="mt-auto">{s.plate}</Plate> : null}
         </li>
       ))}
     </ol>
@@ -250,29 +222,24 @@ const LEDE = "!text-[clamp(1.3rem,2vw,1.75rem)]";
 
 export default function Week3() {
   return (
-    <SlideDeck label="Week 03">
+    <SlideDeck label="Week 3">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
-          <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
-              Week 03
+        <div className="w-full max-w-4xl">
+          <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
+            Week 3
+          </p>
+          <p className="type-caption mt-2">Consumer Behavior | Davood Wadi, PhD</p>
+          <Title className="mt-6">Learning and Memory</Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote">
+              Brands live in the <Tint>brain</Tint>.{" "}
+              {"How people "}
+              <Tint tone="ink">learn, remember, and forget</Tint>
+              {" shapes every purchase."}
             </p>
-            <p className="type-caption mt-2">Consumer Behavior | Davood Wadi, PhD</p>
-            <Title className="mt-8 !max-w-[14ch]">Learning and Memory</Title>
-            <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
-              <p className="type-quote">
-                Brands live in the <Tint>brain</Tint>.{" "}
-                {"How people "}
-                <Tint tone="ink">learn, remember, and forget</Tint>
-                {" shapes every purchase."}
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto w-full max-w-[340px]">
-            <BrainBrands />
           </div>
         </div>
       </Slide>
@@ -295,7 +262,6 @@ export default function Week3() {
             {
               key: "direct",
               tone: "ink",
-              plate: <DirectTry />,
               text: (
                 <>
                   The experience can be <Term>direct</Term>. You try a new snack and like the taste.
@@ -305,7 +271,6 @@ export default function Week3() {
             {
               key: "indirect",
               tone: "ink",
-              plate: <IndirectWatch />,
               text: (
                 <>
                   The experience can also be <Term>indirect</Term>. You see an ad or watch a friend
@@ -316,7 +281,6 @@ export default function Week3() {
             {
               key: "ongoing",
               tone: "ink",
-              plate: <UpdateLoop />,
               text: (
                 <>
                   Learning is an <Term>ongoing process</Term>. Consumers constantly update
@@ -327,7 +291,6 @@ export default function Week3() {
             {
               key: "habits",
               tone: "ink",
-              plate: <HabitWeek />,
               text: (
                 <>
                   Marketers study learning so that brand names become{" "}
@@ -366,7 +329,6 @@ export default function Week3() {
             {
               key: "unconditioned",
               tone: "ink",
-              plate: <MusicFeeling />,
               text: (
                 <>
                   {" "}
@@ -378,7 +340,6 @@ export default function Week3() {
             {
               key: "pairs",
               tone: "ink",
-              plate: <PairedRepeatedly />,
               text: (
                 <>
                   {" "}
@@ -390,7 +351,6 @@ export default function Week3() {
             {
               key: "conditioned",
               tone: "ink",
-              plate: <BrandAlone />,
               text: (
                 <>
                   {" "}
@@ -434,7 +394,6 @@ export default function Week3() {
             {
               key: "generalization",
               tone: "ink",
-              plate: <GeneralizationChart />,
               text: (
                 <>
                   <Term>Stimulus generalization</Term> happens when similar stimuli trigger the same
@@ -445,7 +404,6 @@ export default function Week3() {
             {
               key: "store-brands",
               tone: "ink",
-              plate: <CopyCat />,
               text: (
                 <>
                   <Term>Store brands</Term> use this principle. They copy the package colors and
@@ -456,7 +414,6 @@ export default function Week3() {
             {
               key: "discrimination",
               tone: "ink",
-              plate: <SpotTheDifference />,
               text: (
                 <>
                   <Term>Stimulus discrimination</Term> occurs when a brand teaches
@@ -489,7 +446,6 @@ export default function Week3() {
             {
               key: "positive",
               tone: "ink",
-              plate: <LoyaltyPoints />,
               text: (
                 <>
                   {" "}
@@ -501,7 +457,6 @@ export default function Week3() {
             {
               key: "negative",
               tone: "ink",
-              plate: <HeadacheGone />,
               text: (
                 <>
                   {" "}
@@ -513,7 +468,6 @@ export default function Week3() {
             {
               key: "punishment",
               tone: "ink",
-              plate: <LateFee />,
               text: (
                 <>
                   {" "}
@@ -552,7 +506,6 @@ export default function Week3() {
             {
               key: "attention",
               tone: "ink",
-              plate: <AttendModel />,
               text: (
                 <>
                   {" "}
@@ -564,7 +517,6 @@ export default function Week3() {
             {
               key: "memory",
               tone: "ink",
-              plate: <RememberModel />,
               text: (
                 <>
                   {" "}
@@ -576,7 +528,6 @@ export default function Week3() {
             {
               key: "action",
               tone: "ink",
-              plate: <CopyPurchase />,
               text: (
                 <>
                   {" "}
@@ -632,7 +583,6 @@ export default function Week3() {
             {
               key: "chunking",
               tone: "ink",
-              plate: <Chunking />,
               text: (
                 <>
                   <Term>Chunking</Term> helps short-term memory. Brands group phone numbers or slogan
@@ -659,7 +609,7 @@ export default function Week3() {
           ================================================================ */}
       <Slide className={TIGHT} id="associative-networks-and-brand-nodes" border>
         <Heading>Associative Networks and Brand Nodes</Heading>
-        <Lede plate={<SpiderWeb />} cols="lg:grid-cols-[1.4fr_1fr]">
+        <Lede plate={<BrandAssociativeNetwork />} cols="lg:grid-cols-[1.4fr_1fr]">
           <Statement className={LEDE}>
             Long-term memory stores knowledge as an <Tint>associative network</Tint>.
           </Statement>{" "}
@@ -675,7 +625,6 @@ export default function Week3() {
             {
               key: "nike",
               tone: "ink",
-              plate: <BrandAssociativeNetwork />,
               text: (
                 <>
                   When you think of a brand like Nike, related nodes <Term>light up</Term>: running,
@@ -686,7 +635,6 @@ export default function Week3() {
             {
               key: "spreading",
               tone: "ink",
-              plate: <SpreadingActivation />,
               text: (
                 <>
                   <Term>Spreading activation</Term> happens when one memory node triggers nearby
@@ -697,7 +645,6 @@ export default function Week3() {
             {
               key: "strong",
               tone: "ink",
-              plate: <StrongLinks />,
               text: (
                 <>
                   Strong positive links make a brand <Term>easy to recall</Term> when standing in a
@@ -731,7 +678,6 @@ export default function Week3() {
             {
               key: "cues",
               tone: "ink",
-              plate: <RetrievalCues />,
               text: (
                 <>
                   <Term>Retrieval cues</Term> trigger brand memories. Packaging shapes, colors, and
@@ -742,7 +688,6 @@ export default function Week3() {
             {
               key: "green-box",
               tone: "ink",
-              plate: <GreenBox />,
               text: (
                 <>
                   If an ad shows a distinct green box, using that <Term>exact green box</Term> on
@@ -753,7 +698,6 @@ export default function Week3() {
             {
               key: "mood",
               tone: "ink",
-              plate: <MoodMatch />,
               text: (
                 <>
                   <Term>State-dependent retrieval</Term> means buyers remember ad messages better
@@ -800,7 +744,6 @@ export default function Week3() {
             {
               key: "links",
               tone: "ink" as Tone,
-              plate: <WebFromReviews />,
               text: (
                 <>
                   The assistant learns about brands from what is written about them, such as
@@ -813,7 +756,6 @@ export default function Week3() {
             {
               key: "cues",
               tone: "ink" as Tone,
-              plate: <CueInQuestion />,
               text: (
                 <>
                   <Term>Retrieval cues</Term> move from the shelf into the question. Words such as
@@ -826,12 +768,11 @@ export default function Week3() {
             <li
               key={c.key}
               className={cn(
-                "grid min-w-0 items-center gap-4 border-t-2 pt-4 sm:grid-cols-[1fr_minmax(0,250px)]",
+                "min-w-0 border-t pt-4",
                 BORDER[c.tone],
               )}
             >
               <p className="type-body">{c.text}</p>
-              <Plate>{c.plate}</Plate>
             </li>
           ))}
         </ol>
@@ -860,7 +801,6 @@ export default function Week3() {
             {
               key: "interference",
               tone: "ink",
-              plate: <Interference />,
               text: (
                 <>
                   <Term>Interference</Term> also causes forgetting. New brand ads
@@ -871,7 +811,6 @@ export default function Week3() {
             {
               key: "retroactive",
               tone: "ink",
-              plate: <Retroactive />,
               text: (
                 <>
                   <Term>Retroactive interference</Term> occurs when new learning displaces old
@@ -882,7 +821,6 @@ export default function Week3() {
             {
               key: "proactive",
               tone: "ink",
-              plate: <Proactive />,
               text: (
                 <>
                   <Term>Proactive interference</Term> occurs when older habits make it hard to learn
@@ -893,14 +831,12 @@ export default function Week3() {
           ]}
         />
         <div className="mt-8 w-full">
-          <Lede wide plate={<FightForgetting />} cols="lg:grid-cols-[1fr_1.5fr]">
-            <Ruled tone="ink">
-              <Big className="!text-[clamp(1.2rem,1.8vw,1.55rem)]">
-                Marketers fight forgetting with consistent visual
-                identity, reminder ads, and clear shelf placement.
-              </Big>
-            </Ruled>
-          </Lede>
+          <Ruled tone="ink">
+            <Big className="!text-[clamp(1.2rem,1.8vw,1.55rem)]">
+              Marketers fight forgetting with consistent visual
+              identity, reminder ads, and clear shelf placement.
+            </Big>
+          </Ruled>
         </div>
       </Slide>
 
@@ -911,9 +847,9 @@ export default function Week3() {
         <Heading kicker="Discussion:" tone="counter">
           Your Brand Web
         </Heading>
-        <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-8 md:px-12 md:py-10">
+        <div className="relative w-full max-w-5xl border-l border-[var(--rule-2)] pl-6 py-2">
           <p className="type-quote !text-[clamp(1.3rem,2.2vw,1.9rem)] max-w-[52ch]">
-            <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--counter)]">
+            <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--ink-3)]">
               Discussion:
             </span>{" "}
             Pick a brand you buy regularly.{" "}
@@ -921,9 +857,6 @@ export default function Week3() {
             brand teach you these links through conditioning, observation, or personal experience?
           </p>
         </div>
-        <Plate wide className="mt-8">
-          <YourBrandWeb />
-        </Plate>
       </Slide>
     </SlideDeck>
   );

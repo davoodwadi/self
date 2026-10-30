@@ -1,0 +1,248 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "predict-optimize",
+    "prompt": "A bakery chain is building an operational decision system. Sort each component by the discipline that does the work.",
+    "bins": [
+      { "id": "predict", "label": "Machine learning: prediction" },
+      { "id": "optimize", "label": "Mathematical optimization: prescription" }
+    ],
+    "cards": [
+      {
+        "id": "croissant-demand",
+        "text": "Estimating how many croissants each store will sell on Sunday",
+        "bin": "predict",
+        "explanation": "Sunday demand is an uncertain quantity estimated from data, which is prediction."
+      },
+      {
+        "id": "flour-transit",
+        "text": "Estimating how many days the flour supplier's next truck will take to arrive",
+        "bin": "predict",
+        "explanation": "Transit time is uncertain, so the model estimates it from past deliveries."
+      },
+      {
+        "id": "oven-schedule",
+        "text": "Choosing which batches each oven bakes, given that each oven holds only 12 trays",
+        "bin": "optimize",
+        "explanation": "Picking a schedule that respects a hard capacity limit is the solver's job."
+      },
+      {
+        "id": "van-loads",
+        "text": "Assigning orders to delivery vans so that no van exceeds its weight limit",
+        "bin": "optimize",
+        "explanation": "The weight limit is a hard physical constraint that optimization enforces."
+      },
+      {
+        "id": "mixer-failure",
+        "text": "Estimating the chance that a dough mixer breaks down this month",
+        "bin": "predict",
+        "explanation": "A failure probability is an uncertain quantity, which is prediction."
+      },
+      {
+        "id": "shift-plan",
+        "text": "Setting the bakers' shift plan so that nobody works more than 10 hours",
+        "bin": "optimize",
+        "explanation": "Shift labor rules are constraints, and the plan that respects them is a prescription."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "quantile-forecasts",
+    "question_text": "Two brands of umbrella each sell an average of 60 units a week at a store. For brand A, the 90th percentile of weekly demand is 66 units. For brand B, it is 110 units. The manager wants a 10 percent stockout risk for each brand. What should the store stock?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "60 units of each brand, because the average demand is the same",
+        "option_explanation": "Stocking the average ignores volatility. Brand B would run out far more often than 10 percent of weeks."
+      },
+      {
+        "option_text": "110 units of each brand, to be safe",
+        "option_explanation": "Brand A only needs 66 units for a 10 percent stockout risk. The extra stock would tie up capital."
+      },
+      {
+        "option_text": "66 units of A and 110 units of B",
+        "option_explanation": "Correct. Stocking each brand to its own 90th percentile covers demand in 90 percent of weeks and leaves a 10 percent stockout risk."
+      },
+      {
+        "option_text": "88 units of each brand, the average of the two percentiles",
+        "option_explanation": "Averaging the percentiles overstocks the steady brand and understocks the volatile one."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "type": "quiz",
+    "slide_id": "newsvendor",
+    "question_text": "A florist sells roses for Valentine's Day. Each rose left unsold loses $1 (it wilts). Each customer turned away costs $3 in lost margin. At which percentile of predicted demand should the florist stock?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "The 25th percentile, because unsold roses are wasted",
+        "option_explanation": "That fraction is Co / (Cu + Co). The critical fractile puts the underage cost on top: 3 / (3 + 1)."
+      },
+      {
+        "option_text": "The 75th percentile",
+        "option_explanation": "Correct. The critical fractile is 3 / (3 + 1) = 0.75, so the florist stocks to the 75th percentile."
+      },
+      {
+        "option_text": "The 50th percentile, the expected demand",
+        "option_explanation": "Stocking the median is right only when underage and overage cost the same. Here running short costs three times as much."
+      },
+      {
+        "option_text": "The 100th percentile, so no customer is ever turned away",
+        "option_explanation": "Covering every possible customer would leave many wilted roses. The best quantity balances the two costs."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "type": "order",
+    "slide_id": "vehicle-routing",
+    "prompt": "A grocery delivery service runs dynamic routing for one afternoon. Put the steps in the order they happen.",
+    "steps": [
+      {
+        "id": "predict",
+        "text": "Models trained on past GPS traces predict driving time for each street segment and service time at each address",
+        "explanation": "The solver needs realistic travel and drop-off times before it can plan anything."
+      },
+      {
+        "id": "solve",
+        "text": "The solver assigns orders to vans and sequences the stops within each customer's time window",
+        "explanation": "With the predictions as inputs, the solver produces the first plan."
+      },
+      {
+        "id": "event",
+        "text": "A crash closes a bridge and a customer adds a last-minute order",
+        "explanation": "Something changes after the vans have left the depot."
+      },
+      {
+        "id": "update",
+        "text": "The travel-time predictions for the affected segments are updated",
+        "explanation": "The new conditions must reach the inputs before the plan can change."
+      },
+      {
+        "id": "resolve",
+        "text": "The solver re-solves the routes and sends new stop sequences to the drivers",
+        "explanation": "Dynamic routing re-solves the problem during the day with the updated inputs."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "maintenance",
+    "prompt": "For each case, name the maintenance paradigm being used.",
+    "options": [
+      { "id": "reactive", "label": "Reactive" },
+      { "id": "preventive", "label": "Preventive" },
+      { "id": "predictive", "label": "Predictive" }
+    ],
+    "cases": [
+      {
+        "id": "elevator",
+        "text": "A building replaces its elevator cables every 18 months, whatever their condition.",
+        "answer": "preventive",
+        "explanation": "A fixed calendar schedule, regardless of actual wear, is preventive maintenance."
+      },
+      {
+        "id": "printer",
+        "text": "An office fixes its printer only after it jams and stops working.",
+        "answer": "reactive",
+        "explanation": "Running the machine until it breaks is reactive maintenance."
+      },
+      {
+        "id": "train",
+        "text": "A rail operator uses wheel vibration data to estimate each train's remaining useful life and books repairs for the weekend before the estimated failure.",
+        "answer": "predictive",
+        "explanation": "Sensor data and a model estimate the health of each specific asset, which is predictive maintenance."
+      },
+      {
+        "id": "oil",
+        "text": "A delivery fleet changes engine oil every 10,000 kilometres.",
+        "answer": "preventive",
+        "explanation": "A fixed interval of use, not measured wear, sets the timing."
+      },
+      {
+        "id": "fan",
+        "text": "A data centre sees a cooling fan's motor current drifting from its normal pattern and swaps that one fan during a planned window.",
+        "answer": "predictive",
+        "explanation": "The swap is triggered by the measured health of that specific fan."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "quality-inspection",
+    "question_text": "A bottling plant wants a camera system to find cracked glass bottles. Cracks appear in about 1 bottle in 20,000, so the plant has thousands of images of good bottles but only a handful of cracked ones. What is the most sensible way to train the detector?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Train a standard classifier on the images as they are",
+        "option_explanation": "With so few cracked examples, the classifier can score well by calling every bottle good. That is the class imbalance problem."
+      },
+      {
+        "option_text": "Send the images to a cloud model and wait for its answer",
+        "option_explanation": "Cloud processing does not solve the lack of defect images, and the round trip is too slow to trigger a reject gate at line speed."
+      },
+      {
+        "option_text": "Wait until a thousand cracked bottles have been photographed",
+        "option_explanation": "At 1 in 20,000, that would take millions of bottles, with defects shipping to customers in the meantime."
+      },
+      {
+        "option_text": "Train an anomaly model on the many good-bottle images and flag anything unusual",
+        "option_explanation": "Correct. Learning what a defect-free part looks like works even when defect examples are rare. Synthesizing crack images is another option."
+      }
+    ],
+    "correct_answer_index": 3
+  },
+  {
+    "type": "sort",
+    "slide_id": "algorithmic-coupling",
+    "prompt": "A pharmacy chain lets replenishment agents order directly from wholesalers. Sort each control by whether it is a hard deterministic guardrail outside the model.",
+    "bins": [
+      { "id": "guardrail", "label": "Hard guardrail outside the model" },
+      { "id": "not", "label": "Not a hard guardrail" }
+    ],
+    "cards": [
+      {
+        "id": "cap",
+        "text": "The ordering system rejects any order above 3 times a store's normal daily quantity",
+        "bin": "guardrail",
+        "explanation": "A maximum daily order-quantity cap is enforced by fixed code, whatever the agent proposes."
+      },
+      {
+        "id": "prompt",
+        "text": "The agent's instructions ask it to avoid panic buying",
+        "bin": "not",
+        "explanation": "An instruction to the model can be ignored or misread. It is not enforced outside the model."
+      },
+      {
+        "id": "price",
+        "text": "Orders priced more than 15 percent above the contract price are blocked",
+        "bin": "guardrail",
+        "explanation": "A price-variance ceiling is a deterministic rule applied outside the model."
+      },
+      {
+        "id": "rate",
+        "text": "An agent may raise its reorder quantity by at most 10 percent per day",
+        "bin": "guardrail",
+        "explanation": "A rate limiter on reorder adjustments slows the spiral regardless of what the agent perceives."
+      },
+      {
+        "id": "bigger",
+        "text": "The agent is upgraded to a larger language model that forecasts more accurately",
+        "bin": "not",
+        "explanation": "Better forecasts do not stop many agents reacting to the same shortage signal at once."
+      },
+      {
+        "id": "confidence",
+        "text": "The agent reports how confident it is in each surge order",
+        "bin": "not",
+        "explanation": "A self-reported confidence score comes from the model and blocks nothing on its own."
+      }
+    ]
+  }
+]

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Consumer Behavior | Week 04: plates (Editorial Sketch)
+   Consumer Behavior | Week 4: plates (Editorial Sketch)
    --------------------------------------------------------------------------
    Motivation, needs and values, drawn in ink and watercolour with the shared
    kit in ../_visuals (see ../CLAUDE.md for the style rules).
@@ -663,29 +663,27 @@ export function GymMotives() {
 
 /** The marketer's job: tie the offer to a goal the consumer holds. */
 export function ConnectOffer() {
-  const link = curvePts([98, 132], [106, 64], [164, 70], 12);
+  const link = curvePts([136, 118], [204, 72], [274, 112], 12);
   return (
     <SketchFrame
       id="sk-connect-offer"
       width={400}
-      height={260}
-      label="On the left, a product pack with the brand badge, marked offer. On the right, a person thinks of a target, marked goal. A teal line connects the offer to the goal."
+      height={240}
+      label="On the left, a product pack with the brand badge, marked offer. On the right, a bullseye target, marked goal. A teal line connects the offer to the goal."
     >
-      <Backwash cx={210} cy={140} rx={186} ry={116} seed={900} />
-      <Ground x0={24} x1={380} y={222} seed={905} />
-      <Pack x={78} bottom={222} w={56} h={84} seed={910} fill={SK.camel} badge />
-      <SketchText x={78} y={248} anchor="middle" size={11}>
+      <Backwash cx={200} cy={126} rx={182} ry={102} seed={900} />
+      <Ground x0={44} x1={156} y={184} seed={905} />
+      <Pack x={100} bottom={184} w={60} h={90} seed={910} fill={SK.camel} badge />
+      <SketchText x={100} y={214} anchor="middle" size={11}>
         OFFER
       </SketchText>
-      <Person x={318} y={222} h={150} look={BETTER} arms={["hip", "chin"]} flip seed={920} />
-      <Thought x={214} y={74} rx={46} ry={34} tx={300} ty={96} seed={930} />
-      <Target x={214} y={74} r={20} seed={940} />
-      <SketchText x={214} y={26} anchor="middle" size={11}>
+      <Target x={306} y={124} r={34} seed={940} />
+      <SketchText x={306} y={214} anchor="middle" size={11}>
         GOAL
       </SketchText>
-      <InkLine pts={link} seed={950} width={2.2} color={SK.teal} />
-      <Dot x={98} y={132} seed={951} fill={SK.teal} />
-      <Dot x={164} y={70} seed={952} fill={SK.teal} />
+      <InkLine pts={link} seed={950} width={2.4} color={SK.teal} />
+      <Dot x={136} y={118} seed={951} fill={SK.teal} />
+      <Dot x={274} y={112} seed={952} fill={SK.teal} />
     </SketchFrame>
   );
 }
@@ -1141,15 +1139,6 @@ export function MaslowPyramid() {
   );
 }
 
-/** A tiny pyramid for a row of text: which tiers the line is about. */
-export function TierMark({ lit }: { lit: number[] }) {
-  return (
-    <SketchFrame id={`sk-tier-${lit.join("")}`} width={64} height={54} label="" decorative className="block h-12 w-14 shrink-0">
-      <Pyramid x={32} top={4} base={50} half={29} seed={2200 + lit[0] * 10} lit={lit} line={1} />
-    </SketchFrame>
-  );
-}
-
 /** Several tiers at once, from one purchase. */
 export function SeveralLevels() {
   const cx = 116;
@@ -1249,25 +1238,23 @@ export function PhoneOrTrip() {
     <SketchFrame
       id="sk-phone-or-trip"
       width={400}
-      height={290}
-      label="A new phone on the left and a suitcase for a weekend trip on the right, each marked plus. In the middle, a wallet with a single coin, marked budget, with arrows to both and the word or between them. A person stands below, hand on chin."
+      height={200}
+      label="A new phone on the left and a suitcase for a weekend trip on the right, each marked plus. In the middle, a wallet with a single coin, marked budget, with arrows to both and the word or between them."
     >
-      <Backwash cx={200} cy={150} rx={188} ry={132} seed={2500} />
-      <Ground x0={110} x1={290} y={276} seed={2501} />
-      <Phone2 x={62} y={108} s={1.05} seed={2510} />
-      <Option x={96} y={52} r={13} kind="plus" seed={2515} />
-      <Suitcase1 x={332} y={116} s={0.78} seed={2520} />
+      <Backwash cx={200} cy={104} rx={188} ry={88} seed={2500} />
+      <Phone2 x={62} y={114} s={1.15} seed={2510} />
+      <Option x={98} y={54} r={13} kind="plus" seed={2515} />
+      <Suitcase1 x={332} y={120} s={0.85} seed={2520} />
       <Option x={372} y={62} r={13} kind="plus" seed={2525} />
-      <Wallet x={200} y={96} s={0.9} seed={2530} />
-      <SketchText x={200} y={140} anchor="middle" size={10}>
+      <Wallet x={200} y={104} s={1} seed={2530} />
+      <SketchText x={200} y={154} anchor="middle" size={10}>
         BUDGET
       </SketchText>
-      <SketchArrow pts={curvePts([160, 92], [128, 68], [96, 90], 10)} seed={2540} width={1.1} head={7} />
-      <SketchArrow pts={curvePts([240, 92], [272, 68], [290, 94], 10)} seed={2542} width={1.1} head={7} />
-      <SketchText x={200} y={34} anchor="middle" size={14} serif>
+      <SketchArrow pts={curvePts([158, 98], [128, 72], [96, 94], 10)} seed={2540} width={1.1} head={7} />
+      <SketchArrow pts={curvePts([242, 98], [272, 72], [286, 98], 10)} seed={2542} width={1.1} head={7} />
+      <SketchText x={200} y={40} anchor="middle" size={14} serif>
         or
       </SketchText>
-      <Person x={200} y={276} h={122} look={PLAIN} arms={["hip", "chin"]} seed={2550} />
     </SketchFrame>
   );
 }
@@ -1623,49 +1610,54 @@ export function ExperientialValue() {
 
 /** The one that fits their values, not the one with the most features. */
 export function FitsValues() {
-  const card = (x0: number) => sharp([[x0, 44], [x0 + 140, 44], [x0 + 140, 244], [x0, 244]], true, 4);
+  const card = (x0: number) => sharp([[x0, 56], [x0 + 170, 56], [x0 + 170, 246], [x0, 246]], true, 4);
+  const valCard = sharp([[44, 68], [194, 68], [194, 204], [44, 204]], true, 4);
   return (
     <SketchFrame
       id="sk-fits-values"
       width={800}
-      height={300}
-      label="A consumer thinks of a heart. Two products: one with a long list of eight ticked features, marked most features. One with four teal ticks and the same heart on it, marked fits their values. An arrow runs from the heart in the consumer's thought to the heart on the second product."
+      height={286}
+      label="On the left, a core value card marked personal value. On the right, two product spec cards: one with a long list of eight ticked features, marked most features, and one with four teal ticks and the matching value emblem, marked fits their values. An arrow arcs above the first card to connect the personal value card to the second product."
     >
-      <Backwash cx={180} cy={160} rx={170} ry={136} seed={3600} />
-      <Backwash cx={560} cy={150} rx={230} ry={138} seed={3602} />
-      <Ground x0={30} x1={250} y={270} seed={3603} />
-      <Person x={100} y={270} h={180} look={BETTER} arms={["hip", "chin"]} seed={3610} />
-      <Thought x={186} y={74} rx={40} ry={32} tx={116} ty={104} seed={3620} />
-      <Heart x={186} y={76} s={1.2} seed={3630} />
+      <Backwash cx={120} cy={140} rx={110} ry={108} seed={3600} />
+      <Backwash cx={520} cy={154} rx={260} ry={124} seed={3602} />
+
+      {/* personal value card */}
+      <Paper pts={valCard} seed={3620} />
+      <InkLine pts={valCard} seed={3621} width={1.2} closed />
+      <Heart x={119} y={124} s={1.4} seed={3630} />
+      <SketchText x={119} y={178} anchor="middle" size={10}>
+        PERSONAL VALUE
+      </SketchText>
 
       {/* most features */}
-      <Paper pts={card(330)} seed={3650} />
-      <InkLine pts={card(330)} seed={3651} width={1.1} closed />
+      <Paper pts={card(300)} seed={3650} />
+      <InkLine pts={card(300)} seed={3651} width={1.1} closed />
       {Array.from({ length: 8 }, (_, i) => (
         <g key={i}>
-          <Tick1 x={352} y={68 + i * 22} s={0.75} seed={3660 + i * 2} color={SK.ink} />
-          <InkLine pts={rp([[366, 68 + i * 22], [366 + [80, 66, 74, 58, 82, 62, 70, 54][i], 68 + i * 22]])} seed={3661 + i * 2} width={1.3} amp={0.25} />
+          <Tick1 x={326} y={78 + i * 20} s={0.75} seed={3660 + i * 2} color={SK.ink} />
+          <InkLine pts={rp([[342, 78 + i * 20], [342 + [96, 78, 88, 68, 98, 74, 84, 64][i], 78 + i * 20]])} seed={3661 + i * 2} width={1.3} amp={0.25} />
         </g>
       ))}
-      <SketchText x={400} y={274} anchor="middle" size={11}>
+      <SketchText x={385} y={272} anchor="middle" size={11}>
         MOST FEATURES
       </SketchText>
 
       {/* fits their values */}
-      <Paper pts={card(570)} seed={3680} />
-      <Wash pts={card(570)} seed={3681} fill={SK.sky} opacity={0.35} dx={2} dy={2} />
-      <InkLine pts={card(570)} seed={3682} width={1.4} closed />
-      <Heart x={640} y={96} s={1.4} seed={3683} />
+      <Paper pts={card(550)} seed={3680} />
+      <Wash pts={card(550)} seed={3681} fill={SK.teal} opacity={0.28} dx={2} dy={2} />
+      <InkLine pts={card(550)} seed={3682} width={1.4} closed />
+      <Heart x={635} y={102} s={1.4} seed={3683} />
       {Array.from({ length: 4 }, (_, i) => (
         <g key={i}>
-          <Tick1 x={592} y={150 + i * 22} s={0.75} seed={3690 + i * 2} />
-          <InkLine pts={rp([[606, 150 + i * 22], [606 + [80, 66, 74, 58][i], 150 + i * 22]])} seed={3691 + i * 2} width={1.3} amp={0.25} />
+          <Tick1 x={576} y={154 + i * 20} s={0.75} seed={3690 + i * 2} />
+          <InkLine pts={rp([[592, 154 + i * 20], [592 + [96, 78, 88, 68][i], 154 + i * 20]])} seed={3691 + i * 2} width={1.3} amp={0.25} />
         </g>
       ))}
-      <SketchText x={640} y={274} anchor="middle" size={11}>
+      <SketchText x={635} y={272} anchor="middle" size={11}>
         FITS THEIR VALUES
       </SketchText>
-      <SketchArrow pts={curvePts([228, 62], [440, -24], [626, 78], 18)} seed={3640} width={1.2} color={SK.tan} />
+      <SketchArrow pts={curvePts([194, 72], [416, -12], [612, 48], 18)} seed={3640} width={1.4} color={SK.teal} />
     </SketchFrame>
   );
 }

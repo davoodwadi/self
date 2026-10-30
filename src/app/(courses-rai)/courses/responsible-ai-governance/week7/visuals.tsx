@@ -21,7 +21,7 @@ import { Cursor, Phone, ShoppingCart, ThumbsDown, ThumbsUp } from "@phosphor-ico
 import { Chip, Coins, Cylinder, Dial, Figure, Gear, Lens, Sheet, SmallModel, Tag, cross, headAlongPath, star, tick } from "../_visuals/objects";
 
 /* ==========================================================================
-   WEEK 07 PLATES: PATENT DRAWING
+   WEEK 7 PLATES: PATENT DRAWING
    --------------------------------------------------------------------------
    Each plate is drawn as an invention on file: ink outlines at three weights,
    stipple tone, oblique projection (depth up and to the right), figure names

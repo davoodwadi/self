@@ -22,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Week 01: Responsible AI & Algorithmic Governance, Sample Slide",
+  title: "Week 1: Responsible AI & Algorithmic Governance, Sample Slide",
   description:
     "Foundations of Responsible AI in Markets: Why Market Algorithms Require Governance",
 };

@@ -19,7 +19,7 @@ import exercisesData from "./exercises.json";
 import { PilotSamples, AssociationNotCause, SwitchingPanel, ControlledEffect, DesignSequence, InquiriesToPurchases, DefinitionShift, InternalCoverage, DataRelationships, AuditLog, ListingExperiment } from "./visuals";
 
 // ============================================================================
-// WEEK 02: RESEARCH DESIGN AND SECONDARY DATA
+// WEEK 2: RESEARCH DESIGN AND SECONDARY DATA
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -41,12 +41,12 @@ const CLOSE = "type-quote w-full !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]"
 
 export default function Week2() {
   return (
-    <SlideDeck label="Week 02">
+    <SlideDeck label="Week 2">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 02: Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 2: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           Research Design and <span className="text-[var(--signal)]">Secondary Data</span>
         </Title>

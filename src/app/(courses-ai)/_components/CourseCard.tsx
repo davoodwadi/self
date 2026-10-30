@@ -5,11 +5,11 @@ import { cn } from "@/lib/utils";
 
 interface CourseCardProps {
   href?: string;
-  label: string; // e.g. "Week 01" or "New Paradigm"
+  label: string; // e.g. "Week 1" or "New Paradigm"
   title: string;
   description: string;
   isLocked?: boolean;
-  variant?: "crimson" | "gold";
+  variant?: "accent" | "muted";
 }
 
 export function CourseCard({
@@ -18,24 +18,24 @@ export function CourseCard({
   title,
   description,
   isLocked = false,
-  variant = "crimson",
+  variant = "accent",
 }: CourseCardProps) {
   if (isLocked) {
     return (
       <div className="block opacity-50">
-        <div className="flex flex-col justify-between relative bg-[var(--background)] border-t-[4px] border-t-[var(--charcoal-light)] p-8 h-full grayscale">
+        <div className="flex flex-col justify-between relative bg-[var(--background)] border-t-[4px] border-t-[var(--ink-2)] p-8 h-full grayscale">
           <div>
-            <span className="text-[var(--charcoal-light)] font-bold tracking-widest uppercase text-xs mb-3 block">
+            <span className="text-[var(--ink-2)] font-bold tracking-widest uppercase text-xs mb-3 block">
               {label}
             </span>
-            <h3 className="text-xl font-black text-[var(--charcoal-light)] mb-4">
+            <h3 className="text-xl font-black text-[var(--ink-2)] mb-4">
               {title}
             </h3>
-            <p className="text-[var(--charcoal-light)] font-light text-sm leading-relaxed mb-8">
+            <p className="text-[var(--ink-2)] font-light text-sm leading-relaxed mb-8">
               {description}
             </p>
           </div>
-          <div className="inline-block text-center px-8 py-3 bg-transparent text-[var(--charcoal-light)] font-semibold text-sm tracking-wide uppercase border border-[var(--charcoal-light)]">
+          <div className="inline-block text-center px-8 py-3 bg-transparent text-[var(--ink-2)] font-semibold text-sm tracking-wide uppercase border border-[var(--ink-2)]">
             Locked
           </div>
         </div>
@@ -44,15 +44,15 @@ export function CourseCard({
   }
 
   const borderColorClass =
-    variant === "gold" ? "border-t-[var(--gold)]" : "border-t-[var(--crimson)]";
+    variant === "muted" ? "border-t-[var(--ink-3)]" : "border-t-[var(--accent)]";
   const labelColorClass =
-    variant === "gold" ? "text-[var(--gold)]" : "text-[var(--crimson)]";
+    variant === "muted" ? "text-[var(--ink-3)]" : "text-[var(--accent)]";
   const buttonBgClass =
-    variant === "gold" ? "bg-[var(--gold)]" : "bg-[var(--crimson)]";
+    variant === "muted" ? "bg-[var(--ink-3)]" : "bg-[var(--accent)]";
   const buttonBorderClass =
-    variant === "gold" ? "border-[var(--gold)]" : "border-[var(--crimson)]";
+    variant === "muted" ? "border-[var(--ink-3)]" : "border-[var(--accent)]";
   const buttonTextClass =
-    variant === "gold" ? "text-[var(--charcoal)]" : "text-[var(--surface)]";
+    variant === "muted" ? "text-[var(--ink)]" : "text-[var(--surface)]";
 
   return (
     <Link href={href || "#"} className="block group">
@@ -71,16 +71,16 @@ export function CourseCard({
           >
             {label}
           </span>
-          <h3 className="text-2xl font-black text-[var(--charcoal)] mb-4">
+          <h3 className="text-2xl font-black text-[var(--ink)] mb-4">
             {title}
           </h3>
-          <p className="text-[var(--charcoal-light)] font-light text-sm leading-relaxed mb-8">
+          <p className="text-[var(--ink-2)] font-light text-sm leading-relaxed mb-8">
             {description}
           </p>
         </div>
         <div
           className={cn(
-            "inline-block text-center px-8 py-3 font-semibold text-sm tracking-wide uppercase border transition-all duration-300 group-hover:bg-[var(--charcoal)] group-hover:text-[var(--surface)] group-hover:border-[var(--charcoal)] group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.1)]",
+            "inline-block text-center px-8 py-3 font-semibold text-sm tracking-wide uppercase border transition-all duration-300 group-hover:bg-[var(--ink)] group-hover:text-[var(--surface)] group-hover:border-[var(--ink)] group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.1)]",
             buttonBgClass,
             buttonTextClass,
             buttonBorderClass,

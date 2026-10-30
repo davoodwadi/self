@@ -7,7 +7,7 @@ backgroundShape: "A dynamic map of personal identities, brand traits, extended s
 ---
 
 ## Title Slide
-- Week 05
+- Week 5
 - Consumers do not just buy products. They buy symbols that mirror who they are and who they hope to become.
 
 ## What Is the Self-Concept? [no-exercise]

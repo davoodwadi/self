@@ -6,7 +6,7 @@ week: week8
 ---
 
 ## Title Slide
-- Week 08
+- Week 8
 - Experimentation is the principal method by which marketing research establishes cause and effect.
 
 ## Causality in Marketing Research [no-exercise]

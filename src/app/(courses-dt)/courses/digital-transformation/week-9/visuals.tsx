@@ -193,7 +193,7 @@ export function HeroFourRevolutionsEngine() {
       title={`Interactive four-epoch industrial transmission rising from left to right: 1st (Steam cylinder, beam, and spoked flywheel), 2nd (High-voltage electric lattice pylon and spark), 3rd (Framed screen holding a silicon microprocessor chip), and 4.0 (Framed cyber-physical screen holding an autonomous robotic arm). Currently engaged: ${current.num} - ${current.title}`}
     >
       {/* Top readout banner showing the engaged Industrial Revolution */}
-      <rect x={16} y={12} width={488} height={46} fill={INK} />
+      <rect x={16} y={12} width={488} height={46} fill={INK} fillOpacity={0.04} stroke={INK} strokeWidth={1.5} />
       <rect x={22} y={18} width={66} height={34} fill={INK} fillOpacity={0.07} stroke={INK} strokeWidth={1.5} />
       <text x={55} y={41} textAnchor="middle" {...HEAD} fontSize={19} fill={INK}>
         {current.num}
@@ -1080,9 +1080,9 @@ export function Transition1890BridgeInteractive() {
             }}
             className="cursor-pointer"
           >
-            <rect x={518} y={ry} width={266} height={42} fill={tone} />
+            <rect x={518} y={ry} width={266} height={42} fill={INK} fillOpacity={isLit ? 0.08 : 0.03} stroke={INK} strokeWidth={isLit ? 2 : 1.5} />
             {/* Small bespoke emblem inside each career bar */}
-            <rect x={524} y={ry + 6} width={34} height={30} fill={WHITE} />
+            <rect x={524} y={ry + 6} width={34} height={30} fill={WHITE} stroke={INK} strokeWidth={1} strokeOpacity={0.25} />
             {i === 0 && (
               <g>
                 <rect x={529} y={ry + 16} width={24} height={10} fill={tone} />
@@ -1114,7 +1114,7 @@ export function Transition1890BridgeInteractive() {
                 <path d={`M 535 ${ry + 16} H 547 M 535 ${ry + 22} H 547`} stroke={WHITE} strokeWidth={2} />
               </g>
             )}
-            <text x={570} y={ry + 27} {...HEAD} fontSize={15.5} fill={WHITE}>
+            <text x={570} y={ry + 27} {...HEAD} fontSize={15.5} fill={INK}>
               {p.label}
             </text>
           </g>
@@ -2646,7 +2646,7 @@ export function CyberPhysicalConvergenceInteractive({
             )}
 
             {/* Bottom label strip */}
-            <rect x={n.x} y={n.y + 66} width={n.w} height={32} fill={tone} />
+            <rect x={n.x} y={n.y + 66} width={n.w} height={32} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
             <text x={n.cx} y={n.y + 87} textAnchor="middle" {...HEAD} fontSize={12} fill={INK}>
               {tech.short}
             </text>

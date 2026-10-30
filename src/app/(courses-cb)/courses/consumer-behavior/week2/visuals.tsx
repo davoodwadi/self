@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Consumer Behavior | Week 02: plates (Editorial Sketch)
+   Consumer Behavior | Week 2: plates (Editorial Sketch)
    --------------------------------------------------------------------------
    Perception and sensory marketing, drawn in ink and watercolour with the
    shared kit in ../_visuals (see ../CLAUDE.md for the style rules).
@@ -18,7 +18,6 @@
    ========================================================================== */
 
 import React from "react";
-import { ForkKnife, HandPalm, Scissors, TShirt } from "@phosphor-icons/react";
 import {
   blobPts,
   InkLine,
@@ -107,12 +106,38 @@ function Lips({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: n
   );
 }
 
-/** An open hand (a light Phosphor palm over a skin wash), `size` units tall. */
+/** An open hand drawn in ink over a skin wash, `size` units tall. */
 function Palm({ x, y, size = 30, seed }: { x: number; y: number; size?: number; seed: number }) {
+  const s = size / 30;
+  const outline = at(
+    x,
+    y,
+    [
+      [-6, 13],
+      [-8, 3],
+      [-12, -2],
+      [-9, -4],
+      [-6, 1],
+      [-6, -11],
+      [-3, -11],
+      [-3, -1],
+      [-2, -13],
+      [1, -13],
+      [1, -1],
+      [2, -12],
+      [5, -12],
+      [5, 0],
+      [6, -9],
+      [9, -9],
+      [8, 5],
+      [5, 13],
+    ],
+    s,
+  );
   return (
     <g>
       <Wash pts={rp(blobPts(x, y + size * 0.08, size * 0.3, size * 0.36, seed, 10, 0.1))} seed={seed} fill={SK.skin} opacity={0.7} dx={0.5} dy={0.5} />
-      <HandPalm x={r2(x - size / 2)} y={r2(y - size / 2)} size={size} weight="light" color={SK.ink} />
+      <InkLine pts={outline} seed={seed + 1} width={1.1} amp={0.3} closed />
     </g>
   );
 }
@@ -1107,27 +1132,48 @@ function ShopSign({ x, top, ground, seed, fill, children }: { x: number; top: nu
   );
 }
 
+/** Hand-drawn fork and knife centred on (x, y). */
+function Utensils({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: number }) {
+  return (
+    <g>
+      <InkLine pts={at(x, y, [[-6, -4], [-6, 11]], s)} seed={seed} width={1.1} amp={0.2} />
+      <InkLine pts={at(x, y, [[-9, -11], [-9, -4], [-3, -4], [-3, -11]], s)} seed={seed + 1} width={0.9} amp={0.2} />
+      <InkLine pts={at(x, y, [[-6, -11], [-6, -4]], s)} seed={seed + 2} width={0.9} amp={0.2} />
+      <InkLine pts={at(x, y, [[5, -11], [5, 11]], s)} seed={seed + 3} width={1.1} amp={0.2} />
+      <InkLine pts={at(x, y, [[5, -11], [9, -8], [9, 0], [5, 0]], s)} seed={seed + 4} width={0.9} amp={0.2} />
+    </g>
+  );
+}
+
 /** Perceptual vigilance: the hungry person sees the restaurant sign. */
 export function Vigilance() {
   const g = 226;
-  const icon = 28;
   return (
     <SketchFrame id="sk-vigilance" width={400} height={240} label="A hungry person, thinking of a fork and knife, looks past a clothes shop sign and a hair salon sign to a third, teal restaurant sign with a fork and knife on it. A line of sight arcs from the person's eyes to that sign.">
       <Backwash cx={200} cy={124} rx={196} ry={112} seed={2900} />
       <Ground x0={20} x1={380} y={g} seed={2905} />
       <ShopSign x={168} top={52} ground={g} seed={2910}>
-        <TShirt x={168 - icon / 2} y={79 - icon / 2} size={icon} weight="light" color={SK.ink} />
+        <InkLine
+          pts={sharp(at(168, 79, [[-6, -11], [-14, -5], [-10, 0], [-7, -3], [-7, 11], [7, 11], [7, -3], [10, 0], [14, -5], [6, -11], [3, -8], [-3, -8]]), true, 1)}
+          seed={2914}
+          width={1}
+          amp={0.25}
+          closed
+        />
       </ShopSign>
       <ShopSign x={256} top={52} ground={g} seed={2920}>
-        <Scissors x={256 - icon / 2} y={79 - icon / 2} size={icon} weight="light" color={SK.ink} />
+        <InkLine pts={at(256, 79, [[-7, 6], [8, -10]])} seed={2924} width={1.1} amp={0.2} />
+        <InkLine pts={at(256, 79, [[7, 6], [-8, -10]])} seed={2925} width={1.1} amp={0.2} />
+        <InkLine pts={rp(blobPts(249, 87, 3.8, 3.8, 2926, 8, 0.05))} seed={2926} width={1} closed />
+        <InkLine pts={rp(blobPts(263, 87, 3.8, 3.8, 2927, 8, 0.05))} seed={2927} width={1} closed />
       </ShopSign>
       <ShopSign x={344} top={52} ground={g} seed={2930} fill={SK.teal}>
-        <ForkKnife x={344 - icon / 2} y={79 - icon / 2} size={icon} weight="light" color={SK.ink} />
+        <Utensils x={344} y={79} s={1} seed={2934} />
       </ShopSign>
 
       <Person x={62} y={g} h={160} seed={2940} look={{ hair: "curly", wear: SK.sky, skin: SK.tan, skinOpacity: 0.55 }} arms={["down", "hip"]} />
       <Thought x={54} y={30} rx={30} ry={18} tx={62} ty={62} seed={2990} />
-      <ForkKnife x={54 - 11} y={30 - 11} size={22} weight="light" color={SK.ink} />
+      <Utensils x={54} y={30} s={0.78} seed={2991} />
       <SketchArrow pts={curvePts([80, 74], [210, 0], [318, 46], 16)} seed={2995} width={1} head={7} />
     </SketchFrame>
   );

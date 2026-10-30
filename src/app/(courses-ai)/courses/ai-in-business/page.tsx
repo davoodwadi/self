@@ -55,7 +55,7 @@ export default function CourseLanding() {
       <div className="mx-auto grid w-full max-w-7xl gap-x-16 px-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:px-12">
         {/* Masthead: stays in view beside the curriculum on wide screens. */}
         <header className="pt-20 pb-12 md:pt-28 lg:sticky lg:top-0 lg:flex lg:h-svh lg:flex-col lg:justify-center lg:py-16">
-          <p className={s.courseMeta}>BUSI 654. {weeks} weeks</p>
+          <p className={s.courseMeta}>BUSI 654</p>
 
           <h1 className={s.title}>Applications of AI in Business</h1>
 
@@ -65,7 +65,7 @@ export default function CourseLanding() {
           </p>
 
           <p
-            className={`${s.credit} mt-6 border-t border-[var(--charcoal)]/15 pt-4`}
+            className={`${s.credit} mt-6 border-t border-[var(--ink)]/15 pt-4`}
           >
             Davood Wadi, PhD
           </p>
@@ -77,11 +77,11 @@ export default function CourseLanding() {
             <h2 className={s.sectionHeading}>Curriculum</h2>
           </div>
 
-          <ol className="border-t border-[var(--charcoal)]/20">
+          <ol className="border-t border-[var(--ink)]/20">
             {rows.map((row) => (
               <li
                 key={row.slug}
-                className="border-b border-[var(--charcoal)]/12"
+                className="border-b border-[var(--ink)]/12"
               >
                 <CurriculumRow row={row} />
               </li>
@@ -97,7 +97,7 @@ function BackLink() {
   return (
     <Link
       href="/courses"
-      className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 transition-colors duration-200 text-[var(--charcoal-light)] hover:text-[var(--crimson)] hover:bg-[var(--crimson)]/5"
+      className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 transition-colors duration-200 text-[var(--ink-2)] hover:text-[var(--accent)] hover:bg-[var(--accent)]/5"
       aria-label="Back to all courses"
     >
       <ArrowLeft className="w-5 h-5" />

@@ -73,7 +73,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 08: PRICING STRATEGIES (THE SECOND P)
+// WEEK 8: PRICING STRATEGIES (THE SECOND P)
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -533,13 +533,13 @@ function MixStrip() {
 export default function Week8() {
   return (
     <SlideDeck
-      label="Week 08"
+      label="Week 8"
     >
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 08: Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 8: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
           Pricing Strategies{" "}
           <span className="text-[var(--signal)]">(The Second P)</span>

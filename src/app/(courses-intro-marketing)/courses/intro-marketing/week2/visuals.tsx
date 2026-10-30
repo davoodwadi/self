@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 02: figures
+   Week 2: figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates for The Marketing Environment and Ethics. Each idea
    gets its own grammar: nested rings, a supply chain between two bands, a
@@ -14,7 +14,7 @@
    and AgentScale (switch on a seller's tricks → when the AI agent's pick
    flips).
 
-   Conventions are Week 01's, and the type primitives are imported from it:
+   Conventions are Week 1's, and the type primitives are imported from it:
      - viewBox width 800 for full-width plates, 400 for plates that sit in a
        column (their keys are sized up so they read at the same scale)
      - INK carries the neutral case, SIGNAL the operative one, COUNTER the

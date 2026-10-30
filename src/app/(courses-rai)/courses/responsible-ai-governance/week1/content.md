@@ -6,7 +6,7 @@ week: week1
 ---
 
 ## Title Slide
-- Week 01
+- Week 1
 - Algorithmic governance translates ethical principles into verifiable rules, audits, and accountability across human and agent-mediated markets.
 
 ## Why Market Algorithms Require Governance [no-exercise]

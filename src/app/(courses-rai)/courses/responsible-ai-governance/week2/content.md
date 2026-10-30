@@ -6,7 +6,7 @@ week: week2
 ---
 
 ## Title Slide
-- Week 02
+- Week 2
 - Because predictive models learn from unequal histories and optimize narrow objectives, governing fairness requires explicit choices among competing mathematical and legal standards.
 
 ## From Statistical Patterns to Market Discrimination [no-exercise]

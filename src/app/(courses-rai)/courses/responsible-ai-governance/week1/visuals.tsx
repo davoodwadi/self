@@ -24,7 +24,7 @@ import {
 } from "../_visuals/objects";
 
 /* ==========================================================================
-   WEEK 01 PLATES: PATENT DRAWING
+   WEEK 1 PLATES: PATENT DRAWING
    --------------------------------------------------------------------------
    Each plate is drawn as an invention on file: ink outlines at three weights,
    stipple tone, oblique projection (depth up and to the right), figure names in

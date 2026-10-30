@@ -199,7 +199,7 @@
     "slide_id": "delegated-search-when-an-ai-agent-gathers-the-information",
     "question_text": "Dana asks an AI agent to find her running shoes. Each time the agent opens a product page, it is charged a small fee. Which outcome fits what the slide describes?",
     "hint": "Think about what happens to the amount of searching when each look-up has a cost, and what the quality of the final choice depends on.",
-    "correct_answer_citation": "Week 07: Delegated Search: When an AI Agent Gathers the Information",
+    "correct_answer_citation": "Week 7: Delegated Search: When an AI Agent Gathers the Information",
     "correct_answer_index": 1,
     "options": [
       {

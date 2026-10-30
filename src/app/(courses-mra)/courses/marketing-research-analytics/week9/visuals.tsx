@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 09 plates: Regression and Marketing Response Models.
+   Week 9 plates: Regression and Marketing Response Models.
    Built on ../_visuals/kit and ../_visuals/objects. Every plate follows the
    sentence it illustrates on the slide.
 

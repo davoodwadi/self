@@ -38,7 +38,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 08: EXPERIMENTS AND A/B TESTING
+// WEEK 8: EXPERIMENTS AND A/B TESTING
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -62,12 +62,12 @@ const CELL = "!max-w-none !leading-snug";
 
 export default function Week8() {
   return (
-    <SlideDeck label="Week 08">
+    <SlideDeck label="Week 8">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 08: Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 8: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
           <span className="text-[var(--signal)]">Experiments</span> and A/B Testing
         </Title>

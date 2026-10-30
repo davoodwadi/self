@@ -1,6 +1,12 @@
-# Consumer Behavior course: plate style
+# Consumer Behavior course: design and plate style
 
-Every SVG plate in this course (all weeks, the landing page, anything new) is drawn in the **Editorial Sketch** style below. The reference plate is `Receipt` in `week1/visuals.tsx`: match it.
+These rules govern the course landing page, every weekly slide deck, and every SVG plate in this course.
+
+## Design system, colours, and typography
+
+The course uses a clean, straightforward academic sans-serif design system on a white ground (`--paper`), avoiding ornate editorial flourishes and AI-generated visual tropes. Only `Source Sans 3` (`--font-source-sans`) is loaded in `(courses-cb)/layout.tsx`, and `--font-sans`, `--font-heading`, `--font-body`, and `--font-label` in `(courses-cb)/globals.css` resolve to `var(--font-source-sans), ui-sans-serif, system-ui, -apple-system, sans-serif`. All headings, body copy, callouts, discussion prompts, exercises, and diagram labels are set in upright sans-serif. Never use display serifs (such as `Fraunces`), italic callout or discussion prompts, decorative small-caps tracking, or decorative eyebrow accent bars on the landing page.
+
+Every SVG plate in this course (all weeks, anything new) is drawn in the **Editorial Sketch** style below. The reference plate is `Receipt` in `week1/visuals.tsx`: match it.
 
 ## Drawing primitives
 
@@ -135,9 +141,9 @@ A real action on an unreal thing stays in ink (the strike-through over the penci
 The SVG rules in the root `CLAUDE.md` apply. In this course:
 
 - **Rule 8:** the one background wash, and a ground line when something stands, are part of the style and are exempt.
-- **Rule 10:** follow the colour roles above: `teal` is what is learned, lit or chosen (one subject per plate), `ochre` is a highlight, count or badge, `pencil` is an absent object, `stone` is the quiet background wash behind every subject, `blush` beside `sky` sets the here and now against a hope, and the other washes describe the object itself. Never use teal for decoration.
+- **Rule 10 (Colour):** `--ink` is neutral, `--rule` is secondary structure, and inside plates `teal` marks the single element that is learned, lit, or chosen. Keep slide headings, body prose, defined terms, and structural rules in neutral ink and `--rule` hairlines rather than colouring slide text or column borders with `--signal` or `--counter`.
 - **Rule 16:** empty paper *around* the subject is part of the look. Trim only canvas that holds nothing at all.
-- **Rule 19:** plates bring their own palette: never use `--paper-2`/`--paper-3` or any CSS variable inside a plate. A plate in a `figure-well` must still read, so give it a background wash, and never draw cream detail on a cream fill.
+- **Rule 19 (Ground):** plates sit directly on the clean white slide surface (`--paper`) without a boxed `.figure-well` fill or border. Every plate brings its own `<Backwash>` watercolour ground and `SK.paper` fills, so never draw white or cream detail on an unstroked cream fill.
 - **Rule 20:** `wobble` already rounds. Round anything else yourself, and never use `Math.random()`.
 - **Rule 22:** check each plate against the style checklist below as well.
 - **Rule 28:** prefer drawing the object by hand with `InkLine` + `Wash`. The style depends on it. Use an icon only when a hand drawing would be misread, with `weight="light"` and `color={SK.ink}`, plus a `Wash` behind it for colour. Never `duotone`. Colour comes only from `SK`.

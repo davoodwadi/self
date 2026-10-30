@@ -6,7 +6,7 @@ week: week2
 ---
 
 ## Title Slide
-- Week 02
+- Week 2
 - We do not see things as they are. We see things through our senses and personal filters.
 
 ## What Is Perception? [no-exercise]

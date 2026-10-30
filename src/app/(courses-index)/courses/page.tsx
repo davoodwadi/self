@@ -6,8 +6,8 @@ import { CB_DIR, DME_DIR, IM_DIR, MRA_DIR, RAI_DIR, readCurriculum } from "@/lib
 // ============================================================================
 // /courses: COURSE INDEX
 // ============================================================================
-// A junction page. Seven courses, one screen, no scroll on desktop: people
-// arrive here to leave, and each course already has its own syllabus.
+// A junction page. The masthead stays in view on the left while the course
+// directory lists on the right, matching the layout of individual course hubs.
 // ============================================================================
 
 export const dynamic = "force-static";
@@ -17,8 +17,6 @@ export const metadata: Metadata = {
   description:
     "Course websites and lecture decks by Davood Wadi, PhD: Applications of AI in Business, Consumer Behavior, Digital Marketing & E-Commerce, Digital Transformation, Introduction to Marketing, Marketing Research & Analytics, and Responsible AI & Algorithmic Governance.",
 };
-
-const MICRO = "text-[10px] font-semibold uppercase tracking-[0.24em]";
 
 type Course = {
   slug: string;
@@ -89,95 +87,89 @@ const COURSES: Course[] = [
 
 export default function CoursesIndex() {
   return (
-    <div className="flex min-h-screen flex-col bg-paper">
+    <div className="min-h-screen bg-paper text-ink font-sans">
       <Link
         href="/"
-        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-ink-2 transition-colors duration-300 hover:text-signal"
+        className="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 text-ink-2 transition-colors duration-200 hover:text-signal hover:bg-signal/5"
         aria-label="Back to Home Page"
       >
         <ArrowLeft className="w-5 h-5" />
       </Link>
 
-      <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-6 pt-24 pb-14 lg:px-10 lg:pb-16">
-        <Masthead />
+      <div className="mx-auto grid w-full max-w-7xl gap-x-16 px-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:px-12">
+        {/* Masthead: stays in view beside the course list on wide screens. */}
+        <header className="pt-20 pb-12 md:pt-28 lg:sticky lg:top-0 lg:flex lg:h-svh lg:flex-col lg:justify-center lg:py-16">
+          <h1 className="font-sans text-4xl md:text-5xl font-bold leading-[1.12] tracking-[-0.02em] text-ink">
+            Courses
+          </h1>
 
-        <ul className="mt-10 grid gap-px overflow-hidden rounded-lg bg-rule md:grid-cols-2 lg:grid-cols-3">
-          {COURSES.map((course) => (
-            <li
-              key={course.slug}
-              className="bg-paper-2 md:last:odd:col-span-2 lg:last:odd:col-span-1 lg:[&:nth-child(3n+1):last-child]:col-span-3"
-            >
-              <CourseCard course={course} />
-            </li>
-          ))}
-        </ul>
-      </main>
-
-      <footer className="border-t border-rule">
-        <div className="mx-auto w-full max-w-6xl px-6 py-7 lg:px-10">
-          <p className="text-sm text-ink-3">
-            &copy; {new Date().getFullYear()} Davood Wadi, PhD
+          <p className="mt-4 max-w-[42ch] text-lg leading-[1.55] text-ink-2">
+            Course websites and lecture decks, open to students and to anyone
+            else who finds them useful.
           </p>
-        </div>
-      </footer>
+
+          <p className="mt-6 border-t border-ink/15 pt-4 text-sm text-ink-3">
+            Davood Wadi, PhD
+          </p>
+        </header>
+
+        {/* Course directory */}
+        <nav aria-label="Courses" className="pb-14 lg:py-20">
+          <div className="mb-3">
+            <h2 className="text-sm font-semibold text-ink-3">Directory</h2>
+          </div>
+
+          <ol className="border-t border-ink/20">
+            {COURSES.map((course, i) => (
+              <li key={course.slug} className="border-b border-ink/12">
+                <CourseRow course={course} index={i + 1} />
+              </li>
+            ))}
+          </ol>
+        </nav>
+      </div>
     </div>
   );
 }
 
 /* ==========================================================================
-   MASTHEAD: the title and a rule.
+   COURSE ROW: tabular number, title, optional code/subtitle, and summary.
    ========================================================================== */
 
-function Masthead() {
-  return (
-    <header className="border-b border-ink pb-8">
-      <p className={`${MICRO} flex items-center gap-4 text-ink-3`}>
-        <span className="h-px w-10 bg-signal" />
-        Davood Wadi, PhD
-      </p>
-      <h1 className="mt-5 font-display text-5xl leading-none font-semibold tracking-tight text-ink sm:text-6xl lg:text-7xl">
-        Courses
-      </h1>
-      <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-2">
-        Course websites and lecture decks, open to students and to anyone
-        else who finds them useful.
-      </p>
-    </header>
-  );
-}
-
-/* ==========================================================================
-   COURSE CARD: the whole card is the link.
-   ========================================================================== */
-
-function CourseCard({ course }: { course: Course }) {
+function CourseRow({ course, index }: { course: Course; index: number }) {
   return (
     <Link
       href={`/courses/${course.slug}`}
-      className="group flex h-full flex-col p-7 transition-colors hover:bg-paper lg:p-9"
+      className="group grid grid-cols-[2.25rem_minmax(0,1fr)_auto] gap-x-4 py-5 md:gap-x-5 -mx-3 px-3 transition-colors hover:bg-ink/[0.025]"
     >
-      <p className={`${MICRO} text-signal`}>{course.code ?? "Course"}</p>
+      <span
+        aria-hidden
+        className="pt-0.5 text-[0.9375rem] font-medium leading-[1.4] text-ink-3/80 tabular-nums transition-colors group-hover:text-signal"
+      >
+        {String(index).padStart(2, "0")}
+      </span>
 
-      <h2 className="mt-4 font-display text-2xl leading-snug font-semibold text-ink lg:text-[1.75rem]">
-        {course.title}
-      </h2>
+      <div className="min-w-0">
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <h3 className="font-sans text-[1.125rem] font-semibold leading-[1.35] text-ink transition-colors group-hover:text-signal">
+            {course.title}
+          </h3>
+          {course.code && (
+            <span className="text-xs font-medium text-ink-3 tabular-nums">
+              {course.code}
+            </span>
+          )}
+        </div>
 
-      {course.subtitle && (
-        <p className="mt-1.5 font-display text-lg leading-snug text-ink-2">
-          {course.subtitle}
+        <p className="mt-1 max-w-2xl text-[0.9375rem] leading-[1.55] text-ink-3">
+          {course.description}
         </p>
-      )}
-
-      <p className="mt-4 text-sm leading-relaxed text-ink-2">
-        {course.description}
-      </p>
-
-      <div className="mt-auto flex justify-end pt-7">
-        <ArrowRight
-          aria-hidden
-          className="size-4 shrink-0 text-ink-3 transition-all group-hover:translate-x-1 group-hover:text-signal"
-        />
       </div>
+
+      <ArrowRight
+        aria-hidden
+        className="mt-1 size-4 shrink-0 text-ink-3/70 transition-all duration-200 group-hover:translate-x-1 group-hover:text-signal"
+      />
     </Link>
   );
 }

@@ -6,7 +6,7 @@ week: week2
 ---
 
 ## Title Slide
-- Week 02
+- Week 2
 - Storefront architecture organizes product information to minimize search friction and uncertainty for both human shoppers and autonomous AI agents.
 
 ## The Storefront as a Decision Environment [no-exercise]

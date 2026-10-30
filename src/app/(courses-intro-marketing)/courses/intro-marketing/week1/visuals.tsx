@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 01, figures
+   Week 1, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea, so the deck changes shape as
    the argument does: an iceberg, an exchange loop, two lanes, a triangle, a

@@ -100,7 +100,7 @@ export default function DigitalTransformationWeek8() {
       </Link>
 
       <PosterHero
-        category="Week 08: Digital Transformation"
+        category="Week 8: Digital Transformation"
         title="Immersive Technologies"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"

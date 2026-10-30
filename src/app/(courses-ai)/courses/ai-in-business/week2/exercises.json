@@ -1,0 +1,259 @@
+[
+  {
+    "type": "identify",
+    "slide_id": "capabilities",
+    "prompt": "A hotel group is testing a language model. For each request, decide whether the model can handle it alone or what it must be paired with.",
+    "options": [
+      { "id": "alone", "label": "Model alone" },
+      { "id": "retrieval", "label": "External data retrieval" },
+      { "id": "tools", "label": "Software tools" },
+      { "id": "human", "label": "Human review" }
+    ],
+    "cases": [
+      {
+        "id": "rewrite",
+        "text": "Rewrite a guest's long complaint, pasted into the prompt, as three short bullet points for the manager",
+        "answer": "alone",
+        "explanation": "Everything needed is supplied in the input, so this is a rewriting task the model does well."
+      },
+      {
+        "id": "rooms",
+        "text": "Report how many rooms are still free at the Halifax hotel tonight",
+        "answer": "tools",
+        "explanation": "This needs a live database lookup, which a software tool performs exactly."
+      },
+      {
+        "id": "contract",
+        "text": "State the cancellation fee in the group's private agreement with a conference organizer",
+        "answer": "retrieval",
+        "explanation": "The agreement is a private firm record that was never in the pre-training data, so it must be retrieved."
+      },
+      {
+        "id": "allergen",
+        "text": "Sign off that the allergen labels on a new menu satisfy food-safety law",
+        "answer": "human",
+        "explanation": "Guaranteed adherence to strict regulatory rules needs a person to verify the output."
+      },
+      {
+        "id": "commission",
+        "text": "Compute the exact commission owed to 312 travel agents from last month's bookings",
+        "answer": "tools",
+        "explanation": "Exact arithmetic over many records is a job for deterministic software, not word prediction."
+      },
+      {
+        "id": "welcome",
+        "text": "Draft a friendly welcome note in Spanish from a short English template",
+        "answer": "alone",
+        "explanation": "Translation and draft generation from supplied text are tasks the model handles unassisted."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "next-token",
+    "question_text": "An insurer uses a language model to read accident reports and fill in a field called \"vehicle colour\". The same report sometimes yields different colours on different runs. Which change addresses this most directly?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "Raise the temperature, so the model considers more candidate words",
+        "option_explanation": "A higher temperature makes less likely words more common, which adds variation to the field."
+      },
+      {
+        "option_text": "Ask the model to write a longer answer for each report",
+        "option_explanation": "A longer answer adds more tokens to sample but does not make the chosen colour any more consistent."
+      },
+      {
+        "option_text": "Set the temperature near zero, so the most likely word is chosen every time",
+        "option_explanation": "Correct. Extraction needs nearly deterministic output, and a temperature near zero keeps selecting the highest-probability token."
+      },
+      {
+        "option_text": "Run the model once and reuse that answer for every later report",
+        "option_explanation": "Each report describes a different car, so one stored answer would be wrong for most reports."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "type": "identify",
+    "slide_id": "zero-few-shot",
+    "prompt": "For each task, decide whether instructions alone are likely enough or whether the prompt should include labeled examples.",
+    "options": [
+      { "id": "zero", "label": "Zero-shot" },
+      { "id": "few", "label": "Few-shot" }
+    ],
+    "cases": [
+      {
+        "id": "summary",
+        "text": "Summarize a 30-minute sales call transcript in five sentences",
+        "answer": "zero",
+        "explanation": "Summarizing is a standard language task the model performs well from instructions alone."
+      },
+      {
+        "id": "returns",
+        "text": "Assign each return request to one of a sporting-goods chain's nine internal reason codes, where \"too small\" and \"wrong size shipped\" go to different codes",
+        "answer": "few",
+        "explanation": "An internal taxonomy with borderline cases is clarified by a few labeled examples."
+      },
+      {
+        "id": "translate",
+        "text": "Translate a store's opening-hours notice into Portuguese",
+        "answer": "zero",
+        "explanation": "Translation is a standard task that needs no completed examples."
+      },
+      {
+        "id": "tone",
+        "text": "Score supplier emails on a firm's own 1-to-4 scale of negotiation pressure, written by its purchasing team",
+        "answer": "few",
+        "explanation": "The model cannot know the firm's private judgment criteria, so examples demonstrate them along with the output format."
+      },
+      {
+        "id": "title",
+        "text": "Suggest a title for a quarterly newsletter article about a new warehouse",
+        "answer": "zero",
+        "explanation": "Draft generation of this kind works from instructions alone."
+      }
+    ]
+  },
+  {
+    "type": "order",
+    "slide_id": "rag-pipeline",
+    "prompt": "A university builds an assistant that answers student questions from its academic regulations. Put the steps in the order they happen.",
+    "steps": [
+      {
+        "id": "split",
+        "text": "The regulations handbook is split into passages of a few paragraphs each",
+        "explanation": "Indexing starts by dividing documents into chunks."
+      },
+      {
+        "id": "store",
+        "text": "Each passage is converted into an embedding and stored with its section title and effective date",
+        "explanation": "The embeddings go into a searchable index alongside the text and metadata."
+      },
+      {
+        "id": "ask",
+        "text": "A student asks whether a failed course can be retaken, and the question is converted into an embedding",
+        "explanation": "At question time the query is embedded so it can be compared with the stored passages."
+      },
+      {
+        "id": "fetch",
+        "text": "The passages closest to the question are placed into the model's context window",
+        "explanation": "Retrieval selects the most relevant chunks and inserts them into the prompt."
+      },
+      {
+        "id": "answer",
+        "text": "The model answers from those passages and cites the section it relied on",
+        "explanation": "The prompt instructs the model to use only the supplied passages and cite the source."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "prompt-rag-finetune",
+    "prompt": "Match each business need with the adaptation method that suits it best.",
+    "term_label": "Business need",
+    "match_label": "Method",
+    "pairs": [
+      {
+        "id": "pricing",
+        "term": "A telecom's sales assistant must quote prices from a plan catalogue that changes every week, and each quote must show its source.",
+        "match": "Retrieval-augmented generation",
+        "explanation": "The answers must reflect private, frequently updated documents with explicit citations."
+      },
+      {
+        "id": "polite",
+        "term": "A small bakery wants its order-confirmation emails to sound warm and include the pickup time.",
+        "match": "Prompt engineering",
+        "explanation": "The model already writes such emails and only needs clear instructions and an example or two."
+      },
+      {
+        "id": "codes",
+        "term": "A hospital network wants a small, cheap model to write discharge notes in its own shorthand, using 20,000 past notes as training pairs.",
+        "match": "Fine-tuning",
+        "explanation": "Teaching consistent specialized notation to a smaller model is what fine-tuning is reserved for."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "copilot-agent",
+    "prompt": "For each system, decide whether it works as a copilot or as an agent.",
+    "options": [
+      { "id": "copilot", "label": "Copilot" },
+      { "id": "agent", "label": "Agent" }
+    ],
+    "cases": [
+      {
+        "id": "email",
+        "text": "A recruiter asks for a draft rejection email, edits it, and sends it personally",
+        "answer": "copilot",
+        "explanation": "The system produces a draft, and the person decides and performs every action."
+      },
+      {
+        "id": "travel",
+        "text": "Given \"book the team's trip to Calgary under $3,000\", a system searches flights, compares hotels, reserves rooms, and retries when a fare sells out",
+        "answer": "agent",
+        "explanation": "It breaks the goal into steps, calls tools, observes results and adjusts until the task is complete."
+      },
+      {
+        "id": "slides",
+        "text": "An analyst asks for three possible chart titles and picks one to paste into a slide",
+        "answer": "copilot",
+        "explanation": "The assistant suggests and the human controls the next step."
+      },
+      {
+        "id": "refunds",
+        "text": "A system reads each new refund request, looks up the order, checks the return policy, and updates the ticket before moving to the next one",
+        "answer": "agent",
+        "explanation": "Execution sits with the software, which loops through acting and observing without a person at each step."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "hitl",
+    "prompt": "A property-management firm is giving an agent access to its systems. Sort each action by whether it may run on its own or needs a manager's approval first.",
+    "bins": [
+      { "id": "auto", "label": "Runs autonomously" },
+      { "id": "human", "label": "Needs human approval" }
+    ],
+    "cards": [
+      {
+        "id": "lookup",
+        "text": "Look up a tenant's payment history",
+        "bin": "auto",
+        "explanation": "Reading records is low risk and changes nothing."
+      },
+      {
+        "id": "evict",
+        "text": "Send a tenant a formal notice to end the lease",
+        "bin": "human",
+        "explanation": "A legal notice is binding and cannot be cleanly withdrawn once delivered."
+      },
+      {
+        "id": "repair",
+        "text": "Assign a maintenance request to the plumbing queue",
+        "bin": "auto",
+        "explanation": "Routing a ticket is cheap and easy to reassign."
+      },
+      {
+        "id": "deposit",
+        "text": "Refund a departing tenant's $2,400 security deposit",
+        "bin": "human",
+        "explanation": "A large payment is high impact and hard to recover once sent."
+      },
+      {
+        "id": "note",
+        "text": "Draft an internal summary of last week's complaints",
+        "bin": "auto",
+        "explanation": "An internal draft is reversible and costs little if wrong."
+      },
+      {
+        "id": "contractor",
+        "text": "Sign a one-year cleaning contract with a new vendor",
+        "bin": "human",
+        "explanation": "A binding commitment to a supplier needs a manager's judgment."
+      }
+    ]
+  }
+]

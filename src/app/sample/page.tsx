@@ -1192,7 +1192,7 @@ export default function SampleSlidePage() {
         <header className="flex items-baseline justify-between border-b border-[#181715]/20 pb-2 mb-4">
           <div className="flex items-baseline gap-3">
             <span className="text-[12px] tracking-[0.08em] uppercase text-[#181715] font-semibold">
-              Week 01
+              Week 1
             </span>
             <span className="text-[#181715]/30">n/a</span>
             <span className="text-[13.5px] italic text-[#6E695F]">

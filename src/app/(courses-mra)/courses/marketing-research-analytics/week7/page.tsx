@@ -37,7 +37,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 07: HYPOTHESIS TESTING AND GROUP DIFFERENCES
+// WEEK 7: HYPOTHESIS TESTING AND GROUP DIFFERENCES
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -58,12 +58,12 @@ const CLOSE = "type-quote w-full !max-w-none !text-[clamp(1.15rem,1.8vw,1.5rem)]
 
 export default function Week7() {
   return (
-    <SlideDeck label="Week 07">
+    <SlideDeck label="Week 7">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 07: Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 7: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
           <span className="text-[var(--signal)]">Hypothesis Testing</span> and Group Differences
         </Title>

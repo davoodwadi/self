@@ -6,7 +6,7 @@ week: week5
 ---
 
 ## Title Slide
-- Week 05
+- Week 5
 - The conclusions of a survey extend only as far as the population that its sample represents.
 
 ## Populations, Samples, and Censuses [no-exercise]

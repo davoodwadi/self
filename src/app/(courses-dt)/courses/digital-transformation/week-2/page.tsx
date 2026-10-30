@@ -73,7 +73,7 @@ export default function DigitalTransformationWeek2() {
       </Link>
 
       <PosterHero
-        category="Week 02: Digital Transformation"
+        category="Week 2: Digital Transformation"
         title="Big Data, Porter's Value Chain, and Socio-Technical Systems"
         subtitle="Exploring data structures, Big Data concepts, and organizational frameworks."
         author="Dr. Davood Wadi"

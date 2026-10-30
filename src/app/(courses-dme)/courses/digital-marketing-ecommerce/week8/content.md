@@ -6,7 +6,7 @@ week: week8
 ---
 
 ## Title Slide
-- Week 08
+- Week 8
 - Online reviews resolve quality uncertainty in digital markets, making the solicitation, incentive design, and governance of user-generated content a core lever of conversion.
 
 ## Why Online Reviews Anchor E-Commerce Trust [no-exercise]

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Consumer Behavior | Week 03: plates (Editorial Sketch)
+   Consumer Behavior | Week 3: plates (Editorial Sketch)
    --------------------------------------------------------------------------
    Learning and memory, drawn in ink and watercolour with the shared kit in
    ../_visuals (see ../CLAUDE.md for the style rules).
@@ -252,27 +252,27 @@ export function IndirectWatch() {
 
 /** Ongoing: a new product slots into what the consumer already knows. */
 export function UpdateLoop() {
-  const g = 204;
-  const slot = sharp([[258, 52], [286, 52], [286, 92], [258, 92]], true, 2);
+  const g = 186;
+  const tray = sharp([[24, 56], [268, 56], [268, 152], [24, 152]], true, 4);
+  const slot = sharp([[212, 82], [246, 82], [246, 134], [212, 134]], true, 2);
   return (
     <SketchFrame
       id="sk-update-loop"
       width={400}
       height={220}
-      label="A shopper with a thought cloud holding three products they already know and one empty slot. From the shelf on the right, a new teal product marked NEW moves up into the empty slot."
+      label="A memory tray holding three known product packs and one empty dashed slot. From the store shelf on the right, a new teal product box marked NEW arcs into the empty slot."
     >
       <Backwash cx={200} cy={118} rx={190} ry={96} seed={700} />
-      <Ground x0={20} x1={250} y={g} seed={705} />
-      <Person x={62} y={g} h={168} seed={710} look={{ hair: "long", wear: SK.charcoal, legs: SK.camel, skin: SK.tan, skinOpacity: 0.55 }} arms={["hip", "down"]} />
-      <Thought x={200} y={72} rx={106} ry={42} tx={74} ty={34} seed={760} />
-      <Pack x={140} bottom={92} w={28} h={40} seed={770} fill={SK.camel} />
-      <Pack x={184} bottom={92} w={28} h={40} seed={774} fill={SK.sky} />
-      <Pack x={228} bottom={92} w={28} h={40} seed={778} fill={SK.camel} badge />
+      <Paper pts={tray} seed={760} />
+      <InkLine pts={tray} seed={761} closed />
+      <Pack x={58} bottom={134} w={32} h={50} seed={770} fill={SK.camel} />
+      <Pack x={114} bottom={134} w={32} h={50} seed={774} fill={SK.sky} />
+      <Pack x={170} bottom={134} w={32} h={50} seed={778} fill={SK.camel} badge />
       <PencilLine pts={slot} seed={782} closed />
 
-      <InkLine pts={rp([[312, g], [392, g]])} seed={785} width={1.3} />
-      <Box x={352} bottom={g} w={40} h={52} mark="new" fill={SK.teal} seed={790} />
-      <SketchArrow pts={curvePts([354, 142], [352, 96], [292, 78], 12)} seed={795} width={1.2} head={8} />
+      <InkLine pts={rp([[306, g], [388, g]])} seed={785} width={1.4} />
+      <Box x={348} bottom={g} w={44} h={58} mark="new" fill={SK.teal} seed={790} />
+      <SketchArrow pts={curvePts([348, 118], [316, 42], [234, 74], 12)} seed={795} width={1.3} head={8} />
     </SketchFrame>
   );
 }
@@ -1288,33 +1288,45 @@ export function SpreadingActivation() {
 
 /** Strong positive links make one brand easy to recall in the aisle. */
 export function StrongLinks() {
-  const g = 214;
-  const head: Pt = [r2(76 + 8), r2(g - 186 * 0.84)];
+  const cues: Pt[] = [
+    [68, 62],
+    [54, 114],
+    [76, 166],
+  ];
   return (
     <SketchFrame
       id="sk-strong-links"
       width={400}
       height={230}
-      label="A shopper in a store aisle faces a shelf. A thick teal link, carrying a heart, runs from the shopper's head straight to the brand's pack. Only a thin link reaches a plain pack on the lower shelf."
+      label="Three lit memory nodes on the left send strong teal associative links to the brand's pack on the upper store shelf, while only one thin unlit link reaches a plain pack on the lower shelf."
     >
       <Backwash cx={200} cy={120} rx={190} ry={104} seed={3500} />
-      <Ground x0={24} x1={210} y={g} seed={3505} />
       {[
-        { x: 256, b: 118, f: SK.camel, badge: true },
-        { x: 306, b: 118, f: SK.sky },
-        { x: 356, b: 118, f: SK.camel },
-        { x: 256, b: 206, f: SK.sky },
-        { x: 306, b: 206, f: SK.camel },
-        { x: 356, b: 206, f: SK.sky },
+        { x: 246, b: 118, f: SK.teal, badge: true },
+        { x: 300, b: 118, f: SK.sky },
+        { x: 354, b: 118, f: SK.camel },
+        { x: 246, b: 206, f: SK.sky },
+        { x: 300, b: 206, f: SK.camel },
+        { x: 354, b: 206, f: SK.sky },
       ].map((k, i) => (
         <Pack key={i} x={k.x} bottom={k.b} w={38} h={60} seed={3510 + i * 4} fill={k.f} badge={k.badge} />
       ))}
-      <InkLine pts={rp([[228, 119], [384, 118]])} seed={3540} width={1.4} />
-      <InkLine pts={rp([[228, 207], [384, 206]])} seed={3541} width={1.4} />
-      <Person x={76} y={g} h={168} seed={3550} look={{ hair: "short", wear: SK.camel, legs: SK.charcoal, skin: SK.skin }} arms={["down", "hip"]} />
-      <InkLine pts={curvePts([head[0] + 10, head[1] - 6], [160, 22], [234, 70], 14)} seed={3600} width={3.2} color={SK.teal} amp={0.3} />
-      <Heart x={160} y={40} s={1.1} seed={3610} />
-      <InkLine pts={curvePts([head[0] + 10, head[1] + 12], [170, 150], [234, 170], 14)} seed={3620} width={0.8} amp={0.3} />
+      <InkLine pts={rp([[218, 119], [384, 118]])} seed={3540} width={1.4} />
+      <InkLine pts={rp([[218, 207], [384, 206]])} seed={3541} width={1.4} />
+      {cues.map(([cx, cy], i) => (
+        <InkLine
+          key={i}
+          pts={curvePts([cx + 12, cy], [150, 44 + i * 26], [222, 82 + (i - 1) * 8], 12)}
+          seed={3600 + i * 3}
+          width={2.6}
+          color={SK.teal}
+          amp={0.3}
+        />
+      ))}
+      <InkLine pts={curvePts([cues[2][0] + 12, cues[2][1] + 4], [156, 190], [222, 180], 12)} seed={3620} width={0.8} amp={0.3} />
+      {cues.map(([cx, cy], i) => (
+        <Node key={i} x={cx} y={cy} r={11} seed={3560 + i * 5} lit />
+      ))}
     </SketchFrame>
   );
 }
@@ -1743,25 +1755,30 @@ export function YourBrandWeb() {
 /** The three brands the assistant names, and the one it leaves out. */
 const LISTED = [SK.camel, SK.charcoal, SK.sky];
 
-/** The consumer asks. The assistant answers with a short list of three brands. */
+/** The prompt asks. The assistant answers with a short list of three brands. */
 export function AssistantShortList() {
-  const g = 222;
+  const g = 176;
+  const prompt = sharp([[14, 96], [134, 96], [134, 152], [14, 152]], true, 3);
   return (
     <SketchFrame
       id="sk-short-list"
       width={400}
       height={262}
-      label="A shopper asks the AI agent phone, in a speech bubble, best for flat feet? An arrow runs from the agent to a card listing three running shoes in camel, charcoal and sky, headed consideration set. A fourth shoe, in pencil, sits below the card: a brand missing from the answer."
+      label="A prompt card reading best for flat feet? leads to the AI agent phone, which outputs a card headed consideration set listing three running shoes in camel, charcoal and sky. A fourth shoe, in pencil, sits below the card: a brand missing from the answer."
     >
       <Backwash cx={200} cy={134} rx={194} ry={118} seed={5000} opacity={0.4} />
-      <Ground x0={14} x1={214} y={g} seed={5001} />
-      <Person x={48} y={g} h={150} seed={5010} look={{ hair: "long", hairTone: SK.brown, wear: SK.tan, skin: SK.camel, skinOpacity: 0.6 }} arms={["down", "hip"]} />
-      <SpeechBubble x={128} y={40} w={176} h={44} tx={62} ty={84} seed={5040} />
-      <SketchText x={128} y={44} anchor="middle" size={10.5}>
-        BEST FOR FLAT FEET?
+      <Paper pts={prompt} seed={5040} />
+      <InkLine pts={prompt} seed={5041} closed />
+      <SketchText x={74} y={120} anchor="middle" size={10}>
+        BEST FOR
       </SketchText>
-      <Agent x={170} y={g} s={1.05} seed={5050} />
-      <SketchArrow pts={[[198, 172], [226, 150]]} seed={5060} />
+      <SketchText x={74} y={136} anchor="middle" size={10}>
+        FLAT FEET?
+      </SketchText>
+      <SketchArrow pts={[[140, 124], [158, 124]]} seed={5045} head={6} />
+      <Ground x0={156} x1={212} y={g} seed={5001} />
+      <Agent x={184} y={g} s={1.05} seed={5050} />
+      <SketchArrow pts={[[210, 124], [228, 124]]} seed={5060} head={6} />
 
       <SketchText x={312} y={24} anchor="middle" size={9.5}>
         CONSIDERATION SET
@@ -1863,22 +1880,24 @@ export function WebFromReviews() {
 
 /** The word in the question is the cue: it lights "durable" and the brand linked to it. */
 export function CueInQuestion() {
-  const g = 222;
+  const prompt = sharp([[14, 72], [148, 72], [148, 138], [14, 138]], true, 3);
   return (
     <SketchFrame
       id="sk-cue-question"
       width={400}
       height={244}
-      label="A shopper asks, in a speech bubble, durable running shoes? An arrow runs from the bubble to the word durable in the AI agent's web, which lights teal along with its link to the camel shoe. The charcoal shoe, linked only to light and cheap, stays unlit."
+      label="A prompt card reading durable running shoes? sends a teal arrow from the word durable to the word durable in the AI agent's web, which lights teal along with its link to the camel shoe. The charcoal shoe, linked only to light and cheap, stays unlit."
     >
       <Backwash cx={200} cy={128} rx={194} ry={112} seed={5400} opacity={0.4} />
-      <Ground x0={10} x1={120} y={g} seed={5401} />
-      <Person x={46} y={g} h={140} seed={5410} look={{ hair: "long", hairTone: SK.brown, wear: SK.tan, skin: SK.camel, skinOpacity: 0.6 }} arms={["down", "hip"]} />
-      <SpeechBubble x={110} y={38} w={200} h={42} tx={60} ty={96} seed={5440} />
-      <SketchText x={110} y={42} anchor="middle" size={10.5}>
-        DURABLE RUNNING SHOES?
+      <Paper pts={prompt} seed={5440} />
+      <InkLine pts={prompt} seed={5441} closed />
+      <SketchText x={81} y={98} anchor="middle" size={10.5} fill={SK.teal}>
+        DURABLE
       </SketchText>
-      <SketchArrow pts={curvePts([214, 34], [290, 22], [318, 70], 10)} seed={5450} color={SK.teal} width={1.6} />
+      <SketchText x={81} y={118} anchor="middle" size={10}>
+        RUNNING SHOES?
+      </SketchText>
+      <SketchArrow pts={curvePts([152, 92], [238, 34], [312, 74], 12)} seed={5450} color={SK.teal} width={1.6} />
       <AttributeWeb x={214} y={96} seed={5460} cue={0} />
     </SketchFrame>
   );

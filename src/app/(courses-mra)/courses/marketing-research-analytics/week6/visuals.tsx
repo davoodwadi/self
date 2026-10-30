@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 06 plates: Data Preparation and Descriptive Analysis.
+   Week 6 plates: Data Preparation and Descriptive Analysis.
    Built on ../_visuals/kit and ../_visuals/objects. Every plate follows the
    sentence it illustrates on the slide.
    ========================================================================== */

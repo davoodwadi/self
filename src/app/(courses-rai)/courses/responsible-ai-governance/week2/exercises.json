@@ -80,7 +80,7 @@
     "slide_id": "counterfactual-fairness-and-causal-pathways",
     "question_text": "A graduate fellowship committee removes applicant race and gender columns from its scoring model, but keeps standardized test scores that are strongly shaped by disparities in neighborhood high-school funding associated with protected attributes. Why does this model satisfy fairness through unawareness yet fail counterfactual fairness?",
     "hint": "Trace how the protected attribute influences the prediction through mediating variables in the causal graph.",
-    "correct_answer_citation": "Week 02: Counterfactual Fairness and Causal Pathways",
+    "correct_answer_citation": "Week 2: Counterfactual Fairness and Causal Pathways",
     "correct_answer_index": 1,
     "options": [
       {

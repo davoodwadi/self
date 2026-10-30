@@ -6,7 +6,7 @@ week: week9
 ---
 
 ## Title Slide
-- Week 09
+- Week 9
 - When algorithms set prices continuously and interact with competing algorithms, governance must address granular price discrimination, consumer fairness perceptions, tacit algorithmic collusion, and platform self-preferencing.
 
 ## When Algorithms Set Market Prices [no-exercise]

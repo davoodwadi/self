@@ -20,7 +20,7 @@ import exercisesData from "./exercises.json";
 import { ErrorsAndSampleSize, PeriodicList, StrataAndClusters, SampleSizeCurve, ContactFunnel, QualityChecks, SyntheticSpread, ResponsesPerPrompt } from "./visuals";
 
 // ============================================================================
-// WEEK 05: SAMPLING AND DATA COLLECTION
+// WEEK 5: SAMPLING AND DATA COLLECTION
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -50,12 +50,12 @@ function AiStep() {
 
 export default function Week5() {
   return (
-    <SlideDeck label="Week 05">
+    <SlideDeck label="Week 5">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 05: Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 5: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
           <span className="text-[var(--signal)]">Sampling</span> and Data Collection
         </Title>

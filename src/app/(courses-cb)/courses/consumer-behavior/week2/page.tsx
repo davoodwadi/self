@@ -1,47 +1,27 @@
 "use client";
 
 import React from "react";
-import { SlideDeck, Slide, Title } from "@/components/slide-components/SlideComponents";
+import {
+  SlideDeck,
+  Slide,
+  Title,
+} from "@/components/slide-components/SlideComponents";
 import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
 import exercisesData from "./exercises.json";
 import {
-  Filters,
   SelectOrganizeInterpret,
-  SensoryFlood,
-  SameAdTwoImpressions,
   PerceptionFunnel,
-  SightVignette,
-  SoundVignette,
-  SmellVignette,
-  TouchVignette,
-  TasteVignette,
-  AbsoluteThreshold,
-  FarBillboard,
-  JndLadder,
   ProportionBars,
-  CandyJump,
-  LaptopSliver,
-  StayBelow,
-  Exceed,
   Overload,
-  SkipAd,
-  Vigilance,
-  Defense,
   Adaptation,
   WholeFromParts,
-  Closure,
-  Similarity,
-  FigureGround,
   SemioticTriangle,
-  SensorySignatures,
   DataSheets,
-  EyeLevelTopResult,
-  AgentTopResult,
 } from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR | WEEK 02: PERCEPTION AND SENSORY MARKETING
+// CONSUMER BEHAVIOR | WEEK 2: PERCEPTION AND SENSORY MARKETING
 // ============================================================================
 // Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -66,14 +46,14 @@ const TIGHT = "md:!py-16";
 type Tone = "signal" | "counter" | "ink";
 
 const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
+  signal: "border-[var(--rule)]",
+  counter: "border-[var(--rule)]",
+  ink: "border-[var(--rule)]",
 };
 
 const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--signal)]",
-  counter: "text-[var(--counter)]",
+  signal: "text-[var(--ink)]",
+  counter: "text-[var(--ink)]",
   ink: "text-[var(--ink)]",
 };
 
@@ -104,9 +84,9 @@ function Term({ children, tone = "ink" }: { children: React.ReactNode; tone?: To
   return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
-/** Inline colour for a phrase inside a serif line. */
+/** Inline emphasis for a phrase inside a line. */
 function Tint({ children, tone = "signal" }: { children: React.ReactNode; tone?: Tone }) {
-  return <span className={TEXT[tone]}>{children}</span>;
+  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
 /** Hairline-topped block. */
@@ -120,7 +100,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
+    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -191,7 +171,7 @@ function Cells({
   className = "",
 }: {
   cols: 3 | 4 | 5;
-  items: { key: string; tone: Tone; text: React.ReactNode; plate: React.ReactNode }[];
+  items: { key: string; tone: Tone; text: React.ReactNode; plate?: React.ReactNode }[];
   className?: string;
 }) {
   return (
@@ -204,10 +184,9 @@ function Cells({
     >
       {items.map((s) => (
         <li key={s.key} className="flex min-w-0 flex-col gap-4">
-          <div className={cn("border-t-2 pt-4", BORDER[s.tone])}>
+          <div className={cn("border-t pt-4", BORDER[s.tone])}>
             <p className="type-body">{s.text}</p>
           </div>
-          <Plate className="mt-auto">{s.plate}</Plate>
         </li>
       ))}
     </ol>
@@ -216,31 +195,26 @@ function Cells({
 
 export default function Week2() {
   return (
-    <SlideDeck label="Week 02">
+    <SlideDeck label="Week 2">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
-          <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
-              Week 02
+        <div className="w-full max-w-4xl">
+          <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
+            Week 2
+          </p>
+          <p className="type-caption mt-2">Consumer Behavior | Davood Wadi, PhD</p>
+          <Title className="mt-6">Perception and Sensory Marketing</Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote">
+              We do not see things as they are.{" "}
+              {"We see things through our "}
+              <Tint>senses</Tint>
+              {" and "}
+              <Tint>personal filters</Tint>
+              .
             </p>
-            <p className="type-caption mt-2">Consumer Behavior | Davood Wadi, PhD</p>
-            <Title className="mt-8 !max-w-[14ch]">Perception and Sensory Marketing</Title>
-            <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
-              <p className="type-quote">
-                We do not see things as they are.{" "}
-                {"We see things through our "}
-                <Tint>senses</Tint>
-                {" and "}
-                <Tint>personal filters</Tint>
-                .
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto w-full max-w-[340px]">
-            <Filters />
           </div>
         </div>
       </Slide>
@@ -268,9 +242,6 @@ export default function Week2() {
                 environment.
               </P>
             </Ruled>
-            <Plate className="mt-auto">
-              <SensoryFlood />
-            </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-4">
             <Ruled tone="ink" className="!pt-4">
@@ -282,9 +253,6 @@ export default function Week2() {
                 walk away with <Term>completely different impressions</Term>.
               </P>
             </Ruled>
-            <Plate className="mt-auto">
-              <SameAdTwoImpressions />
-            </Plate>
           </div>
         </div>
       </Slide>
@@ -323,8 +291,8 @@ export default function Week2() {
             <li
               key={s.stage}
               className={cn(
-                "min-w-0 border-t-2 pt-4",
-                "border-[var(--ink)]",
+                "min-w-0 border-t pt-4",
+                "border-[var(--rule)]",
               )}
             >
               <p
@@ -362,7 +330,6 @@ export default function Week2() {
             {
               key: "sight",
               tone: "ink",
-              plate: <SightVignette />,
               text: (
                 <>
                   {" "}
@@ -374,7 +341,6 @@ export default function Week2() {
             {
               key: "sound",
               tone: "ink",
-              plate: <SoundVignette />,
               text: (
                 <>
                   {" "}
@@ -386,7 +352,6 @@ export default function Week2() {
             {
               key: "smell",
               tone: "ink",
-              plate: <SmellVignette />,
               text: (
                 <>
                   {" "}
@@ -398,7 +363,6 @@ export default function Week2() {
             {
               key: "touch",
               tone: "ink",
-              plate: <TouchVignette />,
               text: (
                 <>
                   {" "}
@@ -410,7 +374,6 @@ export default function Week2() {
             {
               key: "taste",
               tone: "ink",
-              plate: <TasteVignette />,
               text: (
                 <>
                   {" "}
@@ -441,7 +404,6 @@ export default function Week2() {
             {
               key: "absolute",
               tone: "ink",
-              plate: <AbsoluteThreshold />,
               text: (
                 <>
                   The <Term>absolute threshold</Term> is the minimum amount of stimulation a person
@@ -452,7 +414,6 @@ export default function Week2() {
             {
               key: "billboard",
               tone: "ink",
-              plate: <FarBillboard />,
               text: (
                 <>
                   A billboard with tiny text placed far from a highway falls{" "}
@@ -463,7 +424,6 @@ export default function Week2() {
             {
               key: "differential",
               tone: "ink",
-              plate: <JndLadder />,
               text: (
                 <>
                   The <Term>differential threshold</Term> is the ability of a
@@ -511,7 +471,6 @@ export default function Week2() {
             {
               key: "candy",
               tone: "ink",
-              plate: <CandyJump />,
               text: (
                 <>
                   A ten-cent price increase on a one-dollar candy bar is{" "}
@@ -522,7 +481,6 @@ export default function Week2() {
             {
               key: "laptop",
               tone: "ink",
-              plate: <LaptopSliver />,
               text: (
                 <>
                   A ten-cent price increase on a thousand-dollar laptop will go{" "}
@@ -533,7 +491,6 @@ export default function Week2() {
             {
               key: "below",
               tone: "ink",
-              plate: <StayBelow />,
               text: (
                 <>
                   Marketers <Term>stay below the JND</Term> when shrinking package
@@ -544,7 +501,6 @@ export default function Week2() {
             {
               key: "exceed",
               tone: "ink",
-              plate: <Exceed />,
               text: (
                 <>
                   Marketers <Term>exceed the JND</Term> when redesigning a package or announcing a
@@ -577,7 +533,6 @@ export default function Week2() {
             {
               key: "selective",
               tone: "ink",
-              plate: <SkipAd />,
               text: (
                 <>
                   <Term>Selective exposure</Term> means consumers choose what media and
@@ -588,7 +543,6 @@ export default function Week2() {
             {
               key: "vigilance",
               tone: "ink",
-              plate: <Vigilance />,
               text: (
                 <>
                   <Term>Perceptual vigilance</Term> means consumers notice stimuli that relate to
@@ -599,7 +553,6 @@ export default function Week2() {
             {
               key: "defense",
               tone: "ink",
-              plate: <Defense />,
               text: (
                 <>
                   <Term>Perceptual defense</Term> means consumers screen out threatening or
@@ -611,7 +564,6 @@ export default function Week2() {
             {
               key: "adaptation",
               tone: "ink",
-              plate: <Adaptation />,
               text: (
                 <>
                   <Term>Adaptation</Term> occurs when consumers no with time stop paying
@@ -666,7 +618,6 @@ export default function Week2() {
             {
               key: "shoppers",
               tone: "ink" as Tone,
-              plate: <EyeLevelTopResult />,
               text: (
                 <>
                   Shoppers notice products at <Term>eye level</Term> on a shelf and at
@@ -677,7 +628,6 @@ export default function Week2() {
             {
               key: "agents",
               tone: "ink" as Tone,
-              plate: <AgentTopResult />,
               text: (
                 <>
                   Research shows that <Term>AI agents</Term> can also favor options because of
@@ -689,12 +639,11 @@ export default function Week2() {
             <li
               key={c.key}
               className={cn(
-                "grid min-w-0 items-center gap-4 border-t-2 pt-4 sm:grid-cols-[1fr_minmax(0,270px)]",
+                "min-w-0 border-t pt-4",
                 BORDER[c.tone],
               )}
             >
               <p className="type-body">{c.text}</p>
-              <Plate>{c.plate}</Plate>
             </li>
           ))}
         </ol>
@@ -738,7 +687,6 @@ export default function Week2() {
             {
               key: "closure",
               tone: "ink",
-              plate: <Closure />,
               text: (
                 <>
                   {" "}
@@ -750,7 +698,6 @@ export default function Week2() {
             {
               key: "similarity",
               tone: "ink",
-              plate: <Similarity />,
               text: (
                 <>
                   {" "}
@@ -762,7 +709,6 @@ export default function Week2() {
             {
               key: "figure-ground",
               tone: "ink",
-              plate: <FigureGround />,
               text: (
                 <>
                   {" "}
@@ -794,20 +740,20 @@ export default function Week2() {
           </Plate>
           <div className="min-w-0 lg:col-start-1 lg:row-start-2 lg:self-start">
             <ol className="grid w-full gap-4">
-              <li className="min-w-0 border-t-2 border-[var(--ink)] pt-3">
+              <li className="min-w-0 border-t border-[var(--rule)] pt-3">
                 <p className="type-body">
                   {" "}
                   An <Term>object</Term> is the actual product being promoted.
                 </p>
               </li>
-              <li className="min-w-0 border-t-2 border-[var(--ink)] pt-3">
+              <li className="min-w-0 border-t border-[var(--rule)] pt-3">
                 <p className="type-body">
                   {" "}
                   A <Term>sign</Term> is the sensory image or symbol representing
                   the intended meaning.
                 </p>
               </li>
-              <li className="min-w-0 border-t-2 border-[var(--ink)] pt-3">
+              <li className="min-w-0 border-t border-[var(--rule)] pt-3">
                 <p className="type-body">
                   {" "}
                   An <Term>interpretant</Term> is the meaning or feeling derived by the consumer
@@ -832,9 +778,9 @@ export default function Week2() {
         <Heading kicker="Discussion:" tone="counter">
           Sensory Signatures
         </Heading>
-        <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-8 md:px-12 md:py-10">
+        <div className="relative w-full max-w-5xl border-l border-[var(--rule-2)] pl-6 py-2">
           <p className="type-quote !text-[clamp(1.3rem,2.2vw,1.9rem)] max-w-[52ch]">
-            <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--counter)]">
+            <span className="type-label mb-4 block !text-[0.8rem] !text-[var(--ink-3)]">
               Discussion:
             </span>{" "}
             Name a brand that you recognize instantly{" "}
@@ -843,9 +789,6 @@ export default function Week2() {
             How does that sensory cue build brand recall?
           </p>
         </div>
-        <Plate wide className="mt-8">
-          <SensorySignatures />
-        </Plate>
       </Slide>
     </SlideDeck>
   );

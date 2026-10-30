@@ -47,7 +47,7 @@ import {
 } from "../_visuals/objects";
 
 /* ==========================================================================
-   WEEK 01 PLATES: MAIL-ORDER CATALOGUE
+   WEEK 1 PLATES: MAIL-ORDER CATALOGUE
    --------------------------------------------------------------------------
    Products engraved in halftone inside double-ruled white tiles, ink marks,
    and one amber mark for the slide's key idea. See the course CLAUDE.md.

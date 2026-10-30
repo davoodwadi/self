@@ -6,7 +6,7 @@ week: week6
 ---
 
 ## Title Slide
-- Week 06
+- Week 6
 - The validity of an analysis depends on the preparation of the data on which it is performed.
 
 ## The Data Preparation Process [exercise]

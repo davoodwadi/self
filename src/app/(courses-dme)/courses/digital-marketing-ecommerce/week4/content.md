@@ -6,7 +6,7 @@ week: week4
 ---
 
 ## Title Slide
-- Week 04
+- Week 4
 - Marketplace ranking and recommendation algorithms determine which products win attention and sales across both human shoppers and AI shopping agents.
 
 ## The Algorithm as the Digital Shelf [no-exercise]

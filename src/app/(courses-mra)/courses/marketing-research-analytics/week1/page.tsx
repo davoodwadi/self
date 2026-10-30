@@ -20,7 +20,7 @@ import exercisesData from "./exercises.json";
 import { UncertaintyNarrowing, EvidenceLanes, ShareTracking, ChooseAmongAlternatives, JustifiedQuadrant, SymptomAndCauses, CancellationsDoubled, ResearchProcess, SimulatedVersusReal, EffortShift, Stakeholders, PreciseWrongTarget, AgentMediatedPurchase, SamePromptResponses } from "./visuals";
 
 // ============================================================================
-// WEEK 01: RESEARCH FOR MARKETING DECISIONS
+// WEEK 1: RESEARCH FOR MARKETING DECISIONS
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -37,12 +37,12 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.2rem,1.7vw,1.45rem)] !leading-s
 
 export default function Week1() {
   return (
-    <SlideDeck label="Week 01">
+    <SlideDeck label="Week 1">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 01: Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 1: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[16ch]">
           Research for <span className="text-[var(--signal)]">Marketing Decisions</span>
         </Title>

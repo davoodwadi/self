@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 08 plates: Experiments and A/B Testing.
+   Week 8 plates: Experiments and A/B Testing.
    Built on ../_visuals/kit and ../_visuals/objects. Every plate follows the
    sentence it illustrates on the slide.
    ========================================================================== */

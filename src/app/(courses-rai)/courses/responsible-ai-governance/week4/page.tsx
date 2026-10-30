@@ -45,7 +45,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 04: BEHAVIORAL AUDITING AND STATISTICAL EVALUATION OF AI SYSTEMS
+// WEEK 4: BEHAVIORAL AUDITING AND STATISTICAL EVALUATION OF AI SYSTEMS
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
@@ -58,12 +58,12 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading
 
 export default function Week4Page() {
   return (
-    <SlideDeck label="Week 04">
+    <SlideDeck label="Week 4">
       {/* ================================================================
           01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 04: Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 4: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">
           Behavioral Auditing and Statistical Evaluation of AI Systems
         </Title>

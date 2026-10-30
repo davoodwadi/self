@@ -94,7 +94,7 @@
     "slide_id": "platform-attribution-and-the-semantic-trigger-of-sponsorship-bias",
     "question_text": "A furniture marketplace deploys a shopping assistant whose system prompt says it was employed by the marketplace. One sofa listing carries the label 'Promoted by ShopHaus', ShopHaus being the marketplace itself. Based on Study 2 of Wadi and Ma (2026c), what should an auditor expect compared with an assistant employed by the shopper?",
     "hint": "Ask what happens when the label attributes the promotion to the agent's own named principal.",
-    "correct_answer_citation": "Week 08: Platform Attribution and the Semantic Trigger of Sponsorship Bias",
+    "correct_answer_citation": "Week 8: Platform Attribution and the Semantic Trigger of Sponsorship Bias",
     "correct_answer_index": 1,
     "options": [
       {

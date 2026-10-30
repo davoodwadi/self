@@ -46,7 +46,7 @@
     "slide_id": "why-shannon-entropy-fails-on-ordinal-rating-scales",
     "question_text": "An audit reads two models' token probabilities on the item 'Buying imported products is unpatriotic' (1 to 7). Model X puts 50 percent on 2 and 50 percent on 3. Model Y puts 50 percent on 2 and 50 percent on 6. A report ranks them as 'equally certain' because their Shannon entropies match. What is the strongest critique?",
     "hint": "Ask what Shannon entropy does with the distance between 2 and 3 compared with the distance between 2 and 6.",
-    "correct_answer_citation": "Week 04: Why Shannon Entropy Fails on Ordinal Rating Scales",
+    "correct_answer_citation": "Week 4: Why Shannon Entropy Fails on Ordinal Rating Scales",
     "correct_answer_index": 1,
     "options": [
       {

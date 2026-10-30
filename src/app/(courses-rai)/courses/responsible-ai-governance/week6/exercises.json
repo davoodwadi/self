@@ -53,7 +53,7 @@
     "slide_id": "contextual-integrity-and-informational-norms",
     "question_text": "A fitness app shares each user's daily step counts with the user's chosen coach, as its sign-up page explains. The app then starts selling the same step counts to life insurers to price policies. Under contextual integrity, what makes the second flow a violation?",
     "hint": "Compare the two flows parameter by parameter: subject, sender, recipient, information type and transmission principle.",
-    "correct_answer_citation": "Week 06: Contextual Integrity and Informational Norms",
+    "correct_answer_citation": "Week 6: Contextual Integrity and Informational Norms",
     "correct_answer_index": 1,
     "options": [
       {
@@ -217,7 +217,7 @@
     "slide_id": "reb-oversight-when-ai-tools-process-participant-data",
     "question_text": "A researcher has already collected interviews with twelve nurses from one small-town hospital. She now plans to delete each nurse's name and paste the transcripts into a public chatbot to code themes. What does REB oversight require first?",
     "hint": "Think about both what the consent form said and what remains in the text after the names are gone.",
-    "correct_answer_citation": "Week 06: REB Oversight When AI Tools Process Participant Data",
+    "correct_answer_citation": "Week 6: REB Oversight When AI Tools Process Participant Data",
     "correct_answer_index": 3,
     "options": [
       {

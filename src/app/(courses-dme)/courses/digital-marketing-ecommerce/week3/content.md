@@ -6,7 +6,7 @@ week: week3
 ---
 
 ## Title Slide
-- Week 03
+- Week 3
 - Search marketing captures high-intent demand at the moment a shopper or an AI assistant formulates a question.
 
 ## Search as the Engine of Commercial Intent [no-exercise]

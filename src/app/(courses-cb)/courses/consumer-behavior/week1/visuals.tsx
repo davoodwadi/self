@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Consumer Behavior | Week 01, figures
+   Consumer Behavior | Week 1, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates (ink and loose watercolour on warm paper): a
    receipt, an iceberg, a chain, a consumption cycle, a parent and a baby,
@@ -54,7 +54,6 @@ import {
   Cart,
   Clock,
   curvePts,
-  Eye,
   Glass1,
   Ground,
   handAt,
@@ -63,7 +62,6 @@ import {
   Magnifier,
   MapPin,
   Megaphone,
-  Mug1,
   Pack,
   PayCard,
   Person,
@@ -484,32 +482,6 @@ export function ConsumptionCycle() {
   );
 }
 
-/** Row markers for the stage table: the consumer (a shopper's head and
-    shoulders) and the marketer (a watching eye). */
-export function ConsumerMark() {
-  const shoulders: Pt[] = [[7, 39], [9, 30], [14, 26], [26, 26], [31, 30], [33, 39]];
-  const head = rp(blobPts(20, 16, 6.4, 7.8, 301, 12, 0.05));
-  const hair: Pt[] = [[13.4, 17], [13, 10], [17, 7.2], [23, 7.2], [27, 10], [26.6, 17], [24.6, 12], [18, 11], [15, 13]];
-  return (
-    <SketchFrame id="sk-mark-consumer" width={40} height={40} label="" decorative className="h-9 w-9 shrink-0">
-      <Wash pts={shoulders} seed={302} fill={SK.camel} opacity={0.65} dx={1} dy={0.5} />
-      <InkLine pts={shoulders} seed={303} width={1.1} amp={0.4} />
-      <Wash pts={head} seed={304} fill={SK.skin} opacity={0.75} dx={0.6} dy={0.4} />
-      <InkLine pts={head} seed={305} width={1} amp={0.3} closed />
-      <Wash pts={hair} seed={306} fill={SK.brown} opacity={0.75} dx={0.4} dy={0} />
-      <InkLine pts={hair} seed={307} width={0.8} amp={0.3} closed />
-    </SketchFrame>
-  );
-}
-
-export function MarketerMark() {
-  return (
-    <SketchFrame id="sk-mark-marketer" width={40} height={40} label="" decorative className="h-9 w-9 shrink-0">
-      <Eye x={20} y={22} w={32} seed={310} />
-    </SketchFrame>
-  );
-}
-
 /* ==========================================================================
    CONSUMERS VERSUS CUSTOMERS
    ========================================================================== */
@@ -916,62 +888,6 @@ export function NeedWantTrio() {
 
 /** The one shopper who plays every role this week. */
 const SHOPPER: Look = { hair: "bob", hairTone: SK.brown, wear: SK.camel, legs: SK.charcoal };
-
-/** One glyph per role: the same person, a different prop. */
-export function RoleGlyph({ role }: { role: 0 | 1 | 2 | 3 }) {
-  const labels = [
-    "The shopper, hand to chin, with a speech bubble holding an exclamation mark: noticing the problem first.",
-    "The shopper speaking to a second person, a speech bubble of three dots between them.",
-    "The shopper holding out a payment card.",
-    "The shopper drinking from a mug, using the product.",
-  ];
-  const g = 112;
-  const h = 94;
-  const px = role === 1 ? 50 : 62;
-  const seed = 800 + role * 40;
-  const hand = handAt(px, g, h, "reach");
-  const mouth = handAt(px, g, h, "chin");
-  return (
-    <SketchFrame id={`sk-role-${role}`} width={160} height={120} label={labels[role]} className="block h-auto w-full max-w-[180px]">
-      <Backwash cx={84} cy={70} rx={70} ry={46} seed={seed} opacity={0.4} />
-      <Ground x0={14} x1={146} y={g} seed={seed + 1} />
-      <Person
-        x={px}
-        y={g}
-        h={h}
-        look={SHOPPER}
-        arms={role === 0 ? ["down", "chin"] : role === 1 ? ["down", "low"] : role === 2 ? ["hip", "reach"] : ["hip", "chin"]}
-        seed={seed + 2}
-      />
-      {role === 0 ? (
-        <g>
-          <SpeechBubble x={116} y={30} w={40} h={34} tx={86} ty={54} seed={seed + 10} />
-          <InkLine pts={[[116, 20], [116, 34]]} seed={seed + 12} width={2.2} amp={0.2} />
-          <path d={wobble(rp(blobPts(116, 40, 1.8, 1.8, seed + 13, 6, 0.1)), seed + 13, 0.1, 4, true)} fill={SK.ink} />
-        </g>
-      ) : null}
-      {role === 1 ? (
-        <g>
-          <SpeechBubble x={98} y={24} w={44} h={28} tx={74} ty={46} seed={seed + 10} />
-          {[-10, 0, 10].map((dx, i) => (
-            <path key={dx} d={wobble(rp(blobPts(98 + dx, 24, 2.2, 2.2, seed + 14 + i, 6, 0.1)), seed + 14 + i, 0.1, 4, true)} fill={SK.ink} />
-          ))}
-          <Person
-            x={130}
-            y={g}
-            h={82}
-            flip
-            look={{ hair: "curly", hairTone: SK.charcoal, skin: SK.brown, skinOpacity: 0.55, wear: SK.sky, legs: SK.tan }}
-            arms={["down", "down"]}
-            seed={seed + 20}
-          />
-        </g>
-      ) : null}
-      {role === 2 ? <PayCard x={r2(hand[0] + 7)} y={r2(hand[1] - 2)} w={19} tilt={-12} seed={seed + 10} /> : null}
-      {role === 3 ? <Mug1 x={r2(mouth[0] + 9)} y={r2(mouth[1] + 3)} seed={seed + 10} /> : null}
-    </SketchFrame>
-  );
-}
 
 export function FamilyCar() {
   const g = 178;
@@ -1472,39 +1388,37 @@ export function RegretCheck() {
    shoes it buys are teal wherever they are the thing chosen.
    ========================================================================== */
 
-/** The shopper with the week's look, in the running shoes the agent bought. */
-const SHOD: Look = { ...SHOPPER, shoes: SK.teal };
-
 /**
- * Three panels under the three lines: the consumer states the goal to the
- * agent. The agent searches, compares and pays. The consumer wears and rates.
+ * Three panels under the three lines: the goal card ("running shoes under
+ * $120"), the AI agent searching/comparing/paying, and the delivered shoe
+ * judged with a star rating.
  */
 export function DelegatedPurchase() {
   const g = 206;
-  const hand = handAt(92, g, 160, "hold");
-  const held = handAt(624, g, 160, "reach");
+  const card = sharp([[44, 52], [224, 52], [224, 178], [44, 178]], true, 3);
+  const boxBase = sharp([[596, 146], [738, 146], [738, g], [596, g]], true, 2);
+  const boxLid = sharp([[590, 134], [744, 134], [744, 146], [590, 146]], true, 1.5);
   return (
     <SketchFrame
       id="sk-delegated"
       width={800}
       height={230}
-      label="Three sketched panels. Left: the shopper holds a phone showing the AI sparkle and says, in a speech bubble with a running shoe, under $120. Middle: the AI agent phone beside three running shoes, a magnifying glass over them, the middle pair in teal chosen and a payment card beside it. Right: the shopper in the teal running shoes holds one up to look at it, with a star rating above."
+      label="Three sketched panels. Left: a written goal card showing a running shoe and the words under $120. Middle: the AI agent phone beside three running shoes under a magnifying glass, the middle pair in teal chosen with a payment card beside it. Right: the chosen teal running shoe resting on its shoebox with a star rating above."
     >
       {[133, 400, 667].map((cx, i) => (
         <Backwash key={cx} cx={cx} cy={122} rx={118} ry={92} seed={3100 + i} opacity={0.38} />
       ))}
-      {[[24, 244], [292, 510], [556, 776]].map(([x0, x1], i) => (
-        <Ground key={x0} x0={x0} x1={x1} y={g} seed={3110 + i} />
-      ))}
+      <Ground x0={292} x1={510} y={g} seed={3111} />
+      <Ground x0={556} x1={776} y={g} seed={3112} />
 
-      {/* 1. the consumer states the goal */}
-      <Person x={92} y={g} h={160} look={SHOPPER} arms={["hip", "hold"]} seed={3120} />
-      <Agent x={r2(hand[0] + 4)} y={r2(hand[1] + 10)} s={0.5} seed={3140} />
-      <SpeechBubble x={194} y={60} w={136} h={80} tx={112} ty={54} seed={3150} />
-      <Shoe x={208} y={52} s={1} seed={3152} fill={SK.camel} />
-      <SketchText x={208} y={82} anchor="middle" size={12}>
+      {/* 1. the stated goal card */}
+      <Paper pts={card} seed={3150} />
+      <InkLine pts={card} seed={3151} closed />
+      <Shoe x={134} y={114} s={1.15} seed={3152} fill={SK.camel} />
+      <SketchText x={134} y={154} anchor="middle" size={12}>
         UNDER $120
       </SketchText>
+      <SketchArrow pts={[[234, 118], [286, 118]]} seed={3156} />
 
       {/* 2. the agent searches, compares and pays */}
       <Agent x={322} y={g} s={1.5} seed={3160} />
@@ -1514,11 +1428,15 @@ export function DelegatedPurchase() {
       <Magnifier x={488} y={52} r={14} seed={3200} />
       <SketchArrow pts={[[358, 124], [396, 124]]} seed={3210} />
       <PayCard x={492} y={124} w={30} tilt={-8} seed={3212} />
+      <SketchArrow pts={[[520, 124], [572, 124]]} seed={3216} />
 
-      {/* 3. the consumer uses and judges */}
-      <Person x={624} y={g} h={160} look={SHOD} arms={["hip", "reach"]} seed={3220} />
-      <Shoe x={r2(held[0] + 22)} y={r2(held[1] + 4)} s={0.95} seed={3230} fill={SK.teal} />
-      <Stars x={690} y={58} n={2} of={3} r={11} gap={24} seed={3240} />
+      {/* 3. the delivered shoe judged after the sale */}
+      <Wash pts={boxBase} seed={3220} fill={SK.camel} opacity={0.55} />
+      <InkLine pts={boxBase} seed={3221} closed />
+      <Paper pts={boxLid} seed={3222} />
+      <InkLine pts={boxLid} seed={3223} width={1.1} closed />
+      <Shoe x={667} y={130} s={1.3} seed={3230} fill={SK.teal} />
+      <Stars x={643} y={64} n={2} of={3} r={11} gap={24} seed={3240} />
     </SketchFrame>
   );
 }

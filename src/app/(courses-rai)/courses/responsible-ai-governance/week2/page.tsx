@@ -49,7 +49,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 02: ALGORITHMIC BIAS, FAIRNESS, AND DISCRIMINATION
+// WEEK 2: ALGORITHMIC BIAS, FAIRNESS, AND DISCRIMINATION
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
@@ -62,12 +62,12 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading
 
 export default function Week2Page() {
   return (
-    <SlideDeck label="Week 02">
+    <SlideDeck label="Week 2">
       {/* ================================================================
           01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 02: Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 2: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           Algorithmic Bias, Fairness, and Discrimination
         </Title>

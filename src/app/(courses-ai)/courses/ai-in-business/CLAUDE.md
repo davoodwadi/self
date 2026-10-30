@@ -1,23 +1,24 @@
-# Applications of AI in business design and plate rules
+# Applications of AI in Business: Design and Plate Guide
 
-These rules govern the course landing page, every weekly slide deck, and every SVG figure in this course.
+## Look and typography
 
-## Design system, colours, and typography
+The course uses a plain, academic design set in upright sans-serif (`Source Sans 3`) on a white ground (`--paper`). Shared typography tokens and slide layout blocks live in `_visuals/kit.tsx`. Hierarchy comes from type size, weight, whitespace, and simple horizontal rules.
 
-The course uses a plain, straightforward academic sans-serif design system that avoids ornate editorial flourishes or AI-generated visual tropes. Only `Source Sans 3` (`--font-open-sans`) is loaded in `(courses-ai)/layout.tsx`, and both `--font-sans` and `--font-serif` in `(courses-ai)/globals.css` resolve to `var(--font-open-sans), ui-sans-serif, system-ui, -apple-system, sans-serif`. All headings, body copy, callouts, discussion prompts, quizzes, and diagram labels are set in upright sans-serif. Never use serif display fonts (e.g., `EB Garamond`), italic subtitles, italic callout or discussion prompts, or decorative small-caps tracking.
+## Palette
 
-Every weekly deck imports its shared typography tokens and slide blocks from `_visuals/kit.tsx` rather than writing ad-hoc font classes. `BODY` (`font-sans text-lg leading-[1.6] text-[var(--charcoal)] md:text-[1.1875rem]`) sets standard reading sentences, `LEAD` (`font-sans text-xl leading-[1.5] text-[var(--charcoal)] md:text-[1.375rem]`) sets intermediate callouts, `DISPLAY` (`font-sans text-[1.25rem] font-semibold leading-[1.4] tracking-[-0.01em] text-[var(--charcoal)] md:text-[1.625rem]`) and `Verdict` set promoted statements, `MICRO` (`font-sans text-[0.875rem] font-medium tracking-normal [font-variant-numeric:tabular-nums]`) sets step indices and metadata, `TAG` (`font-sans text-[0.875rem] font-medium tracking-normal`) sets inline tags, and `SVG_LABEL` (`fontSize: 9.5`, `letterSpacing: 0.2`, upright `var(--font-sans)`, `fontWeight: 500`) sets every SVG `<text>` label.
+- `--paper` / `--background` (`#FFFFFF`): page and slide ground
+- `--ink` (`#1A1D24`): primary ink and headings
+- `--ink-2` (`#363B44`): body copy
+- `--ink-3` (`#676D77`): muted grey for indices, axes, and metadata
+- `--rule` (`#D9DCE1`): hairline borders and dividers
+- `--accent` (`#2C4A8C`): academic slate blue for the single focal element or active state
 
-The palette defined in `(courses-ai)/globals.css` uses `--charcoal` (`#1A1A1D`) for primary ink and all headings, `--charcoal-light` (`#2D2D32`) for secondary body copy, `--champagne` and `--gold` (`#55555A`) as a quiet neutral grey for indices and metadata (never warm gold or bronze), `--crimson` (`#8B0000`) as the single semantic accent, and `--surface` or `--background` (`#FFFFFF`) as the ground. Headings (`<h1>`, `<h2>`, `<h3>`) are always solid `--charcoal`, so never colour individual words inside a title or heading in `--crimson`. Never add a full-screen noise overlay, gradients, or drop shadows.
+## Structure
 
-## Course landing and slide structure
+- Keep the landing page, title slides, and section dividers straightforward: clear headings in `--ink`, concise descriptions in `--ink-2`, and simple rules without decorative backgrounds or oversized watermark numerals.
 
-The course landing page displays each week's number, title, and one-line description in upright sans-serif without listing module or part subtopics beneath the rows, and without decorative eyebrow hairlines or slow underline sweep animations.
+## SVG plates
 
-Weekly title slides present the week label, a unified upright `<h1>` in `--charcoal` without line breaks or multi-colour word highlights, and an upright subtitle in `--charcoal-light`. Never place giant background watermark numerals (e.g., `28vw` or `36vw` numbers) or decorative background wireframe or mesh textures behind title or closing slides.
-
-Module and part divider slides (`ModulePlate1`, `ModulePlate2`, `PartPlate1`, `PartPlate2`, `PartPlate3`) use a simple stacked header consisting of a small `Module N` or `Part N` label, a bold upright `<h2>` title, a horizontal rule, and upright overview sentences. Never use oversized margin numerals.
-
-## Course notes on the SVG rules
-
-The SVG rules in the root `CLAUDE.md` apply across every week, with figures placed inline in each week's `page.tsx` next to the sentence they illustrate and carrying only words that already appear in the slide's sentences. All SVG `<text>` elements use `{...SVG_LABEL}` (`9.5px` upright `var(--font-sans)`). For Rule 10, `--charcoal` is neutral, `--crimson` marks the single element that is learned, lit, or chosen, and `--champagne` is the quiet neutral contrast, so crimson is never used for decoration. For Rule 19, figures sit directly on the white slide ground (`--surface` or `--background`), so any filled zone must be stroked or tinted with a light charcoal or crimson fill opacity. For Rule 28, Phosphor icons take their colour only from the course palette (`var(--charcoal)`, `var(--crimson)`, `var(--champagne)`), using `weight="duotone"` by default and `regular` below about 20 units.
+- **Colour:** `--ink` is primary structure, `--ink-3` is secondary structure, and `--accent` marks the single element that is learned, lit, or chosen.
+- **Ground:** Plates sit directly on the white slide surface, so filled zones use a light stroke or subtle tint to stay visible.
+- **Icons and labels:** Phosphor icons use the course palette with `weight="duotone"` (or `regular` at small sizes). Labels use `SVG_LABEL` from `_visuals/kit.tsx`.

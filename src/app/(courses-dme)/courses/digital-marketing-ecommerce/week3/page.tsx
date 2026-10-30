@@ -27,7 +27,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 03: SEARCH ENGINE MARKETING, ORGANIC SEARCH, AND PAID SEARCH
+// WEEK 3: SEARCH ENGINE MARKETING, ORGANIC SEARCH, AND PAID SEARCH
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and which catalogue plate
@@ -40,12 +40,12 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading
 
 export default function Week3Page() {
   return (
-    <SlideDeck label="Week 03">
+    <SlideDeck label="Week 3">
       {/* ================================================================
           01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 03: Digital Marketing &amp; E-Commerce</Subtitle>
+        <Subtitle variant="hero">Week 3: Digital Marketing &amp; E-Commerce</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Search Engine Marketing, Organic Search, and Paid Search</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[50ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.3rem,2.1vw,1.8rem)]">

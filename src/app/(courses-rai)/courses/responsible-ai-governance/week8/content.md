@@ -6,7 +6,7 @@ week: week8
 ---
 
 ## Title Slide
-- Week 08
+- Week 8
 - When consumers delegate search and purchasing to AI assistants deployed by advertising-funded platforms, algorithmic governance must resolve structural conflicts of duty, sponsorship bias, and position effects that human-centric disclosure rules cannot fix.
 
 ## From Dyadic Exchange to the Agentic Triad [no-exercise]

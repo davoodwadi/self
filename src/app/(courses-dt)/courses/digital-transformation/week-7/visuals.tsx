@@ -537,7 +537,7 @@ export function SmartContractMechanismInteractive() {
             }}
           >
             <rect x={z.x0} y={14} width={z.x1 - z.x0} height={228} fill="transparent" />
-            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={tone} />
+            <rect x={z.x0} y={202} width={z.x1 - z.x0} height={38} fill={INK} fillOpacity={0.05} stroke={INK} strokeWidth={1.5} />
             <text x={z.cx} y={226} textAnchor="middle" {...HEAD} fontSize={17.5} fill={INK}>
               {z.tab}
             </text>

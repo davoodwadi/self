@@ -51,7 +51,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 06: PRIVACY, CONSENT, AND DATA GOVERNANCE
+// WEEK 6: PRIVACY, CONSENT, AND DATA GOVERNANCE
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
@@ -64,12 +64,12 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading
 
 export default function Week6Page() {
   return (
-    <SlideDeck label="Week 06">
+    <SlideDeck label="Week 6">
       {/* ================================================================
           01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 06: Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 6: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Privacy, Consent, and Data Governance</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[52ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.25rem,2vw,1.7rem)]">

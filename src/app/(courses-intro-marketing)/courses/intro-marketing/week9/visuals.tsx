@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 09: figures
+   Week 9: figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea. The week is about movement,
    so most plates read left to right along a chain: a factory at one end, a

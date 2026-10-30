@@ -6,7 +6,7 @@ week: week-3
 ---
 
 ## Title Slide
-- Week 03
+- Week 3
 - Change Management, Project Management
 
 ## Agenda

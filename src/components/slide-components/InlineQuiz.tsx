@@ -32,10 +32,6 @@ export default function InlineQuiz({
     <motion.div layout className="w-full max-w-3xl">
       {/* Header */}
       <div className="mb-8">
-        <div className="flex items-center gap-3 mb-5">
-          <span className="h-px w-7 bg-[var(--signal)]" aria-hidden />
-          <span className="type-label">Knowledge Check</span>
-        </div>
         <p className="type-h2 !text-[1.35rem] md:!text-[1.7rem] max-w-[34ch]">
           {quizData.question_text}
         </p>
@@ -142,7 +138,7 @@ export default function InlineQuiz({
 
       {/* Hint */}
       {showHint && !hasSubmitted && quizData.hint && (
-        <p className="mt-6 pl-4 border-l-2 border-[var(--counter)] type-body italic">
+        <p className="mt-6 pl-4 border-l border-[var(--rule-2)] type-body">
           {quizData.hint}
         </p>
       )}

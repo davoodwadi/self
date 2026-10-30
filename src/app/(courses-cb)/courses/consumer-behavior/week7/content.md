@@ -6,7 +6,7 @@ week: week7
 ---
 
 ## Title Slide
-- Week 07
+- Week 7
 - A purchase is the last step of a decision that begins long before the checkout.
 
 ## What Is Consumer Decision Making? [no-exercise]

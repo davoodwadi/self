@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 03 plates: Qualitative Research.
+   Week 3 plates: Qualitative Research.
    Built on ../_visuals/kit and ../_visuals/objects. Every plate follows the
    sentence it illustrates on the slide.
    ========================================================================== */

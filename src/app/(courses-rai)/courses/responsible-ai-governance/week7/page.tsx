@@ -38,7 +38,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 07: MANIPULATION, DARK PATTERNS, AND CONSUMER AUTONOMY
+// WEEK 7: MANIPULATION, DARK PATTERNS, AND CONSUMER AUTONOMY
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
@@ -51,12 +51,12 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading
 
 export default function Week7Page() {
   return (
-    <SlideDeck label="Week 07">
+    <SlideDeck label="Week 7">
       {/* ================================================================
           01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 07: Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 7: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Manipulation, Dark Patterns, and Consumer Autonomy</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[56ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.2rem,1.9vw,1.6rem)]">

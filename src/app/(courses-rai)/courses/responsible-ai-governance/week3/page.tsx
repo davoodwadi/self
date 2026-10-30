@@ -45,7 +45,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 03: CULTURAL BIAS AND REPRESENTATION IN LANGUAGE MODELS
+// WEEK 3: CULTURAL BIAS AND REPRESENTATION IN LANGUAGE MODELS
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
@@ -58,12 +58,12 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading
 
 export default function Week3Page() {
   return (
-    <SlideDeck label="Week 03">
+    <SlideDeck label="Week 3">
       {/* ================================================================
           01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 03: Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 3: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
           Cultural Bias and Representation in Language Models
         </Title>

@@ -112,7 +112,7 @@
     "slide_id": "interpreting-cross-tabulations",
     "question_text": "A cross-tabulation shows that 62 percent of customers who attended a store's cooking class bought premium cookware, against 21 percent of customers who did not attend. When the table is split by whether the customer already owned premium cookware before the class, the difference largely disappears within each group. What does the analysis indicate?",
     "hint": "Consider what the third variable reveals about the original association.",
-    "correct_answer_citation": "Week 06: Interpreting Cross-Tabulations",
+    "correct_answer_citation": "Week 6: Interpreting Cross-Tabulations",
     "correct_answer_index": 2,
     "options": [
       {
@@ -226,7 +226,7 @@
     "slide_id": "describing-model-responses",
     "question_text": "Two AI models each rate a new product 500 times on a seven-point purchase-intention item. Half of model X's responses are 3 and half are 4. Half of model Y's responses are 1 and half are 6. A report concludes that the two models hold the same view, because both have a mean of 3.5 and both have an entropy of 1 bit. Which statement is correct?",
     "hint": "Consider which statistics take the order of the scale points into account.",
-    "correct_answer_citation": "Week 06: Describing Model Responses",
+    "correct_answer_citation": "Week 6: Describing Model Responses",
     "correct_answer_index": 1,
     "options": [
       {

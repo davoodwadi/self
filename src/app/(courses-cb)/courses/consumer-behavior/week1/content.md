@@ -6,7 +6,7 @@ week: week1
 ---
 
 ## Title Slide
-- Week 01
+- Week 1
 - People do not buy products. They buy solutions to feelings, problems, and social needs.
 
 ## The Tip of the Iceberg [no-exercise]

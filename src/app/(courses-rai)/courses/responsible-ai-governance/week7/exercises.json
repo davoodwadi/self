@@ -135,7 +135,7 @@
     "slide_id": "resource-rationality-and-the-tool-lab-paradigm",
     "question_text": "A grocery site moves package weights off its search page so that an AI shopping agent must make an extra paid tool call per product to see them. Under the resource-rational account of Wadi and Ma (2026b), what should auditors expect from a capable agent shopping with a vague goal such as 'get the best deal'?",
     "hint": "Ask what the agent does when the cost of exact information acquisition exceeds its resource budget.",
-    "correct_answer_citation": "Week 07: Resource Rationality and the Tool-Lab Paradigm",
+    "correct_answer_citation": "Week 7: Resource Rationality and the Tool-Lab Paradigm",
     "correct_answer_index": 2,
     "options": [
       {

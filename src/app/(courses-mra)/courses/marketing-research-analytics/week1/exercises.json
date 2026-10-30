@@ -348,7 +348,7 @@
     "slide_id": "evaluating-ai-systems-as-a-research-task",
     "question_text": "A retailer plans to deploy an AI shopping assistant on its website. The vendor reports that the underlying model scores 91 percent on a widely used benchmark of general knowledge and reasoning. A manager also asked the assistant once which of two coffees offered better value, and the answer was correct. Which conclusion does this evidence support?",
     "hint": "Consider what each piece of evidence measures, and how many responses it rests on.",
-    "correct_answer_citation": "Week 01: Evaluating AI Systems as a Research Task",
+    "correct_answer_citation": "Week 1: Evaluating AI Systems as a Research Task",
     "correct_answer_index": 1,
     "options": [
       {

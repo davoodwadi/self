@@ -6,7 +6,7 @@ week: week8
 ---
 
 ## Title Slide
-- Week 08
+- Week 8
 - Consumers follow predictable mental shortcuts. In some conditions, so do the AI agents that shop for them.
 
 ## Beyond the Rational Consumer [no-exercise]

@@ -57,7 +57,7 @@ export {
 };
 
 // ============================================================================
-// WEEK 01: FOUNDATIONS OF RESPONSIBLE AI IN MARKETS
+// WEEK 1: FOUNDATIONS OF RESPONSIBLE AI IN MARKETS
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent-drawing
@@ -73,12 +73,12 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading
 
 export default function Week1Page() {
   return (
-    <SlideDeck label="Week 01">
+    <SlideDeck label="Week 1">
       {/* ================================================================
           01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 01: Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 1: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           Foundations of Responsible AI in Markets
         </Title>

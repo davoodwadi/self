@@ -98,7 +98,7 @@ function RowBody({ week, n }: { week: Row; n: number }) {
             : "text-[var(--ink-3)]/50"
         }`}
       >
-        {String(n).padStart(2, "0")}
+        {n}
       </span>
       <div className="min-w-0">
         <h3
@@ -154,11 +154,7 @@ export default function DigitalTransformationLanding() {
       <div className="mx-auto grid w-full max-w-7xl gap-x-16 px-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:px-12">
         {/* Masthead: stays in view beside the curriculum on wide screens. */}
         <header className="pt-20 pb-12 md:pt-28 lg:sticky lg:top-0 lg:flex lg:h-svh lg:flex-col lg:justify-center lg:py-16">
-          <p className="font-sans text-[0.875rem] font-medium leading-[1.4] text-[var(--ink-3)] [font-variant-numeric:tabular-nums]">
-            CMPT 641. {weeks.length} weeks
-          </p>
-
-          <h1 className="mt-3 font-sans font-bold text-[clamp(2rem,3.2vw,2.75rem)] leading-[1.15] tracking-[-0.015em] text-[var(--dt-ink)]">
+          <h1 className="font-sans font-bold text-[clamp(2rem,3.2vw,2.75rem)] leading-[1.15] tracking-[-0.015em] text-[var(--dt-ink)]">
             Digital Transformation
           </h1>
 

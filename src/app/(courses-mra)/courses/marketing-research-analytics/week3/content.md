@@ -6,7 +6,7 @@ week: week3
 ---
 
 ## Title Slide
-- Week 03
+- Week 3
 - Qualitative research examines the reasons, meanings, and motives that underlie consumer behavior.
 
 ## Qualitative and Quantitative Research [exercise]

@@ -31,7 +31,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 03: QUALITATIVE RESEARCH
+// WEEK 3: QUALITATIVE RESEARCH
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -53,12 +53,12 @@ const CLOSE = "type-quote w-full !max-w-none !text-[clamp(1.2rem,1.9vw,1.6rem)]"
 
 export default function Week3() {
   return (
-    <SlideDeck label="Week 03">
+    <SlideDeck label="Week 3">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 03: Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 3: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           <span className="text-[var(--signal)]">Qualitative</span> Research
         </Title>

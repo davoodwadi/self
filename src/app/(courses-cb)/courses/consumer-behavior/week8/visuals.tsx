@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Consumer Behavior | Week 08, figures
+   Consumer Behavior | Week 8, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates for behavioral economics, heuristics and biases:
    wobbly doubled ink and loose watercolour washes set off-register. Every
@@ -48,6 +48,7 @@ import {
   Person,
   rp,
   sharp,
+  Shoe,
   SketchArrow,
   Stars,
   Thought,
@@ -102,34 +103,32 @@ function Plank({ x0, x1, y, seed }: { x0: number; x1: number; y: number; seed: n
    ========================================================================== */
 
 /**
- * The week's opening: two coffee jars on a shelf, $4.99 and $5.00. A shopper
- * reaches for the $4.99 jar, and her AI agent, propped on the shelf, points
- * the same way: both take the shortcut. The $4.99 jar is the one chosen.
+ * The week's opening: two coffee jars on a shelf, $4.99 and $5.00. The AI
+ * agent propped on the shelf points to the $4.99 jar, which is lit as the one
+ * chosen by the just-below price shortcut.
  */
 export function ShortcutShelf() {
   return (
     <SketchFrame
       id="sk-shortcut-shelf"
-      width={480}
-      height={330}
-      label="A shopper reaches for the cheaper-looking of two coffee jars on a shelf, priced $4.99 and $5.00. Her AI agent, a phone propped on the shelf, points to the same $4.99 jar, which is lit as the one chosen."
+      width={400}
+      height={270}
+      label="Two coffee jars on a shelf, priced $4.99 and $5.00. An AI agent phone propped on the shelf points to the $4.99 jar, which is lit in teal as the one chosen."
     >
-      <Backwash cx={262} cy={172} rx={226} ry={146} seed={8001} />
-      <Ground x0={90} x1={460} y={312} seed={8002} />
-      <Plank x0={224} x1={462} y={196} seed={8003} />
-      <Jar x={272} bottom={196} w={58} h={84} level={0.82} seed={8010} lit />
-      <Jar x={378} bottom={196} w={62} h={92} level={0.82} seed={8020} />
-      <PriceTag x={274} y={236} w={92} seed={8030}>
+      <Backwash cx={200} cy={138} rx={186} ry={120} seed={8001} />
+      <Plank x0={34} x1={368} y={176} seed={8003} />
+      <Jar x={106} bottom={176} w={62} h={90} level={0.82} seed={8010} lit />
+      <Jar x={228} bottom={176} w={62} h={90} level={0.82} seed={8020} />
+      <PriceTag x={108} y={218} w={92} seed={8030}>
         $4.99
       </PriceTag>
-      <PriceTag x={380} y={236} w={92} seed={8034}>
+      <PriceTag x={230} y={218} w={92} seed={8034}>
         $5.00
       </PriceTag>
-      <InkLine pts={rp([[234, 205], [234, 222]])} seed={8038} width={0.8} />
-      <InkLine pts={rp([[340, 205], [340, 222]])} seed={8039} width={0.8} />
-      <Person x={190} y={312} h={196} look={SHOPPER} arms={["hip", "reach"]} seed={8040} />
-      <Agent x={438} y={196} s={0.62} seed={8060} />
-      <SketchArrow pts={rp([[444, 138], [440, 82], [380, 62], [318, 66], [292, 88]])} seed={8070} width={1.2} head={8} />
+      <InkLine pts={rp([[68, 185], [68, 204]])} seed={8038} width={0.8} />
+      <InkLine pts={rp([[190, 185], [190, 204]])} seed={8039} width={0.8} />
+      <Agent x={332} y={176} s={0.72} seed={8060} />
+      <SketchArrow pts={rp([[332, 110], [322, 58], [234, 42], [156, 48], [124, 72]])} seed={8070} width={1.3} head={8} />
     </SketchFrame>
   );
 }
@@ -205,33 +204,35 @@ export function GoodEnough() {
    ========================================================================== */
 
 /**
- * System 1: a shopper walking past a shop window stops and points at the big
- * SALE sign in it, in an instant.
+ * System 1: a shop window with a bold hanging SALE sign over a displayed
+ * sneaker on a stand, noticed in an instant.
  */
 export function SaleGlance() {
-  const win = sharp(rp([[176, 34], [376, 34], [376, 196], [176, 196]]), true, 2);
-  const sign = sharp(rp([[206, 66], [346, 66], [346, 136], [206, 136]]), true, 2);
+  const win = sharp(rp([[84, 24], [316, 24], [316, 198], [84, 198]]), true, 2);
+  const sign = sharp(rp([[124, 48], [276, 48], [276, 118], [124, 118]]), true, 2);
+  const stand = sharp(rp([[164, 166], [236, 166], [236, 198], [164, 198]]), true, 1.5);
   return (
     <SketchFrame
       id="sk-sale-glance"
       width={400}
-      height={230}
-      label="A shopper walking past a shop window stops and points at a big SALE sign hanging in it."
+      height={220}
+      label="A shop window with a large hanging SALE sign above a sneaker on a display stand."
     >
-      <Backwash cx={204} cy={120} rx={192} ry={104} seed={8301} />
-      <Ground x0={20} x1={384} y={212} seed={8302} />
+      <Backwash cx={200} cy={112} rx={182} ry={98} seed={8301} />
       <Wash pts={win} seed={8303} fill={SK.sky} opacity={0.5} dx={1} dy={1} />
       <InkLine pts={win} seed={8304} closed />
-      <InkLine pts={rp([[166, 196], [386, 196]])} seed={8305} width={1.1} />
-      <InkLine pts={rp([[236, 34], [236, 66]])} seed={8306} width={0.8} />
-      <InkLine pts={rp([[316, 34], [316, 66]])} seed={8307} width={0.8} />
+      <InkLine pts={rp([[68, 198], [332, 198]])} seed={8305} width={1.2} />
+      <InkLine pts={rp([[156, 24], [156, 48]])} seed={8306} width={0.8} />
+      <InkLine pts={rp([[244, 24], [244, 48]])} seed={8307} width={0.8} />
       <Paper pts={sign} seed={8308} />
       <Wash pts={sign} seed={8309} fill={SK.blush} opacity={0.8} dx={1.5} dy={1.2} />
       <InkLine pts={sign} seed={8310} closed width={1.3} />
-      <SketchText x={276} y={115} anchor="middle" size={38} serif>
+      <SketchText x={200} y={96} anchor="middle" size={36} serif>
         SALE
       </SketchText>
-      <Person x={100} y={212} h={176} look={SHOPPER} arms={["hip", "point"]} seed={8320} />
+      <Paper pts={stand} seed={8314} />
+      <InkLine pts={stand} seed={8315} closed />
+      <Shoe x={200} y={162} s={1.05} seed={8318} fill={SK.camel} />
     </SketchFrame>
   );
 }
@@ -337,37 +338,35 @@ function Warning({ x, y, r = 16, seed }: { x: number; y: number; r?: number; see
 }
 
 /**
- * Availability: a newspaper with a RECALL headline about one car, and the
- * shopper who read it standing back from the same car at the dealer, a
- * warning sign filling her thoughts.
+ * Availability: a newspaper with a RECALL headline about one car makes the
+ * same car at the dealer immediately call up a warning sign.
  */
 export function RecallPaper() {
-  const sheet = sharp(rp([[20, 40], [168, 34], [172, 176], [24, 182]]), true, 1.5);
+  const sheet = sharp(rp([[26, 36], [178, 30], [182, 184], [30, 190]]), true, 1.5);
   return (
     <SketchFrame
       id="sk-recall-paper"
       width={400}
-      height={230}
-      label="A newspaper with the headline RECALL above a picture of a car with an ochre brand badge. Beside it, a shopper stands back from the same car at the dealer, one hand raised, with a warning sign in her thought cloud."
+      height={220}
+      label="A newspaper with the headline RECALL above a picture of a car with an ochre brand badge. An arrow leads to the same car on the right, over which a large warning triangle hangs."
     >
-      <Backwash cx={204} cy={120} rx={192} ry={104} seed={8501} />
-      <Ground x0={196} x1={392} y={212} seed={8502} />
+      <Backwash cx={204} cy={114} rx={190} ry={98} seed={8501} />
+      <Ground x0={228} x1={382} y={176} seed={8502} />
       <Paper pts={sheet} seed={8503} />
       <InkLine pts={sheet} seed={8504} closed />
-      <SketchText x={96} y={72} anchor="middle" size={24} serif>
+      <SketchText x={104} y={68} anchor="middle" size={24} serif>
         RECALL
       </SketchText>
-      <InkLine pts={rp([[36, 84], [156, 81]])} seed={8505} width={0.8} />
-      <Car3 x={96} y={146} s={0.82} seed={8510} />
-      <BrandBadge x={96} y={124} r={6} seed={8520} />
-      {[156, 164].map((y, i) => (
-        <InkLine key={i} pts={rp([[40, y + 6], [150, y + 4]])} seed={8525 + i} width={0.7} />
+      <InkLine pts={rp([[42, 80], [164, 77]])} seed={8505} width={0.8} />
+      <Car3 x={104} y={144} s={0.84} seed={8510} />
+      <BrandBadge x={104} y={122} r={6} seed={8520} />
+      {[154, 164].map((y, i) => (
+        <InkLine key={i} pts={rp([[46, y + 6], [158, y + 4]])} seed={8525 + i} width={0.7} />
       ))}
-      <Car3 x={334} y={212} s={0.92} seed={8530} />
-      <BrandBadge x={334} y={186} r={6.5} seed={8540} />
-      <Person x={236} y={212} h={160} look={SHOPPER} arms={["hip", "shrug"]} seed={8550} />
-      <Thought x={300} y={58} rx={40} ry={28} tx={244} ty={44} seed={8560} />
-      <Warning x={300} y={60} r={17} seed={8570} />
+      <SketchArrow pts={rp([[192, 122], [224, 122]])} seed={8528} width={1.2} head={7} />
+      <Car3 x={306} y={176} s={1.08} seed={8530} />
+      <BrandBadge x={306} y={146} r={7.5} seed={8540} />
+      <Warning x={306} y={72} r={22} seed={8570} />
     </SketchFrame>
   );
 }

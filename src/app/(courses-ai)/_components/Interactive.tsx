@@ -18,8 +18,8 @@ import { cn } from "@/lib/utils";
 // 2. MOTION IS OPACITY AND A FEW PIXELS. No blur, no scale, no spring, no
 //    bounce. Transitions are 400-700ms and ease-out.
 //
-// 3. THE PALETTE IS MOSTLY INK ON CREAM. Hairlines rather than boxes, crimson
-//    reserved for the single active thing on screen, champagne for small caps
+// 3. THE PALETTE IS MOSTLY INK ON CREAM. Hairlines rather than boxes, accent
+//    reserved for the single active thing on screen, muted for small caps
 //    labels and numerals. No shadows, no dashes, no fills.
 //
 // Content strings are passed in verbatim from the week's content.md. These
@@ -27,9 +27,9 @@ import { cn } from "@/lib/utils";
 
 const CORRECT = "#3d5c2a";
 
-/** Two-digit index label used across the deck ("01", "02", ...). */
+/** Index label used across the deck ("1", "2", ...). */
 function ordinal(index: number) {
-  return String(index + 1).padStart(2, "0");
+  return String(index + 1);
 }
 
 /** Shared academic rubric label styling. */
@@ -114,9 +114,9 @@ export function ScrollProgress({ label }: { label?: string }) {
 
   return (
     <div className="pointer-events-none fixed inset-x-0 top-0 z-40">
-      <div className="h-px w-full bg-[var(--charcoal)]/8">
+      <div className="h-px w-full bg-[var(--ink)]/8">
         <div
-          className="h-px origin-left bg-[var(--crimson)]"
+          className="h-px origin-left bg-[var(--accent)]"
           style={{ transform: `scaleX(${progress})` }}
         />
       </div>
@@ -124,7 +124,7 @@ export function ScrollProgress({ label }: { label?: string }) {
         <span
           className={cn(
             MICRO,
-            "absolute right-8 top-7 hidden text-[var(--charcoal-light)]/70 md:block",
+            "absolute right-8 top-7 hidden text-[var(--ink-2)]/70 md:block",
           )}
         >
           {label}
@@ -136,7 +136,7 @@ export function ScrollProgress({ label }: { label?: string }) {
 
 /**
  * SlideHead - The editorial masthead every content slide opens with:
- * the heading, then a short crimson rule that draws itself in.
+ * the heading, then a short accent rule that draws itself in.
  *
  * Pass the Heading component as `children`.
  */
@@ -150,7 +150,7 @@ export function SlideHead({
   return (
     <header className={cn("w-full", className)}>
       {children}
-      <span className="mt-5 block h-px w-20 origin-left bg-[var(--crimson)]" />
+      <span className="mt-5 block h-px w-20 origin-left bg-[var(--accent)]" />
     </header>
   );
 }
@@ -170,11 +170,11 @@ export function ModuleMark({
 }) {
   return (
     <div className={cn("flex flex-col items-center", className)}>
-      <span className={cn(MICRO, "text-[var(--champagne)]")}>{label}</span>
-      <span className="mt-3 font-serif text-[3.5rem] font-black leading-none tracking-[-0.04em] text-[var(--champagne)]/80 md:text-[5rem]">
+      <span className={cn(MICRO, "text-[var(--ink-3)]")}>{label}</span>
+      <span className="mt-3 font-serif text-[3.5rem] font-black leading-none tracking-[-0.04em] text-[var(--ink-3)]/80 md:text-[5rem]">
         {numeral}
       </span>
-      <span className="mt-5 block h-px w-16 origin-left bg-[var(--gold)]/60" />
+      <span className="mt-5 block h-px w-16 origin-left bg-[var(--ink-3)]/60" />
     </div>
   );
 }
@@ -199,8 +199,8 @@ export function Eyebrow({
         className,
       )}
     >
-      <span className="h-px w-8 flex-shrink-0 bg-[var(--gold)]/70" />
-      <span className={cn(MICRO, "text-[var(--champagne)]")}>{children}</span>
+      <span className="h-px w-8 flex-shrink-0 bg-[var(--ink-3)]/70" />
+      <span className={cn(MICRO, "text-[var(--ink-3)]")}>{children}</span>
     </div>
   );
 }
@@ -218,7 +218,7 @@ export function Lead({
   return (
     <p
       className={cn(
-        "max-w-3xl text-left text-lg font-light leading-[1.55] text-[var(--charcoal-light)] md:text-[1.35rem]",
+        "max-w-3xl text-left text-lg font-light leading-[1.55] text-[var(--ink-2)] md:text-[1.35rem]",
         className,
       )}
     >
@@ -239,11 +239,11 @@ export function BigStatement({
 }) {
   return (
     <div className={cn("w-full", className)}>
-      <span className="block h-px w-full origin-left bg-[var(--charcoal)]/12" />
-      <p className="py-7 text-left font-serif text-[1.5rem] font-light leading-[1.25] tracking-[-0.015em] text-[var(--charcoal)] md:py-9 md:text-[2.25rem]">
+      <span className="block h-px w-full origin-left bg-[var(--ink)]/12" />
+      <p className="py-7 text-left font-serif text-[1.5rem] font-light leading-[1.25] tracking-[-0.015em] text-[var(--ink)] md:py-9 md:text-[2.25rem]">
         {children}
       </p>
-      <span className="block h-px w-full origin-left bg-[var(--charcoal)]/12" />
+      <span className="block h-px w-full origin-left bg-[var(--ink)]/12" />
     </div>
   );
 }
@@ -304,27 +304,27 @@ export function RevealGrid({
             className={cn(
               "group flex h-full cursor-pointer flex-col border-t pt-5 text-left transition-colors duration-150",
               isOpen
-                ? "border-t-[var(--crimson)]"
-                : "border-t-[var(--charcoal)]/15 hover:border-t-[var(--charcoal)]/40",
+                ? "border-t-[var(--accent)]"
+                : "border-t-[var(--ink)]/15 hover:border-t-[var(--ink)]/40",
             )}
           >
             <div className="flex w-full items-center justify-between">
-              <span className="font-serif text-[11px] tracking-[0.18em] text-[var(--champagne)]">
+              <span className="font-serif text-[11px] tracking-[0.18em] text-[var(--ink-3)]">
                 {ordinal(index)}
               </span>
               <span
                 className={cn(
                   "transition-colors duration-150",
                   isOpen
-                    ? "text-[var(--crimson)]"
-                    : "text-[var(--charcoal-light)]/70 group-hover:text-[var(--charcoal)]",
+                    ? "text-[var(--accent)]"
+                    : "text-[var(--ink-2)]/70 group-hover:text-[var(--ink)]",
                 )}
               >
                 <Toggle open={isOpen} />
               </span>
             </div>
 
-            <h3 className="mt-5 font-serif text-[1.25rem] font-bold leading-[1.15] tracking-[-0.01em] text-[var(--charcoal)] md:text-[1.4rem]">
+            <h3 className="mt-5 font-serif text-[1.25rem] font-bold leading-[1.15] tracking-[-0.01em] text-[var(--ink)] md:text-[1.4rem]">
               {item.label}
             </h3>
 
@@ -332,7 +332,7 @@ export function RevealGrid({
             <p
               aria-hidden={!isOpen}
               className={cn(
-                "mt-3 flex-1 text-[0.9375rem] font-light leading-[1.5] text-[var(--charcoal-light)] transition-opacity duration-150 ease-out",
+                "mt-3 flex-1 text-[0.9375rem] font-light leading-[1.5] text-[var(--ink-2)] transition-opacity duration-150 ease-out",
                 isOpen ? "opacity-100" : "opacity-0",
               )}
             >
@@ -380,8 +380,8 @@ export function SplitCompare({
         className={cn(
           "flex-1 cursor-pointer border-t pt-5 text-left transition-[opacity,border-color] duration-150 ease-out",
           isFocused
-            ? "border-t-[var(--crimson)]"
-            : "border-t-[var(--charcoal)]/15",
+            ? "border-t-[var(--accent)]"
+            : "border-t-[var(--ink)]/15",
           isReceded ? "opacity-40" : "opacity-100",
         )}
       >
@@ -389,7 +389,7 @@ export function SplitCompare({
           className={cn(
             MICRO,
             "mb-5 transition-colors duration-150",
-            isFocused ? "text-[var(--crimson)]" : "text-[var(--champagne)]",
+            isFocused ? "text-[var(--accent)]" : "text-[var(--ink-3)]",
           )}
         >
           {data.label}
@@ -398,7 +398,7 @@ export function SplitCompare({
           {data.points.map((point, index) => (
             <li
               key={index}
-              className="text-base font-light leading-[1.55] text-[var(--charcoal)] md:text-lg"
+              className="text-base font-light leading-[1.55] text-[var(--ink)] md:text-lg"
             >
               {point}
             </li>
@@ -416,7 +416,7 @@ export function SplitCompare({
       )}
     >
       {panel("left", left)}
-      <div className="mx-10 hidden w-px flex-shrink-0 bg-[var(--charcoal)]/10 md:block" />
+      <div className="mx-10 hidden w-px flex-shrink-0 bg-[var(--ink)]/10 md:block" />
       {panel("right", right)}
     </div>
   );
@@ -449,14 +449,14 @@ export function StepTimeline({
         share a row, so it becomes a vertical list instead of being squeezed.
       */}
       <div className="relative">
-        <span className="absolute inset-x-0 top-[3px] hidden h-px bg-[var(--charcoal)]/12 md:block" />
+        <span className="absolute inset-x-0 top-[3px] hidden h-px bg-[var(--ink)]/12 md:block" />
         <span
-          className="absolute left-0 top-[3px] hidden h-px w-full origin-left bg-[var(--crimson)] md:block"
+          className="absolute left-0 top-[3px] hidden h-px w-full origin-left bg-[var(--accent)] md:block"
           style={{ transform: `scaleX(${progress})` }}
         />
-        <span className="absolute bottom-0 left-[3px] top-0 w-px bg-[var(--charcoal)]/12 md:hidden" />
+        <span className="absolute bottom-0 left-[3px] top-0 w-px bg-[var(--ink)]/12 md:hidden" />
         <span
-          className="absolute left-[3px] top-0 h-full w-px origin-top bg-[var(--crimson)] md:hidden"
+          className="absolute left-[3px] top-0 h-full w-px origin-top bg-[var(--accent)] md:hidden"
           style={{ transform: `scaleY(${progress})` }}
         />
 
@@ -486,10 +486,10 @@ export function StepTimeline({
                     className={cn(
                       "h-[7px] w-[7px] flex-shrink-0 transition-colors duration-150",
                       isActive
-                        ? "bg-[var(--crimson)]"
+                        ? "bg-[var(--accent)]"
                         : reached
-                          ? "bg-[var(--crimson)]/45"
-                          : "bg-[var(--charcoal)]/25 group-hover:bg-[var(--charcoal)]/50",
+                          ? "bg-[var(--accent)]/45"
+                          : "bg-[var(--ink)]/25 group-hover:bg-[var(--ink)]/50",
                     )}
                   />
                   <span
@@ -497,8 +497,8 @@ export function StepTimeline({
                       MICRO,
                       "text-left transition-colors duration-150 md:whitespace-nowrap",
                       isActive
-                        ? "text-[var(--crimson)]"
-                        : "text-[var(--charcoal-light)]/70 group-hover:text-[var(--charcoal)]",
+                        ? "text-[var(--accent)]"
+                        : "text-[var(--ink-2)]/70 group-hover:text-[var(--ink)]",
                     )}
                   >
                     {step.label}
@@ -514,10 +514,10 @@ export function StepTimeline({
       <Stage active={active} className="mt-10">
         {steps.map((step, index) => (
           <div key={index} className="flex gap-8">
-            <span className="mt-2 font-serif text-[11px] tracking-[0.18em] text-[var(--champagne)]">
+            <span className="mt-2 font-serif text-[11px] tracking-[0.18em] text-[var(--ink-3)]">
               {ordinal(index)}
             </span>
-            <p className="max-w-3xl font-serif text-[1.35rem] font-light leading-[1.3] text-[var(--charcoal)] md:text-[1.75rem]">
+            <p className="max-w-3xl font-serif text-[1.35rem] font-light leading-[1.3] text-[var(--ink)] md:text-[1.75rem]">
               {step.text}
             </p>
           </div>
@@ -573,8 +573,8 @@ export function ConceptRings({
                 "absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 cursor-pointer justify-center rounded-full border transition-colors duration-150",
                 isInnermost ? "items-center" : "items-start",
                 isActive
-                  ? "border-[var(--crimson)] bg-[var(--crimson)]/[0.035]"
-                  : "border-[var(--charcoal)]/15 hover:border-[var(--charcoal)]/35",
+                  ? "border-[var(--accent)] bg-[var(--accent)]/[0.035]"
+                  : "border-[var(--ink)]/15 hover:border-[var(--ink)]/35",
               )}
             >
               <span
@@ -583,8 +583,8 @@ export function ConceptRings({
                   "px-4 text-center leading-tight transition-colors duration-150",
                   isInnermost ? "" : "mt-[5%]",
                   isActive
-                    ? "text-[var(--crimson)]"
-                    : "text-[var(--charcoal-light)]/70",
+                    ? "text-[var(--accent)]"
+                    : "text-[var(--ink-2)]/70",
                 )}
               >
                 {layer.label}
@@ -599,7 +599,7 @@ export function ConceptRings({
         {layers.map((layer, index) => (
           <p
             key={index}
-            className="text-left font-serif text-[1.35rem] font-light leading-[1.3] text-[var(--charcoal)] md:text-[1.75rem]"
+            className="text-left font-serif text-[1.35rem] font-light leading-[1.3] text-[var(--ink)] md:text-[1.75rem]"
           >
             {layer.text}
           </p>
@@ -637,28 +637,28 @@ export function StakesDial({
   return (
     <div className={cn("w-full", className)}>
       <div className="mb-4 flex items-baseline justify-between">
-        <span className={cn(MICRO, "text-[var(--charcoal-light)]/70")}>
+        <span className={cn(MICRO, "text-[var(--ink-2)]/70")}>
           {axis.low}
         </span>
-        <span className={cn(MICRO, "text-[var(--charcoal-light)]/70")}>
+        <span className={cn(MICRO, "text-[var(--ink-2)]/70")}>
           {axis.high}
         </span>
       </div>
 
       {/* Track */}
       <div className="relative h-8">
-        <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-[var(--charcoal)]/15" />
+        <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-[var(--ink)]/15" />
         <span
-          className="absolute left-0 top-1/2 h-px -translate-y-1/2 bg-[var(--crimson)]"
+          className="absolute left-0 top-1/2 h-px -translate-y-1/2 bg-[var(--accent)]"
           style={{ width: `${value}%` }}
         />
         <span
-          className="absolute top-1/2 h-4 w-px -translate-y-1/2 bg-[var(--charcoal)]/20"
+          className="absolute top-1/2 h-4 w-px -translate-y-1/2 bg-[var(--ink)]/20"
           style={{ left: "50%" }}
           aria-hidden
         />
         <span
-          className="pointer-events-none absolute top-1/2 h-5 w-[3px] -translate-x-1/2 -translate-y-1/2 bg-[var(--crimson)]"
+          className="pointer-events-none absolute top-1/2 h-5 w-[3px] -translate-x-1/2 -translate-y-1/2 bg-[var(--accent)]"
           style={{ left: `${value}%` }}
           aria-hidden
         />
@@ -676,11 +676,11 @@ export function StakesDial({
       {/* Recommendation */}
       <Stage active={isHigh ? 1 : 0} className="mt-8">
         {zones.map((zone, index) => (
-          <div key={index} className="border-l border-[var(--crimson)] pl-8">
-            <span className={cn(MICRO, "mb-3 block text-[var(--crimson)]")}>
+          <div key={index} className="border-l border-[var(--accent)] pl-8">
+            <span className={cn(MICRO, "mb-3 block text-[var(--accent)]")}>
               {zone.label}
             </span>
-            <p className="max-w-3xl text-lg font-light leading-[1.5] text-[var(--charcoal)] md:text-[1.35rem]">
+            <p className="max-w-3xl text-lg font-light leading-[1.5] text-[var(--ink)] md:text-[1.35rem]">
               {zone.text}
             </p>
           </div>
@@ -736,7 +736,7 @@ export function Flywheel({
             cy="50"
             r="40"
             fill="none"
-            stroke="var(--charcoal)"
+            stroke="var(--ink)"
             strokeOpacity="0.12"
             strokeWidth="0.4"
           />
@@ -757,8 +757,8 @@ export function Flywheel({
                 className={cn(
                   "flex h-11 w-11 items-center justify-center rounded-full border bg-[var(--background)] font-serif text-[11px] tracking-[0.14em] transition-colors duration-150 md:h-14 md:w-14",
                   isActive
-                    ? "border-[var(--crimson)] text-[var(--crimson)]"
-                    : "border-[var(--charcoal)]/15 text-[var(--charcoal-light)]/70",
+                    ? "border-[var(--accent)] text-[var(--accent)]"
+                    : "border-[var(--ink)]/15 text-[var(--ink-2)]/70",
                 )}
               >
                 {ordinal(index)}
@@ -768,8 +768,8 @@ export function Flywheel({
                   MICRO,
                   "mt-3 block w-full text-center leading-tight transition-colors duration-150",
                   isActive
-                    ? "text-[var(--crimson)]"
-                    : "text-[var(--charcoal-light)]/70",
+                    ? "text-[var(--accent)]"
+                    : "text-[var(--ink-2)]/70",
                 )}
               >
                 {stage.label}
@@ -784,7 +784,7 @@ export function Flywheel({
         {stages.map((stage, index) => (
           <p
             key={index}
-            className="text-left font-serif text-[1.35rem] font-light leading-[1.3] text-[var(--charcoal)] md:text-[1.75rem]"
+            className="text-left font-serif text-[1.35rem] font-light leading-[1.3] text-[var(--ink)] md:text-[1.75rem]"
           >
             {stage.text}
           </p>
@@ -847,12 +847,12 @@ export function SortingBoard({
 
   return (
     <div className={cn("w-full", className)}>
-      <div className="flex items-baseline justify-between border-b border-[var(--charcoal)]/12 pb-4">
-        <span className={cn(MICRO, "text-[var(--champagne)]")}>
+      <div className="flex items-baseline justify-between border-b border-[var(--ink)]/12 pb-4">
+        <span className={cn(MICRO, "text-[var(--ink-3)]")}>
           Place each example
         </span>
         <div className="flex items-baseline gap-8">
-          <span className="font-serif text-[11px] tracking-[0.18em] text-[var(--charcoal-light)]/70">
+          <span className="font-serif text-[11px] tracking-[0.18em] text-[var(--ink-2)]/70">
             {placedCount} / {items.length}
           </span>
           <button
@@ -861,9 +861,9 @@ export function SortingBoard({
             disabled={placedCount === 0}
             className={cn(
               MICRO,
-              "transition-colors duration-150 disabled:cursor-default disabled:text-[var(--charcoal-light)]/70",
+              "transition-colors duration-150 disabled:cursor-default disabled:text-[var(--ink-2)]/70",
               placedCount > 0
-                ? "cursor-pointer text-[var(--charcoal-light)]/70 hover:text-[var(--crimson)]"
+                ? "cursor-pointer text-[var(--ink-2)]/70 hover:text-[var(--accent)]"
                 : "",
             )}
           >
@@ -893,8 +893,8 @@ export function SortingBoard({
                 isPlaced
                   ? "pointer-events-none border-transparent opacity-0"
                   : isSelected
-                    ? "cursor-pointer border-[var(--crimson)] text-[var(--crimson)]"
-                    : "cursor-pointer border-[var(--charcoal)]/18 text-[var(--charcoal-light)] hover:border-[var(--charcoal)]/45",
+                    ? "cursor-pointer border-[var(--accent)] text-[var(--accent)]"
+                    : "cursor-pointer border-[var(--ink)]/18 text-[var(--ink-2)] hover:border-[var(--ink)]/45",
               )}
             >
               {item.text}
@@ -920,10 +920,10 @@ export function SortingBoard({
               className={cn(
                 "min-h-[9rem] border-t pt-5 text-left transition-colors duration-150",
                 isRefused
-                  ? "border-t-[var(--crimson)]"
+                  ? "border-t-[var(--accent)]"
                   : armed
-                    ? "cursor-pointer border-t-[var(--champagne)]"
-                    : "border-t-[var(--charcoal)]/15",
+                    ? "cursor-pointer border-t-[var(--ink-3)]"
+                    : "border-t-[var(--ink)]/15",
               )}
             >
               <h4
@@ -931,15 +931,15 @@ export function SortingBoard({
                   MICRO,
                   "mb-4 transition-colors duration-150",
                   isRefused
-                    ? "text-[var(--crimson)]"
-                    : "text-[var(--charcoal)]",
+                    ? "text-[var(--accent)]"
+                    : "text-[var(--ink)]",
                 )}
               >
                 {bin.label}
               </h4>
 
               {bin.description && (
-                <p className="mb-5 max-w-prose text-[0.9375rem] font-light leading-[1.55] text-[var(--charcoal-light)]">
+                <p className="mb-5 max-w-prose text-[0.9375rem] font-light leading-[1.55] text-[var(--ink-2)]">
                   {bin.description}
                 </p>
               )}
@@ -981,7 +981,7 @@ export function RoadmapRail({
 
   return (
     <div className={cn("w-full", className)}>
-      <div className="flex gap-10 overflow-x-auto border-b border-[var(--charcoal)]/12 pb-5">
+      <div className="flex gap-10 overflow-x-auto border-b border-[var(--ink)]/12 pb-5">
         {stops.map((stop, index) => {
           const isActive = index === active;
           return (
@@ -993,8 +993,8 @@ export function RoadmapRail({
               className={cn(
                 "flex-shrink-0 cursor-pointer font-serif text-xl tracking-[-0.01em] transition-colors duration-150 md:text-[1.6rem]",
                 isActive
-                  ? "text-[var(--crimson)]"
-                  : "text-[var(--charcoal-light)]/70 hover:text-[var(--charcoal)]",
+                  ? "text-[var(--accent)]"
+                  : "text-[var(--ink-2)]/70 hover:text-[var(--ink)]",
               )}
             >
               {stop.id}
@@ -1007,7 +1007,7 @@ export function RoadmapRail({
         {stops.map((stop, index) => (
           <p
             key={index}
-            className="max-w-4xl text-left font-serif text-[1.4rem] font-light leading-[1.3] text-[var(--charcoal)] md:text-[2rem]"
+            className="max-w-4xl text-left font-serif text-[1.4rem] font-light leading-[1.3] text-[var(--ink)] md:text-[2rem]"
           >
             {stop.text}
           </p>
@@ -1036,12 +1036,12 @@ export function NumberedCards({
       {items.map((item, index) => (
         <div
           key={index}
-          className="flex items-baseline gap-6 border-t border-[var(--charcoal)]/12 py-5 md:gap-10"
+          className="flex items-baseline gap-6 border-t border-[var(--ink)]/12 py-5 md:gap-10"
         >
-          <span className="flex-shrink-0 font-serif text-[11px] tracking-[0.18em] text-[var(--champagne)]">
+          <span className="flex-shrink-0 font-serif text-[11px] tracking-[0.18em] text-[var(--ink-3)]">
             {ordinal(index)}
           </span>
-          <p className="max-w-3xl text-left text-base font-light leading-[1.5] text-[var(--charcoal)] md:text-[1.25rem]">
+          <p className="max-w-3xl text-left text-base font-light leading-[1.5] text-[var(--ink)] md:text-[1.25rem]">
             {item}
           </p>
         </div>

@@ -46,14 +46,14 @@ const TIGHT = "md:!py-16";
 type Tone = "signal" | "counter" | "ink";
 
 const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
+  signal: "border-[var(--rule)]",
+  counter: "border-[var(--rule)]",
+  ink: "border-[var(--rule)]",
 };
 
 const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--signal)]",
-  counter: "text-[var(--counter)]",
+  signal: "text-[var(--ink)]",
+  counter: "text-[var(--ink)]",
   ink: "text-[var(--ink)]",
 };
 
@@ -107,7 +107,7 @@ function Term({
   );
 }
 
-/** Inline colour for a phrase inside a serif line. */
+/** Inline emphasis for a phrase inside a line. */
 function Tint({
   children,
   tone = "signal",
@@ -115,7 +115,7 @@ function Tint({
   children: React.ReactNode;
   tone?: Tone;
 }) {
-  return <span className={TEXT[tone]}>{children}</span>;
+  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
 /** Hairline-topped block. */
@@ -129,7 +129,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
+    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -233,28 +233,21 @@ function Cells({
     >
       {items.map((s) => (
         <li key={s.key} className="flex min-w-0 flex-col gap-3">
-          <div className={cn("border-t-2 pt-3", BORDER[s.tone])}>
+          <div className={cn("border-t pt-3", BORDER[s.tone])}>
             <p className="type-body">{s.text}</p>
           </div>
-          {s.plate ? (
-            <div className="figure-well mt-auto w-full min-w-0 p-3">
-              {s.plate}
-            </div>
-          ) : null}
         </li>
       ))}
     </ol>
   );
 }
 
-/** A ruled line with its plate beside it, for rows of text-and-picture pairs. */
+/** A ruled line for rows of text. */
 function SideCell({
-  plate,
   children,
-  plateClass = "",
   className = "",
 }: {
-  plate: React.ReactNode;
+  plate?: React.ReactNode;
   children: React.ReactNode;
   plateClass?: string;
   className?: string;
@@ -262,14 +255,11 @@ function SideCell({
   return (
     <div
       className={cn(
-        "grid min-w-0 items-center gap-4 border-t-2 border-[var(--ink)] pt-3 sm:grid-cols-[1fr_1.15fr]",
+        "min-w-0 border-t border-[var(--rule)] pt-3",
         className,
       )}
     >
       <p className="type-body min-w-0">{children}</p>
-      <div className={cn("figure-well w-full min-w-0 p-2", plateClass)}>
-        {plate}
-      </div>
     </div>
   );
 }
@@ -282,27 +272,22 @@ export default function Week11() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-          <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
-              Week 11
+        <div className="w-full max-w-4xl">
+          <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
+            Week 11
+          </p>
+          <p className="type-caption mt-2">
+            Consumer Behavior | Davood Wadi, PhD
+          </p>
+          <Title className="mt-6">
+            Culture, Subcultures, and Social Class
+          </Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
+              Culture shapes how consumers see every product. AI models also{" "}
+              <Tint>carry cultural patterns</Tint> from the text they learn
+              from.
             </p>
-            <p className="type-caption mt-2">
-              Consumer Behavior | Davood Wadi, PhD
-            </p>
-            <Title className="mt-6 !max-w-[20ch]">
-              Culture, Subcultures, and Social Class
-            </Title>
-            <div className="mt-8 max-w-[44ch] border-t-2 border-[var(--ink)] pt-6">
-              <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
-                Culture shapes how consumers see every product. AI models also{" "}
-                <Tint>carry cultural patterns</Tint> from the text they learn
-                from.
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto w-full max-w-[580px]">
-            <V.CultureShelf />
           </div>
         </div>
       </Slide>
@@ -318,7 +303,7 @@ export default function Week11() {
             <Tint>the shared meanings, values, rituals, and traditions</Tint>{" "}
             of a society.
           </Statement>
-          <SideCell plate={<V.TwoTables />} className="sm:grid-cols-[1fr_1.4fr]">
+          <SideCell className="sm:grid-cols-[1fr_1.4fr]">
             Consumers learn culture from family, school, religion, and media,
             usually without noticing.{" "}
             Culture shapes what people eat, wear, celebrate, and consider
@@ -326,7 +311,7 @@ export default function Week11() {
           </SideCell>
         </div>
         <div className="mt-6 grid w-full items-center gap-x-10 gap-y-5 lg:grid-cols-[1.7fr_1fr]">
-          <SideCell plate={<V.SameGiftTwoMeanings />} className="sm:grid-cols-[1fr_1.5fr]">
+          <SideCell className="sm:grid-cols-[1fr_1.5fr]">
             A product that succeeds in one country can fail in another because
             it carries a different meaning there.
           </SideCell>
@@ -394,7 +379,7 @@ export default function Week11() {
             <Plate wide>
               <V.HofstedeCompare />
             </Plate>
-            <SideCell plate={<V.TwoAds />} className="sm:grid-cols-[1fr_1.1fr]">
+            <SideCell className="sm:grid-cols-[1fr_1.1fr]">
               An ad that celebrates standing out from the crowd suits an{" "}
               <Tint>individualist</Tint> culture. An ad that shows a family
               choosing together suits a collectivist culture.
@@ -424,7 +409,6 @@ export default function Week11() {
             {
               key: "grooming",
               tone: "ink",
-              plate: <V.MorningRoutine />,
               text: (
                 <>
                   <Term>Grooming rituals</Term>, such as a morning skin-care
@@ -436,7 +420,6 @@ export default function Week11() {
             {
               key: "gift",
               tone: "ink",
-              plate: <V.GiftAndCard />,
               text: (
                 <>
                   <Term>Gift-giving rituals</Term>, such as birthdays and
@@ -447,7 +430,6 @@ export default function Week11() {
             {
               key: "holiday",
               tone: "ink",
-              plate: <V.Holidays />,
               text: (
                 <>
                   <Term>Holiday rituals</Term>, such as a Thanksgiving dinner
@@ -458,7 +440,6 @@ export default function Week11() {
             {
               key: "rites",
               tone: "ink",
-              plate: <V.RitesOfPassage />,
               text: (
                 <>
                   <Term>Rites of passage</Term>, such as graduations and
@@ -470,7 +451,6 @@ export default function Week11() {
             {
               key: "myth",
               tone: "ink",
-              plate: <V.HeroAd />,
               text: (
                 <>
                   A <Term>myth</Term> is a story with symbolic elements that
@@ -511,31 +491,22 @@ export default function Week11() {
           </Plate>
         </div>
         <div className="mt-6 grid w-full gap-x-8 gap-y-6 md:grid-cols-3">
-          <div className="flex min-w-0 flex-col gap-3 border-t-2 border-[var(--ink)] pt-3">
+          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule)] pt-3">
             <P>
               Objects can become sacred through <Term>sacralization</Term>,
               such as a signed jersey, a family heirloom, or a souvenir from a
               special trip.
             </P>
-            <Plate className="mx-auto mt-auto lg:max-w-[300px]">
-              <V.BecameSacred />
-            </Plate>
           </div>
-          <div className="flex min-w-0 flex-col gap-3 border-t-2 border-[var(--ink)] pt-3">
+          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule)] pt-3">
             <P>
               Objects can lose sacred status through{" "}
               <Term>desacralization</Term>, such as a national symbol printed
               on cheap merchandise.
             </P>
-            <Plate className="mx-auto mt-auto lg:max-w-[300px]">
-              <V.FlagMerch />
-            </Plate>
           </div>
-          <div className="flex min-w-0 flex-col gap-3 border-t-2 border-[var(--ink)] pt-3">
+          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule)] pt-3">
             <P>Consumers often refuse to sell sacred possessions at any price.</P>
-            <Plate className="mx-auto mt-auto lg:max-w-[300px]">
-              <V.NotForSale />
-            </Plate>
           </div>
         </div>
       </Slide>
@@ -573,11 +544,11 @@ export default function Week11() {
           </Plate>
         </div>
         <div className="mt-5 grid w-full gap-x-10 gap-y-5 lg:grid-cols-2">
-          <SideCell plate={<V.RegionalMap />} className="sm:grid-cols-[1fr_1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1fr]">
             <Term>Geographic subcultures</Term> reflect regional differences in
             climate, food, language, and lifestyle.
           </SideCell>
-          <SideCell plate={<V.DietSeals />} className="sm:grid-cols-[1fr_1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1fr]">
             <Term>Ethnic and religious subcultures</Term> share traditions,
             holidays, and sometimes dietary rules, such as halal or kosher
             food.
@@ -619,17 +590,14 @@ export default function Week11() {
           </Ruled>
         </div>
         <div className="mt-6 grid w-full gap-x-10 gap-y-5 lg:grid-cols-2">
-          <div className="flex min-w-0 flex-col gap-3 border-t-2 border-[var(--ink)] pt-3">
+          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule)] pt-3">
             <P>
               <Term>Status symbols</Term> are products that signal a
               person&apos;s position in the social hierarchy, such as luxury
               watches or designer bags.
             </P>
-            <Plate className="mt-auto">
-              <V.StatusSymbols />
-            </Plate>
           </div>
-          <div className="flex min-w-0 flex-col gap-3 border-t-2 border-[var(--ink)] pt-3">
+          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule)] pt-3">
             <P>
               Old money often signals status{" "}
               <Tint>quietly through heritage and understated quality</Tint>.
@@ -654,7 +622,7 @@ export default function Week11() {
             <Term>Conspicuous consumption</Term> is the purchase of goods
             mainly to display wealth and status (Veblen, 1899).
           </Statement>
-          <SideCell plate={<V.LoudQuiet />} className="sm:grid-cols-[1.2fr_1fr]">
+          <SideCell className="sm:grid-cols-[1.2fr_1fr]">
             Consumers with a strong need for status prefer luxury goods with
             large, visible logos. Wealthy consumers with no such need often
             prefer <Tint>quiet designs that only other insiders recognize</Tint>{" "}
@@ -668,7 +636,6 @@ export default function Week11() {
             {
               key: "inequality",
               tone: "ink",
-              plate: <V.ThreeStores />,
               text: (
                 <>
                   In many markets, growing income inequality has come with
@@ -680,7 +647,6 @@ export default function Week11() {
             {
               key: "experiences",
               tone: "ink",
-              plate: <V.Experiences />,
               text: (
                 <>
                   Some consumers signal status through experiences, such as
@@ -691,7 +657,6 @@ export default function Week11() {
             {
               key: "knowledge",
               tone: "ink",
-              plate: <V.PourOver />,
               text: (
                 <>
                   Others signal status through knowledge and taste, such as
@@ -734,14 +699,14 @@ export default function Week11() {
           </Plate>
         </div>
         <div className="mt-6 grid w-full gap-x-10 gap-y-5 lg:grid-cols-2">
-          <SideCell plate={<V.HomeJar />} className="sm:grid-cols-[1fr_1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1fr]">
             <Term>Consumer ethnocentrism</Term> is the belief that buying
             products from one&apos;s own country is right and buying imports is
             wrong (Shimp &amp; Sharma, 1987).{" "}
             Ethnocentric consumers prefer domestic products{" "}
             <Tint>even when imports are better or cheaper</Tint>.
           </SideCell>
-          <SideCell plate={<V.ScaleSheet />} className="sm:grid-cols-[1fr_1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1fr]">
             Researchers measure consumer ethnocentrism with the CETSCALE, a
             set of statements such as &quot;Buy [national]-made products. Keep
             [the nation] working.&quot;
@@ -804,7 +769,7 @@ export default function Week11() {
             <V.ModelEthnocentrism />
           </Plate>
         </div>
-        <div className="mt-5 grid w-full gap-6 border-t-2 border-[var(--ink)] pt-3 md:grid-cols-2 md:gap-10">
+        <div className="mt-5 grid w-full gap-6 border-t border-[var(--rule)] pt-3 md:grid-cols-2 md:gap-10">
           <P className="!max-w-none">
             An AI assistant that recommends products to consumers around the
             world may carry such preferences into its recommendations.
@@ -823,21 +788,16 @@ export default function Week11() {
         <Heading kicker="Discussion:" tone="counter">
           Culture in the Cart
         </Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-10">
-          <div className="relative w-full min-w-0 border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-10 md:py-12">
-            <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
-              Discussion:
-            </span>{" "}
-            <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)]">
-              Choose a product you buy regularly. Would a consumer from another
-              culture or subculture use it, give it, or display it differently?
-              If you asked an AI assistant to recommend the same product, would
-              its answer reflect your culture or another one?
-            </p>
-          </div>
-          <Plate className="mx-auto lg:max-w-[440px]">
-            <V.CultureCart />
-          </Plate>
+        <div className="relative w-full max-w-5xl border-l border-[var(--rule-2)] pl-6 py-2">
+          <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--ink-3)]">
+            Discussion:
+          </span>{" "}
+          <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)] max-w-[52ch]">
+            Choose a product you buy regularly. Would a consumer from another
+            culture or subculture use it, give it, or display it differently?
+            If you asked an AI assistant to recommend the same product, would
+            its answer reflect your culture or another one?
+          </p>
         </div>
       </Slide>
     </SlideDeck>

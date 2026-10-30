@@ -39,7 +39,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 09: ALGORITHMIC PRICING, COLLUSION, AND FAIR COMPETITION
+// WEEK 9: ALGORITHMIC PRICING, COLLUSION, AND FAIR COMPETITION
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
@@ -52,12 +52,12 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading
 
 export default function Week9Page() {
   return (
-    <SlideDeck label="Week 09">
+    <SlideDeck label="Week 9">
       {/* ================================================================
           01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 09: Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 9: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[24ch]">Algorithmic Pricing, Collusion, and Fair Competition</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[58ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.2rem,1.9vw,1.6rem)]">

@@ -70,7 +70,7 @@ export default function IdentifyExercise({
 
   return (
     <div className="w-full">
-      <ExerciseHeader kind="Which one is it?" prompt={data.prompt} />
+      <ExerciseHeader prompt={data.prompt} />
 
       {/* progress: one mark per case */}
       <ol className="mb-4 flex flex-wrap items-center gap-2" aria-label={`Case ${index + 1} of ${n}`}>

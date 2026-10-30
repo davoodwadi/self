@@ -1,0 +1,285 @@
+[
+  {
+    "type": "sort",
+    "slide_id": "two-sides",
+    "prompt": "An online furniture marketplace and its customers both use AI. Sort each system by the side of the marketplace it works for.",
+    "bins": [
+      { "id": "firm", "label": "Firm-side AI" },
+      { "id": "consumer", "label": "Consumer-side AI" }
+    ],
+    "cards": [
+      {
+        "id": "sofa-ranking",
+        "text": "A model that orders sofa search results by predicted conversion and margin",
+        "bin": "firm",
+        "explanation": "Ranking search results to raise conversion and margin serves the retailer's objectives."
+      },
+      {
+        "id": "assistant-budget",
+        "text": "A chat assistant told to find a desk under $300 that fits a 120 cm wall",
+        "bin": "consumer",
+        "explanation": "It represents the buyer's stated preferences and budget constraint."
+      },
+      {
+        "id": "promo",
+        "text": "A system that picks which shoppers receive a 15 percent off coupon this week",
+        "bin": "firm",
+        "explanation": "Personalizing promotions is a firm-side use aimed at conversion and lifetime value."
+      },
+      {
+        "id": "agent-checkout",
+        "text": "An agent that compares three bookshelves across retailers and places the order",
+        "bin": "consumer",
+        "explanation": "Comparing prices and executing a purchase on the buyer's behalf is consumer-side AI."
+      },
+      {
+        "id": "ad-copy",
+        "text": "A generative model that writes 40 versions of a banner ad for different audiences",
+        "bin": "firm",
+        "explanation": "Automating creative production is a firm-side use."
+      },
+      {
+        "id": "filter",
+        "text": "A browser assistant that hides every listing without free returns, as the user asked",
+        "bin": "consumer",
+        "explanation": "It filters products according to the buyer's instructions."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "churn-uplift",
+    "prompt": "A streaming service is deciding whom to send a retention offer. For each subscriber, name the uplift group.",
+    "options": [
+      { "id": "persuadable", "label": "Persuadable" },
+      { "id": "sure", "label": "Sure thing" },
+      { "id": "lost", "label": "Lost cause" },
+      { "id": "dog", "label": "Sleeping dog" }
+    ],
+    "cases": [
+      {
+        "id": "a",
+        "text": "Stays if sent a free month, cancels if left alone",
+        "answer": "persuadable",
+        "explanation": "The offer changes this subscriber's behavior, which is the only case where it pays."
+      },
+      {
+        "id": "b",
+        "text": "Watches every night and renews whether or not an offer arrives",
+        "answer": "sure",
+        "explanation": "This subscriber stays regardless, so an offer is a wasted discount."
+      },
+      {
+        "id": "c",
+        "text": "Forgot about the auto-renewing plan and cancels as soon as an offer email reminds them of it",
+        "answer": "dog",
+        "explanation": "Contact triggers the cancellation, so this subscriber should be left alone."
+      },
+      {
+        "id": "d",
+        "text": "Is moving abroad where the service is unavailable, and leaves with or without an offer",
+        "answer": "lost",
+        "explanation": "This subscriber leaves regardless, so an offer changes nothing."
+      },
+      {
+        "id": "e",
+        "text": "Has a high churn score and stays only when the price drops for three months",
+        "answer": "persuadable",
+        "explanation": "The intervention itself raises the chance of staying."
+      },
+      {
+        "id": "f",
+        "text": "Has a high churn score and leaves whether contacted or not",
+        "answer": "lost",
+        "explanation": "High risk of leaving does not imply responsiveness to an offer."
+      }
+    ]
+  },
+  {
+    "type": "identify",
+    "slide_id": "cf-vs-cb",
+    "prompt": "An online bookstore shows a recommendation in each case. Decide which method produced it.",
+    "options": [
+      { "id": "cf", "label": "Collaborative filtering" },
+      { "id": "cb", "label": "Content-based filtering" }
+    ],
+    "cases": [
+      {
+        "id": "a",
+        "text": "Readers who bought the same four mystery novels as you also bought this thriller, so it is recommended to you",
+        "answer": "cf",
+        "explanation": "The signal is the overlapping purchase histories of similar readers."
+      },
+      {
+        "id": "b",
+        "text": "A cookbook released this morning, with no sales yet, is recommended because its tags match cookbooks you rated highly",
+        "answer": "cb",
+        "explanation": "A new item with no interactions can only be matched on its attributes, which avoids the cold-start problem."
+      },
+      {
+        "id": "c",
+        "text": "A first-time visitor who searched for 'space travel' sees books whose descriptions mention astronauts and rockets",
+        "answer": "cb",
+        "explanation": "With no history for this visitor, the system matches item descriptions to the stated interest."
+      },
+      {
+        "id": "d",
+        "text": "A poetry collection is recommended because shoppers with reading histories like yours often bought it",
+        "answer": "cf",
+        "explanation": "The recommendation comes from the preferences of other users with similar patterns."
+      },
+      {
+        "id": "e",
+        "text": "A biography is recommended because its cover image embedding resembles covers you clicked before",
+        "answer": "cb",
+        "explanation": "Image embeddings are descriptive attributes of the item itself."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "explore-exploit",
+    "question_text": "A grocery app always shows the five snacks with the highest past click rate in its top row. A new protein bar launched last month has almost no clicks and has never appeared there. What is the most likely problem?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "The protein bar is clearly worse than the five snacks shown",
+        "option_explanation": "The bar has never been shown in the top row, so the app has no evidence about how it performs there."
+      },
+      {
+        "option_text": "The app has too many snacks in its catalog to rank them",
+        "option_explanation": "Catalog size is not the issue here. The issue is how the app chooses which items to display."
+      },
+      {
+        "option_text": "The app only exploits, so the new bar never gathers enough clicks to be shown",
+        "option_explanation": "Correct. Pure exploitation creates a closed feedback loop: popular items keep the impressions and new items never collect the data needed to prove themselves."
+      },
+      {
+        "option_text": "The app should show only new items until all of them have many clicks",
+        "option_explanation": "Showing only untested items gives up the revenue from proven winners. A bandit reserves a controlled share of impressions for testing instead."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "type": "sort",
+    "slide_id": "synthetic-respondents",
+    "prompt": "A coffee chain's research team wants to use synthetic respondents. Sort each task by whether language-model personas are a sound tool for it.",
+    "bins": [
+      { "id": "ok", "label": "Sound early-stage use" },
+      { "id": "human", "label": "Needs real consumers" }
+    ],
+    "cards": [
+      {
+        "id": "wording",
+        "text": "Checking whether the question 'How often do you buy specialty drinks?' reads ambiguously",
+        "bin": "ok",
+        "explanation": "Pre-testing questionnaire wording is a valid early-stage use."
+      },
+      {
+        "id": "price",
+        "text": "Deciding whether a new oat-milk latte can be priced at $6.75",
+        "bin": "human",
+        "explanation": "Willingness to pay for a genuinely new product must be measured on real consumers."
+      },
+      {
+        "id": "objections",
+        "text": "Brainstorming reasons customers might dislike a new subscription plan",
+        "bin": "ok",
+        "explanation": "Generating hypotheses about possible objections is exploratory work that personas can speed up."
+      },
+      {
+        "id": "demand",
+        "text": "Forecasting how many cups a new store will sell in its first month",
+        "bin": "human",
+        "explanation": "Demand estimation needs human data, since model answers show lower variance than real populations."
+      },
+      {
+        "id": "niche",
+        "text": "Measuring how much a small community of competitive cyclists values a pre-ride espresso",
+        "bin": "human",
+        "explanation": "Language models under-represent niche consumer segments, so this needs real respondents."
+      },
+      {
+        "id": "draft",
+        "text": "Drafting an interview guide before focus groups begin",
+        "bin": "ok",
+        "explanation": "Accelerating survey design and qualitative exploration is a sound use."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "algorithms-vs-humans",
+    "prompt": "A headphone brand is reviewing its product page. Sort each element by whether it mainly works on human shoppers or on AI shopping agents.",
+    "bins": [
+      { "id": "human", "label": "Human shoppers" },
+      { "id": "agent", "label": "AI shopping agents" }
+    ],
+    "cards": [
+      {
+        "id": "photo",
+        "text": "A photo of a runner wearing the headphones at sunrise",
+        "bin": "human",
+        "explanation": "Lifestyle photography moves people but carries no data an agent can check."
+      },
+      {
+        "id": "battery",
+        "text": "A specification table listing battery life as 38 hours",
+        "bin": "agent",
+        "explanation": "Structured specifications let an agent filter by exact thresholds."
+      },
+      {
+        "id": "charm",
+        "text": "A price of $199.99 instead of $200",
+        "bin": "human",
+        "explanation": "Psychological pricing has little effect on an agent that calculates total cost."
+      },
+      {
+        "id": "reviews",
+        "text": "An average rating of 4.5 from 3,800 reviews shown as text",
+        "bin": "agent",
+        "explanation": "Aggregated review statistics are one of the cues agents parse."
+      },
+      {
+        "id": "story",
+        "text": "A short film about the founder's love of live music",
+        "bin": "human",
+        "explanation": "Emotional brand narratives speak to people, not to an agent screening listings."
+      },
+      {
+        "id": "warranty",
+        "text": "Warranty terms and total delivered price stated in plain text",
+        "bin": "agent",
+        "explanation": "Agents read warranty terms and total delivered price directly."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "position-bias",
+    "question_text": "A travel site tests an AI booking agent on the same eight hotels, reshuffled into a new order for each of 1,000 trials. Whichever hotel appears first is booked in 40 percent of trials. What does this show?",
+    "hint": null,
+    "correct_answer_citation": null,
+    "options": [
+      {
+        "option_text": "The hotels listed first are usually the best ones",
+        "option_explanation": "The order was reshuffled each time, so the first slot held a different hotel in different trials. Merit cannot explain the pattern."
+      },
+      {
+        "option_text": "The agent shows primacy bias: list position, not merit, drives its choice",
+        "option_explanation": "Correct. With identical hotels in random order, a neutral agent would book the first one about 1 time in 8. The excess is position bias."
+      },
+      {
+        "option_text": "The agent shows recency bias toward the end of the list",
+        "option_explanation": "Recency bias favors the last items. Here the agent favors the first position."
+      },
+      {
+        "option_text": "The agent has learned the traveler's preferences over the trials",
+        "option_explanation": "Each trial used the same hotels in a new order, so the only thing that changed was position."
+      }
+    ],
+    "correct_answer_index": 1
+  }
+]

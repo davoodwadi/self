@@ -46,14 +46,14 @@ const TIGHT = "md:!py-16";
 type Tone = "signal" | "counter" | "ink";
 
 const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
+  signal: "border-[var(--rule)]",
+  counter: "border-[var(--rule)]",
+  ink: "border-[var(--rule)]",
 };
 
 const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--signal)]",
-  counter: "text-[var(--counter)]",
+  signal: "text-[var(--ink)]",
+  counter: "text-[var(--ink)]",
   ink: "text-[var(--ink)]",
 };
 
@@ -107,7 +107,7 @@ function Term({
   );
 }
 
-/** Inline colour for a phrase inside a serif line. */
+/** Inline emphasis for a phrase inside a line. */
 function Tint({
   children,
   tone = "signal",
@@ -115,7 +115,7 @@ function Tint({
   children: React.ReactNode;
   tone?: Tone;
 }) {
-  return <span className={TEXT[tone]}>{children}</span>;
+  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
 /** Hairline-topped block. */
@@ -129,7 +129,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
+    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -233,28 +233,21 @@ function Cells({
     >
       {items.map((s) => (
         <li key={s.key} className="flex min-w-0 flex-col gap-3">
-          <div className={cn("border-t-2 pt-3", BORDER[s.tone])}>
+          <div className={cn("border-t pt-3", BORDER[s.tone])}>
             <p className="type-body">{s.text}</p>
           </div>
-          {s.plate ? (
-            <div className="figure-well mt-auto w-full min-w-0 p-3">
-              {s.plate}
-            </div>
-          ) : null}
         </li>
       ))}
     </ol>
   );
 }
 
-/** A ruled line with its plate beside it, for rows of text-and-picture pairs. */
+/** A ruled line for rows of text. */
 function SideCell({
-  plate,
   children,
-  plateClass = "",
   className = "",
 }: {
-  plate: React.ReactNode;
+  plate?: React.ReactNode;
   children: React.ReactNode;
   plateClass?: string;
   className?: string;
@@ -262,14 +255,11 @@ function SideCell({
   return (
     <div
       className={cn(
-        "grid min-w-0 items-center gap-4 border-t-2 border-[var(--ink)] pt-3 sm:grid-cols-[1fr_1.15fr]",
+        "min-w-0 border-t border-[var(--rule)] pt-3",
         className,
       )}
     >
       <p className="type-body min-w-0">{children}</p>
-      <div className={cn("figure-well w-full min-w-0 p-2", plateClass)}>
-        {plate}
-      </div>
     </div>
   );
 }
@@ -282,27 +272,22 @@ export default function Week12() {
           Title Slide
           ================================================================ */}
       <Slide id="title-slide">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-          <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
-              Week 12
+        <div className="w-full max-w-4xl">
+          <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
+            Week 12
+          </p>
+          <p className="type-caption mt-2">
+            Consumer Behavior | Davood Wadi, PhD
+          </p>
+          <Title className="mt-6">
+            AI-Mediated Consumption and Future Trends
+          </Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
+              Consumers increasingly shop through screens, algorithms, and AI
+              agents. The question is{" "}
+              <Tint>whose interests these intermediaries serve</Tint>.
             </p>
-            <p className="type-caption mt-2">
-              Consumer Behavior | Davood Wadi, PhD
-            </p>
-            <Title className="mt-6 !max-w-[20ch]">
-              AI-Mediated Consumption and Future Trends
-            </Title>
-            <div className="mt-8 max-w-[46ch] border-t-2 border-[var(--ink)] pt-6">
-              <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
-                Consumers increasingly shop through screens, algorithms, and AI
-                agents. The question is{" "}
-                <Tint>whose interests these intermediaries serve</Tint>.
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto w-full max-w-[600px]">
-            <V.DeskOfResults />
           </div>
         </div>
       </Slide>
@@ -313,13 +298,13 @@ export default function Week12() {
       <Slide className={TIGHT} id="the-digital-consumer" border>
         <Heading>The Digital Consumer</Heading>
         <div className="grid w-full gap-x-10 gap-y-5 lg:grid-cols-2">
-          <SideCell plate={<V.PhoneInTheAisle />} className="sm:grid-cols-[1fr_1.1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1.1fr]">
             Most consumers now research, compare, and buy at least part of
             their purchases online.{" "}
             The smartphone is the main shopping device for many consumers. They
             check prices and reviews even while standing in a physical store.
           </SideCell>
-          <SideCell plate={<V.RecordToOffer />} className="sm:grid-cols-[1fr_1.1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1.1fr]">
             Digital shopping leaves a record of every search, click, and
             purchase.{" "}
             Firms use this record to personalize products, prices, and
@@ -354,7 +339,6 @@ export default function Week12() {
             {
               key: "mobile",
               tone: "ink",
-              plate: <V.LateNightBuy />,
               text: (
                 <>
                   <Term>Mobile shopping</Term> is buying through a smartphone
@@ -367,7 +351,6 @@ export default function Week12() {
             {
               key: "social",
               tone: "ink",
-              plate: <V.TapToBuy />,
               text: (
                 <>
                   <Term>Social commerce</Term> is buying directly inside a
@@ -380,7 +363,6 @@ export default function Week12() {
             {
               key: "live",
               tone: "ink",
-              plate: <V.LiveStream />,
               text: (
                 <>
                   <Term>Live-stream shopping</Term> combines entertainment, a
@@ -391,7 +373,6 @@ export default function Week12() {
             {
               key: "merge",
               tone: "ink",
-              plate: <V.StagesMerge />,
               text: (
                 <>
                   Social commerce joins social influence and the purchase in a
@@ -420,7 +401,7 @@ export default function Week12() {
             products based on a consumer&apos;s past behavior and the behavior
             of similar consumers.
           </Statement>
-          <SideCell plate={<V.TwoRecommenders />} className="sm:grid-cols-[1fr_1.3fr]">
+          <SideCell className="sm:grid-cols-[1fr_1.3fr]">
             &quot;Customers who bought this also bought&quot; and a
             personalized streaming home page are recommender systems.
           </SideCell>
@@ -475,7 +456,6 @@ export default function Week12() {
             {
               key: "l1",
               tone: "ink",
-              plate: <V.AgentLevel1 />,
               text: (
                 <>
                   At the first level, the AI recommends products, and the
@@ -486,7 +466,6 @@ export default function Week12() {
             {
               key: "l2",
               tone: "ink",
-              plate: <V.AgentLevel2 />,
               text: (
                 <>
                   At the second level, the AI searches and compares options,
@@ -497,7 +476,6 @@ export default function Week12() {
             {
               key: "l3",
               tone: "ink",
-              plate: <V.AgentLevel3 />,
               text: (
                 <>
                   At the third level, the AI selects a product and prepares the
@@ -508,7 +486,6 @@ export default function Week12() {
             {
               key: "l4",
               tone: "ink",
-              plate: <V.AgentLevel4 />,
               text: (
                 <>
                   At the fourth level, the AI completes the purchase on its own
@@ -525,7 +502,7 @@ export default function Week12() {
               agent and sees less of the marketplace directly.
             </Big>
           </Ruled>
-          <SideCell plate={<V.TwoAudiences />} className="sm:grid-cols-[1fr_1.2fr]">
+          <SideCell className="sm:grid-cols-[1fr_1.2fr]">
             Marketers then inform two parties: the consumer who sets the goal
             and the agent that carries it out.
           </SideCell>
@@ -542,7 +519,7 @@ export default function Week12() {
         exercise={exercise["conflicts-of-duty-whom-does-the-ai-agent-serve"]}
       >
         <Heading kicker="Conflicts of Duty:" className="!max-w-none">Whom Does the AI Agent Serve?</Heading>
-        <div className="grid w-full items-center gap-x-8 gap-y-4 md:grid-cols-2 lg:grid-cols-[1fr_1fr_0.75fr]">
+        <div className="grid w-full gap-x-8 gap-y-4 md:grid-cols-2">
           <div className="flex min-w-0 flex-col gap-3">
             <P>
               In a <Term>principal-agent relationship</Term>, an agent acts on
@@ -564,11 +541,8 @@ export default function Week12() {
               two principals: the consumer and the platform.
             </P>
           </div>
-          <Plate className="md:col-span-2 lg:col-span-1">
-            <V.TwoPrincipals />
-          </Plate>
         </div>
-        <div className="mt-5 grid w-full items-center gap-8 border-t-2 border-[var(--ink)] pt-4 lg:grid-cols-[1fr_1.75fr] lg:gap-10">
+        <div className="mt-5 grid w-full items-center gap-8 border-t border-[var(--rule)] pt-4 lg:grid-cols-[1fr_1.75fr] lg:gap-10">
           <div className="flex min-w-0 flex-col gap-3">
             <P>
               In hotel-booking experiments, an AI agent told that it worked for
@@ -603,7 +577,7 @@ export default function Week12() {
           Disclosure Reaches the Agent, Not the Consumer
         </Heading>
         <div className="grid w-full gap-x-10 gap-y-6 lg:grid-cols-2">
-          <div className="flex min-w-0 flex-col gap-3 border-t-2 border-[var(--ink)] pt-3">
+          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule)] pt-3">
             <P>
               Disclosure rules require platforms to label paid placements, so
               that consumers can discount them.
@@ -612,11 +586,8 @@ export default function Week12() {
               When an AI agent reads the listings for the consumer, the label
               reaches the agent, and the consumer may never see it.
             </P>
-            <Plate className="mt-auto">
-              <V.LabelReachesAgent />
-            </Plate>
           </div>
-          <div className="flex min-w-0 flex-col gap-3 border-t-2 border-[var(--ink)] pt-3">
+          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule)] pt-3">
             <P>
               The wording of the label mattered. &quot;Sponsored&quot; reduced
               choice of the paid listing more than &quot;Promoted&quot; did
@@ -663,7 +634,6 @@ export default function Week12() {
             {
               key: "collect",
               tone: "ink",
-              plate: <V.DataTrail />,
               text: (
                 <>
                   Firms collect data on consumers&apos; searches, locations,
@@ -676,7 +646,6 @@ export default function Week12() {
             {
               key: "paradox",
               tone: "ink",
-              plate: <V.PrivacyParadox />,
               text: (
                 <>
                   The <Term>privacy paradox</Term> is the gap between what
@@ -688,7 +657,6 @@ export default function Week12() {
             {
               key: "conversations",
               tone: "ink",
-              plate: <V.SearchVsChat />,
               text: (
                 <>
                   <Term>Surveillance capitalism</Term> describes a business
@@ -729,7 +697,6 @@ export default function Week12() {
             {
               key: "dynamic",
               tone: "ink",
-              plate: <V.SeatsAndFares />,
               text: (
                 <>
                   <Term>Dynamic pricing</Term> changes prices with demand and
@@ -741,7 +708,6 @@ export default function Week12() {
             {
               key: "personalized",
               tone: "ink",
-              plate: <V.TwoPrices />,
               text: (
                 <>
                   <Term>Personalized pricing</Term> charges different consumers
@@ -755,7 +721,6 @@ export default function Week12() {
             {
               key: "algorithms",
               tone: "ink",
-              plate: <V.AlgorithmMeetsAgent />,
               text: (
                 <>
                   In simulations, pricing algorithms learned to keep prices
@@ -804,7 +769,6 @@ export default function Week12() {
             {
               key: "gap",
               tone: "ink",
-              plate: <V.SayGreenBuyCheap />,
               text: (
                 <>
                   The <Term>attitude-behavior gap</Term> is the difference
@@ -817,7 +781,6 @@ export default function Week12() {
             {
               key: "greenwash",
               tone: "ink",
-              plate: <V.Greenwash />,
               text: (
                 <>
                   <Term>Greenwashing</Term> occurs when a firm makes misleading
@@ -830,7 +793,6 @@ export default function Week12() {
             {
               key: "delegate",
               tone: "ink",
-              plate: <V.GreenInstruction />,
               text: (
                 <>
                   A consumer who delegates shopping to an AI agent can include
@@ -890,21 +852,16 @@ export default function Week12() {
         <Heading kicker="Discussion:" tone="counter">
           Your Agent&apos;s Instructions
         </Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-10">
-          <div className="relative w-full min-w-0 border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-10 md:py-12">
-            <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
-              Discussion:
-            </span>{" "}
-            <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)]">
-              Imagine you give an AI agent the authority to do your weekly
-              shopping for one year. Which goals, limits, and values would you
-              write into its instructions? Whose interests should it serve if
-              the platform that runs it earns money from sponsored products?
-            </p>
-          </div>
-          <Plate className="mx-auto lg:max-w-[440px]">
-            <V.AgentInstructions />
-          </Plate>
+        <div className="relative w-full max-w-5xl border-l border-[var(--rule-2)] pl-6 py-2">
+          <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--ink-3)]">
+            Discussion:
+          </span>{" "}
+          <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)] max-w-[52ch]">
+            Imagine you give an AI agent the authority to do your weekly
+            shopping for one year. Which goals, limits, and values would you
+            write into its instructions? Whose interests should it serve if
+            the platform that runs it earns money from sponsored products?
+          </p>
         </div>
       </Slide>
     </SlideDeck>

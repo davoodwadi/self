@@ -6,7 +6,7 @@ week: week-4
 ---
 
 ## Title Slide
-- Week 04
+- Week 4
 - TAM, UTAUT, IoT, Cloud, Edge, Fog
 
 ## Agenda

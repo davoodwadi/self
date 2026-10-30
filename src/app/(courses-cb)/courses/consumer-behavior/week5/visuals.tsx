@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Consumer Behavior | Week 05, figures
+   Consumer Behavior | Week 5, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates for the self-concept, personality and lifestyles:
    wobbly doubled ink and loose watercolour washes set off-register. Every
@@ -595,26 +595,6 @@ export function ExtendedRings() {
   );
 }
 
-/** The four half-rings in miniature, with one band washed teal. */
-export function RingMark({ lit }: { lit: number }) {
-  const radii = [9, 17, 25, 33];
-  const half = (r: number): Pt[] =>
-    rp(Array.from({ length: 13 }, (_, k) => {
-      const a = Math.PI + (k / 12) * Math.PI;
-      return [38 + Math.cos(a) * r, 38 + Math.sin(a) * r] as Pt;
-    }));
-  const inner = lit > 0 ? half(radii[lit - 1]).reverse() : [[38, 38] as Pt];
-  return (
-    <svg viewBox="0 0 76 42" className="h-10 w-[4.5rem] shrink-0" aria-hidden>
-      <path d={wobble([...half(radii[lit]), ...inner], 960 + lit, 0.6, 8, true)} fill={SK.teal} opacity={0.55} transform="translate(1.2 0.6)" />
-      {radii.map((r, i) => (
-        <path key={r} d={wobble(half(r), 970 + i, 0.4, 8)} fill="none" stroke={SK.ink} strokeWidth={1} strokeLinecap="round" />
-      ))}
-      <path d={wobble([[2, 38], [74, 38]], 979, 0.4, 10)} fill="none" stroke={SK.ink} strokeWidth={1} strokeLinecap="round" />
-    </svg>
-  );
-}
-
 /* ==========================================================================
    PERSONALITY TRAITS AND CONSUMER BEHAVIOR
    ========================================================================== */
@@ -1002,54 +982,51 @@ function Poster({ x0, x1, top, bottom, gy, seed, children }: { x0: number; x1: n
 
 /** The same product, two ads: loud for the extravert, orderly for the conscientious. */
 export function TailoredAds() {
-  const gy = 300;
-  const ph = 196;
+  const gy = 264;
   const rnd = seeded(2511);
   const confetti = Array.from({ length: 22 }, (_, i) => ({
-    x: r2(166 + rnd() * 198),
-    y: r2(84 + rnd() * 140),
+    x: r2(96 + rnd() * 236),
+    y: r2(78 + rnd() * 140),
     f: [SK.ochre, SK.camel, SK.sky][i % 3],
-  })).filter((c) => Math.abs(c.x - 264) > 38 || Math.abs(c.y - 170) > 40);
+  })).filter((c) => Math.abs(c.x - 214) > 38 || Math.abs(c.y - 164) > 40);
   return (
     <SketchFrame
       id="sk-tailored-ads"
       width={800}
-      height={344}
-      label="The same product box with the brand badge in two posters. On the left, an arm-waving extravert reads a loud poster that says Join the party, splashed with ochre and confetti. On the right, a calm conscientious person reads an orderly poster that says Built to last, with neat ruled lines of detail."
+      height={308}
+      label="The same product box with the brand badge in two posters. On the left, labelled extraversion, a loud poster says Join the party, splashed with ochre and confetti. On the right, labelled conscientiousness, an orderly poster says Built to last, with neat ruled lines of detail."
     >
-      <Backwash cx={400} cy={170} rx={390} ry={160} seed={2501} />
-      <Ground x0={20} x1={384} y={gy} seed={2504} />
-      <Ground x0={416} x1={780} y={gy} seed={2508} />
+      <Backwash cx={400} cy={154} rx={386} ry={142} seed={2501} />
+      <Ground x0={48} x1={380} y={gy} seed={2504} />
+      <Ground x0={420} x1={752} y={gy} seed={2508} />
 
       {/* extraversion: loud copy, warm splashes, confetti */}
-      <Poster x0={150} x1={380} top={30} bottom={238} gy={gy} seed={2520}>
-        <Wash pts={blobPts(264, 168, 60, 50, 2525, 14, 0.3)} seed={2525} fill={SK.ochre} opacity={0.7} dx={0} dy={0} />
+      <Poster x0={84} x1={344} top={24} bottom={232} gy={gy} seed={2520}>
+        <Wash pts={blobPts(214, 162, 64, 52, 2525, 14, 0.3)} seed={2525} fill={SK.ochre} opacity={0.7} dx={0} dy={0} />
         {confetti.map((c, i) => (
           <Wash key={i} pts={rp(blobPts(c.x, c.y, 6.5, 4.5, 2530 + i, 7))} seed={2530 + i} fill={c.f} opacity={0.95} dx={0} dy={0} />
         ))}
-        <SketchText x={265} y={66} anchor="middle" size={24} serif>
+        <SketchText x={214} y={60} anchor="middle" size={24} serif>
           Join the party!
         </SketchText>
-        <Box x={264} bottom={204} w={56} h={66} seed={2550} />
+        <Box x={214} bottom={198} w={58} h={68} seed={2550} />
       </Poster>
-      <Person x={76} y={gy} h={ph} look={{ hair: "curly", hairTone: SK.charcoal, skin: SK.brown, skinOpacity: 0.55, wear: SK.camel, legs: SK.charcoal }} arms={["hip", "up"]} seed={2560} />
-      <SketchText x={76} y={330} anchor="middle" size={12}>
+      <SketchText x={214} y={292} anchor="middle" size={12}>
         EXTRAVERSION
       </SketchText>
 
       {/* conscientiousness: plain copy, one calm wash, ruled detail */}
-      <Poster x0={550} x1={780} top={30} bottom={238} gy={gy} seed={2620}>
-        <Wash pts={[[566, 92], [764, 92], [764, 186], [566, 186]]} seed={2625} fill={SK.sky} opacity={0.55} dx={0} dy={0} />
-        <SketchText x={665} y={66} anchor="middle" size={24} serif>
+      <Poster x0={456} x1={716} top={24} bottom={232} gy={gy} seed={2620}>
+        <Wash pts={[[476, 86], [696, 86], [696, 180], [476, 180]]} seed={2625} fill={SK.sky} opacity={0.55} dx={0} dy={0} />
+        <SketchText x={586} y={60} anchor="middle" size={24} serif>
           Built to last.
         </SketchText>
-        <Box x={665} bottom={178} w={56} h={66} seed={2650} />
+        <Box x={586} bottom={172} w={58} h={68} seed={2650} />
         {[0, 1, 2].map((i) => (
-          <InkLine key={i} pts={rp([[590, 202 + i * 10], [i === 2 ? 700 : 740, 202 + i * 10]])} seed={2660 + i} width={0.8} amp={0.3} />
+          <InkLine key={i} pts={rp([[504, 196 + i * 10], [i === 2 ? 626 : 668, 196 + i * 10]])} seed={2660 + i} width={0.8} amp={0.3} />
         ))}
       </Poster>
-      <Person x={476} y={gy} h={ph} look={{ hair: "bob", hairTone: SK.brown, skin: SK.skin, wear: SK.charcoal, legs: SK.charcoal, outfit: "jacket" }} arms={["down", "down"]} seed={2670} />
-      <SketchText x={476} y={330} anchor="middle" size={12}>
+      <SketchText x={586} y={292} anchor="middle" size={12}>
         CONSCIENTIOUSNESS
       </SketchText>
     </SketchFrame>
@@ -1095,8 +1072,8 @@ export function BrandTraits() {
   );
 }
 
-/* The five dimension rows share one canvas. The brand person stands at left. */
-const DIM = { w: 400, h: 220, gy: 204, ph: 176, px: 78 };
+/* The five dimension rows share one canvas. */
+const DIM = { w: 400, h: 184, gy: 168 };
 
 /** A standing greeting card with a heart on its front. (x, y) is its base. */
 function GreetingCard({ x, y, seed, s = 1 }: { x: number; y: number; seed: number; s?: number }) {
@@ -1116,38 +1093,36 @@ function GreetingCard({ x, y, seed, s = 1 }: { x: number; y: number; seed: numbe
 
 /** Sincerity: down-to-earth and cheerful, with a greeting card and a soup can. */
 export function Sincerity() {
-  const { w, h, gy, ph, px } = DIM;
+  const { w, h, gy } = DIM;
   return (
     <SketchFrame
       id="sk-sincerity"
       width={w}
       height={h}
-      label="The brand as a person, wearing the brand badge: a warm, cheerful figure in a cosy camel cardigan, waving hello. Beside them stand a greeting card with a heart and a can of soup."
+      label="A standing greeting card with a heart on its front beside a warm can of soup."
     >
-      <Backwash cx={204} cy={112} rx={190} ry={98} seed={2801} />
-      <Ground x0={20} x1={384} y={gy} seed={2804} />
-      <BrandPerson x={px} y={gy} h={ph} look={{ hair: "curly", hairTone: SK.tan, skin: SK.skin, wear: SK.camel, legs: SK.tan }} arms={["hip", "wave"]} seed={2810} />
-      <GreetingCard x={218} y={gy} s={1.45} seed={2850} />
-      <Can4 x={320} y={gy} w={52} h={76} label={SK.blush} seed={2860} />
+      <Backwash cx={204} cy={98} rx={182} ry={82} seed={2801} />
+      <Ground x0={42} x1={360} y={gy} seed={2804} />
+      <GreetingCard x={148} y={gy} s={1.65} seed={2850} />
+      <Can4 x={274} y={gy} w={58} h={88} label={SK.blush} seed={2860} />
     </SketchFrame>
   );
 }
 
 /** Excitement: daring and spirited, with a phone and an energy drink. */
 export function Excitement() {
-  const { w, h, gy, ph, px } = DIM;
+  const { w, h, gy } = DIM;
   return (
     <SketchFrame
       id="sk-excitement"
       width={w}
       height={h}
-      label="The brand as a person, wearing the brand badge: a spirited figure in a dark jacket and jeans, both arms flung up in excitement. Beside them stand a sleek smartphone and a can of energy drink marked with a lightning bolt."
+      label="A sleek smartphone beside a can of energy drink marked with a lightning bolt."
     >
-      <Backwash cx={204} cy={112} rx={190} ry={98} seed={2901} />
-      <Ground x0={20} x1={384} y={gy} seed={2904} />
-      <BrandPerson x={px} y={gy} h={ph * 0.92} look={{ hair: "short", hairTone: SK.charcoal, skin: SK.tan, skinOpacity: 0.5, wear: SK.charcoal, legs: SK.sky, outfit: "jacket" }} arms={["up", "up"]} seed={2910} />
-      <Phone3 x={214} y={gy} s={1.05} seed={2950} />
-      <Can4 x={310} y={gy} w={40} h={86} label={SK.sky} bolt seed={2960} />
+      <Backwash cx={204} cy={98} rx={182} ry={82} seed={2901} />
+      <Ground x0={42} x1={360} y={gy} seed={2904} />
+      <Phone3 x={144} y={gy} s={1.15} seed={2950} />
+      <Can4 x={268} y={gy} w={46} h={96} label={SK.sky} bolt seed={2960} />
     </SketchFrame>
   );
 }
@@ -1168,40 +1143,36 @@ function Briefcase({ x, y, w = 34, seed }: { x: number; y: number; w?: number; s
 
 /** Competence: reliable and successful, with a sturdy car and a search engine. */
 export function Competence() {
-  const { w, h, gy, ph, px } = DIM;
-  const [hx, hy] = handAt(px, gy, ph, "hold");
+  const { w, h, gy } = DIM;
   return (
     <SketchFrame
       id="sk-competence"
       width={w}
       height={h}
-      label="The brand as a person, wearing the brand badge: a composed figure in a dark suit, carrying a briefcase. Beside them stand a laptop showing a search box and a solid family car."
+      label="A laptop showing a search box beside a solid family car."
     >
-      <Backwash cx={204} cy={112} rx={190} ry={98} seed={3001} />
-      <Ground x0={20} x1={384} y={gy} seed={3004} />
-      <BrandPerson x={px} y={gy} h={ph} look={{ hair: "short", hairTone: SK.brown, skin: SK.skin, wear: SK.charcoal, legs: SK.charcoal, outfit: "jacket" }} arms={["hip", "hold"]} seed={3010} />
-      <Briefcase x={hx} y={hy} seed={3050} />
-      <Laptop2 x={186} y={gy} s={0.82} seed={3060} />
-      <Car3 x={306} y={gy} s={1} fill={SK.sky} seed={3070} />
+      <Backwash cx={204} cy={98} rx={182} ry={82} seed={3001} />
+      <Ground x0={42} x1={360} y={gy} seed={3004} />
+      <Laptop2 x={136} y={gy} s={1.12} seed={3060} />
+      <Car3 x={278} y={gy} s={1.18} fill={SK.sky} seed={3070} />
     </SketchFrame>
   );
 }
 
 /** Sophistication: elegant and upper-class, with perfume and a fine watch. */
 export function Sophistication() {
-  const { w, h, gy, ph, px } = DIM;
+  const { w, h, gy } = DIM;
   return (
     <SketchFrame
       id="sk-sophistication"
       width={w}
       height={h}
-      label="The brand as a person, wearing the brand badge: an elegant figure in a long evening gown, hair in a bun, a hand on the hip. Beside them stand a perfume bottle and a fine wristwatch."
+      label="A glass perfume bottle beside a fine wristwatch."
     >
-      <Backwash cx={204} cy={112} rx={190} ry={98} seed={3101} />
-      <Ground x0={20} x1={384} y={gy} seed={3104} />
-      <BrandPerson x={px} y={gy} h={ph} look={{ hair: "bun", hairTone: SK.charcoal, skin: SK.camel, skinOpacity: 0.55, wear: SK.charcoal, outfit: "gown" }} arms={["hip", "down"]} seed={3110} />
-      <Perfume2 x={206} y={gy} s={1.2} seed={3150} />
-      <Watch2 x={314} y={gy} s={1.3} seed={3160} />
+      <Backwash cx={204} cy={98} rx={182} ry={82} seed={3101} />
+      <Ground x0={42} x1={360} y={gy} seed={3104} />
+      <Perfume2 x={144} y={gy} s={1.35} seed={3150} />
+      <Watch2 x={274} y={gy} s={1.45} seed={3160} />
     </SketchFrame>
   );
 }
@@ -1253,25 +1224,18 @@ function Tent({ x, y, s = 1, seed }: { x: number; y: number; s?: number; seed: n
 
 /** Ruggedness: outdoorsy and tough, with a four-by-four and a tent. */
 export function Ruggedness() {
-  const { w, h, gy, ph, px } = DIM;
-  const sc = ph / 200;
-  const pack = at(px, gy, [[-36, -160], [-14, -166], [-12, -106], [-38, -110]], sc);
+  const { w, h, gy } = DIM;
   return (
     <SketchFrame
       id="sk-ruggedness"
       width={w}
       height={h}
-      label="The brand as a person, wearing the brand badge: a hiker in a padded jacket and cargo trousers, with a backpack. Beside them stand a small tent and a boxy four-by-four with a spare wheel."
+      label="A ridge tent beside a boxy four-by-four with a spare wheel."
     >
-      <Backwash cx={204} cy={112} rx={190} ry={98} seed={3201} />
-      <Ground x0={20} x1={384} y={gy} seed={3204} />
-      <Wash pts={pack} seed={3206} fill={SK.leather} opacity={0.7} />
-      <InkLine pts={sharp(pack)} seed={3207} closed />
-      <BrandPerson x={px} y={gy} h={ph} look={{ hair: "short", hairTone: SK.brown, skin: SK.tan, skinOpacity: 0.55, wear: SK.camel, legs: SK.earth, outfit: "jacket" }} arms={["down", "down"]} seed={3210} />
-      {/* the backpack strap over the near shoulder */}
-      <InkLine pts={at(px, gy, [[-6, -168], [-1, -150], [2, -126]], sc)} seed={3208} width={1.6} />
-      <Tent x={206} y={gy} s={1.05} seed={3250} />
-      <Jeep x={318} y={gy} s={0.92} seed={3260} />
+      <Backwash cx={204} cy={98} rx={182} ry={82} seed={3201} />
+      <Ground x0={42} x1={360} y={gy} seed={3204} />
+      <Tent x={132} y={gy} s={1.18} seed={3250} />
+      <Jeep x={278} y={gy} s={1.02} seed={3260} />
     </SketchFrame>
   );
 }
@@ -1280,26 +1244,25 @@ export function Ruggedness() {
    ANTHROPOMORPHISM AND BRAND RELATIONSHIPS
    ========================================================================== */
 
-/** A person sees a face in the front of a car. */
+/** A face in the front of a car: headlights as eyes, grille as a smile. */
 export function FaceInObject() {
-  const gy = 246;
-  const cx = 262;
-  const body = sharp(at(cx, gy, [[-92, -26], [-92, -96], [-70, -104], [70, -104], [92, -96], [92, -26]]), true, 6);
-  const glass = sharp(at(cx, gy, [[-66, -104], [-50, -160], [50, -160], [66, -104]]), true, 4);
-  const grille = sharp(at(cx, gy, [[-34, -54], [34, -54], [34, -44], [-34, -44]]), true, 3);
-  const lamp = (dx: number, sd: number) => rp(blobPts(cx + dx, gy - 74, 17, 15, sd, 12, 0.04));
+  const gy = 206;
+  const cx = 200;
+  const body = sharp(at(cx, gy, [[-98, -26], [-98, -100], [-74, -108], [74, -108], [98, -100], [98, -26]]), true, 6);
+  const glass = sharp(at(cx, gy, [[-70, -108], [-54, -166], [54, -166], [70, -108]]), true, 4);
+  const grille = sharp(at(cx, gy, [[-36, -56], [36, -56], [36, -46], [-36, -46]]), true, 3);
+  const lamp = (dx: number, sd: number) => rp(blobPts(cx + dx, gy - 76, 18, 16, sd, 12, 0.04));
   return (
     <SketchFrame
       id="sk-face-in-object"
       width={400}
-      height={268}
-      label="A person looks at the front of a car. Its headlights read as eyes and its grille as a smile. The face they see, with brows, pupils and a smile, is inked over the car."
+      height={228}
+      label="The front of a car whose headlights read as eyes and grille as a smile, with brows, pupils, and a smile inked over the car."
     >
-      <Backwash cx={214} cy={140} rx={190} ry={120} seed={3301} />
-      <Ground x0={20} x1={384} y={gy} seed={3304} />
-      <Person x={64} y={gy} h={186} look={{ hair: "long", hairTone: SK.charcoal, skin: SK.camel, skinOpacity: 0.5, wear: SK.sky, legs: SK.charcoal }} arms={["hip", "down"]} seed={3310} />
+      <Backwash cx={200} cy={118} rx={182} ry={102} seed={3301} />
+      <Ground x0={48} x1={352} y={gy} seed={3304} />
       {/* the car, head on */}
-      {[-62, 62].map((dx, i) => {
+      {[-66, 66].map((dx, i) => {
         const tyre = sharp(at(cx, gy, [[dx - 14, -30], [dx + 14, -30], [dx + 14, -2], [dx - 14, -2]]), true, 4);
         return (
           <g key={dx}>
@@ -1312,7 +1275,7 @@ export function FaceInObject() {
       <Wash pts={glass} seed={3351} fill={SK.sky} opacity={0.75} />
       <InkLine pts={body} seed={3352} closed />
       <InkLine pts={glass} seed={3353} closed />
-      {[-52, 52].map((dx, i) => (
+      {[-54, 54].map((dx, i) => (
         <g key={dx}>
           <Paper pts={lamp(dx, 3360 + i)} seed={3362 + i} />
           <InkLine pts={lamp(dx, 3360 + i)} seed={3364 + i} closed />
@@ -1320,35 +1283,34 @@ export function FaceInObject() {
       ))}
       <Wash pts={grille} seed={3369} fill={SK.charcoal} opacity={0.5} dx={0.5} dy={0.5} />
       <InkLine pts={grille} seed={3370} closed width={1.1} />
-      <InkLine pts={at(cx, gy, [[-92, -32], [92, -32]])} seed={3371} width={1} />
+      <InkLine pts={at(cx, gy, [[-98, -32], [98, -32]])} seed={3371} width={1} />
 
       {/* the face the viewer reads into it, inked like the car it lives on */}
-      <InkLine pts={at(cx, gy, [[-64, -112], [-50, -122], [-34, -116]])} seed={3380} width={1.2} />
-      <InkLine pts={at(cx, gy, [[34, -116], [50, -122], [64, -112]])} seed={3381} width={1.2} />
-      <Wash pts={rp(blobPts(cx - 48, gy - 72, 5, 5, 3382, 8, 0.05))} seed={3385} fill={SK.brown} opacity={0.9} dx={0.4} dy={0.3} />
-      <Wash pts={rp(blobPts(cx + 56, gy - 72, 5, 5, 3383, 8, 0.05))} seed={3386} fill={SK.brown} opacity={0.9} dx={0.4} dy={0.3} />
-      <InkLine pts={at(cx, gy, [[-50, -58], [-30, -38], [0, -34], [30, -38], [50, -58]])} seed={3384} width={1.2} />
+      <InkLine pts={at(cx, gy, [[-66, -116], [-52, -126], [-36, -120]])} seed={3380} width={1.2} />
+      <InkLine pts={at(cx, gy, [[36, -120], [52, -126], [66, -116]])} seed={3381} width={1.2} />
+      <Wash pts={rp(blobPts(cx - 50, gy - 74, 5, 5, 3382, 8, 0.05))} seed={3385} fill={SK.brown} opacity={0.9} dx={0.4} dy={0.3} />
+      <Wash pts={rp(blobPts(cx + 58, gy - 74, 5, 5, 3383, 8, 0.05))} seed={3386} fill={SK.brown} opacity={0.9} dx={0.4} dy={0.3} />
+      <InkLine pts={at(cx, gy, [[-52, -60], [-32, -40], [0, -36], [32, -40], [52, -60]])} seed={3384} width={1.2} />
     </SketchFrame>
   );
 }
 
-/** A round candy mascot wearing the brand badge, waving. A shopper waves back. */
+/** A round candy mascot wearing the brand badge, waving. */
 export function Mascot() {
-  const gy = 246;
-  const mx = 272;
-  const my = 146;
-  const body = rp(blobPts(mx, my, 52, 46, 3401, 16, 0.04));
-  const glove = (x: number, y: number, sd: number) => rp(blobPts(x, y, 8, 7.5, sd, 9, 0.12));
+  const gy = 206;
+  const mx = 200;
+  const my = 112;
+  const body = rp(blobPts(mx, my, 54, 48, 3401, 16, 0.04));
+  const glove = (x: number, y: number, sd: number) => rp(blobPts(x, y, 8.5, 8, sd, 9, 0.12));
   return (
     <SketchFrame
       id="sk-mascot"
       width={400}
-      height={268}
-      label="A round candy mascot with a face, arms, legs and white gloves, wearing the brand badge, waves cheerfully. A shopper waves back at it."
+      height={228}
+      label="A round candy mascot with a face, arms, legs and white gloves, wearing the brand badge and waving cheerfully."
     >
-      <Backwash cx={210} cy={140} rx={190} ry={120} seed={3400} />
-      <Ground x0={20} x1={384} y={gy} seed={3402} />
-      <Person x={70} y={gy} h={180} look={{ hair: "bun", hairTone: SK.brown, skin: SK.skin, wear: SK.leather, legs: SK.charcoal, outfit: "dress" }} arms={["hip", "wave"]} seed={3410} />
+      <Backwash cx={200} cy={118} rx={182} ry={102} seed={3400} />
+      <Ground x0={68} x1={332} y={gy} seed={3402} />
 
       {/* legs and shoes */}
       <InkLine pts={[[mx - 18, my + 44], [mx - 22, gy - 8]]} seed={3450} width={1.6} />
@@ -1526,57 +1488,35 @@ function Mountain({ x, y, s = 1, seed }: { x: number; y: number; s?: number; see
 
 /** The same buyer, seen as data and seen as motives. */
 export function WhoWhy() {
-  const gy = 300;
-  const ph = 200;
-  const [lx, ly] = handAt(96, gy, ph, "hold");
-  const [rx, ry] = handAt(500, gy, ph, "hold");
-  const card: Pt[] = [[170, 96], [330, 96], [330, 196], [170, 196]];
-  const cloud = cloudPts(664, 118, 104, 76, 14);
+  const gy = 208;
+  const card: Pt[] = [[96, 72], [312, 72], [312, 198], [96, 198]];
   return (
     <SketchFrame
       id="sk-who-why"
       width={800}
-      height={336}
-      label="Left, labelled demographics: a shopper with a shopping bag beside a data card reading age 34, income $58K, city Boston. Right, labelled psychographics: the same shopper with the same bag, thinking of a mountain and a heart, a love of the outdoors."
+      height={254}
+      label="Left, labelled demographics: a data card reading age 34, income $58K, city Boston. Right, labelled psychographics: a mountain peak beside a camping tent."
     >
-      <Backwash cx={400} cy={170} rx={390} ry={160} seed={3901} />
-      <Ground x0={20} x1={360} y={gy} seed={3904} />
-      <Ground x0={440} x1={780} y={gy} seed={3908} />
+      <Backwash cx={400} cy={132} rx={386} ry={118} seed={3901} />
+      <PencilLine pts={[[400, 32], [400, 224]]} seed={3903} dash="3 4" />
+      <Ground x0={448} x1={748} y={gy} seed={3908} />
 
       {/* demographics: who buys */}
-      <Person x={96} y={gy} h={ph} look={SHOPPER} arms={["hip", "hold"]} seed={3910} />
-      <Bag x={lx} y={ly} w={34} seed={3950} />
       <Paper pts={card} seed={3960} />
       <InkLine pts={sharp(card)} seed={3961} closed />
       {["AGE 34", "INCOME $58K", "CITY BOSTON"].map((t, i) => (
-        <SketchText key={t} x={188} y={130 + i * 26} size={13}>
+        <SketchText key={t} x={122} y={112 + i * 30} size={14}>
           {t}
         </SketchText>
       ))}
-      <SketchText x={190} y={328} anchor="middle" size={12}>
+      <SketchText x={204} y={238} anchor="middle" size={12}>
         DEMOGRAPHICS
       </SketchText>
 
       {/* psychographics: why they buy */}
-      <Person x={500} y={gy} h={ph} look={SHOPPER} arms={["hip", "hold"]} seed={3970} />
-      <Bag x={rx} y={ry} w={34} seed={4010} />
-      {[
-        [528, 94, 4.5],
-        [546, 104, 7],
-      ].map(([bx, by, br], i) => {
-        const pts = rp(blobPts(bx, by, br, br * 0.9, 4020 + i, 10, 0.1));
-        return (
-          <g key={i}>
-            <Paper pts={pts} seed={4022 + i} />
-            <InkLine pts={pts} seed={4024 + i} closed width={1.1} />
-          </g>
-        );
-      })}
-      <Paper pts={cloud} seed={4030} />
-      <InkLine pts={cloud} seed={4031} closed amp={0.5} />
-      <Mountain x={654} y={160} s={1.05} seed={4040} />
-      <Heart x={712} y={82} s={1.2} seed={4050} />
-      <SketchText x={610} y={328} anchor="middle" size={12}>
+      <Mountain x={544} y={gy} s={1.32} seed={4040} />
+      <Tent x={692} y={gy} s={1.08} seed={4050} />
+      <SketchText x={600} y={238} anchor="middle" size={12}>
         PSYCHOGRAPHICS
       </SketchText>
     </SketchFrame>
@@ -1792,22 +1732,22 @@ export function Opinions() {
    THE VALS SEGMENTATION SYSTEM
    ========================================================================== */
 
-type Seg = { key: string; name: string; look: Look };
+type Seg = { key: string; name: string; fill?: string };
 
-const VALS_TOP: Seg = { key: "innovators", name: "INNOVATORS", look: { hair: "bob", hairTone: SK.charcoal, wear: SK.camel, legs: SK.charcoal } };
+const VALS_TOP: Seg = { key: "innovators", name: "INNOVATORS", fill: SK.sky };
 const VALS_GRID: Seg[][] = [
   [
-    { key: "thinkers", name: "THINKERS", look: { hair: "short", hairTone: SK.brown, wear: SK.sky, outfit: "jacket" } },
-    { key: "achievers", name: "ACHIEVERS", look: { hair: "bun", hairTone: SK.charcoal, skin: SK.camel, skinOpacity: 0.55, wear: SK.charcoal, outfit: "jacket" } },
-    { key: "experiencers", name: "EXPERIENCERS", look: { hair: "curly", hairTone: SK.charcoal, skin: SK.brown, skinOpacity: 0.55, wear: SK.camel, legs: SK.sky } },
+    { key: "thinkers", name: "THINKERS", fill: SK.earth },
+    { key: "achievers", name: "ACHIEVERS", fill: SK.camel },
+    { key: "experiencers", name: "EXPERIENCERS", fill: SK.blush },
   ],
   [
-    { key: "believers", name: "BELIEVERS", look: { hair: "long", hairTone: SK.tan, wear: SK.earth, outfit: "dress" } },
-    { key: "strivers", name: "STRIVERS", look: { hair: "short", hairTone: SK.charcoal, skin: SK.tan, skinOpacity: 0.5, wear: SK.leather, outfit: "jacket" } },
-    { key: "makers", name: "MAKERS", look: { hair: "bob", hairTone: SK.brown, wear: SK.tan, legs: SK.charcoal } },
+    { key: "believers", name: "BELIEVERS" },
+    { key: "strivers", name: "STRIVERS" },
+    { key: "makers", name: "MAKERS" },
   ],
 ];
-const VALS_BOTTOM: Seg = { key: "survivors", name: "SURVIVORS", look: { hair: "bun", hairTone: SK.earth, skin: SK.skin, wear: SK.earth, legs: SK.tan, outfit: "dress" } };
+const VALS_BOTTOM: Seg = { key: "survivors", name: "SURVIVORS" };
 const MOTIVES = ["IDEALS", "ACHIEVEMENT", "SELF-EXPRESSION"];
 
 /** The VALS framework: resources from high to low, motivation across. */
@@ -1821,9 +1761,9 @@ export function VALSMap() {
     return (
       <g key={seg.key}>
         <Paper pts={box} seed={sd} />
+        {seg.fill ? <Wash pts={box} seed={sd + 3} fill={seg.fill} opacity={0.45} dx={1} dy={1} /> : null}
         <InkLine pts={sharp(box)} seed={sd + 1} closed width={1.1} />
-        <Person x={r2(x0 + 30)} y={r2(y0 + hh - 6)} h={r2(hh - 12)} look={seg.look} arms={["hip", "down"]} seed={sd + 2} face={false} />
-        <SketchText x={r2(x0 + 58)} y={r2(y0 + hh / 2 + 5)} size={13}>
+        <SketchText x={r2(x0 + w / 2)} y={r2(y0 + hh / 2 + 5)} anchor="middle" size={14} serif>
           {seg.name}
         </SketchText>
       </g>
@@ -1834,14 +1774,14 @@ export function VALSMap() {
       id="sk-vals-map"
       width={800}
       height={414}
-      label="The VALS map of eight consumer segments, each with a small figure. Innovators span the top, where resources are highest. Survivors span the bottom, where they are lowest. Between them, three columns by primary motivation: ideals, with thinkers above believers. Achievement, with achievers above strivers. And self-expression, with experiencers above makers. An arrow on the left runs from high resources to low resources."
+      label="The VALS map of eight consumer segments. Innovators span the top, where resources are highest. Survivors span the bottom, where they are lowest. Between them, three columns by primary motivation: ideals, with thinkers above believers. Achievement, with achievers above strivers. And self-expression, with experiencers above makers. An arrow on the left runs from high resources to low resources."
     >
       <Backwash cx={420} cy={206} rx={390} ry={200} seed={4601} />
       {/* resources, high to low */}
-      <SketchText x={20} y={24} size={10}>
+      <SketchText x={20} y={24} size={11}>
         HIGH RESOURCES
       </SketchText>
-      <SketchText x={20} y={402} size={10}>
+      <SketchText x={20} y={402} size={11}>
         LOW RESOURCES
       </SketchText>
       <SketchArrow pts={[[52, 330], [52, 40]]} seed={4602} width={1.4} head={11} />
@@ -1857,37 +1797,6 @@ export function VALSMap() {
       {VALS_GRID.map((row, r) => row.map((seg, c) => cell(colX(c), 140 + r * 80, cw, 66, seg, 4700 + r * 60 + c * 20)))}
       {cell(gx, 310, gw, 64, VALS_BOTTOM, 4900)}
     </SketchFrame>
-  );
-}
-
-const VALS_KEYS = [
-  ["innovators"],
-  ["thinkers", "achievers", "experiencers"],
-  ["believers", "strivers", "makers"],
-  ["survivors"],
-];
-
-/** The VALS map in miniature, with the named segments washed teal. */
-export function VALSMark({ lit }: { lit: string[] }) {
-  const rowsY = [3, 13, 23, 33];
-  return (
-    <svg viewBox="0 0 62 42" className="h-10 w-[3.75rem] shrink-0" aria-hidden>
-      {VALS_KEYS.map((row, r) =>
-        row.map((k, c) => {
-          const w = row.length === 1 ? 56 : 17.3;
-          const x = 3 + c * (17.3 + 2);
-          const y = rowsY[r];
-          const box: Pt[] = [[x, y], [x + w, y], [x + w, y + 7], [x, y + 7]];
-          const on = lit.includes(k);
-          return (
-            <g key={k}>
-              {on ? <path d={wobble(box, 980 + r * 3 + c, 0.5, 6, true)} fill={SK.teal} opacity={0.6} transform="translate(0.8 0.5)" /> : null}
-              <path d={wobble(box, 990 + r * 3 + c, 0.35, 6, true)} fill="none" stroke={SK.ink} strokeWidth={0.8} strokeLinejoin="round" />
-            </g>
-          );
-        }),
-      )}
-    </svg>
   );
 }
 

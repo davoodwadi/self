@@ -103,7 +103,7 @@ export default function DigitalTransformationWeek4() {
       </Link>
 
       <PosterHero
-        category="Week 04: Digital Transformation"
+        category="Week 4: Digital Transformation"
         title="TAM, UTAUT, IoT, Cloud, Edge, Fog"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"

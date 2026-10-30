@@ -39,7 +39,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 03: CONSUMER BEHAVIOR
+// WEEK 3: CONSUMER BEHAVIOR
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -444,13 +444,13 @@ function StepSlide({
 export default function Week3() {
   return (
     <SlideDeck
-      label="Week 03"
+      label="Week 3"
     >
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 03: Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 3: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           Consumer <span className="text-[var(--signal)]">Behavior</span>
         </Title>

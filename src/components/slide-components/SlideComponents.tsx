@@ -191,10 +191,10 @@ export function Slide({
             aria-hidden
             className="type-caption absolute left-5 bottom-8 md:left-10 lg:left-16 select-none text-[var(--ink-3)]/50 tabular-nums"
           >
-            {String(__index).padStart(2, "0")}
+            {String(__index)}
             <span className="opacity-45">
               {" "}
-              / {String(__total).padStart(2, "0")}
+              / {String(__total)}
             </span>
           </span>
         ) : null}
@@ -209,7 +209,7 @@ export function Slide({
         </div>
       </section>
 
-      {/* The quiz follows its slide. It is labelled "Knowledge Check" and every
+      {/* The quiz follows its slide. Every
           week's questions are written against the content of the slide they are
           attached to: week 3 even opens one with "according to the context on
           Information Search". Rendering it ahead of that section asked all
@@ -351,7 +351,7 @@ export function Title({
   className?: string;
 }) {
   return (
-    <h1 className={cn("type-display max-w-[18ch] mb-6", className)}>
+    <h1 className={cn("type-display max-w-4xl mb-6", className)}>
       {children}
     </h1>
   );
@@ -485,8 +485,7 @@ export function Tag({
   className?: string;
 }) {
   return (
-    <div className={cn("flex items-center gap-3 mb-5", className)}>
-      <span className="h-px w-7 bg-[var(--signal)]" aria-hidden />
+    <div className={cn("mb-5", className)}>
       <span className="type-label">{children}</span>
     </div>
   );

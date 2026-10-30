@@ -37,7 +37,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 01: INTRODUCTION TO MARKETING & THE MARKETING PROCESS
+// WEEK 1: INTRODUCTION TO MARKETING & THE MARKETING PROCESS
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -659,12 +659,12 @@ function GlyphAgent() {
 
 export default function Week1() {
   return (
-    <SlideDeck label="Week 01">
+    <SlideDeck label="Week 1">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 01: Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 1: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[16ch]">
           Introduction to Marketing{" "}
           <span className="text-[var(--signal)]">&amp;</span> The Marketing

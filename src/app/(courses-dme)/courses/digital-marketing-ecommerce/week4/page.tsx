@@ -30,7 +30,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 04: RECOMMENDER SYSTEMS, SEARCH RANKINGS, AND RETAIL MEDIA
+// WEEK 4: RECOMMENDER SYSTEMS, SEARCH RANKINGS, AND RETAIL MEDIA
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and which catalogue plate
@@ -43,12 +43,12 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading
 
 export default function Week4Page() {
   return (
-    <SlideDeck label="Week 04">
+    <SlideDeck label="Week 4">
       {/* ================================================================
           01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 04: Digital Marketing &amp; E-Commerce</Subtitle>
+        <Subtitle variant="hero">Week 4: Digital Marketing &amp; E-Commerce</Subtitle>
         <Title className="mt-6 !max-w-[22ch]">Recommender Systems, Search Rankings, and Retail Media</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[52ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.3rem,2.1vw,1.8rem)]">

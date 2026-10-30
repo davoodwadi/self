@@ -6,7 +6,7 @@ week: week7
 ---
 
 ## Title Slide
-- Week 07
+- Week 7
 - Hypothesis testing assesses whether a difference observed in a sample is likely to exist in the population.
 
 ## From Sample to Population [no-exercise]

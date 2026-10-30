@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Consumer Behavior | Week 06, figures
+   Consumer Behavior | Week 6, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates for attitudes and persuasion: wobbly doubled ink
    and loose watercolour washes set off-register. Every mark comes from
@@ -689,25 +689,25 @@ function Cross({ x, y, r = 4, seed }: { x: number; y: number; r?: number; seed: 
   );
 }
 
-/** Knowledge: a jumble of packs, sorted in the shopper's mind into good and bad. */
+/** Knowledge: a jumble of packs, sorted into two neat rows of good and bad. */
 export function KnowledgePlate() {
-  const g = 196;
+  const g = 186;
   const jumble: [number, number, number, string | undefined][] = [
-    [26, g, -14, SK.camel],
-    [46, g, 8, undefined],
-    [66, g, -4, SK.sky],
-    [36, g - 30, 20, SK.earth],
-    [58, g - 31, -16, SK.camel],
-    [86, g, 12, SK.earth],
+    [22, g, -14, SK.camel],
+    [42, g, 8, undefined],
+    [62, g, -4, SK.sky],
+    [32, g - 30, 20, SK.earth],
+    [54, g - 31, -16, SK.camel],
+    [82, g, 12, SK.earth],
   ];
   const row = (y: number, fills: (string | undefined)[], mark: "tick" | "cross", seed: number) =>
     fills.map((f, i) => (
       <g key={i}>
-        <Pack x={78 + i * 22} bottom={y} w={14} h={19} seed={seed + i * 4} fill={f} />
+        <Pack x={144 + i * 32} bottom={y} w={20} h={28} seed={seed + i * 4} fill={f} />
         {mark === "tick" ? (
-          <Tick2 x={78 + i * 22} y={y + 7} s={0.4} seed={seed + 50 + i} />
+          <Tick2 x={144 + i * 32} y={y + 10} s={0.5} seed={seed + 50 + i} />
         ) : (
-          <Cross x={78 + i * 22} y={y + 7} r={3} seed={seed + 50 + i * 2} />
+          <Cross x={144 + i * 32} y={y + 10} r={3.5} seed={seed + 50 + i * 2} />
         )}
       </g>
     ));
@@ -716,17 +716,18 @@ export function KnowledgePlate() {
       id="sk-knowledge"
       width={240}
       height={214}
-      label="On the left, a jumbled heap of different packs. A shopper beside it thinks of the same packs sorted into two neat rows: the top row ticked, the bottom row crossed out."
+      label="On the left, a jumbled heap of different packs. An arrow leads to the right, where the same packs are sorted onto two neat shelves: the top row ticked in teal, the bottom row crossed out."
     >
       <Backwash cx={120} cy={112} rx={112} ry={98} seed={1300} />
-      <Ground x0={10} x1={226} y={g} seed={1301} />
+      <Ground x0={10} x1={100} y={g} seed={1301} />
       {jumble.map(([x, b, t, f], i) => (
         <TiltPack key={i} x={x} bottom={b} tilt={t} fill={f} seed={1310 + i * 4} />
       ))}
-      <Thought x={100} y={58} rx={50} ry={42} tx={198} ty={82} seed={1340} />
-      {row(42, [SK.camel, SK.sky, undefined], "tick", 1350)}
-      {row(78, [SK.earth, SK.camel, SK.sky], "cross", 1420)}
-      <Person x={210} y={g} h={140} look={SHOPPER} arms={["chin", "down"]} flip seed={1500} />
+      <SketchArrow pts={[[98, 126], [122, 126]]} seed={1335} head={6} />
+      <InkLine pts={rp([[128, 92], [224, 92]])} seed={1340} width={1.2} />
+      <InkLine pts={rp([[128, 162], [224, 162]])} seed={1341} width={1.2} />
+      {row(91, [SK.camel, SK.sky, undefined], "tick", 1350)}
+      {row(161, [SK.earth, SK.camel, SK.sky], "cross", 1420)}
     </SketchFrame>
   );
 }
@@ -1195,14 +1196,12 @@ export function WhoseInterests() {
 
 /**
  * One poster for the same product and the same $200, framed two ways: a
- * gain (save it, a cheerful owner) or a loss (lose it, a worried non-owner).
+ * gain (save $200) or a loss (lose $200).
  */
 function FramePoster({ id, gain, seed }: { id: string; gain: boolean; seed: number }) {
   const sheet = sharp(rp([[60, 14], [340, 14], [340, 206], [60, 206]]), true, 3);
-  const g = 192;
-  const h = 124;
-  const px = gain ? 156 : 236;
-  const hand = handAt(px, g, h, "carry", 1);
+  const badge = sharp(rp([[214, 96], [306, 96], [306, 148], [214, 148]]), true, 2);
+  const g = 186;
   return (
     <SketchFrame
       id={id}
@@ -1210,31 +1209,32 @@ function FramePoster({ id, gain, seed }: { id: string; gain: boolean; seed: numb
       height={220}
       label={
         gain
-          ? "A poster headed SAVE $200 A YEAR WITH IT: a cheerful owner waves and holds the brand's box."
-          : "A poster headed LOSE $200 A YEAR WITHOUT IT: a worried shopper with a hand to the chin looks back at the brand's box, a broken heart between them."
+          ? "A poster headed Save $200 a year with it, showing the brand's product box beside a +$200 tag."
+          : "A poster headed Lose $200 a year without it, showing the brand's product box in faint pencil beside a -$200 tag."
       }
     >
       <Backwash cx={200} cy={112} rx={196} ry={104} seed={seed} />
       <Paper pts={sheet} seed={seed + 1} />
       <InkLine pts={sheet} seed={seed + 2} closed />
-      <SketchText x={200} y={46} anchor="middle" size={20} serif>
+      <SketchText x={200} y={46} anchor="middle" size={19} serif>
         {gain ? "Save $200 a year with it" : "Lose $200 a year without it"}
       </SketchText>
       <InkLine pts={rp([[90, 60], [310, 60]])} seed={seed + 3} width={0.8} amp={0.3} />
       <InkLine pts={rp([[86, g], [314, g]])} seed={seed + 4} width={0.9} />
-      {gain ? (
-        <>
-          <Person x={px} y={g} h={h} look={SHOPPER} arms={["wave", "carry"]} seed={seed + 10} />
-          <Box x={r2(hand[0] + 14)} bottom={r2(hand[1] + 12)} w={30} h={34} seed={seed + 60} />
-          <Heart x={238} y={100} s={1.1} seed={seed + 70} />
-        </>
-      ) : (
-        <>
-          <Box x={146} bottom={g} w={34} h={40} seed={seed + 60} />
-          <Person x={px} y={g} h={h} look={SHOPPER} arms={["down", "chin"]} flip seed={seed + 10} />
-          <Heart x={190} y={104} s={1.1} broken seed={seed + 70} />
-        </>
-      )}
+      <Box x={144} bottom={g} w={54} h={68} pencil={!gain} seed={seed + 60} />
+      <Paper pts={badge} seed={seed + 64} />
+      <Wash
+        pts={badge}
+        seed={seed + 65}
+        fill={gain ? SK.teal : SK.blush}
+        opacity={0.75}
+        dx={1}
+        dy={1}
+      />
+      <InkLine pts={badge} seed={seed + 66} closed width={1.1} />
+      <SketchText x={260} y={129} anchor="middle" size={20} serif>
+        {gain ? "+$200" : "−$200"}
+      </SketchText>
     </SketchFrame>
   );
 }
@@ -1440,19 +1440,18 @@ export function PatternNotFeeling() {
    ========================================================================== */
 
 /**
- * Auditing an ad: a magnifier over a poster with a spokesperson and the
- * brand's box, and a checklist of the week's three marks, each ticked.
+ * Auditing an ad: a magnifier over a poster with a headline and the
+ * brand's product pack, and a checklist of the week's three marks, each ticked.
  */
 export function AuditAd() {
   const poster = sharp(rp([[30, 18], [230, 18], [230, 214], [30, 214]]), true, 3);
-  const g = 196;
-  const hand = handAt(100, g, 124, "carry", 1);
+  const g = 186;
   return (
     <SketchFrame
       id="sk-audit-ad"
       width={400}
       height={232}
-      label="An advertisement poster with a headline and a spokesperson holding the brand's box, a magnifying glass held over it. Beside it, a checklist of a heart, a thought cloud and a shopping bag, each ticked."
+      label="An advertisement poster with a headline and the brand's product pack, a magnifying glass held over it. Beside it, a checklist of a heart, a thought cloud and a shopping bag, each ticked."
     >
       <Backwash cx={200} cy={116} rx={196} ry={110} seed={3600} />
       <Paper pts={poster} seed={3601} />
@@ -1460,8 +1459,7 @@ export function AuditAd() {
       <InkLine pts={rp([[50, 42], [210, 42]])} seed={3603} width={2.4} amp={0.4} />
       <InkLine pts={rp([[50, 58], [170, 58]])} seed={3604} width={1} amp={0.3} />
       <InkLine pts={rp([[44, g], [216, g]])} seed={3605} width={0.9} />
-      <Person x={100} y={g} h={124} look={SOURCE} arms={["down", "carry"]} seed={3610} />
-      <Box x={r2(hand[0] + 14)} bottom={r2(hand[1] + 12)} w={30} h={34} seed={3660} />
+      <Pack x={118} bottom={g} w={54} h={84} seed={3660} fill={SK.camel} badge />
       <Magnifier x={178} y={124} r={24} seed={3670} />
 
       {[

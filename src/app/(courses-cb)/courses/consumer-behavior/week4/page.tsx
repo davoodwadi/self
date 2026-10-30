@@ -1,51 +1,28 @@
 "use client";
 
 import React from "react";
-import { SlideDeck, Slide, Title } from "@/components/slide-components/SlideComponents";
+import {
+  SlideDeck,
+  Slide,
+  Title,
+} from "@/components/slide-components/SlideComponents";
 import { createExerciseLookup, type ExerciseInput } from "@/lib/course-exercise";
 import { cn } from "@/lib/utils";
 import exercisesData from "./exercises.json";
 import {
-  CurrentToBetter,
   MotivationGap,
-  TensionAction,
-  GymMotives,
-  ConnectOffer,
-  HungerThirst,
   DriveCurve,
-  MarketingDrive,
   ExpectancyChain,
-  MoreMotivated,
-  NeedHunger,
-  WantBurger,
-  ShapedWants,
-  DemandTest,
   ShapeNotCreate,
   MaslowPyramid,
-  TierMark,
-  SeveralLevels,
-  ApproachApproach,
-  ApproachAvoidance,
-  AvoidanceAvoidance,
   PhoneOrTrip,
-  ClearerChoice,
   InvolvementScale,
-  ProductInvolvement,
-  MessageInvolvement,
-  SituationInvolvement,
-  HighVsLow,
-  FunctionalValue,
-  SocialValue,
-  ExperientialValue,
   FitsValues,
-  FindTheMotive,
-  WhyReview,
   CreditByMessage,
-  DelegateByInvolvement,
 } from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR | WEEK 04: MOTIVATION, NEEDS, AND VALUES
+// CONSUMER BEHAVIOR | WEEK 4: MOTIVATION, NEEDS, AND VALUES
 // ============================================================================
 // Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -80,14 +57,14 @@ const GAP = "mt-10 [@media(min-width:768px)_and_(max-height:900px)]:!mt-6";
 type Tone = "signal" | "counter" | "ink";
 
 const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
+  signal: "border-[var(--rule)]",
+  counter: "border-[var(--rule)]",
+  ink: "border-[var(--rule)]",
 };
 
 const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--signal)]",
-  counter: "text-[var(--counter)]",
+  signal: "text-[var(--ink)]",
+  counter: "text-[var(--ink)]",
   ink: "text-[var(--ink)]",
 };
 
@@ -113,9 +90,9 @@ function Term({ children, tone = "ink" }: { children: React.ReactNode; tone?: To
   return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
-/** Inline colour for a phrase inside a serif line. */
+/** Inline emphasis for a phrase inside a line. */
 function Tint({ children, tone = "signal" }: { children: React.ReactNode; tone?: Tone }) {
-  return <span className={TEXT[tone]}>{children}</span>;
+  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
 /** Hairline-topped block. */
@@ -129,7 +106,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
+    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -199,7 +176,7 @@ function Lede({
   className = "",
 }: {
   children: React.ReactNode;
-  plate: React.ReactNode;
+  plate?: React.ReactNode;
   wide?: boolean;
   cols?: string;
   className?: string;
@@ -240,21 +217,19 @@ function Cells({
     >
       {items.map((s) => (
         <li key={s.key} className="flex min-w-0 flex-col gap-4">
-          <div className={cn("border-t-2 pt-4", BORDER[s.tone])}>
+          <div className={cn("border-t pt-4", BORDER[s.tone])}>
             <p className="type-body">{s.text}</p>
           </div>
-          {s.plate ? <Plate className={cn("mt-auto", plateClass)}>{s.plate}</Plate> : null}
         </li>
       ))}
     </ol>
   );
 }
 
-/** A line with the pyramid tiers it names. */
-function TierLine({ lit, children }: { lit: number[]; children: React.ReactNode }) {
+/** A line naming one or more pyramid tiers. */
+function TierLine({ children }: { lit?: number[]; children: React.ReactNode }) {
   return (
-    <li className="flex min-w-0 items-start gap-4 border-t-2 border-[var(--ink)] pt-4">
-      <TierMark lit={lit} />
+    <li className="min-w-0 border-t border-[var(--rule)] pt-4">
       <p className="type-body min-w-0">{children}</p>
     </li>
   );
@@ -265,28 +240,23 @@ const LEDE = "!text-[clamp(1.3rem,2vw,1.75rem)]";
 
 export default function Week4() {
   return (
-    <SlideDeck label="Week 04">
+    <SlideDeck label="Week 4">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
-          <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
-              Week 04
+        <div className="w-full max-w-4xl">
+          <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
+            Week 4
+          </p>
+          <p className="type-caption mt-2">Consumer Behavior | Davood Wadi, PhD</p>
+          <Title className="mt-6">Motivation, Needs, and Values</Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote">
+              {"Every purchase is an attempt to "}
+              move from a current state to <Tint>a better one</Tint>
+              .
             </p>
-            <p className="type-caption mt-2">Consumer Behavior | Davood Wadi, PhD</p>
-            <Title className="mt-8 !max-w-[14ch]">Motivation, Needs, and Values</Title>
-            <div className="mt-10 max-w-[34ch] border-t-2 border-[var(--ink)] pt-6">
-              <p className="type-quote">
-                {"Every purchase is an attempt to "}
-                move from a current state to <Tint>a better one</Tint>
-                .
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto w-full max-w-[340px]">
-            <CurrentToBetter />
           </div>
         </div>
       </Slide>
@@ -311,7 +281,6 @@ export default function Week4() {
             {
               key: "tension",
               tone: "ink",
-              plate: <TensionAction />,
               text: (
                 <>
                   A need creates <Term>tension</Term>. The consumer takes action to reduce that
@@ -322,7 +291,6 @@ export default function Week4() {
             {
               key: "motives",
               tone: "ink",
-              plate: <GymMotives />,
               text: (
                 <>
                   {" "}
@@ -335,7 +303,6 @@ export default function Week4() {
             {
               key: "connect",
               tone: "ink",
-              plate: <ConnectOffer />,
               text: (
                 <>
                   {" "}
@@ -359,16 +326,16 @@ export default function Week4() {
         exercise={exercise["drive-theory-tension-and-reduction"]}
       >
         <Heading kicker="Drive Theory:">Tension and Reduction</Heading>
-        <div className="grid w-full gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-end lg:gap-12">
+        <Lede plate={<DriveCurve />} cols="lg:grid-cols-[1.4fr_1fr]">
           <Statement className={cn(LEDE, "!max-w-[36ch]")}>
             Drive theory says that an unmet need creates an uncomfortable internal state called a{" "}
             <Tint>drive</Tint>.
           </Statement>{" "}
-          <Lead className="text-[var(--ink-3)]">
+          <Lead className="mt-4 text-[var(--ink-3)]">
             The drive <Term>pushes</Term> the consumer toward an action that reduces the
             discomfort.
           </Lead>
-        </div>
+        </Lede>
         <Cells
           cols={3}
           className={GAP}
@@ -376,7 +343,6 @@ export default function Week4() {
             {
               key: "hunger",
               tone: "ink",
-              plate: <HungerThirst />,
               text: (
                 <>
                   {" "}
@@ -388,7 +354,6 @@ export default function Week4() {
             {
               key: "falls",
               tone: "ink",
-              plate: <DriveCurve />,
               text: (
                 <>
                   {" "}
@@ -400,7 +365,6 @@ export default function Week4() {
             {
               key: "marketing",
               tone: "ink",
-              plate: <MarketingDrive />,
               text: (
                 <>
                   {" "}
@@ -466,14 +430,12 @@ export default function Week4() {
             },
           ]}
         />
-        <Lede wide plate={<MoreMotivated />} className={GAP}>
-          <Ruled tone="ink" className="!pt-4">
-            <Lead>
-              A consumer is more motivated when the goal seems <Term>possible</Term>, the product
-              seems <Term>useful</Term>, and the result feels <Term>valuable</Term>.
-            </Lead>
-          </Ruled>
-        </Lede>
+        <Ruled tone="ink" className={cn("!pt-4", GAP)}>
+          <Lead>
+            A consumer is more motivated when the goal seems <Term>possible</Term>, the product
+            seems <Term>useful</Term>, and the result feels <Term>valuable</Term>.
+          </Lead>
+        </Ruled>
       </Slide>
 
       {/* ================================================================
@@ -486,42 +448,39 @@ export default function Week4() {
         exercise={exercise["intrinsic-and-extrinsic-motivation-why-consumers-write-reviews"]}
       >
         <Heading kicker="Intrinsic and Extrinsic Motivation:">Why Consumers Write Reviews</Heading>
-        {/* The definitions lead the two-panel plate. The reward and its risk
-            follow beneath them, beside the plate. */}
-        <div className="grid w-full items-center gap-6 lg:grid-cols-[1fr_minmax(0,400px)] lg:gap-x-12">
-          <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:col-start-1 lg:row-start-1 lg:self-end">
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                <Term>Intrinsic motivation</Term> comes from the activity itself, such as enjoyment
-                or the wish to help others.
-              </P>
-            </Ruled>
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                <Term>Extrinsic motivation</Term> comes from an outside reward, such as
-                money, points, or a discount.
-              </P>
-            </Ruled>
-            <P className="sm:col-span-2">
+        <div className="grid w-full gap-6 md:grid-cols-3">
+          <Ruled tone="ink" className="!pt-3">
+            <P>
+              <Term>Intrinsic motivation</Term> comes from the activity itself, such as enjoyment
+              or the wish to help others.
+            </P>
+          </Ruled>
+          <Ruled tone="ink" className="!pt-3">
+            <P>
+              <Term>Extrinsic motivation</Term> comes from an outside reward, such as
+              money, points, or a discount.
+            </P>
+          </Ruled>
+          <Ruled tone="ink" className="!pt-3">
+            <P>
               Many consumers write online reviews to <Term>help other shoppers</Term> decide. This
               is an intrinsic, altruistic motive.
             </P>
-          </div>
-          <Plate className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
-            <WhyReview />
-          </Plate>
-          <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:col-start-1 lg:row-start-2 lg:self-start">
+          </Ruled>
+        </div>
+        <div className="mt-6 grid w-full gap-6 md:grid-cols-2">
+          <Ruled tone="ink" className="!pt-3">
             <P>
               Firms often offer rewards for reviews, because reviews guide both shoppers and the AI
               agents that read reviews for them.
             </P>
-            <Ruled tone="ink" className="!pt-3">
-              <P>
-                A reward can <Term>crowd out</Term> intrinsic motives. When people are
-                paid for a kind act, the act can start to feel like a transaction.
-              </P>
-            </Ruled>
-          </div>
+          </Ruled>
+          <Ruled tone="ink" className="!pt-3">
+            <P>
+              A reward can <Term>crowd out</Term> intrinsic motives. When people are
+              paid for a kind act, the act can start to feel like a transaction.
+            </P>
+          </Ruled>
         </div>
         <div className={cn("grid w-full items-center gap-8 lg:grid-cols-[1fr_minmax(0,360px)] lg:gap-12", GAP)}>
           <div className="grid min-w-0 gap-4">
@@ -566,7 +525,6 @@ export default function Week4() {
             {
               key: "need",
               tone: "ink",
-              plate: <NeedHunger />,
               text: (
                 <>
                   A <Term>need</Term> is a basic biological or psychological
@@ -577,7 +535,6 @@ export default function Week4() {
             {
               key: "want",
               tone: "ink",
-              plate: <WantBurger />,
               text: (
                 <>
                   {" "}
@@ -589,7 +546,6 @@ export default function Week4() {
             {
               key: "shaped",
               tone: "ink",
-              plate: <ShapedWants />,
               text: (
                 <>
                   {" "}
@@ -600,7 +556,6 @@ export default function Week4() {
             {
               key: "demand",
               tone: "ink",
-              plate: <DemandTest />,
               text: (
                 <>
                   {" "}
@@ -651,7 +606,7 @@ export default function Week4() {
             be.
           </TierLine>
         </ol>
-        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1fr_1fr] lg:gap-10 [@media(min-width:768px)_and_(max-height:900px)]:!mt-6">
+        <div className="mt-8 grid w-full items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10 [@media(min-width:768px)_and_(max-height:900px)]:!mt-6">
           <Plate>
             <MaslowPyramid />
           </Plate>
@@ -661,9 +616,6 @@ export default function Week4() {
               The hierarchy is a guide, not a strict shopping sequence.
             </span>
           </Statement>
-          <Plate>
-            <SeveralLevels />
-          </Plate>
         </div>
       </Slide>
 
@@ -684,7 +636,6 @@ export default function Week4() {
             {
               key: "aa",
               tone: "ink",
-              plate: <ApproachApproach />,
               text: (
                 <>
                   <Term>Approach-approach conflict</Term> occurs when a consumer wants two
@@ -695,7 +646,6 @@ export default function Week4() {
             {
               key: "av",
               tone: "ink",
-              plate: <ApproachAvoidance />,
               text: (
                 <>
                   {" "}
@@ -707,7 +657,6 @@ export default function Week4() {
             {
               key: "vv",
               tone: "ink",
-              plate: <AvoidanceAvoidance />,
               text: (
                 <>
                   {" "}
@@ -718,7 +667,7 @@ export default function Week4() {
             },
           ]}
         />
-        <div className={cn(GAP, "grid w-full gap-10 lg:grid-cols-2 lg:gap-12")}>
+        <div className={cn(GAP, "grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-12")}>
           <Lede plate={<PhoneOrTrip />} cols="xl:grid-cols-[1fr_1.35fr]">
             <Ruled tone="ink" className="!pt-4">
               <P>
@@ -728,14 +677,12 @@ export default function Week4() {
               </P>
             </Ruled>
           </Lede>
-          <Lede plate={<ClearerChoice />} cols="xl:grid-cols-[1fr_1.35fr]">
-            <Ruled tone="ink" className="!pt-4">
-              <P>
-                Strong brands reduce conflict by making <Term>benefits clear</Term>{" "}
-                and <Term>costs easier to understand</Term>.
-              </P>
-            </Ruled>
-          </Lede>
+          <Ruled tone="ink" className="!pt-4">
+            <P>
+              Strong brands reduce conflict by making <Term>benefits clear</Term>{" "}
+              and <Term>costs easier to understand</Term>.
+            </P>
+          </Ruled>
         </div>
       </Slide>
 
@@ -753,12 +700,10 @@ export default function Week4() {
         <Cells
           cols={3}
           className={GAP}
-          plateClass="mx-auto max-w-[210px]"
           items={[
             {
               key: "product",
               tone: "ink",
-              plate: <ProductInvolvement />,
               text: (
                 <>
                   <Term>Product involvement</Term> is high when the product affects
@@ -769,7 +714,6 @@ export default function Week4() {
             {
               key: "message",
               tone: "ink",
-              plate: <MessageInvolvement />,
               text: (
                 <>
                   {" "}
@@ -781,7 +725,6 @@ export default function Week4() {
             {
               key: "situation",
               tone: "ink",
-              plate: <SituationInvolvement />,
               text: (
                 <>
                   {" "}
@@ -792,10 +735,8 @@ export default function Week4() {
             },
           ]}
         />
-        {/* High and low involvement lead their plate. The delegation line
-            sits beneath them and leads its own plate on the right. */}
-        <div className={cn("grid w-full items-center gap-6 lg:grid-cols-[1.6fr_1.1fr_0.8fr] lg:gap-x-8", GAP)}>
-          <Ruled tone="ink" className="!pt-4 lg:col-start-1 lg:row-start-1 lg:self-end">
+        <div className={cn("grid w-full gap-6 md:grid-cols-2", GAP)}>
+          <Ruled tone="ink" className="!pt-4">
             <Lead className="!text-[clamp(1.05rem,1.4vw,1.25rem)]">
               {" "}
               <Term>High involvement</Term> leads to more effort and careful comparison.{" "}
@@ -804,17 +745,13 @@ export default function Week4() {
               </span>
             </Lead>
           </Ruled>
-          <Plate wide className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
-            <HighVsLow />
-          </Plate>
-          <P className="lg:col-start-1 lg:row-start-2 lg:self-start">
-            Involvement also shapes <Term>delegation</Term>. A consumer may let an AI agent reorder
-            laundry detergent, a low-involvement purchase, but still choose an engagement ring in
-            person.
-          </P>
-          <Plate className="lg:col-start-3 lg:row-span-2 lg:row-start-1">
-            <DelegateByInvolvement />
-          </Plate>
+          <Ruled tone="ink" className="!pt-4">
+            <P>
+              Involvement also shapes <Term>delegation</Term>. A consumer may let an AI agent reorder
+              laundry detergent, a low-involvement purchase, but still choose an engagement ring in
+              person.
+            </P>
+          </Ruled>
         </div>
       </Slide>
 
@@ -839,7 +776,6 @@ export default function Week4() {
             {
               key: "functional",
               tone: "ink",
-              plate: <FunctionalValue />,
               text: (
                 <>
                   <Term>Functional values</Term> focus on performance, convenience, and
@@ -850,7 +786,6 @@ export default function Week4() {
             {
               key: "social",
               tone: "ink",
-              plate: <SocialValue />,
               text: (
                 <>
                   {" "}
@@ -862,7 +797,6 @@ export default function Week4() {
             {
               key: "experiential",
               tone: "ink",
-              plate: <ExperientialValue />,
               text: (
                 <>
                   {" "}
@@ -891,9 +825,9 @@ export default function Week4() {
         <Heading kicker="Discussion:" tone="counter">
           Find the Motive
         </Heading>
-        <div className="relative w-full max-w-5xl border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-8 md:px-14 md:py-10">
+        <div className="relative w-full max-w-5xl border-l border-[var(--rule-2)] pl-6 py-2">
           <p className="type-quote !text-[clamp(1.35rem,2.5vw,2.1rem)] max-w-[46ch]">
-            <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
+            <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--ink-3)]">
               Discussion:
             </span>{" "}
             Choose a recent purchase.{" "}
@@ -902,9 +836,6 @@ export default function Week4() {
             motivational conflict?
           </p>
         </div>
-        <Plate wide className="mt-8 max-w-5xl">
-          <FindTheMotive />
-        </Plate>
       </Slide>
     </SlideDeck>
   );

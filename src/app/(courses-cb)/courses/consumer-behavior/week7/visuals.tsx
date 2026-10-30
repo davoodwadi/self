@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Consumer Behavior | Week 07, figures
+   Consumer Behavior | Week 7, figures
    --------------------------------------------------------------------------
    Editorial Sketch plates for the consumer decision-making process: wobbly
    doubled ink and loose watercolour washes set off-register. Every mark comes
@@ -202,27 +202,25 @@ export function WeeksDecision() {
 }
 
 /**
- * One consumer, two categories: the same shopper has a careful decision in
- * one thought cloud (a car under a magnifier) and a habitual one in the other
- * (the usual milk carton, a tick).
+ * Two categories: a careful decision on the left (a car under a magnifier)
+ * and a habitual one on the right (the usual milk carton, a tick).
  */
 export function TwoCategories() {
   return (
     <SketchFrame
       id="sk-two-categories"
       width={400}
-      height={230}
-      label="One shopper between two thought clouds. In the left cloud, a car under a magnifier: a careful decision. In the right cloud, the usual carton of milk with a teal tick: a habitual decision."
+      height={200}
+      label="Two purchase categories side by side. On the left, a car inspected under a magnifier: a careful decision. On the right, the usual carton of milk with a teal tick: a habitual decision."
     >
-      <Backwash cx={200} cy={118} rx={192} ry={100} seed={7151} />
-      <Ground x0={110} x1={290} y={216} seed={7152} />
-      <Person x={200} y={216} h={140} look={SHOPPER} arms={["hip", "hip"]} seed={7160} />
-      <Thought x={84} y={78} rx={64} ry={38} tx={170} ty={110} seed={7170} />
-      <Car3 x={80} y={96} s={0.7} seed={7171} fill={SK.sky} />
-      <Magnifier x={108} y={66} r={13} seed={7172} />
-      <Thought x={318} y={78} rx={64} ry={38} tx={232} ty={110} seed={7180} />
-      <Carton x={306} bottom={104} w={28} h={52} seed={7181} />
-      <Tick1 x={342} y={76} s={1.5} seed={7182} />
+      <Backwash cx={112} cy={112} rx={96} ry={78} seed={7151} />
+      <Backwash cx={294} cy={112} rx={90} ry={78} seed={7153} />
+      <Ground x0={26} x1={194} y={162} seed={7152} />
+      <Ground x0={224} x1={368} y={162} seed={7154} />
+      <Car3 x={106} y={162} s={0.95} seed={7171} fill={SK.sky} />
+      <Magnifier x={150} y={88} r={18} seed={7172} />
+      <Carton x={282} bottom={162} w={36} h={70} seed={7181} />
+      <Tick1 x={332} y={118} s={1.8} seed={7182} />
     </SketchFrame>
   );
 }
@@ -292,32 +290,34 @@ export function SecondDecision() {
 }
 
 /**
- * Part of the process handed off: the shopper speaks a goal (a short list) to
- * her AI agent, which looks across the products and picks one (teal).
+ * Part of the process handed off: a goal checklist card feeds into the AI
+ * agent, which looks across the products and picks one (teal).
  */
 export function AgentHandsOff() {
+  const card = sharp(rp([[22, 64], [116, 64], [116, 168], [22, 168]]), true, 3);
   return (
     <SketchFrame
       id="sk-agent-hands-off"
       width={400}
-      height={230}
-      label="A shopper speaks a goal, shown as a short list in a speech bubble, to her AI agent, a phone with a sparkle. An arrow runs from the agent to a shelf of three coffee jars under a magnifier. The agent has picked one, washed teal."
+      height={216}
+      label="A goal checklist card with three ticked lines leads to the AI agent phone. An arrow runs from the agent to a shelf of three coffee jars under a magnifier, where the middle jar is washed teal as the chosen option."
     >
-      <Backwash cx={200} cy={118} rx={192} ry={100} seed={7301} />
-      <Ground x0={24} x1={380} y={216} seed={7302} />
-      <Person x={62} y={216} h={156} look={SHOPPER} arms={["hip", "point"]} seed={7310} />
-      <SpeechBubble x={122} y={52} w={78} h={44} tx={166} ty={114} seed={7320} />
+      <Backwash cx={200} cy={112} rx={192} ry={96} seed={7301} />
+      <Paper pts={card} seed={7320} />
+      <InkLine pts={card} seed={7321} closed />
       {[0, 1, 2].map((i) => (
         <g key={i}>
-          <Tick1 x={102} y={42 + i * 12} s={0.55} seed={7330 + i} color={SK.ink} />
-          <InkLine pts={rp([[112, 43 + i * 12], [140 - i * 6, 42 + i * 12]])} seed={7340 + i} width={0.9} />
+          <Tick1 x={40} y={88 + i * 28} s={0.7} seed={7330 + i} color={SK.ink} />
+          <InkLine pts={rp([[54, 89 + i * 28], [100 - i * 8, 88 + i * 28]])} seed={7340 + i} width={1} />
         </g>
       ))}
-      <Agent x={176} y={216} s={1.25} seed={7350} />
-      <SketchArrow pts={rp(curvePts([206, 150], [226, 124], [250, 130], 6))} seed={7360} width={1.2} head={8} />
-      <InkLine pts={rp([[256, 190], [388, 189]])} seed={7370} width={1.6} />
+      <SketchArrow pts={[[124, 116], [146, 116]]} seed={7346} width={1.2} head={7} />
+      <Ground x0={148} x1={212} y={188} seed={7302} />
+      <Agent x={180} y={188} s={1.25} seed={7350} />
+      <SketchArrow pts={rp(curvePts([210, 134], [228, 118], [250, 124], 6))} seed={7360} width={1.2} head={8} />
+      <InkLine pts={rp([[256, 188], [388, 187]])} seed={7370} width={1.6} />
       {[0, 1, 2].map((i) => (
-        <Jar key={i} x={282 + i * 40} bottom={188} w={28} h={44} level={0.8} seed={7380 + i * 10} lit={i === 1} />
+        <Jar key={i} x={282 + i * 40} bottom={186} w={28} h={44} level={0.8} seed={7380 + i * 10} lit={i === 1} />
       ))}
       <Magnifier x={300} y={84} r={20} seed={7400} />
     </SketchFrame>
@@ -992,21 +992,25 @@ export function ExtendedScene() {
    Information Search: Internal and External
    ========================================================================== */
 
-/** Internal search: the shopper looks into memory, which holds a brand and what she thinks of it. */
+/** Internal search: recalling a known brand and its rating from memory. */
 export function InternalSearch() {
+  const backCard = sharp(rp([[88, 62], [292, 62], [292, 166], [88, 166]]), true, 3);
+  const frontCard = sharp(rp([[104, 44], [312, 44], [312, 152], [104, 152]]), true, 3);
   return (
     <SketchFrame
       id="sk-internal-search"
       width={400}
-      height={240}
-      label="Internal search: a shopper with her hand at her chin has a thought cloud that holds the brand's badge and four of five stars, what she already knows from memory."
+      height={200}
+      label="Internal search: a recalled memory card pulled from a stack, holding the brand's badge and four of five stars."
     >
-      <Backwash cx={200} cy={124} rx={192} ry={108} seed={8801} />
-      <Ground x0={60} x1={250} y={226} seed={8802} />
-      <Person x={130} y={226} h={170} look={SHOPPER} arms={["hip", "chin"]} seed={8810} />
-      <Thought x={274} y={78} rx={92} ry={44} tx={150} ty={90} seed={8820} />
-      <BrandBadge x={226} y={78} r={22} seed={8830} />
-      <Stars x={266} y={78} n={4} r={9} gap={21} seed={8840} />
+      <Backwash cx={200} cy={104} rx={182} ry={88} seed={8801} />
+      <Paper pts={backCard} seed={8810} />
+      <InkLine pts={backCard} seed={8811} width={1} closed />
+      <Wash pts={frontCard} seed={8818} fill={SK.teal} opacity={0.28} dx={2} dy={2} />
+      <Paper pts={frontCard} seed={8820} />
+      <InkLine pts={frontCard} seed={8821} width={1.3} closed />
+      <BrandBadge x={152} y={98} r={22} seed={8830} />
+      <Stars x={202} y={98} n={4} r={9.5} gap={22} seed={8840} />
     </SketchFrame>
   );
 }
@@ -2014,46 +2018,45 @@ function c0(n: number | null): number {
    ========================================================================== */
 
 /**
- * An instruction card handed to an AI agent: some lines are inked and ticked
+ * An instruction card sent to an AI agent: some lines are inked and ticked
  * (stated), the rest are pencil blanks (left for the agent to decide).
  */
 export function InstructionCard() {
-  const card = sharp(rp([[128, 26], [282, 26], [282, 172], [128, 172]]), true, 2);
+  const card = sharp(rp([[56, 26], [230, 26], [230, 178], [56, 178]]), true, 2);
   return (
     <SketchFrame
       id="sk-instruction-card"
       width={400}
-      height={230}
-      label="A shopper hands an instruction card to her AI agent. On the card, two lines are written in ink and ticked: they are stated. Two more lines are pencil blanks, left for the agent to decide."
+      height={210}
+      label="An instruction card sent to an AI agent. On the card, two lines are written in ink and ticked: they are stated. Two more lines are pencil blanks, left for the agent to decide."
     >
-      <Backwash cx={200} cy={118} rx={192} ry={100} seed={10601} />
-      <Ground x0={20} x1={380} y={214} seed={10602} />
-      <Person x={60} y={214} h={160} look={SHOPPER} arms={["hip", "carry"]} seed={10610} />
+      <Backwash cx={200} cy={106} rx={184} ry={92} seed={10601} />
+      <Ground x0={274} x1={356} y={182} seed={10602} />
       <Paper pts={card} seed={10620} />
       <InkLine pts={card} seed={10621} closed />
       {[0, 1, 2, 3].map((k) => {
-        const y = 54 + k * 34;
+        const y = 56 + k * 34;
         const stated = k < 2;
-        const box = rp([[142, y - 9], [160, y - 9], [160, y + 9], [142, y + 9]]);
+        const box = rp([[74, y - 9], [92, y - 9], [92, y + 9], [74, y + 9]]);
         return (
           <g key={k}>
             {stated ? (
               <>
                 <InkLine pts={box} seed={10630 + k} width={1} closed />
-                <Tick1 x={151} y={y} s={1.1} seed={10640 + k} />
-                <InkLine pts={rp([[170, y + 2], [268 - k * 14, y + 1]])} seed={10650 + k} width={1.1} />
+                <Tick1 x={83} y={y} s={1.1} seed={10640 + k} />
+                <InkLine pts={rp([[104, y + 2], [212 - k * 14, y + 1]])} seed={10650 + k} width={1.1} />
               </>
             ) : (
               <>
                 <PencilLine pts={box} seed={10660 + k} closed />
-                <PencilLine pts={rp([[170, y + 2], [268 - k * 14, y + 1]])} seed={10670 + k} />
+                <PencilLine pts={rp([[104, y + 2], [212 - k * 14, y + 1]])} seed={10670 + k} />
               </>
             )}
           </g>
         );
       })}
-      <Agent x={336} y={214} s={1.15} seed={10680} />
-      <SketchArrow pts={rp([[288, 120], [312, 126]])} seed={10690} width={1.2} head={8} />
+      <SketchArrow pts={rp([[240, 114], [282, 114]])} seed={10690} width={1.2} head={8} />
+      <Agent x={316} y={182} s={1.2} seed={10680} />
     </SketchFrame>
   );
 }

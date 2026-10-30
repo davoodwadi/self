@@ -38,7 +38,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 04: MEASUREMENT AND QUESTIONNAIRE DESIGN
+// WEEK 4: MEASUREMENT AND QUESTIONNAIRE DESIGN
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -69,12 +69,12 @@ function AiStep() {
 
 export default function Week4() {
   return (
-    <SlideDeck label="Week 04">
+    <SlideDeck label="Week 4">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 04: Marketing Research &amp; Analytics</Subtitle>
+        <Subtitle variant="hero">Week 4: Marketing Research &amp; Analytics</Subtitle>
         <Title className="mt-6 !max-w-[20ch]">
           <span className="text-[var(--signal)]">Measurement</span> and Questionnaire Design
         </Title>

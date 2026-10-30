@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 08, figures
+   Week 8, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea: bars above and below a zero
    line for revenue and costs, a company wall with the price tag set into it,

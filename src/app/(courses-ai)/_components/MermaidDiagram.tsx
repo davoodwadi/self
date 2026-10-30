@@ -9,14 +9,14 @@ mermaid.initialize({
   themeVariables: {
     primaryColor: "#FFFFFF",
     primaryTextColor: "#1A1A1D",
-    primaryBorderColor: "#8B0000",
-    lineColor: "#8B0000",
+    primaryBorderColor: "#2C4A8C",
+    lineColor: "#2C4A8C",
     secondaryColor: "#F9F7F5",
     tertiaryColor: "#F9F7F5",
-    nodeBorder: "#8B0000",
+    nodeBorder: "#2C4A8C",
     clusterBkg: "#FFFFFF",
-    clusterBorder: "#A52A2A",
-    defaultLinkColor: "#A52A2A",
+    clusterBorder: "#2C4A8C",
+    defaultLinkColor: "#2C4A8C",
     edgeLabelBackground: "#ffffff00",
     fontFamily: "'Open Sans', sans-serif",
     fontSize: "18px",
@@ -110,8 +110,8 @@ const Mermaid: React.FC<MermaidProps> = ({
       className={`w-full flex flex-col items-center overflow-hidden ${className}`}
     >
       {error ? (
-        <div className="w-full rounded-lg border border-[var(--crimson)]/20 bg-[var(--surface)]/60 px-6 py-4 text-center">
-          <p className="text-sm text-[var(--charcoal-light)]/70 italic font-sans">
+        <div className="w-full rounded-lg border border-[var(--accent)]/20 bg-[var(--surface)]/60 px-6 py-4 text-center">
+          <p className="text-sm text-[var(--ink-2)]/70 italic font-sans">
             {error}
           </p>
         </div>
@@ -122,7 +122,7 @@ const Mermaid: React.FC<MermaidProps> = ({
         />
       )}
       {caption && (
-        <p className="mt-4 text-sm text-[var(--charcoal-light)]/70 italic text-center max-w-2xl font-serif">
+        <p className="mt-4 text-sm text-[var(--ink-2)]/70 italic text-center max-w-2xl font-serif">
           {caption}
         </p>
       )}

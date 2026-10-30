@@ -6,7 +6,7 @@ week: week9
 ---
 
 ## Title Slide
-- Week 09
+- Week 9
 - Digital storefronts turn pricing from a static catalog decision into a real-time algorithmic lever that shapes perceived value, margin, and competition.
 
 ## Why Digital Pricing Differs from Physical Retail [no-exercise]

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 06, figures
+   Week 6, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea: a mixed crowd sorted into
    groups, five criteria glyphs, a nested map zoom, a profile card, twins with

@@ -45,7 +45,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 05: MARKETING RESEARCH AND DATA ANALYTICS
+// WEEK 5: MARKETING RESEARCH AND DATA ANALYTICS
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -368,13 +368,13 @@ function StepSlide({
 export default function Week5() {
   return (
     <SlideDeck
-      label="Week 05"
+      label="Week 5"
     >
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 05: Introduction to Marketing</Subtitle>
+        <Subtitle variant="hero">Week 5: Introduction to Marketing</Subtitle>
         <Title className="mt-6 !max-w-[18ch]">
           Marketing Research and{" "}
           <span className="text-[var(--signal)]">Data Analytics</span>

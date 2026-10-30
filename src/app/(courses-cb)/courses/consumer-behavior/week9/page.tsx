@@ -15,7 +15,7 @@ import exercisesData from "./exercises.json";
 import * as V from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR | WEEK 09: POST-PURCHASE BEHAVIOR, SATISFACTION, AND LOYALTY
+// CONSUMER BEHAVIOR | WEEK 9: POST-PURCHASE BEHAVIOR, SATISFACTION, AND LOYALTY
 // ============================================================================
 // Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -48,14 +48,14 @@ const TIGHT = "md:!py-16";
 type Tone = "signal" | "counter" | "ink";
 
 const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
+  signal: "border-[var(--rule)]",
+  counter: "border-[var(--rule)]",
+  ink: "border-[var(--rule)]",
 };
 
 const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--signal)]",
-  counter: "text-[var(--counter)]",
+  signal: "text-[var(--ink)]",
+  counter: "text-[var(--ink)]",
   ink: "text-[var(--ink)]",
 };
 
@@ -120,7 +120,7 @@ function Term({
   );
 }
 
-/** Inline colour for a phrase inside a serif line. */
+/** Inline emphasis for a phrase inside a line. */
 function Tint({
   children,
   tone = "signal",
@@ -128,7 +128,7 @@ function Tint({
   children: React.ReactNode;
   tone?: Tone;
 }) {
-  return <span className={TEXT[tone]}>{children}</span>;
+  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
 /** Hairline-topped block. */
@@ -142,7 +142,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
+    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -246,28 +246,21 @@ function Cells({
     >
       {items.map((s) => (
         <li key={s.key} className="flex min-w-0 flex-col gap-3">
-          <div className={cn("border-t-2 pt-3", BORDER[s.tone])}>
+          <div className={cn("border-t pt-3", BORDER[s.tone])}>
             <p className="type-body">{s.text}</p>
           </div>
-          {s.plate ? (
-            <div className="figure-well mt-auto w-full min-w-0 p-3">
-              {s.plate}
-            </div>
-          ) : null}
         </li>
       ))}
     </ol>
   );
 }
 
-/** A ruled line with its plate beside it, for rows of text-and-picture pairs. */
+/** A ruled line for rows of text. */
 function SideCell({
-  plate,
   children,
-  plateClass = "",
   className = "",
 }: {
-  plate: React.ReactNode;
+  plate?: React.ReactNode;
   children: React.ReactNode;
   plateClass?: string;
   className?: string;
@@ -275,46 +268,38 @@ function SideCell({
   return (
     <div
       className={cn(
-        "grid min-w-0 items-center gap-4 border-t-2 border-[var(--ink)] pt-3 sm:grid-cols-[1fr_1.15fr]",
+        "min-w-0 border-t border-[var(--rule)] pt-3",
         className,
       )}
     >
       <p className="type-body min-w-0">{children}</p>
-      <div className={cn("figure-well w-full min-w-0 p-2", plateClass)}>
-        {plate}
-      </div>
     </div>
   );
 }
 
 export default function Week9() {
   return (
-    <SlideDeck label="Week 09">
+    <SlideDeck label="Week 9">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-          <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
-              Week 09
+        <div className="w-full max-w-4xl">
+          <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
+            Week 9
+          </p>
+          <p className="type-caption mt-2">
+            Consumer Behavior | Davood Wadi, PhD
+          </p>
+          <Title className="mt-6">
+            Post-Purchase Behavior, Satisfaction, and Loyalty
+          </Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
+              The sale is not the end of the relationship. What happens after
+              the purchase decides{" "}
+              <Tint>whether the consumer returns</Tint>.
             </p>
-            <p className="type-caption mt-2">
-              Consumer Behavior | Davood Wadi, PhD
-            </p>
-            <Title className="mt-6 !max-w-[20ch]">
-              Post-Purchase Behavior, Satisfaction, and Loyalty
-            </Title>
-            <div className="mt-8 max-w-[42ch] border-t-2 border-[var(--ink)] pt-6">
-              <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
-                The sale is not the end of the relationship. What happens after
-                the purchase decides{" "}
-                <Tint>whether the consumer returns</Tint>.
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto w-full max-w-[560px]">
-            <V.AfterTheSale />
           </div>
         </div>
       </Slide>
@@ -350,7 +335,7 @@ export default function Week9() {
               </P>
             </Ruled>
           </div>
-          <SideCell plate={<V.KeepVsWin />} className="sm:grid-cols-[1fr_1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1fr]">
             Keeping an existing customer usually costs less than winning a new
             one.{" "}
             For this reason, marketers study the postpurchase stage as closely
@@ -454,18 +439,12 @@ export default function Week9() {
                   company could have prevented,{" "}
                   <Tint>dissatisfaction is stronger</Tint>.
                 </P>
-                <Plate className="mt-auto">
-                  <V.BlameCompany />
-                </Plate>
               </div>
               <div className="flex min-w-0 flex-col gap-3">
                 <P>
                   If a consumer blames chance or their own misuse,
                   dissatisfaction is weaker.
                 </P>
-                <Plate className="mt-auto">
-                  <V.BlameSelf />
-                </Plate>
               </div>
             </div>
           </div>
@@ -506,12 +485,11 @@ export default function Week9() {
           </Plate>
         </div>
         <div className="mt-6 grid w-full gap-x-10 gap-y-5 lg:grid-cols-2">
-          <SideCell plate={<V.FinalSale />} className="sm:grid-cols-[1fr_1.1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1.1fr]">
             Dissonance is most likely when the purchase is expensive,
             important, and hard to reverse.
           </SideCell>
           <SideCell
-            plate={<V.MissingFeature />}
             className="sm:grid-cols-[1fr_1.1fr]"
           >
             Dissonance is also more likely when the rejected alternatives had
@@ -548,7 +526,6 @@ export default function Week9() {
             {
               key: "follow-up",
               tone: "ink",
-              plate: <V.ThankYouNote />,
               text: (
                 <>
                   Marketers can help. A follow-up message thanks
@@ -559,7 +536,6 @@ export default function Week9() {
             {
               key: "guarantees",
               tone: "ink",
-              plate: <V.WarrantyReturns />,
               text: (
                 <>
                   Guarantees, warranties, and easy return policies reduce the
@@ -570,7 +546,6 @@ export default function Week9() {
             {
               key: "owners",
               tone: "ink",
-              plate: <V.OwnersAd />,
               text: (
                 <>
                   Advertising that shows satisfied owners reassures recent
@@ -581,7 +556,6 @@ export default function Week9() {
             {
               key: "service",
               tone: "ink",
-              plate: <V.QuickReply />,
               text: (
                 <>
                   Customer service that responds quickly to problems prevents
@@ -607,7 +581,6 @@ export default function Week9() {
             {
               key: "voice",
               tone: "ink",
-              plate: <V.VoiceResponse />,
               text: (
                 <>
                   A <Term>voice response</Term> means complaining directly to
@@ -618,7 +591,6 @@ export default function Week9() {
             {
               key: "private",
               tone: "ink",
-              plate: <V.PrivateResponse />,
               text: (
                 <>
                   A <Term>private response</Term> means switching brands and
@@ -629,7 +601,6 @@ export default function Week9() {
             {
               key: "third-party",
               tone: "ink",
-              plate: <V.ThirdPartyResponse />,
               text: (
                 <>
                   A <Term>third-party response</Term> means taking action
@@ -697,7 +668,6 @@ export default function Week9() {
         </div>
         <div className="mt-5 grid w-full items-center gap-x-10 gap-y-5 lg:grid-cols-[1.35fr_1fr]">
           <SideCell
-            plate={<V.LateralCycling />}
             className="sm:grid-cols-[1fr_0.9fr]"
           >
             <Term>Lateral cycling</Term> occurs when one consumer&apos;s used
@@ -744,17 +714,14 @@ export default function Week9() {
           </P>
         </div>
         <div className="mt-5 grid w-full gap-8 lg:grid-cols-[1fr_2.25fr] lg:gap-10">
-          <div className="flex min-w-0 flex-col gap-3 border-t-2 border-[var(--ink)] pt-3">
+          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule)] pt-3">
             <P>
               When a review request offered a financial incentive, asking
               customers to help the company worked less well than asking them
               to help other shoppers (Wadi et al., 2026a).
             </P>
-            <Plate className="mt-auto">
-              <V.HelpWhom />
-            </Plate>
           </div>
-          <div className="flex min-w-0 flex-col gap-3 border-t-2 border-[var(--ink)] pt-3">
+          <div className="flex min-w-0 flex-col gap-3 border-t border-[var(--rule)] pt-3">
             <div className="grid w-full gap-x-8 gap-y-3 md:grid-cols-2">
               <P>
                 Incentives paid only for helpful reviews raised review writing
@@ -772,14 +739,11 @@ export default function Week9() {
             </Plate>
           </div>
         </div>
-        <div className="mt-5 grid w-full items-center gap-6 border-t-2 border-[var(--ink)] pt-3 sm:grid-cols-[1fr_124px]">
+        <div className="mt-5 w-full border-t border-[var(--rule)] pt-3">
           <Big className="!text-[clamp(1.1rem,1.5vw,1.3rem)]">
             Reviews now have two audiences. They inform human shoppers and{" "}
             <Tint>the AI agents that read reviews on shoppers&apos; behalf</Tint>.
           </Big>
-          <div className="figure-well w-full min-w-0 p-1.5">
-            <V.TwoAudiences />
-          </div>
         </div>
       </Slide>
 
@@ -804,7 +768,6 @@ export default function Week9() {
             {
               key: "true",
               tone: "ink",
-              plate: <V.TrueLoyalty />,
               text: (
                 <>
                   <Term>True loyalty</Term> combines frequent repeat purchase
@@ -815,7 +778,6 @@ export default function Week9() {
             {
               key: "spurious",
               tone: "ink",
-              plate: <V.SpuriousLoyalty />,
               text: (
                 <>
                   <Term>Spurious loyalty</Term> is repeat purchase without a
@@ -827,7 +789,6 @@ export default function Week9() {
             {
               key: "latent",
               tone: "ink",
-              plate: <V.LatentLoyalty />,
               text: (
                 <>
                   <Term>Latent loyalty</Term> is a strong positive attitude
@@ -839,7 +800,7 @@ export default function Week9() {
           ]}
         />
         <div className="mt-6 grid w-full items-center gap-x-10 gap-y-5 lg:grid-cols-[1.3fr_1fr]">
-          <SideCell plate={<V.BetterDeal />} className="sm:grid-cols-[1fr_0.95fr]">
+          <SideCell className="sm:grid-cols-[1fr_0.95fr]">
             <Tint>Satisfaction does not guarantee loyalty.</Tint> Satisfied
             customers still switch when a competitor offers a better deal.
           </SideCell>
@@ -898,7 +859,7 @@ export default function Week9() {
             </Plate>
           </div>
         </div>
-        <div className="mt-6 grid w-full gap-6 border-t-2 border-[var(--ink)] pt-3 md:grid-cols-2 md:gap-10">
+        <div className="mt-6 grid w-full gap-6 border-t border-[var(--rule)] pt-3 md:grid-cols-2 md:gap-10">
           <P>
             Spurious loyalty based on habit is therefore at risk when
             repurchase is delegated. A brand is more secure when{" "}
@@ -920,20 +881,15 @@ export default function Week9() {
         <Heading kicker="Discussion:" tone="counter">
           The Review You Did Not Write
         </Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-10">
-          <div className="relative w-full min-w-0 border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-10 md:py-12">
-            <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
-              Discussion:
-            </span>{" "}
-            <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)]">
-              Think of a product you were very satisfied or dissatisfied with.
-              Did you write a review? What would have made you write one, and
-              would the answer change if the firm had offered you a reward?
-            </p>
-          </div>
-          <Plate className="mx-auto lg:max-w-[420px]">
-            <V.UnwrittenReview />
-          </Plate>
+        <div className="relative w-full max-w-5xl border-l border-[var(--rule-2)] pl-6 py-2">
+          <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--ink-3)]">
+            Discussion:
+          </span>{" "}
+          <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)] max-w-[52ch]">
+            Think of a product you were very satisfied or dissatisfied with.
+            Did you write a review? What would have made you write one, and
+            would the answer change if the firm had offered you a reward?
+          </p>
         </div>
       </Slide>
     </SlideDeck>

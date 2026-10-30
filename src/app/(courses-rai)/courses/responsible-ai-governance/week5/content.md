@@ -6,7 +6,7 @@ week: week5
 ---
 
 ## Title Slide
-- Week 05
+- Week 5
 - Governing opaque algorithms requires distinguishing intrinsic interpretability from post-hoc approximations, testing whether language-model reasoning traces are faithful to actual choices, and matching explanations to the decisions stakeholders must make.
 
 ## Why Opacity Is a Governance Problem [no-exercise]

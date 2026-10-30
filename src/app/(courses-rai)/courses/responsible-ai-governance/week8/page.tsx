@@ -32,7 +32,7 @@ import {
 } from "./visuals";
 
 // ============================================================================
-// WEEK 08: FIDUCIARY DUTY AND CONFLICTS OF INTEREST IN AGENTIC COMMERCE
+// WEEK 8: FIDUCIARY DUTY AND CONFLICTS OF INTEREST IN AGENTIC COMMERCE
 // ============================================================================
 // Every sentence on these slides is transcribed verbatim from content.md.
 // the design only decides where each sentence sits and what patent drawing
@@ -45,12 +45,12 @@ const BIG = "type-h2 !font-normal !text-[clamp(1.18rem,1.65vw,1.42rem)] !leading
 
 export default function Week8Page() {
   return (
-    <SlideDeck label="Week 08">
+    <SlideDeck label="Week 8">
       {/* ================================================================
           01. Title Slide
           ================================================================ */}
       <Slide id="title-slide" align="center">
-        <Subtitle variant="hero">Week 08: Responsible AI &amp; Algorithmic Governance</Subtitle>
+        <Subtitle variant="hero">Week 8: Responsible AI &amp; Algorithmic Governance</Subtitle>
         <Title className="mt-6 !max-w-[24ch]">Fiduciary Duty and Conflicts of Interest in Agentic Commerce</Title>
         <p className="type-caption mt-2">Davood Wadi, PhD</p>
         <p className="type-quote mt-14 max-w-[58ch] border-t border-[var(--rule)] pt-10 !text-[clamp(1.2rem,1.9vw,1.6rem)]">

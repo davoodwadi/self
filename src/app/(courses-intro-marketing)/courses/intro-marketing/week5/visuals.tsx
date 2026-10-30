@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Week 05, figures
+   Week 5, figures
    --------------------------------------------------------------------------
    Hand-drawn SVG plates, one grammar per idea: a bridge of information, an
    aim that holds or drifts, a fork of objectives, a plan sheet, a balance, a

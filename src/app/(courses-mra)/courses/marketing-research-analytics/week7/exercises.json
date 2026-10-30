@@ -143,7 +143,7 @@
     "slide_id": "effect-size",
     "question_text": "Two studies test a redesigned checkout. Study A (40,000 customers) finds a significant difference with Cohen's d = 0.05. Study B (60 customers) finds d = 0.60, not significant. Which statement is correct?",
     "hint": "Consider what an effect size measures and what it does not depend on.",
-    "correct_answer_citation": "Week 07: Effect Size",
+    "correct_answer_citation": "Week 7: Effect Size",
     "correct_answer_index": 2,
     "options": [
       {
@@ -213,7 +213,7 @@
     "slide_id": "hypothesis-testing-in-ai-evaluation",
     "question_text": "A team tests every pair of 12 prompt wordings, with 20,000 responses per wording. One pair differs significantly (p = 0.03): mean ratings of 5.61 and 5.58 on a seven-point scale. What should the team add before concluding?",
     "hint": "Consider both the size of the samples and the number of tests conducted.",
-    "correct_answer_citation": "Week 07: Hypothesis Testing in AI Evaluation",
+    "correct_answer_citation": "Week 7: Hypothesis Testing in AI Evaluation",
     "correct_answer_index": 3,
     "options": [
       {

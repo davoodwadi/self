@@ -1,0 +1,255 @@
+[
+  {
+    "type": "quiz",
+    "slide_id": "construct-validity",
+    "question_text": "A hospital wants a model that identifies its most effective nurses. The data team proposes using each nurse's average patient-satisfaction survey score as the target label. What should the team do first?",
+    "hint": "Ask whether the label measures the concept management actually cares about.",
+    "correct_answer_citation": "Every people-analytics project must therefore audit the target variable for measurement bias before evaluating predictive accuracy.",
+    "options": [
+      {
+        "option_text": "Train several models and keep the one with the highest accuracy on the survey scores",
+        "option_explanation": "High accuracy on a flawed label only means the model reproduces the flaw more faithfully."
+      },
+      {
+        "option_text": "Check how well survey scores capture nursing effectiveness, and whether they are biased",
+        "option_explanation": "Correct. Survey scores may miss safety work and mentoring and may reflect patient bias, so the label must be audited before accuracy means anything."
+      },
+      {
+        "option_text": "Add more features, such as shift length and ward, to raise predictive power",
+        "option_explanation": "More features do not fix a target label that measures the wrong thing."
+      },
+      {
+        "option_text": "Replace the survey score with years of tenure, since tenure is objective",
+        "option_explanation": "Tenure is another proxy with its own gaps. Being easy to count does not make it a valid measure of effectiveness."
+      }
+    ],
+    "correct_answer_index": 1
+  },
+  {
+    "type": "sort",
+    "slide_id": "keyword-to-semantic",
+    "prompt": "A logistics company is hiring a supply chain planner. Sort each screening behavior by the kind of system that produces it.",
+    "bins": [
+      { "id": "keyword", "label": "Exact keyword filter" },
+      { "id": "semantic", "label": "Semantic skill matching" }
+    ],
+    "cards": [
+      {
+        "id": "inventory",
+        "text": "Rejects a resume that says \"inventory optimization\" because it never uses the phrase \"supply chain\"",
+        "bin": "keyword",
+        "explanation": "Different terminology for the same skill fails an exact-match rule."
+      },
+      {
+        "id": "adjacent",
+        "text": "Ranks a procurement analyst highly because purchasing forecasts sit next to demand planning in the skills graph",
+        "bin": "semantic",
+        "explanation": "A skills taxonomy connects adjacent skills, so related experience counts."
+      },
+      {
+        "id": "stuffing",
+        "text": "Passes a resume that repeats \"supply chain\" ten times in white text at the bottom",
+        "bin": "keyword",
+        "explanation": "Counting words rewards stuffing rather than demonstrated capability."
+      },
+      {
+        "id": "schema",
+        "text": "Reads a two-column PDF and a plain-text resume into the same fields for past roles and outcomes",
+        "bin": "semantic",
+        "explanation": "Language models extract varied resume formats into a common schema."
+      },
+      {
+        "id": "review",
+        "text": "Flags an overlooked candidate from the military logistics corps for a recruiter to read",
+        "bin": "semantic",
+        "explanation": "Well-designed semantic screening surfaces candidates for human review."
+      },
+      {
+        "id": "acronym",
+        "text": "Drops an applicant who wrote \"SCM\" instead of the posting's full wording",
+        "bin": "keyword",
+        "explanation": "An abbreviation is a terminology mismatch that exact matching cannot see past."
+      }
+    ]
+  },
+  {
+    "type": "match",
+    "slide_id": "talent-marketplaces",
+    "prompt": "An internal talent marketplace suggests a next role for each employee. Match each employee to the role they are most closely adjacent to.",
+    "term_label": "Current employee",
+    "match_label": "Most adjacent internal role",
+    "pairs": [
+      {
+        "id": "payroll",
+        "term": "Payroll clerk who reconciles accounts and builds spreadsheet formulas",
+        "match": "Junior financial analyst",
+        "explanation": "Reconciliation and spreadsheet modeling transfer directly to entry-level financial analysis."
+      },
+      {
+        "id": "trainer",
+        "term": "Retail store trainer who writes onboarding guides and runs workshops",
+        "match": "Learning and development coordinator",
+        "explanation": "Designing and delivering training is the core of the target role."
+      },
+      {
+        "id": "dispatcher",
+        "term": "Warehouse dispatcher who schedules trucks and tracks delivery delays",
+        "match": "Logistics planner",
+        "explanation": "Scheduling and delay tracking are the main tasks of logistics planning."
+      },
+      {
+        "id": "itdesk",
+        "term": "IT help desk technician who scripts password resets and reads system logs",
+        "match": "Junior systems administrator",
+        "explanation": "Scripting and log reading leave a small training gap to systems administration."
+      }
+    ]
+  },
+  {
+    "type": "sort",
+    "slide_id": "unbundling-jobs",
+    "prompt": "A hospital is deploying AI across a nurse manager's role. Sort each task by whether software would take it over or help the person do it better.",
+    "bins": [
+      { "id": "automate", "label": "Task automation" },
+      { "id": "augment", "label": "Skill augmentation" }
+    ],
+    "cards": [
+      {
+        "id": "shift-log",
+        "text": "Turning the end-of-shift voice note into a typed log entry",
+        "bin": "automate",
+        "explanation": "Transcription follows codifiable rules, so software can replace the human step."
+      },
+      {
+        "id": "staffing",
+        "text": "Deciding how to staff a ward during a flu surge, with a model suggesting options",
+        "bin": "augment",
+        "explanation": "The model raises the quality of a complex judgment the manager still makes."
+      },
+      {
+        "id": "supply",
+        "text": "Sorting supply invoices into budget categories",
+        "bin": "automate",
+        "explanation": "Categorizing receipts is a routine subtask software can take over."
+      },
+      {
+        "id": "family",
+        "text": "Preparing for a difficult conversation with a patient's family, using an AI to rehearse",
+        "bin": "augment",
+        "explanation": "Empathy and context stay with the person, and AI helps them prepare."
+      },
+      {
+        "id": "rota",
+        "text": "Formatting the weekly rota into the standard hospital template",
+        "bin": "automate",
+        "explanation": "Formatting routine reports is a classic automation example."
+      },
+      {
+        "id": "incident",
+        "text": "Analyzing a medication-error incident, with AI drafting a timeline for review",
+        "bin": "augment",
+        "explanation": "AI speeds up analysis while the manager judges causes and remedies."
+      }
+    ]
+  },
+  {
+    "type": "quiz",
+    "slide_id": "leveling-effect",
+    "question_text": "A law firm gives every lawyer an AI drafting assistant. Which outcome best fits the pattern from field experiments?",
+    "hint": "Think about who gains most, and what happens on tasks outside the model's competence.",
+    "correct_answer_citation": "On tasks outside the model's competence, workers who uncritically accept AI outputs perform worse than workers who use no AI at all, making human domain judgment essential.",
+    "options": [
+      {
+        "option_text": "Senior partners gain the most, because they know how to write the best prompts",
+        "option_explanation": "Field experiments find the opposite: the largest percentage gains go to less-experienced workers."
+      },
+      {
+        "option_text": "Every lawyer improves by roughly the same percentage on every kind of task",
+        "option_explanation": "Gains are uneven across workers and can turn negative on tasks outside the frontier."
+      },
+      {
+        "option_text": "First-year associates speed up most, but those who copy AI output on a novel legal question do worse than with no AI",
+        "option_explanation": "Correct. Novices gain most inside the frontier, while uncritical acceptance outside it makes performance worse than working without AI."
+      },
+      {
+        "option_text": "Output quality falls for most lawyers, because the assistant writes in a generic style",
+        "option_explanation": "Inside the frontier, quality rises, especially for lower performers."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "type": "quiz",
+    "slide_id": "four-fifths",
+    "question_text": "An online aptitude test passes 150 of 300 applicants aged under 40 and 60 of 200 applicants aged 40 and over. Does the four-fifths rule indicate adverse impact?",
+    "hint": "Compute each group's selection rate, then compare the lower rate with 80 percent of the higher one.",
+    "correct_answer_citation": "Adverse impact is indicated if the selection rate for any protected race, sex, or ethnic group is less than 80 percent (four-fifths) of the rate for the group with the highest selection rate.",
+    "options": [
+      {
+        "option_text": "No, because more applicants aged 40 and over were tested than the rule requires",
+        "option_explanation": "The rule compares selection rates, not the number of applicants tested."
+      },
+      {
+        "option_text": "No, because 60 passes is at least four-fifths of the 75 passes expected",
+        "option_explanation": "The comparison uses each group's selection rate against the highest group's rate, not expected counts."
+      },
+      {
+        "option_text": "Yes, because 30% is below the 40% threshold (0.80 × 50%)",
+        "option_explanation": "Correct. Under 40: 150 / 300 = 50%. Aged 40 and over: 60 / 200 = 30%. The threshold is 0.80 × 50% = 40%, and 30% falls below it."
+      },
+      {
+        "option_text": "Yes, because fewer than half of all applicants passed the test",
+        "option_explanation": "The overall pass rate does not matter. The rule compares groups with each other."
+      }
+    ],
+    "correct_answer_index": 2
+  },
+  {
+    "type": "identify",
+    "slide_id": "surveillance-boundaries",
+    "prompt": "A software company reviews its workplace data practices. For each practice, name what it is.",
+    "options": [
+      { "id": "telemetry", "label": "Aggregated workflow telemetry" },
+      { "id": "surveillance", "label": "Invasive individual surveillance" },
+      { "id": "goodhart", "label": "Goodhart's Law at work" }
+    ],
+    "cases": [
+      {
+        "id": "review-wait",
+        "text": "Tracking the median time code waits for review across all teams, with no names attached",
+        "answer": "telemetry",
+        "explanation": "It is aggregated and anonymized, and it points to a process bottleneck."
+      },
+      {
+        "id": "screens",
+        "text": "Capturing a screenshot of each developer's screen every ten minutes",
+        "answer": "surveillance",
+        "explanation": "Continuous individual capture of activity is covert-style monitoring that erodes trust."
+      },
+      {
+        "id": "commits",
+        "text": "After commit counts are tied to bonuses, developers split each change into many tiny commits",
+        "answer": "goodhart",
+        "explanation": "The activity proxy became a target and stopped measuring real output."
+      },
+      {
+        "id": "dm",
+        "text": "Running sentiment analysis on employees' private chat messages",
+        "answer": "surveillance",
+        "explanation": "Private message scanning is named as invasive individual surveillance."
+      },
+      {
+        "id": "handoff",
+        "text": "Measuring average handoff delay between design and engineering each sprint",
+        "answer": "telemetry",
+        "explanation": "Team-level workflow data used to remove a bottleneck sits inside the governance boundary."
+      },
+      {
+        "id": "online",
+        "text": "Once 'hours shown online' is ranked, staff leave their chat status active overnight",
+        "answer": "goodhart",
+        "explanation": "Gaming a narrow activity measure once it becomes a target is Goodhart's Law."
+      }
+    ]
+  }
+]

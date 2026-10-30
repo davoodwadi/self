@@ -15,7 +15,7 @@ import exercisesData from "./exercises.json";
 import * as V from "./visuals";
 
 // ============================================================================
-// CONSUMER BEHAVIOR | WEEK 07: THE CONSUMER DECISION-MAKING PROCESS
+// CONSUMER BEHAVIOR | WEEK 7: THE CONSUMER DECISION-MAKING PROCESS
 // ============================================================================
 // Every line on these slides is transcribed verbatim from content.md. The
 // design only decides where each one sits and what is drawn beside it. Plates
@@ -46,14 +46,14 @@ const TIGHT = "md:!py-16";
 type Tone = "signal" | "counter" | "ink";
 
 const BORDER: Record<Tone, string> = {
-  signal: "border-[var(--signal)]",
-  counter: "border-[var(--counter)]",
-  ink: "border-[var(--ink)]",
+  signal: "border-[var(--rule)]",
+  counter: "border-[var(--rule)]",
+  ink: "border-[var(--rule)]",
 };
 
 const TEXT: Record<Tone, string> = {
-  signal: "text-[var(--signal)]",
-  counter: "text-[var(--counter)]",
+  signal: "text-[var(--ink)]",
+  counter: "text-[var(--ink)]",
   ink: "text-[var(--ink)]",
 };
 
@@ -118,7 +118,7 @@ function Term({
   );
 }
 
-/** Inline colour for a phrase inside a serif line. */
+/** Inline emphasis for a phrase inside a line. */
 function Tint({
   children,
   tone = "signal",
@@ -126,7 +126,7 @@ function Tint({
   children: React.ReactNode;
   tone?: Tone;
 }) {
-  return <span className={TEXT[tone]}>{children}</span>;
+  return <strong className={cn("font-semibold", TEXT[tone])}>{children}</strong>;
 }
 
 /** Hairline-topped block. */
@@ -140,7 +140,7 @@ function Ruled({
   className?: string;
 }) {
   return (
-    <div className={cn("min-w-0 border-t-2 pt-5", BORDER[tone], className)}>
+    <div className={cn("min-w-0 border-t pt-5", BORDER[tone], className)}>
       {children}
     </div>
   );
@@ -244,28 +244,21 @@ function Cells({
     >
       {items.map((s) => (
         <li key={s.key} className="flex min-w-0 flex-col gap-3">
-          <div className={cn("border-t-2 pt-3", BORDER[s.tone])}>
+          <div className={cn("border-t pt-3", BORDER[s.tone])}>
             <p className="type-body">{s.text}</p>
           </div>
-          {s.plate ? (
-            <div className="figure-well mt-auto w-full min-w-0 p-3">
-              {s.plate}
-            </div>
-          ) : null}
         </li>
       ))}
     </ol>
   );
 }
 
-/** A ruled line with its plate beside it, for rows of text-and-picture pairs. */
+/** A ruled line for rows of text. */
 function SideCell({
-  plate,
   children,
-  plateClass = "",
   className = "",
 }: {
-  plate: React.ReactNode;
+  plate?: React.ReactNode;
   children: React.ReactNode;
   plateClass?: string;
   className?: string;
@@ -273,45 +266,37 @@ function SideCell({
   return (
     <div
       className={cn(
-        "grid min-w-0 items-center gap-4 border-t-2 border-[var(--ink)] pt-3 sm:grid-cols-[1fr_1.15fr]",
+        "min-w-0 border-t border-[var(--rule)] pt-3",
         className,
       )}
     >
       <p className="type-body min-w-0">{children}</p>
-      <div className={cn("figure-well w-full min-w-0 p-2", plateClass)}>
-        {plate}
-      </div>
     </div>
   );
 }
 
 export default function Week7() {
   return (
-    <SlideDeck label="Week 07">
+    <SlideDeck label="Week 7">
       {/* ================================================================
           Title Slide
           ================================================================ */}
       <Slide id="title-slide">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
-          <div className="min-w-0">
-            <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
-              Week 07
+        <div className="w-full max-w-4xl">
+          <p className="type-label !text-[0.8rem] !text-[var(--ink-3)]">
+            Week 7
+          </p>
+          <p className="type-caption mt-2">
+            Consumer Behavior | Davood Wadi, PhD
+          </p>
+          <Title className="mt-6">
+            Consumer Decision-Making Process
+          </Title>
+          <div className="mt-10 max-w-3xl border-t border-[var(--rule)] pt-8">
+            <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
+              A purchase is <Tint>the last step</Tint> of a decision that
+              begins long before the checkout.
             </p>
-            <p className="type-caption mt-2">
-              Consumer Behavior | Davood Wadi, PhD
-            </p>
-            <Title className="mt-6 !max-w-[18ch]">
-              Consumer Decision-Making Process
-            </Title>
-            <div className="mt-8 max-w-[40ch] border-t-2 border-[var(--ink)] pt-6">
-              <p className="type-quote !text-[clamp(1.4rem,2.2vw,1.9rem)]">
-                A purchase is <Tint>the last step</Tint> of a decision that
-                begins long before the checkout.
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto w-full max-w-[560px]">
-            <V.DecisionPath />
           </div>
         </div>
       </Slide>
@@ -334,7 +319,6 @@ export default function Week7() {
             {
               key: "weeks",
               tone: "ink",
-              plate: <V.WeeksDecision />,
               text: (
                 <>
                   Some decisions take weeks of research, such as choosing a
@@ -345,7 +329,6 @@ export default function Week7() {
             {
               key: "second",
               tone: "ink",
-              plate: <V.SecondDecision />,
               text: (
                 <>
                   Other decisions take less than a second, such as picking up
@@ -356,7 +339,6 @@ export default function Week7() {
             {
               key: "same",
               tone: "ink",
-              plate: <V.TwoCategories />,
               text: (
                 <>
                   The same consumer can make careful decisions in one category
@@ -367,7 +349,6 @@ export default function Week7() {
             {
               key: "agent",
               tone: "ink",
-              plate: <V.AgentHandsOff />,
               text: (
                 <>
                   Today, a consumer can also hand part of the process to an AI
@@ -399,7 +380,6 @@ export default function Week7() {
             {
               key: "problem",
               tone: "ink",
-              plate: <V.StageProblem />,
               text: (
                 <>
                   Stage 1 is <Term>problem recognition</Term>. The consumer
@@ -410,7 +390,6 @@ export default function Week7() {
             {
               key: "search",
               tone: "ink",
-              plate: <V.StageSearch />,
               text: (
                 <>
                   Stage 2 is <Term>information search</Term>. The consumer looks
@@ -421,7 +400,6 @@ export default function Week7() {
             {
               key: "evaluate",
               tone: "ink",
-              plate: <V.StageEvaluate />,
               text: (
                 <>
                   Stage 3 is <Term>evaluation of alternatives</Term>. The
@@ -432,7 +410,6 @@ export default function Week7() {
             {
               key: "choice",
               tone: "ink",
-              plate: <V.StageChoose />,
               text: (
                 <>
                   Stage 4 is <Term>product choice</Term>. The consumer selects
@@ -443,7 +420,6 @@ export default function Week7() {
             {
               key: "post",
               tone: "ink",
-              plate: <V.StagePost />,
               text: (
                 <>
                   Stage 5 is <Term>postpurchase evaluation</Term>. The consumer
@@ -492,14 +468,13 @@ export default function Week7() {
           </Plate>
         </div>
         <div className="mt-6 grid w-full gap-x-10 gap-y-6 lg:grid-cols-2">
-          <SideCell plate={<V.MarketerNeed />} className="sm:grid-cols-[1fr_1.1fr]">
+          <SideCell className="sm:grid-cols-[1fr_1.1fr]">
             <Term>Need recognition</Term> happens when the actual state falls. A
             phone breaks, or the fridge is empty.{" "}
             Marketers can trigger need recognition by reminding consumers that a
             product runs out or wears out.
           </SideCell>
           <SideCell
-            plate={<V.MarketerOpportunity />}
             className="sm:grid-cols-[1fr_1.1fr]"
           >
             <Term>Opportunity recognition</Term> happens when the ideal state
@@ -530,7 +505,6 @@ export default function Week7() {
             {
               key: "routine",
               tone: "ink",
-              plate: <V.RoutineScene />,
               text: (
                 <>
                   <Term>Routine response behavior</Term> is automatic. The
@@ -542,7 +516,6 @@ export default function Week7() {
             {
               key: "limited",
               tone: "ink",
-              plate: <V.LimitedScene />,
               text: (
                 <>
                   <Term>Limited problem solving</Term> uses some search and
@@ -554,7 +527,6 @@ export default function Week7() {
             {
               key: "extended",
               tone: "ink",
-              plate: <V.ExtendedScene />,
               text: (
                 <>
                   <Term>Extended problem solving</Term> uses extensive search
@@ -592,9 +564,6 @@ export default function Week7() {
                 the consumer already knows about the options.
               </P>
             </Ruled>
-            <Plate>
-              <V.InternalSearch />
-            </Plate>
           </div>
           <div className="flex min-w-0 flex-col gap-3">
             <Ruled tone="ink" className="!pt-3">
@@ -626,7 +595,6 @@ export default function Week7() {
             </Ruled>
           </div>
           <SideCell
-            plate={<V.SearchStreet />}
             className="sm:grid-cols-[1.1fr_1fr]"
           >
             <Term>Search has costs.</Term> Each extra comparison takes time,
@@ -651,7 +619,6 @@ export default function Week7() {
             {
               key: "monetary",
               tone: "ink",
-              plate: <V.MonetaryRisk />,
               text: (
                 <>
                   <Term>Monetary risk</Term> is the chance of losing money on a
@@ -662,7 +629,6 @@ export default function Week7() {
             {
               key: "functional",
               tone: "ink",
-              plate: <V.FunctionalRisk />,
               text: (
                 <>
                   <Term>Functional risk</Term> is the chance that the product
@@ -673,7 +639,6 @@ export default function Week7() {
             {
               key: "physical",
               tone: "ink",
-              plate: <V.PhysicalRisk />,
               text: (
                 <>
                   <Term>Physical risk</Term> is the chance of harm to the body
@@ -684,7 +649,6 @@ export default function Week7() {
             {
               key: "social",
               tone: "ink",
-              plate: <V.SocialRisk />,
               text: (
                 <>
                   <Term>Social risk</Term> is the chance that others will judge
@@ -695,7 +659,6 @@ export default function Week7() {
             {
               key: "psychological",
               tone: "ink",
-              plate: <V.PsychologicalRisk />,
               text: (
                 <>
                   <Term>Psychological risk</Term> is the chance that the choice
@@ -758,7 +721,7 @@ export default function Week7() {
             </Plate>
           </div>
         </div>
-        <div className="mt-5 grid w-full gap-6 border-t-2 border-[var(--ink)] pt-3 md:grid-cols-2 md:gap-10">
+        <div className="mt-5 grid w-full gap-6 border-t border-[var(--rule)] pt-3 md:grid-cols-2 md:gap-10">
           <P>
             When looking up information was free, AI agents gathered the
             details they needed and rarely chose a worse product (Wadi &amp;
@@ -962,21 +925,16 @@ export default function Week7() {
         <Heading kicker="Discussion:" tone="counter">
           Write the Instruction
         </Heading>
-        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1fr] lg:gap-10">
-          <div className="relative w-full min-w-0 border-l-2 border-[var(--counter)] bg-[var(--counter-tint)] px-7 py-10 md:px-10 md:py-12">
-            <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--counter)]">
-              Discussion:
-            </span>
-            <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)]">
-              Think of a product you plan to buy soon. Write the instruction you
-              would give an AI agent to buy it for you. Which attributes and
-              decision rule does your instruction state, and which does it leave
-              for the agent to decide?
-            </p>
-          </div>
-          <Plate wide>
-            <V.InstructionCard />
-          </Plate>
+        <div className="relative w-full max-w-5xl border-l border-[var(--rule-2)] pl-6 py-2">
+          <span className="type-label mb-5 block !text-[0.8rem] !text-[var(--ink-3)]">
+            Discussion:
+          </span>
+          <p className="type-quote !text-[clamp(1.15rem,1.7vw,1.5rem)] max-w-[52ch]">
+            Think of a product you plan to buy soon. Write the instruction you
+            would give an AI agent to buy it for you. Which attributes and
+            decision rule does your instruction state, and which does it leave
+            for the agent to decide?
+          </p>
         </div>
       </Slide>
     </SlideDeck>

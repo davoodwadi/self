@@ -71,7 +71,7 @@ export default function OrderExercise({
 
   return (
     <div className="w-full">
-      <ExerciseHeader kind="Put it in order" prompt={data.prompt} />
+      <ExerciseHeader prompt={data.prompt} />
 
       {/* the pile: every step keeps its slot, so taking one out never reflows the rest */}
       <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" aria-label="Steps to put in order">

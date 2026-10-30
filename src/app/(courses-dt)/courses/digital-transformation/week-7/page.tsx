@@ -110,7 +110,7 @@ export default function DigitalTransformationWeek7() {
       </Link>
 
       <PosterHero
-        category="Week 07: Digital Transformation"
+        category="Week 7: Digital Transformation"
         title="Blockchain Technology"
         author="Dr. Davood Wadi"
         institution="Digital Transformation"
